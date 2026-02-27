@@ -14,11 +14,14 @@ class OutputFormatter {
      */
     formatAll(parserResult) {
         const metadataBlock = this.formatMetadata(parserResult.metadata);
-        const contentBlock = this.formatContent(
+        let contentBlock = this.formatContent(
             parserResult.content,
             parserResult.contentStartIndex,
             parserResult.contentStartFound
         );
+
+        // Post-processing: strip red text markers that wrap only whitespace
+        contentBlock = this._stripEmptyRedText(contentBlock);
 
         return {
             full: metadataBlock + '\n' + contentBlock,
@@ -91,8 +94,7 @@ class OutputFormatter {
                 lines.push(formatted);
                 lines.push('');
             } else if (block.type === 'pageBreak') {
-                lines.push('--- PAGE BREAK ---');
-                lines.push('');
+                // Page breaks stripped — no useful info for downstream processing
             }
         }
 
@@ -205,6 +207,14 @@ class OutputFormatter {
         }
 
         return leading + result + trailing;
+    }
+
+    /**
+     * Strip red text markers that wrap only whitespace.
+     * e.g. "🔴[RED TEXT]   [/RED TEXT]🔴" → removed entirely.
+     */
+    _stripEmptyRedText(text) {
+        return text.replace(/\uD83D\uDD34\[RED TEXT\]\s*\[\/RED TEXT\]\uD83D\uDD34/g, '');
     }
 
     /**

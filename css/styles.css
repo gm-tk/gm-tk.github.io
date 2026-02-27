@@ -171,6 +171,51 @@ main {
     margin: 0 auto;
 }
 
+/* ---------- About Section ---------- */
+
+.about-section {
+    width: 100%;
+    max-width: 640px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+}
+
+.about-toggle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+}
+
+.about-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.about-toggle::before {
+    content: "\25B6\FE0E ";
+    font-size: 0.7rem;
+    margin-right: 0.3rem;
+}
+
+.about-section[open] .about-toggle::before {
+    content: "\25BC\FE0E ";
+}
+
+.about-text {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+}
+
+.about-text em {
+    font-style: italic;
+    color: var(--color-text);
+}
+
 /* ---------- Processing Section ---------- */
 
 #processing-section {

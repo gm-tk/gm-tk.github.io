@@ -113,7 +113,7 @@ class App {
                 const code = self.currentMetadata && self.currentMetadata.moduleCode
                     ? self.currentMetadata.moduleCode
                     : 'ParseMaster_output';
-                self.downloadAsTxt(self.currentOutput.full, code + '_extracted.txt');
+                self.downloadAsTxt(self.currentOutput.full, code + '_parsed.txt');
             }
         });
 
