@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParseMaster — Te Kura Writer Template Parser</title>
+    <meta name="description" content="Client-side .docx parser for Te Kura Writer Template documents. No data is stored or transmitted.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-inner">
+            <div>
+                <h1 class="app-title">ParseMaster</h1>
+                <p class="app-subtitle">Te Kura Writer Template Parser &mdash; Client-Side Only, No Data Stored</p>
+            </div>
+            <div class="privacy-badge" aria-label="All processing happens in your browser. No data is uploaded or stored.">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1 14.5l-4-4 1.41-1.41L11 13.67l5.59-5.59L18 9.5l-7 7z"/>
+                </svg>
+                100% Client-Side
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Error panel (shared across states) -->
+        <div id="error-panel" class="hidden" role="alert">
+            <span class="error-icon" aria-hidden="true">&#9888;</span>
+            <span id="error-message"></span>
+        </div>
+
+        <!-- Upload Section -->
+        <section id="upload-section" aria-label="Upload a document">
+            <div id="drop-zone"
+                 class="drop-zone"
+                 role="button"
+                 tabindex="0"
+                 aria-label="Drop your .docx file here or click to browse for a file">
+                <span class="drop-zone-icon" aria-hidden="true">&#128196;</span>
+                <p class="drop-zone-title">Drop your .docx file here or click to browse</p>
+                <p class="drop-zone-hint">
+                    Your file is processed entirely in your browser &mdash;
+                    nothing is uploaded or stored.
+                </p>
+            </div>
+            <input type="file" id="file-input" accept=".docx" class="sr-only" aria-hidden="true">
+        </section>
+
+        <!-- Processing Section -->
+        <section id="processing-section" class="hidden" aria-label="Processing document" aria-live="polite">
+            <div class="processing-header">
+                <div class="spinner" aria-hidden="true"></div>
+                <span id="progress-status">Starting...</span>
+            </div>
+            <div id="progress-steps"></div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="hidden" aria-label="Parsed output">
+
+            <!-- Metadata -->
+            <div id="metadata-panel" aria-label="Module metadata"></div>
+
+            <!-- Stats -->
+            <div id="stats-panel" aria-label="Processing statistics"></div>
+
+            <!-- Action buttons -->
+            <div class="actions-bar">
+                <button id="btn-copy-all" class="btn btn-primary" type="button">
+                    &#128203; Copy All to Clipboard
+                </button>
+                <button id="btn-copy-content" class="btn" type="button">
+                    &#128203; Copy Content Only
+                </button>
+                <button id="btn-download" class="btn" type="button">
+                    &#128190; Download as .txt
+                </button>
+                <button id="btn-reset" class="btn" type="button">
+                    &#128260; Parse Another File
+                </button>
+            </div>
+
+            <!-- Output -->
+            <label for="output-area" class="sr-only">Parsed output text</label>
+            <textarea id="output-area" readonly aria-label="Parsed output text"></textarea>
+        </section>
+    </main>
+
+    <!-- Toast notification -->
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Screen reader announcements -->
+    <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
+    <footer class="app-footer">
+        ParseMaster &mdash; Te Kura Creative Services &mdash; No data is stored, transmitted, or retained.
+    </footer>
+
+    <!-- JSZip via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+            integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <!-- Application scripts (order matters) -->
+    <script src="js/docx-parser.js"></script>
+    <script src="js/formatter.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
