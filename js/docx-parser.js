@@ -74,6 +74,7 @@ class DocxParser {
      */
     async parse(file) {
         this._reset();
+        this._filename = file.name || '';
 
         this._progress('Unzipping document...');
         const zip = await JSZip.loadAsync(file);
@@ -740,10 +741,34 @@ class DocxParser {
 
         const fullText = boilerplateText.join('\n');
 
-        // Look for Module Code patterns
-        const codeMatch = fullText.match(/Module\s*Code[:\s]*([A-Z]{2,6}\d{2,4})/i);
-        if (codeMatch) {
-            this.metadata.moduleCode = codeMatch[1].toUpperCase();
+        // Look for Module Code — try filename first (most reliable)
+        const filenameCodeMatch = this._filename
+            ? this._filename.match(/[A-Z]{4}\d{3}/)
+            : null;
+        if (filenameCodeMatch) {
+            this.metadata.moduleCode = filenameCodeMatch[0];
+        }
+
+        // Fall back to boilerplate text
+        if (!this.metadata.moduleCode) {
+            const codeMatch = fullText.match(/Module\s*Code[:\s]*([A-Z]{2,6}\d{2,4})/i);
+            if (codeMatch) {
+                this.metadata.moduleCode = codeMatch[1].toUpperCase();
+            }
+        }
+
+        // Fall back to scanning content after [TITLE BAR]
+        if (!this.metadata.moduleCode) {
+            for (let i = contentStartIndex; i < this.content.length && i < contentStartIndex + 5; i++) {
+                const block = this.content[i];
+                if (block.type === 'paragraph' && block.data.text) {
+                    const titleBarMatch = block.data.text.match(/[A-Z]{4}\d{3}/);
+                    if (titleBarMatch) {
+                        this.metadata.moduleCode = titleBarMatch[0];
+                        break;
+                    }
+                }
+            }
         }
 
         // Look for Subject
