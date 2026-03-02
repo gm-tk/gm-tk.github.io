@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParseMaster — Te Kura Writer Template Parser</title>
-    <meta name="description" content="Client-side .docx parser for Te Kura Writer Template documents. No data is stored or transmitted.">
+    <title>ParseMaster — Writer Template Parser</title>
+    <meta name="description" content="Client-side .docx parser for Writer Template documents. No data is stored or transmitted.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -15,7 +15,7 @@
         <div class="header-inner">
             <div>
                 <h1 class="app-title">ParseMaster</h1>
-                <p class="app-subtitle">Te Kura Writer Template Parser &mdash; Client-Side Only, No Data Stored</p>
+                <p class="app-subtitle">Writer Template Parser &mdash; Client-Side Only, No Data Stored</p>
             </div>
             <div class="privacy-badge" aria-label="All processing happens in your browser. No data is uploaded or stored.">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -48,6 +48,14 @@
                 </p>
             </div>
             <input type="file" id="file-input" accept=".docx" class="sr-only" aria-hidden="true">
+
+            <div id="template-selector" class="template-selector">
+                <label for="template-dropdown" class="template-label">Template:</label>
+                <select id="template-dropdown" class="template-dropdown">
+                    <option value="" disabled selected>Select template (auto-detected on upload)</option>
+                </select>
+                <span id="template-auto-label" class="template-auto-label hidden">Auto-detected</span>
+            </div>
 
             <details class="about-section">
                 <summary class="about-toggle">Why &ldquo;ParseMaster&rdquo;?</summary>
@@ -120,7 +128,7 @@
     <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
     <footer class="app-footer">
-        ParseMaster &mdash; Te Kura Creative Services &mdash; No data is stored, transmitted, or retained.
+        ParseMaster &mdash; No data is stored, transmitted, or retained.
     </footer>
 
     <!-- JSZip via CDN -->
@@ -134,6 +142,7 @@
     <script src="js/formatter.js"></script>
     <script src="js/tag-normaliser.js"></script>
     <script src="js/page-boundary.js"></script>
+    <script src="js/template-engine.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

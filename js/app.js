@@ -13,6 +13,7 @@ class App {
         this.formatter = new OutputFormatter();
         this.tagNormaliser = new TagNormaliser();
         this.pageBoundary = new PageBoundary(this.tagNormaliser);
+        this.templateEngine = new TemplateEngine();
 
         /** Cached formatted output after a successful parse */
         this.currentOutput = null;
@@ -23,8 +24,12 @@ class App {
         /** Cached tag/page analysis for debug panel */
         this.currentAnalysis = null;
 
+        /** Currently selected template ID */
+        this.selectedTemplateId = null;
+
         this._bindElements();
         this._bindEvents();
+        this._initTemplateEngine();
     }
 
     // ------------------------------------------------------------------
@@ -52,6 +57,8 @@ class App {
         this.debugPanel = document.getElementById('debug-panel');
         this.debugContent = document.getElementById('debug-content');
         this.debugToggle = document.getElementById('debug-toggle');
+        this.templateDropdown = document.getElementById('template-dropdown');
+        this.templateAutoLabel = document.getElementById('template-auto-label');
     }
 
     // ------------------------------------------------------------------
@@ -128,6 +135,49 @@ class App {
         this.btnReset.addEventListener('click', function () {
             self.reset();
         });
+
+        // Template dropdown
+        this.templateDropdown.addEventListener('change', function () {
+            self.selectedTemplateId = self.templateDropdown.value;
+            // Hide auto-detected label when user manually changes
+            self.templateAutoLabel.classList.add('hidden');
+        });
+    }
+
+    // ------------------------------------------------------------------
+    // Template engine initialisation
+    // ------------------------------------------------------------------
+
+    /**
+     * Load template configurations and populate the dropdown.
+     */
+    async _initTemplateEngine() {
+        try {
+            await this.templateEngine.loadTemplates();
+            var list = this.templateEngine.getTemplateList();
+            for (var i = 0; i < list.length; i++) {
+                var option = document.createElement('option');
+                option.value = list[i].id;
+                option.textContent = list[i].name;
+                this.templateDropdown.appendChild(option);
+            }
+        } catch (err) {
+            console.error('TemplateEngine initialisation failed:', err);
+        }
+    }
+
+    /**
+     * Auto-detect template from module code and update the dropdown.
+     *
+     * @param {string|null} moduleCode
+     */
+    _autoDetectTemplate(moduleCode) {
+        var detected = this.templateEngine.detectTemplate(moduleCode);
+        if (detected) {
+            this.templateDropdown.value = detected;
+            this.selectedTemplateId = detected;
+            this.templateAutoLabel.classList.remove('hidden');
+        }
     }
 
     // ------------------------------------------------------------------
@@ -165,6 +215,9 @@ class App {
 
             self.currentOutput = output;
             self.currentMetadata = result.metadata;
+
+            // Auto-detect template from module code
+            self._autoDetectTemplate(result.metadata.moduleCode);
 
             // Run tag normalisation and page boundary analysis
             self._addProgressStep('Running tag normalisation...');
@@ -255,6 +308,7 @@ class App {
         this.currentOutput = null;
         this.currentMetadata = null;
         this.currentAnalysis = null;
+        this.selectedTemplateId = null;
         this.resultsSection.classList.add('hidden');
         this.processingSection.classList.add('hidden');
         this.uploadSection.classList.remove('hidden');
@@ -263,6 +317,9 @@ class App {
         if (this.debugPanel) {
             this.debugPanel.classList.add('hidden');
         }
+        // Reset template dropdown
+        this.templateDropdown.selectedIndex = 0;
+        this.templateAutoLabel.classList.add('hidden');
     }
 
     showError(message) {
@@ -315,6 +372,16 @@ class App {
         }
         if (metadata.date) {
             items.push({ label: 'Date', value: metadata.date });
+        }
+
+        // Add selected template
+        if (this.selectedTemplateId) {
+            try {
+                var config = this.templateEngine.getConfig(this.selectedTemplateId);
+                items.push({ label: 'Template', value: config._templateName });
+            } catch (e) {
+                // Ignore — template may not be loaded yet
+            }
         }
 
         if (items.length === 0) {
@@ -597,6 +664,9 @@ class App {
 
         var html = '';
 
+        // --- Template Configuration Results ---
+        html += this._renderDebugTemplateSection(analysis);
+
         // --- Tag Normalisation Results ---
         html += '<div class="debug-section">';
         html += '<h4 class="debug-section-title">Tag Normalisation Results</h4>';
@@ -747,6 +817,187 @@ class App {
 
         this.debugContent.innerHTML = html;
         this.debugPanel.classList.remove('hidden');
+    }
+
+    // ------------------------------------------------------------------
+    // Debug — Template section
+    // ------------------------------------------------------------------
+
+    /**
+     * Render template configuration info for the debug panel.
+     *
+     * @param {Object} analysis - Analysis results
+     * @returns {string} HTML string
+     */
+    _renderDebugTemplateSection(analysis) {
+        var html = '';
+        html += '<div class="debug-section">';
+        html += '<h4 class="debug-section-title">Template Configuration</h4>';
+
+        if (!this.selectedTemplateId) {
+            html += '<p style="font-size:0.82rem;color:var(--color-text-secondary);">No template selected.</p>';
+            html += '</div>';
+            return html;
+        }
+
+        var config;
+        try {
+            config = this.templateEngine.getConfig(this.selectedTemplateId);
+        } catch (e) {
+            html += '<p style="font-size:0.82rem;color:var(--color-error);">Error loading template config.</p>';
+            html += '</div>';
+            return html;
+        }
+
+        // Summary stats
+        html += '<div class="debug-stats">';
+        html += '<span class="debug-stat">Template ID: <b>' + this._esc(this.selectedTemplateId) + '</b></span>';
+        html += '<span class="debug-stat">Name: <b>' + this._esc(config._templateName) + '</b></span>';
+        html += '<span class="debug-stat">HTML template attr: <b>' + this._esc(config._templateAttribute) + '</b></span>';
+        html += '</div>';
+
+        // Key config differences from base
+        var diffs = this._getConfigDiffs(config);
+        if (diffs.length > 0) {
+            html += '<details class="debug-details">';
+            html += '<summary>Key configuration (' + diffs.length + ' differences from base)</summary>';
+            html += '<table class="debug-table"><thead><tr>' +
+                '<th>Property</th><th>Value</th>' +
+                '</tr></thead><tbody>';
+            for (var i = 0; i < diffs.length; i++) {
+                html += '<tr>' +
+                    '<td><code>' + this._esc(diffs[i].key) + '</code></td>' +
+                    '<td>' + this._esc(diffs[i].value) + '</td>' +
+                    '</tr>';
+            }
+            html += '</tbody></table>';
+            html += '</details>';
+        }
+
+        // Skeleton preview (first 50 lines for overview page)
+        var moduleCode = (this.currentMetadata && this.currentMetadata.moduleCode) || 'MODULE';
+        var totalPages = analysis.pages ? analysis.pages.length : 1;
+
+        try {
+            var skeleton = this.templateEngine.generateSkeleton(config, {
+                type: 'overview',
+                lessonNumber: null,
+                filename: moduleCode + '-00.html',
+                moduleCode: moduleCode,
+                englishTitle: 'Module Title',
+                tereoTitle: null,
+                totalPages: totalPages,
+                pageIndex: 0
+            });
+
+            var skeletonLines = skeleton.split('\n');
+            var previewLines = skeletonLines.slice(0, 50);
+            var truncated = skeletonLines.length > 50;
+
+            html += '<details class="debug-details">';
+            html += '<summary>Overview page skeleton preview (' + skeletonLines.length + ' lines)</summary>';
+            html += '<pre style="padding:0.5rem;font-size:0.75rem;overflow-x:auto;background:var(--color-bg);margin:0;">';
+            html += this._esc(previewLines.join('\n'));
+            if (truncated) {
+                html += '\n... (' + (skeletonLines.length - 50) + ' more lines)';
+            }
+            html += '</pre>';
+            html += '</details>';
+        } catch (e) {
+            // Skeleton generation failed — skip preview
+        }
+
+        // Footer navigation links for each page
+        if (analysis.pages && analysis.pages.length > 0) {
+            html += '<details class="debug-details">';
+            html += '<summary>Footer navigation (' + analysis.pages.length + ' pages)</summary>';
+            html += '<table class="debug-table"><thead><tr>' +
+                '<th>Page</th><th>Prev</th><th>Next</th><th>Home</th>' +
+                '</tr></thead><tbody>';
+            for (var pi = 0; pi < analysis.pages.length; pi++) {
+                var page = analysis.pages[pi];
+                var prevLink = pi > 0
+                    ? moduleCode + '-' + String(pi - 1).padStart(2, '0') + '.html'
+                    : '-';
+                var nextLink = pi < analysis.pages.length - 1
+                    ? moduleCode + '-' + String(pi + 1).padStart(2, '0') + '.html'
+                    : '-';
+                html += '<tr>' +
+                    '<td><code>' + this._esc(page.filename) + '</code></td>' +
+                    '<td>' + (prevLink !== '-' ? '<code>' + this._esc(prevLink) + '</code>' : '-') + '</td>' +
+                    '<td>' + (nextLink !== '-' ? '<code>' + this._esc(nextLink) + '</code>' : '-') + '</td>' +
+                    '<td>Yes</td>' +
+                    '</tr>';
+            }
+            html += '</tbody></table>';
+            html += '</details>';
+        }
+
+        html += '</div>';
+        return html;
+    }
+
+    /**
+     * Get notable differences between a resolved config and base defaults.
+     *
+     * @param {Object} config - Resolved template config
+     * @returns {Array<{key: string, value: string}>}
+     */
+    _getConfigDiffs(config) {
+        var diffs = [];
+
+        // Body class
+        if (config.bodyClass !== 'container-fluid') {
+            diffs.push({ key: 'bodyClass', value: config.bodyClass });
+        }
+
+        // Footer class
+        if (config.footerClass !== 'footer-nav') {
+            diffs.push({ key: 'footerClass', value: config.footerClass });
+        }
+
+        // Header titles
+        var overviewTitles = config.headerPattern &&
+            config.headerPattern.overviewPage &&
+            config.headerPattern.overviewPage.titles;
+        if (overviewTitles && overviewTitles.indexOf('tereo') !== -1) {
+            diffs.push({ key: 'headerPattern.overviewPage.titles', value: overviewTitles.join(', ') });
+        }
+
+        var lessonTitles = config.headerPattern &&
+            config.headerPattern.lessonPage &&
+            config.headerPattern.lessonPage.titles;
+        if (lessonTitles && lessonTitles.indexOf('tereo') !== -1) {
+            diffs.push({ key: 'headerPattern.lessonPage.titles', value: lessonTitles.join(', ') });
+        }
+
+        // Module menu lesson labels
+        var lessonLabels = config.moduleMenu &&
+            config.moduleMenu.lessonPage &&
+            config.moduleMenu.lessonPage.labels;
+        if (lessonLabels) {
+            diffs.push({ key: 'moduleMenu.lessonPage.labels.success', value: lessonLabels.success });
+        }
+
+        // Overview tabs
+        var overviewTabs = config.moduleMenu &&
+            config.moduleMenu.overviewPage &&
+            config.moduleMenu.overviewPage.tabs;
+        if (overviewTabs && overviewTabs.length !== 2) {
+            diffs.push({ key: 'moduleMenu.overviewPage.tabs', value: overviewTabs.join(', ') });
+        }
+
+        // Navigation
+        if (config.navigation) {
+            diffs.push({ key: 'navigation', value: config.navigation });
+        }
+
+        // Content duplication
+        if (config.contentDuplication) {
+            diffs.push({ key: 'contentDuplication', value: config.contentDuplication });
+        }
+
+        return diffs;
     }
 
     // ------------------------------------------------------------------
