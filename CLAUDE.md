@@ -1,6 +1,6 @@
 # CLAUDE.md — ParseMaster Project Reference
 
-> **Project:** ParseMaster — Te Kura Writer Template Parser & HTML Converter
+> **Project:** ParseMaster — Writer Template Parser & HTML Converter
 > **Repository:** gm-tk.github.io (GitHub Pages)
 > **Runtime:** 100% client-side browser application (no server, no backend)
 > **Stack:** Vanilla JavaScript, HTML5, CSS3, JSZip (CDN)
@@ -31,7 +31,7 @@
 
 ### What ParseMaster Does Today
 
-ParseMaster is a client-side web application that reads Te Kura Writer Template `.docx` files and converts them into clean, structured plain text files. These text files are then manually fed into a Claude AI Project for conversion into finalized HTML pages for the D2L/Brightspace LMS.
+ParseMaster is a client-side web application that reads Writer Template `.docx` files and converts them into clean, structured plain text files. These text files are then manually fed into a Claude AI Project for conversion into finalized HTML pages for the D2L/Brightspace LMS.
 
 ### What ParseMaster Will Do (Planned)
 
@@ -78,6 +78,10 @@ All processing happens in the browser. No data is uploaded, transmitted, or stor
 ### Application Flow
 
 ```
+App startup:
+  → TemplateEngine.loadTemplates() loads templates.json (or embedded fallback)
+  → Template dropdown populated with 9 template options
+
 User drops .docx file
   → App.handleFile() validates file type
   → DocxParser.parse() extracts and processes XML
@@ -91,6 +95,8 @@ User drops .docx file
   → OutputFormatter.formatAll() converts to text
     → Metadata block formatted
     → Content formatted with formatting markers
+  → TemplateEngine.detectTemplate() auto-selects template from module code (Phase 2)
+    → Dropdown updated, "Auto-detected" label shown
   → TagNormaliser processes all content blocks (Phase 1)
     → Extracts square-bracket tags from red text and plain text
     → Normalises tag variants to canonical forms
@@ -101,8 +107,9 @@ User drops .docx file
     → Splits content into overview + lesson pages
     → Assigns filenames (MODULE_CODE-XX.html)
   → App.showResults() displays output
+    → Metadata panel includes selected template name
     → User can Copy or Download
-    → Debug panel shows tag & page analysis
+    → Debug panel shows template config, tag & page analysis, skeleton preview
 ```
 
 ### Class Responsibilities
@@ -113,7 +120,8 @@ User drops .docx file
 | `OutputFormatter` | `js/formatter.js` | Converts parsed data to plain text output |
 | `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, and red text processing |
 | `PageBoundary` | `js/page-boundary.js` | Page boundary detection, validation, and assignment |
-| `App` | `js/app.js` | UI controller — upload, display, clipboard, download, debug panel |
+| `TemplateEngine` | `js/template-engine.js` | Template config loading, resolution, auto-detection, skeleton generation |
+| `App` | `js/app.js` | UI controller — upload, display, clipboard, download, debug panel, template selection |
 
 ---
 
@@ -123,38 +131,28 @@ User drops .docx file
 gm-tk.github.io/
 ├── index.html              # Single-page application shell
 ├── css/
-│   └── styles.css          # All application styles (including debug panel)
+│   └── styles.css          # All application styles (including debug panel, template selector)
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
 │   ├── formatter.js         # Plain text output formatter
 │   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1)
 │   ├── page-boundary.js     # Page boundary detection & validation (Phase 1)
-│   └── app.js              # UI controller (with debug panel integration)
+│   ├── template-engine.js   # Template config loading, resolution & skeleton generation (Phase 2)
+│   └── app.js              # UI controller (with debug panel & template integration)
+├── templates/
+│   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
 ├── README.md               # Project documentation
 └── .nojekyll               # Disables Jekyll processing on GitHub Pages
 ```
 
-### Future File Structure (Planned)
+### Future File Structure (Remaining Planned Additions)
 
 ```
 gm-tk.github.io/
-├── index.html
-├── css/
-│   └── styles.css
 ├── js/
-│   ├── docx-parser.js          # .docx XML extraction (existing, unchanged)
-│   ├── formatter.js             # Plain text formatter (existing, may be deprecated)
-│   ├── app.js                   # UI controller (extended for new workflow)
-│   ├── tag-normaliser.js        # Tag taxonomy & normalisation engine (DONE — Phase 1)
-│   ├── page-boundary.js         # Page boundary detection & validation (DONE — Phase 1)
-│   ├── html-converter.js        # HTML generation engine (NEW)
-│   ├── template-engine.js       # Template skeleton builder (NEW)
-│   └── interactive-extractor.js # Interactive data extraction & reference doc (NEW)
-├── templates/
-│   └── templates.json           # Template configuration (NEW — see Section 14)
-├── README.md
-└── .nojekyll
+│   ├── html-converter.js        # HTML generation engine (PLANNED)
+│   └── interactive-extractor.js # Interactive data extraction & reference doc (PLANNED)
 ```
 
 ---
@@ -163,7 +161,7 @@ gm-tk.github.io/
 
 ### DocxParser (js/docx-parser.js)
 
-The parser is a hand-rolled XML walker that extracts content from `.docx` files. Standard libraries (mammoth.js, python-docx, etc.) silently drop content inside tracked changes and SDT wrappers, so this custom parser was built specifically to handle Te Kura Writer Template documents.
+The parser is a hand-rolled XML walker that extracts content from `.docx` files. Standard libraries (mammoth.js, python-docx, etc.) silently drop content inside tracked changes and SDT wrappers, so this custom parser was built specifically to handle Writer Template documents.
 
 ### Extraction Process
 
@@ -308,8 +306,9 @@ The formatter converts the parser's structured data into the plain text format c
 The App class manages all user interaction:
 
 - **File upload** — drag-and-drop zone + click-to-browse, validates `.docx` extension
+- **Template selection** — dropdown populated from TemplateEngine, auto-detects from module code on parse (Phase 2)
 - **Processing** — shows spinner + progress steps during parse
-- **Results** — displays metadata panel, stats panel, output textarea, action buttons
+- **Results** — displays metadata panel (including selected template), stats panel, output textarea, action buttons
 - **Tag & Page Analysis** — after parsing, runs TagNormaliser and PageBoundary on content blocks, displays results in a collapsible debug panel
 - **Actions** — Copy All, Copy Content Only, Download as .txt, Parse Another File
 - **Error handling** — specific error messages for known failure modes (missing XML, invalid XML, corrupted file)
@@ -323,12 +322,22 @@ The UI uses CSS `.hidden` class to toggle between these states:
 3. `#results-section` — output display with actions
 4. `#debug-panel` — collapsible tag & page analysis debug panel (appears below results after parse)
 
-### Debug Panel (Phase 1)
+### Template Selector (Phase 2)
+
+The template selector is a dropdown that appears between the drop zone and the "About" section. It:
+
+1. Populates on page load from `TemplateEngine.getTemplateList()` (9 templates)
+2. Auto-selects a template when a file is parsed (based on module code suffix) and shows "Auto-detected" label
+3. Can be manually overridden by the user
+4. Resets when "Parse Another File" is clicked
+
+### Debug Panel (Phase 1 + Phase 2)
 
 The debug panel (`#debug-panel`) is a temporary development/testing panel that appears after parsing. It shows:
 
-1. **Tag Normalisation Results** — total tags, unrecognised tags, red text instructions, category breakdown, and a detailed table of all tags found (raw → normalised form)
-2. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
+1. **Template Configuration** (Phase 2) — selected template ID, name, HTML template attribute, key config differences from base, overview page skeleton preview (first 50 lines), and footer navigation links for each page
+2. **Tag Normalisation Results** — total tags, unrecognised tags, red text instructions, category breakdown, and a detailed table of all tags found (raw → normalised form)
+3. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
 
 The debug panel uses a `<details>` element so it starts collapsed. It does NOT interfere with the existing text output functionality — Copy All, Copy Content Only, and Download produce the same plain text as before.
 
@@ -756,7 +765,7 @@ Segment contains ONLY `[TITLE BAR]` + headings + `[End page]`, no body content �
 
 ### Categories of Interactives
 
-Interactive components are the complex elements that require custom JavaScript/HTML code from the Te Kura component library. In the future architecture, ParseMaster will NOT generate code for these — instead, it will:
+Interactive components are the complex elements that require custom JavaScript/HTML code from the component library. In the future architecture, ParseMaster will NOT generate code for these — instead, it will:
 
 1. **Detect** the interactive type from the normalised tag
 2. **Extract** all associated data (from tables, lists, red text instructions)
@@ -877,11 +886,16 @@ INTERACTIVE 2 of 7
   - Interactive placeholder insertion
   - Grid wrapping (row/col structure)
 
-#### template-engine.js
-- Loads and applies template configurations from `templates.json`
-- Selects the correct template based on user dropdown selection
-- Applies template-specific rules (different module menu structures, footer classes, etc.)
-- Generates the document shell with correct attributes
+#### template-engine.js — DONE (Phase 2)
+- Loads template configurations from `templates/templates.json` (with embedded fallback)
+- Provides `getTemplateList()` for UI dropdown population (9 templates)
+- Auto-detects template from module code suffix via `detectTemplate(moduleCode)`
+- Deep-merges `baseConfig` with per-template overrides via `getConfig(templateId)`
+- Generates complete HTML document skeletons via `generateSkeleton(config, pageData)`
+- Handles header section (module code, titles, dual h1 for 9-10/NCEA)
+- Handles module menu (full-tabbed for overview, simplified for lessons)
+- Handles footer navigation (prev/next/home with correct page links)
+- Public API: `loadTemplates()`, `getTemplateList()`, `detectTemplate(moduleCode)`, `getConfig(templateId)`, `generateSkeleton(config, pageData)`
 
 #### interactive-extractor.js
 - Detects interactive component tags in the content stream
@@ -920,7 +934,7 @@ User drops .docx file
 4. **Override pattern** — templates inherit from a base configuration and override specific rules
 5. **No code changes needed** — template additions/changes should never require JS code changes
 
-### Proposed templates.json Structure
+### templates.json Structure (Implemented)
 
 ```json
 {

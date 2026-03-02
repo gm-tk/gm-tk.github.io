@@ -1,6 +1,6 @@
 # ParseMaster
 
-**Client-side Writer Template parser for Te Kura Creative Services**
+**Client-side Writer Template parser and HTML converter**
 
 ---
 
@@ -75,4 +75,4 @@ Square-bracket tags, formatting markers, tables, hyperlinks, and red text instru
 
 ## Questions or issues?
 
-Contact the Creative Services team. If something isn't parsing correctly, save the `.docx` file that caused the issue so it can be investigated.
+If something isn't parsing correctly, save the `.docx` file that caused the issue so it can be investigated.

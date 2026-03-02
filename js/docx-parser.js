@@ -1,5 +1,5 @@
 /**
- * DocxParser — Custom XML parser for Te Kura Writer Template .docx files.
+ * DocxParser — Custom XML parser for Writer Template .docx files.
  *
  * Handles tracked changes (<w:del> / <w:ins>), Google Docs SDT wrappers
  * (<w:sdt>), formatting extraction, hyperlink resolution, tables, lists,
@@ -855,7 +855,7 @@ class DocxParser {
 
     /**
      * Determine if a hex colour value represents "red".
-     * Common red values in Te Kura documents.
+     * Common red values in Writer Template documents.
      */
     _isRedColor(hex) {
         if (!hex) return false;

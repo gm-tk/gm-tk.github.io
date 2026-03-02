@@ -1,6 +1,6 @@
 /* ==========================================================================
    ParseMaster — Styles
-   Te Kura Writer Template Parser
+   Writer Template Parser
    ========================================================================== */
 
 /* ---------- Reset & Base ---------- */
@@ -214,6 +214,51 @@ main {
 .about-text em {
     font-style: italic;
     color: var(--color-text);
+}
+
+/* ---------- Template Selector ---------- */
+
+.template-selector {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+}
+
+.template-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.template-dropdown {
+    flex: 1;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-text);
+    background: var(--color-surface);
+    cursor: pointer;
+}
+
+.template-dropdown:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
+.template-auto-label {
+    font-size: 0.75rem;
+    color: var(--color-success);
+    font-weight: 500;
+    white-space: nowrap;
 }
 
 /* ---------- Processing Section ---------- */
