@@ -103,6 +103,14 @@
             <label for="output-area" class="sr-only">Parsed output text</label>
             <textarea id="output-area" readonly aria-label="Parsed output text"></textarea>
         </section>
+
+        <!-- Debug Panel -->
+        <section id="debug-panel" class="hidden" aria-label="Debug: Tag and Page Analysis">
+            <details class="debug-panel-wrapper" id="debug-toggle">
+                <summary class="debug-panel-header">Debug: Tag &amp; Page Analysis</summary>
+                <div id="debug-content" class="debug-panel-body"></div>
+            </details>
+        </section>
     </main>
 
     <!-- Toast notification -->
@@ -124,6 +132,8 @@
     <!-- Application scripts (order matters) -->
     <script src="js/docx-parser.js"></script>
     <script src="js/formatter.js"></script>
+    <script src="js/tag-normaliser.js"></script>
+    <script src="js/page-boundary.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
