@@ -769,7 +769,7 @@ Segment contains ONLY `[TITLE BAR]` + headings + `[End page]`, no body content �
 | `video` | YouTube embed with `youtube-nocookie.com`, `ratio ratio-16x9` wrapper |
 | `image` | `<img class="img-fluid" loading="lazy" src="https://placehold.co/600x400?text=..." alt="">` + commented iStock reference |
 | `button` | `<a href="URL" target="_blank"><div class="button">Text</div></a>` |
-| `external_link` | `<a href="URL" target="_blank">Text</a>` |
+| `external_link` | `<p>preceding text <a href="URL" target="_blank">URL</a>.</p>` — inline visible URL link within paragraph text |
 | `activity` + ID | `<div class="row"><div class="col-md-12 col-12"><div class="activity interactive" number="ID"><div class="row"><div class="col-12">` content `</div></div></div></div></div>` |
 | `info_trigger` | Inline: `<span class="infoTrigger" info="definition">trigger word</span>` within `<p>` |
 
@@ -1021,7 +1021,7 @@ INTERACTIVE 2 of 7
 
 ### New Modules to Create
 
-#### tag-normaliser.js — DONE (Phase 1, updated Phase 4.5 Round 3)
+#### tag-normaliser.js — DONE (Phase 1, updated Phase 4.5 Round 3, Round 3C)
 - Implements the complete normalisation table from Section 10
 - Takes raw tag text, returns normalised form + sub-identifier
 - Handles red text extraction (tag-only, tag+instruction, pure instruction, whitespace-only)
@@ -1031,7 +1031,10 @@ INTERACTIVE 2 of 7
 - **`[Table wordSelect]` / `[Table word select]`** — recognised as `word_select` interactive (not a generic table) before the generic table match fires
 - **`[drop]` sub-tag** — recognised as synonym for `[back]` in the simple table mapping (used in click_drop front/back patterns)
 - **`[Activity heading H3]` and variants** (Round 3B) — `activity heading`, `activity heading hN`, `activity title` with optional heading level H2-H5; returns level in the normalised result (defaults to 3 if no level specified)
-- Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`
+- **Red-text fragment reassembly** (Round 3C) — `reassembleFragmentedTags()` method detects adjacent red-text markers split across Word formatting runs and merges them when their combined content forms a valid `[tag]` pattern; handles 2-way and 3-way splits; called from `_buildFormattedText()` in HtmlConverter and InteractiveExtractor
+- **`[story heading]` sub-tag** (Round 3C) — recognised as subtag for dropdown_quiz_paragraph interactive
+- **`multichoice dropdown quiz paragraph`** (Round 3C) — added as variant for `dropdown_quiz_paragraph`
+- Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`, `reassembleFragmentedTags(text)`
 
 #### page-boundary.js — DONE (Phase 1)
 - Implements all 4 Page Boundary Validation Rules
@@ -1041,7 +1044,7 @@ INTERACTIVE 2 of 7
 - Tracks boundary decisions (which rules fired and why)
 - Public API: `assignPages(contentBlocks, moduleCode)`
 
-#### html-converter.js — DONE (Phase 3, updated Phase 4, recalibrated Phase 4.5, structural fixes Round 3)
+#### html-converter.js — DONE (Phase 3, updated Phase 4, recalibrated Phase 4.5, structural fixes Round 3, Round 3C)
 - The main conversion engine
 - Takes parsed content + template configuration + interactive extractor → produces HTML strings
 - Handles:
@@ -1059,11 +1062,12 @@ INTERACTIVE 2 of 7
   - Red text processing (strip, extract tags; CS instructions captured for reference doc but NOT rendered as HTML comments)
   - Interactive placeholder insertion (structured placeholders via InteractiveExtractor with data extraction, tier classification, and consumed-block skipping)
   - **Inline info trigger rendering** — `[info trigger]` tags rendered as `<span class="infoTrigger" info="definition">word</span>` inline elements
+  - **External link inline rendering** (Round 3C) — `[external link]` renders the URL as a visible inline `<a>` link within the paragraph text (text before tag stays as `<p>` content, URL after tag becomes a clickable `<a>` link with the URL as visible text); distinct from `[external link button]` which creates a styled button element
   - Grid wrapping (all content inside `<div class="row"><div class="col-md-8 col-12">`)
   - Video embedding (YouTube, YouTube Shorts, Vimeo with correct embed URLs)
   - Image placeholders (placehold.co + commented-out iStock references)
   - **Activity wrapper grid structure** — activities wrapped in outer `row → col-md-12 → activity div → inner row → col-12 → content`; duplicate activity numbers handled gracefully (previous activity flushed before new one opens); activity class is `activity interactive` for activities containing interactives, plain `activity` for non-interactive activities (no `alertPadding` class)
-  - **Activity auto-closure** (Round 3, expanded Round 3B) — for activities WITH interactives: the activity wrapper is automatically closed when the next `[body]`, heading, or structural tag is encountered; for activities WITHOUT interactives: auto-closes when a section-level heading ([H2]/[H3], NOT [Activity heading]) or structural tag is encountered, preventing non-activity content from being swallowed inside the activity wrapper
+  - **Activity auto-closure** (Round 3, expanded Round 3B, revised Round 3C) — activity wrappers close only at clear section boundaries: `[H2]`/`[H3]` headings (section-level) or structural tags always close; `[H4]`/`[H5]` are sub-headings WITHIN activities and do NOT close; `[body]` tags only close AFTER an interactive has been consumed (before that, body text is instruction text within the activity); `[image]`, `[video]`, `[button]`, `[alert]` tags are content within activities and do NOT close the wrapper
   - **Activity heading extraction** (Round 3) — `[Activity 1A] Heading text` patterns extract the heading text after the tag and render it as `<h3>` inside the activity wrapper
   - **Activity heading tag recognition** (Round 3B) — `[Activity heading H3]`, `[Activity heading]`, `[Activity title]` and variants with optional heading level (H2-H5) are all recognised; heading level from the tag is used (defaults to `<h3>` if no level specified)
   - **Table interactive tag promotion** (Round 3) — when a table block contains both interactive and non-interactive tags (e.g., `[speech bubble]` + `[image]` in table cells), the interactive tag is promoted to primary position so the block is processed as an interactive rather than rendered as a grid table
@@ -1094,7 +1098,7 @@ INTERACTIVE 2 of 7
 - Handles footer navigation (prev/next/home with correct page links)
 - Public API: `loadTemplates()`, `getTemplateList()`, `detectTemplate(moduleCode)`, `getConfig(templateId)`, `generateSkeleton(config, pageData)`
 
-#### interactive-extractor.js — DONE (Phase 4, structural fixes & placeholder redesign Round 3)
+#### interactive-extractor.js — DONE (Phase 4, structural fixes & placeholder redesign Round 3, Round 3C)
 - Detects interactive component tags in the content stream
 - Classifies interactives by tier (Tier 1: ParseMaster renders, Tier 2: Claude AI Project builds)
 - Identifies the data pattern (13 patterns) being used
@@ -1107,6 +1111,8 @@ INTERACTIVE 2 of 7
 - **Untagged block handling for sub-tag types** (fixed Round 3) — untagged paragraphs within `expectsSubTags` interactive scope are consumed rather than breaking extraction, preventing flip card/click drop sub-content from leaking as body elements
 - **Rich placeholder HTML** (redesigned Round 3) — placeholders include a styled header bar with type/activity/pattern info, a separator, and a content preview body showing captured data (tables, conversation entries, front/back cards, numbered items); colour-coded by tier (green for Tier 1, red for Tier 2)
 - **Conditional grid wrapper** (fixed Round 3) — placeholder omits its own row/col wrapper when `insideActivity` is true (activity wrapper provides grid context), includes row/col when standalone
+- **Dropdown quiz paragraph compound extraction** (Round 3C) — `dropdown_quiz_paragraph` interactives span multiple blocks: story paragraphs with inline `[Dropdown N]` markers, optional `[story heading]` sub-tag, and an options table are all collected into a single interactive placeholder; `[Dropdown N]` markers are treated as inline position markers (not separate interactives); content preview shows story text with dropdown positions marked and options table
+- **Noisy table cell content extraction** (Round 3C) — `_extractCellContentClean()` method strips CS instructions, tag markers, and formatting artifacts from table cells, keeping only meaningful body text and URLs; used for speech bubble and similar interactives where cells may contain extra writer notes
 - Produces reference entry objects for the interactive reference document
 - Generates complete plain text reference document for all interactives in a module
 - **Inline interactives** — interactives not inside a named `[activity]` block get no `<div class="activity">` wrapper

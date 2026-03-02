@@ -489,6 +489,132 @@ class InteractiveExtractor {
             interactiveType === 'hint_slider'
         );
 
+        // Special handling for dropdown_quiz_paragraph (Pattern 4) — Bug 3 fix Round 3C
+        // This compound interactive spans multiple blocks: story paragraphs with inline
+        // [Dropdown N] markers, an optional [story heading] sub-tag, and an options table.
+        // All must be collected into a SINGLE interactive placeholder.
+        if (interactiveType === 'dropdown_quiz_paragraph') {
+            result.detectedPattern = 4;
+            var dqpStoryParagraphs = [];
+            var dqpStoryTitle = null;
+            var dqpDropdownCount = 0;
+
+            while (i < blocks.length) {
+                var dqpBlock = blocks[i];
+
+                // Tables are the options data — consume and stop scanning for story
+                if (dqpBlock.type === 'table' && dqpBlock.data) {
+                    var dqpTableData = this._extractTableData(dqpBlock.data);
+                    if (dqpTableData) {
+                        result.tableData = dqpTableData;
+                    }
+                    result.blocksConsumed = i - startIndex + 1;
+                    i++;
+                    // After consuming the options table, stop
+                    break;
+                }
+
+                if (dqpBlock.type === 'paragraph' && dqpBlock.data) {
+                    var dqpTagResult = this._getBlockTagResult(dqpBlock);
+                    var dqpPrimaryTag = dqpTagResult.tags && dqpTagResult.tags.length > 0 ? dqpTagResult.tags[0] : null;
+
+                    // Stop at structural, activity, or different interactive boundaries
+                    if (dqpPrimaryTag && (dqpPrimaryTag.category === 'structural' ||
+                        dqpPrimaryTag.normalised === 'activity' ||
+                        dqpPrimaryTag.normalised === 'end_activity')) {
+                        break;
+                    }
+                    // Stop at different interactive types (NOT dropdown — those are inline markers)
+                    if (dqpPrimaryTag && dqpPrimaryTag.category === 'interactive' &&
+                        dqpPrimaryTag.normalised !== 'dropdown' &&
+                        dqpPrimaryTag.normalised !== 'dropdown_quiz_paragraph') {
+                        break;
+                    }
+
+                    // Collect red text instructions
+                    if (dqpTagResult.redTextInstructions && dqpTagResult.redTextInstructions.length > 0) {
+                        result.writerInstructions = result.writerInstructions.concat(dqpTagResult.redTextInstructions);
+                    }
+
+                    // Check for [story heading] sub-tag
+                    if (dqpPrimaryTag && dqpPrimaryTag.normalised === 'static_heading') {
+                        dqpStoryTitle = (dqpTagResult.cleanText || '').trim();
+                        result.blocksConsumed = i - startIndex + 1;
+                        i++;
+                        continue;
+                    }
+                    // Also check for story_heading alias
+                    if (dqpPrimaryTag && dqpPrimaryTag.raw &&
+                        dqpPrimaryTag.raw.toLowerCase().indexOf('story heading') !== -1) {
+                        dqpStoryTitle = (dqpTagResult.cleanText || '').trim();
+                        result.blocksConsumed = i - startIndex + 1;
+                        i++;
+                        continue;
+                    }
+
+                    // Check for [Dropdown N] inline markers — count them
+                    if (dqpPrimaryTag && dqpPrimaryTag.normalised === 'dropdown') {
+                        dqpDropdownCount++;
+                    }
+                    // Also check for inline [Dropdown N] within the text (not just as primary tag)
+                    if (dqpTagResult.tags) {
+                        for (var ddi = 0; ddi < dqpTagResult.tags.length; ddi++) {
+                            if (dqpTagResult.tags[ddi].normalised === 'dropdown' &&
+                                dqpTagResult.tags[ddi] !== dqpPrimaryTag) {
+                                dqpDropdownCount++;
+                            }
+                        }
+                    }
+
+                    // Get the text content — keep [Dropdown N] markers visible in story text
+                    var dqpText = this._buildFormattedText(dqpBlock.data);
+                    // Strip red text markers but keep [Dropdown N] markers
+                    dqpText = dqpText.replace(/\uD83D\uDD34\[RED TEXT\]\s*([\s\S]*?)\s*\[\/RED TEXT\]\uD83D\uDD34/g,
+                        function (m, inner) {
+                            // Keep [Dropdown N] tags visible, strip everything else
+                            var dropdownRe = /\[(?:drop\s*down|dropdown)\s*\d+\]/gi;
+                            var kept = [];
+                            var dm;
+                            while ((dm = dropdownRe.exec(inner)) !== null) {
+                                kept.push(dm[0]);
+                            }
+                            return kept.length > 0 ? kept.join(' ') : '';
+                        });
+                    dqpText = dqpText.replace(/\s+/g, ' ').trim();
+
+                    if (dqpText) {
+                        dqpStoryParagraphs.push(dqpText);
+                    }
+
+                    result.blocksConsumed = i - startIndex + 1;
+                }
+
+                i++;
+            }
+
+            // Build numbered items from collected story data
+            if (dqpStoryParagraphs.length > 0 || dqpStoryTitle) {
+                var dqpItems = [];
+                if (dqpStoryTitle) {
+                    dqpItems.push({
+                        number: 0,
+                        content: dqpStoryTitle,
+                        tag: 'story_heading'
+                    });
+                }
+                for (var sp = 0; sp < dqpStoryParagraphs.length; sp++) {
+                    dqpItems.push({
+                        number: sp + 1,
+                        content: dqpStoryParagraphs[sp],
+                        tag: 'story_paragraph'
+                    });
+                }
+                result.numberedItems = dqpItems;
+            }
+
+            return result;
+        }
+
         // Special handling for speech_bubble with conversation layout (Pattern 9)
         if (interactiveType === 'speech_bubble') {
             var sbBlock = blocks[startIndex];
@@ -766,6 +892,16 @@ class InteractiveExtractor {
             return true;
         }
 
+        // dropdown belongs to dropdown_quiz_paragraph (inline position markers)
+        if (name === 'dropdown' && interactiveType === 'dropdown_quiz_paragraph') {
+            return true;
+        }
+
+        // story_heading belongs to dropdown_quiz_paragraph
+        if (name === 'story_heading' && interactiveType === 'dropdown_quiz_paragraph') {
+            return true;
+        }
+
         return false;
     }
 
@@ -972,6 +1108,64 @@ class InteractiveExtractor {
     }
 
     /**
+     * Extract text from a table cell with extra noise filtering.
+     * Strips CS instructions, tag markers, and formatting artifacts,
+     * keeping only meaningful body text and URLs.
+     *
+     * Used for speech bubble and similar interactives where cells may
+     * contain extra writer notes alongside actual content.
+     *
+     * @param {Object} cell - Cell data
+     * @returns {Object} { text, urls, hasImageTag, hasSpeechBubbleTag }
+     */
+    _extractCellContentClean(cell) {
+        if (!cell.paragraphs || cell.paragraphs.length === 0) {
+            return { text: '', urls: [], hasImageTag: false, hasSpeechBubbleTag: false };
+        }
+
+        var textParts = [];
+        var urls = [];
+        var hasImageTag = false;
+        var hasSpeechBubbleTag = false;
+
+        for (var p = 0; p < cell.paragraphs.length; p++) {
+            var para = cell.paragraphs[p];
+            var rawText = this._buildFormattedText(para);
+            var tagResult = this._normaliser.processBlock(rawText);
+
+            // Check for image/speech bubble tags
+            if (tagResult.tags) {
+                for (var t = 0; t < tagResult.tags.length; t++) {
+                    if (tagResult.tags[t].normalised === 'image') hasImageTag = true;
+                    if (tagResult.tags[t].normalised === 'speech_bubble') hasSpeechBubbleTag = true;
+                }
+            }
+
+            // Extract URLs from the full text (before stripping)
+            var urlRegex = /https?:\/\/[^\s\]]+/g;
+            var urlMatch;
+            while ((urlMatch = urlRegex.exec(rawText)) !== null) {
+                urls.push(urlMatch[0]);
+            }
+
+            // Keep clean text (with tags and red text stripped)
+            var clean = (tagResult.cleanText || '').trim();
+            // Also strip URLs from clean text (we track them separately)
+            clean = clean.replace(/https?:\/\/[^\s]+/g, '').trim();
+            if (clean) {
+                textParts.push(clean);
+            }
+        }
+
+        return {
+            text: textParts.join(' / '),
+            urls: urls,
+            hasImageTag: hasImageTag,
+            hasSpeechBubbleTag: hasSpeechBubbleTag
+        };
+    }
+
+    /**
      * Detect which table data pattern matches for an interactive type.
      *
      * @param {Object} tableData - Extracted table data
@@ -1086,6 +1280,9 @@ class InteractiveExtractor {
 
             text += chunk;
         }
+
+        // Reassemble fragmented red-text tags (Bug 1 fix — Round 3C)
+        text = this._normaliser.reassembleFragmentedTags(text);
 
         return text;
     }
@@ -1401,7 +1598,11 @@ class InteractiveExtractor {
     _generateContentPreview(dataPattern, tableData, numberedItems, type) {
         var lines = [];
 
-        if (tableData) {
+        // Dropdown quiz paragraph: show story text + table together
+        if (type === 'dropdown_quiz_paragraph' && numberedItems && numberedItems.length > 0) {
+            // Delegate to the numbered items branch which handles pattern 4 + tableData
+            // Fall through intentionally (skip the tableData-only branch)
+        } else if (tableData) {
             // Table-based data patterns (1, 2, 3, 8, 10, 11, 12, 13)
             var dims = tableData.dimensions || 'unknown';
             if (dataPattern === 2) {
@@ -1445,7 +1646,54 @@ class InteractiveExtractor {
             lines.push('        </table>');
         } else if (numberedItems && numberedItems.length > 0) {
             // Numbered items patterns (4, 5, 6, 7, 9)
-            if (dataPattern === 9) {
+            // Dropdown quiz paragraph (Pattern 4) — special compound preview
+            if (dataPattern === 4 && type === 'dropdown_quiz_paragraph') {
+                var dqpDropdowns = 0;
+                for (var di = 0; di < numberedItems.length; di++) {
+                    var dItem = numberedItems[di];
+                    var ddMatches = (dItem.content || '').match(/\[(?:drop\s*down|dropdown)\s*\d+\]/gi);
+                    if (ddMatches) dqpDropdowns += ddMatches.length;
+                }
+                lines.push('        <p><em>Data: Dropdown Quiz Paragraph (' + dqpDropdowns + ' dropdowns)</em></p>');
+                for (var dpi = 0; dpi < numberedItems.length; dpi++) {
+                    var dpItem = numberedItems[dpi];
+                    if (dpItem.tag === 'story_heading') {
+                        lines.push('        <p><strong>Title:</strong> <em>' +
+                            this._escContent(dpItem.content) + '</em></p>');
+                    } else {
+                        // Render story paragraph with [Dropdown N] markers bolded
+                        var storyText = this._escContent(dpItem.content);
+                        storyText = storyText.replace(/\[(?:drop\s*down|dropdown)\s*(\d+)\]/gi,
+                            '<strong>[Dropdown $1]</strong>');
+                        lines.push('        <p>' + storyText + '</p>');
+                    }
+                }
+                // Also show table data if available
+                if (tableData) {
+                    lines.push('        <hr style="margin: 8px 0; border-color: #ddd;" />');
+                    lines.push('        <p><em>Dropdown options:</em></p>');
+                    lines.push('        <table style="width:100%; border-collapse: collapse; font-size: 0.85em;">');
+                    if (tableData.headers && tableData.headers.length > 0) {
+                        lines.push('          <tr>');
+                        for (var dh = 0; dh < tableData.headers.length; dh++) {
+                            lines.push('            <td style="border:1px solid #ccc; padding:4px; font-weight:bold;">' +
+                                this._escContent(tableData.headers[dh]) + '</td>');
+                        }
+                        lines.push('          </tr>');
+                    }
+                    if (tableData.rows) {
+                        for (var dr = 0; dr < tableData.rows.length; dr++) {
+                            lines.push('          <tr>');
+                            for (var dc = 0; dc < tableData.rows[dr].length; dc++) {
+                                lines.push('            <td style="border:1px solid #ccc; padding:4px;">' +
+                                    this._escContent(tableData.rows[dr][dc]) + '</td>');
+                            }
+                            lines.push('          </tr>');
+                        }
+                    }
+                    lines.push('        </table>');
+                }
+            } else if (dataPattern === 9) {
                 lines.push('        <p><em>Data: Conversation layout (' + numberedItems.length + ' entries)</em></p>');
                 lines.push('        <table style="width:100%; border-collapse: collapse; font-size: 0.85em; margin-top: 6px;">');
                 for (var ci = 0; ci < numberedItems.length; ci++) {

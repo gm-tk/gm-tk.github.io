@@ -407,6 +407,9 @@ class HtmlConverter {
             text += chunk;
         }
 
+        // Reassemble fragmented red-text tags (Bug 1 fix — Round 3C)
+        text = this._normaliser.reassembleFragmentedTags(text);
+
         return text;
     }
 
@@ -550,31 +553,37 @@ class HtmlConverter {
             // entries but are NOT rendered in the output HTML.
 
             // --- Auto-close activity at structural boundaries ---
-            // For activities WITH interactives: close at body/heading/structural tags.
-            // For ALL activities: close at section-level headings (H2, H3) that aren't
-            // activity headings, since those signal we've left the activity scope.
+            // Activities own all content until a clear section boundary.
+            // H4/H5 are sub-headings WITHIN activities, so they do NOT close.
+            // H2/H3 are section-level headings that signal a new section OUTSIDE.
+            // [image], [video], [button], [alert] tags are content WITHIN activities.
             // 'activity', 'end_activity', and 'interactive' tags are handled
             // by their dedicated code blocks below — don't auto-close for those.
             if (inActivity) {
                 var shouldAutoClose = false;
 
-                if (activityHasInteractive) {
-                    // Activities with interactives: close at any body/heading/structural tag
-                    if (category === 'body' && tagName === 'body') {
-                        shouldAutoClose = true;
-                    } else if (category === 'heading') {
-                        shouldAutoClose = true;
-                    } else if (category === 'structural') {
-                        shouldAutoClose = true;
-                    }
-                } else if (activityParts.length > 0) {
-                    // Non-interactive activities with content: close at section-level
-                    // headings (plain [H2]/[H3] tags, NOT [Activity heading])
-                    if (category === 'heading' && tagName !== 'activity_heading') {
-                        shouldAutoClose = true;
-                    }
-                    // Also close at structural tags
-                    if (category === 'structural') {
+                // Section-level headings (H2, H3) always close an activity
+                // (but NOT H4/H5, and NOT [Activity heading])
+                if (category === 'heading' && tagName === 'heading' &&
+                    primaryTag.level !== null && primaryTag.level <= 3) {
+                    shouldAutoClose = true;
+                }
+
+                // Structural tags always close
+                if (category === 'structural') {
+                    shouldAutoClose = true;
+                }
+
+                // [body] tag only closes activity AFTER interactive was consumed
+                // (before that, body text is instruction text within the activity)
+                if (category === 'body' && tagName === 'body' && activityHasInteractive) {
+                    shouldAutoClose = true;
+                }
+
+                // Non-interactive activities with content: also close at section headings
+                if (!activityHasInteractive && activityParts.length > 0) {
+                    if (category === 'heading' && tagName !== 'activity_heading' &&
+                        primaryTag.level !== null && primaryTag.level <= 3) {
                         shouldAutoClose = true;
                     }
                 }
@@ -1107,10 +1116,24 @@ class HtmlConverter {
             }
 
             // --- External link ---
+            // [external link] renders the URL as a visible inline link within paragraph text.
+            // The text before the tag is regular paragraph content; the URL after is the link.
+            // This is different from [external link button] which creates a styled button.
             if (tagName === 'external_link') {
-                var elInfo = this._extractLinkInfo(processedBlocks, i);
-                var elHtml = '      <a href="' + this._escAttr(elInfo.url) +
-                    '" target="_blank">' + this._convertInlineFormatting(elInfo.text) + '</a>';
+                var elInfo = this._extractExternalLinkInfo(processedBlocks, i);
+                var elHtml;
+                if (elInfo.beforeText && elInfo.beforeText.trim()) {
+                    // Paragraph text before the tag + inline URL link
+                    elHtml = '      <p>' + this._convertInlineFormatting(elInfo.beforeText) +
+                        ' <a href="' + this._escAttr(elInfo.url) + '" target="_blank">' +
+                        this._escContent(elInfo.url) + '</a>' +
+                        (elInfo.afterPunctuation ? this._escContent(elInfo.afterPunctuation) : '') +
+                        '</p>';
+                } else {
+                    // No preceding text — just the link
+                    elHtml = '      <p><a href="' + this._escAttr(elInfo.url) + '" target="_blank">' +
+                        this._escContent(elInfo.url) + '</a></p>';
+                }
                 if (inActivity) {
                     activityParts.push(elHtml);
                 } else {
@@ -1662,6 +1685,80 @@ class HtmlConverter {
         if (!text) text = url;
 
         return { text: text, url: url || '#' };
+    }
+
+    /**
+     * Extract external link info: preceding paragraph text, URL, and trailing punctuation.
+     * [external link] renders the URL as a visible inline link — the text before the tag
+     * is regular paragraph content, not link text.
+     *
+     * @param {Array<Object>} processedBlocks - All processed blocks
+     * @param {number} index - Current block index
+     * @returns {Object} {beforeText, url, afterPunctuation}
+     */
+    _extractExternalLinkInfo(processedBlocks, index) {
+        var block = processedBlocks[index];
+        var formattedText = (block && block.formattedText) ? block.formattedText : '';
+        var cleanText = (block && block.cleanText) ? block.cleanText : '';
+
+        // Extract URL from formatted text or clean text
+        var url = '';
+
+        // Check for [LINK: URL] pattern
+        var linkMatch = formattedText.match(/\[LINK:\s*([^\]]+)\]/);
+        if (linkMatch) {
+            url = linkMatch[1].trim();
+        }
+
+        // If no LINK marker, look for bare URL in clean text
+        if (!url) {
+            var urlMatch = cleanText.match(/https?:\/\/[^\s]+/);
+            if (urlMatch) url = urlMatch[0];
+        }
+
+        // If no URL in this block, check next block
+        if (!url && index + 1 < processedBlocks.length) {
+            var nextBlock = processedBlocks[index + 1];
+            if (nextBlock) {
+                var nextClean = nextBlock.cleanText || '';
+                var nextFormatted = nextBlock.formattedText || '';
+                var nextUrlMatch = nextClean.match(/https?:\/\/[^\s]+/) ||
+                    nextFormatted.match(/https?:\/\/[^\s\]]+/);
+                if (nextUrlMatch) url = nextUrlMatch[0];
+            }
+        }
+
+        // The text BEFORE the [external link] tag is the paragraph content
+        var beforeText = cleanText.replace(/https?:\/\/[^\s]+/g, '').trim();
+
+        // Extract trailing punctuation from the block (e.g., the "." between tag and URL)
+        var afterPunctuation = '';
+        // Check if cleanText has punctuation right after removing URLs
+        var punctMatch = cleanText.match(/https?:\/\/[^\s]+([.!?,;:])/);
+        if (!punctMatch) {
+            // Check for punctuation in the formatted text between the tag and URL
+            var fmtPunctMatch = formattedText.match(/\[external\s+link\]\s*\[\/RED TEXT\][^.!?,;:]*([.!?,;:])/i);
+            if (fmtPunctMatch) {
+                afterPunctuation = fmtPunctMatch[1];
+            }
+            // Also check for punctuation as a separate red text marker (e.g., 🔴[RED TEXT] . [/RED TEXT]🔴)
+            var redPunctMatch = formattedText.match(/\[external\s+link\][\s\S]*?\[\/RED TEXT\]\uD83D\uDD34\s*\uD83D\uDD34\[RED TEXT\]\s*([.!?,;:])\s*\[\/RED TEXT\]\uD83D\uDD34/i);
+            if (redPunctMatch) {
+                afterPunctuation = redPunctMatch[1];
+                // Remove the punctuation from beforeText if it leaked there
+                if (beforeText.endsWith(afterPunctuation)) {
+                    beforeText = beforeText.slice(0, -afterPunctuation.length).trim();
+                }
+            }
+        }
+
+        // Clean up trailing punctuation from beforeText
+        // (The punctuation between tag and URL sometimes ends up in cleanText)
+        if (afterPunctuation && beforeText.endsWith(afterPunctuation)) {
+            beforeText = beforeText.slice(0, -afterPunctuation.length).trim();
+        }
+
+        return { beforeText: beforeText, url: url || '#', afterPunctuation: afterPunctuation };
     }
 
     // ------------------------------------------------------------------
