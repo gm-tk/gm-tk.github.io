@@ -699,10 +699,11 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 Content in `🔴[RED TEXT]...[/RED TEXT]🔴` is writer instruction to CS/developers. NOT student-facing.
 
 1. **Tag-only red text:** `🔴[RED TEXT] [H2] [/RED TEXT]🔴` → extract `[H2]` tag, process normally
-2. **Tag + instruction:** `🔴[RED TEXT] [drag and drop column autocheck] They are in correct place [/RED TEXT]🔴` → extract tag, preserve instruction as HTML comment
-3. **Pure instruction:** `🔴[RED TEXT] CS: please make images small [/RED TEXT]🔴` → HTML comment only
+2. **Tag + instruction:** `🔴[RED TEXT] [drag and drop column autocheck] They are in correct place [/RED TEXT]🔴` → extract tag, capture instruction for interactive reference document only (NOT rendered in HTML)
+3. **Pure instruction:** `🔴[RED TEXT] CS: please make images small [/RED TEXT]🔴` → captured for reference but NOT rendered as HTML comments
 4. **Whitespace-only:** `🔴[RED TEXT]   [/RED TEXT]🔴` → disregard entirely
 5. **NEVER render red text as visible student content**
+6. **NEVER render CS/writer instructions as `<!-- CS: ... -->` HTML comments** — they are internal workflow notes captured only in the interactive reference document
 
 ---
 
@@ -746,15 +747,15 @@ Segment contains ONLY `[TITLE BAR]` + headings + `[End page]`, no body content �
 | `heading` level 4 | `<h4>Heading Text</h4>` |
 | `heading` level 5 | `<h5>Heading Text</h5>` |
 | `body` | `<p>paragraph text</p>` |
-| `alert` | `<div class="alert"><div class="row"><div class="col-12"><p>content</p></div></div></div>` |
-| `important` | `<div class="alert solid"><div class="row"><div class="col-12"><p>content</p></div></div></div>` |
+| `alert` | `<div class="alert"><div class="row"><div class="col-12"><p>content</p><p>more content</p></div></div></div>` — consumes ALL following untagged paragraphs |
+| `important` | `<div class="alert solid"><div class="row"><div class="col-12"><p>content</p></div></div></div>` — same multi-paragraph rules as alert |
 | `whakatauki` | `<div class="whakatauki"><p>Māori text</p><p>English text</p></div>` |
 | `quote` | `<p class="quoteText">"Quote"</p><p class="quoteAck">Attribution</p>` |
 | `video` | YouTube embed with `youtube-nocookie.com`, `ratio ratio-16x9` wrapper |
 | `image` | `<img class="img-fluid" loading="lazy" src="https://placehold.co/600x400?text=..." alt="">` + commented iStock reference |
 | `button` | `<a href="URL" target="_blank"><div class="button">Text</div></a>` |
 | `external_link` | `<a href="URL" target="_blank">Text</a>` |
-| `activity` + ID | `<div class="activity interactive" number="ID">` or `<div class="activity alertPadding" number="ID">` |
+| `activity` + ID | `<div class="row"><div class="col-md-12 col-12"><div class="activity interactive" number="ID"><div class="row"><div class="col-12">` content `</div></div></div></div></div>` |
 | `info_trigger` | Inline: `<span class="infoTrigger" info="definition">trigger word</span>` within `<p>` |
 
 ### Overview Page Content Routing
@@ -1018,18 +1019,19 @@ INTERACTIVE 2 of 7
   - Formatting conversion (`**bold**` → `<b>`, `*italic*` → `<i>`, `***both***` → `<b><i>`, `__underline__` → `<u>`)
   - Hyperlink conversion (`__text__ [LINK: URL]` → `<a href target="_blank">`)
   - HTML escaping of content text with tag preservation
-  - Red text processing (strip, extract tags, preserve instructions as `<!-- CS: ... -->` comments)
+  - Red text processing (strip, extract tags; CS instructions captured for reference doc but NOT rendered as HTML comments)
   - Interactive placeholder insertion (structured placeholders via InteractiveExtractor with data extraction, tier classification, and consumed-block skipping)
   - **Inline info trigger rendering** — `[info trigger]` tags rendered as `<span class="infoTrigger" info="definition">word</span>` inline elements
   - Grid wrapping (all content inside `<div class="row"><div class="col-md-8 col-12">`)
   - Video embedding (YouTube, YouTube Shorts, Vimeo with correct embed URLs)
   - Image placeholders (placehold.co + commented-out iStock references)
-  - Activity wrapper detection (interactive vs alertPadding based on content)
+  - **Activity wrapper grid structure** — activities wrapped in outer `row → col-md-12 → activity div → inner row → col-12 → content`; duplicate activity numbers handled gracefully (previous activity flushed before new one opens)
+  - **Alert multi-paragraph consumption** — `[alert]`, `[important]`, and cultural alert tags consume ALL following untagged paragraphs until the next structural/tagged boundary
   - **Heading rules** — no spans on h2-h5, full-heading bold/italic stripping, H1→H2 in body, consecutive heading tags produce separate elements
   - **H1 splitting** — on overview pages, bold heading + italic description separated into heading + `<p>`
   - **Success Criteria normalisation** — heading normalised to "How will I know if I've learned it?"
   - **Module menu formatting** — h4 headings in Overview tab, h5 headings in Information tab, italic stripped from list items and intro text
-  - **Quote formatting** — splits quote text and attribution into separate `<p class="quoteText">` and `<p class="quoteAck">` elements
+  - **Quote formatting** — splits quote text and attribution into separate `<p class="quoteText">` and `<p class="quoteAck">` elements; italic `<i>` tags stripped from quote text (CSS handles styling)
   - **Whakatauki pipe splitting** — content with `|` separator splits into Māori and English `<p>` elements
   - Lesson page rules (lesson number prefix stripping, module menu label normalisation)
   - Module menu content population (overview tabs with actual content, lesson menu with routed content)
@@ -1056,8 +1058,9 @@ INTERACTIVE 2 of 7
 - Identifies the data pattern (13 patterns) being used
 - Extracts all associated data (tables, numbered items, red text instructions, media references)
 - **Sub-tag grouping** — numbered sub-tags (slides, tabs, accordions, flip cards, shapes, hints, click drops) consumed as data within their parent interactive, not treated as separate interactives
-- **Relaxed boundary detection** — within numbered items scope, headings/body/media/styling content is captured as item data; only structural/activity/different-interactive boundaries break
-- **Speech bubble conversation detection** — Pattern 9 conversation layout consumes all "Prompt N:" / "AI response:" paragraphs
+- **Relaxed boundary detection** — within numbered items scope, headings/body/media/styling content is captured as item data; only structural/activity/different-interactive boundaries break. For flip_card, click_drop, and hint_slider, the lookahead also skips past body/heading/media blocks to find sub-tags further ahead.
+- **Speech bubble conversation detection** — Pattern 9 conversation layout consumes "Prompt N:" / "AI response:" paragraphs; stops at `[body]` tags and other structural boundaries; multi-paragraph AI responses consumed only as continuation of the previous response
+- **Table-embedded interactive detection** — interactive tags inside table cells (e.g., `[speech bubble]` in an image+text table) are detected and the entire table is consumed as the interactive's data block
 - Produces structured placeholder HTML with HTML comments (type, pattern, data summary, writer instructions)
 - Produces reference entry objects for the interactive reference document
 - Generates complete plain text reference document for all interactives in a module
