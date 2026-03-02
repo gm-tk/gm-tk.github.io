@@ -14,7 +14,8 @@ class App {
         this.tagNormaliser = new TagNormaliser();
         this.pageBoundary = new PageBoundary(this.tagNormaliser);
         this.templateEngine = new TemplateEngine();
-        this.htmlConverter = new HtmlConverter(this.tagNormaliser, this.templateEngine);
+        this.interactiveExtractor = new InteractiveExtractor(this.tagNormaliser);
+        this.htmlConverter = new HtmlConverter(this.tagNormaliser, this.templateEngine, this.interactiveExtractor);
 
         /** Cached formatted output after a successful parse */
         this.currentOutput = null;
@@ -39,6 +40,12 @@ class App {
 
         /** Output mode: 'html' or 'text' */
         this.outputMode = 'html';
+
+        /** Generated interactive reference document text */
+        this.interactiveReferenceDoc = '';
+
+        /** Collected interactive data */
+        this.collectedInteractives = [];
 
         this._bindElements();
         this._bindEvents();
@@ -129,9 +136,13 @@ class App {
         // Action buttons
         this.btnCopyAll.addEventListener('click', function () {
             if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
-                var filename = self.generatedFileList[self.currentHtmlFileIndex];
-                var htmlContent = self.generatedHtmlFiles[filename] || '';
-                self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
+                if (self.currentHtmlFileIndex === -1 && self.interactiveReferenceDoc) {
+                    self.copyToClipboard(self.interactiveReferenceDoc, 'Interactive reference copied to clipboard');
+                } else {
+                    var filename = self.generatedFileList[self.currentHtmlFileIndex];
+                    var htmlContent = self.generatedHtmlFiles[filename] || '';
+                    self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
+                }
             } else if (self.currentOutput) {
                 self.copyToClipboard(self.currentOutput.full, 'Full output copied to clipboard');
             }
@@ -139,9 +150,13 @@ class App {
 
         this.btnCopyContent.addEventListener('click', function () {
             if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
-                var filename = self.generatedFileList[self.currentHtmlFileIndex];
-                var htmlContent = self.generatedHtmlFiles[filename] || '';
-                self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
+                if (self.currentHtmlFileIndex === -1 && self.interactiveReferenceDoc) {
+                    self.copyToClipboard(self.interactiveReferenceDoc, 'Interactive reference copied to clipboard');
+                } else {
+                    var filename = self.generatedFileList[self.currentHtmlFileIndex];
+                    var htmlContent = self.generatedHtmlFiles[filename] || '';
+                    self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
+                }
             } else if (self.currentOutput) {
                 self.copyToClipboard(self.currentOutput.contentOnly, 'Content copied to clipboard (without metadata)');
             }
@@ -149,9 +164,17 @@ class App {
 
         this.btnDownload.addEventListener('click', function () {
             if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
-                var filename = self.generatedFileList[self.currentHtmlFileIndex];
-                var htmlContent = self.generatedHtmlFiles[filename] || '';
-                self._downloadAsFile(htmlContent, filename, 'text/html;charset=utf-8');
+                if (self.currentHtmlFileIndex === -1 && self.interactiveReferenceDoc) {
+                    var refCode = self.currentMetadata && self.currentMetadata.moduleCode
+                        ? self.currentMetadata.moduleCode
+                        : 'MODULE';
+                    self._downloadAsFile(self.interactiveReferenceDoc,
+                        refCode + '_interactive_reference.txt', 'text/plain;charset=utf-8');
+                } else {
+                    var filename = self.generatedFileList[self.currentHtmlFileIndex];
+                    var htmlContent = self.generatedHtmlFiles[filename] || '';
+                    self._downloadAsFile(htmlContent, filename, 'text/html;charset=utf-8');
+                }
             } else if (self.currentOutput) {
                 const code = self.currentMetadata && self.currentMetadata.moduleCode
                     ? self.currentMetadata.moduleCode
@@ -181,8 +204,14 @@ class App {
         // HTML file selector dropdown
         if (this.htmlFileDropdown) {
             this.htmlFileDropdown.addEventListener('change', function () {
-                self.currentHtmlFileIndex = parseInt(self.htmlFileDropdown.value, 10);
-                self._displayCurrentHtmlFile();
+                var val = self.htmlFileDropdown.value;
+                if (val === 'interactive-ref') {
+                    self.currentHtmlFileIndex = -1;
+                    self.outputArea.value = self.interactiveReferenceDoc || '';
+                } else {
+                    self.currentHtmlFileIndex = parseInt(val, 10);
+                    self._displayCurrentHtmlFile();
+                }
             });
         }
     }
@@ -362,6 +391,9 @@ class App {
         if (this.generatedFileList.length > 0) {
             announceMsg += ' Generated ' + this.generatedFileList.length + ' HTML files.';
         }
+        if (this.collectedInteractives && this.collectedInteractives.length > 0) {
+            announceMsg += ' Found ' + this.collectedInteractives.length + ' interactive components.';
+        }
         this._announce(announceMsg);
     }
 
@@ -374,6 +406,8 @@ class App {
         this.generatedFileList = [];
         this.currentHtmlFileIndex = 0;
         this.outputMode = 'html';
+        this.interactiveReferenceDoc = '';
+        this.collectedInteractives = [];
         this.resultsSection.classList.add('hidden');
         this.processingSection.classList.add('hidden');
         this.uploadSection.classList.remove('hidden');
@@ -451,6 +485,21 @@ class App {
             } catch (e) {
                 // Ignore — template may not be loaded yet
             }
+        }
+
+        // Add interactive count
+        if (this.collectedInteractives && this.collectedInteractives.length > 0) {
+            var tier1 = 0;
+            var tier2 = 0;
+            for (var ic = 0; ic < this.collectedInteractives.length; ic++) {
+                if (this.collectedInteractives[ic].tier === 1) tier1++;
+                else tier2++;
+            }
+            items.push({
+                label: 'Interactives',
+                value: this.collectedInteractives.length +
+                    ' (Tier 1: ' + tier1 + ', Tier 2: ' + tier2 + ')'
+            });
         }
 
         if (items.length === 0) {
@@ -884,8 +933,96 @@ class App {
 
         html += '</div>';
 
+        // --- Interactive Components ---
+        html += this._renderDebugInteractiveSection();
+
         this.debugContent.innerHTML = html;
         this.debugPanel.classList.remove('hidden');
+    }
+
+    // ------------------------------------------------------------------
+    // Debug — Interactive section
+    // ------------------------------------------------------------------
+
+    /**
+     * Render interactive component details for the debug panel.
+     *
+     * @returns {string} HTML string
+     */
+    _renderDebugInteractiveSection() {
+        var html = '';
+        html += '<div class="debug-section">';
+        html += '<h4 class="debug-section-title">Interactive Components</h4>';
+
+        if (!this.collectedInteractives || this.collectedInteractives.length === 0) {
+            html += '<p style="font-size:0.82rem;color:var(--color-text-secondary);">No interactive components detected.</p>';
+            html += '</div>';
+            return html;
+        }
+
+        var total = this.collectedInteractives.length;
+        var tier1 = 0;
+        var tier2 = 0;
+        for (var c = 0; c < total; c++) {
+            if (this.collectedInteractives[c].tier === 1) tier1++;
+            else tier2++;
+        }
+
+        html += '<div class="debug-stats">';
+        html += '<span class="debug-stat">Total: <b>' + total + '</b></span>';
+        html += '<span class="debug-stat">Tier 1 (ParseMaster): <b>' + tier1 + '</b></span>';
+        html += '<span class="debug-stat">Tier 2 (requires implementation): <b>' + tier2 + '</b></span>';
+        html += '</div>';
+
+        // Interactive list table
+        html += '<details class="debug-details">';
+        html += '<summary>All interactives (' + total + ')</summary>';
+        html += '<table class="debug-table"><thead><tr>' +
+            '<th>#</th><th>File</th><th>Activity</th><th>Type</th><th>Tier</th><th>Pattern</th><th>Data</th>' +
+            '</tr></thead><tbody>';
+
+        for (var j = 0; j < total; j++) {
+            var entry = this.collectedInteractives[j];
+            var tierLabel = entry.tier === 1 ? '<span style="color:green;">T1</span>' : '<span style="color:red;">T2</span>';
+            var dataSummary = '';
+            if (entry.tableData) {
+                dataSummary = 'Table (' + this._esc(entry.tableData.dimensions) + ')';
+            } else if (entry.numberedItems && entry.numberedItems.length > 0) {
+                dataSummary = entry.numberedItems.length + ' items';
+            } else {
+                dataSummary = '-';
+            }
+
+            html += '<tr>' +
+                '<td>' + (j + 1) + '</td>' +
+                '<td><code>' + this._esc(entry.filename) + '</code></td>' +
+                '<td>' + (entry.activityId ? this._esc(entry.activityId) : '-') + '</td>' +
+                '<td><code>' + this._esc(entry.type) + '</code>' +
+                    (entry.modifier ? ' <small>(' + this._esc(entry.modifier) + ')</small>' : '') + '</td>' +
+                '<td>' + tierLabel + '</td>' +
+                '<td>' + entry.dataPattern + '</td>' +
+                '<td>' + dataSummary + '</td>' +
+                '</tr>';
+        }
+
+        html += '</tbody></table>';
+        html += '</details>';
+
+        // Reference document preview
+        if (this.interactiveReferenceDoc) {
+            html += '<details class="debug-details">';
+            html += '<summary>Reference document preview</summary>';
+            html += '<pre style="padding:0.5rem;font-size:0.75rem;overflow-x:auto;background:var(--color-bg);margin:0;max-height:400px;overflow-y:auto;">';
+            html += this._esc(this.interactiveReferenceDoc.substring(0, 5000));
+            if (this.interactiveReferenceDoc.length > 5000) {
+                html += '\n... (' + (this.interactiveReferenceDoc.length - 5000) + ' more characters)';
+            }
+            html += '</pre>';
+            html += '</details>';
+        }
+
+        html += '</div>';
+        return html;
     }
 
     // ------------------------------------------------------------------
@@ -1104,6 +1241,9 @@ class App {
         this.generatedHtmlFiles = {};
         this.generatedFileList = [];
 
+        // Reset collected interactives for this conversion run
+        this.htmlConverter.collectedInteractives = [];
+
         for (var i = 0; i < analysis.pages.length; i++) {
             var page = analysis.pages[i];
             this._addProgressStep('Generating HTML: ' + page.filename + '...');
@@ -1117,6 +1257,18 @@ class App {
                 this.generatedHtmlFiles[page.filename] = '<!-- Error generating this page: ' + e.message + ' -->';
                 this.generatedFileList.push(page.filename);
             }
+        }
+
+        // Collect interactives and generate reference document
+        this.collectedInteractives = this.htmlConverter.collectedInteractives || [];
+        if (this.collectedInteractives.length > 0) {
+            this.interactiveReferenceDoc = this.interactiveExtractor.generateReferenceDocument(
+                this.collectedInteractives, moduleCode
+            );
+            this._addProgressStep('Found ' + this.collectedInteractives.length +
+                ' interactive component(s). Reference document generated.');
+        } else {
+            this.interactiveReferenceDoc = '';
         }
 
         this._addProgressStep('Done! Generated ' + this.generatedFileList.length + ' HTML files.');
@@ -1231,6 +1383,7 @@ class App {
 
     /**
      * Populate the HTML file dropdown with generated filenames.
+     * If an interactive reference document was generated, adds it as an extra option.
      */
     _populateHtmlFileDropdown() {
         if (!this.htmlFileDropdown) return;
@@ -1241,6 +1394,14 @@ class App {
             option.value = i;
             option.textContent = this.generatedFileList[i];
             this.htmlFileDropdown.appendChild(option);
+        }
+
+        // Add interactive reference document if available
+        if (this.interactiveReferenceDoc) {
+            var refOption = document.createElement('option');
+            refOption.value = 'interactive-ref';
+            refOption.textContent = '\u{1F4CB} Interactive Reference Document';
+            this.htmlFileDropdown.appendChild(refOption);
         }
     }
 
