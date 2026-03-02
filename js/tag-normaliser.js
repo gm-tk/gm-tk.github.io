@@ -691,6 +691,19 @@ class TagNormaliser {
             };
         }
 
+        // --- [Table wordSelect] / [Table word select] → word_select interactive ---
+        if (flexCleaned === 'table wordselect' || flexCleaned === 'table word select') {
+            return {
+                normalised: 'word_select',
+                level: null,
+                number: null,
+                id: null,
+                category: 'interactive',
+                modifier: 'table',
+                raw: raw
+            };
+        }
+
         // --- Table with optional number or qualifier ---
         var tableMatch = flexCleaned.match(/^table(?:\s+(\S+))?$/);
         if (tableMatch && flexCleaned.indexOf('table') === 0) {
@@ -851,6 +864,7 @@ class TagNormaliser {
             // Structural Sub-tags (subtag)
             'front': { normalised: 'front', category: 'subtag' },
             'back': { normalised: 'back', category: 'subtag' },
+            'drop': { normalised: 'back', category: 'subtag' },
             'static heading': { normalised: 'static_heading', category: 'subtag' },
             'static column': { normalised: 'static_column', category: 'subtag' },
             'unsorted list': { normalised: 'unordered_list', category: 'subtag' },
