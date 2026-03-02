@@ -497,9 +497,20 @@ class InteractiveExtractor {
             if (sbTagResult.tags && sbTagResult.tags.length > 0) {
                 sbModifier = (sbTagResult.tags[0].modifier || '').toLowerCase();
             }
-            // Also check clean text for "conversation" keyword
+            // Also check clean text and red text instructions for "conversation" keyword
             var sbClean = (sbTagResult.cleanText || '').toLowerCase();
-            if (sbModifier.indexOf('conversation') !== -1 || sbClean.indexOf('conversation') !== -1) {
+            var sbIsConversation = sbModifier.indexOf('conversation') !== -1 || sbClean.indexOf('conversation') !== -1;
+            // Check red text instructions (writer instruction like "Conversation layout"
+            // appears here when it's inside the red text region but outside brackets)
+            if (!sbIsConversation && sbTagResult.redTextInstructions) {
+                for (var ri = 0; ri < sbTagResult.redTextInstructions.length; ri++) {
+                    if (sbTagResult.redTextInstructions[ri].toLowerCase().indexOf('conversation') !== -1) {
+                        sbIsConversation = true;
+                        break;
+                    }
+                }
+            }
+            if (sbIsConversation) {
                 result.detectedPattern = 9;
                 var conversationItems = [];
                 var convRegex = /^(prompt|ai\s*response|response|user|assistant|human|student)\s*\d*\s*:/i;
@@ -1435,19 +1446,28 @@ class InteractiveExtractor {
         } else if (numberedItems && numberedItems.length > 0) {
             // Numbered items patterns (4, 5, 6, 7, 9)
             if (dataPattern === 9) {
-                lines.push('        <p><em>Data: Conversation (' + numberedItems.length + ' entries)</em></p>');
+                lines.push('        <p><em>Data: Conversation layout (' + numberedItems.length + ' entries)</em></p>');
+                lines.push('        <table style="width:100%; border-collapse: collapse; font-size: 0.85em; margin-top: 6px;">');
                 for (var ci = 0; ci < numberedItems.length; ci++) {
                     var convItem = numberedItems[ci];
                     var convContent = convItem.content || '';
-                    // Try to split "Prompt N: text" and "AI response: text" for bold labels
+                    // Try to split "Prompt N: text" and "AI response: text" for label/content columns
                     var convLabelMatch = convContent.match(/^((?:Prompt|AI\s*response|Response|User|Assistant|Human|Student)\s*\d*\s*:)\s*([\s\S]*)/i);
                     if (convLabelMatch) {
-                        lines.push('        <p><strong>' + this._escContent(convLabelMatch[1]) +
-                            '</strong> ' + this._escContent(convLabelMatch[2]) + '</p>');
+                        lines.push('          <tr>');
+                        lines.push('            <td style="border:1px solid #ccc; padding:4px; font-weight:bold; white-space:nowrap; vertical-align:top;">' +
+                            this._escContent(convLabelMatch[1]) + '</td>');
+                        lines.push('            <td style="border:1px solid #ccc; padding:4px;">' +
+                            this._escContent(convLabelMatch[2]) + '</td>');
+                        lines.push('          </tr>');
                     } else {
-                        lines.push('        <p>' + this._escContent(convContent) + '</p>');
+                        lines.push('          <tr>');
+                        lines.push('            <td colspan="2" style="border:1px solid #ccc; padding:4px;">' +
+                            this._escContent(convContent) + '</td>');
+                        lines.push('          </tr>');
                     }
                 }
+                lines.push('        </table>');
             } else if (dataPattern === 2) {
                 // Front/back numbered items (flip cards, click drops)
                 var cardCount = 0;

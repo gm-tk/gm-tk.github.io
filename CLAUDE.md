@@ -643,7 +643,7 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 | Writer Variants | Normalised |
 |---|---|
 | `activity NA`, `activity` | `activity` + ID |
-| `activity heading`, `activity title`, `heading` (in activity context) | `activity_heading` |
+| `activity heading`, `activity heading h3`, `activity heading H3`, `activity title` (with optional heading level H2-H5) | `activity_heading` + level |
 | `end activity`, `end of activity` | `end_activity` |
 
 #### Link/Button Tags
@@ -1030,6 +1030,7 @@ INTERACTIVE 2 of 7
 - Handles special cases: info trigger image merge, D&D modifier extraction, trailing number/ID extraction
 - **`[Table wordSelect]` / `[Table word select]`** — recognised as `word_select` interactive (not a generic table) before the generic table match fires
 - **`[drop]` sub-tag** — recognised as synonym for `[back]` in the simple table mapping (used in click_drop front/back patterns)
+- **`[Activity heading H3]` and variants** (Round 3B) — `activity heading`, `activity heading hN`, `activity title` with optional heading level H2-H5; returns level in the normalised result (defaults to 3 if no level specified)
 - Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`
 
 #### page-boundary.js — DONE (Phase 1)
@@ -1046,9 +1047,10 @@ INTERACTIVE 2 of 7
 - Handles:
   - Document skeleton assembly (skeleton from TemplateEngine + body content)
   - **Overview page content routing** — splits content at `[MODULE INTRODUCTION]` into menu tab content (before) and body content (after)
-  - **Lesson page content routing** — splits content at `[LESSON OVERVIEW]` / `[LESSON CONTENT]` boundaries; menu content goes to module menu, body content starts after `[LESSON CONTENT]`
+  - **Lesson page content routing** — splits content at `[LESSON OVERVIEW]` / `[LESSON CONTENT]` boundaries; menu content goes to module menu, body content starts after `[LESSON CONTENT]`; when `[LESSON CONTENT]` is missing, uses heuristic fallback (menu ends at first heading/activity/interactive/styling tag) to prevent empty body
+  - **Layout table rendering** (Round 3B) — 2-column tables with `[body]` text in one cell and `[image]` in the other (with no interactive tags) are rendered as Bootstrap side-by-side layout (`col-md-8` text + `col-md-4` image) preserving document column order
   - **Module menu tab content** — populates Overview (h4 headings) and Information (h5 headings) tab panes with correctly routed content
-  - **Lesson module menu content** — populates lesson page module menu with actual "We are learning:" / "I can:" content from `[LESSON OVERVIEW]`, using template config labels, with italic stripped from list items, and optional description paragraph
+  - **Lesson module menu content** — populates lesson page module menu with actual "We are learning:" / "I can:" content from `[LESSON OVERVIEW]`, using template config labels, with italic stripped from list items, and optional description paragraph; only bullet-pointed items collected for learning/success criteria sections (ordered/numbered items like activity questions are excluded)
   - Body content (paragraphs, headings, lists, tables, alerts, media, etc.)
   - **Content grouping** — consecutive body content (headings, paragraphs, lists, images, videos, quotes, etc.) grouped in single row wrappers; new rows only created for structural boundaries (activities, interactives, alerts) or column class changes
   - Formatting conversion (`**bold**` → `<b>`, `*italic*` → `<i>`, `***both***` → `<b><i>`, `__underline__` → `<u>`)
@@ -1060,9 +1062,10 @@ INTERACTIVE 2 of 7
   - Grid wrapping (all content inside `<div class="row"><div class="col-md-8 col-12">`)
   - Video embedding (YouTube, YouTube Shorts, Vimeo with correct embed URLs)
   - Image placeholders (placehold.co + commented-out iStock references)
-  - **Activity wrapper grid structure** — activities wrapped in outer `row → col-md-12 → activity div → inner row → col-12 → content`; duplicate activity numbers handled gracefully (previous activity flushed before new one opens)
-  - **Activity auto-closure** (Round 3) — after an activity's interactive placeholder is emitted (`activityHasInteractive` flag), the activity wrapper is automatically closed when the next `[body]`, heading, or structural tag is encountered, preventing non-activity content from being swallowed inside the activity wrapper
+  - **Activity wrapper grid structure** — activities wrapped in outer `row → col-md-12 → activity div → inner row → col-12 → content`; duplicate activity numbers handled gracefully (previous activity flushed before new one opens); activity class is `activity interactive` for activities containing interactives, plain `activity` for non-interactive activities (no `alertPadding` class)
+  - **Activity auto-closure** (Round 3, expanded Round 3B) — for activities WITH interactives: the activity wrapper is automatically closed when the next `[body]`, heading, or structural tag is encountered; for activities WITHOUT interactives: auto-closes when a section-level heading ([H2]/[H3], NOT [Activity heading]) or structural tag is encountered, preventing non-activity content from being swallowed inside the activity wrapper
   - **Activity heading extraction** (Round 3) — `[Activity 1A] Heading text` patterns extract the heading text after the tag and render it as `<h3>` inside the activity wrapper
+  - **Activity heading tag recognition** (Round 3B) — `[Activity heading H3]`, `[Activity heading]`, `[Activity title]` and variants with optional heading level (H2-H5) are all recognised; heading level from the tag is used (defaults to `<h3>` if no level specified)
   - **Table interactive tag promotion** (Round 3) — when a table block contains both interactive and non-interactive tags (e.g., `[speech bubble]` + `[image]` in table cells), the interactive tag is promoted to primary position so the block is processed as an interactive rather than rendered as a grid table
   - **Implicit click_drop detection** (Round 3) — table blocks containing `[front]` and `[back]` (or `[drop]`) sub-tags but no explicit interactive tag get a synthetic `click_drop` interactive tag injected, ensuring they are processed as interactive placeholders
   - **Alert multi-paragraph consumption** — `[alert]`, `[important]`, and cultural alert tags consume ALL following untagged paragraphs until the next structural/tagged boundary
@@ -1098,7 +1101,7 @@ INTERACTIVE 2 of 7
 - Extracts all associated data (tables, numbered items, red text instructions, media references)
 - **Sub-tag grouping** — numbered sub-tags (slides, tabs, accordions, flip cards, shapes, hints, click drops) consumed as data within their parent interactive, not treated as separate interactives
 - **Relaxed boundary detection** — within numbered items scope, headings/body/media/styling content is captured as item data; only structural/activity/different-interactive boundaries break. For flip_card, click_drop, and hint_slider, the lookahead also skips past body/heading/media blocks to find sub-tags further ahead.
-- **Speech bubble conversation detection** (fixed Round 3) — Pattern 9 conversation layout consumes "Prompt N:" / "AI response:" paragraphs; stops at `[body]` tags and other structural boundaries; ANY untagged paragraph following a captured conversation entry is consumed as continuation (not just AI responses), enabling multi-paragraph entries; falls back to raw formatted text with red markers stripped if cleanText is empty
+- **Speech bubble conversation detection** (fixed Round 3, updated Round 3B) — Pattern 9 conversation layout detected from tag modifier, cleanText, OR red text instructions (writer instruction "Conversation layout" now correctly found when inside red text region but outside brackets); forward lookahead consumes "Prompt N:" / "AI response:" paragraphs; stops at `[body]` tags and other structural boundaries; ANY untagged paragraph following a captured conversation entry is consumed as continuation (not just AI responses), enabling multi-paragraph entries; falls back to raw formatted text with red markers stripped if cleanText is empty; conversation data rendered as 2-column table in placeholder (label | content)
 - **Table-embedded interactive detection** — interactive tags inside table cells (e.g., `[speech bubble]` in an image+text table) are detected and the entire table is consumed as the interactive's data block
 - **Boundary detection with table data** (fixed Round 3) — for `expectsSubTags` types (flip_card, click_drop, hint_slider), when table data has already been captured, boundary tags that are NOT sub-tags of the current interactive properly terminate extraction (prevents consuming one extra block)
 - **Untagged block handling for sub-tag types** (fixed Round 3) — untagged paragraphs within `expectsSubTags` interactive scope are consumed rather than breaking extraction, preventing flip card/click drop sub-content from leaking as body elements
@@ -1130,6 +1133,10 @@ User drops .docx file
   → OutputFormatter.formatAll() produces legacy text output
   → TagNormaliser processes all tags
   → PageBoundary validates and assigns pages
+  → App._extractTitle() extracts English/Te Reo titles from [TITLE BAR] content
+    → Searches non-red text on same block or subsequent blocks
+    → Splits English/Te Reo on double-space separator
+    → Falls back to metadata subject if no title found
   → HtmlConverter generates HTML for each page:
     → TemplateEngine.generateSkeleton() creates document shell
     → HtmlConverter.convertPage() renders body content
