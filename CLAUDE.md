@@ -43,6 +43,7 @@ ParseMaster is a client-side web application that reads Writer Template `.docx` 
 6. **Interactive placeholders** → structured placeholders with data extraction and tier classification (DONE — Phase 4)
 7. **Output** multiple downloadable HTML files per module (DONE — Phase 3)
 8. **Output** a supplementary interactive reference document (DONE — Phase 4)
+9. **Multi-file output system** → file list panel, individual/bulk download, ZIP export (DONE — Phase 5)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -112,13 +113,20 @@ User drops .docx file
     → Module menu content populated
     → Complete HTML files assembled with skeleton + body content
   → InteractiveExtractor generates reference document with all extracted data
-  → App.showResults() displays output
-    → Metadata panel includes selected template name + interactive count
-    → HTML output mode (default): shows generated HTML source, file selector dropdown
-    → Interactive Reference Document available in file selector dropdown
-    → Text output mode (legacy): shows plain text output
-    → User can toggle between HTML/text modes
-    → Copy/Download buttons adapt to current mode (including reference doc)
+  → OutputManager stores all generated files (Phase 5)
+    → HTML files stored with page type and lesson number metadata
+    → Interactive reference document stored as reference type
+    → File sizes calculated for display
+  → App.showResults() displays output (Phase 5 UI)
+    → Metadata panel includes template name, pages generated, interactive count
+    → Conversion summary panel shows pages, template, interactives, tags, warnings
+    → File list panel shows all generated files with icons, metadata, per-file actions
+    → Preview panel shows selected file content with copy/download buttons
+    → First HTML file auto-selected for preview on load
+    → "Download All as ZIP" creates ZIP archive of all files via JSZip
+    → "Copy Interactive Reference" copies reference document to clipboard
+    → "Legacy Text Output" switches to plain text view with back navigation
+    → "Parse Another File" resets everything cleanly
     → Debug panel shows template config, tag & page analysis, interactive details, skeleton preview
 ```
 
@@ -133,7 +141,8 @@ User drops .docx file
 | `TemplateEngine` | `js/template-engine.js` | Template config loading, resolution, auto-detection, skeleton generation |
 | `InteractiveExtractor` | `js/interactive-extractor.js` | Interactive component detection, data extraction, placeholder generation, reference document |
 | `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
-| `App` | `js/app.js` | UI controller — upload, display, clipboard, download, debug panel, template selection, output mode toggle |
+| `OutputManager` | `js/output-manager.js` | Multi-file output storage, file listing, individual/ZIP download, clipboard copy |
+| `App` | `js/app.js` | UI controller — upload, file list, preview, ZIP download, legacy mode, debug panel, template selection |
 
 ---
 
@@ -143,7 +152,7 @@ User drops .docx file
 gm-tk.github.io/
 ├── index.html              # Single-page application shell
 ├── css/
-│   └── styles.css          # All application styles (including debug panel, template selector, output mode)
+│   └── styles.css          # All application styles (including debug panel, template selector, multi-file layout)
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
 │   ├── formatter.js         # Plain text output formatter (legacy)
@@ -152,7 +161,8 @@ gm-tk.github.io/
 │   ├── template-engine.js   # Template config loading, resolution & skeleton generation (Phase 2)
 │   ├── interactive-extractor.js # Interactive data extraction, placeholder generation & reference doc (Phase 4)
 │   ├── html-converter.js    # Core HTML conversion engine (Phase 3, updated Phase 4)
-│   └── app.js              # UI controller (with debug panel, template integration, output mode toggle, interactive reference)
+│   ├── output-manager.js    # Multi-file output management, ZIP download, clipboard copy (Phase 5)
+│   └── app.js              # UI controller (with file list, preview, ZIP download, legacy mode, debug panel)
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -312,10 +322,12 @@ The App class manages all user interaction:
 
 - **File upload** — drag-and-drop zone + click-to-browse, validates `.docx` extension
 - **Template selection** — dropdown populated from TemplateEngine, auto-detects from module code on parse (Phase 2)
-- **Processing** — shows spinner + progress steps during parse
-- **Results** — displays metadata panel (including selected template), stats panel, output textarea, action buttons
+- **Processing** — shows spinner + progress steps during parse with pipeline stage counts
+- **Results** — displays metadata panel, conversion summary, file list panel, preview panel
+- **Multi-file output** — file list with per-file download/copy, preview of selected file (Phase 5)
+- **ZIP download** — "Download All as ZIP" creates ZIP archive via JSZip (Phase 5)
+- **Legacy mode** — switchable legacy text output with back navigation (Phase 5)
 - **Tag & Page Analysis** — after parsing, runs TagNormaliser and PageBoundary on content blocks, displays results in a collapsible debug panel
-- **Actions** — Copy All, Copy Content Only, Download as .txt, Parse Another File
 - **Error handling** — specific error messages for known failure modes (missing XML, invalid XML, corrupted file)
 - **Accessibility** — screen reader announcements, keyboard navigation, ARIA labels
 
@@ -324,16 +336,19 @@ The App class manages all user interaction:
 The UI uses CSS `.hidden` class to toggle between these states:
 1. `#upload-section` — initial file upload view
 2. `#processing-section` — spinner during parse
-3. `#results-section` — output display with actions
-4. `#debug-panel` — collapsible tag & page analysis debug panel (appears below results after parse)
+3. `#results-section` — multi-panel output display with file list + preview
+4. `#legacy-output-panel` — legacy text output (toggleable within results)
+5. `#debug-panel` — collapsible tag & page analysis debug panel (appears below results after parse)
 
-### Output Mode Toggle (Phase 3)
+### Multi-File Output System (Phase 5)
 
-The results section includes an output mode toggle button that switches between:
-- **HTML Output** (default when HTML files generated) — shows the HTML source of the currently selected page file. A dropdown (`#html-file-dropdown`) lets users select which file to view. Copy/Download buttons work with the HTML source.
-- **Text Output** (legacy) — shows the plain text output from OutputFormatter. Copy/Download buttons work with the text output.
+The results section uses a side-by-side layout with a file list panel (left) and preview panel (right):
 
-The toggle button (`#output-mode-toggle`) dynamically updates its label and the action button labels to reflect the current mode.
+- **File List Panel** (`#file-list-panel`) — shows all generated files with icons, filenames, metadata (page type, size), and per-file download/copy action buttons. Clicking a file loads its content in the preview. The selected file gets a `.selected` visual highlight. Files are stored in `OutputManager`.
+- **Preview Panel** — shows the content of the currently selected file in a readonly textarea. Header displays the filename and has Copy/Download buttons for the current file.
+- **Global Actions Bar** — "Download All as ZIP" (creates ZIP via JSZip), "Copy Interactive Reference" (copies reference doc), "Legacy Text Output" (switches to text mode), "Parse Another File" (resets everything).
+- **Legacy Output Panel** (`#legacy-output-panel`) — hidden by default; when activated via "Legacy Text Output" button, hides the file list + preview layout and shows the plain text output with Copy All, Download .txt, and Back to HTML buttons.
+- **Responsive** — stacks vertically on mobile (file list above preview).
 
 ### Template Selector (Phase 2)
 
@@ -353,7 +368,7 @@ The debug panel (`#debug-panel`) is a temporary development/testing panel that a
 3. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
 4. **Interactive Components** (Phase 4) — total count, tier breakdown, detailed table of all interactives (file, activity, type, tier, pattern, data summary), and a preview of the generated reference document
 
-The debug panel uses a `<details>` element so it starts collapsed. It does NOT interfere with the existing text output functionality — Copy All, Copy Content Only, and Download produce the same plain text as before.
+The debug panel uses a `<details>` element so it starts collapsed. It does NOT interfere with the multi-file output system or the legacy text output functionality.
 
 ---
 
@@ -1068,7 +1083,18 @@ INTERACTIVE 2 of 7
 - Column class selection based on interactive type (wide for D&D column, info trigger image)
 - Public API: `processInteractive(contentBlocks, startIndex, pageFilename, activityId, insideActivity)`, `generateReferenceDocument(allInteractives, moduleCode)`
 
-### Extended App Flow (Current — Phase 4)
+#### output-manager.js — DONE (Phase 5)
+- Stores generated file entries (HTML files + interactive reference document)
+- Each file has metadata: filename, content, type (html/reference), pageType, lessonNumber, size
+- Provides `getFileList()` with formatted sizes for UI display
+- Individual file download via Blob/URL technique
+- Bulk ZIP download via JSZip (`downloadAsZip()`)
+- Clipboard copy per file (`copyToClipboard()`) with modern API + fallback
+- File count helpers (`getFileCount()`, `getHtmlFileCount()`)
+- `clear()` resets all stored files
+- Public API: `addFile(fileInfo)`, `getFileList()`, `getFileContent(filename)`, `downloadFile(filename)`, `downloadAsZip(zipFilename)`, `copyToClipboard(filename)`, `clear()`
+
+### Extended App Flow (Current — Phase 5)
 
 ```
 User drops .docx file
@@ -1088,21 +1114,17 @@ User drops .docx file
       → Returns blocksConsumed so HtmlConverter skips data blocks
     → HtmlConverter.assemblePage() combines skeleton + content + module menu
   → InteractiveExtractor.generateReferenceDocument() produces reference doc
-  → App displays results:
-    → Metadata panel shows interactive count with tier breakdown
-    → HTML mode (default): HTML source in output area with file selector dropdown
-    → Interactive Reference Document selectable in file dropdown
-    → Text mode (legacy): Plain text in output area
-    → Toggle button switches between modes
-    → Copy/Download buttons adapt to current mode (including reference doc)
-    → Debug panel shows interactive component details table
-```
-
-### Planned App Flow Additions (Phase 5+)
-
-```
-  → App offers download of:
-    → All files as ZIP
+  → OutputManager stores all generated files (HTML + reference doc)
+  → App displays results (Phase 5 UI):
+    → Metadata panel shows template, pages, interactive count with tier breakdown
+    → Conversion summary shows pages, template, interactives, tags, warnings
+    → File list panel shows all files with icons, metadata, per-file download/copy
+    → Preview panel shows selected file content with copy/download buttons
+    → First HTML file auto-selected for preview
+    → "Download All as ZIP" creates ZIP archive
+    → "Copy Interactive Reference" copies reference doc
+    → "Legacy Text Output" toggles to plain text view
+    → Debug panel shows template config, tag & page analysis, interactive details
 ```
 
 ---

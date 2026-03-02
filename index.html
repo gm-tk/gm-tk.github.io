@@ -83,42 +83,65 @@
         </section>
 
         <!-- Results Section -->
-        <section id="results-section" class="hidden" aria-label="Parsed output">
+        <section id="results-section" class="hidden" aria-label="Generated output">
 
             <!-- Metadata -->
             <div id="metadata-panel" aria-label="Module metadata"></div>
 
-            <!-- Stats -->
-            <div id="stats-panel" aria-label="Processing statistics"></div>
+            <!-- Conversion Summary -->
+            <div id="conversion-summary" class="conversion-summary" aria-label="Conversion summary"></div>
 
-            <!-- Action buttons -->
+            <!-- Global Actions Bar -->
             <div class="actions-bar">
-                <button id="output-mode-toggle" class="btn btn-toggle" type="button" title="Switch output mode">
-                    &#128196; Switch to Text Output
+                <button id="btn-download-zip" class="btn btn-primary" type="button">
+                    &#128230; Download All as ZIP
                 </button>
-                <button id="btn-copy-all" class="btn btn-primary" type="button">
-                    &#128203; Copy HTML Source
+                <button id="btn-copy-reference" class="btn" type="button">
+                    &#128203; Copy Interactive Reference
                 </button>
-                <button id="btn-copy-content" class="btn" type="button">
-                    &#128203; Copy HTML Source
-                </button>
-                <button id="btn-download" class="btn" type="button">
-                    &#128190; Download .html
+                <button id="btn-legacy-output" class="btn btn-toggle" type="button">
+                    &#128196; Legacy Text Output
                 </button>
                 <button id="btn-reset" class="btn" type="button">
                     &#128260; Parse Another File
                 </button>
             </div>
 
-            <!-- HTML file selector -->
-            <div id="html-file-selector" class="html-file-selector hidden">
-                <label for="html-file-dropdown" class="html-file-label">Viewing:</label>
-                <select id="html-file-dropdown" class="html-file-dropdown"></select>
+            <!-- File List + Preview Layout -->
+            <div id="output-layout" class="output-layout">
+
+                <!-- File List Panel -->
+                <div id="file-list-panel" class="file-list-panel" aria-label="Generated files"></div>
+
+                <!-- Preview Panel -->
+                <div class="preview-panel">
+                    <div class="preview-header">
+                        <span id="preview-filename" class="preview-filename">Select a file to preview</span>
+                        <div class="preview-actions">
+                            <button id="btn-copy-preview" class="btn btn-sm" type="button" title="Copy to clipboard">&#128203; Copy</button>
+                            <button id="btn-download-preview" class="btn btn-sm" type="button" title="Download file">&#128190; Download</button>
+                        </div>
+                    </div>
+                    <label for="output-area" class="sr-only">File preview</label>
+                    <textarea id="output-area" readonly aria-label="File preview"></textarea>
+                </div>
+
             </div>
 
-            <!-- Output -->
-            <label for="output-area" class="sr-only">Output</label>
-            <textarea id="output-area" readonly aria-label="Output"></textarea>
+            <!-- Legacy Output (hidden by default) -->
+            <div id="legacy-output-panel" class="legacy-output-panel hidden">
+                <div class="preview-header">
+                    <span class="preview-filename">Legacy Text Output</span>
+                    <div class="preview-actions">
+                        <button id="btn-copy-legacy" class="btn btn-sm" type="button" title="Copy text output">&#128203; Copy All</button>
+                        <button id="btn-download-legacy" class="btn btn-sm" type="button" title="Download as .txt">&#128190; Download .txt</button>
+                        <button id="btn-back-to-html" class="btn btn-sm" type="button" title="Back to HTML files">&#8592; Back to HTML</button>
+                    </div>
+                </div>
+                <label for="legacy-output-area" class="sr-only">Legacy text output</label>
+                <textarea id="legacy-output-area" readonly aria-label="Legacy text output"></textarea>
+            </div>
+
         </section>
 
         <!-- Debug Panel -->
@@ -154,6 +177,7 @@
     <script src="js/template-engine.js"></script>
     <script src="js/interactive-extractor.js"></script>
     <script src="js/html-converter.js"></script>
+    <script src="js/output-manager.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

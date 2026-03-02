@@ -2,7 +2,8 @@
  * App — UI controller for ParseMaster.
  *
  * Manages file upload (drag-and-drop + click-to-browse), progress
- * display, output rendering, clipboard copy, and file download.
+ * display, multi-file output rendering, clipboard copy, individual
+ * and bulk file download (ZIP), and debug panel.
  */
 
 'use strict';
@@ -16,6 +17,7 @@ class App {
         this.templateEngine = new TemplateEngine();
         this.interactiveExtractor = new InteractiveExtractor(this.tagNormaliser);
         this.htmlConverter = new HtmlConverter(this.tagNormaliser, this.templateEngine, this.interactiveExtractor);
+        this.outputManager = new OutputManager();
 
         /** Cached formatted output after a successful parse */
         this.currentOutput = null;
@@ -35,17 +37,17 @@ class App {
         /** Ordered list of generated filenames */
         this.generatedFileList = [];
 
-        /** Currently selected HTML file index for display */
-        this.currentHtmlFileIndex = 0;
-
-        /** Output mode: 'html' or 'text' */
-        this.outputMode = 'html';
+        /** Currently selected filename for preview */
+        this.selectedPreviewFile = null;
 
         /** Generated interactive reference document text */
         this.interactiveReferenceDoc = '';
 
         /** Collected interactive data */
         this.collectedInteractives = [];
+
+        /** Whether legacy output mode is active */
+        this.legacyModeActive = false;
 
         this._bindElements();
         this._bindEvents();
@@ -65,12 +67,22 @@ class App {
         this.progressStatus = document.getElementById('progress-status');
         this.progressSteps = document.getElementById('progress-steps');
         this.metadataPanel = document.getElementById('metadata-panel');
-        this.statsPanel = document.getElementById('stats-panel');
+        this.conversionSummary = document.getElementById('conversion-summary');
         this.outputArea = document.getElementById('output-area');
-        this.btnCopyAll = document.getElementById('btn-copy-all');
-        this.btnCopyContent = document.getElementById('btn-copy-content');
-        this.btnDownload = document.getElementById('btn-download');
+        this.btnDownloadZip = document.getElementById('btn-download-zip');
+        this.btnCopyReference = document.getElementById('btn-copy-reference');
+        this.btnLegacyOutput = document.getElementById('btn-legacy-output');
         this.btnReset = document.getElementById('btn-reset');
+        this.fileListPanel = document.getElementById('file-list-panel');
+        this.outputLayout = document.getElementById('output-layout');
+        this.previewFilename = document.getElementById('preview-filename');
+        this.btnCopyPreview = document.getElementById('btn-copy-preview');
+        this.btnDownloadPreview = document.getElementById('btn-download-preview');
+        this.legacyOutputPanel = document.getElementById('legacy-output-panel');
+        this.legacyOutputArea = document.getElementById('legacy-output-area');
+        this.btnCopyLegacy = document.getElementById('btn-copy-legacy');
+        this.btnDownloadLegacy = document.getElementById('btn-download-legacy');
+        this.btnBackToHtml = document.getElementById('btn-back-to-html');
         this.errorPanel = document.getElementById('error-panel');
         this.errorMessage = document.getElementById('error-message');
         this.toast = document.getElementById('toast');
@@ -79,9 +91,6 @@ class App {
         this.debugToggle = document.getElementById('debug-toggle');
         this.templateDropdown = document.getElementById('template-dropdown');
         this.templateAutoLabel = document.getElementById('template-auto-label');
-        this.outputModeToggle = document.getElementById('output-mode-toggle');
-        this.htmlFileSelector = document.getElementById('html-file-selector');
-        this.htmlFileDropdown = document.getElementById('html-file-dropdown');
     }
 
     // ------------------------------------------------------------------
@@ -89,7 +98,7 @@ class App {
     // ------------------------------------------------------------------
 
     _bindEvents() {
-        const self = this;
+        var self = this;
 
         // Drag-and-drop
         this.dropZone.addEventListener('dragover', function (e) {
@@ -108,7 +117,7 @@ class App {
             e.preventDefault();
             e.stopPropagation();
             self.dropZone.classList.remove('drag-over');
-            const files = e.dataTransfer.files;
+            var files = e.dataTransfer.files;
             if (files.length > 0) {
                 self.handleFile(files[0]);
             }
@@ -133,59 +142,67 @@ class App {
             }
         });
 
-        // Action buttons
-        this.btnCopyAll.addEventListener('click', function () {
-            if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
-                if (self.currentHtmlFileIndex === -1 && self.interactiveReferenceDoc) {
-                    self.copyToClipboard(self.interactiveReferenceDoc, 'Interactive reference copied to clipboard');
-                } else {
-                    var filename = self.generatedFileList[self.currentHtmlFileIndex];
-                    var htmlContent = self.generatedHtmlFiles[filename] || '';
-                    self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
-                }
-            } else if (self.currentOutput) {
-                self.copyToClipboard(self.currentOutput.full, 'Full output copied to clipboard');
-            }
-        });
+        // Global action buttons
+        if (this.btnDownloadZip) {
+            this.btnDownloadZip.addEventListener('click', function () {
+                self._handleDownloadZip();
+            });
+        }
 
-        this.btnCopyContent.addEventListener('click', function () {
-            if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
-                if (self.currentHtmlFileIndex === -1 && self.interactiveReferenceDoc) {
-                    self.copyToClipboard(self.interactiveReferenceDoc, 'Interactive reference copied to clipboard');
-                } else {
-                    var filename = self.generatedFileList[self.currentHtmlFileIndex];
-                    var htmlContent = self.generatedHtmlFiles[filename] || '';
-                    self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
-                }
-            } else if (self.currentOutput) {
-                self.copyToClipboard(self.currentOutput.contentOnly, 'Content copied to clipboard (without metadata)');
-            }
-        });
+        if (this.btnCopyReference) {
+            this.btnCopyReference.addEventListener('click', function () {
+                self._handleCopyReference();
+            });
+        }
 
-        this.btnDownload.addEventListener('click', function () {
-            if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
-                if (self.currentHtmlFileIndex === -1 && self.interactiveReferenceDoc) {
-                    var refCode = self.currentMetadata && self.currentMetadata.moduleCode
-                        ? self.currentMetadata.moduleCode
-                        : 'MODULE';
-                    self._downloadAsFile(self.interactiveReferenceDoc,
-                        refCode + '_interactive_reference.txt', 'text/plain;charset=utf-8');
-                } else {
-                    var filename = self.generatedFileList[self.currentHtmlFileIndex];
-                    var htmlContent = self.generatedHtmlFiles[filename] || '';
-                    self._downloadAsFile(htmlContent, filename, 'text/html;charset=utf-8');
-                }
-            } else if (self.currentOutput) {
-                const code = self.currentMetadata && self.currentMetadata.moduleCode
-                    ? self.currentMetadata.moduleCode
-                    : 'ParseMaster_output';
-                self.downloadAsTxt(self.currentOutput.full, code + '_parsed.txt');
-            }
-        });
+        if (this.btnLegacyOutput) {
+            this.btnLegacyOutput.addEventListener('click', function () {
+                self._showLegacyMode();
+            });
+        }
 
         this.btnReset.addEventListener('click', function () {
             self.reset();
         });
+
+        // Preview panel buttons
+        if (this.btnCopyPreview) {
+            this.btnCopyPreview.addEventListener('click', function () {
+                self._handleCopyPreview();
+            });
+        }
+
+        if (this.btnDownloadPreview) {
+            this.btnDownloadPreview.addEventListener('click', function () {
+                self._handleDownloadPreview();
+            });
+        }
+
+        // Legacy output panel buttons
+        if (this.btnCopyLegacy) {
+            this.btnCopyLegacy.addEventListener('click', function () {
+                if (self.currentOutput) {
+                    self.copyToClipboard(self.currentOutput.full, 'Text output copied to clipboard');
+                }
+            });
+        }
+
+        if (this.btnDownloadLegacy) {
+            this.btnDownloadLegacy.addEventListener('click', function () {
+                if (self.currentOutput) {
+                    var code = self.currentMetadata && self.currentMetadata.moduleCode
+                        ? self.currentMetadata.moduleCode
+                        : 'ParseMaster_output';
+                    self.downloadAsTxt(self.currentOutput.full, code + '_parsed.txt');
+                }
+            });
+        }
+
+        if (this.btnBackToHtml) {
+            this.btnBackToHtml.addEventListener('click', function () {
+                self._hideLegacyMode();
+            });
+        }
 
         // Template dropdown
         this.templateDropdown.addEventListener('change', function () {
@@ -193,27 +210,6 @@ class App {
             // Hide auto-detected label when user manually changes
             self.templateAutoLabel.classList.add('hidden');
         });
-
-        // Output mode toggle
-        if (this.outputModeToggle) {
-            this.outputModeToggle.addEventListener('click', function () {
-                self._toggleOutputMode();
-            });
-        }
-
-        // HTML file selector dropdown
-        if (this.htmlFileDropdown) {
-            this.htmlFileDropdown.addEventListener('change', function () {
-                var val = self.htmlFileDropdown.value;
-                if (val === 'interactive-ref') {
-                    self.currentHtmlFileIndex = -1;
-                    self.outputArea.value = self.interactiveReferenceDoc || '';
-                } else {
-                    self.currentHtmlFileIndex = parseInt(val, 10);
-                    self._displayCurrentHtmlFile();
-                }
-            });
-        }
     }
 
     // ------------------------------------------------------------------
@@ -267,14 +263,14 @@ class App {
 
         // Large file warning
         if (file.size > 20 * 1024 * 1024) {
-            this._addProgressStep('⚠ Large file detected (' +
+            this._addProgressStep('\u26A0 Large file detected (' +
                 Math.round(file.size / 1024 / 1024) + ' MB). This may take a moment.');
         }
 
         this.hideError();
         this.showProcessing();
 
-        const self = this;
+        var self = this;
 
         // Wire up progress callback
         this.parser.onProgress = function (msg) {
@@ -282,8 +278,8 @@ class App {
         };
 
         try {
-            const result = await this.parser.parse(file);
-            const output = this.formatter.formatAll(result);
+            var result = await this.parser.parse(file);
+            var output = this.formatter.formatAll(result);
 
             self.currentOutput = output;
             self.currentMetadata = result.metadata;
@@ -295,14 +291,18 @@ class App {
             self._addProgressStep('Normalising tags...');
             var analysis = self._runAnalysis(result);
             self.currentAnalysis = analysis;
-            self._addProgressStep('Detecting page boundaries...');
+            self._addProgressStep('Detecting page boundaries... (' + analysis.pages.length + ' pages)');
             self._addProgressStep('Tag analysis complete: ' +
                 analysis.totalTags + ' tags found, ' +
                 analysis.pages.length + ' pages detected');
 
             // Run HTML conversion if a template is selected
-            self._addProgressStep('Loading template configuration...');
+            self._addProgressStep('Loading template: ' +
+                (self.selectedTemplateId ? self.templateEngine.getConfig(self.selectedTemplateId)._templateName : 'default') + '...');
             self._runHtmlConversion(analysis, result);
+
+            // Store all outputs in OutputManager
+            self._storeOutputs();
 
             self.showResults(result, output);
         } catch (err) {
@@ -339,6 +339,52 @@ class App {
     }
 
     // ------------------------------------------------------------------
+    // Store outputs in OutputManager
+    // ------------------------------------------------------------------
+
+    /**
+     * Store all generated files in the OutputManager.
+     */
+    _storeOutputs() {
+        this.outputManager.clear();
+
+        // Store HTML files
+        for (var i = 0; i < this.generatedFileList.length; i++) {
+            var filename = this.generatedFileList[i];
+            var content = this.generatedHtmlFiles[filename] || '';
+            var pageType = 'lesson';
+            var lessonNumber = null;
+
+            if (i === 0) {
+                pageType = 'overview';
+            } else {
+                pageType = 'lesson';
+                lessonNumber = i;
+            }
+
+            this.outputManager.addFile({
+                filename: filename,
+                content: content,
+                type: 'html',
+                pageType: pageType,
+                lessonNumber: lessonNumber
+            });
+        }
+
+        // Store interactive reference document
+        if (this.interactiveReferenceDoc) {
+            var moduleCode = (this.currentMetadata && this.currentMetadata.moduleCode) || 'MODULE';
+            this.outputManager.addFile({
+                filename: moduleCode + '_interactives.txt',
+                content: this.interactiveReferenceDoc,
+                type: 'reference',
+                pageType: 'reference',
+                lessonNumber: null
+            });
+        }
+    }
+
+    // ------------------------------------------------------------------
     // UI state management
     // ------------------------------------------------------------------
 
@@ -360,19 +406,29 @@ class App {
         // Populate metadata panel
         this._renderMetadata(result.metadata);
 
-        // Populate stats panel
-        this._renderStats(result.stats, result.contentStartFound);
+        // Populate conversion summary
+        this._renderConversionSummary();
 
-        // Show output based on current mode
+        // Update Copy Interactive Reference button visibility
+        if (this.btnCopyReference) {
+            if (this.interactiveReferenceDoc) {
+                this.btnCopyReference.classList.remove('hidden');
+            } else {
+                this.btnCopyReference.classList.add('hidden');
+            }
+        }
+
+        // Render file list and show preview
         if (this.generatedFileList.length > 0) {
-            this.outputMode = 'html';
-            this._populateHtmlFileDropdown();
-            this._displayCurrentHtmlFile();
-            this._updateOutputModeUI();
+            this._renderFileList();
+            // Auto-select first file
+            var firstFilename = this.generatedFileList[0];
+            this._selectFile(firstFilename);
+            // Show HTML layout, hide legacy
+            this._hideLegacyMode();
         } else {
-            this.outputMode = 'text';
-            this.outputArea.value = output.full;
-            this._updateOutputModeUI();
+            // No HTML files — show legacy mode directly
+            this._showLegacyMode();
         }
 
         // Check if content is empty
@@ -386,10 +442,9 @@ class App {
         }
 
         // Announce to screen readers
-        var announceMsg = 'Document processed successfully. ' +
-            result.stats.totalParagraphs + ' paragraphs extracted.';
+        var announceMsg = 'Document processed successfully. ';
         if (this.generatedFileList.length > 0) {
-            announceMsg += ' Generated ' + this.generatedFileList.length + ' HTML files.';
+            announceMsg += 'Generated ' + this.generatedFileList.length + ' HTML files.';
         }
         if (this.collectedInteractives && this.collectedInteractives.length > 0) {
             announceMsg += ' Found ' + this.collectedInteractives.length + ' interactive components.';
@@ -404,10 +459,11 @@ class App {
         this.selectedTemplateId = null;
         this.generatedHtmlFiles = {};
         this.generatedFileList = [];
-        this.currentHtmlFileIndex = 0;
-        this.outputMode = 'html';
+        this.selectedPreviewFile = null;
         this.interactiveReferenceDoc = '';
         this.collectedInteractives = [];
+        this.legacyModeActive = false;
+        this.outputManager.clear();
         this.resultsSection.classList.add('hidden');
         this.processingSection.classList.add('hidden');
         this.uploadSection.classList.remove('hidden');
@@ -419,9 +475,9 @@ class App {
         // Reset template dropdown
         this.templateDropdown.selectedIndex = 0;
         this.templateAutoLabel.classList.add('hidden');
-        // Reset HTML file dropdown
-        if (this.htmlFileDropdown) {
-            this.htmlFileDropdown.innerHTML = '';
+        // Clear file list
+        if (this.fileListPanel) {
+            this.fileListPanel.innerHTML = '';
         }
     }
 
@@ -441,7 +497,7 @@ class App {
     // ------------------------------------------------------------------
 
     _addProgressStep(message) {
-        const step = document.createElement('div');
+        var step = document.createElement('div');
         step.className = 'progress-step';
 
         // Check mark for completed steps (all but the last are "done")
@@ -455,11 +511,346 @@ class App {
     }
 
     // ------------------------------------------------------------------
+    // Conversion Summary rendering
+    // ------------------------------------------------------------------
+
+    /**
+     * Render the conversion summary panel with key stats.
+     */
+    _renderConversionSummary() {
+        if (!this.conversionSummary) return;
+
+        var items = [];
+
+        // Pages generated
+        var htmlCount = this.outputManager.getHtmlFileCount();
+        if (htmlCount > 0) {
+            items.push({ label: 'Pages', value: htmlCount + ' HTML files generated' });
+        }
+
+        // Template used
+        if (this.selectedTemplateId) {
+            try {
+                var config = this.templateEngine.getConfig(this.selectedTemplateId);
+                items.push({ label: 'Template', value: config._templateName });
+            } catch (e) {
+                // Ignore
+            }
+        }
+
+        // Interactives detected
+        if (this.collectedInteractives && this.collectedInteractives.length > 0) {
+            items.push({
+                label: 'Interactives',
+                value: this.collectedInteractives.length + ' interactive components detected'
+            });
+        }
+
+        // Tags normalised
+        if (this.currentAnalysis) {
+            var tagText = this.currentAnalysis.totalTags + ' tags normalised';
+            if (this.currentAnalysis.unrecognisedTags.length > 0) {
+                tagText += ' + ' + this.currentAnalysis.unrecognisedTags.length + ' unrecognised';
+            }
+            items.push({ label: 'Tags', value: tagText });
+        }
+
+        // Warnings
+        if (this.currentAnalysis && this.currentAnalysis.pages) {
+            var warningCount = 0;
+            for (var pi = 0; pi < this.currentAnalysis.pages.length; pi++) {
+                var pg = this.currentAnalysis.pages[pi];
+                if (pg.boundaryDecisions && pg.boundaryDecisions.length > 0) {
+                    warningCount += pg.boundaryDecisions.length;
+                }
+            }
+            if (warningCount > 0) {
+                items.push({ label: 'Warnings', value: warningCount + ' boundary rules fired' });
+            }
+        }
+
+        if (items.length === 0) {
+            this.conversionSummary.classList.add('hidden');
+            return;
+        }
+
+        this.conversionSummary.classList.remove('hidden');
+        var html = '';
+        for (var i = 0; i < items.length; i++) {
+            html += '<div class="summary-item">' +
+                '<span class="summary-label">' + this._esc(items[i].label) + ':</span> ' +
+                '<span class="summary-value">' + this._esc(items[i].value) + '</span>' +
+                '</div>';
+        }
+        this.conversionSummary.innerHTML = html;
+    }
+
+    // ------------------------------------------------------------------
+    // File List rendering
+    // ------------------------------------------------------------------
+
+    /**
+     * Render the file list panel with all generated files.
+     */
+    _renderFileList() {
+        if (!this.fileListPanel) return;
+
+        var self = this;
+        var files = this.outputManager.getFileList();
+        this.fileListPanel.innerHTML = '';
+
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var entry = this._createFileEntry(file);
+            this.fileListPanel.appendChild(entry);
+        }
+    }
+
+    /**
+     * Create a file entry DOM element.
+     *
+     * @param {Object} file - File metadata from OutputManager.getFileList()
+     * @returns {HTMLElement}
+     */
+    _createFileEntry(file) {
+        var self = this;
+
+        var entry = document.createElement('div');
+        entry.className = 'file-entry';
+        entry.setAttribute('data-filename', file.filename);
+        entry.setAttribute('tabindex', '0');
+        entry.setAttribute('role', 'button');
+        entry.setAttribute('aria-label', 'Preview ' + file.filename);
+
+        // File icon
+        var icon = file.type === 'reference' ? '\uD83D\uDCCB' : '\uD83D\uDCC4';
+
+        // File metadata description
+        var metaText = '';
+        if (file.pageType === 'overview') {
+            metaText = 'Overview';
+        } else if (file.pageType === 'lesson') {
+            metaText = 'Lesson ' + file.lessonNumber;
+        } else if (file.pageType === 'reference') {
+            metaText = 'Interactive Reference';
+            if (this.collectedInteractives && this.collectedInteractives.length > 0) {
+                metaText += ' \u00B7 ' + this.collectedInteractives.length + ' interactives';
+            }
+        }
+        metaText += ' \u00B7 ' + file.sizeFormatted;
+
+        entry.innerHTML =
+            '<div class="file-info">' +
+                '<span class="file-icon">' + icon + '</span>' +
+                '<div class="file-details">' +
+                    '<span class="file-name">' + this._esc(file.filename) + '</span>' +
+                    '<span class="file-meta">' + this._esc(metaText) + '</span>' +
+                '</div>' +
+            '</div>' +
+            '<div class="file-actions">' +
+                '<button class="btn btn-sm file-download" type="button" title="Download ' + this._esc(file.filename) + '">\uD83D\uDCBE</button>' +
+                '<button class="btn btn-sm file-copy" type="button" title="Copy to clipboard">\uD83D\uDCCB</button>' +
+            '</div>';
+
+        // Click to select/preview
+        entry.addEventListener('click', function (e) {
+            // Don't select if clicking action buttons
+            if (e.target.closest('.file-actions')) return;
+            self._selectFile(file.filename);
+        });
+
+        // Keyboard: Enter/Space to select
+        entry.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                self._selectFile(file.filename);
+            }
+        });
+
+        // Download button
+        var downloadBtn = entry.querySelector('.file-download');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                self.outputManager.downloadFile(file.filename);
+                self.showToast('Downloaded ' + file.filename);
+            });
+        }
+
+        // Copy button
+        var copyBtn = entry.querySelector('.file-copy');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                self.outputManager.copyToClipboard(file.filename).then(function (ok) {
+                    if (ok) {
+                        self.showToast('Copied ' + file.filename + ' to clipboard');
+                    } else {
+                        self.showToast('Failed to copy. Please try again.');
+                    }
+                });
+            });
+        }
+
+        return entry;
+    }
+
+    /**
+     * Select a file and display it in the preview panel.
+     *
+     * @param {string} filename
+     */
+    _selectFile(filename) {
+        this.selectedPreviewFile = filename;
+
+        // Update visual highlighting
+        var entries = this.fileListPanel.querySelectorAll('.file-entry');
+        for (var i = 0; i < entries.length; i++) {
+            if (entries[i].getAttribute('data-filename') === filename) {
+                entries[i].classList.add('selected');
+            } else {
+                entries[i].classList.remove('selected');
+            }
+        }
+
+        // Update preview content
+        var content = this.outputManager.getFileContent(filename);
+        if (content !== null) {
+            this.outputArea.value = content;
+        }
+
+        // Update preview filename display
+        if (this.previewFilename) {
+            this.previewFilename.textContent = filename;
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Legacy output mode
+    // ------------------------------------------------------------------
+
+    /**
+     * Switch to legacy text output mode.
+     */
+    _showLegacyMode() {
+        this.legacyModeActive = true;
+
+        // Hide HTML layout
+        if (this.outputLayout) {
+            this.outputLayout.classList.add('hidden');
+        }
+
+        // Show legacy panel
+        if (this.legacyOutputPanel) {
+            this.legacyOutputPanel.classList.remove('hidden');
+        }
+
+        // Populate legacy textarea
+        if (this.legacyOutputArea && this.currentOutput) {
+            this.legacyOutputArea.value = this.currentOutput.full;
+        }
+
+        // Update legacy button
+        if (this.btnLegacyOutput) {
+            this.btnLegacyOutput.classList.add('hidden');
+        }
+    }
+
+    /**
+     * Switch back from legacy mode to HTML file list mode.
+     */
+    _hideLegacyMode() {
+        this.legacyModeActive = false;
+
+        // Show HTML layout
+        if (this.outputLayout) {
+            this.outputLayout.classList.remove('hidden');
+        }
+
+        // Hide legacy panel
+        if (this.legacyOutputPanel) {
+            this.legacyOutputPanel.classList.add('hidden');
+        }
+
+        // Show legacy button
+        if (this.btnLegacyOutput) {
+            this.btnLegacyOutput.classList.remove('hidden');
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Global action handlers
+    // ------------------------------------------------------------------
+
+    /**
+     * Handle "Download All as ZIP" button click.
+     */
+    async _handleDownloadZip() {
+        if (this.outputManager.getFileCount() === 0) {
+            this.showToast('No files to download');
+            return;
+        }
+
+        var moduleCode = (this.currentMetadata && this.currentMetadata.moduleCode) || 'MODULE';
+        var zipFilename = moduleCode + '_html_files.zip';
+
+        try {
+            await this.outputManager.downloadAsZip(zipFilename);
+            this.showToast('Downloaded ' + zipFilename);
+        } catch (e) {
+            this.showToast('Failed to create ZIP: ' + e.message);
+        }
+    }
+
+    /**
+     * Handle "Copy Interactive Reference" button click.
+     */
+    _handleCopyReference() {
+        if (this.interactiveReferenceDoc) {
+            this.copyToClipboard(this.interactiveReferenceDoc, 'Interactive reference copied to clipboard');
+        } else {
+            this.showToast('No interactive reference document available');
+        }
+    }
+
+    /**
+     * Handle preview panel "Copy" button click.
+     */
+    _handleCopyPreview() {
+        if (!this.selectedPreviewFile) {
+            this.showToast('No file selected');
+            return;
+        }
+
+        var self = this;
+        this.outputManager.copyToClipboard(this.selectedPreviewFile).then(function (ok) {
+            if (ok) {
+                self.showToast('Copied ' + self.selectedPreviewFile + ' to clipboard');
+            } else {
+                self.showToast('Failed to copy. Please try again.');
+            }
+        });
+    }
+
+    /**
+     * Handle preview panel "Download" button click.
+     */
+    _handleDownloadPreview() {
+        if (!this.selectedPreviewFile) {
+            this.showToast('No file selected');
+            return;
+        }
+
+        this.outputManager.downloadFile(this.selectedPreviewFile);
+        this.showToast('Downloaded ' + this.selectedPreviewFile);
+    }
+
+    // ------------------------------------------------------------------
     // Metadata rendering
     // ------------------------------------------------------------------
 
     _renderMetadata(metadata) {
-        const items = [];
+        var items = [];
 
         if (metadata.moduleCode) {
             items.push({ label: 'Module Code', value: metadata.moduleCode });
@@ -487,6 +878,11 @@ class App {
             }
         }
 
+        // Add pages generated
+        if (this.generatedFileList.length > 0) {
+            items.push({ label: 'Pages', value: this.generatedFileList.length + ' HTML files' });
+        }
+
         // Add interactive count
         if (this.collectedInteractives && this.collectedInteractives.length > 0) {
             var tier1 = 0;
@@ -508,45 +904,14 @@ class App {
             return;
         }
 
-        let html = '';
-        for (let i = 0; i < items.length; i++) {
+        var html = '';
+        for (var i = 0; i < items.length; i++) {
             html += '<div class="metadata-item">' +
                 '<span class="metadata-label">' + this._esc(items[i].label) + ':</span> ' +
                 '<span class="metadata-value">' + this._esc(items[i].value) + '</span>' +
                 '</div>';
         }
         this.metadataPanel.innerHTML = html;
-    }
-
-    // ------------------------------------------------------------------
-    // Stats rendering
-    // ------------------------------------------------------------------
-
-    _renderStats(stats, contentStartFound) {
-        const items = [
-            { label: 'Paragraphs', value: stats.totalParagraphs },
-            { label: 'Tables', value: stats.totalTables },
-            { label: 'Hyperlinks', value: stats.totalHyperlinks },
-            { label: 'Deletions removed', value: stats.deletionsRemoved },
-            { label: 'Insertions kept', value: stats.insertionsKept },
-            { label: 'SDT wrappers unwrapped', value: stats.sdtUnwrapped },
-            { label: 'Red text segments', value: stats.redTextSegments },
-            {
-                label: 'Content start',
-                value: contentStartFound
-                    ? 'Block #' + stats.contentStartParagraph
-                    : 'Not found (showing all)'
-            }
-        ];
-
-        let html = '';
-        for (let i = 0; i < items.length; i++) {
-            html += '<div class="stat-item">' +
-                '<span class="stat-value">' + this._esc(String(items[i].value)) + '</span>' +
-                '<span class="stat-label">' + this._esc(items[i].label) + '</span>' +
-                '</div>';
-        }
-        this.statsPanel.innerHTML = html;
     }
 
     // ------------------------------------------------------------------
@@ -575,7 +940,7 @@ class App {
     }
 
     _fallbackCopy(text) {
-        const textarea = document.createElement('textarea');
+        var textarea = document.createElement('textarea');
         textarea.value = text;
         textarea.style.position = 'fixed';
         textarea.style.left = '-9999px';
@@ -592,9 +957,9 @@ class App {
     // ------------------------------------------------------------------
 
     downloadAsTxt(text, filename) {
-        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
         a.href = url;
         a.download = filename;
         a.style.display = 'none';
@@ -1262,16 +1627,18 @@ class App {
         // Collect interactives and generate reference document
         this.collectedInteractives = this.htmlConverter.collectedInteractives || [];
         if (this.collectedInteractives.length > 0) {
+            this._addProgressStep('Extracting interactive data... (' +
+                this.collectedInteractives.length + ' interactives)');
             this.interactiveReferenceDoc = this.interactiveExtractor.generateReferenceDocument(
                 this.collectedInteractives, moduleCode
             );
-            this._addProgressStep('Found ' + this.collectedInteractives.length +
-                ' interactive component(s). Reference document generated.');
+            this._addProgressStep('Generating interactive reference document...');
         } else {
             this.interactiveReferenceDoc = '';
         }
 
-        this._addProgressStep('Done! Generated ' + this.generatedFileList.length + ' HTML files.');
+        this._addProgressStep('Done! Generated ' + this.generatedFileList.length +
+            ' HTML files' + (this.interactiveReferenceDoc ? ' + interactive reference.' : '.'));
     }
 
     /**
@@ -1326,114 +1693,6 @@ class App {
         }
 
         return type === 'english' ? 'Module Title' : '';
-    }
-
-    // ------------------------------------------------------------------
-    // Output mode management
-    // ------------------------------------------------------------------
-
-    /**
-     * Toggle between HTML and text output modes.
-     */
-    _toggleOutputMode() {
-        if (this.outputMode === 'html') {
-            this.outputMode = 'text';
-            this.outputArea.value = this.currentOutput ? this.currentOutput.full : '';
-        } else {
-            this.outputMode = 'html';
-            this._displayCurrentHtmlFile();
-        }
-        this._updateOutputModeUI();
-    }
-
-    /**
-     * Update UI elements to reflect the current output mode.
-     */
-    _updateOutputModeUI() {
-        if (this.outputModeToggle) {
-            if (this.outputMode === 'html') {
-                this.outputModeToggle.textContent = '\u{1F4C4} Switch to Text Output';
-                this.outputModeToggle.title = 'Switch to legacy text output';
-            } else {
-                this.outputModeToggle.textContent = '\u{1F310} Switch to HTML Output';
-                this.outputModeToggle.title = 'Switch to HTML output';
-            }
-        }
-
-        // Show/hide HTML file selector
-        if (this.htmlFileSelector) {
-            if (this.outputMode === 'html' && this.generatedFileList.length > 0) {
-                this.htmlFileSelector.classList.remove('hidden');
-            } else {
-                this.htmlFileSelector.classList.add('hidden');
-            }
-        }
-
-        // Update button labels
-        if (this.outputMode === 'html' && this.generatedFileList.length > 0) {
-            this.btnCopyAll.textContent = '\u{1F4CB} Copy HTML Source';
-            this.btnCopyContent.textContent = '\u{1F4CB} Copy HTML Source';
-            this.btnDownload.textContent = '\u{1F4BE} Download .html';
-        } else {
-            this.btnCopyAll.textContent = '\u{1F4CB} Copy All to Clipboard';
-            this.btnCopyContent.textContent = '\u{1F4CB} Copy Content Only';
-            this.btnDownload.textContent = '\u{1F4BE} Download as .txt';
-        }
-    }
-
-    /**
-     * Populate the HTML file dropdown with generated filenames.
-     * If an interactive reference document was generated, adds it as an extra option.
-     */
-    _populateHtmlFileDropdown() {
-        if (!this.htmlFileDropdown) return;
-        this.htmlFileDropdown.innerHTML = '';
-
-        for (var i = 0; i < this.generatedFileList.length; i++) {
-            var option = document.createElement('option');
-            option.value = i;
-            option.textContent = this.generatedFileList[i];
-            this.htmlFileDropdown.appendChild(option);
-        }
-
-        // Add interactive reference document if available
-        if (this.interactiveReferenceDoc) {
-            var refOption = document.createElement('option');
-            refOption.value = 'interactive-ref';
-            refOption.textContent = '\u{1F4CB} Interactive Reference Document';
-            this.htmlFileDropdown.appendChild(refOption);
-        }
-    }
-
-    /**
-     * Display the currently selected HTML file in the output area.
-     */
-    _displayCurrentHtmlFile() {
-        if (this.generatedFileList.length === 0) return;
-        var filename = this.generatedFileList[this.currentHtmlFileIndex];
-        var htmlContent = this.generatedHtmlFiles[filename] || '';
-        this.outputArea.value = htmlContent;
-    }
-
-    /**
-     * Download content as a file with specified MIME type.
-     *
-     * @param {string} content - File content
-     * @param {string} filename - File name
-     * @param {string} mimeType - MIME type
-     */
-    _downloadAsFile(content, filename, mimeType) {
-        var blob = new Blob([content], { type: mimeType });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        this.showToast('Downloaded ' + filename);
     }
 
     // ------------------------------------------------------------------
