@@ -177,9 +177,8 @@ class TemplateEngine {
         var englishOnlyTitle = rawTitle.split(/  +/)[0].trim();
 
         // Title element (English only — NEVER Te Reo)
-        var titleContent = isOverview
-            ? pageData.moduleCode + ' ' + englishOnlyTitle
-            : pageData.moduleCode + ' ' + (lessonPadded || '');
+        // Both overview and lesson pages use MODULE_CODE + English Title
+        var titleContent = pageData.moduleCode + ' ' + englishOnlyTitle;
 
         // HTML attributes
         var htmlAttrs = config.htmlAttributes;
@@ -523,7 +522,7 @@ class TemplateEngine {
                 },
                 "titlePattern": {
                     "overviewPage": "{moduleCode} {englishTitle}",
-                    "lessonPage": "{moduleCode} {lessonNumber}"
+                    "lessonPage": "{moduleCode} {englishTitle}"
                 },
                 "headerPattern": {
                     "overviewPage": {

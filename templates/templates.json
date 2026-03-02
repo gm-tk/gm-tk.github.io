@@ -35,7 +35,7 @@
     },
     "titlePattern": {
       "overviewPage": "{moduleCode} {englishTitle}",
-      "lessonPage": "{moduleCode} {lessonNumber}"
+      "lessonPage": "{moduleCode} {englishTitle}"
     },
     "headerPattern": {
       "overviewPage": {

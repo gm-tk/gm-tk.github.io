@@ -73,6 +73,7 @@ class HtmlConverter {
      */
     assemblePage(pageData, config, moduleInfo) {
         // For overview pages, split content at [MODULE INTRODUCTION]
+        // For lesson pages, split content at [LESSON OVERVIEW] / [LESSON CONTENT]
         var bodyPageData = pageData;
         var menuContentBlocks = null;
 
@@ -85,6 +86,15 @@ class HtmlConverter {
                 contentBlocks: splitResult.bodyBlocks
             };
             menuContentBlocks = splitResult.menuBlocks;
+        } else if (pageData.type === 'lesson') {
+            var lessonSplit = this._splitLessonContent(pageData);
+            bodyPageData = {
+                type: pageData.type,
+                lessonNumber: pageData.lessonNumber,
+                filename: pageData.filename,
+                contentBlocks: lessonSplit.bodyBlocks
+            };
+            menuContentBlocks = lessonSplit.menuBlocks;
         }
 
         var skeletonData = {
@@ -146,6 +156,52 @@ class HtmlConverter {
         var menuBlocks = blocks.slice(0, moduleIntroIndex);
         // Body blocks: everything after MODULE INTRODUCTION (skip the tag itself)
         var bodyBlocks = blocks.slice(moduleIntroIndex + 1);
+
+        return { menuBlocks: menuBlocks, bodyBlocks: bodyBlocks };
+    }
+
+    /**
+     * Split lesson page content blocks into menu content (between [LESSON OVERVIEW]
+     * and [LESSON CONTENT]) and body content (after [LESSON CONTENT]).
+     *
+     * @param {Object} pageData - Page data with contentBlocks
+     * @returns {Object} { menuBlocks: Array, bodyBlocks: Array }
+     */
+    _splitLessonContent(pageData) {
+        var blocks = pageData.contentBlocks || [];
+        var overviewIndex = -1;
+        var contentIndex = -1;
+
+        for (var i = 0; i < blocks.length; i++) {
+            var block = blocks[i];
+            if (block.type === 'paragraph' && block.data) {
+                var text = this._buildFormattedText(block.data);
+                var tagResult = this._normaliser.processBlock(text);
+                for (var t = 0; t < tagResult.tags.length; t++) {
+                    var tagName = tagResult.tags[t].normalised;
+                    if (tagName === 'lesson_overview' && overviewIndex === -1) {
+                        overviewIndex = i;
+                    }
+                    if (tagName === 'lesson_content' && contentIndex === -1) {
+                        contentIndex = i;
+                    }
+                }
+            }
+            if (overviewIndex !== -1 && contentIndex !== -1) break;
+        }
+
+        // If no lesson overview/content tags found, all goes to body
+        if (overviewIndex === -1 && contentIndex === -1) {
+            return { menuBlocks: [], bodyBlocks: blocks };
+        }
+
+        // Menu blocks: between lesson_overview and lesson_content (exclusive of both tags)
+        var menuStart = overviewIndex !== -1 ? overviewIndex + 1 : 0;
+        var menuEnd = contentIndex !== -1 ? contentIndex : blocks.length;
+        var menuBlocks = blocks.slice(menuStart, menuEnd);
+
+        // Body blocks: after lesson_content tag
+        var bodyBlocks = contentIndex !== -1 ? blocks.slice(contentIndex + 1) : [];
 
         return { menuBlocks: menuBlocks, bodyBlocks: bodyBlocks };
     }
@@ -465,6 +521,27 @@ class HtmlConverter {
                 continue;
             }
 
+            // --- Inline info trigger → render as <span class="infoTrigger"> ---
+            if (tagName === 'info_trigger' && category === 'interactive') {
+                // Info triggers (not info_trigger_image) are inline elements
+                // Extract the trigger word and definition from the block
+                var itResult = this._extractInfoTriggerData(pBlock);
+                if (itResult) {
+                    var itHtml = '      <p>' + this._convertInlineFormatting(itResult.beforeText) +
+                        '<span class="infoTrigger" info="' + this._escAttr(itResult.definition) + '">' +
+                        this._escContent(itResult.triggerWord) + '</span>' +
+                        this._convertInlineFormatting(itResult.afterText) + '</p>';
+                    if (inActivity) {
+                        activityParts.push(itHtml);
+                    } else {
+                        pendingContent.push(itHtml);
+                    }
+                    i++;
+                    continue;
+                }
+                // Fall through to interactive handler if extraction fails
+            }
+
             // --- Interactive components ---
             if (category === 'interactive') {
                 flushPending();
@@ -518,10 +595,7 @@ class HtmlConverter {
 
             // --- Headings ---
             if (tagName === 'heading') {
-                flushPending();
-
-                // Bug 9: Handle multiple heading tags in one block
-                // Each heading tag produces a separate heading element
+                // Handle multiple heading tags in one block
                 var headingTags = [];
                 for (var ht = 0; ht < tags.length; ht++) {
                     if (tags[ht].normalised === 'heading') {
@@ -530,7 +604,6 @@ class HtmlConverter {
                 }
 
                 if (headingTags.length > 1) {
-                    // Multiple heading tags in one block — split the clean text
                     var headingTexts = this._splitMultiHeadingText(pBlock);
                     for (var hti = 0; hti < headingTags.length; hti++) {
                         var mhLevel = headingTags[hti].level || 2;
@@ -547,7 +620,7 @@ class HtmlConverter {
                             if (inActivity) {
                                 activityParts.push(mhHtml);
                             } else {
-                                htmlParts.push(self._wrapInRow(mhHtml, colClass));
+                                pendingContent.push(mhHtml);
                             }
                         }
                     }
@@ -580,7 +653,6 @@ class HtmlConverter {
                 if (headingLevel > 5) headingLevel = 5;
 
                 var hTag = 'h' + headingLevel;
-                // Convert inline formatting but then strip any remaining <b>/<i> from headings
                 var headingInner = this._convertInlineFormatting(headingText);
                 headingInner = this._stripHeadingInlineTags(headingInner);
                 var headingHtml = '      <' + hTag + '>' + headingInner + '</' + hTag + '>';
@@ -588,7 +660,7 @@ class HtmlConverter {
                 if (inActivity) {
                     activityParts.push(headingHtml);
                 } else {
-                    htmlParts.push(this._wrapInRow(headingHtml, colClass));
+                    pendingContent.push(headingHtml);
                 }
                 i++;
                 continue;
@@ -692,7 +764,6 @@ class HtmlConverter {
 
             // --- Whakatauki ---
             if (tagName === 'whakatauki') {
-                flushPending();
                 var whakContent = this._collectMultiLineContent(processedBlocks, i, 2);
                 // If there's only one line, try splitting on pipe separator
                 if (whakContent.length === 1 && whakContent[0].indexOf(' | ') !== -1) {
@@ -704,11 +775,10 @@ class HtmlConverter {
                     whakHtml += '      <p>' + this._convertInlineFormatting(whakContent[w]) + '</p>\n';
                 }
                 whakHtml += '    </div>';
-                whakHtml = this._wrapInRow(whakHtml, colClass);
                 if (inActivity) {
                     activityParts.push(whakHtml);
                 } else {
-                    htmlParts.push(whakHtml);
+                    pendingContent.push(whakHtml);
                 }
                 i++;
                 continue;
@@ -716,10 +786,19 @@ class HtmlConverter {
 
             // --- Quote ---
             if (tagName === 'quote') {
-                flushPending();
                 var quoteLines = this._collectMultiLineContent(processedBlocks, i, 2);
                 var quoteText = quoteLines[0] || '';
                 var quoteAck = quoteLines.length > 1 ? quoteLines[1] : '';
+
+                // If only one line, try splitting on attribution pattern (Issue 6)
+                if (!quoteAck && quoteText) {
+                    var ackSplit = this._splitQuoteAttribution(quoteText);
+                    quoteText = ackSplit.quote;
+                    quoteAck = ackSplit.attribution;
+                }
+
+                // Strip italic wrapping from quote text (docx artefact)
+                quoteText = this._stripFullItalic(quoteText);
 
                 // Add quotes if not already present
                 if (quoteText && !quoteText.startsWith('"') && !quoteText.startsWith('\u201C')) {
@@ -732,11 +811,10 @@ class HtmlConverter {
                     quoteHtml += '\n      <p class="quoteAck">' +
                         this._convertInlineFormatting(quoteAck) + '</p>';
                 }
-                quoteHtml = this._wrapInRow(quoteHtml, colClass);
                 if (inActivity) {
                     activityParts.push(quoteHtml);
                 } else {
-                    htmlParts.push(quoteHtml);
+                    pendingContent.push(quoteHtml);
                 }
                 i++;
                 continue;
@@ -744,16 +822,14 @@ class HtmlConverter {
 
             // --- Rhetorical question ---
             if (tagName === 'rhetorical_question') {
-                flushPending();
                 var rqContent = this._collectBlockContent(processedBlocks, i);
                 var rqHtml = '    <div class="rhetoricalQuestion">\n' +
                     '      <p>' + this._convertInlineFormatting(rqContent) + '</p>\n' +
                     '    </div>';
-                rqHtml = this._wrapInRow(rqHtml, colClass);
                 if (inActivity) {
                     activityParts.push(rqHtml);
                 } else {
-                    htmlParts.push(rqHtml);
+                    pendingContent.push(rqHtml);
                 }
                 i++;
                 continue;
@@ -761,14 +837,12 @@ class HtmlConverter {
 
             // --- Video ---
             if (tagName === 'video') {
-                flushPending();
                 var videoUrl = this._extractUrlFromContent(processedBlocks, i);
                 var videoHtml = this._renderVideo(videoUrl, config);
-                videoHtml = this._wrapInRow(videoHtml, colClass);
                 if (inActivity) {
                     activityParts.push(videoHtml);
                 } else {
-                    htmlParts.push(videoHtml);
+                    pendingContent.push(videoHtml);
                 }
                 i++;
                 continue;
@@ -776,14 +850,12 @@ class HtmlConverter {
 
             // --- Image ---
             if (tagName === 'image') {
-                flushPending();
                 var imgInfo = this._extractImageInfo(processedBlocks, i);
                 var imgHtml = this._renderImage(imgInfo, config);
-                imgHtml = this._wrapInRow(imgHtml, colClass);
                 if (inActivity) {
                     activityParts.push(imgHtml);
                 } else {
-                    htmlParts.push(imgHtml);
+                    pendingContent.push(imgHtml);
                 }
                 i++;
                 continue;
@@ -791,15 +863,13 @@ class HtmlConverter {
 
             // --- Audio ---
             if (tagName === 'audio') {
-                flushPending();
                 var audioFile = this._extractAudioFilename(processedBlocks, i);
                 var audioHtml = '      <audio preload="none" src="audio/' +
                     this._escAttr(audioFile) + '" class="audioPlayer icon" title="max-width:300px"></audio>';
-                audioHtml = this._wrapInRow(audioHtml, colClass);
                 if (inActivity) {
                     activityParts.push(audioHtml);
                 } else {
-                    htmlParts.push(audioHtml);
+                    pendingContent.push(audioHtml);
                 }
                 i++;
                 continue;
@@ -807,16 +877,14 @@ class HtmlConverter {
 
             // --- Button ---
             if (tagName === 'button') {
-                flushPending();
                 var btnInfo = this._extractLinkInfo(processedBlocks, i);
                 var btnHtml = '      <a href="' + this._escAttr(btnInfo.url) +
                     '" target="_blank"><div class="button">' +
                     this._convertInlineFormatting(btnInfo.text) + '</div></a>';
-                btnHtml = this._wrapInRow(btnHtml, colClass);
                 if (inActivity) {
                     activityParts.push(btnHtml);
                 } else {
-                    htmlParts.push(btnHtml);
+                    pendingContent.push(btnHtml);
                 }
                 i++;
                 continue;
@@ -824,16 +892,14 @@ class HtmlConverter {
 
             // --- External link button ---
             if (tagName === 'external_link_button') {
-                flushPending();
                 var elbInfo = this._extractLinkInfo(processedBlocks, i);
                 var elbHtml = '      <a href="' + this._escAttr(elbInfo.url) +
                     '" target="_blank"><div class="externalButton">' +
                     this._convertInlineFormatting(elbInfo.text) + '</div></a>';
-                elbHtml = this._wrapInRow(elbHtml, colClass);
                 if (inActivity) {
                     activityParts.push(elbHtml);
                 } else {
-                    htmlParts.push(elbHtml);
+                    pendingContent.push(elbHtml);
                 }
                 i++;
                 continue;
@@ -841,15 +907,13 @@ class HtmlConverter {
 
             // --- External link ---
             if (tagName === 'external_link') {
-                flushPending();
                 var elInfo = this._extractLinkInfo(processedBlocks, i);
                 var elHtml = '      <a href="' + this._escAttr(elInfo.url) +
                     '" target="_blank">' + this._convertInlineFormatting(elInfo.text) + '</a>';
-                elHtml = this._wrapInRow(elHtml, colClass);
                 if (inActivity) {
                     activityParts.push(elHtml);
                 } else {
-                    htmlParts.push(elHtml);
+                    pendingContent.push(elHtml);
                 }
                 i++;
                 continue;
@@ -857,7 +921,6 @@ class HtmlConverter {
 
             // --- Supervisor button ---
             if (tagName === 'supervisor_button') {
-                flushPending();
                 var supContent = this._collectBlockContent(processedBlocks, i);
                 var supHtml = '    <div class="supervisorContainer">\n' +
                     '      <div class="supervisorButton"></div>\n' +
@@ -865,11 +928,10 @@ class HtmlConverter {
                     '        <p>' + this._convertInlineFormatting(supContent) + '</p>\n' +
                     '      </div>\n' +
                     '    </div>';
-                supHtml = this._wrapInRow(supHtml, colClass);
                 if (inActivity) {
                     activityParts.push(supHtml);
                 } else {
-                    htmlParts.push(supHtml);
+                    pendingContent.push(supHtml);
                 }
                 i++;
                 continue;
@@ -877,13 +939,11 @@ class HtmlConverter {
 
             // --- Table (tagged as [TABLE]) ---
             if (pBlock.type === 'table' && this._hasTableTag(pBlock)) {
-                flushPending();
                 var tableHtml = this._renderTable(pBlock.data);
-                tableHtml = this._wrapInRow(tableHtml, colClass);
                 if (inActivity) {
                     activityParts.push(tableHtml);
                 } else {
-                    htmlParts.push(tableHtml);
+                    pendingContent.push(tableHtml);
                 }
                 i++;
                 continue;
@@ -891,6 +951,7 @@ class HtmlConverter {
 
             // --- Untagged table → grid layout ---
             if (pBlock.type === 'table' && !this._hasTableTag(pBlock)) {
+                // Grid tables have their own row structure, so flush first
                 flushPending();
                 var gridTableHtml = this._renderTableAsGrid(pBlock.data);
                 if (inActivity) {
@@ -915,15 +976,13 @@ class HtmlConverter {
 
             // --- Link category (misc buttons) ---
             if (category === 'link') {
-                flushPending();
                 var linkInfo = this._extractLinkInfo(processedBlocks, i);
                 var linkHtml = '      <a href="' + this._escAttr(linkInfo.url) +
                     '" target="_blank">' + this._convertInlineFormatting(linkInfo.text) + '</a>';
-                linkHtml = this._wrapInRow(linkHtml, colClass);
                 if (inActivity) {
                     activityParts.push(linkHtml);
                 } else {
-                    htmlParts.push(linkHtml);
+                    pendingContent.push(linkHtml);
                 }
                 i++;
                 continue;
@@ -1637,8 +1696,8 @@ class HtmlConverter {
                 );
             }
         } else {
-            // Lesson page: simplified menu
-            var lessonMenu = this._generateLessonMenuContent(pageData, config, moduleInfo);
+            // Lesson page: simplified menu with actual content from [Lesson Overview]
+            var lessonMenu = this._generateLessonMenuContent(pageData, config, moduleInfo, menuContentBlocks);
             html = html.replace(
                 '          <!-- MODULE_MENU_CONTENT -->',
                 lessonMenu
@@ -1744,7 +1803,7 @@ class HtmlConverter {
         if (!blocks || blocks.length === 0) {
             return indent + '<!-- Information tab content -->';
         }
-        return this._renderModuleMenuBlocks(blocks, config, indent, false);
+        return this._renderModuleMenuBlocks(blocks, config, indent, false, true);
     }
 
     /**
@@ -1756,9 +1815,10 @@ class HtmlConverter {
      * @param {Object} config - Template config
      * @param {string} indent - Base indentation string
      * @param {boolean} isOverviewTab - Whether this is the Overview tab (first h4 gets span)
+     * @param {boolean} [isInfoTab] - Whether this is the Information tab (uses h5 headings)
      * @returns {string} HTML content for the tab
      */
-    _renderModuleMenuBlocks(blocks, config, indent, isOverviewTab) {
+    _renderModuleMenuBlocks(blocks, config, indent, isOverviewTab, isInfoTab) {
         var processedBlocks = this._processAllBlocks(blocks);
         var parts = [];
         var isFirstHeading = true;
@@ -1766,6 +1826,8 @@ class HtmlConverter {
             config.moduleMenu.overviewPage.successCriteriaHeading)
             ? config.moduleMenu.overviewPage.successCriteriaHeading
             : 'How will I know if I\'ve learned it?';
+        // Information tab uses h5 headings; Overview tab uses h4
+        var menuHeadingTag = isInfoTab ? 'h5' : 'h4';
         var i = 0;
         var self = this;
 
@@ -1801,7 +1863,7 @@ class HtmlConverter {
                         var mhMenuInner = this._convertInlineFormatting(mhMenuText);
                         mhMenuInner = this._stripHeadingInlineTags(mhMenuInner);
                         if (mhMenuInner.trim()) {
-                            parts.push(indent + '<h4>' + mhMenuInner + '</h4>');
+                            parts.push(indent + '<' + menuHeadingTag + '>' + mhMenuInner + '</' + menuHeadingTag + '>');
                         }
                     }
                     isFirstHeading = false;
@@ -1812,11 +1874,11 @@ class HtmlConverter {
                 var headingText = pBlock.cleanText || '';
                 headingText = this._stripFullHeadingFormatting(headingText);
 
-                // Bug 7: If this is H1 in overview tab, split heading from description
+                // If this is H1 in overview tab, split heading from description
                 if (primaryTag.level === 1 && isOverviewTab && isFirstHeading) {
                     var h1Parts = this._splitH1HeadingAndDescription(pBlock);
                     // Heading with span (overview tab primary title)
-                    parts.push(indent + '<h4><span>' + this._escContent(h1Parts.heading) + '</span></h4>');
+                    parts.push(indent + '<' + menuHeadingTag + '><span>' + this._escContent(h1Parts.heading) + '</span></' + menuHeadingTag + '>');
                     if (h1Parts.description) {
                         parts.push(indent + '<p>' + this._escContent(h1Parts.description) + '</p>');
                     }
@@ -1825,7 +1887,7 @@ class HtmlConverter {
                     continue;
                 }
 
-                // Normalise "Success Criteria" heading (Bug 6)
+                // Normalise "Success Criteria" heading
                 var normalisedHeading = this._normaliseMenuHeading(headingText, successCriteriaHeading);
 
                 // Convert and strip inline formatting from headings
@@ -1833,9 +1895,9 @@ class HtmlConverter {
                 headingInner = this._stripHeadingInlineTags(headingInner);
 
                 if (isOverviewTab && isFirstHeading) {
-                    parts.push(indent + '<h4><span>' + headingInner + '</span></h4>');
+                    parts.push(indent + '<' + menuHeadingTag + '><span>' + headingInner + '</span></' + menuHeadingTag + '>');
                 } else {
-                    parts.push(indent + '<h4>' + headingInner + '</h4>');
+                    parts.push(indent + '<' + menuHeadingTag + '>' + headingInner + '</' + menuHeadingTag + '>');
                 }
                 isFirstHeading = false;
                 i++;
@@ -1945,6 +2007,83 @@ class HtmlConverter {
     }
 
     /**
+     * Extract info trigger data from a processed block.
+     * Looks for patterns where the clean text has a word followed by a definition
+     * from the red text instructions.
+     *
+     * @param {Object} pBlock - Processed block
+     * @returns {Object|null} { triggerWord, definition, beforeText, afterText } or null
+     */
+    _extractInfoTriggerData(pBlock) {
+        var cleanText = (pBlock.cleanText || '').trim();
+        var instructions = (pBlock.tagResult && pBlock.tagResult.redTextInstructions)
+            ? pBlock.tagResult.redTextInstructions
+            : [];
+
+        // The definition is typically in the red text instruction
+        var definition = instructions.length > 0 ? instructions[0].trim() : '';
+
+        // The trigger word is the clean text (the visible word the reader clicks)
+        if (cleanText && definition) {
+            return {
+                triggerWord: cleanText,
+                definition: definition,
+                beforeText: '',
+                afterText: ''
+            };
+        }
+
+        // If clean text has content but no definition, it might still be
+        // an inline trigger where the definition comes from context
+        if (cleanText && !definition) {
+            return null; // Fall through to interactive handler
+        }
+
+        return null;
+    }
+
+    /**
+     * Split a quote string into quote text and attribution.
+     * Looks for patterns like "quote text" By Author or "quote text" — Author
+     *
+     * @param {string} text - Full quote text
+     * @returns {Object} { quote: string, attribution: string }
+     */
+    _splitQuoteAttribution(text) {
+        if (!text) return { quote: '', attribution: '' };
+
+        // Pattern 1: closing quote followed by "By" (case-insensitive)
+        // Handles: "quote text" By Author, *"quote text"* By Author, etc.
+        var byMatch = text.match(/^([\s\S]*?["\u201D\*])\s+(By\s+[\s\S]+)$/i);
+        if (byMatch) {
+            return { quote: byMatch[1].trim(), attribution: byMatch[2].trim() };
+        }
+
+        // Pattern 2: em dash separator
+        var dashMatch = text.match(/^([\s\S]*?["\u201D\*])\s+[\u2014\u2013\-]{1,3}\s+([\s\S]+)$/);
+        if (dashMatch) {
+            return { quote: dashMatch[1].trim(), attribution: dashMatch[2].trim() };
+        }
+
+        // Pattern 3: Look for last sentence starting with "By " after any kind of quote mark
+        var lastByIdx = text.lastIndexOf(' By ');
+        if (lastByIdx === -1) lastByIdx = text.lastIndexOf(' by ');
+        if (lastByIdx > 0) {
+            var beforeBy = text.substring(0, lastByIdx).trim();
+            // Only split if the "By" comes after a quote-ending character
+            var lastChar = beforeBy.charAt(beforeBy.length - 1);
+            if (lastChar === '"' || lastChar === '\u201D' || lastChar === '*' || lastChar === '.') {
+                return {
+                    quote: beforeBy,
+                    attribution: text.substring(lastByIdx + 1).trim()
+                };
+            }
+        }
+
+        return { quote: text, attribution: '' };
+    }
+
+    /**
      * Strip italic markers from entire text (module menu content).
      *
      * @param {string} text - Text with formatting markers
@@ -2042,24 +2181,143 @@ class HtmlConverter {
 
     /**
      * Generate lesson page module menu content.
+     * Routes [Lesson Overview] content into the menu with template config labels.
      *
      * @param {Object} pageData - Page data
      * @param {Object} config - Template config
      * @param {Object} moduleInfo - Module info
+     * @param {Array|null} menuContentBlocks - Content blocks from [Lesson Overview]
      * @returns {string} HTML content
      */
-    _generateLessonMenuContent(pageData, config, moduleInfo) {
+    _generateLessonMenuContent(pageData, config, moduleInfo, menuContentBlocks) {
         var labels = (config.moduleMenu && config.moduleMenu.lessonPage && config.moduleMenu.lessonPage.labels)
             ? config.moduleMenu.lessonPage.labels
             : { learning: 'We are learning:', success: 'I can:' };
+        var indent = '          ';
 
-        var html = '';
-        html += '          <h5>' + this._escContent(labels.learning) + '</h5>\n';
-        html += '          <!-- Learning intentions content -->\n';
-        html += '          <h5>' + this._escContent(labels.success) + '</h5>\n';
-        html += '          <!-- Success criteria content -->';
+        if (!menuContentBlocks || menuContentBlocks.length === 0) {
+            // No content — use empty placeholders
+            var html = '';
+            html += indent + '<h5>' + this._escContent(labels.learning) + '</h5>\n';
+            html += indent + '<!-- Learning intentions content -->\n';
+            html += indent + '<h5>' + this._escContent(labels.success) + '</h5>\n';
+            html += indent + '<!-- Success criteria content -->';
+            return html;
+        }
 
-        return html;
+        // Process the menu content blocks to find description, learning, and success sections
+        var processedBlocks = this._processAllBlocks(menuContentBlocks);
+        var parts = [];
+        var descriptionParts = [];
+        var learningItems = [];
+        var successItems = [];
+        var currentSection = 'description'; // before any recognised heading
+        var i = 0;
+
+        while (i < processedBlocks.length) {
+            var pBlock = processedBlocks[i];
+            var tags = pBlock.tagResult ? pBlock.tagResult.tags : [];
+            var primaryTag = tags.length > 0 ? tags[0] : null;
+            var category = primaryTag ? primaryTag.category : null;
+
+            // Skip structural tags and whitespace
+            if (category === 'structural') { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isWhitespaceOnly) { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isRedTextOnly && tags.length === 0 && !pBlock.cleanText) { i++; continue; }
+
+            var cleanText = (pBlock.cleanText || '').trim();
+
+            // Detect section boundaries by matching label-like text
+            if (cleanText) {
+                var lowerText = cleanText.toLowerCase().replace(/[*_]/g, '');
+                if (lowerText.indexOf('we are learning') !== -1 ||
+                    lowerText.indexOf('learning intention') !== -1) {
+                    currentSection = 'learning';
+                    i++;
+                    continue;
+                }
+                if (lowerText.indexOf('i can') !== -1 ||
+                    lowerText.indexOf('success criteria') !== -1 ||
+                    lowerText.indexOf('you will show') !== -1 ||
+                    lowerText.indexOf('how will i know') !== -1) {
+                    currentSection = 'success';
+                    i++;
+                    continue;
+                }
+            }
+
+            // Also check heading tags for section detection
+            if (primaryTag && primaryTag.normalised === 'heading' && cleanText) {
+                var lowerHeading = cleanText.toLowerCase().replace(/[*_]/g, '');
+                if (lowerHeading.indexOf('we are learning') !== -1 ||
+                    lowerHeading.indexOf('learning intention') !== -1) {
+                    currentSection = 'learning';
+                    i++;
+                    continue;
+                }
+                if (lowerHeading.indexOf('i can') !== -1 ||
+                    lowerHeading.indexOf('success criteria') !== -1 ||
+                    lowerHeading.indexOf('you will show') !== -1 ||
+                    lowerHeading.indexOf('how will i know') !== -1) {
+                    currentSection = 'success';
+                    i++;
+                    continue;
+                }
+            }
+
+            // Collect list items
+            if (pBlock.data && pBlock.data.isListItem) {
+                var listItems = [];
+                while (i < processedBlocks.length) {
+                    var lb = processedBlocks[i];
+                    if (lb.data && lb.data.isListItem) {
+                        listItems.push(lb);
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                if (currentSection === 'learning') {
+                    learningItems = learningItems.concat(listItems);
+                } else if (currentSection === 'success') {
+                    successItems = successItems.concat(listItems);
+                }
+                continue;
+            }
+
+            // Collect description paragraphs (before any heading section)
+            if (currentSection === 'description' && cleanText) {
+                descriptionParts.push(pBlock);
+            }
+
+            i++;
+        }
+
+        // Build HTML output
+        var result = [];
+
+        // Description paragraph(s)
+        for (var d = 0; d < descriptionParts.length; d++) {
+            var descText = descriptionParts[d].cleanText || '';
+            descText = this._stripFullItalic(descText);
+            var descInner = this._convertInlineFormatting(descText);
+            descInner = descInner.replace(/<\/?i>/g, '');
+            result.push(indent + '<p>' + descInner + '</p>');
+        }
+
+        // "We are learning:" heading + list
+        result.push(indent + '<h5>' + this._escContent(labels.learning) + '</h5>');
+        if (learningItems.length > 0) {
+            result.push(this._renderMenuList(learningItems, indent));
+        }
+
+        // "I can:" / "You will show..." heading + list
+        result.push(indent + '<h5>' + this._escContent(labels.success) + '</h5>');
+        if (successItems.length > 0) {
+            result.push(this._renderMenuList(successItems, indent));
+        }
+
+        return result.join('\n');
     }
 
     // ------------------------------------------------------------------

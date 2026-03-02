@@ -537,8 +537,12 @@ Overview page (-00):
 Lesson page (-01, -02, etc.):
   Header: #module-code has zero-padded lesson number (01, 02, etc.)
   h1 span: MODULE title (not lesson-specific title)
-  Module menu: Simplified (no tabs) or Full tabs (if both overview + info content)
-  Title element: MODULE_CODE lesson# only
+  Module menu: Simplified (no tabs), populated from [Lesson Overview] content
+    - Content between [Lesson Overview] and [Lesson Content] → module menu
+    - "We are learning:" and "I can:" labels from template config (not writer text)
+    - List items have italic stripped, description paragraph included
+    - [Lesson Content] marks start of body content
+  Title element: MODULE_CODE English Title (same as overview — never lesson number)
   Footer: prev + next + home (middle pages), prev + home (final page)
 
 Years 9-10/NCEA: DUAL h1 titles (English + Te Reo) on EVERY page
@@ -751,6 +755,7 @@ Segment contains ONLY `[TITLE BAR]` + headings + `[End page]`, no body content �
 | `button` | `<a href="URL" target="_blank"><div class="button">Text</div></a>` |
 | `external_link` | `<a href="URL" target="_blank">Text</a>` |
 | `activity` + ID | `<div class="activity interactive" number="ID">` or `<div class="activity alertPadding" number="ID">` |
+| `info_trigger` | Inline: `<span class="infoTrigger" info="definition">trigger word</span>` within `<p>` |
 
 ### Overview Page Content Routing
 
@@ -763,6 +768,20 @@ This content goes into the module menu tab panes, split between Overview and Inf
 
 **ZONE 2 — Body content** (content after `[MODULE INTRODUCTION]` through `[End page]`):
 This content goes into `<div id="body">` as normal body content.
+
+### Lesson Page Content Routing
+
+On lesson pages (`-01`, `-02`, etc.), content is split into TWO zones by the `[LESSON OVERVIEW]` and `[LESSON CONTENT]` tags:
+
+**ZONE 1 — Module menu** (content between `[LESSON OVERVIEW]` and `[LESSON CONTENT]`):
+This content is routed into the module menu with template config labels:
+- Description paragraph(s) before the first label section are included
+- "We are learning:" / "I can:" labels come from template config, NOT from the writer's text
+- List items under each label section populate the menu
+- Italic formatting (`<i>`) is stripped from module menu list items and text
+
+**ZONE 2 — Body content** (content after `[LESSON CONTENT]` through `[End page]`):
+This content goes into `<div id="body">` as normal body content, starting with the lesson heading.
 
 ### Title Bar Parsing
 
@@ -802,7 +821,7 @@ Key rules:
 - No `class="active"`, `data-toggle`, `href`, `id`, `fade`, or `in` attributes on tab elements
 - `tooltip="Overview"` goes on `#module-menu-content` only (NOT on `#module-menu-button`) for overview pages
 - Each `<div class="tab-pane">` contains inner grid wrapping
-- All headings inside tabs use `<h4>` (not `<h2>`)
+- Overview tab headings use `<h4>`; Information tab headings use `<h5>`
 - Only the Overview tab's primary title uses `<h4><span>`
 - "Success Criteria" heading normalised to "How will I know if I've learned it?"
 
@@ -838,6 +857,10 @@ Whakatauki content with a `|` pipe separator splits into two `<p>` elements:
 - Wide interactives (D&D column) use `col-md-12 col-12`
 - D&D column with many images uses `col-md-10 col-12`
 - ALL carousel types use `col-md-8 col-12` for viewer column
+- **Content grouping** — consecutive body content (headings, paragraphs, lists, images, videos, quotes, links, buttons, whakatauki, rhetorical questions) that share the same column class are grouped in a SINGLE row wrapper. New rows are created only when:
+  - The column class changes (e.g., for a wide interactive)
+  - A structural boundary occurs (activity wrapper, interactive component, alert, grid table)
+  - An element has its own row structure (untagged tables rendered as grid)
 
 ### Content Preservation Rules
 
@@ -981,19 +1004,23 @@ INTERACTIVE 2 of 7
 - Tracks boundary decisions (which rules fired and why)
 - Public API: `assignPages(contentBlocks, moduleCode)`
 
-#### html-converter.js — DONE (Phase 3, updated Phase 4)
+#### html-converter.js — DONE (Phase 3, updated Phase 4, recalibrated Phase 4.5)
 - The main conversion engine
 - Takes parsed content + template configuration + interactive extractor → produces HTML strings
 - Handles:
   - Document skeleton assembly (skeleton from TemplateEngine + body content)
   - **Overview page content routing** — splits content at `[MODULE INTRODUCTION]` into menu tab content (before) and body content (after)
-  - **Module menu tab content** — populates Overview and Information tab panes with correctly routed content
+  - **Lesson page content routing** — splits content at `[LESSON OVERVIEW]` / `[LESSON CONTENT]` boundaries; menu content goes to module menu, body content starts after `[LESSON CONTENT]`
+  - **Module menu tab content** — populates Overview (h4 headings) and Information (h5 headings) tab panes with correctly routed content
+  - **Lesson module menu content** — populates lesson page module menu with actual "We are learning:" / "I can:" content from `[LESSON OVERVIEW]`, using template config labels, with italic stripped from list items, and optional description paragraph
   - Body content (paragraphs, headings, lists, tables, alerts, media, etc.)
+  - **Content grouping** — consecutive body content (headings, paragraphs, lists, images, videos, quotes, etc.) grouped in single row wrappers; new rows only created for structural boundaries (activities, interactives, alerts) or column class changes
   - Formatting conversion (`**bold**` → `<b>`, `*italic*` → `<i>`, `***both***` → `<b><i>`, `__underline__` → `<u>`)
   - Hyperlink conversion (`__text__ [LINK: URL]` → `<a href target="_blank">`)
   - HTML escaping of content text with tag preservation
   - Red text processing (strip, extract tags, preserve instructions as `<!-- CS: ... -->` comments)
   - Interactive placeholder insertion (structured placeholders via InteractiveExtractor with data extraction, tier classification, and consumed-block skipping)
+  - **Inline info trigger rendering** — `[info trigger]` tags rendered as `<span class="infoTrigger" info="definition">word</span>` inline elements
   - Grid wrapping (all content inside `<div class="row"><div class="col-md-8 col-12">`)
   - Video embedding (YouTube, YouTube Shorts, Vimeo with correct embed URLs)
   - Image placeholders (placehold.co + commented-out iStock references)
@@ -1001,10 +1028,11 @@ INTERACTIVE 2 of 7
   - **Heading rules** — no spans on h2-h5, full-heading bold/italic stripping, H1→H2 in body, consecutive heading tags produce separate elements
   - **H1 splitting** — on overview pages, bold heading + italic description separated into heading + `<p>`
   - **Success Criteria normalisation** — heading normalised to "How will I know if I've learned it?"
-  - **Module menu formatting** — h4 headings in tabs, italic stripped from list items and intro text
+  - **Module menu formatting** — h4 headings in Overview tab, h5 headings in Information tab, italic stripped from list items and intro text
+  - **Quote formatting** — splits quote text and attribution into separate `<p class="quoteText">` and `<p class="quoteAck">` elements
   - **Whakatauki pipe splitting** — content with `|` separator splits into Māori and English `<p>` elements
   - Lesson page rules (lesson number prefix stripping, module menu label normalisation)
-  - Module menu content population (overview tabs with actual content, lesson simplified menu)
+  - Module menu content population (overview tabs with actual content, lesson menu with routed content)
 - Maintains `collectedInteractives` array populated during conversion for reference doc generation
 - Public API: `convertPage(pageData, config)`, `assemblePage(pageData, config, moduleInfo)`
 
@@ -1027,11 +1055,13 @@ INTERACTIVE 2 of 7
 - Classifies interactives by tier (Tier 1: ParseMaster renders, Tier 2: Claude AI Project builds)
 - Identifies the data pattern (13 patterns) being used
 - Extracts all associated data (tables, numbered items, red text instructions, media references)
-- Conservative content boundary detection — looks ahead from interactive tag to find associated data
+- **Sub-tag grouping** — numbered sub-tags (slides, tabs, accordions, flip cards, shapes, hints, click drops) consumed as data within their parent interactive, not treated as separate interactives
+- **Relaxed boundary detection** — within numbered items scope, headings/body/media/styling content is captured as item data; only structural/activity/different-interactive boundaries break
+- **Speech bubble conversation detection** — Pattern 9 conversation layout consumes all "Prompt N:" / "AI response:" paragraphs
 - Produces structured placeholder HTML with HTML comments (type, pattern, data summary, writer instructions)
 - Produces reference entry objects for the interactive reference document
 - Generates complete plain text reference document for all interactives in a module
-- Handles interactives both inside and outside activity wrappers
+- **Inline interactives** — interactives not inside a named `[activity]` block get no `<div class="activity">` wrapper
 - Column class selection based on interactive type (wide for D&D column, info trigger image)
 - Public API: `processInteractive(contentBlocks, startIndex, pageFilename, activityId, insideActivity)`, `generateReferenceDocument(allInteractives, moduleCode)`
 
@@ -1119,7 +1149,7 @@ User drops .docx file
     },
     "titlePattern": {
       "overviewPage": "{moduleCode} {englishTitle}",
-      "lessonPage": "{moduleCode} {lessonNumber}"
+      "lessonPage": "{moduleCode} {englishTitle}"
     },
     "headerPattern": {
       "overviewPage": {
