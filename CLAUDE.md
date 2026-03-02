@@ -31,16 +31,18 @@
 
 ### What ParseMaster Does Today
 
-ParseMaster is a client-side web application that reads Writer Template `.docx` files and converts them into clean, structured plain text files. These text files are then manually fed into a Claude AI Project for conversion into finalized HTML pages for the D2L/Brightspace LMS.
+ParseMaster is a client-side web application that reads Writer Template `.docx` files and converts them into fully marked-up HTML files for the D2L/Brightspace LMS. It also produces clean, structured plain text output (legacy mode). Interactive components are rendered as temporary placeholders — the Claude AI Project focuses exclusively on building the interactive component code.
 
-### What ParseMaster Will Do (Planned)
+### Current Capabilities
 
-ParseMaster will be extended to handle the full conversion pipeline:
-
-1. **Parse** `.docx` → structured internal representation (DONE)
-2. **Convert** structured representation → fully marked-up HTML files (PLANNED)
-3. **Output** multiple downloadable HTML files per module (PLANNED)
-4. **Output** a supplementary interactive reference document (PLANNED)
+1. **Parse** `.docx` → structured internal representation (DONE — Phase 0)
+2. **Tag normalisation** → canonical tag forms with category classification (DONE — Phase 1)
+3. **Page boundary detection** → multi-page splitting with validation rules (DONE — Phase 1)
+4. **Template configuration** → JSON-driven template system with auto-detection (DONE — Phase 2)
+5. **HTML conversion** → fully marked-up HTML for all non-interactive content (DONE — Phase 3)
+6. **Interactive placeholders** → temporary red placeholders for interactive components (DONE — Phase 3)
+7. **Output** multiple downloadable HTML files per module (DONE — Phase 3)
+8. **Output** a supplementary interactive reference document (PLANNED — Phase 4)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -92,7 +94,7 @@ User drops .docx file
     → SDT wrappers unwrapped
     → Content boundaries detected ([TITLE BAR] marker)
     → Metadata extracted from boilerplate
-  → OutputFormatter.formatAll() converts to text
+  → OutputFormatter.formatAll() converts to text (legacy output)
     → Metadata block formatted
     → Content formatted with formatting markers
   → TemplateEngine.detectTemplate() auto-selects template from module code (Phase 2)
@@ -106,9 +108,18 @@ User drops .docx file
     → Applies 4 validation rules
     → Splits content into overview + lesson pages
     → Assigns filenames (MODULE_CODE-XX.html)
+  → HtmlConverter generates HTML for each page (Phase 3)
+    → TemplateEngine generates document skeleton per page
+    → HtmlConverter.convertPage() renders all non-interactive content blocks
+    → Interactive components rendered as temporary red placeholders
+    → Module menu content populated
+    → Complete HTML files assembled with skeleton + body content
   → App.showResults() displays output
     → Metadata panel includes selected template name
-    → User can Copy or Download
+    → HTML output mode (default): shows generated HTML source, file selector dropdown
+    → Text output mode (legacy): shows plain text output
+    → User can toggle between HTML/text modes
+    → Copy/Download buttons adapt to current mode
     → Debug panel shows template config, tag & page analysis, skeleton preview
 ```
 
@@ -117,11 +128,12 @@ User drops .docx file
 | Class | File | Purpose |
 |-------|------|---------|
 | `DocxParser` | `js/docx-parser.js` | Extracts structured content from .docx XML |
-| `OutputFormatter` | `js/formatter.js` | Converts parsed data to plain text output |
+| `OutputFormatter` | `js/formatter.js` | Converts parsed data to plain text output (legacy) |
 | `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, and red text processing |
 | `PageBoundary` | `js/page-boundary.js` | Page boundary detection, validation, and assignment |
 | `TemplateEngine` | `js/template-engine.js` | Template config loading, resolution, auto-detection, skeleton generation |
-| `App` | `js/app.js` | UI controller — upload, display, clipboard, download, debug panel, template selection |
+| `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
+| `App` | `js/app.js` | UI controller — upload, display, clipboard, download, debug panel, template selection, output mode toggle |
 
 ---
 
@@ -131,14 +143,15 @@ User drops .docx file
 gm-tk.github.io/
 ├── index.html              # Single-page application shell
 ├── css/
-│   └── styles.css          # All application styles (including debug panel, template selector)
+│   └── styles.css          # All application styles (including debug panel, template selector, output mode)
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
-│   ├── formatter.js         # Plain text output formatter
+│   ├── formatter.js         # Plain text output formatter (legacy)
 │   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1)
 │   ├── page-boundary.js     # Page boundary detection & validation (Phase 1)
 │   ├── template-engine.js   # Template config loading, resolution & skeleton generation (Phase 2)
-│   └── app.js              # UI controller (with debug panel & template integration)
+│   ├── html-converter.js    # Core HTML conversion engine (Phase 3)
+│   └── app.js              # UI controller (with debug panel, template integration, output mode toggle)
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -151,7 +164,6 @@ gm-tk.github.io/
 ```
 gm-tk.github.io/
 ├── js/
-│   ├── html-converter.js        # HTML generation engine (PLANNED)
 │   └── interactive-extractor.js # Interactive data extraction & reference doc (PLANNED)
 ```
 
@@ -321,6 +333,14 @@ The UI uses CSS `.hidden` class to toggle between these states:
 2. `#processing-section` — spinner during parse
 3. `#results-section` — output display with actions
 4. `#debug-panel` — collapsible tag & page analysis debug panel (appears below results after parse)
+
+### Output Mode Toggle (Phase 3)
+
+The results section includes an output mode toggle button that switches between:
+- **HTML Output** (default when HTML files generated) — shows the HTML source of the currently selected page file. A dropdown (`#html-file-dropdown`) lets users select which file to view. Copy/Download buttons work with the HTML source.
+- **Text Output** (legacy) — shows the plain text output from OutputFormatter. Copy/Download buttons work with the text output.
+
+The toggle button (`#output-mode-toggle`) dynamically updates its label and the action button labels to reflect the current mode.
 
 ### Template Selector (Phase 2)
 
@@ -873,18 +893,25 @@ INTERACTIVE 2 of 7
 - Tracks boundary decisions (which rules fired and why)
 - Public API: `assignPages(contentBlocks, moduleCode)`
 
-#### html-converter.js
+#### html-converter.js — DONE (Phase 3)
 - The main conversion engine
 - Takes parsed content + template configuration → produces HTML strings
 - Handles:
-  - Document skeleton (html tag, head, body structure)
-  - Header section (module code, titles, module menu)
+  - Document skeleton assembly (skeleton from TemplateEngine + body content)
   - Body content (paragraphs, headings, lists, tables, alerts, media, etc.)
-  - Footer section (navigation links)
-  - Formatting conversion (markdown markers → HTML tags)
-  - Red text processing (strip, extract tags, preserve as comments)
-  - Interactive placeholder insertion
-  - Grid wrapping (row/col structure)
+  - Formatting conversion (`**bold**` → `<b>`, `*italic*` → `<i>`, `***both***` → `<b><i>`, `__underline__` → `<u>`)
+  - Hyperlink conversion (`__text__ [LINK: URL]` → `<a href target="_blank">`)
+  - HTML escaping of content text with tag preservation
+  - Red text processing (strip, extract tags, preserve instructions as `<!-- CS: ... -->` comments)
+  - Interactive placeholder insertion (temporary red text placeholders)
+  - Grid wrapping (all content inside `<div class="row"><div class="col-md-8 col-12">`)
+  - Video embedding (YouTube, YouTube Shorts, Vimeo with correct embed URLs)
+  - Image placeholders (placehold.co + commented-out iStock references)
+  - Activity wrapper detection (interactive vs alertPadding based on content)
+  - Heading rules (no spans on h2-h5, full-heading italic stripping, H1→H2 in body)
+  - Lesson page rules (lesson number prefix stripping, module menu label normalisation)
+  - Module menu content population (overview tabs, lesson simplified menu)
+- Public API: `convertPage(pageData, config)`, `assemblePage(pageData, config, moduleInfo)`
 
 #### template-engine.js — DONE (Phase 2)
 - Loads template configurations from `templates/templates.json` (with embedded fallback)
@@ -904,18 +931,31 @@ INTERACTIVE 2 of 7
 - Produces placeholder HTML for the main output
 - Produces reference entries for the interactive reference document
 
-### Extended App Flow
+### Extended App Flow (Current — Phase 3)
 
 ```
 User drops .docx file
-  → User selects template from dropdown
-  → DocxParser.parse() extracts content (existing, unchanged)
+  → Template auto-detected from module code
+  → DocxParser.parse() extracts content
+  → OutputFormatter.formatAll() produces legacy text output
   → TagNormaliser processes all tags
   → PageBoundary validates and assigns pages
-  → For each page:
-    → TemplateEngine generates document shell
-    → HtmlConverter processes content blocks
-    → InteractiveExtractor handles interactive placeholders
+  → HtmlConverter generates HTML for each page:
+    → TemplateEngine.generateSkeleton() creates document shell
+    → HtmlConverter.convertPage() renders body content
+    → HtmlConverter.assemblePage() combines skeleton + content + module menu
+    → Interactive components rendered as temporary red placeholders
+  → App displays results:
+    → HTML mode (default): HTML source in output area with file selector dropdown
+    → Text mode (legacy): Plain text in output area
+    → Toggle button switches between modes
+    → Copy/Download buttons adapt to current mode
+```
+
+### Planned App Flow Additions (Phase 4+)
+
+```
+  → InteractiveExtractor handles structured interactive placeholders
   → App offers download of:
     → Individual HTML files (MODULE_CODE-00.html, -01.html, etc.)
     → Interactive Reference Document (.txt or .html)

@@ -93,23 +93,32 @@
 
             <!-- Action buttons -->
             <div class="actions-bar">
+                <button id="output-mode-toggle" class="btn btn-toggle" type="button" title="Switch output mode">
+                    &#128196; Switch to Text Output
+                </button>
                 <button id="btn-copy-all" class="btn btn-primary" type="button">
-                    &#128203; Copy All to Clipboard
+                    &#128203; Copy HTML Source
                 </button>
                 <button id="btn-copy-content" class="btn" type="button">
-                    &#128203; Copy Content Only
+                    &#128203; Copy HTML Source
                 </button>
                 <button id="btn-download" class="btn" type="button">
-                    &#128190; Download as .txt
+                    &#128190; Download .html
                 </button>
                 <button id="btn-reset" class="btn" type="button">
                     &#128260; Parse Another File
                 </button>
             </div>
 
+            <!-- HTML file selector -->
+            <div id="html-file-selector" class="html-file-selector hidden">
+                <label for="html-file-dropdown" class="html-file-label">Viewing:</label>
+                <select id="html-file-dropdown" class="html-file-dropdown"></select>
+            </div>
+
             <!-- Output -->
-            <label for="output-area" class="sr-only">Parsed output text</label>
-            <textarea id="output-area" readonly aria-label="Parsed output text"></textarea>
+            <label for="output-area" class="sr-only">Output</label>
+            <textarea id="output-area" readonly aria-label="Output"></textarea>
         </section>
 
         <!-- Debug Panel -->
@@ -143,6 +152,7 @@
     <script src="js/tag-normaliser.js"></script>
     <script src="js/page-boundary.js"></script>
     <script src="js/template-engine.js"></script>
+    <script src="js/html-converter.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

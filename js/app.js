@@ -14,6 +14,7 @@ class App {
         this.tagNormaliser = new TagNormaliser();
         this.pageBoundary = new PageBoundary(this.tagNormaliser);
         this.templateEngine = new TemplateEngine();
+        this.htmlConverter = new HtmlConverter(this.tagNormaliser, this.templateEngine);
 
         /** Cached formatted output after a successful parse */
         this.currentOutput = null;
@@ -26,6 +27,18 @@ class App {
 
         /** Currently selected template ID */
         this.selectedTemplateId = null;
+
+        /** Generated HTML files keyed by filename */
+        this.generatedHtmlFiles = {};
+
+        /** Ordered list of generated filenames */
+        this.generatedFileList = [];
+
+        /** Currently selected HTML file index for display */
+        this.currentHtmlFileIndex = 0;
+
+        /** Output mode: 'html' or 'text' */
+        this.outputMode = 'html';
 
         this._bindElements();
         this._bindEvents();
@@ -59,6 +72,9 @@ class App {
         this.debugToggle = document.getElementById('debug-toggle');
         this.templateDropdown = document.getElementById('template-dropdown');
         this.templateAutoLabel = document.getElementById('template-auto-label');
+        this.outputModeToggle = document.getElementById('output-mode-toggle');
+        this.htmlFileSelector = document.getElementById('html-file-selector');
+        this.htmlFileDropdown = document.getElementById('html-file-dropdown');
     }
 
     // ------------------------------------------------------------------
@@ -112,19 +128,31 @@ class App {
 
         // Action buttons
         this.btnCopyAll.addEventListener('click', function () {
-            if (self.currentOutput) {
+            if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
+                var filename = self.generatedFileList[self.currentHtmlFileIndex];
+                var htmlContent = self.generatedHtmlFiles[filename] || '';
+                self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
+            } else if (self.currentOutput) {
                 self.copyToClipboard(self.currentOutput.full, 'Full output copied to clipboard');
             }
         });
 
         this.btnCopyContent.addEventListener('click', function () {
-            if (self.currentOutput) {
+            if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
+                var filename = self.generatedFileList[self.currentHtmlFileIndex];
+                var htmlContent = self.generatedHtmlFiles[filename] || '';
+                self.copyToClipboard(htmlContent, 'HTML source copied to clipboard');
+            } else if (self.currentOutput) {
                 self.copyToClipboard(self.currentOutput.contentOnly, 'Content copied to clipboard (without metadata)');
             }
         });
 
         this.btnDownload.addEventListener('click', function () {
-            if (self.currentOutput) {
+            if (self.outputMode === 'html' && self.generatedFileList.length > 0) {
+                var filename = self.generatedFileList[self.currentHtmlFileIndex];
+                var htmlContent = self.generatedHtmlFiles[filename] || '';
+                self._downloadAsFile(htmlContent, filename, 'text/html;charset=utf-8');
+            } else if (self.currentOutput) {
                 const code = self.currentMetadata && self.currentMetadata.moduleCode
                     ? self.currentMetadata.moduleCode
                     : 'ParseMaster_output';
@@ -142,6 +170,21 @@ class App {
             // Hide auto-detected label when user manually changes
             self.templateAutoLabel.classList.add('hidden');
         });
+
+        // Output mode toggle
+        if (this.outputModeToggle) {
+            this.outputModeToggle.addEventListener('click', function () {
+                self._toggleOutputMode();
+            });
+        }
+
+        // HTML file selector dropdown
+        if (this.htmlFileDropdown) {
+            this.htmlFileDropdown.addEventListener('change', function () {
+                self.currentHtmlFileIndex = parseInt(self.htmlFileDropdown.value, 10);
+                self._displayCurrentHtmlFile();
+            });
+        }
     }
 
     // ------------------------------------------------------------------
@@ -220,12 +263,17 @@ class App {
             self._autoDetectTemplate(result.metadata.moduleCode);
 
             // Run tag normalisation and page boundary analysis
-            self._addProgressStep('Running tag normalisation...');
+            self._addProgressStep('Normalising tags...');
             var analysis = self._runAnalysis(result);
             self.currentAnalysis = analysis;
+            self._addProgressStep('Detecting page boundaries...');
             self._addProgressStep('Tag analysis complete: ' +
                 analysis.totalTags + ' tags found, ' +
                 analysis.pages.length + ' pages detected');
+
+            // Run HTML conversion if a template is selected
+            self._addProgressStep('Loading template configuration...');
+            self._runHtmlConversion(analysis, result);
 
             self.showResults(result, output);
         } catch (err) {
@@ -286,8 +334,17 @@ class App {
         // Populate stats panel
         this._renderStats(result.stats, result.contentStartFound);
 
-        // Populate output area
-        this.outputArea.value = output.full;
+        // Show output based on current mode
+        if (this.generatedFileList.length > 0) {
+            this.outputMode = 'html';
+            this._populateHtmlFileDropdown();
+            this._displayCurrentHtmlFile();
+            this._updateOutputModeUI();
+        } else {
+            this.outputMode = 'text';
+            this.outputArea.value = output.full;
+            this._updateOutputModeUI();
+        }
 
         // Check if content is empty
         if (!output.contentOnly || output.contentOnly.trim() === '--- CONTENT START ---') {
@@ -300,8 +357,12 @@ class App {
         }
 
         // Announce to screen readers
-        this._announce('Document processed successfully. ' +
-            result.stats.totalParagraphs + ' paragraphs extracted.');
+        var announceMsg = 'Document processed successfully. ' +
+            result.stats.totalParagraphs + ' paragraphs extracted.';
+        if (this.generatedFileList.length > 0) {
+            announceMsg += ' Generated ' + this.generatedFileList.length + ' HTML files.';
+        }
+        this._announce(announceMsg);
     }
 
     reset() {
@@ -309,6 +370,10 @@ class App {
         this.currentMetadata = null;
         this.currentAnalysis = null;
         this.selectedTemplateId = null;
+        this.generatedHtmlFiles = {};
+        this.generatedFileList = [];
+        this.currentHtmlFileIndex = 0;
+        this.outputMode = 'html';
         this.resultsSection.classList.add('hidden');
         this.processingSection.classList.add('hidden');
         this.uploadSection.classList.remove('hidden');
@@ -320,6 +385,10 @@ class App {
         // Reset template dropdown
         this.templateDropdown.selectedIndex = 0;
         this.templateAutoLabel.classList.add('hidden');
+        // Reset HTML file dropdown
+        if (this.htmlFileDropdown) {
+            this.htmlFileDropdown.innerHTML = '';
+        }
     }
 
     showError(message) {
@@ -998,6 +1067,212 @@ class App {
         }
 
         return diffs;
+    }
+
+    // ------------------------------------------------------------------
+    // HTML conversion pipeline
+    // ------------------------------------------------------------------
+
+    /**
+     * Run the HTML conversion pipeline on analysed pages.
+     *
+     * @param {Object} analysis - Analysis results from _runAnalysis
+     * @param {Object} parserResult - Result from DocxParser.parse()
+     */
+    _runHtmlConversion(analysis, parserResult) {
+        if (!this.selectedTemplateId || !analysis.pages || analysis.pages.length === 0) {
+            return;
+        }
+
+        var config;
+        try {
+            config = this.templateEngine.getConfig(this.selectedTemplateId);
+        } catch (e) {
+            console.error('HtmlConversion: Failed to get template config:', e);
+            return;
+        }
+
+        var moduleCode = (parserResult.metadata && parserResult.metadata.moduleCode) || 'MODULE';
+        var moduleInfo = {
+            moduleCode: moduleCode,
+            englishTitle: this._extractTitle(parserResult, 'english'),
+            tereoTitle: this._extractTitle(parserResult, 'tereo'),
+            totalPages: analysis.pages.length,
+            overviewContent: null
+        };
+
+        this.generatedHtmlFiles = {};
+        this.generatedFileList = [];
+
+        for (var i = 0; i < analysis.pages.length; i++) {
+            var page = analysis.pages[i];
+            this._addProgressStep('Generating HTML: ' + page.filename + '...');
+
+            try {
+                var fullHtml = this.htmlConverter.assemblePage(page, config, moduleInfo);
+                this.generatedHtmlFiles[page.filename] = fullHtml;
+                this.generatedFileList.push(page.filename);
+            } catch (e) {
+                console.error('HtmlConversion: Error generating ' + page.filename + ':', e);
+                this.generatedHtmlFiles[page.filename] = '<!-- Error generating this page: ' + e.message + ' -->';
+                this.generatedFileList.push(page.filename);
+            }
+        }
+
+        this._addProgressStep('Done! Generated ' + this.generatedFileList.length + ' HTML files.');
+    }
+
+    /**
+     * Extract a title (English or Te Reo) from the parsed content.
+     *
+     * @param {Object} parserResult - Parser result
+     * @param {string} type - 'english' or 'tereo'
+     * @returns {string} Title text
+     */
+    _extractTitle(parserResult, type) {
+        // Try to find the title from the content after [TITLE BAR]
+        var content = parserResult.content;
+        var startIdx = parserResult.contentStartIndex || 0;
+        var foundTitleBar = false;
+
+        for (var i = startIdx; i < content.length && i < startIdx + 10; i++) {
+            var block = content[i];
+            if (block.type !== 'paragraph' || !block.data) continue;
+
+            var text = block.data.text || '';
+            var runs = block.data.runs || [];
+            var fullText = '';
+            for (var r = 0; r < runs.length; r++) {
+                if (runs[r].text) fullText += runs[r].text;
+            }
+
+            // Check for title bar
+            if (fullText.toLowerCase().indexOf('title bar') !== -1 ||
+                text.toLowerCase().indexOf('title bar') !== -1) {
+                foundTitleBar = true;
+                // The title text is usually on the same line after the tag or on the next block
+                var cleanedTitle = fullText.replace(/\[.*?\]/g, '').trim();
+                if (cleanedTitle && type === 'english') {
+                    // May contain both English and Te Reo separated by spaces
+                    return cleanedTitle;
+                }
+                continue;
+            }
+
+            // After title bar, look for the main heading
+            if (foundTitleBar && block.data.heading) {
+                var headingText = '';
+                for (var hr = 0; hr < runs.length; hr++) {
+                    if (runs[hr].text && !(runs[hr].formatting && runs[hr].formatting.isRed)) {
+                        headingText += runs[hr].text;
+                    }
+                }
+                if (headingText.trim() && type === 'english') {
+                    return headingText.trim();
+                }
+            }
+        }
+
+        return type === 'english' ? 'Module Title' : '';
+    }
+
+    // ------------------------------------------------------------------
+    // Output mode management
+    // ------------------------------------------------------------------
+
+    /**
+     * Toggle between HTML and text output modes.
+     */
+    _toggleOutputMode() {
+        if (this.outputMode === 'html') {
+            this.outputMode = 'text';
+            this.outputArea.value = this.currentOutput ? this.currentOutput.full : '';
+        } else {
+            this.outputMode = 'html';
+            this._displayCurrentHtmlFile();
+        }
+        this._updateOutputModeUI();
+    }
+
+    /**
+     * Update UI elements to reflect the current output mode.
+     */
+    _updateOutputModeUI() {
+        if (this.outputModeToggle) {
+            if (this.outputMode === 'html') {
+                this.outputModeToggle.textContent = '\u{1F4C4} Switch to Text Output';
+                this.outputModeToggle.title = 'Switch to legacy text output';
+            } else {
+                this.outputModeToggle.textContent = '\u{1F310} Switch to HTML Output';
+                this.outputModeToggle.title = 'Switch to HTML output';
+            }
+        }
+
+        // Show/hide HTML file selector
+        if (this.htmlFileSelector) {
+            if (this.outputMode === 'html' && this.generatedFileList.length > 0) {
+                this.htmlFileSelector.classList.remove('hidden');
+            } else {
+                this.htmlFileSelector.classList.add('hidden');
+            }
+        }
+
+        // Update button labels
+        if (this.outputMode === 'html' && this.generatedFileList.length > 0) {
+            this.btnCopyAll.textContent = '\u{1F4CB} Copy HTML Source';
+            this.btnCopyContent.textContent = '\u{1F4CB} Copy HTML Source';
+            this.btnDownload.textContent = '\u{1F4BE} Download .html';
+        } else {
+            this.btnCopyAll.textContent = '\u{1F4CB} Copy All to Clipboard';
+            this.btnCopyContent.textContent = '\u{1F4CB} Copy Content Only';
+            this.btnDownload.textContent = '\u{1F4BE} Download as .txt';
+        }
+    }
+
+    /**
+     * Populate the HTML file dropdown with generated filenames.
+     */
+    _populateHtmlFileDropdown() {
+        if (!this.htmlFileDropdown) return;
+        this.htmlFileDropdown.innerHTML = '';
+
+        for (var i = 0; i < this.generatedFileList.length; i++) {
+            var option = document.createElement('option');
+            option.value = i;
+            option.textContent = this.generatedFileList[i];
+            this.htmlFileDropdown.appendChild(option);
+        }
+    }
+
+    /**
+     * Display the currently selected HTML file in the output area.
+     */
+    _displayCurrentHtmlFile() {
+        if (this.generatedFileList.length === 0) return;
+        var filename = this.generatedFileList[this.currentHtmlFileIndex];
+        var htmlContent = this.generatedHtmlFiles[filename] || '';
+        this.outputArea.value = htmlContent;
+    }
+
+    /**
+     * Download content as a file with specified MIME type.
+     *
+     * @param {string} content - File content
+     * @param {string} filename - File name
+     * @param {string} mimeType - MIME type
+     */
+    _downloadAsFile(content, filename, mimeType) {
+        var blob = new Blob([content], { type: mimeType });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        this.showToast('Downloaded ' + filename);
     }
 
     // ------------------------------------------------------------------
