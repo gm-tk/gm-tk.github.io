@@ -746,6 +746,170 @@ main {
     margin: 0.1rem 0;
 }
 
+/* ---------- Conversion Summary ---------- */
+
+.conversion-summary {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.85rem;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.summary-label {
+    color: var(--color-text-secondary);
+}
+
+.summary-value {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* ---------- Output Layout — side by side on desktop ---------- */
+
+.output-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 1rem;
+    min-height: 400px;
+}
+
+/* ---------- File List Panel ---------- */
+
+.file-list-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.file-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.file-entry:hover {
+    background: var(--color-bg);
+}
+
+.file-entry.selected {
+    background: var(--color-primary-light);
+    border-left: 3px solid var(--color-primary);
+}
+
+.file-entry:last-child {
+    border-bottom: none;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.file-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.file-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-meta {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+/* ---------- Preview Panel ---------- */
+
+.preview-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.preview-filename {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.preview-actions {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.btn-sm {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+}
+
+/* ---------- Legacy Output Panel ---------- */
+
+.legacy-output-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.legacy-output-panel textarea {
+    width: 100%;
+    min-height: 400px;
+    max-height: 70vh;
+    resize: vertical;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+}
+
 /* ---------- Screen-reader only ---------- */
 
 .sr-only {
@@ -800,5 +964,18 @@ main {
     #output-area {
         font-size: 0.75rem;
         min-height: 300px;
+    }
+
+    .output-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .file-list-panel {
+        max-height: 200px;
+    }
+
+    .conversion-summary {
+        gap: 0.35rem 1rem;
+        font-size: 0.8rem;
     }
 }
