@@ -369,7 +369,8 @@ class TagNormaliser {
             flexCleaned === 'drop down quiz paragraph' ||
             flexCleaned === 'drop down paragraph quiz' ||
             flexCleaned === 'dropquiz' ||
-            flexCleaned === 'multi choice dropdown quiz paragraph') {
+            flexCleaned === 'multi choice dropdown quiz paragraph' ||
+            flexCleaned === 'multichoice dropdown quiz paragraph') {
             return {
                 normalised: 'dropdown_quiz_paragraph',
                 level: null,
@@ -867,6 +868,7 @@ class TagNormaliser {
             'back': { normalised: 'back', category: 'subtag' },
             'drop': { normalised: 'back', category: 'subtag' },
             'static heading': { normalised: 'static_heading', category: 'subtag' },
+            'story heading': { normalised: 'story_heading', category: 'subtag' },
             'static column': { normalised: 'static_column', category: 'subtag' },
             'unsorted list': { normalised: 'unordered_list', category: 'subtag' },
             'unordered list': { normalised: 'unordered_list', category: 'subtag' }
@@ -906,7 +908,7 @@ class TagNormaliser {
             },
             {
                 category: 'subtag',
-                tags: ['front', 'back', 'static_heading', 'static_column', 'unordered_list', 'table']
+                tags: ['front', 'back', 'static_heading', 'story_heading', 'static_column', 'unordered_list', 'table']
             }
         ];
 
@@ -924,6 +926,104 @@ class TagNormaliser {
             'clicking_order', 'puzzle', 'sketcher', 'glossary', 'translate_section',
             'kanji_cards', 'embed_pdf', 'embed_padlet', 'embed_desmos'
         ];
+    }
+
+    // ------------------------------------------------------------------
+    // Public: Red-text fragment reassembly
+    // ------------------------------------------------------------------
+
+    /**
+     * Reassemble fragmented red-text tags that were split across multiple
+     * Word formatting runs.
+     *
+     * When a writer types [speech bubble] in red but Word splits it across
+     * two XML runs (e.g., one with italic, one without), the parser outputs:
+     *   🔴[RED TEXT] [ [/RED TEXT]🔴🔴[RED TEXT] speech bubble] [/RED TEXT]🔴
+     * This method detects such adjacent markers and merges them when their
+     * combined content forms a valid [tag] pattern.
+     *
+     * @param {string} text - Text with red-text markers
+     * @returns {string} Text with fragmented tags reassembled
+     */
+    reassembleFragmentedTags(text) {
+        if (!text || typeof text !== 'string') return text;
+
+        var redMarkerRe = /\uD83D\uDD34\[RED TEXT\]\s*([\s\S]*?)\s*\[\/RED TEXT\]\uD83D\uDD34/g;
+
+        // Collect all red-text markers and their positions
+        var markers = [];
+        var match;
+        while ((match = redMarkerRe.exec(text)) !== null) {
+            markers.push({
+                fullMatch: match[0],
+                innerContent: match[1],
+                startIndex: match.index,
+                endIndex: match.index + match[0].length
+            });
+        }
+
+        if (markers.length < 2) return text;
+
+        // Scan for consecutive markers that should be merged
+        var merges = [];
+
+        for (var i = 0; i < markers.length - 1; i++) {
+            // Skip markers already consumed by a merge
+            var alreadyConsumed = false;
+            for (var mc = 0; mc < merges.length; mc++) {
+                if (i >= merges[mc].startIdx && i <= merges[mc].endIdx) {
+                    alreadyConsumed = true;
+                    break;
+                }
+            }
+            if (alreadyConsumed) continue;
+
+            // Check 3-way merge first (tag split across 3 runs)
+            if (i + 2 < markers.length) {
+                var gap1 = text.substring(markers[i].endIndex, markers[i + 1].startIndex).trim();
+                var gap2 = text.substring(markers[i + 1].endIndex, markers[i + 2].startIndex).trim();
+                if (gap1 === '' && gap2 === '') {
+                    var combined3 = (markers[i].innerContent + ' ' +
+                        markers[i + 1].innerContent + ' ' +
+                        markers[i + 2].innerContent).replace(/\s+/g, ' ').trim();
+                    var tagMatch3 = combined3.match(/\[([^\]]+)\]/);
+                    if (tagMatch3) {
+                        merges.push({
+                            startIdx: i,
+                            endIdx: i + 2,
+                            replacement: '\uD83D\uDD34[RED TEXT] ' + combined3 + ' [/RED TEXT]\uD83D\uDD34'
+                        });
+                        continue;
+                    }
+                }
+            }
+
+            // Check 2-way merge
+            var gapBetween = text.substring(markers[i].endIndex, markers[i + 1].startIndex).trim();
+            if (gapBetween === '') {
+                var combined = (markers[i].innerContent + ' ' +
+                    markers[i + 1].innerContent).replace(/\s+/g, ' ').trim();
+                var tagMatch = combined.match(/\[([^\]]+)\]/);
+                if (tagMatch) {
+                    merges.push({
+                        startIdx: i,
+                        endIdx: i + 1,
+                        replacement: '\uD83D\uDD34[RED TEXT] ' + combined + ' [/RED TEXT]\uD83D\uDD34'
+                    });
+                    continue;
+                }
+            }
+        }
+
+        // Apply merges in reverse order so indices don't shift
+        for (var m = merges.length - 1; m >= 0; m--) {
+            var merge = merges[m];
+            var startPos = markers[merge.startIdx].startIndex;
+            var endPos = markers[merge.endIdx].endIndex;
+            text = text.substring(0, startPos) + merge.replacement + text.substring(endPos);
+        }
+
+        return text;
     }
 
     // ------------------------------------------------------------------
