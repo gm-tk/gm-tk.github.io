@@ -65,6 +65,21 @@ class HtmlConverter {
      * @returns {string} Complete standalone HTML string
      */
     assemblePage(pageData, config, moduleInfo) {
+        // For overview pages, split content at [MODULE INTRODUCTION]
+        var bodyPageData = pageData;
+        var menuContentBlocks = null;
+
+        if (pageData.type === 'overview') {
+            var splitResult = this._splitOverviewContent(pageData);
+            bodyPageData = {
+                type: pageData.type,
+                lessonNumber: pageData.lessonNumber,
+                filename: pageData.filename,
+                contentBlocks: splitResult.bodyBlocks
+            };
+            menuContentBlocks = splitResult.menuBlocks;
+        }
+
         var skeletonData = {
             type: pageData.type,
             lessonNumber: pageData.lessonNumber,
@@ -77,15 +92,55 @@ class HtmlConverter {
         };
 
         var skeleton = this._templateEngine.generateSkeleton(config, skeletonData);
-        var bodyHtml = this.convertPage(pageData, config);
+        var bodyHtml = this.convertPage(bodyPageData, config);
 
         // Replace content placeholder
         var html = skeleton.replace('    <!-- CONTENT_PLACEHOLDER -->', bodyHtml);
 
         // Generate and replace module menu content
-        html = this._replaceModuleMenuContent(html, pageData, config, moduleInfo);
+        html = this._replaceModuleMenuContent(html, pageData, config, moduleInfo, menuContentBlocks);
 
         return html;
+    }
+
+    /**
+     * Split overview page content blocks into menu content and body content
+     * at the [MODULE INTRODUCTION] tag boundary.
+     *
+     * @param {Object} pageData - Page data with contentBlocks
+     * @returns {Object} { menuBlocks: Array, bodyBlocks: Array }
+     */
+    _splitOverviewContent(pageData) {
+        var blocks = pageData.contentBlocks || [];
+        var moduleIntroIndex = -1;
+
+        // Find the [MODULE INTRODUCTION] tag
+        for (var i = 0; i < blocks.length; i++) {
+            var block = blocks[i];
+            if (block.type === 'paragraph' && block.data) {
+                var text = this._buildFormattedText(block.data);
+                var tagResult = this._normaliser.processBlock(text);
+                for (var t = 0; t < tagResult.tags.length; t++) {
+                    if (tagResult.tags[t].normalised === 'module_introduction') {
+                        moduleIntroIndex = i;
+                        break;
+                    }
+                }
+                if (moduleIntroIndex !== -1) break;
+            }
+        }
+
+        if (moduleIntroIndex === -1) {
+            // No MODULE INTRODUCTION found — all content goes to body
+            return { menuBlocks: [], bodyBlocks: blocks };
+        }
+
+        // Menu blocks: everything before MODULE INTRODUCTION (after TITLE BAR)
+        var menuBlocks = blocks.slice(0, moduleIntroIndex);
+        // Body blocks: everything after MODULE INTRODUCTION (skip the tag itself)
+        var bodyBlocks = blocks.slice(moduleIntroIndex + 1);
+
+        return { menuBlocks: menuBlocks, bodyBlocks: bodyBlocks };
     }
 
     // ------------------------------------------------------------------
@@ -394,6 +449,42 @@ class HtmlConverter {
             // --- Headings ---
             if (tagName === 'heading') {
                 flushPending();
+
+                // Bug 9: Handle multiple heading tags in one block
+                // Each heading tag produces a separate heading element
+                var headingTags = [];
+                for (var ht = 0; ht < tags.length; ht++) {
+                    if (tags[ht].normalised === 'heading') {
+                        headingTags.push(tags[ht]);
+                    }
+                }
+
+                if (headingTags.length > 1) {
+                    // Multiple heading tags in one block — split the clean text
+                    var headingTexts = this._splitMultiHeadingText(pBlock);
+                    for (var hti = 0; hti < headingTags.length; hti++) {
+                        var mhLevel = headingTags[hti].level || 2;
+                        var mhText = headingTexts[hti] || '';
+                        if (mhLevel === 1) mhLevel = 2;
+                        mhText = this._stripFullHeadingFormatting(mhText);
+                        if (mhLevel < 2) mhLevel = 2;
+                        if (mhLevel > 5) mhLevel = 5;
+                        var mhTag = 'h' + mhLevel;
+                        var mhInner = this._convertInlineFormatting(mhText);
+                        mhInner = this._stripHeadingInlineTags(mhInner);
+                        if (mhInner.trim()) {
+                            var mhHtml = '      <' + mhTag + '>' + mhInner + '</' + mhTag + '>';
+                            if (inActivity) {
+                                activityParts.push(mhHtml);
+                            } else {
+                                htmlParts.push(self._wrapInRow(mhHtml, colClass));
+                            }
+                        }
+                    }
+                    i++;
+                    continue;
+                }
+
                 var headingLevel = primaryTag.level || 2;
                 var headingText = pBlock.cleanText || '';
 
@@ -402,8 +493,8 @@ class HtmlConverter {
                     headingLevel = 2;
                 }
 
-                // Strip full-heading italic wrapping
-                headingText = this._stripFullHeadingItalic(headingText);
+                // Strip full-heading bold/italic wrapping (docx artefact)
+                headingText = this._stripFullHeadingFormatting(headingText);
 
                 // First "Lesson N" heading rule for lesson pages
                 if (pageData.type === 'lesson' && headingLevel === 2) {
@@ -419,9 +510,10 @@ class HtmlConverter {
                 if (headingLevel > 5) headingLevel = 5;
 
                 var hTag = 'h' + headingLevel;
-                var headingHtml = '      <' + hTag + '>' +
-                    this._convertInlineFormatting(headingText) +
-                    '</' + hTag + '>';
+                // Convert inline formatting but then strip any remaining <b>/<i> from headings
+                var headingInner = this._convertInlineFormatting(headingText);
+                headingInner = this._stripHeadingInlineTags(headingInner);
+                var headingHtml = '      <' + hTag + '>' + headingInner + '</' + hTag + '>';
 
                 if (inActivity) {
                     activityParts.push(headingHtml);
@@ -532,6 +624,11 @@ class HtmlConverter {
             if (tagName === 'whakatauki') {
                 flushPending();
                 var whakContent = this._collectMultiLineContent(processedBlocks, i, 2);
+                // If there's only one line, try splitting on pipe separator
+                if (whakContent.length === 1 && whakContent[0].indexOf(' | ') !== -1) {
+                    var pipeParts = whakContent[0].split(' | ');
+                    whakContent = [pipeParts[0].trim(), pipeParts.slice(1).join(' | ').trim()];
+                }
                 var whakHtml = '    <div class="whakatauki">\n';
                 for (var w = 0; w < whakContent.length; w++) {
                     whakHtml += '      <p>' + this._convertInlineFormatting(whakContent[w]) + '</p>\n';
@@ -887,28 +984,96 @@ class HtmlConverter {
     }
 
     /**
-     * Strip italic wrapping from an entire heading.
-     * If the whole heading is wrapped in *...*, remove it.
-     * If only part is italic, preserve it.
+     * Strip bold/italic formatting markers from heading text.
+     * Headings should never have full-heading bold or italic wrapping
+     * (these are .docx formatting artefacts).
+     * Also merges consecutive bold segments into one clean heading.
      *
-     * @param {string} text - Heading text
-     * @returns {string} Text with full-heading italic stripped
+     * @param {string} text - Heading text with formatting markers
+     * @returns {string} Text with heading-level formatting stripped
      */
-    _stripFullHeadingItalic(text) {
+    _stripFullHeadingFormatting(text) {
         if (!text) return '';
         var trimmed = text.trim();
 
-        // Check for full wrapping: starts with * and ends with *
-        // but not ** (bold) — single italic markers only
-        if (trimmed.charAt(0) === '*' && trimmed.charAt(trimmed.length - 1) === '*') {
-            // Check it's not bold markers
-            if (trimmed.charAt(1) !== '*' && trimmed.charAt(trimmed.length - 2) !== '*') {
-                // Full italic wrapping — strip it
-                return trimmed.substring(1, trimmed.length - 1);
+        // Strip all bold markers ** from the heading
+        // This handles: **text**, **part1** **part2**, etc.
+        trimmed = trimmed.replace(/\*\*\*/g, ''); // strip *** (bold+italic) markers first
+        trimmed = trimmed.replace(/\*\*/g, '');    // strip ** (bold) markers
+
+        // Strip full-heading italic wrapping: *entire text*
+        // Check if entire remaining text is wrapped in single *...*
+        var innerTrimmed = trimmed.trim();
+        if (innerTrimmed.charAt(0) === '*' && innerTrimmed.charAt(innerTrimmed.length - 1) === '*' &&
+            innerTrimmed.charAt(1) !== '*' && innerTrimmed.charAt(innerTrimmed.length - 2) !== '*') {
+            // Check if there's only one pair of * markers (full wrap, not partial italic)
+            var starCount = 0;
+            for (var j = 0; j < innerTrimmed.length; j++) {
+                if (innerTrimmed.charAt(j) === '*') starCount++;
+            }
+            if (starCount === 2) {
+                innerTrimmed = innerTrimmed.substring(1, innerTrimmed.length - 1);
             }
         }
 
-        return text;
+        // Also strip any remaining single * markers that wrap the entire text
+        // (handles cases where italic markers survive)
+        innerTrimmed = innerTrimmed.replace(/^\*|\*$/g, '');
+
+        // Collapse multiple spaces from marker removal
+        innerTrimmed = innerTrimmed.replace(/\s{2,}/g, ' ').trim();
+
+        return innerTrimmed;
+    }
+
+    /**
+     * Strip <b> and <i> tags from heading HTML output.
+     * Headings should never have inline bold/italic wrapping.
+     *
+     * @param {string} html - Heading inner HTML
+     * @returns {string} HTML with <b>, </b>, <i>, </i> stripped
+     */
+    _stripHeadingInlineTags(html) {
+        if (!html) return '';
+        return html
+            .replace(/<\/?b>/g, '')
+            .replace(/<\/?i>/g, '')
+            .replace(/\s{2,}/g, ' ')
+            .trim();
+    }
+
+    /**
+     * Split clean text from a block with multiple heading tags into
+     * separate texts, one per heading tag.
+     *
+     * @param {Object} pBlock - Processed block with multiple heading tags
+     * @returns {Array<string>} Array of heading text strings
+     */
+    _splitMultiHeadingText(pBlock) {
+        var formattedText = pBlock.formattedText || '';
+        var cleanText = pBlock.cleanText || '';
+
+        // Try to split on the boundary between bold segments
+        // Pattern: **heading1** **heading2** or **heading1** \n **heading2**
+        var boldSegments = [];
+        var boldRegex = /\*\*([^*]+)\*\*/g;
+        var match;
+        while ((match = boldRegex.exec(cleanText)) !== null) {
+            boldSegments.push(match[1].trim());
+        }
+
+        if (boldSegments.length > 1) {
+            return boldSegments;
+        }
+
+        // Fallback: try splitting on newline
+        var lines = cleanText.split(/\n/).filter(function (l) { return l.trim(); });
+        if (lines.length > 1) {
+            return lines;
+        }
+
+        // Last resort: return as single text
+        return [cleanText];
     }
 
     // ------------------------------------------------------------------
@@ -1373,28 +1538,32 @@ class HtmlConverter {
      * @param {Object} pageData - Page data
      * @param {Object} config - Template config
      * @param {Object} moduleInfo - Module info
+     * @param {Array|null} menuContentBlocks - Content blocks for menu tabs (overview only)
      * @returns {string} HTML with module menu populated
      */
-    _replaceModuleMenuContent(html, pageData, config, moduleInfo) {
+    _replaceModuleMenuContent(html, pageData, config, moduleInfo, menuContentBlocks) {
         if (pageData.type === 'overview') {
+            // Split menu content into Overview and Information tabs
+            var tabContent = this._splitMenuContentIntoTabs(menuContentBlocks || [], config);
+
             // Overview page: populate tab content
-            var overviewTab = this._generateOverviewTabContent(pageData, config, moduleInfo);
-            var infoTab = this._generateInfoTabContent(pageData, config, moduleInfo);
+            var overviewTab = this._generateOverviewTabContent(tabContent.overviewBlocks, config, moduleInfo);
+            var infoTab = this._generateInfoTabContent(tabContent.infoBlocks, config, moduleInfo);
 
             html = html.replace(
-                '            <!-- MODULE_MENU_CONTENT: Overview -->',
+                '              <!-- MODULE_MENU_CONTENT: Overview -->',
                 overviewTab
             );
             html = html.replace(
-                '            <!-- MODULE_MENU_CONTENT: Information -->',
+                '              <!-- MODULE_MENU_CONTENT: Information -->',
                 infoTab
             );
 
             // Handle Standards tab (NCEA)
             if (html.indexOf('<!-- MODULE_MENU_CONTENT: Standards -->') !== -1) {
                 html = html.replace(
-                    '            <!-- MODULE_MENU_CONTENT: Standards -->',
-                    '            <!-- Standards content to be added -->'
+                    '              <!-- MODULE_MENU_CONTENT: Standards -->',
+                    '              <!-- Standards content to be added -->'
                 );
             }
         } else {
@@ -1410,34 +1579,395 @@ class HtmlConverter {
     }
 
     /**
-     * Generate Overview tab content for overview page module menu.
+     * Split menu content blocks into Overview tab and Information tab content.
+     * Overview tab: H1 title + description, first two H2 sections (Learning Intentions + Success Criteria)
+     * Information tab: Everything from the third H2 onwards
      *
-     * @param {Object} pageData - Page data
+     * @param {Array} blocks - Content blocks before MODULE INTRODUCTION
+     * @param {Object} config - Template config
+     * @returns {Object} { overviewBlocks: Array, infoBlocks: Array }
+     */
+    _splitMenuContentIntoTabs(blocks, config) {
+        var processedBlocks = this._processAllBlocks(blocks);
+        var h2Count = 0;
+        var splitIndex = processedBlocks.length; // default: everything in overview
+
+        for (var i = 0; i < processedBlocks.length; i++) {
+            var pBlock = processedBlocks[i];
+            var tags = pBlock.tagResult ? pBlock.tagResult.tags : [];
+            for (var t = 0; t < tags.length; t++) {
+                // Count H2 headings (skip H1 — that's the overview title, not a section)
+                if (tags[t].normalised === 'heading' && tags[t].level === 2) {
+                    h2Count++;
+                    // Third H2 and beyond → Information tab
+                    if (h2Count === 3) {
+                        splitIndex = i;
+                        break;
+                    }
+                }
+            }
+            if (splitIndex !== processedBlocks.length) break;
+        }
+
+        // Map processed blocks back to original blocks
+        var overviewOrigBlocks = blocks.slice(0, splitIndex < processedBlocks.length ? this._getOriginalBlockIndex(blocks, processedBlocks, splitIndex) : blocks.length);
+        var infoOrigBlocks = splitIndex < processedBlocks.length ? blocks.slice(this._getOriginalBlockIndex(blocks, processedBlocks, splitIndex)) : [];
+
+        return {
+            overviewBlocks: overviewOrigBlocks,
+            infoBlocks: infoOrigBlocks
+        };
+    }
+
+    /**
+     * Map from processed block index back to original block index.
+     *
+     * @param {Array} originalBlocks - Original content blocks
+     * @param {Array} processedBlocks - Processed blocks (some may be filtered)
+     * @param {number} processedIndex - Index in processed blocks
+     * @returns {number} Index in original blocks
+     */
+    _getOriginalBlockIndex(originalBlocks, processedBlocks, processedIndex) {
+        if (processedIndex >= processedBlocks.length) return originalBlocks.length;
+        // Count non-null blocks up to the target
+        var origIdx = 0;
+        var procCount = 0;
+        for (var i = 0; i < originalBlocks.length; i++) {
+            var block = originalBlocks[i];
+            if (block.type === 'pageBreak') continue;
+            if (block.type === 'paragraph' && block.data) {
+                if (procCount === processedIndex) return i;
+                procCount++;
+            } else if (block.type === 'table' && block.data) {
+                if (procCount === processedIndex) return i;
+                procCount++;
+            }
+        }
+        return originalBlocks.length;
+    }
+
+    /**
+     * Generate Overview tab content for overview page module menu.
+     * Contains: H1 overview title + description, Learning Intentions, Success Criteria
+     *
+     * @param {Array} blocks - Content blocks for overview tab
      * @param {Object} config - Template config
      * @param {Object} moduleInfo - Module info
      * @returns {string} HTML content
      */
-    _generateOverviewTabContent(pageData, config, moduleInfo) {
-        var html = '';
-        var title = moduleInfo.englishTitle || 'Module Overview';
-
-        // Overview title with h4>span
-        html += '            <h4><span>Tirohanga Wh\u0101nui | Overview</span></h4>\n';
-        html += '            <!-- Overview content from module -->';
-
-        return html;
+    _generateOverviewTabContent(blocks, config, moduleInfo) {
+        var indent = '              ';
+        return this._renderModuleMenuBlocks(blocks, config, indent, true);
     }
 
     /**
      * Generate Information tab content.
+     * Contains: Planning time, What do I need, Connections, etc.
      *
-     * @param {Object} pageData - Page data
+     * @param {Array} blocks - Content blocks for information tab
      * @param {Object} config - Template config
      * @param {Object} moduleInfo - Module info
      * @returns {string} HTML content
      */
-    _generateInfoTabContent(pageData, config, moduleInfo) {
-        return '            <!-- Information tab content -->';
+    _generateInfoTabContent(blocks, config, moduleInfo) {
+        var indent = '              ';
+        if (!blocks || blocks.length === 0) {
+            return indent + '<!-- Information tab content -->';
+        }
+        return this._renderModuleMenuBlocks(blocks, config, indent, false);
+    }
+
+    /**
+     * Render content blocks for module menu tabs.
+     * Uses h4 headings, strips italic from list items and body text,
+     * normalises Success Criteria label.
+     *
+     * @param {Array} blocks - Raw content blocks
+     * @param {Object} config - Template config
+     * @param {string} indent - Base indentation string
+     * @param {boolean} isOverviewTab - Whether this is the Overview tab (first h4 gets span)
+     * @returns {string} HTML content for the tab
+     */
+    _renderModuleMenuBlocks(blocks, config, indent, isOverviewTab) {
+        var processedBlocks = this._processAllBlocks(blocks);
+        var parts = [];
+        var isFirstHeading = true;
+        var successCriteriaHeading = (config.moduleMenu && config.moduleMenu.overviewPage &&
+            config.moduleMenu.overviewPage.successCriteriaHeading)
+            ? config.moduleMenu.overviewPage.successCriteriaHeading
+            : 'How will I know if I\'ve learned it?';
+        var i = 0;
+        var self = this;
+
+        while (i < processedBlocks.length) {
+            var pBlock = processedBlocks[i];
+            var tags = pBlock.tagResult ? pBlock.tagResult.tags : [];
+            var primaryTag = tags.length > 0 ? tags[0] : null;
+            var tagName = primaryTag ? primaryTag.normalised : null;
+            var category = primaryTag ? primaryTag.category : null;
+
+            // Skip structural tags, whitespace-only, red-text-only with no content
+            if (category === 'structural') { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isWhitespaceOnly) { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isRedTextOnly && tags.length === 0 && !pBlock.cleanText) { i++; continue; }
+
+            // Headings → h4 (Bug 5)
+            if (tagName === 'heading') {
+                // Bug 9: Handle multiple heading tags in one block
+                var menuHeadingTags = [];
+                for (var mht = 0; mht < tags.length; mht++) {
+                    if (tags[mht].normalised === 'heading') {
+                        menuHeadingTags.push(tags[mht]);
+                    }
+                }
+
+                if (menuHeadingTags.length > 1) {
+                    // Multiple heading tags — split text and render each
+                    var menuHeadingTexts = this._splitMultiHeadingText(pBlock);
+                    for (var mhti = 0; mhti < menuHeadingTags.length; mhti++) {
+                        var mhMenuText = menuHeadingTexts[mhti] || '';
+                        mhMenuText = this._stripFullHeadingFormatting(mhMenuText);
+                        mhMenuText = this._normaliseMenuHeading(mhMenuText, successCriteriaHeading);
+                        var mhMenuInner = this._convertInlineFormatting(mhMenuText);
+                        mhMenuInner = this._stripHeadingInlineTags(mhMenuInner);
+                        if (mhMenuInner.trim()) {
+                            parts.push(indent + '<h4>' + mhMenuInner + '</h4>');
+                        }
+                    }
+                    isFirstHeading = false;
+                    i++;
+                    continue;
+                }
+
+                var headingText = pBlock.cleanText || '';
+                headingText = this._stripFullHeadingFormatting(headingText);
+
+                // Bug 7: If this is H1 in overview tab, split heading from description
+                if (primaryTag.level === 1 && isOverviewTab && isFirstHeading) {
+                    var h1Parts = this._splitH1HeadingAndDescription(pBlock);
+                    // Heading with span (overview tab primary title)
+                    parts.push(indent + '<h4><span>' + this._escContent(h1Parts.heading) + '</span></h4>');
+                    if (h1Parts.description) {
+                        parts.push(indent + '<p>' + this._escContent(h1Parts.description) + '</p>');
+                    }
+                    isFirstHeading = false;
+                    i++;
+                    continue;
+                }
+
+                // Normalise "Success Criteria" heading (Bug 6)
+                var normalisedHeading = this._normaliseMenuHeading(headingText, successCriteriaHeading);
+
+                // Convert and strip inline formatting from headings
+                var headingInner = this._convertInlineFormatting(normalisedHeading);
+                headingInner = this._stripHeadingInlineTags(headingInner);
+
+                if (isOverviewTab && isFirstHeading) {
+                    parts.push(indent + '<h4><span>' + headingInner + '</span></h4>');
+                } else {
+                    parts.push(indent + '<h4>' + headingInner + '</h4>');
+                }
+                isFirstHeading = false;
+                i++;
+                continue;
+            }
+
+            // List items → strip italic (Bug 8)
+            if (pBlock.data && pBlock.data.isListItem) {
+                var listItems = [];
+                while (i < processedBlocks.length) {
+                    var lb = processedBlocks[i];
+                    if (lb.data && lb.data.isListItem) {
+                        listItems.push(lb);
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                var listHtml = this._renderMenuList(listItems, indent);
+                parts.push(listHtml);
+                continue;
+            }
+
+            // Body text / paragraphs → strip italic (Bug 8)
+            if (pBlock.cleanText && pBlock.cleanText.trim()) {
+                var bodyText = pBlock.cleanText;
+                // Strip full-paragraph italic wrapping from module menu content
+                bodyText = this._stripFullItalic(bodyText);
+                var bodyInner = this._convertInlineFormatting(bodyText);
+                // Strip remaining italic tags from module menu content
+                bodyInner = bodyInner.replace(/<\/?i>/g, '');
+                parts.push(indent + '<p>' + bodyInner + '</p>');
+            }
+
+            i++;
+        }
+
+        if (parts.length === 0) {
+            return indent + '<!-- No content -->';
+        }
+
+        // Wrap in row + col grid
+        var gridIndent = indent;
+        var wrapped = gridIndent + '<div class="row">\n';
+        wrapped += gridIndent + '  <div class="col-md-8 col-12">\n';
+        wrapped += parts.join('\n') + '\n';
+        wrapped += gridIndent + '  </div>\n';
+        wrapped += gridIndent + '</div>';
+
+        return wrapped;
+    }
+
+    /**
+     * Split an H1 heading block into heading text and description.
+     * The bold portion is the heading, the italic portion is the description.
+     *
+     * @param {Object} pBlock - Processed block
+     * @returns {Object} { heading: string, description: string }
+     */
+    _splitH1HeadingAndDescription(pBlock) {
+        var formattedText = pBlock.formattedText || '';
+
+        // Remove red text markers and tags
+        var cleaned = formattedText.replace(/\uD83D\uDD34\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]\uD83D\uDD34/g, '');
+        cleaned = cleaned.replace(/\[([^\]]+)\]/g, '').trim();
+
+        // Try to split bold heading from italic description
+        // Pattern: **heading text***description text*
+        // or: **heading text** *description text*
+        var boldMatch = cleaned.match(/^\*\*([^*]+)\*\*\s*\*?([^*]*)\*?$/);
+        if (boldMatch) {
+            var heading = boldMatch[1].trim();
+            var desc = boldMatch[2].trim();
+            // Strip leading/trailing * from description
+            desc = desc.replace(/^\*+|\*+$/g, '').trim();
+            return { heading: heading, description: desc };
+        }
+
+        // Fallback: try splitting on the boundary between bold and italic markers
+        var boldEndIdx = cleaned.indexOf('***');
+        if (boldEndIdx !== -1) {
+            // Pattern like: **heading***description*
+            var beforeTriple = cleaned.substring(0, boldEndIdx).replace(/^\*\*/, '').trim();
+            var afterTriple = cleaned.substring(boldEndIdx + 3).replace(/\*$/, '').trim();
+            return { heading: beforeTriple, description: afterTriple };
+        }
+
+        // If no split possible, use clean text
+        return { heading: pBlock.cleanText || '', description: '' };
+    }
+
+    /**
+     * Normalise module menu heading text.
+     * Replaces "Success Criteria" with the normalised version.
+     *
+     * @param {string} text - Heading text
+     * @param {string} successCriteriaHeading - Normalised heading text
+     * @returns {string} Normalised heading text
+     */
+    _normaliseMenuHeading(text, successCriteriaHeading) {
+        if (!text) return '';
+        var lower = text.toLowerCase().trim();
+        if (lower === 'success criteria' || lower.indexOf('success criteria') === 0) {
+            return successCriteriaHeading;
+        }
+        return text;
+    }
+
+    /**
+     * Strip italic markers from entire text (module menu content).
+     *
+     * @param {string} text - Text with formatting markers
+     * @returns {string} Text with full-italic stripped
+     */
+    _stripFullItalic(text) {
+        if (!text) return '';
+        var trimmed = text.trim();
+        // Strip wrapping * markers
+        if (trimmed.charAt(0) === '*' && trimmed.charAt(trimmed.length - 1) === '*' &&
+            trimmed.charAt(1) !== '*' && trimmed.charAt(trimmed.length - 2) !== '*') {
+            return trimmed.substring(1, trimmed.length - 1);
+        }
+        return text;
+    }
+
+    /**
+     * Render list items for module menu tabs (with italic stripping).
+     *
+     * @param {Array} items - Processed list item blocks
+     * @param {string} indent - Base indentation
+     * @returns {string} HTML list
+     */
+    _renderMenuList(items, indent) {
+        if (items.length === 0) return '';
+
+        var firstItem = items[0];
+        var isOrdered = firstItem.data && firstItem.data.listFormat && (
+            firstItem.data.listFormat === 'decimal' ||
+            firstItem.data.listFormat === 'lowerLetter' ||
+            firstItem.data.listFormat === 'upperLetter' ||
+            firstItem.data.listFormat === 'lowerRoman' ||
+            firstItem.data.listFormat === 'upperRoman'
+        );
+        var listTag = isOrdered ? 'ol' : 'ul';
+
+        return this._buildMenuNestedList(items, 0, listTag, indent);
+    }
+
+    /**
+     * Build nested list for module menu (strips italic from items).
+     *
+     * @param {Array} items - List items
+     * @param {number} level - Nesting level
+     * @param {string} listTag - 'ul' or 'ol'
+     * @param {string} indent - Base indentation
+     * @returns {string} HTML list
+     */
+    _buildMenuNestedList(items, level, listTag, indent) {
+        var levelIndent = indent + '  '.repeat(level);
+        var html = levelIndent + '<' + listTag + '>\n';
+
+        var i = 0;
+        while (i < items.length) {
+            var item = items[i];
+            var itemLevel = (item.data && item.data.listLevel) ? item.data.listLevel : 0;
+
+            if (itemLevel === level) {
+                var text = item.cleanText || '';
+                // Strip italic from list items in module menu (Bug 8)
+                text = this._stripFullItalic(text);
+                var itemInner = this._convertInlineFormatting(text);
+                // Strip remaining italic tags
+                itemInner = itemInner.replace(/<\/?i>/g, '');
+
+                var children = [];
+                var j = i + 1;
+                while (j < items.length) {
+                    var nextLevel = (items[j].data && items[j].data.listLevel) ? items[j].data.listLevel : 0;
+                    if (nextLevel > level) {
+                        children.push(items[j]);
+                        j++;
+                    } else {
+                        break;
+                    }
+                }
+
+                html += levelIndent + '  <li>' + itemInner;
+                if (children.length > 0) {
+                    html += '\n' + this._buildMenuNestedList(children, level + 1, listTag, indent) + '\n' + levelIndent + '  ';
+                }
+                html += '</li>\n';
+
+                i = j;
+            } else if (itemLevel > level) {
+                i++;
+            } else {
+                break;
+            }
+        }
+
+        html += levelIndent + '</' + listTag + '>';
+        return html;
     }
 
     /**

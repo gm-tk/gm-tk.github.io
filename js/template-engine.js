@@ -164,9 +164,21 @@ class TemplateEngine {
             ? String(lessonNum).padStart(2, '0')
             : null;
 
+        // Strip module code prefix from title for <title> element
+        var rawTitle = pageData.englishTitle || '';
+        var modulePrefix = pageData.moduleCode
+            ? pageData.moduleCode.replace(/\d+$/, '')
+            : '';
+        if (modulePrefix && rawTitle) {
+            var prefixRegex = new RegExp('^' + modulePrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*', 'i');
+            rawTitle = rawTitle.replace(prefixRegex, '');
+        }
+        // Split on double-space and take English only
+        var englishOnlyTitle = rawTitle.split(/  +/)[0].trim();
+
         // Title element (English only — NEVER Te Reo)
         var titleContent = isOverview
-            ? pageData.moduleCode + ' ' + (pageData.englishTitle || '')
+            ? pageData.moduleCode + ' ' + englishOnlyTitle
             : pageData.moduleCode + ' ' + (lessonPadded || '');
 
         // HTML attributes
@@ -234,8 +246,28 @@ class TemplateEngine {
         var tereoTitle = pageData.tereoTitle || '';
         var titles = headerPattern.titles || ['english'];
 
+        // Strip module code prefix from titles if present
+        var modulePrefix = pageData.moduleCode
+            ? pageData.moduleCode.replace(/\d+$/, '')
+            : '';
+        if (modulePrefix && englishTitle) {
+            // Strip prefix (e.g. "OSAI") from start of title
+            var prefixRegex = new RegExp('^' + modulePrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*', 'i');
+            englishTitle = englishTitle.replace(prefixRegex, '');
+        }
+
+        // Split English and Te Reo titles on double-space
+        var splitTitles = englishTitle.split(/  +/);
+        var englishOnly = (splitTitles[0] || '').trim();
+        var tereoFromTitle = splitTitles.length > 1 ? splitTitles.slice(1).join('  ').trim() : '';
+
+        // Use tereoFromTitle if no separate tereoTitle was provided
+        if (tereoFromTitle && !tereoTitle) {
+            tereoTitle = tereoFromTitle;
+        }
+
         // For lesson pages, title source is 'module' (uses module title, not lesson-specific)
-        var titleText = englishTitle;
+        var titleText = englishOnly || englishTitle;
 
         lines.push('  <div id="header">');
         lines.push('    <div id="module-code"><h1>' + this._escHtml(moduleCodeContent) + '</h1></div>');
@@ -243,8 +275,8 @@ class TemplateEngine {
         // English h1
         lines.push('    <h1><span>' + this._escHtml(titleText) + ' </span></h1>');
 
-        // Te Reo h1 (if dual titles)
-        if (titles.indexOf('tereo') !== -1 && tereoTitle) {
+        // Te Reo h1 (if dual titles OR if title was split from double-space)
+        if ((titles.indexOf('tereo') !== -1 || tereoTitle) && tereoTitle) {
             lines.push('    <h1><span>' + this._escHtml(tereoTitle) + ' </span></h1>');
         }
 
@@ -268,8 +300,8 @@ class TemplateEngine {
         lines.push('    <div id="module-head-buttons">');
 
         if (isOverview) {
-            // Overview page: tooltip on button is always "Overview"
-            lines.push('      <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>');
+            // Overview page: NO tooltip on button (tooltip goes on module-menu-content only)
+            lines.push('      <div id="module-menu-button" class="circle-button btn1"></div>');
         } else {
             // Lesson page: tooltip on button
             var btnTooltip = menuConfig.tooltipOn === 'module-menu-button'
@@ -287,25 +319,25 @@ class TemplateEngine {
                 : '';
             lines.push('    <div id="module-menu-content" class="moduleMenu"' + tooltipAttr + '>');
 
-            // Full tabbed menu
+            // Full tabbed menu — wrapped in row
             var tabs = menuConfig.tabs || ['Overview', 'Information'];
-            lines.push('      <div class="tabs col-12">');
-            lines.push('        <ul class="nav nav-tabs">');
+            lines.push('      <div class="row">');
+            lines.push('        <div class="tabs col-12">');
+            lines.push('          <ul class="nav nav-tabs">');
             for (var t = 0; t < tabs.length; t++) {
-                var activeClass = t === 0 ? ' class="active"' : '';
-                lines.push('          <li' + activeClass + '><a data-toggle="tab" href="#tab' +
-                    (t + 1) + '">' + this._escHtml(tabs[t]) + '</a></li>');
+                // No class, no data-toggle, no href on tab elements
+                lines.push('            <li><a>' + this._escHtml(tabs[t]) + '</a></li>');
             }
-            lines.push('        </ul>');
-            lines.push('        <div class="tab-content">');
+            lines.push('          </ul>');
+            lines.push('          <div class="tab-content">');
             for (var tp = 0; tp < tabs.length; tp++) {
-                var paneActive = tp === 0 ? ' active in' : '';
-                lines.push('          <div id="tab' + (tp + 1) +
-                    '" class="tab-pane fade' + paneActive + '">');
-                lines.push('            <!-- MODULE_MENU_CONTENT: ' +
+                // No id, no fade, no active, no in — just tab-pane
+                lines.push('            <div class="tab-pane">');
+                lines.push('              <!-- MODULE_MENU_CONTENT: ' +
                     this._escHtml(tabs[tp]) + ' -->');
-                lines.push('          </div>');
+                lines.push('            </div>');
             }
+            lines.push('          </div>');
             lines.push('        </div>');
             lines.push('      </div>');
         } else {
