@@ -417,10 +417,14 @@ class HtmlConverter {
 
         function flushPending() {
             if (pendingContent.length > 0) {
-                var rowHtml = self._wrapInRow(pendingContent.join('\n'), colClass);
                 if (inActivity) {
-                    activityParts.push(rowHtml);
+                    // Inside activities, push raw content — the activity wrapper
+                    // provides its own inner row/col-12 structure
+                    for (var fp = 0; fp < pendingContent.length; fp++) {
+                        activityParts.push(pendingContent[fp]);
+                    }
                 } else {
+                    var rowHtml = self._wrapInRow(pendingContent.join('\n'), colClass);
                     htmlParts.push(rowHtml);
                 }
                 pendingContent = [];
@@ -440,20 +444,9 @@ class HtmlConverter {
             var tagName = primaryTag ? primaryTag.normalised : null;
             var category = primaryTag ? primaryTag.category : null;
 
-            // Handle red text instructions as HTML comments
-            if (pBlock.tagResult && pBlock.tagResult.redTextInstructions) {
-                for (var ri = 0; ri < pBlock.tagResult.redTextInstructions.length; ri++) {
-                    var instruction = pBlock.tagResult.redTextInstructions[ri];
-                    if (instruction.trim()) {
-                        var comment = '    <!-- CS: ' + this._escContent(instruction.trim()) + ' -->';
-                        if (inActivity) {
-                            activityParts.push(comment);
-                        } else {
-                            htmlParts.push(comment);
-                        }
-                    }
-                }
-            }
+            // Red text instructions are internal workflow annotations (CS notes).
+            // They are captured by InteractiveExtractor for reference document
+            // entries but are NOT rendered in the output HTML.
 
             // Skip structural tags that don't produce visible HTML
             if (category === 'structural') {
@@ -478,6 +471,23 @@ class HtmlConverter {
             // --- Activity wrapper ---
             if (tagName === 'activity') {
                 flushPending();
+                // If already inside an activity (previous one not closed with [end activity]),
+                // flush the previous activity to htmlParts before starting the new one.
+                // This prevents content loss when writers omit [end activity] tags.
+                if (inActivity && activityParts.length > 0) {
+                    var prevActivityClass = activityHasInteractive
+                        ? 'activity interactive'
+                        : 'activity alertPadding';
+                    var prevActivityNum = this._currentActivityId || '';
+                    var prevActivityHtml = this._wrapInRow(
+                        '    <div class="' + prevActivityClass + '"' +
+                        (prevActivityNum ? ' number="' + this._escAttr(prevActivityNum) + '"' : '') + '>\n' +
+                        '      <div class="row">\n        <div class="col-12">\n' +
+                        activityParts.join('\n') + '\n' +
+                        '        </div>\n      </div>\n' +
+                        '    </div>', 'col-md-12 col-12');
+                    htmlParts.push(prevActivityHtml);
+                }
                 inActivity = true;
                 activityHasInteractive = false;
                 activityParts = [];
@@ -495,11 +505,15 @@ class HtmlConverter {
                         ? 'activity interactive'
                         : 'activity alertPadding';
                     var activityNum = this._currentActivityId || '';
+                    // Activity wrapper: outer row → col → activity div → inner row → col-12 → content
                     var activityHtml = '    <div class="' + activityClass + '"' +
-                        (activityNum ? ' number="' + this._escAttr(activityNum) + '"' : '') + '>\n';
-                    activityHtml += activityParts.join('\n') + '\n';
-                    activityHtml += '    </div>';
-                    htmlParts.push(activityHtml);
+                        (activityNum ? ' number="' + this._escAttr(activityNum) + '"' : '') + '>\n' +
+                        '      <div class="row">\n        <div class="col-12">\n' +
+                        activityParts.join('\n') + '\n' +
+                        '        </div>\n      </div>\n' +
+                        '    </div>';
+                    // Wrap the activity div in an outer Bootstrap grid row
+                    htmlParts.push(this._wrapInRow(activityHtml, 'col-md-12 col-12'));
                     inActivity = false;
                     activityParts = [];
                 }
@@ -570,7 +584,6 @@ class HtmlConverter {
                         if (inActivity) {
                             activityParts.push(extractResult.placeholderHtml);
                         } else {
-                            activityParts = [];
                             htmlParts.push(extractResult.placeholderHtml);
                         }
 
@@ -699,42 +712,48 @@ class HtmlConverter {
             // --- Alert ---
             if (tagName === 'alert') {
                 flushPending();
-                var alertContent = this._collectBlockContent(processedBlocks, i);
+                var alertResult = this._collectAlertContent(processedBlocks, i);
+                var alertInnerHtml = '';
+                for (var ai = 0; ai < alertResult.paragraphs.length; ai++) {
+                    alertInnerHtml += '          <p>' + this._convertInlineFormatting(alertResult.paragraphs[ai]) + '</p>\n';
+                }
                 var alertHtml = '    <div class="alert">\n' +
                     '      <div class="row">\n' +
                     '        <div class="col-12">\n' +
-                    '          <p>' + this._convertInlineFormatting(alertContent) + '</p>\n' +
+                    alertInnerHtml +
                     '        </div>\n' +
                     '      </div>\n' +
                     '    </div>';
-                alertHtml = this._wrapInRow(alertHtml, colClass);
                 if (inActivity) {
                     activityParts.push(alertHtml);
                 } else {
-                    htmlParts.push(alertHtml);
+                    htmlParts.push(this._wrapInRow(alertHtml, colClass));
                 }
-                i++;
+                i += alertResult.blocksConsumed;
                 continue;
             }
 
             // --- Important ---
             if (tagName === 'important') {
                 flushPending();
-                var impContent = this._collectBlockContent(processedBlocks, i);
+                var impResult = this._collectAlertContent(processedBlocks, i);
+                var impInnerHtml = '';
+                for (var ii = 0; ii < impResult.paragraphs.length; ii++) {
+                    impInnerHtml += '          <p>' + this._convertInlineFormatting(impResult.paragraphs[ii]) + '</p>\n';
+                }
                 var impHtml = '    <div class="alert solid">\n' +
                     '      <div class="row">\n' +
                     '        <div class="col-12">\n' +
-                    '          <p>' + this._convertInlineFormatting(impContent) + '</p>\n' +
+                    impInnerHtml +
                     '        </div>\n' +
                     '      </div>\n' +
                     '    </div>';
-                impHtml = this._wrapInRow(impHtml, colClass);
                 if (inActivity) {
                     activityParts.push(impHtml);
                 } else {
-                    htmlParts.push(impHtml);
+                    htmlParts.push(this._wrapInRow(impHtml, colClass));
                 }
-                i++;
+                i += impResult.blocksConsumed;
                 continue;
             }
 
@@ -744,21 +763,24 @@ class HtmlConverter {
                 tagName === 'alert_cultural_combined') {
                 flushPending();
                 var layout = tagName.replace('alert_cultural_', '');
-                var cultContent = this._collectBlockContent(processedBlocks, i);
+                var cultResult = this._collectAlertContent(processedBlocks, i);
+                var cultInnerHtml = '';
+                for (var ci2 = 0; ci2 < cultResult.paragraphs.length; ci2++) {
+                    cultInnerHtml += '          <p>' + this._convertInlineFormatting(cultResult.paragraphs[ci2]) + '</p>\n';
+                }
                 var cultHtml = '    <div class="alert cultural" layout="' + layout + '">\n' +
                     '      <div class="row">\n' +
                     '        <div class="col-12">\n' +
-                    '          <p>' + this._convertInlineFormatting(cultContent) + '</p>\n' +
+                    cultInnerHtml +
                     '        </div>\n' +
                     '      </div>\n' +
                     '    </div>';
-                cultHtml = this._wrapInRow(cultHtml, colClass);
                 if (inActivity) {
                     activityParts.push(cultHtml);
                 } else {
-                    htmlParts.push(cultHtml);
+                    htmlParts.push(this._wrapInRow(cultHtml, colClass));
                 }
-                i++;
+                i += cultResult.blocksConsumed;
                 continue;
             }
 
@@ -797,16 +819,24 @@ class HtmlConverter {
                     quoteAck = ackSplit.attribution;
                 }
 
-                // Strip italic wrapping from quote text (docx artefact)
+                // Strip italic wrapping from quote text (docx artefact — CSS handles styling).
+                // Handles both *text* and "*text*" and "* text"* patterns.
                 quoteText = this._stripFullItalic(quoteText);
+                // Also strip italic markers inside or around quote marks:
+                // "*text"* → "text", *"text"* → "text"
+                quoteText = quoteText
+                    .replace(/^([""\u201C])\*/, '$1')    // "*text → "text
+                    .replace(/\*([""\u201D])$/, '$1')    // text"* → text"
+                    .replace(/^\*([""\u201C])/, '$1')    // *"text → "text
+                    .replace(/([""\u201D])\*$/, '$1');   // text*" → text"
 
                 // Add quotes if not already present
                 if (quoteText && !quoteText.startsWith('"') && !quoteText.startsWith('\u201C')) {
                     quoteText = '\u201C' + quoteText + '\u201D';
                 }
 
-                var quoteHtml = '      <p class="quoteText">' +
-                    this._convertInlineFormatting(quoteText) + '</p>';
+                var quoteConvertedText = this._convertInlineFormatting(quoteText);
+                var quoteHtml = '      <p class="quoteText">' + quoteConvertedText + '</p>';
                 if (quoteAck) {
                     quoteHtml += '\n      <p class="quoteAck">' +
                         this._convertInlineFormatting(quoteAck) + '</p>';
@@ -1032,10 +1062,12 @@ class HtmlConverter {
                 : 'activity alertPadding';
             var finalActivityNum = this._currentActivityId || '';
             var finalActivityHtml = '    <div class="' + finalActivityClass + '"' +
-                (finalActivityNum ? ' number="' + this._escAttr(finalActivityNum) + '"' : '') + '>\n';
-            finalActivityHtml += activityParts.join('\n') + '\n';
-            finalActivityHtml += '    </div>';
-            htmlParts.push(finalActivityHtml);
+                (finalActivityNum ? ' number="' + this._escAttr(finalActivityNum) + '"' : '') + '>\n' +
+                '      <div class="row">\n        <div class="col-12">\n' +
+                activityParts.join('\n') + '\n' +
+                '        </div>\n      </div>\n' +
+                '    </div>';
+            htmlParts.push(this._wrapInRow(finalActivityHtml, 'col-md-12 col-12'));
         }
 
         return htmlParts.join('\n');
@@ -1219,6 +1251,61 @@ class HtmlConverter {
     _collectBlockContent(processedBlocks, index) {
         var block = processedBlocks[index];
         return (block && block.cleanText) ? block.cleanText : '';
+    }
+
+    /**
+     * Collect all content paragraphs belonging to an alert/important block.
+     * Consumes the tag block plus all following body-content paragraphs until
+     * a structural boundary (heading, activity, interactive, styling, media,
+     * or another tagged element).
+     *
+     * @param {Array<Object>} processedBlocks - All processed blocks
+     * @param {number} index - Index of the alert tag block
+     * @returns {Object} { paragraphs: Array<string>, blocksConsumed: number }
+     */
+    _collectAlertContent(processedBlocks, index) {
+        var paragraphs = [];
+        var block = processedBlocks[index];
+        var tagBlockText = (block && block.cleanText) ? block.cleanText : '';
+        if (tagBlockText.trim()) {
+            paragraphs.push(tagBlockText);
+        }
+
+        var j = index + 1;
+        while (j < processedBlocks.length) {
+            var nextBlock = processedBlocks[j];
+            var nextTags = nextBlock.tagResult ? nextBlock.tagResult.tags : [];
+            var nextTag = nextTags.length > 0 ? nextTags[0] : null;
+
+            // Stop at any tagged block (except body tag with no other structural meaning)
+            if (nextTag) {
+                var nextCat = nextTag.category;
+                var nextName = nextTag.normalised;
+                // Body tag means the next paragraph is regular body content — stop
+                if (nextCat === 'body' || nextCat === 'heading' || nextCat === 'structural' ||
+                    nextCat === 'interactive' || nextCat === 'styling' || nextCat === 'media' ||
+                    nextCat === 'link' || nextCat === 'activity' ||
+                    nextName === 'activity' || nextName === 'end_activity' ||
+                    nextName === 'alert' || nextName === 'important' ||
+                    nextName === 'alert_cultural_wananga' ||
+                    nextName === 'alert_cultural_talanoa' ||
+                    nextName === 'alert_cultural_combined') {
+                    break;
+                }
+            }
+
+            // Stop at table blocks
+            if (nextBlock.type === 'table') break;
+
+            // Consume untagged paragraphs (continuation of alert content)
+            var nextText = (nextBlock.cleanText || '').trim();
+            if (nextText) {
+                paragraphs.push(nextText);
+            }
+            j++;
+        }
+
+        return { paragraphs: paragraphs, blocksConsumed: j - index };
     }
 
     /**

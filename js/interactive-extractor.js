@@ -346,6 +346,19 @@ class InteractiveExtractor {
                 }
             }
         }
+        // Also check table blocks — interactive tags can appear inside table cells
+        // (e.g., [speech bubble] in a table with image + text)
+        if (block.type === 'table' && block.data) {
+            var tableText = this._buildTableText(block.data);
+            var tableTagResult = this._normaliser.processBlock(tableText);
+            if (tableTagResult.tags) {
+                for (var j = 0; j < tableTagResult.tags.length; j++) {
+                    if (tableTagResult.tags[j].category === 'interactive') {
+                        return tableTagResult.tags[j];
+                    }
+                }
+            }
+        }
         return null;
     }
 
@@ -433,6 +446,36 @@ class InteractiveExtractor {
             redFlags: []
         };
 
+        // If the interactive tag block itself is a table (e.g., speech bubble in table row
+        // with image + text), extract the table data from it directly.
+        var tagBlock = blocks[startIndex];
+        if (tagBlock.type === 'table' && tagBlock.data) {
+            var tagTableData = this._extractTableData(tagBlock.data);
+            if (tagTableData) {
+                result.tableData = tagTableData;
+                result.detectedPattern = this._detectTablePattern(tagTableData, interactiveType);
+                // Extract media from the table
+                var tagTableMedia = this._extractMediaFromTable(tagBlock.data);
+                result.mediaReferences = result.mediaReferences.concat(tagTableMedia);
+            }
+            // Extract writer instructions from table cells
+            if (tagBlock.data.rows) {
+                for (var tr = 0; tr < tagBlock.data.rows.length; tr++) {
+                    var tRow = tagBlock.data.rows[tr];
+                    for (var tc = 0; tc < tRow.cells.length; tc++) {
+                        var tCell = tRow.cells[tc];
+                        for (var tp = 0; tp < tCell.paragraphs.length; tp++) {
+                            var tText = this._buildFormattedText(tCell.paragraphs[tp]);
+                            var tTagResult = this._normaliser.processBlock(tText);
+                            if (tTagResult.redTextInstructions && tTagResult.redTextInstructions.length > 0) {
+                                result.writerInstructions = result.writerInstructions.concat(tTagResult.redTextInstructions);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         var i = startIndex + 1;
 
         // Special handling for speech_bubble with conversation layout (Pattern 9)
@@ -453,10 +496,12 @@ class InteractiveExtractor {
                     if (convBlock.type !== 'paragraph' || !convBlock.data) break;
                     var convTagResult = this._getBlockTagResult(convBlock);
                     var convPrimaryTag = convTagResult.tags && convTagResult.tags.length > 0 ? convTagResult.tags[0] : null;
-                    // Stop on any tagged block (structural, interactive, heading, activity, etc.)
+                    // Stop on any tagged block (structural, interactive, heading, activity, body, etc.)
                     if (convPrimaryTag && (convPrimaryTag.category === 'structural' ||
                         convPrimaryTag.category === 'interactive' ||
                         convPrimaryTag.category === 'heading' ||
+                        convPrimaryTag.category === 'body' ||
+                        convPrimaryTag.category === 'link' ||
                         convPrimaryTag.normalised === 'activity' ||
                         convPrimaryTag.normalised === 'end_activity' ||
                         convPrimaryTag.category === 'styling' ||
@@ -465,10 +510,9 @@ class InteractiveExtractor {
                     }
                     var convText = (convTagResult.cleanText || '').trim();
                     if (!convText) { i++; continue; }
-                    // Check if this looks like conversation content
+                    // Check if this looks like conversation content (Prompt N: / AI response: etc.)
                     var isConvLine = /^(prompt|ai\s*response|response|user|assistant|human|student)\s*\d*\s*:/i.test(convText);
-                    // Also consume any non-tagged paragraph that follows the pattern
-                    if (isConvLine || (!convPrimaryTag && conversationItems.length > 0)) {
+                    if (isConvLine) {
                         conversationItems.push(convText);
                         if (convTagResult.redTextInstructions && convTagResult.redTextInstructions.length > 0) {
                             result.writerInstructions = result.writerInstructions.concat(convTagResult.redTextInstructions);
@@ -476,6 +520,19 @@ class InteractiveExtractor {
                         result.blocksConsumed = i - startIndex + 1;
                         i++;
                         continue;
+                    }
+                    // Also consume non-tagged continuation lines that follow an AI response
+                    // (multi-paragraph AI responses without explicit "AI response:" prefix)
+                    if (!convPrimaryTag && conversationItems.length > 0) {
+                        // Check if the PREVIOUS item was an AI response (might have multi-para reply)
+                        var lastConv = conversationItems[conversationItems.length - 1];
+                        var lastWasResponse = /^(ai\s*response|response|assistant)\s*\d*\s*:/i.test(lastConv);
+                        if (lastWasResponse) {
+                            conversationItems.push(convText);
+                            result.blocksConsumed = i - startIndex + 1;
+                            i++;
+                            continue;
+                        }
                     }
                     break;
                 }
@@ -558,9 +615,17 @@ class InteractiveExtractor {
                 }
 
                 // Check for heading/body/styling/media/link tags as boundary
-                // ONLY if we are not expecting sub-tags (types that use numbered patterns)
-                var expectsSubTags = this._typeToPrimaryPattern[interactiveType] >= 5 &&
-                    this._typeToPrimaryPattern[interactiveType] <= 7;
+                // ONLY if we are not expecting sub-tags. Types that use numbered
+                // sub-tag patterns (carousel, tabs, accordion, flip_card, click_drop,
+                // hint_slider, shape_hover) should look ahead past body/heading/media
+                // blocks to find their sub-tags.
+                var expectsSubTags = (
+                    (this._typeToPrimaryPattern[interactiveType] >= 5 &&
+                     this._typeToPrimaryPattern[interactiveType] <= 7) ||
+                    interactiveType === 'flip_card' ||
+                    interactiveType === 'click_drop' ||
+                    interactiveType === 'hint_slider'
+                );
                 if (primaryTag && this._isEndBoundary(primaryTag) && !expectsSubTags) {
                     break;
                 }
