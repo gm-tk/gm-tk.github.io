@@ -91,8 +91,18 @@ User drops .docx file
   → OutputFormatter.formatAll() converts to text
     → Metadata block formatted
     → Content formatted with formatting markers
+  → TagNormaliser processes all content blocks (Phase 1)
+    → Extracts square-bracket tags from red text and plain text
+    → Normalises tag variants to canonical forms
+    → Classifies tags by category
+    → Extracts writer instructions from red text
+  → PageBoundary assigns pages (Phase 1)
+    → Applies 4 validation rules
+    → Splits content into overview + lesson pages
+    → Assigns filenames (MODULE_CODE-XX.html)
   → App.showResults() displays output
     → User can Copy or Download
+    → Debug panel shows tag & page analysis
 ```
 
 ### Class Responsibilities
@@ -101,7 +111,9 @@ User drops .docx file
 |-------|------|---------|
 | `DocxParser` | `js/docx-parser.js` | Extracts structured content from .docx XML |
 | `OutputFormatter` | `js/formatter.js` | Converts parsed data to plain text output |
-| `App` | `js/app.js` | UI controller — upload, display, clipboard, download |
+| `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, and red text processing |
+| `PageBoundary` | `js/page-boundary.js` | Page boundary detection, validation, and assignment |
+| `App` | `js/app.js` | UI controller — upload, display, clipboard, download, debug panel |
 
 ---
 
@@ -111,11 +123,14 @@ User drops .docx file
 gm-tk.github.io/
 ├── index.html              # Single-page application shell
 ├── css/
-│   └── styles.css          # All application styles
+│   └── styles.css          # All application styles (including debug panel)
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
 │   ├── formatter.js         # Plain text output formatter
-│   └── app.js              # UI controller
+│   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1)
+│   ├── page-boundary.js     # Page boundary detection & validation (Phase 1)
+│   └── app.js              # UI controller (with debug panel integration)
+├── CLAUDE.md               # Project reference & instructions
 ├── README.md               # Project documentation
 └── .nojekyll               # Disables Jekyll processing on GitHub Pages
 ```
@@ -131,8 +146,8 @@ gm-tk.github.io/
 │   ├── docx-parser.js          # .docx XML extraction (existing, unchanged)
 │   ├── formatter.js             # Plain text formatter (existing, may be deprecated)
 │   ├── app.js                   # UI controller (extended for new workflow)
-│   ├── tag-normaliser.js        # Tag taxonomy & normalisation engine (NEW)
-│   ├── page-boundary.js         # Page boundary detection & validation (NEW)
+│   ├── tag-normaliser.js        # Tag taxonomy & normalisation engine (DONE — Phase 1)
+│   ├── page-boundary.js         # Page boundary detection & validation (DONE — Phase 1)
 │   ├── html-converter.js        # HTML generation engine (NEW)
 │   ├── template-engine.js       # Template skeleton builder (NEW)
 │   └── interactive-extractor.js # Interactive data extraction & reference doc (NEW)
@@ -295,16 +310,27 @@ The App class manages all user interaction:
 - **File upload** — drag-and-drop zone + click-to-browse, validates `.docx` extension
 - **Processing** — shows spinner + progress steps during parse
 - **Results** — displays metadata panel, stats panel, output textarea, action buttons
+- **Tag & Page Analysis** — after parsing, runs TagNormaliser and PageBoundary on content blocks, displays results in a collapsible debug panel
 - **Actions** — Copy All, Copy Content Only, Download as .txt, Parse Another File
 - **Error handling** — specific error messages for known failure modes (missing XML, invalid XML, corrupted file)
 - **Accessibility** — screen reader announcements, keyboard navigation, ARIA labels
 
 ### Section Visibility
 
-The UI uses CSS `.hidden` class to toggle between three states:
+The UI uses CSS `.hidden` class to toggle between these states:
 1. `#upload-section` — initial file upload view
 2. `#processing-section` — spinner during parse
 3. `#results-section` — output display with actions
+4. `#debug-panel` — collapsible tag & page analysis debug panel (appears below results after parse)
+
+### Debug Panel (Phase 1)
+
+The debug panel (`#debug-panel`) is a temporary development/testing panel that appears after parsing. It shows:
+
+1. **Tag Normalisation Results** — total tags, unrecognised tags, red text instructions, category breakdown, and a detailed table of all tags found (raw → normalised form)
+2. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
+
+The debug panel uses a `<details>` element so it starts collapsed. It does NOT interfere with the existing text output functionality — Copy All, Copy Content Only, and Download produce the same plain text as before.
 
 ---
 
@@ -821,17 +847,22 @@ INTERACTIVE 2 of 7
 
 ### New Modules to Create
 
-#### tag-normaliser.js
+#### tag-normaliser.js — DONE (Phase 1)
 - Implements the complete normalisation table from Section 10
 - Takes raw tag text, returns normalised form + sub-identifier
-- Handles red text extraction (tag-only, tag+instruction, pure instruction)
-- Case-insensitive matching with fuzzy tolerance for writer variability
+- Handles red text extraction (tag-only, tag+instruction, pure instruction, whitespace-only)
+- Case-insensitive matching with flexible hyphen/space handling
+- Classifies tags by category (structural, heading, body, styling, media, activity, link, interactive, subtag)
+- Handles special cases: info trigger image merge, D&D modifier extraction, trailing number/ID extraction
+- Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`
 
-#### page-boundary.js
+#### page-boundary.js — DONE (Phase 1)
 - Implements all 4 Page Boundary Validation Rules
 - Takes the content blocks array, returns page assignments
 - Each page knows its type (overview, lesson), content blocks, and output filename
 - Handles lesson numbering (explicit, sequential, mixed)
+- Tracks boundary decisions (which rules fired and why)
+- Public API: `assignPages(contentBlocks, moduleCode)`
 
 #### html-converter.js
 - The main conversion engine

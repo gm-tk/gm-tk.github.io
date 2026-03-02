@@ -11,12 +11,17 @@ class App {
     constructor() {
         this.parser = new DocxParser();
         this.formatter = new OutputFormatter();
+        this.tagNormaliser = new TagNormaliser();
+        this.pageBoundary = new PageBoundary(this.tagNormaliser);
 
         /** Cached formatted output after a successful parse */
         this.currentOutput = null;
 
         /** Cached metadata for display */
         this.currentMetadata = null;
+
+        /** Cached tag/page analysis for debug panel */
+        this.currentAnalysis = null;
 
         this._bindElements();
         this._bindEvents();
@@ -44,6 +49,9 @@ class App {
         this.errorPanel = document.getElementById('error-panel');
         this.errorMessage = document.getElementById('error-message');
         this.toast = document.getElementById('toast');
+        this.debugPanel = document.getElementById('debug-panel');
+        this.debugContent = document.getElementById('debug-content');
+        this.debugToggle = document.getElementById('debug-toggle');
     }
 
     // ------------------------------------------------------------------
@@ -158,6 +166,14 @@ class App {
             self.currentOutput = output;
             self.currentMetadata = result.metadata;
 
+            // Run tag normalisation and page boundary analysis
+            self._addProgressStep('Running tag normalisation...');
+            var analysis = self._runAnalysis(result);
+            self.currentAnalysis = analysis;
+            self._addProgressStep('Tag analysis complete: ' +
+                analysis.totalTags + ' tags found, ' +
+                analysis.pages.length + ' pages detected');
+
             self.showResults(result, output);
         } catch (err) {
             self.hideProcessing();
@@ -225,6 +241,11 @@ class App {
             this.showError('This document appears to be empty or contains no text content.');
         }
 
+        // Render debug panel
+        if (this.currentAnalysis) {
+            this._renderDebugPanel(this.currentAnalysis);
+        }
+
         // Announce to screen readers
         this._announce('Document processed successfully. ' +
             result.stats.totalParagraphs + ' paragraphs extracted.');
@@ -233,11 +254,15 @@ class App {
     reset() {
         this.currentOutput = null;
         this.currentMetadata = null;
+        this.currentAnalysis = null;
         this.resultsSection.classList.add('hidden');
         this.processingSection.classList.add('hidden');
         this.uploadSection.classList.remove('hidden');
         this.hideError();
         this.fileInput.value = '';
+        if (this.debugPanel) {
+            this.debugPanel.classList.add('hidden');
+        }
     }
 
     showError(message) {
@@ -419,6 +444,309 @@ class App {
         if (announcer) {
             announcer.textContent = message;
         }
+    }
+
+    // ------------------------------------------------------------------
+    // Tag & Page Analysis
+    // ------------------------------------------------------------------
+
+    /**
+     * Run tag normalisation and page boundary analysis on parsed content.
+     *
+     * @param {Object} parserResult - Result from DocxParser.parse()
+     * @returns {Object} Analysis results for debug display
+     */
+    _runAnalysis(parserResult) {
+        var contentBlocks = parserResult.content;
+        var startIndex = parserResult.contentStartIndex;
+        var moduleCode = (parserResult.metadata && parserResult.metadata.moduleCode) || 'MODULE';
+
+        // Process all content blocks from content start onwards
+        var allTags = [];
+        var unrecognisedTags = [];
+        var redTextInstructions = [];
+        var redTextOnlyCount = 0;
+        var whitespaceOnlyCount = 0;
+        var tagsByCategory = {};
+
+        for (var i = startIndex; i < contentBlocks.length; i++) {
+            var block = contentBlocks[i];
+            var blockText = this._getBlockTextForAnalysis(block);
+            var processed = this.tagNormaliser.processBlock(blockText);
+
+            if (processed.isRedTextOnly) {
+                redTextOnlyCount++;
+            }
+            if (processed.isWhitespaceOnly) {
+                whitespaceOnlyCount++;
+            }
+
+            for (var t = 0; t < processed.tags.length; t++) {
+                var tag = processed.tags[t];
+                allTags.push({
+                    raw: tag.raw,
+                    normalised: tag.normalised,
+                    category: tag.category,
+                    level: tag.level,
+                    number: tag.number,
+                    id: tag.id,
+                    modifier: tag.modifier,
+                    blockIndex: i
+                });
+
+                if (!tag.normalised) {
+                    unrecognisedTags.push({
+                        raw: tag.raw,
+                        blockIndex: i
+                    });
+                }
+
+                // Count by category
+                var cat = tag.category || 'unknown';
+                if (!tagsByCategory[cat]) {
+                    tagsByCategory[cat] = 0;
+                }
+                tagsByCategory[cat]++;
+            }
+
+            for (var r = 0; r < processed.redTextInstructions.length; r++) {
+                redTextInstructions.push({
+                    text: processed.redTextInstructions[r],
+                    blockIndex: i
+                });
+            }
+        }
+
+        // Run page boundary detection
+        var contentFromStart = contentBlocks.slice(startIndex);
+        var pages = this.pageBoundary.assignPages(contentFromStart, moduleCode);
+
+        return {
+            totalTags: allTags.length,
+            tags: allTags,
+            unrecognisedTags: unrecognisedTags,
+            redTextInstructions: redTextInstructions,
+            redTextOnlyCount: redTextOnlyCount,
+            whitespaceOnlyCount: whitespaceOnlyCount,
+            tagsByCategory: tagsByCategory,
+            pages: pages
+        };
+    }
+
+    /**
+     * Get text from a content block for analysis (mirrors page boundary logic).
+     *
+     * @param {Object} block - A content block {type, data}
+     * @returns {string} Text content
+     */
+    _getBlockTextForAnalysis(block) {
+        if (block.type === 'paragraph' && block.data) {
+            var runs = block.data.runs || [];
+            var text = '';
+            for (var i = 0; i < runs.length; i++) {
+                var run = runs[i];
+                if (!run.text) continue;
+                var chunk = run.text;
+                var fmt = run.formatting || {};
+                if (fmt.isRed) {
+                    chunk = '\uD83D\uDD34[RED TEXT] ' + chunk + ' [/RED TEXT]\uD83D\uDD34';
+                }
+                text += chunk;
+            }
+            return text;
+        }
+        if (block.type === 'table' && block.data) {
+            var texts = [];
+            var rows = block.data.rows || [];
+            for (var r = 0; r < rows.length; r++) {
+                var cells = rows[r].cells || [];
+                for (var c = 0; c < cells.length; c++) {
+                    var paras = cells[c].paragraphs || [];
+                    for (var p = 0; p < paras.length; p++) {
+                        var paraRuns = paras[p].runs || [];
+                        var paraText = '';
+                        for (var ri = 0; ri < paraRuns.length; ri++) {
+                            if (!paraRuns[ri].text) continue;
+                            var ch = paraRuns[ri].text;
+                            var f = paraRuns[ri].formatting || {};
+                            if (f.isRed) {
+                                ch = '\uD83D\uDD34[RED TEXT] ' + ch + ' [/RED TEXT]\uD83D\uDD34';
+                            }
+                            paraText += ch;
+                        }
+                        if (paraText) texts.push(paraText);
+                    }
+                }
+            }
+            return texts.join(' ');
+        }
+        return '';
+    }
+
+    // ------------------------------------------------------------------
+    // Debug Panel rendering
+    // ------------------------------------------------------------------
+
+    /**
+     * Render the debug panel with tag normalisation and page boundary results.
+     *
+     * @param {Object} analysis - Analysis results from _runAnalysis
+     */
+    _renderDebugPanel(analysis) {
+        if (!this.debugPanel || !this.debugContent) return;
+
+        var html = '';
+
+        // --- Tag Normalisation Results ---
+        html += '<div class="debug-section">';
+        html += '<h4 class="debug-section-title">Tag Normalisation Results</h4>';
+
+        // Summary stats
+        html += '<div class="debug-stats">';
+        html += '<span class="debug-stat">Total tags: <b>' + analysis.totalTags + '</b></span>';
+        html += '<span class="debug-stat">Unrecognised: <b>' + analysis.unrecognisedTags.length + '</b></span>';
+        html += '<span class="debug-stat">Red text instructions: <b>' + analysis.redTextInstructions.length + '</b></span>';
+        html += '<span class="debug-stat">Red-text-only blocks: <b>' + analysis.redTextOnlyCount + '</b></span>';
+        html += '<span class="debug-stat">Whitespace-only blocks: <b>' + analysis.whitespaceOnlyCount + '</b></span>';
+        html += '</div>';
+
+        // Category breakdown
+        var categories = analysis.tagsByCategory;
+        var catKeys = Object.keys(categories);
+        if (catKeys.length > 0) {
+            html += '<div class="debug-categories">';
+            html += '<span class="debug-label">By category:</span> ';
+            for (var ci = 0; ci < catKeys.length; ci++) {
+                html += '<span class="debug-category-badge">' +
+                    this._esc(catKeys[ci]) + ': ' + categories[catKeys[ci]] + '</span>';
+            }
+            html += '</div>';
+        }
+
+        // Tag list
+        if (analysis.tags.length > 0) {
+            html += '<details class="debug-details">';
+            html += '<summary>All tags (' + analysis.tags.length + ')</summary>';
+            html += '<table class="debug-table"><thead><tr>' +
+                '<th>Block</th><th>Raw</th><th>Normalised</th><th>Category</th><th>Details</th>' +
+                '</tr></thead><tbody>';
+            for (var i = 0; i < analysis.tags.length; i++) {
+                var tag = analysis.tags[i];
+                var details = '';
+                if (tag.level) details += 'level=' + tag.level + ' ';
+                if (tag.number) details += 'number=' + tag.number + ' ';
+                if (tag.id) details += 'id=' + tag.id + ' ';
+                if (tag.modifier) details += 'modifier=' + tag.modifier;
+                details = details.trim();
+
+                var rowClass = tag.normalised ? '' : ' class="debug-unrecognised"';
+                html += '<tr' + rowClass + '>' +
+                    '<td>' + tag.blockIndex + '</td>' +
+                    '<td><code>' + this._esc(tag.raw) + '</code></td>' +
+                    '<td>' + (tag.normalised ? this._esc(tag.normalised) : '<em>unrecognised</em>') + '</td>' +
+                    '<td>' + (tag.category || '-') + '</td>' +
+                    '<td>' + (details || '-') + '</td>' +
+                    '</tr>';
+            }
+            html += '</tbody></table>';
+            html += '</details>';
+        }
+
+        // Unrecognised tags
+        if (analysis.unrecognisedTags.length > 0) {
+            html += '<details class="debug-details debug-warning">';
+            html += '<summary>Unrecognised tags (' + analysis.unrecognisedTags.length + ')</summary>';
+            html += '<ul>';
+            for (var u = 0; u < analysis.unrecognisedTags.length; u++) {
+                html += '<li>Block #' + analysis.unrecognisedTags[u].blockIndex +
+                    ': <code>' + this._esc(analysis.unrecognisedTags[u].raw) + '</code></li>';
+            }
+            html += '</ul>';
+            html += '</details>';
+        }
+
+        // Red text instructions
+        if (analysis.redTextInstructions.length > 0) {
+            html += '<details class="debug-details">';
+            html += '<summary>Red text instructions (' + analysis.redTextInstructions.length + ')</summary>';
+            html += '<ul>';
+            for (var ri = 0; ri < analysis.redTextInstructions.length; ri++) {
+                html += '<li>Block #' + analysis.redTextInstructions[ri].blockIndex +
+                    ': <code>' + this._esc(analysis.redTextInstructions[ri].text) + '</code></li>';
+            }
+            html += '</ul>';
+            html += '</details>';
+        }
+
+        html += '</div>';
+
+        // --- Page Boundary Results ---
+        html += '<div class="debug-section">';
+        html += '<h4 class="debug-section-title">Page Boundary Results</h4>';
+
+        html += '<div class="debug-stats">';
+        html += '<span class="debug-stat">Pages detected: <b>' + analysis.pages.length + '</b></span>';
+        html += '</div>';
+
+        if (analysis.pages.length > 0) {
+            html += '<table class="debug-table"><thead><tr>' +
+                '<th>File</th><th>Type</th><th>Lesson</th><th>Blocks</th><th>Rules Applied</th>' +
+                '</tr></thead><tbody>';
+            for (var pi = 0; pi < analysis.pages.length; pi++) {
+                var page = analysis.pages[pi];
+                var rulesHtml = '';
+                if (page.boundaryDecisions && page.boundaryDecisions.length > 0) {
+                    for (var d = 0; d < page.boundaryDecisions.length; d++) {
+                        var dec = page.boundaryDecisions[d];
+                        rulesHtml += '<span class="debug-rule-badge">Rule ' + dec.rule +
+                            ': ' + this._esc(dec.action) + '</span> ';
+                    }
+                } else {
+                    rulesHtml = '-';
+                }
+
+                html += '<tr>' +
+                    '<td><code>' + this._esc(page.filename) + '</code></td>' +
+                    '<td>' + this._esc(page.type) + '</td>' +
+                    '<td>' + (page.lessonNumber !== null ? page.lessonNumber : '-') + '</td>' +
+                    '<td>' + page.contentBlocks.length + '</td>' +
+                    '<td>' + rulesHtml + '</td>' +
+                    '</tr>';
+            }
+            html += '</tbody></table>';
+
+            // Boundary decision details
+            var allDecisions = [];
+            for (var ai = 0; ai < analysis.pages.length; ai++) {
+                var pg = analysis.pages[ai];
+                if (pg.boundaryDecisions) {
+                    for (var di = 0; di < pg.boundaryDecisions.length; di++) {
+                        allDecisions.push({
+                            page: pg.filename,
+                            decision: pg.boundaryDecisions[di]
+                        });
+                    }
+                }
+            }
+
+            if (allDecisions.length > 0) {
+                html += '<details class="debug-details">';
+                html += '<summary>Boundary rule details (' + allDecisions.length + ' rules fired)</summary>';
+                html += '<ul>';
+                for (var bd = 0; bd < allDecisions.length; bd++) {
+                    var item = allDecisions[bd];
+                    html += '<li><b>' + this._esc(item.page) + '</b> &mdash; Rule ' +
+                        item.decision.rule + ': ' + this._esc(item.decision.reason) + '</li>';
+                }
+                html += '</ul>';
+                html += '</details>';
+            }
+        }
+
+        html += '</div>';
+
+        this.debugContent.innerHTML = html;
+        this.debugPanel.classList.remove('hidden');
     }
 
     // ------------------------------------------------------------------
