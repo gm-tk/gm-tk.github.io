@@ -195,13 +195,71 @@ class HtmlConverter {
             return { menuBlocks: [], bodyBlocks: blocks };
         }
 
+        // If only lesson_content found (no overview), all before it is menu, after is body
+        if (overviewIndex === -1 && contentIndex !== -1) {
+            return {
+                menuBlocks: blocks.slice(0, contentIndex),
+                bodyBlocks: blocks.slice(contentIndex + 1)
+            };
+        }
+
+        // If lesson_overview found but lesson_content is missing, use a heuristic:
+        // The menu content (learning/success criteria) ends at the first heading (H2+),
+        // activity tag, or interactive tag after the lesson overview section.
+        // This prevents ALL content from being routed to the menu, leaving body empty.
+        if (overviewIndex !== -1 && contentIndex === -1) {
+            var heuristicEnd = blocks.length;
+            for (var h = overviewIndex + 1; h < blocks.length; h++) {
+                var hBlock = blocks[h];
+                if (hBlock.type !== 'paragraph' || !hBlock.data) {
+                    // Table blocks after some menu items likely signal body content
+                    if (hBlock.type === 'table' && h > overviewIndex + 3) {
+                        heuristicEnd = h;
+                        break;
+                    }
+                    continue;
+                }
+                var hText = this._buildFormattedText(hBlock.data);
+                var hTagResult = this._normaliser.processBlock(hText);
+                for (var ht = 0; ht < hTagResult.tags.length; ht++) {
+                    var hTag = hTagResult.tags[ht];
+                    // Heading tags (H2, H3, etc.) signal start of body content
+                    if (hTag.category === 'heading' && hTag.level && hTag.level <= 3) {
+                        heuristicEnd = h;
+                        break;
+                    }
+                    // Activity tags signal start of body content
+                    if (hTag.normalised === 'activity' || hTag.normalised === 'end_activity') {
+                        heuristicEnd = h;
+                        break;
+                    }
+                    // Interactive tags signal start of body content
+                    if (hTag.category === 'interactive') {
+                        heuristicEnd = h;
+                        break;
+                    }
+                    // Styling tags (alert, important, etc.) signal body content
+                    if (hTag.category === 'styling') {
+                        heuristicEnd = h;
+                        break;
+                    }
+                }
+                if (heuristicEnd !== blocks.length) break;
+            }
+            return {
+                menuBlocks: blocks.slice(overviewIndex + 1, heuristicEnd),
+                bodyBlocks: blocks.slice(heuristicEnd)
+            };
+        }
+
+        // Normal case: both tags found
         // Menu blocks: between lesson_overview and lesson_content (exclusive of both tags)
-        var menuStart = overviewIndex !== -1 ? overviewIndex + 1 : 0;
-        var menuEnd = contentIndex !== -1 ? contentIndex : blocks.length;
+        var menuStart = overviewIndex + 1;
+        var menuEnd = contentIndex;
         var menuBlocks = blocks.slice(menuStart, menuEnd);
 
         // Body blocks: after lesson_content tag
-        var bodyBlocks = contentIndex !== -1 ? blocks.slice(contentIndex + 1) : [];
+        var bodyBlocks = blocks.slice(contentIndex + 1);
 
         return { menuBlocks: menuBlocks, bodyBlocks: bodyBlocks };
     }
@@ -491,23 +549,41 @@ class HtmlConverter {
             // They are captured by InteractiveExtractor for reference document
             // entries but are NOT rendered in the output HTML.
 
-            // --- Auto-close activity after its interactive has been emitted (Bug 1 fix) ---
-            // Must run BEFORE skip logic so structural/body/heading boundaries are caught.
-            if (inActivity && activityHasInteractive) {
+            // --- Auto-close activity at structural boundaries ---
+            // For activities WITH interactives: close at body/heading/structural tags.
+            // For ALL activities: close at section-level headings (H2, H3) that aren't
+            // activity headings, since those signal we've left the activity scope.
+            // 'activity', 'end_activity', and 'interactive' tags are handled
+            // by their dedicated code blocks below — don't auto-close for those.
+            if (inActivity) {
                 var shouldAutoClose = false;
-                if (category === 'body' && tagName === 'body') {
-                    shouldAutoClose = true;
-                } else if (category === 'heading') {
-                    shouldAutoClose = true;
-                } else if (category === 'structural') {
-                    shouldAutoClose = true;
+
+                if (activityHasInteractive) {
+                    // Activities with interactives: close at any body/heading/structural tag
+                    if (category === 'body' && tagName === 'body') {
+                        shouldAutoClose = true;
+                    } else if (category === 'heading') {
+                        shouldAutoClose = true;
+                    } else if (category === 'structural') {
+                        shouldAutoClose = true;
+                    }
+                } else if (activityParts.length > 0) {
+                    // Non-interactive activities with content: close at section-level
+                    // headings (plain [H2]/[H3] tags, NOT [Activity heading])
+                    if (category === 'heading' && tagName !== 'activity_heading') {
+                        shouldAutoClose = true;
+                    }
+                    // Also close at structural tags
+                    if (category === 'structural') {
+                        shouldAutoClose = true;
+                    }
                 }
-                // 'activity', 'end_activity', and 'interactive' tags are handled
-                // by their dedicated code blocks below — don't auto-close for those.
 
                 if (shouldAutoClose) {
                     flushPending();
-                    var autoClsClass = 'activity interactive';
+                    var autoClsClass = activityHasInteractive
+                        ? 'activity interactive'
+                        : 'activity';
                     var autoClsNum = self._currentActivityId || '';
                     var autoClsHtml = '    <div class="' + autoClsClass + '"' +
                         (autoClsNum ? ' number="' + self._escAttr(autoClsNum) + '"' : '') + '>\n' +
@@ -553,7 +629,7 @@ class HtmlConverter {
                 if (inActivity && activityParts.length > 0) {
                     var prevActivityClass = activityHasInteractive
                         ? 'activity interactive'
-                        : 'activity alertPadding';
+                        : 'activity';
                     var prevActivityNum = this._currentActivityId || '';
                     var prevActivityHtml = this._wrapInRow(
                         '    <div class="' + prevActivityClass + '"' +
@@ -591,7 +667,7 @@ class HtmlConverter {
                 if (inActivity) {
                     var activityClass = activityHasInteractive
                         ? 'activity interactive'
-                        : 'activity alertPadding';
+                        : 'activity';
                     var activityNum = this._currentActivityId || '';
                     // Activity wrapper: outer row → col → activity div → inner row → col-12 → content
                     var activityHtml = '    <div class="' + activityClass + '"' +
@@ -613,7 +689,14 @@ class HtmlConverter {
             if (tagName === 'activity_heading') {
                 flushPending();
                 var ahText = pBlock.cleanText || '';
-                var ahHtml = '      <h3>' + this._convertInlineFormatting(ahText) + '</h3>';
+                ahText = this._stripFullHeadingFormatting(ahText);
+                var ahLevel = primaryTag.level || 3;
+                if (ahLevel < 2) ahLevel = 2;
+                if (ahLevel > 5) ahLevel = 5;
+                var ahTag = 'h' + ahLevel;
+                var ahInner = this._convertInlineFormatting(ahText);
+                ahInner = this._stripHeadingInlineTags(ahInner);
+                var ahHtml = '      <' + ahTag + '>' + ahInner + '</' + ahTag + '>';
                 if (inActivity) {
                     activityParts.push(ahHtml);
                 } else {
@@ -1067,6 +1150,22 @@ class HtmlConverter {
                 continue;
             }
 
+            // --- Layout table: body text + image side by side ---
+            if (pBlock.type === 'table' && !this._hasTableTag(pBlock)) {
+                var layoutInfo = this._detectLayoutTable(pBlock.data);
+                if (layoutInfo) {
+                    flushPending();
+                    var layoutHtml = this._renderLayoutTable(layoutInfo, config);
+                    if (inActivity) {
+                        activityParts.push(layoutHtml);
+                    } else {
+                        htmlParts.push(layoutHtml);
+                    }
+                    i++;
+                    continue;
+                }
+            }
+
             // --- Untagged table → grid layout ---
             if (pBlock.type === 'table' && !this._hasTableTag(pBlock)) {
                 // Grid tables have their own row structure, so flush first
@@ -1147,7 +1246,7 @@ class HtmlConverter {
         if (inActivity) {
             var finalActivityClass = activityHasInteractive
                 ? 'activity interactive'
-                : 'activity alertPadding';
+                : 'activity';
             var finalActivityNum = this._currentActivityId || '';
             var finalActivityHtml = '    <div class="' + finalActivityClass + '"' +
                 (finalActivityNum ? ' number="' + this._escAttr(finalActivityNum) + '"' : '') + '>\n' +
@@ -1738,6 +1837,175 @@ class HtmlConverter {
                 html += '      </div>\n';
             }
             html += '    </div>\n';
+        }
+
+        return html;
+    }
+
+    /**
+     * Detect if a table is a layout table (body text + image side-by-side).
+     * A layout table has exactly 2 columns where one contains [body] tagged text
+     * and the other contains [image] tagged content with no interactive tags.
+     *
+     * @param {Object} tableData - Raw table data
+     * @returns {Object|null} Layout info { textCol, imageCol, textContent, imageRef } or null
+     */
+    _detectLayoutTable(tableData) {
+        if (!tableData || !tableData.rows || tableData.rows.length === 0) return null;
+
+        // Check first row has exactly 2 cells
+        var firstRow = tableData.rows[0];
+        if (!firstRow.cells || firstRow.cells.length !== 2) return null;
+
+        var col0Tags = this._getTableCellTags(firstRow.cells[0]);
+        var col1Tags = this._getTableCellTags(firstRow.cells[1]);
+
+        // Check if one column has [body] and the other has [image]
+        var col0HasBody = col0Tags.some(function (t) { return t.normalised === 'body'; });
+        var col0HasImage = col0Tags.some(function (t) { return t.normalised === 'image'; });
+        var col1HasBody = col1Tags.some(function (t) { return t.normalised === 'body'; });
+        var col1HasImage = col1Tags.some(function (t) { return t.normalised === 'image'; });
+
+        // Check no interactive tags
+        var allTags = col0Tags.concat(col1Tags);
+        var hasInteractive = allTags.some(function (t) { return t.category === 'interactive'; });
+        if (hasInteractive) return null;
+
+        var textColIdx = -1;
+        var imageColIdx = -1;
+
+        if (col0HasBody && col1HasImage) {
+            textColIdx = 0;
+            imageColIdx = 1;
+        } else if (col1HasBody && col0HasImage) {
+            textColIdx = 1;
+            imageColIdx = 0;
+        } else {
+            return null;
+        }
+
+        // Extract text content from body cell (all rows)
+        var textParagraphs = [];
+        var imageRef = '';
+        for (var r = 0; r < tableData.rows.length; r++) {
+            var row = tableData.rows[r];
+            if (!row.cells || row.cells.length !== 2) continue;
+
+            // Text cell
+            var textCell = row.cells[textColIdx];
+            for (var p = 0; p < textCell.paragraphs.length; p++) {
+                var pText = this._buildFormattedText(textCell.paragraphs[p]);
+                var pTagResult = this._normaliser.processBlock(pText);
+                var clean = (pTagResult.cleanText || '').trim();
+                if (clean) textParagraphs.push(clean);
+            }
+
+            // Image cell
+            var imgCell = row.cells[imageColIdx];
+            for (var ip = 0; ip < imgCell.paragraphs.length; ip++) {
+                var iPText = this._buildFormattedText(imgCell.paragraphs[ip]);
+                var iTagResult = this._normaliser.processBlock(iPText);
+                var iClean = (iTagResult.cleanText || '').trim();
+                // Check for URL in clean text
+                if (iClean && /https?:\/\//.test(iClean)) {
+                    var urlMatch = iClean.match(/(https?:\/\/[^\s]+)/);
+                    if (urlMatch) imageRef = urlMatch[1];
+                }
+                // Also check the full text for URLs
+                if (!imageRef) {
+                    var urlInFull = iPText.match(/(https?:\/\/[^\s\]]+)/);
+                    if (urlInFull) imageRef = urlInFull[1];
+                }
+            }
+        }
+
+        if (textParagraphs.length === 0) return null;
+
+        return {
+            textColIdx: textColIdx,
+            imageColIdx: imageColIdx,
+            textParagraphs: textParagraphs,
+            imageRef: imageRef
+        };
+    }
+
+    /**
+     * Get all tags from a table cell's paragraphs.
+     *
+     * @param {Object} cell - Table cell data
+     * @returns {Array<Object>} Tags found
+     */
+    _getTableCellTags(cell) {
+        var tags = [];
+        if (!cell || !cell.paragraphs) return tags;
+        for (var p = 0; p < cell.paragraphs.length; p++) {
+            var text = this._buildFormattedText(cell.paragraphs[p]);
+            var tagResult = this._normaliser.processBlock(text);
+            if (tagResult.tags) {
+                tags = tags.concat(tagResult.tags);
+            }
+        }
+        return tags;
+    }
+
+    /**
+     * Render a layout table as Bootstrap side-by-side columns.
+     *
+     * @param {Object} layoutInfo - From _detectLayoutTable
+     * @param {Object} config - Template config
+     * @returns {string} HTML
+     */
+    _renderLayoutTable(layoutInfo, config) {
+        var textColClass = 'col-md-8 col-12';
+        var imgColClass = 'col-md-4 offset-md-0 col-12';
+
+        var html = '    <div class="row">\n';
+
+        // Render in document order (text col first or image col first)
+        if (layoutInfo.textColIdx < layoutInfo.imageColIdx) {
+            // Text left, image right
+            html += '      <div class="' + textColClass + '">\n';
+            for (var t = 0; t < layoutInfo.textParagraphs.length; t++) {
+                html += '        <p>' + this._convertInlineFormatting(layoutInfo.textParagraphs[t]) + '</p>\n';
+            }
+            html += '      </div>\n';
+            html += '      <div class="' + imgColClass + '">\n';
+            html += '        ' + this._renderImagePlaceholder(layoutInfo.imageRef, config) + '\n';
+            html += '      </div>\n';
+        } else {
+            // Image left, text right
+            html += '      <div class="' + imgColClass + '">\n';
+            html += '        ' + this._renderImagePlaceholder(layoutInfo.imageRef, config) + '\n';
+            html += '      </div>\n';
+            html += '      <div class="' + textColClass + '">\n';
+            for (var t2 = 0; t2 < layoutInfo.textParagraphs.length; t2++) {
+                html += '        <p>' + this._convertInlineFormatting(layoutInfo.textParagraphs[t2]) + '</p>\n';
+            }
+            html += '      </div>\n';
+        }
+
+        html += '    </div>';
+        return html;
+    }
+
+    /**
+     * Render an image placeholder tag (for layout tables).
+     *
+     * @param {string} imageRef - Image URL or reference
+     * @param {Object} config - Template config
+     * @returns {string} HTML img tag
+     */
+    _renderImagePlaceholder(imageRef, config) {
+        var placeholderBase = (config.imageDefaults && config.imageDefaults.placeholderBase)
+            ? config.imageDefaults.placeholderBase : 'https://placehold.co';
+        var imgClass = (config.imageDefaults && config.imageDefaults.class)
+            ? config.imageDefaults.class : 'img-fluid';
+
+        var html = '<img class="' + imgClass + '" loading="lazy" src="' +
+            placeholderBase + '/400x300?text=Image" alt="" />';
+
+        if (imageRef) {
+            html += '\n        <!-- Reference: ' + this._escContent(imageRef) + ' -->';
         }
 
         return html;
@@ -2440,12 +2708,26 @@ class HtmlConverter {
                 }
             }
 
-            // Collect list items
+            // Collect list items for menu sections.
+            // Only collect bullet items for learning/success sections.
+            // Ordered (numbered) list items are activity questions — stop consuming.
             if (pBlock.data && pBlock.data.isListItem) {
                 var listItems = [];
                 while (i < processedBlocks.length) {
                     var lb = processedBlocks[i];
                     if (lb.data && lb.data.isListItem) {
+                        // Stop if this is an ordered (numbered) list item in success section
+                        // — numbered items are activity questions, not success criteria
+                        var listFmt = lb.data.listFormat || 'bullet';
+                        if ((currentSection === 'success' || currentSection === 'learning') &&
+                            listFmt !== 'bullet' && listItems.length > 0) {
+                            break;
+                        }
+                        // Only include bullet items for learning/success sections
+                        if ((currentSection === 'success' || currentSection === 'learning') &&
+                            listFmt !== 'bullet') {
+                            break;
+                        }
                         listItems.push(lb);
                         i++;
                     } else {

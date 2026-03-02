@@ -1653,46 +1653,81 @@ class App {
         var content = parserResult.content;
         var startIdx = parserResult.contentStartIndex || 0;
         var foundTitleBar = false;
+        var fullTitleText = '';
 
-        for (var i = startIdx; i < content.length && i < startIdx + 10; i++) {
+        for (var i = startIdx; i < content.length && i < startIdx + 20; i++) {
             var block = content[i];
             if (block.type !== 'paragraph' || !block.data) continue;
 
             var text = block.data.text || '';
             var runs = block.data.runs || [];
             var fullText = '';
+            var nonRedText = '';
             for (var r = 0; r < runs.length; r++) {
-                if (runs[r].text) fullText += runs[r].text;
+                if (runs[r].text) {
+                    fullText += runs[r].text;
+                    if (!(runs[r].formatting && runs[r].formatting.isRed)) {
+                        nonRedText += runs[r].text;
+                    }
+                }
             }
 
             // Check for title bar
             if (fullText.toLowerCase().indexOf('title bar') !== -1 ||
                 text.toLowerCase().indexOf('title bar') !== -1) {
                 foundTitleBar = true;
-                // The title text is usually on the same line after the tag or on the next block
-                var cleanedTitle = fullText.replace(/\[.*?\]/g, '').trim();
-                if (cleanedTitle && type === 'english') {
-                    // May contain both English and Te Reo separated by spaces
-                    return cleanedTitle;
+                // The title text may be on the same block (non-red portion after the tag)
+                var cleanedTitle = nonRedText.replace(/\[.*?\]/g, '').trim();
+                if (cleanedTitle) {
+                    fullTitleText = cleanedTitle;
+                    break;
+                }
+                // Also try the full text with tags stripped
+                var altClean = fullText.replace(/\[.*?\]/g, '').trim();
+                if (altClean) {
+                    fullTitleText = altClean;
+                    break;
                 }
                 continue;
             }
 
-            // After title bar, look for the main heading
-            if (foundTitleBar && block.data.heading) {
-                var headingText = '';
-                for (var hr = 0; hr < runs.length; hr++) {
-                    if (runs[hr].text && !(runs[hr].formatting && runs[hr].formatting.isRed)) {
-                        headingText += runs[hr].text;
-                    }
+            // After title bar, look for the first non-empty content block
+            // (could be a heading or a regular paragraph with the title text)
+            if (foundTitleBar) {
+                // Try non-red text first
+                var titleCandidate = nonRedText.replace(/\[.*?\]/g, '').trim();
+                if (!titleCandidate) {
+                    // Fall back to full text with tags stripped
+                    titleCandidate = fullText.replace(/\[.*?\]/g, '').trim();
                 }
-                if (headingText.trim() && type === 'english') {
-                    return headingText.trim();
+                if (titleCandidate) {
+                    fullTitleText = titleCandidate;
+                    break;
                 }
             }
         }
 
-        return type === 'english' ? 'Module Title' : '';
+        if (!fullTitleText) {
+            // Last resort: try metadata subject
+            if (parserResult.metadata && parserResult.metadata.subject) {
+                fullTitleText = parserResult.metadata.subject;
+            } else {
+                return type === 'english' ? 'Module Title' : '';
+            }
+        }
+
+        // Split on double-space to separate English and Te Reo titles
+        var titleParts = fullTitleText.split(/  +/);
+        var englishTitle = (titleParts[0] || '').trim();
+        var tereoTitle = titleParts.length > 1 ? titleParts.slice(1).join('  ').trim() : '';
+
+        if (type === 'english') {
+            return englishTitle || fullTitleText;
+        } else if (type === 'tereo') {
+            return tereoTitle;
+        }
+
+        return '';
     }
 
     // ------------------------------------------------------------------

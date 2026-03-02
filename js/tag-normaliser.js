@@ -321,11 +321,12 @@ class TagNormaliser {
             };
         }
 
-        // --- Activity heading / activity title ---
-        if (flexCleaned === 'activity heading' || flexCleaned === 'activity title') {
+        // --- Activity heading / activity title (with optional heading level) ---
+        var actHeadingMatch = flexCleaned.match(/^activity\s+(?:heading|title)(?:\s+h?\s*([2-5]))?$/);
+        if (actHeadingMatch) {
             return {
                 normalised: 'activity_heading',
-                level: null,
+                level: actHeadingMatch[1] ? parseInt(actHeadingMatch[1], 10) : 3,
                 number: null,
                 id: null,
                 category: 'activity',
