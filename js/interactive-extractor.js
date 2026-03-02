@@ -435,6 +435,59 @@ class InteractiveExtractor {
 
         var i = startIndex + 1;
 
+        // Special handling for speech_bubble with conversation layout (Pattern 9)
+        if (interactiveType === 'speech_bubble') {
+            var tagBlock = blocks[startIndex];
+            var sbTagResult = this._getBlockTagResult(tagBlock);
+            var sbModifier = '';
+            if (sbTagResult.tags && sbTagResult.tags.length > 0) {
+                sbModifier = (sbTagResult.tags[0].modifier || '').toLowerCase();
+            }
+            // Also check clean text for "conversation" keyword
+            var sbClean = (sbTagResult.cleanText || '').toLowerCase();
+            if (sbModifier.indexOf('conversation') !== -1 || sbClean.indexOf('conversation') !== -1) {
+                result.detectedPattern = 9;
+                var conversationItems = [];
+                while (i < blocks.length) {
+                    var convBlock = blocks[i];
+                    if (convBlock.type !== 'paragraph' || !convBlock.data) break;
+                    var convTagResult = this._getBlockTagResult(convBlock);
+                    var convPrimaryTag = convTagResult.tags && convTagResult.tags.length > 0 ? convTagResult.tags[0] : null;
+                    // Stop on any tagged block (structural, interactive, heading, activity, etc.)
+                    if (convPrimaryTag && (convPrimaryTag.category === 'structural' ||
+                        convPrimaryTag.category === 'interactive' ||
+                        convPrimaryTag.category === 'heading' ||
+                        convPrimaryTag.normalised === 'activity' ||
+                        convPrimaryTag.normalised === 'end_activity' ||
+                        convPrimaryTag.category === 'styling' ||
+                        convPrimaryTag.category === 'media')) {
+                        break;
+                    }
+                    var convText = (convTagResult.cleanText || '').trim();
+                    if (!convText) { i++; continue; }
+                    // Check if this looks like conversation content
+                    var isConvLine = /^(prompt|ai\s*response|response|user|assistant|human|student)\s*\d*\s*:/i.test(convText);
+                    // Also consume any non-tagged paragraph that follows the pattern
+                    if (isConvLine || (!convPrimaryTag && conversationItems.length > 0)) {
+                        conversationItems.push(convText);
+                        if (convTagResult.redTextInstructions && convTagResult.redTextInstructions.length > 0) {
+                            result.writerInstructions = result.writerInstructions.concat(convTagResult.redTextInstructions);
+                        }
+                        result.blocksConsumed = i - startIndex + 1;
+                        i++;
+                        continue;
+                    }
+                    break;
+                }
+                if (conversationItems.length > 0) {
+                    result.numberedItems = conversationItems.map(function (text, idx) {
+                        return { number: idx + 1, content: text, tag: 'conversation_line' };
+                    });
+                    return result;
+                }
+            }
+        }
+
         // Look ahead to find associated data blocks
         while (i < blocks.length) {
             var block = blocks[i];
@@ -490,8 +543,25 @@ class InteractiveExtractor {
                     break;
                 }
 
-                // Check for structural/heading/activity tags that signal end of interactive
-                if (primaryTag && this._isEndBoundary(primaryTag)) {
+                // Check for structural/activity tags that signal end of interactive
+                if (primaryTag && (primaryTag.category === 'structural' ||
+                    primaryTag.normalised === 'activity' ||
+                    primaryTag.normalised === 'end_activity')) {
+                    break;
+                }
+
+                // Check for a DIFFERENT interactive type (not a sub-tag of this parent)
+                if (primaryTag && primaryTag.category === 'interactive' &&
+                    !this._isSubTagFor(primaryTag, interactiveType) &&
+                    primaryTag.normalised !== interactiveType) {
+                    break;
+                }
+
+                // Check for heading/body/styling/media/link tags as boundary
+                // ONLY if we are not expecting sub-tags (types that use numbered patterns)
+                var expectsSubTags = this._typeToPrimaryPattern[interactiveType] >= 5 &&
+                    this._typeToPrimaryPattern[interactiveType] <= 7;
+                if (primaryTag && this._isEndBoundary(primaryTag) && !expectsSubTags) {
                     break;
                 }
 
@@ -519,12 +589,6 @@ class InteractiveExtractor {
 
                 // If we already consumed extra paragraphs, stop
                 if (!primaryTag) {
-                    break;
-                }
-
-                // If the tag is another interactive type, stop
-                if (primaryTag.category === 'interactive' &&
-                    this._subTagTypes.indexOf(primaryTag.normalised) === -1) {
                     break;
                 }
             }
@@ -635,6 +699,10 @@ class InteractiveExtractor {
             detectedPattern = 6;
         } else if (interactiveType === 'accordion') {
             detectedPattern = 7;
+        } else if (interactiveType === 'flip_card' || interactiveType === 'click_drop') {
+            detectedPattern = 2;
+        } else if (interactiveType === 'hint_slider') {
+            detectedPattern = 3;
         }
 
         while (i < blocks.length) {
@@ -648,16 +716,23 @@ class InteractiveExtractor {
                 break;
             }
 
-            // Check for boundary
-            if (primaryTag && this._isEndBoundary(primaryTag)) {
-                break;
-            }
+            // Only break on true structural boundaries within numbered items:
+            // structural tags (lesson, title_bar, etc.), activity/end_activity,
+            // or a DIFFERENT interactive type that isn't a sub-tag of this parent
+            if (primaryTag) {
+                var cat = primaryTag.category;
+                var name = primaryTag.normalised;
 
-            // Another standalone interactive breaks out
-            if (primaryTag && primaryTag.category === 'interactive' &&
-                this._subTagTypes.indexOf(primaryTag.normalised) === -1 &&
-                primaryTag.normalised !== interactiveType) {
-                break;
+                // Structural tags and activity boundaries always break
+                if (cat === 'structural') break;
+                if (name === 'activity' || name === 'end_activity') break;
+
+                // A different interactive type that isn't a sub-tag of this parent breaks
+                if (cat === 'interactive' &&
+                    !this._isSubTagFor(primaryTag, interactiveType) &&
+                    name !== interactiveType) {
+                    break;
+                }
             }
 
             // If it's a sub-tag or a table or content within a sub-tag scope, collect it
@@ -681,12 +756,19 @@ class InteractiveExtractor {
                     }
                 }
                 lastIndex = i;
-            } else if (items.length > 0 && !primaryTag) {
-                // Content paragraph within the current numbered item
+            } else if (items.length > 0) {
+                // Content block (heading, body, media, etc.) within the current numbered item
+                // These are data belonging to the last sub-tag
                 var content = tagResult.cleanText || '';
                 if (content.trim()) {
                     var currentItem = items[items.length - 1];
                     currentItem.content += (currentItem.content ? '\n' : '') + content;
+                }
+                // Also capture media references
+                var mediaRefs = this._extractMediaFromText(content);
+                if (block.type === 'paragraph' && block.data) {
+                    var fullText = this._buildFormattedText(block.data);
+                    mediaRefs = mediaRefs.concat(this._extractMediaFromText(fullText));
                 }
                 lastIndex = i;
             } else if (!primaryTag && items.length === 0) {
@@ -1128,11 +1210,12 @@ class InteractiveExtractor {
             ' | Activity: ' + activityLabel +
             ' | File: ' + filename + ' ========== -->');
 
-        // If inside an activity wrapper, DON'T generate the activity div
-        // If NOT inside an activity, generate the activity wrapper
-        if (!insideActivity) {
-            lines.push('<div class="activity interactive"' +
-                (activityId ? ' number="' + this._escAttr(activityId) + '"' : '') + '>');
+        // Only generate the activity wrapper if we have a named activity ID
+        // and we're not already inside an activity wrapper.
+        // Inline interactives (no activity ID, not inside [activity] block) get no wrapper.
+        var needsActivityWrapper = !insideActivity && activityId;
+        if (needsActivityWrapper) {
+            lines.push('<div class="activity interactive" number="' + this._escAttr(activityId) + '">');
         }
 
         lines.push('  <div class="row">');
@@ -1169,7 +1252,7 @@ class InteractiveExtractor {
         lines.push('    </div>');
         lines.push('  </div>');
 
-        if (!insideActivity) {
+        if (needsActivityWrapper) {
             lines.push('</div>');
         }
 
