@@ -532,8 +532,12 @@ Module code prefix indicates year level and determines the `template` attribute 
 ```
 Overview page (-00):
   Header: #module-code has full MODULE_CODE
-  Module menu: Full tabbed (Overview + Information tabs)
-  Title element: MODULE_CODE English Title
+  h1 spans: Module code prefix stripped, English + Te Reo split on double-space
+  Module menu: Full tabbed (Overview + Information tabs) with routed content
+    - Tooltip on #module-menu-content only (NOT on #module-menu-button)
+    - Content before [MODULE INTRODUCTION] → tab panes
+    - Content after [MODULE INTRODUCTION] → <div id="body">
+  Title element: MODULE_CODE English Title (no Te Reo, no module prefix)
   Footer: next-lesson + home-nav only
 
 Lesson page (-01, -02, etc.):
@@ -734,7 +738,7 @@ Segment contains ONLY `[TITLE BAR]` + headings + `[End page]`, no body content �
 | Normalised Tag | HTML Output |
 |---|---|
 | `title_bar` | `<div id="header">` with module code + title |
-| `module_introduction` | Module intro content inside `<div id="body">` |
+| `module_introduction` | Content routing boundary on overview pages (see below) |
 | `lesson` + number | New HTML file with lesson header |
 | `lesson_overview` | Module menu content for lesson page |
 | `lesson_content` | Signals start of body content (no HTML tag) |
@@ -753,6 +757,76 @@ Segment contains ONLY `[TITLE BAR]` + headings + `[End page]`, no body content �
 | `button` | `<a href="URL" target="_blank"><div class="button">Text</div></a>` |
 | `external_link` | `<a href="URL" target="_blank">Text</a>` |
 | `activity` + ID | `<div class="activity interactive" number="ID">` or `<div class="activity alertPadding" number="ID">` |
+
+### Overview Page Content Routing
+
+On overview pages (`-00`), content is split into TWO zones by the `[MODULE INTRODUCTION]` tag:
+
+**ZONE 1 — Module menu tabs** (content between `[TITLE BAR]` and `[MODULE INTRODUCTION]`):
+This content goes into the module menu tab panes, split between Overview and Information tabs:
+- **Overview tab**: H1 title + description, first two H2 sections (Learning Intentions + Success Criteria)
+- **Information tab**: Third H2 onwards (Planning time, What do I need, Connections, etc.)
+
+**ZONE 2 — Body content** (content after `[MODULE INTRODUCTION]` through `[End page]`):
+This content goes into `<div id="body">` as normal body content.
+
+### Title Bar Parsing
+
+The `[TITLE BAR]` content requires three processing steps:
+1. **Strip module code prefix** — Remove the alphabetic prefix (e.g., "OSAI") from title text
+2. **Split on double-space** — Separate English and Te Reo titles into two `<h1><span>` elements
+3. **`<title>` uses English only** — Never include Te Reo title in the `<title>` element
+
+### Module Menu Tab Structure (Overview Pages)
+
+```html
+<div id="module-menu-content" class="moduleMenu" tooltip="Overview">
+    <div class="row">
+        <div class="tabs col-12">
+            <ul class="nav nav-tabs">
+                <li><a>Overview</a></li>
+                <li><a>Information</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane">
+                    <div class="row"><div class="col-md-8 col-12">
+                        <!-- Overview tab content -->
+                    </div></div>
+                </div>
+                <div class="tab-pane">
+                    <div class="row"><div class="col-md-8 col-12">
+                        <!-- Information tab content -->
+                    </div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Key rules:
+- No `class="active"`, `data-toggle`, `href`, `id`, `fade`, or `in` attributes on tab elements
+- `tooltip="Overview"` goes on `#module-menu-content` only (NOT on `#module-menu-button`) for overview pages
+- Each `<div class="tab-pane">` contains inner grid wrapping
+- All headings inside tabs use `<h4>` (not `<h2>`)
+- Only the Overview tab's primary title uses `<h4><span>`
+- "Success Criteria" heading normalised to "How will I know if I've learned it?"
+
+### Heading Formatting Rules
+
+- **No `<b>` or `<i>` wrapping on headings (h2-h5)** — bold/italic on headings is a .docx artefact
+- **Consecutive heading tags produce separate heading elements** — never merge
+- **Module menu list items and intro text ("We are learning:", etc.) strip `<i>` wrappers**
+
+### Whakatauki Formatting
+
+Whakatauki content with a `|` pipe separator splits into two `<p>` elements:
+```html
+<div class="whakatauki">
+    <p>Māori text</p>
+    <p>English translation</p>
+</div>
+```
 
 ### Formatting Markers to HTML
 
@@ -898,6 +972,8 @@ INTERACTIVE 2 of 7
 - Takes parsed content + template configuration → produces HTML strings
 - Handles:
   - Document skeleton assembly (skeleton from TemplateEngine + body content)
+  - **Overview page content routing** — splits content at `[MODULE INTRODUCTION]` into menu tab content (before) and body content (after)
+  - **Module menu tab content** — populates Overview and Information tab panes with correctly routed content
   - Body content (paragraphs, headings, lists, tables, alerts, media, etc.)
   - Formatting conversion (`**bold**` → `<b>`, `*italic*` → `<i>`, `***both***` → `<b><i>`, `__underline__` → `<u>`)
   - Hyperlink conversion (`__text__ [LINK: URL]` → `<a href target="_blank">`)
@@ -908,9 +984,13 @@ INTERACTIVE 2 of 7
   - Video embedding (YouTube, YouTube Shorts, Vimeo with correct embed URLs)
   - Image placeholders (placehold.co + commented-out iStock references)
   - Activity wrapper detection (interactive vs alertPadding based on content)
-  - Heading rules (no spans on h2-h5, full-heading italic stripping, H1→H2 in body)
+  - **Heading rules** — no spans on h2-h5, full-heading bold/italic stripping, H1→H2 in body, consecutive heading tags produce separate elements
+  - **H1 splitting** — on overview pages, bold heading + italic description separated into heading + `<p>`
+  - **Success Criteria normalisation** — heading normalised to "How will I know if I've learned it?"
+  - **Module menu formatting** — h4 headings in tabs, italic stripped from list items and intro text
+  - **Whakatauki pipe splitting** — content with `|` separator splits into Māori and English `<p>` elements
   - Lesson page rules (lesson number prefix stripping, module menu label normalisation)
-  - Module menu content population (overview tabs, lesson simplified menu)
+  - Module menu content population (overview tabs with actual content, lesson simplified menu)
 - Public API: `convertPage(pageData, config)`, `assemblePage(pageData, config, moduleInfo)`
 
 #### template-engine.js — DONE (Phase 2)
@@ -920,7 +1000,10 @@ INTERACTIVE 2 of 7
 - Deep-merges `baseConfig` with per-template overrides via `getConfig(templateId)`
 - Generates complete HTML document skeletons via `generateSkeleton(config, pageData)`
 - Handles header section (module code, titles, dual h1 for 9-10/NCEA)
-- Handles module menu (full-tabbed for overview, simplified for lessons)
+- **Title bar parsing** — strips module code prefix, splits English/Te Reo on double-space, English-only `<title>`
+- Handles module menu (full-tabbed for overview with correct structure, simplified for lessons)
+- **Tooltip placement** — `tooltip="Overview"` on `#module-menu-content` only for overview pages, on `#module-menu-button` only for lesson pages
+- **Tab HTML structure** — no active/data-toggle/href/id/fade/in attributes, row wrapper, inner grid per tab-pane
 - Handles footer navigation (prev/next/home with correct page links)
 - Public API: `loadTemplates()`, `getTemplateList()`, `detectTemplate(moduleCode)`, `getConfig(templateId)`, `generateSkeleton(config, pageData)`
 
