@@ -259,6 +259,49 @@ class HtmlConverter {
             var tableText = this._buildTableTextForTags(block.data);
             var tableTagResult = this._normaliser.processBlock(tableText);
 
+            // Promote interactive tags to primary position (Bug 4 fix):
+            // If a table contains an interactive tag (e.g., speech_bubble) in its
+            // cells but it's not the primary tag, move it to front so the
+            // interactive handler fires.
+            if (tableTagResult.tags && tableTagResult.tags.length > 1) {
+                var interactiveIdx = -1;
+                for (var ti = 0; ti < tableTagResult.tags.length; ti++) {
+                    if (tableTagResult.tags[ti].category === 'interactive') {
+                        interactiveIdx = ti;
+                        break;
+                    }
+                }
+                if (interactiveIdx > 0) {
+                    var iTag = tableTagResult.tags.splice(interactiveIdx, 1)[0];
+                    tableTagResult.tags.unshift(iTag);
+                }
+            }
+
+            // Detect implicit click_drop from front/back sub-tags (Bug 2B fix):
+            // Tables containing [front] and [back/drop] sub-tags in cells are
+            // click_drop interactives even without a preceding [click drop] tag.
+            if (tableTagResult.tags) {
+                var hasFront = false;
+                var hasBack = false;
+                var hasInteractive = false;
+                for (var ft = 0; ft < tableTagResult.tags.length; ft++) {
+                    if (tableTagResult.tags[ft].normalised === 'front') hasFront = true;
+                    if (tableTagResult.tags[ft].normalised === 'back') hasBack = true;
+                    if (tableTagResult.tags[ft].category === 'interactive') hasInteractive = true;
+                }
+                if (hasFront && hasBack && !hasInteractive) {
+                    tableTagResult.tags.unshift({
+                        normalised: 'click_drop',
+                        level: null,
+                        number: null,
+                        id: null,
+                        category: 'interactive',
+                        modifier: null,
+                        raw: '[click_drop]'
+                    });
+                }
+            }
+
             return {
                 type: 'table',
                 data: block.data,
@@ -448,6 +491,39 @@ class HtmlConverter {
             // They are captured by InteractiveExtractor for reference document
             // entries but are NOT rendered in the output HTML.
 
+            // --- Auto-close activity after its interactive has been emitted (Bug 1 fix) ---
+            // Must run BEFORE skip logic so structural/body/heading boundaries are caught.
+            if (inActivity && activityHasInteractive) {
+                var shouldAutoClose = false;
+                if (category === 'body' && tagName === 'body') {
+                    shouldAutoClose = true;
+                } else if (category === 'heading') {
+                    shouldAutoClose = true;
+                } else if (category === 'structural') {
+                    shouldAutoClose = true;
+                }
+                // 'activity', 'end_activity', and 'interactive' tags are handled
+                // by their dedicated code blocks below — don't auto-close for those.
+
+                if (shouldAutoClose) {
+                    flushPending();
+                    var autoClsClass = 'activity interactive';
+                    var autoClsNum = self._currentActivityId || '';
+                    var autoClsHtml = '    <div class="' + autoClsClass + '"' +
+                        (autoClsNum ? ' number="' + self._escAttr(autoClsNum) + '"' : '') + '>\n' +
+                        '      <div class="row">\n        <div class="col-12">\n' +
+                        activityParts.join('\n') + '\n' +
+                        '        </div>\n      </div>\n' +
+                        '    </div>';
+                    htmlParts.push(self._wrapInRow(autoClsHtml, 'col-md-12 col-12'));
+                    inActivity = false;
+                    activityHasInteractive = false;
+                    activityParts = [];
+                    // Don't increment i — re-process this block as body content
+                    continue;
+                }
+            }
+
             // Skip structural tags that don't produce visible HTML
             if (category === 'structural') {
                 // These are handled at page level, not block level
@@ -494,6 +570,18 @@ class HtmlConverter {
                 var activityId = primaryTag.id || '';
                 // Store activity info for closing
                 this._currentActivityId = activityId;
+
+                // Bug 6 fix: Extract heading text from [Activity N] Heading text
+                var actHeadingText = (pBlock.cleanText || '').trim();
+                if (actHeadingText) {
+                    actHeadingText = this._stripFullHeadingFormatting(actHeadingText);
+                    var actHeadingInner = this._convertInlineFormatting(actHeadingText);
+                    actHeadingInner = this._stripHeadingInlineTags(actHeadingInner);
+                    if (actHeadingInner.trim()) {
+                        activityParts.push('      <h3>' + actHeadingInner + '</h3>');
+                    }
+                }
+
                 i++;
                 continue;
             }

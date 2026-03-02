@@ -166,7 +166,7 @@ class InteractiveExtractor {
             writerInstructions = tagBlockInstructions.concat(writerInstructions);
         }
 
-        // Build placeholder HTML
+        // Build placeholder HTML (with data preview — Part B redesign)
         var placeholderHtml = this._generatePlaceholderHtml({
             interactiveType: interactiveType,
             modifier: modifier,
@@ -179,7 +179,9 @@ class InteractiveExtractor {
             writerInstructions: writerInstructions,
             activityHeading: extracted.activityHeading || null,
             activityInstructions: extracted.activityInstructions || null,
-            insideActivity: insideActivity
+            insideActivity: insideActivity,
+            tableData: extracted.tableData || null,
+            numberedItems: extracted.numberedItems || null
         });
 
         // Build reference entry
@@ -478,10 +480,19 @@ class InteractiveExtractor {
 
         var i = startIndex + 1;
 
+        // Determine if this interactive type expects numbered sub-tags
+        var expectsSubTags = (
+            (this._typeToPrimaryPattern[interactiveType] >= 5 &&
+             this._typeToPrimaryPattern[interactiveType] <= 7) ||
+            interactiveType === 'flip_card' ||
+            interactiveType === 'click_drop' ||
+            interactiveType === 'hint_slider'
+        );
+
         // Special handling for speech_bubble with conversation layout (Pattern 9)
         if (interactiveType === 'speech_bubble') {
-            var tagBlock = blocks[startIndex];
-            var sbTagResult = this._getBlockTagResult(tagBlock);
+            var sbBlock = blocks[startIndex];
+            var sbTagResult = this._getBlockTagResult(sbBlock);
             var sbModifier = '';
             if (sbTagResult.tags && sbTagResult.tags.length > 0) {
                 sbModifier = (sbTagResult.tags[0].modifier || '').toLowerCase();
@@ -491,16 +502,16 @@ class InteractiveExtractor {
             if (sbModifier.indexOf('conversation') !== -1 || sbClean.indexOf('conversation') !== -1) {
                 result.detectedPattern = 9;
                 var conversationItems = [];
+                var convRegex = /^(prompt|ai\s*response|response|user|assistant|human|student)\s*\d*\s*:/i;
                 while (i < blocks.length) {
                     var convBlock = blocks[i];
                     if (convBlock.type !== 'paragraph' || !convBlock.data) break;
                     var convTagResult = this._getBlockTagResult(convBlock);
                     var convPrimaryTag = convTagResult.tags && convTagResult.tags.length > 0 ? convTagResult.tags[0] : null;
-                    // Stop on any tagged block (structural, interactive, heading, activity, body, etc.)
+                    // Stop on structural, interactive, heading, activity tags
                     if (convPrimaryTag && (convPrimaryTag.category === 'structural' ||
                         convPrimaryTag.category === 'interactive' ||
                         convPrimaryTag.category === 'heading' ||
-                        convPrimaryTag.category === 'body' ||
                         convPrimaryTag.category === 'link' ||
                         convPrimaryTag.normalised === 'activity' ||
                         convPrimaryTag.normalised === 'end_activity' ||
@@ -508,31 +519,42 @@ class InteractiveExtractor {
                         convPrimaryTag.category === 'media')) {
                         break;
                     }
+                    // Stop on [body] tag — this signals the end of conversation
+                    if (convPrimaryTag && convPrimaryTag.category === 'body') {
+                        break;
+                    }
+                    // Get text from clean text, or from formatted text if clean is empty
                     var convText = (convTagResult.cleanText || '').trim();
+                    if (!convText) {
+                        // Try raw formatted text (conversation may be in non-tagged runs)
+                        var rawConvText = this._buildFormattedText(convBlock.data);
+                        // Strip red text markers to get clean text
+                        rawConvText = rawConvText.replace(/\uD83D\uDD34\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]\uD83D\uDD34/g, '').trim();
+                        rawConvText = rawConvText.replace(/\[([^\]]+)\]/g, '').trim();
+                        if (rawConvText) {
+                            convText = rawConvText;
+                        }
+                    }
                     if (!convText) { i++; continue; }
-                    // Check if this looks like conversation content (Prompt N: / AI response: etc.)
-                    var isConvLine = /^(prompt|ai\s*response|response|user|assistant|human|student)\s*\d*\s*:/i.test(convText);
+                    // Collect red text instructions
+                    if (convTagResult.redTextInstructions && convTagResult.redTextInstructions.length > 0) {
+                        result.writerInstructions = result.writerInstructions.concat(convTagResult.redTextInstructions);
+                    }
+                    // Check if this looks like conversation content
+                    var isConvLine = convRegex.test(convText);
                     if (isConvLine) {
                         conversationItems.push(convText);
-                        if (convTagResult.redTextInstructions && convTagResult.redTextInstructions.length > 0) {
-                            result.writerInstructions = result.writerInstructions.concat(convTagResult.redTextInstructions);
-                        }
                         result.blocksConsumed = i - startIndex + 1;
                         i++;
                         continue;
                     }
-                    // Also consume non-tagged continuation lines that follow an AI response
-                    // (multi-paragraph AI responses without explicit "AI response:" prefix)
+                    // Consume non-tagged continuation lines that follow a conversation entry
+                    // (multi-paragraph responses or plain text between prompts)
                     if (!convPrimaryTag && conversationItems.length > 0) {
-                        // Check if the PREVIOUS item was an AI response (might have multi-para reply)
-                        var lastConv = conversationItems[conversationItems.length - 1];
-                        var lastWasResponse = /^(ai\s*response|response|assistant)\s*\d*\s*:/i.test(lastConv);
-                        if (lastWasResponse) {
-                            conversationItems.push(convText);
-                            result.blocksConsumed = i - startIndex + 1;
-                            i++;
-                            continue;
-                        }
+                        conversationItems.push(convText);
+                        result.blocksConsumed = i - startIndex + 1;
+                        i++;
+                        continue;
                     }
                     break;
                 }
@@ -560,13 +582,24 @@ class InteractiveExtractor {
                     // Check for media in table
                     var tableMedia = this._extractMediaFromTable(block.data);
                     result.mediaReferences = result.mediaReferences.concat(tableMedia);
+                    // Extract writer instructions from table cells
+                    if (block.data.rows) {
+                        for (var tblR = 0; tblR < block.data.rows.length; tblR++) {
+                            var tblRow = block.data.rows[tblR];
+                            for (var tblC = 0; tblC < tblRow.cells.length; tblC++) {
+                                var tblCell = tblRow.cells[tblC];
+                                for (var tblP = 0; tblP < tblCell.paragraphs.length; tblP++) {
+                                    var tblText = this._buildFormattedText(tblCell.paragraphs[tblP]);
+                                    var tblTagRes = this._normaliser.processBlock(tblText);
+                                    if (tblTagRes.redTextInstructions && tblTagRes.redTextInstructions.length > 0) {
+                                        result.writerInstructions = result.writerInstructions.concat(tblTagRes.redTextInstructions);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 i++;
-
-                // After consuming a table, check if the NEXT block is also
-                // interactive data (for patterns with multiple tables or
-                // continuation). But be conservative — stop if it looks like
-                // regular body content.
                 continue;
             }
 
@@ -614,20 +647,19 @@ class InteractiveExtractor {
                     break;
                 }
 
-                // Check for heading/body/styling/media/link tags as boundary
-                // ONLY if we are not expecting sub-tags. Types that use numbered
-                // sub-tag patterns (carousel, tabs, accordion, flip_card, click_drop,
-                // hint_slider, shape_hover) should look ahead past body/heading/media
-                // blocks to find their sub-tags.
-                var expectsSubTags = (
-                    (this._typeToPrimaryPattern[interactiveType] >= 5 &&
-                     this._typeToPrimaryPattern[interactiveType] <= 7) ||
-                    interactiveType === 'flip_card' ||
-                    interactiveType === 'click_drop' ||
-                    interactiveType === 'hint_slider'
-                );
-                if (primaryTag && this._isEndBoundary(primaryTag) && !expectsSubTags) {
-                    break;
+                // Check for heading/body/styling/media/link tags as boundary.
+                // For types that expect sub-tags: only apply boundary check if we
+                // already have table data (meaning we found data but no sub-tags —
+                // stop consuming). If no data yet, skip boundary to keep looking
+                // for sub-tags.
+                if (primaryTag && this._isEndBoundary(primaryTag)) {
+                    if (!expectsSubTags) {
+                        break;
+                    }
+                    // For expectsSubTags with table data already: stop
+                    if (result.tableData && !this._isSubTagFor(primaryTag, interactiveType)) {
+                        break;
+                    }
                 }
 
                 // Check for media references in body text near the interactive
@@ -640,6 +672,14 @@ class InteractiveExtractor {
                 // has table data, it's probably regular body content — stop
                 if (!primaryTag && result.tableData) {
                     break;
+                }
+
+                // If this is a block with NO tag and we expect sub-tags, keep
+                // looking past untagged instruction text to find them
+                if (!primaryTag && !result.tableData && expectsSubTags) {
+                    result.blocksConsumed = i - startIndex + 1;
+                    i++;
+                    continue;
                 }
 
                 // If this is a block with NO tag and no table data yet, it might
@@ -1264,9 +1304,18 @@ class InteractiveExtractor {
         var dataSummary = opts.dataSummary;
         var writerInstructions = opts.writerInstructions;
         var insideActivity = opts.insideActivity;
+        var tableData = opts.tableData;
+        var numberedItems = opts.numberedItems;
 
         var typeLabel = type + (modifier ? ' (' + modifier + ')' : '');
         var activityLabel = activityId || 'inline';
+
+        // Colour scheme based on tier
+        var borderColor = tier === 1 ? 'green' : 'red';
+        var bgColor = tier === 1 ? '#e6f9e6' : '#fde8e8';
+        var textColor = tier === 1 ? '#1a7a1a' : '#c0392b';
+        var icon = tier === 1 ? '\uD83D\uDD27' : '\u26A0\uFE0F';
+        var tierLabel = tier === 1 ? 'TIER 1 INTERACTIVE' : 'INTERACTIVE PLACEHOLDER';
 
         var lines = [];
 
@@ -1275,54 +1324,163 @@ class InteractiveExtractor {
             ' | Activity: ' + activityLabel +
             ' | File: ' + filename + ' ========== -->');
 
-        // Only generate the activity wrapper if we have a named activity ID
-        // and we're not already inside an activity wrapper.
-        // Inline interactives (no activity ID, not inside [activity] block) get no wrapper.
-        var needsActivityWrapper = !insideActivity && activityId;
-        if (needsActivityWrapper) {
-            lines.push('<div class="activity interactive" number="' + this._escAttr(activityId) + '">');
+        // Row/col wrapper only when NOT inside an activity
+        if (!insideActivity) {
+            lines.push('<div class="row">');
+            lines.push('  <div class="' + colClass + '">');
         }
 
-        lines.push('  <div class="row">');
-        lines.push('    <div class="' + colClass + '">');
+        // Container with dashed border
+        lines.push('    <div style="border: 2px dashed ' + borderColor + '; padding: 0; margin: 10px 0;">');
 
-        // Data comment block
+        // Header bar
+        lines.push('      <div style="background: ' + bgColor + '; color: ' + textColor +
+            '; padding: 8px 12px; font-weight: bold; font-size: 0.9em;">');
+        lines.push('        ' + icon + ' ' + tierLabel + ': ' + this._escContent(type) +
+            ' \u2014 Activity ' + this._escContent(activityLabel));
+        lines.push('      </div>');
+
+        // Separator
+        lines.push('      <hr style="margin: 0; border-color: ' + borderColor + ';" />');
+
+        // Hidden comment block for data reference
         lines.push('      <!-- INTERACTIVE_START: ' + type + ' -->');
         lines.push('      <!-- Data Pattern: ' + dataPattern + ' -->');
         lines.push('      <!-- Data Summary: ' + dataSummary + ' -->');
 
+        // Content preview body
+        lines.push('      <div style="padding: 10px 12px; font-size: 0.85em; color: #333; background: #fafafa;">');
+
+        // Generate content preview based on data pattern and extracted data
+        var previewHtml = this._generateContentPreview(dataPattern, tableData, numberedItems, type);
+        lines.push(previewHtml);
+
+        // Writer instructions
         if (writerInstructions && writerInstructions.length > 0) {
             for (var wi = 0; wi < writerInstructions.length; wi++) {
-                lines.push('      <!-- Writer Instructions: ' +
-                    this._escContent(writerInstructions[wi]) + ' -->');
+                lines.push('        <p style="color: #666; font-style: italic; margin-top: 8px;">Writer note: ' +
+                    this._escContent(writerInstructions[wi]) + '</p>');
             }
         }
 
-        // Visible placeholder indicator
-        if (tier === 1) {
-            lines.push('      <p style="color: green; border: 2px dashed green; padding: 10px; text-align: center;">');
-            lines.push('        \uD83D\uDD27 TIER 1 INTERACTIVE: ' + this._escContent(type) + '<br />');
-            lines.push('        Activity ' + this._escContent(activityLabel) +
-                ' \u2014 ParseMaster will render this component (Phase 7)');
-            lines.push('      </p>');
-        } else {
-            lines.push('      <p style="color: red; border: 2px dashed red; padding: 10px; text-align: center;">');
-            lines.push('        \u26A0\uFE0F INTERACTIVE PLACEHOLDER: ' + this._escContent(type) + '<br />');
-            lines.push('        Activity ' + this._escContent(activityLabel) +
-                ' \u2014 see Interactive Reference Document for full data');
-            lines.push('      </p>');
-        }
-
+        lines.push('      </div>');
         lines.push('      <!-- INTERACTIVE_END: ' + type + ' -->');
         lines.push('    </div>');
-        lines.push('  </div>');
 
-        if (needsActivityWrapper) {
+        if (!insideActivity) {
+            lines.push('  </div>');
             lines.push('</div>');
         }
 
         // Closing HTML comment
         lines.push('<!-- ========== END INTERACTIVE: ' + type + ' ========== -->');
+
+        return lines.join('\n');
+    }
+
+    /**
+     * Generate content preview HTML for the placeholder body.
+     *
+     * @param {number} dataPattern - Data pattern number
+     * @param {Object|null} tableData - Extracted table data
+     * @param {Array|null} numberedItems - Extracted numbered items
+     * @param {string} type - Interactive type
+     * @returns {string} HTML preview content
+     */
+    _generateContentPreview(dataPattern, tableData, numberedItems, type) {
+        var lines = [];
+
+        if (tableData) {
+            // Table-based data patterns (1, 2, 3, 8, 10, 11, 12, 13)
+            var dims = tableData.dimensions || 'unknown';
+            if (dataPattern === 2) {
+                lines.push('        <p><em>Data: Front/Back (' + dims + ')</em></p>');
+            } else if (dataPattern === 3) {
+                lines.push('        <p><em>Data: Hint Slider (' + dims + ')</em></p>');
+            } else if (dataPattern === 8) {
+                lines.push('        <p><em>Data: Speech Bubble (character + image)</em></p>');
+            } else if (dataPattern === 10) {
+                lines.push('        <p><em>Data: Word Select (' + dims + ')</em></p>');
+            } else {
+                lines.push('        <p><em>Data: Table (' + dims + ')</em></p>');
+            }
+
+            // Render table preview (max 5 rows)
+            lines.push('        <table style="width:100%; border-collapse: collapse; font-size: 0.85em; margin-top: 6px;">');
+            if (tableData.headers && tableData.headers.length > 0) {
+                lines.push('          <tr>');
+                for (var h = 0; h < tableData.headers.length; h++) {
+                    lines.push('            <td style="border:1px solid #ccc; padding:4px; font-weight:bold;">' +
+                        this._escContent(tableData.headers[h]) + '</td>');
+                }
+                lines.push('          </tr>');
+            }
+            if (tableData.rows) {
+                var maxRows = Math.min(tableData.rows.length, 5);
+                for (var r = 0; r < maxRows; r++) {
+                    lines.push('          <tr>');
+                    for (var c = 0; c < tableData.rows[r].length; c++) {
+                        lines.push('            <td style="border:1px solid #ccc; padding:4px;">' +
+                            this._escContent(tableData.rows[r][c]) + '</td>');
+                    }
+                    lines.push('          </tr>');
+                }
+                if (tableData.rows.length > 5) {
+                    lines.push('          <tr><td colspan="' + (tableData.headers ? tableData.headers.length : 1) +
+                        '" style="border:1px solid #ccc; padding:4px; text-align:center; font-style:italic;">... and ' +
+                        (tableData.rows.length - 5) + ' more rows</td></tr>');
+                }
+            }
+            lines.push('        </table>');
+        } else if (numberedItems && numberedItems.length > 0) {
+            // Numbered items patterns (4, 5, 6, 7, 9)
+            if (dataPattern === 9) {
+                lines.push('        <p><em>Data: Conversation (' + numberedItems.length + ' entries)</em></p>');
+                for (var ci = 0; ci < numberedItems.length; ci++) {
+                    var convItem = numberedItems[ci];
+                    var convContent = convItem.content || '';
+                    // Try to split "Prompt N: text" and "AI response: text" for bold labels
+                    var convLabelMatch = convContent.match(/^((?:Prompt|AI\s*response|Response|User|Assistant|Human|Student)\s*\d*\s*:)\s*([\s\S]*)/i);
+                    if (convLabelMatch) {
+                        lines.push('        <p><strong>' + this._escContent(convLabelMatch[1]) +
+                            '</strong> ' + this._escContent(convLabelMatch[2]) + '</p>');
+                    } else {
+                        lines.push('        <p>' + this._escContent(convContent) + '</p>');
+                    }
+                }
+            } else if (dataPattern === 2) {
+                // Front/back numbered items (flip cards, click drops)
+                var cardCount = 0;
+                for (var fi = 0; fi < numberedItems.length; fi++) {
+                    if (numberedItems[fi].tag === 'flip_card' || numberedItems[fi].tag === 'carousel_slide') {
+                        cardCount++;
+                    }
+                }
+                if (cardCount === 0) cardCount = Math.ceil(numberedItems.length / 3);
+                lines.push('        <p><em>Data: ' + cardCount + ' cards \u2014 Front/Back</em></p>');
+                for (var ni = 0; ni < numberedItems.length; ni++) {
+                    var nItem = numberedItems[ni];
+                    var itemLabel = nItem.tag || 'Item';
+                    var itemNum = nItem.number || (ni + 1);
+                    var itemText = (nItem.content || '').substring(0, 150);
+                    lines.push('        <p><strong>' + this._escContent(itemLabel) + ' ' + itemNum +
+                        ':</strong> ' + this._escContent(itemText) + '</p>');
+                }
+            } else {
+                var patternLabel = this._patternNames[dataPattern] || 'items';
+                lines.push('        <p><em>Data: ' + numberedItems.length + ' ' + patternLabel.toLowerCase() + '</em></p>');
+                for (var pi = 0; pi < numberedItems.length; pi++) {
+                    var pItem = numberedItems[pi];
+                    var pLabel = pItem.tag || 'Item';
+                    var pNum = pItem.number || (pi + 1);
+                    var pText = (pItem.content || '').substring(0, 150);
+                    lines.push('        <p><strong>' + this._escContent(pLabel) + ' ' + pNum +
+                        ':</strong> ' + this._escContent(pText) + '</p>');
+                }
+            }
+        } else {
+            lines.push('        <p><em>No structured data detected \u2014 check InteractiveExtractor boundary detection</em></p>');
+        }
 
         return lines.join('\n');
     }
