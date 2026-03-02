@@ -31,7 +31,7 @@
 
 ### What ParseMaster Does Today
 
-ParseMaster is a client-side web application that reads Writer Template `.docx` files and converts them into fully marked-up HTML files for the D2L/Brightspace LMS. It also produces clean, structured plain text output (legacy mode). Interactive components are rendered as temporary placeholders — the Claude AI Project focuses exclusively on building the interactive component code.
+ParseMaster is a client-side web application that reads Writer Template `.docx` files and converts them into fully marked-up HTML files for the D2L/Brightspace LMS. It also produces clean, structured plain text output (legacy mode). Interactive components are rendered as structured placeholders with all associated data extracted and preserved in a supplementary Interactive Reference Document — the Claude AI Project focuses exclusively on building the interactive component code.
 
 ### Current Capabilities
 
@@ -40,20 +40,15 @@ ParseMaster is a client-side web application that reads Writer Template `.docx` 
 3. **Page boundary detection** → multi-page splitting with validation rules (DONE — Phase 1)
 4. **Template configuration** → JSON-driven template system with auto-detection (DONE — Phase 2)
 5. **HTML conversion** → fully marked-up HTML for all non-interactive content (DONE — Phase 3)
-6. **Interactive placeholders** → temporary red placeholders for interactive components (DONE — Phase 3)
+6. **Interactive placeholders** → structured placeholders with data extraction and tier classification (DONE — Phase 4)
 7. **Output** multiple downloadable HTML files per module (DONE — Phase 3)
-8. **Output** a supplementary interactive reference document (PLANNED — Phase 4)
+8. **Output** a supplementary interactive reference document (DONE — Phase 4)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
 ### What This Means for the Workflow
 
 **Current workflow:**
-```
-Writer Template .docx → ParseMaster → .txt file → Claude AI Project → HTML files
-```
-
-**Future workflow:**
 ```
 Writer Template .docx → ParseMaster → HTML files (with interactive placeholders)
                                      → Interactive Reference Document
@@ -108,19 +103,23 @@ User drops .docx file
     → Applies 4 validation rules
     → Splits content into overview + lesson pages
     → Assigns filenames (MODULE_CODE-XX.html)
-  → HtmlConverter generates HTML for each page (Phase 3)
+  → HtmlConverter generates HTML for each page (Phase 3 + Phase 4)
     → TemplateEngine generates document skeleton per page
     → HtmlConverter.convertPage() renders all non-interactive content blocks
-    → Interactive components rendered as temporary red placeholders
+    → InteractiveExtractor detects interactive tags, extracts data, classifies tier
+    → Interactive components rendered as structured placeholders (green=Tier 1, red=Tier 2)
+    → Data blocks consumed by interactives are skipped in body rendering
     → Module menu content populated
     → Complete HTML files assembled with skeleton + body content
+  → InteractiveExtractor generates reference document with all extracted data
   → App.showResults() displays output
-    → Metadata panel includes selected template name
+    → Metadata panel includes selected template name + interactive count
     → HTML output mode (default): shows generated HTML source, file selector dropdown
+    → Interactive Reference Document available in file selector dropdown
     → Text output mode (legacy): shows plain text output
     → User can toggle between HTML/text modes
-    → Copy/Download buttons adapt to current mode
-    → Debug panel shows template config, tag & page analysis, skeleton preview
+    → Copy/Download buttons adapt to current mode (including reference doc)
+    → Debug panel shows template config, tag & page analysis, interactive details, skeleton preview
 ```
 
 ### Class Responsibilities
@@ -132,6 +131,7 @@ User drops .docx file
 | `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, and red text processing |
 | `PageBoundary` | `js/page-boundary.js` | Page boundary detection, validation, and assignment |
 | `TemplateEngine` | `js/template-engine.js` | Template config loading, resolution, auto-detection, skeleton generation |
+| `InteractiveExtractor` | `js/interactive-extractor.js` | Interactive component detection, data extraction, placeholder generation, reference document |
 | `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
 | `App` | `js/app.js` | UI controller — upload, display, clipboard, download, debug panel, template selection, output mode toggle |
 
@@ -150,21 +150,14 @@ gm-tk.github.io/
 │   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1)
 │   ├── page-boundary.js     # Page boundary detection & validation (Phase 1)
 │   ├── template-engine.js   # Template config loading, resolution & skeleton generation (Phase 2)
-│   ├── html-converter.js    # Core HTML conversion engine (Phase 3)
-│   └── app.js              # UI controller (with debug panel, template integration, output mode toggle)
+│   ├── interactive-extractor.js # Interactive data extraction, placeholder generation & reference doc (Phase 4)
+│   ├── html-converter.js    # Core HTML conversion engine (Phase 3, updated Phase 4)
+│   └── app.js              # UI controller (with debug panel, template integration, output mode toggle, interactive reference)
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
 ├── README.md               # Project documentation
 └── .nojekyll               # Disables Jekyll processing on GitHub Pages
-```
-
-### Future File Structure (Remaining Planned Additions)
-
-```
-gm-tk.github.io/
-├── js/
-│   └── interactive-extractor.js # Interactive data extraction & reference doc (PLANNED)
 ```
 
 ---
@@ -351,13 +344,14 @@ The template selector is a dropdown that appears between the drop zone and the "
 3. Can be manually overridden by the user
 4. Resets when "Parse Another File" is clicked
 
-### Debug Panel (Phase 1 + Phase 2)
+### Debug Panel (Phase 1 + Phase 2 + Phase 4)
 
 The debug panel (`#debug-panel`) is a temporary development/testing panel that appears after parsing. It shows:
 
 1. **Template Configuration** (Phase 2) — selected template ID, name, HTML template attribute, key config differences from base, overview page skeleton preview (first 50 lines), and footer navigation links for each page
 2. **Tag Normalisation Results** — total tags, unrecognised tags, red text instructions, category breakdown, and a detailed table of all tags found (raw → normalised form)
 3. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
+4. **Interactive Components** (Phase 4) — total count, tier breakdown, detailed table of all interactives (file, activity, type, tier, pattern, data summary), and a preview of the generated reference document
 
 The debug panel uses a `<details>` element so it starts collapsed. It does NOT interfere with the existing text output functionality — Copy All, Copy Content Only, and Download produce the same plain text as before.
 
@@ -859,12 +853,13 @@ Whakatauki content with a `|` pipe separator splits into two `<p>` elements:
 
 ### Categories of Interactives
 
-Interactive components are the complex elements that require custom JavaScript/HTML code from the component library. In the future architecture, ParseMaster will NOT generate code for these — instead, it will:
+Interactive components are the complex elements that require custom JavaScript/HTML code from the component library. ParseMaster does NOT generate code for these — instead, it:
 
-1. **Detect** the interactive type from the normalised tag
-2. **Extract** all associated data (from tables, lists, red text instructions)
-3. **Insert a placeholder** in the HTML output marking where the interactive goes
-4. **Generate a reference entry** in the supplementary interactive reference document
+1. **Detects** the interactive type from the normalised tag (DONE — Phase 4)
+2. **Extracts** all associated data (from tables, lists, red text instructions) (DONE — Phase 4)
+3. **Classifies** interactives by tier (Tier 1 = ParseMaster renders in Phase 7, Tier 2 = Claude AI Project builds) (DONE — Phase 4)
+4. **Inserts a structured placeholder** in the HTML output marking where the interactive goes (DONE — Phase 4)
+5. **Generates a reference entry** in the supplementary interactive reference document (DONE — Phase 4)
 
 ### Interactive Data Patterns
 
@@ -886,30 +881,49 @@ Writers provide interactive data in 13 distinct patterns:
 | 12 | Info trigger image | Info trigger image |
 | 13 | Self-assessment/survey table | multiChoiceQuiz survey |
 
-### Placeholder Format (Proposed for HTML Output)
+### Placeholder Format (Implemented — Phase 4)
+
+Interactive placeholders are generated by `InteractiveExtractor.processInteractive()` and include structured HTML comments with type, data pattern, data summary, and writer instructions. The visible indicator is colour-coded by tier:
 
 ```html
-<!-- ========== INTERACTIVE PLACEHOLDER ========== -->
-<!-- Type: drag_and_drop_column_autocheck -->
-<!-- Activity: 2A -->
-<!-- Data Source: Table (6 rows × 2 columns) -->
-<!-- Writer Instructions: "They are currently in the correct place" -->
-<!-- See Interactive Reference Document for full data -->
+<!-- ========== INTERACTIVE: drag_and_drop (column_autocheck) | Activity: 2A | File: OSAI201-01.html ========== -->
 <div class="activity interactive" number="2A">
   <div class="row">
     <div class="col-md-12 col-12">
-      <h3>Activity Heading</h3>
-      <p>Activity instructions from writer...</p>
-      <p style="color: red;">INTERACTIVE PLACEHOLDER: drag_and_drop_column_autocheck — see interactive reference document</p>
+      <!-- INTERACTIVE_START: drag_and_drop -->
+      <!-- Data Pattern: 1 -->
+      <!-- Data Summary: Table (6 rows × 2 columns) -->
+      <!-- Writer Instructions: They are currently in the correct place -->
+      <p style="color: red; border: 2px dashed red; padding: 10px; text-align: center;">
+        ⚠️ INTERACTIVE PLACEHOLDER: drag_and_drop<br />
+        Activity 2A — see Interactive Reference Document for full data
+      </p>
+      <!-- INTERACTIVE_END: drag_and_drop -->
     </div>
   </div>
 </div>
-<!-- ========== END INTERACTIVE PLACEHOLDER ========== -->
+<!-- ========== END INTERACTIVE: drag_and_drop ========== -->
 ```
 
-### Interactive Reference Document (Proposed Format)
+**Tier 1 interactives** (accordion, flip_card, speech_bubble, tabs) use a green dashed border with a wrench icon, indicating ParseMaster will render them in Phase 7. **Tier 2 interactives** use a red dashed border with a warning icon, indicating they require the Claude AI Project.
 
-The supplementary reference document will list every interactive needed across all HTML files:
+### Interactive Tier Classification (Implemented — Phase 4)
+
+Each interactive is classified into one of two tiers:
+
+| Tier | Description | Types | Placeholder Colour |
+|------|-------------|-------|-------------------|
+| **Tier 1** | ParseMaster renders full HTML (Phase 7) | `accordion`, `flip_card`, `speech_bubble`, `tabs` | Green dashed border |
+| **Tier 2** | Claude AI Project builds (placeholder only) | Everything else | Red dashed border |
+
+Tier classification is automatic based on the normalised interactive type. It affects:
+- The visual appearance of the placeholder in the generated HTML
+- The reference document entry (tier label and description)
+- Future Phase 7 rendering (Tier 1 interactives will be fully rendered by ParseMaster)
+
+### Interactive Reference Document (Implemented — Phase 4)
+
+The supplementary reference document lists every interactive needed across all HTML files. It is generated by `InteractiveExtractor.generateReferenceDocument()` and available for viewing/copying/downloading via the HTML file selector dropdown in the UI:
 
 ```
 =====================================
@@ -967,9 +981,9 @@ INTERACTIVE 2 of 7
 - Tracks boundary decisions (which rules fired and why)
 - Public API: `assignPages(contentBlocks, moduleCode)`
 
-#### html-converter.js — DONE (Phase 3)
+#### html-converter.js — DONE (Phase 3, updated Phase 4)
 - The main conversion engine
-- Takes parsed content + template configuration → produces HTML strings
+- Takes parsed content + template configuration + interactive extractor → produces HTML strings
 - Handles:
   - Document skeleton assembly (skeleton from TemplateEngine + body content)
   - **Overview page content routing** — splits content at `[MODULE INTRODUCTION]` into menu tab content (before) and body content (after)
@@ -979,7 +993,7 @@ INTERACTIVE 2 of 7
   - Hyperlink conversion (`__text__ [LINK: URL]` → `<a href target="_blank">`)
   - HTML escaping of content text with tag preservation
   - Red text processing (strip, extract tags, preserve instructions as `<!-- CS: ... -->` comments)
-  - Interactive placeholder insertion (temporary red text placeholders)
+  - Interactive placeholder insertion (structured placeholders via InteractiveExtractor with data extraction, tier classification, and consumed-block skipping)
   - Grid wrapping (all content inside `<div class="row"><div class="col-md-8 col-12">`)
   - Video embedding (YouTube, YouTube Shorts, Vimeo with correct embed URLs)
   - Image placeholders (placehold.co + commented-out iStock references)
@@ -991,6 +1005,7 @@ INTERACTIVE 2 of 7
   - **Whakatauki pipe splitting** — content with `|` separator splits into Māori and English `<p>` elements
   - Lesson page rules (lesson number prefix stripping, module menu label normalisation)
   - Module menu content population (overview tabs with actual content, lesson simplified menu)
+- Maintains `collectedInteractives` array populated during conversion for reference doc generation
 - Public API: `convertPage(pageData, config)`, `assemblePage(pageData, config, moduleInfo)`
 
 #### template-engine.js — DONE (Phase 2)
@@ -1007,14 +1022,20 @@ INTERACTIVE 2 of 7
 - Handles footer navigation (prev/next/home with correct page links)
 - Public API: `loadTemplates()`, `getTemplateList()`, `detectTemplate(moduleCode)`, `getConfig(templateId)`, `generateSkeleton(config, pageData)`
 
-#### interactive-extractor.js
+#### interactive-extractor.js — DONE (Phase 4)
 - Detects interactive component tags in the content stream
-- Identifies the data pattern being used
-- Extracts all associated data (tables, lists, red text instructions, media references)
-- Produces placeholder HTML for the main output
-- Produces reference entries for the interactive reference document
+- Classifies interactives by tier (Tier 1: ParseMaster renders, Tier 2: Claude AI Project builds)
+- Identifies the data pattern (13 patterns) being used
+- Extracts all associated data (tables, numbered items, red text instructions, media references)
+- Conservative content boundary detection — looks ahead from interactive tag to find associated data
+- Produces structured placeholder HTML with HTML comments (type, pattern, data summary, writer instructions)
+- Produces reference entry objects for the interactive reference document
+- Generates complete plain text reference document for all interactives in a module
+- Handles interactives both inside and outside activity wrappers
+- Column class selection based on interactive type (wide for D&D column, info trigger image)
+- Public API: `processInteractive(contentBlocks, startIndex, pageFilename, activityId, insideActivity)`, `generateReferenceDocument(allInteractives, moduleCode)`
 
-### Extended App Flow (Current — Phase 3)
+### Extended App Flow (Current — Phase 4)
 
 ```
 User drops .docx file
@@ -1026,22 +1047,28 @@ User drops .docx file
   → HtmlConverter generates HTML for each page:
     → TemplateEngine.generateSkeleton() creates document shell
     → HtmlConverter.convertPage() renders body content
+    → InteractiveExtractor.processInteractive() handles interactive tags:
+      → Detects interactive type and classifies tier (1 or 2)
+      → Looks ahead to extract associated data (tables, numbered items, media)
+      → Generates structured placeholder HTML
+      → Collects reference entry with all extracted data
+      → Returns blocksConsumed so HtmlConverter skips data blocks
     → HtmlConverter.assemblePage() combines skeleton + content + module menu
-    → Interactive components rendered as temporary red placeholders
+  → InteractiveExtractor.generateReferenceDocument() produces reference doc
   → App displays results:
+    → Metadata panel shows interactive count with tier breakdown
     → HTML mode (default): HTML source in output area with file selector dropdown
+    → Interactive Reference Document selectable in file dropdown
     → Text mode (legacy): Plain text in output area
     → Toggle button switches between modes
-    → Copy/Download buttons adapt to current mode
+    → Copy/Download buttons adapt to current mode (including reference doc)
+    → Debug panel shows interactive component details table
 ```
 
-### Planned App Flow Additions (Phase 4+)
+### Planned App Flow Additions (Phase 5+)
 
 ```
-  → InteractiveExtractor handles structured interactive placeholders
   → App offers download of:
-    → Individual HTML files (MODULE_CODE-00.html, -01.html, etc.)
-    → Interactive Reference Document (.txt or .html)
     → All files as ZIP
 ```
 

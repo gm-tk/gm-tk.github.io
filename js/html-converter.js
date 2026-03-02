@@ -3,10 +3,10 @@
  *
  * Transforms parsed content blocks into fully marked-up HTML for
  * non-interactive content. Interactive components are rendered as
- * temporary red placeholder text (Phase 4 will refine these).
+ * structured placeholders with data extraction via InteractiveExtractor.
  *
  * @see CLAUDE.md Section 11 — HTML Conversion Rules
- * @see CLAUDE.md Section 13 — Future Architecture
+ * @see CLAUDE.md Section 12 — Interactive Components
  */
 
 'use strict';
@@ -17,8 +17,9 @@ class HtmlConverter {
      *
      * @param {TagNormaliser} tagNormaliser - An initialised TagNormaliser instance
      * @param {TemplateEngine} templateEngine - An initialised TemplateEngine instance
+     * @param {InteractiveExtractor} [interactiveExtractor] - An optional InteractiveExtractor instance
      */
-    constructor(tagNormaliser, templateEngine) {
+    constructor(tagNormaliser, templateEngine, interactiveExtractor) {
         if (!tagNormaliser) {
             throw new Error('HtmlConverter requires a TagNormaliser instance');
         }
@@ -31,6 +32,12 @@ class HtmlConverter {
 
         /** @type {TemplateEngine} */
         this._templateEngine = templateEngine;
+
+        /** @type {InteractiveExtractor|null} */
+        this._interactiveExtractor = interactiveExtractor || null;
+
+        /** @type {Array<Object>} Collected interactive reference entries from the last conversion run */
+        this.collectedInteractives = [];
     }
 
     // ------------------------------------------------------------------
@@ -47,7 +54,7 @@ class HtmlConverter {
     convertPage(pageData, config) {
         var blocks = pageData.contentBlocks || [];
         var processedBlocks = this._processAllBlocks(blocks);
-        var bodyHtml = this._renderBlocks(processedBlocks, config, pageData);
+        var bodyHtml = this._renderBlocks(processedBlocks, config, pageData, blocks);
         return bodyHtml;
     }
 
@@ -314,9 +321,10 @@ class HtmlConverter {
      * @param {Array<Object>} processedBlocks - Processed blocks
      * @param {Object} config - Template config
      * @param {Object} pageData - Page data
+     * @param {Array<Object>} [rawBlocks] - Original raw content blocks (for interactive extraction)
      * @returns {string} Combined HTML string
      */
-    _renderBlocks(processedBlocks, config, pageData) {
+    _renderBlocks(processedBlocks, config, pageData, rawBlocks) {
         var htmlParts = [];
         var i = 0;
         var inActivity = false;
@@ -328,6 +336,28 @@ class HtmlConverter {
         var pendingContent = [];
 
         var self = this;
+
+        // Build a mapping from processed block index to raw block index.
+        // _processAllBlocks filters out pageBreaks and empty blocks, so
+        // the indices diverge. We need the raw index for interactive extraction.
+        var procToRawMap = [];
+        if (rawBlocks) {
+            var procIdx = 0;
+            for (var ri = 0; ri < rawBlocks.length; ri++) {
+                var rb = rawBlocks[ri];
+                if (rb.type === 'pageBreak') continue;
+                if ((rb.type === 'paragraph' && rb.data) || (rb.type === 'table' && rb.data)) {
+                    if (procIdx < processedBlocks.length) {
+                        procToRawMap[procIdx] = ri;
+                        procIdx++;
+                    }
+                }
+            }
+        }
+
+        // Track the set of raw block indices already consumed by interactives
+        // so we skip processed blocks that correspond to consumed raw blocks.
+        var consumedRawIndices = {};
 
         function flushPending() {
             if (pendingContent.length > 0) {
@@ -342,6 +372,12 @@ class HtmlConverter {
         }
 
         while (i < processedBlocks.length) {
+            // Skip blocks whose raw counterpart was consumed by interactive extraction
+            if (procToRawMap[i] !== undefined && consumedRawIndices[procToRawMap[i]]) {
+                i++;
+                continue;
+            }
+
             var pBlock = processedBlocks[i];
             var tags = pBlock.tagResult ? pBlock.tagResult.tags : [];
             var primaryTag = tags.length > 0 ? tags[0] : null;
@@ -429,10 +465,44 @@ class HtmlConverter {
                 continue;
             }
 
-            // --- Interactive components (temporary placeholder) ---
+            // --- Interactive components ---
             if (category === 'interactive') {
                 flushPending();
                 activityHasInteractive = true;
+
+                // Use InteractiveExtractor if available and we have raw blocks
+                if (self._interactiveExtractor && rawBlocks && procToRawMap[i] !== undefined) {
+                    var rawIdx = procToRawMap[i];
+                    var pageFilename = pageData.filename || '';
+                    var currentActivityId = inActivity ? (self._currentActivityId || null) : null;
+                    var extractResult = self._interactiveExtractor.processInteractive(
+                        rawBlocks, rawIdx, pageFilename, currentActivityId, inActivity
+                    );
+
+                    if (extractResult) {
+                        // Collect reference entry
+                        self.collectedInteractives.push(extractResult.referenceEntry);
+
+                        // Mark raw blocks as consumed so we skip their processed equivalents
+                        var consumedStart = rawIdx + 1; // the tag block itself is processed normally
+                        var consumedEnd = rawIdx + extractResult.blocksConsumed;
+                        for (var ci = consumedStart; ci < consumedEnd; ci++) {
+                            consumedRawIndices[ci] = true;
+                        }
+
+                        if (inActivity) {
+                            activityParts.push(extractResult.placeholderHtml);
+                        } else {
+                            activityParts = [];
+                            htmlParts.push(extractResult.placeholderHtml);
+                        }
+
+                        i++;
+                        continue;
+                    }
+                }
+
+                // Fallback: simple placeholder if no extractor
                 var interactiveName = tagName || 'unknown';
                 var placeholderHtml = '      <p style="color: red; font-weight: bold;">' +
                     '\u26A0\uFE0F INTERACTIVE: ' + this._escContent(interactiveName) +
