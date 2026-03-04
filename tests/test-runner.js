@@ -106,6 +106,7 @@ function loadScript(filePath) {
 // Load modules in dependency order
 loadScript('js/tag-normaliser.js');
 loadScript('js/block-scoper.js');
+loadScript('js/layout-table-unwrapper.js');
 
 // Load test files
 var testFiles = fs.readdirSync(__dirname).filter(function(f) {
