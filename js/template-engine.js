@@ -160,8 +160,13 @@ class TemplateEngine {
     generateSkeleton(config, pageData) {
         var isOverview = pageData.type === 'overview';
         var lessonNum = pageData.lessonNumber;
+        // Zero-padded format for filenames and footer navigation (e.g., '01', '02')
         var lessonPadded = lessonNum !== null
             ? String(lessonNum).padStart(2, '0')
+            : null;
+        // Decimal format for display in #module-code (e.g., '1.0', '2.0')
+        var lessonDisplayNumber = lessonNum !== null
+            ? lessonNum + '.0'
             : null;
 
         // Strip module code prefix from title for <title> element
@@ -177,8 +182,14 @@ class TemplateEngine {
         var englishOnlyTitle = rawTitle.split(/  +/)[0].trim();
 
         // Title element (English only — NEVER Te Reo)
-        // Both overview and lesson pages use MODULE_CODE + English Title
-        var titleContent = pageData.moduleCode + ' ' + englishOnlyTitle;
+        // Overview page: MODULE_CODE 0.0 English Title
+        // Lesson page: MODULE_CODE N.0 English Title
+        var titleContent;
+        if (isOverview) {
+            titleContent = pageData.moduleCode + ' 0.0 ' + englishOnlyTitle;
+        } else {
+            titleContent = pageData.moduleCode + ' ' + lessonDisplayNumber + ' ' + englishOnlyTitle;
+        }
 
         // HTML attributes
         var htmlAttrs = config.htmlAttributes;
@@ -206,7 +217,7 @@ class TemplateEngine {
         lines.push('<body class="' + config.bodyClass + '">');
 
         // Header
-        lines.push(this._generateHeader(config, pageData, isOverview, lessonPadded));
+        lines.push(this._generateHeader(config, pageData, isOverview, lessonDisplayNumber));
 
         // Body (content placeholder)
         lines.push('  <div id="body">');
@@ -229,16 +240,16 @@ class TemplateEngine {
     /**
      * @private
      */
-    _generateHeader(config, pageData, isOverview, lessonPadded) {
+    _generateHeader(config, pageData, isOverview, lessonDisplayNumber) {
         var lines = [];
         var headerPattern = isOverview
             ? config.headerPattern.overviewPage
             : config.headerPattern.lessonPage;
 
-        // Module code content
+        // Module code content — overview uses full module code, lesson uses decimal format
         var moduleCodeContent = isOverview
             ? pageData.moduleCode
-            : (lessonPadded || '01');
+            : (lessonDisplayNumber || '1.0');
 
         // Title(s)
         var englishTitle = pageData.englishTitle || '';

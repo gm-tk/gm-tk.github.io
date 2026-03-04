@@ -523,6 +523,8 @@ class HtmlConverter {
         var i = 0;
         var inActivity = false;
         var activityHasInteractive = false;
+        var activityHasSidebar = false;
+        var activityHasDropbox = false;
         var activityParts = [];
         var colClass = config.gridRules ? config.gridRules.defaultContent : 'col-md-8 col-12';
 
@@ -624,9 +626,10 @@ class HtmlConverter {
 
                 if (shouldAutoClose) {
                     flushPending();
-                    var autoClsClass = activityHasInteractive
-                        ? 'activity interactive'
-                        : 'activity';
+                    var autoClsClass = activityHasDropbox
+                        ? 'activity dropbox'
+                        : (activityHasInteractive ? 'activity interactive' : 'activity');
+                    if (activityHasSidebar) autoClsClass += ' alertPadding';
                     var autoClsNum = self._currentActivityId || '';
                     var autoClsHtml = '    <div class="' + autoClsClass + '"' +
                         (autoClsNum ? ' number="' + self._escAttr(autoClsNum) + '"' : '') + '>\n' +
@@ -634,9 +637,11 @@ class HtmlConverter {
                         activityParts.join('\n') + '\n' +
                         '        </div>\n      </div>\n' +
                         '    </div>';
-                    htmlParts.push(self._wrapInRow(autoClsHtml, 'col-md-12 col-12'));
+                    htmlParts.push(self._wrapInRow(autoClsHtml, colClass));
                     inActivity = false;
                     activityHasInteractive = false;
+                    activityHasSidebar = false;
+                    activityHasDropbox = false;
                     activityParts = [];
                     // Don't increment i — re-process this block as body content
                     continue;
@@ -670,9 +675,10 @@ class HtmlConverter {
                 // flush the previous activity to htmlParts before starting the new one.
                 // This prevents content loss when writers omit [end activity] tags.
                 if (inActivity && activityParts.length > 0) {
-                    var prevActivityClass = activityHasInteractive
-                        ? 'activity interactive'
-                        : 'activity';
+                    var prevActivityClass = activityHasDropbox
+                        ? 'activity dropbox'
+                        : (activityHasInteractive ? 'activity interactive' : 'activity');
+                    if (activityHasSidebar) prevActivityClass += ' alertPadding';
                     var prevActivityNum = this._currentActivityId || '';
                     var prevActivityHtml = this._wrapInRow(
                         '    <div class="' + prevActivityClass + '"' +
@@ -680,11 +686,13 @@ class HtmlConverter {
                         '      <div class="row">\n        <div class="col-12">\n' +
                         activityParts.join('\n') + '\n' +
                         '        </div>\n      </div>\n' +
-                        '    </div>', 'col-md-12 col-12');
+                        '    </div>', colClass);
                     htmlParts.push(prevActivityHtml);
                 }
                 inActivity = true;
                 activityHasInteractive = false;
+                activityHasSidebar = false;
+                activityHasDropbox = false;
                 activityParts = [];
                 var activityId = primaryTag.id || '';
                 // Store activity info for closing
@@ -708,9 +716,10 @@ class HtmlConverter {
             if (tagName === 'end_activity') {
                 flushPending();
                 if (inActivity) {
-                    var activityClass = activityHasInteractive
-                        ? 'activity interactive'
-                        : 'activity';
+                    var activityClass = activityHasDropbox
+                        ? 'activity dropbox'
+                        : (activityHasInteractive ? 'activity interactive' : 'activity');
+                    if (activityHasSidebar) activityClass += ' alertPadding';
                     var activityNum = this._currentActivityId || '';
                     // Activity wrapper: outer row → col → activity div → inner row → col-12 → content
                     var activityHtml = '    <div class="' + activityClass + '"' +
@@ -720,8 +729,10 @@ class HtmlConverter {
                         '        </div>\n      </div>\n' +
                         '    </div>';
                     // Wrap the activity div in an outer Bootstrap grid row
-                    htmlParts.push(this._wrapInRow(activityHtml, 'col-md-12 col-12'));
+                    htmlParts.push(this._wrapInRow(activityHtml, colClass));
                     inActivity = false;
+                    activityHasSidebar = false;
+                    activityHasDropbox = false;
                     activityParts = [];
                 }
                 i++;
@@ -814,6 +825,10 @@ class HtmlConverter {
             if (category === 'interactive') {
                 flushPending();
                 activityHasInteractive = true;
+                // Track upload_to_dropbox interactives for activity class
+                if (tagName === 'upload_to_dropbox') {
+                    activityHasDropbox = true;
+                }
 
                 // Use InteractiveExtractor if available and we have raw blocks
                 if (self._interactiveExtractor && rawBlocks && procToRawMap[i] !== undefined) {
@@ -930,11 +945,25 @@ class HtmlConverter {
                 self._lastHeadingLevel = headingLevel;
 
                 var hTag = 'h' + headingLevel;
+
+                // Conservative ALL-CAPS detection for H2-H5 headings
+                var allCapsWarning = false;
+                if (headingText && headingLevel >= 2) {
+                    var letters = headingText.replace(/[^a-zA-Z]/g, '');
+                    var upperCount = headingText.replace(/[^A-Z]/g, '').length;
+                    if (letters.length > 3 && upperCount / letters.length > 0.6) {
+                        allCapsWarning = true;
+                    }
+                }
+
                 var headingInner = this._convertInlineFormatting(headingText);
                 headingInner = this._stripHeadingInlineTags(headingInner);
                 var headingHtml = '';
                 if (isIncompleteHeading) {
                     headingHtml += '      <!-- \u26A0\uFE0F DEV CHECK: Writer used [H ] with no level \u2014 defaulted to ' + hTag + ' -->\n';
+                }
+                if (allCapsWarning) {
+                    headingHtml += '      <!-- \u26A0\uFE0F DEV CHECK: Heading appears to be ALL CAPS \u2014 should be Sentence case -->\n';
                 }
                 headingHtml += '      <' + hTag + '>' + headingInner + '</' + hTag + '>';
 
@@ -1068,11 +1097,14 @@ class HtmlConverter {
 
             // --- Whakatauki ---
             if (tagName === 'whakatauki') {
-                var whakContent = this._collectMultiLineContent(processedBlocks, i, 2);
+                var whakContent = this._collectMultiLineContent(processedBlocks, i, 3);
                 // If there's only one line, try splitting on pipe separator
                 if (whakContent.length === 1 && whakContent[0].indexOf(' | ') !== -1) {
                     var pipeParts = whakContent[0].split(' | ');
-                    whakContent = [pipeParts[0].trim(), pipeParts.slice(1).join(' | ').trim()];
+                    whakContent = [];
+                    for (var pp = 0; pp < pipeParts.length; pp++) {
+                        if (pipeParts[pp].trim()) whakContent.push(pipeParts[pp].trim());
+                    }
                 }
                 var whakHtml = '    <div class="whakatauki">\n';
                 for (var w = 0; w < whakContent.length; w++) {
@@ -1257,6 +1289,22 @@ class HtmlConverter {
                 continue;
             }
 
+            // --- Download journal ---
+            if (tagName === 'download_journal') {
+                var djModuleCode = pageData.moduleCode || 'MODULE';
+                var djHtml = '      <a href="docs/' + this._escAttr(djModuleCode) +
+                    ' Journal.docx" target="_blank"><div class="button downloadButton">Download journal</div></a>\n' +
+                    '      <div class="hint"></div>\n' +
+                    '      <div class="hintDropContent" hintType="oneDrive"></div>';
+                if (inActivity) {
+                    activityParts.push(djHtml);
+                } else {
+                    pendingContent.push(djHtml);
+                }
+                i++;
+                continue;
+            }
+
             // --- Supervisor button ---
             if (tagName === 'supervisor_button') {
                 var supContent = this._collectBlockContent(processedBlocks, i);
@@ -1284,6 +1332,7 @@ class HtmlConverter {
                 if (sidebarHtml) {
                     if (inActivity) {
                         // Inside an activity, pair with recent activity content
+                        activityHasSidebar = true;
                         var mainContent = '';
                         if (pendingContent.length > 0) {
                             mainContent = pendingContent.join('\n');
@@ -1411,9 +1460,10 @@ class HtmlConverter {
 
         // Close any open activity
         if (inActivity) {
-            var finalActivityClass = activityHasInteractive
-                ? 'activity interactive'
-                : 'activity';
+            var finalActivityClass = activityHasDropbox
+                ? 'activity dropbox'
+                : (activityHasInteractive ? 'activity interactive' : 'activity');
+            if (activityHasSidebar) finalActivityClass += ' alertPadding';
             var finalActivityNum = this._currentActivityId || '';
             var finalActivityHtml = '    <div class="' + finalActivityClass + '"' +
                 (finalActivityNum ? ' number="' + this._escAttr(finalActivityNum) + '"' : '') + '>\n' +
@@ -1421,7 +1471,7 @@ class HtmlConverter {
                 activityParts.join('\n') + '\n' +
                 '        </div>\n      </div>\n' +
                 '    </div>';
-            htmlParts.push(this._wrapInRow(finalActivityHtml, 'col-md-12 col-12'));
+            htmlParts.push(this._wrapInRow(finalActivityHtml, colClass));
         }
 
         return htmlParts.join('\n');
@@ -2010,20 +2060,35 @@ class HtmlConverter {
 
         var html = '    <div class="table-responsive">\n';
         html += '      <table class="table noHover tableFixed">\n';
-        html += '        <tbody>\n';
 
         for (var r = 0; r < tableData.rows.length; r++) {
             var row = tableData.rows[r];
-            html += '          <tr>\n';
+            var isHeader = (r === 0);
+            var cellTag = isHeader ? 'th' : 'td';
+
+            if (isHeader) {
+                html += '        <thead>\n';
+                html += '          <tr class="rowSolid">\n';
+            } else {
+                if (r === 1) html += '        <tbody>\n';
+                html += '          <tr>\n';
+            }
+
             for (var c = 0; c < row.cells.length; c++) {
                 var cell = row.cells[c];
                 var cellContent = this._renderCellContent(cell);
-                html += '            <td>' + cellContent + '</td>\n';
+                html += '            <' + cellTag + '>' + cellContent + '</' + cellTag + '>\n';
             }
+
             html += '          </tr>\n';
+            if (isHeader) {
+                html += '        </thead>\n';
+            }
         }
 
-        html += '        </tbody>\n';
+        if (tableData.rows.length > 1) {
+            html += '        </tbody>\n';
+        }
         html += '      </table>\n';
         html += '    </div>';
 
@@ -2051,7 +2116,10 @@ class HtmlConverter {
             }
         }
 
-        return parts.join('<br />');
+        if (parts.length === 1) {
+            return parts[0];
+        }
+        return parts.map(function(p) { return '<p>' + p + '</p>'; }).join('');
     }
 
     /**
@@ -2242,8 +2310,17 @@ class HtmlConverter {
         var imgClass = (config.imageDefaults && config.imageDefaults.class)
             ? config.imageDefaults.class : 'img-fluid';
 
+        // Extract iStock number for alt text if available
+        var altText = '';
+        if (imageRef) {
+            var gmMatch = imageRef.match(/gm(\d+)/);
+            if (gmMatch) {
+                altText = 'iStock-' + gmMatch[1];
+            }
+        }
+
         var html = '<img class="' + imgClass + '" loading="lazy" src="' +
-            placeholderBase + '/400x300?text=Image" alt="" />';
+            placeholderBase + '/400x300?text=Image" alt="' + this._escAttr(altText) + '" />';
 
         if (imageRef) {
             html += '\n        <!-- Reference: ' + this._escContent(imageRef) + ' -->';
@@ -2274,7 +2351,7 @@ class HtmlConverter {
 
         if (pBlock._cellRole === 'sidebar_alert') {
             var alertContent = pBlock._sidebarAlertContent || [];
-            var alertHtml = '    <div class="alertActivity">\n' +
+            var alertHtml = '    <div class="alert top">\n' +
                 '      <div class="row">\n' +
                 '        <div class="col-12">\n';
 
@@ -2651,8 +2728,12 @@ class HtmlConverter {
             ? config.imageDefaults.placeholderBase
             : 'https://placehold.co';
 
+        // Use iStock number as alt text if available
+        var altText = imgInfo.istockId || '';
+
         var html = '      <img class="img-fluid" loading="lazy" src="' +
-            placeholderBase + '/' + dimensions + '?text=Image+Placeholder" alt="" />';
+            placeholderBase + '/' + dimensions + '?text=Image+Placeholder" alt="' +
+            this._escAttr(altText) + '" />';
 
         if (imgInfo.istockId) {
             html += '\n      <!-- <img class="img-fluid" loading="lazy" src="images/' +
@@ -3030,6 +3111,9 @@ class HtmlConverter {
         // The definition is typically in the red text instruction
         var definition = instructions.length > 0 ? instructions[0].trim() : '';
 
+        // Format multi-word definitions: capitalise first letter and add trailing period
+        definition = this._formatInfoTriggerDefinition(definition);
+
         // The trigger word is the clean text (the visible word the reader clicks)
         if (cleanText && definition) {
             return {
@@ -3047,6 +3131,35 @@ class HtmlConverter {
         }
 
         return null;
+    }
+
+    /**
+     * Format an info trigger definition for the `info` attribute.
+     * Single-word definitions are left as-is. Multi-word definitions
+     * get a capitalised first letter and a trailing period.
+     *
+     * @param {string} definition - Raw definition text
+     * @returns {string} Formatted definition
+     */
+    _formatInfoTriggerDefinition(definition) {
+        if (!definition || typeof definition !== 'string') return definition || '';
+        var trimmed = definition.trim();
+        if (!trimmed) return trimmed;
+
+        // Check if multi-word (more than one word)
+        var words = trimmed.split(/\s+/);
+        if (words.length <= 1) return trimmed;
+
+        // Capitalise first letter
+        var formatted = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+
+        // Add trailing period if not already present
+        var lastChar = formatted.charAt(formatted.length - 1);
+        if (lastChar !== '.' && lastChar !== '!' && lastChar !== '?') {
+            formatted += '.';
+        }
+
+        return formatted;
     }
 
     /**
@@ -3068,8 +3181,9 @@ class HtmlConverter {
             var beforePart = trigger.beforeText;
             var afterPart = trigger.afterText;
             var triggerWordFormatted = this._convertInlineFormatting(trigger.triggerWord);
+            var formattedDef = this._formatInfoTriggerDefinition(trigger.definition);
             var infoSpan = '<span class="infoTrigger" info="' +
-                this._escAttr(trigger.definition) + '">' +
+                this._escAttr(formattedDef) + '">' +
                 triggerWordFormatted + '</span>';
 
             result = beforePart + infoSpan + afterPart;

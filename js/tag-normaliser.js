@@ -914,6 +914,8 @@ class TagNormaliser {
             'external link button': { normalised: 'external_link_button', category: 'link' },
             'external link': { normalised: 'external_link', category: 'link' },
             'go to journal': { normalised: 'go_to_journal', category: 'link' },
+            'download journal': { normalised: 'download_journal', category: 'link' },
+            'upload to dropbox': { normalised: 'upload_to_dropbox', category: 'interactive' },
             'engagement quiz button': { normalised: 'engagement_quiz_button', category: 'link' },
             'supervisor button': { normalised: 'supervisor_button', category: 'link' },
             'modal button': { normalised: 'modal_button', category: 'link' },
@@ -1020,7 +1022,8 @@ class TagNormaliser {
             'venn_diagram', 'timeline', 'self_reflection', 'reflection_slider',
             'stop_watch', 'number_line', 'crossword', 'word_find', 'bingo',
             'clicking_order', 'puzzle', 'sketcher', 'glossary', 'translate_section',
-            'kanji_cards', 'embed_pdf', 'embed_padlet', 'embed_desmos'
+            'kanji_cards', 'embed_pdf', 'embed_padlet', 'embed_desmos',
+            'upload_to_dropbox'
         ];
     }
 
