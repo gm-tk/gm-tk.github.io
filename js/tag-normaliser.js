@@ -25,6 +25,7 @@ class TagNormaliser {
         this._tagPattern = /\[([^\]]+)\]/g;
 
         this._buildNormalisationTable();
+        this._buildOrdinalMap();
     }
 
     // ------------------------------------------------------------------
@@ -180,6 +181,20 @@ class TagNormaliser {
         }
 
         return null;
+    }
+
+    /**
+     * Resolve an ordinal word, cardinal word, or numeric string to its number.
+     *
+     * @param {string} word - e.g. "first", "Forth", "one", "10"
+     * @returns {number|null} The numeric value, or null if unrecognised
+     */
+    resolveOrdinalOrNumber(word) {
+        if (!word) return null;
+        var lower = word.toLowerCase().trim();
+        if (this._ordinalMap.hasOwnProperty(lower)) return this._ordinalMap[lower];
+        var parsed = parseInt(lower, 10);
+        return isNaN(parsed) ? null : parsed;
     }
 
     // ------------------------------------------------------------------
@@ -747,6 +762,12 @@ class TagNormaliser {
             };
         }
 
+        // --- Ordinal & verbose sub-tag matching (last resort before unrecognised) ---
+        var subTagResult = this._matchSubTag(flexCleaned, inner, raw);
+        if (subTagResult) {
+            return subTagResult;
+        }
+
         // --- Unrecognised tag ---
         return {
             normalised: null,
@@ -914,7 +935,9 @@ class TagNormaliser {
             },
             {
                 category: 'subtag',
-                tags: ['front', 'back', 'static_heading', 'story_heading', 'static_column', 'unordered_list', 'table']
+                tags: ['front', 'back', 'static_heading', 'story_heading', 'static_column',
+                       'unordered_list', 'table', 'accordion_tab', 'card_front', 'card_back',
+                       'inside_tab', 'new_tab']
             }
         ];
 
@@ -1106,6 +1129,220 @@ class TagNormaliser {
                 category: 'media',
                 modifier: 'audio_animation',
                 raw: raw
+            };
+        }
+
+        return null;
+    }
+
+    // ------------------------------------------------------------------
+    // Internal: Ordinal map
+    // ------------------------------------------------------------------
+
+    /**
+     * Build the ordinal/cardinal word → number lookup map.
+     */
+    _buildOrdinalMap() {
+        this._ordinalMap = {
+            'first': 1, 'second': 2, 'third': 3, 'fourth': 4, 'forth': 4,
+            'fifth': 5, 'sixth': 6, 'seventh': 7, 'eighth': 8, 'ninth': 9, 'tenth': 10,
+            'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
+            'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10
+        };
+    }
+
+    // ------------------------------------------------------------------
+    // Internal: Verbose sub-tag matching
+    // ------------------------------------------------------------------
+
+    /**
+     * Match verbose/ordinal sub-tag patterns that the standard normalisation
+     * engine does not cover. Called as a last resort before marking a tag
+     * as unrecognised.
+     *
+     * @param {string} flexCleaned - Lowercased, normalised tag text
+     * @param {string} inner - Original inner tag text (preserves case)
+     * @param {string} raw - Full raw tag with brackets
+     * @returns {Object|null} Normalised tag object or null
+     */
+    _matchSubTag(flexCleaned, inner, raw) {
+        // --- [Inside tab] no-op marker ---
+        if (flexCleaned === 'inside tab') {
+            return {
+                normalised: 'inside_tab', level: null, number: null,
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- [New tab] / [New tab 1] auto-increment marker ---
+        if (/^new\s+tab(?:\s+\d+)?$/.test(flexCleaned)) {
+            return {
+                normalised: 'new_tab', level: null, number: null,
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- Ordinal accordion tab: [First tab of accordion], [Third accordion tab] ---
+        var ordAccMatch = flexCleaned.match(
+            /^(first|second|third|forth|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+(?:tab\s+of\s+accordion|accordion\s+tab)$/
+        );
+        if (ordAccMatch) {
+            return {
+                normalised: 'accordion_tab', level: null,
+                number: this.resolveOrdinalOrNumber(ordAccMatch[1]),
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- Word-numbered accordion: [accordion one], [Accordion two: Routine] ---
+        var wordAccMatch = flexCleaned.match(
+            /^accordion\s+(one|two|three|four|five|six|seven|eight|nine|ten)\s*:?\s*(.*)$/
+        );
+        if (wordAccMatch) {
+            var wordAccLabel = wordAccMatch[2] ? wordAccMatch[2].trim() : null;
+            // Preserve original case for label
+            if (wordAccLabel) {
+                var labelStart = inner.toLowerCase().indexOf(wordAccMatch[2].trim().charAt(0));
+                if (labelStart !== -1 && wordAccMatch[2].trim()) {
+                    wordAccLabel = inner.substring(labelStart).trim();
+                }
+            }
+            return {
+                normalised: 'accordion_tab', level: null,
+                number: this.resolveOrdinalOrNumber(wordAccMatch[1]),
+                id: null, category: 'subtag', modifier: wordAccLabel || null, raw: raw
+            };
+        }
+
+        // --- Accordion N with label/content: [Accordion 1: INCOME], [accordion 1 types of laws] ---
+        var accNLabel = flexCleaned.match(/^accordion\s+(\d+)\s*:?\s+(.+)$/);
+        if (accNLabel) {
+            var accLabel = accNLabel[2].trim();
+            // Preserve original case
+            var accLabelStart = inner.lastIndexOf(accNLabel[2].trim().charAt(0));
+            if (accLabelStart !== -1) {
+                accLabel = inner.substring(accLabelStart).trim();
+            }
+            return {
+                normalised: 'accordion_tab', level: null,
+                number: parseInt(accNLabel[1], 10),
+                id: null, category: 'subtag', modifier: accLabel, raw: raw
+            };
+        }
+
+        // --- Ordinal flip card: [First card, front H4 title], [Forth card, front H4 title] ---
+        var ordFlipMatch = flexCleaned.match(
+            /^(first|second|third|forth|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+card\s*,?\s*(front|back)\s*(h\d)?\s*(title)?$/
+        );
+        if (ordFlipMatch) {
+            var flipSide = ordFlipMatch[2] === 'front' ? 'card_front' : 'card_back';
+            var flipLevel = ordFlipMatch[3] ? parseInt(ordFlipMatch[3].charAt(1), 10) : null;
+            return {
+                normalised: flipSide, level: flipLevel,
+                number: this.resolveOrdinalOrNumber(ordFlipMatch[1]),
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- Verbose front/back: [Front of card], [Back of the flipcard], [Back of flipcard/clickdrop] ---
+        var frontOfMatch = flexCleaned.match(
+            /^(front|back)\s+of\s+(?:the\s+)?(?:card|flipcard|flip\s*card)(?:\/\w+)?$/
+        );
+        if (frontOfMatch) {
+            return {
+                normalised: frontOfMatch[1] === 'front' ? 'card_front' : 'card_back',
+                level: null, number: null,
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- [front of card title & image N] / [front of card title and image N] ---
+        var frontTitleImgMatch = flexCleaned.match(
+            /^front\s+of\s+card\s+title\s+(?:&|and)\s+image\s+(\d+)$/
+        );
+        if (frontTitleImgMatch) {
+            return {
+                normalised: 'card_front', level: null,
+                number: parseInt(frontTitleImgMatch[1], 10),
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- [Card N] standalone ---
+        var cardNMatch = flexCleaned.match(/^card\s+(\d+)$/);
+        if (cardNMatch) {
+            return {
+                normalised: 'card_front', level: null,
+                number: parseInt(cardNMatch[1], 10),
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- [Flipcard N] (no space) ---
+        var flipcardNMatch = flexCleaned.match(/^flipcard\s+(\d+)$/);
+        if (flipcardNMatch) {
+            return {
+                normalised: 'card_front', level: null,
+                number: parseInt(flipcardNMatch[1], 10),
+                id: null, category: 'subtag', modifier: null, raw: raw
+            };
+        }
+
+        // --- Tab N with suffix: [Tab 1 body], [TAB 1 MODULE INTRODUCTION] ---
+        var tabSuffixMatch = flexCleaned.match(/^tab\s+(\d+)\s+(.+)$/);
+        if (tabSuffixMatch) {
+            var tabSuffix = tabSuffixMatch[2].trim();
+            // Preserve original case for suffix
+            var tabSufStart = inner.lastIndexOf(tabSuffixMatch[2].trim().charAt(0));
+            if (tabSufStart !== -1) {
+                tabSuffix = inner.substring(tabSufStart).trim();
+            }
+            return {
+                normalised: 'tab', level: null,
+                number: parseInt(tabSuffixMatch[1], 10),
+                id: null, category: 'subtag', modifier: tabSuffix, raw: raw
+            };
+        }
+
+        // --- Slide N with suffix: [Slide 1 - video], [Slide 1: heading] ---
+        var slideSuffixMatch = flexCleaned.match(/^slide\s+(\d+)\s+[-–:]\s*(.+)$/);
+        if (slideSuffixMatch) {
+            return {
+                normalised: 'carousel_slide', level: null,
+                number: parseInt(slideSuffixMatch[1], 10),
+                id: null, category: 'interactive',
+                modifier: slideSuffixMatch[2].trim(), raw: raw
+            };
+        }
+
+        // --- Slide N with text suffix (no separator): [Slide 1 heading] ---
+        var slideTextMatch = flexCleaned.match(/^slide\s+(\d+)\s+(.+)$/);
+        if (slideTextMatch) {
+            return {
+                normalised: 'carousel_slide', level: null,
+                number: parseInt(slideTextMatch[1], 10),
+                id: null, category: 'interactive',
+                modifier: slideTextMatch[2].trim(), raw: raw
+            };
+        }
+
+        // --- Prefixed slides: [Carousel Image N], [Expectations Slide N], [Needs Slide N] ---
+        var prefixedSlideMatch = flexCleaned.match(
+            /^(?:carousel\s+image|(?:\w+)\s+slide)\s+(\d+)$/
+        );
+        if (prefixedSlideMatch) {
+            return {
+                normalised: 'carousel_slide', level: null,
+                number: parseInt(prefixedSlideMatch[1], 10),
+                id: null, category: 'interactive', modifier: null, raw: raw
+            };
+        }
+
+        // --- [drop image] as single tag (click-drop variant) ---
+        if (/^drop\s+image$/i.test(flexCleaned)) {
+            return {
+                normalised: 'back', level: null, number: null,
+                id: null, category: 'subtag', modifier: 'image', raw: raw
             };
         }
 
