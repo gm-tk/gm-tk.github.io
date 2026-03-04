@@ -26,6 +26,7 @@
 15. [Development Guidelines](#15-development-guidelines)
 16. [ENGS301 Inconsistency Fixes](#16-engs301-inconsistency-fixes)
 17. [LMS Compliance Recalibration](#17-lms-compliance-recalibration-phase-7)
+18. [Tag Normalisation Robustness](#18-tag-normalisation-robustness-phase-1-patch)
 
 ---
 
@@ -49,6 +50,7 @@ ParseMaster is a client-side web application that reads Writer Template `.docx` 
 10. **Block scoping** → hierarchical block grouping with open/close matching, ordinal normalization, compound tag splitting, layout direction, writer instruction detection (DONE — Phase 6)
 11. **Layout table unwrapping** → detects Word tables used as two-column layout grids, unwraps their content into the main content stream, creates sidebar blocks for companion images and alerts (DONE — Phase 6.1)
 12. **LMS compliance recalibration** → lesson number decimal format, title element format, activity class refinements (alertPadding, dropbox), table header semantics (rowSolid, th/thead/tbody), br→p conversion, info trigger definition formatting, download journal button, whakatauki author line, image iStock alt text, ALL-CAPS heading detection (DONE — Phase 7)
+13. **Tag normalisation robustness** → pre-processing de-fragmentation of fractured red-text boundaries from MS Word XML, bracket whitespace cleanup, ordinal suffix stripping in resolveOrdinalOrNumber (DONE — Phase 1 Patch)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -154,7 +156,7 @@ User drops .docx file
 |-------|------|---------|
 | `DocxParser` | `js/docx-parser.js` | Extracts structured content from .docx XML |
 | `OutputFormatter` | `js/formatter.js` | Converts parsed data to plain text output (legacy) |
-| `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, and red text processing |
+| `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, red text processing, and raw text de-fragmentation |
 | `BlockScoper` | `js/block-scoper.js` | Hierarchical block scoping, ordinal normalization, compound splitting, layout detection |
 | `LayoutTableUnwrapper` | `js/layout-table-unwrapper.js` | Detects and unwraps layout tables, extracts cell content into main stream, creates sidebar blocks |
 | `PageBoundary` | `js/page-boundary.js` | Page boundary detection, validation, and assignment |
@@ -176,7 +178,7 @@ gm-tk.github.io/
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
 │   ├── formatter.js         # Plain text output formatter (legacy)
-│   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1, enhanced Phase 6)
+│   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1, enhanced Phase 6, Phase 1 Patch)
 │   ├── block-scoper.js      # Block scoping engine — hierarchical grouping & analysis (Phase 6)
 │   ├── layout-table-unwrapper.js # Layout table detection & unwrapping (Phase 6.1)
 │   ├── page-boundary.js     # Page boundary detection & validation (Phase 1)
@@ -201,7 +203,8 @@ gm-tk.github.io/
 │   ├── normalizeSubtags.test.js # Comprehensive ordinal & verbose sub-tag normalization tests
 │   ├── layoutTableUnwrapper.test.js # Layout table detection, unwrapping, column role assignment tests
 │   ├── engs301Fixes.test.js # ENGS301 inconsistency fixes: heading levels, incomplete headings, tag recognition, interactive rendering, data capture
-│   └── lmsCompliance.test.js # LMS compliance recalibration tests: lesson number format, title element, activity classes, table semantics, info trigger, download journal, whakatauki, image alt text
+│   ├── lmsCompliance.test.js # LMS compliance recalibration tests: lesson number format, title element, activity classes, table semantics, info trigger, download journal, whakatauki, image alt text
+│   └── defragmentation.test.js # Tag de-fragmentation tests: red-text boundary stitching, bracket space collapsing, whitespace trimming, processBlock integration, ordinal suffix stripping
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -1065,7 +1068,7 @@ INTERACTIVE 2 of 7
 
 ### New Modules to Create
 
-#### tag-normaliser.js — DONE (Phase 1, updated Phase 4.5 Round 3, Round 3C, enhanced Phase 6)
+#### tag-normaliser.js — DONE (Phase 1, updated Phase 4.5 Round 3, Round 3C, enhanced Phase 6, Phase 1 Patch)
 - Implements the complete normalisation table from Section 10
 - Takes raw tag text, returns normalised form + sub-identifier
 - Handles red text extraction (tag-only, tag+instruction, pure instruction, whitespace-only)
@@ -1082,7 +1085,9 @@ INTERACTIVE 2 of 7
 - **`[slideshow]`** (Phase 6) — single-word variant normalised to `carousel` alongside existing `slide show`
 - **Ordinal sub-tag recognition** — `_matchSubTag()` method recognises verbose ordinal sub-tags (e.g., `[First tab of accordion]`, `[Forth card, front H4 title]`, `[Inside tab]`, `[New tab]`, `[Accordion three: Routine]`, `[Card 1]`, `[Flipcard 1]`, `[Slide 1 - video]`, `[Carousel Image 1]`, `[Tab 1 body]`) so they are not reported as unrecognised; returns normalised forms with category 'subtag' and extracted index/level/modifier
 - **`resolveOrdinalOrNumber(word)`** — public method that converts ordinal words (`first`–`tenth`), cardinal words (`one`–`ten`), misspellings (`forth`→4), and numeric strings to their integer equivalents; case-insensitive; returns null for unrecognised input
-- Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`, `reassembleFragmentedTags(text)`, `resolveOrdinalOrNumber(word)`
+- **`defragmentRawText(text)`** (Phase 1 Patch) — pre-processing method that runs before tag extraction; stitches fractured red-text boundaries (`[/RED TEXT]🔴...🔴[RED TEXT]` → stripped), collapses multiple spaces inside square brackets, trims leading/trailing whitespace inside brackets; automatically called at the start of `processBlock()`
+- **`resolveOrdinalOrNumber(word)`** (enhanced Phase 1 Patch) — now strips trailing ordinal suffixes (`1st`→1, `2nd`→2, `3rd`→3, `4th`→4, etc.) before parsing as integer, in addition to existing word ordinal/cardinal lookup and plain number parsing
+- Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`, `reassembleFragmentedTags(text)`, `resolveOrdinalOrNumber(word)`, `defragmentRawText(text)`
 
 #### block-scoper.js — DONE (Phase 6)
 - Hierarchical block scoping engine that groups container elements with their children
@@ -1538,7 +1543,7 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
-- **Automated unit tests** — `node tests/test-runner.js` runs 380 tests across 15 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), and LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text)
+- **Automated unit tests** — `node tests/test-runner.js` runs 407 tests across 16 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text), and tag de-fragmentation (red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, ordinal suffix stripping)
 - **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files (tag-normaliser, block-scoper, layout-table-unwrapper, formatter, template-engine, interactive-extractor, html-converter) with class declarations in global scope; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table
@@ -1722,3 +1727,41 @@ A detailed audit comparing ParseMaster's HTML output against the actual D2L/Brig
 #### Change 18 — Image Alt Text from iStock Number
 - **Previous:** All images used `alt=""` — empty alt text
 - **Fix:** `_renderImage()` uses `imgInfo.istockId` (e.g., `iStock-12345678`) as `alt` attribute value when available; `_renderImagePlaceholder()` extracts iStock number from `imageRef` URL via `gm(\d+)` pattern for layout table images; images without iStock references keep `alt=""`
+
+---
+
+## 18. TAG NORMALISATION ROBUSTNESS (Phase 1 Patch)
+
+### Overview
+
+Two critical issues in source data parsed from Microsoft Word documents were causing failures in the interactive block parsing pipeline:
+
+1. **Tag Fragmentation:** Word's underlying XML frequently fractures single tags with redundant `[RED TEXT]` boundary markers (e.g., splitting `[link #1]` into `[lin` and `k #1]` across separate red-text regions).
+2. **Ordinal Suffix Handling:** Numeric ordinal suffixes like `1st`, `2nd`, `3rd`, `4th` were not being stripped in `resolveOrdinalOrNumber()`, limiting the robustness of ordinal resolution.
+
+All fixes are backward-compatible — the 380 pre-existing tests continue to pass alongside the 27 new tests (407 total).
+
+**Status:** DONE — 2 changes implemented, 27 new tests added (407 total), all tests passing.
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `js/tag-normaliser.js` | Added `defragmentRawText()` public method; integrated into `processBlock()` pipeline as Step 0; enhanced `resolveOrdinalOrNumber()` with ordinal suffix stripping (`1st`→1, `2nd`→2, `3rd`→3, `4th`→4, etc.) |
+| `tests/defragmentation.test.js` | New file — 27 tests covering red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, and ordinal suffix stripping |
+
+### Change-by-Change Summary
+
+#### Change 1 — `defragmentRawText(text)` Pre-Processing Method
+- **Problem:** Microsoft Word's XML engine frequently splits a single red-text tag across multiple formatting runs, producing redundant `[/RED TEXT]🔴` + `🔴[RED TEXT]` boundary pairs mid-tag. For example, `[speech bubble]` becomes `🔴[RED TEXT] [speech [/RED TEXT]🔴🔴[RED TEXT] bubble] [/RED TEXT]🔴`. This prevents the tag extraction regex from matching the complete tag.
+- **Fix:** New public method `defragmentRawText(text)` runs three cleaning passes:
+  1. **Boundary stitching:** Regex `\[\/RED TEXT\]🔴\s*🔴\[RED TEXT\]` → stripped entirely. This collapses redundant close/re-open red-text markers so the inner content becomes continuous.
+  2. **Multi-space collapse:** `\[([^\]]+)\]` callback replaces `\s{2,}` with single space inside all square brackets.
+  3. **Bracket trimming:** Two regex passes trim leading and trailing whitespace inside square brackets (e.g., `[ H2 ]` → `[H2]`, `[body ]` → `[body]`).
+- **Integration:** Automatically called at the start of `processBlock()` as "Step 0" before any red-text region extraction. This ensures all downstream tag extraction operates on clean, stitched text.
+- **Safety:** The boundary stitching regex only targets the exact `[/RED TEXT]🔴...🔴[RED TEXT]` pattern and requires zero or whitespace-only content between the markers. It does not affect non-adjacent red-text regions with body text between them.
+
+#### Change 2 — `resolveOrdinalOrNumber(word)` Ordinal Suffix Stripping
+- **Problem:** Numeric ordinal strings like `"1st"`, `"2nd"`, `"3rd"`, `"4th"` were not being resolved because `parseInt()` returns NaN when the string contains trailing non-numeric characters, and the ordinal word map only covers word forms.
+- **Fix:** Before falling through to `parseInt()`, the method now strips trailing ordinal suffixes (`st`, `nd`, `rd`, `th`) via regex `/(st|nd|rd|th)$/` and attempts `parseInt()` on the stripped result. This handles `"1st"`→1, `"2nd"`→2, `"3rd"`→3, `"4th"`→4, `"10th"`→10, `"21st"`→21, etc.
+- **Order of resolution:** (1) Direct ordinal/cardinal word map lookup → (2) Suffix stripping + parseInt → (3) Plain parseInt. Existing behavior for word ordinals (`"first"`→1), cardinal words (`"one"`→1), and plain numbers (`"5"`→5) is entirely unchanged.
