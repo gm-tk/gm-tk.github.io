@@ -196,7 +196,8 @@ gm-tk.github.io/
 │   ├── alertNormalization.test.js # Alert/boxout container normalization tests
 │   ├── insideTab.test.js   # [Inside tab] marker handling tests
 │   ├── normalizeSubtags.test.js # Comprehensive ordinal & verbose sub-tag normalization tests
-│   └── layoutTableUnwrapper.test.js # Layout table detection, unwrapping, column role assignment tests
+│   ├── layoutTableUnwrapper.test.js # Layout table detection, unwrapping, column role assignment tests
+│   └── engs301Fixes.test.js # ENGS301 inconsistency fixes: heading levels, incomplete headings, tag recognition, interactive rendering, data capture
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -685,8 +686,10 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 | Writer Variants | Normalised |
 |---|---|
 | `button` | `button` |
+| `button- external link`, `button-external link`, `button - external`, `button-external` | `external_link_button` |
 | `external link button` | `external_link_button` |
 | `external link` | `external_link` |
+| `go to journal` | `go_to_journal` |
 | `engagement quiz button` | `engagement_quiz_button` |
 | `supervisor button` | `supervisor_button` |
 | `modal button` | `modal_button` |
@@ -698,7 +701,7 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 | `drag and drop` + variants | `drag_and_drop` |
 | `dropdown`, `drop down`, `dropdown N` | `dropdown` |
 | `dropdown quiz paragraph`, `dropquiz` | `dropdown_quiz_paragraph` |
-| `flip cards`, `flip card`, `flip card N` | `flip_card` |
+| `flip cards`, `flip card`, `flipcard`, `flipcards`, `flip card N`, `flipcard image` | `flip_card` |
 | `accordion`, `accordion N` | `accordion` |
 | `end accordions` | `end_accordions` |
 | `click drop`, `clickdrop`, `drop click` | `click_drop` |
@@ -708,7 +711,7 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 | `tabs` | `tabs` |
 | `tab N` | `tab` |
 | `speech bubble` + any suffix | `speech_bubble` |
-| `hint slider`, `hint slider N` | `hint_slider` |
+| `hint slider`, `hintslider`, `hint slider N`, `hintslider N` | `hint_slider` |
 | `hint` | `hint` |
 | `shape hover` | `shape_hover` |
 | `shape N` | `shape` |
@@ -720,11 +723,11 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 | `typing self-check`, `typing quiz` | `typing_quiz` |
 | `self check`, `self-check` | `self_check` |
 | `word highlighter`, `word select` | `word_select` |
-| `mcq`, `multi choice quiz` | `mcq` |
+| `mcq`, `multi choice quiz`, `multichoice dropdown quiz`, `multi choice dropdown quiz`, `dropdown quiz` | `mcq` |
 | `multi choice quiz survey` | `multichoice_quiz_survey` |
 | `radio quiz`, `true false` | `radio_quiz` |
 | `checklist` | `checklist` |
-| `info trigger` + optional text | `info_trigger` |
+| `info trigger` + optional text, `hovertrigger`, `hover trigger` | `info_trigger` |
 | `info trigger image` | `info_trigger_image` |
 | `info audio trigger`, `audio trigger` | `audio_trigger` |
 | `venn diagram` | `venn_diagram` |
@@ -1521,7 +1524,7 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
-- **Automated unit tests** — `node tests/test-runner.js` runs 313 tests across 13 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), and layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity)
+- **Automated unit tests** — `node tests/test-runner.js` runs 341 tests across 14 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), and ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture)
 - **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files with class declarations in global scope; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table
@@ -1540,3 +1543,79 @@ For templates that need specific content interpretation rules, add a `contentRul
 ### Browser Compatibility
 
 Target modern browsers: Chrome, Firefox, Safari, Edge (latest 2 versions). No IE11 support needed. Can use ES6 features (classes, template literals, const/let, destructuring, async/await).
+
+---
+
+## 16. ENGS301 INCONSISTENCY FIXES
+
+### Overview
+
+Fixes for 13 specific inconsistencies discovered in the ENGS301 module ("Picture This!"), grouped into 8 root causes across 6 implementation areas. All fixes are backward-compatible and do not affect existing functionality for other modules.
+
+**Status:** DONE — All 13 issues fixed, 28 new tests added (341 total), all tests passing.
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `js/tag-normaliser.js` | Added recognition for: incomplete heading `[H ]`, `[hovertrigger]`, `hintslider` (one word), `flipcard` (one word), `[button- external link]` variants, `[Go to journal]`, `[multichoice dropdown quiz]` variants |
+| `js/html-converter.js` | Fixed heading level demotion; added incomplete heading fallback; added `[go_to_journal]` rendering; added hovertrigger inline rendering; added `_renderHintSlider()` and `_renderFlipCard()` methods; added yellow highlight markers |
+| `js/interactive-extractor.js` | Added plain-text capture for `word_select`/`word_highlighter`; preserved `[IMAGE:]` references in cell extraction; preserved short red-text content descriptors |
+| `js/app.js` | Added `_convertToTitleCase()` for ALL CAPS titles; added bilingual title splitting at sentence-ending punctuation + Te Reo detection |
+| `js/formatter.js` | Added list counter tracking per `numId` with format-aware output (decimal, lowerLetter, upperLetter); added yellow highlight markers |
+| `tests/test-runner.js` | Added `js/formatter.js` to loaded scripts |
+| `tests/engs301Fixes.test.js` | New file — 28 tests covering all ENGS301 fixes |
+
+### Issue-by-Issue Summary
+
+#### Issue #1 — Title bar ALL CAPS and bilingual split
+- **Root cause:** `_extractTitle()` did not convert ALL CAPS to title case or split bilingual titles without double-space separator
+- **Fix:** Added `_convertToTitleCase()` in `app.js` (converts when >60% uppercase); added sentence-ending punctuation split with Te Reo detection (macrons, common Māori words)
+
+#### Issue #2 — `[IMAGE:]` references lost in drag-and-drop data
+- **Root cause:** `_extractCellText()` used `cleanText` which strips all `[tags]` including `[IMAGE: filename]`
+- **Fix:** Re-extract `[IMAGE: ...]` references from raw formatted text after clean extraction
+
+#### Issue #3 — `[hovertrigger]` not recognised
+- **Root cause:** Tag not in normalisation table; pattern spans multiple red-text regions
+- **Fix:** Added `hovertrigger` regex in tag-normaliser.js mapping to `info_trigger`; added `_extractHovertriggerData()` and `_renderHovertriggerParagraph()` in html-converter.js for cross-red-text-boundary detection
+
+#### Issue #4 — `[multichoice dropdown quiz]` not recognised
+- **Root cause:** Tag variant not in normalisation table
+- **Fix:** Added `multichoice dropdown quiz`, `multi choice dropdown quiz`, and `dropdown quiz` mappings to `mcq` with `modifier: 'dropdown'`
+
+#### Issue #5 — Incomplete heading `[H ]` crashes
+- **Root cause:** Heading regex required a digit after `H`
+- **Fix:** Added `^h\s*$` regex match returning `level: null, modifier: 'incomplete'`; html-converter.js uses `_lastHeadingLevel` fallback with developer warning comment
+
+#### Issue #6 — `[button- external link]` not recognised
+- **Root cause:** Button suffix variants with irregular spacing/dashes not handled
+- **Fix:** Added regex `^button\s*[-–—]?\s*(external\s*link|external|link|download)$` before simple lookup table
+
+#### Issue #7 — Heading level not respected (H2 demoted to H3)
+- **Root cause:** "Lesson N" prefix stripping logic also set `headingLevel = 3`
+- **Fix:** Removed heading level demotion; now strips prefix text only, preserving the original heading level
+
+#### Issue #8 — Word highlighter plain-text data not captured
+- **Root cause:** `_extractData()` only looked for table data, not plain-text paragraphs
+- **Fix:** Added special case for `word_highlighter` and `word_select` to capture all following untagged paragraphs as numbered items (pattern 4)
+
+#### Issue #9 — `[Go to journal]` not recognised
+- **Root cause:** Tag not in normalisation table or rendering logic
+- **Fix:** Added `go_to_journal` to simple lookup table (category: link); added rendering as `<h4 class="goJournal">Go to your journal</h4>`
+
+#### Issue #10 — `[hintslider]` (one word) not recognised + no rendering
+- **Root cause:** Hint slider regex required a space (`^hint\s+slider`); no rendering method existed
+- **Fix:** Changed regex to `^hint\s*slider`; added `_renderHintSlider()` method that parses table data and renders `<div class="hintSlider">` with `hintRow dark` divs
+
+#### Issue #11 — Short red-text content descriptors stripped
+- **Root cause:** `_extractCellText()` stripped all red text as writer instructions
+- **Fix:** Preserve short red-text content (1-5 words without instruction verbs) as content labels
+
+#### Issue #12 — `[flipcard]` (one word) not recognised + no rendering
+- **Root cause:** Flip card regex required a space (`^flip\s+cards?`); no rendering method existed
+- **Fix:** Added exact-match alternatives for `flipcard`, `flipcards`, `flipcard image`, `flipcards image` (without breaking `[Flipcard 1]` sub-tag recognition); added `_renderFlipCard()` method that reads columns as cards and renders `<div class="row flipCardsContainer">`
+
+#### Issue #13 — Formatter list numbering and yellow highlighting
+- **Root cause:** Formatter used hardcoded `'1. '` for all ordered lists; no highlight extraction
+- **Fix:** Added `_listCounters` per `numId` with format-aware output (decimal→`1.`, lowerLetter→`a.`, upperLetter→`A.`); added yellow highlight `✅` marker in both formatter.js and html-converter.js

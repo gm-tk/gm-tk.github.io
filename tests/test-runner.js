@@ -107,6 +107,7 @@ function loadScript(filePath) {
 loadScript('js/tag-normaliser.js');
 loadScript('js/block-scoper.js');
 loadScript('js/layout-table-unwrapper.js');
+loadScript('js/formatter.js');
 
 // Load test files
 var testFiles = fs.readdirSync(__dirname).filter(function(f) {
