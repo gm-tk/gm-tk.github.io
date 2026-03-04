@@ -45,6 +45,7 @@ ParseMaster is a client-side web application that reads Writer Template `.docx` 
 8. **Output** a supplementary interactive reference document (DONE — Phase 4)
 9. **Multi-file output system** → file list panel, individual/bulk download, ZIP export (DONE — Phase 5)
 10. **Block scoping** → hierarchical block grouping with open/close matching, ordinal normalization, compound tag splitting, layout direction, writer instruction detection (DONE — Phase 6)
+11. **Layout table unwrapping** → detects Word tables used as two-column layout grids, unwraps their content into the main content stream, creates sidebar blocks for companion images and alerts (DONE — Phase 6.1)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -96,6 +97,12 @@ User drops .docx file
     → Content formatted with formatting markers
   → TemplateEngine.detectTemplate() auto-selects template from module code (Phase 2)
     → Dropdown updated, "Auto-detected" label shown
+  → LayoutTableUnwrapper.unwrapLayoutTables() detects and unwraps layout tables (Phase 6.1)
+    → Scans tables for structural tags ([Activity], [body], [Button], interactives)
+    → Checks contextual override (tables following interactive type tags are data, not layout)
+    → Unwraps layout tables: extracts cell paragraphs into main content stream
+    → Creates sidebar blocks for companion images and alerts
+    → Modifies content array in-place before any downstream processing
   → TagNormaliser processes all content blocks (Phase 1)
     → Extracts square-bracket tags from red text and plain text
     → Normalises tag variants to canonical forms
@@ -146,6 +153,7 @@ User drops .docx file
 | `OutputFormatter` | `js/formatter.js` | Converts parsed data to plain text output (legacy) |
 | `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, and red text processing |
 | `BlockScoper` | `js/block-scoper.js` | Hierarchical block scoping, ordinal normalization, compound splitting, layout detection |
+| `LayoutTableUnwrapper` | `js/layout-table-unwrapper.js` | Detects and unwraps layout tables, extracts cell content into main stream, creates sidebar blocks |
 | `PageBoundary` | `js/page-boundary.js` | Page boundary detection, validation, and assignment |
 | `TemplateEngine` | `js/template-engine.js` | Template config loading, resolution, auto-detection, skeleton generation |
 | `InteractiveExtractor` | `js/interactive-extractor.js` | Interactive component detection, data extraction, placeholder generation, reference document |
@@ -167,6 +175,7 @@ gm-tk.github.io/
 │   ├── formatter.js         # Plain text output formatter (legacy)
 │   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1, enhanced Phase 6)
 │   ├── block-scoper.js      # Block scoping engine — hierarchical grouping & analysis (Phase 6)
+│   ├── layout-table-unwrapper.js # Layout table detection & unwrapping (Phase 6.1)
 │   ├── page-boundary.js     # Page boundary detection & validation (Phase 1)
 │   ├── template-engine.js   # Template config loading, resolution & skeleton generation (Phase 2)
 │   ├── interactive-extractor.js # Interactive data extraction, placeholder generation & reference doc (Phase 4)
@@ -186,7 +195,8 @@ gm-tk.github.io/
 │   ├── videoNormalization.test.js # Video tag normalization tests
 │   ├── alertNormalization.test.js # Alert/boxout container normalization tests
 │   ├── insideTab.test.js   # [Inside tab] marker handling tests
-│   └── normalizeSubtags.test.js # Comprehensive ordinal & verbose sub-tag normalization tests
+│   ├── normalizeSubtags.test.js # Comprehensive ordinal & verbose sub-tag normalization tests
+│   └── layoutTableUnwrapper.test.js # Layout table detection, unwrapping, column role assignment tests
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -1084,6 +1094,16 @@ INTERACTIVE 2 of 7
 - **Warnings array** — tracks scoping issues (unclosed blocks, lookahead limit reached, etc.)
 - Public API: `scopeBlocks(contentBlocks)`, `normaliseSubTag(tagText, parentBlockType, lastIndex)`, `splitCompoundTags(text)`, `extractLayoutDirection(tagText)`, `detectLayoutPairs(blocks)`, `detectWriterInstruction(tagText)`, `inferInteractiveFromTable(tableData)`, `normaliseVideoTag(tagText)`, `extractVideoTiming(text)`, `normaliseAlertTag(tagText)`
 
+#### layout-table-unwrapper.js — DONE (Phase 6.1)
+- Detects Word tables used as two-column layout grids and unwraps their content into the main content stream
+- **Layout table detection** (`isLayoutTable()`) — scans table cells for structural tags (activity, interactive, body, heading, UI elements); returns true if any cell contains high-confidence tags ([Activity], [multichoice dropdown quiz], etc.) or if ≥1 cell has ≥2 medium-confidence structural tags ([body]+[button], [H3]+[body], etc.)
+- **Contextual override** (`_shouldOverrideAsDataTable()`) — prevents false positives: tables immediately following interactive type tags (flipcard, drag_and_drop, hintslider, carousel, accordion, etc.) within 5 blocks are treated as data tables for those interactives; overridden only if the table itself contains an [Activity] tag
+- **Table unwrapping** (`_unwrapTable()`) — extracts cell paragraphs as individual content blocks, preserving the original paragraph data objects from the parser; each unwrapped block gets `_unwrappedFrom: 'layout_table'` and `_cellRole` metadata
+- **Column role assignment** (`_assignColumnRoles()`) — classifies each cell as `main_content` (activity/body/heading/interactive/UI tags), `sidebar_image` (only image tags or plain image URL), `sidebar_alert` (only alert/important tags), or `content` (generic text)
+- **Sidebar block creation** (`_createSidebarBlock()`) — creates annotated paragraph blocks for sidebar cells with `_sidebarImageUrl` or `_sidebarAlertContent` metadata, preserving original cell paragraphs for rendering
+- **Pipeline position** — runs BEFORE tag normalisation, block scoping, page boundary, and HTML conversion; modifies the content array in-place
+- Public API: `unwrapLayoutTables(contentBlocks, startIndex)`, `isLayoutTable(tableData)`
+
 #### page-boundary.js — DONE (Phase 1)
 - Implements all 4 Page Boundary Validation Rules
 - Takes the content blocks array, returns page assignments
@@ -1100,6 +1120,7 @@ INTERACTIVE 2 of 7
   - **Overview page content routing** — splits content at `[MODULE INTRODUCTION]` into menu tab content (before) and body content (after)
   - **Lesson page content routing** — splits content at `[LESSON OVERVIEW]` / `[LESSON CONTENT]` boundaries; menu content goes to module menu, body content starts after `[LESSON CONTENT]`; when `[LESSON CONTENT]` is missing, uses heuristic fallback (menu ends at first heading/activity/interactive/styling tag) to prevent empty body
   - **Layout table rendering** (Round 3B) — 2-column tables with `[body]` text in one cell and `[image]` in the other (with no interactive tags) are rendered as Bootstrap side-by-side layout (`col-md-8` text + `col-md-4` image) preserving document column order
+  - **Sidebar block rendering** (Phase 6.1) — unwrapped layout table sidebar blocks (from LayoutTableUnwrapper) are rendered as `alertImage` (companion images in `col-md-4`) or `alertActivity` (sidebar alerts in `col-md-4`), paired side-by-side with preceding main content via `_wrapSideBySide()`
   - **Module menu tab content** — populates Overview (h4 headings) and Information (h5 headings) tab panes with correctly routed content
   - **Lesson module menu content** — populates lesson page module menu with actual "We are learning:" / "I can:" content from `[LESSON OVERVIEW]`, using template config labels, with italic stripped from list items, and optional description paragraph; only bullet-pointed items collected for learning/success criteria sections (ordered/numbered items like activity questions are excluded)
   - Body content (paragraphs, headings, lists, tables, alerts, media, etc.)
@@ -1178,13 +1199,19 @@ INTERACTIVE 2 of 7
 - `clear()` resets all stored files
 - Public API: `addFile(fileInfo)`, `getFileList()`, `getFileContent(filename)`, `downloadFile(filename)`, `downloadAsZip(zipFilename)`, `copyToClipboard(filename)`, `clear()`
 
-### Extended App Flow (Current — Phase 6)
+### Extended App Flow (Current — Phase 6.1)
 
 ```
 User drops .docx file
   → Template auto-detected from module code
   → DocxParser.parse() extracts content
   → OutputFormatter.formatAll() produces legacy text output
+  → LayoutTableUnwrapper.unwrapLayoutTables() processes content array:
+    → Scans all tables for structural tags (activity, body, heading, interactive, UI)
+    → Checks contextual override (data tables following interactive type tags preserved)
+    → Layout tables: cell paragraphs extracted into main content stream
+    → Sidebar cells (images, alerts) become annotated sidebar blocks
+    → Content array modified in-place before all downstream processing
   → TagNormaliser processes all tags
   → BlockScoper.scopeBlocks() performs hierarchical block analysis:
     → Groups container elements (accordions, carousels, flip cards, etc.) with children
@@ -1494,7 +1521,7 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
-- **Automated unit tests** — `node tests/test-runner.js` runs 277 tests across 12 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, and comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns)
+- **Automated unit tests** — `node tests/test-runner.js` runs 313 tests across 13 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), and layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity)
 - **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files with class declarations in global scope; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table

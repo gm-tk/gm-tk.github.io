@@ -13,6 +13,7 @@ class App {
         this.parser = new DocxParser();
         this.formatter = new OutputFormatter();
         this.tagNormaliser = new TagNormaliser();
+        this.layoutTableUnwrapper = new LayoutTableUnwrapper(this.tagNormaliser);
         this.blockScoper = new BlockScoper(this.tagNormaliser);
         this.pageBoundary = new PageBoundary(this.tagNormaliser);
         this.templateEngine = new TemplateEngine();
@@ -1016,6 +1017,15 @@ class App {
         var contentBlocks = parserResult.content;
         var startIndex = parserResult.contentStartIndex;
         var moduleCode = (parserResult.metadata && parserResult.metadata.moduleCode) || 'MODULE';
+
+        // Unwrap layout tables BEFORE any analysis or conversion
+        // This modifies the content array in-place, replacing layout tables
+        // with their cell content as individual paragraph blocks
+        try {
+            this.layoutTableUnwrapper.unwrapLayoutTables(contentBlocks, startIndex);
+        } catch (e) {
+            console.error('Layout table unwrapping failed:', e);
+        }
 
         // Process all content blocks from content start onwards
         var allTags = [];

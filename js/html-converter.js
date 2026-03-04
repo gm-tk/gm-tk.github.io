@@ -304,13 +304,32 @@ class HtmlConverter {
             var text = this._buildFormattedText(block.data);
             var tagResult = this._normaliser.processBlock(text);
 
-            return {
+            var processed = {
                 type: 'paragraph',
                 data: block.data,
                 formattedText: text,
                 tagResult: tagResult,
                 cleanText: tagResult.cleanText
             };
+
+            // Preserve sidebar metadata from layout table unwrapping
+            if (block._unwrappedFrom) {
+                processed._unwrappedFrom = block._unwrappedFrom;
+            }
+            if (block._cellRole) {
+                processed._cellRole = block._cellRole;
+            }
+            if (block._sidebarImageUrl !== undefined) {
+                processed._sidebarImageUrl = block._sidebarImageUrl;
+            }
+            if (block._sidebarAlertContent) {
+                processed._sidebarAlertContent = block._sidebarAlertContent;
+            }
+            if (block._sidebarParagraphs) {
+                processed._sidebarParagraphs = block._sidebarParagraphs;
+            }
+
+            return processed;
         }
 
         if (block.type === 'table' && block.data) {
@@ -1156,6 +1175,36 @@ class HtmlConverter {
                     activityParts.push(supHtml);
                 } else {
                     pendingContent.push(supHtml);
+                }
+                i++;
+                continue;
+            }
+
+            // --- Sidebar blocks from layout table unwrapping ---
+            if (pBlock._cellRole === 'sidebar_image' || pBlock._cellRole === 'sidebar_alert') {
+                // Sidebar content from unwrapped layout tables.
+                // Flush current pending content and create a side-by-side layout:
+                // the pending content goes in col-md-8, the sidebar goes in col-md-4.
+                var sidebarHtml = self._renderSidebarBlock(pBlock, config);
+                if (sidebarHtml) {
+                    if (inActivity) {
+                        // Inside an activity, pair with recent activity content
+                        var mainContent = '';
+                        if (pendingContent.length > 0) {
+                            mainContent = pendingContent.join('\n');
+                            pendingContent = [];
+                        } else if (activityParts.length > 0) {
+                            // Use the last few activity parts as the main column
+                            mainContent = activityParts.pop();
+                        }
+                        var sideRowHtml = self._wrapSideBySide(mainContent, sidebarHtml);
+                        activityParts.push(sideRowHtml);
+                    } else {
+                        var sideMainContent = pendingContent.join('\n');
+                        pendingContent = [];
+                        var sideLayout = self._wrapSideBySide(sideMainContent, sidebarHtml);
+                        htmlParts.push(sideLayout);
+                    }
                 }
                 i++;
                 continue;
@@ -2105,6 +2154,72 @@ class HtmlConverter {
             html += '\n        <!-- Reference: ' + this._escContent(imageRef) + ' -->';
         }
 
+        return html;
+    }
+
+    /**
+     * Render a sidebar block (from layout table unwrapping) as HTML.
+     *
+     * @param {Object} pBlock - Processed block with _cellRole metadata
+     * @param {Object} config - Template config
+     * @returns {string} Sidebar HTML
+     */
+    _renderSidebarBlock(pBlock, config) {
+        if (pBlock._cellRole === 'sidebar_image') {
+            var imageUrl = pBlock._sidebarImageUrl || '';
+            var imgHtml = '    <div class="alertImage">\n' +
+                '      <div class="row">\n' +
+                '        <div class="col-12">\n' +
+                '          ' + this._renderImagePlaceholder(imageUrl, config) + '\n' +
+                '        </div>\n' +
+                '      </div>\n' +
+                '    </div>';
+            return imgHtml;
+        }
+
+        if (pBlock._cellRole === 'sidebar_alert') {
+            var alertContent = pBlock._sidebarAlertContent || [];
+            var alertHtml = '    <div class="alertActivity">\n' +
+                '      <div class="row">\n' +
+                '        <div class="col-12">\n';
+
+            for (var ac = 0; ac < alertContent.length; ac++) {
+                if (ac === 0 && alertContent.length > 1) {
+                    // First item could be a heading
+                    alertHtml += '          <h4>' + this._convertInlineFormatting(alertContent[ac]) + '</h4>\n';
+                } else {
+                    alertHtml += '          <p>' + this._convertInlineFormatting(alertContent[ac]) + '</p>\n';
+                }
+            }
+
+            alertHtml += '        </div>\n' +
+                '      </div>\n' +
+                '    </div>';
+            return alertHtml;
+        }
+
+        return '';
+    }
+
+    /**
+     * Wrap main content and sidebar content in a side-by-side row layout.
+     * Main content goes in col-md-8, sidebar goes in col-md-4.
+     *
+     * @param {string} mainHtml - HTML for the main content column
+     * @param {string} sidebarHtml - HTML for the sidebar column
+     * @returns {string} Combined row HTML
+     */
+    _wrapSideBySide(mainHtml, sidebarHtml) {
+        var html = '    <div class="row">\n';
+        html += '      <div class="col-md-8 col-12">\n';
+        if (mainHtml && mainHtml.trim()) {
+            html += mainHtml + '\n';
+        }
+        html += '      </div>\n';
+        html += '      <div class="col-md-4 offset-md-0 col-12">\n';
+        html += sidebarHtml + '\n';
+        html += '      </div>\n';
+        html += '    </div>';
         return html;
     }
 
