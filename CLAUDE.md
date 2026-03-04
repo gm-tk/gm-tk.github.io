@@ -44,6 +44,7 @@ ParseMaster is a client-side web application that reads Writer Template `.docx` 
 7. **Output** multiple downloadable HTML files per module (DONE — Phase 3)
 8. **Output** a supplementary interactive reference document (DONE — Phase 4)
 9. **Multi-file output system** → file list panel, individual/bulk download, ZIP export (DONE — Phase 5)
+10. **Block scoping** → hierarchical block grouping with open/close matching, ordinal normalization, compound tag splitting, layout direction, writer instruction detection (DONE — Phase 6)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -100,6 +101,13 @@ User drops .docx file
     → Normalises tag variants to canonical forms
     → Classifies tags by category
     → Extracts writer instructions from red text
+  → BlockScoper scans content blocks for hierarchical structure (Phase 6)
+    → Groups container elements (accordion, carousel, flip cards, etc.) with children
+    → Matches opening/closing tags with fuzzy spelling tolerance
+    → Detects implicit boundaries (page breaks, next activity, lookahead limit)
+    → Normalises ordinal sub-tags to indexed form
+    → Splits compound tags in red text blocks
+    → Extracts layout direction and writer instructions
   → PageBoundary assigns pages (Phase 1)
     → Applies 4 validation rules
     → Splits content into overview + lesson pages
@@ -127,7 +135,7 @@ User drops .docx file
     → "Copy Interactive Reference" copies reference document to clipboard
     → "Legacy Text Output" switches to plain text view with back navigation
     → "Parse Another File" resets everything cleanly
-    → Debug panel shows template config, tag & page analysis, interactive details, skeleton preview
+    → Debug panel shows template config, tag & page analysis, block scoping, interactive details, skeleton preview
 ```
 
 ### Class Responsibilities
@@ -137,6 +145,7 @@ User drops .docx file
 | `DocxParser` | `js/docx-parser.js` | Extracts structured content from .docx XML |
 | `OutputFormatter` | `js/formatter.js` | Converts parsed data to plain text output (legacy) |
 | `TagNormaliser` | `js/tag-normaliser.js` | Tag taxonomy, normalisation, and red text processing |
+| `BlockScoper` | `js/block-scoper.js` | Hierarchical block scoping, ordinal normalization, compound splitting, layout detection |
 | `PageBoundary` | `js/page-boundary.js` | Page boundary detection, validation, and assignment |
 | `TemplateEngine` | `js/template-engine.js` | Template config loading, resolution, auto-detection, skeleton generation |
 | `InteractiveExtractor` | `js/interactive-extractor.js` | Interactive component detection, data extraction, placeholder generation, reference document |
@@ -156,13 +165,27 @@ gm-tk.github.io/
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
 │   ├── formatter.js         # Plain text output formatter (legacy)
-│   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1)
+│   ├── tag-normaliser.js    # Tag taxonomy & normalisation engine (Phase 1, enhanced Phase 6)
+│   ├── block-scoper.js      # Block scoping engine — hierarchical grouping & analysis (Phase 6)
 │   ├── page-boundary.js     # Page boundary detection & validation (Phase 1)
 │   ├── template-engine.js   # Template config loading, resolution & skeleton generation (Phase 2)
 │   ├── interactive-extractor.js # Interactive data extraction, placeholder generation & reference doc (Phase 4)
 │   ├── html-converter.js    # Core HTML conversion engine (Phase 3, updated Phase 4)
 │   ├── output-manager.js    # Multi-file output management, ZIP download, clipboard copy (Phase 5)
 │   └── app.js              # UI controller (with file list, preview, ZIP download, legacy mode, debug panel)
+├── tests/
+│   ├── test-runner.js       # Minimal Node.js test runner (no external dependencies)
+│   ├── tagNormaliserExisting.test.js # Regression tests for existing tag normalisation
+│   ├── blockScoping.test.js # Block scoping engine tests
+│   ├── ordinalNormalization.test.js # Ordinal-to-number sub-tag normalization tests
+│   ├── compoundTags.test.js # Compound tag splitting tests
+│   ├── layoutDirection.test.js # Layout direction extraction tests
+│   ├── writerInstructions.test.js # Writer instruction detection tests
+│   ├── fragmentReassembly.test.js # Red-text fragment reassembly tests
+│   ├── interactiveInference.test.js # Interactive type inference from table structure tests
+│   ├── videoNormalization.test.js # Video tag normalization tests
+│   ├── alertNormalization.test.js # Alert/boxout container normalization tests
+│   └── insideTab.test.js   # [Inside tab] marker handling tests
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -359,14 +382,15 @@ The template selector is a dropdown that appears between the drop zone and the "
 3. Can be manually overridden by the user
 4. Resets when "Parse Another File" is clicked
 
-### Debug Panel (Phase 1 + Phase 2 + Phase 4)
+### Debug Panel (Phase 1 + Phase 2 + Phase 4 + Phase 6)
 
 The debug panel (`#debug-panel`) is a temporary development/testing panel that appears after parsing. It shows:
 
 1. **Template Configuration** (Phase 2) — selected template ID, name, HTML template attribute, key config differences from base, overview page skeleton preview (first 50 lines), and footer navigation links for each page
 2. **Tag Normalisation Results** — total tags, unrecognised tags, red text instructions, category breakdown, and a detailed table of all tags found (raw → normalised form)
 3. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
-4. **Interactive Components** (Phase 4) — total count, tier breakdown, detailed table of all interactives (file, activity, type, tier, pattern, data summary), and a preview of the generated reference document
+4. **Block Scoping Analysis** (Phase 6) — total scoped blocks, unscoped content count, scoped block details table (type, start/end index, children, closure reason, sub-tags), and scoping warnings
+5. **Interactive Components** (Phase 4) — total count, tier breakdown, detailed table of all interactives (file, activity, type, tier, pattern, data summary), and a preview of the generated reference document
 
 The debug panel uses a `<details>` element so it starts collapsed. It does NOT interfere with the multi-file output system or the legacy text output functionality.
 
@@ -633,7 +657,7 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 | Writer Variants | Normalised |
 |---|---|
 | `image`, `image N` | `image` |
-| `video` | `video` |
+| `video`, `embed video`, `imbed video`, `insert video`, `embed film`, `imbed film`, `Interactive: Video: Title`, `audio animation video` | `video` |
 | `audio` | `audio` |
 | `audio image`, `audioimage`, `audioImage` | `audio_image` |
 | `image zoom` | `image_zoom` |
@@ -667,7 +691,7 @@ Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.ht
 | `accordion`, `accordion N` | `accordion` |
 | `end accordions` | `end_accordions` |
 | `click drop`, `clickdrop`, `drop click` | `click_drop` |
-| `carousel`, `slide show` | `carousel` |
+| `carousel`, `slide show`, `slideshow` | `carousel` |
 | `rotating banner` | `rotating_banner` |
 | `slide N` | `carousel_slide` |
 | `tabs` | `tabs` |
@@ -1021,7 +1045,7 @@ INTERACTIVE 2 of 7
 
 ### New Modules to Create
 
-#### tag-normaliser.js — DONE (Phase 1, updated Phase 4.5 Round 3, Round 3C)
+#### tag-normaliser.js — DONE (Phase 1, updated Phase 4.5 Round 3, Round 3C, enhanced Phase 6)
 - Implements the complete normalisation table from Section 10
 - Takes raw tag text, returns normalised form + sub-identifier
 - Handles red text extraction (tag-only, tag+instruction, pure instruction, whitespace-only)
@@ -1031,10 +1055,31 @@ INTERACTIVE 2 of 7
 - **`[Table wordSelect]` / `[Table word select]`** — recognised as `word_select` interactive (not a generic table) before the generic table match fires
 - **`[drop]` sub-tag** — recognised as synonym for `[back]` in the simple table mapping (used in click_drop front/back patterns)
 - **`[Activity heading H3]` and variants** (Round 3B) — `activity heading`, `activity heading hN`, `activity title` with optional heading level H2-H5; returns level in the normalised result (defaults to 3 if no level specified)
-- **Red-text fragment reassembly** (Round 3C) — `reassembleFragmentedTags()` method detects adjacent red-text markers split across Word formatting runs and merges them when their combined content forms a valid `[tag]` pattern; handles 2-way and 3-way splits; called from `_buildFormattedText()` in HtmlConverter and InteractiveExtractor
+- **Red-text fragment reassembly** (Round 3C, enhanced Phase 6) — `reassembleFragmentedTags()` method detects adjacent red-text markers split across Word formatting runs and merges them when their combined content forms a valid `[tag]` pattern; handles 2-way through 6-way splits using longest-match-first approach; non-trimming regex preserves original whitespace for direct concatenation; called from `_buildFormattedText()` in HtmlConverter and InteractiveExtractor
 - **`[story heading]` sub-tag** (Round 3C) — recognised as subtag for dropdown_quiz_paragraph interactive
 - **`multichoice dropdown quiz paragraph`** (Round 3C) — added as variant for `dropdown_quiz_paragraph`
+- **Video tag variants** (Phase 6) — `_matchVideoTag()` method matches `[embed video]`, `[imbed video]`, `[insert video]`, `[embed film]`, `[imbed film]`, `[Interactive: Video: Title]`, and `[audio animation video]` patterns before heading tag matching
+- **`[slideshow]`** (Phase 6) — single-word variant normalised to `carousel` alongside existing `slide show`
 - Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`, `reassembleFragmentedTags(text)`
+
+#### block-scoper.js — DONE (Phase 6)
+- Hierarchical block scoping engine that groups container elements with their children
+- Stack-based open/close tracking for nested blocks (activities, interactives, alerts)
+- **Block scoping** (`scopeBlocks()`) — scans content blocks, identifies opening tags for container types (accordion, carousel, flip_card, drag_and_drop, activity, alert/boxout, tabs, speech_bubble, etc.), matches closing tags, tracks children and sub-tags within each block
+- **Fuzzy closer matching** (`_fuzzyMatchCloser()`) — matches closing tags despite spelling variations (e.g., `[End accordian]` matches `accordion`), generic closers (`[End interactive]`, `[End component]`), and compacted forms (`[endaccordion]`)
+- **Implicit boundary detection** — blocks auto-close at: page break/end page tags, next activity opening, same-type reopening, and lookahead limit (200 lines with no closer found)
+- **Ordinal-to-number normalization** (`normaliseSubTag()`) — converts verbose ordinal sub-tags to indexed forms: `[First tab of accordion]` → `{subTagType: 'tab', index: 1}`, `[Second card, front H4 title]` → `{subTagType: 'card_front', index: 2, headingLevel: 'H4', headingText: 'title'}`; handles misspellings (`forth` → 4); supports accordion tabs, flip card front/back, carousel slides, word-numbered items
+- **Compound tag splitting** (`splitCompoundTags()`) — splits multiple bracket pairs in red text into individual tags: `[Body] [LESSON] 6` → 2 separate tag objects; handles no-space brackets `[Front][H3]`, triple brackets `[Card 1] [Front] [H3]`, trailing text after last bracket, and `[image of X and HN]` patterns
+- **Layout direction extraction** (`extractLayoutDirection()`) — extracts positioning from tags like `[Image embedded left]`, `[Body right]`, `[Body bold]`, `[Body bullet points]`, `[Flip card image]`; returns `{element, position, style}` objects
+- **Layout pair detection** (`detectLayoutPairs()`) — groups adjacent layout blocks into side-by-side pairs (e.g., image-right + body-left)
+- **Writer instruction detection** (`detectWriterInstruction()`) — classifies tag text as writer notes vs functional elements using prefix patterns (`CS`, `Dev team`, `Note:`, `If correct`, etc.), sentence length analysis (>3 words = instruction), copyright detection, and button label extraction (≤3 words after `[Button]`)
+- **Interactive type inference** (`inferInteractiveFromTable()`) — infers quiz/drag-drop types from table structure: True/False columns → `radio_quiz_true_false`, `[Correct]` markers → `multichoice_quiz`, 2-column matching pairs → `drag_and_drop`, Question header with 3+ columns → `multichoice_quiz`, single column numbered → `ordered_list`
+- **Video tag normalization** (`normaliseVideoTag()`) — covers all video variants (`embed video`, `imbed video`, `insert video`, `embed film`, `Interactive: Video: Title`, `audio animation video`); returns `{type: 'video', title}` or null
+- **Video timing extraction** (`extractVideoTiming()`) — extracts start/end timestamps from editorial instructions; normalises `M:SS`, `MM:SS`, `:SS` formats to `MM:SS`; supports patterns like "Start video at 1:30", "Finish playing at 2:45", combined "start...and end/finish" instructions
+- **Alert/boxout normalization** (`normaliseAlertTag()`) — maps box/alert/thought bubble variants to structured form: `[Box out to the right]` → `{type: 'alert', variant: 'box_right'}`, `[Thought bubble green]` → `{type: 'alert', variant: 'thought_bubble', colour: 'green'}`, plus `[Supervisor note]`, `[Definition]`, `[Equation]`, `[alert/summary box]`, `[coloured box]`, `[alert.top]` and other variants
+- **`[Inside tab]` marker** — recognised as a no-op marker within accordion/tab scope (not a new tab boundary)
+- **Warnings array** — tracks scoping issues (unclosed blocks, lookahead limit reached, etc.)
+- Public API: `scopeBlocks(contentBlocks)`, `normaliseSubTag(tagText, parentBlockType, lastIndex)`, `splitCompoundTags(text)`, `extractLayoutDirection(tagText)`, `detectLayoutPairs(blocks)`, `detectWriterInstruction(tagText)`, `inferInteractiveFromTable(tableData)`, `normaliseVideoTag(tagText)`, `extractVideoTiming(text)`, `normaliseAlertTag(tagText)`
 
 #### page-boundary.js — DONE (Phase 1)
 - Implements all 4 Page Boundary Validation Rules
@@ -1130,7 +1175,7 @@ INTERACTIVE 2 of 7
 - `clear()` resets all stored files
 - Public API: `addFile(fileInfo)`, `getFileList()`, `getFileContent(filename)`, `downloadFile(filename)`, `downloadAsZip(zipFilename)`, `copyToClipboard(filename)`, `clear()`
 
-### Extended App Flow (Current — Phase 5)
+### Extended App Flow (Current — Phase 6)
 
 ```
 User drops .docx file
@@ -1138,6 +1183,14 @@ User drops .docx file
   → DocxParser.parse() extracts content
   → OutputFormatter.formatAll() produces legacy text output
   → TagNormaliser processes all tags
+  → BlockScoper.scopeBlocks() performs hierarchical block analysis:
+    → Groups container elements (accordions, carousels, flip cards, etc.) with children
+    → Matches opening/closing tags with fuzzy spelling tolerance
+    → Detects implicit boundaries (page breaks, next activity, lookahead limit)
+    → Normalises ordinal sub-tags to indexed form
+    → Splits compound tags in red text blocks
+    → Extracts layout direction and writer instructions
+    → Results stored in analysis for debug panel
   → PageBoundary validates and assigns pages
   → App._extractTitle() extracts English/Te Reo titles from [TITLE BAR] content
     → Searches non-red text on same block or subsequent blocks
@@ -1155,7 +1208,7 @@ User drops .docx file
     → HtmlConverter.assemblePage() combines skeleton + content + module menu
   → InteractiveExtractor.generateReferenceDocument() produces reference doc
   → OutputManager stores all generated files (HTML + reference doc)
-  → App displays results (Phase 5 UI):
+  → App displays results (Phase 6 UI):
     → Metadata panel shows template, pages, interactive count with tier breakdown
     → Conversion summary shows pages, template, interactives, tags, warnings
     → File list panel shows all files with icons, metadata, per-file download/copy
@@ -1164,7 +1217,7 @@ User drops .docx file
     → "Download All as ZIP" creates ZIP archive
     → "Copy Interactive Reference" copies reference doc
     → "Legacy Text Output" toggles to plain text view
-    → Debug panel shows template config, tag & page analysis, interactive details
+    → Debug panel shows template config, tag & page analysis, block scoping, interactive details
 ```
 
 ---
@@ -1438,6 +1491,8 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
+- **Automated unit tests** — `node tests/test-runner.js` runs 182 tests across 11 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, and `[Inside tab]` handling
+- **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files with class declarations in global scope; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table
 - Verify page boundary detection against the 4 rules
