@@ -13,6 +13,7 @@ class App {
         this.parser = new DocxParser();
         this.formatter = new OutputFormatter();
         this.tagNormaliser = new TagNormaliser();
+        this.blockScoper = new BlockScoper(this.tagNormaliser);
         this.pageBoundary = new PageBoundary(this.tagNormaliser);
         this.templateEngine = new TemplateEngine();
         this.interactiveExtractor = new InteractiveExtractor(this.tagNormaliser);
@@ -292,6 +293,10 @@ class App {
             var analysis = self._runAnalysis(result);
             self.currentAnalysis = analysis;
             self._addProgressStep('Detecting page boundaries... (' + analysis.pages.length + ' pages)');
+            if (analysis.blockScopes) {
+                var scopedCount = analysis.blockScopes.filter(function(b) { return b.blockType; }).length;
+                self._addProgressStep('Block scoping complete: ' + scopedCount + ' scoped blocks');
+            }
             self._addProgressStep('Tag analysis complete: ' +
                 analysis.totalTags + ' tags found, ' +
                 analysis.pages.length + ' pages detected');
@@ -463,6 +468,7 @@ class App {
         this.interactiveReferenceDoc = '';
         this.collectedInteractives = [];
         this.legacyModeActive = false;
+        this.blockScoper.warnings = [];
         this.outputManager.clear();
         this.resultsSection.classList.add('hidden');
         this.processingSection.classList.add('hidden');
@@ -1067,8 +1073,16 @@ class App {
             }
         }
 
-        // Run page boundary detection
+        // Run block scoping analysis
         var contentFromStart = contentBlocks.slice(startIndex);
+        var blockScopeResults = null;
+        try {
+            blockScopeResults = this.blockScoper.scopeBlocks(contentFromStart);
+        } catch (e) {
+            console.error('Block scoping analysis failed:', e);
+        }
+
+        // Run page boundary detection
         var pages = this.pageBoundary.assignPages(contentFromStart, moduleCode);
 
         return {
@@ -1079,7 +1093,9 @@ class App {
             redTextOnlyCount: redTextOnlyCount,
             whitespaceOnlyCount: whitespaceOnlyCount,
             tagsByCategory: tagsByCategory,
-            pages: pages
+            pages: pages,
+            blockScopes: blockScopeResults,
+            blockScopeWarnings: this.blockScoper.warnings || []
         };
     }
 
@@ -1298,11 +1314,93 @@ class App {
 
         html += '</div>';
 
+        // --- Block Scoping Results ---
+        html += this._renderDebugBlockScopeSection(analysis);
+
         // --- Interactive Components ---
         html += this._renderDebugInteractiveSection();
 
         this.debugContent.innerHTML = html;
         this.debugPanel.classList.remove('hidden');
+    }
+
+    /**
+     * Render block scoping analysis for the debug panel.
+     *
+     * @param {Object} analysis - Analysis results
+     * @returns {string} HTML string
+     */
+    _renderDebugBlockScopeSection(analysis) {
+        var html = '';
+        html += '<div class="debug-section">';
+        html += '<h4 class="debug-section-title">Block Scoping Analysis</h4>';
+
+        if (!analysis.blockScopes || analysis.blockScopes.length === 0) {
+            html += '<p style="font-size:0.82rem;color:var(--color-text-secondary);">No block scoping data available.</p>';
+            html += '</div>';
+            return html;
+        }
+
+        var scoped = analysis.blockScopes.filter(function(b) { return b.blockType; });
+        var unscoped = analysis.blockScopes.filter(function(b) { return !b.blockType; });
+
+        html += '<div class="debug-stats">';
+        html += '<span class="debug-stat">Total entries: <b>' + analysis.blockScopes.length + '</b></span>';
+        html += '<span class="debug-stat">Scoped blocks: <b>' + scoped.length + '</b></span>';
+        html += '<span class="debug-stat">Unscoped content: <b>' + unscoped.length + '</b></span>';
+        if (analysis.blockScopeWarnings && analysis.blockScopeWarnings.length > 0) {
+            html += '<span class="debug-stat">Warnings: <b>' + analysis.blockScopeWarnings.length + '</b></span>';
+        }
+        html += '</div>';
+
+        // Scoped blocks table
+        if (scoped.length > 0) {
+            html += '<details class="debug-details">';
+            html += '<summary>Scoped blocks (' + scoped.length + ')</summary>';
+            html += '<table class="debug-table"><thead><tr>' +
+                '<th>Type</th><th>Start</th><th>End</th><th>Children</th><th>Closure</th><th>Sub-tags</th>' +
+                '</tr></thead><tbody>';
+            for (var i = 0; i < scoped.length; i++) {
+                var block = scoped[i];
+                var childCount = block.children ? block.children.length : 0;
+                var subTags = '';
+                if (block.children) {
+                    var subTagNames = [];
+                    for (var j = 0; j < block.children.length; j++) {
+                        if (block.children[j].subTagIndex !== undefined) {
+                            subTagNames.push('#' + block.children[j].subTagIndex);
+                        }
+                    }
+                    subTags = subTagNames.length > 0 ? subTagNames.join(', ') : '-';
+                }
+
+                html += '<tr>' +
+                    '<td><code>' + this._esc(block.blockType || '') + '</code></td>' +
+                    '<td>' + (block.startIndex !== undefined ? block.startIndex : '-') + '</td>' +
+                    '<td>' + (block.endIndex !== undefined ? block.endIndex : '-') + '</td>' +
+                    '<td>' + childCount + '</td>' +
+                    '<td>' + this._esc(block.closureReason || '-') + '</td>' +
+                    '<td>' + subTags + '</td>' +
+                    '</tr>';
+            }
+            html += '</tbody></table>';
+            html += '</details>';
+        }
+
+        // Warnings
+        if (analysis.blockScopeWarnings && analysis.blockScopeWarnings.length > 0) {
+            html += '<details class="debug-details debug-warning">';
+            html += '<summary>Scoping warnings (' + analysis.blockScopeWarnings.length + ')</summary>';
+            html += '<ul>';
+            for (var w = 0; w < analysis.blockScopeWarnings.length; w++) {
+                html += '<li>' + this._esc(analysis.blockScopeWarnings[w]) + '</li>';
+            }
+            html += '</ul>';
+            html += '</details>';
+        }
+
+        html += '</div>';
+        return html;
     }
 
     // ------------------------------------------------------------------

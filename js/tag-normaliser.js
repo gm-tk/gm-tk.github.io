@@ -266,6 +266,12 @@ class TagNormaliser {
         // Normalise hyphens to spaces for flexible matching
         var flexCleaned = cleaned.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
 
+        // --- Video tag variants (embed video, imbed video, insert video, etc.) ---
+        var videoResult = this._matchVideoTag(flexCleaned, inner, raw);
+        if (videoResult) {
+            return videoResult;
+        }
+
         // --- Heading tags: h1-h5 ---
         var headingMatch = flexCleaned.match(/^h\s*([1-5])$/);
         if (headingMatch) {
@@ -452,8 +458,8 @@ class TagNormaliser {
             };
         }
 
-        // --- Carousel / slide show ---
-        if (flexCleaned === 'carousel' || flexCleaned === 'slide show') {
+        // --- Carousel / slide show / slideshow ---
+        if (flexCleaned === 'carousel' || flexCleaned === 'slide show' || flexCleaned === 'slideshow') {
             return {
                 normalised: 'carousel',
                 level: null,
@@ -948,7 +954,8 @@ class TagNormaliser {
     reassembleFragmentedTags(text) {
         if (!text || typeof text !== 'string') return text;
 
-        var redMarkerRe = /\uD83D\uDD34\[RED TEXT\]\s*([\s\S]*?)\s*\[\/RED TEXT\]\uD83D\uDD34/g;
+        // Use a non-trimming regex to preserve inner whitespace for reassembly
+        var redMarkerRe = /\uD83D\uDD34\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\uD83D\uDD34/g;
 
         // Collect all red-text markers and their positions
         var markers = [];
@@ -956,7 +963,8 @@ class TagNormaliser {
         while ((match = redMarkerRe.exec(text)) !== null) {
             markers.push({
                 fullMatch: match[0],
-                innerContent: match[1],
+                innerContent: match[1],  // preserves original whitespace
+                innerTrimmed: match[1].trim(),
                 startIndex: match.index,
                 endIndex: match.index + match[0].length
             });
@@ -978,41 +986,53 @@ class TagNormaliser {
             }
             if (alreadyConsumed) continue;
 
-            // Check 3-way merge first (tag split across 3 runs)
-            if (i + 2 < markers.length) {
-                var gap1 = text.substring(markers[i].endIndex, markers[i + 1].startIndex).trim();
-                var gap2 = text.substring(markers[i + 1].endIndex, markers[i + 2].startIndex).trim();
-                if (gap1 === '' && gap2 === '') {
-                    var combined3 = (markers[i].innerContent + ' ' +
-                        markers[i + 1].innerContent + ' ' +
-                        markers[i + 2].innerContent).replace(/\s+/g, ' ').trim();
-                    var tagMatch3 = combined3.match(/\[([^\]]+)\]/);
-                    if (tagMatch3) {
-                        merges.push({
-                            startIdx: i,
-                            endIdx: i + 2,
-                            replacement: '\uD83D\uDD34[RED TEXT] ' + combined3 + ' [/RED TEXT]\uD83D\uDD34'
-                        });
-                        continue;
+            // Try merging N consecutive markers (4, 3, 2) — longest match first
+            var maxLookahead = Math.min(markers.length - i, 6); // up to 6-way merge
+
+            var merged = false;
+            for (var span = maxLookahead; span >= 2; span--) {
+                if (i + span - 1 >= markers.length) continue;
+
+                // Check all gaps between markers are empty
+                var allGapsEmpty = true;
+                for (var g = 0; g < span - 1; g++) {
+                    var gap = text.substring(markers[i + g].endIndex, markers[i + g + 1].startIndex).trim();
+                    if (gap !== '') {
+                        allGapsEmpty = false;
+                        break;
                     }
+                }
+
+                if (!allGapsEmpty) continue;
+
+                // Concatenate all inner contents preserving original whitespace
+                var parts = [];
+                for (var c = 0; c < span; c++) {
+                    parts.push(markers[i + c].innerContent);
+                }
+                // Direct concatenation preserves original spacing
+                // (e.g., "[End " + "tab]" = "[End tab]")
+                // Then normalise multiple spaces to single
+                var combined = parts.join('').replace(/\s+/g, ' ').trim();
+
+                // Check if combined text contains or forms a valid tag
+                var tagMatch = combined.match(/\[([^\]]+)\]/);
+                // Also check if it contains an incomplete bracket that would complete
+                var hasOpenBracket = combined.indexOf('[') !== -1;
+                var hasCloseBracket = combined.indexOf(']') !== -1;
+
+                if (tagMatch || (hasOpenBracket && hasCloseBracket)) {
+                    merges.push({
+                        startIdx: i,
+                        endIdx: i + span - 1,
+                        replacement: '\uD83D\uDD34[RED TEXT] ' + combined + ' [/RED TEXT]\uD83D\uDD34'
+                    });
+                    merged = true;
+                    break;
                 }
             }
 
-            // Check 2-way merge
-            var gapBetween = text.substring(markers[i].endIndex, markers[i + 1].startIndex).trim();
-            if (gapBetween === '') {
-                var combined = (markers[i].innerContent + ' ' +
-                    markers[i + 1].innerContent).replace(/\s+/g, ' ').trim();
-                var tagMatch = combined.match(/\[([^\]]+)\]/);
-                if (tagMatch) {
-                    merges.push({
-                        startIdx: i,
-                        endIdx: i + 1,
-                        replacement: '\uD83D\uDD34[RED TEXT] ' + combined + ' [/RED TEXT]\uD83D\uDD34'
-                    });
-                    continue;
-                }
-            }
+            // If no multi-way merge worked, skip to next marker
         }
 
         // Apply merges in reverse order so indices don't shift
@@ -1024,6 +1044,72 @@ class TagNormaliser {
         }
 
         return text;
+    }
+
+    // ------------------------------------------------------------------
+    // Internal: Video tag matching
+    // ------------------------------------------------------------------
+
+    /**
+     * Match video tag variants including embed/imbed/insert video/film patterns.
+     *
+     * @param {string} flexCleaned - Lowercased, normalised tag text
+     * @param {string} inner - Original inner tag text
+     * @param {string} raw - Full raw tag with brackets
+     * @returns {Object|null} Normalised video tag or null
+     */
+    _matchVideoTag(flexCleaned, inner, raw) {
+        // Core video patterns
+        var videoPatterns = [
+            /^embed\s+video$/,
+            /^imbed\s+video$/,
+            /^insert\s+video$/,
+            /^embed\s+film$/,
+            /^imbed\s+film$/
+        ];
+
+        for (var p = 0; p < videoPatterns.length; p++) {
+            if (flexCleaned.match(videoPatterns[p])) {
+                return {
+                    normalised: 'video',
+                    level: null,
+                    number: null,
+                    id: null,
+                    category: 'media',
+                    modifier: null,
+                    raw: raw
+                };
+            }
+        }
+
+        // [interactive: video] or [interactive: video: title]
+        var interVideoMatch = flexCleaned.match(/^interactive\s*:\s*video(?:\s*:\s*(.+))?$/);
+        if (interVideoMatch) {
+            return {
+                normalised: 'video',
+                level: null,
+                number: null,
+                id: null,
+                category: 'media',
+                modifier: interVideoMatch[1] ? interVideoMatch[1].trim() : null,
+                raw: raw
+            };
+        }
+
+        // [insert Audio animation Video N (...)]
+        if (flexCleaned.match(/audio\s+animation\s+video/)) {
+            return {
+                normalised: 'video',
+                level: null,
+                number: null,
+                id: null,
+                category: 'media',
+                modifier: 'audio_animation',
+                raw: raw
+            };
+        }
+
+        return null;
     }
 
     // ------------------------------------------------------------------
