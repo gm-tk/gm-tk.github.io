@@ -302,6 +302,11 @@ class HtmlConverter {
 
         if (block.type === 'paragraph' && block.data) {
             var text = this._buildFormattedText(block.data);
+
+            // Detect hovertrigger pattern in formatted text:
+            // 🔴[RED TEXT] [hovertrigger: [/RED TEXT]🔴 definition 🔴[RED TEXT] ] [/RED TEXT]🔴
+            var hovertriggerData = this._extractHovertriggerData(text, block.data);
+
             var tagResult = this._normaliser.processBlock(text);
 
             var processed = {
@@ -311,6 +316,11 @@ class HtmlConverter {
                 tagResult: tagResult,
                 cleanText: tagResult.cleanText
             };
+
+            // Attach hovertrigger data if detected
+            if (hovertriggerData) {
+                processed._hovertriggers = hovertriggerData;
+            }
 
             // Preserve sidebar metadata from layout table unwrapping
             if (block._unwrappedFrom) {
@@ -412,6 +422,11 @@ class HtmlConverter {
                 chunk = '\uD83D\uDD34[RED TEXT] ' + chunk + ' [/RED TEXT]\uD83D\uDD34';
             } else {
                 chunk = this._applyFormattingMarkers(chunk, fmt);
+
+                // Yellow highlight marker (correct answer indicator)
+                if (fmt.highlight === 'yellow') {
+                    chunk = '\u2705' + chunk;
+                }
             }
 
             if (run.hyperlink && !fmt.isRed) {
@@ -755,6 +770,46 @@ class HtmlConverter {
                 // Fall through to interactive handler if extraction fails
             }
 
+            // --- Hintslider rendering (Tier 1) ---
+            if (tagName === 'hint_slider' && category === 'interactive') {
+                flushPending();
+                activityHasInteractive = true;
+                var hsHtml = self._renderHintSlider(processedBlocks, i, rawBlocks, procToRawMap, consumedRawIndices);
+                if (hsHtml) {
+                    if (inActivity) {
+                        activityParts.push(hsHtml.html);
+                    } else {
+                        htmlParts.push(self._wrapInRow(hsHtml.html, colClass));
+                    }
+                    // Mark consumed blocks
+                    for (var hsci = 0; hsci < hsHtml.consumedRawIndices.length; hsci++) {
+                        consumedRawIndices[hsHtml.consumedRawIndices[hsci]] = true;
+                    }
+                    i++;
+                    continue;
+                }
+                // Fall through to generic interactive handler if rendering fails
+            }
+
+            // --- Flipcard rendering (Tier 1) ---
+            if (tagName === 'flip_card' && category === 'interactive') {
+                flushPending();
+                activityHasInteractive = true;
+                var fcHtml = self._renderFlipCard(processedBlocks, i, rawBlocks, procToRawMap, consumedRawIndices);
+                if (fcHtml) {
+                    if (inActivity) {
+                        activityParts.push(fcHtml.html);
+                    } else {
+                        htmlParts.push(self._wrapInRow(fcHtml.html, colClass));
+                    }
+                    for (var fcci = 0; fcci < fcHtml.consumedRawIndices.length; fcci++) {
+                        consumedRawIndices[fcHtml.consumedRawIndices[fcci]] = true;
+                    }
+                    i++;
+                    continue;
+                }
+            }
+
             // --- Interactive components ---
             if (category === 'interactive') {
                 flushPending();
@@ -840,8 +895,14 @@ class HtmlConverter {
                     continue;
                 }
 
-                var headingLevel = primaryTag.level || 2;
+                var headingLevel = primaryTag.level || null;
                 var headingText = pBlock.cleanText || '';
+                var isIncompleteHeading = !headingLevel;
+
+                // Fallback for incomplete heading tags [H ] with no level
+                if (isIncompleteHeading) {
+                    headingLevel = self._lastHeadingLevel || 3;
+                }
 
                 // [H1] in body context renders as <h2>
                 if (headingLevel === 1) {
@@ -851,12 +912,13 @@ class HtmlConverter {
                 // Strip full-heading bold/italic wrapping (docx artefact)
                 headingText = this._stripFullHeadingFormatting(headingText);
 
-                // First "Lesson N" heading rule for lesson pages
-                if (pageData.type === 'lesson' && headingLevel === 2) {
+                // "Lesson N" prefix rule for lesson pages:
+                // Strip the "Lesson N" prefix from heading text for clean display.
+                // The heading level is preserved as the writer specified it.
+                if (pageData.type === 'lesson') {
                     var lessonPrefixMatch = headingText.match(/^Lesson\s+\d+\s+/i);
                     if (lessonPrefixMatch) {
                         headingText = headingText.substring(lessonPrefixMatch[0].length);
-                        headingLevel = 3;
                     }
                 }
 
@@ -864,10 +926,17 @@ class HtmlConverter {
                 if (headingLevel < 2) headingLevel = 2;
                 if (headingLevel > 5) headingLevel = 5;
 
+                // Track last heading level for incomplete heading fallback
+                self._lastHeadingLevel = headingLevel;
+
                 var hTag = 'h' + headingLevel;
                 var headingInner = this._convertInlineFormatting(headingText);
                 headingInner = this._stripHeadingInlineTags(headingInner);
-                var headingHtml = '      <' + hTag + '>' + headingInner + '</' + hTag + '>';
+                var headingHtml = '';
+                if (isIncompleteHeading) {
+                    headingHtml += '      <!-- \u26A0\uFE0F DEV CHECK: Writer used [H ] with no level \u2014 defaulted to ' + hTag + ' -->\n';
+                }
+                headingHtml += '      <' + hTag + '>' + headingInner + '</' + hTag + '>';
 
                 if (inActivity) {
                     activityParts.push(headingHtml);
@@ -876,6 +945,20 @@ class HtmlConverter {
                 }
                 i++;
                 continue;
+            }
+
+            // --- Hovertrigger inline rendering ---
+            if (pBlock._hovertriggers && pBlock._hovertriggers.length > 0) {
+                var htHtml = this._renderHovertriggerParagraph(pBlock);
+                if (htHtml) {
+                    if (inActivity) {
+                        activityParts.push(htHtml);
+                    } else {
+                        pendingContent.push(htHtml);
+                    }
+                    i++;
+                    continue;
+                }
             }
 
             // --- Body text ---
@@ -1157,6 +1240,18 @@ class HtmlConverter {
                     activityParts.push(elHtml);
                 } else {
                     pendingContent.push(elHtml);
+                }
+                i++;
+                continue;
+            }
+
+            // --- Go to journal ---
+            if (tagName === 'go_to_journal') {
+                var gojHtml = '      <h4 class="goJournal">Go to your journal</h4>';
+                if (inActivity) {
+                    activityParts.push(gojHtml);
+                } else {
+                    pendingContent.push(gojHtml);
                 }
                 i++;
                 continue;
@@ -2246,6 +2341,263 @@ class HtmlConverter {
      * @param {Object} config - Template config
      * @returns {string} HTML video embed
      */
+    /**
+     * Render a hintSlider interactive from the data table following the tag.
+     *
+     * @param {Array} processedBlocks - All processed blocks
+     * @param {number} tagIndex - Index of the hint_slider tag block
+     * @param {Array} rawBlocks - Raw content blocks
+     * @param {Array} procToRawMap - Mapping from processed to raw indices
+     * @param {Object} consumedRawIndices - Set of consumed raw indices
+     * @returns {Object|null} { html, consumedRawIndices } or null
+     */
+    _renderHintSlider(processedBlocks, tagIndex, rawBlocks, procToRawMap, consumedRawIndices) {
+        // Find the next table block after the tag
+        var tableBlock = null;
+        var tableRawIdx = -1;
+        var consumed = [];
+
+        if (rawBlocks && procToRawMap[tagIndex] !== undefined) {
+            var startRaw = procToRawMap[tagIndex] + 1;
+            for (var ri = startRaw; ri < rawBlocks.length && ri < startRaw + 5; ri++) {
+                if (rawBlocks[ri].type === 'table' && rawBlocks[ri].data) {
+                    tableBlock = rawBlocks[ri].data;
+                    tableRawIdx = ri;
+                    consumed.push(ri);
+                    break;
+                }
+            }
+        }
+
+        // Also check processed blocks
+        if (!tableBlock) {
+            for (var pi = tagIndex + 1; pi < processedBlocks.length && pi < tagIndex + 5; pi++) {
+                if (processedBlocks[pi].type === 'table' && processedBlocks[pi].data) {
+                    tableBlock = processedBlocks[pi].data;
+                    if (procToRawMap[pi] !== undefined) {
+                        consumed.push(procToRawMap[pi]);
+                    }
+                    break;
+                }
+            }
+        }
+
+        if (!tableBlock || !tableBlock.rows || tableBlock.rows.length < 2) {
+            return null;
+        }
+
+        // Parse the table: skip header row, extract front/back pairs from columns 2 & 3
+        // (or columns 1 & 2 if only 2 columns)
+        var rows = tableBlock.rows;
+        var dataStartRow = 1; // Skip header row
+        var frontCol, backCol;
+
+        // Determine column layout
+        if (rows[0].cells.length >= 3) {
+            frontCol = 1;
+            backCol = 2;
+        } else {
+            frontCol = 0;
+            backCol = 1;
+        }
+
+        var hintRows = [];
+        for (var r = dataStartRow; r < rows.length; r++) {
+            var row = rows[r];
+            if (!row.cells || row.cells.length <= backCol) continue;
+            var frontText = this._getCellPlainText(row.cells[frontCol]);
+            var backText = this._getCellPlainText(row.cells[backCol]);
+            if (frontText.trim() || backText.trim()) {
+                hintRows.push({ front: frontText.trim(), back: backText.trim() });
+            }
+        }
+
+        if (hintRows.length === 0) return null;
+
+        // Build HTML
+        var html = '    <div class="hintSlider" hintCssFile="standard">\n';
+        for (var h = 0; h < hintRows.length; h++) {
+            html += '      <div class="hintRow dark">\n';
+            html += '        <div class="infoContainer">\n';
+            html += '          <div class="frontInfo">\n';
+            html += '            <p>' + this._convertInlineFormatting(hintRows[h].front) + '</p>\n';
+            html += '          </div>\n';
+            html += '          <div class="backInfo">\n';
+            html += '            <p>' + this._convertInlineFormatting(hintRows[h].back) + '</p>\n';
+            html += '          </div>\n';
+            html += '        </div>\n';
+            html += '      </div>\n';
+        }
+        html += '    </div>';
+
+        return { html: html, consumedRawIndices: consumed };
+    }
+
+    /**
+     * Render a flipCard interactive from the data table following the tag.
+     *
+     * @param {Array} processedBlocks - All processed blocks
+     * @param {number} tagIndex - Index of the flip_card tag block
+     * @param {Array} rawBlocks - Raw content blocks
+     * @param {Array} procToRawMap - Mapping from processed to raw indices
+     * @param {Object} consumedRawIndices - Set of consumed raw indices
+     * @returns {Object|null} { html, consumedRawIndices } or null
+     */
+    _renderFlipCard(processedBlocks, tagIndex, rawBlocks, procToRawMap, consumedRawIndices) {
+        // Find the next table block after the tag
+        var tableBlock = null;
+        var consumed = [];
+
+        if (rawBlocks && procToRawMap[tagIndex] !== undefined) {
+            var startRaw = procToRawMap[tagIndex] + 1;
+            for (var ri = startRaw; ri < rawBlocks.length && ri < startRaw + 5; ri++) {
+                if (rawBlocks[ri].type === 'table' && rawBlocks[ri].data) {
+                    tableBlock = rawBlocks[ri].data;
+                    consumed.push(ri);
+                    break;
+                }
+            }
+        }
+
+        if (!tableBlock) {
+            for (var pi = tagIndex + 1; pi < processedBlocks.length && pi < tagIndex + 5; pi++) {
+                if (processedBlocks[pi].type === 'table' && processedBlocks[pi].data) {
+                    tableBlock = processedBlocks[pi].data;
+                    if (procToRawMap[pi] !== undefined) {
+                        consumed.push(procToRawMap[pi]);
+                    }
+                    break;
+                }
+            }
+        }
+
+        if (!tableBlock || !tableBlock.rows || tableBlock.rows.length < 2) {
+            return null;
+        }
+
+        // Flipcard table: columns = cards, row 1 = fronts, row 2 = backs
+        var rows = tableBlock.rows;
+        var cardCount = rows[0].cells.length;
+        var cards = [];
+
+        for (var c = 0; c < cardCount; c++) {
+            var frontCell = rows[0].cells[c];
+            var backCell = rows.length > 1 ? rows[1].cells[c] : null;
+
+            // Parse front: extract heading and image
+            var frontText = this._getCellFormattedText(frontCell);
+            var frontHeading = '';
+            var frontImage = '';
+
+            // Look for [H5] or [h5] heading tag
+            var hMatch = frontText.match(/\[H\s*(\d)\]\s*/i);
+            if (hMatch) {
+                frontText = frontText.replace(/\[H\s*\d\]\s*/i, '');
+            }
+            // Look for [IMAGE: filename]
+            var imgMatch = frontText.match(/\[IMAGE:\s*(\S+)\]/i);
+            if (imgMatch) {
+                frontImage = imgMatch[1];
+                frontText = frontText.replace(/\[IMAGE:\s*\S+\]/i, '');
+            }
+            // Clean up the heading text
+            frontText = frontText.replace(/\uD83D\uDD34\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\uD83D\uDD34/g, '');
+            frontText = frontText.replace(/\[([^\]]*)\]/g, '');
+            frontText = frontText.replace(/\s*\/\s*/g, '').trim(); // Remove cell separators
+            frontHeading = frontText.trim();
+
+            // Parse back
+            var backText = '';
+            if (backCell) {
+                backText = this._getCellPlainText(backCell);
+                // Strip [body] tag
+                backText = backText.replace(/\[body\]\s*/gi, '').trim();
+            }
+
+            if (frontHeading || backText) {
+                cards.push({
+                    heading: frontHeading,
+                    image: frontImage,
+                    back: backText
+                });
+            }
+        }
+
+        if (cards.length === 0) return null;
+
+        // Determine column width
+        var colWidth = Math.floor(12 / Math.min(cards.length, 4));
+        var colClass = 'col-md-' + colWidth + ' col-12';
+
+        // Build HTML
+        var html = '    <div class="row flipCardsContainer">\n';
+        for (var fc = 0; fc < cards.length; fc++) {
+            var card = cards[fc];
+            html += '      <div class="' + colClass + ' paddingLR">\n';
+            html += '        <div class="flipCard">\n';
+            html += '          <div class="front">\n';
+            if (card.heading) {
+                html += '            <h5>' + this._convertInlineFormatting(card.heading) + '</h5>\n';
+            }
+            if (card.image) {
+                html += '            <img class="img-fluid" loading="lazy" src="images/' +
+                    this._escAttr(card.image) + '" alt="Flipcard image" />\n';
+            }
+            html += '          </div>\n';
+            html += '          <div class="back">\n';
+            if (card.back) {
+                html += '            <p>' + this._convertInlineFormatting(card.back) + '</p>\n';
+            }
+            html += '          </div>\n';
+            html += '        </div>\n';
+            html += '      </div>\n';
+        }
+        html += '    </div>';
+
+        return { html: html, consumedRawIndices: consumed };
+    }
+
+    /**
+     * Get plain text from a table cell (all paragraphs concatenated).
+     *
+     * @param {Object} cell - Table cell with paragraphs
+     * @returns {string} Plain text
+     */
+    _getCellPlainText(cell) {
+        if (!cell || !cell.paragraphs) return '';
+        var texts = [];
+        for (var p = 0; p < cell.paragraphs.length; p++) {
+            var para = cell.paragraphs[p];
+            var text = '';
+            if (para.runs) {
+                for (var r = 0; r < para.runs.length; r++) {
+                    if (para.runs[r].text && !(para.runs[r].formatting && para.runs[r].formatting.isRed)) {
+                        text += para.runs[r].text;
+                    }
+                }
+            } else {
+                text = para.text || '';
+            }
+            if (text.trim()) texts.push(text.trim());
+        }
+        return texts.join(' ');
+    }
+
+    /**
+     * Get formatted text from a table cell (including formatting markers).
+     *
+     * @param {Object} cell - Table cell with paragraphs
+     * @returns {string} Formatted text
+     */
+    _getCellFormattedText(cell) {
+        if (!cell || !cell.paragraphs) return '';
+        var texts = [];
+        for (var p = 0; p < cell.paragraphs.length; p++) {
+            texts.push(this._buildFormattedText(cell.paragraphs[p]));
+        }
+        return texts.join(' / ');
+    }
+
     _renderVideo(url, config) {
         if (!url) {
             return '      <!-- Video URL not found -->';
@@ -2695,6 +3047,91 @@ class HtmlConverter {
         }
 
         return null;
+    }
+
+    /**
+     * Render a paragraph containing hovertrigger(s) as <p> with infoTrigger spans.
+     *
+     * @param {Object} pBlock - Processed block with _hovertriggers data
+     * @returns {string} HTML paragraph with infoTrigger spans
+     */
+    _renderHovertriggerParagraph(pBlock) {
+        var formattedText = pBlock.formattedText || '';
+        var triggers = pBlock._hovertriggers;
+
+        // Process from last to first to preserve indices
+        var result = formattedText;
+        for (var t = triggers.length - 1; t >= 0; t--) {
+            var trigger = triggers[t];
+            // Replace the trigger word + hovertrigger pattern with infoTrigger span
+            // The trigger word raw form (with formatting markers) is right before the red text block
+            var beforePart = trigger.beforeText;
+            var afterPart = trigger.afterText;
+            var triggerWordFormatted = this._convertInlineFormatting(trigger.triggerWord);
+            var infoSpan = '<span class="infoTrigger" info="' +
+                this._escAttr(trigger.definition) + '">' +
+                triggerWordFormatted + '</span>';
+
+            result = beforePart + infoSpan + afterPart;
+        }
+
+        // Clean up: remove red text markers, tags, and format the remaining text
+        result = result.replace(/\uD83D\uDD34\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]\uD83D\uDD34/g, '');
+        result = result.replace(/\[([^\]]*)\]/g, '');
+        result = result.replace(/\s+/g, ' ').trim();
+        result = this._convertInlineFormatting(result);
+
+        if (!result.trim()) return null;
+        return '      <p>' + result + '</p>';
+    }
+
+    /**
+     * Extract hovertrigger data from formatted text.
+     * Detects the pattern: word 🔴[RED TEXT] [hovertrigger: [/RED TEXT]🔴 definition 🔴[RED TEXT] ] [/RED TEXT]🔴
+     *
+     * @param {string} formattedText - The formatted text with red text markers
+     * @param {Object} paraData - The paragraph data with runs
+     * @returns {Array|null} Array of hovertrigger objects or null
+     */
+    _extractHovertriggerData(formattedText, paraData) {
+        if (!formattedText || formattedText.indexOf('hovertrigger') === -1) return null;
+
+        var redTextMarker = '\uD83D\uDD34';
+        // Pattern to detect hovertrigger: [hovertrigger: definition text ]
+        // spread across red text boundaries
+        var pattern = new RegExp(
+            redTextMarker + '\\[RED TEXT\\]\\s*\\[hovertrigger\\s*:\\s*\\[/RED TEXT\\]' + redTextMarker +
+            '\\s*([\\s\\S]*?)\\s*' +
+            redTextMarker + '\\[RED TEXT\\]\\s*\\]\\s*\\[/RED TEXT\\]' + redTextMarker,
+            'gi'
+        );
+
+        var triggers = [];
+        var match;
+        while ((match = pattern.exec(formattedText)) !== null) {
+            var definition = match[1].trim();
+            // Find the trigger word — the word(s) immediately before the hovertrigger tag
+            var beforeText = formattedText.substring(0, match.index);
+            // Extract last word(s) before the hovertrigger, stripping formatting markers
+            var wordMatch = beforeText.match(/(\S+)\s*$/);
+            var triggerWord = wordMatch ? wordMatch[1] : '';
+            // Strip formatting markers from trigger word
+            triggerWord = triggerWord.replace(/\*{1,3}/g, '').replace(/__/g, '');
+            var beforeTrigger = beforeText.substring(0, beforeText.length - (wordMatch ? wordMatch[0].length : 0));
+            var afterTrigger = formattedText.substring(match.index + match[0].length);
+
+            triggers.push({
+                triggerWord: triggerWord,
+                definition: definition,
+                fullMatch: match[0],
+                matchIndex: match.index,
+                beforeText: beforeTrigger,
+                afterText: afterTrigger,
+                triggerWordRaw: wordMatch ? wordMatch[1] : ''
+            });
+        }
+
+        return triggers.length > 0 ? triggers : null;
     }
 
     /**

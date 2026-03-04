@@ -1824,10 +1824,29 @@ class App {
             }
         }
 
+        // Convert ALL CAPS titles to title case
+        fullTitleText = this._convertToTitleCase(fullTitleText);
+
         // Split on double-space to separate English and Te Reo titles
         var titleParts = fullTitleText.split(/  +/);
         var englishTitle = (titleParts[0] || '').trim();
         var tereoTitle = titleParts.length > 1 ? titleParts.slice(1).join('  ').trim() : '';
+
+        // If no double-space split found, try splitting at sentence-ending
+        // punctuation boundary (e.g., "Picture This! Whakaahuatia Tēnei!")
+        if (!tereoTitle && englishTitle) {
+            var sentenceSplit = englishTitle.match(/^(.+[!?.])\s+(.+)$/);
+            if (sentenceSplit) {
+                // Check if the second part looks like Te Reo (contains macrons
+                // or common Māori words)
+                var secondPart = sentenceSplit[2];
+                if (/[\u0100\u0101\u0112\u0113\u012A\u012B\u014C\u014D\u016A\u016B]/.test(secondPart) ||
+                    /\b(?:te|nga|ki|ko|he|ka|kei|wh[aeiou])/i.test(secondPart)) {
+                    englishTitle = sentenceSplit[1].trim();
+                    tereoTitle = secondPart.trim();
+                }
+            }
+        }
 
         if (type === 'english') {
             return englishTitle || fullTitleText;
@@ -1836,6 +1855,28 @@ class App {
         }
 
         return '';
+    }
+
+    /**
+     * Convert ALL CAPS text to title case.
+     * Only converts if the text is predominantly uppercase.
+     *
+     * @param {string} text - Input text
+     * @returns {string} Title-cased text
+     */
+    _convertToTitleCase(text) {
+        if (!text) return text;
+
+        // Only convert if text is predominantly uppercase (>60% uppercase letters)
+        var letters = text.replace(/[^a-zA-Z\u00C0-\u024F]/g, '');
+        if (!letters) return text;
+        var upperCount = (letters.match(/[A-Z\u00C0-\u00DE\u0100\u0112\u012A\u014C\u016A]/g) || []).length;
+        if (upperCount / letters.length < 0.6) return text;
+
+        // Title case: lowercase everything, then capitalize first letter of each word
+        return text.replace(/\S+/g, function (word) {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        });
     }
 
     // ------------------------------------------------------------------

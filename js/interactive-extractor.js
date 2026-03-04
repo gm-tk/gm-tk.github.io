@@ -819,6 +819,27 @@ class InteractiveExtractor {
                     continue;
                 }
 
+                // For word_highlighter and similar types, capture ALL following
+                // plain-text paragraphs as interactive data (Pattern 4 plain text).
+                if (!primaryTag && !result.tableData &&
+                    (interactiveType === 'word_highlighter' || interactiveType === 'word_select')) {
+                    var plainTextContent = (tagResult.cleanText || '').trim();
+                    if (plainTextContent) {
+                        if (!result.numberedItems) {
+                            result.numberedItems = [];
+                        }
+                        result.numberedItems.push({
+                            number: result.numberedItems.length + 1,
+                            content: plainTextContent,
+                            tag: 'plain_text'
+                        });
+                        result.detectedPattern = 4;
+                        result.blocksConsumed = i - startIndex + 1;
+                        i++;
+                        continue;
+                    }
+                }
+
                 // If this is a block with NO tag and no table data yet, it might
                 // be instruction text for the interactive. Consume conservatively:
                 // only consume one tagless paragraph after the interactive tag
@@ -1099,6 +1120,33 @@ class InteractiveExtractor {
             // Strip red text markers but keep the content for reference
             var tagResult = this._normaliser.processBlock(text);
             var clean = tagResult.cleanText || '';
+
+            // Preserve [IMAGE: filename] references that were stripped by cleanText
+            var imageRefs = text.match(/\[IMAGE:\s*[^\]]+\]/gi);
+            if (imageRefs) {
+                var imageRefStr = imageRefs.join(' ');
+                clean = clean ? imageRefStr + ' ' + clean : imageRefStr;
+            }
+
+            // Preserve short red-text content descriptors (1-5 words) that are
+            // NOT writer instructions. These are content labels like "Blue paint
+            // swatch" used in drag-and-drop targets.
+            if (!clean.trim() && tagResult.redTextInstructions && tagResult.redTextInstructions.length > 0) {
+                for (var ri = 0; ri < tagResult.redTextInstructions.length; ri++) {
+                    var instruction = tagResult.redTextInstructions[ri].trim();
+                    // Remove any square bracket tags from the instruction
+                    instruction = instruction.replace(/\[[^\]]*\]/g, '').trim();
+                    if (!instruction) continue;
+                    var wordCount = instruction.split(/\s+/).length;
+                    // Short phrases (1-5 words) without instruction verbs are content labels
+                    var isInstruction = /\b(please|can you|make|add|use|have|ensure|note|check|verify|remove|delete|insert|should|must|need)\b/i.test(instruction);
+                    if (wordCount <= 5 && !isInstruction) {
+                        clean = instruction;
+                        break;
+                    }
+                }
+            }
+
             if (clean.trim()) {
                 parts.push(clean.trim());
             }

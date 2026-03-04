@@ -301,6 +301,20 @@ class TagNormaliser {
             };
         }
 
+        // --- Incomplete heading tag [H ] or [H] (no digit) — fallback heading ---
+        var incompleteHeadingMatch = flexCleaned.match(/^h\s*$/);
+        if (incompleteHeadingMatch) {
+            return {
+                normalised: 'heading',
+                level: null,
+                number: null,
+                id: null,
+                category: 'heading',
+                modifier: 'incomplete',
+                raw: raw
+            };
+        }
+
         // --- Lesson with number ---
         var lessonMatch = flexCleaned.match(/^lesson\s+(\d+)$/);
         if (lessonMatch) {
@@ -417,8 +431,13 @@ class TagNormaliser {
             };
         }
 
-        // --- Flip card variants ---
-        var flipCardMatch = flexCleaned.match(/^flip\s+cards?(?:\s+(\d+))?(?:\s+image)?$/);
+        // --- Flip card variants (flipcard, flip card, flip cards) ---
+        // Note: "flipcard N" (single word + number) is a sub-tag reference to a numbered card,
+        // so the standalone "flipcard" match must either have a space or no trailing number.
+        var flipCardMatch = flexCleaned.match(/^flip\s+cards?(?:\s+(\d+))?(?:\s+image)?$/) ||
+            (flexCleaned === 'flipcard' || flexCleaned === 'flipcards' ||
+             flexCleaned === 'flipcard image' || flexCleaned === 'flipcards image'
+                ? [flexCleaned] : null);
         if (flipCardMatch) {
             modifier = flexCleaned.indexOf('image') !== -1 ? 'image' : null;
             return {
@@ -556,8 +575,8 @@ class TagNormaliser {
             };
         }
 
-        // --- Hint slider with optional number ---
-        var hintSliderMatch = flexCleaned.match(/^hint\s+slider\s*(\d+)?$/);
+        // --- Hint slider / hintslider with optional number ---
+        var hintSliderMatch = flexCleaned.match(/^hint\s*slider\s*(\d+)?$/);
         if (hintSliderMatch) {
             return {
                 normalised: 'hint_slider',
@@ -607,6 +626,21 @@ class TagNormaliser {
                 id: null,
                 category: 'interactive',
                 modifier: null,
+                raw: raw
+            };
+        }
+
+        // --- Hovertrigger / hover trigger → info_trigger ---
+        var hovertriggerMatch = flexCleaned.match(/^hover\s*trigger(?:\s*:\s*(.*))?$/);
+        if (hovertriggerMatch) {
+            modifier = hovertriggerMatch[1] ? hovertriggerMatch[1].trim() : null;
+            return {
+                normalised: 'info_trigger',
+                level: null,
+                number: null,
+                id: null,
+                category: 'interactive',
+                modifier: modifier,
                 raw: raw
             };
         }
@@ -684,6 +718,21 @@ class TagNormaliser {
             };
         }
 
+        // --- Multichoice dropdown quiz → mcq (dropdown variant) ---
+        if (flexCleaned === 'multichoice dropdown quiz' ||
+            flexCleaned === 'multi choice dropdown quiz' ||
+            flexCleaned === 'dropdown quiz') {
+            return {
+                normalised: 'mcq',
+                level: null,
+                number: null,
+                id: null,
+                category: 'interactive',
+                modifier: 'dropdown',
+                raw: raw
+            };
+        }
+
         // --- MCQ / multi choice quiz / multichoice quiz / multi choice ---
         if (flexCleaned === 'mcq' ||
             flexCleaned === 'multi choice quiz' ||
@@ -744,6 +793,23 @@ class TagNormaliser {
                 id: null,
                 category: 'subtag',
                 modifier: modifier,
+                raw: raw
+            };
+        }
+
+        // --- Button with descriptive suffix: [button- external link], [button-download], etc. ---
+        var buttonSuffixMatch = flexCleaned.match(/^button\s*[\u2013\u2014-]?\s*(external\s*link|external|link|download)$/);
+        if (buttonSuffixMatch) {
+            var btnSuffix = buttonSuffixMatch[1].replace(/\s+/g, '_');
+            var btnNormalised = 'external_link_button';
+            if (btnSuffix === 'download') btnNormalised = 'button';
+            return {
+                normalised: btnNormalised,
+                level: null,
+                number: null,
+                id: null,
+                category: 'link',
+                modifier: btnSuffix,
                 raw: raw
             };
         }
@@ -847,6 +913,7 @@ class TagNormaliser {
             'button': { normalised: 'button', category: 'link' },
             'external link button': { normalised: 'external_link_button', category: 'link' },
             'external link': { normalised: 'external_link', category: 'link' },
+            'go to journal': { normalised: 'go_to_journal', category: 'link' },
             'engagement quiz button': { normalised: 'engagement_quiz_button', category: 'link' },
             'supervisor button': { normalised: 'supervisor_button', category: 'link' },
             'modal button': { normalised: 'modal_button', category: 'link' },
@@ -931,7 +998,7 @@ class TagNormaliser {
             {
                 category: 'link',
                 tags: ['button', 'external_link_button', 'external_link', 'engagement_quiz_button',
-                       'supervisor_button', 'modal_button', 'audio_button']
+                       'supervisor_button', 'modal_button', 'audio_button', 'go_to_journal']
             },
             {
                 category: 'subtag',

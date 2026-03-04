@@ -70,6 +70,10 @@ class OutputFormatter {
     formatContent(content, startIndex, startFound) {
         const lines = [];
 
+        // Reset list counters for fresh content formatting
+        this._listCounters = {};
+        this._lastListNumId = null;
+
         lines.push('');
         lines.push('--- CONTENT START ---');
 
@@ -130,6 +134,11 @@ class OutputFormatter {
             } else {
                 // Apply formatting markers
                 chunk = this._applyFormatting(chunk, fmt);
+
+                // Yellow highlight marker (correct answer indicator)
+                if (fmt.highlight === 'yellow') {
+                    chunk = '\u2705' + chunk;
+                }
             }
 
             // Hyperlink
@@ -163,10 +172,28 @@ class OutputFormatter {
             );
 
             if (isOrdered) {
-                // For ordered lists, we'd need counters — use a simple marker
-                text = indent + '1. ' + text;
+                // Track list counters per numId for correct numbering
+                var numId = para.listNumId || 'default';
+                if (!this._listCounters) this._listCounters = {};
+                if (!this._listCounters[numId]) this._listCounters[numId] = 0;
+                this._listCounters[numId]++;
+                var count = this._listCounters[numId];
+
+                if (para.listFormat === 'lowerLetter') {
+                    text = indent + String.fromCharCode(96 + count) + '. ' + text;
+                } else if (para.listFormat === 'upperLetter') {
+                    text = indent + String.fromCharCode(64 + count) + '. ' + text;
+                } else {
+                    text = indent + count + '. ' + text;
+                }
+                this._lastListNumId = numId;
             } else {
                 text = indent + '\u2022 ' + text;
+            }
+        } else {
+            // Reset counters when we leave a list context
+            if (this._lastListNumId) {
+                this._lastListNumId = null;
             }
         }
 
