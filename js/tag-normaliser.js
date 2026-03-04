@@ -50,6 +50,9 @@ class TagNormaliser {
             };
         }
 
+        // Step 0: Pre-process — de-fragment fractured red text boundaries
+        textContent = this.defragmentRawText(textContent);
+
         var tags = [];
         var redTextInstructions = [];
         var remainingText = textContent;
@@ -192,9 +195,60 @@ class TagNormaliser {
     resolveOrdinalOrNumber(word) {
         if (!word) return null;
         var lower = word.toLowerCase().trim();
+        // Direct lookup in ordinal/cardinal map
         if (this._ordinalMap.hasOwnProperty(lower)) return this._ordinalMap[lower];
+        // Strip trailing ordinal suffixes (1st, 2nd, 3rd, 4th, etc.)
+        var stripped = lower.replace(/(st|nd|rd|th)$/, '');
+        if (stripped !== lower) {
+            var suffixParsed = parseInt(stripped, 10);
+            if (!isNaN(suffixParsed)) return suffixParsed;
+        }
+        // Plain numeric string
         var parsed = parseInt(lower, 10);
         return isNaN(parsed) ? null : parsed;
+    }
+
+    /**
+     * Pre-process raw text to de-fragment fractured red-text boundaries
+     * caused by Microsoft Word splitting a single tag across multiple
+     * XML formatting runs.
+     *
+     * Handles three classes of artifact:
+     * 1. Redundant close/re-open boundaries:
+     *    `[/RED TEXT]🔴` + whitespace + `🔴[RED TEXT]` → stripped
+     * 2. Multiple spaces inside square brackets: collapsed to single space
+     * 3. Leading/trailing spaces inside square brackets: trimmed
+     *
+     * @param {string} text - Raw text content potentially with fractured markers
+     * @returns {string} Cleaned text with fractured boundaries stitched
+     */
+    defragmentRawText(text) {
+        if (!text || typeof text !== 'string') return text;
+
+        // 1. Stitch fractured red-text boundaries:
+        //    [/RED TEXT]🔴 <whitespace> 🔴[RED TEXT] → removed
+        text = text.replace(
+            /\[\/RED TEXT\]\uD83D\uDD34\s*\uD83D\uDD34\[RED TEXT\]/g,
+            ''
+        );
+
+        // 2. Collapse multiple spaces inside square brackets to single space
+        text = text.replace(/\[([^\]]+)\]/g, function(match, inner) {
+            var cleaned = inner.replace(/\s{2,}/g, ' ');
+            return '[' + cleaned + ']';
+        });
+
+        // 3. Trim leading/trailing whitespace inside square brackets
+        //    e.g. [ tags ] → [tags], [ H2 ] → [H2]
+        text = text.replace(/\[\s+([^\]]*?)\s*\]/g, function(match, inner) {
+            return '[' + inner.trim() + ']';
+        });
+        // Also handle trailing-only: [tags ] → [tags]
+        text = text.replace(/\[([^\]]*?)\s+\]/g, function(match, inner) {
+            return '[' + inner.trim() + ']';
+        });
+
+        return text;
     }
 
     // ------------------------------------------------------------------
