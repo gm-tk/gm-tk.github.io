@@ -185,7 +185,8 @@ gm-tk.github.io/
 │   ├── interactiveInference.test.js # Interactive type inference from table structure tests
 │   ├── videoNormalization.test.js # Video tag normalization tests
 │   ├── alertNormalization.test.js # Alert/boxout container normalization tests
-│   └── insideTab.test.js   # [Inside tab] marker handling tests
+│   ├── insideTab.test.js   # [Inside tab] marker handling tests
+│   └── normalizeSubtags.test.js # Comprehensive ordinal & verbose sub-tag normalization tests
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -1060,7 +1061,9 @@ INTERACTIVE 2 of 7
 - **`multichoice dropdown quiz paragraph`** (Round 3C) — added as variant for `dropdown_quiz_paragraph`
 - **Video tag variants** (Phase 6) — `_matchVideoTag()` method matches `[embed video]`, `[imbed video]`, `[insert video]`, `[embed film]`, `[imbed film]`, `[Interactive: Video: Title]`, and `[audio animation video]` patterns before heading tag matching
 - **`[slideshow]`** (Phase 6) — single-word variant normalised to `carousel` alongside existing `slide show`
-- Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`, `reassembleFragmentedTags(text)`
+- **Ordinal sub-tag recognition** — `_matchSubTag()` method recognises verbose ordinal sub-tags (e.g., `[First tab of accordion]`, `[Forth card, front H4 title]`, `[Inside tab]`, `[New tab]`, `[Accordion three: Routine]`, `[Card 1]`, `[Flipcard 1]`, `[Slide 1 - video]`, `[Carousel Image 1]`, `[Tab 1 body]`) so they are not reported as unrecognised; returns normalised forms with category 'subtag' and extracted index/level/modifier
+- **`resolveOrdinalOrNumber(word)`** — public method that converts ordinal words (`first`–`tenth`), cardinal words (`one`–`ten`), misspellings (`forth`→4), and numeric strings to their integer equivalents; case-insensitive; returns null for unrecognised input
+- Public API: `processBlock(text)`, `normaliseTag(tagText)`, `getCategory(normalisedName)`, `reassembleFragmentedTags(text)`, `resolveOrdinalOrNumber(word)`
 
 #### block-scoper.js — DONE (Phase 6)
 - Hierarchical block scoping engine that groups container elements with their children
@@ -1068,7 +1071,7 @@ INTERACTIVE 2 of 7
 - **Block scoping** (`scopeBlocks()`) — scans content blocks, identifies opening tags for container types (accordion, carousel, flip_card, drag_and_drop, activity, alert/boxout, tabs, speech_bubble, etc.), matches closing tags, tracks children and sub-tags within each block
 - **Fuzzy closer matching** (`_fuzzyMatchCloser()`) — matches closing tags despite spelling variations (e.g., `[End accordian]` matches `accordion`), generic closers (`[End interactive]`, `[End component]`), and compacted forms (`[endaccordion]`)
 - **Implicit boundary detection** — blocks auto-close at: page break/end page tags, next activity opening, same-type reopening, and lookahead limit (200 lines with no closer found)
-- **Ordinal-to-number normalization** (`normaliseSubTag()`) — converts verbose ordinal sub-tags to indexed forms: `[First tab of accordion]` → `{subTagType: 'tab', index: 1}`, `[Second card, front H4 title]` → `{subTagType: 'card_front', index: 2, headingLevel: 'H4', headingText: 'title'}`; handles misspellings (`forth` → 4); supports accordion tabs, flip card front/back, carousel slides, word-numbered items
+- **Ordinal-to-number normalization** (`normaliseSubTag()`) — converts verbose ordinal sub-tags to indexed forms: `[First tab of accordion]` → `{subTagType: 'tab', index: 1}`, `[Second card, front H4 title]` → `{subTagType: 'card_front', index: 2, headingLevel: 'H4', headingText: 'title'}`; handles misspellings (`forth` → 4); supports accordion tabs, flip card front/back, carousel slides, word-numbered items; `contentHint` field distinguishes content-type suffixes (`body`, `content`, `image`, `video`, `heading`) from heading labels on tab/accordion sub-tags; copy-paste mismatch detection on ordinal flip card backs corrects index when ordinal word doesn't match preceding `card_front` (e.g., ENGJ402 line 1024 "Third card, back" after "Forth card, front" → uses index 4); `[New tab N]` variant with trailing number supported; `[front of card title and image N]` handles "and" alongside "&"
 - **Compound tag splitting** (`splitCompoundTags()`) — splits multiple bracket pairs in red text into individual tags: `[Body] [LESSON] 6` → 2 separate tag objects; handles no-space brackets `[Front][H3]`, triple brackets `[Card 1] [Front] [H3]`, trailing text after last bracket, and `[image of X and HN]` patterns
 - **Layout direction extraction** (`extractLayoutDirection()`) — extracts positioning from tags like `[Image embedded left]`, `[Body right]`, `[Body bold]`, `[Body bullet points]`, `[Flip card image]`; returns `{element, position, style}` objects
 - **Layout pair detection** (`detectLayoutPairs()`) — groups adjacent layout blocks into side-by-side pairs (e.g., image-right + body-left)
@@ -1491,7 +1494,7 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
-- **Automated unit tests** — `node tests/test-runner.js` runs 182 tests across 11 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, and `[Inside tab]` handling
+- **Automated unit tests** — `node tests/test-runner.js` runs 277 tests across 12 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, and comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns)
 - **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files with class declarations in global scope; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table
