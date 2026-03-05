@@ -1,5 +1,5 @@
 /**
- * BlockScoper — Block Scoping Engine for ParseMaster.
+ * BlockScoper — Block Scoping Engine for PageForge.
  *
  * Scans normalised content blocks and groups them into hierarchical blocks.
  * A "block" is a container element (accordion, carousel, flip cards, activity, etc.)

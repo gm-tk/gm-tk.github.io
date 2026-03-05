@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParseMaster — Writer Template Parser</title>
+    <title>PageForge — Writer Template Parser</title>
     <meta name="description" content="Client-side .docx parser for Writer Template documents. No data is stored or transmitted.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="css/styles.css">
@@ -14,7 +14,7 @@
     <header class="app-header">
         <div class="header-inner">
             <div>
-                <h1 class="app-title">ParseMaster</h1>
+                <h1 class="app-title">PageForge</h1>
                 <p class="app-subtitle">Writer Template Parser &mdash; Client-Side Only, No Data Stored</p>
             </div>
             <div class="privacy-badge" aria-label="All processing happens in your browser. No data is uploaded or stored.">
@@ -49,6 +49,13 @@
             </div>
             <input type="file" id="file-input" accept=".docx" class="sr-only" aria-hidden="true">
 
+            <!-- Staged file indicator -->
+            <div id="staged-file-info" class="staged-file-info hidden">
+                <span class="staged-file-icon" aria-hidden="true">&#128196;</span>
+                <span id="staged-file-name" class="staged-file-name"></span>
+                <span id="staged-template-hint" class="staged-template-hint hidden"></span>
+            </div>
+
             <div id="template-selector" class="template-selector">
                 <label for="template-dropdown" class="template-label">Template:</label>
                 <select id="template-dropdown" class="template-dropdown">
@@ -57,20 +64,10 @@
                 <span id="template-auto-label" class="template-auto-label hidden">Auto-detected</span>
             </div>
 
-            <details class="about-section">
-                <summary class="about-toggle">Why &ldquo;ParseMaster&rdquo;?</summary>
-                <p class="about-text">
-                    To <em>parse</em> means to divide a sentence into its grammatical parts and identify
-                    how they relate to each other &mdash; or, more broadly, to examine something in minute
-                    detail and analyse it critically. That&rsquo;s exactly what this tool does: it takes the
-                    complex, layered XML structure of a .docx Writer Template &mdash; with its tracked changes,
-                    formatting runs, nested containers, and red-text annotations &mdash; and methodically
-                    breaks it down into clean, structured, labelled output ready for conversion. ParseMaster
-                    doesn&rsquo;t just extract text; it <em>parses</em> every element, preserving the
-                    relationships between tags, content, and formatting that make accurate HTML conversion
-                    possible.
-                </p>
-            </details>
+            <button id="btn-convert" class="btn btn-convert" type="button" disabled
+                    aria-label="Convert the staged document to HTML">
+                Convert Document
+            </button>
         </section>
 
         <!-- Processing Section -->
@@ -88,19 +85,13 @@
             <!-- Metadata -->
             <div id="metadata-panel" aria-label="Module metadata"></div>
 
-            <!-- Conversion Summary -->
-            <div id="conversion-summary" class="conversion-summary" aria-label="Conversion summary"></div>
-
             <!-- Global Actions Bar -->
             <div class="actions-bar">
                 <button id="btn-download-zip" class="btn btn-primary" type="button">
                     &#128230; Download All as ZIP
                 </button>
-                <button id="btn-copy-reference" class="btn" type="button">
-                    &#128203; Copy Interactive Reference
-                </button>
-                <button id="btn-legacy-output" class="btn btn-toggle" type="button">
-                    &#128196; Legacy Text Output
+                <button id="btn-download-text" class="btn" type="button">
+                    &#128196; Download Text Template
                 </button>
                 <button id="btn-reset" class="btn" type="button">
                     &#128260; Parse Another File
@@ -128,26 +119,12 @@
 
             </div>
 
-            <!-- Legacy Output (hidden by default) -->
-            <div id="legacy-output-panel" class="legacy-output-panel hidden">
-                <div class="preview-header">
-                    <span class="preview-filename">Legacy Text Output</span>
-                    <div class="preview-actions">
-                        <button id="btn-copy-legacy" class="btn btn-sm" type="button" title="Copy text output">&#128203; Copy All</button>
-                        <button id="btn-download-legacy" class="btn btn-sm" type="button" title="Download as .txt">&#128190; Download .txt</button>
-                        <button id="btn-back-to-html" class="btn btn-sm" type="button" title="Back to HTML files">&#8592; Back to HTML</button>
-                    </div>
-                </div>
-                <label for="legacy-output-area" class="sr-only">Legacy text output</label>
-                <textarea id="legacy-output-area" readonly aria-label="Legacy text output"></textarea>
-            </div>
-
         </section>
 
         <!-- Debug Panel -->
-        <section id="debug-panel" class="hidden" aria-label="Debug: Tag and Page Analysis">
+        <section id="debug-panel" class="hidden" aria-label="Debug information">
             <details class="debug-panel-wrapper" id="debug-toggle">
-                <summary class="debug-panel-header">Debug: Tag &amp; Page Analysis</summary>
+                <summary class="debug-panel-header">Debug</summary>
                 <div id="debug-content" class="debug-panel-body"></div>
             </details>
         </section>
@@ -160,7 +137,7 @@
     <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
     <footer class="app-footer">
-        ParseMaster &mdash; No data is stored, transmitted, or retained.
+        PageForge &mdash; No data is stored, transmitted, or retained.
     </footer>
 
     <!-- JSZip via CDN -->

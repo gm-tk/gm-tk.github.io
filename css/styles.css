@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ParseMaster — Styles
+   PageForge — Styles
    Writer Template Parser
    ========================================================================== */
 
@@ -171,49 +171,63 @@ main {
     margin: 0 auto;
 }
 
-/* ---------- About Section ---------- */
+/* ---------- Staged File Info ---------- */
 
-.about-section {
+.staged-file-info {
     width: 100%;
     max-width: 640px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success);
     border-radius: var(--radius);
-    padding: 0.75rem 1rem;
-}
-
-.about-toggle {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    cursor: pointer;
-    list-style: none;
-}
-
-.about-toggle::-webkit-details-marker {
-    display: none;
-}
-
-.about-toggle::before {
-    content: "\25B6\FE0E ";
-    font-size: 0.7rem;
-    margin-right: 0.3rem;
-}
-
-.about-section[open] .about-toggle::before {
-    content: "\25BC\FE0E ";
-}
-
-.about-text {
-    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
     font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    line-height: 1.65;
 }
 
-.about-text em {
-    font-style: italic;
+.staged-file-icon {
+    flex-shrink: 0;
+}
+
+.staged-file-name {
+    font-weight: 600;
     color: var(--color-text);
+}
+
+.staged-template-hint {
+    font-size: 0.75rem;
+    color: var(--color-success);
+    font-weight: 500;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* ---------- Convert Button ---------- */
+
+.btn-convert {
+    width: 100%;
+    max-width: 640px;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.btn-convert:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+.btn-convert:disabled {
+    background: var(--color-border);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 /* ---------- Template Selector ---------- */
@@ -746,34 +760,6 @@ main {
     margin: 0.1rem 0;
 }
 
-/* ---------- Conversion Summary ---------- */
-
-.conversion-summary {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: 0.75rem 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    font-size: 0.85rem;
-}
-
-.summary-item {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-}
-
-.summary-label {
-    color: var(--color-text-secondary);
-}
-
-.summary-value {
-    font-weight: 600;
-    color: var(--color-text);
-}
-
 /* ---------- Output Layout — side by side on desktop ---------- */
 
 .output-layout {
@@ -885,31 +871,6 @@ main {
     font-size: 0.75rem;
 }
 
-/* ---------- Legacy Output Panel ---------- */
-
-.legacy-output-panel {
-    display: flex;
-    flex-direction: column;
-}
-
-.legacy-output-panel textarea {
-    width: 100%;
-    min-height: 400px;
-    max-height: 70vh;
-    resize: vertical;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    line-height: 1.55;
-    padding: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-surface);
-    color: var(--color-text);
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-y: auto;
-}
-
 /* ---------- Screen-reader only ---------- */
 
 .sr-only {
@@ -974,8 +935,7 @@ main {
         max-height: 200px;
     }
 
-    .conversion-summary {
-        gap: 0.35rem 1rem;
-        font-size: 0.8rem;
+    .btn-convert {
+        max-width: 100%;
     }
 }

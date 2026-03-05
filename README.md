@@ -1,12 +1,12 @@
-# ParseMaster
+# PageForge
 
 **Client-side Writer Template parser and HTML converter**
 
 ---
 
-## What is ParseMaster?
+## What is PageForge?
 
-ParseMaster is a web-based tool that reads Writer Template `.docx` files and converts them into clean, structured plain text — ready to be used in the HTML conversion pipeline.
+PageForge is a web-based tool that reads Writer Template `.docx` files and converts them into clean, structured plain text — ready to be used in the HTML conversion pipeline.
 
 It replaces the slow, manual first step of getting content out of a Word document and into a format that can be worked with.
 
@@ -14,7 +14,7 @@ It replaces the slow, manual first step of getting content out of a Word documen
 
 Writer Template documents contain a lot of boilerplate before the actual module content begins (submission checklists, LOT tags, Section A, guidance text, etc.). They also frequently contain tracked changes and Google Docs editing markup that standard Word-to-text tools silently drop — leading to missing content.
 
-ParseMaster handles all of this automatically:
+PageForge handles all of this automatically:
 
 - **Skips the boilerplate** — automatically detects where your module content starts (at the `[TITLE BAR]` tag) and only outputs the relevant content
 - **Handles tracked changes correctly** — deletions are removed, insertions are kept, exactly as the writer intended
@@ -33,7 +33,7 @@ That's it.
 
 ## Privacy and security
 
-**Your files never leave your computer.** ParseMaster runs entirely in your web browser — there is no server, no upload, no database, and no data retention of any kind. When you close the tab or parse another file, the previous data is gone.
+**Your files never leave your computer.** PageForge runs entirely in your web browser — there is no server, no upload, no database, and no data retention of any kind. When you close the tab or parse another file, the previous data is gone.
 
 This is not just a policy — it is a technical reality. The app is a static website with no backend whatsoever.
 

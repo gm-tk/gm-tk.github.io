@@ -1,5 +1,5 @@
 /**
- * PageBoundary — Page boundary detection and validation engine for ParseMaster.
+ * PageBoundary — Page boundary detection and validation engine for PageForge.
  *
  * Processes the parser's content blocks using TagNormaliser to identify
  * structural tags, applies 4 validation rules, and assigns content

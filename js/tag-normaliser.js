@@ -1,5 +1,5 @@
 /**
- * TagNormaliser — Tag taxonomy and normalisation engine for ParseMaster.
+ * TagNormaliser — Tag taxonomy and normalisation engine for PageForge.
  *
  * Processes raw content block text to extract square-bracket tags,
  * red text markers, and writer instructions. Maps all tag variants

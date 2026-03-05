@@ -1,9 +1,9 @@
 /**
- * App — UI controller for ParseMaster.
+ * App — UI controller for PageForge.
  *
- * Manages file upload (drag-and-drop + click-to-browse), progress
- * display, multi-file output rendering, clipboard copy, individual
- * and bulk file download (ZIP), and debug panel.
+ * Manages file upload (drag-and-drop + click-to-browse), staged file
+ * handling, Convert button, progress display, multi-file output rendering,
+ * clipboard copy, individual and bulk file download (ZIP), and debug panel.
  */
 
 'use strict';
@@ -30,8 +30,17 @@ class App {
         /** Cached tag/page analysis for debug panel */
         this.currentAnalysis = null;
 
-        /** Currently selected template ID */
+        /** Currently selected template ID (from dropdown manual selection) */
         this.selectedTemplateId = null;
+
+        /** Auto-detected template ID (from module code) */
+        this.autoDetectedTemplate = null;
+
+        /** Whether the user has manually selected a template */
+        this.userManuallySelectedTemplate = false;
+
+        /** Staged file waiting for conversion */
+        this.stagedFile = null;
 
         /** Generated HTML files keyed by filename */
         this.generatedHtmlFiles = {};
@@ -47,9 +56,6 @@ class App {
 
         /** Collected interactive data */
         this.collectedInteractives = [];
-
-        /** Whether legacy output mode is active */
-        this.legacyModeActive = false;
 
         this._bindElements();
         this._bindEvents();
@@ -69,22 +75,15 @@ class App {
         this.progressStatus = document.getElementById('progress-status');
         this.progressSteps = document.getElementById('progress-steps');
         this.metadataPanel = document.getElementById('metadata-panel');
-        this.conversionSummary = document.getElementById('conversion-summary');
         this.outputArea = document.getElementById('output-area');
         this.btnDownloadZip = document.getElementById('btn-download-zip');
-        this.btnCopyReference = document.getElementById('btn-copy-reference');
-        this.btnLegacyOutput = document.getElementById('btn-legacy-output');
+        this.btnDownloadText = document.getElementById('btn-download-text');
         this.btnReset = document.getElementById('btn-reset');
         this.fileListPanel = document.getElementById('file-list-panel');
         this.outputLayout = document.getElementById('output-layout');
         this.previewFilename = document.getElementById('preview-filename');
         this.btnCopyPreview = document.getElementById('btn-copy-preview');
         this.btnDownloadPreview = document.getElementById('btn-download-preview');
-        this.legacyOutputPanel = document.getElementById('legacy-output-panel');
-        this.legacyOutputArea = document.getElementById('legacy-output-area');
-        this.btnCopyLegacy = document.getElementById('btn-copy-legacy');
-        this.btnDownloadLegacy = document.getElementById('btn-download-legacy');
-        this.btnBackToHtml = document.getElementById('btn-back-to-html');
         this.errorPanel = document.getElementById('error-panel');
         this.errorMessage = document.getElementById('error-message');
         this.toast = document.getElementById('toast');
@@ -93,6 +92,10 @@ class App {
         this.debugToggle = document.getElementById('debug-toggle');
         this.templateDropdown = document.getElementById('template-dropdown');
         this.templateAutoLabel = document.getElementById('template-auto-label');
+        this.btnConvert = document.getElementById('btn-convert');
+        this.stagedFileInfo = document.getElementById('staged-file-info');
+        this.stagedFileName = document.getElementById('staged-file-name');
+        this.stagedTemplateHint = document.getElementById('staged-template-hint');
     }
 
     // ------------------------------------------------------------------
@@ -121,7 +124,7 @@ class App {
             self.dropZone.classList.remove('drag-over');
             var files = e.dataTransfer.files;
             if (files.length > 0) {
-                self.handleFile(files[0]);
+                self.stageFile(files[0]);
             }
         });
 
@@ -140,9 +143,16 @@ class App {
 
         this.fileInput.addEventListener('change', function () {
             if (self.fileInput.files.length > 0) {
-                self.handleFile(self.fileInput.files[0]);
+                self.stageFile(self.fileInput.files[0]);
             }
         });
+
+        // Convert button
+        if (this.btnConvert) {
+            this.btnConvert.addEventListener('click', function () {
+                self.convertDocument();
+            });
+        }
 
         // Global action buttons
         if (this.btnDownloadZip) {
@@ -151,15 +161,9 @@ class App {
             });
         }
 
-        if (this.btnCopyReference) {
-            this.btnCopyReference.addEventListener('click', function () {
-                self._handleCopyReference();
-            });
-        }
-
-        if (this.btnLegacyOutput) {
-            this.btnLegacyOutput.addEventListener('click', function () {
-                self._showLegacyMode();
+        if (this.btnDownloadText) {
+            this.btnDownloadText.addEventListener('click', function () {
+                self._handleDownloadText();
             });
         }
 
@@ -180,37 +184,14 @@ class App {
             });
         }
 
-        // Legacy output panel buttons
-        if (this.btnCopyLegacy) {
-            this.btnCopyLegacy.addEventListener('click', function () {
-                if (self.currentOutput) {
-                    self.copyToClipboard(self.currentOutput.full, 'Text output copied to clipboard');
-                }
-            });
-        }
-
-        if (this.btnDownloadLegacy) {
-            this.btnDownloadLegacy.addEventListener('click', function () {
-                if (self.currentOutput) {
-                    var code = self.currentMetadata && self.currentMetadata.moduleCode
-                        ? self.currentMetadata.moduleCode
-                        : 'ParseMaster_output';
-                    self.downloadAsTxt(self.currentOutput.full, code + '_parsed.txt');
-                }
-            });
-        }
-
-        if (this.btnBackToHtml) {
-            this.btnBackToHtml.addEventListener('click', function () {
-                self._hideLegacyMode();
-            });
-        }
-
         // Template dropdown
         this.templateDropdown.addEventListener('change', function () {
-            self.selectedTemplateId = self.templateDropdown.value;
-            // Hide auto-detected label when user manually changes
-            self.templateAutoLabel.classList.add('hidden');
+            if (self.templateDropdown.value) {
+                self.selectedTemplateId = self.templateDropdown.value;
+                self.userManuallySelectedTemplate = true;
+                // Hide auto-detected label when user manually changes
+                self.templateAutoLabel.classList.add('hidden');
+            }
         });
     }
 
@@ -237,24 +218,54 @@ class App {
     }
 
     /**
-     * Auto-detect template from module code and update the dropdown.
+     * Auto-detect template from module code. Stores the detected template
+     * internally but does NOT change the dropdown selection. Shows a hint
+     * near the staged file info instead.
      *
      * @param {string|null} moduleCode
      */
     _autoDetectTemplate(moduleCode) {
         var detected = this.templateEngine.detectTemplate(moduleCode);
         if (detected) {
-            this.templateDropdown.value = detected;
-            this.selectedTemplateId = detected;
-            this.templateAutoLabel.classList.remove('hidden');
+            this.autoDetectedTemplate = detected;
+            // Show hint near staged file
+            if (this.stagedTemplateHint) {
+                try {
+                    var config = this.templateEngine.getConfig(detected);
+                    this.stagedTemplateHint.textContent = 'Auto-detected: ' + config._templateName;
+                    this.stagedTemplateHint.classList.remove('hidden');
+                } catch (e) {
+                    // Ignore — template config not available
+                }
+            }
         }
     }
 
+    /**
+     * Get the resolved template ID to use for conversion.
+     * Manual dropdown selection takes priority over auto-detected.
+     *
+     * @returns {string|null}
+     */
+    _getResolvedTemplateId() {
+        if (this.userManuallySelectedTemplate && this.selectedTemplateId) {
+            return this.selectedTemplateId;
+        }
+        return this.autoDetectedTemplate || null;
+    }
+
     // ------------------------------------------------------------------
-    // File handling
+    // File staging (upload without conversion)
     // ------------------------------------------------------------------
 
-    async handleFile(file) {
+    /**
+     * Stage a file for conversion. Validates and stores the file,
+     * extracts module code for template auto-detection, and enables
+     * the Convert button. Does NOT trigger full parsing/conversion.
+     *
+     * @param {File} file
+     */
+    stageFile(file) {
         // Validate file type
         if (!file.name.toLowerCase().endsWith('.docx')) {
             this.showError(
@@ -262,6 +273,64 @@ class App {
             );
             return;
         }
+
+        this.hideError();
+
+        // Store the staged file
+        this.stagedFile = file;
+
+        // Show staged file info
+        if (this.stagedFileInfo && this.stagedFileName) {
+            this.stagedFileName.textContent = file.name;
+            this.stagedFileInfo.classList.remove('hidden');
+        }
+
+        // Update drop zone appearance
+        this.dropZone.querySelector('.drop-zone-title').textContent = 'File staged — click to change';
+
+        // Extract module code from filename for template auto-detection
+        var moduleCodeMatch = file.name.match(/[A-Z]{4}\d{3}/);
+        var moduleCode = moduleCodeMatch ? moduleCodeMatch[0] : null;
+
+        // Reset manual template selection flag when a new file is staged
+        this.userManuallySelectedTemplate = false;
+        this.autoDetectedTemplate = null;
+        if (this.stagedTemplateHint) {
+            this.stagedTemplateHint.classList.add('hidden');
+        }
+
+        // Reset dropdown to default
+        this.templateDropdown.selectedIndex = 0;
+        this.templateAutoLabel.classList.add('hidden');
+
+        // Auto-detect template
+        if (moduleCode) {
+            this._autoDetectTemplate(moduleCode);
+        }
+
+        // Enable Convert button
+        if (this.btnConvert) {
+            this.btnConvert.disabled = false;
+        }
+
+        this._announce('File staged: ' + file.name + '. Click Convert Document to process.');
+    }
+
+    // ------------------------------------------------------------------
+    // Conversion pipeline (triggered by Convert button)
+    // ------------------------------------------------------------------
+
+    /**
+     * Run the full conversion pipeline on the staged file.
+     * This is what used to happen automatically on file upload.
+     */
+    async convertDocument() {
+        if (!this.stagedFile) {
+            this.showError('No file staged. Please upload a .docx file first.');
+            return;
+        }
+
+        var file = this.stagedFile;
 
         // Large file warning
         if (file.size > 20 * 1024 * 1024) {
@@ -271,6 +340,9 @@ class App {
 
         this.hideError();
         this.showProcessing();
+
+        // Resolve which template to use
+        this.selectedTemplateId = this._getResolvedTemplateId();
 
         var self = this;
 
@@ -286,8 +358,13 @@ class App {
             self.currentOutput = output;
             self.currentMetadata = result.metadata;
 
-            // Auto-detect template from module code
-            self._autoDetectTemplate(result.metadata.moduleCode);
+            // If we didn't detect a template from filename, try from parsed metadata
+            if (!self.selectedTemplateId && result.metadata.moduleCode) {
+                var detected = self.templateEngine.detectTemplate(result.metadata.moduleCode);
+                if (detected) {
+                    self.selectedTemplateId = detected;
+                }
+            }
 
             // Run tag normalisation and page boundary analysis
             self._addProgressStep('Normalising tags...');
@@ -340,7 +417,7 @@ class App {
                 );
             }
 
-            console.error('ParseMaster error:', err);
+            console.error('PageForge error:', err);
         }
     }
 
@@ -412,29 +489,16 @@ class App {
         // Populate metadata panel
         this._renderMetadata(result.metadata);
 
-        // Populate conversion summary
-        this._renderConversionSummary();
-
-        // Update Copy Interactive Reference button visibility
-        if (this.btnCopyReference) {
-            if (this.interactiveReferenceDoc) {
-                this.btnCopyReference.classList.remove('hidden');
-            } else {
-                this.btnCopyReference.classList.add('hidden');
-            }
-        }
-
         // Render file list and show preview
         if (this.generatedFileList.length > 0) {
             this._renderFileList();
             // Auto-select first file
             var firstFilename = this.generatedFileList[0];
             this._selectFile(firstFilename);
-            // Show HTML layout, hide legacy
-            this._hideLegacyMode();
-        } else {
-            // No HTML files — show legacy mode directly
-            this._showLegacyMode();
+            // Show HTML layout
+            if (this.outputLayout) {
+                this.outputLayout.classList.remove('hidden');
+            }
         }
 
         // Check if content is empty
@@ -442,7 +506,7 @@ class App {
             this.showError('This document appears to be empty or contains no text content.');
         }
 
-        // Render debug panel
+        // Render debug panel (now includes conversion summary)
         if (this.currentAnalysis) {
             this._renderDebugPanel(this.currentAnalysis);
         }
@@ -463,12 +527,14 @@ class App {
         this.currentMetadata = null;
         this.currentAnalysis = null;
         this.selectedTemplateId = null;
+        this.autoDetectedTemplate = null;
+        this.userManuallySelectedTemplate = false;
+        this.stagedFile = null;
         this.generatedHtmlFiles = {};
         this.generatedFileList = [];
         this.selectedPreviewFile = null;
         this.interactiveReferenceDoc = '';
         this.collectedInteractives = [];
-        this.legacyModeActive = false;
         this.blockScoper.warnings = [];
         this.outputManager.clear();
         this.resultsSection.classList.add('hidden');
@@ -485,6 +551,22 @@ class App {
         // Clear file list
         if (this.fileListPanel) {
             this.fileListPanel.innerHTML = '';
+        }
+        // Reset staged file info
+        if (this.stagedFileInfo) {
+            this.stagedFileInfo.classList.add('hidden');
+        }
+        if (this.stagedTemplateHint) {
+            this.stagedTemplateHint.classList.add('hidden');
+        }
+        // Reset drop zone text
+        var dropTitle = this.dropZone.querySelector('.drop-zone-title');
+        if (dropTitle) {
+            dropTitle.textContent = 'Drop your .docx file here or click to browse';
+        }
+        // Disable Convert button
+        if (this.btnConvert) {
+            this.btnConvert.disabled = true;
         }
     }
 
@@ -515,81 +597,6 @@ class App {
 
         // Scroll to bottom
         this.progressSteps.scrollTop = this.progressSteps.scrollHeight;
-    }
-
-    // ------------------------------------------------------------------
-    // Conversion Summary rendering
-    // ------------------------------------------------------------------
-
-    /**
-     * Render the conversion summary panel with key stats.
-     */
-    _renderConversionSummary() {
-        if (!this.conversionSummary) return;
-
-        var items = [];
-
-        // Pages generated
-        var htmlCount = this.outputManager.getHtmlFileCount();
-        if (htmlCount > 0) {
-            items.push({ label: 'Pages', value: htmlCount + ' HTML files generated' });
-        }
-
-        // Template used
-        if (this.selectedTemplateId) {
-            try {
-                var config = this.templateEngine.getConfig(this.selectedTemplateId);
-                items.push({ label: 'Template', value: config._templateName });
-            } catch (e) {
-                // Ignore
-            }
-        }
-
-        // Interactives detected
-        if (this.collectedInteractives && this.collectedInteractives.length > 0) {
-            items.push({
-                label: 'Interactives',
-                value: this.collectedInteractives.length + ' interactive components detected'
-            });
-        }
-
-        // Tags normalised
-        if (this.currentAnalysis) {
-            var tagText = this.currentAnalysis.totalTags + ' tags normalised';
-            if (this.currentAnalysis.unrecognisedTags.length > 0) {
-                tagText += ' + ' + this.currentAnalysis.unrecognisedTags.length + ' unrecognised';
-            }
-            items.push({ label: 'Tags', value: tagText });
-        }
-
-        // Warnings
-        if (this.currentAnalysis && this.currentAnalysis.pages) {
-            var warningCount = 0;
-            for (var pi = 0; pi < this.currentAnalysis.pages.length; pi++) {
-                var pg = this.currentAnalysis.pages[pi];
-                if (pg.boundaryDecisions && pg.boundaryDecisions.length > 0) {
-                    warningCount += pg.boundaryDecisions.length;
-                }
-            }
-            if (warningCount > 0) {
-                items.push({ label: 'Warnings', value: warningCount + ' boundary rules fired' });
-            }
-        }
-
-        if (items.length === 0) {
-            this.conversionSummary.classList.add('hidden');
-            return;
-        }
-
-        this.conversionSummary.classList.remove('hidden');
-        var html = '';
-        for (var i = 0; i < items.length; i++) {
-            html += '<div class="summary-item">' +
-                '<span class="summary-label">' + this._esc(items[i].label) + ':</span> ' +
-                '<span class="summary-value">' + this._esc(items[i].value) + '</span>' +
-                '</div>';
-        }
-        this.conversionSummary.innerHTML = html;
     }
 
     // ------------------------------------------------------------------
@@ -733,59 +740,6 @@ class App {
     }
 
     // ------------------------------------------------------------------
-    // Legacy output mode
-    // ------------------------------------------------------------------
-
-    /**
-     * Switch to legacy text output mode.
-     */
-    _showLegacyMode() {
-        this.legacyModeActive = true;
-
-        // Hide HTML layout
-        if (this.outputLayout) {
-            this.outputLayout.classList.add('hidden');
-        }
-
-        // Show legacy panel
-        if (this.legacyOutputPanel) {
-            this.legacyOutputPanel.classList.remove('hidden');
-        }
-
-        // Populate legacy textarea
-        if (this.legacyOutputArea && this.currentOutput) {
-            this.legacyOutputArea.value = this.currentOutput.full;
-        }
-
-        // Update legacy button
-        if (this.btnLegacyOutput) {
-            this.btnLegacyOutput.classList.add('hidden');
-        }
-    }
-
-    /**
-     * Switch back from legacy mode to HTML file list mode.
-     */
-    _hideLegacyMode() {
-        this.legacyModeActive = false;
-
-        // Show HTML layout
-        if (this.outputLayout) {
-            this.outputLayout.classList.remove('hidden');
-        }
-
-        // Hide legacy panel
-        if (this.legacyOutputPanel) {
-            this.legacyOutputPanel.classList.add('hidden');
-        }
-
-        // Show legacy button
-        if (this.btnLegacyOutput) {
-            this.btnLegacyOutput.classList.remove('hidden');
-        }
-    }
-
-    // ------------------------------------------------------------------
     // Global action handlers
     // ------------------------------------------------------------------
 
@@ -810,14 +764,30 @@ class App {
     }
 
     /**
-     * Handle "Copy Interactive Reference" button click.
+     * Handle "Download Text Template" button click.
+     * Downloads the formatted text output as a .txt file.
      */
-    _handleCopyReference() {
-        if (this.interactiveReferenceDoc) {
-            this.copyToClipboard(this.interactiveReferenceDoc, 'Interactive reference copied to clipboard');
-        } else {
-            this.showToast('No interactive reference document available');
+    _handleDownloadText() {
+        if (!this.currentOutput) {
+            this.showToast('No text output available');
+            return;
         }
+
+        var code = this.currentMetadata && this.currentMetadata.moduleCode
+            ? this.currentMetadata.moduleCode
+            : 'PageForge_output';
+        var filename = code + '_parsed.txt';
+        var blob = new Blob([this.currentOutput.full], { type: 'text/plain;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        this.showToast('Downloaded ' + filename);
     }
 
     /**
@@ -1164,7 +1134,8 @@ class App {
     // ------------------------------------------------------------------
 
     /**
-     * Render the debug panel with tag normalisation and page boundary results.
+     * Render the debug panel with conversion summary, tag normalisation,
+     * and page boundary results.
      *
      * @param {Object} analysis - Analysis results from _runAnalysis
      */
@@ -1172,6 +1143,9 @@ class App {
         if (!this.debugPanel || !this.debugContent) return;
 
         var html = '';
+
+        // --- Conversion Summary (moved from main results area) ---
+        html += this._renderDebugConversionSummary();
 
         // --- Template Configuration Results ---
         html += this._renderDebugTemplateSection(analysis);
@@ -1335,6 +1309,68 @@ class App {
     }
 
     /**
+     * Render conversion summary stats for the debug panel.
+     * These were previously displayed in the main results area.
+     *
+     * @returns {string} HTML string
+     */
+    _renderDebugConversionSummary() {
+        var html = '';
+        html += '<div class="debug-section">';
+        html += '<h4 class="debug-section-title">Conversion Summary</h4>';
+        html += '<div class="debug-stats">';
+
+        // Pages generated
+        var htmlCount = this.outputManager.getHtmlFileCount();
+        if (htmlCount > 0) {
+            html += '<span class="debug-stat">Pages: <b>' + htmlCount + ' HTML files generated</b></span>';
+        }
+
+        // Template used
+        if (this.selectedTemplateId) {
+            try {
+                var config = this.templateEngine.getConfig(this.selectedTemplateId);
+                html += '<span class="debug-stat">Template: <b>' + this._esc(config._templateName) + '</b></span>';
+            } catch (e) {
+                // Ignore
+            }
+        }
+
+        // Interactives detected
+        if (this.collectedInteractives && this.collectedInteractives.length > 0) {
+            html += '<span class="debug-stat">Interactives: <b>' +
+                this.collectedInteractives.length + ' interactive components detected</b></span>';
+        }
+
+        // Tags normalised
+        if (this.currentAnalysis) {
+            var tagText = this.currentAnalysis.totalTags + ' tags normalised';
+            if (this.currentAnalysis.unrecognisedTags.length > 0) {
+                tagText += ' + ' + this.currentAnalysis.unrecognisedTags.length + ' unrecognised';
+            }
+            html += '<span class="debug-stat">Tags: <b>' + this._esc(tagText) + '</b></span>';
+        }
+
+        // Warnings
+        if (this.currentAnalysis && this.currentAnalysis.pages) {
+            var warningCount = 0;
+            for (var pi = 0; pi < this.currentAnalysis.pages.length; pi++) {
+                var pg = this.currentAnalysis.pages[pi];
+                if (pg.boundaryDecisions && pg.boundaryDecisions.length > 0) {
+                    warningCount += pg.boundaryDecisions.length;
+                }
+            }
+            if (warningCount > 0) {
+                html += '<span class="debug-stat">Warnings: <b>' + warningCount + ' boundary rules fired</b></span>';
+            }
+        }
+
+        html += '</div>';
+        html += '</div>';
+        return html;
+    }
+
+    /**
      * Render block scoping analysis for the debug panel.
      *
      * @param {Object} analysis - Analysis results
@@ -1443,7 +1479,7 @@ class App {
 
         html += '<div class="debug-stats">';
         html += '<span class="debug-stat">Total: <b>' + total + '</b></span>';
-        html += '<span class="debug-stat">Tier 1 (ParseMaster): <b>' + tier1 + '</b></span>';
+        html += '<span class="debug-stat">Tier 1 (PageForge): <b>' + tier1 + '</b></span>';
         html += '<span class="debug-stat">Tier 2 (requires implementation): <b>' + tier2 + '</b></span>';
         html += '</div>';
 
