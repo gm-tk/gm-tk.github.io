@@ -60,6 +60,7 @@ class App {
         this._bindElements();
         this._bindEvents();
         this._initTemplateEngine();
+        this._initCalibrationManager();
     }
 
     // ------------------------------------------------------------------
@@ -96,6 +97,7 @@ class App {
         this.stagedFileInfo = document.getElementById('staged-file-info');
         this.stagedFileName = document.getElementById('staged-file-name');
         this.stagedTemplateHint = document.getElementById('staged-template-hint');
+        this.calibrationSection = document.getElementById('calibration-section');
     }
 
     // ------------------------------------------------------------------
@@ -215,6 +217,38 @@ class App {
         } catch (err) {
             console.error('TemplateEngine initialisation failed:', err);
         }
+    }
+
+    // ------------------------------------------------------------------
+    // Calibration manager initialisation
+    // ------------------------------------------------------------------
+
+    /**
+     * Initialise the CalibrationManager instance with callback hooks
+     * into the App for toast display, module code, template name,
+     * and generated file list access.
+     */
+    _initCalibrationManager() {
+        var self = this;
+        this.calibrationManager = new CalibrationManager({
+            showToast: function (msg) { self.showToast(msg); },
+            getModuleCode: function () {
+                return (self.currentMetadata && self.currentMetadata.moduleCode) || '';
+            },
+            getTemplateName: function () {
+                if (!self.selectedTemplateId) return '';
+                try {
+                    var config = self.templateEngine.getConfig(self.selectedTemplateId);
+                    return config._templateName || '';
+                } catch (e) {
+                    return '';
+                }
+            },
+            getGeneratedFileList: function () {
+                return self.generatedFileList || [];
+            }
+        });
+        this.calibrationManager.init();
     }
 
     /**
@@ -506,6 +540,14 @@ class App {
             this.showError('This document appears to be empty or contains no text content.');
         }
 
+        // Show calibration panel and populate source file dropdown
+        if (this.calibrationSection) {
+            this.calibrationSection.classList.remove('hidden');
+        }
+        if (this.calibrationManager) {
+            this.calibrationManager.populateSourceFileDropdown();
+        }
+
         // Render debug panel (now includes conversion summary)
         if (this.currentAnalysis) {
             this._renderDebugPanel(this.currentAnalysis);
@@ -567,6 +609,13 @@ class App {
         // Disable Convert button
         if (this.btnConvert) {
             this.btnConvert.disabled = true;
+        }
+        // Reset calibration data
+        if (this.calibrationManager) {
+            this.calibrationManager.reset();
+        }
+        if (this.calibrationSection) {
+            this.calibrationSection.classList.add('hidden');
         }
     }
 

@@ -28,6 +28,7 @@
 17. [LMS Compliance Recalibration](#17-lms-compliance-recalibration-phase-7)
 18. [Tag Normalisation Robustness](#18-tag-normalisation-robustness-phase-1-patch)
 19. [UI Overhaul & Rebranding](#19-ui-overhaul--rebranding-phase-8)
+20. [Calibration Comparison Tool](#20-calibration-comparison-tool-phase-9)
 
 ---
 
@@ -53,6 +54,7 @@ PageForge is a client-side web application that reads Writer Template `.docx` fi
 12. **LMS compliance recalibration** → lesson number decimal format, title element format, activity class refinements (alertPadding, dropbox), table header semantics (rowSolid, th/thead/tbody), br→p conversion, info trigger definition formatting, download journal button, whakatauki author line, image iStock alt text, ALL-CAPS heading detection (DONE — Phase 7)
 13. **Tag normalisation robustness** → pre-processing de-fragmentation of fractured red-text boundaries from MS Word XML, bracket whitespace cleanup, ordinal suffix stripping in resolveOrdinalOrNumber (DONE — Phase 1 Patch)
 14. **UI overhaul & rebranding** → project renamed from ParseMaster to PageForge, upload decoupled from conversion with staged file + Convert button, template dropdown with auto-detect hint, conversion summary moved to debug panel, legacy text output replaced with direct download, "Copy Interactive Reference" button removed from action bar (DONE — Phase 8)
+15. **Calibration comparison tool** → development utility for uploading human-developed HTML reference files, logging side-by-side comparison snapshots (original writer template content, PageForge output, human correct output), displaying logged snapshots with expand/delete, and exporting structured calibration reports as .txt for Claude AI analysis (DONE — Phase 9)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -177,7 +179,8 @@ User clicks "Convert Document" button (Phase 8)
 | `InteractiveExtractor` | `js/interactive-extractor.js` | Interactive component detection, data extraction, placeholder generation, reference document |
 | `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
 | `OutputManager` | `js/output-manager.js` | Multi-file output storage, file listing, individual/ZIP download, clipboard copy |
-| `App` | `js/app.js` | UI controller — staged upload, Convert button, file list, preview, ZIP download, text download, debug panel, template selection |
+| `CalibrationManager` | `js/calibration-manager.js` | Calibration comparison tool — human reference file upload, comparison snapshot logging, snapshot display, calibration report export |
+| `App` | `js/app.js` | UI controller — staged upload, Convert button, file list, preview, ZIP download, text download, debug panel, template selection, calibration integration |
 
 ---
 
@@ -199,7 +202,8 @@ gm-tk.github.io/
 │   ├── interactive-extractor.js # Interactive data extraction, placeholder generation & reference doc (Phase 4)
 │   ├── html-converter.js    # Core HTML conversion engine (Phase 3, updated Phase 4)
 │   ├── output-manager.js    # Multi-file output management, ZIP download, clipboard copy (Phase 5)
-│   └── app.js              # UI controller (with file list, preview, ZIP download, legacy mode, debug panel)
+│   ├── calibration-manager.js # Calibration comparison tool — reference upload, snapshot logging, report export (Phase 9)
+│   └── app.js              # UI controller (with file list, preview, ZIP download, legacy mode, debug panel, calibration integration)
 ├── tests/
 │   ├── test-runner.js       # Minimal Node.js test runner (no external dependencies)
 │   ├── tagNormaliserExisting.test.js # Regression tests for existing tag normalisation
@@ -393,7 +397,8 @@ The UI uses CSS `.hidden` class to toggle between these states:
 1. `#upload-section` — initial file upload view (includes staged file info, template selector, Convert button)
 2. `#processing-section` — spinner during conversion
 3. `#results-section` — multi-panel output display with file list + preview
-4. `#debug-panel` — collapsible debug panel with conversion summary + analysis (appears below results after conversion)
+4. `#calibration-section` — collapsible calibration comparison tool panel (appears below results, above debug panel, after conversion)
+5. `#debug-panel` — collapsible debug panel with conversion summary + analysis (appears below results after conversion)
 
 ### Multi-File Output System (Phase 5, updated Phase 8)
 
@@ -439,6 +444,17 @@ The debug panel (`#debug-panel`) is a collapsible panel that appears after conve
 4. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
 5. **Block Scoping Analysis** (Phase 6) — total scoped blocks, unscoped content count, scoped block details table (type, start/end index, children, closure reason, sub-tags), and scoping warnings
 6. **Interactive Components** (Phase 4) — total count, tier breakdown, detailed table of all interactives (file, activity, type, tier, pattern, data summary), and a preview of the generated reference document
+
+### Calibration Comparison Tool (Phase 9)
+
+The calibration panel (`#calibration-section`) is a collapsible `<details>` element that appears after conversion, positioned between the results section and the debug panel. It starts **collapsed by default** and provides a development/testing utility for comparing PageForge output against human-developed reference HTML. It contains:
+
+1. **Step 1 — Upload Human Reference Files** — drag-and-drop or file picker for `.html` files; stores content in memory (privacy model maintained); displays uploaded files with filename, size, and matched/unmatched status against generated filenames; allows removing individual files
+2. **Step 2 — Log Comparison Snapshots** — form with 4 fields (3 required: original writer template content, PageForge generated output, human developer correct output; 1 optional: notes/commentary) plus a source file dropdown populated from generated files; "Log Snapshot" button only enabled when all 3 required fields have content; snapshots stored in memory as sequential objects with ID, timestamp, and all field data
+3. **Logged Snapshots Display** — chronological list of logged snapshots with compact cards showing number, file, time, and content preview; expandable `<details>` to view full content of all 4 fields; individual delete with confirmation; count badge updates on add/delete
+4. **Step 3 — Export Calibration Report** — generates structured plain text document formatted for Claude AI analysis; includes context notes about content differences and writer comments; download as `.txt` file or copy to clipboard; "Clear All Snapshots" with confirmation
+
+All calibration data is ephemeral — cleared on "Parse Another File", page reload, or new conversion. Managed by `CalibrationManager` class instantiated in `App`.
 
 ---
 
@@ -1248,7 +1264,17 @@ INTERACTIVE 2 of 7
 - `clear()` resets all stored files
 - Public API: `addFile(fileInfo)`, `getFileList()`, `getFileContent(filename)`, `downloadFile(filename)`, `downloadAsZip(zipFilename)`, `copyToClipboard(filename)`, `clear()`
 
-### Extended App Flow (Current — Phase 8)
+#### calibration-manager.js — DONE (Phase 9)
+- Development utility for comparing PageForge output against human-developed reference HTML
+- **Human reference file upload** — drag-and-drop or file picker for `.html` files; stores content in memory (privacy model maintained); validates file type; detects duplicates; matches uploaded filenames against generated filenames; displays file list with size/matched status; individual file removal
+- **Comparison snapshot logging** — form with 3 required fields (original writer template content, PageForge output, human correct output) and 1 optional field (notes/commentary); source file dropdown populated from generated files; validation enables/disables Log button; snapshots stored as sequential objects with ID, timestamp, sourceFile, and all field data
+- **Snapshot list display** — chronological list of compact cards with expand/delete; preview text truncated to 80 chars; full content view in `<details>` element; individual delete with `confirm()` dialog; count badge
+- **Calibration report export** — generates structured plain text document with module/template metadata, context notes for Claude AI analysis, and all snapshots in order; download as `.txt` file via Blob/URL; clipboard copy with modern API + `execCommand` fallback; "Clear All" with confirmation
+- **Full reset** — clears all data (reference files, snapshots) on "Parse Another File" or new conversion; no data persists between sessions
+- Instantiated by `App` with callback hooks for `showToast`, `getModuleCode`, `getTemplateName`, `getGeneratedFileList`
+- Public API: `init()`, `populateSourceFileDropdown()`, `reset()`
+
+### Extended App Flow (Current — Phase 9)
 
 ```
 User drops .docx file (or clicks to browse)
@@ -1309,6 +1335,8 @@ User clicks "Convert Document"
     → "Download All as ZIP" creates ZIP archive via JSZip
     → "Download Text Template" triggers direct .txt file download (no modal/toggle)
     → "Parse Another File" resets all state (staged file, template, results)
+    → Calibration panel (collapsible) shown below results for human reference upload + snapshot logging
+    → CalibrationManager.populateSourceFileDropdown() populates source file dropdown from generated files
     → Debug panel (collapsible) shows conversion summary, template config, tag & page analysis, block scoping, interactive details
 ```
 
@@ -1887,3 +1915,158 @@ All case variations of "ParseMaster" replaced across the entire codebase (exclud
 #### Change 7 — Remove "Copy Interactive Reference" Button
 - **Previous:** `#btn-copy-reference` in the global action bar called `OutputManager.copyToClipboard()` for the interactive reference document
 - **Fix:** Removed button from HTML; removed event listener and `_handleCopyReference()` method from `app.js`; interactive reference document remains accessible via per-file Copy button in the file list panel (OutputManager's `copyToClipboard()` method preserved for per-file use)
+
+---
+
+## 20. CALIBRATION COMPARISON TOOL (Phase 9)
+
+### Overview
+
+Phase 9 adds a **Calibration Comparison Tool** — a development/testing utility that allows uploading human-developed HTML reference files, then logging side-by-side comparison snapshots between the original Writer Template content, PageForge's generated output, and the human developer's correct output. These logged snapshots are exportable as a structured text document designed to be fed into Claude AI for analysis and code recalibration guidance. All existing functionality from all previous phases remains working — 407 pre-existing tests continue to pass with zero modifications.
+
+**Status:** DONE — New `CalibrationManager` class created, integrated with `App`, 407 tests passing (no new tests required — all changes are UI/interaction with no algorithmic logic to unit test).
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `js/calibration-manager.js` | New class — handles human reference file upload, comparison snapshot logging, snapshot list display, calibration report generation/export/clipboard copy |
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `index.html` | Added `#calibration-section` with full calibration panel HTML (`<details>` element containing upload dropzone, snapshot form with 4 fields + source file dropdown, logged snapshots list, export controls); added `<script src="js/calibration-manager.js">` before `app.js` |
+| `css/styles.css` | Added complete calibration panel styles: `.calibration-panel`, `.calibration-toggle`, `.calibration-content`, `.calibration-description`, `.calibration-dropzone` (with hover/drag-over states), `.calibration-uploaded-files`, `.calibration-file-item` (with `-name`, `-size`, `-matched`, `-unmatched`, `-remove` variants), `.snapshot-form`, `.snapshot-field` (with label, textarea, inline, select variants), `.field-hint`, `.snapshot-actions`, `.snapshot-count`, `.snapshot-list`, `.snapshot-empty-state`, `.snapshot-entry` (with `-header`, `-number`, `-file`, `-time` variants), `.snapshot-delete`, `.snapshot-preview-text`, `.snapshot-entry-details`, `.snapshot-full-content`, `.snapshot-full-field` (with `pre` and `strong`), `.export-actions`; added responsive rules for snapshot-field-inline, snapshot-actions, export-actions at 768px breakpoint |
+| `js/app.js` | Added `this.calibrationSection` DOM reference in `_bindElements()`; added `_initCalibrationManager()` method that instantiates `CalibrationManager` with callback hooks (`showToast`, `getModuleCode`, `getTemplateName`, `getGeneratedFileList`); called from constructor after `_initTemplateEngine()`; `showResults()` now shows `#calibration-section` and calls `calibrationManager.populateSourceFileDropdown()`; `reset()` now calls `calibrationManager.reset()` and hides `#calibration-section` |
+
+### Architecture
+
+The Calibration Comparison Tool is implemented as a separate `CalibrationManager` class (`js/calibration-manager.js`) following the project's modular architecture. The `App` class instantiates it with callback hooks and manages its visibility lifecycle.
+
+**Integration points:**
+- `App` constructor → `_initCalibrationManager()` creates the `CalibrationManager` instance
+- `App.showResults()` → shows calibration section, populates source file dropdown
+- `App.reset()` → calls `calibrationManager.reset()`, hides calibration section
+
+**Data flow:**
+- Human reference files stored in `CalibrationManager.humanReferenceFiles[]` as `{ filename, content, size, matchedToGenerated }` objects
+- Comparison snapshots stored in `CalibrationManager.calibrationSnapshots[]` as `{ id, timestamp, sourceFile, originalContent, pageforgeOutput, humanOutput, notes }` objects
+- All data is ephemeral — cleared on reset/reload (privacy model maintained)
+
+### CalibrationManager Class Details
+
+**Constructor options (callback hooks from App):**
+- `showToast(msg)` — displays toast notifications via App's existing toast system
+- `getModuleCode()` — returns current module code from App's parsed metadata
+- `getTemplateName()` — returns current template name from App's resolved template config
+- `getGeneratedFileList()` — returns array of generated filenames from App
+
+**Public API:**
+- `init()` — binds DOM elements and wires up event listeners (called once after HTML is in DOM)
+- `populateSourceFileDropdown()` — populates the source file `<select>` from generated file list
+- `reset()` — clears all data (reference files, snapshots), resets UI, collapses panel
+
+**Internal methods:**
+- `_handleReferenceFiles(files)` — validates `.html` extension, prevents duplicates, reads content via `FileReader`, detects filename match against generated files
+- `_renderUploadedFiles()` — renders uploaded file list with filename, size, matched/unmatched status, and remove buttons
+- `_removeReferenceFile(index)` — removes a reference file by index with toast notification
+- `_updateLogButtonState()` — enables/disables Log Snapshot button based on required field content
+- `_logSnapshot()` — creates snapshot object, adds to array, clears form, updates display + export buttons, shows toast
+- `_clearForm()` — resets all form fields without logging
+- `_renderSnapshotList()` — renders chronological list of snapshot cards with expand/delete; updates count badge
+- `_deleteSnapshot(id)` — deletes a snapshot by ID after `confirm()` dialog
+- `_updateExportButtonState()` — enables/disables export/copy buttons based on snapshot count
+- `_generateReport()` — generates structured plain text calibration report with header, context notes, and all snapshots
+- `_exportReport()` — generates report and triggers browser download as `.txt` file
+- `_copyReport()` — generates report and copies to clipboard (modern API with `execCommand` fallback)
+- `_fallbackCopy(text)` — clipboard fallback using hidden textarea + `execCommand('copy')`
+- `_clearAllSnapshots()` — clears all snapshots after `confirm()` dialog
+- `_formatFileSize(bytes)` — formats bytes to human-readable string (B, KB, MB)
+- `_formatTime(isoString)` — formats ISO timestamp to HH:MM
+- `_truncate(str, maxLen)` — truncates string with ellipsis
+- `_escapeHtml(str)` — escapes HTML special characters for safe rendering
+
+### Calibration Report Format
+
+The exported report follows this structure:
+
+```
+==========================================
+PAGEFORGE CALIBRATION REPORT
+==========================================
+Module: {moduleCode}
+Template: {templateName}
+Generated: {date/time}
+Total Snapshots: {count}
+
+IMPORTANT CONTEXT FOR ANALYSIS:
+- The "Original Content" shows raw parsed text from the Writer Template
+  document BEFORE PageForge attempted to convert it.
+- The "PageForge Output" shows what the current algorithm actually produced.
+- The "Human Output" shows what a human developer correctly produced —
+  this is the TARGET that PageForge should aim to replicate.
+- Note: The human reference files may have text content differences from
+  the Writer Template due to post-production edits made directly to the
+  HTML files (not reflected back in the Writer Template).
+- Note: Writer comments/instructions (red text) in the Writer Template
+  may not appear in the human HTML files, as they served only as
+  development guidance.
+
+==========================================
+
+------------------------------------------
+SNAPSHOT 1 of {total}
+------------------------------------------
+Source File: {sourceFile or "Not specified"}
+Logged: {timestamp}
+
+--- ORIGINAL WRITER TEMPLATE CONTENT ---
+{originalContent}
+
+--- PAGEFORGE GENERATED OUTPUT ---
+{pageforgeOutput}
+
+--- HUMAN DEVELOPER CORRECT OUTPUT ---
+{humanOutput}
+
+--- NOTES ---
+{notes or "No notes provided."}
+
+------------------------------------------
+...
+==========================================
+END OF CALIBRATION REPORT
+==========================================
+```
+
+### UI Layout
+
+The calibration panel is positioned between the results section and the debug panel in the DOM:
+
+```
+#results-section
+  ├── #metadata-panel
+  ├── .actions-bar
+  └── #output-layout (file list + preview)
+#calibration-section (NEW — Phase 9)
+  └── <details id="calibration-panel">
+      └── .calibration-content
+          ├── Step 1: Upload Human Reference Files
+          │   ├── #calibration-dropzone (drag-and-drop + file picker)
+          │   └── #calibration-uploaded-files (file list)
+          ├── Step 2: Log Comparison Snapshots
+          │   └── .snapshot-form (4 fields + dropdown + buttons)
+          ├── Logged Snapshots
+          │   └── #snapshot-list (snapshot cards)
+          └── Step 3: Export Calibration Report
+              └── .export-actions (export + copy + clear buttons)
+#debug-panel
+```
+
+### Important Caveats (Documented in Code Comments)
+
+1. **Content differences are expected:** The human reference HTML files may contain text that differs from both the Writer Template and PageForge's output, because the human developer may have received direct feedback and made edits to the final HTML without updating the Writer Template.
+2. **Writer comments won't be in human files:** Red text / writer instructions in the Writer Template are development guidance only — they will not appear in the human-developed HTML files.
+3. **This is a development tool:** The calibration panel is for internal algorithm refinement, not for end-user consumption.
+4. **Organisation-neutral:** No organisation names appear in the calibration tool's UI, labels, or code comments. Content within snapshots naturally preserves whatever text appears in the source documents.
