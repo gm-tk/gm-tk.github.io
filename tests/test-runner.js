@@ -1,5 +1,5 @@
 /**
- * Minimal test runner for ParseMaster tests.
+ * Minimal test runner for PageForge tests.
  * Runs in Node.js without any external dependencies.
  *
  * Usage: node tests/test-runner.js
@@ -117,7 +117,7 @@ var testFiles = fs.readdirSync(__dirname).filter(function(f) {
     return f.match(/\.test\.js$/) && f !== 'test-runner.js';
 }).sort();
 
-console.log('ParseMaster Test Suite');
+console.log('PageForge Test Suite');
 console.log('======================');
 console.log('Loading ' + testFiles.length + ' test file(s)...\n');
 

@@ -1,6 +1,6 @@
-# CLAUDE.md — ParseMaster Project Reference
+# CLAUDE.md — PageForge Project Reference
 
-> **Project:** ParseMaster — Writer Template Parser & HTML Converter
+> **Project:** PageForge — Writer Template Parser & HTML Converter
 > **Repository:** gm-tk.github.io (GitHub Pages)
 > **Runtime:** 100% client-side browser application (no server, no backend)
 > **Stack:** Vanilla JavaScript, HTML5, CSS3, JSZip (CDN)
@@ -27,14 +27,15 @@
 16. [ENGS301 Inconsistency Fixes](#16-engs301-inconsistency-fixes)
 17. [LMS Compliance Recalibration](#17-lms-compliance-recalibration-phase-7)
 18. [Tag Normalisation Robustness](#18-tag-normalisation-robustness-phase-1-patch)
+19. [UI Overhaul & Rebranding](#19-ui-overhaul--rebranding-phase-8)
 
 ---
 
 ## 1. PROJECT OVERVIEW
 
-### What ParseMaster Does Today
+### What PageForge Does Today
 
-ParseMaster is a client-side web application that reads Writer Template `.docx` files and converts them into fully marked-up HTML files for the D2L/Brightspace LMS. It also produces clean, structured plain text output (legacy mode). Interactive components are rendered as structured placeholders with all associated data extracted and preserved in a supplementary Interactive Reference Document — the Claude AI Project focuses exclusively on building the interactive component code.
+PageForge is a client-side web application that reads Writer Template `.docx` files and converts them into fully marked-up HTML files for the D2L/Brightspace LMS. It also produces clean, structured plain text output (legacy mode). Interactive components are rendered as structured placeholders with all associated data extracted and preserved in a supplementary Interactive Reference Document — the Claude AI Project focuses exclusively on building the interactive component code.
 
 ### Current Capabilities
 
@@ -51,6 +52,7 @@ ParseMaster is a client-side web application that reads Writer Template `.docx` 
 11. **Layout table unwrapping** → detects Word tables used as two-column layout grids, unwraps their content into the main content stream, creates sidebar blocks for companion images and alerts (DONE — Phase 6.1)
 12. **LMS compliance recalibration** → lesson number decimal format, title element format, activity class refinements (alertPadding, dropbox), table header semantics (rowSolid, th/thead/tbody), br→p conversion, info trigger definition formatting, download journal button, whakatauki author line, image iStock alt text, ALL-CAPS heading detection (DONE — Phase 7)
 13. **Tag normalisation robustness** → pre-processing de-fragmentation of fractured red-text boundaries from MS Word XML, bracket whitespace cleanup, ordinal suffix stripping in resolveOrdinalOrNumber (DONE — Phase 1 Patch)
+14. **UI overhaul & rebranding** → project renamed from ParseMaster to PageForge, upload decoupled from conversion with staged file + Convert button, template dropdown with auto-detect hint, conversion summary moved to debug panel, legacy text output replaced with direct download, "Copy Interactive Reference" button removed from action bar (DONE — Phase 8)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -58,10 +60,10 @@ The HTML files will contain all content correctly marked up with the correct tag
 
 **Current workflow:**
 ```
-Writer Template .docx → ParseMaster → HTML files (with interactive placeholders)
-                                     → Interactive Reference Document
-                                     ↓
-                          Claude AI Project → HTML files (with interactives built)
+Writer Template .docx → PageForge → HTML files (with interactive placeholders)
+                                   → Interactive Reference Document
+                                   ↓
+                        Claude AI Project → HTML files (with interactives built)
 ```
 
 ### Privacy Model
@@ -86,9 +88,24 @@ All processing happens in the browser. No data is uploaded, transmitted, or stor
 App startup:
   → TemplateEngine.loadTemplates() loads templates.json (or embedded fallback)
   → Template dropdown populated with 9 template options
+  → Convert button starts disabled
 
-User drops .docx file
-  → App.handleFile() validates file type
+User drops/selects .docx file (Phase 8: staged upload)
+  → App.stageFile() validates file type (.docx only)
+  → File stored as this.stagedFile (NOT parsed yet)
+  → Staged file info shown (filename displayed below drop zone)
+  → Module code extracted from filename (regex: /[A-Z]{4}\d{3}/)
+  → TemplateEngine.detectTemplate() auto-detects template from module code
+    → Auto-detected template stored internally (this.autoDetectedTemplate)
+    → Hint shown near staged file: "Auto-detected: Years 4–6"
+    → Dropdown stays on default "Select template (auto-detected on upload)"
+  → Convert button enabled
+  → NO parsing or conversion runs at this stage
+
+User clicks "Convert Document" button (Phase 8)
+  → App.convertDocument() resolves template:
+    → If user manually selected from dropdown → use manual selection
+    → Otherwise → use auto-detected template
   → DocxParser.parse() extracts and processes XML
     → JSZip extracts word/document.xml from .docx ZIP
     → DOMParser parses XML into DOM
@@ -97,11 +114,9 @@ User drops .docx file
     → SDT wrappers unwrapped
     → Content boundaries detected ([TITLE BAR] marker)
     → Metadata extracted from boilerplate
-  → OutputFormatter.formatAll() converts to text (legacy output)
+  → OutputFormatter.formatAll() converts to text (for download)
     → Metadata block formatted
     → Content formatted with formatting markers
-  → TemplateEngine.detectTemplate() auto-selects template from module code (Phase 2)
-    → Dropdown updated, "Auto-detected" label shown
   → LayoutTableUnwrapper.unwrapLayoutTables() detects and unwraps layout tables (Phase 6.1)
     → Scans tables for structural tags ([Activity], [body], [Button], interactives)
     → Checks contextual override (tables following interactive type tags are data, not layout)
@@ -137,17 +152,15 @@ User drops .docx file
     → HTML files stored with page type and lesson number metadata
     → Interactive reference document stored as reference type
     → File sizes calculated for display
-  → App.showResults() displays output (Phase 5 UI)
+  → App.showResults() displays output (Phase 8 UI)
     → Metadata panel includes template name, pages generated, interactive count
-    → Conversion summary panel shows pages, template, interactives, tags, warnings
     → File list panel shows all generated files with icons, metadata, per-file actions
     → Preview panel shows selected file content with copy/download buttons
     → First HTML file auto-selected for preview on load
     → "Download All as ZIP" creates ZIP archive of all files via JSZip
-    → "Copy Interactive Reference" copies reference document to clipboard
-    → "Legacy Text Output" switches to plain text view with back navigation
-    → "Parse Another File" resets everything cleanly
-    → Debug panel shows template config, tag & page analysis, block scoping, interactive details, skeleton preview
+    → "Download Text Template" triggers direct download of plain text output
+    → "Parse Another File" resets everything cleanly (including staged file, Convert button, template dropdown)
+    → Debug panel (collapsed by default) shows conversion summary, template config, tag & page analysis, block scoping, interactive details, skeleton preview
 ```
 
 ### Class Responsibilities
@@ -164,7 +177,7 @@ User drops .docx file
 | `InteractiveExtractor` | `js/interactive-extractor.js` | Interactive component detection, data extraction, placeholder generation, reference document |
 | `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
 | `OutputManager` | `js/output-manager.js` | Multi-file output storage, file listing, individual/ZIP download, clipboard copy |
-| `App` | `js/app.js` | UI controller — upload, file list, preview, ZIP download, legacy mode, debug panel, template selection |
+| `App` | `js/app.js` | UI controller — staged upload, Convert button, file list, preview, ZIP download, text download, debug panel, template selection |
 
 ---
 
@@ -313,7 +326,7 @@ const knownReds = [
 
 ### Content Boundary Detection
 
-ParseMaster detects where actual module content begins by searching for the `[TITLE BAR]` tag. Everything before this is boilerplate (submission checklists, LOT tags, guidance text) and is used only for metadata extraction.
+PageForge detects where actual module content begins by searching for the `[TITLE BAR]` tag. Everything before this is boilerplate (submission checklists, LOT tags, guidance text) and is used only for metadata extraction.
 
 ### Metadata Extraction
 
@@ -362,56 +375,70 @@ The formatter converts the parser's structured data into the plain text format c
 
 The App class manages all user interaction:
 
-- **File upload** — drag-and-drop zone + click-to-browse, validates `.docx` extension
-- **Template selection** — dropdown populated from TemplateEngine, auto-detects from module code on parse (Phase 2)
-- **Processing** — shows spinner + progress steps during parse with pipeline stage counts
-- **Results** — displays metadata panel, conversion summary, file list panel, preview panel
+- **Staged file upload** (Phase 8) — drag-and-drop zone + click-to-browse, validates `.docx` extension, stages the file without triggering conversion. Shows staged file indicator with filename. Extracts module code from filename for template auto-detection.
+- **Convert button** (Phase 8) — disabled by default, enabled when a file is staged, triggers the full conversion pipeline on click. Uses the manually selected template (if any) or the auto-detected template.
+- **Template selection** — dropdown populated from TemplateEngine, default option reads "Select template (auto-detected on upload)". On file stage, auto-detected template stored internally with hint shown near file info. Manual dropdown selection takes priority over auto-detected.
+- **Processing** — shows spinner + progress steps during conversion with pipeline stage counts
+- **Results** — displays metadata panel, file list panel, preview panel
 - **Multi-file output** — file list with per-file download/copy, preview of selected file (Phase 5)
 - **ZIP download** — "Download All as ZIP" creates ZIP archive via JSZip (Phase 5)
-- **Legacy mode** — switchable legacy text output with back navigation (Phase 5)
-- **Tag & Page Analysis** — after parsing, runs TagNormaliser and PageBoundary on content blocks, displays results in a collapsible debug panel
+- **Text download** (Phase 8) — "Download Text Template" triggers direct download of plain text output as .txt file
+- **Debug panel** — after conversion, runs TagNormaliser and PageBoundary on content blocks, displays conversion summary + analysis results in a collapsible debug panel (collapsed by default)
 - **Error handling** — specific error messages for known failure modes (missing XML, invalid XML, corrupted file)
 - **Accessibility** — screen reader announcements, keyboard navigation, ARIA labels
 
 ### Section Visibility
 
 The UI uses CSS `.hidden` class to toggle between these states:
-1. `#upload-section` — initial file upload view
-2. `#processing-section` — spinner during parse
+1. `#upload-section` — initial file upload view (includes staged file info, template selector, Convert button)
+2. `#processing-section` — spinner during conversion
 3. `#results-section` — multi-panel output display with file list + preview
-4. `#legacy-output-panel` — legacy text output (toggleable within results)
-5. `#debug-panel` — collapsible tag & page analysis debug panel (appears below results after parse)
+4. `#debug-panel` — collapsible debug panel with conversion summary + analysis (appears below results after conversion)
 
-### Multi-File Output System (Phase 5)
+### Multi-File Output System (Phase 5, updated Phase 8)
 
 The results section uses a side-by-side layout with a file list panel (left) and preview panel (right):
 
-- **File List Panel** (`#file-list-panel`) — shows all generated files with icons, filenames, metadata (page type, size), and per-file download/copy action buttons. Clicking a file loads its content in the preview. The selected file gets a `.selected` visual highlight. Files are stored in `OutputManager`.
+- **File List Panel** (`#file-list-panel`) — shows all generated files with icons, filenames, metadata (page type, size), and per-file download/copy action buttons. Clicking a file loads its content in the preview. The selected file gets a `.selected` visual highlight. Files are stored in `OutputManager`. The interactive reference document is accessible here with per-file copy/download buttons.
 - **Preview Panel** — shows the content of the currently selected file in a readonly textarea. Header displays the filename and has Copy/Download buttons for the current file.
-- **Global Actions Bar** — "Download All as ZIP" (creates ZIP via JSZip), "Copy Interactive Reference" (copies reference doc), "Legacy Text Output" (switches to text mode), "Parse Another File" (resets everything).
-- **Legacy Output Panel** (`#legacy-output-panel`) — hidden by default; when activated via "Legacy Text Output" button, hides the file list + preview layout and shows the plain text output with Copy All, Download .txt, and Back to HTML buttons.
+- **Global Actions Bar** — "Download All as ZIP" (creates ZIP via JSZip), "Download Text Template" (triggers direct .txt download), "Parse Another File" (resets everything including staged file, Convert button, template dropdown).
 - **Responsive** — stacks vertically on mobile (file list above preview).
 
-### Template Selector (Phase 2)
+### Staged Upload & Convert Flow (Phase 8)
 
-The template selector is a dropdown that appears between the drop zone and the "About" section. It:
+The upload process is decoupled from conversion:
+
+1. User drops/selects a `.docx` file → file is **staged** (stored as `this.stagedFile`)
+2. Staged file indicator shows the filename below the drop zone
+3. Module code is extracted from filename for template auto-detection
+4. Auto-detected template stored internally (`this.autoDetectedTemplate`), hint shown as "Auto-detected: [name]"
+5. Template dropdown remains on default option — user can optionally override by selecting a different template
+6. **Convert button** becomes enabled
+7. Clicking Convert triggers full pipeline (`convertDocument()` method)
+8. Template resolution: manual dropdown selection takes priority; otherwise auto-detected template is used
+9. Uploading a new file replaces the staged file, re-runs detection, keeps Convert enabled
+10. "Parse Another File" resets: clears staged file, disables Convert button, resets dropdown
+
+### Template Selector (Phase 2, updated Phase 8)
+
+The template selector is a dropdown that appears between the drop zone and the Convert button. It:
 
 1. Populates on page load from `TemplateEngine.getTemplateList()` (9 templates)
-2. Auto-selects a template when a file is parsed (based on module code suffix) and shows "Auto-detected" label
-3. Can be manually overridden by the user
-4. Resets when "Parse Another File" is clicked
+2. Default option: "Select template (auto-detected on upload)" — remains selected after file staging
+3. Auto-detected template stored internally, hint shown near staged file info
+4. User can manually select a different template — this takes priority on conversion
+5. Resets when "Parse Another File" is clicked
 
-### Debug Panel (Phase 1 + Phase 2 + Phase 4 + Phase 6)
+### Debug Panel (Phase 1 + Phase 2 + Phase 4 + Phase 6, updated Phase 8)
 
-The debug panel (`#debug-panel`) is a temporary development/testing panel that appears after parsing. It shows:
+The debug panel (`#debug-panel`) is a collapsible panel that appears after conversion. It starts **collapsed by default** using a `<details>` element. It contains:
 
-1. **Template Configuration** (Phase 2) — selected template ID, name, HTML template attribute, key config differences from base, overview page skeleton preview (first 50 lines), and footer navigation links for each page
-2. **Tag Normalisation Results** — total tags, unrecognised tags, red text instructions, category breakdown, and a detailed table of all tags found (raw → normalised form)
-3. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
-4. **Block Scoping Analysis** (Phase 6) — total scoped blocks, unscoped content count, scoped block details table (type, start/end index, children, closure reason, sub-tags), and scoping warnings
-5. **Interactive Components** (Phase 4) — total count, tier breakdown, detailed table of all interactives (file, activity, type, tier, pattern, data summary), and a preview of the generated reference document
-
-The debug panel uses a `<details>` element so it starts collapsed. It does NOT interfere with the multi-file output system or the legacy text output functionality.
+1. **Conversion Summary** (Phase 8) — pages generated, template used, interactives detected, tags normalised + unrecognised, boundary rules fired. Previously displayed in the main results area; now consolidated here.
+2. **Template Configuration** (Phase 2) — selected template ID, name, HTML template attribute, key config differences from base, overview page skeleton preview (first 50 lines), and footer navigation links for each page
+3. **Tag Normalisation Results** — total tags, unrecognised tags, red text instructions, category breakdown, and a detailed table of all tags found (raw → normalised form)
+4. **Page Boundary Results** — number of pages detected, filename/type/lesson number for each page, and which boundary validation rules fired
+5. **Block Scoping Analysis** (Phase 6) — total scoped blocks, unscoped content count, scoped block details table (type, start/end index, children, closure reason, sub-tags), and scoping warnings
+6. **Interactive Components** (Phase 4) — total count, tier breakdown, detailed table of all interactives (file, activity, type, tier, pattern, data summary), and a preview of the generated reference document
 
 ---
 
@@ -460,7 +487,7 @@ Course: AI Digital Citizenship
 
 ### Current Pipeline (Claude AI Project)
 
-After ParseMaster produces the `.txt` file, it is fed into a Claude AI Project that has extensive knowledge files defining how to convert the text into HTML. The key knowledge files are:
+After PageForge produces the `.txt` file, it is fed into a Claude AI Project that has extensive knowledge files defining how to convert the text into HTML. The key knowledge files are:
 
 #### 00_MASTER_INSTRUCTIONS.md
 - Defines the role, core philosophy, input requirements
@@ -471,7 +498,7 @@ After ParseMaster produces the `.txt` file, it is fed into a Claude AI Project t
 #### 01_PIPELINE_EXTRACTION_TAGS.md
 Contains 5 sections:
 - **Section 01 — Template Levels:** HTML tag patterns, head sections, heading patterns, module menu structures, title patterns, footer patterns per year level
-- **Section 02 — ParseMaster Text Format:** File structure, metadata block, format conventions
+- **Section 02 — PageForge Text Format:** File structure, metadata block, format conventions
 - **Section 03 — Page Boundaries:** 4 validation rules, page-to-file mapping, lesson numbering
 - **Section 04 — Tag Taxonomy:** Complete normalisation table (all writer tag variants → normalised forms)
 - **Section 05 — Tag Interpretation:** How each normalised tag maps to HTML output
@@ -927,7 +954,7 @@ Whakatauki content with a `|` pipe separator splits into two `<p>` elements:
 
 ### Content Preservation Rules
 
-1. NEVER modify writer text — trust ParseMaster output as-is
+1. NEVER modify writer text — trust PageForge output as-is
 2. Preserve macronised characters: ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū
 3. Preserve bold/italic from within table cells
 4. NEVER render square-bracket tags as visible text
@@ -939,11 +966,11 @@ Whakatauki content with a `|` pipe separator splits into two `<p>` elements:
 
 ### Categories of Interactives
 
-Interactive components are the complex elements that require custom JavaScript/HTML code from the component library. ParseMaster does NOT generate code for these — instead, it:
+Interactive components are the complex elements that require custom JavaScript/HTML code from the component library. PageForge does NOT generate code for these — instead, it:
 
 1. **Detects** the interactive type from the normalised tag (DONE — Phase 4)
 2. **Extracts** all associated data (from tables, lists, red text instructions) (DONE — Phase 4)
-3. **Classifies** interactives by tier (Tier 1 = ParseMaster renders in Phase 7, Tier 2 = Claude AI Project builds) (DONE — Phase 4)
+3. **Classifies** interactives by tier (Tier 1 = PageForge renders in Phase 7, Tier 2 = Claude AI Project builds) (DONE — Phase 4)
 4. **Inserts a structured placeholder** in the HTML output marking where the interactive goes (DONE — Phase 4)
 5. **Generates a reference entry** in the supplementary interactive reference document (DONE — Phase 4)
 
@@ -999,7 +1026,7 @@ Interactive placeholders are generated by `InteractiveExtractor.processInteracti
 <!-- ========== END INTERACTIVE: drag_and_drop ========== -->
 ```
 
-**Tier 1 interactives** (accordion, flip_card, speech_bubble, tabs) use a green dashed border (#1a7a1a) with green background (#e6f9e6) and a wrench icon, indicating ParseMaster will render them in Phase 7. **Tier 2 interactives** use a red dashed border (#c0392b) with red background (#fde8e8) and a warning icon, indicating they require the Claude AI Project.
+**Tier 1 interactives** (accordion, flip_card, speech_bubble, tabs) use a green dashed border (#1a7a1a) with green background (#e6f9e6) and a wrench icon, indicating PageForge will render them in Phase 7. **Tier 2 interactives** use a red dashed border (#c0392b) with red background (#fde8e8) and a warning icon, indicating they require the Claude AI Project.
 
 **Content preview rendering by data pattern:**
 - **Pattern 1 (single table):** Rendered as an HTML `<table>` with headers and up to 5 data rows (truncated with "... and N more rows" if needed)
@@ -1017,13 +1044,13 @@ Each interactive is classified into one of two tiers:
 
 | Tier | Description | Types | Placeholder Colour |
 |------|-------------|-------|-------------------|
-| **Tier 1** | ParseMaster renders full HTML (Phase 7) | `accordion`, `flip_card`, `speech_bubble`, `tabs` | Green dashed border |
+| **Tier 1** | PageForge renders full HTML (Phase 7) | `accordion`, `flip_card`, `speech_bubble`, `tabs` | Green dashed border |
 | **Tier 2** | Claude AI Project builds (placeholder only) | Everything else | Red dashed border |
 
 Tier classification is automatic based on the normalised interactive type. It affects:
 - The visual appearance of the placeholder in the generated HTML
 - The reference document entry (tier label and description)
-- Future Phase 7 rendering (Tier 1 interactives will be fully rendered by ParseMaster)
+- Future Phase 7 rendering (Tier 1 interactives will be fully rendered by PageForge)
 
 ### Interactive Reference Document (Implemented — Phase 4)
 
@@ -1191,7 +1218,7 @@ INTERACTIVE 2 of 7
 
 #### interactive-extractor.js — DONE (Phase 4, structural fixes & placeholder redesign Round 3, Round 3C)
 - Detects interactive component tags in the content stream
-- Classifies interactives by tier (Tier 1: ParseMaster renders, Tier 2: Claude AI Project builds)
+- Classifies interactives by tier (Tier 1: PageForge renders, Tier 2: Claude AI Project builds)
 - Identifies the data pattern (13 patterns) being used
 - Extracts all associated data (tables, numbered items, red text instructions, media references)
 - **Sub-tag grouping** — numbered sub-tags (slides, tabs, accordions, flip cards, shapes, hints, click drops) consumed as data within their parent interactive, not treated as separate interactives
@@ -1221,13 +1248,27 @@ INTERACTIVE 2 of 7
 - `clear()` resets all stored files
 - Public API: `addFile(fileInfo)`, `getFileList()`, `getFileContent(filename)`, `downloadFile(filename)`, `downloadAsZip(zipFilename)`, `copyToClipboard(filename)`, `clear()`
 
-### Extended App Flow (Current — Phase 6.1)
+### Extended App Flow (Current — Phase 8)
 
 ```
-User drops .docx file
-  → Template auto-detected from module code
+User drops .docx file (or clicks to browse)
+  → App.stageFile() validates .docx extension
+  → File stored as this.stagedFile (NOT processed yet)
+  → Staged file indicator shown with filename
+  → Module code extracted from filename (regex: /[A-Z]{4}\d{3}/)
+  → If module code found: TemplateEngine.detectTemplate() auto-detects template
+    → Auto-detected template stored internally (this.autoDetectedTemplate)
+    → "Auto-detected" hint shown on staged file indicator
+    → Template dropdown NOT changed (stays on placeholder)
+  → Convert button enabled
+  → User can optionally select a different template from dropdown
+    → Manual selection sets this.userManuallySelectedTemplate = true
+
+User clicks "Convert Document"
+  → App.convertDocument() resolves template (manual > auto-detected > null)
+  → Processing section shown with spinner
   → DocxParser.parse() extracts content
-  → OutputFormatter.formatAll() produces legacy text output
+  → OutputFormatter.formatAll() produces legacy text output (stored for download)
   → LayoutTableUnwrapper.unwrapLayoutTables() processes content array:
     → Scans all tables for structural tags (activity, body, heading, interactive, UI)
     → Checks contextual override (data tables following interactive type tags preserved)
@@ -1260,16 +1301,15 @@ User drops .docx file
     → HtmlConverter.assemblePage() combines skeleton + content + module menu
   → InteractiveExtractor.generateReferenceDocument() produces reference doc
   → OutputManager stores all generated files (HTML + reference doc)
-  → App displays results (Phase 6 UI):
+  → App.showResults() displays results (Phase 8 UI):
     → Metadata panel shows template, pages, interactive count with tier breakdown
-    → Conversion summary shows pages, template, interactives, tags, warnings
     → File list panel shows all files with icons, metadata, per-file download/copy
     → Preview panel shows selected file content with copy/download buttons
     → First HTML file auto-selected for preview
-    → "Download All as ZIP" creates ZIP archive
-    → "Copy Interactive Reference" copies reference doc
-    → "Legacy Text Output" toggles to plain text view
-    → Debug panel shows template config, tag & page analysis, block scoping, interactive details
+    → "Download All as ZIP" creates ZIP archive via JSZip
+    → "Download Text Template" triggers direct .txt file download (no modal/toggle)
+    → "Parse Another File" resets all state (staged file, template, results)
+    → Debug panel (collapsible) shows conversion summary, template config, tag & page analysis, block scoping, interactive details
 ```
 
 ---
@@ -1645,7 +1685,7 @@ Fixes for 13 specific inconsistencies discovered in the ENGS301 module ("Picture
 
 ### Overview
 
-A detailed audit comparing ParseMaster's HTML output against the actual D2L/Brightspace LMS template reference revealed 18 gaps where generated HTML did not fully match the structural patterns required by the LMS. All changes are backward-compatible and grouped by priority: 5 high-priority structural fixes, 4 medium-priority class/attribute fixes, 4 lower-priority enhancements, and 5 already-correct verifications.
+A detailed audit comparing PageForge's HTML output against the actual D2L/Brightspace LMS template reference revealed 18 gaps where generated HTML did not fully match the structural patterns required by the LMS. All changes are backward-compatible and grouped by priority: 5 high-priority structural fixes, 4 medium-priority class/attribute fixes, 4 lower-priority enhancements, and 5 already-correct verifications.
 
 **Status:** DONE — All 18 issues addressed, 39 new tests added (380 total), all tests passing.
 
@@ -1765,3 +1805,85 @@ All fixes are backward-compatible — the 380 pre-existing tests continue to pas
 - **Problem:** Numeric ordinal strings like `"1st"`, `"2nd"`, `"3rd"`, `"4th"` were not being resolved because `parseInt()` returns NaN when the string contains trailing non-numeric characters, and the ordinal word map only covers word forms.
 - **Fix:** Before falling through to `parseInt()`, the method now strips trailing ordinal suffixes (`st`, `nd`, `rd`, `th`) via regex `/(st|nd|rd|th)$/` and attempts `parseInt()` on the stripped result. This handles `"1st"`→1, `"2nd"`→2, `"3rd"`→3, `"4th"`→4, `"10th"`→10, `"21st"`→21, etc.
 - **Order of resolution:** (1) Direct ordinal/cardinal word map lookup → (2) Suffix stripping + parseInt → (3) Plain parseInt. Existing behavior for word ordinals (`"first"`→1), cardinal words (`"one"`→1), and plain numbers (`"5"`→5) is entirely unchanged.
+
+---
+
+## 19. UI OVERHAUL & REBRANDING (Phase 8)
+
+### Overview
+
+Phase 8 combines a global rebranding (ParseMaster → PageForge) with a comprehensive UI overhaul that decouples the upload and conversion steps, consolidates the results screen, and removes redundant action buttons. All changes are backward-compatible — the 407 pre-existing tests continue to pass with zero modifications to test files (beyond the rebranded header comment).
+
+**Status:** DONE — 3 phases implemented across 11 files, 407 tests passing (no new tests required — all changes are UI/cosmetic).
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `index.html` | Rebranded title/h1/footer; removed "Why PageForge?" section; added staged file indicator (`#staged-file-info`); added Convert button (`#btn-convert`); removed `#conversion-summary` div; removed `#btn-copy-reference`; removed `#btn-legacy-output`; removed `#legacy-output-panel`; added `#btn-download-text`; simplified debug panel header |
+| `css/styles.css` | Rebranded header comment; removed About Section styles; added Staged File Info styles; added Convert Button styles; removed Legacy Output Panel styles; removed Conversion Summary styles; updated responsive rules |
+| `js/app.js` | Rebranded JSDoc; new `stageFile()` method (staged upload without conversion); new `convertDocument()` method (pipeline triggered by button); new `_getResolvedTemplateId()` (manual > auto-detected priority); updated `_autoDetectTemplate()` (stores internally, shows hint); new `_handleDownloadText()` (direct Blob download); new `_renderDebugConversionSummary()` (summary stats in debug panel); removed legacy mode methods; removed Copy Interactive Reference handler; updated `reset()` for new state |
+| `js/html-converter.js` | Rebranded JSDoc header and formatting markers comment |
+| `js/interactive-extractor.js` | Rebranded JSDoc header and 3 string literals ("Generated by", "rendered by", "Rendered by") |
+| `js/tag-normaliser.js` | Rebranded JSDoc header |
+| `js/block-scoper.js` | Rebranded JSDoc header |
+| `js/page-boundary.js` | Rebranded JSDoc header |
+| `js/output-manager.js` | Rebranded JSDoc header |
+| `tests/test-runner.js` | Rebranded JSDoc header and console.log output |
+| `README.md` | Rebranded all 5 occurrences of ParseMaster to PageForge |
+
+### Phase 1 — Global Rebranding (ParseMaster → PageForge)
+
+All case variations of "ParseMaster" replaced across the entire codebase (excluding CLAUDE.md which was updated separately):
+
+| Variation | Replacement | Example Locations |
+|-----------|-------------|-------------------|
+| `ParseMaster` (PascalCase) | `PageForge` | JSDoc headers, comments, string literals |
+| `parsemaster` (lowercase) | `pageforge` | Not found in codebase |
+| `PARSEMASTER` (uppercase) | `PAGEFORGE` | Not found in codebase |
+| `parse-master` (kebab-case) | `page-forge` | Not found in codebase |
+| `parse_master` (snake_case) | `page_forge` | Not found in codebase |
+| `Parse Master` (Title Case) | `Page Forge` | Not found in codebase |
+| `ParseMaster_output` (in filenames) | `PageForge_output` | js/app.js fallback filename |
+
+**19 total occurrences** found and replaced across 11 files. Post-replacement grep verification confirmed zero remaining occurrences.
+
+### Phase 2 — Homepage UI Modifications
+
+#### Change 1 — Remove "Why PageForge?" Section
+- **Previous:** Collapsible `<details class="about-section">` block below the template selector explaining what the tool does and why it exists
+- **Fix:** Removed the entire `<details>` element from `index.html`; removed all associated CSS styles (`.about-section`, `.about-toggle`, `.about-text`, `.about-text h3`, `.about-text ul`, `.about-text li`)
+
+#### Change 2 — Decouple Upload from Automatic Conversion (Staged Upload)
+- **Previous:** Dropping a `.docx` file immediately triggered the full parsing and conversion pipeline via `handleFile()`
+- **Fix:** File drop/selection now calls `stageFile(file)` which:
+  1. Validates `.docx` extension
+  2. Stores file as `this.stagedFile` (no processing)
+  3. Shows staged file indicator with filename (`#staged-file-info`)
+  4. Extracts module code from filename for auto-detection
+  5. Runs `_autoDetectTemplate()` if module code found (stores internally, shows hint)
+  6. Enables the Convert button
+  7. Updates drop zone text to "File staged — click to change"
+- **New properties:** `this.stagedFile`, `this.autoDetectedTemplate`, `this.userManuallySelectedTemplate`
+
+#### Change 3 — New "Convert Document" Button
+- **Previous:** Conversion was automatic on file drop
+- **Fix:** Added `<button id="btn-convert" class="btn btn-convert" disabled>Convert Document</button>` to `index.html`; button starts disabled, enabled by `stageFile()`, triggers `convertDocument()` on click; `convertDocument()` contains the full pipeline logic previously in `handleFile()` (parse → format → unwrap → normalise → scope → assign pages → convert HTML → store output → display results)
+
+#### Change 4 — Template Selection Logic Update
+- **Previous:** Auto-detection changed the dropdown selection and showed "Auto-detected" label
+- **Fix:** Auto-detected template stored internally (`this.autoDetectedTemplate`) without changing dropdown; hint text ("Auto-detected: Template Name") shown on staged file indicator; manual dropdown selection sets `this.userManuallySelectedTemplate = true`; `_getResolvedTemplateId()` resolves template with priority: manual selection > auto-detected > null; dropdown placeholder text changed to "Select template (auto-detected on upload)"
+
+### Phase 3 — Post-Processing UI & Results Screen Adjustments
+
+#### Change 5 — Consolidate Summary Data into Debug Section
+- **Previous:** Conversion summary panel (`#conversion-summary`) displayed as a visible section above the file list with pages generated, template used, interactive count, tags processed, and warnings
+- **Fix:** Removed `#conversion-summary` div from HTML; removed CSS styles (`.conversion-summary`, `.summary-item`, `.summary-label`, `.summary-value`); added `_renderDebugConversionSummary()` method in `app.js` that renders the same stats as the first sub-section within the collapsible debug panel; `_renderDebugPanel()` calls this method before template config and tag analysis sections
+
+#### Change 6 — Replace "Legacy Text Output" with Direct Download Button
+- **Previous:** "Legacy Text Output" button toggled a full-screen legacy output panel (`#legacy-output-panel`) with textarea, Copy All, Download .txt, and Back to HTML buttons; required `_showLegacyMode()` and `_hideLegacyMode()` methods
+- **Fix:** Removed `#legacy-output-panel` from HTML; removed all legacy mode CSS (`.legacy-output-panel` and its textarea); removed `_showLegacyMode()`, `_hideLegacyMode()`, and related event listeners; added `<button id="btn-download-text">&#128196; Download Text Template</button>` to action bar; new `_handleDownloadText()` method creates a Blob from `this.formattedOutput` and triggers a direct browser download as `.txt` file; filename uses module code if available, falls back to `PageForge_output.txt`
+
+#### Change 7 — Remove "Copy Interactive Reference" Button
+- **Previous:** `#btn-copy-reference` in the global action bar called `OutputManager.copyToClipboard()` for the interactive reference document
+- **Fix:** Removed button from HTML; removed event listener and `_handleCopyReference()` method from `app.js`; interactive reference document remains accessible via per-file Copy button in the file list panel (OutputManager's `copyToClipboard()` method preserved for per-file use)

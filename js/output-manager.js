@@ -1,5 +1,5 @@
 /**
- * OutputManager — Manages generated output files for ParseMaster.
+ * OutputManager — Manages generated output files for PageForge.
  *
  * Stores generated HTML files and the interactive reference document,
  * provides file listing with metadata, and handles individual and

@@ -1,5 +1,5 @@
 /**
- * HtmlConverter — Core HTML conversion engine for ParseMaster.
+ * HtmlConverter — Core HTML conversion engine for PageForge.
  *
  * Transforms parsed content blocks into fully marked-up HTML for
  * non-interactive content. Interactive components are rendered as
@@ -1482,7 +1482,7 @@ class HtmlConverter {
     // ------------------------------------------------------------------
 
     /**
-     * Convert ParseMaster formatting markers to HTML.
+     * Convert PageForge formatting markers to HTML.
      * Also handles hyperlink conversion and HTML escaping.
      *
      * @param {string} text - Text with formatting markers
