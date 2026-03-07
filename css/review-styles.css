@@ -1,0 +1,516 @@
+/* ==========================================================================
+   PageForge — Review Page Styles
+   Visual Comparison Review Tool
+   ========================================================================== */
+
+/* ---------- Review Page Body ---------- */
+
+.review-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ---------- Review Header ---------- */
+
+.review-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.5rem 1rem;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.review-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.review-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review-back-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.review-back-link:hover {
+    text-decoration: underline;
+}
+
+.review-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+}
+
+.review-module-code {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.review-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* ---------- Sync Mode Toggle ---------- */
+
+.review-sync-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.review-sync-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.review-sync-slider {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    background: var(--color-border);
+    border-radius: 11px;
+    transition: background 0.2s;
+}
+
+.review-sync-slider::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.review-sync-toggle input:checked + .review-sync-slider {
+    background: var(--color-primary);
+}
+
+.review-sync-toggle input:checked + .review-sync-slider::after {
+    transform: translateX(18px);
+}
+
+.review-sync-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+/* ---------- Raw HTML Button ---------- */
+
+.review-raw-btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+}
+
+.review-raw-btn-active {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+/* ---------- Three-Panel Layout ---------- */
+
+.review-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* ---------- File Map Panel ---------- */
+
+.review-file-map {
+    width: 190px;
+    min-width: 160px;
+    max-width: 220px;
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.review-panel-label {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.file-map-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.file-map-entry {
+    padding: 0.55rem 0.75rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--color-bg);
+    transition: background 0.1s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.file-map-entry:hover {
+    background: var(--color-primary-light);
+}
+
+.file-map-entry.selected {
+    background: var(--color-primary-light);
+    border-left: 3px solid var(--color-primary);
+}
+
+.file-map-entry:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+}
+
+.file-map-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text);
+    font-family: var(--font-mono);
+}
+
+.file-map-type {
+    font-size: 0.68rem;
+    color: var(--color-text-secondary);
+}
+
+.file-map-ref-badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--color-success);
+    background: var(--color-success-bg);
+    padding: 0 0.3rem;
+    border-radius: 3px;
+    margin-top: 0.1rem;
+    align-self: flex-start;
+}
+
+.file-map-empty {
+    padding: 1rem 0.75rem;
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+}
+
+/* ---------- Review Panels ---------- */
+
+.review-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border-right: 1px solid var(--color-border);
+}
+
+.review-panel:last-child {
+    border-right: none;
+}
+
+.review-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+    min-height: 36px;
+}
+
+.review-panel-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.review-panel-filename {
+    font-size: 0.75rem;
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.review-panel-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Sync mode active indicator */
+.review-sync-active {
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+/* ---------- iframe Rendering ---------- */
+
+.review-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+}
+
+/* ---------- Raw HTML View ---------- */
+
+.review-raw-view {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #1e1e2e;
+}
+
+.review-raw-view pre {
+    margin: 0;
+    padding: 0.75rem;
+}
+
+.review-raw-view code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #cdd6f4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ---------- Human Reference Upload Prompt ---------- */
+
+.review-upload-prompt {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0.75rem;
+    gap: 0.5rem;
+}
+
+.review-ref-dropzone {
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    flex-shrink: 0;
+}
+
+.review-ref-dropzone:hover,
+.review-ref-dropzone.drag-over {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+}
+
+.review-ref-dropzone p {
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.review-ref-uploaded {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.review-no-match-msg {
+    font-size: 0.82rem;
+    color: var(--color-warning);
+    padding: 0.5rem 0;
+    font-style: italic;
+}
+
+/* ---------- Writer Template Panel ---------- */
+
+.review-writer-body {
+    overflow-y: auto;
+}
+
+.review-writer-content {
+    padding: 0.5rem;
+}
+
+.writer-block {
+    position: relative;
+    padding: 0.5rem;
+    padding-left: 2.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.writer-block:nth-child(odd) {
+    background: var(--color-bg);
+}
+
+.writer-block:hover {
+    border-color: var(--color-border);
+}
+
+.writer-block-highlight {
+    background: rgba(245, 158, 11, 0.15) !important;
+    border-color: #f59e0b !important;
+    outline: 2px solid #f59e0b;
+}
+
+.writer-block-index {
+    position: absolute;
+    left: 0.4rem;
+    top: 0.5rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    opacity: 0.6;
+}
+
+.writer-block-text {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    color: var(--color-text);
+}
+
+.review-no-content {
+    padding: 1rem;
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+/* ---------- Copy-to-Snapshot Buttons ---------- */
+
+.review-copy-to-snapshot {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    background: var(--color-warning-bg);
+    border-color: var(--color-warning);
+    color: #92400e;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+.review-copy-to-snapshot:hover {
+    background: #fde68a;
+}
+
+/* ---------- Upload More Button ---------- */
+
+.review-upload-more {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* ---------- Calibration Section on Review Page ---------- */
+
+.review-calibration-section {
+    flex-shrink: 0;
+    border-top: 1px solid var(--color-border);
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+/* ---------- Visual Comparison Review Button (Main Page) ---------- */
+
+.btn-visual-review {
+    background: var(--color-surface);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    font-weight: 600;
+}
+
+.btn-visual-review:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.btn-visual-review:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+/* ---------- Responsive: Stack panels vertically on narrow screens ---------- */
+
+@media (max-width: 900px) {
+    .review-layout {
+        flex-direction: column;
+    }
+
+    .review-file-map {
+        width: 100%;
+        max-width: none;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        max-height: 120px;
+    }
+
+    .file-map-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        padding: 0.25rem;
+    }
+
+    .file-map-entry {
+        padding: 0.3rem 0.5rem;
+        border-bottom: none;
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .review-panel {
+        min-height: 250px;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .review-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
