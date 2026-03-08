@@ -2,22 +2,94 @@
  * ReviewApp — Controller for the Visual Comparison Review page.
  *
  * Handles data deserialisation from sessionStorage, three-panel rendering,
- * file map interaction, synchronised scrolling (Sync Mode), Raw HTML toggle,
- * human reference file upload, and calibration tool integration.
+ * file map interaction, template-aware CSS injection for rendered HTML,
+ * synchronised scrolling with 6-tier intelligent content matching (Sync Mode),
+ * Raw HTML toggle, human reference file upload, "Copy to Snapshot" buttons
+ * that save to sessionStorage for the standalone Calibration page, and
+ * a Calibration Tool button that opens calibrate.html.
  *
  * This is a standalone controller for review.html — it does not depend on
- * App, DocxParser, or any other main-page class. It loads its data from
- * sessionStorage (serialised by App._serialiseForReview()).
+ * App, DocxParser, CalibrationManager, or any other main-page class. It
+ * loads its data from sessionStorage (serialised by App._serialiseForReview()).
  */
 
 'use strict';
+
+// -----------------------------------------------------------------------
+// Template-to-CSS Mapping for iframe rendering
+// -----------------------------------------------------------------------
+
+var CSS_MAPPING = {
+    '1-3': { stylesheets: [
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/colourSchemes/1-3.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/bsReset.css'
+    ]},
+    '4-6': { stylesheets: [
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/4-6.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bsReset.css'
+    ]},
+    '7-8': { stylesheets: [
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/7-8.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bsReset.css'
+    ]},
+    '9-10': { stylesheets: [
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/9-10.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bsReset.css'
+    ]},
+    'NCEA': { stylesheets: [
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/colourSchemes/NCEA.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/bsReset.css'
+    ]},
+    'combo': { stylesheets: [
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/colourSchemes/combo.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekuradev.desire2learn.com/shared/refresh_template/css/bsReset.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/combo.css'
+    ]},
+    'ECH': { stylesheets: [
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/ECH.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bsReset.css'
+    ]},
+    'inquiry': { stylesheets: [
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/_colourSchemes.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/colourSchemes/inquiry.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/styles.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bootstrap.min.css',
+        'https://tekura.desire2learn.com/shared/refresh_template/css/bsReset.css'
+    ]}
+};
+
+// -----------------------------------------------------------------------
+// ReviewApp Class
+// -----------------------------------------------------------------------
 
 class ReviewApp {
     constructor() {
         /** Deserialised data from main page */
         this.data = null;
 
-        /** Human reference files (from transfer + uploaded on this page) */
+        /** Human reference files uploaded on this page */
         this.humanReferenceFiles = [];
 
         /** Currently selected filename */
@@ -32,13 +104,9 @@ class ReviewApp {
         /** Currently highlighted block index (for copy-to-snapshot) */
         this.highlightedBlockIndex = null;
 
-        /** CalibrationManager instance */
-        this.calibrationManager = null;
-
         this._loadData();
         this._bindElements();
         this._bindEvents();
-        this._initCalibrationManager();
         this._render();
     }
 
@@ -51,7 +119,6 @@ class ReviewApp {
      */
     _loadData() {
         try {
-            // Try chunked storage first
             var chunkCount = sessionStorage.getItem('pageforge_review_chunks');
             var raw;
             if (chunkCount) {
@@ -91,6 +158,7 @@ class ReviewApp {
         this.fileMapList = document.getElementById('file-map-list');
         this.syncModeToggle = document.getElementById('sync-mode-toggle');
         this.btnRawHtmlToggle = document.getElementById('btn-raw-html-toggle');
+        this.btnCalibrationTool = document.getElementById('btn-calibration-tool');
         this.moduleCodeDisplay = document.getElementById('review-module-code');
 
         // PageForge panel
@@ -117,9 +185,9 @@ class ReviewApp {
         this.writerFilename = document.getElementById('writer-filename');
 
         // Copy-to-snapshot buttons
-        this.btnCopyPfToSnapshot = document.getElementById('btn-copy-pf-to-snapshot');
-        this.btnCopyHumanToSnapshot = document.getElementById('btn-copy-human-to-snapshot');
-        this.btnCopyWriterToSnapshot = document.getElementById('btn-copy-writer-to-snapshot');
+        this.btnCopyPf = document.getElementById('btn-copy-pf');
+        this.btnCopyHuman = document.getElementById('btn-copy-human');
+        this.btnCopyWt = document.getElementById('btn-copy-wt');
 
         // Toast
         this.toast = document.getElementById('toast');
@@ -148,6 +216,13 @@ class ReviewApp {
             this.btnRawHtmlToggle.addEventListener('click', function () {
                 self.rawHtmlMode = !self.rawHtmlMode;
                 self._toggleRawHtmlMode();
+            });
+        }
+
+        // Calibration tool button
+        if (this.btnCalibrationTool) {
+            this.btnCalibrationTool.addEventListener('click', function () {
+                self._openCalibrationTool();
             });
         }
 
@@ -199,20 +274,20 @@ class ReviewApp {
             });
         }
 
-        // Copy-to-snapshot buttons
-        if (this.btnCopyWriterToSnapshot) {
-            this.btnCopyWriterToSnapshot.addEventListener('click', function () {
-                self._copyHighlightedToField('original');
+        // Copy-to-snapshot buttons (save to sessionStorage)
+        if (this.btnCopyWt) {
+            this.btnCopyWt.addEventListener('click', function () {
+                self._copyToSessionStorage('wt');
             });
         }
-        if (this.btnCopyPfToSnapshot) {
-            this.btnCopyPfToSnapshot.addEventListener('click', function () {
-                self._copyHighlightedToField('pageforge');
+        if (this.btnCopyPf) {
+            this.btnCopyPf.addEventListener('click', function () {
+                self._copyToSessionStorage('pf');
             });
         }
-        if (this.btnCopyHumanToSnapshot) {
-            this.btnCopyHumanToSnapshot.addEventListener('click', function () {
-                self._copyHighlightedToField('human');
+        if (this.btnCopyHuman) {
+            this.btnCopyHuman.addEventListener('click', function () {
+                self._copyToSessionStorage('human');
             });
         }
 
@@ -225,28 +300,25 @@ class ReviewApp {
     }
 
     // ------------------------------------------------------------------
-    // Calibration manager initialisation
+    // Calibration tool launcher
     // ------------------------------------------------------------------
 
-    _initCalibrationManager() {
-        var self = this;
-        this.calibrationManager = new CalibrationManager({
-            showToast: function (msg) { self.showToast(msg); },
-            getModuleCode: function () {
-                return (self.data && self.data.metadata && self.data.metadata.moduleCode) || '';
-            },
-            getTemplateName: function () {
-                return (self.data && self.data.templateName) || '';
-            },
-            getGeneratedFileList: function () {
-                return (self.data && self.data.generatedFileList) || [];
-            }
-        });
-        this.calibrationManager.init();
-
-        // Populate the source file dropdown
-        if (this.data && this.data.generatedFileList) {
-            this.calibrationManager.populateSourceFileDropdown();
+    /**
+     * Open the standalone Calibration Comparison Tool page.
+     * Serialises calibration-specific data to sessionStorage.
+     */
+    _openCalibrationTool() {
+        try {
+            var calibData = {
+                generatedFileList: (this.data && this.data.generatedFileList) || [],
+                metadata: (this.data && this.data.metadata) || {},
+                templateName: (this.data && this.data.templateName) || ''
+            };
+            sessionStorage.setItem('pageforge_calibrate_data', JSON.stringify(calibData));
+            window.open('calibrate.html', '_blank');
+        } catch (e) {
+            console.error('ReviewApp: Failed to open calibration tool:', e);
+            this.showToast('Failed to open calibration tool');
         }
     }
 
@@ -262,7 +334,7 @@ class ReviewApp {
 
         // Show module code
         if (this.moduleCodeDisplay && this.data.metadata && this.data.metadata.moduleCode) {
-            this.moduleCodeDisplay.textContent = 'Module: ' + this.data.metadata.moduleCode;
+            this.moduleCodeDisplay.textContent = this.data.metadata.moduleCode;
         }
 
         // Render file map
@@ -303,16 +375,22 @@ class ReviewApp {
             var pageData = this._getPageData(filename);
             var typeLabel = '';
             if (pageData) {
-                typeLabel = pageData.type === 'overview' ? 'Overview' : 'Lesson ' + pageData.lessonNumber;
+                if (pageData.type === 'overview') {
+                    typeLabel = 'OV';
+                } else {
+                    typeLabel = 'L' + pageData.lessonNumber;
+                }
             }
             var hasRef = this._hasMatchingReference(filename);
 
             html += '<div class="file-map-entry" data-filename="' + this._esc(filename) + '" tabindex="0" role="button">';
+            html += '<div class="file-map-entry-row">';
             html += '<span class="file-map-name">' + this._esc(filename) + '</span>';
             html += '<span class="file-map-type">' + this._esc(typeLabel) + '</span>';
             if (hasRef) {
                 html += '<span class="file-map-ref-badge" title="Human reference available">REF</span>';
             }
+            html += '</div>';
             html += '</div>';
         }
 
@@ -365,6 +443,56 @@ class ReviewApp {
     }
 
     // ------------------------------------------------------------------
+    // Template-aware CSS injection
+    // ------------------------------------------------------------------
+
+    /**
+     * Inject LMS template CSS into HTML for rendered display in iframes.
+     * Also removes the idoc_scripts.js script tag and injects sync highlight styles.
+     *
+     * @param {string} htmlString - Raw HTML string
+     * @param {string|null} templateAttribute - Template attribute value (e.g., '4-6')
+     * @returns {string} Modified HTML string with CSS injected
+     */
+    _injectCssForRendering(htmlString, templateAttribute) {
+        // Detect template from HTML if not provided
+        if (!templateAttribute) {
+            var templateMatch = htmlString.match(/template\s*=\s*"([^"]+)"/);
+            if (templateMatch) {
+                templateAttribute = templateMatch[1];
+            }
+        }
+
+        // Build link tags
+        var linkTags = '';
+        if (templateAttribute && CSS_MAPPING[templateAttribute]) {
+            var sheets = CSS_MAPPING[templateAttribute].stylesheets;
+            for (var i = 0; i < sheets.length; i++) {
+                linkTags += '<link rel="stylesheet" href="' + sheets[i] + '" />\n';
+            }
+        }
+
+        // Inject sync highlight style
+        var syncStyle = '<style>.pf-sync-highlight { outline: 3px solid #f59e0b !important; '
+            + 'background-color: rgba(245, 158, 11, 0.15) !important; '
+            + 'transition: outline 0.3s, background-color 0.3s; }</style>\n';
+
+        // Insert before </head>
+        if (linkTags || syncStyle) {
+            var headCloseIdx = htmlString.indexOf('</head>');
+            if (headCloseIdx === -1) headCloseIdx = htmlString.indexOf('</HEAD>');
+            if (headCloseIdx !== -1) {
+                htmlString = htmlString.substring(0, headCloseIdx) + linkTags + syncStyle + htmlString.substring(headCloseIdx);
+            }
+        }
+
+        // Remove idoc_scripts.js script tag
+        htmlString = htmlString.replace(/<script[^>]*idoc_scripts\.js[^>]*><\/script>/gi, '');
+
+        return htmlString;
+    }
+
+    // ------------------------------------------------------------------
     // PageForge panel
     // ------------------------------------------------------------------
 
@@ -379,15 +507,22 @@ class ReviewApp {
             return;
         }
 
+        // Store raw content for raw HTML mode
+        this._currentPageforgeHtml = htmlContent;
+
         // Annotate HTML with data-pf-block attributes for sync mode
         var annotated = this._annotateHtml(htmlContent, filename);
+
+        // Inject template CSS for rendered view
+        var templateAttr = (this.data && this.data.templateAttribute) || null;
+        var injected = this._injectCssForRendering(annotated, templateAttr);
 
         if (this.rawHtmlMode) {
             this._showRawHtml('pageforge', htmlContent);
         } else {
             if (this.pageforgeIframe) {
                 this.pageforgeIframe.classList.remove('hidden');
-                this.pageforgeIframe.srcdoc = annotated;
+                this.pageforgeIframe.srcdoc = injected;
             }
             if (this.pageforgeRaw) this.pageforgeRaw.classList.add('hidden');
         }
@@ -410,23 +545,37 @@ class ReviewApp {
             if (this.humanNoMatchMsg) this.humanNoMatchMsg.classList.add('hidden');
             if (this.btnUploadMore) this.btnUploadMore.classList.remove('hidden');
 
+            // Store raw content for raw HTML mode
+            this._currentHumanHtml = refFile.content;
+
+            // Inject template CSS — detect from human file's own template attribute,
+            // fall back to PageForge's template
+            var templateAttr = null;
+            var humanTemplateMatch = refFile.content.match(/template\s*=\s*"([^"]+)"/);
+            if (humanTemplateMatch) {
+                templateAttr = humanTemplateMatch[1];
+            } else if (this.data) {
+                templateAttr = this.data.templateAttribute || null;
+            }
+            var injected = this._injectCssForRendering(refFile.content, templateAttr);
+
             if (this.rawHtmlMode) {
                 this._showRawHtml('human', refFile.content);
             } else {
                 if (this.humanIframe) {
                     this.humanIframe.classList.remove('hidden');
-                    this.humanIframe.srcdoc = refFile.content;
+                    this.humanIframe.srcdoc = injected;
                 }
                 if (this.humanRaw) this.humanRaw.classList.add('hidden');
             }
         } else {
             // No matching reference — show upload prompt
+            this._currentHumanHtml = null;
             if (this.humanIframe) this.humanIframe.classList.add('hidden');
             if (this.humanRaw) this.humanRaw.classList.add('hidden');
             if (this.humanUploadPrompt) this.humanUploadPrompt.classList.remove('hidden');
 
             if (this.humanReferenceFiles.length > 0) {
-                // Files uploaded but none match this filename
                 if (this.humanNoMatchMsg) {
                     this.humanNoMatchMsg.textContent = 'No matching human reference file uploaded for ' + filename;
                     this.humanNoMatchMsg.classList.remove('hidden');
@@ -474,8 +623,8 @@ class ReviewApp {
     // ------------------------------------------------------------------
 
     /**
-     * Annotate generated HTML with data-pf-block attributes by wrapping
-     * children of <div id="body"> with block index markers.
+     * Annotate generated HTML with data-pf-block and data-pf-activity
+     * attributes for sync mode click detection.
      *
      * @param {string} htmlContent - Raw HTML string
      * @param {string} filename - Current filename for page data lookup
@@ -489,34 +638,61 @@ class ReviewApp {
 
             if (bodyDiv) {
                 var children = bodyDiv.children;
+                var blockIdx = 0;
                 for (var i = 0; i < children.length; i++) {
-                    children[i].setAttribute('data-pf-block', String(i));
+                    var child = children[i];
+                    child.setAttribute('data-pf-block', String(blockIdx));
+
+                    // Annotate activity wrappers
+                    var activityEl = child.querySelector('.activity[number]');
+                    if (!activityEl && child.classList && child.classList.contains('activity')) {
+                        activityEl = child;
+                    }
+                    if (activityEl && activityEl.getAttribute('number')) {
+                        child.setAttribute('data-pf-activity', activityEl.getAttribute('number'));
+                    }
+
+                    // Also check for activity number in HTML comments
+                    // (interactive placeholders use comments like Activity: 1A)
+                    var childHtml = child.innerHTML || '';
+                    var activityCommentMatch = childHtml.match(/Activity:\s*(\w+)/);
+                    if (activityCommentMatch && !child.getAttribute('data-pf-activity')) {
+                        child.setAttribute('data-pf-activity', activityCommentMatch[1]);
+                    }
+
+                    // Annotate inner elements for finer sync matching
+                    var innerElements = child.querySelectorAll('h2, h3, h4, h5, p, ul, ol, div.whakatauki, div.videoSection, div.alert, div.hintSlider, img');
+                    for (var j = 0; j < innerElements.length; j++) {
+                        innerElements[j].setAttribute('data-pf-inner', blockIdx + '-' + j);
+                    }
+
+                    blockIdx++;
                 }
             }
 
-            // Also annotate module menu content if present
+            // Also annotate structural elements
             var menuContent = doc.getElementById('module-menu-content');
             if (menuContent) {
                 menuContent.setAttribute('data-pf-block', 'menu');
             }
-
-            // Inject highlight style into the document
-            var style = doc.createElement('style');
-            style.textContent = '.pf-sync-highlight { outline: 3px solid #f59e0b !important; '
-                + 'background-color: rgba(245, 158, 11, 0.15) !important; '
-                + 'transition: outline 0.3s, background-color 0.3s; }';
-            doc.head.appendChild(style);
+            var header = doc.getElementById('header');
+            if (header) {
+                header.setAttribute('data-pf-block', 'header');
+            }
+            var footer = doc.getElementById('footer');
+            if (footer) {
+                footer.setAttribute('data-pf-block', 'footer');
+            }
 
             // Serialise back
             return '<!doctype html>' + doc.documentElement.outerHTML;
         } catch (e) {
-            // If annotation fails, return original
             return htmlContent;
         }
     }
 
     // ------------------------------------------------------------------
-    // Sync mode — iframe click handling
+    // Sync mode — 6-Tier intelligent content matching
     // ------------------------------------------------------------------
 
     /**
@@ -537,22 +713,20 @@ class ReviewApp {
                 while (target && target !== doc.body) {
                     var blockAttr = target.getAttribute ? target.getAttribute('data-pf-block') : null;
                     if (blockAttr !== null) {
-                        var blockIndex = blockAttr === 'menu' ? 'menu' : parseInt(blockAttr, 10);
-                        self._syncToBlock(blockIndex, target);
+                        self._syncToBlock(blockAttr, target);
                         return;
                     }
                     target = target.parentElement;
                 }
             });
         } catch (e) {
-            // Cross-origin restriction or iframe not ready
             console.warn('ReviewApp: Could not attach iframe click handler:', e.message);
         }
     }
 
     /**
-     * Synchronise all panels to a specific block index.
-     * @param {number|string} blockIndex
+     * Synchronise all panels to a specific block.
+     * @param {string} blockIndex - Block index string from data-pf-block
      * @param {HTMLElement} clickedElement - The element clicked in the PageForge iframe
      */
     _syncToBlock(blockIndex, clickedElement) {
@@ -561,14 +735,11 @@ class ReviewApp {
         // Highlight in PageForge iframe
         this._highlightInIframe(this.pageforgeIframe, blockIndex);
 
-        // Sync Writer Template panel
+        // Sync Writer Template panel (direct index match)
         this._syncWriterPanel(blockIndex);
 
-        // Sync Human Reference panel
-        if (clickedElement) {
-            var textSnippet = (clickedElement.textContent || '').trim().substring(0, 100);
-            this._syncHumanPanel(textSnippet);
-        }
+        // Sync Human Reference panel using 6-tier matching
+        this._syncHumanPanelIntelligent(clickedElement, blockIndex);
 
         // Show copy-to-snapshot buttons
         this._showCopyToSnapshotButtons();
@@ -577,7 +748,7 @@ class ReviewApp {
     /**
      * Highlight a block in an iframe by data-pf-block attribute.
      * @param {HTMLIFrameElement} iframe
-     * @param {number|string} blockIndex
+     * @param {string} blockIndex
      */
     _highlightInIframe(iframe, blockIndex) {
         try {
@@ -602,7 +773,7 @@ class ReviewApp {
 
     /**
      * Scroll the Writer Template panel to the matching block.
-     * @param {number|string} blockIndex
+     * @param {string} blockIndex
      */
     _syncWriterPanel(blockIndex) {
         if (!this.writerContent) return;
@@ -626,102 +797,314 @@ class ReviewApp {
     }
 
     /**
-     * Find and scroll to matching content in the Human Reference iframe.
-     * Uses fuzzy text matching.
-     * @param {string} textSnippet
+     * Intelligent 6-tier content matching for the Human Reference panel.
+     * Tries progressively less specific matching strategies.
+     *
+     * @param {HTMLElement} clickedElement - Element clicked in PageForge iframe
+     * @param {string} blockIndex - Block index from data-pf-block
      */
-    _syncHumanPanel(textSnippet) {
+    _syncHumanPanelIntelligent(clickedElement, blockIndex) {
         if (!this.humanIframe || this.humanIframe.classList.contains('hidden')) return;
-        if (!textSnippet || textSnippet.length < 5) return;
 
+        var doc;
         try {
-            var doc = this.humanIframe.contentDocument || this.humanIframe.contentWindow.document;
-
-            // Remove previous highlights
-            var prev = doc.querySelectorAll('.pf-sync-highlight');
-            for (var i = 0; i < prev.length; i++) {
-                prev[i].classList.remove('pf-sync-highlight');
-            }
-
-            // Find best matching element using text similarity
-            var bestMatch = null;
-            var bestScore = 0;
-            var searchText = textSnippet.toLowerCase().replace(/\s+/g, ' ');
-
-            // Walk meaningful content elements
-            var elements = doc.querySelectorAll('h1, h2, h3, h4, h5, p, div, li, td, th, span');
-            for (var i = 0; i < elements.length; i++) {
-                var el = elements[i];
-                var elText = (el.textContent || '').toLowerCase().replace(/\s+/g, ' ').trim();
-                if (!elText || elText.length < 3) continue;
-
-                var score = this._textSimilarity(searchText, elText);
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMatch = el;
-                }
-            }
-
-            if (bestMatch && bestScore > 0.3) {
-                // Inject highlight style if not already present
-                if (!doc.getElementById('pf-sync-style')) {
-                    var style = doc.createElement('style');
-                    style.id = 'pf-sync-style';
-                    style.textContent = '.pf-sync-highlight { outline: 3px solid #f59e0b !important; '
-                        + 'background-color: rgba(245, 158, 11, 0.15) !important; '
-                        + 'transition: outline 0.3s, background-color 0.3s; }';
-                    doc.head.appendChild(style);
-                }
-
-                bestMatch.classList.add('pf-sync-highlight');
-                bestMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Auto-remove highlight after 3 seconds
-                setTimeout(function () {
-                    bestMatch.classList.remove('pf-sync-highlight');
-                }, 3000);
-            } else {
-                this.showToast('No matching content found in human reference file');
-            }
+            doc = this.humanIframe.contentDocument || this.humanIframe.contentWindow.document;
         } catch (e) {
-            // Ignore cross-origin errors
+            return;
+        }
+
+        // Ensure sync highlight style is injected
+        if (!doc.getElementById('pf-sync-style')) {
+            var style = doc.createElement('style');
+            style.id = 'pf-sync-style';
+            style.textContent = '.pf-sync-highlight { outline: 3px solid #f59e0b !important; '
+                + 'background-color: rgba(245, 158, 11, 0.15) !important; '
+                + 'transition: outline 0.3s, background-color 0.3s; }';
+            doc.head.appendChild(style);
+        }
+
+        // Remove previous highlights
+        var prev = doc.querySelectorAll('.pf-sync-highlight');
+        for (var i = 0; i < prev.length; i++) {
+            prev[i].classList.remove('pf-sync-highlight');
+        }
+
+        var matched = false;
+
+        // --- Tier 1: Structural element matching ---
+        if (!matched && clickedElement) {
+            var structId = this._findStructuralId(clickedElement);
+            if (structId) {
+                var structEl = doc.getElementById(structId);
+                if (structEl) {
+                    this._highlightAndScroll(structEl);
+                    matched = true;
+                }
+            }
+        }
+
+        // --- Tier 2: Activity number anchoring ---
+        if (!matched && clickedElement) {
+            var activityNum = this._extractActivityNumber(clickedElement);
+            if (activityNum) {
+                var actEl = doc.querySelector('[number="' + activityNum + '"]');
+                if (actEl) {
+                    this._highlightAndScroll(actEl);
+                    matched = true;
+                }
+            }
+        }
+
+        // --- Tier 3: Heading text matching ---
+        if (!matched && clickedElement) {
+            var heading = this._extractHeadingText(clickedElement);
+            if (heading) {
+                var headingLower = heading.toLowerCase().trim();
+                var headings = doc.querySelectorAll('h1, h2, h3, h4, h5');
+                for (var hi = 0; hi < headings.length; hi++) {
+                    var hText = (headings[hi].textContent || '').toLowerCase().trim();
+                    if (hText === headingLower) {
+                        this._highlightAndScroll(headings[hi]);
+                        matched = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // --- Tier 4: Word group matching ---
+        if (!matched && clickedElement) {
+            var visibleText = (clickedElement.textContent || '').trim();
+            if (visibleText.length >= 10) {
+                var wordGroups = this._extractWordGroups(visibleText, 4, 10);
+                if (wordGroups.length > 0) {
+                    var bestMatch = this._findByWordGroups(doc, wordGroups);
+                    if (bestMatch) {
+                        this._highlightAndScroll(bestMatch);
+                        matched = true;
+                    }
+                }
+            }
+        }
+
+        // --- Tier 5: Previous block anchoring ---
+        if (!matched && clickedElement) {
+            var pfDoc;
+            try {
+                pfDoc = this.pageforgeIframe.contentDocument || this.pageforgeIframe.contentWindow.document;
+            } catch (e) {
+                pfDoc = null;
+            }
+
+            if (pfDoc) {
+                var currentIdx = parseInt(blockIndex, 10);
+                if (!isNaN(currentIdx)) {
+                    for (var bi = currentIdx - 1; bi >= 0 && bi >= currentIdx - 5; bi--) {
+                        var prevBlock = pfDoc.querySelector('[data-pf-block="' + bi + '"]');
+                        if (!prevBlock) continue;
+
+                        // Try activity number
+                        var prevActivity = this._extractActivityNumber(prevBlock);
+                        if (prevActivity) {
+                            var prevActEl = doc.querySelector('[number="' + prevActivity + '"]');
+                            if (prevActEl) {
+                                // Found anchor, offset forward
+                                var nextSibling = prevActEl.parentElement;
+                                while (nextSibling && nextSibling.nextElementSibling) {
+                                    nextSibling = nextSibling.nextElementSibling;
+                                    break;
+                                }
+                                if (nextSibling) {
+                                    this._highlightAndScroll(nextSibling);
+                                    matched = true;
+                                }
+                                break;
+                            }
+                        }
+
+                        // Try heading text
+                        var prevHeading = this._extractHeadingText(prevBlock);
+                        if (prevHeading) {
+                            var prevHeadingLower = prevHeading.toLowerCase().trim();
+                            var allHeadings = doc.querySelectorAll('h1, h2, h3, h4, h5');
+                            for (var phi = 0; phi < allHeadings.length; phi++) {
+                                if ((allHeadings[phi].textContent || '').toLowerCase().trim() === prevHeadingLower) {
+                                    // Found anchor, scroll to next sibling
+                                    var anchorParent = allHeadings[phi].closest('.row') || allHeadings[phi].parentElement;
+                                    if (anchorParent && anchorParent.nextElementSibling) {
+                                        this._highlightAndScroll(anchorParent.nextElementSibling);
+                                    } else {
+                                        this._highlightAndScroll(allHeadings[phi]);
+                                    }
+                                    matched = true;
+                                    break;
+                                }
+                            }
+                            if (matched) break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // --- Tier 6: Proportional position estimation ---
+        if (!matched) {
+            try {
+                var pfBody = this.pageforgeIframe.contentDocument.getElementById('body');
+                var humanBody = doc.getElementById('body');
+                if (pfBody && humanBody && clickedElement) {
+                    var pfScrollHeight = pfBody.scrollHeight || 1;
+                    var clickedOffset = clickedElement.offsetTop || 0;
+                    var proportion = clickedOffset / pfScrollHeight;
+                    var humanScrollTarget = proportion * (humanBody.scrollHeight || 0);
+                    humanBody.scrollTo({ top: humanScrollTarget, behavior: 'smooth' });
+                }
+            } catch (e) {
+                // Fallback failed
+            }
+
+            if (!matched) {
+                this.showToast('No matching content found in human reference');
+            }
         }
     }
 
     /**
-     * Calculate text similarity score between two strings (0-1).
-     * Uses substring overlap scoring.
-     * @param {string} search
-     * @param {string} target
-     * @returns {number}
+     * Highlight an element and scroll it into view with auto-remove.
+     * @param {HTMLElement} element
      */
-    _textSimilarity(search, target) {
-        if (!search || !target) return 0;
+    _highlightAndScroll(element) {
+        element.classList.add('pf-sync-highlight');
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        // Exact match
-        if (search === target) return 1;
+        setTimeout(function () {
+            element.classList.remove('pf-sync-highlight');
+        }, 2000);
+    }
 
-        // Check substring containment
-        if (target.indexOf(search) !== -1) return 0.9;
-        if (search.indexOf(target) !== -1) return 0.8;
+    /**
+     * Find the structural ID of the nearest structural ancestor.
+     * @param {HTMLElement} el
+     * @returns {string|null}
+     */
+    _findStructuralId(el) {
+        var current = el;
+        while (current) {
+            var id = current.id;
+            if (id === 'header' || id === 'footer' || id === 'module-menu-content') {
+                return id;
+            }
+            current = current.parentElement;
+        }
+        return null;
+    }
 
-        // Word overlap score
-        var searchWords = search.split(/\s+/).filter(function (w) { return w.length > 2; });
-        var targetWords = target.split(/\s+/).filter(function (w) { return w.length > 2; });
+    /**
+     * Extract activity number from an element or its ancestors.
+     * @param {HTMLElement} el
+     * @returns {string|null}
+     */
+    _extractActivityNumber(el) {
+        var current = el;
+        while (current) {
+            // Check data-pf-activity attribute
+            var pfActivity = current.getAttribute ? current.getAttribute('data-pf-activity') : null;
+            if (pfActivity) return pfActivity;
 
-        if (searchWords.length === 0) return 0;
+            // Check number attribute on .activity
+            var numAttr = current.getAttribute ? current.getAttribute('number') : null;
+            if (numAttr) return numAttr;
 
-        var matches = 0;
-        for (var i = 0; i < searchWords.length; i++) {
-            for (var j = 0; j < targetWords.length; j++) {
-                if (searchWords[i] === targetWords[j]) {
-                    matches++;
-                    break;
+            // Check for activity number in HTML comments
+            if (current.innerHTML) {
+                var commentMatch = current.innerHTML.match(/Activity:\s*(\w+)/);
+                if (commentMatch) return commentMatch[1];
+            }
+
+            current = current.parentElement;
+        }
+        return null;
+    }
+
+    /**
+     * Extract heading text if element is or contains a heading.
+     * @param {HTMLElement} el
+     * @returns {string|null}
+     */
+    _extractHeadingText(el) {
+        // Check if element itself is a heading
+        var tag = (el.tagName || '').toLowerCase();
+        if (/^h[2-5]$/.test(tag)) {
+            return el.textContent;
+        }
+        // Check child headings
+        var heading = el.querySelector('h2, h3, h4, h5');
+        if (heading) {
+            return heading.textContent;
+        }
+        return null;
+    }
+
+    /**
+     * Extract word groups (n-grams) from text for matching.
+     * @param {string} text
+     * @param {number} groupSize - Words per group
+     * @param {number} maxGroups - Maximum groups to return
+     * @returns {Array<string>}
+     */
+    _extractWordGroups(text, groupSize, maxGroups) {
+        // Filter out stop words
+        var stopWords = ['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
+            'of', 'is', 'it', 'by', 'as', 'be', 'if', 'so', 'no', 'up', 'do'];
+
+        var words = text.toLowerCase().split(/\s+/).filter(function (w) {
+            return w.length > 2 && stopWords.indexOf(w) === -1;
+        });
+
+        if (words.length < groupSize) {
+            return words.length > 0 ? [words.join(' ')] : [];
+        }
+
+        var groups = [];
+        var step = Math.max(1, Math.floor((words.length - groupSize) / (maxGroups - 1)));
+
+        for (var i = 0; i <= words.length - groupSize && groups.length < maxGroups; i += step) {
+            groups.push(words.slice(i, i + groupSize).join(' '));
+        }
+
+        return groups;
+    }
+
+    /**
+     * Find the best matching element in a document using word groups.
+     * @param {Document} doc
+     * @param {Array<string>} wordGroups
+     * @returns {HTMLElement|null}
+     */
+    _findByWordGroups(doc, wordGroups) {
+        var elements = doc.querySelectorAll('p, h2, h3, h4, h5, li, td, th, div');
+        var bestMatch = null;
+        var bestScore = 0;
+
+        for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+            var elText = (el.textContent || '').toLowerCase();
+            if (elText.length < 5) continue;
+
+            var score = 0;
+            for (var g = 0; g < wordGroups.length; g++) {
+                if (elText.indexOf(wordGroups[g]) !== -1) {
+                    score++;
                 }
+            }
+
+            if (score > bestScore && score >= 2) {
+                bestScore = score;
+                bestMatch = el;
             }
         }
 
-        return matches / searchWords.length;
+        return bestMatch;
     }
 
     // ------------------------------------------------------------------
@@ -731,8 +1114,10 @@ class ReviewApp {
     _toggleRawHtmlMode() {
         if (this.rawHtmlMode) {
             this.btnRawHtmlToggle.classList.add('review-raw-btn-active');
+            this.btnRawHtmlToggle.textContent = 'Rendered';
         } else {
             this.btnRawHtmlToggle.classList.remove('review-raw-btn-active');
+            this.btnRawHtmlToggle.innerHTML = '&lt;/&gt; Raw HTML';
         }
 
         if (this.selectedFile) {
@@ -782,68 +1167,70 @@ class ReviewApp {
     }
 
     // ------------------------------------------------------------------
-    // Copy-to-snapshot buttons
+    // Copy-to-snapshot buttons (save to sessionStorage)
     // ------------------------------------------------------------------
 
     _showCopyToSnapshotButtons() {
-        if (this.btnCopyWriterToSnapshot) this.btnCopyWriterToSnapshot.classList.remove('hidden');
-        if (this.btnCopyPfToSnapshot) this.btnCopyPfToSnapshot.classList.remove('hidden');
-        if (this.btnCopyHumanToSnapshot && this._findReference(this.selectedFile)) {
-            this.btnCopyHumanToSnapshot.classList.remove('hidden');
+        if (this.btnCopyWt) this.btnCopyWt.classList.remove('hidden');
+        if (this.btnCopyPf) this.btnCopyPf.classList.remove('hidden');
+        if (this.btnCopyHuman && this._findReference(this.selectedFile)) {
+            this.btnCopyHuman.classList.remove('hidden');
         }
     }
 
     _hideCopyToSnapshotButtons() {
-        if (this.btnCopyWriterToSnapshot) this.btnCopyWriterToSnapshot.classList.add('hidden');
-        if (this.btnCopyPfToSnapshot) this.btnCopyPfToSnapshot.classList.add('hidden');
-        if (this.btnCopyHumanToSnapshot) this.btnCopyHumanToSnapshot.classList.add('hidden');
+        if (this.btnCopyWt) this.btnCopyWt.classList.add('hidden');
+        if (this.btnCopyPf) this.btnCopyPf.classList.add('hidden');
+        if (this.btnCopyHuman) this.btnCopyHuman.classList.add('hidden');
     }
 
     /**
-     * Copy the highlighted block's content to a snapshot form field.
-     * @param {string} field - 'original', 'pageforge', or 'human'
+     * Copy highlighted content to sessionStorage for the calibration page.
+     * @param {string} type - 'wt', 'pf', or 'human'
      */
-    _copyHighlightedToField(field) {
+    _copyToSessionStorage(type) {
         var content = '';
         var blockIndex = this.highlightedBlockIndex;
 
-        if (field === 'original') {
+        if (type === 'wt') {
             // Get writer template content for this block
             var pageData = this._getPageData(this.selectedFile);
-            if (pageData && pageData.contentBlockTexts && blockIndex !== null && blockIndex !== 'menu') {
-                content = pageData.contentBlockTexts[blockIndex] || '';
+            if (pageData && pageData.contentBlockTexts && blockIndex !== null && blockIndex !== 'menu' && blockIndex !== 'header' && blockIndex !== 'footer') {
+                var idx = parseInt(blockIndex, 10);
+                if (!isNaN(idx)) {
+                    content = pageData.contentBlockTexts[idx] || '';
+                }
             }
-        } else if (field === 'pageforge') {
-            // Get the HTML of the highlighted block from the PageForge iframe
+            if (content) {
+                sessionStorage.setItem('pageforge_snapshot_wt', content);
+                this.showToast('Writer Template content copied for snapshot');
+            } else {
+                this.showToast('No writer template content to copy');
+            }
+        } else if (type === 'pf') {
             content = this._getHighlightedHtml(this.pageforgeIframe, blockIndex);
-        } else if (field === 'human') {
-            // Get the highlighted content from the Human Reference iframe
+            if (content) {
+                sessionStorage.setItem('pageforge_snapshot_pf', content);
+                sessionStorage.setItem('pageforge_snapshot_file', this.selectedFile || '');
+                this.showToast('PageForge content copied for snapshot');
+            } else {
+                this.showToast('No PageForge content to copy');
+            }
+        } else if (type === 'human') {
             content = this._getHighlightedHtml(this.humanIframe, null);
-        }
-
-        // Populate the form field
-        var textarea;
-        if (field === 'original') {
-            textarea = document.getElementById('snapshot-original');
-        } else if (field === 'pageforge') {
-            textarea = document.getElementById('snapshot-pageforge');
-        } else if (field === 'human') {
-            textarea = document.getElementById('snapshot-human');
-        }
-
-        if (textarea && content) {
-            textarea.value = content;
-            textarea.dispatchEvent(new Event('input'));
-            this.showToast('Content copied to snapshot field');
-        } else if (!content) {
-            this.showToast('No highlighted content to copy');
+            if (content) {
+                sessionStorage.setItem('pageforge_snapshot_human', content);
+                this.showToast('Human reference content copied for snapshot');
+            } else {
+                this.showToast('No human reference content to copy');
+            }
         }
     }
 
     /**
      * Get the outerHTML of the currently highlighted element in an iframe.
      * @param {HTMLIFrameElement} iframe
-     * @param {number|string|null} blockIndex
+     * @param {string|null} blockIndex
      * @returns {string}
      */
     _getHighlightedHtml(iframe, blockIndex) {
@@ -879,7 +1266,7 @@ class ReviewApp {
 
             // Validate .html extension
             if (!file.name.toLowerCase().endsWith('.html')) {
-                this.showToast('Rejected "' + file.name + '" — only .html files accepted');
+                this.showToast('Rejected "' + file.name + '" \u2014 only .html files accepted');
                 continue;
             }
 

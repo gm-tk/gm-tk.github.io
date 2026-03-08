@@ -239,10 +239,12 @@ class App {
     _serialiseForReview() {
         var self = this;
         var templateName = '';
+        var templateAttribute = '';
         if (this.selectedTemplateId) {
             try {
                 var config = this.templateEngine.getConfig(this.selectedTemplateId);
                 templateName = config._templateName || '';
+                templateAttribute = config._templateAttribute || '';
             } catch (e) {
                 // Ignore
             }
@@ -273,6 +275,7 @@ class App {
             metadata: this.currentMetadata,
             templateId: this.selectedTemplateId,
             templateName: templateName,
+            templateAttribute: templateAttribute,
             humanReferenceFiles: [],
             pageData: pageData
         });

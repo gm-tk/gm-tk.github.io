@@ -56,7 +56,8 @@ PageForge is a client-side web application that reads Writer Template `.docx` fi
 13. **Tag normalisation robustness** → pre-processing de-fragmentation of fractured red-text boundaries from MS Word XML, bracket whitespace cleanup, ordinal suffix stripping in resolveOrdinalOrNumber (DONE — Phase 1 Patch)
 14. **UI overhaul & rebranding** → project renamed from ParseMaster to PageForge, upload decoupled from conversion with staged file + Convert button, template dropdown with auto-detect hint, conversion summary moved to debug panel, legacy text output replaced with direct download, "Copy Interactive Reference" button removed from action bar (DONE — Phase 8)
 15. **Calibration comparison tool** → development utility for uploading human-developed HTML reference files, logging side-by-side comparison snapshots (original writer template content, PageForge output, human correct output), displaying logged snapshots with expand/delete, and exporting structured calibration reports as .txt for Claude AI analysis (DONE — Phase 9)
-16. **Visual comparison review page** → dedicated review.html page with three synchronised viewing panels (PageForge rendered HTML, human reference HTML, parsed Writer Template content), file map sidebar, Sync Mode for cross-panel click-to-scroll synchronisation, Raw HTML toggle mode, human reference file upload, "Copy to Snapshot" contextual buttons, and relocated Calibration Comparison Tool (Step 1 removed, Steps 2–3 renumbered); accessed from main results via "Visual Comparison Review" button; data transferred via sessionStorage with chunked fallback (DONE — Phase 10)
+16. **Visual comparison review page** → dedicated review.html page with three synchronised viewing panels (PageForge rendered HTML, human reference HTML, parsed Writer Template content), file map sidebar, template-aware CSS injection for authentic LMS rendering in iframes, 6-tier intelligent Sync Mode for cross-panel click-to-scroll synchronisation (structural IDs → activity numbers → heading text → word groups → previous block anchoring → proportional position), Raw HTML toggle mode, human reference file upload, "Copy to Snapshot" contextual buttons that save to sessionStorage for the standalone Calibration page, and a "Calibration Tool" button that opens calibrate.html; accessed from main results via "Visual Comparison Review" button; data transferred via sessionStorage with chunked fallback (DONE — Phase 10)
+17. **Standalone calibration page** → dedicated calibrate.html page with the Calibration Comparison Tool (previously embedded in review.html), with Step 1 (Upload Human Reference Files) removed and remaining steps renumbered; auto-populates form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons on tab focus; managed by CalibrateApp controller class (DONE — Phase 10)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -181,8 +182,9 @@ User clicks "Convert Document" button (Phase 8)
 | `InteractiveExtractor` | `js/interactive-extractor.js` | Interactive component detection, data extraction, placeholder generation, reference document |
 | `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
 | `OutputManager` | `js/output-manager.js` | Multi-file output storage, file listing, individual/ZIP download, clipboard copy |
-| `CalibrationManager` | `js/calibration-manager.js` | Calibration comparison tool — human reference file upload, comparison snapshot logging, snapshot display, calibration report export (relocated to review page Phase 10) |
-| `ReviewApp` | `js/review-app.js` | Review page controller — data deserialisation, three-panel rendering, file map, sync mode, raw HTML toggle, human reference upload, copy-to-snapshot, calibration integration |
+| `CalibrationManager` | `js/calibration-manager.js` | Calibration comparison tool — human reference file upload, comparison snapshot logging, snapshot display, calibration report export (standalone calibrate.html page Phase 10) |
+| `ReviewApp` | `js/review-app.js` | Review page controller — data deserialisation, three-panel rendering, file map, template-aware CSS injection, 6-tier intelligent sync mode, raw HTML toggle, human reference upload, copy-to-sessionStorage snapshot buttons, calibration tool launcher |
+| `CalibrateApp` | `js/calibrate-app.js` | Calibrate page controller — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of snapshot form fields from sessionStorage keys, navigation |
 | `App` | `js/app.js` | UI controller — staged upload, Convert button, file list, preview, ZIP download, text download, debug panel, template selection, visual review launcher |
 
 ---
@@ -193,6 +195,7 @@ User clicks "Convert Document" button (Phase 8)
 gm-tk.github.io/
 ├── index.html              # Single-page application shell
 ├── review.html             # Visual Comparison Review page (Phase 10)
+├── calibrate.html          # Standalone Calibration Comparison Tool page (Phase 10)
 ├── css/
 │   ├── styles.css          # All application styles (including debug panel, template selector, multi-file layout)
 │   └── review-styles.css   # Review page styles (three-panel layout, sync mode, raw HTML view) (Phase 10)
@@ -207,8 +210,9 @@ gm-tk.github.io/
 │   ├── interactive-extractor.js # Interactive data extraction, placeholder generation & reference doc (Phase 4)
 │   ├── html-converter.js    # Core HTML conversion engine (Phase 3, updated Phase 4)
 │   ├── output-manager.js    # Multi-file output management, ZIP download, clipboard copy (Phase 5)
-│   ├── calibration-manager.js # Calibration comparison tool — reference upload, snapshot logging, report export (Phase 9, relocated to review page Phase 10)
-│   ├── review-app.js       # Review page controller — three-panel rendering, sync mode, raw HTML toggle, calibration integration (Phase 10)
+│   ├── calibration-manager.js # Calibration comparison tool — reference upload, snapshot logging, report export (Phase 9, standalone calibrate.html Phase 10)
+│   ├── review-app.js       # Review page controller — three-panel rendering, CSS injection, 6-tier sync mode, raw HTML toggle, copy-to-sessionStorage (Phase 10)
+│   ├── calibrate-app.js    # Calibrate page controller — data loading, CalibrationManager instantiation, auto-population from sessionStorage (Phase 10)
 │   └── app.js              # UI controller (with file list, preview, ZIP download, debug panel, visual review launcher)
 ├── tests/
 │   ├── test-runner.js       # Minimal Node.js test runner (no external dependencies)
@@ -1279,7 +1283,7 @@ INTERACTIVE 2 of 7
 - Instantiated by `App` with callback hooks for `showToast`, `getModuleCode`, `getTemplateName`, `getGeneratedFileList`
 - Public API: `init()`, `populateSourceFileDropdown()`, `reset()`
 
-### Extended App Flow (Current — Phase 9)
+### Extended App Flow (Current — Phase 10)
 
 ```
 User drops .docx file (or clicks to browse)
@@ -1344,12 +1348,21 @@ User clicks "Convert Document"
     → Debug panel (collapsible) shows conversion summary, template config, tag & page analysis, block scoping, interactive details
 
 User clicks "Visual Comparison Review" button (Phase 10)
-  → App._serialiseForReview() serialises all data (generated HTML files, page data with content block texts, metadata, template info, human reference files)
-  → Data stored in sessionStorage (with chunked fallback for large payloads)
+  → App._serialiseForReview() serialises all data (generated HTML files, page data with content block texts, metadata, template info, templateAttribute)
+  → Data stored in sessionStorage as pageforge_review_data (with chunked fallback for large payloads)
   → window.open('review.html') opens review page in new tab
   → ReviewApp loads and deserialises data from sessionStorage
-  → File map, three panels, and calibration tool rendered
-  → User uploads human reference files, uses sync mode, logs calibration snapshots
+  → File map and three panels rendered with template-aware CSS injection for authentic LMS styling
+  → User uploads human reference files via Human Reference panel upload zone
+  → User enables Sync Mode — 6-tier intelligent matching synchronises all panels on click
+  → User clicks "Copy PF"/"Copy Human"/"Copy WT" buttons — content saved to sessionStorage keys
+
+User clicks "Calibration Tool" button on review page (Phase 10)
+  → ReviewApp._openCalibrationTool() serialises {generatedFileList, metadata, templateName} to sessionStorage key pageforge_calibrate_data
+  → window.open('calibrate.html') opens calibration page in new tab
+  → CalibrateApp loads data, instantiates CalibrationManager, auto-populates form fields from sessionStorage snapshot keys
+  → User logs snapshots and exports calibration report
+  → User can switch back to review tab, copy more content, switch to calibration tab — fields auto-populate on focus
 ```
 
 ---
@@ -1954,12 +1967,12 @@ Phase 9 adds a **Calibration Comparison Tool** — a development/testing utility
 
 ### Architecture
 
-The Calibration Comparison Tool is implemented as a separate `CalibrationManager` class (`js/calibration-manager.js`) following the project's modular architecture. The `App` class instantiates it with callback hooks and manages its visibility lifecycle.
+The Calibration Comparison Tool is implemented as a separate `CalibrationManager` class (`js/calibration-manager.js`) following the project's modular architecture. It is instantiated by `CalibrateApp` on the standalone `calibrate.html` page (Phase 10), with callback hooks for `showToast`, `getModuleCode`, `getTemplateName`, and `getGeneratedFileList`.
 
-**Integration points:**
-- `App` constructor → `_initCalibrationManager()` creates the `CalibrationManager` instance
-- `App.showResults()` → shows calibration section, populates source file dropdown
-- `App.reset()` → calls `calibrationManager.reset()`, hides calibration section
+**Integration points (Phase 10):**
+- `CalibrateApp` constructor → instantiates `CalibrationManager` with callback hooks from deserialized sessionStorage data
+- `CalibrateApp._initCalibrationManager()` → calls `init()` and `populateSourceFileDropdown()`
+- `CalibrateApp._populateFromSessionStorage()` → reads sessionStorage keys set by review page's copy buttons, populates form fields, triggers `_updateLogButtonState()`
 
 **Data flow:**
 - Human reference files stored in `CalibrationManager.humanReferenceFiles[]` as `{ filename, content, size, matchedToGenerated }` objects
@@ -2054,20 +2067,15 @@ END OF CALIBRATION REPORT
 
 ### UI Layout
 
-**Phase 10 change:** The calibration tool has been relocated from the main page (`#calibration-section`) to the Visual Comparison Review page (`review.html`), with Step 1 (Upload Human Reference Files) removed and the remaining steps renumbered. See Section 21 for full details.
+**Phase 10 change:** The calibration tool has been relocated from the main page (`#calibration-section`) to a standalone page (`calibrate.html`), with Step 1 (Upload Human Reference Files) removed and the remaining steps renumbered. The review page (`review.html`) provides "Copy to Snapshot" buttons that save content to sessionStorage keys, and a "Calibration Tool" button that opens `calibrate.html` in a new tab. `CalibrateApp` auto-populates the form fields from those sessionStorage keys on page load and on tab focus. See Section 21 for the review page details and Section 22 for the standalone calibration page details.
 
-The calibration tool now sits below the three-panel comparison layout on `review.html`:
+The calibration tool is now a standalone page (`calibrate.html`):
 
 ```
-review.html
-  ├── .review-header (back link, title, sync toggle, raw HTML button)
-  ├── .review-layout (three-panel comparison)
-  │   ├── .review-file-map (file list sidebar)
-  │   ├── .review-panel-pageforge (rendered PageForge HTML iframe)
-  │   ├── .review-panel-human (rendered human reference iframe + upload)
-  │   └── .review-panel-writer (parsed writer template content)
-  └── #review-calibration-section
-      └── <details id="review-calibration-panel">
+calibrate.html
+  ├── .calibrate-header (back link, title, module code badge)
+  └── .calibrate-content
+      └── .calibration-panel
           └── .calibration-content
               ├── Step 1: Log Comparison Snapshots (was Step 2)
               │   └── .snapshot-form (4 fields + dropdown + buttons)
@@ -2090,37 +2098,48 @@ review.html
 
 ### Overview
 
-Phase 10 adds a dedicated **Visual Comparison Review** page (`review.html`) that provides an advanced side-by-side visual comparison tool with three synchronised viewing panels. The existing Calibration Comparison Tool section has been relocated from the main page to this new page with modifications (Step 1 removed, Steps 2–3 renumbered). A new "Visual Comparison Review" button on the main results page launches the review page in a new tab after serialising all necessary data to sessionStorage.
+Phase 10 provides a dedicated **Visual Comparison Review** page (`review.html`) with three synchronised viewing panels, template-aware CSS injection for authentic LMS rendering, a 6-tier intelligent content matching algorithm for cross-panel synchronisation, and "Copy to Snapshot" buttons that save content to sessionStorage for consumption by the standalone Calibration page (`calibrate.html`). The Calibration Comparison Tool has been extracted from the review page into its own standalone page (see Section 22). A "Visual Comparison Review" button on the main results page launches the review page in a new tab after serialising all necessary data to sessionStorage.
 
-**Status:** DONE — 3 new files created, 3 files modified, 407 tests passing (no regressions, no new tests required — all changes are UI/interaction with no algorithmic logic to unit test).
+**Status:** DONE — 4 files created (review.html, calibrate.html, js/review-app.js, js/calibrate-app.js), 1 file created earlier (css/review-styles.css), 2 files modified (js/app.js, css/review-styles.css), 407 tests passing (no regressions, no new tests required — all changes are UI/interaction with no algorithmic logic to unit test).
 
 ### Files Created
 
 | File | Purpose |
 |------|---------|
-| `review.html` | Standalone HTML page for the Visual Comparison Review tool — three-panel layout with file map, PageForge/Human Reference iframes, Writer Template content panel, and relocated Calibration Comparison Tool |
-| `js/review-app.js` | Controller class for the review page — data deserialisation from sessionStorage, panel rendering, file map interaction, sync mode click handling, raw HTML toggle, human reference file upload, copy-to-snapshot buttons, calibration integration |
-| `css/review-styles.css` | Review page-specific styles — three-panel flex layout, file map sidebar, sync mode toggle/indicator, raw HTML view, writer block styling, responsive breakpoints |
+| `review.html` | Standalone HTML page for the Visual Comparison Review tool — three-panel layout with file map, template-aware CSS-injected PageForge/Human Reference iframes, Writer Template content panel, "Copy to Snapshot" buttons saving to sessionStorage, and "Calibration Tool" button opening calibrate.html |
+| `js/review-app.js` | Controller class for the review page — data deserialisation from sessionStorage, template-aware CSS injection for iframe rendering, 6-tier intelligent sync mode, raw HTML toggle, human reference file upload, copy-to-sessionStorage snapshot buttons, calibration tool launcher |
+| `css/review-styles.css` | Review page-specific styles — three-panel flex layout, file map sidebar, sync mode toggle/indicator, raw HTML view, writer block styling, calibration tool button, responsive breakpoints |
+| `calibrate.html` | Standalone Calibration Comparison Tool page — snapshot form with 3 required fields + 1 optional + source file dropdown, logged snapshots display, export/copy/clear controls (see Section 22) |
+| `js/calibrate-app.js` | Controller class for the calibrate page — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of form fields from sessionStorage keys set by review page's copy buttons (see Section 22) |
 
 ### Files Modified
 
 | File | Changes |
 |------|---------|
-| `index.html` | Added `#btn-visual-review` button to actions bar (styled with `.btn-visual-review` class, starts disabled); removed entire `#calibration-section` element and all its inner HTML; removed `<script src="js/calibration-manager.js">` from main page (moved to review.html); added `<link rel="stylesheet" href="css/review-styles.css">` for Visual Review button styles |
-| `js/app.js` | Removed `_initCalibrationManager()` call from constructor; removed `this.calibrationManager` instantiation; removed calibration panel show/hide from `showResults()` and `reset()`; added `this.btnVisualReview` DOM reference in `_bindElements()`; added click handler for `#btn-visual-review` in `_bindEvents()`; added `_serialiseForReview()` method for data serialisation; added `_openVisualReview()` method with sessionStorage storage and `window.open()`; added `_storeChunked()` and `_clearReviewStorage()` helper methods; `showResults()` now enables visual review button; `reset()` now disables visual review button |
-| `css/styles.css` | (No changes — all calibration CSS classes retained for reuse on review page; new `.btn-visual-review` styles added to `css/review-styles.css`) |
+| `review.html` | Removed entire `#review-calibration-section` with embedded calibration tool HTML; removed `<script src="js/calibration-manager.js">`; added `#btn-calibration-tool` button in header right side; changed copy button IDs to `btn-copy-pf`, `btn-copy-human`, `btn-copy-wt` with text "Copy PF", "Copy Human", "Copy WT"; title changed to "PageForge Visual Comparison Review"; only loads `js/review-app.js` |
+| `js/review-app.js` | Major rewrite: added `CSS_MAPPING` constant with 8 template CSS URL mappings; added `_injectCssForRendering()` for template-aware iframe styling; added `_openCalibrationTool()` for calibrate.html launch; enhanced `_annotateHtml()` with `data-pf-activity`, `data-pf-inner`, and structural element annotation; replaced `_syncHumanPanel()` with 6-tier `_syncHumanPanelIntelligent()`; added tier helper methods (`_findStructuralId`, `_extractActivityNumber`, `_extractHeadingText`, `_extractWordGroups`, `_findByWordGroups`); changed `_copyToSessionStorage()` to save to sessionStorage keys instead of form fields; removed CalibrationManager dependency entirely |
+| `js/app.js` | Added `templateAttribute` extraction (`config._templateAttribute`) and inclusion in serialised JSON for `_serialiseForReview()` |
+| `css/review-styles.css` | Added `.review-calibrate-btn` styles; changed file map width from 190px to 180px; added `.file-map-entry-row` for horizontal layout; removed `.review-calibration-section` styles |
 
 ### Architecture
 
-The Visual Comparison Review page is a standalone HTML page (`review.html`) that loads its own controller class (`ReviewApp` in `js/review-app.js`). It does not depend on the main page's `App` class, `DocxParser`, or any other main-page class — it receives all data via sessionStorage.
+The Visual Comparison Review page is a standalone HTML page (`review.html`) that loads its own controller class (`ReviewApp` in `js/review-app.js`). It does not depend on the main page's `App` class, `DocxParser`, `CalibrationManager`, or any other main-page class — it receives all data via sessionStorage.
 
-**Data transfer flow:**
+**Data transfer flow (main page → review page):**
 1. User clicks "Visual Comparison Review" button on main results page
-2. `App._serialiseForReview()` serialises all data to JSON string
-3. JSON stored in sessionStorage (single key or chunked for large payloads)
+2. `App._serialiseForReview()` serialises all data to JSON string (including `templateAttribute`)
+3. JSON stored in sessionStorage key `pageforge_review_data` (or chunked for large payloads)
 4. `window.open('review.html')` opens the review page in a new tab
 5. `ReviewApp._loadData()` reads and parses data from sessionStorage
-6. Review page renders with all panels populated
+6. Review page renders with all panels populated, CSS injection applied to iframes
+
+**Data transfer flow (review page → calibrate page):**
+1. User clicks "Copy PF" / "Copy Human" / "Copy WT" buttons after sync-clicking a block
+2. `_copyToSessionStorage(type)` saves content to `pageforge_snapshot_pf` / `pageforge_snapshot_human` / `pageforge_snapshot_wt` + `pageforge_snapshot_file` in sessionStorage
+3. User clicks "Calibration Tool" button in review page header
+4. `_openCalibrationTool()` serialises `{generatedFileList, metadata, templateName}` to `pageforge_calibrate_data` and opens `calibrate.html`
+5. `CalibrateApp._populateFromSessionStorage()` reads snapshot keys and populates form fields
+6. `window.addEventListener('focus', ...)` re-checks sessionStorage keys on tab focus for subsequent copies
 
 **Privacy model maintained:** sessionStorage is ephemeral (cleared on tab close), tab-scoped, and client-side only. No data is uploaded or stored persistently.
 
@@ -2135,7 +2154,8 @@ The `App._serialiseForReview()` method serialises:
     metadata: {},                // moduleCode, subject, course, writer, date
     templateId: '',              // selected template ID
     templateName: '',            // resolved template display name
-    humanReferenceFiles: [],     // from CalibrationManager (empty array since CM removed from main page)
+    templateAttribute: '',       // template attribute value (e.g., '4-6', '9-10', 'NCEA') for CSS injection
+    humanReferenceFiles: [],     // empty array (upload handled on review page)
     pageData: [                  // per-page content block texts
         {
             filename: 'MODULE-00.html',
@@ -2150,14 +2170,39 @@ The `App._serialiseForReview()` method serialises:
 
 **Chunked storage fallback:** If the JSON string exceeds 4MB, `_storeChunked()` splits it into 4MB chunks stored as `pageforge_review_chunk_0`, `pageforge_review_chunk_1`, etc., with a `pageforge_review_chunks` key storing the count. `ReviewApp._loadData()` automatically detects and reassembles chunked data.
 
+### Template-Aware CSS Injection
+
+The `CSS_MAPPING` constant at the top of `review-app.js` maps template attribute values to arrays of external LMS stylesheet URLs. When loading HTML into iframes (both PageForge and Human Reference panels), `_injectCssForRendering()`:
+
+1. Detects the `template="..."` attribute from the HTML's `<html>` tag
+2. Looks up the matching stylesheet URLs from `CSS_MAPPING`
+3. Builds `<link rel="stylesheet">` tags for each URL
+4. Injects them before `</head>` in the HTML string
+5. Removes the `idoc_scripts.js` `<script>` tag (prevents script execution in sandbox)
+6. Adds the `.pf-sync-highlight` style for sync mode visual feedback
+
+**Supported template mappings:**
+
+| Template Attribute | CSS Source |
+|-------------------|------------|
+| `1-3` | tekuradev colour schemes + 1-3 colours + shared styles |
+| `4-6` | tekura colour schemes + 4-6 colours + shared styles |
+| `7-8` | tekura colour schemes + 7-8 colours + shared styles |
+| `9-10` | tekura colour schemes + 9-10 colours + shared styles |
+| `NCEA` | tekuradev colour schemes + NCEA colours + shared styles |
+| `combo` | tekuradev + tekura colour schemes + combo colours + shared styles |
+| `ECH` | tekura colour schemes + ECH colours + shared styles |
+| `inquiry` | tekura colour schemes + inquiry colours + shared styles |
+
+This ensures that rendered HTML in the comparison iframes looks exactly as it would in the D2L/Brightspace LMS, with correct colour schemes, typography, and layout.
+
 ### ReviewApp Class Details
 
 **Constructor flow:**
 1. `_loadData()` — reads and parses sessionStorage data
 2. `_bindElements()` — caches all DOM references
-3. `_bindEvents()` — wires up sync toggle, raw HTML button, file upload, copy-to-snapshot buttons, iframe click handlers
-4. `_initCalibrationManager()` — instantiates CalibrationManager with callback hooks
-5. `_render()` — renders file map, reference file list, auto-selects first file
+3. `_bindEvents()` — wires up sync toggle, raw HTML button, file upload, copy-to-sessionStorage buttons, calibration tool button, iframe click handlers
+4. `_render()` — renders file map, reference file list, auto-selects first file
 
 **Public API:**
 - `showToast(message)` — displays toast notification
@@ -2167,23 +2212,29 @@ The `App._serialiseForReview()` method serialises:
 - `_render()` — initial rendering of all panels
 - `_renderFileMap()` — renders the file map sidebar with generated filenames, page types, and reference badges
 - `_selectFile(filename)` — selects a file, updates all three panels simultaneously
-- `_loadPageforgePanel(filename)` — loads annotated HTML into PageForge iframe (or raw view)
-- `_loadHumanPanel(filename)` — loads matching reference file into Human iframe, or shows upload prompt
+- `_loadPageforgePanel(filename)` — loads annotated and CSS-injected HTML into PageForge iframe (or raw view)
+- `_loadHumanPanel(filename)` — loads matching reference file (CSS-injected) into Human iframe, or shows upload prompt
 - `_loadWriterPanel(filename)` — renders formatted content block texts for the selected page
-- `_annotateHtml(htmlContent, filename)` — post-processes generated HTML to add `data-pf-block` attributes to `<div id="body">` children and injects highlight styles; uses DOMParser for manipulation
+- `_injectCssForRendering(htmlString, templateAttribute)` — detects template from `<html template="...">`, builds `<link>` tags from `CSS_MAPPING`, injects before `</head>`, removes `idoc_scripts.js`, adds sync highlight style
+- `_annotateHtml(htmlContent, filename)` — post-processes generated HTML: adds `data-pf-block` attributes to `<div id="body">` children, adds `data-pf-activity` from `.activity[number]` elements and HTML comments, adds `data-pf-inner` to inner elements (h2-h5, p, ul, ol, etc.), annotates structural elements (#header, #footer, #module-menu-content); uses DOMParser
 - `_attachIframeClickHandler(iframe)` — attaches click listener to iframe content document for sync mode; finds nearest ancestor with `data-pf-block` attribute
-- `_syncToBlock(blockIndex, clickedElement)` — synchronises all panels to a block: highlights in PageForge iframe, scrolls Writer Template panel, fuzzy-matches in Human Reference iframe
+- `_syncToBlock(blockIndex, clickedElement)` — synchronises all panels to a block: highlights in PageForge iframe, scrolls Writer Template panel, calls 6-tier human panel sync
 - `_highlightInIframe(iframe, blockIndex)` — highlights a block by `data-pf-block` attribute with scrollIntoView
 - `_syncWriterPanel(blockIndex)` — scrolls and highlights matching `data-block-index` element in Writer Template panel (3-second auto-remove)
-- `_syncHumanPanel(textSnippet)` — fuzzy text search across Human Reference iframe elements, scrolls to best match (3-second highlight)
-- `_textSimilarity(search, target)` — word overlap scoring for fuzzy text matching (returns 0–1)
-- `_toggleRawHtmlMode()` — switches between rendered iframe and raw HTML `<pre><code>` view
+- `_syncHumanPanelIntelligent(clickedElement, blockIndex)` — 6-tier intelligent content matching algorithm for Human Reference panel (see Sync Mode section below)
+- `_findStructuralId(el)` — Tier 1: walks up DOM for #header/#footer/#module-menu-content structural IDs
+- `_extractActivityNumber(el)` — Tier 2: checks `data-pf-activity`, `number` attribute, HTML comment parsing
+- `_extractHeadingText(el)` — Tier 3: extracts heading text from h2-h5 elements (case-insensitive)
+- `_extractWordGroups(text, groupSize, maxGroups)` — Tier 4: generates 4-word n-gram groups from text
+- `_findByWordGroups(doc, wordGroups)` — Tier 4: searches Human Reference iframe for elements matching word groups (min 2 matches)
+- `_toggleRawHtmlMode()` — switches between rendered iframe and raw HTML `<pre><code>` view; updates button text ("Rendered" ↔ "</> Raw HTML")
 - `_showRawHtml(panel, htmlContent)` — displays raw HTML in a panel's raw view container
 - `_updateSyncModeIndicator()` — toggles visual indicator (blue box-shadow) on PageForge panel
-- `_showCopyToSnapshotButtons()` / `_hideCopyToSnapshotButtons()` — toggle contextual copy buttons
-- `_copyHighlightedToField(field)` — copies highlighted block content to snapshot form field
+- `_showCopyToSnapshotButtons()` / `_hideCopyToSnapshotButtons()` — toggle contextual copy buttons on panel headers
+- `_copyToSessionStorage(type)` — saves highlighted block content to sessionStorage keys (`pageforge_snapshot_pf`, `pageforge_snapshot_human`, `pageforge_snapshot_wt`, `pageforge_snapshot_file`) for the standalone Calibration page
 - `_getHighlightedHtml(iframe, blockIndex)` — extracts outerHTML of highlighted element in iframe
-- `_handleReferenceFiles(files)` — validates/reads uploaded .html reference files (reuses CalibrationManager logic)
+- `_openCalibrationTool()` — serialises calibration data to `pageforge_calibrate_data` sessionStorage key and opens `calibrate.html` in a new tab
+- `_handleReferenceFiles(files)` — validates/reads uploaded .html reference files, stores in `this.humanReferenceFiles`
 - `_renderRefFileList()` — renders uploaded reference file list with matched/unmatched status and remove buttons
 - `_getPageData(filename)` — looks up page data for a filename
 - `_findReference(filename)` / `_hasMatchingReference(filename)` — reference file lookup helpers
@@ -2194,84 +2245,188 @@ The `App._serialiseForReview()` method serialises:
 ┌─────────────┬──────────────────┬───────────────────┬───────────────────┐
 │  FILE MAP   │  PAGEFORGE HTML  │  HUMAN REFERENCE  │  WRITER TEMPLATE  │
 │  (sidebar)  │  (iframe)        │  (iframe/upload)   │  (div content)    │
-│  ~190px     │  flex: 1         │  flex: 1           │  flex: 1          │
+│  ~180px     │  flex: 1         │  flex: 1           │  flex: 1          │
 │             │                  │                   │                   │
 │  file-00    │  Sandboxed       │  Sandboxed         │  Scrollable div   │
 │  file-01    │  iframe with     │  iframe with       │  with formatted   │
-│  file-02    │  srcdoc +        │  srcdoc            │  text blocks,     │
-│  ...        │  data-pf-block   │  (or upload zone)  │  data-block-index │
-│             │  annotations     │                   │  attributes       │
+│  file-02    │  CSS-injected    │  CSS-injected      │  text blocks,     │
+│  ...        │  srcdoc +        │  srcdoc            │  data-block-index │
+│             │  data-pf-block   │  (or upload zone)  │  attributes       │
+│             │  annotations     │                   │                   │
 └─────────────┴──────────────────┴───────────────────┴───────────────────┘
-│  CALIBRATION COMPARISON TOOL (relocated, Step 1 removed)               │
-└────────────────────────────────────────────────────────────────────────┘
 ```
 
-**File Map Panel:** Fixed-width sidebar (~190px) with clickable file entries. Shows filename, page type (Overview/Lesson N), and a green "REF" badge if a matching human reference file has been uploaded. Currently selected file is highlighted with a blue left border.
+**File Map Panel:** Fixed-width sidebar (~180px) with clickable file entries. Each entry shows filename and page type in a horizontal row layout (`.file-map-entry-row`), with a green "REF" badge if a matching human reference file has been uploaded. Currently selected file is highlighted with a blue left border.
 
-**PageForge HTML Panel:** Uses a sandboxed `<iframe>` with `sandbox="allow-same-origin"` and `srcdoc` to render the generated HTML. The HTML is annotated with `data-pf-block` attributes on children of `<div id="body">` for sync mode click detection. A highlight style (`.pf-sync-highlight`) is injected for visual feedback.
+**PageForge HTML Panel:** Uses a sandboxed `<iframe>` with `sandbox="allow-same-origin"` and `srcdoc` to render the generated HTML. The HTML is annotated with `data-pf-block`, `data-pf-activity`, and `data-pf-inner` attributes for sync mode click detection. Template-aware CSS is injected for authentic LMS rendering. A "Copy PF" button appears in the panel header when sync mode highlights a block.
 
-**Human Reference Panel:** Also uses a sandboxed `<iframe>` with `srcdoc`. Initially shows an upload prompt (drag-and-drop zone + file picker). Once reference files are uploaded, displays the matching file in the iframe or a "no matching file" message. An "Upload more files" button remains accessible in the panel header.
+**Human Reference Panel:** Also uses a sandboxed `<iframe>` with `srcdoc` and template-aware CSS injection. Initially shows an upload prompt (drag-and-drop zone + file picker). Once reference files are uploaded, displays the matching file in the iframe or a "no matching file" message. An "Upload more files" button remains accessible in the panel header. A "Copy Human" button appears when sync mode highlights content.
 
-**Writer Template Panel:** A scrollable `<div>` containing formatted text representations of each content block. Each block is wrapped in a `<div class="writer-block" data-block-index="N">` with a block index badge and monospace `<pre>` content. Alternating backgrounds distinguish blocks. Highlighting uses a yellow/amber outline.
+**Writer Template Panel:** A scrollable `<div>` containing formatted text representations of each content block. Each block is wrapped in a `<div class="writer-block" data-block-index="N">` with a block index badge and monospace `<pre>` content. Alternating backgrounds distinguish blocks. Highlighting uses a yellow/amber outline. A "Copy WT" button appears when sync mode highlights content.
 
-### Sync Mode
+### Sync Mode (6-Tier Intelligent Content Matching)
 
 **Toggle:** Checkbox-based toggle switch in the header bar. When enabled, the PageForge panel gets a blue box-shadow indicator.
 
 **Click-to-sync flow (when Sync Mode is ON):**
 1. User clicks content in the PageForge iframe
 2. Click handler walks up the DOM tree to find the nearest `data-pf-block` ancestor
-3. **PageForge panel:** Adds `.pf-sync-highlight` class (amber outline + background), scrolls to element
-4. **Writer Template panel:** Finds matching `data-block-index` element, adds `.writer-block-highlight` class, scrolls into view, auto-removes highlight after 3 seconds
-5. **Human Reference panel:** Extracts text snippet from clicked element, performs fuzzy text search across all content elements in the Human Reference iframe using word overlap scoring, scrolls to best match (threshold: 0.3), adds `.pf-sync-highlight` class, auto-removes after 3 seconds. Shows toast if no match found.
+3. **PageForge panel:** Adds `.pf-sync-highlight` class (amber outline + background), scrolls to element, shows "Copy PF" button
+4. **Writer Template panel:** Finds matching `data-block-index` element, adds `.writer-block-highlight` class, scrolls into view, auto-removes highlight after 3 seconds, shows "Copy WT" button
+5. **Human Reference panel:** Runs 6-tier intelligent matching algorithm (see below), scrolls to best match, adds `.pf-sync-highlight` class, auto-removes after 3 seconds, shows "Copy Human" button if reference file loaded
+
+**6-Tier Intelligent Content Matching Algorithm (`_syncHumanPanelIntelligent`):**
+
+| Tier | Method | Strategy | Example |
+|------|--------|----------|---------|
+| **1** | `_findStructuralId()` | Walks up the clicked element's DOM ancestors looking for `#header`, `#footer`, or `#module-menu-content` IDs. If found, finds the same structural element in the Human Reference iframe. | Clicking inside the header syncs to the human file's `#header` |
+| **2** | `_extractActivityNumber()` | Checks the clicked element for `data-pf-activity` attribute, `number` attribute on `.activity` elements, or parses HTML comments for activity numbers. Finds matching activity in Human Reference. | Clicking Activity 2A syncs to the human file's `[number="2A"]` element |
+| **3** | `_extractHeadingText()` | Extracts text from h2-h5 heading elements within or near the clicked block. Performs case-insensitive text match across all headings in the Human Reference iframe. | Clicking an `<h3>` syncs to the matching heading in the human file |
+| **4** | `_extractWordGroups()` + `_findByWordGroups()` | Generates 4-word n-gram groups from the visible text content. Searches all text-bearing elements in the Human Reference iframe for matches (requires minimum 2 matching n-grams). | Clicking a paragraph finds the human file element sharing the most word sequences |
+| **5** | Previous block anchoring | Walks backwards up to 5 blocks from the clicked position, trying Tiers 2 and 3 on each previous block. If a previous block matches, uses its position + offset to estimate the target position. | When a block has no unique text, finds the nearest preceding activity/heading as anchor |
+| **6** | Proportional position | As final fallback, calculates the clicked block's proportional position within the PageForge content and scrolls the Human Reference iframe to the same proportional position. | Block 15 of 30 scrolls to 50% of the human file |
+
+Each tier is tried in order; the algorithm stops at the first successful match. A toast notification shows which tier matched (e.g., "Synced via activity number").
 
 **When Sync Mode is OFF:** Normal iframe interaction (text selection, link clicking).
 
 ### Raw HTML Mode
 
-**Toggle button:** `</> Raw HTML` button in the header bar. Toggles between rendered and raw views for both PageForge and Human Reference panels simultaneously.
+**Toggle button:** `</> Raw HTML` button in the header bar. Toggles between rendered and raw views for both PageForge and Human Reference panels simultaneously. Button text changes to "Rendered" when in raw mode.
 
 **Raw HTML view:** Replaces iframe content with a `<pre><code>` block showing the raw HTML source in a dark-themed monospace view (background: #1e1e2e, text: #cdd6f4). Writer Template panel remains unchanged (already shows text content).
 
 **Sync Mode + Raw HTML interaction:** When both modes are active, sync mode still works in rendered view. In raw HTML view, click-to-sync is not active (raw view is read-only scrollable code).
 
-### Copy-to-Snapshot Buttons
+### Copy-to-Snapshot Buttons (sessionStorage-Based)
 
 When Sync Mode is ON and a block has been clicked (highlighted):
-- **Writer Template panel:** "Copy to Snapshot" button appears, copies the formatted text content to the "Original Writer Template Content" field
-- **PageForge panel:** "Copy to Snapshot" button appears, copies the outerHTML of the highlighted element to the "PageForge Generated Output" field
-- **Human Reference panel:** "Copy to Snapshot" button appears (if reference file loaded), copies the outerHTML of the highlighted element to the "Human Developer Correct Output" field
+- **"Copy WT" button** (Writer Template panel header) — saves the formatted text content to `sessionStorage.setItem('pageforge_snapshot_wt', content)` and the current filename to `sessionStorage.setItem('pageforge_snapshot_file', filename)`
+- **"Copy PF" button** (PageForge panel header) — saves the outerHTML of the highlighted element to `sessionStorage.setItem('pageforge_snapshot_pf', content)` and the current filename to `pageforge_snapshot_file`
+- **"Copy Human" button** (Human Reference panel header, if reference file loaded) — saves the outerHTML of the highlighted element to `sessionStorage.setItem('pageforge_snapshot_human', content)` and the current filename to `pageforge_snapshot_file`
 
-Buttons are hidden when Sync Mode is OFF or no block is highlighted.
+Each button shows a toast notification on click. Buttons are hidden when Sync Mode is OFF or no block is highlighted.
 
-### Calibration Tool Relocation
+The standalone Calibration page (`calibrate.html`) reads these sessionStorage keys on load and on tab focus, auto-populating the snapshot form fields. This enables a workflow where the user copies content on the review page, switches to the calibration tab, and sees the fields pre-populated.
 
-**Removed from main page:**
-- `#calibration-section` element removed from `index.html`
-- `<script src="js/calibration-manager.js">` removed from `index.html`
-- `_initCalibrationManager()` call removed from `App` constructor
-- Calibration show/hide logic removed from `App.showResults()` and `App.reset()`
+### Calibration Tool Integration
+
+The review page no longer embeds the Calibration Comparison Tool directly. Instead:
+
+**Removed from review page:**
+- `#review-calibration-section` element removed from `review.html`
+- `<script src="js/calibration-manager.js">` removed from `review.html`
+- `CalibrationManager` no longer instantiated by `ReviewApp`
 
 **Added to review page:**
-- Calibration tool HTML placed at bottom of `review.html` in `#review-calibration-section`
-- Step 1 (Upload Human Reference Files) removed entirely — upload handled by Human Reference panel
-- Step 2 (Log Comparison Snapshots) renumbered to Step 1
-- Step 3 (Export Calibration Report) renumbered to Step 2
-- `CalibrationManager` instantiated by `ReviewApp` with callback hooks
-- `<script src="js/calibration-manager.js">` loaded on `review.html`
-- All calibration CSS classes retained in `css/styles.css` for reuse
+- "Calibration Tool" button (`#btn-calibration-tool`) in the header right section
+- `_openCalibrationTool()` method serialises `{generatedFileList, metadata, templateName}` to `sessionStorage.setItem('pageforge_calibrate_data', ...)` and opens `calibrate.html` via `window.open()`
+
+**Standalone calibration page:** See Section 22 for full details on `calibrate.html` and `CalibrateApp`.
 
 ### User Workflow
 
 1. User uploads a Writer Template `.docx` on the main PageForge page and clicks "Convert Document"
 2. PageForge processes the document and shows results (file list, preview, etc.)
 3. User clicks the "Visual Comparison Review" button in the actions bar
-4. Data is serialised to sessionStorage; a new tab opens with `review.html`
-5. Review page loads showing file map (left), PageForge output (centre-left), upload prompt (centre-right), Writer Template content (right)
+4. Data is serialised to sessionStorage (including `templateAttribute`); a new tab opens with `review.html`
+5. Review page loads showing file map (left), PageForge output with authentic LMS styling (centre-left), upload prompt (centre-right), Writer Template content (right)
 6. User uploads human-developed HTML files via the Human Reference panel's upload zone
-7. User clicks through pages in the file map — all three panels update simultaneously
+7. User clicks through pages in the file map — all three panels update simultaneously with CSS-injected rendering
 8. User enables Sync Mode and clicks on a section of the PageForge rendered output
-9. The Human Reference panel auto-scrolls to matching content; the Writer Template panel auto-scrolls to the corresponding source content block
+9. The 6-tier intelligent matching algorithm finds the corresponding content in the Human Reference panel and auto-scrolls; the Writer Template panel auto-scrolls to the corresponding source content block
 10. User clicks Raw HTML to see the source code behind the rendered views
-11. User clicks "Copy to Snapshot" buttons to populate the calibration form fields
-12. User logs snapshots and exports the calibration report for Claude AI analysis
+11. User clicks "Copy PF" / "Copy Human" / "Copy WT" buttons — content is saved to sessionStorage keys
+12. User clicks "Calibration Tool" button in header — `calibrate.html` opens in a new tab
+13. Calibration page auto-populates form fields from sessionStorage keys
+14. User logs snapshots and exports the calibration report for Claude AI analysis
+15. User can switch back to the review tab, copy more content, switch to calibration tab — form fields auto-populate on tab focus
+
+---
+
+## 22. STANDALONE CALIBRATION PAGE (Phase 10)
+
+### Overview
+
+Phase 10 extracts the Calibration Comparison Tool from the review page into a standalone page (`calibrate.html`) managed by a new `CalibrateApp` controller class. The page receives data via sessionStorage from the review page and auto-populates snapshot form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons.
+
+**Status:** DONE — 2 new files created (calibrate.html, js/calibrate-app.js), 407 tests passing (no new tests required — all changes are UI/interaction with no algorithmic logic to unit test).
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `calibrate.html` | Standalone HTML page for the Calibration Comparison Tool — header bar with back link and module code badge, snapshot form (Step 1), logged snapshots display, export controls (Step 2) |
+| `js/calibrate-app.js` | Controller class — data loading from `pageforge_calibrate_data` sessionStorage key, CalibrationManager instantiation with callback hooks, auto-population from sessionStorage snapshot keys on load and focus |
+
+### Architecture
+
+The Calibration page is a standalone HTML page (`calibrate.html`) that loads `CalibrationManager` (shared class) and its own `CalibrateApp` controller. It does not depend on `App`, `ReviewApp`, `DocxParser`, or any other class — it receives all data via sessionStorage.
+
+**SessionStorage keys consumed:**
+
+| Key | Source | Purpose |
+|-----|--------|---------|
+| `pageforge_calibrate_data` | `ReviewApp._openCalibrationTool()` | JSON with `generatedFileList`, `metadata`, `templateName` — used for source file dropdown population and module code display |
+| `pageforge_snapshot_wt` | `ReviewApp._copyToSessionStorage('wt')` | Writer Template content — auto-populates "Original Content" textarea |
+| `pageforge_snapshot_pf` | `ReviewApp._copyToSessionStorage('pf')` | PageForge output — auto-populates "PageForge Generated Output" textarea |
+| `pageforge_snapshot_human` | `ReviewApp._copyToSessionStorage('human')` | Human reference output — auto-populates "Human Developer Correct Output" textarea |
+| `pageforge_snapshot_file` | `ReviewApp._copyToSessionStorage(any)` | Current filename — auto-selects matching option in source file dropdown |
+
+Snapshot keys are read-once: `CalibrateApp._populateFromSessionStorage()` reads each key and then immediately calls `sessionStorage.removeItem()` to clear it, preventing stale data on subsequent tab focuses.
+
+### CalibrateApp Class Details
+
+**Constructor flow:**
+1. `_loadData()` — reads and parses `pageforge_calibrate_data` from sessionStorage
+2. `_bindElements()` — caches DOM references (module code display, back button, toast)
+3. `_initCalibrationManager()` — instantiates `CalibrationManager` with callback hooks (`showToast`, `getModuleCode`, `getTemplateName`, `getGeneratedFileList`); calls `init()` and `populateSourceFileDropdown()`; shows module code badge if available
+4. `_bindEvents()` — back button handler (tries `window.close()`, falls back to `review.html`); `window.addEventListener('focus', ...)` handler for auto-population
+5. `_populateFromSessionStorage()` — reads all snapshot sessionStorage keys, populates form fields, auto-selects source file, clears keys, triggers `_updateLogButtonState()`
+
+**Public API:**
+- `showToast(message)` — displays toast notification with 3-second auto-dismiss
+
+### Page Layout
+
+```
+calibrate.html
+  ├── .calibrate-header
+  │   └── .calibrate-header-inner
+  │       ├── #btn-back (← Back to Visual Review)
+  │       ├── h1.calibrate-title (Calibration Comparison Tool)
+  │       └── #calibrate-module-code (module code badge, hidden by default)
+  └── .calibrate-content
+      └── .calibration-panel
+          └── .calibration-content
+              ├── Step 1: Log Comparison Snapshots
+              │   └── .snapshot-form
+              │       ├── #snapshot-original (textarea — field 1, required)
+              │       ├── #snapshot-pageforge (textarea — field 2, required)
+              │       ├── #snapshot-human (textarea — field 3, required)
+              │       ├── #snapshot-notes (textarea — field 4, optional)
+              │       ├── #snapshot-source-file (select dropdown)
+              │       └── .snapshot-actions (#btn-log-snapshot + #btn-clear-snapshot-form)
+              ├── Logged Snapshots
+              │   └── #snapshot-list (snapshot cards with expand/delete)
+              └── Step 2: Export Calibration Report
+                  └── .export-actions (#btn-export-calibration + #btn-copy-calibration + #btn-clear-all-snapshots)
+```
+
+The page uses inline `<style>` for page-specific layout styles (`.calibrate-page`, `.calibrate-header`, `.calibrate-header-inner`, `.calibrate-back-link`, `.calibrate-title`, `.calibrate-module-code`, `.calibrate-content`) and reuses the shared calibration CSS classes from `css/styles.css` (`.calibration-panel`, `.calibration-content`, `.snapshot-form`, `.snapshot-field`, etc.).
+
+### Auto-Population Workflow
+
+1. User is on the review page with Sync Mode active
+2. User clicks a block in the PageForge panel — all panels sync
+3. User clicks "Copy PF" → PageForge HTML saved to `pageforge_snapshot_pf`
+4. User clicks "Copy Human" → Human reference HTML saved to `pageforge_snapshot_human`
+5. User clicks "Copy WT" → Writer Template text saved to `pageforge_snapshot_wt`
+6. User switches to the calibration tab (or clicks "Calibration Tool" to open it)
+7. `CalibrateApp._populateFromSessionStorage()` runs (on page load or tab focus)
+8. Form fields are populated with the saved content
+9. Source file dropdown auto-selects the matching filename
+10. SessionStorage keys are cleared after reading
+11. `CalibrationManager._updateLogButtonState()` enables the Log button if all 3 required fields have content
+12. User can add optional notes, then click "Log Snapshot"
+13. User can repeat: switch to review tab, copy more content, switch back — fields auto-populate on focus
