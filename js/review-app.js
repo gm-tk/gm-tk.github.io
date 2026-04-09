@@ -5,8 +5,8 @@
  * file map interaction, template-aware CSS injection for rendered HTML,
  * synchronised scrolling with 6-tier intelligent content matching (Sync Mode),
  * Raw HTML toggle, human reference file upload, "Copy to Snapshot" buttons
- * that save to sessionStorage for the standalone Calibration page, and
- * a Calibration Tool button that opens calibrate.html.
+ * that save to sessionStorage for the standalone Conversion Error Log page, and
+ * a Conversion Error Log button that opens calibrate.html.
  *
  * This is a standalone controller for review.html — it does not depend on
  * App, DocxParser, CalibrationManager, or any other main-page class. It
@@ -104,9 +104,13 @@ class ReviewApp {
         /** Currently highlighted block index (for copy-to-snapshot) */
         this.highlightedBlockIndex = null;
 
+        /** Guard flag to prevent scroll feedback loops */
+        this._scrollSyncLock = false;
+
         this._loadData();
         this._bindElements();
         this._bindEvents();
+        this._bindScrollSync();
         this._render();
     }
 
@@ -183,6 +187,11 @@ class ReviewApp {
         // Writer template panel
         this.writerContent = document.getElementById('writer-content');
         this.writerFilename = document.getElementById('writer-filename');
+        this.writerPanelBody = document.getElementById('writer-panel-body');
+
+        // Panel body containers (for scroll sync)
+        this.pageforgePanelBody = document.getElementById('pageforge-panel-body');
+        this.humanPanelBody = document.getElementById('human-panel-body');
 
         // Copy-to-snapshot buttons
         this.btnCopyPf = document.getElementById('btn-copy-pf');
@@ -219,10 +228,10 @@ class ReviewApp {
             });
         }
 
-        // Calibration tool button
+        // Conversion Error Log button
         if (this.btnCalibrationTool) {
             this.btnCalibrationTool.addEventListener('click', function () {
-                self._openCalibrationTool();
+                self._openConversionErrorLog();
             });
         }
 
@@ -300,14 +309,14 @@ class ReviewApp {
     }
 
     // ------------------------------------------------------------------
-    // Calibration tool launcher
+    // Conversion Error Log launcher
     // ------------------------------------------------------------------
 
     /**
-     * Open the standalone Calibration Comparison Tool page.
+     * Open the standalone Conversion Error Log page.
      * Serialises calibration-specific data to sessionStorage.
      */
-    _openCalibrationTool() {
+    _openConversionErrorLog() {
         try {
             var calibData = {
                 generatedFileList: (this.data && this.data.generatedFileList) || [],
@@ -317,8 +326,8 @@ class ReviewApp {
             sessionStorage.setItem('pageforge_calibrate_data', JSON.stringify(calibData));
             window.open('calibrate.html', '_blank');
         } catch (e) {
-            console.error('ReviewApp: Failed to open calibration tool:', e);
-            this.showToast('Failed to open calibration tool');
+            console.error('ReviewApp: Failed to open conversion error log:', e);
+            this.showToast('Failed to open conversion error log');
         }
     }
 
@@ -1108,10 +1117,496 @@ class ReviewApp {
     }
 
     // ------------------------------------------------------------------
-    // Raw HTML toggle
+    // Proportional scroll sync
+    // ------------------------------------------------------------------
+
+    /**
+     * Bind scroll event handlers to all three panel containers.
+     * When Sync mode is ON, scrolling any panel proportionally scrolls the others.
+     * Uses a lock flag to prevent feedback loops.
+     */
+    _bindScrollSync() {
+        var self = this;
+
+        // Debounce helper — returns a function that only fires after `delay` ms of inactivity
+        function debounce(fn, delay) {
+            var timer = null;
+            return function () {
+                var args = arguments;
+                var ctx = this;
+                if (timer) clearTimeout(timer);
+                timer = setTimeout(function () { fn.apply(ctx, args); }, delay);
+            };
+        }
+
+        /**
+         * Get the scrollable element for a given panel, depending on current view mode.
+         * For rendered view: the iframe's contentDocument scrolling element.
+         * For raw HTML view: the .review-raw-view container.
+         * For writer panel: the .review-writer-body container.
+         */
+        function getScrollable(panel) {
+            if (panel === 'pageforge') {
+                if (self.rawHtmlMode && self.pageforgeRaw && !self.pageforgeRaw.classList.contains('hidden')) {
+                    return self.pageforgeRaw;
+                }
+                try {
+                    if (self.pageforgeIframe && !self.pageforgeIframe.classList.contains('hidden')) {
+                        var doc = self.pageforgeIframe.contentDocument || self.pageforgeIframe.contentWindow.document;
+                        return doc.scrollingElement || doc.documentElement;
+                    }
+                } catch (e) { /* cross-origin */ }
+                return null;
+            } else if (panel === 'human') {
+                if (self.rawHtmlMode && self.humanRaw && !self.humanRaw.classList.contains('hidden')) {
+                    return self.humanRaw;
+                }
+                try {
+                    if (self.humanIframe && !self.humanIframe.classList.contains('hidden')) {
+                        var doc = self.humanIframe.contentDocument || self.humanIframe.contentWindow.document;
+                        return doc.scrollingElement || doc.documentElement;
+                    }
+                } catch (e) { /* cross-origin */ }
+                return null;
+            } else if (panel === 'writer') {
+                return self.writerPanelBody || null;
+            }
+            return null;
+        }
+
+        /**
+         * Get scroll fraction (0..1) for a scrollable element.
+         */
+        function getScrollFraction(el) {
+            if (!el) return 0;
+            var maxScroll = el.scrollHeight - el.clientHeight;
+            if (maxScroll <= 0) return 0;
+            return el.scrollTop / maxScroll;
+        }
+
+        /**
+         * Set scroll fraction for a scrollable element.
+         */
+        function setScrollFraction(el, fraction) {
+            if (!el) return;
+            var maxScroll = el.scrollHeight - el.clientHeight;
+            if (maxScroll <= 0) return;
+            el.scrollTop = fraction * maxScroll;
+        }
+
+        /**
+         * Handle scroll from a source panel — sync other two panels.
+         */
+        function onPanelScroll(sourcePanel) {
+            if (!self.syncModeEnabled) return;
+            if (self._scrollSyncLock) return;
+
+            self._scrollSyncLock = true;
+
+            var sourceEl = getScrollable(sourcePanel);
+            if (!sourceEl) { self._scrollSyncLock = false; return; }
+
+            var fraction = getScrollFraction(sourceEl);
+            var panels = ['pageforge', 'human', 'writer'];
+
+            for (var i = 0; i < panels.length; i++) {
+                if (panels[i] === sourcePanel) continue;
+                var targetEl = getScrollable(panels[i]);
+                if (targetEl) {
+                    setScrollFraction(targetEl, fraction);
+                }
+            }
+
+            // Release lock after a short delay to allow programmatic scrolls to settle
+            setTimeout(function () { self._scrollSyncLock = false; }, 50);
+        }
+
+        var debouncedPfScroll = debounce(function () { onPanelScroll('pageforge'); }, 16);
+        var debouncedHumanScroll = debounce(function () { onPanelScroll('human'); }, 16);
+        var debouncedWriterScroll = debounce(function () { onPanelScroll('writer'); }, 16);
+
+        // Store debounced handlers so we can re-attach after iframe reloads
+        this._debouncedPfScroll = debouncedPfScroll;
+        this._debouncedHumanScroll = debouncedHumanScroll;
+        this._debouncedWriterScroll = debouncedWriterScroll;
+
+        // Writer panel — a regular DOM element, bind once
+        if (this.writerPanelBody) {
+            this.writerPanelBody.addEventListener('scroll', debouncedWriterScroll);
+        }
+
+        // For raw HTML containers — bind once
+        if (this.pageforgeRaw) {
+            this.pageforgeRaw.addEventListener('scroll', debouncedPfScroll);
+        }
+        if (this.humanRaw) {
+            this.humanRaw.addEventListener('scroll', debouncedHumanScroll);
+        }
+
+        // For iframes, we re-attach on each iframe load (since contentDocument changes)
+        if (this.pageforgeIframe) {
+            this.pageforgeIframe.addEventListener('load', function () {
+                self._attachIframeScrollHandler(self.pageforgeIframe, debouncedPfScroll);
+            });
+        }
+        if (this.humanIframe) {
+            this.humanIframe.addEventListener('load', function () {
+                self._attachIframeScrollHandler(self.humanIframe, debouncedHumanScroll);
+            });
+        }
+    }
+
+    /**
+     * Attach scroll handler to an iframe's content document.
+     * @param {HTMLIFrameElement} iframe
+     * @param {Function} handler
+     */
+    _attachIframeScrollHandler(iframe, handler) {
+        try {
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+            var scrollEl = doc.scrollingElement || doc.documentElement;
+            if (scrollEl) {
+                // Use the document-level scroll event since scrollingElement may not fire events directly
+                (iframe.contentWindow || iframe.contentDocument.defaultView).addEventListener('scroll', handler);
+            }
+        } catch (e) {
+            // Cross-origin — cannot attach
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Text normalisation & fuzzy anchor matching
+    // ------------------------------------------------------------------
+
+    /**
+     * Normalise text for fuzzy matching: lowercase, strip HTML tags,
+     * collapse whitespace, remove punctuation.
+     * Shared across scroll-position preservation and sync logic.
+     *
+     * @param {string} text - Raw text (may contain HTML tags)
+     * @returns {string} Normalised text
+     */
+    static normaliseTextForMatch(text) {
+        if (!text) return '';
+        // Strip HTML tags
+        var stripped = text.replace(/<[^>]+>/g, ' ');
+        // Decode common entities
+        stripped = stripped.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/&#\d+;/g, ' ');
+        // Lowercase
+        stripped = stripped.toLowerCase();
+        // Remove punctuation except apostrophes within words
+        stripped = stripped.replace(/[^\w\s'āēīōūĀĒĪŌŪ]/g, ' ');
+        // Collapse whitespace
+        stripped = stripped.replace(/\s+/g, ' ').trim();
+        return stripped;
+    }
+
+    /**
+     * Extract a textual anchor from the element currently visible at the top
+     * of the scrollable area. Returns an object with the anchor text snippet
+     * and the element's approximate scroll offset.
+     *
+     * @param {string} panel - 'pageforge', 'human', or 'writer'
+     * @returns {{ anchorText: string, scrollFraction: number }|null}
+     */
+    _extractVisibleAnchor(panel) {
+        if (panel === 'writer') {
+            if (!this.writerPanelBody) return null;
+            var scrollTop = this.writerPanelBody.scrollTop;
+            var blocks = this.writerPanelBody.querySelectorAll('.writer-block');
+            var bestBlock = null;
+            for (var i = 0; i < blocks.length; i++) {
+                if (blocks[i].offsetTop >= scrollTop - 10) {
+                    bestBlock = blocks[i];
+                    break;
+                }
+            }
+            if (!bestBlock && blocks.length > 0) bestBlock = blocks[blocks.length - 1];
+            if (bestBlock) {
+                var text = (bestBlock.textContent || '').trim();
+                var norm = ReviewApp.normaliseTextForMatch(text);
+                var maxScroll = this.writerPanelBody.scrollHeight - this.writerPanelBody.clientHeight;
+                return {
+                    anchorText: norm.substring(0, 120),
+                    scrollFraction: maxScroll > 0 ? scrollTop / maxScroll : 0
+                };
+            }
+            return null;
+        }
+
+        // For iframe panels (rendered view)
+        var iframe = (panel === 'pageforge') ? this.pageforgeIframe : this.humanIframe;
+        var rawView = (panel === 'pageforge') ? this.pageforgeRaw : this.humanRaw;
+
+        if (this.rawHtmlMode && rawView && !rawView.classList.contains('hidden')) {
+            // Extract from raw view
+            return this._extractAnchorFromRawView(rawView);
+        }
+
+        if (!iframe || iframe.classList.contains('hidden')) return null;
+
+        try {
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+            var scrollEl = doc.scrollingElement || doc.documentElement;
+            var scrollTop = scrollEl.scrollTop;
+
+            // Find the element nearest to the current scroll position
+            var candidates = doc.querySelectorAll('h1, h2, h3, h4, h5, p, li, td, th, div.activity, div.alert, div.whakatauki, div.videoSection, img');
+            var bestEl = null;
+            var bestDist = Infinity;
+
+            for (var i = 0; i < candidates.length; i++) {
+                var rect = candidates[i].getBoundingClientRect();
+                // getBoundingClientRect is relative to viewport; we want elements near top
+                var dist = Math.abs(rect.top);
+                if (dist < bestDist) {
+                    bestDist = dist;
+                    bestEl = candidates[i];
+                }
+            }
+
+            if (bestEl) {
+                var text = (bestEl.textContent || '').trim();
+                var norm = ReviewApp.normaliseTextForMatch(text);
+                var maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+                return {
+                    anchorText: norm.substring(0, 120),
+                    scrollFraction: maxScroll > 0 ? scrollTop / maxScroll : 0
+                };
+            }
+        } catch (e) {
+            // Cross-origin
+        }
+        return null;
+    }
+
+    /**
+     * Extract a visible-anchor from a raw HTML view container.
+     * Scans lines of the raw code to find which line is at the top of the viewport.
+     *
+     * @param {HTMLElement} rawViewContainer - The .review-raw-view element
+     * @returns {{ anchorText: string, scrollFraction: number }|null}
+     */
+    _extractAnchorFromRawView(rawViewContainer) {
+        var scrollTop = rawViewContainer.scrollTop;
+        var maxScroll = rawViewContainer.scrollHeight - rawViewContainer.clientHeight;
+        var fraction = maxScroll > 0 ? scrollTop / maxScroll : 0;
+
+        // Get the raw text content and find the line visible at the top
+        var codeEl = rawViewContainer.querySelector('code');
+        if (!codeEl) return { anchorText: '', scrollFraction: fraction };
+
+        var rawText = codeEl.textContent || '';
+        var lines = rawText.split('\n');
+
+        // Estimate the line at the current scroll position
+        if (lines.length === 0) return { anchorText: '', scrollFraction: fraction };
+
+        var lineHeight = rawViewContainer.scrollHeight / lines.length;
+        var approxLine = Math.floor(scrollTop / lineHeight);
+        approxLine = Math.max(0, Math.min(approxLine, lines.length - 1));
+
+        // Extract text from this line and nearby lines for anchor
+        var anchorLines = [];
+        for (var i = approxLine; i < Math.min(approxLine + 5, lines.length); i++) {
+            var trimmed = lines[i].trim();
+            if (trimmed.length > 0) {
+                anchorLines.push(trimmed);
+                break;
+            }
+        }
+
+        var anchorText = ReviewApp.normaliseTextForMatch(anchorLines.join(' '));
+        return {
+            anchorText: anchorText.substring(0, 120),
+            scrollFraction: fraction
+        };
+    }
+
+    /**
+     * Scroll a raw HTML view to the line best matching an anchor text.
+     * Falls back to proportional scroll if no match found.
+     *
+     * @param {HTMLElement} rawViewContainer - The .review-raw-view element
+     * @param {string} anchorText - Normalised anchor text to search for
+     * @param {number} fallbackFraction - Proportional scroll fallback (0..1)
+     */
+    _scrollRawViewToAnchor(rawViewContainer, anchorText, fallbackFraction) {
+        if (!rawViewContainer) return;
+
+        var codeEl = rawViewContainer.querySelector('code');
+        if (!codeEl || !anchorText) {
+            // Fallback to proportional
+            var maxScroll = rawViewContainer.scrollHeight - rawViewContainer.clientHeight;
+            rawViewContainer.scrollTop = fallbackFraction * maxScroll;
+            return;
+        }
+
+        var rawText = codeEl.textContent || '';
+        var lines = rawText.split('\n');
+        if (lines.length === 0) return;
+
+        // Search for the anchor in the raw text lines
+        var bestLine = -1;
+        var bestScore = 0;
+
+        // Split anchor into words for partial matching
+        var anchorWords = anchorText.split(/\s+/).filter(function (w) { return w.length > 2; });
+        if (anchorWords.length === 0) {
+            var maxScroll = rawViewContainer.scrollHeight - rawViewContainer.clientHeight;
+            rawViewContainer.scrollTop = fallbackFraction * maxScroll;
+            return;
+        }
+
+        for (var i = 0; i < lines.length; i++) {
+            var normLine = ReviewApp.normaliseTextForMatch(lines[i]);
+            if (!normLine) continue;
+
+            var score = 0;
+            for (var w = 0; w < anchorWords.length; w++) {
+                if (normLine.indexOf(anchorWords[w]) !== -1) {
+                    score++;
+                }
+            }
+
+            if (score > bestScore) {
+                bestScore = score;
+                bestLine = i;
+            }
+        }
+
+        // Require at least 30% of words to match
+        if (bestLine >= 0 && bestScore >= Math.max(1, Math.ceil(anchorWords.length * 0.3))) {
+            var lineHeight = rawViewContainer.scrollHeight / lines.length;
+            rawViewContainer.scrollTop = bestLine * lineHeight;
+        } else {
+            // Fallback to proportional
+            var maxScroll = rawViewContainer.scrollHeight - rawViewContainer.clientHeight;
+            rawViewContainer.scrollTop = fallbackFraction * maxScroll;
+        }
+    }
+
+    /**
+     * Scroll a rendered iframe to the element best matching an anchor text.
+     * Falls back to proportional scroll if no match found.
+     *
+     * @param {HTMLIFrameElement} iframe
+     * @param {string} anchorText - Normalised anchor text to search for
+     * @param {number} fallbackFraction - Proportional scroll fallback (0..1)
+     */
+    _scrollIframeToAnchor(iframe, anchorText, fallbackFraction) {
+        if (!iframe || iframe.classList.contains('hidden')) return;
+
+        try {
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+            var scrollEl = doc.scrollingElement || doc.documentElement;
+
+            if (!anchorText) {
+                var maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+                scrollEl.scrollTop = fallbackFraction * maxScroll;
+                return;
+            }
+
+            var candidates = doc.querySelectorAll('h1, h2, h3, h4, h5, p, li, td, th, div.activity, div.alert, div.whakatauki');
+            var bestEl = null;
+            var bestScore = 0;
+            var anchorWords = anchorText.split(/\s+/).filter(function (w) { return w.length > 2; });
+
+            if (anchorWords.length === 0) {
+                var maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+                scrollEl.scrollTop = fallbackFraction * maxScroll;
+                return;
+            }
+
+            for (var i = 0; i < candidates.length; i++) {
+                var elText = ReviewApp.normaliseTextForMatch(candidates[i].textContent || '');
+                if (!elText) continue;
+
+                var score = 0;
+                for (var w = 0; w < anchorWords.length; w++) {
+                    if (elText.indexOf(anchorWords[w]) !== -1) {
+                        score++;
+                    }
+                }
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestEl = candidates[i];
+                }
+            }
+
+            if (bestEl && bestScore >= Math.max(1, Math.ceil(anchorWords.length * 0.3))) {
+                bestEl.scrollIntoView({ block: 'start' });
+            } else {
+                var maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+                scrollEl.scrollTop = fallbackFraction * maxScroll;
+            }
+        } catch (e) {
+            // Cross-origin
+        }
+    }
+
+    /**
+     * Scroll the Writer Template panel to the position best matching an anchor text.
+     * Falls back to proportional scroll if no match found.
+     *
+     * @param {string} anchorText - Normalised anchor text to search for
+     * @param {number} fallbackFraction - Proportional scroll fallback (0..1)
+     */
+    _scrollWriterToAnchor(anchorText, fallbackFraction) {
+        if (!this.writerPanelBody) return;
+
+        if (!anchorText) {
+            var maxScroll = this.writerPanelBody.scrollHeight - this.writerPanelBody.clientHeight;
+            this.writerPanelBody.scrollTop = fallbackFraction * maxScroll;
+            return;
+        }
+
+        var blocks = this.writerPanelBody.querySelectorAll('.writer-block');
+        var bestBlock = null;
+        var bestScore = 0;
+        var anchorWords = anchorText.split(/\s+/).filter(function (w) { return w.length > 2; });
+
+        if (anchorWords.length === 0) {
+            var maxScroll = this.writerPanelBody.scrollHeight - this.writerPanelBody.clientHeight;
+            this.writerPanelBody.scrollTop = fallbackFraction * maxScroll;
+            return;
+        }
+
+        for (var i = 0; i < blocks.length; i++) {
+            var blockText = ReviewApp.normaliseTextForMatch(blocks[i].textContent || '');
+            if (!blockText) continue;
+
+            var score = 0;
+            for (var w = 0; w < anchorWords.length; w++) {
+                if (blockText.indexOf(anchorWords[w]) !== -1) {
+                    score++;
+                }
+            }
+
+            if (score > bestScore) {
+                bestScore = score;
+                bestBlock = blocks[i];
+            }
+        }
+
+        if (bestBlock && bestScore >= Math.max(1, Math.ceil(anchorWords.length * 0.3))) {
+            bestBlock.scrollIntoView({ block: 'start' });
+        } else {
+            var maxScroll = this.writerPanelBody.scrollHeight - this.writerPanelBody.clientHeight;
+            this.writerPanelBody.scrollTop = fallbackFraction * maxScroll;
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Raw HTML toggle (with scroll-position preservation)
     // ------------------------------------------------------------------
 
     _toggleRawHtmlMode() {
+        // Step 1: Extract anchor from the current PageForge rendered/raw view BEFORE switching
+        var anchor = this._extractVisibleAnchor('pageforge');
+
+        // Step 2: Toggle the mode flag and update button
         if (this.rawHtmlMode) {
             this.btnRawHtmlToggle.classList.add('review-raw-btn-active');
             this.btnRawHtmlToggle.textContent = 'Rendered';
@@ -1120,10 +1615,89 @@ class ReviewApp {
             this.btnRawHtmlToggle.innerHTML = '&lt;/&gt; Raw HTML';
         }
 
+        // Step 3: Reload panels (this switches the view)
         if (this.selectedFile) {
             this._loadPageforgePanel(this.selectedFile);
             this._loadHumanPanel(this.selectedFile);
         }
+
+        // Step 4: After loading, scroll all panels to the anchor position
+        if (anchor) {
+            var self = this;
+            // Use requestAnimationFrame to wait for rendering to complete
+            requestAnimationFrame(function () {
+                // A second rAF ensures layout is stable
+                requestAnimationFrame(function () {
+                    self._restoreScrollFromAnchor(anchor);
+                });
+            });
+        }
+    }
+
+    /**
+     * Restore scroll positions across all three panels based on a textual anchor.
+     * Used after toggling Raw HTML mode.
+     *
+     * @param {{ anchorText: string, scrollFraction: number }} anchor
+     */
+    _restoreScrollFromAnchor(anchor) {
+        var anchorText = anchor.anchorText;
+        var fraction = anchor.scrollFraction;
+
+        // Temporarily disable sync to avoid feedback loops during restoration
+        var wasSyncEnabled = this.syncModeEnabled;
+        this.syncModeEnabled = false;
+        this._scrollSyncLock = true;
+
+        if (this.rawHtmlMode) {
+            // Switched TO raw HTML: scroll raw views + writer to anchor
+            this._scrollRawViewToAnchor(this.pageforgeRaw, anchorText, fraction);
+            this._scrollRawViewToAnchor(this.humanRaw, anchorText, fraction);
+        } else {
+            // Switched TO rendered: scroll iframes to anchor
+            // Iframes need a load event to be ready; use a timeout as fallback
+            var self = this;
+            var pfDone = false;
+            var humanDone = false;
+
+            function scrollPf() {
+                if (pfDone) return;
+                pfDone = true;
+                self._scrollIframeToAnchor(self.pageforgeIframe, anchorText, fraction);
+            }
+
+            function scrollHuman() {
+                if (humanDone) return;
+                humanDone = true;
+                self._scrollIframeToAnchor(self.humanIframe, anchorText, fraction);
+            }
+
+            if (this.pageforgeIframe && !this.pageforgeIframe.classList.contains('hidden')) {
+                this.pageforgeIframe.addEventListener('load', function onLoad() {
+                    self.pageforgeIframe.removeEventListener('load', onLoad);
+                    scrollPf();
+                });
+                setTimeout(scrollPf, 500);
+            }
+
+            if (this.humanIframe && !this.humanIframe.classList.contains('hidden')) {
+                this.humanIframe.addEventListener('load', function onLoad() {
+                    self.humanIframe.removeEventListener('load', onLoad);
+                    scrollHuman();
+                });
+                setTimeout(scrollHuman, 500);
+            }
+        }
+
+        // Scroll writer panel to anchor
+        this._scrollWriterToAnchor(anchorText, fraction);
+
+        // Restore sync mode after a delay
+        var self = this;
+        setTimeout(function () {
+            self.syncModeEnabled = wasSyncEnabled;
+            self._scrollSyncLock = false;
+        }, 600);
     }
 
     /**
@@ -1185,7 +1759,7 @@ class ReviewApp {
     }
 
     /**
-     * Copy highlighted content to sessionStorage for the calibration page.
+     * Copy highlighted content to sessionStorage for the Conversion Error Log page.
      * @param {string} type - 'wt', 'pf', or 'human'
      */
     _copyToSessionStorage(type) {
