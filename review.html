@@ -18,21 +18,23 @@
                 <h1 class="review-title">PageForge Visual Comparison Review</h1>
                 <span id="review-module-code" class="review-module-code"></span>
             </div>
-            <div class="review-header-right">
-                <label class="review-sync-toggle" for="sync-mode-toggle">
-                    <input type="checkbox" id="sync-mode-toggle" />
-                    <span class="review-sync-slider"></span>
-                    <span class="review-sync-label">Sync</span>
-                </label>
-                <button id="btn-raw-html-toggle" class="btn review-raw-btn" type="button">
-                    &lt;/&gt; Raw HTML
-                </button>
-                <button id="btn-calibration-tool" class="btn review-calibrate-btn" type="button">
-                    &#128203; Calibration Tool
-                </button>
-            </div>
         </div>
     </header>
+
+    <!-- Toolbar Row -->
+    <div class="review-toolbar" id="review-toolbar">
+        <label class="review-sync-toggle" for="sync-mode-toggle">
+            <input type="checkbox" id="sync-mode-toggle" />
+            <span class="review-sync-slider"></span>
+            <span class="review-sync-label">Sync</span>
+        </label>
+        <button id="btn-raw-html-toggle" class="btn review-raw-btn" type="button">
+            &lt;/&gt; Raw HTML
+        </button>
+        <button id="btn-calibration-tool" class="btn review-calibrate-btn" type="button">
+            &#128203; Conversion Error Log
+        </button>
+    </div>
 
     <!-- Three-Panel Layout -->
     <div class="review-layout" id="review-main">

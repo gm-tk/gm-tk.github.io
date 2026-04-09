@@ -1,5 +1,5 @@
 /**
- * CalibrateApp — Controller for the standalone Calibration Comparison Tool page.
+ * CalibrateApp — Controller for the standalone Conversion Error Log page.
  *
  * Handles data deserialisation from sessionStorage, CalibrationManager instantiation,
  * auto-population of snapshot form fields from sessionStorage keys set by the

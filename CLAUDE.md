@@ -30,6 +30,8 @@
 19. [UI Overhaul & Rebranding](#19-ui-overhaul--rebranding-phase-8)
 20. [Calibration Comparison Tool](#20-calibration-comparison-tool-phase-9)
 21. [Visual Comparison Review Page](#21-visual-comparison-review-page-phase-10)
+22. [Standalone Calibration Page](#22-standalone-calibration-page-phase-10)
+23. [Review Page UX Improvements](#23-review-page-ux-improvements-phase-11)
 
 ---
 
@@ -56,8 +58,9 @@ PageForge is a client-side web application that reads Writer Template `.docx` fi
 13. **Tag normalisation robustness** → pre-processing de-fragmentation of fractured red-text boundaries from MS Word XML, bracket whitespace cleanup, ordinal suffix stripping in resolveOrdinalOrNumber (DONE — Phase 1 Patch)
 14. **UI overhaul & rebranding** → project renamed from ParseMaster to PageForge, upload decoupled from conversion with staged file + Convert button, template dropdown with auto-detect hint, conversion summary moved to debug panel, legacy text output replaced with direct download, "Copy Interactive Reference" button removed from action bar (DONE — Phase 8)
 15. **Calibration comparison tool** → development utility for uploading human-developed HTML reference files, logging side-by-side comparison snapshots (original writer template content, PageForge output, human correct output), displaying logged snapshots with expand/delete, and exporting structured calibration reports as .txt for Claude AI analysis (DONE — Phase 9)
-16. **Visual comparison review page** → dedicated review.html page with three synchronised viewing panels (PageForge rendered HTML, human reference HTML, parsed Writer Template content), file map sidebar, template-aware CSS injection for authentic LMS rendering in iframes, 6-tier intelligent Sync Mode for cross-panel click-to-scroll synchronisation (structural IDs → activity numbers → heading text → word groups → previous block anchoring → proportional position), Raw HTML toggle mode, human reference file upload, "Copy to Snapshot" contextual buttons that save to sessionStorage for the standalone Calibration page, and a "Calibration Tool" button that opens calibrate.html; accessed from main results via "Visual Comparison Review" button; data transferred via sessionStorage with chunked fallback (DONE — Phase 10)
-17. **Standalone calibration page** → dedicated calibrate.html page with the Calibration Comparison Tool (previously embedded in review.html), with Step 1 (Upload Human Reference Files) removed and remaining steps renumbered; auto-populates form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons on tab focus; managed by CalibrateApp controller class (DONE — Phase 10)
+16. **Visual comparison review page** → dedicated review.html page with three synchronised viewing panels (PageForge rendered HTML, human reference HTML, parsed Writer Template content), file map sidebar, template-aware CSS injection for authentic LMS rendering in iframes, 6-tier intelligent Sync Mode for cross-panel click-to-scroll synchronisation (structural IDs → activity numbers → heading text → word groups → previous block anchoring → proportional position), Raw HTML toggle mode with scroll-position preservation via textual-anchor matching, proportional scroll sync across all three panels (with debounced handlers and feedback-loop prevention), human reference file upload, "Copy to Snapshot" contextual buttons that save to sessionStorage for the standalone Conversion Error Log page, and a "Conversion Error Log" button that opens calibrate.html; toolbar row with Sync toggle, Raw HTML button, and Conversion Error Log button separated from header; accessed from main results via "Visual Comparison Review" button; data transferred via sessionStorage with chunked fallback (DONE — Phase 10, enhanced Phase 11)
+17. **Standalone conversion error log page** → dedicated calibrate.html page (renamed from "Calibration Comparison Tool" to "Conversion Error Log"), with Step 1 (Upload Human Reference Files) removed and remaining steps renumbered; auto-populates form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons on tab focus; managed by CalibrateApp controller class (DONE — Phase 10, renamed Phase 11)
+18. **Review page UX improvements** → toolbar row relocated from header to dedicated row below title bar, "Calibration Tool" renamed to "Conversion Error Log" across all pages/code/labels, proportional scroll synchronisation across all three panels when Sync mode is ON (with debounce and feedback-loop lock), scroll-position preservation when toggling Raw HTML view using textual-anchor fuzzy matching with proportional fallback, reusable `normaliseTextForMatch` static method for text normalisation (DONE — Phase 11)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -183,8 +186,8 @@ User clicks "Convert Document" button (Phase 8)
 | `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
 | `OutputManager` | `js/output-manager.js` | Multi-file output storage, file listing, individual/ZIP download, clipboard copy |
 | `CalibrationManager` | `js/calibration-manager.js` | Calibration comparison tool — human reference file upload, comparison snapshot logging, snapshot display, calibration report export (standalone calibrate.html page Phase 10) |
-| `ReviewApp` | `js/review-app.js` | Review page controller — data deserialisation, three-panel rendering, file map, template-aware CSS injection, 6-tier intelligent sync mode, raw HTML toggle, human reference upload, copy-to-sessionStorage snapshot buttons, calibration tool launcher |
-| `CalibrateApp` | `js/calibrate-app.js` | Calibrate page controller — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of snapshot form fields from sessionStorage keys, navigation |
+| `ReviewApp` | `js/review-app.js` | Review page controller — data deserialisation, three-panel rendering, file map, template-aware CSS injection, 6-tier intelligent sync mode, proportional scroll sync with debounce/lock, raw HTML toggle with scroll-position preservation via textual-anchor matching, human reference upload, copy-to-sessionStorage snapshot buttons, conversion error log launcher |
+| `CalibrateApp` | `js/calibrate-app.js` | Conversion Error Log page controller — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of snapshot form fields from sessionStorage keys, navigation |
 | `App` | `js/app.js` | UI controller — staged upload, Convert button, file list, preview, ZIP download, text download, debug panel, template selection, visual review launcher |
 
 ---
@@ -195,10 +198,10 @@ User clicks "Convert Document" button (Phase 8)
 gm-tk.github.io/
 ├── index.html              # Single-page application shell
 ├── review.html             # Visual Comparison Review page (Phase 10)
-├── calibrate.html          # Standalone Calibration Comparison Tool page (Phase 10)
+├── calibrate.html          # Standalone Conversion Error Log page (Phase 10, renamed Phase 11)
 ├── css/
 │   ├── styles.css          # All application styles (including debug panel, template selector, multi-file layout)
-│   └── review-styles.css   # Review page styles (three-panel layout, sync mode, raw HTML view) (Phase 10)
+│   └── review-styles.css   # Review page styles (three-panel layout, toolbar row, sync mode, raw HTML view) (Phase 10, updated Phase 11)
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
 │   ├── formatter.js         # Plain text output formatter (legacy)
@@ -211,8 +214,8 @@ gm-tk.github.io/
 │   ├── html-converter.js    # Core HTML conversion engine (Phase 3, updated Phase 4)
 │   ├── output-manager.js    # Multi-file output management, ZIP download, clipboard copy (Phase 5)
 │   ├── calibration-manager.js # Calibration comparison tool — reference upload, snapshot logging, report export (Phase 9, standalone calibrate.html Phase 10)
-│   ├── review-app.js       # Review page controller — three-panel rendering, CSS injection, 6-tier sync mode, raw HTML toggle, copy-to-sessionStorage (Phase 10)
-│   ├── calibrate-app.js    # Calibrate page controller — data loading, CalibrationManager instantiation, auto-population from sessionStorage (Phase 10)
+│   ├── review-app.js       # Review page controller — three-panel rendering, CSS injection, 6-tier sync mode, proportional scroll sync, raw HTML toggle with scroll preservation, copy-to-sessionStorage (Phase 10, enhanced Phase 11)
+│   ├── calibrate-app.js    # Conversion Error Log page controller — data loading, CalibrationManager instantiation, auto-population from sessionStorage (Phase 10, renamed Phase 11)
 │   └── app.js              # UI controller (with file list, preview, ZIP download, debug panel, visual review launcher)
 ├── tests/
 │   ├── test-runner.js       # Minimal Node.js test runner (no external dependencies)
@@ -231,7 +234,8 @@ gm-tk.github.io/
 │   ├── layoutTableUnwrapper.test.js # Layout table detection, unwrapping, column role assignment tests
 │   ├── engs301Fixes.test.js # ENGS301 inconsistency fixes: heading levels, incomplete headings, tag recognition, interactive rendering, data capture
 │   ├── lmsCompliance.test.js # LMS compliance recalibration tests: lesson number format, title element, activity classes, table semantics, info trigger, download journal, whakatauki, image alt text
-│   └── defragmentation.test.js # Tag de-fragmentation tests: red-text boundary stitching, bracket space collapsing, whitespace trimming, processBlock integration, ordinal suffix stripping
+│   ├── defragmentation.test.js # Tag de-fragmentation tests: red-text boundary stitching, bracket space collapsing, whitespace trimming, processBlock integration, ordinal suffix stripping
+│   └── reviewPageChanges.test.js # Review page Phase 11 tests: toolbar relocation, Conversion Error Log rename, scroll sync structure, Raw HTML scroll preservation, normaliseTextForMatch helper
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -1357,12 +1361,12 @@ User clicks "Visual Comparison Review" button (Phase 10)
   → User enables Sync Mode — 6-tier intelligent matching synchronises all panels on click
   → User clicks "Copy PF"/"Copy Human"/"Copy WT" buttons — content saved to sessionStorage keys
 
-User clicks "Calibration Tool" button on review page (Phase 10)
-  → ReviewApp._openCalibrationTool() serialises {generatedFileList, metadata, templateName} to sessionStorage key pageforge_calibrate_data
-  → window.open('calibrate.html') opens calibration page in new tab
+User clicks "Conversion Error Log" button on review page (Phase 10, renamed Phase 11)
+  → ReviewApp._openConversionErrorLog() serialises {generatedFileList, metadata, templateName} to sessionStorage key pageforge_calibrate_data
+  → window.open('calibrate.html') opens Conversion Error Log page in new tab
   → CalibrateApp loads data, instantiates CalibrationManager, auto-populates form fields from sessionStorage snapshot keys
   → User logs snapshots and exports calibration report
-  → User can switch back to review tab, copy more content, switch to calibration tab — fields auto-populate on focus
+  → User can switch back to review tab, copy more content, switch to Conversion Error Log tab — fields auto-populate on focus
 ```
 
 ---
@@ -1636,8 +1640,8 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
-- **Automated unit tests** — `node tests/test-runner.js` runs 407 tests across 16 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text), and tag de-fragmentation (red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, ordinal suffix stripping)
-- **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files (tag-normaliser, block-scoper, layout-table-unwrapper, formatter, template-engine, interactive-extractor, html-converter) with class declarations in global scope; no external dependencies
+- **Automated unit tests** — `node tests/test-runner.js` runs 452 tests across 17 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text), tag de-fragmentation (red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, ordinal suffix stripping), and review page Phase 11 changes (toolbar relocation DOM structure, Conversion Error Log rename consistency, scroll sync implementation structure/feedback-loop prevention, Raw HTML scroll-position preservation with textual-anchor matching, normaliseTextForMatch helper unit tests)
+- **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files (tag-normaliser, block-scoper, layout-table-unwrapper, formatter, template-engine, interactive-extractor, html-converter) with class declarations in global scope; exposes `__testFs`, `__testPath`, `__testRootDir` globals for file-reading tests; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table
 - Verify page boundary detection against the 4 rules
@@ -2067,9 +2071,9 @@ END OF CALIBRATION REPORT
 
 ### UI Layout
 
-**Phase 10 change:** The calibration tool has been relocated from the main page (`#calibration-section`) to a standalone page (`calibrate.html`), with Step 1 (Upload Human Reference Files) removed and the remaining steps renumbered. The review page (`review.html`) provides "Copy to Snapshot" buttons that save content to sessionStorage keys, and a "Calibration Tool" button that opens `calibrate.html` in a new tab. `CalibrateApp` auto-populates the form fields from those sessionStorage keys on page load and on tab focus. See Section 21 for the review page details and Section 22 for the standalone calibration page details.
+**Phase 10 change:** The calibration tool has been relocated from the main page (`#calibration-section`) to a standalone page (`calibrate.html`), with Step 1 (Upload Human Reference Files) removed and the remaining steps renumbered. The review page (`review.html`) provides "Copy to Snapshot" buttons that save content to sessionStorage keys, and a "Conversion Error Log" button (renamed from "Calibration Tool" in Phase 11) that opens `calibrate.html` in a new tab. `CalibrateApp` auto-populates the form fields from those sessionStorage keys on page load and on tab focus. See Section 21 for the review page details and Section 22 for the standalone calibration page details.
 
-The calibration tool is now a standalone page (`calibrate.html`):
+The Conversion Error Log (formerly "calibration tool") is now a standalone page (`calibrate.html`):
 
 ```
 calibrate.html
@@ -2098,19 +2102,19 @@ calibrate.html
 
 ### Overview
 
-Phase 10 provides a dedicated **Visual Comparison Review** page (`review.html`) with three synchronised viewing panels, template-aware CSS injection for authentic LMS rendering, a 6-tier intelligent content matching algorithm for cross-panel synchronisation, and "Copy to Snapshot" buttons that save content to sessionStorage for consumption by the standalone Calibration page (`calibrate.html`). The Calibration Comparison Tool has been extracted from the review page into its own standalone page (see Section 22). A "Visual Comparison Review" button on the main results page launches the review page in a new tab after serialising all necessary data to sessionStorage.
+Phase 10 provides a dedicated **Visual Comparison Review** page (`review.html`) with three synchronised viewing panels, template-aware CSS injection for authentic LMS rendering, a 6-tier intelligent content matching algorithm for cross-panel synchronisation, and "Copy to Snapshot" buttons that save content to sessionStorage for consumption by the standalone Conversion Error Log page (`calibrate.html`). The Calibration Comparison Tool has been extracted from the review page into its own standalone page (see Section 22), renamed to "Conversion Error Log" in Phase 11. A "Visual Comparison Review" button on the main results page launches the review page in a new tab after serialising all necessary data to sessionStorage. Phase 11 added proportional scroll sync, Raw HTML scroll-position preservation, toolbar relocation, and the Conversion Error Log rename.
 
-**Status:** DONE — 4 files created (review.html, calibrate.html, js/review-app.js, js/calibrate-app.js), 1 file created earlier (css/review-styles.css), 2 files modified (js/app.js, css/review-styles.css), 407 tests passing (no regressions, no new tests required — all changes are UI/interaction with no algorithmic logic to unit test).
+**Status:** DONE — 4 files created (review.html, calibrate.html, js/review-app.js, js/calibrate-app.js), 1 file created earlier (css/review-styles.css), 2 files modified (js/app.js, css/review-styles.css), 452 tests passing (45 new tests added in Phase 11 for toolbar relocation, rename consistency, scroll sync, Raw HTML scroll preservation, and normaliseTextForMatch helper).
 
 ### Files Created
 
 | File | Purpose |
 |------|---------|
-| `review.html` | Standalone HTML page for the Visual Comparison Review tool — three-panel layout with file map, template-aware CSS-injected PageForge/Human Reference iframes, Writer Template content panel, "Copy to Snapshot" buttons saving to sessionStorage, and "Calibration Tool" button opening calibrate.html |
-| `js/review-app.js` | Controller class for the review page — data deserialisation from sessionStorage, template-aware CSS injection for iframe rendering, 6-tier intelligent sync mode, raw HTML toggle, human reference file upload, copy-to-sessionStorage snapshot buttons, calibration tool launcher |
-| `css/review-styles.css` | Review page-specific styles — three-panel flex layout, file map sidebar, sync mode toggle/indicator, raw HTML view, writer block styling, calibration tool button, responsive breakpoints |
-| `calibrate.html` | Standalone Calibration Comparison Tool page — snapshot form with 3 required fields + 1 optional + source file dropdown, logged snapshots display, export/copy/clear controls (see Section 22) |
-| `js/calibrate-app.js` | Controller class for the calibrate page — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of form fields from sessionStorage keys set by review page's copy buttons (see Section 22) |
+| `review.html` | Standalone HTML page for the Visual Comparison Review tool — header bar with back link/title/module code, separate toolbar row with Sync toggle/Raw HTML button/Conversion Error Log button, three-panel layout with file map, template-aware CSS-injected PageForge/Human Reference iframes, Writer Template content panel, "Copy to Snapshot" buttons saving to sessionStorage |
+| `js/review-app.js` | Controller class for the review page — data deserialisation from sessionStorage, template-aware CSS injection for iframe rendering, 6-tier intelligent sync mode, proportional scroll sync with debounce/feedback-loop lock, raw HTML toggle with scroll-position preservation via textual-anchor matching, human reference file upload, copy-to-sessionStorage snapshot buttons, conversion error log launcher |
+| `css/review-styles.css` | Review page-specific styles — three-panel flex layout, toolbar row, file map sidebar, sync mode toggle/indicator, raw HTML view, writer block styling, conversion error log button, responsive breakpoints |
+| `calibrate.html` | Standalone Conversion Error Log page — snapshot form with 3 required fields + 1 optional + source file dropdown, logged snapshots display, export/copy/clear controls (see Section 22) |
+| `js/calibrate-app.js` | Controller class for the Conversion Error Log page — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of form fields from sessionStorage keys set by review page's copy buttons (see Section 22) |
 
 ### Files Modified
 
@@ -2136,8 +2140,8 @@ The Visual Comparison Review page is a standalone HTML page (`review.html`) that
 **Data transfer flow (review page → calibrate page):**
 1. User clicks "Copy PF" / "Copy Human" / "Copy WT" buttons after sync-clicking a block
 2. `_copyToSessionStorage(type)` saves content to `pageforge_snapshot_pf` / `pageforge_snapshot_human` / `pageforge_snapshot_wt` + `pageforge_snapshot_file` in sessionStorage
-3. User clicks "Calibration Tool" button in review page header
-4. `_openCalibrationTool()` serialises `{generatedFileList, metadata, templateName}` to `pageforge_calibrate_data` and opens `calibrate.html`
+3. User clicks "Conversion Error Log" button in review page toolbar
+4. `_openConversionErrorLog()` serialises `{generatedFileList, metadata, templateName}` to `pageforge_calibrate_data` and opens `calibrate.html`
 5. `CalibrateApp._populateFromSessionStorage()` reads snapshot keys and populates form fields
 6. `window.addEventListener('focus', ...)` re-checks sessionStorage keys on tab focus for subsequent copies
 
@@ -2201,7 +2205,7 @@ This ensures that rendered HTML in the comparison iframes looks exactly as it wo
 **Constructor flow:**
 1. `_loadData()` — reads and parses sessionStorage data
 2. `_bindElements()` — caches all DOM references
-3. `_bindEvents()` — wires up sync toggle, raw HTML button, file upload, copy-to-sessionStorage buttons, calibration tool button, iframe click handlers
+3. `_bindEvents()` — wires up sync toggle, raw HTML button, file upload, copy-to-sessionStorage buttons, conversion error log button, iframe click handlers
 4. `_render()` — renders file map, reference file list, auto-selects first file
 
 **Public API:**
@@ -2227,13 +2231,22 @@ This ensures that rendered HTML in the comparison iframes looks exactly as it wo
 - `_extractHeadingText(el)` — Tier 3: extracts heading text from h2-h5 elements (case-insensitive)
 - `_extractWordGroups(text, groupSize, maxGroups)` — Tier 4: generates 4-word n-gram groups from text
 - `_findByWordGroups(doc, wordGroups)` — Tier 4: searches Human Reference iframe for elements matching word groups (min 2 matches)
-- `_toggleRawHtmlMode()` — switches between rendered iframe and raw HTML `<pre><code>` view; updates button text ("Rendered" ↔ "</> Raw HTML")
+- `_bindScrollSync()` — binds debounced scroll handlers to all three panel containers (writer panel body, raw view containers, iframes via load event); uses `_scrollSyncLock` flag to prevent feedback loops; syncs scroll position as a proportion (0..1) of scrollable height
+- `_attachIframeScrollHandler(iframe, handler)` — attaches scroll event listener to an iframe's contentWindow
+- `static normaliseTextForMatch(text)` — reusable text normalisation: strips HTML tags, decodes entities, lowercases, removes punctuation (preserves macrons), collapses whitespace; used by scroll-position preservation and anchor matching
+- `_extractVisibleAnchor(panel)` — extracts a textual anchor (normalised text snippet + scroll fraction) from the element currently at the top of the visible area in a panel; works for rendered iframes, raw HTML views, and writer blocks
+- `_extractAnchorFromRawView(rawViewContainer)` — extracts anchor text from the line currently visible at the top of a raw HTML `<pre><code>` view
+- `_scrollRawViewToAnchor(rawViewContainer, anchorText, fallbackFraction)` — searches raw HTML lines for anchor text using word-level fuzzy matching (30% threshold); falls back to proportional scroll
+- `_scrollIframeToAnchor(iframe, anchorText, fallbackFraction)` — searches rendered iframe elements for anchor text using word-level fuzzy matching; falls back to proportional scroll
+- `_scrollWriterToAnchor(anchorText, fallbackFraction)` — searches writer blocks for anchor text using word-level fuzzy matching; falls back to proportional scroll
+- `_toggleRawHtmlMode()` — extracts visible anchor BEFORE switching views, toggles rendered/raw mode, restores scroll position using `_restoreScrollFromAnchor()` after rendering completes via `requestAnimationFrame`
+- `_restoreScrollFromAnchor(anchor)` — after view toggle, scrolls all three panels to the textual anchor position; temporarily disables sync mode during restoration to prevent feedback loops; handles iframe load timing via event listeners with timeout fallback
 - `_showRawHtml(panel, htmlContent)` — displays raw HTML in a panel's raw view container
 - `_updateSyncModeIndicator()` — toggles visual indicator (blue box-shadow) on PageForge panel
 - `_showCopyToSnapshotButtons()` / `_hideCopyToSnapshotButtons()` — toggle contextual copy buttons on panel headers
-- `_copyToSessionStorage(type)` — saves highlighted block content to sessionStorage keys (`pageforge_snapshot_pf`, `pageforge_snapshot_human`, `pageforge_snapshot_wt`, `pageforge_snapshot_file`) for the standalone Calibration page
+- `_copyToSessionStorage(type)` — saves highlighted block content to sessionStorage keys (`pageforge_snapshot_pf`, `pageforge_snapshot_human`, `pageforge_snapshot_wt`, `pageforge_snapshot_file`) for the standalone Conversion Error Log page
 - `_getHighlightedHtml(iframe, blockIndex)` — extracts outerHTML of highlighted element in iframe
-- `_openCalibrationTool()` — serialises calibration data to `pageforge_calibrate_data` sessionStorage key and opens `calibrate.html` in a new tab
+- `_openConversionErrorLog()` — serialises calibration data to `pageforge_calibrate_data` sessionStorage key and opens `calibrate.html` in a new tab
 - `_handleReferenceFiles(files)` — validates/reads uploaded .html reference files, stores in `this.humanReferenceFiles`
 - `_renderRefFileList()` — renders uploaded reference file list with matched/unmatched status and remove buttons
 - `_getPageData(filename)` — looks up page data for a filename
@@ -2309,7 +2322,7 @@ Each button shows a toast notification on click. Buttons are hidden when Sync Mo
 
 The standalone Calibration page (`calibrate.html`) reads these sessionStorage keys on load and on tab focus, auto-populating the snapshot form fields. This enables a workflow where the user copies content on the review page, switches to the calibration tab, and sees the fields pre-populated.
 
-### Calibration Tool Integration
+### Conversion Error Log Integration
 
 The review page no longer embeds the Calibration Comparison Tool directly. Instead:
 
@@ -2318,11 +2331,11 @@ The review page no longer embeds the Calibration Comparison Tool directly. Inste
 - `<script src="js/calibration-manager.js">` removed from `review.html`
 - `CalibrationManager` no longer instantiated by `ReviewApp`
 
-**Added to review page:**
-- "Calibration Tool" button (`#btn-calibration-tool`) in the header right section
-- `_openCalibrationTool()` method serialises `{generatedFileList, metadata, templateName}` to `sessionStorage.setItem('pageforge_calibrate_data', ...)` and opens `calibrate.html` via `window.open()`
+**Added to review page (Phase 10, updated Phase 11):**
+- "Conversion Error Log" button (`#btn-calibration-tool`) in the toolbar row (relocated from header in Phase 11)
+- `_openConversionErrorLog()` method serialises `{generatedFileList, metadata, templateName}` to `sessionStorage.setItem('pageforge_calibrate_data', ...)` and opens `calibrate.html` via `window.open()`
 
-**Standalone calibration page:** See Section 22 for full details on `calibrate.html` and `CalibrateApp`.
+**Standalone Conversion Error Log page:** See Section 22 for full details on `calibrate.html` and `CalibrateApp`.
 
 ### User Workflow
 
@@ -2333,14 +2346,14 @@ The review page no longer embeds the Calibration Comparison Tool directly. Inste
 5. Review page loads showing file map (left), PageForge output with authentic LMS styling (centre-left), upload prompt (centre-right), Writer Template content (right)
 6. User uploads human-developed HTML files via the Human Reference panel's upload zone
 7. User clicks through pages in the file map — all three panels update simultaneously with CSS-injected rendering
-8. User enables Sync Mode and clicks on a section of the PageForge rendered output
-9. The 6-tier intelligent matching algorithm finds the corresponding content in the Human Reference panel and auto-scrolls; the Writer Template panel auto-scrolls to the corresponding source content block
-10. User clicks Raw HTML to see the source code behind the rendered views
+8. User enables Sync Mode via the toolbar toggle — scrolling any panel now proportionally scrolls the other two panels to the same relative position
+9. User clicks on a section of the PageForge rendered output — the 6-tier intelligent matching algorithm finds the corresponding content in the Human Reference panel and auto-scrolls; the Writer Template panel auto-scrolls to the corresponding source content block
+10. User clicks Raw HTML to see the source code behind the rendered views — all three panels automatically scroll to preserve the user's current viewing position using textual-anchor matching (with proportional fallback)
 11. User clicks "Copy PF" / "Copy Human" / "Copy WT" buttons — content is saved to sessionStorage keys
-12. User clicks "Calibration Tool" button in header — `calibrate.html` opens in a new tab
-13. Calibration page auto-populates form fields from sessionStorage keys
+12. User clicks "Conversion Error Log" button in toolbar — `calibrate.html` opens in a new tab
+13. Conversion Error Log page auto-populates form fields from sessionStorage keys
 14. User logs snapshots and exports the calibration report for Claude AI analysis
-15. User can switch back to the review tab, copy more content, switch to calibration tab — form fields auto-populate on tab focus
+15. User can switch back to the review tab, copy more content, switch to Conversion Error Log tab — form fields auto-populate on tab focus
 
 ---
 
@@ -2348,26 +2361,26 @@ The review page no longer embeds the Calibration Comparison Tool directly. Inste
 
 ### Overview
 
-Phase 10 extracts the Calibration Comparison Tool from the review page into a standalone page (`calibrate.html`) managed by a new `CalibrateApp` controller class. The page receives data via sessionStorage from the review page and auto-populates snapshot form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons.
+Phase 10 extracts the Calibration Comparison Tool from the review page into a standalone page (`calibrate.html`) managed by a new `CalibrateApp` controller class. Phase 11 renamed the page from "Calibration Comparison Tool" to "Conversion Error Log" to better reflect its purpose of documenting conversion algorithm discrepancies. The page receives data via sessionStorage from the review page and auto-populates snapshot form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons.
 
-**Status:** DONE — 2 new files created (calibrate.html, js/calibrate-app.js), 407 tests passing (no new tests required — all changes are UI/interaction with no algorithmic logic to unit test).
+**Status:** DONE — 2 new files created (calibrate.html, js/calibrate-app.js), 452 tests passing (45 new tests added in Phase 11).
 
 ### Files Created
 
 | File | Purpose |
 |------|---------|
-| `calibrate.html` | Standalone HTML page for the Calibration Comparison Tool — header bar with back link and module code badge, snapshot form (Step 1), logged snapshots display, export controls (Step 2) |
+| `calibrate.html` | Standalone Conversion Error Log page — header bar with back link and module code badge, page title "Conversion Error Log", snapshot form (Step 1), logged snapshots display, export controls (Step 2) |
 | `js/calibrate-app.js` | Controller class — data loading from `pageforge_calibrate_data` sessionStorage key, CalibrationManager instantiation with callback hooks, auto-population from sessionStorage snapshot keys on load and focus |
 
 ### Architecture
 
-The Calibration page is a standalone HTML page (`calibrate.html`) that loads `CalibrationManager` (shared class) and its own `CalibrateApp` controller. It does not depend on `App`, `ReviewApp`, `DocxParser`, or any other class — it receives all data via sessionStorage.
+The Conversion Error Log page is a standalone HTML page (`calibrate.html`) that loads `CalibrationManager` (shared class) and its own `CalibrateApp` controller. It does not depend on `App`, `ReviewApp`, `DocxParser`, or any other class — it receives all data via sessionStorage.
 
 **SessionStorage keys consumed:**
 
 | Key | Source | Purpose |
 |-----|--------|---------|
-| `pageforge_calibrate_data` | `ReviewApp._openCalibrationTool()` | JSON with `generatedFileList`, `metadata`, `templateName` — used for source file dropdown population and module code display |
+| `pageforge_calibrate_data` | `ReviewApp._openConversionErrorLog()` | JSON with `generatedFileList`, `metadata`, `templateName` — used for source file dropdown population and module code display |
 | `pageforge_snapshot_wt` | `ReviewApp._copyToSessionStorage('wt')` | Writer Template content — auto-populates "Original Content" textarea |
 | `pageforge_snapshot_pf` | `ReviewApp._copyToSessionStorage('pf')` | PageForge output — auto-populates "PageForge Generated Output" textarea |
 | `pageforge_snapshot_human` | `ReviewApp._copyToSessionStorage('human')` | Human reference output — auto-populates "Human Developer Correct Output" textarea |
@@ -2394,7 +2407,7 @@ calibrate.html
   ├── .calibrate-header
   │   └── .calibrate-header-inner
   │       ├── #btn-back (← Back to Visual Review)
-  │       ├── h1.calibrate-title (Calibration Comparison Tool)
+  │       ├── h1.calibrate-title (Conversion Error Log)
   │       └── #calibrate-module-code (module code badge, hidden by default)
   └── .calibrate-content
       └── .calibration-panel
@@ -2422,7 +2435,7 @@ The page uses inline `<style>` for page-specific layout styles (`.calibrate-page
 3. User clicks "Copy PF" → PageForge HTML saved to `pageforge_snapshot_pf`
 4. User clicks "Copy Human" → Human reference HTML saved to `pageforge_snapshot_human`
 5. User clicks "Copy WT" → Writer Template text saved to `pageforge_snapshot_wt`
-6. User switches to the calibration tab (or clicks "Calibration Tool" to open it)
+6. User switches to the Conversion Error Log tab (or clicks "Conversion Error Log" to open it)
 7. `CalibrateApp._populateFromSessionStorage()` runs (on page load or tab focus)
 8. Form fields are populated with the saved content
 9. Source file dropdown auto-selects the matching filename
@@ -2430,3 +2443,79 @@ The page uses inline `<style>` for page-specific layout styles (`.calibrate-page
 11. `CalibrationManager._updateLogButtonState()` enables the Log button if all 3 required fields have content
 12. User can add optional notes, then click "Log Snapshot"
 13. User can repeat: switch to review tab, copy more content, switch back — fields auto-populate on focus
+
+---
+
+## 23. REVIEW PAGE UX IMPROVEMENTS (Phase 11)
+
+### Overview
+
+Phase 11 addresses four usability issues on the Visual Comparison Review page: (1) toolbar controls relocated from the header bar to a dedicated row below the title, (2) "Calibration Tool" renamed to "Conversion Error Log" across the entire codebase to better reflect its purpose of documenting conversion algorithm discrepancies, (3) proportional scroll synchronisation across all three panels when the Sync toggle is ON, and (4) scroll-position preservation when toggling between rendered and Raw HTML views using a textual-anchor fuzzy-matching algorithm with proportional fallback. A reusable static `normaliseTextForMatch()` method was created for text normalisation shared across the scroll-preservation and sync logic. All changes are backward-compatible — the 407 pre-existing tests continue to pass alongside the 45 new tests (452 total).
+
+**Status:** DONE — 6 files modified, 1 file created, 45 new tests added (452 total), all tests passing.
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `review.html` | Removed `.review-header-right` div from header; added `.review-toolbar` div between header and three-panel layout containing Sync toggle, Raw HTML button, and Conversion Error Log button; button text changed from "Calibration Tool" to "Conversion Error Log" |
+| `js/review-app.js` | Renamed `_openCalibrationTool()` → `_openConversionErrorLog()`; added `_scrollSyncLock` flag and `_bindScrollSync()` method with debounced proportional scroll handlers for all three panels (writer body, raw views, iframe contentWindows); added `static normaliseTextForMatch(text)` reusable helper for text normalisation (strips HTML, decodes entities, lowercases, removes punctuation, preserves macrons, collapses whitespace); added `_extractVisibleAnchor(panel)` and `_extractAnchorFromRawView(rawViewContainer)` for capturing the currently visible content anchor; added `_scrollRawViewToAnchor()`, `_scrollIframeToAnchor()`, and `_scrollWriterToAnchor()` for fuzzy-matching anchor text in target panels; added `_restoreScrollFromAnchor(anchor)` for post-toggle scroll restoration with sync-disable guard; added `_attachIframeScrollHandler()` for iframe scroll event binding; refactored `_toggleRawHtmlMode()` to extract anchor before switching and restore after via `requestAnimationFrame`; added `writerPanelBody`, `pageforgePanelBody`, `humanPanelBody` DOM references; updated JSDoc comments to reference "Conversion Error Log" |
+| `css/review-styles.css` | Removed `.review-header-right` styles; added `.review-toolbar` styles (flex row, background, border, padding); added `.review-toolbar` responsive styles in `@media (max-width: 900px)` block; renamed "Calibration Tool Button" CSS comment to "Conversion Error Log Button" |
+| `calibrate.html` | Changed `<title>` from "PageForge — Calibration Comparison Tool" to "PageForge — Conversion Error Log"; changed `<h1>` from "Calibration Comparison Tool" to "Conversion Error Log" |
+| `js/calibrate-app.js` | Updated JSDoc header to reference "Conversion Error Log" instead of "Calibration Comparison Tool" |
+| `tests/test-runner.js` | Added `global.__testFs`, `global.__testPath`, `global.__testRootDir` globals so test files loaded via `vm.runInThisContext()` can read project files for DOM structure analysis |
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `tests/reviewPageChanges.test.js` | 45 tests covering: toolbar relocation (8 tests verifying DOM structure, position, CSS), Conversion Error Log rename consistency (8 tests across button text, page title, page heading, method names, JSDoc), scroll sync implementation (12 tests verifying method existence, constructor call order, feedback-loop lock, sync-mode guard, debounce, raw/rendered handler attachment), Raw HTML scroll-preservation (11 tests verifying anchor extraction, scroll-to-anchor methods, pre/post toggle ordering, requestAnimationFrame usage, proportional fallback, sync-disable guard), normaliseTextForMatch helper (6 unit tests for null handling, HTML stripping, lowercasing, whitespace collapsing, macron preservation, entity decoding, punctuation removal) |
+
+### Change-by-Change Summary
+
+#### Change 1 — Toolbar Relocation
+- **Previous:** Sync toggle, Raw HTML button, and Calibration Tool button were in a `.review-header-right` div inside the `<header>` element alongside the back link, title, and module code badge
+- **Fix:** Removed `.review-header-right` entirely from `<header>`; created a new `.review-toolbar` `<div>` positioned between `</header>` and the `.review-layout` three-panel container; all three controls moved to the toolbar with left-aligned flex layout; toolbar has its own background (`var(--color-bg)`), border-bottom, and responsive flex-wrap at 900px breakpoint
+
+#### Change 2 — "Calibration Tool" → "Conversion Error Log" Rename
+- **Previous:** Button on review page said "Calibration Tool"; calibrate.html title said "PageForge — Calibration Comparison Tool"; heading said "Calibration Comparison Tool"; method was `_openCalibrationTool()`
+- **Fix:** Button text changed to "Conversion Error Log" (review.html); `<title>` changed to "PageForge — Conversion Error Log" (calibrate.html); `<h1>` changed to "Conversion Error Log" (calibrate.html); method renamed to `_openConversionErrorLog()` (review-app.js); JSDoc comments updated (review-app.js, calibrate-app.js); CSS comment updated (review-styles.css); all error messages and toast text updated
+
+#### Change 3 — Proportional Scroll Sync
+- **Previous:** The Sync toggle existed but only controlled click-to-scroll (6-tier matching on block click in PageForge iframe). Scrolling one panel did NOT scroll the other two.
+- **Fix:** New `_bindScrollSync()` method called during constructor after `_bindEvents()` and before `_render()`. Implementation:
+  - **Debounced handlers:** Three debounced scroll handlers (`debouncedPfScroll`, `debouncedHumanScroll`, `debouncedWriterScroll`) fire at 16ms intervals
+  - **`getScrollable(panel)` inner function:** Returns the correct scrollable element depending on current view mode — iframe `scrollingElement` for rendered view, `.review-raw-view` container for raw HTML view, `.review-writer-body` for writer panel
+  - **Proportional sync:** On scroll event, computes `scrollTop / (scrollHeight - clientHeight)` as a fraction (0..1), then applies `fraction * (targetScrollHeight - targetClientHeight)` to the other two panels
+  - **Feedback-loop prevention:** `_scrollSyncLock` boolean flag set to `true` before programmatic scrolls, released after 50ms via `setTimeout`; handler early-returns when lock is active
+  - **Sync-mode guard:** Handler early-returns when `syncModeEnabled` is `false`
+  - **Iframe scroll binding:** `_attachIframeScrollHandler()` attaches to `iframe.contentWindow` `scroll` event; re-attached on each iframe `load` event since contentDocument changes when srcdoc is updated
+  - **Writer panel:** Scroll bound once directly to `writerPanelBody` DOM element
+  - **Raw views:** Scroll bound once directly to `pageforgeRaw` and `humanRaw` DOM elements
+
+#### Change 4 — Raw HTML Scroll-Position Preservation
+- **Previous:** Toggling Raw HTML reset scroll to top in both PageForge and Human Reference panels, requiring manual scrolling to find the same content region
+- **Fix:** New textual-anchor matching system preserves scroll position across view toggles:
+  - **Anchor extraction (`_extractVisibleAnchor`):** Before toggling, identifies the element nearest to the top of the visible area in the PageForge panel; extracts its text content, normalises it via `normaliseTextForMatch()`, and captures the first 120 characters as an anchor along with the current scroll fraction
+  - **Text normalisation (`normaliseTextForMatch`):** Static method shared across all anchor-matching logic; strips HTML tags, decodes `&amp;`/`&lt;`/`&gt;`/`&nbsp;` entities, lowercases, removes punctuation (preserves macronised vowels ā/ē/ī/ō/ū), collapses whitespace
+  - **Raw view anchor search (`_scrollRawViewToAnchor`):** Splits raw HTML into lines, normalises each line, counts matching words from the anchor (split on whitespace, filtered to >2 chars); requires ≥30% word match; scrolls to best-matching line; falls back to proportional scroll
+  - **Iframe anchor search (`_scrollIframeToAnchor`):** Queries all text-bearing elements (h1-h5, p, li, td, th, div.activity, etc.), normalises their text, counts word matches against anchor; requires ≥30% match; calls `scrollIntoView()` on best match; falls back to proportional scroll
+  - **Writer panel anchor search (`_scrollWriterToAnchor`):** Searches `.writer-block` elements using the same word-matching algorithm; falls back to proportional scroll
+  - **Post-toggle restoration (`_restoreScrollFromAnchor`):** After `_loadPageforgePanel` and `_loadHumanPanel` complete, uses double `requestAnimationFrame` to wait for DOM rendering, then scrolls all three panels to the anchor. For rendered-to-raw toggle, calls `_scrollRawViewToAnchor` on both PageForge and Human raw views. For raw-to-rendered toggle, attaches one-time iframe `load` event listeners (with 500ms timeout fallback) then calls `_scrollIframeToAnchor`. Writer panel always uses `_scrollWriterToAnchor`.
+  - **Sync guard:** Temporarily disables `syncModeEnabled` and sets `_scrollSyncLock = true` during restoration to prevent proportional sync from interfering; restores original state after 600ms
+
+### New Public API on ReviewApp
+
+- `static normaliseTextForMatch(text)` — reusable text normalisation helper (strips HTML, decodes entities, lowercases, removes punctuation, preserves macrons, collapses whitespace)
+
+### Test Coverage
+
+45 new tests in `tests/reviewPageChanges.test.js`:
+
+| Category | Count | Tests |
+|----------|-------|-------|
+| Toolbar relocation | 8 | `.review-toolbar` exists, positioned after header/before layout, contains all 3 controls, header has no controls, no `.review-header-right`, header has back/title/badge only, CSS defined, responsive |
+| Conversion Error Log rename | 8 | Button text correct, no old text, page title, page heading, new method name, no old method name, JSDoc updated, no old heading |
+| Scroll sync structure | 12 | `_bindScrollSync` exists, called in constructor, `_scrollSyncLock` exists, lock set/release, sync guard, lock guard, iframe scroll handler, writer scroll bind, raw view scroll binds, debounce helper, raw/rendered mode handling, `getScrollable` function |
+| Raw HTML scroll preservation | 11 | `normaliseTextForMatch`, `_extractVisibleAnchor`, `_scrollRawViewToAnchor`, `_scrollIframeToAnchor`, `_scrollWriterToAnchor`, `_restoreScrollFromAnchor`, anchor-before-toggle ordering, `requestAnimationFrame`, proportional fallback, sync disable during restore, sync state restoration |
+| `normaliseTextForMatch` unit tests | 6 | null/empty, HTML stripping, lowercase, whitespace collapse, macron preservation, entity decoding, punctuation removal |
