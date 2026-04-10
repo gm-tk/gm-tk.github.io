@@ -23,11 +23,6 @@
 
     <!-- Toolbar Row -->
     <div class="review-toolbar" id="review-toolbar">
-        <label class="review-sync-toggle" for="sync-mode-toggle">
-            <input type="checkbox" id="sync-mode-toggle" />
-            <span class="review-sync-slider"></span>
-            <span class="review-sync-label">Sync</span>
-        </label>
         <button id="btn-raw-html-toggle" class="btn review-raw-btn" type="button">
             &lt;/&gt; Raw HTML
         </button>
@@ -50,6 +45,8 @@
             <div class="review-panel-header">
                 <span class="review-panel-title">PageForge Output</span>
                 <span id="pageforge-filename" class="review-panel-filename"></span>
+                <button class="btn btn-sm review-sync-btn" id="btn-sync-pageforge"
+                        type="button" title="Sync other panels to this panel's position">&#8644; Sync</button>
                 <button class="btn btn-sm review-copy-to-snapshot hidden" id="btn-copy-pf"
                         type="button" title="Copy PageForge output to snapshot">&#128203; Copy PF</button>
             </div>
@@ -66,6 +63,8 @@
             <div class="review-panel-header">
                 <span class="review-panel-title">Human Reference</span>
                 <span id="human-filename" class="review-panel-filename"></span>
+                <button class="btn btn-sm review-sync-btn" id="btn-sync-human"
+                        type="button" title="Sync other panels to this panel's position">&#8644; Sync</button>
                 <button class="btn btn-sm review-upload-more" id="btn-upload-more-ref"
                         type="button" title="Upload human reference files">+ Upload Files</button>
                 <button class="btn btn-sm review-copy-to-snapshot hidden" id="btn-copy-human"
@@ -95,6 +94,8 @@
             <div class="review-panel-header">
                 <span class="review-panel-title">Writer Template</span>
                 <span id="writer-filename" class="review-panel-filename"></span>
+                <button class="btn btn-sm review-sync-btn" id="btn-sync-writer"
+                        type="button" title="Sync other panels to this panel's position">&#8644; Sync</button>
                 <button class="btn btn-sm review-copy-to-snapshot hidden" id="btn-copy-wt"
                         type="button" title="Copy writer template to snapshot">&#128203; Copy WT</button>
             </div>

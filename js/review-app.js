@@ -3,10 +3,12 @@
  *
  * Handles data deserialisation from sessionStorage, three-panel rendering,
  * file map interaction, template-aware CSS injection for rendered HTML,
- * synchronised scrolling with 6-tier intelligent content matching (Sync Mode),
- * Raw HTML toggle, human reference file upload, "Copy to Snapshot" buttons
- * that save to sessionStorage for the standalone Conversion Error Log page, and
- * a Conversion Error Log button that opens calibrate.html.
+ * per-panel one-shot Sync buttons for cross-panel content alignment via
+ * textual-anchor matching with tiered fallback (exact → fuzzy → proportional),
+ * Raw HTML toggle with scroll-position preservation, human reference file
+ * upload, "Copy to Snapshot" buttons that save to sessionStorage for the
+ * standalone Conversion Error Log page, and a Conversion Error Log button
+ * that opens calibrate.html.
  *
  * This is a standalone controller for review.html — it does not depend on
  * App, DocxParser, CalibrationManager, or any other main-page class. It
@@ -95,22 +97,15 @@ class ReviewApp {
         /** Currently selected filename */
         this.selectedFile = null;
 
-        /** Sync mode enabled flag */
-        this.syncModeEnabled = false;
-
         /** Raw HTML mode enabled flag */
         this.rawHtmlMode = false;
 
         /** Currently highlighted block index (for copy-to-snapshot) */
         this.highlightedBlockIndex = null;
 
-        /** Guard flag to prevent scroll feedback loops */
-        this._scrollSyncLock = false;
-
         this._loadData();
         this._bindElements();
         this._bindEvents();
-        this._bindScrollSync();
         this._render();
     }
 
@@ -160,10 +155,14 @@ class ReviewApp {
 
     _bindElements() {
         this.fileMapList = document.getElementById('file-map-list');
-        this.syncModeToggle = document.getElementById('sync-mode-toggle');
         this.btnRawHtmlToggle = document.getElementById('btn-raw-html-toggle');
         this.btnCalibrationTool = document.getElementById('btn-calibration-tool');
         this.moduleCodeDisplay = document.getElementById('review-module-code');
+
+        // Per-panel Sync buttons
+        this.btnSyncPageforge = document.getElementById('btn-sync-pageforge');
+        this.btnSyncHuman = document.getElementById('btn-sync-human');
+        this.btnSyncWriter = document.getElementById('btn-sync-writer');
 
         // PageForge panel
         this.pageforgeIframe = document.getElementById('pageforge-iframe');
@@ -209,14 +208,20 @@ class ReviewApp {
     _bindEvents() {
         var self = this;
 
-        // Sync mode toggle
-        if (this.syncModeToggle) {
-            this.syncModeToggle.addEventListener('change', function () {
-                self.syncModeEnabled = self.syncModeToggle.checked;
-                self._updateSyncModeIndicator();
-                if (!self.syncModeEnabled) {
-                    self._hideCopyToSnapshotButtons();
-                }
+        // Per-panel Sync buttons (one-shot align triggers)
+        if (this.btnSyncPageforge) {
+            this.btnSyncPageforge.addEventListener('click', function () {
+                self._onSyncClick('pageforge');
+            });
+        }
+        if (this.btnSyncHuman) {
+            this.btnSyncHuman.addEventListener('click', function () {
+                self._onSyncClick('human');
+            });
+        }
+        if (this.btnSyncWriter) {
+            this.btnSyncWriter.addEventListener('click', function () {
+                self._onSyncClick('writer');
             });
         }
 
@@ -297,13 +302,6 @@ class ReviewApp {
         if (this.btnCopyHuman) {
             this.btnCopyHuman.addEventListener('click', function () {
                 self._copyToSessionStorage('human');
-            });
-        }
-
-        // PageForge iframe click handler (for sync mode)
-        if (this.pageforgeIframe) {
-            this.pageforgeIframe.addEventListener('load', function () {
-                self._attachIframeClickHandler(self.pageforgeIframe);
             });
         }
     }
@@ -701,577 +699,107 @@ class ReviewApp {
     }
 
     // ------------------------------------------------------------------
-    // Sync mode — 6-Tier intelligent content matching
+    // Per-panel one-shot Sync — cross-panel content alignment
     // ------------------------------------------------------------------
 
     /**
-     * Attach click handler to iframe content document for sync mode.
-     * @param {HTMLIFrameElement} iframe
-     */
-    _attachIframeClickHandler(iframe) {
-        var self = this;
-        try {
-            var doc = iframe.contentDocument || iframe.contentWindow.document;
-            doc.addEventListener('click', function (e) {
-                if (!self.syncModeEnabled) return;
-
-                e.preventDefault();
-
-                // Find nearest ancestor with data-pf-block attribute
-                var target = e.target;
-                while (target && target !== doc.body) {
-                    var blockAttr = target.getAttribute ? target.getAttribute('data-pf-block') : null;
-                    if (blockAttr !== null) {
-                        self._syncToBlock(blockAttr, target);
-                        return;
-                    }
-                    target = target.parentElement;
-                }
-            });
-        } catch (e) {
-            console.warn('ReviewApp: Could not attach iframe click handler:', e.message);
-        }
-    }
-
-    /**
-     * Synchronise all panels to a specific block.
-     * @param {string} blockIndex - Block index string from data-pf-block
-     * @param {HTMLElement} clickedElement - The element clicked in the PageForge iframe
-     */
-    _syncToBlock(blockIndex, clickedElement) {
-        this.highlightedBlockIndex = blockIndex;
-
-        // Highlight in PageForge iframe
-        this._highlightInIframe(this.pageforgeIframe, blockIndex);
-
-        // Sync Writer Template panel (direct index match)
-        this._syncWriterPanel(blockIndex);
-
-        // Sync Human Reference panel using 6-tier matching
-        this._syncHumanPanelIntelligent(clickedElement, blockIndex);
-
-        // Show copy-to-snapshot buttons
-        this._showCopyToSnapshotButtons();
-    }
-
-    /**
-     * Highlight a block in an iframe by data-pf-block attribute.
-     * @param {HTMLIFrameElement} iframe
-     * @param {string} blockIndex
-     */
-    _highlightInIframe(iframe, blockIndex) {
-        try {
-            var doc = iframe.contentDocument || iframe.contentWindow.document;
-
-            // Remove previous highlights
-            var prev = doc.querySelectorAll('.pf-sync-highlight');
-            for (var i = 0; i < prev.length; i++) {
-                prev[i].classList.remove('pf-sync-highlight');
-            }
-
-            // Add highlight to matching block
-            var target = doc.querySelector('[data-pf-block="' + blockIndex + '"]');
-            if (target) {
-                target.classList.add('pf-sync-highlight');
-                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        } catch (e) {
-            // Ignore cross-origin errors
-        }
-    }
-
-    /**
-     * Scroll the Writer Template panel to the matching block.
-     * @param {string} blockIndex
-     */
-    _syncWriterPanel(blockIndex) {
-        if (!this.writerContent) return;
-
-        // Remove previous highlights
-        var prev = this.writerContent.querySelectorAll('.writer-block-highlight');
-        for (var i = 0; i < prev.length; i++) {
-            prev[i].classList.remove('writer-block-highlight');
-        }
-
-        var target = this.writerContent.querySelector('[data-block-index="' + blockIndex + '"]');
-        if (target) {
-            target.classList.add('writer-block-highlight');
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Auto-remove highlight after 3 seconds
-            setTimeout(function () {
-                target.classList.remove('writer-block-highlight');
-            }, 3000);
-        }
-    }
-
-    /**
-     * Intelligent 6-tier content matching for the Human Reference panel.
-     * Tries progressively less specific matching strategies.
+     * Handle a per-panel Sync button click. Extracts a textual anchor from
+     * the source panel's current viewport position, then scrolls the other
+     * two panels to the best-matching content using a tiered fallback:
+     * exact normalised match → fuzzy word match → proportional scroll.
      *
-     * @param {HTMLElement} clickedElement - Element clicked in PageForge iframe
-     * @param {string} blockIndex - Block index from data-pf-block
+     * The source panel does NOT move. No ongoing scroll coupling is created.
+     *
+     * @param {string} sourcePanel - 'pageforge', 'human', or 'writer'
      */
-    _syncHumanPanelIntelligent(clickedElement, blockIndex) {
-        if (!this.humanIframe || this.humanIframe.classList.contains('hidden')) return;
+    _onSyncClick(sourcePanel) {
+        var self = this;
 
-        var doc;
-        try {
-            doc = this.humanIframe.contentDocument || this.humanIframe.contentWindow.document;
-        } catch (e) {
+        // Visual feedback — pulse the clicked button
+        var btnMap = {
+            pageforge: this.btnSyncPageforge,
+            human: this.btnSyncHuman,
+            writer: this.btnSyncWriter
+        };
+        var clickedBtn = btnMap[sourcePanel];
+        if (clickedBtn) {
+            clickedBtn.classList.add('review-sync-btn-pulse');
+            setTimeout(function () { clickedBtn.classList.remove('review-sync-btn-pulse'); }, 400);
+        }
+
+        // Extract anchor from the source panel
+        var anchor = this._extractVisibleAnchor(sourcePanel);
+        if (!anchor) {
+            this.showToast('No content to sync from');
             return;
         }
 
-        // Ensure sync highlight style is injected
-        if (!doc.getElementById('pf-sync-style')) {
-            var style = doc.createElement('style');
-            style.id = 'pf-sync-style';
-            style.textContent = '.pf-sync-highlight { outline: 3px solid #f59e0b !important; '
-                + 'background-color: rgba(245, 158, 11, 0.15) !important; '
-                + 'transition: outline 0.3s, background-color 0.3s; }';
-            doc.head.appendChild(style);
-        }
+        var anchorText = anchor.anchorText;
+        var fraction = anchor.scrollFraction;
 
-        // Remove previous highlights
-        var prev = doc.querySelectorAll('.pf-sync-highlight');
-        for (var i = 0; i < prev.length; i++) {
-            prev[i].classList.remove('pf-sync-highlight');
-        }
+        // Determine target panels
+        var allPanels = ['pageforge', 'human', 'writer'];
+        var targets = allPanels.filter(function (p) { return p !== sourcePanel; });
 
-        var matched = false;
-
-        // --- Tier 1: Structural element matching ---
-        if (!matched && clickedElement) {
-            var structId = this._findStructuralId(clickedElement);
-            if (structId) {
-                var structEl = doc.getElementById(structId);
-                if (structEl) {
-                    this._highlightAndScroll(structEl);
-                    matched = true;
+        // Flash target panels briefly
+        var panelElMap = {
+            pageforge: document.getElementById('panel-pageforge'),
+            human: document.getElementById('panel-human'),
+            writer: document.getElementById('panel-writer')
+        };
+        for (var ti = 0; ti < targets.length; ti++) {
+            (function (panelId) {
+                var panelEl = panelElMap[panelId];
+                if (panelEl) {
+                    panelEl.classList.add('review-panel-sync-flash');
+                    setTimeout(function () { panelEl.classList.remove('review-panel-sync-flash'); }, 500);
                 }
-            }
+            })(targets[ti]);
         }
 
-        // --- Tier 2: Activity number anchoring ---
-        if (!matched && clickedElement) {
-            var activityNum = this._extractActivityNumber(clickedElement);
-            if (activityNum) {
-                var actEl = doc.querySelector('[number="' + activityNum + '"]');
-                if (actEl) {
-                    this._highlightAndScroll(actEl);
-                    matched = true;
-                }
-            }
+        // Scroll each target panel to the matching anchor
+        for (var i = 0; i < targets.length; i++) {
+            this._syncPanelToAnchor(targets[i], anchorText, fraction);
         }
 
-        // --- Tier 3: Heading text matching ---
-        if (!matched && clickedElement) {
-            var heading = this._extractHeadingText(clickedElement);
-            if (heading) {
-                var headingLower = heading.toLowerCase().trim();
-                var headings = doc.querySelectorAll('h1, h2, h3, h4, h5');
-                for (var hi = 0; hi < headings.length; hi++) {
-                    var hText = (headings[hi].textContent || '').toLowerCase().trim();
-                    if (hText === headingLower) {
-                        this._highlightAndScroll(headings[hi]);
-                        matched = true;
-                        break;
-                    }
-                }
-            }
+        this.showToast('Synced from ' + this._panelDisplayName(sourcePanel));
+    }
+
+    /**
+     * Scroll a single target panel to the content matching a textual anchor.
+     * Tiered fallback: fuzzy text match → proportional scroll.
+     *
+     * @param {string} panel - 'pageforge', 'human', or 'writer'
+     * @param {string} anchorText - Normalised text anchor
+     * @param {number} fallbackFraction - Proportional scroll fallback (0..1)
+     */
+    _syncPanelToAnchor(panel, anchorText, fallbackFraction) {
+        if (panel === 'writer') {
+            this._scrollWriterToAnchor(anchorText, fallbackFraction);
+            return;
         }
 
-        // --- Tier 4: Word group matching ---
-        if (!matched && clickedElement) {
-            var visibleText = (clickedElement.textContent || '').trim();
-            if (visibleText.length >= 10) {
-                var wordGroups = this._extractWordGroups(visibleText, 4, 10);
-                if (wordGroups.length > 0) {
-                    var bestMatch = this._findByWordGroups(doc, wordGroups);
-                    if (bestMatch) {
-                        this._highlightAndScroll(bestMatch);
-                        matched = true;
-                    }
-                }
-            }
-        }
+        // For pageforge / human panels — check current view mode
+        var rawView = (panel === 'pageforge') ? this.pageforgeRaw : this.humanRaw;
+        var iframe = (panel === 'pageforge') ? this.pageforgeIframe : this.humanIframe;
 
-        // --- Tier 5: Previous block anchoring ---
-        if (!matched && clickedElement) {
-            var pfDoc;
-            try {
-                pfDoc = this.pageforgeIframe.contentDocument || this.pageforgeIframe.contentWindow.document;
-            } catch (e) {
-                pfDoc = null;
-            }
-
-            if (pfDoc) {
-                var currentIdx = parseInt(blockIndex, 10);
-                if (!isNaN(currentIdx)) {
-                    for (var bi = currentIdx - 1; bi >= 0 && bi >= currentIdx - 5; bi--) {
-                        var prevBlock = pfDoc.querySelector('[data-pf-block="' + bi + '"]');
-                        if (!prevBlock) continue;
-
-                        // Try activity number
-                        var prevActivity = this._extractActivityNumber(prevBlock);
-                        if (prevActivity) {
-                            var prevActEl = doc.querySelector('[number="' + prevActivity + '"]');
-                            if (prevActEl) {
-                                // Found anchor, offset forward
-                                var nextSibling = prevActEl.parentElement;
-                                while (nextSibling && nextSibling.nextElementSibling) {
-                                    nextSibling = nextSibling.nextElementSibling;
-                                    break;
-                                }
-                                if (nextSibling) {
-                                    this._highlightAndScroll(nextSibling);
-                                    matched = true;
-                                }
-                                break;
-                            }
-                        }
-
-                        // Try heading text
-                        var prevHeading = this._extractHeadingText(prevBlock);
-                        if (prevHeading) {
-                            var prevHeadingLower = prevHeading.toLowerCase().trim();
-                            var allHeadings = doc.querySelectorAll('h1, h2, h3, h4, h5');
-                            for (var phi = 0; phi < allHeadings.length; phi++) {
-                                if ((allHeadings[phi].textContent || '').toLowerCase().trim() === prevHeadingLower) {
-                                    // Found anchor, scroll to next sibling
-                                    var anchorParent = allHeadings[phi].closest('.row') || allHeadings[phi].parentElement;
-                                    if (anchorParent && anchorParent.nextElementSibling) {
-                                        this._highlightAndScroll(anchorParent.nextElementSibling);
-                                    } else {
-                                        this._highlightAndScroll(allHeadings[phi]);
-                                    }
-                                    matched = true;
-                                    break;
-                                }
-                            }
-                            if (matched) break;
-                        }
-                    }
-                }
-            }
-        }
-
-        // --- Tier 6: Proportional position estimation ---
-        if (!matched) {
-            try {
-                var pfBody = this.pageforgeIframe.contentDocument.getElementById('body');
-                var humanBody = doc.getElementById('body');
-                if (pfBody && humanBody && clickedElement) {
-                    var pfScrollHeight = pfBody.scrollHeight || 1;
-                    var clickedOffset = clickedElement.offsetTop || 0;
-                    var proportion = clickedOffset / pfScrollHeight;
-                    var humanScrollTarget = proportion * (humanBody.scrollHeight || 0);
-                    humanBody.scrollTo({ top: humanScrollTarget, behavior: 'smooth' });
-                }
-            } catch (e) {
-                // Fallback failed
-            }
-
-            if (!matched) {
-                this.showToast('No matching content found in human reference');
-            }
+        if (this.rawHtmlMode && rawView && !rawView.classList.contains('hidden')) {
+            this._scrollRawViewToAnchor(rawView, anchorText, fallbackFraction);
+        } else if (iframe && !iframe.classList.contains('hidden')) {
+            this._scrollIframeToAnchor(iframe, anchorText, fallbackFraction);
         }
     }
 
     /**
-     * Highlight an element and scroll it into view with auto-remove.
-     * @param {HTMLElement} element
+     * Get a human-readable display name for a panel.
+     * @param {string} panel - 'pageforge', 'human', or 'writer'
+     * @returns {string}
      */
-    _highlightAndScroll(element) {
-        element.classList.add('pf-sync-highlight');
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        setTimeout(function () {
-            element.classList.remove('pf-sync-highlight');
-        }, 2000);
-    }
-
-    /**
-     * Find the structural ID of the nearest structural ancestor.
-     * @param {HTMLElement} el
-     * @returns {string|null}
-     */
-    _findStructuralId(el) {
-        var current = el;
-        while (current) {
-            var id = current.id;
-            if (id === 'header' || id === 'footer' || id === 'module-menu-content') {
-                return id;
-            }
-            current = current.parentElement;
-        }
-        return null;
-    }
-
-    /**
-     * Extract activity number from an element or its ancestors.
-     * @param {HTMLElement} el
-     * @returns {string|null}
-     */
-    _extractActivityNumber(el) {
-        var current = el;
-        while (current) {
-            // Check data-pf-activity attribute
-            var pfActivity = current.getAttribute ? current.getAttribute('data-pf-activity') : null;
-            if (pfActivity) return pfActivity;
-
-            // Check number attribute on .activity
-            var numAttr = current.getAttribute ? current.getAttribute('number') : null;
-            if (numAttr) return numAttr;
-
-            // Check for activity number in HTML comments
-            if (current.innerHTML) {
-                var commentMatch = current.innerHTML.match(/Activity:\s*(\w+)/);
-                if (commentMatch) return commentMatch[1];
-            }
-
-            current = current.parentElement;
-        }
-        return null;
-    }
-
-    /**
-     * Extract heading text if element is or contains a heading.
-     * @param {HTMLElement} el
-     * @returns {string|null}
-     */
-    _extractHeadingText(el) {
-        // Check if element itself is a heading
-        var tag = (el.tagName || '').toLowerCase();
-        if (/^h[2-5]$/.test(tag)) {
-            return el.textContent;
-        }
-        // Check child headings
-        var heading = el.querySelector('h2, h3, h4, h5');
-        if (heading) {
-            return heading.textContent;
-        }
-        return null;
-    }
-
-    /**
-     * Extract word groups (n-grams) from text for matching.
-     * @param {string} text
-     * @param {number} groupSize - Words per group
-     * @param {number} maxGroups - Maximum groups to return
-     * @returns {Array<string>}
-     */
-    _extractWordGroups(text, groupSize, maxGroups) {
-        // Filter out stop words
-        var stopWords = ['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
-            'of', 'is', 'it', 'by', 'as', 'be', 'if', 'so', 'no', 'up', 'do'];
-
-        var words = text.toLowerCase().split(/\s+/).filter(function (w) {
-            return w.length > 2 && stopWords.indexOf(w) === -1;
-        });
-
-        if (words.length < groupSize) {
-            return words.length > 0 ? [words.join(' ')] : [];
-        }
-
-        var groups = [];
-        var step = Math.max(1, Math.floor((words.length - groupSize) / (maxGroups - 1)));
-
-        for (var i = 0; i <= words.length - groupSize && groups.length < maxGroups; i += step) {
-            groups.push(words.slice(i, i + groupSize).join(' '));
-        }
-
-        return groups;
-    }
-
-    /**
-     * Find the best matching element in a document using word groups.
-     * @param {Document} doc
-     * @param {Array<string>} wordGroups
-     * @returns {HTMLElement|null}
-     */
-    _findByWordGroups(doc, wordGroups) {
-        var elements = doc.querySelectorAll('p, h2, h3, h4, h5, li, td, th, div');
-        var bestMatch = null;
-        var bestScore = 0;
-
-        for (var i = 0; i < elements.length; i++) {
-            var el = elements[i];
-            var elText = (el.textContent || '').toLowerCase();
-            if (elText.length < 5) continue;
-
-            var score = 0;
-            for (var g = 0; g < wordGroups.length; g++) {
-                if (elText.indexOf(wordGroups[g]) !== -1) {
-                    score++;
-                }
-            }
-
-            if (score > bestScore && score >= 2) {
-                bestScore = score;
-                bestMatch = el;
-            }
-        }
-
-        return bestMatch;
-    }
-
-    // ------------------------------------------------------------------
-    // Proportional scroll sync
-    // ------------------------------------------------------------------
-
-    /**
-     * Bind scroll event handlers to all three panel containers.
-     * When Sync mode is ON, scrolling any panel proportionally scrolls the others.
-     * Uses a lock flag to prevent feedback loops.
-     */
-    _bindScrollSync() {
-        var self = this;
-
-        // Debounce helper — returns a function that only fires after `delay` ms of inactivity
-        function debounce(fn, delay) {
-            var timer = null;
-            return function () {
-                var args = arguments;
-                var ctx = this;
-                if (timer) clearTimeout(timer);
-                timer = setTimeout(function () { fn.apply(ctx, args); }, delay);
-            };
-        }
-
-        /**
-         * Get the scrollable element for a given panel, depending on current view mode.
-         * For rendered view: the iframe's contentDocument scrolling element.
-         * For raw HTML view: the .review-raw-view container.
-         * For writer panel: the .review-writer-body container.
-         */
-        function getScrollable(panel) {
-            if (panel === 'pageforge') {
-                if (self.rawHtmlMode && self.pageforgeRaw && !self.pageforgeRaw.classList.contains('hidden')) {
-                    return self.pageforgeRaw;
-                }
-                try {
-                    if (self.pageforgeIframe && !self.pageforgeIframe.classList.contains('hidden')) {
-                        var doc = self.pageforgeIframe.contentDocument || self.pageforgeIframe.contentWindow.document;
-                        return doc.scrollingElement || doc.documentElement;
-                    }
-                } catch (e) { /* cross-origin */ }
-                return null;
-            } else if (panel === 'human') {
-                if (self.rawHtmlMode && self.humanRaw && !self.humanRaw.classList.contains('hidden')) {
-                    return self.humanRaw;
-                }
-                try {
-                    if (self.humanIframe && !self.humanIframe.classList.contains('hidden')) {
-                        var doc = self.humanIframe.contentDocument || self.humanIframe.contentWindow.document;
-                        return doc.scrollingElement || doc.documentElement;
-                    }
-                } catch (e) { /* cross-origin */ }
-                return null;
-            } else if (panel === 'writer') {
-                return self.writerPanelBody || null;
-            }
-            return null;
-        }
-
-        /**
-         * Get scroll fraction (0..1) for a scrollable element.
-         */
-        function getScrollFraction(el) {
-            if (!el) return 0;
-            var maxScroll = el.scrollHeight - el.clientHeight;
-            if (maxScroll <= 0) return 0;
-            return el.scrollTop / maxScroll;
-        }
-
-        /**
-         * Set scroll fraction for a scrollable element.
-         */
-        function setScrollFraction(el, fraction) {
-            if (!el) return;
-            var maxScroll = el.scrollHeight - el.clientHeight;
-            if (maxScroll <= 0) return;
-            el.scrollTop = fraction * maxScroll;
-        }
-
-        /**
-         * Handle scroll from a source panel — sync other two panels.
-         */
-        function onPanelScroll(sourcePanel) {
-            if (!self.syncModeEnabled) return;
-            if (self._scrollSyncLock) return;
-
-            self._scrollSyncLock = true;
-
-            var sourceEl = getScrollable(sourcePanel);
-            if (!sourceEl) { self._scrollSyncLock = false; return; }
-
-            var fraction = getScrollFraction(sourceEl);
-            var panels = ['pageforge', 'human', 'writer'];
-
-            for (var i = 0; i < panels.length; i++) {
-                if (panels[i] === sourcePanel) continue;
-                var targetEl = getScrollable(panels[i]);
-                if (targetEl) {
-                    setScrollFraction(targetEl, fraction);
-                }
-            }
-
-            // Release lock after a short delay to allow programmatic scrolls to settle
-            setTimeout(function () { self._scrollSyncLock = false; }, 50);
-        }
-
-        var debouncedPfScroll = debounce(function () { onPanelScroll('pageforge'); }, 16);
-        var debouncedHumanScroll = debounce(function () { onPanelScroll('human'); }, 16);
-        var debouncedWriterScroll = debounce(function () { onPanelScroll('writer'); }, 16);
-
-        // Store debounced handlers so we can re-attach after iframe reloads
-        this._debouncedPfScroll = debouncedPfScroll;
-        this._debouncedHumanScroll = debouncedHumanScroll;
-        this._debouncedWriterScroll = debouncedWriterScroll;
-
-        // Writer panel — a regular DOM element, bind once
-        if (this.writerPanelBody) {
-            this.writerPanelBody.addEventListener('scroll', debouncedWriterScroll);
-        }
-
-        // For raw HTML containers — bind once
-        if (this.pageforgeRaw) {
-            this.pageforgeRaw.addEventListener('scroll', debouncedPfScroll);
-        }
-        if (this.humanRaw) {
-            this.humanRaw.addEventListener('scroll', debouncedHumanScroll);
-        }
-
-        // For iframes, we re-attach on each iframe load (since contentDocument changes)
-        if (this.pageforgeIframe) {
-            this.pageforgeIframe.addEventListener('load', function () {
-                self._attachIframeScrollHandler(self.pageforgeIframe, debouncedPfScroll);
-            });
-        }
-        if (this.humanIframe) {
-            this.humanIframe.addEventListener('load', function () {
-                self._attachIframeScrollHandler(self.humanIframe, debouncedHumanScroll);
-            });
-        }
-    }
-
-    /**
-     * Attach scroll handler to an iframe's content document.
-     * @param {HTMLIFrameElement} iframe
-     * @param {Function} handler
-     */
-    _attachIframeScrollHandler(iframe, handler) {
-        try {
-            var doc = iframe.contentDocument || iframe.contentWindow.document;
-            var scrollEl = doc.scrollingElement || doc.documentElement;
-            if (scrollEl) {
-                // Use the document-level scroll event since scrollingElement may not fire events directly
-                (iframe.contentWindow || iframe.contentDocument.defaultView).addEventListener('scroll', handler);
-            }
-        } catch (e) {
-            // Cross-origin — cannot attach
-        }
+    _panelDisplayName(panel) {
+        if (panel === 'pageforge') return 'PageForge Output';
+        if (panel === 'human') return 'Human Reference';
+        if (panel === 'writer') return 'Writer Template';
+        return panel;
     }
 
     // ------------------------------------------------------------------
@@ -1644,11 +1172,6 @@ class ReviewApp {
         var anchorText = anchor.anchorText;
         var fraction = anchor.scrollFraction;
 
-        // Temporarily disable sync to avoid feedback loops during restoration
-        var wasSyncEnabled = this.syncModeEnabled;
-        this.syncModeEnabled = false;
-        this._scrollSyncLock = true;
-
         if (this.rawHtmlMode) {
             // Switched TO raw HTML: scroll raw views + writer to anchor
             this._scrollRawViewToAnchor(this.pageforgeRaw, anchorText, fraction);
@@ -1691,13 +1214,6 @@ class ReviewApp {
 
         // Scroll writer panel to anchor
         this._scrollWriterToAnchor(anchorText, fraction);
-
-        // Restore sync mode after a delay
-        var self = this;
-        setTimeout(function () {
-            self.syncModeEnabled = wasSyncEnabled;
-            self._scrollSyncLock = false;
-        }, 600);
     }
 
     /**
@@ -1721,21 +1237,6 @@ class ReviewApp {
                 if (this.humanRawCode) {
                     this.humanRawCode.textContent = htmlContent;
                 }
-            }
-        }
-    }
-
-    // ------------------------------------------------------------------
-    // Sync mode indicator
-    // ------------------------------------------------------------------
-
-    _updateSyncModeIndicator() {
-        var pfPanel = document.getElementById('panel-pageforge');
-        if (pfPanel) {
-            if (this.syncModeEnabled) {
-                pfPanel.classList.add('review-sync-active');
-            } else {
-                pfPanel.classList.remove('review-sync-active');
             }
         }
     }
