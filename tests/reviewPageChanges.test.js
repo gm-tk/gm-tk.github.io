@@ -1,9 +1,9 @@
 /**
- * Tests for Phase 11 review page changes:
- * - Toolbar relocation (buttons moved from header to toolbar row)
- * - "Calibration Tool" renamed to "Conversion Error Log"
- * - Scroll sync implementation
- * - Raw HTML scroll-position preservation (textual-anchor matching)
+ * Tests for review page changes:
+ * Phase 11: Toolbar relocation, "Calibration Tool" → "Conversion Error Log" rename
+ * Phase 12: Per-panel Sync buttons replace global toggle, one-shot align trigger,
+ *           cross-panel textual-anchor matching, visual feedback, removal of
+ *           continuous scroll-coupling
  */
 
 'use strict';
@@ -21,7 +21,7 @@ var calibrateAppJs = _fs.readFileSync(_path.resolve(_root, 'js', 'calibrate-app.
 var reviewCss = _fs.readFileSync(_path.resolve(_root, 'css', 'review-styles.css'), 'utf8');
 
 // ====================================================================
-// 1. Toolbar relocation tests
+// 1. Toolbar relocation tests (Phase 11)
 // ====================================================================
 
 describe('Review Page — Toolbar relocation', function () {
@@ -41,12 +41,10 @@ describe('Review Page — Toolbar relocation', function () {
         assert(toolbarStart < layoutStart, 'toolbar should appear before three-panel layout');
     });
 
-    it('should contain all three controls inside toolbar', function () {
+    it('should contain Raw HTML and Conversion Error Log buttons in toolbar', function () {
         var toolbarStart = reviewHtml.indexOf('class="review-toolbar"');
         var layoutStart = reviewHtml.indexOf('class="review-layout"');
         var toolbarContent = reviewHtml.substring(toolbarStart, layoutStart);
-        assert(toolbarContent.indexOf('id="sync-mode-toggle"') !== -1,
-            'Sync mode toggle should be inside toolbar');
         assert(toolbarContent.indexOf('id="btn-raw-html-toggle"') !== -1,
             'Raw HTML button should be inside toolbar');
         assert(toolbarContent.indexOf('id="btn-calibration-tool"') !== -1,
@@ -57,8 +55,6 @@ describe('Review Page — Toolbar relocation', function () {
         var headerStart = reviewHtml.indexOf('<header');
         var headerEnd = reviewHtml.indexOf('</header>');
         var headerContent = reviewHtml.substring(headerStart, headerEnd);
-        assert(headerContent.indexOf('sync-mode-toggle') === -1,
-            'header should NOT contain sync toggle');
         assert(headerContent.indexOf('btn-raw-html-toggle') === -1,
             'header should NOT contain raw HTML button');
         assert(headerContent.indexOf('btn-calibration-tool') === -1,
@@ -142,116 +138,358 @@ describe('Rename — Conversion Error Log label consistency', function () {
 });
 
 // ====================================================================
-// 3. Scroll sync implementation tests
+// 3. Per-panel Sync buttons — DOM presence and positioning
 // ====================================================================
 
-describe('Scroll sync — Implementation structure', function () {
+describe('Per-panel Sync buttons — DOM structure', function () {
 
-    it('should have _bindScrollSync method', function () {
-        assert(reviewAppJs.indexOf('_bindScrollSync') !== -1,
-            'review-app.js should contain _bindScrollSync method');
+    it('should have a Sync button in the PageForge panel header', function () {
+        var pfPanelStart = reviewHtml.indexOf('id="panel-pageforge"');
+        var pfPanelBody = reviewHtml.indexOf('id="pageforge-panel-body"');
+        var pfHeader = reviewHtml.substring(pfPanelStart, pfPanelBody);
+        assert(pfHeader.indexOf('id="btn-sync-pageforge"') !== -1,
+            'PageForge panel header should contain btn-sync-pageforge');
     });
 
-    it('should call _bindScrollSync during construction', function () {
-        var constructorStart = reviewAppJs.indexOf('constructor()');
-        var renderCall = reviewAppJs.indexOf('this._render()');
-        var bindScrollCall = reviewAppJs.indexOf('this._bindScrollSync()');
-        assert(bindScrollCall !== -1, '_bindScrollSync should be called');
-        assert(constructorStart < bindScrollCall && bindScrollCall < renderCall,
-            '_bindScrollSync should be called before _render');
+    it('should have a Sync button in the Human Reference panel header', function () {
+        var humanPanelStart = reviewHtml.indexOf('id="panel-human"');
+        var humanPanelBody = reviewHtml.indexOf('id="human-panel-body"');
+        var humanHeader = reviewHtml.substring(humanPanelStart, humanPanelBody);
+        assert(humanHeader.indexOf('id="btn-sync-human"') !== -1,
+            'Human Reference panel header should contain btn-sync-human');
     });
 
-    it('should have _scrollSyncLock for feedback loop prevention', function () {
-        assert(reviewAppJs.indexOf('_scrollSyncLock') !== -1,
-            'review-app.js should use _scrollSyncLock');
+    it('should have a Sync button in the Writer Template panel header', function () {
+        var writerPanelStart = reviewHtml.indexOf('id="panel-writer"');
+        var writerPanelBody = reviewHtml.indexOf('id="writer-panel-body"');
+        var writerHeader = reviewHtml.substring(writerPanelStart, writerPanelBody);
+        assert(writerHeader.indexOf('id="btn-sync-writer"') !== -1,
+            'Writer Template panel header should contain btn-sync-writer');
     });
 
-    it('should set lock = true before syncing and release after delay', function () {
-        var lockSet = reviewAppJs.indexOf('self._scrollSyncLock = true;');
-        var lockRelease = reviewAppJs.indexOf('self._scrollSyncLock = false;');
-        assert(lockSet !== -1, 'should set lock = true during sync');
-        assert(lockRelease !== -1, 'should release lock = false after delay');
+    it('should use consistent review-sync-btn class on all three buttons', function () {
+        var pfBtn = reviewHtml.indexOf('id="btn-sync-pageforge"');
+        var humanBtn = reviewHtml.indexOf('id="btn-sync-human"');
+        var writerBtn = reviewHtml.indexOf('id="btn-sync-writer"');
+
+        // Check class precedes each ID
+        var pfClass = reviewHtml.lastIndexOf('review-sync-btn', pfBtn);
+        var humanClass = reviewHtml.lastIndexOf('review-sync-btn', humanBtn);
+        var writerClass = reviewHtml.lastIndexOf('review-sync-btn', writerBtn);
+
+        assert(pfClass !== -1 && pfClass > pfBtn - 200, 'PF sync btn should have review-sync-btn class');
+        assert(humanClass !== -1 && humanClass > humanBtn - 200, 'Human sync btn should have review-sync-btn class');
+        assert(writerClass !== -1 && writerClass > writerBtn - 200, 'Writer sync btn should have review-sync-btn class');
     });
 
-    it('should early-return when syncModeEnabled is false', function () {
-        assert(reviewAppJs.indexOf('if (!self.syncModeEnabled) return;') !== -1,
-            'should skip scroll sync when disabled');
+    it('should have all three sync buttons use the same arrow icon', function () {
+        // Check that all three use the &#8644; entity (⇄ left-right arrow)
+        var count = (reviewHtml.match(/&#8644;\s*Sync/g) || []).length;
+        assertEqual(count, 3, 'should have 3 sync buttons with &#8644; Sync text');
     });
 
-    it('should early-return when lock is active', function () {
-        assert(reviewAppJs.indexOf('if (self._scrollSyncLock) return;') !== -1,
-            'should skip when lock is active (prevents infinite loop)');
+    it('should have CSS styles for .review-sync-btn', function () {
+        assert(reviewCss.indexOf('.review-sync-btn') !== -1,
+            'review-styles.css should define .review-sync-btn styles');
     });
 
-    it('should have _attachIframeScrollHandler method', function () {
-        assert(reviewAppJs.indexOf('_attachIframeScrollHandler') !== -1,
-            'should have _attachIframeScrollHandler');
+    it('should have CSS for .review-sync-btn-pulse visual feedback', function () {
+        assert(reviewCss.indexOf('.review-sync-btn-pulse') !== -1,
+            'review-styles.css should define .review-sync-btn-pulse for click feedback');
     });
 
-    it('should attach scroll handlers to writer panel body', function () {
-        assert(reviewAppJs.indexOf("writerPanelBody.addEventListener('scroll'") !== -1,
-            'should bind scroll to writer panel');
-    });
-
-    it('should attach scroll handlers to raw view containers', function () {
-        assert(reviewAppJs.indexOf("pageforgeRaw.addEventListener('scroll'") !== -1,
-            'should bind scroll to pageforge raw');
-        assert(reviewAppJs.indexOf("humanRaw.addEventListener('scroll'") !== -1,
-            'should bind scroll to human raw');
-    });
-
-    it('should use debounce for scroll event throttling', function () {
-        assert(reviewAppJs.indexOf('function debounce(') !== -1,
-            'should have a debounce helper');
-    });
-
-    it('should handle both rendered and raw HTML mode in getScrollable', function () {
-        assert(reviewAppJs.indexOf('function getScrollable(panel)') !== -1,
-            'should have getScrollable inner function');
-        // Should reference rawHtmlMode check
-        var getScrollableStart = reviewAppJs.indexOf('function getScrollable(panel)');
-        var getScrollableEnd = reviewAppJs.indexOf('return null;\n        }', getScrollableStart + 100);
-        var fnBody = reviewAppJs.substring(getScrollableStart, getScrollableEnd);
-        assert(fnBody.indexOf('rawHtmlMode') !== -1,
-            'getScrollable should check rawHtmlMode');
+    it('should have CSS for .review-panel-sync-flash target flash', function () {
+        assert(reviewCss.indexOf('.review-panel-sync-flash') !== -1,
+            'review-styles.css should define .review-panel-sync-flash for target feedback');
     });
 });
 
 // ====================================================================
-// 4. Raw HTML scroll-position preservation tests
+// 4. Global Sync toggle fully removed
+// ====================================================================
+
+describe('Global Sync toggle — Complete removal', function () {
+
+    it('should NOT have sync-mode-toggle checkbox in review.html', function () {
+        assert(reviewHtml.indexOf('id="sync-mode-toggle"') === -1,
+            'review.html should not contain sync-mode-toggle checkbox');
+    });
+
+    it('should NOT have .review-sync-toggle label in review.html', function () {
+        assert(reviewHtml.indexOf('review-sync-toggle') === -1,
+            'review.html should not contain review-sync-toggle label');
+    });
+
+    it('should NOT have syncModeEnabled property in review-app.js', function () {
+        assert(reviewAppJs.indexOf('syncModeEnabled') === -1,
+            'review-app.js should not reference syncModeEnabled');
+    });
+
+    it('should NOT have _scrollSyncLock property in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_scrollSyncLock') === -1,
+            'review-app.js should not reference _scrollSyncLock');
+    });
+
+    it('should NOT have _bindScrollSync method in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_bindScrollSync') === -1,
+            'review-app.js should not contain _bindScrollSync');
+    });
+
+    it('should NOT have _attachIframeScrollHandler in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_attachIframeScrollHandler') === -1,
+            'review-app.js should not contain _attachIframeScrollHandler');
+    });
+
+    it('should NOT have _attachIframeClickHandler in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_attachIframeClickHandler') === -1,
+            'review-app.js should not contain _attachIframeClickHandler');
+    });
+
+    it('should NOT have _updateSyncModeIndicator in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_updateSyncModeIndicator') === -1,
+            'review-app.js should not contain _updateSyncModeIndicator');
+    });
+
+    it('should NOT have debounced scroll handler references in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_debouncedPfScroll') === -1,
+            'review-app.js should not reference _debouncedPfScroll');
+        assert(reviewAppJs.indexOf('_debouncedHumanScroll') === -1,
+            'review-app.js should not reference _debouncedHumanScroll');
+        assert(reviewAppJs.indexOf('_debouncedWriterScroll') === -1,
+            'review-app.js should not reference _debouncedWriterScroll');
+    });
+
+    it('should NOT have .review-sync-toggle CSS styles', function () {
+        assert(reviewCss.indexOf('.review-sync-toggle') === -1,
+            'review-styles.css should not contain .review-sync-toggle');
+    });
+
+    it('should NOT have .review-sync-slider CSS styles', function () {
+        assert(reviewCss.indexOf('.review-sync-slider') === -1,
+            'review-styles.css should not contain .review-sync-slider');
+    });
+
+    it('should NOT have .review-sync-active CSS class', function () {
+        assert(reviewCss.indexOf('.review-sync-active') === -1,
+            'review-styles.css should not contain .review-sync-active');
+    });
+
+    it('should NOT have 6-tier sync methods in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_syncToBlock') === -1,
+            'should not have _syncToBlock');
+        assert(reviewAppJs.indexOf('_highlightInIframe') === -1,
+            'should not have _highlightInIframe');
+        assert(reviewAppJs.indexOf('_syncHumanPanelIntelligent') === -1,
+            'should not have _syncHumanPanelIntelligent');
+        assert(reviewAppJs.indexOf('_highlightAndScroll') === -1,
+            'should not have _highlightAndScroll');
+        assert(reviewAppJs.indexOf('_findStructuralId') === -1,
+            'should not have _findStructuralId');
+        assert(reviewAppJs.indexOf('_extractActivityNumber') === -1,
+            'should not have _extractActivityNumber');
+        assert(reviewAppJs.indexOf('_extractHeadingText') === -1,
+            'should not have _extractHeadingText');
+        assert(reviewAppJs.indexOf('_extractWordGroups') === -1,
+            'should not have _extractWordGroups');
+        assert(reviewAppJs.indexOf('_findByWordGroups') === -1,
+            'should not have _findByWordGroups');
+    });
+});
+
+// ====================================================================
+// 5. One-shot Sync click implementation
+// ====================================================================
+
+describe('Per-panel Sync — One-shot align trigger implementation', function () {
+
+    it('should have _onSyncClick method in review-app.js', function () {
+        assert(reviewAppJs.indexOf('_onSyncClick(') !== -1,
+            'review-app.js should contain _onSyncClick method');
+    });
+
+    it('should accept sourcePanel parameter in _onSyncClick', function () {
+        assert(reviewAppJs.indexOf("_onSyncClick(sourcePanel)") !== -1
+            || reviewAppJs.indexOf("_onSyncClick('pageforge')") !== -1,
+            '_onSyncClick should work with panel identifiers');
+    });
+
+    it('should bind _onSyncClick to all three Sync buttons in _bindEvents', function () {
+        var bindEventsStart = reviewAppJs.indexOf('_bindEvents()');
+        var bindEventsEnd = reviewAppJs.indexOf('_openConversionErrorLog', bindEventsStart);
+        var bindSection = reviewAppJs.substring(bindEventsStart, bindEventsEnd);
+        assert(bindSection.indexOf("_onSyncClick('pageforge')") !== -1,
+            'should bind pageforge sync button');
+        assert(bindSection.indexOf("_onSyncClick('human')") !== -1,
+            'should bind human sync button');
+        assert(bindSection.indexOf("_onSyncClick('writer')") !== -1,
+            'should bind writer sync button');
+    });
+
+    it('should call _extractVisibleAnchor with source panel in _onSyncClick', function () {
+        var methodStart = reviewAppJs.indexOf('_onSyncClick(sourcePanel)');
+        var methodEnd = reviewAppJs.indexOf('_syncPanelToAnchor', methodStart);
+        var methodBody = reviewAppJs.substring(methodStart, methodEnd);
+        assert(methodBody.indexOf('_extractVisibleAnchor(sourcePanel)') !== -1,
+            '_onSyncClick should extract anchor from the source panel');
+    });
+
+    it('should NOT scroll the source panel (only targets)', function () {
+        var methodStart = reviewAppJs.indexOf('_onSyncClick(sourcePanel)');
+        var methodEnd = reviewAppJs.indexOf('\n    }', methodStart + 100);
+        methodEnd = reviewAppJs.indexOf('\n    }', methodEnd + 1);
+        var methodBody = reviewAppJs.substring(methodStart, methodEnd);
+        assert(methodBody.indexOf("filter(function (p) { return p !== sourcePanel; })") !== -1,
+            'should filter out source panel from targets');
+    });
+
+    it('should have _syncPanelToAnchor method for scrolling targets', function () {
+        assert(reviewAppJs.indexOf('_syncPanelToAnchor(') !== -1,
+            'should have _syncPanelToAnchor method');
+    });
+
+    it('should handle both rendered and raw HTML views in _syncPanelToAnchor', function () {
+        var methodStart = reviewAppJs.indexOf('_syncPanelToAnchor(panel');
+        var methodEnd = reviewAppJs.indexOf('\n    }', methodStart + 50);
+        var methodBody = reviewAppJs.substring(methodStart, methodEnd);
+        assert(methodBody.indexOf('rawHtmlMode') !== -1,
+            '_syncPanelToAnchor should check rawHtmlMode');
+        assert(methodBody.indexOf('_scrollRawViewToAnchor') !== -1,
+            'should use _scrollRawViewToAnchor for raw views');
+        assert(methodBody.indexOf('_scrollIframeToAnchor') !== -1,
+            'should use _scrollIframeToAnchor for rendered views');
+        assert(methodBody.indexOf('_scrollWriterToAnchor') !== -1,
+            'should use _scrollWriterToAnchor for writer panel');
+    });
+});
+
+// ====================================================================
+// 6. Content-matching logic uses textual-anchor helpers
+// ====================================================================
+
+describe('Per-panel Sync — Content matching uses anchor helpers', function () {
+
+    it('should still have normaliseTextForMatch static method', function () {
+        assert(reviewAppJs.indexOf('static normaliseTextForMatch(') !== -1,
+            'should retain normaliseTextForMatch helper');
+    });
+
+    it('should still have _extractVisibleAnchor method', function () {
+        assert(reviewAppJs.indexOf('_extractVisibleAnchor(') !== -1,
+            'should retain _extractVisibleAnchor');
+    });
+
+    it('should still have _scrollRawViewToAnchor method', function () {
+        assert(reviewAppJs.indexOf('_scrollRawViewToAnchor(') !== -1,
+            'should retain _scrollRawViewToAnchor');
+    });
+
+    it('should still have _scrollIframeToAnchor method', function () {
+        assert(reviewAppJs.indexOf('_scrollIframeToAnchor(') !== -1,
+            'should retain _scrollIframeToAnchor');
+    });
+
+    it('should still have _scrollWriterToAnchor method', function () {
+        assert(reviewAppJs.indexOf('_scrollWriterToAnchor(') !== -1,
+            'should retain _scrollWriterToAnchor');
+    });
+
+    it('should still have _extractAnchorFromRawView method', function () {
+        assert(reviewAppJs.indexOf('_extractAnchorFromRawView(') !== -1,
+            'should retain _extractAnchorFromRawView');
+    });
+
+    it('should use fallbackFraction for proportional scroll fallback', function () {
+        assert(reviewAppJs.indexOf('fallbackFraction') !== -1,
+            'should use fallbackFraction as proportional fallback parameter');
+    });
+
+    it('should still have _restoreScrollFromAnchor for Raw HTML toggle', function () {
+        assert(reviewAppJs.indexOf('_restoreScrollFromAnchor(') !== -1,
+            'should retain _restoreScrollFromAnchor for Raw HTML view toggle');
+    });
+});
+
+// ====================================================================
+// 7. Visual feedback
+// ====================================================================
+
+describe('Per-panel Sync — Visual feedback', function () {
+
+    it('should add pulse class to clicked sync button', function () {
+        var methodStart = reviewAppJs.indexOf('_onSyncClick(sourcePanel)');
+        var methodEnd = reviewAppJs.indexOf('_extractVisibleAnchor(sourcePanel)', methodStart);
+        var methodBody = reviewAppJs.substring(methodStart, methodEnd);
+        assert(methodBody.indexOf('review-sync-btn-pulse') !== -1,
+            'should add review-sync-btn-pulse class on click');
+    });
+
+    it('should remove pulse class after timeout', function () {
+        var methodStart = reviewAppJs.indexOf('_onSyncClick(sourcePanel)');
+        var methodEnd = reviewAppJs.indexOf('_extractVisibleAnchor(sourcePanel)', methodStart);
+        var methodBody = reviewAppJs.substring(methodStart, methodEnd);
+        assert(methodBody.indexOf("classList.remove('review-sync-btn-pulse')") !== -1,
+            'should remove pulse class after delay');
+    });
+
+    it('should flash target panels on sync', function () {
+        var methodStart = reviewAppJs.indexOf('_onSyncClick(sourcePanel)');
+        var nextMethod = reviewAppJs.indexOf('\n    _syncPanelToAnchor', methodStart);
+        var methodBody = reviewAppJs.substring(methodStart, nextMethod);
+        assert(methodBody.indexOf('review-panel-sync-flash') !== -1,
+            'should add review-panel-sync-flash to target panels');
+    });
+
+    it('should show toast notification after sync', function () {
+        var methodStart = reviewAppJs.indexOf('_onSyncClick(sourcePanel)');
+        var nextMethod = reviewAppJs.indexOf('\n    /**', methodStart + 50);
+        var methodBody = reviewAppJs.substring(methodStart, nextMethod);
+        assert(methodBody.indexOf('showToast') !== -1,
+            'should call showToast after sync completes');
+    });
+});
+
+// ====================================================================
+// 8. No continuous scroll-coupling after sync
+// ====================================================================
+
+describe('Per-panel Sync — No continuous scroll-coupling', function () {
+
+    it('should NOT have scroll event listeners bound to panels', function () {
+        assert(reviewAppJs.indexOf("addEventListener('scroll'") === -1,
+            'should not bind scroll event listeners to any panel');
+    });
+
+    it('should NOT have onPanelScroll function', function () {
+        assert(reviewAppJs.indexOf('onPanelScroll') === -1,
+            'should not have onPanelScroll continuous handler');
+    });
+
+    it('should NOT have getScrollable function', function () {
+        assert(reviewAppJs.indexOf('function getScrollable(') === -1,
+            'should not have getScrollable inner function');
+    });
+
+    it('should NOT have getScrollFraction function', function () {
+        assert(reviewAppJs.indexOf('function getScrollFraction(') === -1,
+            'should not have getScrollFraction');
+    });
+
+    it('should NOT have setScrollFraction function', function () {
+        assert(reviewAppJs.indexOf('function setScrollFraction(') === -1,
+            'should not have setScrollFraction');
+    });
+
+    it('should NOT have debounce function', function () {
+        assert(reviewAppJs.indexOf('function debounce(') === -1,
+            'should not have debounce helper (no longer needed)');
+    });
+});
+
+// ====================================================================
+// 9. Raw HTML scroll-position preservation (retained from Phase 11)
 // ====================================================================
 
 describe('Raw HTML toggle — Scroll-position preservation', function () {
-
-    it('should have normaliseTextForMatch static method', function () {
-        assert(reviewAppJs.indexOf('static normaliseTextForMatch(') !== -1,
-            'should have normaliseTextForMatch');
-    });
-
-    it('should have _extractVisibleAnchor method', function () {
-        assert(reviewAppJs.indexOf('_extractVisibleAnchor(') !== -1,
-            'should have _extractVisibleAnchor');
-    });
-
-    it('should have _scrollRawViewToAnchor method', function () {
-        assert(reviewAppJs.indexOf('_scrollRawViewToAnchor(') !== -1,
-            'should have _scrollRawViewToAnchor');
-    });
-
-    it('should have _scrollIframeToAnchor method', function () {
-        assert(reviewAppJs.indexOf('_scrollIframeToAnchor(') !== -1,
-            'should have _scrollIframeToAnchor');
-    });
-
-    it('should have _scrollWriterToAnchor method', function () {
-        assert(reviewAppJs.indexOf('_scrollWriterToAnchor(') !== -1,
-            'should have _scrollWriterToAnchor');
-    });
-
-    it('should have _restoreScrollFromAnchor method', function () {
-        assert(reviewAppJs.indexOf('_restoreScrollFromAnchor(') !== -1,
-            'should have _restoreScrollFromAnchor');
-    });
 
     it('should extract anchor BEFORE toggling panel content', function () {
         var toggleStart = reviewAppJs.indexOf('_toggleRawHtmlMode() {');
@@ -272,21 +510,10 @@ describe('Raw HTML toggle — Scroll-position preservation', function () {
         assert(reviewAppJs.indexOf('fallbackFraction') !== -1,
             'should accept fallbackFraction parameter');
     });
-
-    it('should disable sync during scroll restoration to avoid loops', function () {
-        var restoreStart = reviewAppJs.indexOf('_restoreScrollFromAnchor(anchor)');
-        var disableSync = reviewAppJs.indexOf('this.syncModeEnabled = false', restoreStart);
-        assert(disableSync !== -1, 'should disable sync during restoration');
-    });
-
-    it('should restore sync state after scroll restoration completes', function () {
-        assert(reviewAppJs.indexOf('self.syncModeEnabled = wasSyncEnabled') !== -1,
-            'should restore original sync state');
-    });
 });
 
 // ====================================================================
-// 5. normaliseTextForMatch unit tests
+// 10. normaliseTextForMatch unit tests (retained from Phase 11)
 // ====================================================================
 
 describe('normaliseTextForMatch — Text normalisation helper', function () {

@@ -32,6 +32,7 @@
 21. [Visual Comparison Review Page](#21-visual-comparison-review-page-phase-10)
 22. [Standalone Calibration Page](#22-standalone-calibration-page-phase-10)
 23. [Review Page UX Improvements](#23-review-page-ux-improvements-phase-11)
+24. [Per-Panel Sync Buttons](#24-per-panel-sync-buttons-phase-12)
 
 ---
 
@@ -58,9 +59,10 @@ PageForge is a client-side web application that reads Writer Template `.docx` fi
 13. **Tag normalisation robustness** → pre-processing de-fragmentation of fractured red-text boundaries from MS Word XML, bracket whitespace cleanup, ordinal suffix stripping in resolveOrdinalOrNumber (DONE — Phase 1 Patch)
 14. **UI overhaul & rebranding** → project renamed from ParseMaster to PageForge, upload decoupled from conversion with staged file + Convert button, template dropdown with auto-detect hint, conversion summary moved to debug panel, legacy text output replaced with direct download, "Copy Interactive Reference" button removed from action bar (DONE — Phase 8)
 15. **Calibration comparison tool** → development utility for uploading human-developed HTML reference files, logging side-by-side comparison snapshots (original writer template content, PageForge output, human correct output), displaying logged snapshots with expand/delete, and exporting structured calibration reports as .txt for Claude AI analysis (DONE — Phase 9)
-16. **Visual comparison review page** → dedicated review.html page with three synchronised viewing panels (PageForge rendered HTML, human reference HTML, parsed Writer Template content), file map sidebar, template-aware CSS injection for authentic LMS rendering in iframes, 6-tier intelligent Sync Mode for cross-panel click-to-scroll synchronisation (structural IDs → activity numbers → heading text → word groups → previous block anchoring → proportional position), Raw HTML toggle mode with scroll-position preservation via textual-anchor matching, proportional scroll sync across all three panels (with debounced handlers and feedback-loop prevention), human reference file upload, "Copy to Snapshot" contextual buttons that save to sessionStorage for the standalone Conversion Error Log page, and a "Conversion Error Log" button that opens calibrate.html; toolbar row with Sync toggle, Raw HTML button, and Conversion Error Log button separated from header; accessed from main results via "Visual Comparison Review" button; data transferred via sessionStorage with chunked fallback (DONE — Phase 10, enhanced Phase 11)
+16. **Visual comparison review page** → dedicated review.html page with three synchronised viewing panels (PageForge rendered HTML, human reference HTML, parsed Writer Template content), file map sidebar, template-aware CSS injection for authentic LMS rendering in iframes, per-panel one-shot Sync buttons for cross-panel content alignment via textual-anchor matching with tiered fallback (exact → fuzzy → proportional), Raw HTML toggle mode with scroll-position preservation via textual-anchor matching, human reference file upload, "Copy to Snapshot" contextual buttons that save to sessionStorage for the standalone Conversion Error Log page, and a "Conversion Error Log" button that opens calibrate.html; toolbar row with Raw HTML button and Conversion Error Log button separated from header; accessed from main results via "Visual Comparison Review" button; data transferred via sessionStorage with chunked fallback (DONE — Phase 10, enhanced Phase 11, Phase 12)
 17. **Standalone conversion error log page** → dedicated calibrate.html page (renamed from "Calibration Comparison Tool" to "Conversion Error Log"), with Step 1 (Upload Human Reference Files) removed and remaining steps renumbered; auto-populates form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons on tab focus; managed by CalibrateApp controller class (DONE — Phase 10, renamed Phase 11)
-18. **Review page UX improvements** → toolbar row relocated from header to dedicated row below title bar, "Calibration Tool" renamed to "Conversion Error Log" across all pages/code/labels, proportional scroll synchronisation across all three panels when Sync mode is ON (with debounce and feedback-loop lock), scroll-position preservation when toggling Raw HTML view using textual-anchor fuzzy matching with proportional fallback, reusable `normaliseTextForMatch` static method for text normalisation (DONE — Phase 11)
+18. **Review page UX improvements** → toolbar row relocated from header to dedicated row below title bar, "Calibration Tool" renamed to "Conversion Error Log" across all pages/code/labels, scroll-position preservation when toggling Raw HTML view using textual-anchor fuzzy matching with proportional fallback, reusable `normaliseTextForMatch` static method for text normalisation (DONE — Phase 11)
+19. **Per-panel Sync buttons** → replaced global continuous Sync toggle with three per-panel one-shot Sync buttons (one per panel: PageForge Output, Human Reference, Writer Template); each button extracts a textual anchor from its panel's current viewport position and scrolls the other two panels to the best-matching content using tiered fallback (exact normalised match → fuzzy word match → proportional scroll); works across rendered and Raw HTML views; visual feedback via button pulse and target panel flash; no continuous scroll-coupling (DONE — Phase 12)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -186,7 +188,7 @@ User clicks "Convert Document" button (Phase 8)
 | `HtmlConverter` | `js/html-converter.js` | Core HTML conversion engine — transforms content blocks into marked-up HTML |
 | `OutputManager` | `js/output-manager.js` | Multi-file output storage, file listing, individual/ZIP download, clipboard copy |
 | `CalibrationManager` | `js/calibration-manager.js` | Calibration comparison tool — human reference file upload, comparison snapshot logging, snapshot display, calibration report export (standalone calibrate.html page Phase 10) |
-| `ReviewApp` | `js/review-app.js` | Review page controller — data deserialisation, three-panel rendering, file map, template-aware CSS injection, 6-tier intelligent sync mode, proportional scroll sync with debounce/lock, raw HTML toggle with scroll-position preservation via textual-anchor matching, human reference upload, copy-to-sessionStorage snapshot buttons, conversion error log launcher |
+| `ReviewApp` | `js/review-app.js` | Review page controller — data deserialisation, three-panel rendering, file map, template-aware CSS injection, per-panel one-shot Sync buttons with cross-panel textual-anchor matching (tiered fallback: exact → fuzzy → proportional), raw HTML toggle with scroll-position preservation via textual-anchor matching, human reference upload, copy-to-sessionStorage snapshot buttons, conversion error log launcher |
 | `CalibrateApp` | `js/calibrate-app.js` | Conversion Error Log page controller — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of snapshot form fields from sessionStorage keys, navigation |
 | `App` | `js/app.js` | UI controller — staged upload, Convert button, file list, preview, ZIP download, text download, debug panel, template selection, visual review launcher |
 
@@ -201,7 +203,7 @@ gm-tk.github.io/
 ├── calibrate.html          # Standalone Conversion Error Log page (Phase 10, renamed Phase 11)
 ├── css/
 │   ├── styles.css          # All application styles (including debug panel, template selector, multi-file layout)
-│   └── review-styles.css   # Review page styles (three-panel layout, toolbar row, sync mode, raw HTML view) (Phase 10, updated Phase 11)
+│   └── review-styles.css   # Review page styles (three-panel layout, toolbar row, per-panel sync buttons, raw HTML view) (Phase 10, updated Phase 11, Phase 12)
 ├── js/
 │   ├── docx-parser.js      # .docx XML parser (core extraction engine)
 │   ├── formatter.js         # Plain text output formatter (legacy)
@@ -214,7 +216,7 @@ gm-tk.github.io/
 │   ├── html-converter.js    # Core HTML conversion engine (Phase 3, updated Phase 4)
 │   ├── output-manager.js    # Multi-file output management, ZIP download, clipboard copy (Phase 5)
 │   ├── calibration-manager.js # Calibration comparison tool — reference upload, snapshot logging, report export (Phase 9, standalone calibrate.html Phase 10)
-│   ├── review-app.js       # Review page controller — three-panel rendering, CSS injection, 6-tier sync mode, proportional scroll sync, raw HTML toggle with scroll preservation, copy-to-sessionStorage (Phase 10, enhanced Phase 11)
+│   ├── review-app.js       # Review page controller — three-panel rendering, CSS injection, per-panel one-shot Sync buttons with textual-anchor matching, raw HTML toggle with scroll preservation, copy-to-sessionStorage (Phase 10, enhanced Phase 11, Phase 12)
 │   ├── calibrate-app.js    # Conversion Error Log page controller — data loading, CalibrationManager instantiation, auto-population from sessionStorage (Phase 10, renamed Phase 11)
 │   └── app.js              # UI controller (with file list, preview, ZIP download, debug panel, visual review launcher)
 ├── tests/
@@ -235,7 +237,7 @@ gm-tk.github.io/
 │   ├── engs301Fixes.test.js # ENGS301 inconsistency fixes: heading levels, incomplete headings, tag recognition, interactive rendering, data capture
 │   ├── lmsCompliance.test.js # LMS compliance recalibration tests: lesson number format, title element, activity classes, table semantics, info trigger, download journal, whakatauki, image alt text
 │   ├── defragmentation.test.js # Tag de-fragmentation tests: red-text boundary stitching, bracket space collapsing, whitespace trimming, processBlock integration, ordinal suffix stripping
-│   └── reviewPageChanges.test.js # Review page Phase 11 tests: toolbar relocation, Conversion Error Log rename, scroll sync structure, Raw HTML scroll preservation, normaliseTextForMatch helper
+│   └── reviewPageChanges.test.js # Review page Phase 11+12 tests: toolbar relocation, Conversion Error Log rename, per-panel Sync button DOM structure/positioning/CSS, global Sync toggle complete removal, one-shot align trigger implementation, content-matching with textual-anchor helpers, visual feedback, no continuous scroll-coupling, Raw HTML scroll preservation, normaliseTextForMatch helper
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -1358,7 +1360,7 @@ User clicks "Visual Comparison Review" button (Phase 10)
   → ReviewApp loads and deserialises data from sessionStorage
   → File map and three panels rendered with template-aware CSS injection for authentic LMS styling
   → User uploads human reference files via Human Reference panel upload zone
-  → User enables Sync Mode — 6-tier intelligent matching synchronises all panels on click
+  → User clicks per-panel Sync buttons — one-shot textual-anchor matching scrolls other two panels to corresponding content
   → User clicks "Copy PF"/"Copy Human"/"Copy WT" buttons — content saved to sessionStorage keys
 
 User clicks "Conversion Error Log" button on review page (Phase 10, renamed Phase 11)
@@ -1640,7 +1642,7 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
-- **Automated unit tests** — `node tests/test-runner.js` runs 452 tests across 17 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text), tag de-fragmentation (red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, ordinal suffix stripping), and review page Phase 11 changes (toolbar relocation DOM structure, Conversion Error Log rename consistency, scroll sync implementation structure/feedback-loop prevention, Raw HTML scroll-position preservation with textual-anchor matching, normaliseTextForMatch helper unit tests)
+- **Automated unit tests** — `node tests/test-runner.js` runs 479 tests across 17 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text), tag de-fragmentation (red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, ordinal suffix stripping), and review page Phase 11+12 changes (toolbar relocation DOM structure, Conversion Error Log rename consistency, per-panel Sync button DOM presence/positioning/CSS, global Sync toggle complete removal, one-shot align trigger implementation, content-matching with textual-anchor helpers, visual feedback, no continuous scroll-coupling, Raw HTML scroll-position preservation with textual-anchor matching, normaliseTextForMatch helper unit tests)
 - **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files (tag-normaliser, block-scoper, layout-table-unwrapper, formatter, template-engine, interactive-extractor, html-converter) with class declarations in global scope; exposes `__testFs`, `__testPath`, `__testRootDir` globals for file-reading tests; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table
@@ -2104,15 +2106,15 @@ calibrate.html
 
 Phase 10 provides a dedicated **Visual Comparison Review** page (`review.html`) with three synchronised viewing panels, template-aware CSS injection for authentic LMS rendering, a 6-tier intelligent content matching algorithm for cross-panel synchronisation, and "Copy to Snapshot" buttons that save content to sessionStorage for consumption by the standalone Conversion Error Log page (`calibrate.html`). The Calibration Comparison Tool has been extracted from the review page into its own standalone page (see Section 22), renamed to "Conversion Error Log" in Phase 11. A "Visual Comparison Review" button on the main results page launches the review page in a new tab after serialising all necessary data to sessionStorage. Phase 11 added proportional scroll sync, Raw HTML scroll-position preservation, toolbar relocation, and the Conversion Error Log rename.
 
-**Status:** DONE — 4 files created (review.html, calibrate.html, js/review-app.js, js/calibrate-app.js), 1 file created earlier (css/review-styles.css), 2 files modified (js/app.js, css/review-styles.css), 452 tests passing (45 new tests added in Phase 11 for toolbar relocation, rename consistency, scroll sync, Raw HTML scroll preservation, and normaliseTextForMatch helper).
+**Status:** DONE — 4 files created (review.html, calibrate.html, js/review-app.js, js/calibrate-app.js), 1 file created earlier (css/review-styles.css), 2 files modified (js/app.js, css/review-styles.css), 479 tests passing (72 tests in reviewPageChanges.test.js covering Phase 11 toolbar/rename/scroll changes and Phase 12 per-panel Sync buttons).
 
 ### Files Created
 
 | File | Purpose |
 |------|---------|
-| `review.html` | Standalone HTML page for the Visual Comparison Review tool — header bar with back link/title/module code, separate toolbar row with Sync toggle/Raw HTML button/Conversion Error Log button, three-panel layout with file map, template-aware CSS-injected PageForge/Human Reference iframes, Writer Template content panel, "Copy to Snapshot" buttons saving to sessionStorage |
-| `js/review-app.js` | Controller class for the review page — data deserialisation from sessionStorage, template-aware CSS injection for iframe rendering, 6-tier intelligent sync mode, proportional scroll sync with debounce/feedback-loop lock, raw HTML toggle with scroll-position preservation via textual-anchor matching, human reference file upload, copy-to-sessionStorage snapshot buttons, conversion error log launcher |
-| `css/review-styles.css` | Review page-specific styles — three-panel flex layout, toolbar row, file map sidebar, sync mode toggle/indicator, raw HTML view, writer block styling, conversion error log button, responsive breakpoints |
+| `review.html` | Standalone HTML page for the Visual Comparison Review tool — header bar with back link/title/module code, separate toolbar row with Raw HTML button/Conversion Error Log button, three-panel layout with file map and per-panel Sync buttons, template-aware CSS-injected PageForge/Human Reference iframes, Writer Template content panel, "Copy to Snapshot" buttons saving to sessionStorage |
+| `js/review-app.js` | Controller class for the review page — data deserialisation from sessionStorage, template-aware CSS injection for iframe rendering, per-panel one-shot Sync buttons with cross-panel textual-anchor matching (tiered fallback: exact → fuzzy → proportional), raw HTML toggle with scroll-position preservation via textual-anchor matching, human reference file upload, copy-to-sessionStorage snapshot buttons, conversion error log launcher |
+| `css/review-styles.css` | Review page-specific styles — three-panel flex layout, toolbar row, file map sidebar, per-panel sync button styles with pulse/flash feedback, raw HTML view, writer block styling, conversion error log button, responsive breakpoints |
 | `calibrate.html` | Standalone Conversion Error Log page — snapshot form with 3 required fields + 1 optional + source file dropdown, logged snapshots display, export/copy/clear controls (see Section 22) |
 | `js/calibrate-app.js` | Controller class for the Conversion Error Log page — data deserialisation from sessionStorage, CalibrationManager instantiation, auto-population of form fields from sessionStorage keys set by review page's copy buttons (see Section 22) |
 
@@ -2183,7 +2185,7 @@ The `CSS_MAPPING` constant at the top of `review-app.js` maps template attribute
 3. Builds `<link rel="stylesheet">` tags for each URL
 4. Injects them before `</head>` in the HTML string
 5. Removes the `idoc_scripts.js` `<script>` tag (prevents script execution in sandbox)
-6. Adds the `.pf-sync-highlight` style for sync mode visual feedback
+6. Adds the `.pf-sync-highlight` style for content highlight annotations
 
 **Supported template mappings:**
 
@@ -2219,30 +2221,20 @@ This ensures that rendered HTML in the comparison iframes looks exactly as it wo
 - `_loadPageforgePanel(filename)` — loads annotated and CSS-injected HTML into PageForge iframe (or raw view)
 - `_loadHumanPanel(filename)` — loads matching reference file (CSS-injected) into Human iframe, or shows upload prompt
 - `_loadWriterPanel(filename)` — renders formatted content block texts for the selected page
-- `_injectCssForRendering(htmlString, templateAttribute)` — detects template from `<html template="...">`, builds `<link>` tags from `CSS_MAPPING`, injects before `</head>`, removes `idoc_scripts.js`, adds sync highlight style
+- `_injectCssForRendering(htmlString, templateAttribute)` — detects template from `<html template="...">`, builds `<link>` tags from `CSS_MAPPING`, injects before `</head>`, removes `idoc_scripts.js`, adds highlight annotation style
 - `_annotateHtml(htmlContent, filename)` — post-processes generated HTML: adds `data-pf-block` attributes to `<div id="body">` children, adds `data-pf-activity` from `.activity[number]` elements and HTML comments, adds `data-pf-inner` to inner elements (h2-h5, p, ul, ol, etc.), annotates structural elements (#header, #footer, #module-menu-content); uses DOMParser
-- `_attachIframeClickHandler(iframe)` — attaches click listener to iframe content document for sync mode; finds nearest ancestor with `data-pf-block` attribute
-- `_syncToBlock(blockIndex, clickedElement)` — synchronises all panels to a block: highlights in PageForge iframe, scrolls Writer Template panel, calls 6-tier human panel sync
-- `_highlightInIframe(iframe, blockIndex)` — highlights a block by `data-pf-block` attribute with scrollIntoView
-- `_syncWriterPanel(blockIndex)` — scrolls and highlights matching `data-block-index` element in Writer Template panel (3-second auto-remove)
-- `_syncHumanPanelIntelligent(clickedElement, blockIndex)` — 6-tier intelligent content matching algorithm for Human Reference panel (see Sync Mode section below)
-- `_findStructuralId(el)` — Tier 1: walks up DOM for #header/#footer/#module-menu-content structural IDs
-- `_extractActivityNumber(el)` — Tier 2: checks `data-pf-activity`, `number` attribute, HTML comment parsing
-- `_extractHeadingText(el)` — Tier 3: extracts heading text from h2-h5 elements (case-insensitive)
-- `_extractWordGroups(text, groupSize, maxGroups)` — Tier 4: generates 4-word n-gram groups from text
-- `_findByWordGroups(doc, wordGroups)` — Tier 4: searches Human Reference iframe for elements matching word groups (min 2 matches)
-- `_bindScrollSync()` — binds debounced scroll handlers to all three panel containers (writer panel body, raw view containers, iframes via load event); uses `_scrollSyncLock` flag to prevent feedback loops; syncs scroll position as a proportion (0..1) of scrollable height
-- `_attachIframeScrollHandler(iframe, handler)` — attaches scroll event listener to an iframe's contentWindow
-- `static normaliseTextForMatch(text)` — reusable text normalisation: strips HTML tags, decodes entities, lowercases, removes punctuation (preserves macrons), collapses whitespace; used by scroll-position preservation and anchor matching
+- `_onSyncClick(sourcePanel)` — handles per-panel Sync button click: extracts textual anchor from source panel's viewport, scrolls other two panels to matching content via `_syncPanelToAnchor()`, applies visual feedback (button pulse + target panel flash), shows toast; no ongoing scroll-coupling created
+- `_syncPanelToAnchor(panel, anchorText, fallbackFraction)` — scrolls a single target panel to content matching a textual anchor; delegates to `_scrollWriterToAnchor`, `_scrollRawViewToAnchor`, or `_scrollIframeToAnchor` depending on panel type and current view mode (rendered vs raw HTML)
+- `_panelDisplayName(panel)` — returns human-readable display name for a panel identifier
+- `static normaliseTextForMatch(text)` — reusable text normalisation: strips HTML tags, decodes entities, lowercases, removes punctuation (preserves macrons), collapses whitespace; used by Sync buttons and Raw HTML scroll-position preservation
 - `_extractVisibleAnchor(panel)` — extracts a textual anchor (normalised text snippet + scroll fraction) from the element currently at the top of the visible area in a panel; works for rendered iframes, raw HTML views, and writer blocks
 - `_extractAnchorFromRawView(rawViewContainer)` — extracts anchor text from the line currently visible at the top of a raw HTML `<pre><code>` view
 - `_scrollRawViewToAnchor(rawViewContainer, anchorText, fallbackFraction)` — searches raw HTML lines for anchor text using word-level fuzzy matching (30% threshold); falls back to proportional scroll
 - `_scrollIframeToAnchor(iframe, anchorText, fallbackFraction)` — searches rendered iframe elements for anchor text using word-level fuzzy matching; falls back to proportional scroll
 - `_scrollWriterToAnchor(anchorText, fallbackFraction)` — searches writer blocks for anchor text using word-level fuzzy matching; falls back to proportional scroll
 - `_toggleRawHtmlMode()` — extracts visible anchor BEFORE switching views, toggles rendered/raw mode, restores scroll position using `_restoreScrollFromAnchor()` after rendering completes via `requestAnimationFrame`
-- `_restoreScrollFromAnchor(anchor)` — after view toggle, scrolls all three panels to the textual anchor position; temporarily disables sync mode during restoration to prevent feedback loops; handles iframe load timing via event listeners with timeout fallback
+- `_restoreScrollFromAnchor(anchor)` — after view toggle, scrolls all three panels to the textual anchor position; handles iframe load timing via event listeners with timeout fallback
 - `_showRawHtml(panel, htmlContent)` — displays raw HTML in a panel's raw view container
-- `_updateSyncModeIndicator()` — toggles visual indicator (blue box-shadow) on PageForge panel
 - `_showCopyToSnapshotButtons()` / `_hideCopyToSnapshotButtons()` — toggle contextual copy buttons on panel headers
 - `_copyToSessionStorage(type)` — saves highlighted block content to sessionStorage keys (`pageforge_snapshot_pf`, `pageforge_snapshot_human`, `pageforge_snapshot_wt`, `pageforge_snapshot_file`) for the standalone Conversion Error Log page
 - `_getHighlightedHtml(iframe, blockIndex)` — extracts outerHTML of highlighted element in iframe
@@ -2271,37 +2263,31 @@ This ensures that rendered HTML in the comparison iframes looks exactly as it wo
 
 **File Map Panel:** Fixed-width sidebar (~180px) with clickable file entries. Each entry shows filename and page type in a horizontal row layout (`.file-map-entry-row`), with a green "REF" badge if a matching human reference file has been uploaded. Currently selected file is highlighted with a blue left border.
 
-**PageForge HTML Panel:** Uses a sandboxed `<iframe>` with `sandbox="allow-same-origin"` and `srcdoc` to render the generated HTML. The HTML is annotated with `data-pf-block`, `data-pf-activity`, and `data-pf-inner` attributes for sync mode click detection. Template-aware CSS is injected for authentic LMS rendering. A "Copy PF" button appears in the panel header when sync mode highlights a block.
+**PageForge HTML Panel:** Uses a sandboxed `<iframe>` with `sandbox="allow-same-origin"` and `srcdoc` to render the generated HTML. The HTML is annotated with `data-pf-block`, `data-pf-activity`, and `data-pf-inner` attributes. Template-aware CSS is injected for authentic LMS rendering. Panel header includes a "Sync" button (one-shot align trigger) and a "Copy PF" button for snapshot export.
 
-**Human Reference Panel:** Also uses a sandboxed `<iframe>` with `srcdoc` and template-aware CSS injection. Initially shows an upload prompt (drag-and-drop zone + file picker). Once reference files are uploaded, displays the matching file in the iframe or a "no matching file" message. An "Upload more files" button remains accessible in the panel header. A "Copy Human" button appears when sync mode highlights content.
+**Human Reference Panel:** Also uses a sandboxed `<iframe>` with `srcdoc` and template-aware CSS injection. Initially shows an upload prompt (drag-and-drop zone + file picker). Once reference files are uploaded, displays the matching file in the iframe or a "no matching file" message. Panel header includes a "Sync" button (one-shot align trigger), an "Upload more files" button, and a "Copy Human" button for snapshot export.
 
-**Writer Template Panel:** A scrollable `<div>` containing formatted text representations of each content block. Each block is wrapped in a `<div class="writer-block" data-block-index="N">` with a block index badge and monospace `<pre>` content. Alternating backgrounds distinguish blocks. Highlighting uses a yellow/amber outline. A "Copy WT" button appears when sync mode highlights content.
+**Writer Template Panel:** A scrollable `<div>` containing formatted text representations of each content block. Each block is wrapped in a `<div class="writer-block" data-block-index="N">` with a block index badge and monospace `<pre>` content. Alternating backgrounds distinguish blocks. Panel header includes a "Sync" button (one-shot align trigger) and a "Copy WT" button for snapshot export.
 
-### Sync Mode (6-Tier Intelligent Content Matching)
+### Per-Panel Sync Buttons (One-Shot Align Trigger)
 
-**Toggle:** Checkbox-based toggle switch in the header bar. When enabled, the PageForge panel gets a blue box-shadow indicator.
+**Buttons:** Three identical "⇄ Sync" buttons, one in each panel's header bar (PageForge Output, Human Reference, Writer Template). Each button is a one-shot action — not a toggle. No continuous scroll-coupling is created.
 
-**Click-to-sync flow (when Sync Mode is ON):**
-1. User clicks content in the PageForge iframe
-2. Click handler walks up the DOM tree to find the nearest `data-pf-block` ancestor
-3. **PageForge panel:** Adds `.pf-sync-highlight` class (amber outline + background), scrolls to element, shows "Copy PF" button
-4. **Writer Template panel:** Finds matching `data-block-index` element, adds `.writer-block-highlight` class, scrolls into view, auto-removes highlight after 3 seconds, shows "Copy WT" button
-5. **Human Reference panel:** Runs 6-tier intelligent matching algorithm (see below), scrolls to best match, adds `.pf-sync-highlight` class, auto-removes after 3 seconds, shows "Copy Human" button if reference file loaded
+**Sync click flow:**
+1. User clicks the Sync button on any panel (the "source" panel)
+2. `_onSyncClick(sourcePanel)` extracts a textual anchor from the source panel's current viewport position using `_extractVisibleAnchor()`
+3. The source panel does NOT move
+4. The other two panels are scrolled to the best-matching content using `_syncPanelToAnchor()` with tiered fallback:
+   - **Exact normalised match:** Anchor text word-level matching with 30% minimum threshold
+   - **Fuzzy word match:** Searches all text-bearing elements (h1-h5, p, li, td, th, div) for word overlap
+   - **Proportional scroll:** Falls back to scroll-percentage mapping if no textual match found
+5. Visual feedback: clicked button pulses briefly (`.review-sync-btn-pulse`), target panels flash briefly (`.review-panel-sync-flash`)
+6. Toast notification shows which panel was the source (e.g., "Synced from Writer Template")
+7. After the jump, all panels are fully independent — no ongoing coupling
 
-**6-Tier Intelligent Content Matching Algorithm (`_syncHumanPanelIntelligent`):**
+**Cross-view-mode compatibility:** The matching logic works regardless of each panel's current view mode (rendered iframe or Raw HTML). Source anchor extraction and target scrolling both handle rendered elements and raw text lines.
 
-| Tier | Method | Strategy | Example |
-|------|--------|----------|---------|
-| **1** | `_findStructuralId()` | Walks up the clicked element's DOM ancestors looking for `#header`, `#footer`, or `#module-menu-content` IDs. If found, finds the same structural element in the Human Reference iframe. | Clicking inside the header syncs to the human file's `#header` |
-| **2** | `_extractActivityNumber()` | Checks the clicked element for `data-pf-activity` attribute, `number` attribute on `.activity` elements, or parses HTML comments for activity numbers. Finds matching activity in Human Reference. | Clicking Activity 2A syncs to the human file's `[number="2A"]` element |
-| **3** | `_extractHeadingText()` | Extracts text from h2-h5 heading elements within or near the clicked block. Performs case-insensitive text match across all headings in the Human Reference iframe. | Clicking an `<h3>` syncs to the matching heading in the human file |
-| **4** | `_extractWordGroups()` + `_findByWordGroups()` | Generates 4-word n-gram groups from the visible text content. Searches all text-bearing elements in the Human Reference iframe for matches (requires minimum 2 matching n-grams). | Clicking a paragraph finds the human file element sharing the most word sequences |
-| **5** | Previous block anchoring | Walks backwards up to 5 blocks from the clicked position, trying Tiers 2 and 3 on each previous block. If a previous block matches, uses its position + offset to estimate the target position. | When a block has no unique text, finds the nearest preceding activity/heading as anchor |
-| **6** | Proportional position | As final fallback, calculates the clicked block's proportional position within the PageForge content and scrolls the Human Reference iframe to the same proportional position. | Block 15 of 30 scrolls to 50% of the human file |
-
-Each tier is tried in order; the algorithm stops at the first successful match. A toast notification shows which tier matched (e.g., "Synced via activity number").
-
-**When Sync Mode is OFF:** Normal iframe interaction (text selection, link clicking).
+**Concrete example:** If the user scrolls the Writer Template panel to show a specific heading, then clicks the Writer Template's Sync button, the PageForge Output panel and Human Reference panel both jump to the corresponding heading (or nearest content) within their respective views. The Writer Template panel stays where it is.
 
 ### Raw HTML Mode
 
@@ -2309,16 +2295,16 @@ Each tier is tried in order; the algorithm stops at the first successful match. 
 
 **Raw HTML view:** Replaces iframe content with a `<pre><code>` block showing the raw HTML source in a dark-themed monospace view (background: #1e1e2e, text: #cdd6f4). Writer Template panel remains unchanged (already shows text content).
 
-**Sync Mode + Raw HTML interaction:** When both modes are active, sync mode still works in rendered view. In raw HTML view, click-to-sync is not active (raw view is read-only scrollable code).
+**Sync + Raw HTML interaction:** Per-panel Sync buttons work in both rendered and raw HTML views. The textual-anchor matching operates on raw text lines (for raw view) or rendered DOM elements (for iframe view), and handles mixed-mode scenarios where the source and target panels are in different view modes.
 
 ### Copy-to-Snapshot Buttons (sessionStorage-Based)
 
-When Sync Mode is ON and a block has been clicked (highlighted):
+The Copy-to-Snapshot buttons are available in each panel header:
 - **"Copy WT" button** (Writer Template panel header) — saves the formatted text content to `sessionStorage.setItem('pageforge_snapshot_wt', content)` and the current filename to `sessionStorage.setItem('pageforge_snapshot_file', filename)`
 - **"Copy PF" button** (PageForge panel header) — saves the outerHTML of the highlighted element to `sessionStorage.setItem('pageforge_snapshot_pf', content)` and the current filename to `pageforge_snapshot_file`
 - **"Copy Human" button** (Human Reference panel header, if reference file loaded) — saves the outerHTML of the highlighted element to `sessionStorage.setItem('pageforge_snapshot_human', content)` and the current filename to `pageforge_snapshot_file`
 
-Each button shows a toast notification on click. Buttons are hidden when Sync Mode is OFF or no block is highlighted.
+Each button shows a toast notification on click.
 
 The standalone Calibration page (`calibrate.html`) reads these sessionStorage keys on load and on tab focus, auto-populating the snapshot form fields. This enables a workflow where the user copies content on the review page, switches to the calibration tab, and sees the fields pre-populated.
 
@@ -2346,10 +2332,9 @@ The review page no longer embeds the Calibration Comparison Tool directly. Inste
 5. Review page loads showing file map (left), PageForge output with authentic LMS styling (centre-left), upload prompt (centre-right), Writer Template content (right)
 6. User uploads human-developed HTML files via the Human Reference panel's upload zone
 7. User clicks through pages in the file map — all three panels update simultaneously with CSS-injected rendering
-8. User enables Sync Mode via the toolbar toggle — scrolling any panel now proportionally scrolls the other two panels to the same relative position
-9. User clicks on a section of the PageForge rendered output — the 6-tier intelligent matching algorithm finds the corresponding content in the Human Reference panel and auto-scrolls; the Writer Template panel auto-scrolls to the corresponding source content block
-10. User clicks Raw HTML to see the source code behind the rendered views — all three panels automatically scroll to preserve the user's current viewing position using textual-anchor matching (with proportional fallback)
-11. User clicks "Copy PF" / "Copy Human" / "Copy WT" buttons — content is saved to sessionStorage keys
+8. User clicks the Sync button on any panel — the other two panels automatically jump to the corresponding content position using textual-anchor matching (with proportional fallback); no ongoing scroll-coupling is created
+9. User clicks Raw HTML to see the source code behind the rendered views — all three panels automatically scroll to preserve the user's current viewing position using textual-anchor matching (with proportional fallback)
+10. User clicks "Copy PF" / "Copy Human" / "Copy WT" buttons — content is saved to sessionStorage keys
 12. User clicks "Conversion Error Log" button in toolbar — `calibrate.html` opens in a new tab
 13. Conversion Error Log page auto-populates form fields from sessionStorage keys
 14. User logs snapshots and exports the calibration report for Claude AI analysis
@@ -2363,7 +2348,7 @@ The review page no longer embeds the Calibration Comparison Tool directly. Inste
 
 Phase 10 extracts the Calibration Comparison Tool from the review page into a standalone page (`calibrate.html`) managed by a new `CalibrateApp` controller class. Phase 11 renamed the page from "Calibration Comparison Tool" to "Conversion Error Log" to better reflect its purpose of documenting conversion algorithm discrepancies. The page receives data via sessionStorage from the review page and auto-populates snapshot form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons.
 
-**Status:** DONE — 2 new files created (calibrate.html, js/calibrate-app.js), 452 tests passing (45 new tests added in Phase 11).
+**Status:** DONE — 2 new files created (calibrate.html, js/calibrate-app.js), 479 tests passing (72 tests in reviewPageChanges.test.js covering Phase 11+12 changes).
 
 ### Files Created
 
@@ -2430,7 +2415,7 @@ The page uses inline `<style>` for page-specific layout styles (`.calibrate-page
 
 ### Auto-Population Workflow
 
-1. User is on the review page with Sync Mode active
+1. User is on the review page with panels loaded
 2. User clicks a block in the PageForge panel — all panels sync
 3. User clicks "Copy PF" → PageForge HTML saved to `pageforge_snapshot_pf`
 4. User clicks "Copy Human" → Human reference HTML saved to `pageforge_snapshot_human`
@@ -2450,16 +2435,16 @@ The page uses inline `<style>` for page-specific layout styles (`.calibrate-page
 
 ### Overview
 
-Phase 11 addresses four usability issues on the Visual Comparison Review page: (1) toolbar controls relocated from the header bar to a dedicated row below the title, (2) "Calibration Tool" renamed to "Conversion Error Log" across the entire codebase to better reflect its purpose of documenting conversion algorithm discrepancies, (3) proportional scroll synchronisation across all three panels when the Sync toggle is ON, and (4) scroll-position preservation when toggling between rendered and Raw HTML views using a textual-anchor fuzzy-matching algorithm with proportional fallback. A reusable static `normaliseTextForMatch()` method was created for text normalisation shared across the scroll-preservation and sync logic. All changes are backward-compatible — the 407 pre-existing tests continue to pass alongside the 45 new tests (452 total).
+Phase 11 addresses three usability issues on the Visual Comparison Review page: (1) toolbar controls relocated from the header bar to a dedicated row below the title, (2) "Calibration Tool" renamed to "Conversion Error Log" across the entire codebase to better reflect its purpose of documenting conversion algorithm discrepancies, and (3) scroll-position preservation when toggling between rendered and Raw HTML views using a textual-anchor fuzzy-matching algorithm with proportional fallback. A reusable static `normaliseTextForMatch()` method was created for text normalisation shared across the scroll-preservation and sync logic. Note: Phase 11 originally included a continuous proportional scroll sync system; this was entirely replaced by the per-panel Sync buttons in Phase 12 (see Section 24).
 
-**Status:** DONE — 6 files modified, 1 file created, 45 new tests added (452 total), all tests passing.
+**Status:** DONE — 6 files modified, 1 file created. Phase 11 changes retained (toolbar relocation, rename, Raw HTML scroll-preservation); Phase 11 continuous scroll sync superseded by Phase 12 per-panel Sync buttons. Test file updated to 72 tests (479 total), all tests passing.
 
 ### Files Modified
 
 | File | Changes |
 |------|---------|
-| `review.html` | Removed `.review-header-right` div from header; added `.review-toolbar` div between header and three-panel layout containing Sync toggle, Raw HTML button, and Conversion Error Log button; button text changed from "Calibration Tool" to "Conversion Error Log" |
-| `js/review-app.js` | Renamed `_openCalibrationTool()` → `_openConversionErrorLog()`; added `_scrollSyncLock` flag and `_bindScrollSync()` method with debounced proportional scroll handlers for all three panels (writer body, raw views, iframe contentWindows); added `static normaliseTextForMatch(text)` reusable helper for text normalisation (strips HTML, decodes entities, lowercases, removes punctuation, preserves macrons, collapses whitespace); added `_extractVisibleAnchor(panel)` and `_extractAnchorFromRawView(rawViewContainer)` for capturing the currently visible content anchor; added `_scrollRawViewToAnchor()`, `_scrollIframeToAnchor()`, and `_scrollWriterToAnchor()` for fuzzy-matching anchor text in target panels; added `_restoreScrollFromAnchor(anchor)` for post-toggle scroll restoration with sync-disable guard; added `_attachIframeScrollHandler()` for iframe scroll event binding; refactored `_toggleRawHtmlMode()` to extract anchor before switching and restore after via `requestAnimationFrame`; added `writerPanelBody`, `pageforgePanelBody`, `humanPanelBody` DOM references; updated JSDoc comments to reference "Conversion Error Log" |
+| `review.html` | Removed `.review-header-right` div from header; added `.review-toolbar` div between header and three-panel layout containing Raw HTML button and Conversion Error Log button (Sync toggle removed in Phase 12); button text changed from "Calibration Tool" to "Conversion Error Log" |
+| `js/review-app.js` | Renamed `_openCalibrationTool()` → `_openConversionErrorLog()`; added `static normaliseTextForMatch(text)` reusable helper for text normalisation (strips HTML, decodes entities, lowercases, removes punctuation, preserves macrons, collapses whitespace); added `_extractVisibleAnchor(panel)` and `_extractAnchorFromRawView(rawViewContainer)` for capturing the currently visible content anchor; added `_scrollRawViewToAnchor()`, `_scrollIframeToAnchor()`, and `_scrollWriterToAnchor()` for fuzzy-matching anchor text in target panels; added `_restoreScrollFromAnchor(anchor)` for post-toggle scroll restoration; refactored `_toggleRawHtmlMode()` to extract anchor before switching and restore after via `requestAnimationFrame`; added `writerPanelBody`, `pageforgePanelBody`, `humanPanelBody` DOM references; updated JSDoc comments to reference "Conversion Error Log" |
 | `css/review-styles.css` | Removed `.review-header-right` styles; added `.review-toolbar` styles (flex row, background, border, padding); added `.review-toolbar` responsive styles in `@media (max-width: 900px)` block; renamed "Calibration Tool Button" CSS comment to "Conversion Error Log Button" |
 | `calibrate.html` | Changed `<title>` from "PageForge — Calibration Comparison Tool" to "PageForge — Conversion Error Log"; changed `<h1>` from "Calibration Comparison Tool" to "Conversion Error Log" |
 | `js/calibrate-app.js` | Updated JSDoc header to reference "Conversion Error Log" instead of "Calibration Comparison Tool" |
@@ -2469,29 +2454,20 @@ Phase 11 addresses four usability issues on the Visual Comparison Review page: (
 
 | File | Purpose |
 |------|---------|
-| `tests/reviewPageChanges.test.js` | 45 tests covering: toolbar relocation (8 tests verifying DOM structure, position, CSS), Conversion Error Log rename consistency (8 tests across button text, page title, page heading, method names, JSDoc), scroll sync implementation (12 tests verifying method existence, constructor call order, feedback-loop lock, sync-mode guard, debounce, raw/rendered handler attachment), Raw HTML scroll-preservation (11 tests verifying anchor extraction, scroll-to-anchor methods, pre/post toggle ordering, requestAnimationFrame usage, proportional fallback, sync-disable guard), normaliseTextForMatch helper (6 unit tests for null handling, HTML stripping, lowercasing, whitespace collapsing, macron preservation, entity decoding, punctuation removal) |
+| `tests/reviewPageChanges.test.js` | 72 tests covering: toolbar relocation (8 tests), Conversion Error Log rename consistency (8 tests), per-panel Sync button DOM structure (9 tests), global Sync toggle complete removal (13 tests), one-shot align trigger implementation (7 tests), content-matching with textual-anchor helpers (8 tests), visual feedback (4 tests), no continuous scroll-coupling (6 tests), Raw HTML scroll-preservation (3 tests), normaliseTextForMatch helper (7 unit tests). See Section 24 for Phase 12 test details. |
 
 ### Change-by-Change Summary
 
 #### Change 1 — Toolbar Relocation
 - **Previous:** Sync toggle, Raw HTML button, and Calibration Tool button were in a `.review-header-right` div inside the `<header>` element alongside the back link, title, and module code badge
-- **Fix:** Removed `.review-header-right` entirely from `<header>`; created a new `.review-toolbar` `<div>` positioned between `</header>` and the `.review-layout` three-panel container; all three controls moved to the toolbar with left-aligned flex layout; toolbar has its own background (`var(--color-bg)`), border-bottom, and responsive flex-wrap at 900px breakpoint
+- **Fix:** Removed `.review-header-right` entirely from `<header>`; created a new `.review-toolbar` `<div>` positioned between `</header>` and the `.review-layout` three-panel container; all controls moved to the toolbar with left-aligned flex layout; toolbar has its own background (`var(--color-bg)`), border-bottom, and responsive flex-wrap at 900px breakpoint
 
 #### Change 2 — "Calibration Tool" → "Conversion Error Log" Rename
 - **Previous:** Button on review page said "Calibration Tool"; calibrate.html title said "PageForge — Calibration Comparison Tool"; heading said "Calibration Comparison Tool"; method was `_openCalibrationTool()`
 - **Fix:** Button text changed to "Conversion Error Log" (review.html); `<title>` changed to "PageForge — Conversion Error Log" (calibrate.html); `<h1>` changed to "Conversion Error Log" (calibrate.html); method renamed to `_openConversionErrorLog()` (review-app.js); JSDoc comments updated (review-app.js, calibrate-app.js); CSS comment updated (review-styles.css); all error messages and toast text updated
 
-#### Change 3 — Proportional Scroll Sync
-- **Previous:** The Sync toggle existed but only controlled click-to-scroll (6-tier matching on block click in PageForge iframe). Scrolling one panel did NOT scroll the other two.
-- **Fix:** New `_bindScrollSync()` method called during constructor after `_bindEvents()` and before `_render()`. Implementation:
-  - **Debounced handlers:** Three debounced scroll handlers (`debouncedPfScroll`, `debouncedHumanScroll`, `debouncedWriterScroll`) fire at 16ms intervals
-  - **`getScrollable(panel)` inner function:** Returns the correct scrollable element depending on current view mode — iframe `scrollingElement` for rendered view, `.review-raw-view` container for raw HTML view, `.review-writer-body` for writer panel
-  - **Proportional sync:** On scroll event, computes `scrollTop / (scrollHeight - clientHeight)` as a fraction (0..1), then applies `fraction * (targetScrollHeight - targetClientHeight)` to the other two panels
-  - **Feedback-loop prevention:** `_scrollSyncLock` boolean flag set to `true` before programmatic scrolls, released after 50ms via `setTimeout`; handler early-returns when lock is active
-  - **Sync-mode guard:** Handler early-returns when `syncModeEnabled` is `false`
-  - **Iframe scroll binding:** `_attachIframeScrollHandler()` attaches to `iframe.contentWindow` `scroll` event; re-attached on each iframe `load` event since contentDocument changes when srcdoc is updated
-  - **Writer panel:** Scroll bound once directly to `writerPanelBody` DOM element
-  - **Raw views:** Scroll bound once directly to `pageforgeRaw` and `humanRaw` DOM elements
+#### Change 3 — Proportional Scroll Sync (Superseded by Phase 12)
+- **Note:** The continuous proportional scroll sync implemented in Phase 11 (`_bindScrollSync`, `syncModeEnabled`, `_scrollSyncLock`, debounced handlers) has been entirely removed and replaced by the per-panel one-shot Sync buttons in Phase 12. See Section 24 for the replacement implementation.
 
 #### Change 4 — Raw HTML Scroll-Position Preservation
 - **Previous:** Toggling Raw HTML reset scroll to top in both PageForge and Human Reference panels, requiring manual scrolling to find the same content region
@@ -2502,20 +2478,89 @@ Phase 11 addresses four usability issues on the Visual Comparison Review page: (
   - **Iframe anchor search (`_scrollIframeToAnchor`):** Queries all text-bearing elements (h1-h5, p, li, td, th, div.activity, etc.), normalises their text, counts word matches against anchor; requires ≥30% match; calls `scrollIntoView()` on best match; falls back to proportional scroll
   - **Writer panel anchor search (`_scrollWriterToAnchor`):** Searches `.writer-block` elements using the same word-matching algorithm; falls back to proportional scroll
   - **Post-toggle restoration (`_restoreScrollFromAnchor`):** After `_loadPageforgePanel` and `_loadHumanPanel` complete, uses double `requestAnimationFrame` to wait for DOM rendering, then scrolls all three panels to the anchor. For rendered-to-raw toggle, calls `_scrollRawViewToAnchor` on both PageForge and Human raw views. For raw-to-rendered toggle, attaches one-time iframe `load` event listeners (with 500ms timeout fallback) then calls `_scrollIframeToAnchor`. Writer panel always uses `_scrollWriterToAnchor`.
-  - **Sync guard:** Temporarily disables `syncModeEnabled` and sets `_scrollSyncLock = true` during restoration to prevent proportional sync from interfering; restores original state after 600ms
 
 ### New Public API on ReviewApp
 
 - `static normaliseTextForMatch(text)` — reusable text normalisation helper (strips HTML, decodes entities, lowercases, removes punctuation, preserves macrons, collapses whitespace)
 
+---
+
+## 24. PER-PANEL SYNC BUTTONS (Phase 12)
+
+### Overview
+
+Phase 12 replaces the global continuous Sync toggle (implemented in Phase 11) with three per-panel one-shot Sync buttons — one anchored to each of the three visual comparison panels (PageForge Output, Human Reference, Writer Template). The interaction model changes from "continuous scroll-coupling" to "one-shot align trigger": clicking a panel's Sync button extracts a textual anchor from that panel's current viewport position, then scrolls the other two panels to the best-matching content using a tiered fallback chain (exact normalised match → fuzzy word match → proportional scroll). No ongoing scroll-coupling is created — after the jump completes, all panels can be scrolled independently. The implementation reuses and extends the `normaliseTextForMatch`, `_extractVisibleAnchor`, `_scrollRawViewToAnchor`, `_scrollIframeToAnchor`, and `_scrollWriterToAnchor` helpers originally created for the Raw HTML scroll-position preservation feature in Phase 11. All existing functionality from previous phases remains working — the 407 pre-Phase-11 tests continue to pass alongside the 72 tests in the updated `reviewPageChanges.test.js` (479 total).
+
+**Status:** DONE — 3 files modified (review.html, js/review-app.js, css/review-styles.css), 1 test file rewritten (tests/reviewPageChanges.test.js with 72 tests replacing 45), 479 tests passing, 0 failing.
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `review.html` | Removed global Sync toggle (`<label>` with checkbox `#sync-mode-toggle`, `.review-sync-slider`, `.review-sync-label`) from toolbar row; added `<button id="btn-sync-pageforge" class="btn btn-sm review-sync-btn">` to PageForge panel header; added `<button id="btn-sync-human" class="btn btn-sm review-sync-btn">` to Human Reference panel header; added `<button id="btn-sync-writer" class="btn btn-sm review-sync-btn">` to Writer Template panel header; all three buttons use `&#8644; Sync` text and consistent `review-sync-btn` class; toolbar now contains only Raw HTML and Conversion Error Log buttons |
+| `js/review-app.js` | **Removed:** `syncModeEnabled` property, `_scrollSyncLock` property, `_bindScrollSync()` method (entire proportional scroll sync system including debounce helper, `getScrollable()`, `getScrollFraction()`, `setScrollFraction()`, `onPanelScroll()`, debounced scroll handlers, scroll event listener bindings for writer/raw/iframe panels), `_attachIframeScrollHandler()` method, `_attachIframeClickHandler()` method (iframe click-to-sync handler), `_syncToBlock()` method, `_highlightInIframe()` method, `_syncWriterPanel()` method, `_syncHumanPanelIntelligent()` method (6-tier matching algorithm), `_highlightAndScroll()` method, `_findStructuralId()` method, `_extractActivityNumber()` method, `_extractHeadingText()` method, `_extractWordGroups()` method, `_findByWordGroups()` method, `_updateSyncModeIndicator()` method, `syncModeToggle` DOM reference, sync-mode-disable guard in `_restoreScrollFromAnchor()`. **Added:** `btnSyncPageforge`, `btnSyncHuman`, `btnSyncWriter` DOM references; `_onSyncClick(sourcePanel)` method (one-shot align trigger with visual feedback); `_syncPanelToAnchor(panel, anchorText, fallbackFraction)` method (delegates to appropriate scroll helper based on panel type and view mode); `_panelDisplayName(panel)` helper. **Updated:** JSDoc header to describe per-panel sync instead of 6-tier sync mode; `_bindEvents()` to wire up three Sync button click handlers instead of sync toggle change listener; `_restoreScrollFromAnchor()` simplified (no longer needs to disable/restore sync mode or set scroll lock) |
+| `css/review-styles.css` | **Removed:** `.review-sync-toggle` styles (label, checkbox hide, slider, slider::after, checked states, label text), `.review-sync-active` indicator class. **Added:** `.review-sync-btn` styles (font-size, padding, background, border, color, transition, border-radius), `.review-sync-btn:hover` styles, `.review-sync-btn-pulse` styles (active/pressed state with primary colour and box-shadow for button click feedback), `.review-panel-sync-flash` styles (inset box-shadow for target panel flash on sync jump). **Updated:** CSS section comment from "Sync Mode Toggle" to "Per-Panel Sync Buttons" |
+
+### Files Rewritten
+
+| File | Changes |
+|------|---------|
+| `tests/reviewPageChanges.test.js` | Complete rewrite: 72 tests (was 45) organised into 10 `describe` blocks covering Phase 11 retained functionality + Phase 12 new functionality. Old tests for `_bindScrollSync`, `syncModeEnabled`, `_scrollSyncLock`, debounce, `getScrollable`, sync-disable-during-restore removed. New tests added for per-panel Sync button DOM presence, CSS, global toggle removal, `_onSyncClick` implementation, `_syncPanelToAnchor`, visual feedback, no continuous coupling |
+
+### Change-by-Change Summary
+
+#### Change 1 — Replace Global Sync Toggle with Per-Panel Sync Buttons (HTML)
+- **Previous:** `<label class="review-sync-toggle">` with hidden checkbox `#sync-mode-toggle`, slider element, and "Sync" label text inside the `.review-toolbar` row
+- **Fix:** Removed the entire `<label>` element from the toolbar. Added a `<button id="btn-sync-{panel}" class="btn btn-sm review-sync-btn">` to each of the three panel headers, positioned between the panel filename and the Copy button. All three buttons use the same `&#8644; Sync` text, `review-sync-btn` class, and tooltip "Sync other panels to this panel's position"
+
+#### Change 2 — One-Shot Align Trigger Implementation (JS)
+- **Previous:** `syncModeEnabled` boolean controlled by checkbox toggle; when ON, clicking in PageForge iframe triggered `_syncToBlock()` which ran `_syncHumanPanelIntelligent()` (6-tier matching algorithm) and `_syncWriterPanel()` (direct block index match); continuous `_bindScrollSync()` proportionally coupled all panel scrolls
+- **Fix:** New `_onSyncClick(sourcePanel)` method handles all three Sync buttons:
+  1. Applies visual feedback — pulse class on clicked button, flash class on target panels
+  2. Calls `_extractVisibleAnchor(sourcePanel)` to get the textual anchor and scroll fraction from the source panel's current viewport position
+  3. Filters out the source panel, leaving only the two target panels
+  4. For each target, calls `_syncPanelToAnchor(panel, anchorText, fallbackFraction)` which delegates to `_scrollWriterToAnchor()`, `_scrollRawViewToAnchor()`, or `_scrollIframeToAnchor()` based on panel type and current view mode (rendered vs raw HTML)
+  5. Shows a toast notification identifying the source panel
+  6. No state is set — no ongoing coupling created
+
+#### Change 3 — Content-Matching Logic (Reuse of Phase 11 Helpers)
+- The per-panel Sync buttons reuse the textual-anchor matching infrastructure created in Phase 11 for Raw HTML scroll-position preservation:
+  - `_extractVisibleAnchor(panel)` — works for rendered iframes (finds nearest element to viewport top), raw HTML views (estimates line from scroll position), and writer blocks (finds nearest `.writer-block` to scroll top)
+  - `_scrollIframeToAnchor(iframe, anchorText, fallbackFraction)` — word-level fuzzy matching against rendered DOM elements with ≥30% threshold; falls back to proportional scroll
+  - `_scrollRawViewToAnchor(rawViewContainer, anchorText, fallbackFraction)` — word-level fuzzy matching against raw HTML lines with ≥30% threshold; falls back to proportional scroll
+  - `_scrollWriterToAnchor(anchorText, fallbackFraction)` — word-level fuzzy matching against `.writer-block` text; falls back to proportional scroll
+  - `static normaliseTextForMatch(text)` — shared text normalisation (strip HTML, decode entities, lowercase, remove punctuation, preserve macrons, collapse whitespace)
+- The new `_syncPanelToAnchor()` method acts as a dispatcher, checking the panel type and current view mode to call the correct scroll helper
+
+#### Change 4 — Visual Feedback
+- **Button pulse:** When a Sync button is clicked, `.review-sync-btn-pulse` class is added (primary background + white text + box-shadow), auto-removed after 400ms
+- **Target panel flash:** Both target panels receive `.review-panel-sync-flash` class (inset box-shadow), auto-removed after 500ms
+- **Toast notification:** "Synced from [Panel Name]" displayed via `showToast()` after each sync click
+
+#### Change 5 — Complete Removal of Old Global Sync System
+- **Removed from JS:** `syncModeEnabled` property, `_scrollSyncLock` property, `_bindScrollSync()` call from constructor, entire `_bindScrollSync()` method definition (including inner functions `debounce()`, `getScrollable()`, `getScrollFraction()`, `setScrollFraction()`, `onPanelScroll()`), three debounced scroll handler variables, scroll event listener bindings on `writerPanelBody`, `pageforgeRaw`, `humanRaw`, iframe load-event scroll re-attachment, `_attachIframeScrollHandler()` method, `syncModeToggle` DOM reference, sync toggle change event listener, `_updateSyncModeIndicator()` method, `_attachIframeClickHandler()` method, `_syncToBlock()` method, `_highlightInIframe()` method, `_syncWriterPanel()` method, `_syncHumanPanelIntelligent()` method, `_highlightAndScroll()` method, `_findStructuralId()` method, `_extractActivityNumber()` method, `_extractHeadingText()` method, `_extractWordGroups()` method, `_findByWordGroups()` method, sync-mode-disable guard in `_restoreScrollFromAnchor()`, `syncModeEnabled` check in `_bindEvents()` sync toggle listener
+- **Removed from HTML:** `<label class="review-sync-toggle">`, `<input type="checkbox" id="sync-mode-toggle">`, `<span class="review-sync-slider">`, `<span class="review-sync-label">`
+- **Removed from CSS:** `.review-sync-toggle` (all variants), `.review-sync-slider` (all variants including `::after`, checked states), `.review-sync-label`, `.review-sync-active`
+
+#### Change 6 — CSS Additions
+- `.review-sync-btn` — compact button styling matching panel header layout: `font-size: 0.68rem`, `padding: 0.2rem 0.5rem`, surface background, border colour, secondary text, 4px border-radius, smooth transitions
+- `.review-sync-btn:hover` — primary-light background, primary border/text on hover
+- `.review-sync-btn-pulse` — primary background, white text, primary border, box-shadow glow for button click feedback (400ms duration)
+- `.review-panel-sync-flash` — inset box-shadow (`2px var(--color-primary)`) for target panel flash on sync jump (500ms duration via `transition: box-shadow 0.3s ease-out`)
+
 ### Test Coverage
 
-45 new tests in `tests/reviewPageChanges.test.js`:
+72 tests in `tests/reviewPageChanges.test.js`:
 
 | Category | Count | Tests |
 |----------|-------|-------|
-| Toolbar relocation | 8 | `.review-toolbar` exists, positioned after header/before layout, contains all 3 controls, header has no controls, no `.review-header-right`, header has back/title/badge only, CSS defined, responsive |
-| Conversion Error Log rename | 8 | Button text correct, no old text, page title, page heading, new method name, no old method name, JSDoc updated, no old heading |
-| Scroll sync structure | 12 | `_bindScrollSync` exists, called in constructor, `_scrollSyncLock` exists, lock set/release, sync guard, lock guard, iframe scroll handler, writer scroll bind, raw view scroll binds, debounce helper, raw/rendered mode handling, `getScrollable` function |
-| Raw HTML scroll preservation | 11 | `normaliseTextForMatch`, `_extractVisibleAnchor`, `_scrollRawViewToAnchor`, `_scrollIframeToAnchor`, `_scrollWriterToAnchor`, `_restoreScrollFromAnchor`, anchor-before-toggle ordering, `requestAnimationFrame`, proportional fallback, sync disable during restore, sync state restoration |
-| `normaliseTextForMatch` unit tests | 6 | null/empty, HTML stripping, lowercase, whitespace collapse, macron preservation, entity decoding, punctuation removal |
+| Toolbar relocation (Phase 11) | 8 | `.review-toolbar` exists, positioned after header/before layout, contains Raw HTML + Error Log buttons, header has no controls, no `.review-header-right`, header has back/title/badge only, CSS defined, responsive |
+| Conversion Error Log rename (Phase 11) | 8 | Button text correct, no old text, page title, page heading, new method name, no old method name, JSDoc updated, no old heading |
+| Per-panel Sync button DOM structure | 9 | Sync button in PageForge header, Sync button in Human Reference header, Sync button in Writer Template header, consistent `review-sync-btn` class on all three, all use &#8644; Sync text, CSS for `.review-sync-btn`, CSS for `.review-sync-btn-pulse`, CSS for `.review-panel-sync-flash` |
+| Global Sync toggle complete removal | 13 | No `sync-mode-toggle` checkbox, no `.review-sync-toggle` label, no `syncModeEnabled`, no `_scrollSyncLock`, no `_bindScrollSync`, no `_attachIframeScrollHandler`, no `_attachIframeClickHandler`, no `_updateSyncModeIndicator`, no debounced scroll handlers, no `.review-sync-toggle` CSS, no `.review-sync-slider` CSS, no `.review-sync-active` CSS, no 6-tier sync methods |
+| One-shot align trigger | 7 | `_onSyncClick` exists, accepts `sourcePanel`, bound to all three buttons in `_bindEvents`, calls `_extractVisibleAnchor(sourcePanel)`, filters out source panel from targets, `_syncPanelToAnchor` exists, handles rendered/raw modes |
+| Content-matching helpers retained | 8 | `normaliseTextForMatch`, `_extractVisibleAnchor`, `_scrollRawViewToAnchor`, `_scrollIframeToAnchor`, `_scrollWriterToAnchor`, `_extractAnchorFromRawView`, `fallbackFraction` proportional fallback, `_restoreScrollFromAnchor` for Raw HTML toggle |
+| Visual feedback | 4 | Pulse class added to clicked button, pulse class removed after timeout, flash class on target panels, toast notification after sync |
+| No continuous scroll-coupling | 6 | No `addEventListener('scroll'` bindings, no `onPanelScroll`, no `getScrollable`, no `getScrollFraction`, no `setScrollFraction`, no `debounce` function |
+| Raw HTML scroll preservation (Phase 11) | 3 | Anchor extraction before toggle, `requestAnimationFrame` for post-render, proportional fallback |
+| `normaliseTextForMatch` unit tests | 7 | null/empty, HTML stripping, lowercase, whitespace collapse, macron preservation, entity decoding, punctuation removal |
