@@ -34,6 +34,7 @@
 23. [Review Page UX Improvements](#23-review-page-ux-improvements-phase-11)
 24. [Per-Panel Sync Buttons](#24-per-panel-sync-buttons-phase-12)
 25. [OSAI201 Layout-Table Sidebar Defects](#25-osai201-layout-table-sidebar-defects-phase-13)
+26. [Years 4–6 Lesson Page Recalibration](#26-years-46-lesson-page-recalibration-phase-13)
 
 ---
 
@@ -64,6 +65,7 @@ PageForge is a client-side web application that reads Writer Template `.docx` fi
 17. **Standalone conversion error log page** → dedicated calibrate.html page (renamed from "Calibration Comparison Tool" to "Conversion Error Log"), with Step 1 (Upload Human Reference Files) removed and remaining steps renumbered; auto-populates form fields from sessionStorage keys set by the review page's "Copy to Snapshot" buttons on tab focus; managed by CalibrateApp controller class (DONE — Phase 10, renamed Phase 11)
 18. **Review page UX improvements** → toolbar row relocated from header to dedicated row below title bar, "Calibration Tool" renamed to "Conversion Error Log" across all pages/code/labels, scroll-position preservation when toggling Raw HTML view using textual-anchor fuzzy matching with proportional fallback, reusable `normaliseTextForMatch` static method for text normalisation (DONE — Phase 11)
 19. **Per-panel Sync buttons** → replaced global continuous Sync toggle with three per-panel one-shot Sync buttons (one per panel: PageForge Output, Human Reference, Writer Template); each button extracts a textual anchor from its panel's current viewport position and scrolls the other two panels to the best-matching content using tiered fallback (exact normalised match → fuzzy word match → proportional scroll); works across rendered and Raw HTML views; visual feedback via button pulse and target panel flash; no continuous scroll-coupling (DONE — Phase 12)
+20. **Years 4–6 lesson page recalibration** → lesson page `<title>` stripped of decimal lesson number (now `MODULE_CODE English Title` on BOTH overview and lesson pages); lesson page `<h1><span>` uses the lesson-specific title (first `[H2]` in body, `"Lesson N:"` prefix stripped) via new `pageData.lessonTitle` extracted by `HtmlConverter._extractLessonTitle()`; trailing space removed from inside `<h1><span>` content (both overview and lesson); Te Reo `<h1>` suppressed on lesson pages for 1-3 / 4-6 / 7-8 (driven by `headerPattern.lessonPage.titles`); `tooltip="Overview"` removed from lesson `#module-menu-button` (driven by `moduleMenu.lessonPage.tooltipOn: null`); lesson module menu rewritten to new two-tier structure — `<h5>{sectionHeading}</h5><p>{writer's intro verbatim}</p><ul>…</ul>` — where `sectionHeadings` come from template config (`Learning Intentions` / `How will I know if I've learned it?`) and the writer's own intro text (e.g. "We are learning:", "I can:", "You will show your understanding by:") is preserved as the paragraph, reversing the prior rule that substituted config labels; new `templates.json` schema fields: `moduleMenu.lessonPage.sectionHeadings`, `moduleMenu.lessonPage.tooltipOn: null`, `headerPattern.lessonPage.titleSource: "lesson"` (DONE — Phase 13)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -645,36 +647,69 @@ Module code prefix indicates year level and determines the `template` attribute 
 Overview page (-00):
   Header: #module-code has full MODULE_CODE
   h1 spans: Module code prefix stripped, English + Te Reo split on double-space
+           (NO trailing space inside span — Phase 13)
   Module menu: Full tabbed (Overview + Information tabs) with routed content
     - Tooltip on #module-menu-content only (NOT on #module-menu-button)
     - Content before [MODULE INTRODUCTION] → tab panes
     - Content after [MODULE INTRODUCTION] → <div id="body">
-  Title element: MODULE_CODE 0.0 English Title (no Te Reo, no module prefix)
+  Title element: MODULE_CODE English Title
+                 (NO decimal lesson number — Phase 13)
   Footer: next-lesson + home-nav only
 
 Lesson page (-01, -02, etc.):
   Header: #module-code has decimal lesson number (1.0, 2.0, etc.)
-  h1 span: MODULE title (not lesson-specific title)
+  h1 span: LESSON-specific title (first [H2] in body, "Lesson N:" prefix stripped)
+           — Phase 13; extracted via HtmlConverter._extractLessonTitle()
+           and passed to the skeleton as pageData.lessonTitle.
+           Falls back to the module title with a console warning if missing.
+           NO trailing space inside span.
+  Te Reo h1: suppressed on 1-3 / 4-6 / 7-8 / bilingual lesson pages (titles
+           array is ["english"]); emitted on 9-10 and NCEA lesson pages
+           (titles array is ["english", "tereo"]).
   Module menu: Simplified (no tabs), populated from [Lesson Overview] content
+    - NO tooltip attribute on #module-menu-button (Phase 13; tooltipOn: null)
     - Content between [Lesson Overview] and [Lesson Content] → module menu
-    - "We are learning:" and "I can:" labels from template config (not writer text)
+    - Two-tier structure (Phase 13):
+        <h5>{sectionHeading from config}</h5>
+        <p>{writer's intro text verbatim, e.g. "We are learning:"}</p>
+        <ul><li>bullet items...</li></ul>
+      sectionHeadings come from template config; writer intro text is
+      preserved verbatim (reversing the prior "labels from config" rule).
     - List items have italic stripped, description paragraph included
     - [Lesson Content] marks start of body content
-  Title element: MODULE_CODE N.0 English Title (includes decimal lesson number)
+  Title element: MODULE_CODE English Title
+                 (NO decimal lesson number — Phase 13)
   Footer: prev + next + home (middle pages), prev + home (final page)
 
 Years 9-10/NCEA: DUAL h1 titles (English + Te Reo) on EVERY page
 ```
 
-### Module Menu Label Patterns (Lesson Pages)
+### Module Menu Structure (Lesson Pages) — Phase 13 Two-Tier
 
-| Template Level | Learning Label | Success Label |
-|----------------|---------------|---------------|
-| 1-3, 4-6 | `<h5>We are learning:</h5>` | `<h5>You will show your understanding by:</h5>` |
-| 7-8 | `<h5>We are learning:</h5>` | `<h5>I can:</h5>` |
-| 9-10 | `<h5>We are learning:</h5>` | `<h5>I can:</h5>` |
+Lesson-page module menus now use a two-tier structure. The section heading
+(an `<h5>`) comes from template config; the intro paragraph (a `<p>`) is
+taken verbatim from the writer's own text. This reverses the earlier rule
+that substituted config label text for the writer's intro.
 
-**Critical:** These labels are ALWAYS normalised to the standard patterns above regardless of what the writer used.
+**Section headings** (new — from `moduleMenu.lessonPage.sectionHeadings`):
+
+| Template Level | Learning section `<h5>` | Success section `<h5>` |
+|----------------|-------------------------|------------------------|
+| 1-3, 4-6, 7-8, 9-10, NCEA | `Learning Intentions` | `How will I know if I've learned it?` |
+
+**Intro paragraphs** (now verbatim from writer text — fallback `labels` in
+`moduleMenu.lessonPage.labels` used only when no writer paragraph is
+detected):
+
+| Template Level | Learning intro `<p>` (fallback) | Success intro `<p>` (fallback) |
+|----------------|----------------------------------|---------------------------------|
+| 1-3, 4-6 | `We are learning:` | `You will show your understanding by:` |
+| 7-8, 9-10, NCEA | `We are learning:` | `I can:` |
+
+**Critical (Phase 13 reversal):** Intro text is now preserved VERBATIM from
+the writer's paragraph (whatever phrasing they used — "We are learning:",
+"I can:", "You will show your understanding by:", "Success Criteria", etc.).
+The section heading above it is the only text sourced from template config.
 
 ### Footer Navigation
 
@@ -897,11 +932,19 @@ This content goes into `<div id="body">` as normal body content.
 On lesson pages (`-01`, `-02`, etc.), content is split into TWO zones by the `[LESSON OVERVIEW]` and `[LESSON CONTENT]` tags:
 
 **ZONE 1 — Module menu** (content between `[LESSON OVERVIEW]` and `[LESSON CONTENT]`):
-This content is routed into the module menu with template config labels:
+This content is routed into the module menu using the Phase 13 two-tier structure:
 - Description paragraph(s) before the first label section are included
-- "We are learning:" / "I can:" labels come from template config, NOT from the writer's text
-- List items under each label section populate the menu
+- **Section heading `<h5>` comes from template config** (`sectionHeadings.learning`
+  and `sectionHeadings.success` — e.g. `Learning Intentions` and
+  `How will I know if I've learned it?`)
+- **Intro paragraph `<p>` is preserved VERBATIM from the writer's text** (e.g.
+  "We are learning:", "I can:", "You will show your understanding by:",
+  "Success Criteria") — this reverses the earlier rule of substituting
+  config labels for writer text. Config `labels` are used only as a fallback
+  when no intro paragraph is detected.
+- List items under each section populate the `<ul>` after the intro paragraph
 - Italic formatting (`<i>`) is stripped from module menu list items and text
+- Emitted per section: `<h5>{sectionHeading}</h5><p>{writer intro}</p><ul>…</ul>`
 
 **ZONE 2 — Body content** (content after `[LESSON CONTENT]` through `[End page]`):
 This content goes into `<div id="body">` as normal body content, starting with the lesson heading.
@@ -1414,8 +1457,16 @@ User clicks "Conversion Error Log" button on review page (Phase 10, renamed Phas
       },
       "lessonPage": {
         "type": "simplified",
-        "tooltipOn": "module-menu-button",
-        "headingLevel": "h5"
+        "tooltipOn": null,
+        "headingLevel": "h5",
+        "sectionHeadings": {
+          "learning": "Learning Intentions",
+          "success": "How will I know if I've learned it?"
+        },
+        "labels": {
+          "learning": "We are learning:",
+          "success": "I can:"
+        }
       }
     },
     "titlePattern": {
@@ -1429,7 +1480,7 @@ User clicks "Conversion Error Log" button on review page (Phase 10, renamed Phas
       },
       "lessonPage": {
         "moduleCodeContent": "{lessonNumberZeroPadded}",
-        "titleSource": "module",
+        "titleSource": "lesson",
         "titles": ["english"]
       }
     },
@@ -2751,3 +2802,251 @@ fixture `_buildOsaiSnippet()` assembles a three-block content array:
    holds a clean URL even when a red-coloured run (such as a
    trailing space) immediately follows the hyperlink.
 
+
+---
+
+## 26. YEARS 4–6 LESSON PAGE RECALIBRATION (Phase 13)
+
+### Overview
+
+Phase 13 applies a calibration snapshot recalibration to PageForge's Years 4–6
+lesson page output based on a side-by-side comparison of `OSAI201-01.html`
+against the human developer's correct reference file. Four structural
+discrepancies in the `<head>` and `<header>` regions plus the module menu
+were identified and fixed at the template-engine, html-converter, and
+configuration layers. Although the trigger was a Years 4–6 lesson page, each
+fix was examined for applicability to the other template levels (1–3, 7–8,
+9–10, NCEA, bilingual, fundamentals, inquiry, combo) and applied consistently
+where the structural pattern matches the shared LMS template rather than
+being year-specific.
+
+All existing phase tests continue to pass. The 488 pre-existing tests plus
+23 new Phase 13 tests (in `tests/years46LessonRecalibration.test.js`) total
+511 tests — all passing, 0 failing.
+
+**Status:** DONE — 2 source files modified, 1 configuration file modified,
+3 existing tests updated (Phase 7 Change 2 superseded by Phase 13), 1 new
+test file added with 23 tests, 511 total tests passing.
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `js/template-engine.js` | `<title>` element no longer includes lesson decimal number (Discrepancy 1); `_generateHeader()` honours new `headerPattern.lessonPage.titleSource: "lesson"` to render lesson-specific title in `<h1><span>` (Discrepancy 2) with the `"Lesson N:"` prefix stripped via new `TemplateEngine._stripLessonPrefix()` static helper; trailing space inside `<h1><span>` removed (both overview + lesson); Te Reo `<h1>` suppression tightened — now requires `titles` array to include `"tereo"` (no auto-emit when a Te Reo title was incidentally parsed); lesson-page `#module-menu-button` omits the `tooltip="Overview"` attribute when `moduleMenu.lessonPage.tooltipOn` is `null` (Discrepancy 3); embedded fallback data updated to mirror `templates.json` with `sectionHeadings`, `tooltipOn: null`, and `titleSource: "lesson"` |
+| `js/html-converter.js` | New `_extractLessonTitle(bodyBlocks)` method scans body content blocks for the first `[H1]`/`[H2]` heading and returns its clean text (with .docx bold/italic artefacts stripped); returns `null` if no heading found; called by `assemblePage()` for lesson pages; extracted title stored on `skeletonData.lessonTitle` for the template engine to consume. `_generateLessonMenuContent()` rewritten (Discrepancy 4) — reads `sectionHeadings` from `config.moduleMenu.lessonPage.sectionHeadings`; captures the writer's verbatim intro text during section-boundary detection (instead of discarding it); emits the new two-tier structure `<h5>{sectionHeading}</h5><p>{writer intro}</p><ul>…</ul>`; sections with no list items + no detected intro are suppressed; empty-content fallback preserves the old heading-only behaviour; uses `labels` from config only as fallback when no writer intro paragraph exists |
+| `templates/templates.json` | `baseConfig.moduleMenu.lessonPage`: added `sectionHeadings` object (`learning: "Learning Intentions"`, `success: "How will I know if I've learned it?"`); changed `tooltipOn` from `"module-menu-button"` to `null`; preserved existing `labels` as fallback. `baseConfig.headerPattern.lessonPage.titleSource` changed from `"module"` to `"lesson"`. All per-template `labels` overrides for lesson-page intros preserved so writer fallback retains the historical year-specific wording |
+| `tests/lmsCompliance.test.js` | Phase 7 Change 2 block replaced — the 3 tests that asserted `"0.0"` / `"1.0"` / `"3.0"` inside `<title>` now assert the Phase 13 rule (no decimal in `<title>`) and verify the decimal is still present in `#module-code`. The rest of the Phase 7 suite is untouched |
+| `tests/years46LessonRecalibration.test.js` | New file — 23 tests covering all four discrepancies, lesson-title extraction, prefix stripping, fallback-with-warning behaviour, Te Reo suppression across levels, overview-page invariance, two-tier module menu rendering, and an end-to-end OSAI201-01 calibration snapshot assertion |
+
+### Discrepancy-by-Discrepancy Summary
+
+#### Discrepancy 1 — Lesson page `<title>` must NOT include the lesson decimal
+- **Previous:** `<title>OSAI201 1.0 AI Digital Citizenship</title>` (lesson)
+  and `<title>OSAI201 0.0 AI Digital Citizenship</title>` (overview)
+- **Human reference:** `<title>OSAI201 AI Digital Citizenship</title>`
+- **Fix:** `TemplateEngine.generateSkeleton()` now builds `titleContent` as
+  `pageData.moduleCode + ' ' + englishOnlyTitle` for BOTH overview and lesson
+  pages, removing the decimal entirely. `#module-code` display still shows
+  the decimal (`1.0`, `2.0`, etc.) — only the `<title>` element changed.
+- **Applied to:** All templates — the `<title>` rule is LMS-wide, not
+  year-specific, so Years 1–3, 4–6, 7–8, 9–10, NCEA, bilingual,
+  fundamentals, inquiry, and combo all get the decimal-free `<title>`.
+- **Open question noted:** The overview-page behaviour was also changed
+  because the Phase 7 pattern (`MODULE_CODE 0.0 English Title`) did not
+  match the human reference pattern (`MODULE_CODE English Title`). If an
+  overview-specific human reference later reveals the `0.0` prefix IS
+  expected in the overview, this decision should be revisited.
+
+#### Discrepancy 2 — Lesson header `<h1>` must be lesson-specific + single + no trailing space
+- **Previous:** Lesson page emitted `<h1><span>AI Digital Citizenship </span></h1>`
+  (module title + trailing space) plus auto-added Te Reo `<h1>` if a Te Reo
+  title was present from title-bar parsing.
+- **Human reference:** `<h1><span>What is AI?</span></h1>` (single, lesson
+  title, no trailing space, no Te Reo on 4-6).
+- **Fix:**
+  1. New `HtmlConverter._extractLessonTitle(bodyBlocks)` scans the body
+     content blocks for the first `[H2]` (or `[H1]`) heading tag and returns
+     its clean text.
+  2. `HtmlConverter.assemblePage()` calls this for lesson pages and passes
+     the result as `skeletonData.lessonTitle`.
+  3. `TemplateEngine._generateHeader()` reads `headerPattern.lessonPage.titleSource`:
+     - `"lesson"` (new default for base config) → uses `pageData.lessonTitle`,
+       stripped of `"Lesson N:"` / `"Lesson N -"` prefix via
+       `TemplateEngine._stripLessonPrefix()`. Falls back to module title with
+       a `console.warn` if `pageData.lessonTitle` is missing.
+     - `"module"` (legacy) → uses the module English title (preserved as an
+       option for any template that explicitly needs module-title headers).
+  4. Trailing space inside `<h1><span>` removed — applies to BOTH overview
+     and lesson pages, both English and Te Reo h1s.
+  5. Te Reo `<h1>` emission now requires `titles` array to include `"tereo"`.
+     Previously it auto-emitted whenever `tereoTitle` existed; now the
+     array must explicitly allow it. This means 1-3 / 4-6 / 7-8 lesson
+     pages never emit a Te Reo h1 regardless of parsed title content.
+- **Applied to:** All templates. Overview pages for 9-10 and NCEA continue
+  to emit Te Reo h1 because their `headerPattern.overviewPage.titles` is
+  `["english", "tereo"]`. Bilingual template continues to emit Te Reo h1
+  on both page types because it overrides both overview and lesson `titles`
+  to `["english", "tereo"]`.
+
+#### Discrepancy 3 — Lesson `#module-menu-button` must have no `tooltip` attribute
+- **Previous:** Lesson page emitted
+  `<div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>`.
+- **Human reference:** `<div id="module-menu-button" class="circle-button btn1"></div>`.
+- **Fix:** `moduleMenu.lessonPage.tooltipOn` changed from `"module-menu-button"`
+  to `null` in `templates.json` baseConfig. `_generateModuleMenu()` already
+  respected this value; changing the config is sufficient. Overview-page
+  behaviour is unaffected — the `tooltip="Overview"` attribute still appears
+  on `#module-menu-content` because `moduleMenu.overviewPage.tooltipOn`
+  remains `"module-menu-content"`.
+- **Applied to:** All templates — lesson pages across 1–3, 4–6, 7–8, 9–10,
+  NCEA, bilingual, fundamentals, inquiry, and combo all inherit the base
+  `tooltipOn: null`.
+
+#### Discrepancy 4 — Two-tier module menu structure (section heading + writer intro + list)
+- **Previous:** Lesson module menu emitted:
+  ```
+  <h5>We are learning:</h5>     ← config labels (overriding writer text)
+  <ul><li>…</li></ul>
+  <h5>You will show your understanding by:</h5>
+  <ul><li>…</li></ul>
+  ```
+  The writer's exact intro text was discarded in favour of config label text.
+- **Human reference:**
+  ```
+  <h5>Learning Intentions</h5>   ← LMS section title (new config key)
+  <p>We are learning:</p>        ← writer's verbatim intro paragraph
+  <ul><li>…</li></ul>
+  <h5>How will I know if I've learned it?</h5>
+  <p>I can:</p>
+  <ul><li>…</li></ul>
+  ```
+- **Fix:**
+  1. New `templates.json` field `moduleMenu.lessonPage.sectionHeadings`
+     with `learning` and `success` keys. Default values
+     `"Learning Intentions"` and `"How will I know if I've learned it?"` in
+     the baseConfig. The existing `labels` field is retained as a fallback
+     for the intro paragraph text when the writer didn't provide one.
+  2. `HtmlConverter._generateLessonMenuContent()` rewritten. During the
+     section-boundary detection loop (which matches phrases like "we are
+     learning", "i can", "success criteria", "you will show"), the writer's
+     `cleanText` is now captured into `learningIntroText` / `successIntroText`
+     variables instead of being skipped. Rendering then emits, per section:
+     ```
+     <h5>{sectionHeadings.learning|success}</h5>
+     <p>{writer intro text verbatim}</p>
+     <ul>{list items}</ul>
+     ```
+  3. Empty-section handling: a section with neither intro text NOR items is
+     suppressed entirely. A section with intro but no items emits `<h5><p>`
+     only (no empty `<ul>`). A section with items but no detected intro
+     falls back to the config `labels` text for the `<p>`.
+  4. When `menuContentBlocks` is empty, both section headings are still
+     emitted with placeholder HTML comments, preserving the previous
+     empty-fallback layout.
+- **Applied to:** All templates — the two-tier rule comes from the LMS
+  refresh template and is not year-specific. Years 1–3, 4–6, 7–8, 9–10, and
+  NCEA all inherit the same default `sectionHeadings`. The per-template
+  `labels` overrides (preserving historical phrasing like "You will show
+  your understanding by:" for 1-3 / 4-6 vs "I can:" for 7-8 / 9-10 / NCEA)
+  remain in place as fallbacks for modules where the writer omitted the
+  intro paragraph.
+
+### New Public APIs
+
+**`TemplateEngine._stripLessonPrefix(text)`** (static helper) — Strips
+`"Lesson N:"`, `"Lesson N"`, `"Lesson N -"`, or `"Lesson N –"` prefix from
+a lesson heading text. Used inside `_generateHeader()` when `titleSource`
+is `"lesson"`. Returns empty string for null/non-string inputs.
+
+**`HtmlConverter._extractLessonTitle(bodyBlocks)`** — Scans body content
+blocks for the first `[H1]` or `[H2]` heading tag. Returns the clean
+heading text with wrapping bold/italic `.docx` artefacts stripped via
+`_stripFullHeadingFormatting()`. Returns `null` if no heading found. Called
+from `assemblePage()` for lesson pages; the result populates
+`skeletonData.lessonTitle`.
+
+### New `templates.json` Schema Fields
+
+| Field | Location | Values | Purpose |
+|-------|----------|--------|---------|
+| `moduleMenu.lessonPage.sectionHeadings` | baseConfig + overrides | `{learning: string, success: string}` | LMS section heading text emitted as `<h5>` above the writer's intro paragraph on lesson pages. Defaults: `"Learning Intentions"` and `"How will I know if I've learned it?"` |
+| `moduleMenu.lessonPage.tooltipOn: null` | baseConfig | `null` \| `"module-menu-button"` | Controls the tooltip attribute on lesson-page menu button. Default is now `null` (no attribute). Retained as `"module-menu-button"` capability for any template that explicitly needs it |
+| `headerPattern.lessonPage.titleSource: "lesson"` | baseConfig | `"lesson"` \| `"module"` | Source of the lesson-page `<h1><span>` text. `"lesson"` (default) uses `pageData.lessonTitle`; `"module"` uses the module English title (legacy behaviour) |
+
+### Lesson-Title Extraction Pipeline Addendum
+
+The lesson-title extraction step is performed by `HtmlConverter` during
+`assemblePage()`, AFTER the content split (`_splitLessonContent()`) and
+BEFORE skeleton generation. Pipeline placement:
+
+```
+HtmlConverter.assemblePage(pageData, config, moduleInfo):
+  → _splitLessonContent(pageData) → {menuBlocks, bodyBlocks}
+  → _extractLessonTitle(bodyBlocks)        ← NEW (Phase 13)
+  → build skeletonData with lessonTitle
+  → _templateEngine.generateSkeleton(config, skeletonData)
+    → _generateHeader() consults titleSource + lessonTitle
+    → _stripLessonPrefix() for display
+  → convertPage(bodyPageData, config)
+  → _replaceModuleMenuContent()
+    → _generateLessonMenuContent() emits 2-tier structure
+```
+
+This keeps lesson-title extraction inside HtmlConverter (rather than
+page-boundary.js) because the split between menu blocks and body blocks is
+a concern of HtmlConverter, and the lesson title is explicitly defined as
+"first [H2] in the BODY blocks" — not first [H2] in the whole page segment.
+If moved to PageBoundary, the extraction would have to duplicate the
+`_splitLessonContent()` logic, which is undesirable.
+
+### Test Coverage
+
+23 tests in `tests/years46LessonRecalibration.test.js`:
+
+| Category | Tests |
+|----------|-------|
+| Discrepancy 1 (no decimal in `<title>`) | 3 — lesson title, overview title, `#module-code` decimal preserved |
+| Discrepancy 2 (lesson h1) | 7 — lessonTitle in h1, no trailing space (lesson + overview), single h1 (4-6), dual h1 (9-10), prefix stripping, fallback with warning, `_extractLessonTitle` unit test |
+| Discrepancy 3 (menu button tooltip) | 4 — 4-6 / 1-3 / 7-8 lesson pages, overview invariance |
+| Discrepancy 4 (two-tier menu) | 7 — learning section structure, success section structure, verbatim writer intro preservation, intro-without-items, empty fallback, sectionHeadings consistency across years, legacy labels retained |
+| End-to-end calibration snapshot | 1 — OSAI201-01 header + title + menu button assertion in a single skeleton |
+| Phase 7 regression cover | 1 — updated Phase 7 Change 2 tests in `lmsCompliance.test.js` now assert the new no-decimal rule |
+
+### Invariants Locked In By Phase 13
+
+1. **`<title>` never contains a lesson decimal** across all templates and
+   page types. Format is always `MODULE_CODE English Title`.
+2. **Lesson page `<h1><span>` uses the lesson-specific title** (first `[H2]`
+   in body with `"Lesson N:"` prefix stripped) for all templates whose
+   `headerPattern.lessonPage.titleSource` is `"lesson"`. Falls back to
+   module title with a console warning when extraction fails.
+3. **No trailing space inside any `<h1><span>` content**, for both
+   overview and lesson pages.
+4. **Te Reo `<h1>` is opt-in via `titles` array**, never auto-emitted from
+   parsed Te Reo title content.
+5. **Lesson `#module-menu-button` has no `tooltip` attribute** unless a
+   template explicitly sets `tooltipOn: "module-menu-button"`.
+6. **Lesson module menu always emits the two-tier structure** when there is
+   content: `<h5>` section heading (from config) + `<p>` writer intro
+   (verbatim) + `<ul>` items.
+7. **Writer intro paragraphs are preserved verbatim** — config `labels` are
+   used only as a fallback when the writer didn't provide an intro line.
+8. **Overview-page behaviour is unchanged by Phase 13**: tabbed menu,
+   `tooltip="Overview"` on `#module-menu-content`, dual h1 for 9-10 / NCEA /
+   bilingual, full module code in `#module-code`. All verified by tests.
+
+### Open Questions / Future Considerations
+
+- **Overview `<title>` change applies too.** The recalibration removed the
+  decimal from the overview `<title>` as well as the lesson `<title>`,
+  because the human pattern does not include the decimal anywhere. If a
+  future overview-page reference reveals the `0.0` prefix IS actually
+  expected on overview pages, the fix would be a minor branch inside
+  `generateSkeleton()` to restore `MODULE_CODE 0.0 Title` for overviews
+  only. The current rule was chosen for consistency with the human pattern
+  observed to date.
+- **Prefix-stripping edge cases.** The lesson-prefix regex
+  (`^\s*Lesson\s+\d+\s*[:.\-–—]?\s*`) handles common forms. Non-Latin
+  lesson-prefix formats (e.g., `Akoranga N:`) are not currently stripped —
+  if/when encountered, extend `TemplateEngine._stripLessonPrefix()` to
+  cover them.

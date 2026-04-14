@@ -97,6 +97,15 @@ class HtmlConverter {
             menuContentBlocks = lessonSplit.menuBlocks;
         }
 
+        // Phase 13: For lesson pages, extract the lesson-specific title from the
+        // first [H2] heading in the body content (the lesson's own title). Strip
+        // "Lesson N:" prefix for display. Passed to the skeleton so the header
+        // <h1> uses the lesson title rather than the module title.
+        var lessonTitle = null;
+        if (pageData.type === 'lesson') {
+            lessonTitle = this._extractLessonTitle(bodyPageData.contentBlocks);
+        }
+
         var skeletonData = {
             type: pageData.type,
             lessonNumber: pageData.lessonNumber,
@@ -104,6 +113,7 @@ class HtmlConverter {
             moduleCode: moduleInfo.moduleCode,
             englishTitle: moduleInfo.englishTitle || '',
             tereoTitle: moduleInfo.tereoTitle || null,
+            lessonTitle: lessonTitle,
             totalPages: moduleInfo.totalPages,
             pageIndex: pageData.type === 'overview' ? 0 : pageData.lessonNumber
         };
@@ -262,6 +272,42 @@ class HtmlConverter {
         var bodyBlocks = blocks.slice(contentIndex + 1);
 
         return { menuBlocks: menuBlocks, bodyBlocks: bodyBlocks };
+    }
+
+    /**
+     * Extract the lesson-specific title from body content blocks.
+     *
+     * Phase 13: Lesson pages display the lesson's own title (the first [H2]
+     * heading following [Lesson Content]) in the header <h1>, not the module
+     * title. The "Lesson N:" prefix is stripped here (via TemplateEngine
+     * helper) when the skeleton is generated.
+     *
+     * @param {Array<Object>} bodyBlocks - Body content blocks for the lesson
+     * @returns {string|null} Raw heading text of the first [H2], or null if none found
+     */
+    _extractLessonTitle(bodyBlocks) {
+        if (!bodyBlocks || bodyBlocks.length === 0) return null;
+
+        for (var i = 0; i < bodyBlocks.length; i++) {
+            var block = bodyBlocks[i];
+            if (block.type !== 'paragraph' || !block.data) continue;
+            var text = this._buildFormattedText(block.data);
+            var tagResult = this._normaliser.processBlock(text);
+            var tags = tagResult.tags || [];
+            for (var t = 0; t < tags.length; t++) {
+                var tag = tags[t];
+                // First [H1] or [H2] heading tag in the body is the lesson title.
+                if (tag.category === 'heading' && (tag.level === 1 || tag.level === 2)) {
+                    var clean = (tagResult.cleanText || '').trim();
+                    if (clean) {
+                        // Strip wrapping bold/italic artefacts from .docx output
+                        clean = this._stripFullHeadingFormatting(clean);
+                        return clean;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     // ------------------------------------------------------------------
@@ -3396,25 +3442,37 @@ class HtmlConverter {
      * @returns {string} HTML content
      */
     _generateLessonMenuContent(pageData, config, moduleInfo, menuContentBlocks) {
-        var labels = (config.moduleMenu && config.moduleMenu.lessonPage && config.moduleMenu.lessonPage.labels)
-            ? config.moduleMenu.lessonPage.labels
-            : { learning: 'We are learning:', success: 'I can:' };
+        var menuCfg = (config.moduleMenu && config.moduleMenu.lessonPage) || {};
+        var sectionHeadings = menuCfg.sectionHeadings || {
+            learning: 'Learning Intentions',
+            success: "How will I know if I've learned it?"
+        };
+        // Legacy "labels" (e.g., "We are learning:" / "I can:") are retained in
+        // templates.json as fallback text for the intro paragraph when the
+        // writer did not provide one — Phase 13 behaviour prefers the writer's
+        // own intro text verbatim.
+        var fallbackLabels = menuCfg.labels || {
+            learning: 'We are learning:',
+            success: 'I can:'
+        };
         var indent = '          ';
 
         if (!menuContentBlocks || menuContentBlocks.length === 0) {
-            // No content — use empty placeholders
+            // No content — emit section headings with placeholder comments
             var html = '';
-            html += indent + '<h5>' + this._escContent(labels.learning) + '</h5>\n';
+            html += indent + '<h5>' + this._escContent(sectionHeadings.learning) + '</h5>\n';
             html += indent + '<!-- Learning intentions content -->\n';
-            html += indent + '<h5>' + this._escContent(labels.success) + '</h5>\n';
+            html += indent + '<h5>' + this._escContent(sectionHeadings.success) + '</h5>\n';
             html += indent + '<!-- Success criteria content -->';
             return html;
         }
 
         // Process the menu content blocks to find description, learning, and success sections
         var processedBlocks = this._processAllBlocks(menuContentBlocks);
-        var parts = [];
         var descriptionParts = [];
+        // Writer's intro paragraph text for each section (verbatim, Phase 13).
+        var learningIntroText = null;
+        var successIntroText = null;
         var learningItems = [];
         var successItems = [];
         var currentSection = 'description'; // before any recognised heading
@@ -3433,12 +3491,15 @@ class HtmlConverter {
 
             var cleanText = (pBlock.cleanText || '').trim();
 
-            // Detect section boundaries by matching label-like text
+            // Detect section boundaries by matching label-like text.
+            // Phase 13 — preserve the writer's exact intro text as the <p> for
+            // that section (rather than substituting a config label).
             if (cleanText) {
                 var lowerText = cleanText.toLowerCase().replace(/[*_]/g, '');
                 if (lowerText.indexOf('we are learning') !== -1 ||
                     lowerText.indexOf('learning intention') !== -1) {
                     currentSection = 'learning';
+                    if (learningIntroText === null) learningIntroText = cleanText;
                     i++;
                     continue;
                 }
@@ -3447,6 +3508,7 @@ class HtmlConverter {
                     lowerText.indexOf('you will show') !== -1 ||
                     lowerText.indexOf('how will i know') !== -1) {
                     currentSection = 'success';
+                    if (successIntroText === null) successIntroText = cleanText;
                     i++;
                     continue;
                 }
@@ -3458,6 +3520,7 @@ class HtmlConverter {
                 if (lowerHeading.indexOf('we are learning') !== -1 ||
                     lowerHeading.indexOf('learning intention') !== -1) {
                     currentSection = 'learning';
+                    if (learningIntroText === null) learningIntroText = cleanText;
                     i++;
                     continue;
                 }
@@ -3466,6 +3529,7 @@ class HtmlConverter {
                     lowerHeading.indexOf('you will show') !== -1 ||
                     lowerHeading.indexOf('how will i know') !== -1) {
                     currentSection = 'success';
+                    if (successIntroText === null) successIntroText = cleanText;
                     i++;
                     continue;
                 }
@@ -3525,16 +3589,42 @@ class HtmlConverter {
             result.push(indent + '<p>' + descInner + '</p>');
         }
 
-        // "We are learning:" heading + list
-        result.push(indent + '<h5>' + this._escContent(labels.learning) + '</h5>');
-        if (learningItems.length > 0) {
-            result.push(this._renderMenuList(learningItems, indent));
+        // Phase 13 — new two-tier structure:
+        //   <h5>{sectionHeading}</h5>       (from template config)
+        //   <p>{writer's intro text}</p>    (verbatim, or config fallback)
+        //   <ul>{list items}</ul>
+        var self = this;
+        function renderIntroParagraph(text, fallback) {
+            var introText = (text && text.trim()) ? text.trim() : fallback;
+            if (!introText) return null;
+            introText = self._stripFullItalic(introText);
+            var inner = self._convertInlineFormatting(introText);
+            inner = inner.replace(/<\/?i>/g, '');
+            return indent + '<p>' + inner + '</p>';
         }
 
-        // "I can:" / "You will show..." heading + list
-        result.push(indent + '<h5>' + this._escContent(labels.success) + '</h5>');
-        if (successItems.length > 0) {
-            result.push(this._renderMenuList(successItems, indent));
+        function sectionHasAnyContent(intro, items) {
+            return (intro && intro.trim()) || (items && items.length > 0);
+        }
+
+        // Learning section
+        if (sectionHasAnyContent(learningIntroText, learningItems)) {
+            result.push(indent + '<h5>' + this._escContent(sectionHeadings.learning) + '</h5>');
+            var learningIntroHtml = renderIntroParagraph(learningIntroText, fallbackLabels.learning);
+            if (learningIntroHtml) result.push(learningIntroHtml);
+            if (learningItems.length > 0) {
+                result.push(this._renderMenuList(learningItems, indent));
+            }
+        }
+
+        // Success section
+        if (sectionHasAnyContent(successIntroText, successItems)) {
+            result.push(indent + '<h5>' + this._escContent(sectionHeadings.success) + '</h5>');
+            var successIntroHtml = renderIntroParagraph(successIntroText, fallbackLabels.success);
+            if (successIntroHtml) result.push(successIntroHtml);
+            if (successItems.length > 0) {
+                result.push(this._renderMenuList(successItems, indent));
+            }
         }
 
         return result.join('\n');

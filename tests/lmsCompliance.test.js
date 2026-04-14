@@ -87,12 +87,16 @@ describe('CHANGE 1 — Lesson number decimal format in #module-code', function (
 // CHANGE 2 — <title> Element Format for Lesson Pages
 // ===================================================================
 
-describe('CHANGE 2 — Title element format with decimal lesson number', function () {
+describe('CHANGE 2 — Title element format (Phase 13: no lesson decimal in <title>)', function () {
     var engine = new TemplateEngine();
     engine._data = TemplateEngine._embeddedData();
     engine._loaded = true;
 
-    it('should include 0.0 in overview page title', function () {
+    // Phase 13 supersedes Phase 7 Change 2: the <title> element now contains
+    // MODULE_CODE + English Title only, with NO lesson decimal number, on both
+    // overview and lesson pages (matches human LMS reference).
+
+    it('should NOT include 0.0 in overview page title (Phase 13)', function () {
         var config = engine.getConfig('4-6');
         var skeleton = engine.generateSkeleton(config, {
             type: 'overview',
@@ -104,11 +108,13 @@ describe('CHANGE 2 — Title element format with decimal lesson number', functio
             totalPages: 3,
             pageIndex: 0
         });
-        assert(skeleton.indexOf('<title>MXFU401 0.0 Module Title</title>') !== -1,
-            'Overview title should contain MODULE_CODE 0.0 English Title');
+        assert(skeleton.indexOf('<title>MXFU401 Module Title</title>') !== -1,
+            'Overview title should be MODULE_CODE Title (no 0.0)');
+        assert(skeleton.indexOf('0.0') === -1 || skeleton.indexOf('<title>MXFU401 0.0') === -1,
+            'Overview <title> must NOT contain 0.0');
     });
 
-    it('should include N.0 in lesson page title', function () {
+    it('should NOT include N.0 in lesson page title (Phase 13)', function () {
         var config = engine.getConfig('4-6');
         var skeleton = engine.generateSkeleton(config, {
             type: 'lesson',
@@ -117,14 +123,17 @@ describe('CHANGE 2 — Title element format with decimal lesson number', functio
             moduleCode: 'MXFU401',
             englishTitle: 'Module Title',
             tereoTitle: null,
+            lessonTitle: null,
             totalPages: 3,
             pageIndex: 1
         });
-        assert(skeleton.indexOf('<title>MXFU401 1.0 Module Title</title>') !== -1,
-            'Lesson 1 title should contain MODULE_CODE 1.0 English Title');
+        assert(skeleton.indexOf('<title>MXFU401 Module Title</title>') !== -1,
+            'Lesson title should be MODULE_CODE Title (no 1.0)');
+        assert(skeleton.indexOf('<title>MXFU401 1.0') === -1,
+            'Lesson <title> must NOT contain 1.0');
     });
 
-    it('should include 3.0 for lesson 3 in title', function () {
+    it('should omit lesson decimal from <title> for lesson 3', function () {
         var config = engine.getConfig('7-8');
         var skeleton = engine.generateSkeleton(config, {
             type: 'lesson',
@@ -133,11 +142,14 @@ describe('CHANGE 2 — Title element format with decimal lesson number', functio
             moduleCode: 'OSAI301',
             englishTitle: 'Online Safety Module',
             tereoTitle: null,
+            lessonTitle: null,
             totalPages: 5,
             pageIndex: 3
         });
-        assert(skeleton.indexOf('3.0') !== -1 && skeleton.indexOf('<title>OSAI301 3.0') !== -1,
-            'Lesson 3 title should contain 3.0');
+        assert(skeleton.indexOf('<title>OSAI301 Online Safety Module</title>') !== -1,
+            'Lesson 3 <title> should be MODULE_CODE Title (no 3.0)');
+        assert(skeleton.indexOf('<title>OSAI301 3.0') === -1,
+            'Lesson 3 <title> must NOT contain 3.0');
     });
 });
 
