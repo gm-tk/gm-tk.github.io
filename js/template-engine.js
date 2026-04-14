@@ -182,14 +182,10 @@ class TemplateEngine {
         var englishOnlyTitle = rawTitle.split(/  +/)[0].trim();
 
         // Title element (English only — NEVER Te Reo)
-        // Overview page: MODULE_CODE 0.0 English Title
-        // Lesson page: MODULE_CODE N.0 English Title
-        var titleContent;
-        if (isOverview) {
-            titleContent = pageData.moduleCode + ' 0.0 ' + englishOnlyTitle;
-        } else {
-            titleContent = pageData.moduleCode + ' ' + lessonDisplayNumber + ' ' + englishOnlyTitle;
-        }
+        // Phase 13 recalibration: <title> element is MODULE_CODE + English Title
+        // ONLY — no lesson decimal number is included (matches human LMS reference).
+        // This applies to BOTH overview and lesson pages.
+        var titleContent = pageData.moduleCode + ' ' + englishOnlyTitle;
 
         // HTML attributes
         var htmlAttrs = config.htmlAttributes;
@@ -276,18 +272,41 @@ class TemplateEngine {
             tereoTitle = tereoFromTitle;
         }
 
-        // For lesson pages, title source is 'module' (uses module title, not lesson-specific)
+        // Determine title source (Phase 13):
+        // - Overview pages always use the module title (English)
+        // - Lesson pages honour headerPattern.lessonPage.titleSource:
+        //     "lesson" → use pageData.lessonTitle (first [H2] in body, prefix stripped)
+        //     "module" → use the module English title (legacy behaviour)
+        // Falls back to module title if lessonTitle missing.
         var titleText = englishOnly || englishTitle;
+        if (!isOverview) {
+            var lessonTitleSource = headerPattern.titleSource || 'module';
+            if (lessonTitleSource === 'lesson') {
+                var rawLessonTitle = pageData.lessonTitle || '';
+                rawLessonTitle = TemplateEngine._stripLessonPrefix(rawLessonTitle);
+                if (rawLessonTitle) {
+                    titleText = rawLessonTitle;
+                } else {
+                    if (typeof console !== 'undefined' && console.warn) {
+                        console.warn('TemplateEngine: titleSource="lesson" but no pageData.lessonTitle available for ' +
+                            (pageData.filename || 'unknown page') + ' — falling back to module title.');
+                    }
+                }
+            }
+        }
 
         lines.push('  <div id="header">');
         lines.push('    <div id="module-code"><h1>' + this._escHtml(moduleCodeContent) + '</h1></div>');
 
-        // English h1
-        lines.push('    <h1><span>' + this._escHtml(titleText) + ' </span></h1>');
+        // English h1 (NO trailing space inside span — Phase 13)
+        lines.push('    <h1><span>' + this._escHtml(titleText) + '</span></h1>');
 
-        // Te Reo h1 (if dual titles OR if title was split from double-space)
-        if ((titles.indexOf('tereo') !== -1 || tereoTitle) && tereoTitle) {
-            lines.push('    <h1><span>' + this._escHtml(tereoTitle) + ' </span></h1>');
+        // Te Reo h1 — ONLY when the template's titles array explicitly includes 'tereo'.
+        // Phase 13: do NOT auto-emit Te Reo h1 just because a Te Reo title was
+        // incidentally parsed from the title bar. For lesson pages on 1-3 / 4-6 / 7-8,
+        // titles is ["english"] and the Te Reo h1 is suppressed.
+        if (titles.indexOf('tereo') !== -1 && tereoTitle) {
+            lines.push('    <h1><span>' + this._escHtml(tereoTitle) + '</span></h1>');
         }
 
         // Module head buttons + module menu
@@ -313,7 +332,9 @@ class TemplateEngine {
             // Overview page: NO tooltip on button (tooltip goes on module-menu-content only)
             lines.push('      <div id="module-menu-button" class="circle-button btn1"></div>');
         } else {
-            // Lesson page: tooltip on button
+            // Lesson page: tooltip only if config.moduleMenu.lessonPage.tooltipOn
+            // explicitly targets 'module-menu-button'. Phase 13 — default is null
+            // (no tooltip attribute on lesson-page button, matching human reference).
             var btnTooltip = menuConfig.tooltipOn === 'module-menu-button'
                 ? ' tooltip="Overview"'
                 : '';
@@ -408,6 +429,20 @@ class TemplateEngine {
     // ------------------------------------------------------------------
     // Deep merge utilities
     // ------------------------------------------------------------------
+
+    /**
+     * Strip a leading "Lesson N:" / "Lesson N" / "Lesson N -" prefix from a
+     * lesson-specific heading. Mirrors the existing body-heading prefix strip
+     * in HtmlConverter to keep lesson-title behaviour consistent.
+     *
+     * @param {string} text - Raw lesson heading text
+     * @returns {string} Text with lesson prefix removed
+     */
+    static _stripLessonPrefix(text) {
+        if (!text || typeof text !== 'string') return '';
+        // Match "Lesson N:", "Lesson N -", "Lesson N " (with optional punctuation)
+        return text.replace(/^\s*Lesson\s+\d+\s*[:.\-–—]?\s*/i, '').trim();
+    }
 
     /**
      * Deep-clone a plain object/array.
@@ -523,8 +558,12 @@ class TemplateEngine {
                     },
                     "lessonPage": {
                         "type": "simplified",
-                        "tooltipOn": "module-menu-button",
+                        "tooltipOn": null,
                         "headingLevel": "h5",
+                        "sectionHeadings": {
+                            "learning": "Learning Intentions",
+                            "success": "How will I know if I've learned it?"
+                        },
                         "labels": {
                             "learning": "We are learning:",
                             "success": "I can:"
@@ -542,7 +581,7 @@ class TemplateEngine {
                     },
                     "lessonPage": {
                         "moduleCodeContent": "{lessonNumberZeroPadded}",
-                        "titleSource": "module",
+                        "titleSource": "lesson",
                         "titles": ["english"]
                     }
                 },

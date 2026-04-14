@@ -25,8 +25,12 @@
       },
       "lessonPage": {
         "type": "simplified",
-        "tooltipOn": "module-menu-button",
+        "tooltipOn": null,
         "headingLevel": "h5",
+        "sectionHeadings": {
+          "learning": "Learning Intentions",
+          "success": "How will I know if I've learned it?"
+        },
         "labels": {
           "learning": "We are learning:",
           "success": "I can:"
@@ -44,7 +48,7 @@
       },
       "lessonPage": {
         "moduleCodeContent": "{lessonNumberZeroPadded}",
-        "titleSource": "module",
+        "titleSource": "lesson",
         "titles": ["english"]
       }
     },
