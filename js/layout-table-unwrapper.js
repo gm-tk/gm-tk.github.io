@@ -420,9 +420,18 @@ class LayoutTableUnwrapper {
             // Extract sidebar cells as annotated blocks
             for (var sc = 0; sc < sidebarCells.length; sc++) {
                 var sidebar = sidebarCells[sc];
-                var sidebarBlock = this._createSidebarBlock(sidebar.cell, sidebar.role);
-                if (sidebarBlock) {
-                    blocks.push(sidebarBlock);
+                var sidebarResult = this._createSidebarBlock(sidebar.cell, sidebar.role);
+                if (!sidebarResult) continue;
+                // _createSidebarBlock may return a single block OR an array
+                // (sidebar block + trailing writer-instruction/content blocks
+                // for paragraphs that weren't consumed by the image/alert
+                // synthesis).
+                if (Array.isArray(sidebarResult)) {
+                    for (var sr = 0; sr < sidebarResult.length; sr++) {
+                        blocks.push(sidebarResult[sr]);
+                    }
+                } else {
+                    blocks.push(sidebarResult);
                 }
             }
         }
@@ -502,47 +511,118 @@ class LayoutTableUnwrapper {
     /**
      * Create a sidebar content block from a sidebar cell.
      *
+     * Returns either:
+     *   - A single annotated block (for simple image/alert cells), or
+     *   - An array of blocks: the annotated sidebar block followed by any
+     *     additional paragraphs from the cell that carry meaningful content
+     *     beyond the image/alert (e.g., writer/CS instructions). This
+     *     preserves otherwise-lost text (Defect 3) and keeps it available
+     *     for downstream writer-instruction detection.
+     *
      * @param {Object} cell - Cell data
      * @param {string} role - 'sidebar_image' or 'sidebar_alert'
-     * @returns {Object|null} Annotated content block or null if empty
+     * @returns {Object|Array<Object>|null} Annotated content block(s) or null
      */
     _createSidebarBlock(cell, role) {
         if (!cell || !cell.paragraphs || cell.paragraphs.length === 0) return null;
 
-        // Collect all text content and URLs from the cell
-        var allText = '';
         var imageUrl = '';
         var alertText = [];
+        // Classify each paragraph: the "image" paragraph (carries the URL or
+        // the [image] tag) is absorbed into the synthetic image block; any
+        // other paragraph is preserved as a standalone block.
+        var imageParaIndices = {};
 
         for (var p = 0; p < cell.paragraphs.length; p++) {
             var para = cell.paragraphs[p];
             var text = this._buildFormattedText(para);
-            allText += text + ' ';
 
-            // Extract URLs
-            var urlMatch = text.match(/(https?:\/\/[^\s\]]+)/);
+            // URL extraction — exclude whitespace, `]`, `[` and the high
+            // surrogate of the 🔴 red-text-marker emoji (U+1F534 =
+            // \uD83D\uDD34). Without the `\uD83D` exclusion the regex
+            // greedily swallows the opening of the next red-text marker
+            // (e.g. "https://...URL🔴[RED") when a red-space run follows
+            // the hyperlink — see Defect 2.
+            var urlMatch = text.match(/(https?:\/\/[^\s\[\]\uD83D]+)/);
             if (urlMatch && !imageUrl) {
                 imageUrl = urlMatch[1];
+                imageParaIndices[p] = true;
             }
 
-            // Extract clean text for alert content
+            // Tag-based classification: paragraphs whose only structural
+            // tag is [image] (or whose content is exclusively the URL) are
+            // treated as the image paragraph.
             var tagResult = this._normaliser.processBlock(text);
             var clean = (tagResult.cleanText || '').trim();
-            if (clean) {
-                alertText.push(clean);
+
+            var paraTags = this._extractTagsFromText(text);
+            var hasImageTag = paraTags.some(function (t) { return /^image/i.test(t); });
+            var hasAlertTag = paraTags.some(function (t) {
+                return /^alert$/i.test(t) || /^important$/i.test(t) || /^alert[- ]/i.test(t);
+            });
+
+            if (role === 'sidebar_image' && (hasImageTag || urlMatch)) {
+                imageParaIndices[p] = true;
+            }
+            if (role === 'sidebar_alert' && (hasAlertTag || clean)) {
+                if (clean) alertText.push(clean);
+                imageParaIndices[p] = true;
             }
         }
 
+        // Build list of "extra" paragraphs (those NOT absorbed into the
+        // synthetic block). These are preserved as standalone paragraph
+        // blocks so their content (e.g., fully-red CS writer instructions)
+        // is never dropped — Defect 3.
+        var extras = [];
+        for (var ep = 0; ep < cell.paragraphs.length; ep++) {
+            if (imageParaIndices[ep]) continue;
+            var extraPara = cell.paragraphs[ep];
+            // Skip paragraphs with no meaningful content
+            if (!extraPara.text || !extraPara.text.trim()) continue;
+            if ((!extraPara.runs || extraPara.runs.length === 0) && !extraPara.text) continue;
+            extras.push({
+                type: 'paragraph',
+                data: extraPara,
+                _unwrappedFrom: 'layout_table',
+                _cellRole: 'sidebar_extra'
+            });
+        }
+
         if (role === 'sidebar_image') {
-            // Create a synthetic paragraph block with sidebar annotation
-            var imgPara = {
-                runs: [{
-                    text: imageUrl || '[IMAGE]',
+            // Synthesise a paragraph that preserves the [image] tag as a
+            // red-coloured run and the resolved URL as a plain run. This
+            // keeps the [image] marker visible in the text stream (Defect 2)
+            // while leaving _sidebarImageUrl as the canonical URL source
+            // for the HTML converter.
+            var runs = [
+                {
+                    text: '[image]',
+                    formatting: { bold: false, italic: false, underline: false, strikethrough: false, color: 'FF0000', highlight: null, isRed: true }
+                }
+            ];
+            if (imageUrl) {
+                runs.push({
+                    text: ' ',
                     formatting: { bold: false, italic: false, underline: false, strikethrough: false, color: null, highlight: null, isRed: false }
-                }],
-                text: imageUrl || '[IMAGE]'
+                });
+                runs.push({
+                    text: imageUrl,
+                    formatting: { bold: false, italic: false, underline: false, strikethrough: false, color: null, highlight: null, isRed: false },
+                    hyperlink: imageUrl
+                });
+            }
+            var imgParaText = imageUrl ? ('[image] ' + imageUrl) : '[image]';
+            var imgPara = {
+                runs: runs,
+                text: imgParaText,
+                heading: null,
+                listLevel: null,
+                listNumId: null,
+                listFormat: null,
+                isListItem: false
             };
-            return {
+            var imgBlock = {
                 type: 'paragraph',
                 data: imgPara,
                 _unwrappedFrom: 'layout_table',
@@ -550,18 +630,24 @@ class LayoutTableUnwrapper {
                 _sidebarImageUrl: imageUrl,
                 _sidebarParagraphs: cell.paragraphs
             };
+            if (extras.length === 0) return imgBlock;
+            return [imgBlock].concat(extras);
         }
 
         if (role === 'sidebar_alert') {
-            // Create a synthetic paragraph block with sidebar annotation
             var alertPara = {
                 runs: [{
                     text: alertText.join(' '),
                     formatting: { bold: false, italic: false, underline: false, strikethrough: false, color: null, highlight: null, isRed: false }
                 }],
-                text: alertText.join(' ')
+                text: alertText.join(' '),
+                heading: null,
+                listLevel: null,
+                listNumId: null,
+                listFormat: null,
+                isListItem: false
             };
-            return {
+            var alertBlock = {
                 type: 'paragraph',
                 data: alertPara,
                 _unwrappedFrom: 'layout_table',
@@ -569,6 +655,8 @@ class LayoutTableUnwrapper {
                 _sidebarAlertContent: alertText,
                 _sidebarParagraphs: cell.paragraphs
             };
+            if (extras.length === 0) return alertBlock;
+            return [alertBlock].concat(extras);
         }
 
         return null;
