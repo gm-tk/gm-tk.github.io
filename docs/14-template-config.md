@@ -1,0 +1,290 @@
+# 14. Template Configuration System
+
+
+### Design Principles
+
+1. **JSON-driven** — all template rules in a single `templates.json` file
+2. **Easy to extend** — adding a new template = adding a new JSON object
+3. **Easy to tweak** — changing a rule for an existing template = editing a JSON value
+4. **Override pattern** — templates inherit from a base configuration and override specific rules
+5. **No code changes needed** — template additions/changes should never require JS code changes
+
+### templates.json Structure (Implemented)
+
+```json
+{
+  "version": "1.0",
+  "baseConfig": {
+    "doctype": "<!doctype html>",
+    "htmlAttributes": {
+      "lang": "en",
+      "level": "",
+      "class": "notranslate",
+      "translate": "no"
+    },
+    "scriptUrl": "https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+    "additionalHeadScripts": [],
+    "bodyClass": "container-fluid",
+    "voidElementStyle": "xhtml",
+    "defaultColumnClass": "col-md-8 col-12",
+    "headingSpanRule": "h1-header-only",
+    "footerClass": "footer-nav",
+    "moduleMenu": {
+      "overviewPage": {
+        "type": "full-tabs",
+        "tabs": ["Overview", "Information"],
+        "tooltipOn": "module-menu-content",
+        "headingLevel": "h4",
+        "overviewTitleTag": "h4-span"
+      },
+      "lessonPage": {
+        "type": "simplified",
+        "tooltipOn": null,
+        "headingLevel": "h5",
+        "sectionHeadings": {
+          "learning": "Learning Intentions",
+          "success": "How will I know if I've learned it?"
+        },
+        "labels": {
+          "learning": "We are learning:",
+          "success": "I can:"
+        }
+      }
+    },
+    "titlePattern": {
+      "overviewPage": "{moduleCode} {englishTitle}",
+      "lessonPage": "{moduleCode} {englishTitle}"
+    },
+    "headerPattern": {
+      "overviewPage": {
+        "moduleCodeContent": "{moduleCode}",
+        "titles": ["english"]
+      },
+      "lessonPage": {
+        "moduleCodeContent": "{lessonNumberZeroPadded}",
+        "moduleCodeFormat": "zero-padded",
+        "titleSource": "lesson",
+        "titles": ["english"]
+      }
+    },
+    "imageDefaults": {
+      "class": "img-fluid",
+      "loading": "lazy",
+      "placeholderBase": "https://placehold.co"
+    },
+    "videoEmbed": {
+      "youtube": "youtube-nocookie.com/embed",
+      "wrapperClass": "videoSection ratio ratio-16x9"
+    },
+    "gridRules": {
+      "defaultContent": "col-md-8 col-12",
+      "wideInteractive": "col-md-12 col-12",
+      "wideInteractiveImages": "col-md-10 col-12",
+      "carousel": "col-md-8 col-12"
+    },
+    "interactivePlaceholder": true
+  },
+  "templates": {
+    "1-3": {
+      "name": "Years 1–3",
+      "templateAttribute": "1-3",
+      "inherits": "baseConfig",
+      "overrides": {
+        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+        "additionalHeadScripts": [
+          { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+        ],
+        "moduleMenu": {
+          "overviewPage": {
+            "tooltipOn": null
+          },
+          "lessonPage": {
+            "labels": {
+              "learning": "We are learning:",
+              "success": "You will show your understanding by:"
+            }
+          }
+        }
+      }
+    },
+    "4-6": {
+      "name": "Years 4–6",
+      "templateAttribute": "4-6",
+      "inherits": "baseConfig",
+      "overrides": {
+        "headerPattern": {
+          "lessonPage": {
+            "moduleCodeFormat": "decimal"
+          }
+        },
+        "moduleMenu": {
+          "lessonPage": {
+            "labels": {
+              "learning": "We are learning:",
+              "success": "You will show your understanding by:"
+            }
+          }
+        }
+      }
+    },
+    "7-8": {
+      "name": "Years 7–8",
+      "templateAttribute": "7-8",
+      "inherits": "baseConfig",
+      "overrides": {
+        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+        "additionalHeadScripts": [
+          { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+        ],
+        "moduleMenu": {
+          "overviewPage": {
+            "tooltipOn": null
+          },
+          "lessonPage": {
+            "labels": {
+              "learning": "We are learning:",
+              "success": "I can:"
+            }
+          }
+        }
+      }
+    },
+    "9-10": {
+      "name": "Years 9–10",
+      "templateAttribute": "9-10",
+      "inherits": "baseConfig",
+      "overrides": {
+        "headerPattern": {
+          "overviewPage": {
+            "titles": ["english", "tereo"]
+          },
+          "lessonPage": {
+            "titles": ["english", "tereo"]
+          }
+        },
+        "moduleMenu": {
+          "lessonPage": {
+            "labels": {
+              "learning": "We are learning:",
+              "success": "I can:"
+            }
+          }
+        }
+      }
+    },
+    "NCEA": {
+      "name": "NCEA",
+      "templateAttribute": "NCEA",
+      "inherits": "baseConfig",
+      "overrides": {
+        "headerPattern": {
+          "overviewPage": {
+            "titles": ["english", "tereo"]
+          },
+          "lessonPage": {
+            "titles": ["english", "tereo"]
+          }
+        },
+        "moduleMenu": {
+          "overviewPage": {
+            "tabs": ["Overview", "Information", "Standards"],
+            "tooltipOn": null
+          },
+          "lessonPage": {
+            "labels": {
+              "learning": "We are learning:",
+              "success": "I can:"
+            }
+          }
+        }
+      }
+    },
+    "bilingual": {
+      "name": "Bilingual",
+      "templateAttribute": "1-3",
+      "inherits": "baseConfig",
+      "overrides": {
+        "bodyClass": "container-fluid reoTranslate",
+        "contentDuplication": "eng-reo",
+        "headerPattern": {
+          "overviewPage": { "titles": ["english", "tereo"] },
+          "lessonPage": { "titles": ["english", "tereo"] }
+        }
+      }
+    },
+    "fundamentals": {
+      "name": "Fundamentals",
+      "templateAttribute": "combo",
+      "inherits": "baseConfig",
+      "overrides": {
+        "bodyClass": "fundamentals container-fluid",
+        "navigation": "phases",
+        "footerClass": "footer-nav fundamentals-nav"
+      }
+    },
+    "inquiry": {
+      "name": "Inquiry",
+      "templateAttribute": "combo",
+      "inherits": "baseConfig",
+      "overrides": {
+        "bodyClass": "inquiry container-fluid",
+        "navigation": "crumbs",
+        "footerClass": "footer-nav inquiry-nav"
+      }
+    },
+    "combo": {
+      "name": "Combo (Standalone)",
+      "templateAttribute": "combo",
+      "inherits": "baseConfig"
+    }
+  }
+}
+```
+
+### How Template Overrides Work
+
+The template engine resolves configuration by:
+1. Loading the `baseConfig` as the default
+2. Finding the selected template in `templates`
+3. Deep-merging `overrides` on top of `baseConfig`
+4. The merged result is the active configuration for that conversion
+
+### Adding a New Template
+
+To add a new template, add a new entry to the `templates` object in `templates.json`:
+
+```json
+"new-template-name": {
+  "name": "Display Name",
+  "templateAttribute": "value-for-html-tag",
+  "inherits": "baseConfig",
+  "overrides": {
+    // Only specify what differs from baseConfig
+  }
+}
+```
+
+### Adding Template-Specific Content Rules
+
+For templates that need specific content interpretation rules, add a `contentRules` object:
+
+```json
+"overrides": {
+  "contentRules": {
+    "stripFullHeadingItalic": true,
+    "normaliseModuleMenuLabels": true,
+    "moduleMenuItemFormatting": {
+      "noItalicWrap": true,
+      "lowercaseStart": true,
+      "verbFormMatching": true
+    }
+  }
+}
+```
+
+---
+
+
+---
+
+[← Back to index](../CLAUDE.md)
