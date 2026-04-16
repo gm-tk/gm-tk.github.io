@@ -94,11 +94,6 @@ global.assertFalse = assertFalse;
 var fs = require('fs');
 var path = require('path');
 
-// Expose fs, path, __dirname to test scripts loaded via vm.runInThisContext
-global.__testFs = fs;
-global.__testPath = path;
-global.__testRootDir = path.resolve(__dirname, '..');
-
 function loadScript(filePath) {
     var code = fs.readFileSync(path.resolve(__dirname, '..', filePath), 'utf8');
     // Remove 'use strict' at top level since we're evaluating in global scope

@@ -96,7 +96,6 @@ class App {
         this.stagedFileInfo = document.getElementById('staged-file-info');
         this.stagedFileName = document.getElementById('staged-file-name');
         this.stagedTemplateHint = document.getElementById('staged-template-hint');
-        this.btnVisualReview = document.getElementById('btn-visual-review');
     }
 
     // ------------------------------------------------------------------
@@ -195,12 +194,6 @@ class App {
             }
         });
 
-        // Visual Comparison Review button
-        if (this.btnVisualReview) {
-            this.btnVisualReview.addEventListener('click', function () {
-                self._openVisualReview();
-            });
-        }
     }
 
     // ------------------------------------------------------------------
@@ -222,128 +215,6 @@ class App {
             }
         } catch (err) {
             console.error('TemplateEngine initialisation failed:', err);
-        }
-    }
-
-    // ------------------------------------------------------------------
-    // Visual Comparison Review
-    // ------------------------------------------------------------------
-
-    /**
-     * Serialise all data needed by the review page into a JSON string.
-     * Includes generated HTML files, parsed content, metadata, template
-     * info, human reference files, and page data with block texts.
-     *
-     * @returns {string} JSON string
-     */
-    _serialiseForReview() {
-        var self = this;
-        var templateName = '';
-        var templateAttribute = '';
-        if (this.selectedTemplateId) {
-            try {
-                var config = this.templateEngine.getConfig(this.selectedTemplateId);
-                templateName = config._templateName || '';
-                templateAttribute = config._templateAttribute || '';
-            } catch (e) {
-                // Ignore
-            }
-        }
-
-        var pageData = [];
-        if (this.currentAnalysis && this.currentAnalysis.pages) {
-            for (var i = 0; i < this.currentAnalysis.pages.length; i++) {
-                var page = this.currentAnalysis.pages[i];
-                var blockTexts = [];
-                if (page.contentBlocks) {
-                    for (var b = 0; b < page.contentBlocks.length; b++) {
-                        blockTexts.push(self._getBlockTextForAnalysis(page.contentBlocks[b]));
-                    }
-                }
-                pageData.push({
-                    filename: page.filename,
-                    type: page.type,
-                    lessonNumber: page.lessonNumber,
-                    contentBlockTexts: blockTexts
-                });
-            }
-        }
-
-        return JSON.stringify({
-            generatedHtmlFiles: this.generatedHtmlFiles,
-            generatedFileList: this.generatedFileList,
-            metadata: this.currentMetadata,
-            templateId: this.selectedTemplateId,
-            templateName: templateName,
-            templateAttribute: templateAttribute,
-            humanReferenceFiles: [],
-            pageData: pageData
-        });
-    }
-
-    /**
-     * Open the Visual Comparison Review page in a new tab.
-     * Serialises data to sessionStorage with chunked storage fallback.
-     */
-    _openVisualReview() {
-        if (this.generatedFileList.length === 0) {
-            this.showToast('No files generated yet');
-            return;
-        }
-
-        try {
-            var serialised = this._serialiseForReview();
-
-            // Clear any previous review data
-            this._clearReviewStorage();
-
-            // Try storing as single item first
-            var CHUNK_SIZE = 4 * 1024 * 1024; // 4MB chunks
-            if (serialised.length < CHUNK_SIZE) {
-                try {
-                    sessionStorage.setItem('pageforge_review_data', serialised);
-                } catch (e) {
-                    // If single storage fails, use chunked approach
-                    this._storeChunked(serialised, CHUNK_SIZE);
-                }
-            } else {
-                this._storeChunked(serialised, CHUNK_SIZE);
-            }
-
-            window.open('review.html', '_blank');
-        } catch (e) {
-            console.error('Failed to serialise review data:', e);
-            this.showToast('Failed to open review page: ' + e.message);
-        }
-    }
-
-    /**
-     * Store serialised data in chunks in sessionStorage.
-     * @param {string} data
-     * @param {number} chunkSize
-     */
-    _storeChunked(data, chunkSize) {
-        var chunks = Math.ceil(data.length / chunkSize);
-        sessionStorage.setItem('pageforge_review_chunks', String(chunks));
-        for (var i = 0; i < chunks; i++) {
-            var start = i * chunkSize;
-            var chunk = data.substring(start, start + chunkSize);
-            sessionStorage.setItem('pageforge_review_chunk_' + i, chunk);
-        }
-    }
-
-    /**
-     * Clear any previous review data from sessionStorage.
-     */
-    _clearReviewStorage() {
-        sessionStorage.removeItem('pageforge_review_data');
-        var chunkCount = sessionStorage.getItem('pageforge_review_chunks');
-        if (chunkCount) {
-            var count = parseInt(chunkCount, 10);
-            for (var i = 0; i < count; i++) {
-                sessionStorage.removeItem('pageforge_review_chunk_' + i);
-            }
-            sessionStorage.removeItem('pageforge_review_chunks');
         }
     }
 
@@ -636,11 +507,6 @@ class App {
             this.showError('This document appears to be empty or contains no text content.');
         }
 
-        // Enable visual review button
-        if (this.btnVisualReview) {
-            this.btnVisualReview.disabled = false;
-        }
-
         // Render debug panel (now includes conversion summary)
         if (this.currentAnalysis) {
             this._renderDebugPanel(this.currentAnalysis);
@@ -702,10 +568,6 @@ class App {
         // Disable Convert button
         if (this.btnConvert) {
             this.btnConvert.disabled = true;
-        }
-        // Disable visual review button
-        if (this.btnVisualReview) {
-            this.btnVisualReview.disabled = true;
         }
     }
 
