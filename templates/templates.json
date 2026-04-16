@@ -9,6 +9,7 @@
       "translate": "no"
     },
     "scriptUrl": "https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+    "additionalHeadScripts": [],
     "bodyClass": "container-fluid",
     "voidElementStyle": "xhtml",
     "defaultColumnClass": "col-md-8 col-12",
@@ -48,6 +49,7 @@
       },
       "lessonPage": {
         "moduleCodeContent": "{lessonNumberZeroPadded}",
+        "moduleCodeFormat": "zero-padded",
         "titleSource": "lesson",
         "titles": ["english"]
       }
@@ -75,7 +77,14 @@
       "templateAttribute": "1-3",
       "inherits": "baseConfig",
       "overrides": {
+        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+        "additionalHeadScripts": [
+          { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+        ],
         "moduleMenu": {
+          "overviewPage": {
+            "tooltipOn": null
+          },
           "lessonPage": {
             "labels": {
               "learning": "We are learning:",
@@ -90,6 +99,11 @@
       "templateAttribute": "4-6",
       "inherits": "baseConfig",
       "overrides": {
+        "headerPattern": {
+          "lessonPage": {
+            "moduleCodeFormat": "decimal"
+          }
+        },
         "moduleMenu": {
           "lessonPage": {
             "labels": {
@@ -105,7 +119,14 @@
       "templateAttribute": "7-8",
       "inherits": "baseConfig",
       "overrides": {
+        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+        "additionalHeadScripts": [
+          { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+        ],
         "moduleMenu": {
+          "overviewPage": {
+            "tooltipOn": null
+          },
           "lessonPage": {
             "labels": {
               "learning": "We are learning:",

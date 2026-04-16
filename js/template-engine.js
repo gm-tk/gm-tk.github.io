@@ -182,10 +182,15 @@ class TemplateEngine {
         var englishOnlyTitle = rawTitle.split(/  +/)[0].trim();
 
         // Title element (English only — NEVER Te Reo)
-        // Phase 13 recalibration: <title> element is MODULE_CODE + English Title
-        // ONLY — no lesson decimal number is included (matches human LMS reference).
-        // This applies to BOTH overview and lesson pages.
-        var titleContent = pageData.moduleCode + ' ' + englishOnlyTitle;
+        // Phase 15 skeleton calibration: <title> uses the titlePattern config field
+        // with token substitution. Pattern is "{moduleCode} {englishTitle}" for both
+        // overview and lesson pages — no lesson decimal number is included.
+        var titlePatternKey = isOverview ? 'overviewPage' : 'lessonPage';
+        var titlePattern = (config.titlePattern && config.titlePattern[titlePatternKey])
+            || '{moduleCode} {englishTitle}';
+        var titleContent = titlePattern
+            .replace('{moduleCode}', pageData.moduleCode || '')
+            .replace('{englishTitle}', englishOnlyTitle);
 
         // HTML attributes
         var htmlAttrs = config.htmlAttributes;
@@ -206,6 +211,17 @@ class TemplateEngine {
         lines.push('  <meta content="IE=edge" http-equiv="X-UA-Compatible" />');
         lines.push('  <meta content="width=device-width, initial-scale=1" name="viewport" />');
         lines.push('  <title>' + this._escHtml(titleContent.trim()) + '</title>');
+        // Additional head scripts (e.g. stickyNav.js) emitted BEFORE the main script
+        var additionalScripts = config.additionalHeadScripts || [];
+        for (var si = 0; si < additionalScripts.length; si++) {
+            var s = additionalScripts[si];
+            var scriptTag = '  <script';
+            if (s.src) scriptTag += ' src="' + s.src + '"';
+            if (s.type) scriptTag += ' type="' + s.type + '"';
+            if (s['class']) scriptTag += ' class="' + s['class'] + '"';
+            scriptTag += '><\/script>';
+            lines.push(scriptTag);
+        }
         lines.push('  <script type="text/javascript" src="' + config.scriptUrl + '"><\/script>');
         lines.push('</head>');
 
@@ -213,7 +229,7 @@ class TemplateEngine {
         lines.push('<body class="' + config.bodyClass + '">');
 
         // Header
-        lines.push(this._generateHeader(config, pageData, isOverview, lessonDisplayNumber));
+        lines.push(this._generateHeader(config, pageData, isOverview, lessonDisplayNumber, lessonPadded));
 
         // Body (content placeholder)
         lines.push('  <div id="body">');
@@ -236,16 +252,25 @@ class TemplateEngine {
     /**
      * @private
      */
-    _generateHeader(config, pageData, isOverview, lessonDisplayNumber) {
+    _generateHeader(config, pageData, isOverview, lessonDisplayNumber, lessonPadded) {
         var lines = [];
         var headerPattern = isOverview
             ? config.headerPattern.overviewPage
             : config.headerPattern.lessonPage;
 
-        // Module code content — overview uses full module code, lesson uses decimal format
-        var moduleCodeContent = isOverview
-            ? pageData.moduleCode
-            : (lessonDisplayNumber || '1.0');
+        // Module code content — overview uses full module code, lesson format
+        // depends on headerPattern.lessonPage.moduleCodeFormat:
+        //   "decimal"     → N.0  (e.g. 1.0, 2.0)  — used by template 4-6
+        //   "zero-padded" → NN   (e.g. 01, 02)     — default for all others
+        var moduleCodeFormat = headerPattern.moduleCodeFormat || 'zero-padded';
+        var moduleCodeContent;
+        if (isOverview) {
+            moduleCodeContent = pageData.moduleCode;
+        } else if (moduleCodeFormat === 'decimal') {
+            moduleCodeContent = lessonDisplayNumber || '1.0';
+        } else {
+            moduleCodeContent = lessonPadded || '01';
+        }
 
         // Title(s)
         var englishTitle = pageData.englishTitle || '';
@@ -390,6 +415,12 @@ class TemplateEngine {
     // ------------------------------------------------------------------
 
     /**
+     * Generate footer navigation links.
+     *
+     * Link ordering differs by page type:
+     *   - Overview page (pageIndex 0): next-lesson, then home-nav
+     *   - Lesson pages (pageIndex > 0): home-nav first, then prev-lesson, then next-lesson
+     *
      * @private
      */
     _generateFooter(config, pageData) {
@@ -404,22 +435,28 @@ class TemplateEngine {
         lines.push('  <div id="footer">');
         lines.push('    <ul class="' + footerClass + '">');
 
-        // prev-lesson (not on overview page)
-        if (!isFirst) {
+        if (isFirst) {
+            // Overview page: next-lesson first, then home-nav
+            if (!isLast) {
+                var nextPage = String(pageIndex + 1).padStart(2, '0');
+                lines.push('      <li><a href="' + moduleCode + '-' + nextPage +
+                    '.html" id="next-lesson" target="_self"></a></li>');
+            }
+            lines.push('      <li><a href="" class="home-nav" target="_parent"></a></li>');
+        } else {
+            // Lesson pages: home-nav first, then prev-lesson, then next-lesson
+            lines.push('      <li><a href="" class="home-nav" target="_parent"></a></li>');
+
             var prevPage = String(pageIndex - 1).padStart(2, '0');
             lines.push('      <li><a href="' + moduleCode + '-' + prevPage +
                 '.html" id="prev-lesson" target="_self"></a></li>');
-        }
 
-        // next-lesson (not on final page)
-        if (!isLast) {
-            var nextPage = String(pageIndex + 1).padStart(2, '0');
-            lines.push('      <li><a href="' + moduleCode + '-' + nextPage +
-                '.html" id="next-lesson" target="_self"></a></li>');
+            if (!isLast) {
+                var nextPageLesson = String(pageIndex + 1).padStart(2, '0');
+                lines.push('      <li><a href="' + moduleCode + '-' + nextPageLesson +
+                    '.html" id="next-lesson" target="_self"></a></li>');
+            }
         }
-
-        // home-nav (always present)
-        lines.push('      <li><a href="" class="home-nav" target="_parent"></a></li>');
 
         lines.push('    </ul>');
         lines.push('  </div>');
@@ -542,6 +579,7 @@ class TemplateEngine {
                     "translate": "no"
                 },
                 "scriptUrl": "https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+                "additionalHeadScripts": [],
                 "bodyClass": "container-fluid",
                 "voidElementStyle": "xhtml",
                 "defaultColumnClass": "col-md-8 col-12",
@@ -581,6 +619,7 @@ class TemplateEngine {
                     },
                     "lessonPage": {
                         "moduleCodeContent": "{lessonNumberZeroPadded}",
+                        "moduleCodeFormat": "zero-padded",
                         "titleSource": "lesson",
                         "titles": ["english"]
                     }
@@ -608,7 +647,14 @@ class TemplateEngine {
                     "templateAttribute": "1-3",
                     "inherits": "baseConfig",
                     "overrides": {
+                        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+                        "additionalHeadScripts": [
+                            { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+                        ],
                         "moduleMenu": {
+                            "overviewPage": {
+                                "tooltipOn": null
+                            },
                             "lessonPage": {
                                 "labels": {
                                     "learning": "We are learning:",
@@ -623,6 +669,11 @@ class TemplateEngine {
                     "templateAttribute": "4-6",
                     "inherits": "baseConfig",
                     "overrides": {
+                        "headerPattern": {
+                            "lessonPage": {
+                                "moduleCodeFormat": "decimal"
+                            }
+                        },
                         "moduleMenu": {
                             "lessonPage": {
                                 "labels": {
@@ -638,7 +689,14 @@ class TemplateEngine {
                     "templateAttribute": "7-8",
                     "inherits": "baseConfig",
                     "overrides": {
+                        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+                        "additionalHeadScripts": [
+                            { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+                        ],
                         "moduleMenu": {
+                            "overviewPage": {
+                                "tooltipOn": null
+                            },
                             "lessonPage": {
                                 "labels": {
                                     "learning": "We are learning:",
