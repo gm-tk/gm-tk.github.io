@@ -31,6 +31,7 @@
 20. [Feature Removal — Visual Comparison Review & Conversion Error Log](#20-feature-removal--visual-comparison-review--conversion-error-log-phase-14)
 21. [OSAI201 Layout-Table Sidebar Defects](#21-osai201-layout-table-sidebar-defects-phase-13)
 22. [Years 4–6 Lesson Page Recalibration](#22-years-46-lesson-page-recalibration-phase-13)
+23. [Multi-Template Skeleton Calibration](#23-multi-template-skeleton-calibration-phase-15)
 
 ---
 
@@ -58,6 +59,7 @@ PageForge is a client-side web application that reads Writer Template `.docx` fi
 14. **UI overhaul & rebranding** → project renamed from ParseMaster to PageForge, upload decoupled from conversion with staged file + Convert button, template dropdown with auto-detect hint, conversion summary moved to debug panel, legacy text output replaced with direct download, "Copy Interactive Reference" button removed from action bar (DONE — Phase 8)
 15. **Feature removal — Visual Comparison Review & Conversion Error Log** → complete removal of the Visual Comparison Review page (review.html, ReviewApp, review-styles.css), Conversion Error Log page (calibrate.html, CalibrateApp, CalibrationManager), all associated UI elements (Visual Comparison Review button, calibration panel), sessionStorage serialisation/chunking, snapshot form CSS, test globals, and 72 review page tests; core conversion pipeline unchanged (DONE — Phase 14)
 16. **Years 4–6 lesson page recalibration** → lesson page `<title>` stripped of decimal lesson number (now `MODULE_CODE English Title` on BOTH overview and lesson pages); lesson page `<h1><span>` uses the lesson-specific title (first `[H2]` in body, `"Lesson N:"` prefix stripped) via new `pageData.lessonTitle` extracted by `HtmlConverter._extractLessonTitle()`; trailing space removed from inside `<h1><span>` content (both overview and lesson); Te Reo `<h1>` suppressed on lesson pages for 1-3 / 4-6 / 7-8 (driven by `headerPattern.lessonPage.titles`); `tooltip="Overview"` removed from lesson `#module-menu-button` (driven by `moduleMenu.lessonPage.tooltipOn: null`); lesson module menu rewritten to new two-tier structure — `<h5>{sectionHeading}</h5><p>{writer's intro verbatim}</p><ul>…</ul>` — where `sectionHeadings` come from template config (`Learning Intentions` / `How will I know if I've learned it?`) and the writer's own intro text (e.g. "We are learning:", "I can:", "You will show your understanding by:") is preserved as the paragraph, reversing the prior rule that substituted config labels; new `templates.json` schema fields: `moduleMenu.lessonPage.sectionHeadings`, `moduleMenu.lessonPage.tooltipOn: null`, `headerPattern.lessonPage.titleSource: "lesson"` (DONE — Phase 13)
+17. **Multi-template skeleton calibration** → `<title>` element now uses `titlePattern` config field with token substitution (`{moduleCode} {englishTitle}`) instead of hardcoded format; `#module-code` lesson display format is template-specific via new `headerPattern.lessonPage.moduleCodeFormat` field — `"decimal"` (N.0) for template 4-6, `"zero-padded"` (01, 02) for all others; `<head>` script set varies per template — templates 1-3 and 7-8 include `stickyNav.js` before `idoc_scripts.js` and use `tekuradev.desire2learn.com`, template 4-6 uses `tekura.desire2learn.com` only; `tooltip="Overview"` on overview-page `#module-menu-content` now template-specific — present on 4-6 only, null for 1-3 and 7-8; footer link ordering changed — overview pages emit next-lesson then home-nav, lesson pages emit home-nav first then prev-lesson then next-lesson; new `templates.json` schema fields: `additionalHeadScripts`, `headerPattern.lessonPage.moduleCodeFormat`; per-template overrides added for 1-3 and 7-8 (`scriptUrl`, `additionalHeadScripts`, `moduleMenu.overviewPage.tooltipOn: null`) and 4-6 (`headerPattern.lessonPage.moduleCodeFormat: "decimal"`) (DONE — Phase 15)
 
 The HTML files will contain all content correctly marked up with the correct tags, classes, grid structure, and hierarchy — everything EXCEPT the code for interactive activities. Interactive activities will be left as clearly marked placeholders with all relevant data preserved, so the Claude AI Project can focus exclusively on building the interactive component code.
 
@@ -224,7 +226,8 @@ gm-tk.github.io/
 │   ├── lmsCompliance.test.js # LMS compliance recalibration tests: lesson number format, title element, activity classes, table semantics, info trigger, download journal, whakatauki, image alt text
 │   ├── defragmentation.test.js # Tag de-fragmentation tests: red-text boundary stitching, bracket space collapsing, whitespace trimming, processBlock integration, ordinal suffix stripping
 │   ├── osai201Defects.test.js # Phase 13 OSAI201 layout-table sidebar defects: H2 heading preservation, [image] tag + URL survival in sidebar_image blocks, _sidebarImageUrl cleanliness (no 🔴[RED fragment), fully-red CS paragraph preservation as sidebar_extra blocks, red-text wrapper balance, writer-instruction classification, pipeline integrity through unwrap + block-scope
-│   └── years46LessonRecalibration.test.js # Phase 13 years 4-6 lesson page recalibration tests: title element format, lesson h1, menu button tooltip, two-tier module menu, end-to-end calibration snapshot
+│   ├── years46LessonRecalibration.test.js # Phase 13 years 4-6 lesson page recalibration tests: title element format, lesson h1, menu button tooltip, two-tier module menu, end-to-end calibration snapshot
+│   └── skeletonCalibration.test.js # Phase 15 multi-template skeleton calibration tests: titlePattern token substitution, moduleCodeFormat per template, additionalHeadScripts (stickyNav/tekuradev), tooltip per-template overrides, footer link ordering, cross-template calibration snapshots
 ├── templates/
 │   └── templates.json       # Template configuration (Phase 2)
 ├── CLAUDE.md               # Project reference & instructions
@@ -629,7 +632,9 @@ Overview page (-00):
   Footer: next-lesson + home-nav only
 
 Lesson page (-01, -02, etc.):
-  Header: #module-code has decimal lesson number (1.0, 2.0, etc.)
+  Header: #module-code format depends on template (Phase 15):
+          4-6: decimal (1.0, 2.0, etc.)
+          1-3, 7-8, 9-10, NCEA: zero-padded (01, 02, 03)
   h1 span: LESSON-specific title (first [H2] in body, "Lesson N:" prefix stripped)
            — Phase 13; extracted via HtmlConverter._extractLessonTitle()
            and passed to the skeleton as pageData.lessonTitle.
@@ -685,11 +690,13 @@ The section heading above it is the only text sourced from template config.
 
 ### Footer Navigation
 
-| Page Position | Navigation Links |
+Link ordering differs by page type (Phase 15):
+
+| Page Position | Navigation Links (in order) |
 |--------------|-----------------|
-| Overview (-00) | `next-lesson` + `home-nav` |
-| Middle pages | `prev-lesson` + `next-lesson` + `home-nav` |
-| Final page | `prev-lesson` + `home-nav` |
+| Overview (-00) | `next-lesson`, then `home-nav` |
+| Middle lesson pages | `home-nav`, then `prev-lesson`, then `next-lesson` |
+| Final lesson page | `home-nav`, then `prev-lesson` |
 
 Navigation hrefs: `MODULE_CODE-XX.html` (e.g., `OSAI201-00.html`, `OSAI201-01.html`)
 
@@ -1249,7 +1256,7 @@ INTERACTIVE 2 of 7
 - Maintains `collectedInteractives` array populated during conversion for reference doc generation
 - Public API: `convertPage(pageData, config)`, `assemblePage(pageData, config, moduleInfo)`
 
-#### template-engine.js — DONE (Phase 2)
+#### template-engine.js — DONE (Phase 2, updated Phase 15)
 - Loads template configurations from `templates/templates.json` (with embedded fallback)
 - Provides `getTemplateList()` for UI dropdown population (9 templates)
 - Auto-detects template from module code suffix via `detectTemplate(moduleCode)`
@@ -1257,11 +1264,13 @@ INTERACTIVE 2 of 7
 - Generates complete HTML document skeletons via `generateSkeleton(config, pageData)`
 - Handles header section (module code, titles, dual h1 for 9-10/NCEA)
 - **Title bar parsing** — strips module code prefix, splits English/Te Reo on double-space, English-only `<title>`
-- **Lesson number format** (Phase 7) — `lessonDisplayNumber` (decimal `N.0`) for `#module-code` display; `lessonPadded` (zero-padded `01`) for filenames/footers; `<title>` includes `0.0` for overview, `N.0` for lessons
+- **Title element format** (Phase 15) — `<title>` uses `titlePattern` config field with token substitution (`{moduleCode}`, `{englishTitle}`); no decimal lesson number in `<title>` for any page type or template
+- **Lesson number format** (Phase 7, updated Phase 15) — `lessonDisplayNumber` (decimal `N.0`) used for `#module-code` display only on templates with `moduleCodeFormat: "decimal"` (4-6); `lessonPadded` (zero-padded `01`) used for `#module-code` display on all other templates and for filenames/footers on all templates
+- **Head scripts** (Phase 15) — `additionalHeadScripts` config array emitted before the main `scriptUrl` script; templates 1-3 and 7-8 include `stickyNav.js` before `idoc_scripts.js` and use `tekuradev.desire2learn.com`; template 4-6 uses `tekura.desire2learn.com` only
 - Handles module menu (full-tabbed for overview with correct structure, simplified for lessons)
-- **Tooltip placement** — `tooltip="Overview"` on `#module-menu-content` only for overview pages, on `#module-menu-button` only for lesson pages
+- **Tooltip placement** (updated Phase 15) — `tooltip="Overview"` on `#module-menu-content` only for overview pages where `tooltipOn` is `"module-menu-content"` (4-6 only); null for 1-3 and 7-8 overview pages; lesson pages never have tooltip on button (Phase 13)
 - **Tab HTML structure** — no active/data-toggle/href/id/fade/in attributes, row wrapper, inner grid per tab-pane
-- Handles footer navigation (prev/next/home with correct page links)
+- **Footer navigation** (updated Phase 15) — overview pages: next-lesson then home-nav; lesson pages: home-nav first, then prev-lesson, then next-lesson
 - Public API: `loadTemplates()`, `getTemplateList()`, `detectTemplate(moduleCode)`, `getConfig(templateId)`, `generateSkeleton(config, pageData)`
 
 #### interactive-extractor.js — DONE (Phase 4, structural fixes & placeholder redesign Round 3, Round 3C)
@@ -1386,6 +1395,7 @@ User clicks "Convert Document"
       "translate": "no"
     },
     "scriptUrl": "https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+    "additionalHeadScripts": [],
     "bodyClass": "container-fluid",
     "voidElementStyle": "xhtml",
     "defaultColumnClass": "col-md-8 col-12",
@@ -1424,6 +1434,7 @@ User clicks "Convert Document"
       },
       "lessonPage": {
         "moduleCodeContent": "{lessonNumberZeroPadded}",
+        "moduleCodeFormat": "zero-padded",
         "titleSource": "lesson",
         "titles": ["english"]
       }
@@ -1451,7 +1462,14 @@ User clicks "Convert Document"
       "templateAttribute": "1-3",
       "inherits": "baseConfig",
       "overrides": {
+        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+        "additionalHeadScripts": [
+          { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+        ],
         "moduleMenu": {
+          "overviewPage": {
+            "tooltipOn": null
+          },
           "lessonPage": {
             "labels": {
               "learning": "We are learning:",
@@ -1466,6 +1484,11 @@ User clicks "Convert Document"
       "templateAttribute": "4-6",
       "inherits": "baseConfig",
       "overrides": {
+        "headerPattern": {
+          "lessonPage": {
+            "moduleCodeFormat": "decimal"
+          }
+        },
         "moduleMenu": {
           "lessonPage": {
             "labels": {
@@ -1481,7 +1504,14 @@ User clicks "Convert Document"
       "templateAttribute": "7-8",
       "inherits": "baseConfig",
       "overrides": {
+        "scriptUrl": "https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js",
+        "additionalHeadScripts": [
+          { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
+        ],
         "moduleMenu": {
+          "overviewPage": {
+            "tooltipOn": null
+          },
           "lessonPage": {
             "labels": {
               "learning": "We are learning:",
@@ -1639,7 +1669,7 @@ For templates that need specific content interpretation rules, add a `contentRul
 
 ### Testing Approach
 
-- **Automated unit tests** — `node tests/test-runner.js` runs 439 tests across 18 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text), tag de-fragmentation (red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, ordinal suffix stripping), Phase 13 OSAI201 layout-table sidebar defects (H2 heading preservation, `[image]` tag + URL survival in sidebar_image blocks, `_sidebarImageUrl` cleanliness, fully-red CS paragraph preservation as `sidebar_extra` blocks, red-text wrapper balance checks, writer-instruction classification, pipeline integrity through unwrap + block-scope), and Phase 13 years 4-6 lesson page recalibration (title element format, lesson h1, menu button tooltip, two-tier module menu, end-to-end calibration snapshot)
+- **Automated unit tests** — `node tests/test-runner.js` runs 476 tests across 19 test files covering tag normalisation, block scoping, ordinal normalization, compound tag splitting, layout direction, writer instructions, fragment reassembly, interactive inference, video normalization, alert normalization, `[Inside tab]` handling, comprehensive sub-tag normalization (verbose ordinals, copy-paste mismatch detection, contentHint, carousel slides, flip card patterns), layout table detection/unwrapping (detection heuristics, contextual override, column role assignment, sidebar creation, content stream integrity), ENGS301 inconsistency fixes (heading level extraction, incomplete heading fallback, title case conversion, unrecognized tag implementations, hintslider/flipcard tag recognition, multichoice dropdown quiz, interactive data capture), LMS compliance recalibration (lesson number decimal format, title element format, activity classes, table header semantics, info trigger definition formatting, download journal, whakatauki author, image alt text), tag de-fragmentation (red-text boundary stitching, bracket space collapsing, bracket whitespace trimming, processBlock integration, ordinal suffix stripping), Phase 13 OSAI201 layout-table sidebar defects (H2 heading preservation, `[image]` tag + URL survival in sidebar_image blocks, `_sidebarImageUrl` cleanliness, fully-red CS paragraph preservation as `sidebar_extra` blocks, red-text wrapper balance checks, writer-instruction classification, pipeline integrity through unwrap + block-scope), Phase 13 years 4-6 lesson page recalibration (title element format, lesson h1, menu button tooltip, two-tier module menu, end-to-end calibration snapshot), and Phase 15 multi-template skeleton calibration (titlePattern token substitution, moduleCodeFormat per template, additionalHeadScripts with stickyNav/tekuradev, tooltip per-template overrides, footer link ordering, cross-template calibration snapshots)
 - **Test runner** — minimal Node.js runner (`tests/test-runner.js`) with `describe()`, `it()`, `assert*()` functions; uses `vm.runInThisContext()` to load source files (tag-normaliser, block-scoper, layout-table-unwrapper, formatter, template-engine, interactive-extractor, html-converter) with class declarations in global scope; no external dependencies
 - Test with real Writer Template `.docx` files (like the OSAI201 example)
 - Verify tag normalisation against the complete normalisation table
@@ -2420,3 +2450,176 @@ If moved to PageBoundary, the extraction would have to duplicate the
   lesson-prefix formats (e.g., `Akoranga N:`) are not currently stripped —
   if/when encountered, extend `TemplateEngine._stripLessonPrefix()` to
   cover them.
+
+---
+
+## 23. MULTI-TEMPLATE SKELETON CALIBRATION (Phase 15)
+
+### Overview
+
+A calibration audit comparing PageForge's HTML output against human-developed
+reference files for three modules — OSAI101 (template 1-3), OSAI201
+(template 4-6), OSAI301 (template 7-8) — revealed five discrepancies in the
+HTML document skeleton (everything generated by `js/template-engine.js` and
+`templates/templates.json`). This phase focuses exclusively on the skeleton:
+`<head>`, `<title>`, `#module-code`, `tooltip` attribute, and footer link
+ordering. No changes were made to `js/html-converter.js`, `js/app.js`, or any
+other pipeline files.
+
+All existing 439 tests continue to pass. 37 new tests added in
+`tests/skeletonCalibration.test.js`, bringing the total to 476 tests — all
+passing, 0 failing.
+
+**Status:** DONE — 2 source files modified (`js/template-engine.js`,
+`templates/templates.json`), 1 new test file added, 0 existing tests
+modified (all existing assertions remained correct), 476 total tests passing.
+
+### Files Modified
+
+| File | Changes |
+|------|---------|
+| `js/template-engine.js` | `<title>` construction changed from hardcoded format to `titlePattern` config field with `{moduleCode}` and `{englishTitle}` token substitution (Change 1); `_generateHeader()` reads new `moduleCodeFormat` config field — `"decimal"` uses `lessonDisplayNumber` (N.0), `"zero-padded"` (default) uses `lessonPadded` (01, 02) for `#module-code` display (Change 2); `lessonPadded` parameter added to `_generateHeader()` signature; `generateSkeleton()` iterates `config.additionalHeadScripts` array and emits each `<script>` element before the main `scriptUrl` script (Change 3); `_generateModuleMenu()` already reads `tooltipOn` — config overrides alone are sufficient (Change 4); `_generateFooter()` rewritten with JSDoc — overview pages emit next-lesson then home-nav, lesson pages emit home-nav first then prev-lesson then next-lesson (Change 5); embedded fallback data updated to mirror all `templates.json` changes |
+| `templates/templates.json` | Added `additionalHeadScripts: []` to baseConfig (Change 3); added `headerPattern.lessonPage.moduleCodeFormat: "zero-padded"` to baseConfig (Change 2); added per-template overrides for 1-3: `scriptUrl` → tekuradev, `additionalHeadScripts` → stickyNav.js, `moduleMenu.overviewPage.tooltipOn: null` (Changes 3, 4); added per-template overrides for 4-6: `headerPattern.lessonPage.moduleCodeFormat: "decimal"` (Change 2); added per-template overrides for 7-8: `scriptUrl` → tekuradev, `additionalHeadScripts` → stickyNav.js, `moduleMenu.overviewPage.tooltipOn: null` (Changes 3, 4) |
+| `tests/skeletonCalibration.test.js` | New file — 37 tests covering all 5 changes plus cross-template calibration snapshots |
+
+### Change-by-Change Summary
+
+#### Change 1 — `<title>` element uses titlePattern config (no decimal numbers)
+- **Previous:** `<title>` was constructed as `pageData.moduleCode + ' ' + englishOnlyTitle`
+  (hardcoded in `generateSkeleton()`). While this already produced the correct
+  format after Phase 13 removed the decimal, the construction was not config-driven.
+- **Human reference:** `<title>OSAI101 AI Digital Citizenship</title>` (all templates,
+  all page types — no decimal number).
+- **Fix:** `generateSkeleton()` now reads `config.titlePattern.overviewPage` or
+  `config.titlePattern.lessonPage` (depending on page type) and performs token
+  substitution: `{moduleCode}` → `pageData.moduleCode`, `{englishTitle}` →
+  `englishOnlyTitle`. The default pattern in baseConfig is
+  `"{moduleCode} {englishTitle}"` for both page types. This makes the title
+  format fully config-driven and extensible for future template-specific patterns.
+- **Applied to:** All templates. The titlePattern config field already existed in
+  baseConfig from Phase 2 but was not being used by `generateSkeleton()`.
+
+#### Change 2 — `#module-code` `<h1>` format varies by template
+- **Previous:** All lesson pages used decimal format (`1.0`, `2.0`) in
+  `#module-code` after Phase 7 introduced `lessonDisplayNumber`.
+- **Human reference:**
+  - Template 1-3: `<h1>01</h1>` (zero-padded)
+  - Template 4-6: `<h1>1.0</h1>` (decimal)
+  - Template 7-8: `<h1>01</h1>` (zero-padded)
+- **Fix:** New config field `headerPattern.lessonPage.moduleCodeFormat` with
+  values `"zero-padded"` (default in baseConfig) or `"decimal"`. Per-template
+  override added for 4-6 only: `"moduleCodeFormat": "decimal"`. In
+  `_generateHeader()`, the method reads `moduleCodeFormat` from the resolved
+  config and selects `lessonPadded` (01, 02) or `lessonDisplayNumber` (1.0, 2.0)
+  accordingly. `lessonPadded` is now passed as a parameter to `_generateHeader()`.
+  Overview pages are unchanged — they always show the full module code.
+- **Applied to:** All templates. Templates 1-3, 7-8, 9-10, NCEA, bilingual,
+  fundamentals, inquiry, and combo all use the default `"zero-padded"` format.
+  Only 4-6 overrides to `"decimal"`.
+
+#### Change 3 — `<head>` script set per template
+- **Previous:** All templates emitted a single `<script>` element for
+  `config.scriptUrl` (the `idoc_scripts.js` URL from `tekura.desire2learn.com`).
+- **Human reference:**
+  - Template 1-3: `<script src="js/stickyNav.js" type="text/javascript" class="stickyNav"></script>` THEN `<script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js"></script>`
+  - Template 4-6: `<script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js"></script>` only
+  - Template 7-8: same as 1-3 (stickyNav + tekuradev)
+- **Fix:**
+  1. New baseConfig field `additionalHeadScripts: []` (empty array = no extra
+     scripts). Each entry is an object with `src`, `type`, and `class` attributes.
+  2. Per-template overrides for 1-3 and 7-8:
+     - `scriptUrl` changed to `"https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts.js"`
+     - `additionalHeadScripts` set to `[{ "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }]`
+  3. In `generateSkeleton()`, before emitting the main `<script>` for
+     `config.scriptUrl`, the method iterates over `config.additionalHeadScripts`
+     and emits each one first. This ensures `stickyNav.js` appears BEFORE
+     `idoc_scripts.js` in the HTML output.
+- **Key difference:** `tekura` vs `tekuradev` (with `dev` infix). Template 4-6
+  uses `tekura.desire2learn.com`; templates 1-3 and 7-8 use
+  `tekuradev.desire2learn.com`.
+- **Applied to:** Only 1-3 and 7-8 receive the override. All other templates
+  (4-6, 9-10, NCEA, bilingual, fundamentals, inquiry, combo) inherit the
+  baseConfig with no additional scripts and the `tekura.desire2learn.com` URL.
+
+#### Change 4 — `tooltip="Overview"` on `#module-menu-content` per template
+- **Previous:** All overview pages received `tooltip="Overview"` on
+  `#module-menu-content` because the baseConfig set
+  `moduleMenu.overviewPage.tooltipOn: "module-menu-content"`.
+- **Human reference:**
+  - Template 1-3: NO `tooltip` attribute on `#module-menu-content`
+  - Template 4-6: `tooltip="Overview"` IS present
+  - Template 7-8: NO `tooltip` attribute on `#module-menu-content`
+- **Fix:** Per-template overrides for 1-3 and 7-8:
+  `moduleMenu.overviewPage.tooltipOn: null`. The existing code in
+  `_generateModuleMenu()` already checks `menuConfig.tooltipOn === 'module-menu-content'`
+  before emitting the attribute, so setting it to `null` via config override is
+  sufficient — no code change was needed beyond the config.
+- **Applied to:** Only 1-3 and 7-8 receive the override. Template 4-6 inherits
+  the baseConfig value `"module-menu-content"` and retains the tooltip. NCEA
+  already had `tooltipOn: null` on its overview page from a prior phase.
+
+#### Change 5 — Footer link ordering
+- **Previous:** `_generateFooter()` emitted links in this order for ALL pages:
+  prev-lesson (if applicable), next-lesson (if applicable), home-nav (always).
+- **Human reference:**
+  - Overview: next-lesson, then home-nav (matched prior code for overview)
+  - Lesson pages: home-nav first, then prev-lesson, then next-lesson
+- **Fix:** `_generateFooter()` rewritten with a branch on `isFirst` (pageIndex === 0):
+  - **Overview page (isFirst):** next-lesson (if not last), then home-nav.
+  - **Lesson pages (!isFirst):** home-nav first (always), then prev-lesson
+    (always on lesson pages), then next-lesson (if not last).
+  - JSDoc comment added documenting the ordering difference.
+- **Applied to:** All templates — footer ordering is a structural LMS pattern,
+  not template-specific.
+
+### New `templates.json` Schema Fields (Phase 15)
+
+| Field | Location | Values | Purpose |
+|-------|----------|--------|---------|
+| `additionalHeadScripts` | baseConfig + overrides | `Array<{src, type, class}>` | Additional `<script>` elements emitted in `<head>` BEFORE the main `scriptUrl` script. Default: `[]` (empty). Templates 1-3 and 7-8 override with stickyNav.js entry |
+| `headerPattern.lessonPage.moduleCodeFormat` | baseConfig + overrides | `"zero-padded"` \| `"decimal"` | Format for the `#module-code` `<h1>` content on lesson pages. `"zero-padded"` (default) uses `01`, `02`; `"decimal"` uses `1.0`, `2.0`. Only template 4-6 overrides to `"decimal"` |
+
+### Per-Template Override Summary (Phase 15)
+
+| Template | `scriptUrl` | `additionalHeadScripts` | `moduleCodeFormat` | `overviewPage.tooltipOn` |
+|----------|-------------|------------------------|-------------------|-------------------------|
+| 1-3 | tekuradev | stickyNav.js | zero-padded (default) | null |
+| 4-6 | tekura (default) | [] (default) | decimal | module-menu-content (default) |
+| 7-8 | tekuradev | stickyNav.js | zero-padded (default) | null |
+| 9-10 | tekura (default) | [] (default) | zero-padded (default) | module-menu-content (default) |
+| NCEA | tekura (default) | [] (default) | zero-padded (default) | null (prior phase) |
+
+### Test Coverage
+
+37 tests in `tests/skeletonCalibration.test.js`:
+
+| Category | Tests |
+|----------|-------|
+| Change 1 (`<title>` titlePattern) | 5 — 1-3 overview, 1-3 lesson, 4-6 lesson, 7-8 lesson, titlePattern config existence |
+| Change 2 (`#module-code` format) | 7 — 1-3 lesson 01/02, 4-6 decimal, 7-8 lesson 01/03, overview full code, moduleCodeFormat config |
+| Change 3 (`<head>` scripts) | 8 — 1-3 stickyNav order, 1-3 tekuradev, 1-3 attributes, 4-6 no stickyNav, 4-6 tekura, 7-8 stickyNav order, 7-8 tekuradev, config defaults |
+| Change 4 (tooltip) | 5 — 1-3 no tooltip, 4-6 has tooltip, 7-8 no tooltip, config values, lesson pages unaffected |
+| Change 5 (footer ordering) | 7 — overview next-then-home, overview no prev, lesson home-first ordering, first lesson, final lesson, cross-template consistency, zero-padded filenames |
+| Cross-template snapshots | 5 — OSAI101-01 full, OSAI201-01 full, OSAI301-01 full, OSAI101-00 overview, OSAI201-00 overview |
+
+### Test Count Change
+
+| Before | After | Difference |
+|--------|-------|------------|
+| 439 tests (18 test files) | 476 tests (19 test files) | +37 tests (1 test file added) |
+
+### Invariants Locked In By Phase 15
+
+1. **`<title>` is always `MODULE_CODE English Title`** with no decimal number,
+   constructed via titlePattern config field with token substitution.
+2. **`#module-code` lesson display is template-specific:** decimal (N.0) for
+   4-6, zero-padded (01) for all others. Controlled by
+   `headerPattern.lessonPage.moduleCodeFormat`.
+3. **`<head>` scripts are template-specific:** templates 1-3 and 7-8 include
+   stickyNav.js before idoc_scripts.js and use the tekuradev URL; template 4-6
+   uses only idoc_scripts.js with the tekura URL.
+4. **`tooltip="Overview"` on `#module-menu-content` is template-specific:**
+   present only on 4-6 overview pages; absent on 1-3 and 7-8 overview pages.
+5. **Footer link ordering is page-type-specific:** overview pages emit
+   next-lesson then home-nav; lesson pages emit home-nav first, then
+   prev-lesson, then next-lesson.
