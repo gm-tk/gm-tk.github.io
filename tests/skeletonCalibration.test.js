@@ -575,10 +575,10 @@ describe('Phase 15 — Cross-template calibration snapshots', function () {
         // No tooltip on menu-content
         assert(skeleton.indexOf('id="module-menu-content" class="moduleMenu" tooltip') === -1,
             'OSAI101-00 should NOT have tooltip on module-menu-content');
-        // Footer: next-lesson before home-nav
+        // Footer: home-nav before next-lesson (1-3 overview override)
         var nextIdx = skeleton.indexOf('id="next-lesson"');
         var homeIdx = skeleton.indexOf('class="home-nav"');
-        assert(nextIdx < homeIdx, 'OSAI101-00 footer: next-lesson before home-nav');
+        assert(homeIdx < nextIdx, 'OSAI101-00 footer: home-nav before next-lesson');
     });
 
     it('OSAI201-00 (4-6 overview): full module code, tooltip present, overview footer order', function () {

@@ -677,6 +677,11 @@ class TemplateEngine {
                         "additionalHeadScripts": [
                             { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
                         ],
+                        "footerPattern": {
+                            "overviewPage": {
+                                "linkOrder": ["home-nav", "next-lesson"]
+                            }
+                        },
                         "moduleMenu": {
                             "overviewPage": {
                                 "tooltipOn": null,
@@ -721,6 +726,11 @@ class TemplateEngine {
                         "additionalHeadScripts": [
                             { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
                         ],
+                        "footerPattern": {
+                            "overviewPage": {
+                                "linkOrder": ["home-nav", "next-lesson"]
+                            }
+                        },
                         "moduleMenu": {
                             "overviewPage": {
                                 "tooltipOn": null,
@@ -768,6 +778,11 @@ class TemplateEngine {
                     "templateAttribute": "NCEA",
                     "inherits": "baseConfig",
                     "overrides": {
+                        "footerPattern": {
+                            "overviewPage": {
+                                "linkOrder": ["home-nav", "next-lesson"]
+                            }
+                        },
                         "headerPattern": {
                             "overviewPage": {
                                 "titles": ["english", "tereo"]
