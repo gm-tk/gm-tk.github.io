@@ -15,6 +15,11 @@
     "defaultColumnClass": "col-md-8 col-12",
     "headingSpanRule": "h1-header-only",
     "footerClass": "footer-nav",
+    "footerPattern": {
+      "overviewPage": {
+        "linkOrder": ["next-lesson", "home-nav"]
+      }
+    },
     "moduleMenu": {
       "overviewPage": {
         "type": "full-tabs",
@@ -86,6 +91,11 @@
         "additionalHeadScripts": [
           { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
         ],
+        "footerPattern": {
+          "overviewPage": {
+            "linkOrder": ["home-nav", "next-lesson"]
+          }
+        },
         "moduleMenu": {
           "overviewPage": {
             "tooltipOn": null,
@@ -134,6 +144,11 @@
         "additionalHeadScripts": [
           { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
         ],
+        "footerPattern": {
+          "overviewPage": {
+            "linkOrder": ["home-nav", "next-lesson"]
+          }
+        },
         "moduleMenu": {
           "overviewPage": {
             "tooltipOn": null,
@@ -185,6 +200,11 @@
       "templateAttribute": "NCEA",
       "inherits": "baseConfig",
       "overrides": {
+        "footerPattern": {
+          "overviewPage": {
+            "linkOrder": ["home-nav", "next-lesson"]
+          }
+        },
         "headerPattern": {
           "overviewPage": {
             "titles": ["english", "tereo"]

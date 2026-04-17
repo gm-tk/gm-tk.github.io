@@ -591,6 +591,11 @@ class TemplateEngine {
                 "defaultColumnClass": "col-md-8 col-12",
                 "headingSpanRule": "h1-header-only",
                 "footerClass": "footer-nav",
+                "footerPattern": {
+                    "overviewPage": {
+                        "linkOrder": ["next-lesson", "home-nav"]
+                    }
+                },
                 "moduleMenu": {
                     "overviewPage": {
                         "type": "full-tabs",
