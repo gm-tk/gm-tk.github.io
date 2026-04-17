@@ -690,6 +690,7 @@ class TemplateEngine {
                                 "wrapAllOverviewHeadingsInSpan": true
                             },
                             "lessonPage": {
+                                "menuStyle": "promote-to-h5",
                                 "labels": {
                                     "learning": "We are learning:",
                                     "success": "You will show your understanding by:"
@@ -739,6 +740,7 @@ class TemplateEngine {
                                 "wrapAllOverviewHeadingsInSpan": true
                             },
                             "lessonPage": {
+                                "menuStyle": "lesson-overview-bold",
                                 "labels": {
                                     "learning": "We are learning:",
                                     "success": "I can:"
@@ -766,6 +768,7 @@ class TemplateEngine {
                                 "wrapAllOverviewHeadingsInSpan": true
                             },
                             "lessonPage": {
+                                "menuStyle": "promote-to-h5",
                                 "labels": {
                                     "learning": "We are learning:",
                                     "success": "I can:"
@@ -799,6 +802,7 @@ class TemplateEngine {
                                 "overviewTabHeadingLevel": "h5"
                             },
                             "lessonPage": {
+                                "menuStyle": "promote-to-h5",
                                 "labels": {
                                     "learning": "We are learning:",
                                     "success": "I can:"
