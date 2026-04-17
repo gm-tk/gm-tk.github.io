@@ -624,6 +624,7 @@ class TemplateEngine {
                         "type": "simplified",
                         "tooltipOn": null,
                         "headingLevel": "h5",
+                        "menuStyle": "synthesise-headings",
                         "sectionHeadings": {
                             "learning": "Learning Intentions",
                             "success": "How will I know if I've learned it?"
