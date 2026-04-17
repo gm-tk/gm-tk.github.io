@@ -25,6 +25,9 @@
         "successCriteriaHeading": "How will I know if I've learned it?",
         "overviewTitleHeadingBehaviour": "keep",
         "stripInfoTabTereoPrefix": false
+        "overviewTabColumnClass": "col-md-8 col-12",
+        "overviewTabHeadingLevel": "h4",
+        "wrapAllOverviewHeadingsInSpan": false
       },
       "lessonPage": {
         "type": "simplified",
@@ -87,6 +90,8 @@
           "overviewPage": {
             "tooltipOn": null,
             "successCriteriaHeading": "Success Criteria"
+            "overviewTabColumnClass": "col-md-12 col-12",
+            "wrapAllOverviewHeadingsInSpan": true
           },
           "lessonPage": {
             "labels": {
@@ -133,6 +138,8 @@
           "overviewPage": {
             "tooltipOn": null,
             "successCriteriaHeading": "Success Criteria"
+            "overviewTabColumnClass": "col-md-12 col-12",
+            "wrapAllOverviewHeadingsInSpan": true
           },
           "lessonPage": {
             "labels": {
@@ -161,6 +168,8 @@
             "successCriteriaHeading": "Success Criteria",
             "overviewTitleHeadingBehaviour": "strip-tereo",
             "stripInfoTabTereoPrefix": true
+            "overviewTabColumnClass": "col-md-12 col-12",
+            "wrapAllOverviewHeadingsInSpan": true
           },
           "lessonPage": {
             "labels": {
@@ -190,6 +199,7 @@
             "tooltipOn": null,
             "overviewTitleHeadingBehaviour": "suppress",
             "stripInfoTabTereoPrefix": true
+            "overviewTabHeadingLevel": "h5"
           },
           "lessonPage": {
             "labels": {

@@ -187,6 +187,33 @@ modified (all existing assertions remained correct), 476 total tests passing.
 - **Empty-heading suppression (Change 8, universal — no config flag):** after the per-block rendering loop in `_renderModuleMenuBlocks()`, a filter drops any heading whose content is empty OR which is immediately followed by another heading / end-of-list with no `<p>` or `<ul>` body between. Applied AFTER Tereo-stripping so headings that collapse to empty are also removed.
 - **Files touched:** `templates/templates.json` (primary source), `js/template-engine.js` (embedded fallback, baseConfig defaults only — per-template overrides in the fallback remain gap-noted), `js/html-converter.js` (`_renderModuleMenuBlocks` — title-behaviour branch in the H1 overview path, Tereo strip in both single- and multi-heading paths, empty-heading post-filter).
 - **Test count after Session B:** 476 tests passing (no test count delta yet — dedicated test files `tests/overviewTitleHeading.test.js` and `tests/infoTabAndEmptyHeadingSuppression.test.js` are deferred to a follow-up session due to tool-call budget exhaustion during exploration).
+### Session A — Overview page header + overview tab scaffolding (2026-04-17)
+
+Multi-session overview-page calibration against 5 human reference modules
+(OSAI101=1-3, OSAI201=4-6, OSAI301=7-8, OSAI401=9-10, OSAI501=NCEA).
+
+- New `moduleMenu.overviewPage` config fields (baseConfig defaults shown):
+  - `overviewTabColumnClass` — `"col-md-8 col-12"`; 1-3, 7-8, 9-10 override to `"col-md-12 col-12"`.
+  - `overviewTabHeadingLevel` — `"h4"`; NCEA overrides to `"h5"`.
+  - `wrapAllOverviewHeadingsInSpan` — `false`; 1-3, 7-8, 9-10 override to `true`.
+- Change 1 — `_generateHeader()` in `js/template-engine.js` now emits dual
+  `<h1><span>...</span></h1>` on overview pages when both English and Te Reo
+  titles are present and the template's `titles` array includes `tereo`.
+  Default order is English then Tereo; `pageData.titleOrder === "tereo-first"`
+  reverses it. Single H1 path preserved when only one title is available.
+- Pipe separator — title extraction in `js/app.js` `_extractTitle()` and the
+  title-bar split in `_generateHeader()` now accept ` | ` (space-pipe-space)
+  in addition to double-space as English/Tereo separator.
+- Changes 2–4 — `_renderModuleMenuBlocks()` in `js/html-converter.js` reads
+  the three new config fields. Info tab column class and heading tag remain
+  fixed (`col-md-8 col-12`, `h5`).
+- Files touched: `js/template-engine.js`, `js/html-converter.js`, `js/app.js`,
+  `templates/templates.json`. Per-template overrides mirrored into the
+  `_embeddedData()` fallback for parity with fetched JSON.
+- New tests: `tests/overviewPageHeader.test.js` (8 cases),
+  `tests/overviewTabScaffolding.test.js` (10 cases). Total suite 494/494 passing.
+- Deferred to Session B: `[H1]` overview-title heading behaviour, Success
+  Criteria heading, Info-tab Tereo-strip, empty-heading suppression.
 
 ---
 

@@ -287,8 +287,8 @@ class TemplateEngine {
             englishTitle = englishTitle.replace(prefixRegex, '');
         }
 
-        // Split English and Te Reo titles on double-space
-        var splitTitles = englishTitle.split(/  +/);
+        // Split English and Te Reo titles on double-space or space-pipe-space
+        var splitTitles = englishTitle.split(/  +| \| /);
         var englishOnly = (splitTitles[0] || '').trim();
         var tereoFromTitle = splitTitles.length > 1 ? splitTitles.slice(1).join('  ').trim() : '';
 
@@ -323,15 +323,21 @@ class TemplateEngine {
         lines.push('  <div id="header">');
         lines.push('    <div id="module-code"><h1>' + this._escHtml(moduleCodeContent) + '</h1></div>');
 
-        // English h1 (NO trailing space inside span — Phase 13)
-        lines.push('    <h1><span>' + this._escHtml(titleText) + '</span></h1>');
-
-        // Te Reo h1 — ONLY when the template's titles array explicitly includes 'tereo'.
-        // Phase 13: do NOT auto-emit Te Reo h1 just because a Te Reo title was
-        // incidentally parsed from the title bar. For lesson pages on 1-3 / 4-6 / 7-8,
-        // titles is ["english"] and the Te Reo h1 is suppressed.
-        if (titles.indexOf('tereo') !== -1 && tereoTitle) {
-            lines.push('    <h1><span>' + this._escHtml(tereoTitle) + '</span></h1>');
+        // Dual H1 emission: on overview pages when both titles are present and
+        // the template's titles array includes 'tereo', emit two H1s.
+        // pageData.titleOrder === "tereo-first" reverses the order.
+        // Single H1 fallback preserved when only one title is available.
+        var hasTereo = titles.indexOf('tereo') !== -1 && tereoTitle;
+        var englishH1Line = '    <h1><span>' + this._escHtml(titleText) + '</span></h1>';
+        var tereoH1Line = '    <h1><span>' + this._escHtml(tereoTitle) + '</span></h1>';
+        if (hasTereo && isOverview && pageData.titleOrder === 'tereo-first') {
+            lines.push(tereoH1Line);
+            lines.push(englishH1Line);
+        } else {
+            lines.push(englishH1Line);
+            if (hasTereo) {
+                lines.push(tereoH1Line);
+            }
         }
 
         // Module head buttons + module menu
@@ -595,6 +601,9 @@ class TemplateEngine {
                         "successCriteriaHeading": "How will I know if I've learned it?",
                         "overviewTitleHeadingBehaviour": "keep",
                         "stripInfoTabTereoPrefix": false
+                        "overviewTabColumnClass": "col-md-8 col-12",
+                        "overviewTabHeadingLevel": "h4",
+                        "wrapAllOverviewHeadingsInSpan": false
                     },
                     "lessonPage": {
                         "type": "simplified",
@@ -655,7 +664,9 @@ class TemplateEngine {
                         ],
                         "moduleMenu": {
                             "overviewPage": {
-                                "tooltipOn": null
+                                "tooltipOn": null,
+                                "overviewTabColumnClass": "col-md-12 col-12",
+                                "wrapAllOverviewHeadingsInSpan": true
                             },
                             "lessonPage": {
                                 "labels": {
@@ -697,7 +708,9 @@ class TemplateEngine {
                         ],
                         "moduleMenu": {
                             "overviewPage": {
-                                "tooltipOn": null
+                                "tooltipOn": null,
+                                "overviewTabColumnClass": "col-md-12 col-12",
+                                "wrapAllOverviewHeadingsInSpan": true
                             },
                             "lessonPage": {
                                 "labels": {
@@ -722,6 +735,10 @@ class TemplateEngine {
                             }
                         },
                         "moduleMenu": {
+                            "overviewPage": {
+                                "overviewTabColumnClass": "col-md-12 col-12",
+                                "wrapAllOverviewHeadingsInSpan": true
+                            },
                             "lessonPage": {
                                 "labels": {
                                     "learning": "We are learning:",
@@ -747,7 +764,8 @@ class TemplateEngine {
                         "moduleMenu": {
                             "overviewPage": {
                                 "tabs": ["Overview", "Information", "Standards"],
-                                "tooltipOn": null
+                                "tooltipOn": null,
+                                "overviewTabHeadingLevel": "h5"
                             },
                             "lessonPage": {
                                 "labels": {
