@@ -1864,8 +1864,8 @@ class App {
         // Convert ALL CAPS titles to title case
         fullTitleText = this._convertToTitleCase(fullTitleText);
 
-        // Split on double-space to separate English and Te Reo titles
-        var titleParts = fullTitleText.split(/  +/);
+        // Split on double-space or space-pipe-space to separate English and Te Reo titles
+        var titleParts = fullTitleText.split(/  +| \| /);
         var englishTitle = (titleParts[0] || '').trim();
         var tereoTitle = titleParts.length > 1 ? titleParts.slice(1).join('  ').trim() : '';
 
