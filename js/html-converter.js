@@ -2960,8 +2960,11 @@ class HtmlConverter {
             config.moduleMenu.overviewPage.successCriteriaHeading)
             ? config.moduleMenu.overviewPage.successCriteriaHeading
             : 'How will I know if I\'ve learned it?';
-        // Information tab uses h5 headings; Overview tab uses h4
-        var menuHeadingTag = isInfoTab ? 'h5' : 'h4';
+        var overviewCfg = (config.moduleMenu && config.moduleMenu.overviewPage) || {};
+        var overviewHeadingLevel = overviewCfg.overviewTabHeadingLevel || 'h4';
+        var wrapAllOverviewSpan = overviewCfg.wrapAllOverviewHeadingsInSpan === true;
+        // Information tab uses h5 headings; Overview tab uses configured level
+        var menuHeadingTag = isInfoTab ? 'h5' : overviewHeadingLevel;
         var i = 0;
         var self = this;
 
@@ -2997,7 +3000,11 @@ class HtmlConverter {
                         var mhMenuInner = this._convertInlineFormatting(mhMenuText);
                         mhMenuInner = this._stripHeadingInlineTags(mhMenuInner);
                         if (mhMenuInner.trim()) {
-                            parts.push(indent + '<' + menuHeadingTag + '>' + mhMenuInner + '</' + menuHeadingTag + '>');
+                            if (isOverviewTab && wrapAllOverviewSpan) {
+                                parts.push(indent + '<' + menuHeadingTag + '><span>' + mhMenuInner + '</span></' + menuHeadingTag + '>');
+                            } else {
+                                parts.push(indent + '<' + menuHeadingTag + '>' + mhMenuInner + '</' + menuHeadingTag + '>');
+                            }
                         }
                     }
                     isFirstHeading = false;
@@ -3028,7 +3035,7 @@ class HtmlConverter {
                 var headingInner = this._convertInlineFormatting(normalisedHeading);
                 headingInner = this._stripHeadingInlineTags(headingInner);
 
-                if (isOverviewTab && isFirstHeading) {
+                if (isOverviewTab && (isFirstHeading || wrapAllOverviewSpan)) {
                     parts.push(indent + '<' + menuHeadingTag + '><span>' + headingInner + '</span></' + menuHeadingTag + '>');
                 } else {
                     parts.push(indent + '<' + menuHeadingTag + '>' + headingInner + '</' + menuHeadingTag + '>');
@@ -3073,10 +3080,12 @@ class HtmlConverter {
             return indent + '<!-- No content -->';
         }
 
-        // Wrap in row + col grid
+        // Wrap in row + col grid. Overview tab column class is config-driven
+        // (moduleMenu.overviewPage.overviewTabColumnClass); Info tab stays fixed.
         var gridIndent = indent;
+        var colClass = isOverviewTab ? (overviewCfg.overviewTabColumnClass || 'col-md-8 col-12') : 'col-md-8 col-12';
         var wrapped = gridIndent + '<div class="row">\n';
-        wrapped += gridIndent + '  <div class="col-md-8 col-12">\n';
+        wrapped += gridIndent + '  <div class="' + colClass + '">\n';
         wrapped += parts.join('\n') + '\n';
         wrapped += gridIndent + '  </div>\n';
         wrapped += gridIndent + '</div>';
