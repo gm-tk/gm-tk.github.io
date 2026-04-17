@@ -401,7 +401,7 @@ describe('Phase 15 CHANGE 5 — Footer link ordering', function () {
             'Overview page should NOT have prev-lesson');
     });
 
-    it('lesson page: home-nav first, then prev-lesson, then next-lesson', function () {
+    it('lesson page: prev-lesson, then next-lesson, then home-nav', function () {
         var config = engine.getConfig('4-6');
         var skeleton = engine.generateSkeleton(config, _mkPageData({
             type: 'lesson', lessonNumber: 2, pageIndex: 2,
@@ -414,13 +414,13 @@ describe('Phase 15 CHANGE 5 — Footer link ordering', function () {
         assert(homeIdx !== -1, 'Lesson should have home-nav');
         assert(prevIdx !== -1, 'Lesson (middle) should have prev-lesson');
         assert(nextIdx !== -1, 'Lesson (middle) should have next-lesson');
-        assert(homeIdx < prevIdx,
-            'Lesson: home-nav should come BEFORE prev-lesson');
         assert(prevIdx < nextIdx,
             'Lesson: prev-lesson should come BEFORE next-lesson');
+        assert(nextIdx < homeIdx,
+            'Lesson: next-lesson should come BEFORE home-nav');
     });
 
-    it('first lesson page: home-nav first, then prev-lesson (back to overview)', function () {
+    it('first lesson page: prev-lesson (back to overview), then home-nav', function () {
         var config = engine.getConfig('4-6');
         var skeleton = engine.generateSkeleton(config, _mkPageData({
             type: 'lesson', lessonNumber: 1, pageIndex: 1,
@@ -431,11 +431,11 @@ describe('Phase 15 CHANGE 5 — Footer link ordering', function () {
         var prevIdx = skeleton.indexOf('id="prev-lesson"');
         assert(homeIdx !== -1 && prevIdx !== -1,
             'First lesson should have both home-nav and prev-lesson');
-        assert(homeIdx < prevIdx,
-            'First lesson: home-nav BEFORE prev-lesson');
+        assert(prevIdx < homeIdx,
+            'First lesson: prev-lesson BEFORE home-nav');
     });
 
-    it('final lesson page: home-nav first, then prev-lesson, no next-lesson', function () {
+    it('final lesson page: prev-lesson, then home-nav, no next-lesson', function () {
         var config = engine.getConfig('4-6');
         var skeleton = engine.generateSkeleton(config, _mkPageData({
             type: 'lesson', lessonNumber: 3, pageIndex: 3,
@@ -448,8 +448,8 @@ describe('Phase 15 CHANGE 5 — Footer link ordering', function () {
         assert(homeIdx !== -1, 'Final lesson should have home-nav');
         assert(prevIdx !== -1, 'Final lesson should have prev-lesson');
         assert(nextIdx === -1, 'Final lesson should NOT have next-lesson');
-        assert(homeIdx < prevIdx,
-            'Final lesson: home-nav BEFORE prev-lesson');
+        assert(prevIdx < homeIdx,
+            'Final lesson: prev-lesson BEFORE home-nav');
     });
 
     it('footer link ordering consistent across templates 1-3, 4-6, 7-8', function () {
@@ -465,8 +465,8 @@ describe('Phase 15 CHANGE 5 — Footer link ordering', function () {
             }));
             var homeIdx = skeleton.indexOf('class="home-nav"');
             var prevIdx = skeleton.indexOf('id="prev-lesson"');
-            assert(homeIdx < prevIdx,
-                templates[i] + ' lesson: home-nav should come before prev-lesson');
+            assert(prevIdx < homeIdx,
+                templates[i] + ' lesson: prev-lesson should come before home-nav');
         }
     });
 
@@ -509,10 +509,10 @@ describe('Phase 15 — Cross-template calibration snapshots', function () {
             'OSAI101-01 should have stickyNav');
         assert(skeleton.indexOf('tekuradev.desire2learn.com') !== -1,
             'OSAI101-01 should use tekuradev');
-        // Footer: home-nav before prev-lesson
+        // Footer: prev-lesson before home-nav (lesson pages)
         var homeIdx = skeleton.indexOf('class="home-nav"');
         var prevIdx = skeleton.indexOf('id="prev-lesson"');
-        assert(homeIdx < prevIdx, 'OSAI101-01 footer: home-nav before prev');
+        assert(prevIdx < homeIdx, 'OSAI101-01 footer: prev-lesson before home-nav');
     });
 
     it('OSAI201-01 (4-6 lesson): decimal code, no stickyNav, tekura, no tooltip on button, correct footer', function () {
@@ -533,10 +533,10 @@ describe('Phase 15 — Cross-template calibration snapshots', function () {
             'OSAI201-01 should NOT have stickyNav');
         assert(skeleton.indexOf('tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js') !== -1,
             'OSAI201-01 should use tekura (no dev)');
-        // Footer: home-nav before prev-lesson
+        // Footer: prev-lesson before home-nav (lesson pages)
         var homeIdx = skeleton.indexOf('class="home-nav"');
         var prevIdx = skeleton.indexOf('id="prev-lesson"');
-        assert(homeIdx < prevIdx, 'OSAI201-01 footer: home-nav before prev');
+        assert(prevIdx < homeIdx, 'OSAI201-01 footer: prev-lesson before home-nav');
     });
 
     it('OSAI301-01 (7-8 lesson): zero-padded code, stickyNav, tekuradev, no tooltip, correct footer', function () {
@@ -557,10 +557,10 @@ describe('Phase 15 — Cross-template calibration snapshots', function () {
             'OSAI301-01 should have stickyNav');
         assert(skeleton.indexOf('tekuradev.desire2learn.com') !== -1,
             'OSAI301-01 should use tekuradev');
-        // Footer: home-nav before prev-lesson
+        // Footer: prev-lesson before home-nav (lesson pages)
         var homeIdx = skeleton.indexOf('class="home-nav"');
         var prevIdx = skeleton.indexOf('id="prev-lesson"');
-        assert(homeIdx < prevIdx, 'OSAI301-01 footer: home-nav before prev');
+        assert(prevIdx < homeIdx, 'OSAI301-01 footer: prev-lesson before home-nav');
     });
 
     it('OSAI101-00 (1-3 overview): full module code, no tooltip, overview footer order', function () {
