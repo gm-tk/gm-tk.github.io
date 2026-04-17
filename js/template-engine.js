@@ -662,7 +662,9 @@ class TemplateEngine {
                         ],
                         "moduleMenu": {
                             "overviewPage": {
-                                "tooltipOn": null
+                                "tooltipOn": null,
+                                "overviewTabColumnClass": "col-md-12 col-12",
+                                "wrapAllOverviewHeadingsInSpan": true
                             },
                             "lessonPage": {
                                 "labels": {
@@ -704,7 +706,9 @@ class TemplateEngine {
                         ],
                         "moduleMenu": {
                             "overviewPage": {
-                                "tooltipOn": null
+                                "tooltipOn": null,
+                                "overviewTabColumnClass": "col-md-12 col-12",
+                                "wrapAllOverviewHeadingsInSpan": true
                             },
                             "lessonPage": {
                                 "labels": {
@@ -729,6 +733,10 @@ class TemplateEngine {
                             }
                         },
                         "moduleMenu": {
+                            "overviewPage": {
+                                "overviewTabColumnClass": "col-md-12 col-12",
+                                "wrapAllOverviewHeadingsInSpan": true
+                            },
                             "lessonPage": {
                                 "labels": {
                                     "learning": "We are learning:",
@@ -754,7 +762,8 @@ class TemplateEngine {
                         "moduleMenu": {
                             "overviewPage": {
                                 "tabs": ["Overview", "Information", "Standards"],
-                                "tooltipOn": null
+                                "tooltipOn": null,
+                                "overviewTabHeadingLevel": "h5"
                             },
                             "lessonPage": {
                                 "labels": {
