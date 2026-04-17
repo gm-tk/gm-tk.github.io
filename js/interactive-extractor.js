@@ -208,9 +208,13 @@ class InteractiveExtractor {
 
         // Session F — compute boundary metadata (startBlockIndex / endBlockIndex
         // / childBlocks / conversationEntries / writerNotes / associatedMedia /
-        // dataTable). Fields are additive; Session G consumes them in
-        // html-converter.js to skip consumed blocks during body rendering.
-        var boundary = this._consumeInteractiveBoundary(contentBlocks, startIndex, tagInfo);
+        // dataTable). Session G threads `insideActivity` into the boundary so
+        // H4 / H5 scaffolding inside an activity does not close the inner
+        // interactive. html-converter.js consumes these fields to skip
+        // consumed blocks during body rendering.
+        var boundary = this._consumeInteractiveBoundary(
+            contentBlocks, startIndex, tagInfo, { inActivity: insideActivity === true }
+        );
 
         return {
             placeholderHtml: placeholderHtml,
@@ -1914,12 +1918,16 @@ class InteractiveExtractor {
      * @param {Array<Object>} blocks
      * @param {number} startIndex
      * @param {Object} [tagInfo] - The normalised interactive-start tag record.
+     * @param {Object} [context] - Optional `{ inActivity: boolean }`. Threaded
+     *   into `TagNormaliser.isInteractiveEndSignal()` so H4/H5 inside an
+     *   activity wrapper do not close the inner interactive.
      * @returns {Object}
      */
-    _consumeInteractiveBoundary(blocks, startIndex, tagInfo) {
+    _consumeInteractiveBoundary(blocks, startIndex, tagInfo, context) {
         if (!tagInfo) {
             tagInfo = this._getInteractiveTag(blocks[startIndex]);
         }
+        var endSignalContext = context || {};
 
         var result = {
             startBlockIndex: startIndex,
@@ -1994,8 +2002,10 @@ class InteractiveExtractor {
                 continue;
             }
 
-            // Rule: explicit end signal from the normaliser.
-            if (nextPrimary && this._normaliser.isInteractiveEndSignal(nextPrimary)) {
+            // Rule: explicit end signal from the normaliser. Pass the activity
+            // context so H4 / H5 scaffolding inside an activity does NOT
+            // close the inner interactive.
+            if (nextPrimary && this._normaliser.isInteractiveEndSignal(nextPrimary, endSignalContext)) {
                 break;
             }
 

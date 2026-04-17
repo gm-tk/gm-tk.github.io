@@ -1576,7 +1576,9 @@ class TagNormaliser {
      *   (with at least `.normalised` and optional `.level`/`.category`) or a
      *   plain normalised tag name string.
      * @param {Object} [context] - Optional context; `{ inActivity: boolean }`
-     *   is accepted for forward compatibility (refined in Session G).
+     *   refines heading-level handling so H4 / H5 inside an activity wrapper
+     *   are treated as activity scaffolding (do NOT close the inner
+     *   interactive) while H2 / H3 still close.
      * @returns {boolean} True if this tag closes the current interactive.
      */
     isInteractiveEndSignal(normalisedTag, context) {
@@ -1588,14 +1590,16 @@ class TagNormaliser {
 
         if (this._interactiveEndSignalTags.indexOf(name) !== -1) return true;
 
-        // Headings: H2 / H3 always close. H4 / H5 close at top level (Session F);
-        // Session G refines the H4/H5 rule when `context.inActivity` is true.
+        // Headings:
+        //   • H2 / H3 always close (section boundary).
+        //   • H4 / H5 close at top level, but inside an activity wrapper they
+        //     are scaffolding for the activity itself and do NOT close the
+        //     inner interactive (Session G refinement).
         if (name === 'heading') {
             var level = typeof normalisedTag === 'object' ? normalisedTag.level : null;
             if (level === 2 || level === 3) return true;
             if (level === 4 || level === 5) {
                 var inActivity = context && context.inActivity === true;
-                // Session F: top-level H4/H5 close; inside activity left to Session G.
                 return !inActivity;
             }
         }
