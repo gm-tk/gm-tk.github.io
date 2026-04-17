@@ -423,9 +423,14 @@ class TemplateEngine {
     /**
      * Generate footer navigation links.
      *
-     * Link ordering differs by page type:
-     *   - Overview page (pageIndex 0): next-lesson, then home-nav
-     *   - Lesson pages (pageIndex > 0): home-nav first, then prev-lesson, then next-lesson
+     * Link ordering:
+     *   - Overview page (pageIndex 0): config-driven via
+     *     config.footerPattern.overviewPage.linkOrder. Defaults to
+     *     ["next-lesson", "home-nav"]. Templates 1-3 / 7-8 / NCEA override
+     *     to ["home-nav", "next-lesson"].
+     *   - Lesson pages (pageIndex > 0): uniform across all templates —
+     *     prev-lesson, next-lesson, home-nav. next-lesson is omitted on the
+     *     final page; home-nav is always emitted.
      *
      * @private
      */
@@ -438,30 +443,35 @@ class TemplateEngine {
         var isFirst = pageIndex === 0;
         var isLast = pageIndex === totalPages - 1;
 
+        var nextPage = String(pageIndex + 1).padStart(2, '0');
+        var nextLink = '      <li><a href="' + moduleCode + '-' + nextPage +
+            '.html" id="next-lesson" target="_self"></a></li>';
+        var homeLink = '      <li><a href="" class="home-nav" target="_parent"></a></li>';
+
         lines.push('  <div id="footer">');
         lines.push('    <ul class="' + footerClass + '">');
 
         if (isFirst) {
-            // Overview page: next-lesson first, then home-nav
-            if (!isLast) {
-                var nextPage = String(pageIndex + 1).padStart(2, '0');
-                lines.push('      <li><a href="' + moduleCode + '-' + nextPage +
-                    '.html" id="next-lesson" target="_self"></a></li>');
+            // Overview page: config-driven ordering
+            var overviewOrder = (config.footerPattern &&
+                config.footerPattern.overviewPage &&
+                config.footerPattern.overviewPage.linkOrder) ||
+                ['next-lesson', 'home-nav'];
+            for (var i = 0; i < overviewOrder.length; i++) {
+                var key = overviewOrder[i];
+                if (key === 'next-lesson') {
+                    if (!isLast) lines.push(nextLink);
+                } else if (key === 'home-nav') {
+                    lines.push(homeLink);
+                }
             }
-            lines.push('      <li><a href="" class="home-nav" target="_parent"></a></li>');
         } else {
-            // Lesson pages: home-nav first, then prev-lesson, then next-lesson
-            lines.push('      <li><a href="" class="home-nav" target="_parent"></a></li>');
-
+            // Lesson pages: prev-lesson, next-lesson, home-nav (uniform)
             var prevPage = String(pageIndex - 1).padStart(2, '0');
             lines.push('      <li><a href="' + moduleCode + '-' + prevPage +
                 '.html" id="prev-lesson" target="_self"></a></li>');
-
-            if (!isLast) {
-                var nextPageLesson = String(pageIndex + 1).padStart(2, '0');
-                lines.push('      <li><a href="' + moduleCode + '-' + nextPageLesson +
-                    '.html" id="next-lesson" target="_self"></a></li>');
-            }
+            if (!isLast) lines.push(nextLink);
+            lines.push(homeLink);
         }
 
         lines.push('    </ul>');
@@ -591,6 +601,11 @@ class TemplateEngine {
                 "defaultColumnClass": "col-md-8 col-12",
                 "headingSpanRule": "h1-header-only",
                 "footerClass": "footer-nav",
+                "footerPattern": {
+                    "overviewPage": {
+                        "linkOrder": ["next-lesson", "home-nav"]
+                    }
+                },
                 "moduleMenu": {
                     "overviewPage": {
                         "type": "full-tabs",
@@ -600,7 +615,7 @@ class TemplateEngine {
                         "overviewTitleTag": "h4-span",
                         "successCriteriaHeading": "How will I know if I've learned it?",
                         "overviewTitleHeadingBehaviour": "keep",
-                        "stripInfoTabTereoPrefix": false
+                        "stripInfoTabTereoPrefix": false,
                         "overviewTabColumnClass": "col-md-8 col-12",
                         "overviewTabHeadingLevel": "h4",
                         "wrapAllOverviewHeadingsInSpan": false
@@ -662,6 +677,11 @@ class TemplateEngine {
                         "additionalHeadScripts": [
                             { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
                         ],
+                        "footerPattern": {
+                            "overviewPage": {
+                                "linkOrder": ["home-nav", "next-lesson"]
+                            }
+                        },
                         "moduleMenu": {
                             "overviewPage": {
                                 "tooltipOn": null,
@@ -706,6 +726,11 @@ class TemplateEngine {
                         "additionalHeadScripts": [
                             { "src": "js/stickyNav.js", "type": "text/javascript", "class": "stickyNav" }
                         ],
+                        "footerPattern": {
+                            "overviewPage": {
+                                "linkOrder": ["home-nav", "next-lesson"]
+                            }
+                        },
                         "moduleMenu": {
                             "overviewPage": {
                                 "tooltipOn": null,
@@ -753,6 +778,11 @@ class TemplateEngine {
                     "templateAttribute": "NCEA",
                     "inherits": "baseConfig",
                     "overrides": {
+                        "footerPattern": {
+                            "overviewPage": {
+                                "linkOrder": ["home-nav", "next-lesson"]
+                            }
+                        },
                         "headerPattern": {
                             "overviewPage": {
                                 "titles": ["english", "tereo"]

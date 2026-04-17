@@ -217,4 +217,37 @@ Multi-session overview-page calibration against 5 human reference modules
 
 ---
 
+### Session C — Footer link ordering correction
+
+Re-audit of all 5 human-developed reference modules revealed that an earlier
+change applied the wrong footer ordering to lesson pages, while overview-page
+ordering actually varies by template. This session reverts the lesson-page
+ordering to a uniform rule and introduces config-driven overview ordering.
+
+- New config field: `footerPattern.overviewPage.linkOrder` (array of link
+  keys). `baseConfig` default is `["next-lesson", "home-nav"]`. Templates
+  `1-3`, `7-8`, and `NCEA` override to `["home-nav", "next-lesson"]`.
+- Lesson-page ordering reverted to uniform across ALL templates:
+  - Middle pages: `prev-lesson`, `next-lesson`, `home-nav`
+  - Final page: `prev-lesson`, `home-nav` (no `next-lesson`)
+  The previous `home-nav` → `prev-lesson` → `next-lesson` ordering was
+  stripped from `_generateFooter()` in `js/template-engine.js`.
+- Overview-page ordering per template: `4-6` and `9-10` use the default
+  `next-lesson, home-nav`; `1-3`, `7-8`, `NCEA` emit `home-nav, next-lesson`.
+  Single-page modules (`totalPages === 1`) still suppress `next-lesson`
+  regardless of configured order; `home-nav` is always emitted.
+- Files touched: `js/template-engine.js` (method + embedded fallback for
+  5 templates), `templates/templates.json`, `tests/skeletonCalibration.test.js`
+  (updated lesson-page and OSAI101-00 assertions). New test file
+  `tests/footerLinkOrdering.test.js` adds 13 cases covering both default
+  and override overview orderings, middle/final lesson pages across all 5
+  templates, single-page suppression, and a regression guard that
+  `home-nav` never precedes `prev-lesson` on any lesson page.
+- Pre-existing bug fix: `_embeddedData()` was missing a comma after
+  `"stripInfoTabTereoPrefix": false` which prevented all tests from
+  running; comma added so the Node suite executes.
+- Post-merge test count: 508/508 passing.
+
+---
+
 [← Back to index](../CLAUDE.md)
