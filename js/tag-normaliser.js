@@ -159,7 +159,7 @@ class TagNormaliser {
 
         var raw = tagText.indexOf('[') === 0 ? tagText : '[' + inner + ']';
 
-        return this._normalise(inner, raw);
+        return this._annotateInteractive(this._normalise(inner, raw));
     }
 
     /**
@@ -301,7 +301,7 @@ class TagNormaliser {
             if (inner === 'RED TEXT' || inner === '/RED TEXT') continue;
 
             var raw = match[0];
-            var normalised = this._normalise(inner, raw);
+            var normalised = this._annotateInteractive(this._normalise(inner, raw));
 
             if (normalised) {
                 tags.push(normalised);
@@ -1079,6 +1079,60 @@ class TagNormaliser {
             'kanji_cards', 'embed_pdf', 'embed_padlet', 'embed_desmos',
             'upload_to_dropbox'
         ];
+
+        // Interactive tags that are NOT start-of-interactive (they are sub-tags
+        // or the close marker of an accordion group). Everything else listed in
+        // `_interactiveTags` is treated as an interactive-start tag.
+        this._interactiveNonStartTags = [
+            'carousel_slide', 'tab', 'shape', 'hint', 'end_accordions'
+        ];
+
+        // Child sub-tags that are structurally contained within a given
+        // interactive-start tag. Used by the boundary-detection algorithm
+        // (Session F, `js/interactive-extractor.js`) to decide whether a
+        // following block belongs inside the current interactive boundary.
+        // Values are normalised tag names. Interactive-start tags not listed
+        // here default to an empty array.
+        this._interactiveChildTagsMap = {
+            flip_card: ['front', 'back'],
+            click_drop: ['front', 'back'],
+            carousel: ['carousel_slide', 'tab', 'image'],
+            rotating_banner: ['carousel_slide', 'tab', 'image'],
+            slide_show: ['carousel_slide', 'tab', 'image'],
+            accordion: ['tab', 'carousel_slide'],
+            tabs: ['tab', 'carousel_slide'],
+            hint_slider: ['hint', 'carousel_slide'],
+            speech_bubble: []
+        };
+
+        // Normalised tags which, when encountered after an interactive-start,
+        // always close the current interactive boundary. Used by
+        // `isInteractiveEndSignal()`.
+        this._interactiveEndSignalTags = [
+            'body', 'end_page', 'end_activity', 'lesson',
+            'alert', 'alert_cultural_wananga', 'alert_cultural_talanoa',
+            'alert_cultural_combined',
+            'important', 'whakatauki', 'quote'
+        ];
+    }
+
+    /**
+     * Annotate a normalised tag object with interactive-boundary metadata.
+     * Adds `isInteractiveStart` (boolean) and `interactiveChildTags` (array of
+     * normalised sub-tag names) to every `category: 'interactive'` record so
+     * the downstream boundary-detection algorithm in
+     * `js/interactive-extractor.js` can iterate without re-computing these
+     * classifications.
+     *
+     * @param {Object|null} tagObj - Normalised tag record (or null).
+     * @returns {Object|null} Same record with added metadata, or null.
+     */
+    _annotateInteractive(tagObj) {
+        if (!tagObj || tagObj.category !== 'interactive') return tagObj;
+        var name = tagObj.normalised;
+        tagObj.isInteractiveStart = (this._interactiveNonStartTags.indexOf(name) === -1);
+        tagObj.interactiveChildTags = this._interactiveChildTagsMap[name] || [];
+        return tagObj;
     }
 
     // ------------------------------------------------------------------
@@ -1512,5 +1566,40 @@ class TagNormaliser {
         }
 
         return result;
+    }
+
+    /**
+     * Decide whether a normalised tag closes the current interactive boundary.
+     * Consumed by the interactive-extractor's boundary-detection algorithm.
+     *
+     * @param {Object|string} normalisedTag - Either a normalised tag record
+     *   (with at least `.normalised` and optional `.level`/`.category`) or a
+     *   plain normalised tag name string.
+     * @param {Object} [context] - Optional context; `{ inActivity: boolean }`
+     *   is accepted for forward compatibility (refined in Session G).
+     * @returns {boolean} True if this tag closes the current interactive.
+     */
+    isInteractiveEndSignal(normalisedTag, context) {
+        if (!normalisedTag) return false;
+        var name = typeof normalisedTag === 'string'
+            ? normalisedTag
+            : normalisedTag.normalised;
+        if (!name) return false;
+
+        if (this._interactiveEndSignalTags.indexOf(name) !== -1) return true;
+
+        // Headings: H2 / H3 always close. H4 / H5 close at top level (Session F);
+        // Session G refines the H4/H5 rule when `context.inActivity` is true.
+        if (name === 'heading') {
+            var level = typeof normalisedTag === 'object' ? normalisedTag.level : null;
+            if (level === 2 || level === 3) return true;
+            if (level === 4 || level === 5) {
+                var inActivity = context && context.inActivity === true;
+                // Session F: top-level H4/H5 close; inside activity left to Session G.
+                return !inActivity;
+            }
+        }
+
+        return false;
     }
 }
