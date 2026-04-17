@@ -247,6 +247,50 @@ If moved to PageBoundary, the extraction would have to duplicate the
 
 ---
 
+### Session D — Per-Template Lesson Menu Rendering Styles
+
+Session D introduces a `menuStyle` config key on
+`moduleMenu.lessonPage`, allowing each template to select one of three
+distinct lesson-page module menu rendering styles observed across the
+5 LMS templates.
+
+- **`menuStyle` values:**
+  - `"synthesise-headings"` — Current Phase 13 baseline. Emits
+    synthesised `<h5>` section headings (e.g. `<h5>Learning Intentions</h5>`)
+    above the writer's verbatim `<p>We are learning:</p>` intro.
+  - `"promote-to-h5"` — Promotes the writer's `We are learning:` / `I can:`
+    body lines directly to `<h5>` (trailing colon kept). No synthesised
+    parent headings. Preceding descriptive `<p>` preserved.
+  - `"lesson-overview-bold"` — Emits a single `<h4>Lesson Overview</h4>`
+    at top; body lines become `<p><b>We are learning:</b></p>` etc.;
+    intro descriptive paragraph is DROPPED.
+
+- **Per-template assignment:**
+  - `1-3`, `9-10`, `NCEA` → `"promote-to-h5"`
+  - `4-6` → `"synthesise-headings"` (baseline retained)
+  - `7-8` → `"lesson-overview-bold"`
+
+- **Output shape differences (short examples):**
+  - `synthesise-headings`: `<h5>Learning Intentions</h5><p>We are learning:</p><ul>…`
+  - `promote-to-h5`: `<h5>We are learning:</h5><ul>…`
+  - `lesson-overview-bold`: `<h4>Lesson Overview</h4><p><b>We are learning:</b></p><ul>…`
+
+- **Files touched:** `js/html-converter.js` (dispatch in
+  `_generateLessonMenuContent()` + two new helpers
+  `_generateLessonMenuPromoteToH5()` /
+  `_generateLessonMenuOverviewBold()`), `templates/templates.json`
+  (baseConfig default + 4 per-template overrides),
+  `js/template-engine.js` (`_embeddedData()` mirror).
+
+- **New test files:**
+  `tests/lessonMenuPromoteAndBaseline.test.js` (7 tests covering
+  baseline + promote-to-h5), `tests/lessonMenuOverviewBold.test.js`
+  (6 tests covering lesson-overview-bold including intro-drop).
+
+- **Post-merge test count:** 521/521 passing, 0 failing.
+
+---
+
 
 ---
 
