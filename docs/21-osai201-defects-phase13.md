@@ -184,6 +184,47 @@ fixture `_buildOsaiSnippet()` assembles a three-block content array:
 
 ---
 
+### Session E — Body Content Rendering Fixes
+
+Two narrow body-content rendering bugs discovered during calibration,
+both template-agnostic.
+
+- **Change 1 — Alert + layout-table pairing.** When the writer uses
+  `[alert]` immediately followed by a layout table whose main cell
+  carries bullets/paragraphs and whose sidebar cell carries an image,
+  PageForge previously emitted an EMPTY `<div class="alert">` — the
+  main-cell content never reached the alert body. Root cause: the
+  alert-content collector pushed the main-cell paragraphs as plain
+  text, losing list structure; the synthetic sidebar block then
+  broke collection and the paired layout was never constructed.
+  Fix: in `_renderBlocks()`'s `[alert]` branch, detect following
+  blocks carrying `_unwrappedFrom: 'layout_table'` + `_cellRole:
+  'main_content'`, consume them as alert body (preserving lists via
+  `_renderList`), and pair with any adjacent sidebar block
+  (`_sidebarImageUrl` / `_sidebarAlertContent`) using
+  `_wrapSideBySide()` at column widths `col-md-6 col-12 paddingR`
+  (alert) + `col-md-3 col-12 paddingL` (image). `_wrapSideBySide()`
+  gained two optional parameters for the column classes; existing
+  callers retain the default `col-md-8` + `col-md-4` widths.
+- **Change 2 — `contentRules.suppressDuplicateLessonTitleH2` flag
+  (default OFF).** Some writers open a lesson with `[H2] *Lesson 1:
+  What is AI?*`, duplicating the page `<h1>`. When this flag is set
+  to `true` in the resolved template config AND the page is a lesson
+  page AND the first rendered body block is an `[H1]`/`[H2]` whose
+  normalised text (stripping `*`/`**`/`***`, `Lesson N:` /
+  `Lesson N -` / `Lesson N.` prefix case-insensitively) matches
+  `pageData.lessonTitle`, the heading is skipped. Default is `false`,
+  so behaviour is unchanged unless a template opts in. Added to
+  `templates/templates.json` baseConfig and mirrored in the
+  `TemplateEngine._embeddedData()` fallback.
+
+**Files touched:** `js/html-converter.js`, `templates/templates.json`,
+`js/template-engine.js` (embedded fallback only). New tests:
+`tests/alertWithSidebarImage.test.js` (6 cases),
+`tests/suppressDuplicateLessonTitleH2.test.js` (7 cases).
+
+**Post-merge test count:** 534/534 passing (was 521 — 13 new tests).
+
 
 ---
 
