@@ -601,6 +601,42 @@ class HtmlConverter {
         // so we skip processed blocks that correspond to consumed raw blocks.
         var consumedRawIndices = {};
 
+        // Change 2: suppressDuplicateLessonTitleH2 flag. When enabled on a
+        // lesson page, skip the first body block if it is an [H2] whose text
+        // matches the extracted lesson title (after stripping leading
+        // "Lesson N:" / "Lesson N -" / "Lesson N." prefixes and italic/bold
+        // markers). Default OFF — no behaviour change unless opted in.
+        var _skipDuplicateLessonH2Index = -1;
+        if (config && config.contentRules &&
+            config.contentRules.suppressDuplicateLessonTitleH2 === true &&
+            pageData && pageData.type === 'lesson') {
+            for (var _fi = 0; _fi < processedBlocks.length; _fi++) {
+                var _fb = processedBlocks[_fi];
+                if (!_fb) continue;
+                var _fbTags = _fb.tagResult ? _fb.tagResult.tags : [];
+                var _fbTag = _fbTags.length > 0 ? _fbTags[0] : null;
+                var _fbText = (_fb.cleanText || '').trim();
+                if (!_fbTag && !_fbText) continue;
+                if (_fbTag && _fbTag.normalised === 'heading' &&
+                    (_fbTag.level === 1 || _fbTag.level === 2)) {
+                    var _rawHeading = self._stripFullHeadingFormatting(_fbText);
+                    var _lessonTitleForCmp = (pageData.lessonTitle ||
+                        self._extractLessonTitle(pageData.contentBlocks || []) || '');
+                    var _norm = function (s) {
+                        return (s || '').replace(/\*+/g, '')
+                            .replace(/^Lesson\s+\d+\s*[:.\-]\s*/i, '')
+                            .trim().toLowerCase();
+                    };
+                    var _nh = _norm(_rawHeading);
+                    var _nl = _norm(_lessonTitleForCmp);
+                    if (_nh && _nl && _nh === _nl) {
+                        _skipDuplicateLessonH2Index = _fi;
+                    }
+                }
+                break;
+            }
+        }
+
         function flushPending() {
             if (pendingContent.length > 0) {
                 if (inActivity) {
@@ -618,6 +654,10 @@ class HtmlConverter {
         }
 
         while (i < processedBlocks.length) {
+            if (i === _skipDuplicateLessonH2Index) {
+                i++;
+                continue;
+            }
             // Skip blocks whose raw counterpart was consumed by interactive extraction
             if (procToRawMap[i] !== undefined && consumedRawIndices[procToRawMap[i]]) {
                 i++;
