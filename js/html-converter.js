@@ -601,6 +601,42 @@ class HtmlConverter {
         // so we skip processed blocks that correspond to consumed raw blocks.
         var consumedRawIndices = {};
 
+        // Change 2: suppressDuplicateLessonTitleH2 flag. When enabled on a
+        // lesson page, skip the first body block if it is an [H2] whose text
+        // matches the extracted lesson title (after stripping leading
+        // "Lesson N:" / "Lesson N -" / "Lesson N." prefixes and italic/bold
+        // markers). Default OFF — no behaviour change unless opted in.
+        var _skipDuplicateLessonH2Index = -1;
+        if (config && config.contentRules &&
+            config.contentRules.suppressDuplicateLessonTitleH2 === true &&
+            pageData && pageData.type === 'lesson') {
+            for (var _fi = 0; _fi < processedBlocks.length; _fi++) {
+                var _fb = processedBlocks[_fi];
+                if (!_fb) continue;
+                var _fbTags = _fb.tagResult ? _fb.tagResult.tags : [];
+                var _fbTag = _fbTags.length > 0 ? _fbTags[0] : null;
+                var _fbText = (_fb.cleanText || '').trim();
+                if (!_fbTag && !_fbText) continue;
+                if (_fbTag && _fbTag.normalised === 'heading' &&
+                    (_fbTag.level === 1 || _fbTag.level === 2)) {
+                    var _rawHeading = self._stripFullHeadingFormatting(_fbText);
+                    var _lessonTitleForCmp = (pageData.lessonTitle ||
+                        self._extractLessonTitle(pageData.contentBlocks || []) || '');
+                    var _norm = function (s) {
+                        return (s || '').replace(/\*+/g, '')
+                            .replace(/^Lesson\s+\d+\s*[:.\-]\s*/i, '')
+                            .trim().toLowerCase();
+                    };
+                    var _nh = _norm(_rawHeading);
+                    var _nl = _norm(_lessonTitleForCmp);
+                    if (_nh && _nl && _nh === _nl) {
+                        _skipDuplicateLessonH2Index = _fi;
+                    }
+                }
+                break;
+            }
+        }
+
         function flushPending() {
             if (pendingContent.length > 0) {
                 if (inActivity) {
@@ -618,6 +654,10 @@ class HtmlConverter {
         }
 
         while (i < processedBlocks.length) {
+            if (i === _skipDuplicateLessonH2Index) {
+                i++;
+                continue;
+            }
             // Skip blocks whose raw counterpart was consumed by interactive extraction
             if (procToRawMap[i] !== undefined && consumedRawIndices[procToRawMap[i]]) {
                 i++;
@@ -1069,6 +1109,93 @@ class HtmlConverter {
             // --- Alert ---
             if (tagName === 'alert') {
                 flushPending();
+
+                // Layout-table pairing: when the immediately-following blocks
+                // carry _unwrappedFrom: 'layout_table' metadata, consume the
+                // main-content cell paragraphs as the alert's body content and
+                // pair an adjacent sidebar block (image/alert) side-by-side.
+                var ltMainStart = i + 1;
+                var ltMainEnd = ltMainStart;
+                while (ltMainEnd < processedBlocks.length) {
+                    var ltb = processedBlocks[ltMainEnd];
+                    if (ltb && ltb._unwrappedFrom === 'layout_table' && ltb._cellRole === 'main_content') {
+                        ltMainEnd++;
+                    } else {
+                        break;
+                    }
+                }
+                var ltHasMain = (ltMainEnd > ltMainStart);
+                var ltSidebarBlock = null;
+                if (ltHasMain && ltMainEnd < processedBlocks.length) {
+                    var ltSb = processedBlocks[ltMainEnd];
+                    if (ltSb && (ltSb._cellRole === 'sidebar_image' || ltSb._cellRole === 'sidebar_alert') &&
+                        (ltSb._sidebarImageUrl !== undefined || ltSb._sidebarAlertContent !== undefined)) {
+                        ltSidebarBlock = ltSb;
+                    }
+                }
+
+                if (ltHasMain) {
+                    var ltInnerHtml = '';
+                    var ltTagText = (pBlock.cleanText || '').trim();
+                    if (ltTagText) {
+                        ltInnerHtml += '          <p>' + this._convertInlineFormatting(ltTagText) + '</p>\n';
+                    }
+                    var ltk = ltMainStart;
+                    while (ltk < ltMainEnd) {
+                        var ltMblk = processedBlocks[ltk];
+                        if (ltMblk.data && ltMblk.data.isListItem) {
+                            var ltListItems = [];
+                            while (ltk < ltMainEnd && processedBlocks[ltk].data && processedBlocks[ltk].data.isListItem) {
+                                ltListItems.push(processedBlocks[ltk]);
+                                ltk++;
+                            }
+                            ltInnerHtml += this._renderList(ltListItems) + '\n';
+                        } else {
+                            var ltT = (ltMblk.cleanText || '').trim();
+                            if (ltT) {
+                                ltInnerHtml += '          <p>' + this._convertInlineFormatting(ltT) + '</p>\n';
+                            }
+                            ltk++;
+                        }
+                    }
+                    var ltAlertHtml = '    <div class="alert">\n' +
+                        '      <div class="row">\n' +
+                        '        <div class="col-12">\n' +
+                        ltInnerHtml +
+                        '        </div>\n' +
+                        '      </div>\n' +
+                        '    </div>';
+                    var ltBlocksConsumed = ltMainEnd - i;
+                    if (ltSidebarBlock) {
+                        var ltSidebarInner;
+                        if (ltSidebarBlock._cellRole === 'sidebar_image') {
+                            ltSidebarInner = '      ' + this._renderImagePlaceholder(ltSidebarBlock._sidebarImageUrl || '', config);
+                        } else {
+                            ltSidebarInner = this._renderSidebarBlock(ltSidebarBlock, config);
+                        }
+                        var ltPairedHtml = this._wrapSideBySide(
+                            ltAlertHtml,
+                            ltSidebarInner,
+                            'col-md-6 col-12 paddingR',
+                            'col-md-3 col-12 paddingL'
+                        );
+                        if (inActivity) {
+                            activityParts.push(ltPairedHtml);
+                        } else {
+                            htmlParts.push(ltPairedHtml);
+                        }
+                        ltBlocksConsumed += 1;
+                    } else {
+                        if (inActivity) {
+                            activityParts.push(ltAlertHtml);
+                        } else {
+                            htmlParts.push(this._wrapInRow(ltAlertHtml, colClass));
+                        }
+                    }
+                    i += ltBlocksConsumed;
+                    continue;
+                }
+
                 var alertResult = this._collectAlertContent(processedBlocks, i);
                 var alertInnerHtml = '';
                 for (var ai = 0; ai < alertResult.paragraphs.length; ai++) {
@@ -2427,14 +2554,16 @@ class HtmlConverter {
      * @param {string} sidebarHtml - HTML for the sidebar column
      * @returns {string} Combined row HTML
      */
-    _wrapSideBySide(mainHtml, sidebarHtml) {
+    _wrapSideBySide(mainHtml, sidebarHtml, mainColClass, sidebarColClass) {
+        var mainCol = mainColClass || 'col-md-8 col-12';
+        var sideCol = sidebarColClass || 'col-md-4 offset-md-0 col-12';
         var html = '    <div class="row">\n';
-        html += '      <div class="col-md-8 col-12">\n';
+        html += '      <div class="' + mainCol + '">\n';
         if (mainHtml && mainHtml.trim()) {
             html += mainHtml + '\n';
         }
         html += '      </div>\n';
-        html += '      <div class="col-md-4 offset-md-0 col-12">\n';
+        html += '      <div class="' + sideCol + '">\n';
         html += sidebarHtml + '\n';
         html += '      </div>\n';
         html += '    </div>';

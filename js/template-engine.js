@@ -666,7 +666,10 @@ class TemplateEngine {
                     "wideInteractiveImages": "col-md-10 col-12",
                     "carousel": "col-md-8 col-12"
                 },
-                "interactivePlaceholder": true
+                "interactivePlaceholder": true,
+                "contentRules": {
+                    "suppressDuplicateLessonTitleH2": false
+                }
             },
             "templates": {
                 "1-3": {
