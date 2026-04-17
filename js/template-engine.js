@@ -592,7 +592,9 @@ class TemplateEngine {
                         "tooltipOn": "module-menu-content",
                         "headingLevel": "h4",
                         "overviewTitleTag": "h4-span",
-                        "successCriteriaHeading": "How will I know if I've learned it?"
+                        "successCriteriaHeading": "How will I know if I've learned it?",
+                        "overviewTitleHeadingBehaviour": "keep",
+                        "stripInfoTabTereoPrefix": false
                     },
                     "lessonPage": {
                         "type": "simplified",
