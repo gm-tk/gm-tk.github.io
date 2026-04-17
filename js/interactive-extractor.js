@@ -327,17 +327,99 @@ class InteractiveExtractor {
             }
             lines.push('');
 
-            // Media references
-            if (entry.mediaReferences && entry.mediaReferences.length > 0) {
+            // Media references — combine legacy mediaReferences with the
+            // Session G boundary-captured `associatedMedia` list, dedup by
+            // type+url. Section header is preserved for downstream parsers.
+            var mediaKeys = {};
+            var mediaCombined = [];
+            if (entry.mediaReferences) {
+                for (var mr = 0; mr < entry.mediaReferences.length; mr++) {
+                    var mref = entry.mediaReferences[mr];
+                    var mk = (mref.type || '') + '::' + (mref.url || '');
+                    if (mediaKeys[mk]) continue;
+                    mediaKeys[mk] = true;
+                    mediaCombined.push(mref);
+                }
+            }
+            if (entry.associatedMedia) {
+                for (var am = 0; am < entry.associatedMedia.length; am++) {
+                    var amref = entry.associatedMedia[am];
+                    var amk = (amref.type || '') + '::' + (amref.url || '');
+                    if (mediaKeys[amk]) continue;
+                    mediaKeys[amk] = true;
+                    mediaCombined.push(amref);
+                }
+            }
+            if (mediaCombined.length > 0) {
                 lines.push('Associated Media:');
-                for (var mi = 0; mi < entry.mediaReferences.length; mi++) {
-                    var media = entry.mediaReferences[mi];
+                for (var mi = 0; mi < mediaCombined.length; mi++) {
+                    var media = mediaCombined[mi];
                     lines.push('  ' + media.type + ': ' + media.url);
                 }
             } else {
                 lines.push('Associated Media: None');
             }
             lines.push('');
+
+            // Session G — child sub-tag blocks captured by the boundary
+            // (e.g. flip card [front] / [back] entries). Additive sub-section
+            // inside the existing entry block; top-level structure unchanged.
+            if (entry.childBlocks && entry.childBlocks.length > 0) {
+                lines.push('Child Blocks (' + entry.childBlocks.length + '):');
+                for (var cbI = 0; cbI < entry.childBlocks.length; cbI++) {
+                    var cbE = entry.childBlocks[cbI];
+                    var cbN = (cbE.tag && cbE.tag.normalised) || 'item';
+                    var cbT = '';
+                    if (cbE.block) {
+                        if (cbE.block.type === 'paragraph' && cbE.block.data) {
+                            cbT = this._buildFormattedText(cbE.block.data);
+                        } else if (cbE.block.type === 'table' && cbE.block.data) {
+                            cbT = this._buildTableText(cbE.block.data);
+                        }
+                    }
+                    cbT = (cbT || '').replace(
+                        /\uD83D\uDD34\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]\uD83D\uDD34/g, ''
+                    ).replace(/\[[^\]]+\]/g, '').trim();
+                    lines.push('  [' + cbN + '] ' + cbT);
+                }
+                lines.push('');
+            }
+
+            // Session G — conversation entries (speech_bubble Conversation
+            // layout) preserved in order with speaker labels intact.
+            if (entry.conversationEntries && entry.conversationEntries.length > 0) {
+                lines.push('Conversation Entries (' + entry.conversationEntries.length + '):');
+                for (var ceI = 0; ceI < entry.conversationEntries.length; ceI++) {
+                    lines.push('  ' + (ceI + 1) + '. ' + entry.conversationEntries[ceI]);
+                }
+                lines.push('');
+            }
+
+            // Session G — boundary writer notes (red-text instructions
+            // captured INSIDE the interactive boundary). Dedup against the
+            // legacy Writer Instructions section above.
+            if (entry.boundaryWriterNotes && entry.boundaryWriterNotes.length > 0) {
+                var seenWN = {};
+                if (entry.writerInstructions) {
+                    for (var swI = 0; swI < entry.writerInstructions.length; swI++) {
+                        seenWN[(entry.writerInstructions[swI] || '').trim()] = true;
+                    }
+                }
+                var freshWN = [];
+                for (var bwI = 0; bwI < entry.boundaryWriterNotes.length; bwI++) {
+                    var bwT = (entry.boundaryWriterNotes[bwI] || '').trim();
+                    if (!bwT || seenWN[bwT]) continue;
+                    seenWN[bwT] = true;
+                    freshWN.push(bwT);
+                }
+                if (freshWN.length > 0) {
+                    lines.push('Boundary Writer Notes:');
+                    for (var fwI = 0; fwI < freshWN.length; fwI++) {
+                        lines.push('  - ' + freshWN[fwI]);
+                    }
+                    lines.push('');
+                }
+            }
 
             // Red flags
             if (entry.redFlags && entry.redFlags.length > 0) {
