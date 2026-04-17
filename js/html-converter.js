@@ -1069,6 +1069,93 @@ class HtmlConverter {
             // --- Alert ---
             if (tagName === 'alert') {
                 flushPending();
+
+                // Layout-table pairing: when the immediately-following blocks
+                // carry _unwrappedFrom: 'layout_table' metadata, consume the
+                // main-content cell paragraphs as the alert's body content and
+                // pair an adjacent sidebar block (image/alert) side-by-side.
+                var ltMainStart = i + 1;
+                var ltMainEnd = ltMainStart;
+                while (ltMainEnd < processedBlocks.length) {
+                    var ltb = processedBlocks[ltMainEnd];
+                    if (ltb && ltb._unwrappedFrom === 'layout_table' && ltb._cellRole === 'main_content') {
+                        ltMainEnd++;
+                    } else {
+                        break;
+                    }
+                }
+                var ltHasMain = (ltMainEnd > ltMainStart);
+                var ltSidebarBlock = null;
+                if (ltHasMain && ltMainEnd < processedBlocks.length) {
+                    var ltSb = processedBlocks[ltMainEnd];
+                    if (ltSb && (ltSb._cellRole === 'sidebar_image' || ltSb._cellRole === 'sidebar_alert') &&
+                        (ltSb._sidebarImageUrl !== undefined || ltSb._sidebarAlertContent !== undefined)) {
+                        ltSidebarBlock = ltSb;
+                    }
+                }
+
+                if (ltHasMain) {
+                    var ltInnerHtml = '';
+                    var ltTagText = (pBlock.cleanText || '').trim();
+                    if (ltTagText) {
+                        ltInnerHtml += '          <p>' + this._convertInlineFormatting(ltTagText) + '</p>\n';
+                    }
+                    var ltk = ltMainStart;
+                    while (ltk < ltMainEnd) {
+                        var ltMblk = processedBlocks[ltk];
+                        if (ltMblk.data && ltMblk.data.isListItem) {
+                            var ltListItems = [];
+                            while (ltk < ltMainEnd && processedBlocks[ltk].data && processedBlocks[ltk].data.isListItem) {
+                                ltListItems.push(processedBlocks[ltk]);
+                                ltk++;
+                            }
+                            ltInnerHtml += this._renderList(ltListItems) + '\n';
+                        } else {
+                            var ltT = (ltMblk.cleanText || '').trim();
+                            if (ltT) {
+                                ltInnerHtml += '          <p>' + this._convertInlineFormatting(ltT) + '</p>\n';
+                            }
+                            ltk++;
+                        }
+                    }
+                    var ltAlertHtml = '    <div class="alert">\n' +
+                        '      <div class="row">\n' +
+                        '        <div class="col-12">\n' +
+                        ltInnerHtml +
+                        '        </div>\n' +
+                        '      </div>\n' +
+                        '    </div>';
+                    var ltBlocksConsumed = ltMainEnd - i;
+                    if (ltSidebarBlock) {
+                        var ltSidebarInner;
+                        if (ltSidebarBlock._cellRole === 'sidebar_image') {
+                            ltSidebarInner = '      ' + this._renderImagePlaceholder(ltSidebarBlock._sidebarImageUrl || '', config);
+                        } else {
+                            ltSidebarInner = this._renderSidebarBlock(ltSidebarBlock, config);
+                        }
+                        var ltPairedHtml = this._wrapSideBySide(
+                            ltAlertHtml,
+                            ltSidebarInner,
+                            'col-md-6 col-12 paddingR',
+                            'col-md-3 col-12 paddingL'
+                        );
+                        if (inActivity) {
+                            activityParts.push(ltPairedHtml);
+                        } else {
+                            htmlParts.push(ltPairedHtml);
+                        }
+                        ltBlocksConsumed += 1;
+                    } else {
+                        if (inActivity) {
+                            activityParts.push(ltAlertHtml);
+                        } else {
+                            htmlParts.push(this._wrapInRow(ltAlertHtml, colClass));
+                        }
+                    }
+                    i += ltBlocksConsumed;
+                    continue;
+                }
+
                 var alertResult = this._collectAlertContent(processedBlocks, i);
                 var alertInnerHtml = '';
                 for (var ai = 0; ai < alertResult.paragraphs.length; ai++) {
@@ -2427,14 +2514,16 @@ class HtmlConverter {
      * @param {string} sidebarHtml - HTML for the sidebar column
      * @returns {string} Combined row HTML
      */
-    _wrapSideBySide(mainHtml, sidebarHtml) {
+    _wrapSideBySide(mainHtml, sidebarHtml, mainColClass, sidebarColClass) {
+        var mainCol = mainColClass || 'col-md-8 col-12';
+        var sideCol = sidebarColClass || 'col-md-4 offset-md-0 col-12';
         var html = '    <div class="row">\n';
-        html += '      <div class="col-md-8 col-12">\n';
+        html += '      <div class="' + mainCol + '">\n';
         if (mainHtml && mainHtml.trim()) {
             html += mainHtml + '\n';
         }
         html += '      </div>\n';
-        html += '      <div class="col-md-4 offset-md-0 col-12">\n';
+        html += '      <div class="' + sideCol + '">\n';
         html += sidebarHtml + '\n';
         html += '      </div>\n';
         html += '    </div>';
