@@ -2,7 +2,7 @@
 
 ## 1. Status
 
-Runbook for Session 2 — extraction not yet executed.
+DONE — extracted in Session 2.
 
 ## 2. Baseline measurements
 
@@ -278,3 +278,12 @@ rm -f js/debug-panel-renderer.js
 ```
 
 If `DebugPanelRenderer` instantiation has already been committed before the failure, use `git reset --hard <pre-extraction-sha>` instead — but confirm no unrelated work is staged first. Never force-push. After rollback, re-open this runbook and diagnose before retrying.
+
+## Execution Log
+
+- **Final line counts:** `js/app.js` = **1364 lines**, `js/debug-panel-renderer.js` = **641 lines**. Both within the runbook's expected envelope (~1367 and ~620 respectively).
+- **Post-extraction test run:** `node tests/test-runner.js` → **571/571 passed, 0 failed**. Baseline (pre-extraction) was also 571/571, so the extraction is behaviour-neutral against the test suite.
+- **Deviations from the runbook:**
+    1. **Off-by-one in extraction range.** The runbook claimed line 1716 was the last line of the debug block and line 1717 was blank. In fact line 1716 is `        return diffs;` and line 1717 is the closing `    }` of `_getConfigDiffs`. The `sed -n '1133,1716p'` extraction therefore omitted the method's closing brace, producing a syntax error at Section 12 step 4. Fixed in-flight by inserting the missing `    }` between `return diffs;` and the appended `_esc` helper in `js/debug-panel-renderer.js` (single targeted Edit).
+    2. **Shifted deletion range.** Sections 9a and 9b added +7 and +6 lines respectively above the extraction block, shifting it to lines 1146–1729. Combined with the off-by-one fix above (extending end by 1), the actual deletion command run was `sed -i '1146,1730d' js/app.js` instead of the runbook's `sed -i '1133,1716d' js/app.js`. Verified by `sed -n` spot-checks of the new boundaries before and after deletion. The post-deletion `grep` for the six debug method names returned no matches, confirming a clean cut.
+- All other steps (scaffolding, append, `_esc` duplication, the nine field-rename `sed` commands, both `str_replace` edits in `js/app.js`, the `index.html` `<script>` insertion) were executed exactly as specified.

@@ -68,6 +68,7 @@ Chronological list of completed development phases. Each entry links to the per-
 - **Phase 1 Patch — Tag Normalisation Robustness** — Added `defragmentRawText()` pre-processing for fractured Word-XML red-text boundaries; extended `resolveOrdinalOrNumber()` with ordinal suffix stripping. [docs/18-tag-normalisation-patch.md](docs/18-tag-normalisation-patch.md)
 - **ENGS301 Inconsistency Fixes** — 13 module-specific fixes across tag normaliser, HTML converter, interactive extractor, formatter, and title extraction. [docs/16-engs301-fixes.md](docs/16-engs301-fixes.md)
 - **Documentation Refactor** — Split the monolithic root `CLAUDE.md` (~2625 lines) into a slim index plus per-section files under `docs/`. No source code touched; 476/476 tests still pass. [docs/24-docs-refactor.md](docs/24-docs-refactor.md)
+- **App Refactor — Debug Panel Extraction (Session 2)** — Extracted six debug-panel rendering methods from `js/app.js` (1936 → 1364 lines) into a new `js/debug-panel-renderer.js` (641 lines) with constructor-injected dependencies and a snapshot-based `render()` API; `_esc` duplicated across both classes. 571/571 tests still pass. [docs/25-app-refactor-plan.md](docs/25-app-refactor-plan.md)
 
 > Earlier phases (0–6.1) are covered implicitly by the structural sections (docs/01–15). Only phases with dedicated recalibration or post-launch log files are listed above.
 
