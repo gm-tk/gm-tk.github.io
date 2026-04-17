@@ -3518,6 +3518,15 @@ class HtmlConverter {
         };
         var indent = '          ';
 
+        var menuStyle = menuCfg.menuStyle || 'synthesise-headings';
+        if (menuStyle === 'promote-to-h5') {
+            return this._generateLessonMenuPromoteToH5(menuContentBlocks, fallbackLabels, indent);
+        }
+        if (menuStyle === 'lesson-overview-bold') {
+            return this._generateLessonMenuOverviewBold(menuContentBlocks, fallbackLabels, indent);
+        }
+        // Fall through: "synthesise-headings" (baseline behaviour).
+
         if (!menuContentBlocks || menuContentBlocks.length === 0) {
             // No content — emit section headings with placeholder comments
             var html = '';
@@ -3688,6 +3697,175 @@ class HtmlConverter {
             }
         }
 
+        return result.join('\n');
+    }
+
+    /**
+     * Session D — "promote-to-h5" menu style for 1-3 / 9-10 / NCEA lesson pages.
+     * Promotes the writer's "We are learning:" / "I can:" body lines directly
+     * to <h5> (trailing colon kept); preserves any preceding descriptive
+     * paragraph as <p>; does NOT synthesise parent section headings.
+     */
+    _generateLessonMenuPromoteToH5(menuContentBlocks, fallbackLabels, indent) {
+        if (!menuContentBlocks || menuContentBlocks.length === 0) {
+            var h = '';
+            h += indent + '<h5>' + this._escContent(fallbackLabels.learning) + '</h5>\n';
+            h += indent + '<!-- Learning intentions content -->\n';
+            h += indent + '<h5>' + this._escContent(fallbackLabels.success) + '</h5>\n';
+            h += indent + '<!-- Success criteria content -->';
+            return h;
+        }
+        var processedBlocks = this._processAllBlocks(menuContentBlocks);
+        var result = [];
+        var currentSection = 'description';
+        var i = 0;
+        while (i < processedBlocks.length) {
+            var pBlock = processedBlocks[i];
+            var tags = pBlock.tagResult ? pBlock.tagResult.tags : [];
+            var primaryTag = tags.length > 0 ? tags[0] : null;
+            var category = primaryTag ? primaryTag.category : null;
+            if (category === 'structural') { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isWhitespaceOnly) { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isRedTextOnly && tags.length === 0 && !pBlock.cleanText) { i++; continue; }
+            var cleanText = (pBlock.cleanText || '').trim();
+            var lowerText = cleanText ? cleanText.toLowerCase().replace(/[*_]/g, '') : '';
+            var learnLabel = (fallbackLabels.learning || '').toLowerCase().replace(/[*_:]/g, '').trim();
+            var succLabel = (fallbackLabels.success || '').toLowerCase().replace(/[*_:]/g, '').trim();
+            var isLearning = cleanText && (
+                (learnLabel && lowerText.indexOf(learnLabel) !== -1) ||
+                lowerText.indexOf('we are learning') !== -1 ||
+                lowerText.indexOf('learning intention') !== -1 ||
+                lowerText.indexOf('i will be able to') !== -1
+            );
+            var isSuccess = cleanText && !isLearning && (
+                (succLabel && lowerText.indexOf(succLabel) !== -1) ||
+                lowerText.indexOf('i can') !== -1 ||
+                lowerText.indexOf('success criteria') !== -1 ||
+                lowerText.indexOf('you will show') !== -1 ||
+                lowerText.indexOf('how will i know') !== -1
+            );
+            if (isLearning) {
+                currentSection = 'learning';
+                var lh = this._stripFullItalic(cleanText);
+                result.push(indent + '<h5>' + this._escContent(lh) + '</h5>');
+                i++; continue;
+            }
+            if (isSuccess) {
+                currentSection = 'success';
+                var sh = this._stripFullItalic(cleanText);
+                result.push(indent + '<h5>' + this._escContent(sh) + '</h5>');
+                i++; continue;
+            }
+            if (pBlock.data && pBlock.data.isListItem) {
+                var listItems = [];
+                while (i < processedBlocks.length) {
+                    var lb = processedBlocks[i];
+                    if (lb.data && lb.data.isListItem) {
+                        var listFmt = lb.data.listFormat || 'bullet';
+                        if ((currentSection === 'success' || currentSection === 'learning') && listFmt !== 'bullet') {
+                            break;
+                        }
+                        listItems.push(lb);
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                if (listItems.length > 0) {
+                    result.push(this._renderMenuList(listItems, indent));
+                }
+                continue;
+            }
+            if (currentSection === 'description' && cleanText) {
+                var descText = this._stripFullItalic(cleanText);
+                var descInner = this._convertInlineFormatting(descText);
+                descInner = descInner.replace(/<\/?i>/g, '');
+                result.push(indent + '<p>' + descInner + '</p>');
+            }
+            i++;
+        }
+        return result.join('\n');
+    }
+
+    /**
+     * Session D — "lesson-overview-bold" menu style for 7-8 lesson pages.
+     * Emits a single <h4>Lesson Overview</h4> at the top. Writer's
+     * "We are learning:" / "I can:" body lines become <p><b>…</b></p>.
+     * Any intro descriptive paragraph is DROPPED. Lists remain <ul>.
+     */
+    _generateLessonMenuOverviewBold(menuContentBlocks, fallbackLabels, indent) {
+        var result = [];
+        result.push(indent + '<h4>Lesson Overview</h4>');
+        if (!menuContentBlocks || menuContentBlocks.length === 0) {
+            result.push(indent + '<p><b>' + this._escContent(fallbackLabels.learning) + '</b></p>');
+            result.push(indent + '<!-- Learning intentions content -->');
+            result.push(indent + '<p><b>' + this._escContent(fallbackLabels.success) + '</b></p>');
+            result.push(indent + '<!-- Success criteria content -->');
+            return result.join('\n');
+        }
+        var processedBlocks = this._processAllBlocks(menuContentBlocks);
+        var currentSection = 'description';
+        var i = 0;
+        while (i < processedBlocks.length) {
+            var pBlock = processedBlocks[i];
+            var tags = pBlock.tagResult ? pBlock.tagResult.tags : [];
+            var primaryTag = tags.length > 0 ? tags[0] : null;
+            var category = primaryTag ? primaryTag.category : null;
+            if (category === 'structural') { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isWhitespaceOnly) { i++; continue; }
+            if (pBlock.tagResult && pBlock.tagResult.isRedTextOnly && tags.length === 0 && !pBlock.cleanText) { i++; continue; }
+            var cleanText = (pBlock.cleanText || '').trim();
+            var lowerText = cleanText ? cleanText.toLowerCase().replace(/[*_]/g, '') : '';
+            var learnLabel = (fallbackLabels.learning || '').toLowerCase().replace(/[*_:]/g, '').trim();
+            var succLabel = (fallbackLabels.success || '').toLowerCase().replace(/[*_:]/g, '').trim();
+            var isLearning = cleanText && (
+                (learnLabel && lowerText.indexOf(learnLabel) !== -1) ||
+                lowerText.indexOf('we are learning') !== -1 ||
+                lowerText.indexOf('learning intention') !== -1 ||
+                lowerText.indexOf('i will be able to') !== -1
+            );
+            var isSuccess = cleanText && !isLearning && (
+                (succLabel && lowerText.indexOf(succLabel) !== -1) ||
+                lowerText.indexOf('i can') !== -1 ||
+                lowerText.indexOf('success criteria') !== -1 ||
+                lowerText.indexOf('you will show') !== -1 ||
+                lowerText.indexOf('how will i know') !== -1
+            );
+            if (isLearning) {
+                currentSection = 'learning';
+                var lh = this._stripFullItalic(cleanText);
+                result.push(indent + '<p><b>' + this._escContent(lh) + '</b></p>');
+                i++; continue;
+            }
+            if (isSuccess) {
+                currentSection = 'success';
+                var sh = this._stripFullItalic(cleanText);
+                result.push(indent + '<p><b>' + this._escContent(sh) + '</b></p>');
+                i++; continue;
+            }
+            if (pBlock.data && pBlock.data.isListItem) {
+                var listItems = [];
+                while (i < processedBlocks.length) {
+                    var lb = processedBlocks[i];
+                    if (lb.data && lb.data.isListItem) {
+                        var listFmt = lb.data.listFormat || 'bullet';
+                        if ((currentSection === 'success' || currentSection === 'learning') && listFmt !== 'bullet') {
+                            break;
+                        }
+                        listItems.push(lb);
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                if (listItems.length > 0) {
+                    result.push(this._renderMenuList(listItems, indent));
+                }
+                continue;
+            }
+            // Descriptive paragraph intentionally DROPPED for overview-bold style.
+            i++;
+        }
         return result.join('\n');
     }
 
