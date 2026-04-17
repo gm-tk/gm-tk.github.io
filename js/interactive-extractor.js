@@ -206,12 +206,25 @@ class InteractiveExtractor {
             notes: ''
         };
 
+        // Session F — compute boundary metadata (startBlockIndex / endBlockIndex
+        // / childBlocks / conversationEntries / writerNotes / associatedMedia /
+        // dataTable). Fields are additive; Session G consumes them in
+        // html-converter.js to skip consumed blocks during body rendering.
+        var boundary = this._consumeInteractiveBoundary(contentBlocks, startIndex, tagInfo);
+
         return {
             placeholderHtml: placeholderHtml,
             referenceEntry: referenceEntry,
             blocksConsumed: extracted.blocksConsumed,
             interactiveType: interactiveType,
-            dataPattern: dataPattern
+            dataPattern: dataPattern,
+            startBlockIndex: boundary.startBlockIndex,
+            endBlockIndex: boundary.endBlockIndex,
+            childBlocks: boundary.childBlocks,
+            conversationEntries: boundary.conversationEntries,
+            writerNotes: boundary.writerNotes,
+            associatedMedia: boundary.associatedMedia,
+            dataTable: boundary.dataTable
         };
     }
 
@@ -1877,5 +1890,160 @@ class InteractiveExtractor {
             .replace(/"/g, '&quot;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;');
+    }
+
+    // ------------------------------------------------------------------
+    // Boundary detection (Session F)
+    // ------------------------------------------------------------------
+
+    /**
+     * Walk blocks from an interactive-start index and determine the inclusive
+     * block range that belongs to the current interactive. Captures child
+     * sub-tag blocks, conversation-style paragraphs, red-text writer notes,
+     * inline media, and the primary data table — without modifying the
+     * existing `_extractData()` output.
+     *
+     * Close signals (tag NOT consumed):
+     *   • `TagNormaliser.isInteractiveEndSignal()` → `body`, H2/H3 (H4/H5
+     *     at top level in Session F), `end_page`, `end_activity`, `lesson`,
+     *     `alert`, `important`, `whakatauki`, `quote`.
+     *   • Another interactive-start tag.
+     *   • Any block that does not match a child / writer-note / inline-media /
+     *     conversation-paragraph rule.
+     *
+     * @param {Array<Object>} blocks
+     * @param {number} startIndex
+     * @param {Object} [tagInfo] - The normalised interactive-start tag record.
+     * @returns {Object}
+     */
+    _consumeInteractiveBoundary(blocks, startIndex, tagInfo) {
+        if (!tagInfo) {
+            tagInfo = this._getInteractiveTag(blocks[startIndex]);
+        }
+
+        var result = {
+            startBlockIndex: startIndex,
+            endBlockIndex: startIndex,
+            childBlocks: [],
+            conversationEntries: [],
+            writerNotes: [],
+            associatedMedia: [],
+            dataTable: null
+        };
+
+        if (!tagInfo) return result;
+
+        var childTags = tagInfo.interactiveChildTags || [];
+        var modifier = (tagInfo.modifier || '').toLowerCase();
+        var isConversationStyle = (
+            tagInfo.normalised === 'speech_bubble' &&
+            modifier.indexOf('conversation') !== -1
+        );
+
+        // If the start block is itself a table (e.g., [speech bubble] inside a
+        // table cell), treat the table as the primary data table.
+        var startBlock = blocks[startIndex];
+        if (startBlock && startBlock.type === 'table' && startBlock.data) {
+            result.dataTable = startBlock.data;
+        }
+
+        // Track whether any non-start block has been consumed yet — the primary
+        // data-table rule only applies when the table sits immediately after
+        // the start tag.
+        var consumedCount = 0;
+
+        for (var i = startIndex + 1; i < blocks.length; i++) {
+            var next = blocks[i];
+
+            // Rule: TABLE immediately after the start-tag captures as dataTable.
+            if (next.type === 'table' && consumedCount === 0 && !result.dataTable) {
+                result.dataTable = next.data;
+                result.endBlockIndex = i;
+                consumedCount++;
+                continue;
+            }
+
+            var nextTagResult = this._getBlockTagResult(next);
+            var nextPrimary = (nextTagResult.tags && nextTagResult.tags.length > 0)
+                ? nextTagResult.tags[0] : null;
+
+            // Rule: red-text writer instruction — capture into writerNotes.
+            // Either the block is pure red text, or it carries red-text
+            // instructions alongside no structural tag of its own.
+            if (nextTagResult.isRedTextOnly ||
+                (nextTagResult.redTextInstructions &&
+                 nextTagResult.redTextInstructions.length > 0 &&
+                 !nextPrimary)) {
+                for (var r = 0; r < nextTagResult.redTextInstructions.length; r++) {
+                    result.writerNotes.push(nextTagResult.redTextInstructions[r]);
+                }
+                result.endBlockIndex = i;
+                consumedCount++;
+                continue;
+            }
+
+            // Rule: child sub-tag belongs inside the current interactive.
+            if (nextPrimary && childTags.indexOf(nextPrimary.normalised) !== -1) {
+                result.childBlocks.push({
+                    index: i,
+                    block: next,
+                    tag: nextPrimary
+                });
+                result.endBlockIndex = i;
+                consumedCount++;
+                continue;
+            }
+
+            // Rule: explicit end signal from the normaliser.
+            if (nextPrimary && this._normaliser.isInteractiveEndSignal(nextPrimary)) {
+                break;
+            }
+
+            // Rule: another interactive-start tag closes the boundary.
+            if (nextPrimary && nextPrimary.isInteractiveStart === true) {
+                break;
+            }
+
+            // Rule: inline [image]/[video] inside conversation-style or whenever
+            // we have already begun consuming child blocks.
+            if (nextPrimary &&
+                (nextPrimary.normalised === 'image' || nextPrimary.normalised === 'video') &&
+                (isConversationStyle || result.childBlocks.length > 0)) {
+                var url = (nextTagResult.cleanText || '').trim();
+                result.associatedMedia.push({
+                    type: nextPrimary.normalised,
+                    url: url
+                });
+                result.endBlockIndex = i;
+                consumedCount++;
+                continue;
+            }
+
+            // Rule: conversation-style — untagged / body-category paragraph
+            // (e.g. "Prompt 1: ..." / "AI response: ...") belongs inside.
+            if (isConversationStyle &&
+                next.type === 'paragraph' &&
+                (!nextPrimary || nextPrimary.category === 'body')) {
+                var convText = (nextTagResult.cleanText || '').trim();
+                if (!convText) {
+                    var raw = this._buildFormattedText(next.data);
+                    raw = raw.replace(
+                        /\uD83D\uDD34\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]\uD83D\uDD34/g, ''
+                    ).replace(/\[[^\]]+\]/g, '').trim();
+                    convText = raw;
+                }
+                if (convText) {
+                    result.conversationEntries.push(convText);
+                    result.endBlockIndex = i;
+                    consumedCount++;
+                    continue;
+                }
+            }
+
+            // Nothing matched — close boundary at the previous consumed block.
+            break;
+        }
+
+        return result;
     }
 }
