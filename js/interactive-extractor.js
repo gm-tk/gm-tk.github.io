@@ -166,7 +166,21 @@ class InteractiveExtractor {
             writerInstructions = tagBlockInstructions.concat(writerInstructions);
         }
 
-        // Build placeholder HTML (with data preview — Part B redesign)
+        // Session F — compute boundary metadata (startBlockIndex / endBlockIndex
+        // / childBlocks / conversationEntries / writerNotes / associatedMedia /
+        // dataTable). Session G threads `insideActivity` into the boundary so
+        // H4 / H5 scaffolding inside an activity does not close the inner
+        // interactive. html-converter.js consumes these fields to skip
+        // consumed blocks during body rendering.
+        var boundary = this._consumeInteractiveBoundary(
+            contentBlocks, startIndex, tagInfo, { inActivity: insideActivity === true }
+        );
+
+        // Build placeholder HTML (with data preview — Part B redesign).
+        // Session G — placeholder fidelity: thread captured childBlocks /
+        // conversationEntries / writerNotes / associatedMedia / dataTable
+        // from the boundary into the renderer so every consumed block
+        // appears INSIDE the placeholder shell (visual shell unchanged).
         var placeholderHtml = this._generatePlaceholderHtml({
             interactiveType: interactiveType,
             modifier: modifier,
@@ -180,11 +194,16 @@ class InteractiveExtractor {
             activityHeading: extracted.activityHeading || null,
             activityInstructions: extracted.activityInstructions || null,
             insideActivity: insideActivity,
-            tableData: extracted.tableData || null,
-            numberedItems: extracted.numberedItems || null
+            tableData: extracted.tableData || boundary.dataTable || null,
+            numberedItems: extracted.numberedItems || null,
+            childBlocks: boundary.childBlocks || [],
+            conversationEntries: boundary.conversationEntries || [],
+            boundaryWriterNotes: boundary.writerNotes || [],
+            associatedMedia: boundary.associatedMedia || []
         });
 
-        // Build reference entry
+        // Build reference entry. Session G — surface the new boundary
+        // captures so generateReferenceDocument() can include them.
         var referenceEntry = {
             index: 0,
             filename: pageFilename,
@@ -195,7 +214,7 @@ class InteractiveExtractor {
             dataPattern: dataPattern,
             dataPatternName: dataPatternName,
             positionContext: positionContext,
-            tableData: extracted.tableData || null,
+            tableData: extracted.tableData || boundary.dataTable || null,
             listData: extracted.listData || null,
             numberedItems: extracted.numberedItems || null,
             activityHeading: extracted.activityHeading || null,
@@ -203,14 +222,12 @@ class InteractiveExtractor {
             writerInstructions: writerInstructions,
             mediaReferences: extracted.mediaReferences || [],
             redFlags: extracted.redFlags || [],
+            childBlocks: boundary.childBlocks || [],
+            conversationEntries: boundary.conversationEntries || [],
+            boundaryWriterNotes: boundary.writerNotes || [],
+            associatedMedia: boundary.associatedMedia || [],
             notes: ''
         };
-
-        // Session F — compute boundary metadata (startBlockIndex / endBlockIndex
-        // / childBlocks / conversationEntries / writerNotes / associatedMedia /
-        // dataTable). Fields are additive; Session G consumes them in
-        // html-converter.js to skip consumed blocks during body rendering.
-        var boundary = this._consumeInteractiveBoundary(contentBlocks, startIndex, tagInfo);
 
         return {
             placeholderHtml: placeholderHtml,
@@ -310,17 +327,99 @@ class InteractiveExtractor {
             }
             lines.push('');
 
-            // Media references
-            if (entry.mediaReferences && entry.mediaReferences.length > 0) {
+            // Media references — combine legacy mediaReferences with the
+            // Session G boundary-captured `associatedMedia` list, dedup by
+            // type+url. Section header is preserved for downstream parsers.
+            var mediaKeys = {};
+            var mediaCombined = [];
+            if (entry.mediaReferences) {
+                for (var mr = 0; mr < entry.mediaReferences.length; mr++) {
+                    var mref = entry.mediaReferences[mr];
+                    var mk = (mref.type || '') + '::' + (mref.url || '');
+                    if (mediaKeys[mk]) continue;
+                    mediaKeys[mk] = true;
+                    mediaCombined.push(mref);
+                }
+            }
+            if (entry.associatedMedia) {
+                for (var am = 0; am < entry.associatedMedia.length; am++) {
+                    var amref = entry.associatedMedia[am];
+                    var amk = (amref.type || '') + '::' + (amref.url || '');
+                    if (mediaKeys[amk]) continue;
+                    mediaKeys[amk] = true;
+                    mediaCombined.push(amref);
+                }
+            }
+            if (mediaCombined.length > 0) {
                 lines.push('Associated Media:');
-                for (var mi = 0; mi < entry.mediaReferences.length; mi++) {
-                    var media = entry.mediaReferences[mi];
+                for (var mi = 0; mi < mediaCombined.length; mi++) {
+                    var media = mediaCombined[mi];
                     lines.push('  ' + media.type + ': ' + media.url);
                 }
             } else {
                 lines.push('Associated Media: None');
             }
             lines.push('');
+
+            // Session G — child sub-tag blocks captured by the boundary
+            // (e.g. flip card [front] / [back] entries). Additive sub-section
+            // inside the existing entry block; top-level structure unchanged.
+            if (entry.childBlocks && entry.childBlocks.length > 0) {
+                lines.push('Child Blocks (' + entry.childBlocks.length + '):');
+                for (var cbI = 0; cbI < entry.childBlocks.length; cbI++) {
+                    var cbE = entry.childBlocks[cbI];
+                    var cbN = (cbE.tag && cbE.tag.normalised) || 'item';
+                    var cbT = '';
+                    if (cbE.block) {
+                        if (cbE.block.type === 'paragraph' && cbE.block.data) {
+                            cbT = this._buildFormattedText(cbE.block.data);
+                        } else if (cbE.block.type === 'table' && cbE.block.data) {
+                            cbT = this._buildTableText(cbE.block.data);
+                        }
+                    }
+                    cbT = (cbT || '').replace(
+                        /\uD83D\uDD34\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]\uD83D\uDD34/g, ''
+                    ).replace(/\[[^\]]+\]/g, '').trim();
+                    lines.push('  [' + cbN + '] ' + cbT);
+                }
+                lines.push('');
+            }
+
+            // Session G — conversation entries (speech_bubble Conversation
+            // layout) preserved in order with speaker labels intact.
+            if (entry.conversationEntries && entry.conversationEntries.length > 0) {
+                lines.push('Conversation Entries (' + entry.conversationEntries.length + '):');
+                for (var ceI = 0; ceI < entry.conversationEntries.length; ceI++) {
+                    lines.push('  ' + (ceI + 1) + '. ' + entry.conversationEntries[ceI]);
+                }
+                lines.push('');
+            }
+
+            // Session G — boundary writer notes (red-text instructions
+            // captured INSIDE the interactive boundary). Dedup against the
+            // legacy Writer Instructions section above.
+            if (entry.boundaryWriterNotes && entry.boundaryWriterNotes.length > 0) {
+                var seenWN = {};
+                if (entry.writerInstructions) {
+                    for (var swI = 0; swI < entry.writerInstructions.length; swI++) {
+                        seenWN[(entry.writerInstructions[swI] || '').trim()] = true;
+                    }
+                }
+                var freshWN = [];
+                for (var bwI = 0; bwI < entry.boundaryWriterNotes.length; bwI++) {
+                    var bwT = (entry.boundaryWriterNotes[bwI] || '').trim();
+                    if (!bwT || seenWN[bwT]) continue;
+                    seenWN[bwT] = true;
+                    freshWN.push(bwT);
+                }
+                if (freshWN.length > 0) {
+                    lines.push('Boundary Writer Notes:');
+                    for (var fwI = 0; fwI < freshWN.length; fwI++) {
+                        lines.push('  - ' + freshWN[fwI]);
+                    }
+                    lines.push('');
+                }
+            }
 
             // Red flags
             if (entry.redFlags && entry.redFlags.length > 0) {
@@ -1575,6 +1674,13 @@ class InteractiveExtractor {
         var insideActivity = opts.insideActivity;
         var tableData = opts.tableData;
         var numberedItems = opts.numberedItems;
+        // Session G — additive fields captured by the boundary algorithm.
+        // Visual shell (dashed border, tier colours, data table preview) is
+        // unchanged; these surface in extra sub-sections only when populated.
+        var childBlocks = opts.childBlocks || [];
+        var conversationEntries = opts.conversationEntries || [];
+        var boundaryWriterNotes = opts.boundaryWriterNotes || [];
+        var associatedMedia = opts.associatedMedia || [];
 
         var typeLabel = type + (modifier ? ' (' + modifier + ')' : '');
         var activityLabel = activityId || 'inline';
@@ -1624,12 +1730,96 @@ class InteractiveExtractor {
         var previewHtml = this._generateContentPreview(dataPattern, tableData, numberedItems, type);
         lines.push(previewHtml);
 
-        // Writer instructions
+        // Writer instructions (legacy — extracted by _extractData)
         if (writerInstructions && writerInstructions.length > 0) {
             for (var wi = 0; wi < writerInstructions.length; wi++) {
                 lines.push('        <p style="color: #666; font-style: italic; margin-top: 8px;">Writer note: ' +
                     this._escContent(writerInstructions[wi]) + '</p>');
             }
+        }
+
+        // Session G — child sub-tag blocks (e.g. flip card [front] / [back]).
+        // Render below the table preview to preserve every captured block.
+        if (childBlocks.length > 0) {
+            lines.push('        <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc;">');
+            lines.push('          <p style="font-weight: bold; margin: 4px 0;">Child blocks:</p>');
+            for (var cbi = 0; cbi < childBlocks.length; cbi++) {
+                var cbEntry = childBlocks[cbi];
+                var cbTagName = (cbEntry.tag && cbEntry.tag.normalised) || 'item';
+                var cbBlock = cbEntry.block;
+                var cbText = '';
+                if (cbBlock) {
+                    if (cbBlock.type === 'paragraph' && cbBlock.data) {
+                        cbText = this._buildFormattedText(cbBlock.data);
+                    } else if (cbBlock.type === 'table' && cbBlock.data) {
+                        cbText = this._buildTableText(cbBlock.data);
+                    }
+                }
+                cbText = (cbText || '').replace(
+                    /\uD83D\uDD34\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]\uD83D\uDD34/g, ''
+                ).replace(/\[[^\]]+\]/g, '').trim();
+                lines.push('          <p style="margin: 2px 0;"><strong>[' +
+                    this._escContent(cbTagName) + ']</strong> ' +
+                    this._escContent(cbText) + '</p>');
+            }
+            lines.push('        </div>');
+        }
+
+        // Session G — conversation entries (speech_bubble Conversation layout).
+        if (conversationEntries.length > 0) {
+            lines.push('        <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc;">');
+            lines.push('          <p style="font-weight: bold; margin: 4px 0;">Conversation entries:</p>');
+            for (var cei = 0; cei < conversationEntries.length; cei++) {
+                var ceEntry = conversationEntries[cei];
+                var ceLabelMatch = (ceEntry || '').match(
+                    /^((?:Prompt|AI\s*response|Response|User|Assistant|Human|Student)\s*\d*\s*:)\s*([\s\S]*)/i
+                );
+                if (ceLabelMatch) {
+                    lines.push('          <p style="margin: 2px 0;"><strong>' +
+                        this._escContent(ceLabelMatch[1]) + '</strong> ' +
+                        this._escContent(ceLabelMatch[2]) + '</p>');
+                } else {
+                    lines.push('          <p style="margin: 2px 0;">' +
+                        this._escContent(ceEntry) + '</p>');
+                }
+            }
+            lines.push('        </div>');
+        }
+
+        // Session G — writer notes captured INSIDE the boundary (red text).
+        // De-duplicated against the legacy writerInstructions list above so the
+        // same note isn't repeated.
+        if (boundaryWriterNotes.length > 0) {
+            var seenNotes = {};
+            if (writerInstructions) {
+                for (var swi = 0; swi < writerInstructions.length; swi++) {
+                    seenNotes[(writerInstructions[swi] || '').trim()] = true;
+                }
+            }
+            var pendingNotes = [];
+            for (var bwn = 0; bwn < boundaryWriterNotes.length; bwn++) {
+                var bwnText = (boundaryWriterNotes[bwn] || '').trim();
+                if (!bwnText || seenNotes[bwnText]) continue;
+                seenNotes[bwnText] = true;
+                pendingNotes.push(bwnText);
+            }
+            for (var pwn = 0; pwn < pendingNotes.length; pwn++) {
+                lines.push('        <p style="color: #666; font-style: italic; margin-top: 8px;">Writer note: ' +
+                    this._escContent(pendingNotes[pwn]) + '</p>');
+            }
+        }
+
+        // Session G — associated media URLs (inline [image] / [video]).
+        if (associatedMedia.length > 0) {
+            lines.push('        <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc;">');
+            lines.push('          <p style="font-weight: bold; margin: 4px 0;">Associated media:</p>');
+            for (var ami = 0; ami < associatedMedia.length; ami++) {
+                var amEntry = associatedMedia[ami];
+                lines.push('          <p style="margin: 2px 0;">' +
+                    this._escContent(amEntry.type) + ': ' +
+                    this._escContent(amEntry.url) + '</p>');
+            }
+            lines.push('        </div>');
         }
 
         lines.push('      </div>');
@@ -1914,12 +2104,16 @@ class InteractiveExtractor {
      * @param {Array<Object>} blocks
      * @param {number} startIndex
      * @param {Object} [tagInfo] - The normalised interactive-start tag record.
+     * @param {Object} [context] - Optional `{ inActivity: boolean }`. Threaded
+     *   into `TagNormaliser.isInteractiveEndSignal()` so H4/H5 inside an
+     *   activity wrapper do not close the inner interactive.
      * @returns {Object}
      */
-    _consumeInteractiveBoundary(blocks, startIndex, tagInfo) {
+    _consumeInteractiveBoundary(blocks, startIndex, tagInfo, context) {
         if (!tagInfo) {
             tagInfo = this._getInteractiveTag(blocks[startIndex]);
         }
+        var endSignalContext = context || {};
 
         var result = {
             startBlockIndex: startIndex,
@@ -1994,8 +2188,10 @@ class InteractiveExtractor {
                 continue;
             }
 
-            // Rule: explicit end signal from the normaliser.
-            if (nextPrimary && this._normaliser.isInteractiveEndSignal(nextPrimary)) {
+            // Rule: explicit end signal from the normaliser. Pass the activity
+            // context so H4 / H5 scaffolding inside an activity does NOT
+            // close the inner interactive.
+            if (nextPrimary && this._normaliser.isInteractiveEndSignal(nextPrimary, endSignalContext)) {
                 break;
             }
 

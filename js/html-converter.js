@@ -921,6 +921,12 @@ class HtmlConverter {
                     var rawIdx = procToRawMap[i];
                     var pageFilename = pageData.filename || '';
                     var currentActivityId = inActivity ? (self._currentActivityId || null) : null;
+                    // Session G — `inActivity` is threaded into processInteractive so
+                    // the Session F boundary algorithm can apply activity-aware
+                    // close rules (H4 / H5 scaffolding inside an activity does
+                    // NOT close the inner interactive). Activity-level wrap
+                    // (open / close on [Activity N], [end activity], H2, etc.)
+                    // remains owned by this loop's `inActivity` flag below.
                     var extractResult = self._interactiveExtractor.processInteractive(
                         rawBlocks, rawIdx, pageFilename, currentActivityId, inActivity
                     );
@@ -929,11 +935,22 @@ class HtmlConverter {
                         // Collect reference entry
                         self.collectedInteractives.push(extractResult.referenceEntry);
 
-                        // Mark raw blocks as consumed so we skip their processed equivalents
+                        // Mark raw blocks as consumed so we skip their processed equivalents.
+                        // Session G — also consume the boundary range computed by the
+                        // Session F algorithm so any blocks captured by the boundary
+                        // (childBlocks, conversation entries, writer notes, inline
+                        // media, primary data table) are not duplicated as body
+                        // content outside the placeholder.
                         var consumedStart = rawIdx + 1; // the tag block itself is processed normally
                         var consumedEnd = rawIdx + extractResult.blocksConsumed;
                         for (var ci = consumedStart; ci < consumedEnd; ci++) {
                             consumedRawIndices[ci] = true;
+                        }
+                        if (typeof extractResult.endBlockIndex === 'number' &&
+                            extractResult.endBlockIndex > rawIdx) {
+                            for (var bi = rawIdx + 1; bi <= extractResult.endBlockIndex; bi++) {
+                                consumedRawIndices[bi] = true;
+                            }
                         }
 
                         if (inActivity) {

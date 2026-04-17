@@ -155,4 +155,26 @@ First of a two-session pair on interactive boundary detection. Scope kept tight:
 
 ---
 
+### Session G — Activity Wrapper + Placeholder Fidelity + RefDoc + Integration
+
+Second of the two-session pair on interactive boundary detection. Layered the activity-wrapper boundary on top of Session F's per-interactive boundary, increased the FIDELITY of content captured inside the existing placeholder shell (visual shell unchanged), surfaced the new captures in the reference document, and added integration tests across synthetic writer-template fixtures.
+
+- **`js/tag-normaliser.js`** — `isInteractiveEndSignal(tag, context)` is now context-aware. When `context.inActivity === true`:
+  - heading levels 4 and 5 return `false` (activity scaffolding — do NOT close the inner interactive),
+  - heading levels 2 and 3 still return `true`,
+  - all other end-signal tags (`body`, `end_activity`, `end_page`, `lesson`, `alert`, `important`, `whakatauki`, `quote`) still return `true`.
+  At top level (no `inActivity` flag) behaviour is unchanged from Session F.
+
+- **`js/interactive-extractor.js`** — `_consumeInteractiveBoundary()` accepts an additional `context` argument and threads it into every `isInteractiveEndSignal()` call. `processInteractive()` passes `{ inActivity: insideActivity === true }` so any interactive started inside an activity wrapper survives an `[H4]` / `[H5]` scaffolding heading.
+
+- **Placeholder fidelity (`_generatePlaceholderHtml`)** — additive sub-sections rendered INSIDE the existing placeholder body whenever the boundary captured them: **Child blocks** (with normalised sub-tag label + cleaned text), **Conversation entries** (in order, speaker label preserved), **Writer note** lines for boundary-captured red-text instructions (de-duplicated against the legacy `writerInstructions` list), and **Associated media** entries. The dashed-border shell, tier colour classes, header bar, and primary data-table preview format are byte-for-byte identical to Session F.
+
+- **Body-render skip (`js/html-converter.js`)** — the existing `consumedRawIndices` set is now extended with the inclusive `[startBlockIndex+1, endBlockIndex]` range from the Session F boundary. Blocks captured by the boundary (child sub-tags, conversation entries, inline media, writer notes, primary data table) are no longer duplicated as body content outside the placeholder.
+
+- **`generateReferenceDocument()` update** — each interactive's reference entry now adds three optional sub-sections after the existing block: **Child Blocks**, **Conversation Entries**, and **Boundary Writer Notes**. The existing `Associated Media` section dedups the legacy `mediaReferences` list with the new `associatedMedia` boundary capture (preserving the section header so downstream parsers in the Claude AI Project keep working). Top-level structure, ordering, and pre-existing section names are unchanged.
+
+- **Files touched** — `js/tag-normaliser.js`, `js/interactive-extractor.js`, `js/html-converter.js`. New test files: `tests/activityWrapperBoundary.test.js` (9 cases), `tests/interactivePlaceholderFidelity.test.js` (5 cases), `tests/interactiveBoundaryIntegration.test.js` (6 cases). Real `.docx` fixtures are not present in the repo, so the integration file uses inline synthetic block-stream fixtures (each marked `// Synthetic fixture`) that replicate the OSAI401 hint-slider, OSAI401 conversation-layout, and OSAI201 flip-card patterns. Post-merge: **571/571 tests passing**.
+
+---
+
 [← Back to index](../CLAUDE.md)
