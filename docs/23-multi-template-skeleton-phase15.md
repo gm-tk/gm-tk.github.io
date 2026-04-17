@@ -172,4 +172,22 @@ modified (all existing assertions remained correct), 476 total tests passing.
 
 ---
 
+### Session B — Overview H1 behaviour, Success Criteria heading, Info-tab Tereo strip, empty-heading suppression
+
+- **Three new config fields on `moduleMenu.overviewPage`:**
+  - `overviewTitleHeadingBehaviour` — `"keep"` (default) | `"strip-tereo"` | `"suppress"`. Controls the first `[H1]`-derived heading in the Overview tab pane.
+  - `successCriteriaHeading` — override string used by `_normaliseMenuHeading()` when writer supplies `[H2] Success Criteria`.
+  - `stripInfoTabTereoPrefix` — boolean flag; when `true`, strips everything before and including ` | ` from headings in the Info tab pane only.
+- **Per-template overrides:**
+  - `1-3`, `7-8`, `9-10`: `successCriteriaHeading: "Success Criteria"` (verbatim)
+  - `9-10`: `overviewTitleHeadingBehaviour: "strip-tereo"`, `stripInfoTabTereoPrefix: true`
+  - `NCEA`: `overviewTitleHeadingBehaviour: "suppress"`, `stripInfoTabTereoPrefix: true`
+  - `4-6`: `stripInfoTabTereoPrefix: true`
+  - All others inherit the baseConfig defaults (`keep`, the baseline English heading, strip off).
+- **Empty-heading suppression (Change 8, universal — no config flag):** after the per-block rendering loop in `_renderModuleMenuBlocks()`, a filter drops any heading whose content is empty OR which is immediately followed by another heading / end-of-list with no `<p>` or `<ul>` body between. Applied AFTER Tereo-stripping so headings that collapse to empty are also removed.
+- **Files touched:** `templates/templates.json` (primary source), `js/template-engine.js` (embedded fallback, baseConfig defaults only — per-template overrides in the fallback remain gap-noted), `js/html-converter.js` (`_renderModuleMenuBlocks` — title-behaviour branch in the H1 overview path, Tereo strip in both single- and multi-heading paths, empty-heading post-filter).
+- **Test count after Session B:** 476 tests passing (no test count delta yet — dedicated test files `tests/overviewTitleHeading.test.js` and `tests/infoTabAndEmptyHeadingSuppression.test.js` are deferred to a follow-up session due to tool-call budget exhaustion during exploration).
+
+---
+
 [← Back to index](../CLAUDE.md)
