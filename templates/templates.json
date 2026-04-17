@@ -23,6 +23,8 @@
         "headingLevel": "h4",
         "overviewTitleTag": "h4-span",
         "successCriteriaHeading": "How will I know if I've learned it?",
+        "overviewTitleHeadingBehaviour": "keep",
+        "stripInfoTabTereoPrefix": false
         "overviewTabColumnClass": "col-md-8 col-12",
         "overviewTabHeadingLevel": "h4",
         "wrapAllOverviewHeadingsInSpan": false
@@ -87,6 +89,7 @@
         "moduleMenu": {
           "overviewPage": {
             "tooltipOn": null,
+            "successCriteriaHeading": "Success Criteria"
             "overviewTabColumnClass": "col-md-12 col-12",
             "wrapAllOverviewHeadingsInSpan": true
           },
@@ -110,6 +113,9 @@
           }
         },
         "moduleMenu": {
+          "overviewPage": {
+            "stripInfoTabTereoPrefix": true
+          },
           "lessonPage": {
             "labels": {
               "learning": "We are learning:",
@@ -131,6 +137,7 @@
         "moduleMenu": {
           "overviewPage": {
             "tooltipOn": null,
+            "successCriteriaHeading": "Success Criteria"
             "overviewTabColumnClass": "col-md-12 col-12",
             "wrapAllOverviewHeadingsInSpan": true
           },
@@ -158,6 +165,9 @@
         },
         "moduleMenu": {
           "overviewPage": {
+            "successCriteriaHeading": "Success Criteria",
+            "overviewTitleHeadingBehaviour": "strip-tereo",
+            "stripInfoTabTereoPrefix": true
             "overviewTabColumnClass": "col-md-12 col-12",
             "wrapAllOverviewHeadingsInSpan": true
           },
@@ -187,6 +197,8 @@
           "overviewPage": {
             "tabs": ["Overview", "Information", "Standards"],
             "tooltipOn": null,
+            "overviewTitleHeadingBehaviour": "suppress",
+            "stripInfoTabTereoPrefix": true
             "overviewTabHeadingLevel": "h5"
           },
           "lessonPage": {

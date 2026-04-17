@@ -2960,6 +2960,16 @@ class HtmlConverter {
             config.moduleMenu.overviewPage.successCriteriaHeading)
             ? config.moduleMenu.overviewPage.successCriteriaHeading
             : 'How will I know if I\'ve learned it?';
+        var stripInfoTabTereoPrefix = !!(config.moduleMenu && config.moduleMenu.overviewPage &&
+            config.moduleMenu.overviewPage.stripInfoTabTereoPrefix);
+        // Strip "Tereo | " prefix (info tab only) — leaves text unchanged when no ' | ' exists.
+        function stripTereoPrefix(text) {
+            if (!text) return text;
+            var idx = text.indexOf(' | ');
+            return idx !== -1 ? text.substring(idx + 3).trim() : text;
+        }
+        // Information tab uses h5 headings; Overview tab uses h4
+        var menuHeadingTag = isInfoTab ? 'h5' : 'h4';
         var overviewCfg = (config.moduleMenu && config.moduleMenu.overviewPage) || {};
         var overviewHeadingLevel = overviewCfg.overviewTabHeadingLevel || 'h4';
         var wrapAllOverviewSpan = overviewCfg.wrapAllOverviewHeadingsInSpan === true;
@@ -2996,6 +3006,9 @@ class HtmlConverter {
                     for (var mhti = 0; mhti < menuHeadingTags.length; mhti++) {
                         var mhMenuText = menuHeadingTexts[mhti] || '';
                         mhMenuText = this._stripFullHeadingFormatting(mhMenuText);
+                        if (isInfoTab && stripInfoTabTereoPrefix) {
+                            mhMenuText = stripTereoPrefix(mhMenuText);
+                        }
                         mhMenuText = this._normaliseMenuHeading(mhMenuText, successCriteriaHeading);
                         var mhMenuInner = this._convertInlineFormatting(mhMenuText);
                         mhMenuInner = this._stripHeadingInlineTags(mhMenuInner);
@@ -3014,12 +3027,28 @@ class HtmlConverter {
 
                 var headingText = pBlock.cleanText || '';
                 headingText = this._stripFullHeadingFormatting(headingText);
+                if (isInfoTab && stripInfoTabTereoPrefix) {
+                    headingText = stripTereoPrefix(headingText);
+                }
 
                 // If this is H1 in overview tab, split heading from description
                 if (primaryTag.level === 1 && isOverviewTab && isFirstHeading) {
                     var h1Parts = this._splitH1HeadingAndDescription(pBlock);
-                    // Heading with span (overview tab primary title)
-                    parts.push(indent + '<' + menuHeadingTag + '><span>' + this._escContent(h1Parts.heading) + '</span></' + menuHeadingTag + '>');
+                    var titleBehaviour = (config.moduleMenu && config.moduleMenu.overviewPage &&
+                        config.moduleMenu.overviewPage.overviewTitleHeadingBehaviour)
+                        ? config.moduleMenu.overviewPage.overviewTitleHeadingBehaviour
+                        : 'keep';
+                    var h1HeadingText = h1Parts.heading;
+                    if (titleBehaviour === 'strip-tereo') {
+                        var pipeIdx = h1HeadingText.indexOf(' | ');
+                        if (pipeIdx !== -1) {
+                            h1HeadingText = h1HeadingText.substring(pipeIdx + 3).trim();
+                        }
+                    }
+                    // Heading with span (overview tab primary title), unless suppressed
+                    if (titleBehaviour !== 'suppress' && h1HeadingText) {
+                        parts.push(indent + '<' + menuHeadingTag + '><span>' + this._escContent(h1HeadingText) + '</span></' + menuHeadingTag + '>');
+                    }
                     if (h1Parts.description) {
                         parts.push(indent + '<p>' + this._escContent(h1Parts.description) + '</p>');
                     }
@@ -3075,6 +3104,29 @@ class HtmlConverter {
 
             i++;
         }
+
+        // Change 8 — Empty heading suppression. Drop a heading if it is immediately
+        // followed by another heading or by end-of-list, OR if its text is empty
+        // after any earlier normalisation/stripping.
+        function isHeadingPart(s) {
+            return /^\s*<h[1-6][^>]*>/.test(s);
+        }
+        function headingHasContent(s) {
+            var m = s.match(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/);
+            if (!m) return true;
+            return m[1].replace(/<\/?span[^>]*>/g, '').replace(/\s+/g, '') !== '';
+        }
+        var filteredParts = [];
+        for (var fp = 0; fp < parts.length; fp++) {
+            var cur = parts[fp];
+            if (isHeadingPart(cur)) {
+                if (!headingHasContent(cur)) continue;
+                var nxt = parts[fp + 1];
+                if (!nxt || isHeadingPart(nxt)) continue;
+            }
+            filteredParts.push(cur);
+        }
+        parts = filteredParts;
 
         if (parts.length === 0) {
             return indent + '<!-- No content -->';

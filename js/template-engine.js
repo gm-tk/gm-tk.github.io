@@ -599,6 +599,8 @@ class TemplateEngine {
                         "headingLevel": "h4",
                         "overviewTitleTag": "h4-span",
                         "successCriteriaHeading": "How will I know if I've learned it?",
+                        "overviewTitleHeadingBehaviour": "keep",
+                        "stripInfoTabTereoPrefix": false
                         "overviewTabColumnClass": "col-md-8 col-12",
                         "overviewTabHeadingLevel": "h4",
                         "wrapAllOverviewHeadingsInSpan": false
