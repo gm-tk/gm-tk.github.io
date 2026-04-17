@@ -131,4 +131,28 @@ INTERACTIVE 2 of 7
 
 ---
 
+### Session F — Tag Classifier + Boundary Core
+
+First of a two-session pair on interactive boundary detection. Scope kept tight: classifier metadata + a pure boundary-detection algorithm. Activity-wrapper layer, placeholder-rendering fidelity, reference-doc update, and .docx fixture integration tests are **deferred to Session G**.
+
+- **`js/tag-normaliser.js`** — every `category: 'interactive'` tag record returned by `normaliseTag()` / `_extractTagsFromText()` now carries two additive fields:
+  - `isInteractiveStart: boolean` — `true` for every interactive-start tag; `false` for the sub-tag set (`carousel_slide`, `tab`, `shape`, `hint`, `end_accordions`).
+  - `interactiveChildTags: string[]` — normalised sub-tag names that belong structurally inside that interactive (`flip_card` → `['front', 'back']`, `click_drop` → `['front', 'back']` (since `drop` normalises to `back`), `carousel` / `rotating_banner` / `slide_show` → `['carousel_slide', 'tab', 'image']`, `accordion` / `tabs` → `['tab', 'carousel_slide']`, `hint_slider` → `['hint', 'carousel_slide']`, `speech_bubble` → `[]`).
+  - New method `isInteractiveEndSignal(tag, context)` returns `true` for `body`, heading level 2/3 (and 4/5 at top level — refined in Session G for activities), `end_page`, `end_activity`, `lesson`, `alert`, `important`, `whakatauki`, `quote`.
+
+- **`js/interactive-extractor.js`** — new helper `_consumeInteractiveBoundary(blocks, startIndex, tagInfo)` walks from the interactive-start block and returns an inclusive `[startBlockIndex, endBlockIndex]` range plus captured content arrays. `processInteractive()` now invokes it and threads the following **additive** fields into its return (existing fields left untouched):
+  - `startBlockIndex` / `endBlockIndex` — inclusive consumed range.
+  - `childBlocks` — `{index, block, tag}` entries whose primary normalised tag is in the current interactive's `interactiveChildTags` list.
+  - `conversationEntries` — ordered inline paragraphs captured when the start tag is `speech_bubble` with a "Conversation layout" modifier.
+  - `writerNotes` — red-text writer instructions (`🔴[RED TEXT]...[/RED TEXT]🔴`) encountered inside the boundary.
+  - `associatedMedia` — `{type: 'image'|'video', url}` entries captured inline.
+  - `dataTable` — primary table payload (either the start block itself when it's a table, or the table immediately following the start tag).
+  - Boundary closes **without** consuming the closing block when `isInteractiveEndSignal()` fires, when another `isInteractiveStart` tag is encountered, or when nothing matches a capture rule.
+
+- **Deferred to Session G** — activity-wrapper-aware H4/H5 handling, placeholder visual-rendering changes, `generateReferenceDocument()` updates, and `js/html-converter.js` consuming `[startBlockIndex, endBlockIndex]` to skip consumed blocks during body rendering. Integration tests against the five writer-template `.docx` fixtures also land in Session G.
+
+- **Files touched** — `js/tag-normaliser.js`, `js/interactive-extractor.js`. New test files: `tests/tagClassifierInteractiveMeta.test.js` (11 cases), `tests/interactiveBoundaryAlgorithm.test.js` (6 cases). Post-merge: **551/551 tests passing**.
+
+---
+
 [← Back to index](../CLAUDE.md)
