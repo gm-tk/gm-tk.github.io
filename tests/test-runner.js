@@ -110,6 +110,7 @@ loadScript('js/tag-defragmenter.js');
 loadScript('js/subtag-matcher.js');
 loadScript('js/interactive-tag-matcher.js');
 loadScript('js/tag-normaliser.js');
+loadScript('js/block-subtag-matcher.js');
 loadScript('js/block-scoper.js');
 loadScript('js/layout-table-unwrapper.js');
 loadScript('js/formatter.js');
