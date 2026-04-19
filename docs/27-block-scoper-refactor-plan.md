@@ -2,7 +2,7 @@
 
 ## 1. Status
 
-Plan complete — ready for Session 2b execution.
+Split executed — ready for Session 2c audit.
 
 ## 2. Baseline
 
