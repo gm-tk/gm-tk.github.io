@@ -117,6 +117,10 @@ loadScript('js/block-scoper.js');
 loadScript('js/layout-table-unwrapper.js');
 loadScript('js/formatter.js');
 loadScript('js/template-engine.js');
+loadScript('js/interactive-extractor-tables.js');
+loadScript('js/interactive-cell-parser.js');
+loadScript('js/interactive-data-extractor.js');
+loadScript('js/interactive-placeholder-renderer.js');
 loadScript('js/interactive-extractor.js');
 loadScript('js/html-converter.js');
 

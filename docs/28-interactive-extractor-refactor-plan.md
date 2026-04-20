@@ -2,7 +2,7 @@
 
 ## Status
 
-Plan complete — ready for Session 3b execution.
+Split executed — ready for Session 3c audit.
 
 ## Baseline
 
