@@ -117,6 +117,7 @@ loadScript('js/block-scoper.js');
 loadScript('js/layout-table-unwrapper.js');
 loadScript('js/formatter.js');
 loadScript('js/template-engine.js');
+loadScript('js/interactive-extractor-tables.js');
 loadScript('js/interactive-extractor.js');
 loadScript('js/html-converter.js');
 
