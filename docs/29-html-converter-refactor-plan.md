@@ -1,7 +1,7 @@
 # 29. HTML Converter Refactor Plan
 
 ## Status
-Plan complete — ready for Session 4b-1 / 4b-2 execution.
+Session 4b-1 complete — ready for Session 4b-2 execution.
 
 ## Baseline
 - `js/html-converter.js`: 4,050 lines

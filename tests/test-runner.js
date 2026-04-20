@@ -122,6 +122,9 @@ loadScript('js/interactive-cell-parser.js');
 loadScript('js/interactive-data-extractor.js');
 loadScript('js/interactive-placeholder-renderer.js');
 loadScript('js/interactive-extractor.js');
+loadScript('js/html-converter-renderers.js');
+loadScript('js/html-converter-module-menu.js');
+loadScript('js/html-converter-lesson-menu.js');
 loadScript('js/html-converter.js');
 
 // Load test files
