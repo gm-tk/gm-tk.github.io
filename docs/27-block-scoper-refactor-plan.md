@@ -259,3 +259,96 @@ Ranked by severity: **Conflict > Redundancy > Dead code > Documentation drift**.
 | **BS-R8** | Shim trim | Three internal-only shims on `BlockScoper` (`_matchOpeningTag`, `_matchClosingTag`, `_isHardBoundary`) have no test consumers. | Inline the three `this._tagMatcher.*()` calls directly into `scopeBlocks`; delete the shims. Saves ~12 lines. | No test impact. |
 
 No remediation performed in this session.
+
+---
+
+### BS-R3 Remediation — Rotating Banner Explicit Closer Path
+
+Remediates the opener/closer asymmetry flagged above for `rotating_banner`. The block type had two opener paths (`block-scoper-tables.js:38` writer-keyword and `block-tag-matcher.js:97` normalised-name typeMap) but zero closer paths — writers typing `[end rotating banner]` or `[end rotatingbanner]` would see the closer fall through to `null`, leaving the block to terminate only via implicit mechanisms (hard boundary, same-type reopen, end-of-document, or an interactive-extractor boundary signal).
+
+#### Files touched
+
+**`js/block-scoper-tables.js`** — one-line addition to `closerTypeMap` (the block-scoper's canonical closer-keyword table). A new entry `'rotating banner': 'carousel'` was inserted on the line immediately after `'slide show': 'carousel'` so the diff sits with the other carousel-group closer keywords. No surrounding lines moved; the file grew by one line.
+
+**`js/block-tag-matcher.js`** — two additions inside `_fuzzyMatchCloser()`:
+
+1. The `compactedMap` object literal (whose keys strip all whitespace/hyphens from the stripped closer text) gained a new `'rotatingbanner': 'carousel'` entry, placed directly below the existing `'slideshow': 'carousel'` entry. This closes the no-space form `[end rotatingbanner]`.
+2. A new containment-check branch was inserted directly after the `slideshow` / `slide show` branch:
+
+   ```js
+   if (stripped.indexOf('rotating banner') !== -1 || stripped.indexOf('rotatingbanner') !== -1) return 'carousel';
+   ```
+
+   This mirrors the exact pattern used by sibling containment fallbacks (`accordion`, `carousel`, `slideshow`, `flip`, `clickdrop`, `click drop`, …) and ensures that even unusual close-tag prefixes like `[Close rotating banner]` or `[End of rotating-banner]` resolve to the carousel group.
+
+No existing branches were modified. Both files remained in the post-refactor size range documented by Session 2.
+
+#### Test files added
+
+Three test files were authored across the remediation. All three live under `tests/` and are auto-discovered by `tests/test-runner.js`.
+
+1. **`tests/rotatingBannerCloserPreFix.test.js`** — Group A regression guards (5 cases). Retained permanently.
+   - `[end carousel]` still closes a carousel block explicitly.
+   - `[end accordion]` still closes an accordion block explicitly.
+   - `[end flipcards]` still closes a flipcards block explicitly.
+   - `[rotating banner]` opener still opens a carousel-typed block.
+   - Unrelated orphan closer `[end nonexistent-block]` returns `null` via `_fuzzyMatchCloser`.
+
+   Originally the file also contained a Group B describe-block ("PRE-FIX BEHAVIOUR — will be inverted in post-fix file") with 3 cases asserting the pre-fix return values (`_fuzzyMatchCloser('end rotating banner')` → `null`; `_fuzzyMatchCloser('end rotatingbanner')` → `null`; `[rotating banner] … [end rotating banner]` with a trailing `[End page]` closed implicitly). Per the Group-B-deletion step of the task, that describe-block was **deleted** (not commented) in the same commit that applied the fix, because its intent became the post-fix file's contract.
+
+2. **`tests/rotatingBannerCloserPostFix.test.js`** — post-fix contract (6 cases). Expected to fail pre-fix, pass post-fix.
+   - `[end rotating banner]` closes a rotating_banner block explicitly.
+   - `[end rotatingbanner]` (no space) also closes a rotating_banner block explicitly.
+   - `[End Rotating Banner]` mixed case still closes (normalisation-consistent).
+   - `_fuzzyMatchCloser` routes `"end rotating banner"` and `"end rotatingbanner"` to the carousel group.
+   - Orphan `[end rotating banner]` outside any active block does not crash or mis-close (no carousel / rotating_banner wrapper materialises).
+   - Explicit `[end rotating banner]` wins over the hard-boundary LOOKAHEAD fallback — content after the closer is emitted as a top-level `{ type: 'unscoped', … }` block by `BlockScoper.scopeBlocks()`.
+
+   Running the file before the fix produced 5 failing tests (the orphan case passes regardless because an empty block stack short-circuits `_matchClosingTag` at its guard). Running the file after the fix produced 6/6 passing.
+
+3. **`tests/rotatingBannerInteractiveIntegration.test.js`** — full-pipeline integration (7 cases). The fixture is a synthetic 8-block sequence: `[rotating banner], [Slide 1], body, [Slide 2], body, [end rotating banner], Post content, [End page]`.
+   - BlockScoper side (4 cases): exactly one carousel-typed block emitted; `implicitClose === false` with `lineEnd === 5`; exactly two `carousel_slide` subtag children; `Post content` stays as a top-level unscoped block.
+   - InteractiveExtractor side (3 cases): `processInteractive` returns exactly one rotating_banner placeholder with one `INTERACTIVE_START:` and one `INTERACTIVE_END:` delimiter; the IE walker routes to pattern 5 (numbered slides) and collects both slides; `processInteractive` returns a well-formed record with non-empty `placeholderHtml` and `blocksConsumed >= 1` (regression guard for the three audit-flagged IE sites).
+
+#### Group B deletion — rationale
+
+The pre-fix file was authored with two clearly-labelled groups so that the file could land green before the fix (locking the pre-fix baseline) and be trimmed cleanly after the fix. Once `BS-R3` was applied, the three Group B assertions became incorrect (they now described behaviour that the fix deliberately inverted). Commenting them out would leave dead assertions in the tree and invite future contributors to "fix" them by re-inverting. Deletion is the unambiguous signal that the pre-fix baseline has served its purpose and the post-fix contract is the sole forward-compatible reference. The Group A regression guards (which pass identically before and after the fix) remain in place as permanent regression coverage for the surrounding closer/opener paths.
+
+#### IE cross-audit findings — site by site
+
+Per the docs/28 cross-reference on BS-R3, three interactive-extractor sites were spot-checked with `grep -n` followed by ±5-line `sed` reads. For each site, the conclusion is **no regression, no code change required**.
+
+- **`js/interactive-extractor-tables.js:51`** — the `patternMap` entry `'rotating_banner': 5`. This is a static pattern-number lookup. BS-R3 does not modify the table; rotating_banner placeholders still route through pattern 5 (numbered-items dispatch) in the placeholder renderer. Unchanged.
+- **`js/interactive-data-extractor.js:479`** — `_isSubTagFor` predicate that maps `carousel_slide` → either `carousel` or `rotating_banner`. This predicate operates on the flat raw-block sequence inside the IE walker; it is independent of the block-scoper's children array. A `carousel_slide` is still a subtag of a `rotating_banner` interactive type regardless of whether the scoper now closes explicitly or implicitly. Unchanged.
+- **`js/interactive-data-extractor.js:567`** — pattern-5 dispatch inside `_collectNumberedItems`: when `interactiveType === 'carousel' || 'rotating_banner'`, set `detectedPattern = 5`. The walker's termination logic relies on `_isEndBoundary(primaryTag)` (category-based: `structural`, `heading`, `body`, `styling`, `media`, `link`, plus `activity`/`end_activity` names). The BS-R3 change affects neither the category table nor the boundary name list — `[end rotating banner]` still normalises to a tag with `category: null, normalised: null`, which means the IE walker does NOT treat it as an IE-layer boundary. This was the pre-fix behaviour and remains the post-fix behaviour; the IE walker continues to terminate via the next true boundary downstream (here, `[End page]` which is a structural tag). Unchanged.
+
+Empirical verification: a probe run against the full fixture confirms that `processInteractive` returns the same `blocksConsumed`, `interactiveType`, `dataPattern`, and numbered-items shape both before and after the fix. The IE walker's behaviour is stable.
+
+#### HC-audit negative confirmation
+
+Per the docs/29 cross-reference row for BS-R3: *"Opener but no closer | Not referenced by tagName in html-converter; reached via generic interactive handler. | Consumer only — same as speech_bubble. | No html-converter change if BS-R3 adds an explicit closer."* Confirmed — `rotating_banner` is never string-matched in any html-converter sub-module (`html-converter.js`, `html-converter-block-processor.js`, `html-converter-block-renderer.js`, `html-converter-content-helpers.js`, `html-converter-lesson-menu.js`, `html-converter-module-menu.js`, `html-converter-renderers.js`). The type reaches the renderer exclusively through the generic interactive handler path, which operates on the `referenceEntry` record produced by `InteractiveExtractor.processInteractive`. No html-converter integration test was required.
+
+#### Pre-flight file sizes (for the record)
+
+```
+992 js/block-scoper.js
+452 js/block-tag-matcher.js        (→ 453 post-fix)
+102 js/block-scoper-tables.js      (→ 103 post-fix)
+296 js/block-subtag-matcher.js
+1364 js/app.js
+641 js/html-converter.js
+```
+
+All files are in the post-refactor range documented by Sessions 1–4.
+
+#### Test totals
+
+- Baseline at the start of the remediation: **571/571** passing.
+- After Step 1 (pre-fix tests committed, 8 new cases — 5 Group A + 3 Group B): **579/579**.
+- After Step 3 (fix applied, 6 post-fix tests added, 3 Group B tests deleted): **579 + 6 − 3 = 582/582**.
+- After Step 4 (integration test added, 7 new cases): **582 + 7 = 589/589**.
+- Final: **571/571 → 589/589** (+18 permanent tests).
+
+#### Scope boundary — BS-R3 vs BS-R7
+
+The `compactedMap` / `closerTypeMap` duplication flagged by **BS-R7** was explicitly left untouched by this remediation. BS-R3 added one entry to each map (which is the minimal surgical change needed to close the opener/closer asymmetry) and is deliberately not rolling in the structural deduplication that BS-R7 prescribes. A future BS-R7 remediation will collapse the two maps into a single normalisation step — at that point the BS-R3 entries will migrate to the unified source without behaviour change. Until then, adding entries to both maps is the correct, audit-consistent pattern.
