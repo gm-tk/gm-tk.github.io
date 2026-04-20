@@ -2,7 +2,7 @@
 
 ## Status
 
-Split executed — ready for Session 3c audit.
+DONE — split executed, audit complete, 571/571 tests passing.
 
 ## Baseline
 
@@ -244,3 +244,136 @@ When Session 3c audits the split, the following Session 1/2 remediation items ma
 - **Dead-helper flags local to this file** — `_getBlockTag`, `_getBlockPrimaryTag`, `_escAttr` appear defined but never called from anywhere in `js/*.js` or `tests/*.test.js`. Session 3c should formally classify and decide whether to remove.
 
 [← Back to index](../CLAUDE.md)
+
+## Audit Results
+
+### Sub-module inventory
+
+| File | Lines |
+|---|---:|
+| `js/interactive-extractor.js`          | 559 |
+| `js/interactive-data-extractor.js`     | 872 |
+| `js/interactive-placeholder-renderer.js` | 430 |
+| `js/interactive-cell-parser.js`        | 397 |
+| `js/interactive-extractor-tables.js`   | 106 |
+
+Core dropped from 2245 → 559 (–1686). `interactive-data-extractor.js` overshoots the 500-line ceiling Session 2 achieved by +372 lines (pattern-4 DQP + pattern-9 speech_bubble + main walker + boundary walker all co-reside). Further splitting out of scope for 3c. Tests: 571/571.
+
+### Cross-reference with Sessions 1–2 findings
+
+| Tag | Upstream classification | Interactive-extractor handling site | Relative classification |
+|---|---|---|---|
+| `word_highlighter` (S1 R-1) | Documentation drift — emitted as distinct name vs docs/10 alias | `tables.js:63` (pattern 10); `cell-parser.js:192` (`_detectTablePattern` alias of `word_select`); `data-extractor.js:423` (plain-text capture branch) | **Three-site downstream** — if R-1 collapses `word_highlighter` → `word_select`, all three sites simplify to the `word_select` branch. Cell-parser and data-extractor already treat them identically; the tables.js distinct row is the only behavioural differentiator (none). |
+| `translate_section`, `kanji_cards` (S1 R-2) | Documentation drift — absent from docs/10 | `tables.js:88-89` (pattern 1 each) | Consumer only — both route through pattern-1 default. R-2 is docs-only; no extractor change needed. |
+| `slide_show` (S1 R-3 / D-2) | Dead key in `interactiveChildTagsMap` | Not referenced — extractor consumes `tagInfo.interactiveChildTags` via the live `carousel` entry, never the dead `slide_show` entry | No impact. |
+| `info_trigger] image` literals (S1 R-4 / D-1) | Dead via pipeline | Not referenced — extractor keys on normalised names, not raw strings | No impact. |
+| `info_trigger_image` / `info_trigger` redundancy (S1 R-5) | Redundancy internal to normaliser | `tables.js:68-69` (patterns 1 and 12); `cell-parser.js:202` (pattern 12) | Consumer only — both producers funnel through one `typeToPrimaryPattern` entry per name. |
+| `speech_bubble` (S2 BS-R2) | Conflict — opener but no block-scoper closer | `data-extractor.js:217` (pattern-9 conversation); `data-extractor.js:722` (`isConversationStyle` flag in boundary walker); `cell-parser.js:212` (pattern 8); `tables.js:53` | Downstream depends on `_isEndBoundary` + `TagNormaliser.isInteractiveEndSignal` rather than a block-scoper closer. If BS-R2 adds an explicit closer, audit `_consumeInteractiveBoundary` line 783 still triggers correctly. |
+| `rotating_banner` (S2 BS-R3) | Conflict — opener but no block-scoper closer | `tables.js:51` (pattern 5); `data-extractor.js:479` (`_isSubTagFor` — `carousel_slide` belongs to `rotating_banner`); `data-extractor.js:567` (pattern-5 assignment in `_collectNumberedItems`) | Same as above — relies on boundary signals, not explicit closer. If BS-R3 adds closer, re-verify `_isEndBoundary` and the numbered-items walker still terminate correctly. |
+
+### Interactive type coverage
+
+`typeToPrimaryPattern` enumerates 45 interactive types. `TIER_1_TYPES` lists 4. `subTagTypes` lists 5. `wideColTypes` lists 2.
+
+Types in code not documented in docs/12 taxonomy (cross-reference S1 findings):
+
+| Type | Source | Notes |
+|---|---|---|
+| `word_highlighter` | `tables.js:63` | S1 R-1 — docs/10 collapses into `word_select`. |
+| `translate_section` | `tables.js:88` | S1 R-2 — absent from docs/10. |
+| `kanji_cards` | `tables.js:89` | S1 R-2 — absent from docs/10. |
+
+Types in docs/12 not in code: none — every type enumerated in the docs/12 pattern table has a matching `typeToPrimaryPattern` entry.
+
+### Data pattern coverage
+
+Per docs/12 the writer surface defines 13 data patterns. Each pattern's reachability in the extractor sub-modules:
+
+| Pattern | Detected by | Rendered by | Status |
+|---:|---|---|---|
+| 1  | `typeToPrimaryPattern` fallback (20+ types); `cell-parser.js:217` default | `renderer.js:277` default table branch | Reachable |
+| 2  | `cell-parser.js:182` (flip_card/click_drop); `data-extractor.js:573` | `renderer.js:269` (table), `renderer.js:380` (numbered) | Reachable |
+| 3  | `cell-parser.js:187` (hint_slider); `data-extractor.js:575` | `renderer.js:271` | Reachable |
+| 4  | `data-extractor.js:94-214` (dropdown_quiz_paragraph special block); `data-extractor.js:434` (word_highlighter/word_select plain-text) | `renderer.js:311` (DQP-specific); falls through to default for word-select Pattern-4 | Reachable |
+| 5  | `data-extractor.js:567` (carousel/rotating_banner) | `renderer.js:399` default numbered-items branch | Reachable |
+| 6  | `data-extractor.js:569` (shape_hover/tabs) | `renderer.js:399` default numbered-items branch | Reachable |
+| 7  | `data-extractor.js:571` (accordion) | `renderer.js:399` default numbered-items branch | Reachable |
+| 8  | `cell-parser.js:212` (speech_bubble table) | `renderer.js:273` | Reachable |
+| 9  | `data-extractor.js:238` (speech_bubble + conversation modifier) | `renderer.js:357` | Reachable |
+| 10 | `cell-parser.js:192` (word_select/word_highlighter) | `renderer.js:275` | Reachable |
+| 11 | `cell-parser.js:197` (slider_chart) | **No dedicated renderer branch** — falls through to `renderer.js:277` default "Data: Table (dims)" label. Not a dead branch (pattern still detected and stored) but preview label omits "Axis Labels" semantics. **Minor drift** — flagged IE-R3 below. |
+| 12 | `cell-parser.js:202` (info_trigger_image) | **No dedicated renderer branch** — falls through to `renderer.js:277` default. Minor drift — flagged IE-R3. |
+| 13 | `cell-parser.js:207` (multichoice_quiz_survey) | **No dedicated renderer branch** — falls through to `renderer.js:277` default. Minor drift — flagged IE-R3. |
+
+No pattern branch is unreachable. Patterns 11/12/13 are detected but their preview labels collapse to the generic table label.
+
+### Tier classification consistency
+
+Sole assignment site: `interactive-extractor.js:56` — `this._tables.TIER_1_TYPES.indexOf(interactiveType) !== -1 ? 1 : 2`. Membership source: `tables.js:19` — `['accordion', 'flip_card', 'speech_bubble', 'tabs']`.
+
+| Type | Tier (code) | Tier (docs/12 §Tier table) | Match |
+|---|---:|---:|---|
+| `accordion`       | 1 | 1 | yes |
+| `flip_card`       | 1 | 1 | yes |
+| `speech_bubble`   | 1 | 1 | yes |
+| `tabs`            | 1 | 1 | yes |
+| All other types   | 2 | 2 | yes (blanket "Everything else" rule) |
+
+Single assignment path. No ambiguous or conflicting tier cases.
+
+### Placeholder rendering path overlap
+
+Single public entry: `InteractivePlaceholderRenderer._generatePlaceholderHtml`. Internal dispatch is a two-level decision — (1) `tableData` vs `numberedItems` vs fallback; (2) within each, a `dataPattern`/`type` switch.
+
+| Type | Dispatch path |
+|---|---|
+| `dropdown_quiz_paragraph` (pattern 4) | `renderer.js:263` guard skips the `tableData`-only branch even when a table was captured, so the numbered-items branch at `renderer.js:311` handles both story text **and** the options table in one place. |
+| `speech_bubble` (pattern 8) | `renderer.js:273` table branch. |
+| `speech_bubble` + conversation (pattern 9) | `renderer.js:357` numbered-items branch. |
+| `flip_card` / `click_drop` (pattern 2) | If `tableData` → `renderer.js:269`; if `numberedItems` → `renderer.js:380`. Mutually exclusive: `_extractData` sets either `tableData` (table layout) or `numberedItems` (per-card sub-tag layout), never both for the same interactive. |
+| Everything else | Single default path per branch. |
+
+No type has two paths that could both render it in a single invocation. The flip_card/click_drop dual-form case is a valid writer-surface choice, not an ambiguity.
+
+### Delegation shim inventory
+
+Session 3b deliberately avoided creating test-facing shims because no test touches private helpers of `InteractiveExtractor`. Surviving shims / duplicates on the core class:
+
+| Shim / duplicate | Accessed from | Removable when |
+|---|---|---|
+| `_getInteractiveTag` on core (`interactive-extractor.js:365`) | `processInteractive:48` only | Now — single call site. Duplicated verbatim as `_getInteractiveTag` inside `interactive-data-extractor.js:835`; consolidating would save ~27 lines. |
+| `_getBlockTagResult` on core (`interactive-extractor.js:438`) | `_buildPositionContext:467` only | Now — single call site. Duplicated verbatim as `_getBlockTagResult` inside `interactive-data-extractor.js:861`; consolidating would save ~11 lines. |
+| `_getBlockTag` on core (`interactive-extractor.js:400`) | Nowhere (grepped `js/*.js` + `tests/*.test.js`) | **Removable now** — confirmed dead. Plan §4 already flagged. |
+| `_getBlockPrimaryTag` on core (`interactive-extractor.js:421`) | Nowhere | **Removable now** — confirmed dead. Plan §4 already flagged. |
+| `_escAttr` on core (`interactive-extractor.js:550`) | Nowhere | **Removable now** — confirmed dead. Plan §4 already flagged. |
+
+Duplicated helpers in `interactive-data-extractor.js` (lines 835 and 861) exist because Session 3b's sed pass left `this._getInteractiveTag(...)` / `this._getBlockTagResult(...)` intra-class calls untouched inside the extracted data-extractor body; re-routing them through a constructor-injected reference to the core (or lifting both helpers into a shared sub-module) would eliminate the duplication.
+
+### Phase attribution
+
+| Finding | Introduced in |
+|---|---|
+| `_getInteractiveTag` / `_getBlockTagResult` duplicated in core + data-extractor | Session 3b split (docs/28) — created by the extraction sed pass. |
+| `_getBlockTag`, `_getBlockPrimaryTag`, `_escAttr` dead on core | phase unclear — predate the split. Plan §4 already flagged at 3a time. |
+| `word_highlighter` pattern-10 entry + plain-text branch | ENGS301 (docs/16 Issue #8). |
+| `translate_section`, `kanji_cards` pattern-1 entries | ENGS301 (docs/16). |
+| Pattern-4 DQP special block (`data-extractor.js:94-214`) | "Bug 3 fix Round 3C" — phase unclear; comment references Round 3C directly. |
+| Pattern-9 conversation layout | Session F / G (docs/12 §§Session F, Session G). |
+| `_consumeInteractiveBoundary` + `isInteractiveEndSignal` threading | Session F (boundary core) + Session G (activity context). |
+| Patterns 11/12/13 lacking dedicated renderer branches | phase unclear — pattern detection added without matching preview branch. |
+
+### Prioritised remediation list
+
+Ranked **Conflict > Redundancy > Dead code > Documentation drift**. No remediation performed in this session.
+
+| ID | Severity | Finding | Suggested fix | Test-coverage note |
+|---|---|---|---|---|
+| **IE-R1** | Redundancy | `_getInteractiveTag` and `_getBlockTagResult` duplicated in `interactive-extractor.js` (core) and `interactive-data-extractor.js`. Two copies must be kept in sync manually. | Inject a reference to either the core or a shared helper sub-module into `InteractiveDataExtractor`'s constructor; delete the duplicated private copies at `data-extractor.js:835,861`. Saves ~40 lines. | No test accesses either helper directly; behaviour covered by every `processInteractive` integration test in `interactiveBoundaryIntegration.test.js`, `interactiveBoundaryAlgorithm.test.js`, `interactivePlaceholderFidelity.test.js`. |
+| **IE-R2** | Dead code | `_getBlockTag` (`interactive-extractor.js:400`), `_getBlockPrimaryTag` (`interactive-extractor.js:421`), `_escAttr` (`interactive-extractor.js:550`) defined but never called from `js/*.js` or `tests/*.test.js`. | Delete all three methods. ~25 lines saved. | No test impact — confirmed by grep. |
+| **IE-R3** | Documentation drift | Patterns 11 (axis labels), 12 (info trigger image), 13 (self-assessment/survey) are assigned by `_detectTablePattern` but `_generateContentPreview` has no pattern-specific preview branch for them; they fall through to the generic "Data: Table (dims)" label. | Add explicit preview branches for patterns 11/12/13 mirroring patterns 2/3/8/10, or document the fallback behaviour in docs/12. | Preview text asserted by `interactivePlaceholderFidelity.test.js`; any label change needs a regression lock first. |
+| **IE-R4** | Size-target miss | `interactive-data-extractor.js` landed at 872 lines (target ≤500). Three orthogonal concerns co-reside: DQP pattern-4 block, speech_bubble pattern-9 block, main `_extractData` walker plus `_consumeInteractiveBoundary`. | Future refactor — extract DQP and speech_bubble special-handling blocks into their own helper objects; keep the main walker core. Out of scope for 3c. | Non-functional. Fully covered by integration tests. |
+| **IE-R5** | Downstream coupling | `word_highlighter` occupies three sites (tables, cell-parser, data-extractor plain-text branch) that all behave identically to `word_select`. If S1 R-1 collapses the normaliser, all three sites simplify to the `word_select` branch. | Done as part of S1 R-1 follow-up — tables entry becomes redundant alias, cell-parser and data-extractor branches can drop the `word_highlighter` disjunct. Add regression test first locking current behaviour per S1 R-1 note. | Gated by S1 R-1 regression lock. |
+
+
+
+
