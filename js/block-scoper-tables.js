@@ -67,6 +67,7 @@ class BlockScoperTables {
             'carousel': 'carousel',
             'slideshow': 'carousel',
             'slide show': 'carousel',
+            'rotating banner': 'carousel',
             'flipcards': 'flipcards',
             'flip cards': 'flipcards',
             'flip card': 'flipcards',

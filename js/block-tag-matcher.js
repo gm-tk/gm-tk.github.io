@@ -373,6 +373,7 @@ class BlockTagMatcher {
             'accordions': 'accordion',
             'carousel': 'carousel',
             'slideshow': 'carousel',
+            'rotatingbanner': 'carousel',
             'flipcards': 'flipcards',
             'flipcard': 'flipcards',
             'clickdrop': 'clickdrop',
@@ -402,6 +403,7 @@ class BlockTagMatcher {
         if (stripped.indexOf('accordion') !== -1 || stripped.indexOf('accordian') !== -1) return 'accordion';
         if (stripped.indexOf('carousel') !== -1) return 'carousel';
         if (stripped.indexOf('slideshow') !== -1 || stripped.indexOf('slide show') !== -1) return 'carousel';
+        if (stripped.indexOf('rotating banner') !== -1 || stripped.indexOf('rotatingbanner') !== -1) return 'carousel';
         if (stripped.indexOf('flip') !== -1) return 'flipcards';
         if (stripped.indexOf('clickdrop') !== -1 || stripped.indexOf('click drop') !== -1) return 'clickdrop';
         if (stripped.indexOf('drag') !== -1 && stripped.indexOf('drop') !== -1) return 'dragdrop';

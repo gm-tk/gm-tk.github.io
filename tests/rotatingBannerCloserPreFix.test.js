@@ -1,24 +1,14 @@
 /**
- * Tests for BS-R3 — Rotating Banner Explicit Closer Path (PRE-FIX baseline).
+ * Tests for BS-R3 — Rotating Banner Explicit Closer Path (adjacent-path guards).
  *
- * This file locks the closer-path baseline for rotating_banner / rotatingbanner
- * *before* the BS-R3 fix lands. It has two clearly-labelled groups:
+ * This file houses the Group A regression guards from the BS-R3 remediation:
+ * adjacent closer/opener paths (carousel / accordion / flipcards / rotating
+ * banner opener / orphan-closer fallthrough) that must remain unchanged by
+ * the fix. They passed both pre-fix and post-fix.
  *
- *   Group A — adjacent behaviour that must remain unchanged post-fix.
- *             These tests pass both before and after the BS-R3 fix and stay
- *             in place as permanent regression guards for the surrounding
- *             closer paths (carousel / accordion / flipcards / orphan-closer
- *             fallthrough / rotating banner opener).
- *
- *   Group B — PRE-FIX BEHAVIOUR that the BS-R3 fix will deliberately invert.
- *             These tests document the current (broken) return value so the
- *             regression is visible before the fix. Once the fix lands their
- *             intent is fully expressed by the post-fix companion file
- *             (tests/rotatingBannerCloserPostFix.test.js) — the Group B
- *             `describe(...)` block below will be DELETED (not commented out)
- *             in that same commit.
- *
- * Do not rely on the Group B assertions as forward-compatible contracts.
+ * The Group B "PRE-FIX BEHAVIOUR" describe-block that originally lived here
+ * was DELETED in the same commit that applied the fix. Its intent is now
+ * expressed by the post-fix contract in tests/rotatingBannerCloserPostFix.test.js.
  */
 
 'use strict';
@@ -123,49 +113,4 @@
         });
     });
 
-    // ------------------------------------------------------------------
-    // Group B — PRE-FIX BEHAVIOUR (will be DELETED post-fix)
-    // ------------------------------------------------------------------
-
-    describe('BS-R3 Group B — PRE-FIX BEHAVIOUR (will be inverted in post-fix file)', function() {
-        it('PRE-FIX: _fuzzyMatchCloser("end rotating banner") returns null (no carousel-group match)', function() {
-            // Pre-fix: the space-separated form does not appear in closerTypeMap,
-            // compactedMap, or any containment branch, so the closer falls
-            // through to null. Post-fix this will return "carousel".
-            var result = _matcher._fuzzyMatchCloser('end rotating banner');
-            assertNull(result,
-                'Pre-fix: [end rotating banner] currently has no closer path (falls through to null)');
-        });
-
-        it('PRE-FIX: _fuzzyMatchCloser("end rotatingbanner") returns null (no carousel-group match)', function() {
-            // Pre-fix: the compacted form is absent from compactedMap and
-            // no containment branch recognises "rotatingbanner". Post-fix
-            // this will return "carousel".
-            var result = _matcher._fuzzyMatchCloser('end rotatingbanner');
-            assertNull(result,
-                'Pre-fix: [end rotatingbanner] currently has no closer path (falls through to null)');
-        });
-
-        it('PRE-FIX: a [rotating banner] ... [end rotating banner] pair closes implicitly, not explicitly', function() {
-            // Pre-fix: [end rotating banner] is not recognised as a closer, so
-            // the block only terminates via an implicit mechanism (hard
-            // boundary / same-type reopen / end-of-document / IE boundary).
-            // Here the terminator is an [End page] hard boundary that
-            // follows the (unrecognised) [end rotating banner] tag.
-            var blocks = [
-                redPara('[rotating banner]'),
-                redPara('[Slide 1]'),
-                para('Slide 1 content'),
-                redPara('[Slide 2]'),
-                para('Slide 2 content'),
-                redPara('[end rotating banner]'),
-                redPara('[End page]')
-            ];
-            var result = _scoper.scopeBlocks(blocks);
-            var carBlock = findBlockByType(result, 'carousel');
-            assertNotNull(carBlock, 'Carousel-typed block must still be found');
-            assertTrue(carBlock.implicitClose,
-                'Pre-fix: rotating_banner block is implicitly closed (no explicit closer match)');
-        });
-    });
 })();
