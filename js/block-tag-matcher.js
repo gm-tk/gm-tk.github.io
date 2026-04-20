@@ -99,7 +99,6 @@ class BlockTagMatcher {
             'click_drop': 'clickdrop',
             'drag_and_drop': 'dragdrop',
             'tabs': 'tabs',
-            'speech_bubble': 'speech_bubble',
             'activity': 'activity',
             'alert': 'alert',
             'important': 'alert'

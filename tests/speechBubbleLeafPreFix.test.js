@@ -1,16 +1,15 @@
 /**
- * Tests for BS-R2 — Speech Bubble Leaf Conversion (pre-fix baseline).
+ * Tests for BS-R2 — Speech Bubble Leaf Conversion (adjacent-path guards).
  *
- * Houses the Group A regression guards that must remain unchanged by the
- * BS-R2 fix (adjacent typeMap / closerTypeMap entries — accordion, tabs,
- * activity, flipcards, alert) AND a Group B "PRE-DELETE BEHAVIOUR"
- * describe-block documenting the exact shape of the speech_bubble opener
- * result that the fix will remove.
+ * This file houses the Group A regression guards from the BS-R2
+ * remediation: adjacent typeMap / closerTypeMap paths (accordion, tabs,
+ * activity, flipcards, alert openers + [end accordion] closer) that
+ * must remain unchanged by the fix. They passed both pre-fix and post-fix.
  *
- * Group B will be DELETED (not commented out) in the same commit that
- * applies the fix to js/block-tag-matcher.js:102. Its intent is then
- * expressed by the inverted assertions in
- * tests/speechBubbleLeafPostFix.test.js.
+ * The Group B "PRE-DELETE BEHAVIOUR" describe-block that originally
+ * lived here was DELETED in the same commit that applied the fix to
+ * js/block-tag-matcher.js. Its intent is now expressed by the
+ * post-fix contract in tests/speechBubbleLeafPostFix.test.js.
  *
  * Mirrors the authoring conventions of tests/rotatingBannerCloserPreFix.test.js
  * and tests/blockScoping.test.js.
@@ -111,44 +110,6 @@
             assertNotNull(accBlock, 'Accordion block should be found');
             assertFalse(accBlock.implicitClose,
                 'Accordion must be explicitly closed by [end accordion]');
-        });
-    });
-
-    // ------------------------------------------------------------------
-    // Group B — PRE-DELETE BEHAVIOUR (will be INVERTED by the fix)
-    //
-    // These two cases describe the silent dead-code state of the scoper
-    // today: _matchOpeningTag returns a block-type for a speech_bubble
-    // normalised tag, and scopeBlocks emits a scope with that type
-    // (implicit-closed at EOF because there is no closer path).
-    //
-    // The same commit that removes js/block-tag-matcher.js:102 will DELETE
-    // this describe-block (not comment it out). Its intent is expressed as
-    // inverted assertions in tests/speechBubbleLeafPostFix.test.js.
-    // ------------------------------------------------------------------
-
-    describe('BS-R2 Group B — PRE-DELETE BEHAVIOUR (will be removed by the fix)', function() {
-        it('_matchOpeningTag on a normalised speech_bubble tag returns blockType "speech_bubble"', function() {
-            var tags = tagsFor('[speech bubble]');
-            var result = _matcher._matchOpeningTag(tags, redPara('[speech bubble]'));
-            assertNotNull(result,
-                'PRE-FIX: [speech bubble] must open a scoper block via typeMap:102');
-            assertEqual(result.blockType, 'speech_bubble',
-                'PRE-FIX: typeMap:102 maps speech_bubble → "speech_bubble"');
-        });
-
-        it('scopeBlocks on [speech bubble]...[end speech bubble] emits a speech_bubble scope (implicit-close)', function() {
-            var blocks = [
-                redPara('[speech bubble]'),
-                para('Character says something'),
-                redPara('[end speech bubble]')
-            ];
-            var result = _scoper.scopeBlocks(blocks);
-            var sbBlock = findBlockByType(result, 'speech_bubble');
-            assertNotNull(sbBlock,
-                'PRE-FIX: speech_bubble-typed block must appear in the output');
-            assertTrue(sbBlock.implicitClose,
-                'PRE-FIX: block implicit-closes at EOF because no closer path resolves [end speech bubble]');
         });
     });
 
