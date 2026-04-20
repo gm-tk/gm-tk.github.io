@@ -164,3 +164,151 @@ NEW:
 | 2 | Post-fix tests land + `block-tag-matcher.js:102` deleted | Group B cases flip to assert the new leaf behaviour; all 5 post-fix cases pass. Total 597 → 602. |
 | 3 | Cross-audit integration tests land | 602 → 607. All five integration cases pass. Run the five cross-audit greps from the Verification Steps table; confirm IE/HC sites unchanged. |
 | 4 | Doc-log append to this file + Phase Log update in root CLAUDE.md | No functional change; 607/607. |
+
+---
+
+### BS-R2 Execute — Speech Bubble Leaf Conversion
+
+Status: EXECUTED. Plan carried out end-to-end on branch
+`claude/read-project-docs-6nniz`. Final test count: **571 → 607 passing**
+(589 at the pre-execute baseline, +18 permanent tests from this session).
+
+#### Single-line deletion
+
+The only production-code change in this session was the removal of one
+line from `js/block-tag-matcher.js` — the `'speech_bubble': 'speech_bubble'`
+entry in the `typeMap` inside `_getBlockTypeFromNormalised`. The line
+was at **`js/block-tag-matcher.js:102`** at the start of the session
+(confirmed by `sed -n '95,115p'`); post-fix the typeMap entries below it
+shifted up by one line so `'activity': 'activity'` now sits at line 102.
+
+The deletion was applied via a scoped `str_replace` using one unique
+line above (`'tabs': 'tabs',`) and one unique line below (`'activity':
+'activity',`) as context anchors, per the plan's "Exact str_replace-
+ready deletion" block. The syntax was verified with `node --check
+js/block-tag-matcher.js` before the test suite was re-run.
+
+File-size snapshots:
+
+| File | Pre-execute | Post-execute |
+|---|---:|---:|
+| `js/block-tag-matcher.js` | 454 | 453 |
+| `js/block-scoper.js` | 992 | 992 (unchanged) |
+| `js/block-scoper-tables.js` | 103 | 103 (unchanged) |
+| `js/interactive-data-extractor.js` | 872 | 872 (unchanged) |
+| `js/interactive-cell-parser.js` | 397 | 397 (unchanged) |
+| `js/interactive-extractor-tables.js` | 106 | 106 (unchanged) |
+| `js/html-converter-block-renderer.js` | 1124 | 1124 (unchanged) |
+
+No other `js/` file was edited.
+
+#### Test files
+
+Three new test files were authored, with the split rationale chosen to
+mirror the BS-R3 remediation convention (`rotatingBannerCloserPreFix.test.js`
+/ `rotatingBannerCloserPostFix.test.js` /
+`rotatingBannerInteractiveIntegration.test.js`):
+
+| File | Case count | Role |
+|---|---:|---|
+| `tests/speechBubbleLeafPreFix.test.js` | 6 | Group A adjacent-path regression guards (accordion / tabs / activity / flip cards / alert openers + [end accordion] closer). Group B — 2 PRE-DELETE cases documenting the shape of the speech_bubble opener result — was deleted in the same commit that applied the fix. |
+| `tests/speechBubbleLeafPostFix.test.js` | 7 | POST-FIX contract: `_matchOpeningTag` on `[speech bubble]` returns null; `_getBlockTypeFromNormalised({normalised:'speech_bubble'})` returns null; `scopeBlocks` emits three unscoped entries for the orphan-closer fixture (no `speech_bubble` wrapper); tag-normaliser still emits `tagInfo.normalised === 'speech_bubble'`; IE `_detectTablePattern` still returns 8 for speech_bubble; static `typeToPrimaryPattern['speech_bubble']` still equals 8; orphan `[end speech bubble]` still returns null via `_fuzzyMatchCloser`. |
+| `tests/speechBubbleLeafIntegration.test.js` | 5 | Full-pipeline integration: two [speech bubble] tags are both unscoped (leaf-only, no implicit-close); pattern-9 Conversation layout captures all Prompt/Response entries; pattern-8 with a data table returns `dataPattern === 8` and `referenceEntry.type === 'speech_bubble'`; `[speech bubble]` + H2 terminates at H2 via `isInteractiveEndSignal`; `referenceEntry` carries type / tier / dataPattern / non-empty placeholderHtml for the HC generic-delegate consumer. |
+
+Pre-fix / post-fix / integration split rationale:
+
+* **Pre-fix** — Group A (adjacent paths) stays permanently to catch future
+  refactors that drift the typeMap for other block types. Group B was
+  authored as short-lived "PRE-DELETE BEHAVIOUR" scaffolding that locks
+  the baseline before the deletion lands, then is deleted in the fix
+  commit. Keeping Group B as explicit pre-delete scaffolding makes the
+  git history legible: commit 1 documents what's being removed; commit 2
+  removes both the code and the scaffolding; commit 2's diff shows the
+  intent transferring to the post-fix file as inverted assertions.
+* **Post-fix** — The inverted-assertion equivalents of Group B
+  (`_matchOpeningTag` returns null; `_getBlockTypeFromNormalised`
+  returns null; `scopeBlocks` emits unscoped entries) plus four
+  orthogonality guards (tag-normaliser classifier, IE pattern-8
+  cell-parser, IE pattern-8 static table, orphan closer). These are
+  permanent — they are the contract the fix creates.
+* **Integration** — Full-pipeline exercises that verify no observable
+  output change: two tags independent, pattern-9 capture, pattern-8
+  with table, H2 boundary termination, and referenceEntry well-formedness
+  (the positive confirmation for the HC generic-delegate path).
+
+#### Group B deletion step
+
+The two Group B cases in `tests/speechBubbleLeafPreFix.test.js`
+(`_matchOpeningTag on a normalised speech_bubble tag returns blockType
+"speech_bubble"` and `scopeBlocks on [speech bubble]...[end speech bubble]
+emits a speech_bubble scope (implicit-close)`) were DELETED — not
+commented out — in the same commit that applied the fix. Rationale: their
+intent is now expressed by the inverted assertions in
+`tests/speechBubbleLeafPostFix.test.js`, so preserving them would either
+duplicate the assertions (if left unchanged) or silently document dead
+pre-fix behaviour (if commented out). Deletion keeps the test suite a
+source-of-truth document for the current contract. The same convention
+was followed by BS-R3 (see `tests/rotatingBannerCloserPreFix.test.js`'s
+top-of-file docstring).
+
+#### Four-site IE cross-audit findings
+
+Per the docs/30 "Cross-audit verification steps" table, the four IE
+sites that read the speech_bubble type were audited empirically
+(`grep -n` + `sed -n` ±10 lines):
+
+| # | Site | Expression read | Scoper-dependent? |
+|---|---|---|---|
+| 1 | `interactive-data-extractor.js:217` | `if (interactiveType === 'speech_bubble')` — `interactiveType` is set at `interactive-extractor.js:54` from `tagInfo.normalised` (the tag-normaliser output) | **No.** The branch reads the tag-normaliser's classification, not any scoper-produced field. |
+| 2 | `interactive-data-extractor.js:722` | `tagInfo.normalised === 'speech_bubble' && modifier.indexOf('conversation') !== -1` inside the `_consumeInteractiveBoundary` walker | **No.** `tagInfo` is threaded in from `InteractiveExtractor.processInteractive` line 48 via `_getInteractiveTag(block)` — it is the tag-normaliser's output, not a scoper-state field. |
+| 3 | `interactive-cell-parser.js:212` | `if (interactiveType === 'speech_bubble')` inside `_detectTablePattern`; `interactiveType` is an argument passed in by the caller at `interactive-cell-parser.js:178` | **No.** The function signature `_detectTablePattern(tableData, interactiveType)` takes a string, not a scoper record. Callers pass the tag-normaliser's normalised name. |
+| 4 | `interactive-extractor-tables.js:53` | Static map literal `'speech_bubble': 8` inside `typeToPrimaryPattern` | **No.** Compile-time lookup table; keys are normalised tag names, not scoper block types. |
+
+All four verdicts are "No". Option B (leaf) holds: removing the opener
+declaration in the scoper cannot affect any IE pathway because no IE
+pathway reads scoper state for speech_bubble.
+
+#### html-converter negative confirmation
+
+`grep -n "speech_bubble\|speech bubble\|speechbubble" js/html-converter*.js`
+returns exactly one hit:
+
+```
+js/html-converter-block-processor.js:88:            // If a table contains an interactive tag (e.g., speech_bubble) in its
+```
+
+The hit is in a code comment describing the "promote interactive tag to
+primary position" rule at `html-converter-block-processor.js:85-95`;
+the surrounding code actually dispatches on `category === 'interactive'`
+(the tag-normaliser's classifier output), not on the string
+`speech_bubble`. The generic interactive handler at
+`html-converter-block-renderer.js:365-395` then consumes the
+`referenceEntry` payload produced by `InteractiveExtractor.processInteractive`
+— a consumer-only path that never string-matches a specific interactive
+name. Confirmed: html-converter is insensitive to the scoper's typeMap
+for speech_bubble.
+
+#### Final pass count
+
+| Step | Commit | Delta | Total |
+|---|---|---:|---:|
+| Pre-execute baseline | — | — | **589/589** |
+| Step 1 | `BS-R2 pre-fix tests: lock speech_bubble leaf baseline` | +8 (6 Group A + 2 Group B) | **597/597** |
+| Step 3 | `BS-R2 fix: remove speech_bubble from block-tag-matcher typeMap` | +7 post-fix − 2 Group B deleted = +5 net | **602/602** |
+| Step 4 | `BS-R2: cross-audit verify IE sites + integration test` | +5 integration | **607/607** |
+
+Net: **+18 permanent tests**. Matches the plan's Test Checkpoints
+table row-for-row.
+
+#### Cross-links — BS-R2 conflict now closed
+
+BS-R2 is the second of the two conflicts flagged by the `docs/27`
+Opener/Closer Pairing Audit (row 191). BS-R3 (`rotating_banner`) was
+closed earlier on the same branch (Option A — symmetric closer paths
+added); BS-R2 (`speech_bubble`) is now closed here (Option B — opener
+path removed). The remaining audit findings on `docs/27` are
+non-conflict observations — duplicated maps (BS-R7), shadowed/dead
+fields (BS-R4, BS-R5, BS-R6), and removable internal-only shims —
+none of which block correctness.
+
+Remediation: **Tag Pipeline Remediation — BS-R2 (Speech Bubble Leaf Conversion)**.
