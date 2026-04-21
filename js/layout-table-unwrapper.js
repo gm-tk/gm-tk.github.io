@@ -36,6 +36,7 @@ class LayoutTableUnwrapper {
 
         /** @type {number} Number of data tables preserved in last run */
         this.preservedCount = 0;
+        this._counter = 0;
     }
 
     // ------------------------------------------------------------------
@@ -382,11 +383,12 @@ class LayoutTableUnwrapper {
      */
     _unwrapTable(tableData) {
         var blocks = [];
+        var counter = ++this._counter;
 
         for (var r = 0; r < tableData.rows.length; r++) {
             var row = tableData.rows[r];
             if (!row.cells || row.cells.length === 0) continue;
-
+            var layoutRowId = 'lrow-' + counter + '-' + r;
             var roles = this._assignColumnRoles(row);
 
             var mainCells = [];
@@ -412,26 +414,24 @@ class LayoutTableUnwrapper {
                         type: 'paragraph',
                         data: para,
                         _unwrappedFrom: 'layout_table',
-                        _cellRole: 'main_content'
+                        _cellRole: 'main_content',
+                        _layoutRowId: layoutRowId
                     });
                 }
             }
 
-            // Extract sidebar cells as annotated blocks
+            // Extract sidebar cells as annotated blocks. _createSidebarBlock
+            // may return a single block OR an array (sidebar + trailing
+            // writer-instruction paragraphs not absorbed into the synthetic
+            // image/alert block).
             for (var sc = 0; sc < sidebarCells.length; sc++) {
                 var sidebar = sidebarCells[sc];
                 var sidebarResult = this._createSidebarBlock(sidebar.cell, sidebar.role);
                 if (!sidebarResult) continue;
-                // _createSidebarBlock may return a single block OR an array
-                // (sidebar block + trailing writer-instruction/content blocks
-                // for paragraphs that weren't consumed by the image/alert
-                // synthesis).
-                if (Array.isArray(sidebarResult)) {
-                    for (var sr = 0; sr < sidebarResult.length; sr++) {
-                        blocks.push(sidebarResult[sr]);
-                    }
-                } else {
-                    blocks.push(sidebarResult);
+                var sidebarBlocks = Array.isArray(sidebarResult) ? sidebarResult : [sidebarResult];
+                for (var sr = 0; sr < sidebarBlocks.length; sr++) {
+                    sidebarBlocks[sr]._layoutRowId = layoutRowId;
+                    blocks.push(sidebarBlocks[sr]);
                 }
             }
         }

@@ -140,6 +140,8 @@ class InteractiveExtractor {
             conversationEntries: boundary.conversationEntries || [],
             boundaryWriterNotes: boundary.writerNotes || [],
             associatedMedia: boundary.associatedMedia || [],
+            startBlockInlineContent: boundary.startBlockInlineContent || null,
+            layoutRowSiblings: boundary.layoutRowSiblings || [],
             notes: ''
         };
 
@@ -155,7 +157,9 @@ class InteractiveExtractor {
             conversationEntries: boundary.conversationEntries,
             writerNotes: boundary.writerNotes,
             associatedMedia: boundary.associatedMedia,
-            dataTable: boundary.dataTable
+            dataTable: boundary.dataTable,
+            startBlockInlineContent: boundary.startBlockInlineContent || null,
+            layoutRowSiblings: boundary.layoutRowSiblings || []
         };
     }
 

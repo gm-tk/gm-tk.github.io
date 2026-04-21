@@ -711,7 +711,9 @@ class InteractiveDataExtractor {
             conversationEntries: [],
             writerNotes: [],
             associatedMedia: [],
-            dataTable: null
+            dataTable: null,
+            startBlockInlineContent: null,
+            layoutRowSiblings: []
         };
 
         if (!tagInfo) return result;
@@ -730,6 +732,23 @@ class InteractiveDataExtractor {
             result.dataTable = startBlock.data;
         }
 
+        // Session H — if the start tag is embedded inline inside a paragraph
+        // (e.g. `[speech bubble] Kia ora I'm Ariā...`), capture the remainder
+        // of that paragraph's text as part of the interactive's own body so
+        // it is not silently dropped by the boundary walker.
+        if (startBlock && startBlock.type === 'paragraph' && startBlock.data && tagInfo.raw) {
+            var startRaw = this._cellParser._buildFormattedText(startBlock.data);
+            var inline = this._stripStartTagFromText(startRaw, tagInfo.raw);
+            if (inline) {
+                result.startBlockInlineContent = inline;
+            }
+        }
+
+        // Session H — capture the `_layoutRowId` of the start block so the
+        // forward-walk loop can re-pair sibling blocks unwrapped from the
+        // same source layout-table row.
+        var startLayoutRowId = (startBlock && startBlock._layoutRowId) || null;
+
         // Track whether any non-start block has been consumed yet — the primary
         // data-table rule only applies when the table sits immediately after
         // the start tag.
@@ -737,6 +756,22 @@ class InteractiveDataExtractor {
 
         for (var i = startIndex + 1; i < blocks.length; i++) {
             var next = blocks[i];
+
+            // Session H — layout-row sibling capture. Checked BEFORE the
+            // end-signal check so a sibling block unwrapped from the same
+            // source row is always threaded through the boundary even if it
+            // would otherwise have triggered an end-signal (e.g. a plain
+            // [image] tag in the companion cell).
+            if (startLayoutRowId && next && next._layoutRowId === startLayoutRowId) {
+                result.layoutRowSiblings.push({
+                    index: i,
+                    block: next,
+                    layoutRowId: startLayoutRowId
+                });
+                result.endBlockIndex = i;
+                consumedCount++;
+                continue;
+            }
 
             // Rule: TABLE immediately after the start-tag captures as dataTable.
             if (next.type === 'table' && consumedCount === 0 && !result.dataTable) {
@@ -868,5 +903,18 @@ class InteractiveDataExtractor {
             return this._normaliser.processBlock(tableText);
         }
         return { tags: [], cleanText: '', redTextInstructions: [], isRedTextOnly: false, isWhitespaceOnly: true };
+    }
+
+    // Remove one occurrence of `tagRaw` from `rawText`, stripping surrounding
+    // red-text markers so an inline-embedded start tag can be subtracted from
+    // its paragraph's text even when the tag is wrapped in 🔴[RED TEXT]…🔴.
+    _stripStartTagFromText(rawText, tagRaw) {
+        if (!rawText || !tagRaw) return '';
+        var stripped = rawText
+            .replace(/🔴\[RED TEXT\]\s*/g, '')
+            .replace(/\s*\[\/RED TEXT\]🔴/g, '');
+        var idx = stripped.indexOf(tagRaw);
+        if (idx === -1) return '';
+        return (stripped.slice(0, idx) + stripped.slice(idx + tagRaw.length)).trim();
     }
 }

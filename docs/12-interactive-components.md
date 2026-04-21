@@ -177,4 +177,111 @@ Second of the two-session pair on interactive boundary detection. Layered the ac
 
 ---
 
+### Session H — Inline-Embedded Start Tag + Layout-Row Sibling Capture
+
+Additive capture plumbing for two content paths that the Session F / Session G
+boundary walker was silently dropping:
+
+1. **Inline-embedded start tag** — when `[speech bubble]` (or any
+   interactive-start tag) is followed by prose in the same paragraph
+   (e.g. `[speech bubble] Kia ora I'm Ariā.`), the start block's own body
+   content was not being threaded into the boundary because the walker
+   loops from `startIndex + 1`.
+2. **Layout-table-paired sibling** — after `layout-table-unwrapper.js`
+   splits a 2-column layout grid into sibling blocks in the main stream,
+   the row-level pairing that made Cell 1 (interactive) and Cell 2 (image
+   + writer note) related was lost, so the companion block rendered as
+   body content outside the placeholder.
+
+**Files touched (before → after line counts):**
+
+| File | Before | After |
+|------|--------|-------|
+| `js/layout-table-unwrapper.js` | 700 | 700 |
+| `js/interactive-data-extractor.js` | 872 | 920 |
+| `js/interactive-extractor.js` | 559 | 563 |
+| `docs/12-interactive-components.md` | 180 | (this update) |
+
+(`interactive-data-extractor.js` was already above the ≤500 sub-module
+hygiene threshold before this session. This session's 48-line addition is
+the minimum needed for the two new capture paths plus one small private
+helper; a further extraction pass may be warranted in a future session.)
+
+**`js/layout-table-unwrapper.js`** — `LayoutTableUnwrapper` now carries a
+per-instance counter (`this._counter`) that is bumped once per
+`_unwrapTable()` invocation. Inside the row loop, every block emitted from
+the same source row (main-content paragraphs, synthesised sidebar
+image/alert blocks, and trailing extras carried out of the sidebar cell)
+is stamped with a shared `_layoutRowId` of the form
+`'lrow-' + counter + '-' + rowIdx`. Distinct source tables and distinct
+rows therefore receive distinct IDs. The existing `_cellRole` /
+`_unwrappedFrom` / `_sidebarImageUrl` / `_sidebarAlertContent` /
+`_sidebarParagraphs` annotations are preserved unchanged. The sidebar push
+branch was also consolidated (single-block and array paths now share one
+loop) so the net line delta is zero.
+
+**`js/interactive-data-extractor.js`** — `_consumeInteractiveBoundary()`
+now returns two additive fields alongside the existing
+`childBlocks / conversationEntries / writerNotes / associatedMedia /
+dataTable` set:
+
+- `startBlockInlineContent: string | null` — populated before the
+  forward-walk loop when the start block is a paragraph (not a table) and
+  its text contains more than just the start-tag marker. A small private
+  helper `_stripStartTagFromText(rawText, tagRaw)` at the bottom of the
+  file removes surrounding red-text wrappers (`🔴[RED TEXT] … [/RED TEXT]🔴`)
+  and then removes one occurrence of `tagInfo.raw`, trimming the
+  remainder. Stays `null` when the start block is a table, when the start
+  block's text is exactly the tag, or when the trimmed remainder is empty.
+
+- `layoutRowSiblings: Array<{ index, block, layoutRowId }>` — the
+  forward-walk loop captures `startLayoutRowId` from
+  `blocks[startIndex]._layoutRowId` (undefined on non-unwrapped blocks).
+  A new capture rule, checked **before** the end-signal check, matches
+  any `blocks[i]` whose `_layoutRowId === startLayoutRowId`, pushes it
+  into `layoutRowSiblings`, updates `endBlockIndex = i`, increments
+  `consumedCount`, and `continue`s. When the start block has no
+  `_layoutRowId`, the rule is a no-op and the walker is byte-for-byte
+  identical to Session G.
+
+**`js/interactive-extractor.js`** — `processInteractive()`'s top-level
+return and `referenceEntry` now both surface
+`startBlockInlineContent: boundary.startBlockInlineContent || null` and
+`layoutRowSiblings: boundary.layoutRowSiblings || []`. No other logic
+changes; the existing `html-converter` skip loop (which consumes the
+inclusive range `[startBlockIndex+1, endBlockIndex]` via
+`consumedRawIndices`) naturally also skips layout-row siblings from body
+rendering because the new capture advances `endBlockIndex` for each
+sibling it consumes. Confirmed via `grep -n consumedRawIndices
+js/html-converter-block-renderer.js` — no edit required.
+
+**New test files:**
+
+| File | `it()` cases |
+|------|-------------|
+| `tests/layoutRowIdAnnotation.test.js` | 6 |
+| `tests/interactiveInlineStartBoundary.test.js` | 7 |
+
+Cases covered: shared `_layoutRowId` within a row, distinct IDs across
+rows / tables, no annotation on preserved single-column tables,
+coexistence with `_cellRole`, standalone non-unwrapped paragraphs keep
+no `_layoutRowId`; inline start-tag remainder capture, pure-tag start
+block returning `null`, sibling capture only when row IDs match, empty
+`layoutRowSiblings` when the start block has no `_layoutRowId`, boundary
+still closes at `[body]` / `isInteractiveEndSignal()` when a sibling
+precedes the closer, and `referenceEntry` surfaces both new fields.
+
+**Final pass/total:** 620/620 tests passing (up from 607 — 13 new `it()`
+cases; no regressions).
+
+**Deferred to a follow-up session** — placeholder/reference-doc surfacing
+of `startBlockInlineContent` and `layoutRowSiblings`. The renderer
+(`js/interactive-placeholder-renderer.js`), the html-converter delegation
+layer, and `generateReferenceDocument()` are intentionally untouched in
+this session so the capture plumbing can land in isolation and be
+verified against the synthetic block-stream fixtures before the surfacing
+changes are layered on top.
+
+---
+
 [← Back to index](../CLAUDE.md)
