@@ -394,4 +394,51 @@ class InteractiveCellParser {
 
         return media;
     }
+
+    /**
+     * Session I — normalise a layout-row sibling block into its paragraph
+     * text, optional media URL (when the block's primary tag is [image] or
+     * [video]), and any red-text writer notes the block carries. Shared
+     * between the placeholder renderer and the reference-doc generator.
+     *
+     * @param {Object} block - Sibling content block
+     * @returns {{paragraphText: string, mediaUrl: string|null, redTextNotes: string[]}}
+     */
+    _extractSiblingInfo(block) {
+        var info = { paragraphText: '', mediaUrl: null, redTextNotes: [] };
+        if (!block) return info;
+        var raw = '';
+        if (block.type === 'paragraph' && block.data) {
+            raw = this._buildFormattedText(block.data);
+        } else if (block.type === 'table' && block.data) {
+            raw = this._buildTableText(block.data);
+        }
+        if (!raw) return info;
+
+        var redRe = /🔴\[RED TEXT\]\s*([\s\S]*?)\s*\[\/RED TEXT\]🔴/g;
+        var mNote;
+        while ((mNote = redRe.exec(raw)) !== null) {
+            var noteText = (mNote[1] || '').trim();
+            if (noteText) info.redTextNotes.push(noteText);
+        }
+
+        var tagResult = this._normaliser.processBlock(raw);
+        var primary = (tagResult && tagResult.tags && tagResult.tags.length > 0)
+            ? tagResult.tags[0] : null;
+        if (primary && (primary.normalised === 'image' || primary.normalised === 'video')) {
+            var cleanText = (tagResult.cleanText || '').trim();
+            if (cleanText) info.mediaUrl = cleanText;
+        }
+
+        var cleaned = raw
+            .replace(/🔴\[RED TEXT\]\s*[\s\S]*?\s*\[\/RED TEXT\]🔴/g, '')
+            .replace(/\[[^\]]+\]/g, '');
+        if (info.mediaUrl) {
+            var urlEscaped = info.mediaUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            cleaned = cleaned.replace(new RegExp(urlEscaped, 'g'), '');
+        }
+        info.paragraphText = cleaned.replace(/\s+/g, ' ').trim();
+
+        return info;
+    }
 }

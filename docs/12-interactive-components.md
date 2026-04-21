@@ -284,4 +284,150 @@ changes are layered on top.
 
 ---
 
+### Session I — Placeholder Fidelity for Inline Start Tag + Layout-Row Captures
+
+Additive surfacing pass for the two Session H boundary captures
+(`startBlockInlineContent` and `layoutRowSiblings`). Session H threaded
+both fields through `processInteractive()`'s top-level return and
+`referenceEntry` but did not render either one anywhere visible; this
+session surfaces them inside the existing placeholder shell and in the
+reference document, and locks the pairing in with an end-to-end
+integration test on a synthetic OSAI201-01-WT layout-table fixture.
+
+**This is a content-fidelity change only.** The placeholder visual
+shell (dashed border, tier colour classes, header bar, "No structured
+data detected" fallback message) is byte-for-byte unchanged from
+Session H. The interactive-specific visual rendering (e.g. the
+bubble + avatar 9/3 column layout for `speech_bubble`, or the
+chat-style layout for conversation entries) remains **out of scope**
+for this session — that is a Tier-1 rendering concern deferred to a
+future phase.
+
+**Files touched (before → after line counts):**
+
+| File | Before | After |
+|------|--------|-------|
+| `js/interactive-placeholder-renderer.js` | 430 | 471 |
+| `js/interactive-cell-parser.js` | 397 | 444 |
+| `js/interactive-extractor.js` | 563 | 596 |
+| `docs/12-interactive-components.md` | 287 | (this update) |
+
+All four files are inside their hygiene thresholds (≤500 for
+sub-modules, ≤700 for the core extractor orchestrator). The
+pre-existing `interactive-data-extractor.js` (920 lines, flagged as
+over-threshold in Session H) was NOT touched by this session — the new
+`_extractSiblingInfo(block)` text helper lives on
+`InteractiveCellParser` so it is reachable from both the renderer and
+the reference-doc path without re-inflating the data extractor.
+
+**`js/interactive-placeholder-renderer.js`** — two additive sub-sections
+rendered INSIDE the existing placeholder body between the Session G
+Boundary Writer Notes block and the Associated Media block:
+
+- **Start-Block Content** (heading `Start-Block Content:`) — rendered
+  only when `opts.startBlockInlineContent` is a non-empty string.
+  Emits the captured inline remainder text as a single `<p>`,
+  HTML-escaped via the existing `_escContent` helper.
+- **Layout-Row Siblings** (heading `Layout-Row Siblings:`) — rendered
+  only when `opts.layoutRowSiblings.length > 0`. One `<p>` per sibling
+  with the sibling's paragraph text; if the sibling's tag normalises
+  to `image` or `video` the URL is appended in an `<em>` tag; any
+  red-text writer notes on the sibling are emitted as italicised
+  `Note: …` lines beneath the sibling's main paragraph.
+
+The paragraph-text + media + note extraction delegates to the new
+`InteractiveCellParser._extractSiblingInfo(block)` helper so the
+renderer does not need its own `TagNormaliser` reference.
+
+**`js/interactive-cell-parser.js`** — new shared helper
+`_extractSiblingInfo(block)` that returns
+`{ paragraphText, mediaUrl, redTextNotes }`. Uses the already-injected
+`_normaliser` to detect `image` / `video` tags (pulling the URL from
+`tagResult.cleanText`), matches red-text notes via the existing
+`🔴[RED TEXT]…[/RED TEXT]🔴` regex, and produces a cleaned paragraph
+text with tag markers, red-text markers, and any detected media URL
+removed. Consumed by both the placeholder renderer (Layout-Row
+Siblings section) and the reference-doc generator.
+
+**`js/interactive-extractor.js`** —
+
+- `processInteractive()` now threads
+  `startBlockInlineContent: boundary.startBlockInlineContent || null`
+  and `layoutRowSiblings: boundary.layoutRowSiblings || []` into the
+  renderer's `opts` object so the two new sub-sections can fire.
+- `generateReferenceDocument()` gains two additive optional sections
+  per reference entry, matching the formatting of the existing Child
+  Blocks / Conversation Entries / Boundary Writer Notes / Associated
+  Media sections:
+  - `Start-Block Content:` — single indented line, rendered only when
+    `entry.startBlockInlineContent` is a non-empty string.
+  - `Layout-Row Siblings (N):` — one `- ` bullet per sibling with the
+    sibling's paragraph text, the media URL appended when present, and
+    any red-text notes as indented `Note: …` sub-lines.
+
+Ordering inside both the placeholder and the reference document is
+preserved across surfacing layers: Start-Block Content appears before
+Layout-Row Siblings, both sit after the Session G child-block /
+conversation / writer-note sections, and the Session G Associated
+Media section is unchanged. Top-level structure, per-entry
+separators, and the existing `Associated Media: None` fallback are
+all untouched.
+
+**New test files:**
+
+| File | `it()` cases |
+|------|-------------|
+| `tests/placeholderInlineContentRender.test.js` | 6 |
+| `tests/speechBubbleIntegration.test.js` | 5 |
+
+`placeholderInlineContentRender.test.js` covers: (a) Start-Block
+Content section present when the inline remainder is non-empty, (b)
+section absent when remainder is null, (c) Layout-Row Siblings
+section present when the list is non-empty, (d) each sibling surfaces
+paragraph text + media URL in `<em>` + red-text Note: line, (e)
+existing Child Blocks / Conversation Entries / Writer note /
+Associated media sub-sections continue to render unchanged when the
+new sub-sections also fire (regression), (f) placeholder shell
+scaffolding (dashed border, tier 1 green colour classes, background
+colour, TIER 1 INTERACTIVE label, INTERACTIVE_START / _END comments)
+is byte-for-byte unchanged when neither new section fires.
+
+`speechBubbleIntegration.test.js` is an end-to-end integration suite
+that drives a synthetic OSAI201-01-WT block stream through the full
+pipeline (`LayoutTableUnwrapper.unwrapLayoutTables()` →
+`InteractiveExtractor.processInteractive()` →
+`InteractiveExtractor.generateReferenceDocument()`). The fixture is a
+2-column layout-table row with `[speech bubble]` + inline bubble text
+in Cell 1, `[image]` URL + a fully-red `CS:` writer note in Cell 2,
+followed by a standalone `[body]` tag and a post-body narrative
+paragraph. The five `it()` cases assert: (a) placeholder contains the
+bubble text (`Kia ora I'm Ariā.`), (b) placeholder contains the image
+URL, (c) placeholder contains the CS red-text note text prefixed with
+`Note: `, (d) the post-`[body]` narrative paragraph is NOT duplicated
+inside the placeholder and the boundary's `endBlockIndex` stops
+strictly before that paragraph's index, (e) the reference document
+surfaces bubble text under `Start-Block Content:` and the URL + CS
+note under `Layout-Row Siblings`.
+
+**Invariants locked in by this session:**
+
+- Placeholder visual shell (dashed border, tier colour classes, header
+  bar, icon, TIER N INTERACTIVE label, INTERACTIVE_START / _END
+  comments, data-table preview format) remains byte-for-byte identical
+  to Session H / Session G output.
+- Additive sub-sections render only when their inputs are non-empty;
+  empty arrays / null strings emit nothing.
+- Session G child-block / conversation / writer-note / associated
+  media sub-sections continue to render unchanged when the new
+  sub-sections also fire.
+- The OSAI201-01-WT layout-table pattern (speech bubble + companion
+  image + CS note) now surfaces all three captures inside the single
+  placeholder shell; the post-`[body]` narrative paragraph renders
+  outside the placeholder and is not duplicated inside it.
+
+**Final pass/total:** 631/631 tests passing (up from 620 — 11 new
+`it()` cases across two files; no regressions).
+
+---
+
 [← Back to index](../CLAUDE.md)
