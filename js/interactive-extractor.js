@@ -113,7 +113,9 @@ class InteractiveExtractor {
             childBlocks: boundary.childBlocks || [],
             conversationEntries: boundary.conversationEntries || [],
             boundaryWriterNotes: boundary.writerNotes || [],
-            associatedMedia: boundary.associatedMedia || []
+            associatedMedia: boundary.associatedMedia || [],
+            startBlockInlineContent: boundary.startBlockInlineContent || null,
+            layoutRowSiblings: boundary.layoutRowSiblings || []
         });
 
         // Build reference entry. Session G — surface the new boundary
@@ -309,6 +311,37 @@ class InteractiveExtractor {
                 lines.push('Conversation Entries (' + entry.conversationEntries.length + '):');
                 for (var ceI = 0; ceI < entry.conversationEntries.length; ceI++) {
                     lines.push('  ' + (ceI + 1) + '. ' + entry.conversationEntries[ceI]);
+                }
+                lines.push('');
+            }
+
+            // Session I — inline remainder text captured from the start
+            // block when the start tag is embedded in a prose paragraph
+            // (e.g. `[speech bubble] Kia ora...`).
+            if (typeof entry.startBlockInlineContent === 'string' &&
+                entry.startBlockInlineContent.length > 0) {
+                lines.push('Start-Block Content:');
+                lines.push('  ' + entry.startBlockInlineContent);
+                lines.push('');
+            }
+
+            // Session I — layout-row sibling blocks (companion cells
+            // unwrapped from the same 2-column layout-table row). One
+            // indented bullet per sibling: paragraph text, optional media
+            // URL, and any red-text writer notes the sibling carried.
+            if (entry.layoutRowSiblings && entry.layoutRowSiblings.length > 0) {
+                lines.push('Layout-Row Siblings (' + entry.layoutRowSiblings.length + '):');
+                for (var lsRI = 0; lsRI < entry.layoutRowSiblings.length; lsRI++) {
+                    var lsRE = entry.layoutRowSiblings[lsRI];
+                    var lsRInfo = this._cellParser._extractSiblingInfo(lsRE.block);
+                    var lsRLine = '  - ' + lsRInfo.paragraphText;
+                    if (lsRInfo.mediaUrl) {
+                        lsRLine += (lsRInfo.paragraphText ? ' ' : '') + lsRInfo.mediaUrl;
+                    }
+                    lines.push(lsRLine);
+                    for (var lsRN = 0; lsRN < lsRInfo.redTextNotes.length; lsRN++) {
+                        lines.push('    Note: ' + lsRInfo.redTextNotes[lsRN]);
+                    }
                 }
                 lines.push('');
             }

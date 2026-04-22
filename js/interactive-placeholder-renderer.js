@@ -91,6 +91,10 @@ class InteractivePlaceholderRenderer {
         var conversationEntries = opts.conversationEntries || [];
         var boundaryWriterNotes = opts.boundaryWriterNotes || [];
         var associatedMedia = opts.associatedMedia || [];
+        // Session I — additive fields surfaced from the Session H boundary
+        // captures. Rendered only when their inputs are non-empty.
+        var startBlockInlineContent = opts.startBlockInlineContent || null;
+        var layoutRowSiblings = opts.layoutRowSiblings || [];
 
         var typeLabel = type + (modifier ? ' (' + modifier + ')' : '');
         var activityLabel = activityId || 'inline';
@@ -217,6 +221,43 @@ class InteractivePlaceholderRenderer {
                 lines.push('        <p style="color: #666; font-style: italic; margin-top: 8px;">Writer note: ' +
                     this._escContent(pendingNotes[pwn]) + '</p>');
             }
+        }
+
+        // Session I — inline remainder of the start paragraph captured when
+        // the start tag is embedded inside a prose paragraph (e.g.
+        // `[speech bubble] Kia ora...`). Surfaces as a dedicated sub-section
+        // so the bubble/chat text isn't silently dropped by the boundary walker.
+        if (typeof startBlockInlineContent === 'string' && startBlockInlineContent.length > 0) {
+            lines.push('        <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc;">');
+            lines.push('          <p style="font-weight: bold; margin: 4px 0;">Start-Block Content:</p>');
+            lines.push('          <p style="margin: 2px 0;">' +
+                this._escContent(startBlockInlineContent) + '</p>');
+            lines.push('        </div>');
+        }
+
+        // Session I — layout-row sibling blocks (companion cells unwrapped
+        // from the same source 2-column layout table row). Each sibling's
+        // paragraph text is surfaced; image/video URLs are appended in <em>
+        // and red-text writer notes as italicised "Note:" lines.
+        if (layoutRowSiblings.length > 0) {
+            lines.push('        <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc;">');
+            lines.push('          <p style="font-weight: bold; margin: 4px 0;">Layout-Row Siblings:</p>');
+            for (var lsi = 0; lsi < layoutRowSiblings.length; lsi++) {
+                var lsEntry = layoutRowSiblings[lsi];
+                var lsInfo = this._cellParser._extractSiblingInfo(lsEntry.block);
+                var lsLine = '          <p style="margin: 2px 0;">' +
+                    this._escContent(lsInfo.paragraphText);
+                if (lsInfo.mediaUrl) {
+                    lsLine += ' <em>' + this._escContent(lsInfo.mediaUrl) + '</em>';
+                }
+                lsLine += '</p>';
+                lines.push(lsLine);
+                for (var lsn = 0; lsn < lsInfo.redTextNotes.length; lsn++) {
+                    lines.push('          <p style="margin: 2px 0; font-style: italic;">Note: ' +
+                        this._escContent(lsInfo.redTextNotes[lsn]) + '</p>');
+                }
+            }
+            lines.push('        </div>');
         }
 
         // Session G — associated media URLs (inline [image] / [video]).
