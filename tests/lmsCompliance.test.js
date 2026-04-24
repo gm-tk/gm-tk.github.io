@@ -614,8 +614,8 @@ describe('CHANGE 17 — Whakatauki optional author line', function () {
 // CHANGE 18 — Image Alt Text from iStock Number
 // ===================================================================
 
-describe('CHANGE 18 — Image alt text from iStock number', function () {
-    it('should extract iStock number for alt text', function () {
+describe('CHANGE 18 — iStock image src normalised to images/iStock-<ID>.jpg', function () {
+    it('should emit src="images/iStock-<ID>.jpg" with empty alt for iStock image', function () {
         var normaliser = new TagNormaliser();
         var templateEngine = new TemplateEngine();
         templateEngine._data = TemplateEngine._embeddedData();
@@ -630,8 +630,12 @@ describe('CHANGE 18 — Image alt text from iStock number', function () {
             dimensions: '600x400'
         };
         var result = converter._renderImage(imgInfo, config);
-        assert(result.indexOf('alt="iStock-12345678"') !== -1,
-            'Should use iStock number as alt text');
+        assert(result.indexOf('src="images/iStock-12345678.jpg"') !== -1,
+            'Should emit images/iStock-<ID>.jpg src');
+        assert(result.indexOf('alt=""') !== -1,
+            'Should keep alt empty even when iStock id is present');
+        assert(result.indexOf('placehold.co') === -1,
+            'Should not emit placehold.co for iStock URL');
     });
 
     it('should keep empty alt text when no iStock number', function () {
@@ -653,7 +657,7 @@ describe('CHANGE 18 — Image alt text from iStock number', function () {
             'Should keep empty alt text when no iStock number');
     });
 
-    it('should extract iStock number in image placeholder for layout tables', function () {
+    it('should emit images/iStock-<ID>.jpg in image placeholder for layout tables', function () {
         var normaliser = new TagNormaliser();
         var templateEngine = new TemplateEngine();
         templateEngine._data = TemplateEngine._embeddedData();
@@ -663,8 +667,12 @@ describe('CHANGE 18 — Image alt text from iStock number', function () {
 
         var result = converter._renderImagePlaceholder(
             'https://www.istockphoto.com/photo/example-gm98765432', config);
-        assert(result.indexOf('alt="iStock-98765432"') !== -1,
-            'Layout table image placeholder should use iStock alt text');
+        assert(result.indexOf('src="images/iStock-98765432.jpg"') !== -1,
+            'Layout table image placeholder should emit images/iStock-<ID>.jpg');
+        assert(result.indexOf('alt=""') !== -1,
+            'Layout table image placeholder should keep alt empty');
+        assert(result.indexOf('placehold.co') === -1,
+            'Layout table image placeholder should not emit placehold.co for iStock URL');
     });
 
     it('should keep empty alt text in image placeholder when no iStock', function () {
