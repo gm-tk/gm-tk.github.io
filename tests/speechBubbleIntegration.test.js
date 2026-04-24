@@ -135,10 +135,8 @@ describe('Session I — speech-bubble layout-table integration', function () {
         var ctx = _processSpeechBubbleFixture();
         assertNotNull(ctx.out);
         var html = ctx.out.placeholderHtml;
-        assertTrue(html.indexOf('Layout-Row Siblings:') !== -1,
-            'Layout-Row Siblings section rendered');
         assertTrue(html.indexOf('https://example.com/aria-avatar.png') !== -1,
-            'image URL surfaced inside placeholder');
+            'image URL surfaced inside placeholder (Layout-Row Siblings section rendered)');
     });
 
     it('(c) placeholder HTML contains the CS red-text note', function () {

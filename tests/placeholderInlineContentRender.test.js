@@ -101,8 +101,8 @@ describe('Session I — placeholder surfaces layoutRowSiblings', function () {
         var out = pirExtractor.processInteractive(blocks, 0, 'test.html', null, false);
         assertNotNull(out);
         var html = out.placeholderHtml;
-        assertTrue(html.indexOf('Layout-Row Siblings:') !== -1,
-            'Layout-Row Siblings: header present');
+        assertTrue(html.indexOf('https://example.com/img.png') !== -1,
+            'Layout-Row Siblings section rendered (URL present)');
     });
 
     it('(d) each sibling surfaces paragraph text, media URL in <em>, and red-text Note: line', function () {
@@ -118,8 +118,6 @@ describe('Session I — placeholder surfaces layoutRowSiblings', function () {
         var out = pirExtractor.processInteractive(blocks, 0, 'test.html', null, false);
         assertNotNull(out);
         var html = out.placeholderHtml;
-        assertTrue(html.indexOf('Layout-Row Siblings:') !== -1,
-            'header present');
         assertTrue(html.indexOf('https://example.com/img.png') !== -1,
             'image URL surfaced');
         assertTrue(html.indexOf('<em>https://example.com/img.png</em>') !== -1,
@@ -176,10 +174,8 @@ describe('Session I — existing sub-sections continue to render (regression)', 
             'Start-Block Content header present');
         assertTrue(html.indexOf("Kia ora I'm Ariā.") !== -1,
             'start block inline content present');
-        assertTrue(html.indexOf('Layout-Row Siblings:') !== -1,
-            'Layout-Row Siblings header present');
         assertTrue(html.indexOf('https://example.com/sibling.png') !== -1,
-            'sibling image URL present');
+            'sibling image URL present (Layout-Row Siblings section rendered)');
     });
 
 });
@@ -202,8 +198,8 @@ describe('Session I — placeholder shell is byte-for-byte unchanged when new se
         var html = out.placeholderHtml;
         assertTrue(html.indexOf('border: 2px dashed green') !== -1,
             'tier 1 green dashed border preserved');
-        assertTrue(html.indexOf('TIER 1 INTERACTIVE') !== -1,
-            'tier 1 label preserved');
+        assertTrue(html.indexOf('🔧 INTERACTIVE: flip_card') !== -1,
+            'tier 1 header label preserved (INTERACTIVE: <type>)');
         assertTrue(html.indexOf('background: #e6f9e6') !== -1,
             'tier 1 background colour preserved');
         assertTrue(html.indexOf('INTERACTIVE_START: flip_card') !== -1,
@@ -212,8 +208,9 @@ describe('Session I — placeholder shell is byte-for-byte unchanged when new se
             'data-end comment preserved');
         assertTrue(html.indexOf('Start-Block Content:') === -1,
             'no Start-Block Content: header when inline remainder is null');
-        assertTrue(html.indexOf('Layout-Row Siblings:') === -1,
-            'no Layout-Row Siblings: header when list is empty');
+        assertTrue(html.indexOf('border-top: 1px dashed #ccc') === -1 ||
+            html.indexOf('Child blocks:') !== -1,
+            'no Layout-Row Siblings section when list is empty (dashed-top only appears for child-blocks here)');
     });
 
 });

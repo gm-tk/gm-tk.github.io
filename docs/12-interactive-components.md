@@ -430,4 +430,144 @@ note under `Layout-Row Siblings`.
 
 ---
 
+### Session J — Preview Wrapper Output-Template Fixes (A–F)
+
+Surgical fixes to the green-dashed TIER 1 interactive preview wrapper
+emitted by `InteractivePlaceholderRenderer._generatePlaceholderHtml()`.
+Six output-template changes that make the visible preview clearer for
+downstream consumers and suppress developer-facing diagnostic strings.
+No changes to boundary-walking, data-extraction, or tier-colour logic.
+
+**Scope:** output-template edits in one renderer file plus regression
+tests. The HTML comments (`<!-- INTERACTIVE_START -->`,
+`<!-- Data Pattern -->`, `<!-- Data Summary -->`, `<!-- INTERACTIVE_END -->`)
+are preserved exactly as they were — Fixes A–F operate on visible text
+only.
+
+**Files touched (before → after line counts):**
+
+| File | Before | After |
+|------|--------|-------|
+| `js/interactive-placeholder-renderer.js` | 471 | 477 |
+| `tests/placeholderInlineContentRender.test.js` | 219 | 220 |
+| `tests/interactivePlaceholderFidelity.test.js` | (unchanged line count) | (unchanged line count) |
+| `tests/speechBubbleIntegration.test.js` | (unchanged line count) | (unchanged line count) |
+| `docs/12-interactive-components.md` | 433 | (this update) |
+
+`interactive-placeholder-renderer.js` sits comfortably inside the ≤500
+sub-module hygiene ceiling. No other source file was touched.
+`interactive-data-extractor.js` remains at 920 lines — the Session H
+over-threshold flag is unchanged by this session.
+
+**The six fixes:**
+
+- **Fix A — header bar text.** The Tier 1 header label emitted inside
+  the `<div style="background: #e6f9e6; …">` bar changed from
+  `🔧 TIER 1 INTERACTIVE: <type> — Activity <context>` to
+  `🔧 INTERACTIVE: <type> — Activity <context>`. Tier 2 still emits
+  `INTERACTIVE PLACEHOLDER`. Implemented by changing the `tierLabel`
+  assignment at `interactive-placeholder-renderer.js:107`.
+
+- **Fix B — header wrapper div after `<hr>`.** A new sibling wrapper
+  div `<div style="padding: 10px 12px; font-size: 0.85em; color: #333;
+  background: #fafafa;"><p style="font-weight: bold;"><em>INTERACTIVE:
+  <type></em></p></div>` is emitted immediately after the
+  `<hr style="margin: 0; border-color: <colour>;" />` separator and
+  BEFORE the existing main content wrapper div. The two divs are
+  siblings (not nested). The `<type>` token is escaped via the existing
+  `_escContent` helper.
+
+- **Fix C — diagnostic paragraph suppressed.** The fallback
+  `<p><em>No structured data detected — check InteractiveExtractor
+  boundary detection</em></p>` now emits as `<p><em></em></p>` — empty
+  `<em>` element retained inside the `<p>` wrapper. The
+  `<!-- Data Summary: No structured data detected -->` HTML comment is
+  preserved exactly as it was (the `_buildDataSummary` helper still
+  returns the string).
+
+- **Fix D — `Layout-Row Siblings:` label text suppressed.** The bold
+  paragraph that opens the siblings section now renders as
+  `<p style="font-weight: bold; margin: 4px 0;"></p>` — the label text
+  "Layout-Row Siblings:" is removed, the paragraph element and its
+  styling remain.
+
+- **Fix E — siblings children reordered.** Within each sibling's render
+  block, any `Note:` annotation paragraphs (derived from red-text notes
+  on the sibling block) are now emitted BEFORE the sibling's paragraph
+  (the one that carries paragraph text + optional `<em>URL</em>`).
+  Previously the paragraph was emitted first and the `Note:` lines
+  followed. The order within a single sibling is now: all `Note:`
+  lines → paragraph line.
+
+- **Fix F — trailing empty paragraph invariant.** Because Fix E puts
+  notes BEFORE the paragraph, when the last sibling's paragraph is
+  empty (no text and no media URL, e.g. a fully-red `CS:` free-text
+  writer note), the siblings section naturally ends with
+  `<p style="margin: 2px 0;"></p>`. The OSAI201-01-WT fixture produces
+  this shape because sibling 2 (fully-red CS note) has empty
+  `paragraphText` + null `mediaUrl`. The invariant is locked in by the
+  Fix F regression test using the same fixture shape.
+
+**Existing tests updated to match new output:**
+
+| Test file | Change |
+|---|---|
+| `tests/placeholderInlineContentRender.test.js` | 4 assertions rewritten: the 3 `Layout-Row Siblings:` header checks now check for sibling content (URL text) instead; the `TIER 1 INTERACTIVE` check now asserts `🔧 INTERACTIVE: flip_card`; the negative `Layout-Row Siblings:` absence check was replaced by a combined dashed-top-border or Child-blocks-header check. |
+| `tests/interactivePlaceholderFidelity.test.js` | 1 assertion updated: `TIER 1 INTERACTIVE` → `🔧 INTERACTIVE: flip_card`. |
+| `tests/speechBubbleIntegration.test.js` | 1 assertion rewritten: `Layout-Row Siblings:` header check replaced with a URL-present check. The Session I reference-doc assertion at line 187 (`'Layout-Row Siblings'` without colon) was left intact — the reference doc uses `Layout-Row Siblings (N):` formatting, which still matches. |
+
+**New test file:**
+
+| File | `it()` cases |
+|------|-------------|
+| `tests/interactive-wrapper-rendering.test.js` | 7 |
+
+Cases covered: (A) header bar reads `🔧 INTERACTIVE:` and does NOT
+contain `TIER 1`; (B) `<p style="font-weight: bold;"><em>INTERACTIVE:
+<type></em></p>` wrapper div is emitted as the first content wrapper
+AFTER the `<hr>` and BEFORE the main content wrapper div; (C) no
+`<p><em>No structured data detected…</em></p>` diagnostic paragraph in
+the rendered HTML, but `<p><em></em></p>` empty element is retained;
+(D) literal `Layout-Row Siblings:` label text is absent but
+`<p style="font-weight: bold; margin: 4px 0;"></p>` paragraph is
+retained; (E) `Note: [image]` annotation appears BEFORE the URL
+paragraph it annotates; (F) the final child of the siblings section is
+`<p style="margin: 2px 0;"></p>`; (X) a non-speech_bubble interactive
+type (`flip_card`) receives the same Fix A / B / C treatment — protects
+against hard-coding `speech_bubble` into any of the template paths.
+
+**Final pass/total:** 655/655 tests passing (up from 648 — 7 new
+`it()` cases; no regressions). The six previously-passing assertions
+that referenced removed strings (`TIER 1 INTERACTIVE`,
+`Layout-Row Siblings:` label) were rewritten to match the new output —
+their semantic intent (section-rendered / tier-1-colour-preserved) is
+preserved by alternative assertions.
+
+**Invariants locked in by this session:**
+
+- Header bar reads `🔧 INTERACTIVE: <type>` — **not** `🔧 TIER 1
+  INTERACTIVE: <type>`. Tier 2 still reads `⚠️ INTERACTIVE PLACEHOLDER:
+  <type>`.
+- A `<p style="font-weight: bold;"><em>INTERACTIVE: <type></em></p>`
+  wrapper div is emitted as a sibling between the `<hr>` separator and
+  the main content wrapper div. The two content divs share identical
+  style attributes but are siblings, not nested.
+- `No structured data detected` diagnostic visible text is suppressed
+  in the rendered preview body. The `<!-- Data Summary -->` HTML
+  comment still contains the string and is preserved byte-for-byte.
+- `Layout-Row Siblings:` label text is suppressed in the rendered
+  preview, but the bold paragraph element that carried the label is
+  retained (empty) as the first child of the siblings section.
+- Within the siblings section, any `Note: [tag]` annotation paragraph
+  (derived from a red-text note on the sibling block) is emitted
+  BEFORE the URL paragraph it annotates. Free-text `Note:` paragraphs
+  from free-text red-text notes still render, placed inside their own
+  sibling's block before that sibling's paragraph.
+- The siblings section ends with a trailing empty
+  `<p style="margin: 2px 0;"></p>` (naturally produced by the Fix E
+  reorder when the last sibling's paragraph is empty — the OSAI201-01-WT
+  layout-table shape guarantees this).
+
+---
+
 [← Back to index](../CLAUDE.md)
