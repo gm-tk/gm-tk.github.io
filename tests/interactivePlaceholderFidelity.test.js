@@ -62,8 +62,8 @@ describe('InteractiveExtractor — placeholder captures childBlocks', function (
         // Visual shell unchanged: dashed border + Tier 1 green colour
         assertTrue(html.indexOf('border: 2px dashed green') !== -1,
             'tier 1 green dashed border preserved');
-        assertTrue(html.indexOf('TIER 1 INTERACTIVE') !== -1,
-            'tier label preserved');
+        assertTrue(html.indexOf('🔧 INTERACTIVE: flip_card') !== -1,
+            'tier 1 header label preserved (INTERACTIVE: <type>)');
     });
 });
 

@@ -104,7 +104,7 @@ class InteractivePlaceholderRenderer {
         var bgColor = tier === 1 ? '#e6f9e6' : '#fde8e8';
         var textColor = tier === 1 ? '#1a7a1a' : '#c0392b';
         var icon = tier === 1 ? '\uD83D\uDD27' : '\u26A0\uFE0F';
-        var tierLabel = tier === 1 ? 'TIER 1 INTERACTIVE' : 'INTERACTIVE PLACEHOLDER';
+        var tierLabel = tier === 1 ? 'INTERACTIVE' : 'INTERACTIVE PLACEHOLDER';
 
         var lines = [];
 
@@ -136,6 +136,12 @@ class InteractivePlaceholderRenderer {
         lines.push('      <!-- INTERACTIVE_START: ' + type + ' -->');
         lines.push('      <!-- Data Pattern: ' + dataPattern + ' -->');
         lines.push('      <!-- Data Summary: ' + dataSummary + ' -->');
+
+        // Header wrapper div — emits an "INTERACTIVE: <type>" heading as a
+        // sibling between the <hr> separator and the main content wrapper.
+        lines.push('      <div style="padding: 10px 12px; font-size: 0.85em; color: #333; background: #fafafa;">');
+        lines.push('        <p style="font-weight: bold;"><em>INTERACTIVE: ' + this._escContent(type) + '</em></p>');
+        lines.push('      </div>');
 
         // Content preview body
         lines.push('      <div style="padding: 10px 12px; font-size: 0.85em; color: #333; background: #fafafa;">');
@@ -241,10 +247,14 @@ class InteractivePlaceholderRenderer {
         // and red-text writer notes as italicised "Note:" lines.
         if (layoutRowSiblings.length > 0) {
             lines.push('        <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc;">');
-            lines.push('          <p style="font-weight: bold; margin: 4px 0;">Layout-Row Siblings:</p>');
+            lines.push('          <p style="font-weight: bold; margin: 4px 0;"></p>');
             for (var lsi = 0; lsi < layoutRowSiblings.length; lsi++) {
                 var lsEntry = layoutRowSiblings[lsi];
                 var lsInfo = this._cellParser._extractSiblingInfo(lsEntry.block);
+                for (var lsn = 0; lsn < lsInfo.redTextNotes.length; lsn++) {
+                    lines.push('          <p style="margin: 2px 0; font-style: italic;">Note: ' +
+                        this._escContent(lsInfo.redTextNotes[lsn]) + '</p>');
+                }
                 var lsLine = '          <p style="margin: 2px 0;">' +
                     this._escContent(lsInfo.paragraphText);
                 if (lsInfo.mediaUrl) {
@@ -252,10 +262,6 @@ class InteractivePlaceholderRenderer {
                 }
                 lsLine += '</p>';
                 lines.push(lsLine);
-                for (var lsn = 0; lsn < lsInfo.redTextNotes.length; lsn++) {
-                    lines.push('          <p style="margin: 2px 0; font-style: italic;">Note: ' +
-                        this._escContent(lsInfo.redTextNotes[lsn]) + '</p>');
-                }
             }
             lines.push('        </div>');
         }
@@ -449,7 +455,7 @@ class InteractivePlaceholderRenderer {
                 }
             }
         } else {
-            lines.push('        <p><em>No structured data detected \u2014 check InteractiveExtractor boundary detection</em></p>');
+            lines.push('        <p><em></em></p>');
         }
 
         return lines.join('\n');
