@@ -671,6 +671,33 @@ class HtmlConverterBlockRenderer {
                     continue;
                 }
 
+                // Bullets+image TABLE pairing: when the [alert] marker is
+                // immediately followed by a TABLE block matching the bullets+
+                // image detector, consume both blocks together and render the
+                // paired layout with the alert wrapper enabled. Runs after
+                // the Session E layout-table pairing check (which claims
+                // isLayoutTable()-qualifying tables first) and before the
+                // Session F Sub-bug A preceding-body wrap. If the detector
+                // returns null, or the next block is not a table, fall
+                // through to the existing sub-branches unchanged.
+                if (i + 1 < processedBlocks.length) {
+                    var nextBlock = processedBlocks[i + 1];
+                    if (nextBlock && nextBlock.type === 'table' && !this._renderers._hasTableTag(nextBlock)) {
+                        var abiLayout = this._renderers._detectBulletsAndImageTable(nextBlock.data);
+                        if (abiLayout) {
+                            flushPending();
+                            var abiHtml = this._renderers._renderBulletsAndImageTable(abiLayout, config, { alertWrap: true });
+                            if (inActivity) {
+                                activityParts.push(abiHtml);
+                            } else {
+                                htmlParts.push(abiHtml);
+                            }
+                            i += 2;
+                            continue;
+                        }
+                    }
+                }
+
                 var alertResult = this._content._collectAlertContent(processedBlocks, i);
 
                 // Preceding-body wrap: when the alert marker is standalone

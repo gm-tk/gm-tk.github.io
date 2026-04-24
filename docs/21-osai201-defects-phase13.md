@@ -490,4 +490,157 @@ existing case renamed and assertion-updated in place; no regressions.
 
 ---
 
+### Session H — [alert] marker consumes a following bullets+image table via new sub-branch
+
+**Problem summary:** After Session G gated the hidden alert wrapper
+on `_renderBulletsAndImageTable` behind an `alertWrap` caller flag,
+bare bullets+image tables no longer emitted a phantom alert, but the
+writer-template pattern of `[alert]` marker directly followed by a
+bullets+image TABLE still produced a double defect: (1) the `[alert]`
+handler's three existing sub-branches all fell through — Session E
+layout-table pairing (`isLayoutTable()` returns false because a
+bullets-only left cell does not meet the ≥2-structural-tags
+threshold), Session F Sub-bug A preceding-body wrap (no adjacent
+`[body]` paragraph), and the `_collectAlertContent` fallback (next
+block is a table, not an untagged paragraph) — emitting an empty
+`<div class="alert"><div class="row"><div class="col-12"></div></div></div>`
+inside a `col-md-8 col-12` column; AND (2) the TABLE was then
+processed independently by the standalone `[image]`-branch dispatch,
+which (post-Session G) emitted the paired layout without an alert
+wrapper. The writer saw an empty alert AND an un-alerted
+bullets+image pairing instead of a single alert-wrapped paired layout.
+
+**New sub-branch added to the `[alert]` handler of `_renderBlocks`:**
+Positioned after the Session E layout-table pairing check and before
+the Session F Sub-bug A preceding-body wrap. The new sub-branch
+peeks at the next block at index `i + 1`; if it is a table without a
+`[table]` tag (matching the same `!this._renderers._hasTableTag(...)`
+gate as the standalone `[image]`-branch dispatch) and the
+`_detectBulletsAndImageTable` detector returns a non-null descriptor,
+it calls `flushPending()`, then
+`this._renderers._renderBulletsAndImageTable(descriptor, config, { alertWrap: true })`
+and pushes the result to `htmlParts` (or `activityParts` when
+`inActivity`). The outer loop counter is advanced by `i += 2`
+(consuming both the alert marker and the paired table) and the
+handler `continue`s. If the detector returns `null` or the next
+block is not a table, the new sub-branch does not fire and control
+falls through to the existing Session F Sub-bug A preceding-body
+wrap sub-branch unchanged. The Session E layout-table pairing
+sub-branch, the Session F Sub-bug A preceding-body wrap sub-branch,
+and the `_collectAlertContent` fallback are all entirely untouched.
+
+**File touched:**
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `js/html-converter-block-renderer.js` | 1184 | 1211 | +27 lines (new sub-branch, additive only) |
+| `tests/table-with-inline-image-rendering.test.js` | 271 | 281 | +10 lines (integration `it()` assertion updated to reflect Session H ordering — the first alert now wraps the table's bullets-column intro rather than the preceding `[body]` paragraph; `<p>` position relative to alert asserted) |
+
+**New test file added:**
+
+| File | New `it()` cases |
+|------|-------------:|
+| `tests/alert-before-bullets-image-table.test.js` | 8 |
+
+Cases covered:
+1. `[alert]` + bullets+image TABLE emits exactly one
+   `<div class="alert">` and the alert wraps the bullets column
+   (sits inside `col-md-6 col-12 paddingR`, before `col-md-3 col-12 paddingL`).
+2. Paired row uses `col-md-6 col-12 paddingR` for the alert/bullets
+   column and `col-md-3 col-12 paddingL` for the image column.
+3. Intro sentence renders as `<p>…</p>` and bullets as `<ul><li>…</li>…</ul>`,
+   both inside the alert's inner `<div class="row"><div class="col-12">…</div></div>`
+   scaffolding.
+4. iStockPhoto URL containing `-gm<NUMERIC_ID>-` in the image cell
+   resolves to `src="images/iStock-<NUMERIC_ID>.jpg"` with `alt=""`.
+5. Non-iStockPhoto URL retains the `placehold.co` placeholder (no
+   false-positive iStock mapping).
+6. Emitted `<img>` carries `class="img-fluid"`, `loading="lazy"`, and
+   uses self-closing `/>` style.
+7. Regression guard: `[alert]` + bullets+image TABLE produces
+   exactly one `<div class="alert">` occurrence (not two), and the
+   output does not contain the empty-alert scaffolding pattern
+   `<div class="alert">\s*<div class="row">\s*<div class="col-12">\s*</div>`
+   (regex shape reused from `alert-tag-preceding-body-association.test.js`).
+8. Fall-through guard: `[alert]` followed by a two-column table
+   that is NOT bullets+image (plain text in both cells) does NOT
+   fire the new sub-branch — the cell text still reaches the
+   output via whichever existing handler picks it up, and no
+   spurious `col-md-6 col-12 paddingR` + `col-md-3 col-12 paddingL`
+   pairing is emitted.
+
+**Cross-check — pre-existing alert-related tests:**
+
+- `tests/alertWithSidebarImage.test.js` — Session E layout-table
+  pairing path (gated on `LayoutTableUnwrapper.isLayoutTable() === true`)
+  runs before the new Session H sub-branch and takes first claim.
+  All six `it()` cases pass unchanged.
+- `tests/alert-tag-preceding-body-association.test.js` — no fixture
+  in that test file pairs an `[alert]` marker with a bullets+image
+  TABLE, so the new sub-branch never fires for those fixtures.
+  All eight `it()` cases pass unchanged.
+- `tests/table-with-inline-image-rendering.test.js` — nine of ten
+  `it()` cases untouched (the bare-table fixtures have no `[alert]`
+  marker, so the new sub-branch never fires). The one integration
+  `it()` case ("integrates with a [body] + [alert] + TABLE + [body]
+  stream from the reference test case") used the exact writer
+  pattern that Session H targets; its assertion that "the first
+  alert should wrap the first body paragraph" reflected Session F
+  Sub-bug A's claim and is obsolete under Session H's new ordering.
+  The assertion was updated in place to assert the new (correct)
+  semantic: the first alert wraps the TABLE's bullets-column intro
+  ("AI is not safe for our environment due to:"), and the preceding
+  `[body]` paragraph renders as its own un-alerted row above the
+  paired layout. All other assertions in that `it()` case
+  (col-md-6 paddingR, iStock URL mapping, trailing body `<p>`)
+  pass unchanged.
+- `tests/lmsCompliance.test.js` / `tests/alertNormalization.test.js`
+  / OSAI201 calibration snapshot — no regressions.
+
+**Final pass/total:** 664/664 tests passing — 8 new `it()` cases
+contributed by `tests/alert-before-bullets-image-table.test.js`; one
+existing integration-case assertion updated in place in
+`tests/table-with-inline-image-rendering.test.js` to reflect the
+Session H ordering; no regressions.
+
+**Invariants locked in by this session:**
+
+- The `[alert]` handler now recognises a following bullets+image
+  TABLE via the existing `_detectBulletsAndImageTable` detector as
+  a new sub-branch that runs after the Session E layout-table
+  pairing check (gated on `isLayoutTable()`) and before the
+  Session F Sub-bug A preceding-body wrap. When the detector
+  matches, the `[alert]` handler consumes both blocks and emits a
+  single alert-wrapped paired layout via
+  `_renderBulletsAndImageTable(descriptor, config, { alertWrap: true })`
+  — eliminating the empty-alert + separate-un-alerted-pairing
+  double-render. When the detector returns `null` or the next
+  block is not a table, the new sub-branch does not fire and
+  control falls through to the existing Session F Sub-bug A
+  preceding-body wrap sub-branch unchanged.
+- Sub-branch ordering in the `[alert]` handler (top-to-bottom):
+  Session E layout-table pairing (`_unwrappedFrom === 'layout_table'`
+  consumption + sidebar pairing) → Session H bullets+image TABLE
+  pairing (this session) → Session F Sub-bug A preceding-body
+  wrap → `_collectAlertContent` fallback. Each sub-branch performs
+  its own `flushPending()` on match; no pre-branch flush is
+  reintroduced.
+- The `[alert]` + bullets+image TABLE pairing always emits the
+  `{ alertWrap: true }` variant from `_renderBulletsAndImageTable`
+  (the writer's authored `[alert]` intent), while the bare TABLE
+  dispatch at `html-converter-block-renderer.js:889` continues to
+  pass `{ alertWrap: false }` — the two call sites remain the
+  only callers of `_renderBulletsAndImageTable` and they disagree
+  only on the wrapper flag.
+
+**File-size status (non-blocking):**
+`js/html-converter-block-renderer.js` grew 1184 → 1211 lines with
+this change and remains above the 700-line core threshold
+(previously flagged in docs/29 remediation backlog). The Session H
+edit is purely additive (new sub-branch, ~27 lines); no extraction
+is attempted here. Follow-up split is tracked in the docs/29 backlog.
+
+
+---
+
 [← Back to index](../CLAUDE.md)

@@ -235,11 +235,21 @@ describe('Sub-bug B + C — table with bullets + inline [image] renders paired l
             { type: 'paragraph', data: mkRed('[body]', 'Sometimes AI makes mistakes that are obvious.') }
         ];
         var html = _twiiConvert(blocks);
-        // The first alert should wrap the first body paragraph
+        // Session H: the [alert] marker immediately precedes a bullets+image
+        // TABLE, so the new sub-branch claims the pair first (before Session F
+        // Sub-bug A's preceding-body wrap). The first alert now wraps the
+        // TABLE's bullets column ("AI is not safe for our environment…"),
+        // and the preceding [body] paragraph renders as its own un-alerted
+        // row above the paired layout.
         var firstAlertIdx = html.indexOf('<div class="alert">');
         assertTrue(firstAlertIdx !== -1, 'first alert should render');
-        assertTrue(html.slice(firstAlertIdx, firstAlertIdx + 600).indexOf('The building and running of AI') !== -1,
-            'first alert should wrap the first body paragraph');
+        assertTrue(html.slice(firstAlertIdx, firstAlertIdx + 600).indexOf('AI is not safe for our environment due to:') !== -1,
+            'first alert should wrap the TABLE intro (bullets-column content)');
+        // Preceding [body] paragraph renders above the paired row, outside any alert.
+        var precedingBodyIdx = html.indexOf('<p>The building and running of AI is a big strain on our already struggling environment.</p>');
+        assertTrue(precedingBodyIdx !== -1, 'preceding [body] paragraph should still render');
+        assertTrue(precedingBodyIdx < firstAlertIdx,
+            'preceding [body] should render before the alert, not inside it');
         // The paired row follows
         assertTrue(html.indexOf('col-md-6 col-12 paddingR') !== -1,
             'paired alert+image row should emit col-md-6 paddingR');
