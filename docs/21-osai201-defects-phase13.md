@@ -356,4 +356,138 @@ regressions).
 
 ---
 
+### Session G — Gate `_renderBulletsAndImageTable` alert wrapper behind caller flag
+
+**Problem.** Session F added `_detectBulletsAndImageTable` +
+`_renderBulletsAndImageTable` on `HtmlConverterRenderers` to emit the
+paired `col-md-6 col-12 paddingR` alert + `col-md-3 col-12 paddingL`
+image row for TABLE blocks pairing a bullets cell with an `[image]`
+cell. The renderer unconditionally wrapped the bullets column in
+`<div class="alert">`, regardless of whether the writer authored an
+`[alert]` marker before the table. The standalone `[image]`-branch
+dispatch in `html-converter-block-renderer.js` called the renderer for
+any qualifying bare two-column table, so any such table silently gained
+an alert element it was not asked for — a hidden auto-alerting rule
+that produced LMS output styled as "alert boxes" for content the writer
+never tagged as an alert. (The separate `[alert]`-marker-going-empty
+defect when authored before such a table is tracked as a follow-up and
+is **not** addressed by this session.)
+
+**Fix.** `_renderBulletsAndImageTable` now takes a third `options`
+parameter (`{ alertWrap?: boolean }`, default `false`). The
+`<div class="alert">…</div>` wrapper around the inner
+`<div class="row"><div class="col-12">…</div></div>` is emitted only
+when the caller passes `{ alertWrap: true }`. When `alertWrap` is
+`false` (or omitted), the inner row/col-12 grid renders directly inside
+the `col-md-6 col-12 paddingR` column, with no alert div in between.
+The outer row scaffolding, column class names, `<img>` emission, iStock
+`-gm<ID>-` → `images/iStock-<ID>.jpg` mapping, leading-bullet stripping,
+`placehold.co` fallback for non-iStock URLs, and every other structural
+element are unchanged.
+
+The only call site of `_renderBulletsAndImageTable` —
+`html-converter-block-renderer.js:889` (the standalone `[image]`-branch
+dispatch that fires before the bare `tagName === 'image'` branch) —
+now passes `{ alertWrap: false }` explicitly, even though it equals the
+new default. The explicit pass-through makes the intent
+grep-discoverable and documents that this is the bare-table path that
+must NOT emit an alert.
+
+**Files touched (before → after line counts):**
+
+| File | Before | After |
+|------|-------:|------:|
+| `js/html-converter-renderers.js`                         |  930 |  943 |
+| `js/html-converter-block-renderer.js`                    | 1184 | 1184 |
+| `tests/table-with-inline-image-rendering.test.js`        |  240 |  271 |
+
+Both JS files are already above the ≤500-line sub-module hygiene
+threshold and tracked in the `docs/29` remediation backlog (HC-R6).
+The edits in this session are small surgical additions (+13 lines in
+`html-converter-renderers.js` for the options signature, JSDoc, and
+if/else alert-wrap branching; +0 net in
+`html-converter-block-renderer.js` — a single-line in-place edit at
+the dispatch call site). No sub-module extraction attempted; no
+rewrite.
+
+**`tests/table-with-inline-image-rendering.test.js`** — the first
+`it()` case ("emits a single row with col-md-6 paddingR alert and
+col-md-3 paddingL image") was renamed to "emits a single row with
+col-md-6 paddingR and col-md-3 paddingL image (no alert wrapper for
+bare tables)" and updated to (a) assert absence of `<div class="alert">`,
+and (b) assert that the intro `<p>` + bullet `<ul>` render directly
+inside `<div class="col-md-6 col-12 paddingR"><div class="row"><div class="col-12">…`
+with no alert div between the paddingR column and the inner row. All
+other existing cases are agnostic to the alert wrapper (iStock src
+mapping, bullet stripping, `class="img-fluid"`, `loading="lazy"`,
+`alt=""`, non-iStock `placehold.co` fallback, bullets-only / image-only
+single-column fallthrough) and were left entirely unchanged. The
+integration `it()` case that uses an explicit `[alert]` marker in its
+fixture (Session F Sub-bug A + B integration) continues to find a
+`<div class="alert">` in the output — now the one wrapping the
+preceding `[body]` paragraph (Session F's preceding-body wrap), not
+the one formerly emitted by the table renderer. Its existing
+assertions (the alert text contains "The building and running of AI",
+the paired row emits `col-md-6 paddingR`, the iStock URL resolves to
+`images/iStock-2206845926.jpg`, trailing body renders as `<p>`)
+continue to pass without modification.
+
+**New `it()` case added:**
+
+| File | New `it()` cases |
+|------|-------------:|
+| `tests/table-with-inline-image-rendering.test.js` | 1 |
+
+Case covered: `bare bullets+image table (no preceding [alert]) does
+not emit <div class="alert">` — fixture is the same bullets + `[image]`
+TABLE pattern as the neighbouring cases with no `[alert]` marker in
+any preceding block; asserts the paired `col-md-6 col-12 paddingR` and
+`col-md-3 col-12 paddingL` columns still render AND that the output
+contains no `<div class="alert">` anywhere. This is the explicit
+regression guard for the hidden auto-alerting rule.
+
+**Cross-check — pre-existing alert-related tests:**
+
+- `tests/alertWithSidebarImage.test.js` (Session E layout-table
+  pairing path, gated on `LayoutTableUnwrapper.isLayoutTable() === true`)
+  — does NOT call `_renderBulletsAndImageTable`. Confirmed with
+  `grep -rn "_renderBulletsAndImageTable"` returning the single call
+  site in `html-converter-block-renderer.js:889`. All Session E alert
+  + sidebar-image assertions pass unchanged.
+- `tests/alert-tag-preceding-body-association.test.js` (Session F
+  Sub-bug A, preceding-body wrap) — all eight `it()` cases untouched
+  and continue to pass.
+- `tests/lmsCompliance.test.js` / `tests/alertNormalization.test.js`
+  / other alert-surfacing tests — no regressions.
+
+**Final pass/total:** 656/656 tests passing — the single new
+regression-guard `it()` case in
+`tests/table-with-inline-image-rendering.test.js` contributed +1; one
+existing case renamed and assertion-updated in place; no regressions.
+
+**Invariants locked in by this session:**
+
+- `_renderBulletsAndImageTable` no longer emits a `<div class="alert">`
+  wrapper unless the caller passes `{ alertWrap: true }` via the new
+  third `options` argument. The default (`alertWrap: false`) emits the
+  inner `<div class="row"><div class="col-12">…</div></div>` grid
+  directly inside the `col-md-6 col-12 paddingR` column.
+- The standalone `[image]`-branch dispatch
+  (`html-converter-block-renderer.js:889`) passes `{ alertWrap: false }`
+  explicitly, so bare bullets-plus-image TABLE blocks without a
+  preceding `[alert]` marker no longer gain a hidden alert element.
+- The Session E layout-table pairing call path (via
+  `LayoutTableUnwrapper` → sidebar-block rendering) does not reach
+  `_renderBulletsAndImageTable` and continues to emit its alert
+  wrapper through its own code path — confirmed by the unchanged
+  `alertWithSidebarImage.test.js` pass count.
+- The separate defect where an authored `[alert]` marker before a
+  bullets+image TABLE renders empty (the writer's intent is for the
+  alert to wrap the bullets column, paired with the image column on
+  its right) is not fixed by this session and remains open for a
+  follow-up execute session.
+
+
+---
+
 [← Back to index](../CLAUDE.md)

@@ -886,7 +886,7 @@ class HtmlConverterBlockRenderer {
                 var biLayout = this._renderers._detectBulletsAndImageTable(pBlock.data);
                 if (biLayout) {
                     flushPending();
-                    var biHtml = this._renderers._renderBulletsAndImageTable(biLayout, config);
+                    var biHtml = this._renderers._renderBulletsAndImageTable(biLayout, config, { alertWrap: false });
                     if (inActivity) {
                         activityParts.push(biHtml);
                     } else {
