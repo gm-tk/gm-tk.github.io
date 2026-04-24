@@ -384,9 +384,13 @@ class HtmlConverterRenderers {
      *
      * @param {Object} layoutInfo - From _detectBulletsAndImageTable
      * @param {Object} config - Template config
+     * @param {Object} [options] - Rendering options
+     * @param {boolean} [options.alertWrap=false] - When true, the bullets column is wrapped in <div class="alert">. Default false.
      * @returns {string} HTML row
      */
-    _renderBulletsAndImageTable(layoutInfo, config) {
+    _renderBulletsAndImageTable(layoutInfo, config, options) {
+        options = options || {};
+        var alertWrap = options.alertWrap === true;
         var innerHtml = '';
         if (layoutInfo.introText) {
             var intro = this._stripBoldItalicMarkdown(layoutInfo.introText);
@@ -400,19 +404,28 @@ class HtmlConverterRenderers {
             innerHtml += '          </ul>\n';
         }
 
-        var alertHtml = '    <div class="alert">\n' +
-            '      <div class="row">\n' +
-            '        <div class="col-12">\n' +
-            innerHtml +
-            '        </div>\n' +
-            '      </div>\n' +
-            '    </div>';
+        var bulletsColumnInner;
+        if (alertWrap) {
+            bulletsColumnInner = '    <div class="alert">\n' +
+                '      <div class="row">\n' +
+                '        <div class="col-12">\n' +
+                innerHtml +
+                '        </div>\n' +
+                '      </div>\n' +
+                '    </div>';
+        } else {
+            bulletsColumnInner = '    <div class="row">\n' +
+                '      <div class="col-12">\n' +
+                innerHtml +
+                '      </div>\n' +
+                '    </div>';
+        }
 
         var imgHtml = this.renderImagePlaceholder(layoutInfo.imageRef || '', config);
 
         return '    <div class="row">\n' +
             '      <div class="col-md-6 col-12 paddingR">\n' +
-            alertHtml + '\n' +
+            bulletsColumnInner + '\n' +
             '      </div>\n' +
             '      <div class="col-md-3 col-12 paddingL">\n' +
             '        ' + imgHtml + '\n' +

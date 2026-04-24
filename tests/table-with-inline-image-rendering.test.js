@@ -82,7 +82,7 @@ var _twiiIstockUrl = 'https://www.istockphoto.com/vector/ai-technology-in-indust
 
 describe('Sub-bug B + C — table with bullets + inline [image] renders paired layout', function () {
 
-    it('emits a single row with col-md-6 paddingR alert and col-md-3 paddingL image', function () {
+    it('emits a single row with col-md-6 paddingR and col-md-3 paddingL image (no alert wrapper for bare tables)', function () {
         var table = _twiiMkTable(
             [
                 _twiiMkText('**AI is not safe for our environment due to:**'),
@@ -98,11 +98,24 @@ describe('Sub-bug B + C — table with bullets + inline [image] renders paired l
             'row should contain col-md-6 col-12 paddingR column');
         assertTrue(html.indexOf('col-md-3 col-12 paddingL') !== -1,
             'row should contain col-md-3 col-12 paddingL column');
-        assertTrue(html.indexOf('<div class="alert">') !== -1,
-            'paddingR column should wrap an alert div');
+        assertTrue(html.indexOf('<div class="alert">') === -1,
+            'bare bullets+image table must not emit a <div class="alert"> wrapper');
+        // Intro <p> + bullet <ul> render directly inside the paddingR column's
+        // inner row/col-12 grid, with no alert div in between.
+        var paddingRIdx = html.indexOf('<div class="col-md-6 col-12 paddingR">');
+        assertTrue(paddingRIdx !== -1, 'paddingR column should open');
+        var afterPaddingR = html.slice(paddingRIdx);
+        var innerRowRel = afterPaddingR.indexOf('<div class="row">');
+        var innerColRel = afterPaddingR.indexOf('<div class="col-12">');
+        var pRel = afterPaddingR.indexOf('<p>');
+        var ulRel = afterPaddingR.indexOf('<ul>');
+        assertTrue(innerRowRel !== -1 && innerColRel !== -1,
+            'paddingR column should wrap an inner row > col-12 (not an alert)');
+        assertTrue(innerRowRel < innerColRel && innerColRel < pRel && pRel < ulRel,
+            'intro <p> then bullet <ul> should render directly inside col-12, with no alert div');
         var ulIdx = html.indexOf('<ul>');
         var liIdx = html.indexOf('<li>');
-        assertTrue(ulIdx !== -1 && liIdx !== -1, 'bullet list should render inside the alert');
+        assertTrue(ulIdx !== -1 && liIdx !== -1, 'bullet list should render in the paddingR column');
     });
 
     it('strips **bold** markdown from the intro sentence — renders plain <p>', function () {
@@ -235,6 +248,24 @@ describe('Sub-bug B + C — table with bullets + inline [image] renders paired l
         // Trailing body renders in col-md-8
         assertTrue(html.indexOf('<p>Sometimes AI makes mistakes that are obvious.</p>') !== -1,
             'trailing body paragraph should render after the paired row');
+    });
+
+    it('bare bullets+image table (no preceding [alert]) does not emit <div class="alert">', function () {
+        var table = _twiiMkTable(
+            [
+                _twiiMkText('Intro sentence for the bare table.'),
+                _twiiMkBullet('first bullet'),
+                _twiiMkBullet('second bullet')
+            ],
+            [_twiiMkImageCell(_twiiIstockUrl).paragraphs[0]]
+        );
+        var html = _twiiConvert([table]);
+        assertTrue(html.indexOf('<div class="col-md-6 col-12 paddingR">') !== -1,
+            'paired alert-sized column still renders');
+        assertTrue(html.indexOf('<div class="col-md-3 col-12 paddingL">') !== -1,
+            'paired image column still renders');
+        assertTrue(html.indexOf('<div class="alert">') === -1,
+            'no alert wrapper without explicit [alert] marker');
     });
 
 });
