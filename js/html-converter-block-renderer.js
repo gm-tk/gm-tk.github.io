@@ -580,7 +580,9 @@ class HtmlConverterBlockRenderer {
 
             // --- Alert ---
             if (tagName === 'alert') {
-                flushPending();
+                // NOTE: flushPending() is deferred until a sub-branch has
+                // decided whether to consume the last pendingContent entry
+                // as the alert's wrapped preceding-body paragraph.
 
                 // Layout-table pairing: when the immediately-following blocks
                 // carry _unwrappedFrom: 'layout_table' metadata, consume the
@@ -607,6 +609,7 @@ class HtmlConverterBlockRenderer {
                 }
 
                 if (ltHasMain) {
+                    flushPending();
                     var ltInnerHtml = '';
                     var ltTagText = (pBlock.cleanText || '').trim();
                     if (ltTagText) {
@@ -669,6 +672,40 @@ class HtmlConverterBlockRenderer {
                 }
 
                 var alertResult = this._content._collectAlertContent(processedBlocks, i);
+
+                // Preceding-body wrap: when the alert marker is standalone
+                // (no content of its own AND nothing collected from following
+                // untagged paragraphs) AND the immediately-preceding processed
+                // block was a [body] (or an untagged paragraph), wrap that
+                // preceding body content inside the alert's inner col-12.
+                if (alertResult.paragraphs.length === 0 && !inActivity &&
+                    pendingContent.length > 0 && i > 0) {
+                    var prevBlock = processedBlocks[i - 1];
+                    var prevTags = (prevBlock && prevBlock.tagResult && prevBlock.tagResult.tags) || [];
+                    var prevName = prevTags.length > 0 ? prevTags[0].normalised : null;
+                    var prevIsBody = prevBlock && prevBlock.type === 'paragraph' &&
+                        !(prevBlock.data && prevBlock.data.isListItem) &&
+                        (prevName === 'body' || (prevTags.length === 0 && (prevBlock.cleanText || '').trim()));
+                    if (prevIsBody) {
+                        var poppedHtml = pendingContent.pop();
+                        // Re-indent the popped `      <p>...</p>` to fit the
+                        // alert's `          <p>...</p>` inner-col-12 depth.
+                        var poppedInner = poppedHtml.replace(/^ {6}/gm, '          ');
+                        var wrappedAlertHtml = '    <div class="alert">\n' +
+                            '      <div class="row">\n' +
+                            '        <div class="col-12">\n' +
+                            poppedInner + '\n' +
+                            '        </div>\n' +
+                            '      </div>\n' +
+                            '    </div>';
+                        flushPending();
+                        htmlParts.push(this._renderers._wrapInRow(wrappedAlertHtml, colClass));
+                        i += alertResult.blocksConsumed;
+                        continue;
+                    }
+                }
+
+                flushPending();
                 var alertInnerHtml = '';
                 for (var ai = 0; ai < alertResult.paragraphs.length; ai++) {
                     alertInnerHtml += '          <p>' + this._content._convertInlineFormatting(alertResult.paragraphs[ai]) + '</p>\n';
@@ -837,8 +874,31 @@ class HtmlConverterBlockRenderer {
                 continue;
             }
 
+            // --- Bullets + [image] table pattern ---
+            // When a table pairs a bullet-list cell with an [image] cell, we
+            // render it as a paired col-md-6 paddingR alert + col-md-3 paddingL
+            // image row rather than letting the table fall through to the
+            // generic [image] branch (which would silently drop the bullet
+            // content because a table block carries no _cellText/_cleanText
+            // on its own). Bullets-only and image-only tables fall through
+            // to the existing single-column handlers by returning null.
+            if (pBlock.type === 'table' && !this._renderers._hasTableTag(pBlock)) {
+                var biLayout = this._renderers._detectBulletsAndImageTable(pBlock.data);
+                if (biLayout) {
+                    flushPending();
+                    var biHtml = this._renderers._renderBulletsAndImageTable(biLayout, config);
+                    if (inActivity) {
+                        activityParts.push(biHtml);
+                    } else {
+                        htmlParts.push(biHtml);
+                    }
+                    i++;
+                    continue;
+                }
+            }
+
             // --- Image ---
-            if (tagName === 'image') {
+            if (tagName === 'image' && pBlock.type !== 'table') {
                 var imgInfo = this._content._extractImageInfo(processedBlocks, i);
                 var imgHtml = this._renderers.renderImage(imgInfo, config);
                 if (inActivity) {

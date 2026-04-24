@@ -288,6 +288,139 @@ class HtmlConverterRenderers {
     }
 
     /**
+     * Detect the "bullets + [image]" two-column table pattern.
+     * One cell has bullet-list paragraphs (plus an optional leading intro
+     * paragraph) and the sibling cell has an [image] marker + URL. Returns
+     * a layout descriptor, or null when either half of the pattern is
+     * missing — so bullets-only tables and image-only tables fall through
+     * to their existing single-column handlers.
+     *
+     * @param {Object} tableData - Raw table data
+     * @returns {Object|null} { bulletsColIdx, imageColIdx, introText, bulletItems, imageRef } or null
+     */
+    _detectBulletsAndImageTable(tableData) {
+        if (!tableData || !tableData.rows || tableData.rows.length === 0) return null;
+        var firstRow = tableData.rows[0];
+        if (!firstRow.cells || firstRow.cells.length !== 2) return null;
+
+        var self = this;
+        function analyseCell(cell) {
+            var bulletItems = [];
+            var introText = '';
+            var hasImageTag = false;
+            var imageRef = '';
+            if (!cell || !cell.paragraphs) {
+                return { bulletItems: bulletItems, introText: introText, hasImageTag: hasImageTag, imageRef: imageRef };
+            }
+            for (var p = 0; p < cell.paragraphs.length; p++) {
+                var para = cell.paragraphs[p];
+                var text = self._coreRef._buildFormattedText(para);
+                var tagResult = self._coreRef._normaliser.processBlock(text);
+                var clean = (tagResult.cleanText || '').trim();
+                var isImage = tagResult.tags && tagResult.tags.some(function (t) { return t.normalised === 'image'; });
+                if (isImage) {
+                    hasImageTag = true;
+                    var urlMatch = clean.match(/(https?:\/\/[^\s]+)/);
+                    if (urlMatch) imageRef = urlMatch[1];
+                    continue;
+                }
+                if (para && para.isListItem) {
+                    // Bullet item — strip any leading bullet character.
+                    bulletItems.push(clean.replace(/^[•◦⁃\-\*]\s*/, ''));
+                    continue;
+                }
+                if (clean) {
+                    if (!introText) introText = clean;
+                }
+            }
+            return { bulletItems: bulletItems, introText: introText, hasImageTag: hasImageTag, imageRef: imageRef };
+        }
+
+        var cell0 = analyseCell(firstRow.cells[0]);
+        var cell1 = analyseCell(firstRow.cells[1]);
+
+        var bulletsColIdx = -1, imageColIdx = -1;
+        if (cell0.bulletItems.length > 0 && cell1.hasImageTag) {
+            bulletsColIdx = 0; imageColIdx = 1;
+        } else if (cell1.bulletItems.length > 0 && cell0.hasImageTag) {
+            bulletsColIdx = 1; imageColIdx = 0;
+        } else {
+            return null;
+        }
+
+        var bulletsCell = bulletsColIdx === 0 ? cell0 : cell1;
+        var imageCell = imageColIdx === 0 ? cell0 : cell1;
+
+        return {
+            bulletsColIdx: bulletsColIdx,
+            imageColIdx: imageColIdx,
+            introText: bulletsCell.introText,
+            bulletItems: bulletsCell.bulletItems,
+            imageRef: imageCell.imageRef
+        };
+    }
+
+    /**
+     * Strip leading/trailing *, **, *** markdown from a sentence. Used for
+     * the intro paragraph in a bullets+image table where writers often
+     * bold the intro (e.g. **AI is not safe…:**) but the rendered output
+     * should emit a plain <p> without <b>/<i> wrapping.
+     *
+     * @param {string} text
+     * @returns {string}
+     */
+    _stripBoldItalicMarkdown(text) {
+        if (!text) return '';
+        return text
+            .replace(/\*{3}([\s\S]+?)\*{3}/g, '$1')
+            .replace(/\*{2}([\s\S]+?)\*{2}/g, '$1')
+            .replace(/\*([^\*\n]+)\*/g, '$1');
+    }
+
+    /**
+     * Render a bullets+image table as a paired two-column row:
+     *   col-md-6 col-12 paddingR  — alert wrapping intro <p> + bullet <ul>
+     *   col-md-3 col-12 paddingL  — img
+     *
+     * @param {Object} layoutInfo - From _detectBulletsAndImageTable
+     * @param {Object} config - Template config
+     * @returns {string} HTML row
+     */
+    _renderBulletsAndImageTable(layoutInfo, config) {
+        var innerHtml = '';
+        if (layoutInfo.introText) {
+            var intro = this._stripBoldItalicMarkdown(layoutInfo.introText);
+            innerHtml += '          <p>' + this._coreRef._convertInlineFormatting(intro) + '</p>\n';
+        }
+        if (layoutInfo.bulletItems.length > 0) {
+            innerHtml += '          <ul>\n';
+            for (var b = 0; b < layoutInfo.bulletItems.length; b++) {
+                innerHtml += '            <li>' + this._coreRef._convertInlineFormatting(layoutInfo.bulletItems[b]) + '</li>\n';
+            }
+            innerHtml += '          </ul>\n';
+        }
+
+        var alertHtml = '    <div class="alert">\n' +
+            '      <div class="row">\n' +
+            '        <div class="col-12">\n' +
+            innerHtml +
+            '        </div>\n' +
+            '      </div>\n' +
+            '    </div>';
+
+        var imgHtml = this.renderImagePlaceholder(layoutInfo.imageRef || '', config);
+
+        return '    <div class="row">\n' +
+            '      <div class="col-md-6 col-12 paddingR">\n' +
+            alertHtml + '\n' +
+            '      </div>\n' +
+            '      <div class="col-md-3 col-12 paddingL">\n' +
+            '        ' + imgHtml + '\n' +
+            '      </div>\n' +
+            '    </div>';
+    }
+
+    /**
      * Get all tags from a table cell's paragraphs.
      *
      * @param {Object} cell - Table cell data
@@ -354,22 +487,25 @@ class HtmlConverterRenderers {
      * @returns {string} HTML img tag
      */
     renderImagePlaceholder(imageRef, config) {
-        var placeholderBase = (config.imageDefaults && config.imageDefaults.placeholderBase)
-            ? config.imageDefaults.placeholderBase : 'https://placehold.co';
         var imgClass = (config.imageDefaults && config.imageDefaults.class)
             ? config.imageDefaults.class : 'img-fluid';
 
-        // Extract iStock number for alt text if available
-        var altText = '';
+        // iStockPhoto URLs matching /-gm<NUMERIC_ID>-/ resolve directly to
+        // a local images/iStock-<ID>.jpg asset. alt="" is kept empty —
+        // writers do not author alt text in the .docx template.
         if (imageRef) {
-            var gmMatch = imageRef.match(/gm(\d+)/);
-            if (gmMatch) {
-                altText = 'iStock-' + gmMatch[1];
+            var istockGmMatch = imageRef.match(/^https?:\/\/(?:www\.)?istockphoto\.com\/[^\s]*?-gm(\d+)(?:[-?\/][^\s]*)?$/);
+            if (istockGmMatch) {
+                return '<img class="' + imgClass + '" loading="lazy" src="images/iStock-' +
+                    this._escAttr(istockGmMatch[1]) + '.jpg" alt="" />';
             }
         }
 
+        var placeholderBase = (config.imageDefaults && config.imageDefaults.placeholderBase)
+            ? config.imageDefaults.placeholderBase : 'https://placehold.co';
+
         var html = '<img class="' + imgClass + '" loading="lazy" src="' +
-            placeholderBase + '/400x300?text=Image" alt="' + this._escAttr(altText) + '" />';
+            placeholderBase + '/400x300?text=Image" alt="" />';
 
         if (imageRef) {
             html += '\n        <!-- Reference: ' + this._escContent(imageRef) + ' -->';
@@ -774,25 +910,21 @@ class HtmlConverterRenderers {
      * @returns {string} HTML image
      */
     renderImage(imgInfo, config) {
+        // iStockPhoto URLs with a -gm<ID>- segment resolve to a local
+        // images/iStock-<ID>.jpg asset. alt="" stays empty — writers do
+        // not author alt text in the .docx template.
+        if (imgInfo.istockId) {
+            return '      <img class="img-fluid" loading="lazy" src="images/' +
+                this._escAttr(imgInfo.istockId) + '.jpg" alt="" />';
+        }
+
         var dimensions = imgInfo.dimensions || '600x400';
         var placeholderBase = (config.imageDefaults && config.imageDefaults.placeholderBase)
             ? config.imageDefaults.placeholderBase
             : 'https://placehold.co';
 
-        // Use iStock number as alt text if available
-        var altText = imgInfo.istockId || '';
-
-        var html = '      <img class="img-fluid" loading="lazy" src="' +
-            placeholderBase + '/' + dimensions + '?text=Image+Placeholder" alt="' +
-            this._escAttr(altText) + '" />';
-
-        if (imgInfo.istockId) {
-            html += '\n      <!-- <img class="img-fluid" loading="lazy" src="images/' +
-                this._escAttr(imgInfo.istockId) + '.jpg" alt="' +
-                this._escAttr(imgInfo.istockUrl) + '" /> -->';
-        }
-
-        return html;
+        return '      <img class="img-fluid" loading="lazy" src="' +
+            placeholderBase + '/' + dimensions + '?text=Image+Placeholder" alt="" />';
     }
 
 }

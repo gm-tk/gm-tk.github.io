@@ -228,4 +228,132 @@ both template-agnostic.
 
 ---
 
+### Session F — [alert] preceding-body wrap + TABLE bullets+image pairing + iStock src normalisation
+
+Three narrow body-content rendering calibrations discovered during the
+"AI environmental strain" writer-template review. All three share the
+same writer-template pattern: a `[body]` paragraph immediately followed
+by a standalone `[alert]` marker and then a layout-style table whose
+left cell contains an intro sentence + bullet list and whose right cell
+contains an `[image]` marker + iStockPhoto URL. Previously this pattern
+produced an empty `<div class="alert">`, a silently-dropped table, and
+a generic `placehold.co` placeholder image.
+
+**Sub-bug A — `[alert]` marker wraps the immediately-preceding `[body]`.**
+The `[alert]` branch in `_renderBlocks` previously called `flushPending()`
+before any sub-branch decided whether the pending `[body]` content
+should remain a sibling row or be consumed by the alert. Result: the
+body flushed as a standalone `col-md-8` row and the alert (with no
+own-content and no layout-table pairing) emitted an empty inner
+`col-12`. Fix: the initial `flushPending()` is now deferred; each
+sub-branch (layout-table pairing, preceding-body wrap, fallback
+`_collectAlertContent`) performs its own flush at the correct point.
+A new check pops the last pendingContent entry when it was emitted by
+an immediately-preceding `[body]` (or untagged) paragraph and wraps it
+inside the alert's inner `<div class="row"><div class="col-12">…</div></div>`.
+Headings, list items, and non-adjacent preceding bodies are excluded,
+so the existing heading-before-alert and alert-at-start-of-document
+cases continue to emit empty alerts as before.
+
+**Sub-bug B — TABLE row with bullets + `[image]` cells emits a paired
+`col-md-6 paddingR` alert + `col-md-3 paddingL` image layout.** The
+block processor promotes the table's `[image]` tag to primary, so the
+block-renderer's `tagName === 'image'` branch previously consumed the
+table as if it were a standalone image — silently dropping the bullet
+content and the iStock URL (because a `type: 'table'` block carries no
+`cleanText`/`formattedText` for `_extractImageInfo` to read). Fix: two
+new helpers on `HtmlConverterRenderers` — `_detectBulletsAndImageTable`
+(returns `{bulletsColIdx, imageColIdx, introText, bulletItems, imageRef}`
+when one cell has bullet list items and the sibling cell has an
+`[image]` marker, otherwise `null`) and `_renderBulletsAndImageTable`
+(emits the paired `col-md-6 col-12 paddingR` alert + `col-md-3 col-12
+paddingL` image row). A dispatch check inserted before the `[image]`
+branch routes qualifying tables through the new helper. Bullets-only
+and image-only tables return `null` and fall through to the existing
+single-column handlers. The `[image]` branch also gained a
+`pBlock.type !== 'table'` guard so it never steals a table block again.
+
+**Sub-bug C — iStockPhoto URLs resolve to `images/iStock-<ID>.jpg`.**
+`renderImage` and `renderImagePlaceholder` previously emitted
+`src="placehold.co/…?text=Image+Placeholder"` plus a commented-out
+iStock reference. Fix: when the URL matches the iStockPhoto pattern
+and a `-gm<NUMERIC_ID>-` segment is present, both helpers now emit
+`src="images/iStock-<NUMERIC_ID>.jpg"` directly, with `alt=""` kept
+empty per the "no fabricated alt text" invariant. Non-iStockPhoto URLs
+retain their existing `placehold.co` placeholder behaviour.
+
+**Files touched (before → after line counts):**
+
+| File | Before | After |
+|------|-------:|------:|
+| `js/html-converter-block-renderer.js` | 1124 | 1184 |
+| `js/html-converter-renderers.js`      |  798 |  930 |
+| `tests/lmsCompliance.test.js`         |  682 |  690 |
+
+Both JS sub-modules were already above the ≤500-line sub-module
+hygiene threshold before this session (see `docs/29` HC-R6). The +60
+and +132 increments land against the same known overshoot — flagged
+for the `docs/29` remediation backlog; no extraction attempted as part
+of this bug-fix session.
+
+**`tests/lmsCompliance.test.js`** — CHANGE 18's four `it()` cases were
+updated to assert the new `src="images/iStock-<ID>.jpg"` + `alt=""`
+contract rather than the old `placehold.co/?text=Image+Placeholder` +
+`alt="iStock-<ID>"` contract. Case count unchanged.
+
+**New test files:**
+
+| File | `it()` cases |
+|------|-------------|
+| `tests/alert-tag-preceding-body-association.test.js`   | 8 |
+| `tests/table-with-inline-image-rendering.test.js`      | 9 |
+
+Cases covered (`alert-tag-preceding-body-association.test.js`): alert
+wraps a single preceding body paragraph; alert does NOT wrap a
+preceding heading block; alert does NOT wrap a body separated by an
+intervening heading; two consecutive `[body]` + `[alert]` sequences
+each wrap their own preceding body; alert as the first block renders
+empty (regression guard); unicode/punctuation survive the wrap intact;
+exact `<div class="alert"><div class="row"><div class="col-12"><p>…</p></div></div></div>`
+nesting; fallback `_collectAlertContent` path still consumes a
+following untagged paragraph when no preceding `[body]` is present.
+
+Cases covered (`table-with-inline-image-rendering.test.js`): paired
+`col-md-6 paddingR` alert + `col-md-3 paddingL` image row with
+bullet list rendered inside the alert; `**bold**` markdown stripped
+from the intro sentence (plain `<p>` — not wrapped in `<b>`); bullet
+items rendered as `<li>` with any leading `•` character stripped;
+iStock URL `…-gm2206845926-…` maps to `src="images/iStock-2206845926.jpg"`
+with `alt=""` and no `placehold.co`; non-iStock URL retains
+`placehold.co` placeholder; `<img …>` carries `class="img-fluid"`,
+`loading="lazy"`, and `alt=""`; bullets-only table (no image cell)
+retains single-column grid behaviour; image-only table (no bullets)
+retains single-column handling; full `[body] + [alert] + TABLE + [body]`
+integration matches the reference input → target output mapping.
+
+**Invariants locked in by this session:**
+
+- `[alert]` marker with no content of its own and no layout-table
+  pairing wraps the immediately-preceding `[body]` block inside its
+  inner `<div class="row"><div class="col-12">…</div></div>` — not as
+  a sibling row and not as an empty alert.
+- A TABLE row containing a bullets cell + an `[image]` cell emits a
+  single two-column row with `col-md-6 col-12 paddingR` wrapping an
+  alert (`<p>intro</p><ul><li>…</li></ul>`) and `col-md-3 col-12
+  paddingL` wrapping `<img>`. Bullets-only and image-only tables retain
+  their existing single-column behaviour (verified by regression
+  cases).
+- iStockPhoto URLs (matching `https://www.istockphoto.com/<type>/<slug>-gm<ID>-<variantID>`)
+  are normalised to `src="images/iStock-<ID>.jpg"` via the digits
+  immediately following `-gm`. `alt=""` stays empty — no alt text is
+  fabricated from the iStock id or the URL.
+
+**Final pass/total:** 648/648 tests passing (up from 631 — 17 new
+`it()` cases across two files; four existing `lmsCompliance` cases
+updated in place to match the new iStock src contract; no
+regressions).
+
+
+---
+
 [← Back to index](../CLAUDE.md)
