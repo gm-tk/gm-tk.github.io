@@ -150,8 +150,11 @@ class InteractivePlaceholderRenderer {
         var previewHtml = this._generateContentPreview(dataPattern, tableData, numberedItems, type);
         lines.push(previewHtml);
 
-        // Writer instructions (legacy — extracted by _extractData)
-        if (writerInstructions && writerInstructions.length > 0) {
+        // Writer instructions (legacy — extracted by _extractData).
+        // Suppressed for dropdown_quiz_paragraph; the raw-content fallback
+        // above replaces the legacy empty `Writer note: .` artifacts.
+        if (writerInstructions && writerInstructions.length > 0 &&
+            type !== 'dropdown_quiz_paragraph') {
             for (var wi = 0; wi < writerInstructions.length; wi++) {
                 lines.push('        <p style="color: #666; font-style: italic; margin-top: 8px;">Writer note: ' +
                     this._escContent(writerInstructions[wi]) + '</p>');
@@ -306,10 +309,34 @@ class InteractivePlaceholderRenderer {
     _generateContentPreview(dataPattern, tableData, numberedItems, type) {
         var lines = [];
 
-        // Dropdown quiz paragraph: show story text + table together
-        if (type === 'dropdown_quiz_paragraph' && numberedItems && numberedItems.length > 0) {
-            // Delegate to the numbered items branch which handles pattern 4 + tableData
-            // Fall through intentionally (skip the tableData-only branch)
+        // Dropdown quiz paragraph — raw-content preservation fallback.
+        // Structured <div class="dropQuiz" layout="paragraph"> not yet built;
+        // surface captured story heading + prose paragraphs (with inline
+        // [Dropdown N] markers visible) + options table verbatim.
+        if (type === 'dropdown_quiz_paragraph') {
+            for (var dqpi = 0; dqpi < (numberedItems || []).length; dqpi++) {
+                var dqpItem = numberedItems[dqpi];
+                if (dqpItem.tag === 'story_heading') {
+                    lines.push('        <p><strong>Story heading:</strong> <em>' +
+                        this._escContent(dqpItem.content) + '</em></p>');
+                } else {
+                    lines.push('        <p>' + this._escContent(dqpItem.content) + '</p>');
+                }
+            }
+            if (tableData) {
+                var dqpRows = (tableData.headers && tableData.headers.length > 0 ?
+                    [tableData.headers] : []).concat(tableData.rows || []);
+                lines.push('        <table style="width:100%; border-collapse: collapse; font-size: 0.85em; margin-top: 6px;">');
+                for (var dqpr = 0; dqpr < dqpRows.length; dqpr++) {
+                    lines.push('          <tr>');
+                    for (var dqpc = 0; dqpc < dqpRows[dqpr].length; dqpc++) {
+                        lines.push('            <td style="border:1px solid #ccc; padding:4px;">' +
+                            this._escContent(dqpRows[dqpr][dqpc]) + '</td>');
+                    }
+                    lines.push('          </tr>');
+                }
+                lines.push('        </table>');
+            }
         } else if (tableData) {
             // Table-based data patterns (1, 2, 3, 8, 10, 11, 12, 13)
             var dims = tableData.dimensions || 'unknown';
@@ -353,55 +380,9 @@ class InteractivePlaceholderRenderer {
             }
             lines.push('        </table>');
         } else if (numberedItems && numberedItems.length > 0) {
-            // Numbered items patterns (4, 5, 6, 7, 9)
-            // Dropdown quiz paragraph (Pattern 4) — special compound preview
-            if (dataPattern === 4 && type === 'dropdown_quiz_paragraph') {
-                var dqpDropdowns = 0;
-                for (var di = 0; di < numberedItems.length; di++) {
-                    var dItem = numberedItems[di];
-                    var ddMatches = (dItem.content || '').match(/\[(?:drop\s*down|dropdown)\s*\d+\]/gi);
-                    if (ddMatches) dqpDropdowns += ddMatches.length;
-                }
-                lines.push('        <p><em>Data: Dropdown Quiz Paragraph (' + dqpDropdowns + ' dropdowns)</em></p>');
-                for (var dpi = 0; dpi < numberedItems.length; dpi++) {
-                    var dpItem = numberedItems[dpi];
-                    if (dpItem.tag === 'story_heading') {
-                        lines.push('        <p><strong>Title:</strong> <em>' +
-                            this._escContent(dpItem.content) + '</em></p>');
-                    } else {
-                        // Render story paragraph with [Dropdown N] markers bolded
-                        var storyText = this._escContent(dpItem.content);
-                        storyText = storyText.replace(/\[(?:drop\s*down|dropdown)\s*(\d+)\]/gi,
-                            '<strong>[Dropdown $1]</strong>');
-                        lines.push('        <p>' + storyText + '</p>');
-                    }
-                }
-                // Also show table data if available
-                if (tableData) {
-                    lines.push('        <hr style="margin: 8px 0; border-color: #ddd;" />');
-                    lines.push('        <p><em>Dropdown options:</em></p>');
-                    lines.push('        <table style="width:100%; border-collapse: collapse; font-size: 0.85em;">');
-                    if (tableData.headers && tableData.headers.length > 0) {
-                        lines.push('          <tr>');
-                        for (var dh = 0; dh < tableData.headers.length; dh++) {
-                            lines.push('            <td style="border:1px solid #ccc; padding:4px; font-weight:bold;">' +
-                                this._escContent(tableData.headers[dh]) + '</td>');
-                        }
-                        lines.push('          </tr>');
-                    }
-                    if (tableData.rows) {
-                        for (var dr = 0; dr < tableData.rows.length; dr++) {
-                            lines.push('          <tr>');
-                            for (var dc = 0; dc < tableData.rows[dr].length; dc++) {
-                                lines.push('            <td style="border:1px solid #ccc; padding:4px;">' +
-                                    this._escContent(tableData.rows[dr][dc]) + '</td>');
-                            }
-                            lines.push('          </tr>');
-                        }
-                    }
-                    lines.push('        </table>');
-                }
-            } else if (dataPattern === 9) {
+            // Numbered items patterns (5, 6, 7, 9). Pattern 4
+            // (dropdown_quiz_paragraph) is handled by the top-level branch.
+            if (dataPattern === 9) {
                 lines.push('        <p><em>Data: Conversation layout (' + numberedItems.length + ' entries)</em></p>');
                 lines.push('        <table style="width:100%; border-collapse: collapse; font-size: 0.85em; margin-top: 6px;">');
                 for (var ci = 0; ci < numberedItems.length; ci++) {
