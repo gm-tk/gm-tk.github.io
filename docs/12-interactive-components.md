@@ -570,4 +570,39 @@ preserved by alternative assertions.
 
 ---
 
+### Dropdown quiz paragraph — raw-content preservation fallback
+
+The `dropdown_quiz_paragraph` subtype (raw template marker `[multi choice dropdown quiz paragraph]`) was silently losing all source content during conversion. The data extractor correctly captured the `[story heading]` element, the prose paragraphs with inline `[Dropdown N]` markers, and the options table (into `numberedItems` + `tableData`), but the renderer's first if-branch in `_generateContentPreview` matched the subtype and exited the if/elif chain with an empty body — producing a placeholder body that contained only legacy `<p>Writer note: .</p>` artifacts and no source content.
+
+Until a structured `<div class="dropQuiz" layout="paragraph">` rendering exists, the placeholder body now falls back to surfacing the captured source verbatim:
+
+- `[story heading]` element → `<p><strong>Story heading:</strong> <em>...</em></p>`
+- Each prose paragraph → `<p>...</p>` with the inline `[Dropdown N]` marker preserved verbatim (no bolding, no rephrasing)
+- Options table → literal HTML `<table>` with every captured row/header cell
+
+The legacy `<p>Writer note: ...</p>` emission for the legacy `_extractData`-supplied `writerInstructions` is suppressed for `type === 'dropdown_quiz_paragraph'` only; all other interactive subtypes preserve their existing writer-note rendering byte-for-byte. The now-unreachable inner `dataPattern === 4 && type === 'dropdown_quiz_paragraph'` branch inside the `numberedItems` else-if was removed since the new top-level branch catches every dropdown_quiz_paragraph case.
+
+**Files touched (before → after line counts):**
+
+| File | Before | After |
+|---|---|---|
+| `js/interactive-placeholder-renderer.js` | 477 | 458 |
+| `tests/dropdown-quiz-paragraph-preservation.test.js` | (new) | 187 |
+
+**New test file:** `tests/dropdown-quiz-paragraph-preservation.test.js` — 7 `it()` cases, all passing:
+
+1. Detects `dropdown_quiz_paragraph` subtype + emits placeholder with subtype label and activity number
+2. Preserves the `[story heading]` content inside the placeholder body
+3. Preserves all five prose paragraphs with inline `[Dropdown N]` markers visible verbatim
+4. Preserves all five options-table columns with all three options per column intact (15 option strings)
+5. Does NOT emit any `Writer note: .` empty entries for this subtype
+6. Surrounding content is not swallowed: `[end of activity]`, `[body]`, and the post-activity paragraph all render outside the placeholder
+7. Non-paragraph interactive elsewhere in the same fixture (a sibling `flip_card`) still produces its expected child-block output
+
+**Final test count:** 671/671 passing (baseline 664/664 + 7 new tests).
+
+**Invariant locked in by this change:** when a `dropdown_quiz_paragraph` interactive cannot be rendered into its structured `<div class="dropQuiz" layout="paragraph">` form, the placeholder body must contain the raw source content (story heading + prose paragraphs with inline `[Dropdown N]` markers + complete options table). Empty `Writer note: .` lines must never replace real source content.
+
+---
+
 [← Back to index](../CLAUDE.md)
