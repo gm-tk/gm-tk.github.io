@@ -17,6 +17,7 @@ class HtmlConverterBlockRenderer {
         this._escContent = escContent;
         this._escAttr = escAttr;
         this._coreRef = coreRef;
+        this._glossary = new InteractiveGlossary(tagNormaliser, coreRef);
     }
 
     _renderBlocks(processedBlocks, config, pageData, rawBlocks) {
@@ -320,6 +321,26 @@ class HtmlConverterBlockRenderer {
                     continue;
                 }
                 // Fall through to interactive handler if extraction fails
+            }
+
+            // --- Glossary rendering ---
+            if (tagName === 'glossary' && category === 'interactive') {
+                flushPending();
+                activityHasInteractive = true;
+                var glHtml = self._glossary.render(processedBlocks, i, rawBlocks, procToRawMap);
+                if (glHtml) {
+                    if (inActivity) {
+                        activityParts.push(glHtml.html);
+                    } else {
+                        htmlParts.push(glHtml.html);
+                    }
+                    for (var glci = 0; glci < glHtml.consumedRawIndices.length; glci++) {
+                        consumedRawIndices[glHtml.consumedRawIndices[glci]] = true;
+                    }
+                    i++;
+                    continue;
+                }
+                // Fall through to generic interactive handler if no entries found
             }
 
             // --- Hintslider rendering (Tier 1) ---

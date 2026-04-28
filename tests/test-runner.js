@@ -125,6 +125,7 @@ loadScript('js/interactive-extractor.js');
 loadScript('js/html-converter-block-processor.js');
 loadScript('js/html-converter-content-helpers.js');
 loadScript('js/html-converter-renderers.js');
+loadScript('js/interactive-glossary.js');
 loadScript('js/html-converter-block-renderer.js');
 loadScript('js/html-converter-module-menu.js');
 loadScript('js/html-converter-lesson-menu.js');

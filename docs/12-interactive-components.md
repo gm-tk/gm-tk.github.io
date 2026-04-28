@@ -605,4 +605,155 @@ The legacy `<p>Writer note: ...</p>` emission for the legacy `_extractData`-supp
 
 ---
 
+### Glossary interactive — structured renderer + boundary capture
+
+The `[glossary]` interactive was previously broken in two ways: (a) the
+boundary walker (`InteractiveDataExtractor._consumeInteractiveBoundary`)
+excluded the consecutive `Term – Meaning` entry paragraphs because they
+carry no tag and the walker's default for tagless paragraphs is to
+*close* the boundary — so the entries escaped as orphan `<p>` tags after
+the placeholder; and (b) no dedicated renderer existed, so only the
+generic red-dashed placeholder div was emitted. This session fixes both
+by adding a glossary-specific structured renderer that mirrors the
+hint_slider / flip_card pattern (renderer dispatched in the
+`block-renderer` BEFORE the generic interactive handler — when it
+returns non-null its `consumedRawIndices` are added to the per-page
+consumed-set so the entry paragraphs are skipped during body rendering).
+
+**Files touched (before → after line counts):**
+
+| File | Before | After |
+|------|--------|-------|
+| `js/interactive-glossary.js` | (new) | 159 |
+| `js/html-converter-block-renderer.js` | 1211 | 1232 |
+| `index.html` | (1 added `<script>` tag) | (+1 line) |
+| `tests/test-runner.js` | (1 added `loadScript` call) | (+1 line) |
+| `docs/12-interactive-components.md` | 608 | (this update) |
+
+`js/interactive-glossary.js` is a new sibling sub-module sitting inside
+the ≤500-line sub-module hygiene threshold. The host file
+`html-converter-block-renderer.js` was already above the ≤500 threshold
+before this session (1211 lines, flagged in docs/29) — the 21-line
+glossary dispatch branch matches the existing hint_slider / flip_card
+branch shape and does not introduce new hygiene debt of its own. No
+other source file was touched.
+
+**`js/interactive-glossary.js`** — new `class InteractiveGlossary`
+(constructor `(normaliser, coreRef)`) exposing two methods:
+
+- `render(processedBlocks, tagIndex, rawBlocks, procToRawMap)` — walks
+  `rawBlocks` from `procToRawMap[tagIndex] + 1`, capturing consecutive
+  paragraph blocks whose primary tag is `null` and whose cleaned text
+  contains a U+2013 en-dash. Stops at any block whose primary tag is
+  non-null (heading, interactive, structural, styling, body, media,
+  link, activity), at any non-paragraph block, or at any paragraph
+  whose text lacks the separator. Returns
+  `{ html, consumedRawIndices }` when ≥ 1 entry was captured, or `null`
+  otherwise (so the caller falls through to the generic interactive
+  placeholder path).
+- `_parseEntry(text)` — splits the entry text on the FIRST en-dash
+  (U+2013), trims surrounding whitespace, and returns
+  `{ term, meaning }`. Parenthetical abbreviations in the term (e.g.
+  `Generative AI (Gen AI)`, `Large language model (LLM)`) are preserved
+  verbatim — parentheses are never part of the separator.
+
+The emitted HTML matches the canonical structure exactly:
+
+```html
+<div class="row">
+  <div class="col-md-8 col-12">
+    <div class="alert">
+      <div class="row">
+        <div class="col-12">
+          <h4>Glossary</h4>
+          <div class="table-responsive">
+            <table class="table table-fixed">
+              <tr class="title-g">
+                <th>Term</th>
+                <th>Meaning</th>
+              </tr>
+              <tbody>
+                <tr><td>{term}</td><td>{meaning}</td></tr>
+                <!-- one <tr> per glossary entry -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+The `<tr class="title-g">` header row deliberately sits OUTSIDE the
+`<tbody>` — no `<thead>` is emitted, matching the canonical reference
+in the issue.
+
+**`js/html-converter-block-renderer.js`** — the constructor now
+instantiates `this._glossary = new InteractiveGlossary(tagNormaliser,
+coreRef)`. A new dispatch branch added before the existing hint_slider
+branch checks for `tagName === 'glossary' && category === 'interactive'`,
+calls `self._glossary.render(...)`, pushes the rendered HTML directly
+(no `_wrapInRow` — the canonical structure already includes the outer
+`<div class="row">`), marks every entry's raw-block index in
+`consumedRawIndices`, and `i++; continue;`s past the tag. When the
+renderer returns `null` (e.g. an empty `[glossary]` with no following
+entries), control falls through to the generic interactive handler so
+the placeholder is still emitted.
+
+**`index.html` / `tests/test-runner.js`** — `interactive-glossary.js` is
+loaded immediately after `html-converter-renderers.js` and BEFORE
+`html-converter-block-renderer.js` (which depends on
+`InteractiveGlossary` in its constructor). Confirmed in both files via
+`grep -n interactive-glossary index.html tests/test-runner.js`.
+
+**New test file:**
+
+| File | `it()` cases |
+|------|-------------|
+| `tests/interactive-glossary.test.js` | 11 |
+
+Cases covered: (1) all 5 consecutive entry rows captured / consumed
+after `[glossary]` for the canonical fixture; (2) integration —
+`convertPage` emits the glossary table and no trailing `<p>Algorithm
+–…</p>` orphan, with the red-dashed placeholder div absent; (3)
+boundary terminates at a following `[H3] Types of AI` heading without
+swallowing it into the glossary; (4) `_parseEntry` splits on the FIRST
+en-dash; (5) `_parseEntry` returns null when the separator is absent;
+(6) parenthetical abbreviations (`Generative AI (Gen AI)`,
+`Large language model (LLM)`) are preserved verbatim in both the
+parser output and the rendered HTML; (7) exactly one outer
+`<div class="row">` wrapper precedes the `alert` wrapper; (8) the
+emitted table has `<tr class="title-g">` outside `<tbody>`, no
+`<thead>`, and exactly 5 `<tr>` rows inside `<tbody>` for the canonical
+fixture; (9) structural equivalence — every canonical anchor (12 tag /
+class strings) and every Term/Meaning text pair (5 entries) is present;
+(10) two separate `[glossary]` markers on one page each render their
+own independent table; (11) an empty `[glossary]` (marker with no
+following entries) falls through to the generic placeholder gracefully.
+
+**Final pass/total:** 682/682 tests passing (up from 671 — 11 new
+`it()` cases; no regressions).
+
+**Invariants locked in by this session:**
+
+- The `[glossary]` interactive emits the canonical 6-level wrapper
+  (`row > col-md-8 col-12 > alert > row > col-12 > h4 + table-responsive
+  > table.table-fixed`) — no `<thead>`, header row sits outside
+  `<tbody>`.
+- Entry parsing splits on the FIRST en-dash (U+2013) and preserves
+  parenthetical abbreviations in the term verbatim.
+- Boundary capture terminates at the next interactive marker, the next
+  heading (H2/H3/H4), the next paragraph that does not contain the
+  en-dash separator, or the next non-paragraph block.
+- The dashed-red-border placeholder shell is never emitted for a
+  `[glossary]` that has at least one valid entry.
+- Multiple `[glossary]` markers on one page are independent — each
+  consumes only its own entry paragraphs.
+- An empty `[glossary]` (no following entries) falls through cleanly to
+  the generic interactive placeholder path so the marker is never
+  silently dropped.
+
+---
+
 [← Back to index](../CLAUDE.md)
