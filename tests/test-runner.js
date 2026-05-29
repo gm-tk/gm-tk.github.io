@@ -130,6 +130,7 @@ loadScript('js/html-converter-block-renderer.js');
 loadScript('js/html-converter-module-menu.js');
 loadScript('js/html-converter-lesson-menu.js');
 loadScript('js/html-converter.js');
+loadScript('js/media-list-converter.js');
 loadScript('js/mode-toggle.js');
 
 // Load test files
