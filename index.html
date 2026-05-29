@@ -33,8 +33,75 @@
             <span id="error-message"></span>
         </div>
 
-        <!-- Upload Section -->
-        <section id="upload-section" aria-label="Upload a document">
+        <!-- Top-level mode toggle (above both front pages) -->
+        <div id="mode-toggle" class="mode-toggle" role="radiogroup" aria-label="PageForge mode">
+            <span class="mode-toggle-label">Mode</span>
+            <div class="mode-toggle-options">
+                <input type="radio" name="pageforge-mode" id="mode-option-module"
+                       class="mode-toggle-input sr-only" value="module" checked>
+                <label for="mode-option-module" class="mode-toggle-btn">Module Development</label>
+                <input type="radio" name="pageforge-mode" id="mode-option-standard"
+                       class="mode-toggle-input sr-only" value="standard">
+                <label for="mode-option-standard" class="mode-toggle-btn">Standard</label>
+            </div>
+        </div>
+
+        <!-- Module Development Front Page (default) -->
+        <section id="module-dev-section" aria-label="Module development">
+            <p class="module-dev-intro">
+                Upload a Writer&rsquo;s Template and/or a Media List. Both are optional &mdash;
+                provide at least one to activate.
+            </p>
+            <div class="module-upload-grid">
+
+                <!-- Writer's Template slot -->
+                <div class="module-upload-slot">
+                    <h2 class="module-slot-title">Writer&rsquo;s Template</h2>
+                    <div id="module-template-drop"
+                         class="drop-zone module-drop"
+                         role="button"
+                         tabindex="0"
+                         aria-label="Drop the Writer's Template .docx here or click to browse">
+                        <span class="drop-zone-icon" aria-hidden="true">&#128196;</span>
+                        <p class="drop-zone-title">Drop Writer&rsquo;s Template .docx or click to browse</p>
+                        <p class="drop-zone-hint">Optional</p>
+                    </div>
+                    <input type="file" id="module-template-input" accept=".docx" class="sr-only" aria-hidden="true">
+                    <div id="module-template-info" class="staged-file-info hidden">
+                        <span class="staged-file-icon" aria-hidden="true">&#128196;</span>
+                        <span id="module-template-name" class="staged-file-name"></span>
+                    </div>
+                </div>
+
+                <!-- Media List slot -->
+                <div class="module-upload-slot">
+                    <h2 class="module-slot-title">Media List</h2>
+                    <div id="module-media-drop"
+                         class="drop-zone module-drop"
+                         role="button"
+                         tabindex="0"
+                         aria-label="Drop the Media List .docx here or click to browse">
+                        <span class="drop-zone-icon" aria-hidden="true">&#128450;</span>
+                        <p class="drop-zone-title">Drop Media List .docx or click to browse</p>
+                        <p class="drop-zone-hint">Optional</p>
+                    </div>
+                    <input type="file" id="module-media-input" accept=".docx" class="sr-only" aria-hidden="true">
+                    <div id="module-media-info" class="staged-file-info hidden">
+                        <span class="staged-file-icon" aria-hidden="true">&#128450;</span>
+                        <span id="module-media-name" class="staged-file-name"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <button id="btn-module-activate" class="btn btn-convert" type="button" disabled
+                    aria-label="Activate module development conversion">
+                Activate
+            </button>
+        </section>
+
+        <!-- Standard Front Page (existing functionality) -->
+        <section id="upload-section" class="hidden" aria-label="Upload a document">
             <div id="drop-zone"
                  class="drop-zone"
                  role="button"
@@ -177,6 +244,7 @@
     <script src="js/html-converter.js"></script>
     <script src="js/output-manager.js"></script>
     <script src="js/debug-panel-renderer.js"></script>
+    <script src="js/mode-toggle.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
