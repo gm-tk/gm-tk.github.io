@@ -116,6 +116,109 @@ main {
     display: none !important;
 }
 
+/* ---------- Mode Toggle ---------- */
+
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 0 0.5rem;
+}
+
+.mode-toggle-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.mode-toggle-options {
+    display: inline-flex;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    padding: 3px;
+    box-shadow: var(--shadow-sm);
+}
+
+.mode-toggle-btn {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    border-radius: calc(var(--radius) - 3px);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.mode-toggle-btn:hover {
+    color: var(--color-text);
+}
+
+.mode-toggle-input:checked + .mode-toggle-btn {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.mode-toggle-input:focus-visible + .mode-toggle-btn {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ---------- Module Development Front Page ---------- */
+
+#module-dev-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 0 2rem;
+}
+
+.module-dev-intro {
+    max-width: 720px;
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.module-upload-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+.module-upload-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.module-slot-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.module-drop {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+}
+
+@media (max-width: 720px) {
+    .module-upload-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ---------- Upload Section ---------- */
 
 #upload-section {
