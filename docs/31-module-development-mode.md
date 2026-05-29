@@ -150,4 +150,124 @@ disabled sync via a minimal mock:
 
 ---
 
+### Session 2 — Conversion Logic Behind Activate
+
+**Status:** DONE — Session 2 of 3. 712/712 tests pass (697 baseline → 712, +15
+across two new test files). Still **no** results/download page (Session 3).
+
+#### Overview
+
+The Session 1 `handleModuleConversion()` stub is replaced with a real
+implementation. On **Activate** it converts whichever of the two optional files
+are staged and stores **one output per uploaded slot** on
+`ModeToggle.moduleOutputs` (the new in-memory app-state field Session 3's
+results page will read). It deliberately does **not** build the results/download
+page.
+
+- **Writer's Template** — reuses the existing writer's-template pipeline
+  **exactly as-is**, with the intro-skip **not** re-implemented:
+  `DocxParser.parse()` runs the `[TITLE BAR]` boundary detection in
+  `_findContentStart()` (discarding the leading generic statements + submission
+  checklists), then `OutputFormatter.formatAll()` emits from `contentStartIndex`.
+  The module-mode template path therefore produces the **same plain-text output
+  format** the Standard pipeline already produces (`formatAll().full`) — it does
+  **not** run the phase/template/HTML conversion that Standard mode layers on top.
+- **Media List** — a new **straight full conversion** in the
+  single-responsibility sub-module `js/media-list-converter.js`. It reuses the
+  shared `DocxParser` for `.docx` reading (no re-implementation) and the shared
+  `OutputFormatter` for the output format, but **always starts at block 0** —
+  **no** `[TITLE BAR]` / page-section skipping and **no** phase/template
+  processing of any kind.
+
+#### Existing pipeline located (Step 1 record)
+
+| Concern | Symbol | File |
+|---------|--------|------|
+| Conversion orchestration | `App.convertDocument()` | `js/app.js:335` |
+| Shared docx reader | `DocxParser.parse()` (`JSZip.loadAsync`) | `js/docx-parser.js:75` |
+| Intro-skip boundary detection | `DocxParser._findContentStart()` (finds `[TITLE BAR]`) | `js/docx-parser.js:695` |
+| Intro-skip discard | `OutputFormatter.formatContent(content, startIndex, …)` from `contentStartIndex` | `js/formatter.js:70` |
+| Output text format | `OutputFormatter.formatAll()` → `{full, metadataOnly, contentOnly}` | `js/formatter.js:15` |
+
+The Writer's Template path calls `parse()` + `formatAll()` verbatim; the skip is
+inherited, never duplicated.
+
+#### Design — headless-testable async
+
+`.docx` parsing is async, but the Node runner has no DOM/JSZip (and never loads
+`DocxParser`). Both `MediaListConverter.convert()` and
+`ModeToggle.handleModuleConversion()` use a tiny maybe-promise resolver
+(`ModeToggle._resolveMaybe`): when the injected parser is synchronous (tests),
+the whole flow returns the output array **directly**; in the browser the real
+`DocxParser.parse()` returns a Promise and the flow returns a Promise. The
+formatting core, `MediaListConverter.convertParsedResult()`, is a **pure
+synchronous** function over an already-parsed result, exercised directly against
+the real (loaded) `OutputFormatter`. Conversion dependencies (`parser`,
+`formatter`, `mediaListConverter`) are **constructor-injected** on `ModeToggle`,
+defaulting lazily to the browser globals.
+
+`convertParsedResult()` emits the **same envelope** as `formatAll()` —
+`formatMetadata()` + `\n` + `_stripEmptyRedText(formatContent(content, 0, true))`
+— so when nothing is skipped its output is **byte-identical** to the writer
+pipeline (locked by a test).
+
+#### Output state contract
+
+`ModeToggle.moduleOutputs` — `null` until a non-no-op Activate, then an array of
+one entry per uploaded slot:
+`{ source: 'template' | 'mediaList', filename, content }`. Filenames derive from
+the input stem (sans `.docx`): template → `<stem>_parsed.txt`, media list →
+`<stem>_media_list.txt`.
+
+#### Files touched
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `js/media-list-converter.js` | — (new) | 108 | New `MediaListConverter` — straight full-document conversion reusing `DocxParser` + `OutputFormatter`; pure sync `convertParsedResult()` core; async-or-sync `convert()`. |
+| `js/mode-toggle.js` | 388 | 498 | Real `handleModuleConversion()` + `_convertSlot` / `_finishConversion` / `_deriveFilename` / lazy `_get*` accessors + static `_resolveMaybe`; injectable `parser`/`formatter`/`mediaListConverter`; new `moduleOutputs` state field. (≤500 sub-module ceiling.) |
+| `index.html` | 250 | 251 | `<script src="js/media-list-converter.js">` added **before** `js/mode-toggle.js`. |
+| `tests/test-runner.js` | 162 | 163 | `loadScript('js/media-list-converter.js')` added **before** `js/mode-toggle.js`. |
+| `tests/media-list-converter.test.js` | — (new) | 172 | **8** `it()` cases (see below). |
+| `tests/module-conversion-flow.test.js` | — (new) | 183 | **7** `it()` cases (see below). |
+
+`js/app.js` and the entire Standard-mode flow are **untouched**.
+
+#### Test coverage
+
+`tests/media-list-converter.test.js` (**8** `it()`):
+1. `convert()` reuses the injected DocxParser and converts the whole document;
+2. does **not** skip leading pages/sections (contrast: the writer pipeline does);
+3. output is **byte-identical** to the writer converter when nothing is skipped (red/bold/table markers present);
+4. multi-section list content preserved in document order;
+5. **no** phase/template/HTML processing (no `<div>`, `class="…"`, doctype, tags);
+6. single-entry media list handled;
+7. empty document handled gracefully;
+8. malformed input (`null` / `{}` / non-array content) handled gracefully.
+
+`tests/module-conversion-flow.test.js` (**7** `it()`):
+1. template-only → exactly **one** output (media converter not invoked);
+2. media-list-only → exactly **one** output (template parser not invoked);
+3. both → exactly **two** outputs (`['template','mediaList']` order);
+4. the writer's template path **invokes the existing intro-skipping function** (`_findContentStart` + `formatAll`; leading checklist discarded, body retained);
+5. converted outputs **written to `moduleOutputs`** (null before; holds the returned array after);
+6. Activate with **no files is a no-op** (`[]`; no converter calls; state stays null);
+7. **sensible filenames** (`ENGS301_parsed.txt`, `MediaList_media_list.txt`).
+
+#### Invariants locked in
+
+1. **Template reuses the existing skip** — module-mode template conversion calls `DocxParser.parse()` (→ `_findContentStart` `[TITLE BAR]` detection) + `OutputFormatter.formatAll()` (→ `formatContent` from `contentStartIndex`); the skip is never re-implemented.
+2. **Media List never skips** — `convertParsedResult()` always starts at block 0.
+3. **Format parity** — with nothing skipped, `MediaListConverter` output equals the writer pipeline's `formatAll().full` byte-for-byte.
+4. **No phase/template processing on either module-mode path** — both emit plain text only; HTML conversion stays Standard-mode-only.
+5. **One output per uploaded input** — 1 or 2 entries on `ModeToggle.moduleOutputs`.
+6. **No-op on empty** — Activate with zero files returns `[]` and leaves `moduleOutputs` null.
+7. **Headless-testable async** — synchronous injected parser ⇒ synchronous return; browser ⇒ Promise.
+
+#### Notes for Session 3
+
+- Read `window.pageForgeMode.moduleOutputs` (array of `{source, filename, content}`) to render the results/download page; one entry per uploaded slot.
+- The outputs are plain text in the existing converter format; download as `.txt` (e.g. via the existing `OutputManager` download patterns).
+
+---
+
 [← Back to index](../CLAUDE.md)

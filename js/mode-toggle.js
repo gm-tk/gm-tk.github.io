@@ -51,6 +51,21 @@ class ModeToggle {
 
         this._document = options.document || null;
 
+        // Conversion dependencies — constructor-injected so the conversion flow
+        // is headless-testable; each defaults to the corresponding browser
+        // global (lazily, via the _get* accessors) when omitted.
+        this._parser = options.parser || null;
+        this._formatter = options.formatter || null;
+        this._mediaListConverter = options.mediaListConverter || null;
+
+        /**
+         * Converted output files for the Session 3 results page to consume. Each
+         * entry is { source, filename, content }; one per uploaded slot. Stays
+         * null until Activate runs a (non-no-op) conversion.
+         * @type {?Array<{source: string, filename: string, content: string}>}
+         */
+        this.moduleOutputs = null;
+
         if (this._document && options.autoInit !== false) {
             this.init();
         }
@@ -192,18 +207,104 @@ class ModeToggle {
     }
 
     // ------------------------------------------------------------------
-    // Conversion entry point (STUB — Session 2)
+    // Conversion entry point (Session 2)
     // ------------------------------------------------------------------
 
     /**
-     * Activate-button handler for Module Development mode.
-     *
-     * Intentionally a no-op in Session 1: the mode shell is established here,
-     * but the conversion pipeline (parsing the Writer's Template and/or Media
-     * List, generating output) is out of scope for this session.
+     * Activate handler: convert whichever of the two optional files are staged
+     * and store one output per slot on `this.moduleOutputs` for Session 3.
+     *   • Writer's Template → the existing pipeline as-is (intro-skip NOT
+     *     re-implemented): DocxParser.parse() runs the [TITLE BAR]
+     *     _findContentStart boundary detection (discarding the leading generic
+     *     statements + checklists), then OutputFormatter.formatAll() emits from
+     *     contentStartIndex. See docs/31 for the full rationale.
+     *   • Media List → MediaListConverter: straight full conversion, no skipping,
+     *     no phase/template processing.
+     * Returns a Promise (browser, async parse) or the output array directly
+     * (sync test parser). No files staged → no-op: returns [], state stays null.
+     * @returns {(Array|Promise<Array>)}
      */
     handleModuleConversion() {
-        // TODO(Session 2): implement conversion
+        if (!this.isActivateEnabled()) {
+            return []; // no files staged → no-op
+        }
+        var self = this;
+        var slots = [];
+        if (this.hasUpload('template')) { slots.push('template'); }
+        if (this.hasUpload('mediaList')) { slots.push('mediaList'); }
+
+        var results = slots.map(function (slot) { return self._convertSlot(slot); });
+        if (results.some(function (r) { return r && typeof r.then === 'function'; })) {
+            return Promise.all(results).then(function (outs) { return self._finishConversion(outs); });
+        }
+        return self._finishConversion(results);
+    }
+
+    /**
+     * Convert one staged slot to an output descriptor { source, filename,
+     * content }. Returns the descriptor directly, or a Promise of it when the
+     * underlying parser is asynchronous (browser).
+     * @param {string} slot - 'template' | 'mediaList'
+     */
+    _convertSlot(slot) {
+        var self = this;
+        var file = this.uploads[slot];
+        if (slot === 'template') {
+            // Reuse the existing writer's-template pipeline; the intro-skip lives
+            // inside parse() (_findContentStart) + formatAll() (contentStartIndex).
+            return ModeToggle._resolveMaybe(this._getParser().parse(file), function (result) {
+                return {
+                    source: 'template',
+                    filename: self._deriveFilename(file, '_parsed.txt'),
+                    content: self._getFormatter().formatAll(result).full
+                };
+            });
+        }
+        return ModeToggle._resolveMaybe(this._getMediaListConverter().convert(file), function (text) {
+            return {
+                source: 'mediaList',
+                filename: self._deriveFilename(file, '_media_list.txt'),
+                content: text
+            };
+        });
+    }
+
+    /** Persist the converted outputs to app state and return them. */
+    _finishConversion(outputs) {
+        this.moduleOutputs = outputs;
+        return outputs;
+    }
+
+    /**
+     * Derive a sensible output filename: the input stem (sans a trailing .docx,
+     * case-insensitive) + the given suffix, with a safe fallback when the file
+     * has no usable name. e.g. "ENGS301.docx" + "_parsed.txt" → "ENGS301_parsed.txt".
+     */
+    _deriveFilename(file, suffix) {
+        var stem = ((file && file.name) ? String(file.name) : '').replace(/\.docx$/i, '').trim();
+        if (!stem) { stem = (suffix.indexOf('media') !== -1) ? 'media-list' : 'writer-template'; }
+        return stem + suffix;
+    }
+
+    // ------------------------------------------------------------------
+    // Lazy dependency accessors — injected instance wins, else browser global.
+    // ------------------------------------------------------------------
+
+    _getParser() {
+        if (!this._parser && typeof DocxParser !== 'undefined') { this._parser = new DocxParser(); }
+        return this._parser;
+    }
+
+    _getFormatter() {
+        if (!this._formatter && typeof OutputFormatter !== 'undefined') { this._formatter = new OutputFormatter(); }
+        return this._formatter;
+    }
+
+    _getMediaListConverter() {
+        if (!this._mediaListConverter && typeof MediaListConverter !== 'undefined') {
+            this._mediaListConverter = new MediaListConverter();
+        }
+        return this._mediaListConverter;
     }
 
     // ------------------------------------------------------------------
@@ -375,6 +476,15 @@ ModeToggle.CONTROL_MANIFEST = {
         { id: 'template-dropdown', kind: 'selector' },
         { id: 'btn-convert', kind: 'button' }
     ]
+};
+
+/**
+ * Resolve a value that may be a Promise (browser, async .docx parsing) or a
+ * plain value (headless tests with a synchronous parser). Keeps the conversion
+ * flow synchronously testable while remaining fully async in the browser.
+ */
+ModeToggle._resolveMaybe = function (value, fn) {
+    return (value && typeof value.then === 'function') ? value.then(fn) : fn(value);
 };
 
 // Browser bootstrap — skipped under the DOM-less Node test runner.
