@@ -15,9 +15,9 @@
  *
  * This module owns ONLY the mode shell: the toggle, the Module Development
  * front-page state (which files are staged, whether Activate is enabled) and
- * the visibility relationship between the two front pages. It deliberately
- * contains NO conversion logic — handleModuleConversion() is a stub left for
- * Session 2, and there is no results/download page yet (Session 3).
+ * the visibility relationship between the two front pages, and orchestrates the
+ * Activate conversion (Session 2) plus navigation to the results/download
+ * screen (Session 3), each delegated to a dedicated sibling sub-module.
  *
  * Design for testability: the class is a state machine first and a DOM adapter
  * second. All mode/upload state lives in plain properties and pure methods so
@@ -269,9 +269,10 @@ class ModeToggle {
         });
     }
 
-    /** Persist the converted outputs to app state and return them. */
+    /** Persist the converted outputs and navigate to the results screen. */
     _finishConversion(outputs) {
         this.moduleOutputs = outputs;
+        ModuleResultsPage.present(this, outputs);
         return outputs;
     }
 
