@@ -232,30 +232,42 @@ main {
 
 /* ---------- Module Development Results / Download Screen ---------- */
 
-.module-download-all-bar {
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
+/* Lay the converted-file rows and the "Download All" button out as a horizontal
+   row: a narrowed file-list column on the left, the button in the space to its
+   right. Wraps onto two lines on narrow viewports. */
+.module-downloads-row {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* The parsed-files list column — narrower than full width so the Download All
+   button can sit beside it rather than below it. */
+.module-downloads-files {
+    flex: 0 1 480px;
+    min-width: 0;
+}
+
+.module-download-all-bar {
+    display: flex;
+    align-items: flex-start;
 }
 
 /* Collapse the bar entirely when no "Download All" button is rendered
-   (single-file runs) so it leaves no gap above the next-steps panel. */
+   (single-file runs) so it leaves no gap in the row. */
 .module-download-all-bar:empty {
     display: none;
 }
 
 .module-download-all {
-    width: 100%;
-    max-width: 360px;
-    justify-content: center;
+    width: fit-content;
+    align-self: flex-start;
 }
 
 .next-steps-panel {
     width: 100%;
-    max-width: 720px;
-    margin: 0.25rem auto 0;
+    margin: 0.25rem 0 0;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-left: 4px solid var(--color-primary);

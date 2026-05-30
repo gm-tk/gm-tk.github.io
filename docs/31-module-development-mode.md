@@ -712,4 +712,118 @@ Final suite: **745/745 passing** (was 739; +6), 0 failed.
 
 ---
 
+### Conversion-Complete View Refinements — Download Layout, Full-Width Next-Steps & Standardised Filenames
+
+> **Module Development mode only.** Every change below is scoped to the
+> post-conversion "Conversion complete" results view (`#module-results-section`
+> + `ModuleResultsPage` + the Module Development filename generation in
+> `ModeToggle._deriveFilename`). The Standard mode results view
+> (`#results-section`, `App`, the `js/app.js` filenames) is **untouched** —
+> confirmed by grep: `Convert Another Module` / the Module "Download All" live
+> only in the Module Development markup + sub-module, and the **shared**
+> `.file-list-panel` class was NOT edited (only wrapped).
+
+**Status:** DONE. **751/751** tests pass (745 baseline → 751, **+6** across one
+new test file; one existing filename assertion block was re-pointed, not grown).
+
+#### Changes
+
+1. **"Convert Another Module" button removed** (`index.html`). The
+   `#btn-module-back` control and its enclosing `.actions-bar` were deleted from
+   `#module-results-section`. The button was **not** shared markup — Standard
+   mode's reset is the separate `#btn-reset` ("Parse Another File") in
+   `#results-section` — so the removal is inherently scoped to Module
+   Development. `ModuleResultsPage.returnToFrontPage()` / `_bindBack()` /
+   `_bindModeReset()` are **left intact** (they no-op when the element is absent,
+   and `tests/module-results-page.test.js` still exercises them through its own
+   mock document), so no JS or test was removed.
+2. **Horizontal download layout** (`index.html` + `css/styles.css`). The file
+   rows (`#module-results-list`) + empty-state (`#module-results-empty`) are now
+   wrapped in a `.module-downloads-files` column, and that column + the
+   `#module-download-all-bar` sit inside a new `.module-downloads-row` flex row
+   (`display:flex; flex-wrap:wrap; align-items:flex-start; gap:1rem`). The list
+   column is **narrowed** to `flex: 0 1 480px` (narrower than full width) so the
+   "Download All" button sits to its **right** rather than below. The shared
+   `.file-list-panel` class was **not** modified (Standard mode's
+   `#file-list-panel` is unaffected); the narrowing lives on the new wrapper.
+3. **Auto-width "Download All" button** (`css/styles.css`). `.module-download-all`
+   dropped its `width:100%` / `max-width:360px` block-stretch for
+   `width: fit-content; align-self: flex-start` (intrinsic width). The bar
+   (`.module-download-all-bar`) dropped `width:100%` / `max-width:720px` /
+   `margin:0 auto` / `justify-content:center` for a top-aligned flex item; the
+   `:empty { display:none }` collapse for single-file runs is retained.
+4. **Full-width next-steps panel** (`css/styles.css`). `.next-steps-panel`
+   dropped `max-width:720px` and `margin:0.25rem auto 0` (auto-centering) for
+   `width:100%; margin:0.25rem 0 0`, so it now spans the full page content-area
+   width (`<main>` `--max-width:1100px`).
+5. **Emphasised reference phrase** (`js/module-results-page.js`). In
+   `NEXT_STEPS[3]` (list item 4, "Into that new chat, upload all three files…")
+   exactly the trailing phrase **"plus an example completed module to use as a
+   formatting reference"** is wrapped in `<strong>…</strong>` (matching the
+   established inline-emphasis treatment in this panel, alongside `<code>`); the
+   rest of the item is unchanged.
+6. **Standardised download filenames** (`js/mode-toggle.js`). `_deriveFilename`
+   now emits `<MODULE_CODE> <label>_parsed.txt` — the module code being the input
+   filename's **leading token** (any descriptive middle segment, e.g.
+   "AI Digital Citizenship", dropped) and `<label>` being `"Writer's Template"`
+   or `"Media List"`. The Media List suffix is **unified** from `_media_list` to
+   `_parsed`. e.g. `OSAI201 AI Digital Citizenship.docx` →
+   `OSAI201 Writer's Template_parsed.txt` / `OSAI201 Media List_parsed.txt`. The
+   two `_convertSlot` call-sites now pass labels (`"Writer's Template"` /
+   `"Media List"`) instead of suffixes. **Standard mode filenames
+   (`js/app.js`, `code + '_parsed.txt'`) are untouched.**
+
+#### Files touched (before → after line counts)
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `index.html` | 273 | 271 | Removed `#btn-module-back` + its `.actions-bar`; wrapped list/empty + download-all-bar in `.module-downloads-row` › `.module-downloads-files`. |
+| `css/styles.css` | 1116 | 1128 | Added `.module-downloads-row` + `.module-downloads-files`; reworked `.module-download-all-bar` + `.module-download-all` to a right-of-list auto-width button; made `.next-steps-panel` full-width. (CSS has no line ceiling.) |
+| `js/module-results-page.js` | 480 | 480 | Wrapped the trailing reference phrase in `NEXT_STEPS[3]` in `<strong>` (no line-count change). (≤500 sub-module ceiling.) |
+| `js/mode-toggle.js` | 499 | 500 | Rewrote `_deriveFilename` to `<MODULE_CODE> <label>_parsed.txt` (leading-token code, unified `_parsed` suffix); updated both `_convertSlot` call-sites. Consolidated into a single compact method so the file held its 500-line ceiling rather than crossing it. (≤500 sub-module ceiling.) |
+| `tests/module-conversion-flow.test.js` | 183 | 185 | Re-pointed test 7 from the old `ENGS301_parsed.txt` / `MediaList_media_list.txt` to the standardised `OSAI201 Writer's Template_parsed.txt` / `OSAI201 Media List_parsed.txt`. No `it()` count change (still 7). |
+| `tests/module-dev-filenames.test.js` | — (new) | 76 | **6** `it()` cases (see below). |
+
+No new JS module was introduced (the filename change was contained within
+`mode-toggle.js`), so **no** `index.html` `<script>` or `tests/test-runner.js`
+`loadScript` wiring change was needed; the runner auto-discovers `*.test.js`.
+
+#### Test coverage
+
+`tests/module-dev-filenames.test.js` (**6** `it()`, new — drives
+`ModeToggle._deriveFilename` on a headless `new ModeToggle()` instance): Writer's
+Template filename for a given module code → `OSAI201 Writer's Template_parsed.txt`;
+Media List filename for a given module code → `OSAI201 Media List_parsed.txt`;
+both conform to the `^OSAI201 .+_parsed\.txt$` pattern; the descriptive middle
+segment ("AI Digital Citizenship") is dropped; the Media List suffix is `_parsed`
+(never `_media_list`); and a differently-formatted (bare-code) filename
+`ENGS301.docx` still yields the correctly-prefixed `ENGS301 Writer's
+Template_parsed.txt`.
+
+Final suite: **751/751 passing** (was 745; +6), 0 failed.
+
+#### Invariants locked in
+
+1. **Standard mode results view untouched** — only `#module-results-section`,
+   `ModuleResultsPage`, and the Module Development filename path changed;
+   `#results-section`, `#btn-reset`, the shared `.file-list-panel` class, and the
+   `js/app.js` filenames are unchanged.
+2. **No "Convert Another Module" control in Module Development** — the
+   `#btn-module-back` markup is gone; the (guarded, browser-dead) JS binding
+   remains only so the existing back-navigation unit test keeps passing.
+3. **Download All is auto-width, right of the file list** — the button sizes to
+   its content (`fit-content`, `align-self:flex-start`) and sits in the flex row
+   beside the narrowed (`flex:0 1 480px`) file-list column, never full-width and
+   never below it; the bar still collapses (`:empty`) on single-file runs.
+4. **Next-steps spans the full content width** — no `max-width` / auto-centering
+   constraint remains on `.next-steps-panel`.
+5. **Filenames are `<MODULE_CODE> <label>_parsed.txt`** — leading-token module
+   code, descriptive middle segment dropped, unified `_parsed.txt` suffix for
+   both the Writer's Template and the Media List.
+6. **mode-toggle.js held at the 500-line sub-module ceiling** — the filename
+   change was consolidated into one compact `_deriveFilename` so the file did not
+   cross its threshold.
+
+---
+
 [← Back to index](../CLAUDE.md)
