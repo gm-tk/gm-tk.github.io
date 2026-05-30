@@ -100,6 +100,32 @@ class ModuleResultsPage {
         return controls;
     }
 
+    /**
+     * Whether BOTH produced outputs are present — i.e. a Writer's Template .txt
+     * AND a Media List .txt. Drives the "Download All" control, which only makes
+     * sense when there is more than one file to fetch in one action.
+     * @returns {boolean}
+     */
+    hasBothOutputs() {
+        var hasTemplate = false;
+        var hasMedia = false;
+        for (var i = 0; i < this.outputs.length; i++) {
+            if (this.outputs[i].source === 'template') { hasTemplate = true; }
+            if (this.outputs[i].source === 'mediaList') { hasMedia = true; }
+        }
+        return hasTemplate && hasMedia;
+    }
+
+    /**
+     * The ordered next-steps instructions shown beneath the downloads — pure so
+     * the content (and its step count) is assertable without a DOM. Each entry
+     * is the inner HTML of one ordered-list step.
+     * @returns {Array<string>}
+     */
+    getNextSteps() {
+        return ModuleResultsPage.NEXT_STEPS.slice();
+    }
+
     // ------------------------------------------------------------------
     // Navigation (DOM adapter — no-ops when unbound or an element is absent)
     // ------------------------------------------------------------------
@@ -114,6 +140,8 @@ class ModuleResultsPage {
     show(outputs) {
         this.outputs = Array.isArray(outputs) ? outputs.slice() : [];
         this._renderList();
+        this._renderDownloadAll();
+        this._renderNextSteps();
         this.visible = true;
         this._setHidden(this.els.frontSection, true);
         this._setHidden(this.els.resultsSection, false);
@@ -166,6 +194,23 @@ class ModuleResultsPage {
         return true;
     }
 
+    /**
+     * Download every produced output in one action by reusing the single-file
+     * helper (triggerDownload) once per file — so the existing OutputManager
+     * download primitive is invoked exactly once per output. Used by the
+     * "Download All" control, which is only offered when both files are present.
+     * @returns {number} How many outputs were successfully downloaded.
+     */
+    triggerDownloadAll() {
+        var count = 0;
+        for (var i = 0; i < this.outputs.length; i++) {
+            if (this.triggerDownload(this.outputs[i].filename)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     _findOutput(filename) {
         for (var i = 0; i < this.outputs.length; i++) {
             if (this.outputs[i].filename === filename) {
@@ -203,6 +248,8 @@ class ModuleResultsPage {
             frontSection: get('module-dev-section'),
             list: get('module-results-list'),
             empty: get('module-results-empty'),
+            downloadAllBar: get('module-download-all-bar'),
+            nextSteps: get('module-next-steps'),
             backBtn: get('btn-module-back'),
             modeModuleRadio: get('mode-option-module'),
             modeStandardRadio: get('mode-option-standard')
@@ -300,6 +347,68 @@ class ModuleResultsPage {
         }
     }
 
+    /**
+     * Render the "Download All" control into #module-download-all-bar, but ONLY
+     * when both the Writer's Template .txt and the Media List .txt are present
+     * (a single-file run already has its per-file button). Clears the bar
+     * otherwise. No-ops when the bar element is absent (headless).
+     */
+    _renderDownloadAll() {
+        var bar = this.els.downloadAllBar;
+        if (!bar) {
+            return;
+        }
+        if (!this.hasBothOutputs()) {
+            bar.innerHTML = '';
+            return;
+        }
+        bar.innerHTML =
+            '<button id="btn-module-download-all" class="btn btn-primary module-download-all" ' +
+                'type="button" aria-label="Download all converted text files">' +
+                '⬇ Download All</button>';
+        this._bindDownloadAll(bar);
+    }
+
+    _bindDownloadAll(bar) {
+        var self = this;
+        if (!bar.querySelector) {
+            return;
+        }
+        var btn = bar.querySelector('.module-download-all');
+        if (btn && btn.addEventListener) {
+            btn.addEventListener('click', function () {
+                self.triggerDownloadAll();
+            });
+        }
+    }
+
+    /**
+     * Render the next-steps instructions panel into #module-next-steps whenever
+     * there is at least one output to act on: a heading plus the canonical
+     * ordered (numbered) list of conversion steps. Clears + hides the panel in
+     * the empty state. No-ops when the panel element is absent (headless).
+     */
+    _renderNextSteps() {
+        var panel = this.els.nextSteps;
+        if (!panel) {
+            return;
+        }
+        if (!this.hasOutputs()) {
+            panel.innerHTML = '';
+            this._setHidden(panel, true);
+            return;
+        }
+        var steps = ModuleResultsPage.NEXT_STEPS;
+        var items = '';
+        for (var i = 0; i < steps.length; i++) {
+            items += '<li>' + steps[i] + '</li>';
+        }
+        panel.innerHTML =
+            '<h3 class="next-steps-title">' + ModuleResultsPage.NEXT_STEPS_HEADING + '</h3>' +
+            '<ol class="next-steps-list">' + items + '</ol>';
+        this._setHidden(panel, false);
+    }
+
     /** Add/remove the shared `.hidden` class, guarding missing elements. */
     _setHidden(el, hidden) {
         if (el && el.classList) {
@@ -329,6 +438,24 @@ ModuleResultsPage.SLOT_LABELS = {
     template: "Writer's Template",
     mediaList: 'Media List'
 };
+
+// Next-steps instructions shown beneath the downloads. Author-controlled UI
+// chrome (not writer content), so the inline <code> markup is embedded directly.
+ModuleResultsPage.NEXT_STEPS_HEADING =
+    'Next steps — convert these files into finalized HTML';
+ModuleResultsPage.NEXT_STEPS = [
+    'Log in to the Creative Services Claude account. On the sign-in screen, ' +
+        'choose the <code>Continue with Google</code> option — do not sign ' +
+        'in with an email address and password.',
+    'Once you are logged in, open the <code>HTML Convertor</code> project.',
+    'Inside that project, start a new chat.',
+    'Into that new chat, upload all three files: the Writer’s Template ' +
+        '<code>.txt</code> and the Media List <code>.txt</code> you just ' +
+        'downloaded here, plus an example completed module to use as a ' +
+        'formatting reference.',
+    'Send the message to have the content converted into the finalized HTML files.',
+    'Review and download the generated HTML output from that chat.'
+];
 
 /**
  * Show (lazily creating + caching the page on the toggle) the results screen for
