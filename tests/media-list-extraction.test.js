@@ -135,12 +135,15 @@ describe('MediaListConverter — structural exclusion of boilerplate', function 
 
     it('emits each data row cell in column order, tab-separated', function () {
         var out = convertExt([
-            extMediaTable([['7', '12', 'Audio', 'Birdsong clip', 'Freesound', 'https://ex.com/b.mp3', 'Pending']])
+            extMediaTable([['', '12', 'Audio', 'Birdsong clip', 'Freesound', 'https://ex.com/b.mp3', 'Pending']])
         ]);
         var line = out.split('\n').pop(); // the single data line (after the header line)
         assert(line.indexOf('\t') !== -1, 'cells are tab-separated');
         var cells = line.split('\t');
-        assertEqual(cells[0], '7', 'col 0 is Item No.');
+        // Item No. is auto-numbered in the source (empty literal text) and is
+        // reconstructed by the converter as a sequential ordinal — here the first
+        // (and only) retained data row, so "1.".
+        assertEqual(cells[0], '1.', 'col 0 is the reconstructed Item No. ordinal');
         assertEqual(cells[2], 'Audio', 'col 2 is Item Type');
         assertEqual(cells[3], 'Birdsong clip', 'col 3 is Description');
         assertEqual(cells[5], 'https://ex.com/b.mp3', 'col 5 is URL');

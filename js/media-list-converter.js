@@ -15,9 +15,10 @@
  * Description, Source, URL, and an optional trailing ECR approval), matched
  * case-insensitively and whitespace/punctuation-tolerantly, by content not by
  * position. Only that table's data rows are emitted (the column header once at
- * the top, the conventional "Example" sample row skipped); everything outside
- * the table — every preceding paragraph, heading, checklist and hyperlink
- * guidance — is excluded entirely.
+ * the top, the conventional "Example" sample row and any horizontally-merged
+ * boilerplate row skipped, the auto-numbered Item No. column reconstructed as a
+ * sequential ordinal); everything outside the table — every preceding paragraph,
+ * heading, checklist and hyperlink guidance — is excluded entirely.
  *
  * It reuses the shared DocxParser for .docx reading rather than re-implementing
  * any docx parsing. If no media table is found (malformed / empty input) it
@@ -68,9 +69,13 @@ class MediaListConverter {
      * Extract the media-list table from an already-parsed DocxParser result and
      * return ONLY its data rows as plain text: the column header rendered once
      * at the top, then one tab-separated line per data row (every cell in
-     * column order). The conventional "Example" sample row is skipped, and all
-     * boilerplate outside the table — intro paragraphs, headings, the
-     * submission checklist, hyperlink guidance — is excluded structurally.
+     * column order). The conventional "Example" sample row is skipped, any
+     * horizontally-merged boilerplate row (e.g. a "Reminder: …" note spanning the
+     * table width) is dropped, and all boilerplate outside the table — intro
+     * paragraphs, headings, the submission checklist, hyperlink guidance — is
+     * excluded structurally. The Item No. column is reconstructed as a sequential
+     * ordinal per retained data row (Word auto-numbers it, so its literal text is
+     * empty); the header row keeps its literal labels.
      *
      * When no media table is found (malformed / empty input) this returns an
      * empty string (it never throws) and surfaces a user-facing error via the
@@ -90,13 +95,27 @@ class MediaListConverter {
         }
 
         var rows = table.data.rows;
-        var lines = [this._rowCellTexts(rows[0]).join('\t')]; // header — once, at the top
+        var header = this._rowCellTexts(rows[0]);
+        var columnCount = header.length;
+        var lines = [header.join('\t')]; // header — literal labels, once, at the top
+        var itemNo = 0;                  // sequential Item No. across RETAINED data rows
         for (var r = 1; r < rows.length; r++) {
             var cells = this._rowCellTexts(rows[r]);
-            // Skip the conventional Example/sample row (labelled in the Item No. col).
+            // Skip the conventional Example/sample row (literal label in the Item No. col).
             if (this._normaliseHeader(cells[0]).indexOf('example') === 0) { continue; }
+            // Skip horizontally-merged boilerplate rows (e.g. the "Reminder: …" note):
+            // a single grid-spanning cell across the table width, never a data row.
+            if (this._isMergedSpanRow(cells, columnCount)) { continue; }
             // Skip fully-empty rows (no content-bearing cell).
             if (!cells.some(function (c) { return c && c.trim() !== ''; })) { continue; }
+            // Reconstruct the auto-numbered Item No. column: genuine data rows carry
+            // it as a Word <w:numPr> list number, so the literal cell text is empty
+            // and the displayed 1./2./3. is lost by plain-text extraction. Re-derive
+            // it as a sequential ordinal in document order (Word-style trailing dot).
+            itemNo++;
+            cells[0] = itemNo + '.';
+            // Guarantee the full column structure incl. the trailing ECR approval cell.
+            while (cells.length < columnCount) { cells.push(''); }
             lines.push(cells.join('\t'));
         }
         return lines.join('\n');
@@ -141,6 +160,38 @@ class MediaListConverter {
             if (!present[required[r]]) { return false; }
         }
         return true;
+    }
+
+    /**
+     * True when a row is a horizontally-merged / grid-spanning boilerplate row
+     * rather than a genuine data row. In OOXML such a row is a single <w:tc> with
+     * a <w:gridSpan> covering the table width (the shared parser surfaces it as
+     * ONE cell); some inputs instead repeat the merged text across every spanned
+     * cell. Either shape collapses to a single logical cell — never a data row —
+     * so it is dropped. A genuine data row keeps one distinct cell per column.
+     *
+     * @param {string[]} cells - the row's cell texts, in column order.
+     * @param {number} columnCount - the header row's column count.
+     * @returns {boolean}
+     */
+    _isMergedSpanRow(cells, columnCount) {
+        var nonEmpty = [];
+        for (var i = 0; i < cells.length; i++) {
+            var t = (cells[i] == null ? '' : String(cells[i])).trim();
+            if (t !== '') { nonEmpty.push(t); }
+        }
+        if (nonEmpty.length === 0) { return false; } // empty row — handled separately
+        // (a) The row's cells collapse to a single merged cell spanning a
+        //     multi-column table (a horizontal gridSpan → one <w:tc>).
+        if (columnCount > 1 && cells.length === 1) { return true; }
+        // (b) Every non-empty cell repeats the SAME merged text across the row.
+        if (nonEmpty.length > 1) {
+            for (var k = 1; k < nonEmpty.length; k++) {
+                if (nonEmpty[k] !== nonEmpty[0]) { return false; }
+            }
+            return true;
+        }
+        return false;
     }
 
     /** Cell texts of a table row, in column order (empty array when malformed). */
