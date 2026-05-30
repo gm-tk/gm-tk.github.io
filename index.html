@@ -51,14 +51,12 @@
         <!-- Module Development Front Page (default) -->
         <section id="module-dev-section" aria-label="Module development">
             <p class="module-dev-intro">
-                Upload a Writer&rsquo;s Template and/or a Media List. Both are optional &mdash;
-                provide at least one to activate.
+                Upload a Writer&rsquo;s Template and/or a Media List.
             </p>
             <div class="module-upload-grid">
 
                 <!-- Writer's Template slot -->
                 <div class="module-upload-slot">
-                    <h2 class="module-slot-title">Writer&rsquo;s Template</h2>
                     <div id="module-template-drop"
                          class="drop-zone module-drop"
                          role="button"
@@ -66,7 +64,6 @@
                          aria-label="Drop the Writer's Template .docx here or click to browse">
                         <span class="drop-zone-icon" aria-hidden="true">&#128196;</span>
                         <p class="drop-zone-title">Drop Writer&rsquo;s Template .docx or click to browse</p>
-                        <p class="drop-zone-hint">Optional</p>
                     </div>
                     <input type="file" id="module-template-input" accept=".docx" class="sr-only" aria-hidden="true">
                     <div id="module-template-info" class="staged-file-info hidden">
@@ -77,7 +74,6 @@
 
                 <!-- Media List slot -->
                 <div class="module-upload-slot">
-                    <h2 class="module-slot-title">Media List</h2>
                     <div id="module-media-drop"
                          class="drop-zone module-drop"
                          role="button"
@@ -85,7 +81,6 @@
                          aria-label="Drop the Media List .docx here or click to browse">
                         <span class="drop-zone-icon" aria-hidden="true">&#128450;</span>
                         <p class="drop-zone-title">Drop Media List .docx or click to browse</p>
-                        <p class="drop-zone-hint">Optional</p>
                     </div>
                     <input type="file" id="module-media-input" accept=".docx" class="sr-only" aria-hidden="true">
                     <div id="module-media-info" class="staged-file-info hidden">
@@ -98,17 +93,13 @@
 
             <button id="btn-module-activate" class="btn btn-convert" type="button" disabled
                     aria-label="Activate module development conversion">
-                Activate
+                Convert
             </button>
         </section>
 
         <!-- Module Development Results / Download Screen (Session 3) -->
         <section id="module-results-section" class="hidden" aria-label="Module development output">
             <h2 class="module-results-title">Conversion complete</h2>
-            <p class="module-dev-intro">
-                Your parsed text file(s) are ready. Download each below &mdash;
-                everything was processed in your browser, nothing was uploaded.
-            </p>
             <div id="module-results-list" class="file-list-panel" aria-label="Converted files"></div>
             <p id="module-results-empty" class="drop-zone-hint hidden">
                 No converted files to download.
