@@ -72,6 +72,19 @@ body {
     gap: 0.5rem;
 }
 
+.header-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+/* Title + "100% Client-Side" badge sit inline on one row, vertically centred. */
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
 .app-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -118,12 +131,13 @@ main {
 
 /* ---------- Mode Toggle ---------- */
 
+/* Relocated into the header bar (right-aligned beside the title block), so it
+   carries no body spacing of its own. */
 .mode-toggle {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.75rem;
-    padding: 1rem 0 0.5rem;
+    padding: 0;
 }
 
 .mode-toggle-label {
@@ -232,37 +246,30 @@ main {
 
 /* ---------- Module Development Results / Download Screen ---------- */
 
-/* Lay the converted-file rows and the "Download All" button out as a horizontal
-   row: a narrowed file-list column on the left, the button in the space to its
-   right. Wraps onto two lines on narrow viewports. */
-.module-downloads-row {
+/* Centre the heading + intro and let the converted-file cards span the full
+   content width. Mirrors the front page's centred single-column layout. */
+#module-results-section {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 0 2rem;
 }
 
-/* The parsed-files list column — narrower than full width so the Download All
-   button can sit beside it rather than below it. */
-.module-downloads-files {
-    flex: 0 1 480px;
-    min-width: 0;
+/* Prominent, horizontally-centred "Conversion complete" display heading. */
+.module-results-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: center;
+    margin: 0;
 }
 
-.module-download-all-bar {
-    display: flex;
-    align-items: flex-start;
-}
-
-/* Collapse the bar entirely when no "Download All" button is rendered
-   (single-file runs) so it leaves no gap in the row. */
-.module-download-all-bar:empty {
-    display: none;
-}
-
-.module-download-all {
-    width: fit-content;
-    align-self: flex-start;
+/* The parsed-file cards span the full width of the content container; each card
+   (.file-entry) already lays its filename + type label on the left and its
+   per-file Download button on the right, stacking vertically. */
+#module-results-list {
+    width: 100%;
 }
 
 .next-steps-panel {

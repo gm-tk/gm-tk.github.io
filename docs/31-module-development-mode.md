@@ -826,4 +826,113 @@ Final suite: **751/751 passing** (was 745; +6), 0 failed.
 
 ---
 
+### Conversion-Complete View Restyle — Header Consolidation, Centred Display Heading & Full-Width Cards
+
+> **Module Development mode, presentation only.** A pure CSS/layout restyle of
+> the post-conversion "Conversion complete" results view
+> (`#module-results-section` + `ModuleResultsPage`) plus a small markup
+> relocation of the shared header chrome (`.app-header`). No conversion logic,
+> no privacy-model change, no Standard-mode change: `#results-section`,
+> `js/app.js`, and the shared `.file-list-panel` / `.file-entry` classes were
+> NOT edited (the cards container is widened via the `#module-results-list` ID
+> selector + a new wrapperless layout, never by touching the shared class).
+
+**Status:** DONE. **748/748** tests pass (751 baseline → 748, **−3** from
+removing the now-defunct "Download All" `it()` cases; no new tests).
+
+#### Changes
+
+1. **"100% Client-Side" badge moved into the title row** (`index.html` +
+   `css/styles.css`). The `.privacy-badge` left the far-right of the header bar
+   and now renders **inline immediately right of the "PageForge" title**,
+   vertically centred with it. New `.header-titles` (flex column) wraps a new
+   `.title-row` (flex row, `align-items:center`, `gap:0.6rem`) holding the `<h1>`
+   + badge, with the `.app-subtitle` directly beneath — unchanged.
+2. **Mode toggle moved into the header bar** (`index.html` + `css/styles.css`).
+   The `#mode-toggle` block (Mode label + segmented Module Development / Standard
+   control) was **relocated out of its centred body position** (it used to sit
+   above the front pages) into `.header-inner` as its **second flex child**, so
+   the `space-between` header now reads **left** = title + badge + subtitle,
+   **right** = Mode label + toggle. Position-only: the markup, the
+   `mode-option-module` / `mode-option-standard` IDs, the radio wiring and all
+   `ModeToggle` behaviour are byte-for-byte unchanged. `.mode-toggle` dropped its
+   body spacing (`justify-content:center` + `padding:1rem 0 0.5rem` → `padding:0`).
+3. **"Conversion complete" heading centred + enlarged** (`index.html` +
+   `css/styles.css`). The heading's class changed from the shared
+   `module-slot-title` (1rem, left-aligned) to a new dedicated
+   `.module-results-title` (**2rem**, weight 700, `text-align:center`,
+   `margin:0`). The shared `.module-slot-title` (front-page slot headings
+   "Writer's Template" / "Media List") is **untouched**. The descriptive
+   `.module-dev-intro` paragraph stays centred as before.
+4. **File result cards made full-width** (`index.html` + `css/styles.css`). The
+   `.module-downloads-row` flex row and the narrowed `.module-downloads-files`
+   (`flex:0 1 480px`) column wrappers were **removed**; `#module-results-list`
+   (the `.file-list-panel`) now sits directly in the section at `width:100%`, and
+   `#module-results-section` became a centred flex column (mirroring
+   `#module-dev-section`: `align-items:center; gap:1.25rem; padding:1.5rem 0 2rem`).
+   Each card is the **shared `.file-entry`** — already `justify-content:space-between`,
+   so filename + type label sit left and the per-file Download button right; the
+   cards now stack vertically at full container width. `.file-entry` /
+   `.file-list-panel` CSS was **not** modified.
+5. **Standalone "Download All" removed** (`index.html` + `css/styles.css` +
+   `js/module-results-page.js`). Deleted the `#module-download-all-bar` markup;
+   the `_renderDownloadAll()`, `_bindDownloadAll()`, `triggerDownloadAll()` and
+   `hasBothOutputs()` methods, the `downloadAllBar` element ref and the
+   `_renderDownloadAll()` call in `show()`; and the `.module-download-all-bar` /
+   `.module-download-all` CSS. `grep -rn` confirmed no other code path referenced
+   any of these before deletion; the only surviving "Download All" string is the
+   **unrelated Standard-mode** "Download All as ZIP" (`js/app.js` /
+   `index.html`), which is out of scope and untouched. The per-file Download
+   buttons inside each card are unchanged.
+
+#### Files touched (before → after line counts)
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `index.html` | 271 | 268 | Wrapped title + badge in `.header-titles` › `.title-row`; relocated `#mode-toggle` into `.header-inner`; removed the body `#mode-toggle`; heading class `module-slot-title` → `module-results-title`; unwrapped the download list (removed `.module-downloads-row` / `.module-downloads-files` / `#module-download-all-bar`). |
+| `css/styles.css` | 1128 | 1135 | Added `.header-titles` + `.title-row`; `.mode-toggle` body spacing → `padding:0`; replaced the `.module-downloads-row` / `.module-downloads-files` / `.module-download-all-bar` / `.module-download-all` block with `#module-results-section` (centred flex column) + `.module-results-title` (2rem centred heading) + `#module-results-list { width:100% }`; `.next-steps-panel` kept. (CSS has no line ceiling.) |
+| `js/module-results-page.js` | 480 | 410 | Removed `hasBothOutputs()`, `triggerDownloadAll()`, `_renderDownloadAll()`, `_bindDownloadAll()`, the `downloadAllBar` el ref, and the `_renderDownloadAll()` call in `show()`. (≤500 sub-module ceiling — comfortably under.) |
+| `tests/module-dev-download-ui.test.js` | 159 | 100 | Removed the **3** Download-All `it()` cases (render-when-both / hide-when-one / invoke-helper-twice), the now-unused `mddSpyOutputManager` spy and the `module-download-all-bar` mock element; dropped the Download-All assertion from the empty-state case; updated the header comment + `describe` title. The **3** next-steps `it()` cases are unchanged (6 → 3). |
+
+No new JS module and no new test file ⇒ **no** `index.html` `<script>` or
+`tests/test-runner.js` `loadScript` wiring change. `js/mode-toggle.js` (500),
+`js/app.js` (1364) and `js/output-manager.js` are untouched.
+
+#### Test coverage
+
+`tests/module-dev-download-ui.test.js` (**3** `it()`, was 6): renders the
+next-steps instructions panel with its six ordered steps; the instructions
+contain the `Continue with Google` and `HTML Convertor` strings; clears and
+hides the next-steps panel in the empty state. The three removed cases tested
+the deleted Download-All control and would otherwise call the now-deleted
+`hasBothOutputs()` / `triggerDownloadAll()`.
+
+Final suite: **748/748 passing** (was 751; −3), 0 failed.
+
+#### Invariants locked in
+
+1. **Header consolidation** — `#mode-toggle` appears **exactly once** and lives
+   inside `<header>`; the `space-between` `.header-inner` shows title + inline
+   "100% Client-Side" badge + subtitle on the left, Mode label + segmented toggle
+   on the right.
+2. **Mode-toggle move is position-only** — markup, the `mode-option-module` /
+   `mode-option-standard` IDs, the radio wiring and `ModeToggle` behaviour are
+   unchanged; only its DOM location and `.mode-toggle` body spacing moved.
+3. **Heading is centred + enlarged via its own class** — `.module-results-title`
+   (2rem, centred); the shared `.module-slot-title` (front-page slots) is
+   unchanged.
+4. **Cards are full-width, stacked** — `#module-results-list` spans the full
+   content width; each shared `.file-entry` keeps filename + type label left and
+   the per-file Download button right; `.file-entry` / `.file-list-panel` CSS is
+   unedited.
+5. **No "Download All" in Module Development** — its markup, the four
+   `ModuleResultsPage` methods, the CSS and its three tests are gone; only the
+   per-file Download remains. Standard-mode "Download All as ZIP" is untouched.
+6. **Standard mode untouched** — `#results-section`, `js/app.js`, and the shared
+   `.file-list-panel` / `.file-entry` classes were not modified.
+7. **File-size hygiene held** — `js/module-results-page.js` 480 → 410 (≤500);
+   `js/mode-toggle.js` / `js/app.js` untouched; no extraction required.
+
+---
+
 [← Back to index](../CLAUDE.md)
