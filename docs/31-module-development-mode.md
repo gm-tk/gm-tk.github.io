@@ -408,4 +408,119 @@ document and a spy `OutputManager`:
 
 ---
 
+### Media List Refinement — Structural Table Extraction
+
+> **Post-Session-3 refinement.** Changes ONLY what the Media List `.txt`
+> contains. The Writer's Template path, the OutputFormatter marker behavior, the
+> mode UI, the file inputs, and the download wiring are all untouched.
+
+**Status:** DONE. 730/730 tests pass (721 baseline → 730, **+9** across one new
+test file; the existing media-list test file's 8 cases were re-pointed to the new
+behavior, not grown).
+
+#### Problem
+
+Session 2 converted the Media List slot via a **straight full-document dump**
+(`MediaListConverter.convertParsedResult` emitted `formatMetadata` + `formatContent`
+from block 0 — every paragraph, heading and table in the file). For a real Media
+List `.docx` that means the downloadable `.txt` was polluted with the generic,
+per-module boilerplate that precedes the actual data: the template heading, the
+submission checklist, the "Before starting ensure you are familiar with…"
+guidance, the "Please supply details for ALL external media…" paragraph, and
+early-copyright notes. That boilerplate differs from module to module, so it
+cannot be stripped by string-matching known phrases.
+
+#### Change — content-agnostic, structural extraction
+
+`MediaListConverter` now emits **only** the genuine media-list table's data rows.
+The table is located **structurally, by its HEADER ROW** (by content, never by
+position): the first `type === 'table'` block whose first row carries every
+REQUIRED media column label —
+
+`Item No.`, `WTPg No.`, `Item Type`, `Description`, `Source`, `URL`
+
+— with an **optional** trailing `ECR approval` column that may be absent. Header
+matching is case-insensitive and whitespace/punctuation-tolerant
+(`_normaliseHeader` lower-cases and collapses every non-alphanumeric run to a
+single space, so `"Item No."` → `"item no"`). Required labels live in
+`MediaListConverter.REQUIRED_HEADERS`; the optional one in `OPTIONAL_HEADERS`.
+
+Emitted output (plain text, no envelope, no metadata header):
+- the matched table's **header row, once, at the top** (cells tab-separated);
+- one **tab-separated line per data row**, every cell in column order;
+- the conventional **`Example`/sample row is skipped** (first cell normalises to
+  a leading `example`);
+- fully-empty rows are skipped.
+
+Everything outside that table — every preceding paragraph, heading, the
+submission checklist, hyperlink guidance — is excluded **entirely**, with no
+phrase string-matching, so it is robust to per-module boilerplate variation.
+
+**Guard (table not found / malformed / empty input):** returns an **empty
+string** (never throws) and surfaces a user-facing error through the **shared,
+app-wide toast**. The toast is reached via an injectable `notify` option (spied
+in tests) that **falls back to `window.app.showToast`** in the browser — the
+established toast mechanism (`App.showToast`, `js/app.js`); `showError` was
+deliberately NOT used because it reveals the Standard `#upload-section`. No mode
+UI, file-input or download wiring was touched to add this.
+
+The now-dead `OutputFormatter` dependency was removed from the converter
+(`_formatter` field, the `formatter` constructor option, and `_getFormatter()`);
+`DocxParser` reuse via `convert()` is unchanged.
+
+#### Files touched
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `js/media-list-converter.js` | 108 | 201 | Rewrote `convertParsedResult()` to header-row table detection + data-row emission; added `_findMediaTable` / `_isMediaHeaderRow` / `_rowCellTexts` / `_extractCellText` / `_normaliseHeader` / `_notifyError` helpers + `REQUIRED_HEADERS`/`OPTIONAL_HEADERS` statics; added injectable `notify`; removed the dead `OutputFormatter` dependency. (≤500 sub-module ceiling.) |
+| `tests/media-list-converter.test.js` | 172 | 200 | Re-pointed all **8** `it()` cases from the old whole-document-dump behavior to structural extraction (surgical per-`it()` `str_replace`); added `MEDIA_HEADERS` + `mlcMediaTable` builders. |
+| `tests/media-list-extraction.test.js` | — (new) | 182 | **9** `it()` cases — structural-exclusion / content-agnostic coverage (see below). |
+
+No new JS module (so **no** `index.html` / `tests/test-runner.js` wiring change);
+test files are auto-discovered by the runner. `js/mode-toggle.js`,
+`js/module-results-page.js`, `js/app.js`, `js/formatter.js`, `js/docx-parser.js`,
+`index.html` and the CSS are **untouched**.
+
+#### Test coverage
+
+`tests/media-list-converter.test.js` (**8** `it()`, re-pointed): convert()
+reuses the injected DocxParser and extracts the table (intro + `Example`
+excluded); excludes preceding boilerplate paragraphs/headings/checklist; emits
+data rows in column order with the header once at the top; preserves multiple
+data rows in row order; applies no phase/template/HTML processing (no formatter
+table-box); single data-row list (header + one row); absent table → empty string
+**and** an error surfaced via the injected `notify` spy; malformed inputs
+(`null`/`undefined`/`{}`/non-array content) → empty string, never throws.
+
+`tests/media-list-extraction.test.js` (**9** `it()`, new): table identified by
+header row **not position** (a decoy non-media table appears first); intro
+paragraphs excluded; submission checklist excluded; template/section headings
+excluded; the `Example` row skipped; each data cell emitted in column order
+(tab-separated, verified per column index); **different/unknown** boilerplate
+before the table still fully excluded (proves content-agnostic, no phrase
+matching); missing optional `ECR approval` column still parses; absent data table
+→ safe empty result without throwing.
+
+#### Invariants locked in
+
+1. **Structural, content-agnostic exclusion** — the target table is found by
+   header-row content (`REQUIRED_HEADERS` all present), never by position and
+   never by string-matching intro phrases.
+2. **Data-only output** — only the matched table's data rows are emitted; the
+   header once at the top; the `Example` row and all out-of-table content
+   excluded.
+3. **Optional ECR approval** — a header row missing only the trailing
+   `ECR approval` column still matches.
+4. **Safe, non-throwing guard** — no media table ⇒ empty string + a user-facing
+   toast (`notify` → `window.app.showToast`); never throws on malformed/empty
+   input.
+5. **Scope contained to the Media List `.txt`** — Writer's Template conversion,
+   OutputFormatter markers, mode UI, file inputs and download wiring unchanged.
+6. **Supersedes Session 2's Media List dump** — the S2 "straight full
+   conversion" and "format parity with the writer pipeline" invariants no longer
+   apply to the Media List path (they were specific to the dump behavior); the
+   Writer's Template path retains them.
+
+---
+
 [← Back to index](../CLAUDE.md)
