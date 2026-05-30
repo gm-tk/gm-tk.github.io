@@ -255,7 +255,7 @@ class ModeToggle {
             return ModeToggle._resolveMaybe(this._getParser().parse(file), function (result) {
                 return {
                     source: 'template',
-                    filename: self._deriveFilename(file, '_parsed.txt'),
+                    filename: self._deriveFilename(file, "Writer's Template"),
                     content: self._getFormatter().formatAll(result).full
                 };
             });
@@ -263,7 +263,7 @@ class ModeToggle {
         return ModeToggle._resolveMaybe(this._getMediaListConverter().convert(file), function (text) {
             return {
                 source: 'mediaList',
-                filename: self._deriveFilename(file, '_media_list.txt'),
+                filename: self._deriveFilename(file, 'Media List'),
                 content: text
             };
         });
@@ -277,14 +277,15 @@ class ModeToggle {
     }
 
     /**
-     * Derive a sensible output filename: the input stem (sans a trailing .docx,
-     * case-insensitive) + the given suffix, with a safe fallback when the file
-     * has no usable name. e.g. "ENGS301.docx" + "_parsed.txt" → "ENGS301_parsed.txt".
+     * Standardised Module Development output filename `<MODULE_CODE> <label>_parsed.txt`:
+     * the module code is the input filename's leading token (any descriptive middle
+     * segment dropped); both outputs use the unified `_parsed.txt` suffix (the Media
+     * List is no longer `_media_list`); <label> is "Writer's Template"/"Media List".
      */
-    _deriveFilename(file, suffix) {
+    _deriveFilename(file, label) {
         var stem = ((file && file.name) ? String(file.name) : '').replace(/\.docx$/i, '').trim();
-        if (!stem) { stem = (suffix.indexOf('media') !== -1) ? 'media-list' : 'writer-template'; }
-        return stem + suffix;
+        var code = stem.split(/\s+/)[0] || 'Module';
+        return code + ' ' + label + '_parsed.txt';
     }
 
     // ------------------------------------------------------------------

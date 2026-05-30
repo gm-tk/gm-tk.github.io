@@ -451,8 +451,8 @@ ModuleResultsPage.NEXT_STEPS = [
     'Inside that project, start a new chat.',
     'Into that new chat, upload all three files: the Writer’s Template ' +
         '<code>.txt</code> and the Media List <code>.txt</code> you just ' +
-        'downloaded here, plus an example completed module to use as a ' +
-        'formatting reference.',
+        'downloaded here, <strong>plus an example completed module to use as a ' +
+        'formatting reference</strong>.',
     'Send the message to have the content converted into the finalized HTML files.',
     'Review and download the generated HTML output from that chat.'
 ];

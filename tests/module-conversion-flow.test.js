@@ -170,14 +170,16 @@ describe('Module Development conversion flow — handleModuleConversion', functi
         assertNull(toggle.moduleOutputs, 'state field left untouched (null) on a no-op');
     });
 
-    it('outputs carry sensible filenames for the template and media list', function () {
+    it('outputs carry standardised "<CODE> <label>_parsed.txt" filenames for the template and media list', function () {
         var toggle = mcfToggle();
-        toggle.setUpload('template', { name: 'ENGS301.docx' });
-        toggle.setUpload('mediaList', { name: 'MediaList.docx' });
+        toggle.setUpload('template', { name: 'OSAI201 AI Digital Citizenship Writer\'s Template.docx' });
+        toggle.setUpload('mediaList', { name: 'OSAI201 AI Digital Citizenship Media List.docx' });
         var outputs = toggle.handleModuleConversion();
         var bySource = {};
         for (var i = 0; i < outputs.length; i++) { bySource[outputs[i].source] = outputs[i]; }
-        assertEqual(bySource.template.filename, 'ENGS301_parsed.txt', 'template → <stem>_parsed.txt');
-        assertEqual(bySource.mediaList.filename, 'MediaList_media_list.txt', 'media list → <stem>_media_list.txt');
+        assertEqual(bySource.template.filename, "OSAI201 Writer's Template_parsed.txt",
+            'template → <CODE> Writer\'s Template_parsed.txt (descriptive middle segment dropped)');
+        assertEqual(bySource.mediaList.filename, 'OSAI201 Media List_parsed.txt',
+            'media list → <CODE> Media List_parsed.txt (suffix unified to _parsed)');
     });
 });
