@@ -1,6 +1,6 @@
 /**
  * Tests for the Module Development results-screen next-steps instructions panel
- * (an ordered list of six steps) rendered beneath the per-file downloads
+ * (an ordered list of five steps) rendered beneath the per-file downloads
  * whenever there is at least one converted output.
  *
  * These drive ModuleResultsPage with a minimal injected mock document (no real
@@ -68,15 +68,16 @@ function mddCount(haystack, needle) {
 
 describe('ModuleResultsPage — next-steps download UI', function () {
 
-    it('renders the next-steps instructions panel with its six ordered steps', function () {
+    it('renders the next-steps instructions panel with its five ordered steps', function () {
         var ctx = mddBuildDoc();
         var page = new ModuleResultsPage({ document: ctx.doc });
         page.show([mddTemplateOut(), mddMediaOut()]);
-        assertEqual(page.getNextSteps().length, 6, 'six canonical next-steps defined');
+        assertEqual(page.getNextSteps().length, 5, 'five canonical top-level next-steps defined');
         var panel = ctx.els['module-next-steps'];
         assertFalse(panel.classList.contains('hidden'), 'next-steps panel revealed when outputs exist');
-        assertTrue(panel.innerHTML.indexOf('<ol') !== -1, 'steps rendered as an ordered (numbered) list');
-        assertEqual(mddCount(panel.innerHTML, '<li>'), 6, 'exactly six <li> steps rendered');
+        assertTrue(panel.innerHTML.indexOf('<ol class="next-steps-list">') !== -1, 'steps rendered as an ordered (numbered) list');
+        assertTrue(panel.innerHTML.indexOf('<ol type="a" class="next-steps-sublist">') !== -1, 'step 4 carries the nested (a/b/c) upload sub-list');
+        assertEqual(mddCount(panel.innerHTML, '<li>'), 8, 'five top-level steps plus three nested (a/b/c) sub-items');
         assertTrue(panel.innerHTML.indexOf('Next steps') !== -1, 'panel carries the next-steps heading');
     });
 
