@@ -523,4 +523,106 @@ matching); missing optional `ECR approval` column still parses; absent data tabl
 
 ---
 
+### Media List Refinement — Table Conversion Defects (Item No., Example, Merged Rows)
+
+> **Post-refinement of "Structural Table Extraction".** Changes ONLY what the
+> Media List `.txt` table contains. The Writer's Template path, the mode UI, the
+> file inputs and the download wiring are all untouched. Builds directly on the
+> header-row table detection from the previous refinement.
+
+**Status:** DONE. **739/739** tests pass (730 baseline → 739, **+9** across one
+new test file; one assertion in the existing extraction test file was re-pointed
+to the reconstructed Item No., not grown).
+
+#### Problem
+
+Once the genuine media table was being located structurally, four row-level
+defects remained in how its rows were rendered to the tab-delimited `.txt`:
+
+1. **Blank `Item No.` column.** Genuine data rows carry the Item No. as a Word
+   **auto-number** (`<w:numPr>` with a `numId`), so the literal cell text is
+   **empty** and the displayed `1.`, `2.`, `3.`… were lost by plain-text
+   extraction — every data row began with an empty first column.
+2. **Merged boilerplate leak.** A horizontally-merged row spanning the table
+   width — e.g. `Reminder: List all external platforms recommended to the
+   student in the module for copyright review (old and new links)` — was emitted
+   as if it were a data row.
+3. The `Example` (cheetah stock-photo) sample row exclusion and the pre-table
+   boilerplate exclusion both had to be **preserved** through the above changes.
+
+#### Change — structural, content-agnostic row handling
+
+`MediaListConverter.convertParsedResult()` now, for the located media table:
+
+- **Header row** — emitted **once, first**, with its **literal** labels
+  (`Item No.` … `ECR approval`); it is never numbered and never dropped.
+- **`Example` row** — skipped (first cell normalises to a leading `example`),
+  evaluated **before** ordinal assignment so it consumes no Item No.
+- **Merged/spanning boilerplate rows** — dropped via a new
+  `_isMergedSpanRow(cells, columnCount)` helper. A horizontal `gridSpan` is
+  surfaced by the shared `DocxParser` as a **single `<w:tc>`**, so the detection
+  is structural: **(a)** a multi-column table row that collapses to **one cell**,
+  or **(b)** a row whose non-empty cells **all repeat the same merged text**.
+  No intro-phrase string-matching — robust to per-module boilerplate variation.
+- **`Item No.` reconstruction** — every **retained** data row (header, `Example`
+  and merged rows excluded) is assigned a **sequential ordinal in document order
+  starting at `1`**, formatted with a trailing period (`1.`, `2.`, `3.`…) to
+  match how Word renders the source numbered list, and written as the first
+  column — overwriting the empty auto-numbered cell.
+- **Column structure** — each data row is padded to the header's column count so
+  the trailing (usually empty) **`ECR approval`** column is always present;
+  cells are joined with `\t`, preserving all seven columns.
+
+Pre-table exclusion (template title, submission checklist + bullets, `MEDIA LIST`
+heading, every instructional paragraph) is unchanged — only the matched table is
+emitted — and is re-verified by the new tests.
+
+#### Files touched
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `js/media-list-converter.js` | 201 | 252 | Reworked `convertParsedResult()`: literal header, Example-then-merged-then-empty skip order, sequential `Item No.` reconstruction, column-count padding; added `_isMergedSpanRow()` helper; updated class + method docstrings. (≤500 sub-module ceiling — comfortably under.) |
+| `tests/media-list-extraction.test.js` | 182 | 185 | Re-pointed the single `cells[0]` assertion in "emits each data row cell in column order" from the old literal pass-through (`'7'`) to the reconstructed ordinal (`'1.'`), modelling an empty auto-numbered Item No. cell. No `it()` count change (still 9). |
+| `tests/media-list-conversion.test.js` | — (new) | 233 | **9** `it()` cases (see below). |
+
+No new JS module ⇒ **no** `index.html` / `tests/test-runner.js` wiring change;
+test files are auto-discovered by the runner. `js/docx-parser.js`,
+`js/mode-toggle.js`, `js/module-results-page.js`, `index.html` and the CSS are
+**untouched**.
+
+#### Test coverage
+
+`tests/media-list-conversion.test.js` (**9** `it()`, new): header row emitted as
+the first output line with all seven column labels (literal `Item No.`); the
+`Example` (cheetah) sample row excluded (description + URL); the merged
+`Reminder` boilerplate row excluded; `Item No.` reconstructed as sequential
+`1.`/`2.`/`3.` across retained data rows; exactly three genuine data rows
+retained (`Example` + merged excluded from the count); every pre-table paragraph
+(title, checklist heading + bullet, instructions) excluded; the tab-delimited
+seven-column structure preserved on every line (with per-column order spot-check);
+the trailing `ECR approval` column present and empty on data rows (line ends on
+its tab boundary); and a merged row whose spanned cells **repeat** the same text
+also dropped (covers the `_isMergedSpanRow` branch (b)).
+
+#### Invariants locked in
+
+1. **Header row always first, always literal** — the column header is emitted as
+   the first output line with its literal labels; it is never numbered, never
+   dropped.
+2. **`Item No.` reconstructed sequentially** — retained data rows are numbered
+   `1.`, `2.`, `3.`… in document order (Word auto-numbering re-derived); the
+   `Example` and merged rows are excluded from the sequence.
+3. **Merged/spanning rows dropped structurally** — a single grid-spanning cell
+   **or** a row repeating the same merged text is detected by structure, never by
+   matching the `Reminder` phrase.
+4. **`Example` row excluded** — the conventional sample row never appears and
+   consumes no ordinal.
+5. **Pre-table exclusion preserved** — only the matched table is emitted; all
+   preceding title/checklist/heading/instruction content stays excluded (now
+   re-verified).
+6. **Seven-column structure preserved** — every data row carries all seven
+   tab-separated columns, including the trailing (usually empty) `ECR approval`.
+
+---
+
 [← Back to index](../CLAUDE.md)
