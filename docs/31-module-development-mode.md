@@ -935,4 +935,114 @@ Final suite: **748/748 passing** (was 751; −3), 0 failed.
 
 ---
 
+### Front-Page & Results-Screen Markup Simplification — Labels, Hints, Paired Chips, Convert Label & Results Width
+
+> **Module Development mode, presentation only.** Pure markup/CSS refinements to
+> the two Module Development screens — the front/upload page (`#module-dev-section`)
+> and the results/download page (`#module-results-section`). No conversion logic,
+> no privacy-model change, no Standard-mode change, no JS touched. `#upload-section`,
+> `#results-section`, `js/app.js`, `js/mode-toggle.js` and `js/module-results-page.js`
+> are all unchanged.
+
+**Status:** DONE. **748/748** tests pass (748 baseline → 748, **±0** — these are
+presentational markup/CSS changes; no test parses `index.html` or asserts on the
+altered strings, so no test was added or modified).
+
+#### Changes — front page (`#module-dev-section`)
+
+1. **Intro line simplified** (`index.html`). The two-sentence
+   `.module-dev-intro` copy "Upload a Writer's Template and/or a Media List. Both
+   are optional — provide at least one to activate." was reduced to the single
+   sentence **"Upload a Writer's Template and/or a Media List."**; the trailing
+   "Both are optional — provide at least one to activate." sentence was deleted.
+2. **Slot heading labels removed** (`index.html`). The two
+   `<h2 class="module-slot-title">` labels above the drop zones — **Writer's
+   Template** and **Media List** — were deleted. Only the two label elements were
+   removed; the drop zones themselves are untouched. The `.module-slot-title` CSS
+   rule was **deliberately left in place** (the task scoped the removal to "only
+   those two label elements"; it does not reference the rule elsewhere now, but
+   removing the rule was out of the stated scope).
+3. **"Optional" drop-zone hints removed** (`index.html`). The
+   `<p class="drop-zone-hint">Optional</p>` line inside **each** of the two
+   `.module-drop` zones was deleted; the "Drop … .docx or click to browse" prompt
+   text is retained. The shared `.drop-zone-hint` CSS rule is **untouched** (it is
+   still used by the Standard front page hint and the `#module-results-empty`
+   empty-state line).
+4. **Paired uploaded-file chips — verified, no change needed** (`index.html`).
+   The selected-file chips (`#module-template-info` / `#module-media-info`,
+   toggled via `.hidden` by `ModeToggle._renderSlot`, which only flips visibility
+   and sets the filename text — it never relocates the node) **already** sit
+   inside their own `.module-upload-slot` column, directly beneath their paired
+   drop zone, within the existing two-column `.module-upload-grid`
+   (`repeat(2, minmax(0,1fr))`). `.module-upload-slot` is already a vertical stack
+   (`display:flex; flex-direction:column`), so each chip already renders directly
+   under its own zone with the columns side-by-side. The desired end state was
+   confirmed present; per the "keep the diff minimal" guidance no markup move or
+   CSS change was introduced for the chips.
+5. **Primary action relabelled** (`index.html`). The button visible text was
+   changed from **Activate** to **Convert**. Only the text node changed; the
+   `id="btn-module-activate"`, the `class="btn btn-convert"`, the
+   `aria-label="Activate module development conversion"`, and the
+   `ModeToggle._bindActivate` handler wiring are all unchanged.
+
+#### Changes — results / download page (`#module-results-section`)
+
+6. **Results intro paragraph removed** (`index.html`). The
+   `<p class="module-dev-intro">Your parsed text file(s) are ready. Download each
+   below — …</p>` paragraph was deleted from the results section entirely; the
+   `Conversion complete` heading is now immediately followed by
+   `#module-results-list`.
+7. **`.module-dev-intro` CSS rule retained** (`css/styles.css`). Per the "if and
+   only if referenced nowhere else" guard, `grep -n "module-dev-intro"` across
+   `index.html`, `js/` and `css/styles.css` after the edit shows the rule is
+   **still referenced** by the front-page intro (`index.html:53`). The rule was
+   therefore **kept** (deleting it would have broken the front-page intro styling).
+8. **Results section width constrained** (`css/styles.css`). `width: 70%;` and
+   `margin: 0 auto;` were appended to the **existing** `#module-results-section`
+   rule (the centred flex-column rule with `gap:1.25rem; padding:1.5rem 0 2rem`)
+   via a targeted `str_replace` — no duplicate selector, no inline style on the
+   element.
+
+#### Files touched (before → after line counts)
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `index.html` | 268 | 259 | Front page: shortened `.module-dev-intro` to one sentence (−1); removed two `.module-slot-title` headings (−2); removed two `Optional` `.drop-zone-hint` lines (−2); `Activate` → `Convert` button text. Results: removed the `.module-dev-intro` paragraph (−4). |
+| `css/styles.css` | 1135 | 1137 | Appended `width: 70%;` + `margin: 0 auto;` to the existing `#module-results-section` rule (+2). (CSS has no line ceiling.) |
+
+No JS file was touched (so **no** `index.html` `<script>` / `tests/test-runner.js`
+`loadScript` wiring change, and **no** file-size threshold was approached:
+`js/mode-toggle.js` stays at 500, `js/module-results-page.js` at 410). No test
+file was added or modified — no test reads `index.html` (the runner's only
+`readFileSync` loads JS modules), and the `Activate` / `Writer's Template` /
+`Media List` strings present in the test suite are JS method names
+(`isActivateEnabled`), `it()` descriptions, `ModuleResultsPage` `SLOT_LABELS`, and
+`_deriveFilename` label arguments — none of which were changed.
+
+#### Invariants locked in
+
+1. **Front-page intro is one sentence** — `.module-dev-intro` on
+   `#module-dev-section` reads exactly "Upload a Writer's Template and/or a Media
+   List." with no trailing optional/activate sentence.
+2. **No slot heading labels, no "Optional" hints** — neither
+   `.module-slot-title` heading nor any `Optional` `.drop-zone-hint` remains inside
+   `#module-dev-section`; the drop-zone prompt text and the shared
+   `.drop-zone-hint` / `.module-slot-title` CSS rules are intact.
+3. **Each chip is paired under its own zone** — `#module-template-info` and
+   `#module-media-info` sit inside their respective `.module-upload-slot` columns,
+   directly beneath their paired drop zone, with the two columns side-by-side.
+4. **Primary action says "Convert"** — the button label is `Convert`; its `id`,
+   classes, `aria-label` and handler wiring are unchanged.
+5. **No intro paragraph on the results screen** — `#module-results-section`
+   contains no `.module-dev-intro` paragraph; the `.module-dev-intro` CSS rule is
+   retained because the front-page intro still uses it.
+6. **Results screen is 70%-wide, centred** — the existing
+   `#module-results-section` rule carries `width: 70%; margin: 0 auto;` (single
+   rule, no duplicate selector, no inline style).
+7. **Standard mode + pipeline untouched** — no JS, no conversion logic, no
+   `#upload-section` / `#results-section` / `js/app.js` change; 748/748 tests
+   unchanged.
+
+---
+
 [← Back to index](../CLAUDE.md)

@@ -254,6 +254,8 @@ main {
     align-items: center;
     gap: 1.25rem;
     padding: 1.5rem 0 2rem;
+    width: 70%;
+    margin: 0 auto;
 }
 
 /* Prominent, horizontally-centred "Conversion complete" display heading. */
