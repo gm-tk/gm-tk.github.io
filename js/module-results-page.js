@@ -376,15 +376,16 @@ ModuleResultsPage.NEXT_STEPS_HEADING =
 ModuleResultsPage.NEXT_STEPS = [
     'Log in to the Creative Services Claude account. On the sign-in screen, ' +
         'choose the <code>Continue with Google</code> option — do not sign ' +
-        'in with an email address and password.',
+        'in with the email option.',
     'Once you are logged in, open the <code>HTML Convertor</code> project.',
     'Inside that project, start a new chat.',
-    'Into that new chat, upload all three files: the Writer’s Template ' +
-        '<code>.txt</code> and the Media List <code>.txt</code> you just ' +
-        'downloaded here, <strong>plus an example completed module to use as a ' +
-        'formatting reference</strong>.',
-    'Send the message to have the content converted into the finalized HTML files.',
-    'Review and download the generated HTML output from that chat.'
+    'Into that new chat, upload all three files:' +
+        '<ol type="a" class="next-steps-sublist">' +
+            '<li>the Writer’s Template <code>.txt</code></li>' +
+            '<li>the Media List <code>.txt</code></li>' +
+            '<li>HTML files of an example module as a reference</li>' +
+        '</ol>',
+    'Submit the message to have the content converted into the finalized HTML files.'
 ];
 
 /**

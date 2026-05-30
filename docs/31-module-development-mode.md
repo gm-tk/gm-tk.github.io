@@ -1045,4 +1045,124 @@ file was added or modified — no test reads `index.html` (the runner's only
 
 ---
 
+### Upload-Page & Conversion-Complete UI Tune-Up — Two-Line Dropzones, Compact Convert Button & Rewritten Next-Steps
+
+> **Module Development mode, presentation + author-copy only.** Surgical UI edits
+> across the front/upload page (`#module-dev-section`) and the Conversion-complete
+> results page (`#module-results-section` next-steps panel). No conversion logic,
+> no privacy-model change, no Standard-mode flow change beyond the **shared**
+> `.btn-convert` class restyle (which the task explicitly scoped to that rule).
+> `js/app.js`, `js/mode-toggle.js`, the conversion pipeline and the download
+> wiring are untouched.
+
+**Status:** DONE. **756/756** tests pass (748 baseline → 756, **+8** across one
+new test file; the existing download-UI test's six-step assertions were
+re-pointed in place to the new five-step structure, not grown).
+
+#### Changes
+
+1. **Two-line drop-zone titles** (`index.html`). Each Module Development
+   `.drop-zone-title` now breaks into exactly two lines with a single `<br>`
+   placed immediately after `.docx`:
+   `Drop Writer&rsquo;s Template .docx<br>or click to browse` and
+   `Drop Media List .docx<br>or click to browse`. The existing `&rsquo;`
+   typographic apostrophe (the file's own idiom) was preserved; only the space
+   after `.docx` became a `<br>`. No other `<br>` exists in either title, and the
+   Standard-mode drop-zone title (`index.html:118`) was left untouched.
+2. **Compact, centred Convert button** (`css/styles.css`). The `.btn-convert`
+   rule dropped its full-width behavior (`width: 100%` + `max-width: 640px`) for a
+   content-width button: `width: 138px`, `margin: 0 auto` (horizontal centring
+   inside the existing `align-items:center` flex columns of both
+   `#module-dev-section` and `#upload-section`), `padding: 13px 10px`,
+   `font-size: 18px`; `font-weight`, colours and `justify-content:center`
+   retained. No inline `style="…"` was present on `#btn-module-activate`, so none
+   was removed. The change lives **solely** in the class (no inline styles
+   introduced anywhere). The harmless small-screen `@media` override
+   (`.btn-convert { max-width: 100% }`) was left as-is — with `width:138px` it no
+   longer forces full width.
+3. **Rewritten "Next steps" content** (`js/module-results-page.js` +
+   `css/styles.css`). `ModuleResultsPage.NEXT_STEPS` went from six to **five**
+   top-level steps; the `NEXT_STEPS_HEADING`
+   (`Next steps — convert these files into finalized HTML`) is unchanged. Step 1's
+   sign-in caveat changed from "do not sign in with an email address and password"
+   to **"do not sign in with the email option"** (the `Continue with Google`
+   `<code>` option retained). Step 4 ("Into that new chat, upload all three
+   files:") now embeds a **nested ordered sub-list** `<ol type="a"
+   class="next-steps-sublist">` with exactly three `<li>` items — (a) the
+   Writer's Template `<code>.txt</code>`, (b) the Media List `<code>.txt</code>`,
+   (c) HTML files of an example module as a reference — replacing the old
+   single-paragraph "…plus an example completed module to use as a formatting
+   reference" phrasing. Step 5 changed from "Send the message…" to **"Submit the
+   message…"**; the old sixth step ("Review and download the generated HTML
+   output from that chat.") was removed entirely. A small `.next-steps-sublist`
+   CSS rule (+ `.next-steps-sublist > li + li` for inter-item spacing) supplies
+   the indentation/spacing; the sub-list is a normal (non-flex) `<ol>` so its
+   lettered markers render, and the shared `.next-steps-list code` style still
+   styles its inline `<code>`. No inline `style` attributes were added to the
+   `<ol>`/`<li>`. The render loop (`'<li>' + step + '</li>'`) is unchanged, so it
+   emits exactly five top-level `<li>` (one per entry), with the three sub-items
+   nested inside step 4's `<li>`.
+
+#### Files touched (before → after line counts)
+
+| File | Before | After | Change |
+|------|-------:|------:|--------|
+| `index.html` | 259 | 259 | Inserted a `<br>` after `.docx` in both Module Development `.drop-zone-title` paragraphs (in-line text swaps, net 0 lines). |
+| `css/styles.css` | 1137 | 1148 | `.btn-convert` reworked to compact/centred (net 0 lines); added `.next-steps-sublist` + `.next-steps-sublist > li + li` (+11). (CSS has no line ceiling.) |
+| `js/module-results-page.js` | 410 | 411 | Rewrote `ModuleResultsPage.NEXT_STEPS` to five steps with the nested (a)/(b)/(c) upload sub-list and updated wording (+1). (≤500 sub-module ceiling — comfortably under.) |
+| `tests/module-dev-download-ui.test.js` | 100 | 101 | Re-pointed the "six ordered steps" case to five (`getNextSteps().length` 6→5; `<li>` count 6→8 for 5 top-level + 3 nested; added a `next-steps-sublist` presence assertion; matched the literal `<ol class="next-steps-list">`); header comment "six steps" → "five steps". No `it()` count change (still 3). |
+| `tests/module-dev-next-steps.test.js` | — (new) | 72 | **8** `it()` cases (see below). |
+
+No new JS module was introduced (the rewrite stayed inside the existing
+`ModuleResultsPage`), so **no** `index.html` `<script>` / `tests/test-runner.js`
+`loadScript` wiring change was needed; the runner auto-discovers `*.test.js`
+(`fs.readdirSync`). `js/mode-toggle.js` (500) and `js/app.js` (1364) are
+untouched. No JS file crossed its file-size threshold as a result of this
+session.
+
+#### Test coverage
+
+`tests/module-dev-next-steps.test.js` (**8** `it()`, new — pure assertions over
+`ModuleResultsPage.NEXT_STEPS`, no DOM): exactly five top-level steps; heading
+preserved verbatim; sign-in step uses the new "do not sign in with the email
+option" wording and **not** "email address and password"; `Continue with Google`
+retained in `<code>`; step 4 carries a nested `type="a"` `.next-steps-sublist`
+with exactly three `<li>`; the three sub-items appear in (a) Writer / (b) Media /
+(c) reference order; the old "example completed module to use as a formatting
+reference" phrasing is gone; the final step says "Submit the message" and the old
+"Review and download" sixth step is gone.
+
+`tests/module-dev-download-ui.test.js` (still **3** `it()`, re-pointed): the
+render case now asserts five canonical steps, the `<ol class="next-steps-list">`
+container, the nested `next-steps-sublist`, and a total of eight `<li>`
+(5 top-level + 3 nested); the `Continue with Google` / `HTML Convertor` and
+empty-state cases are unchanged.
+
+Final suite: **756/756 passing** (was 748; +8), 0 failed.
+
+#### Invariants locked in
+
+1. **Drop-zone titles render on exactly two lines** — each Module Development
+   `.drop-zone-title` contains a single `<br>` immediately after `.docx` and no
+   other `<br>`.
+2. **Convert button is compact + centred via its class** — `.btn-convert` is
+   `width:138px`, `margin:0 auto`, `padding:13px 10px`, `font-size:18px`, with no
+   `width:100%`/`max-width:640px`; no inline `style` on `#btn-module-activate`.
+3. **Five-step next-steps, heading unchanged** — `NEXT_STEPS.length === 5`;
+   `NEXT_STEPS_HEADING` is "Next steps — convert these files into finalized HTML".
+4. **Sign-in wording updated** — step 1 reads "do not sign in with the email
+   option"; the old "email address and password" phrasing is absent.
+5. **Nested (a)/(b)/(c) upload sub-list** — step 4 renders an `<ol type="a"
+   class="next-steps-sublist">` with exactly three items (Writer's Template
+   `.txt`, Media List `.txt`, example-module HTML reference); the old
+   formatting-reference paragraph is gone.
+6. **Submit, not Send; no sixth step** — step 5 reads "Submit the message…"; the
+   old "Review and download" step is removed.
+7. **No inline styles** — every styling change is via CSS classes/rules
+   (`.btn-convert`, `.next-steps-sublist`); no `style="…"` attribute was added.
+8. **Pipeline + Standard flow untouched** — `js/app.js`, `js/mode-toggle.js`, the
+   conversion logic and the download wiring are unchanged.
+
+---
+
 [← Back to index](../CLAUDE.md)
