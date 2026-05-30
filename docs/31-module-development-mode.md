@@ -625,4 +625,91 @@ also dropped (covers the `_isMergedSpanRow` branch (b)).
 
 ---
 
+### Session 4 — Download-screen UI (equal-height dropzones, Download All, next-steps panel)
+
+Three Module Development UI refinements plus one new test file. All work is
+additive UI chrome on the existing front page + results screen; the conversion
+pipeline, privacy model (100% client-side), and download primitive are
+untouched. The "Download All" control reuses the **existing** single-file
+`OutputManager.downloadFile()` helper once per output (via
+`ModuleResultsPage.triggerDownload`) — no new download path was introduced.
+
+#### Changes
+
+1. **Equal-height upload dropzones** (`css/styles.css`). `.module-drop` gained
+   `width: 100%`, a shared `min-height: 200px`, and `display: flex` +
+   `flex-direction: column` + centred `align-items`/`justify-content`. The
+   `min-height` guarantees the two side-by-side zones
+   (`Drop Writer's Template…` / `Drop Media List…`) render identically in the
+   empty state **and** that neither collapses once a file is selected and the
+   green staged-file chip appears beneath it. The slot grid already sat in a
+   `repeat(2, minmax(0,1fr))` grid, so the shared `min-height` is what locks the
+   two zones to the same height.
+2. **"Download All" button** (`index.html` + `js/module-results-page.js`). A new
+   `#module-download-all-bar` container sits between the file list and the
+   actions bar. `ModuleResultsPage._renderDownloadAll()` injects a
+   `Download All` button **only when `hasBothOutputs()`** (a Writer's Template
+   `.txt` AND a Media List `.txt` are both present); single-file runs render an
+   empty bar (collapsed via `.module-download-all-bar:empty { display:none }`),
+   relying on the existing per-file button. Clicking it calls the new
+   `triggerDownloadAll()`, which loops `triggerDownload()` once per output, so
+   the canonical `downloadFile()` primitive fires exactly once per file.
+3. **Next-steps instructions panel** (`index.html` + `js/module-results-page.js`).
+   A new `#module-next-steps` panel renders beneath the downloads whenever
+   `hasOutputs()` is true: an `<h3>` headed
+   `Next steps — convert these files into finalized HTML` plus an ordered
+   (`<ol>`) list of six steps (`Continue with Google` sign-in → open the
+   `HTML Convertor` project → start a new chat → upload all three files
+   (Writer's Template `.txt` + Media List `.txt` + an example completed module)
+   → send the message → review and download the HTML). Heading + steps live in
+   static `ModuleResultsPage.NEXT_STEPS_HEADING` / `NEXT_STEPS` arrays (pure,
+   so the step list and count are assertable headlessly via `getNextSteps()`).
+   The panel is cleared and re-hidden in the empty state.
+
+#### Files touched (before → after line counts)
+
+| File | Before | After |
+|------|--------|-------|
+| `js/module-results-page.js` | 353 | 480 |
+| `index.html` | 271 | 273 |
+| `css/styles.css` | 1044 | 1116 |
+| `tests/module-dev-download-ui.test.js` | 0 (new) | 159 |
+
+`js/module-results-page.js` (480) remains under the 500-line extracted-sub-module
+threshold — no extraction required. No new JS module was created (methods were
+added to the existing results-page class), so no `index.html` `<script>` or
+`tests/test-runner.js` `loadScript` wiring was needed; the runner auto-discovers
+`*.test.js` (now "Loading 55 test file(s)").
+
+#### Tests
+
+`tests/module-dev-download-ui.test.js` (**6** `it()`, new): Download All renders
+when both `.txt` outputs are present; Download All hidden when only one output is
+present (both template-only and media-only branches); clicking Download All
+invokes the download helper exactly twice, once per file in output order (spy
+`OutputManager`); the next-steps panel renders with its six ordered `<li>` steps
+inside an `<ol>` and the heading; the rendered instructions contain the
+`Continue with Google` and `HTML Convertor` strings; and the empty state clears +
+hides both the next-steps panel and the Download All bar.
+
+Final suite: **745/745 passing** (was 739; +6), 0 failed.
+
+#### Invariants locked in
+
+1. **Equal dropzone height in every state** — both `.module-drop` zones share a
+   `min-height` floor, so they match height empty and after either slot is
+   filled; neither collapses behind its staged-file chip.
+2. **Download All is both-only** — the control renders/enables solely when both
+   the Writer's Template `.txt` and Media List `.txt` are present
+   (`hasBothOutputs()`); single-file runs never show it.
+3. **Reuses the single-file download primitive** — `triggerDownloadAll()` calls
+   `triggerDownload()` per output, so `OutputManager.downloadFile()` is invoked
+   exactly once per file; no second download code path exists.
+4. **Next-steps shown whenever there is output** — the panel renders for any
+   non-empty output set (one or both files) and is cleared + hidden when empty;
+   its six steps and heading are author-controlled UI chrome (pure constants),
+   not writer content.
+
+---
+
 [← Back to index](../CLAUDE.md)

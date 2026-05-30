@@ -210,13 +210,85 @@ main {
 
 .module-drop {
     max-width: 100%;
+    width: 100%;
     padding: 2rem 1.5rem;
+    /* Keep the two side-by-side zones identical in height regardless of how
+       their prompt text wraps, and stop either zone collapsing once the green
+       staged-file chip appears beneath a selected zone. The shared min-height
+       guarantees both render at the same height in the empty state and after a
+       file is attached to either slot. */
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 720px) {
     .module-upload-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* ---------- Module Development Results / Download Screen ---------- */
+
+.module-download-all-bar {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Collapse the bar entirely when no "Download All" button is rendered
+   (single-file runs) so it leaves no gap above the next-steps panel. */
+.module-download-all-bar:empty {
+    display: none;
+}
+
+.module-download-all {
+    width: 100%;
+    max-width: 360px;
+    justify-content: center;
+}
+
+.next-steps-panel {
+    width: 100%;
+    max-width: 720px;
+    margin: 0.25rem auto 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem 1.25rem;
+    text-align: left;
+}
+
+.next-steps-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.75rem;
+}
+
+.next-steps-list {
+    margin: 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.next-steps-list code {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: var(--font-mono, ui-monospace, monospace);
 }
 
 /* ---------- Upload Section ---------- */
