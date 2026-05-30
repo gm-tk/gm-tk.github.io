@@ -131,6 +131,7 @@ loadScript('js/html-converter-module-menu.js');
 loadScript('js/html-converter-lesson-menu.js');
 loadScript('js/html-converter.js');
 loadScript('js/media-list-converter.js');
+loadScript('js/module-results-page.js');
 loadScript('js/mode-toggle.js');
 
 // Load test files

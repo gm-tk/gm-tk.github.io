@@ -100,6 +100,25 @@
             </button>
         </section>
 
+        <!-- Module Development Results / Download Screen (Session 3) -->
+        <section id="module-results-section" class="hidden" aria-label="Module development output">
+            <h2 class="module-slot-title">Conversion complete</h2>
+            <p class="module-dev-intro">
+                Your parsed text file(s) are ready. Download each below &mdash;
+                everything was processed in your browser, nothing was uploaded.
+            </p>
+            <div id="module-results-list" class="file-list-panel" aria-label="Converted files"></div>
+            <p id="module-results-empty" class="drop-zone-hint hidden">
+                No converted files to download.
+            </p>
+            <div class="actions-bar">
+                <button id="btn-module-back" class="btn" type="button"
+                        aria-label="Return to the Module Development upload page">
+                    &#128260; Convert Another Module
+                </button>
+            </div>
+        </section>
+
         <!-- Standard Front Page (existing functionality) -->
         <section id="upload-section" class="hidden" aria-label="Upload a document">
             <div id="drop-zone"
@@ -245,6 +264,7 @@
     <script src="js/output-manager.js"></script>
     <script src="js/debug-panel-renderer.js"></script>
     <script src="js/media-list-converter.js"></script>
+    <script src="js/module-results-page.js"></script>
     <script src="js/mode-toggle.js"></script>
     <script src="js/app.js"></script>
 </body>
