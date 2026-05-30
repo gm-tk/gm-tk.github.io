@@ -101,22 +101,6 @@ class ModuleResultsPage {
     }
 
     /**
-     * Whether BOTH produced outputs are present — i.e. a Writer's Template .txt
-     * AND a Media List .txt. Drives the "Download All" control, which only makes
-     * sense when there is more than one file to fetch in one action.
-     * @returns {boolean}
-     */
-    hasBothOutputs() {
-        var hasTemplate = false;
-        var hasMedia = false;
-        for (var i = 0; i < this.outputs.length; i++) {
-            if (this.outputs[i].source === 'template') { hasTemplate = true; }
-            if (this.outputs[i].source === 'mediaList') { hasMedia = true; }
-        }
-        return hasTemplate && hasMedia;
-    }
-
-    /**
      * The ordered next-steps instructions shown beneath the downloads — pure so
      * the content (and its step count) is assertable without a DOM. Each entry
      * is the inner HTML of one ordered-list step.
@@ -140,7 +124,6 @@ class ModuleResultsPage {
     show(outputs) {
         this.outputs = Array.isArray(outputs) ? outputs.slice() : [];
         this._renderList();
-        this._renderDownloadAll();
         this._renderNextSteps();
         this.visible = true;
         this._setHidden(this.els.frontSection, true);
@@ -194,23 +177,6 @@ class ModuleResultsPage {
         return true;
     }
 
-    /**
-     * Download every produced output in one action by reusing the single-file
-     * helper (triggerDownload) once per file — so the existing OutputManager
-     * download primitive is invoked exactly once per output. Used by the
-     * "Download All" control, which is only offered when both files are present.
-     * @returns {number} How many outputs were successfully downloaded.
-     */
-    triggerDownloadAll() {
-        var count = 0;
-        for (var i = 0; i < this.outputs.length; i++) {
-            if (this.triggerDownload(this.outputs[i].filename)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     _findOutput(filename) {
         for (var i = 0; i < this.outputs.length; i++) {
             if (this.outputs[i].filename === filename) {
@@ -248,7 +214,6 @@ class ModuleResultsPage {
             frontSection: get('module-dev-section'),
             list: get('module-results-list'),
             empty: get('module-results-empty'),
-            downloadAllBar: get('module-download-all-bar'),
             nextSteps: get('module-next-steps'),
             backBtn: get('btn-module-back'),
             modeModuleRadio: get('mode-option-module'),
@@ -344,41 +309,6 @@ class ModuleResultsPage {
                     });
                 }
             })(btns[i]);
-        }
-    }
-
-    /**
-     * Render the "Download All" control into #module-download-all-bar, but ONLY
-     * when both the Writer's Template .txt and the Media List .txt are present
-     * (a single-file run already has its per-file button). Clears the bar
-     * otherwise. No-ops when the bar element is absent (headless).
-     */
-    _renderDownloadAll() {
-        var bar = this.els.downloadAllBar;
-        if (!bar) {
-            return;
-        }
-        if (!this.hasBothOutputs()) {
-            bar.innerHTML = '';
-            return;
-        }
-        bar.innerHTML =
-            '<button id="btn-module-download-all" class="btn btn-primary module-download-all" ' +
-                'type="button" aria-label="Download all converted text files">' +
-                '⬇ Download All</button>';
-        this._bindDownloadAll(bar);
-    }
-
-    _bindDownloadAll(bar) {
-        var self = this;
-        if (!bar.querySelector) {
-            return;
-        }
-        var btn = bar.querySelector('.module-download-all');
-        if (btn && btn.addEventListener) {
-            btn.addEventListener('click', function () {
-                self.triggerDownloadAll();
-            });
         }
     }
 

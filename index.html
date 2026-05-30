@@ -13,15 +13,30 @@
     <!-- Header -->
     <header class="app-header">
         <div class="header-inner">
-            <div>
-                <h1 class="app-title">PageForge</h1>
+            <div class="header-titles">
+                <div class="title-row">
+                    <h1 class="app-title">PageForge</h1>
+                    <div class="privacy-badge" aria-label="All processing happens in your browser. No data is uploaded or stored.">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1 14.5l-4-4 1.41-1.41L11 13.67l5.59-5.59L18 9.5l-7 7z"/>
+                        </svg>
+                        100% Client-Side
+                    </div>
+                </div>
                 <p class="app-subtitle">Writer Template Parser &mdash; Client-Side Only, No Data Stored</p>
             </div>
-            <div class="privacy-badge" aria-label="All processing happens in your browser. No data is uploaded or stored.">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1 14.5l-4-4 1.41-1.41L11 13.67l5.59-5.59L18 9.5l-7 7z"/>
-                </svg>
-                100% Client-Side
+
+            <!-- Top-level mode toggle (relocated into the header bar, right-aligned) -->
+            <div id="mode-toggle" class="mode-toggle" role="radiogroup" aria-label="PageForge mode">
+                <span class="mode-toggle-label">Mode</span>
+                <div class="mode-toggle-options">
+                    <input type="radio" name="pageforge-mode" id="mode-option-module"
+                           class="mode-toggle-input sr-only" value="module" checked>
+                    <label for="mode-option-module" class="mode-toggle-btn">Module Development</label>
+                    <input type="radio" name="pageforge-mode" id="mode-option-standard"
+                           class="mode-toggle-input sr-only" value="standard">
+                    <label for="mode-option-standard" class="mode-toggle-btn">Standard</label>
+                </div>
             </div>
         </div>
     </header>
@@ -31,19 +46,6 @@
         <div id="error-panel" class="hidden" role="alert">
             <span class="error-icon" aria-hidden="true">&#9888;</span>
             <span id="error-message"></span>
-        </div>
-
-        <!-- Top-level mode toggle (above both front pages) -->
-        <div id="mode-toggle" class="mode-toggle" role="radiogroup" aria-label="PageForge mode">
-            <span class="mode-toggle-label">Mode</span>
-            <div class="mode-toggle-options">
-                <input type="radio" name="pageforge-mode" id="mode-option-module"
-                       class="mode-toggle-input sr-only" value="module" checked>
-                <label for="mode-option-module" class="mode-toggle-btn">Module Development</label>
-                <input type="radio" name="pageforge-mode" id="mode-option-standard"
-                       class="mode-toggle-input sr-only" value="standard">
-                <label for="mode-option-standard" class="mode-toggle-btn">Standard</label>
-            </div>
         </div>
 
         <!-- Module Development Front Page (default) -->
@@ -102,20 +104,15 @@
 
         <!-- Module Development Results / Download Screen (Session 3) -->
         <section id="module-results-section" class="hidden" aria-label="Module development output">
-            <h2 class="module-slot-title">Conversion complete</h2>
+            <h2 class="module-results-title">Conversion complete</h2>
             <p class="module-dev-intro">
                 Your parsed text file(s) are ready. Download each below &mdash;
                 everything was processed in your browser, nothing was uploaded.
             </p>
-            <div class="module-downloads-row">
-                <div class="module-downloads-files">
-                    <div id="module-results-list" class="file-list-panel" aria-label="Converted files"></div>
-                    <p id="module-results-empty" class="drop-zone-hint hidden">
-                        No converted files to download.
-                    </p>
-                </div>
-                <div id="module-download-all-bar" class="module-download-all-bar"></div>
-            </div>
+            <div id="module-results-list" class="file-list-panel" aria-label="Converted files"></div>
+            <p id="module-results-empty" class="drop-zone-hint hidden">
+                No converted files to download.
+            </p>
             <div id="module-next-steps" class="next-steps-panel hidden" aria-label="Next steps"></div>
         </section>
 
