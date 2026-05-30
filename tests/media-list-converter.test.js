@@ -1,14 +1,18 @@
 /**
- * Tests for MediaListConverter (Module Development mode, Session 2).
+ * Tests for MediaListConverter (Module Development mode).
  *
- * The Media List slot is a STRAIGHT FULL conversion: the entire .docx is
- * converted to the same plain-text output format the Writer's Template pipeline
- * produces, with NO [TITLE BAR] / intro-page skipping and NO phase/template
- * processing. These tests drive the pure, synchronous convertParsedResult()
- * core (over canned DocxParser results) plus the convert() entry with an
- * injected synchronous parser, so they run headlessly — the real DocxParser is
- * never loaded by the Node test runner. The shared OutputFormatter (loaded by
- * the runner) backs the formatting, so format parity is verified for real.
+ * The Media List slot performs STRUCTURAL media-table extraction: it locates
+ * the genuine media-list table by its HEADER ROW and emits ONLY that table's
+ * data rows (column header once at the top, the "Example" sample row skipped,
+ * cells tab-separated in column order). All boilerplate outside the table —
+ * intro paragraphs, headings, the submission checklist, hyperlink guidance — is
+ * excluded structurally. These tests drive the pure, synchronous
+ * convertParsedResult() core (over canned DocxParser results) plus the convert()
+ * entry with an injected synchronous parser, so they run headlessly — the real
+ * DocxParser is never loaded by the Node test runner.
+ *
+ * Structural-exclusion / content-agnostic edge cases live in the sibling file
+ * tests/media-list-extraction.test.js.
  */
 
 'use strict';
@@ -61,112 +65,136 @@ function mlcTable(grid) {
     };
 }
 
-describe('MediaListConverter — straight full .docx conversion', function () {
+// Standard media-list column header labels (Item No. … ECR approval).
+var MEDIA_HEADERS = ['Item No.', 'WTPg No.', 'Item Type', 'Description', 'Source', 'URL', 'ECR approval'];
 
-    it('convert() reuses the injected DocxParser and converts the whole document', function () {
+// Build a media table: the header row, then the supplied data rows (each an
+// array of cell strings in column order). Tests add an 'Example' row as needed.
+function mlcMediaTable(dataRows, headers) {
+    return mlcTable([headers || MEDIA_HEADERS].concat(dataRows));
+}
+
+describe('MediaListConverter — structural media-table extraction', function () {
+
+    it('convert() reuses the injected DocxParser and extracts the media table', function () {
         var parserMock = {
+            calls: 0,
             parse: function () {
-                return { content: [mlcPara('Alpha'), mlcPara('Beta'), mlcPara('Gamma')], metadata: {} };
+                this.calls++;
+                return {
+                    content: [
+                        mlcPara('PageForge Writer Template — Media List'),
+                        mlcPara('Before starting ensure you are familiar with the guidance.'),
+                        mlcMediaTable([
+                            ['Example', '1', 'Image', 'A sample item', 'iStock', 'https://ex.com/s.jpg', 'Yes'],
+                            ['1', '5', 'Image', 'Hero image', 'iStock', 'https://ex.com/a.jpg', 'Yes'],
+                            ['2', '8', 'Video', 'Intro clip', 'YouTube', 'https://youtu.be/abc', 'Pending']
+                        ])
+                    ],
+                    metadata: {}
+                };
             }
         };
         var mlc = new MediaListConverter({ parser: parserMock });
         var out = mlc.convert({ name: 'List.docx' });
         // Synchronous parser → synchronous string (not a Promise).
         assert(typeof out === 'string', 'sync parser yields a string, not a Promise');
-        assert(out.indexOf('Alpha') !== -1, 'first block converted');
-        assert(out.indexOf('Beta') !== -1, 'middle block converted');
-        assert(out.indexOf('Gamma') !== -1, 'last block converted');
+        assert(parserMock.calls === 1, 'the injected DocxParser was reused (parse called once)');
+        assert(out.indexOf('Hero image') !== -1, 'real data row extracted');
+        assert(out.indexOf('Intro clip') !== -1, 'second data row extracted');
+        assert(out.indexOf('Before starting') === -1, 'leading intro guidance excluded');
+        assert(out.indexOf('A sample item') === -1, 'Example sample row excluded');
     });
 
-    it('does NOT skip any leading pages/sections (unlike the writer pipeline)', function () {
-        // Block 0 is front matter; a [TITLE BAR] only appears later. The writer
-        // pipeline would discard everything before it; the media list must not.
+    it('excludes all boilerplate/paragraphs that precede the table', function () {
         var content = [
-            mlcPara('FRONT MATTER PAGE — generic submission checklist'),
-            mlcPara('More boilerplate'),
-            mlcPara('[TITLE BAR] Some Module'),
-            mlcPara('Module body content')
-        ];
-        var mlc = new MediaListConverter();
-        var out = mlc.convertParsedResult({ content: content, metadata: {} });
-        assert(out.indexOf('FRONT MATTER PAGE') !== -1, 'leading front matter is preserved (no skip)');
-        assert(out.indexOf('More boilerplate') !== -1, 'second leading block is preserved');
-
-        // Contrast: the existing writer pipeline starting at the [TITLE BAR]
-        // (contentStartIndex = 2) discards the same leading blocks.
-        var writerOut = new OutputFormatter().formatAll({
-            content: content, contentStartIndex: 2, contentStartFound: true, metadata: {}
-        }).full;
-        assert(writerOut.indexOf('FRONT MATTER PAGE') === -1,
-            'sanity: the writer pipeline DOES skip the leading front matter');
-    });
-
-    it('produces output in the exact same format as the writer converter (no-skip case)', function () {
-        var content = [
-            mlcPara('A red instruction', { isRed: true }),
-            mlcPara('Bold body', { bold: true }),
-            mlcTable([['Title', 'URL'], ['Hero image', 'https://example.com/a.jpg']])
-        ];
-        var meta = {};
-        var mlOut = new MediaListConverter().convertParsedResult({ content: content, metadata: meta });
-        // When nothing is skipped, the writer pipeline (formatAll from index 0)
-        // must produce a byte-identical result — same envelope, same markers.
-        var writerOut = new OutputFormatter().formatAll({
-            content: content, contentStartIndex: 0, contentStartFound: true, metadata: meta
-        }).full;
-        assertEqual(mlOut, writerOut, 'media list output equals the writer pipeline output when nothing is skipped');
-        assert(mlOut.indexOf('[RED TEXT]') !== -1, 'red-text marker present (same format)');
-        assert(mlOut.indexOf('**Bold body**') !== -1, 'bold marker present (same format)');
-        assert(mlOut.indexOf('┌─── TABLE') !== -1, 'table box marker present (same format)');
-    });
-
-    it('preserves multi-section list content in document order', function () {
-        var content = [
-            mlcPara('Section One'),
-            mlcBullet('Item A'),
-            mlcBullet('Item B'),
-            mlcPara('Section Two'),
-            mlcBullet('Item C')
+            mlcPara('PageForge Writer Template'),
+            mlcPara('Submission checklist'),
+            mlcPara('Please supply details for ALL external media used in this module.'),
+            mlcMediaTable([
+                ['1', '5', 'Image', 'Hero image', 'iStock', 'https://ex.com/a.jpg', 'Yes']
+            ])
         ];
         var out = new MediaListConverter().convertParsedResult({ content: content, metadata: {} });
-        assert(out.indexOf('Section One') !== -1, 'first section heading preserved');
-        assert(out.indexOf('Section Two') !== -1, 'second section heading preserved');
-        assert(out.indexOf('• Item A') !== -1, 'bullet A preserved');
-        assert(out.indexOf('• Item B') !== -1, 'bullet B preserved');
-        assert(out.indexOf('• Item C') !== -1, 'bullet C (second section) preserved');
-        // Document order: Section Two appears after Item B.
-        assert(out.indexOf('Item B') < out.indexOf('Section Two'), 'order preserved across sections');
+        assert(out.indexOf('Hero image') !== -1, 'the data row is emitted');
+        assert(out.indexOf('Please supply details') === -1, 'the "Please supply…" paragraph is excluded');
+        assert(out.indexOf('Submission checklist') === -1, 'the submission-checklist heading is excluded');
+        assert(out.indexOf('PageForge Writer Template') === -1, 'the template heading is excluded');
+    });
+
+    it('emits data rows in column order with the header rendered once at the top', function () {
+        var content = [
+            mlcMediaTable([
+                ['1', '5', 'Image', 'Hero image', 'iStock', 'https://ex.com/a.jpg', 'Yes']
+            ])
+        ];
+        var out = new MediaListConverter().convertParsedResult({ content: content, metadata: {} });
+        // A distinctive header label that never recurs in the data appears once.
+        var first = out.indexOf('Item Type');
+        assert(first !== -1, 'the column header is rendered');
+        assert(out.indexOf('Item Type', first + 1) === -1, 'the header is rendered exactly once');
+        // Column order within the data row: Description < Source < URL.
+        var d = out.indexOf('Hero image');
+        var s = out.indexOf('iStock');
+        var u = out.indexOf('https://ex.com/a.jpg');
+        assert(d !== -1 && s !== -1 && u !== -1, 'all data cells present');
+        assert(d < s && s < u, 'cells emitted in column order (Description, Source, URL)');
+    });
+
+    it('preserves multiple data rows in their original row order', function () {
+        var content = [
+            mlcMediaTable([
+                ['1', '5', 'Image', 'First item', 'iStock', 'https://ex.com/1.jpg', 'Yes'],
+                ['2', '8', 'Video', 'Second item', 'YouTube', 'https://youtu.be/2', 'No'],
+                ['3', '9', 'Audio', 'Third item', 'Freesound', 'https://ex.com/3.mp3', 'Yes']
+            ])
+        ];
+        var out = new MediaListConverter().convertParsedResult({ content: content, metadata: {} });
+        assert(out.indexOf('First item') < out.indexOf('Second item'), 'row 1 precedes row 2');
+        assert(out.indexOf('Second item') < out.indexOf('Third item'), 'row 2 precedes row 3');
     });
 
     it('applies NO phase/template/HTML processing (plain text only)', function () {
-        var content = [mlcPara('Heading-ish line', { bold: true }), mlcBullet('A bullet')];
+        var content = [
+            mlcMediaTable([
+                ['1', '5', 'Image', 'Hero image', 'iStock', 'https://ex.com/a.jpg', 'Yes']
+            ])
+        ];
         var out = new MediaListConverter().convertParsedResult({ content: content, metadata: {} });
         assert(out.indexOf('<div') === -1, 'no <div> (no HTML conversion)');
         assert(out.indexOf('class="') === -1, 'no class attributes (no template/Bootstrap grid)');
         assert(out.indexOf('<!DOCTYPE') === -1, 'no document scaffold');
-        assert(out.indexOf('<h1') === -1 && out.indexOf('<p>') === -1, 'no HTML tags emitted');
+        assert(out.indexOf('┌─── TABLE') === -1, 'no formatter table-box envelope (structural extraction, not a full dump)');
     });
 
-    it('handles a single-entry media list', function () {
-        var content = [mlcPara('Only one media item')];
+    it('handles a single-data-row media list', function () {
+        var content = [
+            mlcMediaTable([
+                ['1', '5', 'Image', 'Only media item', 'iStock', 'https://ex.com/only.jpg', 'Yes']
+            ])
+        ];
         var out = new MediaListConverter().convertParsedResult({ content: content, metadata: {} });
-        assert(out.indexOf('Only one media item') !== -1, 'the single entry is converted');
-        assert(out.indexOf('--- CONTENT START ---') !== -1, 'output envelope still produced');
+        assert(out.indexOf('Only media item') !== -1, 'the single data row is emitted');
+        var n = out.split('\n').length;
+        assert(n === 2, 'exactly two lines: header + one data row (got ' + n + ')');
     });
 
-    it('handles an empty document gracefully', function () {
-        var out = new MediaListConverter().convertParsedResult({ content: [], metadata: {} });
-        assert(typeof out === 'string', 'empty document yields a string');
-        assert(out.indexOf('--- CONTENT START ---') !== -1, 'envelope produced for an empty document');
+    it('returns a safe empty result and surfaces an error when no media table is present', function () {
+        var notes = [];
+        var mlc = new MediaListConverter({ notify: function (m) { notes.push(m); } });
+        var content = [mlcPara('Just some prose'), mlcBullet('A checklist item')];
+        var out = mlc.convertParsedResult({ content: content, metadata: {} });
+        assert(out === '', 'no table → empty-but-valid result (empty string)');
+        assert(notes.length === 1, 'a user-facing error was surfaced exactly once');
+        assert(/media table/i.test(notes[0]), 'the error message explains no media table was found');
     });
 
-    it('handles malformed input gracefully', function () {
+    it('handles malformed input gracefully (never throws)', function () {
         var mlc = new MediaListConverter();
         var cases = [null, undefined, {}, { content: 'not-an-array' }, { content: null }];
         for (var i = 0; i < cases.length; i++) {
             var out = mlc.convertParsedResult(cases[i]);
-            assert(typeof out === 'string', 'malformed input #' + i + ' yields a string, not a throw');
-            assert(out.indexOf('--- CONTENT START ---') !== -1, 'envelope still produced for malformed input #' + i);
+            assert(out === '', 'malformed input #' + i + ' yields an empty string, not a throw');
         }
     });
 });
