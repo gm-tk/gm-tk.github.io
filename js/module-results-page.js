@@ -374,7 +374,7 @@ ModuleResultsPage.SLOT_LABELS = {
 ModuleResultsPage.NEXT_STEPS_HEADING =
     'Next steps — convert these files into finalized HTML';
 ModuleResultsPage.NEXT_STEPS = [
-    'Log in to the Creative Services Claude account. On the sign-in screen, ' +
+    'Log in to the CS Claude account. On the sign-in screen, ' +
         'choose the <code>Continue with Google</code> option — do not sign ' +
         'in with the email option.',
     'Once you are logged in, open the <code>HTML Convertor</code> project.',
