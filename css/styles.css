@@ -1,0 +1,712 @@
+/* ==========================================================================
+   PageForge — Styles
+   Writer Template Parser (Module Development)
+
+   Carried over from V1, with all Standard-mode rules removed (upload /
+   processing / results / preview / debug panels, template selector, stats &
+   metadata panels, output layout). Only rules used by the Module Development
+   front page, its results/download screen, and the shared header/toast/footer
+   chrome remain.
+   ========================================================================== */
+
+/* ---------- Reset & Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-bg: #f5f7fa;
+    --color-surface: #ffffff;
+    --color-primary: #1a73e8;
+    --color-primary-hover: #1557b0;
+    --color-primary-light: #e8f0fe;
+    --color-text: #202124;
+    --color-text-secondary: #5f6368;
+    --color-border: #dadce0;
+    --color-success: #0d904f;
+    --color-success-bg: #e6f4ea;
+    --color-warning: #e37400;
+    --color-warning-bg: #fef7e0;
+    --color-error: #d93025;
+    --color-error-bg: #fce8e6;
+    --color-drop-border: #1a73e8;
+    --color-drop-bg: #e8f0fe;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "Courier New", monospace;
+    --max-width: 1100px;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ---------- Layout ---------- */
+
+.app-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.header-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+/* Title + "100% Client-Side" badge sit inline on one row, vertically centred. */
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.app-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    max-width: 380px;
+}
+
+.privacy-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.privacy-badge svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ---------- Sections ---------- */
+
+.hidden {
+    display: none !important;
+}
+
+/* ---------- Mode Toggle ---------- */
+
+/* Relocated into the header bar (right-aligned beside the title block), so it
+   carries no body spacing of its own. */
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0;
+}
+
+.mode-toggle-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.mode-toggle-options {
+    display: inline-flex;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    padding: 3px;
+    box-shadow: var(--shadow-sm);
+}
+
+.mode-toggle-btn {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    border-radius: calc(var(--radius) - 3px);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.mode-toggle-btn:hover {
+    color: var(--color-text);
+}
+
+.mode-toggle-input:checked + .mode-toggle-btn {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.mode-toggle-input:focus-visible + .mode-toggle-btn {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ---------- Module Development Front Page ---------- */
+
+#module-dev-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 0 2rem;
+}
+
+.module-dev-intro {
+    max-width: 720px;
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.module-upload-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.module-upload-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.module-slot-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.module-drop {
+    max-width: 100%;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    /* Keep the two side-by-side zones identical in height regardless of how
+       their prompt text wraps, and stop either zone collapsing once the green
+       staged-file chip appears beneath a selected zone. The shared min-height
+       guarantees both render at the same height in the empty state and after a
+       file is attached to either slot. */
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 720px) {
+    .module-upload-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Module Development Results / Download Screen ---------- */
+
+/* Centre the heading + intro and let the converted-file cards span the full
+   content width. Mirrors the front page's centred single-column layout. */
+#module-results-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 0 2rem;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* Prominent, horizontally-centred "Conversion complete" display heading. */
+.module-results-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: center;
+    margin: 0;
+}
+
+/* The parsed-file cards span the full width of the content container; each card
+   (.file-entry) already lays its filename + type label on the left and its
+   per-file Download button on the right, stacking vertically. */
+#module-results-list {
+    width: 100%;
+}
+
+/* Results-screen action row: "Back" (non-destructive) + "Convert another
+   module" (full reset), centred by the section's column layout. */
+.results-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+/* "Download all as a ZIP" — sits beneath the per-file download rows, only shown
+   when more than one file was produced. */
+.download-all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    margin-bottom: .5rem;
+    padding-bottom: .5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.download-all-hint {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.next-steps-panel {
+    width: 100%;
+    margin: 0.25rem 0 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem 1.25rem;
+    text-align: left;
+}
+
+.next-steps-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.75rem;
+}
+
+.next-steps-list {
+    margin: 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.next-steps-list code {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: var(--font-mono, ui-monospace, monospace);
+}
+
+.next-steps-sublist {
+    margin: 0.4rem 0 0;
+    padding-left: 1.5rem;
+    list-style: lower-alpha;
+    line-height: 1.5;
+}
+
+.next-steps-sublist > li + li {
+    margin-top: 0.3rem;
+}
+
+/* ---------- Page Stitcher ---------- */
+
+#stitch-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 0 2rem;
+}
+
+#stitch-summary {
+    width: 100%;
+    max-width: 900px;
+}
+
+.stitch-ok {
+    color: var(--color-success);
+    font-weight: 600;
+    margin: 0;
+}
+
+.stitch-error {
+    color: var(--color-error);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+}
+
+.stitch-errors {
+    margin: 0;
+    padding-left: 1.4rem;
+    color: var(--color-error);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ---------- Drop Zone ---------- */
+
+.drop-zone {
+    width: 100%;
+    max-width: 640px;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    background: var(--color-surface);
+}
+
+.drop-zone:hover,
+.drop-zone:focus-visible {
+    border-color: var(--color-drop-border);
+    background: var(--color-drop-bg);
+    outline: none;
+}
+
+.drop-zone.drag-over {
+    border-color: var(--color-primary);
+    background: var(--color-drop-bg);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+.drop-zone-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    color: var(--color-primary);
+}
+
+.drop-zone-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.drop-zone-hint {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* ---------- Staged File Info ---------- */
+
+.staged-file-info {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+.staged-file-icon {
+    flex-shrink: 0;
+}
+
+.staged-file-name {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* ---------- Convert Button ---------- */
+
+.btn-convert {
+    width: 138px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 13px 10px;
+    font-size: 18px;
+    font-weight: 600;
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.btn-convert:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+.btn-convert:disabled {
+    background: var(--color-border);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* ---------- Buttons (shared) ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background: var(--color-bg);
+    border-color: var(--color-primary);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+}
+
+/* ---------- Error Panel ---------- */
+
+#error-panel {
+    max-width: 640px;
+    margin: 1rem auto;
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.error-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+#error-message {
+    color: var(--color-error);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ---------- File List Panel ---------- */
+
+.file-list-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.file-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.file-entry:hover {
+    background: var(--color-bg);
+}
+
+.file-entry.selected {
+    background: var(--color-primary-light);
+    border-left: 3px solid var(--color-primary);
+}
+
+.file-entry:last-child {
+    border-bottom: none;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.file-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.file-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-meta {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+/* ---------- Toast ---------- */
+
+#toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #323232;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+#toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- Footer ---------- */
+
+.app-footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+/* ---------- Screen-reader only ---------- */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-subtitle {
+        max-width: 100%;
+    }
+
+    .drop-zone {
+        padding: 2rem 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Stack the two results-screen actions full-width on narrow viewports. */
+    .results-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .file-list-panel {
+        max-height: 200px;
+    }
+
+    .btn-convert {
+        max-width: 100%;
+    }
+}

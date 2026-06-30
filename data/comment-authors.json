@@ -1,0 +1,46 @@
+{
+  "_comment": [
+    "PageForge V1.5 — native Word COMMENT capture whitelist + filter (ported from",
+    "CONVERTER_V2 data/Comment_Authors.json). Word stores editor comments in",
+    "word/comments.xml (each carrying a w:author); the anchors live in word/document.xml",
+    "as w:commentRangeStart/End by w:id. Only comments whose author resolves to one of the",
+    "six Creative-Services parties below are surfaced, and only the ACTIONABLE ones (the",
+    "content_filter omits pure copyright/permission boilerplate). Each surviving comment is",
+    "re-emitted as a RED NOTE in the parsed .txt, immediately before the element it refers",
+    "to, using OutputFormatter's existing red-text marker (NOT the V2 cv2-comment HTML).",
+    "This file is the editable source of truth; js/comment-config.js fetches it at runtime",
+    "with an embedded fallback (keep that fallback in sync if you edit this file)."
+  ],
+  "enabled": true,
+  "render": {
+    "prefix": "Note from {author}: {text}",
+    "marker": "OutputFormatter red-text marker (🔴[RED TEXT] … [/RED TEXT]🔴)",
+    "note": "V1.5 emits to the parsed .txt, not HTML. Each surviving comment renders as the OutputFormatter red-text marker wrapping the 'prefix' template ('Note from {author}: {text}'), placed immediately before the anchored element (body) or the body element that uses the same media (media-row). The downstream Claude Project renders the red styling from the marker and should preserve the 'Note from {author}:' attribution verbatim. The prefix is data-driven (CommentInserter reads it); keep js/comment-config.js's embedded fallback in sync."
+  },
+  "content_filter": {
+    "enabled": true,
+    "omit_boilerplate": "(used\\s+(with|by|under)\\b|with permission\\b|used in online learning|public domain|creative commons|crown copyright|copyright act|all rights reserved|cc0\\b|©|\\bte kura (created|produced|made|owned)|links?\\s+only\\b|extract only|okay to use|\\ball (istock|you ?tube|shutterstock)\\b|licen[cs]e\\.?\\s*$|^link$|^links?\\b)",
+    "action_keep": "(\\bplease\\b|\\breplace\\b|\\brecreate\\b|\\bre-create\\b|\\bembed\\b|\\binsert\\b|\\bremove\\b|\\bcrop\\b|\\bresize\\b|\\bswap\\b|\\bdelete\\b|\\boverlay\\b|\\bjumble\\b|\\bsource\\b|can you\\b|can we\\b|could you\\b|could we\\b|designer to\\b|we (cannot|can'?t|are unable|need)\\b|\\?\\s*$)",
+    "note": "ASYMMETRIC rule (ported verbatim): a comment is OMITTED iff it matches omit_boilerplate AND matches NO action_keep signal — so a MIXED note ('Replace with iStock. Used with permission.') is KEPT because the action signal wins. Both regexes are matched case-insensitively. Applies uniformly to all six authors. Set enabled:false to surface every whitelisted comment regardless of content."
+  },
+  "media_match": {
+    "enabled": true,
+    "id_match": true,
+    "note": "A whitelisted comment anchored to a MEDIA LIST table row (which is not rendered as body text) is surfaced before the body element that references the same media item. The match key is the row's hyperlink URL (recorded as comment.rowUrl) PLUS, when id_match is true, the extracted reference number — the iStock id (gm-form e.g. gm1382010801 or the CDN /id/NNN form) and the YouTube video id — so a placeholder image with no live link still matches by its shared reference number. Set id_match:false for exact-URL-only matching; set enabled:false to leave media-row comments unsurfaced."
+  },
+  "match": {
+    "case_insensitive": true,
+    "dot_space_equivalent": true,
+    "strip_disambiguator": true,
+    "accept_reversed_order": true,
+    "note": "Word's w:author is the person's Office display name, which varies: space-form ('Nadia Stanton') vs dot/username-form ('Kate.Scanlon'), case ('caroline schwer'), and a trailing ' [N]' disambiguator. Matching normalises BOTH the stored author and each whitelist entry: lowercase, collapse whitespace, treat '.'/'_' as a space, strip a trailing ' [N]', and also accept 'Last First' order. The resolver returns the canonical display name to print, or drops the comment."
+  },
+  "authors": [
+    { "display": "Kate Scanlon",      "enabled": true, "seen_as": ["Kate.Scanlon"] },
+    { "display": "Nadia Stanton",     "enabled": true, "seen_as": ["Nadia Stanton"] },
+    { "display": "Caroline Schwer",   "enabled": true, "seen_as": ["caroline schwer"] },
+    { "display": "Simon Vita",        "enabled": true, "seen_as": ["simon vita"] },
+    { "display": "Amanda Griffiths",  "enabled": true, "seen_as": ["amanda griffiths"] },
+    { "display": "Creative Services", "enabled": true, "seen_as": ["Creative Services"] }
+  ]
+}
