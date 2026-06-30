@@ -78,7 +78,7 @@ No dependencies — the runner is plain Node:
 node tests/test-runner.js
 ```
 
-It loads every `js/` module and auto-discovers `tests/*.test.js`, printing a pass/total summary. The suite is **135/135 passing**. A full Page Stitcher round-trip on a real module runs automatically when the finalized-module corpus is present beside the app, and skips cleanly when it isn't.
+It loads every `js/` module and auto-discovers `tests/*.test.js`, printing a pass/total summary. The suite is **151/151 passing**. A full Page Stitcher round-trip on a real module runs automatically when the finalized-module corpus is present beside the app, and skips cleanly when it isn't.
 
 ---
 

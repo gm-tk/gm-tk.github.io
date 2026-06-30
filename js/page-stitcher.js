@@ -323,11 +323,19 @@ class PageStitcherMode {
     /** Split the read files into {base, extraBases, sections} by marker/filename. */
     _classifyFiles(readFiles, stitcher) {
         var tag = (stitcher && stitcher.config && stitcher.config.spliceTag) || 'PAGEFORGE-SPLICE';
-        var spliceRe = new RegExp(tag, 'i');
+        // Match a REAL splice marker (<!-- PAGEFORGE-SPLICE id=…), not a bare mention
+        // of the word: every section file carries a manual-stitch GUIDE block that
+        // quotes the marker in its human instructions, so a bare-substring test
+        // misclassifies every section as a base (→ ">1 base" error). Strip GUIDE
+        // blocks first — exactly as stitchCore does before locating markers — then
+        // look for a genuine marker. The <CODE>-base.html filename fallback is kept.
+        var markerRe = new RegExp('<!--\\s*' + tag + '\\s+id=', 'i');
         var bases = [], sections = [];
         (readFiles || []).forEach(function (f) {
             if (!f) { return; }
-            var isBase = spliceRe.test(f.html || '') ||
+            var cleaned = (stitcher && typeof stitcher._stripGuides === 'function')
+                ? stitcher._stripGuides(f.html || '') : (f.html || '');
+            var isBase = markerRe.test(cleaned) ||
                 /(^|[\\/])[^\\/]*-base\.html?$/i.test(f.name || '');
             if (isBase) { bases.push(f); } else { sections.push(f); }
         });
