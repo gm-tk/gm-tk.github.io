@@ -92,7 +92,7 @@ The converter may add highly detailed, human-readable **manual-stitch guidance**
 <!-- PAGEFORGE-GUIDE-END -->
 ```
 
-The Page Stitcher **strips every `PAGEFORGE-GUIDE-START … PAGEFORGE-GUIDE-END` block** during stitching (the base is cleaned before markers are located, and the assembled output again), so the unified file carries none of these instructions. The block is removed as a whole, so its text may safely quote markers (including `-->`).
+The Page Stitcher **strips every `PAGEFORGE-GUIDE-START … PAGEFORGE-GUIDE-END` block** during stitching (the base is cleaned before markers are located, and the assembled output again), so the unified file carries none of these instructions. The block is removed as a whole, so its text may safely quote markers (including `-->`) — and because guides are stripped **before base/section classification** as well as before stitching (§5), a section file whose guidance quotes a `PAGEFORGE-SPLICE` marker is still correctly classed as a section, never mistaken for a base.
 
 ---
 
@@ -106,7 +106,9 @@ Stitching the base + all section files yields a single file whose `#body` is **t
 
 `js/page-stitcher.js` (Page Stitcher mode):
 
-All files are dropped into **one upload container**; PageForge auto-classifies them — the **base** is the file carrying `PAGEFORGE-SPLICE` markers (or named `<CODE>-base.html`); every other file is a **section** (so the `-base` / `-lesson-NN` suffixes are a human-readable aid, not required for detection).
+All files are dropped into **one upload container**; PageForge auto-classifies them. To tell the **base** from a **section**, the classifier **strips every `PAGEFORGE-GUIDE-START … PAGEFORGE-GUIDE-END` block first** (exactly as the stitch core does before locating markers, §3c/§4), then treats a file as the base only if the cleaned text carries a **real** splice marker — `<!-- PAGEFORGE-SPLICE id="…" -->` — or the file is named `<CODE>-base.html`; every other file is a **section** (so the `-base` / `-lesson-NN` suffixes are a human-readable aid, not required for detection).
+
+> **Strip guides _before_ the base test — this is essential, not optional.** Every section file carries manual-stitch GUIDE blocks that *quote* the splice marker verbatim in their human instructions (e.g. “paste it in place of the matching `<!-- PAGEFORGE-SPLICE id="01" -->` marker”). The guides quote the **complete** marker, so a stricter marker pattern alone is not enough — a classifier that matches before stripping guides would flag every section as a base and abort with a spurious *“more than one base homepage”* error. Strip the GUIDE blocks first, **then** match a real marker.
 
 1. Read the base homepage; collect every `<!-- PAGEFORGE-SPLICE id="X" -->` marker **in document order**.
 2. For each uploaded section file, determine its `id` and `content`:

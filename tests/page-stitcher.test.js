@@ -258,6 +258,47 @@
             assertEqual(om.downloaded[0], 'DEMO101.html', 'download triggered');
         });
 
+        it('classifies section files that carry a GUIDE block quoting a SPLICE marker (regression)', function () {
+            // The downstream converter adds a manual-stitch GUIDE block to every
+            // section file, and that guidance quotes the splice marker verbatim
+            // (e.g. "paste it in place of the matching <!-- PAGEFORGE-SPLICE id="01" -->").
+            // A bare-substring base test would class every such section as a base and
+            // fail with "More than one base homepage". Base detection must strip GUIDE
+            // blocks first, then match a REAL marker — this is the classifier-level
+            // gap the pure-core guide-quoting test never exercised.
+            var GS = '<!-- PAGEFORGE-GUIDE-START -->', GE = '<!-- PAGEFORGE-GUIDE-END -->';
+            function guided(id, inner) {
+                return {
+                    name: 'BLL220-lesson-' + id + '.html',
+                    html: GS + '\n<!-- MANUAL STITCH: paste this in place of the matching ' +
+                          '<!-- PAGEFORGE-SPLICE id="' + id + '" --> marker in the base. -->\n' + GE + '\n' +
+                          '<!-- PAGEFORGE-SECTION id="' + id + '" -->\n<!-- ' + id + ' -->\n' + inner +
+                          '\n<!-- /PAGEFORGE-SECTION -->'
+                };
+            }
+            var om = mockOM();
+            var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om, notify: function () {} });
+            var files = [
+                { name: 'BLL220-base.html', html: base(['01', '02', '03']) },
+                guided('01', '<p>one</p>'), guided('02', '<p>two</p>'), guided('03', '<p>three</p>')
+            ];
+
+            // The classifier must see exactly one base + three sections (not 4 bases).
+            var c = m._classifyFiles(files, new PageStitcher());
+            assertNotNull(c.base, 'the real base is detected');
+            assertEqual(c.extraBases.length, 0, 'no extra bases — guide-quoted markers are not real bases');
+            assertEqual(c.sections.length, 3, 'all three guided files classed as sections');
+
+            // ...and the full stitch succeeds with no ">1 base" error or marker leak.
+            var out = m.stitchReadFiles(files);
+            assertTrue(out.result.ok, 'ok despite guide-quoted markers: ' + out.result.errors.join(' '));
+            assert(out.result.errors.join(' ').indexOf('More than one base homepage') === -1,
+                'no spurious "More than one base homepage" error');
+            assertEqual(om.added.length, 1, 'one unified file emitted');
+            assert(om.added[0].content.indexOf('PAGEFORGE') === -1,
+                'no splice/section/guide markers leak into the stitched output');
+        });
+
         it('reports when no base homepage is present and emits nothing', function () {
             var om = mockOM(); var toasts = [];
             var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om, notify: function (t) { toasts.push(t); } });
