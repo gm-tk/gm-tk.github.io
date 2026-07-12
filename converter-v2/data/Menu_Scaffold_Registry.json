@@ -1,0 +1,7202 @@
+{
+ "_meta": {
+  "title": "Menu Scaffold Registry — menu_type per subject×phase, DERIVED FROM THE HUMAN CORPUS.",
+  "what": "menu_type tells the converter whether a page renders a #module-menu-content and, if so, tabbed vs simplified. Keyed by run.groupKey = subjectLetters|template_phase. 'overview'/'lesson' are the page scopes.",
+  "why": "The Style-Anchor registry's menu_type was wrong for some groups (e.g. a lesson menu suppressed when the human has one). This file is measured directly from 01-Finalized_Modules_, so it is the Group-Majority truth. Re-run reference/tests/derive_menu_type.cjs after new modules ship.",
+  "cascade": "ContentConverter.#menuTypeFor resolves: this group value (Group Majority) -> Style-Anchor menu_type -> global_default. A future per-series deviation can override its group here.",
+  "generated": "2026-07-02",
+  "legacy": "pre-round-147 rows (sub-page-diluted mining) — used only when MENUREG_OFF=1"
+ },
+ "global_default": {
+  "overview": "tabs",
+  "lesson": "simplified"
+ },
+ "groups": {
+  "AGH|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 9,
+     "simplified": 0,
+     "none": 0,
+     "n": 9
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 71,
+     "none": 1,
+     "n": 72
+    }
+   }
+  },
+  "ANZH|1-3": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 16,
+     "n": 20
+    }
+   }
+  },
+  "ANZH|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 7,
+     "n": 14
+    }
+   }
+  },
+  "ANZH|7-8": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 14,
+     "simplified": 8,
+     "none": 0,
+     "n": 22
+    }
+   }
+  },
+  "ANZH|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 18,
+     "none": 0,
+     "n": 18
+    }
+   }
+  },
+  "ARFUN|combo": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 4,
+     "n": 4
+    }
+   }
+  },
+  "ART|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 5,
+     "simplified": 0,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 12,
+     "n": 18
+    }
+   }
+  },
+  "BLL|1-3": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 69,
+     "none": 0,
+     "n": 69
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 28,
+     "none": 159,
+     "n": 187
+    }
+   }
+  },
+  "CEDK|1-3": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "CEDK|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 1,
+     "n": 7
+    }
+   }
+  },
+  "CEDO|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "CEDO|4-6": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "CEDO|7-8": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 4,
+     "n": 4
+    }
+   }
+  },
+  "CEDO|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 1,
+     "simplified": 5,
+     "none": 2,
+     "n": 8
+    }
+   }
+  },
+  "CEDR|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 1,
+     "n": 7
+    }
+   }
+  },
+  "CEDT|4-6": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 5,
+     "n": 6
+    }
+   }
+  },
+  "CEDT|7-8": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "CEDT|9-10": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "CEDT|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 2,
+     "n": 9
+    }
+   }
+  },
+  "CEDW|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 2,
+     "n": 8
+    }
+   }
+  },
+  "ENFUN|combo": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "ENGC|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    }
+   }
+  },
+  "ENGC|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 14,
+     "none": 0,
+     "n": 14
+    }
+   }
+  },
+  "ENGC|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 13,
+     "none": 1,
+     "n": 14
+    }
+   }
+  },
+  "ENGC|9-10": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
+    }
+   }
+  },
+  "ENGFUN|NCEA": {
+   "overview": "none",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 5,
+     "n": 5
+    }
+   }
+  },
+  "ENGI|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 6,
+     "n": 18
+    }
+   }
+  },
+  "ENGI|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 20,
+     "none": 0,
+     "n": 20
+    }
+   }
+  },
+  "ENGI|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 18,
+     "none": 0,
+     "n": 18
+    }
+   }
+  },
+  "ENGI|9-10": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 4,
+     "n": 15
+    }
+   }
+  },
+  "ENGJ|1-3": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 5,
+     "n": 9
+    }
+   }
+  },
+  "ENGJ|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 4,
+     "simplified": 0,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 29,
+     "none": 0,
+     "n": 29
+    }
+   }
+  },
+  "ENGJ|combo": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 6,
+     "simplified": 0,
+     "none": 0,
+     "n": 6
+    }
+   }
+  },
+  "ENGR|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    }
+   }
+  },
+  "ENGR|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 13,
+     "none": 0,
+     "n": 13
+    }
+   }
+  },
+  "ENGR|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 16,
+     "none": 0,
+     "n": 16
+    }
+   }
+  },
+  "ENGS|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 0,
+     "n": 11
+    }
+   }
+  },
+  "ENGS|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 13,
+     "none": 1,
+     "n": 14
+    }
+   }
+  },
+  "ENGS|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 14,
+     "none": 0,
+     "n": 14
+    }
+   }
+  },
+  "ENGS|9-10": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    }
+   }
+  },
+  "ENGS|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "ENG|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 10,
+     "n": 10
+    }
+   }
+  },
+  "EXBP|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 1,
+     "n": 2
+    }
+   }
+  },
+  "EXIP|7-8": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    }
+   }
+  },
+  "EXIP|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "EXPFUN|7-8": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "EXPFUN|9-10": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "EXPFUN|NCEA": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "EXPFUN|combo": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 1,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "HES|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 5,
+     "simplified": 0,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 7,
+     "simplified": 9,
+     "none": 19,
+     "n": 35
+    }
+   }
+  },
+  "HIS|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 8,
+     "simplified": 0,
+     "none": 0,
+     "n": 8
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 63,
+     "none": 0,
+     "n": 63
+    }
+   }
+  },
+  "HPFUN|combo": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "MXDB|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 11,
+     "n": 11
+    }
+   }
+  },
+  "MXDB|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 0,
+     "n": 11
+    }
+   }
+  },
+  "MXDB|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 17,
+     "none": 0,
+     "n": 17
+    }
+   }
+  },
+  "MXDI|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 25,
+     "n": 25
+    }
+   }
+  },
+  "MXDI|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 19,
+     "none": 0,
+     "n": 19
+    }
+   }
+  },
+  "MXDI|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 1,
+     "n": 8
+    }
+   }
+  },
+  "MXEO|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 19,
+     "none": 0,
+     "n": 19
+    }
+   }
+  },
+  "MXEO|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 1,
+     "n": 8
+    }
+   }
+  },
+  "MXEO|9-10": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 6,
+     "n": 6
+    }
+   }
+  },
+  "MXEX|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "MXEX|4-6": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 14,
+     "n": 14
+    }
+   }
+  },
+  "MXEX|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 13,
+     "none": 1,
+     "n": 14
+    }
+   }
+  },
+  "MXEX|9-10": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 6,
+     "n": 6
+    }
+   }
+  },
+  "MXFL|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 2,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 24,
+     "none": 8,
+     "n": 32
+    }
+   }
+  },
+  "MXFL|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 2,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 36,
+     "none": 0,
+     "n": 36
+    }
+   }
+  },
+  "MXFL|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 17,
+     "none": 0,
+     "n": 17
+    }
+   }
+  },
+  "MXFL|9-10": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "MXFUN|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
+    }
+   }
+  },
+  "MXFUN|combo": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "MXFU|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 9,
+     "none": 0,
+     "n": 9
+    }
+   }
+  },
+  "MXFU|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 30,
+     "none": 0,
+     "n": 30
+    }
+   }
+  },
+  "MXFU|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 6,
+     "n": 13
+    }
+   }
+  },
+  "OSAH|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSAH|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSAH|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSAI|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    }
+   }
+  },
+  "OSAI|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSAI|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSAI|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSAI|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSBY|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSBY|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSBY|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSBY|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSBY|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSGM|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSGM|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSGM|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSGM|ncea": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSOH|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSOH|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSOH|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSOH|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSOH|ncea": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSSC|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSSM|7-8": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 4,
+     "simplified": 0,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "PES|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 7,
+     "simplified": 0,
+     "none": 0,
+     "n": 7
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 44,
+     "none": 26,
+     "n": 70
+    }
+   }
+  },
+  "PHE|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 8,
+     "simplified": 0,
+     "none": 0,
+     "n": 8
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 40,
+     "n": 40
+    }
+   }
+  },
+  "PNR|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 6,
+     "n": 6
+    }
+   }
+  },
+  "SCFUN|combo": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "SSFUN|combo": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 4,
+     "n": 7
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "SSOG|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 0,
+     "n": 11
+    }
+   }
+  },
+  "SSOG|7-8": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "TEFUN|combo": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 7,
+     "n": 8
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "TRR|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 13,
+     "simplified": 0,
+     "none": 0,
+     "n": 13
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 50,
+     "n": 50
+    }
+   }
+  },
+  "TRR|4-6": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 3,
+     "n": 3
+    }
+   }
+  },
+  "TRR|7-8": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "TWHK|7-8": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "XDLS|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    }
+   }
+  },
+  "XDLS|combo": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 9,
+     "simplified": 0,
+     "none": 1,
+     "n": 10
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 51,
+     "none": 7,
+     "n": 58
+    }
+   }
+  },
+  "XFUN|combo": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "XGF|combo": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 3,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 16,
+     "n": 24
+    }
+   }
+  },
+  "XLP|combo": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 1,
+     "n": 6
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 19,
+     "none": 2,
+     "n": 21
+    }
+   }
+  },
+  "XMES|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 5,
+     "simplified": 0,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 27,
+     "none": 0,
+     "n": 27
+    }
+   }
+  },
+  "XMES|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "XTAS|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 9,
+     "none": 4,
+     "n": 13
+    }
+   }
+  },
+  "XWHA|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
+    }
+   }
+  }
+ },
+ "series": {
+  "AGH1001": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1002": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1003": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1006": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1007": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1008": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1009": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ANZH101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ANZH104": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ANZH105": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ANZH203": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ANZH205": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ANZH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ANZH303": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "ANZH304": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "ANZH401": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ANZH404": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ARFUN01": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ARFUN02": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ARFUN03": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ARFUN04": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ARFUN05": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ART1002": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ART1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ART1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ART1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ART1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL110": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL111": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL112": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL113": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL114": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL115": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL116": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL117": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL120": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL121": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL122": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL123": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL124": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL125": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL126": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL127": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL130": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL131": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL132": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL133": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL134": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL135": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL136": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL137": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL140": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL141": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL142": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL143": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL144": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL145": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL146": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL147": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL150": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL151": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL152": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL153": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL154": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL156": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL157": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL160": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL161": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL162": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL163": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL164": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL165": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL166": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL167": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL170": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL171": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL172": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL173": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL174": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL175": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL176": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL177": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL210": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL211": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL212": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL213": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL214": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL215": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL216": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL217": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL220": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL221": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL222": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL223": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL224": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL225": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL226": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL227": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL230": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL231": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL232": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL233": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL234": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL235": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL236": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL237": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL240": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "BLL241": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL242": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL244": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL245": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL246": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL252": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL254": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "CEDK101": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDK102": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDK501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDO102": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDO105": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDO202": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDO301": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "CEDO501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDR501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDT207": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "CEDT301": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "CEDT404": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDT501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDW501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENFUN01": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENFUN02": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENFUN03": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENFUN04": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENFUN05": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENFUN07": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENFUN08": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENFUN09": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "ENG1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ENG1005": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ENG1007": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ENGC101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC302": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC401": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGFUN02": {
+   "overview": "none",
+   "lesson": "none"
+  },
+  "ENGI101": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ENGI102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI103": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI203": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI302": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI303": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI400": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI401": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI405": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGJ101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGJ102": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ENGJ201": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "ENGJ202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGJ301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGJ302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGJ402": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGR101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGR102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGR201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGR202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGR301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGR302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGS101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS102": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGS201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS302": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "EXBP901": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "EXIP901": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "EXPFUN02": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN03": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN04": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN05": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN06": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "EXPFUN07": {
+   "overview": "none",
+   "lesson": null
+  },
+  "HES1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "HES1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "HES1005": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "HES1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "HES1007": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1001": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1002": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1003": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1006": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1007": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1008": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HPFUN101": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN102": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN103": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN201": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN202": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN203": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN301": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN302": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN303": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN401": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN902": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN903": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "MXDB102": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDB201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXDB202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXDB301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDB302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDI101": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDI102": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDI103": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDI201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDI202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDI301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO102": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXEX101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXEX201": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "MXEX202": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "MXEX301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEX302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEX401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFL101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL103": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFL104": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL203": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL204": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFU201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFU402": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFUN01": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFUN02": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "MXFUN03": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "OSAH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAH401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAH501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "OSBY401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSSC301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSSM301": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "PES1001": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PES1002": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PES1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1007": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1008": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PHE1001": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1002": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1005": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1007": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1008": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PNR101": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PNR102": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PNR104": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "SCFUN01": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN01": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN02": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "SSFUN03": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN05": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "SSFUN06": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN07": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN08": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "SSOG101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "SSOG103": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "SSOG301": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TEFUN01": {
+   "overview": "none",
+   "lesson": null
+  },
+  "TEFUN02": {
+   "overview": "none",
+   "lesson": null
+  },
+  "TEFUN03": {
+   "overview": "none",
+   "lesson": null
+  },
+  "TEFUN04": {
+   "overview": "none",
+   "lesson": null
+  },
+  "TEFUN05": {
+   "overview": "none",
+   "lesson": null
+  },
+  "TEFUN06": {
+   "overview": "none",
+   "lesson": null
+  },
+  "TEFUN07": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "TEFUN08": {
+   "overview": "none",
+   "lesson": null
+  },
+  "TRR102": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR103": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR104": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR105": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR106": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR107": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR108": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR109": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR111": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR112": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR113": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR114": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR115": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR203": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR301": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR304": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TWHK901": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "XDLS501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS502": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS901": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS902": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS903": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS904": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS905": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS906": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS908": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS909": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS911": {
+   "overview": "none",
+   "lesson": "none"
+  },
+  "XDLS912": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XFUN01": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "XFUN02": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XGF9001": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "XGF9003": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "XGF9004": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "XGF9006": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP01": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP02": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP03": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP04": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP05": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP06": {
+   "overview": "none",
+   "lesson": "none"
+  },
+  "XMES101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XMES102": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XMES103": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XMES201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XMES203": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XTAS101": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "XTAS102": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XTAS103": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XWHA01": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XWHA02": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  }
+ },
+ "legacy_groups": {
+  "AGH|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 8,
+     "simplified": 73,
+     "none": 1,
+     "n": 82
+    }
+   }
+  },
+  "ANZH|1-3": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 16,
+     "n": 20
+    }
+   }
+  },
+  "ANZH|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 7,
+     "n": 14
+    }
+   }
+  },
+  "ANZH|7-8": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 14,
+     "simplified": 8,
+     "none": 0,
+     "n": 22
+    }
+   }
+  },
+  "ANZH|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 18,
+     "none": 0,
+     "n": 18
+    }
+   }
+  },
+  "ARFUN|combo": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 49,
+     "n": 53
+    }
+   }
+  },
+  "ART|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 5,
+     "simplified": 0,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 12,
+     "n": 18
+    }
+   }
+  },
+  "BLL|1-3": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 58,
+     "none": 0,
+     "n": 59
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 41,
+     "none": 159,
+     "n": 200
+    }
+   }
+  },
+  "CEDK|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    }
+   }
+  },
+  "CEDK|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 9,
+     "none": 1,
+     "n": 10
+    }
+   }
+  },
+  "CEDO|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "CEDO|4-6": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "CEDO|7-8": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 4,
+     "n": 4
+    }
+   }
+  },
+  "CEDO|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 1,
+     "simplified": 5,
+     "none": 8,
+     "n": 14
+    }
+   }
+  },
+  "CEDR|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 1,
+     "n": 9
+    }
+   }
+  },
+  "CEDT|4-6": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 5,
+     "n": 6
+    }
+   }
+  },
+  "CEDT|7-8": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "CEDT|9-10": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    }
+   }
+  },
+  "CEDT|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 2,
+     "n": 14
+    }
+   }
+  },
+  "CEDW|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 2,
+     "n": 10
+    }
+   }
+  },
+  "ENFUN|combo": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    }
+   }
+  },
+  "ENGC|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    }
+   }
+  },
+  "ENGC|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 14,
+     "none": 0,
+     "n": 14
+    }
+   }
+  },
+  "ENGC|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 13,
+     "none": 1,
+     "n": 14
+    }
+   }
+  },
+  "ENGC|9-10": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
+    }
+   }
+  },
+  "ENGFUN|NCEA": {
+   "overview": "none",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 5,
+     "n": 5
+    }
+   }
+  },
+  "ENGI|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 6,
+     "n": 18
+    }
+   }
+  },
+  "ENGI|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 20,
+     "none": 0,
+     "n": 20
+    }
+   }
+  },
+  "ENGI|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 18,
+     "none": 0,
+     "n": 18
+    }
+   }
+  },
+  "ENGI|9-10": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 19,
+     "none": 4,
+     "n": 23
+    }
+   }
+  },
+  "ENGJ|1-3": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 5,
+     "n": 9
+    }
+   }
+  },
+  "ENGJ|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 4,
+     "simplified": 0,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 29,
+     "none": 0,
+     "n": 29
+    }
+   }
+  },
+  "ENGJ|combo": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 6,
+     "simplified": 0,
+     "none": 0,
+     "n": 6
+    }
+   }
+  },
+  "ENGR|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    }
+   }
+  },
+  "ENGR|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 13,
+     "none": 0,
+     "n": 13
+    }
+   }
+  },
+  "ENGR|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 16,
+     "none": 0,
+     "n": 16
+    }
+   }
+  },
+  "ENGS|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 1,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 0,
+     "n": 11
+    }
+   }
+  },
+  "ENGS|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 13,
+     "none": 1,
+     "n": 14
+    }
+   }
+  },
+  "ENGS|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 14,
+     "none": 0,
+     "n": 14
+    }
+   }
+  },
+  "ENGS|9-10": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    }
+   }
+  },
+  "ENGS|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "ENG|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 10,
+     "n": 10
+    }
+   }
+  },
+  "EXBP|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 9,
+     "none": 2,
+     "n": 11
+    }
+   }
+  },
+  "EXIP|7-8": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    }
+   }
+  },
+  "EXIP|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "EXPFUN|7-8": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "EXPFUN|9-10": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "EXPFUN|NCEA": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "EXPFUN|combo": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 1,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "HES|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 5,
+     "simplified": 0,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 7,
+     "simplified": 9,
+     "none": 19,
+     "n": 35
+    }
+   }
+  },
+  "HIS|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 8,
+     "simplified": 0,
+     "none": 0,
+     "n": 8
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 75,
+     "none": 0,
+     "n": 75
+    }
+   }
+  },
+  "HPFUN|combo": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    }
+   }
+  },
+  "MXDB|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 11,
+     "n": 11
+    }
+   }
+  },
+  "MXDB|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 0,
+     "n": 11
+    }
+   }
+  },
+  "MXDB|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 17,
+     "none": 0,
+     "n": 17
+    }
+   }
+  },
+  "MXDI|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 25,
+     "n": 25
+    }
+   }
+  },
+  "MXDI|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 1,
+     "simplified": 29,
+     "none": 0,
+     "n": 30
+    }
+   }
+  },
+  "MXDI|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 1,
+     "n": 8
+    }
+   }
+  },
+  "MXEO|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 21,
+     "none": 4,
+     "n": 25
+    }
+   }
+  },
+  "MXEO|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 1,
+     "n": 9
+    }
+   }
+  },
+  "MXEO|9-10": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 6,
+     "n": 6
+    }
+   }
+  },
+  "MXEX|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 0,
+     "n": 6
+    }
+   }
+  },
+  "MXEX|4-6": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 14,
+     "n": 14
+    }
+   }
+  },
+  "MXEX|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 15,
+     "none": 1,
+     "n": 16
+    }
+   }
+  },
+  "MXEX|9-10": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 6,
+     "n": 6
+    }
+   }
+  },
+  "MXFL|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 2,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 26,
+     "none": 8,
+     "n": 34
+    }
+   }
+  },
+  "MXFL|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 2,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 37,
+     "none": 0,
+     "n": 37
+    }
+   }
+  },
+  "MXFL|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 25,
+     "none": 0,
+     "n": 25
+    }
+   }
+  },
+  "MXFL|9-10": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "MXFUN|4-6": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
+    }
+   }
+  },
+  "MXFUN|combo": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "MXFU|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 9,
+     "none": 0,
+     "n": 9
+    }
+   }
+  },
+  "MXFU|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 31,
+     "none": 3,
+     "n": 34
+    }
+   }
+  },
+  "MXFU|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 6,
+     "n": 13
+    }
+   }
+  },
+  "OSAH|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSAH|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSAH|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSAI|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    }
+   }
+  },
+  "OSAI|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSAI|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSAI|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSAI|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSBY|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSBY|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSBY|7-8": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSBY|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSBY|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSGM|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSGM|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSGM|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSGM|ncea": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSOH|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSOH|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSOH|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSOH|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSOH|ncea": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
+  "OSSC|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 3,
+     "none": 0,
+     "n": 3
+    }
+   }
+  },
+  "OSSM|7-8": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 4,
+     "simplified": 0,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "PES|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 7,
+     "simplified": 0,
+     "none": 0,
+     "n": 7
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 45,
+     "none": 26,
+     "n": 71
+    }
+   }
+  },
+  "PHE|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 8,
+     "simplified": 0,
+     "none": 0,
+     "n": 8
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 45,
+     "n": 45
+    }
+   }
+  },
+  "PNR|1-3": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 6,
+     "n": 9
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "SCFUN|combo": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "SSFUN|1-3": {
+   "overview": "none",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 2,
+     "n": 2
+    }
+   }
+  },
+  "SSFUN|combo": {
+   "overview": "none",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 3,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 1,
+     "n": 2
+    }
+   }
+  },
+  "SSOG|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 0,
+     "n": 11
+    }
+   }
+  },
+  "SSOG|7-8": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "TEFUN|combo": {
+   "overview": null,
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 7,
+     "n": 8
+    }
+   }
+  },
+  "TRR|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 7,
+     "n": 7
+    }
+   }
+  },
+  "TWHK|7-8": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    }
+   }
+  },
+  "XDLS|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    }
+   }
+  },
+  "XDLS|NCEA": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 2,
+     "simplified": 8,
+     "none": 0,
+     "n": 10
+    }
+   }
+  },
+  "XDLS|combo": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 4,
+     "simplified": 7,
+     "none": 1,
+     "n": 12
+    },
+    "lesson": {
+     "tabs": 5,
+     "simplified": 51,
+     "none": 7,
+     "n": 63
+    }
+   }
+  },
+  "XFUN|combo": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 1,
+     "simplified": 6,
+     "none": 0,
+     "n": 7
+    }
+   }
+  },
+  "XGF|combo": {
+   "overview": "simplified",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 3,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 25,
+     "n": 33
+    }
+   }
+  },
+  "XLP|combo": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 1,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 27,
+     "none": 2,
+     "n": 29
+    }
+   }
+  },
+  "XMES|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 4,
+     "none": 0,
+     "n": 6
+    },
+    "lesson": {
+     "tabs": 3,
+     "simplified": 23,
+     "none": 0,
+     "n": 26
+    }
+   }
+  },
+  "XMES|4-6": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 5,
+     "none": 0,
+     "n": 6
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "XTAS|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 2,
+     "simplified": 11,
+     "none": 4,
+     "n": 17
+    }
+   }
+  },
+  "XWHA|1-3": {
+   "overview": "simplified",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
+    }
+   }
+  }
+ },
+ "legacy_series": {
+  "AGH1001": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "AGH1002": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "AGH1003": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "AGH1004": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "AGH1005": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "AGH1006": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "AGH1007": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "AGH1008": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "AGH1009": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ANZH101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ANZH104": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ANZH105": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ANZH203": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ANZH205": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ANZH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ANZH303": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "ANZH304": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "ANZH401": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ANZH404": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ARFUN01": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ARFUN02": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ARFUN03": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ARFUN04": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ARFUN05": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ART1002": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ART1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ART1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ART1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ART1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL110": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL111": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL112": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL113": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL114": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL115": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL116": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL117": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL120": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL121": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL122": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL123": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL124": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL125": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL126": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL127": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL130": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL131": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL132": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL133": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL134": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL135": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL136": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL137": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "BLL140": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL141": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL142": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL143": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL144": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL145": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL146": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL147": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL150": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL151": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL152": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL153": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL154": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL156": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL157": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL160": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL161": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL162": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL163": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL164": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL165": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL166": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL167": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL170": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL171": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL172": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL173": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL174": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL175": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL176": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL177": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL210": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL211": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL212": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL213": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL214": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL215": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL216": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL217": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL220": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL221": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL222": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL223": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL224": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL225": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL226": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL227": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL230": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "BLL231": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL232": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL233": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL234": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL235": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL236": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL237": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL240": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "BLL241": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL242": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL244": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL245": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL246": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL252": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL254": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDK101": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDK102": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "CEDK501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDO102": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDO105": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDO202": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDO301": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "CEDO501": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "CEDR501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDT207": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "CEDT301": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "CEDT404": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "CEDT501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDW501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENFUN01": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENFUN02": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENFUN03": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENFUN04": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENFUN05": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENFUN07": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENFUN08": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENFUN09": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "ENG1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ENG1005": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ENG1007": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "ENGC101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC302": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC401": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGFUN02": {
+   "overview": "none",
+   "lesson": "none"
+  },
+  "ENGI101": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ENGI102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI103": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI203": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI302": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI303": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI400": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI401": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGI405": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGJ101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGJ102": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "ENGJ201": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "ENGJ202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGJ301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGJ302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGJ402": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGR101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGR102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGR201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGR202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGR301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGR302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGS101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS102": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGS201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS302": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGS401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "EXBP901": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "EXIP901": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "EXPFUN02": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN03": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN04": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN05": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "EXPFUN06": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "EXPFUN07": {
+   "overview": "none",
+   "lesson": null
+  },
+  "HES1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "HES1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "HES1005": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "HES1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "HES1007": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1001": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1002": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1003": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1006": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1007": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HIS1008": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HPFUN101": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN102": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN103": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN201": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN202": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN203": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN301": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN302": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN303": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN401": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN902": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "HPFUN903": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "MXDB102": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDB201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXDB202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXDB301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDB302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDI101": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDI102": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDI103": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXDI201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDI202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXDI301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO102": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEO401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXEX101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXEX201": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "MXEX202": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "MXEX301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEX302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXEX401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFL101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL102": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL103": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFL104": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL202": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFL203": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL204": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFL401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFU201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU302": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFU401": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MXFU402": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MXFUN01": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "MXFUN02": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "MXFUN03": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "OSAH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAH401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAH501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSAI501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY301": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "OSBY401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSBY501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSGM501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH101": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSOH501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSSC301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSSM301": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "PES1001": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PES1002": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PES1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1007": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PES1008": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PHE1001": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1002": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1005": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1007": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PHE1008": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PNR101": {
+   "overview": "none",
+   "lesson": null
+  },
+  "PNR102": {
+   "overview": "none",
+   "lesson": null
+  },
+  "PNR104": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SCFUN01": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN01": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "SSFUN02": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "SSFUN03": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN05": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "SSFUN06": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SSFUN07": {
+   "overview": "none",
+   "lesson": "none"
+  },
+  "SSFUN08": {
+   "overview": null,
+   "lesson": "tabs"
+  },
+  "SSOG101": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "SSOG103": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "SSOG301": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TEFUN01": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "TEFUN02": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "TEFUN03": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "TEFUN04": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "TEFUN05": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "TEFUN06": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "TEFUN07": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "TEFUN08": {
+   "overview": null,
+   "lesson": "none"
+  },
+  "TRR106": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TRR114": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "TWHK901": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS501": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS502": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS901": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS902": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS903": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS904": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS905": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS906": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "XDLS908": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XDLS909": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XDLS911": {
+   "overview": "none",
+   "lesson": "none"
+  },
+  "XDLS912": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XFUN01": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XFUN02": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XGF9001": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "XGF9003": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "XGF9004": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "XGF9006": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP01": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XLP02": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XLP03": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XLP04": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XLP05": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XLP06": {
+   "overview": "none",
+   "lesson": "none"
+  },
+  "XMES101": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XMES102": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XMES103": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XMES201": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "XMES203": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "XTAS101": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "XTAS102": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XTAS103": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XWHA01": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XWHA02": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  }
+ }
+}

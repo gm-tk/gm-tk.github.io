@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "title": "Tag Exceptions — literal overrides",
+  "purpose": "Raw spans (folded form) that the generic pipeline cannot resolve correctly and need a literal answer. Kept deliberately tiny: if this file grows, the right fix is usually a new alias or rule, not another literal.",
+  "match": "Compare the normalised (folded) full bracket fragment against 'fragment'.",
+  "generated": "2026-06-11"
+ },
+ "exceptions": [
+  {
+   "fragment": "h4 activity 5a - accordion (type the answer)",
+   "resolution": {
+    "primary": "h4",
+    "also": [
+     "activity",
+     "accordion",
+     "typing quiz"
+    ]
+   },
+   "note": "Quadruple-compound one-off (heading + activity number + two interactive type hints). Found once in the corpus."
+  }
+ ]
+}

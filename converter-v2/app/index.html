@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+	Converter V2 — Phase-1 module converter (Writers Template .docx → MTK HTML)
+	===========================================================================
+	WHAT THIS PAGE IS:
+	The single entry point. Upload a Writers Template .docx + its Media List
+	.docx (or one combined file), pick the image output mode, convert, and
+	download the generated pages + the interactives manifest.
+
+	HOW TO RUN IT (one command):
+	From the CONVERTER_V2 folder:   python3 -m http.server 8732
+	then open                       http://localhost:8732/app/
+	(The engine fetches ../data/*.json live — edit a data file, reload, and
+	the next conversion uses it. Opened via file:// this page shows the
+	instruction screen instead, because browsers block local fetch.)
+
+	SCRIPT LOAD ORDER IS MEANINGFUL (coding standards §2):
+	Config first, then utilities/services, then pipeline stages in
+	dependency order, App.js LAST.
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML Generator V2 — Phase 1</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+	<!-- shown only when opened via file:// (see App.Init's guard) -->
+	<div id="file-guard" hidden>
+		<h1>HTML Generator V2</h1>
+		<p>This page was opened straight from the file system, so the browser blocks it from reading the rule data in <code>CONVERTER_V2/data/</code>.</p>
+		<p>Start it with one command from the <code>CONVERTER_V2</code> folder instead:</p>
+		<pre>python3 -m http.server 8732</pre>
+		<p>then open <a href="http://localhost:8732/app/">http://localhost:8732/app/</a></p>
+	</div>
+
+	<div id="app-root">
+		<header class="app-header">
+			<h1>HTML Generator V2 <span class="phase-badge">Phase 1</span> <span id="app-version" class="version-badge"></span></h1>
+			<p class="app-subtitle">Writers Template → MTK HTML · non-interactive content converted, interactives captured un-built, acknowledgements generated</p>
+		</header>
+
+		<!-- ============ 1. UPLOAD ============ -->
+		<section class="panel">
+			<h2>1 · Upload</h2>
+			<div id="drop-zone" title="Click to choose files, or drop them here">
+				<p><strong>Drop the Writers Template .docx here</strong> (plus its Media List .docx, or one combined WT+media-list file)</p>
+				<p class="drop-hint">Module code, template level, and structure are detected from the data — nothing to type.</p>
+			</div>
+			<input type="file" id="file-input" accept=".docx" multiple hidden>
+			<ul id="file-list" class="file-list"></ul>
+		</section>
+
+		<!-- ============ 2. IMAGE MODE (the only choice) ============ -->
+		<section class="panel">
+			<h2>2 · Image output mode <span class="panel-note">(applies to every image in this run — no mixing)</span></h2>
+			<label class="mode-option">
+				<input type="radio" name="image-mode" id="mode-p" checked>
+				<strong>Mode P — placeholder</strong>: visible placehold.co image + the real
+				<code>images/iStock-XXXXXXXXX.jpg</code> reference in a comment beside it (developer swaps it in)
+			</label>
+			<label class="mode-option">
+				<input type="radio" name="image-mode" id="mode-d">
+				<strong>Mode D — direct</strong>: <code>&lt;img src="images/iStock-XXXXXXXXX.jpg"&gt;</code> straight away, no placeholder, no comment
+			</label>
+		</section>
+
+		<!-- ============ 3. INTERACTIVE HAND-OFF MODE ============ -->
+			<section class="panel">
+				<h2>3 · Interactive hand-off <span class="panel-note">(default off — applies to the whole run)</span></h2>
+				<label class="mode-option">
+					<input type="checkbox" id="mode-extract">
+					<strong>Extract un-built interactives</strong>: don't render the un-built interactives on the page — instead drop a single unique reference code at each spot and write the captured content to <code>{CODE}_interactives.txt</code> under the same code (the Phase-1 hand-off view). Left off, the un-built interactives render as the in-position dashed boxes, exactly as now.
+				</label>
+			</section>
+
+			<!-- ============ 4. CONVERT ============ -->
+		<section class="panel">
+			<h2>4 · Convert</h2>
+			<button id="convert-button" type="button" disabled>Convert module</button>
+			<!-- ROUND 193 — the conversion progress bar (hidden until Convert; App.js drives it,
+			     the engine reports through the guarded run.onProgress hook — browser-only) -->
+			<div id="progress-bar" class="progress-bar" hidden
+				role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+				<div id="progress-bar-fill" class="progress-bar-fill"></div>
+				<span id="progress-bar-label" class="progress-bar-label"></span>
+			</div>
+			<div id="progress-log" class="progress-log" aria-live="polite"></div>
+		</section>
+
+		<!-- ============ 5. RESULTS ============ -->
+		<section class="panel">
+			<h2>5 · Output files</h2>
+			<div id="output-metadata" class="output-metadata" hidden></div>
+			<ul id="output-list" class="output-list"></ul>
+			<button id="download-all" type="button" hidden>Download all as .zip</button>
+		</section>
+
+		<!-- ROUND 205 — reset the converter to a fresh state in place (no page
+		     reload, which would drop back to the site's landing view). Hidden
+		     until a conversion has completed; App.js wires + re-hides it. -->
+		<div id="reset-panel" class="reset-panel" hidden>
+			<button id="reset-button" type="button" class="reset-button">Clear everything &amp; convert another module</button>
+			<p class="reset-note">Removes the current results and downloads and clears the uploaded files, ready for a fresh module.</p>
+		</div>
+
+		<section id="summary-panel" class="panel summary-panel" hidden></section>
+	</div>
+
+	<!-- 1. Config first — everything reads from it -->
+	<script src="js/Config.js"></script>
+	<!-- 2. pure utilities, then services -->
+	<script src="js/Utils.js"></script>
+	<script src="js/DataService.js"></script>
+	<!-- 3. ingest layer -->
+	<script src="js/ZipReader.js"></script>
+	<script src="js/DocxExtractor.js"></script>
+	<script src="js/MediaListParser.js"></script>
+	<!-- 4. pipeline stages in dependency order -->
+	<script src="js/ConversionRun.js"></script>
+	<script src="js/TagNormaliser.js"></script>
+	<script src="js/ModuleResolver.js"></script>
+	<script src="js/ConventionResolver.js"></script>
+	<script src="js/PageSplitter.js"></script>
+	<script src="js/InteractiveScanner.js"></script>
+	<script src="js/InteractiveBuilder.js"></script>
+	<script src="js/ListsAndRuns.js"></script>
+	<script src="js/NotesAndComments.js"></script>
+	<script src="js/TablesAndGrids.js"></script>
+	<script src="js/MenuBuilder.js"></script>
+	<script src="js/PanelsBuilder.js"></script>
+	<script src="js/BilingualBuilder.js"></script>
+	<script src="js/ActivitiesBuilder.js"></script>
+	<script src="js/MediaBuilder.js"></script>
+	<script src="js/PrecedenceResolver.js"></script>
+	<script src="js/ContentConverter.js"></script>
+	<script src="js/TemplateModeResolver.js"></script>
+	<script src="js/SkeletonBuilder.js"></script>
+	<script src="js/AcksBuilder.js"></script>
+	<script src="js/ManifestBuilder.js"></script>
+	<script src="js/HtmlFormatter.js"></script>
+	<script src="js/PageAssembler.js"></script>
+	<!-- 5. output + presentation -->
+	<script src="js/ZipWriter.js"></script>
+	<script src="js/SummaryReporter.js"></script>
+	<!-- 6. App.js LAST — it orchestrates everything above -->
+	<script src="js/App.js"></script>
+</body>
+</html>

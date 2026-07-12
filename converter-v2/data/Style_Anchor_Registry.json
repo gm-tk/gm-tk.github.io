@@ -1,0 +1,5771 @@
+{
+ "_file_summary": "Central structural rulebook: how every module series lays out its templated page elements (header, titles, menu, footer, scripts), resolved through a four-tier inheritance cascade (defaults -> subject -> base series -> year level). Tracks the amalgamated 11-field model: 6 scalar fields and 5 cross-page PATTERN fields whose value is an {overview, lesson[, final]} object. Fields are stored as bare values; a field absent at a tier is inherited from the tier above. All historical vote/provenance data (status, winning_module, exceptions) lives in the source archive registry, not here.",
+ "_meta": {
+  "purpose": "Style-anchor registry (cascade). For a new module, resolve each field from the lowest tier that specifies it: level.delta -> base_rules -> subject_rules -> defaults. Works with Tag_Variation_Catalogue.json: once parsed tags are mapped to HTML entities, these rules dictate how the templated elements are laid out.",
+  "generated": "2026-06-11",
+  "stage1_note": "CONVERTER_V2 Stage-1 optimised copy. Disagreements were already adjudicated at source (most-recent-module rule); this file keeps only the winning rule values. See STAGE1_DATA_CHANGELOG.md.",
+  "structure": "cascade-4-tier",
+  "field_model": "AMALGAMATED model: scalar fields hold one value per module; PATTERN fields (module_code, h1_count, menu_button_tooltip, menu_type, footer_links) hold a structured value object keyed by page type {overview, lesson[, final]}, so the cross-page pattern resolves and is compared as one unit. This replaces the earlier split into _overview/_lesson/_final sub-fields (idoc_host_overview/_lesson are now a single idoc_host; etc.).",
+  "excluded_fields": {
+   "stickyNav": "Templating error copied across modules — never emit.",
+   "embedded_css": "Inline styles are a last-resort manual fix; generated modules must use predefined CSS classes, so this is not tracked."
+  },
+  "resolver": {
+   "walk": "level.delta -> base_rules -> subject_rules -> defaults (first hit wins)",
+   "find_nearest_module": "'members' under each level lists existing sibling codes; a new module inherits the level's resolved rules.",
+   "pattern_fields": "A pattern field resolves the WHOLE {overview, lesson[, final]} object together."
+  },
+  "module_code_to_level": {
+   "rule": "The hundreds digit of the numeric part of a module code gives the phase/level; letter prefixes override.",
+   "map": {
+    "1xx": "Phase 1 (Years 1-3) / template 1-3",
+    "2xx": "Phase 2 (Years 4-6) / template 4-6",
+    "3xx": "Phase 3 (Years 7-8) / template 7-8",
+    "4xx": "Phase 4 (Years 9-10) / template 9-10",
+    "5xx_and_4_digit": "NCEA",
+    "FUN*": "Fundamentals",
+    "ECH*": "Early Childhood (ECH)"
+   }
+  },
+  "_how_to_edit": {
+   "global_default": "Edit defaults.<field>.",
+   "subject_override": "Edit <subject>.subject_rules.<field>.",
+   "base_override": "Edit <subject>.bases.<base>.base_rules.<field>.",
+   "level_override": "Edit <subject>.bases.<base>.levels.<level>.delta.<field>.",
+   "remove_override": "Delete the field at that tier to inherit from above.",
+   "pattern_value": "For pattern fields the value is an object, e.g. footer_links.value = {overview:'next+home', lesson:'prev+next+home', final:'prev+home'}."
+  },
+  "tracked_fields": [
+   "template_phase",
+   "body_class",
+   "level_attr",
+   "idoc_host",
+   "footer_class",
+   "acknowledgements",
+   "module_code",
+   "h1_count",
+   "menu_type",
+   "menu_button_tooltip",
+   "footer_links",
+   "page_model"
+  ],
+  "tracked_fields_described": {
+   "template_phase": "Lesson/year-level phase band. Assigned per year level by design.",
+   "body_class": "CSS class on <body>. e.g. 'container-fluid','container-fluid inquiry','container-fluid fundamentals'.",
+   "idoc_host": "iDoc script host — a single value per module. Always 'tekura' (production). The historical tekuradev dev/prod artefact was normalised to 'tekura' in Stage 1; the engine must always emit the tekura host.",
+   "level_attr": "The level attribute on <html>. 'empty' (present but blank), a code like 'ech'/'prm', or 'absent'.",
+   "module_code": "How the page code is rendered, as a cross-page PATTERN {overview, lesson}. Values per page: 'full-code','decimal','padded-number','free-text','absent'.",
+   "h1_count": "Number of <h1> per page, as a PATTERN {overview, lesson}. Overview often carries a second title h1.",
+   "menu_button_tooltip": "Whether the menu button shows a tooltip, as a PATTERN {overview, lesson}.",
+   "menu_type": "Navigation menu style, as a PATTERN {overview, lesson}. 'simplified','tabs','none'.",
+   "footer_class": "CSS class on the footer nav. e.g. 'footer-nav','footer-nav inquiry-nav'.",
+   "footer_links": "Footer nav links, as a PATTERN {overview, lesson, final}. Classic rule: overview='next+home', lesson='prev+next+home', final='prev+home'.",
+   "acknowledgements": "Always 'yes' — the acknowledgements block is generated for EVERY module (team policy, locked 2026-06-12; a non-decision). Some historical modules lacked the block; that variation is deliberately not carried into this ruleset. PLACEMENT (team Updated Decision, locked 2026-06-12): the acknowledgements/copyright block ALWAYS sits at the BOTTOM OF THE VERY FIRST PAGE (the -00 overview page — or the module's only page for single-file modules), as div.acks placed AFTER (outside) the #footer div, accordion structure. NEVER on the last page or any other lesson page, for ALL module types. Any historical module or document placing acknowledgements/copyright on the final page is superseded and must be ignored.",
+   "page_model": "Output page model, derived from the finished corpus (hold-out validation finding, 2026-06-11). 'multi-file': [LESSON n]/[PAGE]/[end page] boundaries produce one HTML file each. 'single-file': the whole module is ONE HTML file regardless of page tags in the template (Fundamentals, ConnectED landing, TWHK, some BLL anchor modules); page tags become in-page section breaks. 'page_model_exceptions' lists members deviating from the level's majority."
+  }
+ },
+ "defaults": {
+  "body_class": "container-fluid",
+  "level_attr": "empty",
+  "idoc_host": "tekura",
+  "footer_class": "footer-nav",
+  "acknowledgements": "yes",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  },
+  "menu_type": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "menu_button_tooltip": {
+   "overview": "no",
+   "lesson": "no"
+  },
+  "footer_links": {
+   "overview": "next+home",
+   "lesson": "prev+next+home",
+   "final": "prev+home"
+  },
+  "page_model": "multi-file"
+ },
+ "1-10 Arts": {
+  "subject_rules": {
+   "body_class": "container-fluid fundamentals",
+   "footer_class": "footer-nav fundamentals-nav",
+   "menu_type": {
+    "overview": "none",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   }
+  },
+  "bases": {
+   "ARFUN": {
+    "base_code": "ARFUN",
+    "base_rules": {},
+    "levels": {
+     "ARFUN0": {
+      "members": [
+       "ARFUN01",
+       "ARFUN02",
+       "ARFUN03",
+       "ARFUN04",
+       "ARFUN05"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file",
+       "page_model_exceptions": [
+        "ARFUN04"
+       ]
+      }
+     }
+    }
+   },
+   "ARWHA": {
+    "base_code": "ARWHA",
+    "base_rules": {
+     "body_class": "container-fluid inquiry",
+     "footer_class": "footer-nav inquiry-nav",
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "ARWHA": {
+      "members": [
+       "ARWHA.html"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   }
+  }
+ },
+ "1-10 Blended Literacy": {
+  "subject_rules": {
+   "body_class": "container-fluid inquiry",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "module_code": {
+    "overview": "—",
+    "lesson": "(empty)"
+   },
+   "h1_count": {
+    "overview": "—",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "—",
+    "lesson": "simplified"
+   },
+   "footer_links": {
+    "overview": "—",
+    "lesson": "prev+next+home",
+    "final": "—"
+   }
+  },
+  "bases": {
+   "BL": {
+    "base_code": "BL",
+    "base_rules": {},
+    "levels": {
+     "BL1": {
+      "members": [
+       "BL101"
+      ],
+      "delta": {
+       "template_phase": "1-3"
+      }
+     }
+    }
+   },
+   "BLL": {
+    "base_code": "BLL",
+    "base_rules": {
+     "body_class": "container-fluid",
+     "acknowledgements": "yes",
+     "module_code": {
+      "overview": "free-text:\"Module",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "BLL1": {
+      "members": [
+       "BLL110",
+       "BLL111",
+       "BLL112",
+       "BLL113",
+       "BLL114",
+       "BLL115",
+       "BLL116",
+       "BLL117",
+       "BLL120",
+       "BLL121",
+       "BLL122",
+       "BLL123",
+       "BLL124",
+       "BLL125",
+       "BLL126",
+       "BLL127",
+       "BLL130",
+       "BLL131",
+       "BLL132",
+       "BLL133",
+       "BLL134",
+       "BLL135",
+       "BLL136",
+       "BLL137",
+       "BLL140",
+       "BLL141",
+       "BLL142",
+       "BLL143",
+       "BLL144",
+       "BLL145",
+       "BLL146",
+       "BLL147",
+       "BLL150",
+       "BLL151",
+       "BLL152",
+       "BLL153",
+       "BLL154",
+       "BLL155",
+       "BLL156",
+       "BLL157",
+       "BLL160",
+       "BLL161",
+       "BLL162",
+       "BLL163",
+       "BLL164",
+       "BLL165",
+       "BLL166",
+       "BLL167",
+       "BLL170",
+       "BLL171",
+       "BLL172",
+       "BLL173",
+       "BLL174",
+       "BLL175",
+       "BLL176",
+       "BLL177"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "footer_class": "footer-nav",
+       "module_code": {
+        "overview": "padded-number",
+        "lesson": "padded-number"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": null
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "multi-file",
+       "page_model_exceptions": [
+        "BLL110",
+        "BLL120",
+        "BLL130",
+        "BLL140",
+        "BLL150",
+        "BLL160",
+        "BLL170"
+       ],
+       "menu_type_correction_note": "2026-06-12: corrected from {overview:'none'} — measured against the finished corpus: every BLL1xx overview carries a simplified menu (0 use tabs); 0/23 lesson pages have one (incl. the BLL146 gold standard)."
+      }
+     },
+     "BLL2": {
+      "members": [
+       "BLL210",
+       "BLL211",
+       "BLL212",
+       "BLL213",
+       "BLL214",
+       "BLL215",
+       "BLL216",
+       "BLL217",
+       "BLL220",
+       "BLL221",
+       "BLL222",
+       "BLL223",
+       "BLL224",
+       "BLL225",
+       "BLL226",
+       "BLL227",
+       "BLL230",
+       "BLL231",
+       "BLL232",
+       "BLL233",
+       "BLL234",
+       "BLL235",
+       "BLL236",
+       "BLL237",
+       "BLL240",
+       "BLL241",
+       "BLL242",
+       "BLL244",
+       "BLL245",
+       "BLL246",
+       "BLL251",
+       "BLL252",
+       "BLL254"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "page_model": "multi-file",
+       "page_model_exceptions": [
+        "BLL210",
+        "BLL220",
+        "BLL230"
+       ]
+      }
+     }
+    }
+   },
+   "CODE": {
+    "base_code": "CODE",
+    "base_rules": {
+     "body_class": "n/a",
+     "level_attr": "n/a",
+     "idoc_host": "n/a",
+     "footer_class": "n/a",
+     "menu_button_tooltip": {
+      "overview": "n/a",
+      "lesson": "n/a"
+     }
+    },
+    "levels": {
+     "CODE0": {
+      "members": [
+       "CODE-RR_0.0.html"
+      ],
+      "delta": {
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "—",
+        "final": "—"
+       }
+      }
+     },
+     "CODE1": {
+      "members": [
+       "CODE-RR_1.0.html",
+       "CODE-RR_1.1.html"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "STL": {
+    "base_code": "STL",
+    "base_rules": {},
+    "levels": {
+     "STL1": {
+      "members": [
+       "STL1001"
+      ],
+      "delta": {
+       "template_phase": "1-3"
+      }
+     }
+    }
+   }
+  }
+ },
+ "1-10 English": {
+  "subject_rules": {
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   }
+  },
+  "bases": {
+   "ENFUN": {
+    "base_code": "ENFUN",
+    "base_rules": {
+     "body_class": "container-fluid fundamentals"
+    },
+    "levels": {
+     "ENFUN0": {
+      "members": [
+       "ENFUN01",
+       "ENFUN02",
+       "ENFUN03",
+       "ENFUN04",
+       "ENFUN05",
+       "ENFUN06",
+       "ENFUN07",
+       "ENFUN08",
+       "ENFUN09"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file"
+      }
+     },
+     "ENFUN1": {
+      "members": [
+       "ENFUN10",
+       "ENFUN11"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "ENGC": {
+    "base_code": "ENGC",
+    "base_rules": {},
+    "levels": {
+     "ENGC1": {
+      "members": [
+       "ENGC101",
+       "ENGC102"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGC2": {
+      "members": [
+       "ENGC201",
+       "ENGC202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGC3": {
+      "members": [
+       "ENGC301",
+       "ENGC302"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     },
+     "ENGC4": {
+      "members": [
+       "ENGC401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "ENGI": {
+    "base_code": "ENGI",
+    "base_rules": {
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "ENGI1": {
+      "members": [
+       "ENGI101",
+       "ENGI102",
+       "ENGI103"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "h1_count": {
+        "overview": "1",
+        "lesson": "1"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGI2": {
+      "members": [
+       "ENGI201",
+       "ENGI202",
+       "ENGI203"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGI3": {
+      "members": [
+       "ENGI301",
+       "ENGI302",
+       "ENGI303"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     },
+     "ENGI4": {
+      "members": [
+       "ENGI400",
+       "ENGI401",
+       "ENGI404",
+       "ENGI405"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "ENGJ": {
+    "base_code": "ENGJ",
+    "base_rules": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    },
+    "levels": {
+     "ENGJ1": {
+      "members": [
+       "ENGJ101",
+       "ENGJ102"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGJ2": {
+      "members": [
+       "ENGJ201",
+       "ENGJ202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "page_model": "multi-file"
+      }
+     },
+     "ENGJ3": {
+      "members": [
+       "ENGJ301",
+       "ENGJ302"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "page_model": "multi-file"
+      }
+     },
+     "ENGJ4": {
+      "members": [
+       "ENGJ402"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "ENGR": {
+    "base_code": "ENGR",
+    "base_rules": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "ENGR1": {
+      "members": [
+       "ENGR101",
+       "ENGR102"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "simplified"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGR2": {
+      "members": [
+       "ENGR201",
+       "ENGR202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGR3": {
+      "members": [
+       "ENGR301",
+       "ENGR302"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGR4": {
+      "members": [
+       "ENGR401"
+      ],
+      "delta": {
+       "template_phase": "9-10"
+      }
+     }
+    }
+   },
+   "ENGS": {
+    "base_code": "ENGS",
+    "base_rules": {
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "ENGS1": {
+      "members": [
+       "ENGS101",
+       "ENGS102"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "simplified"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGS2": {
+      "members": [
+       "ENGS201",
+       "ENGS202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGS3": {
+      "members": [
+       "ENGS301",
+       "ENGS302"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ENGS4": {
+      "members": [
+       "ENGS401"
+      ],
+      "delta": {
+       "template_phase": "9-10/NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   }
+  }
+ },
+ "1-10 Health and PE": {
+  "subject_rules": {
+   "body_class": "container-fluid fundamentals",
+   "acknowledgements": "yes",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "—"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "—"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "—"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "—",
+    "final": "—"
+   }
+  },
+  "bases": {
+   "HPFUN": {
+    "base_code": "HPFUN",
+    "base_rules": {},
+    "levels": {
+     "HPFUN1": {
+      "members": [
+       "HPFUN101",
+       "HPFUN102",
+       "HPFUN103"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "footer_class": "footer-nav fundamentals-nav",
+       "acknowledgements": "yes",
+       "page_model": "single-file"
+      }
+     },
+     "HPFUN2": {
+      "members": [
+       "HPFUN201",
+       "HPFUN202",
+       "HPFUN203"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "footer_class": "footer-nav fundamentals-nav",
+       "acknowledgements": "yes",
+       "page_model": "single-file"
+      }
+     },
+     "HPFUN3": {
+      "members": [
+       "HPFUN301",
+       "HPFUN302",
+       "HPFUN303"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "footer_class": "footer-nav fundamentals-nav",
+       "acknowledgements": "yes",
+       "page_model": "single-file"
+      }
+     },
+     "HPFUN4": {
+      "members": [
+       "HPFUN401",
+       "HPFUN402",
+       "HPFUN403"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "footer_class": "footer-nav fundamentals-nav",
+       "page_model": "single-file"
+      }
+     },
+     "HPFUN9": {
+      "members": [
+       "HPFUN901",
+       "HPFUN902",
+       "HPFUN903"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file"
+      }
+     }
+    }
+   }
+  }
+ },
+ "1-10 Mathematics": {
+  "subject_rules": {},
+  "bases": {
+   "MXDB": {
+    "base_code": "MXDB",
+    "base_rules": {},
+    "levels": {
+     "MXDB1": {
+      "members": [
+       "MXDB101",
+       "MXDB102"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "none"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXDB2": {
+      "members": [
+       "MXDB201",
+       "MXDB202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "simplified"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXDB3": {
+      "members": [
+       "MXDB301",
+       "MXDB302"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "MXDI": {
+    "base_code": "MXDI",
+    "base_rules": {},
+    "levels": {
+     "MXDI1": {
+      "members": [
+       "MXDI101",
+       "MXDI102",
+       "MXDI103"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "h1_count": {
+        "overview": "1",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "none"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXDI2": {
+      "members": [
+       "MXDI201",
+       "MXDI202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "page_model": "multi-file"
+      }
+     },
+     "MXDI3": {
+      "members": [
+       "MXDI301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "MXEO": {
+    "base_code": "MXEO",
+    "base_rules": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": null,
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "MXEO1": {
+      "members": [
+       "MXEO102"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXEO2": {
+      "members": [
+       "MXEO201",
+       "MXEO202"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXEO3": {
+      "members": [
+       "MXEO301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "simplified"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXEO4": {
+      "members": [
+       "MXEO401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "MXEX": {
+    "base_code": "MXEX",
+    "base_rules": {},
+    "levels": {
+     "MXEX1": {
+      "members": [
+       "MXEX101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "simplified"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXEX2": {
+      "members": [
+       "MXEX201",
+       "MXEX202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXEX3": {
+      "members": [
+       "MXEX301",
+       "MXEX302"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     },
+     "MXEX4": {
+      "members": [
+       "MXEX401",
+       "MXEX402"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "MXFL": {
+    "base_code": "MXFL",
+    "base_rules": {
+     "body_class": "container-fluid mathJax",
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": null,
+      "lesson": "no"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "MXFL1": {
+      "members": [
+       "MXFL101",
+       "MXFL102",
+       "MXFL103",
+       "MXFL104"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "body_class": "container-fluid",
+       "h1_count": {
+        "overview": "1",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "none",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXFL2": {
+      "members": [
+       "MXFL201",
+       "MXFL202",
+       "MXFL203",
+       "MXFL204"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "body_class": "container-fluid",
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXFL3": {
+      "members": [
+       "MXFL301",
+       "MXFL302"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXFL4": {
+      "members": [
+       "MXFL401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "MXFU": {
+    "base_code": "MXFU",
+    "base_rules": {},
+    "levels": {
+     "MXFU1": {
+      "members": [
+       "MXFU101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       }
+      }
+     },
+     "MXFU2": {
+      "members": [
+       "MXFU201",
+       "MXFU202"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "page_model": "multi-file"
+      }
+     },
+     "MXFU3": {
+      "members": [
+       "MXFU301",
+       "MXFU302"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "MXFU4": {
+      "members": [
+       "MXFU401",
+       "MXFU402"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "MXFUN": {
+    "base_code": "MXFUN",
+    "base_rules": {
+     "body_class": "container-fluid fundamentals",
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "prev+next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "MXFUN0": {
+      "members": [
+       "MXFUN01",
+       "MXFUN02",
+       "MXFUN03"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "free-text:\"MXFUN01\"",
+        "lesson": "padded-number"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file",
+       "page_model_exceptions": [
+        "MXFUN01"
+       ]
+      }
+     },
+     "MXFUN1": {
+      "members": [
+       "MXFUN101",
+       "MXFUN102",
+       "MXFUN103",
+       "MXFUN104",
+       "MXFUN105",
+       "MXFUN106"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "none"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "MXFUN2": {
+      "members": [
+       "MXFUN201",
+       "MXFUN202",
+       "MXFUN203",
+       "MXFUN204",
+       "MXFUN205",
+       "MXFUN206"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "body_class": "container-fluid"
+      }
+     },
+     "MXFUN3": {
+      "members": [
+       "MXFUN301",
+       "MXFUN302",
+       "MXFUN303",
+       "MXFUN304",
+       "MXFUN305",
+       "MXFUN306"
+      ],
+      "delta": {
+       "template_phase": "7-8"
+      }
+     },
+     "MXFUN4": {
+      "members": [
+       "MXFUN401",
+       "MXFUN402",
+       "MXFUN403",
+       "MXFUN404",
+       "MXFUN405",
+       "MXFUN406"
+      ],
+      "delta": {
+       "template_phase": "9-10"
+      }
+     }
+    }
+   },
+   "MXWHA": {
+    "base_code": "MXWHA",
+    "base_rules": {
+     "body_class": "container-fluid inquiry mathJax",
+     "footer_class": "footer-nav inquiry-nav"
+    },
+    "levels": {
+     "MXWHA": {
+      "members": [
+       "MXWHA.html"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   }
+  }
+ },
+ "1-10 Science": {
+  "subject_rules": {
+   "body_class": "n/a",
+   "level_attr": "n/a",
+   "idoc_host": "n/a",
+   "footer_class": "n/a",
+   "acknowledgements": "yes",
+   "module_code": {
+    "overview": "—",
+    "lesson": "free-text:\"SCFUN09\""
+   },
+   "h1_count": {
+    "overview": "—",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "—",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "n/a",
+    "lesson": "n/a"
+   },
+   "footer_links": {
+    "overview": "—",
+    "lesson": "prev+next+home",
+    "final": "—"
+   }
+  },
+  "bases": {
+   "CODE": {
+    "base_code": "CODE",
+    "base_rules": {},
+    "levels": {
+     "CODE0": {
+      "members": [
+       "CODE-RR_0.0.html"
+      ],
+      "delta": {
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "—",
+        "final": "—"
+       }
+      }
+     },
+     "CODE1": {
+      "members": [
+       "CODE-RR_1.0.html",
+       "CODE-RR_1.1.html"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "SCCH": {
+    "base_code": "SCCH",
+    "base_rules": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "SCCH3": {
+      "members": [
+       "SCCH301"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "SCFUN": {
+    "base_code": "SCFUN",
+    "base_rules": {
+     "body_class": "container-fluid fundamentals",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav fundamentals-nav",
+     "acknowledgements": "yes",
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "SCFUN0": {
+      "members": [
+       "SCFUN01",
+       "SCFUN02",
+       "SCFUN03",
+       "SCFUN04",
+       "SCFUN05",
+       "SCFUN06",
+       "SCFUN07",
+       "SCFUN08",
+       "SCFUN09"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file"
+      }
+     },
+     "SCFUN1": {
+      "members": [
+       "SCFUN10"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "SCWHA": {
+    "base_code": "SCWHA",
+    "base_rules": {
+     "body_class": "container-fluid inquiry",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "acknowledgements": "yes",
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "SCWHA": {
+      "members": [
+       "SCWHA.html"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   }
+  }
+ },
+ "1-10 Social Science": {
+  "subject_rules": {
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "free-text:\"Lesson 8\""
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home",
+    "final": "—"
+   }
+  },
+  "bases": {
+   "SSCI": {
+    "base_code": "SSCI",
+    "base_rules": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "SSCI3": {
+      "members": [
+       "SSCI301"
+      ],
+      "delta": {
+       "template_phase": "7-8"
+      }
+     }
+    }
+   },
+   "SSFUN": {
+    "base_code": "SSFUN",
+    "base_rules": {
+     "body_class": "container-fluid fundamentals",
+     "module_code": {
+      "overview": "—",
+      "lesson": "free-text:\"SSFUN02\""
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "2"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "tabs"
+     }
+    },
+    "levels": {
+     "SSFUN0": {
+      "members": [
+       "SSFUN01",
+       "SSFUN02",
+       "SSFUN03",
+       "SSFUN04",
+       "SSFUN05",
+       "SSFUN06",
+       "SSFUN07",
+       "SSFUN08"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file",
+       "page_model_exceptions": [
+        "SSFUN07"
+       ]
+      }
+     }
+    }
+   },
+   "SSOG": {
+    "base_code": "SSOG",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     }
+    },
+    "levels": {
+     "SSOG1": {
+      "members": [
+       "SSOG101",
+       "SSOG103"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "acknowledgements": "yes",
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "simplified"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "SSOG3": {
+      "members": [
+       "SSOG301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "SSWHA": {
+    "base_code": "SSWHA",
+    "base_rules": {
+     "body_class": "container-fluid inquiry",
+     "footer_class": "footer-nav inquiry-nav"
+    },
+    "levels": {
+     "SSWHA": {
+      "members": [
+       "SSWHA.html"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   }
+  }
+ },
+ "1-10 Technology": {
+  "subject_rules": {
+   "body_class": "container-fluid fundamentals",
+   "footer_class": "footer-nav fundamentals-nav"
+  },
+  "bases": {
+   "TEFUN": {
+    "base_code": "TEFUN",
+    "base_rules": {},
+    "levels": {
+     "TEFUN0": {
+      "members": [
+       "TEFUN01",
+       "TEFUN02",
+       "TEFUN03",
+       "TEFUN04",
+       "TEFUN05",
+       "TEFUN06",
+       "TEFUN07",
+       "TEFUN08"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file"
+      }
+     }
+    }
+   }
+  }
+ },
+ "ANZH": {
+  "subject_rules": {
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "free-text:\"Lesson 5\""
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   }
+  },
+  "bases": {
+   "ANZH": {
+    "base_code": "ANZH",
+    "base_rules": {},
+    "levels": {
+     "ANZH1": {
+      "members": [
+       "ANZH101",
+       "ANZH102",
+       "ANZH103",
+       "ANZH104",
+       "ANZH105"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ANZH2": {
+      "members": [
+       "ANZH201",
+       "ANZH202",
+       "ANZH203",
+       "ANZH204",
+       "ANZH205"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ANZH3": {
+      "members": [
+       "ANZH301",
+       "ANZH302",
+       "ANZH303",
+       "ANZH304"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "tabs"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "ANZH4": {
+      "members": [
+       "ANZH401",
+       "ANZH404"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "ANZHFUN": {
+    "base_code": "ANZHFUN",
+    "base_rules": {
+     "body_class": "container-fluid fundamentals",
+     "footer_class": "footer-nav fundamentals-nav",
+     "module_code": {
+      "overview": "—",
+      "lesson": "free-text:\"ANZHFUN01\""
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "2"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "ANZHFUN0": {
+      "members": [
+       "ANZHFUN01",
+       "ANZHFUN02",
+       "ANZHFUN03",
+       "ANZHFUN04",
+       "ANZHFUN05",
+       "ANZHFUN06",
+       "ANZHFUN07",
+       "ANZHFUN08",
+       "ANZHFUN09"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     },
+     "ANZHFUN1": {
+      "members": [
+       "ANZHFUN10"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "ANZHWHA": {
+    "base_code": "ANZHWHA",
+    "base_rules": {
+     "body_class": "container-fluid inquiry",
+     "footer_class": "footer-nav inquiry-nav"
+    },
+    "levels": {
+     "ANZHWHA": {
+      "members": [
+       "ANZHWHA-RR.html",
+       "ANZHWHA.html"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   }
+  }
+ },
+ "ConnectED": {
+  "subject_rules": {
+   "body_class": "container-fluid inquiry",
+   "menu_button_tooltip": {
+    "overview": null,
+    "lesson": "yes"
+   }
+  },
+  "bases": {
+   "CEDC": {
+    "base_code": "CEDC",
+    "base_rules": {
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "CEDC9": {
+      "members": [
+       "CEDC901"
+      ],
+      "delta": {
+       "template_phase": "7-8"
+      }
+     }
+    }
+   },
+   "CEDK": {
+    "base_code": "CEDK",
+    "base_rules": {},
+    "levels": {
+     "CEDK1": {
+      "members": [
+       "CEDK101",
+       "CEDK102",
+       "CEDK103"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDK2": {
+      "members": [
+       "CEDK203"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "CEDK3": {
+      "members": [
+       "CEDK301",
+       "CEDK303",
+       "CEDK304"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "CEDK4": {
+      "members": [
+       "CEDK402",
+       "CEDK403"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "h1_count": {
+        "overview": "1",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       }
+      }
+     },
+     "CEDK5": {
+      "members": [
+       "CEDK501"
+      ],
+      "delta": {
+       "template_phase": "9-10/NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "CEDO": {
+    "base_code": "CEDO",
+    "base_rules": {
+     "body_class": "container-fluid"
+    },
+    "levels": {
+     "CEDO1": {
+      "members": [
+       "CEDO102",
+       "CEDO103",
+       "CEDO105"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "h1_count": {
+        "overview": "1",
+        "lesson": "1"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file",
+       "page_model_exceptions": [
+        "CEDO102"
+       ]
+      }
+     },
+     "CEDO2": {
+      "members": [
+       "CEDO202",
+       "CEDO203",
+       "CEDO204"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "body_class": "container-fluid inquiry",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDO3": {
+      "members": [
+       "CEDO301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "none"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "CEDO5": {
+      "members": [
+       "CEDO501",
+       "CEDO502"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "CEDR": {
+    "base_code": "CEDR",
+    "base_rules": {
+     "body_class": "container-fluid",
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "footer_links": {
+      "overview": "prev+next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "CEDR2": {
+      "members": [
+       "CEDR201",
+       "CEDR202",
+       "CEDR204"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "body_class": "container-fluid inquiry",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDR3": {
+      "members": [
+       "CEDR301",
+       "CEDR302",
+       "CEDR303"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "body_class": "container-fluid inquiry",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDR5": {
+      "members": [
+       "CEDR501"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "CEDT": {
+    "base_code": "CEDT",
+    "base_rules": {},
+    "levels": {
+     "CEDT1": {
+      "members": [
+       "CEDT101",
+       "CEDT104",
+       "CEDT105"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "body_class": "n/a",
+       "level_attr": "n/a",
+       "idoc_host": "n/a",
+       "footer_class": "n/a",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "n/a",
+        "lesson": "n/a"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDT2": {
+      "members": [
+       "CEDT201",
+       "CEDT202",
+       "CEDT203",
+       "CEDT204",
+       "CEDT205",
+       "CEDT206",
+       "CEDT207",
+       "CEDT208"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file",
+       "page_model_exceptions": [
+        "CEDT207"
+       ]
+      }
+     },
+     "CEDT3": {
+      "members": [
+       "CEDT301",
+       "CEDT302",
+       "CEDT303"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "CEDT4": {
+      "members": [
+       "CEDT401",
+       "CEDT402",
+       "CEDT403",
+       "CEDT404"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDT5": {
+      "members": [
+       "CEDT501"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "CEDW": {
+    "base_code": "CEDW",
+    "base_rules": {},
+    "levels": {
+     "CEDW1": {
+      "members": [
+       "CEDW101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDW2": {
+      "members": [
+       "CEDW201"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "single-file"
+      }
+     },
+     "CEDW4": {
+      "members": [
+       "CEDW403"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "footer_class": "footer-nav inquiry-nav",
+       "module_code": {
+        "overview": "—",
+        "lesson": "(empty)"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "simplified"
+       },
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "CEDW5": {
+      "members": [
+       "CEDW501"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "CEDWHA": {
+    "base_code": "CEDWHA",
+    "base_rules": {
+     "body_class": "container-fluid",
+     "module_code": {
+      "overview": "—",
+      "lesson": "free-text:\"CEDWHA02\""
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "CEDWHA0": {
+      "members": [
+       "CEDWHA02",
+       "CEDWHA_0.0.html"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "PRIINQ": {
+    "base_code": "PRIINQ",
+    "base_rules": {
+     "body_class": "container-fluid inquiry reoTranslate",
+     "level_attr": "prinq",
+     "idoc_host": "none",
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "—",
+      "lesson": "(empty)"
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "PRIINQ0": {
+      "members": [
+       "PRIINQ-01",
+       "PRIINQ-02",
+       "PRIINQ-03",
+       "PRIINQ-06",
+       "PRIINQ-08",
+       "PRIINQ-09"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "body_class": "container-fluid inquiry",
+       "idoc_host": "tekura",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       }
+      }
+     },
+     "PRIINQ1": {
+      "members": [
+       "PRIINQ-10",
+       "PRIINQ-11",
+       "PRIINQ-12",
+       "PRIINQ-13",
+       "PRIINQ-14",
+       "PRIINQ-15",
+       "PRIINQ-16",
+       "PRIINQ-17",
+       "PRIINQ-18",
+       "PRIINQ-19"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "body_class": "container-fluid inquiry",
+       "idoc_host": "tekura",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       }
+      }
+     },
+     "PRIINQ2": {
+      "members": [
+       "PRIINQ-20",
+       "PRIINQ-21",
+       "PRIINQ-22",
+       "PRIINQ-23",
+       "PRIINQ-23",
+       "PRIINQ-23V2",
+       "PRIINQ-23V3",
+       "PRIINQ-23V4"
+      ],
+      "delta": {
+       "template_phase": "4-6"
+      }
+     }
+    }
+   },
+   "SSSINQ": {
+    "base_code": "SSSINQ",
+    "base_rules": {
+     "level_attr": "prinq",
+     "idoc_host": "none",
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "levels": {
+     "SSSINQ0": {
+      "members": [
+       "SSSINQ-01",
+       "SSSINQ-01_0.0.html",
+       "SSSINQ-01_1.0.html",
+       "SSSINQ-01_2.0.html",
+       "SSSINQ-01_3.0.html",
+       "SSSINQ-01_4.0.html",
+       "SSSINQ-02"
+      ],
+      "delta": {}
+     }
+    }
+   }
+  }
+ },
+ "ECE": {
+  "subject_rules": {
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "—"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "—"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "—"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   }
+  },
+  "bases": {
+   "ECCR": {
+    "base_code": "ECCR",
+    "base_rules": {
+     "body_class": "container-fluid inquiry",
+     "footer_links": {
+      "overview": "home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "ECCR0": {
+      "members": [
+       "ECCR001",
+       "ECCR004",
+       "ECCR005",
+       "ECCR006",
+       "ECCR007",
+       "ECCR008",
+       "ECCR009",
+       "ECCR010",
+       "ECCR011",
+       "ECCR012",
+       "ECCR013",
+       "ECCR014",
+       "ECCR015",
+       "ECCR016",
+       "ECCR017",
+       "ECCR018",
+       "ECCR019",
+       "ECCR020",
+       "ECCR021",
+       "ECCR022",
+       "ECCR023",
+       "ECCR024",
+       "ECCR025",
+       "ECCR028",
+       "ECCR031"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   },
+   "ECCU": {
+    "base_code": "ECCU",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     }
+    },
+    "levels": {
+     "ECCU0": {
+      "members": [
+       "ECCU001",
+       "ECCU002",
+       "ECCU003",
+       "ECCU004",
+       "ECCU005",
+       "ECCU006",
+       "ECCU007",
+       "ECCU008",
+       "ECCU009",
+       "ECCU010",
+       "ECCU011",
+       "ECCU013",
+       "ECCU014",
+       "ECCU015",
+       "ECCU016",
+       "ECCU017",
+       "ECCU018",
+       "ECCU019",
+       "ECCU020",
+       "ECCU021",
+       "ECCU022",
+       "ECCU023",
+       "ECCU024",
+       "ECCU027",
+       "ECCU028",
+       "ECCU029",
+       "ECCU030",
+       "ECCU031",
+       "ECCU032",
+       "ECCU033",
+       "ECCU034",
+       "ECCU035"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   },
+   "ECE": {
+    "base_code": "ECE",
+    "base_rules": {
+     "footer_links": {
+      "overview": "—",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "ECE0": {
+      "members": [
+       "ECE-01-Test.html"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   },
+   "ECEW": {
+    "base_code": "ECEW",
+    "base_rules": {
+     "acknowledgements": "yes",
+     "h1_count": {
+      "overview": "1",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "ECEW0": {
+      "members": [
+       "ECEW001",
+       "ECEW002",
+       "ECEW003"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   },
+   "ECHO": {
+    "base_code": "ECHO",
+    "base_rules": {
+     "level_attr": "ech",
+     "idoc_host": "none",
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "prev+next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "ECHO0": {
+      "members": [
+       "ECHO-01.html",
+       "ECHO-02.html",
+       "ECHO-03.html",
+       "ECHO-04.html",
+       "ECHO-05.html",
+       "ECHO-06.html",
+       "ECHO-07.html",
+       "ECHO-08.html",
+       "ECHO-08_old.html",
+       "ECHO-09.html"
+      ],
+      "delta": {
+       "template_phase": "ECH",
+       "level_attr": "empty",
+       "idoc_host": "tekura",
+       "module_code": {
+        "overview": "—",
+        "lesson": "free-text:\"ECHO-09\""
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "tabs"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "ECHO1": {
+      "members": [
+       "ECHO-10.html",
+       "ECHO101",
+       "ECHO117",
+       "ECHO118",
+       "ECHO119",
+       "ECHO12",
+       "ECHO120",
+       "ECHO121",
+       "ECHO122",
+       "ECHO123",
+       "ECHO124",
+       "ECHO125",
+       "ECHO126",
+       "ECHO127",
+       "ECHO128",
+       "ECHO129",
+       "ECHO130",
+       "ECHO131",
+       "ECHO132",
+       "ECHO133",
+       "ECHO134",
+       "ECHO135",
+       "ECHO136"
+      ],
+      "delta": {
+       "template_phase": "ECH",
+       "body_class": "container-fluid inquiry",
+       "footer_class": "footer-nav inquiry-nav"
+      }
+     },
+     "ECHO": {
+      "members": [
+       "ECHO-Cooking.html",
+       "ECHO-Music.html"
+      ],
+      "delta": {
+       "template_phase": "ECH",
+       "level_attr": "empty",
+       "idoc_host": "tekura",
+       "footer_class": "footer-nav inquiry-nav",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": "no"
+       }
+      }
+     },
+     "ECHO2": {
+      "members": [
+       "ECHO203",
+       "ECHO204",
+       "ECHO205",
+       "ECHO206",
+       "ECHO207"
+      ],
+      "delta": {}
+     },
+     "ECHO3": {
+      "members": [
+       "ECHO304"
+      ],
+      "delta": {
+       "acknowledgements": "yes"
+      }
+     },
+     "ECHO4": {
+      "members": [
+       "ECHO411",
+       "ECHO420",
+       "ECHO421",
+       "ECHO422",
+       "ECHO423",
+       "ECHO436",
+       "ECHO437",
+       "ECHO439"
+      ],
+      "delta": {
+       "template_phase": "ECH",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "simplified"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       }
+      }
+     },
+     "ECHO5": {
+      "members": [
+       "ECHO502",
+       "ECHO503",
+       "ECHO518"
+      ],
+      "delta": {}
+     },
+     "ECHO6": {
+      "members": [
+       "ECHO601",
+       "ECHO602",
+       "ECHO604",
+       "ECHO605",
+       "ECHO606",
+       "ECHO607",
+       "ECHO609",
+       "ECHO610",
+       "ECHO611",
+       "ECHO614",
+       "ECHO619",
+       "ECHO620",
+       "ECHO621",
+       "ECHO622",
+       "ECHO623",
+       "ECHO631",
+       "ECHO632",
+       "ECHO633",
+       "ECHO634",
+       "ECHO640"
+      ],
+      "delta": {
+       "template_phase": "ECH/∅"
+      }
+     },
+     "ECHO7": {
+      "members": [
+       "ECHO702"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "ECLR": {
+    "base_code": "ECLR",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "ECLR0": {
+      "members": [
+       "ECLR001",
+       "ECLR002",
+       "ECLR003",
+       "ECLR004",
+       "ECLR005",
+       "ECLR006",
+       "ECLR007",
+       "ECLR008",
+       "ECLR009",
+       "ECLR010",
+       "ECLR011",
+       "ECLR012",
+       "ECLR013"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   },
+   "ECMX": {
+    "base_code": "ECMX",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "tabs"
+     }
+    },
+    "levels": {
+     "ECMX0": {
+      "members": [
+       "ECMX001",
+       "ECMX002",
+       "ECMX003",
+       "ECMX004",
+       "ECMX005"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   },
+   "ECWB": {
+    "base_code": "ECWB",
+    "base_rules": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "ECWB0": {
+      "members": [
+       "ECWB002",
+       "ECWB003",
+       "ECWB004",
+       "ECWB01"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   }
+  }
+ },
+ "EXPlore": {
+  "subject_rules": {
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "(empty)"
+   },
+   "h1_count": {
+    "overview": "—",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "none",
+    "lesson": "simplified"
+   }
+  },
+  "bases": {
+   "EXBP": {
+    "base_code": "EXBP",
+    "base_rules": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "2"
+     }
+    },
+    "levels": {
+     "EXBP9": {
+      "members": [
+       "EXBP901"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "EXDT": {
+    "base_code": "EXDT",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "next",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "EXDT2": {
+      "members": [
+       "EXDT201"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "footer_links": {
+        "overview": "—",
+        "lesson": "—",
+        "final": "prev+home"
+       }
+      }
+     },
+     "EXDT9": {
+      "members": [
+       "EXDT902"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     }
+    }
+   },
+   "EXIN": {
+    "base_code": "EXIN",
+    "base_rules": {
+     "idoc_host": "none"
+    },
+    "levels": {
+     "EXIN1": {
+      "members": [
+       "EXIN101"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "EXIP": {
+    "base_code": "EXIP",
+    "base_rules": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "2"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     }
+    },
+    "levels": {
+     "EXIP9": {
+      "members": [
+       "EXIP901",
+       "EXIP902"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "EXPFUN": {
+    "base_code": "EXPFUN",
+    "base_rules": {
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "—",
+      "lesson": "(empty)"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "tabs"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "EXPFUN0": {
+      "members": [
+       "EXPFUN02",
+       "EXPFUN03",
+       "EXPFUN04",
+       "EXPFUN05",
+       "EXPFUN06",
+       "EXPFUN07"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file"
+      }
+     }
+    }
+   },
+   "EXPWHA": {
+    "base_code": "EXPWHA",
+    "base_rules": {
+     "module_code": {
+      "overview": "—",
+      "lesson": "free-text:\"EXWHA\""
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "EXPWHA": {
+      "members": [
+       "EXPWHA.html"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "EXSA": {
+    "base_code": "EXSA",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "EXSA9": {
+      "members": [
+       "EXSA902"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     }
+    }
+   }
+  }
+ },
+ "Leaving to Learn": {
+  "subject_rules": {
+   "level_attr": "prm",
+   "idoc_host": "none",
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   }
+  },
+  "bases": {
+   "LSO": {
+    "base_code": "LSO",
+    "base_rules": {},
+    "levels": {
+     "LSO1": {
+      "members": [
+       "LSO10",
+       "LSO100",
+       "LSO1152"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "SL": {
+    "base_code": "SL",
+    "base_rules": {
+     "acknowledgements": "yes",
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "SL1": {
+      "members": [
+       "SL1001",
+       "SL1002",
+       "SL1003",
+       "SL1004",
+       "SL1006",
+       "SL1007",
+       "SL1008",
+       "SL1009",
+       "SL1011",
+       "SL1012",
+       "SL1013"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "SLO": {
+    "base_code": "SLO",
+    "base_rules": {},
+    "levels": {
+     "SLO1": {
+      "members": [
+       "SLO1000",
+       "SLO1001",
+       "SLO1002",
+       "SLO1003",
+       "SLO1004",
+       "SLO1005",
+       "SLO1006",
+       "SLO1007",
+       "SLO1008",
+       "SLO1009",
+       "SLO1010",
+       "SLO1011",
+       "SLO1012",
+       "SLO1013"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "TFO": {
+    "base_code": "TFO",
+    "base_rules": {
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "TFO1": {
+      "members": [
+       "TFO101",
+       "TFO102",
+       "TFO103",
+       "TFO104",
+       "TFO105",
+       "TFO106",
+       "TFO107",
+       "TFO108",
+       "TFO109",
+       "TFO110"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "XAR": {
+    "base_code": "XAR",
+    "base_rules": {
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "XAR2": {
+      "members": [
+       "XAR201",
+       "XAR202",
+       "XAR203",
+       "XAR204",
+       "XAR205",
+       "XAR206",
+       "XAR207",
+       "XAR208",
+       "XAR209",
+       "XAR210",
+       "XAR211",
+       "XAR212",
+       "XAR213",
+       "XAR214",
+       "XAR215",
+       "XAR216",
+       "XAR217",
+       "XAR218",
+       "XAR219",
+       "XAR220"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "XARO": {
+    "base_code": "XARO",
+    "base_rules": {
+     "body_class": "container-fluid inquiry reoTranslate",
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "—",
+      "lesson": "(empty)"
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "XARO1": {
+      "members": [
+       "XARO101",
+       "XARO102",
+       "XARO103",
+       "XARO104",
+       "XARO105",
+       "XARO106",
+       "XARO107",
+       "XARO108",
+       "XARO109",
+       "XARO110",
+       "XARO111",
+       "XARO112",
+       "XARO113",
+       "XARO114",
+       "XARO115",
+       "XARO116",
+       "XARO117",
+       "XARO118",
+       "XARO119",
+       "XARO120"
+      ],
+      "delta": {
+       "template_phase": "ECH"
+      }
+     }
+    }
+   },
+   "XDLS": {
+    "base_code": "XDLS",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     }
+    },
+    "levels": {
+     "XDLS5": {
+      "members": [
+       "XDLS501",
+       "XDLS502"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "XDLS9": {
+      "members": [
+       "XDLS9008",
+       "XDLS901",
+       "XDLS902",
+       "XDLS903",
+       "XDLS904",
+       "XDLS905",
+       "XDLS906",
+       "XDLS908",
+       "XDLS909",
+       "XDLS911",
+       "XDLS912"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "XFUN": {
+    "base_code": "XFUN",
+    "base_rules": {
+     "body_class": "container-fluid fundamentals",
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "module_code": {
+      "overview": "free-text:\"XFUN02\"",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     }
+    },
+    "levels": {
+     "XFUN0": {
+      "members": [
+       "XFUN01",
+       "XFUN02"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "multi-file",
+       "page_model_exceptions": [
+        "XFUN01"
+       ]
+      }
+     }
+    }
+   },
+   "XGF": {
+    "base_code": "XGF",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     }
+    },
+    "levels": {
+     "XGF9": {
+      "members": [
+       "XGF9001",
+       "XGF9003",
+       "XGF9004",
+       "XGF9006"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "XLP": {
+    "base_code": "XLP",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "module_code": {
+      "overview": "free-text:\"XPL06\"",
+      "lesson": "padded-number"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     }
+    },
+    "levels": {
+     "XLP0": {
+      "members": [
+       "XLP01",
+       "XLP02",
+       "XLP03",
+       "XLP04",
+       "XLP05",
+       "XLP06"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "XMES": {
+    "base_code": "XMES",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "XMES1": {
+      "members": [
+       "XMES101",
+       "XMES102",
+       "XMES103"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "padded-number"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "2"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "XMES2": {
+      "members": [
+       "XMES201",
+       "XMES203"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "XOTPB": {
+    "base_code": "XOTPB",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "free-text:\"XOTPB14\"",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "XOTPB0": {
+      "members": [
+       "XOTPB02",
+       "XOTPB03",
+       "XOTPB04",
+       "XOTPB05",
+       "XOTPB06",
+       "XOTPB07",
+       "XOTPB08",
+       "XOTPB09"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "free-text:\"XOTPB09\"",
+        "lesson": "—"
+       }
+      }
+     },
+     "XOTPB1": {
+      "members": [
+       "XOTPB10",
+       "XOTPB11",
+       "XOTPB12",
+       "XOTPB13",
+       "XOTPB14"
+      ],
+      "delta": {
+       "template_phase": "1-3"
+      }
+     }
+    }
+   },
+   "XOTPG": {
+    "base_code": "XOTPG",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "free-text:\"XOTPG14\"",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "XOTPG0": {
+      "members": [
+       "XOTPG01",
+       "XOTPG02",
+       "XOTPG03",
+       "XOTPG04",
+       "XOTPG05",
+       "XOTPG06",
+       "XOTPG07",
+       "XOTPG08",
+       "XOTPG09"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "free-text:\"XOTPG10\"",
+        "lesson": "—"
+       }
+      }
+     },
+     "XOTPG1": {
+      "members": [
+       "XOTPG10",
+       "XOTPG11",
+       "XOTPG12",
+       "XOTPG13",
+       "XOTPG14"
+      ],
+      "delta": {
+       "template_phase": "1-3"
+      }
+     }
+    }
+   },
+   "XOTPO": {
+    "base_code": "XOTPO",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "free-text:\"XOTPO14\"",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "XOTPO0": {
+      "members": [
+       "XOTPO01",
+       "XOTPO02",
+       "XOTPO03",
+       "XOTPO04",
+       "XOTPO05",
+       "XOTPO06",
+       "XOTPO07",
+       "XOTPO08",
+       "XOTPO09"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "free-text:\"XOTPO09\"",
+        "lesson": "—"
+       }
+      }
+     },
+     "XOTPO1": {
+      "members": [
+       "XOTPO10",
+       "XOTPO11",
+       "XOTPO12",
+       "XOTPO13",
+       "XOTPO14"
+      ],
+      "delta": {
+       "template_phase": "1-3"
+      }
+     }
+    }
+   },
+   "XR": {
+    "base_code": "XR",
+    "base_rules": {
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "XR1": {
+      "members": [
+       "XR101",
+       "XR108",
+       "XR109"
+      ],
+      "delta": {
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       }
+      }
+     },
+     "XR2": {
+      "members": [
+       "XR200",
+       "XR201",
+       "XR202",
+       "XR203",
+       "XR204",
+       "XR205",
+       "XR206",
+       "XR207",
+       "XR208",
+       "XR209",
+       "XR210"
+      ],
+      "delta": {}
+     },
+     "XR3": {
+      "members": [
+       "XR300",
+       "XR302",
+       "XR303",
+       "XR305",
+       "XR306",
+       "XR307",
+       "XR308",
+       "XR309",
+       "XR310"
+      ],
+      "delta": {}
+     },
+     "XR4": {
+      "members": [
+       "XR400",
+       "XR401",
+       "XR402",
+       "XR403",
+       "XR404",
+       "XR405",
+       "XR406",
+       "XR407",
+       "XR408",
+       "XR409",
+       "XR410"
+      ],
+      "delta": {}
+     },
+     "XR5": {
+      "members": [
+       "XR500",
+       "XR501",
+       "XR502",
+       "XR503",
+       "XR504",
+       "XR505",
+       "XR506",
+       "XR507",
+       "XR508",
+       "XR509",
+       "XR510"
+      ],
+      "delta": {}
+     },
+     "XR6": {
+      "members": [
+       "XR600",
+       "XR601",
+       "XR602",
+       "XR603",
+       "XR604",
+       "XR605",
+       "XR606",
+       "XR607",
+       "XR608"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "XRO": {
+    "base_code": "XRO",
+    "base_rules": {
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "XRO1": {
+      "members": [
+       "XRO100",
+       "XRO101",
+       "XRO102",
+       "XRO103",
+       "XRO104",
+       "XRO105",
+       "XRO106",
+       "XRO107",
+       "XRO110"
+      ],
+      "delta": {
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       }
+      }
+     },
+     "XRO3": {
+      "members": [
+       "XRO301",
+       "XRO304"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "XSL": {
+    "base_code": "XSL",
+    "base_rules": {},
+    "levels": {
+     "XSL0": {
+      "members": [
+       "XSL0109"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "XSLO": {
+    "base_code": "XSLO",
+    "base_rules": {},
+    "levels": {
+     "XSLO1": {
+      "members": [
+       "XSLO101",
+       "XSLO102",
+       "XSLO104",
+       "XSLO105",
+       "XSLO106",
+       "XSLO108",
+       "XSLO111",
+       "XSLO112",
+       "XSLO114",
+       "XSLO115",
+       "XSLO116",
+       "XSLO117",
+       "XSLO119",
+       "XSLO120",
+       "XSLO121",
+       "XSLO122",
+       "XSLO124",
+       "XSLO125"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "XTAS": {
+    "base_code": "XTAS",
+    "base_rules": {
+     "level_attr": "1-3",
+     "idoc_host": "tekura",
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     }
+    },
+    "levels": {
+     "XTAS1": {
+      "members": [
+       "XTAS101",
+       "XTAS102",
+       "XTAS103"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "XWHA": {
+    "base_code": "XWHA",
+    "base_rules": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "module_code": {
+      "overview": "free-text:\"XWHA02\"",
+      "lesson": "decimal"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "levels": {
+     "XWHA0": {
+      "members": [
+       "XWHA01",
+       "XWHA02"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   }
+  }
+ },
+ "NCEA1": {
+  "subject_rules": {},
+  "bases": {
+   "AGH": {
+    "base_code": "AGH",
+    "base_rules": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "AGH1": {
+      "members": [
+       "AGH1001",
+       "AGH1002",
+       "AGH1003",
+       "AGH1004",
+       "AGH1005",
+       "AGH1006",
+       "AGH1007",
+       "AGH1008",
+       "AGH1009"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "AGHFUN": {
+    "base_code": "AGHFUN",
+    "base_rules": {
+     "module_code": {
+      "overview": "free-text:\"AGHFUN06\"",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "levels": {
+     "AGHFUN0": {
+      "members": [
+       "AGHFUN01",
+       "AGHFUN02",
+       "AGHFUN03",
+       "AGHFUN04",
+       "AGHFUN05",
+       "AGHFUN06"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     }
+    }
+   },
+   "AGHWHA": {
+    "base_code": "AGHWHA",
+    "base_rules": {},
+    "levels": {
+     "AGHWHA0": {
+      "members": [
+       "AGHWHA_0.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     }
+    }
+   },
+   "ART": {
+    "base_code": "ART",
+    "base_rules": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     }
+    },
+    "levels": {
+     "ART1": {
+      "members": [
+       "ART1002",
+       "ART1003",
+       "ART1004",
+       "ART1005",
+       "ART1006"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "ARTFUN": {
+    "base_code": "ARTFUN",
+    "base_rules": {
+     "footer_class": "footer-nav fundamentals-nav",
+     "module_code": {
+      "overview": "free-text:\"ARTFUN06\"",
+      "lesson": "free-text:\"ARTFUN06\""
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "tabs"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "ARTFUN0": {
+      "members": [
+       "ARTFUN01",
+       "ARTFUN02",
+       "ARTFUN03",
+       "ARTFUN04",
+       "ARTFUN05",
+       "ARTFUN06",
+       "ARTFUN07"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     }
+    }
+   },
+   "ENG": {
+    "base_code": "ENG",
+    "base_rules": {
+     "acknowledgements": "yes",
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "levels": {
+     "ENG1": {
+      "members": [
+       "ENG1001",
+       "ENG1002",
+       "ENG1004",
+       "ENG1005",
+       "ENG1007",
+       "ENG1008",
+       "ENG1009",
+       "ENG1010"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "ENGFUN": {
+    "base_code": "ENGFUN",
+    "base_rules": {
+     "module_code": {
+      "overview": "free-text:\"ENGFUN03\"",
+      "lesson": "decimal"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     }
+    },
+    "levels": {
+     "ENGFUN0": {
+      "members": [
+       "ENGFUN01",
+       "ENGFUN02",
+       "ENGFUN03"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "ENO": {
+    "base_code": "ENO",
+    "base_rules": {
+     "idoc_host": "none",
+     "acknowledgements": "yes"
+    },
+    "levels": {
+     "ENO1": {
+      "members": [
+       "ENO1001",
+       "ENO1021",
+       "ENO1022",
+       "ENO1044",
+       "ENO1055",
+       "ENO1207",
+       "ENO1921"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "HES": {
+    "base_code": "HES",
+    "base_rules": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "levels": {
+     "HES1": {
+      "members": [
+       "HES1001",
+       "HES1002",
+       "HES1003",
+       "HES1004",
+       "HES1005",
+       "HES1006",
+       "HES1007"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "HIS": {
+    "base_code": "HIS",
+    "base_rules": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "HIS1": {
+      "members": [
+       "HIS1001",
+       "HIS1002",
+       "HIS1003",
+       "HIS1004",
+       "HIS1005",
+       "HIS1006",
+       "HIS1007",
+       "HIS1008"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "HISFUN": {
+    "base_code": "HISFUN",
+    "base_rules": {
+     "module_code": {
+      "overview": "free-text:\"HISFUN09\"",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "HISFUN0": {
+      "members": [
+       "HISFUN01",
+       "HISFUN02",
+       "HISFUN03",
+       "HISFUN04",
+       "HISFUN05",
+       "HISFUN06",
+       "HISFUN07",
+       "HISFUN08",
+       "HISFUN09"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     }
+    }
+   },
+   "HISWHA": {
+    "base_code": "HISWHA",
+    "base_rules": {
+     "acknowledgements": "yes",
+     "module_code": {
+      "overview": "free-text:\"HISWHA\"",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "HISWHA0": {
+      "members": [
+       "HISWHA_0.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     },
+     "HISWHA1": {
+      "members": [
+       "HISWHA_1.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "none"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "HISWHA2": {
+      "members": [
+       "HISWHA_2.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "none"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "HISWHA3": {
+      "members": [
+       "HISWHA_3.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "1"
+       },
+       "menu_type": {
+        "overview": "—",
+        "lesson": "none"
+       },
+       "footer_links": {
+        "overview": "—",
+        "lesson": "prev+next+home",
+        "final": "—"
+       }
+      }
+     },
+     "HISWHA4": {
+      "members": [
+       "HISWHA_4.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "footer_links": {
+        "overview": "—",
+        "lesson": "—",
+        "final": "prev+home"
+       }
+      }
+     }
+    }
+   },
+   "PCO": {
+    "base_code": "PCO",
+    "base_rules": {
+     "idoc_host": "none",
+     "acknowledgements": "yes"
+    },
+    "levels": {
+     "PCO1": {
+      "members": [
+       "PCO1003"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PES": {
+    "base_code": "PES",
+    "base_rules": {},
+    "levels": {
+     "PES1": {
+      "members": [
+       "PES1001",
+       "PES1002",
+       "PES1003",
+       "PES1004",
+       "PES1005",
+       "PES1006",
+       "PES1007",
+       "PES1008"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "PHE": {
+    "base_code": "PHE",
+    "base_rules": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     }
+    },
+    "levels": {
+     "PHE1": {
+      "members": [
+       "PHE1001",
+       "PHE1002",
+       "PHE1003",
+       "PHE1004",
+       "PHE1005",
+       "PHE1006",
+       "PHE1007",
+       "PHE1008"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "PHEFUN": {
+    "base_code": "PHEFUN",
+    "base_rules": {
+     "module_code": {
+      "overview": "—",
+      "lesson": "free-text:\"PHEFUN08\""
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "PHEFUN0": {
+      "members": [
+       "PHEFUN01",
+       "PHEFUN02",
+       "PHEFUN03",
+       "PHEFUN04",
+       "PHEFUN05",
+       "PHEFUN06",
+       "PHEFUN07",
+       "PHEFUN08",
+       "PHEFUN_0.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA"
+      }
+     },
+     "PHEFUN1": {
+      "members": [
+       "PHEFUN_1.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       }
+      }
+     },
+     "PHEFUN2": {
+      "members": [
+       "PHEFUN_2.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "—",
+        "lesson": "2"
+       }
+      }
+     },
+     "PHEFUN3": {
+      "members": [
+       "PHEFUN_3.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       }
+      }
+     },
+     "PHEFUN4": {
+      "members": [
+       "PHEFUN_4.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       }
+      }
+     },
+     "PHEFUN5": {
+      "members": [
+       "PHEFUN_5.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       }
+      }
+     },
+     "PHEFUN6": {
+      "members": [
+       "PHEFUN_6.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       }
+      }
+     },
+     "PHEFUN7": {
+      "members": [
+       "PHEFUN_7.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "acknowledgements": "yes",
+       "module_code": {
+        "overview": "—",
+        "lesson": "decimal"
+       }
+      }
+     },
+     "PHEFUN8": {
+      "members": [
+       "PHEFUN_8.0.html"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "footer_links": {
+        "overview": "—",
+        "lesson": "—",
+        "final": "prev+home"
+       }
+      }
+     }
+    }
+   },
+   "PWO": {
+    "base_code": "PWO",
+    "base_rules": {
+     "idoc_host": "none",
+     "acknowledgements": "yes"
+    },
+    "levels": {
+     "PWO1": {
+      "members": [
+       "PWO1001",
+       "PWO1003",
+       "PWO1004",
+       "PWO1005",
+       "PWO1007",
+       "PWO1009",
+       "PWO1010",
+       "PWO1013",
+       "PWO1016",
+       "PWO1018"
+      ],
+      "delta": {}
+     }
+    }
+   }
+  }
+ },
+ "NCEA2": {
+  "subject_rules": {
+   "idoc_host": "none"
+  },
+  "bases": {
+   "PCO": {
+    "base_code": "PCO",
+    "base_rules": {},
+    "levels": {
+     "PCO2": {
+      "members": [
+       "PCO2019"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PEO": {
+    "base_code": "PEO",
+    "base_rules": {},
+    "levels": {
+     "PEO2": {
+      "members": [
+       "PEO2022",
+       "PEO2081"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PHO": {
+    "base_code": "PHO",
+    "base_rules": {},
+    "levels": {
+     "PHO2": {
+      "members": [
+       "PHO2042",
+       "PHO2043",
+       "PHO2044",
+       "PHO2051",
+       "PHO2052",
+       "PHO2061",
+       "PHO2062",
+       "PHO2063"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PPO": {
+    "base_code": "PPO",
+    "base_rules": {
+     "acknowledgements": "yes"
+    },
+    "levels": {
+     "PPO2": {
+      "members": [
+       "PPO2011",
+       "PPO2012"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PWO": {
+    "base_code": "PWO",
+    "base_rules": {
+     "acknowledgements": "yes"
+    },
+    "levels": {
+     "PWO2": {
+      "members": [
+       "PWO2001",
+       "PWO2002",
+       "PWO2004",
+       "PWO2006",
+       "PWO2007",
+       "PWO2009",
+       "PWO2010",
+       "PWO2012",
+       "PWO2013",
+       "PWO2016",
+       "PWO2027",
+       "PWO2028"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "ZHO": {
+    "base_code": "ZHO",
+    "base_rules": {},
+    "levels": {
+     "ZHO2": {
+      "members": [
+       "ZHO2002",
+       "ZHO2003",
+       "ZHO2004",
+       "ZHO2005",
+       "ZHO2006",
+       "ZHO2008"
+      ],
+      "delta": {}
+     }
+    }
+   }
+  }
+ },
+ "NCEA3": {
+  "subject_rules": {
+   "idoc_host": "none"
+  },
+  "bases": {
+   "PADO": {
+    "base_code": "PADO",
+    "base_rules": {},
+    "levels": {
+     "PADO3": {
+      "members": [
+       "PADO32",
+       "PADO33",
+       "PADO34",
+       "PADO35"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PEO": {
+    "base_code": "PEO",
+    "base_rules": {},
+    "levels": {
+     "PEO3": {
+      "members": [
+       "PEO3021",
+       "PEO3041",
+       "PEO3061",
+       "PEO3081",
+       "PEO3121"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PHO": {
+    "base_code": "PHO",
+    "base_rules": {},
+    "levels": {
+     "PHO3": {
+      "members": [
+       "PHO3011",
+       "PHO3012",
+       "PHO3021",
+       "PHO3031",
+       "PHO3032",
+       "PHO3041",
+       "PHO3042",
+       "PHO3043",
+       "PHO3044",
+       "PHO3051",
+       "PHO3052",
+       "PHO3061",
+       "PHO3062",
+       "PHO3063",
+       "PHO3064",
+       "PHO3071"
+      ],
+      "delta": {}
+     }
+    }
+   },
+   "PPO": {
+    "base_code": "PPO",
+    "base_rules": {
+     "acknowledgements": "yes"
+    },
+    "levels": {
+     "PPO3": {
+      "members": [
+       "PPO3011",
+       "PPO3021",
+       "PPO3022",
+       "PPO3043"
+      ],
+      "delta": {}
+     }
+    }
+   }
+  }
+ },
+ "Online Safety (OS9000)": {
+  "subject_rules": {
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   }
+  },
+  "bases": {
+   "OSAH": {
+    "base_code": "OSAH",
+    "base_rules": {
+     "h1_count": {
+      "overview": "2",
+      "lesson": "2"
+     }
+    },
+    "levels": {
+     "OSAH3": {
+      "members": [
+       "OSAH301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "—"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSAH4": {
+      "members": [
+       "OSAH401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "h1_count": {
+        "overview": "2",
+        "lesson": "1"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSAH5": {
+      "members": [
+       "OSAH501"
+      ],
+      "delta": {
+       "template_phase": "9-10/NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "OSAI": {
+    "base_code": "OSAI",
+    "base_rules": {},
+    "levels": {
+     "OSAI1": {
+      "members": [
+       "OSAI101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "page_model": "multi-file"
+      }
+     },
+     "OSAI2": {
+      "members": [
+       "OSAI201"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSAI3": {
+      "members": [
+       "OSAI301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     },
+     "OSAI4": {
+      "members": [
+       "OSAI401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     },
+     "OSAI5": {
+      "members": [
+       "OSAI501"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "OSBY": {
+    "base_code": "OSBY",
+    "base_rules": {},
+    "levels": {
+     "OSBY1": {
+      "members": [
+       "OSBY101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "h1_count": {
+        "overview": "1",
+        "lesson": "1"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSBY2": {
+      "members": [
+       "OSBY201"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "page_model": "multi-file"
+      }
+     },
+     "OSBY3": {
+      "members": [
+       "OSBY301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "menu_type": {
+        "overview": "simplified",
+        "lesson": "simplified"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSBY4": {
+      "members": [
+       "OSBY401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "h1_count": {
+        "overview": "1",
+        "lesson": "1"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSBY5": {
+      "members": [
+       "OSBY501"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "OSGM": {
+    "base_code": "OSGM",
+    "base_rules": {},
+    "levels": {
+     "OSGM1": {
+      "members": [
+       "OSGM101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSGM2": {
+      "members": [
+       "OSGM201"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSGM3": {
+      "members": [
+       "OSGM301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "multi-file"
+      }
+     },
+     "OSGM4": {
+      "members": [
+       "OSGM401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "page_model": "multi-file"
+      }
+     },
+     "OSGM5": {
+      "members": [
+       "OSGM501"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "OSOH": {
+    "base_code": "OSOH",
+    "base_rules": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "OSOH1": {
+      "members": [
+       "OSOH101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSOH2": {
+      "members": [
+       "OSOH201"
+      ],
+      "delta": {
+       "template_phase": "4-6",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSOH3": {
+      "members": [
+       "OSOH301"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSOH4": {
+      "members": [
+       "OSOH401"
+      ],
+      "delta": {
+       "template_phase": "9-10",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "menu_button_tooltip": {
+        "overview": "yes",
+        "lesson": "yes"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSOH5": {
+      "members": [
+       "OSOH501"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "OSSC": {
+    "base_code": "OSSC",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "OSSC3": {
+      "members": [
+       "OSSC301"
+      ],
+      "delta": {
+       "template_phase": "NCEA",
+       "module_code": {
+        "overview": "full-code",
+        "lesson": "decimal"
+       },
+       "h1_count": {
+        "overview": "2",
+        "lesson": "2"
+       },
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "simplified"
+       },
+       "footer_links": {
+        "overview": "next+home",
+        "lesson": "prev+next+home",
+        "final": "prev+home"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSSC4": {
+      "members": [
+       "OSSC401"
+      ],
+      "delta": {
+       "template_phase": "9-10"
+      }
+     }
+    }
+   },
+   "OSSM": {
+    "base_code": "OSSM",
+    "base_rules": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "levels": {
+     "OSSM3": {
+      "members": [
+       "OSSM301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "menu_type": {
+        "overview": "tabs",
+        "lesson": "tabs"
+       },
+       "page_model": "multi-file"
+      }
+     },
+     "OSSM4": {
+      "members": [
+       "OSSM401"
+      ],
+      "delta": {
+       "template_phase": "1-3"
+      }
+     }
+    }
+   }
+  }
+ },
+ "Te Marautanga o Aotearoa TMoA": {
+  "subject_rules": {
+   "body_class": "container-fluid reoTranslate",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "—"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "—"
+   },
+   "menu_type": {
+    "overview": "none",
+    "lesson": "—"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "—",
+    "final": "—"
+   }
+  },
+  "bases": {
+   "PNR": {
+    "base_code": "PNR",
+    "base_rules": {},
+    "levels": {
+     "PNR1": {
+      "members": [
+       "PNR101",
+       "PNR102",
+       "PNR104"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   },
+   "TRR": {
+    "base_code": "TRR",
+    "base_rules": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "2"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "TRR1": {
+      "members": [
+       "TRR100",
+       "TRR101",
+       "TRR102",
+       "TRR103",
+       "TRR104",
+       "TRR105",
+       "TRR106",
+       "TRR107",
+       "TRR108",
+       "TRR111",
+       "TRR112",
+       "TRR113",
+       "TRR114",
+       "TRR115"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "page_model": "multi-file"
+      }
+     }
+    }
+   }
+  }
+ },
+ "Te ara Whakapuawa -Wellbeing": {
+  "subject_rules": {
+   "body_class": "container-fluid inquiry",
+   "footer_class": "footer-nav inquiry-nav",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "—"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "—"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "—"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "home",
+    "lesson": "—",
+    "final": "—"
+   }
+  },
+  "bases": {
+   "TWHA": {
+    "base_code": "TWHA",
+    "base_rules": {
+     "footer_links": {
+      "overview": "prev+next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "levels": {
+     "TWHA9": {
+      "members": [
+       "TWHA901",
+       "TWHA902",
+       "TWHA903",
+       "TWHA904",
+       "TWHA905",
+       "TWHA906"
+      ],
+      "delta": {
+       "template_phase": "combo",
+       "page_model": "single-file"
+      }
+     }
+    }
+   },
+   "TWHK": {
+    "base_code": "TWHK",
+    "base_rules": {},
+    "levels": {
+     "TWHK1": {
+      "members": [
+       "TWHK101"
+      ],
+      "delta": {
+       "template_phase": "1-3",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": null
+       }
+      }
+     },
+     "TWHK2": {
+      "members": [
+       "TWHK201"
+      ],
+      "delta": {
+       "template_phase": "1-3/4-6",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": null
+       }
+      }
+     },
+     "TWHK3": {
+      "members": [
+       "TWHK301"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "menu_button_tooltip": {
+        "overview": "no",
+        "lesson": null
+       }
+      }
+     },
+     "TWHK4": {
+      "members": [
+       "TWHK401"
+      ],
+      "delta": {
+       "template_phase": "7-8"
+      }
+     },
+     "TWHK9": {
+      "members": [
+       "TWHK901",
+       "TWHK903"
+      ],
+      "delta": {
+       "template_phase": "7-8",
+       "page_model": "single-file"
+      }
+     }
+    }
+   },
+   "TWHO": {
+    "base_code": "TWHO",
+    "base_rules": {},
+    "levels": {
+     "TWHO4": {
+      "members": [
+       "TWHO401"
+      ],
+      "delta": {
+       "template_phase": "9-10"
+      }
+     },
+     "TWHO9": {
+      "members": [
+       "TWHO901",
+       "TWHO902"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "TWHR": {
+    "base_code": "TWHR",
+    "base_rules": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "—"
+     }
+    },
+    "levels": {
+     "TWHR9": {
+      "members": [
+       "TWHR901",
+       "TWHR902",
+       "TWHR903",
+       "TWHR904"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "TWHT": {
+    "base_code": "TWHT",
+    "base_rules": {},
+    "levels": {
+     "TWHT9": {
+      "members": [
+       "TWHT901"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   },
+   "TWHW": {
+    "base_code": "TWHW",
+    "base_rules": {},
+    "levels": {
+     "TWHW9": {
+      "members": [
+       "TWHW901",
+       "TWHW902",
+       "TWHW903",
+       "TWHW904",
+       "TWHW905",
+       "TWHW906"
+      ],
+      "delta": {
+       "template_phase": "combo"
+      }
+     }
+    }
+   }
+  }
+ }
+}

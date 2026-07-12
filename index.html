@@ -27,7 +27,8 @@
             </div>
 
             <!-- Top-level mode toggle (header bar, right-aligned): the two V1.5
-                 modes — Module Development (default) and Page Stitcher. -->
+                 modes — Module Development (default) and Page Stitcher — plus the
+                 added HTML Generator (the CONVERTER_V2 converter, embedded). -->
             <div id="mode-toggle" class="mode-toggle" role="radiogroup" aria-label="PageForge mode">
                 <span class="mode-toggle-label">Mode</span>
                 <div class="mode-toggle-options">
@@ -37,6 +38,9 @@
                     <input type="radio" name="pageforge-mode" id="mode-option-stitcher"
                            class="mode-toggle-input sr-only" value="stitcher">
                     <label for="mode-option-stitcher" class="mode-toggle-btn">Page Stitcher</label>
+                    <input type="radio" name="pageforge-mode" id="mode-option-htmlgen"
+                           class="mode-toggle-input sr-only" value="html-generator">
+                    <label for="mode-option-htmlgen" class="mode-toggle-btn">HTML Generator</label>
                 </div>
             </div>
         </div>
@@ -135,6 +139,21 @@
 
             <div id="stitch-summary" class="next-steps-panel hidden" aria-label="Stitch result"></div>
         </section>
+
+        <!-- HTML Generator (third mode): the CONVERTER_V2 converter UI, embedded
+             in an isolated iframe so its engine can never clash with the two V1.5
+             engines. Hidden until the HTML Generator mode is selected. -->
+        <section id="html-generator-section" class="hidden" aria-label="HTML Generator">
+            <p class="module-dev-intro">
+                Convert a Writer&rsquo;s Template (<code>.docx</code>) and its Media List into the
+                finished module HTML. The HTML Generator opens in the panel below.
+            </p>
+            <iframe id="html-generator-frame"
+                    src="converter-v2/app/index.html"
+                    title="HTML Generator"
+                    loading="lazy"
+                    style="width:100%; height:80vh; min-height:600px; border:1px solid #d0d0d0; border-radius:8px; background:#ffffff;"></iframe>
+        </section>
     </main>
 
     <!-- Toast notification -->
@@ -167,5 +186,9 @@
     <script src="js/module-results-page.js"></script>
     <script src="js/mode-toggle-filename.js"></script>
     <script src="js/mode-toggle.js"></script>
+    <!-- HTML Generator mode (third mode): self-contained show/hide. It does NOT
+         modify the existing two-mode shell — the Module Development and Page
+         Stitcher behaviour is byte-for-byte unchanged. -->
+    <script src="js/html-generator-mode.js"></script>
 </body>
 </html>

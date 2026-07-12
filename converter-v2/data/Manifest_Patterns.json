@@ -1,0 +1,34 @@
+{
+ "_meta": {
+  "title": "Interactive Manifest Data Patterns",
+  "generated": "2026-06-12",
+  "purpose": "The 13 data-pattern signatures used to label each captured interactive in {MODULE_CODE}_interactives.txt, so the later build phase knows the shape of the captured data at a glance. Format heritage: 00-PageForge/PageForge Phases/phase4_message.md (format only — no code reuse). ManifestBuilder.js reads THIS file.",
+  "detection": "Patterns are scored against the captured bundle: widget type membership (strongest signal), presence of a data TABLE, and which SUBTAG canonical tags occur among the members. Highest score wins; a tie or zero score → pattern 0 (unclassified) + a red flag recorded on the entry — never silently guessed.",
+  "extension_rule": "New widget shape = edit/add a pattern entry here, never a code change."
+ },
+ "unclassified": {
+  "id": 0,
+  "name": "Unclassified",
+  "rule": "No pattern matched confidently. The manifest entry carries a red flag telling the later phase to read the captured data manually."
+ },
+ "patterns": [
+  { "id": 1,  "name": "Single Data Table",        "used_by": ["dragAndDrop", "dropQuiz", "reorder", "memoryGame", "sliderChart", "wordDrag", "bingo", "clickingOrder", "radioQuiz", "multiChoiceQuiz", "selectionBox", "wordFind", "crossword", "typing", "selfCheck", "sketcher", "glossary", "timeline", "vennDiagram", "numberLine"], "signals": { "table": true, "subtags_any": [] } },
+  { "id": 2,  "name": "Front/Back Table Rows",    "used_by": ["flipCard", "clickDrop", "slider", "audioTrigger", "puzzle"], "signals": { "table": null, "subtags_any": ["front", "back"] } },
+  { "id": 3,  "name": "Hint/Slide Table",         "used_by": ["hintSlider", "hint"], "signals": { "table": true, "subtags_any": ["data marker"], "type_required": true } },
+  { "id": 4,  "name": "Numbered Items (Paragraph)", "used_by": ["dropDown"], "signals": { "table": false, "subtags_any": ["answer", "option"] } },
+  { "id": 5,  "name": "Numbered Slides",          "used_by": ["carousel", "rotateBanner"], "signals": { "subtags_any": ["slide n"] } },
+  { "id": 6,  "name": "Numbered Shapes/Tabs",     "used_by": ["shapeHover", "tabs", "stopWatch"], "signals": { "subtags_any": ["shape n", "tab n"] } },
+  { "id": 7,  "name": "Numbered Accordions",      "used_by": ["accordion"], "signals": { "type_required": true } },
+  { "id": 8,  "name": "Speech Bubble in Table Row", "used_by": ["speechBubble"], "signals": { "table": true, "type_required": true } },
+  { "id": 9,  "name": "Conversation Layout",      "used_by": ["speechBubble"], "signals": { "table": false, "type_required": true } },
+  { "id": 10, "name": "Word Select Table",        "used_by": ["wordSelect", "wordHighlighter"], "signals": { "table": true, "type_required": true } },
+  { "id": 11, "name": "Axis Labels",              "used_by": ["sliderChart"], "signals": { "subtags_any": ["data marker"], "type_required": true } },
+  { "id": 12, "name": "Info Trigger Image",       "used_by": ["infoTrigger"], "signals": { "type_required": true } },
+  { "id": 13, "name": "Self-Assessment/Survey Table", "used_by": ["multiChoiceQuiz"], "signals": { "table": true, "subtags_any": ["question", "option"], "type_required": true } }
+ ],
+ "tiers": {
+  "rule": "Kept for later phases per brief §8.3 — in Phase 1 ALL interactives are placeholder-only (no Tier-1 rendering). The classification is still stamped on each entry so later phases can route work.",
+  "tier_1_types": ["accordion", "flipCard", "speechBubble", "tabs"],
+  "tier_default": 2
+ }
+}

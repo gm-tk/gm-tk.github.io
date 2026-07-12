@@ -1,0 +1,1080 @@
+{
+ "_meta": {
+  "title": "Tag Lexicon — canonical tags, aliases, directives",
+  "generated": "2026-06-11",
+  "purpose": "THE tag vocabulary. Replaces the 9,557-line exhaustive variation list: instead of memorising every messy form, the engine runs the small generic normalisation pipeline in Tag_Normalisation_Spec.md against these aliases. Validated against the full historical corpus: 9,556/9,557 catalogued variations (99.99%) resolve correctly with these aliases + the pipeline rules; the single irreducible compound is in Tag_Exceptions.json.",
+  "how_matching_works": "Aliases are matched case-, diacritic-, and whitespace-insensitively, after the mechanical normalisation steps (see spec): marker stripping, bracket repair, dash/quote folding, numbering removal. A single alias therefore covers hundreds of raw variations. Matching tries: exact -> colon-payload -> colon-head -> de-numbered -> embedded (longest alias at suffix > prefix > interior). Fragments are multi-matched (container + child), 'end X'/'/X' resolves generically to a CONTAINER_CLOSE of X, and fragments opening with an addressee prefix (CS/Dev/Note) are writer instructions and are never tag-matched.",
+  "directives": {
+   "ELEMENT": "normal HTML element",
+   "CONTAINER_OPEN": "opens a wrapper",
+   "CONTAINER_CLOSE": "closes the matching wrapper",
+   "INTERACTIVE": "widget: Phase-1 bundles + red placeholder",
+   "SUBTAG": "slot inside an interactive/structure",
+   "PAGE_BOUNDARY": "ends the output file",
+   "SECTION_MARKER": "names the following region",
+   "INLINE": "mid-paragraph element",
+   "INLINE_FORMAT": "text formatting marker",
+   "DROP": "never emit (deliberate exclusion, e.g. sticky nav)"
+  },
+  "extension_rule": "New writer phrasing for an existing tag = append ONE alias here. New tag = add ONE entry here. Never a code change.",
+  "condition_primary_demote": {
+   "_note": "MODIFIER-NOT-PRIMARY fix (Chris). 'self check'/'autocheck' are aliases of 'typing quiz', so in a COMPOUND like [clickdrop quiz autocheck] the condition could win the primary slot over the real widget (click drop), building the wrong widget. When a span matches the listed tag VIA one of these condition aliases AND another non-condition INTERACTIVE tag is present, TagNormaliser demotes it so the real widget governs. A STANDALONE [self check]/[autocheck] (the only INTERACTIVE tag) is unaffected — it stays a typing/selfCheck widget. Env PRIMARYFIX_OFF reverts.",
+   "tag": "typing quiz",
+   "aliases": [
+    "self check",
+    "self-check",
+    "selfcheck",
+    "autocheck",
+    "auto check",
+    "auto-check"
+   ]
+  },
+  "qualifier_alias_demote": {
+   "_note": "QUALIFIER-NOT-CONTAINER fix (Chris, round 140, BLL241-01). The lone word 'interactive' is an alias of the 'activity' container, so a QUALIFIER span like [Interactive Stop Watch] / [interactive tool] / [interactive stopwatch] / lone [Interactive] resolves to an [activity] CONTAINER_OPEN and mis-opens a NUMBERLESS activity box that SPLITS the real activity (BLL241 1C: the audio + drag-words fell out of the box into a second, unnamed box). Genuine containers ALWAYS carry the word 'activity' ([interactive activity] ×57, which yields a SEPARATE alias:'activity' tag). So: when the resolved PRIMARY is an 'activity' CONTAINER_OPEN whose alias is a listed qualifier AND there is NO other 'activity' tag from a non-qualifier alias, TagNormaliser DROPS the qualifier-only activity tag → the span falls through to instruction/noise and no longer opens/splits a box. A widget-primary span ([Interactive – drag and drop] → drag and drop) is untouched (activity is never the primary there). Env INTERACTIVEQUAL_OFF reverts.",
+   "enabled": true,
+   "tag": "activity",
+   "open_directive": "CONTAINER_OPEN",
+   "aliases": [
+    "interactive"
+   ],
+   "standalone_becomes": "interactive",
+   "_round217_note": "ROUND 217 (Chris, boundary audit — AGH1001-01). standalone_becomes: a BARE standalone '[Interactive]' span (the demoted alias is the span's ONLY tag, matched EXACTLY) is the writer's generic widget INVOCATION, not a qualifier — it is re-tagged as this generic INTERACTIVE opener (canonical 'interactive'; no lexicon tags entry needed — GetWidgetTypes returns [] so the scanner types the bundle 'unclassified', and the round-217 activity_wrapper.standalone_widget_box then wraps it in the human's `activity interactive` box). Embedded qualifier forms ('[Interactive Stop Watch]') and multi-tag spans still demote-drop exactly as before. Measured 13 bare spans / 8 modules (AGH1001 x5). Env INTALIAS_OFF reverts the bare form to the plain demote (pre-217: instruction class, no bundle, the following data table leaking as a kept <table>)."
+  },
+  "tag_promote": {
+   "_note": "ELEMENT->CONTAINER promote (Chris, round 170, ENGS102-1.0 screenshot review). A resolved ELEMENT tag whose HUMAN rendering is really a different CONTAINER convention is promoted to that container tag so its existing machinery fires. The only rule today: [Supervisor button] -> [Supervisor note]. The writer's supervisor side-note is authored as a green 'button' in the WT, but the human developer renders it as the SAME super-content reveal PANEL it builds for [Supervisor note] (measured 17/19 [supervisor button] modules build the panel; probe outputs/_measure_supnote_separation.py). Promoting the resolved tag+directive routes [Supervisor button] through the whole round-143/160/162/163 supervisor-panel pipeline (scan / pair / activity-lookahead / callouts.by_tag all key on primary.tag === 'supervisor note'). Applied in TagNormaliser.Parse AFTER the primary is chosen; every matching tag in the span is rewritten (tag + directive) and the primary recomputed. Per-rule env toggle. NOTE this only rehomes the SEQUENTIAL (standalone) supervisor-button cases; a supervisor-button sitting in a 2-cell content|note LAYOUT table (the ENG family) is a separate table-composition follow-up.",
+   "enabled": true,
+   "rules": [
+    {
+     "from": "supervisor button",
+     "to": "supervisor note",
+     "to_directive": "CONTAINER_OPEN",
+     "env": "SUPBUTTON_OFF"
+    }
+   ]
+  },
+  "tag_count": 83,
+  "alias_count": 377,
+  "suffix_container_close": true
+ },
+ "tags": {
+  "h1": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "h1",
+    "heading 1",
+    "h 1"
+   ],
+   "rules_family": "5.1"
+  },
+  "h2": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "h2",
+    "h 2"
+   ],
+   "rules_family": "5.1"
+  },
+  "h3": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "h3",
+    "h 3"
+   ],
+   "rules_family": "5.1"
+  },
+  "h4": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "h4",
+    "h 4"
+   ],
+   "rules_family": "5.1"
+  },
+  "h5": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "h5",
+    "h 5"
+   ],
+   "rules_family": "5.1"
+  },
+  "heading": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "heading",
+    "h",
+    "insert heading",
+    "header"
+   ],
+   "rules_family": "5.1"
+  },
+  "activity heading": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "activity heading",
+    "activity title",
+    "insert image for heading"
+   ],
+   "rules_family": "5.1"
+  },
+  "title bar": {
+   "directive": "SECTION_MARKER",
+   "aliases": [
+    "title bar",
+    "title",
+    "overview",
+    "introduction",
+    "landing page"
+   ],
+   "rules_family": "5.2"
+  },
+  "module introduction": {
+   "directive": "SECTION_MARKER",
+   "aliases": [
+    "module introduction",
+    "module intro"
+   ],
+   "rules_family": "5.3"
+  },
+  "lesson": {
+   "directive": "PAGE_BOUNDARY",
+   "aliases": [
+    "lesson",
+    "akoranga"
+   ],
+   "rules_family": "5.4"
+  },
+  "page": {
+   "directive": "PAGE_BOUNDARY",
+   "aliases": [
+    "page",
+    "new page",
+    "page break"
+   ],
+   "rules_family": "5.4"
+  },
+  "lesson overview": {
+   "directive": "SECTION_MARKER",
+   "aliases": [
+    "lesson overview"
+   ],
+   "rules_family": "5.3"
+  },
+  "lesson content": {
+   "directive": "SECTION_MARKER",
+   "aliases": [
+    "lesson content",
+    "fundamental content",
+    "fundamental code",
+    "fundamental 1 code",
+    "fundamental 2 code",
+    "fundamental 3 code"
+   ],
+   "rules_family": "5.3"
+  },
+  "body": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "body",
+    "p",
+    "text",
+    "body text",
+    "body copy",
+    "paragraph"
+   ],
+   "rules_family": "5.5"
+  },
+  "alert": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "alert",
+    "alert box",
+    "alert text",
+    "alertbox"
+   ],
+   "rules_family": "5.6"
+  },
+  "side alert": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "side alert",
+    "sidealert",
+    "side alert box",
+    "side-alert"
+   ],
+   "rules_family": "5.6",
+   "_doc": "ROUND 121 (Chris, BLL210) — a `[Side alert]` is the writer's SIDE tip-box that the human renders as `<div class=\"alertActivity\">` in a narrow side column (col-md-4/3), NOT the generic `[alert]` box (which Claude was emitting via the bare 'alert' substring match). Distinct canonical so callouts.by_tag routes it to the alertActivity shape. 43 modules / 100 human alertActivity elements; Claude built 0."
+  },
+  "important": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "important",
+    "important box",
+    "alert solid",
+    "important text"
+   ],
+   "rules_family": "5.6"
+  },
+  "wananga": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "wananga",
+    "talanoa",
+    "cultural alert"
+   ],
+   "rules_family": "5.6"
+  },
+  "whakatauki": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "whakatauki",
+    "whakatauaki",
+    "proverb"
+   ],
+   "rules_family": "5.6"
+  },
+  "quote": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "quote",
+    "quotetext",
+    "quotation",
+    "pull quote"
+   ],
+   "rules_family": "5.6"
+  },
+  "image": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "image",
+    "insert image",
+    "img",
+    "photo",
+    "picture",
+    "graphic",
+    "insert item",
+    "diagram",
+    "insert the image",
+    "gif",
+    "insert media item",
+    "media item",
+    "images"
+   ],
+   "rules_family": "5.7"
+  },
+  "video": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "video",
+    "insert video",
+    "embed video",
+    "video embed",
+    "youtube",
+    "vimeo",
+    "video link"
+   ],
+   "rules_family": "5.8"
+  },
+  "audio": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "audio",
+    "insert audio",
+    "audio file",
+    "sound",
+    "audio embed",
+    "mp3",
+    "audioimage",
+    "listen icon"
+   ],
+   "rules_family": "5.8"
+  },
+  "activity": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "activity",
+    "activity box",
+    "activity wrapper",
+    "interactive",
+    "activity box wide for interactives",
+    "activity- embedded",
+    "activity + heading",
+    "activity body"
+   ],
+   "rules_family": "5.9"
+  },
+  "accordion": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "accordion",
+    "according",
+    "accordian"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "accordion"
+   ]
+  },
+  "flip card": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "flip card",
+    "flipcard",
+    "flip cards",
+    "flipcards",
+    "flip- card",
+    "flashcard",
+    "flash card",
+    "flipchart",
+    "flip chart"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "flipCard"
+   ]
+  },
+  "click drop": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "click drop",
+    "clickdrop",
+    "click dropdown",
+    "click and drop",
+    "clickable drop"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "clickDrop"
+   ]
+  },
+  "drag and drop": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "drag and drop",
+    "drag drop",
+    "drag & drop",
+    "draganddrop",
+    "drop and drag",
+    "drag n drop",
+    "drag and drop quiz"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "dragAndDrop"
+   ]
+  },
+  "dropdown": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "dropdown",
+    "drop down",
+    "dropbox",
+    "drop box"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "dropDown"
+   ]
+  },
+  "carousel": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "carousel",
+    "slideshow",
+    "rotating banner",
+    "rotate banner",
+    "slide show",
+    "banner"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "carousel",
+    "rotateBanner"
+   ]
+  },
+  "tabs": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "tabs",
+    "tab interactive",
+    "tabs interactive",
+    "tabbed"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "tabs"
+   ]
+  },
+  "speech bubble": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "speech bubble",
+    "speechbubble",
+    "speech bubbles",
+    "conversation",
+    "speech",
+    "thought bubble",
+    "thought bubbles",
+    "green thought bubble",
+    "thought bubble green"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "speechBubble"
+   ]
+  },
+  "hint": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "hint"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "hint"
+   ],
+   "_note": "ROUND 65+ (Chris): split out from 'hint slider' — a bare [hint] is the simple click-to-reveal hint (catalogue #25), NOT the multi-row hint slider (#26). The 'hint' widget_type dispatches to the SHARED hintSlider builder (a single hint = a one-row slider) so no build is lost. Reverts by data (re-add 'hint' to the hint slider aliases)."
+  },
+  "hint slider": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "hint slider",
+    "hintslider"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "hintSlider"
+   ]
+  },
+  "shape hover": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "shape hover",
+    "shapehover",
+    "hover shape"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "shapeHover"
+   ]
+  },
+  "reorder": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "reorder",
+    "re-order",
+    "re order",
+    "ordering",
+    "order activity"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "reorder"
+   ]
+  },
+  "slider": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "slider",
+    "image slider",
+    "before after slider"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "slider"
+   ]
+  },
+  "memory game": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "memory game",
+    "memory",
+    "matching game",
+    "match game",
+    "memory cards"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "memoryGame"
+   ]
+  },
+  "word drag": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "word drag",
+    "worddrag",
+    "word drag and drop"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "wordDrag"
+   ]
+  },
+  "typing quiz": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "typing quiz",
+    "self check",
+    "self-check",
+    "selfcheck",
+    "typing",
+    "type the answer",
+    "self assessment quiz",
+    "autocheck",
+    "auto check",
+    "auto-check"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "typing",
+    "selfCheck"
+   ]
+  },
+  "word select": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "word select",
+    "word highlighter",
+    "wordselect",
+    "word highlight",
+    "highlight the word",
+    "word selection",
+    "highlight",
+    "highlight text"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "wordSelect",
+    "wordHighlighter"
+   ]
+  },
+  "mcq": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "mcq",
+    "multi choice",
+    "multiple choice",
+    "multichoice",
+    "multi-choice",
+    "quiz"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "multiChoiceQuiz"
+   ]
+  },
+  "radio quiz": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "radio quiz",
+    "true false",
+    "true/false",
+    "true or false",
+    "radio button quiz",
+    "radio"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "radioQuiz"
+   ]
+  },
+  "checklist": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "checklist",
+    "check list",
+    "tick list",
+    "checkbox",
+    "tick boxes",
+    "rarangi tirotiro"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "selectionBox"
+   ]
+  },
+  "info trigger": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "info trigger",
+    "infotrigger",
+    "hover trigger",
+    "hover tigger",
+    "hover definition",
+    "info button",
+    "information trigger",
+    "roll over definition",
+    "rollover definition",
+    "roll-over definition",
+    "hovertrigger",
+    "trigger",
+    "mouseover definition",
+    "mouse over definition"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "infoTrigger"
+   ]
+  },
+  "timeline": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "timeline",
+    "time line"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "timeline"
+   ]
+  },
+  "crossword": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "crossword",
+    "cross word"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "crossword"
+   ]
+  },
+  "word find": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "word find",
+    "wordfind",
+    "word search",
+    "wordsearch"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "wordFind"
+   ]
+  },
+  "clicking order": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "clicking order",
+    "click order",
+    "click the order",
+    "clickingorder"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "clickingOrder"
+   ]
+  },
+  "puzzle": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "puzzle",
+    "jigsaw"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "puzzle"
+   ]
+  },
+  "sketcher": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "sketcher",
+    "sketch",
+    "draw",
+    "drawing"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "sketcher"
+   ]
+  },
+  "glossary": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "glossary"
+   ],
+   "rules_family": "5.10",
+   "widget_types": [
+    "glossary"
+   ]
+  },
+  "modal": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "modal",
+    "popup",
+    "pop up",
+    "pop-up",
+    "pop-out",
+    "pop out",
+    "popout"
+   ],
+   "rules_family": "5.10",
+   "widget_types": []
+  },
+  "info trigger image": {
+   "directive": "INTERACTIVE",
+   "aliases": [
+    "info trigger image",
+    "image hover trigger",
+    "infoimagetrigger",
+    "image trigger"
+   ],
+   "rules_family": "5.17",
+   "widget_types": [
+    "infoTrigger"
+   ]
+  },
+  "text box": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "text box",
+    "text input",
+    "textbox",
+    "input box",
+    "text entry",
+    "type in box"
+   ],
+   "rules_family": "5.14"
+  },
+  "embed": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "embed",
+    "imbed",
+    "imbed film",
+    "pdf embed",
+    "padlet",
+    "desmos",
+    "pdf",
+    "iframe",
+    "genially",
+    "google form"
+   ],
+   "aliases_note": "ROUND NN (Chris, ENGS302): 'imbed' is a recurrent writer misspelling of 'embed'; '[Imbed film]'/'[imbed film]' previously resolved to null (neither 'imbed' nor 'film' was an alias) and the whole tag leaked. 'imbed video'/'Imbed video' still resolve to VIDEO (the 'video' suffix wins over the 'imbed' prefix); a video-host '[Imbed film]' now reaches the embed branch which routes YouTube/Vimeo to the videoSection video builder.",
+   "rules_family": "5.14"
+  },
+  "button": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "button",
+    "add button",
+    "buttons",
+    "go to journal",
+    "journal button"
+   ],
+   "rules_family": "5.13"
+  },
+  "external link": {
+   "directive": "INLINE",
+   "aliases": [
+    "external link",
+    "link",
+    "url",
+    "hyperlink",
+    "weblink",
+    "web link",
+    "website"
+   ],
+   "rules_family": "5.12"
+  },
+  "external link button": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "external link button",
+    "link button",
+    "external button"
+   ],
+   "rules_family": "5.13"
+  },
+  "engagement quiz button": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "engagement quiz button",
+    "engagement quiz",
+    "engagement button",
+    "trigger engagement",
+    "engagement trigger"
+   ],
+   "rules_family": "5.13"
+  },
+  "supervisor button": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "supervisor button",
+    "supervisor",
+    "kaiawhina button"
+   ],
+   "rules_family": "5.13"
+  },
+  "supervisor note": {
+   "directive": "CONTAINER_OPEN",
+   "aliases": [
+    "supervisor note",
+    "note to supervisor",
+    "note for supervisor",
+    "supervisor information",
+    "supervisor notes"
+   ],
+   "rules_family": "5.6"
+  },
+  "audio button": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "audio button",
+    "audiobutton"
+   ],
+   "rules_family": "5.13"
+  },
+  "table": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "table",
+    "data table"
+   ],
+   "rules_family": "5.5"
+  },
+  "list": {
+   "directive": "ELEMENT",
+   "aliases": [
+    "unordered list",
+    "unsorted list",
+    "ordered list",
+    "bullet list",
+    "numbered list",
+    "bullet points",
+    "list"
+   ],
+   "rules_family": "5.5"
+  },
+  "front": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "front"
+   ],
+   "rules_family": "5.11"
+  },
+  "back": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "back",
+    "reverse side",
+    "reverse",
+    "facing"
+   ],
+   "rules_family": "5.11"
+  },
+  "drop": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "drop"
+   ],
+   "rules_family": "5.11"
+  },
+  "tab n": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "tab"
+   ],
+   "rules_family": "5.11"
+  },
+  "slide n": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "slide"
+   ],
+   "rules_family": "5.11"
+  },
+  "shape n": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "shape",
+    "tile",
+    "card",
+    "hotspot",
+    "box",
+    "book",
+    "section"
+   ],
+   "rules_family": "5.11"
+  },
+  "answer": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "answer",
+    "answers"
+   ],
+   "rules_family": "5.11"
+  },
+  "question": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "question",
+    "questions"
+   ],
+   "rules_family": "5.11"
+  },
+  "correct": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "correct",
+    "correct answer"
+   ],
+   "rules_family": "5.11"
+  },
+  "option": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "option",
+    "options",
+    "choice"
+   ],
+   "rules_family": "5.11"
+  },
+  "story heading": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "story heading",
+    "story",
+    "dropdown heading"
+   ],
+   "rules_family": "5.11"
+  },
+  "data marker": {
+   "directive": "SUBTAG",
+   "aliases": [
+    "term",
+    "definition",
+    "label",
+    "caption",
+    "row",
+    "column",
+    "item",
+    "clue",
+    "word",
+    "hint text",
+    "feedback",
+    "across",
+    "down",
+    "incorrect",
+    "static",
+    "insert thumbnail",
+    "merge source",
+    "on click"
+   ],
+   "rules_family": "5.11"
+  },
+  "end activity": {
+   "directive": "CONTAINER_CLOSE",
+   "aliases": [
+    "end activity",
+    "end of activity",
+    "/activity",
+    "activity end",
+    "end interactive"
+   ],
+   "rules_family": "5.15"
+  },
+  "end alert": {
+   "directive": "CONTAINER_CLOSE",
+   "aliases": [
+    "end alert",
+    "/alert",
+    "end of alert",
+    "end alert box",
+    "alert box ends here",
+    "alert ends here"
+   ],
+   "rules_family": "5.15"
+  },
+  "end important": {
+   "directive": "CONTAINER_CLOSE",
+   "aliases": [
+    "end important",
+    "/important",
+    "end of important"
+   ],
+   "rules_family": "5.15"
+  },
+  "end page": {
+   "directive": "PAGE_BOUNDARY",
+   "aliases": [
+    "end page",
+    "/page",
+    "end of page",
+    "page end"
+   ],
+   "rules_family": "5.4"
+  },
+  "end lesson": {
+   "directive": "PAGE_BOUNDARY",
+   "aliases": [
+    "end lesson",
+    "/lesson",
+    "end of lesson"
+   ],
+   "rules_family": "5.15"
+  },
+  "end other": {
+   "directive": "CONTAINER_CLOSE",
+   "aliases": [
+    "end accordion",
+    "end modal",
+    "end tabs",
+    "end carousel",
+    "end quote",
+    "end quiz",
+    "end glossary",
+    "end timeline",
+    "end speech bubble",
+    "end dropdown",
+    "end slider",
+    "end table",
+    "end activty",
+    "carousel ends here",
+    "carousel ends",
+    "carousels end",
+    "accordion ends here",
+    "accordion ends",
+    "accordions end",
+    "accordion end",
+    "modal ends here",
+    "modal ends",
+    "modal end",
+    "tabs end here",
+    "tabs ends here",
+    "tabs end",
+    "tab ends",
+    "slider ends",
+    "dropdown ends",
+    "drop down ends",
+    "coloured box ends here",
+    "coloured box ends",
+    "colour box ends here",
+    "box ends here",
+    "box ends",
+    "end"
+   ],
+   "_suffix_close_note": "SUFFIX CLOSE FORMS (2026-06-15, over-capture #3): writers close a widget with '[Carousel ends here]'/'[accordion ends]'/'[modal ends]' as often as the prefix '[End carousel]' (measured 100+ corpus occurrences). Without these the embedded widget name ('carousel') matched first → the marker OPENED a new empty widget AND failed to close the open one (ENGJ301 had 8 '[Carousel ends here]'). Listed here as CONTAINER_CLOSE; the scanner now terminates an open widget on ANY CONTAINER_CLOSE directive. 'coloured box ends' = a callout close, harmless as a widget terminator too.",
+   "rules_family": "5.15"
+  },
+  "sticky nav": {
+   "directive": "DROP",
+   "aliases": [
+    "sticky nav",
+    "stickynav",
+    "sticky navigation"
+   ],
+   "rules_family": "-"
+  },
+  "format": {
+   "directive": "INLINE_FORMAT",
+   "aliases": [
+    "bold",
+    "italics",
+    "italic",
+    "underline"
+   ],
+   "rules_family": "6"
+  }
+ }
+}

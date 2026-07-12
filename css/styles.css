@@ -203,7 +203,7 @@ main {
     max-width: 720px;
     text-align: center;
     color: var(--color-text-secondary);
-    margin: 0;
+    margin: 0 auto 18px;
 }
 
 .module-upload-grid {

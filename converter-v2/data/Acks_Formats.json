@@ -1,0 +1,169 @@
+{
+ "_meta": {
+  "title": "Acknowledgements Formats — output spec + build data",
+  "generated": "2026-06-12",
+  "purpose": "Machine-readable form of 00_Copyright_Acks_Formatting_Rules.md (§1–5 output formats, §6 build regexes/authority rules, §7 oEmbed, §8 ACK-TODO contract). AcksBuilder.js reads THIS file; no ack format lives in code. Templates use {placeholders} filled by the builder.",
+  "extension_rule": "New entry type, new source provider, new standing text, new marker type = a data edit HERE, never a code change.",
+  "precedence": "This file mirrors 00_Copyright_Acks_Formatting_Rules.md, which beats every older reference (v1 video format, Shutterstock long form, acksTemplate retirement claim are all superseded).",
+  "policy": "The acknowledgements block is generated for EVERY module — always, no conditional logic (locked 2026-06-12). Placement: bottom of the very first page (-00 overview, or the only page of a single-file module), as div.acks AFTER (outside) the #footer div. Never on the last page."
+ },
+
+ "container": {
+  "wrapper_open": "<div class=\"row\">\n<div class=\"col-md-8 col-12\">\n<div class=\"{acksClass}\">\n<div class=\"accordion\">\n<div class=\"accHead\">\n<h4>Acknowledgements</h4>\n</div>\n<div class=\"accContent\">",
+  "wrapper_close": "</div>\n</div>\n</div>\n</div>\n</div>",
+  "acks_class_standard": "acks",
+  "acks_class_ai_variant": "acks acksTemplate acksAI",
+  "ai_variant_rule": "Use the AI variant container when the module contains ANY AI-generated item (source classified 'ai').",
+  "wrapper_note": "row > col-md-8 wrapper matches current corpus practice (e.g. OSAH401_0.0.html)."
+ },
+
+ "lesson_groups": {
+  "group_element_open": "<div class=\"acksLesson\">",
+  "group_element_close": "</div>",
+  "group_label_comment": "<!-- Lesson {lesson} -->",
+  "group_label_note": "The lesson-naming comment is part of the acks output spec (§1) — one of the sanctioned comment uses. Lesson ids use the page's decimal form, e.g. 'Lesson 1.0'.",
+  "entry_element": "<p>{entry}</p>",
+  "order": ["opening_disclaimer_group", "ai_usage_statement_if_ai", "per_lesson_groups_in_lesson_order", "journal_group_if_any", "catch_all_group", "copyright_statement_group"],
+  "journal": {
+   "heading": "<h5>Journal</h5>",
+   "status": "Supported in the output structure; AUTOMATIC grouping of journal items is deferred until the marking convention is confirmed with CS (Phase-1 scope). No journal group is auto-emitted."
+  }
+ },
+
+ "standing_items": {
+  "opening_disclaimer": "<p><i>Every effort has been made to acknowledge and contact copyright holders. Te Aho o Te Kura Pounamu apologises for any omissions and welcomes more accurate information.</i></p>",
+  "ai_usage_statement": "<p>Parts of this resource were created with assistance from AI tools. For more information on the extent and nature of this AI usage, please contact Te Aho o Te Kura Pounamu.</p>",
+  "ai_usage_rule": "Emit directly underneath the opening disclaimer when the module contains AI-assisted content (any item classified 'ai').",
+  "catch_all": "<p>All other images © Te Aho o Te Kura Pounamu, Wellington, New Zealand.</p>",
+  "catch_all_note": "When Te Kura-produced video/audio is also present the human form expands ('All other images and audio …'); the converter cannot reliably know that, so it emits the base line — a developer adjusts if needed.",
+  "copyright_statement": "<p><i>Copyright © <span class=\"currentYear\"></span> Board of Trustees of Te Aho o Te Kura Pounamu, Private Bag 39992, Wellington Mail Centre, Lower Hutt 5045, New Zealand. All rights reserved. No part of this publication may be reproduced or transmitted in any form or by any means without the written permission of Te Aho o Te Kura Pounamu.</i></p>",
+  "year_rule": "The year is NEVER hard-coded — the empty <span class=\"currentYear\"></span> renders it."
+ },
+
+ "hyperlink_rule": {
+  "form": ", <a href=\"{URL}\" target=\"_blank\">{URL}</a>.",
+  "anchor_text": "the full URL itself — never descriptive text",
+  "never_linked_sources": ["istock"],
+  "note": "Comma + space precedes the link; the full stop sits OUTSIDE </a>. iStock/Getty entries are plain text only."
+ },
+
+ "entry_templates": {
+  "istock": "{TypePrefix}: {Title}, iStock {AssetId}, Getty Images.{Adapted} Used with permission.",
+  "other_stock": "{TypePrefix}: {Title}, {AssetId}, {LibraryName}.{Adapted} Used with permission.",
+  "youtube": "Video: {Title}, {Channel}, <a href=\"{URL}\" target=\"_blank\">{URL}</a>, retrieved {RetrievedDate}. Used in online learning within the exception for education.",
+  "youtube_screenshot": "Screenshot: {Title}, {Channel}, <a href=\"{URL}\" target=\"_blank\">{URL}</a>, retrieved {RetrievedDate}. Used in online learning within the exception for education.",
+  "website_permission": "{TypePrefix}: {Title}, {Source}, <a href=\"{URL}\" target=\"_blank\">{URL}</a>. Used with permission.",
+  "creative_commons": "{TypePrefix}: {Title}, {Details}, <a href=\"{URL}\" target=\"_blank\">{URL}</a>. Creative Commons {LicenceName} licence.",
+  "copyright_act_exception": "{TypePrefix}: {Title}, {Details}, <a href=\"{URL}\" target=\"_blank\">{URL}</a>. Used under section 42(1) Copyright Act 1994.",
+  "ai_copilot": "Image: {Description}, created with Copilot, © Te Aho o Te Kura Pounamu, Wellington, New Zealand.",
+  "ai_derived_cc": "Image: {Description}, copyright © Te Aho o Te Kura Pounamu, created with assistance from {AiTool} and based on {OriginalUrl}.",
+  "heygen": "Image: Avatar, HeyGen. www.heygen.com. Used with permission.",
+  "pixabay_image": "{TypePrefix}: {Title}, {AssetId}, Pixabay, Germany. Used under Creative Commons CC0 licence.",
+  "pixabay_audio": "Audio: {Title}, {Creator}, Pixabay <a href=\"{URL}\" target=\"_blank\">{URL}</a>. Used with permission.",
+  "wiki_commons": "{TypePrefix}: {Title}, {Author}, <a href=\"{URL}\" target=\"_blank\">{URL}</a>. Creative Commons {LicenceName} licence.",
+  "twinkl": "Extract: {Title}, © Twinkl, <a href=\"{URL}\" target=\"_blank\">{URL}</a>. Used with permission.",
+  "moe_story": "Story: {Title}, Words by {Author} Illustrations by {Illustrator}, {Series}, Ministry of Education © Crown copyright, <a href=\"{URL}\" target=\"_blank\">{URL}</a>. Creative Commons Attribution-NonCommercial 4.0 Licence.",
+  "adapted_token": " Adapted.",
+  "adapted_rule": "When the media item is marked adapted/edited/modified (item description or type contains one of adapted_keywords), insert adapted_token before 'Used with permission.'",
+  "adapted_keywords": ["adapted", "edited", "modified", "cropped and edited"]
+ },
+
+ "type_prefix_map": {
+  "photo": "Photo", "photograph": "Photo", "image": "Photo", "stock photo": "Photo",
+  "illustration": "Illustration", "vector": "Illustration", "stock illustration": "Illustration",
+  "video": "Video", "youtube video": "Video", "clip": "Video",
+  "audio": "Audio", "sound": "Audio", "music": "Audio", "song": "Audio",
+  "podcast": "Podcast", "extract": "Extract", "screenshot": "Screenshot", "screenshots": "Screenshots",
+  "map": "Map", "graph": "Graph", "story": "Story", "poster": "Poster", "gif": "Image", "diagram": "Diagram",
+  "_fallback_rule": "Unknown item type → Title Case the writer's own word as the prefix AND record a red-flag note in the summary (never silently absorb)."
+ },
+
+ "source_classification": {
+  "rule": "Classify each media item by first matching the URL domain, then the Source column keywords, then type keywords. First hit wins.",
+  "by_domain": [
+   { "match": "istockphoto.com",        "source": "istock" },
+   { "match": "gettyimages.",           "source": "istock" },
+   { "match": "youtube.com",            "source": "youtube" },
+   { "match": "youtu.be",               "source": "youtube" },
+   { "match": "pixabay.com",            "source": "pixabay" },
+   { "match": "commons.wikimedia.org",  "source": "wikicommons" },
+   { "match": "twinkl.",                "source": "twinkl" },
+   { "match": "heygen.com",             "source": "heygen" },
+   { "match": "shutterstock.com",       "source": "other_stock" },
+   { "match": "vimeo.com",              "source": "website" }
+  ],
+  "by_source_keyword": [
+   { "match": "istock",      "source": "istock" },
+   { "match": "getty",       "source": "istock" },
+   { "match": "youtube",     "source": "youtube" },
+   { "match": "pixabay",     "source": "pixabay" },
+   { "match": "wiki",        "source": "wikicommons" },
+   { "match": "twinkl",      "source": "twinkl" },
+   { "match": "heygen",      "source": "heygen" },
+   { "match": "shutterstock","source": "other_stock" },
+   { "match": "copilot",     "source": "ai" },
+   { "match": "ai generated","source": "ai" },
+   { "match": "ai-generated","source": "ai" },
+   { "match": "te kura",     "source": "tekura" }
+  ],
+  "default": "website",
+  "tekura_rule": "Items classified 'tekura' are covered by the standing catch-all line — no individual entry is emitted.",
+  "non_media_skip": "Item types in skip_types are lesson links, not acknowledgeable media — skip the entry, record a summary note (scope rule §1: external links used in lessons do not receive acknowledgements).",
+  "skip_types": ["link", "external link", "website link", "url", "weblink"]
+ },
+
+ "extraction_regexes": {
+  "youtube_id": "(?:youtube\\.com/watch\\?v=|youtu\\.be/|youtube\\.com/embed/|youtube\\.com/shorts/)([\\w-]{11})",
+  "istock_id_from_url": "gm-?(\\d{6,10})",
+  "istock_id_in_text": "iStock\\s*(\\d{6,10})",
+  "bare_asset_id": "\\b(\\d{8,10})\\b",
+  "istock_slug_from_url": "istockphoto\\.com/[a-z-]*/([a-z0-9-]+)-gm-?\\d{6,10}",
+  "url_normalise_strip_params": ["si", "feature", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"],
+  "note": "Validated across the corpus (00_Copyright_Acks_Formatting_Rules.md §6.2)."
+ },
+
+ "istock_slug_title": {
+  "rule": "The iStock URL slug IS the official asset title in kebab-case (98% verified on 1,388 pairs): split the slug on '-', Title Case each word, then apply special_tokens casing. Only a bare ID with no URL needs manual sourcing → ACK-TODO[istock-name].",
+  "special_tokens": { "3d": "3D", "nz": "NZ", "ai": "AI", "diy": "DIY", "uk": "UK", "usa": "USA", "tv": "TV" },
+  "special_tokens_note": "Only unambiguous abbreviations belong here — 'it'/'id' were removed because they are ordinary words in titles ('It features…').",
+  "lowercase_small_words": ["a", "an", "and", "as", "at", "by", "for", "in", "of", "on", "or", "the", "to", "with"],
+  "casing_note": "Minor punctuation/case differences from the provider's exact casing are acceptable per the verified rule — human-written acks vary too."
+ },
+
+ "title_authority": {
+  "stock": "Official asset name only — writer descriptions are NOT acceptable for stock assets (istock/other_stock/pixabay). Derive from the URL slug, or emit ACK-TODO[istock-name].",
+  "youtube": "oEmbed title/author verbatim (including any '| Site' suffix), or ACK-TODO[video-meta].",
+  "website": "The writer's description is the normal title source for non-stock web media — use it as {Title}."
+ },
+
+ "oembed": {
+  "endpoint": "https://www.youtube.com/oembed?url={encodedUrl}&format=json",
+  "field_map": { "title": "Title", "author_name": "Channel" },
+  "retrieved_date_format": "dd/mm/yy",
+  "retrieved_date_rule": "Stamped by the program at fetch time — the converter's own run date.",
+  "throttle_ms": 250,
+  "cache_by": "video id",
+  "failure_rule": "Empty body or HTTP error → ACK-TODO[video-meta] with reason 'unavailable' | 'offline' | 'error'. Never fabricate fields. A fetch failure doubles as a dead-link signal worth surfacing.",
+  "cors_note": "Verified 12/06/26: the endpoint echoes Access-Control-Allow-Origin, so in-browser fetch works."
+ },
+
+ "ack_todo": {
+  "policy": "Every marker has a VISIBLE component. The HTML comment is a machine-readable supplement only — never the sole signal (v1 shipped missed comments to live modules).",
+  "flag_unknown_type": true,
+  "flag_unknown_type_note": "ROUND 87 (Chris, ENGI302-00): when an item's type is NOT in type_prefix_map, #typePrefix falls back to Title-casing the writer's own word ('jpg'→'Jpg', 'text'→'Text') and logs a SUMMARY note only — so the acks line ships with NO visible ❗, unlike the video-meta line beside it which DOES carry one. Per Chris: a line that cannot be confidently formatted 'due to not enough information' must carry the SAME ❗ as the other incomplete copyright lines. With this on, an unknown-type entry that built a plain line is re-emitted as a visible ❗ ackTodo (type 'unknown-type'), keeping its content but flagging it for CS; an entry that was ALREADY a TODO (e.g. asset-id) is untouched (it already shows ❗), and skip/tekura items are unaffected (they never produce a line). DATA-driven cure: ADD a recurring type to type_prefix_map (a data edit) and the flag disappears for it. Measured: jpg 97, pdf 70, text 36, mp3 20, webpage 27, doc 16, … (outputs/_measure_round87.py). Env ACKUNKNOWN_OFF reverts to the silent summary-only fallback. Gate-NEUTRAL: compare_structure counts ❗ ackTodo lines separately (never as acks content) and the skeleton skips acks; the human ships fully-resolved acks with no counterpart for these draft lines.",
+  "visible_form": "<p class=\"ackTodo\">❗ {entryLineWithBracketedSlots}</p>",
+  "visible_form_designer": "<p class=\"ackTodo ackTodoDesigner\">❗ Confirm any media added during design for this lesson is acknowledged, then delete this line.</p>",
+  "comment_grammar": "<!-- ACK-TODO[{type}] {attr}=\"{value}\" ... -->",
+  "comment_position": "Immediately preceding the visible <p class=\"ackTodo\">.",
+  "types": {
+   "istock-name":    { "when": "iStock ID known, no URL to derive the title from, title not in writer docs", "attrs": ["id", "writer-desc"], "slot": "[OFFICIAL ISTOCK TITLE REQUIRED]" },
+   "asset-id":       { "when": "title known, no ID/URL in writer docs", "attrs": ["title"], "slot": "[ASSET ID REQUIRED]" },
+   "video-meta":     { "when": "YouTube oEmbed fetch failed", "attrs": ["url", "reason"], "slot": "[VIDEO TITLE REQUIRED], [CHANNEL REQUIRED]" },
+   "designer-media": { "when": "once per acksLesson group", "attrs": ["lesson"], "slot": "(fixed designer line)" },
+   "licence":        { "when": "CC item whose licence name is not in writer docs", "attrs": ["url"], "slot": "[LICENCE NAME REQUIRED]" },
+   "unknown-type":   { "when": "item type not in type_prefix_map (round 87) — the built line cannot be confidently formatted; surfaced with the SAME ❗ as the other incomplete lines instead of a silent summary note", "attrs": ["type", "item"], "slot": "(built line kept, flagged)" }
+  },
+  "security": "ACK-TODO comments carry only sourcing metadata — NEVER answer content (converter-wide rule).",
+  "build_gate": "The conversion summary reports the per-module ACK-TODO count; acks are complete only at zero."
+ }
+}

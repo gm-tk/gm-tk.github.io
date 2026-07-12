@@ -1,0 +1,3108 @@
+{
+ "_meta": {
+  "title": "Style Anchor — Majority Master Instructions & Per-Series Deviations",
+  "purpose": "For each subject and phase/level, gives the MAJORITY value of each tracked field across ALL same-level modules in that subject (the 'master_instructions' a brand-new module SERIES must adopt), PLUS a per-existing-series record of where that series' most-recent module DEVIATES from the master (the 'series_deviations' a NEXT module in that existing series must match instead). Built on the same level-scope strategy as Style_Anchor_Registry_Level_Scope.json.",
+  "generated": "2026-06-11",
+  "source": "Per-module Stage-1 summaries in All_Template_Reports (amalgamated 11-field model: 6 scalar + 5 cross-page pattern fields).",
+  "the_two_rules": {
+   "1_new_series_uses_majority": "When an ENTIRELY NEW base series is created at a level (e.g. OSAX201 in a subject that has no OSAX yet), apply the master_instructions — the majority value of each field across every same-level module in the subject.",
+   "2_existing_series_matches_sibling": "When the NEXT module in an EXISTING series is created (e.g. OSAI202 after OSAI201), it MUST match that series' established pattern exactly. Where that pattern deviates from the master, the deviation is listed under series_deviations for that base; the next module follows the deviation, NOT the master. Sibling consistency overrides the majority — this is the most important rule."
+  },
+  "how_to_apply": {
+   "resolve_field": "For a module of base SERIES + LEVEL: start from master_instructions for that subject+phase; then if the base series appears in series_deviations, overlay (override) those fields. The result is the full style ruleset that module must follow.",
+   "new_series": "A brand-new base series (one not listed in series_deviations) simply uses master_instructions as-is.",
+   "existing_series": "The next module in an existing series uses master_instructions overlaid with that series' deviating_fields, so it stays consistent with its established siblings."
+  },
+  "tracked_fields": [
+   "template_phase",
+   "body_class",
+   "level_attr",
+   "idoc_host",
+   "footer_class",
+   "acknowledgements",
+   "module_code",
+   "h1_count",
+   "menu_type",
+   "menu_button_tooltip",
+   "footer_links"
+  ],
+  "field_model": "Scalar fields hold one value; pattern fields (module_code, h1_count, menu_type, menu_button_tooltip, footer_links) hold an {overview, lesson[, final]} object compared as a whole.",
+  "stage1_note": "CONVERTER_V2 Stage-1 optimised copy: tekuradev normalised to tekura; deviations that became identical to the master after normalisation were removed (they are no longer deviations). See STAGE1_DATA_CHANGELOG.md."
+ },
+ "1-10 Arts": {
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav fundamentals-nav",
+    "acknowledgements": "yes",
+    "menu_type": {
+     "overview": "none",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  }
+ },
+ "1-10 Blended Literacy": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "free-text:\"Module",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "BL": {
+     "body_class": "container-fluid inquiry",
+     "module_code": {
+      "overview": "—",
+      "lesson": "(empty)"
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "—",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "BLL": {
+     "footer_class": "footer-nav",
+     "module_code": {
+      "overview": "padded-number",
+      "lesson": "padded-number"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": null
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "free-text:\"Module",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   }
+  },
+  "Phase 5 (NCEA)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "n/a",
+    "level_attr": "n/a",
+    "idoc_host": "n/a",
+    "footer_class": "n/a",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "n/a",
+     "lesson": "n/a"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  }
+ },
+ "1-10 English": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "ENGI": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     }
+    },
+    "ENGJ": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     }
+    },
+    "ENGR": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "ENGS": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "ENGC": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     }
+    },
+    "ENGJ": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "ENGR": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "ENGJ": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    },
+    "ENGR": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    }
+   }
+  },
+  "Phase 4 (Years 9-10)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "ENGC": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "ENGJ": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    },
+    "ENGR": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    },
+    "ENGS": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    }
+   }
+  }
+ },
+ "1-10 Health and PE": {
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav fundamentals-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "prev+next+home",
+     "lesson": "—",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "HPFUN": {
+     "footer_class": "footer-nav"
+    }
+   }
+  }
+ },
+ "1-10 Mathematics": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "MXDB": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "MXDI": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     }
+    },
+    "MXEO": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    },
+    "MXEX": {
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     }
+    },
+    "MXFL": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "MXFU": {
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     }
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "MXDB": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     }
+    },
+    "MXEX": {
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     }
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "MXEO": {
+     "menu_button_tooltip": {
+      "overview": null,
+      "lesson": "no"
+     }
+    },
+    "MXFL": {
+     "body_class": "container-fluid mathJax",
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "MXFU": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    }
+   }
+  },
+  "Phase 4 (Years 9-10)": {
+   "master_instructions": {
+    "body_class": "container-fluid mathJax",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "MXEX": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    },
+    "MXFL": {
+     "menu_button_tooltip": {
+      "overview": null,
+      "lesson": "no"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "MXFU": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     }
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav fundamentals-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "prev+next+home",
+     "lesson": "—",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "MXFUN": {
+     "footer_class": "footer-nav",
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     }
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry mathJax",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  }
+ },
+ "1-10 Science": {
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "n/a",
+    "level_attr": "n/a",
+    "idoc_host": "n/a",
+    "footer_class": "n/a",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "n/a",
+     "lesson": "n/a"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav fundamentals-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "free-text:\"SCFUN09\""
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "n/a",
+    "level_attr": "n/a",
+    "idoc_host": "n/a",
+    "footer_class": "n/a",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "n/a",
+     "lesson": "n/a"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "SCWHA": {
+     "body_class": "container-fluid inquiry",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    }
+   }
+  }
+ },
+ "1-10 Social Science": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "free-text:\"Lesson 8\""
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "SSOG": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "free-text:\"SSFUN02\""
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "tabs"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  }
+ },
+ "1-10 Technology": {
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   },
+   "series_deviations": {
+    "TEFUN": {
+     "footer_class": "footer-nav fundamentals-nav"
+    }
+   }
+  }
+ },
+ "ANZH": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "ANZH": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     }
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "tabs"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   }
+  },
+  "Phase 4 (Years 9-10)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "free-text:\"Lesson 5\""
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav fundamentals-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "free-text:\"ANZHFUN01\""
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  }
+ },
+ "ConnectED": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "CEDO": {
+     "body_class": "container-fluid",
+     "footer_class": "footer-nav",
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "CEDT": {
+     "body_class": "n/a",
+     "level_attr": "n/a",
+     "idoc_host": "n/a",
+     "footer_class": "n/a",
+     "menu_button_tooltip": {
+      "overview": "n/a",
+      "lesson": "n/a"
+     }
+    },
+    "CEDW": {
+     "footer_class": "footer-nav"
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "CEDR": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "CEDT": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "PRIINQ-23V": {
+     "body_class": "container-fluid inquiry reoTranslate",
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     }
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "CEDO": {
+     "body_class": "container-fluid",
+     "footer_class": "footer-nav",
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "PRIINQ-23V": {
+     "body_class": "container-fluid inquiry reoTranslate",
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     }
+    }
+   }
+  },
+  "Phase 4 (Years 9-10)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "CEDK": {
+     "footer_class": "footer-nav",
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "PRIINQ-23V": {
+     "body_class": "container-fluid inquiry reoTranslate",
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     }
+    }
+   }
+  },
+  "Phase 5 (NCEA)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": null,
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "CEDR": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     },
+     "footer_links": {
+      "overview": "prev+next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    }
+   }
+  },
+  "Cross-phase (900)": {
+   "master_instructions": {
+    "idoc_host": "tekura",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "level_attr": "prm",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "CEDWHA": {
+     "level_attr": "empty",
+     "footer_class": "footer-nav",
+     "module_code": {
+      "overview": "—",
+      "lesson": "free-text:\"CEDWHA02\""
+     },
+     "menu_type": {
+      "overview": "—",
+      "lesson": "none"
+     }
+    },
+    "PRIINQ": {
+     "level_attr": "prinq",
+     "idoc_host": "none",
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "SSSINQ": {
+     "level_attr": "prinq",
+     "idoc_host": "none",
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    }
+   }
+  }
+ },
+ "ECE": {
+  "ECH (Early Childhood)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "ech",
+    "idoc_host": "none",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "ECCR": {
+     "body_class": "container-fluid inquiry",
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "ECHO-Cooking": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "ECHO-Music": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav inquiry-nav",
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "ECE-01-Test": {
+     "footer_links": {
+      "overview": "—",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "ECEW": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "ECLR": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "ECMX": {
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "tabs"
+     }
+    },
+    "ECWB": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    }
+   }
+  }
+ },
+ "EXPlore": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "idoc_host": "none",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "—",
+     "final": "prev+home"
+    }
+   }
+  },
+  "Cross-phase (900)": {
+   "master_instructions": {
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "EXBP": {
+     "menu_type": {
+      "overview": "none",
+      "lesson": "simplified"
+     }
+    },
+    "EXDT": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "footer_links": {
+      "overview": "next",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "EXIP": {
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     }
+    },
+    "EXSA": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "1",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "home",
+      "lesson": "—",
+      "final": "—"
+     }
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "(empty)"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "EXPFUN": {
+     "body_class": "container-fluid"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "free-text:\"EXWHA\""
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   }
+  }
+ },
+ "Leaving to Learn": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "prm",
+    "idoc_host": "none",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "—",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "TFO": {
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "XMES": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav",
+     "h1_count": {
+      "overview": "2",
+      "lesson": "2"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "XOTPB": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "module_code": {
+      "overview": "free-text:\"XOTPB14\"",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "XOTPG": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "module_code": {
+      "overview": "free-text:\"XOTPG14\"",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "XOTPO": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "module_code": {
+      "overview": "free-text:\"XOTPO14\"",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "no",
+      "lesson": "no"
+     }
+    },
+    "XTAS": {
+     "level_attr": "1-3",
+     "idoc_host": "tekura",
+     "footer_class": "footer-nav",
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "prm",
+    "idoc_host": "none",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "none",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "XMES": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "level_attr": "prm",
+    "idoc_host": "none",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  },
+  "Phase 4 (Years 9-10)": {
+   "master_instructions": {
+    "level_attr": "prm",
+    "idoc_host": "none",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  },
+  "Phase 5 (NCEA)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "prm",
+    "idoc_host": "none",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "LSO": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "SL": {},
+    "SLO": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "XDLS": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "XGF": {
+     "level_attr": "empty",
+     "idoc_host": "tekura",
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "XSL": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    }
+   }
+  },
+  "Cross-phase (900)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "home",
+     "lesson": "—",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "XDLS": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "2"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid fundamentals",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "free-text:\"XFUN02\"",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "free-text:\"XOTPB08\"",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "—",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "XLP": {
+     "footer_class": "footer-nav",
+     "module_code": {
+      "overview": "free-text:\"XPL06\"",
+      "lesson": "padded-number"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "XOTPB": {
+     "module_code": {
+      "overview": "free-text:\"XOTPB09\"",
+      "lesson": "—"
+     }
+    },
+    "XOTPG": {
+     "module_code": {
+      "overview": "free-text:\"XOTPG10\"",
+      "lesson": "—"
+     }
+    },
+    "XOTPO": {
+     "module_code": {
+      "overview": "free-text:\"XOTPO09\"",
+      "lesson": "—"
+     }
+    },
+    "XR": {
+     "level_attr": "prm",
+     "idoc_host": "none"
+    },
+    "XWHA": {
+     "module_code": {
+      "overview": "free-text:\"XWHA02\"",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    }
+   }
+  }
+ },
+ "NCEA1": {
+  "Phase 5 (NCEA)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "AGH": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "ART": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     }
+    },
+    "ENG": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "ENO": {
+     "idoc_host": "none"
+    },
+    "HIS": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "PCO": {
+     "idoc_host": "none"
+    },
+    "PHE": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "none"
+     }
+    },
+    "PWO": {
+     "idoc_host": "none"
+    }
+   }
+  },
+  "Fundamentals": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "1",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "AGHFUN": {
+     "module_code": {
+      "overview": "free-text:\"AGHFUN06\"",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "prev+home"
+     }
+    },
+    "ARTFUN": {
+     "footer_class": "footer-nav fundamentals-nav"
+    },
+    "ENGFUN": {
+     "module_code": {
+      "overview": "free-text:\"ENGFUN03\"",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "1"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "none"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "prev+home"
+     }
+    },
+    "HISFUN": {
+     "module_code": {
+      "overview": "free-text:\"HISFUN09\"",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "PHEFUN": {
+     "module_code": {
+      "overview": "—",
+      "lesson": "free-text:\"PHEFUN08\""
+     },
+     "h1_count": {
+      "overview": "—",
+      "lesson": "1"
+     }
+    }
+   }
+  },
+  "No phase band (landing/inquiry/template)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "—",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "—",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "—",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "—",
+     "lesson": "prev+next+home",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "AGHWHA": {},
+    "HISWHA": {
+     "module_code": {
+      "overview": "free-text:\"HISWHA\"",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    }
+   }
+  }
+ },
+ "NCEA2": {
+  "Phase 5 (NCEA)": {
+   "master_instructions": {
+    "idoc_host": "none",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   },
+   "series_deviations": {
+    "PPO": {},
+    "PWO": {}
+   }
+  }
+ },
+ "NCEA3": {
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "idoc_host": "none",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   }
+  },
+  "Phase 5 (NCEA)": {
+   "master_instructions": {
+    "idoc_host": "none",
+    "acknowledgements": "yes",
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    }
+   },
+   "series_deviations": {
+    "PPO": {}
+   }
+  }
+ },
+ "Online Safety (OS9000)": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "OSBY": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     }
+    },
+    "OSGM": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     }
+    },
+    "OSOH": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "OSBY": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "padded-number"
+     }
+    },
+    "OSOH": {
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "OSAH": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    },
+    "OSBY": {
+     "menu_type": {
+      "overview": "simplified",
+      "lesson": "simplified"
+     }
+    },
+    "OSOH": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "OSSC": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "2"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "OSSM": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "tabs"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    }
+   }
+  },
+  "Phase 4 (Years 9-10)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "OSBY": {
+     "h1_count": {
+      "overview": "1",
+      "lesson": "1"
+     }
+    },
+    "OSOH": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "decimal"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     }
+    },
+    "OSSC": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "—"
+     },
+     "menu_button_tooltip": {
+      "overview": "yes",
+      "lesson": "yes"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    }
+   }
+  },
+  "Phase 5 (NCEA)": {
+   "master_instructions": {
+    "body_class": "container-fluid",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "padded-number"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "1"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "simplified"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "OSAH": {
+     "h1_count": {
+      "overview": "2",
+      "lesson": "2"
+     }
+    },
+    "OSOH": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    }
+   }
+  }
+ },
+ "Te Marautanga o Aotearoa TMoA": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid reoTranslate",
+    "level_attr": "empty",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "decimal"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "2"
+    },
+    "menu_type": {
+     "overview": "tabs",
+     "lesson": "none"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": "no"
+    },
+    "footer_links": {
+     "overview": "next+home",
+     "lesson": "prev+next+home",
+     "final": "prev+home"
+    }
+   },
+   "series_deviations": {
+    "PNR": {
+     "module_code": {
+      "overview": "full-code",
+      "lesson": "—"
+     },
+     "h1_count": {
+      "overview": "2",
+      "lesson": "—"
+     },
+     "menu_type": {
+      "overview": "none",
+      "lesson": "—"
+     },
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "TRR": {
+     "footer_links": {
+      "overview": "next+home",
+      "lesson": "prev+next+home",
+      "final": "—"
+     }
+    }
+   }
+  }
+ },
+ "Te ara Whakapuawa -Wellbeing": {
+  "Phase 1 (Years 1-3)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": null
+    },
+    "footer_links": {
+     "overview": "home",
+     "lesson": "—",
+     "final": "—"
+    }
+   }
+  },
+  "Phase 2 (Years 4-6)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": null
+    },
+    "footer_links": {
+     "overview": "home",
+     "lesson": "—",
+     "final": "—"
+    }
+   }
+  },
+  "Phase 3 (Years 7-8)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "no",
+     "lesson": null
+    },
+    "footer_links": {
+     "overview": "home",
+     "lesson": "—",
+     "final": "—"
+    }
+   }
+  },
+  "Phase 4 (Years 9-10)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "home",
+     "lesson": "—",
+     "final": "—"
+    }
+   }
+  },
+  "Cross-phase (900)": {
+   "master_instructions": {
+    "body_class": "container-fluid inquiry",
+    "idoc_host": "tekura",
+    "footer_class": "footer-nav inquiry-nav",
+    "acknowledgements": "yes",
+    "module_code": {
+     "overview": "full-code",
+     "lesson": "—"
+    },
+    "h1_count": {
+     "overview": "2",
+     "lesson": "—"
+    },
+    "menu_type": {
+     "overview": "simplified",
+     "lesson": "—"
+    },
+    "menu_button_tooltip": {
+     "overview": "yes",
+     "lesson": "yes"
+    },
+    "footer_links": {
+     "overview": "home",
+     "lesson": "—",
+     "final": "—"
+    }
+   },
+   "series_deviations": {
+    "TWHA": {
+     "footer_links": {
+      "overview": "prev+next+home",
+      "lesson": "—",
+      "final": "—"
+     }
+    },
+    "TWHR": {
+     "menu_type": {
+      "overview": "tabs",
+      "lesson": "—"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,53 @@
+# ---------------------------------------------------------------------------
+# pageforge-site — what GitHub sees.
+#
+# This repo now holds the ONE copy of the converter engine:
+#   converter-v2/app/    the product (index.html, js/, css/)
+#   converter-v2/data/   the output-shape definitions
+#   converter-v2/CLAUDE.md + BUILD_CHANGELOG.md   the operating guide + history
+#
+# The development harness (reference/, outputs/, the gates, the measurement
+# probes) lives OUTSIDE this repo, in ../CONVERTER_V2/, and reaches the engine
+# through symlinks. So there is nothing to ignore there — it is simply not here.
+#
+# The module corpora (01-Finalized_Modules_, 01-Claude_Modules_, 02-All_HTML_Files,
+# 00-Other-TK-Resources) sit above this folder and are likewise outside the repo.
+# ---------------------------------------------------------------------------
+
+# --- development-only data: present on disk, never committed ----------------
+# The engine loads exactly the 18 JSON files listed in Config.DataFiles (the
+# runtime loader). These are read only by the measurement/vetting/reference
+# tools, so they stay out of the committed engine — the Granular registry
+# alone is ~5.5 MB.
+#   Interactive_Wrapper_Catalogue.json is reference-only: _modules.json lists it
+#   for the dev harness, but Config.DataFiles deliberately does NOT load it at
+#   runtime (widget recognition comes from the lexicon + boundary bank, markup
+#   from Emit_Templates). So it is dev-only and excluded here.
+converter-v2/data/Granular_Scaffold_Registry.json
+converter-v2/data/Module_Menu_Scaffold.json
+converter-v2/data/Scaffold_Consensus.json
+converter-v2/data/Interactive_Wrapper_Catalogue.json
+converter-v2/data/Interactive_Boundary_Rules.md
+converter-v2/data/Tag_Interpretation_Rules.md
+converter-v2/data/Tag_Normalisation_Spec.md
+
+# --- build / session junk ---------------------------------------------------
+*.tar
+*.tgz
+*.zip
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# --- OS / editor noise ------------------------------------------------------
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+node_modules/
+
+# FUSE mount artifacts (deleted-but-open remnants) — never commit
+.fuse_hidden*

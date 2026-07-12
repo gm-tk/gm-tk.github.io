@@ -1,0 +1,15 @@
+{
+  "_doc": "ROUND A — the TEMPLATE-MODE RESOLVER's data. A module's whole-page template = a BASE layout (standard / fundamentals / inquiry) plus optional MODIFIERS (mathJax / reoTranslate), expressed as the <body class> token order + the body language/translation attrs (+ footer class, passthrough for now). The HUMAN convention (measured, outputs/_measure_template_modes.py): BASE tokens (fundamentals/inquiry) PREPEND before the core 'container-fluid'; MODIFIER tokens (mathJax/reoTranslate) APPEND after it; fundamentals + reoTranslate additionally carry language/translation body attrs. This resolver NORMALISES whatever mode the Style_Anchor_Registry already encodes (the registry stored fundamentals/inquiry in the WRONG order 'container-fluid fundamentals'/'container-fluid inquiry' and dropped the attrs). It does NOT detect NEW modes — adding crumbs/panels/dual-language pairing is rounds B/C/D. Provably BYTE-NEUTRAL on Standard ('container-fluid') and on already-correct 'container-fluid mathJax'. Consumed by TemplateModeResolver.Resolve, called from SkeletonBuilder. Env TEMPLATEMODE_OFF (or enabled:false) reverts to the raw registry body_class with no reorder and no attrs.",
+  "enabled": true,
+  "core_token": "container-fluid",
+  "bases": {
+    "fundamentals": { "body_attrs": { "language": "eng", "translation": "reo" } },
+    "inquiry": {}
+  },
+  "modifiers": {
+    "mathJax": {},
+    "reoTranslate": { "body_attrs": { "language": "reo", "translation": "eng" } }
+  },
+  "_canonical_order": "[base tokens in registry order] + core_token + [unknown tokens in registry order] + [modifier tokens in registry order]. A body class with NO core_token (sentinels 'n/a' / '—' / 'absent', or an empty value) is passed through UNTOUCHED — the resolver never invents a layout.",
+  "_mathjax_deferred": "MathJax is a PER-PAGE modifier (measured 75 human pages across ~16 modules — 49 of them hide inside modules whose representative page is plain 'container-fluid' — NOT a 3-module module-level mode), and it has NO derivable Writers-Template signal: a LaTeX/math-marker WT scan over all 197 modules gave 0 true positives and 3 false negatives (the 3 'pure' mathJax modules), and MXEO401's human carries mathJax on only 1 of its 7 pages. A per-group registry fire would therefore OVER-emit. So this round PRESERVES whatever mathJax the registry already emits (byte-identical) and adds NO new mathJax fires. The real lever is a per-page math-content signal — a sized follow-up (CLAUDE.md §15)."
+}

@@ -1,0 +1,48 @@
+{
+  "_comment": [
+    "Round 72 — native Word COMMENT capture (Chris). Word stores editor comments in",
+    "word/comments.xml, each carrying a w:author; the anchors (which span each comment",
+    "is attached to) live in word/document.xml as w:commentRangeStart/End by w:id. Only",
+    "comments whose author is on THIS Creative-Services whitelist are surfaced into the",
+    "HTML, anchored just BEFORE the element they comment on. The human gold strips ALL",
+    "comments, so — exactly like the round-43 CS notes — these are Claude-only v1-workflow",
+    "surfaces and are EXCLUDED from every gate (skeleton/structural via the cv2-comment",
+    "class, the text gates via the author-name prefix). Whole-corpus analysis lives in",
+    "outputs/_measure_comments.py: 8188 of 9391 comments are whitelisted across 332 of 376",
+    "writers templates; scanning all 62 distinct authors found NO missed variants of the six."
+  ],
+  "enabled": true,
+  "env_toggle": "COMMENTS_OFF",
+  "render": {
+    "form": "<p class=\"cv2-comment\" style=\"color: red; font-weight: bold;\">Note from {author}: {text}</p>",
+    "legacy_form": "<p class=\"cv2-comment\" style=\"color: red\">{author}: {text}</p>",
+    "note": "ROUND 219 (Chris — Change Ledger CL-0010 folded into PageForge V2): a captured reviewer comment renders 'Note from {author}: {text}', red AND BOLD, the author + text verbatim — never reworded, never author-dropped, never substituted with another prefix. Supersedes the round-72 bare '{author}: {text}' lead (kept as legacy_form; env NOTESCHEME_OFF or Emit_Templates red_flag.ledger_note_scheme.enabled:false reverts byte-for-byte). The cv2-comment class is the GATE MARKER and is unchanged; the compare_structure/body_compare text exclusions now also match the 'note from' lead (legacy author-name prefixes kept). Placed as a direct child of the body content region, immediately BEFORE the anchored element (not nested in its row/col/activity)."
+  },
+  "content_filter": {
+    "enabled": true,
+    "omit_boilerplate": "(used\\s+(with|by|under)\\b|with permission\\b|used in online learning|public domain|creative commons|crown copyright|copyright act|all rights reserved|cc0\\b|©|\\bte kura (created|produced|made|owned)|links?\\s+only\\b|extract only|okay to use|\\ball (istock|you ?tube|shutterstock)\\b|licen[cs]e\\.?\\s*$|^link$|^links?\\b)",
+    "action_keep": "(\\bplease\\b|\\breplace\\b|\\brecreate\\b|\\bre-create\\b|\\bembed\\b|\\binsert\\b|\\bremove\\b|\\bcrop\\b|\\bresize\\b|\\bswap\\b|\\bdelete\\b|\\boverlay\\b|\\bjumble\\b|\\bsource\\b|can you\\b|can we\\b|could you\\b|could we\\b|designer to\\b|we (cannot|can'?t|are unable|need)\\b|\\?\\s*$)",
+    "note": "Round 72 (Chris) — OMIT non-actionable repetitive commentary the designer needn't action: a comment is dropped iff it matches omit_boilerplate (copyright / permission / 'used in online learning within the exception for education' / 'Te Kura created' / attribution / © / 'link only' …) AND matches NO action_keep signal — so a MIXED note ('Replace with iStock. Used with permission.') is KEPT. Applies to ALL six whitelisted authors uniformly. Measured (outputs/_measure_comment_content.py): omits ~6793 of 8188 whitelisted comments; of the body-surfaced notes it drops the copyright/ack boilerplate and keeps the actionable designer instructions. Disable to surface every whitelisted comment regardless of content."
+  },
+  "media_match": {
+    "enabled": true,
+    "id_match": true,
+    "note": "Round 73 (Chris) — a whitelisted comment anchored to a MEDIA LIST table row (which the converter doesn't render as body content) is surfaced into the MAIN module content, BEFORE the body element that links the same media item. The match key is the row's hyperlink URL (DocxExtractor records it as comment.rowUrl): the same URL appears as an <a href> in the body where the writer referenced the image/video, so the comment inserts just before that element (or its interactive box), at body level — same placement rules as every other comment. Only KEPT (actionable) comments surface (the content_filter still omits the copyright/permission commentary); the comment's own anchor block (the media table) is excluded, and each surfaces once. Verified feasibility: ~95% of commented media rows carry a URL that appears in the body. Env MEDIAMATCH_OFF reverts (media-list comments stay unsurfaced, the round-72 behaviour).",
+    "id_match_note": "Round 74 (Chris) — broaden the match key beyond the EXACT URL to the extracted MEDIA REFERENCE NUMBER: the iStock id (gm-form e.g. gm1382010801 OR the CDN /id/NNN form) and the YouTube video id. The body shows most images as a Mode-P placeholder (no live <a href>), but the writer's source URL — and therefore the iStock id — is recorded on the image block, and the SAME id appears in the Media List row URL the comment is anchored to. id-correspondence verified 100% body↔media-list (MXDI202 18/18, MXFL301 76/76, BLL210 1/1). Conservative: only a shared reference NUMBER matches (no fuzzy/title match); cross-form (body gm vs media-list /id/) is rare since forms are consistent within a module. Set id_match:false to revert to exact-URL-only (round-73 behaviour); MEDIAMATCH_OFF still disables the whole feature."
+  },
+  "match": {
+    "case_insensitive": true,
+    "dot_space_equivalent": true,
+    "strip_disambiguator": true,
+    "accept_reversed_order": true,
+    "note": "Word stores w:author as the person's Office display name, which VARIES: space-form ('Nadia Stanton') vs dot/username-form ('Kate.Scanlon'), and case ('caroline schwer', 'simon vita', 'amanda griffiths'). Matching normalises both author and whitelist: lowercase, collapse whitespace, treat '.' as a space, strip a trailing ' [N]' Word disambiguator, and also accept 'Last First' order. Verified against all 62 distinct corpus authors (outputs/_measure_comments.py) — the six below have NO unmatched variant, and no OTHER author normalises into one of them."
+  },
+  "authors": [
+    { "display": "Kate Scanlon",      "enabled": true, "seen_as": ["Kate.Scanlon"] },
+    { "display": "Nadia Stanton",     "enabled": true, "seen_as": ["Nadia Stanton"] },
+    { "display": "Caroline Schwer",   "enabled": true, "seen_as": ["caroline schwer"] },
+    { "display": "Simon Vita",        "enabled": true, "seen_as": ["simon vita"] },
+    { "display": "Amanda Griffiths",  "enabled": true, "seen_as": ["amanda griffiths"] },
+    { "display": "Creative Services", "enabled": true, "seen_as": ["Creative Services"] }
+  ]
+}

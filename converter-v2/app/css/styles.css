@@ -1,0 +1,444 @@
+/*
+ * styles.css — Converter V2 (Phase 1)
+ * ===========================================================================
+ * WHAT THIS FILE DOES:
+ * All styling for the converter UI. Plain hand-written CSS (no build step,
+ * per the project constraint), organised with section banners. State is
+ * communicated by classes the JS toggles (.active, .count-attention) —
+ * never inline styles from JS.
+ * ===========================================================================
+ */
+
+/* =========================================================================
+   BASE
+   ========================================================================= */
+:root {
+	--ink: #1d2733;
+	--ink-soft: #5a6878;
+	--paper: #f4f6f8;
+	--panel: #ffffff;
+	--line: #d8dee5;
+	--accent: #0b6e4f;          /* Te Kura-ish green, app chrome only */
+	--accent-soft: #e2f1ec;
+	--attention: #c0392b;
+	--attention-soft: #fdeceb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+	margin: 0;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	color: var(--ink);
+	background: var(--paper);
+	line-height: 1.5;
+}
+
+#app-root, #file-guard {
+	max-width: 880px;
+	margin: 0 auto;
+	padding: 24px 20px 64px;
+}
+
+/* =========================================================================
+   HEADER
+   ========================================================================= */
+.app-header h1 {
+	margin: 0 0 4px;
+	font-size: 1.7rem;
+}
+
+.phase-badge {
+	font-size: 0.75rem;
+	vertical-align: middle;
+	background: var(--accent);
+	color: #fff;
+	border-radius: 99px;
+	padding: 3px 10px;
+	margin-left: 8px;
+}
+
+/* build-version stamp — confirms new code is live (App.Init fills it) */
+.version-badge {
+	font-size: 0.72rem;
+	vertical-align: middle;
+	font-family: ui-monospace, Consolas, monospace;
+	color: var(--ink-soft);
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	padding: 2px 8px;
+	margin-left: 6px;
+}
+
+.app-subtitle {
+	margin: 0 0 20px;
+	color: var(--ink-soft);
+}
+
+/* =========================================================================
+   PANELS (the numbered steps)
+   ========================================================================= */
+.panel {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	padding: 18px 20px;
+	margin-bottom: 16px;
+}
+
+.panel h2 {
+	margin: 0 0 12px;
+	font-size: 1.05rem;
+}
+
+.panel-note {
+	font-weight: normal;
+	font-size: 0.85rem;
+	color: var(--ink-soft);
+}
+
+/* =========================================================================
+   UPLOAD
+   ========================================================================= */
+#drop-zone {
+	border: 2px dashed var(--line);
+	border-radius: 10px;
+	padding: 26px 18px;
+	text-align: center;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s;
+}
+
+#drop-zone:hover,
+#drop-zone.active {           /* .active toggled by JS during drag */
+	border-color: var(--accent);
+	background: var(--accent-soft);
+}
+
+#drop-zone p { margin: 4px 0; }
+
+.drop-hint {
+	color: var(--ink-soft);
+	font-size: 0.88rem;
+}
+
+.file-list {
+	list-style: none;
+	margin: 10px 0 0;
+	padding: 0;
+}
+
+.file-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 7px 12px;
+	border: 1px solid var(--line);
+	border-radius: 7px;
+	margin-top: 6px;
+	background: var(--paper);
+}
+
+.file-list button {
+	border: none;
+	background: none;
+	cursor: pointer;
+	color: var(--ink-soft);
+	font-size: 1rem;
+}
+
+.file-list button:hover { color: var(--attention); }
+
+/* =========================================================================
+   IMAGE MODE
+   ========================================================================= */
+.mode-option {
+	display: block;
+	padding: 10px 12px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+
+.mode-option:has(input:checked) {
+	border-color: var(--accent);
+	background: var(--accent-soft);
+}
+
+.mode-option input { margin-right: 8px; }
+
+/* =========================================================================
+   CONVERT + LOG
+   ========================================================================= */
+#convert-button,
+#download-all {
+	font-size: 1rem;
+	padding: 10px 22px;
+	border: none;
+	border-radius: 8px;
+	background: var(--accent);
+	color: #fff;
+	cursor: pointer;
+}
+
+#convert-button:disabled {
+	background: var(--line);
+	cursor: not-allowed;
+}
+
+/* round 193 — the conversion PROGRESS BAR (between the Convert button and the log).
+   Determinate: App.js sets the fill width + label per stage; .error turns it red. */
+.progress-bar {
+	position: relative;
+	margin-top: 12px;
+	height: 24px;
+	background: var(--paper);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.progress-bar-fill {
+	height: 100%;
+	width: 0%;
+	background: var(--accent);
+	transition: width 0.25s ease;
+}
+
+.progress-bar.error .progress-bar-fill { background: var(--attention); }
+
+.progress-bar-label {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: ui-monospace, "SF Mono", Consolas, monospace;
+	font-size: 0.78rem;
+	color: var(--ink);
+	text-shadow: 0 0 3px var(--panel);
+	pointer-events: none;
+}
+
+.progress-log {
+	margin-top: 12px;
+	max-height: 180px;
+	overflow-y: auto;
+	font-family: ui-monospace, "SF Mono", Consolas, monospace;
+	font-size: 0.84rem;
+	background: var(--paper);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 8px 12px;
+}
+
+.progress-log:empty { display: none; }
+
+.progress-log p { margin: 2px 0; }
+
+/* =========================================================================
+   OUTPUTS
+   ========================================================================= */
+.output-metadata {
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 10px 14px;
+	margin-bottom: 12px;
+	background: var(--paper);
+}
+
+.output-metadata h3 { margin: 0 0 8px; font-size: 0.95rem; }
+
+.meta-list {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 2px 14px;
+	margin: 0;
+	font-size: 0.88rem;
+}
+
+.meta-list dt { color: var(--ink-soft); }
+.meta-list dd { margin: 0; }
+
+.output-list {
+	list-style: none;
+	margin: 0 0 12px;
+	padding: 0;
+}
+
+.output-list li {
+	padding: 6px 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.output-list a {
+	color: var(--accent);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.output-list a:hover { text-decoration: underline; }
+
+.output-kind {
+	font-size: 0.8rem;
+	color: var(--ink-soft);
+	margin-left: 8px;
+}
+
+/* =========================================================================
+   RESET (round 205 — "clear everything & convert another module")
+   ========================================================================= */
+.reset-panel {
+	text-align: center;
+	margin-bottom: 16px;
+}
+
+.reset-button {
+	font-size: 1rem;
+	padding: 12px 26px;
+	border: none;
+	border-radius: 8px;
+	background: var(--attention);
+	color: #fff;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.reset-button:hover { filter: brightness(0.94); }
+
+.reset-note {
+	margin: 8px 0 0;
+	font-size: 0.85rem;
+	color: var(--ink-soft);
+}
+
+/* =========================================================================
+   SUMMARY (the surfacing contract's display)
+   ========================================================================= */
+/* round 205 — collapsible summary. The panel is a native <details>, collapsed
+   by default; the <summary> row shows the title + a minified stat bar and stays
+   visible when collapsed; the full detail lives in .summary-body. */
+.summary-summary {
+	cursor: pointer;
+	list-style: none;              /* hide the default disclosure triangle… */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 16px;
+}
+
+.summary-summary::-webkit-details-marker { display: none; }
+
+/* …and draw our own caret so the row still reads as expandable */
+.summary-summary::before {
+	content: "▸";
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+	transition: transform 0.15s;
+}
+
+.summary-details[open] > .summary-summary::before { transform: rotate(90deg); }
+
+.summary-title {
+	font-size: 1.05rem;
+	font-weight: 700;
+}
+
+.summary-mini {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 6px 8px;
+	font-size: 0.82rem;
+	color: var(--ink-soft);
+}
+
+.summary-mini-stat {
+	background: var(--paper);
+	border: 1px solid var(--line);
+	border-radius: 99px;
+	padding: 2px 10px;
+	white-space: nowrap;
+}
+
+/* a mini stat needing action mirrors the count-card attention styling */
+.summary-mini-stat.count-attention {
+	border-color: var(--attention);
+	background: var(--attention-soft);
+	color: var(--attention);
+	font-weight: 600;
+}
+
+.summary-body { margin-top: 14px; }
+
+.summary-identity { color: var(--ink-soft); }
+
+.summary-counts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 10px;
+	margin: 14px 0;
+}
+
+.count-card {
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 12px;
+	text-align: center;
+	background: var(--paper);
+}
+
+/* anything that needs developer action glows red until it reads zero */
+.count-card.count-attention {
+	border-color: var(--attention);
+	background: var(--attention-soft);
+}
+
+.count-number {
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 700;
+}
+
+.count-label {
+	font-size: 0.8rem;
+	color: var(--ink-soft);
+}
+
+.summary-notes {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 0.88rem;
+}
+
+.summary-notes li {
+	padding: 6px 10px;
+	border-left: 4px solid var(--line);
+	margin-bottom: 6px;
+	background: var(--paper);
+	border-radius: 0 6px 6px 0;
+}
+
+.summary-notes .note-stage {
+	font-family: ui-monospace, Consolas, monospace;
+	color: var(--ink-soft);
+	margin-right: 6px;
+}
+
+/* severity = border colour: error red, warn amber, info neutral */
+.summary-notes li.note-error { border-left-color: var(--attention); background: var(--attention-soft); }
+.summary-notes li.note-warn  { border-left-color: #d9870f; }
+
+.summary-clean { color: var(--ink-soft); }
+
+/* =========================================================================
+   FILE:// GUARD SCREEN
+   ========================================================================= */
+#file-guard pre {
+	background: var(--ink);
+	color: #e8f0e9;
+	padding: 12px 16px;
+	border-radius: 8px;
+	overflow-x: auto;
+}

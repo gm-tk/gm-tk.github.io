@@ -1,0 +1,1778 @@
+{
+ "_meta": {
+  "title": "HTML Convention Registry — subject × phase dominants + series deviations",
+  "generated": "2026-06-13",
+  "methodology": "Measured from 01-Finalized_Modules_ grouped EXACTLY like the Style-Anchor level-scope methodology (subject × template_phase via Style_Anchor_Registry members), with overview and lesson pages as separate scopes. A perceived overview-vs-lesson difference is a page-scope pattern, never an inconsistency. Resolution rule for the engine: the new module's SERIES deviation (sibling consistency) beats the group dominant beats the global default (Emit_Templates).",
+  "rebuild": "python3 reference/tests/build_convention_registry.py",
+  "menu_archetypes": {
+   "tabs": "nav-tabs two-pane menu (Emit_Templates menu.shells.tabs)",
+   "two_col_li": "banner <h4><span> col-12 + two col-md-6 paddingR columns: curriculum Understand/Know/Do left (h5+span), module LI/SC right (h5 plain) — the Blended-Literacy form (gold: BLL155-0.0)",
+   "flat": "single col-md-8 column, h5-led (Emit_Templates menu.shells.simplified)",
+   "none": "no menu content"
+  }
+ },
+ "groups": {
+  "1-10 Arts|combo": {
+   "members": [
+    "ARFUN01",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "1/1"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "4/4"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "12/12"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "54/54"
+   }
+  },
+  "1-10 Blended Literacy|1-3": {
+   "members": [
+    "BLL110",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147",
+    "BLL150",
+    "BLL151",
+    "BLL152",
+    "BLL153",
+    "BLL154",
+    "BLL155",
+    "BLL156",
+    "BLL157",
+    "BLL160",
+    "BLL161",
+    "BLL162",
+    "BLL163",
+    "BLL164",
+    "BLL165",
+    "BLL166",
+    "BLL167",
+    "BLL170",
+    "BLL171",
+    "BLL172",
+    "BLL173",
+    "BLL174",
+    "BLL175",
+    "BLL176",
+    "BLL177",
+    "BLL210",
+    "BLL211",
+    "BLL212",
+    "BLL213",
+    "BLL214",
+    "BLL215",
+    "BLL216",
+    "BLL217",
+    "BLL220",
+    "BLL221",
+    "BLL222",
+    "BLL223",
+    "BLL224",
+    "BLL225",
+    "BLL226",
+    "BLL227",
+    "BLL230",
+    "BLL231",
+    "BLL232",
+    "BLL233",
+    "BLL234",
+    "BLL235",
+    "BLL236",
+    "BLL237",
+    "BLL240",
+    "BLL241",
+    "BLL242",
+    "BLL244",
+    "BLL245",
+    "BLL246",
+    "BLL252",
+    "BLL254"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": true,
+      "left_h5_span": true
+     },
+     "share": "36/53"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": true,
+      "left_h5_span": true
+     },
+     "share": "25/49"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "45/47"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "59/109"
+   }
+  },
+  "1-10 English|1-3": {
+   "members": [
+    "ENGC101",
+    "ENGC102",
+    "ENGI101",
+    "ENGI102",
+    "ENGI103",
+    "ENGJ101",
+    "ENGJ102",
+    "ENGR101",
+    "ENGR102",
+    "ENGS101",
+    "ENGS102"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "10/11"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "43/62"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "22/33"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "44/54"
+   },
+   "series_deviations": {
+    "ENGI": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    },
+    "ENGJ": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    }
+   }
+  },
+  "1-10 English|4-6": {
+   "members": [
+    "ENGC201",
+    "ENGC202",
+    "ENGI201",
+    "ENGI202",
+    "ENGI203",
+    "ENGJ201",
+    "ENGJ202",
+    "ENGJ301",
+    "ENGJ302",
+    "ENGJ402",
+    "ENGR201",
+    "ENGR202",
+    "ENGS201",
+    "ENGS202"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "8/14"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "69/95"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "57/90"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "52/74"
+   },
+   "series_deviations": {
+    "ENGI": {
+     "menu_lesson": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "ENGJ": {
+     "menu_overview": {
+      "archetype": "tabs"
+     }
+    }
+   }
+  },
+  "1-10 English|7-8": {
+   "members": [
+    "ENGC301",
+    "ENGC302",
+    "ENGI301",
+    "ENGI302",
+    "ENGI303",
+    "ENGR301",
+    "ENGR302",
+    "ENGS301",
+    "ENGS302"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "5/9"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "43/61"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "24/49"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "23/46"
+   },
+   "series_deviations": {
+    "ENGC": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": true,
+      "left_h5_span": false
+     }
+    },
+    "ENGI": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    },
+    "ENGR": {
+     "menu_overview": {
+      "archetype": "tabs"
+     }
+    }
+   }
+  },
+  "1-10 English|9-10": {
+   "members": [
+    "ENGC401",
+    "ENGI400",
+    "ENGI401",
+    "ENGI405"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "3/4"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "20/26"
+    }
+   },
+   "callout_lead": {
+    "element": "h5",
+    "share": "18/30"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "10/12"
+   },
+   "series_deviations": {
+    "ENGC": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": true,
+      "left_h5_span": false
+     }
+    }
+   }
+  },
+  "1-10 English|9-10/NCEA": {
+   "members": [
+    "ENGS401"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "1/1"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "6/6"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "6/6"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "5/5"
+   }
+  },
+  "1-10 English|combo": {
+   "members": [
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09"
+   ],
+   "menu": {
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "8/8"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "63/64"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "8/8"
+   }
+  },
+  "1-10 Health and PE|combo": {
+   "members": [
+    "HPFUN101",
+    "HPFUN102",
+    "HPFUN103",
+    "HPFUN201",
+    "HPFUN202",
+    "HPFUN203",
+    "HPFUN301",
+    "HPFUN302",
+    "HPFUN303",
+    "HPFUN401",
+    "HPFUN902",
+    "HPFUN903"
+   ],
+   "menu": {
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "12/12"
+    }
+   },
+   "callout_lead": {
+    "element": "p",
+    "share": "14/17"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "10/12"
+   }
+  },
+  "1-10 Mathematics|1-3": {
+   "members": [
+    "MXDB102",
+    "MXDI101",
+    "MXDI102",
+    "MXDI103",
+    "MXEO102",
+    "MXEO201",
+    "MXEO202",
+    "MXEX101",
+    "MXFL101",
+    "MXFL102",
+    "MXFL103",
+    "MXFL104"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "9/12"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "share": "52/78"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "21/21"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "103/104"
+   },
+   "series_deviations": {
+    "MXEX": {
+     "menu_overview": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    },
+    "MXFL": {
+     "menu_lesson": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    }
+   }
+  },
+  "1-10 Mathematics|4-6": {
+   "members": [
+    "MXDB201",
+    "MXDB202",
+    "MXDI201",
+    "MXDI202",
+    "MXEX201",
+    "MXEX202",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFU201",
+    "MXFU202"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "7/13"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "share": "48/110"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "32/63"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "84/106"
+   },
+   "series_deviations": {
+    "MXDB": {
+     "menu_lesson": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "MXDI": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     }
+    },
+    "MXEX": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "MXFL": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "MXFU": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     }
+    }
+   }
+  },
+  "1-10 Mathematics|7-8": {
+   "members": [
+    "MXDB301",
+    "MXDB302",
+    "MXDI301",
+    "MXEO301",
+    "MXEX301",
+    "MXEX302",
+    "MXFL301",
+    "MXFL302",
+    "MXFU301",
+    "MXFU302"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "10/10"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "91/95"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "54/83"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "31/58"
+   }
+  },
+  "1-10 Mathematics|9-10": {
+   "members": [
+    "MXEO401",
+    "MXEX401",
+    "MXFL401",
+    "MXFU401",
+    "MXFU402"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "5/5"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "7/7"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "30/43"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "15/23"
+   }
+  },
+  "1-10 Mathematics|combo": {
+   "members": [
+    "MXFUN01",
+    "MXFUN02",
+    "MXFUN03"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "1/1"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "10/10"
+    }
+   },
+   "callout_lead": {
+    "element": "p",
+    "share": "35/54"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "7/8"
+   }
+  },
+  "1-10 Social Science|1-3": {
+   "members": [
+    "SSOG101",
+    "SSOG103"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "2/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "11/11"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "9/10"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "9/9"
+   }
+  },
+  "1-10 Social Science|7-8": {
+   "members": [
+    "SSOG301"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "1/1"
+    }
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "1/1"
+   }
+  },
+  "1-10 Social Science|combo": {
+   "members": [
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN07",
+    "SSFUN08"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "2/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "1/1"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "29/57"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "5/7"
+   }
+  },
+  "1-10 Technology|combo": {
+   "members": [
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ],
+   "menu": {
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "2/2"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "11/21"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "6/8"
+   }
+  },
+  "ANZH|1-3": {
+   "members": [
+    "ANZH101",
+    "ANZH104",
+    "ANZH105"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "3/3"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "share": "15/19"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "9/13"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "5/8"
+   }
+  },
+  "ANZH|4-6": {
+   "members": [
+    "ANZH203",
+    "ANZH205"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "2/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "7/7"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "5/7"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "6/10"
+   }
+  },
+  "ANZH|7-8": {
+   "members": [
+    "ANZH301",
+    "ANZH303",
+    "ANZH304"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "3/3"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "14/22"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "28/48"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "9/15"
+   }
+  },
+  "ANZH|9-10": {
+   "members": [
+    "ANZH401",
+    "ANZH404"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "1/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "18/18"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "14/29"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "8/12"
+   }
+  },
+  "ConnectED|1-3": {
+   "members": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDO105",
+    "CEDW101"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": true,
+      "left_h5_span": false
+     },
+     "share": "1/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "5/8"
+    }
+   },
+   "callout_lead": {
+    "element": "p",
+    "share": "5/8"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "6/9"
+   },
+   "series_deviations": {
+    "CEDK": {
+     "menu_lesson": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "CEDO": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "CEDW": {
+     "menu_lesson": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    }
+   }
+  },
+  "ConnectED|4-6": {
+   "members": [
+    "CEDO202",
+    "CEDR201",
+    "CEDR204",
+    "CEDT201",
+    "CEDT202",
+    "CEDT203",
+    "CEDT204",
+    "CEDT207",
+    "CEDT208",
+    "CEDW201"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "2/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "11/15"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "34/36"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "13/14"
+   }
+  },
+  "ConnectED|7-8": {
+   "members": [
+    "CEDO301",
+    "CEDR301",
+    "CEDR302",
+    "CEDT301"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "2/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "7/14"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "12/12"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "14/14"
+   },
+   "series_deviations": {
+    "CEDT": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     }
+    }
+   }
+  },
+  "ConnectED|9-10": {
+   "members": [
+    "CEDT101",
+    "CEDT104",
+    "CEDT404"
+   ],
+   "menu": {
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "2/3"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "11/11"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "2/3"
+   }
+  },
+  "ConnectED|9-10/NCEA": {
+   "members": [
+    "CEDK501"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "1/1"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "9/10"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "17/17"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "4/4"
+   }
+  },
+  "ConnectED|NCEA": {
+   "members": [
+    "CEDO501",
+    "CEDR501",
+    "CEDT501",
+    "CEDW501"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "4/4"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "33/36"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "136/152"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "16/17"
+   }
+  },
+  "EXPlore|NCEA": {
+   "members": [
+    "EXBP901",
+    "EXIP901"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "2/2"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "12/15"
+    }
+   },
+   "callout_lead": {
+    "element": "p",
+    "share": "19/39"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "7/8"
+   }
+  },
+  "EXPlore|combo": {
+   "members": [
+    "EXPFUN02",
+    "EXPFUN03",
+    "EXPFUN04",
+    "EXPFUN05",
+    "EXPFUN06",
+    "EXPFUN07"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "4/5"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "12/12"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "3/5"
+   }
+  },
+  "Leaving to Learn|1-3": {
+   "members": [
+    "XMES101",
+    "XMES102",
+    "XMES103",
+    "XMES201",
+    "XMES203",
+    "XTAS101",
+    "XTAS102",
+    "XTAS103",
+    "XWHA01",
+    "XWHA02"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "5/14"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "share": "34/47"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "78/89"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "29/52"
+   },
+   "series_deviations": {
+    "XTAS": {
+     "menu_overview": {
+      "archetype": "tabs"
+     }
+    },
+    "XWHA": {
+     "menu_lesson": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    }
+   }
+  },
+  "Leaving to Learn|NCEA": {
+   "members": [
+    "XDLS501",
+    "XDLS502"
+   ],
+   "menu": {
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "share": "5/10"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "5/5"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "6/10"
+   }
+  },
+  "Leaving to Learn|combo": {
+   "members": [
+    "XDLS901",
+    "XDLS902",
+    "XDLS903",
+    "XDLS904",
+    "XDLS905",
+    "XDLS906",
+    "XDLS908",
+    "XDLS909",
+    "XDLS911",
+    "XDLS912",
+    "XFUN01",
+    "XFUN02",
+    "XGF9001",
+    "XGF9003",
+    "XGF9004",
+    "XGF9006",
+    "XLP01",
+    "XLP02",
+    "XLP03",
+    "XLP04",
+    "XLP05",
+    "XLP06"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "8/17"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "share": "56/118"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "187/276"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "67/123"
+   },
+   "series_deviations": {
+    "XDLS": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     }
+    },
+    "XFUN": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     }
+    },
+    "XGF": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    }
+   }
+  },
+  "NCEA1|NCEA": {
+   "members": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1007",
+    "AGH1008",
+    "AGH1009",
+    "ART1002",
+    "ART1003",
+    "ART1004",
+    "ART1005",
+    "ART1006",
+    "ENG1004",
+    "ENG1005",
+    "ENG1007",
+    "ENGFUN02",
+    "HES1003",
+    "HES1004",
+    "HES1005",
+    "HES1006",
+    "HES1007",
+    "HIS1001",
+    "HIS1002",
+    "HIS1003",
+    "HIS1004",
+    "HIS1005",
+    "HIS1006",
+    "HIS1007",
+    "HIS1008",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1001",
+    "PHE1002",
+    "PHE1003",
+    "PHE1004",
+    "PHE1005",
+    "PHE1006",
+    "PHE1007",
+    "PHE1008"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "37/38"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "178/274"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "360/390"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "244/249"
+   },
+   "series_deviations": {
+    "ART": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    },
+    "ENGFUN": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "PHE": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    }
+   }
+  },
+  "Online Safety (OS9000)|1-3": {
+   "members": [
+    "OSAI101",
+    "OSBY101",
+    "OSGM101",
+    "OSGM201",
+    "OSOH101"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "5/5"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "11/13"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "23/24"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "9/16"
+   },
+   "series_deviations": {
+    "OSBY": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    }
+   }
+  },
+  "Online Safety (OS9000)|4-6": {
+   "members": [
+    "OSAI201",
+    "OSBY201",
+    "OSOH201"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "4/4"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "9/11"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "14/14"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "11/12"
+   }
+  },
+  "Online Safety (OS9000)|7-8": {
+   "members": [
+    "OSAH301",
+    "OSAI301",
+    "OSBY301",
+    "OSGM301",
+    "OSSM301"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "4/5"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "6/16"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "5/8"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "9/16"
+   },
+   "series_deviations": {
+    "OSAI": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    },
+    "OSBY": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "menu_overview": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     }
+    },
+    "OSSM": {
+     "menu_lesson": {
+      "archetype": "tabs"
+     }
+    }
+   }
+  },
+  "Online Safety (OS9000)|9-10": {
+   "members": [
+    "OSAH401",
+    "OSAI401",
+    "OSBY401",
+    "OSGM401",
+    "OSOH401"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "4/4"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "16/21"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "17/23"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "11/20"
+   },
+   "series_deviations": {
+    "OSBY": {
+     "menu_lesson": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     }
+    }
+   }
+  },
+  "Online Safety (OS9000)|9-10/NCEA": {
+   "members": [
+    "OSAH501"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "1/1"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "mixed"
+     },
+     "share": "5/5"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "2/2"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "3/4"
+   }
+  },
+  "Online Safety (OS9000)|NCEA": {
+   "members": [
+    "OSAI501",
+    "OSBY501",
+    "OSGM501",
+    "OSOH301",
+    "OSOH501",
+    "OSSC301"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "5/5"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "26/27"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "10/19"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "20/27"
+   }
+  },
+  "Te Marautanga o Aotearoa TMoA|1-3": {
+   "members": [
+    "PNR101",
+    "PNR102",
+    "PNR104",
+    "TRR106",
+    "TRR114"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "5/5"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "10/11"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "3/5"
+   }
+  },
+  "Te ara Whakapuawa -Wellbeing|7-8": {
+   "members": [
+    "TWHK901",
+    "TWHK903"
+   ],
+   "menu": {
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "2/2"
+    }
+   },
+   "callout_lead": {
+    "element": "h4",
+    "share": "5/11"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "2/2"
+   }
+  },
+  "Te ara Whakapuawa -Wellbeing|combo": {
+   "members": [
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905",
+    "TWHA906"
+   ],
+   "menu": {
+    "lesson": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "6/6"
+    }
+   },
+   "callout_lead": {
+    "element": "p",
+    "share": "17/27"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "3/6"
+   }
+  }
+ }
+}
