@@ -252,7 +252,7 @@
   },
   "hover_definition_inline": {
    "enabled": true,
-   "head_pattern": "^\\[\\s*(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\b",
+   "head_pattern": "^\\[\\s*(?:hover(?:\\s*info(?:rmation)?)?|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\b",
    "skip_if_tag_keyword": "\\btrigger\\b",
    "split_bracket": {
     "enabled": true,
@@ -260,12 +260,15 @@
     "unclosed_next_item": true,
     "leading_anchor": true,
     "leading_anchor_note": "Round 86 (Chris, CEDW501-00) — the ANCHOR-BEFORE-BRACKET shape: after DocxExtractor merges the writer's adjacent red runs the marker span reads 'ANCHOR [hover|rollover|mouseover SEP DEF]' — the hovered WORD sits INSIDE the red span, before the bracket, so head_pattern (^\\[) fails and the whole span leaked as a 'CS:' note (and broke the paragraph / fragmented a [whakataukī] box). WT: CEDW501 'He kākano ahau i ruia mai i 🔴Rangiātea [Hover: 🔴🔴Represents a place of origin… for all Māori.]🔴', and the body 'proud of your 🔴whānau🔴🔴 [Hover: People linked…]🔴'. FIX: when the merged span does NOT start with '[' but matches '<anchor> [hover…]', lift the anchor text out, append it to the preceding host with its LAST word woven as <span class=\"infoTrigger\" info=\"DEF\">word</span> (same U+E000 sentinel as round 75/82), and recover the DEF after the COLON inside the bracket ('Hover: DEF'). MEASURED corpus-wide (outputs/_measure_anchorhover.py): 17 closed + 2 open occ / 11 modules; the COLON targets (CEDW501 ×3 whānau/iwi/Rangiātea, CEDT501 perspective/pātai/clarification, CEDR501 accurate, …) render the term as an infoTrigger in the HUMAN gold, so the weave MATCHES the human for the body cases and does what Chris asked for the whakataukī. The 'trigger'-keyword + widget guards still exclude MXDB301 '[Hover Triggers…]' / SSOG101. SCOPE/DEFERRED: only the COLON 'Hover:' form is woven here. The SPACED-DASH form ('Hover - DEF' / 'Hover – DEF', CEDT501 kaupapa/mana/erase) is LEFT to its pre-existing behaviour: when the dash marker is a SEPARATE red span (anchor not merged) it goes through the round-82 path where the round-84 A2 'def-in-next-item' can mis-grab a following bullet — a host-finder + dash-def follow-up, sized but not in this round (it is a pre-existing class, not introduced here). Env HOVERANCHOR_OFF reverts to the leaking-note behaviour (independent of HOVERSPLIT_OFF/HOVERDEF_OFF).",
-    "note": "Round NN (Chris, AGH1004-01/-02) — TWO split/orphaned bracket shapes round 82 could not reach, both reversible via env HOVERSPLIT_OFF (independent of HOVERDEF_OFF). (A1) lead_orphan: the marker's opening '[' sits in the preceding BLACK run, so the resolved item text begins 'hover definition] DEF' with NO leading '[' and head_pattern (^\\[) fails (AGH1004-01 '…specific areas or **regions** [🔴hover definition] a distinct…'). The '[' is restored before the head test (gated: a head keyword at the very start + a ']' present) and the orphaned '[' is stripped off the host so it never leaks as 'regions ['. Measured 8 occ / 6 modules (AGH1002/04/07/08…). (A2) unclosed_next_item: the marker carries NO usable def of its own — an UNCLOSED '[hover definition:' (no closing ']') OR a closed-but-empty '[hover definition]' — and its blackAfter is empty; the def is the FOLLOWING red/black item (DocxExtractor merges the writer's fragmented red runs into ONE item: 'DEF…]' with the paragraph continuation in ITS blackAfter), e.g. AGH1004-02 '…beautiful topographies 🔴[hover definition:🔴 🔴the shape and features…🔴 on planet Earth…'. That item is consumed as the def (a stray late ']' trimmed) and was previously mis-rendered as a 'CS:' note. Measured 101 occ / 28 modules (def-in-NEXT-RED-span). SAFETY: the def-in-BLACK form (no red def item; the next item is plain black text — 41 occ / 10 modules incl. AGH1007 'plant materia]') is NOT touched, left exactly as round 82 rendered it; the consumed next item must be a non-interactive instruction/noise/black span, never a real widget tag."
+    "note": "Round NN (Chris, AGH1004-01/-02) — TWO split/orphaned bracket shapes round 82 could not reach, both reversible via env HOVERSPLIT_OFF (independent of HOVERDEF_OFF). (A1) lead_orphan: the marker's opening '[' sits in the preceding BLACK run, so the resolved item text begins 'hover definition] DEF' with NO leading '[' and head_pattern (^\\[) fails (AGH1004-01 '…specific areas or **regions** [🔴hover definition] a distinct…'). The '[' is restored before the head test (gated: a head keyword at the very start + a ']' present) and the orphaned '[' is stripped off the host so it never leaks as 'regions ['. Measured 8 occ / 6 modules (AGH1002/04/07/08…). (A2) unclosed_next_item: the marker carries NO usable def of its own — an UNCLOSED '[hover definition:' (no closing ']') OR a closed-but-empty '[hover definition]' — and its blackAfter is empty; the def is the FOLLOWING red/black item (DocxExtractor merges the writer's fragmented red runs into ONE item: 'DEF…]' with the paragraph continuation in ITS blackAfter), e.g. AGH1004-02 '…beautiful topographies 🔴[hover definition:🔴 🔴the shape and features…🔴 on planet Earth…'. That item is consumed as the def (a stray late ']' trimmed) and was previously mis-rendered as a 'CS:' note. Measured 101 occ / 28 modules (def-in-NEXT-RED-span). SAFETY: the def-in-BLACK form (no red def item; the next item is plain black text — 41 occ / 10 modules incl. AGH1007 'plant materia]') is NOT touched, left exactly as round 82 rendered it; the consumed next item must be a non-interactive instruction/noise/black span, never a real widget tag.",
+    "def_black_tail": true,
+    "_def_black_tail_doc": "ROUND 222c (Chris, the ENGJ403 'pitch' hover screenshot). THE DEF-IN-OWN-BLACK-TAIL SHAPE — ENGJ403's standard hover idiom (12 occurrences measured in its WT, the module's only hover form): a red '[hover info ‘pitch’:' span with NO closing bracket, the DEFINITION as the span's own black tail, then a bare ']' red span whose black tail continues the sentence. (A2) requires an EMPTY own tail so this fell through — the marker leaked as a Writers Note and the paragraph fragmented. Now: def = the marker's own black tail; the ']' closer span is consumed and its tail rejoins the sentence; a QUOTED anchor in the head ('pitch') weaves the sentinel onto that word's LAST occurrence in the host prose (the round-146-deferred named-anchor class, now shipped for this form), falling back to the historical last-word append when absent/not found. Human gold ENGJ403 ships all of these as class=infoTrigger spans. Env HOVERTAIL_OFF reverts just this shape."
    },
    "note": "Round 82 (Chris, ENGC101-01/-02) — a hover/rollover/mouseover DEFINITION marker whose def is NOT carried after a 'trigger' keyword (so round 75's info_trigger_inline does not weave it). TWO shapes, both currently broken: (A) COLON self-closed '[hover: DEF]' / '[hover definition: DEF]' / '[rollover definition: DEF]' / '[mouseover definition: DEF]' — the def is inside the bracket after the first colon; markers like '[Hover: …]' resolve to plain [body] (paragraph SPLIT) while '[hover definition: …]' resolve to infoTrigger but hit round 75's bare-marker guard (def DROPPED). (B) MARKER-THEN-DEF '[hover text] DEF' — the bracket closes and the def follows it inside the SAME red span (ENGC101 'Using **adjectives** [hover text] Describing words. can make…'). Both are woven onto the nearest preceding word as <span class=\"infoTrigger\" info=\"DEF\">anchor</span> in ONE paragraph (same U+E000 sentinel + ContentConverter.#inlineMarkup machinery as round 75). SCOPE/SAFETY: the head must start with hover/rollover/mouseover (head_pattern); a marker that resolves to a NON-infoTrigger interactive widget (shapeHover, a hover audio player, etc.) is skipped; a marker carrying 'trigger' (skip_if_tag_keyword) is left to round 75; a marker with NO recoverable def is left untouched (rendered as before, never a leaked literal). Env HOVERDEF_OFF reverts both shapes to the round-81 split/drop behaviour.",
    "render_stitch": {
     "enabled": true,
     "head_words": [
+     "hover info",
      "hover",
      "rollover",
      "roll over",
@@ -275,8 +278,10 @@
     ],
     "separators": ":=–—",
     "max_def_len": 400,
-    "note": "Round 201 (Chris, queue-5 split-bracket infoTrigger) — RENDER-LEVEL re-stitch of any hover/rollover/definition marker that reached the FINAL visible text as a LITERAL. The scanner round-75/82/86 weave only reaches clean red TAG items; the leaking residue arrives as a BLACK item (HIS1002/HIS1005 'for TERM'), a 'definition'-head data-marker tag (ENGJ301), or a table cell (CEDO501). ListsAndRuns.hoverStitch runs at the TOP of inlineMarkup (every visible-text path: <p>/<li>/<td>) AND on the FULL multi-line text in renderBlackText (cross-line 'for TERM'), inserting the U+E000…U+E001 sentinel that #inlineMarkup already converts to <span class=infoTrigger info=DEF>anchor</span>. CONTAINMENT-SAFE BY CONSTRUCTION: cv2 placeholder dumps render RAW (never via inlineMarkup/renderBlackText — proven: their bare URLs stay unlinked), so the 389 markers trapped in un-built widgets are untouched. ANCHOR: a 'for/on TERM' marker weaves onto the LAST whole-word occurrence of TERM in the preceding text (the round-146 note's deferred named-anchor); otherwise the single word immediately before the marker. Reuses the round-146 hygiene (instruction-def + URL-tail decline) and the round-82 'trigger' exclusion (those are round 75's). A marker with no clean anchor/def is LEFT as the pre-existing literal — never a wrong weave, never a NEW leak. Measured visible footprint 39 occ / 19 modules (outputs/_measure_infosplit.py); the ~26 stitchable are ENGJ301/CEDR501/CEDO501/CEDK501/TWHA903/HIS1002/HIS1005/SSFUN01/SSFUN06/SSFUN07/ARFUN03/ARFUN05/HIS1004/PHE1007. Env INFOSPLIT_OFF reverts to the leaking literal."
-   }
+    "note": "Round 201 (Chris, queue-5 split-bracket infoTrigger) — RENDER-LEVEL re-stitch of any hover/rollover/definition marker that reached the FINAL visible text as a LITERAL. The scanner round-75/82/86 weave only reaches clean red TAG items; the leaking residue arrives as a BLACK item (HIS1002/HIS1005 'for TERM'), a 'definition'-head data-marker tag (ENGJ301), or a table cell (CEDO501). ListsAndRuns.hoverStitch runs at the TOP of inlineMarkup (every visible-text path: <p>/<li>/<td>) AND on the FULL multi-line text in renderBlackText (cross-line 'for TERM'), inserting the U+E000…U+E001 sentinel that #inlineMarkup already converts to <span class=infoTrigger info=DEF>anchor</span>. CONTAINMENT-SAFE BY CONSTRUCTION: cv2 placeholder dumps render RAW (never via inlineMarkup/renderBlackText — proven: their bare URLs stay unlinked), so the 389 markers trapped in un-built widgets are untouched. ANCHOR: a 'for/on TERM' marker weaves onto the LAST whole-word occurrence of TERM in the preceding text (the round-146 note's deferred named-anchor); otherwise the single word immediately before the marker. Reuses the round-146 hygiene (instruction-def + URL-tail decline) and the round-82 'trigger' exclusion (those are round 75's). A marker with no clean anchor/def is LEFT as the pre-existing literal — never a wrong weave, never a NEW leak. Measured visible footprint 39 occ / 19 modules (outputs/_measure_infosplit.py); the ~26 stitchable are ENGJ301/CEDR501/CEDO501/CEDK501/TWHA903/HIS1002/HIS1005/SSFUN01/SSFUN06/SSFUN07/ARFUN03/ARFUN05/HIS1004/PHE1007. Env INFOSPLIT_OFF reverts to the leaking literal.",
+    "_head_words_note_r222c": "ROUND 222c: 'hover info' (first, longest-wins) admits both the spaced '[hover info ‘X’:' AND the glued '[hoverinfo ‘X’:' cell forms (head_words internal spaces compile to [-\\s]?) — the ENGJ403 4.0 act-structure table cells. The quoted-anchor weave in hoverStitch pairs with it."
+   },
+   "_head_pattern_note_r222c": "ROUND 222c (Chris, ENGJ403 hover screenshot): 'hover(?:\\s*info(?:rmation)?)?' admits the GLUED '[hoverinfo ...' form (ENGJ403 types one) — the spaced '[hover info ...' already matched via the bare 'hover' + \\b. Previous pattern: ^\\[\\s*(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\b"
   },
   "hover_weave_hygiene": {
    "enabled": true,
@@ -414,6 +419,17 @@
     "open": "<div class=\"whakatauki{modifiers}\">",
     "close": "</div>",
     "split_payload_on_pipe": true,
+    "proverb_normalise": {
+     "enabled": true,
+     "split_markup_boundary": true,
+     "split_quote_boundary": true,
+     "split_pipe_loose": true,
+     "split_paren_translation": true,
+     "strip_bold": true,
+     "strip_italic": true,
+     "strip_wrapping_quotes": true,
+     "note": "ROUND 225 (Chris, XDLS905/906 screenshots). The writer's proverb = bold reo + SOFT line break (w:br) + English; the extractor drops soft breaks so the two lines GLUE into one <p> ('…ana”Through perseverance…'). Gold house form measured over ALL 215 human .whakatauki boxes: two+ separate PLAIN <p> (213/215), <b> kept only 2/215, <i> 5/215, wrapping curly/straight quotes 9/215 — the site CSS styles .whakatauki p, so kept <b> double-styles. SPLITS re-derive the lost break from its visible boundary (leading **bold**/*italic* group abutting text · leading “quoted” phrase + prose · space-before pipe · full-tail '(translation)', parens dropped); STRIPS run segment-level via MenuBuilder.stripTextBold/Italic + edge-anchored quote strip. The no-marker language-boundary glue (CEDT501-12, CEDO105) is a measured DECLINE — no derivable split point. Engine: ContentConverter.#proverbSplit + #proverbStripSeg. Env PROVERBNORM_OFF reverts split AND strips. Tool outputs/_measure_whakatauki.py."
+    },
     "proverb_only": true,
     "proverb_max_chars": 200,
     "proverb_max_paragraphs": 2,
@@ -545,7 +561,9 @@
   },
   "lesson_letter_number": {
    "enabled": true,
-   "_round88_note": "ROUND 88 (Chris, ENGI302 Lesson 2): the human numbers an activity box {lessonNumber}{positional-letter} — on lesson page N the K-th activity is N+chr(64+K) (ENGI302 lesson 2: [Activity 1/2/3/4] -> 2A/2B/2C/2D; the WT activity numbers RESET per lesson, the human prepends the lesson number + converts the ordinal to a letter). Claude emitted the BARE WT digit (number=\"1\"/\"2\"/\"3\"/\"4\"). MEASURED corpus-wide (outputs/_measure_activity_number_scheme.py over 1276 human pages): pageInt+positional 847, pageInt+letters 131, someInt+letter 73, bare-digit ≈ 0 — the human NEVER ships a bare digit, so Claude's bare number matches nothing and the renumber can only help-or-hold (the skeleton keeps number= AND class: ENGI302-02 1->2A and 4->2D EXACT-match the human's div.activity.interactive[number=2A] / div.activity[number=2D]). PREFIX = page.lessonNumber (PageSplitter's writer [LESSON N] / running lesson ordinal — robust to the 13/105 file-count misalignments, since it tracks the WT lesson structure the human uses, not Claude's -NN file index). LETTER = positional order of the activity within the lesson (A,B,C…), counted across sub-pages of the same lessonNumber (human sub-page letters CONTINUE 40 vs restart 11), reset per module. ONLY a BARE-DIGIT id is transformed — a round-83 tail-lifted letter id ('1A') is KEPT; overview pages (lessonNumber null) untouched; idx>=26 falls back to the bare digit. Env ACTLETTER_OFF reverts to the bare WT digit."
+   "_round88_note": "ROUND 88 (Chris, ENGI302 Lesson 2): the human numbers an activity box {lessonNumber}{positional-letter} — on lesson page N the K-th activity is N+chr(64+K) (ENGI302 lesson 2: [Activity 1/2/3/4] -> 2A/2B/2C/2D; the WT activity numbers RESET per lesson, the human prepends the lesson number + converts the ordinal to a letter). Claude emitted the BARE WT digit (number=\"1\"/\"2\"/\"3\"/\"4\"). MEASURED corpus-wide (outputs/_measure_activity_number_scheme.py over 1276 human pages): pageInt+positional 847, pageInt+letters 131, someInt+letter 73, bare-digit ≈ 0 — the human NEVER ships a bare digit, so Claude's bare number matches nothing and the renumber can only help-or-hold (the skeleton keeps number= AND class: ENGI302-02 1->2A and 4->2D EXACT-match the human's div.activity.interactive[number=2A] / div.activity[number=2D]). PREFIX = page.lessonNumber (PageSplitter's writer [LESSON N] / running lesson ordinal — robust to the 13/105 file-count misalignments, since it tracks the WT lesson structure the human uses, not Claude's -NN file index). LETTER = positional order of the activity within the lesson (A,B,C…), counted across sub-pages of the same lessonNumber (human sub-page letters CONTINUE 40 vs restart 11), reset per module. ONLY a BARE-DIGIT id is transformed — a round-83 tail-lifted letter id ('1A') is KEPT; overview pages (lessonNumber null) untouched; idx>=26 falls back to the bare digit. Env ACTLETTER_OFF reverts to the bare WT digit.",
+   "integer_prefix": true,
+   "_integer_prefix_doc": "ROUND 222b (Chris, the ENGJ403 '1.0A' screenshot). The {lessonNumber}{letter} renumber uses the INTEGER lesson part of a DOTTED page lesson number ('1.0'→'1', '5.1'→'5') as both the id prefix AND the letter-map key — the human ships '1A'/'5D', never '1.0A'/'5.1A' (measured: every gold in the affected class ENGJ403/CEDK501/CEDT501/MXDB301/MXEO301/MXFL302 is integer+letter), and integer map keys let a lesson split over sub-pages (2.0→2.1) CONTINUE its lettering (gold 2A then 2B/2C). The letter-LESS dotted-id gold convention (number='1.1') is writer-typed ids kept verbatim — it never enters this renumber. Env ACTLNINT_OFF reverts to the raw dotted prefix/key."
   },
   "embedded_interactive_activity": {
    "enabled": true,
@@ -558,11 +576,29 @@
   },
   "standalone_widget_box": {
    "enabled": true,
-   "types": ["dragAndDrop", "unclassified", "multiChoiceQuiz", "radioQuiz", "selfCheck", "interactive"],
+   "types": [
+    "dragAndDrop",
+    "unclassified",
+    "multiChoiceQuiz",
+    "radioQuiz",
+    "selfCheck",
+    "interactive"
+   ],
    "force_interactive": true,
    "_types_interactive_note": "'interactive' is the round-217 bare-[Interactive] generic invocation (Tag_Lexicon _meta.qualifier_alias_demote.standalone_becomes) — the scanner names the bundle after the tag, so it arrives here as type 'interactive', not 'unclassified'. Gold boxes the bare-invocation class 3/3 on AGH1001-01 and it is a task invocation by authoring intent.",
    "_round217_note": "ROUND 217 (Chris — the activity/interactive BOUNDARY audit, 2026-07-12). A TASK-type interactive the writer authored with NO [Activity] tag (AGH1001-01: '[Interactive] Drag and drop the products…' + data table) is STILL boxed by the human developer — an invented <div class=\"activity interactive\" number=\"1B\"> wrapping instruction + widget, numbered in the lesson's ordinary letter sequence (the gold library ships 6,863 activity boxes against only 5,663 writer [Activity*] tags — the human invents ~1,200; whole families e.g. MXDI/HIS author with ZERO [Activity] tags). MEASURED per Claude bundle type over every paired module (outputs/_measure_standalone_boxing.py — for each STANDALONE Claude widget, does the gold put that same content inside an activity box?): dragAndDrop 0.97 (73 decided) / unclassified 0.88 (163) / multiChoiceQuiz 0.89 (38) / radioQuiz 0.88 (8) / selfCheck 0.83 (6) → listed; the DISPLAY types (accordion 0.11 / carousel 0.11 / speechBubble 0.12 / clickDrop 0.12 / flipCard 0.12 / tabs 0.14 / modal 0.16 / hintSlider 0.12 / shapeHover 0.00 / glossary+timeline 0.00) stay bare BY CONSTRUCTION (not listed); the AMBIGUOUS band (dropDown 0.57 / selectionBox 0.78 / typing 0.60 / slider 0.43 / reorder 0.50, small n) is RECORDED as a follow-up needing a finer group-level discriminator — do NOT add these without re-measuring. The box takes the human's `activity interactive` form (force_interactive — the box exists BECAUSE of the widget) and the NEXT positional {lessonNumber}{letter} id (ActivitiesBuilder.activityOpen positionalId=true — the human counts its invented boxes IN SEQUENCE with the tagged ones, which is why Claude's letters drifted on such pages: the A_WRONG class of the boundary audit). The gold's own box TITLE heading is human-authored (in no WT) — recorded C, never invented. reoMode excluded (bilingual bundles have reo_bundle_activity + their own placeholder surface). Matches on bundle.type ONLY (extraTypes-merged bundles fire via their primary type). Env toggle ACTWRAP_OFF reverts to the bare un-boxed placeholder/build.",
    "_boundary_audit_note": "The full audit that found this class: outputs/_measure_boundary_audit.py (per-block Claude-vs-gold containment diff over all paired pages: W_OVER/W_UNDER/A_OVER/A_SPILL/A_WRONG) + _measure_boundary_triggers.py (first spilled/absorbed item per box) + _measure_widget_boxing.py (gold-side census: task types ~1.00 boxed, display types 0.05-0.46) + _measure_standalone_boxing.py (the per-type standalone discriminator above). Remaining measured classes recorded in the round-217 changelog entry: A_OVER first-trigger [body]-after-widget ~187 groups; W_OVER runaway unclassified placeholders 1,118 blocks; the ambiguous-band types; supervisor-note A_OVER 53 (mostly the recorded r160 editorial residue)."
+  },
+  "prose_interactive_rows": {
+   "enabled": true,
+   "registry": {
+    "ENFUN": {
+     "widget_col": "col-md-12 col-12"
+    }
+   },
+   "prose_close": "</div></div>",
+   "widget_row_open": "<div class=\"row\"><div class=\"{widgetCol}\">",
+   "_round229_note": "ROUND 229 (Chris — the Change Ledger CL-0030+CL-0048 activity pair kickoff). CL-0048/CL-0036 (constraint 63): inside an activity, prose sits in its OWN inner row and the interactive follows in a SEPARATE inner row at the wrapper width. MEASURED over every gold activity box (outputs/_activity_anatomy_core.py + _measure_activity_inner_rows.py, 7,539 gold boxes): the gold library largely PREDATES the rule — same_col (prose+widget in ONE inner col, Claude's pre-round form) is the gold-dominant anatomy at 75.4% of widget-carrying boxes and SOLIDIFIES (r182 >=0.60) at corpus level, so the UNIVERSAL flip is NOT live (captured overrides_gold in Subject_Global_Parameters._universal_conventions.cl0048_prose_interactive_rows — the r219 CL-0007 pattern; doc-14's own Mode-B rule keeps gold/sibling structure authoritative for the built corpus). This registry holds the groups whose gold DOES solidify the SEPARATED form — where the flip is a fix-TOWARD-gold: generated by _measure_activity_inner_rows.py --gen (never hand-typed; gates sep_share>=0.60, n>=20 decided boxes, >=5 modules, widget col >=0.80 solid). ENFUN|Fundamentals: 77/96 = 0.802 separated (76 two_rows / 1 sibling_col), widget col 'col-md-12 col-12' 74/77 = 0.96; gold form byte-eyeballed (ENFUN02 1D): activity > row > col-12 [PROSE] /row + row > col-md-12 col-12 [WIDGET] /row. The prose col is NOT changed by this rule (gold prose col for a DEFAULT-width col-md-8 wrapper = col-12, 21/24 ENFUN + 205/236 corpus-wide two_rows — Claude's existing open already emits col-12; the gold prose col-md-8 minority rides WIDENED wrappers col-11/col-md-11, which Claude does not emit — the CL-0007 widths stay parked per round 219). Fires ONLY when the activity-owned bundle emitted PROSE first (title/lead/table — the actProse flag): a widget-only box keeps the single-col form (gold widget_only ships col-12). A box with prose AFTER the widget is the measured 4/77-gold / 3/76-Claude fringe — the split still applies and trailing prose lands in the widget row (recorded residue; gold's own 4 use a third row). Groups NOT earning a row keep same_col BY CONSTRUCTION: ENGFUN|Inquiry (5/5 sep but 1 module, below floors; Claude fires 0 there), PNR|Bilingual (7/10, 2 modules + the r220-recorded bilingual boundary territory), MXFL|Standard (0.384 — its gold separated share rides wrapper WIDENING Claude does not emit). ENFUN09 is the family's own gold deviant (6 same_col vs 2 sep — the r123 single-deviation class): family form ships uniformly, its ~6 boxes are the named net-positive collateral. Env toggle ACTROWS_OFF reverts to the single-col flow."
   },
   "modifier_classes": {
    "interactive": " interactive",
@@ -745,9 +781,21 @@
   "extract": {
    "enabled": true,
    "_note": "ROUND 138 (Chris) — the Phase-1 INTERACTIVE HAND-OFF mode. When ConversionRun.interactiveMode === 'extract' (UI switch ON / env INTEXTRACT_ON, uniform across the whole run like imageMode), an UN-BUILT interactive is NOT rendered on the page: the dashed box above is replaced by a SINGLE loud, unique REFERENCE CODE marking its exact spot, and the captured content is handed off via {CODE}_interactives.txt (ManifestBuilder) headed by the SAME code. Default interactiveMode 'inline' never reads this block, so OFF output is byte-identical to before. SCOPE: un-built placeholder interactives only — built widgets stay rendered; the bilingual-unbuilt content-table placeholders are out of scope (a sized follow-up). REVERSAL: leave env INTEXTRACT_ON unset (UI default), or set enabled:false here.",
+   "default_mode": "extract",
+   "_default_mode_note": "ROUND 235 (Chris) — the hand-off is now the DEFAULT for every run: the UI switch is GONE (index.html section 3 removed) and both entries resolve interactiveMode from THIS key via ConversionRun.DefaultInteractiveMode (shared code — entry parity preserved). 'extract' + collapse.enabled:true = the shipped default (reference-code marker box + the raw content rendered COLLAPSED inside it, expandable). Env INTCOLLAPSE_OFF (or default_mode:'inline' + collapse.enabled:false) reverts the WHOLE round byte-for-byte to the r234 behaviour: inline dashed boxes by default, bare-marker extract only under legacy INTEXTRACT_ON.",
    "id_format": "{code}-{NN}-{seq}",
    "ref_format": "{code}-INT-{NN}-{seq}-{type}",
    "label_format": "{ref}",
+   "collapse": {
+    "enabled": true,
+    "_note": "ROUND 235 (Chris) — the COLLAPSIBLE hand-off box, now the default rendering for every un-built interactive: the loud rainbow reference-code marker keeps its exact search-by-code contract (class cv2-int-ref + data-cv2-index/data-cv2-ref + the {label} text), gains the class cv2-interactive on the SAME wrapper (so every gate exclusion — skeleton collapse, compare/body placeholder pruning, the defect leak scan, the EmojiStrip/LinkTextDisplay verbatim-zone walks — applies to the whole box exactly as it did to the old dashed box), and now CONTAINS the raw captured content (the exact inline-mode rendering: retained writer notes + the dashed box) inside a container that is COLLAPSED by default and expands/collapses with an animated (CSS grid-template-rows transition) click on the ▼/▲ arrow at the right end of the marker row. The Page Stitcher is unaffected: it replaces the whole balanced cv2-int-ref element by data-cv2-ref, so the hidden raw content is swapped out together with the marker when the finished widget is stitched in. Env INTCOLLAPSE_OFF (or enabled:false here, with default_mode:'inline') reverts to r234.",
+    "wrapper_open": "<div class=\"cv2-interactive cv2-int-ref\" data-cv2-index=\"{index}\" data-cv2-ref=\"{id}\" style=\"border: 8px solid transparent; border-image: repeating-linear-gradient(45deg, #e03131 0 14px, #f08c00 14px 28px, #ffd43b 28px 42px, #2f9e44 42px 56px, #1971c2 56px 70px, #9c36b5 70px 84px) 8; background: repeating-linear-gradient(135deg, #fff9db 0 28px, #ffe3e3 28px 56px); padding: 18px 22px; margin: 24px 0\">",
+    "label_row": "<div style=\"display: flex; align-items: center; gap: 14px\"><span style=\"flex: 1; text-align: center; font-weight: bold; font-family: monospace; font-size: 1.3em; letter-spacing: 1px; color: #c2255c; text-shadow: 0 1px 0 #ffffff\">{label}</span><span class=\"cv2-int-toggle\" title=\"Show or hide the raw captured content for this interactive\" onclick=\"var b=this.closest('.cv2-int-ref').querySelector('.cv2-int-raw'); var open=b.style.gridTemplateRows==='1fr'; b.style.gridTemplateRows=open?'0fr':'1fr'; this.textContent=open?'\\u25BC':'\\u25B2';\" style=\"cursor: pointer; user-select: none; font-size: 1.05em; line-height: 1; color: #c2255c; padding: 6px 10px; border: 2px solid #c2255c; border-radius: 6px; background: rgba(255,255,255,0.8)\">\u25bc</span></div>",
+    "content_open": "<div class=\"cv2-int-raw\" style=\"display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease\"><div style=\"min-height: 0; overflow: hidden\"><div style=\"padding-top: 14px\">",
+    "content_close": "</div></div></div>",
+    "wrapper_close": "</div>",
+    "manifest_banner": "MODE: HAND-OFF (default) — each un-built interactive renders as its REFERENCE CODE box on the page, with the raw captured content present but COLLAPSED inside it (click the arrow at the right end of the box to expand/collapse it). The REFERENCE CODE shown at the top of each block below is the SAME code live in the named File. Search the code (e.g. CODE-INT-NN-SS-type) in that File to drop the finished widget into place — replacing the whole reference box replaces the hidden raw content with it."
+   },
    "marker": "<div class=\"cv2-int-ref\" data-cv2-index=\"{index}\" data-cv2-ref=\"{id}\" style=\"border: 3px solid #1971c2; background: #e7f5ff; padding: 10px 14px; margin: 16px 0; font-weight: bold; font-family: monospace; color: #1971c2\">{label}</div>",
    "marker_loud": "<div class=\"cv2-int-ref\" data-cv2-index=\"{index}\" data-cv2-ref=\"{id}\" style=\"border: 8px solid transparent; border-image: repeating-linear-gradient(45deg, #e03131 0 14px, #f08c00 14px 28px, #ffd43b 28px 42px, #2f9e44 42px 56px, #1971c2 56px 70px, #9c36b5 70px 84px) 8; background: repeating-linear-gradient(135deg, #fff9db 0 28px, #ffe3e3 28px 56px); padding: 18px 22px; margin: 24px 0; font-weight: bold; font-family: monospace; font-size: 1.3em; letter-spacing: 1px; color: #c2255c; text-shadow: 0 1px 0 #ffffff; text-align: center\">{label}</div>",
    "marker_loud_enabled": true,
@@ -800,6 +848,17 @@
   "============================================================================"
  ],
  "interactive_builders": {
+  "mtk_quiz": {
+   "_doc": "ROUND 232 (Change Ledger CL-0038, 16 Jul — Chris). Any [MTKquiz]-family marker (any modifiers; the span-level retag in Tag_Lexicon._meta.mtk_quiz_retag does the matching) ends in the canonical button `<a href=\"#\" target=\"_blank\"><div class=\"button\">Go to quiz</div></a>` — href intentionally BLANK, the developer wires the D2L quicklink at publish time (gold's populated quickLink hrefs ARE that publish-time wiring, the CL-0044 class; the href divergence from gold is INTENTIONAL) — plus ONE Designer/Developer To Do note (kind 'todo', red_flag.todo_form, class cv2-note = gate-excluded) carrying the writer's raw quiz spec so the modifier prose ('supports engagement, audio, video, file sharing', 'should go to teacher dropbox' — which does NOT attach a dropbox wrapper) is never silently stripped. Writer quiz content stays rendered (constraint 1): the retag makes the marker an ELEMENT, so it never opens a capturing bundle. ADJACENT WRITER BUTTON ABSORB (the dedup rule — gold ships ONE button per quiz): a writer-typed quiz button in the marker's window — a [button] item labelled per button_label_pattern ('Go to quiz.'/'Quiz' — ARFUN02/ARFUN04/TEFUN02/TEFUN06-08) or a standalone [Go to quiz]-span bundle per marker_span_pattern (HPRE301) — is UPGRADED to the canonical anchored form and the marker's own button suppressed (its To Do note still emits). The window walks window_back/window_forward non-blank items, stopping at another mtk item, an [Activity] opener, or a section/page/closer boundary, so it can never leak across activities; a [go to quiz] span OUTSIDE any mtk window is untouched (the corpus-wide standalone class, ~40 modules, is a recorded follow-up — NOT this rule). A marker-claimed thin bundle (no content members) emits the button INSTEAD of its placeholder box; a fat one keeps its box (content never lost). Population: 33 spans / 21 modules (outputs/_detect_mtkquiz.cjs); 5 of them (SCFUN01, MXFUN02, SSOG103, SSOG301, EXPFUN07) have NO gold button — the rule is forward-looking and outranks gold there (named CHANGE-LEDGER OVERRIDE deltas, never chased). Env MTKQUIZ_OFF reverts the family byte-for-byte.",
+   "enabled": true,
+   "env": "MTKQUIZ_OFF",
+   "button_html": "<a href=\"#\" target=\"_blank\"><div class=\"button\">Go to quiz</div></a>",
+   "todo_note": "Create this quiz in MTK and wire the button's D2L quicklink (the href is intentionally blank). Writer's quiz spec: {spec}",
+   "button_label_pattern": "^(go to (the )?quiz|quiz)[.!]?$",
+   "marker_span_pattern": "^\\[?\\s*go to (the )?quiz\\s*\\]?\\s*(\\[?\\s*triggers? engagement\\s*\\.?\\s*\\]?)?$",
+   "window_back": 2,
+   "window_forward": 5
+  },
   "_principle": "PRINCIPLE (anchor_compare two-layer test; reference/Principles_Audit_and_Reconciliation.md). Every builder here builds the widget the WRITER's tag specifies. The human developer's finished widget is the reference ONLY where the writer's tag corresponds to the human's element (Decision-Framework B). Where the human editorially SUBSTITUTED a different element (e.g. writer [flip card] -> human accordion; writer [carousel] left as static images), that substitution is NON-derivable (Decision-Framework A1): build the WRITER's tagged widget anyway and judge it on the widget VERIFIER (_verify_*.cjs, divergence/defect 0), NOT on skeleton-vs-the-human's-substitution. A skeleton dip vs a human substitution is the expected, documented cost (rounds 115/116), not a regression. Never half-build: build cleanly or keep the honest placeholder.",
   "modal": {
    "enabled": true,
@@ -1232,7 +1291,9 @@
        "leak/body; the widget builds)."
       ],
       "enabled": true,
-      "subjects": ["CEDT"],
+      "subjects": [
+       "CEDT"
+      ],
       "title_tag_pattern": "^\\[\\s*h([1-6])\\b[^\\]]*\\]\\s*"
      },
      "registry": {
@@ -1404,6 +1465,78 @@
    "9-10/NCEA": "NCEA",
    "_rule": "template_phase registry value → template attribute, normalised via this map. Compound phase bands (e.g. '9-10/NCEA') map to the single template the human ships: the iDoc host (idoc_scripts.js) loads the stylesheet by this attribute, so an unmapped compound value renders the page UNSTYLED. '9-10/NCEA' → 'NCEA' is grounded on the human gold for all 3 modules carrying it (CEDK501, ENGS401, OSAH501)."
   },
+  "template_phase_presets": {
+   "_doc": "ROUND 221 (Chris, ENGJ403). THE TEMPLATE-ATTRIBUTE PRESET RULE: the <html template=\"…\"> attribute must follow the preset module-LEVEL rule (code level digit 1→1-3, 2→4-6, 3→7-8, 4→9-10, 5→NCEA) and this rule SUPERSEDES sibling inheritance for THIS attribute only — ENGJ403 inherited template=\"4-6\" from series sibling ENGJ402, whose own gold value is itself wrong (the human ENGJ403 ships 9-10). Everything else (menu conventions, groupKey, page model, chips…) keeps the sibling-emulation rule: rules.template_phase is NOT changed, only the emitted attribute. MEASURED over all 305 3-digit level-coded golds (232 already follow the preset): 'subjects' lists the families that solidly follow it (share ≥0.80, the r178 STRONG_SHARE floor) + ENGJ (Chris's named inherited-error chain); families whose code digit is NOT a curriculum level (BLL phonics series, HPFUN/fundamentals combo, the OS short-course numbering, XMES, MXEO, CEDK, OSGM, OSOH, OSSC) are EXCLUDED; 4-digit NCEA codes and FUN 2-digit codes never match code_pattern; a resolved 'combo' value is preserved (a combined-cohort template decision, not a level band — protects ENGJ201). Named preset-over-gold deltas at ship time: ENGJ301/302 4-6→7-8, ENGJ402 4-6→9-10, ENGS401 NCEA→9-10, CEDR401 7-8→9-10, MXFU201 7-8→4-6 (the lone within-family deviants = the same inherited/incorrect class per Chris's directive). Env TPLPRESET_OFF reverts to the pure sibling value.",
+   "enabled": true,
+   "code_pattern": "^([A-Z]+)([1-5])\\d{2}$",
+   "by_level_digit": {
+    "1": "1-3",
+    "2": "4-6",
+    "3": "7-8",
+    "4": "9-10",
+    "5": "NCEA"
+   },
+   "subjects": [
+    "ANZH",
+    "CEDO",
+    "CEDR",
+    "CEDT",
+    "CEDW",
+    "ENGC",
+    "ENGI",
+    "ENGJ",
+    "ENGR",
+    "ENGS",
+    "HPRE",
+    "MXDB",
+    "MXDI",
+    "MXEX",
+    "MXFL",
+    "MXFU",
+    "OSAH",
+    "OSAI",
+    "OSBY",
+    "OSSM",
+    "PNR",
+    "SSCI",
+    "SSEA",
+    "SSOG",
+    "TEDC",
+    "TRR",
+    "XDLS",
+    "XTAS"
+   ],
+   "preserve_values": [
+    "combo"
+   ],
+   "prefix_overrides": {
+    "_doc": "ROUND 224 (Chris, 2026-07-14). EXPLICIT CODE-PREFIX TEMPLATE OVERRIDES — the design team's exception list for families whose code digit is NOT a curriculum level. A module whose code starts with a key here gets that template attribute UNCONDITIONALLY (outranks sibling inheritance AND the by_level_digit preset; preserve_values does not apply — an explicit prefix rule is absolute). LONGEST matching prefix wins; a null value means 'explicitly NO override' (a guard entry). THE BLL200 EXCEPTION: all BLL2xx modules are actually PHASE 1 → template=\"1-3\", NOT the \"4-6\" their series digit or a mis-built sibling would suggest (5 gold modules — BLL250/261/264/265/275 — carried the wrong 4-6 and were corrected this round). BLLR2xx modules ARE phase 2 and keep \"4-6\": the BLLR guard entry is belt-and-braces (\"BLLR201\" cannot startsWith \"BLL2\" anyway — 4th char R vs 2 — but doc-14's r218 'BLLR is NOT BLL' startswith trap earns the explicit fence). Env TPLPREFIX_OFF reverts all prefix overrides (independent of TPLPRESET_OFF).",
+    "enabled": true,
+    "map": {
+     "BLL2": "1-3",
+     "BLLR": null
+    }
+   },
+   "cohort_overrides": {
+    "_doc": "ROUND 231 (Chris — Change Ledger CL-0033, 14 Jul). THE LANGUAGES COMBO RULE: every page of a Languages-cohort module ships template=\"combo\" on <html> (the sub-type still comes from the <body> class). The prefixes are doc-14 §14.1's six languages × FUN + non-FUN code forms (data/Subject_Global_Parameters.json family '14.1 Languages P1-4' scope.cohort_prefixes — listed here VERBATIM so the engine never reads SGP at runtime; SGP stays shipped-inert, master_enabled:false). UNCONDITIONAL within the cohort: outranks sibling inheritance AND the by_level_digit preset (preserve_values does not apply — the r224 absolute-override semantics); applied AFTER prefix_overrides (no key overlap exists). Kept SEPARATE from prefix_overrides so each fix reverses independently (§2): LANGCOMBO_OFF reverts Languages alone, TPLPREFIX_OFF keeps reverting BLL2 alone. MEASURED round 231: the corpus holds ZERO Languages dirs (431 dir codes, 0 prefix hits, 0 short-prefix collisions — the r218 'BLLR is NOT BLL' startswith trap checked and clear, no non-Languages code starts CHI/FRE/SAM/GER/JAP/SPA), so this ships as an INERT forward-looking guarantee (the r224/r230 zero-blast class) — without it a fresh Languages code would ship the TEDC-style EMPTY attribute (no registry row, no sibling; the r221 pre-fix class — nothing today would ever RESOLVE combo for it). Env LANGCOMBO_OFF.",
+    "enabled": true,
+    "value": "combo",
+    "prefixes": [
+     "CHIFUN",
+     "FREFUN",
+     "SAMFUN",
+     "GERFUN",
+     "JAPFUN",
+     "SPAFUN",
+     "CHI",
+     "FRE",
+     "SAM",
+     "GER",
+     "JAP",
+     "SPA"
+    ]
+   }
+  },
   "head": "<head>\n<meta charset=\"utf-8\" />\n<meta content=\"IE=edge\" http-equiv=\"X-UA-Compatible\" />\n<meta content=\"width=device-width, initial-scale=1\" name=\"viewport\" />\n<title>{title}</title>\n{idocScript}\n</head>",
   "idoc_script": "<script type=\"text/javascript\" src=\"https://{idocHost}.desire2learn.com/shared/refresh_template/js/idoc_scripts.js\"></script>",
   "idoc_host_rule": "ALWAYS tekura — the registry value is policy-fixed; tekuradev was a data artefact. Registry value 'none' = module ships without the iDoc script line.",
@@ -1444,6 +1577,11 @@
    "by_prefix": {
     "HPFUN": "Health & Physical Education Fundamentals"
    }
+  },
+  "lesson_title_h1": {
+   "enabled": true,
+   "_doc": "CL-0042 / ROUND 230 (Chris — the OSSC pair). For the subject code prefixes in 'subjects' (the OSSC short-course family), a LESSON page ships EXACTLY ONE title h1 — its own lesson title (the r143 pre-activity harvest, 'Lesson N:' prefix stripped) — at EVERY level: the module's Te Reo title is never pushed as a second lesson h1, even where the registry's mined h1_count asks for 2 (OSSC3 lesson h1_count IS 2, mined from the OSSC301 gold, which repeats 'Ngā Tāware' on every lesson — the gold PREDATES the rule; that divergence is a recorded intentional override, never chased back in; see Subject_Global_Parameters._universal_conventions.cl0042_ossc_lesson_h1). OUTPUT-INERT today (the r224 prefix-override pattern — converts an accident into a guarantee): no OSSC module currently derives a Te Reo title at all (OSSC301's [TITLE BAR] '*OSSC301 Scams* ✅*Ngā Tāware*' never splits — the ✅ boundary is dropped upstream), and the live dual-title lesson emitters are XMES/CEDT/SSFUN only (outputs/_measure_ossc_lesson_h1.py Part B: 35 pages, 0 OSSC) — so the gate changes ZERO pages until the day a future title-split fix would otherwise have silently regressed OSSC. The overview page + the #module-code chip h1 are untouched (overview te-reo goes through the titleBar branch, not this one). Env OSSCH1_OFF reverts to the pre-230 push. Proof probe: outputs/_probe_ossch1.cjs (inert + detection + toggle + prefix fence).",
+   "subjects": ["OSSC"]
   },
   "title_h1": "<h1><span>{title}</span></h1>",
   "title_h1_lowercase": "<h1><span style=\"text-transform:lowercase;\">{title}</span></h1>",
@@ -1642,7 +1780,9 @@
    "tabs_two_col": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"tabs col-12\">\n<ul class=\"nav nav-tabs\">\n<li><a>Overview</a></li>\n<li><a>{tab2Label}</a></li>{extraNav}\n</ul>\n<div class=\"tab-content\">\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab1Cols}\n</div>\n</div>\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab2Body}\n</div>\n</div>{extraPanes}\n</div>\n</div>\n</div>\n</div>",
    "_tabs_two_col_note": "ROUND 166 — the tabs shell with pane-1 as N registry cols ({tab1Cols} = the composed col divs). Selected by SkeletonBuilder when content.menu.tab1Cols is non-null; the original 'tabs' shell + pane1_col_by_phase stay for single-col pages (lessons, guard families, declines, TABTWOCOL_OFF).",
    "reo_tabs": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"tabs col-12\">\n<ul class=\"nav nav-tabs\">{navItems}\n</ul>\n<div class=\"tab-content\">{panes}\n</div>\n</div>\n</div>\n</div>",
-   "_reo_tabs_note": "ROUND 212 — the bilingual (reoTranslate) tabs menu composed from the MTK drop-down-menu table (the PNR family). {navItems} = <li><a><span reo>/<span eng>… items; {panes} = the composed tab-pane divs. See elements.dual_language.dropdown_menu."
+   "_reo_tabs_note": "ROUND 212 — the bilingual (reoTranslate) tabs menu composed from the MTK drop-down-menu table (the PNR family). {navItems} = <li><a><span reo>/<span eng>… items; {panes} = the composed tab-pane divs. See elements.dual_language.dropdown_menu.",
+   "writer_tabs": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"tabs\">\n<ul class=\"nav nav-tabs\">{navItems}\n</ul>\n<div class=\"tab-content\">{panes}\n</div>\n</div>\n</div>",
+   "_writer_tabs_note": "ROUND 221 — the writer-authored tab-partition menu (ENGJ403): a BARE div.tabs (no row wrapper — the new-era gold form), {navItems} = <li><a>label</a></li> per writer tab, {panes} = the composed tab-pane divs. Selected by SkeletonBuilder when content.menu.wtNav/wtPanes are set. See menu.writer_tab_partition."
   },
   "extra_tabs": {
    "enabled": true,
@@ -3196,6 +3336,103 @@
     },
     "series": {}
    }
+  },
+  "writer_tab_partition": {
+   "_doc": "ROUND 221 (Chris, ENGJ403). WRITER-AUTHORED MENU TAB PARTITION: the newest WT era authors the overview menu's tabs EXPLICITLY — '[please set up as two tabs …][tab 1 – please title as appropriate]' … '[close tab]' '[tab 2 – …]' … '[close tab]' before [MODULE INTRODUCTION] — and the human builds exactly that partition (ENGJ403 gold: tab 1 = LI/SC left | Planning/Get-started/Connections/Assessment right under the 'Tirohanga Whānui | Overview' h3 banner; tab 2 = Knowledge | Practices). When the SET-UP instruction + ≥min_closers closers are present, MenuBuilder.#writerTabPartition honours the writer's own tab boundaries instead of the tab_map fold routing. MEASURED all 428 WTs (outputs/_measure_menutabtags.cjs): fire population = EXACTLY ENGJ403; CEDK101's bare [tab N] crumb list (no set-up, no closer) declines BY CONSTRUCTION. Piped bilingual headings ship WHOLE (gold keeps them); WALT/I-can leads under an LI/SC heading ship as <h5> (lead_element); pane 1 headings plain <h4>, later panes <h4><span> (the gold page's own two forms); a pane with LI/SC sections splits LI/SC LEFT | rest RIGHT, otherwise balanced (the r211 kinds, decided per pane). Env MENUTABPART_OFF.",
+   "enabled": true,
+   "setup_pattern": "set ?up as .{0,24}tabs",
+   "opener_pattern": "^\\[?tab\\s*(\\d+)",
+   "closer_pattern": "^\\[?(?:close|end)\\s+tab",
+   "min_closers": 1,
+   "instruction_label_pattern": "please|title as appropriate",
+   "default_labels": [
+    "Overview",
+    "Information"
+   ],
+   "nav_item": "\n<li><a>{label}</a></li>",
+   "pane_template": "\n<div class=\"tab-pane\">\n{banner}{content}\n</div>",
+   "banner": "<div class=\"col-md-12 col-12 paddingR\">\n<h3><span>{heading}</span></h3>\n</div>",
+   "pane1_heading_element": "<h4>{heading}</h4>",
+   "heading_element": "<h4><span>{heading}</span></h4>",
+   "lead_element": "<h5>{lead}</h5>",
+   "lead_pattern": "^(we are learning|what are we learning|i can|you will show|how will i know)",
+   "li_match": [
+    "learning intention",
+    "whainga ako"
+   ],
+   "sc_match": [
+    "success criteria",
+    "paearu angitu",
+    "how will i know",
+    "you will show"
+   ],
+   "keep_bilingual_headings": true,
+   "col_pair": [
+    "col-md-6 col-12 paddingLR",
+    "col-md-6 col-12 paddingLR"
+   ],
+   "row_pair": "\n<div class=\"row\">\n<div class=\"{cls1}\">\n{left}\n</div>\n<div class=\"{cls2}\">\n{right}\n</div>\n</div>",
+   "row_single": "\n<div class=\"row\">\n<div class=\"{cls}\">\n{content}\n</div>\n</div>"
+  },
+  "lesson_li_label": {
+   "_doc": "ROUND 222 (Chris, ENGJ403). THE LESSON-MENU 'Learning intentions' LABEL: the human opens a lesson page's simplified menu with a GENERATED label heading (not in the WT — ENGJ403's lesson regions carry only the WALT/I-can lines). Registry rows GENERATED from every gold lesson-page menu grouped by the ENGINE-resolved subject|phase (attr-map-normalised — the #extraTabRow lookup): share ≥0.80 over ≥5 menus, lesson menu type 'simplified', h4/h5 element forms only (the h3 families MXDB|4-6 / MXFUN|combo / SSCI|7-8 are recorded follow-ups — different menu machinery). Guards: lesson pages only, non-empty composed menu, never when a 'learning intention' heading is already present (double-emission-safe). Env MENULILABEL_OFF.",
+   "enabled": true,
+   "registry": {
+    "groups": {
+     "ANZH|9-10": {
+      "element": "<h4>{label}</h4>",
+      "label": "Learning Intentions"
+     },
+     "CEDK|NCEA": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "CEDO|NCEA": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "CEDT|NCEA": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "CEDW|NCEA": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "ENFUN|combo": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "ENGJ|4-6": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "ENGS|NCEA": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "EXIP|NCEA": {
+      "element": "<h4>{label}</h4>",
+      "label": "Learning intentions:"
+     },
+     "MXEO|7-8": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning intentions"
+     },
+     "MXFL|1-3": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning Intentions"
+     },
+     "SSEA|": {
+      "element": "<h4>{label}</h4>",
+      "label": "Learning Intentions"
+     },
+     "XFUN|combo": {
+      "element": "<h5>{label}</h5>",
+      "label": "Learning Intentions"
+     }
+    }
+   }
   }
  },
  "footer": {
@@ -3228,7 +3465,12 @@
    "none": [],
    "_rule": "footer_links pattern value per page type → ordered link keys. 'none' = the footer div renders with an empty nav ul omitted (just the #footer div) — matching ConnectED practice."
   },
-  "auto_chain_note": "2026-06-13: prev/next hrefs are auto-chained to the sibling output filenames ({CODE}-NN.html) by PageAssembler so the generated bundle navigates page-to-page out of the box. The corpus leaves these empty for the iDoc runtime to fill; the explicit links are an additive convenience and harmless in MTK."
+  "auto_chain_note": "2026-06-13: prev/next hrefs are auto-chained to the sibling output filenames ({CODE}-NN.html) by PageAssembler so the generated bundle navigates page-to-page out of the box. The corpus leaves these empty for the iDoc runtime to fill; the explicit links are an additive convenience and harmless in MTK. SUPERSEDED by nav_links_empty (round 228, CL-0044) — the chaining survives only as the FOOTEREMPTY_OFF revert path.",
+  "nav_links_empty": {
+   "enabled": true,
+   "overrides_gold": false,
+   "note": "ROUND 228 (Chris — Change Ledger CL-0044, constraint 71): every footer nav anchor ships href=\"\" — prev-lesson, next-lesson, home-nav alike. The conversion NEVER computes sibling filenames into them; the links are wired at publish time in D2L. MEASURED (outputs/_measure_footer_hrefs.py): the gold library ships EMPTY footer hrefs on 2,188/2,263 pages (97% of footer-carrying pages); the 68 'populated' gold pages carry D2L quickLink URLs (/d2l/common/dialogs/quickLink/...rcode=TCS_Dev-NNNNN) = the publish-time wiring itself, plus 15 stray sibling-html hrefs — so this rule matches BOTH the design-team directive AND the gold (overrides_gold false: no gold divergence; the round-8 auto-chaining was the divergence). The per-position <li> composition (value_map: overview next+home / middle prev+next+home / final prev+home / CED single-file none) and the id/class/target attributes are UNCHANGED — only the {prevHref}/{nextHref} fill becomes empty. The round-226 choice-page TILE links (a Chris decision — tiles href the generated lesson files) are a DIFFERENT element and are untouched. Env FOOTEREMPTY_OFF reverts to the round-8 sibling chaining byte-for-byte."
+  }
  },
  "body_region": {
   "open": "<div id=\"body\">",
@@ -3453,6 +3695,7 @@
    "_activity_anchor_note": "ROUND 55 (Chris, OSAI401-01). An activity-title heading is emitted at a FIXED level (h3 — the top content-section level); a free-body [H#] heading is the writer digit + body_shift (+1). So a writer [H3] SECTION heading that is a PEER of the page's activities renders one level too deep: the human renders OSAI401-01 [H3] 'Types of AI' at h3 (peer to the activity titles 'What can AI do'/'Match the AI Tool') and [H4] 'What is Generative AI…' at h4, but Claude — because the activity h3 occupied the base rank in the re-level pool — pushed them to h4/h5. #relevelHeadings now treats activity subtrees like widget subtrees (excluded from BOTH the level POOL and the rewrite), so the free-body [H#] outline ranks from base on its own and the activity titles keep their fixed h3 — the top [H#] then aligns with the activities, matching the human's flatter hierarchy. SELF-SCOPING: the rank map only changes when an activity is the SHALLOWEST anchor (if a real free-body h3 or [H2]→h3 is present it already holds the base, so the outline is unchanged — measured no-op on non-activity-anchored pages). Env RELEVELACT_OFF reverts to including activities in the pool.",
    "skip_classes": [
     "cv2-interactive",
+    "choicePage",
     "accordion",
     "carousel",
     "flipCard",
@@ -3651,6 +3894,24 @@
     "interactive_placeholder"
    ],
    "after_note": "Content following a closed callout/activity/widget always starts a fresh row (verified OSAI201_0.0, OSAH401_1.0)."
+  },
+  "choice_page_tiles": {
+   "enabled": true,
+   "_meta": "ROUND 226 (Chris, the XDLS900 screenshot triage) — the XDLS900 'Learning Support' CHOICE-PAGE TILE NAVIGATION. The WT opens a choice page with [LESSON Choice page] and (usually) a [Tab Nav Layout … Repeat on EVERY PAGE] marker + a ONE-column table of bold category names, one per learning area; the human builds a grid of icon tiles (div.choice), one per lesson, merged onto page 00. Tile links = the GENERATED lesson HTML files (Chris's decision 2026-07-15 — the human's online MTK quickLink rcodes exist nowhere in the WT); category k maps 1:1 positionally to [LESSON k] (verified XDLS906). Labels = the writer's own table categories (XDLS906 gold uses them verbatim; the 903/904/905 golds' partial renames are non-derivable editorial, recorded C), falling back to the lesson TITLE when there is no table (XDLS902 — its gold's labels ARE the lesson titles). iconType ships EMPTY plus one Designer/Developer To Do note (gold itself carries 'CS: review iconType' comments — icon choice is editorial). Measured population (outputs/_detect_choicetiles.cjs, ALL 431 dirs): opener = EXACTLY XDLS902-906; layout markers also XDLS908. Env toggles: CHOICETILES_OFF (the tile build), TABNAVDROP_OFF (marker consumption + layout-table To Do + the sticky-layout page-boundary demotion), CHOICEMERGE_OFF (the page-00 merge).",
+   "opener_pattern": "^\\[\\s*lesson choice page\\s*\\]",
+   "tab_layout_pattern": "^\\[\\s*tab nav layout\\b",
+   "sticky_layout_pattern": "^\\[\\s*sticky nav layout\\b",
+   "bare_marker_patterns": ["^\\[\\s*tab nav\\s*\\]\\]?$"],
+   "bare_marker_note": "The bare [Tab Nav]/[Sticky Nav] repeat markers on every later page are layout REPEAT directives, not content — the human drops them (the sticky nav is a js/stickyNav.js include). Bare [Sticky Nav] already parses to DROP; only bare [Tab Nav] needed consuming (it re-leaked an 'Orphan sub-tag [tab n]' red flag on ~every XDLS90x page). Matched on the span's own folded text so a real orphaned [tab 1] sub-tag still flags. The optional trailing ']' tolerates XDLS905's one '[Tab Nav]]' doubled-bracket typo (the r174 malformed-bracket class).",
+   "merge_into_overview": true,
+   "merge_note": "The human merges the choice page INTO page 00 (every gold ships 00 + one page per lesson, 8 files); the writer's [End page] before [LESSON Choice page] is disregarded exactly like the AR-1 introduction-cluster rule. Verified clean on all 5 opener modules. Env CHOICEMERGE_OFF.",
+   "link_target": "_self",
+   "link_target_note": "Gold's target=_blank belongs to its external quickLink form; a local generated-file link navigates in place like the footer prev/next links (session decision, round 226).",
+   "shell": "<div class=\"row\">\n<div class=\"col-12 choicePage choiceHeightMatch phaseContainer noPhase\">\n{tiles}\n</div>\n</div>",
+   "tile": "<div class=\"choice col-md-3 col-6\">\n<a href=\"{href}\" target=\"{target}\">\n<div class=\"choiceImg\">\n<div class=\"iconCentral \" iconType=\"\"></div>\n</div>\n<div class=\"choiceText\">\n<h5>{label}</h5>\n</div>\n</a>\n</div>",
+   "icon_todo": "Choice-page tiles built with an EMPTY iconType — pick an icon for each tile: {labels}. (The human-built siblings use iconCentral iconType values such as physicalHealth, nutrition, mindfulness.)",
+   "tabnav_todo": "The writer's [Tab Nav Layout] (repeat on every page) is an online tab-navigation set-up, not page content — configure the site tab nav with: {labels}.",
+   "sticky_todo": "The writer's [Sticky Nav Layout] (repeat on every page) is the sticky-nav include (js/stickyNav.js), not page content — set it up with these cross-module links: {items}."
   }
  },
  "container_auto_close": {
@@ -3702,5 +3963,14 @@
   "manifest_file": "{code}_interactives.txt",
   "page_number_format": "two digits, zero-padded, document order: -00 overview, -01 …",
   "decision_note": "Locked 12/06/26 (Chris): the brief's contract form. The corpus's historical _N.0 variants are deliberately not replicated."
+ },
+ "page_split": {
+  "_doc": "ROUND 222 (Chris, ENGJ403 — the empty-overview screenshot + the 13-vs-10 pagination). THE NEW-ERA WRITER LESSON NUMBERING: the newest WT era numbers lessons ALREADY DOTTED ([Lesson 0.0]/[Lesson 1.0]/[Lesson 2.1]) and closes in-lesson TILE structures with [end tile lesson navigate back to lesson N]. Three coupled PageSplitter rules, measured over all 428 WTs (outputs/_measure_wtlessonnums.cjs): (1) overview_zero_pattern — a [Lesson 0/0.0] while the OVERVIEW is open is the overview's own number (the module introduction), consumed, content stays on 0.0 (population EXACTLY ENGJ403; env ZEROLESSON_OFF); (2) dotted_label_verbatim — a dotted writer number is the page label VERBATIM ('2.1' not '2.1.0'; population ENGJ403 + CEDK501/CEDO501/CEDR501/CEDT501/CEDW501/XMES202, whose golds ship the same '2.1'-style pages; un-dotted '[Lesson 4]' keeps the historical '.0'; env DOTLESSON_OFF); (3) tile_closer_pattern — an 'end lesson' closer whose own text matches the tile pattern is an IN-PAGE structure closer, never a page boundary (population EXACTLY ENGJ403 ×2; env TILECLOSER_OFF).",
+  "writer_lesson_numbers": {
+   "enabled": true,
+   "overview_zero_pattern": "^0(\\.0)?$",
+   "dotted_label_verbatim": true,
+   "tile_closer_pattern": "tile\\s+lesson|navigate back to lesson"
+  }
  }
 }

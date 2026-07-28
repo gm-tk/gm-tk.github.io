@@ -318,4 +318,221 @@
             assertEqual(om.added.length, 0, 'nothing emitted');
         });
     });
+
+    // ==================================================================
+    // INTERACTIVE INSERTION (contract §10) — extract-mode pages + built files
+    // ==================================================================
+
+    /** A page reference marker exactly as the V2 converter emits it in extract mode. */
+    function marker(fullRef, idx) {
+        var m = /^([A-Za-z0-9]+)-INT-(\d\d)-(\d\d)-/.exec(fullRef);
+        var bareId = m[1] + '-' + m[2] + '-' + m[3];
+        return '<div class="cv2-int-ref" data-cv2-index="' + idx + '" data-cv2-ref="' + bareId +
+            '" style="border: 8px solid transparent; font-weight: bold; font-family: monospace">' + fullRef + '</div>';
+    }
+    function intPage(name, fullRefs, trailing) {
+        var body = fullRefs.map(function (f, i) {
+            return '<div class="row"><div class="col-12">' + marker(f, i + 1) + '</div></div>';
+        }).join('\n');
+        return {
+            name: name,
+            html: '<!DOCTYPE html>\n<html lang="en" template="1-3"><head><title>DEMO101</title></head>\n' +
+                '<body class="standard container-fluid">\n' +
+                '<div id="header"><div id="module-code"><h1>DEMO101</h1></div></div>\n' +
+                '<div id="body">\n' + body + '\n' + (trailing || '') + '\n</div>\n' +
+                '<div id="footer"></div>\n</body></html>'
+        };
+    }
+    /** A built-interactives file as the Interactives Claude project outputs it. */
+    function builtDoc(name, entries) {
+        var secs = entries.map(function (e) {
+            return '<section class="cv2-built" data-cv2-ref="' + e.ref + '">\n' + e.html + '\n</section>';
+        }).join('\n');
+        return {
+            name: name,
+            html: '<!DOCTYPE html>\n<html><head><meta charset="utf-8"><title>built interactives</title></head>\n' +
+                '<body>\n<!-- PageForge built-interactives file -->\n' + secs + '\n</body></html>'
+        };
+    }
+
+    describe('PageStitcher — interactive insertion (pure core)', function () {
+        var REF_A = 'DEMO101-INT-01-01-dragAndDrop';
+        var REF_B = 'DEMO101-INT-01-02-accordion';
+        var REF_C = 'DEMO101-INT-02-01-tabs';
+
+        it('places a build at its marker and removes both anchors', function () {
+            var page = intPage('DEMO101-01.html', [REF_A]);
+            var built = builtDoc('DEMO101_interactives_built.html',
+                [{ ref: REF_A, html: '<div class="dragAndDrop autoCheck" layout="standard"><p>BUILD-A</p></div>' }]);
+            var r = stitcher().stitchInteractives([page], [built]);
+            assertTrue(r.ok, 'ok: ' + r.errors.join(' '));
+            assertEqual(r.stats.placed, 1, 'one placed');
+            assertEqual(r.moduleCode, 'DEMO101', 'module code derived from the reference');
+            var html = r.pages[0].html;
+            assert(html.indexOf('BUILD-A') !== -1, 'build content spliced in');
+            assert(html.indexOf('cv2-int-ref') === -1, 'page marker removed');
+            assert(html.indexOf('cv2-built') === -1, 'built wrapper not carried across');
+            assert(html.indexOf('data-cv2-ref') === -1, 'no reference anchors remain');
+            assert(html.indexOf(REF_A) === -1, 'no visible reference code remains');
+        });
+
+        it('keeps nested build markup balanced and the surrounding page intact', function () {
+            var page = intPage('DEMO101-01.html', [REF_A], '<p>AFTER-MARKERS</p>');
+            var nested = '<div class="dragAndDrop" layout="standard"><div class="row">' +
+                '<div class="col-7 questionContainer"><div class="question"><p>Q1</p></div></div>' +
+                '<div class="col-5 ddContainer"><div class="dropContainer"><div class="drop" option="1"></div></div>' +
+                '<div class="dragContainer"><div class="drag" option="1"><p>D1</p></div></div></div></div></div>';
+            var r = stitcher().stitchInteractives([page],
+                [builtDoc('b.html', [{ ref: REF_A, html: nested }])]);
+            assertTrue(r.ok, 'ok: ' + r.errors.join(' '));
+            var html = r.pages[0].html;
+            assert(html.indexOf(nested) !== -1, 'whole nested build present verbatim');
+            assert(html.indexOf('AFTER-MARKERS') > html.indexOf('dragContainer'), 'page content after the marker preserved in order');
+            assert(html.indexOf('<div id="footer">') !== -1, 'scaffold untouched');
+        });
+
+        it('matches whether the built file carries the full code or the bare id', function () {
+            var pages = [intPage('DEMO101-01.html', [REF_A, REF_B]), intPage('DEMO101-02.html', [REF_C])];
+            var built = builtDoc('b.html', [
+                { ref: REF_A, html: '<p>A</p>' },
+                { ref: 'DEMO101-01-02', html: '<p>B</p>' },   // bare id form
+                { ref: REF_C, html: '<p>C</p>' }
+            ]);
+            var r = stitcher().stitchInteractives(pages, [built]);
+            assertTrue(r.ok, 'ok: ' + r.errors.join(' '));
+            assertEqual(r.stats.placed, 3, 'all three placed');
+            assertEqual(r.warnings.length, 0, 'no warnings');
+            assert(r.pages[0].html.indexOf('<p>B</p>') !== -1, 'bare-id build placed');
+            assert(r.pages[1].html.indexOf('<p>C</p>') !== -1, 'second page filled');
+        });
+
+        it('a missing build leaves its marker in place and warns (page stays re-stitchable)', function () {
+            var page = intPage('DEMO101-01.html', [REF_A, REF_B]);
+            var r = stitcher().stitchInteractives([page],
+                [builtDoc('b.html', [{ ref: REF_A, html: '<p>A</p>' }])]);
+            assertTrue(r.ok, 'partial placement still emits');
+            assertEqual(r.stats.placed, 1, 'one placed');
+            assertEqual(r.stats.missing, 1, 'one missing');
+            assert(r.pages[0].html.indexOf(REF_B) !== -1, 'unmatched marker (and its code) left in place');
+            assert(r.warnings.join(' ').indexOf(REF_B) !== -1, 'warning names the missing code');
+            assert(r.warnings.join(' ').indexOf('left in place') !== -1, 'warning explains the marker was kept');
+        });
+
+        it('an unused build warns', function () {
+            var r = stitcher().stitchInteractives(
+                [intPage('DEMO101-01.html', [REF_A])],
+                [builtDoc('b.html', [{ ref: REF_A, html: '<p>A</p>' }, { ref: REF_C, html: '<p>C</p>' }])]);
+            assertTrue(r.ok, 'ok');
+            assertEqual(r.warnings.length, 1, 'one warning');
+            assert(r.warnings[0].indexOf(REF_C) !== -1, 'names the unused build');
+        });
+
+        it('duplicate reference codes across built files fail hard', function () {
+            var r = stitcher().stitchInteractives(
+                [intPage('DEMO101-01.html', [REF_A])],
+                [builtDoc('b1.html', [{ ref: REF_A, html: '<p>1</p>' }]),
+                 builtDoc('b2.html', [{ ref: REF_A, html: '<p>2</p>' }])]);
+            assertFalse(r.ok, 'duplicate → fails');
+            assert(r.errors.join(' ').indexOf('appears twice') !== -1, 'explains the duplicate');
+            assertEqual(r.pages.length, 0, 'nothing emitted');
+        });
+
+        it('injects the crossword/wordFind head include when a placed build needs it (once only)', function () {
+            var page = intPage('DEMO101-01.html', [REF_A, REF_B]);
+            var built = builtDoc('b.html', [
+                { ref: REF_A, html: '<div class="crossword row" layout="standard" crosswordData="crossword"></div>' },
+                { ref: REF_B, html: '<div id="WF" class="col-12 wordFind" layout="standard" wordFindData="wordFind"></div>' }
+            ]);
+            var r = stitcher().stitchInteractives([page], [built]);
+            assertTrue(r.ok, 'ok: ' + r.errors.join(' '));
+            var html = r.pages[0].html;
+            assertEqual((html.match(/src="js\/crossword\.js"/g) || []).length, 1, 'crossword.js include added exactly once');
+            assertEqual((html.match(/src="js\/wordFind\.js"/g) || []).length, 1, 'wordFind.js include added exactly once');
+            assert(html.indexOf('crossword.js') < html.indexOf('</head>'), 'include lands inside <head>');
+            assertDeepEqual(r.pages[0].includesAdded, ['crossword.js', 'wordFind.js'], 'both reported');
+            // A page whose head already carries the include is not double-injected.
+            var page2 = intPage('DEMO101-02.html', ['DEMO101-INT-02-01-crossword']);
+            page2.html = page2.html.replace('</head>', '<script type="text/javascript" src="js/crossword.js"></script></head>');
+            var r2 = stitcher().stitchInteractives([page2],
+                [builtDoc('b2.html', [{ ref: 'DEMO101-INT-02-01-crossword', html: '<div class="crossword row" crosswordData="c2"></div>' }])]);
+            assertTrue(r2.ok, 'ok');
+            assertEqual((r2.pages[0].html.match(/crossword\.js/g) || []).length, 1, 'existing include respected — no duplicate');
+            assertDeepEqual(r2.pages[0].includesAdded, [], 'nothing reported added');
+        });
+
+        it('pages without any marker fail with the Extract-mode hint', function () {
+            var plain = { name: 'DEMO101-01.html', html: '<html><body><div id="body"><p>no markers</p></div></body></html>' };
+            var r = stitcher().stitchInteractives([plain],
+                [builtDoc('b.html', [{ ref: REF_A, html: '<p>A</p>' }])]);
+            assertFalse(r.ok, 'no markers → fails');
+            assert(r.errors.join(' ').indexOf('Extract un-built interactives') !== -1, 'points at the converter toggle');
+        });
+    });
+
+    describe('PageStitcherMode — upload auto-detection (headless)', function () {
+        var REF_A = 'DEMO101-INT-01-01-dragAndDrop';
+        var REF_B = 'DEMO101-INT-02-01-accordion';
+        function mockOM2() {
+            return {
+                added: [], downloaded: [], zipped: null, cleared: 0,
+                addFile: function (f) { this.added.push(f); },
+                downloadFile: function (n) { this.downloaded.push(n); },
+                downloadAsZip: function (n) { this.zipped = n; return { catch: function () {} }; },
+                clear: function () { this.cleared++; this.added = []; }
+            };
+        }
+
+        it('detects an interactive upload and zips the finished pages (txt worklist ignored)', function () {
+            var om = mockOM2();
+            var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om, notify: function () {} });
+            var out = m.stitchReadFiles([
+                intPage('DEMO101-01.html', [REF_A]),
+                intPage('DEMO101-02.html', [REF_B]),
+                builtDoc('DEMO101_interactives_built.html', [
+                    { ref: REF_A, html: '<p>A</p>' }, { ref: REF_B, html: '<p>B</p>' }]),
+                { name: 'DEMO101_interactives.txt', html: 'REFERENCE CODE:  ' + REF_A }
+            ]);
+            assertTrue(out.result.ok, 'ok: ' + out.result.errors.join(' '));
+            assertEqual(out.filename, 'DEMO101-final.zip', 'multi-page result zipped under the module code');
+            assertEqual(om.zipped, 'DEMO101-final.zip', 'zip download triggered');
+            assertEqual(om.added.length, 2, 'both finished pages handed to OutputManager');
+            assert(om.added[0].content.indexOf('cv2-int-ref') === -1, 'anchors gone from emitted pages');
+        });
+
+        it('a single finished page downloads directly (no zip)', function () {
+            var om = mockOM2();
+            var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om, notify: function () {} });
+            var out = m.stitchReadFiles([
+                intPage('DEMO101-01.html', [REF_A]),
+                builtDoc('b.html', [{ ref: REF_A, html: '<p>A</p>' }])
+            ]);
+            assertTrue(out.result.ok, 'ok: ' + out.result.errors.join(' '));
+            assertEqual(out.filename, 'DEMO101-01.html', 'named after the page');
+            assertEqual(om.downloaded[0], 'DEMO101-01.html', 'direct download');
+            assertNull(om.zipped, 'no zip for a single page');
+        });
+
+        it('marker pages without a built file fail with guidance', function () {
+            var om = mockOM2(); var toasts = [];
+            var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om, notify: function (t) { toasts.push(t); } });
+            var out = m.stitchReadFiles([intPage('DEMO101-01.html', [REF_A])]);
+            assertFalse(out.result.ok, 'pages only → fails');
+            assert(out.result.errors.join(' ').indexOf('No built-interactives file') !== -1, 'asks for the built file');
+            assertEqual(om.added.length, 0, 'nothing emitted');
+            assert(toasts.length >= 1, 'a toast surfaced');
+        });
+
+        it('lesson (split-mode) uploads still take the original path', function () {
+            var om = mockOM2();
+            var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om });
+            var out = m.stitchReadFiles([
+                { name: 'DEMO101-base.html', html: base(['01']) },
+                section('01', '<p>one</p>'),
+                { name: 'notes.txt', html: 'a stray worklist' }
+            ]);
+            assertTrue(out.result.ok, 'split path ok: ' + out.result.errors.join(' '));
+            assertEqual(out.filename, 'DEMO101.html', 'unified single page, as before');
+            assert(om.added[0].content.indexOf('<p>one</p>') !== -1, 'section spliced');
+        });
+    });
 })();

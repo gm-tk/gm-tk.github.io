@@ -663,6 +663,15 @@ class ContentConverter {
 		// Data flag: callouts.by_tag.'supervisor note'.fold_page_label
 		// Env toggle: PAGEFOLD_OFF
 		let pageLabelHold = "";
+		// THE XDLS900 CHOICE-PAGE TILE NAVIGATION (ROUND 226 — Chris's XDLS900 screenshot
+		// triage): once the "[LESSON Choice page]" opener has been seen on this page, this
+		// holds the build state ({ cfg, labels }) — the labels harvested from the writer's
+		// [Tab Nav Layout] one-column category table — until the end of the page, where the
+		// tile grid renders as the page's LAST body row (the human-built pages place the
+		// choicePage row after all the introduction content). Stays null on every page that
+		// has no choice-page opener.
+		// Data flag: body_region.choice_page_tiles   Env toggle: CHOICETILES_OFF
+		let choiceTiles = null;
 		// CHILD-DICTATES-ANCESTOR RULE: when an activity box contains a supervisor note inside
 		// it, the outer content ROW that wraps that activity needs to carry an extra
 		// '.supervisor' CSS class — the frontend's "reveal" JavaScript specifically looks for a
@@ -1052,6 +1061,12 @@ class ContentConverter {
 			}
 		}
 
+		// [MTKquiz] ADJACENT WRITER-BUTTON ABSORB pre-pass (ROUND 232 — CL-0038):
+		// pairs each mtk-quiz marker with the writer's own quiz button in its
+		// neighbourhood so exactly ONE canonical button ships per quiz (gold's
+		// form). See #mtkQuizPrepass below for the full story.
+		this.#mtkQuizPrepass(bodyItems, bundles, tpl);
+
 		for (let i = 0; i < bodyItems.length; i++) {
 			const it = bodyItems[i];
 
@@ -1256,6 +1271,11 @@ class ContentConverter {
 						if (bSupNote) bSupNote._payloadText = this.#norm.RenderText(bSupNote.text ?? "");
 						emit(...ActivitiesBuilder.activityOpen(actOwner, stack, run, false, bundle.activityId, forceInt, bSupNote, this.#pageLessonNumber, this.#lessonLetterMap, actOwner === saOwner));
 						if (bSupNote) bSupNote.consumedBy = "activity-super-content";
+						// ROUND 229: actProse records whether this activity box emitted any PROSE
+						// content (title heading / lead body / lead table) ahead of its widget —
+						// the prose_interactive_rows split below only fires on a prose-carrying
+						// box (a widget-only box keeps the single-col form, gold's own shape).
+						let actProse = false;
 						if (bundle.activityOwner) {
 						// Lead content: the FIRST heading/text LINE is the activity title (<h3>);
 						// the REST is BUFFERED and rendered as ONE ListsAndRuns.renderBlackText block so
@@ -1274,7 +1294,7 @@ class ContentConverter {
 							// same bold-stripping rule as any other activity body text. The widget box's
 							// own internal member dump (#interactivePlaceholder) is a completely different,
 							// deliberately raw, un-touched hand-off area, and is NOT run through actDeBold.
-							if (leadBuf.length) { emit(...actDeBold(ListsAndRuns.renderBlackText(leadBuf.join("\n"), run))); leadBuf = []; }
+							if (leadBuf.length) { emit(...actDeBold(ListsAndRuns.renderBlackText(leadBuf.join("\n"), run))); leadBuf = []; actProse = true; }
 						};
 						const addLead = (raw) => {
 							const text = (raw ?? "").trim();
@@ -1283,7 +1303,7 @@ class ContentConverter {
 								const nl = text.search(/\n/);
 								const title = (nl >= 0 ? text.slice(0, nl) : text).replace(/\*/g, "").trim();
 								const rest = nl >= 0 ? text.slice(nl + 1).trim() : "";
-								if (title) { emit(`<h3>${ListsAndRuns.inlineMarkup(title)}</h3>`); titleDone = true; }
+								if (title) { emit(`<h3>${ListsAndRuns.inlineMarkup(title)}</h3>`); titleDone = true; actProse = true; }
 								if (rest) leadBuf.push(rest);
 							} else {
 								leadBuf.push(text);
@@ -1296,7 +1316,7 @@ class ContentConverter {
 						}
 						for (const l of (bundle.activityLeadItems ?? [])) leadStream.push(l);
 						for (const lead of leadStream) {
-							if (lead.type === "table") { flushLead(); emit(TablesAndGrids.contentTable(lead.block, run, false, this.#norm)); titleDone = true; continue; }
+							if (lead.type === "table") { flushLead(); emit(TablesAndGrids.contentTable(lead.block, run, false, this.#norm)); titleDone = true; actProse = true; continue; }
 							if (lead.type === "black") { addLead(lead.text); continue; }
 							const lp = lead.parse.primary;
 							if (lp && ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading"].includes(lp.tag)) {
@@ -1307,7 +1327,36 @@ class ContentConverter {
 						}
 						flushLead();
 						}
-						emit(this.#interactivePlaceholder(bundle, run));
+						// PROSE | INTERACTIVE INNER ROWS (ROUND 229 — Change Ledger CL-0048/CL-0036,
+						// constraint 63; Chris's activity-pair kickoff). In the registry-listed
+						// families the human closes the activity's PROSE row and gives the widget
+						// its OWN inner row at the group's measured width (ENFUN gold, 77/96 boxes:
+						// activity > row > col-12 [prose] + row > col-md-12 col-12 [widget] — the
+						// exact ENFUN02 1D form). Fires only on a prose-carrying box (actProse) in
+						// a module whose code starts with a registry prefix; everywhere else the
+						// single-col flow is the gold-dominant same_col form (75.4%) and is kept
+						// BY CONSTRUCTION. The registry is GENERATED, never hand-typed
+						// (outputs/_measure_activity_inner_rows.py --gen). Data
+						// activity_wrapper.prose_interactive_rows; env toggle ACTROWS_OFF reverts
+						// to the single-col flow.
+						const pirCfg = tpl.activity_wrapper.prose_interactive_rows;
+						const pirKey = (pirCfg && pirCfg.enabled !== false && actProse
+							&& !(typeof process !== "undefined" && process.env && process.env.ACTROWS_OFF))
+							? (Object.keys(pirCfg.registry ?? {}).find((p) => (run.moduleCode ?? "").startsWith(p)) ?? null)
+							: null;
+						if (pirKey) {
+							emit(pirCfg.prose_close);
+							emit(Utils.FillTemplate(pirCfg.widget_row_open, { widgetCol: pirCfg.registry[pirKey].widget_col }));
+						}
+						// A bundle the CL-0038 pre-pass claimed as the quiz BUTTON and that holds
+						// no real content skips its empty placeholder box — the canonical button
+						// (emitted by the tail just below) replaces it (ROUND 232; see
+						// #mtkQuizBundleThin).
+						if (!this.#mtkQuizBundleThin(bundle)) emit(this.#interactivePlaceholder(bundle, run));
+						// [MTKquiz] markers riding this bundle (captured member or opener co-tag)
+						// ship their button + To Do note here, inside the still-open box
+						// (ROUND 232 — CL-0038; see #mtkQuizBundleTail).
+						emit(...this.#mtkQuizBundleTail(bundle, run, it));
 						// close the activity at the bundle's end (the
 						// terminator that ended the widget — e.g. the [H3])
 						emit(stack.pop().close);
@@ -1316,7 +1365,8 @@ class ContentConverter {
 						// An inline widget FLOWS into the current section row, per the row-grouping
 						// rule set up earlier in this method; only the older, non-grouping rule gave it
 						// its own row (via rowCfg.after) when row-grouping wasn't in effect.
-						emit(this.#interactivePlaceholder(bundle, run));
+						if (!this.#mtkQuizBundleThin(bundle)) emit(this.#interactivePlaceholder(bundle, run));
+						emit(...this.#mtkQuizBundleTail(bundle, run, it));   // ROUND 232 — CL-0038 (see above)
 						if (!rowCfg.flow_blocks && !stack.length && rowCfg.after.includes("interactive_placeholder")) breakRow();
 					}
 					// INQUIRY consumed-opener RECOVERY. Empty `[Tab N]` PANEL OPENERS that come
@@ -1365,6 +1415,36 @@ class ContentConverter {
 			}
 
 			if (it.type === "table") {
+				// THE XDLS900 NAV-LAYOUT TABLES (ROUND 226). A table claimed by the choice-page
+				// tile build (_choiceLabelTable — the [Tab Nav Layout] one-column category list)
+				// contributes its category names as the tile labels and renders nothing itself.
+				// A nav-layout table that is NOT feeding a tile build (_tabNavTable on XDLS908's
+				// standalone form; _stickyNavTable — the cross-module sticky-nav link list,
+				// flagged by PageSplitter) is a site-navigation set-up spec, not page content:
+				// the human drops it entirely (the sticky nav is a js/stickyNav.js include), so
+				// it surfaces as ONE Designer/Developer To Do note instead of a raw dumped table.
+				// Data flag: body_region.choice_page_tiles   Env toggle: TABNAVDROP_OFF
+				// (the flags are only ever set while the feature is on, so no re-check needed)
+				const _navClean = (c) => String(c ?? "")
+					.replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "")
+					.replace(/\*\*/g, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
+				if (it._choiceLabelTable && choiceTiles) {
+					for (const row of (it.block.rows ?? [])) {
+						const cell = (row ?? []).map(_navClean).find((c) => c);
+						if (cell) choiceTiles.labels.push(cell);
+					}
+					continue;   // realised as the tile grid at the end of the page
+				}
+				if (it._tabNavTable || it._stickyNavTable) {
+					const cpCfg = tpl.body_region.choice_page_tiles ?? {};
+					const rows = (it.block.rows ?? [])
+						.map((row) => (row ?? []).map(_navClean).filter(Boolean).join(" "))
+						.filter(Boolean);
+					emit(NotesAndComments.redFlag(Utils.FillTemplate(
+						(it._stickyNavTable ? cpCfg.sticky_todo : cpCfg.tabnav_todo) ?? "Navigation set-up table: {items}",
+						{ items: rows.join(" · "), labels: rows.join(", ") }), run, "todo"));
+					continue;
+				}
 				autoClose(it);
 				// A side ALERT box can be authored as a 1-cell (1x1) TABLE whose single cell leads with
 				// a positional "[Alert box on right hand side]" tag; the human-built version turns
@@ -1606,6 +1686,15 @@ class ContentConverter {
 					// deliberately stay UN-wrapped by actDeBold — those live inside an alert-style
 					// callout, which is allowed to keep its bold formatting.
 					emit(...actDeBold(this.#element(it, bodyItems, i, stack, run)));
+					// An mtk-quiz CO-TAG riding some other element ([H3]-primary etc. —
+					// possible when a glued span's dropped primary recomputed to a
+					// non-activity survivor) still ships its button + To Do note right
+					// after that element (ROUND 232 — CL-0038; #mtkQuizEmit is
+					// once-per-item, so an mtk-PRIMARY item already emitted above is a
+					// no-op here).
+					if ((it.parse?.tags ?? []).some((t) => t.tag === "mtk quiz")) {
+						emit(...this.#mtkQuizEmit(it, run));
+					}
 					markContent();
 					// SIDE-ALERT PAIRING: the intro media (video/image) flowing into the pending
 					// alert's col-md-8 column COMPLETES that column — the next heading break will
@@ -1743,6 +1832,15 @@ class ContentConverter {
 						// further down the item stream, the loop index is left in place and the
 						// note is simply skipped over once the main loop naturally reaches it.
 						if (supNote) { supNote.consumedBy = "activity-super-content"; if (supNoteIdx >= 0) i = supNoteIdx; }
+						// An [Activity …] opener CARRYING the mtk-quiz co-tag ("[Activity 3C]
+						// [MTKQuiz] [Tagged to …]", HPRE301; "[Activity 1A: MTK Quiz]", ARFUN02)
+						// ships its quiz button + To Do note INSIDE the box it just opened
+						// (ROUND 232 — CL-0038; suppressed to the note alone when the pre-pass
+						// found the writer's own button/marker further into the box — the gold
+						// position). See #mtkQuizEmit.
+						if ((it.parse?.tags ?? []).some((t) => t.tag === "mtk quiz")) {
+							emit(...this.#mtkQuizEmit(it, run));
+						}
 						break;
 					}
 
@@ -2105,6 +2203,74 @@ class ContentConverter {
 					break;
 
 				case "SUBTAG":
+					// THE XDLS900 CHOICE-PAGE + NAV-LAYOUT MARKERS (ROUND 226 — Chris's XDLS900
+					// screenshot triage; population = EXACTLY XDLS902-906 + XDLS908, measured over
+					// ALL 431 dirs by outputs/_detect_choicetiles.cjs). Three folded-text-gated
+					// handlers, checked FIRST so the generic orphan-sub-tag red flag below never
+					// fires for them:
+					// (1) "[LESSON Choice page]" (parses primary "option" — the word Choice aliases
+					//     to the option sub-tag) OPENS the tile build: the following [Tab Nav
+					//     Layout …] marker + its ONE-column category table are claimed as the tile
+					//     labels, and the grid renders at the end of the page (see #choicePageTiles).
+					//     The opener's own label text is a navigation-page label the human drops
+					//     (the r143/r163 page-label class), noted, never body content.
+					// (2) A STANDALONE "[Tab Nav Layout …]" (no choice page — XDLS908's form) is a
+					//     site-navigation set-up instruction: the marker is consumed and its table
+					//     becomes a Designer/Developer To Do note (the human drops both).
+					// (3) A bare "[Tab Nav]" repeat marker (re-leaked an "Orphan sub-tag [tab n]"
+					//     flag on ~every XDLS90x page) is consumed — a layout REPEAT directive, not
+					//     content; its bare [Sticky Nav] twin already parses to DROP. Matched on the
+					//     span's own folded text, so a real orphaned [tab 1] sub-tag still flags.
+					// Data flag: body_region.choice_page_tiles
+					// Env toggles: CHOICETILES_OFF (1), TABNAVDROP_OFF (2 + 3)
+					{
+						const cpCfg = tpl.body_region.choice_page_tiles;
+						if (cpCfg && cpCfg.enabled !== false) {
+							const cpFold = (it.parse?.folded ?? "").trim();
+							const tilesOn = !(typeof process !== "undefined" && process.env && process.env.CHOICETILES_OFF);
+							const navDropOn = !(typeof process !== "undefined" && process.env && process.env.TABNAVDROP_OFF);
+							if (it._choiceNavSpan) break;   // already claimed by the tile build
+							if (tilesOn && new RegExp(cpCfg.opener_pattern ?? "^\\[\\s*lesson choice page\\s*\\]", "i").test(cpFold)) {
+								choiceTiles = { cfg: cpCfg, labels: [] };
+								// claim the [Tab Nav Layout …] marker + its label table (both directly
+								// follow the opener; only genuinely BLANK items are skipped, so the
+								// no-table dialect — XDLS902 — safely finds nothing and falls back to
+								// the lesson titles)
+								for (let j = i + 1; j < bodyItems.length; j++) {
+									const nx = bodyItems[j];
+									if (nx.type === "black" && !String(nx.text ?? "").trim()) continue;
+									if (nx.type === "tag" && new RegExp(cpCfg.tab_layout_pattern ?? "^\\[\\s*tab nav layout\\b", "i")
+										.test((nx.parse?.folded ?? "").trim())) {
+										nx._choiceNavSpan = true;
+										for (let t = j + 1; t < bodyItems.length; t++) {
+											const nt = bodyItems[t];
+											if (nt.type === "black" && !String(nt.text ?? "").trim()) continue;
+											if (nt.type === "table") nt._choiceLabelTable = true;
+											break;   // first non-blank item either IS the table or ends the claim
+										}
+									}
+									break;   // judge by the first non-blank item only
+								}
+								if ((it.blackAfter || "").trim()) run.AddNote("info", "ContentConverter",
+									`[LESSON Choice page] label "${it.blackAfter.trim()}" is a navigation-page label — dropped (the human-built pages never show it); the tile grid renders at the end of this page.`);
+								break;
+							}
+							if (navDropOn && new RegExp(cpCfg.tab_layout_pattern ?? "^\\[\\s*tab nav layout\\b", "i").test(cpFold)) {
+								// standalone nav-layout marker (XDLS908): consume + To-Do its table
+								for (let t = i + 1; t < bodyItems.length; t++) {
+									const nt = bodyItems[t];
+									if (nt.type === "black" && !String(nt.text ?? "").trim()) continue;
+									if (nt.type === "table") nt._tabNavTable = true;
+									break;
+								}
+								break;
+							}
+							if (navDropOn && !(it.blackAfter || "").trim()
+								&& (cpCfg.bare_marker_patterns ?? []).some((p) => new RegExp(p, "i").test(cpFold))) {
+								break;   // bare [Tab Nav] repeat marker — consumed, renders nothing
+							}
+						}
+					}
 					// In FUNDAMENTALS mode, a top-level "[New tab]" sub-tag is actually a PANEL
 					// boundary, not an orphaned, mis-structured tag: drop the usual RED FLAG
 					// warning and push a top-level sentinel instead (the
@@ -2207,6 +2373,22 @@ class ContentConverter {
 		// back to the same plain "own-row alert" form used elsewhere for an alert that isn't
 		// being paired with a content column.
 		if (pendingSideAlert) { parts.push("<div class=\"row\">\n" + pendingSideAlert + "\n</div>"); pendingSideAlert = null; }
+		// THE XDLS900 CHOICE-PAGE TILE GRID (ROUND 226): renders as the page's LAST body row
+		// — the human-built pages place the choicePage row after all the introduction content
+		// (verified XDLS902/903/906 golds). One tile per lesson, linking to that lesson's
+		// GENERATED HTML file; iconType ships empty with one To Do note listing the tiles
+		// (icon choice is editorial — gold itself carries "CS: review iconType" comments).
+		if (choiceTiles) {
+			const built = this.#choicePageTiles(run, choiceTiles);
+			if (built) {
+				parts.push(NotesAndComments.redFlag(Utils.FillTemplate(
+					choiceTiles.cfg.icon_todo ?? "Choice-page tiles built with an empty iconType: {labels}",
+					{ labels: built.labels.join(", ") }), run, "todo"));
+				parts.push(built.html);
+				markContent();
+			}
+			choiceTiles = null;
+		}
 		const body = parts;
 
 		// ---- menu --------------------------------------------------------
@@ -3638,6 +3820,185 @@ class ContentConverter {
 	};
 
 	/**
+	 * [MTKquiz] — the "Go to quiz" button family (ROUND 232 — Change Ledger
+	 * CL-0038, 16 Jul; Chris). Four small pieces, all gated by the SAME data
+	 * flag + env toggle as the TagNormaliser retag that feeds them
+	 * (Tag_Lexicon._meta.mtk_quiz_retag / MTKQUIZ_OFF — with the retag off no
+	 * item ever carries the "mtk quiz" tag, so every one of these is dormant
+	 * and the corpus is byte-identical).
+	 *
+	 * #mtkQuizPrepass — THE ADJACENT WRITER-BUTTON ABSORB (the dedup rule).
+	 * At most of the measured sites the writer typed their OWN quiz button
+	 * next to the MTK marker — "[button] Go to quiz" directly above it
+	 * (TEFUN02/TEFUN03), "[Button] Quiz" above (TEFUN06/07/08), "[Button] Go
+	 * to quiz." after the box's heading + lead (ARFUN02/ARFUN04), or a
+	 * standalone "[Go to quiz]" red span inside the same activity (HPRE301,
+	 * where that span otherwise becomes an empty mcq placeholder bundle). The
+	 * human ships exactly ONE anchored button per quiz, at the writer's
+	 * button position. So: for each item carrying the "mtk quiz" tag, walk a
+	 * small window (window_back items up, window_forward down, skipping blank
+	 * lines, STOPPING at another mtk item / an [Activity] opener / any
+	 * section-page-closer boundary so the scan can never leak across
+	 * activities) looking for a writer quiz button — a [button]-family
+	 * ELEMENT whose label folds into button_label_pattern, or a span whose
+	 * whole folded text matches marker_span_pattern. When found, the button
+	 * item (or its thin bundle) is flagged to render as the CANONICAL CL-0038
+	 * anchored button (_mtkQuizAnchor / bundle._mtkQuizBtn) and the mtk item
+	 * is flagged _mtkButtonAbsorbed so it ships its To Do note WITHOUT a
+	 * second button. A [go to quiz] span OUTSIDE any mtk window is untouched
+	 * (the corpus-wide standalone class, ~40 modules, is a recorded
+	 * follow-up, NOT this rule).
+	 */
+	static #mtkQuizPrepass(bodyItems, bundles, tpl) {
+		const cfg = tpl.interactive_builders?.mtk_quiz;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.MTKQUIZ_OFF) return;
+		const hasMtk = (c) => c.type === "tag" && (c.parse?.tags ?? []).some((t) => t.tag === "mtk quiz");
+		const lblRe = new RegExp(cfg.button_label_pattern, "i");
+		const mrkRe = new RegExp(cfg.marker_span_pattern, "i");
+		const isBoundary = (c) => hasMtk(c)
+			|| (c.parse?.tags ?? []).some((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN")
+			|| ["PAGE_BOUNDARY", "SECTION_MARKER", "CONTAINER_CLOSE"].includes(c.parse?.primary?.directive);
+		const isBtnItem = (c) => {
+			if (c.type !== "tag" || !c.parse?.primary) return false;
+			if (c.parse.primary.directive !== "ELEMENT" || !(c.parse.primary.tag || "").includes("button")) return false;
+			const label = ((this.#norm?.RenderText(c.text) || "") + " " + (c.blackAfter || ""))
+				.replace(/\*/g, "").replace(/\s+/g, " ").trim();
+			return lblRe.test(label);
+		};
+		const isMarkerSpan = (c) => c.type === "tag"
+			&& mrkRe.test(String(c.parse?.folded ?? "").trim());
+		const claim = (c) => {
+			// A [button] item swallowed into some widget's bundle never reaches the
+			// element dispatcher, so an upgrade flag on it would LOSE the button
+			// entirely (caught live on TEFUN03, where the writer's buttons ride the
+			// same bundle as the MTK marker) — only an UNCONSUMED button item can be
+			// claimed; otherwise the mtk marker keeps emitting its own button.
+			if (isBtnItem(c) && c.consumedBy === undefined && !c._consumed) { c._mtkQuizAnchor = true; return true; }
+			if (isMarkerSpan(c)) {
+				if (c.consumedBy !== undefined && bundles[c.consumedBy]) bundles[c.consumedBy]._mtkQuizBtn = true;
+				else if (c.consumedBy === undefined && !c._consumed) c._mtkQuizAnchor = true;
+				else return false;
+				return true;
+			}
+			return false;
+		};
+		// One window step. Blank lines are free; boundaries stop the walk; an
+		// item already CONSUMED into some widget's bundle is INVISIBLE to the
+		// window (it lives inside that widget's box, not between the marker and
+		// its button — without this, the members a bundle captured between an
+		// opener-riding marker and the writer's button exhausted the window,
+		// ARFUN04-1H) — except that a consumed [Go to quiz] MARKER span still
+		// claims its own bundle as the button.
+		const step = (c, state) => {
+			if (c.type === "black" && !(c.text ?? "").trim()) return "skip";
+			if (isBoundary(c)) return "stop";
+			if (c.consumedBy !== undefined || c._consumed) {
+				if (isMarkerSpan(c) && c.consumedBy !== undefined && bundles[c.consumedBy]) {
+					bundles[c.consumedBy]._mtkQuizBtn = true;
+					return "found";
+				}
+				return "skip";
+			}
+			state.seen++;
+			return claim(c) ? "found" : "next";
+		};
+		for (let i = 0; i < bodyItems.length; i++) {
+			const it = bodyItems[i];
+			if (!hasMtk(it)) continue;
+			let found = false;
+			const st = { seen: 0 };
+			for (let k = i - 1; k >= 0 && st.seen < (cfg.window_back ?? 2); k--) {
+				const r = step(bodyItems[k], st);
+				if (r === "stop") break;
+				if (r === "found") { found = true; break; }
+			}
+			if (!found) {
+				st.seen = 0;
+				for (let k = i + 1; k < bodyItems.length && st.seen < (cfg.window_forward ?? 5); k++) {
+					const r = step(bodyItems[k], st);
+					if (r === "stop") break;
+					if (r === "found") { found = true; break; }
+				}
+			}
+			if (found) it._mtkButtonAbsorbed = true;
+		}
+	}
+
+	/**
+	 * #mtkQuizEmit — the marker's own rendering: the canonical anchored
+	 * button (href="#", target=_blank — the dev wires the D2L quicklink at
+	 * publish time; gold's populated quickLink hrefs ARE that wiring, so the
+	 * blank href is an INTENTIONAL pre-publish divergence) followed by ONE
+	 * Designer/Developer To Do note (kind "todo", class cv2-note =
+	 * gate-excluded) carrying the writer's raw quiz spec — the span's own
+	 * text, so modifier prose like "supports engagement, audio, video, file
+	 * sharing" or "should go to teacher dropbox" (which per the rule does NOT
+	 * attach a dropbox wrapper) is never silently stripped (the round-43
+	 * principle). When the pre-pass absorbed the button into a writer button
+	 * nearby, only the note ships here.
+	 */
+	static #mtkQuizEmit(it, run) {
+		const cfg = DataService.Data.EmitTemplates.interactive_builders?.mtk_quiz;
+		if (!cfg || cfg.enabled === false) return [];
+		if (typeof process !== "undefined" && process.env && process.env.MTKQUIZ_OFF) return [];
+		if (it._mtkQuizEmitted) return [];
+		it._mtkQuizEmitted = true;
+		const out = [];
+		const spec = String(it.text ?? "")
+			.replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "")
+			.replace(/\s+/g, " ").trim();
+		if (!it._mtkButtonAbsorbed) out.push(cfg.button_html);
+		out.push(NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_note,
+			{ spec: spec || "(no further spec given)" }), run, "todo"));
+		return out;
+	}
+
+	/**
+	 * #mtkQuizBundleTail — the bundle-side hook. An mtk marker can be
+	 * CAPTURED into a neighbouring widget's bundle (TEFUN03/06/07/08: the
+	 * "[Quiz]- triggers engagement" opener's member walk swallows the
+	 * following MTK span; ARFUN04: the marker rides the dragAndDrop opener
+	 * span itself), in which case the item never reaches the main loop. At
+	 * the bundle's emit, every mtk-carrying opener/member ships its
+	 * button+note straight after the widget box; a bundle the pre-pass
+	 * claimed as the quiz BUTTON ([Go to quiz]-span bundles) additionally
+	 * ships the canonical button (and, when THIN — no content members — its
+	 * empty placeholder box is suppressed entirely via #mtkQuizBundleThin:
+	 * the box would have held nothing but the marker's own raw line).
+	 */
+	static #mtkQuizBundleTail(bundle, run, openerIt = null) {
+		const cfg = DataService.Data.EmitTemplates.interactive_builders?.mtk_quiz;
+		if (!cfg || cfg.enabled === false) return [];
+		if (typeof process !== "undefined" && process.env && process.env.MTKQUIZ_OFF) return [];
+		const out = [];
+		// openerIt = the loop item whose consumedBy triggered this bundle's emit —
+		// the bundle's OPENING span itself, which sits in neither openerItems nor
+		// memberItems (ARFUN04-1H's dragAndDrop opener carries the mtk co-tag).
+		for (const m of [openerIt, ...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
+			if (m && m.type === "tag" && (m.parse?.tags ?? []).some((t) => t.tag === "mtk quiz")) {
+				out.push(...this.#mtkQuizEmit(m, run));
+			}
+		}
+		if (bundle._mtkQuizBtn && !bundle._mtkQuizBtnEmitted) {
+			bundle._mtkQuizBtnEmitted = true;
+			out.push(cfg.button_html);
+		}
+		return out;
+	}
+
+	/** A pre-pass-claimed BUTTON bundle with no real content members — its
+	 *  placeholder box is suppressed (the canonical button replaces it). */
+	static #mtkQuizBundleThin(bundle) {
+		if (!bundle._mtkQuizBtn) return false;
+		if (typeof process !== "undefined" && process.env && process.env.MTKQUIZ_OFF) return false;
+		return (bundle.memberItems ?? []).every((m) =>
+			m.type !== "table"
+			&& !(m.blackAfter ?? "").trim()
+			&& !(m.type === "black" && (m.text ?? "").trim()));
+	}
+
+	/**
 	 * ELEMENT dispatcher: headings, body, image, video/audio, buttons,
 	 * tables, embeds, inputs — content gathered embedded-then-following.
 	 *
@@ -3652,6 +4013,15 @@ class ContentConverter {
 		// instruction fragments riding in the same span flag first, in place
 		if (it.parse.instructionFragment) {
 			out.push(NotesAndComments.redFlag(it.text, run, "cs"));
+		}
+
+		// ---- [MTKquiz] → the canonical "Go to quiz" button + To Do note ----
+		// (ROUND 232 — CL-0038; see #mtkQuizEmit above. The retag made this an
+		// ELEMENT precisely so the writer's quiz content after it flows to the
+		// normal body render instead of being swallowed into a bundle dump.)
+		if (tag === "mtk quiz") {
+			out.push(...this.#mtkQuizEmit(it, run));
+			return out;
 		}
 
 		// ---- headings ----------------------------------------------------
@@ -3825,6 +4195,19 @@ class ContentConverter {
 
 		// ---- buttons ---------------------------------------------------------
 		if (tag.includes("button")) {
+			// THE WRITER'S OWN QUIZ BUTTON at an [MTKquiz] site (ROUND 232 — CL-0038).
+			// The pre-pass (#mtkQuizPrepass) flagged this [button] as the quiz's
+			// button — "[Button] Go to quiz." (ARFUN02/ARFUN04) or "[Button] Quiz"
+			// (TEFUN06/07/08) adjacent to the MTK marker. It renders as the CANONICAL
+			// anchored CL-0038 form (label normalised to "Go to quiz", href="#"
+			// blank for the dev's D2L quicklink) instead of the plain green
+			// `<div class="button">` with the writer's ad-hoc label — the human ships
+			// exactly this anchored form at every measured site. The MTK marker's own
+			// emit was suppressed by the same pre-pass, so ONE button ships per quiz.
+			if (it._mtkQuizAnchor) {
+				const mq = tpl.interactive_builders?.mtk_quiz;
+				if (mq && mq.enabled !== false) { out.push(mq.button_html); return out; }
+			}
 			const key = tpl.buttons[tag] ? tag : "button";
 			const btn = tpl.buttons[key];
 			let url = it.block?.links?.[0]?.target
@@ -4318,6 +4701,21 @@ class ContentConverter {
 			content = content.split("\n").map((line) =>
 				line.includes("http") ? line : line.replace(/\s+[|–—]\s+/, "\n")).join("\n");
 		}
+		// PROVERB NORMALISE — SPLIT step (round 225; Chris's XDLS905/906 whakataukī
+		// screenshots). A writer authors the proverb as a bold reo line, a SOFT line
+		// break (w:br), then the English translation — the docx extractor drops soft
+		// breaks, so the two lines arrive GLUED into one ("…ana”Through perseverance…")
+		// and ship as ONE <p>. The human house form is TWO separate plain <p>s
+		// (measured 213/215 gold .whakatauki boxes; tool outputs/_measure_whakatauki.py).
+		// The lost break is still visible in the raw text as a BOUNDARY — a leading
+		// **bold**/*italic* group directly abutting more text, a closing quote followed
+		// by prose, a space-before pipe with no space after, or a trailing
+		// "(translation)" — so the split re-derives the writer's own line structure.
+		// Splits run on the RAW text (the markers ARE the signal); the bold/italic/
+		// quote STRIPS happen at the rendered-segment level below (deProv).
+		// Data flag: callouts.by_tag.<tag>.proverb_normalise
+		// Env toggle: PROVERBNORM_OFF (reverts split AND strips)
+		if (def.proverb_normalise) content = this.#proverbSplit(content, def.proverb_normalise);
 		// the human wraps an alert/important's content in a row>col-12 (data:
 		// callouts.by_tag.<tag>.wrap_content + callouts.content_wrap). whakataukī /
 		// quote keep their direct <p>s (no wrap_content key).
@@ -4339,7 +4737,18 @@ class ContentConverter {
 			(s) => (run.moduleCode ?? "").startsWith(s))
 			&& !(typeof process !== "undefined" && process.env && process.env.PANELITALIC_OFF);
 		const deItal = (seg) => stripItal ? seg.map((h) => MenuBuilder.stripTextItalic(h)) : seg;
-		if (lead) out.push(...deBold(deItal([leadHtml(lead)])));
+		// PROVERB NORMALISE — STRIP step: the human ships proverb <p>s PLAIN — bold
+		// stripped (gold keeps <b> in only 2/215 boxes), italic stripped (5/215),
+		// wrapping curly/straight quotes stripped (9/215) — the site CSS supplies the
+		// bold/italic styling. Segment-level so the shared strip helpers handle even a
+		// mangled ***triple-marker*** run (XLP03). The tiny gold keep-minority has no
+		// discriminator → NET-POSITIVE class (the r164 precedent).
+		// Data flag: callouts.by_tag.<tag>.proverb_normalise  Env: PROVERBNORM_OFF
+		const pnCfg = def.proverb_normalise;
+		const pnOn = pnCfg && pnCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.PROVERBNORM_OFF);
+		const deProv = (seg) => pnOn ? seg.map((h) => ContentConverter.#proverbStripSeg(h, pnCfg)) : seg;
+		if (lead) out.push(...deProv(deBold(deItal([leadHtml(lead)]))));
 		// LONG IN-SPAN PAYLOAD AS CONTENT (found on module BLL111): when a writer types the
 		// WHOLE note text INSIDE the red span itself (for example "[Supervisor note] The
 		// decodable book(s) … [/RED TEXT]"), it's too long to pass the "12 words or fewer"
@@ -4359,7 +4768,7 @@ class ContentConverter {
 			&& !(typeof process !== "undefined" && process.env && process.env.SUPPAYLOAD_OFF)
 			? embedded : "";
 		if (longPayload) out.push(...deBold(deItal(ListsAndRuns.renderBlackText(longPayload, run, it.block?.links))));
-		if (content.trim()) out.push(...deBold(deItal(ListsAndRuns.renderBlackText(content, run, it.block?.links))));
+		if (content.trim()) out.push(...deProv(deBold(deItal(ListsAndRuns.renderBlackText(content, run, it.block?.links)))));
 
 		// SAME-BLOCK BUTTON/LINK ABSORB (found on module OSAH501-01). An "[external link
 		// button]"/"[Button]" ELEMENT tag, or an "[external link]" INLINE tag, that sits in
@@ -4708,9 +5117,22 @@ class ContentConverter {
 		// diverted here — the empty-marker and instruction-only guard checks above still keep
 		// their own normal inline rendering, so no documented writer note ever gets silently
 		// dropped from the page just because extract mode is on.
-		// Data flag: interactive_placeholder.extract
-		// Env toggle: INTEXTRACT_ON
+		// ROUND 235 (Chris) — the hand-off is now the DEFAULT, and the marker box
+		// CONTAINS the raw content: when extract.collapse is enabled (the shipped
+		// default), this branch no longer returns the bare marker. It computes the
+		// reference code exactly as before (same id/label, same bundle stash for the
+		// .txt cross-reference), then FALLS THROUGH to the normal inline box build
+		// below and wraps that byte-exact inline rendering inside the marker box,
+		// collapsed by default behind the animated ▼/▲ toggle (extractWrap carries
+		// the computed code down to the wrap at the return point). With collapse off
+		// (env INTCOLLAPSE_OFF — which also flips the DEFAULT mode back to inline —
+		// or data collapse.enabled:false), the branch returns the r138/r159 bare
+		// marker unchanged, so INTEXTRACT_ON + INTCOLLAPSE_OFF reproduces the legacy
+		// extract output byte-for-byte.
+		// Data flag: interactive_placeholder.extract (+ .default_mode, .collapse)
+		// Env toggles: INTEXTRACT_ON (legacy force), INTCOLLAPSE_OFF (revert round)
 		const ex = tpl.extract;
+		let extractWrap = null;
 		if (run.interactiveMode === "extract" && ex && ex.enabled !== false) {
 			bundle.built = false;                          // an un-built, EXTRACTED placeholder
 			const pageIdx = run.pages.indexOf(bundle.page);
@@ -4741,7 +5163,15 @@ class ContentConverter {
 			// Env toggle: INTLOUD_OFF (reverts to the plain calm-blue marker style)
 			const loudOn = ex.marker_loud_enabled !== false && !!ex.marker_loud
 				&& !(typeof process !== "undefined" && process.env && process.env.INTLOUD_OFF);
-			return Utils.FillTemplate(loudOn ? ex.marker_loud : ex.marker, { index: bundle.index, id, ref, label });
+			const col = ex.collapse;
+			const collapseOn = col && col.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.INTCOLLAPSE_OFF);
+			if (!collapseOn) {
+				// legacy bare-marker extract (r138/r159 byte-exact — no content on page)
+				return Utils.FillTemplate(loudOn ? ex.marker_loud : ex.marker, { index: bundle.index, id, ref, label });
+			}
+			extractWrap = { index: bundle.index, id, ref, label, col };
+			// fall through: build the normal inline rendering below, then wrap it
 		}
 
 		const parts = [];
@@ -4797,7 +5227,27 @@ class ContentConverter {
 		const lead = notesBefore
 			? bundle.instructions.map((i) => NotesAndComments.redFlag(i, run, "cs")).join("\n")
 			: "";
-		return (lead ? lead + "\n" : "") + parts.join("\n");
+		const inlineHtml = (lead ? lead + "\n" : "") + parts.join("\n");
+		// ROUND 235 (Chris) — the default hand-off wrap: the byte-exact inline
+		// rendering above (retained notes + the dashed box) goes INSIDE the loud
+		// reference-code marker box, collapsed by default behind the animated
+		// arrow toggle. The wrapper carries BOTH classes — cv2-interactive (so
+		// every gate exclusion and verbatim-zone walk treats the whole box exactly
+		// like the old placeholder) and cv2-int-ref (the Page Stitcher's
+		// search-by-code contract: replacing the wrapper by data-cv2-ref swaps the
+		// hidden raw content out together with the marker).
+		if (extractWrap) {
+			const c = extractWrap.col;
+			return [
+				Utils.FillTemplate(c.wrapper_open, { index: extractWrap.index, id: extractWrap.id, ref: extractWrap.ref }),
+				Utils.FillTemplate(c.label_row, { label: extractWrap.label }),
+				c.content_open,
+				inlineHtml,
+				c.content_close,
+				c.wrapper_close,
+			].join("\n");
+		}
+		return inlineHtml;
 	};
 
 	// =======================================================================
@@ -4877,6 +5327,60 @@ class ContentConverter {
 		});
 	}
 
+	/**
+	 * THE XDLS900 CHOICE-PAGE TILE GRID (ROUND 226 — Chris's XDLS900 screenshot triage;
+	 * population = EXACTLY XDLS902-906, measured over ALL 431 dirs by
+	 * outputs/_detect_choicetiles.cjs). Builds the human's icon-tile navigation row
+	 * ("row > col-12.choicePage… > div.choice.col-md-3.col-6" per tile) from the writer's
+	 * own material: ONE tile per LESSON (the first page of each distinct writer lesson
+	 * number, in document order), labelled with the writer's [Tab Nav Layout] category for
+	 * that position (state.labels, harvested from the one-column table — XDLS906's gold
+	 * uses them verbatim) or, when the writer authored no category table (XDLS902), the
+	 * lesson's own TITLE (which IS what that module's gold shows). Each tile links to the
+	 * lesson's GENERATED HTML file (Chris's decision 2026-07-15 — the gold's online MTK
+	 * quickLink rcodes exist nowhere in the WT), resolved deterministically from the page's
+	 * index in run.pages exactly the way PageAssembler names the output files. iconType
+	 * ships EMPTY (icon choice is editorial — the gold pages carry their own "CS: review
+	 * iconType" comments); the caller surfaces one To Do note listing the tiles.
+	 * Returns { html, labels } or null when the module has no lesson pages.
+	 * Data flag: body_region.choice_page_tiles   Env toggle: CHOICETILES_OFF
+	 */
+	static #choicePageTiles(run, state) {
+		const cfg = state.cfg;
+		const naming = DataService.Data.EmitTemplates.output_naming;
+		const code = run.moduleCode ?? "MODULE";
+		const lessons = [];
+		const seen = new Set();
+		(run.pages ?? []).forEach((p, idx) => {
+			if (p.isOverview || p.lessonNumber == null) return;
+			const n = String(p.lessonNumber);
+			if (seen.has(n)) return;   // only the FIRST page of a multi-file lesson is linked
+			seen.add(n);
+			lessons.push({ idx, n, title: String(p.pageTitle ?? "").replace(/\*/g, "").trim() });
+		});
+		if (!lessons.length) return null;
+		// NO-TABLE dialect (XDLS902): the tile labels are the lesson TITLES, so only TITLED
+		// lessons are tiled — an untitled page is a continuation fragment (XDLS902's
+		// pre-existing "2.0" lesson-tail over-split), not a learning area; its gold ships
+		// exactly the 7 titled lessons as tiles. With a category table the writer's own
+		// list drives the count and maps positionally.
+		const tiled = state.labels.length ? lessons : lessons.filter((l) => l.title);
+		if (!tiled.length) return null;
+		const labels = [];
+		const tiles = tiled.map((l, k) => {
+			const label = String(state.labels[k] ?? "").trim() || l.title || `Lesson ${l.n}`;
+			labels.push(label);
+			return Utils.FillTemplate(cfg.tile, {
+				href: Utils.FillTemplate(naming.page_file, { code, NN: Utils.Pad2(l.idx) }),
+				target: cfg.link_target ?? "_self",
+				label: Utils.EscapeHtml(label),
+			});
+		});
+		if (state.labels.length > tiled.length) run.AddNote("warn", "ContentConverter",
+			`Choice page: ${state.labels.length} tab-nav categories but only ${tiled.length} lessons — the extra categories were not tiled.`);
+		return { html: Utils.FillTemplate(cfg.shell, { tiles: tiles.join("\n") }), labels };
+	}
+
 	/** A standalone content table → a real <table> (header row = <th>). */
 	// Renders a side-alert box that the writer AUTHORED as a single-cell TABLE, where that
 	// cell leads with a positional tag like "[Alert box on right hand side]" (found on
@@ -4945,6 +5449,98 @@ class ContentConverter {
 	 * @param {Object} def - the callout def (proverb_max_chars / proverb_max_paragraphs)
 	 * @returns {string} the proverb text (newline-joined); commentary left un-consumed
 	 */
+	/**
+	 * PROVERB NORMALISE — the SPLIT half (round 225; the strip half is
+	 * #proverbStripSeg). Re-derives the writer's own two proverb lines (reo +
+	 * English) when they arrive GLUED into one, which happens because the docx
+	 * extractor drops a paragraph-internal SOFT line break (w:br) — the writer's
+	 * break is gone but its position is still visible as a boundary in the raw
+	 * text. Four measured boundary shapes, first match wins, at most ONE split
+	 * per line (a proverb is reo + English, never more):
+	 *  - markup boundary: a leading bold or italic marker group (inner ≥10 chars, so
+	 *    a mangled ***“*** fragment like XLP03's can never split mid-proverb)
+	 *    directly followed by more text — XDLS903/905/906/912, XMES203, CEDW501, XLP01;
+	 *  - quote boundary: a leading “quoted” phrase, then whitespace + prose — CEDO301;
+	 *  - loose pipe: whitespace BEFORE a pipe, none required after ("riri |*Well
+	 *    done…*", OSBY301 — the strict spaced-pipe rule above requires both sides);
+	 *  - paren translation: a full-tail "(english translation)" (≥6 chars each
+	 *    side) — ENGR102; the parentheses are dropped, matching gold.
+	 * A line carrying a URL is never touched. The no-marker language-boundary glue
+	 * (CEDT501-12 "kōrero. The food…", CEDO105) has NO derivable split point —
+	 * measured decline, left as-is.
+	 * Data flag: callouts.by_tag.<tag>.proverb_normalise
+	 * Env toggle: PROVERBNORM_OFF
+	 *
+	 * @param {string} content - the gathered proverb text (newline-joined)
+	 * @param {Object} cfg - the def's proverb_normalise object
+	 * @returns {string} the content with re-derived line breaks
+	 */
+	static #proverbSplit(content, cfg) {
+		if (cfg.enabled === false) return content;
+		if (typeof process !== "undefined" && process.env && process.env.PROVERBNORM_OFF) return content;
+		const out = [];
+		for (const raw of content.split("\n")) {
+			const line = raw.trim();
+			if (!line || line.includes("http")) { out.push(raw); continue; }
+			let m = null;
+			if (cfg.split_markup_boundary !== false) {
+				// EXACT marker pairs (** with **, * with *) — an alternation, never a
+				// {1,2} quantifier: backtracking on \*{1,2} let the closing ** DONATE
+				// an asterisk to the tail, splitting off a junk "*" line (XDLS904,
+				// XTAS101 — caught on the round-225 A/B). Optional whitespace before
+				// the tail; the tail must carry REAL text (a letter/digit once its own
+				// markers are removed), so a lone leftover marker can never split.
+				m = line.match(/^(\*\*[^*]{10,}\*\*|\*[^*]{10,}\*)\s*(\S.*)$/);
+				if (m && !/[\p{L}\p{N}]/u.test(m[2].replace(/\*/g, ""))) m = null;
+			}
+			if (!m && cfg.split_quote_boundary !== false)
+				m = line.match(/^([“”"][^“”"]{6,}[“”"])\s+(\S.*)$/);
+			if (!m && cfg.split_pipe_loose !== false && /\s\|/.test(line)) {
+				const p = line.split(/\s+\|\s*/);
+				if (p.length >= 2 && p[0] && p[1]) m = [line, p[0], p.slice(1).join(" ")];
+			}
+			if (!m && cfg.split_paren_translation !== false)
+				m = line.match(/^([^()]{6,}?)\s+\(([^()]{6,})\)$/);
+			out.push(m ? m[1].trim() + "\n" + m[2].trim() : raw);
+		}
+		return out.join("\n");
+	};
+
+	/**
+	 * PROVERB NORMALISE — the STRIP half (round 225). The human ships proverb
+	 * <p>s PLAIN: bold stripped (gold keeps <b> in only 2/215 .whakatauki boxes),
+	 * italic stripped (5/215), wrapping curly/straight quotes stripped (9/215) —
+	 * the site CSS supplies the bold/italic proverb styling, so a kept <b> both
+	 * mismatches gold AND double-styles in the browser. Runs on the RENDERED
+	 * segment (after renderBlackText) so the shared MenuBuilder strip helpers
+	 * resolve even a mangled ***triple-marker*** run cleanly; quote/asterisk
+	 * strips are EDGE-anchored to the <p> tags so an interior quote in prose is
+	 * never touched. The tiny gold keep-minority has no discriminator →
+	 * NET-POSITIVE class (the r164 precedent).
+	 *
+	 * @param {string} h - one rendered HTML segment
+	 * @param {Object} cfg - the def's proverb_normalise object
+	 * @returns {string} the normalised segment
+	 */
+	static #proverbStripSeg(h, cfg) {
+		let s = h;
+		if (cfg.strip_bold !== false) s = MenuBuilder.stripTextBold(s);
+		if (cfg.strip_italic !== false) s = MenuBuilder.stripTextItalic(s);
+		if (cfg.strip_wrapping_quotes !== false)
+			s = s.replace(/(<p[^>]*>)\s*(?:[“”"]|&quot;)+\s*/g, "$1")
+				.replace(/\s*(?:[“”"]|&quot;)+\s*(<\/p>)/g, "$1")
+				.replace(/(<p[^>]*>)\s*\*+\s*/g, "$1")
+				.replace(/\s*\*+\s*(<\/p>)/g, "$1")
+				// an ORPHAN edge pipe — the writer typed the reo|english separator
+				// INSIDE the bold group ("**…rangatahi |**", OSSM301), so the pipe
+				// split never saw it and it survives as a dangling boundary char;
+				// the human ships 0 proverb lines edged with a separator (the r177
+				// title boundary-separator class)
+				.replace(/(<p[^>]*>)\s*\|\s*/g, "$1")
+				.replace(/\s*\|\s*(<\/p>)/g, "$1");
+		return s;
+	};
+
 	static #gatherProverb(it, bodyItems, i, def) {
 		const maxChars = def.proverb_max_chars ?? 200;
 		const maxPara = def.proverb_max_paragraphs ?? 2;

@@ -237,6 +237,41 @@ class MenuBuilder {
 			}
 		}
 
+		// WRITER-AUTHORED MENU TAB PARTITION (ROUND 221 — module ENGJ403, Chris).
+		// The NEWEST Writers-Template era authors the overview menu's tab layout
+		// EXPLICITLY: a "[please set up as two tabs …][tab 1 – please title as
+		// appropriate]" set-up instruction, then the tab-1 sections, "[close tab]",
+		// "[tab 2 – …]", the tab-2 sections, "[close tab]" — all BEFORE [MODULE
+		// INTRODUCTION]. The human developer builds EXACTLY that partition (ENGJ403:
+		// tab 1 = LI/SC + Planning/Get-started/Connections/Assessment in two
+		// side-by-side columns under a "Tirohanga Whānui | Overview" banner; tab 2 =
+		// Knowledge/Practices in two columns) — but the fold-vocabulary tab_map
+		// routing below knows nothing about the markers, so it re-shuffled sections
+		// into the wrong tabs and dropped the banner. When the markers are present,
+		// honour the writer's own partition instead of the vocabulary routing.
+		// MEASURED over ALL 428 corpus WTs (outputs/_measure_menutabtags.cjs): the
+		// gate (a real [MODULE INTRODUCTION]-bounded menu region + the tabs SET-UP
+		// instruction + >=1 [close tab]) fires on EXACTLY ENGJ403 today; CEDK101's
+		// six bare [tab N] crumbs (no set-up, no closers — the inquiry crumb list,
+		// already handled via _inquiryCrumb) decline BY CONSTRUCTION.
+		// Data: menu.writer_tab_partition + menu.shells.writer_tabs.
+		// Env toggle: MENUTABPART_OFF (falls back to the fold-routing walk below).
+		{
+			const wtCfg = tpl.writer_tab_partition;
+			const wtOn = wtCfg && wtCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.MENUTABPART_OFF)
+				&& menuType === "tabs" && page.isOverview;
+			if (wtOn) {
+				const wt = this.#writerTabPartition(menuItems, run, norm, wtCfg);
+				if (wt) {
+					run.AddNote("info", "MenuBuilder",
+						`Overview menu composed from the writer's own [tab N]/[close tab] markers (${wt.count} tabs; menu.writer_tab_partition).`);
+					return { kind: menuType, archetype: "writer_tabs", wtNav: wt.nav, wtPanes: wt.panes,
+						tab1: "", tab2: "", content: "", left: "", right: "" };
+				}
+			}
+		}
+
 		// The menu's FORM (its archetype/layout) comes from the same specific-to-
 		// general convention cascade used elsewhere in the converter: this exact
 		// module's own series → its subject+phase group → a global default. The
@@ -944,6 +979,39 @@ class MenuBuilder {
 			out.extraTabs = out.extraTabs.filter((t) => t.html && t.html.trim());
 			if (!out.extraTabs.length) out.extraTabs = null;
 		}
+		// LESSON-MENU "Learning intentions" LABEL (ROUND 222 — module ENGJ403;
+		// Chris's lesson-menu report). The human developers open a LESSON page's
+		// simplified menu with a GENERATED "Learning intentions" label heading
+		// (`<h5>Learning intentions</h5>` before the "We are learning:" lead) in
+		// specific subject|phase families — the label is NOT in the Writers
+		// Template (ENGJ403's lesson regions carry only the WALT/I-can lines),
+		// so this is a registry-driven generated label, the round-187 funLi
+		// class. MEASURED over every gold lesson-page menu (grouped by the
+		// ENGINE-resolved subject|phase): rows generated where the group share
+		// is ≥0.80 over ≥5 menus AND the lesson menu type is "simplified"
+		// (ENGJ|4-6 is 45/45; the h3-form families MXDB/MXFUN/SSCI are recorded
+		// follow-ups — their menus build through different machinery). GUARDS:
+		// lesson pages only, non-empty composed menu, and never when the menu
+		// already carries a "learning intention" heading (double-emission-safe
+		// by construction, whatever path produced it).
+		// Data: menu.lesson_li_label (registry + per-row element/label).
+		// Env toggle: MENULILABEL_OFF.
+		{
+			const llCfg = tpl.lesson_li_label;
+			const llOn = llCfg && llCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.MENULILABEL_OFF)
+				&& !page.isOverview && out.content && out.content.trim();
+			if (llOn) {
+				const llRow = this.#extraTabRow(run, llCfg);
+				if (llRow && !Utils.Fold(out.content).includes("learning intention")) {
+					out.content = Utils.FillTemplate(
+						llRow.element ?? "<h5>{label}</h5>",
+						{ label: Utils.EscapeHtml(llRow.label ?? "Learning intentions") })
+						+ "\n" + out.content;
+				}
+			}
+		}
+
 		return out;
 	};
 
@@ -1652,6 +1720,205 @@ class MenuBuilder {
 				{ cols: colsHtml });
 		}).join("");
 		return { nav, panes: panesHtml };
+	};
+
+	/**
+	 * WRITER-AUTHORED MENU TAB PARTITION (ROUND 221 — module ENGJ403; see the
+	 * buildMenu branch that calls this). Detects the newest WT era's explicit
+	 * overview-menu tab markup — a "[please set up as … tabs]" SET-UP
+	 * instruction (whose span usually also carries the glued first "[tab 1 –
+	 * please title as appropriate]" opener), later "[tab N]" openers, and
+	 * "[close tab]" closers — and composes one nav item + one tab-pane per
+	 * writer tab, partitioned exactly where the writer put the markers.
+	 *
+	 * Composition per pane (all forms from menu.writer_tab_partition):
+	 * - heading-led SECTIONS, kind-tagged li/sc/other via li_match/sc_match;
+	 * - a pane with any LI/SC section splits LI/SC LEFT | rest RIGHT; a pane
+	 *   without splits balanced (first half of the sections LEFT) — the same
+	 *   two kinds as the round-211 tab2_cols registry, here decided by pane;
+	 * - a short WALT/I-can lead line directly under an LI/SC heading renders
+	 *   via lead_element (<h5>, the ENGJ403 human form) instead of a <p>;
+	 * - piped bilingual headings are kept WHOLE (keep_bilingual_headings —
+	 *   the human keeps "Whakamaheretia tō wā | Planning your time");
+	 * - a heading BEFORE the set-up item becomes the pane-1 BANNER
+	 *   ("Tirohanga Whānui | Overview" as <h3><span> in a full-width col);
+	 * - an instruction span still flags/omits via NotesAndComments.redFlag
+	 *   (so the "In this section outline any connections…" template prompt
+	 *   is dropped by the round-86 omit list, matching the human);
+	 * - nav labels come from the opener's own label text unless it is
+	 *   template boilerplate (instruction_label_pattern), in which case the
+	 *   corpus-standard default_labels (Overview/Information…) apply.
+	 *
+	 * NEVER HALF-BUILDS: returns null (fall back to the fold-routing walk)
+	 * unless the set-up instruction, >=1 closer and >=2 non-empty panes are
+	 * all present.
+	 *
+	 * @param {Array} menuItems - the overview menu-region items
+	 * @param {ConversionRun} run
+	 * @param {TagNormaliser} norm
+	 * @param {Object} cfg - Emit_Templates menu.writer_tab_partition
+	 * @returns {{nav:string,panes:string,count:number}|null}
+	 */
+	static #writerTabPartition(menuItems, run, norm, cfg) {
+		const foldOf = (it) => String(it.parse?.folded ?? Utils.Fold(String(it.text || ""))).trim();
+		const setupRe = new RegExp(cfg.setup_pattern ?? "set ?up as .{0,24}tabs", "i");
+		const openRe = new RegExp(cfg.opener_pattern ?? "^\\[?tab\\s*(\\d+)", "i");
+		const closeRe = new RegExp(cfg.closer_pattern ?? "^\\[?(?:close|end)\\s+tab", "i");
+
+		// ---- detect the markers -------------------------------------------
+		let setupIdx = -1, closers = 0;
+		const openerIdx = [];
+		menuItems.forEach((it, i) => {
+			if (it.type !== "tag") return;
+			const f = foldOf(it);
+			if (setupIdx < 0 && setupRe.test(f)) { setupIdx = i; return; }
+			if (closeRe.test(f)) { closers++; return; }
+			if (openRe.test(f)) openerIdx.push(i);
+		});
+		if (setupIdx < 0 || closers < (cfg.min_closers ?? 1)) return null;
+
+		// ---- partition the items into writer panes ------------------------
+		// pane 1 opens AT the set-up item (its span carries the glued first
+		// opener); each later [tab N] opener starts the next pane; [close tab]
+		// closes the current one (a stray item between a close and the next
+		// opener stays with the most recent pane — defensive, none measured).
+		const labelFrom = (rawText) => {
+			const m = String(rawText || "").match(/\[\s*tab\s*\d+\s*[-–—:]?\s*([^\]]*)\]/i);
+			return (m && m[1] ? m[1] : "").trim();
+		};
+		const panes = [{ label: labelFrom(menuItems[setupIdx].text), items: [] }];
+		const pre = menuItems.slice(0, setupIdx);
+		for (let i = setupIdx + 1; i < menuItems.length; i++) {
+			const it = menuItems[i];
+			if (it.type === "tag") {
+				const f = foldOf(it);
+				if (closeRe.test(f)) continue;                       // marker — renders nothing
+				const om = f.match(openRe);
+				if (om) { panes.push({ label: labelFrom(it.text), items: [] }); continue; }
+			}
+			panes[panes.length - 1].items.push(it);
+		}
+		if (panes.length < 2 || panes.some((p) => !p.items.length)) return null;
+
+		// ---- the pane-1 banner: a heading BEFORE the set-up item ----------
+		let banner = "";
+		for (const it of pre) {
+			if (it.type !== "tag" || !it.parse?.primary) continue;
+			if (!["h1", "h2", "h3", "h4", "h5", "heading"].includes(it.parse.primary.tag)) continue;
+			const t = (norm.RenderText(it.text) || it.blackAfter || "").replace(/\*/g, "").trim();
+			if (t) banner = Utils.FillTemplate(
+				cfg.banner ?? "<div class=\"col-md-12 col-12 paddingR\">\n<h3><span>{heading}</span></h3>\n</div>",
+				{ heading: Utils.EscapeHtml(t) });
+		}
+
+		// ---- render each pane ---------------------------------------------
+		const navParts = [], paneParts = [];
+		const instrLabelRe = new RegExp(cfg.instruction_label_pattern ?? "please|title as appropriate", "i");
+		const defaults = cfg.default_labels ?? ["Overview", "Information"];
+		panes.forEach((p, idx) => {
+			const label = (p.label && !instrLabelRe.test(p.label))
+				? p.label : (defaults[idx] ?? `Tab ${idx + 1}`);
+			navParts.push(Utils.FillTemplate(cfg.nav_item ?? "\n<li><a>{label}</a></li>",
+				{ label: Utils.EscapeHtml(label) }));
+			let paneHtml = this.#writerTabPane(p.items, run, norm, cfg, idx === 0);
+			if (!this.isReoModule(run)) paneHtml = this.stripTextItalic(paneHtml);
+			paneParts.push(Utils.FillTemplate(
+				cfg.pane_template ?? "\n<div class=\"tab-pane\">\n{banner}{content}\n</div>",
+				{ banner: idx === 0 && banner ? banner + "\n" : "", content: paneHtml }));
+		});
+		return { nav: navParts.join(""), panes: paneParts.join(""), count: panes.length };
+	};
+
+	/**
+	 * Renders ONE writer-authored tab pane (see #writerTabPartition): builds
+	 * the heading-led sections, then splits them into the two side-by-side
+	 * columns (LI/SC left | rest right when LI/SC sections exist, else a
+	 * balanced split), each section rendered heading + lead + grouped text.
+	 *
+	 * @param {Array} items - the pane's partitioned items
+	 * @param {ConversionRun} run
+	 * @param {TagNormaliser} norm
+	 * @param {Object} cfg - menu.writer_tab_partition
+	 * @param {boolean} isFirst - pane 1 uses pane1_heading_element (plain h4)
+	 * @returns {string} the pane's inner HTML (the row + columns)
+	 */
+	static #writerTabPane(items, run, norm, cfg, isFirst) {
+		const liMatch = cfg.li_match ?? ["learning intention", "whainga ako"];
+		const scMatch = cfg.sc_match ?? ["success criteria", "paearu angitu", "how will i know", "you will show"];
+		const leadRe = new RegExp(cfg.lead_pattern
+			?? "^(we are learning|what are we learning|i can|you will show|how will i know)", "i");
+		const hEl = isFirst
+			? (cfg.pane1_heading_element ?? "<h4>{heading}</h4>")
+			: (cfg.heading_element ?? "<h4><span>{heading}</span></h4>");
+		const sections = [{ kind: "other", pieces: [] }];   // pre-heading content bucket
+		let textBuf = [];
+		const flush = () => {
+			if (!textBuf.length) return;
+			const sec = sections[sections.length - 1];
+			for (const piece of ListsAndRuns.renderBlackText(textBuf.join("\n"), run)) sec.pieces.push(piece);
+			textBuf = [];
+		};
+		const pushLines = (text) => {
+			const sec = sections[sections.length - 1];
+			for (const line of String(text).split(/\n+/)) {
+				if (!line.trim()) continue;
+				// a short WALT/I-can lead directly under an LI/SC heading → lead_element
+				if ((sec.kind === "li" || sec.kind === "sc") && !sec.leadDone && !textBuf.length
+					&& leadRe.test(Utils.Fold(line).replace(/[*_]/g, "").trim())) {
+					sec.leadDone = true;
+					sec.pieces.push(Utils.FillTemplate(cfg.lead_element ?? "<h5>{lead}</h5>",
+						{ lead: Utils.EscapeHtml(line.replace(/[*_]/g, "").trim()) }));
+					continue;
+				}
+				textBuf.push(line);
+			}
+		};
+		for (const it of items) {
+			if (it._inquiryCrumb) continue;
+			if (it.type === "black") { pushLines(it.text); continue; }
+			if (it.type === "table") { flush(); sections[sections.length - 1].pieces.push(TablesAndGrids.contentTable(it.block, run, false, norm)); continue; }
+			const primary = it.parse?.primary;
+			const headingText = (norm.RenderText(it.text) || it.blackAfter || "").replace(/\*/g, "").trim();
+			if (primary && ["h1", "h2", "h3", "h4", "h5", "heading"].includes(primary.tag) && headingText) {
+				flush();
+				const folded = Utils.Fold(headingText);
+				const kind = liMatch.some((m) => folded.includes(m)) ? "li"
+					: scMatch.some((m) => folded.includes(m)) ? "sc" : "other";
+				// piped bilingual headings ship WHOLE (the ENGJ403 human keeps them)
+				const shown = cfg.keep_bilingual_headings === false && headingText.includes("|")
+					? headingText.split("|").pop().trim() : headingText;
+				sections.push({ kind, pieces: [Utils.FillTemplate(hEl, { heading: Utils.EscapeHtml(shown) })] });
+				continue;
+			}
+			if (!primary && it.parse?.class === "instruction") {
+				flush();
+				sections[sections.length - 1].pieces.push(NotesAndComments.redFlag(it.text, run, "cs"));
+				if ((it.blackAfter || "").trim()) pushLines(it.blackAfter);
+				continue;
+			}
+			if ((it.blackAfter || "").trim()) pushLines(it.blackAfter);
+		}
+		flush();
+		const secs = sections.filter((s) => s.pieces.length);
+		if (!secs.length) return "";
+		// ---- the two-column split -----------------------------------------
+		const pair = cfg.col_pair ?? ["col-md-6 col-12 paddingLR", "col-md-6 col-12 paddingLR"];
+		let left, right;
+		if (secs.some((s) => s.kind === "li" || s.kind === "sc")) {
+			left = secs.filter((s) => s.kind === "li" || s.kind === "sc");
+			right = secs.filter((s) => s.kind === "other");
+		} else {
+			left = secs.slice(0, Math.ceil(secs.length / 2));
+			right = secs.slice(Math.ceil(secs.length / 2));
+		}
+		const colHtml = (list) => list.map((s) => s.pieces.join("\n")).join("\n");
+		if (!right.length) {
+			return Utils.FillTemplate(cfg.row_single ?? "\n<div class=\"row\">\n<div class=\"{cls}\">\n{content}\n</div>\n</div>",
+				{ cls: pair[0], content: colHtml(left) });
+		}
+		return Utils.FillTemplate(cfg.row_pair
+			?? "\n<div class=\"row\">\n<div class=\"{cls1}\">\n{left}\n</div>\n<div class=\"{cls2}\">\n{right}\n</div>\n</div>",
+			{ cls1: pair[0], cls2: pair[1], left: colHtml(left), right: colHtml(right) });
 	};
 
 	/**

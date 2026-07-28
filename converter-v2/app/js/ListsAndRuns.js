@@ -206,6 +206,28 @@ class ListsAndRuns {
 					last = end; woven = true;
 				}
 			}
+			// QUOTED NAMED ANCHOR (ROUND 222c — the ENGJ403 "hover info ‘X’:" idiom in kept
+			// TABLE cells, e.g. "**First Act – exposition** [hover info ‘exposition’: **Setting
+			// up the story.** ]"). The writer names the hovered word in quotes between the head
+			// and the separator; weave the sentinel onto that word's LAST occurrence in the
+			// preceding prose. This also rescues the cells the last-word fallback below cannot
+			// anchor (their prose ends in "**" bold markers, not a word character). For a
+			// multi-word quoted anchor ("inciting incident") the sentinel lands after the
+			// phrase and #inlineMarkup wraps its final word — exactly the human's
+			// `inciting <span class="infoTrigger">incident</span>` form (gold ENGJ403 4.0).
+			if (!woven) {
+				const qm2 = between.match(/['‘"]([^'’"‘]+)['’"]/);
+				const qterm = qm2 ? qm2[1].trim().replace(/[.,;:]+$/, "") : "";
+				if (qterm && /\p{L}/u.test(qterm)) {
+					const hay = out + segBefore;
+					const idx = ListsAndRuns.#lastWordIndex(hay, qterm);
+					if (idx >= 0) {
+						const ae = idx + qterm.length;
+						out = hay.slice(0, ae) + sentinel + hay.slice(ae);
+						last = end; woven = true;
+					}
+				}
+			}
 			if (!woven && !nm) {
 				const tb = segBefore.replace(/\s+$/, "");
 				const wm = tb.match(/([\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N}'’\-]*)$/u);
@@ -247,6 +269,14 @@ class ListsAndRuns {
 		// genuine FREE-BODY text ever gets woven. The INFOSPLIT_OFF env toggle also disables it
 		// globally (see hoverStitch above).
 		if (stitch) text = this.hoverStitch(String(text ?? ""));
+		// SENTINEL-PAIR ATOMICITY (ROUND 227, part of the w:br→\n fix). A hover/infoTrigger
+		// definition woven into the raw text as a U+E000…U+E001 sentinel pair must never be
+		// CUT by the per-line split below — a definition whose text spans a soft line break
+		// (now a real "\n", e.g. MXDI202-09's Vertex/Face/Edge hover block) would otherwise
+		// leave an unpaired sentinel character leaking into each half (defect class E). Any
+		// newline INSIDE a pair collapses to a space, so the woven definition stays one
+		// atomic span on one line; text outside the pairs keeps its line structure.
+		text = String(text ?? "").replace(/[^]*/g, (m) => m.replace(/\n+/g, " "));
 		const tpl = DataService.Data.EmitTemplates;
 		const L = tpl.elements.list;
 		const cfg = tpl.body_region?.list_nesting ?? {};
@@ -522,6 +552,214 @@ class ListsAndRuns {
 			}
 			out += s.slice(j, end);
 			i = end;
+		}
+		return out;
+	};
+
+	/**
+	 * NO-EMOJI RULE (ROUND 234 — Change Ledger CL-0051, the first CL-0001
+	 * exception permitting deletion of writer characters). Strips emoji from
+	 * the rendered page as a FULL-PAGE post-pass (the LinkTextDisplay seam:
+	 * after the note tidy, before Indent, caller stops at the acks block) —
+	 * post-pass placement means the tag machinery, the ✅-glued title fences,
+	 * the r192 tile delimiters and the 🔴 red-run sentinels are untouchable
+	 * by construction. Scope = Extended_Pictographic grapheme CLUSTERS minus
+	 * the data exempt list (ticks & crosses verbatim + the measured maths
+	 * operators); EP arrow emoji map to PLAIN arrows (gold's own TEDC402
+	 * treatment); a keycap digit keeps its digit. The ledger's clauses: a run
+	 * of 2+ consecutive plain <p> lines PREFIXED by a would-be-deleted
+	 * cluster becomes one <ul>/<li>; a lone one stays a <p>; in-prose
+	 * removals get spacing normalised; a <p> the strip emptied is dropped.
+	 * ONE disclosure note per affected page at the first removal (via the
+	 * caller's noteFactory → NotesAndComments.redFlag, so the r219 scheme +
+	 * NOTESCHEME_OFF apply to it like any note); a header/menu first-removal
+	 * relocates the note to the body top (the r203 rule). VERBATIM zones are
+	 * copied through untouched: cv2-interactive subtrees (the developer
+	 * hand-off), cv2-note/cv2-comment payloads, <script>/<style>, and every
+	 * tag (attributes never touched). Data: Input_Doc_Rules.emoji_strip;
+	 * env EMOJISTRIP_OFF reverts the whole pass byte-for-byte.
+	 *
+	 * @param {string} html - one finished page's HTML (before the acks block)
+	 * @param {function(): (string|null)} noteFactory - builds the disclosure
+	 *        note html; called AT MOST ONCE, and only if something was removed
+	 * @returns {string} the HTML with emoji stripped per the rule
+	 */
+	static EmojiStrip(html, noteFactory) {
+		const cfg = DataService.Data.InputDocRules?.emoji_strip;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env.EMOJISTRIP_OFF) return html;
+
+		const exempt = new Set(
+			[...(cfg.exempt ?? []), ...Object.values(cfg.exempt_extensions ?? {}).flat()]
+				.map((c) => String(c).codePointAt(0)));
+		const arrows = {};
+		for (const [k, v] of Object.entries(cfg.arrow_map ?? {})) arrows[k.codePointAt(0)] = v;
+		// one emoji grapheme cluster: an Extended_Pictographic base plus its
+		// riders (VS15/16, skin tones, ZWJ-joined follow-ons, a keycap mark),
+		// OR a keycap digit sequence, OR a regional-indicator flag pair. A
+		// cluster is handled WHOLE, so a VS16 is never orphan-stripped off a
+		// kept tick (✅️ survives intact; a stripped base takes its riders).
+		const CL = "(?:\\p{Extended_Pictographic}(?:[\\u{FE0E}\\u{FE0F}\\u{1F3FB}-\\u{1F3FF}]|\\u{200D}\\p{Extended_Pictographic}[\\u{FE0E}\\u{FE0F}\\u{1F3FB}-\\u{1F3FF}]*)*\\u{20E3}?|[0-9#*]\\u{FE0F}\\u{20E3}|[\\u{1F1E6}-\\u{1F1FF}]{2})";
+		const clusterRe = () => new RegExp(CL, "gu");
+		const leadRe = new RegExp("^" + CL, "u");
+		const SENT = "\uE0EE";                       // one-shot anchor mark (PUA)
+
+		let removed = false;
+		const stripSeg = (seg) => {                  // one inter-tag text segment
+			let hit = false;
+			let s = seg.replace(clusterRe(), (cl) => {
+				const base = cl.codePointAt(0);
+				if (exempt.has(base)) return cl;         // ticks & crosses kept whole
+				hit = true;
+				if (/^[0-9#*]/.test(cl)) return cl[0];   // keycap: the digit survives
+				return arrows[base] ?? "";               // arrow → plain form; else gone
+			});
+			if (hit) {
+				removed = true;
+				s = s.replace(/[ \t]{2,}/g, " ").replace(/[ \t]+([.,;:!?)\]])/g, "$1");
+				// a DELETED lead cluster must not leave its trailing space behind
+				// as a new leading space ("⚖️ <b>Low…" → "<b>Low…", not " <b>Low…")
+				if (deletedLead(seg)) s = s.replace(/^[ \t ]+/, "");
+			}
+			return s;
+		};
+		// a line lead that the strip would DELETE (exempt/arrow leads keep a
+		// visible mark, so those lines are NOT checklist candidates)
+		const deletedLead = (text) => {
+			const m = String(text).replace(/^[\s\u00A0]+/, "").match(leadRe);
+			if (!m) return null;
+			const base = m[0].codePointAt(0);
+			if (exempt.has(base) || arrows[base] !== undefined || /^[0-9#*]/.test(m[0])) return null;
+			return m[0];
+		};
+
+		// ---- carve the page into LIVE zones and VERBATIM zones ---------------
+		const src = String(html);
+		const pieces = [];
+		{
+			const openRe = /<div class="cv2-interactive|<p class="cv2-(?:note|comment)"|<script\b|<style\b/g;
+			let i = 0, m;
+			while ((m = openRe.exec(src))) {
+				const j = m.index;
+				let end;
+				if (m[0].startsWith("<div")) {           // cv2 subtree by <div> depth
+					const re = /<div\b|<\/div>/g;
+					re.lastIndex = j; let depth = 0, mm; end = src.length;
+					while ((mm = re.exec(src))) {
+						depth += mm[0] === "</div>" ? -1 : 1;
+						if (depth === 0) { end = re.lastIndex; break; }
+					}
+				} else if (m[0].startsWith("<p")) {
+					const k = src.indexOf("</p>", j); end = k < 0 ? src.length : k + 4;
+				} else {
+					const close = m[0].startsWith("<script") ? "</script>" : "</style>";
+					const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
+				}
+				if (j > i) pieces.push({ live: true, s: src.slice(i, j) });
+				pieces.push({ live: false, s: src.slice(j, end) });
+				i = end; openRe.lastIndex = end;
+			}
+			if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
+		}
+
+		// ---- clause 1: 2+ consecutive deleted-lead plain <p>s → one <ul> -----
+		// The paragraph-content pattern is GUARDED so it can never cross a
+		// </p> boundary — a lazy [^]*? here would backtrack-extend across
+		// paragraphs under match pressure and swallow the structure between
+		// them (caught live on SCFUN01's phases nav). "Consecutive" is strict:
+		// nothing but whitespace between one </p> and the next <p>.
+		const P_INNER = "(?:(?!<\\/p>)[^])*";
+		const RUN_RE = new RegExp("<p>" + P_INNER + "<\\/p>(?:\\s*<p>" + P_INNER + "<\\/p>)+", "g");
+		const ITEM_RE = () => new RegExp("(<p>(" + P_INNER + ")<\\/p>)(\\s*)", "g");
+		let marked = false;
+		const listify = (chunk) => {
+			if (cfg.list_runs === false) return chunk;
+			return chunk.replace(RUN_RE, (run) => {
+				const items = [];
+				const re = ITEM_RE(); let mm;
+				while ((mm = re.exec(run))) items.push({ html: mm[1], inner: mm[2], ws: mm[3] });
+				let out = "", group = [];
+				const flush = () => {
+					if (group.length >= 2) {
+						removed = true;
+						const lis = group.map((g) => "<li>"
+							+ g.inner.replace(g.lead, "").replace(/^[ \t\u00A0]+/, "")
+							+ "</li>");
+						out += (marked ? "" : SENT) + "<ul>\n" + lis.join("\n") + "\n</ul>\n";
+						marked = true;
+					} else if (group.length) out += group[0].html + group[0].ws;
+					group = [];
+				};
+				for (const it of items) {
+					const lead = deletedLead(it.inner.replace(/<[^>]+>/g, ""));
+					if (lead) group.push({ ...it, lead });
+					else { flush(); out += it.html + it.ws; }
+				}
+				flush();
+				return out;
+			});
+		};
+
+		// ---- clause 2: char strip + emptied-<p> drop + first-removal anchor --
+		let out = "", anchor = -1;
+		const stack = [];                            // open p/h/ul/ol/table starts
+		const flow = /^<(p|h[1-6]|ul|ol|table)[\s>]/i;
+		const closeOf = /^<\/(p|h[1-6]|ul|ol|table)>/i;
+		for (const piece of pieces) {
+			if (!piece.live) { out += piece.s; continue; }
+			const chunk = listify(piece.s);
+			let buf = null;                          // the open plain-or-attributed <p>
+			for (const tok of chunk.split(/(<[^>]*>)/)) {
+				if (!tok) continue;
+				const isTag = tok[0] === "<" && tok[tok.length - 1] === ">";
+				const pos = () => (buf ? buf.start : out.length);
+				if (isTag) {
+					if (flow.test(tok)) stack.push({ tag: tok.match(flow)[1].toLowerCase(), start: pos() });
+					else if (closeOf.test(tok)) {
+						const t = tok.match(closeOf)[1].toLowerCase();
+						for (let k = stack.length - 1; k >= 0; k--) if (stack[k].tag === t) { stack.splice(k); break; }
+					}
+					if (/^<p[\s>]/i.test(tok) && !buf && cfg.drop_emptied !== false) {
+						buf = { start: out.length, s: tok, changed: false }; continue;
+					}
+					if (buf) {
+						buf.s += tok;
+						if (/^<\/p>/i.test(tok)) {       // close the buffered paragraph
+							const text = buf.s.replace(/<[^>]+>/g, "");
+							if (buf.changed && !/\S/.test(text)) { /* emptied → dropped */ }
+							else out += buf.s;
+							buf = null;
+						}
+						continue;
+					}
+					out += tok; continue;
+				}
+				// text segment
+				let seg = tok, localChange = false;
+				if (seg.includes(SENT)) {                // clause-1 anchor mark
+					seg = seg.split(SENT).join("");
+					localChange = true;
+				}
+				const before = seg;
+				seg = stripSeg(seg);
+				if (seg !== before) localChange = true;
+				if (localChange && anchor < 0) anchor = stack.length ? stack[0].start : pos();
+				if (buf) { buf.s += seg; if (seg !== before) buf.changed = true; }
+				else out += seg;
+			}
+			if (buf) out += buf.s;                   // unterminated <p> — emit as-is
+		}
+		if (!removed) return out;
+
+		// ---- the disclosure note: ONE per affected page, at the first removal;
+		// a header/menu first-removal relocates to the body top (the r203 rule)
+		const note = typeof noteFactory === "function" ? noteFactory() : null;
+		if (note) {
+			const bodyAt = out.indexOf("<div id=\"body\"");
+			const bodyIn = bodyAt < 0 ? 0 : out.indexOf(">", bodyAt) + 1;
+			let at = anchor >= 0 ? anchor : bodyIn;
+			if (bodyAt >= 0 && at <= bodyAt) at = bodyIn;
+			out = out.slice(0, at) + "\n" + note + "\n" + out.slice(at);
 		}
 		return out;
 	};

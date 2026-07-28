@@ -48,8 +48,9 @@
 			<div id="drop-zone" title="Click to choose files, or drop them here">
 				<p><strong>Drop the Writers Template .docx here</strong> (plus its Media List .docx, or one combined WT+media-list file)</p>
 				<p class="drop-hint">Module code, template level, and structure are detected from the data — nothing to type.</p>
+				<p class="drop-hint">Optional: add an <code>_istock-acks.txt</code> file (the API-sourced iStock acknowledgements) — its verified image titles are used whenever an iStock acknowledgement is generated.</p>
 			</div>
-			<input type="file" id="file-input" accept=".docx" multiple hidden>
+			<input type="file" id="file-input" accept=".docx,.txt" multiple hidden>
 			<ul id="file-list" class="file-list"></ul>
 		</section>
 
@@ -67,18 +68,15 @@
 			</label>
 		</section>
 
-		<!-- ============ 3. INTERACTIVE HAND-OFF MODE ============ -->
-			<section class="panel">
-				<h2>3 · Interactive hand-off <span class="panel-note">(default off — applies to the whole run)</span></h2>
-				<label class="mode-option">
-					<input type="checkbox" id="mode-extract">
-					<strong>Extract un-built interactives</strong>: don't render the un-built interactives on the page — instead drop a single unique reference code at each spot and write the captured content to <code>{CODE}_interactives.txt</code> under the same code (the Phase-1 hand-off view). Left off, the un-built interactives render as the in-position dashed boxes, exactly as now.
-				</label>
-			</section>
+		<!-- ROUND 235 — the "Interactive hand-off" section is GONE: the hand-off is
+		     now the DEFAULT for every run. Each un-built interactive renders as its
+		     reference-code box with the raw captured content collapsed inside it
+		     (expand/collapse via the arrow at the right end of the box), and the
+		     same codes head the {CODE}_interactives.txt blocks. -->
 
-			<!-- ============ 4. CONVERT ============ -->
+		<!-- ============ 3. CONVERT ============ -->
 		<section class="panel">
-			<h2>4 · Convert</h2>
+			<h2>3 · Convert</h2>
 			<button id="convert-button" type="button" disabled>Convert module</button>
 			<!-- ROUND 193 — the conversion progress bar (hidden until Convert; App.js drives it,
 			     the engine reports through the guarded run.onProgress hook — browser-only) -->
@@ -90,9 +88,9 @@
 			<div id="progress-log" class="progress-log" aria-live="polite"></div>
 		</section>
 
-		<!-- ============ 5. RESULTS ============ -->
+		<!-- ============ 4. RESULTS ============ -->
 		<section class="panel">
-			<h2>5 · Output files</h2>
+			<h2>4 · Output files</h2>
 			<div id="output-metadata" class="output-metadata" hidden></div>
 			<ul id="output-list" class="output-list"></ul>
 			<button id="download-all" type="button" hidden>Download all as .zip</button>

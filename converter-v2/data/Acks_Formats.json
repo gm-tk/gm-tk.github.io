@@ -130,6 +130,13 @@
   "casing_note": "Minor punctuation/case differences from the provider's exact casing are acceptable per the verified rule — human-written acks vary too."
  },
 
+ "istock_acks_file": {
+  "enabled": true,
+  "_note": "ROUND 235 (Chris) — the OPTIONAL verified iStock acknowledgements file (CL-0002 adopted into the input contract). A file named *_istock-acks.txt can be uploaded alongside the WT + Media List (or sit in the module folder for a batch run): one fully-formed ack per line, e.g. <p>Photo: Friends dancing in the street, iStock 1422643105, Getty Images. Used with permission.</p>, sourced from the iStock API via Getty — so its titles are DEFINITELY correct and OUTRANK the slug-derived title (title_authority for iStock becomes: API file > URL slug > ACK-TODO). The engine parses each line into id → {title, line} (line_pattern below: title = everything between the first ': ' and the LAST ', iStock <id>,' — titles may themselves contain commas); when #istockEntry knows the asset id and the map carries it, the VERIFIED title fills the normal entry template ({TypePrefix}/{Adapted} still composed per the item), which for a photo reproduces the file's own line exactly. Ids not in the file fall back to the slug rule / ACK-TODO unchanged. Env ISTOCKACKS_OFF (or enabled:false) ignores the file entirely.",
+  "filename_pattern": "istock-acks\\.txt$",
+  "line_pattern": "^(?:<p>)?\\s*[^:<>]{1,40}:\\s*(.*),\\s*iStock\\s+(\\d{5,12})\\s*,"
+ },
+
  "title_authority": {
   "stock": "Official asset name only — writer descriptions are NOT acceptable for stock assets (istock/other_stock/pixabay). Derive from the URL slug, or emit ACK-TODO[istock-name].",
   "youtube": "oEmbed title/author verbatim (including any '| Site' suffix), or ACK-TODO[video-meta].",

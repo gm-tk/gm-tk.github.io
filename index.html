@@ -110,20 +110,25 @@
         <!-- Page Stitcher (separate mode) -->
         <section id="stitch-section" class="hidden" aria-label="Page Stitcher">
             <p class="module-dev-intro">
-                Recombine a SPLIT-MODE module into one page: drop the base homepage and all of
-                its section files together, then press Stitch to download the unified single-page
-                HTML. PageForge tells the base and sections apart automatically.
+                Two jobs, one button &mdash; PageForge detects which from the files you drop.
+                <strong>Split-mode module:</strong> drop the base homepage and all of its section
+                files to download the unified single-page HTML.
+                <strong>Interactive insertion:</strong> drop the module pages from the HTML
+                Generator (converted with &ldquo;Extract un-built interactives&rdquo; ticked)
+                together with the built-interactives file(s) from the Interactives Claude
+                project &mdash; each build is placed at its reference code and the finished
+                pages download (as a zip when there is more than one page).
             </p>
             <div class="module-upload-grid">
 
                 <!-- One container for the base + all section files (auto-classified) -->
                 <div class="module-upload-slot">
                     <div id="stitch-drop" class="drop-zone module-drop" role="button" tabindex="0"
-                         aria-label="Drop the base homepage and section .html files here or click to browse">
+                         aria-label="Drop all the module .html files here (base + sections, or pages + built interactives) or click to browse">
                         <span class="drop-zone-icon" aria-hidden="true">&#129513;</span>
-                        <p class="drop-zone-title">Drop the base + section .html files<br>or click to browse</p>
+                        <p class="drop-zone-title">Drop all the module .html files<br>or click to browse</p>
                     </div>
-                    <input type="file" id="stitch-input" accept=".html,.htm" multiple class="sr-only" aria-hidden="true">
+                    <input type="file" id="stitch-input" accept=".html,.htm,.txt" multiple class="sr-only" aria-hidden="true">
                     <div id="stitch-info" class="staged-file-info hidden">
                         <span class="staged-file-icon" aria-hidden="true">&#129513;</span>
                         <span id="stitch-name" class="staged-file-name"></span>

@@ -47,7 +47,12 @@
 class App {
 
 	static #normaliser = null;   // compiled matcher (built once at startup)
-	static #files = [];          // uploaded File objects awaiting conversion
+	static #files = [];          // uploaded .docx File objects awaiting conversion
+	// ROUND 235 (Chris) — the optional verified iStock acknowledgements file
+	// (*_istock-acks.txt, API-sourced via Getty Images). Kept SEPARATE from
+	// #files: it is not a .docx, must not enter the docx-extraction loop, and
+	// does not count toward the two-docx-per-run limit.
+	static #istockAcksFile = null;
 
 	/**
 	 * STARTUP. Runs once, when the page finishes loading (wired up at the
@@ -183,7 +188,10 @@ class App {
 			.addEventListener("click", (e) => {
 				const btn = e.target.closest("[data-remove]");
 				if (!btn) return;
-				this.#files.splice(Number(btn.dataset.remove), 1);
+				// "acks" removes the optional _istock-acks.txt row; a number
+				// removes the docx at that index (see #renderFileList)
+				if (btn.dataset.remove === "acks") this.#istockAcksFile = null;
+				else this.#files.splice(Number(btn.dataset.remove), 1);
 				this.#renderFileList();
 			});
 	};
@@ -214,14 +222,21 @@ class App {
 	 * @returns {void}
 	 */
 	static #addFiles(files) {
-		// only .docx makes sense here; anything else is surfaced immediately
+		// .docx inputs, plus the ONE optional *_istock-acks.txt (ROUND 235 —
+		// the API-sourced verified iStock acknowledgements); anything else is
+		// surfaced immediately
 		for (const f of files) {
 			if (f.name.toLowerCase().endsWith(".docx")) this.#files.push(f);
-			else this.#log(`⚠ "${f.name}" is not a .docx — ignored.`);
+			else if (/istock-acks\.txt$/i.test(f.name)) {
+				if (this.#istockAcksFile) this.#log(`⚠ "${this.#istockAcksFile.name}" replaced by "${f.name}" — one iStock acknowledgements file per run.`);
+				this.#istockAcksFile = f;
+				this.#log(`✓ "${f.name}" — verified iStock acknowledgements loaded; its titles will be used for iStock acks.`);
+			}
+			else this.#log(`⚠ "${f.name}" is not a .docx (or an _istock-acks.txt) — ignored.`);
 		}
 		// one module per run: a WT + its media list (or one combined file)
 		if (this.#files.length > 2) {
-			this.#log("⚠ More than two files — Phase 1 converts ONE module per run (WT + media list, or one combined docx). Extra files removed.");
+			this.#log("⚠ More than two .docx files — Phase 1 converts ONE module per run (WT + media list, or one combined docx). Extra files removed.");
 			this.#files = this.#files.slice(0, 2);
 		}
 		this.#renderFileList();
@@ -248,8 +263,13 @@ class App {
 	 */
 	static #renderFileList() {
 		const list = document.getElementById(Config.Selectors.FileList);
-		list.innerHTML = this.#files.map((f, i) =>
-			`<li>${Utils.EscapeHtml(f.name)} <button type="button" data-remove="${i}" title="Remove">✕</button></li>`).join("");
+		const rows = this.#files.map((f, i) =>
+			`<li>${Utils.EscapeHtml(f.name)} <button type="button" data-remove="${i}" title="Remove">✕</button></li>`);
+		// the optional verified iStock acknowledgements file renders as its own
+		// row (data-remove="acks" — see the delegated click handler in #wireUi)
+		if (this.#istockAcksFile) rows.push(
+			`<li>${Utils.EscapeHtml(this.#istockAcksFile.name)} <em>(verified iStock acks)</em> <button type="button" data-remove="acks" title="Remove">✕</button></li>`);
+		list.innerHTML = rows.join("");
 		document.getElementById(Config.Selectors.ConvertButton).disabled = this.#files.length === 0;
 	};
 
@@ -446,19 +466,14 @@ class App {
 			// styles to use for an image the converter can't fetch a real
 			// asset for yet. Purely a user choice, carried on the run object.
 			const imageMode = document.getElementById(Config.Selectors.ModeP).checked ? "P" : "D";
-			// The interactive HAND-OFF switch (default OFF = "inline" mode). When
-			// ticked, any interactive widget the converter could not fully build
-			// is pulled OUT of the page and replaced with a short reference code,
-			// paired with a separate {CODE}_interactives.txt hand-off file for a
-			// developer to finish manually ("extract" mode). Carried run-wide on
-			// the run object, the same way imageMode is. The `extractEl &&` check
-			// is a defensive guard: it confirms the checkbox element actually
-			// exists in the page before reading its .checked property, so this
-			// still works (falling back to "inline") against an older, cached
-			// version of index.html that doesn't have this checkbox yet.
-				const extractEl = document.getElementById(Config.Selectors.ModeExtract);
-				const interactiveMode = (extractEl && extractEl.checked) ? "extract" : "inline";
-				const run = new ConversionRun({ imageMode, interactiveMode });
+			// ROUND 235 (Chris) — the interactive HAND-OFF is now the DEFAULT and
+			// its UI switch is gone: interactiveMode is resolved by the run itself
+			// (ConversionRun.DefaultInteractiveMode — the same shared, data-driven
+			// decision the batch harness uses, so the two entries cannot drift).
+			// Every un-built interactive renders as its reference-code box with
+			// the raw captured content collapsed inside it, and the same codes
+			// head the {CODE}_interactives.txt blocks.
+			const run = new ConversionRun({ imageMode });
 
 			// ---- [2] extract every uploaded docx into blocks ----------------
 			// A .docx file IS a zip archive internally (that's Word's own
@@ -506,7 +521,11 @@ class App {
 			// than through the batch tool). The automated test
 			// `_verify_entry_parity.cjs` exists specifically to keep proving
 			// the two entry points stay calling this one shared sequence.
-			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser });
+			// ROUND 235 (Chris) — the optional verified iStock acknowledgements
+			// file rides into the ONE shared prep sequence as plain text; parsing
+			// lives inside PrepareRun/AcksBuilder (never here — entry parity).
+			const istockAcksText = this.#istockAcksFile ? await this.#istockAcksFile.text() : null;
+			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksText });
 			if (!prep.ok && prep.reason === "no-wt") {
 				this.#log("🔴 No Writers Template found among the uploads (no [TITLE BAR]/[Fundamental content] opener). Nothing converted.");
 				this.#progressHide();
@@ -631,7 +650,8 @@ class App {
 				["Key contact", md.keyContact],
 				["Date submitted", md.dateSubmitted],
 				["Image mode", run.imageMode],
-					["Interactive mode", run.interactiveMode === "extract" ? "extract (hand-off)" : "inline"],
+				["Interactive mode", run.interactiveMode === "extract" ? "hand-off (raw content collapsed in-page, expandable)" : "inline (legacy)"],
+				["iStock acks file", run.istockAcks ? `${run.istockAcks.size} verified titles` : null],
 			].filter(([, v]) => v);
 			metaEl.innerHTML = `<h3>Module details</h3><dl class="meta-list">${
 				rows.map(([k, v]) => `<dt>${Utils.EscapeHtml(k)}</dt><dd>${Utils.EscapeHtml(String(v))}</dd>`).join("")
@@ -705,16 +725,16 @@ class App {
 	 *    button, and the summary panel (via #clearOutputs)
 	 *  - the progress bar (hidden, back to 0%) + the progress log
 	 *  - the Convert button: shown again + disabled-until-a-file-is-added
-	 *  - the image-mode radios back to Mode P (default), the extract checkbox
-	 *    back to off
+	 *  - the image-mode radios back to Mode P (default)
 	 *  - hides this reset button again (meaningless with no conversion)
 	 *  - scrolls back to the top (section 1 · Upload)
 	 *
 	 * @returns {void}
 	 */
 	static #resetPage() {
-		// pending uploads + file list
+		// pending uploads + file list (incl. the optional _istock-acks.txt)
 		this.#files = [];
+		this.#istockAcksFile = null;
 		this.#renderFileList();          // also disables the Convert button (0 files)
 
 		// outputs, module-details card, download-all, summary panel
@@ -730,13 +750,12 @@ class App {
 		const button = document.getElementById(Config.Selectors.ConvertButton);
 		if (button) button.hidden = false;
 
-		// upload-time choices back to their defaults
+		// upload-time choices back to their defaults (the extract checkbox is
+		// GONE since round 235 — the hand-off is the default, nothing to reset)
 		const modeP = document.getElementById(Config.Selectors.ModeP);
 		if (modeP) modeP.checked = true;
 		const modeD = document.getElementById(Config.Selectors.ModeD);
 		if (modeD) modeD.checked = false;
-		const extract = document.getElementById(Config.Selectors.ModeExtract);
-		if (extract) extract.checked = false;
 
 		// hide the reset button again + scroll to the top (section 1 · Upload)
 		const resetPanel = document.getElementById(Config.Selectors.ResetPanel);

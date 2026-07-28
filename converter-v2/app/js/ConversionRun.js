@@ -40,12 +40,17 @@ class ConversionRun {
 	 *                code at that spot and hand the captured widget content off in
 	 *                a separate file, {CODE}_interactives.txt (a to-do list for
 	 *                the human developer). This is the "hand-off" mode.
-	 *   The choice is uniform across the whole module (just like imageMode). In
-	 *   the browser it is a UI switch; in the batch test harness it is the
-	 *   environment variable INTEXTRACT_ON. The default "inline" produces exactly
-	 *   the output the converter has always produced.
+	 *   The choice is uniform across the whole module (just like imageMode).
+	 *   ROUND 235 (Chris): the hand-off is now the DEFAULT — when the option is
+	 *   omitted, BOTH entries (browser + batch) resolve it from the data flag
+	 *   Emit_Templates.interactive_placeholder.extract.default_mode via
+	 *   DefaultInteractiveMode() below (shared code, so entry parity holds by
+	 *   construction). The former UI switch is gone; env INTCOLLAPSE_OFF reverts
+	 *   the default to "inline" (the pre-round behaviour), and the legacy
+	 *   INTEXTRACT_ON force is still honoured for A/B harness runs.
 	 */
-	constructor({ imageMode = "P", interactiveMode = "inline" } = {}) {
+	constructor({ imageMode = "P", interactiveMode = null } = {}) {
+		if (interactiveMode == null) interactiveMode = ConversionRun.DefaultInteractiveMode();
 		if (imageMode !== "P" && imageMode !== "D") {
 			throw new Error(`ConversionRun: imageMode must be "P" or "D", got "${imageMode}"`);
 		}
@@ -100,6 +105,12 @@ class ConversionRun {
 		//   [ { number: 1, kind: "image", url: "https://...", caption: "..." }, ... ]
 		this.mediaItems = [];
 		this.mediaListFound = false;    // did we actually find a Media List document? true / false
+		// ROUND 235 (Chris) — the optional VERIFIED iStock acknowledgements file
+		// (*_istock-acks.txt, sourced from the iStock API via Getty Images). Parsed
+		// by AcksBuilder.ParseIstockAcks in ModuleResolver.PrepareRun into a Map of
+		// asset id → { title, line }; null when no file was supplied (or the
+		// feature is off — data Acks_Formats.istock_acks_file / env ISTOCKACKS_OFF).
+		this.istockAcks = null;
 		// Does the Writers Template's own page numbering look trustworthy enough
 		// to split the module into pages by? Decided by a data rule. true / false.
 		this.pageRecordsUsable = false;
@@ -124,6 +135,32 @@ class ConversionRun {
 		//   [ { level: "warn", stage: "PageSplitter", text: "Adjacent tags merged" }, ... ]
 		// level is one of: "info" | "warn" | "error".
 		this.notes = [];
+	};
+
+	/**
+	 * Resolves the run's DEFAULT interactive mode (ROUND 235, Chris) — the one
+	 * shared decision both entry points use when no explicit interactiveMode is
+	 * passed, so the browser app and the batch harness can never drift apart on
+	 * it (the r185 entry-parity principle: shared code, not per-entry logic).
+	 *
+	 * Resolution order (reproducing the r234 A/B matrix exactly):
+	 *  1. env INTEXTRACT_ON    → "extract" (the legacy r138 explicit force —
+	 *     with INTCOLLAPSE_OFF also set, the extract branch skips the collapse
+	 *     wrap, i.e. the r234 bare-marker extract, byte-for-byte)
+	 *  2. env INTCOLLAPSE_OFF  → "inline" (the r234 default, byte-for-byte)
+	 *  3. data Emit_Templates.interactive_placeholder.extract.default_mode
+	 *     ("extract" = the shipped hand-off default) when the extract feature is
+	 *     enabled; anything else → "inline".
+	 *
+	 * @returns {string} "extract" or "inline"
+	 */
+	static DefaultInteractiveMode() {
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (env.INTEXTRACT_ON) return "extract";
+		if (env.INTCOLLAPSE_OFF) return "inline";
+		const ex = (typeof DataService !== "undefined" && DataService.Data)
+			? DataService.Data.EmitTemplates?.interactive_placeholder?.extract : null;
+		return (ex && ex.enabled !== false && ex.default_mode === "extract") ? "extract" : "inline";
 	};
 
 	/**

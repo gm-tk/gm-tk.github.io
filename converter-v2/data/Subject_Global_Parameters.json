@@ -4,7 +4,6 @@
     "source": "00-Other-TK-Resources/HTML Convertor Claude Files/14_SUBJECT_GLOBAL_PARAMETERS.md",
     "source_updated": "2026-07-09 22:54 (the 11-section version: adds 14.9 BLLR, 14.10 MiW/WJ, 14.11 cross-cutting; expands Languages/Pathways/Taonga/LS/HPE). Captured into this file 2026-07-12 (round 218).",
     "authority": "TOP within a family's stated scope only; OUTSIDE that scope the Granular_Scaffold_Registry (judged at the finest reliable grouping) is authoritative. A doc-14 default is cross-checked against the registry's series house-style after applying; disagreement raises a Red Flag (never a silent override).",
-
     "gold_override_policy": {
       "decided": "2026-07-12 (Chris) — the covering instruction that accompanied the 2026-07-09 doc-14 refresh.",
       "rule": "Doc-14 conventions are FORWARD-LOOKING design-team directives. The human gold library (01-Finalized_Modules_) largely PREDATES them, so the gold may not comply. For every family marked overrides_gold:true, ALL FUTURE Claude conversions adhere to the doc-14 convention EVEN WHERE the module's own human gold does not — within that family's scope, these rules sit ABOVE the LEVEL-0 own-gold target (the one recorded exception to reference/Human_Gold_Is_The_Per_Module_Target.md).",
@@ -12,7 +11,6 @@
       "sibling_structure_note": "Doc-14's OWN internal hierarchy is preserved: for pure page STRUCTURE where a BUILT same-series sibling disagrees with a doc-14 convention, the sibling remains the most reliable structural reference (Mode B) and the conflict is surfaced as a visible Red Flag — the conflict is never silently resolved in either direction. Chris's 2026-07-12 covering instruction governs the CONVENTIONS doc-14 states (labels, copy, fonts, red-note placeholders, carve-outs, supplied snippets, per-subject choices): on those, doc-14 wins over the gold outright.",
       "gate_policy": "How a live doc-14 emission stays regression-proof against the protected gates (which measure vs the PRE-doc-14 gold): (a) every red-note placeholder is emitted with class cv2-note IN ADDITION to the supplied inline style, so the round-72 machinery excludes it from EVERY protected gate by construction (visible form unchanged); (b) a STRUCTURAL doc-14 emission that diverges from gold ships as a NAMED 'DOC-14 DELTA' list in that round's changelog entry (rule id + affected pages), and the gates are judged net of exactly those named deltas — the documented-intentional-delta discipline, doc-14-mandated rather than editorial; (c) every family flip stays behind its `active` flag + SUBJECTPARAMS_OFF so the pre-doc-14 output is always A/B-recoverable."
     },
-
     "master_enabled": false,
     "env_toggle": "SUBJECTPARAMS_OFF",
     "note": "master_enabled:false keeps the corpus output byte-identical (the mechanism is wired + demonstrable but inert by default). Turn a family live one at a time via its `active` flag + a measured, gate-proven regen round (see roadmap).",
@@ -21,7 +19,6 @@
     "live_emission_note": "When wired live, red-notes are emitted with class=\"cv2-note\" ADDED to the supplied inline style (<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">…) so every protected gate excludes them by construction (round-72 machinery). The design-team-visible form is unchanged.",
     "roadmap_note": "Active families (BLL, LS, HPE content, CED P5) have concrete code-derivable triggers and are ready to wire live first. The asset-deferred families (Languages, Pathways, Taonga, BLLR, MiW) and FUNdamentals are mostly placeholder red-notes; their prefixes have NO corpus presence yet (2026-07-12: zero BLLR/WJ/JAPFUN/PWO dirs in 01-Finalized_Modules_), so their rules are pure forward-provisioning with zero gate exposure until those WTs arrive."
   },
-
   "families": [
     {
       "id": "14.7 BLL",
@@ -30,38 +27,128 @@
       "active": true,
       "overrides_gold": true,
       "source_updated": "2026-07-09",
-      "scope": {"type": "module-series", "label": "BLL modules (all levels) — NOT the separate BLLR series (§14.9)", "prefixes": ["BLL"], "exclude_prefixes": ["BLLR"]},
+      "scope": {
+        "type": "module-series",
+        "label": "BLL modules (all levels) — NOT the separate BLLR series (§14.9)",
+        "prefixes": [
+          "BLL"
+        ],
+        "exclude_prefixes": [
+          "BLLR"
+        ]
+      },
       "conventions": [
-        {"name": "Sassoon writing font on read/interact text", "kind": "choice", "keywords": ["font", "sassoon", "writing font"],
-         "component_owner": "03/05 (font hook)", "cross_reference": "refresh_sassoon_font.html",
-         "detail": "Any interactive/text the ākonga reads or interacts with uses the writing font refresh_sassoon_font.html. Ensure specifically: single-storey a, capital I reads as a capital I, single-storey g (these ākonga are just learning to read and write — the letters they read must match the letters they write; l and I are confusing when identical)."},
-        {"name": "Page-1 animated-person intro (deferred)", "kind": "deferred_asset", "keywords": ["intro", "animated", "person", "video", "page 1"],
-         "trigger": {"page": "overview", "position": "first"},
-         "red_note": "Audiovisual item to be added by designer/developer",
-         "html": "<div class=\"videoSection ratio ratio-16x9\"><iframe src=\"\" loading=\"lazy\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div>",
-         "component_owner": "05 Media",
-         "detail": "The 1st page of each module has an animated person introducing what is in the module; the person differs per set."},
-        {"name": "Elkonin boxes for blending (deferred image)", "kind": "deferred_asset", "keywords": ["elkonin", "blend", "sounds", "decoding"],
-         "red_note": "Designer/developer to create and embed image",
-         "html": "<img class=\"img-fluid\" src=\"images/.jpg\" alt=\"Blend the sounds diagram\">",
-         "detail": "All decoding-words activities where sounds are blended go in elkonin boxes: dots under each sound, an arrow under the dots, the vowel in red. Developer-produced image."},
-        {"name": "All activity boxes green (incl. dropbox)", "kind": "structural", "keywords": ["activity", "green", "colour", "dropbox"],
-         "component_owner": "05 Activities", "cross_reference": "constraint 43 / 05 Activities",
-         "registry_check": {"region": "body", "tag": "activity", "expect_contains": "green"}},
-        {"name": ".dropbox NOT added to .activity (BLL carve-out from constraint 43)", "kind": "carve_out", "keywords": ["dropbox", "activity", "wrapper"],
-         "component_owner": "05 Activities", "cross_reference": "constraint 43 / §14.11",
-         "detail": "BLL is the ONE series that does not append the `dropbox` modifier to the `.activity` wrapper; the dropbox button is still present. Scoped to BLL ONLY — it does NOT extend to the separate BLLR series (§14.9). Every other series follows constraint 43 unchanged."},
-        {"name": "Dropbox button label 'Upload to Dropbox'", "kind": "choice", "keywords": ["dropbox", "button", "upload"],
-         "component_owner": "05 Buttons", "cross_reference": "§14.11 / constraint 55", "value": "Upload to Dropbox"},
-        {"name": "Embedded stories = book-style carousel", "kind": "choice", "keywords": ["embed", "story", "book", "carousel"],
-         "component_owner": "03 Interactives (carousel)", "cross_reference": "03_COMP_CORE_INTERACTIVES.md",
-         "detail": "Story pages ONLY (no teacher notes/activities) in a carousel so it reads like a book, not scrolling down. Image URLs replaced per story.",
-         "html": "<div class=\"row carousel\"><div class=\"col-md-12 col-12 viewer\"><div class=\"item\"><img class=\"img-fluid\" src=\"images/SPELDSA_Set_2_Rick-DS_1_Page_1.jpg\" alt=\"Rick cover\"></div><div class=\"item\"><img class=\"img-fluid\" src=\"images/SPELDSA_Set_2_Rick-DS_1_Page_2.jpg\" alt=\"Rick\"></div></div></div>"},
-        {"name": "Embedded timer minutes+seconds only (no hours)", "kind": "choice", "keywords": ["timer", "stopwatch"],
-         "component_owner": "03 Interactives", "html": "<div class=\"stopWatch noMilliSeconds noHours\"></div>"}
+        {
+          "name": "Sassoon writing font on read/interact text",
+          "kind": "choice",
+          "keywords": [
+            "font",
+            "sassoon",
+            "writing font"
+          ],
+          "component_owner": "03/05 (font hook)",
+          "cross_reference": "refresh_sassoon_font.html",
+          "detail": "Any interactive/text the ākonga reads or interacts with uses the writing font refresh_sassoon_font.html. Ensure specifically: single-storey a, capital I reads as a capital I, single-storey g (these ākonga are just learning to read and write — the letters they read must match the letters they write; l and I are confusing when identical)."
+        },
+        {
+          "name": "Page-1 animated-person intro (deferred)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "intro",
+            "animated",
+            "person",
+            "video",
+            "page 1"
+          ],
+          "trigger": {
+            "page": "overview",
+            "position": "first"
+          },
+          "red_note": "Audiovisual item to be added by designer/developer",
+          "html": "<div class=\"videoSection ratio ratio-16x9\"><iframe src=\"\" loading=\"lazy\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div>",
+          "component_owner": "05 Media",
+          "detail": "The 1st page of each module has an animated person introducing what is in the module; the person differs per set."
+        },
+        {
+          "name": "Elkonin boxes for blending (deferred image)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "elkonin",
+            "blend",
+            "sounds",
+            "decoding"
+          ],
+          "red_note": "Designer/developer to create and embed image",
+          "html": "<img class=\"img-fluid\" src=\"images/.jpg\" alt=\"Blend the sounds diagram\">",
+          "detail": "All decoding-words activities where sounds are blended go in elkonin boxes: dots under each sound, an arrow under the dots, the vowel in red. Developer-produced image."
+        },
+        {
+          "name": "All activity boxes green (incl. dropbox)",
+          "kind": "structural",
+          "keywords": [
+            "activity",
+            "green",
+            "colour",
+            "dropbox"
+          ],
+          "component_owner": "05 Activities",
+          "cross_reference": "constraint 43 / 05 Activities",
+          "registry_check": {
+            "region": "body",
+            "tag": "activity",
+            "expect_contains": "green"
+          }
+        },
+        {
+          "name": ".dropbox NOT added to .activity (BLL carve-out from constraint 43)",
+          "kind": "carve_out",
+          "keywords": [
+            "dropbox",
+            "activity",
+            "wrapper"
+          ],
+          "component_owner": "05 Activities",
+          "cross_reference": "constraint 43 / §14.11",
+          "detail": "BLL is the ONE series that does not append the `dropbox` modifier to the `.activity` wrapper; the dropbox button is still present. Scoped to BLL ONLY — it does NOT extend to the separate BLLR series (§14.9). Every other series follows constraint 43 unchanged."
+        },
+        {
+          "name": "Dropbox button label 'Upload to Dropbox'",
+          "kind": "choice",
+          "keywords": [
+            "dropbox",
+            "button",
+            "upload"
+          ],
+          "component_owner": "05 Buttons",
+          "cross_reference": "§14.11 / constraint 55",
+          "value": "Upload to Dropbox"
+        },
+        {
+          "name": "Embedded stories = book-style carousel",
+          "kind": "choice",
+          "keywords": [
+            "embed",
+            "story",
+            "book",
+            "carousel"
+          ],
+          "component_owner": "03 Interactives (carousel)",
+          "cross_reference": "03_COMP_CORE_INTERACTIVES.md",
+          "detail": "Story pages ONLY (no teacher notes/activities) in a carousel so it reads like a book, not scrolling down. Image URLs replaced per story.",
+          "html": "<div class=\"row carousel\"><div class=\"col-md-12 col-12 viewer\"><div class=\"item\"><img class=\"img-fluid\" src=\"images/SPELDSA_Set_2_Rick-DS_1_Page_1.jpg\" alt=\"Rick cover\"></div><div class=\"item\"><img class=\"img-fluid\" src=\"images/SPELDSA_Set_2_Rick-DS_1_Page_2.jpg\" alt=\"Rick\"></div></div></div>"
+        },
+        {
+          "name": "Embedded timer minutes+seconds only (no hours)",
+          "kind": "choice",
+          "keywords": [
+            "timer",
+            "stopwatch"
+          ],
+          "component_owner": "03 Interactives",
+          "html": "<div class=\"stopWatch noMilliSeconds noHours\"></div>"
+        }
       ]
     },
-
     {
       "id": "14.6 LS",
       "title": "Learning Support (incl. XLP, XDLS)",
@@ -69,41 +156,164 @@
       "active": true,
       "overrides_gold": true,
       "source_updated": "2026-07-09",
-      "scope": {"type": "module-series", "label": "LS modules (XLP toolkits + XDLS exemplars + LS content)", "prefixes": ["XLP", "XDLS", "XLS", "LS", "SLO", "SL"]},
+      "scope": {
+        "type": "module-series",
+        "label": "LS modules (XLP toolkits + XDLS exemplars + LS content)",
+        "prefixes": [
+          "XLP",
+          "XDLS",
+          "XLS",
+          "LS",
+          "SLO",
+          "SL"
+        ]
+      },
       "conventions": [
-        {"name": ".learningSupport on <html>", "kind": "structural", "keywords": ["learningsupport", "html", "class", "font"],
-         "component_owner": "06 sub-type", "cross_reference": "06 §3.3",
-         "detail": "Root tag carries class 'notranslate learningSupport' (existing CSS hook; LS always carry it). Larger font (same as LS Whakatau)."},
-        {"name": "Terminology + first-mention brackets", "kind": "content_rule", "keywords": ["hoa ako", "hua ako", "ākonga", "terminology"],
-         "detail": "hoa ako (learning partner); hua ako -> check -> hoa ako; learner -> ākonga; WE/US -> you. Brackets only on the FIRST instance a term is used in a module (first mention 'hoa ako (learning partner)', plain 'hoa ako' thereafter). CONTENT rule — flag, never auto-invent."},
-        {"name": "Remove tab navs (lesson-based, not inquiry)", "kind": "structural", "keywords": ["tab", "nav", "remove", "lesson"],
-         "detail": "LS modules are lesson-based; remove tab navs (they carry too much media). Move-on prompts go at the bottom of each page."},
-        {"name": "clickDrop activity layout (choicePage, per-choice icons)", "kind": "choice", "keywords": ["clickdrop", "choicepage", "activity", "icon"],
-         "component_owner": "04 Segments/Overlays (choicePage clickDrop)", "cross_reference": "constraint 56 / ls-modules-global-edit.docx (the 1A-1G sequence)",
-         "detail": "Activity content rows sit in col-12 col-md-8; activity wrappers off col-md-10. iconType values: learnByHeart, explain, do, compare, judge, create.",
-         "registry_check": {"region": "body", "tag": "clickdrop", "expect_contains": "col-md-8"}},
-        {"name": "Action prompts = colour-coded speech-bubble character", "kind": "choice", "keywords": ["prompt", "speech", "bubble", "character"],
-         "component_owner": "04 Segments/Overlays (speech bubble)", "cross_reference": "04_COMP_SEGMENTS_OVERLAYS.md",
-         "detail": "In-page action prompts are man-with-speech-bubble, colour-coded to the module, bold heading (clear about what they are looking at) + bullet-point prompting questions — NOT activity boxes. General prompting questions also go in speech bubbles."},
-        {"name": "Many videos/images -> slideshow with caption text", "kind": "choice", "keywords": ["slideshow", "carousel", "videos", "images", "captions"],
-         "component_owner": "03 Interactives (carousel)",
-         "detail": "When a page has many videos/images, put them in a video/image slideshow with the body text as captions, plus prompting text (e.g. 'explore the slideshow to see examples of…')."},
-        {"name": "6-activity pattern: one dropbox at page bottom", "kind": "structural", "keywords": ["6 activity", "dropbox", "bottom", "venn"],
-         "detail": "No activity numbers on clickDrop images (the pop-out number is not on the image). Remove all dropboxes from the activity boxes — ONE dropbox at the bottom of the page. Intro copy supplied ('Below are activities. You can choose the activities you feel will enhance your learning…'). Explicit titles: Learn about… / Explain why… / Practise… / Compare … versus … / Do you think…? / Create … Each activity: text explaining what to do; media (video or image); an invitation to share with kaiako. Compare activities add a Venn-diagram prompt ('You may like to use a Venn diagram to compare') + a 'What is a Venn diagram?' button (video https://www.youtube.com/watch?v=lnalI7eVQsQ&t=16s) + 'Here is an example of what your Venn diagram might look like.'"},
-        {"name": "Dropbox copy + 'Upload to Dropbox' button", "kind": "choice", "keywords": ["dropbox", "share your learning", "upload"],
-         "component_owner": "05 Buttons", "cross_reference": "§14.11", "value": "Upload to Dropbox",
-         "detail": "Dropbox title 'Share your learning!'; body: 'When you have completed your chosen activities, upload your photos, videos or voice recordings to show your kaiako. If you require a specific media uploaded to the dropbox use the corresponding icon. When there is more than one type of media students can upload, use the generic dropbox button.'"},
-        {"name": "End-of-page 'invitation to move forward' alerts (supplied copy)", "kind": "content_rule", "keywords": ["move forward", "ka pai", "completed", "alert"],
-         "component_owner": "04 Overlays (alert)",
-         "detail": "Exploratory: 'Ka pai! You've completed this lesson about _____ where we started to explore __learning intention__. Choose which lesson you would like to explore next! Click on the back button below to return to the introduction page and choose your next activity.' Lesson-by-lesson: 'Ka pai! You've completed lesson _, where we started to explore __learning intention__. Now let's try lesson _.' End of module: 'Ka pai! You have completed this module. We hope you enjoyed your learning. Discuss with your kaiako what topic you might like to explore next!'"},
-        {"name": "XLP unique supervisor overview", "kind": "choice", "keywords": ["xlp", "overview", "toolkit", "supervisor"],
-         "trigger": {"prefixes": ["XLP"]},
-         "detail": "XLP = Learning Partner Toolkits (for supervisors) — unique overview, not the full ākonga-facing overview."},
-        {"name": "Standard LS overview (non-XLP)", "kind": "structural", "keywords": ["overview", "ukd", "standards", "whakatauki", "audio hover"],
-         "detail": "Overview tab: UKD, LI and SC. Information tab: Planning your time + What do I need to get started. Standards tab: Assessment for learning + the standards. Whakataukī in Te Reo AND English. First line: 'This module is called …' with an audio hover trigger over the Te Reo word. Second body text: purpose of the module. Media: video or photo. Then the move-forward prompt (text prompt if ordered lesson-by-lesson; if exploratory: 'Below are options you can select from. You can choose to start anywhere.' + buttons to pages, with the smaller words ('Move', 'Eat', etc.) removed)."}
+        {
+          "name": ".learningSupport on <html>",
+          "kind": "structural",
+          "keywords": [
+            "learningsupport",
+            "html",
+            "class",
+            "font"
+          ],
+          "component_owner": "06 sub-type",
+          "cross_reference": "06 §3.3",
+          "detail": "Root tag carries class 'notranslate learningSupport' (existing CSS hook; LS always carry it). Larger font (same as LS Whakatau)."
+        },
+        {
+          "name": "Terminology + first-mention brackets",
+          "kind": "content_rule",
+          "keywords": [
+            "hoa ako",
+            "hua ako",
+            "ākonga",
+            "terminology"
+          ],
+          "detail": "hoa ako (learning partner); hua ako -> check -> hoa ako; learner -> ākonga; WE/US -> you. Brackets only on the FIRST instance a term is used in a module (first mention 'hoa ako (learning partner)', plain 'hoa ako' thereafter). CONTENT rule — flag, never auto-invent."
+        },
+        {
+          "name": "Remove tab navs (lesson-based, not inquiry)",
+          "kind": "structural",
+          "keywords": [
+            "tab",
+            "nav",
+            "remove",
+            "lesson"
+          ],
+          "detail": "LS modules are lesson-based; remove tab navs (they carry too much media). Move-on prompts go at the bottom of each page."
+        },
+        {
+          "name": "clickDrop activity layout (choicePage, per-choice icons)",
+          "kind": "choice",
+          "keywords": [
+            "clickdrop",
+            "choicepage",
+            "activity",
+            "icon"
+          ],
+          "component_owner": "04 Segments/Overlays (choicePage clickDrop)",
+          "cross_reference": "constraint 56 / ls-modules-global-edit.docx (the 1A-1G sequence)",
+          "detail": "Activity content rows sit in col-12 col-md-8; activity wrappers off col-md-10. iconType values: learnByHeart, explain, do, compare, judge, create.",
+          "registry_check": {
+            "region": "body",
+            "tag": "clickdrop",
+            "expect_contains": "col-md-8"
+          }
+        },
+        {
+          "name": "Action prompts = colour-coded speech-bubble character",
+          "kind": "choice",
+          "keywords": [
+            "prompt",
+            "speech",
+            "bubble",
+            "character"
+          ],
+          "component_owner": "04 Segments/Overlays (speech bubble)",
+          "cross_reference": "04_COMP_SEGMENTS_OVERLAYS.md",
+          "detail": "In-page action prompts are man-with-speech-bubble, colour-coded to the module, bold heading (clear about what they are looking at) + bullet-point prompting questions — NOT activity boxes. General prompting questions also go in speech bubbles."
+        },
+        {
+          "name": "Many videos/images -> slideshow with caption text",
+          "kind": "choice",
+          "keywords": [
+            "slideshow",
+            "carousel",
+            "videos",
+            "images",
+            "captions"
+          ],
+          "component_owner": "03 Interactives (carousel)",
+          "detail": "When a page has many videos/images, put them in a video/image slideshow with the body text as captions, plus prompting text (e.g. 'explore the slideshow to see examples of…')."
+        },
+        {
+          "name": "6-activity pattern: one dropbox at page bottom",
+          "kind": "structural",
+          "keywords": [
+            "6 activity",
+            "dropbox",
+            "bottom",
+            "venn"
+          ],
+          "detail": "No activity numbers on clickDrop images (the pop-out number is not on the image). Remove all dropboxes from the activity boxes — ONE dropbox at the bottom of the page. Intro copy supplied ('Below are activities. You can choose the activities you feel will enhance your learning…'). Explicit titles: Learn about… / Explain why… / Practise… / Compare … versus … / Do you think…? / Create … Each activity: text explaining what to do; media (video or image); an invitation to share with kaiako. Compare activities add a Venn-diagram prompt ('You may like to use a Venn diagram to compare') + a 'What is a Venn diagram?' button (video https://www.youtube.com/watch?v=lnalI7eVQsQ&t=16s) + 'Here is an example of what your Venn diagram might look like.'"
+        },
+        {
+          "name": "Dropbox copy + 'Upload to Dropbox' button",
+          "kind": "choice",
+          "keywords": [
+            "dropbox",
+            "share your learning",
+            "upload"
+          ],
+          "component_owner": "05 Buttons",
+          "cross_reference": "§14.11",
+          "value": "Upload to Dropbox",
+          "detail": "Dropbox title 'Share your learning!'; body: 'When you have completed your chosen activities, upload your photos, videos or voice recordings to show your kaiako. If you require a specific media uploaded to the dropbox use the corresponding icon. When there is more than one type of media students can upload, use the generic dropbox button.'"
+        },
+        {
+          "name": "End-of-page 'invitation to move forward' alerts (supplied copy)",
+          "kind": "content_rule",
+          "keywords": [
+            "move forward",
+            "ka pai",
+            "completed",
+            "alert"
+          ],
+          "component_owner": "04 Overlays (alert)",
+          "detail": "Exploratory: 'Ka pai! You've completed this lesson about _____ where we started to explore __learning intention__. Choose which lesson you would like to explore next! Click on the back button below to return to the introduction page and choose your next activity.' Lesson-by-lesson: 'Ka pai! You've completed lesson _, where we started to explore __learning intention__. Now let's try lesson _.' End of module: 'Ka pai! You have completed this module. We hope you enjoyed your learning. Discuss with your kaiako what topic you might like to explore next!'"
+        },
+        {
+          "name": "XLP unique supervisor overview",
+          "kind": "choice",
+          "keywords": [
+            "xlp",
+            "overview",
+            "toolkit",
+            "supervisor"
+          ],
+          "trigger": {
+            "prefixes": [
+              "XLP"
+            ]
+          },
+          "detail": "XLP = Learning Partner Toolkits (for supervisors) — unique overview, not the full ākonga-facing overview."
+        },
+        {
+          "name": "Standard LS overview (non-XLP)",
+          "kind": "structural",
+          "keywords": [
+            "overview",
+            "ukd",
+            "standards",
+            "whakatauki",
+            "audio hover"
+          ],
+          "detail": "Overview tab: UKD, LI and SC. Information tab: Planning your time + What do I need to get started. Standards tab: Assessment for learning + the standards. Whakataukī in Te Reo AND English. First line: 'This module is called …' with an audio hover trigger over the Te Reo word. Second body text: purpose of the module. Media: video or photo. Then the move-forward prompt (text prompt if ordered lesson-by-lesson; if exploratory: 'Below are options you can select from. You can choose to start anywhere.' + buttons to pages, with the smaller words ('Move', 'Eat', etc.) removed)."
+        }
       ]
     },
-
     {
       "id": "14.8 HPE",
       "title": "Health & PE content lessons",
@@ -111,37 +321,133 @@
       "active": true,
       "overrides_gold": true,
       "source_updated": "2026-07-09",
-      "scope": {"type": "cohort", "label": "H&PE content modules (distinct from H&PE FUNdamentals §14.5)", "cohort_prefixes": ["HES", "PHE", "PES", "HPE"], "exclude_prefixes": ["PHEFUN", "HPFUN"], "note": "content lessons only; the FUN prefixes (HPFUN/PHEFUN) belong to §14.5"},
+      "scope": {
+        "type": "cohort",
+        "label": "H&PE content modules (distinct from H&PE FUNdamentals §14.5)",
+        "cohort_prefixes": [
+          "HES",
+          "PHE",
+          "PES",
+          "HPE"
+        ],
+        "exclude_prefixes": [
+          "PHEFUN",
+          "HPFUN"
+        ],
+        "note": "content lessons only; the FUN prefixes (HPFUN/PHEFUN) belong to §14.5"
+      },
       "conventions": [
-        {"name": "Content-page overview = intro page", "kind": "structural", "keywords": ["overview", "intro", "in this lesson"],
-         "detail": "Overview mirrors the intro page: [Overview] [Alert]/[Image] [Speech bubble] [Body] — 'In this lesson you are learning…'."},
-        {"name": "Lesson summary alert (supplied structure)", "kind": "structural", "keywords": ["lesson summary", "alert", "need help"],
-         "component_owner": "04 Overlays (alert)", "detail": "[alert]/[Speech bubble] -> [H3] Lesson Summary -> [body] 'Ka pai! You have been learning about…' -> [checkbox] -> [Hint Button][title] Need help? -> [body] 'Email or phone the kaiako. You can ring 0800 65 99 88 and ask for them or email them. If you do not know the name of your kaiako click on the words My Te Kura at the top left of your screen. The kaiako can be seen at the right of this page. They may take a minute to upload.' -> [end alert]."},
-        {"name": "Sticky/floating nav — Fundamentals + Help page only (deferred setup)", "kind": "deferred_asset", "keywords": ["sticky", "nav", "floating", "help"],
-         "red_note": "set up the stickyNav.js file",
-         "head_html": "<script src=\"js/stickyNav.js\" type=\"text/javascript\" class=\"stickyNav\"></script>",
-         "cross_reference": "§14.11", "detail": "Sticky nav offers Fundamentals and the Help page; note emitted at the top of the 0.0 content."},
-        {"name": "Dropboxes — up to 3, suggest 2 (Checkpoint + end-of-module)", "kind": "structural", "keywords": ["checkpoint", "dropbox", "working toward"],
-         "detail": "Up to three dropboxes allowed; two suggested — one Checkpoint (midway, [ActivityDropbox] [H3] [Body], learning-journal upload) and one end-of-module. Additional activities can be linked to the checkpoint dropbox so kaiako know the ākonga is still working through. A 'working toward' dropbox uses the SAME link as the checkpoint dropbox unless otherwise stated."},
-        {"name": "Checkpoint + Share-Your-Learning phase copy (supplied, phases 1-4)", "kind": "content_rule", "keywords": ["checkpoint", "phase", "upload", "share your learning"],
-         "detail": "Phase-specific supplied copy for BOTH the midway Checkpoint and the end-of-module Share Your Learning body text (doc 14 §14.8 carries all eight versions verbatim — apply per the module's phase, never invent)."},
-        {"name": "Quiz rules", "kind": "structural", "keywords": ["quiz", "mtkquiz", "multichoice", "written response"],
-         "detail": "[MTKquiz] does NOT trigger engagement. [Multichoice] is autograded; [Written Response] is teacher-marked ('What do you think about…?') and lets learners insert images and add attachments. Max ONE quiz per every 2-3 lessons."},
-        {"name": "End-of-module celebration page (deferred final .gif)", "kind": "deferred_asset", "keywords": ["celebration", "gif", "congratulations", "journal"],
-         "red_note": "final celebration .gif pending — draft link in use",
-         "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"congradulations/Congradulations animation.gif\" alt=\"Congradulations animation\">",
-         "layout_note": "the .gif is 1×1 and too large for col-8 — redesign the layout around the related content so it fits (do not force col-8).",
-         "detail": "Structure: [automated celebration] [H2] Congratulations! [body] 'Ka pai, you have completed this module about…' [dropbox] [H3] Share your learning [body] [button] Go to your journal [button] Upload to dropbox [alert]/[Image] [Speech bubble] [body] 'If you enjoyed this learning, you may like to explore: … Talk to your kaiako about these and other learning opportunities.'"},
-        {"name": "Characters in speech bubble + imageCentral (some deferred)", "kind": "deferred_asset", "keywords": ["character", "sura", "afi", "alex", "kai", "leila"],
-         "component_owner": "04 Overlays (speech bubble)",
-         "detail": "Set: Sura, Afi, Alex, Kai, Leila. Class imageCentral; path 'health and PE characters/phase #/HP_Name_image#_phase_#.png' (e.g. HP_Sura_1_phase_1.png). Currently available: Sura and Alex.",
-         "red_note": "character not yet available — to be created and added (no 2nd-proof sign-off until added)"},
-        {"name": "Dropbox button label 'Upload to Dropbox'", "kind": "choice", "keywords": ["dropbox", "button", "upload"],
-         "component_owner": "05 Buttons", "cross_reference": "§14.11", "value": "Upload to Dropbox",
-         "detail": "The celebration page also carries a 'Go to your journal' button next to 'Upload to dropbox'."}
+        {
+          "name": "Content-page overview = intro page",
+          "kind": "structural",
+          "keywords": [
+            "overview",
+            "intro",
+            "in this lesson"
+          ],
+          "detail": "Overview mirrors the intro page: [Overview] [Alert]/[Image] [Speech bubble] [Body] — 'In this lesson you are learning…'."
+        },
+        {
+          "name": "Lesson summary alert (supplied structure)",
+          "kind": "structural",
+          "keywords": [
+            "lesson summary",
+            "alert",
+            "need help"
+          ],
+          "component_owner": "04 Overlays (alert)",
+          "detail": "[alert]/[Speech bubble] -> [H3] Lesson Summary -> [body] 'Ka pai! You have been learning about…' -> [checkbox] -> [Hint Button][title] Need help? -> [body] 'Email or phone the kaiako. You can ring 0800 65 99 88 and ask for them or email them. If you do not know the name of your kaiako click on the words My Te Kura at the top left of your screen. The kaiako can be seen at the right of this page. They may take a minute to upload.' -> [end alert]."
+        },
+        {
+          "name": "Sticky/floating nav — Fundamentals + Help page only (deferred setup)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "sticky",
+            "nav",
+            "floating",
+            "help"
+          ],
+          "red_note": "set up the stickyNav.js file",
+          "head_html": "<script src=\"js/stickyNav.js\" type=\"text/javascript\" class=\"stickyNav\"></script>",
+          "cross_reference": "§14.11",
+          "detail": "Sticky nav offers Fundamentals and the Help page; note emitted at the top of the 0.0 content."
+        },
+        {
+          "name": "Dropboxes — up to 3, suggest 2 (Checkpoint + end-of-module)",
+          "kind": "structural",
+          "keywords": [
+            "checkpoint",
+            "dropbox",
+            "working toward"
+          ],
+          "detail": "Up to three dropboxes allowed; two suggested — one Checkpoint (midway, [ActivityDropbox] [H3] [Body], learning-journal upload) and one end-of-module. Additional activities can be linked to the checkpoint dropbox so kaiako know the ākonga is still working through. A 'working toward' dropbox uses the SAME link as the checkpoint dropbox unless otherwise stated."
+        },
+        {
+          "name": "Checkpoint + Share-Your-Learning phase copy (supplied, phases 1-4)",
+          "kind": "content_rule",
+          "keywords": [
+            "checkpoint",
+            "phase",
+            "upload",
+            "share your learning"
+          ],
+          "detail": "Phase-specific supplied copy for BOTH the midway Checkpoint and the end-of-module Share Your Learning body text (doc 14 §14.8 carries all eight versions verbatim — apply per the module's phase, never invent)."
+        },
+        {
+          "name": "Quiz rules",
+          "kind": "structural",
+          "keywords": [
+            "quiz",
+            "mtkquiz",
+            "multichoice",
+            "written response"
+          ],
+          "detail": "[MTKquiz] does NOT trigger engagement. [Multichoice] is autograded; [Written Response] is teacher-marked ('What do you think about…?') and lets learners insert images and add attachments. Max ONE quiz per every 2-3 lessons."
+        },
+        {
+          "name": "End-of-module celebration page (deferred final .gif)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "celebration",
+            "gif",
+            "congratulations",
+            "journal"
+          ],
+          "red_note": "final celebration .gif pending — draft link in use",
+          "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"congradulations/Congradulations animation.gif\" alt=\"Congradulations animation\">",
+          "layout_note": "the .gif is 1×1 and too large for col-8 — redesign the layout around the related content so it fits (do not force col-8).",
+          "detail": "Structure: [automated celebration] [H2] Congratulations! [body] 'Ka pai, you have completed this module about…' [dropbox] [H3] Share your learning [body] [button] Go to your journal [button] Upload to dropbox [alert]/[Image] [Speech bubble] [body] 'If you enjoyed this learning, you may like to explore: … Talk to your kaiako about these and other learning opportunities.'"
+        },
+        {
+          "name": "Characters in speech bubble + imageCentral (some deferred)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "character",
+            "sura",
+            "afi",
+            "alex",
+            "kai",
+            "leila"
+          ],
+          "component_owner": "04 Overlays (speech bubble)",
+          "detail": "Set: Sura, Afi, Alex, Kai, Leila. Class imageCentral; path 'health and PE characters/phase #/HP_Name_image#_phase_#.png' (e.g. HP_Sura_1_phase_1.png). Currently available: Sura and Alex.",
+          "red_note": "character not yet available — to be created and added (no 2nd-proof sign-off until added)"
+        },
+        {
+          "name": "Dropbox button label 'Upload to Dropbox'",
+          "kind": "choice",
+          "keywords": [
+            "dropbox",
+            "button",
+            "upload"
+          ],
+          "component_owner": "05 Buttons",
+          "cross_reference": "§14.11",
+          "value": "Upload to Dropbox",
+          "detail": "The celebration page also carries a 'Go to your journal' button next to 'Upload to dropbox'."
+        }
       ]
     },
-
     {
       "id": "14.4 CED P5",
       "title": "ConnectED Phase 5",
@@ -149,31 +455,106 @@
       "active": true,
       "overrides_gold": true,
       "source_updated": "2026-07-09",
-      "scope": {"type": "series-level", "label": "CED Phase 5", "prefixes": ["CEDT", "CEDK", "CEDO", "CEDR", "CEDW", "CEDC"], "level": "5", "note": "scope is Phase 5 (the '5' year-digit) of the CED prefixes"},
+      "scope": {
+        "type": "series-level",
+        "label": "CED Phase 5",
+        "prefixes": [
+          "CEDT",
+          "CEDK",
+          "CEDO",
+          "CEDR",
+          "CEDW",
+          "CEDC"
+        ],
+        "level": "5",
+        "note": "scope is Phase 5 (the '5' year-digit) of the CED prefixes"
+      },
       "conventions": [
-        {"name": "Overview = 3 tabs (Overview, Information, Standards)", "kind": "choice", "keywords": ["overview", "tabs", "information", "standards"],
-         "component_owner": "menu scaffold", "cross_reference": "Menu_Scaffold_Registry.json",
-         "registry_check": {"kind": "tab_sequence", "expect": ["Overview", "Information", "Standards"]}},
-        {"name": "Intro-page dictionary alert (supplied)", "kind": "structural", "keywords": ["dictionary", "alert", "collins", "te aka"],
-         "component_owner": "04 Overlays (alert)",
-         "html": "<div class=\"alert\"><h5>Want to use paper for this module?</h5><p>Use the <b>floating navigation arrow</b> at any time to access printable versions of the activities and resources for this module.</p><h4>Not sure about a word?</h4><p>Use the <b>floating navigation arrow</b> at any time to access the Collins Dictionary or Te Aka Māori Dictionary.</p><a href=\"https://www.collinsdictionary.com/\" target=\"_blank\"><div class=\"externalButton\">Collins Dictionary</div></a><a href=\"https://maoridictionary.co.nz/\" target=\"_blank\"><div class=\"externalButton\">Te Aka Māori Dictionary</div></a></div>"},
-        {"name": "Sticky-nav dictionary links (supplied)", "kind": "choice", "keywords": ["sticky", "nav", "dictionary", "links"],
-         "cross_reference": "§14.11",
-         "js": "var links = [['Collins Dictionary','https://www.collinsdictionary.com/','externalLink'],['Te Aka Māori Dictionary','https://maoridictionary.co.nz/','externalLink'],]"},
-        {"name": "Wānanga/talanoa boxes green cultural border", "kind": "choice", "keywords": ["wananga", "talanoa", "cultural", "green"],
-         "component_owner": "04 Overlays (alert cultural)",
-         "detail": "Framed with a culturally appropriate border, standardised across the modules, green option from the palette. Cropped/cut from iStock imagery; koru and Pasifika imagery clearly differentiated. All alerts combined unless otherwise specified.",
-         "html": "<div class=\"alert cultural\" layout=\"combined\">"},
-        {"name": "Flip cards thin border, white flipped side (.noBG)", "kind": "choice", "keywords": ["flip", "card", "noBG", "white"],
-         "component_owner": "03 Interactives (flipCard)", "cross_reference": "03_COMP_CORE_INTERACTIVES.md", "value": ".noBG on .flipCard",
-         "detail": "Thin border so images are as large as possible; flipped-side text on a white background, not blue."},
-        {"name": "PDF resources deferred (visible note, not a comment)", "kind": "deferred_asset", "keywords": ["pdf", "printable", "resource"],
-         "red_note": "pending printable resources to be linked when delivered (lesson name -> intended resource)",
-         "detail": "All PDFs are created as separate lessons/resources, submitted separately, then linked in when ready (writers' templates surface them as revision requests). Remove the PDF from the module and emit the visible note.",
-         "recorded_divergence": "The CED source doc suggested COMMENTED-OUT sticky-nav links; per the project 'comments are not a communication channel' policy this is emitted as a VISIBLE red-note instead (Fork C decision — a commented-out approach would need a separate permitted-comment-exception sign-off alongside the Mode P / MTK / PAGEFORGE-marker exceptions)."}
+        {
+          "name": "Overview = 3 tabs (Overview, Information, Standards)",
+          "kind": "choice",
+          "keywords": [
+            "overview",
+            "tabs",
+            "information",
+            "standards"
+          ],
+          "component_owner": "menu scaffold",
+          "cross_reference": "Menu_Scaffold_Registry.json",
+          "registry_check": {
+            "kind": "tab_sequence",
+            "expect": [
+              "Overview",
+              "Information",
+              "Standards"
+            ]
+          }
+        },
+        {
+          "name": "Intro-page dictionary alert (supplied)",
+          "kind": "structural",
+          "keywords": [
+            "dictionary",
+            "alert",
+            "collins",
+            "te aka"
+          ],
+          "component_owner": "04 Overlays (alert)",
+          "html": "<div class=\"alert\"><h5>Want to use paper for this module?</h5><p>Use the <b>floating navigation arrow</b> at any time to access printable versions of the activities and resources for this module.</p><h4>Not sure about a word?</h4><p>Use the <b>floating navigation arrow</b> at any time to access the Collins Dictionary or Te Aka Māori Dictionary.</p><a href=\"https://www.collinsdictionary.com/\" target=\"_blank\"><div class=\"externalButton\">Collins Dictionary</div></a><a href=\"https://maoridictionary.co.nz/\" target=\"_blank\"><div class=\"externalButton\">Te Aka Māori Dictionary</div></a></div>"
+        },
+        {
+          "name": "Sticky-nav dictionary links (supplied)",
+          "kind": "choice",
+          "keywords": [
+            "sticky",
+            "nav",
+            "dictionary",
+            "links"
+          ],
+          "cross_reference": "§14.11",
+          "js": "var links = [['Collins Dictionary','https://www.collinsdictionary.com/','externalLink'],['Te Aka Māori Dictionary','https://maoridictionary.co.nz/','externalLink'],]"
+        },
+        {
+          "name": "Wānanga/talanoa boxes green cultural border",
+          "kind": "choice",
+          "keywords": [
+            "wananga",
+            "talanoa",
+            "cultural",
+            "green"
+          ],
+          "component_owner": "04 Overlays (alert cultural)",
+          "detail": "Framed with a culturally appropriate border, standardised across the modules, green option from the palette. Cropped/cut from iStock imagery; koru and Pasifika imagery clearly differentiated. All alerts combined unless otherwise specified.",
+          "html": "<div class=\"alert cultural\" layout=\"combined\">"
+        },
+        {
+          "name": "Flip cards thin border, white flipped side (.noBG)",
+          "kind": "choice",
+          "keywords": [
+            "flip",
+            "card",
+            "noBG",
+            "white"
+          ],
+          "component_owner": "03 Interactives (flipCard)",
+          "cross_reference": "03_COMP_CORE_INTERACTIVES.md",
+          "value": ".noBG on .flipCard",
+          "detail": "Thin border so images are as large as possible; flipped-side text on a white background, not blue."
+        },
+        {
+          "name": "PDF resources deferred (visible note, not a comment)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "pdf",
+            "printable",
+            "resource"
+          ],
+          "red_note": "pending printable resources to be linked when delivered (lesson name -> intended resource)",
+          "detail": "All PDFs are created as separate lessons/resources, submitted separately, then linked in when ready (writers' templates surface them as revision requests). Remove the PDF from the module and emit the visible note.",
+          "recorded_divergence": "The CED source doc suggested COMMENTED-OUT sticky-nav links; per the project 'comments are not a communication channel' policy this is emitted as a VISIBLE red-note instead (Fork C decision — a commented-out approach would need a separate permitted-comment-exception sign-off alongside the Mode P / MTK / PAGEFORGE-marker exceptions)."
+        }
       ]
     },
-
     {
       "id": "14.1 Languages P1-4",
       "title": "Languages Phase 1-4",
@@ -182,25 +563,82 @@
       "overrides_gold": true,
       "source_updated": "2026-07-09",
       "roadmap": "asset-deferred; wire after the active four. Videos/characters supplied later by Audiovisual. No corpus presence yet.",
-      "scope": {"type": "cohort", "label": "six Languages prefixes (Chinese, French, Gagana Samoan, German, Japanese, Spanish), Phases 1-4", "cohort_prefixes": ["CHIFUN", "FREFUN", "SAMFUN", "GERFUN", "JAPFUN", "SPAFUN", "CHI", "FRE", "SAM", "GER", "JAP", "SPA"]},
+      "scope": {
+        "type": "cohort",
+        "label": "six Languages prefixes (Chinese, French, Gagana Samoan, German, Japanese, Spanish), Phases 1-4",
+        "cohort_prefixes": [
+          "CHIFUN",
+          "FREFUN",
+          "SAMFUN",
+          "GERFUN",
+          "JAPFUN",
+          "SPAFUN",
+          "CHI",
+          "FRE",
+          "SAM",
+          "GER",
+          "JAP",
+          "SPA"
+        ]
+      },
       "conventions": [
-        {"name": "Two-tile Fundamentals split (Novice/Emergent)", "kind": "choice", "keywords": ["novice", "emergent", "tile", "phasecontainer", "choicepage"],
-         "component_owner": "06 §3.3 Fundamentals sub-type", "cross_reference": "constraint 56 / JAPFUN01_0_0, JAPFUN04_0_0",
-         "detail": "A Fundamentals WT carrying Novice then Emergent content is separated into a Novice Tile + an Emergent Tile (currently one tile for Phase 4, one for Phase 5), each leading to that stream's content. phaseContainer/choicePage tile pattern; col-md-11 col-12 for the Fundamentals sub-type, col-md-8 when paired with an alertImage."},
-        {"name": "Set characters in red brackets (persist after first)", "kind": "content_rule", "keywords": ["character", "red bracket", "speaker"],
-         "detail": "Once a character has been introduced, that character is ADDED every subsequent time its tag is used — the tag is never left as bare bracket text (constraint 3) and the character is never dropped on later uses."},
-        {"name": "Videos added manually (deferred)", "kind": "deferred_asset", "keywords": ["video", "audiovisual"],
-         "red_note": "Audiovisual item to be added by designer/developer from Audiovisual.",
-         "detail": "Videos in the supplied .html examples are template placeholders ONLY — do not reuse them. Real videos come from Audiovisual."},
-        {"name": "Sticky nav on every page (deferred setup)", "kind": "deferred_asset", "keywords": ["sticky", "nav"],
-         "red_note": "set up the stickyNav.js file",
-         "head_html": "<script src=\"js/stickyNav.js\" type=\"text/javascript\" class=\"stickyNav\"></script>",
-         "cross_reference": "§14.11"},
-        {"name": "Provisional asset state — prefer a built sibling", "kind": "content_rule", "keywords": ["asset", "provisional", "sibling"],
-         "detail": "The character/asset set 'will continue to be updated' — treat the supplied examples (20260511_Language_HTML: layout/asset examples only, never content to copy) as current-but-not-final; prefer a built sibling where one exists."}
+        {
+          "name": "Two-tile Fundamentals split (Novice/Emergent)",
+          "kind": "choice",
+          "keywords": [
+            "novice",
+            "emergent",
+            "tile",
+            "phasecontainer",
+            "choicepage"
+          ],
+          "component_owner": "06 §3.3 Fundamentals sub-type",
+          "cross_reference": "constraint 56 / JAPFUN01_0_0, JAPFUN04_0_0",
+          "detail": "A Fundamentals WT carrying Novice then Emergent content is separated into a Novice Tile + an Emergent Tile (currently one tile for Phase 4, one for Phase 5), each leading to that stream's content. phaseContainer/choicePage tile pattern; col-md-11 col-12 for the Fundamentals sub-type, col-md-8 when paired with an alertImage."
+        },
+        {
+          "name": "Set characters in red brackets (persist after first)",
+          "kind": "content_rule",
+          "keywords": [
+            "character",
+            "red bracket",
+            "speaker"
+          ],
+          "detail": "Once a character has been introduced, that character is ADDED every subsequent time its tag is used — the tag is never left as bare bracket text (constraint 3) and the character is never dropped on later uses."
+        },
+        {
+          "name": "Videos added manually (deferred)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "video",
+            "audiovisual"
+          ],
+          "red_note": "Audiovisual item to be added by designer/developer from Audiovisual.",
+          "detail": "Videos in the supplied .html examples are template placeholders ONLY — do not reuse them. Real videos come from Audiovisual."
+        },
+        {
+          "name": "Sticky nav on every page (deferred setup)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "sticky",
+            "nav"
+          ],
+          "red_note": "set up the stickyNav.js file",
+          "head_html": "<script src=\"js/stickyNav.js\" type=\"text/javascript\" class=\"stickyNav\"></script>",
+          "cross_reference": "§14.11"
+        },
+        {
+          "name": "Provisional asset state — prefer a built sibling",
+          "kind": "content_rule",
+          "keywords": [
+            "asset",
+            "provisional",
+            "sibling"
+          ],
+          "detail": "The character/asset set 'will continue to be updated' — treat the supplied examples (20260511_Language_HTML: layout/asset examples only, never content to copy) as current-but-not-final; prefer a built sibling where one exists."
+        }
       ]
     },
-
     {
       "id": "14.2 Pathways L1",
       "title": "Pathways Level 1",
@@ -209,25 +647,81 @@
       "overrides_gold": true,
       "source_updated": "2026-07-09",
       "roadmap": "persona identities/images + overview DEFERRED (EDR pending). Level 2 HELD. No corpus presence yet.",
-      "scope": {"type": "series-level", "label": "Pathways Level 1 (development focus Terms 2-3)", "prefixes": ["PWO", "PADO", "PATH"], "level": "1"},
+      "scope": {
+        "type": "series-level",
+        "label": "Pathways Level 1 (development focus Terms 2-3)",
+        "prefixes": [
+          "PWO",
+          "PADO",
+          "PATH"
+        ],
+        "level": "1"
+      },
       "conventions": [
-        {"name": "Course navigation = 'Sections' not 'Fundamentals'", "kind": "choice", "keywords": ["section", "navigation", "course"],
-         "detail": "Course home reveals Section tiles, each opening to its modules. Three sections: 1. Where am I going? 2. How do I get there? 3. What might the future hold? (Te Reo translations pending -> red-note where a Te Reo section title is required)."},
-        {"name": "Lesson structure 3 lessons × sub-parts", "kind": "structural", "keywords": ["lesson", "sub-part", "structure"],
-         "detail": "Most L1 Pathways modules have three lessons with sub-parts (1.1-1.3, 2.1-2.3, 3.1-3.3); some fewer depending on content. Content is a mixture of refreshed, new, and merged material from the old Pathways course."},
-        {"name": "Persona tagging pattern (deferred identities/images)", "kind": "deferred_asset", "keywords": ["persona", "audioimage", "photograph", "transcript"],
-         "red_note": "persona identity + circle image + audio to be confirmed once the EDR is finalised (use a placeholder image meanwhile)",
-         "detail": "Rangatahi personas with a recognisable circle image. Tagging: [Persona box] -> [Audioimage] (play button) -> [Photograph in a circle] -> [Audiovisual item N {name}] (real audio recordings, not AI) -> [Transcript button]. Identities: Section 1 Whai; Section 2 Leilani and Bailey; Section 3 Māia (EDR under development, some images TBC)."},
-        {"name": "No new-curriculum K/P statements yet (deferred)", "kind": "deferred_asset", "keywords": ["curriculum", "knowledge", "practice", "k/p"],
-         "red_note": "curriculum K/P statements are a revision request once the curriculum is announced — do not add in-module",
-         "detail": "No new Pathways curriculum yet — the WT leaves a placeholder; meanwhile only short learning intentions and success criteria are included."},
-        {"name": "Overview deferred", "kind": "deferred_asset", "keywords": ["overview"],
-         "red_note": "Pathways overview to be set once the first module is complete"},
-        {"name": "Level 2 HELD — no action this scope", "kind": "content_rule", "keywords": ["level 2", "held", "pause"],
-         "detail": "Pathways L2 is on pause. Six L2 'green' edit-proof modules exist for the refreshed template — PWO2004, PWO2007, PWO2009, PWO2010, PWO2021, PWO2028 — with an edit-proof sheet. Developers revisit next term when a L2 timeline is set. Recorded for reference only; NO L2 conventions are active."}
+        {
+          "name": "Course navigation = 'Sections' not 'Fundamentals'",
+          "kind": "choice",
+          "keywords": [
+            "section",
+            "navigation",
+            "course"
+          ],
+          "detail": "Course home reveals Section tiles, each opening to its modules. Three sections: 1. Where am I going? 2. How do I get there? 3. What might the future hold? (Te Reo translations pending -> red-note where a Te Reo section title is required)."
+        },
+        {
+          "name": "Lesson structure 3 lessons × sub-parts",
+          "kind": "structural",
+          "keywords": [
+            "lesson",
+            "sub-part",
+            "structure"
+          ],
+          "detail": "Most L1 Pathways modules have three lessons with sub-parts (1.1-1.3, 2.1-2.3, 3.1-3.3); some fewer depending on content. Content is a mixture of refreshed, new, and merged material from the old Pathways course."
+        },
+        {
+          "name": "Persona tagging pattern (deferred identities/images)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "persona",
+            "audioimage",
+            "photograph",
+            "transcript"
+          ],
+          "red_note": "persona identity + circle image + audio to be confirmed once the EDR is finalised (use a placeholder image meanwhile)",
+          "detail": "Rangatahi personas with a recognisable circle image. Tagging: [Persona box] -> [Audioimage] (play button) -> [Photograph in a circle] -> [Audiovisual item N {name}] (real audio recordings, not AI) -> [Transcript button]. Identities: Section 1 Whai; Section 2 Leilani and Bailey; Section 3 Māia (EDR under development, some images TBC)."
+        },
+        {
+          "name": "No new-curriculum K/P statements yet (deferred)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "curriculum",
+            "knowledge",
+            "practice",
+            "k/p"
+          ],
+          "red_note": "curriculum K/P statements are a revision request once the curriculum is announced — do not add in-module",
+          "detail": "No new Pathways curriculum yet — the WT leaves a placeholder; meanwhile only short learning intentions and success criteria are included."
+        },
+        {
+          "name": "Overview deferred",
+          "kind": "deferred_asset",
+          "keywords": [
+            "overview"
+          ],
+          "red_note": "Pathways overview to be set once the first module is complete"
+        },
+        {
+          "name": "Level 2 HELD — no action this scope",
+          "kind": "content_rule",
+          "keywords": [
+            "level 2",
+            "held",
+            "pause"
+          ],
+          "detail": "Pathways L2 is on pause. Six L2 'green' edit-proof modules exist for the refreshed template — PWO2004, PWO2007, PWO2009, PWO2010, PWO2021, PWO2028 — with an edit-proof sheet. Developers revisit next term when a L2 timeline is set. Recorded for reference only; NO L2 conventions are active."
+        }
       ]
     },
-
     {
       "id": "14.3 Taonga",
       "title": "Taonga (The Arts)",
@@ -236,21 +730,65 @@
       "overrides_gold": true,
       "source_updated": "2026-07-09",
       "roadmap": "overview + images + Tui Toi character DEFERRED (Livia creating art).",
-      "scope": {"type": "cohort", "label": "all Taonga modules (all phases) — resemble FUNs but are Taonga, not FUNs, because they have dropboxes attached", "cohort_prefixes": ["ARFUN", "ARWHA", "ART", "ARTFUN", "TAO", "TAONGA"]},
+      "scope": {
+        "type": "cohort",
+        "label": "all Taonga modules (all phases) — resemble FUNs but are Taonga, not FUNs, because they have dropboxes attached",
+        "cohort_prefixes": [
+          "ARFUN",
+          "ARWHA",
+          "ART",
+          "ARTFUN",
+          "TAO",
+          "TAONGA"
+        ]
+      },
       "conventions": [
-        {"name": "Intro page + clickable lesson images (any order)", "kind": "choice", "keywords": ["intro", "clickable", "lesson image", "fun"],
-         "detail": "Set out like a Maths 1-10 FUN: intro page then images to click; lessons any order; side-nav tabs inside each lesson so ākonga work through it in any order."},
-        {"name": "Per-lesson layout A-F", "kind": "structural", "keywords": ["overview", "engage", "explore", "create", "extend", "links"],
-         "detail": "A Overview (LI/SC + vocab pull-out box), B Engage (I do — short stimulus), C Explore (We do — simple online activity/interactive), D Create (You do — hands-on away from screen, kaiako-assessed through a dropbox), E Extend (Optional challenge), F Links to: (Optional — connects learning across the programme)."},
-        {"name": "Unique overview + images deferred", "kind": "deferred_asset", "keywords": ["overview", "image"],
-         "red_note": "overview to be set once the first module is complete; use placeholder images until updated links come through from the first module's Comparison Mode run",
-         "detail": "Taonga modules use a unique overview (not the generic pattern)."},
-        {"name": "Tui Toi character deferred", "kind": "deferred_asset", "keywords": ["tui toi", "character"],
-         "red_note": "Tui Toi character art being created by Livia — use a placeholder until delivered",
-         "detail": "Tui Toi features in each Taonga module and varies from phase to phase."}
+        {
+          "name": "Intro page + clickable lesson images (any order)",
+          "kind": "choice",
+          "keywords": [
+            "intro",
+            "clickable",
+            "lesson image",
+            "fun"
+          ],
+          "detail": "Set out like a Maths 1-10 FUN: intro page then images to click; lessons any order; side-nav tabs inside each lesson so ākonga work through it in any order."
+        },
+        {
+          "name": "Per-lesson layout A-F",
+          "kind": "structural",
+          "keywords": [
+            "overview",
+            "engage",
+            "explore",
+            "create",
+            "extend",
+            "links"
+          ],
+          "detail": "A Overview (LI/SC + vocab pull-out box), B Engage (I do — short stimulus), C Explore (We do — simple online activity/interactive), D Create (You do — hands-on away from screen, kaiako-assessed through a dropbox), E Extend (Optional challenge), F Links to: (Optional — connects learning across the programme)."
+        },
+        {
+          "name": "Unique overview + images deferred",
+          "kind": "deferred_asset",
+          "keywords": [
+            "overview",
+            "image"
+          ],
+          "red_note": "overview to be set once the first module is complete; use placeholder images until updated links come through from the first module's Comparison Mode run",
+          "detail": "Taonga modules use a unique overview (not the generic pattern)."
+        },
+        {
+          "name": "Tui Toi character deferred",
+          "kind": "deferred_asset",
+          "keywords": [
+            "tui toi",
+            "character"
+          ],
+          "red_note": "Tui Toi character art being created by Livia — use a placeholder until delivered",
+          "detail": "Tui Toi features in each Taonga module and varies from phase to phase."
+        }
       ]
     },
-
     {
       "id": "14.5 FUNdamentals HPE",
       "title": "H&PE FUNdamentals (Y1-10)",
@@ -259,15 +797,39 @@
       "overrides_gold": true,
       "source_updated": "2026-07-09",
       "roadmap": "refines the existing Fundamentals sub-type (06 §3.3) — recognition stays in 06; content conventions here. 16 FUNs coming. Wire after active four.",
-      "scope": {"type": "cohort", "label": "H&PE FUNdamentals (16 FUNs coming)", "cohort_prefixes": ["HPFUN", "PHEFUN"]},
+      "scope": {
+        "type": "cohort",
+        "label": "H&PE FUNdamentals (16 FUNs coming)",
+        "cohort_prefixes": [
+          "HPFUN",
+          "PHEFUN"
+        ]
+      },
       "conventions": [
-        {"name": "Tab-nav layout 5-6 RHS tabs", "kind": "structural", "keywords": ["tab", "nav", "fundamentals"],
-         "component_owner": "06 §3.3", "detail": "First tab = introduction, last tab = reflection; each tab a short lesson. Sub-type recognition (body class fundamentals container-fluid, div.phases -> div.fundamentalsPanel, footer-nav fundamentals-nav) stays in 06 §3.3."},
-        {"name": "Inline interactives + one engagement quiz in reflection tab", "kind": "structural", "keywords": ["quiz", "engagement", "reflection", "interactive"],
-         "detail": "Each module has inline interactives and ONE quiz to trigger engagement, placed in the reflection tab."}
+        {
+          "name": "Tab-nav layout 5-6 RHS tabs",
+          "kind": "structural",
+          "keywords": [
+            "tab",
+            "nav",
+            "fundamentals"
+          ],
+          "component_owner": "06 §3.3",
+          "detail": "First tab = introduction, last tab = reflection; each tab a short lesson. Sub-type recognition (body class fundamentals container-fluid, div.phases -> div.fundamentalsPanel, footer-nav fundamentals-nav) stays in 06 §3.3."
+        },
+        {
+          "name": "Inline interactives + one engagement quiz in reflection tab",
+          "kind": "structural",
+          "keywords": [
+            "quiz",
+            "engagement",
+            "reflection",
+            "interactive"
+          ],
+          "detail": "Each module has inline interactives and ONE quiz to trigger engagement, placed in the reflection tab."
+        }
       ]
     },
-
     {
       "id": "14.9 BLLR",
       "title": "Blended Literacy (Reading)",
@@ -276,21 +838,50 @@
       "overrides_gold": true,
       "source_updated": "2026-07-09",
       "roadmap": "parameters explicitly PARTIAL ('Most of the parameters still to come'); bookworm art + audio under development. No corpus presence yet.",
-      "scope": {"type": "module-series", "label": "BLLR modules — a DISTINCT prefix from BLL; §14.7 conventions do NOT automatically bind BLLR", "prefixes": ["BLLR"]},
+      "scope": {
+        "type": "module-series",
+        "label": "BLLR modules — a DISTINCT prefix from BLL; §14.7 conventions do NOT automatically bind BLLR",
+        "prefixes": [
+          "BLLR"
+        ]
+      },
       "conventions": [
-        {"name": "BLLR is NOT BLL — no §14.7 inheritance", "kind": "carve_out", "keywords": ["bll", "distinct", "inherit"],
-         "cross_reference": "§14.7 / §14.11",
-         "detail": "The BLL conventions (Sassoon font, elkonin boxes, .dropbox carve-out, etc.) are scoped to BLL and do not automatically bind BLLR. Where a BLLR module needs a BLL convention it must be recorded HERE explicitly or raised as a Red Flag. Parameters incomplete — prefer a built BLLR sibling (Mode B) where one exists; Red Flag any BLLR convention this section does not yet cover rather than inferring from §14.7."},
-        {"name": "Bookworm avatar by module-code range (deferred art + audio)", "kind": "deferred_asset", "keywords": ["bookworm", "avatar", "character"],
-         "red_note": "bookworm character art still under development; audio/audiovisual to be developed; confirm exact filename casing when assets are delivered",
-         "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"bookworms/bookworm_1.jpg\" alt=\"Bookworm\" >",
-         "detail": "Cartoon bookworm (plump, energetic — per the AVR form), one per year suite: bookworm_1.jpg = BLLR201-BLLR210 (Year 4); bookworm_2.jpg = BLLR211-BLLR220 (Year 5); bookworm_3.jpg = BLLR221-BLLR230 (Year 6). Folder bookworms/. The source email capitalises the first filename (Bookworm_1.jpg) but its supplied <img> uses lower-case — FOLLOW THE SUPPLIED <img> (lower-case bookworm_N.jpg) and red-note the casing question."},
-        {"name": "'Secret shelf' + 'Whispering Archives' map — design under construction", "kind": "deferred_asset", "keywords": ["secret shelf", "whispering archives", "map"],
-         "red_note": "Design is under construction with the development team.",
-         "detail": "Both features are explicitly required to carry a red note, IN PLACE. This is a direct instruction from the design authority (right-but-pending -> 'Designer/Developer To Do:' prefix), NOT a Convertor-detected gap (never 'Red Flag:')."}
+        {
+          "name": "BLLR is NOT BLL — no §14.7 inheritance",
+          "kind": "carve_out",
+          "keywords": [
+            "bll",
+            "distinct",
+            "inherit"
+          ],
+          "cross_reference": "§14.7 / §14.11",
+          "detail": "The BLL conventions (Sassoon font, elkonin boxes, .dropbox carve-out, etc.) are scoped to BLL and do not automatically bind BLLR. Where a BLLR module needs a BLL convention it must be recorded HERE explicitly or raised as a Red Flag. Parameters incomplete — prefer a built BLLR sibling (Mode B) where one exists; Red Flag any BLLR convention this section does not yet cover rather than inferring from §14.7."
+        },
+        {
+          "name": "Bookworm avatar by module-code range (deferred art + audio)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "bookworm",
+            "avatar",
+            "character"
+          ],
+          "red_note": "bookworm character art still under development; audio/audiovisual to be developed; confirm exact filename casing when assets are delivered",
+          "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"bookworms/bookworm_1.jpg\" alt=\"Bookworm\" >",
+          "detail": "Cartoon bookworm (plump, energetic — per the AVR form), one per year suite: bookworm_1.jpg = BLLR201-BLLR210 (Year 4); bookworm_2.jpg = BLLR211-BLLR220 (Year 5); bookworm_3.jpg = BLLR221-BLLR230 (Year 6). Folder bookworms/. The source email capitalises the first filename (Bookworm_1.jpg) but its supplied <img> uses lower-case — FOLLOW THE SUPPLIED <img> (lower-case bookworm_N.jpg) and red-note the casing question."
+        },
+        {
+          "name": "'Secret shelf' + 'Whispering Archives' map — design under construction",
+          "kind": "deferred_asset",
+          "keywords": [
+            "secret shelf",
+            "whispering archives",
+            "map"
+          ],
+          "red_note": "Design is under construction with the development team.",
+          "detail": "Both features are explicitly required to carry a red note, IN PLACE. This is a direct instruction from the design authority (right-but-pending -> 'Designer/Developer To Do:' prefix), NOT a Convertor-detected gap (never 'Red Flag:')."
+        }
       ]
     },
-
     {
       "id": "14.10 MiW WJ",
       "title": "My Te Kura Writing (MiW)",
@@ -299,85 +890,374 @@
       "overrides_gold": true,
       "source_updated": "2026-07-09",
       "roadmap": "Kea art + audio under development. No corpus presence yet.",
-      "scope": {"type": "cohort", "label": "all MiW (Writing) FUNdamentals and modules — module codes always begin WJ", "cohort_prefixes": ["WJ"]},
+      "scope": {
+        "type": "cohort",
+        "label": "all MiW (Writing) FUNdamentals and modules — module codes always begin WJ",
+        "cohort_prefixes": [
+          "WJ"
+        ]
+      },
       "conventions": [
-        {"name": "FUN vs module — trailing-digit naming test", "kind": "content_rule", "keywords": ["fun", "trailing digit", "naming"],
-         "cross_reference": "06 §3.3",
-         "detail": "Within WJ: a FUNdamentals templated resource ends in 0 (WJ200, WJ210); a normal module ends in a non-zero digit (WJ201, WJ218). NAMING test only — structural sub-type recognition stays in 06 §3.3, and Mode B sibling authority still wins where they disagree."},
-        {"name": "NZ map on every intro page (star + road sign at the town)", "kind": "structural", "keywords": ["map", "new zealand", "imagelabel", "town"],
-         "html": "<div class=\"imageLabel\" layout=\"map\"><img class=\"img-fluid imageCentral imgLabel\" src=\"New Zealand/iStock-1454804075.png\" alt=\"New zealand map\"><div class=\"label\" direction=\"horizontal\" top=\"20%\" left=\"20%\" pointTop=\"50%\" pointLeft=\"50%\"><p>Placename</p></div></div>",
-         "red_note": "position the star/road sign for the named town (the supplied top/left/pointTop/pointLeft values are the reference example, not a default)",
-         "detail": "Every intro page of FUNs and modules: NZ image on the right-hand side, star + road sign at the town being learned about. The label <p> carries the placename; per-town percentages are content-specific. Acknowledgement entry: '<p>Photo: New Zealand Topographic Relief Map - 3D Render, iStock 1454804075, Getty Images. Used with permission.</p>'"},
-        {"name": "FUN layout: intro + clickable lesson tiles, any order", "kind": "choice", "keywords": ["fun", "tile", "intro", "lesson"],
-         "detail": "Like other FUNs — intro page then clickable images to specific lessons, any order; side-nav tabs inside each lesson (Maths 1-10 FUNS pattern). Tile images consistent across each phase per FUN topic; all tiles in a FUN the same phase."},
-        {"name": "Kea character by phase (deferred art + audio)", "kind": "deferred_asset", "keywords": ["kea", "character", "speech bubble", "audio"],
-         "red_note": "Kea character art and audio still under development",
-         "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"kea_characters/kea_1.jpg\" alt=\"Kea character\" >",
-         "component_owner": "04 Segments/Overlays (speech bubble)",
-         "detail": "Kea features within each lesson, varying slightly by phase (medallion placement / wing colours). Folder kea_characters/; kea_1.jpg / kea_2.jpg / kea_3.jpg per phase. When Kea appears he also has a speech bubble and audio (mechanics stay in 04)."}
+        {
+          "name": "FUN vs module — trailing-digit naming test",
+          "kind": "content_rule",
+          "keywords": [
+            "fun",
+            "trailing digit",
+            "naming"
+          ],
+          "cross_reference": "06 §3.3",
+          "detail": "Within WJ: a FUNdamentals templated resource ends in 0 (WJ200, WJ210); a normal module ends in a non-zero digit (WJ201, WJ218). NAMING test only — structural sub-type recognition stays in 06 §3.3, and Mode B sibling authority still wins where they disagree."
+        },
+        {
+          "name": "NZ map on every intro page (star + road sign at the town)",
+          "kind": "structural",
+          "keywords": [
+            "map",
+            "new zealand",
+            "imagelabel",
+            "town"
+          ],
+          "html": "<div class=\"imageLabel\" layout=\"map\"><img class=\"img-fluid imageCentral imgLabel\" src=\"New Zealand/iStock-1454804075.png\" alt=\"New zealand map\"><div class=\"label\" direction=\"horizontal\" top=\"20%\" left=\"20%\" pointTop=\"50%\" pointLeft=\"50%\"><p>Placename</p></div></div>",
+          "red_note": "position the star/road sign for the named town (the supplied top/left/pointTop/pointLeft values are the reference example, not a default)",
+          "detail": "Every intro page of FUNs and modules: NZ image on the right-hand side, star + road sign at the town being learned about. The label <p> carries the placename; per-town percentages are content-specific. Acknowledgement entry: '<p>Photo: New Zealand Topographic Relief Map - 3D Render, iStock 1454804075, Getty Images. Used with permission.</p>'"
+        },
+        {
+          "name": "FUN layout: intro + clickable lesson tiles, any order",
+          "kind": "choice",
+          "keywords": [
+            "fun",
+            "tile",
+            "intro",
+            "lesson"
+          ],
+          "detail": "Like other FUNs — intro page then clickable images to specific lessons, any order; side-nav tabs inside each lesson (Maths 1-10 FUNS pattern). Tile images consistent across each phase per FUN topic; all tiles in a FUN the same phase."
+        },
+        {
+          "name": "Kea character by phase (deferred art + audio)",
+          "kind": "deferred_asset",
+          "keywords": [
+            "kea",
+            "character",
+            "speech bubble",
+            "audio"
+          ],
+          "red_note": "Kea character art and audio still under development",
+          "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"kea_characters/kea_1.jpg\" alt=\"Kea character\" >",
+          "component_owner": "04 Segments/Overlays (speech bubble)",
+          "detail": "Kea features within each lesson, varying slightly by phase (medallion placement / wing colours). Folder kea_characters/; kea_1.jpg / kea_2.jpg / kea_3.jpg per phase. When Kea appears he also has a speech bubble and audio (mechanics stay in 04)."
+        }
       ]
     }
   ],
-
   "_cross_cutting": {
     "doc_section": "14.11",
     "overrides_gold": true,
     "notes": [
-      {"name": "'Upload to Dropbox' series label (BLL / LS / HPE)",
-       "detail": "These three families label the dropbox submission button 'Upload to Dropbox' (also seen as 'Upload to dropbox'). Series-scoped — sits alongside, does NOT overturn, the universal 'Go to dropbox' / 'Go to portfolio' default (constraint 55 / 05 Buttons). Outside these three families the universal 'Go to …' label still applies. The HPE celebration page also carries a 'Go to your journal' button next to its 'Upload to dropbox' button."},
-      {"name": "BLL dropbox-wrapper carve-out is BLL-only",
-       "detail": "BLL is the one series that does not append the dropbox modifier to the .activity wrapper (§14.7). Scoped to BLL only — does NOT extend to the separate BLLR series (§14.9). Every other series follows constraint 43 unchanged."},
-      {"name": "stickyNav in the <head>",
-       "detail": "Recurs across Languages P1-4 (every page), CED P5 (dictionary links), HPE (Fundamentals + Help page) — each documented in its section. Split Mode base files are the exception: they carry NO stickyNav (13_SPLIT_MODE.md)."},
-      {"name": "Deferred-item convention",
-       "detail": "Every 'TO DO / TBC / placeholder / under development' item across these families is emitted as a VISIBLE 'Designer/Developer To Do:' red-note placeholder (red + bold), never a hidden comment and never silently dropped — the pattern is built and the pending asset/URL/setup is flagged for production (02 Source-Specific Red-Note Prefixes; constraint 59)."}
+      {
+        "name": "'Upload to Dropbox' series label (BLL / LS / HPE)",
+        "detail": "These three families label the dropbox submission button 'Upload to Dropbox' (also seen as 'Upload to dropbox'). Series-scoped — sits alongside, does NOT overturn, the universal 'Go to dropbox' / 'Go to portfolio' default (constraint 55 / 05 Buttons). Outside these three families the universal 'Go to …' label still applies. The HPE celebration page also carries a 'Go to your journal' button next to its 'Upload to dropbox' button."
+      },
+      {
+        "name": "BLL dropbox-wrapper carve-out is BLL-only",
+        "detail": "BLL is the one series that does not append the dropbox modifier to the .activity wrapper (§14.7). Scoped to BLL only — does NOT extend to the separate BLLR series (§14.9). Every other series follows constraint 43 unchanged."
+      },
+      {
+        "name": "stickyNav in the <head>",
+        "detail": "Recurs across Languages P1-4 (every page), CED P5 (dictionary links), HPE (Fundamentals + Help page) — each documented in its section. Split Mode base files are the exception: they carry NO stickyNav (13_SPLIT_MODE.md)."
+      },
+      {
+        "name": "Deferred-item convention",
+        "detail": "Every 'TO DO / TBC / placeholder / under development' item across these families is emitted as a VISIBLE 'Designer/Developer To Do:' red-note placeholder (red + bold), never a hidden comment and never silently dropped — the pattern is built and the pending asset/URL/setup is flagged for production (02 Source-Specific Red-Note Prefixes; constraint 59)."
+      }
     ]
   },
-
   "_universal_conventions": {
     "doc_section": "Change Ledger (12_CHANGE_LEDGER, the online HTML Convertor Claude project) — UNIVERSAL rows triaged into PageForge V2 (round 219, 2026-07-12)",
     "overrides_gold": true,
     "gold_override_policy_ref": "_meta.gold_override_policy applies to every rule below verbatim: these are forward-looking design-authority decisions the human gold library largely PREDATES. A WT->gold stocktake divergence matching a rule here is an INTENTIONAL override — record it, never chase the converter back toward the gold, never reverse it in an audit. vet_issue.py surfaces these rules for every module (universal scope) exactly like the marked doc-14 families.",
     "triage_note": "Source: the ledger Chris pasted 2026-07-12 (last updated 2026-07-09 22:54). ONLINE-PROJECT-ONLY rows deliberately NOT incorporated — they govern the Claude-project chat workflow, never conversion output: CL-0006 (Update Mode conflict routing), CL-0009 + CL-0011 + CL-0012 (SPLIT MODE, one-file-per-response cadence, PAGEFORGE-GUIDE stitch comments — PageForge V2 emits multi-file output natively in one run; the stitch contract at pageforge-site/SPLIT_MODE_AND_STITCH_CONTRACT.md binds the V1.5 app + the online Convertor, not V2), CL-0014 (knowledge-base file architecture; its CONTENT = doc 14, captured in THIS file at round 218), CL-0027 (no-op audit row), CL-0028 (Comparison-Mode reporting exclusions — V2's equivalent already exists: the cv2-note/cv2-comment class exclusion in every protected gate). CL-0005 is REVERTED (superseded by CL-0007): never re-introduce a 'col-md-10 reserved for wide interactives' rule. CL-0015..CL-0022 + CL-0024 + CL-0025 are the doc-14 subject families, captured at round 218 above.",
     "rules": [
-      {"id": "cl0010_cl0013_red_note_prefixes", "ledger_id": "CL-0010 + CL-0013 (extends CL-0008)", "status": "LIVE — round 219",
-       "name": "Source-specific red-note prefixes, red + bold",
-       "keywords": ["red note", "prefix", "writers note", "red flag", "note from", "designer/developer to do", "cs:", "bold note", "designer note", "reviewer comment"],
-       "rule": "Every designer-facing note renders <p ... style=\"color: red; font-weight: bold;\"> with a SOURCE prefix: 'Note from {author}:' (whitelisted reviewer Word comment, author + text verbatim) / 'Writers Note:' (the writer's own red-text note or CS instruction) / 'Red Flag:' (a converter-detected issue) / 'Designer/Developer To Do:' (a deferred asset/URL/setup of a correctly-built pattern). Always visible, never a hidden HTML comment, never student-facing.",
-       "v2_home": "Emit_Templates.red_flag (form/cs_form/todo_form + ledger_note_scheme) + Comment_Authors.render.form; env NOTESCHEME_OFF; gate parity in compare_structure.py/body_compare.py (new prefixes ADDED, legacy kept)",
-       "gold_note": "The human gold strips ALL developer notes — no gold counterpart exists under either scheme; the cv2-note/cv2-comment classes keep every note excluded from every protected gate."},
-      {"id": "cl0008_reviewer_comment_capture", "ledger_id": "CL-0008 (prefix superseded by CL-0010)", "status": "IN EFFECT since round 72; prefix updated round 219",
-       "name": "Whitelisted reviewer comments rendered as visible red designer messages",
-       "keywords": ["word comment", "reviewer", "whitelist", "kate scanlon", "nadia stanton", "caroline schwer", "simon vita", "amanda griffiths", "creative services comment"],
-       "rule": "Actionable native Word comments from the six whitelisted Creative-Services reviewers surface as visible red+bold notes positioned immediately before the element they refer to; never hidden, never dropped, never [tag]-parsed. Non-actionable copyright/permission boilerplate is filtered (Comment_Authors.content_filter).",
-       "v2_home": "DocxExtractor comment capture + Comment_Authors.json (round 72); render form per CL-0010 (round 219)"},
-      {"id": "cl0007_activity_wrapper_widths", "ledger_id": "CL-0007 (supersedes the REVERTED CL-0005)", "status": "CAPTURED (prohibition already satisfied live; affirmative widths await their own gate-proven round)",
-       "name": "Activity/interactive wrappers never col-md-10; generation-default widths by template family",
-       "keywords": ["col-md-10", "activity width", "wrapper width", "interactive wrapper", "alertimage", "col-md-11"],
-       "rule": "An activity/interactive wrapper NEVER uses col-md-10. Generation defaults where no built same-series sibling dictates otherwise: Standard family -> col-12; Inquiry/Fundamentals (container-fluid body class) -> col-md-11 col-12; an activity paired with an alertImage -> activity col-md-8 col-12 + image col-md-4 (8+4=12, overrides the sub-type default). Radio-quiz option cells stay col-md-1 (inner geometry). FORWARD-ONLY: existing gold col-md-10 wrappers are never retro-flagged.",
-       "v2_home": "activity_wrapper templates (Emit_Templates) + the cascade; wire the affirmative widths in a dedicated measured round (named DOC-14-delta gate treatment per _meta.gold_override_policy.gate_policy)",
-       "measured_r219": "Claude ships 0 col-md-10 activity wrappers (prohibition already satisfied; the box's inner col is col-12). Gold sample 1258 sites: col-md-8 col-12 = 78%, col-md-12 = 7%, col-12 = 6%, col-md-10 = 3% (pre-rule), col-md-11 = 1%. Doc-14's own Mode-B rule (a built same-series sibling wins on pure STRUCTURE) governs the existing families, whose gold ships col-md-8 — so the affirmative widths apply to no-sibling-precedent generation (new families/modules); flipping the existing corpus wholesale would be wrong on the design team's own precedence. Never copy gold's col-md-10 minority."},
-      {"id": "cl0001_image_alt_text", "ledger_id": "CL-0001", "status": "PROHIBITION LIVE-BY-COMPLIANCE; API-name preference is input-deferred",
-       "name": "Image alt text: never 'stock photo'; prefer the iStock/Getty API image name",
-       "keywords": ["alt text", "stock photo", "image alt", "getty name"],
-       "rule": "Alt text NEVER contains the words 'stock photo'. For iStock images, prioritise the iStock/Getty API image name as the alt text WHEN an API-sourced iStock acknowledgements file is supplied.",
-       "v2_home": "MediaBuilder.image (alt emission); the API-name half needs the iStock acknowledgements file, which is NOT in V2's WT+Media-List input contract yet — adopt when that input arrives",
-       "measured_r219": "Claude corpus sample: 0 'stock photo' alts. Gold sample: 84 (predates the rule) — a stocktake reading 'gold has stock-photo alt, Claude does not' is an INTENTIONAL override, never a regression; do NOT copy gold's alt strings."},
-      {"id": "cl0002_istock_acks_file", "ledger_id": "CL-0002", "status": "INPUT-DEFERRED (forward-provisioned)",
-       "name": "API-sourced iStock acknowledgements file is authoritative",
-       "keywords": ["istock acknowledgement", "acks file", "getty images entry", "url slug"],
-       "rule": "When an API-sourced iStock acknowledgements file is supplied as an input, its iStock acks entries are used VERBATIM in the acknowledgements block, overriding URL-slug derivation; its image name is the preferred alt text (CL-0001).",
-       "v2_home": "AcksBuilder + Acks_Formats.json — currently derives from the Media List URL slug (the corpus convention); the file input does not exist in V2's contract yet. When adopted: entries verbatim, slug derivation demoted to fallback."},
-      {"id": "cl0003_cl0026_video_acks", "ledger_id": "CL-0003 + CL-0026 (+ CL-0027 no-op)", "status": "IN EFFECT (verified round 219)",
-       "name": "Video acks entry format + the published title is ALWAYS authoritative",
-       "keywords": ["video title", "video acknowledgement", "youtube acks", "retrieved date", "media list title"],
-       "rule": "Video/YouTube acks entry: 'Video: {title}, {author/channel}, <a>{link}</a>, retrieved d/m/y. Used in online learning within the exception for education.' — retrieved date = processing date. The title is ALWAYS the video's full PUBLISHED title, never the Media List Description (writers abbreviate/mis-state/invent titles — the Media List identifies WHICH video; the published title names it). An unconfirmable title raises a visible flag, never a Media-List fallback.",
-       "v2_home": "Acks_Formats.entry_templates.youtube (byte-matches the mandated entry) + oEmbed published-title fetch + the ack_todo '[VIDEO TITLE REQUIRED]' visible slot on fetch failure — all already V2 behaviour."},
-      {"id": "cl0004_cl0023_button_labels", "ledger_id": "CL-0004 + CL-0023", "status": "IN EFFECT / captured (_cross_cutting)",
-       "name": "Submission-button labels: full 'Go to …' kept; BLL/LS/HPE say 'Upload to Dropbox'",
-       "keywords": ["go to dropbox", "go to portfolio", "button label", "upload to dropbox", "submission button"],
-       "rule": "Dropbox/portfolio submission buttons keep the FULL 'Go to dropbox' / 'Go to portfolio' label — the 'Go to' prefix is never dropped. The BLL / LS / HPE families label the button 'Upload to Dropbox' (a series label sitting alongside, not overturning, the universal default).",
-       "v2_home": "Button labels are writer/corpus-derived and never truncated (rounds 56/66); the series label is recorded in _cross_cutting ('Upload to Dropbox') + the r66 BLL dropbox house-style machinery."}
+      {
+        "id": "cl0010_cl0013_red_note_prefixes",
+        "ledger_id": "CL-0010 + CL-0013 (extends CL-0008)",
+        "status": "LIVE — round 219",
+        "name": "Source-specific red-note prefixes, red + bold",
+        "keywords": [
+          "red note",
+          "prefix",
+          "writers note",
+          "red flag",
+          "note from",
+          "designer/developer to do",
+          "cs:",
+          "bold note",
+          "designer note",
+          "reviewer comment"
+        ],
+        "rule": "Every designer-facing note renders <p ... style=\"color: red; font-weight: bold;\"> with a SOURCE prefix: 'Note from {author}:' (whitelisted reviewer Word comment, author + text verbatim) / 'Writers Note:' (the writer's own red-text note or CS instruction) / 'Red Flag:' (a converter-detected issue) / 'Designer/Developer To Do:' (a deferred asset/URL/setup of a correctly-built pattern). Always visible, never a hidden HTML comment, never student-facing.",
+        "v2_home": "Emit_Templates.red_flag (form/cs_form/todo_form + ledger_note_scheme) + Comment_Authors.render.form; env NOTESCHEME_OFF; gate parity in compare_structure.py/body_compare.py (new prefixes ADDED, legacy kept)",
+        "gold_note": "The human gold strips ALL developer notes — no gold counterpart exists under either scheme; the cv2-note/cv2-comment classes keep every note excluded from every protected gate."
+      },
+      {
+        "id": "cl0008_reviewer_comment_capture",
+        "ledger_id": "CL-0008 (prefix superseded by CL-0010)",
+        "status": "IN EFFECT since round 72; prefix updated round 219",
+        "name": "Whitelisted reviewer comments rendered as visible red designer messages",
+        "keywords": [
+          "word comment",
+          "reviewer",
+          "whitelist",
+          "kate scanlon",
+          "nadia stanton",
+          "caroline schwer",
+          "simon vita",
+          "amanda griffiths",
+          "creative services comment"
+        ],
+        "rule": "Actionable native Word comments from the six whitelisted Creative-Services reviewers surface as visible red+bold notes positioned immediately before the element they refer to; never hidden, never dropped, never [tag]-parsed. Non-actionable copyright/permission boilerplate is filtered (Comment_Authors.content_filter).",
+        "v2_home": "DocxExtractor comment capture + Comment_Authors.json (round 72); render form per CL-0010 (round 219)"
+      },
+      {
+        "id": "cl0007_activity_wrapper_widths",
+        "ledger_id": "CL-0007 (supersedes the REVERTED CL-0005)",
+        "status": "CAPTURED (prohibition already satisfied live; affirmative widths await their own gate-proven round)",
+        "name": "Activity/interactive wrappers never col-md-10; generation-default widths by template family",
+        "keywords": [
+          "col-md-10",
+          "activity width",
+          "wrapper width",
+          "interactive wrapper",
+          "alertimage",
+          "col-md-11"
+        ],
+        "rule": "An activity/interactive wrapper NEVER uses col-md-10. Generation defaults where no built same-series sibling dictates otherwise: Standard family -> col-12; Inquiry/Fundamentals (container-fluid body class) -> col-md-11 col-12; an activity paired with an alertImage -> activity col-md-8 col-12 + image col-md-4 (8+4=12, overrides the sub-type default). Radio-quiz option cells stay col-md-1 (inner geometry). FORWARD-ONLY: existing gold col-md-10 wrappers are never retro-flagged.",
+        "v2_home": "activity_wrapper templates (Emit_Templates) + the cascade; wire the affirmative widths in a dedicated measured round (named DOC-14-delta gate treatment per _meta.gold_override_policy.gate_policy)",
+        "measured_r219": "Claude ships 0 col-md-10 activity wrappers (prohibition already satisfied; the box's inner col is col-12). Gold sample 1258 sites: col-md-8 col-12 = 78%, col-md-12 = 7%, col-12 = 6%, col-md-10 = 3% (pre-rule), col-md-11 = 1%. Doc-14's own Mode-B rule (a built same-series sibling wins on pure STRUCTURE) governs the existing families, whose gold ships col-md-8 — so the affirmative widths apply to no-sibling-precedent generation (new families/modules); flipping the existing corpus wholesale would be wrong on the design team's own precedence. Never copy gold's col-md-10 minority."
+      },
+      {
+        "id": "cl0001_image_alt_text",
+        "ledger_id": "CL-0001",
+        "status": "PROHIBITION LIVE-BY-COMPLIANCE; API-name preference is input-deferred",
+        "name": "Image alt text: never 'stock photo'; prefer the iStock/Getty API image name",
+        "keywords": [
+          "alt text",
+          "stock photo",
+          "image alt",
+          "getty name"
+        ],
+        "rule": "Alt text NEVER contains the words 'stock photo'. For iStock images, prioritise the iStock/Getty API image name as the alt text WHEN an API-sourced iStock acknowledgements file is supplied.",
+        "v2_home": "MediaBuilder.image (alt emission); the API-name half needs the iStock acknowledgements file, which is NOT in V2's WT+Media-List input contract yet — adopt when that input arrives",
+        "measured_r219": "Claude corpus sample: 0 'stock photo' alts. Gold sample: 84 (predates the rule) — a stocktake reading 'gold has stock-photo alt, Claude does not' is an INTENTIONAL override, never a regression; do NOT copy gold's alt strings."
+      },
+      {
+        "id": "cl0002_istock_acks_file",
+        "ledger_id": "CL-0002",
+        "status": "INPUT-DEFERRED (forward-provisioned)",
+        "name": "API-sourced iStock acknowledgements file is authoritative",
+        "keywords": [
+          "istock acknowledgement",
+          "acks file",
+          "getty images entry",
+          "url slug"
+        ],
+        "rule": "When an API-sourced iStock acknowledgements file is supplied as an input, its iStock acks entries are used VERBATIM in the acknowledgements block, overriding URL-slug derivation; its image name is the preferred alt text (CL-0001).",
+        "v2_home": "AcksBuilder + Acks_Formats.json — currently derives from the Media List URL slug (the corpus convention); the file input does not exist in V2's contract yet. When adopted: entries verbatim, slug derivation demoted to fallback."
+      },
+      {
+        "id": "cl0003_cl0026_video_acks",
+        "ledger_id": "CL-0003 + CL-0026 (+ CL-0027 no-op)",
+        "status": "IN EFFECT (verified round 219)",
+        "name": "Video acks entry format + the published title is ALWAYS authoritative",
+        "keywords": [
+          "video title",
+          "video acknowledgement",
+          "youtube acks",
+          "retrieved date",
+          "media list title"
+        ],
+        "rule": "Video/YouTube acks entry: 'Video: {title}, {author/channel}, <a>{link}</a>, retrieved d/m/y. Used in online learning within the exception for education.' — retrieved date = processing date. The title is ALWAYS the video's full PUBLISHED title, never the Media List Description (writers abbreviate/mis-state/invent titles — the Media List identifies WHICH video; the published title names it). An unconfirmable title raises a visible flag, never a Media-List fallback.",
+        "v2_home": "Acks_Formats.entry_templates.youtube (byte-matches the mandated entry) + oEmbed published-title fetch + the ack_todo '[VIDEO TITLE REQUIRED]' visible slot on fetch failure — all already V2 behaviour."
+      },
+      {
+        "id": "cl0004_cl0023_button_labels",
+        "ledger_id": "CL-0004 + CL-0023",
+        "status": "IN EFFECT / captured (_cross_cutting)",
+        "name": "Submission-button labels: full 'Go to …' kept; BLL/LS/HPE say 'Upload to Dropbox'",
+        "keywords": [
+          "go to dropbox",
+          "go to portfolio",
+          "button label",
+          "upload to dropbox",
+          "submission button"
+        ],
+        "rule": "Dropbox/portfolio submission buttons keep the FULL 'Go to dropbox' / 'Go to portfolio' label — the 'Go to' prefix is never dropped. The BLL / LS / HPE families label the button 'Upload to Dropbox' (a series label sitting alongside, not overturning, the universal default).",
+        "v2_home": "Button labels are writer/corpus-derived and never truncated (rounds 56/66); the series label is recorded in _cross_cutting ('Upload to Dropbox') + the r66 BLL dropbox house-style machinery."
+      },
+      {
+        "id": "cl0044_footer_hrefs_empty",
+        "ledger_id": "CL-0044 (constraint 71)",
+        "status": "LIVE — round 228",
+        "name": "Footer navigation hrefs ship EMPTY",
+        "keywords": [
+          "footer",
+          "prev-lesson",
+          "next-lesson",
+          "home-nav",
+          "href",
+          "navigation links",
+          "quicklink",
+          "d2l"
+        ],
+        "rule": "Every footer nav anchor ships href=\"\" — prev-lesson, next-lesson, home-nav alike; the conversion NEVER computes sibling filenames into them (the links are wired at publish time in D2L). The per-position <li> composition (overview/middle/final/none) and id/class/target attributes are unchanged. MEASURED (outputs/_measure_footer_hrefs.py): the gold library is ALREADY 97% empty — the 'populated' gold minority (68 pages / 16 modules) carries D2L quickLink URLs (/d2l/common/dialogs/quickLink/…rcode=TCS_Dev-NNNNN) = the publish-time wiring itself, plus 15 stray sibling-html hrefs. A stocktake/vetting divergence on THOSE pages (gold populated vs Claude empty) is the intentional form — publish-time wiring is never converter output; never chase it. The round-226 choice-page TILE hrefs (generated lesson files, Chris's decision) are a different element and stay populated.",
+        "v2_home": "Emit_Templates.footer.nav_links_empty (PageAssembler fill); env FOOTEREMPTY_OFF reverts to the round-8 sibling chaining."
+      },
+      {
+        "id": "cl0030_one_interactive_per_activity",
+        "ledger_id": "CL-0030 (constraint 62)",
+        "status": "CAPTURED — round 229 (forward-looking; live universal flip = MEASURED DECLINE, the r219 CL-0007 pattern)",
+        "name": "One interactive component per activity wrapper",
+        "keywords": [
+          "activity",
+          "interactive",
+          "split",
+          "lettered",
+          "renumber",
+          "one interactive per activity",
+          "stacked interactives",
+          "activity wrapper"
+        ],
+        "rule": "Each activity wrapper contains at most ONE interactive component; a writer stacking 2+ under one activity heading splits into sequential LETTERED activities (the first keeps the writer's number, each next interactive takes the next letter) with FOLLOWING activities renumbered, every split flagged with a visible 'Red Flag:' note. Supporting elements (audio buttons/triggers, images, hover translations, instructional text) are NOT counted. MEASURED round 229 (outputs/_activity_anatomy_core.py + _measure_multi_interactive_activity.py): the gold library largely PREDATES the rule — gold ships >=2 interactive component groups in ONE box 510 times / 226 modules (238 of them with >=2 TASK-type widgets, e.g. dragAndDrop+typing), and in Claude's own multi-box fire population (47 boxes / 39 modules) the dominant family (BLL phonics -02, ~25 boxes) is a BOX-FOR-BOX gold-exact match (Claude 2C carousel+accordion == gold 2C carousel+accordion) that a split would REGRESS; the toward-gold residue is ~7 heterogeneous boxes across 7 families with NO derivable discriminator separating them from the keeps (the r217 recorded ambiguous-boxing band), and ~15 TRR/PNR boxes belong to the r220-recorded bilingual section-table boundary class, not this rule. So the live universal flip is DECLINED on measurement; the rule stands for FUTURE conversions: a stocktake/vetting divergence matching it (gold one-per-box lettered split vs Claude multi, or vice versa where a future family adopts the rule) is an INTENTIONAL DOC-14-style override — record it, never chase it. When live-wired (its own gate-proven round, per family): data home activity_wrapper.one_interactive_split, env ACTSPLIT_OFF, split at the widget-flow-into-open-activity emit seam riding the existing {lessonNumber}{letter} counter (ActivitiesBuilder.activityOpen) so follower renumbering falls out of the counter advance.",
+        "v2_home": "NOT LIVE — no engine path, no data flag yet (this entry IS the capture). Measurement: outputs/_measure_multi_interactive_activity.py over the _activity_anatomy_{gold,claude}.jsonl scans."
+      },
+      {
+        "id": "cl0048_prose_interactive_rows",
+        "ledger_id": "CL-0048 (+ CL-0036; constraint 63 amended)",
+        "status": "CAPTURED — round 229; LIVE for the gold-solid registry groups only (ENFUN) via Emit_Templates.activity_wrapper.prose_interactive_rows",
+        "name": "Activity prose and interactive in SEPARATE inner rows",
+        "keywords": [
+          "activity",
+          "inner row",
+          "col-md-8",
+          "prose",
+          "interactive row",
+          "wrapper width",
+          "widened activity",
+          "constraint 63"
+        ],
+        "rule": "Inside an activity wrapper, the heading/intro prose sits at col-md-8 col-12 in its OWN inner row and the interactive follows in a SEPARATE inner row at the wrapper's own width — whether or not the wrapper is widened (CL-0036 was the widened-only form; CL-0048 generalises it). Text-only activities need no split. MEASURED round 229 (outputs/_activity_anatomy_core.py + _measure_activity_inner_rows.py, 7,539 gold / 5,850 Claude boxes): the gold library largely PREDATES the universal form — gold's dominant widget-carrying anatomy is same_col (prose+widget in ONE inner col) at 75.4%, solidified >=0.60, so the universal flip is NOT live against the built corpus (doc-14 Mode-B: built gold/sibling structure wins; the r219 CL-0007 wrapper-width pattern — same constraint family). The rule's SUBSTANCE is real gold behaviour where wrappers are widened: corpus-wide two_rows boxes correlate prose col with the box's OUTER width (widened col-11/col-md-11 outer -> prose col-md-8 col-12, 34/35 ENFUN + 8/11 corpus; DEFAULT col-md-8 outer -> prose col-12, 205/236) — i.e. CL-0036's original widened-form IS the gold convention, and it generalises per-family, not yet universally. LIVE slice: the registry groups whose gold solidifies the separated form (ENFUN|Fundamentals 0.802 — see Emit_Templates.activity_wrapper.prose_interactive_rows, generated by _measure_activity_inner_rows.py --gen). Future conversions in families that adopt the universal CL-0048 form: a stocktake divergence matching it is an INTENTIONAL override — record, never chase; extend the registry (or flip universal) only via a measured gate-proven round.",
+        "v2_home": "Emit_Templates.activity_wrapper.prose_interactive_rows (ContentConverter bundle-owned activity emit); env ACTROWS_OFF reverts the live registry slice. The universal form + the CL-0007 affirmative widths stay parked together."
+      },
+      {
+        "id": "cl0042_ossc_lesson_h1",
+        "ledger_id": "CL-0042 (constraint 69)",
+        "status": "LIVE (output-inert guarantee) — round 230, the r224 pattern",
+        "name": "OSSC lesson <h1> = the lesson's own title, ONE title h1, every level",
+        "keywords": [
+          "OSSC",
+          "lesson title",
+          "h1",
+          "dual title",
+          "te reo title",
+          "Ngā Tāware",
+          "lesson header"
+        ],
+        "rule": "For OSSC modules at EVERY level, a lesson page carries a single <h1><span> holding that page's OWN lesson title (from the lesson's opening [H2], the 'Lesson N:'/'Lesson N' prefix stripped — the r143 pre-activity harvest), never the module title where a lesson title exists, never repeated as a body h3, and NEVER the Years-9-10/NCEA dual English+Te-Reo title pair. The #module-code lesson-number chip ('1.0') and the OSSC overview page are unchanged. MEASURED round 230 (outputs/_measure_ossc_lesson_h1.py): Claude ALREADY ships the rule's exact form on all 3 OSSC301 lessons (chip + prefix-stripped lesson title, no te-reo, no body repeat) — the GOLD is the diverging side (it repeats the module Te Reo title 'Ngā Tāware' as a third h1 on every lesson; the gold pre-dates the rule). A stocktake divergence matching this rule = an INTENTIONAL override — record, never chase the gold's te-reo lesson h1 back in. The guarantee is LIVE because the hazard is real: the registry's mined OSSC3 lesson h1_count is 2 and SkeletonBuilder's dual-title push fires wherever run.teReoTitle exists — OSSC301 escapes only because its ✅-glued [TITLE BAR] never splits; a future title-split fix would have silently regressed OSSC without the gate.",
+        "v2_home": "Emit_Templates.header.lesson_title_h1 (subjects:[\"OSSC\"]) gating the SkeletonBuilder lesson-branch te-reo push; env OSSCH1_OFF reverts. Proofs: outputs/_probe_ossch1.cjs (inert + detection + toggle + prefix fence), outputs/_measure_ossc_lesson_h1.py (live dual emitters = XMES/CEDT/SSFUN, 0 OSSC).",
+        "gold_note": "OSSC301 gold lessons ship 3 h1s (chip + lesson title + 'Ngā Tāware'); the converter's 2-h1 form IS the rule's form. Never 'fix' the converter toward the gold's third h1."
+      },
+      {
+        "id": "cl0043_lesson_overview_leadin",
+        "ledger_id": "CL-0043 (constraint 70)",
+        "status": "VERIFIED ALREADY IN EFFECT + CAPTURED — round 230 (no new code; the r228 record-only class)",
+        "name": "[Lesson Overview] descriptive lead-in renders as a verbatim <p> above the first <h5>",
+        "keywords": [
+          "lesson overview",
+          "lead-in",
+          "leadin",
+          "menu p",
+          "Ākonga will",
+          "lesson menu",
+          "learning intentions"
+        ],
+        "rule": "Where the writer's [Lesson Overview] supplies a descriptive sentence ('Ākonga will …') ahead of the learning/success labels, it renders as a <p> above the first <h5>, inside the same col-md-8 col-12 — writer content VERBATIM (constraint 1), never label-normalised. An absent sentence -> no lead-in, not an error (explicitly NOT a reversal of the 'no <p> between a heading and its list' rule — the lead-in sits ABOVE the first heading). MEASURED round 230 (outputs/_measure_lessonoverview_leadin.py, all 416 WTs): 775 markers = 543 label-first / 110 sentence-first / rest short-or-empty; OSSC's own population is ZERO (OSSC301 goes straight to 'We are learning:' — correctly ships NO lead-in, both sides). The mechanism ALREADY EXISTS AND FIRES: the r114/r147 lesson-menu section capture renders the pre-label sentence as a verbatim <p> above the first <h5> — verified pairwise across the OS family (OSAH301/401/501 + OSAI101 + OSBY101/201: Claude p-first == gold p-first on every lesson page). Where gold editorially DROPPED the writer's sentence (OSGM201, OSOH101, OSSM301 — 3 modules), the rule sides with the CONVERTER's kept form: an audit divergence matching this rule = an INTENTIONAL override, never chase those golds.",
+        "v2_home": "Already shipped by the r114/r147 menu machinery (menu.lesson_content_in_menu + menu.lesson_menu_section_stop; MENUSTOP_OFF territory) — NO dedicated toggle exists because no new code shipped. If a future round ever needs a dedicated mechanism (e.g. OSSC401 arrives with a dialect the section capture misses), pre-named home: menu.lesson_overview_leadin + env OSSCLEADIN_OFF."
+      },
+      {
+        "id": "cl0033_languages_combo",
+        "ledger_id": "CL-0033 (14 Jul)",
+        "status": "LIVE output-inert guarantee — round 231 (the r224/r230 zero-blast class; the corpus holds ZERO Languages dirs)",
+        "name": "Languages-cohort modules ship template=\"combo\" on <html> — every page",
+        "keywords": [
+          "languages",
+          "combo",
+          "template attribute",
+          "template=",
+          "CHIFUN",
+          "FREFUN",
+          "SAMFUN",
+          "GERFUN",
+          "JAPFUN",
+          "SPAFUN",
+          "cohort"
+        ],
+        "rule": "Every page of a Languages-cohort module ships template=\"combo\" on <html>; the sub-type still comes from the <body> class. The cohort = doc-14 §14.1's cohort_prefixes (CHIFUN/FREFUN/SAMFUN/GERFUN/JAPFUN/SPAFUN + CHI/FRE/SAM/GER/JAP/SPA — six languages × FUN + non-FUN forms). UNCONDITIONAL within the cohort: outranks sibling inheritance AND the digit preset. MEASURED round 231: 431 corpus dir codes across both corpora, ZERO match any cohort prefix, ZERO short-prefix collisions (the r218 'BLLR is NOT BLL' startswith trap checked and clear — no non-Languages code starts CHI/FRE/SAM/GER/JAP/SPA), zero in compare_set → blast ZERO pages by construction. The guarantee closes a real gap: nothing today would ever RESOLVE combo for a fresh Languages code (no registry row, no sibling → the TEDC-style empty attribute, the r221 pre-fix class). overrides_gold is moot with no Languages gold on disk, but the marking discipline stands — forward-looking, stocktake-protected: when Languages modules arrive, an audit divergence matching this rule is INTENTIONAL, never chased.",
+        "v2_home": "Emit_Templates.skeleton.template_phase_presets.cohort_overrides (SkeletonBuilder, applied AFTER prefix_overrides; the 12 prefixes listed there verbatim — the engine never reads this file at runtime). Env LANGCOMBO_OFF, independent of TPLPRESET_OFF/TPLPREFIX_OFF (separate block so each fix reverses alone, §2)."
+      },
+      {
+        "id": "cl0038_mtkquiz_button",
+        "ledger_id": "CL-0038 (16 Jul)",
+        "status": "LIVE — round 232 (env MTKQUIZ_OFF; Tag_Lexicon._meta.mtk_quiz_retag + Emit_Templates.interactive_builders.mtk_quiz)",
+        "name": "[MTKquiz] (any modifiers) ends in the blank-href 'Go to quiz' button + a Designer/Developer To Do note",
+        "keywords": [
+          "mtk quiz",
+          "mtkquiz",
+          "go to quiz",
+          "quiz button",
+          "quicklink",
+          "engagement quiz"
+        ],
+        "rule": "Any [MTKquiz]-family marker (any modifiers) ends in <a href=\"#\" target=\"_blank\"><div class=\"button\">Go to quiz</div></a> — href intentionally BLANK; the developer wires the D2L quicklink at publish time — plus ONE visible 'Designer/Developer To Do:' note (kind todo, class cv2-note = gate-excluded) carrying the writer's raw quiz spec. Writer-supplied quiz content STAYS rendered (constraint 1); the 'dropbox' wrapper modifier does NOT attach. An adjacent writer-typed quiz button ([button] 'Go to quiz.'/'Quiz', or a standalone [Go to quiz] span within the marker's window) is ABSORBED into the one canonical anchored button. The [End of MTK Quiz content] closer stays a CONTAINER_CLOSE, never a button.",
+        "overrides_gold_notes": "TWO intentional gold divergences, never chased: (1) the HREF — gold's 122 button pages carry POPULATED D2L quickLink URLs, which ARE the publish-time wiring itself (the CL-0044 footer class); the converter's blank href is the correct pre-publish form. (2) FIVE marker-carrying modules have NO gold button at all (SCFUN01, MXFUN02, SSOG103, SSOG301, EXPFUN07 — gold predates the rule); the converter ships the button there per CL-0038 (named CHANGE-LEDGER OVERRIDE deltas in the round-232 changelog). An audit finding either divergence must verdict it DOC-14/LEDGER OVERRIDE, not a regression.",
+        "measured": "Round 232 (outputs/_detect_mtkquiz.cjs, ALL WTs live incl. parsed-txt-less dirs): 54 marker occurrences (33 distinct span forms) / 21 modules — 19 tracked (shipped; 54 buttons + 54 notes, 1:1 per site) + HPRE301/SSCI104 untracked (forward guarantee, probe-proven: outputs/_probe_mtkquiz_fwd.cjs — emit + toggle + the ARFUN01 closer fence ALL PASS)."
+      },
+      {
+        "id": "cl0037_cs_video_vimeo",
+        "ledger_id": "CL-0037 (16 Jul)",
+        "status": "CAPTURED — round 233 (forward-looking; live emit = MEASURED DECLINE: the VIDEO-kind discriminator is non-derivable from V2's inputs — the r229 CL-0030 pattern)",
+        "name": "CS-produced (Te Kura in-house / Audiovisual) VIDEO embeds the pending-ID Vimeo videoSection scaffold + a Designer/Developer To Do note",
+        "keywords": [
+          "vimeo",
+          "videoSection",
+          "audiovisual item",
+          "av item",
+          "cs video",
+          "in-house video",
+          "audiovisual",
+          "player.vimeo.com"
+        ],
+        "rule": "A CS-produced (Te Kura in-house / Audiovisual) VIDEO embeds the designer-supplied Vimeo videoSection scaffold with the ID pending (src=\"https://player.vimeo.com/video/\"), preceded by a red+bold 'Designer/Developer To Do: add vimeo embed for [audiovisual item x]' note, keeping the trailing <!-- &amp;start=0 --> <!-- &amp;end=0 --> placeholders (a permitted comment exception alongside the Mode-P image reference + the ACK-TODO supplement). MEASURED round 233 (outputs/_detect_avitem.cjs, ALL 431 WTs through the LIVE extractor+parser — the parsed txts are stale and channel-blind): the [Audiovisual item N] / [AV item N] / [Audio visual item: N] / [Audiovisual request item N] marker family = 160 occurrences / 13 modules (BLL254-257, BLL270-276, ENGJ403, SSOG105; red-span forms resolve today as data-marker SUBTAGs via the [Item N] alias, black/table-cell forms carry no tag at all) — but the marker denotes CS media of ANY kind and the live population is dominantly AUDIO (pronunciation sounds, mp3 voice-overs, an interactive hot-seating avatar), with NO WT or Media List channel marking an item's kind: the 'Te Kura'-source ML rows corpus-wide are images/templates/links (zero cs-video rows), and the 'cs Video | Scratch Garden' lead dissolved into ordinary external YouTube rows. ZERO of the 13 marker modules' golds ship vimeo; gold's own pairing is per-KIND — audio → audioButton/audio-player scaffolds woven inside widget builds; animation → an EMPTY videoSection icon + red 'Designer note: Animation to come' (the pre-ledger form of this very rule); ENGJ403's new-era gold ships kind-todo Designer/Developer To Do notes for its two AUDIO/avatar items. The 201 gold vimeo pages live in NON-marker modules with no derivable WT/ML source (editorial substitutions, the CL-0038 122-button class), and gold ships ZERO pending-ID scaffolds corpus-wide. Emitting the vimeo VIDEO scaffold at the markers would be wrong-kind-dominant (a build defect on audio sites) → the live emit is DECLINED on measurement; the rule STANDS for future conversions: when a WT/Media-List convention makes the video kind derivable (a new-era WT explicitly marking a CS video), ship it in its own gate-proven round. A stocktake/vetting divergence matching the rule (gold vimeo vs Claude youtube/nothing; or, once live, the pending-ID scaffold vs a gold real ID — the real ID IS the publish-time wiring, the CL-0038 blank-href class) is an INTENTIONAL override — record, never chase.",
+        "v2_home": "NOT LIVE — no engine path, no data flag yet (this entry IS the capture). Pre-named for the live-wiring round: data elements.cs_video_vimeo (scaffold template + note template + marker pattern), env VIMEOSCAFFOLD_OFF; the note is kind 'todo' via NotesAndComments.redFlag (r219 red_flag.todo_form); the trailing &amp;start/&amp;end comments require a THIRD Emit_Templates._meta.comment_policy exception in the same edit. Measurement: outputs/_detect_avitem.cjs (the standing family detector, 8-shard), outputs/_probe_r233_parse.cjs (live Parse per form)."
+      },
+      {
+        "id": "cl0051_no_emoji",
+        "ledger_id": "CL-0051 (16 Jul)",
+        "status": "LIVE — round 234 (env EMOJISTRIP_OFF; Input_Doc_Rules.emoji_strip; ListsAndRuns.EmojiStrip full-page post-pass wired in PageAssembler)",
+        "name": "Emoji are stripped from rendered writer content (ticks & crosses exempt); 2+ emoji-prefixed lines become a <ul>; ONE red disclosure note per affected page",
+        "keywords": [
+          "emoji",
+          "no-emoji",
+          "tick",
+          "cross",
+          "checkmark",
+          "disclosure",
+          "emoji removed",
+          "pictographic"
+        ],
+        "rule": "The FIRST CL-0001/constraint-1 exception permitting deletion of writer characters: Unicode Extended_Pictographic grapheme CLUSTERS (base + VS15/16, skin tones, ZWJ sequences, keycap marks, flag pairs) are removed from the rendered page, EXCEPT the ledger's exempt ticks & crosses ✅✓✔☑✗✘❌❎ (kept cluster-whole — a VS16 is never orphan-stripped off a kept tick) and the ONE measured extension, the maths operators ✖➗➕➖ (meaning-bearing; gold keeps ✖ x12; ✖ is a cross by form — the ledger's own ☑ inclusion proves box/heavy variants count). EP arrow emoji (➡⬅⬆⬇⮕) become PLAIN arrows (→←↑↓) instead of deletions — gold's own treatment (TEDC402 ships the writer's 'input🡪process🡪output' as 'input→process→output'); a keycap digit keeps its digit. A run of 2+ consecutive plain <p> lines PREFIXED by a would-be-deleted cluster becomes ONE <ul>/<li> (lead dropped); a lone one stays a <p>; in-prose removals get spacing normalised; a <p> the strip EMPTIED is dropped whole. Disclosure: ONE visible note per affected page at the first removal — 'Red Flag: Emoji have been removed from this content per the no-emoji rule. Ticks and crosses are retained.' (the r219 scheme's form, class cv2-note = gate-excluded; a header/menu first-removal relocates to the body top, the r203 rule). OUT OF SCOPE by the Unicode property (measured decisions): the checkbox/ballot family ☐☒□🗹 (bilingual checklists + printable tick-sheets; the r212 checklist→bullet stays the reo-menu machinery), 🖵 phonics sound-boxes, 🡪, plain →←, typographic ►●◦, private-use chars. CONTAINMENTS: cv2-interactive hand-off boxes, cv2-note/cv2-comment quotes, the acks block (verbatim oEmbed titles + the converter's own ❗ ack-todo markers), tag attributes, the {CODE}_interactives.txt hand-off, self-reflection emoji IMAGES (img assets) — all untouched.",
+        "overrides_gold_notes": "The gold library largely ALREADY lives the rule (CEDT104 gold ships 1 emoji from a WT of 279; ARFUN02 0 of 187) — but gold KEEPS emoji at named sites the rule strips: TEDC402's five feelings-scale faces (😎🙂😐😬🤯 in built tabs panes), OSBY301-class scattered singles (~18), TRR109/110 + XGF9001 + BLL120/252 + XDLS908, and gold keeps ➡/🡪 arrow FORMS where the converter now ships the plain-arrow form (TEDC401). All are INTENTIONAL CL-0051 overrides — record, never chase. THE WATCH CLASS: MXDI201/ENGS102-style emoji-as-CONTENT (vocab/description cards where the emoji IS the referent — gold keeps ~220 on MXDI201) currently lives INSIDE cv2-interactive dumps on the converter side, so the strip cannot touch it TODAY; any future widget-build round that renders that content live must re-visit the carve-out question with this entry as the evidence pointer (outputs/_measure_emoji.py, the r234 censuses).",
+        "v2_home": "Data Input_Doc_Rules.emoji_strip (exempt list VERBATIM from the ledger + exempt_extensions.maths_operators + arrow_map, all data-editable); engine ListsAndRuns.EmojiStrip (the r213 LinkTextDisplay post-pass seam — runs AFTER all tag machinery, so the ✅-glued [TITLE BAR] fences (r230 OSSC), the r192 ✅[Tile] delimiters, the r169 title splits and the 🔴 red-run sentinels are untouchable BY CONSTRUCTION); wired in PageAssembler before LinkTextDisplay, stopping at the acks block. Measurement: outputs/_measure_emoji.py (both rendered corpora, 8-shard) + _probe_emojistrip.cjs (behaviour/toggle/fence legs) + _probe_r234_toggle.cjs (corpus-scale EMOJISTRIP_OFF byte-identity vs the r232 manifest)."
+      }
     ]
   }
 }

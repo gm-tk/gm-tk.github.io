@@ -78,11 +78,110 @@ class SkeletonBuilder {
 		const levelAttr = levelMap[rules.level_attr] !== undefined
 			? levelMap[rules.level_attr]
 			: ` level="${Utils.EscapeHtml(rules.level_attr ?? "")}"`;
-		const templateAttr = tpl.skeleton.template_attr_map[rules.template_phase]
-			?? rules.template_phase ?? "";
-		if (!tpl.skeleton.template_attr_map[rules.template_phase]) {
+		// THE TEMPLATE-ATTRIBUTE PRESET RULE (ROUND 221 — module ENGJ403, Chris).
+		// The <html template="…"> attribute (which decides the stylesheet the
+		// iDoc host loads) must follow the PRESET module-level rule — level
+		// digit 1→"1-3", 2→"4-6", 3→"7-8", 4→"9-10", 5→"NCEA" — and this rule
+		// SUPERSEDES sibling inheritance for THIS ATTRIBUTE ONLY. ENGJ403
+		// inherited template="4-6" from its series sibling ENGJ402, whose own
+		// human-built value is itself wrong (the human ENGJ403 ships "9-10");
+		// Chris's directive: the level preset always wins here, regardless of
+		// what any previously-developed sibling carries. Everything ELSE
+		// (menu conventions, groupKey lookups, page model, chip forms…) keeps
+		// the sibling-emulation rule untouched — rules.template_phase itself
+		// is NOT changed, only the emitted attribute value. Scope is measured
+		// (232/305 golds already follow the preset): 3-digit codes with a
+		// level digit 1-5, subject in the preset list (families whose code
+		// digit is NOT a curriculum level — BLL, HPFUN, OS-shortcourse, XMES,
+		// MXEO, CEDK — are excluded), and a resolved "combo" value is
+		// preserved (combo marks a combined-cohort template decision, not a
+		// level band). Data: skeleton.template_phase_presets.
+		// Env toggle: TPLPRESET_OFF (reverts to the pure sibling value).
+		let phaseForAttr = rules.template_phase;
+		const tppCfg = tpl.skeleton.template_phase_presets;
+		const tppOn = tppCfg && tppCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLPRESET_OFF);
+		if (tppOn) {
+			const tm = String(run.moduleCode || "").match(
+				new RegExp(tppCfg.code_pattern ?? "^([A-Z]+)([1-5])\\d{2}$"));
+			const preset = tm && (tppCfg.subjects ?? []).includes(tm[1])
+				? (tppCfg.by_level_digit ?? {})[tm[2]] : null;
+			if (preset && preset !== phaseForAttr
+				&& !(tppCfg.preserve_values ?? ["combo"]).includes(phaseForAttr)) {
+				if (!run._tppNoted) {
+					run._tppNoted = true;
+					run.AddNote("info", "SkeletonBuilder",
+						`template attribute "${phaseForAttr}" overridden to the level-${tm[2]} preset "${preset}" (template_phase_presets — the module-level rule outranks sibling inheritance for this attribute only).`);
+				}
+				phaseForAttr = preset;
+			}
+		}
+		// THE CODE-PREFIX TEMPLATE OVERRIDE (ROUND 224 — the BLL200 exception,
+		// Chris). Some families' code digits are NOT curriculum levels, so the
+		// digit preset excludes them — but the design team still fixes their
+		// template by an explicit exception list. BLL2xx modules are actually
+		// PHASE 1 → template="1-3" (NOT the "4-6" a mis-built sibling would
+		// hand down); BLLR2xx ARE phase 2 and keep "4-6" (guard entry — a
+		// "BLLR…" code can never startsWith "BLL2", but the r218 "BLLR is NOT
+		// BLL" startswith trap earns the explicit fence). LONGEST matching
+		// prefix wins; null = explicitly no override. Unconditional: outranks
+		// sibling inheritance AND the digit preset; preserve_values does not
+		// apply. Data: skeleton.template_phase_presets.prefix_overrides.
+		// Env toggle: TPLPREFIX_OFF (independent of TPLPRESET_OFF).
+		const poCfg = tppCfg && tppCfg.prefix_overrides;
+		const poOn = poCfg && poCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLPREFIX_OFF);
+		if (poOn) {
+			const codeStr = String(run.moduleCode || "");
+			const poKey = Object.keys(poCfg.map ?? {})
+				.filter(k => !k.startsWith("_") && codeStr.startsWith(k))
+				.sort((a, b) => b.length - a.length)[0];
+			const poVal = poKey !== undefined ? (poCfg.map ?? {})[poKey] : undefined;
+			if (poVal != null && poVal !== phaseForAttr) {
+				if (!run._tppNoted) {
+					run._tppNoted = true;
+					run.AddNote("info", "SkeletonBuilder",
+						`template attribute "${phaseForAttr}" overridden to "${poVal}" (template_phase_presets.prefix_overrides — the "${poKey}" exception list outranks sibling inheritance and the level preset).`);
+				}
+				phaseForAttr = poVal;
+			}
+		}
+		// THE LANGUAGES COMBO COHORT (ROUND 231 — Change Ledger CL-0033, Chris).
+		// Every page of a Languages-cohort module (doc-14 §14.1: the six
+		// languages × FUN + non-FUN code prefixes — CHIFUN…SPAFUN, CHI…SPA)
+		// ships template="combo" on <html>; the sub-type still comes from the
+		// <body> class. UNCONDITIONAL within the cohort: outranks sibling
+		// inheritance AND the digit preset (preserve_values does not apply —
+		// the r224 semantics), applied after prefix_overrides (no key overlap).
+		// The corpus holds ZERO Languages dirs today (census, round 231), so
+		// this is an inert forward-looking GUARANTEE (the r224/r230 class):
+		// without it a fresh Languages code would ship the TEDC-style EMPTY
+		// attribute — no registry row, no sibling ever resolves "combo" for it.
+		// Kept separate from prefix_overrides so each fix reverses
+		// independently (§2). Data:
+		// skeleton.template_phase_presets.cohort_overrides.
+		// Env toggle: LANGCOMBO_OFF (independent of TPLPRESET/TPLPREFIX_OFF).
+		const coCfg = tppCfg && tppCfg.cohort_overrides;
+		const coOn = coCfg && coCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.LANGCOMBO_OFF);
+		if (coOn) {
+			const codeStr = String(run.moduleCode || "");
+			const coVal = coCfg.value ?? "combo";
+			if ((coCfg.prefixes ?? []).some((p) => codeStr.startsWith(p))
+				&& coVal !== phaseForAttr) {
+				if (!run._tppNoted) {
+					run._tppNoted = true;
+					run.AddNote("info", "SkeletonBuilder",
+						`template attribute "${phaseForAttr}" overridden to "${coVal}" (template_phase_presets.cohort_overrides — the Languages cohort ships combo, CL-0033).`);
+				}
+				phaseForAttr = coVal;
+			}
+		}
+		const templateAttr = tpl.skeleton.template_attr_map[phaseForAttr]
+			?? phaseForAttr ?? "";
+		if (!tpl.skeleton.template_attr_map[phaseForAttr]) {
 			run.AddNote("warn", "SkeletonBuilder",
-				`template_phase "${rules.template_phase}" has no template_attr_map entry — emitted literally.`);
+				`template_phase "${phaseForAttr}" has no template_attr_map entry — emitted literally.`);
 		}
 
 		// ---- <head> ---------------------------------------------------------
@@ -308,7 +407,23 @@ class SkeletonBuilder {
 			// back to the module title when the writer gave none. Lessons DO
 			// follow the registry count (they show the lesson title only).
 			titles.push(page.pageTitle || run.englishTitle || content.titleBar.english || "");
-			if (run.teReoTitle && wanted > 1) titles.push(run.teReoTitle);
+			// CL-0042 (ROUND 230 — the OSSC pair, Chris). For the subject code
+			// prefixes in header.lesson_title_h1.subjects (the OSSC short-course
+			// family), a lesson page carries EXACTLY ONE title h1 — its own lesson
+			// title — at EVERY level: the module's Te Reo title is never pushed as
+			// a second lesson h1, even where the registry's mined h1_count asks for
+			// 2 (the OSSC301 gold pre-dates the rule and repeats "Ngā Tāware" on
+			// every lesson; that divergence is a recorded intentional override —
+			// never chase it back in). Output-inert today: no OSSC module currently
+			// derives a Te Reo title (OSSC301's ✅-glued [TITLE BAR] never splits),
+			// so this converts an accident into a guarantee — the round-224
+			// prefix-override pattern. Data: header.lesson_title_h1.
+			// Env toggle: OSSCH1_OFF (restores the pre-230 push).
+			const lth = tpl.header.lesson_title_h1;
+			const lthSuppress = lth && lth.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.OSSCH1_OFF)
+				&& (lth.subjects ?? []).some((pfx) => String(run.moduleCode || "").startsWith(pfx));
+			if (run.teReoTitle && wanted > 1 && !lthSuppress) titles.push(run.teReoTitle);
 			while (titles.length > wanted) titles.pop();
 			if (titles.filter(Boolean).length < wanted) {
 				run.AddNote("info", "SkeletonBuilder",
@@ -373,7 +488,15 @@ class SkeletonBuilder {
 			// content.menu.reoNav/reoPanes when it composed the "[Content for
 			// DROP DOWN MENU]" table. Data: menu.shells.reo_tabs +
 			// elements.dual_language.dropdown_menu; env REODROPMENU_OFF.
-			const shellKey = (content.menu.archetype === "reo_tabs" && content.menu.reoNav)
+			// The WRITER-AUTHORED tab partition (ROUND 221 — module ENGJ403)
+			// renders via its own writer_tabs shell: MenuBuilder set
+			// content.menu.wtNav/wtPanes when it composed the menu from the
+			// writer's own [tab N]/[close tab] markers. Data:
+			// menu.shells.writer_tabs + menu.writer_tab_partition;
+			// env MENUTABPART_OFF.
+			const shellKey = (content.menu.archetype === "writer_tabs" && content.menu.wtPanes)
+				? "writer_tabs"
+				: (content.menu.archetype === "reo_tabs" && content.menu.reoNav)
 				? "reo_tabs"
 				: (content.menu.funLiCols && content.menu.funLiCols.length)
 					? "fundamentals_li"
@@ -413,9 +536,9 @@ class SkeletonBuilder {
 					xtCfg.pane_template ?? "\n<div class=\"tab-pane\">\n<div class=\"row\">\n<div class=\"{col}\">\n{content}\n</div>\n</div>\n</div>",
 					{ col: xtCfg.pane_col ?? "col-md-8 col-12", content: t.html })).join("");
 				parts.push(Utils.FillTemplate(shell, {
-					// the reo_tabs shell's two slots (MTK drop-down menu, ROUND 212)
-					navItems: content.menu.reoNav ?? "",
-					panes: content.menu.reoPanes ?? "",
+					// the reo_tabs / writer_tabs shells' two slots (ROUNDS 212 + 221)
+					navItems: content.menu.wtNav ?? content.menu.reoNav ?? "",
+					panes: content.menu.wtPanes ?? content.menu.reoPanes ?? "",
 					extraNav,
 					extraPanes,
 					// The tabs shells' second nav label is a {tab2Label} slot: the

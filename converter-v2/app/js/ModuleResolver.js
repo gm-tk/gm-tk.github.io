@@ -230,7 +230,7 @@ class ModuleResolver {
 	 *                   { ok:false, reason:"unsupported", unsupported, wt,
 	 *                     mediaSource } on a data-driven refusal.
 	 */
-	static PrepareRun({ docs = [], run, normaliser }) {
+	static PrepareRun({ docs = [], run, normaliser, istockAcksText = null }) {
 		// ---- classify the inputs (WT = content opener; media list = table) --
 		let wt = null;
 		let mediaSource = null;
@@ -272,6 +272,14 @@ class ModuleResolver {
 				wt.doc.mtkFlag && (u.also_requires_code_prefix ?? [])
 					.some((p) => (run.moduleCode ?? "").startsWith(p)));
 		if (unsupported) return { ok: false, reason: "unsupported", unsupported, wt, mediaSource };
+
+		// ---- verified iStock acknowledgements file (optional) ---------------
+		// ROUND 235 (Chris) — a *_istock-acks.txt supplied with the uploads (or
+		// sitting in the module folder for a batch run) carries API-sourced,
+		// definitely-correct iStock acknowledgement lines; parsed HERE (the one
+		// shared prep sequence — entry parity) so both entries behave identically.
+		// Data flag: Acks_Formats.istock_acks_file · Env toggle: ISTOCKACKS_OFF
+		run.istockAcks = AcksBuilder.ParseIstockAcks(istockAcksText, run);
 
 		// ---- media list ------------------------------------------------------
 		if (mediaSource) {

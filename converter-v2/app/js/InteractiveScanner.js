@@ -1839,6 +1839,31 @@ class InteractiveScanner {
 				if (dtxt) { def = dtxt; tail = ""; consumeNext = true; contItem = nxt; }
 			}
 		}
+		// (A4) DEF-IN-OWN-BLACK-TAIL (ROUND 222c — module ENGJ403's standard hover idiom,
+		// 12 occurrences measured: a red "[hover info ‘pitch’:" span with NO closing "]",
+		// the DEFINITION as the span's OWN black tail ("When you share your script main
+		// idea."), then a bare "]" red span whose own black tail continues the sentence.
+		// The (A2) shape above requires an EMPTY own tail, so this form fell through and
+		// leaked as a "Writers Note:" + a fragmented paragraph — the human weaves the
+		// quoted word as <span class="infoTrigger">. The def comes from the marker's own
+		// black tail; the stray "]" closer span is consumed and ITS black tail rejoins
+		// the sentence. Data split_bracket.def_black_tail; env HOVERTAIL_OFF.
+		if (!def && splitOff && split.def_black_tail !== false && !rawMarker.includes("]")
+			&& !(typeof process !== "undefined" && process.env && process.env.HOVERTAIL_OFF)) {
+			const ownBlack = String(it.blackAfter ?? "").trim();
+			if (ownBlack) {
+				def = ownBlack.replace(/\s*\]\s*$/, "").trim();
+				it.blackAfter = "";
+				const nxt = items[i + 1];
+				const ntext = nxt ? String(nxt.text ?? "")
+					.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim() : "";
+				if (nxt && nxt.consumedBy === undefined && nxt.type === "tag"
+					&& (nxt.parse?.class === "noise" || nxt.parse?.class === "instruction")
+					&& /^\]$/.test(ntext)) {
+					consumeNext = true; contItem = nxt;   // its black tail = the sentence continuation
+				}
+			}
+		}
 		if (!def) return false;                                    // no def → leave untouched
 		// A recovered "def" that reads as a writer INSTRUCTION (e.g. "For each concept, please
 		// have the rollover definitions below. Ngā mihi") is not a genuine definition: CONSUME the
@@ -1857,6 +1882,13 @@ class InteractiveScanner {
 		const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
 		const sentinel = IT0 + def + IT1;
 		const blackCont = String(contItem.blackAfter ?? "").trim();
+		// QUOTED NAMED ANCHOR (ROUND 222c, with A4 above): the writer names the hovered
+		// word in quotes inside the marker head — "[hover info ‘pitch’: …" — so the
+		// sentinel should attach to THAT word in the preceding host prose (its LAST
+		// occurrence), not blindly to the host's final word. When the quoted word is
+		// not found in the host, fall back to the plain last-word append (unchanged).
+		const qm = rawMarker.match(/^\[[^\]:]*?['‘"]([^'’"‘\]]+)['’"]/);
+		const quotedAnchor = qm ? qm[1].trim() : "";
 		// what rejoins the line after the woven span: the sentence TAIL (attached directly, e.g.
 		// a ".") then the following black continuation (space-separated).
 		// For the ANCHOR-BEFORE-BRACKET form (A3 above), the hovered word was lifted off the marker
@@ -1884,10 +1916,23 @@ class InteractiveScanner {
 		}
 		// strip a trailing orphaned "[" (A1) off the host so "regions [" never leaks
 		const hostBase = (s) => { let b = String(s ?? "").replace(/\s+$/, ""); if (leadOrphan) b = b.replace(/\s*\[\s*$/, ""); return b; };
+		// weave: quoted named anchor → the sentinel lands right after the LAST occurrence
+		// of that word in the host prose; otherwise the historical append (last word).
+		const weaveInto = (base) => {
+			if (quotedAnchor) {
+				const w = quotedAnchor.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+				const re = new RegExp(`\\b(${w})\\b(?![\\s\\S]*\\b${w}\\b)`, "i");
+				if (re.test(base)) {
+					return base.replace(re, `$1${sentinel}`)
+						+ tail + (blackCont ? ` ${blackCont}` : "");
+				}
+			}
+			return base + append;
+		};
 		if (host && host.type === "black") {
-			host.text = hostBase(host.text) + append;
+			host.text = weaveInto(hostBase(host.text));
 		} else if (host) {
-			host.blackAfter = hostBase(host.blackAfter) + append;
+			host.blackAfter = weaveInto(hostBase(host.blackAfter));
 		} else {
 			// no usable anchor word → keep the lifted anchor + tail/continuation as plain body, drop the def
 			it.type = "black"; it.text = ((leadingAnchor ? `${leadingAnchor} ` : "") + tail + (blackCont ? ` ${blackCont}` : "")).trim(); it.blackAfter = "";

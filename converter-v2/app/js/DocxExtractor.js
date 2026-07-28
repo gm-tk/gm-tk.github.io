@@ -721,9 +721,29 @@ class DocxExtractor {
 			// runs inside this segment
 			for (const rm of seg.matchAll(/<w:r\b[\s\S]*?<\/w:r>/g)) {
 				const run = rm[0];
-				// run text: all w:t contents + tabs as spaces
-				let text = [...run.matchAll(/<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>/g)]
-					.map((t) => this.#decodeXml(t[1])).join("");
+				// run text: all w:t contents + tabs as spaces — PLUS soft line breaks.
+				// THE DROPPED SOFT LINE BREAK (ROUND 227 — the r225 recorded lever, measured
+				// 5,999 <w:br> across 357 of 429 WTs). When a writer presses Shift+Enter, Word
+				// stores a <w:br/> INSIDE the paragraph; the old w:t-only extraction silently
+				// deleted it, GLUING the text on either side with no separator at all
+				// ("…ana”Through perseverance…" — corrupted text, corpus-wide; the round-225
+				// whakataukī fix patched the symptom inside proverb boxes only). A <w:br/>
+				// WITHOUT type="page|column" now contributes "\n" at its own position — the
+				// truthful representation of what the writer authored (a line break); the
+				// downstream machinery already handles multi-line text (renderBlackText emits
+				// one <p>/<li> per line — the majority gold form for soft-broken paragraphs,
+				// measured outputs/_measure_softbreak.py; Utils.Fold collapses \s+ so tag
+				// CLASSIFICATION is unchanged). The page-break counter above keeps reading
+				// type="page" breaks exactly as before.
+				// Data: Input_Doc_Rules.paragraph.soft_break_newline   Env toggle: SOFTBR_OFF
+				const softBr = rules.paragraph?.soft_break_newline !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.SOFTBR_OFF);
+				let text = "";
+				for (const t of run.matchAll(/<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>|<w:br(?:\s+[^>]*)?\/>/g)) {
+					if (t[0].startsWith("<w:br")) {
+						if (softBr && !/w:type="(?:page|column)"/.test(t[0])) text += "\n";
+					} else text += this.#decodeXml(t[1]);
+				}
 				if (/<w:tab\/>/.test(run)) text = ` ${text}`;
 				if (!text) continue;
 
@@ -779,6 +799,24 @@ class DocxExtractor {
 				let redText = "";
 				while (i < pieces.length) {
 					if (pieces[i].red) { redText += pieces[i].text; i++; continue; }
+					// SOFT-BREAK-ONLY GAP (ROUND 227, part of the w:br→\n fix). A soft line
+					// break often lives in a COLOURLESS run of its own between two red runs
+					// ("[Overview]" ⏎ "[H3] Knowledge" — one paragraph, the tags on separate
+					// lines). Before the fix that run carried NO text at all, so it was
+					// INVISIBLE here and the two red runs merged into ONE marker span; the
+					// "\n" it now contributes must therefore also merge INTO the span —
+					// otherwise it would SPLIT the span in two and change tag GRANULARITY
+					// corpus-wide (caught live on SSOG103: the standalone "[Overview]" alias
+					// flipped the whole lesson-menu partition). Utils.Fold collapses the \n,
+					// so the merged span parses byte-identically to the pre-fix glued form
+					// (proven: primary/tags/RenderText identical). ONLY a pure-newline piece
+					// bridges this way — a piece with any other character (even a plain
+					// space) was already a visible separator before the fix and keeps its
+					// existing two-span behaviour.
+					if (pieces[i].text && /^\n+$/.test(pieces[i].text)
+						&& i + 1 < pieces.length && pieces[i + 1].red) {
+						redText += pieces[i].text; i++; continue;
+					}
 					const opens = (redText.match(/\[/g) || []).length;
 					const closes = (redText.match(/\]/g) || []).length;
 					if (bridgeOn && opens > closes && pieces[i].text.trim() === ""

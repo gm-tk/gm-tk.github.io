@@ -261,6 +261,16 @@ class PageAssembler {
 		// page's footer can link to its prev/next siblings (page chaining)
 		const filenames = pageProducts.map((_, i) =>
 			Utils.FillTemplate(naming.page_file, { code, NN: Utils.Pad2(i) }));
+		// ROUND 228 (Chris — Change Ledger CL-0044, constraint 71): footer nav
+		// hrefs ship EMPTY — prev/next/home alike; D2L wires the real links at
+		// publish time. Measured: the gold library is 97% empty (the populated
+		// remainder is the publish-time D2L quickLink wiring itself), so this
+		// matches both the design-team directive AND the gold. The per-position
+		// <li> composition (value_map) is unchanged — only the href fill.
+		// Data footer.nav_links_empty.enabled; env FOOTEREMPTY_OFF reverts to
+		// the round-8 sibling chaining.
+		const footerEmpty = (DataService.Data.EmitTemplates.footer?.nav_links_empty?.enabled === true)
+			&& !(typeof process !== "undefined" && process.env && process.env.FOOTEREMPTY_OFF);
 		pageProducts.forEach(({ page, content }, i) => {
 			const html = SkeletonBuilder.BuildPage({
 				page, content, run,
@@ -268,9 +278,9 @@ class PageAssembler {
 				// historical last-page placement is superseded — never copy it
 				acksHtml: i === 0 ? acksHtml : "",
 				isFinal: i === pageProducts.length - 1 && pageProducts.length > 1,
-				// chain the footer prev/next to the sibling files
-				prevHref: i > 0 ? filenames[i - 1] : "",
-				nextHref: i < pageProducts.length - 1 ? filenames[i + 1] : "",
+				// CL-0044: hrefs empty by default; FOOTEREMPTY_OFF restores chaining
+				prevHref: footerEmpty ? "" : (i > 0 ? filenames[i - 1] : ""),
+				nextHref: footerEmpty ? "" : (i < pageProducts.length - 1 ? filenames[i + 1] : ""),
 			});
 			run.outputs.push({
 				filename: filenames[i],
@@ -299,14 +309,31 @@ class PageAssembler {
 				// human developers keep the FULL URL text in their acknowledgements
 				// (measured), and canonicalise it in the body (67/68 sites).
 				// Data: Emit_Templates elements.link_text_display; env LINKTEXT_OFF.
+				// NO-EMOJI RULE (ROUND 234 — Change Ledger CL-0051): after the note
+				// tidy and BEFORE the link-text pass, EmojiStrip removes emoji from
+				// the rendered writer content (Extended_Pictographic clusters minus
+				// the ledger's exempt ticks & crosses; arrows become plain arrows;
+				// 2+ consecutive emoji-prefixed lines become a <ul>; ONE red
+				// disclosure note per affected page, built through the standard
+				// NotesAndComments.redFlag machinery so the r219 note scheme and
+				// NOTESCHEME_OFF apply to it like any other note). Applied to the
+				// page BEFORE the acknowledgements block only — the acks keep
+				// their verbatim oEmbed titles and the converter's own ❗ ack-todo
+				// markers. Verbatim zones (cv2-interactive hand-off boxes,
+				// cv2-note / cv2-comment quotes) are skipped inside the pass.
+				// Data: Input_Doc_Rules.emoji_strip; env EMOJISTRIP_OFF.
 				content: HtmlFormatter.Indent(
 					(() => {
 						const tidied = NotesAndComments.TidyDeveloperNotes(
 							NotesAndComments.OmitPlaceholderResidue(html));
+						const deEmoji = (seg) => ListsAndRuns.EmojiStrip(seg, () =>
+							NotesAndComments.redFlag(
+								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
+								run, "diagnostic"));
 						const ai = tidied.indexOf("<div class=\"acks");
 						return ai < 0
-							? ListsAndRuns.LinkTextDisplay(tidied)
-							: ListsAndRuns.LinkTextDisplay(tidied.slice(0, ai)) + tidied.slice(ai);
+							? ListsAndRuns.LinkTextDisplay(deEmoji(tidied))
+							: ListsAndRuns.LinkTextDisplay(deEmoji(tidied.slice(0, ai))) + tidied.slice(ai);
 					})()),
 				kind: "page",
 			});

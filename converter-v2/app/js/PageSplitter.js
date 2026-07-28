@@ -457,11 +457,71 @@ class PageSplitter {
 					continue;
 				}
 
+				// The XDLS900 "[Sticky Nav Layout with the following … repeat on EVERY
+				// PAGE]" marker (ROUND 226 — the XDLS902-906/908 family) parses as a
+				// "page" PAGE_BOUNDARY only because the word PAGE appears inside its
+				// bracket text — it is NOT a page break at all, it's the writer's
+				// set-up instruction for the site's sticky-navigation include
+				// (js/stickyNav.js in the human-built pages). Treating it as a
+				// boundary fragmented the modules (XDLS906 split its choice page in
+				// two; XDLS908 split lesson 1 mid-content). The marker is consumed
+				// here, and the ONE-column link table that directly follows it is
+				// flagged _stickyNavTable so ContentConverter can surface it as a
+				// Designer/Developer To Do note instead of a raw dumped table (the
+				// human drops the table entirely — its content lives in the online
+				// sticky-nav configuration, not the page). Scoped by the span's own
+				// "sticky nav" tag + the anchored folded-text pattern, so ordinary
+				// [PAGE] boundaries are untouched by construction.
+				// Data: body_region.choice_page_tiles.sticky_layout_pattern.
+				// Env toggle: TABNAVDROP_OFF (reverts to the page-boundary split +
+				// the raw table dump).
+				const _cpCfg = DataService.Data.EmitTemplates.body_region?.choice_page_tiles;
+				if (tag === "page" && _cpCfg && _cpCfg.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.TABNAVDROP_OFF)
+					&& it.parse.tags.some((t) => t.tag === "sticky nav")
+					&& new RegExp(_cpCfg.sticky_layout_pattern ?? "^\\[\\s*sticky nav layout\\b", "i")
+						.test((it.parse?.folded ?? "").trim())) {
+					run.AddNote("info", "PageSplitter",
+						"[Sticky Nav Layout …] marker — a navigation set-up instruction, not a page break; its link table becomes a To Do note.");
+					for (let j = i + 1; j < items.length; j++) {
+						if (items[j].type === "table") { items[j]._stickyNavTable = true; break; }
+						if (items[j].type === "tag") break;   // the next structural marker ends the search
+					}
+					closed = false;
+					continue;
+				}
+
 				if (tag === "lesson" || tag === "page") {
 					if (singleFile) {
 						// AR-3: in-page section break only — keep the item so
 						// the converter can render a section separation
 						current.items.push(it);
+						closed = false;
+						continue;
+					}
+					// OVERVIEW-NUMBERED "[Lesson 0.0]" (ROUND 222 — module ENGJ403,
+					// the empty-overview screenshot). The newest WT era numbers the
+					// module introduction as its own "lesson": "[MODULE INTRODUCTION]"
+					// → "[Lesson 0.0]" → the introduction content. Lesson number
+					// 0/0.0 IS the overview page's own number, so opening a new page
+					// here shipped the overview EMPTY (all its body content moved to
+					// a spurious "0.0.0" file) while the human keeps the introduction
+					// ON the 0.0 page. When the current page is the overview and the
+					// writer's lesson number matches the overview pattern, the marker
+					// is consumed and the content simply continues on the overview.
+					// MEASURED over all 428 corpus WTs (outputs/_measure_wtlessonnums
+					// .cjs): EXACTLY ENGJ403 carries an overview-numbered lesson tag.
+					// Data: page_split.writer_lesson_numbers.overview_zero_pattern.
+					// Env toggle: ZEROLESSON_OFF.
+					const wlnCfg = DataService.Data.EmitTemplates.page_split?.writer_lesson_numbers;
+					const wlnOn = wlnCfg && wlnCfg.enabled !== false;
+					if (tag === "lesson" && wlnOn && current?.isOverview
+						&& !(typeof process !== "undefined" && process.env && process.env.ZEROLESSON_OFF)
+						&& it.parse.numbers.length
+						&& new RegExp(wlnCfg.overview_zero_pattern ?? "^0(\\.0)?$")
+							.test(String(it.parse.numbers[0]))) {
+						run.AddNote("info", "PageSplitter",
+							`[Lesson ${it.parse.numbers[0]}] is the overview's own number — the introduction stays on the 0.0 page (writer_lesson_numbers).`);
 						closed = false;
 						continue;
 					}
@@ -483,9 +543,22 @@ class PageSplitter {
 						// bare [LESSON] tags fall back to the running ordinal
 						const num = it.parse.numbers.length
 							? it.parse.numbers[0] : String(lessonOrdinal);
+						// DOTTED WRITER LESSON NUMBERS (ROUND 222 — ENGJ403 + the CED
+						// NCEA family + XMES202, measured outputs/_measure_wtlessonnums
+						// .cjs). The newest WT era numbers lessons ALREADY DOTTED
+						// ("[Lesson 1.0]", "[Lesson 2.1]"); appending the historical
+						// ".0" produced "1.0.0"/"2.1.0" page labels + chips where the
+						// human ships "1.0"/"2.1" (gold CEDO501/CEDT501/CEDK501 pages
+						// are the same "2.1"-style). A dotted number is used VERBATIM
+						// as the label; un-dotted "[Lesson 4]" keeps the ".0" suffix.
+						// Data: page_split.writer_lesson_numbers.dotted_label_verbatim.
+						// Env toggle: DOTLESSON_OFF.
+						const dotVerbatim = wlnOn && wlnCfg.dotted_label_verbatim !== false
+							&& !(typeof process !== "undefined" && process.env && process.env.DOTLESSON_OFF)
+							&& String(num).includes(".");
 						open({
 							lessonNumber: num,
-							lessonLabel: `${num}.0`,
+							lessonLabel: dotVerbatim ? String(num) : `${num}.0`,
 							// following text first; embedded payload (in its
 							// ORIGINAL case — render text never folds) second
 							pageTitle: it.blackAfter.trim()
@@ -525,6 +598,29 @@ class PageSplitter {
 
 				// [end page] / [end lesson]
 				if (singleFile) { closed = false; continue; }   // AR-3
+				// TILE-LESSON CLOSERS (ROUND 222 — module ENGJ403 lesson 5). The
+				// writer's "[end tile lesson navigate back to lesson 5]" closes a
+				// TILE sub-structure INSIDE the lesson, not the page — but it
+				// parses as an "end lesson" PAGE_BOUNDARY, so it split lesson 5
+				// into three files (5.0.0 + implicit 9.0/10.0) where the human
+				// ships ONE 5.0 page. A closer whose own text matches the tile
+				// pattern is consumed and the page simply continues. MEASURED over
+				// all 428 corpus WTs (outputs/_measure_wtlessonnums.cjs): EXACTLY
+				// ENGJ403 (2 occurrences) carries this form.
+				// Data: page_split.writer_lesson_numbers.tile_closer_pattern.
+				// Env toggle: TILECLOSER_OFF.
+				{
+					const wln2 = DataService.Data.EmitTemplates.page_split?.writer_lesson_numbers;
+					if (wln2 && wln2.enabled !== false && tag === "end lesson"
+						&& !(typeof process !== "undefined" && process.env && process.env.TILECLOSER_OFF)
+						&& new RegExp(wln2.tile_closer_pattern ?? "tile\\s+lesson|navigate back to lesson", "i")
+							.test((it.parse?.folded ?? "").trim())) {
+						run.AddNote("info", "PageSplitter",
+							"Tile-lesson closer — an in-page tile structure, not a page boundary; the lesson page continues (writer_lesson_numbers).");
+						closed = false;
+						continue;
+					}
+				}
 				if (currentIsEmpty() && !current.isOverview) {
 					// RR-3: an [end page] that would close an empty segment is
 					// disregarded — the previous page simply continues
@@ -567,15 +663,35 @@ class PageSplitter {
 				if (current?.isOverview) {
 					const INTRO_TAGS = new Set(["title bar", "module introduction", "supervisor note"]);
 					let introNext = false;
+					let choiceNext = false;
+					// CHOICE-PAGE MERGE (ROUND 226 — the XDLS900 family). The human
+					// merges the "[LESSON Choice page]" tile-navigation section INTO
+					// page 00 (every gold ships 00 = introduction + the choice tiles,
+					// then one page per lesson — 8 files), so the writer's [end page]
+					// directly before the choice opener is disregarded exactly like
+					// the introduction-cluster rule above. Measured: the opener form
+					// exists on EXACTLY XDLS902-906 (outputs/_detect_choicetiles.cjs,
+					// all 431 dirs), and all five follow this same [End page] →
+					// [LESSON Choice page] shape.
+					// Data: body_region.choice_page_tiles.merge_into_overview.
+					// Env toggle: CHOICEMERGE_OFF (the choice section goes back to its
+					// own implicit "1.0" page).
+					const _cpm = DataService.Data.EmitTemplates.body_region?.choice_page_tiles;
+					const _cpmOn = _cpm && _cpm.enabled !== false && _cpm.merge_into_overview !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.CHOICEMERGE_OFF);
 					for (let k = i; k < Math.min(i + 4, items.length); k++) {
 						const peek = items[k];
 						if (peek.type !== "tag") continue;
 						introNext = INTRO_TAGS.has(peek.parse.primary?.tag);
+						choiceNext = _cpmOn && new RegExp(_cpm.opener_pattern
+							?? "^\\[\\s*lesson choice page\\s*\\]", "i")
+							.test((peek.parse?.folded ?? "").trim());
 						break;   // judge by the FIRST tag span only
 					}
-					if (introNext) {
-						run.AddNote("info", "PageSplitter",
-							"[end page] on the overview disregarded — an introduction-cluster marker follows ([Title]/[Introduction]/[supervisor note]; AR-1 generalised).");
+					if (introNext || choiceNext) {
+						run.AddNote("info", "PageSplitter", choiceNext
+							? "[end page] on the overview disregarded — the [LESSON Choice page] tile navigation stays on page 0.0 (choice_page_tiles.merge_into_overview)."
+							: "[end page] on the overview disregarded — an introduction-cluster marker follows ([Title]/[Introduction]/[supervisor note]; AR-1 generalised).");
 						closed = false;
 						current.items.push(it);
 						continue;

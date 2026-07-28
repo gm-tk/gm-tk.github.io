@@ -1,5 +1,1554 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-07-28 (round 235, build 260618.08) — THE DEFAULT COLLAPSIBLE INTERACTIVE HAND-OFF + the verified `_istock-acks.txt` input (Chris — direct request; **FULL ship, ledger counter reset to 0**; committed + pushed to GitHub per Chris's explicit go-ahead)
+
+**Plain English.** Two changes Chris asked for. FIRST, the "Interactive hand-off" section
+is gone from the HTML Generator because the hand-off is now what ALWAYS happens: every
+complex interactive PageForge can't build renders as the loud rainbow reference-code box
+(exactly the extract look Chris screenshotted, e.g. `OSOH501-INT-02-01-clickingOrder`),
+and at the right end of that box there is now a clickable ▼ arrow. Clicking it smoothly
+expands a hidden container inside the box showing ALL the raw captured content for that
+interactive — the exact same content the old default used to print on the page — and
+flips the arrow to ▲ to collapse it again (an animated CSS grid transition; a tiny
+self-contained onclick, no site scripts needed). The `{CODE}_interactives.txt` worklist
+still carries the same reference codes 1:1, and the Page Stitcher still swaps the whole
+box (hidden content included) for the finished widget by its code — the search-by-code
+contract is byte-unchanged. SECOND, the Upload drop-zone now also accepts an
+`_istock-acks.txt` file (the API-sourced iStock acknowledgements from Getty, Chris's
+example attached to the request). When it is supplied, any iStock acknowledgement the
+converter generates uses that file's DEFINITELY-CORRECT title for the matching asset id
+(`<p>Photo: Friends dancing in the street, iStock 1422643105, Getty Images. Used with
+permission.</p>` → title "Friends dancing in the street"), composed through the normal
+entry template so prefixes/adapted-suffixes still behave — for a photo that reproduces
+the file's own line exactly. Ids not in the file fall back to the existing slug rule /
+ACK-TODO unchanged. This adopts change-ledger CL-0002 into the input contract (the r219
+"adopt when the iStock acks file joins the input contract" note).
+
+**The mechanism (all DATA OVER CODE, both entries through the shared prep).**
+- `ConversionRun.DefaultInteractiveMode()` (NEW): when no explicit mode is passed, BOTH
+  entries resolve it from `Emit_Templates.interactive_placeholder.extract.default_mode`
+  ("extract" = shipped default). Env order reproduces the r234 A/B matrix exactly:
+  `INTEXTRACT_ON` → extract (the legacy force) · `INTCOLLAPSE_OFF` → inline (the full
+  r234 default) · else the data default. App.js and batch_convert.cjs no longer choose a
+  mode at all (the r185 entry-parity principle; the parity gate PASSES).
+- `ContentConverter.#placeholder` extract branch: computes id/ref/label exactly as
+  before (same codes, same bundle stash for the .txt), then — with
+  `extract.collapse.enabled` (default) — FALLS THROUGH to the normal inline box build
+  and wraps that byte-exact inline rendering (retained writer notes + dashed box) in the
+  collapse templates: `wrapper_open` (rainbow frame, classes
+  `cv2-interactive cv2-int-ref`, `data-cv2-index`/`data-cv2-ref`) + `label_row` (label +
+  the ▼/▲ toggle, inline onclick, grid-template-rows 0fr↔1fr transition) +
+  `content_open/close` + `wrapper_close`. With collapse off → the r138/r159 bare marker
+  byte-for-byte (INTEXTRACT_ON + INTCOLLAPSE_OFF proven, probe leg C).
+- The wrapper carrying `cv2-interactive` FIRST means every existing exclusion applies to
+  the whole box by construction: skeleton SCAFFOLD collapse, compare_structure/body_compare
+  placeholder pruning, the defect leak scan, and the EmojiStrip/LinkTextDisplay
+  verbatim-zone walks (prefix `<div class="cv2-interactive` + depth-walk — verified).
+  The Page Stitcher (`_scanClassElements` + balanced `_elementEnd`) replaces the WHOLE
+  wrapper by `data-cv2-ref`, so stitching removes the hidden raw content with the marker
+  (contract §10 updated; CLAUDE_PROJECT__Interactives docs updated to "default, no
+  toggle").
+- iStock acks: `ModuleResolver.PrepareRun` gains optional `istockAcksText` (App reads the
+  uploaded txt; batch reads `*istock-acks.txt` beside the module's .docx — the corpus has
+  none, so batch output is unaffected by the feature). `AcksBuilder.ParseIstockAcks`
+  parses id → {title, line} (`Acks_Formats.istock_acks_file.line_pattern` — title =
+  everything between the first ": " and the LAST ", iStock <id>," so comma-carrying
+  titles survive; unparseable lines surface a warn note). `#istockEntry` consults the map
+  FIRST (API file > URL slug > ACK-TODO). UI: drop-zone copy + `accept=".docx,.txt"`,
+  its own file-list row with remove, summary rows, reset clears it.
+- UI removal: index.html section 3 deleted (sections renumbered 3·Convert / 4·Output
+  files), `Config.Selectors.ModeExtract` retired, App reset no longer touches it.
+
+**Measured first.** The blast class = every un-built placeholder box: the corpus holds
+**5,407 boxes on 1,398 pages / 372 modules** (the r159 class, grown). `_content_manifest.py
+diff` after the full regen = **EXACTLY 1,398 changed / 0 added / 0 removed**, and the
+changed-page set == the pages carrying `cv2-int-ref` (containment perfect, grep-proven
+1,398). Pagination churn ZERO.
+
+**Proof probe** (`outputs/_probe_r235_handoff.cjs`, OSBY201 + ENGC102 + TRR203 — ALL
+LEGS PASS): **A** INTCOLLAPSE_OFF conversion md5-identical to the r234 shipped manifest
+(the whole-round reversal, page-for-page); **B** default: wrappers == nested raw boxes ==
+inline boxes (11/16/17 per module), every wrapper carries exactly one arrow + one
+collapsed container, codes 1:1 with the txt, no-box pages byte-identical to r234;
+**C** INTEXTRACT_ON + INTCOLLAPSE_OFF = the legacy bare markers (11/16/17, zero
+wrappers/boxes); **D** (fresh-process legs — see the r217-quirk note below) the
+fabricated acks file's "VERIFIED PROBE TITLE, WITH A COMMA" lands in the acks for the
+real asset id, and ISTOCKACKS_OFF with the file present is md5-identical to the no-file
+default (8/8 pages). `_verify_intextract.cjs` REWRITTEN for the new contract (DEFAULT
+leg = disk byte-identity + wrapper/nesting/code invariants; INLINE leg = the toggle
+floor, marker-free; `--selftest` GREEN — the `_selftest_core` total regex re-pinned
+`INLINE:`→`DEFAULT:`). Entry-parity gate PASS (static + dynamic).
+
+**PRE-EXISTING QUIRK RECORDED (not this round's):** converting the SAME module twice in
+ONE process drifts the r217 standalone-box activity letters (ENGC102 4D→4I; reproduced
+byte-identically under INTCOLLAPSE_OFF, i.e. in the r234 code path). Corpus regens
+convert each module once per process, so it never reaches disk; the probe's leg D runs
+in fresh processes to sidestep it. Worth its own look someday (a `ConvertPage`-scoped
+letter-map reset).
+
+**TWO GATE-TOOL REPAIRS (the r190 class — both with state-identity proofs, no output
+change):**
+- `_structural_defect_audit.strip_placeholders` collected OVERLAPPING spans for the
+  round's new NESTED `cv2-interactive` divs (wrapper + inner box) and the reversed
+  removal then applied stale offsets — over-cutting content AFTER a box (hiding 7 real
+  leaks) and bisecting a following cv2-note (creating 4 false ones; net the audit
+  first read 287/44). Repaired to TOP-LEVEL spans (resume after each balanced subtree —
+  the stitcher's own pattern); pre-235 corpora had no nesting so the repair is
+  behaviour-identical there. With the repaired tool: **per-module defect maps IDENTICAL
+  to the r234 baseline** (clean 1963/2009 = 97.7%, leak 290/46 — EXACT).
+- `body_compare`'s free-block filter only ever carried the Word-comment author prefixes,
+  though CLAUDE.md §9 has always documented that BOTH text gates exclude the converter's
+  own notes; the wrapper moving the lead notes INSIDE the (excluded) box exposed the gap
+  (a "Writers Note:" lead counted as a Claude free block before the round and not
+  after — 1 page, PHE1003-03, crossed the OVER threshold on pure note relocation).
+  Completed the documented prefix set (+ the label/arrow + in-wrapper-note skips so box
+  furniture never counts as member text). Under the completed filter the r234 state and
+  the r235 state read IDENTICALLY per page (proven on ANZH105 + PHE1003 + BLL241
+  old-vs-new conversions) — **body_compare re-baselines 265 → 272** as pure population
+  honesty (the number the OLD corpus also gives under the corrected filter).
+
+**PROTECTED GATES (full 393-dir regen, `_stalecheck.sh` 0 stale):** PRIMARY skeleton
+(fresh full 8-group run, `outputs/_r235_sk_merge.py` → `_r235_sk_final.json`) **SCAFFOLD
+mean 49.542% / ≥50 916 / ≥75 179 EXACT / ≥90 12 EXACT / skipped 0 @ 1835 pairs** — the
+mean −0.025pp and ≥50 −2 vs r234 decompose into EXACTLY **7 re-paired pages + 1 unpaired
+page** in four box-heavy fragile-pairing modules (the documented r186/r222/r227
+pairing-artifact class; scaffold-identical on every other moved page): AGH1007-04
+71.5→42.3 (the one ≥50 crosser), the MXFL302 intra-module shuffle (-01 71.3→55.5 /
+-07 40→22.4 / -02 27.8→**43.0 up**), XGF9004-01 UNPAIRED (was 51.0%; sibling -02
+26.2→**29.0 up**), + noise XDLS911-01/ARFUN04-00. Content under the wrappers is
+byte-exact r234 content (probe leg A). Against the §9 PROTECTED r223 population line
+(49.50 / 916 / 178 / 11 @ 1835) every number HOLDS-or-IMPROVES. **RAW mean 34.789 →
+32.628%** = THE NAMED r235 class: the wrapper's chrome nodes (label row, arrow,
+collapse divs) are SCAFFOLD-collapsed but raw-visible on all 1,398 box pages —
+scaffold-primary per the MEASUREMENT MANDATE. Other gates: **cs exact 9463 / EXTRA 174 /
+missing 456 EXACT** · **body 272** (re-baselined, above) · **clean 97.7% / leak 290/46
+EXACT (per-module identity)** · **tags 9557/9557 REAL 0** · **flipCard TOTAL 33 / div
+0** · **speechBubble defect 0** · index-sync 32/27 · entry-parity PASS · intextract
+verifier ALL PASS + selftest GREEN. Fast-loop baselines + content manifest refreshed
+(skeleton seeded from the fresh full state, the r234 wall pattern); ledger record-full
+(counter 0).
+
+**Files.** Engine: ConversionRun (DefaultInteractiveMode + istockAcks field) ·
+ContentConverter (collapse wrap) · ModuleResolver (PrepareRun istockAcksText) ·
+AcksBuilder (ParseIstockAcks + verified-title branch) · ManifestBuilder (collapse
+banner) · App.js (UI intake/summary/reset) · Config.js (selector retired; AppVersion) ·
+index.html. Data: `Emit_Templates.interactive_placeholder.extract.default_mode` +
+`.collapse.*`, `Acks_Formats.istock_acks_file`. Site: page-stitcher.js wording,
+SPLIT_MODE_AND_STITCH_CONTRACT.md §10, CLAUDE_PROJECT__Interactives docs. Harness:
+batch_convert.cjs (no per-entry mode force + acks txt pickup), _verify_intextract.cjs,
+_selftest_core.cjs, _structural_defect_audit.py + body_compare.py (the two repairs).
+Tools: `outputs/_probe_r235_handoff.cjs`, `_r235_sk_merge.py`, `_r235_defect.json`.
+**Env toggles: `INTCOLLAPSE_OFF` (whole round → r234 byte-for-byte) + `ISTOCKACKS_OFF`
+(ignore the acks file).**
+
+## 2026-07-17 (round 234, build 260618.07) — CL-0051: THE NO-EMOJI RULE — strip / list-ify / disclose, ticks & crosses exempt (Chris — the CL0051 kickoff, ticket 9 of the CL0029-CL0052 triage; **FULL ship, ledger counter reset to 0**)
+
+**Plain English.** The design team's rule CL-0051 says writers' decorative emoji must not
+reach a finished page: strip them out, turn a run of emoji-bulleted lines into a proper
+bullet list, keep ticks and crosses (they mark answers), and leave one visible red note
+on any page that lost emoji so a designer can always see it happened. This round ships
+exactly that. The measurement first sorted the corpus's rendered emoji-family characters
+into classes, because "strip everything" would have destroyed meaning: ticks and crosses
+stay (the ledger's own list), the maths signs ✖ ➗ ➕ ➖ stay (they ARE the content in
+maths modules), emoji arrows like ➡ become ordinary arrows (→) so
+"input➡process➡output" keeps its meaning — which is exactly what the human developers
+did on TEDC402 — and the checkbox family (☐ ☒ □) is untouched because those are
+checklist and printable tick-sheet marks, not emoji. Everything else — stars, music
+notes, animals, instruments, thinking faces — is removed, emoji-bulleted runs become
+real bullet lists, a line that was ONLY an emoji disappears entirely, and each affected
+page opens its first change with the red disclosure note. The developer hand-off
+material (the dashed un-built widget boxes, the red developer notes, the
+acknowledgements, the interactives.txt file) keeps the writer's text verbatim — the
+strip only touches what a student would see. 54 pages across 40 modules changed; the
+human developers' own pages already live this rule almost everywhere (the biggest
+emoji module, CEDT104, kept 1 of the writer's 279), so the converter now matches them —
+and the few places the humans kept emoji are recorded as intentional rule overrides,
+never to be chased. Every protected gate held or improved, and setting one switch
+(`EMOJISTRIP_OFF`) restores the previous output byte-for-byte.
+
+**THE RULE (CL-0051, 16 Jul — the ledger verbatim).** Strip emoji from writer content
+(the FIRST-ever CL-0001/constraint-1 exception permitting deletion of writer
+characters); EXEMPT ticks & crosses `✅ ✓ ✔ ☑ ✗ ✘ ❌ ❎`; a run of 2+ consecutive
+emoji-prefixed lines becomes a `<ul>`/`<li>`; a lone one stays a `<p>`; in-prose emoji
+removed + spacing normalised; wording otherwise untouched. Disclosure: ONE visible note
+per affected page at the first removal — `Red Flag: Emoji have been removed from this
+content per the no-emoji rule. Ticks and crosses are retained.` Self-reflection emoji
+IMAGES unaffected.
+
+**MEASURED (STEP 1 — `outputs/_measure_emoji.py`, BOTH rendered corpora 8-sharded; the
+fix is a rendered-page post-pass, so the rendered corpora ARE its input/output domain;
+the kickoff's stale-txt 4,356/223 decomposes):**
+- **Claude r232 output:** visible-stream emoji-family 1,884 chars / strippable-class
+  ~907 across **50 modules** (top: CEDT104 237, ARFUN02 129, TRR304 85 — mostly
+  checkbox); **183 emoji-prefixed plain `<p>` lines, 23 runs of 2+** (the `<ul>` clause
+  population — CEDT104 `🎵Sing/🎵Do/🎵Feel`, ARFUN02's 6-instrument list), **34
+  emptyable elements** (31 = ARFUN02's `<p><b>🤔</b></p>`). The REST of the WT emoji
+  never reaches visible content: **cv2-interactive dumps 7,601** (incl. the converter's
+  own `⚙` bilingual trace glyph ×5,464), **acks 8,098** (8,019 = the converter's own
+  `❗` ack-todo marker; gold acks keep oEmbed title emoji verbatim), notes 100, attrs 0.
+- **Gold:** visible strippable 443 — and the library largely ALREADY lives the rule:
+  CEDT104 gold ships 1 emoji (WT 279), ARFUN02 0 (187), HPFUN102 0. The gold KEEPS:
+  MXDI201's **emoji-as-CONTENT** vocab cards (~220: 🍉🐧🦄 — on OUR side that content
+  sits inside cv2 dumps, so the strip cannot touch it TODAY = the recorded WATCH class
+  for future widget-build rounds), plain `→` ×476 (not emoji, untouched), emoji arrows
+  ➡/🡪 ×37 (TEDC401 keeps 🡪; **TEDC402 gold NORMALISES the writer's
+  `input🡪process🡪output` to `input→process→output` — the arrow-map precedent**),
+  TEDC402's five feelings-scale faces, OSBY301-class scattered singles.
+- **The ✅/☐ collision census:** every emoji-touching engine surface is PRE-RENDER
+  (the r169/r230 title-split ✅ machinery, the r192 `✅[Tile]` delimiters, the r187
+  funLi lead strip, the r212 `☐→•` checklist, the 🔴 red-run sentinels) → a POST-PASS
+  cannot disturb any of them BY CONSTRUCTION. The exempt set is heavily used (✅
+  ×2,841 in WTs) — the strip is cluster-whole, property-based, never range-clipped.
+- **Class verdicts:** STRIP = `\p{Extended_Pictographic}` grapheme clusters (VS15/16,
+  skin tones, ZWJ chains, keycaps, flag pairs ride their base; exempt bases keep the
+  WHOLE cluster — a VS16 is never orphan-stripped off a kept tick; a keycap digit keeps
+  its digit). EXEMPT = the ledger's 8 verbatim (✓✗✘ aren't even EP — listed for
+  fidelity) + the ONE measured extension `exempt_extensions.maths_operators` ✖➗➕➖
+  (gold keeps ✖ ×12; ✖ is a cross by form — the ledger's own ☑ inclusion proves
+  box/heavy variants count). ARROW_MAP = ➡→`→` ⬅→`←` ⬆→`↑` ⬇→`↓` ⮕→`→` (meaning
+  preserved, emoji removed — the TEDC402 gold treatment). OUT OF SCOPE by the Unicode
+  property: the checkbox/ballot family ☐☒□🗹 (671 visible — TRR bilingual checklists
+  `<p reo>☒ Pānui</p>`, XMES203's printable tick-sheet `<td>□</td>` cells; the r212
+  checklist→bullet stays the reo-menu machinery), 🖵 (BLL147's phonics sound-boxes),
+  🡪 (TEDC401 gold keeps it), plain →←, typographic ►●◦, PUA (F098).
+
+**THE FIX (DATA OVER CODE; env `EMOJISTRIP_OFF`; data `Input_Doc_Rules.emoji_strip`).**
+`ListsAndRuns.EmojiStrip(html, noteFactory)` — a FULL-PAGE POST-PASS at the r213
+LinkTextDisplay seam (PageAssembler: OmitPlaceholderResidue → TidyDeveloperNotes →
+**EmojiStrip** → LinkTextDisplay → Indent, stopping at the acks block). The page is
+carved into LIVE zones and VERBATIM zones (cv2-interactive subtrees by `<div>`-depth
+walk, `cv2-note`/`cv2-comment` `<p>`s, `<script>`/`<style>`); tags are copied verbatim
+(attributes untouchable by construction). Clause 1 (list runs): 2+ consecutive PLAIN
+`<p>`s each prefixed by a would-be-DELETED cluster → ONE `<ul>` of `<li>`s, lead
+dropped (an exempt-led line — CEDT104's `✅ I did it.` — never joins a run and stays a
+`<p>`; attributed `<p reo>`/`<p eng>` NEVER list-convert, so bilingual pairing can't be
+interleaved). Clause 2 (char strip): cluster-whole replace + spacing normalisation
+(doubled spaces, space-before-punctuation `earn a star ⭐️.`→`earn a star.`, deleted-lead
+residue); a plain `<p>` the strip EMPTIED is dropped whole (a pre-existing empty `<p>`
+is never touched). The disclosure note is built ONLY when something was removed, via
+the caller's factory → `NotesAndComments.redFlag(disclosure, run, "diagnostic")` — the
+r219 scheme's exact red+bold `cv2-note` form (gate-excluded; `NOTESCHEME_OFF` applies
+to it like any note), inserted at the first removal's flow position, relocated to the
+body top when the first removal is in the header/menu (the r203 rule). **The
+implementation catch (probe-caught pre-ship):** a lazy `[^]*?` in the run-grouping
+regex backtrack-extends ACROSS `</p>` boundaries under match pressure and swallows the
+structure between paragraphs (SCFUN01's phases nav lost its `</div><div phase>`
+skeleton) — the paragraph-content pattern is now `(?:(?!<\/p>)[^])*`, and "consecutive"
+strictly means whitespace-only separation.
+
+**PROOF (probes first, then the FULL ship):**
+- `outputs/_probe_emojistrip.cjs` ALL LEGS PASS: (A) CEDT104 ⭐/🎵 gone + ✅ kept +
+  spacing healed + run→`<ul>` + exempt-led `<p>` stays + ONE disclosure + no sentinel
+  residue; ARFUN02 emptied-`<p>` drops + 6-item `<ul>`; TEDC402 🡪/☐ untouched + faces
+  stripped. (B) TRR114 ☒46/✓0/☐22 counts identical (checkbox family out of scope; the
+  flipCard module). (C) `EMOJISTRIP_OFF` → CEDT104+ARFUN02 byte-identical to r232.
+  (D) SCFUN01 + BLL210 fix-ON byte-identical (no visible strippable — the r192
+  delimiter fence holds live).
+- `outputs/_probe_r234_toggle.cjs`: **49 pages / 11 changed modules convert
+  byte-identical to the r232 manifest under `EMOJISTRIP_OFF`** (the full faithful
+  revert at corpus scale).
+- `outputs/_probe_ossch1.cjs` (the r230 OSSC fence): **ALL 4 LEGS PASS** post-ship.
+- The r187 funLi overlap is byte-inert: ENFUN04 (the ✅-lead module) is NOT in the
+  changed set — the menu-lead strip already ran pre-render; the post-pass found
+  nothing left.
+- **FULL ship:** 393 gated dirs regenerated through the 34-batch plan (the standing
+  TRR/HPFUN/BLL splits); `_stalecheck.sh` **stale 0** (the repaired r228 check — data
+  edits visible); `_content_manifest.py diff` = **54 pages changed / 40 modules / 0
+  added / 0 removed** (zero pagination churn; XLP02/XMES203/BLL147/TRR114 correctly
+  ABSENT — their emoji are all checkbox-family; MXDI201 absent — ✖➗ exempt + content
+  cv2-trapped); manifest refreshed (2009 pages / 390 modules); `_ship_ledger.py
+  record-full` → scoped counter 0; fastloop baselines refreshed (cs/bc/defect via
+  `_fastloop_snapshot.py`; skeleton seeded from this round's fresh full 8-group state —
+  the in-wall snapshot exceeds the 45s sandbox, the r176 class).
+
+**PROTECTED GATES — ALL HELD-or-IMPROVED (full-corpus direct runs):**
+- **PRIMARY skeleton (fresh full 8-group run, merged `outputs/_r234_sk_merge.py` →
+  `_r234_sk_final.json`): SCAFFOLD mean 49.567% (+0.010 IMPROVED) / ≥50 918 EXACT /
+  ≥75 179 EXACT / ≥90 12 EXACT / RAW 34.789% EXACT @ 1836 paired, skipped 0.**
+  Movement decomposed: 18 in-set pages net **+19.87pp** (ARFUN02-00 +5.30, OSBY101-02
+  +6.26 — dropped emoji-only nodes gold never had; 9 small dips ≤4.05pp = the
+  ledger-mandated `<ul>` where gold kept `<p>`s or the r176 net-positive node class,
+  OSSC301-03 the exemplar); the 19 out-of-set movers are EXACTLY r232's own MTKquiz
+  class (its state file was not kept; the chain from `_r229_sk_final.json` re-derives
+  the r232 aggregates to the digit).
+- compare_structure: exact **9463 (+21 IMPROVED)** / EXTRA **174** (+2 = the ledger's
+  own new `<ul>` containers where gold has none — the r61 alert-heading greenlight
+  class, dwarfed by +21 exact) / missing **456** (+1, same class).
+- body_compare ANY **265 EXACT** (the emptied-`<p>` drops never tripped the EMPTY
+  heuristic). structural-clean **1963/2009 = 97.7%** / leak **290 occ / 46 pages
+  EXACT** (a text-only pass touches no wrapper chain, adds no `[tag]`).
+- tags **9557/9557 / REAL FAILURES 0** (extractor untouched). flipCard **TOTAL 33 /
+  divergence 0** (defect 10 = the r214 baseline). speechBubble **defect 0**.
+  index-sync **32/27** (no new engine file — EmojiStrip extends ListsAndRuns).
+  entry-parity **PASS** (PageAssembler is common to both entries).
+  `subject_parameters --selftest` + `vet_issue --selftest` **PASS** after the SGP edit.
+
+**NAMED CL-0051 OVERRIDE DELTAS (gold keeps, the rule strips — captured
+`_universal_conventions.cl0051_no_emoji`, overrides_gold, never chase):** TEDC402's
+five feelings-scale faces in built tabs panes; OSBY301-class scattered keeps;
+TRR109/110 + XGF9001 + BLL120/252 + XDLS908 singles; TEDC401's kept-🡪 FORM vs our
+plain-arrow normalisation. **THE WATCH CLASS (recorded):** MXDI201/ENGS102
+emoji-as-content — cv2-dump-trapped today; any widget-build round that renders it live
+re-visits the carve-out with this round's censuses as the evidence.
+
+**RECORDED (not this round):** the ☐/☒ checklist→bullet GENERALISATION beyond the r212
+reo menus (671 visible checkbox chars — needs its own gold-form measurement per
+family); the visible-PUA Wingdings leftovers (U+F098 ×19, not emoji); the
+`<li>`/`<td>` emptied-by-strip long tail (population ~3, cosmetic).
+
+**Data:** `Input_Doc_Rules.emoji_strip` (exempt VERBATIM + `exempt_extensions.maths_operators`
++ `arrow_map` + `list_runs` + `drop_emptied` + `disclosure`). **Env:** `EMOJISTRIP_OFF`
+(byte-for-byte revert: no strip, no list conversion, no disclosure).
+**Tools:** `outputs/_measure_emoji.py`, `_probe_emojistrip.cjs`, `_probe_r234_toggle.cjs`,
+`_dbg_emojidiff.cjs`, `_r234_sk_merge.py` (+ the 8 `_r234_sk_*.json` group scores).
+**NEXT (the master kickoff's LAST ticket):** CL-0040 — the canonical five-tab overview
+menu arc (multi-round; the master kickoff file is deleted by the session that resolves it).
+
+## 2026-07-17 (round 233, build 260618.06) — CL-0037: CS/Audiovisual videos → Vimeo scaffold = **MEASURED DECLINE** + SGP capture (Chris — the CL0037 kickoff, ticket 8 of the CL0029-CL0052 triage; ZERO-blast output-inert round, the r229-CL-0030/r230/r231 class — no regen, ship ledger NOT incremented, 4 headroom unchanged)
+
+**Plain English.** The design team's rule CL-0037 says: when a video is produced in-house
+(a Te Kura / Audiovisual item), the page should ship the standard Vimeo player box with
+the video ID left blank, plus a red "Designer/Developer To Do" note telling the developer
+to drop the ID in when the video is ready. Before building it, this round measured the
+one thing the ticket flagged: can the converter actually TELL, from the Writers Template
+and Media List alone, that an item is an in-house **video** (rather than an in-house
+audio recording, animation, or interactive)? The answer is no — and the honest outcome,
+which the ticket itself pre-authorised, is a recorded decline. The writers' `[Audiovisual
+item N]` markers are real and plentiful (160 of them across 13 modules), but they mean
+"CS-produced media of ANY kind", and in today's library they are mostly AUDIO —
+pronunciation sounds, mp3 voice-overs, a boy's voice reading a passage. Nothing in any
+Writers Template or Media List says which kind an item is, not one of those 13 modules'
+human builds contains a Vimeo player, and the 201 human pages that DO contain Vimeo have
+no marker at all. Shipping a Vimeo VIDEO box at these markers would put wrong players on
+audio sites. So no code ships; instead the rule is captured in the Subject Global
+Parameters (the CL-0030 pattern) so future audits never chase the human's Vimeo pages,
+with the mechanism pre-named for the day the writers' templates start marking a CS video
+explicitly. Nothing in the converter's output changed — proven byte-for-byte.
+
+**THE RULE (CL-0037, 16 Jul — captured, not live).** A CS-produced (Te Kura in-house /
+Audiovisual) VIDEO embeds the designer-supplied Vimeo `videoSection` scaffold with the ID
+pending (`src="https://player.vimeo.com/video/"`), preceded by a red+bold
+`Designer/Developer To Do: add vimeo embed for [audiovisual item x]` note; the trailing
+`<!-- &amp;start=0 --> <!-- &amp;end=0 -->` placeholders are a permitted comment
+exception. The ticket's own proviso: "the discriminator may be non-derivable from V2's
+inputs; if so, record a measured decline."
+
+**MEASURED (STEP 1, live parser — never the stale txts).**
+- **The marker family** (`outputs/_detect_avitem.cjs`, ALL 431 WTs through the live
+  extractor+TagNormaliser, 8-sharded; both channels — the first cut scanned RED spans
+  only and used a case-sensitive black regex, each of which silently missed modules:
+  BLL255/256's black forms, BLL257's capital-A `[Audiovisual item N]`, BLL254's
+  `[Audiovisual request item 1]` variant): **160 occurrences / 13 modules** — BLL254,
+  BLL255, BLL256, BLL257, BLL270–276, ENGJ403, SSOG105. Red-span forms resolve TODAY as
+  `data marker` SUBTAGs (the `[Item N]` embedded alias — `outputs/_probe_r233_parse.cjs`);
+  black/table-cell forms carry no tag at all; one LINK-nested form resolves
+  `external link`.
+- **The kind is NOT derivable.** The marker denotes CS media of ANY kind: context
+  keywords classify AUDIO 8 / VIDEO 2 / UNKNOWN ~150, the keyword classifier itself
+  misfires (a pronunciation drill "a (incorrectly spoken)" scored VIDEO), and gold's own
+  choices at the UNKNOWN mass are audio-dominant. NO WT or Media List channel marks an
+  item's kind. The Media List leads dissolved: "cs Video | Scratch Garden" rows are
+  ordinary EXTERNAL YouTube rows (source column "you tube"); the 23 "Te Kura"-source ML
+  rows corpus-wide are images/templates/links — **zero cs-video rows exist**.
+- **Gold pairing is per-KIND, and never Vimeo.** ZERO of the 13 marker modules' golds
+  ship `player.vimeo.com` (0 pages). BLL270's gold at its markers: red `Designer note:
+  Animation to come` + an **EMPTY `videoSection icon ratio ratio-16x9`** (the pre-ledger
+  form of this very rule) for the one animation, and 8× `Designer note: Audio to come` +
+  `audioButton audioName="BLL270_2A_6"` scaffolds WOVEN INSIDE widget builds
+  (dragAndDrop) for the sounds; BLL275 ships 12 local `<audio src="audio/awa.mp3">`
+  players. ENGJ403's NEW-ERA gold (built under the ledger) ships kind-todo
+  `Designer/Developer To Do:` notes for its two markers — both AUDIO/avatar kind (the
+  hot-seating avatar + the mp3 voice-over), one with the writer's avatar reference image.
+- **The gold Vimeo population is disjoint.** 201 gold pages carry `player.vimeo.com`
+  (XWHA02 ×6, MXEO301 ×6, EXBP901 ×4 …) — ALL with real IDs (the publish-time wiring,
+  the CL-0038 blank-href class), **zero pending-ID scaffolds corpus-wide**, and none in a
+  marker module: editorial substitutions with no derivable WT/ML source (the CL-0038
+  "122 gold buttons vs 21 tagged modules" class). The 6 writer-pasted vimeo-URL modules
+  (ANZH101/105/301, CEDO301, PES1002, TWHT903) flow through the existing generic media
+  path — not this rule's subject.
+- **Tracked blast either way = ZERO pages.** The only tracked marker module is ENGJ403
+  (2 spans, both audio-kind — a video rule would not fire): site 1 sits inside the
+  un-built tabs cv2 dump (the r201 cv2-trapped class, developer-visible in the dump +
+  interactives.txt); site 2's `[embed as pdf] [insert mp3 voice over…] [audiovisual
+  item 2]` span currently renders NOTHING (embed-route consumed — recorded below). All
+  12 other marker modules are UNTRACKED (no Claude dirs; never regen them — the r232
+  ghost-dir lesson).
+
+**VERDICT — MEASURED DECLINE of the live emit (the r208/r210/r216-d/r229-CL-0030
+pattern).** The CS-video discriminator is non-derivable from V2's inputs; a
+marker-triggered Vimeo scaffold would be wrong-kind-dominant (audio mass) — a build
+defect class, violating never-half-build. The rule STANDS for future conversions and is
+**captured `overrides_gold`** in `Subject_Global_Parameters._universal_conventions`
+(**`cl0037_cs_video_vimeo`**): a stocktake/vetting divergence matching it (gold vimeo vs
+Claude youtube/nothing; or, once live, the pending-ID scaffold vs a gold real ID) is an
+INTENTIONAL override — record, never chase. Pre-named for the live-wiring round (when a
+WT/ML convention marks a CS video explicitly): data `elements.cs_video_vimeo`, env
+`VIMEOSCAFFOLD_OFF`, note kind "todo" via `NotesAndComments.redFlag`, and the trailing
+`&amp;start/&amp;end` comments need a THIRD `Emit_Templates._meta.comment_policy`
+exception in the same edit.
+
+**PROOF (zero-blast).** No engine file, no runtime-shape data touched — the round's only
+data edit is the inert SGP capture (`master_enabled:false`; the engine loads the file via
+DataService but only PrecedenceResolver L1 consults it). `outputs/_probe_r233_inert.cjs`
+(the r231 `_probe_langcombo` pattern): live in-memory conversions through the CURRENT
+engine+data == disk bytes — **ENGJ403 10/10 pages byte-identical** (THE marker-carrying
+tracked module) + **BLL210 1/1** (the phonics-family canary). `subject_parameters.py
+--selftest` PASS + `vet_issue.py --selftest` PASS (incl. cascade) after the capture.
+**Every protected gate HOLDS BY CONSTRUCTION at the r232 baselines** (zero output bytes
+changed; manifest = the r232 state): skeleton **49.557% / ≥50 918 / ≥75 179 / ≥90 12 /
+RAW 34.789% @ 1836 skipped 0** · cs **9442/172/455** · body **265** · clean **97.71%** /
+leak **290/46** · tags **9557/9557** · flipCard **33/div 0** · speechBubble **0** ·
+entry-parity PASS.
+
+**RECORDED (follow-ups, not this round).** (1) The AV-item marker family's CURRENT
+handling: red forms resolve as `data marker` SUBTAGs (orphan-flag / bundle-consumed),
+black forms are untagged; ENGJ403 site 2's embed-route span renders nothing — a
+kind-todo NOTE at unconsumed AV-item markers would match BOTH gold eras (BLL27x
+"Designer note: … to come"; ENGJ403's To Do notes) but is a different rule from CL-0037
+and belongs with the instruction-retention / widget-build track (the untracked BLL2xx
+would be its population — measure it if the family ever joins the tracked corpus).
+(2) The audio-kind sites' gold scaffolds (audioButton/audio players inside dragAndDrop
+builds) are widget-build territory, not a free-body emit. **Tools:**
+`outputs/_detect_avitem.cjs` (the standing family detector — HEAD covers
+audiovisual/av/request-item forms, both channels, case-folded), `_probe_r233_parse.cjs`,
+`_probe_r233_inert.cjs`, `_affected_avitem.txt` (13 codes). **NEXT kickoff tickets:**
+CL-0051 no-emoji (FULL ship — resets the ledger; measure the emoji population + the
+✅/☐ answer-marker collision FIRST) → CL-0040 canonical overview menu arc.
+
+## 2026-07-17 (round 232, build 260618.05) — CL-0038: `[MTKquiz]` → THE "Go to quiz" BUTTON + Designer/Developer To Do note (Chris — the CL0038 kickoff, ticket 7 of the CL0029-CL0052 triage; the FIRST output-changing round since r229; SCOPED ship #4, 4 headroom left)
+
+**Plain English.** Writers mark a D2L quiz with an "MTK quiz" note in a dozen different
+spellings — `[MTKQuiz]`, `[MTK Quiz, supports engagement, audio, video, file sharing]`,
+`[Insert MTK Quiz – trigger engagement]`, even a bare red line with no brackets. Until
+now the converter treated each spelling differently and mostly wrongly: most became an
+un-buildable quiz-widget placeholder that swallowed the writer's quiz questions into an
+orange dump box, some became plain red notes, and two spellings mis-fired into a text
+box or a drop-down. The design team's rule (Change Ledger CL-0038) says: every such
+marker ends in the standard **"Go to quiz" button** — with an intentionally EMPTY link,
+because the developer wires the real D2L quicklink at publish time — plus a visible
+**"Designer/Developer To Do:"** note telling the developer to create the quiz in MTK.
+That is what ships now, on every one of the 54 markers across 21 modules: one button +
+one note per quiz, the writer's own quiz questions kept visible on the page (the
+developer needs them to build the quiz), and where the writer had ALSO typed their own
+"Go to quiz" button next to the marker, the two collapse into ONE button (the human's
+form — never two buttons for one quiz). The off-switch restores the old output
+byte-for-byte, and every quality gate held or improved.
+
+**THE RULE (CL-0038, 16 Jul).** Any `[MTKquiz]` (any modifiers) ends in
+`<a href="#" target="_blank"><div class="button">Go to quiz</div></a>` (blank href; dev
+wires the D2L quicklink) + a visible `Designer/Developer To Do:` note to create the quiz
+in MTK. Writer-supplied quiz content STAYS rendered (constraint 1); the `dropbox`
+wrapper modifier does NOT attach. `[MTKquiz]` added to the tag taxonomy (`mtk_quiz`).
+
+**MEASURED FIRST (STEP 1, live parser — never the stale txts).**
+- **Population** (`outputs/_detect_mtkquiz.cjs`, ALL ~430 WTs incl. the parsed-txt-less
+  bilingual dirs, 8-sharded for the 45s wall): **54 marker occurrences (33 distinct span
+  forms) / 21 modules** + exactly ONE closer (`[End of MTK Quiz content]`, ARFUN01).
+  19 modules tracked (have Claude dirs); **HPRE301 + SSCI104 untracked** — their fix is
+  a FORWARD GUARANTEE (the r231 class).
+- **Live resolutions were all over the map** (`outputs/_probe_r232_parse.cjs`, the
+  r189/r191 probe-Parse-first lesson): most forms → `mcq` INTERACTIVE via the embedded
+  "quiz" alias (un-built bundles that swallowed the writer's quiz content into cv2
+  dumps); `[MTKQuiz]`/`[Auto-marked MTKquiz]`/`[MTKQuiz] 2F`/the ENG1004/ENG1005
+  bracket-less red lines → bare instructions (Writers Notes); `[MTK quiz, Free text
+  box…]` → a **text box ELEMENT** mis-route (TEFUN02 ×5); `[MTK Quiz – … teacher
+  dropbox]` → a **dropdown** mis-route (EXBP901).
+- **Gold pairing:** gold ships the exact button shape on 122 pages (populated D2L
+  quickLink hrefs = the publish-time wiring itself, the CL-0044 class → the blank-href
+  divergence is INTENTIONAL). At every measured site gold's button sits where the
+  WRITER's own button marker sits — `[button] Go to quiz`/`Quiz` (ARFUN02/04,
+  TEFUN02/06/07/08), a standalone `[Go to quiz]` span (HPRE301), or the MTK marker
+  itself — so AT-TAG emission + writer-button absorption reproduces gold's placement.
+  **FIVE modules have NO gold button** (SCFUN01, MXFUN02, SSOG103, SSOG301, EXPFUN07 —
+  gold predates the rule): shipped anyway per CL-0038 = **named CHANGE-LEDGER OVERRIDE
+  deltas**, captured, never chased.
+- **Scope fence:** standalone `[go to quiz]`-family spans exist in **~40 modules**
+  corpus-wide — far beyond the MTK family. They participate ONLY as button markers
+  inside an MTK item's window; the corpus-wide standalone class is a RECORDED follow-up
+  (CL-0004-adjacent), keeping this round's blast exactly the detector set.
+
+**FIX (DATA OVER CODE; env `MTKQUIZ_OFF` reverts everything).**
+- **Taxonomy + retag** (`Tag_Lexicon.json`): canonical **`mtk quiz`** entry (ELEMENT,
+  deliberately ZERO aliases — natural alias matching is not env-gateable; the entry is
+  the taxonomy record + directive lookup) + **`_meta.mtk_quiz_retag`** — a span-level
+  Parse step (the r170 tag_promote class, but able to fire on tag-less instruction
+  spans too): folded span carries the MTK-quiz head (`mtk[\s-]*quiz`) and is not the
+  closer (`^\[?end\b` excluded) → the quiz-junk co-tags in `drop_tags`
+  (mcq/engagement/question/text box/option/dropdown/video/audio — so `dropbox` never
+  attaches) are removed and ONE `mtk quiz` ELEMENT injected; a bracket-less span must
+  be ≤12 words (`bracketless_max_words` — a long prose note mentioning an MTK quiz can
+  never retag). **Primary recompute = SURVIVORS-FIRST + CONTAINER-FIRST**: a surviving
+  `[Activity]`/`[drag and drop]` co-tag keeps governing; the CONTAINER-FIRST preference
+  was a live catch — `[Activity 2B] [MTK quiz, autograded…][H3]` (ARFUN02) recomputed
+  to the h3 (ELEMENT 6 > CONTAINER_OPEN 5) and the activity box silently vanished
+  before the preference was added. ELEMENT ⇒ the scanner never opens a capturing
+  bundle ⇒ the writer's quiz content flows to the normal body render (constraint 1).
+- **Emit** (`Emit_Templates.interactive_builders.mtk_quiz`; ContentConverter):
+  `#mtkQuizEmit` ships the canonical button + ONE todo note (kind "todo" → the r219
+  `red_flag.todo_form`, red+bold, class `cv2-note` = gate-excluded by construction)
+  whose `{spec}` is the span's raw text — the modifier prose ("supports engagement,
+  audio, video, file sharing", "should go to teacher dropbox") is never silently
+  stripped (round-43 principle). **Four emit sites** cover every measured shape:
+  the ELEMENT route (#element), the activity-opener co-tag (HPRE301's `[Activity 3C]
+  [MTKQuiz]` — button+note inside the box it opens), the **bundle tail** (markers
+  CAPTURED into a neighbouring widget's bundle — TEFUN03/06/07/08's `[Quiz]`-opener
+  merge — and the bundle's own opener item, the ARFUN04-1H catch: the opening span
+  lives in neither openerItems nor memberItems), and the element co-tag guard (makes
+  the mechanism total). Once-per-item via `_mtkQuizEmitted`.
+- **THE DEDUP (adjacent writer-button absorb)** — `#mtkQuizPrepass`: for each
+  mtk-carrying item, a small window walk (2 back / 5 forward non-blank items; STOPS at
+  another mtk item, an `[Activity]` opener, or any section/page/closer boundary — never
+  leaks across activities; bundle-consumed items are INVISIBLE to the count — the
+  ARFUN04 window-exhaustion catch) finds the writer's own quiz button: a
+  `[button]`-family item labelled per `button_label_pattern` ("Go to quiz."/"Quiz") or
+  a `[Go to quiz]` span per `marker_span_pattern`. Found → THAT site renders the ONE
+  canonical anchored button (`_mtkQuizAnchor` upgrade at the button emit; a claimed
+  thin `[Go to quiz]` BUNDLE has its empty placeholder box suppressed —
+  `#mtkQuizBundleThin`) and the marker ships note-only (`_mtkButtonAbsorbed`). A
+  bundle-consumed `[button]` is never claimed (it would lose the button — the TEFUN03
+  live catch; the marker keeps its own). 
+- **The closer:** `[End of MTK Quiz content]` stays `end mcq` CONTAINER_CLOSE both
+  toggle states; with no open container the existing machinery ignores it gracefully
+  ("[end mcq] had no open container — ignored", probe-observed).
+
+**RESULTS.** The 19 tracked modules ship **54 anchored buttons + 54 todo notes — 1:1
+per marker, zero doubles, zero losses** (per-module census in-round). Gold-shaped
+site checks: TEFUN02 (box > h4 > p > button+note = gold EXACTLY), ARFUN02-2B (box 2B >
+h3 > button > note > the kept quiz questions), ARFUN04 4/4, TEFUN03 3/3 with the
+questions staying rendered in the sibling `[T/F]` dump. **Recorded residue:**
+ARFUN04-4D's writer button glues an artifact link onto the same black run (multiline
+label fails the exact-match claim BY DESIGN) → the canonical button ships plus the
+writer's plain button below it, content preserved — 1 site.
+
+**PROOF (scoped ship #4 — `scoped_ship.sh --affected outputs/_affected_mtkquiz.txt
+--toggle MTKQUIZ_OFF --no-regen --commit`; ledger 4 scoped since the r228 full, 4
+headroom).**
+- **Toggle-OFF byte-identity:** 6-module OFF regen (TEFUN02/ARFUN02/SSOG301/ENG1004/
+  EXBP901/MXFU402) = **32/32 pages byte-identical to the r229 manifest** (also proves
+  the alias-less lexicon entry is inert when OFF).
+- **Containment PERFECT:** content-hash 0-stale (19 affected fresh, 371 unaffected
+  byte-identical to the manifest); actually-changed = **19 ⊆ 19 affected**.
+- **Completeness:** FRESH 12-module spot-check sample (the r229 re-plan-per-round
+  trap respected) regenerated fix-ON — all byte-identical.
+- **Forward guarantee** (`outputs/_probe_mtkquiz_fwd.cjs`, the r231 probe pattern —
+  ALL LEGS PASS): HPRE301 in-memory fix-ON ships **2 buttons/2 notes (= its 2 gold
+  buttons)** exercising the two paths no tracked module reaches (activity-opener
+  co-tag + the `[Go to quiz]`-span marker bundle); SSCI104 1/1; `MTKQUIZ_OFF=1` → 0/0
+  both; ARFUN01 (closer-only) → 0 emits + **disk byte-identity** (the fence).
+- **Ghost-dir hygiene:** the accidental flat `01-Claude_Modules_/HPRE301/` from an
+  early smoke regen was deleted (the r215/r222 class); untracked modules stay
+  untracked — adding them is Chris's call (the r197/r221 precedent).
+
+**PROTECTED GATES — ALL HELD-or-IMPROVED at the r229 baselines (exact,
+decomposition-proven via the committed fastloop):** PRIMARY skeleton SCAFFOLD mean
+**49.549 → 49.557% (+0.008 IMPROVED)** / ≥50 **918** / ≥75 **179** / ≥90 **12** EXACT /
+RAW **34.789%** (−0.002pp = the r220/r226 named net-positive class: gold-absent button
+nodes on the 5 override modules) @ **1836 paired, skipped 0**; compare_structure exact
+**9442** / EXTRA **172** / missing **455** EXACT (matched pool 11133→11132, the
+r57/r147 relocation artifact — a CS-note→button conversion shrank the note-excluded
+pool by 1); body_compare **266 → 265 IMPROVED**; clean **97.71%** / leak **290/46**
+EXACT; **tags 9557/9557 HANDLED / REAL FAILURES 0** (the lexicon edit is clean);
+flipCard **TOTAL 33 / divergence 0**; speechBubble **defect 0**; index-sync **32/27**
+(no new engine file); entry-parity **PASS**; `subject_parameters --selftest` +
+`vet_issue --selftest` PASS after the SGP capture.
+
+**CAPTURED** `_universal_conventions.cl0038_mtkquiz_button` (overrides_gold notes: the
+blank-href divergence + the 5 no-gold-button modules = intentional LEDGER OVERRIDES,
+never chased in any audit).
+
+**RECORDED FOLLOW-UPS:** the corpus-wide standalone `[go to quiz]`-span class (~40
+modules, gold ships buttons at several — CL-0004-adjacent, its own measured round) ·
+the `[Quiz]- triggers engagement` sibling markers (non-MTK quiz-form spans keep their
+placeholder dumps — widget-class territory) · ARFUN04-4D's multiline-label writer
+button (1 site, content preserved).
+
+**NEXT (master triage queue):** CL-0037 Vimeo (measure the CS/Audiovisual
+discriminator first — may decline) → CL-0051 no-emoji (FULL ship, resets the ledger)
+→ CL-0040 canonical overview menu (the multi-round arc).
+
+Data: `Tag_Lexicon.json` `tags."mtk quiz"` + `_meta.mtk_quiz_retag`,
+`Emit_Templates.interactive_builders.mtk_quiz`, the SGP capture. Env: `MTKQUIZ_OFF`.
+Tools: `outputs/_detect_mtkquiz.cjs`, `_probe_r232_parse.cjs`, `_probe_mtkquiz_fwd.cjs`,
+`_affected_mtkquiz.txt`, `_mtk_detector_full.txt`.
+
+## 2026-07-17 (round 231, build 260618.04) — CL-0033: LANGUAGES-COHORT MODULES SHIP `template="combo"` — LIVE output-inert guarantee + capture (Chris — the CL0033 kickoff, ticket 6 of the CL0029-CL0052 triage; ZERO-blast round, the r224/r230 class, no ship-ledger increment)
+
+**Plain English.** The design team's Change Ledger says every module in the Languages
+cohort (Chinese, French, Gagana Samoa, German, Japanese, Spanish — their FUN and non-FUN
+course codes) must load the "combo" page template on every page. There are no Languages
+modules in the library yet, so nothing on disk changes today — but without this rule the
+FIRST Languages module converted would have shipped with an EMPTY template attribute
+(an unstyled page), because nothing in the converter's normal inheritance chain would
+ever choose "combo" for a brand-new code with no siblings. A small data-driven rule now
+guarantees the right template the day those modules arrive. Proven three ways: real
+modules re-convert byte-identical with the rule on; a synthetic Languages code gets
+"combo" on every page; the off-switch faithfully reverts it. Every gate holds by
+construction.
+
+**THE RULE (CL-0033, 14 Jul).** Every page of a Languages-cohort module ships
+`template="combo"` on `<html>` (the sub-type still comes from the `<body>` class). The
+cohort = doc-14 §14.1's `cohort_prefixes` (`data/Subject_Global_Parameters.json`, family
+"14.1 Languages P1-4"): **CHIFUN, FREFUN, SAMFUN, GERFUN, JAPFUN, SPAFUN, CHI, FRE, SAM,
+GER, JAP, SPA** — six languages × FUN + non-FUN forms.
+
+**MEASURED FIRST (STEP 1 census, live, both corpora).** **431 distinct dir codes — ZERO
+match any of the 12 prefixes; ZERO short-prefix collisions** (no non-Languages code
+starts CHI/FRE/SAM/GER/JAP/SPA — the r218 "BLLR is NOT BLL" startswith trap checked and
+clear); compare_set (200) holds none. And the gap is real: nothing today would ever
+RESOLVE combo for a fresh Languages code — no registry row, no sibling → the TEDC-style
+EMPTY attribute (the r221 pre-fix class; the probe's toggle leg doubles as this
+measurement — with the fix OFF a synthetic JAPFUN01 ships the host chain's value, never
+combo). Population 0 → an INERT forward-looking guarantee (the r218/r224/r230 class).
+
+**FIX (DATA OVER CODE).** NEW `Emit_Templates.skeleton.template_phase_presets.
+cohort_overrides` = `{enabled, value:"combo", prefixes:[the 12 verbatim]}` —
+self-contained with a `_doc` cross-reference to doc-14 §14.1 (the engine never reads
+Subject_Global_Parameters at runtime; SGP stays shipped-inert, `master_enabled:false`).
+`SkeletonBuilder.BuildPage` applies it AFTER the r224 `prefix_overrides` loop (no key
+overlap): code startsWith any listed prefix → `phaseForAttr = "combo"`, UNCONDITIONAL
+(outranks sibling inheritance AND the digit preset; `preserve_values` does not apply —
+the r224 absolute-override semantics), one `run.AddNote` info line. Kept a SEPARATE
+block from `prefix_overrides` so each fix reverses independently (§2): **`LANGCOMBO_OFF`**
+reverts Languages alone; `TPLPREFIX_OFF` keeps reverting BLL2 alone. `template_attr_map`
+already carries `"combo":"combo"`. Captured
+`_universal_conventions.cl0033_languages_combo` (the r229/r230 entry shape;
+overrides_gold moot with no Languages gold on disk, but the marking stands — when
+Languages modules arrive, an audit divergence matching the rule is INTENTIONAL, never
+chased).
+
+**PROOF (zero-blast round — `outputs/_probe_langcombo.cjs`, the r230 `_probe_ossch1`
+pattern; ALL LEGS PASS).**
+- LEG 1 INERT: **ENFUN01** (a real combo-attr module via its own chain — combo intact) +
+  **BLL210** (the `prefix_overrides` fence — its "1-3" still wins) + **OSSC301** (r230
+  canary, NCEA) full live conversions fix-ON = **6/6 pages byte-identical to disk**
+  (page counts match disk exactly: 1/1/4).
+- LEG 2 DETECTION: the r230 BuildPage monkey-patch sets `run.moduleCode = "JAPFUN01"`
+  (the FUN 2-digit form) then `"JAP101"` (the digit-preset-shaped 3-digit form — matches
+  `code_pattern` but JAP is not in `subjects`, covering both prefix classes) over
+  OSSC301's conversion → **template attrs ["combo","combo","combo","combo"]** both times
+  (template attr asserted ONLY — the patched code also changes chip etc., irrelevant).
+- LEG 3 TOGGLE: same synthetic + `LANGCOMBO_OFF=1` → **["NCEA","NCEA","NCEA","NCEA"]**
+  (the host chain's value, NOT combo — the faithful revert AND the STEP-1.2 gap proof).
+- LEG 4 FENCE: covered by LEG 1's byte-identity (census: no real module carries a
+  Languages prefix).
+- `subject_parameters.py --selftest` PASS · `vet_issue.py --selftest` PASS (incl. the
+  cascade selftest) · `node _check_index_sync.cjs` OK (32 browser / 27 node engine
+  files, disk in sync — no new engine file this round).
+
+**GATES.** Zero output bytes changed (byte-identity proven live; no regen — the corpus
+and content manifest remain the r229 shipped state) → **every protected gate HOLDS BY
+CONSTRUCTION at the r229 baselines**: skeleton **49.549% / ≥50 918 / ≥75 179 / ≥90 12 /
+RAW 34.791% @ 1836 skipped 0** · cs **9442/172/455** · body **266** · clean **97.7%** /
+leak **290/46** · tags **9557/9557** · flipCard **33 / div 0** · speechBubble **0** ·
+entry-parity PASS. Ship ledger NOT incremented (the r190/r193/r224/r230 byte-identical
+class) — scoped-ship headroom stays 6 before the full backstop is due.
+
+**Data:** `skeleton.template_phase_presets.cohort_overrides` + the
+`cl0033_languages_combo` capture. **Env:** `LANGCOMBO_OFF`. **Tools:**
+`outputs/_probe_langcombo.cjs` (its toggle leg doubles as the gap measurement; the
+STEP-1 census also run standalone over both corpora + compare_set).
+
+**NEXT (the master triage kickoff's queue):** CL-0038 `[MTKquiz]` → "Go to quiz" button
+(a real emit round — measure the `[MTKquiz]` population across all WTs first) →
+CL-0037 Vimeo (may decline) → CL-0051 no-emoji (FULL ship) → CL-0040 canonical overview
+menu arc.
+
+## 2026-07-17 (round 230, build 260618.03) — THE OSSC PAIR: CL-0042 lesson-h1 GUARANTEE (live, output-inert) + CL-0043 lead-in VERIFIED ALREADY IN EFFECT — both captured (Chris — the CL0042_CL0043 OSSC-pair kickoff, tickets 4+5 of the CL0029-CL0052 triage; ZERO-blast round, no ship-ledger increment)
+
+**Plain English.** The design team's Change Ledger added two rules from the OSSC401
+difference report. (CL-0042) An OSSC lesson page's big heading must be that lesson's OWN
+title — one heading only, never the module title doubled up with the Te Reo title pair.
+(CL-0043) When the writer opens a lesson's overview with a describing sentence ("Ākonga
+will…"), that sentence appears as a normal paragraph above the "We are learning:" labels.
+We measured both first, and the converter ALREADY does both correctly: OSSC301's three
+lesson pages ship exactly the rule's heading form today, and the lead-in sentence already
+renders as a paragraph everywhere writers actually supply one (checked across the whole
+Online Safety family — the converter matches the hand-built pages pair for pair). What
+shipped is the missing GUARANTEE: the machinery that adds a second Te Reo heading to
+lesson pages is real and configured to fire on OSSC — OSSC301 escapes it only by a lucky
+accident (its title line never splits because of a ✅ emoji). A one-line data-driven gate
+now makes the correct behaviour permanent for OSSC at every level, changing ZERO pages
+today, plus both rules are recorded so no future audit ever "fixes" the converter back
+toward the older hand-built form (which repeats "Ngā Tāware" on every lesson — those pages
+pre-date the rule). Every gate holds by construction.
+
+**Context.** OSSC401 (both rules' evidence module) is NOT on disk; `OSSC301` is the ONLY
+OSSC dir (gold `Standard/OSSC301`, 4 pages; Claude dir present; the one dir NOT in
+`compare_set.txt`). Both rules are (b)-scoped: OSSC-wide, designer-confirmed.
+
+**CL-0042 (constraint 69) — OSSC lesson `<h1>` = the lesson's own title: LIVE
+output-inert guarantee (the r224 TPLPREFIX pattern) + capture.** MEASURED FIRST
+(`outputs/_measure_ossc_lesson_h1.py`, NEW): **Part A** — Claude ALREADY ships the rule's
+exact form on all 3 OSSC301 lessons: chip (`1.0`) + ONE `<h1><span>` holding the
+prefix-stripped lesson title (`[H2] *Lesson 1: What are online scams?*` → "What are online
+scams?" — the r143 pre-activity harvest), NO te-reo second h1, NO body-h3 repeat (either
+side). The GOLD is the diverging side: it repeats the module Te Reo title **"Ngā Tāware"
+as a third h1 on every lesson** — the gold pre-dates the rule; that divergence is the
+recorded INTENTIONAL override (never chase it back in). **Part B** — the dual-title lesson
+machinery is REAL and fires today on **XMES 18 / CEDT 13 / SSFUN 4 pages — 0 OSSC** (1,619
+Claude lesson pages scanned). The hazard is live: the registry's mined **OSSC3 lesson
+`h1_count` IS 2** (mined from the gold's te-reo repeat) and `SkeletonBuilder`'s lesson
+branch pushes `run.teReoTitle` wherever it exists — OSSC301 escapes ONLY because its
+[TITLE BAR] `*OSSC301 Scams* ✅*Ngā Tāware*` never splits (the ✅ boundary is dropped
+upstream, so no Te Reo title is ever derived — also why its OVERVIEW ships one combined
+h1 vs gold's two, recorded below). A future title-split fix would have silently regressed
+every OSSC lesson to the dual pair. **FIX (DATA OVER CODE):**
+`Emit_Templates.header.lesson_title_h1` (`enabled` + `subjects:["OSSC"]`, code-prefix
+match) gates the te-reo push in SkeletonBuilder's lesson branch; env **`OSSCH1_OFF`**
+restores the pre-230 push. The overview page + the `#module-code` chip h1 are untouched
+(overview te-reo goes through the titleBar branch, not this one); the harvest fallback
+chain (`page.pageTitle || run.englishTitle || …`) unchanged. Captured
+`_universal_conventions.cl0042_ossc_lesson_h1` (`overrides_gold` — a stocktake divergence
+matching the rule = intentional, never chased; `vet_issue` surfaces it by keyword).
+
+**CL-0043 (constraint 70) — [Lesson Overview] lead-in `<p>`: VERIFIED ALREADY IN EFFECT +
+CAPTURED (no new code — the r228 record-only class).** MEASURED FIRST
+(`outputs/_measure_lessonoverview_leadin.py`, NEW, all 416 WTs): 775 `[Lesson Overview]`
+markers = 543 label-first / **110 sentence-first** (the fire population — including the
+exact "Ākonga will…" form across the OS family: OSAH301/401/501, OSAI101, OSBY101/201,
+OSGM201, OSOH101, OSSM301/501) / 122 short-or-empty. **OSSC's own population is ZERO**
+(OSSC301 goes straight to "We are learning:" — and correctly ships NO lead-in, both sides:
+gold and Claude lesson menus are `col-md-8 col-12 > h5+ul+h5+ul`, h5-first). The mechanism
+the rule asks for ALREADY EXISTS AND FIRES: the r114/r147 lesson-menu section capture
+renders the writer's pre-label sentence as a **verbatim `<p>` above the first `<h5>`,
+inside the same col** — verified PAIRWISE across the OS family: **OSAH301/401/501 +
+OSAI101 + OSBY101/201 = Claude p-first == gold p-first on every lesson page** (19/19;
+gold's sentence text is editorially rewritten in places — structure identical, writer text
+ships verbatim per constraint 1). Where gold editorially DROPPED the writer's sentence
+(**OSGM201, OSOH101, OSSM301** — 3 modules), CL-0043 sides with the CONVERTER's kept form
+— the capture (`cl0043_lesson_overview_leadin`, `overrides_gold`) protects those from ever
+being chased. No new code → NO dedicated toggle exists; the capture pre-names
+`menu.lesson_overview_leadin` + env `OSSCLEADIN_OFF` should OSSC401 arrive with a dialect
+the section capture misses.
+
+**PROOF (zero-blast round — the r224/r218 output-inert class).**
+- **`outputs/_probe_ossch1.cjs` (NEW, the r224 probe pattern) — ALL 4 LEGS PASS:**
+  LEG 1 INERT — OSSC301 full live conversion fix-ON = **4/4 pages byte-identical** to
+  disk. LEG 2 DETECTION — synthetic forced `run.teReoTitle` ("Ngā Tāware", BuildPage
+  wrap), fix ON → lesson title-h1 counts **[1,1,1]** (the suppression FIRES). LEG 3
+  TOGGLE — same synthetic, `OSSCH1_OFF=1` → **[2,2,2]**, 2nd h1 = "Ngā Tāware" (the
+  pre-230 behaviour restored faithfully). LEG 4 FENCE — **XMES101** (the biggest real
+  dual-title emitter) fix-ON = 9/9 pages byte-identical with its **8 dual-title lesson
+  pages intact**, + **OSSM301** (the nearest "OSS" prefix sibling) 5/5 byte-identical.
+- Census complete BY CONSTRUCTION: the gate only ever REMOVES a push for "OSSC"-prefixed
+  modules; OSSC301 is the only such dir on disk (both corpora checked) and it is
+  live-proven byte-identical → **blast = 0 pages corpus-wide**; the content manifest is
+  untouched (no output byte changed) and stays the r229 shipped state.
+- `subject_parameters.py --selftest` PASS + `vet_issue.py --selftest` PASS (both read the
+  edited `Subject_Global_Parameters.json`) + index-sync **32/27** OK.
+- **PROTECTED GATES ALL HOLD BY CONSTRUCTION at the r229 baselines** (zero output bytes
+  changed): PRIMARY skeleton **49.549% / ≥50 918 / ≥75 179 / ≥90 12 / RAW 34.791% @ 1836
+  skipped 0**; cs **9442/172/455**; body **266**; clean **97.7%** / leak **290/46**; tags
+  **9557/9557**; flipCard **33 / div 0**; speechBubble **0**; entry-parity PASS. Ship
+  ledger NOT incremented (byte-identical round — the r190/r193/r224 class; full-backstop
+  headroom unchanged at 6).
+
+**RECORDED (follow-ups + residue):** the OSSC301 OVERVIEW combined-title (`*OSSC301
+Scams* ✅*Ngā Tāware*` → ONE h1 vs gold's two — the r169 marker-split family's
+italic-emoji dialect; its own measured round; the CL-0042 gate is precisely what makes
+that future fix SAFE on lesson pages) · OSSM501 has no Claude dir (never converted; its
+gold ships the lead-in form p=4) · OSSC401 absent on disk (rules go live for it on
+delivery via the shipped gate + existing menu machinery) · the 110-marker lead-in
+population outside OSSC needs NO action (already correct where gold kept the sentence;
+gold-dropped trio protected by the capture). Master triage kickoff PROGRESS LEDGER
+updated; the OSSC-pair kickoff file deleted (§12.5). NEXT kickoff tickets: CL-0033
+(Languages `template="combo"`) → CL-0038 `[MTKquiz]` → CL-0037 Vimeo → CL-0051 no-emoji →
+CL-0040 canonical overview menu arc.
+
+**Data:** `Emit_Templates.header.lesson_title_h1` +
+`Subject_Global_Parameters._universal_conventions` rules `cl0042_ossc_lesson_h1` +
+`cl0043_lesson_overview_leadin`. **Env:** `OSSCH1_OFF`. **Tools:**
+`outputs/_measure_ossc_lesson_h1.py`, `outputs/_measure_lessonoverview_leadin.py`,
+`outputs/_probe_ossch1.cjs`.
+
+## 2026-07-17 (round 229, build 260618.02) — THE ACTIVITY PAIR: CL-0030 measured-DECLINED + captured, CL-0048 live for the gold-solid ENFUN slice + captured (Chris — the CL0030_CL0048 activity-pair kickoff, tickets 2+3 of the CL0029-CL0052 triage; SCOPED ship #1 since the r228 full)
+
+**Plain English.** The design team's Change Ledger added two rules about activity boxes:
+(CL-0030) an activity box should hold at most ONE interactive — a writer stacking two gets
+them split into lettered sibling activities; and (CL-0048) inside an activity, the text
+should sit in its own row and the interactive in a separate row below it. We measured the
+whole hand-built library first, and it says the library was built BEFORE these rules: the
+human puts 2+ interactives in one box **510 times across 226 modules**, and the dominant
+inside-the-box layout (75%) is text and widget together in ONE column — which is exactly
+what the converter already produces. Splitting or restructuring everything would break
+thousands of pages that match the human today. So: both rules are now RECORDED as marked
+forward-looking rules (future modules and stocktakes honour them; nobody will ever "fix"
+the converter back toward the old gold form), and the ONE place where the human library
+already follows the new layout — the ENFUN Fundamentals family, 80% of its activities —
+now gets the exact human form: text row first, widget in its own full-width row. Eight
+ENFUN pages changed; every gate held or improved.
+
+**The measurement (both tickets, one pass — the kickoff's design).** NEW shared walker
+`outputs/_activity_anatomy_core.py` (one JSONL row per activity box, both sides: top-level
+interactive component GROUPS — consecutive same-type roots collapsed, per CL-0030's
+supporting-element exclusions — + the prose/widget row-col anatomy) + the two readers
+`_measure_multi_interactive_activity.py` (CL-0030) and `_measure_activity_inner_rows.py`
+(CL-0048; `--gen` emits the registry). 7,539 gold / 5,850 Claude boxes. Both evidence
+modules are ABSENT on disk (BLL253 gold-only-elsewhere, OSSC401 not delivered — the
+kickoff's warned gap), so the whole-library measurement is the evidence base.
+
+**CL-0030 — one interactive per activity: MEASURED DECLINE of the live flip; rule
+CAPTURED + MARKED (the r219 CL-0007 pattern).** Gold ships >=2 interactive component
+groups in ONE activity box **510 times / 226 modules / 11.7%** of widget-carrying boxes —
+including **238 boxes stacking >=2 TASK-type widgets** (dragAndDrop+typing, clickDrop+
+dragAndDrop, bingo x2…). Claude ships multi in only **47 boxes / 39 modules (1.3%)**, and
+the paired drill-down kills the flip: the dominant family (BLL phonics `-02`, ~25 boxes)
+is a **box-for-box gold-exact match** — Claude `2C [carousel+accordion]` == gold `2C
+[carousel+accordion]` (BLL125/141/146/175/211/212/215/232/235/236 all verified; BLL125
+keeps carousel+clickDrop) — a split would REGRESS pages that are right today, and the
+SAME BLL2xx family is gold-INCONSISTENT (BLL212 keeps 2D multi; BLL226 splits it) with the
+KEEP form dominant ~4:1 in the paired population (the r123/r162 single-deviation class →
+family form ships, which is the current behaviour → no change). The toward-gold residue =
+**~7 heterogeneous boxes across 7 families** (CEDK101-00 2C dragAndDrop+modal-set,
+MXDB302-07 7C, SSOG103-01, XMES101-01 1C, ENGS101-03, XGF9001-02, ENFUN01-00), each a
+bespoke boundary/content question with NO derivable discriminator separating them from the
+keeps — the r217 recorded ambiguous-boxing band, where they stay. The ~15 TRR/PNR multi
+boxes are the r220-recorded bilingual section-table boundary class (raw-dump capture), not
+this rule. CAPTURED: `_universal_conventions.cl0030_one_interactive_per_activity`
+(overrides_gold — a future stocktake divergence matching the rule = intentional override,
+never chased; the entry pre-names the live-wiring shape: split at the widget-flow emit
+seam riding the existing `{lessonNumber}{letter}` counter so follower renumbering falls
+out, env `ACTSPLIT_OFF` when that round ships). **No live code this round → no ACTSPLIT_OFF
+toggle exists** (nothing to reverse; the kickoff pre-named it for the live round).
+
+**CL-0048 — prose | interactive inner rows: LIVE for the gold-solid slice, captured for
+the rest.** Gold's widget-carrying anatomy corpus-wide: **same_col 75.4%** (prose+widget in
+one inner col — Claude's pre-round form, r182-SOLID) / two_rows 11.8% / bare 8.2% /
+sibling_col 4.3%. The universal CL-0048 form would restructure ~2,000 gold-matching boxes
+away from their gold → captured NOT flipped (`cl0048_prose_interactive_rows`, same
+marking; doc-14's own Mode-B rule — built gold/sibling wins on pure structure — plus the
+r219 parking of CL-0007's affirmative widths, the same constraint-63 family). BONUS
+FINDING recorded in the capture: the rule's SUBSTANCE is real gold behaviour where
+wrappers are WIDENED — corpus-wide two_rows boxes correlate prose col with the box's
+OUTER width (widened col-11/col-md-11 → prose `col-md-8 col-12`, 34/35 in ENFUN; DEFAULT
+col-md-8 outer → prose `col-12`, 205/236) — i.e. CL-0036's original widened-only form IS
+the gold convention, per-family. **THE LIVE SLICE:** the registry groups whose gold
+solidifies the SEPARATED form on the anatomy Claude actually emits —
+**ENFUN|Fundamentals** alone passes the generated gates (sep 77/96 = **0.802**, 8 modules,
+widget col `col-md-12 col-12` 74/77 = 0.96; `--gen` floors: share >=0.60, n>=20, >=5
+modules, widget col >=0.80): a prose-carrying activity-owned bundle now closes its prose
+row (`</div></div>`) and emits the widget in its OWN `row > col-md-12 col-12` — the
+byte-eyeballed gold ENFUN02 1D form (`activity > row > col-12 [h3+p] + row > col-md-12
+col-12 [widget]`). The prose col is deliberately UNCHANGED (col-12 — gold's own form for
+the default-width wrappers Claude emits; the col-md-8 minority rides widening Claude
+doesn't do). Fires only with `actProse` (title/lead/table emitted) — a widget-only box
+keeps the single col (gold's widget_only form); groups without a row keep same_col BY
+CONSTRUCTION. Declined-with-record: ENGFUN|Inquiry (5/5 sep, 1 module, below floors;
+Claude fires 0 there), PNR|Bilingual (7/10, 2 modules + the r220 boundary territory),
+MXFL|Standard (0.384 — rides widening). RESULT: Claude ENFUN same_col **76 → 5** (the 5 =
+the inline-container-path fringe, recorded residue), two_rows **0 → 71** all at the gold
+widget col; non-ENFUN two_rows 88 → 88 (zero out-of-scope movement).
+
+**PROOF (scoped ship #1 since the r228 full; ledger prints 2 — both increments are this
+round's checkpoint+commit invocations; 6 headroom).**
+- Toggle-OFF: `ACTROWS_OFF=1` regen of all 8 ENFUN through the edited engine+data =
+  **byte-identical to the r228 manifest (0/2009 pages differ)** — also proves the JSON
+  re-serialisation + actProse plumbing inert.
+- Fix-ON blast: **EXACTLY 8 pages / 8 modules (ENFUN01-05/07/08/09)** — containment
+  perfect (the affected set is prefix-gated over ALL dirs, complete by construction; no
+  other code starts "ENFUN"); completeness spot-check 12/12 non-affected modules
+  byte-identical fix-ON (fresh sample — the stale 07-15 sample file contained ENFUN04 and
+  produced a FALSE "under-scoped" first pass: re-plan the sample per round, gotcha noted).
+- **PROTECTED GATES ALL HELD-or-IMPROVED:** PRIMARY skeleton (state-chain
+  `outputs/_r229_sk_merge.py` off the r228 final): SCAFFOLD mean **49.547 → 49.549%
+  IMPROVED** / ≥50 **918** / ≥75 **179** / ≥90 **12** EXACT / RAW **34.791%** EXACT @
+  **1836 paired, skipped 0**; the 8 ENFUN pages move net **+4.21pp** (5 up: ENFUN03 +1.50,
+  ENFUN09 +1.14, ENFUN05 +0.97, ENFUN08 +0.75, ENFUN01 +0.45; 3 named net-positive dips
+  ≤0.39pp: ENFUN04 −0.39 / ENFUN07 −0.13 / ENFUN02 −0.09 — the family's own gold same_col
+  deviant boxes, the r123/r164 collateral class, decomposed per page above). cs exact
+  **9442** / EXTRA **172** / missing **455** EXACT; body **266** EXACT; clean **97.7%** /
+  leak **290/46** EXACT (fast-loop decomposition, `scoped_ship.sh` PASS + `--commit`);
+  tags **9557/9557 / REAL FAILURES 0**; flipCard **TOTAL 33 / divergence 0**; speechBubble
+  **defect 0**; index-sync **32/27**; entry-parity **PASS**. Baseline + content manifest
+  refreshed (this is the shipped state).
+
+**RECORDED (follow-ups + residue):** the CL-0030 live-wiring round (per family, when a
+future corpus adopts it — the capture entry pre-names the mechanism) · the ~7-box
+ambiguous-boxing residue (r217 band) · the 5 ENFUN inline-path same_col boxes (the
+container-path variant of the split — extend `prose_interactive_rows` to the open-activity
+inline widget emit if a future family needs it) · prose-AFTER-widget third row (gold 4/77
+ENFUN, 32% corpus — lands in the widget row under the current split, gold uses a third
+row) · the CL-0041 supervisor prose lead-in trigger stays the r228 recorded follow-up
+(population 1, BLL120 — NOT folded in, the r173 cue-add lesson). Kickoff file deleted
+(§12.5); the master triage kickoff's PROGRESS LEDGER updated — next: the CL-0042+CL-0043
+OSSC pair (note OSSC401 absent, OSSC301 the only OSSC dir).
+
+**Data:** `Emit_Templates.activity_wrapper.prose_interactive_rows` (registry GENERATED by
+`_measure_activity_inner_rows.py --gen`) + `Subject_Global_Parameters._universal_conventions`
+rules `cl0030_one_interactive_per_activity` + `cl0048_prose_interactive_rows`. **Env:**
+`ACTROWS_OFF`. **Tools:** `outputs/_activity_anatomy_core.py`,
+`_measure_multi_interactive_activity.py`, `_measure_activity_inner_rows.py` (+`--gen`),
+`_r229_sk_merge.py`.
+
+## 2026-07-17 (round 228, build 260618.01) — EMPTY FOOTER NAV HREFS (Change Ledger CL-0044) + the CL-0029…CL-0052 record-only triage + the _stalecheck.sh symlink repair (Chris — the CL0029_CL0052 triage kickoff, ticket 1 of the sequencing; FULL ship)
+
+**Plain English.** The little arrows at the bottom of every page (previous lesson / next
+lesson / home) used to be pre-filled with links to the neighbouring generated files. The
+design team's Change Ledger (CL-0044) says those links must ship EMPTY — the real links are
+wired up inside D2L when the module is published. We measured the hand-built library first:
+**97% of gold pages already ship them empty** (2,188 of 2,263; the 68 "filled" gold pages
+carry D2L quickLink URLs — which IS the publish-time wiring, proving the rule), so the
+directive and the gold agree and there was no conflict to escalate: the converter's
+auto-filled links were the divergence. They now ship empty, matching both authorities.
+
+**The kickoff's Part-3 question, answered by measurement.** The kickoff flagged CL-0044 as
+"the one conflict to settle with Chris" — contingent on whether the gold populates footer
+hrefs. It doesn't (97.0% of footer-carrying pages are empty; populated kinds: 64 D2L
+quickLinks / 15 stray sibling-html / 2 absolute URLs, `outputs/_measure_footer_hrefs.py`,
+NEW — the standing footer-href verifier). Both of the kickoff's options collapse into (a);
+per its own rule "that answer decides", shipped without escalation. `overrides_gold:false`
+on the data flag — this rule CHASES the gold, it does not override it; the only stocktake
+protection needed is for the 68 quickLink pages (rule `cl0044_footer_hrefs_empty` appended
+to `Subject_Global_Parameters._universal_conventions`: publish-time wiring is never
+converter output — never chase those 68 toward "populated").
+
+**The fix (DATA OVER CODE; data `Emit_Templates.footer.nav_links_empty`; env
+`FOOTEREMPTY_OFF` reverts to the round-8 sibling chaining byte-for-byte — proven).**
+`PageAssembler`'s `{prevHref}`/`{nextHref}` fill goes empty when the flag is on. UNCHANGED:
+the per-position `<li>` composition (`footer.value_map` — overview next+home / middle
+prev+next+home / final prev+home / CED single-file none), the `id`/`class`/`target`
+attributes (`home-nav` was always empty), and the round-226 choice-page TILE hrefs (a
+different element, Chris's explicit decision — tiles keep linking the generated lesson
+files). The emptied footer now byte-matches the gold's footer form.
+
+**PROOF.**
+- A/B: `FOOTEREMPTY_OFF=1` regen byte-identical to the r227 corpus (9/9 canary pages,
+  OSAH501+ENGFUN02+CEDT104); fix-ON diff on a changed page = EXACTLY the two href lines.
+- FULL ship: all 393 gated dirs regenerated, 0-stale; blast = **1,809 pages / 301 modules
+  changed, 0 added / 0 removed** — EXACTLY the measured populated-page and populated-module
+  counts (perfect containment); post-fix probe: Claude populated footer hrefs **1,809 → 0**.
+- **PROTECTED GATES ALL HELD — EXACT:** PRIMARY skeleton **fresh full 8-shard run
+  (`outputs/_r228_sk_final.json` via `_r228_sk_merge.py`): per-page IDENTITY with r227 —
+  0 moved / 0 new / 0 gone @ 1836 paired, skipped 0** (SCAFFOLD mean 49.547% / ≥50% 918 /
+  ≥75% 179 / ≥90% 12 / RAW 34.791%; `href` is not a KEEP_ATTR and the skeleton is
+  text-stripped — ALSO proven directly, `skeleton(ON) == skeleton(OFF)` token-identical on
+  a changed page); cs exact **9442** / EXTRA **172** / missing **455** EXACT; body **266**
+  EXACT; clean **1963/2009 = 97.7%** / leak **290/46** EXACT; tags **9557/9557**; flipCard
+  **TOTAL 33 / divergence 0**; speechBubble **defect 0**; index-sync 32/27; entry-parity
+  PASS. Fast-loop baseline + content manifest refreshed; FULL ship recorded (scoped
+  counter 0).
+
+**SAME ROUND — `_stalecheck.sh` SYMLINK REPAIR (a real find, the r190 class).** Since the
+2026-07-09 consolidation, `find ../../app/js ../../data` silently contributed NOTHING from
+`data/` — `CONVERTER_V2/data` is a SYMLINK and GNU find (default -P) does not traverse a
+symlink given as the FINAL path component (`app/js` kept working only because its symlink
+is INTERIOR to the argument). Every "0 stale" verdict from rounds 220–227 was computed
+without data/*.json visibility (each of those rounds also carried engine edits and
+byte-level manifest proofs, so no verdict is actually in doubt — but the hole was real).
+Fixed with load-bearing trailing slashes (`../../app/js/ ../../data/` + an in-file warning
+comment); caught live this round when a post-regen data append didn't move the reported
+newest-source time. The post-gate `_universal_conventions` append itself was byte-proven
+output-inert (9/9 pages regenerated through the edited data identical — the r218 class),
+and the corpus was then FULLY regenerated a second time under the repaired check: 0 stale
+(data source now visible and older than every output) + content manifest **IDENTICAL,
+0/2009 pages differ** (byte-identity carries every gate number onto the shipped corpus).
+
+**THE CL-0029 … CL-0052 RECORD-ONLY TRIAGE (kickoff Part-0/Part-1, no output change):**
+- **CL-0029 iStock gm-leading ID — ALREADY IN EFFECT.** Every extraction site uses
+  `/gm-?(\d{6,10})/` (MediaBuilder L82, InteractiveBuilder ×9, AcksBuilder ×2,
+  NotesAndComments L337, TablesAndGrids): the capture stops at the dash — live-tested
+  `gm2194652495-612793002` → `2194652495`; NO trailing-segment fallback exists anywhere
+  (the only split/pop hits are non-ID paths: audio filename, generic slug).
+- **CL-0031 / CL-0036 — SUPERSEDED** (by CL-0035 = shipped round 224 `TPLPREFIX_OFF`, and
+  by CL-0048 respectively). Nothing to do; lineage noted.
+- **CL-0041 supervisor family — ALREADY IN EFFECT + one measured 1-module gap.** The
+  super-content panel family is V2 rounds 143/143.1/160/162/163/170; the legacy
+  `supervisorContainer`/`supervisorButton`/`supervisorContent` trio is emitted NOWHERE
+  (0 hits app/js + data — recognise-only satisfied: V2 never reads gold as input); the
+  `[supervisor]` alias is in Tag_Lexicon. The NEW prose lead-in trigger (`Supervisor:` /
+  `Supervisor's Notes:` red text, no brackets): measured corpus population = the literal
+  forms **0**, nearest forms **1 clean** (`*Supervisor note:*`, BLL120) + 1 bold in-prose
+  address (MXEX101, content-embedded — not a lead-in) + a BLACK audience bullet
+  ("• Supervisors: Want to ensure…") that is the false-positive hazard. RECORDED
+  follow-up (fold into a future supervisor/activity round if the new-WT era starts using
+  the form) — a trigger for a 1-occurrence class is not worth the over-fire surface today.
+- **CL-0046 acks `<!-- Lesson N.N -->` — ALREADY IN EFFECT** (verified in output:
+  `<!-- Lesson 0.0 -->` … per acksLesson group; never `Page N.N`; Acks_Formats
+  group_label_note documents it as the sanctioned comment use).
+- **CL-0050 external-link position rule — ALREADY IN EFFECT (measured-equivalent).**
+  V2's discriminator set (r56 `[external link button]` always a button · r76 standalone
+  bare-URL → externalButton `EXTBTN_OFF` · r88 LEADING tag + short label → button
+  `EXTBTNLABEL_OFF`, guarded ≤ label_max_words + no end-punctuation so a prose sentence
+  can never become a button · r74 trailing/in-prose → inline weave) implements CL-0050's
+  grammatical-completeness test conservatively; the r88 measurement was 7/7 buttons /
+  0 inline counter-examples corpus-wide, and the borderline→inline bail is V2's standing
+  conservative default. The narrow untested edge (a LEADING short-label form inside a
+  table cell / list item) has no measured counter-example; recorded.
+- **NOT APPLICABLE (recorded, the r219 buckets):** CL-0032/0034 (central asset-folder
+  scaffolds — no WT+Media-List signal; doc-14 forward-provisioning), CL-0039/0045 (acks
+  title verbatim / acksAI — the iStock-acks input is not in V2's contract, the CL-0001/
+  0002 grounds), CL-0047/0049/0052 (Comparison-Mode / Update-Mode reporting workflow —
+  V2's equivalent is the class-based gate exclusion, r72).
+- **CL-0035 — ALREADY SHIPPED** round 224 (`TPLPREFIX_OFF`, `"BLL2":"1-3"` + `"BLLR":null`).
+
+**REMAINING kickoff tickets (live, in its sequencing):** the activity pair CL-0030 +
+CL-0048 (measure multi-interactive boxes + inner-row prose/interactive split) → the OSSC
+pair CL-0042 + CL-0043 → CL-0033 Languages combo → CL-0038 [MTKquiz] → CL-0037 Vimeo
+scaffold (may decline on discriminator) → CL-0051 no-emoji (FULL ship) → CL-0040 the
+canonical overview menu (its own multi-round arc, path (a) adopt-canonical recommended).
+The kickoff file stays at the project root until its LAST ticket resolves (§16 rule).
+
+## 2026-07-15 (round 227, build 260618.00) — THE DROPPED SOFT LINE BREAK: w:br → "\n" at the extractor (Chris — the XDLS900 triage's corpus-wide lever; the round-225 recorded follow-up; FULL ship)
+
+**Plain English.** When a writer presses Shift+Enter (a soft line break inside one paragraph),
+the document reader silently deleted it — the text on either side got GLUED together with no
+space at all ("…two kinds of data.Measurements and numbers…", "…a place to stand."It is…").
+That is corrupted text, corpus-wide: **5,999 soft breaks across 357 of the 429 Writers
+Templates** (measured round 225, which patched the symptom inside whakataukī boxes only). This
+round fixes the disease at the source: the extractor now keeps the writer's line break as a real
+newline, and everything downstream renders it the way the hand-built pages do.
+
+**MEASURED FIRST (`outputs/_measure_softbreak.py`, NEW — the top-8 carriers, 1,900 breaks,
+classified against their own golds).** Gold's rendering of a soft-broken BLACK paragraph:
+**split into consecutive `<p>`s 84** / same-element space-joined 172 (**164 of them EXPFUN03's
+single house style** — its rubric tables, where our `\n` inside a `<td>` renders as plain HTML
+whitespace = visually identical) / a literal `<br>` 31 / glued **0**. A THIRD of all breaks sit
+in RED (tag/instruction) context. So: genuinely mixed at the margins, split-`<p>` the majority
+form, and NOTHING in gold is ever glued — the kickoff's provision applies (the glue is a text
+corruption, not an editorial choice; ship on net-positive gates).
+
+**The fix (DATA OVER CODE; data `Input_Doc_Rules.paragraph.soft_break_newline`; env
+`SOFTBR_OFF` reverts to the glued extraction byte-for-byte — proven on 10 modules).**
+`DocxExtractor.#parseParagraph`'s run walk now reads `w:t` and `w:br` tokens IN ORDER; a
+`<w:br/>` without `type="page|column"` contributes `"\n"` at its own position (the page-break
+counter is untouched). Multi-line text is an existing, handled shape: `renderBlackText` emits
+one `<p>`/`<li>` per line (the majority gold form), table cells show the newline as ordinary
+whitespace (gold's space-join), `Utils.Fold` collapses `\s+` so tag CLASSIFICATION is
+byte-identical, and the round-225 `#proverbSplit` goes dormant (proverb lines arrive
+pre-split — XDLS905/906 and the other r225 modules regenerate BYTE-IDENTICAL, proving the two
+mechanisms agree; OSSM301 additionally RECOVERS its "Meaning:" line as its own `<p>`).
+
+**TWO CONTAINMENTS, both caught live by the disciplined loop (each part of the one toggle):**
+- **Red-span granularity (caught on SSOG103's lesson menu).** A soft break often lives in a
+  COLOURLESS run of its own between two red runs (`[Overview]` ⏎ `[H3] Knowledge` — one
+  paragraph, tags on separate lines). Pre-fix that run carried NO text, was invisible to the
+  red-group merge, and the two red runs fused into ONE marker span; a naive "\n" piece SPLIT
+  the span in two and flipped tag granularity (SSOG103's two-col lesson menu vanished). A
+  pure-newline colourless piece between two red pieces now merges INTO the red span — Fold
+  collapses the newline, so the merged span parses byte-identically to the pre-fix glued form
+  (probe-proven: primary/tags/RenderText identical). ONLY a `/^\n+$/` piece bridges this way;
+  any other separator was already visible pre-fix and keeps its two-span behaviour.
+- **Hover-sentinel atomicity (caught on MXDI202-09, defect class E).** A woven
+  U+E000…U+E001 definition pair whose text spans a soft break was CUT by the per-line split,
+  leaking an unpaired sentinel character into each half. `renderBlackText` now collapses any
+  newline INSIDE a sentinel pair to a space before splitting — the pair stays atomic; corpus
+  sentinel characters **1 → 0**. (The guard is provably inert elsewhere: it needs a `\n`
+  inside a pair; the class-E scan over ALL 2,009 pages finds exactly the one page, and a
+  69-page regen of the hover-heaviest modules through the guard is byte-identical — the
+  post-guard regen is content-proven fresh even though its mtime postdates the bulk regen.)
+
+**FULL ship (the due backstop — ledger reset to 0).** All 393 gated dirs regenerated, 0 stale
+by mtime; blast = **305 pages / 143 modules changed, 0 added / 0 removed** (pagination stable
+everywhere — no page-count churn). Toggle-OFF proofs: two independent samples (10 modules incl.
+the heaviest carriers + hover/menu canaries) regenerate `SOFTBR_OFF=1` byte-identical to the
+r226 manifest. Content manifest refreshed (2009 pages / 390 modules).
+
+**PROTECTED GATES (direct full-corpus runs, ALL HELD-or-IMPROVED net; named deltas below):**
+- **PRIMARY skeleton (fresh full 8-shard run → `outputs/_r227_sk_final.json`): SCAFFOLD mean
+  49.547% / ≥50% 918 EXACT / ≥75% 179 EXACT / ≥90% 12 EXACT / RAW 34.791% @ 1836 paired,
+  skipped 0.** The −0.008pp mean vs r226 (49.555) decomposes to ONE page: MXFL204-04 (−15.2pp
+  alone ≈ the whole dip), whose ONLY byte change is the corrupted intro paragraph correctly
+  splitting into two `<p>`s — a pairing/coincidence artifact on a strictly-better page (the
+  r222 repeat-collapse class). Movement 39 up / 102 down / 1694 flat; the ups include
+  XDLS502-01 +11.6pp, TRR108-01 +8.1, TEFUN05-00 +7.6.
+- compare_structure exact **9413 → 9442 (+29)**; EXTRA **170 → 172 (+2)** / missing
+  **442 → 455 (+13)** = the MATCHED-POOL GROWTH class (r186/r197): each split paragraph now
+  text-matches gold individually (text-matched pool 11,133), so more elements enter the
+  comparison; the newly visible elements match slightly below the corpus average — net
+  match-to-human strongly positive (+29 exact).
+- body_compare ANY **268 → 266 (IMPROVED**; over-capture 67→66, runaway 6→5);
+  structural-clean **1963/2009 = 97.7% EXACT** / leak **290 occ / 46 pages EXACT** +
+  **defect class E CLOSED (1 → 0)**; tags **9557/9557**; flipCard **TOTAL 33 / divergence 0**;
+  speechBubble **defect 0**; index-sync 32/27; entry-parity PASS.
+- Whakataukī family verifier: boxes 85 / `<b>` 0 / `<i>` 0 / edge-quotes 0 EXACT;
+  single-`<p>` **9 → 10** — the newcomer is **EXIP901-05**, which JOINS the recorded
+  EX-family single-language decline class (its gold's English translation is in NO WT); its
+  explanation now ships un-glued as its own `<p>` (closer to gold), the reo line as the
+  writer's own bullet. Named delta, not a regression.
+
+**Recorded follow-ups:** the activity/boundary machinery's reaction to multi-line openers
+(MXFL204-04's box shapes are unchanged — but the class belongs to the standing r202/r217
+boundary backlog); SSOG103's 2-vs-5-page under-split + glued menu-capture bullets
+(pre-existing, its own round); gold's `<br>`-within-element minority form (31 sites, no
+discriminator measured); EXPFUN03's space-joined house style (byte-differs, renders
+identically — no action).
+
+## 2026-07-15 (round 226, build 260617.99) — XDLS900 CHOICE-PAGE TILE NAVIGATION: build the tiles, link the generated lessons, consume the nav-layout markers (Chris — the XDLS900 screenshot triage, round 225's recorded lever)
+
+**Plain English.** The XDLS900 "Learning Support" modules open with a choice page — a grid of
+icon tiles (Move / Eat / Sleep / …), one per learning area, each linking to that area's lesson.
+The converter shipped this as a raw dumped table with two "Orphan sub-tag" red flags, re-leaked
+an "Orphan sub-tag [tab n]" flag on nearly EVERY page of every XDLS90x module, and split the
+modules into more pages than the human's. This round builds the human's tile grid — with each
+tile linking to the generated lesson HTML file (Chris's explicit decision, 2026-07-15, since the
+human's links are online MTK quickLink codes that exist nowhere in the WT) — merges the choice
+page onto page 00 the way every gold does, and consumes the writer's navigation-layout markers.
+
+**The WT form → what ships now (triangulated XDLS906; gold `XDLS906_00_0.html` L182+).**
+- `[LESSON Choice page] <label>` (parses primary "option" — the word Choice aliases to the
+  option sub-tag; it was the first orphan flag) OPENS the tile build. Its label is a
+  navigation-page label the human drops (the r143/r163 page-label class) — noted, not body.
+- `[Tab Nav Layout with the following - Repeat on EVERY PAGE]` + a ONE-column table of bold
+  category names → the tile LABELS (gold XDLS906 uses them verbatim: Move/Eat/Emotions/Habits/
+  Ancestors/Balance/Virtual-Creatives). XDLS902 has NO table — its gold's labels are the lesson
+  TITLES, which is exactly the fallback (and only TITLED lessons tile there, so XDLS902's
+  pre-existing "2.0" lesson-tail over-split page doesn't produce a junk tile). The 903/904/905
+  golds' partial label renames ("$" → "Financial Security", inserted "Ancestors") are
+  non-derivable editorial — recorded C, the writer's own categories ship.
+- The grid = gold's exact shell `row > col-12 choicePage choiceHeightMatch phaseContainer
+  noPhase` > one `div.choice col-md-3 col-6` per lesson: `<a href={generated lesson file}
+  target=_self>` + `div.choiceImg > div.iconCentral iconType=""` + `div.choiceText > h5`.
+  Category k maps 1:1 positionally to `[LESSON k]` (verified XDLS906: Move→L1 "Feel the
+  earth" … Virtual-Creatives→L7); the filename resolves deterministically from the lesson's
+  first page's index in run.pages, exactly how PageAssembler names files — never a hard-coded
+  page number. `target=_self` (gold's `_blank` belongs to its external quickLink form; a local
+  file navigates like the footer links — session decision, noted in data). iconType ships
+  EMPTY + ONE "Designer/Developer To Do:" note (kind todo, r219 scheme) listing the tiles —
+  gold itself carries `<!-- CS: review iconType -->` comments, so icon choice is editorial.
+  `choicePage` joined heading_relevel.skip_classes so the tile `<h5>`s neither re-level nor
+  pin the page's re-level pool (the widget-subtree precedent).
+- The grid renders as the page's LAST body row (gold places it after all the introduction
+  content on every module).
+- `[Sticky Nav Layout with the following repeat on EVERY PAGE]` parses as a "page"
+  PAGE_BOUNDARY only because the word PAGE appears in its bracket — it had been SPLITTING
+  pages mid-content (XDLS906's choice page in two; XDLS908's lesson 1 fragmented). It is now
+  consumed in PageSplitter as the nav set-up marker it is, and its cross-module link table is
+  flagged `_stickyNavTable` → ONE To Do note (deferred asset — the links reference OTHER
+  modules' builds; gold drops the table entirely, its sticky nav is the `js/stickyNav.js`
+  include). A STANDALONE `[Tab Nav Layout …]` with no choice page (XDLS908's form) → the same
+  treatment (`_tabNavTable` → To Do; gold drops it too).
+- Bare `[Tab Nav]` repeat markers on later pages are CONSUMED (layout REPEAT directives, not
+  content — §6 satisfied; the pattern also tolerates XDLS905's one `[Tab Nav]]` doubled-bracket
+  typo, the r174 class). Matched on the span's own folded text so a real orphaned `[tab 1]`
+  still flags. Bare `[Sticky Nav]` already parsed to DROP (untouched).
+- THE MERGE: the writer's `[End page]` before `[LESSON Choice page]` is disregarded exactly
+  like the AR-1 introduction-cluster rule, so the choice section stays on page 0.0 — every
+  gold ships 00 (intro + tiles) + one page per lesson. Verified clean on all 5 opener modules;
+  its own sub-toggle.
+
+**MEASURED (before coding; `outputs/_detect_choicetiles.cjs`, live docx over ALL 431 dirs).**
+Choice-page opener = EXACTLY XDLS902/903/904/905/906; layout markers also XDLS908; bare
+[Tab Nav] ×7 in each of 903-906 + ×7 in 908. The ENG1004/1005/1007/ENGI301 bare-[Sticky Nav]
+hits are already-DROPped tags — untouched by construction. Every gold ships exactly 7 tiles,
+merged on 00, 8 files. **AFTER:** all five build 7 gold-shaped tiles with correct hrefs;
+pages 903/904/905/906 10→8 = gold's exact page set; 902 10→9 (the residual 9-vs-8 = its
+pre-existing lesson-1-tail implicit split, a separate recorded class); 908 10→9 (the sticky
+mis-split healed; its remaining delta is pre-existing); `[tab n]`/`[option]` orphan flags
+across the family → 0 (the residual `[data marker]` orphans on 902/905 are the separate
+`[Displayed as links…]` instruction class, out of scope).
+
+**Fix (DATA OVER CODE; data `body_region.choice_page_tiles`; env `CHOICETILES_OFF` = the tile
+build, `TABNAVDROP_OFF` = marker consumption + layout-table To Dos + the sticky page-boundary
+demotion, `CHOICEMERGE_OFF` = the page-00 merge).** ContentConverter: the SUBTAG dispatch gains
+three folded-pattern-gated handlers (opener → build state + claim the marker/table; standalone
+tab-layout → consume + flag; bare marker → consume); the table dispatch intercepts the flagged
+tables (label harvest / To Do); `#choicePageTiles` builds the grid at page end. PageSplitter:
+the sticky-layout demotion (PAGE_BOUNDARY block, the r212 consume precedent) + the choice-page
+merge (the AR-1 peek, extended). Emit_Templates: the shell/tile/To-Do templates + patterns +
+`heading_relevel.skip_classes` +choicePage.
+
+**SCOPED SHIP #6 (§10a; 2 of headroom — ticket 2 of this kickoff is the corpus-wide FULL ship
+and serves as the due backstop).** Proofs: **toggle-OFF byte-identity** — all 6 modules
+regenerated `CHOICETILES_OFF=1 TABNAVDROP_OFF=1 CHOICEMERGE_OFF=1` == the r225 manifest
+(0/2019 pages differ); **containment** — fix-ON byte-diff = EXACTLY the 6 affected modules;
+**completeness spot-check** — 12 random non-affected modules regenerated fix-ON, 12/12
+byte-identical. Content manifest refreshed (2009 pages / 390 modules — the −10 = the healed
+over-splits); ledger scoped #6.
+
+**PROTECTED GATES (direct full-corpus runs, ALL HELD-or-IMPROVED):**
+- **PRIMARY skeleton (state chain `outputs/_r225_sk_final.json` → `_r226_sk_changed.json` →
+  `_r226_sk_final.json`, merge `outputs/_r226_sk_merge.py`; r225 sanity reproduces
+  49.538/918/179/12 EXACTLY): SCAFFOLD mean 49.538 → 49.555% IMPROVED / ≥50% 918 / ≥75% 179 /
+  ≥90% 12 EXACT / RAW 34.803 → 34.801% @ 1835 → 1836 paired, skipped 0.** Every -00 overview
+  jumps (+6.6 to +12.4pp — XDLS902-00 55.9→68.0, XDLS903-00 61.4→73.8, XDLS904-00 48.8→60.4,
+  XDLS905-00 62.1→71.3, XDLS906-00 51.1→57.7); the lesson-page rows are RE-PAIRINGS (the page
+  numbering shifted onto gold's own alignment; +1 net paired page). The −0.002pp RAW mean =
+  the page-population change (the r176/r220 documented net-positive class; the overviews' own
+  RAW all improved).
+- compare_structure exact **9385 → 9413 (+28)** / EXTRA **170** EXACT / missing **442** EXACT.
+- body_compare ANY **269 → 268 (IMPROVED)**; structural-clean **1963/2009 = 97.7%** (the −10
+  clean pages are exactly the removed over-splits; share HELD) / leak **290 occ / 46 pages
+  EXACT**; tags **9557/9557**; flipCard **TOTAL 33 / divergence 0**; speechBubble **defect 0**;
+  whakataukī family verifier (`outputs/_measure_whakatauki.py --claude`) **single 9 / b 0 /
+  i 0 / quotes 0 EXACT** (the r225 baseline); index-sync 32/27; entry-parity PASS.
+
+**Recorded (do not chase without measuring):** the gold label renames on 903/904/905 (editorial
+C); XDLS902's lesson-1-tail implicit split (pre-existing pagination class, 9-vs-8); XDLS908's
+remaining page delta + its RR gold variants; the `[data marker]` orphan class (`[Displayed as
+links…]`); the "Nourish" Course-title bug (XDLS902/904/905/906/911 — the r225 recorded class,
+needs its own measured round).
+
+## 2026-07-15 (round 225, build 260617.98) — WHAKATAUKĪ PROVERB NORMALISE: the glued reo/English split + the plain-<p> strips (Chris — the XDLS905/906 screenshots)
+
+**Plain English.** Chris's screenshots showed the whakataukī boxes shipping wrong: the Māori
+proverb and its English translation jammed into ONE bold line with the writer's curly quotes
+kept (`"Kei roto i te pōuri…"Through perseverance…`), where the human developer always ships two
+separate plain paragraphs (the site CSS supplies the bold/italic styling). This round makes every
+whakataukī box match the human house form.
+
+**Root cause (triangulated).** The writer authors the proverb as a bold reo line, a SOFT line
+break (`w:br` inside one docx paragraph), then the English. `DocxExtractor` DROPS soft breaks, so
+the two lines arrive GLUED with no separator at all — the text itself is corrupted
+(`…ana”Through…`). The lost break is still VISIBLE as a boundary in the raw text, so the fix
+re-derives the writer's own line structure at the proverb render instead of guessing.
+(A corpus-wide `w:br → \n` extractor fix was measured and DEFERRED: **5,999 soft breaks across
+357/429 WTs** — a full-ship round of its own; recorded lever.)
+
+**Measured convention (tool `outputs/_measure_whakatauki.py`, NEW — the standing verifier).**
+GOLD: 215 `.whakatauki` boxes / 178 modules — **two+ separate PLAIN `<p>` 213/215**, `<b>` kept
+only 2/215, `<i>` 5/215, edge quotes (curly or straight) 9/215. CLAUDE before: 85 boxes /
+74 modules — 27 glued single-`<p>`, 14 with `<b>`, 10 with curly quotes.
+
+**Fix (DATA OVER CODE; data `callouts.by_tag.whakatauki.proverb_normalise`; env `PROVERBNORM_OFF`
+reverts split AND strips).** Two halves in ContentConverter:
+- **`#proverbSplit`** (raw text, before renderBlackText — the markers ARE the signal; one split
+  per line, first rule wins, URL lines untouched): a leading `**bold**`/`*italic*` marker group
+  (EXACT pair alternation — a `\*{1,2}` quantifier let backtracking DONATE an asterisk to the
+  tail and split off a junk `*` line, caught on the round's own A/B: XDLS904/XTAS101; inner ≥10
+  chars so XLP03's mangled `***“***` can never split mid-proverb; the tail must carry a real
+  letter/digit) · a leading `“quoted”` phrase + prose (CEDO301) · a space-BEFORE pipe with no
+  space after (`riri |*Well done…*`, OSBY301 — the strict spaced-pipe rule needs both sides) ·
+  a full-tail `(english translation)` with the parens dropped (ENGR102, gold drops them too).
+- **`#proverbStripSeg`** (rendered segments, applied to lead + content): `MenuBuilder.
+  stripTextBold/Italic` (handles the mangled triple-marker runs cleanly) + edge-anchored
+  curly/straight-quote strip + stray-asterisk cleanup + an ORPHAN EDGE PIPE strip (the writer
+  typed the separator INSIDE the bold group — `**…rangatahi |**`, OSSM301; the r177
+  boundary-separator class; measured exactly 1 site corpus-wide).
+
+**After (same tool):** single-`<p>` **27 → 9** — the 9 are the MEASURED DECLINES: single-language
+payloads whose English is in NO WT (XDLS904, XLP03, CEDT104, EXBP901×2, HES1005×2 — gold's
+English is editorial, recorded C) + the no-marker language-boundary glue (CEDT501-12 "kōrero. The
+food…", CEDO105 — no derivable split point, recorded C). `<b>` **14 → 0**, `<i>` **→ 0**,
+edge-quotes **10 → 0**. XDLS905/906 whakataukī now match gold byte-for-byte.
+
+**SCOPED SHIP #5 (§10a; 3 of headroom before the full backstop).** Affected superset = the 74
+modules whose output carries a `.whakatauki` box (+ TEFUN02, see drift) — `outputs/
+_affected_whakatauki.txt`. Proofs: toggle-OFF byte-identical to the r224 manifest (55/56 sample
+pages; the 56th = XMES203-05, **pre-existing drift, OFF==ON proven**); content-hash 0-stale
+(75 affected fresh / 315 untouched byte-identical); containment **38 changed ⊆ 75 affected**;
+completeness spot-check **12/12 non-affected byte-identical under fix-ON**. **DRIFT NOTE (the
+r202 class):** XMES203-05 + TEFUN02-00 differ from the shipped manifest with the fix OFF AND ON
+(byte-proven) — both pages carry infoTrigger spans = the r223 hover-weave arriving late (the
+r194/r196 under-scope class; the spot-check catching it as designed). Both join the manifest this
+round. The step-[4] fast-loop decomposition was SKIPPED (its baseline is the r176-documented
+deferred-stale state; 304 unaffected modules mtime-stale) — the DIRECT full-corpus gate runs
+below are the authority. Content manifest refreshed (2019 pages / 390 modules); ledger scoped #5.
+
+**PROTECTED GATES (direct full-corpus runs, ALL HELD-or-IMPROVED):**
+- **PRIMARY skeleton (state chain `outputs/_r222b_sk_final.json` → `_r225_sk_changed.json` →
+  `_r225_sk_final.json`; r223 sanity reproduces 49.496/916/178/11 EXACTLY): SCAFFOLD mean
+  49.496 → 49.538% / RAW 34.781 → 34.803% / ≥50% 916 → 918 / ≥75% 178 → 179 / ≥90% 11 → 12
+  @ 1835 paired, skipped 0 — IMPROVED on every aggregate.** 27 modules move UP (XLP06 +10.3pp,
+  XDLS911 +9.2, OSOH101 +7.2, OSOH201 +7.2, XMES203 +5.9, ENGR202 +5.4 …); 2 dip slightly
+  (EXBP901 −0.9, OSSM301 −0.6 — removed `<b>`/junk nodes that coincidentally text-matched; the
+  r176 net-positive class, outputs verified correct-direction). OSSM301's post-score pipe strip
+  is text-only → skeleton-invisible by construction.
+- compare_structure exact **9370 → 9385 (+15)** / EXTRA **170** EXACT / missing **442** EXACT
+  (the split proverb `<p>`s + the de-piped line now text-match gold).
+- body_compare ANY **269** EXACT; structural-clean **1973/2019 = 97.7%** / leak **290/46** EXACT;
+  tags **9557/9557**; flipCard **TOTAL 33 / divergence 0**; speechBubble **defect 0**;
+  index-sync 32/27; entry-parity PASS.
+
+**Same session (analysis, unshipped — the round queue).** The XDLS900 screenshot triage also
+measured two further classes: **(1) CHOICE-PAGE TILE NAV** — `[LESSON Choice page]` + `[Tab Nav
+Layout …]` table = EXACTLY XDLS902-906; gold ships a `choicePage` row of `choice col-md-3 col-6`
+tiles on page 00 (choice page MERGED into the overview), links = online MTK quickLink rcodes
+(NOT in the WT) — **Chris's decision 2026-07-15: point the tile links at the GENERATED lesson
+HTML files** (category k → `[LESSON k]` → lesson page k, verified 1:1 positional on XDLS906);
+iconTypes non-derivable (gold carries its own "CS: review iconType" notes) → blank + To Do note;
+the repeated `[Tab Nav]`/`[Sticky Nav]` markers currently re-leak "Orphan sub-tag [tab n]" flags
+on ~every XDLS90x page — gold DROPS them (sticky nav = a JS include). Its own round. **(2) THE
+"NOURISH" COURSE-TITLE BUG** — the LIVE docx front matter says `Course: Nourish` (the
+`_parsed.txt` is STALE — known trap); the r76/r80 Course-backup promotes it into the English
+`<h1>` on XDLS902/904/905/906/911 where gold NEVER ships it. Needs its own measured round.
+
+## 2026-07-14 (round 224, build 260617.97) — THE BLL200 PHASE EXCEPTION: template="1-3" for every BLL2xx module (Chris — design-team note, permanent rule)
+
+**Plain English.** The design team has ruled that the BLL200 modules (every module whose code
+starts "BLL2") are actually PHASE 1 — so the `template=""` attribute at the top of each HTML page
+must be **"1-3"**, never the "4-6" that their series digit or a mis-built sibling would suggest.
+BLLR200 modules, in contrast, ARE phase 2 and keep "4-6". This round makes that a PERMANENT,
+data-configured converter rule, and also corrects the human gold library where it carried the
+wrong value.
+
+**The rule (engine + data).** A new GENERAL mechanism, the r221 preset's sibling:
+`skeleton.template_phase_presets.prefix_overrides` — an explicit code-PREFIX → template map for
+families whose code digit is NOT a curriculum level (exactly the families the r221 digit preset
+had to exclude). LONGEST matching prefix wins; a `null` value means "explicitly no override"
+(a guard entry); the override is UNCONDITIONAL — it outranks sibling inheritance AND the r221
+`by_level_digit` preset, and `preserve_values` ("combo") does not apply (an explicit exception
+list is absolute). Entries this round: `"BLL2": "1-3"` + `"BLLR": null` (belt-and-braces — a
+"BLLR…" code can never `startsWith("BLL2")` since the 4th char is R not 2, but doc-14's r218
+"BLLR is NOT BLL" startswith trap earns the explicit fence; when BLLR modules join the corpus
+they fall through to the normal chain and ship "4-6"). Applied in `SkeletonBuilder.BuildPage`
+directly after the r221 digit-preset block; emits the same one-per-module info run-note when it
+actually changes a value. Adding a future prefix exception = one data entry, no code.
+
+**MEASURED (before coding).** Corpus census (`outputs/_detect_tplprefix.cjs`, ALL 431 dirs —
+Claude ∪ gold, live `ModuleResolver.Resolve` per module, the r175/r221 complete-detector
+pattern): 50 BLL2 gold modules / 32 tracked Claude dirs; **every one already resolves
+template_phase "1-3"** via the style-anchor registry's BLL2 group, so the rule changes **ZERO
+attributes on the current corpus** — it was only ACCIDENTALLY right (the registry is mined from
+a gold library that was itself 90% correct; a wrong-sibling chain or a registry rebuild over the
+5 bad golds could have flipped it). The rule converts that accident into a guarantee. Over-fire
+ZERO by construction (the map matches only BLL2*; BLL1xx census 154 pages "1-3" untouched).
+
+**PROOF (output-inert + detection, the r218 pattern).**
+- `outputs/_probe_tplprefix.cjs` — 5-leg LIVE full-conversion proof on BLL225, ALL PASS:
+  (1) CLEAN: fix ON → template="1-3" AND byte-identical to the shipped corpus;
+  (2) DETECTION: `rules.template_phase` doctored to "4-6" after PrepareRun (a simulated wrong
+  sibling chain) → pages STILL ship "1-3" + the info note appears — the override provably fires;
+  (3) TOGGLE: same doctored run under `TPLPREFIX_OFF=1` → ships "4-6" (faithful reversal);
+  (4) BLLR FENCE: doctored run as "BLLR225" → stays "4-6"; (5) BLL1 FENCE: as "BLL125" → "4-6".
+- `outputs/_probe_tplprefix_inert.cjs` — full live conversions byte-identical to the shipped
+  corpus on 8 modules: BLL210/BLL240 (Inquiry parents), BLL211/BLL232/BLL254 (Standard),
+  BLL110 (BLL1 canary), OSAH501 + ENGC102 (non-BLL canaries).
+- `node _check_index_sync.cjs` OK (32/27 — no new engine file).
+
+**GOLD LIBRARY CORRECTION (Chris's explicit instruction).** 5 of the 50 BLL2 gold modules
+carried the wrong `template="4-6"` — **BLL250, BLL261, BLL264, BLL265, BLL275** (13 files) —
+all corrected to `template="1-3"`, including BLL265_1_0.html's page-local
+`html[template="4-6"]` CSS selectors (3 occurrences — replaced WITH the attribute so the
+borrower-poem styling keeps applying; leaving them would have silently detached the styles).
+Post-fix census: **all 50 BLL2 gold modules / 158 pages uniformly "1-3"**; 0 BLLR dirs exist
+yet (r218 — nothing to touch there).
+
+**PROTECTED gates — ALL HOLD BY CONSTRUCTION** (the r178/r183/r218 output-inert precedent):
+the converter corpus is byte-identical (proven live on 8 modules + the 431-dir resolve-level
+scan: 0 attribute changes), and the 5 edited gold modules have **no Claude dir and are not in
+compare_set** (verified) — no gate pairs them. No regen needed; the r223 baselines stand
+unchanged (skeleton 49.50%/916/178/11/RAW 34.78% @1835 skipped 0; cs 9370/170/442; body 269;
+clean 97.7%/leak 290/46; tags 9557/9557; flipCard 33/div 0; speechBubble 0; entry-parity PASS).
+The scoped-ship ledger is NOT incremented (no output pages changed — the r190/r193
+byte-identical-round class); the r223 note stands: the full ship.sh backstop is due within 4
+scoped ships.
+
+**RECORDED follow-ups.** (1) The registries mined FROM gold (`Module_Structure_Index.module_meta`,
+`Granular_Scaffold_Registry`, style anchors) were not rebuilt this round (the r221 deferral
+class); the next rebuild will now see the 5 corrected golds and can only move BLL2 groupings
+TOWARD "1-3" — already consistent with the existing BLL|1-3 menu-registry rows. (2) When BLLR
+modules join the corpus, confirm their sibling chain ships "4-6" (the guard entry documents the
+expectation but BLLR has no gold yet). (3) `rules.template_phase` itself (groupKey, menu
+conventions, page model) is deliberately UNTOUCHED — the r221 "attribute-only" scope (Chris:
+all other attributes still emulate the siblings).
+
+**Data:** `skeleton.template_phase_presets.prefix_overrides` (enabled + map). **Env:**
+`TPLPREFIX_OFF` (reverts all prefix overrides; independent of `TPLPRESET_OFF`). **Files:**
+SkeletonBuilder.js, Emit_Templates.json, Config.js; probes `outputs/_detect_tplprefix.cjs`,
+`_probe_tplprefix.cjs`, `_probe_tplprefix_inert.cjs`; gold edits 13 files / 5 modules.
+
+## 2026-07-13 (round 223, build 260617.96) — ENGJ403 FOLLOW-UPS: the ACTIVITY-ID INTEGER LESSON PREFIX + the "hover info ‘X’:" HOVER FORM (Chris — the "1.0A" and "pitch" screenshots)
+
+**Plain English.** Two more ENGJ403 rendering breaks, both traced to the new WT era's authoring
+conventions. (1) The activity box on lesson 1.0 was numbered "1.0A" where the human ships "1A" —
+the dotted page lesson number was flowing straight into the activity id. (2) The "pitch" hover
+rendered as a broken paragraph + a "Writers Note: [hover info ‘pitch’:" + a stray definition line,
+where the human weaves `pitch` as a class="infoTrigger" hover span.
+
+**FIX 1 — ACTIVITY-ID INTEGER LESSON PREFIX (data `activity_wrapper.lesson_letter_number
+.integer_prefix`; env `ACTLNINT_OFF`).** The `{lessonNumber}{letter}` renumber (r88/r217) now uses
+the INTEGER lesson part of a dotted page number ("1.0"→"1", "5.1"→"5") as BOTH the id prefix and
+the letter-map key — so a lesson split over sub-pages (2.0 → 2.1) CONTINUES its lettering (gold 2A
+then 2B/2C), which distinct dotted keys had silently defeated. A DOTTED-LETTERED writer id
+("[Activity 5.1A]", the MXFL302/MXEO301 idiom) ALSO renumbers into the integer sequence — MEASURED:
+every gold in the affected class (ENGJ403, CEDK501, CEDT501, MXDB301, MXEO301, MXFL302) ships
+integer+letter ids, never "5.1A"; MXEO301's lesson-5 letters run 5A–5K CONTINUOUSLY across its
+5.0/5.1 pages. The letter-LESS dotted gold convention (number="1.1" — the TRR/PNR bilingual family
++ CEDR203) is a different id shape that never enters this renumber (and Claude emits none via this
+path — measured 0 corpus-wide). AFTER: dotted-letter ids corpus-wide **14 → 0**; ENGJ403-01 ships
+"1A" = gold.
+
+**FIX 2 — THE "hover info ‘X’:" HOVER FORM (data `hover_definition_inline.split_bracket
+.def_black_tail` + `head_pattern` + `render_stitch.head_words`; env `HOVERTAIL_OFF`).** ENGJ403's
+standard hover idiom (12 occurrences measured in its WT): an UNCLOSED red "[hover info ‘pitch’:"
+span, the DEFINITION as the span's OWN black tail, then a bare "]" red span whose black tail
+continues the sentence. The (A2) split-bracket shape requires an EMPTY own tail, so this fell
+through — the marker leaked as a Writers Note and fragmented the paragraph. THREE additions:
+**(A4)** the scanner weave accepts the def from the marker's own black tail and consumes the "]"
+closer span (its tail rejoins the sentence); **QUOTED NAMED ANCHOR** — the writer names the hovered
+word in quotes; the sentinel now lands on that word's LAST occurrence in the preceding prose (the
+round-146-deferred named-anchor class, shipped for this form in BOTH the scanner weave and the r201
+hoverStitch cell path — a multi-word anchor like ‘inciting incident’ wraps its final word, exactly
+gold's `inciting <span class="infoTrigger">incident</span>`); **the glued "[hoverinfo" head**
+admitted in both head patterns. RESULT: ENGJ403's free-body hovers weave as infoTriggers matching
+gold — 2.0's pitch (Chris's screenshot), 3.1 reinforce, 5.0 constraints/scene, 0.0's drama; SSFUN01
++ SSFUN07's previously-literal quoted markers weave onto the writer-named words (defs mirror their
+golds' own infoTriggers). **RECORDED (the standing r201 cv2-trapped class, NOT this round):**
+ENGJ403 0.0's 8 terminology hovers and 4.0's 5 act-structure table hovers sit INSIDE over-capturing
+un-built widget bundles (the speechBubble and video/tabs dumps keep raw text BY DESIGN for the
+developer hand-off) — recovering them = the widget boundary/build backlog; the new weave applies
+the day those bundles are bounded/built.
+
+**PROOF (scoped ship #4 since the r219 full; the full backstop is DUE within 4 more).**
+Containment: `_content_manifest.py diff` vs the r222 manifest = EXACTLY 8 modules (CEDK501 CEDT501
+ENGJ403 MXDB301 MXEO301 MXFL302 = fix 1; SSFUN01 SSFUN07 = fix 2); the rest of the hover-relevant
+population (ARFUN05 CEDO501 CEDR501 HIS1001 HIS1002 HIS1005 PHE1007 TWHA903 AGH1007 ENGJ301
+CEDW501) + canaries (OSAH501 BLL225 ENGC102) regenerated byte-identical. U+E000/E001 sentinel leaks
+corpus-wide: **0**. **PROTECTED GATES ALL HELD-or-IMPROVED:** cs exact **9370 (+1)** / EXTRA
+**170** / missing **442** EXACT; body **269** EXACT; clean **1973/2019 = 97.7%** / leak **290/46**
+EXACT; tags **9557/9557**; flipCard **33 / div 0**; speechBubble **0**; PRIMARY skeleton (chain
+over `_r222_sk_final.json`) **49.496% (+0.006) / RAW 34.781% (IMPROVED) / ≥50 916 / ≥75 178 (+1) /
+≥90 11 @ 1835 skipped 0** — the "number" attr is a skeleton KEEP_ATTR, so the gold-matched "1A" ids
+directly raise ENGJ403's pages (+2..+4pp). Manifest refreshed; ledger scoped #4.
+
+
+## 2026-07-13 (round 222, build 260617.95) — ENGJ403 CONVERSION ISSUES: the PAGINATION TRIO + the LESSON-MENU "Learning intentions" LABEL (Chris — the empty-overview screenshot + "fix everything identified")
+
+**Plain English.** Chris's screenshot showed ENGJ403's first Claude page EMPTY where the human's 0.0
+page holds the whole module introduction. Diagnosis: the new WT era numbers the introduction as its
+own "lesson" — `[MODULE INTRODUCTION]` → `[Lesson 0.0]` → content — and the splitter opened a new
+page at every lesson tag, so ALL the overview's body content moved to a spurious "0.0.0" file. The
+same new-era numbering explains the other two reported gaps: dotted writer numbers ("[Lesson 2.1]")
+got a legacy ".0" appended (chips "1.0.0"/"2.1.0" where the human ships "1.0"/"2.1"), and lesson 5's
+`[end tile lesson navigate back to lesson 5]` closers were read as page boundaries, splitting one
+human page into three files (13 Claude pages vs the human's 10). Plus the lesson menus: the human
+opens them with a GENERATED `<h5>Learning intentions</h5>` label that is in NO Writers Template.
+
+**FIX 1 — THE PAGINATION TRIO (data `page_split.writer_lesson_numbers`; PageSplitter).** MEASURED
+over all 428 corpus WTs (`outputs/_measure_wtlessonnums.cjs`): **(a)** `ZEROLESSON_OFF` — a
+`[Lesson 0/0.0]` while the OVERVIEW is open is the overview's own number; the marker is consumed and
+the introduction stays on the 0.0 page (population EXACTLY ENGJ403). **(b)** `DOTLESSON_OFF` — a
+DOTTED writer lesson number is the page label VERBATIM ("2.1", not "2.1.0"); un-dotted "[Lesson 4]"
+keeps the historical ".0" (population ENGJ403 + CEDK501/CEDO501/CEDR501/CEDT501/CEDW501 + XMES202 —
+the CED NCEA family's golds ship the same "2.1"-style pages, so their chips/titles move TOWARD gold;
+XMES202 has no tracked Claude dir). **(c)** `TILECLOSER_OFF` — an "end lesson" closer whose own text
+matches the tile pattern ("tile lesson"/"navigate back to lesson") closes an IN-PAGE tile structure,
+never the page (population EXACTLY ENGJ403 ×2). RESULT: ENGJ403 ships **gold's exact 10-page set**
+(0.0 with the introduction, 1.0, 2.0, 2.1, 3.0, 3.1, 4.0, 5.0 whole, 6.0, 7.0) — the 13-page
+overcount, the empty overview, and the "1.0.0" chips are all gone. NOT touched (recorded): the
+implicit-break heading-harvest label sites (a DIFFERENT un-measured population), the ENGJ403 human's
+2.1/3.1 sub-pages arrive from the writer's own tags, not the [PAGE] sub-numbering path.
+
+**FIX 2 — THE LESSON-MENU "Learning intentions" LABEL (data `menu.lesson_li_label`; env
+`MENULILABEL_OFF`).** The label is NOT in the WT (ENGJ403's lesson regions carry only WALT/I-can
+lines) — the human GENERATES it, the round-187 funLi class. MEASURED over every gold lesson-page
+menu, grouped by the ENGINE-resolved subject|phase (`outputs/_dump_groups.tsv` + the gold scan):
+ENGJ|4-6 is 45/45; registry rows GENERATED where share ≥0.80 over ≥5 menus AND the lesson menu type
+is "simplified" — **13 rows** (ANZH|9-10 h4, CEDK/CEDO/CEDT/CEDW|NCEA h5, ENFUN|combo, ENGJ|4-6,
+ENGS|NCEA, EXIP|NCEA h4, MXEO|7-8, MXFL|1-3, SSEA|, XFUN|combo); the h3-form families (MXDB|4-6,
+MXFUN|combo, SSCI|7-8) are recorded follow-ups (different menu machinery). GUARDS: lesson pages
+only, non-empty composed menu, and NEVER when a "learning intention" heading is already present
+(double-emission-safe by construction). The r-era MENULEADIN demote interacts CORRECTLY: with the
+label present, the "We are learning:" lead demotes to `<p>` — byte-verified against gold (CEDK501
+2.0 and ENGJ301 1.0 golds ship exactly `<h5>Learning intentions</h5><p>We are learning:</p>`).
+Recorded residual: ENGJ403's own gold keeps the lead as `<h5>` (the new era's 12-vs-26 minority
+inside ENGJ|4-6; corpus-solid rule is `<p>` — revisit when more new-era modules exist).
+
+**PROOF (scoped ship #3 since the r219 full).** Toggle invariant: all four toggles OFF regen of
+ENGJ403/CEDT501/ENGJ202/CEDO501/OSAH501/BLL225 → byte-identical to the r221 manifest. Containment:
+`_content_manifest.py diff` = EXACTLY **13 tracked modules changed (101 pages) + ENGJ403's 3
+spurious pages REMOVED / 0 added** (CEDK501 CEDO501 CEDR501 CEDT501 CEDW501 ENGJ202 ENGJ301 ENGJ302
+ENGJ402 ENGJ403 ENGS401 MXEO301 XFUN02); three ghost flat dirs my candidate regen created for
+un-tracked modules (CEDO402/CEDW303/SSEA203/XMES202) were deleted. Non-affected canaries
+(OSAH501/BLL225 + the ENFUN/MXFL/ANZH candidates whose guards declined) byte-identical.
+**PROTECTED GATES (population 2019 pages after ENGJ403's 13→10):** compare_structure exact **9369
+(+77 IMPROVED)** / EXTRA **170** / missing **442** — the whole movement = ENGJ403's own pairing
+recovery (text-matched 3→85 with the pagination fixed; decomposed `compare_structure.py ENGJ403` =
+77/1/7; every other module net-zero); body_compare **269** EXACT (ENGJ403's own 4 unchanged);
+structural-clean **1973/2019 = 97.7%** / non-clean **46 EXACT** / leak **290/46 EXACT**; tags
+**9557/9557 / REAL 0**; flipCard **TOTAL 33 / divergence 0**; speechBubble **defect 0**; index-sync
+32/27; entry-parity PASS. PRIMARY skeleton (state chain `outputs/_r222_sk_merge.py`; r221 sanity
+reproduces EXACTLY 49.523/922/179/12 @1835 skipped 0): **mean 49.490% (−0.033pp) / RAW 34.778%
+(IMPROVED) / ≥50 916 / ≥75 177 / ≥90 11 @ 1835 skipped 0** — the dips are the DOCUMENTED
+NET-POSITIVE artifact class (r176/r194/r217): the added label is gold's own form (CEDK501-02
+38.8→17.3 despite its menu becoming byte-EXACT to gold's `<h5>label</h5><p>lead</p>` — the
+repeat-collapse alignment artifact, A/B-decomposed per toggle: the dotted-label fix is
+skeleton-neutral, the label fix carries the artifact while matching gold verbatim), and cs exact
++77 confirms the direction. Manifest refreshed (2019/390); ledger scoped #3.
+
+**RECORDED FOLLOW-UPS.** (a) The h3-form label families (MXDB|4-6, MXFUN|combo, SSCI|7-8). (b)
+ENGJ403's h5 lead under the label (new-era minority). (c) The implicit-break heading-harvest dotted
+numbers (un-measured, left). (d) XMES202 has gold but no tracked Claude dir — convert with a
+pre-created nested dir if it should join. (e) ENGJ403 lesson-5 tile STRUCTURE (the tiles flow in
+document order on the one page; gold's in-page tile navigation is un-built widget territory).
+
+
+## 2026-07-13 (round 221, build 260617.94) — ENGJ403: THE TEMPLATE-ATTRIBUTE PRESET RULE + the WRITER-AUTHORED MENU TAB PARTITION (Chris — the newly-added ENGJ403 module)
+
+**Plain English.** Chris added ENGJ403 (gold + frontend-converted output) and reported two things.
+(1) The page's `template="4-6"` attribute is wrong — the human ships `template="9-10"`. It was
+inherited from series sibling ENGJ402, whose own gold value is ITSELF wrong ("the inherited-error
+chain": each new ENGJ module emulated the previous one). Chris's directive: the PRESET rule that
+assigns the template attribute from the MODULE LEVEL always wins for THIS attribute — regardless of
+what any previously-developed sibling carries — while every OTHER stored attribute keeps the
+sibling-emulation rule unchanged. (2) The overview tabs/menu rendered wrong: the writer explicitly
+authored the menu as two tabs, and the converter ignored the markers.
+
+**FIX 1 — TEMPLATE-ATTRIBUTE PRESET (env `TPLPRESET_OFF`; data `skeleton.template_phase_presets`).**
+The preset: code level digit 1→"1-3", 2→"4-6", 3→"7-8", 4→"9-10", 5→"NCEA". MEASURED over all 305
+3-digit level-coded golds: 232 already follow it; the diverging FAMILIES (BLL phonics series, HPFUN
+combo fundamentals, the OS short-course numbering, XMES, MXEO, CEDK, OSGM, OSOH, OSSC) have code
+digits that are NOT curriculum levels → EXCLUDED via the data subjects list (28 families included,
+share ≥0.80 the r178 STRONG_SHARE floor, + ENGJ by Chris's directive). Implementation is an
+ATTRIBUTE-ONLY override in SkeletonBuilder (the one `template=` emitter): `rules.template_phase` —
+which drives groupKey/menu conventions/page model (the "all other attributes still emulate the
+siblings" half of Chris's rule) — is NOT changed. A resolved "combo" is preserved (a combined-cohort
+template decision, not a level band — protects ENGJ201). 4-digit NCEA codes + FUN 2-digit codes never
+match the code pattern. **Affected set (live-engine detector `outputs/_detect_tplpreset.cjs`, all 393
+Claude dirs — 12 modules):** FIXES TOWARD GOLD: ENGJ403 4-6→9-10 (the headline), TRR203 1-3→4-6,
+TRR301/304 1-3→7-8, CEDT101/104 9-10→1-3, TEDC401/402 ""→9-10 (they shipped an EMPTY attr — the
+registry has no TEDC entry) — six pre-existing wrong attrs the sibling registry had baked in. NAMED
+PRESET-OVER-GOLD DELTAS (the inherited/incorrect class per Chris's directive — intentional, never
+chase back toward gold): ENGJ301/302 4-6→7-8, ENGJ402 4-6→9-10, ENGS401 →9-10 uniform (its gold is
+internally MIXED 9-10+NCEA). OSAH501's compound "9-10/NCEA" maps to NCEA either way — byte-identical
+(proven). MXFU201/CEDR401 no-ops (the engine already resolves the preset value; their golds' 7-8
+remain the pre-existing recorded divergence).
+
+**FIX 2 — WRITER-AUTHORED MENU TAB PARTITION (env `MENUTABPART_OFF`; data
+`menu.writer_tab_partition` + `menu.shells.writer_tabs`).** TRIANGULATION: the ENGJ403 WT authors the
+overview front matter as `[H1] **Tirohanga Whānui | Overview**` → `[please set up as two tabs opening
+to the first one automatically][tab 1 – please title as appropriate]` → LI/SC + Planning/Get-started/
+Connections/Assessment sections → `[close tab]` → `[tab 2 – …]` → Knowledge/Practices → `[close tab]`
+→ `[MODULE INTRODUCTION]`. The human builds EXACTLY that partition: bare `div.tabs` shell,
+Overview|Information nav, pane 1 = the h3span banner col + row[LI/SC left | the rest right, both
+`col-md-6 col-12 paddingLR`, piped bilingual headings KEPT, "We are learning:"/"I can:" leads as
+`<h5>`], pane 2 = row[Knowledge | Practices as `<h4><span>`]. The converter's tab_map fold routing
+knew nothing about the markers: it dumped LI/SC+Knowledge+Practices into one pane-1 col (K/P
+mis-routed by the bare "know"/"do" vocabulary), sent Planning/Connections/Assessment to tab 2
+single-col with the pipes REDUCED, and consumed the banner. NEW: `MenuBuilder.#writerTabPartition` —
+when the SET-UP instruction + ≥1 `[close tab]` are present in the overview menu region, partition the
+panes exactly at the writer's markers; per pane, heading-led sections kind-tagged li/sc/other split
+LI/SC-LEFT|rest-RIGHT when LI/SC sections exist, else balanced (the r211 kinds, decided per pane);
+nav labels from the opener unless template boilerplate ("please title as appropriate" → the
+corpus-standard Overview/Information defaults); the pre-set-up heading becomes the pane-1 banner;
+instruction spans still flow through NotesAndComments.redFlag (the "In this section outline any
+connections…" template prompt is dropped by the round-86 omit list, matching gold); r145 italic strip
+applied per pane. NEVER half-builds (no set-up / no closer / <2 non-empty panes → the fold-routing
+walk). **MEASURED all 428 WTs (`outputs/_measure_menutabtags.cjs`): fire population = EXACTLY
+ENGJ403**; CEDK101's six bare `[tab N]` crumbs (no set-up, no closers — the `_inquiryCrumb` list)
+decline BY CONSTRUCTION. ENGJ403-00 now matches gold's menu element-for-element (residual deltas =
+gold copy-edits: "Learning intentions" lowercase-i, the "– English" bullet trims — recorded C).
+
+**POPULATION: ENGJ403 JOINED the tracked corpus** (compare_set 199→200, corpus 2009→**2022 pages** /
+390 manifest modules — the r197 TEDC join pattern; Chris supplied gold + Claude dirs).
+
+**PROOF (scoped ship #2 since the r219 full; §10a).** Toggle invariant: `TPLPRESET_OFF=1
+MENUTABPART_OFF=1` regen of ENGJ402/TRR203/CEDT101/OSAH501/BLL225/TEDC401 → byte-identical to the
+r220 manifest (changed 0). Containment: full-corpus `_content_manifest.py diff` = **EXACTLY the 12
+detected modules changed (64 pages — the `<html template>` line only, except ENGJ403) + ENGJ403's 13
+pages added / 0 removed**. Completeness spot-check: OSAH501, BLL225, ENGC102, BLL210, HPFUN101,
+ENGI401 regenerated fix-ON, ALL byte-identical. **PROTECTED GATES ALL HELD-or-IMPROVED (new
+population baselines, same-population EXACT):** compare_structure exact **9292** / EXTRA **169**
+EXACT, missing **438** = 435 + ENGJ403's own 3 (decomposed: `compare_structure.py ENGJ403` = 0/0/3);
+body_compare **269** = 265 EXACT + ENGJ403's 4; structural-clean **1976/2022 = 97.7%** (ENGJ403 13/13
+clean) / leak **290/46** EXACT; tags **9557/9557 / REAL 0**; flipCard **TOTAL 33 / divergence 0**;
+speechBubble **defect 0**; index-sync 32/27; entry-parity PASS. PRIMARY skeleton (state chain
+`outputs/_r221_sk_merge.py` over `_r220_sk_final.json`; r220 sanity reproduces EXACTLY
+49.433%/913/176/12 @1825 skipped 0): **mean 49.523% / RAW 34.769% / ≥50 922 / ≥75 179 / ≥90 12 @ 1835
+skipped 0 — IMPROVED every aggregate**; the 11 attr-only modules moved ZERO pages (the template
+attribute is not a skeleton KEEP_ATTR — empirically proven by the merge); ENGJ403's 10 paired pages
+join at 45.0–83.2% scaffold. Manifest refreshed (2022/390); ledger scoped #2.
+
+**RECORDED FOLLOW-UPS.** (a) ENGJ403 pagination: Claude ships 13 pages vs gold's 10 (implicit page
+breaks after `[end page]` without `[LESSON]` opened 9.0/10.0; gold sub-paginates 2.1/3.1) — the
+standing pagination class, its own round. (b) The lesson-menu label: gold ships `<h5>Learning
+intentions</h5>` before the WALT lead; the r114 consume_labels drops it (ENGJ403-02) — a small
+measured round. (c) The lesson chip: gold "1.0" vs Claude "1.0.0"/"0.0.0". (d) The style-anchor
+registry's ENGJ4 row still carries the mined 4-6 (display-only now — the preset outranks it at emit;
+a future registry re-mine picks up ENGJ403's gold). (e) `Module_Structure_Index`/granular registries
+not yet rebuilt with ENGJ403 (diagnostic-only; rebuild with the next registry refresh).
+
+
 ## 2026-07-12 (round 220, build 260617.93) — PNR104-00 MODULE-CONTENT RAW DUMP: flag EVERY table in the [MODULE CONTENT: PAGE n] region (Chris, the PNR104 side-by-side screenshot)
 
 **Plain English.** Chris's screenshot showed PNR104's first page shipping the raw Writers Template table —

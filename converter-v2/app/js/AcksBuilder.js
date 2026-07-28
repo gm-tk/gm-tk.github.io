@@ -272,6 +272,53 @@ class AcksBuilder {
 	 *   ("istock-name") when only the id is found, or an ACK-TODO
 	 *   ("asset-id") when neither is found
 	 */
+	/**
+	 * Parses the optional VERIFIED iStock acknowledgements file (ROUND 235,
+	 * Chris — CL-0002 adopted into the input contract). The file
+	 * (*_istock-acks.txt) holds one fully-formed acknowledgement per line —
+	 *   <p>Photo: Friends dancing in the street, iStock 1422643105, Getty
+	 *   Images. Used with permission.</p>
+	 * — sourced from the iStock API via Getty Images, so its titles are
+	 * DEFINITELY correct and outrank the URL-slug derivation (#istockEntry
+	 * consults the map first). Titles may themselves contain commas/periods:
+	 * the line pattern captures everything between the first ": " and the
+	 * LAST ", iStock <id>," greedily, which handles that correctly.
+	 *
+	 * Called from ModuleResolver.PrepareRun (the ONE shared prep sequence, so
+	 * the browser app and the batch harness behave identically — entry parity).
+	 *
+	 * Data flag: Acks_Formats.istock_acks_file (enabled / line_pattern)
+	 * Env toggle: ISTOCKACKS_OFF (ignore the file entirely)
+	 *
+	 * @param {string|null} text - the raw file text, or null when not supplied
+	 * @param {ConversionRun} run - for the loaded-count summary note
+	 * @returns {Map<string,{title:string,line:string}>|null} asset id → entry,
+	 *   or null when there is no file / no parseable line / the feature is off
+	 */
+	static ParseIstockAcks(text, run) {
+		const cfg = DataService.Data.AcksFormats.istock_acks_file ?? {};
+		if (cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.ISTOCKACKS_OFF) return null;
+		if (!text) return null;
+		const lineRe = new RegExp(cfg.line_pattern ?? "^(?:<p>)?\\s*[^:<>]{1,40}:\\s*(.*),\\s*iStock\\s+(\\d{5,12})\\s*,", "i");
+		const map = new Map();
+		let unparsed = 0;
+		for (const raw of String(text).split(/\r?\n/)) {
+			const line = raw.trim();
+			if (!line) continue;
+			const m = line.match(lineRe);
+			if (m) map.set(m[2], { title: m[1].trim(), line });
+			else unparsed++;
+		}
+		if (run && (map.size || unparsed)) {
+			run.AddNote(unparsed ? "warn" : "info", "AcksBuilder",
+				`_istock-acks.txt: ${map.size} verified iStock title${map.size === 1 ? "" : "s"} loaded`
+				+ (unparsed ? ` (${unparsed} line${unparsed === 1 ? "" : "s"} not in the expected "<p>Prefix: Title, iStock ID, …" form — ignored)` : "")
+				+ `; these API-sourced titles override slug-derived titles.`);
+		}
+		return map.size ? map : null;
+	};
+
 	static #istockEntry(item, prefix, adapted, run) {
 		const fmt = DataService.Data.AcksFormats;
 		const rx = fmt.extraction_regexes;
@@ -287,6 +334,19 @@ class AcksBuilder {
 			?? `${item.description} ${item.itemNo}`.match(new RegExp(rx.istock_id_in_text, "i"))?.[1]
 			?? cleanUrl.match(/\b(\d{8,10})\b/)?.[1]
 			?? null;
+
+		// ROUND 235 (Chris) — the VERIFIED title from the uploaded
+		// *_istock-acks.txt outranks everything else: it is the iStock API's own
+		// title for this exact asset id (definitely correct), so when the map
+		// carries the id, fill the normal entry template with it — which, for a
+		// photo, reproduces the file's own line exactly. Ids not in the file fall
+		// through to the slug rule / ACK-TODO below unchanged.
+		const verified = id ? run.istockAcks?.get(id) : null;
+		if (verified) {
+			return this.#plain(Utils.FillTemplate(fmt.entry_templates.istock, {
+				TypePrefix: prefix, Title: verified.title, AssetId: id, Adapted: adapted,
+			}), "istock", item);
+		}
 
 		// the slug IS the official title (verified rule) — only a bare id
 		// with no URL needs manual sourcing

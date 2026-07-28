@@ -266,7 +266,24 @@ class ActivitiesBuilder {
 		const llOn = llRule && llRule.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.ACTLETTER_OFF);
 		if (llOn && (id || positionalId) && pageLessonNumber != null) {
-			const ln = String(pageLessonNumber);
+			// INTEGER LESSON PREFIX (ROUND 222b — the ENGJ403 "1.0A" screenshot). A
+			// page whose lesson number is DOTTED ("1.0" from the new-era writer tags,
+			// "5.1" from a harvested "Lesson 5.1:" heading) must still number its
+			// activities by the INTEGER lesson — the human ships "1A"/"5D", NEVER
+			// "1.0A"/"5.1A" (measured: every gold in the affected class — ENGJ403,
+			// CEDK501, CEDT501, MXDB301, MXEO301, MXFL302 — is integer+letter; the
+			// separate letter-LESS dotted-id convention, gold number="1.1"/"2.1",
+			// is writer-typed ids KEPT verbatim and never enters this renumber).
+			// Using the integer as the MAP KEY also lets a lesson split over
+			// sub-pages (2.0 → 2.1) CONTINUE its lettering (gold 2A then 2B/2C) —
+			// the map's designed behaviour, which distinct dotted keys silently
+			// defeated. Data activity_wrapper.lesson_letter_number.integer_prefix;
+			// env toggle ACTLNINT_OFF reverts to the raw dotted prefix/key.
+			const intPrefix = llRule.integer_prefix !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.ACTLNINT_OFF);
+			const ln = intPrefix
+				? String(pageLessonNumber).split(".")[0]
+				: String(pageLessonNumber);
 			const idx = lessonLetterMap[ln] ?? 0;
 			lessonLetterMap[ln] = idx + 1;
 			// ROUND 217: a synthetic standalone-widget box has NO writer id — it takes the
@@ -288,7 +305,15 @@ class ActivitiesBuilder {
 			// alike), so a bare id sitting among kept letters still lands on its correct
 			// positional letter (and running past the 26th activity in one lesson simply
 			// keeps the writer's own id rather than running out of letters).
-			if (/^\d+$/.test(id) && idx < 26) {
+			// ROUND 222b: a DOTTED-lettered writer id ("[Activity 5.1A]") is ALSO
+			// renumbered into the integer sequence — the human never keeps the
+			// writer's dotted ids (gold MXEO301/MXFL302 re-letter them 5D/5E…
+			// continuously across the 5.0/5.1 sub-pages). The letter-LESS dotted
+			// gold convention (number="1.1" — the TRR/PNR bilingual family +
+			// CEDR203) is a different id shape that never enters this renumber
+			// (and Claude emits none via this path — measured, 0 corpus-wide).
+			// Same data flag/toggle as integer_prefix above (ACTLNINT_OFF).
+			if ((/^\d+$/.test(id) || (intPrefix && /^\d+\.\d+[a-z]$/i.test(id))) && idx < 26) {
 				id = ln + String.fromCharCode(65 + idx);
 			}
 		}

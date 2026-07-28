@@ -685,6 +685,79 @@ class TagNormaliser {
 				}
 			}
 		}
+		// THE [MTKquiz] FAMILY → ONE canonical "mtk quiz" ELEMENT tag (ROUND 232 —
+		// Change Ledger CL-0038).
+		//
+		// A writer marks a D2L quiz with an "MTK quiz" span in a dozen spellings —
+		// "[MTKQuiz]", "[MTK Quiz, supports engagement, audio, video, file
+		// sharing]", "[Insert MTK Quiz – trigger engagement]", "[MTK quiz; trigger
+		// engagement; self-marked]", a bracket-less red line ("Activity – long
+		// answer MTK quiz, Kaiako marked"), even glued onto an activity opener
+		// ("[Activity 1A: MTK Quiz]"). Measured live (outputs/_detect_mtkquiz.cjs,
+		// all WTs: 33 spans / 21 modules), those forms resolved INCONSISTENTLY:
+		// most hit the mcq INTERACTIVE via the embedded "quiz" alias (opening an
+		// un-buildable bundle that swallowed the writer's quiz content into a
+		// placeholder dump), the glued "[MTKQuiz]" forms were bare instructions,
+		// the "Free text box…" form mis-resolved to a text box ELEMENT and the
+		// "should go to teacher dropbox" form to dropdown. The design team's rule
+		// (CL-0038): every such marker renders as the "Go to quiz" button + a
+		// Designer/Developer To Do note, with the writer's quiz content kept.
+		//
+		// This step normalises the whole family AT THE PARSE LEVEL (the round-170
+		// tag_promote class, but able to fire on tag-less instruction spans too):
+		// when the span's text carries the MTK-quiz head (and is not the "[End of
+		// MTK Quiz content]" CLOSER — that stays a CONTAINER_CLOSE), the
+		// quiz-modifier junk tags (drop_tags — the mcq/engagement/text-box/
+		// dropdown/etc. resolutions of the modifier prose; "dropbox" thus never
+		// attaches a wrapper, per the rule) are removed and ONE "mtk quiz" ELEMENT
+		// tag is injected. The primary is recomputed SURVIVORS-FIRST: a surviving
+		// structural co-tag keeps governing ([Activity 1A: MTK Quiz] still opens
+		// its activity box; ARFUN04's [Activity 1H drag and drop] keeps its
+		// dragAndDrop bundle) and only when the old primary was itself dropped —
+		// or the span had no tags at all — does "mtk quiz" take the slot. Because
+		// the result is an ELEMENT, the scanner never opens a capturing bundle for
+		// it, so the writer's quiz content flows to the normal body render
+		// (constraint 1). A bracket-less span must be SHORT (bracketless_max_words)
+		// so a long prose note that merely mentions an MTK quiz can never retag.
+		// The button/note emission lives in ContentConverter (#mtkQuizEmit) off
+		// data Emit_Templates.interactive_builders.mtk_quiz.
+		// Data flag: Tag_Lexicon.json _meta.mtk_quiz_retag   Env toggle: MTKQUIZ_OFF
+		{
+			const mqr = this.#lexicon?._meta?.mtk_quiz_retag;
+			if (mqr && mqr.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.MTKQUIZ_OFF)) {
+				const headRe = new RegExp(mqr.head_pattern, "i");
+				const exclRe = new RegExp(mqr.exclude_pattern, "i");
+				if (headRe.test(s) && !exclRe.test(s)
+					&& (tags.length || brackets.length
+						|| s.trim().split(/\s+/).length <= (mqr.bracketless_max_words ?? 12))) {
+					const drop = new Set(mqr.drop_tags ?? []);
+					const oldPrimaryDropped = !!(primary && drop.has(primary.tag));
+					const kept = tags.filter((t) => !drop.has(t.tag));
+					tags.length = 0; tags.push(...kept);
+					const canon = String(mqr.canonical ?? "mtk quiz");
+					const mt = { tag: canon, directive: "ELEMENT", how: "mtk_retag", alias: canon };
+					tags.push(mt);
+					if (!primary || oldPrimaryDropped) {
+						// SURVIVORS-FIRST, CONTAINER-FIRST recompute. The dropped primary was
+						// an INTERACTIVE (precedence 7) that outranked every survivor; the
+						// span's next-best GOVERNOR is a surviving [activity] CONTAINER_OPEN
+						// (precedence 5) — NOT a decorative [H3] riding in the same span
+						// (ELEMENT, 6). Without this preference, "[Activity 2B] [MTK quiz,
+						// autograded…][H3]" (ARFUN02) recomputed to the h3 and the activity
+						// box 2B silently vanished. A surviving activity therefore wins the
+						// slot outright; otherwise the standard precedence reducer runs over
+						// the survivors; a survivor-less span takes the injected mtk tag.
+						const act = kept.find((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN");
+						primary = act ?? (kept.length ? kept.reduce((best, t) => {
+							const p = TagNormaliser.#PRECEDENCE[t.directive] ?? 0;
+							const bp = TagNormaliser.#PRECEDENCE[best.directive] ?? 0;
+							return p > bp ? t : best;
+						}) : mt);
+					}
+				}
+			}
+		}
 		if (tags.length) {
 			cls = "tag";
 		} else if (instructionFragment || this.#cuesRegex.test(s)

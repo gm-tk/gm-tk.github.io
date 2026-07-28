@@ -101,7 +101,13 @@ class ManifestBuilder {
 		const extractMode = run.interactiveMode === "extract" && !!ex;
 		if (extractMode) {
 			out.push("");
-			out.push(ex.manifest_banner);
+			// ROUND 235 (Chris) — the collapsible hand-off is the default: the raw
+			// content IS on the page now (collapsed inside the reference box), so the
+			// banner wording comes from collapse.manifest_banner. The legacy bare-marker
+			// extract (INTEXTRACT_ON + INTCOLLAPSE_OFF) keeps the r138 wording.
+			const collapseOn = ex.collapse && ex.collapse.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.INTCOLLAPSE_OFF);
+			out.push(collapseOn && ex.collapse.manifest_banner ? ex.collapse.manifest_banner : ex.manifest_banner);
 		}
 		out.push("");
 		out.push("=====================================");

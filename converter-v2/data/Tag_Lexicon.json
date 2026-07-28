@@ -52,7 +52,26 @@
     }
    ]
   },
-  "tag_count": 83,
+  "mtk_quiz_retag": {
+   "_note": "ROUND 232 (Change Ledger CL-0038, 16 Jul — Chris). Any [MTKquiz]-family span (any modifiers) ships the canonical 'Go to quiz' button + a Designer/Developer To Do note; the writer's quiz content stays rendered; the 'dropbox' wrapper modifier does NOT attach. The family's live resolutions were all over the map (measured, outputs/_detect_mtkquiz.cjs — 33 spans / 21 modules): most forms hit mcq INTERACTIVE via the embedded 'quiz' alias (an un-built bundle that swallowed the writer's quiz content into a placeholder dump), [MTKQuiz]/[Auto-marked MTKquiz] were bare instructions, the 'Free text box…' form mis-resolved to a text box ELEMENT and the 'teacher dropbox' form to dropdown. This span-level RETAG (applied in TagNormaliser.Parse after tag_promote, and ALSO on tag-less instruction spans) normalises them all: quiz-junk tags in drop_tags are removed, ONE 'mtk quiz' ELEMENT tag is injected, and the primary is recomputed SURVIVORS-FIRST (a surviving [Activity]/[drag and drop] co-tag keeps governing — [Activity 1A: MTK Quiz] still opens its box; only when the old primary was dropped or null does mtk quiz take the slot). head_pattern matches the family head (MTKQuiz/MTK Quiz/MTK-quiz); exclude_pattern keeps the ARFUN01 closer ([End of MTK Quiz content] stays a CONTAINER_CLOSE, never a button); bracketless_max_words caps the bracket-less red-line form (ENG1004/ENG1005 'Activity – long answer MTK quiz, Kaiako marked', measured the ONLY bracket-less carriers corpus-wide) so a long prose note mentioning an MTK quiz can never retag. Emit templates + the adjacent writer-button absorb live in Emit_Templates.interactive_builders.mtk_quiz. Env MTKQUIZ_OFF reverts the whole family to the measured pre-round behaviour.",
+   "enabled": true,
+   "env": "MTKQUIZ_OFF",
+   "canonical": "mtk quiz",
+   "head_pattern": "mtk[\\s-]*quiz",
+   "exclude_pattern": "^\\s*\\[?\\s*end\\b",
+   "bracketless_max_words": 12,
+   "drop_tags": [
+    "mcq",
+    "engagement quiz button",
+    "question",
+    "text box",
+    "option",
+    "dropdown",
+    "video",
+    "audio"
+   ]
+  },
+  "tag_count": 84,
   "alias_count": 377,
   "suffix_container_close": true
  },
@@ -561,6 +580,13 @@
    "widget_types": [
     "multiChoiceQuiz"
    ]
+  },
+  "mtk quiz": {
+   "directive": "ELEMENT",
+   "aliases": [],
+   "rules_family": "CL-0038",
+   "_note": "ROUND 232 (CL-0038): the canonical MTK-quiz marker — renders as the 'Go to quiz' button + Designer/Developer To Do note (templates in Emit_Templates.interactive_builders.mtk_quiz). DELIBERATELY NO ALIASES: natural alias matching is not env-gateable, so the span-level retag in _meta.mtk_quiz_retag (env MTKQUIZ_OFF) does ALL the matching; this entry is the taxonomy record + directive lookup for the injected tag.",
+   "widget_types": []
   },
   "radio quiz": {
    "directive": "INTERACTIVE",
