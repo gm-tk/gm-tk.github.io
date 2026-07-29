@@ -90,6 +90,12 @@ class AcksBuilder {
 		// opening disclaimer (its own group, per the corpus form)
 		html.push(g.group_element_open, fmt.standing_items.opening_disclaimer);
 		if (hasAi) html.push(fmt.standing_items.ai_usage_statement);   // §5.1 position
+		// ROUND 236 (Chris) — the unverified-iStock designer note closes the
+		// opening group, which puts it at the top of the acks block and
+		// directly above the ❗ lesson groups it explains. Empty string (and so
+		// no output at all) whenever every iStock title was verified.
+		const unverifiedNote = this.#unverifiedNote(run);
+		if (unverifiedNote) html.push(unverifiedNote);
 		html.push(g.group_element_close);
 
 		// per-lesson groups, in page order — every lesson gets its group,
@@ -316,7 +322,122 @@ class AcksBuilder {
 				+ (unparsed ? ` (${unparsed} line${unparsed === 1 ? "" : "s"} not in the expected "<p>Prefix: Title, iStock ID, …" form — ignored)` : "")
 				+ `; these API-sourced titles override slug-derived titles.`);
 		}
+		// ROUND 236 — record that a file WAS supplied, independently of whether it
+		// parsed to anything. #unverifiedNote needs the distinction: "no file at
+		// all" and "a file that simply does not cover this asset" are different
+		// messages to the designer.
+		if (run) run.istockAcksSupplied = !!String(text ?? "").trim();
 		return map.size ? map : null;
+	};
+
+	/**
+	 * ROUND 236 (Chris) — CONTENT-FIRST recognition of the verified iStock
+	 * acknowledgements file.
+	 *
+	 * WHY: round 235 keyed acceptance on the FILENAME (`*istock-acks.txt`).
+	 * Chris is moving to per-module names (`_istock-acks-OSAI501.txt`,
+	 * `_OSAI501-istock-acks.txt`) while a large number of files already exist
+	 * under the old name, so no filename rule can cover the family. His rule
+	 * instead: whatever it is called, if it is a .txt holding a list of iStock
+	 * acknowledgement lines AND NOTHING ELSE, that is the file — and its titles
+	 * are top priority.
+	 *
+	 * WHAT: tests text against the same `line_pattern` the parser uses, and
+	 * qualifies it on TWO thresholds from data — enough matching lines
+	 * (`min_matching_lines`, so a passing mention cannot qualify) and a high
+	 * enough share of the non-empty lines (`min_share_of_nonempty`, Chris's
+	 * "and nothing else"). Blank lines are ignored entirely.
+	 *
+	 * @param {string} text - the candidate file's contents
+	 * @returns {{ok: boolean, matched: number, nonEmpty: number, share: number}}
+	 */
+	static LooksLikeIstockAcks(text) {
+		const cfg = DataService.Data.AcksFormats.istock_acks_file ?? {};
+		const det = cfg.detect ?? {};
+		const lineRe = new RegExp(cfg.line_pattern, "i");
+		let matched = 0, nonEmpty = 0;
+		for (const raw of String(text ?? "").split(/\r?\n/)) {
+			const line = raw.trim();
+			if (!line) continue;
+			nonEmpty++;
+			if (lineRe.test(line)) matched++;
+		}
+		const share = nonEmpty ? matched / nonEmpty : 0;
+		const ok = matched >= (det.min_matching_lines ?? 3)
+			&& share >= (det.min_share_of_nonempty ?? 0.8);
+		return { ok, matched, nonEmpty, share: Math.round(share * 1000) / 1000 };
+	};
+
+	/**
+	 * ROUND 236 — picks the acks file out of a set of candidate .txt files.
+	 *
+	 * THE ONE CHOKE POINT both entries use (the round-185 entry-parity
+	 * discipline): the browser's upload drop and the batch harness's folder
+	 * scan hand their candidates here rather than each applying their own rule,
+	 * so the two paths can never drift on what counts as an acks file.
+	 *
+	 * Content decides. The filename is a SECONDARY safeguard only: an
+	 * "istock"/"acks" word raises confidence and breaks a tie between two
+	 * qualifying files, and a module code that contradicts the module being
+	 * converted raises a loud warning (Chris's decision 2026-07-29 — use the
+	 * file, because content is the authority, but say so clearly).
+	 *
+	 * @param {Array<{name: string, text: string}>} candidates
+	 * @param {ConversionRun} [run] - for the mismatch/selection notes
+	 * @returns {{name: string, text: string}|null}
+	 */
+	static PickIstockAcks(candidates, run = null) {
+		const cfg = DataService.Data.AcksFormats.istock_acks_file ?? {};
+		const det = cfg.detect ?? {};
+		const legacyOnly = det.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env.ISTOCKDETECT_OFF);
+
+		// ROUND 235 behaviour, preserved verbatim behind the toggle: filename only.
+		if (legacyOnly) {
+			const nameRe = new RegExp(cfg.filename_pattern ?? "istock-acks\\.txt$", "i");
+			return (candidates ?? []).find((c) => nameRe.test(c.name)) ?? null;
+		}
+
+		const hints = det.filename_hint_words ?? [];
+		const scored = [];
+		for (const c of candidates ?? []) {
+			const verdict = this.LooksLikeIstockAcks(c.text);
+			if (!verdict.ok) continue;
+			const lower = String(c.name).toLowerCase();
+			const hintScore = hints.filter((w) => lower.includes(w)).length;
+			scored.push({ c, verdict, hintScore });
+		}
+		if (!scored.length) return null;
+
+		// most matching lines wins; filename hints break a tie (the safeguard)
+		scored.sort((a, b) => (b.verdict.matched - a.verdict.matched)
+			|| (b.hintScore - a.hintScore));
+		const best = scored[0];
+
+		if (run) {
+			if (scored.length > 1) {
+				run.AddNote("warn", "AcksBuilder",
+					`${scored.length} uploaded .txt files look like iStock acknowledgements; using `
+					+ `"${best.c.name}" (${best.verdict.matched} entries — the most, `
+					+ `${best.hintScore ? "and its name carries an iStock/acks hint" : "no filename hint available"}).`);
+			}
+			if (!best.hintScore) {
+				run.AddNote("info", "AcksBuilder",
+					`"${best.c.name}" was accepted as the verified iStock acknowledgements file on its `
+					+ `CONTENTS (${best.verdict.matched} of ${best.verdict.nonEmpty} lines are iStock `
+					+ `acknowledgements); its filename carries no "istock"/"acks" hint.`);
+			}
+			// filename module code vs the module actually being converted
+			const codeRe = det.module_code_pattern ? new RegExp(det.module_code_pattern) : null;
+			const named = codeRe ? String(best.c.name).toUpperCase().match(codeRe)?.[1] : null;
+			if (named && run.moduleCode && named !== String(run.moduleCode).toUpperCase()) {
+				run.AddNote("warn", "AcksBuilder",
+					`⚠ "${best.c.name}" names module ${named}, but this conversion is ${run.moduleCode}. `
+					+ `Its titles ARE being used (the file's contents are valid iStock acknowledgements) — `
+					+ `check you uploaded the right module's file.`);
+			}
+		}
+		return best.c;
 	};
 
 	static #istockEntry(item, prefix, adapted, run) {
@@ -355,9 +476,14 @@ class AcksBuilder {
 			const st = fmt.istock_slug_title;
 			const title = Utils.TitleCaseWords(slug.split("-").filter(Boolean),
 				st.special_tokens, st.lowercase_small_words);
-			return this.#plain(Utils.FillTemplate(fmt.entry_templates.istock, {
+			// ROUND 236 — the line is COMPLETE but its title is DERIVED, not
+			// confirmed against the iStock API. #unverifiedEntry marks it so the
+			// designer can see which titles still need checking; when the acks
+			// file covered this id we never reach here (the verified branch above
+			// returned already), so reaching this line IS the unverified case.
+			return this.#unverifiedEntry(Utils.FillTemplate(fmt.entry_templates.istock, {
 				TypePrefix: prefix, Title: title, AssetId: id ?? "", Adapted: adapted,
-			}), "istock", item);
+			}), id, "url-slug", item, run);
 		}
 		if (id) {
 			// id known, no slug → ACK-TODO[istock-name] with the writer's
@@ -541,6 +667,100 @@ class AcksBuilder {
 	static #plain(text, sourceClass, item) {
 		const entry = DataService.Data.AcksFormats.lesson_groups.entry_element;
 		return { html: Utils.FillTemplate(entry, { entry: text }), todoComment: null, sourceClass, item };
+	};
+
+	/**
+	 * ROUND 236 (Chris) — a COMPLETE iStock acknowledgement whose TITLE was
+	 * derived rather than verified.
+	 *
+	 * The third state of the ACK-TODO contract. An ACK-TODO says "information
+	 * is missing" and ships a bracketed slot; this line is not missing anything
+	 * — it reads exactly like a finished acknowledgement — but its title came
+	 * from the image URL's slug instead of the iStock API, and nothing on the
+	 * page told the designer which was which. It now carries the ❗ marker, and
+	 * #unverifiedNote puts one red explanation at the top of the acks block.
+	 *
+	 * DELIBERATELY NOT the ackTodo class: keeping it a plain <p> (identical in
+	 * structure to the human's own acknowledgement, differing only by the
+	 * marker character) means the PRIMARY skeleton gate — which reads class
+	 * names but strips text — sees no change at all, and compare_structure
+	 * still harvests the line's text as a real acknowledgement rather than
+	 * discarding it as a to-do. The visible marker and the machine-readable
+	 * comment carry the signal instead.
+	 *
+	 * @param {string} text - the finished acknowledgement line
+	 * @param {string|null} id - the iStock asset id, when known
+	 * @param {string} source - where the title came from ("url-slug")
+	 * @param {object} item - the media item (carried on the entry as usual)
+	 * @param {ConversionRun} run - records the id for #unverifiedNote
+	 */
+	static #unverifiedEntry(text, id, source, item, run) {
+		const cfg = DataService.Data.AcksFormats.istock_unverified ?? {};
+		const off = cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env.ISTOCKUNVERIFIED_OFF);
+		if (off) return this.#plain(text, "istock", item);
+
+		if (run) (run.istockUnverified ??= []).push(id ?? "(no id)");
+		const entry = this.#plain((cfg.marker ?? "❗ ") + text, "istock", item);
+		entry.todoComment = Utils.FillTemplate(cfg.todo_comment ?? "", {
+			id: id ?? "", source,
+		});
+		entry.unverified = true;
+		return entry;
+	};
+
+	/**
+	 * ROUND 236 — the ONE red designer note explaining the ❗ markers.
+	 *
+	 * Placed at the top of the acknowledgements block (Chris's decision
+	 * 2026-07-29) so it is read in context, immediately above the lines it
+	 * refers to. Two wordings, because the two situations need different
+	 * actions from the designer: NO file was supplied at all (upload it), or a
+	 * file was supplied but does not cover every asset (top it up / check those
+	 * specific ids). Carries class cv2-note, so like every other converter note
+	 * it is excluded from the skeleton, compare_structure and body_compare by
+	 * construction (round 72) — it can never move a gate.
+	 *
+	 * @param {ConversionRun} run
+	 * @returns {string} the note's HTML, or "" when every title was verified
+	 */
+	static #unverifiedNote(run) {
+		const cfg = DataService.Data.AcksFormats.istock_unverified ?? {};
+		if (cfg.enabled === false) return "";
+		if (typeof process !== "undefined" && process.env && process.env.ISTOCKUNVERIFIED_OFF) return "";
+
+		const ids = run?.istockUnverified ?? [];
+		if (!ids.length) return "";
+
+		// count DISTINCT assets, not occurrences: the same photo is often
+		// listed several times across a module, and the acks block itself
+		// de-duplicates per lesson group — so a raw occurrence count would
+		// promise the designer more ❗ lines than the page actually shows.
+		const unique = [...new Set(ids)];
+		const count = unique.length;
+		const plural = count === 1 ? "" : "s";
+		const max = cfg.note_ids_max ?? 12;
+		const shown = unique.slice(0, max).join(", ")
+			+ (unique.length > max ? `, … (+${unique.length - max} more)` : "");
+
+		const text = run?.istockAcksSupplied
+			? Utils.FillTemplate(cfg.note_partial ?? "", {
+				count, plural, those: count === 1 ? "that" : "those", ids: shown,
+			})
+			: Utils.FillTemplate(cfg.note_no_file ?? "", {
+				count, plural, were: count === 1 ? "was" : "were",
+			});
+
+		run?.AddNote("warn", "AcksBuilder",
+			`${count} iStock title${plural} could not be verified`
+			+ (run?.istockAcksSupplied
+				? ` (the supplied acknowledgements file does not cover them)`
+				: ` (no *istock-acks*.txt was supplied)`)
+			+ `; each is marked ❗ and the acks block carries a designer note.`);
+
+		return Utils.FillTemplate(cfg.note_form ?? "", {
+			noteClass: cfg.note_class ?? "cv2-note", text,
+		});
 	};
 
 	/**

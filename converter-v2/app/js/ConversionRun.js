@@ -111,6 +111,16 @@ class ConversionRun {
 		// asset id → { title, line }; null when no file was supplied (or the
 		// feature is off — data Acks_Formats.istock_acks_file / env ISTOCKACKS_OFF).
 		this.istockAcks = null;
+		// ROUND 236 (Chris) — sourcing honesty for iStock TITLES.
+		// istockAcksSupplied: was an acknowledgements file supplied AT ALL? (A
+		// file that covers nothing still counts — "no file" and "file that
+		// misses this asset" are different messages to the designer.)
+		// istockUnverified: the asset ids whose titles had to be derived from
+		// the image URL instead of verified against the iStock API. Each such
+		// line ships the ❗ marker and the acks block carries one red note.
+		// Data Acks_Formats.istock_unverified · env ISTOCKUNVERIFIED_OFF.
+		this.istockAcksSupplied = false;
+		this.istockUnverified = [];
 		// Does the Writers Template's own page numbering look trustworthy enough
 		// to split the module into pages by? Decided by a data rule. true / false.
 		this.pageRecordsUsable = false;

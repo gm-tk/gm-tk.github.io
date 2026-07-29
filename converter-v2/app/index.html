@@ -48,7 +48,7 @@
 			<div id="drop-zone" title="Click to choose files, or drop them here">
 				<p><strong>Drop the Writers Template .docx here</strong> (plus its Media List .docx, or one combined WT+media-list file)</p>
 				<p class="drop-hint">Module code, template level, and structure are detected from the data — nothing to type.</p>
-				<p class="drop-hint">Optional: add an <code>_istock-acks.txt</code> file (the API-sourced iStock acknowledgements) — its verified image titles are used whenever an iStock acknowledgement is generated.</p>
+				<p class="drop-hint">Optional: add the iStock acknowledgements <code>.txt</code> (the API-sourced list) — its verified image titles are used whenever an iStock acknowledgement is generated. The file is recognised by its <em>contents</em>, so any filename works (<code>_istock-acks.txt</code>, <code>_istock-acks-OSAI501.txt</code>, …). <strong>Without it, every iStock title is derived from the image URL and each acknowledgement is marked ❗ for checking.</strong></p>
 			</div>
 			<input type="file" id="file-input" accept=".docx,.txt" multiple hidden>
 			<ul id="file-list" class="file-list"></ul>

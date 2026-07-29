@@ -419,7 +419,18 @@ class Config {
 	// marker); env ISTOCKACKS_OFF ignores the acks file. Data
 	// interactive_placeholder.extract.default_mode/.collapse +
 	// Acks_Formats.istock_acks_file.
-	static AppVersion = 260618.08;
+	// ROUND 236 (260618.09): UNVERIFIED-iSTOCK HONESTY + CONTENT-FIRST ACKS-FILE
+	// RECOGNITION (Chris). Without a verified acks file every iStock title is
+	// DERIVED from the image URL and read exactly like a checked one — each such
+	// acknowledgement now carries a ❗ (inside the existing plain <p>, no class
+	// change, so the skeleton sees nothing) and the acks block opens with one
+	// red "Designer/Developer To Do:" note explaining why. Partial cover is
+	// flagged per-asset. AND the acks .txt is recognised by its CONTENTS, not
+	// its filename (per-module names like _istock-acks-OSAI501.txt are coming);
+	// AcksBuilder.LooksLikeIstockAcks / PickIstockAcks is the one shared test
+	// both entries use. Env ISTOCKUNVERIFIED_OFF / ISTOCKDETECT_OFF. Data
+	// Acks_Formats.istock_unverified + istock_acks_file.detect.
+	static AppVersion = 260618.09;
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -49,10 +49,15 @@ class App {
 	static #normaliser = null;   // compiled matcher (built once at startup)
 	static #files = [];          // uploaded .docx File objects awaiting conversion
 	// ROUND 235 (Chris) — the optional verified iStock acknowledgements file
-	// (*_istock-acks.txt, API-sourced via Getty Images). Kept SEPARATE from
-	// #files: it is not a .docx, must not enter the docx-extraction loop, and
-	// does not count toward the two-docx-per-run limit.
-	static #istockAcksFile = null;
+	// (API-sourced via Getty Images). Kept SEPARATE from #files: it is not a
+	// .docx, must not enter the docx-extraction loop, and does not count toward
+	// the two-docx-per-run limit.
+	// ROUND 236 — now a LIST of accepted .txt candidates rather than one
+	// name-matched file: filenames are moving to per-module forms, so #addFiles
+	// admits any .txt whose CONTENTS are iStock acknowledgements and
+	// PrepareRun/AcksBuilder.PickIstockAcks makes the final choice (normally
+	// there is exactly one).
+	static #txtFiles = [];
 
 	/**
 	 * STARTUP. Runs once, when the page finishes loading (wired up at the
@@ -188,10 +193,12 @@ class App {
 			.addEventListener("click", (e) => {
 				const btn = e.target.closest("[data-remove]");
 				if (!btn) return;
-				// "acks" removes the optional _istock-acks.txt row; a number
-				// removes the docx at that index (see #renderFileList)
-				if (btn.dataset.remove === "acks") this.#istockAcksFile = null;
-				else this.#files.splice(Number(btn.dataset.remove), 1);
+				// "acks:N" removes the accepted acknowledgements .txt at that
+				// index; a bare number removes the docx at that index
+				// (see #renderFileList)
+				if (String(btn.dataset.remove).startsWith("acks:")) {
+					this.#txtFiles.splice(Number(btn.dataset.remove.slice(5)), 1);
+				} else this.#files.splice(Number(btn.dataset.remove), 1);
 				this.#renderFileList();
 			});
 	};
@@ -221,18 +228,36 @@ class App {
 	 * @param {File[]} files - newly-picked or dropped browser File objects
 	 * @returns {void}
 	 */
-	static #addFiles(files) {
-		// .docx inputs, plus the ONE optional *_istock-acks.txt (ROUND 235 —
-		// the API-sourced verified iStock acknowledgements); anything else is
-		// surfaced immediately
+	static async #addFiles(files) {
+		// .docx inputs, plus any optional .txt holding the verified iStock
+		// acknowledgements; anything else is surfaced immediately.
+		//
+		// ROUND 236 (Chris) — a .txt is no longer judged by its NAME. Chris is
+		// moving to per-module filenames (_istock-acks-OSAI501.txt /
+		// _OSAI501-istock-acks.txt) while many files already exist under the old
+		// name, so ANY .txt is accepted here and its CONTENTS decide: if its
+		// lines are iStock acknowledgements and nothing else, it is the acks
+		// file. The check below is for immediate on-screen feedback; the
+		// authoritative pick happens once, for both entries, inside
+		// ModuleResolver.PrepareRun (AcksBuilder.PickIstockAcks).
 		for (const f of files) {
-			if (f.name.toLowerCase().endsWith(".docx")) this.#files.push(f);
-			else if (/istock-acks\.txt$/i.test(f.name)) {
-				if (this.#istockAcksFile) this.#log(`⚠ "${this.#istockAcksFile.name}" replaced by "${f.name}" — one iStock acknowledgements file per run.`);
-				this.#istockAcksFile = f;
-				this.#log(`✓ "${f.name}" — verified iStock acknowledgements loaded; its titles will be used for iStock acks.`);
+			if (f.name.toLowerCase().endsWith(".docx")) { this.#files.push(f); continue; }
+			if (!f.name.toLowerCase().endsWith(".txt")) {
+				this.#log(`⚠ "${f.name}" is not a .docx (or a .txt of iStock acknowledgements) — ignored.`);
+				continue;
 			}
-			else this.#log(`⚠ "${f.name}" is not a .docx (or an _istock-acks.txt) — ignored.`);
+			let verdict = { ok: false, matched: 0, nonEmpty: 0 };
+			try { verdict = AcksBuilder.LooksLikeIstockAcks(await f.text()); }
+			catch { /* unreadable file falls through as "not recognised" */ }
+			if (verdict.ok) {
+				this.#txtFiles.push(f);
+				this.#log(`✓ "${f.name}" — recognised by its contents as verified iStock acknowledgements `
+					+ `(${verdict.matched} entries); these titles will be used for the iStock acks.`);
+			} else {
+				this.#log(`⚠ "${f.name}" does not look like an iStock acknowledgements file `
+					+ `(${verdict.matched} of ${verdict.nonEmpty} lines are acknowledgement lines) — ignored. `
+					+ `Expected one line per asset, e.g. "&lt;p&gt;Photo: Title, iStock 1234567, Getty Images. Used with permission.&lt;/p&gt;".`);
+			}
 		}
 		// one module per run: a WT + its media list (or one combined file)
 		if (this.#files.length > 2) {
@@ -265,10 +290,10 @@ class App {
 		const list = document.getElementById(Config.Selectors.FileList);
 		const rows = this.#files.map((f, i) =>
 			`<li>${Utils.EscapeHtml(f.name)} <button type="button" data-remove="${i}" title="Remove">✕</button></li>`);
-		// the optional verified iStock acknowledgements file renders as its own
-		// row (data-remove="acks" — see the delegated click handler in #wireUi)
-		if (this.#istockAcksFile) rows.push(
-			`<li>${Utils.EscapeHtml(this.#istockAcksFile.name)} <em>(verified iStock acks)</em> <button type="button" data-remove="acks" title="Remove">✕</button></li>`);
+		// each accepted verified-iStock-acknowledgements .txt renders as its own
+		// row (data-remove="acks:N" — see the delegated click handler in #wireUi)
+		this.#txtFiles.forEach((f, i) => rows.push(
+			`<li>${Utils.EscapeHtml(f.name)} <em>(verified iStock acks)</em> <button type="button" data-remove="acks:${i}" title="Remove">✕</button></li>`));
 		list.innerHTML = rows.join("");
 		document.getElementById(Config.Selectors.ConvertButton).disabled = this.#files.length === 0;
 	};
@@ -524,8 +549,12 @@ class App {
 			// ROUND 235 (Chris) — the optional verified iStock acknowledgements
 			// file rides into the ONE shared prep sequence as plain text; parsing
 			// lives inside PrepareRun/AcksBuilder (never here — entry parity).
-			const istockAcksText = this.#istockAcksFile ? await this.#istockAcksFile.text() : null;
-			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksText });
+			// ROUND 236 — hand in EVERY accepted .txt; PrepareRun applies the one
+			// shared content test and picks (entry parity: the batch harness
+			// hands in its folder's .txt files exactly the same way).
+			const istockAcksFiles = await Promise.all(this.#txtFiles.map(
+				async (f) => ({ name: f.name, text: await f.text() })));
+			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles });
 			if (!prep.ok && prep.reason === "no-wt") {
 				this.#log("🔴 No Writers Template found among the uploads (no [TITLE BAR]/[Fundamental content] opener). Nothing converted.");
 				this.#progressHide();
@@ -651,7 +680,11 @@ class App {
 				["Date submitted", md.dateSubmitted],
 				["Image mode", run.imageMode],
 				["Interactive mode", run.interactiveMode === "extract" ? "hand-off (raw content collapsed in-page, expandable)" : "inline (legacy)"],
-				["iStock acks file", run.istockAcks ? `${run.istockAcks.size} verified titles` : null],
+				["iStock acks file", run.istockAcks ? `${run.istockAcks.size} verified titles` : (run.istockAcksSupplied ? "supplied, but no usable entries" : "none supplied")],
+				// ROUND 236 — how many iStock titles had to be derived from the
+				// image URL instead of verified; each is marked ❗ on the page.
+				["iStock titles unverified", run.istockUnverified?.length
+					? `${run.istockUnverified.length} marked ❗ for checking` : null],
 			].filter(([, v]) => v);
 			metaEl.innerHTML = `<h3>Module details</h3><dl class="meta-list">${
 				rows.map(([k, v]) => `<dt>${Utils.EscapeHtml(k)}</dt><dd>${Utils.EscapeHtml(String(v))}</dd>`).join("")
@@ -732,9 +765,9 @@ class App {
 	 * @returns {void}
 	 */
 	static #resetPage() {
-		// pending uploads + file list (incl. the optional _istock-acks.txt)
+		// pending uploads + file list (incl. any accepted acknowledgements .txt)
 		this.#files = [];
-		this.#istockAcksFile = null;
+		this.#txtFiles = [];
 		this.#renderFileList();          // also disables the Convert button (0 files)
 
 		// outputs, module-details card, download-all, summary panel

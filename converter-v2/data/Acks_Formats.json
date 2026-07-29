@@ -134,7 +134,29 @@
   "enabled": true,
   "_note": "ROUND 235 (Chris) — the OPTIONAL verified iStock acknowledgements file (CL-0002 adopted into the input contract). A file named *_istock-acks.txt can be uploaded alongside the WT + Media List (or sit in the module folder for a batch run): one fully-formed ack per line, e.g. <p>Photo: Friends dancing in the street, iStock 1422643105, Getty Images. Used with permission.</p>, sourced from the iStock API via Getty — so its titles are DEFINITELY correct and OUTRANK the slug-derived title (title_authority for iStock becomes: API file > URL slug > ACK-TODO). The engine parses each line into id → {title, line} (line_pattern below: title = everything between the first ': ' and the LAST ', iStock <id>,' — titles may themselves contain commas); when #istockEntry knows the asset id and the map carries it, the VERIFIED title fills the normal entry template ({TypePrefix}/{Adapted} still composed per the item), which for a photo reproduces the file's own line exactly. Ids not in the file fall back to the slug rule / ACK-TODO unchanged. Env ISTOCKACKS_OFF (or enabled:false) ignores the file entirely.",
   "filename_pattern": "istock-acks\\.txt$",
-  "line_pattern": "^(?:<p>)?\\s*[^:<>]{1,40}:\\s*(.*),\\s*iStock\\s+(\\d{5,12})\\s*,"
+  "line_pattern": "^(?:<p>)?\\s*[^:<>]{1,40}:\\s*(.*),\\s*iStock\\s+(\\d{5,12})\\s*,",
+  "detect": {
+   "enabled": true,
+   "_note": "ROUND 236 (Chris) — CONTENT-FIRST recognition. Round 235 accepted the file only when its NAME ended 'istock-acks.txt', which breaks the moment the module code joins the filename (_istock-acks-OSAI501.txt / _OSAI501-istock-acks.txt) and cannot cope with the variants already in circulation. The file is now recognised by WHAT IT CONTAINS: any .txt whose lines are iStock acknowledgements (line_pattern above) and effectively nothing else. The filename is a SECONDARY safeguard only — 'istock' and/or 'acks' anywhere in it raises confidence and breaks ties between two qualifying files, but never gates acceptance. MEASURED SAFE on the corpus: all 559 .txt files sitting beside the module .docx inputs are '*_parsed.txt' WT dumps and ZERO of them contain a single matching line, so content-first detection cannot false-positive here; the generator's own {CODE}_interactives.txt hand-off is excluded by the same content test. Env ISTOCKDETECT_OFF reverts to the round-235 filename-only rule.",
+   "min_matching_lines": 3,
+   "min_share_of_nonempty": 0.8,
+   "filename_hint_words": ["istock", "acks", "ack"],
+   "module_code_pattern": "\\b([A-Z]{2,6}\\d{2,4})\\b",
+   "share_note": "min_share_of_nonempty guards the 'and nothing else' half of Chris's rule: a .txt that merely MENTIONS iStock in prose (a writer's note, a media list dump) fails it. min_matching_lines stops a one-line fragment qualifying. A file passing both is the acks file whatever it is called."
+  }
+ },
+
+ "istock_unverified": {
+  "enabled": true,
+  "_note": "ROUND 236 (Chris) — SOURCING HONESTY for iStock TITLES. Without a verified acks file every iStock title is DERIVED from the URL slug (the round-235 istock_slug_title rule, 98% accurate but not confirmed) and the finished line reads exactly like a verified one, so the designer cannot tell which titles were checked against the iStock API and which were inferred. Per Chris: an unverified iStock acknowledgement carries a VISIBLE marker, and the page carries one red designer note explaining why. This is the ACK-TODO contract's third state — the line is COMPLETE (no bracketed slot) but UNCONFIRMED — so it deliberately does NOT take the ackTodo class: it stays a plain <p> exactly like the human's, gaining only the marker character. That keeps it invisible to the skeleton (text-stripped, class unchanged) and keeps its text in compare_structure's acks harvest, while still showing on the page. Ids the file DOES cover are untouched; entries already carrying a visible ❗ (istock-name / asset-id ACK-TODOs) are left alone — they are flagged already. Env ISTOCKUNVERIFIED_OFF.",
+  "marker": "❗ ",
+  "todo_comment": "<!-- ACK-TODO[istock-unverified] id=\"{id}\" title-source=\"{source}\" -->",
+  "note_class": "cv2-note",
+  "note_form": "<p class=\"{noteClass}\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>",
+  "note_no_file": "No iStock acknowledgements file (*istock-acks*.txt) was supplied with this module, so the {count} iStock title{plural} below could not be verified against the iStock API and {were} derived from the image URL. Each unverified line is marked ❗. Please supply the verified acknowledgements file, or confirm each title before publishing.",
+  "note_partial": "The supplied iStock acknowledgements file did not cover {count} of the iStock asset{plural} used in this module, so {those} title{plural} were derived from the image URL rather than verified against the iStock API. Each unverified line is marked ❗. Unverified asset id{plural}: {ids}.",
+  "note_ids_max": 12,
+  "note_position": "top of the acknowledgements block, inside the opening-disclaimer group — the designer reads it in context, immediately above the ❗ lines it refers to (Chris's decision 2026-07-29). Carries class cv2-note, so it is gate-excluded by construction like every other converter note (round 72)."
  },
 
  "title_authority": {

@@ -230,7 +230,7 @@ class ModuleResolver {
 	 *                   { ok:false, reason:"unsupported", unsupported, wt,
 	 *                     mediaSource } on a data-driven refusal.
 	 */
-	static PrepareRun({ docs = [], run, normaliser, istockAcksText = null }) {
+	static PrepareRun({ docs = [], run, normaliser, istockAcksText = null, istockAcksFiles = null }) {
 		// ---- classify the inputs (WT = content opener; media list = table) --
 		let wt = null;
 		let mediaSource = null;
@@ -279,7 +279,23 @@ class ModuleResolver {
 		// definitely-correct iStock acknowledgement lines; parsed HERE (the one
 		// shared prep sequence — entry parity) so both entries behave identically.
 		// Data flag: Acks_Formats.istock_acks_file · Env toggle: ISTOCKACKS_OFF
-		run.istockAcks = AcksBuilder.ParseIstockAcks(istockAcksText, run);
+		//
+		// ROUND 236 (Chris) — WHICH uploaded .txt is the acks file is now decided
+		// HERE too, from the file CONTENTS rather than its name (per-module names
+		// like _istock-acks-OSAI501.txt are coming, and the old
+		// filename-ends-with rule cannot cover the family). Both entries hand in
+		// every .txt they were given as `istockAcksFiles`; AcksBuilder.PickIstockAcks
+		// applies the one shared content test, so the browser and the batch
+		// harness can never disagree about what counts as an acks file. It runs
+		// AFTER run.moduleCode is resolved above, so a filename naming a
+		// DIFFERENT module can be warned about. `istockAcksText` remains
+		// supported for callers that already know which file they hold.
+		// Data flag: …istock_acks_file.detect · Env toggle: ISTOCKDETECT_OFF
+		let acksText = istockAcksText;
+		if (acksText == null && istockAcksFiles?.length) {
+			acksText = AcksBuilder.PickIstockAcks(istockAcksFiles, run)?.text ?? null;
+		}
+		run.istockAcks = AcksBuilder.ParseIstockAcks(acksText, run);
 
 		// ---- media list ------------------------------------------------------
 		if (mediaSource) {
