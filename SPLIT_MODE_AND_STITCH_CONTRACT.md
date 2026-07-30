@@ -106,7 +106,8 @@ Stitching the base + all section files yields a single file whose `#body` is **t
 
 `js/page-stitcher.js` (Page Stitcher mode):
 
-All files are dropped into **one upload container**; PageForge auto-classifies them. To tell the **base** from a **section**, the classifier **strips every `PAGEFORGE-GUIDE-START … PAGEFORGE-GUIDE-END` block first** (exactly as the stitch core does before locating markers, §3c/§4), then treats a file as the base only if the cleaned text carries a **real** splice marker — `<!-- PAGEFORGE-SPLICE id="…" -->` — or the file is named `<CODE>-base.html`; every other file is a **section** (so the `-base` / `-lesson-NN` suffixes are a human-readable aid, not required for detection).
+All files are dropped into **one upload container** (accumulating across several drops, with a
+removable per-file list — §10a-bis); PageForge auto-classifies them. To tell the **base** from a **section**, the classifier **strips every `PAGEFORGE-GUIDE-START … PAGEFORGE-GUIDE-END` block first** (exactly as the stitch core does before locating markers, §3c/§4), then treats a file as the base only if the cleaned text carries a **real** splice marker — `<!-- PAGEFORGE-SPLICE id="…" -->` — or the file is named `<CODE>-base.html`; every other file is a **section** (so the `-base` / `-lesson-NN` suffixes are a human-readable aid, not required for detection).
 
 > **Strip guides _before_ the base test — this is essential, not optional.** Every section file carries manual-stitch GUIDE blocks that *quote* the splice marker verbatim in their human instructions (e.g. “paste it in place of the matching `<!-- PAGEFORGE-SPLICE id="01" -->` marker”). The guides quote the **complete** marker, so a stricter marker pattern alone is not enough — a classifier that matches before stripping guides would flag every section as a base and abort with a spurious *“more than one base homepage”* error. Strip the GUIDE blocks first, **then** match a real marker.
 
@@ -229,9 +230,31 @@ toggle.
   The full code is the standard; the bare id is tolerated. Both forms normalise to the same key
   (`PageStitcher.bareRefId`), so either side matches.
 
+### 10a-bis. The upload container (2026-07-30) — ADDITIVE, LISTED, EDITABLE
+
+The two halves of an interactive-insertion job normally sit in **different folders**: the HTML
+Generator downloads its pages as one zip (extracted to one folder) and the Interactives Claude
+project downloads the built interactives as another. Assembling that upload therefore takes
+**more than one drag-and-drop action**, so the single container is **accumulating**:
+
+- **Every drop / browse ADDS** to the staged set — it never replaces it (`PageStitcherMode.addFiles`).
+  Re-adding the **same filename** replaces just that entry in place (newest wins), so a corrected
+  file is simply dropped again. `setFiles()` remains the replace-everything call.
+- **Every staged file is listed** under the drop zone with a **✕** that removes only that file
+  (`removeFile(i)`), plus a *Remove all files* link (`clearFiles()`) — the set is corrected
+  **before** Stitch is pressed.
+- **`{CODE}_interactives.txt` is silently discarded on arrival** (`PageStitcherMode.isIgnoredUpload`,
+  matching `*_interactives.txt`). The HTML Generator ships that worklist in the same zip as the
+  pages, so "select all" sweeps it in easily; by stitch time the interactives are already built and
+  it has no part to play. It is never staged, never counted, and **never mentioned** — no toast, no
+  summary line, nothing in the UI copy. The same filter is applied again inside
+  `_partitionUploads()` so a caller handing read files straight to `stitchReadFiles()` gets the
+  identical silence. Other `.txt` files are untouched by this rule.
+
 ### 10b. Detection
 
-`PageStitcherMode._partitionUploads()`: `.txt` files are set aside (ignored with a note); a file
+`PageStitcherMode._partitionUploads()`: `.txt` files are set aside (the generated worklist
+silently, per §10a-bis; anything else simply unused); a file
 holding ≥1 parseable `cv2-built` section is a **built-interactives file**; if any built file is
 present OR any page carries a `cv2-int-ref` marker, the upload is **interactive insertion** —
 otherwise the original split-mode lesson stitch runs unchanged.

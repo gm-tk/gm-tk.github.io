@@ -240,6 +240,66 @@
             assertTrue(m.canStitch(), 'two files enable stitch');
         });
 
+        it('each upload ADDS to the staged files (separate folders, separate drops)', function () {
+            var m = new PageStitcherMode({ stitcher: new PageStitcher() });
+            m.addFiles([{ name: 'OSAI201-00.html' }, { name: 'OSAI201-01.html' }]);
+            assertEqual(m.files.length, 2, 'first drop staged');
+            // A second drag from the OTHER folder must not wipe the first.
+            m.addFiles([{ name: 'OSAI201_built_interactives.html' }]);
+            assertEqual(m.files.length, 3, 'second drop added, not replaced');
+            assertEqual(m.files[0].name, 'OSAI201-00.html', 'the first batch survived');
+            assertTrue(m.canStitch(), 'stitch enabled');
+        });
+
+        it('re-adding the same filename replaces that entry in place (newest wins)', function () {
+            var m = new PageStitcherMode({ stitcher: new PageStitcher() });
+            m.addFiles([{ name: 'A.html', html: 'old' }, { name: 'B.html', html: 'b' }]);
+            m.addFiles([{ name: 'a.html', html: 'new' }]);
+            assertEqual(m.files.length, 2, 'no duplicate row for the same name');
+            assertEqual(m.files[0].html, 'new', 'the newer file won its slot');
+            assertEqual(m.files[0].name, 'a.html', 'the newer entry is the one held');
+        });
+
+        it('removeFile drops one staged file; clearFiles drops them all', function () {
+            var m = new PageStitcherMode({ stitcher: new PageStitcher() });
+            m.addFiles([{ name: 'A.html' }, { name: 'B.html' }, { name: 'C.html' }]);
+            m.removeFile(1);
+            assertEqual(m.files.length, 2, 'one removed');
+            assertEqual(m.files[1].name, 'C.html', 'the right one went');
+            m.removeFile(99);
+            assertEqual(m.files.length, 2, 'an out-of-range index is a no-op');
+            m.clearFiles();
+            assertFalse(m.hasFiles(), 'cleared');
+        });
+
+        it('the generated {CODE}_interactives.txt worklist is never staged, in silence', function () {
+            var m = new PageStitcherMode({ stitcher: new PageStitcher() });
+            m.addFiles([
+                { name: 'OSAI201-00.html' },
+                { name: 'OSAI201-01.html' },
+                { name: 'OSAI201_interactives.txt' }
+            ]);
+            assertEqual(m.files.length, 2, 'the worklist never joins the staged set');
+            assertTrue(PageStitcherMode.isIgnoredUpload('XDLS908_interactives.txt'), 'matched by suffix');
+            assertFalse(PageStitcherMode.isIgnoredUpload('notes.txt'), 'other .txt files are untouched');
+            assertFalse(PageStitcherMode.isIgnoredUpload('OSAI201-01.html'), 'pages are untouched');
+            // setFiles applies the same filter.
+            m.setFiles([{ name: 'X_interactives.txt' }, { name: 'p.html' }]);
+            assertEqual(m.files.length, 1, 'setFiles filters it too');
+        });
+
+        it('a worklist handed straight to stitchReadFiles is ignored without a word', function () {
+            var om = mockOM();
+            var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om });
+            var out = m.stitchReadFiles([
+                { name: 'DEMO101-base.html', html: base(['01']) },
+                section('01', '<p>one</p>'),
+                { name: 'DEMO101_interactives.txt', html: 'REFERENCE CODE: DEMO101-INT-01-01-tabs' }
+            ]);
+            assertTrue(out.result.ok, 'stitched: ' + out.result.errors.join(' '));
+            assertEqual(out.filename, 'DEMO101.html', 'the worklist changed nothing');
+        });
+
         it('auto-classifies the base + sections (any order) and downloads the unified page', function () {
             var om = mockOM();
             var m = new PageStitcherMode({ stitcher: new PageStitcher(), outputManager: om });
@@ -465,7 +525,9 @@
             var r = stitcher().stitchInteractives([plain],
                 [builtDoc('b.html', [{ ref: REF_A, html: '<p>A</p>' }])]);
             assertFalse(r.ok, 'no markers → fails');
-            assert(r.errors.join(' ').indexOf('Extract un-built interactives') !== -1, 'points at the converter toggle');
+            // The "Extract un-built interactives" switch was retired at round 235 —
+            // the hand-off is now every run's default, and the guidance says so.
+            assert(r.errors.join(' ').indexOf('default hand-off') !== -1, 'points at the HTML Generator hand-off');
         });
     });
 

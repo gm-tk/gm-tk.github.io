@@ -531,11 +531,22 @@ PageStitcher.INTERACTIVES = {
 
 /**
  * PageStitcherMode — the thin DOM/upload adapter for the Page Stitcher front
- * page (#stitch-section): a base-homepage upload, a multi-file section upload, a
- * Stitch action, the unified-HTML download (via OutputManager) and a placement
- * summary. State + the stitch orchestration are pure (dependencies injected) so
- * the Node runner exercises them; every DOM touch no-ops when an element is
- * absent. Mirrors the carried-over ModeToggle adapter conventions.
+ * page (#stitch-section): one accumulating upload container, a Stitch action, the
+ * finished download (via OutputManager) and a placement summary. State + the
+ * stitch orchestration are pure (dependencies injected) so the Node runner
+ * exercises them; every DOM touch no-ops when an element is absent. Mirrors the
+ * carried-over ModeToggle adapter conventions.
+ *
+ * UPLOAD BEHAVIOUR (2026-07-30):
+ *   • ADDITIVE — every drop / browse ADDS to the staged set, because the two
+ *     halves of an interactive-insertion job arrive in separate folders (the
+ *     generated pages in one, the built interactives in another) and therefore
+ *     take separate drag-and-drop actions. Same filename twice = replaced in place.
+ *   • VISIBLE + EDITABLE — every staged file is listed with a ✕ that removes just
+ *     that file, so the set can be corrected before Stitch is pressed.
+ *   • The `{CODE}_interactives.txt` worklist is silently discarded on arrival
+ *     (see isIgnoredUpload) — it ships in the same zip as the pages and has no
+ *     part to play once the interactives are built.
  */
 class PageStitcherMode {
     constructor(options) {
@@ -556,18 +567,84 @@ class PageStitcherMode {
     // State (pure)
     // ------------------------------------------------------------------
 
-    /** Record (or clear) every staged file (base + sections in one container). */
-    setFiles(files) {
-        var a = [];
-        if (files && files.length) { for (var i = 0; i < files.length; i++) { a.push(files[i]); } }
-        this.files = a;
+    /**
+     * ACCUMULATING upload (2026-07-30). The two halves of an interactive-insertion
+     * job normally live in DIFFERENT folders (the HTML Generator's zip extracts to
+     * one, the Interactives Claude project's zip to another), so the container must
+     * survive several drag-and-drop actions: each drop ADDS to what is already
+     * staged instead of replacing it. Re-adding the same FILENAME replaces that one
+     * entry in place (newest wins) so a corrected file can simply be dropped again.
+     * @param {FileList|Array} files
+     * @returns {number} the staged-file count after the add
+     */
+    addFiles(files) {
+        var incoming = this._normaliseIncoming(files);
+        var self = this;
+        incoming.forEach(function (f) {
+            var at = self._indexOfName(f && f.name);
+            if (at === -1) { self.files.push(f); } else { self.files[at] = f; }
+        });
         this._renderFiles();
         this._syncStitch();
         return this.files.length;
     }
+
+    /** Replace every staged file (used by a reset / a programmatic set). */
+    setFiles(files) {
+        this.files = this._normaliseIncoming(files);
+        this._renderFiles();
+        this._syncStitch();
+        return this.files.length;
+    }
+
+    /** Drop one staged file by position (the ✕ beside its name). */
+    removeFile(index) {
+        if (index >= 0 && index < this.files.length) { this.files.splice(index, 1); }
+        this._renderFiles();
+        this._syncStitch();
+        return this.files.length;
+    }
+
+    /** Drop every staged file. */
+    clearFiles() { return this.setFiles([]); }
+
     hasFiles() { return Array.isArray(this.files) && this.files.length > 0; }
     /** Stitch is enabled with at least two files (a base homepage + ≥1 section). */
     canStitch() { return this.files.length >= 2; }
+
+    /** Staged position of a filename (case-insensitive), or -1. */
+    _indexOfName(name) {
+        var key = String(name == null ? '' : name).toLowerCase();
+        for (var i = 0; i < this.files.length; i++) {
+            var n = this.files[i] && this.files[i].name;
+            if (String(n == null ? '' : n).toLowerCase() === key) { return i; }
+        }
+        return -1;
+    }
+
+    /**
+     * Files the Page Stitcher never uses and takes in silently. The HTML
+     * Generator emits its pages and a `{CODE}_interactives.txt` worklist into one
+     * zip, so "select all" easily sweeps the worklist in alongside the pages — by
+     * stitch time the built interactives already exist, so the worklist has no
+     * part to play. It is simply not staged: no warning, no summary line.
+     */
+    static isIgnoredUpload(name) {
+        return /_interactives\.txt$/i.test(String(name == null ? '' : name));
+    }
+
+    /** A FileList / array → a plain array, minus anything the stitcher never uses. */
+    _normaliseIncoming(files) {
+        var out = [];
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var f = files[i];
+                if (!f || PageStitcherMode.isIgnoredUpload(f.name)) { continue; }
+                out.push(f);
+            }
+        }
+        return out;
+    }
 
     // ------------------------------------------------------------------
     // Stitch orchestration (core — operates on already-read {name,html})
@@ -653,6 +730,10 @@ class PageStitcherMode {
         var txt = [], built = [], pages = [], hasMarkers = false;
         (readFiles || []).forEach(function (f) {
             if (!f) { return; }
+            // The generated worklist is dropped in silence wherever it arrives —
+            // the upload filter is the first line, this is the second (a caller
+            // may hand read files straight to stitchReadFiles).
+            if (PageStitcherMode.isIgnoredUpload(f.name)) { return; }
             if (/\.txt$/i.test(f.name || '')) { txt.push(f); return; }
             var html = f.html || '';
             if (html.indexOf(PageStitcher.INTERACTIVES.builtClass) !== -1 &&
@@ -755,17 +836,28 @@ class PageStitcherMode {
         this.els = {
             input: get('stitch-input'), drop: get('stitch-drop'),
             info: get('stitch-info'), name: get('stitch-name'),
+            list: get('stitch-file-list'), clearBtn: get('btn-stitch-clear'),
             stitchBtn: get('btn-stitch'), summary: get('stitch-summary')
         };
-        this._bindFile(this.els.input, this.els.drop, function (files) { self.setFiles(files); });
+        // Every drop / browse ADDS to the staged set (see addFiles).
+        this._bindFile(this.els.input, this.els.drop, function (files) { self.addFiles(files); });
+        if (this.els.clearBtn && this.els.clearBtn.addEventListener) {
+            this.els.clearBtn.addEventListener('click', function () { self.clearFiles(); });
+        }
         if (this.els.stitchBtn && this.els.stitchBtn.addEventListener) {
             this.els.stitchBtn.addEventListener('click', function () { self.stitchNow(); });
         }
+        this._renderFiles();
         this._syncStitch();
     }
     _bindFile(input, drop, onFiles) {
         if (input && input.addEventListener) {
-            input.addEventListener('change', function () { onFiles(input.files); });
+            input.addEventListener('change', function () {
+                onFiles(input.files);
+                // Clear the control so picking the SAME file again still fires
+                // change — otherwise a re-add after a ✕ removal would do nothing.
+                try { input.value = ''; } catch (e) { /* older browsers */ }
+            });
         }
         if (drop && drop.addEventListener) {
             drop.addEventListener('click', function () { if (input && input.click) { input.click(); } });
@@ -782,12 +874,47 @@ class PageStitcherMode {
             });
         }
     }
+    /**
+     * The staged-file panel: a running count plus one row per file with a ✕ that
+     * removes just that file, so the set can be corrected BEFORE Stitch is pressed.
+     */
     _renderFiles() {
+        var self = this, doc = this._document;
         if (this.els.name) {
             this.els.name.textContent = this.hasFiles()
-                ? (this.files.length + ' file' + (this.files.length === 1 ? '' : 's') + ' selected') : '';
+                ? (this.files.length + ' file' + (this.files.length === 1 ? '' : 's') +
+                   ' ready to stitch — drop more to add them')
+                : '';
         }
         this._setHidden(this.els.info, !this.hasFiles());
+        this._setHidden(this.els.clearBtn, !this.hasFiles());
+
+        var list = this.els.list;
+        if (!list) { return; }
+        this._setHidden(list, !this.hasFiles());
+        if (typeof list.removeChild === 'function') {
+            while (list.lastChild) { list.removeChild(list.lastChild); }
+        }
+        if (list.innerHTML !== undefined) { list.innerHTML = ''; }
+        if (!doc || !doc.createElement) { return; }
+        this.files.forEach(function (f, i) {
+            var label = (f && f.name) ? String(f.name) : 'file';
+            var li = doc.createElement('li');
+            li.className = 'staged-file-row';
+            var nm = doc.createElement('span');
+            nm.className = 'staged-file-row-name';
+            nm.textContent = label;
+            var btn = doc.createElement('button');
+            btn.type = 'button';
+            btn.className = 'staged-file-remove';
+            btn.setAttribute('aria-label', 'Remove ' + label);
+            btn.title = 'Remove ' + label;
+            btn.textContent = '×';
+            btn.addEventListener('click', function () { self.removeFile(i); });
+            li.appendChild(nm);
+            li.appendChild(btn);
+            list.appendChild(li);
+        });
     }
     _syncStitch() { if (this.els.stitchBtn) { this.els.stitchBtn.disabled = !this.canStitch(); } }
     _renderSummary(result, filename) {
@@ -820,10 +947,6 @@ class PageStitcherMode {
                     (p.includesAdded && p.includesAdded.length ? ' (+ added ' + esc(p.includesAdded.join(', ')) + ' include)' : '') + '</li>';
             }).join('');
             if (lines) { out += '<ul class="stitch-errors">' + lines + '</ul>'; }
-            if (part && part.txt && part.txt.length) {
-                out += '<p class="stitch-ok">(' + part.txt.length + ' .txt worklist file' +
-                    (part.txt.length === 1 ? '' : 's') + ' ignored — not needed for stitching.)</p>';
-            }
         } else {
             out += '<p class="stitch-error">Could not stitch — nothing was downloaded:</p><ul class="stitch-errors">' +
                 (res && res.errors || []).map(function (e) { return '<li>' + esc(e) + '</li>'; }).join('') + '</ul>';

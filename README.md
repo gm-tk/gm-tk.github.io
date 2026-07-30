@@ -22,7 +22,9 @@ Both `.docx` go in the one container in any order — PageForge detects which is
 
 ### 2. Page Stitcher
 
-For modules the converter had to emit in pieces (SPLIT MODE). Drop the **base homepage and all of its section files together into one container**, press **Stitch**, and download one unified single-page module HTML (named `<CODE>.html`, matching how single-page modules are built) — PageForge tells the base from the sections automatically. See [`SPLIT_MODE_AND_STITCH_CONTRACT.md`](SPLIT_MODE_AND_STITCH_CONTRACT.md).
+Two jobs behind one button; PageForge detects which from the files you upload. **Split-mode module:** the base homepage and all of its section files → one unified single-page module HTML (named `<CODE>.html`). **Interactive insertion:** the module pages from the HTML Generator plus the built-interactives file(s) from the Interactives Claude project → the final HTML files.
+
+The upload container is **accumulating**: the pages and the built interactives usually live in different folders, so each drag-and-drop **adds** to the list rather than replacing it. Every staged file is listed with a **✕** to remove it (plus *Remove all files*) before you press **Stitch**. See [`SPLIT_MODE_AND_STITCH_CONTRACT.md`](SPLIT_MODE_AND_STITCH_CONTRACT.md).
 
 ---
 

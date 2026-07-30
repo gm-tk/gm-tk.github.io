@@ -6,6 +6,50 @@ code or docs adds an entry here (what changed, why, files touched, test `pass/to
 
 ---
 
+## 2026-07-30 — Page Stitcher upload container: ADDITIVE drops + a removable file list
+
+**What.** Three changes to the Page Stitcher's one upload container, plus refreshed intro copy.
+
+1. **Each drop ADDS instead of replacing.** Dropping a second batch used to wipe the first — so
+   an interactive-insertion upload was impossible in practice, because the module pages and the
+   built interactives arrive as two separate zips extracted to two different folders and
+   therefore take two drag-and-drop actions. `addFiles()` now appends; re-adding the same
+   filename replaces just that entry (newest wins). Browsing via the hidden input clears its
+   `value` afterwards so the same file can be re-picked after a removal.
+2. **The staged files are listed and editable.** Every file appears in a list under the drop
+   zone with a **✕** that removes only that file, plus a *Remove all files* link — the set can be
+   corrected BEFORE Stitch is pressed. The chip above it reads "N files ready to stitch — drop
+   more to add them."
+3. **`*_interactives.txt` is silently ignored.** The HTML Generator ships that worklist in the
+   same zip as the pages, so a "select all" sweeps it in; by stitch time the interactives are
+   already built and it has nothing to do. It is dropped at the door — never staged, never
+   counted, and never mentioned anywhere in the UI (the old ".txt worklist ignored" summary line
+   is gone). The same filter runs again inside `_partitionUploads()` for callers that hand read
+   files straight to `stitchReadFiles()`. Other `.txt` files are untouched by the rule.
+4. **Intro copy** rewritten to Chris's wording ("PageForge automatically detects which of the two
+   modes to activate based on the files you upload…"), and a drop-zone hint added telling the
+   user that drops accumulate. The stale "converted with *Extract un-built interactives* ticked"
+   phrase went with it — that switch was retired at V2 round 235.
+
+**Why.** Chris hit the replace-on-second-drop behaviour while testing interactive insertion on
+OSAI201; without accumulation the feature cannot be used with real downloads.
+
+**How.** `PageStitcherMode`: new `addFiles` / `removeFile` / `clearFiles` / `_indexOfName` /
+`_normaliseIncoming` + `static isIgnoredUpload(name)`; `setFiles` keeps its replace semantics
+(and the same filter) so existing callers and tests are unchanged; `_renderFiles` now builds the
+per-file rows and binds each ✕; `init` binds the drop/browse to `addFiles` and the new
+*Remove all files* button. UI: `#stitch-file-list`, `#btn-stitch-clear`, a `.drop-zone-hint`, and
+`.staged-file-list` / `.staged-file-row` / `.staged-file-remove` / `.btn-link-clear` styles.
+
+**Files touched.** `js/page-stitcher.js`, `index.html`, `css/styles.css`,
+`tests/page-stitcher.test.js` (+5 tests; also refreshed the one stale assertion that still
+expected the retired "Extract un-built interactives" wording),
+`SPLIT_MODE_AND_STITCH_CONTRACT.md` (§5 pointer + new §10a-bis), `README.md`. **Tests 168/168.**
+**No V2 engine or data file touched** — the module-conversion corpus is unaffected, so no
+regeneration and no converter round.
+
+---
+
 ## 2026-07-28 — Page Stitcher second job: INTERACTIVE INSERTION (auto-detected)
 
 **What.** The Page Stitcher now has a dual purpose behind the one Stitch button. New mode:

@@ -110,29 +110,37 @@
         <!-- Page Stitcher (separate mode) -->
         <section id="stitch-section" class="hidden" aria-label="Page Stitcher">
             <p class="module-dev-intro">
-                Two jobs, one button &mdash; PageForge detects which from the files you drop.
-                <strong>Split-mode module:</strong> drop the base homepage and all of its section
-                files to download the unified single-page HTML.
-                <strong>Interactive insertion:</strong> drop the module pages from the HTML
-                Generator (converted with &ldquo;Extract un-built interactives&rdquo; ticked)
-                together with the built-interactives file(s) from the Interactives Claude
-                project &mdash; each build is placed at its reference code and the finished
-                pages download (as a zip when there is more than one page).
+                PageForge automatically detects which of the two modes to activate based on the
+                files you upload:
+                <strong>Split-mode module</strong> (for stitching together long single page
+                modules like fundamentals or inquiry): Upload the base homepage and all of its
+                section files to download the unified single-page HTML.
+                <strong>Interactive insertion:</strong> Upload the module pages from the HTML
+                Generator together with the built-interactives file(s) from the Interactives
+                Claude project to download the final HTML files.
             </p>
             <div class="module-upload-grid">
 
                 <!-- One container for the base + all section files (auto-classified) -->
                 <div class="module-upload-slot">
                     <div id="stitch-drop" class="drop-zone module-drop" role="button" tabindex="0"
-                         aria-label="Drop all the module .html files here (base + sections, or pages + built interactives) or click to browse">
+                         aria-label="Drop the module .html files here (base + sections, or pages + built interactives) or click to browse. You can drop files more than once — each drop is added to the list.">
                         <span class="drop-zone-icon" aria-hidden="true">&#129513;</span>
                         <p class="drop-zone-title">Drop all the module .html files<br>or click to browse</p>
+                        <p class="drop-zone-hint">Files from different folders? Drop them one batch
+                            at a time &mdash; each drop is <strong>added</strong> to the list below.</p>
                     </div>
                     <input type="file" id="stitch-input" accept=".html,.htm,.txt" multiple class="sr-only" aria-hidden="true">
                     <div id="stitch-info" class="staged-file-info hidden">
                         <span class="staged-file-icon" aria-hidden="true">&#129513;</span>
                         <span id="stitch-name" class="staged-file-name"></span>
                     </div>
+                    <ul id="stitch-file-list" class="staged-file-list hidden"
+                        aria-label="Files ready to stitch"></ul>
+                    <button id="btn-stitch-clear" class="btn-link-clear hidden" type="button"
+                            aria-label="Remove every file from the upload list">
+                        Remove all files
+                    </button>
                 </div>
 
             </div>
