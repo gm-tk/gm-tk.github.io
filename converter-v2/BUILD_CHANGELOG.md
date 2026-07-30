@@ -1,5 +1,50 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-07-30 (round 237, build 260618.10) — UI COPY: the HTML Generator upload instructions (Chris — marked-up screenshot; **UI-ONLY, no regen, no gates, ship ledger untouched**)
+
+**THE ASK (Chris, 2026-07-30).** Two wording changes on the HTML Generator screen,
+marked up on a screenshot of the live page:
+
+1. On the PageForge landing page, the HTML Generator intro ends with a sentence
+   that tells the reader the generator "opens in the panel below" — struck out,
+   "(remove)". It described the old embedded-panel arrangement and is now just
+   noise above the panel it describes.
+2. The upload box carried three paragraphs (a bold drop line, a "nothing to type"
+   hint, and a long paragraph explaining that the iStock acknowledgements `.txt`
+   is recognised by its contents and what happens without it). Chris rewrote them
+   as two plain sentences, in his own words, saying only what the person has to do.
+
+**WHAT SHIPPED.**
+
+- `pageforge-site/index.html` — the `#html-generator-section` intro now reads
+  "Convert a Writer's Template (`.docx`) and its Media List into the finished
+  module HTML." and stops there.
+- `pageforge-site/converter-v2/app/index.html` — the `#drop-zone` contents are
+  now exactly Chris's two sentences: **"Upload the "WritersTemplate.docx" &
+  "MediaList.docx" here** (or one combined WT + ML Word Doc file)." and the hint
+  line "Also add the "iStock-acks.txt" file to ensure the verified image titles
+  are used in the acknowledgements." Curly quotes as Chris wrote them; the
+  `drop-hint` class is kept on the second line so the existing styling holds.
+- `app/js/Config.js` — `AppVersion` 260618.09 → **"260618.10"**, now QUOTED: a
+  bare `260618.10` is the number `260618.1` and the badge would have rendered
+  `build 260618.1` (dropping the trailing zero). `AppVersion` is only ever
+  interpolated into a string (`App.js` L123 badge + L127 console line — grep-
+  verified, no numeric comparison anywhere), so the type change is inert.
+
+**WHAT DID NOT CHANGE.** No file under `app/js/` other than the `Config.js`
+version constant, no `data/*.json`, no engine behaviour. The removed drop-zone
+paragraph described the round-236 content-first detection; that MECHANISM is
+untouched (`AcksBuilder.LooksLikeIstockAcks` / `PickIstockAcks` still recognise
+any filename by contents, and an unverified title still ships its ❗ plus the
+`Designer/Developer To Do:` note) — only the on-screen explanation of it is
+shorter. Converted output is byte-identical BY CONSTRUCTION, so no regeneration
+was run and no gate was re-run; the round-236 baselines stand unchanged
+(skeleton 49.542% / ≥50 916 / ≥75 179 / ≥90 12 / RAW 32.628% @ 1835 skipped 0 ·
+cs 9463/174/456 · body 272 · clean 97.7% / leak 290/46 · tags 9557/9557 ·
+flipCard 33/div 0 · speechBubble 0). Ship-ledger counter untouched (a UI copy
+edit is not a scoped ship). No data flag and no env toggle — there is no output
+byte to reverse; the previous wording is in git history.
+
 ## 2026-07-29 (round 236, build 260618.09) — UNVERIFIED-iSTOCK HONESTY (❗ + designer note) + CONTENT-FIRST recognition of the acknowledgements `.txt` (Chris — direct request; **FULL ship, ledger counter reset to 0**)
 
 **THE ASK (Chris, 2026-07-29).** Two parts, one round. (A) When the user has NOT

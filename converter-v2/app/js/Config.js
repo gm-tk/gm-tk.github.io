@@ -430,7 +430,14 @@ class Config {
 	// AcksBuilder.LooksLikeIstockAcks / PickIstockAcks is the one shared test
 	// both entries use. Env ISTOCKUNVERIFIED_OFF / ISTOCKDETECT_OFF. Data
 	// Acks_Formats.istock_unverified + istock_acks_file.detect.
-	static AppVersion = 260618.09;
+	// ROUND 237 (260618.10): UI COPY ONLY — the site's HTML Generator intro drops
+	// the "opens in the panel below" sentence, and the generator's upload drop
+	// zone is reduced to two plain sentences (what to upload, plus the
+	// iStock-acks.txt line). No engine, data or output change; the corpus is
+	// byte-identical by construction.
+	// NOTE: quoted from round 237 on — a bare 260618.10 is the NUMBER 260618.1 and
+	// the badge would drop the trailing zero. Only ever interpolated into a string.
+	static AppVersion = "260618.10";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
