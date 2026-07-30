@@ -745,6 +745,29 @@ class DocxExtractor {
 					} else text += this.#decodeXml(t[1]);
 				}
 				if (/<w:tab\/>/.test(run)) text = ` ${text}`;
+				// INVISIBLE-WHITESPACE NORMALISE (ROUND 241 — Dev-Feedback R4, E1: the
+				// SCCH302 "AI marker" NBSP; the same extractor seam as the r227 soft-break
+				// fix, and table cells arrive through this same paragraph walk). A writer's
+				// Word file carries invisible characters that were never intended as page
+				// content: the NON-BREAKING SPACE U+00A0 (autocorrect/paste residue —
+				// measured 15,198 across 416 of 429 WTs; 2,108 survived into the shipped
+				// corpus while the gold library ships effectively none) becomes a plain
+				// space, and the ZERO-WIDTH characters U+200B/U+200C/U+200D/U+FEFF
+				// (124 occurrences / 22 WTs) are deleted. GRANULARITY SAFETY (the r227
+				// red-run trap): an NBSP-only run stays a non-empty whitespace piece
+				// (trim()/Fold treat U+00A0 as whitespace before AND after), so red-span
+				// merging is untouched; a run the zero-width strip empties drops out like
+				// an always-empty run — the tags gate (9557/9557 spans) is the authoritative
+				// granularity detector, proven unchanged in the round's probes. Tag
+				// classification is inert by construction (Utils.Fold collapses \s+, which
+				// already matches U+00A0). Data: Input_Doc_Rules.text_normalise.
+				// Env toggle: NBSP_OFF (reverts the whole normalisation).
+				const tn = rules.text_normalise;
+				if (tn && tn.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.NBSP_OFF)) {
+					if (tn.nbsp_to_space !== false) text = text.replace(/\u00A0/g, " ");
+					if (tn.strip_zero_width !== false) text = text.replace(/[\u200B\u200C\u200D\uFEFF]/g, "");
+				}
 				if (!text) continue;
 
 				const color = run.match(/<w:color w:val="([0-9A-Fa-f]{6})"/)?.[1]?.toLowerCase();

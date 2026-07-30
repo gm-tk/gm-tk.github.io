@@ -1002,7 +1002,22 @@ class MenuBuilder {
 				&& !(typeof process !== "undefined" && process.env && process.env.MENULILABEL_OFF)
 				&& !page.isOverview && out.content && out.content.trim();
 			if (llOn) {
-				const llRow = this.#extraTabRow(run, llCfg);
+				// THE FIRST-IN-SERIES DEFAULT ROW (ROUND 238 — Dev-Feedback R1
+				// Family A, module SCCH302). A brand-new subject has no gold-built
+				// sibling on disk, so no MEASURED group row can ever exist for it —
+				// but its lesson menu still needs the label the design team
+				// confirmed for new subjects, in the MODERN form
+				// <h4><span>Learning Intentions</span></h4>. The default row fires
+				// ONLY when no measured registry row matched AND the resolver set
+				// run.registryDefaultsApplied (the universal-field evidence floor's
+				// first-in-series signal) — every module with real gold evidence is
+				// untouched BY CONSTRUCTION. Data: menu.lesson_li_label.default_row.
+				// Env toggle: MENUDEFAULT_OFF.
+				const llDef = llCfg.default_row;
+				const llDefOn = llDef && llDef.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.MENUDEFAULT_OFF)
+					&& run.registryDefaultsApplied;
+				const llRow = this.#extraTabRow(run, llCfg) ?? (llDefOn ? llDef : null);
 				if (llRow && !Utils.Fold(out.content).includes("learning intention")) {
 					out.content = Utils.FillTemplate(
 						llRow.element ?? "<h5>{label}</h5>",

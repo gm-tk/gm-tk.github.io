@@ -15,6 +15,13 @@
    "find_nearest_module": "'members' under each level lists existing sibling codes; a new module inherits the level's resolved rules.",
    "pattern_fields": "A pattern field resolves the WHOLE {overview, lesson[, final]} object together."
   },
+  "universal_fields": {
+   "_doc": "ROUND 238 (Dev-Feedback R1 Family A — module SCCH302, the first module of a brand-new subject). Some registry tiers were MINED as the literal string 'n/a' (the '1-10 Science' subject_rules, the Blended-Literacy CODE base_rules, the ConnectED CEDT1 delta) — a mining-failed marker, never a real output value: the page shipped body class='n/a' and a script URL of https://n/a.desire2learn.com/…, which loads UNSTYLED. TWO RULES, both read by ModuleResolver.Resolve: (1) UNKNOWN-LITERAL SKIP — while walking the cascade, a tier field whose value is in unknown_literals (or a pattern object any of whose sub-values is) is NOT overlaid, so the nearest REAL tier — ultimately the defaults tier above — keeps that field; a final sweep guarantees no unknown literal can ever survive into resolved rules from ANY source (the Majority registry carries 24 of them too). (2) EVIDENCE FLOOR — a matched base whose registry members have fewer than min_evidence gold-built modules in Module_Structure_Index (the on-disk gold library index; the module's own code counts when it is itself indexed) is an untrustworthy mined group WHOLESALE: every field listed below resolves from the defaults tier instead, and run.registryDefaultsApplied is set (MenuBuilder's first-in-series default label row keys on it). Measured 2026-07-30: the SCCH base's one member SCCH301 has NO gold on disk (evidence 0 → floor fires → SCCH302 gets container-fluid / tekura / footer-nav / level='' / full-code+decimal chips / tabs+simplified menus); CEDT (evidence ≥2) and SCFUN (evidence 1) keep their real mined values, with only their literal 'n/a' fields healed by rule 1. Env toggle: SKELDEFAULT_OFF reverts BOTH rules (the pre-238 plain overlay).",
+   "enabled": true,
+   "unknown_literals": ["n/a"],
+   "fields": ["body_class", "level_attr", "idoc_host", "footer_class", "acknowledgements", "module_code", "h1_count", "menu_type", "menu_button_tooltip", "footer_links", "page_model"],
+   "min_evidence": 1
+  },
   "module_code_to_level": {
    "rule": "The hundreds digit of the numeric part of a module code gives the phase/level; letter prefixes override.",
    "map": {

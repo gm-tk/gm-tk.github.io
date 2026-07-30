@@ -9,12 +9,17 @@
  * visible page text. These statics build the embed (or the Mode-P
  * placeholder), strip out the reference-URL residue the reference site never
  * ships as visible text, and gather up the element's following black text
- * (its caption). Four statics, grouped by family:
+ * (its caption). Five statics, grouped by family:
  *
  *   - image  the Mode P (a visible placeholder plus a commented-out real
  *         reference, left for the developer) / Mode D (a direct <img>) image
  *         emitter; an iStock id found in the pasted URL drives the filename,
- *         otherwise a filename is slugified from the caption text
+ *         otherwise a filename is slugified from the caption text; a
+ *         title-form reference line (the hyperlink's anchor text) is dropped
+ *         from the caption (IMGREFTITLE_OFF)
+ *   - FinishImg  the alt-text + loading="lazy" post-fill applied to every
+ *         content image built here and in TablesAndGrids.cellImage
+ *         (IMGATTRS_OFF)
  *   - media  the video/audio emitter: a YouTube URL -> the site's standard
  *         embed form, any other URL -> a generic iframe, audio -> the audio
  *         player; carries the video-title drop (VIDTITLE_OFF) and its own
@@ -86,19 +91,108 @@ class MediaBuilder {
 		const label = istockId ? `iStock-${istockId}` : "image";
 
 		if (run.imageMode === "P") {
-			out.push(Utils.FillTemplate(tpl.mode_P.visible, { label }));
-			out.push(Utils.FillTemplate(tpl.mode_P.comment, { filename }));
+			out.push(this.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label }), url, istockId, run));
+			out.push(this.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename }), url, istockId, run));
 		} else {
-			out.push(Utils.FillTemplate(tpl.mode_D.visible, { filename }));
+			out.push(this.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename }), url, istockId, run));
+		}
+
+		// ROUND 240 (Dev-Feedback R3, D3) — MEDIA-REFERENCE TITLE LINE DROP. When the
+		// writer authors an image BY TITLE (the docx hyperlink's anchor TEXT is the
+		// asset's title, e.g. "[image] Homogeneous Vs … – iStock", with the URL living
+		// only in the link target), that title line is the media REFERENCE, not a
+		// caption — the same class as the round-80 video-title drop, and the gold
+		// library ships ZERO such reference paragraphs (measured: 0 "Download Image
+		// Now" <p>s across all 2,263 gold pages vs 145 in the converted corpus). The
+		// drop is scoped to the element's OWN text lines only (it.blackAfter), keeping
+		// genuinely-following prose, and a line is dropped only when (a) it fold-equals
+		// a non-URL hyperlink anchor of this same paragraph (the anchor IS the
+		// reference), or (b) it matches the data-driven iStock reference-form pattern
+		// (catches an anchor the extractor split across runs). Data flag:
+		// elements.image_reference_title_drop. Env toggle: IMGREFTITLE_OFF.
+		const refCfg = DataService.Data.EmitTemplates.elements?.image_reference_title_drop;
+		const refDropOn = refCfg && refCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.IMGREFTITLE_OFF);
+		let keep = gathered;
+		if (refDropOn) {
+			const own = it.blackAfter ?? "";
+			const following = gathered.length > own.length ? gathered.slice(own.length) : "";
+			const fold = (s) => String(s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+			const anchors = (it.block?.links ?? [])
+				.filter((l) => l.target && !/^https?:\/\//i.test(String(l.text ?? "").trim()))
+				.map((l) => fold(l.text)).filter((t) => t.length >= (refCfg.min_anchor_length ?? 8));
+			const refRe = new RegExp(refCfg.reference_line_pattern
+				?? "download image now|stock (?:photo|illustration|vector)\\s*[\\u2013\\u2014-]", "i");
+			const ownKept = own.split("\n").filter((line) => {
+				const f = fold(line);
+				if (!f) return true;
+				if (anchors.includes(f)) return false;          // (a) the anchor IS this line
+				if (refRe.test(f)) return false;                 // (b) the iStock reference form
+				return true;
+			}).join("\n");
+			keep = ownKept + following;
 		}
 
 		// Whatever non-URL text was gathered is a caption / learner-facing line — keep it;
 		// the URL itself never renders. Also strip out any now-empty or orphaned parenthesis
 		// residue left behind once the URL is gone (shared stripMediaResidue below; env
 		// MEDIAPAREN_OFF), which the reference site never ships as visible text.
-		const caption = this.stripMediaResidue(gathered);
+		const caption = this.stripMediaResidue(keep);
 		if (caption) out.push(...ListsAndRuns.renderBlackText(caption, run));
 		return out;
+	};
+
+	/**
+	 * ROUND 240 (Dev-Feedback R3, D1) — IMAGE ALT TEXT + loading="lazy".
+	 * A post-fill finisher applied to just-built content-image markup (the
+	 * round-200 videoicon post-replace technique, so the shared templates and
+	 * every OTHER consumer of them stay byte-identical): fills the empty
+	 * alt="" with the asset's title and injects the loading="lazy" hint.
+	 *
+	 * WHERE THE TITLE COMES FROM (authority order, the round-235/236 rule):
+	 *   1. the VERIFIED iStock API title from the uploaded *_istock-acks.txt
+	 *      (run.istockAcks — definitely correct, the developer's stated form)
+	 *   2. the URL slug, Title-Cased (the slug IS the official title — the
+	 *      verified 98% rule the acknowledgements already rely on)
+	 *   3. nothing derivable → alt stays "" (never invent a description).
+	 * Applies uniformly to the Mode-P visible placeholder, the Mode-P
+	 * commented-out real reference (the tag the developer copies out), and
+	 * the Mode-D direct <img>. loading="lazy" is a FORWARD rule: gold is
+	 * era-mixed (24% measured) because older modules predate it — captured
+	 * overrides-gold in Subject_Global_Parameters._universal_conventions
+	 * (r240_img_alt_lazy), so Round-6 gold divergences are intentional named
+	 * deltas, never chased.
+	 *
+	 * @param {string} html - the just-built image markup (may be a comment)
+	 * @param {string} url - the asset reference URL ("" when none)
+	 * @param {string|null} istockId - the iStock id from the URL, when present
+	 * @param {ConversionRun} run - the run (run.istockAcks = verified titles)
+	 * @returns {string} the markup with alt filled + loading="lazy" injected
+	 * Data flag: elements.image_attrs (alt_from_reference / loading_lazy).
+	 * Env toggle: IMGATTRS_OFF (reverts BOTH — alt stays "", no loading).
+	 */
+	static FinishImg(html, url, istockId, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.image_attrs;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env.IMGATTRS_OFF) return html;
+		let s = String(html);
+		if (cfg.alt_from_reference !== false) {
+			let title = (istockId && run?.istockAcks?.get(istockId)?.title) || null;
+			if (!title && url) {
+				const rx = DataService.Data.AcksFormats?.extraction_regexes?.istock_slug_from_url;
+				const st = DataService.Data.AcksFormats?.istock_slug_title ?? {};
+				let clean = url;
+				try { clean = decodeURIComponent(url); } catch { /* keep raw on bad escapes */ }
+				const slug = rx ? Utils.Fold(clean).replace(/\s+/g, "-").match(new RegExp(rx))?.[1] : null;
+				if (slug) title = Utils.TitleCaseWords(slug.split("-").filter(Boolean),
+					st.special_tokens ?? {}, st.lowercase_small_words ?? []);
+			}
+			if (title) s = s.replace(/alt=""/g, `alt="${Utils.EscapeHtml(title)}"`);
+		}
+		if (cfg.loading_lazy !== false) {
+			s = s.replace(/<img class="img-fluid"(?![^>]*loading=)/g, '<img class="img-fluid" loading="lazy"');
+		}
+		return s;
 	};
 
 	/**

@@ -40,6 +40,50 @@
 class PageAssembler {
 
 	/**
+	 * ROUND 243 (Dev-Feedback R6 — Chris, 2026-07-31): THE ONE SOURCE OF TRUTH
+	 * for page output filenames, shared by the emit loop below AND the r226
+	 * choice-page tile hrefs (ContentConverter.#choicePageTiles). The library
+	 * convention the developer imports against is `{code}_{lesson}_{part}.html`
+	 * (SCCH302_0_0.html); every page already carries exactly that number as its
+	 * lessonLabel ("0.0" overview, "N.0" lesson, "N.M" sub-page, dotted writer
+	 * lessons verbatim), so the filename is the label with "." → "_". The 12/06/26
+	 * dash form `{code}-{NN}.html` is kept as legacy_page_file; env PAGENAME_OFF
+	 * (or a page_file template without {page}) reverts byte-for-byte. A label
+	 * collision (two pages resolving the same name — measured ~nonexistent; the
+	 * splitter derives distinct labels) is disambiguated deterministically with
+	 * a trailing _2/_3 … and reported as a run note, so two pages can NEVER
+	 * silently overwrite each other.
+	 * Data: Emit_Templates.output_naming (page_file/{page} + legacy_page_file).
+	 */
+	static PageFileNames(run) {
+		if (run._pageFileNames) return run._pageFileNames;
+		const naming = DataService.Data.EmitTemplates.output_naming;
+		const code = run.moduleCode ?? "MODULE";
+		const legacy = (typeof process !== "undefined" && process.env && process.env.PAGENAME_OFF)
+			|| !String(naming.page_file ?? "").includes("{page}");
+		const used = new Set();
+		run._pageFileNames = (run.pages ?? []).map((p, i) => {
+			if (legacy) {
+				return Utils.FillTemplate(naming.legacy_page_file ?? naming.page_file,
+					{ code, NN: Utils.Pad2(i) });
+			}
+			const label = String(p.lessonLabel ?? (p.isOverview ? "0.0" : `${i}.0`))
+				.replace(/[^\d.]/g, "") || String(i);
+			let page = label.replace(/\./g, "_");
+			if (used.has(page)) {
+				let n = 2;
+				while (used.has(`${page}_${n}`)) n++;
+				page = `${page}_${n}`;
+				run.AddNote("warn", "PageAssembler",
+					`Two pages resolved the same lesson label "${label}" — the later file is disambiguated as _${n}; check the writer's lesson numbering.`);
+			}
+			used.add(page);
+			return Utils.FillTemplate(naming.page_file, { code, page });
+		});
+		return run._pageFileNames;
+	};
+
+	/**
 	 * Converts ONE module end-to-end: the single entry point that turns an
 	 * already-extracted Writers Template (run.wtBlocks, parsed by an earlier
 	 * pipeline stage) into finished, ready-to-save HTML pages plus the
@@ -258,9 +302,10 @@ class PageAssembler {
 		// ---- [7]+[8] skeleton wrap + emit -----------------------------------
 		const code = run.moduleCode ?? "MODULE";
 		// page filenames are deterministic — compute them all first so each
-		// page's footer can link to its prev/next siblings (page chaining)
-		const filenames = pageProducts.map((_, i) =>
-			Utils.FillTemplate(naming.page_file, { code, NN: Utils.Pad2(i) }));
+		// page's footer can link to its prev/next siblings (page chaining).
+		// ROUND 243: through the shared PageFileNames helper (the library
+		// {code}_{lesson}_{part}.html form; env PAGENAME_OFF = the dash legacy).
+		const filenames = PageAssembler.PageFileNames(run);
 		// ROUND 228 (Chris — Change Ledger CL-0044, constraint 71): footer nav
 		// hrefs ship EMPTY — prev/next/home alike; D2L wires the real links at
 		// publish time. Measured: the gold library is 97% empty (the populated

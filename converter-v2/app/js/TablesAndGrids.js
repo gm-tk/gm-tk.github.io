@@ -79,7 +79,11 @@ class TablesAndGrids {
 		// any cell bails out of the grid path (a mis-captured flipCard/carousel stays raw).
 		// Data flag: body_region.layout_table_grid. Env toggle: LTABLE_OFF (disables the
 		// grid conversion, so a layout table renders as a plain <table> instead).
-		const grid = this.layoutTableGrid(rows, run, insidePlaceholder, norm);
+		// ROUND 240 (Dev-Feedback R3, D2): the table block's own hyperlinks travel down
+		// both cell paths (grid + kept-table), so a title-anchored image cell can
+		// resolve its URL exactly like its free-body counterpart (see cellImage below).
+		const links = block.links ?? null;
+		const grid = this.layoutTableGrid(rows, run, insidePlaceholder, norm, links);
 		if (grid) return grid;
 
 		const html = [t.open];
@@ -94,7 +98,7 @@ class TablesAndGrids {
 					// DESIGN (a developer reference), so its markers must NOT be stripped there.
 					// Returns null when the cell doesn't match this case, so the caller falls
 					// through to the plain-text rendering below.
-					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, r === 0, norm);
+					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, r === 0, norm, links);
 					const content = inline !== null ? inline
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
@@ -146,7 +150,7 @@ class TablesAndGrids {
 	 * Env toggle: CELLTAG_OFF (disables this whole method, so every structural
 	 * tag in a data-table cell leaks as literal bracketed text instead).
 	 */
-	static renderCellInline(cell, run, isHeader, norm) {
+	static renderCellInline(cell, run, isHeader, norm, links = null) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.data_table_cell_tags;
 		if (!cfg || cfg.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env.CELLTAG_OFF) return null;
@@ -195,7 +199,7 @@ class TablesAndGrids {
 			}).join(cfg.label_join ?? " ");
 		}
 		// image-only cell → render the in-cell image(s)
-		const out = images.map((tx) => this.cellImage(tx, run).join("")).filter(Boolean);
+		const out = images.map((tx) => this.cellImage(tx, run, links).join("")).filter(Boolean);
 		return out.length ? out.join("") : null;
 	};
 
@@ -226,7 +230,7 @@ class TablesAndGrids {
 	 * shape. Env toggle: LTABLE_OFF (disables this method entirely, so every
 	 * table — layout or data — renders as a plain <table>).
 	 */
-	static layoutTableGrid(rows, run, insidePlaceholder, norm) {
+	static layoutTableGrid(rows, run, insidePlaceholder, norm, links = null) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.layout_table_grid;
 		if (!cfg || cfg.enabled === false || insidePlaceholder || !rows?.length) return null;
 		if (typeof process !== "undefined" && process.env && process.env.LTABLE_OFF) return null;
@@ -267,7 +271,7 @@ class TablesAndGrids {
 			if (!cells.length) continue;
 			const colClass = cfg.col_class_by_count?.[String(cells.length)] || cfg.col_class_default;
 			const cols = cells.map((c) => {
-				const inner = this.renderCellParts(c, run, norm).filter(Boolean);
+				const inner = this.renderCellParts(c, run, norm, links).filter(Boolean);
 				return `${cfg.col_open.replace("{colClass}", colClass)}\n${inner.join("\n")}\n${cfg.col_close}`;
 			});
 			out.push(`${cfg.row_open}\n${cols.join("\n")}\n${cfg.row_close}`);
@@ -312,7 +316,7 @@ class TablesAndGrids {
 	 * @param {TagNormaliser} norm - resolves a bracketed [tag] to its canonical name
 	 * @returns {string[]} the rendered HTML for each element found in the cell
 	 */
-	static renderCellParts(cell, run, norm) {
+	static renderCellParts(cell, run, norm, links = null) {
 		const tpl = DataService.Data.EmitTemplates;
 		const skipRe = new RegExp(tpl.body_region.layout_table_grid.skip_part_pattern ?? "^[=\\s]*$");
 		const out = [];
@@ -333,7 +337,7 @@ class TablesAndGrids {
 				if (text) out.push(`<h${shifted}>${ListsAndRuns.inlineMarkup(text)}</h${shifted}>`);
 			} else if (canon === "image") {
 				flush();
-				out.push(...this.cellImage(rest, run));
+				out.push(...this.cellImage(rest, run, links));
 			} else {
 				const content = canon ? rest : part;
 				if (content.trim() && !skipRe.test(content.trim())) buf.push(content);
@@ -360,18 +364,48 @@ class TablesAndGrids {
 	 * @returns {string[]} one or two HTML fragments — the placeholder/image
 	 *          markup (and, in Mode P, a second commented-out real reference)
 	 */
-	static cellImage(text, run) {
+	static cellImage(text, run, links = null) {
 		const tpl = DataService.Data.EmitTemplates.image;
-		const url = text.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? "";
+		let url = text.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? "";
+		// ROUND 240 (Dev-Feedback R3, D2) — TITLE-ANCHORED CELL IMAGE. A writer often
+		// authors a table-cell image BY TITLE: the cell text is the asset's title, and
+		// the URL lives only in the docx hyperlink's TARGET (which the extractor stores
+		// on the table BLOCK, not in the cell text). Free-body images already resolve
+		// this form through it.block.links; without this step the cell path slugified
+		// the title into a wrong filename (SCCH302's Solutions/Suspensions table:
+		// "clear-yellow-liquid-is-poured-into-beake.jpg" instead of
+		// iStock-1321097020.jpg). When the cell text holds NO URL, find the table
+		// block's hyperlink whose folded anchor TEXT sits inside the folded cell text
+		// (longest anchor wins, so two image cells in one row each find their own
+		// link) and use its target. Data flag: body_region.cell_image_link_match.
+		// Env toggle: CELLIMGLINK_OFF (title-anchored cells revert to slug filenames).
+		if (!url && links && links.length) {
+			const cfg = DataService.Data.EmitTemplates.body_region?.cell_image_link_match;
+			const on = cfg && cfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.CELLIMGLINK_OFF);
+			if (on) {
+				const fold = (s) => String(s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+				const ft = fold(text);
+				let best = null;
+				for (const l of links) {
+					const a = fold(l.text);
+					if (!l.target || /^https?:\/\//i.test(String(l.text ?? "").trim())) continue;
+					if (a.length < (cfg.min_anchor_length ?? 8)) continue;
+					if (ft.includes(a) && (!best || a.length > best.len)) best = { len: a.length, target: l.target };
+				}
+				if (best) url = best.target;
+			}
+		}
 		const istockId = url.match(/gm-?(\d{6,10})/)?.[1] ?? null;
 		const filename = istockId
 			? Utils.FillTemplate(tpl.filename_rules.istock, { id: istockId })
 			: `${Utils.Slugify(text.replace(/https?:\/\/\S+/g, "").replace(/^\s*istock[.:]?/i, "").trim() || "image") || "image"}.jpg`;
 		const label = istockId ? `iStock-${istockId}` : "image";
 		if (run.imageMode === "P") {
-			return [Utils.FillTemplate(tpl.mode_P.visible, { label }), Utils.FillTemplate(tpl.mode_P.comment, { filename })];
+			return [MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label }), url, istockId, run),
+				MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename }), url, istockId, run)];
 		}
-		return [Utils.FillTemplate(tpl.mode_D.visible, { filename })];
+		return [MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename }), url, istockId, run)];
 	};
 }
 

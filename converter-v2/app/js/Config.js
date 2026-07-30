@@ -435,9 +435,141 @@ class Config {
 	// zone is reduced to two plain sentences (what to upload, plus the
 	// iStock-acks.txt line). No engine, data or output change; the corpus is
 	// byte-identical by construction.
+	// ROUND 238 (260618.11): DEV-FEEDBACK R1 FAMILY A — THE "no precedent → n/a"
+	// SKELETON FALLBACK (module SCCH302, the first module of a brand-new subject).
+	// A first-in-series module used to ship the literal string "n/a" as its body
+	// class, level attribute, footer class and even INTO the idoc script URL
+	// (https://n/a.desire2learn.com/… → the page loads with no styling at all).
+	// Three coupled fixes: (1) the UNIVERSAL-FIELD FALLBACK — mined "n/a" registry
+	// values are never overlaid and an EVIDENCE FLOOR resolves a gold-less group
+	// wholesale from the defaults tier (Style_Anchor_Registry _meta.universal_fields;
+	// env SKELDEFAULT_OFF); (2) the UNKNOWN-SUBJECT DIGIT FALLBACK — a new subject
+	// with no resolved template gets the band from its own code digit (SCCH302 →
+	// "7-8"; FUN-shaped codes measured MIXED → still empty; env TPLFALLBACK_OFF);
+	// (3) the FIRST-IN-SERIES DEFAULT LESSON-MENU LABEL — the modern
+	// <h4><span>Learning Intentions</span></h4> row when no measured registry row
+	// exists (menu.lesson_li_label.default_row; env MENUDEFAULT_OFF) + tab_map
+	// gains "knowledge"/"practices" (corpus-inert, canary-proven). NO REGENERATION
+	// (deferred to Dev-Feedback Round 6 per Chris, 2026-07-30); proven by the
+	// in-memory matrix outputs/_probe_r238_familya.cjs (ALL PASS).
+	// ROUND 239 (260618.12): DEV-FEEDBACK R2 FAMILY B — the five writer-tag
+	// VOCABULARY GAPS (B1–B5, module SCCH302). Five independently-toggled data
+	// fixes: B1 [right-hand alert] → the side-alert canonical (alertActivity
+	// col-md-4 + the r123 backward pair; Tag_Lexicon tag_promote when_match; env
+	// RHSALERT_OFF) + the EMPTY SPAN-WRAP KILL (a lead-only [alert]…[end alert]
+	// box drops its unused inner row>col-12 — Claude shipped 70 / gold 2;
+	// callouts.drop_empty_span_wrap; env EMPTYWRAP_OFF); B2 free-body [caption]
+	// → <p class="captionText"> (gold ×545; widget-member captions untouched BY
+	// CONSTRUCTION — the fix lives at the orphan-sub-tag branch;
+	// elements.caption_text; env CAPTIONTEXT_OFF); B3 the bare [define: DEF] head
+	// joins the hover weave + render-stitch ('definition' scanner-side MEASURED
+	// DECLINED — 247 widget-member subtags; hover_definition_inline.define_heads;
+	// env DEFINEHEAD_OFF); B4 an explicit go-to-journal [button] → the templated
+	// <h4 class="goJournal">Go to your journal</h4> INSIDE the activity box
+	// (gold ERA-MIXED h4 ×568 vs button ×1,052 — the dev's rule ships as a
+	// forward-looking overrides-gold convention, captured in
+	// Subject_Global_Parameters r239_go_journal_h4; buttons.go_journal; env
+	// GOJOURNAL_OFF); B5 [button to download journal with standard instructions]
+	// → the templated docs/{CODE} Journal.docx download scaffold + ONE To Do note
+	// (corpus population ZERO — forward guarantee; buttons.download_journal; env
+	// DLJOURNAL_OFF). NO REGENERATION (deferred to Dev-Feedback Round 6 per
+	// Chris, 2026-07-30); proven by outputs/_probe_r239_fixes.cjs (ALL PASS:
+	// SCCH302 fix-ON + toggles-OFF broken-state + canary byte-identity + per-
+	// toggle delta decomposition) with tags 9557/9557, entry-parity PASS.
+	// ROUND 240 (260618.13): DEV-FEEDBACK R3 of 6, FAMILY D — the three image
+	// rules D1–D3 (the SCCH302 developer-feedback chain; NO regeneration —
+	// deferred to Round 6 per Chris 2026-07-30). D1 every content image fills
+	// alt from the asset title (verified iStock API title from *_istock-acks.txt
+	// > URL-slug Title-Case > empty) + gains loading="lazy" — a post-fill
+	// (MediaBuilder.FinishImg, the r200 post-replace class) on free-body +
+	// table-cell images; gold era-mixed (alt 73% hand-typed / lazy 24%) → the
+	// dev's rule ships forward-looking overrides-gold, captured in
+	// Subject_Global_Parameters r240_img_alt_lazy (elements.image_attrs; env
+	// IMGATTRS_OFF). D2 a title-anchored table-cell [image] (title text in the
+	// cell, URL only in the docx hyperlink the extractor stores on the table
+	// BLOCK) resolves its URL via the block's links — longest folded-anchor-in-
+	// cell match — instead of slugifying the title (SCCH302's Solutions table:
+	// clear-yellow-…-beake.jpg → iStock-1321097020.jpg; threaded contentTable →
+	// renderCellInline/layoutTableGrid/renderCellParts → cellImage as trailing
+	// optional params; body_region.cell_image_link_match; env CELLIMGLINK_OFF).
+	// D3 an image's own title-form REFERENCE line (the hyperlink's anchor text /
+	// the iStock "– Download Image Now –" form) never renders as a caption <p> —
+	// the r80 video-title-drop class extended to images, in MediaBuilder.image
+	// (anchor-equality on OWN lines) + the renderBlackText stitch seam (pattern
+	// rule, free-body only — cv2 dumps keep their raw lines BY CONSTRUCTION;
+	// gold ships 0 such <p>s vs Claude 145; elements.image_reference_title_drop;
+	// env IMGREFTITLE_OFF). Proven by outputs/_probe_r240_fixes.cjs (ALL PASS:
+	// SCCH302 fix-ON + toggles-OFF broken-state + canary byte-identity +
+	// image-free fix-ON identity + per-toggle hash decomposition) with tags
+	// 9557/9557, entry-parity PASS, flipCard div 0, speechBubble 0, tabs div 0.
+	// ROUND 241 (260618.14): DEV-FEEDBACK R4 of 6, FAMILY C2 + E1–E3 — clickDrop
+	// lists + text hygiene (the SCCH302 developer-feedback chain; NO regeneration —
+	// deferred to Round 6 per Chris 2026-07-30). C2 clickDrop revealed content routes
+	// through the standard black-text renderer so Word bullets become real <ul><li>
+	// instead of literal "<p>• …</p>" (gold ships ZERO such bullets / 134 list pages;
+	// interactive_builders.clickDrop.list_content; env CDLIST_OFF). E1 the extractor
+	// normalises invisible whitespace at the r227 run-walk seam: NBSP U+00A0 → plain
+	// space + zero-width U+200B/C/D/FEFF stripped (15,198 NBSPs across 416/429 WTs;
+	// 2,108 shipped vs gold ~0; Input_Doc_Rules.text_normalise; env NBSP_OFF; tags
+	// gate 9557/9557 proves red-span granularity unchanged). E2 a lesson page with a
+	// DISTINCT own title no longer repeats the module's Te Reo title as a second h1
+	// (the recorded r199 follow-up, dev-confirmed; 35 dual-h1 pages → 25 suppress /
+	// 10 keep, gold-matched; header.lesson_te_reo_suppress; env LESSONTEREO_OFF).
+	// E3 the AI-variant acks block ("acks acksTemplate acksAI") omits the three
+	// boilerplate paragraphs the site template injects (gold triple-class 24/27 omit;
+	// catch-all kept; empty opening group dropped; Acks_Formats.standing_items
+	// .template_variant_omit; env ACKSBOILER_OFF). Proven by
+	// outputs/_probe_r241_fixes.cjs (ALL PASS: SCCH302 fix-ON 15/15 + toggles-OFF
+	// broken-state + whole-chain-revert canary byte-identity + E2 isolation legs +
+	// pure-whitespace E1 delta proof + per-toggle hash decomposition) with tags
+	// 9557/9557 REAL 0, entry-parity PASS, clickDrop verifier defect 0 + selftest
+	// GREEN, flipCard div 0, speechBubble defect 0, index-sync 32/27.
+	// ROUND 242 (260618.15): DEV-FEEDBACK R5 of 6, FAMILY C1 — the un-numbered
+	// accordion (the SCCH302 developer-feedback chain; NO regeneration — deferred to
+	// Round 6 per Chris 2026-07-30). Triangulation found the un-numbered repeated-
+	// label [accordion] form was ALREADY accepted (scanner same-type absorb + the
+	// rich walk's bare-head panel delimiters; 75 repeat regions / 41 modules measured
+	// live over all 429 WTs); the ONE blocker on SCCH302's mixtures accordion was the
+	// writer's "[2 images next to each other]" LAYOUT instruction, which parses to a
+	// URL-less embedded [image] and bailed BOTH image walks. FIX 1: the arrangement
+	// vocabulary ("images" + side by side / next to each other / beside each other)
+	// is skipped as build content and surfaced as the standard red Writers Note after
+	// a successful build (accordion.image_layout_marker; env ACCIMGMARK_OFF; corpus
+	// fire population ZERO — 12/12 vocabulary carriers hash-identical → a pure
+	// forward guarantee, the r231 class). FIX 2: the r240 D1 RIDER taken — widget-
+	// internal images (#assetImage) route through MediaBuilder.FinishImg (verified-
+	// map alt by filename id + lazy; elements.image_attrs.widget_internal; env
+	// WIDGETIMG_OFF, decomposing independently of the r240 body-path IMGATTRS_OFF);
+	// corpus-visible effect = loading="lazy" completing flipCard's Mode-P template on
+	// EXACTLY 13 pages / 10 modules (named r240_img_alt_lazy delta). Proven by
+	// outputs/_probe_r242_fixes.cjs (ALL PASS: SCCH302 fix-ON 18/18 builds the
+	// 2-panel 4-image accordion with verified alts + the deduped note; toggles-OFF
+	// placeholder-state; whole-chain 18-toggle canary byte-identity BLL210/OSAH501/
+	// TRR203/BLL225 vs the r236 disk; per-toggle hash decomposition) with tags
+	// 9557/9557 REAL 0, entry-parity PASS, accordion verifier 27 panels 0 defects +
+	// selftest GREEN, flipCard 33/div 0, speechBubble 0, tabs 39/div 0, carousel 0,
+	// index-sync 32/27. Residue recorded: SCCH302 lesson-6 title-anchored-media
+	// accordion (the D2-in-widgets follow-up) + lesson-8 activity-owned capture.
+	// ROUND 243 (260618.16): DEV-FEEDBACK ROUND 6 of 6 — FAMILY E4 (block-level
+	// line breaking: HtmlFormatter splits glued div/table-structural `><` runs onto
+	// their own lines per the measured gold convention, empty-element one-liners
+	// kept; whitespace-only BY PROOF — strip-all-whitespace + tag-stream + PRIMARY-
+	// skeleton-parser identity 24/24; env LINEBREAK_OFF) + THE LIBRARY FILE NAMING
+	// (Chris, 2026-07-31 — pages now ship as {code}_{lesson}_{part}.html, e.g.
+	// SCCH302_0_0.html, from each page's own lessonLabel via the ONE shared
+	// PageAssembler.PageFileNames source of truth, tile hrefs + interactives.txt
+	// File: lines included; env PAGENAME_OFF reverts the 12/06/26 dash form)
+	// + THE ONE FULL CORPUS REGENERATION closing the SCCH302 chain (r238–r243):
+	// 393 dirs 0-stale, all gates held-or-improved net of the chain's named deltas
+	// (skeleton 49.566%/921/176/12/RAW 32.659% @1837 skipped 0; cs exact 9699 +236;
+	// body 273 +1 pairing-correction; clean 97.7% leak 290/46 EXACT; tags 9557;
+	// widget verifiers 0 defects; entry-parity PASS). Chain kickoffs swept.
 	// NOTE: quoted from round 237 on — a bare 260618.10 is the NUMBER 260618.1 and
 	// the badge would drop the trailing zero. Only ever interpolated into a string.
-	static AppVersion = "260618.10";
+	// ROUND 244 (260618.17): KB catch-up captures — Change-Ledger CL-0053..0068 triage
+	// + the doc-14 §14.8 HPE refresh (CL-0067) into Subject_Global_Parameters.json.
+	// Output-inert (probe-proven byte-identity); no engine code changed.
+	static AppVersion = "260618.17";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

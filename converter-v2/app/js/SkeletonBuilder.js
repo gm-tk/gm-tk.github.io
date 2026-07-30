@@ -116,6 +116,42 @@ class SkeletonBuilder {
 				phaseForAttr = preset;
 			}
 		}
+		// THE UNKNOWN-SUBJECT DIGIT FALLBACK (ROUND 238 — Dev-Feedback R1
+		// Family A, module SCCH302). A subject NOT in the preset list above
+		// (a brand-new subject the registry has never seen) used to ship an
+		// EMPTY template attribute — and the iDoc host loads the stylesheet
+		// by this attribute, so the page rendered unstyled. When the module
+		// resolved NO template_phase at all (phaseForAttr empty — a pure
+		// fallback: every module with a real resolved value, and every
+		// digit-is-not-a-level family, is untouched BY CONSTRUCTION), the
+		// code's own level digit supplies the band via the same
+		// by_level_digit map (SCCH302 → 3 → "7-8", exactly the value the
+		// reference developer confirmed correct). A code that does not match
+		// code_pattern (FUN-shaped codes, 4-digit codes) still ships empty —
+		// MEASURED: the FUN families' template values are genuinely MIXED
+		// (10 combo vs 5 NCEA bases), so no confident fallback exists there
+		// and the rule refuses to guess. prefix_overrides (r224) and
+		// cohort_overrides (r231) below still outrank this fallback.
+		// Data: skeleton.template_phase_presets.unknown_subject_digit_fallback.
+		// Env toggle: TPLFALLBACK_OFF (reverts to the empty attribute).
+		const usfCfg = tppCfg && tppCfg.unknown_subject_digit_fallback;
+		const usfOn = usfCfg && usfCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLFALLBACK_OFF);
+		if (usfOn && (phaseForAttr == null || phaseForAttr === "")) {
+			const um = String(run.moduleCode || "").match(
+				new RegExp(tppCfg.code_pattern ?? "^([A-Z]+)([1-5])\\d{2}$"));
+			if (um && !(tppCfg.subjects ?? []).includes(um[1])) {
+				const fb = (tppCfg.by_level_digit ?? {})[um[2]];
+				if (fb) {
+					if (!run._tppNoted) {
+						run._tppNoted = true;
+						run.AddNote("info", "SkeletonBuilder",
+							`unknown subject "${um[1]}" resolved no template — the code's level digit ${um[2]} supplies template="${fb}" (unknown_subject_digit_fallback; env TPLFALLBACK_OFF reverts to the empty attribute).`);
+					}
+					phaseForAttr = fb;
+				}
+			}
+		}
 		// THE CODE-PREFIX TEMPLATE OVERRIDE (ROUND 224 — the BLL200 exception,
 		// Chris). Some families' code digits are NOT curriculum levels, so the
 		// digit preset excludes them — but the design team still fixes their
@@ -423,7 +459,24 @@ class SkeletonBuilder {
 			const lthSuppress = lth && lth.enabled !== false
 				&& !(typeof process !== "undefined" && process.env && process.env.OSSCH1_OFF)
 				&& (lth.subjects ?? []).some((pfx) => String(run.moduleCode || "").startsWith(pfx));
-			if (run.teReoTitle && wanted > 1 && !lthSuppress) titles.push(run.teReoTitle);
+			// E2 (ROUND 241 — Dev-Feedback R4; the recorded r199 follow-up, dev-confirmed).
+			// The module's Te Reo title joins a lesson page as a second h1 ONLY when the
+			// lesson has NO distinct title of its own — i.e. its title fell back to (or
+			// fold-equals) the module English title, the XMES102/103 gold form where the
+			// module's bilingual pair repeats on every lesson. A lesson with a DISTINCT
+			// own title ships ONE h1, the lesson's own — the gold form on every measured
+			// distinct-title lesson (XMES101 ×8, CEDT207 ×6, CEDT301 ×6; 35 dual-h1 pages
+			// measured round 241 → 25 suppress / 10 keep). Composes with (independent of)
+			// the CL-0042 OSSC gate above. Data: header.lesson_te_reo_suppress.
+			// Env toggle: LESSONTEREO_OFF (restores the unconditional push).
+			const ltr = tpl.header.lesson_te_reo_suppress;
+			const modEng = run.englishTitle || content.titleBar.english || "";
+			const distinctSuppress = ltr && ltr.enabled !== false
+				&& (ltr.suppress_when_distinct_title ?? true)
+				&& !(typeof process !== "undefined" && process.env && process.env.LESSONTEREO_OFF)
+				&& !!page.pageTitle && !!modEng
+				&& Utils.Fold(page.pageTitle) !== Utils.Fold(modEng);
+			if (run.teReoTitle && wanted > 1 && !lthSuppress && !distinctSuppress) titles.push(run.teReoTitle);
 			while (titles.length > wanted) titles.pop();
 			if (titles.filter(Boolean).length < wanted) {
 				run.AddNote("info", "SkeletonBuilder",

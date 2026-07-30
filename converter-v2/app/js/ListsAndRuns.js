@@ -159,7 +159,16 @@ class ListsAndRuns {
 		if (!cfg || cfg.enabled === false) return s0;
 		if (typeof process !== "undefined" && process.env && process.env.INFOSPLIT_OFF) return s0;
 		const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+		// ROUND 239 (Dev-Feedback R2, B3): the define_heads data block (the scanner-weave's
+		// sibling extension) contributes its stitch_heads ("define") to the render-stitch
+		// head vocabulary too, unless toggled off. "definition" was already here (round 201).
+		// Data flag: elements.hover_definition_inline.define_heads   Env toggle: DEFINEHEAD_OFF
+		const _dh = tpl.elements?.hover_definition_inline?.define_heads;
+		const _dhHeads = (_dh && _dh.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.DEFINEHEAD_OFF))
+			? (_dh.stitch_heads ?? []) : [];
 		const heads = (cfg.head_words ?? ["hover", "rollover", "mouseover", "definition"])
+			.concat(_dhHeads)
 			.map((w) => String(w).trim().replace(/[-\s]+/g, "[-\\s]?"));
 		const seps = cfg.separators ?? ":=–—";
 		const sepEsc = seps.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -269,6 +278,26 @@ class ListsAndRuns {
 		// genuine FREE-BODY text ever gets woven. The INFOSPLIT_OFF env toggle also disables it
 		// globally (see hoverStitch above).
 		if (stitch) text = this.hoverStitch(String(text ?? ""));
+		// ROUND 240 (Dev-Feedback R3, D3, part 2) — MEDIA-REFERENCE LINE DROP at the
+		// free-body text seam. The primary drop lives in MediaBuilder.image (an image's
+		// OWN anchor-text reference line), but a reference title can also reach plain
+		// black-text rendering when its [image] marker was consumed elsewhere (e.g. an
+		// un-built quiz's flushed lead text — SCCH302-06's "Metal Bucket … Stock Photo
+		// – Download Image Now – iStock" lines). The iStock reference form is
+		// unmistakable ("… Stock Photo – Download Image Now – iStock") and the gold
+		// library ships ZERO such lines as visible text (measured round 240), so a
+		// whole LINE matching the data-driven form is dropped here too. Same `stitch`
+		// containment as the r201 hover re-stitch: FALSE for cv2 placeholder dumps /
+		// built-widget content (the raw hand-off keeps every reference line), so only
+		// genuine free-body text is cleaned. Shares the D3 data flag + env toggle:
+		// elements.image_reference_title_drop / IMGREFTITLE_OFF.
+		const _refCfg = DataService.Data.EmitTemplates.elements?.image_reference_title_drop;
+		if (stitch && _refCfg && _refCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.IMGREFTITLE_OFF)) {
+			const lineRe = new RegExp(_refCfg.line_pattern
+				?? "download image now|stock (?:photo|illustration|vector)\\b[^\\n]*[\\u2013\\u2014-]\\s*istock\\s*$", "i");
+			text = String(text ?? "").split("\n").filter((l) => !(l.trim() && lineRe.test(l.trim()))).join("\n");
+		}
 		// SENTINEL-PAIR ATOMICITY (ROUND 227, part of the w:br→\n fix). A hover/infoTrigger
 		// definition woven into the raw text as a U+E000…U+E001 sentinel pair must never be
 		// CUT by the per-line split below — a definition whose text spans a soft line break

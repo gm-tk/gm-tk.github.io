@@ -87,16 +87,35 @@ class AcksBuilder {
 			acksClass: hasAi ? fmt.container.acks_class_ai_variant : fmt.container.acks_class_standard,
 		}));
 
+		// TEMPLATE-VARIANT BOILERPLATE OMIT (ROUND 241 — Dev-Feedback R4, E3: the
+		// SCCH302 doubled-acknowledgements finding). When the block ships the TEMPLATE
+		// container class (the AI variant "acks acksTemplate acksAI"), the site's own
+		// template injects the standing boilerplate — so emitting the paragraphs here
+		// too makes them appear TWICE on the published page. The gold form (measured
+		// round 241, every gold acks block): triple-class pages omit all three 24/27,
+		// "acks acksTemplate" 20/28, while the plain "acks" class KEEPS them 415/416 —
+		// so the omit is keyed on the SAME hasAi decision that picks the class. The
+		// catch_all line is kept (43/55 template-class golds ship it); an opening group
+		// left EMPTY by the omission (no unverified-iStock note to carry) is dropped
+		// whole — gold shows no empty acksLesson div. Data:
+		// Acks_Formats.standing_items.template_variant_omit ("omit" lists which
+		// standing items go). Env toggle: ACKSBOILER_OFF (emits all three again).
+		const tvo = fmt.standing_items.template_variant_omit;
+		const omitList = (hasAi && tvo && tvo.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACKSBOILER_OFF))
+			? (tvo.omit ?? []) : [];
+
 		// opening disclaimer (its own group, per the corpus form)
-		html.push(g.group_element_open, fmt.standing_items.opening_disclaimer);
-		if (hasAi) html.push(fmt.standing_items.ai_usage_statement);   // §5.1 position
+		const opening = [];
+		if (!omitList.includes("opening_disclaimer")) opening.push(fmt.standing_items.opening_disclaimer);
+		if (hasAi && !omitList.includes("ai_usage_statement")) opening.push(fmt.standing_items.ai_usage_statement);   // §5.1 position
 		// ROUND 236 (Chris) — the unverified-iStock designer note closes the
 		// opening group, which puts it at the top of the acks block and
 		// directly above the ❗ lesson groups it explains. Empty string (and so
 		// no output at all) whenever every iStock title was verified.
 		const unverifiedNote = this.#unverifiedNote(run);
-		if (unverifiedNote) html.push(unverifiedNote);
-		html.push(g.group_element_close);
+		if (unverifiedNote) opening.push(unverifiedNote);
+		if (opening.length) html.push(g.group_element_open, ...opening, g.group_element_close);
 
 		// per-lesson groups, in page order — every lesson gets its group,
 		// each opened with the spec-mandated lesson-label comment and
@@ -121,9 +140,12 @@ class AcksBuilder {
 			html.push(g.group_element_close);
 		}
 
-		// catch-all + full copyright statement (fixed closing positions)
+		// catch-all + full copyright statement (fixed closing positions; the copyright
+		// group joins the round-241 template-variant omit — see omitList above)
 		html.push(g.group_element_open, fmt.standing_items.catch_all, g.group_element_close);
-		html.push(g.group_element_open, fmt.standing_items.copyright_statement, g.group_element_close);
+		if (!omitList.includes("copyright_statement")) {
+			html.push(g.group_element_open, fmt.standing_items.copyright_statement, g.group_element_close);
+		}
 
 		html.push(fmt.container.wrapper_close);
 		return html.join("\n");

@@ -124,7 +124,7 @@ class InteractiveBuilder {
 					html = this.#shapeHover({ bundle, tpl, renderInline, run });
 					break;
 				case "clickDrop":
-					html = this.#clickDrop({ bundle, tpl, renderInline });
+					html = this.#clickDrop({ bundle, tpl, renderInline, run });
 					break;
 				case "glossary":
 					html = this.#glossary({ bundle, tpl, renderInline });
@@ -489,6 +489,7 @@ class InteractiveBuilder {
 		if (typeof renderBlock !== "function") return null;   // need the body renderer
 		const inline = renderInline ?? ((s) => s);
 		const rich = tpl.rich_panels ?? {};
+		const markerNotes = [];   // ROUND 242: skipped image-ARRANGEMENT layout markers, surfaced as notes on success
 		const idRe = new RegExp(rich.video_youtube_id_re
 			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
 
@@ -510,6 +511,17 @@ class InteractiveBuilder {
 
 		for (const m of members) {
 			const tag = m && m.type === "tag" ? m.parse?.primary?.tag : null;
+
+			// (a0) an IMAGE-ARRANGEMENT LAYOUT MARKER (ROUND 242, Dev-Feedback R5 C1 —
+			//     SCCH302 "[2 images next to each other]"): a URL-less embedded-[image]
+			//     instruction about how the following images should be ARRANGED. It is
+			//     never learner content and never an image element — skip it as build
+			//     content; a successful build surfaces its text as the standard red
+			//     note after the widget (the r214 instruction-member class). Both
+			//     accordion walks previously BAILED the whole widget at this member.
+			//     Data accordion.image_layout_marker; env ACCIMGMARK_OFF.
+			const layoutMk = this.#imageLayoutMarker(m, tpl);
+			if (layoutMk) { markerNotes.push(layoutMk); continue; }
 
 			// (a) NESTED sub-bundle marker (an absorbed shapeHover) — render in place.
 			if (m && m.type === "nested") {
@@ -678,7 +690,50 @@ class InteractiveBuilder {
 			if (!content.trim()) return null;                          // panel with no rendered body
 			built.push(Utils.FillTemplate(tpl.row, { head: inline(p.head), content }));
 		}
+		// ROUND 242: surface the skipped layout markers ONLY on a successful build (a
+		// decline keeps the placeholder + raw dump byte-identical); #bundleInstructions
+		// de-duplicates downstream, and the note renders red after the widget.
+		if (markerNotes.length) bundle.instructions = [...(bundle.instructions ?? []), ...markerNotes];
 		return [tpl.open, ...built, tpl.close].join("\n");
+	}
+
+	/**
+	 * ROUND 242 (Dev-Feedback R5, Family C1 — SCCH302's mixtures accordion). An
+	 * IMAGE-ARRANGEMENT LAYOUT MARKER: a red span the lexicon resolves to [image]
+	 * only EMBEDDED in prose ("[2 images next to each other]", "[insert images
+	 * side by side]"), carrying NO media URL of its own and NO trailing black
+	 * content. It is a writer LAYOUT INSTRUCTION about the images that follow —
+	 * not an image element — so the accordion walks SKIP it as build content and
+	 * a successful build surfaces its text as the standard red note after the
+	 * widget (the r214 instruction-member class: never silently stripped, never
+	 * a build-breaker). CONTAINMENT BY CONSTRUCTION: both the strict-image and
+	 * rich walks previously BAILED the whole accordion at this member (no URL →
+	 * return null), so every output this rule can change was a placeholder —
+	 * an accordion that already BUILT never carried one. MEASURED corpus-wide
+	 * (outputs/_detect_r242_accunnum.cjs, all 429 WTs live): the arrangement
+	 * vocabulary = 21 occurrences / 13 modules (+ SCCH302 outside the corpus);
+	 * the un-numbered repeated-label [accordion] form itself (75 regions / 41
+	 * modules) was ALREADY accepted — the scanner's same-type absorb merges the
+	 * repeats into ONE bundle and the rich walk treats each bare head as a panel
+	 * delimiter — so this marker was the ONLY blocker on the C1 class.
+	 * Data interactive_builders.accordion.image_layout_marker; env ACCIMGMARK_OFF.
+	 *
+	 * @param {object} m   - a captured member item
+	 * @param {object} tpl - the accordion template block (holds image_layout_marker)
+	 * @returns {string|null} the marker's note text, or null (not a layout marker)
+	 */
+	static #imageLayoutMarker(m, tpl) {
+		const cfg = tpl?.image_layout_marker;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.ACCIMGMARK_OFF) return null;
+		if (!m || m.type !== "tag") return null;
+		const p = m.parse?.primary;
+		if (!p || p.tag !== "image" || p.how === "exact") return null;   // a real [image]/[images] tag is never a marker
+		if (this.#cellText(m.blackAfter ?? "")) return null;             // content rides after → a real member
+		const text = String(m.text ?? "");
+		if (this.#cellMediaUrl(text)) return null;                       // carries a real URL → a real image reference
+		if (!new RegExp(cfg.pattern, "i").test(text)) return null;       // not the arrangement vocabulary
+		return this.#cellText(text);
 	}
 
 	/**
@@ -798,6 +853,7 @@ class InteractiveBuilder {
 
 		const panels = [];          // [{ head, image:filename|null, body:[...] }]
 		const trailing = [];        // free-body paragraph(s) after the last panel
+		const markerNotes = [];     // ROUND 242: skipped image-ARRANGEMENT layout markers, surfaced as notes on success
 		let cur = null;
 		let trailingMode = false;
 
@@ -806,6 +862,11 @@ class InteractiveBuilder {
 			const tag = m && m.type === "tag" ? m.parse?.primary?.tag : null;
 			const raw = m && m.type === "tag" ? (m.blackAfter ?? "") : (m.text ?? "");
 			const text = this.#cellText(raw);
+
+			// (a0) an IMAGE-ARRANGEMENT LAYOUT MARKER (ROUND 242 — see #imageLayoutMarker):
+			//     skipped as build content, surfaced as a red note on a successful build.
+			const layoutMk = this.#imageLayoutMarker(m, tpl);
+			if (layoutMk) { markerNotes.push(layoutMk); continue; }
 
 			// (a) panel delimiter. A LEADING [accordion] with NO heading is the OPENER
 			//     (OSAI501-02 types `[accordion]` then `[accordion 1] …`) → skip; a
@@ -874,6 +935,8 @@ class InteractiveBuilder {
 			built.push(Utils.FillTemplate(tpl.row, { head: inline(p.head), content }));
 		}
 		const tail = trailing.map((t) => Utils.FillTemplate(tpl.trailing_body, { text: inline(t) }));
+		// ROUND 242: surface the skipped layout markers ONLY on a successful build.
+		if (markerNotes.length) bundle.instructions = [...(bundle.instructions ?? []), ...markerNotes];
 		return [tpl.open, ...built, tpl.close, ...tail].join("\n");
 	}
 
@@ -3211,7 +3274,7 @@ class InteractiveBuilder {
 	 * writer-instruction text all fall back. (Same-TYPE extra clickDrops are the additional
 	 * BUTTONS — captured as members, never a reason to bail.)
 	 */
-	static #clickDrop({ bundle, tpl, renderInline }) {
+	static #clickDrop({ bundle, tpl, renderInline, run }) {
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return null;
 		const inline = renderInline ?? ((s) => s);
@@ -3243,8 +3306,24 @@ class InteractiveBuilder {
 		for (const it of items) if (!it.label || !it.body.length) return null;   // each needs a label + content
 
 		const buttons = items.map((it) => Utils.FillTemplate(tpl.button, { label: inline(it.label) }));
+		// ROUND 241 (Dev-Feedback R4, C2 — SCCH302's Equipment clickDrop). The revealed
+		// CONTENT used to be dumped one <p> per captured paragraph, which shipped a writer's
+		// Word bullets as literal '<p>• A 100ml measuring cylinder</p>' text. The gold
+		// library ships ZERO such bullets inside clickDropContent and 134 pages with real
+		// <ul>/<ol> lists there (measured round 241), so the content now routes through the
+		// STANDARD black-text renderer (ListsAndRuns.renderBlackText — the same machinery
+		// every free-body paragraph/list uses: '• ' lines group into <ul><li>, numbered
+		// lines into <ol>, plain lines stay one <p> each). stitch=false = the r201
+		// containment (built-widget internals are outside the free-body hover-weave scope);
+		// links=[] matches the legacy inline path. A plain no-bullet body renders through
+		// the same <p> template as before. Data flag: interactive_builders.clickDrop
+		// .list_content. Env toggle: CDLIST_OFF (reverts to the one-<p>-per-paragraph form).
+		const listContent = (tpl.list_content ?? false)
+			&& !(typeof process !== "undefined" && process.env && process.env.CDLIST_OFF);
 		const contents = items.map((it) => Utils.FillTemplate(tpl.content, {
-			content: it.body.map((t) => `<p>${inline(t)}</p>`).join(""),
+			content: listContent
+				? ListsAndRuns.renderBlackText(it.body.join("\n"), run, [], false).join("\n")
+				: it.body.map((t) => `<p>${inline(t)}</p>`).join(""),
 		}));
 		return [tpl.open, ...buttons, ...contents, tpl.close].join("\n");
 	}
@@ -3440,13 +3519,32 @@ class InteractiveBuilder {
 	 * @param {object} run      - run context (run.imageMode is "P" or "D")
 	 */
 	static #assetImage(filename, tpl, run) {
+		// ROUND 242 — the r240 D1 RIDER taken (the recorded "any widget round" rider):
+		// widget-INTERNAL images join the alt/lazy rule via MediaBuilder.FinishImg.
+		// The title authority here is the VERIFIED iStock API map only (run.istockAcks,
+		// keyed by the id read from the filename); there is no URL at this seam so the
+		// slug fallback never fires. CORPUS-INERT for alt BY CONSTRUCTION (corpus module
+		// folders carry no acks file → no verified map → alt stays ""); loading="lazy"
+		// is already baked into every widget image template except flipCard's Mode-P
+		// visible placeholder, which FinishImg now completes (a named forward-looking
+		// r240_img_alt_lazy delta; shapeHover's style-first Mode-P template stays
+		// untouched by the finisher's regex — recorded residue). Data
+		// elements.image_attrs.widget_internal; env WIDGETIMG_OFF reverts the rider
+		// ALONE (the parent rule's IMGATTRS_OFF/enabled:false still kill it too via
+		// FinishImg's own guards — needed so the rider decomposes independently of the
+		// r240 body-path rule, which shipped un-regenerated in the same chain).
+		const wcfg = DataService.Data.EmitTemplates.elements?.image_attrs;
+		const rider = wcfg && wcfg.widget_internal !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.WIDGETIMG_OFF);
+		const istockId = String(filename).match(/iStock-(\d+)/i)?.[1] ?? null;
+		const fin = rider ? ((h) => MediaBuilder.FinishImg(h, "", istockId, run)) : ((h) => h);
 		if (run?.imageMode === "P") {
 			// label = the filename without its extension ("iStock-978974888")
 			const label = String(filename).replace(/\.[a-z0-9]+$/i, "");
-			return Utils.FillTemplate(tpl.image_mode_P, { label })
-				+ Utils.FillTemplate(tpl.image_mode_P_comment, { filename });
+			return fin(Utils.FillTemplate(tpl.image_mode_P, { label }))
+				+ fin(Utils.FillTemplate(tpl.image_mode_P_comment, { filename }));
 		}
-		return Utils.FillTemplate(tpl.image_mode_D, { filename });
+		return fin(Utils.FillTemplate(tpl.image_mode_D, { filename }));
 	}
 
 	// -----------------------------------------------------------------------

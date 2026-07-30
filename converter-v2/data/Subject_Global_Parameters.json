@@ -320,7 +320,7 @@
       "doc_section": "14.8",
       "active": true,
       "overrides_gold": true,
-      "source_updated": "2026-07-09",
+      "source_updated": "2026-07-09; §14.8 characters refreshed 2026-07-29 (CL-0067)",
       "scope": {
         "type": "cohort",
         "label": "H&PE content modules (distinct from H&PE FUNdamentals §14.5)",
@@ -445,6 +445,27 @@
           "cross_reference": "§14.11",
           "value": "Upload to Dropbox",
           "detail": "The celebration page also carries a 'Go to your journal' button next to 'Upload to dropbox'."
+        },
+        {
+          "name": "HPE speech-bubble characters + central image assets (CL-0067, 2026-07-29)",
+          "kind": "structural",
+          "keywords": [
+            "character",
+            "speech bubble",
+            "imageCentral",
+            "kai",
+            "alex",
+            "sura",
+            "afi",
+            "leila",
+            "head only",
+            "paddingR",
+            "paddingL"
+          ],
+          "component_owner": "04 Overlays (speech bubble) — mechanics stay there; this records the HPE-specific choices",
+          "detail": "Characters (Sura, Afi, Alex, Kai, Leila) appear in a [Speech bubble] with an imageCentral image. Folder/filename: full-body pose 1 'health & PE characters/phase #/HP_{Name}_1_phase_#.png'; head-only pose 3 'health & PE characters/phase #/head_only/HP_{Name}_3_phase_#.png'; folder phase and filename phase ALWAYS match; the ampersand folder form is canonical (corrects 'health and PE characters/'). All character images: class=\"img-fluid imageCentral\" alt=\"\". Kai and Alex in use (HPRE301 designer-refined files). A required character not yet available -> visible 'Designer/Developer To Do:' note in its place (developers do not sign off 2nd proof until created).",
+          "layout_rules": "Two-character full-body intro/outro strip: row.speechBubble[layout=speech] > col-md-3 paddingR (left image) + col-md-6 col-6 align-self-center (bubbles, order follows speaker order) + col-md-3 paddingL (right image) — follows the universal CL-0055 padding rule. Head-only dialogue strips: col-md-2 paddingR image + col-md-10 align-self-center bubble (closing variant col-md-3 + col-md-9); speaker-on-right rows REVERSE the column order but the image column STILL takes paddingR — a deliberate HPE exception to CL-0055, scoped to HPE head-only dialogue strips ONLY. Bubble colours in use: primary-light and secondary-light (existing template classes, observed values). Speaker comments (<!-- Alex -->) are production annotations — NEVER emitted.",
+          "cross_reference": "CL-0055 / constraint 29 (universal padding sides); CL-0067 (ledger)"
         }
       ]
     },
@@ -888,7 +909,7 @@
       "doc_section": "14.10",
       "active": false,
       "overrides_gold": true,
-      "source_updated": "2026-07-09",
+      "source_updated": "2026-07-09; WJ ledger rules captured 2026-07-29..30 (CL-0058/0059/0060/0063/0065/0066)",
       "roadmap": "Kea art + audio under development. No corpus presence yet.",
       "scope": {
         "type": "cohort",
@@ -946,6 +967,70 @@
           "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"kea_characters/kea_1.jpg\" alt=\"Kea character\" >",
           "component_owner": "04 Segments/Overlays (speech bubble)",
           "detail": "Kea features within each lesson, varying slightly by phase (medallion placement / wing colours). Folder kea_characters/; kea_1.jpg / kea_2.jpg / kea_3.jpg per phase. When Kea appears he also has a speech bubble and audio (mechanics stay in 04)."
+        },
+        {
+          "name": "[MTK Quiz] outranks a co-occurring in-page quiz tag (CL-0058)",
+          "kind": "structural",
+          "keywords": [
+            "mtk quiz",
+            "multichoice",
+            "radio quiz",
+            "precedence"
+          ],
+          "detail": "In WJ, an activity carrying [MTK Quiz] alongside an in-page quiz tag ([Multichoice quiz], [Radio quiz], ...) emits the 'Go to quiz' button pattern, NOT the in-page component; a bare in-page quiz tag still builds in-page. NOTE: PageForge's r232 MTKquiz retag already drops quiz co-tags universally — verify satisfied when WJ modules arrive.",
+          "cross_reference": "CL-0038 / cl0038_mtkquiz_button (did not address co-occurrence)"
+        },
+        {
+          "name": "[Audio image] grids are audioImage/audioImageOption (CL-0059)",
+          "kind": "structural",
+          "keywords": [
+            "audio image",
+            "audioimage",
+            "audiotrigger"
+          ],
+          "detail": "WJFUN [Audio image] grids MUST use audioImage/audioImageOption (audio filename on the option id), never audioTrigger spans wrapping images.",
+          "component_owner": "04 (audioImage) — r135 AUDIOIMG builder is the V2 home"
+        },
+        {
+          "name": "Year 4 wordSelect: one spanValue per sentence (CL-0060)",
+          "kind": "content_rule",
+          "keywords": [
+            "wordselect",
+            "spanvalue",
+            "year 4"
+          ],
+          "detail": "WJFUN Year 4 wordSelect: exactly ONE spanValue span per sentence covering the complete target phrase; qualifying words are not tagged separately."
+        },
+        {
+          "name": "Speech-bubble audio button is INLINE (CL-0063)",
+          "kind": "structural",
+          "keywords": [
+            "audio button",
+            "audiobutton",
+            "speech bubble",
+            "inline"
+          ],
+          "detail": "A WJFUN speech-bubble audio button is an inline <span class=\"audioButton\"> inside the sentence's <p> (after a <br>), never a separate block <div class=\"audioButton\"> sibling. Applies to all Kea speech bubbles and any other WJFUN bubble audio button. Structure only — the designer file's malformed inline style attribute is NOT codified."
+        },
+        {
+          "name": "Wrapper widths: never col-md-11 (CL-0065)",
+          "kind": "structural",
+          "keywords": [
+            "col-md-11",
+            "col-md-12",
+            "wrapper width"
+          ],
+          "detail": "WJ activity/interactive wrappers are fit-based col-md-8 col-12 -> col-md-12 col-12; col-md-11 is never used in WJ. See _universal_conventions cl0007_activity_wrapper_widths.wj_carve_out_cl0065."
+        },
+        {
+          "name": "[word highlighter] = bespoke static highlight spans, VERBATIM (CL-0066)",
+          "kind": "structural",
+          "keywords": [
+            "word highlighter",
+            "highlight",
+            "inline css exception"
+          ],
+          "detail": "WJFUN [word highlighter] builds as the designer's bespoke static spans codified VERBATIM: <span class=\"highlight\" style=\"background-color: ...;\"> with the values #00ffff, yellow, and the LITERAL 'primary' reproduced as given (do not 'correct'). Presentational, not clickable, no wrapper; never the wordHighlighter/highlightBtn interactive in WJFUN. A documented designer-confirmed WJFUN-scoped exception to the no-inline-CSS constraint — licenses nothing else."
         }
       ]
     }
@@ -1029,11 +1114,13 @@
           "wrapper width",
           "interactive wrapper",
           "alertimage",
-          "col-md-11"
+          "col-md-11",
+          "wj"
         ],
         "rule": "An activity/interactive wrapper NEVER uses col-md-10. Generation defaults where no built same-series sibling dictates otherwise: Standard family -> col-12; Inquiry/Fundamentals (container-fluid body class) -> col-md-11 col-12; an activity paired with an alertImage -> activity col-md-8 col-12 + image col-md-4 (8+4=12, overrides the sub-type default). Radio-quiz option cells stay col-md-1 (inner geometry). FORWARD-ONLY: existing gold col-md-10 wrappers are never retro-flagged.",
         "v2_home": "activity_wrapper templates (Emit_Templates) + the cascade; wire the affirmative widths in a dedicated measured round (named DOC-14-delta gate treatment per _meta.gold_override_policy.gate_policy)",
-        "measured_r219": "Claude ships 0 col-md-10 activity wrappers (prohibition already satisfied; the box's inner col is col-12). Gold sample 1258 sites: col-md-8 col-12 = 78%, col-md-12 = 7%, col-12 = 6%, col-md-10 = 3% (pre-rule), col-md-11 = 1%. Doc-14's own Mode-B rule (a built same-series sibling wins on pure STRUCTURE) governs the existing families, whose gold ships col-md-8 — so the affirmative widths apply to no-sibling-precedent generation (new families/modules); flipping the existing corpus wholesale would be wrong on the design team's own precedence. Never copy gold's col-md-10 minority."
+        "measured_r219": "Claude ships 0 col-md-10 activity wrappers (prohibition already satisfied; the box's inner col is col-12). Gold sample 1258 sites: col-md-8 col-12 = 78%, col-md-12 = 7%, col-12 = 6%, col-md-10 = 3% (pre-rule), col-md-11 = 1%. Doc-14's own Mode-B rule (a built same-series sibling wins on pure STRUCTURE) governs the existing families, whose gold ships col-md-8 — so the affirmative widths apply to no-sibling-precedent generation (new families/modules); flipping the existing corpus wholesale would be wrong on the design team's own precedence. Never copy gold's col-md-10 minority.",
+        "wj_carve_out_cl0065": "CL-0065 (29 July 2026, designer-confirmed): WJ-series (MiW, codes beginning WJ) wrapper widths are fit-based col-md-8 col-12 -> col-md-12 col-12; col-md-11 is NEVER used in WJ (widen straight to col-md-12 only when the interactive genuinely needs full width). Partial supersession of this rule, WJ scope only — the col-md-11 widen step remains in force for every other Inquiry/Fundamentals module."
       },
       {
         "id": "cl0001_image_alt_text",
@@ -1257,6 +1344,84 @@
         "rule": "The FIRST CL-0001/constraint-1 exception permitting deletion of writer characters: Unicode Extended_Pictographic grapheme CLUSTERS (base + VS15/16, skin tones, ZWJ sequences, keycap marks, flag pairs) are removed from the rendered page, EXCEPT the ledger's exempt ticks & crosses ✅✓✔☑✗✘❌❎ (kept cluster-whole — a VS16 is never orphan-stripped off a kept tick) and the ONE measured extension, the maths operators ✖➗➕➖ (meaning-bearing; gold keeps ✖ x12; ✖ is a cross by form — the ledger's own ☑ inclusion proves box/heavy variants count). EP arrow emoji (➡⬅⬆⬇⮕) become PLAIN arrows (→←↑↓) instead of deletions — gold's own treatment (TEDC402 ships the writer's 'input🡪process🡪output' as 'input→process→output'); a keycap digit keeps its digit. A run of 2+ consecutive plain <p> lines PREFIXED by a would-be-deleted cluster becomes ONE <ul>/<li> (lead dropped); a lone one stays a <p>; in-prose removals get spacing normalised; a <p> the strip EMPTIED is dropped whole. Disclosure: ONE visible note per affected page at the first removal — 'Red Flag: Emoji have been removed from this content per the no-emoji rule. Ticks and crosses are retained.' (the r219 scheme's form, class cv2-note = gate-excluded; a header/menu first-removal relocates to the body top, the r203 rule). OUT OF SCOPE by the Unicode property (measured decisions): the checkbox/ballot family ☐☒□🗹 (bilingual checklists + printable tick-sheets; the r212 checklist→bullet stays the reo-menu machinery), 🖵 phonics sound-boxes, 🡪, plain →←, typographic ►●◦, private-use chars. CONTAINMENTS: cv2-interactive hand-off boxes, cv2-note/cv2-comment quotes, the acks block (verbatim oEmbed titles + the converter's own ❗ ack-todo markers), tag attributes, the {CODE}_interactives.txt hand-off, self-reflection emoji IMAGES (img assets) — all untouched.",
         "overrides_gold_notes": "The gold library largely ALREADY lives the rule (CEDT104 gold ships 1 emoji from a WT of 279; ARFUN02 0 of 187) — but gold KEEPS emoji at named sites the rule strips: TEDC402's five feelings-scale faces (😎🙂😐😬🤯 in built tabs panes), OSBY301-class scattered singles (~18), TRR109/110 + XGF9001 + BLL120/252 + XDLS908, and gold keeps ➡/🡪 arrow FORMS where the converter now ships the plain-arrow form (TEDC401). All are INTENTIONAL CL-0051 overrides — record, never chase. THE WATCH CLASS: MXDI201/ENGS102-style emoji-as-CONTENT (vocab/description cards where the emoji IS the referent — gold keeps ~220 on MXDI201) currently lives INSIDE cv2-interactive dumps on the converter side, so the strip cannot touch it TODAY; any future widget-build round that renders that content live must re-visit the carve-out question with this entry as the evidence pointer (outputs/_measure_emoji.py, the r234 censuses).",
         "v2_home": "Data Input_Doc_Rules.emoji_strip (exempt list VERBATIM from the ledger + exempt_extensions.maths_operators + arrow_map, all data-editable); engine ListsAndRuns.EmojiStrip (the r213 LinkTextDisplay post-pass seam — runs AFTER all tag machinery, so the ✅-glued [TITLE BAR] fences (r230 OSSC), the r192 ✅[Tile] delimiters, the r169 title splits and the 🔴 red-run sentinels are untouchable BY CONSTRUCTION); wired in PageAssembler before LinkTextDisplay, stopping at the acks block. Measurement: outputs/_measure_emoji.py (both rendered corpora, 8-shard) + _probe_emojistrip.cjs (behaviour/toggle/fence legs) + _probe_r234_toggle.cjs (corpus-scale EMOJISTRIP_OFF byte-identity vs the r232 manifest)."
+      },
+      {
+        "id": "r239_go_journal_h4",
+        "ledger_id": "Dev-Feedback R2 / B4 (SCCH302, 2026-07-30)",
+        "status": "LIVE — round 239 (env GOJOURNAL_OFF; Emit_Templates.buttons.go_journal)",
+        "name": "A writer's explicit go-to-journal button ships the templated <h4 class=\"goJournal\">Go to your journal</h4> inside the activity box",
+        "keywords": [
+          "go to journal",
+          "gojournal",
+          "journal button",
+          "go to your journal"
+        ],
+        "rule": "A [button] whose EXPLICIT label folds to 'go to (your) journal' — or the alias-typed [go to journal]/[journal button] span — renders as the design team's templated <h4 class=\"goJournal\">Go to your journal</h4> INSIDE the open activity box (a bundle-owned activity absorbs a directly-following such button into the box before it closes), never as a green <div class=\"button\">. A button carrying a URL, and a bare [Button] whose label came only from the journal_label_default, keep the existing button behaviour.",
+        "overrides_gold_notes": "The gold library is ERA-MIXED: <h4 class=goJournal> ×568 / 57 modules vs <div class=button>Go to journal ×1,052 / 104 modules, MIXED within most subjects (no group discriminator — measured round 239). The developer's SCCH302 feedback names the h4 as the design team's CURRENT convention, so this is a forward-looking overrides-gold rule: at the Round-6 (Dev-Feedback chain) full regeneration, divergence from a button-form gold at a go-to-journal site is an INTENTIONAL design-team override — never chase it back toward the gold; gates judged net of exactly this named delta (WT population ~1,051 occ / 111 modules).",
+        "overrides_gold": true
+      },
+      {
+        "id": "r240_img_alt_lazy",
+        "ledger_id": "Dev-Feedback R3 / D1 (SCCH302, 2026-07-31)",
+        "status": "LIVE — round 240 (env IMGATTRS_OFF; Emit_Templates.elements.image_attrs; MediaBuilder.FinishImg)",
+        "name": "Every content image ships alt text (verified iStock API title > URL-slug Title-Case) + loading=\"lazy\"",
+        "keywords": [
+          "alt text",
+          "alt attribute",
+          "loading lazy",
+          "lazy loading",
+          "image accessibility",
+          "istock title"
+        ],
+        "rule": "A content image's alt attribute is populated from the asset's title — the VERIFIED iStock API title when the *_istock-acks.txt map covers the id, else the URL slug Title-Cased (the verified 98% slug-is-title rule); nothing derivable → alt stays empty (never invent a description). Every content <img class=\"img-fluid\"> also carries loading=\"lazy\". Applies to the Mode-P visible placeholder, the Mode-P commented-out real reference (the tag the developer copies out), and the Mode-D direct <img>, on free-body AND table-cell images.",
+        "overrides_gold_notes": "The gold library is ERA-MIXED: alt populated on 73% of 29,202 gold images (much of it hand-typed editorial text like 'Beautification image'), loading=\"lazy\" on only 24% (older modules predate the convention) — measured round 240. The developer's SCCH302 feedback names the iStock API title + loading=\"lazy\" as the design team's CURRENT convention, so this is a forward-looking overrides-gold rule: at the Round-6 (Dev-Feedback chain) full regeneration, alt/loading divergence from gold at any content image is an INTENTIONAL design-team override — never chase it back toward the gold (neither toward gold's hand-typed alts nor toward its lazy-less era); gates judged net of exactly this named delta (blast = every image-carrying page).",
+        "overrides_gold": true
+      },
+      {
+        "id": "cl0061_no_col8_in_col8",
+        "ledger_id": "CL-0061 (constraint 77; direct-typed, Persephone Samuels via 29 July 2026)",
+        "status": "CAPTURED (already satisfied live — fence protects against chasing gold's violations)",
+        "name": "No col-md-8 nested directly inside another col-md-8",
+        "keywords": [
+          "col-8 in col-8",
+          "nested col-md-8",
+          "inner row",
+          "constraint 77"
+        ],
+        "rule": "An inner row inside a col-md-8 wrapper never uses col-md-8 — use col-md-12 col-12 (or a documented inner pattern). col-8-in-col-12 and col-12-in-col-8 are both fine. Applies to inner activity col-8 too.",
+        "v2_home": "No live mechanism needed — the converter's emitted inner cols are col-12/col-md-12 by construction.",
+        "measured_r244": "Claude corpus: 0 direct col-md-8>row>col-md-8 chains (grep-verified 2026-07-31). Gold: >=8 pages carry the violating nest (predate the rule) — an audit divergence matching this rule is an INTENTIONAL doc-override, never chased toward the gold.",
+        "_keyword_note": "Deliberately NO bare col-md-8/col-md-12/'width' keywords — the vet surfaces universal rules on substring match and the common width tokens false-match every width issue (the cl0007 precedent; caught live by the BLL244 vet selftest r244)."
+      },
+      {
+        "id": "cl0062_carousel_viewer_width",
+        "ledger_id": "CL-0062 (direct-typed, Persephone Samuels, 29 July 2026)",
+        "status": "CAPTURED (already satisfied live)",
+        "name": "Carousel .viewer width is contextual",
+        "keywords": [
+          "carousel",
+          "viewer",
+          "book-page image"
+        ],
+        "rule": "A carousel .viewer nested inside a col-md-8 wrapper uses col-md-12 col-12; a standalone one prefers col-md-8 col-12 (col-md-12 permitted for large content / book-page images). All carousel types alike. Replaces the old fixed 'all carousels col-md-8' documentation.",
+        "v2_home": "interactive_builders.carousel templates (open = col-md-12 col-12 viewer)",
+        "measured_r244": "Claude ships 123 viewer cols, ALL col-md-12 col-12 and ALL nested under a col-md-8 ancestor — exactly the context where the rule REQUIRES col-md-12; standalone population 0, so the 'col-md-8 preferred' limb has no live surface. Gold distribution: col-md-12 1402 / col-md-8 183 / other ~120 (nested 1299 / standalone 403) — col-md-12-dominant, consistent. No code change needed."
+      },
+      {
+        "id": "cl0055_bubble_image_padding",
+        "ledger_id": "CL-0055 (HPRE203 difference report, 29 July 2026; constraint 29 wording)",
+        "status": "CAPTURED (overrides-gold forward rule; live emit deferred to its own measured round)",
+        "name": "Speech-bubble image-column padding sides: left -> paddingR, right -> paddingL",
+        "keywords": [
+          "speech bubble",
+          "paddingR",
+          "paddingL",
+          "image column",
+          "constraint 29"
+        ],
+        "rule": "A built speech-bubble image column takes inner-side padding: left-positioned image -> paddingR, right-positioned -> paddingL; never mirror a sibling that pads both sides the same. HPE head-only dialogue strips are the ONE scoped exception (paddingR both sides, CL-0067 — see the 14.8 family).",
+        "v2_home": "interactive_builders.speechBubble.image_col (currently the bare col-3 form); wire in a dedicated measured round if flipped live",
+        "measured_r244": "Gold built-bubble image cols 827: UNPADDED 556 (67% — the bare col-3 era-form, the majority) / padded 271, of which 255 (94%) follow the side rule (left:paddingR 222, right:paddingL 33; violators 16). Claude ships 100 image cols (61 left / 39 right), all the unpadded col-3 form == the gold MAJORITY form. The rule is forward-looking (the gold library largely predates it); flipping the live emit would move AWAY from the gold majority and is a real output change -> deferred, named-delta gate treatment when wired (r219 CL-0007 affirmative-widths pattern). Tool outputs/_measure_r244_ledger.py (NOTE its r244 catch: bubble-ness tested on DIV class tokens only — an <img class='bubble-img'> must not read as a bubble col)."
       }
     ]
   }

@@ -1779,7 +1779,18 @@ class InteractiveScanner {
 			&& !(typeof process !== "undefined" && process.env && process.env.HOVERSPLIT_OFF);
 		let rawMarker = String(it.text ?? "")
 			.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
-		const headStr = cfg.head_pattern ?? "^\\[\\s*(?:hover|rollover|mouseover)\\b";
+		// ROUND 239 (Dev-Feedback R2, B3 — SCCH302-03 "boiling point"): the bare "[define: DEF]"
+		// head joins the weave ("[hover define:" already worked because it starts with "hover").
+		// cfg.define_heads.head_pattern is the base alternation + "define"; the toggle swaps
+		// back to the base pattern. "definition" was MEASURED and DECLINED for this scanner
+		// side (247 [definition…] spans are widget-member SUBTAGS — weaving them would break
+		// widget capture); the render-stitch already carries it (round 201).
+		// Data flag: elements.hover_definition_inline.define_heads   Env toggle: DEFINEHEAD_OFF
+		const _dh = cfg.define_heads;
+		const _dhOn = _dh && _dh.enabled !== false && _dh.head_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env.DEFINEHEAD_OFF);
+		const headStr = (_dhOn ? _dh.head_pattern : null)
+			?? cfg.head_pattern ?? "^\\[\\s*(?:hover|rollover|mouseover)\\b";
 		const headRe = new RegExp(headStr, "i");
 		// (A1) restore an orphaned leading "[" before testing the head
 		let leadOrphan = false;

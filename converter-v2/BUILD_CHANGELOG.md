@@ -1,5 +1,910 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-07-31 (round 244, build 260618.17) — KB CATCH-UP: Change-Ledger CL-0053…CL-0068 triage + the doc-14 §14.8 HPE refresh (ZERO-blast, output-inert captures; **NO regeneration — not requested; the round-243 gate baselines still describe the last regenerated state**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris asked whether the online Convertor project's
+knowledge base (the `htmlconvertor-kb` repo copy under `00-Other-TK-Resources/`)
+holds anything new that PageForge hasn't absorbed. It does, in two places: the
+Change Ledger has grown from CL-0052 (where the round-219/228 triage stopped) to
+CL-0068, and doc-14 §14.8 (the Health & PE character conventions) was rewritten
+on 29 July — after PageForge's round-218 capture of the 9 July version. This
+round triages every new row and captures the ones that govern conversion output
+into `data/Subject_Global_Parameters.json`. **No engine code changed and no
+converter output byte moved** — proven, not assumed (probe below).
+
+**TRIAGED — CAPTURED (data only, all output-inert):**
+- **CL-0067 → the 14.8 HPE family refreshed** to the 29 July doc-14 content:
+  character set (Sura/Afi/Alex/Kai/Leila), the canonical `health & PE characters/`
+  AMPERSAND folder + pose-1/pose-3 filename patterns (folder phase == filename
+  phase always), `img-fluid imageCentral` + empty alt, the two-character
+  full-body intro/outro strip (follows the universal CL-0055 padding sides), the
+  head-only dialogue strips with **paddingR on BOTH sides — the ONE deliberate
+  HPE-scoped exception to CL-0055**, bubble colours primary-light/secondary-light,
+  missing-character → visible To Do note, speaker comments never emitted.
+- **CL-0061 (constraint 77) → `cl0061_no_col8_in_col8`** universal fence: no
+  col-md-8 nested directly inside another col-md-8. MEASURED: Claude corpus **0**
+  violations (already satisfied live); the GOLD carries ≥8 violating pages that
+  predate the rule → overrides-gold fence so no audit ever chases them.
+- **CL-0065 → WJ carve-out annotated onto `cl0007_activity_wrapper_widths`**:
+  WJ never uses col-md-11 (widen straight to col-md-12); partial supersession of
+  CL-0007, WJ scope only. WJ corpus population ZERO — forward guarantee.
+- **CL-0058/0059/0060/0063/0066 → six new conventions in the 14.10 MiW/WJ family**
+  (MTKquiz co-occurrence precedence — likely already satisfied by the r232 retag,
+  verify when WJ modules arrive; audioImage grids; Year-4 wordSelect spans; the
+  inline bubble audioButton; the never-col-md-11 pointer; the bespoke
+  word-highlighter verbatim spans incl. the designer-confirmed inline-CSS
+  exception). All zero-population forward guarantees.
+- **CL-0062 → `cl0062_carousel_viewer_width`** (contextual viewer width).
+  MEASURED (`outputs/_measure_r244_ledger.py`): Claude ships 123 viewer cols, ALL
+  `col-md-12 col-12` and ALL nested under a col-md-8 ancestor — exactly where the
+  rule REQUIRES col-md-12; standalone population 0, so the "col-md-8 preferred"
+  limb has no live surface. Gold: col-md-12 1402 / col-md-8 183. No code change.
+- **CL-0055 → `cl0055_bubble_image_padding`** (image-col padding sides).
+  MEASURED: gold built-bubble image cols 827 = **556 UNPADDED (67%, the bare
+  col-3 era-form — Claude's exact emitted form, i.e. the gold MAJORITY)** + 271
+  padded of which 255 (94%) follow the side rule. Forward-looking directive the
+  gold library predates → CAPTURED, live emit deferred to its own measured round
+  (the r219 CL-0007 affirmative-widths pattern). Probe catch recorded IN the
+  tool: bubble-ness must be tested on DIV class tokens only — an
+  `<img class="bubble-img">` inside the image col must not read as a bubble col.
+
+**TRIAGED — NOT APPLICABLE (recorded here so the triage is never re-run):**
+CL-0053 (KB repo migration — workflow/meta), CL-0054 (`../js/` includes —
+grep-verified PageForge emits none anywhere in engine or corpus), CL-0056/0057/
+0064 (Comparison-Mode reporting exclusions — no V2 equivalent, the r219 buckets),
+CL-0068 (the Interactives Build Mode amalgamation — the online project absorbing
+PageForge's hand-off, not the reverse). **KB-side flag for Chris:** the new
+Mode-6 file (15A) describes the page marker as the pre-r235 bare
+`cv2-int-ref` div and the pre-r243 filenames — a Convertor-project doc fix, the
+residual already named in the round-243 entry.
+
+**THE VET-KEYWORD CATCH (caught live by the selftest, fixed in-data):** the
+first cut gave `cl0062` the bare keyword "col-md-12" — `vet_issue` surfaces
+universal rules on substring match, so the BLL244 selftest issue ("col-md-6 vs
+col-md-12") false-matched it and flipped the expected ONE-OFF HUMAN OUTLIER
+verdict to DOC-14 OVERRIDE. Keywords tightened to the cl0007 precedent (never
+the common width tokens as bare keywords); a `_keyword_note` records the rule.
+
+**PROOF:** `subject_parameters.py --selftest` PASS · `vet_issue.py --selftest`
+PASS (incl. cascade) · **`outputs/_probe_r244_inert.cjs` ALL PASS** — live
+in-memory conversions through the edited data == disk bytes on PES1007 (12 pp,
+the HPE cohort this round touches), BLL210 (1 pp, widest active-family surface),
+TRR203 (3 pp, reo canary); unlike the r233 probe it passes NO interactiveMode so
+the r235 `DefaultInteractiveMode()` resolves it, matching the shipped corpus.
+
+**GATES:** no regeneration (not requested — §0); zero output bytes changed
+(probe-proven), so every protected gate HOLDS BY CONSTRUCTION at the round-243
+baselines (skeleton 49.566% / ≥50 921 / ≥75 176 / ≥90 12 / RAW 32.659% @ 1837
+skipped 0; cs 9699/178/472; body 273; clean 97.7% / leak 290/46; tags 9557/9557;
+flipCard 33/div 0; speechBubble 0).
+
+**Data:** `Subject_Global_Parameters.json` only (14.8 + 14.10 families,
+`_universal_conventions` +4 rules/annotations). **Env toggle:** none — nothing
+live to reverse (`SUBJECTPARAMS_OFF` + `master_enabled:false` continue to gate
+the whole SGP mechanism). **Tools:** `outputs/_measure_r244_ledger.py`,
+`outputs/_probe_r244_inert.cjs`.
+
+## 2026-07-31 (round 243, build 260618.16) — DEV-FEEDBACK ROUND 6 of 6: FAMILY E4 (line breaking) + THE LIBRARY FILE NAMING (Chris's decision) + **THE ONE FULL CORPUS REGENERATION — the SCCH302 chain (rounds 238–243) CLOSED**
+
+**THE PLAIN-ENGLISH LEAD.** This round finishes the developer's SCCH302 feedback
+series and carries all six rounds of fixes onto every module in the library.
+Three things happened. FIRST, the generated HTML now breaks its building blocks
+onto separate lines the way the hand-built pages do — an activity box used to
+open as one long glued line (`<div class="activity"…><div class="row"><div
+class="col-12">`) and a table row shipped as a single line of cells; both now
+print one block per line, indented, with zero change to what the page actually
+shows (proven character-for-character: the only difference is whitespace between
+tags). SECOND, Chris decided (2026-07-31) that PageForge should name its page
+files the way the site library does — `SCCH302_0_0.html`, `SCCH302_1_0.html` —
+instead of the old `SCCH302-00.html` dash form, so the developer never has to
+rename files on import again. Every page already knows its own lesson number, so
+the filename is simply that number; the lesson-tile links and the interactives
+worklist were updated with it, from one shared source of truth. THIRD, the whole
+393-module library was rebuilt from scratch — the one full regeneration Chris
+authorised for the end of this series — and every protected quality gate was
+re-run and held or improved once the six rounds' already-documented, intentional
+differences are accounted for. The five kickoff files that drove the series have
+been deleted, closing the chain.
+
+---
+
+**PART 1 — FAMILY E4: BLOCK-LEVEL LINE BREAKING (`LINEBREAK_OFF`; data
+`Emit_Templates.formatter.block_line_breaks`).** MEASURED FIRST
+(`outputs/_measure_r243_linebreaks.py`, both corpora, every page): the gold
+library breaks EVERY mixed div/table-structural glued `><` boundary onto its own
+line (broken-share 0.98–1.00 for `/td><td` `tr><td` `/td></tr` `/th><th`
+`/tr><tr` `table><tr` `/tr></table`; 0.993–0.997 for `div><div` `/div></div`
+`/div><div`; 0.885–0.912 for the td↔div cross pairs) and keeps ONLY the
+empty-element one-liners glued (`<div></div>` 0.018 broken ×17,608, `<td></td>`
+0.010 ×1,891, `<th></th>` 0.000). Claude's glued boundaries were dominated by
+exactly the two shapes the developer named: table-row runs (`/td><td` 28,098,
+`tr><td` 13,430…) and div runs (`div><div` 23,054, `/div></div` 23,247). FIX (an
+HtmlFormatter pre-pass, per the calibration plan): `#breakBlocks` splits a
+zero-whitespace `><` boundary when BOTH tags are in the data list
+(div/table/thead/tbody/tfoot/tr/td/th), EXCEPT an open tag glued to its own
+close (the measured gold empty-element convention); the split lines then indent
+through the existing depth walk. Inline shapes the gold keeps glued (`a><div`
+buttons 2,591, `td><span`/`td><img` cell one-liners) are untouchable BY
+CONSTRUCTION (not in the set). SEMANTIC INERTNESS PROVEN
+(`outputs/_probe_r243_e4.cjs` scratch ON/OFF ×24 pages SCCH302+XDLS901+TRR203+
+BLL210+OSAH501): strip-ALL-whitespace byte-identity **24/24**, tag-stream
+identity **24/24**, the PRIMARY skeleton gate's own parser identity **24/24**;
+strict inter-tag-only identity 23/24 — the 1 residual (OSAH501-03) is the
+multi-line-cell RE-INDENT class (a `</th>` now outdents on its own line, so the
+already-multi-line cell text's leading tabs shift one stop — render-collapsing
+whitespace, the formatter's pre-existing indentation behaviour at a shifted
+depth). Residual glued block boundaries across the scratch set: **0**;
+empty-element one-liners kept: 54. Every gate parses via html.parser +
+`\s+`-collapse → whitespace-inert by construction (verified, not assumed).
+
+**PART 2 — THE LIBRARY FILE NAMING (Chris, 2026-07-31 — supersedes his 12/06/26
+dash-form decision; `PAGENAME_OFF`; data `Emit_Templates.output_naming`).**
+Pages now ship as **`{code}_{lesson}_{part}.html`** — the site-library form the
+developer renames to on every import (`SCCH302_0_0.html` … `SCCH302_8_0.html`,
+her exact expected set, probe-verified). The mapping is the page's OWN
+`lessonLabel` with "." → "_" (overview 0.0 → `_0_0`; lesson N → `_N_0`;
+sub-pages and dotted writer lessons verbatim: ENGJ403's 2.1 → `_2_1`) through
+the NEW **`PageAssembler.PageFileNames(run)`** — THE one source of truth, used
+by the emit loop, the r226 choice-page tile hrefs (XDLS906's 7 tiles all resolve
+to emitted files, probe-verified) and `{CODE}_interactives.txt`'s `File:` lines;
+a label collision (measured ~nonexistent) disambiguates deterministically with a
+trailing `_2` + a loud run note, so two pages can never silently overwrite each
+other. The EXTRACT REFERENCE CODE (`{code}-INT-{NN}-{seq}-{type}`) deliberately
+keeps its stable page-index form — it is the search-by-code contract, not a
+filename (comment updated at the site). `legacy_page_file` keeps the dash form;
+env `PAGENAME_OFF` reverts byte-for-byte (proven inside the 20-toggle chain
+revert). GATE-TOOL SUPPORT (the r190-class minimal guarded change, 7 sites): the
+shared page-key idiom in compare_structure/body_compare/anchor_compare/
+strict_compare/wt_triangulate/build_convention_registry gained a pre-branch that
+reads `_L_S.html` as L.S (every legacy filename form keys EXACTLY as before —
+regression-proven on the dot/dash/single-file quirk forms), and
+`_discrepancy_audit.pkey` normalises digit_digit runs after the code to dots.
+BONUS CORRECTNESS: Claude pages now SORT by their true labels — exactly how the
+gold's own filenames sort — so sub-paginated modules pair with their REAL
+counterparts (CEDK501's 3.1/5.1/6.1 pages previously paired positionally against
+the wrong gold pages). NOTE for the online Convertor project: the Page Stitcher
+contract's filename examples should be updated to the underscore form (the
+by-code replacement itself is unaffected).
+
+**PART 3 — THE FULL CORPUS REGENERATION + GATES (the §0.3 authorisation, Chris
+2026-07-30).** Full 393-dir rebuild (34 pre-sized batches + 2 rc-124 splits,
+OSSC301 included), **0 stale by mtime**; old dash-named files 0 on disk, 2009
+library-named pages / 390 module dirs in the refreshed content manifest;
+fast-loop baselines refreshed (skeleton seeded from the fresh 8-shard full
+state); FULL ship recorded in the ledger (scoped counter → 0). **EVERY PROTECTED
+GATE, judged NET of the chain's named overrides-gold deltas (r239
+`go_journal_h4`, r240 `img_alt_lazy` + reference-title drops, r238
+SCFUN01/CEDT101/CEDT104 resolutions, r241 NBSP/clickDrop-lists/lesson-h1/acksAI,
+r242 rider):**
+- **PRIMARY skeleton** (fresh 8-shard run, `outputs/_r243_sk_merge.py` →
+  `_r243_sk_final.json`): **SCAFFOLD mean 49.566% (+0.024 IMPROVED) / ≥50%
+  921 (+5) / ≥75% 176 (−3) / ≥90% 12 EXACT / RAW 32.659% (+0.031 IMPROVED) @
+  1837 paired, skipped 0.** The ≥75 dip decomposes to threshold-crossing pages
+  inside the NAMED override classes — exemplars byte-decomposed via the
+  20-toggle r236 reconstruction (`outputs/_dbg_r243_decomp.cjs`): MXEO202_8_0
+  76.0→71.5 = PURE r239 goJournal (gold's `<div class="button">` vs our
+  templated `<h4 class="goJournal">` — intentional, never chased); PHE1004_0_0
+  75.0→72.7 = PURE r240 D1 lazy + D3 reference-caption drop (gold ships 0 such
+  captions — correct direction, the r176 net-positive class). Pairs 1835→1837
+  net +2 = the naming round's PAIRING-COVERAGE churn: label-true sorting re-pairs
+  sub-paginated modules correctly; the old numeric-fallback INDEX-COINCIDENCE
+  pairs leave where Claude's labels diverge from gold numbering (MXFL101 12→7,
+  its lesson 3 authored as 8 sub-parts — recorded residual: an order-based
+  residual fallback in `pairs()` would recover them, its own measured round).
+- **compare_structure**: exact **9699 (+236 IMPROVED)** / EXTRA **178 (+4)** /
+  missing **472 (+16)** — the text-MATCHED POOL grew 11,133→11,419 (+286): NBSP
+  normalisation, captionText, goJournal h4 and the naming's corrected pairings
+  bring previously-unmatched elements into every bucket (the documented
+  matched-pool-growth class).
+- **body_compare**: **273 (+1)** — decomposed page-for-page vs the r236
+  baseline: 3 revealed / 2 cleared OVER-CAPTURE flags, ALL in sub-paginated
+  modules (CEDK501/TEDC402/XMES201 gained, MXDI202/PES1004 cleared) = the
+  pairing-CORRECTION artifact (pages now compare against their true gold
+  counterparts; XMES201's gold dir also carries the developer's duplicate
+  renamed `_N_0` copies — pre-existing gold-dir hygiene, noted).
+- **defect audit**: clean **1963/2009 = 97.7% EXACT** / leak **290 occ / 46
+  pages EXACT**. **tags**: **9557/9557, REAL FAILURES 0**. **flipCard**: TOTAL
+  33 / **divergence 0** (defect 14→10 IMPROVED). **speechBubble**: defect 0.
+  **tabs**: 59 texts / defect 0 / divergence 0 (TEDC402+MXFL401+OSOH501+CEDT501).
+  **accordion**: 8 panels, all match. **clickDrop**: defect 0. **intextract**:
+  ALL PASS on the new disk (wrapper + code contract survive the split + naming).
+  **entry-parity**: PASS (+ selftest). **index-sync**: 32/27 (no new engine
+  file). Skeleton/subject-params/vet selftests PASS.
+
+**PART 4 — THE CHAIN CLOSED.** Cumulative effect of the six rounds (238–243) now
+live on every module: a first-in-series module ships styled pages instead of
+"n/a" chrome (A); the five writer-tag vocabulary gaps ship real output (B1–B5);
+images carry verified alt text + lazy loading and lose their reference-title
+captions (D1–D3); clickDrop bullets are real lists and the NBSP/zero-width/
+duplicate-title/acks-boilerplate hygiene is corpus-wide (C2, E1–E3); the
+un-numbered accordion form builds (C1); and the HTML is line-broken + files are
+library-named (E4 + naming). All five series kickoff files deleted in one sweep
+per Chris's 2026-07-31 order; the CLAUDE.md §12.5 suspension lifted — the
+standing kickoff self-delete rule resumes. Probes kept: `_probe_r243_e4.cjs`,
+`_measure_r243_linebreaks.py`, `_dbg_r243_decomp.cjs`, `_r243_sk_merge.py`.
+
+## 2026-07-31 (round 242, build 260618.15) — DEV-FEEDBACK ROUND 5 of 6, FAMILY C1: the un-numbered accordion (Chris — the SCCH302 developer-feedback chain; **NO REGENERATION — deferred to Round 6 per Chris, 2026-07-30; the round-236 gate baselines still describe the last regenerated state**)
+
+**THE PLAIN-ENGLISH LEAD.** The developer's SCCH302 test showed the "mixtures"
+accordion — a clean set of heading + text + image panels the writer authored
+with repeated bare `[accordion]` labels — arriving as the rainbow "complex
+interactive" hand-off box instead of a working accordion. The investigation
+found the repeated-label form itself was NOT the problem: the converter already
+merges the repeats into one widget and treats each label as a panel. The one
+thing breaking the build was the writer's layout instruction `[2 images next to
+each other]`, which the tag dictionary reads as an "image" with no address —
+and an image with no address makes the builder give up on the whole widget.
+That instruction is now recognised for what it is: a note about how to ARRANGE
+the images, not an image. The builder skips it as content, builds the accordion
+(both panels, all four images), and keeps the writer's instruction visible as
+the standard red note after the widget so the designer still sees it. As a
+rider from Round 3, images INSIDE built widgets now also get their proper
+description text (from the verified iStock title file, when supplied) and the
+"load lazily" hint — on SCCH302 every accordion image now carries its official
+iStock title as the description.
+
+**THE FINDING (triangulated live, not assumed):** the C1 calibration guessed
+the un-numbered repeated-label form needed accepting as panel delimiters — it
+is ALREADY accepted (since r214): the scanner's same-type absorb merges the
+second bare `[accordion]` into ONE bundle ("accordion + accordion" is only the
+placeholder LABEL, not a build blocker — the accordion builder has no
+extraTypes guard), and the rich walk (`#accordionRich`) already opens a panel
+on every bare `[accordion] <head>` member. MEASURED over ALL 429 WTs through
+the live extractor+parser (`outputs/_detect_r242_accunnum.cjs`, 6 shards):
+bare-head `[accordion]` spans **381**, un-numbered repeat regions **75 / 41
+modules** — many of which build today. The ONLY blocker on SCCH302's bundle:
+`[2 images next to each other]` parses to primary `image`, how **embedded**,
+with NO URL — both image walks bail at a URL-less image member
+(`#accordionWithImages` at `!#cellMediaUrl`; `#accordionRich` case (c)).
+
+**FIX 1 — the IMAGE-ARRANGEMENT LAYOUT MARKER skip** (`ACCIMGMARK_OFF`; data
+`interactive_builders.accordion.image_layout_marker`). A member whose primary
+is `image` resolved only EMBEDDED (how ≠ exact), with NO media URL of its own,
+NO trailing black content, and whose span text matches the arrangement
+vocabulary (`images` + "side by side" / "next to each other" / "beside each
+other" — the data `pattern`) is a LAYOUT INSTRUCTION: both accordion walks
+(`#accordionWithImages` + `#accordionRich`, shared helper
+`#imageLayoutMarker`) SKIP it as build content; on a SUCCESSFUL build its text
+joins `bundle.instructions`, so `#bundleInstructions` surfaces it (deduped) as
+the standard red `Writers Note:` after the widget — never silently stripped
+(the r214 instruction-member class). A DECLINE never mutates the bundle, so
+every declined placeholder stays byte-identical. CONTAINMENT BY CONSTRUCTION:
+any accordion bundle carrying such a marker previously declined in BOTH walks,
+so changed output ⊆ marker-carrying accordion bundles. MEASURED vocabulary
+population: **22 occurrences / 12 corpus modules** (ARFUN03 ×3, ARFUN05 ×2,
+CEDR401, ENGC401, HIS1005 ×2, HIS1006, HIS1007 ×2, HIS1008, SCFUN01 ×3,
+XDLS908, XMES202 ×4, XTAS103) + SCCH302 outside the corpus. **CORPUS FIRE
+POPULATION: ZERO** — all 12 carrier modules hash-identical ON vs
+`ACCIMGMARK_OFF=1` (their markers sit in free body / other widget types, or
+the accordion still declines on other grounds) → a pure FORWARD GUARANTEE for
+SCCH302-class modules (the r231 zero-blast class); the tighter media-REFERENCE
+forms ("[Insert media item 6]", "[image judge icon…]" — 1,900+ occurrences of
+URL-less embedded-image spans corpus-wide) are deliberately NOT matched (a
+missing image is a half-build hazard, not an arrangement note).
+
+**FIX 2 — the r240 D1 RIDER taken: widget-internal image alt + lazy**
+(`WIDGETIMG_OFF`; data `elements.image_attrs.widget_internal`). The r240
+recorded rider ("ready to be applied at `InteractiveBuilder.#assetImage` on
+any widget round"): every widget-internal image now routes through
+`MediaBuilder.FinishImg`. Title authority = the VERIFIED iStock API map ONLY
+(`run.istockAcks`, keyed by the id read from the filename — no URL exists at
+this seam, so the slug fallback never fires). The rider gets its OWN toggle
+(not just the parent `IMGATTRS_OFF`, which also governs the r240 body-path
+rule and would confound decomposition — the parent's `enabled:false` /
+`IMGATTRS_OFF` still kill the rider too via FinishImg's own guards).
+CORPUS-INERT for alt BY CONSTRUCTION (corpus module folders carry no acks
+file); the ONLY corpus-visible effect is `loading="lazy"` completing
+flipCard's Mode-P visible template (the one widget image template that lacked
+it) — fire set measured on the shipped corpus: **EXACTLY 13 pages / 10
+modules** (OSAH501-03/-04, OSAI301-02, OSAI401-01, OSAI501-03/-04,
+OSBY401-03, OSBY501-01/-03, OSGM401-02/-03, OSSM301-02, XGF9004-03), a named
+forward-looking `r240_img_alt_lazy` delta at the Round-6 regen. Recorded
+residue: shapeHover's Mode-P template puts `style=` before `class=`, so the
+finisher's lazy regex leaves it untouched.
+
+**SCCH302 AFTER (fix-ON, from raw docs):** lesson 1 ships ONE
+`<div class="accordion">` — `<h4>Heterogenous mixtures</h4>` +
+`<h4>Homogenous mixtures</h4>`, 2 accContent panels, full body paragraphs, 4
+Mode-P images (iStock-2041236856 / 1170801227 / 1010504144 / 171266397) each
+with the VERIFIED API alt ("Fresh vegetable soup with chickpeas, zucchini and
+sweet potatoes on wooden background" …) + lazy, followed by ONE red
+`Writers Note: [2 images next to each other]` (the two identical markers
+dedupe); no "accordion + accordion" hand-off box on the page; 9-page set
+intact.
+
+**PROOF (all in-memory, zero corpus writes — `outputs/_probe_r242_fixes.cjs`,
+ALL LEGS PASS):** scch fix-ON **18/18**; scchoff
+(`ACCIMGMARK_OFF+WIDGETIMG_OFF`) reproduces the rainbow-placeholder state
+("accordion + accordion" label back, no built accordion). Whole-chain-revert
+canary (r238+r239+r240+r241+r242 toggles ALL set — now 18 toggles):
+**BLL210 1/1, OSAH501 6/6, TRR203 3/3, BLL225 3/3 pages byte-identical to the
+round-236 disk state** (OSAH501 doubles as the rider's flipCard carrier —
+chain-reverted it is byte-identical). Per-toggle hash decomposition: the
+marker rule contributes ZERO on OSBY301/OSGM501/OSAI501 and on all 12
+vocabulary carriers; the rider's delta on OSAH501/OSAI501 is EXACTLY the
+flipImage pages, eyeball-verified as pure `loading="lazy"` insertion (the
+r240 body-path deltas correctly attributed to `IMGATTRS_OFF` — the kickoff's
+predicted confound, resolved by the rider's own toggle). **Gates:** tags
+**9557/9557 / REAL FAILURES 0**; entry-parity PASS; index-sync 32/27 (no new
+engine file); accordion verifier **27 panels / 0 defects on
+OSBY301+OSGM501+OSAI501** + `--selftest` GREEN; flipCard **TOTAL 33 /
+divergence 0** + selftest GREEN; speechBubble **defect 0**; tabs **39 / defect
+0 / divergence 0**; carousel **0 mismatched ids**.
+
+**No regeneration** (deferred to Round 6 per Chris, 2026-07-30) — nothing was
+written into `01-Claude_Modules_`; the round-236 gate baselines still describe
+the last regenerated state. Round-6 expected blast from this round: the 13
+flipCard-lazy pages only (the marker rule fires on zero corpus pages).
+
+**RECORDED (named residue, different classes — NOT C1):** SCCH302 lesson 6's
+separation-methods accordion stays a hand-off box — its images are
+TITLE-ANCHORED media-list references ("Sifting Sand Experiment … Stock
+Illustration", no URL in the member) + a non-iStock wikimedia URL = the r240
+D2 class extended INTO widget members (a measured follow-up round of its own);
+lesson 8's `[activity 8A]` capture (data table + `[accordion. Make sure both
+can stay open]` + two bare-head panels inside an unclassified activity bundle)
+= the standing activity/widget boundary class · the SCFUN01-family arrangement
+markers stay in their current non-accordion contexts (fire-proven zero) · the
+shapeHover Mode-P lazy residue (above).
+
+**NEXT: Dev-Feedback Round 6 — E4 + file naming, then THE full corpus
+regeneration + gates** (kickoff
+`NEW_SESSION_MESSAGE__DevFeedback_Round6_FormattingNamingRegen.md`; all series
+kickoffs KEPT on disk per Chris 2026-07-31 — Round 6 deletes them in one
+sweep and closes the chain).
+
+## 2026-07-31 (round 241, build 260618.14) — DEV-FEEDBACK ROUND 4 of 6, FAMILY C2 + E1–E3: clickDrop lists + three text-hygiene fixes (Chris — the SCCH302 developer-feedback chain; **NO REGENERATION — deferred to Round 6 per Chris, 2026-07-30; the round-236 gate baselines still describe the last regenerated state**)
+
+**THE PLAIN-ENGLISH LEAD.** Four polish problems the developer's SCCH302 test
+still showed, each now fixed. First, drag-and-drop activities printed their
+bullet lists as plain "• " paragraphs — the click-to-reveal content now goes
+through the same list machinery as every other paragraph, so Word bullets
+become real bullet lists (the reference library never ships the "• " form and
+uses real lists on 134 pages). Second, invisible non-breaking spaces from the
+writer's Word file (the developer's "AI marker") survived into the page text —
+along with invisible zero-width characters — and are now normalised away at
+the point the Word file is read (15,198 of them across 416 of the 429 Writers
+Templates; 2,108 had made it into the shipped pages, while the human-built
+library ships essentially none). Third, lesson pages repeated the module's
+Te Reo title above their own title — it now appears on a lesson only when the
+lesson has no distinct title of its own, exactly the pattern the human-built
+library follows (measured: 35 affected pages, 25 suppress / 10 keep, all
+matching the reference). Fourth, the acknowledgements block on AI-assisted
+modules shipped three boilerplate paragraphs the site's own template injects,
+so they appeared twice on the published page — when the AI-variant class is
+emitted those paragraphs are now omitted (the reference library omits them on
+24 of its 27 such pages; the catch-all "All other images ©" line is kept).
+
+**THE FOUR FIXES (each independently toggled, all measured corpus-wide first):**
+
+- **C2 — clickDrop bullet lists** (`CDLIST_OFF`; data
+  `interactive_builders.clickDrop.list_content`). The `#clickDrop` builder's
+  revealed-content path dumped one `<p>` per captured paragraph, shipping Word
+  bullets as literal `<p>• A 100ml measuring cylinder</p>`. MEASURED: gold
+  ships **ZERO** `<p>•` bullets inside `clickDropContent` and **134 pages**
+  with real `<ul>/<ol>` there; Claude shipped the artifact on **8 pages**
+  (HES1007 ×6, HES1005-08, ENGR202-03) + SCCH302. The content now routes
+  through `ListsAndRuns.renderBlackText` (stitch=false — the r201 built-widget
+  containment; links=[] as before), so "• " lines group into `<ul><li>`,
+  numbered lines into `<ol>`, and plain lines render one `<p>` each exactly as
+  before. `run` threaded to the builder at dispatch. clickDrop verifier:
+  OSGM501 defect 0 (the plain-paragraph reference build is byte-compatible),
+  `--selftest` GREEN.
+
+- **E1 — invisible-whitespace normalise** (`NBSP_OFF`; data
+  `Input_Doc_Rules.text_normalise`). At the r227 extractor seam (the
+  `#parseParagraph` run walk — table cells arrive through the same path),
+  U+00A0 → plain space and the zero-width set U+200B/U+200C/U+200D/U+FEFF is
+  deleted. MEASURED (live docx scan, ALL 429 WTs): NBSP **15,198 occ / 416
+  WTs** (SCCH302 = the developer's 5), zero-width **124 occ / 22 WTs**; the
+  shipped corpus carries **2,108 literal NBSPs on 298 pages** vs gold's ~0
+  (37 literal on 7 pages; gold's ~1,026 `&nbsp;` ENTITIES are deliberate
+  layout, untouched by construction — the converter never emits the entity).
+  GRANULARITY SAFETY (the r227 red-run trap): an NBSP-only run stays a
+  non-empty whitespace piece (trim/Fold treat U+00A0 as whitespace before and
+  after), and the **tags gate holds EXACTLY — 9557/9557 HANDLED, REAL
+  FAILURES 0** — so red-span granularity and tag classification are proven
+  unchanged. The E1-only output delta on the NBSP/ZW canaries is proven to be
+  PURE whitespace normalisation (disk bytes with NBSP→space + ZW removed ==
+  the new output, byte-for-byte: OSAH501 3/3, TRR203 1/1, BLL210 1/1).
+
+- **E2 — lesson-page module Te Reo h1 suppression** (`LESSONTEREO_OFF`; data
+  `header.lesson_te_reo_suppress`). The recorded r199 follow-up, dev-confirmed
+  ("delete it"): the module's Te Reo title joins a lesson page as a second h1
+  ONLY when the lesson has no distinct title of its own (its title fold-equals
+  the module English title — the XMES102/103 gold form where the module's
+  bilingual pair repeats on every lesson). MEASURED: **35 dual-h1 Claude
+  lesson pages** (XMES101 8 / CEDT207 7 / CEDT301 6 / XMES102 5 / XMES103 5 /
+  SSFUN07 4) → **25 suppress** (gold-verified on all 20 paired: XMES101 ×8,
+  CEDT207 ×6, CEDT301 ×6 gold ships ONE h1; SSFUN07's 4 unpaired follow the
+  family form) / **10 keep** = exactly gold's module-repeat pages. NAMED
+  COLLATERAL (recorded, the r164 net-positive class): XMES103-01's writer left
+  the placeholder "Add lesson title" as the lesson title — it counts as
+  distinct, so its Te Reo drops where gold ships the module pair (1 page vs 20
+  verified fixes). Composes with (independent of) the r230 CL-0042 OSSC gate;
+  r238's evidence floor already caps first-in-series modules (SCCH302) at
+  h1_count 1 — E2 is the GENERAL rule for registry-2 modules. Isolation leg:
+  CEDT301 6/6 + XMES101 8/8 changed pages are CLEAN h1-drops (the only line
+  removed is the module Te Reo h1); XMES102 byte-identical.
+
+- **E3 — acks template-variant boilerplate omit** (`ACKSBOILER_OFF`; data
+  `Acks_Formats.standing_items.template_variant_omit`). When the block ships
+  the AI-variant container class (`acks acksTemplate acksAI`), the site's own
+  template injects the standing boilerplate, so emitting it too doubles it on
+  the published page. MEASURED (every gold acks block): triple-class pages
+  omit all three paragraphs **24/27**; `acks acksTemplate` 20/28; the plain
+  `acks` class KEEPS them **415/416** (unchanged here — the omit is keyed on
+  the SAME hasAi decision that picks the class). Omitted: opening disclaimer
+  ("Every effort…"), AI usage statement, copyright statement; KEPT: the
+  catch-all line (43/55 template-class golds ship it); an opening group left
+  empty by the omission (no unverified-iStock note) is dropped whole — gold
+  shows no empty acksLesson div. The 3 gold triple-class keepers
+  (ENGJ403/BLL275/SSOG105) are the minority form, never chased. Blast at the
+  Round-6 regen: the 17 current acksAI pages (1 page each in 17 modules).
+
+**PROOF (all in-memory, zero corpus writes — `outputs/_probe_r241_fixes.cjs`,
+ALL LEGS PASS):** SCCH302 from raw docs fix-ON **15/15** (real `<ul><li>`
+Equipment list, zero literal bullets; zero NBSP/zero-width anywhere in the
+9-page output with "Ngā Ranunga me ngā Mehanga" surviving on plain spaces;
+lesson 1 ships ONE title h1; acksAI class + all three boilerplate paragraphs
+gone + catch-all kept). All-four-toggles-OFF reproduces the broken state
+exactly (bullets, NBSPs, boilerplate all back). Whole-chain-revert canary
+(r238+r239+r240+r241 toggles all set): **BLL210 1/1, BLL225 3/3, OSAH501 6/6,
+TRR203 3/3 pages byte-identical to the round-236 disk state** (first pass
+correctly attributed BLL225/TRR203 diffs to r240's live IMGATTRS/IMGREFTITLE
+deltas — the kickoff's predicted trap — and re-proven with the full chain
+toggled). Clean-identity: BLL225 with this round's fixes ON == all-off,
+hash-identical (no fix fires there). Per-toggle hash decomposition on
+HES1007: C2 alone changes exactly its 6 bullet-clickDrop pages, E1 alone its
+9 NBSP pages, E3 nothing. E3 content check on OSBY201-00: all three
+paragraphs gone, catch-all kept, no empty group div. **Gates:** tags
+**9557/9557 / REAL FAILURES 0**; entry-parity PASS (+ selftest); clickDrop
+verifier **defect 0** + selftest GREEN; flipCard **TOTAL 33 / divergence 0**;
+speechBubble **defect 0**; index-sync 32/27 (no new engine file).
+
+**No regeneration** (deferred to Round 6 per Chris, 2026-07-30) — nothing was
+written into `01-Claude_Modules_`; the round-236 gate baselines still describe
+the last regenerated state. Round-6 expected blast from this round: ~298 NBSP
+pages + 8 clickDrop-bullet pages + 25 lesson-h1 pages + 17 acksAI pages
+(overlapping sets), judged NET of the chain's named overrides-gold deltas.
+
+**RECORDED:** XMES103-01's placeholder-title collateral (above) · the
+`&nbsp;` ENTITY is never emitted by the converter and gold's entity uses are
+deliberate layout (out of scope) · HES1005/ENGR202's clickDrop pages also
+carry NBSPs, so their Round-6 diffs decompose across C2+E1 (hash-proven
+pattern in the probe).
+
+**NEXT: Dev-Feedback Round 5 — the un-numbered accordion (C1)** (kickoff
+`NEW_SESSION_MESSAGE__DevFeedback_Round5_UnnumberedAccordion.md`; all series
+kickoffs KEPT on disk per Chris 2026-07-31 — Round 6 deletes them in one
+sweep).
+
+## 2026-07-31 (round 240, build 260618.13) — DEV-FEEDBACK ROUND 3 of 6, FAMILY D: the three image rules D1–D3 (Chris — the SCCH302 developer-feedback chain; **NO REGENERATION — deferred to Round 6 per Chris, 2026-07-30; the round-236 gate baselines still describe the last regenerated state**)
+
+**THE PLAIN-ENGLISH LEAD.** Three things were wrong with how the converter
+handles images, all flagged by the developer on the SCCH302 test module. First,
+every image shipped with an empty description (`alt=""`) and without the
+"load lazily" hint — even though the correct description (the official iStock
+title) is sitting right there in the verified `_istock-acks.txt` file the
+converter already reads for the acknowledgements; the converter now fills the
+description from that file (or, failing that, derives it from the image's web
+address, the same trusted rule the acknowledgements use) and adds
+`loading="lazy"` to every content image. Second, an image placed inside a
+table whose writer pasted the image's *title* (with the address hidden behind
+the link) got a wrong made-up filename, while the identical reference outside
+a table resolved correctly — table images now find their hidden link exactly
+like everywhere else (SCCH302's Solutions/Suspensions table now ships
+`iStock-1321097020.jpg` instead of `clear-yellow-liquid-is-poured-into-beake.jpg`).
+Third, when an image was authored by title, that raw title line ("… Stock
+Photo – Download Image Now – iStock") also leaked onto the page as a visible
+paragraph — it is the image's catalogue reference, not a caption, and the
+finished library never shows it (0 such lines across all 2,263 reference
+pages); it is now dropped, while genuine captions and the raw developer
+hand-off boxes are left untouched.
+
+**MEASURED FIRST (all WTs through the live extractor + both rendered corpora —
+`outputs/_detect_r240_images.cjs`, 6 shards / 429 modules, + rendered-corpus
+scans).** GOLD: 29,202 images, alt populated **73%** (much of it hand-typed
+editorial text — "Beautification image" — NOT the API title), `loading="lazy"`
+only **24%** (older modules predate the convention), reference-title `<p>`s
+**0**. CLAUDE: 8,663 images, alt 1%, reference-title `<p>`s **145**. WT-level
+classes: title-anchored free-body images **675 occ / 114 modules** (the D3/D1
+population); table-cell title-anchored image candidates **1,653 occ / 58
+modules** (bilingual/placeholder-table candidates stay untouched BY
+CONSTRUCTION — `insidePlaceholder` short-circuits both cell paths; the kept-
+table/grid fire population is the smaller real subset, e.g. ENGR202).
+
+**THE FIXES (each independently toggled, DATA OVER CODE):**
+- **D1 — `IMGATTRS_OFF`** (data `Emit_Templates.elements.image_attrs`):
+  `MediaBuilder.FinishImg` — a post-fill on just-built image markup (the
+  round-200 videoicon post-replace class, so the shared templates and every
+  other consumer stay byte-identical) applied at `MediaBuilder.image` +
+  `TablesAndGrids.cellImage`, covering the Mode-P visible placeholder, the
+  Mode-P commented-out real reference (the tag the developer copies out), and
+  the Mode-D direct `<img>`. Title authority: verified iStock API title
+  (`run.istockAcks`, the r235 map) > URL-slug Title-Case (the verified 98%
+  slug-is-title rule, reusing `istock_slug_title`) > empty (never invent).
+  `loading="lazy"` injected in the developer's attribute order. GOLD-OVERRIDE:
+  captured as `Subject_Global_Parameters._universal_conventions.r240_img_alt_lazy`
+  (`overrides_gold:true`, the r219/r239 pattern) — at the Round-6 regen,
+  alt/loading divergences from gold's hand-typed-alt / lazy-less eras are
+  INTENTIONAL named deltas, never chased.
+- **D2 — `CELLIMGLINK_OFF`** (data `Emit_Templates.body_region.cell_image_link_match`):
+  the docx stores a table cell's hyperlink on the table BLOCK, not in the cell
+  text, so the cell paths never saw the URL. `contentTable` now threads
+  `block.links` down BOTH cell paths (`renderCellInline` → `cellImage` and
+  `layoutTableGrid` → `renderCellParts` → `cellImage`, all as trailing
+  OPTIONAL params — every existing caller unchanged; the two direct
+  `layoutTableGrid` call sites in ContentConverter pass `it.block.links`).
+  A cell with no URL in its text takes the block link whose folded anchor text
+  sits inside the folded cell text — LONGEST anchor wins, so two image cells
+  in one row each find their own link (min anchor length 8).
+- **D3 — `IMGREFTITLE_OFF`** (data `Emit_Templates.elements.image_reference_title_drop`):
+  two halves, one flag. (1) `MediaBuilder.image` drops an OWN blackAfter line
+  that fold-equals a non-URL hyperlink anchor of the same paragraph (covers
+  any anchor form, incl. "SCCH302 Graphs.xlsx"-style file references) or
+  matches the iStock reference pattern; following prose is kept (the r80
+  own-vs-following split). (2) the `ListsAndRuns.renderBlackText` STITCH seam
+  (the r201 containment: `stitch=false` for cv2 placeholder dumps +
+  built-widget content → the raw hand-off keeps every reference line BY
+  CONSTRUCTION) drops a whole free-body line matching the full-line reference
+  pattern — catches a reference title whose `[image]` marker was consumed
+  elsewhere (SCCH302-06's un-built-quiz lead flushes, 4 sites).
+
+**PROOF (all in-memory, zero corpus writes — `outputs/_probe_r240_fixes.cjs`,
+ALL LEGS PASS):** `scch` — SCCH302 from raw docs, fixes ON, 15/15: verified
+API title fills alt verbatim ("Cute girl looking under microscope while
+student doing experiment. Edification." — the acks file's title; the dev's CSV
+truncated it), the title-anchored lesson-2 diagram gets its verified alt,
+every `img-fluid` carries `loading="lazy"` (bare remaining 0), both lesson-3
+table cells resolve their iStock ids with zero slug residue + slug-derived
+alt, ZERO visible reference `<p>`s while the cv2 hand-off dumps still carry
+their raw lines, and the r239 captionText caption is untouched. `scchoff` —
+all three toggles reproduce the broken state exactly (empty alts, no lazy,
+slug filenames, the leaking reference `<p>`). `canary` (toggles OFF) —
+BLL210/OSAH501/BLL225/TRR203 in-memory == disk bytes (faithful revert; also
+proves the data-file round-trips output-inert); ENGC102's initial diff was
+decomposed to EXACTLY r239's named B4 delta (byte-identical once GOJOURNAL_OFF
+joins — clean attribution). `imgfree` (fixes ON) — the zero-image modules
+BLL210/XMES102/TWHK901 byte-identical BY CONSTRUCTION. Per-toggle `hash`
+decomposition: XLP04 D1=3pp / D3=3pp / D2=0pp; ENGR202 D2=2pp with the diff
+eyeballed as EXACTLY the slug→iStock filename repair (grid + kept-table
+cells); ENGJ403/MXFU201 D2=0 (their candidates are placeholder tables —
+untouched by construction). Gates that run without a corpus: tags **9557/9557
+/ REAL FAILURES 0**; entry-parity **PASS**; index-sync **32/27** (no new
+engine file); flipCard **33 / divergence 0**; speechBubble **defect 0**; tabs
+**39 / divergence 0**. `alt`/`loading` are NOT in the skeleton gate's
+KEEP_ATTR set (`_structural_skeleton.py` L23) → the PRIMARY gate is inert to
+D1 BY CONSTRUCTION; D2/D3 change filenames/attributes/removed-text only
+(compare_structure/body_compare text-side effects arrive at the Round-6 regen
+as part of the chain's single named delta set).
+
+**RECORDED (follow-ups, not this round):** widget-INTERNAL images
+(`InteractiveBuilder.#assetImage` — speechBubble/carousel/modal/tab pane
+images) still ship `alt=""` with no `loading` — now derivable via the same
+FinishImg; deferred so this round could not move the widget verifiers'
+byte-level baselines; a natural rider on any widget round. The embed-story
+placeholder scaffold (no URL → nothing derivable) unchanged. The 4 SCCH302-06
+reference lines lived in un-built-quiz lead flushes — the widgets themselves
+remain the standing widget-build backlog (R5's accordion round et al.).
+
+**NO REGENERATION** (deferred to Round 6 per Chris, 2026-07-30) — the
+round-236 gate baselines still describe the last regenerated state; the
+`*_OFF` toggles are the reversal guarantee. Blast at the Round-6 regen: D1 =
+every image-carrying page (the named overrides-gold delta); D2/D3 = the
+measured module lists in `outputs/_r240_shard*.json`. Files:
+`MediaBuilder.js`, `TablesAndGrids.js`, `ListsAndRuns.js`,
+`ContentConverter.js` (2 call-site lines), `Emit_Templates.json`,
+`Subject_Global_Parameters.json`, `Config.js`. Tools:
+`outputs/_detect_r240_images.cjs` (+ `_r240_shard*.json`),
+`outputs/_probe_r240_fixes.cjs`, `outputs/_dbg_r240_dump.cjs`.
+**NEXT: Dev-Feedback Round 4 — clickDrop lists + text hygiene C2/E1–E3**
+(kickoff `NEW_SESSION_MESSAGE__DevFeedback_Round4_ClickDropHygiene.md`; all
+series kickoffs KEPT on disk per Chris 2026-07-31 — Round 6 deletes them in
+one sweep).
+
+## 2026-07-31 (round 239, build 260618.12) — DEV-FEEDBACK ROUND 2 of 6, FAMILY B: the five writer-tag vocabulary gaps B1–B5 (Chris — the SCCH302 developer-feedback chain; **NO REGENERATION — deferred to Round 6 per Chris, 2026-07-30; the round-236 gate baselines still describe the last regenerated state**)
+
+**THE PLAIN-ENGLISH LEAD.** Five things the SCCH302 writer typed were not in the
+converter's tag dictionary yet, so they came out as wrong layouts, red error
+flags, or raw bracket text: a **right-hand alert** (rendered full-width with a
+stray empty box instead of as the narrow tip-box beside the text), an **image
+caption** (rendered as a red "orphan tag" error), a plain **[define: …] hover**
+(which split its paragraph in half and leaked a red note instead of making the
+word hoverable), the **"Go to Journal" button** (which escaped its activity box
+and stayed a green button instead of the design team's journal heading), and the
+**journal download button** (whose label was the raw bracket instruction text).
+Each is now a small dictionary/data addition, so every future module using those
+forms — including all of SCCH302 — comes out right. All five of the developer's
+corresponding findings are fixed; every fix is independently reversible.
+
+**HER FINDINGS FIXED (5 of the 22):** RHS alert (position + the stray empty
+row), caption text, the "boiling point" info trigger, the activity-3D journal
+button, and the journal download scaffold + red note.
+
+**MEASURED FIRST (every class, over ALL WTs through the live extractor+parser —
+`outputs/_detect_r239_familyb.cjs`, 4 shards, 431 dirs; results
+`outputs/_r239_all.txt`):**
+- **B1** exact `[right-hand alert]` spelling: corpus population **ZERO** (SCCH302
+  the first — a forward guarantee). The WIDER RHS-alert phrasing family
+  (`[rhs alert]` ×31, `[alert box right hand side]`, …) = **80 occ / 40 modules**,
+  all shipped as plain alerts today — RECORDED as its own follow-up round, not
+  silently rerouted here. The EMPTY-WRAP class: the converted corpus ships **70**
+  empty `row>col-12` pairs / 60 pages / 28 modules; the gold ships **2** (one-off
+  outliers) — the human never keeps the empty wrap.
+- **B2** `[caption]`: **175 occ / 22 modules**, virtually all widget-member
+  SUBTAGS (carousel/flipCard captions — untouched BY CONSTRUCTION); the free-body
+  orphan-flag subset is the fix population (ENGS302-04, CEDO105-00, PES1007-04,
+  XGF9004-01 among the proven corpus sites).
+- **B3** `[define` heads: **6 occ / 4 corpus modules** (SCFUN01 ×3 clean
+  colon-defs — now heal; EXBP901/EXIP901 `[define on hover:` note-form — declines
+  safely, recorded residue; PES1007 `[define this:]` def-less — guards decline)
+  + SCCH302. **`definition` scanner-side = MEASURED DECLINE**: 247 `[definition…]`
+  spans are data-marker SUBTAGS inside widget bundles (MXDB302 matching pairs,
+  ANZH203, CEDT104 flipcard hovers) — weaving them would break widget capture;
+  the render-stitch already carries "definition" (round 201).
+- **B4** go-to-journal buttons: **~1,051 occ / 111 modules** (728 black-label +
+  239 alias-typed `[go to journal]` + 84 in-span). The gold library is
+  **ERA-MIXED**: `<h4 class="goJournal">` ×568 / 57 modules vs
+  `<div class="button">Go to journal` ×1,052 / 104 modules, MIXED within most
+  subjects (no group discriminator) — so the developer's rule ships as a
+  FORWARD-LOOKING overrides-gold convention (see the capture below).
+- **B5** the "standard instructions" download form: corpus population **ZERO**
+  (SCCH302 the first); the 15 existing download-journal bracket forms
+  (`[download journal]` ×6, ENGS302's `[Download learning journal button]`, …)
+  are EXCLUDED by the discriminator and keep their routes byte-identically.
+
+**THE FIVE FIXES (each its own data flag + env toggle):**
+- **B1a `RHSALERT_OFF`** — `[right-hand alert]` promotes `alert` → `side alert`
+  via the round-170 `tag_promote` mechanism extended with **`when_match`** (a
+  regex on the span's folded text, so a broad "from" tag can promote for ONE
+  spelling only); the whole r121/r123 side-alert pipeline then fires:
+  `alertActivity` in a `col-md-4` column, backward-paired as the right sibling of
+  the preceding content column. Data `Tag_Lexicon._meta.tag_promote` rule 2.
+- **B1b `EMPTYWRAP_OFF`** — the empty span-wrap kill: a span-mode callout whose
+  whole content rode the span's lead paragraph (`[alert]…[end alert]` with
+  nothing between) drops its unused inner `row>col-12` pair at the close site
+  (detected exactly: the last emitted part IS the remembered wrap-open string).
+  Data `callouts.drop_empty_span_wrap`.
+- **B2 `CAPTIONTEXT_OFF`** — a free-body `[caption]` ships
+  `<p class="captionText">…</p>` (gold ×545) instead of the orphan-sub-tag red
+  flag + plain `<p>`; the branch lives AT the orphan site, so widget-member
+  captions are untouched BY CONSTRUCTION. The caption ships PLAIN (italic
+  stripped — gold captionText opens with `<i>` in only 9/~545; the r164/r168
+  net-positive class). Data `elements.caption_text`.
+- **B3 `DEFINEHEAD_OFF`** — `define` joins the scanner-weave head pattern
+  (`hover_definition_inline.define_heads.head_pattern` replaces the base
+  alternation) AND the render-stitch head vocabulary (`stitch_heads`); all
+  existing instruction/URL/trigger guards unchanged. SCCH302-03's "boiling
+  point" paragraph stays whole with the infoTrigger span; SCFUN01's three
+  fragmented paragraphs re-join and weave.
+- **B4 `GOJOURNAL_OFF`** — a `[button]` with an EXPLICIT go-to-journal label (or
+  the alias-typed `[go to journal]`/`[journal button]` span, anchored whole-span
+  match) ships the templated `<h4 class="goJournal">Go to your journal</h4>`;
+  never when a URL is present; a bare `[Button]` label-defaulted by
+  `journal_label_default` is untouched (conservative — bare buttons also source
+  gold's editorial downloadButtons). PLACEMENT: inside a stack-open activity the
+  h4 renders inline; a BUNDLE-OWNED activity absorbs a directly-following
+  unconsumed go-journal button into the still-open box (`#goJournalTail`, the
+  r232 mtkQuizBundleTail placement class) AND ships the h4 for a button the
+  widget's member walk captured (SCCH302-4A's no-`[end click and drop]` shape —
+  the member stays verbatim in the raw hand-off dump, the canonical form emits
+  live). Data `buttons.go_journal`.
+- **B5 `DLJOURNAL_OFF`** — `[button to download journal with standard
+  instructions]` ships the developer's byte-specified scaffold —
+  `<a href="docs/{CODE} Journal.docx" target="_blank"><div class="button
+  downloadButton">Download journal</div></a>` + the empty `hint` +
+  `hintDropContent(oneDrive)` divs — plus ONE red+bold **Designer/Developer To
+  Do** note that the journal document itself must be created. Data
+  `buttons.download_journal`.
+
+**THE OVERRIDES-GOLD CAPTURE (B4).** The dev's h4 rule is the design team's
+CURRENT convention over an era-mixed gold — captured as
+`Subject_Global_Parameters._universal_conventions.r239_go_journal_h4`
+(`overrides_gold:true`): at the Round-6 regeneration, divergence from a
+button-form gold at a go-to-journal site is an INTENTIONAL named delta (WT
+population ~1,051 occ / 111 modules), never chased; gates judged net of exactly
+that delta per `_meta.gold_override_policy.gate_policy`.
+
+**PROOF (in-memory only — `outputs/_probe_r239_fixes.cjs`; the corpus was NEVER
+written):**
+- **SCCH302 fix-ON: ALL 22 assertions PASS** (alertActivity col-md-4 pair + no
+  stray empty row; the exact dev-corrected captionText; the boiling-point
+  infoTrigger with the paragraph whole; h4.goJournal inside BOTH activity boxes
+  (3D and 4A) with no green button; the full download scaffold + To Do note; 9
+  pages intact).
+- **SCCH302 all-six-toggles-OFF: the broken state reproduces exactly** (plain
+  full-width alert + the stray empty row, the orphan flag, the `[define:` note
+  leak, the green button, the raw bracket label) — ALL PASS.
+- **Clean canaries byte-identical to disk fix-ON:** BLL210 (the side-alert home
+  module), BLL225, OSAH501 (supervisor/callout-heavy), TRR203 (reo).
+- **Faithful revert at corpus scale:** MXDB302 with all six toggles OFF is
+  byte-identical to disk (10/10 pages).
+- **Per-module delta decomposition (each affected module's in-memory change is
+  EXACTLY its named fix):** ENGC102 = B4 only (GOJOURNAL_OFF == disk 8/8);
+  ENGS302 + CEDO105 = B2 only (CAPTIONTEXT_OFF == disk); MXDB302 = B4 + B1b;
+  XGF9004 = B4 (17 pages) + B1b + B2; PES1007 = B2 (its `[define this:]`
+  correctly declines); SCFUN01 = B3 weaves + the round-238 named level-attr
+  delta.
+- **Containment:** ENGS302's r94 `alert top` table route + r96
+  `[Download learning journal button]` route untouched and the B5 scaffold does
+  NOT fire there; MXDB302's `[definition:` widget members untouched (its only
+  diffs are B4/B1b lines); CEDO105's carousel captions untouched (only its one
+  free-body caption changed).
+- **Protected read-only gates:** tags **9557/9557 HANDLED / REAL FAILURES 0**
+  (the Tag_Lexicon edit clean); entry-parity **PASS**; index-sync **32/27** (no
+  new engine file); `subject_parameters --selftest` + `vet_issue --selftest`
+  **PASS** (after the SGP capture); flipCard **TOTAL 33 / divergence 0**;
+  speechBubble **defect 0**.
+
+**RECORDED (follow-ups / residues, none chased this round):** the wider
+RHS-alert phrasing family (80 occ / 40 modules — needs its own measured round
+against each form's gold); the `[define on hover:` note-form (EXBP901/EXIP901, 1
+occ each — the span classifies as an instruction before the weave sees it); the
+pre-existing weave-join stray space before punctuation (`</span> .` — 105 occ
+already in the shipped corpus, gold ~2; a weave-join glue round of its own); the
+`</span>`-adjacent captionText italic minority (9 gold keeps, no discriminator).
+
+**NO REGENERATION (deferred to Round 6 per Chris, 2026-07-30).** The gate
+baselines still describe the round-236 regenerated state. Files touched: engine
+`TagNormaliser.js` (when_match), `InteractiveScanner.js` (define head compose),
+`ListsAndRuns.js` (stitch heads), `ContentConverter.js` (caption branch, B4/B5
+button branches, #goJournalTail, the empty-wrap close site); data
+`Tag_Lexicon.json`, `Emit_Templates.json`, `Subject_Global_Parameters.json`.
+Env toggles: `RHSALERT_OFF` `EMPTYWRAP_OFF` `CAPTIONTEXT_OFF` `DEFINEHEAD_OFF`
+`GOJOURNAL_OFF` `DLJOURNAL_OFF`. Tools: `outputs/_detect_r239_familyb.cjs`,
+`outputs/_probe_r239_fixes.cjs`. **NEXT: Dev-Feedback Round 3 — image rules
+D1–D3** (kickoff `NEW_SESSION_MESSAGE__DevFeedback_Round3_ImageRules.md`; this
+round's kickoff KEPT on disk per Chris's 2026-07-31 do-not-delete order).
+
+## 2026-07-31 (round 238, build 260618.11) — DEV-FEEDBACK ROUND 1 of 6, FAMILY A: the "no precedent → n/a" skeleton fallback (Chris — the SCCH302 developer-feedback chain; **NO REGENERATION — deferred to Round 6 per Chris, 2026-07-30; the round-236 gate baselines still describe the last regenerated state**)
+
+**THE PLAIN-ENGLISH LEAD.** SCCH302 is the first module of a brand-new subject —
+no SCCH module has ever been built before. When the developer converted it in
+the PageForge web app, the page came out with the literal text **"n/a"** written
+into it: as the body's CSS class, the footer's CSS class, the level attribute,
+and even inside the script address (`https://n/a.desire2learn.com/…`) — which is
+why her page **loaded with no styling at all** (her Prio-high finding). The
+converter had looked up the "1-10 Science" group in its style registry, found
+values that had been MINED as the placeholder string "n/a" (because there was no
+gold Science module to mine from), and wrote that placeholder straight into the
+page instead of falling back to the correct universal values it already knows
+(every module in the library uses `container-fluid`, the `tekura` script host,
+`footer-nav`, …). After this round, an unknown subject falls back to the values
+every module in the library shares, the digit in its own code tells it its
+template band (SCCH**3**02 → "7-8", exactly the value the developer confirmed),
+and both module menus compose with the modern label form she asked for. **Every
+new subject Te Kura ever launches would have hit this on its first module; now
+none will** — the acceptance bar Chris set ("any module in any subject with any
+template at any level") is proven by the in-memory robustness matrix below.
+
+**HER FINDINGS FIXED BY THIS ONE ROUND (7 of the 22):** the html/head attributes
++ script URL (Prio-high), `<body class="n/a">`, the missing `#module-code` chip,
+`<ul class="n/a">` in the footer, the lesson chip "SCCH302 1" → the decimal
+"1.0", the Overview curriculum block rendered as body text instead of the
+overview menu, and each lesson's WALT/I-can block rendered as body text instead
+of the simplified lesson menu. Bonus (also her finding, listed under E2): with
+the group's junk `h1_count` no longer trusted, a lesson page now carries ONE
+title h1 — the module's Te Reo title no longer repeats on every lesson of a
+first-in-series module.
+
+**MEASURED FIRST (the class, corpus-wide).** The mined-"n/a" sites are exactly
+three in `Style_Anchor_Registry.json` — the `1-10 Science` subject_rules (4
+scalar fields + the tooltip pattern), the Blended-Literacy `CODE` base_rules
+(dormant — no CODE module exists), and the ConnectED `CEDT1` delta — plus 24
+more inside the Majority registry (dormant for the corpus; guarded by the same
+sweep). On disk today exactly **3 modules ship "n/a"**: SCFUN01 (`level="n/a"`),
+CEDT101 and CEDT104 (the full set — body class, script host, footer class; their
+GOLD ships `inquiry container-fluid` + tekura). The registry's `defaults` tier
+already holds the correct universal values for every field. The evidence oracle
+is `Module_Structure_Index.json` (the gold library's on-disk index, already
+loaded by the engine): the SCCH base's one member "SCCH301" has **no gold on
+disk** (evidence 0) while CEDT's members are real (CEDT101/104 indexed) — that
+distinction is exactly what separates "mined junk, use defaults" from "mined
+from real gold, honour it".
+
+**FIX 1 — THE UNIVERSAL-FIELD FALLBACK** (env `SKELDEFAULT_OFF`; data
+`Style_Anchor_Registry.json _meta.universal_fields`). Two rules in
+`ModuleResolver.Resolve`: **(a) unknown-literal skip** — while walking the
+cascade, a tier field holding an unknown literal ("n/a"), or a pattern object
+any of whose sub-values is one, is NOT overlaid, so the nearest REAL tier
+(ultimately `defaults`) keeps the field; a final sweep guarantees no unknown
+literal can survive from ANY source. This alone heals SCFUN01 (`level=""`) and
+CEDT101/104 (`inquiry container-fluid` + tekura + footer-nav — their ConnectED
+subject tier's real values now win; visible at the Round-6 regen). **(b) the
+evidence floor** — a matched base with NO gold-built member in the index is an
+untrustworthy mined group WHOLESALE: every listed universal field (body_class,
+level_attr, idoc_host, footer_class, acknowledgements, module_code, h1_count,
+menu_type, menu_button_tooltip, footer_links, page_model) resolves from
+`defaults`, and `run.registryDefaultsApplied` is set — the first-in-series
+signal. That is what turns SCCH302's junk "—"/free-text/"none" pattern values
+into full-code + decimal chips and tabs + simplified menus. A module with its
+own gold on disk counts as its own evidence, so **no corpus module can ever
+trip the floor by construction** (proven over all 389 index codes).
+
+**FIX 2 — THE UNKNOWN-SUBJECT DIGIT FALLBACK** (env `TPLFALLBACK_OFF`; data
+`Emit_Templates skeleton.template_phase_presets.unknown_subject_digit_fallback`).
+A subject not in the r221 preset list that resolved NO template_phase at all now
+takes the band from its own code digit (3-digit level-coded: 1→1-3 … 5→NCEA) —
+SCCH302 → "7-8". PURE FALLBACK: any module with a resolved value — including
+every digit-is-not-a-level family — is untouched by construction; r224
+`prefix_overrides` and r231 `cohort_overrides` still outrank it (probe-proven:
+synthetic JAP101 ships "combo", not "1-3"). A FUN-shaped or 4-digit code still
+ships the empty attribute — **measured decline**: the FUN families' template
+values are genuinely MIXED (10 combo vs 5 NCEA bases), so no confident fallback
+exists there and the rule refuses to guess.
+
+**FIX 3 — FIRST-IN-SERIES DEFAULT MENUS** (env `MENUDEFAULT_OFF`; data
+`Emit_Templates menu.lesson_li_label.default_row` + two `menu.tab_map.tab1.match`
+entries). The menu TYPES for an unknown subject come free through fix 1 (the
+defaults tier's tabs/simplified feeding `menuTypeFor`'s Style-Anchor fallback —
+no new machinery). What was still missing: (a) the lesson simplified menu's
+generated label — a new subject can never have a MEASURED r222 registry row, so
+a `default_row` now fires when no row matched AND the run carries the
+first-in-series flag, in the MODERN form the developer specified:
+`<h4><span>Learning Intentions</span></h4>` (she flagged even the legacy
+`<h5>Learning intentions</h5>` wording as outdated); every module with real gold
+evidence is untouched by construction. (b) the overview tab_map now knows
+"knowledge" and "practices" (the new-era Science curriculum block) — both route
+to tab 1 in the modern `<h4><span>` form and the spurious "matched no tab rule"
+red flag on Practices is gone. MEASURED corpus-inert: zero existing pages carry
+a tab_map-routed Knowledge/Practices heading (the BLL240/ENGJ403/TEDC401
+occurrences arrive via the two_col_li/writer_tabs/other archetypes —
+canary-byte-proven), and "knowledge" already routed to tab 1 via the "know"
+substring.
+
+**PROOF — THE IN-MEMORY ROBUSTNESS MATRIX** (`outputs/_probe_r238_familya.cjs`;
+no corpus writes anywhere; ALL PASS):
+- **SCCH302 from its raw docs** (`ZZ-HumanDev-PageForge-Testing/... /01-Raw_Docs`,
+  WT + Media List + `_istock-acks.txt`): zero "n/a" across all 9 pages (was 35);
+  `<html lang="en" level="" template="7-8">`; the tekura script host;
+  `<body class="container-fluid">`; overview chip `SCCH302`; lesson chip `1.0`;
+  `<ul class="footer-nav">`; the overview menu composed (two-tab shell, tab 1 =
+  Knowledge / Practices / Learning Intentions / How-will-I-know, all
+  `<h4><span>`, no red flag); the lesson simplified menu composed with the
+  modern label; ONE lesson title h1 — **every value the developer wrote as
+  "correct" in her feedback, byte-for-byte**.
+- **Synthetics:** ZZQQ101 → pure defaults + `template="1-3"`; ZZQQ501 → "NCEA";
+  ZZFUN01 → empty attribute (the measured FUN decline); JAPFUN01 AND JAP101 →
+  "combo" (r231 cohort outranks the new fallback); all zero "n/a", no crashes.
+- **The 389-code resolution delta scan:** fix-ON vs fix-OFF resolution differs
+  for EXACTLY the three known "n/a" carriers (SCFUN01: level_attr;
+  CEDT101/CEDT104: body_class/level_attr/idoc_host/footer_class/tooltip) and
+  **zero corpus modules trip the evidence floor**.
+- **Eight fix-ON canaries byte-identical to disk** (BLL210 — the r224 prefix
+  fence · TEDC401 / BLL240 / ENGJ403 — the tab_map-risk trio · ENGC102 · OSAH501
+  · TRR203 · ENFUN01), and toggle-OFF canaries (ENGC102, BLL210) byte-identical
+  too.
+- **Toggle-OFF reversal:** `SKELDEFAULT_OFF=1 TPLFALLBACK_OFF=1 MENUDEFAULT_OFF=1`
+  reproduces the round-237 broken SCCH302 exactly (35 "n/a", `template=""`,
+  chip "SCCH302 1", no menus).
+- **Rails:** `_check_index_sync.cjs` OK (32/27); `_verify_entry_parity.cjs`
+  PASS (Resolve is called from the shared PrepareRun choke point — no entry
+  drift).
+
+**NAMED ROUND-6 DELTAS (expected, correct-direction, never chase back):** at the
+Round-6 full regeneration SCFUN01 / CEDT101 / CEDT104 will change on disk —
+"n/a" → real values, toward their gold (CEDT gold ships `inquiry
+container-fluid` + tekura; SCFUN01/CEDT gold ship NO level attribute while the
+defaults tier ships `level=""` — a 1-attribute divergence accepted as the
+universal default, and the developer's own correction for SCCH302 is exactly
+`level=""`).
+
+**NO REGENERATION (deferred to Round 6 per Chris, 2026-07-30).** Nothing was
+written into `01-Claude_Modules_`; the round-236 protected-gate baselines still
+describe the last regenerated state. Env toggles: `SKELDEFAULT_OFF` /
+`TPLFALLBACK_OFF` / `MENUDEFAULT_OFF`. Data: `Style_Anchor_Registry
+_meta.universal_fields` · `Emit_Templates
+skeleton.template_phase_presets.unknown_subject_digit_fallback` ·
+`menu.lesson_li_label.default_row` · `menu.tab_map.tab1.match` (+knowledge,
++practices). Files: ModuleResolver.js (the overlay/floor/sweep),
+SkeletonBuilder.js (the digit fallback), MenuBuilder.js (the default label row),
+Config.js. Probes kept in `outputs/`: `_probe_r238_familya.cjs` (the standing
+matrix), `_probe_scch302_baseline.cjs` (the before/after fact dump),
+`_probe_scch302_menus.cjs`, `_probe_scch302_wt.cjs`. **NEXT: Dev-Feedback Round
+2 — the tag-vocabulary family B1–B5** (kickoff
+`NEW_SESSION_MESSAGE__DevFeedback_Round2_TagVocabulary.md` at the project root).
+
 ## 2026-07-30 (round 237, build 260618.10) — UI COPY: the HTML Generator upload instructions (Chris — marked-up screenshot; **UI-ONLY, no regen, no gates, ship ledger untouched**)
 
 **THE ASK (Chris, 2026-07-30).** Two wording changes on the HTML Generator screen,

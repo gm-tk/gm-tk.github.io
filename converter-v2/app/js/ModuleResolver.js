@@ -135,25 +135,51 @@ class ModuleResolver {
 		const rules = structuredClone(REG.defaults);
 		const path = ["defaults"];
 
+		// THE UNIVERSAL-FIELD FALLBACK (ROUND 238 — Dev-Feedback R1 Family A,
+		// module SCCH302, the first module of a brand-new subject). Some
+		// registry tiers were MINED as the literal string "n/a" — a
+		// mining-failed marker, never a real output value — and the plain
+		// Object.assign walk let it BURY the correct defaults ("body
+		// class='n/a'", a script URL of https://n/a.desire2learn.com/… → the
+		// page loads with no styling at all). Two data-driven rules from
+		// _meta.universal_fields fix the whole class (see its _doc):
+		//   1. UNKNOWN-LITERAL SKIP — #overlayRules below refuses to overlay
+		//      any field holding an unknown literal, so the nearest REAL tier
+		//      (ultimately defaults) keeps the field; a final sweep guards
+		//      every other source (the Majority registry carries them too).
+		//   2. EVIDENCE FLOOR — a matched base with NO gold-built member in
+		//      Module_Structure_Index is untrustworthy WHOLESALE: the listed
+		//      fields resolve from defaults and run.registryDefaultsApplied
+		//      is set (the first-in-series signal MenuBuilder's default
+		//      lesson-menu label row keys on).
+		// Env toggle: SKELDEFAULT_OFF (reverts both rules to the plain walk).
+		const uf = REG._meta?.universal_fields;
+		const ufOn = uf && uf.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.SKELDEFAULT_OFF);
+
 		if (!code) {
 			run?.AddNote("warn", "ModuleResolver", "No module code — resolved from global defaults only.");
-			run && (run.resolutionPath = path.join(" → "));
+			if (run) {
+				run.resolutionPath = path.join(" → ");
+				if (ufOn) run.registryDefaultsApplied = true;
+			}
 			return rules;
 		}
 
 		const found = this.#findInRegistry(code, REG);
+		let skippedUnknown = 0;
 
 		if (found) {
 			const { subjectName, subject, baseName, base, levelName, level, exactMember } = found;
-			Object.assign(rules, structuredClone(subject.subject_rules ?? {}));
+			skippedUnknown += this.#overlayRules(rules, subject.subject_rules, ufOn ? uf : null);
 			path.push(`subject "${subjectName}"`);
 			// group identity for the HTML-convention cascade (resolved after
 			// the field merge below, once template_phase is known)
 			if (run) { run.subjectName = subjectName; run.seriesCode = baseName; }
-			Object.assign(rules, structuredClone(base.base_rules ?? {}));
+			skippedUnknown += this.#overlayRules(rules, base.base_rules, ufOn ? uf : null);
 			path.push(`base ${baseName}`);
 			if (level) {
-				Object.assign(rules, structuredClone(level.delta ?? {}));
+				skippedUnknown += this.#overlayRules(rules, level.delta, ufOn ? uf : null);
 				path.push(`level ${levelName}`);
 			}
 			if (!exactMember) {
@@ -169,15 +195,65 @@ class ModuleResolver {
 				run?.AddNote("info", "ModuleResolver",
 					`${code} is a recorded page_model exception — using ${rules.page_model}.`);
 			}
+
+			// EVIDENCE FLOOR (rule 2 above). A base whose registry members
+			// include NO gold-built module on disk (Module_Structure_Index —
+			// the SCCH base lists only the phantom "SCCH301") mined its
+			// pattern values ("—" chips, "none" menus, free-text literals)
+			// from nothing: resolve every universal field from the defaults
+			// tier instead, and flag the run as a first-in-series module.
+			if (ufOn) {
+				const msi = DataService.Data.ModuleStructureIndex ?? {};
+				const goldIndex = new Set([
+					...Object.keys(msi.modules ?? {}),
+					...Object.keys(msi.module_meta ?? {}),
+				]);
+				let evidence = goldIndex.has(code) ? 1 : 0;
+				for (const lvl of Object.values(base.levels ?? {})) {
+					for (const m of lvl.members ?? []) {
+						const mc = String(m).replace(/\.html$/i, "");
+						if (mc !== code && goldIndex.has(mc)) evidence++;
+					}
+				}
+				if (evidence < (uf.min_evidence ?? 1)) {
+					let restored = 0;
+					for (const f of uf.fields ?? []) {
+						if (REG.defaults[f] === undefined) continue;
+						if (JSON.stringify(rules[f]) !== JSON.stringify(REG.defaults[f])) restored++;
+						rules[f] = structuredClone(REG.defaults[f]);
+					}
+					if (run) run.registryDefaultsApplied = true;
+					path.push("evidence floor → defaults");
+					run?.AddNote("warn", "ModuleResolver",
+						`${code}: its registry group (base ${baseName}) has no gold-built member in the library index — a first-in-series module. ${restored} mined field(s) were untrustworthy and resolved from the library-wide defaults instead (universal-field evidence floor; env SKELDEFAULT_OFF reverts).`);
+				}
+			}
 		} else {
 			// entirely unknown series → majority master instructions
 			const majority = this.#resolveFromMajority(code, run);
 			if (majority) {
-				Object.assign(rules, majority.rules);
+				skippedUnknown += this.#overlayRules(rules, majority.rules, ufOn ? uf : null);
 				path.push(majority.path);
 			} else {
 				run?.AddNote("warn", "ModuleResolver",
 					`${code}: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.`);
+				if (run && ufOn) run.registryDefaultsApplied = true;
+			}
+		}
+
+		// FINAL SWEEP (rule 1's belt): no unknown literal may survive into
+		// the resolved rules from ANY source — restore the defaults value.
+		if (ufOn && skippedUnknown > 0) {
+			run?.AddNote("info", "ModuleResolver",
+				`${skippedUnknown} mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).`);
+		}
+		if (ufOn) {
+			const isU = this.#unknownTester(uf);
+			for (const f of uf.fields ?? []) {
+				const v = rules[f];
+				const bad = isU(v) || (v && typeof v === "object" && !Array.isArray(v)
+					&& Object.values(v).some(isU));
+				if (bad && REG.defaults[f] !== undefined) rules[f] = structuredClone(REG.defaults[f]);
 			}
 		}
 
@@ -377,6 +453,47 @@ class ModuleResolver {
 	 *          base prefix can't be matched (Resolve then falls back
 	 *          further, to #resolveFromMajority)
 	 */
+	/**
+	 * Returns a tester for the registry's "unknown literal" markers (the
+	 * mined "n/a" strings — see _meta.universal_fields). null / real values
+	 * are never unknown; matching is case/whitespace-tolerant.
+	 *
+	 * @param {Object} uf - the _meta.universal_fields config block
+	 * @returns {Function} (value) => boolean
+	 */
+	static #unknownTester(uf) {
+		const unknown = new Set((uf?.unknown_literals ?? ["n/a"]).map((s) => s.toLowerCase()));
+		return (v) => typeof v === "string" && unknown.has(v.trim().toLowerCase());
+	};
+
+	/**
+	 * Overlays one registry tier's rule block onto the resolving rules —
+	 * the cascade's merge step. With a universal_fields config supplied
+	 * (uf non-null), any field holding an unknown literal — or a PATTERN
+	 * object any of whose sub-values is one — is SKIPPED, so the value the
+	 * higher tiers (ultimately defaults) supplied stays in place instead of
+	 * being buried under mining junk. With uf null (config absent or env
+	 * SKELDEFAULT_OFF), this is byte-identical to the historical
+	 * Object.assign(target, structuredClone(block)) walk.
+	 *
+	 * @param {Object} target - the rules object being resolved (mutated)
+	 * @param {Object|null|undefined} block - the tier's rule block
+	 * @param {Object|null} uf - _meta.universal_fields, or null to disable
+	 * @returns {number} how many fields were skipped as unknown literals
+	 */
+	static #overlayRules(target, block, uf) {
+		const src = structuredClone(block ?? {});
+		if (!uf) { Object.assign(target, src); return 0; }
+		const isU = this.#unknownTester(uf);
+		let skipped = 0;
+		for (const [k, v] of Object.entries(src)) {
+			if (isU(v) || (v && typeof v === "object" && !Array.isArray(v)
+				&& Object.values(v).some(isU))) { skipped++; continue; }
+			target[k] = v;
+		}
+		return skipped;
+	};
+
 	static #findInRegistry(code, REG) {
 		const upper = code.toUpperCase();
 

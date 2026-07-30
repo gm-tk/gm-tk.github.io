@@ -1357,6 +1357,10 @@ class ContentConverter {
 						// ship their button + To Do note here, inside the still-open box
 						// (ROUND 232 — CL-0038; see #mtkQuizBundleTail).
 						emit(...this.#mtkQuizBundleTail(bundle, run, it));
+						// A writer's go-to-journal [button] directly after the widget belongs
+						// INSIDE this activity box (ROUND 239 — Dev-Feedback R2, B4; the
+						// human's h4.goJournal sits inside the box; see #goJournalTail).
+						emit(...this.#goJournalTail(bodyItems, i, run, bundle));
 						// close the activity at the bundle's end (the
 						// terminator that ended the widget — e.g. the [H3])
 						emit(stack.pop().close);
@@ -1541,7 +1545,7 @@ class ContentConverter {
 					breakRow();
 					const reoGridOn = (dlCfg.reo_layout_table_grid?.enabled !== false)
 						&& !(typeof process !== "undefined" && process.env && process.env.REOLTABLE_OFF);
-					const reoGrid = reoGridOn ? TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm) : null;
+					const reoGrid = reoGridOn ? TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null) : null;
 					// LEAK-SAFE: use the grid ONLY when it is clean. A grid cell whose text carries a
 					// resolved [tag] somewhere in the MIDDLE of its text (the cell renderer only strips
 					// a LEADING tag, not one buried mid-sentence) would leak that raw tag as VISIBLE
@@ -1576,7 +1580,7 @@ class ContentConverter {
 					breakRow();
 					parts.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(it.block, run, true, this.#norm)}\n</div>`);
 				};
-				const grid = stack.length ? null : TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm);
+				const grid = stack.length ? null : TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null);
 				if (grid) {
 					if (_lgOn && this.#htmlLeaksResolvedTag(grid)) {
 						_lgFallback();
@@ -2067,7 +2071,27 @@ class ContentConverter {
 				case "CONTAINER_CLOSE": {
 					if (stack.length) {
 						const top = stack.pop();
-						emit(top.close);
+						// EMPTY SPAN-WRAP KILL (ROUND 239 — Dev-Feedback R2, B1 part 2). A
+						// span-mode callout opens its inner row>col-12 wrapper EAGERLY (the
+						// content normally arrives via later items); when the writer's whole
+						// content rode the span's own lead paragraph and the [end X] follows
+						// immediately, that wrapper is still the LAST thing emitted — an
+						// empty row>col-12 pair the human never ships (measured: Claude 70
+						// pairs / 28 modules, gold 2). Detected exactly: the last emitted
+						// part IS the remembered wrap-open string, so nothing ever flowed
+						// in. The wrap open is popped and its close is stripped off the
+						// box's close string; a box with ANY flowed content is untouched.
+						// Data flag: callouts.drop_empty_span_wrap   Env toggle: EMPTYWRAP_OFF
+						const _ewCfg = tpl.callouts.drop_empty_span_wrap;
+						if (top.wrapOpen && _ewCfg && _ewCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env.EMPTYWRAP_OFF)
+							&& parts.length && parts[parts.length - 1] === top.wrapOpen
+							&& top.close.startsWith(top.wrapClose + "\n")) {
+							parts.pop();
+							emit(top.close.slice((top.wrapClose + "\n").length));
+						} else {
+							emit(top.close);
+						}
 						// content after a closed callout/activity starts a
 						// fresh row (corpus convention — data knob)
 						if (!stack.length && rowCfg.after.includes(
@@ -2333,6 +2357,29 @@ class ContentConverter {
 						parts.push(INQ_SENTINEL);
 						pageLabelHold = "";   // a tab-opened panel has no [page N] label to hold onto
 						break;
+					}
+					// FREE-BODY [caption] → the human's captionText paragraph (ROUND 239 —
+					// Dev-Feedback R2, B2; SCCH302-02's blood-under-the-microscope caption).
+					// "caption" is an alias of the data-marker SUBTAG (its meaning INSIDE a
+					// widget bundle — carousel/flipCard captions — is untouched: bundle
+					// members never reach this orphan branch). A free-body [caption] is the
+					// writer's image caption, which the human ships as
+					// <p class="captionText">…</p> (gold ×545) — not an orphan-structure
+					// red flag. The match is the EXACT bare bracket, so a caption marker
+					// carrying extra instruction text still surfaces as a flag below.
+					// Data flag: elements.caption_text   Env toggle: CAPTIONTEXT_OFF
+					{
+						const _capCfg = tpl.elements?.caption_text;
+						if (_capCfg && _capCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env.CAPTIONTEXT_OFF)
+							&& primary.tag === "data marker"
+							&& new RegExp(_capCfg.match ?? "^\\[\\s*caption\\s*\\]\\s*$", "i")
+								.test((it.parse?.folded ?? Utils.Fold(String(it.text ?? ""))).trim())
+							&& it.blackAfter.trim()) {
+							emit(...actDeBold([Utils.FillTemplate(_capCfg.template,
+								{ text: ListsAndRuns.inlineMarkup(it.blackAfter.replace(/\*/g, "").trim()) })]));
+							break;
+						}
 					}
 					// a sub-tag outside any interactive = mis-structured
 					// source: render its content, flag the orphan (surface,
@@ -3987,6 +4034,70 @@ class ContentConverter {
 		return out;
 	}
 
+	/**
+	 * GO-TO-JOURNAL TAIL ABSORB (ROUND 239 — Dev-Feedback R2, B4; SCCH302-03
+	 * activity 3D / 4A). A bundle-owned activity box closes at its widget's end,
+	 * so a writer's "[button] Go to Journal" sitting AFTER the widget's own end
+	 * tag but still BEFORE [end activity] used to escape into its own row below
+	 * the closed box. The human ships the templated <h4 class="goJournal"> INSIDE
+	 * the activity. Called at the bundle-owned close site (the r232
+	 * mtkQuizBundleTail placement class): walks forward from the bundle's opening
+	 * item, skipping bundle-consumed items, blank lines and a stray non-activity
+	 * CONTAINER_CLOSE (the widget's own unconsumed end tag); if the FIRST real
+	 * item is a go-to-journal [button] (the same discriminator as the buttons
+	 * branch — explicit label or the anchored alias span, no URL), it is
+	 * consumed here and the h4 returns for emission inside the still-open box.
+	 * Anything else stops the walk — a following activity's own button is never
+	 * reached (its opener is a CONTAINER_OPEN, which stops the walk first).
+	 * Data flag: buttons.go_journal.absorb_into_activity   Env toggle: GOJOURNAL_OFF
+	 */
+	static #goJournalTail(bodyItems, i, run, bundle = null) {
+		const gjCfg = DataService.Data.EmitTemplates.buttons?.go_journal;
+		if (!gjCfg || gjCfg.enabled === false || gjCfg.absorb_into_activity === false) return [];
+		if (typeof process !== "undefined" && process.env && process.env.GOJOURNAL_OFF) return [];
+		const lblRe = new RegExp(gjCfg.label_match, "i");
+		const aliasRe = new RegExp(gjCfg.raw_match, "i");
+		const h4 = () => [Utils.FillTemplate(gjCfg.form,
+			{ label: Utils.EscapeHtml(gjCfg.label ?? "Go to your journal") })];
+		const isGoJournal = (c) => {
+			const p = c.type === "tag" ? c.parse?.primary : null;
+			if (!p || p.directive !== "ELEMENT" || p.tag !== "button") return false;
+			const url = c.block?.links?.[0]?.target
+				?? ((c.blackAfter ?? "").match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
+			if (url) return false;
+			const explicit = (this.#norm.RenderText(c.text) || "").replace(/\*/g, "").trim()
+				|| (c.blackAfter || "").replace(/\*/g, "").trim();
+			return (explicit && lblRe.test(explicit))
+				|| aliasRe.test(Utils.Fold(String(c.text ?? "")).trim());
+		};
+		// A go-to-journal [button] the widget's member walk CAPTURED as a trailing
+		// member (a writer's 4A shape: no [end click and drop], so the button rode
+		// into the bundle like an Undo/Reset control) still ships its h4 inside the
+		// box — the r232 mtkQuizBundleTail pattern: the member stays verbatim in the
+		// raw hand-off dump, the canonical form emits in the live rendering.
+		if (bundle) {
+			for (const m of (bundle.memberItems ?? [])) {
+				if (m && isGoJournal(m)) return h4();
+			}
+		}
+		for (let j = i + 1; j < bodyItems.length && j <= i + 120; j++) {
+			const c = bodyItems[j];
+			if (!c) break;
+			if (c._consumed || c.consumedBy !== undefined && c.consumedBy !== null) continue;
+			if (c.type === "black" && !String(c.text ?? "").trim()) continue;
+			const p = c.type === "tag" ? c.parse?.primary : null;
+			// a stray unconsumed widget end tag ([end click and drop]) — already closed
+			if (p && p.directive === "CONTAINER_CLOSE" && p.tag !== "end activity"
+				&& !/\bactivity\b/i.test(p.tag ?? "")) continue;
+			if (p && p.directive === "ELEMENT" && p.tag === "button" && isGoJournal(c)) {
+				c._consumed = true;
+				return h4();
+			}
+			break;   // the first real item was not a go-to-journal button — stop
+		}
+		return [];
+	}
+
 	/** A pre-pass-claimed BUTTON bundle with no real content members — its
 	 *  placeholder box is suppressed (the canonical button replaces it). */
 	static #mtkQuizBundleThin(bundle) {
@@ -4233,6 +4344,61 @@ class ContentConverter {
 			}
 			if (!label) label = (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim()
 				|| tpl.buttons.journal_label_default;
+			// DOWNLOAD-JOURNAL TEMPLATED SCAFFOLD (ROUND 239 — Dev-Feedback R2, B5;
+			// SCCH302-02 activity 2B). The writer's "[button to download journal with
+			// standard instructions]" ships the design team's templated download scaffold
+			// (docs/{CODE} Journal.docx anchor + downloadButton + hint + hintDropContent)
+			// plus ONE Designer/Developer To Do note that the journal document itself must
+			// be created. The discriminator (download+journal+"standard instructions", or
+			// the "button to download journal" head) has a measured corpus population of
+			// ZERO — the 15 existing download-journal bracket forms keep their existing
+			// routes (incl. the round-96 button_download rule) byte-identically. The
+			// writer's own label text is consumed (it IS the button's label, replaced by
+			// the templated "Download journal").
+			// Data flag: buttons.download_journal   Env toggle: DLJOURNAL_OFF
+			const djCfg = tpl.buttons.download_journal;
+			if (djCfg && djCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.DLJOURNAL_OFF)
+				&& new RegExp(djCfg.match, "i").test(Utils.Fold(String(it.text ?? "")))) {
+				out.push(NotesAndComments.redFlag(
+					Utils.FillTemplate(djCfg.note, { code: run.moduleCode ?? "" }), run, "todo"));
+				out.push(Utils.FillTemplate(djCfg.scaffold, { code: run.moduleCode ?? "" }));
+				return out;
+			}
+			// GO-TO-JOURNAL H4 (ROUND 239 — Dev-Feedback R2, B4; SCCH302-03 activity 3D).
+			// A [button] whose EXPLICIT label folds to "go to (your) journal" — or the
+			// alias-typed [go to journal]/[journal button] span — ships the design team's
+			// templated <h4 class="goJournal">Go to your journal</h4> instead of a green
+			// button. Fires only on an EXPLICIT writer label (a bare [Button] whose label
+			// came from journal_label_default is untouched) and never when a URL is
+			// present (gold's h4 carries no link). The gold library is era-MIXED
+			// (h4 ×568 vs button ×1,052, mixed within most subjects) — the developer's
+			// feedback names the h4 as the design team's CURRENT convention, so this is a
+			// FORWARD-LOOKING overrides-gold rule (captured in
+			// Subject_Global_Parameters._universal_conventions.r239_go_journal_h4).
+			// Data flag: buttons.go_journal   Env toggle: GOJOURNAL_OFF
+			const gjCfg = tpl.buttons.go_journal;
+			if (gjCfg && gjCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.GOJOURNAL_OFF)
+				&& key === "button" && !url) {
+				const _lblRe = new RegExp(gjCfg.label_match, "i");
+				const _explicitLbl = (this.#norm.RenderText(it.text) || "").replace(/\*/g, "").trim()
+					|| (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim();
+				const _aliasSpan = new RegExp(gjCfg.raw_match, "i")
+					.test(Utils.Fold(String(it.text ?? "")).trim());
+				if ((_explicitLbl && _lblRe.test(_explicitLbl)) || _aliasSpan) {
+					out.push(Utils.FillTemplate(gjCfg.form,
+						{ label: Utils.EscapeHtml(gjCfg.label ?? "Go to your journal") }));
+					// never silently strip: an alias-typed span carrying REAL trailing prose
+					// (not just its own "Go to journal"-ish label duplicate) keeps that prose
+					// as ordinary body text after the heading
+					const _tail = (it.blackAfter || "").replace(/\*/g, "").trim();
+					if (_aliasSpan && _tail && !_lblRe.test(_tail)) {
+						out.push(...ListsAndRuns.renderBlackText(_tail, run, it.block?.links));
+					}
+					return out;
+				}
+			}
 			// BLL SUBJECT HOUSE STYLE: a plain "[button]" whose label is a dropbox
 			// upload/visit renders ORANGE (buttonD) in the Blended-Literacy subject family,
 			// GREEN elsewhere — a per-module-prefix convention (the SAME label is both
@@ -4674,8 +4840,17 @@ class ContentConverter {
 			const wrap = def.wrap_content ? tpl.callouts.content_wrap : null;
 			if (wrap) out.push(wrap.open);
 			const closeHtml = (wrap ? wrap.close + "\n" : "") + def.close;
+			// ROUND 239 (Dev-Feedback R2, B1 part 2): remember the wrap open/close strings on
+			// the stack entry, so the CONTAINER_CLOSE site can detect a box whose inner
+			// row>col-12 stayed EMPTY (the writer put all the content in the span's own lead
+			// paragraph and closed the box immediately — SCCH302-01's [right-hand alert]/
+			// [end alert] shape) and drop the useless empty wrapper pair. Measured: the
+			// converted corpus ships 70 such empty row>col-12 pairs / 28 modules; the human
+			// gold ships 2 (both one-off outliers) — the human never keeps the empty wrap.
+			// Data flag: callouts.drop_empty_span_wrap   Env toggle: EMPTYWRAP_OFF
 			stack.push({ tag, close: closeHtml,
-				mode: wrapStructured ? "span-wrap" : "span", hasContent: out.length > 1 });
+				mode: wrapStructured ? "span-wrap" : "span", hasContent: out.length > 1,
+				wrapOpen: wrap ? wrap.open : null, wrapClose: wrap ? wrap.close : null });
 			run.AddNote("info", "ContentConverter", wrapStructured
 				? `[${tag}] wraps the following table/widget as its content (no [end ${tag}]) — closes at the next heading/section/page.`
 				: `[${tag}] spans to an explicit end tag (writer-authored box).`);
@@ -5136,7 +5311,11 @@ class ContentConverter {
 		if (run.interactiveMode === "extract" && ex && ex.enabled !== false) {
 			bundle.built = false;                          // an un-built, EXTRACTED placeholder
 			const pageIdx = run.pages.indexOf(bundle.page);
-			const nn = Utils.Pad2(pageIdx < 0 ? 0 : pageIdx);   // matches the {code}-{NN}.html file
+			const nn = Utils.Pad2(pageIdx < 0 ? 0 : pageIdx);   // the page's document-order index. ROUND 243: the
+			// output FILES now use the library _L_S names (PageAssembler.PageFileNames); the extract
+			// REFERENCE code deliberately keeps this stable index form — it is the search-by-code
+			// contract between the page marker and {CODE}_interactives.txt (whose File: line carries
+			// the real filename), not a filename.
 			const seqN = (run.extractCounters.get(pageIdx) || 0) + 1;
 			run.extractCounters.set(pageIdx, seqN);        // per-page running number, document order
 			// ROUND 205 (Chris) — the reference code is now plain + hyphenated with INT
@@ -5371,7 +5550,9 @@ class ContentConverter {
 			const label = String(state.labels[k] ?? "").trim() || l.title || `Lesson ${l.n}`;
 			labels.push(label);
 			return Utils.FillTemplate(cfg.tile, {
-				href: Utils.FillTemplate(naming.page_file, { code, NN: Utils.Pad2(l.idx) }),
+				// ROUND 243: through the shared filename source of truth, so a tile
+				// href ALWAYS matches the emitted file (library _L_S form or legacy).
+				href: PageAssembler.PageFileNames(run)[l.idx],
 				target: cfg.link_target ?? "_self",
 				label: Utils.EscapeHtml(label),
 			});

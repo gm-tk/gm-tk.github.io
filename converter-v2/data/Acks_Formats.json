@@ -37,7 +37,12 @@
   "catch_all": "<p>All other images © Te Aho o Te Kura Pounamu, Wellington, New Zealand.</p>",
   "catch_all_note": "When Te Kura-produced video/audio is also present the human form expands ('All other images and audio …'); the converter cannot reliably know that, so it emits the base line — a developer adjusts if needed.",
   "copyright_statement": "<p><i>Copyright © <span class=\"currentYear\"></span> Board of Trustees of Te Aho o Te Kura Pounamu, Private Bag 39992, Wellington Mail Centre, Lower Hutt 5045, New Zealand. All rights reserved. No part of this publication may be reproduced or transmitted in any form or by any means without the written permission of Te Aho o Te Kura Pounamu.</i></p>",
-  "year_rule": "The year is NEVER hard-coded — the empty <span class=\"currentYear\"></span> renders it."
+  "year_rule": "The year is NEVER hard-coded — the empty <span class=\"currentYear\"></span> renders it.",
+  "template_variant_omit": {
+   "enabled": true,
+   "omit": ["opening_disclaimer", "ai_usage_statement", "copyright_statement"],
+   "rule": "ROUND 241 (Dev-Feedback R4, E3 — SCCH302's doubled acknowledgements boilerplate). When the block ships the TEMPLATE container class (the AI variant 'acks acksTemplate acksAI'), the site's own stylesheet/template INJECTS the standing boilerplate — so emitting the three paragraphs too makes them appear TWICE on the published page. MEASURED (round 241, every gold acks block): pages carrying the exact triple class omit all three 24/27; 'acks acksTemplate' 20/28; the plain 'acks' class KEEPS them 415/416 (unchanged here). The listed standing items are therefore OMITTED when (and only when) the template/AI container class is emitted; the catch_all line is KEPT (43/55 template-class golds ship it); an opening group left EMPTY by the omission (no unverified-iStock note to carry) is dropped whole — the gold form shows no empty acksLesson div. The 3 gold triple-class keepers (ENGJ403/BLL275/SSOG105) are the minority form, never chased. Env ACKSBOILER_OFF reverts to emitting all three paragraphs regardless of class."
+  }
  },
 
  "hyperlink_rule": {

@@ -667,6 +667,13 @@ class TagNormaliser {
 			if (tpr && tpr.enabled !== false && primary) {
 				for (const rule of (tpr.rules ?? [])) {
 					if (rule.env && typeof process !== "undefined" && process.env && process.env[rule.env]) continue;
+					// ROUND 239 (Dev-Feedback R2, B1): a rule may carry `when_match` — a regex
+					// tested against the span's FOLDED text (`s`) — so a broad "from" tag (the
+					// generic "alert") can be promoted for ONE specific spelling only
+					// ("[right-hand alert]" -> "side alert") without touching every other
+					// span that resolves to that tag. A rule without when_match behaves
+					// exactly as before (the round-170 supervisor-button rule is unchanged).
+					if (rule.when_match && !new RegExp(rule.when_match, "i").test(s)) continue;
 					let changed = false;
 					for (const t of tags) {
 						if (t.tag === rule.from) {

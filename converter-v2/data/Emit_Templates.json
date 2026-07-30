@@ -281,7 +281,15 @@
     "note": "Round 201 (Chris, queue-5 split-bracket infoTrigger) — RENDER-LEVEL re-stitch of any hover/rollover/definition marker that reached the FINAL visible text as a LITERAL. The scanner round-75/82/86 weave only reaches clean red TAG items; the leaking residue arrives as a BLACK item (HIS1002/HIS1005 'for TERM'), a 'definition'-head data-marker tag (ENGJ301), or a table cell (CEDO501). ListsAndRuns.hoverStitch runs at the TOP of inlineMarkup (every visible-text path: <p>/<li>/<td>) AND on the FULL multi-line text in renderBlackText (cross-line 'for TERM'), inserting the U+E000…U+E001 sentinel that #inlineMarkup already converts to <span class=infoTrigger info=DEF>anchor</span>. CONTAINMENT-SAFE BY CONSTRUCTION: cv2 placeholder dumps render RAW (never via inlineMarkup/renderBlackText — proven: their bare URLs stay unlinked), so the 389 markers trapped in un-built widgets are untouched. ANCHOR: a 'for/on TERM' marker weaves onto the LAST whole-word occurrence of TERM in the preceding text (the round-146 note's deferred named-anchor); otherwise the single word immediately before the marker. Reuses the round-146 hygiene (instruction-def + URL-tail decline) and the round-82 'trigger' exclusion (those are round 75's). A marker with no clean anchor/def is LEFT as the pre-existing literal — never a wrong weave, never a NEW leak. Measured visible footprint 39 occ / 19 modules (outputs/_measure_infosplit.py); the ~26 stitchable are ENGJ301/CEDR501/CEDO501/CEDK501/TWHA903/HIS1002/HIS1005/SSFUN01/SSFUN06/SSFUN07/ARFUN03/ARFUN05/HIS1004/PHE1007. Env INFOSPLIT_OFF reverts to the leaking literal.",
     "_head_words_note_r222c": "ROUND 222c: 'hover info' (first, longest-wins) admits both the spaced '[hover info ‘X’:' AND the glued '[hoverinfo ‘X’:' cell forms (head_words internal spaces compile to [-\\s]?) — the ENGJ403 4.0 act-structure table cells. The quoted-anchor weave in hoverStitch pairs with it."
    },
-   "_head_pattern_note_r222c": "ROUND 222c (Chris, ENGJ403 hover screenshot): 'hover(?:\\s*info(?:rmation)?)?' admits the GLUED '[hoverinfo ...' form (ENGJ403 types one) — the spaced '[hover info ...' already matched via the bare 'hover' + \\b. Previous pattern: ^\\[\\s*(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\b"
+   "_head_pattern_note_r222c": "ROUND 222c (Chris, ENGJ403 hover screenshot): 'hover(?:\\s*info(?:rmation)?)?' admits the GLUED '[hoverinfo ...' form (ENGJ403 types one) — the spaced '[hover info ...' already matched via the bare 'hover' + \\b. Previous pattern: ^\\[\\s*(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\b",
+   "define_heads": {
+    "enabled": true,
+    "head_pattern": "^\\[\\s*(?:hover(?:\\s*info(?:rmation)?)?|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover|define)\\b",
+    "stitch_heads": [
+     "define"
+    ],
+    "_doc": "ROUND 239 (Dev-Feedback R2, B3 — SCCH302-03 'boiling point'). The bare [define: DEF] head now weaves like [hover define:] (which already worked): head_pattern here REPLACES the base pattern (adding 'define' to the alternation) in the scanner weave, and stitch_heads joins the render-stitch head_words. Measured over ALL WTs: '[define' heads = 6 occ / 4 corpus modules (SCFUN01 x3 clean colon-defs, EXBP901/EXIP901 '[define on hover:', PES1007 '[define this:]' def-less -> guards decline, unchanged) + SCCH302. 'definition' was MEASURED and DECLINED for the scanner side: 247 [definition…] spans are data-marker SUBTAGS inside widget bundles (MXDB302 matching pairs, ANZH203, CEDT104 flipcard hovers) — weaving them would break widget capture; the render-stitch already carries 'definition' (round 201) for render-level literals. All existing instruction/URL/trigger guards apply unchanged. Env DEFINEHEAD_OFF reverts to the base head_pattern + head_words."
+   }
   },
   "hover_weave_hygiene": {
    "enabled": true,
@@ -330,6 +338,29 @@
    "domains": {
     "speldsa.org.au": "https://speldsa.org.au"
    }
+  },
+  "caption_text": {
+   "enabled": true,
+   "match": "^\\[\\s*caption\\s*\\]\\s*$",
+   "template": "<p class=\"captionText\">{text}</p>",
+   "_doc": "ROUND 239 (Dev-Feedback R2, B2 — SCCH302-02). A FREE-BODY [caption] (outside any interactive) is the writer's image caption; the human ships <p class=\"captionText\">…</p> (gold x545). 'caption' stays an alias of the data-marker SUBTAG, so inside widget bundles nothing changes (carousel/flipCard captions etc — measured 175 [caption] occ / 22 modules, nearly all widget members); this rule fires ONLY at the orphan-sub-tag branch (which by definition is outside every interactive), replacing the 'Orphan sub-tag [data marker]' red flag + plain <p> with the captionText paragraph. The match is the EXACT bare bracket ([caption] and nothing else in the span) so a caption marker carrying extra instruction text still surfaces as a flag. Env CAPTIONTEXT_OFF reverts."
+  },
+  "image_attrs": {
+   "_round": "240 (Dev-Feedback R3, D1) — content-image alt text + loading=\"lazy\"",
+   "enabled": true,
+   "alt_from_reference": true,
+   "loading_lazy": true,
+   "widget_internal": true,
+   "note": "Applied as a post-fill (MediaBuilder.FinishImg) on free-body + table-cell content images. alt authority: verified iStock API title (run.istockAcks, the *_istock-acks.txt map) > URL-slug Title-Case (the verified 98% slug-is-title rule) > empty. loading=lazy is a forward rule — gold era-mixed 24%; overrides-gold capture Subject_Global_Parameters._universal_conventions.r240_img_alt_lazy. Env IMGATTRS_OFF reverts both.",
+   "widget_internal_note": "ROUND 242 (Dev-Feedback R5) — the r240 recorded RIDER taken: widget-INTERNAL images (InteractiveBuilder.#assetImage) join the same rule. Title authority = the VERIFIED map only (id read from the filename; no URL at that seam, so the slug fallback never fires) — corpus module folders carry no acks file, so the alt fill is corpus-INERT by construction; the only corpus-visible effect is loading=lazy completing flipCard's Mode-P visible template (a named forward-looking r240_img_alt_lazy delta; shapeHover's style-first Mode-P template untouched by the finisher's regex — recorded residue). Env WIDGETIMG_OFF reverts the rider ALONE (IMGATTRS_OFF still kills it too), so it decomposes independently of the r240 body-path rule."
+  },
+  "image_reference_title_drop": {
+   "_round": "240 (Dev-Feedback R3, D3) — the image's own title-form reference line never renders",
+   "enabled": true,
+   "min_anchor_length": 8,
+   "reference_line_pattern": "download image now|stock (?:photo|illustration|vector)\\s*[\\u2013\\u2014-]",
+   "note": "The round-80 video-title-drop class extended to images: an OWN blackAfter line that fold-equals a non-URL hyperlink anchor of the same paragraph, or matches the iStock reference form, is the media REFERENCE, not a caption (gold ships 0 such <p>s; Claude shipped 145). Genuinely-following prose is kept. Env IMGREFTITLE_OFF. Part 2 (same flag/toggle): a whole free-body text LINE matching line_pattern is dropped at the ListsAndRuns.renderBlackText stitch seam (cv2 dumps stitch=false → untouched by construction) — catches a reference title whose [image] marker was consumed elsewhere (un-built quiz lead flushes).",
+   "line_pattern": "download image now|stock (?:photo|illustration|vector)\\b[^\\n]*[\\u2013\\u2014-]\\s*istock\\s*$"
   }
  },
  "callouts": {
@@ -514,7 +545,11 @@
    "_rule": "Two-tier positional rule (§5.6): a positional phrase that maps to a documented class here is ACTIONED into the class; one that doesn't is rendered as a red flag at the box."
   },
   "corpus_note": "alert / 'alert solid' / whakatauki / wananga / quoteText counted from the finished corpus (e.g. 95× quoteText, 176× whakatauki).",
-  "lead_note": "lead_element: a short embedded title renders as this element inside the box (corpus: .alert leads are h4-dominant). Callouts without the key keep the bolded <p> lead."
+  "lead_note": "lead_element: a short embedded title renders as this element inside the box (corpus: .alert leads are h4-dominant). Callouts without the key keep the bolded <p> lead.",
+  "drop_empty_span_wrap": {
+   "enabled": true,
+   "_doc": "ROUND 239 (Dev-Feedback R2, B1 part 2 — SCCH302-01). A span-mode callout ([alert]…[end alert]) opens its inner row>col-12 content wrapper eagerly; when the writer's whole content rode the span's own lead paragraph and the end tag follows immediately, the wrapper ships EMPTY. Measured: converted corpus 70 empty row>col-12 pairs / 60 pages / 28 modules; human gold 2 (one-off outliers) — the human never keeps the empty wrap. ON: the CONTAINER_CLOSE site detects the untouched wrap-open as the last emitted part and drops the pair. Env EMPTYWRAP_OFF reverts."
+  }
  },
  "activity_wrapper": {
   "open": "<div class=\"activity{modifiers}\"{numberAttr}><div class=\"row\"><div class=\"col-12\">",
@@ -738,7 +773,23 @@
    "label_match": "dropbox",
    "_round66_note": "ROUND 66 (Chris, BLL233-01). The human renders a dropbox button as ORANGE <div class=\"buttonD\"> in some modules and GREEN <div class=\"button\"> in others. NOT a per-button call-to-action rule: the SAME label 'Upload to dropbox' is GREEN 496x AND ORANGE 378x corpus-wide. The colour is a PER-MODULE HOUSE STYLE (98.9% single-colour per module) that tracks the module CODE PREFIX (subject family): Blended Literacy (BLL) = orange (78/83 BLL modules; the other subjects AGH/ANZH/CED/ENG/MX/... = green). buttonD is EXCLUSIVELY dropbox text corpus-wide (388/388), so the rule fires ONLY when BOTH hold: the resolved plain [button] label matches label_match ('dropbox', case-insensitive) AND the module-code prefix is in module_prefixes. Engine: ContentConverter.#element button branch swaps button.form -> button_dropbox.form. Chris chose 'All BLL modules' (accepts ~5 BLL modules the human kept green: BLL171/240 mixed, BLL246/252/254 green). The <a href=...rcode=TCS-NNNNNN> dropbox link wrapper is a per-module D2L id absent from the WT+Media List (non-derivable) — match the COLOUR only, exactly as the current green buttons already omit the link. Env DROPBOXD_OFF reverts every dropbox button to green."
   },
-  "journal_label_default": "Go to your journal"
+  "journal_label_default": "Go to your journal",
+  "go_journal": {
+   "enabled": true,
+   "label_match": "^go\\s*to\\s*(?:your\\s+|the\\s+)?journals?\\s*[.!]*$",
+   "raw_match": "^\\[\\s*(?:go to (?:your |the )?journals?|journal button)\\s*\\]\\s*$",
+   "form": "<h4 class=\"goJournal\">{label}</h4>",
+   "label": "Go to your journal",
+   "absorb_into_activity": true,
+   "_doc": "ROUND 239 (Dev-Feedback R2, B4 — SCCH302-03 activity 3D). A [button] whose EXPLICIT label folds to 'go to (your) journal' (or the alias-typed [go to journal]/[journal button] span — raw_match is anchored to the WHOLE folded span so a longer prose span can never false-fire; an alias span's real trailing prose is kept as body text after the heading, never stripped) ships the design team's templated <h4 class=\"goJournal\">Go to your journal</h4> INSIDE the open activity box, never a green <div class=\"button\">. MEASURED over ALL WTs: ~1,051 occ / 111 modules (728 black-label + 239 alias-typed + 84 in-span). The gold library is ERA-MIXED — h4.goJournal x568 / 57 modules vs <div class=button>Go to journal x1,052 / 104 modules, MIXED within most subjects (no group discriminator) — the developer's feedback names the h4 as the design team's CURRENT convention, so this ships as a FORWARD-LOOKING overrides-gold rule (captured in Subject_Global_Parameters._universal_conventions.r239_go_journal_h4; button-gold divergences at the Round-6 regen are INTENTIONAL named deltas, never chased). A button that carries/absorbs a URL keeps the existing button behaviour (gold h4 has no href); an EMPTY [button] whose label came only from journal_label_default is NOT retagged (conservative — bare buttons are also the source of gold's editorial downloadButtons). absorb_into_activity: a go-to-journal button sitting directly after a bundle-owned activity's widget is pulled INSIDE the still-open box before it closes (the r232 mtkQuizBundleTail placement class). Env GOJOURNAL_OFF reverts everything to the plain green button."
+  },
+  "download_journal": {
+   "enabled": true,
+   "match": "(?=[^\\]]*\\bdownload)(?=[^\\]]*\\bjournal)[^\\]]*\\bstandard instructions\\b|^\\[?\\s*button to download journal\\b",
+   "scaffold": "<a href=\"docs/{code} Journal.docx\" target=\"_blank\"><div class=\"button downloadButton\">Download journal</div></a>\n<div class=\"hint\"></div>\n<div class=\"hintDropContent\" hintType=\"oneDrive\"></div>",
+   "note": "The module journal document still needs to be created — the Download journal button on this page links to docs/{code} Journal.docx.",
+   "_doc": "ROUND 239 (Dev-Feedback R2, B5 — SCCH302-02 activity 2B). The writer's [button to download journal with standard instructions] ships the design team's templated download scaffold byte-verbatim from the developer's specification: the docs/{CODE} Journal.docx anchor + downloadButton + the empty hint + hintDropContent(oneDrive) divs, plus ONE red+bold Designer/Developer To Do note that the journal document itself must be created. The writer's own label text is consumed (it IS the button's label, replaced by the templated 'Download journal'). MEASURED over ALL WTs: this form's corpus population is ZERO (SCCH302 the first — a forward guarantee); the discriminator (download+journal+standard instructions, or the 'button to download journal' head) deliberately EXCLUDES the 15 existing download-journal bracket forms ([download journal] x6, ENGS302's [Download learning journal button] etc), which keep their existing routes (the round-96 button_download rule among them) byte-identically. Env DLJOURNAL_OFF reverts to the round-96 route (raw bracket text as the label)."
+  }
  },
  "embeds": {
   "iframe": "<div class=\"ratio ratio-16x9\">\n<iframe src=\"{url}\" loading=\"lazy\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
@@ -790,7 +841,7 @@
     "enabled": true,
     "_note": "ROUND 235 (Chris) — the COLLAPSIBLE hand-off box, now the default rendering for every un-built interactive: the loud rainbow reference-code marker keeps its exact search-by-code contract (class cv2-int-ref + data-cv2-index/data-cv2-ref + the {label} text), gains the class cv2-interactive on the SAME wrapper (so every gate exclusion — skeleton collapse, compare/body placeholder pruning, the defect leak scan, the EmojiStrip/LinkTextDisplay verbatim-zone walks — applies to the whole box exactly as it did to the old dashed box), and now CONTAINS the raw captured content (the exact inline-mode rendering: retained writer notes + the dashed box) inside a container that is COLLAPSED by default and expands/collapses with an animated (CSS grid-template-rows transition) click on the ▼/▲ arrow at the right end of the marker row. The Page Stitcher is unaffected: it replaces the whole balanced cv2-int-ref element by data-cv2-ref, so the hidden raw content is swapped out together with the marker when the finished widget is stitched in. Env INTCOLLAPSE_OFF (or enabled:false here, with default_mode:'inline') reverts to r234.",
     "wrapper_open": "<div class=\"cv2-interactive cv2-int-ref\" data-cv2-index=\"{index}\" data-cv2-ref=\"{id}\" style=\"border: 8px solid transparent; border-image: repeating-linear-gradient(45deg, #e03131 0 14px, #f08c00 14px 28px, #ffd43b 28px 42px, #2f9e44 42px 56px, #1971c2 56px 70px, #9c36b5 70px 84px) 8; background: repeating-linear-gradient(135deg, #fff9db 0 28px, #ffe3e3 28px 56px); padding: 18px 22px; margin: 24px 0\">",
-    "label_row": "<div style=\"display: flex; align-items: center; gap: 14px\"><span style=\"flex: 1; text-align: center; font-weight: bold; font-family: monospace; font-size: 1.3em; letter-spacing: 1px; color: #c2255c; text-shadow: 0 1px 0 #ffffff\">{label}</span><span class=\"cv2-int-toggle\" title=\"Show or hide the raw captured content for this interactive\" onclick=\"var b=this.closest('.cv2-int-ref').querySelector('.cv2-int-raw'); var open=b.style.gridTemplateRows==='1fr'; b.style.gridTemplateRows=open?'0fr':'1fr'; this.textContent=open?'\\u25BC':'\\u25B2';\" style=\"cursor: pointer; user-select: none; font-size: 1.05em; line-height: 1; color: #c2255c; padding: 6px 10px; border: 2px solid #c2255c; border-radius: 6px; background: rgba(255,255,255,0.8)\">\u25bc</span></div>",
+    "label_row": "<div style=\"display: flex; align-items: center; gap: 14px\"><span style=\"flex: 1; text-align: center; font-weight: bold; font-family: monospace; font-size: 1.3em; letter-spacing: 1px; color: #c2255c; text-shadow: 0 1px 0 #ffffff\">{label}</span><span class=\"cv2-int-toggle\" title=\"Show or hide the raw captured content for this interactive\" onclick=\"var b=this.closest('.cv2-int-ref').querySelector('.cv2-int-raw'); var open=b.style.gridTemplateRows==='1fr'; b.style.gridTemplateRows=open?'0fr':'1fr'; this.textContent=open?'\\u25BC':'\\u25B2';\" style=\"cursor: pointer; user-select: none; font-size: 1.05em; line-height: 1; color: #c2255c; padding: 6px 10px; border: 2px solid #c2255c; border-radius: 6px; background: rgba(255,255,255,0.8)\">▼</span></div>",
     "content_open": "<div class=\"cv2-int-raw\" style=\"display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease\"><div style=\"min-height: 0; overflow: hidden\"><div style=\"padding-top: 14px\">",
     "content_close": "</div></div></div>",
     "wrapper_close": "</div>",
@@ -960,6 +1011,28 @@
    "image_mode_P_comment": "<!-- <img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
    "filename_istock": "iStock-{id}.jpg",
    "trailing_body": "<p>{text}</p>",
+   "image_layout_marker": {
+    "enabled": true,
+    "_comment": [
+     "ROUND 242 (Dev-Feedback R5, Family C1 — SCCH302's mixtures accordion). An",
+     "IMAGE-ARRANGEMENT LAYOUT MARKER: a red span the lexicon resolves to [image]",
+     "only EMBEDDED in prose ('[2 images next to each other]', '[insert images side",
+     "by side]'), with NO media URL of its own and NO trailing black content. It is",
+     "a writer LAYOUT INSTRUCTION about the images that follow, not an image",
+     "element — the accordion walks SKIP it as build content and a successful build",
+     "surfaces its text as the standard red note after the widget (the r214",
+     "instruction-member class; never silently stripped, never a build-breaker).",
+     "Both accordion walks previously BAILED the whole widget at this member, so",
+     "every output the rule can change was a declined placeholder — containment by",
+     "construction. MEASURED (outputs/_detect_r242_accunnum.cjs, all 429 WTs live):",
+     "the arrangement vocabulary = 21 occ / 13 modules (+ SCCH302); the un-numbered",
+     "repeated-label [accordion] form itself was ALREADY accepted (scanner same-type",
+     "absorb + the rich walk's bare-head panel delimiters) — this marker was the",
+     "ONLY blocker on the C1 class. Env ACCIMGMARK_OFF reverts (marker bails the",
+     "build again, the r241 placeholder state)."
+    ],
+    "pattern": "(?=[\\s\\S]*\\bimages?\\b)(?=[\\s\\S]*\\b(?:side by side|next to each other|beside each other)\\b)"
+   },
    "rich_panels": {
     "enabled": true,
     "_comment": [
@@ -1392,9 +1465,17 @@
     "the moment a member is richer — an [image]/[video]/[button]/[heading]/data table inside the",
     "widget, an item missing its label or body, or red writer-instruction text.",
     "{label} = the button text; {content} = one <p>...</p> per body paragraph.",
+    "ROUND 241 (Dev-Feedback R4, C2 — SCCH302): list_content routes each item's revealed",
+    "CONTENT through the standard black-text renderer (ListsAndRuns.renderBlackText), so a",
+    "writer's Word bullets become real <ul><li> lists instead of literal '<p>• ...</p>'",
+    "paragraphs. MEASURED: the gold library ships ZERO '<p>•' bullets inside clickDropContent",
+    "and 134 pages with real <ul>/<ol> lists there; Claude shipped the artifact on 8 pages",
+    "(HES1007 x6, HES1005, ENGR202) + SCCH302. Env toggle: CDLIST_OFF (reverts to the",
+    "one-<p>-per-paragraph legacy form).",
     "Human reference: 01-Finalized_Modules_/OSGM501/OSGM501-03.html."
    ],
    "enabled": true,
+   "list_content": true,
    "open": "<div class=\"row\">",
    "button": "<div class=\"button clickDrop\">{label}</div>",
    "content": "<div class=\"clickDropContent\">{content}</div>",
@@ -1509,6 +1590,10 @@
    "preserve_values": [
     "combo"
    ],
+   "unknown_subject_digit_fallback": {
+    "_doc": "ROUND 238 (Dev-Feedback R1 Family A — module SCCH302). A subject NOT in the subjects preset list (a brand-new subject) that resolved NO template_phase at all used to ship an EMPTY template attribute — the iDoc host loads the stylesheet by this attribute, so the page rendered unstyled. When phaseForAttr is empty AND the code matches code_pattern AND its subject is unknown, the code's own level digit supplies the band via by_level_digit (SCCH302 → 3 → '7-8', the developer-confirmed value). PURE FALLBACK by construction: any module with a resolved template_phase — including every digit-is-not-a-level family (BLL/HPFUN/…), which all resolve real values — is untouched; a code not matching code_pattern (FUN-shaped, 4-digit) still ships empty because the FUN families' template values are MEASURED MIXED (10 combo vs 5 NCEA bases) and the rule refuses to guess. prefix_overrides (r224) + cohort_overrides (r231) still outrank it. Env toggle: TPLFALLBACK_OFF.",
+    "enabled": true
+   },
    "prefix_overrides": {
     "_doc": "ROUND 224 (Chris, 2026-07-14). EXPLICIT CODE-PREFIX TEMPLATE OVERRIDES — the design team's exception list for families whose code digit is NOT a curriculum level. A module whose code starts with a key here gets that template attribute UNCONDITIONALLY (outranks sibling inheritance AND the by_level_digit preset; preserve_values does not apply — an explicit prefix rule is absolute). LONGEST matching prefix wins; a null value means 'explicitly NO override' (a guard entry). THE BLL200 EXCEPTION: all BLL2xx modules are actually PHASE 1 → template=\"1-3\", NOT the \"4-6\" their series digit or a mis-built sibling would suggest (5 gold modules — BLL250/261/264/265/275 — carried the wrong 4-6 and were corrected this round). BLLR2xx modules ARE phase 2 and keep \"4-6\": the BLLR guard entry is belt-and-braces (\"BLLR201\" cannot startsWith \"BLL2\" anyway — 4th char R vs 2 — but doc-14's r218 'BLLR is NOT BLL' startswith trap earns the explicit fence). Env TPLPREFIX_OFF reverts all prefix overrides (independent of TPLPRESET_OFF).",
     "enabled": true,
@@ -1581,7 +1666,14 @@
   "lesson_title_h1": {
    "enabled": true,
    "_doc": "CL-0042 / ROUND 230 (Chris — the OSSC pair). For the subject code prefixes in 'subjects' (the OSSC short-course family), a LESSON page ships EXACTLY ONE title h1 — its own lesson title (the r143 pre-activity harvest, 'Lesson N:' prefix stripped) — at EVERY level: the module's Te Reo title is never pushed as a second lesson h1, even where the registry's mined h1_count asks for 2 (OSSC3 lesson h1_count IS 2, mined from the OSSC301 gold, which repeats 'Ngā Tāware' on every lesson — the gold PREDATES the rule; that divergence is a recorded intentional override, never chased back in; see Subject_Global_Parameters._universal_conventions.cl0042_ossc_lesson_h1). OUTPUT-INERT today (the r224 prefix-override pattern — converts an accident into a guarantee): no OSSC module currently derives a Te Reo title at all (OSSC301's [TITLE BAR] '*OSSC301 Scams* ✅*Ngā Tāware*' never splits — the ✅ boundary is dropped upstream), and the live dual-title lesson emitters are XMES/CEDT/SSFUN only (outputs/_measure_ossc_lesson_h1.py Part B: 35 pages, 0 OSSC) — so the gate changes ZERO pages until the day a future title-split fix would otherwise have silently regressed OSSC. The overview page + the #module-code chip h1 are untouched (overview te-reo goes through the titleBar branch, not this one). Env OSSCH1_OFF reverts to the pre-230 push. Proof probe: outputs/_probe_ossch1.cjs (inert + detection + toggle + prefix fence).",
-   "subjects": ["OSSC"]
+   "subjects": [
+    "OSSC"
+   ]
+  },
+  "lesson_te_reo_suppress": {
+   "enabled": true,
+   "_doc": "ROUND 241 (Dev-Feedback R4, E2 — SCCH302; the recorded r199 follow-up, dev-confirmed 'delete it'). A LESSON page whose registry h1_count asks for 2 pushes the module's Te Reo title as a second h1 — but ONLY when the lesson has NO distinct title of its own (i.e. its title falls back to / fold-equals the module English title, the XMES102/103 gold form where the module pair repeats on every lesson). When the lesson carries a DISTINCT own title (fold-differs from the module English title), the module Te Reo h1 is SUPPRESSED — the gold form on every measured distinct-title lesson (XMES101 x8, CEDT207 x6, CEDT301 x6 ship ONE h1, the lesson's own; outputs measurement round 241: 35 dual-h1 Claude lesson pages = 25 suppress / 10 keep). Named collateral (recorded, net-positive r164 class): XMES103-01's writer left the placeholder 'Add lesson title' as the lesson title — it counts as distinct, so its Te Reo drops where gold ships the module pair (1 page vs 20 gold-verified fixes). Composes with (never replaces) the r230 lesson_title_h1 OSSC gate. Env toggle: LESSONTEREO_OFF (restores the unconditional push).",
+   "suppress_when_distinct_title": true
   },
   "title_h1": "<h1><span>{title}</span></h1>",
   "title_h1_lowercase": "<h1><span style=\"text-transform:lowercase;\">{title}</span></h1>",
@@ -1899,7 +1991,7 @@
    }
   },
   "tab_map": {
-   "_rule": "Folded heading text → which tab pane and which element it becomes. Headings reaching the menu that match nothing are placed in tab 1 AND red-flagged (surface, never absorb).",
+   "_rule": "Folded heading text → which tab pane and which element it becomes. Headings reaching the menu that match nothing are placed in tab 1 AND red-flagged (surface, never absorb). ROUND 238 added 'knowledge' + 'practices' (the new-era Science curriculum block, module SCCH302): MEASURED corpus-inert — zero existing pages carry a tab_map-routed Knowledge/Practices heading (the BLL240/ENGJ403/TEDC401 occurrences arrive via the two_col_li / writer_tabs / other archetypes, canary-byte-proven), and 'knowledge' already routed to tab 1 via the 'know' substring; the entries kill the spurious no-tab-rule red flag on 'Practices'.",
    "tab1": {
     "element": "<h4><span>{heading}</span></h4>",
     "match": [
@@ -1909,6 +2001,8 @@
      "success criteria",
      "understand",
      "know",
+     "knowledge",
+     "practices",
      "do",
      "whainga ako",
      "paearu angitu"
@@ -3377,6 +3471,12 @@
   "lesson_li_label": {
    "_doc": "ROUND 222 (Chris, ENGJ403). THE LESSON-MENU 'Learning intentions' LABEL: the human opens a lesson page's simplified menu with a GENERATED label heading (not in the WT — ENGJ403's lesson regions carry only the WALT/I-can lines). Registry rows GENERATED from every gold lesson-page menu grouped by the ENGINE-resolved subject|phase (attr-map-normalised — the #extraTabRow lookup): share ≥0.80 over ≥5 menus, lesson menu type 'simplified', h4/h5 element forms only (the h3 families MXDB|4-6 / MXFUN|combo / SSCI|7-8 are recorded follow-ups — different menu machinery). Guards: lesson pages only, non-empty composed menu, never when a 'learning intention' heading is already present (double-emission-safe). Env MENULILABEL_OFF.",
    "enabled": true,
+   "default_row": {
+    "_doc": "ROUND 238 (Dev-Feedback R1 Family A — module SCCH302). THE FIRST-IN-SERIES DEFAULT LABEL ROW: a module whose registry group failed the universal-field evidence floor (run.registryDefaultsApplied — no gold-built sibling exists on disk, so no measured group row can) gets its lesson simplified menu opened with the MODERN label form the design team confirmed for new subjects: <h4><span>Learning Intentions</span></h4> (the developer flagged even the legacy '<h5>Learning intentions</h5>' wording as outdated for a new subject). Fires ONLY when no measured registry row matched AND the run carries the first-in-series flag — every module with real gold evidence is untouched BY CONSTRUCTION. Env toggle: MENUDEFAULT_OFF.",
+    "enabled": true,
+    "element": "<h4><span>{label}</span></h4>",
+    "label": "Learning Intentions"
+   },
    "registry": {
     "groups": {
      "ANZH|9-10": {
@@ -3901,7 +4001,9 @@
    "opener_pattern": "^\\[\\s*lesson choice page\\s*\\]",
    "tab_layout_pattern": "^\\[\\s*tab nav layout\\b",
    "sticky_layout_pattern": "^\\[\\s*sticky nav layout\\b",
-   "bare_marker_patterns": ["^\\[\\s*tab nav\\s*\\]\\]?$"],
+   "bare_marker_patterns": [
+    "^\\[\\s*tab nav\\s*\\]\\]?$"
+   ],
    "bare_marker_note": "The bare [Tab Nav]/[Sticky Nav] repeat markers on every later page are layout REPEAT directives, not content — the human drops them (the sticky nav is a js/stickyNav.js include). Bare [Sticky Nav] already parses to DROP; only bare [Tab Nav] needed consuming (it re-leaked an 'Orphan sub-tag [tab n]' red flag on ~every XDLS90x page). Matched on the span's own folded text so a real orphaned [tab 1] sub-tag still flags. The optional trailing ']' tolerates XDLS905's one '[Tab Nav]]' doubled-bracket typo (the r174 malformed-bracket class).",
    "merge_into_overview": true,
    "merge_note": "The human merges the choice page INTO page 00 (every gold ships 00 + one page per lesson, 8 files); the writer's [End page] before [LESSON Choice page] is disregarded exactly like the AR-1 introduction-cluster rule. Verified clean on all 5 opener modules. Env CHOICEMERGE_OFF.",
@@ -3912,6 +4014,12 @@
    "icon_todo": "Choice-page tiles built with an EMPTY iconType — pick an icon for each tile: {labels}. (The human-built siblings use iconCentral iconType values such as physicalHealth, nutrition, mindfulness.)",
    "tabnav_todo": "The writer's [Tab Nav Layout] (repeat on every page) is an online tab-navigation set-up, not page content — configure the site tab nav with: {labels}.",
    "sticky_todo": "The writer's [Sticky Nav Layout] (repeat on every page) is the sticky-nav include (js/stickyNav.js), not page content — set it up with these cross-module links: {items}."
+  },
+  "cell_image_link_match": {
+   "_round": "240 (Dev-Feedback R3, D2) — title-anchored table-cell images resolve via the block's hyperlinks",
+   "enabled": true,
+   "min_anchor_length": 8,
+   "note": "A cell [image] with no URL in its text finds the table block's hyperlink whose folded anchor text sits inside the folded cell text (longest wins) and uses its target — the same resolution the free-body path gets from it.block.links. Env CELLIMGLINK_OFF."
   }
  },
  "container_auto_close": {
@@ -3959,10 +4067,12 @@
   "_duplicate_doc": "a second literal [TITLE BAR] whose folded block text EQUALS the previous title bar's is a writer copy-paste duplicate, not a twin document — keep it in-page. Measured round-186: exactly 1 module corpus-wide (BLL124 — verbatim duplicate 2 lines apart; gold ships 3 files, AR-4 would ship 4); the genuine twin-sets (EXBP901/EXIP901 English|Te-Reo title pairs) have DIFFERENT payloads and keep the AR-4 split."
  },
  "output_naming": {
-  "page_file": "{code}-{NN}.html",
+  "page_file": "{code}_{page}.html",
+  "page_token": "ROUND 243: {page} = the page's lessonLabel with '.' -> '_' (overview 0.0 -> 0_0; lesson N -> N_0; a sub-page or dotted writer lesson verbatim: 2.1 -> 2_1) - the site library convention the developer imports against (SCCH302_0_0.html).",
+  "legacy_page_file": "{code}-{NN}.html",
   "manifest_file": "{code}_interactives.txt",
-  "page_number_format": "two digits, zero-padded, document order: -00 overview, -01 …",
-  "decision_note": "Locked 12/06/26 (Chris): the brief's contract form. The corpus's historical _N.0 variants are deliberately not replicated."
+  "page_number_format": "library form: {code}_{lesson}_{part}.html in document order; legacy (env PAGENAME_OFF): two digits, zero-padded, -00 overview, -01 ...",
+  "decision_note": "12/06/26 (Chris): the brief's dash contract form. SUPERSEDED 31/07/26 (Chris, Dev-Feedback R6): switch to the library's underscore naming so the developer never renames on import; env PAGENAME_OFF reverts to the dash form byte-for-byte."
  },
  "page_split": {
   "_doc": "ROUND 222 (Chris, ENGJ403 — the empty-overview screenshot + the 13-vs-10 pagination). THE NEW-ERA WRITER LESSON NUMBERING: the newest WT era numbers lessons ALREADY DOTTED ([Lesson 0.0]/[Lesson 1.0]/[Lesson 2.1]) and closes in-lesson TILE structures with [end tile lesson navigate back to lesson N]. Three coupled PageSplitter rules, measured over all 428 WTs (outputs/_measure_wtlessonnums.cjs): (1) overview_zero_pattern — a [Lesson 0/0.0] while the OVERVIEW is open is the overview's own number (the module introduction), consumed, content stays on 0.0 (population EXACTLY ENGJ403; env ZEROLESSON_OFF); (2) dotted_label_verbatim — a dotted writer number is the page label VERBATIM ('2.1' not '2.1.0'; population ENGJ403 + CEDK501/CEDO501/CEDR501/CEDT501/CEDW501/XMES202, whose golds ship the same '2.1'-style pages; un-dotted '[Lesson 4]' keeps the historical '.0'; env DOTLESSON_OFF); (3) tile_closer_pattern — an 'end lesson' closer whose own text matches the tile pattern is an IN-PAGE structure closer, never a page boundary (population EXACTLY ENGJ403 ×2; env TILECLOSER_OFF).",
@@ -3971,6 +4081,23 @@
    "overview_zero_pattern": "^0(\\.0)?$",
    "dotted_label_verbatim": true,
    "tile_closer_pattern": "tile\\s+lesson|navigate back to lesson"
+  }
+ },
+ "formatter": {
+  "_comment": "ROUND 243 (Dev-Feedback R6, E4): block-level line breaking. The emitters glue structural runs onto one line (<div class=\"activity\"...><div class=\"row\"><div class=\"col-12\">, <tr><td>...</td><td>...</td></tr>); the human gold breaks every mixed div/table-structural glued boundary onto its own line (measured broken-share 0.88-1.00, _measure_r243_linebreaks.py) and keeps ONLY the empty-element one-liners glued (<div></div> 0.018 broken, <td></td> 0.010, <th></th> 0.000). HtmlFormatter.Indent splits a zero-whitespace >< boundary when BOTH tags are in `tags`, EXCEPT an open tag immediately followed by its own close (the empty-element exception). Whitespace-only between tags, never inside a text node - semantically byte-inert; every protected gate parses via html.parser + \\s+ normalisation. Env LINEBREAK_OFF reverts to the glued round-242 form.",
+  "block_line_breaks": {
+   "enabled": true,
+   "tags": [
+    "div",
+    "table",
+    "thead",
+    "tbody",
+    "tfoot",
+    "tr",
+    "td",
+    "th"
+   ],
+   "keep_empty_glued": true
   }
  }
 }
