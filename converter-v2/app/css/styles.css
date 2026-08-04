@@ -470,3 +470,17 @@ body {
 	display: block;
 	margin-bottom: 6px;
 }
+
+/* round 252 — the reference list is an always-visible scrolling box */
+#ref-code-select {
+	width: min(480px, 100%);
+	padding: 4px;
+}
+
+#ref-code-select option {
+	padding: 3px 8px;
+}
+
+#ref-code-count {
+	margin: 4px 0 0;
+}

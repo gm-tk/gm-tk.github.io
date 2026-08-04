@@ -654,7 +654,14 @@ class Config {
 	// auto-select) restores the full list. UI-only (App.js/index.html/Config
 	// selectors/styles.css); the engine and every conversion byte are untouched;
 	// entry-parity PASS; index-sync 33/28.
-	static AppVersion = "260618.24";
+	// ROUND 252 (260618.25): REFERENCE LIST IN PLAIN SIGHT (Gavin — "the user
+	// cannot see the modules being filtered until they click the drop down") —
+	// the reference dropdown is now an always-visible scrolling LIST BOX
+	// (size=8): the filtering happens in front of the person as they type, the
+	// selected row scrolls into view, and a live "Showing N of 390 library
+	// modules…" line underneath narrates the filter state (incl. an explicit
+	// no-matches message). UI-only; engine untouched; entry-parity PASS.
+	static AppVersion = "260618.25";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
@@ -732,6 +739,7 @@ class Config {
 		RefHtmlBlock:    "ref-html-block",
 		RefCodeSelect:   "ref-code-select",
 		RefCodeFilter:   "ref-code-filter",   // ROUND 251 — the type-to-filter box
+		RefCodeCount:    "ref-code-count",    // ROUND 252 — the live "showing N of M" line
 		RefHtmlInput:    "ref-html-input",
 		RefHtmlList:     "ref-html-list",
 		// The "clear everything & convert another module" reset control (its

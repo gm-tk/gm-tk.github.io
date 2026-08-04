@@ -69,12 +69,16 @@
 				<strong>Choose a reference module from the library</strong> (suggested module selected if one exists).
 			</label>
 			<div id="ref-pick-block" class="ref-sub-block">
-				<!-- ROUND 251 — type-to-filter: narrows the dropdown live; an exact
-				     single match selects itself. Clearing the box restores the full list. -->
+				<!-- ROUND 251 — type-to-filter: narrows the list live; an exact
+				     single match selects itself. Clearing the box restores the full list.
+				     ROUND 252 — the list is an always-visible scrolling box (size=8)
+				     so the filtering happens in plain sight as the code is typed,
+				     with a live "showing N of M" count underneath. -->
 				<input id="ref-code-filter" type="text" placeholder="Type a module code to filter…" autocomplete="off">
-				<select id="ref-code-select">
+				<select id="ref-code-select" size="8">
 					<option value="">Please select a reference module</option>
 				</select>
+				<p id="ref-code-count" class="drop-hint" aria-live="polite"></p>
 			</div>
 			<label class="mode-option">
 				<input type="radio" name="ref-mode" id="ref-html">

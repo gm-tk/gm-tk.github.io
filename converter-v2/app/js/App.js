@@ -439,12 +439,17 @@ class App {
 	};
 
 	/**
-	 * Rebuilds the reference dropdown's options from the cached library
-	 * list, narrowed by the type-to-filter text (ROUND 251). Matching is a
+	 * Rebuilds the reference list's options from the cached library list,
+	 * narrowed by the type-to-filter text (ROUND 251). Matching is a
 	 * case-insensitive substring test against the code and its subject ·
 	 * template label. The placeholder always stays, the current selection
 	 * is always kept in the list (filtering can never silently drop it),
 	 * and the selection itself survives the rebuild.
+	 *
+	 * ROUND 252 — the list is an always-visible scrolling box (index.html
+	 * size=8), so this rebuild happens in plain sight as the person types;
+	 * the "showing N of M modules" line underneath narrates it, and the
+	 * selected row is scrolled into view.
 	 *
 	 * @param {string} filter - the filter box's current text ("" = full list)
 	 * @returns {void}
@@ -466,6 +471,15 @@ class App {
 				return `<option value="${Utils.EscapeHtml(r.code)}">${Utils.EscapeHtml(r.code)}${detail ? ` — ${Utils.EscapeHtml(detail)}` : ""}</option>`;
 			}).join("");
 		sel.value = current;   // restore ("" when nothing was selected)
+		sel.selectedOptions[0]?.scrollIntoView({ block: "nearest" });
+		const count = document.getElementById(Config.Selectors.RefCodeCount);
+		if (count) {
+			const total = this.#refCodeRows.length;
+			count.textContent = f
+				? `Showing ${rows.length} of ${total} library modules matching “${filter.trim()}”`
+					+ (rows.length ? "" : " — no matches; clear the box to see the full list")
+				: `Showing all ${total} library modules — type above to filter`;
+		}
 	};
 
 	/**

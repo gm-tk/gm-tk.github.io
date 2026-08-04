@@ -1,5 +1,21 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-05 (round 252, build 260618.25) — REFERENCE LIST IN PLAIN SIGHT (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: "at the moment the user types the module code but
+cannot actually see the modules being filtered until they click the drop down menu."
+Fixed by making the reference list an ALWAYS-VISIBLE scrolling box (8 rows,
+`size="8"`) instead of a closed dropdown: as a code is typed in the filter box the
+list narrows in plain sight, the selected row scrolls into view, and a live line
+underneath narrates the state — "Showing all 390 library modules — type above to
+filter" / "Showing 5 of 390 library modules matching “osai”" / an explicit
+no-matches message. Everything else is unchanged: same element and id (the r250
+auto-select, placeholder row, manual-pick memory and Convert gate all keep working),
+exact-single-match still self-selects, clearing the box restores the full list.
+Files: index.html (size + count line) · App.js (#renderRefCodeOptions count +
+scroll-into-view) · Config.js (RefCodeCount) · styles.css. Engine untouched —
+conversions byte-identical by construction.
+
 ## 2026-08-05 (round 251, build 260618.24) — REFERENCE-DROPDOWN TYPE-TO-FILTER (**UI-only; NO engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
 
 **THE PLAIN-ENGLISH LEAD.** Gavin's follow-up to rounds 249/250: typing a module code
