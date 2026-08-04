@@ -395,6 +395,23 @@ class PageAssembler {
 			content: ManifestBuilder.Build(run),
 			kind: "manifest",
 		});
+
+		// ---- the distilled reference template (ROUND 249) --------------------
+		// When the person uploaded reference HTML pages at conversion time (see
+		// ModuleResolver.PrepareRun's reference-module block), the mined
+		// structural profile ships as its own JSON output — the file Chris
+		// needs to add that reference module to PageForge's templated modules.
+		// Named after the REFERENCE module's code (that's what the file
+		// describes), falling back to this module's code when the uploaded
+		// pages carried no recognisable code in their filenames.
+		if (run.referenceDistilled?.file) {
+			const refName = run.referenceDistilled.referenceCode ?? code;
+			run.outputs.push({
+				filename: `${refName}_reference-template.json`,
+				content: JSON.stringify(run.referenceDistilled.file, null, "\t") + "\n",
+				kind: "reference-template",
+			});
+		}
 	};
 
 	/**

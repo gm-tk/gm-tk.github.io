@@ -613,7 +613,48 @@ class Config {
 	//     CHFUN / JPNFUN05 structural reference points. SGP stays shipped-inert (engine never
 	//     reads it at runtime; master_enabled:false). KB-side: htmlconvertor-kb CL-0070.
 	// NO regeneration (not requested): the round-245 baselines still describe the corpus.
-	static AppVersion = "260618.21";
+	// ROUND 249 (260618.22): THE REFERENCE-MODULE PANEL (Chris, 2026-08-05) — the HTML
+	// Generator's upload flow gains a "Reference module" section: once the uploaded
+	// filenames (or the first docx's front matter) reveal the module code, the panel
+	// names the SUGGESTED reference module (PrecedenceResolver.SuggestReference — the
+	// nearest already-built relative in the library index, series+template first,
+	// widening outward; advisory-only) and offers three choices. "Automatic"
+	// (default) changes NOTHING. "Choose a different reference module" (a searchable
+	// list of all library codes) re-resolves the structural rules AS that module's
+	// registry home. "Upload reference HTML" (for a module with no suitable library
+	// relative) mines the Style-Anchor tracked fields out of the uploaded finished
+	// pages (ReferenceMiner.Distil — regex-only, browser+node identical), applies
+	// them to the run, and ships {REFCODE}_reference-template.json in the outputs to
+	// send to Chris so the reference joins PageForge's templated modules. Both
+	// overrides ride into ModuleResolver.PrepareRun as plain options (entry parity —
+	// the batch harness passes neither, so batch/corpus output is byte-identical BY
+	// CONSTRUCTION; proven by _probe_r249_refmod.cjs: onplain == REFMOD_OFF-with-
+	// options md5-identical across processes). New engine file ReferenceMiner.js
+	// (index-sync 33/28). Data Emit_Templates.reference_module; env REFMOD_OFF.
+	// ROUND 250 (260618.23): REFERENCE-MODULE PANEL REFINEMENTS (Gavin, same day) —
+	// the "Automatic (recommended)" choice is REMOVED; the pick choice is renamed
+	// "Choose a reference module from the library (suggested module selected if one
+	// exists)" and is now a DROPDOWN that AUTO-SELECTS the suggestion. The suggestion
+	// rule is Gavin's two-tier walk with NO wider fallback: (1) same module series
+	// (OSAI502 → OSAI501 first and foremost), (2) same subject at the same phase
+	// (no OSAI5xx → an Online Safety 5xx sibling, e.g. OSOH501/OSBY501; the subject
+	// is borrowed from any indexed module sharing the prefix when the code is new);
+	// neither tier → the dropdown shows "Please select a reference module" and the
+	// CONVERT BUTTON STAYS INACTIVE until a module is selected OR reference HTML
+	// pages are uploaded (App.#updateConvertGate). "Chris" → "Gavin" in the
+	// reference-HTML instructions/labels/notes. Probe re-run ALL GREEN
+	// (_probe_r249_refmod.cjs: OSAI502→OSAI501 series · OSSC502→OSAH501
+	// subject_phase · ZZQQ101→null · toggle-off identity); entry-parity PASS;
+	// index-sync 33/28.
+	// ROUND 251 (260618.24): REFERENCE-DROPDOWN TYPE-TO-FILTER (Gavin) — a filter
+	// box above the reference dropdown narrows the 390-code list live as a code is
+	// typed (case-insensitive substring on the code and its subject · template
+	// label); an EXACT single match selects itself, the current selection is never
+	// dropped by filtering, clearing the box (or the reset, or a fresh suggestion
+	// auto-select) restores the full list. UI-only (App.js/index.html/Config
+	// selectors/styles.css); the engine and every conversion byte are untouched;
+	// entry-parity PASS; index-sync 33/28.
+	static AppVersion = "260618.24";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
@@ -680,6 +721,19 @@ class Config {
 		// (ModeExtract removed — ROUND 235: the interactive hand-off is the
 		// default for every run; the UI switch no longer exists.)
 		ConvertButton: "convert-button",
+		// ROUNDS 249/250 — the Reference-module panel (suggested-module dropdown
+		// / reference-HTML upload; round 250 removed the "Automatic" choice and
+		// made the dropdown auto-select the suggestion).
+		ReferencePanel:  "reference-panel",
+		ReferenceStatus: "reference-status",
+		RefPick:         "ref-pick",
+		RefHtml:         "ref-html",
+		RefPickBlock:    "ref-pick-block",
+		RefHtmlBlock:    "ref-html-block",
+		RefCodeSelect:   "ref-code-select",
+		RefCodeFilter:   "ref-code-filter",   // ROUND 251 — the type-to-filter box
+		RefHtmlInput:    "ref-html-input",
+		RefHtmlList:     "ref-html-list",
 		// The "clear everything & convert another module" reset control (its
 		// wrapper + the button). Shown only after a conversion completes; the
 		// reset returns the converter to its fresh state IN PLACE, without a

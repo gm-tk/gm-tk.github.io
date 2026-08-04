@@ -53,9 +53,45 @@
 			<ul id="file-list" class="file-list"></ul>
 		</section>
 
-		<!-- ============ 2. IMAGE MODE (the only choice) ============ -->
+		<!-- ============ 2. REFERENCE MODULE (rounds 249/250) ============
+		     Hidden until files are uploaded. The dropdown auto-selects the
+		     SUGGESTED reference module (same module series first, then the
+		     same subject at the same phase); when neither exists it shows
+		     "Please select a reference module" and the Convert button stays
+		     inactive until a module is selected OR reference HTML pages are
+		     uploaded. The choice is applied inside ModuleResolver.PrepareRun
+		     (the one shared prep — entry parity). -->
+		<section class="panel" id="reference-panel" hidden>
+			<h2>2 · Reference module <span class="panel-note">(which already-built module this conversion inherits its page structure from)</span></h2>
+			<p id="reference-status" class="reference-status"></p>
+			<label class="mode-option">
+				<input type="radio" name="ref-mode" id="ref-pick" checked>
+				<strong>Choose a reference module from the library</strong> (suggested module selected if one exists).
+			</label>
+			<div id="ref-pick-block" class="ref-sub-block">
+				<!-- ROUND 251 — type-to-filter: narrows the dropdown live; an exact
+				     single match selects itself. Clearing the box restores the full list. -->
+				<input id="ref-code-filter" type="text" placeholder="Type a module code to filter…" autocomplete="off">
+				<select id="ref-code-select">
+					<option value="">Please select a reference module</option>
+				</select>
+			</div>
+			<label class="mode-option">
+				<input type="radio" name="ref-mode" id="ref-html">
+				<strong>No suitable module</strong> — upload the finished HTML pages of a module to use as the reference.
+			</label>
+			<div id="ref-html-block" class="ref-sub-block" hidden>
+				<input type="file" id="ref-html-input" accept=".html,.htm" multiple>
+				<ul id="ref-html-list" class="file-list"></ul>
+				<p class="drop-hint">The conversion will also produce a distilled template file
+					(<code>…_reference-template.json</code>) — send it to Gavin so this reference module can be
+					added to PageForge's templated modules for future conversions.</p>
+			</div>
+		</section>
+
+		<!-- ============ 3. IMAGE MODE ============ -->
 		<section class="panel">
-			<h2>2 · Image output mode <span class="panel-note">(applies to every image in this run — no mixing)</span></h2>
+			<h2>3 · Image output mode <span class="panel-note">(applies to every image in this run — no mixing)</span></h2>
 			<label class="mode-option">
 				<input type="radio" name="image-mode" id="mode-p" checked>
 				<strong>Mode P — placeholder</strong>: visible placehold.co image + the real
@@ -73,9 +109,9 @@
 		     (expand/collapse via the arrow at the right end of the box), and the
 		     same codes head the {CODE}_interactives.txt blocks. -->
 
-		<!-- ============ 3. CONVERT ============ -->
+		<!-- ============ 4. CONVERT ============ -->
 		<section class="panel">
-			<h2>3 · Convert</h2>
+			<h2>4 · Convert</h2>
 			<button id="convert-button" type="button" disabled>Convert module</button>
 			<!-- ROUND 193 — the conversion progress bar (hidden until Convert; App.js drives it,
 			     the engine reports through the guarded run.onProgress hook — browser-only) -->
@@ -87,9 +123,9 @@
 			<div id="progress-log" class="progress-log" aria-live="polite"></div>
 		</section>
 
-		<!-- ============ 4. RESULTS ============ -->
+		<!-- ============ 5. RESULTS ============ -->
 		<section class="panel">
-			<h2>4 · Output files</h2>
+			<h2>5 · Output files</h2>
 			<div id="output-metadata" class="output-metadata" hidden></div>
 			<ul id="output-list" class="output-list"></ul>
 			<button id="download-all" type="button" hidden>Download all as .zip</button>
@@ -115,6 +151,7 @@
 	<script src="js/ZipReader.js"></script>
 	<script src="js/DocxExtractor.js"></script>
 	<script src="js/MediaListParser.js"></script>
+	<script src="js/ReferenceMiner.js"></script>
 	<!-- 4. pipeline stages in dependency order -->
 	<script src="js/ConversionRun.js"></script>
 	<script src="js/TagNormaliser.js"></script>

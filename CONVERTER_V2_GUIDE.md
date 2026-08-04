@@ -190,6 +190,7 @@ Two notes on this layout:
 | **ZipWriter.js** | Builds the "Download all as .zip" file |
 | **DocxExtractor.js** | Word XML → ordered list of paragraph/table blocks with red-text markers |
 | **MediaListParser.js** | Finds the media table and reads its rows into clean items |
+| **ReferenceMiner.js** | The Reference-module helpers: suggests the nearest built relative, mines uploaded reference HTML into a distilled template (round 249) |
 | **ConversionRun.js** | The shared state object one conversion carries through every stage |
 | **TagNormaliser.js** | Decides what every red span means (tag / instruction / noise) |
 | **ModuleResolver.js** | Detects the module code, resolves house style, runs the shared `PrepareRun` |
@@ -205,7 +206,7 @@ Two notes on this layout:
 | **BilingualBuilder.js** | Māori/English bilingual body rendering |
 | **ActivitiesBuilder.js** | The activity boxes (opening, numbering, supervisor-note variant) |
 | **MediaBuilder.js** | Images (placeholder or direct), video/audio embeds |
-| **PrecedenceResolver.js** | The dormant "copy the sibling module's layout" lookup |
+| **PrecedenceResolver.js** | The dormant "copy the sibling module's layout" lookup (+ `SuggestReference`, the upload panel's advisory) |
 | **ContentConverter.js** ★ | The heart — walks a page's items and emits the body HTML |
 | **TemplateModeResolver.js** | Puts `<body>` class tokens in the canonical order |
 | **SkeletonBuilder.js** | Wraps the body in the page shell: head, header, footer |

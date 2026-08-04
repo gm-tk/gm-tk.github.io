@@ -4190,5 +4190,12 @@
    ],
    "keep_empty_glued": true
   }
+ },
+ "reference_module": {
+  "_doc": "ROUND 249 — the HTML Generator's REFERENCE-MODULE feature (Chris, 2026-08-05). The upload UI names the SUGGESTED reference module (advisory-only — PrecedenceResolver.SuggestReference over the library index; changes nothing), lets the person PICK a different library module (PrepareRun referenceCode -> the structural rules re-resolve as that module's), or — when no suitable module exists — UPLOAD the reference module's finished HTML pages (PrepareRun referenceHtmlFiles -> ReferenceMiner.Distil mines the Style-Anchor tracked fields, applies them live, and ships the distilled template as {code}_reference-template.json for Chris to add to the templated modules). The batch harness passes neither option, so every batch/corpus conversion is byte-identical to the pre-round engine BY CONSTRUCTION. Env REFMOD_OFF reverts the overrides + the distilled output; enabled:false does the same from data.",
+  "enabled": true,
+  "env_toggle": "REFMOD_OFF",
+  "suggest": true,
+  "distil_filename": "{code}_reference-template.json"
  }
 }

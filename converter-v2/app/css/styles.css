@@ -442,3 +442,31 @@ body {
 	border-radius: 8px;
 	overflow-x: auto;
 }
+
+/* =========================================================================
+   REFERENCE-MODULE PANEL (round 249)
+   ========================================================================= */
+.reference-status {
+	margin: 4px 0 12px;
+	color: var(--ink-soft);
+}
+
+/* the pick/html sub-blocks sit indented under their radio choice */
+.ref-sub-block {
+	margin: 4px 0 12px 28px;
+}
+
+#ref-code-select,
+#ref-code-filter {
+	width: min(320px, 100%);
+	padding: 6px 10px;
+	border: 1px solid var(--ink-soft);
+	border-radius: 6px;
+	font: inherit;
+}
+
+/* the filter box sits directly above the dropdown (round 251) */
+#ref-code-filter {
+	display: block;
+	margin-bottom: 6px;
+}

@@ -58,6 +58,27 @@ class App {
 	// PrepareRun/AcksBuilder.PickIstockAcks makes the final choice (normally
 	// there is exactly one).
 	static #txtFiles = [];
+	// ROUND 249 — the REFERENCE-MODULE panel's state. #refHtmlFiles holds the
+	// uploaded reference .html File objects (only used when the "upload
+	// reference HTML" choice is selected); #refPreview is the latest
+	// upload-time advisory (detected code + suggested reference), produced by
+	// ReferenceMiner.PreviewSuggestion — NEVER by calling the prep methods
+	// from here (entry parity: prep belongs to ModuleResolver.PrepareRun).
+	// #refPreviewToken guards the async front-matter fallback against a
+	// stale result landing after the file list changed again.
+	// ROUND 250 — the "Automatic" choice is GONE: the dropdown auto-selects
+	// the suggested reference (same module series first, then same subject at
+	// the same phase); #refUserPicked remembers a manual selection so a
+	// re-render never clobbers it, and #updateConvertGate keeps the Convert
+	// button inactive until a reference is selected or HTML pages are added.
+	static #refHtmlFiles = [];
+	static #refPreview = null;
+	static #refPreviewToken = 0;
+	static #refCodesFilled = false;
+	static #refUserPicked = false;
+	// ROUND 251 — the full library-code list, cached once so the type-to-filter
+	// box can rebuild the dropdown's options without re-reading the data.
+	static #refCodeRows = [];
 
 	/**
 	 * STARTUP. Runs once, when the page finishes loading (wired up at the
@@ -201,6 +222,250 @@ class App {
 				} else this.#files.splice(Number(btn.dataset.remove), 1);
 				this.#renderFileList();
 			});
+
+		// ---- the Reference-module panel (ROUNDS 249/250) --------------------
+		// Two choices as radios (pick — the default — and html); each reveals
+		// its own sub-block, and every change re-evaluates the Convert gate.
+		const refBlocks = () => {
+			const pick = document.getElementById(Config.Selectors.RefPick);
+			const html = document.getElementById(Config.Selectors.RefHtml);
+			const pb = document.getElementById(Config.Selectors.RefPickBlock);
+			const hb = document.getElementById(Config.Selectors.RefHtmlBlock);
+			if (pb) pb.hidden = !pick?.checked;
+			if (hb) hb.hidden = !html?.checked;
+			this.#updateConvertGate();
+		};
+		for (const id of [Config.Selectors.RefPick, Config.Selectors.RefHtml]) {
+			document.getElementById(id)?.addEventListener("change", refBlocks);
+		}
+		document.getElementById(Config.Selectors.RefCodeSelect)
+			?.addEventListener("change", () => {
+				this.#refUserPicked = true;
+				this.#updateConvertGate();
+			});
+		// ROUND 251 — type-to-filter: every keystroke narrows the dropdown to
+		// the codes containing the typed text; an EXACT single match selects
+		// itself (so typing a full code is enough); clearing the box restores
+		// the full list. The current selection is never dropped by filtering.
+		document.getElementById(Config.Selectors.RefCodeFilter)
+			?.addEventListener("input", (e) => {
+				const filter = e.target.value;
+				this.#renderRefCodeOptions(filter);
+				const sel = document.getElementById(Config.Selectors.RefCodeSelect);
+				const f = filter.trim().toUpperCase();
+				if (sel && f) {
+					const matches = this.#refCodeRows.filter((r) => r.code.includes(f));
+					if (matches.length === 1 && sel.value !== matches[0].code) {
+						sel.value = matches[0].code;
+						this.#refUserPicked = true;
+					}
+				}
+				this.#updateConvertGate();
+			});
+		document.getElementById(Config.Selectors.RefHtmlInput)
+			?.addEventListener("change", (e) => {
+				this.#addRefHtml([...e.target.files]);
+				e.target.value = "";   // same file can be re-picked
+			});
+		document.getElementById(Config.Selectors.RefHtmlList)
+			?.addEventListener("click", (e) => {
+				const btn = e.target.closest("[data-remove]");
+				if (!btn) return;
+				this.#refHtmlFiles.splice(Number(btn.dataset.remove), 1);
+				this.#renderRefHtmlList();
+			});
+	};
+
+	/**
+	 * THE CONVERT GATE (ROUND 250). The Convert button is clickable only
+	 * when (a) at least one .docx is uploaded AND (b) the reference
+	 * requirement is satisfied: either a reference module is selected in
+	 * the dropdown (the suggestion auto-fills it when one exists), or the
+	 * "upload reference HTML" choice is active with at least one page
+	 * added. When the reference feature is off (data flag) or its panel
+	 * isn't showing yet, only the file requirement applies — the historic
+	 * behaviour.
+	 *
+	 * @returns {void}
+	 */
+	static #updateConvertGate() {
+		const btn = document.getElementById(Config.Selectors.ConvertButton);
+		if (!btn) return;
+		let ok = this.#files.length > 0;
+		const panel = document.getElementById(Config.Selectors.ReferencePanel);
+		const cfg = DataService.Data?.EmitTemplates?.reference_module;
+		if (ok && cfg && cfg.enabled !== false && panel && !panel.hidden) {
+			if (document.getElementById(Config.Selectors.RefHtml)?.checked) {
+				ok = this.#refHtmlFiles.length > 0;
+			} else {
+				ok = !!(document.getElementById(Config.Selectors.RefCodeSelect)?.value);
+			}
+		}
+		btn.disabled = !ok;
+	};
+
+	/**
+	 * Accepts newly-picked reference .html pages for the "upload reference
+	 * HTML" choice (ROUND 249). Only .html/.htm files are kept; anything
+	 * else is logged and ignored.
+	 *
+	 * @param {File[]} files - the picked browser File objects
+	 * @returns {void}
+	 */
+	static #addRefHtml(files) {
+		for (const f of files) {
+			if (/\.html?$/i.test(f.name)) { this.#refHtmlFiles.push(f); continue; }
+			this.#log(`⚠ "${f.name}" is not an .html page — ignored (the reference upload takes the module's finished HTML pages).`);
+		}
+		this.#renderRefHtmlList();
+	};
+
+	/** Redraws the reference-HTML file list (mirrors #renderFileList). */
+	static #renderRefHtmlList() {
+		const list = document.getElementById(Config.Selectors.RefHtmlList);
+		if (!list) return;
+		list.innerHTML = this.#refHtmlFiles.map((f, i) =>
+			`<li>${Utils.EscapeHtml(f.name)} <button type="button" data-remove="${i}" title="Remove">✕</button></li>`).join("");
+		this.#updateConvertGate();   // adding/removing pages can (un)satisfy the gate
+	};
+
+	/**
+	 * Shows/refreshes the Reference-module panel (ROUND 249) after every
+	 * change to the uploaded files. Purely ADVISORY: it detects the module
+	 * code (filenames first; the first docx's front matter as an async
+	 * fallback), names the SUGGESTED reference module, and fills the
+	 * pick-list of every library module code — but selecting "Automatic"
+	 * (the default) passes nothing into the conversion, which then behaves
+	 * exactly as it always has. All the detection work happens inside
+	 * ReferenceMiner.PreviewSuggestion (an engine helper), never here.
+	 *
+	 * @returns {Promise<void>}
+	 */
+	static async #updateReferencePanel() {
+		const panel = document.getElementById(Config.Selectors.ReferencePanel);
+		if (!panel) return;
+		const cfg = DataService.Data?.EmitTemplates?.reference_module;
+		if (!cfg || cfg.enabled === false) return;   // feature off → panel stays hidden
+		if (!this.#files.length) {
+			panel.hidden = true;
+			this.#refPreview = null;
+			this.#updateConvertGate();
+			return;
+		}
+		panel.hidden = false;
+		this.#fillReferenceCodes();
+
+		const token = ++this.#refPreviewToken;
+		const filenames = this.#files.map((f) => f.name);
+		let preview = ReferenceMiner.PreviewSuggestion({ filenames });
+		if (!preview.code) {
+			// no code in the filenames — peek at the first docx's front matter
+			this.#renderRefStatus({ code: null, pending: true });
+			try {
+				const zip = new ZipReader(await this.#files[0].arrayBuffer());
+				const doc = await DocxExtractor.Extract(zip);
+				if (token !== this.#refPreviewToken) return;   // stale — files changed again
+				preview = ReferenceMiner.PreviewSuggestion({ filenames, allBlocks: doc.blocks });
+			} catch { /* advisory only — leave preview code-less */ }
+		}
+		if (token !== this.#refPreviewToken) return;
+		this.#refPreview = preview;
+		this.#renderRefStatus(preview);
+
+		// ROUND 250 — auto-select the suggestion in the dropdown. A manual
+		// selection is never clobbered; with no suggestion (and no manual
+		// pick) the placeholder "Please select a reference module" stays
+		// selected and the Convert gate keeps the button inactive.
+		// ROUND 251 — clear any leftover filter first so the suggestion is
+		// guaranteed to be present in the (full) option list.
+		const sel = document.getElementById(Config.Selectors.RefCodeSelect);
+		if (sel && (!this.#refUserPicked || !sel.value)) {
+			const filterBox = document.getElementById(Config.Selectors.RefCodeFilter);
+			if (filterBox && filterBox.value) filterBox.value = "";
+			this.#renderRefCodeOptions("");
+			sel.value = preview.suggestion?.code ?? "";
+		}
+		this.#updateConvertGate();
+	};
+
+	/**
+	 * Renders the panel's status line: the detected module code and the
+	 * suggested reference module (or an honest "no relative found" when the
+	 * library holds nothing related — the case the reference-HTML upload
+	 * exists for).
+	 *
+	 * @param {Object} preview - a ReferenceMiner.PreviewSuggestion result
+	 *   (or {pending:true} while the front-matter fallback is running)
+	 * @returns {void}
+	 */
+	static #renderRefStatus(preview) {
+		const el = document.getElementById(Config.Selectors.ReferenceStatus);
+		if (!el) return;
+		if (preview?.pending) {
+			el.textContent = "Reading the uploaded document to work out the module code…";
+			return;
+		}
+		if (!preview?.code) {
+			el.textContent = "No module code found in the uploads yet — select a reference module below, or upload reference HTML.";
+			return;
+		}
+		const s = preview.suggestion;
+		if (s) {
+			const meta = s.meta ?? {};
+			const detail = [meta.series, meta.template_type].filter(Boolean).join(" · ");
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>. `
+				+ `Suggested reference: <strong>${Utils.EscapeHtml(s.code)}</strong>`
+				+ `${detail ? ` (${Utils.EscapeHtml(detail)})` : ""} — ${Utils.EscapeHtml(s.why)} (pre-selected below).`;
+		} else {
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>. `
+				+ `No suggested module exists in PageForge's distilled templates — please select a `
+				+ `reference module below, or upload reference HTML (Convert stays inactive until then).`;
+		}
+	};
+
+	/**
+	 * Caches the library-code list (once) and renders the full, unfiltered
+	 * dropdown. The placeholder option ("Please select a reference module")
+	 * is always the first, empty-value entry — it is what shows when no
+	 * suggestion exists and nothing was picked.
+	 */
+	static #fillReferenceCodes() {
+		if (this.#refCodesFilled) return;
+		const rows = ReferenceMiner.ListLibraryCodes();
+		if (!rows.length) return;
+		this.#refCodeRows = rows;
+		this.#renderRefCodeOptions("");
+		this.#refCodesFilled = true;
+	};
+
+	/**
+	 * Rebuilds the reference dropdown's options from the cached library
+	 * list, narrowed by the type-to-filter text (ROUND 251). Matching is a
+	 * case-insensitive substring test against the code and its subject ·
+	 * template label. The placeholder always stays, the current selection
+	 * is always kept in the list (filtering can never silently drop it),
+	 * and the selection itself survives the rebuild.
+	 *
+	 * @param {string} filter - the filter box's current text ("" = full list)
+	 * @returns {void}
+	 */
+	static #renderRefCodeOptions(filter) {
+		const sel = document.getElementById(Config.Selectors.RefCodeSelect);
+		if (!sel) return;
+		const current = sel.value;
+		const f = (filter ?? "").trim().toUpperCase();
+		const rows = this.#refCodeRows.filter((r) => {
+			if (r.code === current) return true;   // never drop the selection
+			if (!f) return true;
+			const detail = [r.subject, r.template_type].filter(Boolean).join(" · ");
+			return r.code.includes(f) || detail.toUpperCase().includes(f);
+		});
+		sel.innerHTML = `<option value="">Please select a reference module</option>`
+			+ rows.map((r) => {
+				const detail = [r.subject, r.template_type].filter(Boolean).join(" · ");
+				return `<option value="${Utils.EscapeHtml(r.code)}">${Utils.EscapeHtml(r.code)}${detail ? ` — ${Utils.EscapeHtml(detail)}` : ""}</option>`;
+			}).join("");
+		sel.value = current;   // restore ("" when nothing was selected)
 	};
 
 	/**
@@ -295,7 +560,14 @@ class App {
 		this.#txtFiles.forEach((f, i) => rows.push(
 			`<li>${Utils.EscapeHtml(f.name)} <em>(verified iStock acks)</em> <button type="button" data-remove="acks:${i}" title="Remove">✕</button></li>`));
 		list.innerHTML = rows.join("");
-		document.getElementById(Config.Selectors.ConvertButton).disabled = this.#files.length === 0;
+		// ROUND 250 — the Convert button's state is owned by the gate (files
+		// present + a reference selected or reference HTML added).
+		this.#updateConvertGate();
+		// ROUND 249 — every file-list change refreshes the Reference-module
+		// panel (fire-and-forget: it's advisory display work, and its own
+		// token guard handles a stale async result; it re-runs the gate once
+		// the suggestion has been auto-selected).
+		this.#updateReferencePanel();
 	};
 
 	// =======================================================================
@@ -554,7 +826,31 @@ class App {
 			// hands in its folder's .txt files exactly the same way).
 			const istockAcksFiles = await Promise.all(this.#txtFiles.map(
 				async (f) => ({ name: f.name, text: await f.text() })));
-			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles });
+			// ROUNDS 249/250 — the Reference-module choice rides into the ONE
+			// shared prep sequence as plain options (exactly like
+			// istockAcksFiles): the decision logic lives inside PrepareRun,
+			// never here (entry parity — the batch harness passes neither, so
+			// its conversions are untouched by this feature). The Convert gate
+			// normally guarantees one of the two is present; the defensive
+			// branches below only fire if the gate was somehow bypassed.
+			let referenceCode = null;
+			let referenceHtmlFiles = null;
+			if (document.getElementById(Config.Selectors.RefHtml)?.checked && this.#refHtmlFiles.length) {
+				referenceHtmlFiles = await Promise.all(this.#refHtmlFiles.map(
+					async (f) => ({ name: f.name, text: await f.text() })));
+				this.#log(`Reference module: mining ${referenceHtmlFiles.length} uploaded HTML page(s) — a distilled template file will be included in the outputs to send to Gavin.`);
+			} else {
+				const v = (document.getElementById(Config.Selectors.RefCodeSelect)?.value ?? "")
+					.trim().toUpperCase();
+				if (v) {
+					referenceCode = v;
+					const suggested = this.#refPreview?.suggestion?.code;
+					this.#log(`Reference module: inheriting page structure from ${v}${v === suggested ? " (the suggested module)" : " (your choice)"}.`);
+				} else {
+					this.#log("⚠ No reference module was selected — converting from the module's own registry home.");
+				}
+			}
+			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles, referenceCode, referenceHtmlFiles });
 			if (!prep.ok && prep.reason === "no-wt") {
 				this.#log("🔴 No Writers Template found among the uploads (no [TITLE BAR]/[Fundamental content] opener). Nothing converted.");
 				this.#progressHide();
@@ -679,6 +975,12 @@ class App {
 				["Key contact", md.keyContact],
 				["Date submitted", md.dateSubmitted],
 				["Image mode", run.imageMode],
+				// ROUND 249 — which reference module steered the page structure.
+				["Reference module", run.referenceCode
+					? `${run.referenceCode} (chosen at upload)`
+					: (run.referenceDistilled
+						? `distilled from uploaded HTML${run.referenceDistilled.referenceCode ? ` (${run.referenceDistilled.referenceCode})` : ""}`
+						: null)],
 				["Interactive mode", run.interactiveMode === "extract" ? "hand-off (raw content collapsed in-page, expandable)" : "inline (legacy)"],
 				["iStock acks file", run.istockAcks ? `${run.istockAcks.size} verified titles` : (run.istockAcksSupplied ? "supplied, but no usable entries" : "none supplied")],
 				// ROUND 236 — how many iStock titles had to be derived from the
@@ -694,15 +996,21 @@ class App {
 
 		for (const out of run.outputs) {
 			const blob = new Blob([out.content],
-				{ type: out.kind === "manifest" ? "text/plain" : "text/html" });
+				{
+					type: out.kind === "manifest" ? "text/plain"
+						: out.kind === "reference-template" ? "application/json" : "text/html",
+				});
 			const a = document.createElement("a");
 			a.href = URL.createObjectURL(blob);
 			a.download = out.filename;
 			a.textContent = out.filename;
 			const li = document.createElement("li");
 			li.appendChild(a);
+			const kindLabel = out.kind === "manifest" ? "interactives manifest"
+				: out.kind === "reference-template" ? "distilled reference template — send to Gavin"
+					: "page";
 			li.insertAdjacentHTML("beforeend",
-				` <span class="output-kind">${out.kind === "manifest" ? "interactives manifest" : "page"}</span>`);
+				` <span class="output-kind">${kindLabel}</span>`);
 			list.appendChild(li);
 		}
 
@@ -789,6 +1097,31 @@ class App {
 		if (modeP) modeP.checked = true;
 		const modeD = document.getElementById(Config.Selectors.ModeD);
 		if (modeD) modeD.checked = false;
+
+		// ROUNDS 249/250 — the Reference-module panel back to its fresh state:
+		// hidden (no files), the pick choice selected with its block visible,
+		// the html choice cleared and hidden, the dropdown back to the
+		// placeholder, and the manual-pick memory forgotten.
+		// (#renderFileList above already re-hid the panel via
+		// #updateReferencePanel, since the file list is now empty.)
+		this.#refHtmlFiles = [];
+		this.#refPreview = null;
+		this.#refUserPicked = false;
+		this.#renderRefHtmlList();
+		const refPick = document.getElementById(Config.Selectors.RefPick);
+		if (refPick) refPick.checked = true;
+		const refHtml = document.getElementById(Config.Selectors.RefHtml);
+		if (refHtml) refHtml.checked = false;
+		const pickBlock = document.getElementById(Config.Selectors.RefPickBlock);
+		if (pickBlock) pickBlock.hidden = false;
+		const htmlBlock = document.getElementById(Config.Selectors.RefHtmlBlock);
+		if (htmlBlock) htmlBlock.hidden = true;
+		const refSel = document.getElementById(Config.Selectors.RefCodeSelect);
+		if (refSel) refSel.value = "";
+		// ROUND 251 — clear the type-to-filter box + restore the full list
+		const refFilter = document.getElementById(Config.Selectors.RefCodeFilter);
+		if (refFilter) refFilter.value = "";
+		if (this.#refCodesFilled) this.#renderRefCodeOptions("");
 
 		// hide the reset button again + scroll to the top (section 1 · Upload)
 		const resetPanel = document.getElementById(Config.Selectors.ResetPanel);

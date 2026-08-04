@@ -863,6 +863,79 @@ class PrecedenceResolver {
 	}
 
 	/**
+	 * REFERENCE-MODULE SUGGESTION (ROUND 249 — the HTML Generator's
+	 * "Reference module" panel). Names the nearest already-built module a
+	 * new conversion would most naturally inherit from — the same "ask the
+	 * nearest relative first, then widen" idea as the cascade above, but
+	 * answering the coarser, person-facing question "WHICH ONE module is
+	 * my reference?" rather than resolving one element key. Display-only:
+	 * nothing in the conversion reads this — the actual inheritance stays
+	 * with ModuleResolver.Resolve / this cascade, and only an EXPLICIT
+	 * user override (PrepareRun's referenceCode option) changes anything.
+	 *
+	 * HOW IT CHOOSES (Gavin's two-tier rule, round 250 — deliberately NO
+	 * wider fallback):
+	 *   1. SAME MODULE SERIES — same code prefix + same leading digit
+	 *      (OSAI502 → the OSAI5xx family → OSAI501 first and foremost);
+	 *   2. SAME SUBJECT AT THE SAME PHASE — a different prefix in the same
+	 *      subject whose leading digit matches (no OSAI5xx on record →
+	 *      an Online Safety 5xx sibling: OSOH501 / OSBY501 / …). For a
+	 *      code the index has never seen, the subject is borrowed from any
+	 *      indexed module sharing its prefix.
+	 * Inside a tier, prefer the nearest EARLIER-built module (dev_order
+	 * below this code's own — the "module this one continues from"),
+	 * falling back to the nearest later one when nothing earlier exists.
+	 * When NEITHER tier holds a module, return null — the UI then demands
+	 * an explicit choice ("Please select a reference module") or a
+	 * reference-HTML upload before converting.
+	 *
+	 * @param {string} code - the module being converted, e.g. "OSAI502"
+	 * @returns {?{code: string, group: string, why: string, meta: Object}}
+	 *   the suggested reference module, or null when neither tier holds
+	 *   a relative (a brand-new subject/series)
+	 */
+	static SuggestReference(code) {
+		this.#load();
+		if (!code) return null;
+		const me = this.#metaFor(code);
+		const mine = me.dev_order ?? Infinity;
+		// the subject may be unknown for a brand-new code — borrow it from
+		// any indexed module sharing the letter prefix (OSAI → Online Safety)
+		let subject = me.subject;
+		if (!subject && me.prefix) {
+			for (const c in this.#meta) {
+				if (this.#meta[c].prefix === me.prefix) { subject = this.#meta[c].subject; break; }
+			}
+		}
+		const digit = (me.phase || "").slice(-1);
+		const nearest = (list) => {
+			if (!list.length) return null;
+			const earlier = list.filter(([, m]) => m.dev_order != null && m.dev_order < mine);
+			const pool = earlier.length ? earlier : list;
+			pool.sort((a, b) =>
+				Math.abs((a[1].dev_order ?? 0) - mine) - Math.abs((b[1].dev_order ?? 0) - mine)
+				|| (a[0] < b[0] ? -1 : 1));
+			return pool[0][0];
+		};
+		const circles = [
+			["series", (m) => me.phase && m.phase === me.phase,
+				"the nearest already-built module in the same module series"],
+			["subject_phase", (m) => subject && m.subject === subject
+				&& digit && (m.phase || "").slice(-1) === digit,
+				"the nearest already-built module in the same subject at the same phase"],
+		];
+		const cands = [];
+		for (const c in this.#meta) {
+			if (c !== code) cands.push([c, this.#meta[c]]);
+		}
+		for (const [group, test, why] of circles) {
+			const hit = nearest(cands.filter(([, m]) => test(m)));
+			if (hit) return { code: hit, group, why, meta: this.#meta[hit] };
+		}
+		return null;
+	}
+
+	/**
 	 * TEST-ONLY hook: clears every cached/memoised field (#idx, #meta,
 	 * #casc, #doc14, #memberCache) so the NEXT call to #load() re-reads
 	 * DataService.Data from scratch instead of reusing whatever was

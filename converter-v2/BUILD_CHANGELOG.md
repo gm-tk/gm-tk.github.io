@@ -1,5 +1,177 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-05 (round 251, build 260618.24) — REFERENCE-DROPDOWN TYPE-TO-FILTER (**UI-only; NO engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin's follow-up to rounds 249/250: typing a module code
+should quickly filter the reference dropdown. A filter box now sits directly above the
+dropdown; every keystroke narrows the 390-code list live (case-insensitive substring
+match on the code AND its subject · template label), and typing enough of a code to
+leave an EXACT single match selects that module automatically. Guards: the current
+selection is never dropped by filtering (it always stays in the list, and a
+filter-driven auto-select counts as a manual pick so a later re-render can't clobber
+it); clearing the box, the page reset, and a fresh suggestion auto-select all restore
+the full list; the placeholder ("Please select a reference module") is always present,
+and the round-250 Convert gate keeps working unchanged.
+
+**MECHANICS:** the library list is cached once (`App.#refCodeRows`) and the dropdown's
+options rebuild from it (`#renderRefCodeOptions`); new selector `RefCodeFilter`
+(`#ref-code-filter`, styled like the select). Files: App.js · index.html · Config.js ·
+css/styles.css. Engine untouched — entry-parity PASS, index-sync 33/28; every
+conversion byte identical by construction (no engine/data file changed).
+
+## 2026-08-05 (round 250, build 260618.23) — REFERENCE-MODULE PANEL REFINEMENTS: auto-selecting dropdown + the Convert gate (**NO regeneration — not requested; the gates were NOT re-run; the round-245 baselines still describe the corpus — the batch path passes no reference options and is untouched**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin's same-day follow-up to round 249, four changes:
+"Chris" → "Gavin" in the reference-HTML instructions; the "Automatic (recommended)"
+choice REMOVED; the pick choice renamed **"Choose a reference module from the library
+(suggested module selected if one exists)"** and turned into a DROPDOWN that
+AUTO-SELECTS the suggestion; and a CONVERT GATE — when no suggestion exists the
+dropdown shows "Please select a reference module" and the Convert button stays
+inactive until a module is selected OR reference HTML pages are uploaded.
+
+**THE NEW SUGGESTION RULE (`PrecedenceResolver.SuggestReference` rewritten —
+Gavin's two-tier walk, deliberately NO wider fallback):**
+1. **Same module series** — same code prefix + leading digit: OSAI502 → the OSAI5xx
+   family → **OSAI501** first and foremost (nearest earlier dev_order preferred).
+2. **Same subject at the same phase** — no OSAI5xx on record → an Online Safety 5xx
+   sibling under a different prefix (OSOH501 / OSBY501 / …). For a code the index has
+   never seen, the subject is BORROWED from any indexed module sharing its prefix
+   (without this, tier 2 could never fire for a new module — the index fallback
+   leaves subject null).
+3. Neither → **null**: the placeholder stays selected and `App.#updateConvertGate`
+   keeps Convert disabled (files present + a selected reference OR ≥1 reference
+   HTML page are both required; with the feature data-disabled the gate reverts to
+   the historic files-only rule).
+
+**UI mechanics:** the datalist input is now a `<select>` (placeholder option
+authored in index.html, library codes appended once, labelled "CODE — subject ·
+template"); the suggestion auto-fills it on every upload change but NEVER clobbers a
+manual pick (`#refUserPicked`); the reset restores pick-mode + placeholder. Since
+"Automatic" is gone, a suggested conversion now EXPLICITLY passes the suggested code
+as `referenceCode` (logged "(the suggested module)") — the batch harness still passes
+nothing, so entry parity and the corpus path are unchanged.
+
+**PROOF:** `outputs/_probe_r249_refmod.cjs` updated for the two-tier rule and re-run
+ALL GREEN across all three process-isolated states — AGH1006 → AGH1005 (series) ·
+**OSAI502 → OSAI501 (series — Gavin's example verbatim)** · **OSSC502 → OSAH501
+(subject_phase — the borrowed-subject tier)** · ZZQQ101 → null · onplain ==
+REFMOD_OFF-with-options **md5-identical across processes**; entry-parity PASS;
+index-sync 33/28. Files: PrecedenceResolver.js · App.js · index.html · Config.js
+(selectors: RefAuto/RefCodeInput/ReferenceCodes → RefCodeSelect) · ReferenceMiner.js
++ ModuleResolver.js (Gavin wording) · styles.css. No data-flag change (`REFMOD_OFF`
+still reverts the whole feature).
+
+## 2026-08-05 (round 249, build 260618.22) — THE REFERENCE-MODULE PANEL: suggestion + picker + reference-HTML upload with a distilled template hand-off (**NO regeneration — not requested; the gates were NOT re-run; the round-245 baselines still describe the last regenerated corpus state and HOLD BY CONSTRUCTION — the default conversion path is proven byte-identical**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris asked for new HTML Generator functionality: when the
+Word docs are uploaded, the app should SUGGEST which already-built module will be used
+as the reference (the module this conversion inherits its page structure from), let the
+person SEE every module code and PICK a different one, and — when no suitable module
+exists — let them UPLOAD the finished HTML pages of a module to use as the reference,
+additionally generating a DISTILLED TEMPLATE file to send to Chris so that reference can
+be added to PageForge's templated modules for future conversions. All four pieces
+shipped this round, behind ONE data flag + env toggle.
+
+**WHAT SHIPPED (browser UI + engine, each piece in the right layer):**
+
+- **The panel (new section "2 · Reference module", app/index.html; sections renumbered
+  3/4/5).** Hidden until a module code can be read off the uploads — filenames first
+  (the strongest signal), with an async front-matter peek at the first docx as the
+  fallback (token-guarded against stale results). The status line names the detected
+  code and the suggested reference. All the detection work lives in the NEW engine
+  helper `ReferenceMiner.PreviewSuggestion` — App.js never calls the prep methods
+  itself, so the entry-parity gate's forbidden-call scan stays clean.
+
+- **The SUGGESTION (`PrecedenceResolver.SuggestReference`, new public static).**
+  The nearest already-built relative in the library index (`Module_Structure_Index
+  .module_meta`), walking the familiar narrow-to-wide circles: same series+template →
+  same series → same phase → same subject+template → same subject → same code prefix;
+  inside the first non-empty circle the nearest EARLIER-built module wins (dev_order
+  below the code's own — "the module this one continues from"), falling back to the
+  nearest later one. ADVISORY-ONLY: "Automatic" (the default choice) passes nothing
+  into the conversion, which then behaves exactly as it always has. Known-answers
+  probed: AGH1006 → AGH1005 (series_template, the resolve() doc example), ENGJ403 →
+  ENGJ402, a brand-new subject → an honest null ("no relative found — pick one, or
+  upload reference HTML").
+
+- **The PICKER.** A searchable input + datalist of ALL 390 library codes
+  (`ReferenceMiner.ListLibraryCodes`, each labelled subject · template). Choosing one
+  sends `referenceCode` into **`ModuleResolver.PrepareRun`** (a plain option, exactly
+  like the r235/r236 istockAcksFiles precedent — the decision logic lives in the ONE
+  shared prep sequence, never in an entry file): the structural rules re-resolve AS
+  the chosen module's registry home (`Resolve(referenceCode)` — subjectName /
+  seriesCode / groupKey / resolutionPath re-annotate to the reference's, which is the
+  point) while the module keeps its own code, titles and output naming; a loud info
+  note records the override.
+
+- **The REFERENCE-HTML UPLOAD + THE DISTILLED TEMPLATE (new engine file
+  `app/js/ReferenceMiner.js`).** For a module with no suitable library relative: upload
+  the finished .html pages of the module to emulate. `ReferenceMiner.Distil` mines the
+  Style-Anchor TRACKED FIELDS out of them — template_phase (`<html template>`),
+  level_attr, body_class, idoc_host, footer_class, acknowledgements, page_model,
+  module_code chip format (full-code/decimal/literal), h1_count (chip-h1 excluded),
+  menu_type (tabs/simplified/none), menu_button_tooltip, footer_links
+  (prev+next+home vocabulary) — per page ROLE (overview = the 0/0.0 page by any
+  filename era: `_0_0` / `-00` / `-0.0`). Plain text/regex mining only (no DOM —
+  identical in browser and node); a field it cannot determine confidently is listed
+  `unmined` and NOT applied, so a partial upload can never invent structure; pattern
+  fields rebuild as WHOLE objects (mined roles over the resolved values — the
+  resolver's never-half-merge rule). `Overlay` applies the mined fields to
+  `run.resolvedRules`; PageAssembler ships the distilled object as
+  **`{REFCODE}_reference-template.json`** (kind "reference-template" — labelled
+  "distilled reference template — send to Chris" in the outputs list) carrying rules +
+  unmined_fields + module_meta_guess + provenance + an honest how_to_use note: the
+  page-level profile is ready to add to the registries; the element-level granular
+  ladder still comes from the Python registry rebuild once the module's HTML joins the
+  library. MINING TRAP CAUGHT LIVE: underscores are word characters, so
+  "OSSC301_0_0.html" defeats a plain \b code match — filename separators fold to
+  spaces first.
+
+**MEASURED/PROBED (`outputs/_probe_r249_refmod.cjs` — ONE PROCESS PER STATE, the r246
+in-process A/B trap + the r217 same-module-twice hazard honoured; every hash-recorded
+conversion is first-in-its-process):**
+- **onplain**: BLL225 with no reference options — carries no referenceCode, no
+  distilled reference, no extra output. Hashes recorded.
+- **offref**: BLL225 with BOTH options set under `REFMOD_OFF=1` — options ignored, no
+  distilled output, and **md5-identical to onplain across processes (the faithful
+  revert + the proof the default path is untouched)**.
+- **onref**: the override is real (resolvedRules == ENGC102's home, != BLL225's own;
+  outputs differ from onplain); Distil over the OSSC301 gold pages mines EVERY tracked
+  field correctly (template NCEA · container-fluid · level empty · tekura · footer-nav
+  · acks yes · multi-file · overview chip full-code / lesson decimal · overview menu
+  tabs / lesson simplified · lesson footer prev+next+home · tooltip yes · lesson
+  h1_count 2 = the r230-documented OSSC gold form; unmined []); the full conversion
+  ships a parsing OSSC301_reference-template.json and applies the mined
+  template_phase.
+- **Gates run this round:** index-sync **33 browser / 28 node OK** (ReferenceMiner.js
+  joined `_modules.json` + index.html); **entry-parity PASS + selftest GREEN** on the
+  new App.js/PrepareRun (static contract clean — the advisory goes through
+  ReferenceMiner, not prep calls in the entry; dynamic leg byte-identical).
+- **NOT re-run (no `REGENERATE CORPUS` in the request):** the protected corpus gates.
+  The round-245 baselines continue to describe the last regenerated state; they hold
+  BY CONSTRUCTION for this round because the batch harness passes neither new option —
+  the corpus path is the proven-byte-identical onplain/offref state.
+
+**FILES:** app/js/ReferenceMiner.js (NEW) · ModuleResolver.js (PrepareRun options +
+override block) · PrecedenceResolver.js (SuggestReference) · ConversionRun.js (two
+declared fields) · PageAssembler.js (the distilled output push) · App.js (panel wiring,
+convert options, outputs/metadata/reset) · index.html (the panel + renumber +
+script tag) · Config.js (selectors + AppVersion) · css/styles.css (panel styles) ·
+_modules.json (33/28) · data/Emit_Templates.json (`reference_module` block).
+**Data flag** `Emit_Templates.reference_module.enabled` · **env toggle** `REFMOD_OFF`
+(reverts the pick-override, the HTML mining AND the distilled output; the suggestion
+panel is display-only and gate-invisible by nature).
+
+**RECORDED FOLLOW-UPS:** (1) the distilled template currently feeds the LIVE run at
+page level only — wiring a distilled granular ladder would need the element-level
+miner (Python registry territory); (2) the pick-override deliberately re-homes the
+WHOLE ruleset — the r221/r224/r231/r245 template-attribute presets still key on the
+module's OWN code (its own level digit is a fact about the module, not the reference)
+and outrank the inherited value where they apply; (3) a picked code UNKNOWN to the
+registry walks the normal majority/defaults fallback (surfaced in the resolution-path
+note) rather than being refused — acceptable for an explicit user choice, revisit if
+it confuses.
+
 ## 2026-08-05 (round 248, build 260618.21) — LANGUAGES AUDIOVISUAL PACKAGE FINALISED: the asset/tag registry captured + the cohort prefix list completed (**NO regeneration — not requested; the round-245 gate baselines still describe the last regenerated state and HOLD BY CONSTRUCTION — the round is proven output-inert**)
 
 **THE PLAIN-ENGLISH LEAD.** Chris supplied the FINAL `20260511_Language_HTML` ("All

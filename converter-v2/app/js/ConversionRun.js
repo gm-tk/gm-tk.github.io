@@ -84,6 +84,15 @@ class ConversionRun {
 		//     menu_type: "tabs", template_phase: "9-10", ... }
 		this.resolvedRules = null;
 		this.resolutionPath = null;   // which rule sources supplied each value (shown in the summary)
+		// ROUND 249 — the REFERENCE-MODULE choices (both null unless the person
+		// explicitly chose one in the upload UI; the batch harness never sets
+		// them, so the default path is byte-identical to the pre-round engine):
+		// referenceCode = a library module code chosen to inherit page structure
+		// from instead of this module's own registry home; referenceDistilled =
+		// the ReferenceMiner.Distil result when reference HTML pages were
+		// uploaded (its .file object also ships as {CODE}_reference-template.json).
+		this.referenceCode = null;
+		this.referenceDistilled = null;
 		this.englishTitle = "";       // English title from the [TITLE BAR] line, e.g. "Staying safe online"
 		this.teReoTitle = "";         // te reo Māori title, if the module has one
 		// Some families (e.g. the "BLL" phonics modules) prefix their title bar

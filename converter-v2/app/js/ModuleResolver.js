@@ -306,7 +306,8 @@ class ModuleResolver {
 	 *                   { ok:false, reason:"unsupported", unsupported, wt,
 	 *                     mediaSource } on a data-driven refusal.
 	 */
-	static PrepareRun({ docs = [], run, normaliser, istockAcksText = null, istockAcksFiles = null }) {
+	static PrepareRun({ docs = [], run, normaliser, istockAcksText = null, istockAcksFiles = null,
+		referenceCode = null, referenceHtmlFiles = null }) {
 		// ---- classify the inputs (WT = content opener; media list = table) --
 		let wt = null;
 		let mediaSource = null;
@@ -329,6 +330,46 @@ class ModuleResolver {
 		run.metadata = wt.doc.metadata ?? {};   // front-matter info fields
 		run.mtkFlag = !!wt.doc.mtkFlag;   // the docx's own bilingual/Te-Reo signature flag, set independently of whatever the Style Anchor Registry resolved for this module -> feeds reoMode below
 		run.resolvedRules = this.Resolve(run.moduleCode, run);
+
+		// ---- REFERENCE-MODULE override (ROUND 249) --------------------------
+		// The upload UI's "Reference module" panel lets the person either PICK
+		// a different library module to inherit from (referenceCode) or, when
+		// no suitable module exists, UPLOAD the finished HTML of a module to
+		// emulate (referenceHtmlFiles → ReferenceMiner.Distil). Both are
+		// EXPLICIT user choices carried into this ONE shared prep sequence —
+		// the batch harness passes neither, so the default path is
+		// byte-identical to the pre-round behaviour (entry parity holds by
+		// construction). The suggested reference shown in the UI is
+		// advisory-only and never reaches this code.
+		// Data flag: Emit_Templates.reference_module · Env toggle: REFMOD_OFF.
+		const rmCfg = DataService.Data.EmitTemplates?.reference_module;
+		const rmOn = rmCfg && rmCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.REFMOD_OFF);
+		if (rmOn && referenceCode && referenceCode !== run.moduleCode) {
+			run.referenceCode = referenceCode;
+			// re-resolve the structural rules AS the chosen reference module —
+			// the module keeps its own code/titles/naming; only the inherited
+			// page structure follows the reference. Resolve() re-annotates the
+			// run (subjectName / seriesCode / groupKey / resolutionPath) with
+			// the reference's registry home, which is exactly the point.
+			run.resolvedRules = this.Resolve(referenceCode, run);
+			run.AddNote("info", "ModuleResolver",
+				`Reference module override: page structure resolved from ${referenceCode} `
+				+ `(chosen at upload) instead of ${run.moduleCode ?? "the module"}'s own registry home. `
+				+ `Env REFMOD_OFF reverts.`);
+		}
+		if (rmOn && referenceHtmlFiles?.length) {
+			const distilled = ReferenceMiner.Distil(referenceHtmlFiles, run);
+			if (distilled) {
+				run.referenceDistilled = distilled;
+				const applied = ReferenceMiner.Overlay(run, distilled);
+				run.AddNote("info", "ModuleResolver",
+					`Reference HTML applied: ${applied} structural field(s) mined from the uploaded `
+					+ `reference pages${distilled.referenceCode ? ` of ${distilled.referenceCode}` : ""} `
+					+ `now steer this conversion; the distilled template file ships with the outputs `
+					+ `(send it to Gavin to add this reference to PageForge's templated modules).`);
+			}
+		}
 
 		// MTK/TRR unsupported pathway: this used to refuse EVERY module
 		// carrying the MTK/TRR bilingual signature, because the converter
