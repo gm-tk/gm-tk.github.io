@@ -1,5 +1,612 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-05 (round 248, build 260618.21) — LANGUAGES AUDIOVISUAL PACKAGE FINALISED: the asset/tag registry captured + the cohort prefix list completed (**NO regeneration — not requested; the round-245 gate baselines still describe the last regenerated state and HOLD BY CONSTRUCTION — the round is proven output-inert**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris supplied the FINAL `20260511_Language_HTML` ("All
+packages have been finalsied for each of the langauges" — every language panel marked
+*finalised and will be in use in upcoming modules*) plus a covering note: **the CHFUN
+modules are the structural reference point for all language fundamentals, and JPNFUN05
+for all language 05 fundamentals** (its layout is slightly different). Two things folded
+into PageForge, both DATA-only (no engine JS changed):
+
+**(1) THE COHORT PREFIX LIST COMPLETED — `CHFUN` + `JPNFUN` join
+`skeleton.template_phase_presets.cohort_overrides.prefixes`** (the r231 CL-0033 Languages
+combo rule; env `LANGCOMBO_OFF` unchanged). The code forms ACTUALLY in circulation differ
+from doc-14's draft spellings (`CHIFUN`/`JAPFUN`): the 2026-08-03 intake brought
+**CHFUN01–CHFUN07** into the corpus, and every one had been falling through to the r245
+`last_resort_default` — shipping the RIGHT attribute (`combo`) for the WRONG reason, with
+the loud "No template could be resolved" warn on every run. The draft spellings stay in
+the list for safety; the list remains EXPLICIT full prefixes (the r245 no-2-letter rule).
+**PROVEN OUTPUT-INERT, the r231 class** (`outputs/_probe_r248_langassets.cjs`, one
+process per toggle state — the r246 in-process A/B trap honoured): fix-ON == `LANGCOMBO_OFF`
+**byte-identical** on CHFUN01 + BLL210 (md5 per page, `/tmp/_r248_{on,off}.hashes` diff
+EMPTY); fix-ON carries NO last-resort warn (the cohort rule decides), toggle-OFF brings
+the warn back (faithful ROUTE revert — the r245 default remains the fallback either way);
+DETECTION: synthetic `JPNFUN05` over the NCEA-resolving OSSC301 host ships `combo` on
+every page (cohort outranks the host chain); FENCE: BLL210 keeps prefix_overrides'
+`"1-3"`. NOTE for the next full regen: the probe's first draft compared against the DISK
+corpus and "failed" — the diffs were the **standing r246/r247 no-regeneration deltas**
+(BLL210 is a NAMED r247 in-class mover; CHFUN01_1_0's capture boundary moved with r247's
+`CARSERIES` media-series break), NOT this round; the shipped proof is state-vs-state from
+the one current tree.
+
+**(2) THE SGP 14.1 CAPTURE — the finalised Audiovisual Package as data**
+(`data/Subject_Global_Parameters.json`, still shipped-INERT: the engine never reads SGP at
+runtime, `master_enabled:false`, env `SUBJECTPARAMS_OFF` unchanged). Family
+`14.1 Languages P1-4` gains: `scope.cohort_prefixes` += CHFUN/JPNFUN (+ the label
+records the superseded draft spellings); `source_updated` 2026-08-05; a NEW
+**`asset_registry`** block — the full finalised registry keyed by the writer's
+`[Audiovisual package <asset> item N]` tag family (variant sub-brackets `[full body]` /
+`[headshot]` / `[expression]` etc.; Spanish expression numbering; item numbers
+per-language, Japanese legitimately starts at 0): **German** Hoffmann family (Claudia
+item 1 / Daniel item 2 / Felix item 4 Vimeo 1193069697/1193069699/1200277175, Lina item 3
++ Arihi item 6 audioImage, Der Lehrer item 5 Vimeo 1193069825, Narrator item 7
+audioPlayer, Salzi the pretzel item 8 with 4 variants), **French** Luc/Sophie/Malia
+(Vimeo 1190998681/1190998668/1190998650 in a `carouselBorder` carousel), **Chinese**
+Da Wei/Xiao Mei/Female-narrator audioButtons + characters items 1-2, Wang Laoshi item 3
+Vimeo 1196193454, Panda item 4 (iStock 2193695860 — the writer still puts an i-Stock link
+in the WT for the allocated designer), **Japanese** Kauri/Yuka/Sakura audioButtons +
+characters (Sakura item 0 / Yuka item 3 / Kauri item 4), greeting-scene stills (item 1
+morning/afternoon/evening/night + Snow festival item 7 + Ainu village item 10) and 3
+conversation Vimeos (1200640618/1203682044/1203681543), **Spanish** Pablo/María
+expression sets (iStock 2214853643/2214816016; ONE audio runs Spain → Latin America →
+Mexico) + family tree item 3 (iStock 1675300511 + 2207512167) / portrait item 4,
+**Samoan** Fa'auiga item 1 / Si'iolo item 2 + the NZ-to-Samoa gif item 3 (iStock
+926176050 + 2215778947). Conventions revised: "Videos added manually (deferred)" →
+**"Audiovisual Package FINALISED — registry assets emit the supplied forms"** (an
+un-registered Audiovisual slot keeps the red note + the cl0037/constraint-64 pending-ID
+Vimeo scaffold); "Provisional asset state" → **"Structural reference points — CHFUN /
+JPNFUN05"** (Mode-B same-language sibling still outranks); NEW **"Language icons"**
+convention (8 icons Reading/Listening/Speaking/Writing/Interact/Think/Idea/Linguist,
+tag `[Audiovisual package Icon <Name>]`, identical throughout the phases and
+auto-coloured to the module's phase — the writer never specifies a colour). Vet-keyword
+rule honoured (no bare width/col keywords). `subject_parameters.py --selftest` PASS ·
+`vet_issue.py --selftest` PASS (incl. the cascade selftest).
+
+**KB-SIDE (the htmlconvertor-kb repo, same pass): CL-0070** — `14A` §14.1 rewritten
+around the finalised registry + reference points; `12E2` ledger entry; `INDEX.md`
+refreshed; `tools/check_kb.py` 54 files / 0 warnings / 0 failures.
+
+**GATES: NOT RE-RUN (no `REGENERATE CORPUS` in the request).** The round is proven
+output-inert at the current tree (fix-ON == fix-OFF byte-identical), so the round-245
+baselines continue to describe the last regenerated state; `LANGCOMBO_OFF` /
+`SUBJECTPARAMS_OFF` remain the reversal guarantees. Files: `data/Emit_Templates.json`
+(cohort_overrides), `data/Subject_Global_Parameters.json` (family 14.1),
+`app/js/Config.js` (AppVersion), tool `outputs/_probe_r248_langassets.cjs`.
+
+## 2026-08-04 (round 247, build 260618.20) — ENGS404-00: the TEXT-ONLY speechBubble + the MEDIA-SERIES carousel — the basic-interactives round completed on the new-era WT (**NO regeneration — not requested; the round-245 gate baselines still describe the last regenerated state; the `*_OFF` toggles are the reversal guarantee**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris re-converted ENGS404 (the ZZ-HumanDev developer-test
+module) on the round-246 code and the very first page still shipped an un-built
+speechBubble and an un-built carousel. Triangulated live (`outputs/_probe_engs404_p0.cjs`):
+neither was covered by round 246, which built the avatar+bubble and rich-slide DIALECTS —
+these are two OTHER dialects. (1) The bubbles are `[insert thought bubble] Where do we
+find stories? [insert thought bubble] Why are stories important?` — **no character image,
+no table**; no builder branch existed for a text-only bubble (the r246 RECORDED image-less
+decline class, 229 bundles / 52 modules). (2) The carousel is `[insert image carousel]`
++ `[image 1]..[image 4]` then the section resumes with `[body]` — and the member walk
+never stopped: the carousel swallowed the ENTIRE rest of the page (intro, video, the
+whole hover-vocabulary section) into the placeholder and the build always declined. Two
+further gaps surfaced on later pages: back-to-back videos all piled into ONE slide (so a
+2-video carousel failed `min_slides`), and `[insert video]` with its URL on the FOLLOWING
+title-anchored link line could not resolve (the r240 D2 class; 137 members / 38 modules).
+
+**MEASURED FIRST** (`outputs/_detect_r247.cjs`, ALL corpus dirs, 12 shards + merge):
+`sbTextOnly` **229 / 52 modules** (212 clean) · `carVideoTail` **137 / 38 modules, NONE
+currently building** · general `carMediaRun` scope **260 bundles / 118 modules** —
+crucially **no currently-building carousel carries a `[body]`/`[list]` after its media
+run** (the zero-risk terminator), and the 11 heading-tailed "builds" (EXPFUN02 ×5,
+ENGJ403, XLP04/06, HPRE301, XGF9001) are themselves OVER-CAPTURES shipping the next page
+section as bogus trailing slides — the boundary rule corrects them TOWARD the writer's
+structure (named build-shape change). The human library ships the text-only bubble form
+**385 times**, with `layout="thought"` (365 occ / 152 pages) for exactly the thought
+wording — the emit shape is the measured plurality (`col-12` > `bubble-basic no-hover
+bubble-top`; side/colour scatter recorded C).
+
+**THE FIVE FIXES** (each independently toggled; DATA OVER CODE):
+- **`SBTEXT_OFF`** — `InteractiveBuilder.#speechBubbleTextOnly` (tried before the modifier
+  bail): one bubble row per INTERACTIVE invocation member; blackAfter + following black
+  lines = paragraphs; >1 `<p>` takes the r104 wrapper div; layout from the writer's own
+  word (`thought_re`); stray punctuation-only paragraphs dropped (the r104 STRAYLEAD
+  class — TEDC402's lone `]`, live-caught by the verifier). Never-half-build: table /
+  media / real second element / empty bubble / bullets / over-long → decline. Data
+  `speechBubble.text_only`.
+- **`CARSERIES_OFF`** — `InteractiveScanner.#swallowMembers` MEDIA-SERIES SECTION BREAK:
+  in a slide-marker-less carousel whose capture is still a PURE media run (invocation /
+  media members / a video's own link-title line / instructions only, run ≥ 2), the first
+  non-media element tag terminates the widget. Interleaved dialects fail the pure-run
+  test BY CONSTRUCTION. Data `member_rule.media_series_break` (+`_types`/`_min_run`).
+- **`CARMEDSLIDE_OFF`** — `#carouselRich`: in a marker-less bundle each image/video OPENS
+  its own slide (a heading/prose-opened slide still receives its first media item, so the
+  heading+image dialect is unchanged). Data `rich_slides.media_series.media_opens_slide`.
+- **`CARVIDTAIL_OFF`** — `#carouselRich`: a `[video]` member with no own URL takes it from
+  the immediately-following black link line, consuming it. Data
+  `rich_slides.media_series.video_tail_url`.
+- **`MEDIAFOLLOWLINK_OFF`** — `MediaBuilder.media`: the same following-line hyperlink
+  source on the FREE-BODY path (`[insert video]` + "Pixar in a Box… - YouTube" link line
+  → embed builds; the reference line is dropped per the r80/r240-D3 title rule once the
+  URL came from it). Data `elements.media_url_in_text.following_link`.
+
+**ENGS404 AFTER:** page 0 ships the two thought bubbles (`layout="thought"`), the 4-slide
+iStock carousel, the embedded Pixar video, the hover-vocabulary section WOVEN as
+infoTriggers (freed from the placeholder dump), and **zero hand-off boxes**; module-wide
+auto-built 1 → 5 (both thought bubbles + 3 carousels); the remaining 19 un-built are all
+TASK-type widgets (dropDown/dragAndDrop/quiz/reorder — Phase-1 hand-off territory by
+design). Same 12-page set (pagination untouched).
+
+**PROOF (no regen — in-memory, the r241/r242 pattern):** all-toggles-OFF reproduces
+Chris's own current conversion **byte-identically outside the acks block** (the only
+diffs = the sandbox's stubbed oEmbed titles vs his live run — the r245 recorded probe
+class); out-of-class canaries OSAH501 / CEDW501 / OSOH501 fix-ON **ON==OFF byte-identical**;
+the three in-class movers decompose to exactly the measured classes (BLL210 = its 3-video
+carousel now builds; TEDC402 = text-only bubbles join, 21/21 verifier-exact; MXDB302 =
+the writer's 4-bubble dialogue builds — its gold REWROTE that dialogue into a narrated
+paragraph + carousel, the standing gold-substitution class, never chased). **Verifiers:**
+speechBubble **36 built / 32 exact / gold-subst 4 / defect 0** — the verifier gains the
+A1 **gold-subst lane** (a ~zero-overlap writer-faithful bubble = the human's
+substitution, reported not fatal; an internally MALFORMED bubble is always fatal) and its
+selftest moves to the accordion INJECT pattern (GREEN); carousel **15 built / 38 video
+slides / 0 mismatched ids** and its selftest DETECTION channel is **ACTIVATED** (the r149
+"dormant — extend the day a video carousel builds" note honoured: BLL210+BLL117 fixture,
+mangled gold 0→16, GREEN); accordion 15 panels ✓; flipCard **33 / div 0** (defect 10
+EXACT); tags **9557/9557 REAL 0**; entry-parity PASS; index-sync 32/27.
+
+**NOT RE-RUN and not implied:** the full protected-gate suite (no `REGENERATE CORPUS`
+code in the request). On the next regen the named build-shape changes land: the 52
+text-only-bubble modules, the ~110 media-series carousels (capture + builds), and the 11
+heading-tailed over-built carousels trimmed to the writer's series.
+
+**FOLLOW-UPS (recorded):** the `run=2..N after=black` residue (~11 bundles — a black
+prose line after the media run neither terminates nor captions cleanly; measure before
+touching) · ENGS404-00's phantom page-0 "tabs" interactives.txt entry (the writer's menu
+set-up bundle is consumed by the r221 menu partition but still counted in the txt — a
+cosmetic ManifestBuilder census artifact, no placeholder on the page) · hazardB
+(heading+video slide dialects) deliberately untouched — headings only terminate through
+the pure-run rule, never mid-slide. Tools `outputs/_detect_r247.cjs`,
+`_probe_engs404_p0.cjs`, `_probe_r247_headtail.cjs`, `_probe_r247_write.cjs`.
+
+## 2026-08-03 (round 246, build 260618.19) — BASIC INTERACTIVE BUILDERS: build the WRITER'S tagged widget — no-table speechBubble · heading-less accordion panels · the rich carousel fallback (**NO regeneration — not requested; the round-245 gate baselines still describe the last regenerated state**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris asked why basic interactives — carousels, accordions,
+speech bubbles — so often end up as a developer hand-off box instead of a finished
+widget. Round 245 measured it: only **580 of 6,987** captured interactives build
+(8.3%), and there is no simple-vs-complex router deciding to defer. Every builder
+simply covers one or two authoring DIALECTS, and bails wholesale on anything else.
+This round widens three of them.
+
+**THE DECISION THAT SHAPED THE ROUND.** The measurement first asked what the human
+gold builds at each declined site, and the answer was discouraging: for the carousel
+the human builds a carousel at only 65 of 554 sites (and an ACCORDION at 134); for the
+accordion, an accordion at 156 of 331. On a gold-match reading, two of the three
+tickets were declines. **Chris overruled that, and named the reason:**
+
+> *"If the writer has specified a carousel, the best thing is to generate a Carousel…
+> the most important thing is adhering as closely as possible to the tags that the
+> writer has used."*
+> *"If the writer has used the accordion tag, then I want you to attempt to generate an
+> accordion despite what the human generated html files generate this as (since keep in
+> mind they may have initially generated an accordion to start with, but after liaising
+> with the writer of the module, they may have then changed the interactive)."*
+
+That is the Decision Framework's **A1 branch** verbatim (`reference/
+Decision_Framework_Human_vs_Claude.md`): the writer explicitly tagged a widget and the
+developer substituted a different one from verbal feedback recorded nowhere, so the
+writer's tag is the derivable target and the substitution is not chased. Per the same
+document's **GATE PRECEDENCE**, these builds are judged on their **widget VERIFIERS**
+plus never-half-build — NOT on matching the human's substituted element. The gold
+numbers are recorded below so the class is never re-litigated blind.
+
+---
+
+### FIX 1 — THE NO-TABLE AVATAR + BUBBLE (`SBNOTBL_OFF`)
+
+**What the writer does.** The static speechBubble branch only knows the TABLE dialect
+(one 1x2 table: an image cell and a text cell). A large family of writers types the
+whole widget as ONE paragraph instead:
+
+```
+🔴[Image] 🔴avatar Tina 🔴smiling 🔴__Young Beautiful Student Woman Set … iStock__
+[LINK: https://www.istockphoto.com/vector/…gm2235638824-650974740]
+🔴[speech bubble] RHS 🔴See how the table gives the details, the chart shows the
+pattern, and the sentence tells the story? That's data storytelling in action.
+```
+
+**Why it broke.** No table → the builder declined, so the avatar rendered as a loose
+standalone image (with an "avatar Tina" caption the gold does not ship) and the bubble
+text sat below it in a rainbow hand-off box. The human gold ships ONE row:
+
+```html
+<div class="row speechBubble" layout="speech">
+  <div class="col-md-2 offset-md-0 col-12 paddingR"><img … src="images/iStock-2235638824-smiling.jpg"></div>
+  <div class="col-md-6 col-6"><div class="bubble-basic no-hover bubble-right"><p>See how the table gives…</p></div></div>
+</div>
+```
+
+**The rule.** `InteractiveScanner.#absorbSameBlockImage` walks UP from the invocation
+over the contiguous run of unconsumed items sharing its own source `block` — the
+round-105 *"continuous sentence vs a paragraph later"* discriminator, so an `[image]`
+in a different paragraph can never be pulled in — and absorbs it when the run holds
+exactly ONE `[image]` and otherwise only the image's descriptive instruction/noise
+spans. `InteractiveBuilder.#speechBubbleNoTable` then emits the row above. Side comes
+from ORDER exactly as the table branch takes it from cell order (image first → the
+avatar column leads → `bubble-right`); the writer's own side word is deliberately
+IGNORED — it appears on only 7 of the 55 candidates and is WRONG where it disagrees
+(TEDC401 #5 says "RHS" where the gold ships `bubble-left`).
+
+**THE CATCH THAT SHAPED THE CODE.** Consuming an image the builder would then decline
+to render would TRAP it inside a hand-off box — strictly worse than today. So the
+member test is ONE shared predicate, `InteractiveBuilder.NoTableBubbleParagraphs`
+(promoted public, the `contentTable`/`renderBlackText`/`gatherFollowing` precedent),
+consulted by the scanner BEFORE it consumes anything and by the builder to render.
+Absorb and build cannot drift apart: measured **29 fires, 29 builds, 0 trapped**.
+
+**MEASURED** (`outputs/_measure_r246_sbblock.cjs` + `_measure_r246_gold.py`, all 445
+corpus module dirs, the SHIPPED guard): fires on **29 bundles / 2 modules (TEDC401,
+TEDC402)**; the human gold builds an avatar+bubble row at **36 of 36** of the sites the
+guard reaches, with class `bubble-basic no-hover bubble-right` at 35/36 and the column
+pair `col-md-2 offset-md-0 col-12 paddingR` | `col-md-6 col-6` at 118 of 147 gold
+speechBubble rows in those modules. The sibling decline classes are LEFT as hand-off
+boxes and recorded: 229 bundles with no media at all (gold builds a bubble at only 72%,
+and half of those add a character asset that is in NO Writers Template — `images/
+Character_assets/babyface.png`), 22 with non-iStock media, 21 with an iStock URL but no
+same-block `[image]`. Recorded C (non-derivable): the gold's hand-written alt
+("Tina — smiling") and its `-smiling` filename suffix.
+
+### FIX 2 — HEADING-LESS NUMBERED ACCORDION PANELS (`ACCNOTBL_OFF`)
+
+A large writer family numbers the panels but puts no text on the tag — `[accordion 1]`
+alone on its line, then the panel's own first line and the body under it:
+
+```
+🔴[accordion x 2]
+🔴[accordion 1]
+🔴[body] [dev – could the Unit Standard information below be in a coloured box…]
+		US 29302 (Version 3)
+		Demonstrate interpersonal skills in familiar contexts
+		Level 1, Internal
+		4 credits
+```
+
+The rich fallback treated a heading-less `[accordion]` as the widget's OPENER and
+skipped it, so no panel ever opened and the whole accordion bailed. NOW a **NUMBERED**
+heading-less tag is recognised as a PANEL MARKER (`numbered_pattern`) and opens a
+panel, and `head_from_first_line` gives that panel its heading from its OWN first text
+line, removing the line from the body so it is never shown twice. XDLS911 lesson 1 now
+ships `accHead <h4>US 29302 (Version 3)</h4>` + an accContent of the three remaining
+lines. The bare `[accordion]` / `[accordion x 2]` opener is unnumbered and still
+skipped.
+
+**STRICTLY ADDITIVE BY CONSTRUCTION.** The rule changes how members GROUP, so it could
+in principle break an accordion that already built. `#accordion` therefore tries the
+fallback WITH the rule and, on null, runs it again with `legacyPanels:true`, which
+reproduces the round-245 grouping exactly. The rule can only ever ADD a build.
+Guards: the donor line must be TEXT (never an image/video/nested part), have at least
+one more line after it, be ≤ `max_words` (14) and carry no red instruction; a panel
+left with no body still bails.
+
+**MEASURED:** fires on **8 bundles / 2 modules (XDLS901, XDLS911)**. Recorded for the
+record: over 331 paired no-table accordion declines the gold ships an accordion at 156
+(47%), another element at 102, and drops the text at 73 — per Chris's directive that is
+not the test. The bail-point census (`#accordionRich`, 25 return points, traced over the
+five heaviest decline modules) names the remaining roadmap: **#18 "an unrecognised
+member tag" ×23** (the dominant blocker — `[button]`, `[audio]`, `[external link]`,
+`[dropdown]`, `[embed]`, one measured family per future round), `!cur` ×15, no
+heading/parts ×11 (this round), non-iStock image ×7, no panels ×6.
+
+### FIX 3 — THE RICH SLIDE CAROUSEL FALLBACK (`CARNOTBL_OFF`)
+
+Only **36 of 794** captured carousels built. The three existing branches each demand
+one shape and bail on everything else: the image/caption TABLE form; the image-slide
+form, which requires EVERY slide to carry BOTH an image and a caption; and the
+pure-video form, which requires every member to be a bare URL. Writers mix freely.
+`#carouselRich` is the carousel's sibling of the round-214 rich-accordion fallback: it
+runs LAST (so every already-building carousel is byte-identical) and composes slides in
+document order — a `[Slide N]`-family marker or a heading opens a slide; a slide may
+hold any mix of heading, iStock image, YouTube embed and prose (through the shared
+`renderBlock`, so the writer's bullets become a real list).
+
+ENFUN04's carousel — `[Carousel: Each slide listed below]` then four
+`[slide N- with a basic coloured background] <sentence>` markers and a closing `[H4]` —
+now ships four `carousel-caption` slides plus the writer's own "In Summary …" slide.
+
+**Two implementation catches, both caught by inspecting the built HTML:**
+- a slide marker's OWN trailing text is the slide's CONTENT, not a title (the writer
+  types a whole sentence after it), so it goes to the caption, not an `<h4>`. The first
+  build shipped five title-only slides before this was fixed.
+- `renderBlock` returns an ARRAY of `<p>`/`<ul>` html, exactly as the rich accordion
+  consumes it; treating it as a string silently declined every prose slide.
+
+**SUBSTANCE GUARD (never half-build):** a carousel whose slides are ALL bare headings
+carries no content — the writer's slide material never reached the bundle — so it keeps
+the honest hand-off box. Writer instruction/noise spans are SKIPPED as slide content
+exactly as the rich accordion skips them (round 214) and still surface as red Writers
+Notes after the widget; **312 of the declines carry one**, and bailing on them was the
+single biggest blocker.
+
+**MEASURED:** fires on **58 bundles / 33 modules**. Recorded: over 554 paired no-table
+carousel declines the gold ships a carousel at 65, another element at 287 (134 of them
+accordions) and drops the text at 202 — the round-124 *"the `[carousel]` tag is NOT a
+reliable build-tabs signal"* finding restated, and precisely the divergence Chris's
+directive tells us not to chase.
+
+---
+
+### PROOF (no regeneration — every leg in memory or on the affected modules)
+
+- **AFFECTED SET** (`outputs/_detect_r246.cjs`, the SHIPPED guards over ALL 445 corpus
+  module dirs — never `compare_set`, the round-174/175 lesson): **36 modules**,
+  speechBubble 29 fires / accordion 8 / carousel 58, and **every fire BUILDS** (0
+  trapped images, 0 half-builds).
+- **TOGGLES-OFF BYTE IDENTITY** (`_probe_r246_fixes.cjs off`): with all three toggles
+  set, TEDC402 (11pp), XDLS911 (2pp), ENFUN04 (1pp), BLL210 (1pp) and OSAH501 (6pp) are
+  **byte-identical to the shipped corpus**.
+- **PER-TOGGLE DECOMPOSITION** (`_probe_r246_fixes.cjs hashes`, one toggle state per
+  PROCESS): `SBNOTBL_OFF` → 5 TEDC402 pages · `ACCNOTBL_OFF` → 1 XDLS911 page ·
+  `CARNOTBL_OFF` → 1 ENFUN04 page · the BLL210 control unchanged by all three. Each
+  ticket owns exactly its own pages.
+- **A PROBE TRAP RECORDED AND FIXED.** The first decomposition ran all four states in
+  ONE process and reported six phantom TEDC402 diffs for tickets that do not touch that
+  module — the recorded r217 in-process A/B hazard (module-level activity-letter
+  counters drift when the same module is converted twice). The `blast` leg is
+  WITHDRAWN in favour of `hashes`, with the reason written at the call site.
+- **WIDGET VERIFIERS** (the gate that governs an A1 build): speechBubble **33 built,
+  exact 31, copy-edit 1, dev-edit 1, defect 0** ✓ · accordion **18 panels, defect 0** ✓ ·
+  carousel **3 built, 0 mismatched slide ids** ✓ · flipCard **33 / divergence 0** (the
+  round-245 number, EXACT). All three `--selftest`s **GREEN**.
+- **STANDING GATES:** tags **9557/9557, REAL FAILURES 0**; entry-parity **PASS**;
+  index/manifest sync **32 browser / 27 node, OK**.
+- **NOT RE-RUN, and not implied:** the full protected-gate suite. Chris did not ask for
+  a regeneration ("Not yet"), so the **round-245 baselines still describe the last
+  regenerated corpus state** — skeleton 49.555% / ≥50 920 / ≥75 176 / ≥90 12 / RAW
+  32.677% @ 1837, cs 9777/182/487, body 271, clean 97.7%, leak 288/46. The `*_OFF`
+  toggles are the reversal guarantee until then.
+
+### SAME ROUND — A GATE-TOOL HARDENING (`_selftest_core.cjs`)
+
+Every verifier `--selftest` died with `EACCES: permission denied, rmdir
+'/tmp/cv2_selftest/HES1003'` before its DETECTION half could run: a fixture directory
+had survived an earlier sandbox session owned by another uid, and the shared path made
+it un-clearable. The fixture dir is now **per-process** (`/tmp/cv2_selftest_<pid>`), so
+a stale fixture can never block a gate run again. All three selftests exercised in this
+round are GREEN with both halves.
+
+### RECORDED FOLLOW-UPS
+
+- **Accordion member vocabulary** — the dominant remaining blocker (#18, 23 of 62 traced
+  bails): `[button]`, `[audio]`/`[audio button]`, `[external link]`, `[dropdown]`,
+  `[embed]` inside a panel. One measured family per round; a `[Button]` must render as a
+  button, not silently as prose.
+- **speechBubble, the image-less class** — 229 declines; the gold's bubble usually
+  carries a module character asset that is in no Writers Template. Needs a decision on
+  whether to ship a bubble without the decorative character.
+- **speechBubble, the adjacent-but-not-same-block image** — 21 declines where the iStock
+  URL is harvested but the `[image]` sits in another paragraph.
+- **Carousel**: non-YouTube embeds (Vimeo/padlet/SPELD story) still bail — the generic
+  iframe route is a sized extension; and `extraTypes`-merged bundles stay declined.
+- **Tier A of the round-245 census is untouched by design**: 2,393 captured interactives
+  (34%) hit NO builder case at all — dropDown 363, multiChoiceQuiz 301, the 1,060
+  "unclassified", typing, radioQuiz, selectionBox, reorder, slider, memoryGame,
+  crossword. Phase 1 leaves those as honest placeholders.
+- `reference/tests/_scan_builder_coverage.cjs` is still DEAD (hand-lists engine files,
+  dies with "MenuBuilder is not defined"); `outputs/_measure_buildcoverage.cjs` replaces
+  it. Delete it when file deletion is available.
+
+
+## 2026-08-03 (round 245, build 260618.18) — DEVELOPER TEST ROUND: the ENGS404 LESSON-BOUNDARY guards + the FRNO901 TEMPLATE DEFAULT + the goJournal FIXED-LEVEL heading (**FULL regeneration + all protected gates — Chris authorised it in the request**; ship ledger reset to 0)
+
+**THE PLAIN-ENGLISH LEAD.** Chris's test developers ran three modules through the
+current PageForge and hit three separate problems. **ENGS404** shipped **22 HTML
+files for 12 lessons** — nine of them header-and-footer only — and renumbered
+every lesson along the way. **FRNO901** (a brand-new French module) shipped
+`template=""`, so the page loaded completely unstyled — the same Prio-high
+failure round 238 fixed for SCCH302, reached by a different route. **SCCH302**
+was re-audited row by row against the developer's own error log: 17 of its 22
+rows are already fixed by the r238–r243 chain, and this round closes one more.
+
+---
+
+### FIX 1 — THE DIVIDER-BANNER MERGE (`LESSONDUP_OFF`)
+
+**What the writer did.** A Writers Template house convention writes the lesson
+number TWICE: an all-caps banner on the divider page right after `[End page]`
+(`[LESSON 1.0]`), then the real titled opener (`[Lesson 1.0] Elements of
+narrative`). Between the two sits ONLY the lesson-MENU region — the
+`[Lesson Overview]` marker and its black "We are learning:" / "I can:" run.
+
+**Why it broke.** AR-2 could not merge the pair because that menu text makes
+`currentIsEmpty()` false, so the banner opened a file of its own and the
+duplicate-label relabeller then renumbered EVERY later lesson — one writer
+convention cascading into the whole module's pagination.
+
+**The rule.** A `[Lesson N]` marker whose number equals the OPEN lesson page's
+number does not open a new page when that page has received no BODY content yet.
+The open page keeps its identity and adopts the second marker's title if it has
+none. "Body content" = a table or a tag whose directive is ELEMENT / INTERACTIVE
+/ CONTAINER_OPEN / INLINE; the menu region's SECTION_MARKERs and black text
+deliberately do NOT count. Numbers compare NUMERICALLY with a trailing `.0`
+folded away (`[LESSON 4.0]` then `[Lesson 4]` is one lesson, ENGS404 ×3) — only
+the trailing zero, so `3.1` can never equal `3`.
+
+**MEASURED** (`outputs/_detect_r245_lessonsplit.cjs`, the LIVE extractor + parser
+over ALL 429 corpus WTs + the 3 test modules — 1549 lesson/page PAGE_BOUNDARY
+spans): 13 same-number pairs exist corpus-wide; the no-body rule fires on
+**EXACTLY 9 (ENGS404 ×7, HIS1005 ×2)** and by construction EXCLUDES the four
+pairs where the writer genuinely reused a number across real content — CEDO501
+(32 body items between), HES1005 (69), AGH1006 (20), HIS1007 (14).
+
+### FIX 2 — THE BURIED-MARKER GUARD (`LESSONGUARD_OFF`)
+
+A span became a page boundary merely because the word "lesson"/"page" turned up
+inside writer prose: `[insert lesson from ENO511 …]` invented a page numbered
+**511**, `[Designer note: Please insert old lesson from here…]` invented another,
+and `[Rollover for mana: … complete History fundamental lesson 7 …]` — a hover
+definition — invented one in three HIS modules.
+
+**THE CONTAINMENT STATEMENT:** the primary must have matched `how:"embedded"`
+(the r174 `clean_hows` distinction). Of the 1549 boundaries, **1479 matched
+exact/denumbered/denumbered_head and are UNTOUCHABLE BY CONSTRUCTION**; only the
+70-span embedded pool reaches the guard. Within it the marker is disregarded when
+EITHER the span is instruction-dominant by the EXISTING `TagNormaliser
+.IsInstructionDominant` predicate (all tags embedded + a recognised
+writer-instruction cue + ≥ min_words of prose — 8 spans / 7 modules), OR the
+bracket names a FOREIGN module code (`foreign_code_pattern`, the run's own code
+excluded — the cross-module "copy that lesson" reference form), OR the text
+BEFORE the marker word carries a hover/rollover marker word. **FAIL-OPEN**: an
+unrecognised embedded form keeps the previous behaviour, so every genuine
+embedded marker in the pool survives (`[Lesson summary]` ×14, `[lesson title]`
+×8, `[Lesson Two]` ×2, `[Final Page]` ×2, `[Next Page]` ×4, `[Intro page]` ×2,
+`[Page N of diary]` ×2, `[page ends]`, `[ILanding page]`). The r212
+`[MODULE CONTENT: PAGE n]` and r226 `[Sticky Nav Layout …]` forms are consumed
+EARLIER in the same branch and never reach the guard.
+
+**DELIBERATELY NARROW — a calibration recorded so it is not re-litigated.** A
+broader leading-instruction-verb deny (insert/copy/create/from) was built,
+measured and **REJECTED**: it also removed ENGI405's `[insert zones writing wheel
+from this page` and ART1006's `[Create two new colour boxes … page called the`,
+both of which sit where the human developer DID break the page (ENGI405 8→7
+against a gold of 8). Fail-open is the safe direction; the three rules kept are
+the ones no reading of the writer's intent can dispute.
+
+**The span is never dropped** — it stops being a page break, its content still
+renders where it sits (constraint 1).
+
+### FIX 3 — THE LAST-RESORT TEMPLATE DEFAULT (`TPLDEFAULT_OFF`) + the FRNO Languages prefix
+
+FRNO901 has no registry row, no gold sibling, and its code digit 9 is not a
+curriculum level, so `code_pattern` never matches and the r238
+`unknown_subject_digit_fallback` rightly declines to guess. Every OTHER universal
+field resolved correctly through the r238 evidence floor — but the template
+attribute shipped EMPTY and the iDoc host loads the stylesheet BY that attribute.
+Two coupled fixes, per Chris's decision:
+- `cohort_overrides.prefixes` gains **"FRNO"**. doc-14 §14.1 names the languages
+  in three letters (FRE = French) but the codes actually in circulation use a
+  two-letter language + two-letter strand form. The list stays EXPLICIT rather
+  than a two-letter pattern on purpose: FR/CH/SA/GE/JA/SP collide with nothing in
+  today's 61 corpus subject prefixes (measured) but would silently capture a
+  future GEOG/CHEM-style subject.
+- A **last-resort default** applies after every other rule has had its say:
+  `value = "combo"` (Chris's decision — the combined-cohort template degrades
+  gracefully for an unknown module, it is doc-14's answer for the Languages
+  cohort this most often backstops, and it is the 2nd most common gold value at
+  78 modules; "1-3" is commoner at 179 but is a junior band). The run carries a
+  loud warn note naming the module, because a default only holds until the
+  developer builds the first proof.
+
+**MEASURED ZERO-BLAST:** not one page of the shipped corpus carries
+`template=""` (grep, both corpora) and the corpus holds zero Languages dirs — a
+pure forward guarantee, the r224/r231 class.
+
+### FIX 4 — FIXED-LEVEL HEADING CLASSES (`FIXEDHEAD_OFF`) — the SCCH302 residue
+
+`<h4 class="goJournal">Go to your journal</h4>` is templated chrome, not part of
+the writer's outline, but it joined the re-level POOL and was re-ranked with
+everything else — and its presence also displaced the writer's real headings
+around it. **MEASURED: the gold ships it at h4 568/568 = 100%**, inside an
+activity box or standalone; Claude shipped **110 at h3 and 8 at h5 of 835**. A
+heading whose OWN class is in `fixed_level_classes` is now excluded from both the
+pool and the rewrite. SCCH302's goJournal headings are 7/7 at h4 after the fix.
+
+### SCCH302 ERROR-LOG RE-AUDIT (the developer's CSV, row by row)
+
+**17 rows FIXED** by the r238–r243 chain and verified against fresh output: the
+`<html>`/idoc-script pair, the NBSP AI-marker artifact, `<body class=
+"container-fluid">`, the module-code chip, the overview LI/SC placement + the
+`<h4><span>` form, the clickDrop bulleted list, `<ul class="footer-nav">`, the
+acks boilerplate omission, lesson chips "1.0", the lesson-1 Māori secondary
+title, `<p class="captionText">`, the image reference-title `<p>`, iStock
+`loading="lazy"` + alt (free body AND table cells), the RHS alert position, the
+activity-2B line breaking, the templated journal scaffold + To Do note, the 3D
+`h4.goJournal`, the info trigger, and the writer's own activity-number error.
+**This round adds the goJournal level.** The PageStitcher/accordion row is
+excluded per Chris. **RECORDED, not shipped:** the `<h5>I can:</h5>` vs
+`<p>I can:</p>` menu lead form — gold is genuinely MIXED (547 `<p>` / 278 `<h5>`)
+so it needs a per-group registry round of the r207/r222 kind, not a blanket flip;
+the alert `.top` class — gold ships `alertActivity` plain 563 times and has no
+`.top` convention on it at all; the two `image.jpg` widget images with `alt=""`
+(no iStock id and no URL in the WT — nothing to derive, and the rule never
+invents); the stray space before punctuation after an info-trigger weave (the
+r239 recorded class).
+
+### THE TEST MODULES AFTER
+
+- **ENGS404: 22 files → 12**, exactly the writer's own lessons and numbers —
+  0.0, 1.0, 2.0, 3.0, 3.1, 4.0, 5.0, 6.0, 6.1, 7.0, 8.0, 9.0 — every title from
+  the WT, no header-only files, no phantom "511.0"/"11.0" pages.
+- **FRNO901**: `template="combo"`, 9 pages, styled.
+- **SCCH302**: 9 pages, goJournal 7/7 at h4, all r238–r243 fixes verified.
+- **HIS1005** (corpus): 16 files → 12, now carrying **gold's exact ten lesson
+  titles in gold's order** (it previously shipped 14 mis-numbered lessons).
+- **MXEX302** (corpus): now **byte-matches gold's page set** — 0.0 plus 1.0–7.0
+  with gold's titles; it previously shipped 1.0 + 1.1…1.6.
+
+### PROOF
+
+- **Faithful reversal, corpus-wide:** with all five round-245 toggles set, **every
+  one of the 49 modules the regeneration changed reproduces the PRE-ROUND
+  `_content_manifest.txt` md5 set EXACTLY** (`outputs/_probe_r245_decomp.cjs`),
+  and two untouched controls (BLL210, OSAH501) are SAME in every combination.
+  A pre-regen 20-canary run was byte-identical to disk (`_probe_r245_fixes.cjs
+  --off`, 20/20 PASS).
+- **Blast radius:** 49 modules / 189 pages (changed 158 / added 8 / removed 23);
+  corpus **2009 → 1994 pages**, 390 modules. Full 393-dir regeneration,
+  **`_stalecheck.sh` 0 stale**.
+- **Probe gotcha 1 recorded:** a diagnostic probe MUST stub oEmbed exactly as
+  `batch_convert` does — `{ ok: false, reason: "stubbed" }`. Returning a bare
+  `{ ok: false }` changes the acks block and makes every video-carrying module
+  read as "differs"; that false signal cost a decomposition pass this round.
+- **Probe gotcha 2 recorded (Chris caught it):** a diagnostic dump MUST clear its
+  target directory before writing, exactly as `batch_convert` rm's each output dir.
+  `outputs/_probe_r245_dump.cjs` did not, so an EARLY pre-fix ENGS404 dump (22
+  files) left 10 stale files sitting beside the 12 correct post-fix ones and the
+  scratch folder read as though the over-split bug were unfixed. The converter was
+  right all along — the 12 correct files carry the later mtime, and the shipped
+  corpus is orphan-free BY CONSTRUCTION (1994 html files on disk == 1994 manifest
+  entries; HIS1005 holds exactly its 12). Probe fixed with an `fs.rmSync` +
+  in-file comment. **Never judge a fix from a scratch folder that was not cleared
+  first — check the file mtimes, or re-dump into an empty directory.**
+
+**PROTECTED GATES** (all held-or-improved net of the named pagination class):
+- PRIMARY skeleton (fresh 8-shard, `outputs/_r245_sk_merge.py` →
+  `_r245_sk_final.json`): **SCAFFOLD mean 49.555% / ≥50 920 / ≥75 176 / ≥90 12 /
+  RAW 32.677% @ 1837 pairs, skipped 0** (r243: 49.566 / 921 / 176 / 12 / RAW
+  32.659). ≥75 and ≥90 EXACT, **RAW IMPROVED**; the mean −0.011pp and ≥50 −1
+  decompose to the **r186/r222/r235 PAIRING-ARTIFACT class** — of the 11 moved
+  modules, the crossings are dominated by IDENTICAL scores relocating to
+  renumbered page keys (HIS1008_4_0 0.6435 → HIS1008_5_0 0.6435; HIS1007_5_0
+  0.5724 → HIS1007_4_0 0.5724; HIS1005_12_0 0.5644 → HIS1005_8_0 0.5644;
+  PES1008_15_0 0.5283 → PES1008_18_0 0.5283), with OSGM401 and MXEX302 improving
+  outright.
+- compare_structure exact **9777 (+78 IMPROVED)** / EXTRA 182 (+4) / missing 487
+  (+15) — the matched-pool-growth class (correctly paired pages bring more
+  elements into the comparison).
+- body_compare ANY **271 (r243 273 — IMPROVED)**.
+- structural-clean **1948/1994 = 97.7%**; literal-`[tag]` leak **288 occ / 46
+  pages (r243 290/46 — IMPROVED)**.
+- tags **9557/9557, REAL FAILURES 0**; flipCard **33 / divergence 0**;
+  speechBubble **defect 0**; clickDrop **defect 0**; tabs **42: 40 exact / defect
+  0**; accordion defect 0; intextract **ALL PASS**; entry-parity **PASS**;
+  index-sync **32/27**; verifier selftests GREEN.
+- Content manifest re-snapshotted (1994/390); FULL ship recorded (counter 0).
+  `_fastloop_snapshot.py` exceeds the 45s wall and is left deferred-stale (the
+  r176 class) — the direct full-corpus gate runs above are authoritative.
+
+**Data:** `Emit_Templates.page_split.lesson_boundary_guard` (+ its `_doc`),
+`skeleton.template_phase_presets.cohort_overrides.prefixes` +"FRNO" and
+`.last_resort_default`, `body_region.heading_relevel.fixed_level_classes`.
+**Env toggles:** `LESSONDUP_OFF` · `LESSONGUARD_OFF` · `TPLDEFAULT_OFF` ·
+`FIXEDHEAD_OFF` (+ the existing `LANGCOMBO_OFF` now also reverting the FRNO
+prefix). **Tools:** `outputs/_detect_r245_lessonsplit.cjs` (the corpus-wide
+detector — the standing verifier for this family), `_probe_r245_between.cjs`,
+`_probe_r245_fixes.cjs`, `_probe_r245_decomp.cjs`, `_probe_r245_testmods.cjs`,
+`_probe_r245_dump.cjs`, `_probe_r245_shell.cjs`, `_r245_sk_merge.py`.
+
+**RECORDED FOLLOW-UPS.** HIS1005/ENGI405-class SUB-PAGE splits (gold ships 5.0/5.1,
+6.0/6.1, 9.0/9.1 where Claude keeps one page per lesson — a distinct, pre-existing
+under-split class, no content lost) · the `I can:` menu lead form (per-group
+registry round) · the r239 info-trigger spacing artifact · HIS1001 remains UNDER
+its gold page count for an unrelated reason, and its `[Can you please make a map …]`
+page correctly disappearing is a NAMED delta, not a regression.
+
 ## 2026-07-31 (round 244, build 260618.17) — KB CATCH-UP: Change-Ledger CL-0053…CL-0068 triage + the doc-14 §14.8 HPE refresh (ZERO-blast, output-inert captures; **NO regeneration — not requested; the round-243 gate baselines still describe the last regenerated state**)
 
 **THE PLAIN-ENGLISH LEAD.** Chris asked whether the online Convertor project's

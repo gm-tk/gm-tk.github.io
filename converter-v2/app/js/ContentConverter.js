@@ -2769,6 +2769,32 @@ class ContentConverter {
 		// h[2-6]: a writer [H5] is emitted at the intermediate h6 when re-levelling is active
 		// (one extra level of headroom so [H4] vs [H5] stay DISTINCT through the body clamp);
 		// the rank below normalises every level back into base..max_level (h3..h5).
+		// FIXED-LEVEL HEADING CLASSES (ROUND 245 — Chris, the SCCH302 developer
+		// error log, "goJournal heading level is inconsistent").
+		//
+		// A few headings are TEMPLATED chrome rather than part of the writer's
+		// document outline: the converter emits them at a fixed level with a
+		// fixed class. `<h4 class="goJournal">Go to your journal</h4>` is the
+		// clearest case — the human gold ships it at h4 **568 times out of 568,
+		// 100%**, whether it sits inside an activity box or stands alone. But
+		// because it looked like an ordinary free-body heading it joined the
+		// re-level POOL and then got RE-RANKED with everything else, so Claude
+		// shipped 110 at h3 and 8 at h5 (of 835). Being in the pool is doubly
+		// wrong: it also displaced the writer's real headings around it.
+		//
+		// A heading whose OWN class is listed here is excluded from BOTH the
+		// pool and the rewrite — the same treatment the activity-anchor and
+		// supervisor-note exclusions above already get, but keyed on the
+		// heading's own class rather than an ancestor div (headings never nest,
+		// so a simple open/close latch is enough).
+		// Data: body_region.heading_relevel.fixed_level_classes.
+		// Env toggle: FIXEDHEAD_OFF (reverts to re-levelling them with the rest).
+		const fixedCls = new Set(
+			(typeof process !== "undefined" && process.env && process.env.FIXEDHEAD_OFF)
+				? [] : (cfg.fixed_level_classes ?? []));
+		const fixedLevelHeading = (attrs) => fixedCls.size > 0
+			&& (String(attrs ?? "").match(/class="([^"]*)"/i)?.[1] ?? "")
+				.split(/\s+/).some((c) => fixedCls.has(c));
 		const tagRe = /<(\/?)(div|section|h[2-6])\b([^>]*)>/gi;
 		// shared tag-walk that tracks div nesting + which spans are inside a widget subtree
 		const walk = (onFreeHeadingOpen) => {
@@ -2789,6 +2815,7 @@ class ContentConverter {
 						if (cls.some((c) => skip.has(c))) wstack.push(depth);
 					}
 				} else if (!isClose && wstack.length === 0) {
+					if (fixedLevelHeading(m[3])) continue;   // a fixed-level heading never joins the pool
 					onFreeHeadingOpen(parseInt(tag[1], 10));
 				}
 			}
@@ -2809,9 +2836,14 @@ class ContentConverter {
 		// PASS 2 — rewrite free-body heading open + close tags (re-running the same walk state)
 		let depth = 0;
 		const wstack = [];
+		let fixedOpen = false;   // latch: the OPEN fixed-level heading's close tag must be left alone too
 		return clamp6(html.replace(tagRe, (full, slash, tg, attrs) => {
 			const isClose = slash === "/";
 			const tag = tg.toLowerCase();
+			if (tag !== "div" && tag !== "section") {
+				if (!isClose && fixedLevelHeading(attrs)) { fixedOpen = true; return full; }
+				if (isClose && fixedOpen) { fixedOpen = false; return full; }
+			}
 			if (tag === "div" || tag === "section") {
 				if (isClose) {
 					if (wstack.length && wstack[wstack.length - 1] === depth) wstack.pop();

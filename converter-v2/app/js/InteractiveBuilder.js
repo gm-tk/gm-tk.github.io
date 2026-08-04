@@ -118,7 +118,9 @@ class InteractiveBuilder {
 					html = this.#tabs({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderImage });
 					break;
 				case "carousel":
-					html = this.#carousel({ bundle, tpl, renderInline, run });
+					// renderBlock added round 246 — the rich slide fallback renders slide prose
+					// (and the writer's bullets) through the shared black-text renderer.
+					html = this.#carousel({ bundle, tpl, renderInline, run, renderBlock });
 					break;
 				case "shapeHover":   // [shape hover] opener + repeating [shape n]/[body]/[image] groups (verified against OSAI501-02)
 					html = this.#shapeHover({ bundle, tpl, renderInline, run });
@@ -462,7 +464,14 @@ class InteractiveBuilder {
 		const rich = tpl?.rich_panels;
 		if (rich && rich.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.ACCRICH_OFF)) {
-			return this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested });
+			// ROUND 246 ticket 2 — STRICTLY ADDITIVE. The heading-less numbered-panel rule
+			// changes how members GROUP, so it could in principle break an accordion that
+			// already built. Try it first; if the result is null, run the fallback again with
+			// the rule OFF, which reproduces the round-245 grouping exactly. The new rule can
+			// therefore only ever ADD builds, never remove one.
+			const withRule = this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested });
+			if (withRule !== null) return withRule;
+			return this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, legacyPanels: true });
 		}
 		return null;
 	}
@@ -483,13 +492,17 @@ class InteractiveBuilder {
 	 * member it cannot place. Requires renderBlock (the bullet/paragraph renderer);
 	 * without it the fallback declines so non-converter callers keep the placeholder.
 	 */
-	static #accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested }) {
+	static #accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, legacyPanels }) {
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return null;
 		if (typeof renderBlock !== "function") return null;   // need the body renderer
 		const inline = renderInline ?? ((s) => s);
 		const rich = tpl.rich_panels ?? {};
 		const markerNotes = [];   // ROUND 242: skipped image-ARRANGEMENT layout markers, surfaced as notes on success
+		// ROUND 246 ticket 2 — heading-less numbered panels (see head_from_first_line)
+		const headFirstCfg = rich.head_from_first_line ?? {};
+		const numberedPanels = !legacyPanels && headFirstCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACCNOTBL_OFF);
 		const idRe = new RegExp(rich.video_youtube_id_re
 			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
 
@@ -534,6 +547,19 @@ class InteractiveBuilder {
 			// (b) panel delimiter.
 			if (tag === "accordion") {
 				const head = this.#cellText(m.blackAfter ?? "");
+				// ROUND 246 (ticket 2): a NUMBERED heading-less tag — "[accordion 1]" alone on
+				// its line — is a PANEL MARKER, not the widget's opener, so it opens a panel
+				// whose heading is recovered from the panel's own first text line below
+				// (head_from_first_line). The bare "[accordion]" / "[accordion x 2]" opener is
+				// unnumbered and still skipped, so every accordion that already builds is
+				// untouched. env ACCNOTBL_OFF reverts.
+				if (!head && numberedPanels && new RegExp(headFirstCfg.numbered_pattern
+					?? "\\[\\s*accordion\\s+\\d+\\s*\\]", "i").test(String(m.text ?? ""))) {
+					flushText();
+					cur = { head: "", parts: [] };
+					panels.push(cur);
+					continue;
+				}
 				if (!head) { if (!cur) continue; flushText(); continue; }   // leading opener / stray
 				if (this.#hasRedText(m.blackAfter ?? "") || /https?:\/\//.test(head)) return null;
 				flushText();
@@ -651,10 +677,42 @@ class InteractiveBuilder {
 		}
 		flushText();
 
+		// (1b) HEADING-LESS PANEL RECOVERY (round 246, ticket 2 of the basic-interactive
+		// builders round). A large writer family numbers the panels but puts NO text on the
+		// tag itself — "[accordion 1]" on its own line, then the panel's own first line
+		// ("US 29302 (Version 3)") and the rest of the body below it. Every such accordion
+		// bailed on the "each panel needs a heading" rule below. Chris's directive
+		// (2026-08-03): where the writer tagged an accordion, build an accordion — so the
+		// panel takes its heading from its own FIRST text line, which is what that line is,
+		// and the line is removed from the body so it is never shown twice. A panel left with
+		// no body after the promotion still bails (never half-build). Data
+		// rich_panels.head_from_first_line; env ACCNOTBL_OFF.
+		const headFirst = rich.head_from_first_line;
+		if (headFirst && headFirst.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACCNOTBL_OFF)) {
+			for (const p of panels) {
+				if (p.head || !p.parts.length) continue;
+				const first = p.parts[0];
+				if (!first || !first.p) continue;                   // only a TEXT part can donate a heading
+				const lines = String(first.p).split("\n").map((s) => s.trim()).filter(Boolean);
+				if (lines.length < 2) continue;                     // the whole part IS the body — leave it
+				const head = this.#cellText(lines[0]).replace(/^[•·]\s*/, "").trim();
+				const maxWords = headFirst.max_words ?? 14;
+				if (!head || head.split(/\s+/).length > maxWords) continue;
+				if (this.#hasRedText(lines[0])) continue;
+				p.head = head;
+				first.p = lines.slice(1).join("\n");
+				if (!first.p.trim()) p.parts.shift();
+				p.r246Head = true;
+			}
+		}
+
 		// (2) RENDER every panel. Each needs a heading + at least one rendered part.
 		if (!panels.length) return null;
 		const built = [];
+		let recovered = false;
 		for (const p of panels) {
+			if (p.r246Head) recovered = true;
 			if (!p.head || !p.parts.length) return null;
 			if (this.#hasRedText(p.head)) return null;
 			const chunks = [];
@@ -694,6 +752,7 @@ class InteractiveBuilder {
 		// decline keeps the placeholder + raw dump byte-identical); #bundleInstructions
 		// de-duplicates downstream, and the note renders red after the widget.
 		if (markerNotes.length) bundle.instructions = [...(bundle.instructions ?? []), ...markerNotes];
+		if (recovered) bundle.r246Accordion = true;                    // detector/affected-set marker
 		return [tpl.open, ...built, tpl.close].join("\n");
 	}
 
@@ -1060,6 +1119,208 @@ class InteractiveBuilder {
 		return Utils.FillTemplate(cfg.wrapper, { bubbles: bubbles.join("\n") });
 	}
 	/**
+	 * NO-TABLE AVATAR + BUBBLE (round 246, ticket 1 of the basic-interactive builders round).
+	 *
+	 * THE GAP. The static bubble branch below only knows the writer's TABLE dialect — exactly
+	 * one 1x2 table whose two cells are the [image] and the [speech bubble]. A large family of
+	 * writers instead types the whole widget as ONE PARAGRAPH:
+	 *
+	 *   [Image] avatar Tina  smiling  Young Beautiful Student Woman Set … iStock
+	 *   [LINK: https://www.istockphoto.com/vector/…gm2235638824-650974740]
+	 *   [speech bubble] RHS  See how the table gives the details, the chart shows the pattern…
+	 *
+	 * With no table the bubble fell straight to the developer hand-off box while its avatar
+	 * rendered as a loose standalone image above it — where the finished page ships ONE
+	 * `row speechBubble` holding the avatar column and the bubble column side by side.
+	 *
+	 * The scanner recovers the paragraph-mate [image] (InteractiveScanner
+	 * #absorbSameBlockImage, same source `block` only) and hands it over as
+	 * bundle.sameBlockImage; this branch renders it exactly like every other image on the
+	 * page (Mode P/D via #assetImage) beside the bubble text.
+	 *
+	 * MEASURED (outputs/_measure_r246_sbblock.cjs + _measure_r246_gold.py, all 445 corpus
+	 * module dirs): the class is EXACTLY 55 bundles (TEDC401 33, TEDC402 21, SSCI104 1) and the
+	 * human gold builds an avatar+bubble row at **55 of 55**. The SIDE follows the writer's
+	 * ORDER, the same rule the table branch derives from cell order — the image leads in all 55,
+	 * giving bubble-right, which matches the gold on 53/55 (2 editorial lefts, the round-123
+	 * single-deviation class). The writer's own side word is deliberately ignored: it appears on
+	 * only 7 of the 55 and disagrees with the gold where it does appear.
+	 *
+	 * NEVER HALF-BUILDS. Every richer shape keeps the honest hand-off box: the absorb itself
+	 * refuses a bundle with a table, extra widget types, a video URL, more than one iStock id, or
+	 * a paragraph carrying a second structural element; here the branch additionally requires a
+	 * nameable iStock filename, real bubble text, and a bounded number of paragraphs. Bulleted
+	 * and numbered-list bubbles are left to the existing list machinery and decline here.
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (needs bundle.sameBlockImage)
+	 * @param {object} args.tpl - the speechBubble template block (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
+	 * @param {object} [args.run] - conversion run context (drives Mode P/D image rendering)
+	 * @returns {string|null} the built avatar+bubble row, or null to fall through
+	 */
+	/**
+	 * The no-table bubble's TEXT, or null when this bundle is not the plain avatar+bubble
+	 * form (round 246). PROMOTED PUBLIC because BOTH sides of the ticket must agree: the
+	 * scanner calls it BEFORE absorbing a same-block avatar (so it never consumes an image
+	 * the builder would then decline to render — which would trap the image inside a
+	 * hand-off box), and #speechBubbleNoTable calls it to render. ONE definition, so the
+	 * absorb and the build can never drift apart. (The `contentTable` / `renderBlackText` /
+	 * `containerModifiers` / `gatherFollowing` promotion precedent.)
+	 *
+	 * Accepts the invocation tag's own trailing text plus following plain black lines. Anything
+	 * BEFORE the invocation is the absorbed image run — its descriptive words and the iStock
+	 * reference title belong to the image, never to the bubble (the round-80/240 media-reference
+	 * rule), so the scan starts AT the invocation.
+	 *
+	 * DECLINES on anything richer, keeping the honest hand-off box: a table or nested
+	 * widget, a member carrying a real second element (a trailing [Button] / [MTKQuiz] the
+	 * writer put after the bubble), a bulleted or numbered list (the existing build_list
+	 * territory), no text at all, or more than max_paragraphs paragraphs.
+	 *
+	 * @param {object[]} members - bundle.memberItems
+	 * @param {object|null} skip - the absorbed image item to ignore (null before the absorb)
+	 * @param {object} cfg - Emit_Templates…speechBubble.no_table_image
+	 * @returns {string[]|null} the bubble's paragraphs, or null to decline
+	 */
+	static NoTableBubbleParagraphs(members, skip, cfg) {
+		const clean = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+		const list = members ?? [];
+		const from = list.findIndex((m) => m?.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE");
+		if (from === -1) return null;
+		const paras = [];
+		for (const m of list.slice(from)) {
+			if (!m || m === skip) continue;
+			if (m.type === "table" || m.type === "nested") return null;
+			if (m.type === "black") { const t = clean(m.text); if (t) paras.push(t); continue; }
+			const p = m.parse?.primary;
+			if (p && p.directive !== "INTERACTIVE") return null;          // a real second element
+			if (!p && !["instruction", "noise"].includes(m.parse?.class)) return null;
+			const t = clean(m.blackAfter);
+			if (t) paras.push(t);
+		}
+		if (!paras.length) return null;
+		if (paras.length > (cfg?.max_paragraphs ?? 4)) return null;
+		// lists are the existing build_list / placeholder territory, not this branch
+		if (paras.some((t) => /[•·]/.test(t) || /(^|\s)\d+[.)]\s/.test(t))) return null;
+		return paras;
+	}
+
+	static #speechBubbleNoTable({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl?.no_table_image;
+		if (!cfg || cfg.enabled === false || !bundle) return null;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (env.SBNOTBL_OFF) return null;
+		const imgItem = bundle.sameBlockImage;
+		if (!imgItem) return null;                       // only the scanner's absorbed form
+		if ((bundle.tables ?? []).length || (bundle.extraTypes ?? []).length) return null;
+
+		// the one nameable iStock image (the absorb already fenced count/video)
+		const urls = (bundle.media ?? []).map((m) => String(m?.target ?? m?.text ?? ""));
+		const named = urls.map((u) => ({ u, fn: this.#istockFilename(u, tpl) })).filter((x) => x.fn);
+		if (named.length !== 1) return null;
+
+		// bubble text = the invocation tag's own trailing text plus any following black lines.
+		// The absorbed image run sits at the FRONT of memberItems and contributes nothing.
+		const inline = renderInline ?? ((s) => s);
+		const paras = this.NoTableBubbleParagraphs(bundle.memberItems, imgItem, cfg);
+		if (!paras) return null;
+
+		// ORDER sets the side, exactly like the table branch's cell order: the image leading
+		// puts the avatar in the left column and the bubble on the right.
+		const imgFirst = (bundle.memberItems ?? []).indexOf(imgItem) === 0;
+		const imageBlock = Utils.FillTemplate(cfg.image_col,
+			{ image: this.#assetImage(named[0].fn, tpl, run) });
+		const textBlock = Utils.FillTemplate(imgFirst ? cfg.text_col_right : cfg.text_col_left,
+			{ text: paras.map((t) => `<p>${inline(t)}</p>`).join("\n") });
+		const open = Utils.FillTemplate(cfg.open ?? tpl.open, { layout: tpl.layout_attr ?? "speech" });
+		const middle = imgFirst ? [imageBlock, textBlock] : [textBlock, imageBlock];
+		return [open, ...middle, cfg.close ?? tpl.close].join("\n");
+	}
+
+	/**
+	 * TEXT-ONLY BUBBLE(S) — ROUND 247 (Chris, ENGS404-00 "[insert thought bubble]").
+	 * The writer's bubble with NO character image and NO table: "[insert thought bubble]
+	 * Where do we find stories? [insert thought bubble] Why are stories important?" — the
+	 * round-246 recorded image-less decline class, now built on Chris's directive that ALL
+	 * basic interactives build (the A1 writer's-tag branch). MEASURED: 229 such bundles /
+	 * 52 modules corpus-wide (outputs/_detect_r247.cjs), 212 of them clean; the human
+	 * library itself ships the text-only form 385 times, with layout="thought" (365 occ /
+	 * 152 pages) for exactly this wording — emit shape = the measured plurality
+	 * (col-12 > bubble-basic no-hover bubble-top; the side/colour scatter is editorial C).
+	 * Each INTERACTIVE invocation member opens its OWN bubble row; its trailing text plus
+	 * any following black lines are that bubble's paragraphs (>1 <p> takes the round-104
+	 * wrapper <div>). layout = "thought" when the writer's own tag wording says thought,
+	 * else the standard speech. NEVER half-builds: any real second element / table /
+	 * media / empty bubble / bulleted text (the build_list territory) / over-long bubble
+	 * declines to the honest hand-off box. Data speechBubble.text_only; env SBTEXT_OFF.
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (opener/member items)
+	 * @param {object} args.tpl - the speechBubble template block (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
+	 * @returns {string|null} the built bubble row(s), or null to keep the placeholder
+	 */
+	static #speechBubbleTextOnly({ bundle, tpl, renderInline }) {
+		const cfg = tpl?.text_only;
+		if (!cfg || cfg.enabled === false || !bundle) return null;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (env.SBTEXT_OFF) return null;
+		if ((bundle.tables ?? []).length || (bundle.media ?? []).length || bundle.sameBlockImage) return null;
+		if ((bundle.extraTypes ?? []).some((t) => t !== bundle.type)) return null;   // same-type merge only
+		const clean = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+		const maxP = cfg.max_paragraphs ?? 4;
+		const thoughtRe = new RegExp(cfg.thought_re ?? "thought", "i");
+		const bubbles = [];
+		let curB = null, thought = false;
+		for (const m of bundle.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table" || m.type === "nested") return null;
+			if (m.type === "black") {
+				const t = clean(m.text);
+				if (!t) continue;
+				if (!curB) return null;                 // stray text before any bubble → not this form
+				curB.push(t);
+				continue;
+			}
+			const p = m.parse?.primary;
+			if (p && p.directive === "INTERACTIVE") {
+				if (thoughtRe.test(String(m.text ?? ""))) thought = true;
+				curB = [];
+				bubbles.push(curB);
+				const t = clean(m.blackAfter);
+				if (t) curB.push(t);
+				continue;
+			}
+			if (!p && ["instruction", "noise"].includes(m.parse?.class)) continue;   // writer notes ride along
+			return null;                                // a real second element → never half-build
+		}
+		// a "paragraph" with no letter/digit in any script is stray punctuation a split
+		// bracket left behind (the r104 STRAYLEAD class — TEDC402's lone "]") — drop it
+		for (const b of bubbles) {
+			for (let k = b.length - 1; k >= 0; k--) if (!/[\p{L}\p{N}]/u.test(b[k])) b.splice(k, 1);
+		}
+		if (!bubbles.length || bubbles.some((b) => !b.length)) return null;          // an EMPTY bubble → bail
+		for (const b of bubbles) {
+			if (b.length > maxP) return null;
+			if (b.some((t) => /[•·]/.test(t) || /(^|\s)\d+[.)]\s/.test(t))) return null;   // the build_list territory
+		}
+		const inline = renderInline ?? ((s) => s);
+		const layout = thought ? (cfg.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech");
+		return bubbles.map((b) => {
+			const ps = b.map((t) => `<p>${inline(t)}</p>`).join("\n");
+			const text = b.length > 1 ? `<div>\n${ps}\n</div>` : ps;   // the round-104 multi-<p> wrapper rule
+			return [
+				Utils.FillTemplate(cfg.open ?? tpl.open, { layout }),
+				cfg.col_open,
+				Utils.FillTemplate(cfg.bubble, { text }),
+				cfg.col_close,
+				cfg.close ?? tpl.close,
+			].join("\n");
+		}).join("\n");
+	}
+
+	/**
 	 * The full speechBubble dispatcher: tries the multi-turn CONVERSATION form first,
 	 * then falls back to the plain static ONE-IMAGE + ONE-TEXT-BUBBLE form documented
 	 * above. See that doc block for the data shape and the safety/bail conditions.
@@ -1076,6 +1337,19 @@ class InteractiveBuilder {
 		// chain (verified against OSAI401-01). Built from black-line members as alternating bubbles.
 		const convo = this.#speechBubbleConversation({ bundle, tpl, renderInline });
 		if (convo) return convo;
+
+		// (0b) NO-TABLE AVATAR + BUBBLE: the writer's one-paragraph dialect, recovered by the
+		// scanner's same-block image absorb. Tried before the table branch (which requires a
+		// 1x2 table this form never has). See #speechBubbleNoTable.
+		const noTbl = this.#speechBubbleNoTable({ bundle, tpl, renderInline, run });
+		if (noTbl) return noTbl;
+
+		// (0c) TEXT-ONLY bubble(s) — no image, no table (round 247, ENGS404-00). Tried
+		// BEFORE the modifier bail: the writer's benign "[insert thought bubble]" wording
+		// resolves as a modifier, and the image-ambiguity the modifier bail protects
+		// against cannot arise in a media-less bundle. See #speechBubbleTextOnly.
+		const txtOnly = this.#speechBubbleTextOnly({ bundle, tpl, renderInline });
+		if (txtOnly) return txtOnly;
 
 		// (1) Only the simple, static bubble. A non-empty modifier marks the
 		// writer's conversation/multi-bubble layouts (e.g. OSBY301's
@@ -2919,7 +3193,7 @@ class InteractiveBuilder {
 	 * @param {object} [args.run] - conversion run context (drives Mode P/D image rendering)
 	 * @returns {string|null} the built carousel HTML, or null to keep the orange placeholder
 	 */
-	static #carousel({ bundle, tpl, renderInline, run }) {
+	static #carousel({ bundle, tpl, renderInline, run, renderBlock }) {
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return null;
 		// extraTypes set = a multi-widget activity merged in (carousel + X) — too
@@ -2960,7 +3234,234 @@ class InteractiveBuilder {
 		}
 		// VIDEO form (member-based). A captured table here = a mixed/odd shape → the
 		// video walk will reject the non-URL table member and fall back.
-		return this.#carouselVideo({ bundle, tpl });
+		const vid = this.#carouselVideo({ bundle, tpl });
+		if (vid !== null) return vid;
+
+		// RICH SLIDE FALLBACK (round 246) — the last resort, after every strict dialect has
+		// declined, so each of them stays byte-identical. Builds the writer's carousel from
+		// whatever mix of heading / image / video / prose the members actually carry.
+		// See #carouselRich. Data carousel.rich_slides; env CARNOTBL_OFF.
+		return this.#carouselRich({ bundle, tpl, renderInline, run, renderBlock });
+	}
+
+	/**
+	 * RICH SLIDE carousel (round 246, ticket 3 of the basic-interactive builders round) —
+	 * the carousel's sibling of the round-214 rich-accordion fallback.
+	 *
+	 * WHY IT EXISTS. Only 36 of 794 captured carousels built, because each existing branch
+	 * recognises exactly ONE authoring dialect and bails wholesale on anything else: the
+	 * image/caption TABLE form, the image-slide form (which requires EVERY slide to carry both
+	 * an image AND a caption), and the pure-video form (which requires every member to be a
+	 * bare URL). Writers mix headings, images, videos and prose freely inside one [carousel].
+	 *
+	 * CHRIS'S DIRECTIVE (2026-08-03) — the Decision Framework's A1 branch: "if the writer has
+	 * specified a carousel, the best thing is to generate a carousel". The human developer's
+	 * finished page often shows something else (measured over 554 paired no-table declines: a
+	 * carousel at 65, another element at 287 — 134 of them accordions — and the text absent at
+	 * 202), but that substitution comes from verbal feedback recorded nowhere, AFTER v1 was
+	 * handed over. The writer's tag is the derivable target, so this build is judged on the
+	 * carousel VERIFIER plus never-half-build, NOT on matching the human's substitution
+	 * (Decision_Framework_Human_vs_Claude.md, GATE PRECEDENCE).
+	 *
+	 * HOW. Members are walked in document order. A [Slide N]-family marker opens a slide; so
+	 * does a heading once the current slide already holds content. Each slide accumulates an
+	 * ordered part list — heading, image (Mode P/D), YouTube embed, prose (via renderBlock, so
+	 * the writer's bullets become a real list) — rendered into the standard carousel item.
+	 *
+	 * NEVER HALF-BUILDS. Returns null (the honest hand-off box) on: a captured data table, a
+	 * merged extra widget type, a nested sub-bundle, red writer-instruction text inside slide
+	 * content, an image or video URL it cannot resolve, a member tag it does not recognise, an
+	 * empty slide, or a slide count outside [min_slides, max_slides].
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (opener/member items)
+	 * @param {object} args.tpl - the carousel template block (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
+	 * @param {object} [args.run] - conversion run context (drives Mode P/D image rendering)
+	 * @param {function} [args.renderBlock] - the black-text/bullet renderer
+	 * @returns {string|null} the built carousel, or null to keep the placeholder
+	 */
+	static #carouselRich({ bundle, tpl, renderInline, run, renderBlock }) {
+		const cfg = tpl?.rich_slides;
+		if (!cfg || cfg.enabled === false) return null;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (env.CARNOTBL_OFF) return null;
+		if (typeof renderBlock !== "function") return null;          // need the body renderer
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return null;
+		if ((bundle.tables ?? []).length) return null;               // the table dialects own that shape
+		if ((bundle.extraTypes ?? []).length) return null;           // a merged multi-widget bundle
+
+		const inline = renderInline ?? ((s) => s);
+		const slideTags = new Set(cfg.slide_tags ?? []);
+		const headTags = new Set(cfg.heading_tags ?? []);
+		const textTags = new Set(cfg.text_tags ?? []);
+		const idRe = new RegExp(cfg.video_id_re ?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
+		const videoTpl = DataService.Data.EmitTemplates.video?.youtube;
+
+		// ROUND 247 (Chris, ENGS404-00) — the MEDIA-SERIES refinements, each independently toggled.
+		// (a) PER-MEDIA SLIDES (env CARMEDSLIDE_OFF): in a bundle with NO [Slide N] markers, each
+		// image/video member OPENS its own slide — the writer's back-to-back media list is one
+		// slide per item ("[image 1]..[image 4]" = a 4-slide carousel; two [video]s = 2 slides,
+		// which previously piled into ONE slide and failed min_slides). A heading/prose-opened
+		// slide still receives its FIRST media item (the media only opens a new slide when the
+		// current slide already holds a media part), so the heading+image dialect is unchanged.
+		// (b) VIDEO-TAIL URL (env CARVIDTAIL_OFF): a [video]/[insert video] member with no URL of
+		// its own takes it from the immediately-following black link/title line (the r240 D2
+		// title-anchored class inside a widget — measured 137 members / 38 modules, none building);
+		// that line is CONSUMED as the video's reference, exactly as MediaBuilder treats it.
+		const msCfg = cfg.media_series ?? {};
+		const slideMarked = members.some((m) => m?.type === "tag"
+			&& (m.parse?.primary?.tag === "slide n" || m.parse?.primary?.tag === "slide"
+				|| (m.parse?.tags ?? []).some((t) => t.tag === "slide n")));
+		const mediaOpens = (msCfg.media_opens_slide ?? false) && !slideMarked && !env.CARMEDSLIDE_OFF;
+		const tailUrls = new Map(), tailConsumed = new Set();
+		if ((msCfg.video_tail_url ?? false) && !env.CARVIDTAIL_OFF) {
+			for (let i = 0; i < members.length; i++) {
+				const m = members[i];
+				if (m?.type !== "tag" || m.parse?.primary?.tag !== "video") continue;
+				const own = m.block?.links?.[0]?.target
+					?? (String((m.text ?? "") + " " + (m.blackAfter ?? "")).match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
+				if (own) continue;
+				const nx = members[i + 1];
+				if (nx?.type === "black") {
+					const u = nx.block?.links?.[0]?.target
+						?? (String(nx.text ?? "").match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
+					if (u && idRe.test(u)) { tailUrls.set(m, u); tailConsumed.add(nx); }
+				}
+			}
+		}
+
+		const slides = [];
+		let cur = null;
+		let pending = [];                                            // accumulating prose for the open slide
+		const open = () => { cur = { parts: [] }; slides.push(cur); return cur; };
+		const flush = () => {
+			const joined = pending.join("\n").trim();
+			pending = [];
+			if (!joined) return true;
+			if (!cur) open();
+			cur.parts.push({ p: joined });
+			return true;
+		};
+
+		for (const m of members) {
+			if (!m) continue;
+			if (tailConsumed.has(m)) continue;                       // a video's own link/title line (r247)
+			if (m.type === "table" || m.type === "nested") return null;
+			const tag = m.type === "tag" ? m.parse?.primary?.tag : null;
+			const tags = m.type === "tag" ? (m.parse?.tags ?? []).map((t) => t.tag) : [];
+			const raw = m.type === "tag" ? (m.blackAfter ?? "") : (m.text ?? "");
+			const url = tailUrls.get(m)
+				?? m.block?.links?.[0]?.target ?? (String(raw).match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
+
+			// a writer INSTRUCTION / noise span is not slide content — skip it exactly as the
+			// rich accordion does (round 214): the scanner already filed it in
+			// bundle.instructions, so it still surfaces as a red Writers Note after the widget
+			// and is never silently stripped.
+			if (m.type === "tag" && !m.parse?.primary
+				&& ["instruction", "noise"].includes(m.parse?.class)) {
+				const t = this.#cellText(m.blackAfter ?? "").trim();
+				if (t) pending.push(String(m.blackAfter));   // its trailing BLACK text is learner prose
+				continue;
+			}
+			// the widget's own invocation contributes only its trailing prose
+			if (tag === bundle.canonTag || tag === "carousel") {
+				if (this.#hasRedText(raw)) return null;
+				const t = this.#cellText(raw).trim();
+				if (t) pending.push(String(raw));
+				continue;
+			}
+			// a [Slide N]-family marker always opens a slide. Its OWN trailing text is the
+			// slide's content, not a title — the writer types "[slide 1- with a basic coloured
+			// background] Listen to your favourite picture book…" (ENFUN04), a whole sentence —
+			// so it goes to the caption, exactly like a black line would.
+			if (slideTags.has(tag) || tags.some((t) => slideTags.has(t))) {
+				if (this.#hasRedText(raw)) return null;
+				flush(); open();
+				if (this.#cellText(raw).trim()) pending.push(String(raw));
+				continue;
+			}
+			// a heading titles the open slide, or opens the next one once it holds content
+			if (headTags.has(tag)) {
+				if (this.#hasRedText(raw)) return null;
+				const t = this.#cellText(raw).trim();
+				if (!t) continue;
+				flush();
+				if (!cur || cur.parts.length) open();
+				cur.parts.push({ h: t });
+				continue;
+			}
+			// a VIDEO (or an [embed] carrying one) — the shared YouTube embed
+			if (tag === "video" || tag === "embed" || (url && idRe.test(url))) {
+				if (this.#hasRedText(raw)) return null;
+				const id = String(url).match(idRe)?.[1];
+				if (!id || !videoTpl) return null;                   // a video we cannot resolve → bail
+				flush();
+				if (!cur || (mediaOpens && cur.parts.some((pt) => pt.img || pt.video))) open();
+				cur.parts.push({ video: id });
+				continue;
+			}
+			// an IMAGE — the standard Mode P/D asset, named from the iStock id
+			if (tag === "image" || (url && !this.#cellText(String(raw).replace(/https?:\/\/[^\s\]"<>]+/g, "")).trim())) {
+				if (this.#hasRedText(raw)) return null;
+				const id = (String(url).match(/gm-?(\d{6,10})/) || String(url).match(/\/id\/(\d{4,10})/) || [])[1];
+				if (!id) return null;                                // a non-derivable image → bail
+				flush();
+				if (!cur || (mediaOpens && cur.parts.some((pt) => pt.img || pt.video))) open();
+				cur.parts.push({ img: Utils.FillTemplate(tpl.filename_istock, { id }) });
+				continue;
+			}
+			// PROSE — a plain black line or a text-family element tag
+			if (m.type === "black" || textTags.has(tag)) {
+				if (this.#hasRedText(raw)) return null;
+				if (this.#cellText(raw).trim()) pending.push(String(raw));
+				continue;
+			}
+			if (!String(raw).trim() && !tag) continue;               // a blank line / stray marker
+			return null;                                             // an unrecognised member → keep the placeholder
+		}
+		flush();
+
+		if (slides.length < (cfg.min_slides ?? tpl.min_slides ?? 2)) return null;
+		if (slides.length > (cfg.max_slides ?? 20)) return null;
+		// SUBSTANCE GUARD (never half-build): a carousel whose slides are ALL bare headings
+		// carries no content — the writer's real slide material did not reach the bundle, so
+		// the honest hand-off box is better than an empty-looking slideshow.
+		if (cfg.require_content !== false
+			&& !slides.some((s) => s.parts.some((p) => p.img || p.video || p.p))) return null;
+
+		const items = [];
+		for (const s of slides) {
+			if (!s.parts.length) return null;                        // an empty slide → never half-build
+			const chunks = [];
+			let capOpen = false;
+			for (const part of s.parts) {
+				if (part.h) {
+					if (capOpen) { chunks.push(cfg.caption_close); capOpen = false; }
+					chunks.push(Utils.FillTemplate(cfg.heading, { text: inline(part.h) }));
+				} else if (part.img) {
+					if (capOpen) { chunks.push(cfg.caption_close); capOpen = false; }
+					chunks.push(this.#assetImage(part.img, tpl, run));
+				} else if (part.video) {
+					if (capOpen) { chunks.push(cfg.caption_close); capOpen = false; }
+					chunks.push(Utils.FillTemplate(videoTpl, { videoId: part.video, params: "" }));
+				} else {
+					// renderBlock (ListsAndRuns.renderBlackText) returns an ARRAY of <p>/<ul>
+					// html, exactly as the rich accordion consumes it.
+					const rendered = renderBlock(part.p);
+					const arr = (Array.isArray(rendered) ? rendered : [rendered])
+						.filter((h) => h && String(h).trim());
+					if (!arr.length) return null;
+					if (!capOpen) { chunks.push(cfg.caption_open); capOpen = true; }
+					for (const h of arr) chunks.push(String(h));
+				}
+			}
+			if (capOpen) chunks.push(cfg.caption_close);
+			items.push(Utils.FillTemplate(cfg.item, { parts: chunks.join("\n") }));
+		}
+		bundle.r246Carousel = true;                                  // detector/affected-set marker
+		return [tpl.open, ...items, tpl.close].join("\n");
 	}
 
 	/**

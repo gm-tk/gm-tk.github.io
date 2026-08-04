@@ -318,7 +318,9 @@
   },
   "media_url_in_text": {
    "enabled": true,
-   "note": "ROUND NN (Chris, ENGS302-01): a [video]/[embed]/[imbed] tag whose URL the writer typed INSIDE the same red instruction span as the tag ('[Embed film] edit to start at 3 seconds https://youtu…' — the URL is part of it.text, not the black blackAfter nor a hyperlink nor a following black item) was not found by #gatherFollowing (which only scans blackAfter + following BLACK items) → 'RED FLAG: [embed] with no URL found'. The URL search now ALSO scans the element's own raw it.text as a last resort, so an in-span URL is recovered and the embed builds. Measured 20 occ / 4 modules (ENGS302, ENGJ402, XDLS502/901) currently red-flagged despite a URL being present in-span; the human builds the embed in every case. Env MEDIAURLTEXT_OFF reverts to the blackAfter/following-only search."
+   "note": "ROUND NN (Chris, ENGS302-01): a [video]/[embed]/[imbed] tag whose URL the writer typed INSIDE the same red instruction span as the tag ('[Embed film] edit to start at 3 seconds https://youtu…' — the URL is part of it.text, not the black blackAfter nor a hyperlink nor a following black item) was not found by #gatherFollowing (which only scans blackAfter + following BLACK items) → 'RED FLAG: [embed] with no URL found'. The URL search now ALSO scans the element's own raw it.text as a last resort, so an in-span URL is recovered and the embed builds. Measured 20 occ / 4 modules (ENGS302, ENGJ402, XDLS502/901) currently red-flagged despite a URL being present in-span; the human builds the embed in every case. Env MEDIAURLTEXT_OFF reverts to the blackAfter/following-only search.",
+   "following_link": true,
+   "following_link_note": "ROUND 247 (Chris, ENGS404-00). The new-era WT authors '[insert video]' on its own line with the video as a TITLE-ANCHORED hyperlink on the NEXT black line ('Pixar in a Box… - YouTube' — the URL lives in the docx hyperlink, not the visible text; the r240 D2 title-anchored class on the media path). The URL search now also reads the following-black range's first hyperlink TARGET (after block-link/gathered-text, before the own-raw-text last resort). The r80 video_embed_title_drop then drops the reference line once the embed builds, exactly as for a same-line reference. Env MEDIAFOLLOWLINK_OFF reverts."
   },
   "embed_story_carousel": {
    "enabled": true,
@@ -1035,6 +1037,12 @@
    },
    "rich_panels": {
     "enabled": true,
+    "head_from_first_line": {
+     "enabled": true,
+     "max_words": 14,
+     "numbered_pattern": "\\[\\s*accordion\\s+\\d+\\s*\\]",
+     "_note": "ROUND 246 (Chris, ticket 2 of the basic-interactive builders round) — HEADING-LESS PANEL RECOVERY. A large writer family numbers the panels but puts NO text on the tag itself: '[accordion 1]' alone on its line, then the panel's own first line ('US 29302 (Version 3)') and the rest of the body under it. Every accordion authored that way bailed on the rich fallback's 'each panel needs a heading' rule, so the writer's tagged accordion shipped as a developer hand-off box. CHRIS'S DIRECTIVE (2026-08-03, the Decision Framework's A1 branch): 'if the writer has used the accordion tag, then I want you to attempt to generate an accordion despite what the human generated html files generate this as (since keep in mind they may have initially generated an accordion to start with, but after liaising with the writer of the module, they may have then changed the interactive)'. Measured for the record (outputs/_measure_r246_gold.py over 331 paired no-table declines): the gold ships an accordion at 156, another element at 102 and drops the text at 73 — which is why this build is judged on the accordion VERIFIER and the writer's tag, not on matching the human's substitution (Decision_Framework_Human_vs_Claude.md, GATE PRECEDENCE). THE RULE: a panel with no heading takes it from its OWN first text line, and that line is REMOVED from the body so it is never shown twice. Guarded — the donor part must be TEXT (never an image/video/nested part), must have at least one more line after the heading (a single-line part IS the body, not a title), the line must be at most max_words long and carry no red writer instruction, and a panel left with no body still bails. env ACCNOTBL_OFF reverts to the round-245 behaviour (the whole accordion falls back to the hand-off box)."
+    },
     "_comment": [
      "ROUND 95 (Chris, OSAI501-03): the RICH-accordion FALLBACK. The two strict",
      "paths above (#accordionTextOnly / #accordionWithImages) BAIL the WHOLE",
@@ -1110,6 +1118,28 @@
    "filename_istock": "iStock-{id}.jpg",
    "_filename_note": "Mirrors Emit_Templates.image.filename_rules.istock so the bubble image stays editable in one place; the id is the run of 6-10 digits after 'gm' in the iStock URL.",
    "paragraph_min_words": 6,
+   "no_table_image": {
+    "enabled": true,
+    "open": "<div class=\"row speechBubble\" layout=\"{layout}\">",
+    "image_col": "<div class=\"col-md-2 offset-md-0 col-12 paddingR\">{image}</div>",
+    "text_col_right": "<div class=\"col-md-6 col-6\"><div class=\"bubble-basic no-hover bubble-right\">{text}</div></div>",
+    "text_col_left": "<div class=\"col-md-6 col-6\"><div class=\"bubble-basic no-hover bubble-left\">{text}</div></div>",
+    "close": "</div>",
+    "max_paragraphs": 4,
+    "_note": "R247 sibling: the IMAGE-LESS form lives in text_only below. ROUND 246 (Chris, ticket 1 of the basic-interactive builders round) — THE NO-TABLE AVATAR+BUBBLE FORM. The long-standing static speechBubble branch only recognises the writer's TABLE dialect (exactly one 1x2 table, image cell + text cell). A large family of writers instead types the whole thing as ONE PARAGRAPH: '[Image] avatar Tina  smiling  <iStock title> [LINK: https://…gm…]  [speech bubble] RHS  <bubble text>'. That has no table, so the bubble fell to the developer hand-off box while its avatar rendered loose above it. The scanner's same_block_image_absorb (Interactive_Boundary_ChildTag_Bank._meta.member_rule) recovers the paragraph-mate [image]; this template block is the shape the branch emits. MEASURED: the class is EXACTLY 55 bundles across TEDC401/TEDC402/SSCI104 and the human gold builds an avatar+bubble row at 55 of 55; within those golds the dominant column pair is 'col-md-2 offset-md-0 col-12 paddingR' | 'col-md-6 col-6' (118 of 147 speechBubble rows in the two TEDC modules) with class 'bubble-basic no-hover bubble-{side}' (55/55) inside 'row speechBubble' (55/55) and a single <p> (53/55). SIDE comes from the writer's ORDER exactly as the table branch derives it from cell order — image first (all 55) => the image column leads and the bubble is bubble-right, which matches the gold on 53 of 55 (the 2 lefts are editorial one-offs, the round-123 single-deviation class). The writer's own side WORD is deliberately NOT read: it is present on only 7 of the 55 and it is WRONG where it disagrees (TEDC401 #5 says 'RHS' where the gold ships bubble-left). env SBNOTBL_OFF reverts the whole ticket."
+   },
+   "text_only": {
+    "enabled": true,
+    "open": "<div class=\"row speechBubble\" layout=\"{layout}\">",
+    "col_open": "<div class=\"col-12\">",
+    "bubble": "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>",
+    "col_close": "</div>",
+    "close": "</div>",
+    "max_paragraphs": 4,
+    "thought_re": "thought",
+    "layout_thought": "thought",
+    "_note": "ROUND 247 (Chris, ENGS404-00 '[insert thought bubble]') — THE TEXT-ONLY BUBBLE(S). A bubble the writer authors with NO character image and NO table ('[insert thought bubble] Where do we find stories? [insert thought bubble] Why are stories important?') had no builder branch at all — the r246 recorded image-less decline class, now built on Chris's directive that ALL basic interactives build (the A1 writer's-tag branch). MEASURED (outputs/_detect_r247.cjs, ALL corpus dirs): 229 bundles / 52 modules, 212 clean; the human library itself ships the text-only bubble form 385 times, and layout=\"thought\" exists in the gold precisely for the thought wording (365 occ / 152 pages, XDLS901 the reference). Emit shape = the measured plurality (col-12; bubble-basic no-hover bubble-top — the side/colour scatter across the 385 is editorial C, this class string is the one data knob). One row per INTERACTIVE invocation member (the same-type merged '[thought bubble] … [thought bubble] …' paragraph ships one bubble each); >1 <p> takes the r104 wrapper <div>; layout follows the writer's own word via thought_re. Never-half-build guards in InteractiveBuilder.#speechBubbleTextOnly. env SBTEXT_OFF reverts the whole branch."
+   },
    "conversation": {
     "enabled": true,
     "wrapper": "<div class=\"row speechBubble\" layout=\"speech\">\n<div class=\"col-md-12 col-12\">\n{bubbles}\n</div>\n</div>",
@@ -1429,6 +1459,45 @@
     "min_items": 2
    },
    "item_image_caption": "<div class=\"item image\">\n{image}\n<div class=\"carousel-caption\">\n{caption}\n</div>\n</div>",
+   "rich_slides_accordion_sibling_note": "see interactive_builders.accordion.rich_panels.head_from_first_line — the round-246 accordion half of the same directive.",
+   "rich_slides": {
+    "enabled": true,
+    "item": "<div class=\"item\">\n{parts}\n</div>",
+    "heading": "<h4>{text}</h4>",
+    "caption_open": "<div class=\"carousel-caption\">",
+    "caption_close": "</div>",
+    "min_slides": 2,
+    "max_slides": 20,
+    "require_content": true,
+    "media_series": {
+     "media_opens_slide": true,
+     "video_tail_url": true,
+     "_note": "ROUND 247 (Chris, ENGS404) — the MEDIA-SERIES refinements. media_opens_slide (env CARMEDSLIDE_OFF): in a bundle with NO [Slide N] markers, each image/video member OPENS its own slide — the writer's back-to-back media list is one slide per item ('[image 1]..[image 4]' = 4 slides; 2 [video]s = 2 slides, which previously piled into ONE slide and failed min_slides); a heading/prose-opened slide still receives its FIRST media item, so the heading+image dialect is byte-unchanged. video_tail_url (env CARVIDTAIL_OFF): a [video]/[insert video] member with no URL of its own takes it from the immediately-following black link/title line (the r240 D2 title-anchored class inside a widget — MEASURED 137 members / 38 modules corpus-wide, NONE currently building, outputs/_detect_r247.cjs); the line is consumed as that video's reference. Pairs with the scanner's member_rule.media_series_break (env CARSERIES_OFF), which stops the run's capture at the first following non-media element."
+    },
+    "slide_tags": [
+     "slide n",
+     "slide",
+     "carousel n",
+     "item n"
+    ],
+    "heading_tags": [
+     "heading",
+     "story heading",
+     "h2",
+     "h3",
+     "h4",
+     "h5",
+     "h6"
+    ],
+    "text_tags": [
+     "body",
+     "list",
+     "caption",
+     "sub head"
+    ],
+    "video_id_re": "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})",
+    "_note": "ROUND 246 (Chris, ticket 3 of the basic-interactive builders round) — THE RICH SLIDE FALLBACK, the carousel's sibling of the round-214 rich_panels accordion fallback. CHRIS'S DIRECTIVE (2026-08-03, the Decision Framework's A1 branch): 'if the writer has specified a carousel, the best thing is to generate a carousel' — the human developer's finished page may show an accordion or plain body instead, but that substitution follows unrecorded verbal feedback after v1 was handed over, so it is NOT the target; the writer's tag is. Measured for the record (outputs/_measure_r246_gold.py over 554 paired no-table declines): the gold ships a carousel at 65, something else at 287 (134 of them accordions) and drops the text entirely at 202 — which is exactly why the build is judged on the carousel VERIFIER and the writer's tag, not on the human-match gates (Decision_Framework_Human_vs_Claude.md, GATE PRECEDENCE). The three existing branches each recognise ONE authoring dialect — a captured image/caption TABLE, image slides that ALL carry both an image and a caption, or a member run of BARE video URLs — and bail wholesale on anything else, which is why only 36 of 794 captured carousels built. This fallback runs LAST (every already-building carousel is byte-identical) and composes slides in document order from whatever the writer actually supplied: a [Slide N] marker or a heading opens a slide, and a slide may hold any mix of heading, iStock image, YouTube video and prose. NEVER HALF-BUILDS — it returns null (keeping the honest hand-off box) on a captured data table, an extra merged widget type, a nested sub-bundle, red writer-instruction text inside slide content, a non-derivable image or video URL, a member tag it does not recognise, an empty slide, or fewer than min_slides / more than max_slides slides. env CARNOTBL_OFF reverts to the round-245 behaviour."
+   },
    "caption_title_bold": {
     "enabled": true,
     "subjects": [
@@ -1603,7 +1672,7 @@
     }
    },
    "cohort_overrides": {
-    "_doc": "ROUND 231 (Chris — Change Ledger CL-0033, 14 Jul). THE LANGUAGES COMBO RULE: every page of a Languages-cohort module ships template=\"combo\" on <html> (the sub-type still comes from the <body> class). The prefixes are doc-14 §14.1's six languages × FUN + non-FUN code forms (data/Subject_Global_Parameters.json family '14.1 Languages P1-4' scope.cohort_prefixes — listed here VERBATIM so the engine never reads SGP at runtime; SGP stays shipped-inert, master_enabled:false). UNCONDITIONAL within the cohort: outranks sibling inheritance AND the by_level_digit preset (preserve_values does not apply — the r224 absolute-override semantics); applied AFTER prefix_overrides (no key overlap exists). Kept SEPARATE from prefix_overrides so each fix reverses independently (§2): LANGCOMBO_OFF reverts Languages alone, TPLPREFIX_OFF keeps reverting BLL2 alone. MEASURED round 231: the corpus holds ZERO Languages dirs (431 dir codes, 0 prefix hits, 0 short-prefix collisions — the r218 'BLLR is NOT BLL' startswith trap checked and clear, no non-Languages code starts CHI/FRE/SAM/GER/JAP/SPA), so this ships as an INERT forward-looking guarantee (the r224/r230 zero-blast class) — without it a fresh Languages code would ship the TEDC-style EMPTY attribute (no registry row, no sibling; the r221 pre-fix class — nothing today would ever RESOLVE combo for it). Env LANGCOMBO_OFF.",
+    "_doc": "ROUND 231 (Chris — Change Ledger CL-0033, 14 Jul). THE LANGUAGES COMBO RULE: every page of a Languages-cohort module ships template=\"combo\" on <html> (the sub-type still comes from the <body> class). The prefixes are doc-14 §14.1's six languages × FUN + non-FUN code forms (data/Subject_Global_Parameters.json family '14.1 Languages P1-4' scope.cohort_prefixes — listed here VERBATIM so the engine never reads SGP at runtime; SGP stays shipped-inert, master_enabled:false). UNCONDITIONAL within the cohort: outranks sibling inheritance AND the by_level_digit preset (preserve_values does not apply — the r224 absolute-override semantics); applied AFTER prefix_overrides (no key overlap exists). Kept SEPARATE from prefix_overrides so each fix reverses independently (§2): LANGCOMBO_OFF reverts Languages alone, TPLPREFIX_OFF keeps reverting BLL2 alone. MEASURED round 231: the corpus holds ZERO Languages dirs (431 dir codes, 0 prefix hits, 0 short-prefix collisions — the r218 'BLLR is NOT BLL' startswith trap checked and clear, no non-Languages code starts CHI/FRE/SAM/GER/JAP/SPA), so this ships as an INERT forward-looking guarantee (the r224/r230 zero-blast class) — without it a fresh Languages code would ship the TEDC-style EMPTY attribute (no registry row, no sibling; the r221 pre-fix class — nothing today would ever RESOLVE combo for it). Env LANGCOMBO_OFF. ROUND 248 (Chris, 5 Aug 2026 — the final 20260511_Language_HTML + covering note): prefixes gain CHFUN + JPNFUN, the code forms ACTUALLY in circulation (CHFUN01-07 are live in the corpus and had been falling through to the r245 last_resort_default's combo with a loud warn; JPNFUN05 is named by the designer as the language-05 structural reference). Doc-14's draft spellings CHIFUN/JAPFUN stay in the list for safety; the list remains EXPLICIT full prefixes (the r245 rule — no 2-letter shortenings).",
     "enabled": true,
     "value": "combo",
     "prefixes": [
@@ -1615,11 +1684,20 @@
      "SPAFUN",
      "CHI",
      "FRE",
+     "FRNO",
      "SAM",
      "GER",
      "JAP",
-     "SPA"
-    ]
+     "SPA",
+     "CHFUN",
+     "JPNFUN"
+    ],
+    "_prefix_note": "ROUND 245 (Chris — the FRNO901 developer test) added \"FRNO\". doc-14 §14.1 names the languages in three letters (FRE = French), but the module codes actually in circulation use a two-letter language + two-letter strand form (FRNO901 IS French). This stays an EXPLICIT prefix list rather than a two-letter pattern ON PURPOSE: FR/CH/SA/GE/JA/SP collide with nothing in today's 61 corpus subject prefixes (measured round 245) but would silently capture a future GEOG/CHEM-style subject. New real language code forms are added HERE as they appear; anything not listed falls to last_resort_default instead, which is the safe direction."
+   },
+   "_doc_last_resort_default": "ROUND 245 (Chris — the FRNO901 developer test, the r238 Family-A class completed). FRNO901 is a brand-new subject: no registry row, no gold sibling, and its code digit 9 is not a curriculum level, so code_pattern never matches and the r238 unknown_subject_digit_fallback correctly declines to guess. Every OTHER universal field resolved fine through the r238 evidence floor (body_class, idoc_host, footer_class, menu types — all correct) but the template attribute shipped EMPTY, and the iDoc host loads the page stylesheet BY that attribute: the page renders unstyled. That is the same Prio-high failure the reference developer reported for SCCH302 at round 238, reached by a different route. THE RULE: after every other template rule has had its say (sibling inheritance → by_level_digit preset → unknown_subject_digit_fallback → prefix_overrides → cohort_overrides), a still-empty attribute takes `value` — a LAST RESORT, never a preference, and by construction unreachable for any module that resolved anything at all. VALUE = \"combo\" (Chris's decision, round 245): the combined-cohort template is designed to serve mixed levels so it degrades gracefully for an unknown module, it is the doc-14 answer for the Languages cohort this rule most often backstops, and it is the second most common value in the gold library (78 modules; \"1-3\" is commoner at 179 but is a junior band — a poor guess for an unknown senior module like FRNO901). Chris's framing: a default holds only until the developer builds the first proof, which then becomes the templated reference PageForge inherits from — so the run also carries a loud warn-level note naming the module and the assumed value. MEASURED ZERO-BLAST: not one page of the shipped corpus carries template=\"\" (grep, all 01-Claude_Modules_ + all gold), and the corpus holds zero Languages dirs, so this round changes no existing byte — a pure forward guarantee, the r224/r231 class. Env TPLDEFAULT_OFF reverts to the empty attribute.",
+   "last_resort_default": {
+    "enabled": true,
+    "value": "combo"
    }
   },
   "head": "<head>\n<meta charset=\"utf-8\" />\n<meta content=\"IE=edge\" http-equiv=\"X-UA-Compatible\" />\n<meta content=\"width=device-width, initial-scale=1\" name=\"viewport\" />\n<title>{title}</title>\n{idocScript}\n</head>",
@@ -3839,7 +3917,11 @@
     "translateSection",
     "numberLine"
    ],
-   "note": "DOCUMENT-LEVEL heading re-levelling (round 45, measured): human developers IGNORE the writer's heading digit and re-base every page's body-heading outline to a consistent h3-top hierarchy (measured: 71% of human pages start their body at h3; body headings collapse to h3>h4>h5). The writer's [H?] digit is noise; the human's consistent OUTPUT convention is the signal. ContentConverter.#relevelHeadings runs a post-pass on the assembled #body: the page's DISTINCT free-body heading levels (sorted) map to base_level, base_level+1, … (clamped at max_level) — a rank normalisation. Headings INSIDE a widget subtree (skip_classes) are left untouched (protects the built-widget verifiers + their own heading conventions). Measured rank-based match: writer+1 46.2% -> 57.5% on text-matched body headings; gate-safe (heading level doesn't change the wrapper chain). enabled:false or env RELEVEL_OFF to A/B."
+   "note": "DOCUMENT-LEVEL heading re-levelling (round 45, measured): human developers IGNORE the writer's heading digit and re-base every page's body-heading outline to a consistent h3-top hierarchy (measured: 71% of human pages start their body at h3; body headings collapse to h3>h4>h5). The writer's [H?] digit is noise; the human's consistent OUTPUT convention is the signal. ContentConverter.#relevelHeadings runs a post-pass on the assembled #body: the page's DISTINCT free-body heading levels (sorted) map to base_level, base_level+1, … (clamped at max_level) — a rank normalisation. Headings INSIDE a widget subtree (skip_classes) are left untouched (protects the built-widget verifiers + their own heading conventions). Measured rank-based match: writer+1 46.2% -> 57.5% on text-matched body headings; gate-safe (heading level doesn't change the wrapper chain). enabled:false or env RELEVEL_OFF to A/B.",
+   "fixed_level_classes": [
+    "goJournal"
+   ],
+   "_fixed_level_note": "ROUND 245 (Chris — the SCCH302 developer error log). TEMPLATED CHROME headings the converter emits at a FIXED level with a fixed class must not join the re-level pool. `<h4 class=\"goJournal\">Go to your journal</h4>` (r239 B4) is the measured case: the human gold ships it at h4 568/568 = 100%, inside an activity box or standalone, but because it looked like an ordinary free-body heading it was re-ranked with the rest — Claude shipped 110 at h3 and 8 at h5 out of 835, and its presence in the pool also displaced the writer's real headings around it. A heading whose OWN class is listed here is excluded from BOTH the pool and the rewrite (the activity-anchor / supervisor-note exclusion treatment, keyed on the heading's own class rather than an ancestor div). Env FIXEDHEAD_OFF."
   },
   "alert_table": {
    "enabled": true,
@@ -4081,6 +4163,15 @@
    "overview_zero_pattern": "^0(\\.0)?$",
    "dotted_label_verbatim": true,
    "tile_closer_pattern": "tile\\s+lesson|navigate back to lesson"
+  },
+  "_doc_lesson_boundary_guard": "ROUND 245 (Chris — the ENGS404 developer test: 22 files for 12 lessons). TWO measured PageSplitter guards on what counts as a lesson page boundary. Detector outputs/_detect_r245_lessonsplit.cjs, run over ALL 429 corpus WTs + the 3 ZZ-HumanDev test modules (1549 lesson/page PAGE_BOUNDARY spans).\n\n(1) duplicate_number_merge — THE DIVIDER-BANNER FORM. A WT house convention writes the lesson number TWICE: an all-caps banner on the divider page right after [End page] ('[LESSON 1.0]'), then the real titled opener ('[Lesson 1.0] Elements of narrative'), with ONLY the lesson-MENU region between them ([Lesson Overview] + the black We-are-learning / I-can run). The banner opened an empty file and the duplicate-label relabeller then cascaded EVERY later lesson number (ENGS404 shipped 22 pages incl. 9 header-only files). When a [Lesson N] marker's number equals the OPEN lesson page's number AND that page has received NO BODY content yet, the marker is merged into the open page (its title adopted if the page has none) instead of opening a new one. 'Body content' = a table or a tag whose directive is ELEMENT/INTERACTIVE/CONTAINER_OPEN/INLINE; the menu region's SECTION_MARKERs and black text do NOT count — that material belongs to the same lesson either way. MEASURED: 13 same-number pairs corpus-wide; the no-body rule fires on EXACTLY 9 (ENGS404 ×7 + HIS1005 ×2) and by construction EXCLUDES the 4 pairs where the writer genuinely reused a number across real content (CEDO501 bodyish=32, HES1005 bodyish=69, AGH1006 bodyish=20, HIS1007 bodyish=14). Corpus blast: HIS1005 only. Env LESSONDUP_OFF.\n\n(2) instruction_guard — THE BURIED-MARKER FORM. A span becomes a lesson/page boundary merely because the word 'lesson'/'page' appears inside writer prose ('[insert lesson from ENO511 …]' → a page numbered 511; '[Designer note: Please insert old lesson from here…]'; '[Rollover for mana: … complete History fundamental lesson 7 …]'). NECESSARY CONDITION, and the containment statement: the primary must have matched how:'embedded' (the r174 clean_hows distinction) — the 1479 of 1549 boundaries that matched exact/denumbered/denumbered_head are untouchable BY CONSTRUCTION. Within that 70-span pool the marker is disregarded when EITHER the span is instruction-dominant by the EXISTING TagNormaliser.IsInstructionDominant predicate (all tags embedded + a recognised writer-instruction cue + >= min_words of prose — 8 spans / 7 modules), OR the bracket names a FOREIGN module code (foreign_code_pattern, any position, the run's own code excluded — the cross-module 'copy that lesson' reference form: '[insert lesson from ENO511 …]', '[Copy PHO1032 lesson 8]', '[PHO1011 lesson 5.1-5.3]'), OR the text BEFORE the marker word carries a hover/rollover marker word (deny_lead_pattern — '[Rollover for mana: … complete History fundamental lesson 7 …]' is a hover trigger whose DEFINITION mentions a lesson: vocabulary, not structure). FAIL-OPEN by design: an unrecognised embedded form keeps today's behaviour. Verified against the full 70-span pool: every genuine embedded marker survives ([Lesson summary] ×14, [lesson title] ×8, [Lesson Two] ×2, [Lesson six], [Final Page] ×2, [Next Page] ×4, [New Page …] ×2, [Intro page] ×2, [ILanding page], [Page N of diary] ×2, [page ends]); the r212 [MODULE CONTENT: PAGE n] and r226 [Sticky Nav Layout …] forms are consumed EARLIER in the same branch and never reach this guard. Named delta: HIS1001's '[Can you please make a map …]' page disappears — unambiguously not a boundary, though that module is already UNDER its gold page count for an unrelated reason. Env LESSONGUARD_OFF. DELIBERATELY NARROW (round-245 calibration): a broader leading-instruction-verb deny (insert/copy/create/from) was measured and REJECTED — it also removed ENGI405's '[insert zones writing wheel from this page' and ART1006's '[Create two new colour boxes … page called the', both of which happen to sit where the human developer DID break the page, so the count moved AWAY from gold (ENGI405 8->7 against a gold of 8). Those forms keep today's behaviour: fail-open is the safe direction, and the two rules kept here are the ones no reading of the writer's intent can dispute. Corpus effect measured module by module against the gold page count: PES1004 12->11 (gold 11, EXACT), PES1007 12->11 (gold 11, EXACT), CEDR501 12->11 (gold 10, toward), HIS1008 13->12 (gold 10, toward), HIS1001 no pagination change at all (content only), PES1008 toward, HIS1005 see duplicate_number_merge.",
+  "lesson_boundary_guard": {
+   "enabled": true,
+   "duplicate_number_merge": true,
+   "instruction_guard": true,
+   "instruction_dominant_min_words": 8,
+   "deny_lead_pattern": "\\b(?:rollover|roll over|hover|mouseover)\\b",
+   "foreign_code_pattern": "\\b[A-Z]{2,5}\\d{3,4}\\b"
   }
  },
  "formatter": {

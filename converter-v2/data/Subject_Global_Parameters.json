@@ -582,11 +582,11 @@
       "doc_section": "14.1",
       "active": false,
       "overrides_gold": true,
-      "source_updated": "2026-07-09",
-      "roadmap": "asset-deferred; wire after the active four. Videos/characters supplied later by Audiovisual. No corpus presence yet.",
+      "source_updated": "2026-08-05",
+      "roadmap": "Audiovisual Package FINALISED 2026-08-05 (the final 20260511_Language_HTML — asset/tag registry captured below as asset_registry). CHFUN01-07 live in the corpus (no golds beyond the supplied HTML set). Wire after the active four.",
       "scope": {
         "type": "cohort",
-        "label": "six Languages prefixes (Chinese, French, Gagana Samoan, German, Japanese, Spanish), Phases 1-4",
+        "label": "six Languages prefixes (Chinese, French, Gagana Samoan, German, Japanese, Spanish), Phases 1-4. Code forms in circulation: CHFUN (CHFUN01-07 live) + JPNFUN (JPNFUN05 named by the designer); the earlier doc-14 draft spellings CHIFUN/JAPFUN are superseded but kept in the prefix list for safety.",
         "cohort_prefixes": [
           "CHIFUN",
           "FREFUN",
@@ -599,7 +599,9 @@
           "SAM",
           "GER",
           "JAP",
-          "SPA"
+          "SPA",
+          "CHFUN",
+          "JPNFUN"
         ]
       },
       "conventions": [
@@ -628,14 +630,25 @@
           "detail": "Once a character has been introduced, that character is ADDED every subsequent time its tag is used — the tag is never left as bare bracket text (constraint 3) and the character is never dropped on later uses."
         },
         {
-          "name": "Videos added manually (deferred)",
-          "kind": "deferred_asset",
+          "name": "Audiovisual Package FINALISED — registry assets emit the supplied forms (2026-08-05)",
+          "kind": "content_rule",
           "keywords": [
-            "video",
-            "audiovisual"
+            "audiovisual package",
+            "vimeo",
+            "audioimage",
+            "audiobutton"
           ],
           "red_note": "Audiovisual item to be added by designer/developer from Audiovisual.",
-          "detail": "Videos in the supplied .html examples are template placeholders ONLY — do not reuse them. Real videos come from Audiovisual."
+          "detail": "All packages are finalised for each of the six languages ('will be in use in upcoming modules'). A writer tag [Audiovisual package <asset> item N] naming an asset_registry entry emits the supplied form (videoSection Vimeo embed / audioImage / audioButton / audioPlayer / imageCentral image) exactly as the 20260511_Language_HTML reference shows. Variant sub-brackets: [full body] / [headshot] / [neutral] / [certificate] / [holding books] / [ice cream] / [expression]; Spanish expression tags carry the number in correlation to the expression. An Audiovisual slot NOT in the registry keeps the red note + the cl0037/constraint-64 pending-ID Vimeo scaffold. Supersedes this family's former 'Videos added manually (deferred)' rule for registry-listed assets."
+        },
+        {
+          "name": "Language icons — [Audiovisual package Icon <Name>], phase colour automatic",
+          "kind": "choice",
+          "keywords": [
+            "audiovisual package icon",
+            "language icons"
+          ],
+          "detail": "Eight icons: Reading, Listening, Speaking, Writing, Interact, Think, Idea, Linguist. Tag [Audiovisual package Icon <Name>]; files images/Icons/black icons/Language icons_<Name>.jpg (phase-coloured files under images/Icons/phase colour/). The icons are identical throughout the phases and automatically match the module's phase colour — the writer never specifies a colour and the conversion never asks for one."
         },
         {
           "name": "Sticky nav on every page (deferred setup)",
@@ -649,16 +662,318 @@
           "cross_reference": "§14.11"
         },
         {
-          "name": "Provisional asset state — prefer a built sibling",
+          "name": "Structural reference points — CHFUN (all language fundamentals) / JPNFUN05 (all language 05 fundamentals)",
           "kind": "content_rule",
           "keywords": [
-            "asset",
-            "provisional",
-            "sibling"
+            "chfun",
+            "jpnfun05",
+            "reference point"
           ],
-          "detail": "The character/asset set 'will continue to be updated' — treat the supplied examples (20260511_Language_HTML: layout/asset examples only, never content to copy) as current-but-not-final; prefer a built sibling where one exists."
+          "detail": "Designer instruction 2026-08-05: the CHFUN modules are the structural reference point for ALL language fundamentals; JPNFUN05 is the reference point for all language 05 fundamentals (its layout is slightly different). Mode-B sibling authority unchanged: a built same-language sibling still outranks; otherwise reference the CHFUN set (or JPNFUN05 for an 05 module). Replaces the former 'Provisional asset state' rule — the asset set is now finalised."
         }
-      ]
+      ],
+      "asset_registry": {
+        "_doc": "The finalised Languages Audiovisual Package (20260511_Language_HTML, 5 Aug 2026). Primary key = the asset NAME in the writer's [Audiovisual package ... item N] tag; the item number is the cross-check (per-language; Japanese legitimately starts at item 0). Forms: vimeo = videoSection ratio ratio-16x9 iframe (player.vimeo.com/video/<id>); audioImage = click-to-hear image (id + imageCentral src); audioButton = <div class=audioButton audioName=...>; audioPlayer = <audio class='audioPlayer icon'>; image = img-fluid imageCentral from the language's central asset folder.",
+        "icons": {
+          "tag": "[Audiovisual package Icon <Name>]",
+          "names": [
+            "Reading",
+            "Listening",
+            "Speaking",
+            "Writing",
+            "Interact",
+            "Think",
+            "Idea",
+            "Linguist"
+          ],
+          "src": "images/Icons/black icons/Language icons_<Name>.jpg",
+          "phase_colour": "automatic — never writer-specified"
+        },
+        "german": {
+          "central_folder": "German assets/",
+          "assets": [
+            {
+              "name": "Claudia Hoffmann",
+              "role": "mother",
+              "item": 1,
+              "form": "vimeo",
+              "id": "1193069697"
+            },
+            {
+              "name": "Daniel Hoffmann",
+              "role": "father",
+              "item": 2,
+              "form": "vimeo",
+              "id": "1193069699"
+            },
+            {
+              "name": "Lina Hoffmann",
+              "role": "sister",
+              "item": 3,
+              "form": "audioImage",
+              "id": "German VA ONLY- Lina Hoffmann_1080p_01",
+              "src": "German assets/Lina.jpg"
+            },
+            {
+              "name": "Felix Hoffmann",
+              "role": "brother",
+              "item": 4,
+              "form": "vimeo",
+              "id": "1200277175"
+            },
+            {
+              "name": "Der Lehrer",
+              "role": "teacher",
+              "item": 5,
+              "form": "vimeo",
+              "id": "1193069825"
+            },
+            {
+              "name": "Arihi",
+              "item": 6,
+              "form": "audioImage",
+              "id": "German-Arihi_voice",
+              "src": "German assets/Ahirihi.jpg"
+            },
+            {
+              "name": "Narrator voice",
+              "role": "voice only",
+              "item": 7,
+              "form": "audioPlayer",
+              "src": "audio/German_Female narrator.mp3"
+            },
+            {
+              "name": "Salzi",
+              "role": "pretzel mascot",
+              "item": 8,
+              "form": "audioImage+image variants",
+              "id": "German_Salzi",
+              "variants": [
+                "neutral",
+                "certificate",
+                "holding books",
+                "ice cream"
+              ],
+              "src": "German assets/Salsi_*.jpg"
+            }
+          ]
+        },
+        "french": {
+          "central_folder": null,
+          "presentation": "row carousel carouselBorder + carousel-caption",
+          "assets": [
+            {
+              "name": "Luc",
+              "role": "French speaker (France)",
+              "item": 1,
+              "form": "vimeo",
+              "id": "1190998681"
+            },
+            {
+              "name": "Sophie",
+              "role": "French speaker (France)",
+              "item": 2,
+              "form": "vimeo",
+              "id": "1190998668"
+            },
+            {
+              "name": "Malia",
+              "role": "NZ + French speaker",
+              "item": 3,
+              "form": "vimeo",
+              "id": "1190998650"
+            }
+          ]
+        },
+        "chinese": {
+          "central_folder": "Chinese assets/",
+          "voices": {
+            "Da Wei": "Chinese-Da wei",
+            "Xiao Mei": "Chinese-Xiao mei",
+            "Female narrator": "Chinese_Female narrator"
+          },
+          "assets": [
+            {
+              "name": "Da wei",
+              "item": 1,
+              "form": "image",
+              "variants": [
+                "full body",
+                "headshot"
+              ]
+            },
+            {
+              "name": "Xiao Mei",
+              "item": 2,
+              "form": "image",
+              "variants": [
+                "full body",
+                "headshot"
+              ]
+            },
+            {
+              "name": "Wang Laoshi",
+              "role": "teacher, avatar+voice",
+              "item": 3,
+              "form": "vimeo",
+              "id": "1196193454"
+            },
+            {
+              "name": "Panda",
+              "role": "mascot",
+              "item": 4,
+              "form": "image",
+              "istock": "2193695860",
+              "note": "writer still puts an i-Stock link in the WT for the allocated designer; acks 'Adapted. Used with permission.'"
+            }
+          ]
+        },
+        "japanese": {
+          "central_folder": "japanese assets/ (also observed 'Japanese assets/' — one folder)",
+          "voices": {
+            "Kauri": "Japanese_Kauri",
+            "Yuka": "Japanese_Yuka",
+            "Sakura": "Japanese_Sakura"
+          },
+          "assets": [
+            {
+              "name": "Sakura",
+              "item": 0,
+              "form": "image",
+              "variants": [
+                "full body",
+                "headshot"
+              ]
+            },
+            {
+              "name": "Yuka",
+              "item": 3,
+              "form": "image",
+              "variants": [
+                "full body",
+                "headshot"
+              ]
+            },
+            {
+              "name": "Kauri",
+              "item": 4,
+              "form": "image",
+              "variants": [
+                "full body",
+                "headshot"
+              ]
+            },
+            {
+              "name": "morning/afternoon/evening/night greeting",
+              "item": 1,
+              "form": "image (scene stills carousel)"
+            },
+            {
+              "name": "Snow festival",
+              "item": 7,
+              "form": "image (scene still)"
+            },
+            {
+              "name": "Ainu village",
+              "item": 10,
+              "form": "image (scene still)"
+            },
+            {
+              "name": "Introductions",
+              "item": 5,
+              "form": "vimeo (in carousel)",
+              "id": "1200640618"
+            },
+            {
+              "name": "Meeting someone for the first time asking their name",
+              "item": 2,
+              "form": "vimeo (in carousel)",
+              "id": "1203682044"
+            },
+            {
+              "name": "Showing family members",
+              "item": 6,
+              "form": "vimeo (in carousel)",
+              "id": "1203681543"
+            }
+          ]
+        },
+        "spanish": {
+          "central_folder": "Spanish assets/",
+          "accents_note": "a voice audio runs through ALL accents in one file — Spain, then Latin America, then Mexico; keep the writer's 'listen to the full audio' framing",
+          "assets": [
+            {
+              "name": "Pablo",
+              "item": 1,
+              "form": "audioButton+expression carousel",
+              "audioName": "Spanish_Pablo",
+              "istock": "2214853643",
+              "expressions": [
+                "neutral",
+                "angry",
+                "happy",
+                "scared"
+              ]
+            },
+            {
+              "name": "María",
+              "item": 1,
+              "form": "audioButton+expression carousel",
+              "audioName": "Spanish_Maria",
+              "istock": "2214816016",
+              "expressions": [
+                "neutral",
+                "happy",
+                "sad",
+                "scared",
+                "smile"
+              ]
+            },
+            {
+              "name": "family tree",
+              "item": 3,
+              "form": "image",
+              "istock": "1675300511 (people) + 2207512167 (pets)"
+            },
+            {
+              "name": "family portait",
+              "item": 4,
+              "form": "image",
+              "note": "writer's spelling 'portait' as tagged"
+            }
+          ]
+        },
+        "samoan": {
+          "central_folder": "Samoan character assets/",
+          "assets": [
+            {
+              "name": "Fa'auiga",
+              "item": 1,
+              "form": "image",
+              "variants": [
+                "full body",
+                "headshot"
+              ]
+            },
+            {
+              "name": "Si'iolo",
+              "item": 2,
+              "form": "image",
+              "variants": [
+                "full body",
+                "head shot"
+              ]
+            },
+            {
+              "name": "NZ to Samoa",
+              "item": 3,
+              "form": "image (gif)",
+              "src": "Samoan character assets/Adobe Express - nz to samoa.gif",
+              "istock": "926176050 (NZ) + 2215778947 (Samoa)"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "14.2 Pathways L1",

@@ -535,6 +535,13 @@ class InteractiveScanner {
 			// everything else). See #absorbLeadingPattern for the full explanation. Data
 			// member_rule.leading_pattern_absorb; env INTLEADPAIR_OFF.
 			this.#absorbLeadingPattern(bundle, items, i);
+			// BACKWARD SAME-BLOCK AVATAR ABSORB (round 246). A speech bubble the writer typed as
+			// ONE PARAGRAPH — "[Image] <words> <title> [LINK: iStock url] [speech bubble] <text>" —
+			// splits into separate red-span ITEMS, so the [image] sits just ABOVE the invocation and
+			// outside the bundle. Recover it (same source BLOCK only) so the builder can emit the
+			// human's one-row avatar+bubble instead of a loose image followed by a hand-off box.
+			// See #absorbSameBlockImage. Data member_rule.same_block_image_absorb; env SBNOTBL_OFF.
+			this.#absorbSameBlockImage(bundle, items, i);
 			// ROUND 217 (Chris, boundary audit): a BARE GENERIC INVOCATION bundle — the
 			// standalone "[Interactive]" re-tag (Tag_Lexicon qualifier_alias_demote.
 			// standalone_becomes) — that captured NOTHING AT ALL (no forward members, no
@@ -1152,6 +1159,55 @@ class InteractiveScanner {
 				if (reachedSlide && postImageBody) break;   // 2nd post-image body → free body resumes after the carousel
 			}
 
+			// MEDIA-SERIES SECTION BREAK (round 247, ENGS404-00). A carousel authored as a
+			// back-to-back RUN of [image]/[video] members directly after the invocation —
+			// "[insert image carousel] [image 1] [image 2] [image 3] [image 4]" — IS the series:
+			// the writer's own list delimits the widget, and the first following non-media ELEMENT
+			// tag (a [body], a heading, a [button], a data marker…) is the SECTION resuming. The
+			// old walk kept absorbing to the page end, so the whole introduction/vocabulary section
+			// dumped into the placeholder and the build always declined. Scoped hard (measured,
+			// outputs/_detect_r247.cjs over ALL corpus dirs): fires only when the bundle has NO
+			// [slide N] marker AND every substantive captured member so far is the invocation, a
+			// media member, a video's own link/title black line, or a writer instruction — i.e. the
+			// capture is still a PURE media run (>= media_series_min_run). Interleaved dialects
+			// (image>body>image slide captions) never satisfy the pure-run test and keep the old
+			// behaviour BY CONSTRUCTION; the measured zero-risk terminator set is "any tag ELEMENT
+			// whose primary is not image/video/audio/caption" (no built bundle carries a [body]
+			// after its run; the 11 heading-tailed builds were themselves over-captures —
+			// EXPFUN02/ENGJ403's trailing sections baked in as bogus slides — corrected by this
+			// rule toward the writer's structure). Data member_rule.media_series_break
+			// (+ _types/_min_run); env CARSERIES_OFF.
+			if (p && p.directive !== "INTERACTIVE"
+				&& !["image", "video", "audio", "caption"].includes(p.tag)
+				&& (_mrB.media_series_break ?? false)
+				&& (_mrB.media_series_break_types ?? ["carousel", "rotateBanner"]).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env.CARSERIES_OFF)) {
+				let mediaRun = 0, pure = true, sawSlideMarker = false, lastWasVideo = false;
+				for (const m of bundle.memberItems) {
+					if (!m) continue;
+					if (m.type === "table" || m.type === "nested") { pure = false; break; }
+					if (m.type === "black") {
+						if (!String(m.text ?? "").trim()) continue;
+						// a link/title line directly after a video is that video's reference line
+						if (lastWasVideo && (m.block?.links?.length || /https?:\/\//.test(String(m.text ?? "")))) { lastWasVideo = false; continue; }
+						pure = false; break;
+					}
+					const mp = m.parse?.primary;
+					if (!mp) {
+						if (["instruction", "noise"].includes(m.parse?.class)) continue;   // writer notes ride along
+						pure = false; break;
+					}
+					if (mp.directive === "INTERACTIVE") { lastWasVideo = false; continue; }   // the invocation itself
+					if (mp.tag === "slide n" || mp.tag === "slide"
+						|| (m.parse?.tags ?? []).some((t) => t.tag === "slide n")) { sawSlideMarker = true; break; }
+					if (["image", "video", "audio"].includes(mp.tag)) { mediaRun++; lastWasVideo = mp.tag === "video"; continue; }
+					pure = false; break;
+				}
+				if (pure && !sawSlideMarker && mediaRun >= (_mrB.media_series_min_run ?? 2)) {
+					break;   // the media run IS the carousel → this element resumes the section
+				}
+			}
+
 			// SAME-TYPE GROUP SPLIT. A SECTION heading BETWEEN two same-type widget GROUPS must split
 			// them (e.g. an [H4] section heading sitting between one set of flip cards and a second,
 			// unrelated set of flip cards — the finished page ships TWO separate flip-card containers
@@ -1630,6 +1686,101 @@ class InteractiveScanner {
 		bundle.memberItems.unshift(...absorbed);
 		bundle.startIndex = s + 1;
 		for (const a of absorbed) this.#harvestMedia(bundle, a);
+	};
+
+	/**
+	 * BACKWARD SAME-BLOCK AVATAR ABSORB (round 246, ticket 1 of the basic-interactive
+	 * builders round).
+	 *
+	 * THE WRITER'S FORM (measured, TEDC401/TEDC402/SSCI104): the avatar and its bubble are
+	 * ONE Writers Template paragraph —
+	 *     [Image] avatar Tina  smiling  <iStock title> [LINK: https://…gm2235638824-…]
+	 *     [speech bubble] RHS  See how the table gives the details…
+	 * The extractor splits that paragraph into separate red-span ITEMS, and the forward
+	 * member walk starts AT the [speech bubble] invocation, so the [image] item sits just
+	 * ABOVE it, outside the bundle. Today it therefore renders as a loose standalone image
+	 * (plus its "avatar Tina" caption) with the bubble text stranded in a hand-off box
+	 * below; the finished page ships ONE `row speechBubble` containing both.
+	 *
+	 * THE DISCRIMINATOR IS THE SHARED SOURCE `block` — the round-105 "continuous sentence
+	 * vs a paragraph later" rule. An [image] in a DIFFERENT paragraph is the writer's own
+	 * separate element and is never touched, so this can only ever pull in an image the
+	 * writer glued to the bubble itself.
+	 *
+	 * MEASURED corpus-wide (outputs/_measure_r246_sbblock.cjs, all 445 module dirs): of the
+	 * 343 declined no-table speechBubble bundles, EXACTLY 55 match (TEDC401 33, TEDC402 21,
+	 * SSCI104 1) — and the human gold builds an avatar+bubble row at **55 of 55**. The other
+	 * decline classes (229 with no media at all, 22 non-iStock, 21 iStock-but-not-same-block)
+	 * are left untouched: their gold agreement is only 49-72%, well short of a build.
+	 *
+	 * CONSERVATIVE BY CONSTRUCTION — the absorb runs only for a bundle the builder's new
+	 * `no_table_image` branch can definitely finish: no table, no extra widget types, exactly
+	 * one nameable iStock image (id pattern) and no video in media, a contiguous run of
+	 * same-block items ending at the invocation that contains exactly ONE [image] tag and
+	 * otherwise only the writer's descriptive instruction/noise spans. Anything else and the
+	 * bundle is left exactly as it was — the image keeps rendering standalone and the widget
+	 * keeps its honest hand-off box. Absorbed instruction spans are pushed to
+	 * bundle.instructions so they still surface as red Writers Notes (§6 — never silently
+	 * strip a documented instruction), just after the widget rather than before it.
+	 *
+	 * @param {object} bundle - the open speechBubble bundle
+	 * @param {object[]} items - the page's item stream
+	 * @param {number} tagIdx - index of the widget's invocation tag (the bundle's start)
+	 */
+	static #absorbSameBlockImage(bundle, items, tagIdx) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.same_block_image_absorb;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.SBNOTBL_OFF) return;
+		if (!(cfg.types ?? ["speechBubble"]).includes(bundle.type)) return;
+		if ((bundle.tables ?? []).length || (bundle.extraTypes ?? []).length) return;
+
+		// exactly ONE nameable iStock image already harvested from the block's links, no video
+		const urls = (bundle.media ?? []).map((m) => String(m?.target ?? m?.text ?? ""));
+		if (urls.some((u) => new RegExp(cfg.video_pattern ?? "youtu\\.?be|youtube\\.com|vimeo", "i").test(u))) return;
+		const idRe = new RegExp(cfg.istock_id_pattern ?? "gm-?\\d{6,10}", "i");
+		if (urls.filter((u) => idRe.test(u)).length !== 1) return;
+
+		// SHARED PREDICATE — the members must be text the builder's no_table_image branch can
+		// actually render. Consulted HERE, before anything is consumed, so the absorb can never
+		// swallow an avatar the builder would then decline (which would trap the image inside a
+		// hand-off box); one definition, so absorb and build cannot drift apart.
+		const bTpl = DataService.Data.EmitTemplates?.interactive_builders?.speechBubble;
+		if (!InteractiveBuilder.NoTableBubbleParagraphs(bundle.memberItems, null, bTpl?.no_table_image)) return;
+
+		const blk = items[tagIdx]?.block;
+		if (!blk) return;
+
+		// walk UP over the CONTIGUOUS run of unconsumed items sharing that one source block
+		const run = [];
+		for (let s = tagIdx - 1; s >= 0; s--) {
+			const prev = items[s];
+			if (!prev || prev.consumedBy !== undefined || prev.block !== blk) break;
+			run.unshift(prev);
+			if (run.length > (cfg.max_absorb ?? 6)) return;      // an unexpectedly busy paragraph → bail
+		}
+		if (!run.length) return;
+
+		// exactly one [image] tag; everything else must be the image's own descriptive
+		// instruction/noise span (a structural tag means the paragraph carries a real
+		// second element and the absorb would swallow it)
+		const imgs = run.filter((it) => it.type === "tag" && it.parse?.primary?.tag === (cfg.image_tag ?? "image"));
+		if (imgs.length !== 1) return;
+		const ok = new Set(cfg.other_item_classes ?? ["instruction", "noise"]);
+		for (const it of run) {
+			if (it === imgs[0]) continue;
+			if (it.type !== "tag" || it.parse?.primary || !ok.has(it.parse?.class)) return;
+		}
+
+		bundle.memberItems.unshift(...run);
+		bundle.startIndex = tagIdx - run.length;
+		bundle.sameBlockImage = imgs[0];              // the builder's no_table_image branch keys on this
+		for (const a of run) {
+			this.#harvestMedia(bundle, a);
+			// keep the writer's descriptive note visible (it renders after the widget)
+			if (a !== imgs[0] && a.type === "tag" && (a.parse?.class === "instruction" || a.parse?.instructionFragment)) {
+				bundle.instructions.push(String(a.text ?? "").replace(/\s+/g, " ").trim());
+			}
+		}
 	};
 
 	/** The lead-in LABEL shape (data-driven, first match wins; else "prose"). */

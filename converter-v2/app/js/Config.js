@@ -569,7 +569,51 @@ class Config {
 	// ROUND 244 (260618.17): KB catch-up captures — Change-Ledger CL-0053..0068 triage
 	// + the doc-14 §14.8 HPE refresh (CL-0067) into Subject_Global_Parameters.json.
 	// Output-inert (probe-proven byte-identity); no engine code changed.
-	static AppVersion = "260618.17";
+	// ROUND 246 (260618.19): BASIC INTERACTIVE BUILDERS — build the WRITER's tagged widget.
+	// (1) speechBubble no-table avatar+bubble (SBNOTBL_OFF) — the scanner recovers the
+	//     paragraph-mate [Image] (same source block) and the bubble builds beside it:
+	//     29 builds / 2 modules, the gold agrees at 36/36 of the sites the guard fires on.
+	// (2) accordion heading-less numbered panels (ACCNOTBL_OFF) — "[accordion 1]" alone on
+	//     its line opens a panel that takes its heading from its own first text line:
+	//     8 builds / 2 modules; strictly ADDITIVE (retried with the rule off on failure).
+	// (3) carousel RICH SLIDE fallback (CARNOTBL_OFF) — slides composed from whatever mix
+	//     of heading / image / video / prose the writer supplied: 58 builds / 33 modules.
+	// Chris's directive (2026-08-03): where the writer tagged the widget, build it — the
+	// human's substitution follows unrecorded verbal feedback (Decision Framework A1), so
+	// these ship on the widget VERIFIERS + never-half-build, not on the human-match gates.
+	// NO regeneration (not requested): the round-245 baselines still describe the corpus.
+	// ROUND 247 (260618.20): ENGS404-00 BASIC INTERACTIVES COMPLETED — the text-only bubble
+	// + the media-series carousel (Chris, 2026-08-04: "ALL basic interactives are built").
+	// (1) speechBubble TEXT-ONLY build (SBTEXT_OFF) — a bubble with no character image and
+	//     no table ("[insert thought bubble] Where do we find stories?") ships the human's
+	//     own text-only form (385 gold occurrences; layout="thought" for the thought
+	//     wording), one row per invocation; 229 bundles / 52 modules measured.
+	// (2) carousel MEDIA-SERIES boundary (CARSERIES_OFF, scanner) — a back-to-back run of
+	//     [image]/[video] members after the invocation IS the carousel; the first
+	//     following non-media element resumes the section (the whole-page over-capture
+	//     that killed every such build).
+	// (3) carousel PER-MEDIA SLIDES (CARMEDSLIDE_OFF) — marker-less bundles ship one slide
+	//     per media item (2 videos no longer pile into one slide and fail min_slides).
+	// (4) carousel VIDEO-TAIL URL (CARVIDTAIL_OFF) + the body-path FOLLOWING-LINE hyperlink
+	//     (MEDIAFOLLOWLINK_OFF) — "[insert video]" with its title-anchored link on the NEXT
+	//     line resolves and embeds (137 widget members / 38 modules + the free-body class).
+	// speechBubble verifier gains the A1 gold-subst lane (inject selftest, the accordion
+	// pattern); carousel selftest detection channel ACTIVATED (video slides now build).
+	// NO regeneration (not requested): the round-245 baselines still describe the corpus.
+	// ROUND 248 (260618.21): LANGUAGES AUDIOVISUAL PACKAGE FINALISED (Chris, 5 Aug 2026 —
+	// the final 20260511_Language_HTML + covering note). DATA-ONLY round, no engine JS change:
+	// (1) cohort_overrides.prefixes gains CHFUN + JPNFUN — the Languages code forms ACTUALLY
+	//     in circulation (CHFUN01-07 live; they had been falling to the r245 last_resort_default
+	//     with a loud warn; JPNFUN05 = the designer-named language-05 reference). PROVEN
+	//     OUTPUT-INERT: fix-ON == LANGCOMBO_OFF byte-identical, one process per state
+	//     (outputs/_probe_r248_langassets.cjs, ALL CHECKS PASS — route-only change).
+	// (2) SGP family 14.1 captures the FINALISED per-language asset_registry (the
+	//     [Audiovisual package <asset> item N] tag family, the 8 phase-auto-coloured icons,
+	//     German/French/Chinese/Japanese/Spanish/Samoan characters + Vimeo/audio ids) and the
+	//     CHFUN / JPNFUN05 structural reference points. SGP stays shipped-inert (engine never
+	//     reads it at runtime; master_enabled:false). KB-side: htmlconvertor-kb CL-0070.
+	// NO regeneration (not requested): the round-245 baselines still describe the corpus.
+	static AppVersion = "260618.21";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

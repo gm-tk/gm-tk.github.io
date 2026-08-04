@@ -213,6 +213,41 @@ class SkeletonBuilder {
 				phaseForAttr = coVal;
 			}
 		}
+		// THE LAST-RESORT TEMPLATE DEFAULT (ROUND 245 — Chris, the FRNO901
+		// developer test; the r238 Family-A class completed).
+		//
+		// FRNO901 is a brand-new subject: no registry row, no gold sibling, and
+		// its code digit 9 is not a curriculum level, so code_pattern never
+		// matches and the r238 unknown_subject_digit_fallback rightly declines
+		// to guess. Every OTHER universal field resolved correctly through the
+		// r238 evidence floor — but the template attribute shipped EMPTY, and
+		// the iDoc host loads the page stylesheet BY that attribute, so the page
+		// renders completely unstyled. That is the same Prio-high failure the
+		// reference developer reported for SCCH302, reached by another route.
+		//
+		// After every other rule has had its say, a still-empty attribute takes
+		// the configured value. A LAST RESORT, never a preference: unreachable
+		// BY CONSTRUCTION for any module that resolved anything at all, and
+		// MEASURED zero-blast — not one page of the shipped corpus carries
+		// template="" today, so this changes no existing byte (the r224/r231
+		// forward-guarantee class). The run carries a loud note because a
+		// default only holds until the developer builds the first proof, which
+		// then becomes the templated reference future conversions inherit from.
+		// Data: skeleton.template_phase_presets.last_resort_default.
+		// Env toggle: TPLDEFAULT_OFF (reverts to the empty attribute).
+		const lrdCfg = tppCfg && tppCfg.last_resort_default;
+		const lrdOn = lrdCfg && lrdCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLDEFAULT_OFF);
+		if (lrdOn && (phaseForAttr == null || phaseForAttr === "")) {
+			const lrdVal = lrdCfg.value ?? "combo";
+			if (!run._tplDefaultNoted) {
+				run._tplDefaultNoted = true;
+				run.AddNote("warn", "SkeletonBuilder",
+					`No template could be resolved for "${run.moduleCode}" — no registry row, no developed sibling, and its code carries no level digit. Defaulting to template="${lrdVal}" so the page loads styled (last_resort_default). Once the first proof of this module is developed, add it as the templated reference so future conversions inherit the real value.`);
+			}
+			phaseForAttr = lrdVal;
+		}
+
 		const templateAttr = tpl.skeleton.template_attr_map[phaseForAttr]
 			?? phaseForAttr ?? "";
 		if (!tpl.skeleton.template_attr_map[phaseForAttr]) {

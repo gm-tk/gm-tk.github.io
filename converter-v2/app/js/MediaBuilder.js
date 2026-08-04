@@ -228,8 +228,29 @@ class MediaBuilder {
 		const _urlInTextOn = (tpl.elements?.media_url_in_text?.enabled !== false)
 			&& !(typeof process !== "undefined" && process.env && process.env.MEDIAURLTEXT_OFF);
 		const _re = /https?:\/\/[^\s\]\)"<>]+/;
+		// ROUND 247 (Chris, ENGS404-00) — the FOLLOWING-LINE HYPERLINK source: the new-era
+		// WT authors "[insert video]" on its own line with the video as a TITLE-ANCHORED
+		// hyperlink on the NEXT black line ("Pixar in a Box… - YouTube" → the URL lives in
+		// the docx hyperlink, not the visible text — the r240 D2 class on the media path).
+		// gatherFollowing above already absorbed that line's TEXT; this reads the same
+		// following-black range's first hyperlink TARGET. Data elements.media_url_in_text
+		// .following_link (default on); env MEDIAFOLLOWLINK_OFF.
+		let followLink, followLinkLine;
+		if ((tpl.elements?.media_url_in_text?.following_link ?? true)
+			&& !(typeof process !== "undefined" && process.env && process.env.MEDIAFOLLOWLINK_OFF)) {
+			for (let j = i + 1; j < bodyItems.length; j++) {
+				const next = bodyItems[j];
+				if (next.type !== "black") break;
+				if (next.block?.links?.[0]?.target) {
+					followLink = next.block.links[0].target;
+					followLinkLine = String(next.text ?? "").trim();   // the reference line itself
+					break;
+				}
+			}
+		}
 		const url = it.block?.links?.[0]?.target
 			?? gathered.match(_re)?.[0]
+			?? followLink
 			?? (_urlInTextOn ? String(it.text || "").match(_re)?.[0] : undefined)
 			?? "";
 
@@ -275,7 +296,13 @@ class MediaBuilder {
 			&& !(typeof process !== "undefined" && process.env && process.env.VIDTITLE_OFF);
 		const own = it.blackAfter ?? "";
 		const following = gathered.length > own.length ? gathered.slice(own.length) : "";
-		const keepRaw = (dropTitleOn && kind === "video" && builtVideoEmbed) ? following : gathered;
+		let keepRaw = (dropTitleOn && kind === "video" && builtVideoEmbed) ? following : gathered;
+		// r247: when the embed's URL came from a FOLLOWING title-anchored reference line,
+		// that line IS the video's title — drop exactly it (same r80/r240-D3 rule; any other
+		// genuinely-following prose is kept untouched).
+		if (dropTitleOn && builtVideoEmbed && followLinkLine && url === followLink) {
+			keepRaw = keepRaw.split("\n").filter((L) => L.trim() !== followLinkLine).join("\n");
+		}
 		const rest = this.stripMediaResidue(keepRaw);
 		if (rest) out.push(...ListsAndRuns.renderBlackText(rest, run, it.block?.links));
 		return out;

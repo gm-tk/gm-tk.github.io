@@ -491,6 +491,85 @@ class PageSplitter {
 					continue;
 				}
 
+				// THE BURIED-MARKER GUARD (ROUND 245 — Chris, the ENGS404
+				// developer test). A span becomes a lesson/page boundary merely
+				// because the word "lesson"/"page" turns up inside writer prose:
+				// "[insert lesson from ENO511 …]" invented a page numbered 511,
+				// "[Designer note: Please insert old lesson from here…]" invented
+				// another, and "[Rollover for mana: … complete History fundamental
+				// lesson 7 …]" — a hover definition — invented one in three HIS
+				// modules. None of them is a page break.
+				//
+				// THE CONTAINMENT STATEMENT: the primary must have matched
+				// how:"embedded" (the round-174 clean_hows distinction — the tag
+				// word buried mid-bracket rather than matched as a whole token).
+				// Measured over all 429 corpus WTs + the 3 test modules
+				// (outputs/_detect_r245_lessonsplit.cjs): 1549 lesson/page
+				// boundaries, of which 1479 matched exact/denumbered/
+				// denumbered_head and are therefore UNTOUCHABLE BY CONSTRUCTION.
+				// Only the remaining 70-span embedded pool reaches this guard.
+				//
+				// Within that pool the marker is disregarded when EITHER the span
+				// is instruction-dominant by the EXISTING TagNormaliser predicate
+				// (every tag embedded + a recognised writer-instruction cue +
+				// >= min_words of prose), OR the bracket text BEFORE the marker
+				// word carries a deny token (a leading instruction verb, or a
+				// FOREIGN module code like "PHO1032" — the cross-module "copy that
+				// lesson" reference form). FAIL-OPEN: an unrecognised embedded
+				// form keeps the previous behaviour, so every genuine embedded
+				// marker measured in the pool survives ([Lesson summary],
+				// [lesson title], [Final Page], [Next Page], [Intro page],
+				// [Page N of diary], [page ends] …).
+				//
+				// The span is NOT dropped — it simply stops being a page break, so
+				// its own content still renders wherever it sits (constraint 1:
+				// never silently strip a documented instruction).
+				// Data: page_split.lesson_boundary_guard.instruction_guard.
+				// Env toggle: LESSONGUARD_OFF.
+				const _lbgCfg = DataService.Data.EmitTemplates.page_split?.lesson_boundary_guard;
+				const _lbgOn = _lbgCfg && _lbgCfg.enabled !== false;
+				if (_lbgOn && _lbgCfg.instruction_guard !== false
+					&& (tag === "lesson" || tag === "page")
+					&& primary.how === "embedded"
+					&& !(typeof process !== "undefined" && process.env && process.env.LESSONGUARD_OFF)) {
+					const _folded = String(it.parse?.folded ?? "");
+					let _deny = false;
+					if (normaliser && typeof normaliser.IsInstructionDominant === "function"
+						&& normaliser.IsInstructionDominant(it.parse,
+							_lbgCfg.instruction_dominant_min_words ?? 8)) _deny = true;
+					const _raw = String(it.text ?? "");
+					// A CROSS-MODULE REFERENCE. "[insert lesson from ENO511 …]",
+					// "[Copy PHO1032 lesson 8]", "[PHO1011 lesson 5.1-5.3]" name
+					// ANOTHER module's lesson for the developer to copy in. A
+					// foreign module code in the bracket settles it: whatever the
+					// span is, it is not THIS module's page boundary. The run's own
+					// code is excluded so a writer who names their own module in a
+					// genuine marker is untouched.
+					if (!_deny && _lbgCfg.foreign_code_pattern) {
+						const _own = String(run.moduleCode || "").toUpperCase();
+						for (const m of _raw.toUpperCase().matchAll(new RegExp(_lbgCfg.foreign_code_pattern, "g"))) {
+							if (m[0] !== _own) { _deny = true; break; }
+						}
+					}
+					// A HOVER/ROLLOVER DEFINITION. "[Rollover for mana: … complete
+					// History fundamental lesson 7 …]" is a hover trigger whose
+					// definition happens to mention a lesson — vocabulary, not
+					// structure. Tested on the text BEFORE the marker word so a
+					// genuine marker can never match.
+					if (!_deny && _lbgCfg.deny_lead_pattern) {
+						const _at = _raw.toLowerCase().indexOf(tag);
+						const _lead = _at > 0 ? _raw.slice(0, _at) : "";
+						if (_lead && new RegExp(_lbgCfg.deny_lead_pattern, "i").test(_lead)) _deny = true;
+					}
+					if (_deny) {
+						run.AddNote("info", "PageSplitter",
+							`"${_folded.trim().slice(0, 60)}" mentions ${tag} inside a writer instruction — not a page boundary (lesson_boundary_guard).`);
+						current?.items.push(it);
+						closed = false;
+						continue;
+					}
+				}
+
 				if (tag === "lesson" || tag === "page") {
 					if (singleFile) {
 						// AR-3: in-page section break only — keep the item so
@@ -525,6 +604,65 @@ class PageSplitter {
 						closed = false;
 						continue;
 					}
+					// THE DIVIDER-BANNER MERGE (ROUND 245 — Chris, the ENGS404
+					// developer test: 22 files for 12 lessons).
+					//
+					// A Writers Template house convention writes the lesson number
+					// TWICE. The divider page between lessons carries "[End page]"
+					// then an all-caps banner "[LESSON 1.0]"; the lesson proper
+					// then opens with the titled "[Lesson 1.0] Elements of
+					// narrative". Between the two sits ONLY the lesson-menu region
+					// — the [Lesson Overview] marker and its black "We are
+					// learning:" / "I can:" run.
+					//
+					// AR-2 below could not merge them because that menu text makes
+					// currentIsEmpty() false, so the banner opened a file of its
+					// own (header + footer, no body) and the duplicate-label
+					// relabeller then renumbered EVERY later lesson — one writer
+					// convention cascaded into the whole module's pagination.
+					//
+					// THE RULE: a [Lesson N] marker whose number equals the OPEN
+					// lesson page's number does not open a new page when that page
+					// has received no BODY content yet — it is the same lesson.
+					// The open page keeps its identity and adopts whichever of
+					// title/number the second marker supplies that it lacks.
+					//
+					// "Body content" = a table, or a tag whose directive is
+					// ELEMENT / INTERACTIVE / CONTAINER_OPEN / INLINE. The menu
+					// region's SECTION_MARKERs and black text deliberately do NOT
+					// count: that material belongs to the same lesson page either
+					// way. That distinction is what keeps the rule off the writers
+					// who genuinely reused a number across real content — measured
+					// over all 429 corpus WTs + the 3 test modules
+					// (outputs/_detect_r245_lessonsplit.cjs): 13 same-number pairs
+					// exist, this rule fires on EXACTLY 9 (ENGS404 ×7, HIS1005 ×2)
+					// and by construction excludes CEDO501 (32 body items between),
+					// HES1005 (69), AGH1006 (20) and HIS1007 (14).
+					// Data: page_split.lesson_boundary_guard.duplicate_number_merge.
+					// Env toggle: LESSONDUP_OFF.
+					if (tag === "lesson" && _lbgOn && _lbgCfg.duplicate_number_merge !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.LESSONDUP_OFF)
+						&& current && !current.isOverview && current.lessonNumber !== null
+						&& it.parse.numbers.length
+						// Compare NUMERICALLY, not as strings: the divider banner
+						// and the titled opener routinely spell the same lesson two
+						// ways ("[LESSON 4.0]" then "[Lesson 4]", ENGS404 ×3). Only
+						// a trailing ".0" is folded away, so "3.1" can never equal
+						// "3" and a genuine sub-lesson still opens its own page.
+						&& String(it.parse.numbers[0]).replace(/\.0+$/, "")
+							=== String(current.lessonNumber).replace(/\.0+$/, "")
+						&& !current.items.some((x) => x.type === "table"
+							|| (x.type === "tag" && ["ELEMENT", "INTERACTIVE", "CONTAINER_OPEN", "INLINE"]
+								.includes(x.parse.primary?.directive)))) {
+						const _title = it.blackAfter.trim()
+							|| (normaliser ? normaliser.RenderText(it.text) : "");
+						if (!current.pageTitle && _title) current.pageTitle = _title;
+						run.AddNote("info", "PageSplitter",
+							`[Lesson ${it.parse.numbers[0]}] repeats the open lesson's number with no body content between — merged, no empty page emitted (lesson_boundary_guard).`);
+						closed = false;
+						continue;
+					}
+
 					// AR-2: adjacent boundary tags = one break (an unclosed
 					// empty current page is REUSED, not duplicated)
 					if (current && currentIsEmpty() && !current.isOverview) {
