@@ -1,5 +1,51 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-05 (round 253, build 260618.26) — LIBRARY REGISTRIES REFRESHED: 390 → 454 modules (**data rebuild from the gold library; NO corpus regeneration — not requested; the round-245 gate baselines still describe the shipped corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin asked for the distilled templates to be updated with
+every module now in `01-Finalized_Modules_` that wasn't already there. The library
+index the Reference-module feature reads (`Module_Structure_Index.json`) and its
+companion consensus registry (`Granular_Scaffold_Registry.json`) were rebuilt from
+scratch over the whole gold folder: **454 modules (+64 new)** — the BLL24x/25x/26x/27x
+phonics intake, BLLR201, the CED additions (CEDK401, CEDO201/402/502, CEDR101/203/401,
+CEDT102, CEDW303), CHFUN01/04–07, ENGJ403, ENGS405, HPFUN402/403/901, HPRE203/301,
+OSSC401/501, OSSM401/501, SCCH301, SCPH301, SSCI104/205, SSEA203, SSOG105,
+TEDC401/402, TRR110, TWHK902/907, TWHR905/907, TWHT903, XGF9002 and XMES202.
+
+**WHAT THIS CHANGES FOR THE HTML GENERATOR:** the reference dropdown now lists all
+**454** library modules, and the suggestion reaches every new family — probed live:
+**SCCH302 → SCCH301, CHFUN02 → CHFUN01, OSSC402 → OSSC401, BLL252 → BLL251,
+ENGJ404 → ENGJ403** (all previously suggestion-less or falling to a wider tier).
+**NAMED CONSEQUENCE (intended):** a registry base whose FIRST gold member just landed
+(e.g. SCCH via SCCH301, CEDT via CEDT102) no longer trips the r238 evidence floor —
+future conversions there resolve from the real mined tiers (the r238 unknown-literal
+"n/a" skip still guards junk values; SCCH302 probed clean: container-fluid / tekura /
+no "n/a" fields / floor OFF).
+
+**THE REBUILD RECIPE MOVED (the corpus outgrew the old one):** a 12-way shard no
+longer fits the sandbox's ~45s wall — the rebuild now runs **48-way shards** through
+the resumable driver `outputs/_r253_shard_driver.sh` (skips finished shards; re-run
+until "ALL_SHARDS_PRESENT"), then `--merge` → `--selftest`. One shard-N per build as
+ever.
+
+**VERIFIED:** registry `--selftest` PASS (BLL244 deviator + granular-sig + ENGS102
+tab-outlier known-answers all rediscovered on the new data); **cascade selftest PASS
+after ONE stale-pin repair** — the intake legitimately moved the pinned SOLIDIFY-DEFER
+fixture BLL111 `body|body` to a full escalate (every consolidation level now unsolid),
+so the pin moved to **ENFUN03 `body|@p`** (unsolid at L3 AND L4, decides at L5 — the
+r218 stale-pin class, recorded in `granular_consensus.py`); vet + subject-params
+selftests PASS; **JS↔Python precedence parity 1653/1653 EXACT** (the pair population
+itself grew with the data); **entry-parity PASS** (BLL225 byte-identical across option
+constructions on the new index — BLL2's evidence state was unchanged). BLL155 remains
+the one meta-without-ladder module (pre-existing — its gold folder holds only an acks
+page). **Gates NOT re-run** (no `REGENERATE CORPUS` in the request): the shipped
+corpus is untouched by this data rebuild; the r245 baselines stand.
+
+**FILES:** data/Module_Structure_Index.json (390→454) · data/Granular_Scaffold_Registry.json
+(6.0 MB, 613 element-keys / 859 reliable group-nodes) · reference/tests/granular_consensus.py
+(the re-pin) · outputs/_r253_shard_driver.sh (NEW recipe tool) · Config.js (AppVersion).
+No engine JS or UI change.
+
 ## 2026-08-05 (round 252, build 260618.25) — REFERENCE LIST IN PLAIN SIGHT (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
 
 **THE PLAIN-ENGLISH LEAD.** Gavin: "at the moment the user types the module code but

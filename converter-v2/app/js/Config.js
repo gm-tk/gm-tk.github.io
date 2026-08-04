@@ -661,7 +661,24 @@ class Config {
 	// selected row scrolls into view, and a live "Showing N of 390 library
 	// modules…" line underneath narrates the filter state (incl. an explicit
 	// no-matches message). UI-only; engine untouched; entry-parity PASS.
-	static AppVersion = "260618.25";
+	// ROUND 253 (260618.26): LIBRARY REGISTRIES REFRESHED WITH THE NEW GOLD MODULES
+	// (Gavin — "update the distilled templates from 01-Finalized_Modules_").
+	// Module_Structure_Index.json + Granular_Scaffold_Registry.json rebuilt from the
+	// grown gold library: 390 → 454 modules (+64: the BLL24x/25x/26x/27x intake,
+	// BLLR201, the CED additions, CHFUN01/04-07, ENGJ403, ENGS405, HPFUN/HPRE,
+	// OSSC401/501, OSSM401/501, SCCH301, SCPH301, SSCI/SSEA/SSOG, TEDC401/402,
+	// TRR110, TWH* siblings, XGF9002, XMES202). The reference dropdown/suggestion now
+	// covers all 454 (SCCH302 → SCCH301, CHFUN02 → CHFUN01, OSSC402 → OSSC401 — all
+	// previously suggestion-less). Named consequence: a base whose FIRST gold member
+	// just landed (e.g. SCCH via SCCH301) no longer trips the r238 evidence floor —
+	// real evidence now exists, by design. Rebuild recipe updated for the grown
+	// corpus (48-way shards via outputs/_r253_shard_driver.sh — a 12-way slice no
+	// longer fits the sandbox wall). Registry selftest PASS; cascade selftest PASS
+	// after re-pinning the stale SOLIDIFY-DEFER fixture BLL111→ENFUN03 (the r218
+	// stale-pin class — the intake legitimately moved BLL111 to a full escalate);
+	// vet + subject-params selftests PASS; JS↔Python parity 1653/1653 EXACT;
+	// entry-parity PASS. NO corpus regeneration (not requested).
+	static AppVersion = "260618.26";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

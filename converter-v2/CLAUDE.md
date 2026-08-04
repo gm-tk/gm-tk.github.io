@@ -279,7 +279,8 @@ engine. Publishing is just a git commit from `pageforge-site/`.
 
 ## 7. The three corpora & page-pairing nuance
 
-- `../01-Finalized_Modules_/` — **431** module dirs (the full human library, still growing); the
+- `../01-Finalized_Modules_/` — **454** module dirs (the full human library, still growing — round 253
+  folded the 64-module 2026-08 intake into the registries); the
   **200** modules in `reference/tests/compare_set.txt` are the comparison set (round 197 added
   TEDC401+TEDC402; round 221 added ENGJ403 — Chris supplied its gold + Claude dirs).
 - `../01-Claude_Modules_/` — **201** dirs / **2019** pages (Claude's output; what gates read).
@@ -703,9 +704,12 @@ All in `reference/tests/`, each with a `--selftest`:
   floors (`MIN_MODULES` 5, `MAJ_SHARE` 0.60, `STRONG_SHARE` 0.80), `nav_tab_labels(raw)`.
 - **`build_granular_registry.py`** — builds `data/Granular_Scaffold_Registry.json` **and (round 179)
   `data/Module_Structure_Index.json`** (per-module built ladder for every element, retrievable — the
-  basis for the sibling-precedence lookup) from the human gold. Chunk-friendly for the 45 s wall:
-  `--shard K 12` (K=0..11, 2 concurrent fit) → `--merge` → `--selftest`. `--query "menu|@h5"` inspects a
-  key. Keep ONE shard-N per build (mixing N double-counts).
+  basis for the sibling-precedence lookup) from the human gold. Chunk-friendly for the 45 s wall —
+  **ROUND 253 RECIPE (the 454-dir corpus outgrew the old 12-way slice): run
+  `outputs/_r253_shard_driver.sh` repeatedly until it prints ALL_SHARDS_PRESENT (48-way shards,
+  resumable — finished shards are skipped), then `--merge` → `--selftest`.** `--query "menu|@h5"`
+  inspects a key. Keep ONE shard-N per build (mixing N double-counts). Concurrency does NOT help
+  (the sandbox is single-core) and a detached background job does not survive the call boundary.
 - **`granular_consensus.py`** — the reader anchor_compare + vetting consume. **The AUTHORITY MODEL,
   round 182 (Chris): `resolve(code, key)` walks the 6-LEVEL cascade** (doc14 → series+template →
   subject+phase+template → subject+template → subject → corpus), STOPS at the first level that SOLIDLY
@@ -736,6 +740,8 @@ the converter) BEFORE any converter change. This is the standing front door for 
 ---
 
 ## 14. Current state snapshot (keep in sync with the changelog)
+
+- **Build:** `260618.26` (round 253 — **LIBRARY REGISTRIES REFRESHED: 390 → 454 modules** (Gavin, 2026-08-05 — "update the distilled templates from 01-Finalized_Modules_"; **data rebuild only; NO corpus regeneration — not requested; the r245 baselines still describe the shipped corpus**). `Module_Structure_Index.json` + `Granular_Scaffold_Registry.json` rebuilt from scratch over all **454** gold dirs (+64 new: the BLL24x/25x/26x/27x intake, BLLR201, CED additions, CHFUN01/04–07, ENGJ403, ENGS405, HPFUN402/403/901, HPRE203/301, OSSC401/501, OSSM401/501, SCCH301, SCPH301, SSCI104/205, SSEA203, SSOG105, TEDC401/402, TRR110, TWHK902/907, TWHR905/907, TWHT903, XGF9002, XMES202). The reference dropdown/suggestion now covers every new family (SCCH302→SCCH301, CHFUN02→CHFUN01, OSSC402→OSSC401, BLL252→BLL251, ENGJ404→ENGJ403 — probed live). NAMED CONSEQUENCE (intended): a base whose FIRST gold member just landed (SCCH via SCCH301, CEDT via CEDT102, …) no longer trips the r238 evidence floor — SCCH302 probed clean (no "n/a", floor OFF). Rebuild recipe MOVED to the 48-way resumable driver `outputs/_r253_shard_driver.sh` (§13 — a 12-way slice no longer fits the wall). Verified: registry selftest PASS; **cascade selftest PASS after re-pinning the stale SOLIDIFY-DEFER fixture BLL111 `body|body` → ENFUN03 `body|@p`** (the r218 stale-pin class — the intake moved BLL111 to a full escalate); vet + subject-params selftests PASS; JS↔Python parity **1653/1653 EXACT**; entry-parity PASS (BLL225 byte-identical on the new index). BLL155 = the one meta-without-ladder module, pre-existing (acks-only gold dir). PRIOR round below.)
 
 - **Build:** `260618.25` (round 252 — **REFERENCE LIST IN PLAIN SIGHT** (Gavin, 2026-08-05; **UI-only — no engine/data/output change, no regeneration**). The reference dropdown becomes an always-visible scrolling LIST BOX (`size="8"`): the r251 filtering now happens in front of the person as they type, the selected row scrolls into view, and a live "Showing N of 390 library modules…" line (selector `RefCodeCount`) narrates the filter state incl. no-matches. Same element/id → the r250 auto-select, placeholder row and Convert gate unchanged. Entry-parity PASS. PRIOR round below.)
 
