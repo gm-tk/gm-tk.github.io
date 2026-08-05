@@ -283,6 +283,16 @@
 				"min_cells": 2,
 				"cell_tag_pattern": "\\[\\s*(image|video)\\s*\\]",
 				"_note": "ROUND 266 (CHFUN01, Chris's screenshot annotations). The CHFUN family authors a slideshow as ONE table whose every cell is a media cell ([image]/[video] red tag + URL, optional [caption]); the table IS the whole widget, so the member walk ENDS right after capturing it — the following [dropquiz] quiz section becomes its OWN bundle instead of being swallowed into the carousel's hand-off box. Cell test is all-or-nothing (a caption-only / text / tag-less-URL cell fails), so the rotate-banner and image|caption-table families never match. Measured corpus-wide: the media-cell table form is EXACTLY CHFUN01/04/05/06/07 (38 table lines). Env toggle: CARMEDTBL_OFF (also reverts the matching carousel media_table BUILD in Emit_Templates)."
+			},
+			"media_caption_table_terminates": {
+				"enabled": true,
+				"_note": "ROUND 271 (Chris, OSSC401-1.0). The SIBLING of round 266's media_table_terminates for the MEDIA|CAPTION dialect: when a carousel captures a table whose every data row pairs ONE media cell ([video]/[image] tag + URL) with prose cell(s), THAT TABLE IS THE WHOLE WIDGET, so the member walk ENDS right after capturing it. Without this the carousel ran on and swallowed the next section — OSSC401's '[H4] Types of AI scams' heading, its body and its own [video] were all pulled into the carousel's hand-off box, while the gold ends the carousel at the table and renders that section as ordinary body. Video-scoped (require_video) exactly like the builder, so the image|caption table families keep their existing capture byte-for-byte. Env toggle: CARCAPTBL_OFF.",
+				"types": [
+					"carousel"
+				],
+				"require_video": true,
+				"min_rows": 2,
+				"media_tag_pattern": "\\[\\s*(image|video)\\s*\\]"
 			}
 		},
 		"per_interactive_fields": {

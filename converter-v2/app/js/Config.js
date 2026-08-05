@@ -831,7 +831,15 @@ class Config {
 	// a title above each (Subject / Phase / Template) and the three fields share
 	// ONE horizontal line (flex nowrap, equal shares, selects width:100% — the
 	// template no longer wraps to a second line). UI-only.
-	static AppVersion = "260618.42";
+	// ROUND 271 (260618.43): THE MEDIA|CAPTION TABLE CAROUSEL + THE FEATURE INDEX.
+	// (Chris, OSSC401-1.0 "there are still some carousels not being built"). A
+	// carousel authored as one table pairing a media cell with the slide's prose now
+	// builds (env CARMEDCAP_OFF), and its table TERMINATES the capture so the next
+	// section is no longer swallowed (env CARCAPTBL_OFF). Same round: the per-module
+	// FEATURE INDEX (data/Module_Feature_Index.json + reference/tests/regen_scope.cjs)
+	// so a fix can be regenerated over only the modules that carry the feature it
+	// touches, instead of the whole corpus.
+	static AppVersion = "260618.43";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

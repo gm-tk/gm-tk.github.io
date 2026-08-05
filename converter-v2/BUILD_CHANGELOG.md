@@ -1,5 +1,120 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-06 (round 271, build 260618.43) — **THE MEDIA|CAPTION TABLE CAROUSEL + THE PER-MODULE FEATURE INDEX (selective regeneration)** (Chris: "I am still not happy that there are still some carousels not being built" + "only when a fix pertaining to these tags are made should that particular module be part of the corpus being regenerated") — **NO regeneration — not requested; the round-266 baselines still describe the corpus; the change is PROVEN contained to EXACTLY ONE module**
+
+**THE PLAIN-ENGLISH LEAD.** OSSC401's "Types of scams" slideshow shipped as a
+hand-off box. Its writer authored it the plainest way imaginable — one table, each
+row a video plus that slide's title and copy — and every existing carousel branch
+declined it: round 266's media-table form wants EVERY cell to be media (the prose
+cell fails it), the image|caption form cannot resolve a video cell, and the rich
+fallback bails on any bundle that captured a table. So the most ordinary shape in
+the corpus fell through every net. It now builds, and it matches the human gold
+slide-for-slide (**carousel verifier: OSSC401 1 carousel, 7 video slides, all slide
+ids match the human ✓**).
+
+**FIX 1 — THE BUILD (env `CARMEDCAP_OFF`; data `carousel.media_caption_table`).**
+`InteractiveBuilder.#carouselMediaCaptionTable` builds one slide per data row from a
+table whose every row pairs ONE media cell ([video]/[image] tag + URL) with prose
+cell(s). The prose splits on the writer's own " / " separator; a WHOLLY BOLD leading
+segment is their slide title (never an invented one — a cell with no bold lead ships
+copy-only). **THE FORM IS MEASURED, not guessed:** over every gold carousel slide
+carrying a video AND a heading, the title ships `<h5>` **114:41** against `<h4>`
+(share 0.67 — a round-182 SOLIDIFY) and the media follows the text **79:16** (0.83).
+The result byte-matches the OSSC401 and ENGS401 golds. VIDEO-SCOPED
+(`require_video`) so the image-only table population stays with its existing owner
+byte-for-byte. Never half-builds: a row that is not exactly one resolvable media cell
+plus prose, an un-nameable iStock image, an unknown video host, or fewer than
+`min_rows` rows keeps the hand-off box.
+
+**FIX 2 — THE BOUNDARY (env `CARCAPTBL_OFF`; data
+`member_rule.media_caption_table_terminates`).** The same table also ENDS the
+member walk, the sibling of round 266's `media_table_terminates`. Without it the
+carousel ran straight on and swallowed OSSC401's next section — the `[H4] Types of
+AI scams` heading, its body and its own `[video]` were all pulled into the widget's
+box, where the gold ends the carousel at the table and renders that section as
+ordinary body.
+
+**CONTAINMENT — PROVEN, NOT ARGUED.** The full-corpus bundle census was run over all
+454 module dirs BEFORE and AFTER the change (`outputs/_measure_r271_variations.cjs`,
+16 shards; states `_r271_variations_PRE.json` / `_r271_variations.json`):
+**NEW BUILDS 1 (OSSC401) · BUILDS LOST 0 · bundles gained 0 · bundles lost 0 ·
+capture boundary moved on 1 bundle (OSSC401's)**. Everything else is a pure forward
+guarantee. Gates: tags **9557/9557 REAL FAILURES 0**; flipCard **33 / divergence 0**;
+speechBubble **41 built / defect 0**; carousel verifier + all five widget selftests
+**GREEN**; entry-parity **PASS**; index-sync **33/28**.
+
+**THE MEASUREMENT THAT SHOULD DRIVE THE NEXT ROUNDS (the honest answer to "train
+PageForge on ALL the variations").** The census buckets every captured non-complex
+bundle by authoring shape. Coverage today: **1087 built / 3994 declined = 21.4%**
+(dragAndDrop 7.3% · clickDrop 8.7% · flipCard 10.1% · tabs 15.0% · modal 23.2% ·
+accordion 28.1% · carousel 29.6% · speechBubble 55.9% · selfCheck / hint / slider /
+infoTrigger **0%**). Clustering the declines shows the blocker is **NOT** a small set
+of missing dialects — 610 declining carousels span 462 distinct shapes, a long tail
+of one-off writer variation. What the tail has in COMMON is **member VOCABULARY and
+captured TABLES**, exactly as the round-246 changelog predicted:
+
+| blocker | declined / built |
+|---|---|
+| a `[button]` member | 42/4 carousel · **73/0** accordion · 58/1 clickDrop · 91/6 dragAndDrop · 17/0 flipCard |
+| an `[embed]` member | **67/0** carousel |
+| a `[data marker]` member | 23/0 · 22/0 · 18/0 (never builds anywhere) |
+| an `[image]` member | 105/**7** accordion · 233/**5** clickDrop · 83/**6** flipCard |
+| a captured TABLE | **190/0** accordion · 278/22 carousel · 289/44 flipCard |
+
+So the general fix is **not** N more per-shape branches; it is to widen the rich
+fallbacks (`#carouselRich`, `#accordionRich`) along two axes — a data-driven member
+vocabulary (button / external link / embed / audio / data marker / headings render as
+slide content instead of bailing) and accepting a captured table as panel/slide
+content via the shared `renderTable` hook, guarded so a table that IS the widget's
+data is never dumped. Sized and RECORDED as the next rounds; each is one measured,
+toggled, gate-proven round of its own.
+
+**RECORDED DECLINES (measured this round, deliberately not chased).** The
+media|caption VIDEO table population is EXACTLY **ENGS401, HPFUN302, OSSC401**;
+HPFUN302's own bundle already builds through the rich fallback, and ENGS401's is a
+THIRD dialect — two tables, and its rows are `[Carousel N]` label | `[H5] title /
+[Video] url` with heading and media in ONE cell — its own follow-up. OSSC401's
+`[disposition button]` ("*include on Romance/sextortion scam slide") is a writer
+instruction naming a target slide; with the boundary fixed it now renders as body
+prose after the carousel (content preserved) where the gold folds it into that slide
+— a named divergence, not a loss.
+
+**FIX 3 — THE PER-MODULE FEATURE INDEX (Chris's second ask; no engine effect).**
+`data/Module_Feature_Index.json` labels all **454** modules with **137** features from
+both sides Chris named: the WT tags the normaliser resolves (plus raw bracket
+spellings), the widget types those fold to, and the structural features present in the
+converted HTML. `reference/tests/regen_scope.cjs` resolves a change to its module list
+and prints a batch plan that feeds straight into the round-175 scoped ship, so all its
+containment and freshness proofs still apply. Savings are real where it matters —
+glossary **99%** of the corpus skipped, shapeHover **96%**, tabs **83%**, selfCheck
+**59%**, accordion **53%**, carousel **25%**.
+
+**THE SAFETY MODEL — over-select, never under-select.** A feature matches on EITHER
+side (tag OR emitted HTML), so a module whose new branch might now fire is included
+even though its current output shows nothing. Corpus-wide change classes (skeleton,
+footer, menu, acks, tag normalisation, pagination, formatter, naming, notes) are
+**REFUSED** with a pointer to the full ship. An unknown feature is **REFUSED** rather
+than silently resolving to an empty scope. Staleness is **FATAL**: an index older than
+the newest Writers Template or engine file exits non-zero, because under-selection is
+the one failure mode that silently ships a stale corpus. `--verify` proves after the
+fact that every truly-changed module was inside the scope — run on THIS round it
+reports **OK, the changed set {OSSC401} was inside the carousel scope**.
+
+**THE ONE CATCH, CAUGHT AND FIXED IN-ROUND:** the first index was useless — the
+acknowledgements block IS an accordion and the module menu IS a nav-tabs, so
+"accordion" selected 413 of 454 modules. Body features are now tested against the
+`#body` region with `div.acks` stripped; chrome features (menu/acks/footer) keep the
+whole page. Both tools ship a `--selftest` (LIVENESS + DETECTION + SAFETY) — **both
+GREEN**.
+
+**FILES:** app/js/InteractiveBuilder.js · app/js/InteractiveScanner.js ·
+data/Emit_Templates.json · data/Interactive_Boundary_ChildTag_Bank.json ·
+data/Module_Feature_Index.json (new) · reference/tests/build_feature_index.cjs (new) ·
+reference/tests/regen_scope.cjs (new) · outputs/_measure_r271_variations.cjs (new) ·
+outputs/_r271_cluster.py (new) · outputs/_probe_r271_ossc401.cjs (new) · Config.js.
+Env `CARMEDCAP_OFF` · `CARCAPTBL_OFF`.
+
+
 ## 2026-08-05 (round 270, build 260618.42) — CUSTOM-TEMPLATE DROPDOWN TITLES + ONE-LINE LAYOUT (**UI-only; no engine/data/output change; no regeneration — the round-266 baselines still describe the corpus**)
 
 **THE PLAIN-ENGLISH LEAD.** Gavin's annotated screenshot: the "Make your own

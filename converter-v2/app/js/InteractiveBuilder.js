@@ -3232,6 +3232,17 @@ class InteractiveBuilder {
 			if (mt !== null) return mt;
 		}
 
+		// MEDIA|CAPTION-TABLE form (ROUND 271 — Chris, OSSC401-1.0). ONE captured
+		// table whose every data row pairs a MEDIA cell with the slide's PROSE
+		// (title + copy, the writer's " / " between paragraphs). Tried after the
+		// all-media form and BEFORE the image|caption form, and VIDEO-SCOPED, so
+		// each of those keeps its own population byte-identical.
+		// Data carousel.media_caption_table; env CARMEDCAP_OFF.
+		if (tables.length === 1) {
+			const mc = this.#carouselMediaCaptionTable({ bundle, tpl, renderInline, run });
+			if (mc !== null) return mc;
+		}
+
 		// IMAGE-CAPTION TABLE form: exactly one captured table, no video anywhere.
 		if (!hasVideo && tables.length === 1) {
 			return this.#carouselImageTable({ bundle, tpl, renderInline, run });
@@ -3810,6 +3821,137 @@ class InteractiveBuilder {
 		if (trailing === null) return null;
 
 		return [tpl.open, ...slides, tpl.close, ...trailing].join("\n");
+	}
+
+	/**
+	 * MEDIA|CAPTION-TABLE carousel (ROUND 271 — Chris, OSSC401-1.0: "there are
+	 * still some carousels not being built"). The writer authors the slideshow as
+	 * ONE table whose every DATA ROW pairs a MEDIA cell ([video]/[image] red tag +
+	 * URL) with a PROSE cell holding that slide's title and copy, with the writer's
+	 * " / " separating each rendered paragraph:
+	 *
+	 *   "[video] https://youtube.com/watch?v=dOR6LPeeoeU"
+	 *      | "**Tech support** / Scammers often make unexpected contact… /
+	 *         **Example:** A pop-up on your screen says…"
+	 *
+	 * WHY IT NEEDED ITS OWN BRANCH. Round 266's #carouselMediaTable owns the
+	 * ALL-media-cell form and declines the moment it meets the prose cell;
+	 * #carouselImageTable owns image|caption and cannot resolve a video cell; and
+	 * #carouselRich declines any bundle that captured a table. So this extremely
+	 * plain shape fell all the way through to the hand-off box.
+	 *
+	 * THE FORM IS MEASURED, not guessed. Over every gold carousel slide carrying a
+	 * video AND a heading: the title ships as <h5> 114:41 against <h4> (share 0.67
+	 * — a round-182 SOLIDIFY) and the media follows the text 79:16 (0.83). So a
+	 * slide is  <div class="item"> <h5>title</h5> <p>copy</p>* {media} </div>,
+	 * which byte-matches the OSSC401 and ENGS401 golds.
+	 *
+	 * TITLE = the leading segment when the writer wrote it wholly BOLD (their own
+	 * emphasis, not an invented convention); a prose cell with no bold lead ships
+	 * copy-only, never a fabricated heading.
+	 *
+	 * VIDEO-SCOPED (cfg.require_video) so the image-only table population stays
+	 * with its existing owner byte-for-byte.
+	 *
+	 * NEVER HALF-BUILDS → null (the honest hand-off box) on: a row that is not
+	 * exactly one resolvable media cell + one or more prose cells, an image URL the
+	 * iStock filename rule cannot name, a video on an unknown host, a prose cell
+	 * that renders empty, or fewer than min_rows rows.
+	 *
+	 * @param {object} args - bundle / tpl / renderInline / run
+	 * @returns {string|null} the built carousel, or null
+	 *
+	 * Data: carousel.media_caption_table. Env toggle: CARMEDCAP_OFF.
+	 */
+	static #carouselMediaCaptionTable({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl.media_caption_table;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.CARMEDCAP_OFF) return null;
+		const table = (bundle.tables ?? [])[0];
+		const rows = table?.rows ?? [];
+		if (!rows.length) return null;
+
+		const inline = renderInline ?? ((s) => s);
+		const acks = DataService.Data.AcksFormats ?? {};
+		const ytRe = new RegExp(acks.extraction_regexes?.youtube_id
+			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
+		const shortsRe = new RegExp(cfg.shorts_id_re ?? "youtube\\.com/shorts/([\\w-]{11})");
+		const tagRe = /\[\s*(image|video)\s*\]/i;
+		const urlRe = /https?:\/\/[^\s\]"<>]+/;
+		const sepRe = new RegExp(cfg.segment_separator ?? "\\s+/\\s+");
+
+		const items = [];
+		let sawVideo = false;
+		for (const r of rows) {
+			if (!Array.isArray(r)) return null;
+			let media = null, prose = [];
+			for (const cell of r) {
+				const raw = String(cell ?? "");
+				if (!raw.trim()) continue;                       // empty cell — skipped
+				const kind = tagRe.exec(raw);
+				const url = urlRe.exec(raw)?.[0] ?? "";
+				if (kind && url) {
+					if (media) return null;                      // two media cells in one row → not this form
+					media = { kind: kind[1].toLowerCase(), url };
+					continue;
+				}
+				if (url) return null;                            // an untagged media URL → not this form
+				const t = this.#cellText(raw).replace(/\[[^\]]*\]/g, " ").trim();
+				if (!t) return null;                             // a bare marker cell → not this form
+				prose.push(t);
+			}
+			if (!media && !prose.length) continue;               // a wholly empty row
+			if (!media || !prose.length) return null;            // never half-build
+
+			// ---- the media part -------------------------------------------------
+			let mediaHtml;
+			if (media.kind === "image") {
+				const filename = this.#istockFilename(media.url, tpl);
+				if (!filename) return null;                      // un-nameable image → bail
+				mediaHtml = this.#assetImage(filename, tpl, run);
+			} else {
+				sawVideo = true;
+				const shortId = media.url.match(shortsRe)?.[1] ?? null;
+				const watchId = media.url.match(ytRe)?.[1] ?? null;
+				if (!shortId && !watchId) return null;           // unknown video host → bail
+				mediaHtml = shortId
+					? Utils.FillTemplate(cfg.shorts_embed, { videoId: shortId })
+					: Utils.FillTemplate(DataService.Data.EmitTemplates.video.youtube,
+						{ videoId: watchId, params: "" });
+			}
+
+			// ---- the prose part: title (bold lead) + one <p> per segment --------
+			const segs = prose.join(" ").split(sepRe).map((s) => s.trim()).filter(Boolean);
+			if (!segs.length) return null;
+			const parts = [];
+			let body = segs;
+			const lead = segs[0] ?? "";
+			// a WHOLLY bold leading segment is the writer's own slide title
+			const boldLead = /^\*\*[\s\S]+\*\*$/.test(lead)
+				&& !/\*\*\s*\S[\s\S]*?\*\*[\s\S]*?\*\*/.test(lead.slice(2, -2));
+			if (boldLead && segs.length > 1) {
+				const title = lead.replace(/^\*\*|\*\*$/g, "").replace(/\*\*/g, "").trim();
+				if (title) {
+					parts.push(Utils.FillTemplate(cfg.title, { text: inline(title) }));
+					body = segs.slice(1);
+				}
+			}
+			for (const seg of body) {
+				const html = inline(seg);
+				if (!String(html).trim()) return null;           // a segment that renders to nothing
+				parts.push(Utils.FillTemplate(cfg.paragraph, { text: html }));
+			}
+			parts.push(mediaHtml);                               // text-first (gold 79:16)
+			items.push(Utils.FillTemplate(cfg.item, { parts: parts.join("\n") }));
+		}
+
+		if ((cfg.require_video ?? true) && !sawVideo) return null;   // image-only tables keep their owner
+		if (items.length < (cfg.min_rows ?? tpl.min_slides ?? 2)) return null;
+
+		// trailing free-body paragraph(s) after the slide table (kept outside the carousel).
+		const trailing = this.#carouselTrailingBody(bundle, inline, tpl);
+		if (trailing === null) return null;
+		return [tpl.open, ...items, tpl.close, ...trailing].join("\n");
 	}
 
 	static #carouselImageTable({ bundle, tpl, renderInline, run }) {

@@ -887,6 +887,55 @@ class InteractiveScanner {
 		return n >= (cfg.min_cells ?? 2);
 	};
 
+	/**
+	 * True when a captured table is a MEDIA|CAPTION table (ROUND 271 — Chris,
+	 * OSSC401-1.0): every non-empty DATA ROW pairs exactly ONE media cell (an
+	 * [image]/[video] red-span tag AND a URL) with one or more PROSE cells (real
+	 * text, no media URL of their own). That is the writer's whole slideshow —
+	 * one slide per row — so the member walk must END at the table instead of
+	 * running on into the next section.
+	 *
+	 * The SIBLING of #isMediaTable (round 266), which requires EVERY cell to be a
+	 * media cell and therefore fails this form the moment it meets the prose cell.
+	 * `require_video` keeps the image|caption table families (owned by the
+	 * round-63 #carouselImageTable capture) byte-identical.
+	 *
+	 * @param {Object} block - the table block
+	 * @param {Object} cfg - member_rule.media_caption_table_terminates
+	 * @returns {boolean}
+	 */
+	static #isMediaCaptionTable(block, cfg = {}) {
+		const rows = block?.rows ?? [];
+		const tagRe = new RegExp(cfg.media_tag_pattern ?? "\\[\\s*(image|video)\\s*\\]", "i");
+		const urlRe = /https?:\/\/[^\s\]"<>]+/;
+		let nRows = 0, sawVideo = false;
+		for (const r of rows) {
+			if (!Array.isArray(r)) return false;
+			let media = 0, prose = 0;
+			for (const c of r) {
+				const raw = String(c ?? "");
+				if (!raw.trim()) continue;                       // empty cell — ignored
+				const kind = tagRe.exec(raw);
+				const url = urlRe.exec(raw);
+				if (kind && url) {
+					media++;
+					if (kind[1].toLowerCase() === "video") sawVideo = true;
+					continue;
+				}
+				if (url) return false;                           // a bare/untagged media URL → not this form
+				// a prose cell must carry real words once tags are stripped
+				const words = raw.replace(/\[[^\]]*\]/g, " ").replace(/[\u{1f534}]/gu, " ").trim();
+				if (!words) return false;                        // a bare marker cell → not this form
+				prose++;
+			}
+			if (!media && !prose) continue;                      // a wholly empty row
+			if (media !== 1 || prose < 1) return false;          // not a media|caption pair
+			nRows++;
+		}
+		if ((cfg.require_video ?? true) && !sawVideo) return false;
+		return nRows >= (cfg.min_rows ?? 2);
+	};
+
 	/** Next activity number on a collision: 1A → 1B; "1" → "1A". */
 	static #nextActivityId(id) {
 		const m = id.match(/^(.*?)([A-Za-z])$/);
@@ -1008,6 +1057,25 @@ class InteractiveScanner {
 						&& !(typeof process !== "undefined" && process.env && process.env.CARMEDTBL_OFF)
 						&& (mtT.types ?? ["carousel"]).includes(bundle.type)
 						&& this.#isMediaTable(next.block, mtT)) {
+						j++;   // the table itself stays captured; the walk ends AFTER it
+						break;
+					}
+				}
+				// MEDIA|CAPTION-TABLE TERMINATION (ROUND 271 — Chris, OSSC401-1.0:
+				// "there are still some carousels not being built"). The sibling of the
+				// rule above for the dialect where each row pairs a media cell with the
+				// slide's PROSE. That table IS the whole slideshow, so the walk ends at
+				// it; without this OSSC401's carousel swallowed the next section's
+				// heading, body and video into its hand-off box (the gold ends the
+				// carousel at the table). Video-scoped, so the image|caption families
+				// keep their existing capture byte-for-byte.
+				// Data member_rule.media_caption_table_terminates; env CARCAPTBL_OFF.
+				{
+					const mcT = DataService.Data.BoundaryBank._meta.member_rule.media_caption_table_terminates;
+					if (mcT && mcT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.CARCAPTBL_OFF)
+						&& (mcT.types ?? ["carousel"]).includes(bundle.type)
+						&& this.#isMediaCaptionTable(next.block, mcT)) {
 						j++;   // the table itself stays captured; the walk ends AFTER it
 						break;
 					}

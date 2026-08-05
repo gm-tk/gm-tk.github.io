@@ -1525,6 +1525,18 @@
 				"item_video_plain": "<div class=\"item video\">\n{embed}\n</div>",
 				"shorts_id_re": "youtube\\.com/shorts/([\\w-]{11})",
 				"shorts_embed": "<div class=\"videoSection youtubeShort ratio ratio-1x1\">\n<iframe src=\"https://www.youtube-nocookie.com/embed/{videoId}?rel=0&amp;showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>\n</div>"
+			},
+			"media_caption_table": {
+				"enabled": true,
+				"_note": "ROUND 271 (Chris, OSSC401-1.0: 'there are still some carousels not being built'). THE MEDIA|CAPTION TABLE dialect — the writer authors the slideshow as ONE table whose every DATA ROW pairs a MEDIA cell ([video]/[image] red tag + URL) with a PROSE cell carrying the slide's title and copy, the writer's ' / ' separating each rendered paragraph ('**Tech support** / Scammers often make... / **Example:** A pop-up...'). Round 266's media_table owns the all-media-cell form and DECLINES this one (the prose cell fails its media-cell test); #carouselImageTable owns the image|caption form. This branch is therefore VIDEO-SCOPED (require_video) so the image-only table population stays byte-identical with its existing owner. FORM MEASURED over every gold carousel slide that carries a video AND a heading: title tag h5 114:41 over h4 (solidify 0.67) and TEXT-FIRST 79:16 (solidify 0.83) — i.e. <div class=item> <h5>title</h5> <p>copy</p>* {media} </div>, byte-matching OSSC401 and ENGS401 gold. Title = the leading wholly-BOLD segment (the writer's own emphasis); a row whose prose cell has no bold lead ships copy-only. NEVER HALF-BUILDS: a row without exactly one resolvable media cell + one prose cell, an un-nameable image, an unknown video host, or fewer than min_rows rows keeps the hand-off box. Population MEASURED corpus-wide (outputs/_measure_r271_variations.cjs + the media|caption query): the VIDEO form is EXACTLY ENGS401, HPFUN302, OSSC401. Env toggle: CARMEDCAP_OFF.",
+				"require_video": true,
+				"min_rows": 2,
+				"segment_separator": "\\s+/\\s+",
+				"item": "<div class=\"item\">\n{parts}\n</div>",
+				"title": "<h5>{text}</h5>",
+				"paragraph": "<p>{text}</p>",
+				"shorts_id_re": "youtube\\.com/shorts/([\\w-]{11})",
+				"shorts_embed": "<div class=\"videoSection youtubeShort ratio ratio-1x1\">\n<iframe src=\"https://www.youtube-nocookie.com/embed/{videoId}?rel=0&amp;showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>\n</div>"
 			}
 		},
 		"clickDrop": {

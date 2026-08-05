@@ -23,7 +23,12 @@
 #   for the dev harness, but Config.DataFiles deliberately does NOT load it at
 #   runtime (widget recognition comes from the lexicon + boundary bank, markup
 #   from Emit_Templates). So it is dev-only and excluded here.
+#   Module_Feature_Index.json (round 271) is the per-module FEATURE index that
+#   drives selective regeneration (reference/tests/regen_scope.cjs). It is built
+#   from the corpus, ~1.5 MB, must be REBUILT after every intake/regeneration,
+#   and Config.DataFiles never loads it — so it is dev-only like the rest here.
 converter-v2/data/Granular_Scaffold_Registry.json
+converter-v2/data/Module_Feature_Index.json
 converter-v2/data/Module_Menu_Scaffold.json
 converter-v2/data/Scaffold_Consensus.json
 converter-v2/data/Interactive_Wrapper_Catalogue.json
