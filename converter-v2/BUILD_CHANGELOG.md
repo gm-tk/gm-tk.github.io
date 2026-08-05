@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-06 (round 272, build 260618.44) — EXACT-MATCH SUGGESTION (**engine-advisory only; no output change — the conversion path is untouched by construction; no regeneration — the round-266 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: when a module being processed has a distilled
+template that EXACTLY matches its code (which happens while testing the tool), that
+perfect match should be the suggested/recommended reference — with no styling
+difference from any other suggestion. `PrecedenceResolver.SuggestReference` gains an
+**"exact" tier ahead of the two-tier relative walk**: a code already in the library
+index suggests ITSELF ("this module already exists in PageForge's distilled
+templates (an exact match)"). Everything downstream is the same path — the pinned
+red ★ recommended row, the auto-selection, the subject/phase/template pre-selects.
+At conversion the PrepareRun guard (`referenceCode !== run.moduleCode`) correctly
+skips the override for a self-reference: the module's own registry home IS the
+exact-match template, so the output is identical by construction — no
+double-resolution, no spurious note.
+
+**PROOF:** probe leg D updated and ALL GREEN — AGH1006 → AGH1006 (exact, an indexed
+code suggests itself); PreviewSuggestion(BLL225 filename) → BLL225 (exact); the
+relative walk intact for unindexed codes (ENGJ404 → ENGJ403 series, OSAI502 →
+OSAI501 series, OSAH201 → OSAI201 subject_phase — the tier-2 pin refreshed, since
+the r253 intake gave the old OSSC502 case a real series sibling); a brand-new
+subject still → null + the Convert gate. Entry-parity PASS. Files:
+app/js/PrecedenceResolver.js · Config.js · outputs/_probe_r249_refmod.cjs (pins).
+
 ## 2026-08-06 (round 271, build 260618.43) — **THE MEDIA|CAPTION TABLE CAROUSEL + THE PER-MODULE FEATURE INDEX (selective regeneration)** (Chris: "I am still not happy that there are still some carousels not being built" + "only when a fix pertaining to these tags are made should that particular module be part of the corpus being regenerated") — **NO regeneration — not requested; the round-266 baselines still describe the corpus; the change is PROVEN contained to EXACTLY ONE module**
 
 **THE PLAIN-ENGLISH LEAD.** OSSC401's "Types of scams" slideshow shipped as a

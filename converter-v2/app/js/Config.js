@@ -839,7 +839,19 @@ class Config {
 	// FEATURE INDEX (data/Module_Feature_Index.json + reference/tests/regen_scope.cjs)
 	// so a fix can be regenerated over only the modules that carry the feature it
 	// touches, instead of the whole corpus.
-	static AppVersion = "260618.43";
+	// ROUND 272 (260618.44): EXACT-MATCH SUGGESTION (Gavin) — when the detected
+	// module code itself exists in the library index (a distilled template
+	// exactly matching the module — common while testing), THAT module is the
+	// suggested/recommended reference, ahead of the two-tier relative walk
+	// (PrecedenceResolver.SuggestReference gains the "exact" tier). Same styling,
+	// same pinned red ★ row, same subject/phase/template pre-selects — no visible
+	// difference between a perfect match and the closest match. At conversion the
+	// PrepareRun guard (referenceCode !== moduleCode) correctly skips the
+	// override: the module's own registry home IS the exact-match template, so
+	// output is identical by construction. Probe leg D updated (an indexed code
+	// suggests ITSELF; tier pins refreshed for the 454-module library) — ALL
+	// GREEN; entry-parity PASS.
+	static AppVersion = "260618.44";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

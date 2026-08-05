@@ -897,6 +897,20 @@ class PrecedenceResolver {
 	static SuggestReference(code) {
 		this.#load();
 		if (!code) return null;
+		// ROUND 272 (Gavin) — EXACT MATCH FIRST: when the module code itself
+		// already exists in the library index (a distilled template exactly
+		// matching the module — common while testing the tool), THAT module
+		// is the suggestion, ahead of the two-tier relative walk. It flows
+		// through the same UI path as any suggestion (same styling, same
+		// pinning, same pre-selects — no visible difference between a
+		// perfect match and the closest match).
+		if (this.#meta[code]) {
+			return {
+				code, group: "exact",
+				why: "this module already exists in PageForge's distilled templates (an exact match)",
+				meta: this.#meta[code],
+			};
+		}
 		const me = this.#metaFor(code);
 		const mine = me.dev_order ?? Infinity;
 		// the subject may be unknown for a brand-new code — borrow it from
