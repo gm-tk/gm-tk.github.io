@@ -623,12 +623,29 @@ class SkeletonBuilder {
 				const extraPanes = xt.map((t) => Utils.FillTemplate(
 					xtCfg.pane_template ?? "\n<div class=\"tab-pane\">\n<div class=\"row\">\n<div class=\"{col}\">\n{content}\n</div>\n</div>\n</div>",
 					{ col: xtCfg.pane_col ?? "col-md-8 col-12", content: t.html })).join("");
+				// ROUND 263 (curriculum tabs — module SCCH302): the tabs shells'
+				// Information nav item + pane are now {tab2Nav}/{tab2Pane} slots.
+				// The defaults below reconstruct the previously hard-wired strings
+				// BYTE-IDENTICALLY (the r172 {tab2Body}-slot precedent), so every
+				// existing tabs menu is unchanged; only a menu MenuBuilder flagged
+				// dropTab2 (a registry row with _drop_empty_tab2 whose sections all
+				// promoted away — SCCH301's Overview | Knowledge | Practices form)
+				// fills them empty. Data: menu.tab2_nav_item + menu.tab2_pane_template.
+				const dropT2 = content.menu.dropTab2 === true;
+				const tab2Nav = dropT2 ? "" : Utils.FillTemplate(
+					tpl.menu.tab2_nav_item ?? "\n<li><a>{tab2Label}</a></li>",
+					{ tab2Label: Utils.EscapeHtml(content.menu.tab2Label ?? "Information") });
+				const tab2Pane = dropT2 ? "" : Utils.FillTemplate(
+					tpl.menu.tab2_pane_template ?? "\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab2Body}\n</div>\n</div>",
+					{ tab2Body });
 				parts.push(Utils.FillTemplate(shell, {
 					// the reo_tabs / writer_tabs shells' two slots (ROUNDS 212 + 221)
 					navItems: content.menu.wtNav ?? content.menu.reoNav ?? "",
 					panes: content.menu.wtPanes ?? content.menu.reoPanes ?? "",
 					extraNav,
 					extraPanes,
+					tab2Nav,
+					tab2Pane,
 					// The tabs shells' second nav label is a {tab2Label} slot: the
 					// default "Information" keeps every existing menu byte-identical;
 					// MenuBuilder sets content.menu.tab2Label = "Learning" for the

@@ -589,6 +589,18 @@ class DocxExtractor {
 			const [at, kind] = candidates[0];
 			if (at === Infinity) break;
 
+			// ROUND 265 (CHFUN01): a SELF-CLOSED empty paragraph
+			// (<w:p w14:paraId=".."/> — Word's shorthand for an empty
+			// paragraph) has no </w:p> at all. It carries no content, so as a
+			// top-level block it is simply skipped; letting it fall through to
+			// #findClose would mis-count it as an OPEN with no CLOSE (see the
+			// matching fix there). Data: paragraph.self_closed_skip.
+			// Env toggle: SELFCLOSEP_OFF.
+			if (kind === "p" && this.#selfClosedSkipOn(rules)) {
+				const gt = body.indexOf(">", at);
+				if (gt > 0 && body[gt - 1] === "/") { pos = gt + 1; continue; }
+			}
+
 			if (kind === "tbl") {
 				const end = this.#findClose(body, at, "w:tbl");
 				const tableXml = body.slice(at, end);
@@ -640,6 +652,7 @@ class DocxExtractor {
 	static #findClose(xml, start, tag) {
 		const open = `<${tag}`;
 		const close = `</${tag}>`;
+		const scSkip = this.#selfClosedSkipOn();
 		let depth = 0;
 		let i = start;
 		while (i < xml.length) {
@@ -650,6 +663,21 @@ class DocxExtractor {
 			// require the next char to close the name (space or >)
 			if (nextOpen >= 0 && nextOpen < nextClose
 				&& (xml[nextOpen + open.length] === ">" || xml[nextOpen + open.length] === " ")) {
+				// ROUND 265 (CHFUN01): a SELF-CLOSED element (<w:p .../> —
+				// Word's empty-paragraph shorthand, common in table cells)
+				// has NO matching close tag. Counting it as an open ratchets
+				// the depth up one for ever, so a textbox-carrying paragraph
+				// whose scan passes one NEVER finds its close and swallows
+				// the rest of the document into ONE giant block (CHFUN01
+				// lost every paragraph boundary in the module this way; the
+				// TRR203 "mega-paragraph" was the same bug). A self-closed
+				// open contributes NOTHING to depth — skip past it.
+				// Data: Input_Doc_Rules.paragraph.self_closed_skip.
+				// Env toggle: SELFCLOSEP_OFF (reverts to the ratchet).
+				if (scSkip) {
+					const gt = xml.indexOf(">", nextOpen);
+					if (gt > 0 && xml[gt - 1] === "/") { i = gt + 1; continue; }
+				}
 				depth++;
 				i = nextOpen + open.length;
 			} else {
@@ -659,6 +687,19 @@ class DocxExtractor {
 			}
 		}
 		return xml.length;
+	};
+
+	/**
+	 * ROUND 265: is the self-closed-paragraph skip active? (data flag AND
+	 * not reverted by the SELFCLOSEP_OFF env toggle).
+	 *
+	 * @param {Object} [rules] - Input_Doc_Rules.json (defaults to DataService)
+	 * @returns {boolean}
+	 */
+	static #selfClosedSkipOn(rules = null) {
+		if (typeof process !== "undefined" && process.env && process.env.SELFCLOSEP_OFF) return false;
+		const r = rules ?? ((typeof DataService !== "undefined") ? DataService.Data?.InputDocRules : null);
+		return (r?.paragraph?.self_closed_skip?.enabled ?? true) !== false;
 	};
 
 	/**

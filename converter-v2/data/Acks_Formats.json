@@ -79,7 +79,8 @@
   "video": "Video", "youtube video": "Video", "clip": "Video",
   "audio": "Audio", "sound": "Audio", "music": "Audio", "song": "Audio",
   "podcast": "Podcast", "extract": "Extract", "screenshot": "Screenshot", "screenshots": "Screenshots",
-  "map": "Map", "graph": "Graph", "story": "Story", "poster": "Poster", "gif": "Image", "diagram": "Diagram",
+  "map": "Map", "graph": "Graph", "story": "Story", "poster": "Poster", "gif": "Image", "drawing": "Drawing",
+ "diagram": "Diagram",
   "_fallback_rule": "Unknown item type → Title Case the writer's own word as the prefix AND record a red-flag note in the summary (never silently absorb)."
  },
 

@@ -219,6 +219,27 @@ class MenuBuilder {
 			}
 		}
 
+		// LEVEL-PAGE FUNDAMENTALS TABS (ROUND 265 — the CHFUN "[PAGE N Novice]"
+		// dialect, module CHFUN01). ContentConverter's level-pages pre-pass
+		// captured the module's [Overview]-section LI/SC blocks plus every
+		// "[Page Overview]" learning-intentions block (aggregated BY LEVEL)
+		// onto run._levelMenu; compose them here into the human's tabbed menu —
+		// one "Overview" tab + one tab per LEVEL (Novice, Emergent, …), each
+		// pane a two-column LI | SC row — rendered through the same bare
+		// div.tabs shell the writer-authored tab partition uses (writer_tabs).
+		// Data: body_region.fundamentals_panels.level_pages.
+		// Env toggle: LEVELPAGE_OFF (the upstream pre-pass never sets
+		// run._levelMenu when it is off, so this branch is never reached).
+		if (run._levelMenu) {
+			const lm = this.#levelTabs(run._levelMenu);
+			if (lm) {
+				run.AddNote("info", "MenuBuilder",
+					`Overview menu composed as level tabs (Overview + ${run._levelMenu.levels.map((l) => l.label).join(", ")}; fundamentals_panels.level_pages).`);
+				return { kind: menuType, archetype: "writer_tabs", wtNav: lm.nav, wtPanes: lm.panes,
+					tab1: "", tab2: "", content: "", left: "", right: "" };
+			}
+		}
+
 		// MTK DROP-DOWN-MENU BILINGUAL TABS (ROUND 212 — the PNR101/102/104 family).
 		// ContentConverter's #partitionItems flagged the "[Content for DROP DOWN
 		// MENU]" section's English|Māori table "_reoDropdown"; compose it here into
@@ -624,15 +645,33 @@ class MenuBuilder {
 					// section's keep_heading says so (the assessment pane does — 66
 					// of 85 human golds; the connections pane drops it — the nav
 					// label already names it). Tabs appear in document order.
-					if (bucket === "tab2" && xtRow) {
+					// ROUND 263 (curriculum tabs — module SCCH302; data
+					// menu.extra_tabs.curriculum_tabs; env XTABCURRIC_OFF): a section
+					// whose sections entry carries any_bucket:true (Knowledge /
+					// Practices — the SCCH form, whose built sibling SCCH301 ships
+					// them as their own nav tabs) is checked for promotion from ANY
+					// routed bucket — the r238 tab_map routes those headings to tab 1,
+					// where the original tab2-only check could never see them. A
+					// section without the key keeps the exact tab2-only behaviour, so
+					// every previously-registered group is untouched BY CONSTRUCTION.
+					// A sections entry may also carry its OWN heading_element (the
+					// SCCH panes keep an <h4><span> heading; the r206 assessment
+					// default stays <h5>).
+					const curricOn = xtCfg && xtCfg.curriculum_tabs?.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.XTABCURRIC_OFF);
+					if (xtRow) {
 						const sec = this.#extraTabSection(hFold, xtCfg);
-						if (sec && xtRow[sec]) {
+						if (sec && xtRow[sec]
+							&& (bucket === "tab2" || (curricOn && xtCfg.sections?.[sec]?.any_bucket))) {
 							if (!out.extraTabs) out.extraTabs = [];
 							out.extraTabs.push({ label: xtRow[sec], html: "" });
 							bucket = "extra:" + (out.extraTabs.length - 1);
 							if (xtCfg.sections[sec]?.keep_heading !== false) {
 								const engl = (hText.includes("|") ? hText.split("|").pop() : hText).trim();
-								push(Utils.FillTemplate(xtCfg.heading_element ?? "<h5>{heading}</h5>",
+								push(Utils.FillTemplate(
+									(curricOn && xtCfg.sections?.[sec]?.heading_element)
+										? xtCfg.sections[sec].heading_element
+										: (xtCfg.heading_element ?? "<h5>{heading}</h5>"),
 									{ heading: Utils.EscapeHtml(engl) }));
 							}
 							if (split) for (const p of split.pieces) push(p);
@@ -978,6 +1017,22 @@ class MenuBuilder {
 			for (const t of out.extraTabs) t.html = this.dropEmptyHeadings(t.html, run);
 			out.extraTabs = out.extraTabs.filter((t) => t.html && t.html.trim());
 			if (!out.extraTabs.length) out.extraTabs = null;
+		}
+		// ROUND 263 (curriculum tabs — module SCCH302; env XTABCURRIC_OFF): a
+		// registry row carrying _drop_empty_tab2 drops the shell's Information
+		// nav item + pane when every routed section promoted away and no tab-2
+		// content remains — the built sibling SCCH301's gold nav is
+		// Overview | Knowledge | Practices, with NO Information tab. ROW-scoped:
+		// a group without the flag (every previously-registered group) keeps its
+		// Information tab byte-identically through the {tab2Nav}/{tab2Pane}
+		// shell slots' defaults in SkeletonBuilder.
+		if (out.extraTabs && xtRow && xtRow._drop_empty_tab2
+			&& xtCfg.curriculum_tabs?.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.XTABCURRIC_OFF)
+			&& !(out.tab2 && out.tab2.trim())) {
+			out.dropTab2 = true;
+			run.AddNote("info", "MenuBuilder",
+				"Empty Information tab dropped — every menu section promoted to its own tab (menu.extra_tabs registry, _drop_empty_tab2).");
 		}
 		// LESSON-MENU "Learning intentions" LABEL (ROUND 222 — module ENGJ403;
 		// Chris's lesson-menu report). The human developers open a LESSON page's
@@ -1774,6 +1829,74 @@ class MenuBuilder {
 	 * @param {Object} cfg - Emit_Templates menu.writer_tab_partition
 	 * @returns {{nav:string,panes:string,count:number}|null}
 	 */
+	/**
+	 * Composes the LEVEL-PAGE fundamentals menu (ROUND 265 — the CHFUN
+	 * "[PAGE N Novice]" dialect): one "Overview" tab pane built from the
+	 * module's own [Overview]-section LI/SC blocks, plus one tab pane per
+	 * LEVEL (Novice, Emergent, …) built from that level's aggregated
+	 * "[Page Overview]" learning-intentions blocks. Every pane is the same
+	 * two-column shape the human ships: LI (heading + lead + bullets) on the
+	 * left, SC on the right. The pane headings are the writer's own
+	 * [H3] labels from the module's [Overview] section ("Learning
+	 * Intentions" / "How will I know I have learned it?"), reused across the
+	 * level panes exactly as the human does; data defaults cover a module
+	 * whose writer omitted them.
+	 *
+	 * Returns { nav, panes } for the writer_tabs shell, or null when nothing
+	 * usable was captured (the caller then falls through to the ordinary menu
+	 * machinery).
+	 *
+	 * @param {Object} data - run._levelMenu ({ module, levels, row, cfg })
+	 * @returns {{nav: string, panes: string}|null}
+	 *
+	 * Data: body_region.fundamentals_panels.level_pages (menu templates under
+	 * its `menu` block; pane columns from the matched registry row).
+	 * Env toggle: LEVELPAGE_OFF (upstream — this method is never reached).
+	 */
+	static #levelTabs(data) {
+		const { module: mod, levels, row, cfg } = data;
+		const mc = cfg.menu || {};
+		const hasContent = (b) => b && (b.bullets.length || b.lead);
+		if (!hasContent(mod.li) && !levels.some((l) => hasContent(l.li) || hasContent(l.sc))) return null;
+		const liLabel = (mod.li && mod.li.label) || mc.li_label_default || "Learning Intentions";
+		const scLabel = (mod.sc && mod.sc.label) || mc.sc_label_default || "How will I know I have learned it?";
+		const cols = row.menu_cols || ["col-md-6 offset-md-0 col-12 paddingR", "col-md-6 offset-md-0 col-12 paddingL"];
+		const colHtml = (bucket, label) => {
+			const parts = [Utils.FillTemplate(mc.heading_template || "<h5>{label}</h5>", { label: Utils.EscapeHtml(label) })];
+			if (bucket && bucket.lead) parts.push(`<p>${Utils.EscapeHtml(bucket.lead)}</p>`);
+			if (bucket && bucket.bullets.length) {
+				// bullet punctuation, the human's pane convention: every bullet
+				// bare (its trailing comma/full-stop dropped), only the FINAL
+				// one closing with a full stop
+				const bs = bucket.bullets.map((b, i) => {
+					let t = String(b).trim().replace(/[.,]$/, "");
+					if (i === bucket.bullets.length - 1 && /[\p{L}\p{N}]$/u.test(t)) t += ".";
+					return t;
+				});
+				parts.push("<ul>");
+				for (const b of bs) parts.push(`<li>${Utils.EscapeHtml(b)}</li>`);
+				parts.push("</ul>");
+			}
+			return parts.join("\n");
+		};
+		const pane = (li, sc) =>
+			(mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
+			+ Utils.FillTemplate(mc.col_template || "<div class=\"{cls}\">\n{content}\n</div>",
+				{ cls: cols[0], content: colHtml(li, liLabel) }) + "\n"
+			+ Utils.FillTemplate(mc.col_template || "<div class=\"{cls}\">\n{content}\n</div>",
+				{ cls: cols[1] ?? cols[0], content: colHtml(sc, scLabel) })
+			+ (mc.pane_close || "\n</div>\n</div>");
+		const navItem = (label) => Utils.FillTemplate(mc.nav_item || "\n<li><a>{label}</a></li>",
+			{ label: Utils.EscapeHtml(label) });
+		let nav = navItem(mc.overview_label || "Overview");
+		let panes = pane(mod.li, mod.sc);
+		for (const l of levels) {
+			nav += navItem(l.label);
+			panes += pane(l.li, l.sc);
+		}
+		return { nav, panes };
+	};
+
 	static #writerTabPartition(menuItems, run, norm, cfg) {
 		const foldOf = (it) => String(it.parse?.folded ?? Utils.Fold(String(it.text || ""))).trim();
 		const setupRe = new RegExp(cfg.setup_pattern ?? "set ?up as .{0,24}tabs", "i");

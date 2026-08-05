@@ -3220,6 +3220,18 @@ class InteractiveBuilder {
 			return /youtu\.?be|youtube\.com|vimeo/i.test(url);
 		});
 
+		// MEDIA-TABLE form (ROUND 266 — the CHFUN "[slideshow]" dialect, Chris:
+		// "MAKE INTO CAROUSEL!"): ONE captured table whose every cell is a media
+		// cell ([image]/[video] tag + URL, optional [caption]) builds one slide
+		// per cell. Tried FIRST so it owns its exact shape; a table that fails
+		// the media-cell test falls straight through to the image|caption-table
+		// branch below, byte-unchanged. Data carousel.media_table; env
+		// CARMEDTBL_OFF.
+		if (tables.length === 1) {
+			const mt = this.#carouselMediaTable({ bundle, tpl, renderInline, run });
+			if (mt !== null) return mt;
+		}
+
 		// IMAGE-CAPTION TABLE form: exactly one captured table, no video anywhere.
 		if (!hasVideo && tables.length === 1) {
 			return this.#carouselImageTable({ bundle, tpl, renderInline, run });
@@ -3714,6 +3726,92 @@ class InteractiveBuilder {
 	 *     #carouselTrailingBody, NOT lost. A richer trailing member (table/widget/list)
 	 *     bails.
 	 */
+	/**
+	 * MEDIA-TABLE carousel (ROUND 266 — the CHFUN "[slideshow]" dialect,
+	 * module CHFUN01; Chris's screenshot: "MAKE INTO CAROUSEL!"). The writer
+	 * authors the whole slideshow as ONE table; every cell is a media cell:
+	 * an [image] or [video] red tag (+ a [media item N] sub-tag), a URL, and
+	 * optionally a [caption] tag with the caption text — e.g.
+	 *   "[image][media item 1] https://istockphoto.com/..." |
+	 *   "[video][media item 3] https://youtube.com/watch?v=… / [caption] Chinese calligraphy"
+	 * Builds one slide per cell, in cell order:
+	 *   - [image] → the standard Mode P/D asset machinery (#assetImage via the
+	 *     iStock filename rule) — NO caption div unless the cell carries one
+	 *   - [video] YouTube watch/youtu.be → the shared video.youtube 16x9 embed;
+	 *     a /shorts/ URL → the youtubeShort 1x1 form (the CHFUN golds ship
+	 *     shorts that way 57/57); the cell's [caption] → a carousel-caption
+	 * Slides ship a PLAIN videoSection (no icon) — the family's gold icon
+	 * share is 0.69, below the r200 solidify floor (recorded).
+	 *
+	 * NEVER HALF-BUILDS → null (the honest hand-off box) on: a cell with no
+	 * URL, an image URL the iStock filename rule cannot name, a video URL on
+	 * an unknown host, or fewer than min_slides slides.
+	 *
+	 * @param {object} args - bundle / tpl / renderInline / run
+	 * @returns {string|null} the built carousel, or null
+	 *
+	 * Data: carousel.media_table. Env toggle: CARMEDTBL_OFF.
+	 */
+	static #carouselMediaTable({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl.media_table;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.CARMEDTBL_OFF) return null;
+		const table = (bundle.tables ?? [])[0];
+		const rows = table?.rows ?? [];
+		if (!rows.length) return null;
+		const inline = renderInline ?? ((s) => s);
+		const acks = DataService.Data.AcksFormats ?? {};
+		const ytRe = new RegExp(acks.youtube_id ?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
+		const shortsRe = new RegExp(cfg.shorts_id_re ?? "youtube\\.com/shorts/([\\w-]{11})");
+		const tagRe = /\[\s*(image|video)\s*\]/i;
+
+		const slides = [];
+		for (const r of rows) {
+			if (!Array.isArray(r)) return null;
+			for (const cell of r) {
+				const raw = String(cell ?? "");
+				if (!raw.trim()) continue;                       // empty cell — skipped
+				const kindM = tagRe.exec(raw);
+				if (!kindM) return null;                         // a non-media cell → not this form
+				const kind = kindM[1].toLowerCase();
+				const url = raw.match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "";
+				if (!url) return null;
+				// the cell's own [caption] text (everything after the [caption] tag)
+				const capM = /\[\s*caption\s*\][^\u{1f534}]*/iu.exec(raw);
+				const caption = capM
+					? this.#cellText(raw.slice(capM.index)).replace(/^\s*\[\s*caption\s*\]\s*/i, "").trim()
+					: "";
+				if (kind === "image") {
+					const filename = this.#istockFilename(url, tpl);
+					if (!filename) return null;                  // un-nameable image → bail
+					const image = this.#assetImage(filename, tpl, run);
+					slides.push(caption
+						? Utils.FillTemplate(tpl.item_image, { image, caption: inline(caption) })
+						: Utils.FillTemplate(cfg.item_image_plain ?? "<div class=\"item image\">\n{image}\n</div>", { image }));
+				} else {
+					const shortId = url.match(shortsRe)?.[1] ?? null;
+					const watchId = url.match(ytRe)?.[1] ?? null;
+					if (!shortId && !watchId) return null;       // unknown video host → bail
+					const embed = shortId
+						? Utils.FillTemplate(cfg.shorts_embed, { videoId: shortId })
+						: Utils.FillTemplate(DataService.Data.EmitTemplates.video.youtube, { videoId: watchId, params: "" });
+					slides.push(caption
+						? Utils.FillTemplate(cfg.item_video_caption
+							?? "<div class=\"item video\">\n{embed}\n<div class=\"carousel-caption\">\n<p>{caption}</p>\n</div>\n</div>",
+							{ embed, caption: inline(caption) })
+						: Utils.FillTemplate(cfg.item_video_plain ?? "<div class=\"item video\">\n{embed}\n</div>", { embed }));
+				}
+			}
+		}
+		if (slides.length < (tpl.min_slides ?? 2)) return null;
+
+		// trailing free-body paragraph(s) after the slide table (kept outside the carousel).
+		const trailing = this.#carouselTrailingBody(bundle, inline, tpl);
+		if (trailing === null) return null;
+
+		return [tpl.open, ...slides, tpl.close, ...trailing].join("\n");
+	}
+
 	static #carouselImageTable({ bundle, tpl, renderInline, run }) {
 		const table = (bundle.tables ?? [])[0];
 		const rows = table?.rows ?? [];

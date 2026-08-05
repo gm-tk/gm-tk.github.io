@@ -1,271 +1,295 @@
 {
- "_meta": {
-  "title": "Input Document Rules — reading the writer-provided .docx files",
-  "generated": "2026-06-12",
-  "purpose": "Machine-readable form of 00_Input_WordDoc_Interpretation_Rules.md: which parts of the Writers Template + Media List are real content, which are boilerplate to discard, how the docx is turned into the marker-text intermediate form, and how the media table's columns are recognised. DocxExtractor.js and MediaListParser.js read this file; nothing about input shapes is hard-coded.",
-  "extension_rule": "New boilerplate block, new media-table column heading, new red shade, new template signature = a data edit HERE, never a code change.",
-  "precedence": "Where 00-PageForge v1 docs disagree with this file or 00_Input_WordDoc_Interpretation_Rules.md, this file wins."
- },
- "content_start": {
-  "rule": "Real module content starts at the first RED span that opens the document. Detection chain, first hit wins: (1) LITERAL — a bracket fragment whose folded text is exactly one of content_start_fragments; (2) CANONICAL — the first red span whose primary tag resolves to one of content_start_canonicals (Fundamentals templates open with [Fundamental content] / [Fundamental 1 code] / a bare [Title] instead of [TITLE BAR] — verified on ARFUN01, MXFUN03, EXPFUN04); (3) NONE — convert ALL blocks and surface a loud summary warning (PageForge's own fallback). Everything before the start is template front-matter: not interpreted, not converted, not flagged.",
-  "content_start_fragments": [
-   "title bar"
-  ],
-  "content_start_canonicals": [
-   "title bar",
-   "lesson content"
-  ],
-  "content_start_fallback_directives": [
-   "ELEMENT",
-   "CONTAINER_OPEN"
-  ],
-  "fallback_note": "Last chance before the convert-everything fallback: the first RED span whose primary resolves to one of these directive classes opens the document (EXPFUN06 opens at a bare [H1]; ART1005 similar — verified 12/06/26). Front-matter red spans ([tags] rows, damaged brackets) resolve to nothing, so they can never trigger this.",
-  "note": "Mid-document, the looser aliases (title/overview/introduction) are headings, never document starts (Tag_Normalisation_Spec.md page-boundary rule 4) — only the FIRST resolving span opens the document.",
-  "content_start_fragments_dropdown": [
-   "content for drop down menu",
-   "content for drop-down menu"
-  ],
-  "_fragments_dropdown_note": "ROUND 212 (PNR101 family): the new MTK 'Te Aka Taumatua' bilingual template opens at [Content for DROP DOWN MENU] — recognised as a content start so the menu/overview is not trimmed as front matter. Kept in its OWN list (not content_start_fragments) so env REODROPMENU_OFF can revert the whole round faithfully. Measured: the exact bracketed marker exists in EXACTLY PNR101/102/104 corpus-wide."
- },
- "front_matter_blocks_documentation": [
-  "MTK WRITERS TEMPLATE / WRITERS TEMPLATE title block",
-  "Submission Checklist",
-  "LOT tags table (Numeracy/Literacy grid)",
-  "Sign-off line",
-  "Contents list (Section A / Section B)",
-  "'Understanding which section/s to complete' block",
-  "Section A — Merging Resources tables",
-  "Section B — New Content Development header + writer-guidance box",
-  "'Adjust the italicised text below' instruction lines",
-  "NOTE: this list is documentation only — the [TITLE BAR] boundary above is the actual discard mechanism (the list is never exhaustive)."
- ],
- "red_runs": {
-  "rule": "A docx run is RED when its w:color val (lowercased) is in red_hex_values. Consecutive red runs in a paragraph merge into ONE red span, wrapped in the markers below — reproducing the exact intermediate form the validated corpus pipeline was built on.",
-  "red_hex_values": [
-   "ff0000",
-   "ee0000"
-  ],
-  "marker_open": "🔴[RED TEXT] ",
-  "marker_close": " [/RED TEXT]🔴",
-  "collapse_whitespace_only": true,
-  "bridge_split_tag": true,
-  "bridge_split_tag_note": "ROUND 118 (Chris): Word can split a single uniform-RED [tag] into separate runs and DROP the colour on an interior space, fragmenting ONE tag across two [RED TEXT] marker spans (ANZH304 '[Please embed this journal story (as in ANZHFUN01 phase 2]'). DocxExtractor.#parseParagraph's red-merge loop now BRIDGES a stray non-red whitespace run that sits MID-TAG between two red runs — fires ONLY when the red text so far has an unbalanced '[' (mid-tag) AND the gap run is whitespace-only AND the next run is red, so it reassembles ONE split tag but NEVER merges across real black content (an intentional '[tag: black label]' form) or between two complete tags. The COMMON same-colour split (Word's usual run fragmentation, e.g. '[Tab 1: I'+'ntroduction'+']' -> [Tab 1: Introduction]) was ALREADY merged by the consecutive-red loop — this only adds the whitespace-gap variant. Measured rare (~1-2/60 modules) since the consecutive case dominates; gate-neutral by the tight guard. env REDBRIDGE_OFF reverts.",
-  "repair_missing_bracket": {
-   "enabled": true,
-   "forms": [
-    "missing-open"
-   ],
-   "clean_hows": [
-    "exact",
-    "denumbered",
-    "denumbered_head"
-   ],
-   "exclude_tags": [],
-   "rule": "ROUND 174 (Chris, ENGC101-00 'H2] Know:' bug). A writer occasionally drops a square bracket off a tag. TagNormaliser.Parse already repairs the two EDGE forms for CLASSIFICATION (a dangling '[x' with no ']', and a leading 'x]' with no '['), but ~10 OTHER red-span consumers (RenderText, the overview-menu partition, the black-tag strip, InteractiveScanner, ...) read the raw bracket structure and LEAK the literal — ENGC101-00 lost the 'Know' heading and shipped '<h5>H2]</h5>'. This fixes it ONCE at the source: when a CONTENT red span opens with a lone 'x]' (missing the '[') AND the token x resolves to a KNOWN tag by a WHOLE-token match (how in clean_hows — exact / denumbered / denumbered_head; NOT a tag-word EMBEDDED inside writer prose), the missing '[' is inserted into block.text so EVERY downstream consumer sees a well-formed '[x]'. Original case is preserved (RenderText needs it). GENERAL across every tag (lexicon-driven), NOT one module. Measured corpus-wide (outputs/_measure_malformed_brackets.cjs, 197-set): 162 missing-open red spans, ~73 with a clean token across 37 modules; how=embedded correctly rejects all 47 prose/instruction false positives ('that when they click/hover on the letter...' -> audio embedded; 'Please create a dropdown menu for each item]' -> dropdown embedded). The MISSING-CLOSE form ('[hover trigger: <def>' — 559 occ) is deliberately NOT touched: Parse's dangling repair + RenderText's optional ']?' already absorb it, and it is the deferred split-bracket infoTrigger lever (0 clean render-leaks). env BRACKETFIX_OFF reverts to leaking the literal."
-  },
-  "collapse_whitespace_only_note": "ROUND 79 (Chris, OSBY201-03): a merged red span whose entire content is WHITESPACE (a writer mis-coloured a space/tab red) is NOT wrapped in a [RED TEXT] marker — it is emitted as a single plain space. Without this, PageSplitter treats the empty marker as a standalone item and FRAGMENTS the paragraph (OSBY201-03 '**Banter is** like playful teasing' split into two <p> at a red space; corpus-wide 349 such paragraph fragmentations + 1234 cosmetic edge spans). A red span with any non-whitespace content (a real [tag]/instruction) is untouched — the strip fires ONLY on pure whitespace, so it can never drop a tag. Read by DocxExtractor.#parseParagraph; env REDWS_OFF reverts.",
-  "note": "Verified against OSAH401 Writers Template.docx: writers use ff0000 (Word default red) and ee0000. Other colours observed (316757 green, 3494ba blue, 00b050 green, bfbfbf grey) are content emphasis, never tags. New red shade seen in the wild = append the hex here."
- },
- "table_markers": {
-  "rule": "Docx tables are serialised into the corpus text-table form so the same downstream parsing applies to fresh uploads and the historical parsed corpus.",
-  "open": "┌─── TABLE ───",
-  "row_prefix": "│ ",
-  "column_separator": " ║ ",
-  "close": "└─── END TABLE ───",
-  "in_cell_line_break": " / "
- },
- "formatting_markers": {
-  "bold": "**",
-  "italic": "*",
-  "bullet_prefix": "• ",
-  "preserve_leading_space": true,
-  "note": "Matches the parsed corpus conventions: **bold**, *italic*, '• ' bullets. Numbered list items keep their literal numbers.",
-  "preserve_leading_space_round67_note": "ROUND 67 (Chris, OSBY201-01). A docx splits a styled phrase into its own run, and Word often keeps the inter-word SPACE INSIDE that styled run as a LEADING space (run 'their' has no trailing space; the bold run is ' wellbeing or hauora'). DocxExtractor#parseParagraph wrapped a bold/italic run with blackText.trim() (drops BOTH sides) but only restored the TRAILING space — so the leading space was lost and the words glued ('their<b>wellbeing…', 'house or<b>whare</b>'). Measured 326 Claude word+<b>/<i> glued / 144 pages vs the human's 80 (human ' <b>' spaced 4709×) — outputs/_measure_boldspace.py. When true, the engine restores the leading space SYMMETRICALLY, only when the run actually had one, so legitimately-glued cases (no leading space) are untouched. Env BOLDSPACE_OFF reverts to the drop form."
- },
- "front_matter_metadata": {
-  "rule": "The Section-A/B gray info table holds module-specific fields as 'Label: value' paragraphs in the front-matter (before content start). DocxExtractor captures the FILLED ones (a non-empty value after the colon) into run.metadata. This is the ONE place writers add module-specific data inside the otherwise-generic front-matter, so it is mined even though the front-matter is discarded for conversion.",
-  "fields": {
-   "subject": {
-    "labels": [
-     "subject"
-    ]
-   },
-   "course": {
-    "labels": [
-     "course"
-    ]
-   },
-   "moduleCode": {
-    "labels": [
-     "module code"
-    ]
-   },
-   "keyContact": {
-    "labels": [
-     "key contact",
-     "key contact (name, email, extension)",
-     "key contact (name), (email), (extension)"
-    ]
-   },
-   "dateSubmitted": {
-    "labels": [
-     "date submitted"
-    ]
-   },
-   "moduleName": {
-    "labels": [
-     "module name"
-    ]
-   }
-  },
-  "course_is_english_title_backup": "The 'Course' value is the module's English course/title (e.g. 'AI Digital Citizenship'). Used as the English title BACKUP when the [TITLE BAR] payload contains only a Te Reo title — the module must NEVER ship with a Te-Reo-only title (verified need: OSAI301's [TITLE BAR] held only 'Kirirarautanga Matihiko AI').",
-  "skip_empty_label_rows": "A paragraph that is just 'Label:' with no value is the blank template row — never captured.",
-  "table_row_fields": [
-   "moduleName"
-  ],
-  "_table_row_fields_note": "ROUND 212: the PNR family's front matter carries its metadata as a TABLE ('Module Name | Nga tau: 1 | Numbers: 1'), not 'Label: value' paragraphs. Only the fields listed here are captured from 2-column table rows (label cell | value cell) — deliberately NOT course/moduleCode, so the Course-is-title-backup path can never start firing on modules it never fired on before. Used as the bilingual title source when the module has no [TITLE BAR] payload (PageAssembler; the value pipe-splits reo|english in payload order). Env REODROPMENU_OFF disables the table capture."
- },
- "paragraph": {
-  "soft_break_newline": true,
-  "rule": "ROUND 227 (Chris, the XDLS900 triage — the round-225 recorded lever). A writer's Shift+Enter stores a <w:br/> INSIDE the paragraph; the old w:t-only run extraction silently DELETED it, gluing the text on either side with no separator at all ('…ana”Through perseverance…') — corrupted text, measured 5,999 soft breaks across 357 of 429 WTs. When true, DocxExtractor contributes '\\n' at the break's own position in the run text (a <w:br> with type=page|column stays a page/column break — the page counter is untouched). The downstream machinery already handles multi-line text: renderBlackText emits one <p>/<li> per line — the MAJORITY gold form for soft-broken black paragraphs (outputs/_measure_softbreak.py: split-p 84 vs same-el-spaced 172-of-which-164-are-EXPFUN03's-house-style vs br 31 vs glued 0 on the top-8 carriers); Utils.Fold collapses \\s+ so tag classification is byte-identical; the round-225 proverbSplit boundary rules go dormant (the lines arrive already split). Env SOFTBR_OFF reverts to the glued extraction."
- },
- "text_normalise": {
-  "enabled": true,
-  "nbsp_to_space": true,
-  "strip_zero_width": true,
-  "rule": "ROUND 241 (Dev-Feedback R4, E1 — SCCH302's 'AI marker' NBSP; the r227 extractor seam). Word documents carry invisible whitespace characters the writer never intended as content: the NON-BREAKING SPACE U+00A0 (autocorrect/paste residue — the developer flagged it as an 'AI marker'; SCCH302's own [TITLE BAR] Te Reo carries 5) and the ZERO-WIDTH characters U+200B/U+200C/U+200D/U+FEFF (paste residue from web sources). MEASURED corpus-wide (round 241, live docx scan): NBSP 15,198 occurrences across 416 of 429 WTs; zero-width 124 occurrences across 22 WTs; the converted corpus SHIPS 2,108 literal NBSPs on 298 pages while the gold library ships effectively none (37 literal on 7 pages — the human's ~1,026 '&nbsp;' ENTITIES on ~45 pages are deliberate layout, not writer residue). When enabled, DocxExtractor normalises each run's decoded w:t text at extraction (the same seam as the r227 soft-break fix): U+00A0 → a plain space (nbsp_to_space), and the zero-width set is deleted (strip_zero_width). GRANULARITY SAFETY (the r227 red-run trap): an NBSP-only run stays a non-empty whitespace piece (same trim()/Fold behaviour before and after — JS whitespace includes U+00A0), so red-span merging is untouched; a run the zero-width strip EMPTIES drops out exactly like an always-empty run — the tags gate (9557/9557 spans, REAL 0) is the authoritative granularity detector and is proven unchanged in the round's probes. Tag CLASSIFICATION is inert by construction either way (Utils.Fold collapses \\s+, and \\s matches U+00A0). Env NBSP_OFF reverts the whole normalisation (NBSPs and zero-width characters flow through to the page again)."
- },
- "render_text": {
-  "drop_punctuation_only": true,
-  "rule": "ROUND 104 (Chris, OSAH501-00 whakataukī ':' bug). TagNormaliser.RenderText extracts the ORIGINAL-CASE text a writer left OUTSIDE the brackets of a tag span (e.g. '[H1] INTRODUCTION' -> 'INTRODUCTION'). When the writer glues a STRAY PUNCTUATION character to the tag and nothing else ('[whakatauki]:' -> ':'), that residue is NOT content — it is writer noise — yet it leaked downstream as an embedded LEAD (the whakataukī box rendered a spurious '<p><b>:</b></p>' before the proverb). When true, a RenderText result that contains NO letter or digit in ANY script (Unicode \\p{L}/\\p{N} — macrons ā/ē/ī/ō/ū count as letters, so te reo is never dropped) is treated as EMPTY (''), so the noise vanishes and any '|| blackAfter' fallback chain falls through to the real content. ROBUST + GENERAL: handles any erroneous glued character (':', ';', '-', '.', '|', '(', ']', '*', '…') across EVERY tag and EVERY RenderText caller, not just whakataukī. CONSERVATIVE: a residue with even one letter/digit (a real embedded title/label) is untouched. Measured corpus-wide (outputs/_measure_strayleadpunct.cjs): 42 punctuation-only leads across 26 modules; the human renders none of them. Env STRAYLEAD_OFF reverts to leaking the punctuation residue."
- },
- "emoji_strip": {
-  "enabled": true,
-  "exempt": ["✅", "✓", "✔", "☑", "✗", "✘", "❌", "❎"],
-  "exempt_extensions": {
-   "maths_operators": ["✖", "➗", "➕", "➖"]
-  },
-  "arrow_map": { "➡": "→", "⬅": "←", "⬆": "↑", "⬇": "↓", "⮕": "→" },
-  "list_runs": true,
-  "drop_emptied": true,
-  "disclosure": "Emoji have been removed from this content per the no-emoji rule. Ticks and crosses are retained.",
-  "rule": "ROUND 234 (Chris — Change Ledger CL-0051, 16 Jul; the FIRST CL-0001/constraint-1 exception permitting deletion of writer characters). Emoji are stripped from rendered writer content: ListsAndRuns.EmojiStrip runs as a FULL-PAGE POST-PASS (the r213 LinkTextDisplay seam — after OmitPlaceholderResidue + TidyDeveloperNotes, before LinkTextDisplay/Indent, stopping at the acks block), so every emitter is covered uniformly and NO pre-render machinery can be disturbed: tag classification, the ✅-glued [TITLE BAR] fences (OSSC301/r230), the r192 ✅[Tile] delimiters, the r169 title splits and the 🔴 red-run sentinels all operate on block text long before this pass — post-pass placement makes them untouchable BY CONSTRUCTION. SCOPE = Unicode Extended_Pictographic grapheme CLUSTERS (base + VS15/16, skin tones U+1F3FB-FF, ZWJ sequences, keycap marks; regional-indicator flag pairs; a keycap digit keeps its digit and loses only the dressing), matched cluster-whole so a VS16 is NEVER orphan-stripped off a kept tick. 'exempt' = the ledger's ticks & crosses VERBATIM (✓✗✘ are not Extended_Pictographic and could never match anyway — listed for fidelity). 'exempt_extensions.maths_operators' = the ONE measured extension (✖➗➕➖ — meaning-bearing operators in maths content; gold keeps ✖ x12; ✖ is a cross by form, the ledger's own ☑ inclusion proves heavy/box variants count). 'arrow_map' = EP arrow emoji become PLAIN arrows instead of deletions (gold's own treatment — TEDC402 ships the writer's 'input🡪process🡪output' as 'input→process→output'; meaning kept, emoji removed). OUT OF SCOPE by the Unicode property (measured decisions, round-234 census outputs/_measure_emoji.py): the checkbox/ballot family ☐☒□🗹 (bilingual checklists + printable tick-sheets — 671 visible; the r212 checklist→bullet stays the reo-menu machinery), 🖵 phonics sound-boxes (BLL147), 🡪 (TEDC401 gold keeps it), plain →←, typographic ►●◦, private-use chars — none are emoji per Extended_Pictographic. CLAUSES: a run of 2+ consecutive PLAIN <p> lines each PREFIXED by a would-be-deleted cluster becomes ONE <ul> of <li> (the lead cluster dropped; measured 23 runs — CEDT104 '🎵Sing/🎵Do/🎵Feel', ARFUN02's instrument list; an exempt-led line like '✅ I did it.' never joins a run and stays a <p>); a LONE prefixed line stays a <p>; in-prose clusters are removed with spacing normalised (doubled spaces collapsed, space-before-punctuation healed — 'earn a star ⭐️.' → 'earn a star.'); a plain <p> the strip EMPTIED is dropped whole (drop_emptied — ARFUN02's 31 <p><b>🤔</b></p>; gold ships zero; a PRE-EXISTING empty <p> is never touched). DISCLOSURE: ONE visible note per affected page at the first removal, ledger wording verbatim in 'disclosure', emitted through NotesAndComments.redFlag (kind diagnostic → 'Red Flag:' prefix, red+bold, class cv2-note = gate-excluded by construction; NOTESCHEME_OFF legacy form applies to it like any note); a first removal inside the header/menu relocates the note to the top of the body (the r203 no-comments-in-menu rule). CONTAINMENTS (all measured): cv2-interactive placeholder subtrees (6,949 chars — the developer's verbatim hand-off, the r201/r213 class), cv2-note/cv2-comment payloads (writer quotes stay verbatim), the acks block (gold keeps oEmbed video titles verbatim + the converter's own ❗ ack-todo markers are functional chrome), <script>/<style>, tag ATTRIBUTES (population 0 measured), the {CODE}_interactives.txt hand-off (not HTML, untouched by construction), self-reflection emoji IMAGES (<img> assets — a text-level pass cannot touch them). NAMED CHANGE-LEDGER OVERRIDE deltas (gold keeps, the rule strips — captured in Subject_Global_Parameters._universal_conventions.cl0051_no_emoji, never chase): TEDC402's five feelings-scale faces in built tabs panes, OSBY301-class scattered keeps, TRR109/110+XGF9001+BLL120/252+XDLS908 singles; MXDI201/ENGS102's emoji-as-CONTENT vocab cards live inside cv2 dumps on our side today (unaffected) and are the recorded WATCH class for future widget-build rounds. Env EMOJISTRIP_OFF (or enabled:false) reverts the whole pass byte-for-byte: no strip, no list conversion, no disclosure note."
- },
- "wt_page_tracking": {
-  "rule": "Each content block is stamped with the Writers Template page it sits on, counted from: w:lastRenderedPageBreak elements (Word's own pagination record), explicit w:br type='page', and w:pageBreakBefore paragraph properties that are TRUE (bare element or val='1'/'true' — Google-Docs exports write val='0' meaning NO break; never count those).",
-  "first_page_number": 1,
-  "reliability_note": "Google-Docs-exported templates (verified on OSAH401) carry NO usable pagination records, so page numbers may stay at 1. The acks lesson-mapping therefore treats page records as only ONE evidence source — see media_item_lesson_mapping below.",
-  "page_records_usable_when": "the counted page total is at least min_pages_for_trust",
-  "min_pages_for_trust": 5
- },
- "media_item_lesson_mapping": {
-  "rule": "Mapping a media item to its lesson (for acksLesson grouping) uses the strongest available evidence, in order. Guessing is banned; every interpolated or fallback placement is reported in the conversion summary.",
-  "order": [
-   "1. CONTENT MATCH — the item's normalised URL (or unique asset ID) appears in exactly one lesson's content blocks → that lesson.",
-   "2. PAGE RECORDS — when the WT docx has usable pagination (see wt_page_tracking), the item's WTPg No. falls in one lesson's page span → that lesson.",
-   "3. NEIGHBOUR INTERPOLATION — media lists run in page order; an unmatched item between two items mapped to the SAME lesson belongs to that lesson. Between different lessons → the earlier lesson, and the placement is reported in the summary.",
-   "4. FALLBACK — remaining items go to the first content group, each reported in the summary (never dropped)."
-  ]
- },
- "unsupported_pathways": [
-  {
-   "signature": "mtk writers template",
-   "where": "any paragraph before content start, folded",
-   "also_requires_code_prefix": [
-    "TRR"
-   ],
-   "label": "MTK / Te Reo Rangatira (TRR) bilingual template",
-   "action": "Do not convert. Surface a clear visible notice in the conversion summary: this template follows a separate bilingual pathway (paired reo/eng elements) and must not be force-fitted through the standard rules.",
-   "note": "The 'MTK WRITERS TEMPLATE' heading ALSO appears in standard templates' front-matter (verified on OSAH401), so the signature alone is not enough — the module code prefix must match too."
-  }
- ],
- "media_table": {
-  "identify_rule": "A docx table is THE media table when its first row matches at least min_header_matches of the column families below (folded, punctuation-insensitive). In a combined WT+media-list docx the media table is located anywhere in the document and is excluded from content conversion.",
-  "min_header_matches": 4,
-  "columns": {
-   "item_no": {
-    "aliases": [
-     "item no",
-     "item no.",
-     "item number",
-     "item",
-     "no",
-     "no."
-    ]
-   },
-   "wt_page": {
-    "aliases": [
-     "wtpg no",
-     "wtpg no.",
-     "pg no",
-     "pg no.",
-     "page no",
-     "page no.",
-     "wt pg no",
-     "wtpg",
-     "page",
-     "pg"
-    ]
-   },
-   "item_type": {
-    "aliases": [
-     "item type",
-     "type",
-     "media type"
-    ]
-   },
-   "description": {
-    "aliases": [
-     "description",
-     "desc",
-     "item description"
-    ]
-   },
-   "source": {
-    "aliases": [
-     "source",
-     "provider"
-    ]
-   },
-   "url": {
-    "aliases": [
-     "url",
-     "link",
-     "web address",
-     "web link"
-    ]
-   },
-   "ecr": {
-    "aliases": [
-     "ecr approval",
-     "ecr",
-     "approval",
-     "copyright approval",
-     "ecr approved"
-    ]
-   }
-  },
-  "discard_rows": {
-   "example_row": {
-    "rule": "Drop any data row matching the template's worked example: item_no folded equals 'example', OR the description contains an example_signature.",
-    "example_signatures": [
-     "stock photo of a cheetah"
-    ]
-   },
-   "reminder_rows": "Drop any full-width/merged row (a row with a single spanning cell) and any row whose first cell starts with 'reminder' — these are writer guidance, not items.",
-   "header_row": "The first (header) row itself is never an item.",
-   "empty_rows": "Drop rows where every cell is blank."
-  },
-  "hyperlinks": "URLs are usually Word hyperlinks: the visible cell text may be truncated or decorative — ALWAYS resolve the run's w:hyperlink r:id against word/_rels/document.xml.rels (TargetMode='External') and prefer the rel Target over visible text.",
-  "description_caution": "The Description column is the writer's own wording — NEVER use it as an acknowledgement {Title} for stock assets (Acks_Formats.json title_authority)."
- },
- "input_shapes": {
-  "separate": "Two files: one docx containing a [TITLE BAR] (the WT), one docx whose only substance is the media table (the media list).",
-  "combined": "One docx containing both the [TITLE BAR] content and a media table.",
-  "classification_rule": "Per uploaded file: has content_start fragment → WT; has media table but no content start → media list; has both → combined. Neither → red flag in summary (unrecognised document).",
-  "no_media_list": "If no media table is found anywhere, still generate the acknowledgements block (standing items + per-lesson designer-media check lines) and surface a clear summary warning."
- },
- "trailing_content": {
-  "rule": "Content after the final [end page] containing no headings and no interactives is writer-form boilerplate (copyright checklist tables etc.) — emit nothing; record one summary note. Trailing empty tables are always discarded."
- }
+	"_meta": {
+		"title": "Input Document Rules — reading the writer-provided .docx files",
+		"generated": "2026-06-12",
+		"purpose": "Machine-readable form of 00_Input_WordDoc_Interpretation_Rules.md: which parts of the Writers Template + Media List are real content, which are boilerplate to discard, how the docx is turned into the marker-text intermediate form, and how the media table's columns are recognised. DocxExtractor.js and MediaListParser.js read this file; nothing about input shapes is hard-coded.",
+		"extension_rule": "New boilerplate block, new media-table column heading, new red shade, new template signature = a data edit HERE, never a code change.",
+		"precedence": "Where 00-PageForge v1 docs disagree with this file or 00_Input_WordDoc_Interpretation_Rules.md, this file wins."
+	},
+	"content_start": {
+		"rule": "Real module content starts at the first RED span that opens the document. Detection chain, first hit wins: (1) LITERAL — a bracket fragment whose folded text is exactly one of content_start_fragments; (2) CANONICAL — the first red span whose primary tag resolves to one of content_start_canonicals (Fundamentals templates open with [Fundamental content] / [Fundamental 1 code] / a bare [Title] instead of [TITLE BAR] — verified on ARFUN01, MXFUN03, EXPFUN04); (3) NONE — convert ALL blocks and surface a loud summary warning (PageForge's own fallback). Everything before the start is template front-matter: not interpreted, not converted, not flagged.",
+		"content_start_fragments": [
+			"title bar"
+		],
+		"content_start_canonicals": [
+			"title bar",
+			"lesson content"
+		],
+		"content_start_fallback_directives": [
+			"ELEMENT",
+			"CONTAINER_OPEN"
+		],
+		"fallback_note": "Last chance before the convert-everything fallback: the first RED span whose primary resolves to one of these directive classes opens the document (EXPFUN06 opens at a bare [H1]; ART1005 similar — verified 12/06/26). Front-matter red spans ([tags] rows, damaged brackets) resolve to nothing, so they can never trigger this.",
+		"note": "Mid-document, the looser aliases (title/overview/introduction) are headings, never document starts (Tag_Normalisation_Spec.md page-boundary rule 4) — only the FIRST resolving span opens the document.",
+		"content_start_fragments_dropdown": [
+			"content for drop down menu",
+			"content for drop-down menu"
+		],
+		"_fragments_dropdown_note": "ROUND 212 (PNR101 family): the new MTK 'Te Aka Taumatua' bilingual template opens at [Content for DROP DOWN MENU] — recognised as a content start so the menu/overview is not trimmed as front matter. Kept in its OWN list (not content_start_fragments) so env REODROPMENU_OFF can revert the whole round faithfully. Measured: the exact bracketed marker exists in EXACTLY PNR101/102/104 corpus-wide."
+	},
+	"front_matter_blocks_documentation": [
+		"MTK WRITERS TEMPLATE / WRITERS TEMPLATE title block",
+		"Submission Checklist",
+		"LOT tags table (Numeracy/Literacy grid)",
+		"Sign-off line",
+		"Contents list (Section A / Section B)",
+		"'Understanding which section/s to complete' block",
+		"Section A — Merging Resources tables",
+		"Section B — New Content Development header + writer-guidance box",
+		"'Adjust the italicised text below' instruction lines",
+		"NOTE: this list is documentation only — the [TITLE BAR] boundary above is the actual discard mechanism (the list is never exhaustive)."
+	],
+	"red_runs": {
+		"rule": "A docx run is RED when its w:color val (lowercased) is in red_hex_values. Consecutive red runs in a paragraph merge into ONE red span, wrapped in the markers below — reproducing the exact intermediate form the validated corpus pipeline was built on.",
+		"red_hex_values": [
+			"ff0000",
+			"ee0000"
+		],
+		"marker_open": "🔴[RED TEXT] ",
+		"marker_close": " [/RED TEXT]🔴",
+		"collapse_whitespace_only": true,
+		"bridge_split_tag": true,
+		"bridge_split_tag_note": "ROUND 118 (Chris): Word can split a single uniform-RED [tag] into separate runs and DROP the colour on an interior space, fragmenting ONE tag across two [RED TEXT] marker spans (ANZH304 '[Please embed this journal story (as in ANZHFUN01 phase 2]'). DocxExtractor.#parseParagraph's red-merge loop now BRIDGES a stray non-red whitespace run that sits MID-TAG between two red runs — fires ONLY when the red text so far has an unbalanced '[' (mid-tag) AND the gap run is whitespace-only AND the next run is red, so it reassembles ONE split tag but NEVER merges across real black content (an intentional '[tag: black label]' form) or between two complete tags. The COMMON same-colour split (Word's usual run fragmentation, e.g. '[Tab 1: I'+'ntroduction'+']' -> [Tab 1: Introduction]) was ALREADY merged by the consecutive-red loop — this only adds the whitespace-gap variant. Measured rare (~1-2/60 modules) since the consecutive case dominates; gate-neutral by the tight guard. env REDBRIDGE_OFF reverts.",
+		"repair_missing_bracket": {
+			"enabled": true,
+			"forms": [
+				"missing-open"
+			],
+			"clean_hows": [
+				"exact",
+				"denumbered",
+				"denumbered_head"
+			],
+			"exclude_tags": [],
+			"rule": "ROUND 174 (Chris, ENGC101-00 'H2] Know:' bug). A writer occasionally drops a square bracket off a tag. TagNormaliser.Parse already repairs the two EDGE forms for CLASSIFICATION (a dangling '[x' with no ']', and a leading 'x]' with no '['), but ~10 OTHER red-span consumers (RenderText, the overview-menu partition, the black-tag strip, InteractiveScanner, ...) read the raw bracket structure and LEAK the literal — ENGC101-00 lost the 'Know' heading and shipped '<h5>H2]</h5>'. This fixes it ONCE at the source: when a CONTENT red span opens with a lone 'x]' (missing the '[') AND the token x resolves to a KNOWN tag by a WHOLE-token match (how in clean_hows — exact / denumbered / denumbered_head; NOT a tag-word EMBEDDED inside writer prose), the missing '[' is inserted into block.text so EVERY downstream consumer sees a well-formed '[x]'. Original case is preserved (RenderText needs it). GENERAL across every tag (lexicon-driven), NOT one module. Measured corpus-wide (outputs/_measure_malformed_brackets.cjs, 197-set): 162 missing-open red spans, ~73 with a clean token across 37 modules; how=embedded correctly rejects all 47 prose/instruction false positives ('that when they click/hover on the letter...' -> audio embedded; 'Please create a dropdown menu for each item]' -> dropdown embedded). The MISSING-CLOSE form ('[hover trigger: <def>' — 559 occ) is deliberately NOT touched: Parse's dangling repair + RenderText's optional ']?' already absorb it, and it is the deferred split-bracket infoTrigger lever (0 clean render-leaks). env BRACKETFIX_OFF reverts to leaking the literal."
+		},
+		"collapse_whitespace_only_note": "ROUND 79 (Chris, OSBY201-03): a merged red span whose entire content is WHITESPACE (a writer mis-coloured a space/tab red) is NOT wrapped in a [RED TEXT] marker — it is emitted as a single plain space. Without this, PageSplitter treats the empty marker as a standalone item and FRAGMENTS the paragraph (OSBY201-03 '**Banter is** like playful teasing' split into two <p> at a red space; corpus-wide 349 such paragraph fragmentations + 1234 cosmetic edge spans). A red span with any non-whitespace content (a real [tag]/instruction) is untouched — the strip fires ONLY on pure whitespace, so it can never drop a tag. Read by DocxExtractor.#parseParagraph; env REDWS_OFF reverts.",
+		"note": "Verified against OSAH401 Writers Template.docx: writers use ff0000 (Word default red) and ee0000. Other colours observed (316757 green, 3494ba blue, 00b050 green, bfbfbf grey) are content emphasis, never tags. New red shade seen in the wild = append the hex here."
+	},
+	"table_markers": {
+		"rule": "Docx tables are serialised into the corpus text-table form so the same downstream parsing applies to fresh uploads and the historical parsed corpus.",
+		"open": "┌─── TABLE ───",
+		"row_prefix": "│ ",
+		"column_separator": " ║ ",
+		"close": "└─── END TABLE ───",
+		"in_cell_line_break": " / "
+	},
+	"formatting_markers": {
+		"bold": "**",
+		"italic": "*",
+		"bullet_prefix": "• ",
+		"preserve_leading_space": true,
+		"note": "Matches the parsed corpus conventions: **bold**, *italic*, '• ' bullets. Numbered list items keep their literal numbers.",
+		"preserve_leading_space_round67_note": "ROUND 67 (Chris, OSBY201-01). A docx splits a styled phrase into its own run, and Word often keeps the inter-word SPACE INSIDE that styled run as a LEADING space (run 'their' has no trailing space; the bold run is ' wellbeing or hauora'). DocxExtractor#parseParagraph wrapped a bold/italic run with blackText.trim() (drops BOTH sides) but only restored the TRAILING space — so the leading space was lost and the words glued ('their<b>wellbeing…', 'house or<b>whare</b>'). Measured 326 Claude word+<b>/<i> glued / 144 pages vs the human's 80 (human ' <b>' spaced 4709×) — outputs/_measure_boldspace.py. When true, the engine restores the leading space SYMMETRICALLY, only when the run actually had one, so legitimately-glued cases (no leading space) are untouched. Env BOLDSPACE_OFF reverts to the drop form."
+	},
+	"front_matter_metadata": {
+		"rule": "The Section-A/B gray info table holds module-specific fields as 'Label: value' paragraphs in the front-matter (before content start). DocxExtractor captures the FILLED ones (a non-empty value after the colon) into run.metadata. This is the ONE place writers add module-specific data inside the otherwise-generic front-matter, so it is mined even though the front-matter is discarded for conversion.",
+		"fields": {
+			"subject": {
+				"labels": [
+					"subject"
+				]
+			},
+			"course": {
+				"labels": [
+					"course"
+				]
+			},
+			"moduleCode": {
+				"labels": [
+					"module code"
+				]
+			},
+			"keyContact": {
+				"labels": [
+					"key contact",
+					"key contact (name, email, extension)",
+					"key contact (name), (email), (extension)"
+				]
+			},
+			"dateSubmitted": {
+				"labels": [
+					"date submitted"
+				]
+			},
+			"moduleName": {
+				"labels": [
+					"module name"
+				]
+			}
+		},
+		"course_is_english_title_backup": "The 'Course' value is the module's English course/title (e.g. 'AI Digital Citizenship'). Used as the English title BACKUP when the [TITLE BAR] payload contains only a Te Reo title — the module must NEVER ship with a Te-Reo-only title (verified need: OSAI301's [TITLE BAR] held only 'Kirirarautanga Matihiko AI').",
+		"skip_empty_label_rows": "A paragraph that is just 'Label:' with no value is the blank template row — never captured.",
+		"table_row_fields": [
+			"moduleName"
+		],
+		"_table_row_fields_note": "ROUND 212: the PNR family's front matter carries its metadata as a TABLE ('Module Name | Nga tau: 1 | Numbers: 1'), not 'Label: value' paragraphs. Only the fields listed here are captured from 2-column table rows (label cell | value cell) — deliberately NOT course/moduleCode, so the Course-is-title-backup path can never start firing on modules it never fired on before. Used as the bilingual title source when the module has no [TITLE BAR] payload (PageAssembler; the value pipe-splits reo|english in payload order). Env REODROPMENU_OFF disables the table capture."
+	},
+	"paragraph": {
+		"soft_break_newline": true,
+		"rule": "ROUND 227 (Chris, the XDLS900 triage — the round-225 recorded lever). A writer's Shift+Enter stores a <w:br/> INSIDE the paragraph; the old w:t-only run extraction silently DELETED it, gluing the text on either side with no separator at all ('…ana”Through perseverance…') — corrupted text, measured 5,999 soft breaks across 357 of 429 WTs. When true, DocxExtractor contributes '\\n' at the break's own position in the run text (a <w:br> with type=page|column stays a page/column break — the page counter is untouched). The downstream machinery already handles multi-line text: renderBlackText emits one <p>/<li> per line — the MAJORITY gold form for soft-broken black paragraphs (outputs/_measure_softbreak.py: split-p 84 vs same-el-spaced 172-of-which-164-are-EXPFUN03's-house-style vs br 31 vs glued 0 on the top-8 carriers); Utils.Fold collapses \\s+ so tag classification is byte-identical; the round-225 proverbSplit boundary rules go dormant (the lines arrive already split). Env SOFTBR_OFF reverts to the glued extraction.",
+		"self_closed_skip": {
+			"enabled": true,
+			"rule": "ROUND 265 (CHFUN01, 2026-08-05). Word writes an EMPTY paragraph as a SELF-CLOSED <w:p w14:paraId=\"..\"/> (34 of them in CHFUN01, mostly empty table cells inside the Section-A textbox). DocxExtractor.#findClose counted each as an OPEN with no matching close, so the depth ratcheted up and a textbox-carrying paragraph's scan ran to end-of-body — the WHOLE module collapsed into ONE giant block: the front matter leaked into the output, every paragraph boundary was lost (bullets glued, [tags] fused into prose), and IsContentStart never saw the real [TITLE BAR]. When true, a self-closed <w:p .../> contributes NOTHING to the depth scan and is skipped as a top-level block (it has no content). MEASURED corpus-wide (outputs/_measure_selfclosedp.py, exact shipped-semantics replica over all 452 WTs): the block stream changes on EXACTLY 20 modules — 13 giant-ratchet repairs (CHFUN01/04/05/06/07, TRR110, TRR203 — its 'mega-paragraph' was THIS bug — TRR301, HPFUN403, HPFUN902, CEDR302, BLL264, SSOG103) + 7 cosmetic BLL boundary shifts; every selfP=0 module is untouchable BY CONSTRUCTION. Env toggle: SELFCLOSEP_OFF reverts to the ratchet."
+		}
+	},
+	"text_normalise": {
+		"enabled": true,
+		"nbsp_to_space": true,
+		"strip_zero_width": true,
+		"rule": "ROUND 241 (Dev-Feedback R4, E1 — SCCH302's 'AI marker' NBSP; the r227 extractor seam). Word documents carry invisible whitespace characters the writer never intended as content: the NON-BREAKING SPACE U+00A0 (autocorrect/paste residue — the developer flagged it as an 'AI marker'; SCCH302's own [TITLE BAR] Te Reo carries 5) and the ZERO-WIDTH characters U+200B/U+200C/U+200D/U+FEFF (paste residue from web sources). MEASURED corpus-wide (round 241, live docx scan): NBSP 15,198 occurrences across 416 of 429 WTs; zero-width 124 occurrences across 22 WTs; the converted corpus SHIPS 2,108 literal NBSPs on 298 pages while the gold library ships effectively none (37 literal on 7 pages — the human's ~1,026 '&nbsp;' ENTITIES on ~45 pages are deliberate layout, not writer residue). When enabled, DocxExtractor normalises each run's decoded w:t text at extraction (the same seam as the r227 soft-break fix): U+00A0 → a plain space (nbsp_to_space), and the zero-width set is deleted (strip_zero_width). GRANULARITY SAFETY (the r227 red-run trap): an NBSP-only run stays a non-empty whitespace piece (same trim()/Fold behaviour before and after — JS whitespace includes U+00A0), so red-span merging is untouched; a run the zero-width strip EMPTIES drops out exactly like an always-empty run — the tags gate (9557/9557 spans, REAL 0) is the authoritative granularity detector and is proven unchanged in the round's probes. Tag CLASSIFICATION is inert by construction either way (Utils.Fold collapses \\s+, and \\s matches U+00A0). Env NBSP_OFF reverts the whole normalisation (NBSPs and zero-width characters flow through to the page again)."
+	},
+	"render_text": {
+		"drop_punctuation_only": true,
+		"rule": "ROUND 104 (Chris, OSAH501-00 whakataukī ':' bug). TagNormaliser.RenderText extracts the ORIGINAL-CASE text a writer left OUTSIDE the brackets of a tag span (e.g. '[H1] INTRODUCTION' -> 'INTRODUCTION'). When the writer glues a STRAY PUNCTUATION character to the tag and nothing else ('[whakatauki]:' -> ':'), that residue is NOT content — it is writer noise — yet it leaked downstream as an embedded LEAD (the whakataukī box rendered a spurious '<p><b>:</b></p>' before the proverb). When true, a RenderText result that contains NO letter or digit in ANY script (Unicode \\p{L}/\\p{N} — macrons ā/ē/ī/ō/ū count as letters, so te reo is never dropped) is treated as EMPTY (''), so the noise vanishes and any '|| blackAfter' fallback chain falls through to the real content. ROBUST + GENERAL: handles any erroneous glued character (':', ';', '-', '.', '|', '(', ']', '*', '…') across EVERY tag and EVERY RenderText caller, not just whakataukī. CONSERVATIVE: a residue with even one letter/digit (a real embedded title/label) is untouched. Measured corpus-wide (outputs/_measure_strayleadpunct.cjs): 42 punctuation-only leads across 26 modules; the human renders none of them. Env STRAYLEAD_OFF reverts to leaking the punctuation residue."
+	},
+	"emoji_strip": {
+		"enabled": true,
+		"exempt": [
+			"✅",
+			"✓",
+			"✔",
+			"☑",
+			"✗",
+			"✘",
+			"❌",
+			"❎"
+		],
+		"exempt_extensions": {
+			"maths_operators": [
+				"✖",
+				"➗",
+				"➕",
+				"➖"
+			]
+		},
+		"arrow_map": {
+			"➡": "→",
+			"⬅": "←",
+			"⬆": "↑",
+			"⬇": "↓",
+			"⮕": "→"
+		},
+		"list_runs": true,
+		"drop_emptied": true,
+		"disclosure": "Emoji have been removed from this content per the no-emoji rule. Ticks and crosses are retained.",
+		"rule": "ROUND 234 (Chris — Change Ledger CL-0051, 16 Jul; the FIRST CL-0001/constraint-1 exception permitting deletion of writer characters). Emoji are stripped from rendered writer content: ListsAndRuns.EmojiStrip runs as a FULL-PAGE POST-PASS (the r213 LinkTextDisplay seam — after OmitPlaceholderResidue + TidyDeveloperNotes, before LinkTextDisplay/Indent, stopping at the acks block), so every emitter is covered uniformly and NO pre-render machinery can be disturbed: tag classification, the ✅-glued [TITLE BAR] fences (OSSC301/r230), the r192 ✅[Tile] delimiters, the r169 title splits and the 🔴 red-run sentinels all operate on block text long before this pass — post-pass placement makes them untouchable BY CONSTRUCTION. SCOPE = Unicode Extended_Pictographic grapheme CLUSTERS (base + VS15/16, skin tones U+1F3FB-FF, ZWJ sequences, keycap marks; regional-indicator flag pairs; a keycap digit keeps its digit and loses only the dressing), matched cluster-whole so a VS16 is NEVER orphan-stripped off a kept tick. 'exempt' = the ledger's ticks & crosses VERBATIM (✓✗✘ are not Extended_Pictographic and could never match anyway — listed for fidelity). 'exempt_extensions.maths_operators' = the ONE measured extension (✖➗➕➖ — meaning-bearing operators in maths content; gold keeps ✖ x12; ✖ is a cross by form, the ledger's own ☑ inclusion proves heavy/box variants count). 'arrow_map' = EP arrow emoji become PLAIN arrows instead of deletions (gold's own treatment — TEDC402 ships the writer's 'input🡪process🡪output' as 'input→process→output'; meaning kept, emoji removed). OUT OF SCOPE by the Unicode property (measured decisions, round-234 census outputs/_measure_emoji.py): the checkbox/ballot family ☐☒□🗹 (bilingual checklists + printable tick-sheets — 671 visible; the r212 checklist→bullet stays the reo-menu machinery), 🖵 phonics sound-boxes (BLL147), 🡪 (TEDC401 gold keeps it), plain →←, typographic ►●◦, private-use chars — none are emoji per Extended_Pictographic. CLAUSES: a run of 2+ consecutive PLAIN <p> lines each PREFIXED by a would-be-deleted cluster becomes ONE <ul> of <li> (the lead cluster dropped; measured 23 runs — CEDT104 '🎵Sing/🎵Do/🎵Feel', ARFUN02's instrument list; an exempt-led line like '✅ I did it.' never joins a run and stays a <p>); a LONE prefixed line stays a <p>; in-prose clusters are removed with spacing normalised (doubled spaces collapsed, space-before-punctuation healed — 'earn a star ⭐️.' → 'earn a star.'); a plain <p> the strip EMPTIED is dropped whole (drop_emptied — ARFUN02's 31 <p><b>🤔</b></p>; gold ships zero; a PRE-EXISTING empty <p> is never touched). DISCLOSURE: ONE visible note per affected page at the first removal, ledger wording verbatim in 'disclosure', emitted through NotesAndComments.redFlag (kind diagnostic → 'Red Flag:' prefix, red+bold, class cv2-note = gate-excluded by construction; NOTESCHEME_OFF legacy form applies to it like any note); a first removal inside the header/menu relocates the note to the top of the body (the r203 no-comments-in-menu rule). CONTAINMENTS (all measured): cv2-interactive placeholder subtrees (6,949 chars — the developer's verbatim hand-off, the r201/r213 class), cv2-note/cv2-comment payloads (writer quotes stay verbatim), the acks block (gold keeps oEmbed video titles verbatim + the converter's own ❗ ack-todo markers are functional chrome), <script>/<style>, tag ATTRIBUTES (population 0 measured), the {CODE}_interactives.txt hand-off (not HTML, untouched by construction), self-reflection emoji IMAGES (<img> assets — a text-level pass cannot touch them). NAMED CHANGE-LEDGER OVERRIDE deltas (gold keeps, the rule strips — captured in Subject_Global_Parameters._universal_conventions.cl0051_no_emoji, never chase): TEDC402's five feelings-scale faces in built tabs panes, OSBY301-class scattered keeps, TRR109/110+XGF9001+BLL120/252+XDLS908 singles; MXDI201/ENGS102's emoji-as-CONTENT vocab cards live inside cv2 dumps on our side today (unaffected) and are the recorded WATCH class for future widget-build rounds. Env EMOJISTRIP_OFF (or enabled:false) reverts the whole pass byte-for-byte: no strip, no list conversion, no disclosure note."
+	},
+	"wt_page_tracking": {
+		"rule": "Each content block is stamped with the Writers Template page it sits on, counted from: w:lastRenderedPageBreak elements (Word's own pagination record), explicit w:br type='page', and w:pageBreakBefore paragraph properties that are TRUE (bare element or val='1'/'true' — Google-Docs exports write val='0' meaning NO break; never count those).",
+		"first_page_number": 1,
+		"reliability_note": "Google-Docs-exported templates (verified on OSAH401) carry NO usable pagination records, so page numbers may stay at 1. The acks lesson-mapping therefore treats page records as only ONE evidence source — see media_item_lesson_mapping below.",
+		"page_records_usable_when": "the counted page total is at least min_pages_for_trust",
+		"min_pages_for_trust": 5
+	},
+	"media_item_lesson_mapping": {
+		"rule": "Mapping a media item to its lesson (for acksLesson grouping) uses the strongest available evidence, in order. Guessing is banned; every interpolated or fallback placement is reported in the conversion summary.",
+		"order": [
+			"1. CONTENT MATCH — the item's normalised URL (or unique asset ID) appears in exactly one lesson's content blocks → that lesson.",
+			"2. PAGE RECORDS — when the WT docx has usable pagination (see wt_page_tracking), the item's WTPg No. falls in one lesson's page span → that lesson.",
+			"3. NEIGHBOUR INTERPOLATION — media lists run in page order; an unmatched item between two items mapped to the SAME lesson belongs to that lesson. Between different lessons → the earlier lesson, and the placement is reported in the summary.",
+			"4. FALLBACK — remaining items go to the first content group, each reported in the summary (never dropped)."
+		]
+	},
+	"unsupported_pathways": [
+		{
+			"signature": "mtk writers template",
+			"where": "any paragraph before content start, folded",
+			"also_requires_code_prefix": [
+				"TRR"
+			],
+			"label": "MTK / Te Reo Rangatira (TRR) bilingual template",
+			"action": "Do not convert. Surface a clear visible notice in the conversion summary: this template follows a separate bilingual pathway (paired reo/eng elements) and must not be force-fitted through the standard rules.",
+			"note": "The 'MTK WRITERS TEMPLATE' heading ALSO appears in standard templates' front-matter (verified on OSAH401), so the signature alone is not enough — the module code prefix must match too."
+		}
+	],
+	"media_table": {
+		"identify_rule": "A docx table is THE media table when its first row matches at least min_header_matches of the column families below (folded, punctuation-insensitive). In a combined WT+media-list docx the media table is located anywhere in the document and is excluded from content conversion.",
+		"min_header_matches": 4,
+		"columns": {
+			"item_no": {
+				"aliases": [
+					"item no",
+					"item no.",
+					"item number",
+					"item",
+					"no",
+					"no."
+				]
+			},
+			"wt_page": {
+				"aliases": [
+					"wtpg no",
+					"wtpg no.",
+					"pg no",
+					"pg no.",
+					"page no",
+					"page no.",
+					"wt pg no",
+					"wtpg",
+					"page",
+					"pg"
+				]
+			},
+			"item_type": {
+				"aliases": [
+					"item type",
+					"type",
+					"media type"
+				]
+			},
+			"description": {
+				"aliases": [
+					"description",
+					"desc",
+					"item description"
+				]
+			},
+			"source": {
+				"aliases": [
+					"source",
+					"provider"
+				]
+			},
+			"url": {
+				"aliases": [
+					"url",
+					"link",
+					"web address",
+					"web link"
+				]
+			},
+			"ecr": {
+				"aliases": [
+					"ecr approval",
+					"ecr",
+					"approval",
+					"copyright approval",
+					"ecr approved"
+				]
+			}
+		},
+		"discard_rows": {
+			"example_row": {
+				"rule": "Drop any data row matching the template's worked example: item_no folded equals 'example', OR the description contains an example_signature.",
+				"example_signatures": [
+					"stock photo of a cheetah"
+				]
+			},
+			"reminder_rows": "Drop any full-width/merged row (a row with a single spanning cell) and any row whose first cell starts with 'reminder' — these are writer guidance, not items.",
+			"header_row": "The first (header) row itself is never an item.",
+			"empty_rows": "Drop rows where every cell is blank."
+		},
+		"hyperlinks": "URLs are usually Word hyperlinks: the visible cell text may be truncated or decorative — ALWAYS resolve the run's w:hyperlink r:id against word/_rels/document.xml.rels (TargetMode='External') and prefer the rel Target over visible text.",
+		"description_caution": "The Description column is the writer's own wording — NEVER use it as an acknowledgement {Title} for stock assets (Acks_Formats.json title_authority)."
+	},
+	"input_shapes": {
+		"separate": "Two files: one docx containing a [TITLE BAR] (the WT), one docx whose only substance is the media table (the media list).",
+		"combined": "One docx containing both the [TITLE BAR] content and a media table.",
+		"classification_rule": "Per uploaded file: has content_start fragment → WT; has media table but no content start → media list; has both → combined. Neither → red flag in summary (unrecognised document).",
+		"no_media_list": "If no media table is found anywhere, still generate the acknowledgements block (standing items + per-lesson designer-media check lines) and surface a clear summary warning."
+	},
+	"trailing_content": {
+		"rule": "Content after the final [end page] containing no headings and no interactives is writer-form boilerplate (copyright checklist tables etc.) — emit nothing; record one summary note. Trailing empty tables are always discarded."
+	}
 }

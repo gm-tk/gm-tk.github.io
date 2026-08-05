@@ -858,6 +858,35 @@ class InteractiveScanner {
 		return m ? m[1].replace(/\s+/g, "").toUpperCase() : null;
 	};
 
+	/**
+	 * True when a captured table is a MEDIA TABLE (ROUND 266 — the CHFUN
+	 * "[slideshow]" dialect): every non-empty cell carries an [image]/[video]
+	 * red-span tag AND a URL (an optional [caption] tag + text may follow in
+	 * the same cell), with at least `min_cells` such cells. Any other cell
+	 * shape (a caption-only cell, a text cell, a tag-less URL grid) fails the
+	 * test, so the rotate-banner / image|caption-table families never match.
+	 *
+	 * @param {Object} block - the table block
+	 * @param {Object} cfg - member_rule.media_table_terminates
+	 * @returns {boolean}
+	 */
+	static #isMediaTable(block, cfg = {}) {
+		const rows = block?.rows ?? [];
+		const tagRe = new RegExp(cfg.cell_tag_pattern ?? "\\[\\s*(image|video)\\s*\\]", "i");
+		let n = 0;
+		for (const r of rows) {
+			if (!Array.isArray(r)) return false;
+			for (const c of r) {
+				const raw = String(c ?? "");
+				if (!raw.trim()) continue;                       // empty cell — ignored
+				if (!tagRe.test(raw)) return false;              // a non-media cell → not a media table
+				if (!/https?:\/\//.test(raw)) return false;      // media tag without a URL → not clean
+				n++;
+			}
+		}
+		return n >= (cfg.min_cells ?? 2);
+	};
+
 	/** Next activity number on a collision: 1A → 1B; "1" → "1A". */
 	static #nextActivityId(id) {
 		const m = id.match(/^(.*?)([A-Za-z])$/);
@@ -962,6 +991,27 @@ class InteractiveScanner {
 				}
 				bundle.tables.push(next.block);
 				bundle.memberItems.push(next);
+				// MEDIA-TABLE TERMINATION (ROUND 266 — the CHFUN "[slideshow]" dialect,
+				// module CHFUN01, Chris's screenshot: "SEPARATE UNBUILT INTERACTIVE
+				// THAT IS ... AFTER THE CAROUSEL"). In that family the writer authors
+				// a slideshow as ONE table whose every cell is a media cell
+				// ([image]/[video] tag + URL, optional [caption]) — the table IS the
+				// whole widget, so the member walk ENDS right after capturing it.
+				// Without this, the carousel ran on past the table and swallowed the
+				// next section (the "[dropquiz] 1A Check your understanding" quiz)
+				// into its own hand-off box. Measured corpus-wide: the media-cell
+				// table form is EXACTLY the CHFUN family (5 modules, 38 table lines).
+				// Data member_rule.media_table_terminates; env CARMEDTBL_OFF.
+				{
+					const mtT = DataService.Data.BoundaryBank._meta.member_rule.media_table_terminates;
+					if (mtT && mtT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.CARMEDTBL_OFF)
+						&& (mtT.types ?? ["carousel"]).includes(bundle.type)
+						&& this.#isMediaTable(next.block, mtT)) {
+						j++;   // the table itself stays captured; the walk ends AFTER it
+						break;
+					}
+				}
 				continue;
 			}
 			if (next.type === "black") {           // free_text_content

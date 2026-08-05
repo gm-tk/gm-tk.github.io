@@ -99,6 +99,109 @@ class ReferenceMiner {
 	};
 
 	/**
+	 * The reference feature's PHASE classifier (ROUND 263) — the ONE shared
+	 * rule the UI filter dropdowns AND the "Make your own template" matcher
+	 * both use, so they can never drift apart. Enumerated over the real
+	 * library codes: FUN-infix → Fundamentals; a leading digit 9 → the 9xx
+	 * short-course series; 4 digits → NCEA; 3 digits → "<digit>xx"
+	 * (phases 1–5); anything else (the XLP01/XWHA01-class 2-digit
+	 * specials) → "other". Deliberately NOT ModuleResolver.PhaseKeyFor:
+	 * that serves the registry lookup and folds a leading 5 into NCEA,
+	 * which hides Phase 5 from a person choosing.
+	 *
+	 * @param {string} code - a module code, e.g. "OSAI501"
+	 * @returns {string} "1xx".."5xx" | "NCEA" | "FUN" | "9xx" | "other"
+	 */
+	static PhaseKey(code) {
+		if (/FUN/i.test(code)) return "FUN";
+		const digits = code.match(/(\d{2,4})/)?.[1] ?? "";
+		if (!digits) return "other";
+		if (digits[0] === "9") return "9xx";
+		if (digits.length === 4) return "NCEA";
+		if (digits.length === 3) return `${digits[0]}xx`;
+		return "other";
+	};
+
+	/**
+	 * THE "MAKE YOUR OWN TEMPLATE" MATCHER (ROUND 263, Gavin). Given a
+	 * chosen {subject, phase, template}, finds the library module whose
+	 * structure the conversion should inherit: the MOST TYPICAL module of
+	 * the narrowest non-empty matching pool. THE TEMPLATE IS NEVER
+	 * RELAXED — each template is a separate beast (Fundamentals/Inquiry
+	 * are one-page formats), so it dictates how content and lessons are
+	 * laid out; when no module matches all three choices the pool widens
+	 * by dropping PHASE first, then SUBJECT, always keeping the template:
+	 *   1. subject + phase + template
+	 *   2. subject + template          (phase relaxed)
+	 *   3. phase + template            (subject relaxed)
+	 *   4. template only               (the last resort)
+	 * "Most typical" = resolve every pool member's structural ruleset and
+	 * take the module agreeing with the pool's per-field MAJORITY on the
+	 * most tracked fields (ties → the most recently built, then
+	 * alphabetical) — i.e. the module that best embodies "the most common
+	 * templated attributes" of its pool.
+	 *
+	 * @param {{subject: string, phase: string, template: string}} spec
+	 * @returns {?{code: string, matched: string, n: number}} the chosen
+	 *   module + which pool matched + its size; null only if NO library
+	 *   module carries the chosen template at all
+	 */
+	static PickBySpec(spec) {
+		const meta = (typeof DataService !== "undefined"
+			&& DataService.Data?.ModuleStructureIndex?.module_meta) || {};
+		const all = Object.entries(meta);
+		const bySubj = ([, m]) => (m.subject || "") === spec.subject;
+		const byTpl = ([, m]) => m.template_type === spec.template;
+		const byPhase = ([c]) => this.PhaseKey(c) === spec.phase;
+		const pools = [
+			["subject + phase + template", all.filter((e) => bySubj(e) && byPhase(e) && byTpl(e))],
+			["subject + template", all.filter((e) => bySubj(e) && byTpl(e))],
+			["phase + template", all.filter((e) => byPhase(e) && byTpl(e))],
+			["template only", all.filter(byTpl)],
+		];
+		for (const [matched, pool] of pools) {
+			if (!pool.length) continue;
+			return { code: this.#mostTypical(pool), matched, n: pool.length };
+		}
+		return null;
+	};
+
+	/**
+	 * The most typical module of a pool: per tracked field, tally the
+	 * pool's resolved values and score each module by how many fields it
+	 * agrees with the majority on; the highest score wins (ties → highest
+	 * dev_order = most recent practice, then alphabetical — deterministic).
+	 *
+	 * @param {Array} pool - [code, meta] entries
+	 * @returns {string} the winning module code
+	 */
+	static #mostTypical(pool) {
+		const REG = (typeof DataService !== "undefined" && DataService.Data?.StyleRegistry) || {};
+		const fields = [...new Set([...(REG._meta?.universal_fields?.fields ?? []), "template_phase"])];
+		const resolved = pool.map(([c, m]) => {
+			const stub = { AddNote() { } };
+			let rules = {};
+			try { rules = ModuleResolver.Resolve(c, stub); } catch { /* keep {} */ }
+			return { code: c, devOrder: m.dev_order ?? -1, rules };
+		});
+		const majority = {};
+		for (const f of fields) {
+			const cnt = new Map();
+			for (const r of resolved) {
+				const k = JSON.stringify(r.rules[f] ?? null);
+				cnt.set(k, (cnt.get(k) ?? 0) + 1);
+			}
+			majority[f] = [...cnt.entries()].sort((a, b) => b[1] - a[1])[0][0];
+		}
+		const score = new Map(resolved.map((r) => [r.code,
+			fields.reduce((s, f) => s + (JSON.stringify(r.rules[f] ?? null) === majority[f] ? 1 : 0), 0)]));
+		resolved.sort((a, b) => (score.get(b.code) - score.get(a.code))
+			|| (b.devOrder - a.devOrder)
+			|| (a.code < b.code ? -1 : 1));
+		return resolved[0].code;
+	};
+
+	/**
 	 * Mines the Style-Anchor tracked fields out of uploaded reference HTML
 	 * pages and packages them as a distilled template. Never throws; a
 	 * field it cannot determine confidently is listed in `unmined` and NOT
@@ -294,6 +397,16 @@ class ReferenceMiner {
 		const label = inner.replace(/<[^>]*>/g, "").trim();
 		if (!label) return null;
 		if (refCode && label.toUpperCase() === refCode) return "full-code";
+		// ROUND 263 (module SCCH301's gold): a ZERO-PADDED two-digit lesson chip
+		// ("01".."09") is the registry's "padded-number" form — reading it as
+		// "decimal" would render "1.0" instead of "01". The leading zero is the
+		// discriminator (a genuine decimal chip never carries one).
+		// Data: Emit_Templates.reference_module.chip_padded_detect.
+		if (/^0\d$/.test(label)
+			&& (typeof DataService === "undefined"
+				|| DataService.Data?.EmitTemplates?.reference_module?.chip_padded_detect !== false)) {
+			return "padded-number";
+		}
 		if (/^\d+(?:\.\d+)?$/.test(label)) return "decimal";
 		return label;
 	};
@@ -323,7 +436,18 @@ class ReferenceMiner {
 		const i = head.indexOf("id=\"module-menu-button\"");
 		if (i < 0) return null;
 		const tag = head.slice(i, head.indexOf(">", i) + 1);
-		return /\btooltip="[^"]+"/.test(tag) ? "yes" : "no";
+		if (/\btooltip="[^"]+"/.test(tag)) return "yes";
+		// ROUND 263: 94 gold pages carry the tooltip on the module-menu-content
+		// div instead of the button (module SCCH301's form; 503 carry it on the
+		// button). Either placement mines "yes" — the converter always emits the
+		// button form, so this only fixes the MINED reading, never the output.
+		// Data: Emit_Templates.reference_module.tooltip_content_scan.
+		if (typeof DataService === "undefined"
+			|| DataService.Data?.EmitTemplates?.reference_module?.tooltip_content_scan !== false) {
+			const j = head.indexOf("id=\"module-menu-content\"");
+			if (j >= 0 && /\btooltip="[^"]+"/.test(head.slice(j, head.indexOf(">", j) + 1))) return "yes";
+		}
+		return "no";
 	};
 
 	/** The footer-nav composition ("prev+next+home" vocabulary), or null. */

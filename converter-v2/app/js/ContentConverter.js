@@ -106,6 +106,254 @@ class ContentConverter {
 	};
 
 	/**
+	 * LEVEL-PAGE FUNDAMENTALS PRE-PASS (ROUND 265 — the CHFUN "[PAGE N Novice]"
+	 * dialect, module CHFUN01).
+	 *
+	 * The Languages Fundamentals family writes ONE single-file module as a
+	 * sequence of "[PAGE N <Level>]" sections, grouped by named proficiency
+	 * LEVEL (Novice, Emergent, …). The human-built page turns that into the
+	 * standard fundamentals phase chrome, with the LEVELS as the phases:
+	 *   - each LEVEL becomes ONE fundamentalsPanel holding ALL of its pages
+	 *     (a phasebreak fires only when the level CHANGES);
+	 *   - every page keeps its own title (the marker's trailing text) as a
+	 *     section heading inside the panel — synthesized here as a writer-level
+	 *     [H1] item so the ordinary re-levelling machinery ranks it at the top
+	 *     of the page outline (h3), pushing the writer's [H2] section headings
+	 *     down to h4 exactly as the human ships them;
+	 *   - each page's "[Page Overview]" learning-intentions block (a bare
+	 *     "We are learning:" + bullets + "I can:" + bullets run) is captured
+	 *     and AGGREGATED BY LEVEL into the module menu's per-level tab panes;
+	 *   - the module's own [Overview] section: its [H3]-labelled LI/SC blocks
+	 *     go to the menu's Overview pane, its introduction prose STAYS in the
+	 *     body (it becomes the .introduction content), and the bare [Overview]
+	 *     marker itself renders nothing;
+	 *   - the "[Page content]" marker and the "[End of <X> Content]" /
+	 *     "[Start of <X>]" level separators are structural no-ops, consumed.
+	 *
+	 * Registry-gated (level_pages.registry — the CHFUN|combo group) AND
+	 * single-file page model, so no other module family can enter this path;
+	 * the "[page N]"-style markers used by the CED/XDLS families never match
+	 * the marker pattern (it requires a LEVEL WORD after the digit).
+	 *
+	 * @param {Object[]} bodyItems - the page's body items (mutated in place)
+	 * @param {ConversionRun} run - the conversion run (gains run._levelMenu)
+	 * @param {boolean} fundPanelMode - fundamentals mode is on for this page
+	 * @param {boolean} singleFilePage - registry page_model is "single-file"
+	 * @returns {{labels: string[], row: Object}|null} the level labels (in
+	 *   first-seen order) + the matched registry row, or null when the dialect
+	 *   does not apply
+	 *
+	 * Data: body_region.fundamentals_panels.level_pages.
+	 * Env toggle: LEVELPAGE_OFF (reverts the whole dialect).
+	 */
+	static #levelPagesPrepass(bodyItems, run, fundPanelMode, singleFilePage) {
+		const cfg = DataService.Data.EmitTemplates.body_region.fundamentals_panels?.level_pages;
+		if (!cfg || cfg.enabled === false || !fundPanelMode || !singleFilePage) return null;
+		if (typeof process !== "undefined" && process.env && process.env.LEVELPAGE_OFF) return null;
+		// registry row: this module's series override → its subject|template_phase group
+		const reg = cfg.registry || {};
+		let row = reg.series?.[run?.moduleCode] ?? null;
+		if (!row) {
+			const subj = (run?.moduleCode || "").match(/^[A-Za-z]+/)?.[0] || "";
+			const rawPhase = run?.resolvedRules?.template_phase ?? "";
+			const phase = DataService.Data.EmitTemplates.skeleton?.template_attr_map?.[rawPhase] ?? rawPhase;
+			const lk = `${subj}|${phase}`.toLowerCase();
+			const hit = Object.keys(reg.groups || {}).find((k) => k.toLowerCase() === lk);
+			row = hit ? reg.groups[hit] : null;
+		}
+		if (!row) return null;
+		const folded = (it) => (it.parse?.folded ?? "").trim();
+		const markerRe = new RegExp(cfg.marker_pattern || "^\\[page \\d+ \\p{L}+\\]$", "iu");
+		const isMarker = (it) => it.type === "tag" && it.consumedBy === undefined
+			&& it.parse?.primary?.directive === "PAGE_BOUNDARY" && it.parse?.primary?.tag === "page"
+			&& markerRe.test(folded(it));
+		if (bodyItems.filter(isMarker).length < (cfg.min_markers ?? 2)) return null;
+
+		const pageContentRe = new RegExp(cfg.page_content_pattern || "^\\[page content\\]$", "i");
+		const pageOvRe = new RegExp(cfg.page_overview_pattern || "^\\[page overview\\]$", "i");
+		const ovAliasRe = new RegExp(cfg.overview_alias_pattern || "^\\[overview\\]$", "i");
+		const noopRes = (cfg.noop_patterns || ["^\\[end of [^\\]]+ content\\]$", "^\\[start of [^\\]]+\\]$"])
+			.map((r) => new RegExp(r, "i"));
+		const liHeadRe = new RegExp(cfg.menu_li_heading_pattern || "learning intention", "i");
+		const scHeadRe = new RegExp(cfg.menu_sc_heading_pattern || "how will i know|success criteria", "i");
+		const stripRed = (s) => String(s || "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
+
+		const moduleMenu = { li: null, sc: null };
+		const menuLevels = [];
+		const levelIdx = new Map();
+		let curLevel = null;
+		const out = [];
+		for (let i = 0; i < bodyItems.length; i++) {
+			const it = bodyItems[i];
+			// ---- "[PAGE N <Level>]" — a level page opens ------------------
+			if (isMarker(it)) {
+				// original-case level word from the raw block text (folded is lowercased)
+				const raw = stripRed(String(it.block?.text ?? it.text ?? ""));
+				const m = raw.match(/\[\s*page\s+\d+\s+([^\]]+?)\s*\]/i);
+				const label = (m ? m[1] : "").replace(/\s+/g, " ").trim() || `Phase ${menuLevels.length + 1}`;
+				const key = label.toLowerCase();
+				if (!levelIdx.has(key)) {
+					levelIdx.set(key, menuLevels.length);
+					menuLevels.push({ label, li: { lead: "", bullets: [] }, sc: { lead: "", bullets: [] } });
+					out.push({ type: "phasebreak" });
+				}
+				curLevel = levelIdx.get(key);
+				// the marker's trailing text is the page's own section title —
+				// synthesized as a writer-level heading so #relevelHeadings ranks
+				// it at the top of the outline (data: title_writer_level)
+				const title = String(it.blackAfter || "").trim();
+				if (title) {
+					const wl = cfg.title_writer_level ?? 1;
+					out.push({ type: "tag", text: `[H${wl}]`, parse: this.#norm.Parse(`[H${wl}] `),
+						blackAfter: title, block: it.block });
+				}
+				continue;
+			}
+			if (it.type === "tag" && it.consumedBy === undefined) {
+				const f = folded(it);
+				// ---- "[Page content]" + level separators — structural no-ops -
+				if (pageContentRe.test(f) || noopRes.some((re) => re.test(f))) {
+					if ((it.blackAfter || "").trim()) out.push({ type: "black", text: it.blackAfter, block: it.block });
+					continue;
+				}
+				// ---- "[Page Overview]" — capture the LI/SC run BY LEVEL ------
+				if (curLevel !== null && pageOvRe.test(f)) {
+					const lines = [];
+					if ((it.blackAfter || "").trim()) lines.push(...String(it.blackAfter).split("\n"));
+					let j = i + 1;
+					while (j < bodyItems.length && bodyItems[j].type === "black"
+						&& bodyItems[j].consumedBy === undefined) {
+						lines.push(...String(bodyItems[j].text || "").split("\n"));
+						j++;
+					}
+					i = j - 1;
+					this.#levelMenuAbsorb(menuLevels[curLevel], lines, cfg);
+					continue;
+				}
+				// ---- the module's [Title] alias → the introduction heading ----
+				// (synthesized at the same writer level as the page titles, so
+				// the re-leveller ranks it h3 alongside them — the human's form)
+				if (curLevel === null && it.parse?.primary?.tag === "title bar"
+					&& new RegExp(cfg.title_alias_pattern || "^\\[title\\]$", "i").test(f)
+					&& (it.blackAfter || "").trim()) {
+					const wl = cfg.title_writer_level ?? 1;
+					out.push({ type: "tag", text: `[H${wl}]`, parse: this.#norm.Parse(`[H${wl}] `),
+						blackAfter: it.blackAfter, block: it.block });
+					continue;
+				}
+				// ---- the module's own [Overview] marker — renders nothing ----
+				if (curLevel === null && it.parse?.primary?.tag === "title bar" && ovAliasRe.test(f)) {
+					if ((it.blackAfter || "").trim()) out.push({ type: "black", text: it.blackAfter, block: it.block });
+					continue;
+				}
+				// ---- module-overview [H3]-labelled LI/SC block → menu --------
+				if (curLevel === null && /^h[1-6]$/.test(it.parse?.primary?.tag || "")
+					&& (liHeadRe.test(Utils.Fold(it.blackAfter || "")) || scHeadRe.test(Utils.Fold(it.blackAfter || "")))) {
+					const side = liHeadRe.test(Utils.Fold(it.blackAfter || "")) ? "li" : "sc";
+					const label = String(it.blackAfter || "").replace(/\*+/g, "").trim();
+					const lines = [];
+					let j = i + 1;
+					if (j < bodyItems.length && bodyItems[j].type === "tag"
+						&& bodyItems[j].consumedBy === undefined
+						&& bodyItems[j].parse?.primary?.tag === "body") {
+						if ((bodyItems[j].blackAfter || "").trim()) lines.push(...String(bodyItems[j].blackAfter).split("\n"));
+						j++;
+					}
+					while (j < bodyItems.length && bodyItems[j].type === "black"
+						&& bodyItems[j].consumedBy === undefined) {
+						lines.push(...String(bodyItems[j].text || "").split("\n"));
+						j++;
+					}
+					i = j - 1;
+					const bucket = { label, lead: "", bullets: [] };
+					this.#levelMenuLines(bucket, lines, cfg);
+					moduleMenu[side] = bucket;
+					continue;
+				}
+			}
+			out.push(it);
+		}
+		bodyItems.splice(0, bodyItems.length, ...out);
+		run._levelMenu = { module: moduleMenu, levels: menuLevels, row, cfg };
+		run.AddNote("info", "ContentConverter",
+			`Level-page fundamentals dialect: ${menuLevels.length} levels (${menuLevels.map((l) => l.label).join(", ")}) — panels grouped by level, [Page Overview] blocks routed to the module menu (fundamentals_panels.level_pages).`);
+		return { labels: menuLevels.map((l) => l.label), row };
+	};
+
+	/**
+	 * Absorbs one "[Page Overview]" run of lines into a LEVEL's menu bucket:
+	 * the run splits at the SC lead line ("I can:" …) into the LI side and the
+	 * SC side; each side's first non-bullet line becomes the lead (kept only
+	 * from the FIRST page of the level), and its bullet lines append to the
+	 * level's aggregated bullet list. (Part of the ROUND 265 level-pages
+	 * dialect above.)
+	 *
+	 * @param {Object} level - the level bucket { label, li: {lead, bullets},
+	 *   sc: {lead, bullets} }
+	 * @param {string[]} lines - the captured raw lines
+	 * @param {Object} cfg - the level_pages config block
+	 */
+	static #levelMenuAbsorb(level, lines, cfg) {
+		const scLeadRe = new RegExp(cfg.sc_lead_pattern || "^i can\\b", "i");
+		const liLeadRe = new RegExp(cfg.li_lead_pattern || "^we (are|'re) learning", "i");
+		const liLines = [], scLines = [];
+		let side = liLines;
+		for (const ln of lines) {
+			const t = ln.trim();
+			if (!t) continue;
+			if (side === liLines && scLeadRe.test(t.replace(/^[•◦▪\-\s]+/, ""))) side = scLines;
+			side.push(t);
+		}
+		const absorb = (bucket, ls, leadRe) => {
+			for (const t of ls) {
+				const bare = t.replace(/^[•◦▪]\s*/, "");
+				if (bare !== t || /^[-–]\s/.test(t)) bucket.bullets.push(this.#levelBullet(bare));
+				else if (!bucket.lead) bucket.lead = bare;
+				// a LATER page of the same level repeats the lead line ("We are
+				// learning:" …) — the human's aggregated pane keeps ONE lead and
+				// lists all the bullets under it, so a repeat is simply dropped
+				else if (leadRe.test(bare)) continue;
+				else bucket.bullets.push(this.#levelBullet(bare));
+			}
+		};
+		absorb(level.li, liLines, liLeadRe);
+		absorb(level.sc, scLines, scLeadRe);
+	};
+
+	/**
+	 * Fills one module-overview menu bucket from its captured lines (the
+	 * [Body] lead + bullet run under an [H3] LI/SC label). (Part of the
+	 * ROUND 265 level-pages dialect above.)
+	 *
+	 * @param {Object} bucket - { label, lead, bullets }
+	 * @param {string[]} lines - the captured raw lines
+	 * @param {Object} cfg - the level_pages config block
+	 */
+	static #levelMenuLines(bucket, lines, cfg) {
+		for (const ln of lines) {
+			const t = ln.trim();
+			if (!t) continue;
+			const bare = t.replace(/^[•◦▪]\s*/, "");
+			if (bare !== t) bucket.bullets.push(this.#levelBullet(bare));
+			else if (!bucket.lead) bucket.lead = bare;
+			else bucket.bullets.push(this.#levelBullet(bare));
+		}
+	};
+
+	/**
+	 * Normalises one menu bullet: markdown-bold markers stripped, a single
+	 * trailing comma dropped (the human's panes list bullets bare, with only
+	 * the final one keeping its full stop). (Part of the ROUND 265
+	 * level-pages dialect above.)
+	 *
+	 * @param {string} s - the raw bullet text
+	 * @returns {string}
+	 */
+	static #levelBullet(s) {
+		return String(s || "").replace(/\*+/g, "").trim().replace(/,$/, "");
+	};
+
+	/**
 	 * Converts one page.
 	 *
 	 * @param {Object} page - PageSplitter page (items carry parse results +
@@ -519,6 +767,22 @@ class ContentConverter {
 				bodyItems.splice(k, 1, ...repl);
 			}
 		}
+
+		// LEVEL-PAGE FUNDAMENTALS (ROUND 265 — the CHFUN "[PAGE N Novice]" dialect,
+		// module CHFUN01). The Languages Fundamentals family authors ONE single-file
+		// module as a sequence of "[PAGE N <Level>]" sections grouped by proficiency
+		// LEVEL (Novice, Emergent, …): each level becomes ONE fundamentalsPanel (all
+		// of its pages joined, each page keeping its own title as a section heading),
+		// the phases nav + phaseLink tiles are labelled with the LEVEL names, and the
+		// per-page "[Page Overview]" learning-intentions blocks are aggregated BY
+		// LEVEL into the module menu's per-level tab panes (the module's own
+		// [Overview] section's [H3]-labelled LI/SC blocks become the menu's Overview
+		// pane, while its introduction prose stays in the body's introduction).
+		// Registry-gated (fundamentals_panels.level_pages.registry — the CHFUN|combo
+		// group) + single-file page model, so no other module family can enter this
+		// path. Data: body_region.fundamentals_panels.level_pages.
+		// Env toggle: LEVELPAGE_OFF (reverts the whole dialect).
+		const lvInfo = this.#levelPagesPrepass(bodyItems, run, fundPanelMode, singleFilePage);
 
 		// INQUIRY TABBED TEMPLATE (the BLL "[Tab N] label-list" family): some modules present
 		// their content as a set of navigable "inquiry" panels labelled by a crumb-trail of
@@ -1081,6 +1345,17 @@ class ContentConverter {
 			if (it.type === "phasebreak") {
 				while (stack.length) emit(stack.pop().close);
 				breakRow();
+				// ROUND 266 (the level-pages dialect): the LEVEL ordinal becomes the
+				// page's activity-number prefix — the human numbers the boxes it
+				// invents around this family's task widgets 1A/1B/1C within the
+				// first level (the r217 "fundamentals number by PHASE" follow-up,
+				// derivable here because the level markers are explicit). Only the
+				// level-pages dialect sets run._levelMenu, so every other
+				// fundamentals family keeps its numberless pages exactly.
+				if (run._levelMenu) {
+					this.#pageLessonNumber = (typeof this.#pageLessonNumber === "number")
+						? this.#pageLessonNumber + 1 : 1;
+				}
 				parts.push(it.kind === "lesson" ? FUND_LESSON_SENTINEL : FUND_PHASETEXT_SENTINEL);
 				continue;
 			}
@@ -1233,7 +1508,33 @@ class ContentConverter {
 					const saOwner = saOn
 						? { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" }
 						: null;
-					const actOwner = bundle.activityOwner ?? (embeddedAct ? it : (reoOwner ?? saOwner));
+					// LEVEL-PAGES ID-LED TASK BUNDLE → ACTIVITY BOX (ROUND 266 — CHFUN01,
+					// Chris's screenshot: "SEPARATE UNBUILT INTERACTIVE THAT IS INSIDE AN
+					// ACTIVITY CONTAINER"). In the level-pages dialect the writer leads each
+					// task widget with its own activity id + title ("[dropquiz] … 1A Check
+					// your understanding"); the human wraps the widget in
+					// `<div class="activity interactive" number="1A">` with the title as the
+					// box's h3, renumbering the writer's ids (1A/3A/4A → 1A/1B/1C) in the
+					// level's own letter sequence — the phase ordinal set at the phasebreak
+					// above is the number prefix. Only run._levelMenu pages (the registry-
+					// gated dialect) can enter this branch; rides LEVELPAGE_OFF.
+					// Data: fundamentals_panels.level_pages.activity_box.
+					const lvCfgBox = run._levelMenu ? (run._levelMenu.cfg?.activity_box ?? {}) : null;
+					const lvLead = (lvCfgBox && lvCfgBox.enabled !== false
+						&& !reoMode && !bundle.activityOwner && bundle.activityId == null
+						&& !embeddedAct && !reoAct
+						&& this.#pageLessonNumber != null)
+						? String(it.blackAfter ?? "").trim()
+							.match(new RegExp(lvCfgBox.id_lead_pattern ?? "^(\\d+[A-Z])\\s+(\\S.*)$"))
+						: null;
+					const lvOwner = lvLead
+						? { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" }
+						: null;
+					// lvOwner OUTRANKS the r217 generic box: both wrap the widget in the
+					// same numbered `activity interactive` form, but the dialect's box
+					// also carries the writer's OWN title heading (a task type like
+					// radioQuiz can qualify for both — the titled form is the human's).
+					const actOwner = bundle.activityOwner ?? (embeddedAct ? it : (reoOwner ?? lvOwner ?? saOwner));
 					rowFor(actOwner ? "section" : "block");   // activity = own section row; inline widget flows
 					if (actOwner) {
 						// OSAI301 1A shape: render a REAL activity wrapper, its
@@ -1248,7 +1549,9 @@ class ContentConverter {
 							.some((t) => interactiveTypes.has(t))
 							// a round-217 SYNTHETIC standalone box is `activity interactive` by
 							// construction — the box only exists because of the widget it wraps
-							|| (actOwner === saOwner && saCfg?.force_interactive !== false);
+							|| (actOwner === saOwner && saCfg?.force_interactive !== false)
+							// … and so is a round-266 level-pages id-led box
+							|| (actOwner === lvOwner && lvCfgBox?.force_interactive !== false);
 						// A BUNDLE-OWNED activity (module BLL124, activities 2C/2D — the "interactive
 						// captured right after the opener" case) used to have NO lookahead for a
 						// supervisor note at all (its supervisorNote argument was hardcoded to null),
@@ -1269,8 +1572,15 @@ class ContentConverter {
 						// ActivitiesBuilder itself has no access to the normaliser (#norm) needed to do
 						// this rendering (see long_payload_as_content for the fuller explanation).
 						if (bSupNote) bSupNote._payloadText = this.#norm.RenderText(bSupNote.text ?? "");
-						emit(...ActivitiesBuilder.activityOpen(actOwner, stack, run, false, bundle.activityId, forceInt, bSupNote, this.#pageLessonNumber, this.#lessonLetterMap, actOwner === saOwner));
+						emit(...ActivitiesBuilder.activityOpen(actOwner, stack, run, false, bundle.activityId, forceInt, bSupNote, this.#pageLessonNumber, this.#lessonLetterMap, actOwner === saOwner || actOwner === lvOwner));
 						if (bSupNote) bSupNote.consumedBy = "activity-super-content";
+						// ROUND 266 (level-pages id-led box): the writer's own lead title —
+						// "1A Check your understanding" minus the id — is the box's heading
+						// (the human's h3), emitted as the box's first content.
+						if (actOwner === lvOwner && lvLead) {
+							emit(Utils.FillTemplate(lvCfgBox.title_heading ?? "<h3>{title}</h3>",
+								{ title: Utils.EscapeHtml(String(lvLead[2]).replace(/\*+/g, "").trim()) }));
+						}
 						// ROUND 229: actProse records whether this activity box emitted any PROSE
 						// content (title heading / lead body / lead table) ahead of its widget —
 						// the prose_interactive_rows split below only fires on a prose-carrying
@@ -2537,7 +2847,10 @@ class ContentConverter {
 			this.#dropNoteResidueBullets(this.#alertTitleHeading(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
 				this.#relevelHeadings(body.filter(Boolean).join("\n")))))),
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
-				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run }));   // "run" is passed through for the newTabNav registry lookup
+				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
+				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
+				// (fundamentals_panels.level_pages; env LEVELPAGE_OFF)
+				levelRow: lvInfo?.row, levelLabels: lvInfo?.labels }));   // "run" is passed through for the newTabNav registry lookup
 		// INQUIRY-mode wrapping also runs OUTERMOST: it turns the assembled body into
 		// "div.crumbs" + "div.inquiryPanel" elements at each "[Tab N]" sentinel position.
 		// inquiryActive then tells SkeletonBuilder whether to emit the inquiry page's body

@@ -765,6 +765,33 @@ class TagNormaliser {
 				}
 			}
 		}
+		// UNRESOLVED QUIZ-MARKER RETAG (ROUND 266 — CHFUN01, Chris's screenshot:
+		// "SEPARATE UNBUILT INTERACTIVE ... INSIDE AN ACTIVITY CONTAINER"). A span
+		// that resolved NO tags at all but opens with a known quiz-family marker
+		// ("[dropquiz]" — not in any alias list, so the whole span fell to an
+		// instruction note and the writer's quiz content leaked as loose body
+		// text) is retagged as the listed canonical INTERACTIVE, so the quiz
+		// opens its OWN bundle (an honest hand-off box, activity-boxed where the
+		// boxing rules apply). CONTAINMENT BY CONSTRUCTION: only zero-tag spans
+		// are touched — "[dropquiz][autocheck]" and every other span that already
+		// resolves anything is byte-unchanged (measured: the ~8 modules resolving
+		// via [autocheck] keep their typing-quiz bundles exactly).
+		// Data: Tag_Lexicon _meta.unresolved_marker_retag. Env toggle: DROPQUIZ_OFF.
+		if (!tags.length) {
+			const umr = this.#lexicon?._meta?.unresolved_marker_retag;
+			if (umr && umr.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.DROPQUIZ_OFF)) {
+				for (const rule of (umr.rules ?? [])) {
+					if (new RegExp(rule.head_pattern, "i").test(s)) {
+						const rt = { tag: rule.canonical, directive: rule.directive ?? "INTERACTIVE",
+							how: "marker_retag", alias: rule.canonical };
+						tags.push(rt);
+						primary = rt;
+						break;
+					}
+				}
+			}
+		}
 		if (tags.length) {
 			cls = "tag";
 		} else if (instructionFragment || this.#cuesRegex.test(s)

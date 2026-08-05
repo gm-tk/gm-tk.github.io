@@ -76,9 +76,56 @@ class App {
 	static #refPreviewToken = 0;
 	static #refCodesFilled = false;
 	static #refUserPicked = false;
+	// ROUND 256 — the currently-suggested reference code, so the list can mark
+	// its row with the red "recommended" note on every rebuild.
+	static #refSuggestedCode = null;
 	// ROUND 251 — the full library-code list, cached once so the type-to-filter
 	// box can rebuild the dropdown's options without re-reading the data.
+	// ROUND 254 — each row is enriched at fill time with its phase key
+	// (ModuleResolver.PhaseKeyFor — the engine's own classification) and a
+	// display subject, so the subject/phase filter dropdowns can narrow the
+	// list without re-deriving anything per keystroke.
 	static #refCodeRows = [];
+
+	// ROUND 254 — the phase-level display vocabulary: concise label per phase
+	// key, shown with a real example code from the library (filled at
+	// #fillReferenceCodes time), e.g. "Phase 3 · Years 7–8 (e.g. OSAI301)".
+	// ROUND 255 — COMPLETE list, enumerated from the actual library codes
+	// (Gavin: "search again to find ALL of the phases"): Phase 5 gets its own
+	// entry (OSAI501/CEDO501-class — the engine's registry classifier folds a
+	// leading 5 into NCEA for LOOKUP purposes, which is wrong for a person
+	// filtering, so the filter uses #refPhaseKey below instead).
+	static #RefPhaseLabels = {
+		"1xx": "Phase 1 · Years 1–3",
+		"2xx": "Phase 2 · Years 4–6",
+		"3xx": "Phase 3 · Years 7–8",
+		"4xx": "Phase 4 · Years 9–10",
+		"5xx": "Phase 5 · Years 11–13",
+		"NCEA": "NCEA · senior secondary",
+		"FUN": "Fundamentals",
+		// the 9xx series: short courses & specials (Explore pathways, the
+		// XDLS digital-literacy short courses, TWHK90x, the XGF 900x games)
+		"9xx": "9xx series · short courses",
+		"other": "Other",
+	};
+
+	/**
+	 * The FILTER's phase classifier (ROUND 255) — enumerates every phase
+	 * family actually present in the library (verified over all 454 codes:
+	 * 1xx 120 · 2xx 105 · 3xx 42 · 4xx 28 · 5xx 15 · NCEA 45 · FUN 61 ·
+	 * 9xx 30 · other 8). Deliberately NOT ModuleResolver.PhaseKeyFor: that
+	 * classifier serves the registry lookup and folds a leading 5 into
+	 * NCEA, hiding Phase 5 from a person filtering.
+	 *
+	 * @param {string} code - a module code, e.g. "OSAI501"
+	 * @returns {string} a key of #RefPhaseLabels
+	 */
+	static #refPhaseKey(code) {
+		// r267 — delegates to the ONE shared classifier (the engine's
+		// "Make your own template" matcher uses the same one, so the UI
+		// filter and the engine pool logic can never drift apart).
+		return ReferenceMiner.PhaseKey(code);
+	};
 
 	/**
 	 * STARTUP. Runs once, when the page finishes loading (wired up at the
@@ -228,15 +275,24 @@ class App {
 		// its own sub-block, and every change re-evaluates the Convert gate.
 		const refBlocks = () => {
 			const pick = document.getElementById(Config.Selectors.RefPick);
+			const custom = document.getElementById(Config.Selectors.RefCustom);
 			const html = document.getElementById(Config.Selectors.RefHtml);
 			const pb = document.getElementById(Config.Selectors.RefPickBlock);
+			const cb = document.getElementById(Config.Selectors.RefCustomBlock);
 			const hb = document.getElementById(Config.Selectors.RefHtmlBlock);
 			if (pb) pb.hidden = !pick?.checked;
+			if (cb) cb.hidden = !custom?.checked;   // r267 — Make your own template
 			if (hb) hb.hidden = !html?.checked;
 			this.#updateConvertGate();
 		};
-		for (const id of [Config.Selectors.RefPick, Config.Selectors.RefHtml]) {
+		for (const id of [Config.Selectors.RefPick, Config.Selectors.RefCustom, Config.Selectors.RefHtml]) {
 			document.getElementById(id)?.addEventListener("change", refBlocks);
+		}
+		// r267 — the three REQUIRED custom-template dropdowns only gate Convert
+		// (they never touch the library list; all options always shown).
+		for (const id of [Config.Selectors.RefCustomSubject, Config.Selectors.RefCustomPhase,
+			Config.Selectors.RefCustomTemplate]) {
+			document.getElementById(id)?.addEventListener("change", () => this.#updateConvertGate());
 		}
 		document.getElementById(Config.Selectors.RefCodeSelect)
 			?.addEventListener("change", () => {
@@ -249,10 +305,9 @@ class App {
 		// the full list. The current selection is never dropped by filtering.
 		document.getElementById(Config.Selectors.RefCodeFilter)
 			?.addEventListener("input", (e) => {
-				const filter = e.target.value;
-				this.#renderRefCodeOptions(filter);
+				this.#renderRefCodeOptions();
 				const sel = document.getElementById(Config.Selectors.RefCodeSelect);
-				const f = filter.trim().toUpperCase();
+				const f = e.target.value.trim().toUpperCase();
 				if (sel && f) {
 					const matches = this.#refCodeRows.filter((r) => r.code.includes(f));
 					if (matches.length === 1 && sel.value !== matches[0].code) {
@@ -260,6 +315,34 @@ class App {
 						this.#refUserPicked = true;
 					}
 				}
+				this.#updateConvertGate();
+			});
+		// ROUND 254 — the subject + phase filter dropdowns narrow the list the
+		// same way (all three filters combine); changing one re-renders and
+		// re-evaluates the gate. Filtering never drops the current selection.
+		// ROUND 257 — choosing a subject also REBUILDS the phase dropdown so
+		// it only offers the phases present in that subject (an invalidated
+		// phase choice resets to "All phases").
+		document.getElementById(Config.Selectors.RefSubjectFilter)
+			?.addEventListener("change", () => {
+				this.#renderPhaseOptions();
+				this.#renderTemplateOptions();   // r260 — templates narrow with the subject too
+				this.#renderRefCodeOptions();
+				this.#updateConvertGate();
+			});
+		for (const id of [Config.Selectors.RefPhaseFilter, Config.Selectors.RefTemplateFilter]) {
+			document.getElementById(id)?.addEventListener("change", () => {
+				this.#renderRefCodeOptions();
+				this.#updateConvertGate();
+			});
+		}
+		// ROUND 261 — the "Reset filters" button: clears the code text + all
+		// three dropdowns back to "show everything" (the current selection is
+		// untouched — it stays selected in the restored full list).
+		document.getElementById(Config.Selectors.RefFilterReset)
+			?.addEventListener("click", () => {
+				this.#clearRefFilters();
+				this.#renderRefCodeOptions();
 				this.#updateConvertGate();
 			});
 		document.getElementById(Config.Selectors.RefHtmlInput)
@@ -292,16 +375,32 @@ class App {
 		const btn = document.getElementById(Config.Selectors.ConvertButton);
 		if (!btn) return;
 		let ok = this.#files.length > 0;
+		// ROUND 258 — when the REFERENCE requirement is what blocks Convert,
+		// say so in red under the button (refBlocked drives the note below).
+		let refBlocked = false;
+		let noteText = Config.Strings.ConvertGateReference;
 		const panel = document.getElementById(Config.Selectors.ReferencePanel);
 		const cfg = DataService.Data?.EmitTemplates?.reference_module;
 		if (ok && cfg && cfg.enabled !== false && panel && !panel.hidden) {
 			if (document.getElementById(Config.Selectors.RefHtml)?.checked) {
 				ok = this.#refHtmlFiles.length > 0;
+			} else if (document.getElementById(Config.Selectors.RefCustom)?.checked) {
+				// r267 — "Make your own template": ALL THREE dropdowns required
+				ok = !!(document.getElementById(Config.Selectors.RefCustomSubject)?.value)
+					&& !!(document.getElementById(Config.Selectors.RefCustomPhase)?.value)
+					&& !!(document.getElementById(Config.Selectors.RefCustomTemplate)?.value);
+				noteText = Config.Strings.ConvertGateCustom;
 			} else {
 				ok = !!(document.getElementById(Config.Selectors.RefCodeSelect)?.value);
 			}
+			refBlocked = !ok;
 		}
 		btn.disabled = !ok;
+		const note = document.getElementById(Config.Selectors.ConvertGateNote);
+		if (note) {
+			note.hidden = !refBlocked;
+			note.textContent = refBlocked ? noteText : "";
+		}
 	};
 
 	/**
@@ -376,16 +475,58 @@ class App {
 		// selection is never clobbered; with no suggestion (and no manual
 		// pick) the placeholder "Please select a reference module" stays
 		// selected and the Convert gate keeps the button inactive.
-		// ROUND 251 — clear any leftover filter first so the suggestion is
-		// guaranteed to be present in the (full) option list.
+		// ROUND 256 — remember the suggestion so the list can mark its row
+		// with the red "recommended" note on every rebuild.
+		this.#refSuggestedCode = preview.suggestion?.code ?? null;
+		// ROUND 251/254 — clear any leftover filters first so the suggestion
+		// is guaranteed to be present in the (full) option list.
 		const sel = document.getElementById(Config.Selectors.RefCodeSelect);
 		if (sel && (!this.#refUserPicked || !sel.value)) {
-			const filterBox = document.getElementById(Config.Selectors.RefCodeFilter);
-			if (filterBox && filterBox.value) filterBox.value = "";
-			this.#renderRefCodeOptions("");
+			this.#clearRefFilters();
+			// ROUND 259 — with a recommended module, PRE-SELECT its subject +
+			// phase in the filter dropdowns too, so the visible list opens on
+			// the recommendation's own cohort (its subject may be absent from
+			// the subject list — e.g. an unclassified module — in which case
+			// the assignment is a no-op and "All subjects" stays).
+			const suggRow = this.#refSuggestedCode
+				? this.#refCodeRows.find((r) => r.code === this.#refSuggestedCode) ?? null
+				: null;
+			if (suggRow) {
+				const subjSel = document.getElementById(Config.Selectors.RefSubjectFilter);
+				if (subjSel && suggRow.subjectLabel) subjSel.value = suggRow.subjectLabel;
+				this.#renderPhaseOptions();      // phases now reflect that subject
+				this.#renderTemplateOptions();   // r260 — templates too
+				const phaseSel = document.getElementById(Config.Selectors.RefPhaseFilter);
+				if (phaseSel) phaseSel.value = suggRow.phaseKey ?? "";
+				// r260 — pre-select the recommendation's template as well (a
+				// template-less module leaves "All templates")
+				const tplSel = document.getElementById(Config.Selectors.RefTemplateFilter);
+				if (tplSel && suggRow.template_type) tplSel.value = suggRow.template_type;
+			}
+			this.#renderRefCodeOptions();
 			sel.value = preview.suggestion?.code ?? "";
+		} else {
+			// a manual pick stands — still refresh the list so the
+			// recommended row shows its note
+			this.#renderRefCodeOptions();
 		}
 		this.#updateConvertGate();
+	};
+
+	/** Clears the code/subject/phase filters back to "show everything" (ROUND 254). */
+	static #clearRefFilters() {
+		const filterBox = document.getElementById(Config.Selectors.RefCodeFilter);
+		if (filterBox) filterBox.value = "";
+		for (const id of [Config.Selectors.RefSubjectFilter, Config.Selectors.RefPhaseFilter,
+			Config.Selectors.RefTemplateFilter]) {
+			const s = document.getElementById(id);
+			if (s) s.value = "";
+		}
+		// r257/r260 — the phase + template lists mirror the (now-cleared) subject choice
+		if (this.#refCodesFilled) {
+			this.#renderPhaseOptions();
+			this.#renderTemplateOptions();
+		}
 	};
 
 	/**
@@ -409,33 +550,159 @@ class App {
 			el.textContent = "No module code found in the uploads yet — select a reference module below, or upload reference HTML.";
 			return;
 		}
+		// ROUND 261 — Gavin's wording/layout: two lines, no trailing
+		// why-phrase, the template named as "… Template".
 		const s = preview.suggestion;
 		if (s) {
 			const meta = s.meta ?? {};
-			const detail = [meta.series, meta.template_type].filter(Boolean).join(" · ");
-			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>. `
+			const detail = [meta.series, meta.template_type ? `${meta.template_type} Template` : null]
+				.filter(Boolean).join(" · ");
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>.<br>`
 				+ `Suggested reference: <strong>${Utils.EscapeHtml(s.code)}</strong>`
-				+ `${detail ? ` (${Utils.EscapeHtml(detail)})` : ""} — ${Utils.EscapeHtml(s.why)} (pre-selected below).`;
+				+ `${detail ? ` (${Utils.EscapeHtml(detail)})` : ""}`;
 		} else {
-			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>. `
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>.<br>`
 				+ `No suggested module exists in PageForge's distilled templates — please select a `
-				+ `reference module below, or upload reference HTML (Convert stays inactive until then).`;
+				+ `reference module below, or upload reference HTML.`;
 		}
 	};
 
 	/**
-	 * Caches the library-code list (once) and renders the full, unfiltered
-	 * dropdown. The placeholder option ("Please select a reference module")
-	 * is always the first, empty-value entry — it is what shows when no
-	 * suggestion exists and nothing was picked.
+	 * Caches the library-code list (once), enriches each row with its phase
+	 * key + display subject (ROUND 254), populates the subject and phase
+	 * filter dropdowns from the data actually present, and renders the
+	 * full, unfiltered list. The placeholder option ("Please select a
+	 * reference module") is always the first, empty-value entry — it is
+	 * what shows when no suggestion exists and nothing was picked.
 	 */
 	static #fillReferenceCodes() {
 		if (this.#refCodesFilled) return;
 		const rows = ReferenceMiner.ListLibraryCodes();
 		if (!rows.length) return;
-		this.#refCodeRows = rows;
-		this.#renderRefCodeOptions("");
+		// enrich: phase key via the filter's own complete classifier (r255);
+		// modules the index carries no subject for keep an empty subjectLabel —
+		// they show under "All subjects" but are NOT offered as a filter entry
+		// (Gavin: no "Unclassified" in the list).
+		this.#refCodeRows = rows.map((r) => ({
+			...r,
+			phaseKey: this.#refPhaseKey(r.code),
+			subjectLabel: r.subject || "",
+		}));
+
+		// subject dropdown: every distinct REAL subject in the library, sorted
+		const subjSel = document.getElementById(Config.Selectors.RefSubjectFilter);
+		if (subjSel) {
+			const subjects = [...new Set(this.#refCodeRows.map((r) => r.subjectLabel))]
+				.filter(Boolean).sort();
+			subjSel.insertAdjacentHTML("beforeend", subjects.map((s) =>
+				`<option value="${Utils.EscapeHtml(s)}">${Utils.EscapeHtml(s)}</option>`).join(""));
+		}
+		// phase + template dropdowns: rebuilt from the data (r257/r260 — and
+		// re-rebuilt whenever the subject filter changes, so they only offer
+		// what's present in that subject)
+		this.#renderPhaseOptions();
+		this.#renderTemplateOptions();
+
+		// r267 — the "Make your own template" dropdowns: filled ONCE with ALL
+		// available options (unlike the library filters, these never narrow —
+		// not by each other, and not by the module being converted).
+		this.#fillCustomOptions();
+
+		this.#renderRefCodeOptions();
 		this.#refCodesFilled = true;
+	};
+
+	/**
+	 * Fills the "Make your own template" dropdowns (ROUND 267) with every
+	 * available option: all real subjects, every phase family in the
+	 * library (concise label + example), and all template types. No
+	 * cascading, no narrowing — the full menus always.
+	 *
+	 * @returns {void}
+	 */
+	static #fillCustomOptions() {
+		const rows = this.#refCodeRows;
+		if (!rows.length) return;
+		const subjSel = document.getElementById(Config.Selectors.RefCustomSubject);
+		if (subjSel && subjSel.options.length <= 1) {
+			const subjects = [...new Set(rows.map((r) => r.subjectLabel))].filter(Boolean).sort();
+			subjSel.insertAdjacentHTML("beforeend", subjects.map((s) =>
+				`<option value="${Utils.EscapeHtml(s)}">${Utils.EscapeHtml(s)}</option>`).join(""));
+		}
+		const phaseSel = document.getElementById(Config.Selectors.RefCustomPhase);
+		if (phaseSel && phaseSel.options.length <= 1) {
+			const order = Object.keys(this.#RefPhaseLabels);
+			const pos = (k) => { const i = order.indexOf(k); return i < 0 ? order.length : i; };
+			const present = [...new Set(rows.map((r) => r.phaseKey))].sort((a, b) => pos(a) - pos(b));
+			phaseSel.insertAdjacentHTML("beforeend", present.map((p) => {
+				const example = rows.find((r) => r.phaseKey === p)?.code;
+				const label = `${this.#RefPhaseLabels[p] ?? p}${example ? ` (e.g. ${example})` : ""}`;
+				return `<option value="${Utils.EscapeHtml(p)}">${Utils.EscapeHtml(label)}</option>`;
+			}).join(""));
+		}
+		const tplSel = document.getElementById(Config.Selectors.RefCustomTemplate);
+		if (tplSel && tplSel.options.length <= 1) {
+			const templates = [...new Set(rows.map((r) => r.template_type))].filter(Boolean).sort();
+			tplSel.insertAdjacentHTML("beforeend", templates.map((t) =>
+				`<option value="${Utils.EscapeHtml(t)}">${Utils.EscapeHtml(t)}</option>`).join(""));
+		}
+	};
+
+	/**
+	 * (Re)builds the template dropdown's options (ROUND 260) — the distinct
+	 * template types present in the whole library, or in the chosen subject
+	 * when one is selected (mirrors #renderPhaseOptions). Modules the index
+	 * carries no template for stay visible under "All templates" but are not
+	 * offered as an entry; an invalidated choice resets to "All templates".
+	 *
+	 * @returns {void}
+	 */
+	static #renderTemplateOptions() {
+		const tplSel = document.getElementById(Config.Selectors.RefTemplateFilter);
+		if (!tplSel || !this.#refCodeRows.length) return;
+		const subj = document.getElementById(Config.Selectors.RefSubjectFilter)?.value ?? "";
+		const pool = subj
+			? this.#refCodeRows.filter((r) => r.subjectLabel === subj)
+			: this.#refCodeRows;
+		const present = [...new Set(pool.map((r) => r.template_type))].filter(Boolean).sort();
+		const current = tplSel.value;
+		tplSel.innerHTML = `<option value="">All templates</option>`
+			+ present.map((t) =>
+				`<option value="${Utils.EscapeHtml(t)}">${Utils.EscapeHtml(t)}</option>`).join("");
+		tplSel.value = present.includes(current) ? current : "";
+	};
+
+	/**
+	 * (Re)builds the phase dropdown's options (ROUND 257). The pool is the
+	 * whole library, or — when a subject is chosen — only that subject's
+	 * modules, so the dropdown always reflects the phases actually present
+	 * in what's being viewed. Each option keeps the concise label + a real
+	 * example code drawn FROM the pool (so with "Online Safety" chosen the
+	 * Phase 5 example is an OS module, not a CED one). A phase choice the
+	 * new pool doesn't contain resets to "All phases".
+	 *
+	 * @returns {void}
+	 */
+	static #renderPhaseOptions() {
+		const phaseSel = document.getElementById(Config.Selectors.RefPhaseFilter);
+		if (!phaseSel || !this.#refCodeRows.length) return;
+		const subj = document.getElementById(Config.Selectors.RefSubjectFilter)?.value ?? "";
+		const pool = subj
+			? this.#refCodeRows.filter((r) => r.subjectLabel === subj)
+			: this.#refCodeRows;
+		const order = Object.keys(this.#RefPhaseLabels);
+		// a phase key the label table doesn't know sorts LAST (indexOf -1
+		// would otherwise sort it first) and shows its raw key as the label
+		const pos = (k) => { const i = order.indexOf(k); return i < 0 ? order.length : i; };
+		const present = [...new Set(pool.map((r) => r.phaseKey))].sort((a, b) => pos(a) - pos(b));
+		const current = phaseSel.value;
+		phaseSel.innerHTML = `<option value="">All phases</option>`
+			+ present.map((p) => {
+				const example = pool.find((r) => r.phaseKey === p)?.code;
+				const label = `${this.#RefPhaseLabels[p] ?? p}${example ? ` (e.g. ${example})` : ""}`;
+				return `<option value="${Utils.EscapeHtml(p)}">${Utils.EscapeHtml(label)}</option>`;
+			}).join("");
+		phaseSel.value = present.includes(current) ? current : "";
 	};
 
 	/**
@@ -451,34 +718,72 @@ class App {
 	 * the "showing N of M modules" line underneath narrates it, and the
 	 * selected row is scrolled into view.
 	 *
-	 * @param {string} filter - the filter box's current text ("" = full list)
+	 * ROUND 254 — the text filter now COMBINES with the subject and phase
+	 * dropdowns (all three read from the DOM here); the count line names
+	 * every active filter.
+	 *
 	 * @returns {void}
 	 */
-	static #renderRefCodeOptions(filter) {
+	static #renderRefCodeOptions() {
 		const sel = document.getElementById(Config.Selectors.RefCodeSelect);
 		if (!sel) return;
 		const current = sel.value;
-		const f = (filter ?? "").trim().toUpperCase();
+		const text = (document.getElementById(Config.Selectors.RefCodeFilter)?.value ?? "").trim();
+		const f = text.toUpperCase();
+		const subj = document.getElementById(Config.Selectors.RefSubjectFilter)?.value ?? "";
+		const phase = document.getElementById(Config.Selectors.RefPhaseFilter)?.value ?? "";
+		const tpl = document.getElementById(Config.Selectors.RefTemplateFilter)?.value ?? "";
+		// ROUND 257 — the RECOMMENDED module is PINNED to the top of the list,
+		// no matter what filters are active (it renders first, right after the
+		// placeholder, and is excluded from its alphabetical position below).
+		const suggested = this.#refSuggestedCode
+			? this.#refCodeRows.find((r) => r.code === this.#refSuggestedCode) ?? null
+			: null;
 		const rows = this.#refCodeRows.filter((r) => {
+			if (suggested && r.code === suggested.code) return false;   // pinned above
 			if (r.code === current) return true;   // never drop the selection
+			if (subj && r.subjectLabel !== subj) return false;
+			if (phase && r.phaseKey !== phase) return false;
+			if (tpl && r.template_type !== tpl) return false;   // r260
 			if (!f) return true;
 			const detail = [r.subject, r.template_type].filter(Boolean).join(" · ");
 			return r.code.includes(f) || detail.toUpperCase().includes(f);
 		});
-		sel.innerHTML = `<option value="">Please select a reference module</option>`
-			+ rows.map((r) => {
-				const detail = [r.subject, r.template_type].filter(Boolean).join(" · ");
-				return `<option value="${Utils.EscapeHtml(r.code)}">${Utils.EscapeHtml(r.code)}${detail ? ` — ${Utils.EscapeHtml(detail)}` : ""}</option>`;
-			}).join("");
+		// ROUND 256 — the suggested module's row carries a red "recommended"
+		// note (class-styled; options can't hold real badges, so it's styled
+		// text on the row).
+		const optionFor = (r, rec) => {
+			const detail = [r.subject, r.template_type].filter(Boolean).join(" · ");
+			return `<option value="${Utils.EscapeHtml(r.code)}"${rec ? ` class="ref-recommended"` : ""}>`
+				+ `${Utils.EscapeHtml(r.code)}${detail ? ` — ${Utils.EscapeHtml(detail)}` : ""}`
+				+ `${rec ? " — ★ recommended" : ""}</option>`;
+		};
+		// ROUND 258 — with a recommended module pinned (and therefore
+		// pre-selected), the "Please select a reference module" placeholder
+		// row is dropped entirely: a real selection always exists, so the
+		// prompt row is just noise. Without a suggestion the placeholder
+		// stays — it is the visible "nothing chosen yet" state the Convert
+		// gate keys on.
+		sel.innerHTML = (suggested ? "" : `<option value="">Please select a reference module</option>`)
+			+ (suggested ? optionFor(suggested, true) : "")
+			+ rows.map((r) => optionFor(r, false)).join("");
 		sel.value = current;   // restore ("" when nothing was selected)
 		sel.selectedOptions[0]?.scrollIntoView({ block: "nearest" });
 		const count = document.getElementById(Config.Selectors.RefCodeCount);
 		if (count) {
 			const total = this.#refCodeRows.length;
-			count.textContent = f
-				? `Showing ${rows.length} of ${total} library modules matching “${filter.trim()}”`
-					+ (rows.length ? "" : " — no matches; clear the box to see the full list")
-				: `Showing all ${total} library modules — type above to filter`;
+			const visible = rows.length + (suggested ? 1 : 0);   // r257: incl. the pinned row
+			const active = [];
+			if (f) active.push(`matching “${text}”`);
+			if (subj) active.push(`subject: ${subj}`);
+			if (phase) active.push(`phase: ${this.#RefPhaseLabels[phase] ?? phase}`);
+			if (tpl) active.push(`template: ${tpl}`);
+			count.textContent = active.length
+				? `Showing ${visible} of ${total} library modules — ${active.join(" · ")}`
+					+ (rows.length ? "" : (suggested
+						? " — only the recommended module matches nothing here; clear a filter to widen the list"
+						: " — no matches; clear a filter to widen the list"))
+				: `Showing all ${total} library modules — filter by code, subject or phase above`;
 		}
 	};
 
@@ -849,7 +1154,23 @@ class App {
 			// branches below only fire if the gate was somehow bypassed.
 			let referenceCode = null;
 			let referenceHtmlFiles = null;
-			if (document.getElementById(Config.Selectors.RefHtml)?.checked && this.#refHtmlFiles.length) {
+			let referenceSpec = null;
+			if (document.getElementById(Config.Selectors.RefCustom)?.checked) {
+				// r267 — "Make your own template": the three required choices
+				const spec = {
+					subject: document.getElementById(Config.Selectors.RefCustomSubject)?.value ?? "",
+					phase: document.getElementById(Config.Selectors.RefCustomPhase)?.value ?? "",
+					template: document.getElementById(Config.Selectors.RefCustomTemplate)?.value ?? "",
+				};
+				if (spec.subject && spec.phase && spec.template) {
+					referenceSpec = spec;
+					this.#log(`Reference module: making your own template — ${spec.subject} · `
+						+ `${this.#RefPhaseLabels[spec.phase] ?? spec.phase} · ${spec.template} `
+						+ `(the converter will inherit from the most typical matching library module; the template always leads).`);
+				} else {
+					this.#log("⚠ 'Make your own template' is selected but not all three choices were made — converting from the module's own registry home.");
+				}
+			} else if (document.getElementById(Config.Selectors.RefHtml)?.checked && this.#refHtmlFiles.length) {
 				referenceHtmlFiles = await Promise.all(this.#refHtmlFiles.map(
 					async (f) => ({ name: f.name, text: await f.text() })));
 				this.#log(`Reference module: mining ${referenceHtmlFiles.length} uploaded HTML page(s) — a distilled template file will be included in the outputs to send to Gavin.`);
@@ -864,7 +1185,7 @@ class App {
 					this.#log("⚠ No reference module was selected — converting from the module's own registry home.");
 				}
 			}
-			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles, referenceCode, referenceHtmlFiles });
+			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles, referenceCode, referenceHtmlFiles, referenceSpec });
 			if (!prep.ok && prep.reason === "no-wt") {
 				this.#log("🔴 No Writers Template found among the uploads (no [TITLE BAR]/[Fundamental content] opener). Nothing converted.");
 				this.#progressHide();
@@ -988,13 +1309,17 @@ class App {
 				["Te Reo title", md.teReoTitle],
 				["Key contact", md.keyContact],
 				["Date submitted", md.dateSubmitted],
-				["Image mode", run.imageMode],
+				// r262 — plain language ("P"/"D" are internal codes)
+				["Image mode", run.imageMode === "P" ? "Placeholder images" : "Direct images"],
 				// ROUND 249 — which reference module steered the page structure.
-				["Reference module", run.referenceCode
-					? `${run.referenceCode} (chosen at upload)`
-					: (run.referenceDistilled
-						? `distilled from uploaded HTML${run.referenceDistilled.referenceCode ? ` (${run.referenceDistilled.referenceCode})` : ""}`
-						: null)],
+				// r267 — the custom-template choice names its spec + the module chosen.
+				["Reference module", run.referenceSpec
+					? `custom template (${run.referenceSpec.subject} · ${this.#RefPhaseLabels[run.referenceSpec.phase] ?? run.referenceSpec.phase} · ${run.referenceSpec.template})${run.referenceCode ? ` — built from ${run.referenceCode}` : ""}`
+					: run.referenceCode
+						? `${run.referenceCode} (chosen at upload)`
+						: (run.referenceDistilled
+							? `distilled from uploaded HTML${run.referenceDistilled.referenceCode ? ` (${run.referenceDistilled.referenceCode})` : ""}`
+							: null)],
 				["Interactive mode", run.interactiveMode === "extract" ? "hand-off (raw content collapsed in-page, expandable)" : "inline (legacy)"],
 				["iStock acks file", run.istockAcks ? `${run.istockAcks.size} verified titles` : (run.istockAcksSupplied ? "supplied, but no usable entries" : "none supplied")],
 				// ROUND 236 — how many iStock titles had to be derived from the
@@ -1121,21 +1446,31 @@ class App {
 		this.#refHtmlFiles = [];
 		this.#refPreview = null;
 		this.#refUserPicked = false;
+		this.#refSuggestedCode = null;   // r256 — no recommended row without files
 		this.#renderRefHtmlList();
 		const refPick = document.getElementById(Config.Selectors.RefPick);
 		if (refPick) refPick.checked = true;
-		const refHtml = document.getElementById(Config.Selectors.RefHtml);
-		if (refHtml) refHtml.checked = false;
+		for (const id of [Config.Selectors.RefCustom, Config.Selectors.RefHtml]) {
+			const r = document.getElementById(id);
+			if (r) r.checked = false;
+		}
 		const pickBlock = document.getElementById(Config.Selectors.RefPickBlock);
 		if (pickBlock) pickBlock.hidden = false;
-		const htmlBlock = document.getElementById(Config.Selectors.RefHtmlBlock);
-		if (htmlBlock) htmlBlock.hidden = true;
+		for (const id of [Config.Selectors.RefCustomBlock, Config.Selectors.RefHtmlBlock]) {
+			const b = document.getElementById(id);
+			if (b) b.hidden = true;
+		}
+		// r267 — the custom-template dropdowns back to their required-empty state
+		for (const id of [Config.Selectors.RefCustomSubject, Config.Selectors.RefCustomPhase,
+			Config.Selectors.RefCustomTemplate]) {
+			const s = document.getElementById(id);
+			if (s) s.value = "";
+		}
 		const refSel = document.getElementById(Config.Selectors.RefCodeSelect);
 		if (refSel) refSel.value = "";
-		// ROUND 251 — clear the type-to-filter box + restore the full list
-		const refFilter = document.getElementById(Config.Selectors.RefCodeFilter);
-		if (refFilter) refFilter.value = "";
-		if (this.#refCodesFilled) this.#renderRefCodeOptions("");
+		// ROUNDS 251/254 — clear the code/subject/phase filters + restore the full list
+		this.#clearRefFilters();
+		if (this.#refCodesFilled) this.#renderRefCodeOptions();
 
 		// hide the reset button again + scroll to the top (section 1 · Upload)
 		const resetPanel = document.getElementById(Config.Selectors.ResetPanel);

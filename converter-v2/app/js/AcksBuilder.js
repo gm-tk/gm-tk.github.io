@@ -897,11 +897,26 @@ class AcksBuilder {
 	static #todoFromEntry(item, entry, run) {
 		const fmt = DataService.Data.AcksFormats;
 		run.CountAckTodo();
-		const inner = String(entry.html).replace(/^\s*<p>/, "").replace(/<\/p>\s*$/, "");
+		let inner = String(entry.html).replace(/^\s*<p>/, "").replace(/<\/p>\s*$/, "");
+		// ROUND 269 (Gavin, the SCBI301 double-❗ report) — ONE MARKER EVER:
+		// an UNVERIFIED iStock entry (round 236) already starts with the ❗
+		// marker, and the ackTodo visible_form wrapper below prepends its
+		// own — so an item that is BOTH unverified AND of an unknown type
+		// shipped "❗ ❗ …". Strip the entry's own leading marker before
+		// wrapping; the visible form's single ❗ carries the flag for both
+		// (the unverified id was already recorded for the top designer note,
+		// and both machine-readable comments still ship below).
+		const marker = (DataService.Data.AcksFormats.istock_unverified?.marker ?? "❗ ").trim();
+		if (marker && inner.startsWith(marker)) {
+			inner = inner.slice(marker.length).replace(/^\s+/, "");
+		}
 		const type = String(item.itemType ?? "").replace(/"/g, "'");
 		return {
 			html: Utils.FillTemplate(fmt.ack_todo.visible_form, { entryLineWithBracketedSlots: inner }),
-			todoComment: `<!-- ACK-TODO[unknown-type] type="${type}" item="${item.itemNo}" -->`,
+			// r269 — an unverified entry's own comment rides along, so neither
+			// signal is lost when the two flags meet on one line
+			todoComment: `<!-- ACK-TODO[unknown-type] type="${type}" item="${item.itemNo}" -->`
+				+ (entry.todoComment ? `\n${entry.todoComment}` : ""),
 			sourceClass: "todo",
 			item,
 		};

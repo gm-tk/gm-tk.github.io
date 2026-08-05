@@ -106,7 +106,7 @@ class PanelsBuilder {
 	 * Data: body_region.fundamentals_panels. Env FUNDPANEL_OFF (checked by
 	 * the caller before even calling this method, via the `on` flag above).
 	 */
-	static fundamentalsPanels(body, { on, sentinel, lessonSentinel, phaseTextSentinel, run } = {}) {
+	static fundamentalsPanels(body, { on, sentinel, lessonSentinel, phaseTextSentinel, run, levelRow, levelLabels } = {}) {
 		const cfg = DataService.Data.EmitTemplates.body_region.fundamentals_panels;
 		const sent = sentinel || (cfg && cfg.sentinel) || "<!--CV2_FUNDPANEL-->";
 		const lsent = lessonSentinel || (cfg && cfg.lesson_sentinel) || "<!--CV2_FUNDPHASE-->";
@@ -150,7 +150,14 @@ class PanelsBuilder {
 			// Env FUNPANACC_OFF disables this accordion-as-phases variant.
 			const accRow = this.#phaseTextDialectRow(run);
 			let nav, tilesRow;
-			if (accRow) {
+			// LEVEL-PAGE dialect (ROUND 265 — the CHFUN "[PAGE N Novice]" family):
+			// the caller (ContentConverter's level-pages pre-pass) supplies the
+			// LEVEL names as the nav/tile labels and the matched registry row's
+			// own tile templates. Data: fundamentals_panels.level_pages.
+			// Env LEVELPAGE_OFF (the caller never passes levelRow when set).
+			if (levelRow) {
+				({ nav, tilesRow } = this.#levelPagesNav(panelSegs, levelRow, pc, levelLabels));
+			} else if (accRow) {
 				({ nav, tilesRow } = this.#phaseTextDialect(panelSegs, intro, accRow, pc));
 			} else {
 				nav = (pc.phases_nav_open || "<div class=\"phases\">") + "\n";
@@ -165,7 +172,19 @@ class PanelsBuilder {
 				// (just the intro content, no tile row).
 				({ tilesRow } = this.phaseNavTiles(panelSegs));
 			}
-			const introInner = [intro, tilesRow].filter(Boolean).join("\n");
+			// ROUND 265 (level-pages): the human nests the phaseLink tile row
+			// INSIDE the introduction's own content column (not as a sibling
+			// row after it) — when the registry row asks for that and the intro
+			// actually ends with a closed row>col pair, tuck the tile row in
+			// just before those two closing tags. Any other shape falls back to
+			// the plain "tiles after the intro" form below.
+			let introInner;
+			if (levelRow && levelRow.tiles_inside_col !== false && tilesRow
+				&& /<\/div>\s*<\/div>\s*$/.test(intro)) {
+				introInner = intro.replace(/(<\/div>\s*<\/div>\s*)$/, tilesRow + "\n$1");
+			} else {
+				introInner = [intro, tilesRow].filter(Boolean).join("\n");
+			}
 			const introBlock = introInner
 				? (pc.intro_open || "<div class=\"introduction\">") + "\n" + introInner + "\n" + (pc.intro_close || "</div>")
 				: "";
@@ -349,6 +368,68 @@ class PanelsBuilder {
 		}
 		const tilesRow = tiles.length
 			? (row.tiles_open || "<div class=\"row phaseContainer noPhase\">") + "\n"
+				+ tiles.join("\n") + "\n" + (row.tiles_close || "</div>")
+			: "";
+		return { nav, tilesRow };
+	};
+
+	/**
+	 * Builds the LEVEL-PAGES nav/tile variant (ROUND 265 — the CHFUN
+	 * "[PAGE N Novice]" family; the FOURTH distinct nav/tile layout in this
+	 * file). The labels are the writers' own LEVEL NAMES ("Novice",
+	 * "Emergent", …), captured by ContentConverter's level-pages pre-pass and
+	 * passed straight in — they are NOT derived from panel headings here.
+	 * Tiles show ALL levels in one row; each tile's image is that level
+	 * panel's own first content <img> (keeping that image's own alt text —
+	 * the human's tiles reuse the source image's alt); a panel with no image
+	 * ships a text-only tile (which exact image belongs on which tile is an
+	 * editorial decision, so nothing is invented).
+	 *
+	 * All HTML shapes come from the matched level_pages registry row.
+	 *
+	 * @param {string[]} panelSegs - the rendered HTML for each level panel
+	 * @param {Object} row - the matched level_pages registry row
+	 * @param {Object} pc - the phase_text config block (shared nav open/close)
+	 * @param {string[]} [labels] - the level names, in panel order
+	 * @returns {{nav: string, tilesRow: string}}
+	 *
+	 * Data: fundamentals_panels.level_pages. Env LEVELPAGE_OFF (the caller
+	 * never reaches this method when set).
+	 */
+	static #levelPagesNav(panelSegs, row, pc, labels) {
+		const n = panelSegs.length;
+		const lab = (i) => (labels && labels[i]) || `Phase ${i + 1}`;
+		let nav = (pc.phases_nav_open || "<div class=\"phases\">") + "\n";
+		for (let i = 0; i < n; i++)
+			nav += Utils.FillTemplate(row.phases_nav_item || "<div phase=\"{n}\">\n<p>{label}</p>\n</div>",
+				{ n: String(i + 1), label: lab(i) }) + "\n";
+		nav += (pc.phases_nav_close || "</div>");
+		// fallback image: the first content <img> anywhere in the module's
+		// panels, so every tile carries SOME image whenever the module has any
+		// (which image belongs on which tile is an editorial choice, so a
+		// panel's OWN first image always wins when it has one)
+		let fallback = null;
+		for (const s of panelSegs) {
+			const fm = /<img\b[^>]*>/i.exec(s || "");
+			if (fm) { fallback = fm[0]; break; }
+		}
+		const tiles = [];
+		for (let i = 0; i < n; i++) {
+			const num = String(i + 1);
+			const m = /<img\b[^>]*>/i.exec(panelSegs[i] || "") ?? (fallback ? [fallback] : null);
+			const src = m ? (/\bsrc="([^"]*)"/i.exec(m[0])?.[1] ?? "") : "";
+			const alt = m ? (/\balt="([^"]*)"/i.exec(m[0])?.[1] || lab(i)) : lab(i);
+			let tile = Utils.FillTemplate(
+				row.tile_open || "<div class=\"col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
+				{ n: num, label: lab(i) });
+			if (src) tile += "\n" + Utils.FillTemplate(
+				row.tile_img || "<img class=\"phaseImg margB0\" src=\"{src}\" alt=\"{alt}\">",
+				{ src, alt, n: num, label: lab(i) });
+			tile += "\n" + (row.tile_close || "</div>\n</div>");
+			tiles.push(tile);
+		}
+		const tilesRow = tiles.length
+			? (row.tiles_open || "<div class=\"row phaseContainer noPhase margB2\">") + "\n"
 				+ tiles.join("\n") + "\n" + (row.tiles_close || "</div>")
 			: "";
 		return { nav, tilesRow };

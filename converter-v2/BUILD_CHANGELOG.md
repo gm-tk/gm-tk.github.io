@@ -1,5 +1,664 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-05 (round 270, build 260618.42) — CUSTOM-TEMPLATE DROPDOWN TITLES + ONE-LINE LAYOUT (**UI-only; no engine/data/output change; no regeneration — the round-266 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin's annotated screenshot: the "Make your own
+template" dropdowns get a title above each (**Subject / Phase / Template**), and
+their widths adjust so all three sit on ONE horizontal line (the template dropdown
+had wrapped onto a second line). The row is now three equal-share titled fields
+(flex, no wrapping; each select fills its field). Files: index.html · styles.css ·
+Config.js. Entry-parity unaffected (no JS change).
+
+## 2026-08-05 (round 269, build 260618.41) — THE DOUBLE-❗ ACKNOWLEDGEMENT FIX (**NO regeneration — not requested; the round-266 baselines still describe the corpus; the 58 shipped double-marker pages heal at the next regeneration — a named, gate-invisible acks-text delta**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin's SCBI301 test showed some acknowledgements with
+TWO ❗ marks ("❗ ❗ Drawing: Human Cell Icon in Vector Logotype, iStock 1820267512…").
+TRIANGULATED: two independent flags met on one line — the item's iStock TITLE was
+derived from the URL rather than verified (the round-236 honesty marker, which
+prefixes ❗) AND its Media-List type ("Drawing") wasn't in `type_prefix_map`, so the
+unknown-type re-wrap fired too, and its visible form prepends its OWN ❗. Every
+unverified iStock item of an unknown type doubled — **58 corpus pages carry the
+class** (pre-existing; invisible to every gate — acks text).
+
+**TWO FIXES, both general:**
+1. **ONE MARKER EVER (code, `AcksBuilder.#todoFromEntry`):** the re-wrap now strips
+   the entry's own leading unverified marker before adding its own — a line can
+   never ship two ❗ again, whatever combination of flags meets on it. No signal is
+   lost: both machine-readable comments (unknown-type + istock-unverified) now ride
+   the line together, and the top-of-block designer note still counts the id.
+2. **"drawing" joins `type_prefix_map` (data):** it's a legitimate recurring
+   Media-List type (SCBI301 uses it throughout) whose fallback guess already
+   produced the right prefix — as a KNOWN type its lines stop being unknown-type
+   flags entirely and carry exactly the one unverified ❗, like their Photo/Diagram
+   siblings.
+
+**PROVEN** on the exact SCBI301 items (synthetic acks build through the real
+pipeline): Human Cell Icon + Plant Cell → ONE ❗ each, no unknown-type flag; a
+still-unknown type ("Sketch") + unverified title → exactly ONE ❗ with both comments
+shipped; the no-file designer note intact; no double-marker anywhere in the block.
+Rides the existing `ISTOCKUNVERIFIED_OFF` / `ACKUNKNOWN_OFF` toggles (each half
+reverts with its own feature). Entry-parity PASS. Files: app/js/AcksBuilder.js ·
+data/Acks_Formats.json · Config.js.
+
+## 2026-08-05 (round 268, build 260618.40) — SECTION ORDER SWAP: Image mode ↑, Reference module ↓ (**UI-only; no engine/data/output change; no regeneration — the round-266 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: put "Image output mode" as section 2 and
+"Reference module" as section 3, so the reference choices sit directly above the
+Convert button — making it easy to SEE the button deactivate/activate as the
+reference requirement is completed. The two panels swapped places and renumbered
+(1 · Upload → 2 · Image output mode → 3 · Reference module → 4 · Convert →
+5 · Output files); the two red Convert-gate notes now read "… in Section 3".
+Nothing else moved: all element ids, the wiring, the gate logic and every engine
+behaviour are unchanged. Files: index.html · Config.js (the two gate strings +
+AppVersion). Entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-05 (round 267, build 260618.39) — "MAKE YOUR OWN TEMPLATE" (**NO regeneration — not requested; the r266 baselines still describe the corpus and HOLD BY CONSTRUCTION — the batch path passes no reference options and the default path is proven byte-identical**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: a third reference choice, placed between "Choose a
+reference module…" and the HTML upload, titled **"Make your own template"** — three
+horizontal dropdowns (Subject / Phase / Template), ALL REQUIRED, all showing EVERY
+available option no matter what the other dropdowns hold or what the destination
+module is; the converter then takes the most common templated attributes of the
+matching library modules, **with the template prioritised** (each template is a
+separate beast — Fundamentals and Inquiry are one-page formats — so the template
+dictates how content and lessons are laid out, and a subject/phase with no module of
+the chosen template must still get that template's structure). Also: "No suitable
+module" renamed **"Upload a reference module"**.
+
+**THE MECHANISM (engine — rides the ONE shared prep, entry parity):**
+`PrepareRun` gains a `referenceSpec` option ({subject, phase, template} — the batch
+harness passes nothing, so batch/corpus conversions are untouched BY CONSTRUCTION).
+**`ReferenceMiner.PickBySpec`** finds the module to inherit from: the narrowest
+non-empty pool with THE TEMPLATE NEVER RELAXED — subject+phase+template →
+subject+template (phase relaxed first) → phase+template → template only — and within
+the pool the **MOST TYPICAL module**: every member's structural ruleset is resolved
+and the module agreeing with the pool's per-field MAJORITY on the most Style-Anchor
+tracked fields wins (ties → most recently built; deterministic). The structure then
+inherits through the SAME `referenceCode` pathway as the library picker (coherent
+registry home — no half-merged franken-rules), with a loud note naming the pool that
+matched and flagging when a fallback pool was used. The phase classifier moved to
+**`ReferenceMiner.PhaseKey`** — ONE shared rule for the UI filters AND the engine
+matcher, so they can never drift.
+
+**THE UI:** new radio "Make your own template" + three dropdowns (subjects = all 17
+real subjects; phases = every library phase family with its concise label + example;
+templates = all four types) — deliberately NO cascade and NO narrowing by the
+destination module (unlike the library picker's filters); the round-250 Convert gate
+extends: in this mode the button stays inactive until ALL THREE are chosen, with its
+own red note ("Please select a subject, phase and template in Section 2 (all three
+are required)" — `Config.Strings.ConvertGateCustom`). The Module-details card names
+the spec + the module it was built from; the reset clears everything.
+
+**PROOF (`outputs/_probe_r267_customtpl.cjs` — ONE PROCESS PER STATE):** exact pool
+**OS · 3xx · Standard → OSAI301** (subject+phase+template, n=7); phase relaxed FIRST
+with template kept **Science · 5xx · Fundamentals → SCFUN01** (subject+template);
+template NEVER relaxed **OS · 1xx · Bilingual → TRR115** (phase+template — no OS
+Bilingual exists, and the answer is still a Bilingual module); the full conversion
+carries the spec + inherits the picked module's home byte-exactly; **REFMOD_OFF with
+a spec == the plain default md5-identical across processes** (the faithful revert +
+the default-path guarantee). Entry-parity PASS; index-sync 33/28.
+
+**FILES:** app/js/ReferenceMiner.js (PhaseKey + PickBySpec + #mostTypical) ·
+ModuleResolver.js (the referenceSpec branch) · ConversionRun.js (field) · App.js
+(radio/block/gate/convert/reset/card + the classifier delegation) · index.html ·
+Config.js (selectors + ConvertGateCustom + AppVersion) · styles.css ·
+data/Emit_Templates.json (`reference_module.custom_template`). Env `REFMOD_OFF`
+(reverts this along with the whole reference feature).
+
+## 2026-08-05 (round 266, build 260618.38) — **CHFUN01 SCREENSHOT FOLLOW-THROUGH: THE MEDIA-TABLE CAROUSEL + QUIZ SEPARATION + ID-LED ACTIVITY BOXES — with THE FULL CORPUS REGENERATION** (Chris's annotated screenshot: "MAKE INTO CAROUSEL!" + "SEPARATE UNBUILT INTERACTIVE THAT IS INSIDE AN ACTIVITY CONTAINER AND IS AFTER THE CAROUSEL"; regeneration explicitly requested) — **FULL ship recorded, ledger reset to 0; NEW GATE BASELINES, every gate HELD-or-IMPROVED**
+
+**THE PLAIN-ENGLISH LEAD.** Chris marked two things on the CHFUN01 writers template:
+the `[slideshow]` media table must become a real carousel, and the `[dropquiz]` quiz
+that follows must be its own (un-built) interactive inside an activity container —
+not swallowed into the carousel's hand-off box. Three toggled fixes, then the full
+corpus regeneration he asked for.
+
+**FIX 1 — THE MEDIA-TABLE CAROUSEL (env `CARMEDTBL_OFF`; data
+`interactive_builders.carousel.media_table` + BoundaryBank
+`member_rule.media_table_terminates`).** The CHFUN family authors a slideshow as ONE
+table whose every cell is a media cell ([image]/[video] red tag + URL, optional
+[caption] text). TWO coupled halves under one toggle: (a) BOUNDARY — the scanner's
+member walk ENDS right after capturing such a table (the table IS the whole widget),
+so the following quiz section stops being swallowed into the carousel's box; (b)
+BUILD — `InteractiveBuilder.#carouselMediaTable` (tried first in the carousel
+dispatch; a non-media table falls through byte-unchanged) builds one slide per cell
+in cell order: [image] → the standard Mode P/D asset machinery (no caption div
+unless the cell carries one); [video] watch/youtu.be → the shared video.youtube 16x9
+embed; a /shorts/ URL → the NEW youtubeShort 1x1 form (`?rel=0&showinfo=0` — the
+CHFUN golds ship shorts that way 57/57) + a carousel-caption from the cell's
+[caption]. Slides ship a PLAIN videoSection (no icon — the family's gold icon share
+is 0.69, below the r200 solidify floor; recorded). Never half-builds (no-URL cell /
+un-nameable image / unknown video host → the hand-off box). MEASURED: the strict
+media-cell table form is EXACTLY the CHFUN family (5 modules, 38 table lines); the
+looser scanner test also reached carousel tables on CEDK501/ENGI401/PES1001/1002/
+1005 — their capture now ends at the table (content freed from the gate-excluded
+dumps back to the body, the documented net-positive class; per-module scaffold moves
+±≤1.2pp inside an overall improve).
+
+**FIX 2 — THE `[dropquiz]` UNRESOLVED-MARKER RETAG (env `DROPQUIZ_OFF`; data
+`Tag_Lexicon._meta.unresolved_marker_retag`).** "dropquiz" is in no alias list, so
+the span classified as an instruction and the writer's whole quiz leaked as loose
+body text. A NEW data-driven retag family in TagNormaliser.Parse: a span that
+resolved **ZERO tags** but opens with a listed marker (`\[\s*dropquiz`) is retagged
+as the `dropdown` INTERACTIVE (the gold-dominant meaning — OSGM501/OSOH501 build
+dropDown at these spots) and opens its own bundle → an honest hand-off box.
+CONTAINMENT BY CONSTRUCTION: only zero-tag spans are touched — the ~8 modules whose
+`[dropquiz][autocheck]` spans already resolve typing-quiz keep their bundles
+byte-exactly (measured census in the round notes: the zero-tag population is
+CHFUN01/04, HPRE203, OSAI501, OSGM301, OSGM501, OSOH101, OSSM301 + PES-family
+variants).
+
+**FIX 3 — THE LEVEL-PAGES ID-LED ACTIVITY BOX (rides `LEVELPAGE_OFF`; data
+`fundamentals_panels.level_pages.activity_box`).** In the level-pages dialect the
+writer leads each task widget with its own id + title ("1A Check your
+understanding"); the human wraps the widget in `<div class="activity interactive"
+number="1A">` with the title as the box's h3, renumbering the writer's 1A/3A/4A →
+1A/1B/1C. The phasebreak now sets the LEVEL ordinal as the page's activity-number
+prefix (the r217 "fundamentals number by PHASE" follow-up, derivable here because
+the level markers are explicit); an id-led standalone bundle takes a synthetic
+owner that OUTRANKS the r217 generic box (same numbered form, plus the writer's own
+title heading). CHFUN01 ships gold's exact 1A/1B/1C set, each titled.
+
+**PROOF BEFORE THE REGEN** (`outputs/_probe_r265_chfun.cjs`, extended with the
+round-266 assertions): fix-ON — CHFUN01 **28/28** (3 media-table carousels = gold's
+3; shorts in the youtubeShort form; boxes 1A/1B/1C each with the title h3; bundle
+set dropDown/clickingOrder/radioQuiz/accordion; quiz content out of the carousel
+box) + 5 canaries byte-identical to the r265 corpus; toggles-OFF
+(`SELFCLOSEP_OFF LEVELPAGE_OFF CARMEDTBL_OFF DROPQUIZ_OFF`) — canaries
+byte-identical. Tags gate **9557/9557 REAL 0** (the retag is granularity-clean);
+carousel verifier selftest GREEN; entry-parity PASS; index-sync 33/28.
+
+**THE FULL CORPUS REGENERATION (explicitly requested).** All 416 gated dirs through
+the 36-batch `_batch_plan.py` plan (+7 rc-124 splits), `_regen_safe.sh`-verified,
+**`_stalecheck.sh` 0 stale**. Blast vs the r264 manifest: **104 pages (34 changed /
+7 added / 63 removed) across 22 named modules** — the r265 self-closed-paragraph
+repair class landing in the corpus (CHFUN01/04/05/06/07 — CHFUN05 52 files → 1;
+TRR203 3 → 4 pages; TRR301 3 → 4; SSOG103 2 → 5 — each toward its gold page set;
+HPFUN403/902, CEDR302) + the dropquiz/media-table modules (HPRE203, OSAI501,
+OSGM301/501, OSOH101, OSSM301, PES1001/1002/1005, ENGI401, CEDK501). Corpus now
+**2102 pages / 413 modules**.
+
+**PROTECTED GATES — NEW BASELINES, ALL HELD-or-IMPROVED vs r264:**
+- **PRIMARY skeleton** (8-shard `--json` + `outputs/_r266_sk_merge.py`, state
+  `outputs/_r266_sk_final.json`): **SCAFFOLD mean 49.862% (+0.167) / ≥50 983 (+8) /
+  ≥75 190 (+2) / ≥90 16 (+1) / RAW 32.946% (+0.065) @ 1940 pairs, skipped 0** (+5
+  pairs = the recovered TRR/SSOG pages pairing for the first time). EXACTLY 21
+  moved modules, every one a named class — headline: CHFUN01 16.5→71.8%, CHFUN04
+  +62pp, CHFUN06 +45pp, CHFUN07 +32pp, SSOG103 +24pp, TRR203 +16pp, TRR301 +14pp;
+  4 dips ≤1.2pp (PES1001/HPFUN403/PES1005/ENGI401 — the capture-boundary
+  content-freed class). 391 modules / 1844 pages byte-unmoved.
+- structural-defect: **clean 2056/2102 = 97.8% (rate HELD)** / leak **288 occ / 46
+  pages (IMPROVED from 290/48)**.
+- compare_structure: exact **11157 = 85.5% (IMPROVED from 85.3%)** / EXTRA **185
+  (EXACT)** / missing **579** (+43 on a +442 matched pool — the repaired modules'
+  text newly matching; the r227 matched-pool-growth class).
+- body_compare ANY: **267 (IMPROVED from 283)**.
+- tags **9557/9557 REAL 0**; flipCard **TOTAL 33 / divergence 0**; speechBubble
+  **defect 0**; carousel **10 built / 0 mismatched (incl. CHFUN01)**; accordion 12
+  panels ✓; tabs 39 / defect 0; entry-parity PASS; index-sync 33/28.
+- Ship records: content manifest refreshed (2102/413), **FULL ship recorded
+  (ledger reset to 0)**, fastloop baselines refreshed (skeleton seeded from the
+  merged state — the full-corpus snapshot exceeds the 45s wall, the r264 pattern;
+  `_fastloop_validate` PASS).
+
+**RECORDED (named residue/deltas):** gold CHFUN01 drops the [image] cell whose URL
+is an iStock /video/ page (we ship the writer's tag as a placeholder image slide —
+the A1 rule; 4 slides vs gold's 3 on page 1) · the 1-cell media table (CHFUN01's
+Emergent video) stays un-built (min_cells 2 — gold ships a bare videoSection +
+caption row there, a DIFFERENT non-carousel form; sized follow-up) · task quizzes
+stay hand-off boxes (Phase 1 by design) · `[H3] Chinese Nicknames` h5 vs gold h4
+(1 heading, the human flattens [H2]/[H3] to one rank).
+
+**FILES:** `InteractiveScanner.js` (media-table termination + #isMediaTable),
+`InteractiveBuilder.js` (#carouselMediaTable + dispatch), `TagNormaliser.js`
+(unresolved_marker_retag), `ContentConverter.js` (phasebreak level ordinal +
+lvOwner id-led box), `Config.js`; data `Interactive_Boundary_ChildTag_Bank.json`
+(`member_rule.media_table_terminates`), `Emit_Templates.json`
+(`carousel.media_table` + `level_pages.activity_box`), `Tag_Lexicon.json`
+(`_meta.unresolved_marker_retag`). Tools `outputs/_probe_r265_chfun.cjs`
+(extended), `outputs/_r266_sk_merge.py`. Env `CARMEDTBL_OFF` + `DROPQUIZ_OFF`
+(+ the round-265 `SELFCLOSEP_OFF`/`LEVELPAGE_OFF` now live in the corpus).
+
+## 2026-08-05 (round 265, build 260618.37) — **CHFUN01: THE SELF-CLOSED-PARAGRAPH EXTRACTOR REPAIR + THE LEVEL-PAGE FUNDAMENTALS DIALECT** (Chris — "two html files instead of one, content all messed up") — **NO regeneration (not requested); the r264 baselines still describe the corpus; the gates were NOT re-run** *(superseded the same day: round 266 performed the full regeneration — the r265 classes are now IN the corpus and gate-proven)*
+
+**THE PLAIN-ENGLISH LEAD.** Chris converted CHFUN01 and got two files instead of the
+human's one, with the writer-template boilerplate leaking into page 0 and the real
+content arriving as one mangled run (glued bullets, learning intentions rendered as
+giant headings, no phases/panels/menu). Three root causes, three fixes:
+
+**ROOT CAUSE 1 — THE SELF-CLOSED PARAGRAPH RATCHET (engine; env `SELFCLOSEP_OFF`;
+data `Input_Doc_Rules.paragraph.self_closed_skip`).** Word writes an EMPTY paragraph
+as a self-closed `<w:p w14:paraId=".."/>` (34 in CHFUN01, mostly empty cells in the
+Section-A textbox tables). `DocxExtractor.#findClose` counted each as an OPEN with
+no matching close — the depth ratcheted up and the enclosing scan ran to
+end-of-body, so ONE "paragraph" swallowed 186KB: the whole module collapsed into a
+single giant block. Everything Chris saw follows from that — `IsContentStart` never
+saw the real `[TITLE BAR]` paragraph (front matter kept), every paragraph boundary
+vanished (bullets glued, quiz options fused), and the title-bar sub-document split
+produced the spurious second file. FIX: a self-closed `<w:p .../>` contributes
+NOTHING to the depth scan and is skipped as a top-level block. MEASURED EXACTLY
+(`outputs/_measure_selfclosedp.py`, an exact shipped-semantics replica over all 452
+corpus WTs, containment BY CONSTRUCTION — a WT with zero self-closed `<w:p/>`
+cannot change): the block stream repairs on **20 modules** — 13 giant-ratchet
+repairs (**CHFUN01/04/05/06/07, TRR110, TRR203 — its long-recorded
+"mega-paragraph" was THIS BUG — TRR301, HPFUN403, HPFUN902, CEDR302, BLL264,
+SSOG103**) + 7 cosmetic BLL2xx boundary shifts (BLL251/256/257/264/266/270/273/274
+overlap the two lists). **Those 20 modules' conversions WILL CHANGE at the next
+regeneration** — spot-proven toward gold: TRR203 regains its 4-page set (gold 4,
+shipped corpus 3) and CHFUN05 goes **52 files → 1** (gold 1).
+
+**ROOT CAUSE 2 — THE STALE REGISTRY (data; the r263 class).** The CHFUN family
+joined the corpus at the 2026-08-03 intake but no registry row was ever mined —
+CHFUN resolved bare defaults (`page_model` multi-file), so its `[PAGE N Novice]` /
+`[End page]` markers split files. FIX: the Style-Anchor **"1-10 Languages"/CHFUN
+base row**, mined from CHFUN01's gold via `ReferenceMiner.Distil`
+(`outputs/_dbg_chfun01_mine.cjs`): `page_model single-file`, body_class
+`fundamentals container-fluid`, tabs overview menu with tooltip, home-only
+fundamentals footer, `template_phase "combo"` recorded so the subject|phase
+registry lookups resolve `CHFUN|combo` (the r248 cohort override only sets the html
+attribute). Members CHFUN01/04–07 (evidence floor off — CHFUN01's gold is indexed).
+
+**ROOT CAUSE 3 — THE LEVEL-PAGE FUNDAMENTALS DIALECT DID NOT EXIST (engine + data;
+env `LEVELPAGE_OFF`; data `body_region.fundamentals_panels.level_pages`,
+registry-gated `CHFUN|combo`).** The family authors ONE single-file module as
+`[PAGE N <Level>]` sections grouped by named proficiency LEVEL (Novice, Emergent):
+the SIXTH phase-delimiter dialect (after TEFUN black r106 / ENFUN red r189 / ARFUN
+bracketed r191 / SCFUN-SSFUN tag-anchored r192 / XFUN accordion r194) — and the
+first whose delimiters GROUP (a phasebreak fires only on a level CHANGE; the other
+pages of the level continue the same panel). `ContentConverter.#levelPagesPrepass`:
+each level → ONE `fundamentalsPanel`; each page's marker text → a section heading
+synthesized at `title_writer_level` [H1] so the ordinary re-leveller ranks it h3
+and pushes the writer's [H2]s to h4 (the human's outline — verified against gold's
+heading list, near line-for-line); the `[Title]` alias joins the same rank (intro
+h3); the `[Overview]` marker renders nothing (its prose stays in the body's
+`.introduction`); `[Page content]` + `[End of X Content]` + `[Start of X]` are
+consumed structural no-ops; each `[Page Overview]` LI/SC run aggregates BY LEVEL
+(repeated leads dropped; bullets comma/period-normalised, final bullet keeps its
+full stop). `PanelsBuilder.#levelPagesNav`: phases nav + phaseLink tiles labelled
+with the LEVEL NAMES, tiles nested INSIDE the introduction's content column
+(`tiles_inside_col`), tile images from each panel's first `<img>` with its own alt
+(fallback chain; which image is editorial — recorded C: gold's Emergent tile shows
+the section's second image). `MenuBuilder.#levelTabs`: the three-tab menu
+(**Overview | Novice | Emergent**) through the existing `writer_tabs` bare
+`div.tabs` shell — Overview pane = the module's own `[Overview]`-section
+[H3]-labelled LI/SC blocks (headings reused verbatim as the pane `<h5>`s), level
+panes = the aggregated `[Page Overview]` blocks, all in the gold's two-col
+`col-md-6 offset-md-0` paddingR|paddingL form.
+
+**PROOF (no corpus regeneration — `outputs/_probe_r265_chfun.cjs`, one process per
+state):** fix-ON — CHFUN01 ships gold's EXACT one-file set with **16/16 structural
+assertions** (no front-matter leak, 3 menu panes, level-labelled nav/tiles, 2
+panels, gold-matching heading outline) AND 5 canaries (BLL210 standard / TEFUN02
+phase-text / ENFUN01 red-delimiter / OSAH501 callout-heavy / CEDK101 CED-inquiry
+`[page N]` user — all selfP=0, none registry-gated) **byte-identical to the
+shipped corpus (10/10 pages)**; toggles-OFF (`SELFCLOSEP_OFF=1 LEVELPAGE_OFF=1`) —
+the same 5 canaries **byte-identical to disk** (faithful engine revert; the
+Input_Doc_Rules/Emit_Templates/Style_Anchor re-serialisations proven inert, the
+r146 class). The corpus CHFUN01 dir was refreshed by a targeted convert (byte-
+verified against a fresh in-memory run); the stale 2-file output deleted.
+**The protected gates were NOT re-run — the round-264 baselines below still
+describe the last regenerated corpus state.** The default path is canary-proven
+byte-identical; the 20 named extractor-repair modules change ONLY at the next
+regeneration.
+
+**RECOMMENDED (waiting to be asked, per §0): `REGENERATE CORPUS - the 20
+self-closed-paragraph modules + the CHFUN family`** — the extractor repair is
+proven toward gold on TRR203/CHFUN05 but the corpus won't carry it (nor re-run the
+gates) until a regeneration is requested.
+
+**RECORDED FOLLOW-UPS (measured, not shipped):** the CHFUN media-TABLE carousel
+(`[slideshow]` + a single-row table of `[image]`/`[video]`+URL+`[caption]` cells —
+gold builds a real carousel per page; today it's a hand-off box, and the following
+quiz content is captured into the same box because no post-table terminator fires
+— the boundary + build are ONE follow-up round, the r247 media-series sibling) ·
+the `[dropquiz]` alias (unresolved → the mcq content renders as body text; the
+token appears in 10+ OTHER modules' WTs whose output is baseline, so the alias
+needs its own measured round) · the `[hover trigger translation] X [def]` split-
+bracket form (weaves `info="translation"` instead of the bracketed def — the r223
+def-family) · `[H3] Chinese Nicknames` ships h5 vs gold's h4 (the human flattens
+[H2]/[H3] to one rank — 1 heading, net-positive class) · the Emergent single-video
+table dump (same media-table family) · `#parseTable`'s cell regex merges a
+self-closed cell paragraph into its neighbour (text-preserving, low stakes).
+
+**FILES:** `DocxExtractor.js` (#findClose + walker + #selfClosedSkipOn),
+`ContentConverter.js` (#levelPagesPrepass + #levelMenuAbsorb/#levelMenuLines/
+#levelBullet + call-site opts), `PanelsBuilder.js` (#levelPagesNav +
+tiles_inside_col intro nesting), `MenuBuilder.js` (#levelTabs + the buildMenu
+branch), `Config.js`; data `Input_Doc_Rules.paragraph.self_closed_skip`,
+`Emit_Templates.body_region.fundamentals_panels.level_pages`,
+`Style_Anchor_Registry."1-10 Languages"`. Tools
+`outputs/_measure_selfclosedp.py` (the standing detector),
+`outputs/_probe_r265_chfun.cjs`, `outputs/_dbg_chfun01.cjs`,
+`outputs/_dbg_chfun01_mine.cjs`, `outputs/_dbg_chfun01_convert.cjs`.
+Env `SELFCLOSEP_OFF` + `LEVELPAGE_OFF`.
+
+## 2026-08-05 (round 264, build 260618.36 — no code change) — **THE FULL CORPUS REGENERATION** (Chris: "Please regenerate corpus now") — the r246/r247 builder rounds + the r253 index effects + the r263 fixes folded into the corpus; **FULL ship recorded, ledger reset to 0; NEW GATE BASELINES**
+
+**THE PLAIN-ENGLISH LEAD.** Chris authorised the full rebuild. All 416 gated dirs
+regenerated through the current engine (36-batch `_batch_plan.py` plan + 6 rc-124
+splits, every batch `_regen_safe.sh`-verified), **0 stale**. This is the FIRST
+regeneration since round 245, so the diff folds in everything shipped in between:
+the r246/r247 basic-interactive builder rounds (shipped no-regen on their widget
+verifiers), the r253 library-index effects, the r263 SCCH fixes, and the 2026-08
+intake's new Claude dirs joining the gate population. Blast vs the last-shipped
+manifest: **414 pages changed / 165 modules + 164 pages added**; corpus now
+**2158 pages / 413 manifest modules; skeleton population 1935 pairs (was 1837)**.
+
+**PROTECTED GATES — ALL HELD-or-IMPROVED (new baselines in bold):**
+- **PRIMARY skeleton** (fresh 8-shard, `outputs/_r264_sk_merge.py` →
+  `_r264_sk_final.json`; selftest PASS): **SCAFFOLD mean 49.695% / ≥50 975 /
+  ≥75 188 / ≥90 15 / RAW 32.881% @ 1935 pairs, skipped 0** — every aggregate
+  ABOVE the r245 baseline (49.555/920/176/12/32.677 @1837). The 23 new gate
+  modules (98 pages) score 52.83% mean. **Same-population recompute (1837):
+  buckets EXACT (920/176/12), mean 49.528% (−0.027pp)** — 68 movers, net
+  −22.4pp module-mean, dominated by the PRE-AUTHORISED r246/r247 A1
+  writer's-widget build classes (BLL carousel/banner families; the
+  XGF9001/EXPFUN02/ENGJ403/XLP heading-tail over-capture corrections — judged
+  on their widget verifiers per Chris's r246 framing decision, all green
+  below) + gold-side/pairing drift on manifest-identical modules (HPFUN301
+  −10.9pp, its Claude bytes unchanged); biggest gains ENGI201 +2.15,
+  ENGJ403 +2.11.
+- **Structural defect audit:** **clean 2110/2158 = 97.8% (IMPROVED from
+  97.7%); leak 290 occ / 48 pages** (r245: 288/46) — the +2/+2 sits in the
+  +164-page population growth (CHFUN04, a brand-new module, carries 1) + the
+  r246/r247 fold-in.
+- **compare_structure:** **exact 10763 = 85.3% (IMPROVED from 84.9%) / EXTRA
+  185 / missing 536 @ matched pool 12613** (r245: 9777/182/487 @11518) — the
+  matched-pool-growth class (the new modules bring their own elements).
+- **body_compare:** **ANY 283 @ 2158 = 13.1% (rate IMPROVED from 13.6%;
+  r245: 271 @1994)**.
+- **tags:** 9557/9557, REAL FAILURES 0. **flipCard:** TOTAL 33 / divergence 0.
+  **speechBubble:** 39 built (TEDC401/402) / defect 0 + selftest GREEN.
+  **accordion:** 18 panels ✓. **carousel:** 11 built / 21 video slides / 0
+  mismatched. **clickDrop:** defect 0. **tabs:** 51 / defect 0 / div 0.
+- **entry-parity PASS · index-sync 33/28 OK · anchor_compare --audit
+  trustworthy (412/454, 0 silent drops, both regressions PASS).**
+
+**SHIP MECHANICS:** content manifest refreshed (2158/413); fast-loop baselines
+refreshed (defect/cs/bc via `_fastloop_snapshot.py`; skeleton seeded from
+`_r264_sk_final.json` — the in-wall full snapshot exceeds the 45s wall, the
+r176/r234 class); `_ship_ledger.py record-full --round 264` (counter 0).
+CAUTION recorded: `_fastloop_snapshot.py` overwrites the BASELINE in place —
+run it only at a ship checkpoint (the pre-refresh r243-era defect detail is
+gone; the changelog numbers are the durable record).
+
+**SCCH302 VERIFIED POST-REGEN:** the r263 fixes are live corpus-wide; SCCH301
+regenerated under the new registry rows (its pages now carry the composed
+menus/chips); the `scch302_fixed/` hand-off set unchanged. No engine/data
+change this round — build stays 260618.36; the round-263 entry below holds the
+fix detail.
+
+## 2026-08-05 (round 263, build 260618.36) — SCCH302 MISSING MENUS: the stale-registry class exposed by the r253 index rebuild (**NO regeneration — not requested; the round-245 gate baselines still describe the last regenerated corpus state; the tracked corpus is untouched — canaries byte-identical**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris converted SCCH302 through the HTML Generator with
+reference module SCCH301 and every page shipped with NO module menu — the overview's
+Knowledge / Practices / Learning-Intentions block and every lesson's "We are
+learning / I can" block sat in the page BODY instead of the menu, the overview had
+no module-code chip or tooltip, the lesson chips read "SCCH302 1" instead of the
+gold's "01", and the final page's footer was empty. All fixed; the corrected
+conversion now matches SCCH301's gold page-for-page (proof below), and a converted
+set is at `ZZ-HumanDev-PageForge-Testing/SCCH302/scch302_fixed/` for eyeballing.
+
+**ROOT CAUSE (the stale-registry class — will recur at every intake unless the
+registries are re-mined with the index).** Round 253 rebuilt
+`Module_Structure_Index.json` over the 454-module library, giving SCCH301
+gold-evidence — which correctly switched OFF the r238 evidence floor for the SCCH
+base. But `Style_Anchor_Registry.json` and `Menu_Scaffold_Registry.json` were NOT
+re-mined at r253, so the junk **"1-10 Science" subject tier (mined from SCFUN01
+alone, pre-intake)** started binding SCCH302: `menu_type lesson "none"` + overview
+"—" → `menuTypeFor` returned "none" on every page (menu content flowed to #body);
+`module_code` "—"/`free-text:"SCFUN09"` → no overview chip + the mangled lesson
+chip; `footer_links.final "—"` → the empty final footer. The r238 probe's
+dev-confirmed SCCH302 output had come entirely from the evidence floor's defaults;
+r253 removed the floor without supplying the registry values the floor had been
+standing in for. The r249/250 reference override could not help: picking SCCH301
+re-resolves to the SAME junk registry home.
+
+**THE FIXES (data first, per DATA OVER CODE; every engine change data-flagged +
+env-toggled):**
+1. **Style_Anchor_Registry — the SCCH base_rules, mined from SCCH301's gold**
+   via `ReferenceMiner.Distil` (probe mode "mine"), with three eyeball-verified
+   corrections the miner could not see (below): menu_type tabs/simplified ·
+   module_code full-code / **padded-number** (the gold's zero-padded "01".."08"
+   lesson chips) · h1_count 2/1 · menu_button_tooltip yes/no · footer_links final
+   **prev+home** · body/level/idoc/footer/acks/page_model as mined; SCCH3 level
+   delta `template_phase "7-8"` (feeds groupKey → the menu/extra-tabs registry keys).
+2. **Menu_Scaffold_Registry — groups `SCCH|7-8` + series SCCH301**, GENERATED by
+   `derive_menu_type.cjs` run over the current library and SPLICED IN ALONE
+   (diff-verified: no other row moved — a full re-mine would silently change other
+   families' rows without a regen; that full re-mine is the recorded follow-up).
+3. **CURRICULUM EXTRA TABS (env `XTABCURRIC_OFF`; data
+   `menu.extra_tabs.curriculum_tabs` + sections `knowledge`/`practices` + registry
+   row `SCCH|7-8`).** SCCH301's gold overview nav is **Overview | Knowledge |
+   Practices — no Information tab**; the r238 tab_map routes those headings to
+   tab 1 where the r206 promotion (tab2-only) could never see them. Three
+   row/section-scoped engine extensions in MenuBuilder/SkeletonBuilder:
+   (a) a sections entry carrying `any_bucket:true` is checked for promotion from
+   ANY routed bucket (sections without the key keep the exact tab2-only path —
+   construction-proof inert); (b) a sections entry may carry its own
+   `heading_element` (`<h4><span>` here; the r206 assessment default stays h5);
+   (c) a registry row carrying `_drop_empty_tab2` drops the shell's Information
+   nav item + pane when every section promoted away and no tab-2 content remains —
+   implemented through NEW byte-neutral `{tab2Nav}`/`{tab2Pane}` slots in the
+   `tabs`/`tabs_two_col` shells whose defaults reconstruct the previously
+   hard-wired strings exactly (the r172 {tab2Body}-slot precedent).
+4. **ReferenceMiner mining corrections (data `reference_module.chip_padded_detect`
+   + `tooltip_content_scan`; reverted with the feature by REFMOD_OFF):** a
+   zero-padded "01" chip mines as **padded-number** (was mis-read "decimal" →
+   would render "1.0"), and the tooltip attribute is also read off
+   `module-menu-content` (94 gold pages carry it there vs 503 on the button —
+   SCCH301 is the minority form; output emission unchanged, button form as ever).
+   Post-fix, Distil mines SCCH301 100% correctly (unmined []).
+5. **`menu_lead_in_headings.ld_labels` gains "how will i know i have learned it"**
+   (the new-era SC phrasing — no "if", "I have") so the "I can:" lead under it
+   stays `<p>` instead of wrongly promoting to `<h5>`. Gold-verdicted over every
+   corpus carrier of the shape: SCCH301/SCPH301/SSCI205/TEDC401/TEDC402 golds all
+   ship `<p>I can:</p>` (5/6); HPRE203 keeps h5 = the recorded 1-of-6 gold
+   deviation. Blast at the NEXT regen: 6 overview pages, 2 tracked (TEDC401/402),
+   both moved TOWARD gold — named deltas. Rides the existing MENULEADIN_OFF
+   machinery (vocabulary edit, the r238 tab_map precedent).
+
+**PROOF (`outputs/_probe_r263_scch302.cjs`, one process per state):**
+- **before** — the broken state reproduced from the raw docs (menus 0/9, no chip,
+  Knowledge in #body, empty final footer): ALL PASS.
+- **after** — 14/14 assertions: menus composed **9/9 pages**; overview chip
+  SCCH302 + tooltip="Overview" + nav **Overview|Knowledge|Practices** with the
+  h4span Knowledge pane heading; Knowledge/LI content OUT of #body and IN the
+  menu; lesson chip **"01"**; WALT block in the lesson menu; final footer
+  prev+home; and **plain SCCH302 == referenceCode-SCCH301 byte-identical** (both
+  resolve the same, now-correct registry home).
+- **toggle** — `XTABCURRIC_OFF=1`: menus still compose (the registry-row fixes
+  stand) but the extra-tab composition reverts (Information tab back, no
+  promotion): ALL PASS.
+- **canaries** — BLL210 + ENGJ403 + AGH1001 (AGH1001 = the live 4-tab extra_tabs
+  family, exercising the changed shell slots + promotion path) **byte-identical
+  across pre/post processes** — the tracked corpus is untouched.
+- **Gates:** NOT re-run (no `REGENERATE CORPUS` in the request — §0); the
+  round-245 baselines still describe the last regenerated state. Run this round:
+  index-sync **33/28 OK**, **entry-parity PASS** (protected), the round probe.
+
+**RECORDED RESIDUE / FOLLOW-UPS:**
+- **The stale-registry class is BIGGER than SCCH** — any intake family whose base
+  gained its first gold at r253 while the Style-Anchor/Menu registries stayed
+  pre-intake (the r238 _doc names CEDT1's junk delta; SCPH/CHFUN/HPRE etc. are
+  unmeasured) resolves from junk the moment the evidence floor turns off.
+  RECOMMENDATION: a registry re-mine round (Style-Anchor + full
+  derive_menu_type + the r222/r166 menu registries) shipped WITH a
+  `REGENERATE CORPUS` — Chris's call.
+- Overview pane-1 LI/SC headings ship the converter's h4span "modern label" form
+  vs SCCH301's h5 (n=1 evidence; the r238 dev accepted the h4span form) — C.
+- The lesson simplified menu ships the standard `row > col-md-8` shell vs
+  SCCH301's `div.item` wrapper — the long-established gate-proven shell — C.
+- The converter emits the tooltip on the menu BUTTON (503-gold majority);
+  SCCH301 carries it on the content div (94) — C.
+
+Files: `data/Style_Anchor_Registry.json` · `data/Menu_Scaffold_Registry.json` ·
+`data/Emit_Templates.json` · `app/js/MenuBuilder.js` · `app/js/SkeletonBuilder.js` ·
+`app/js/ReferenceMiner.js` · `app/js/Config.js`. Env: **XTABCURRIC_OFF** (new);
+the registry rows are plain data; the miner corrections ride REFMOD_OFF.
+
+## 2026-08-05 (round 262, build 260618.35) — PLAIN-LANGUAGE IMAGE-MODE LABELS (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: the image-mode options should be brief plain
+English with the "Mode P"/"Mode D" jargon dropped. New wording — **"Placeholder
+images**: pages show a temporary placeholder for each image (real filename commented
+out in backend)." (final wording per Gavin's follow-up) / **"Direct images**: pages
+link straight to the real image files — no placeholders." The Module-details card now
+also says "Placeholder images"/"Direct images" instead of the bare internal "P"/"D".
+WORDING ONLY: the run/option values, element ids (mode-p/mode-d) and every engine
+behaviour are unchanged. Files: index.html · App.js · Config.js. Engine untouched —
+entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-05 (round 261, build 260618.34) — THE PICKER'S TWO-COLUMN LAYOUT + RESET BUTTON (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin supplied an annotated screenshot with direct text
+edits and a drawing of the layout he wants; both adopted. **The status text** is now
+his wording, on two lines: "Module detected: **SCCH302**." / "Suggested reference:
+**SCCH301** (SCCH30 · Standard Template)" — the explanatory why-phrase is gone, and
+the template is named as "… Template". **The picker rearranges into two columns**:
+the LEFT column stacks the three filter dropdowns, each with a proper label
+(Subject / Phase / Template), and finishes with a **"Reset filters"** button that
+clears the code text and all three dropdowns back to "show everything" (the current
+module selection is untouched — it stays selected in the restored full list); the
+RIGHT column holds the type-to-filter box directly above the always-visible module
+list, with the live count line underneath. Everything else carries over unchanged:
+the pinned red ★ recommended row, the suggestion pre-selecting subject/phase/
+template, the subject→phase/template cascades, the Convert gate + red note. Files:
+index.html (the ref-pick-grid two-column structure) · App.js (#renderRefStatus
+wording, reset-button wiring) · Config.js (RefFilterReset) · styles.css (the
+two-column layout + labelled fields + reset button). Engine untouched —
+entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-05 (round 260, build 260618.33) — THE TEMPLATE FILTER (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: add a template dropdown as another filter,
+pre-selected when a recommended module is pre-selected. A fourth filter now sits in
+the row — **All templates / Standard / Inquiry / Fundamentals / Bilingual** (the
+exact four types the library index carries: 316 / 65 / 53 / 20 — verified, no
+template-less modules). It behaves like its siblings: choosing a SUBJECT narrows the
+template list to that subject's templates (`App.#renderTemplateOptions`, the r257
+cascade pattern; an invalidated choice resets to "All templates"); it combines with
+the code text, subject and phase filters; the count line names it ("… · template:
+Fundamentals"); the recommendation's template is PRE-SELECTED on auto-select (so for
+SCCH302 the panel opens subject "1-10 Science" · phase "Phase 3 · Years 7–8" ·
+template "Standard" with SCCH301 pinned and selected); the current selection is
+never dropped by filtering; and the filter clear/reset restores "All templates".
+Files: index.html · App.js · Config.js (RefTemplateFilter) · styles.css. Engine
+untouched — entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-05 (round 259, build 260618.32) — PRE-SELECTED SUBJECT + PHASE FOR THE RECOMMENDATION (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: with a suggested module, also pre-select its
+subject and phase. When the panel auto-selects the recommended module it now sets
+the SUBJECT dropdown to that module's subject, rebuilds the phase list for that
+subject (the r257 cascade), and sets the PHASE dropdown to the module's phase — so
+the visible list opens already narrowed to the recommendation's own cohort (for
+SCCH302 → SCCH301 that's subject "1-10 Science", phase "Phase 3 · Years 7–8"), with
+the recommended row pinned and pre-selected at the top. A recommendation whose
+module carries no subject in the index leaves "All subjects" in place (its subject
+isn't a filter entry — the r255 rule); a manual pick is never overridden; the reset
+still clears everything back to the full list. Files: App.js · Config.js. Engine
+untouched — entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-05 (round 258, build 260618.31) — PLACEHOLDER DROP + THE RED CONVERT-GATE NOTE (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin's two follow-ups. **(1)** When a module is
+recommended and pre-selected, the "Please select a reference module" row is REMOVED
+from the list — a real selection always exists in that state, so the prompt row was
+just noise. When NO suggestion exists the placeholder stays: it is the visible
+"nothing chosen yet" state the Convert gate keys on (and with the placeholder gone,
+the pinned recommended row is the list's first entry, so even a stray deselection
+attempt lands back on it). **(2)** While the Convert button is deactivated by the
+reference requirement, a red note directly under it now says why: *"Please select a
+reference module, or upload a reference module's HTML pages in Section 2"* (wording
+per Gavin's same-day follow-up). The note appears/disappears live with the
+gate (`App.#updateConvertGate` → `#convert-gate-note`; wording in
+`Config.Strings.ConvertGateReference`) and never shows for the ordinary
+no-files-yet state. Files: index.html · App.js · Config.js · styles.css. Engine
+untouched — entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-05 (round 257, build 260618.30) — PINNED RECOMMENDED ROW + SUBJECT→PHASE FILTER CASCADE (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin's two follow-ups to the filter work. **(1) The
+recommended module is now PINNED to the top of the visible list, no matter what
+filters are applied** — it renders first (right after the placeholder row) with its
+red "— ★ recommended" note, is excluded from its alphabetical position further down,
+and stays visible even when the active filters would otherwise hide it; the count
+line includes it, and when it's the ONLY visible row it says so explicitly ("only
+the recommended module matches nothing here; clear a filter to widen the list").
+**(2) Choosing a subject now rebuilds the phase dropdown to offer only that
+subject's phases** (`App.#renderPhaseOptions` — the pool narrows to the chosen
+subject; example codes are drawn FROM that subject, so "Online Safety" shows
+Phase-5 with an OS example, not a CED one; a phase choice the new pool doesn't
+contain resets to "All phases"; clearing the subject — including via the
+suggestion auto-select and the page reset — restores the full phase list).
+Data-verified live: Online Safety → Phases 1–5 only · 1-10 Science → Phase 3 +
+Fundamentals · NCEA1 → NCEA + Fundamentals · ConnectED → Phases 1–5. Files:
+App.js · Config.js. Engine untouched — entry-parity PASS; conversions
+byte-identical by construction.
+
+## 2026-08-05 (round 256, build 260618.29) — THE "RECOMMENDED" ROW NOTE (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: the recommended module in the list should carry "a
+little red badge or note that simply said 'recommended'". The suggested reference
+module's row in the visible list now ends with a red, bold **"— ★ recommended"** note.
+A native `<option>` can't hold a real badge element, so it's styled row text
+(`option.ref-recommended`, #c00000 + 600 weight — renders in the always-visible list
+box). The suggestion is remembered on `App.#refSuggestedCode`, so the note survives
+every list rebuild (typing in the filter, changing the subject/phase dropdowns, a
+manual pick of a different module — the recommended row keeps its note wherever it
+remains visible) and clears with the page reset. Files: App.js · styles.css ·
+Config.js. Engine untouched — entry-parity PASS.
+
+## 2026-08-05 (round 255, build 260618.28) — FILTER LAYOUT SWAP + THE COMPLETE PHASE LIST (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin's screenshot follow-up to round 254, three changes:
+(1) the filter elements are REORDERED per his markup — the subject and phase dropdowns
+sit first, side by side, with the type-a-code box on its own line below them;
+(2) "Unclassified" is REMOVED from the subject dropdown (the few subject-less modules
+still appear under "All subjects" — they just aren't offered as a filter entry);
+(3) the phase list is now COMPLETE. Gavin caught that OSAI501-class codes fit no
+offered phase: the round-254 list leaned on the engine's `PhaseKeyFor`, which folds a
+leading 5 into NCEA for REGISTRY-LOOKUP purposes — correct for the resolver, wrong
+for a person filtering. The filter now has its own classifier (`App.#refPhaseKey`),
+enumerated over all 454 library codes: **Phase 1 · Years 1–3 (120)** · **Phase 2 ·
+Years 4–6 (105)** · **Phase 3 · Years 7–8 (42)** · **Phase 4 · Years 9–10 (28)** ·
+**Phase 5 · Years 11–13 (15 — NEW: OSAI501/CEDK501/CEDO501-class)** · **NCEA · senior
+secondary (45)** · **Fundamentals (61)** · **9xx series · short courses (30, now
+incl. the 4-digit XGF900x)** · **Other (8: XLP01–06, XWHA01/02)**. Each option still
+shows a real example code. Files: index.html · App.js · Config.js. Engine untouched —
+entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-05 (round 254, build 260618.27) — REFERENCE-LIST SUBJECT + PHASE FILTERS (**UI-only; no engine/data/output change; no regeneration — the round-245 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin: users should be able to apply additional filters to
+the visible modules — by SUBJECT, and by PHASE LEVEL where the phase is "not just a
+single number but [has] an example shown as brief and concise as possible". Two new
+dropdowns now sit beside the type-to-filter box above the reference list:
+
+- **Subject** — every distinct subject in the library index (17 today: the 1-10
+  learning areas, Online Safety, ConnectED, EXPlore, ANZH, NCEA1, Te Marautanga,
+  Wellbeing, Leaving to Learn, plus "Unclassified" for the handful of modules the
+  index carries no subject for).
+- **Phase level** — concise label + a REAL example code from the library, only for
+  the levels actually present: "Phase 1 · Years 1–3 (e.g. ANZH101)" · "Phase 2 ·
+  Years 4–6 (e.g. ANZH203)" · "Phase 3 · Years 7–8 (e.g. ANZH301)" · "Phase 4 ·
+  Years 9–10 (e.g. ANZH401)" · "NCEA · senior secondary (e.g. AGH1001)" ·
+  "Fundamentals (e.g. ARFUN01)" · "9xx series · short courses (e.g. EXBP901)" ·
+  "Other (e.g. XLP01)". Classification comes from the ENGINE's own
+  `ModuleResolver.PhaseKeyFor` (the same rule the resolver uses — not a UI
+  re-derivation), and the 9xx short-course series was caught live as a bucket the
+  first label table missed (25 modules).
+
+All three filters COMBINE (code text AND subject AND phase); the count line names
+every active filter ("Showing 12 of 454 library modules — subject: 1-10 English ·
+phase: Phase 2 · Years 4–6"); the current selection is never dropped by filtering; a
+suggestion auto-select and the page reset clear all filters back to "show
+everything"; the round-250 Convert gate is unchanged. Files: index.html (filter row)
+· App.js (#RefPhaseLabels vocabulary, enriched rows, combined #renderRefCodeOptions,
+#clearRefFilters) · Config.js (RefSubjectFilter/RefPhaseFilter) · styles.css. Engine
+untouched — entry-parity PASS; conversions byte-identical by construction.
+
 ## 2026-08-05 (round 253, build 260618.26) — LIBRARY REGISTRIES REFRESHED: 390 → 454 modules (**data rebuild from the gold library; NO corpus regeneration — not requested; the round-245 gate baselines still describe the shipped corpus**)
 
 **THE PLAIN-ENGLISH LEAD.** Gavin asked for the distilled templates to be updated with

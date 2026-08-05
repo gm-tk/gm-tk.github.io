@@ -307,7 +307,7 @@ class ModuleResolver {
 	 *                     mediaSource } on a data-driven refusal.
 	 */
 	static PrepareRun({ docs = [], run, normaliser, istockAcksText = null, istockAcksFiles = null,
-		referenceCode = null, referenceHtmlFiles = null }) {
+		referenceCode = null, referenceHtmlFiles = null, referenceSpec = null }) {
 		// ---- classify the inputs (WT = content opener; media list = table) --
 		let wt = null;
 		let mediaSource = null;
@@ -345,7 +345,33 @@ class ModuleResolver {
 		const rmCfg = DataService.Data.EmitTemplates?.reference_module;
 		const rmOn = rmCfg && rmCfg.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.REFMOD_OFF);
-		if (rmOn && referenceCode && referenceCode !== run.moduleCode) {
+		// ---- "MAKE YOUR OWN TEMPLATE" (ROUND 263, Gavin) --------------------
+		// The person chose a subject + phase + template instead of a specific
+		// module: ReferenceMiner.PickBySpec finds the MOST TYPICAL library
+		// module of the narrowest matching pool (the TEMPLATE is never
+		// relaxed — it dictates the content/lesson layout; phase, then
+		// subject, are relaxed when no module matches all three) and the
+		// structure inherits from it through the SAME referenceCode pathway.
+		if (rmOn && (rmCfg.custom_template?.enabled !== false)
+			&& referenceSpec?.subject && referenceSpec?.phase && referenceSpec?.template) {
+			const pick = ReferenceMiner.PickBySpec(referenceSpec);
+			if (pick) {
+				run.referenceSpec = { ...referenceSpec };
+				run.referenceCode = pick.code;
+				run.resolvedRules = this.Resolve(pick.code, run);
+				run.AddNote("info", "ModuleResolver",
+					`Make your own template: ${referenceSpec.subject} · ${referenceSpec.phase} · `
+					+ `${referenceSpec.template} → structure inherited from ${pick.code}, the most `
+					+ `typical of the ${pick.n} library module(s) matching ${pick.matched}`
+					+ `${pick.matched === "subject + phase + template" ? "" :
+						" (no module matches all three choices — the closest pool KEEPING THE TEMPLATE was used)"}. `
+					+ `Env REFMOD_OFF reverts.`);
+			} else {
+				run.AddNote("warn", "ModuleResolver",
+					`Make your own template: no library module carries the "${referenceSpec.template}" `
+					+ `template at all — converting from ${run.moduleCode ?? "the module"}'s own registry home instead.`);
+			}
+		} else if (rmOn && referenceCode && referenceCode !== run.moduleCode) {
 			run.referenceCode = referenceCode;
 			// re-resolve the structural rules AS the chosen reference module —
 			// the module keeps its own code/titles/naming; only the inherited

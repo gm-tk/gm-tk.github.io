@@ -678,7 +678,160 @@ class Config {
 	// stale-pin class — the intake legitimately moved BLL111 to a full escalate);
 	// vet + subject-params selftests PASS; JS↔Python parity 1653/1653 EXACT;
 	// entry-parity PASS. NO corpus regeneration (not requested).
-	static AppVersion = "260618.26";
+	// ROUND 254 (260618.27): REFERENCE-LIST SUBJECT + PHASE FILTERS (Gavin) — two
+	// new dropdowns beside the type-to-filter box narrow the visible modules by
+	// SUBJECT (every distinct subject in the library index, 17 today incl.
+	// "Unclassified") and by PHASE LEVEL, each phase option carrying a concise
+	// label + a real example code ("Phase 3 · Years 7–8 (e.g. ANZH301)", "NCEA ·
+	// senior secondary (e.g. AGH1001)", "Fundamentals (e.g. ARFUN01)", "9xx series
+	// · short courses (e.g. EXBP901)"). Phase classification = the engine's own
+	// ModuleResolver.PhaseKeyFor (not a UI re-derivation); all three filters
+	// COMBINE; the count line names every active filter; the current selection is
+	// never dropped by filtering; a suggestion auto-select and the reset clear all
+	// filters. UI-only; engine untouched; entry-parity PASS.
+	// ROUND 255 (260618.28): FILTER LAYOUT + THE COMPLETE PHASE LIST (Gavin's
+	// screenshot). Element order swapped per the markup: subject + phase dropdowns
+	// first, the type-to-filter box below them. "Unclassified" removed from the
+	// subject list (subject-less modules still show under "All subjects"). The
+	// phase list is now COMPLETE, enumerated over all 454 library codes with the
+	// filter's OWN classifier #refPhaseKey (the engine's PhaseKeyFor folds a
+	// leading 5 into NCEA for registry-lookup purposes, which hid Phase 5 from
+	// the filter): 1xx 120 · 2xx 105 · 3xx 42 · 4xx 28 · **5xx 15 (NEW — "Phase 5
+	// · Years 11–13", OSAI501/CEDO501-class)** · NCEA 45 · FUN 61 · 9xx 30 ·
+	// other 8 (XLP/XWHA specials). UI-only; entry-parity PASS.
+	// ROUND 256 (260618.29): THE "RECOMMENDED" ROW NOTE (Gavin) — the suggested
+	// reference module's row in the visible list carries a red "— ★ recommended"
+	// note (option.ref-recommended, red + bold; native options can't hold real
+	// badge elements, so it's styled row text). The note survives every list
+	// rebuild (filtering, manual picks — the suggestion is remembered on
+	// App.#refSuggestedCode) and clears with the reset. UI-only; entry-parity PASS.
+	// ROUND 257 (260618.30): PINNED RECOMMENDED ROW + SUBJECT→PHASE CASCADE (Gavin) —
+	// the recommended module is PINNED to the TOP of the visible list no matter what
+	// filters are active (rendered first after the placeholder, excluded from its
+	// alphabetical spot; the count line includes it and says so when it is the only
+	// row a filter left visible); and choosing a SUBJECT rebuilds the phase dropdown
+	// to offer ONLY that subject's phases (data-verified: Online Safety → Phases 1–5
+	// only; 1-10 Science → Phase 3 + Fundamentals; NCEA1 → NCEA + Fundamentals),
+	// with example codes drawn from within the subject and an invalidated phase
+	// choice resetting to "All phases" (App.#renderPhaseOptions, also re-run by the
+	// filter clear). UI-only; entry-parity PASS.
+	// ROUND 258 (260618.31): PLACEHOLDER DROP + THE RED CONVERT-GATE NOTE (Gavin) —
+	// with a recommended module pinned (and pre-selected) the "Please select a
+	// reference module" placeholder row is REMOVED from the list (a real selection
+	// always exists; without a suggestion the placeholder stays as the visible
+	// nothing-chosen state the gate keys on); and while the Convert button is
+	// deactivated BY THE REFERENCE REQUIREMENT, a red note under it says why
+	// ("Please select a reference module, or upload a reference module's HTML
+	// pages in Section 2" — wording per Gavin's follow-up;
+	// Config.Strings.ConvertGateReference, #convert-gate-note, driven by
+	// App.#updateConvertGate). UI-only; entry-parity PASS.
+	// ROUND 259 (260618.32): PRE-SELECTED SUBJECT + PHASE FOR THE RECOMMENDATION
+	// (Gavin) — when a suggested module exists, its SUBJECT and PHASE are also
+	// pre-selected in the filter dropdowns, so the visible list opens on the
+	// recommendation's own cohort (the r257 cascade fills the phase list from
+	// that subject first; an unclassified suggestion leaves "All subjects").
+	// A manual pick still stands untouched; the reset clears everything.
+	// UI-only; entry-parity PASS.
+	// ROUND 260 (260618.33): THE TEMPLATE FILTER (Gavin) — a fourth filter dropdown
+	// narrows the visible modules by TEMPLATE type (the library carries exactly
+	// four: Standard 316 · Inquiry 65 · Fundamentals 53 · Bilingual 20). It behaves
+	// like the others: narrows with the chosen subject (only that subject's
+	// templates offered; invalidated choice resets to "All templates"), combines
+	// with the code/subject/phase filters, is named in the count line, is
+	// PRE-SELECTED from the recommended module on auto-select, never drops the
+	// current selection, and clears with the filter reset. UI-only; entry-parity
+	// PASS.
+	// ROUND 261 (260618.34): THE PICKER'S TWO-COLUMN LAYOUT + RESET BUTTON (Gavin's
+	// annotated screenshot). The reference picker rearranges per his drawing: the
+	// LEFT column stacks the three filter dropdowns, each with a label (Subject /
+	// Phase / Template), plus a "Reset filters" button (clears the code text + all
+	// three dropdowns; the current selection is untouched); the RIGHT column holds
+	// the type-to-filter box directly above the always-visible module list with the
+	// count line under it. The status text takes his direct wording: two lines —
+	// "Module detected: X." / "Suggested reference: Y (SERIES · TYPE Template)" —
+	// with the why-phrase dropped. UI-only; entry-parity PASS.
+	// ROUND 262 (260618.35): PLAIN-LANGUAGE IMAGE-MODE LABELS (Gavin) — the two
+	// image options lose their "Mode P"/"Mode D" jargon: "Placeholder images:
+	// pages show a temporary placeholder for each image (real filename commented
+	// out in backend)." / "Direct images: pages link
+	// straight to the real image files — no placeholders." The Module-details card
+	// says "Placeholder images"/"Direct images" instead of the internal "P"/"D"
+	// (which remain the run/option values — wording only). UI-only; entry-parity
+	// PASS.
+	// ROUND 263 (260618.36): SCCH302 missing menus — the SCCH registry rows mined
+	// from SCCH301's gold (Style-Anchor base_rules + Menu-Scaffold SCCH|7-8) +
+	// the curriculum extra-tabs composition (env XTABCURRIC_OFF) + two
+	// ReferenceMiner mining corrections + the "how will i know i have learned it"
+	// ld_labels entry. NO regeneration (not requested).
+	// ROUND 265 (260618.37): CHFUN01 (Chris) — THE SELF-CLOSED-PARAGRAPH
+	// EXTRACTOR REPAIR (a <w:p .../> counted as an open with no close ratcheted
+	// #findClose's depth and swallowed the rest of the document into ONE giant
+	// block — front matter leaked, every paragraph boundary lost; env
+	// SELFCLOSEP_OFF; 20 modules' block streams repair, incl. TRR203's
+	// "mega-paragraph") + THE LEVEL-PAGE FUNDAMENTALS DIALECT ([PAGE N Novice]
+	// sections grouped by LEVEL into fundamentalsPanels, level-named phases
+	// nav/tiles, [Page Overview] LI/SC aggregated into per-level menu tabs; env
+	// LEVELPAGE_OFF; registry-gated CHFUN|combo) + the Style-Anchor
+	// "1-10 Languages"/CHFUN base row (page_model single-file — CHFUN05 was
+	// shipping 52 files against the human's 1). NO regeneration (not requested).
+	// ROUND 266 (260618.38): CHFUN01 screenshot follow-through (Chris) — THE
+	// MEDIA-TABLE CAROUSEL ("MAKE INTO CAROUSEL!"): a [slideshow] table whose
+	// every cell is [image]/[video]+URL(+[caption]) BUILDS one slide per cell
+	// (shorts → youtubeShort 1x1) AND terminates the capture right after the
+	// table, so the following quiz becomes its OWN bundle (env CARMEDTBL_OFF);
+	// the [dropquiz] UNRESOLVED-MARKER RETAG → a dropdown bundle, zero-tag
+	// spans only (env DROPQUIZ_OFF); the level-pages ID-LED ACTIVITY BOX
+	// ("1A Check your understanding" → activity interactive 1A/1B/1C with the
+	// writer's own title h3; rides LEVELPAGE_OFF). FULL corpus regeneration +
+	// every protected gate HELD-or-IMPROVED (skeleton 49.862%/983/190/16,
+	// blast 22 named modules).
+	// ROUND 267 (260618.39): "MAKE YOUR OWN TEMPLATE" (Gavin) — a third reference
+	// choice between the library picker and the HTML upload: three REQUIRED
+	// horizontal dropdowns (Subject / Phase / Template) that always show ALL
+	// available options (no cascade, not narrowed by the destination module);
+	// Convert stays inactive until all three are chosen (gate note
+	// Config.Strings.ConvertGateCustom). The engine inherits the structure from
+	// the MOST TYPICAL library module of the narrowest matching pool via
+	// ReferenceMiner.PickBySpec — THE TEMPLATE IS NEVER RELAXED (each template is
+	// a separate beast; Fundamentals/Inquiry are one-page formats, so it dictates
+	// the content/lesson layout): subject+phase+template → subject+template →
+	// phase+template → template only; "most typical" = per-field majority
+	// agreement over the Style-Anchor tracked fields (ties → most recent).
+	// Rides the standard PrepareRun referenceCode pathway (entry-parity PASS;
+	// probe _probe_r267_customtpl.cjs ALL GREEN: OS·3xx·Standard → OSAI301 exact
+	// pool n=7; Science·5xx·Fundamentals → SCFUN01 phase-relaxed; OS·1xx·
+	// Bilingual → TRR115 template kept; REFMOD_OFF-with-spec == plain
+	// md5-identical cross-process). ALSO: "No suitable module" renamed "Upload a
+	// reference module"; shared phase classifier moved to
+	// ReferenceMiner.PhaseKey (UI + engine can't drift). Data
+	// reference_module.custom_template; env REFMOD_OFF.
+	// ROUND 268 (260618.40): SECTION ORDER SWAP (Gavin) — "Image output mode" is
+	// now section 2 and "Reference module" section 3, so the reference choices sit
+	// directly above the Convert button and the person can SEE the button
+	// activate/deactivate as they complete (or un-complete) the reference
+	// requirement. The two red gate notes now say "Section 3". UI-only; ids,
+	// wiring and behaviour unchanged; entry-parity PASS.
+	// ROUND 269 (260618.41): THE DOUBLE-❗ ACKNOWLEDGEMENT FIX (Gavin, the SCBI301
+	// report). An iStock item that was BOTH title-unverified (r236 — ❗ prefixed)
+	// AND of an unknown Media-List type (the r-ackTodo re-wrap, whose visible form
+	// prepends its OWN ❗) shipped "❗ ❗ …" — 58 corpus pages carry the class.
+	// FIX 1 (general): #todoFromEntry strips the entry's own leading unverified
+	// marker before wrapping — ONE ❗ ever, by construction; both machine comments
+	// (unknown-type + istock-unverified) now ride the line together, and the top
+	// designer note still counts the id. FIX 2 (data): "drawing" joins
+	// Acks_Formats.type_prefix_map ("Drawing" — the prefix the fallback already
+	// guessed; SCBI301's Drawing-typed items are a legitimate recurring type, so
+	// they stop being unknown-type flags entirely). Probe-proven on the exact
+	// SCBI301 items (one ❗ each; a still-unknown "Sketch" + unverified case keeps
+	// exactly one; no signal lost). The 58 shipped double-marker pages heal at the
+	// NEXT regeneration (named delta; none requested this round). Rides the
+	// existing ISTOCKUNVERIFIED_OFF / ACKUNKNOWN_OFF toggles. Entry-parity PASS.
+	// ROUND 270 (260618.42): CUSTOM-TEMPLATE DROPDOWN TITLES + ONE-LINE LAYOUT
+	// (Gavin's annotated screenshot) — the "Make your own template" dropdowns gain
+	// a title above each (Subject / Phase / Template) and the three fields share
+	// ONE horizontal line (flex nowrap, equal shares, selects width:100% — the
+	// template no longer wraps to a second line). UI-only.
+	static AppVersion = "260618.42";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
@@ -757,6 +910,17 @@ class Config {
 		RefCodeSelect:   "ref-code-select",
 		RefCodeFilter:   "ref-code-filter",   // ROUND 251 — the type-to-filter box
 		RefCodeCount:    "ref-code-count",    // ROUND 252 — the live "showing N of M" line
+		RefSubjectFilter: "ref-subject-filter",   // ROUND 254 — subject filter dropdown
+		RefPhaseFilter:   "ref-phase-filter",     // ROUND 254 — phase-level filter dropdown
+		ConvertGateNote:  "convert-gate-note",    // ROUND 258 — the red "why Convert is inactive" note
+		RefTemplateFilter: "ref-template-filter", // ROUND 260 — template filter dropdown
+		RefFilterReset:    "ref-filter-reset",    // ROUND 261 — the "Reset filters" button
+		// ROUND 263 — the "Make your own template" choice + its three required dropdowns
+		RefCustom:         "ref-custom",
+		RefCustomBlock:    "ref-custom-block",
+		RefCustomSubject:  "ref-custom-subject",
+		RefCustomPhase:    "ref-custom-phase",
+		RefCustomTemplate: "ref-custom-template",
 		RefHtmlInput:    "ref-html-input",
 		RefHtmlList:     "ref-html-list",
 		// The "clear everything & convert another module" reset control (its
@@ -790,6 +954,11 @@ class Config {
 		ProgressAcks:    "Acknowledgements & media",
 		ProgressDone:    "Done",
 		ProgressFailed:  "Failed — see the log below",
+		// ROUND 258 — shown in red under the deactivated Convert button when the
+		// reference requirement is what's blocking it.
+		ConvertGateReference: "Please select a reference module, or upload a reference module's HTML pages in Section 3",
+		// ROUND 263 — shown when "Make your own template" is active but incomplete.
+		ConvertGateCustom: "Please select a subject, phase and template in Section 3 (all three are required)",
 	};
 
 	// ---------------------------------------------------------------------

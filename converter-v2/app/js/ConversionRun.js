@@ -93,6 +93,10 @@ class ConversionRun {
 		// uploaded (its .file object also ships as {CODE}_reference-template.json).
 		this.referenceCode = null;
 		this.referenceDistilled = null;
+		// ROUND 263 — the "Make your own template" choice ({subject, phase,
+		// template}); when set, referenceCode above holds the library module
+		// PickBySpec chose to inherit from.
+		this.referenceSpec = null;
 		this.englishTitle = "";       // English title from the [TITLE BAR] line, e.g. "Staying safe online"
 		this.teReoTitle = "";         // te reo Māori title, if the module has one
 		// Some families (e.g. the "BLL" phonics modules) prefix their title bar

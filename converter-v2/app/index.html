@@ -53,7 +53,28 @@
 			<ul id="file-list" class="file-list"></ul>
 		</section>
 
-		<!-- ============ 2. REFERENCE MODULE (rounds 249/250) ============
+		<!-- ============ 2. IMAGE MODE ============ -->
+		<section class="panel">
+			<h2>2 · Image output mode <span class="panel-note">(applies to every image in this run — no mixing)</span></h2>
+			<!-- ROUND 262 — plain-language labels (Gavin); internally these are
+			     still imageMode "P" and "D", only the wording changed. -->
+			<label class="mode-option">
+				<input type="radio" name="image-mode" id="mode-p" checked>
+				<strong>Placeholder images</strong>: pages show a temporary placeholder for each image (real filename commented out in backend).
+			</label>
+			<label class="mode-option">
+				<input type="radio" name="image-mode" id="mode-d">
+				<strong>Direct images</strong>: pages link straight to the real image files — no placeholders.
+			</label>
+		</section>
+
+		<!-- ROUND 235 — the "Interactive hand-off" section is GONE: the hand-off is
+		     now the DEFAULT for every run. Each un-built interactive renders as its
+		     reference-code box with the raw captured content collapsed inside it
+		     (expand/collapse via the arrow at the right end of the box), and the
+		     same codes head the {CODE}_interactives.txt blocks. -->
+
+		<!-- ============ 3. REFERENCE MODULE (rounds 249/250) ============
 		     Hidden until files are uploaded. The dropdown auto-selects the
 		     SUGGESTED reference module (same module series first, then the
 		     same subject at the same phase); when neither exists it shows
@@ -62,27 +83,90 @@
 		     uploaded. The choice is applied inside ModuleResolver.PrepareRun
 		     (the one shared prep — entry parity). -->
 		<section class="panel" id="reference-panel" hidden>
-			<h2>2 · Reference module <span class="panel-note">(which already-built module this conversion inherits its page structure from)</span></h2>
+			<h2>3 · Reference module <span class="panel-note">(which already-built module this conversion inherits its page structure from)</span></h2>
 			<p id="reference-status" class="reference-status"></p>
 			<label class="mode-option">
 				<input type="radio" name="ref-mode" id="ref-pick" checked>
 				<strong>Choose a reference module from the library</strong> (suggested module selected if one exists).
 			</label>
 			<div id="ref-pick-block" class="ref-sub-block">
-				<!-- ROUND 251 — type-to-filter: narrows the list live; an exact
-				     single match selects itself. Clearing the box restores the full list.
-				     ROUND 252 — the list is an always-visible scrolling box (size=8)
-				     so the filtering happens in plain sight as the code is typed,
-				     with a live "showing N of M" count underneath. -->
-				<input id="ref-code-filter" type="text" placeholder="Type a module code to filter…" autocomplete="off">
-				<select id="ref-code-select" size="8">
-					<option value="">Please select a reference module</option>
-				</select>
-				<p id="ref-code-count" class="drop-hint" aria-live="polite"></p>
+				<!-- ROUNDS 251–261 — the picker. Gavin's round-261 layout: the
+				     LEFT column stacks the three LABELLED filter dropdowns plus a
+				     "Reset filters" button; the RIGHT column holds the
+				     type-to-filter box above the always-visible module list
+				     (size=8) with the live "showing N of M" count underneath.
+				     All filters combine; an exact single code match self-selects;
+				     the recommended module stays pinned + pre-selected. -->
+				<div class="ref-pick-grid">
+					<div class="ref-filter-col">
+						<div class="ref-filter-field">
+							<label for="ref-subject-filter">Subject</label>
+							<select id="ref-subject-filter" title="Filter by subject">
+								<option value="">All subjects</option>
+							</select>
+						</div>
+						<div class="ref-filter-field">
+							<label for="ref-phase-filter">Phase</label>
+							<select id="ref-phase-filter" title="Filter by phase level">
+								<option value="">All phases</option>
+							</select>
+						</div>
+						<div class="ref-filter-field">
+							<label for="ref-template-filter">Template</label>
+							<select id="ref-template-filter" title="Filter by template">
+								<option value="">All templates</option>
+							</select>
+						</div>
+						<button type="button" id="ref-filter-reset" class="ref-filter-reset">Reset filters</button>
+					</div>
+					<div class="ref-list-col">
+						<input id="ref-code-filter" type="text" placeholder="Type a module code to filter…" autocomplete="off">
+						<select id="ref-code-select" size="8">
+							<option value="">Please select a reference module</option>
+						</select>
+						<p id="ref-code-count" class="drop-hint" aria-live="polite"></p>
+					</div>
+				</div>
+			</div>
+			<!-- ROUND 263 — "Make your own template": subject + phase + template
+			     chosen directly; ALL options always shown (no cascade, and not
+			     narrowed by the module being converted); all three REQUIRED
+			     before Convert activates. The engine inherits from the most
+			     typical matching library module, template never relaxed. -->
+			<label class="mode-option">
+				<input type="radio" name="ref-mode" id="ref-custom">
+				<strong>Make your own template</strong> — pick a subject, phase and template; the converter builds from the most typical matching modules in the library.
+			</label>
+			<div id="ref-custom-block" class="ref-sub-block" hidden>
+				<!-- ROUND 270 — titles above each dropdown; the three fields share
+				     ONE horizontal line (flex, no wrapping). -->
+				<div class="ref-custom-row">
+					<div class="ref-custom-field">
+						<label for="ref-custom-subject">Subject</label>
+						<select id="ref-custom-subject" title="Subject (required)">
+							<option value="">Select a subject…</option>
+						</select>
+					</div>
+					<div class="ref-custom-field">
+						<label for="ref-custom-phase">Phase</label>
+						<select id="ref-custom-phase" title="Phase (required)">
+							<option value="">Select a phase…</option>
+						</select>
+					</div>
+					<div class="ref-custom-field">
+						<label for="ref-custom-template">Template</label>
+						<select id="ref-custom-template" title="Template (required)">
+							<option value="">Select a template…</option>
+						</select>
+					</div>
+				</div>
+				<p class="drop-hint">All three are required. The template always leads — it dictates how the
+					content and lessons are laid out; if no module matches all three choices, the closest
+					match that keeps the template is used.</p>
 			</div>
 			<label class="mode-option">
 				<input type="radio" name="ref-mode" id="ref-html">
-				<strong>No suitable module</strong> — upload the finished HTML pages of a module to use as the reference.
+				<strong>Upload a reference module</strong> — upload the finished HTML pages of a module to use as the reference.
 			</label>
 			<div id="ref-html-block" class="ref-sub-block" hidden>
 				<input type="file" id="ref-html-input" accept=".html,.htm" multiple>
@@ -93,30 +177,13 @@
 			</div>
 		</section>
 
-		<!-- ============ 3. IMAGE MODE ============ -->
-		<section class="panel">
-			<h2>3 · Image output mode <span class="panel-note">(applies to every image in this run — no mixing)</span></h2>
-			<label class="mode-option">
-				<input type="radio" name="image-mode" id="mode-p" checked>
-				<strong>Mode P — placeholder</strong>: visible placehold.co image + the real
-				<code>images/iStock-XXXXXXXXX.jpg</code> reference in a comment beside it (developer swaps it in)
-			</label>
-			<label class="mode-option">
-				<input type="radio" name="image-mode" id="mode-d">
-				<strong>Mode D — direct</strong>: <code>&lt;img src="images/iStock-XXXXXXXXX.jpg"&gt;</code> straight away, no placeholder, no comment
-			</label>
-		</section>
-
-		<!-- ROUND 235 — the "Interactive hand-off" section is GONE: the hand-off is
-		     now the DEFAULT for every run. Each un-built interactive renders as its
-		     reference-code box with the raw captured content collapsed inside it
-		     (expand/collapse via the arrow at the right end of the box), and the
-		     same codes head the {CODE}_interactives.txt blocks. -->
-
 		<!-- ============ 4. CONVERT ============ -->
 		<section class="panel">
 			<h2>4 · Convert</h2>
 			<button id="convert-button" type="button" disabled>Convert module</button>
+			<!-- ROUND 258 — while Convert is deactivated by the reference gate,
+			     this red note says why (App.#updateConvertGate drives it). -->
+			<p id="convert-gate-note" class="convert-gate-note" hidden></p>
 			<!-- ROUND 193 — the conversion progress bar (hidden until Convert; App.js drives it,
 			     the engine reports through the guarded run.onProgress hook — browser-only) -->
 			<div id="progress-bar" class="progress-bar" hidden

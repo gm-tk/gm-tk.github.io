@@ -484,3 +484,131 @@ body {
 #ref-code-count {
 	margin: 4px 0 0;
 }
+
+/* round 254 — the code/subject/phase filter row above the reference list */
+.ref-filter-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-bottom: 6px;
+}
+
+.ref-filter-row #ref-code-filter {
+	margin-bottom: 0;
+}
+
+#ref-subject-filter,
+#ref-phase-filter,
+#ref-template-filter {
+	padding: 6px 10px;
+	border: 1px solid var(--ink-soft);
+	border-radius: 6px;
+	font: inherit;
+	max-width: 100%;
+}
+
+/* round 256 — the suggested module's row in the reference list */
+#ref-code-select option.ref-recommended {
+	color: #c00000;
+	font-weight: 600;
+}
+
+/* round 258 — the red "why Convert is inactive" note under the button */
+.convert-gate-note {
+	color: #c00000;
+	font-weight: 600;
+	margin: 8px 0 0;
+}
+
+/* =========================================================================
+   ROUND 261 — the reference picker's two-column layout (Gavin's drawing):
+   labelled filter dropdowns stacked on the LEFT with a reset button; the
+   type-to-filter box + always-visible module list on the RIGHT.
+   ========================================================================= */
+.ref-pick-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: flex-start;
+}
+
+.ref-filter-col {
+	flex: 0 1 280px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.ref-filter-field {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ref-filter-field label {
+	flex: 0 0 72px;
+	font-weight: 600;
+}
+
+.ref-filter-field select {
+	flex: 1 1 auto;
+	width: 100%;
+}
+
+.ref-filter-reset {
+	align-self: flex-start;
+	margin-top: 4px;
+	padding: 6px 14px;
+	border: 1px solid var(--ink-soft);
+	border-radius: 6px;
+	background: none;
+	font: inherit;
+	cursor: pointer;
+}
+
+.ref-filter-reset:hover {
+	background: var(--ink-soft);
+	color: #fff;
+}
+
+.ref-list-col {
+	flex: 1 1 320px;
+	min-width: 280px;
+}
+
+.ref-list-col #ref-code-filter,
+.ref-list-col #ref-code-select {
+	width: 100%;
+	max-width: none;
+}
+
+/* round 267/270 — the "Make your own template" three required dropdowns:
+   titled fields sharing ONE horizontal line (Gavin's round-270 layout) */
+.ref-custom-row {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 10px;
+	margin-bottom: 6px;
+}
+
+.ref-custom-field {
+	flex: 1 1 0;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.ref-custom-field label {
+	font-weight: 600;
+}
+
+#ref-custom-subject,
+#ref-custom-phase,
+#ref-custom-template {
+	width: 100%;
+	padding: 6px 10px;
+	border: 1px solid var(--ink-soft);
+	border-radius: 6px;
+	font: inherit;
+}

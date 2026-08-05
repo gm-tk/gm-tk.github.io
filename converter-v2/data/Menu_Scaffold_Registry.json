@@ -2153,6 +2153,24 @@
      "n": 7
     }
    }
+  },
+  "SCCH|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    }
+   }
   }
  },
  "series": {
@@ -3630,6 +3648,10 @@
   },
   "XWHA02": {
    "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "SCCH301": {
+   "overview": "tabs",
    "lesson": "simplified"
   }
  },
