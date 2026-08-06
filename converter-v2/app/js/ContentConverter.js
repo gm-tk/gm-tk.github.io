@@ -5594,7 +5594,21 @@ class ContentConverter {
 			// The rich-tabs pane renderer needs the kept-table emitter for a captured
 			// data-table member (for example the BLL subject family's letter mats), so the
 			// pane's table renders IDENTICALLY to an ordinary free-body kept table.
-			renderTable: (tblItem) => TablesAndGrids.contentTable(tblItem.block, run, false, this.#norm),
+			// ROUND 275 — THE LEAK GUARD, the round-167 rule applied at the widget seam. A
+			// captured table can carry a resolved [tag] the cell renderer cannot strip (a
+			// widget/media/structural tag buried mid-cell). Inside a hand-off box that text is
+			// gate-excluded chrome; rendered as a real kept table it becomes a VISIBLE literal
+			// leak on the finished page. Returning null makes the widget builder decline the
+			// whole thing and keep the honest hand-off box, so building a panel/pane table can
+			// never ADD a counted leak — it can only prevent one. Env ACCTABLE_OFF reverts.
+			renderTable: (tblItem) => {
+				const html = TablesAndGrids.contentTable(tblItem.block, run, false, this.#norm);
+				const guardOn = (DataService.Data.EmitTemplates.interactive_builders?.accordion
+					?.rich_panels?.table_member?.leak_guard !== false)
+					&& !(typeof process !== "undefined" && process.env && process.env.ACCTABLE_OFF);
+				if (guardOn && html && this.#htmlLeaksResolvedTag(html)) return null;
+				return html;
+			},
 			// A URL-less trailing "[image]" member (for example "[insert item 3]", found on
 			// module PHE1005 — the human ships the actual image AFTER the widget) renders
 			// through the NORMAL body-path image emitter, so it carries the same standard

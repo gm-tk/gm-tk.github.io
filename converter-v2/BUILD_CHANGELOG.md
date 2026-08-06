@@ -1,5 +1,193 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-06 (round 275, build 260618.47) — THE THREE BUILDER BLOCKERS: carousel/video · accordion/TABLE · clickDrop/image (**FULL REGENERATION + ALL PROTECTED GATES — authorised in the request; FULL ship, ledger reset to 0**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris named three things the builders were giving up on,
+all of them "non-complex" interactives PageForge should be developing:
+
+- *A carousel with a video in it now builds.* (was 0 of 60 by the dashboard's count;
+  the real video-carrying population is 194 declines, 125 of them blocked by nothing
+  else — **+48 carousels now build, across 23 modules**.)
+- *An accordion whose content sits in a table now builds.* (was 0 of 190 —
+  **+54 accordions now build, across 20 modules**.)
+- *A click-and-drop with an image now builds.* — the guard is gone, images render in
+  the writer's position, and the content-losing silent drop beside it is repaired; but
+  **only 1 of the 179 was actually being held back by the image**, and this entry says
+  plainly what the other 178 are really blocked by (below), because the "179" was a
+  label artefact of the census signature rather than a builder-vocabulary gap.
+
+**Interactive coverage 21.4% → 23.4%** (1,087 → 1,190 of ~5,082 writer-tagged widgets);
+**LOST 0 builds** in every widget type, including tabs, which shares the seam changed here.
+
+---
+
+### 1. MEASURED FIRST — and the measurement corrected the brief
+
+The round-271 census was rebuilt from scratch (16 shards) and reproduced 21.4% exactly.
+It records the authoring SHAPE of every captured bundle, but not WHICH guard turned a
+decline away — and its shape labels are easy to misread. A new probe,
+**`outputs/_measure_r275_blockers.cjs`** (the census's Build hook, classifying every
+declining bundle against the guards that actually exist), was run over all 449 corpus
+modules and re-sized each ticket:
+
+| Ticket | Dashboard row | What the guard-level measurement found |
+|---|---|---|
+| carousel / video | `embed 60/0` + `image 60/0` | **194 declines carry a [video]/[embed] member, 125 with no other blocker.** The `embed` row is NOT videos — it is the `[embed story]` decodable-PDF family (58), a different class. |
+| accordion / TABLE | `(a captured TABLE) 190/0` | **190 confirmed; 85 already carry a panel HEADING** (this round's population); **105 are BARE-OPENER** bundles where the table's own ROWS are the panels. |
+| clickDrop / image | `image 179/5` | **186 declines carry an EMPTY [image] marker, 167 of them the XDLS903-906 family whose bundles carry NO reveal content at all** — a capture-boundary class. Only ~14 have a real image as their only blocker. |
+
+Each fix was also checked against the human's own convention before coding:
+gold ships **325 accContent blocks with a `<table>` across 99 modules**;
+**939 of 2,877 clickDropContent blocks (33%) across 235 modules carry an `<img>`**;
+and of **1,618 gold carousel captions, ZERO** are a bare URL.
+
+### 2. THE FIXES (three independent env toggles, three data flags)
+
+**`ACCTABLE_OFF` — accordion panel tables** (`accordion.rich_panels.table_member`).
+`renderTable` is forwarded to the accordion dispatch and the rich panel walk renders a
+captured table inside its panel through the converter's OWN kept-table emitter — the
+exact seam rich TABS has used since round 195. Byte reference: EXPFUN02_0_0's "Success
+Criteria Phase Two" panel now ships `<p>lead</p>` + the kept table, matching its gold.
+Two repairs ride the same flag: **`#accordionWithImages` was SILENTLY DROPPING a table**
+(a table item carries no `.text`, so it fell through the blank-line guard and the
+accordion built with the writer's table missing) — it now bails so the rich walk gets
+it; and a **LEAK GUARD on the widget table seam** (see §3).
+
+**`CARVIDEO_OFF` — carousel videos** (`carousel.rich_slides.video_url_recovery`).
+THE ROOT CAUSE: the BLL phonics family types the video TITLE on the `[video]` tag and the
+bare URL on the FOLLOWING line — but colours that line RED, so it arrives as a tag member
+with no primary rather than the plain `black` line the round-247 lookahead was written for.
+The URL was never found, the video resolved no id, and the whole carousel bailed. The
+lookahead now walks forward over blank filler of ANY member type, stopping at the first
+member with a real primary tag (so a URL belonging to another element can never be stolen)
+or at any line carrying prose of its own. Reachable ONLY for a video with no URL of its
+own — every such bundle declines today — so it is **strictly additive**. Two riders:
+a YouTube SHORTS url ships the round-266 1x1 form and any other embeddable url ships the
+generic iframe, mirroring `MediaBuilder.media` exactly instead of bailing on a host the
+YouTube-only regex cannot read; and a slide line that is nothing but a bare video URL is
+dropped as the reference it is (without this, every URL line the lookahead did not claim
+rendered as a visible link paragraph on the slide — 5 of 5 captions on BLL230).
+
+**`CDIMAGE_OFF` — clickDrop images** (`clickDrop.image_member`). Each item now keeps an
+ORDERED part list, so an image renders in the writer's own position as the standard
+Mode P/D asset; an item with no image has exactly one body part holding the whole joined
+body, so every clickDrop that already built is byte-identical. An EMPTY media-list marker
+is skipped (there is no asset to render, and the XDLS903-906 golds ship none); a LEADING
+label-less `[click drop]` is the widget OPENER, the same convention `[accordion]`/`[tabs]`
+have always had; and text riding along with the URL is the item's prose CONTINUING after
+the image, not a caption the widget cannot place (HES1007's scenario panels).
+
+### 3. THE LEAK GUARD — the one thing that first went wrong, and how it was caught
+
+The first full regen came back with **clean 97.7% / leak 301 occ / 49 pages** against the
+round-266 baseline of 97.8% / 288 / 46. Decomposed page by page: a newly-rendered panel
+table on MXFU302_5_0 still contained resolved `[Accordion 1]` / `[Hint]` tags — inside a
+hand-off box that text is gate-excluded chrome, but rendered as a real kept table it
+becomes a VISIBLE literal leak. This is exactly the class round 167 solved for reoMode
+grids, so the same rule was applied at the widget seam: **`renderTable` returns null when
+the rendered table still shows a resolved tag**, and the builder declines the whole widget
+and keeps the honest hand-off box. Building a panel/pane table can therefore never ADD a
+counted leak — only prevent one. The corpus was regenerated again and the leak returned
+to **288 / 46 EXACTLY**. Cost: 5 of the 59 candidate accordions (the leaky ones) correctly
+keep their box — reflected in the final +54.
+
+### 4. PROOF
+
+- **Census, leak-guard inclusive:** accordion **+54 NEW / 20 modules / LOST 0**;
+  carousel **+48 NEW / 23 modules / LOST 0**; clickDrop **+1 NEW / LOST 0**;
+  **tabs, flipCard, dragAndDrop, modal, speechBubble — LOST 0** (the leak guard, which
+  tabs shares, cost tabs nothing). Coverage **21.4% → 23.4%**.
+- **Toggle reversal:** with all three toggles set, the 10 affected canary modules
+  (54 pages) reproduce the pre-round state; **6 out-of-class canaries (OSAH501, ENGS302,
+  TRR203, CEDO501, OSOH501, BLL225 — 48 pages) are byte-identical in BOTH states.**
+- **Per-toggle decomposition** (one toggle state per PROCESS, the r246 trap):
+  `ACCTABLE_OFF` owns 10 html pages, `CARVIDEO_OFF` 5, `CDIMAGE_OFF` 1 — no overlap
+  beyond EXPFUN03, which legitimately carries both.
+- **Widget verifiers, all clean:** carousel **20 carousels / 69 video slides / 0
+  mismatched slide ids**; accordion **48 panels, every one matching the human**;
+  clickDrop **24 widgets / 35 items / defect 0**; flipCard 33 / divergence 0;
+  speechBubble 47 built / defect 0; tabs 59 / divergence 0. All five selftests GREEN.
+
+### 5. THE FULL REGENERATION + PROTECTED GATES
+
+416 gated dirs regenerated (64 batch calls after splitting for the 45s wall), **0 stale by
+mtime**; blast radius **120 pages / 105 modules, 0 added / 0 removed** (no pagination churn).
+
+| Gate | r266 baseline | round 275 | verdict |
+|---|---|---|---|
+| PRIMARY skeleton SCAFFOLD mean | 49.862% | **49.857%** | −0.005pp, decomposed below |
+| pages ≥50% / ≥75% / ≥90% | 983 / 190 / 16 | **983 / 190 / 16** | EXACT |
+| skeleton RAW | 32.946% | **33.032%** | **IMPROVED** |
+| pairs / skipped | 1940 / 0 | **1941 / 0** | +1 pair (named) |
+| compare_structure exact | 11157 | **11162** | **IMPROVED** |
+| compare_structure EXTRA / missing | 185 / 579 | **185 / 579** | EXACT |
+| body_compare ANY | 267 | **267** | EXACT |
+| structurally clean | 97.8% (2056/2102) | **97.8% (2056/2102)** | EXACT |
+| literal-`[tag]` leak | 288 occ / 46 pages | **288 / 46** | EXACT |
+| tags regression | 9557/9557, REAL 0 | **9557/9557, REAL 0** | EXACT |
+| index-sync · entry-parity | 33/28 · PASS | **33/28 · PASS** | EXACT |
+
+**THE SKELETON MEAN, DECOMPOSED.** Only **10 modules moved**, and 7 of them
+(CEDO102, ENGC102, ENGJ102, MXDI103, MXFL103, SCCH301, SCPH301) are **exactly the round-273
+goJournal seven** — an already-shipped scoped-ship delta finally reaching the skeleton
+state file, and all 7 moved POSITIVELY. Of the 3 that are this round's: OSSC401 **+0.84pp**,
+HES1007 −0.66pp, and **ENGR302 56.69% → 54.28% with pages 7→8** — which is the entire
+corpus-level dip. ENGR302 ships 8 pages both before and after; page `_5_0` was
+**UNPAIRED at r266 and now pairs at 37.4%** because the accordion building changed its
+content enough to cross the pairing threshold. Every other ENGR302 page scores identically.
+That is the documented **pairing-visibility class** (r186/r222/r235): a previously-invisible
+page joining the population pulls the mean down while the module is strictly better — and
+RAW, which sees the recovered content, improves corpus-wide.
+
+**The 47 modules whose widgets newly build show ZERO skeleton movement** — expected and
+by design: the scaffold gate collapses widget internals, which is precisely why this round
+is judged on coverage (dashboard §1) rather than on the primary gate.
+
+### 6. RECORDED — measured, not shipped (do not re-litigate without re-measuring)
+
+- **The BARE-OPENER accordion table dialect (105 bundles).** The writer gives no panel
+  heading and the table's ROWS are the panels — the accordion sibling of tabs'
+  `rich_panes.table_panes`. It spreads over ~50 distinct table shapes and the panel
+  headings are frequently EDITORIAL and absent from the Writers Template (ENFUN04's gold
+  invents "Step one/two/three"), so it needs its own measured round rather than an
+  invented heading.
+- **The clickDrop 179 is not a builder gap.** 167 of the 186 empty-marker declines are
+  XDLS903-906, whose bundles carry a label and an empty `[image]` and *no reveal content
+  at all* — a CAPTURE-boundary class. The rest are dominated by merged multi-widget
+  bundles and captured tables whose labels are likewise not in the WT (SSCI205).
+- **The `[embed story]` decodable-PDF carousel family (58 declines).** Its slides are
+  story pages that exist in no input; `deny_extensions` deliberately stops the URL
+  recovery adopting a PDF as a "video".
+- **A FRESHNESS-CHECK FALSE POSITIVE, in two tools, from one root cause.** Both
+  `_coverage_dashboard.py` and `_stalecheck.sh` treat every `data/*.json` as an
+  OUTPUT-AFFECTING source. `Module_Feature_Index.json` is a DIAGNOSTIC file the engine
+  never loads (it is not in `_modules.json`'s data_map), so rebuilding the feature index
+  — which §13 requires after every regeneration — makes both tools declare the corpus /
+  census stale when nothing that can change a conversion has moved. Sequence of record
+  for this round: the corpus was verified **0-stale immediately after the final regen**
+  (before the index rebuild), and afterwards the only two files newer than the newest
+  corpus page are `Config.js` (UI-only, already excluded by the checker's own rule) and
+  `Module_Feature_Index.json` (engine-loaded = false) — with
+  `_content_manifest.py diff` reporting **IDENTICAL, 0 pages differ**, which judges
+  CONTENT and ignores mtime. The dashboard was regenerated with `--allow-stale`.
+  **Recorded follow-up:** narrow both scans to the engine-loaded data files named in
+  `_modules.json`'s data_map (the round-228 symlink lesson's sibling — a freshness check
+  is only as good as the file list it walks).
+
+### 7. HOUSEKEEPING
+
+Content manifest refreshed (2102 pages / 413 modules); fast-loop baselines refreshed
+(cs / bc / defect direct, skeleton **seeded from the merged 8-shard state**
+`outputs/_r275_sk_final.json` — a full-corpus `--json` run exceeds the 45s wall, the
+r264/r266 pattern); FULL ship recorded, scoped counter reset to 0; feature index rebuilt
+(`--rehtml` + `--merge`, selftest GREEN — **mandatory after a regeneration**, or the next
+scoped ship under-selects); `COVERAGE_DASHBOARD.md` regenerated. New tool
+`outputs/_measure_r275_blockers.cjs` (per-decline blocker classification + `--dump CODE`
+raw member triangulation) and merge script `outputs/_r275_sk_merge.py`.
+
+---
+
+
 ## 2026-08-06 (round 274, build 260618.46) — CUSTOM-TEMPLATE EXISTING-COMBINATIONS CASCADE (**UI-only; no engine/data/output change; no regeneration — the round-266 baselines still describe the corpus**)
 
 **THE PLAIN-ENGLISH LEAD.** Gavin, superseding the round-267 no-cascade rule at his

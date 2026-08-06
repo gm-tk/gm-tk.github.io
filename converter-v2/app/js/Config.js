@@ -891,7 +891,26 @@ class Config {
 	// The engine's PickBySpec relaxation chain is unchanged (now a belt-and-
 	// braces safety net — the UI guarantees the exact pool is non-empty).
 	// App.#renderCustomOptions; UI-only; entry-parity PASS.
-	static AppVersion = "260618.46";
+	// ROUND 275 (260618.47): THE THREE BUILDER BLOCKERS (Chris — carousel/video,
+	// accordion/TABLE, clickDrop/image; FULL regeneration + gates, ledger reset).
+	// ACCTABLE_OFF — a captured data table inside an accordion PANEL renders through
+	// the converter's own kept-table emitter (the seam rich TABS has used since r195;
+	// gold ships 325 such accContent blocks across 99 modules), plus the
+	// #accordionWithImages CONTENT-LOSS repair (a table item has no .text, so it fell
+	// through the blank-line guard and vanished) and a leak guard on the widget table
+	// seam (the r167 rule: a table still showing a resolved [tag] declines, so building
+	// one can never ADD a counted leak). CARVIDEO_OFF — the widened tail-URL lookahead
+	// (the writer's URL line is often a RED span, not the plain black line r247 looked
+	// for, so the video resolved no id and the whole carousel bailed), Shorts/other
+	// hosts embedding as MediaBuilder already does, and the bare-URL slide line dropped
+	// as the reference it is (gold: 1,618 carousel captions, 0 bare-URL). CDIMAGE_OFF —
+	// an [image] no longer bails a clickDrop: each item keeps an ordered part list and
+	// the image renders in the writer's own position (gold: 939 of 2,877
+	// clickDropContent blocks carry an <img>), an empty media-list marker is skipped,
+	// a leading label-less [click drop] is the opener, and text riding along with the
+	// URL is body continuation. Coverage 21.4% -> 23.4%; NEW BUILDS accordion +54 /
+	// carousel +48 / clickDrop +1, LOST 0 across every type.
+	static AppVersion = "260618.47";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

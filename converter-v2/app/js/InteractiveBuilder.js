@@ -104,7 +104,9 @@ class InteractiveBuilder {
 					html = this.#hintSlider({ bundle, tpl, renderInline });
 					break;
 				case "accordion":
-					html = this.#accordion({ bundle, tpl, renderInline, run, renderBlock, renderNested });
+					// renderTable added round 275 — the rich panel walk renders a captured data
+					// table INSIDE its panel, exactly as the rich tabs pane already does.
+					html = this.#accordion({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable });
 					break;
 					// speechBubble needs `run` (for the image Mode P/D), so it is
 					// the first builder we hand the run context to.
@@ -443,7 +445,7 @@ class InteractiveBuilder {
 	 * @param {function} [args.renderNested] - renders an absorbed sub-widget as its own honest placeholder
 	 * @returns {string|null} the built accordion HTML, or null to keep the orange placeholder
 	 */
-	static #accordion({ bundle, tpl, renderInline, run, renderBlock, renderNested }) {
+	static #accordion({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable }) {
 		// Dispatch by CONTENT: a panel image ([image] member) routes to the
 		// image-aware path; a pure heading+text accordion uses the original path
 		// VERBATIM (so plain-text accordions stay byte-identical — proven by A/B).
@@ -469,9 +471,9 @@ class InteractiveBuilder {
 			// already built. Try it first; if the result is null, run the fallback again with
 			// the rule OFF, which reproduces the round-245 grouping exactly. The new rule can
 			// therefore only ever ADD builds, never remove one.
-			const withRule = this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested });
+			const withRule = this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable });
 			if (withRule !== null) return withRule;
-			return this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, legacyPanels: true });
+			return this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable, legacyPanels: true });
 		}
 		return null;
 	}
@@ -492,12 +494,18 @@ class InteractiveBuilder {
 	 * member it cannot place. Requires renderBlock (the bullet/paragraph renderer);
 	 * without it the fallback declines so non-converter callers keep the placeholder.
 	 */
-	static #accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, legacyPanels }) {
+	static #accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable, legacyPanels }) {
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return null;
 		if (typeof renderBlock !== "function") return null;   // need the body renderer
 		const inline = renderInline ?? ((s) => s);
 		const rich = tpl.rich_panels ?? {};
+		// ROUND 275 (Chris — the accordion/TABLE blocker): a captured data table inside a
+		// panel renders through the converter's own kept-table emitter, exactly as the rich
+		// TABS pane has since round 195. Data rich_panels.table_member; env ACCTABLE_OFF.
+		const tblCfg = rich.table_member ?? {};
+		const tableOn = tblCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACCTABLE_OFF);
 		const markerNotes = [];   // ROUND 242: skipped image-ARRANGEMENT layout markers, surfaced as notes on success
 		// ROUND 246 ticket 2 — heading-less numbered panels (see head_from_first_line)
 		const headFirstCfg = rich.head_from_first_line ?? {};
@@ -672,7 +680,30 @@ class InteractiveBuilder {
 			//     intro <p> and its <ul> stay in one rendered block (the human shape).
 			if (tag && /\blist\b/.test(tag)) continue;
 
-			// (f) anything else (a data table, a foreign tag) → too rich → bail.
+			// (e.6) a captured data TABLE member (ROUND 275, Chris — "the accordion builder
+			//     gives up whenever the content is in a table: 190 failures, no successes").
+			//     A table inside a panel is ordinary panel CONTENT and the human ships it that
+			//     way: measured over the whole gold library, 325 accContent blocks across 99
+			//     modules contain a <table> (EXPFUN02-00's "Success Criteria Phase Two" panel
+			//     is the byte reference — <p>lead</p> + the kept table). It renders through the
+			//     converter's OWN kept-table emitter (renderTable = TablesAndGrids.contentTable),
+			//     so a panel table is identical to any free-body table on the page — the exact
+			//     seam the rich TABS pane has used since round 195.
+			//     NEVER HALF-BUILDS: without a renderTable callback (a non-converter caller), or
+			//     before any panel has opened (the BARE-OPENER "table rows ARE the panels"
+			//     dialect — a different builder, RECORDED not shipped this round), or when the
+			//     emitter returns nothing, the whole accordion still declines to the hand-off box.
+			//     Data rich_panels.table_member; env ACCTABLE_OFF.
+			if (m && m.type === "table" && tableOn) {
+				if (!cur || typeof renderTable !== "function") return null;
+				flushText();
+				const t = renderTable(m);
+				if (!t || !String(t).trim()) return null;
+				cur.parts.push({ html: String(t) });
+				continue;
+			}
+
+			// (f) anything else (a foreign tag) → too rich → bail.
 			return null;
 		}
 		flushText();
@@ -738,6 +769,8 @@ class InteractiveBuilder {
 					chunks.push(wrap ? Utils.FillTemplate(wrapTpl, { html: ph }) : ph);
 				} else if (part.h) {
 					chunks.push(`<${part.h}>${inline(part.text)}</${part.h}>`);
+				} else if (part.html) {
+					chunks.push(part.html);          // ROUND 275: a rendered panel table
 				} else if (part.p) {
 					const rendered = renderBlock(part.p);              // array of <p>/<ul> html
 					const arr = Array.isArray(rendered) ? rendered : [rendered];
@@ -926,6 +959,18 @@ class InteractiveBuilder {
 			//     skipped as build content, surfaced as a red note on a successful build.
 			const layoutMk = this.#imageLayoutMarker(m, tpl);
 			if (layoutMk) { markerNotes.push(layoutMk); continue; }
+
+			// (a0.5) a captured data TABLE member — CONTENT-LOSS REPAIR (ROUND 275). A table
+			//     item carries no `.text`, so it fell through the `if (!text) continue;` guard
+			//     below and was SILENTLY DROPPED: the accordion built and the writer's table
+			//     simply vanished from the page. Bail instead, so the round-275 rich walk (which
+			//     renders a panel table through the kept-table emitter) gets the bundle. Under
+			//     ACCTABLE_OFF the old silent-drop behaviour is restored byte-for-byte.
+			if (m && m.type === "table"
+				&& (tpl?.rich_panels?.table_member?.enabled !== false)
+				&& !(typeof process !== "undefined" && process.env && process.env.ACCTABLE_OFF)) {
+				return null;
+			}
 
 			// (a) panel delimiter. A LEADING [accordion] with NO heading is the OPENER
 			//     (OSAI501-02 types `[accordion]` then `[accordion 1] …`) → skip; a
@@ -3338,8 +3383,26 @@ class InteractiveBuilder {
 			&& (m.parse?.primary?.tag === "slide n" || m.parse?.primary?.tag === "slide"
 				|| (m.parse?.tags ?? []).some((t) => t.tag === "slide n")));
 		const mediaOpens = (msCfg.media_opens_slide ?? false) && !slideMarked && !env.CARMEDSLIDE_OFF;
+		// ROUND 275 (Chris — "the carousel builder gives up whenever the writer included a
+		// video link"). THE WIDENED TAIL-URL LOOKAHEAD. The dominant declining dialect is the
+		// BLL phonics family's video list, where the writer types the video's TITLE on the
+		// [video] tag and puts the bare URL on the FOLLOWING line — but colours that line RED,
+		// so it arrives as a tag member with NO primary rather than the `black` line round 247
+		// looked for, the lookahead missed it, the video resolved no id and the WHOLE carousel
+		// bailed. The recovery now walks forward over blank/no-primary members of ANY type and
+		// takes the first resolvable video URL, stopping at the first member that carries a
+		// real primary tag (so a URL belonging to a different element can never be stolen) or
+		// at any member carrying real prose of its own. Reachable ONLY for a video with no URL
+		// of its own — every such bundle declines today — so it is strictly additive.
+		// Data rich_slides.video_url_recovery; env CARVIDEO_OFF (CARVIDTAIL_OFF still reverts
+		// the whole r247 lookahead).
+		const vrCfg = cfg.video_url_recovery ?? {};
+		const widenTail = (vrCfg.follow_any_member ?? false) && !env.CARVIDEO_OFF;
+		const tailWindow = vrCfg.follow_window ?? 3;
 		const tailUrls = new Map(), tailConsumed = new Set();
 		if ((msCfg.video_tail_url ?? false) && !env.CARVIDTAIL_OFF) {
+			const anyUrl = (x) => x?.block?.links?.[0]?.target
+				?? (String((x?.type === "tag" ? (x.blackAfter ?? "") : (x?.text ?? ""))).match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
 			for (let i = 0; i < members.length; i++) {
 				const m = members[i];
 				if (m?.type !== "tag" || m.parse?.primary?.tag !== "video") continue;
@@ -3350,7 +3413,22 @@ class InteractiveBuilder {
 				if (nx?.type === "black") {
 					const u = nx.block?.links?.[0]?.target
 						?? (String(nx.text ?? "").match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
-					if (u && idRe.test(u)) { tailUrls.set(m, u); tailConsumed.add(nx); }
+					if (u && idRe.test(u)) { tailUrls.set(m, u); tailConsumed.add(nx); continue; }
+				}
+				if (!widenTail) continue;
+				for (let j = i + 1; j < Math.min(members.length, i + 1 + tailWindow); j++) {
+					const c = members[j];
+					if (!c || tailConsumed.has(c)) continue;
+					if (c.type === "table" || c.type === "nested") break;
+					if (c.type === "tag" && c.parse?.primary) break;      // a real element owns its own URL
+					const u = anyUrl(c);
+					const body = String(c.type === "tag" ? (c.blackAfter ?? "") : (c.text ?? ""));
+					if (!u) { if (this.#cellText(body).trim()) break; continue; }   // blank filler → keep looking
+					// the line must be the URL itself, not prose that merely contains one
+					if (this.#cellText(body.replace(/https?:\/\/[^\s\]"<>]+/g, " ").replace(/[()[\]]/g, " ")).trim()) break;
+					if (!this.#carouselVideoUrlOk(u, cfg)) break;
+					tailUrls.set(m, u); tailConsumed.add(c);
+					break;
 				}
 			}
 		}
@@ -3385,7 +3463,7 @@ class InteractiveBuilder {
 			if (m.type === "tag" && !m.parse?.primary
 				&& ["instruction", "noise"].includes(m.parse?.class)) {
 				const t = this.#cellText(m.blackAfter ?? "").trim();
-				if (t) pending.push(String(m.blackAfter));   // its trailing BLACK text is learner prose
+				if (t && !this.#carouselBareMediaRef(m.blackAfter, cfg, env)) pending.push(String(m.blackAfter));
 				continue;
 			}
 			// the widget's own invocation contributes only its trailing prose
@@ -3415,14 +3493,27 @@ class InteractiveBuilder {
 				cur.parts.push({ h: t });
 				continue;
 			}
-			// a VIDEO (or an [embed] carrying one) — the shared YouTube embed
+			// a VIDEO (or an [embed] carrying one) — the shared YouTube embed. ROUND 275: a
+			// YouTube SHORTS url ships the corpus 1x1 short form and any OTHER resolvable
+			// video url ships the generic iframe, exactly as the free-body media emitter
+			// (MediaBuilder.media) already does — instead of bailing the whole carousel on
+			// a host the YouTube-only id regex could not read. Still bails when there is no
+			// url at all. Data rich_slides.video_url_recovery; env CARVIDEO_OFF.
 			if (tag === "video" || tag === "embed" || (url && idRe.test(url))) {
 				if (this.#hasRedText(raw)) return null;
 				const id = String(url).match(idRe)?.[1];
-				if (!id || !videoTpl) return null;                   // a video we cannot resolve → bail
+				if (id && videoTpl) {
+					flush();
+					if (!cur || (mediaOpens && cur.parts.some((pt) => pt.img || pt.video))) open();
+					cur.parts.push({ video: id });
+					continue;
+				}
+				const alt = (vrCfg.other_hosts !== false) && !env.CARVIDEO_OFF
+					? this.#carouselVideoEmbed(url, tpl, cfg) : null;
+				if (!alt) return null;                               // a video we cannot resolve → bail
 				flush();
 				if (!cur || (mediaOpens && cur.parts.some((pt) => pt.img || pt.video))) open();
-				cur.parts.push({ video: id });
+				cur.parts.push({ html: alt });
 				continue;
 			}
 			// an IMAGE — the standard Mode P/D asset, named from the iStock id
@@ -3435,9 +3526,15 @@ class InteractiveBuilder {
 				cur.parts.push({ img: Utils.FillTemplate(tpl.filename_istock, { id }) });
 				continue;
 			}
-			// PROSE — a plain black line or a text-family element tag
+			// PROSE — a plain black line or a text-family element tag. ROUND 275: a line that
+			// is NOTHING BUT a bare video URL is that video's REFERENCE, not learner prose —
+			// the human ships ZERO of them (measured: 1,618 gold carousel captions, 0 bare-URL),
+			// the same rule MediaBuilder applies on the body path (r80 stripMediaResidue).
+			// Without this, every URL line the tail lookahead did not claim rendered as a
+			// visible link paragraph on the slide.
 			if (m.type === "black" || textTags.has(tag)) {
 				if (this.#hasRedText(raw)) return null;
+				if (this.#carouselBareMediaRef(raw, cfg, env)) continue;
 				if (this.#cellText(raw).trim()) pending.push(String(raw));
 				continue;
 			}
@@ -3452,7 +3549,7 @@ class InteractiveBuilder {
 		// carries no content — the writer's real slide material did not reach the bundle, so
 		// the honest hand-off box is better than an empty-looking slideshow.
 		if (cfg.require_content !== false
-			&& !slides.some((s) => s.parts.some((p) => p.img || p.video || p.p))) return null;
+			&& !slides.some((s) => s.parts.some((p) => p.img || p.video || p.html || p.p))) return null;
 
 		const items = [];
 		for (const s of slides) {
@@ -3469,6 +3566,9 @@ class InteractiveBuilder {
 				} else if (part.video) {
 					if (capOpen) { chunks.push(cfg.caption_close); capOpen = false; }
 					chunks.push(Utils.FillTemplate(videoTpl, { videoId: part.video, params: "" }));
+				} else if (part.html) {
+					if (capOpen) { chunks.push(cfg.caption_close); capOpen = false; }
+					chunks.push(part.html);          // ROUND 275: a shorts / non-YouTube embed
 				} else {
 					// renderBlock (ListsAndRuns.renderBlackText) returns an ARRAY of <p>/<ul>
 					// html, exactly as the rich accordion consumes it.
@@ -3485,6 +3585,75 @@ class InteractiveBuilder {
 		}
 		bundle.r246Carousel = true;                                  // detector/affected-set marker
 		return [tpl.open, ...items, tpl.close].join("\n");
+	}
+
+	/**
+	 * ROUND 275 — is this line NOTHING BUT a bare video reference URL? The writer lists a
+	 * video's URL on its own line beneath the [video] tag; where the tail lookahead has not
+	 * claimed it (its video already carried a URL of its own, for instance) it must still not
+	 * render as learner prose. MEASURED: across the whole gold library there are 1,618
+	 * carousel captions and NOT ONE is a bare URL — the same convention MediaBuilder applies
+	 * on the body path (round 80, stripMediaResidue). Surrounding brackets/parentheses are
+	 * ignored; a line with ANY real words alongside the URL is prose and is kept.
+	 *
+	 * @param {string} raw - the member's raw text
+	 * @param {object} cfg - the rich_slides config block
+	 * @param {object} env - process.env (for the CARVIDEO_OFF reversal)
+	 * @returns {boolean} true when the line is only a video reference
+	 */
+	static #carouselBareMediaRef(raw, cfg, env) {
+		if ((cfg?.video_url_recovery?.drop_bare_url_lines === false) || env?.CARVIDEO_OFF) return false;
+		const s = String(raw ?? "");
+		const urls = s.match(/https?:\/\/[^\s\]"<>)]+/g);
+		if (!urls || !urls.length) return false;
+		if (!urls.every((u) => /youtu\.?be|youtube\.com|vimeo/i.test(u))) return false;
+		const rest = this.#cellText(s.replace(/https?:\/\/[^\s\]"<>)]+/g, " ")).replace(/[()[\]|/\-–—.,:;]/g, " ").trim();
+		return !rest;
+	}
+
+	/**
+	 * ROUND 275 — is this URL a VIDEO source a carousel slide can embed? Used by the widened
+	 * tail-URL lookahead so it can never adopt a PDF, a document or an image as a "video".
+	 * A YouTube url (any form, including /shorts/) always qualifies; any other http(s) url
+	 * qualifies unless it ends in a document/image/audio extension.
+	 *
+	 * @param {string} url - the candidate media URL
+	 * @param {object} cfg - the rich_slides config block (carries video_url_recovery)
+	 * @returns {boolean} true when a slide could embed it
+	 */
+	static #carouselVideoUrlOk(url, cfg) {
+		const u = String(url ?? "");
+		if (!/^https?:\/\//i.test(u)) return false;
+		if (/youtu\.?be|youtube\.com/i.test(u)) return true;
+		const deny = new RegExp(cfg?.video_url_recovery?.deny_extensions
+			?? "\\.(pdf|docx?|pptx?|xlsx?|jpe?g|png|gif|svg|webp|mp3|wav|m4a|ogg|zip)(\\?|#|$)", "i");
+		return !deny.test(u);
+	}
+
+	/**
+	 * ROUND 275 — the embed HTML for a carousel video whose URL the YouTube-id regex could
+	 * not read. Mirrors the free-body media emitter's own convention (MediaBuilder.media):
+	 * a YouTube SHORTS url ships the corpus 1x1 short form (the round-266 shorts_embed,
+	 * gold-verified 57/57), anything else ships the shared generic iframe. Returns null when
+	 * the url is not an embeddable video source, so the caller keeps the hand-off box.
+	 *
+	 * @param {string} url - the media URL
+	 * @param {object} tpl - the carousel template block (carries media_table.shorts_*)
+	 * @param {object} cfg - the rich_slides config block
+	 * @returns {string|null} the embed HTML, or null to decline
+	 */
+	static #carouselVideoEmbed(url, tpl, cfg) {
+		const u = String(url ?? "");
+		if (!this.#carouselVideoUrlOk(u, cfg)) return null;
+		const vid = DataService.Data.EmitTemplates.video ?? {};
+		const mt = tpl?.media_table ?? {};
+		const sId = mt.shorts_id_re ? new RegExp(mt.shorts_id_re) : /youtube\.com\/shorts\/([\w-]{11})/;
+		const sm = u.match(sId);
+		if (sm && mt.shorts_embed) return Utils.FillTemplate(mt.shorts_embed, { videoId: sm[1] });
+		if (sm && vid.youtube) return Utils.FillTemplate(vid.youtube, { videoId: sm[1], params: "" });
+		if (/youtu\.?be|youtube\.com/i.test(u)) return null;   // a YouTube url with no readable id
+		if (!vid.generic_iframe) return null;
+		return Utils.FillTemplate(vid.generic_iframe, { url: Utils.EscapeHtml(u) });
 	}
 
 	/**
@@ -4020,20 +4189,79 @@ class InteractiveBuilder {
 		if (!members.length) return null;
 		const inline = renderInline ?? ((s) => s);
 
-		const items = [];          // [{ label, body:[paragraphs] }]
+		// ROUND 275 (Chris — "the click-and-drop builder gives up whenever there's an image:
+		// 179 failures, 5 successes"). An [image] member inside the reveal content used to
+		// bail the whole widget at the "(tag && tag !== 'body')" guard below. The human puts
+		// images in clickDrop reveal content routinely — MEASURED over the whole gold library,
+		// 939 of 2,877 clickDropContent blocks (33%) across 235 modules contain an <img> — so
+		// each item now keeps an ORDERED part list ({p:text} / {img:filename}) and the image
+		// renders in the writer's own position, as the standard Mode P/D asset.
+		// Data clickDrop.image_member; env CDIMAGE_OFF.
+		const imgCfg = tpl.image_member ?? {};
+		const imgOn = imgCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.CDIMAGE_OFF);
+
+		const items = [];          // [{ label, body:[paragraphs], parts:[...] }]
 		let cur = null;
+		const flushBody = () => {
+			if (!cur || !cur.body.length) return;
+			cur.parts.push({ body: cur.body });
+			cur.body = [];
+		};
 		for (const m of members) {
 			const tag = m && m.type === "tag" ? m.parse?.primary?.tag : null;
 			const raw = m && m.type === "tag" ? (m.blackAfter ?? "") : (m.text ?? "");
 			const text = this.#cellText(raw);
 
-			// (a) a [click drop N] opens a new item; its trailing text is the button label
+			// (a) a [click drop N] opens a new item; its trailing text is the button label.
+			//     ROUND 275: a LEADING label-less [click drop] is the widget's OPENER, not an
+			//     item — the same convention [accordion]/[tabs] have always used (the writer
+			//     types "[click drop]" then "[click drop 1] Label"). It is skipped; a
+			//     label-less tag AFTER items have started is still a malformed item and bails.
 			if (tag === "click drop") {
+				if (!text && !cur && imgOn) continue;              // the widget opener
 				if (!text || this.#hasRedText(raw)) return null;   // a button with no clean label → bail
-				cur = { label: text, body: [] };
+				flushBody();
+				cur = { label: text, body: [], parts: [] };
 				items.push(cur);
 				continue;
 			}
+
+			// (a.5) an [image] member inside the reveal content (ROUND 275).
+			//   • an EMPTY marker — no URL and no text of its own — is a media-list REFERENCE
+			//     the developer fills in later, with no asset to render. The human ships
+			//     nothing for it (verified across the XDLS903-906 family, whose gold reveal
+			//     panels carry the writer's headings/prose and no image at all), so it is
+			//     SKIPPED, exactly like the round-242 image-arrangement layout marker.
+			//   • a derivable iStock image renders in place as the standard Mode P/D asset.
+			//   • anything else (a non-iStock host, a caption riding along) still bails the
+			//     WHOLE widget — never half-built.
+			if (tag === "image" && imgOn) {
+				const url = m.block?.links?.[0]?.target
+					?? (String(raw).match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
+				// an EMPTY marker is skipped wherever it sits — including before the first
+				// button, which the pre-round blank-line guard already did (byte-identity).
+				if (!url && !text) continue;                       // an empty media-list marker → renders nothing
+				if (!cur) return null;                             // a real image before any button → bail
+				if (this.#hasRedText(raw)) return null;
+				const filename = this.#istockFilename(text || url, tpl);
+				if (!filename) return null;                        // non-iStock / underivable → bail
+				flushBody();
+				cur.parts.push({ img: filename });
+				// TEXT RIDING ALONG WITH THE URL is the item's own prose CONTINUING after the
+				// image (the writer types the asset link mid-paragraph — HES1007's scenario
+				// panels), not a caption the widget cannot place: it renders as body text
+				// after the image, in the writer's order, so nothing is lost and nothing is
+				// invented. The accordion's stricter "a caption rode along → bail" rule is
+				// right there (its panels have a fixed image-then-body shape); a clickDrop
+				// reveal panel is free-flowing content.
+				const residual = text.replace(/^\s*\[[^\]]*\]\s*/, "")
+					.replace(/https?:\/\/\S+/g, " ").replace(/\S*gm-?\d{6,10}\S*/g, " ")
+					.replace(/\s+/g, " ").trim();
+				if (residual) cur.body.push(residual);
+				continue;
+			}
+
 			// (b) body paragraph for the current item (untagged black or a [body] tag)
 			if (!text) continue;                                   // blank line
 			if (!cur) return null;                                 // content before any button → bail
@@ -4042,9 +4270,10 @@ class InteractiveBuilder {
 			if (tag && tag !== "body") return null;                // an [image]/widget member → too rich
 			cur.body.push(text);
 		}
+		flushBody();
 
 		if (items.length < (tpl.min_items ?? 1)) return null;
-		for (const it of items) if (!it.label || !it.body.length) return null;   // each needs a label + content
+		for (const it of items) if (!it.label || !it.parts.length) return null;   // each needs a label + content
 
 		const buttons = items.map((it) => Utils.FillTemplate(tpl.button, { label: inline(it.label) }));
 		// ROUND 241 (Dev-Feedback R4, C2 — SCCH302's Equipment clickDrop). The revealed
@@ -4061,10 +4290,16 @@ class InteractiveBuilder {
 		// .list_content. Env toggle: CDLIST_OFF (reverts to the one-<p>-per-paragraph form).
 		const listContent = (tpl.list_content ?? false)
 			&& !(typeof process !== "undefined" && process.env && process.env.CDLIST_OFF);
+		// ROUND 275: the item's parts render in the writer's own order. An item with no image
+		// has exactly ONE body part holding the whole joined body, so its output is
+		// byte-identical to the pre-round form.
+		const renderBody = (body) => (listContent
+			? ListsAndRuns.renderBlackText(body.join("\n"), run, [], false).join("\n")
+			: body.map((t) => `<p>${inline(t)}</p>`).join(""));
 		const contents = items.map((it) => Utils.FillTemplate(tpl.content, {
-			content: listContent
-				? ListsAndRuns.renderBlackText(it.body.join("\n"), run, [], false).join("\n")
-				: it.body.map((t) => `<p>${inline(t)}</p>`).join(""),
+			content: it.parts.map((p) => (p.img
+				? this.#assetImage(p.img, tpl, run)
+				: renderBody(p.body))).join(""),
 		}));
 		return [tpl.open, ...buttons, ...contents, tpl.close].join("\n");
 	}

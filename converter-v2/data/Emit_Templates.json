@@ -1070,7 +1070,37 @@
 				"skip_instruction_members": true,
 				"skip_list_marker_lines": true,
 				"nested_built_wrap": "<div class=\"row\">\n{html}\n</div>",
-				"_r214_note": "ROUND 214 (Chris, OSOH501-01): sub_headings — a panel's own [H2]-[H6] renders faithfully inside accContent (panel 4's [H5] Manaaki/Tika/Whanaungatanga); skip_instruction_members — a writer CS/Dev note inside a panel no longer bails the build (it still surfaces as the standard red cv2-note after the built widget via bundle.instructions); skip_list_marker_lines — a docx numbered-list artifact line ('1.') renders nothing; nested_built_wrap — a nested sub-bundle that BUILT for real (the READYSAFE tabs) wraps in the human's in-panel row. env ACCRICH2_OFF reverts all four."
+				"_r214_note": "ROUND 214 (Chris, OSOH501-01): sub_headings — a panel's own [H2]-[H6] renders faithfully inside accContent (panel 4's [H5] Manaaki/Tika/Whanaungatanga); skip_instruction_members — a writer CS/Dev note inside a panel no longer bails the build (it still surfaces as the standard red cv2-note after the built widget via bundle.instructions); skip_list_marker_lines — a docx numbered-list artifact line ('1.') renders nothing; nested_built_wrap — a nested sub-bundle that BUILT for real (the READYSAFE tabs) wraps in the human's in-panel row. env ACCRICH2_OFF reverts all four.",
+				"table_member": {
+					"enabled": true,
+					"leak_guard": true,
+					"_note": [
+						"ROUND 275 (Chris — 'the accordion builder gives up whenever the content is in a table:",
+						"190 failures, no successes'). A captured data TABLE inside an accordion panel is ordinary",
+						"panel CONTENT, and the human ships it exactly that way: measured over the whole gold",
+						"library, 325 accContent blocks across 99 modules contain a <table> (byte reference",
+						"EXPFUN02_0.0's 'Success Criteria Phase Two' panel — <p>lead</p> then the kept table).",
+						"The rich panel walk renders it through the converter's OWN kept-table emitter",
+						"(renderTable = TablesAndGrids.contentTable), so a panel table is identical to any",
+						"free-body table on the page — the same seam the rich TABS pane has used since round 195.",
+						"Before this rule all three accordion walks mishandled it: #accordionRich and",
+						"#accordionTextOnly bailed the whole widget at their catch-all, and #accordionWithImages",
+						"SILENTLY DROPPED it (a table item carries no .text, so it fell through the blank-line",
+						"guard and the accordion built with the writer's table missing) — a content-loss bug",
+						"repaired in the same round.",
+						"MEASURED (outputs/_measure_r275_blockers.cjs, all 449 corpus modules live): 190 accordion",
+						"declines carry a table; 85 of them already have a panel HEADING and are what this rule",
+						"reaches. RECORDED, NOT SHIPPED: the 105 BARE-OPENER bundles where the writer gave no",
+						"panel heading at all and the table's own ROWS are the panels — a different builder (the",
+						"accordion sibling of tabs' rich_panes.table_panes), spread over ~50 distinct table shapes",
+						"whose panel headings are frequently editorial and absent from the Writers Template",
+						"(ENFUN04's gold invents 'Step one/two/three'), so it needs its own measured round rather",
+						"than an invented heading.",
+						"NEVER HALF-BUILDS: no renderTable callback, no open panel, or an emitter returning nothing",
+						"all keep the honest hand-off box. env ACCTABLE_OFF reverts the whole rule (including the",
+						"#accordionWithImages silent drop, restored byte-for-byte)."
+					]
+				}
 			}
 		},
 		"speechBubble": {
@@ -1471,6 +1501,46 @@
 				"min_slides": 2,
 				"max_slides": 20,
 				"require_content": true,
+				"video_url_recovery": {
+					"follow_any_member": true,
+					"follow_window": 3,
+					"other_hosts": true,
+					"drop_bare_url_lines": true,
+					"deny_extensions": "\\.(pdf|docx?|pptx?|xlsx?|jpe?g|png|gif|svg|webp|mp3|wav|m4a|ogg|zip)(\\?|#|$)",
+					"_note": [
+						"ROUND 275 (Chris — 'the carousel builder gives up whenever the writer included a video",
+						"link: sixty failures, no successes'). MEASURED first over all 449 corpus modules live",
+						"(outputs/_measure_r275_blockers.cjs): 194 carousel declines carry a [video]/[embed]",
+						"member and 125 of them carry NO other blocker at all. The dominant dialect is the BLL",
+						"phonics video list — the writer puts the video's TITLE on the [video] tag and the bare",
+						"URL on the FOLLOWING line, but colours that line RED, so it reaches the builder as a tag",
+						"member with no primary rather than the plain `black` line the round-247 lookahead was",
+						"written for. The URL was therefore never found, the video resolved no id, and the WHOLE",
+						"carousel bailed to a hand-off box.",
+						"follow_any_member: the recovery walks forward up to follow_window members of ANY type,",
+						"skipping blank filler, and takes the first line that IS a video URL (a line with prose",
+						"of its own is not a reference line and stops the walk). It stops at the first member",
+						"carrying a real primary tag, so a URL belonging to a different element can never be",
+						"stolen, and at a table/nested member. Reachable ONLY for a [video] with no URL of its",
+						"own — every such bundle declines today — so the rule is strictly ADDITIVE and cannot",
+						"change a carousel that already builds.",
+						"other_hosts: a URL the YouTube-id regex cannot read no longer bails the whole carousel.",
+						"A YouTube SHORTS url ships the round-266 media_table.shorts_embed 1x1 form (gold 57/57)",
+						"and any other embeddable url ships video.generic_iframe — mirroring exactly what the",
+						"free-body media emitter (MediaBuilder.media) already does for the same URL, so a video",
+						"inside a carousel and the same video in the body render by one convention.",
+						"drop_bare_url_lines: a slide line that is NOTHING BUT a bare video URL is that video's",
+						"REFERENCE, not learner prose — MEASURED: the gold library ships 1,618 carousel captions",
+						"and NOT ONE of them is a bare URL, the same convention MediaBuilder applies on the body",
+						"path (round 80, stripMediaResidue). Without it every URL line the tail lookahead did not",
+						"claim rendered as a visible link paragraph on the slide.",
+						"deny_extensions keeps the recovery from adopting a PDF/document/image/audio link as a",
+						"'video' (the [embed story] decodable-PDF family, 58 declines, is a DIFFERENT class and",
+						"is RECORDED not shipped: its slides are story pages that exist in no input).",
+						"env CARVIDEO_OFF reverts both halves; CARVIDTAIL_OFF still reverts the whole r247",
+						"lookahead including its original black-line form."
+					]
+				},
 				"media_series": {
 					"media_opens_slide": true,
 					"video_tail_url": true,
@@ -1572,7 +1642,35 @@
 			"button": "<div class=\"button clickDrop\">{label}</div>",
 			"content": "<div class=\"clickDropContent\">{content}</div>",
 			"close": "</div>",
-			"min_items": 1
+			"min_items": 1,
+			"image_mode_D": "<img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\">",
+			"image_mode_P": "<img class=\"img-fluid\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
+			"image_mode_P_comment": "<!-- <img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
+			"filename_istock": "iStock-{id}.jpg",
+			"image_member": {
+				"enabled": true,
+				"_note": [
+					"ROUND 275 (Chris — 'the click-and-drop builder gives up whenever there's an image:",
+					"179 failures, 5 successes'). An [image] member inside the reveal content used to bail",
+					"the WHOLE widget at the 'a real widget tag → too rich' guard, so a clickDrop with any",
+					"image at all shipped as a hand-off box. The human puts images in clickDrop reveal",
+					"content routinely — MEASURED over the whole gold library, 939 of 2,877",
+					"clickDropContent blocks (33%) across 235 modules contain an <img>. Each item now",
+					"keeps an ORDERED part list and the image renders in the writer's own position as the",
+					"standard Mode P/D asset (the same image_mode_* templates every other widget uses).",
+					"An item with NO image has exactly one body part holding the whole joined body, so",
+					"every clickDrop that already built is byte-identical.",
+					"THE EMPTY MARKER (the dominant sub-class): 186 of the 233 image-carrying declines",
+					"carry an [image] member with NO url and NO text — a media-list REFERENCE the",
+					"developer fills in later, with no asset to render — and 167 of those are the",
+					"XDLS903-906 family, whose gold reveal panels carry the writer's headings and prose",
+					"and NO image at all. Such a marker is SKIPPED (renders nothing), exactly like the",
+					"round-242 image-arrangement layout marker.",
+					"NEVER HALF-BUILDS: a non-iStock / underivable image, a caption riding along with the",
+					"URL, or an image before any button still bails the whole widget.",
+					"env CDIMAGE_OFF reverts the rule (an [image] member bails again)."
+				]
+			}
 		},
 		"shapeHover": {
 			"_comment": [
