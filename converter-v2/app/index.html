@@ -128,11 +128,14 @@
 					</div>
 				</div>
 			</div>
-			<!-- ROUND 263 — "Make your own template": subject + phase + template
-			     chosen directly; ALL options always shown (no cascade, and not
-			     narrowed by the module being converted); all three REQUIRED
-			     before Convert activates. The engine inherits from the most
-			     typical matching library module, template never relaxed. -->
+			<!-- ROUNDS 267/274 — "Make your own template": subject + phase +
+			     template chosen directly; all three REQUIRED before Convert
+			     activates. ROUND 274 (Gavin): choosing a subject narrows the
+			     phase and template lists to what that subject has ALREADY
+			     DEVELOPED, and the two cross-narrow — only combinations that
+			     exist in the library can be assembled (no suitable combination
+			     = the trigger to use "Upload a reference module" below). The
+			     engine inherits from the most typical matching library module. -->
 			<label class="mode-option">
 				<input type="radio" name="ref-mode" id="ref-custom">
 				<strong>Make your own template</strong> — pick a subject, phase and template; the converter builds from the most typical matching modules in the library.
@@ -160,9 +163,10 @@
 						</select>
 					</div>
 				</div>
-				<p class="drop-hint">All three are required. The template always leads — it dictates how the
-					content and lessons are laid out; if no module matches all three choices, the closest
-					match that keeps the template is used.</p>
+				<p class="drop-hint">All three are required, and only combinations that already exist in
+					PageForge's distilled templates are offered — choosing a subject narrows the phases and
+					templates to those already developed for it. If the combination you need isn't
+					available, use "Upload a reference module" below instead.</p>
 			</div>
 			<label class="mode-option">
 				<input type="radio" name="ref-mode" id="ref-html">

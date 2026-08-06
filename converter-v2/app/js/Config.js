@@ -851,7 +851,47 @@ class Config {
 	// output is identical by construction. Probe leg D updated (an indexed code
 	// suggests ITSELF; tier pins refreshed for the 454-module library) — ALL
 	// GREEN; entry-parity PASS.
-	static AppVersion = "260618.44";
+	// ROUND 273 (260618.45): THE DUPLICATE "Go to your journal" BUTTON (Chris —
+	// the SCCH302-03 screenshot, "why is this button being added twice"). The
+	// r239 absorb pulls a writer's go-to-journal [button] that sits after a
+	// bundle-owned activity's widget INSIDE the still-open box and marks the item
+	// _consumed — but the main loop has NO general _consumed guard for a TAG
+	// item, only the positional "skip the items immediately after me" idiom,
+	// which cannot reach this button because the widget's own unconsumed end tag
+	// ([end click and drop]) sits in between. So the button rendered AGAIN on its
+	// own turn: a SECOND identical h4 in a bare row underneath the closed box.
+	// The absorb now also marks the item _goJournalAbsorbed and the main loop
+	// skips the ITEM outright (so no empty row/col is left behind either) — the
+	// r232 #mtkQuizEmit "emit exactly once, wherever the item is reached"
+	// discipline. Contained BY CONSTRUCTION: only an item this absorb itself
+	// claimed is ever suppressed. MEASURED affected set (34 candidates × 2
+	// states, outputs/_detect_r273_gojournal.cjs): EXACTLY 10 pages / 7 modules
+	// (CEDO102, ENGC102, ENGJ102, MXDI103 ×2, MXFL103, SCCH301 ×2, SCPH301 ×2) —
+	// every diff a PURE deletion of the duplicate heading. SCOPED REGENERATION of
+	// those 7 (Chris asked for it once the fix was proven): scoped ship #1 since
+	// r266, blast 12 pages (the 10 + 2 overview pages coming current with the r269
+	// acks fix, named), 0-stale, containment 7 ⊆ 7, spot-check 12/12 byte-identical
+	// IN MEMORY, every protected gate HELD at the r266 baselines. Proven by
+	// outputs/_probe_r273_gojournal.cjs, one process per state, ALL CHECKS PASS
+	// both ways. Data buttons.go_journal.absorb_suppresses_own_render; env
+	// GOJOURNALDUP_OFF.
+	// ROUND 274 (260618.46): CUSTOM-TEMPLATE EXISTING-COMBINATIONS CASCADE (Gavin,
+	// superseding the r267 no-cascade rule at his request) — in "Make your own
+	// template", choosing a SUBJECT now narrows the phase and template dropdowns
+	// to what that subject has ALREADY DEVELOPED, and the two cross-narrow (a
+	// chosen template limits the phases and vice versa), so ONLY combinations
+	// that exist in the library can be assembled — guaranteeing real templated
+	// attributes to inherit (a subject with no Bilingual modules can't offer
+	// Bilingual; no suitable combination = the trigger to use "Upload a
+	// reference module"). Before a subject is chosen the full lists show; an
+	// invalidated choice resets to its placeholder and re-gates Convert; the
+	// reset restores the full lists. Data-verified: Online Safety → phases 1–5 ·
+	// Standard only; Science → {3xx, FUN} × {Standard, Fundamentals} with the
+	// cross-narrow blocking Science+3xx+Fundamentals; TMoA → Bilingual only.
+	// The engine's PickBySpec relaxation chain is unchanged (now a belt-and-
+	// braces safety net — the UI guarantees the exact pool is non-empty).
+	// App.#renderCustomOptions; UI-only; entry-parity PASS.
+	static AppVersion = "260618.46";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

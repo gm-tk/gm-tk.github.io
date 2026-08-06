@@ -288,11 +288,17 @@ class App {
 		for (const id of [Config.Selectors.RefPick, Config.Selectors.RefCustom, Config.Selectors.RefHtml]) {
 			document.getElementById(id)?.addEventListener("change", refBlocks);
 		}
-		// r267 — the three REQUIRED custom-template dropdowns only gate Convert
-		// (they never touch the library list; all options always shown).
+		// r267/r274 — the three REQUIRED custom-template dropdowns: any change
+		// re-narrows the other two lists to combinations that actually exist
+		// in the library (r274 — an invalid selection resets and re-gates),
+		// then re-evaluates the Convert gate. They never touch the library
+		// picker's list.
 		for (const id of [Config.Selectors.RefCustomSubject, Config.Selectors.RefCustomPhase,
 			Config.Selectors.RefCustomTemplate]) {
-			document.getElementById(id)?.addEventListener("change", () => this.#updateConvertGate());
+			document.getElementById(id)?.addEventListener("change", () => {
+				this.#renderCustomOptions();
+				this.#updateConvertGate();
+			});
 		}
 		document.getElementById(Config.Selectors.RefCodeSelect)
 			?.addEventListener("change", () => {
@@ -613,10 +619,16 @@ class App {
 	};
 
 	/**
-	 * Fills the "Make your own template" dropdowns (ROUND 267) with every
-	 * available option: all real subjects, every phase family in the
-	 * library (concise label + example), and all template types. No
-	 * cascading, no narrowing — the full menus always.
+	 * Fills the "Make your own template" SUBJECT dropdown (once — always the
+	 * full subject list) and renders the phase/template dropdowns.
+	 *
+	 * ROUND 274 (Gavin, superseding the r267 no-cascade rule): the phase and
+	 * template dropdowns now only offer what has ALREADY BEEN DEVELOPED —
+	 * choosing a subject narrows both lists to that subject's phases and
+	 * templates, and the two cross-narrow so only combinations that exist in
+	 * the library can be assembled. This guarantees every choice has real
+	 * templated attributes to inherit; when a needed combination doesn't
+	 * exist, that's the signal to use "Upload a reference module" instead.
 	 *
 	 * @returns {void}
 	 */
@@ -629,23 +641,54 @@ class App {
 			subjSel.insertAdjacentHTML("beforeend", subjects.map((s) =>
 				`<option value="${Utils.EscapeHtml(s)}">${Utils.EscapeHtml(s)}</option>`).join(""));
 		}
+		this.#renderCustomOptions();
+	};
+
+	/**
+	 * (Re)builds the custom-template PHASE and TEMPLATE dropdowns (ROUND
+	 * 274) from what actually exists in the library, given the current
+	 * selections: with no subject chosen both lists show the full library's
+	 * values; with a subject chosen they narrow to that subject, and each
+	 * list additionally narrows by the OTHER's surviving choice (Science +
+	 * template Fundamentals → only the phases Science Fundamentals modules
+	 * exist at). A selection the new pool doesn't support resets to its
+	 * "Select a …" placeholder (which re-gates Convert).
+	 *
+	 * @returns {void}
+	 */
+	static #renderCustomOptions() {
+		const rows = this.#refCodeRows;
 		const phaseSel = document.getElementById(Config.Selectors.RefCustomPhase);
-		if (phaseSel && phaseSel.options.length <= 1) {
-			const order = Object.keys(this.#RefPhaseLabels);
-			const pos = (k) => { const i = order.indexOf(k); return i < 0 ? order.length : i; };
-			const present = [...new Set(rows.map((r) => r.phaseKey))].sort((a, b) => pos(a) - pos(b));
-			phaseSel.insertAdjacentHTML("beforeend", present.map((p) => {
-				const example = rows.find((r) => r.phaseKey === p)?.code;
+		const tplSel = document.getElementById(Config.Selectors.RefCustomTemplate);
+		if (!rows.length || !phaseSel || !tplSel) return;
+		const subj = document.getElementById(Config.Selectors.RefCustomSubject)?.value ?? "";
+		const poolS = subj ? rows.filter((r) => r.subjectLabel === subj) : rows;
+		// pass 1 — drop selections the chosen subject doesn't support at all
+		const phasesInS = new Set(poolS.map((r) => r.phaseKey));
+		const tplsInS = new Set(poolS.map((r) => r.template_type).filter(Boolean));
+		let phase = phaseSel.value;
+		if (phase && !phasesInS.has(phase)) phase = "";
+		let tpl = tplSel.value;
+		if (tpl && !tplsInS.has(tpl)) tpl = "";
+		// pass 2 — each list narrows by the OTHER surviving choice, so only
+		// combinations that actually exist can be assembled
+		const phasePool = tpl ? poolS.filter((r) => r.template_type === tpl) : poolS;
+		const tplPool = phase ? poolS.filter((r) => r.phaseKey === phase) : poolS;
+		const order = Object.keys(this.#RefPhaseLabels);
+		const pos = (k) => { const i = order.indexOf(k); return i < 0 ? order.length : i; };
+		const phases = [...new Set(phasePool.map((r) => r.phaseKey))].sort((a, b) => pos(a) - pos(b));
+		phaseSel.innerHTML = `<option value="">Select a phase…</option>`
+			+ phases.map((p) => {
+				const example = phasePool.find((r) => r.phaseKey === p)?.code;
 				const label = `${this.#RefPhaseLabels[p] ?? p}${example ? ` (e.g. ${example})` : ""}`;
 				return `<option value="${Utils.EscapeHtml(p)}">${Utils.EscapeHtml(label)}</option>`;
-			}).join(""));
-		}
-		const tplSel = document.getElementById(Config.Selectors.RefCustomTemplate);
-		if (tplSel && tplSel.options.length <= 1) {
-			const templates = [...new Set(rows.map((r) => r.template_type))].filter(Boolean).sort();
-			tplSel.insertAdjacentHTML("beforeend", templates.map((t) =>
-				`<option value="${Utils.EscapeHtml(t)}">${Utils.EscapeHtml(t)}</option>`).join(""));
-		}
+			}).join("");
+		phaseSel.value = phases.includes(phase) ? phase : "";
+		const templates = [...new Set(tplPool.map((r) => r.template_type))].filter(Boolean).sort();
+		tplSel.innerHTML = `<option value="">Select a template…</option>`
+			+ templates.map((t) =>
+				`<option value="${Utils.EscapeHtml(t)}">${Utils.EscapeHtml(t)}</option>`).join("");
+		tplSel.value = templates.includes(tpl) ? tpl : "";
 	};
 
 	/**
@@ -1466,6 +1509,8 @@ class App {
 			const s = document.getElementById(id);
 			if (s) s.value = "";
 		}
+		// r274 — with everything cleared, restore the full phase/template lists
+		if (this.#refCodesFilled) this.#renderCustomOptions();
 		const refSel = document.getElementById(Config.Selectors.RefCodeSelect);
 		if (refSel) refSel.value = "";
 		// ROUNDS 251/254 — clear the code/subject/phase filters + restore the full list

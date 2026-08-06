@@ -1381,6 +1381,21 @@ class ContentConverter {
 			// level, immediately before the box that displays that media.
 			emitMediaComments(it);
 
+			// A go-to-journal [button] that the activity box it belongs to has ALREADY
+			// absorbed (#goJournalTail, at the bundle-owned close site just above in
+			// document order) has already shipped its one templated
+			// <h4 class="goJournal"> INSIDE that box. Its own turn in this loop therefore
+			// renders NOTHING — skipping the item outright (rather than returning nothing
+			// from #element) also means no empty row/column is left behind, because the
+			// row is opened further down, after this point. This is the same
+			// "already rendered as part of something else, skip its own turn" pattern as
+			// the activity-super-content and activity-mode-merge sentinels just below.
+			// ROUND 273 — before this, the button rendered a SECOND identical h4 in a bare
+			// row underneath the closed activity box (SCCH302-03 and 5 corpus pages).
+			// Data flag: buttons.go_journal.absorb_suppresses_own_render
+			// Env toggle: GOJOURNALDUP_OFF
+			if (it._goJournalAbsorbed) continue;
+
 			// ---- interactive ranges → ONE placeholder at range start -----
 			if (it.consumedBy !== undefined) {
 				// A supervisor note that was already hoisted into its activity's panel at the
@@ -4436,6 +4451,25 @@ class ContentConverter {
 				&& !/\bactivity\b/i.test(p.tag ?? "")) continue;
 			if (p && p.directive === "ELEMENT" && p.tag === "button" && isGoJournal(c)) {
 				c._consumed = true;
+				// ROUND 273 — the DOUBLE-EMIT fix. Marking the absorbed button "_consumed"
+				// is NOT enough on its own: the main loop has no general "_consumed" guard
+				// for a TAG item, only the positional "skip the items right after me" idiom
+				// (`while (bodyItems[i + 1]?._consumed) i++`), and that idiom cannot reach
+				// this button because the widget's own unconsumed end tag ([end click and
+				// drop]) sits between the bundle's emit position and the button (this walk
+				// deliberately steps over it, just above). So the loop later arrived at the
+				// button on its own turn and rendered a SECOND, identical h4 in a bare row
+				// underneath the closed activity box. This flag makes the absorb explicit
+				// and position-independent: the loop skips the item outright (see the
+				// go-journal sentinel beside the activity-super-content / activity-mode-merge
+				// sentinels) — the same "emit exactly once, wherever the item is reached"
+				// discipline as the round-232 #mtkQuizEmit latch.
+				// Data flag: buttons.go_journal.absorb_suppresses_own_render
+				// Env toggle: GOJOURNALDUP_OFF (restores the duplicate)
+				if (gjCfg.absorb_suppresses_own_render !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.GOJOURNALDUP_OFF)) {
+					c._goJournalAbsorbed = true;
+				}
 				return h4();
 			}
 			break;   // the first real item was not a go-to-journal button — stop

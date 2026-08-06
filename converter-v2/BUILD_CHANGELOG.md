@@ -1,5 +1,143 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-06 (round 274, build 260618.46) — CUSTOM-TEMPLATE EXISTING-COMBINATIONS CASCADE (**UI-only; no engine/data/output change; no regeneration — the round-266 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** Gavin, superseding the round-267 no-cascade rule at his
+request: in "Make your own template", once a SUBJECT is chosen the phase and
+template dropdowns must only offer what that subject has ALREADY DEVELOPED — a
+subject with no Bilingual modules can't offer Bilingual, and only already-developed
+phases appear. The point: every assembled choice is guaranteed to have real
+templated attributes to inherit; when the combination someone needs doesn't exist,
+that's the trigger to use "Upload a reference module" instead (the hint text under
+the dropdowns now says exactly this).
+
+**MECHANICS (`App.#renderCustomOptions`):** before a subject is chosen, the full
+library lists show (unchanged); with a subject chosen both lists narrow to that
+subject's pool, and the two CROSS-NARROW — a chosen template limits the phase list
+to phases that subject+template combination exists at, and a chosen phase limits
+the template list likewise — so ONLY real subject+phase+template combinations can
+be completed. An invalidated selection resets to its "Select a …" placeholder
+(which re-gates Convert); the page reset restores the full lists. Data-verified
+live against the 454-module index: **Online Safety → phases 1–5 · Standard only
+(no Bilingual — the request's example)**; **Science → {Phase 3, Fundamentals} ×
+{Standard, Fundamentals}, with the cross-narrow blocking the non-existent
+Science+Phase-3+Fundamentals**; **TMoA → Bilingual only**. The engine's
+`PickBySpec` relaxation chain is untouched — with the UI guaranteeing a non-empty
+exact pool it now serves as a belt-and-braces safety net (and still covers any
+direct/batch caller). Files: App.js · index.html (comment + hint text) ·
+Config.js. Entry-parity PASS; conversions byte-identical by construction.
+
+## 2026-08-06 (round 273, build 260618.45) — THE DUPLICATE "Go to your journal" BUTTON (**SCOPED REGENERATION — Chris asked for it by name after the fix was proven: `REGENERATE CORPUS - the six duplicate go-journal modules`, resolved to the 7 measured modules and stated before running; SCOPED SHIP #1 since the round-266 full ship, every protected gate HELD, decomposition-proven**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris, from the SCCH302 lesson-3 screenshot: the writer's
+`[button] Go to Journal` was rendering **twice** — once correctly inside the activity
+box (where the human puts it) and once again immediately underneath it, in a row of
+its own. The second one was never in the Writers Template. It is gone.
+
+**TRIANGULATION.**
+
+- raw WT (SCCH302, lesson 3, activity 3D): `[image] Baking Soda In Water … – iStock`
+  → `[end click and drop]` → `[button] Go to Journal` → `[end activity]`.
+- Claude, before: `<h4 class="goJournal">` inside `div.activity`, then a bare
+  `div.row > div.col-md-8 col-12 > <h4 class="goJournal">` directly after the closed box.
+- Claude, after: the one heading, inside the box. Nothing else on the page changes.
+
+**ROOT CAUSE (a general mechanism gap, not a module quirk).** Round 239's
+`absorb_into_activity` pulls a go-to-journal `[button]` that sits after a
+BUNDLE-OWNED activity's widget INSIDE the still-open box (`#goJournalTail`), and
+marks the item `_consumed`. That mark is not enough on its own: **the main loop has
+no general `_consumed` guard for a TAG item** — only the positional idiom
+`while (bodyItems[i + 1]?._consumed) i++`, i.e. "skip the items immediately after
+me". That idiom cannot reach this button, because the widget's own UNCONSUMED end
+tag (`[end click and drop]`) sits between the bundle's emit position and the button
+— the absorb walk deliberately steps over it. So the loop later arrived at the
+button on its own turn and rendered it a second time through the `#element` button
+branch, in a row of its own. The r232 `#mtkQuizEmit` latch had already solved the
+same hazard for the MTK-quiz button; the go-journal absorb never got its half.
+
+**THE FIX** (`ContentConverter`; data `buttons.go_journal.absorb_suppresses_own_render`;
+env `GOJOURNALDUP_OFF`). The absorb additionally marks the item
+`_goJournalAbsorbed`, and the main loop skips that item outright, beside the
+existing `activity-super-content` / `activity-mode-merge` sentinels. Skipping the
+ITEM (rather than returning nothing from `#element`) is deliberate: the row/col is
+opened further down, so no empty wrapper is left behind — verified in the diffs,
+where a duplicate that owned its row takes the row with it and a duplicate sharing
+a column leaves the column intact. Contained BY CONSTRUCTION: the flag is only ever
+set on an item this absorb itself claimed, and that absorb has by definition already
+shipped the heading inside the box, so every fire is a removed duplicate.
+
+**MEASURED (before coding).** Static scan of the shipped corpus: 488 pages carry a
+`goJournal` heading (883 in total). The naive "two headings with nothing between
+them" signature found 5 pages — and **under-counted**, because on some pages another
+widget's hand-off box renders between the two headings (SCCH301-07, SCPH301-08). The
+honest detector is the shipped guard itself: `outputs/_detect_r273_gojournal.cjs`
+converts every corpus module whose HTML carries a `goJournal` heading BOTH inside and
+outside an activity (34 candidates — the static upper bound), once per toggle state,
+and diffs against disk. Result — the affected set is **EXACTLY 10 pages / 7 modules**:
+
+| module | pages |
+|---|---|
+| CEDO102 | `CEDO102_0_0` |
+| ENGC102 | `ENGC102_3_0` |
+| ENGJ102 | `ENGJ102_5_0` |
+| MXDI103 | `MXDI103_2_0`, `MXDI103_5_0` |
+| MXFL103 | `MXFL103_1_5` |
+| SCCH301 | `SCCH301_3_0`, `SCCH301_7_0` |
+| SCPH301 | `SCPH301_6_0`, `SCPH301_8_0` |
+
+plus the developer's own SCCH302_3_0. Every one of the 10 diffs is a **pure deletion**
+of one duplicate heading (eyeballed line by line, `diff` against the shipped corpus).
+**A COUNTING CORRECTION, recorded so it is not repeated:** this round's first report
+said "6 modules" against a 7-row table — the measured set is and always was **7**.
+
+**THE SIGNATURE THAT UNDER-COUNTS (worth remembering).** The obvious detector — "two
+headings with nothing between them" — finds only 5 of the 10 pages, because on
+SCCH301-07 and SCPH301-08 another widget's hand-off box renders BETWEEN the pair. The
+honest detector is the SHIPPED GUARD itself (`outputs/_detect_r273_gojournal.cjs`): it
+converts every candidate module in both toggle states and diffs against disk, so a
+page differing only with the fix ON is a real duplicate and a page differing in BOTH
+states is pre-existing drift. That subtraction named three drift pages
+(`MXDI101_0_0`, `MXFL103_0_0`, `SCPH301_0_0`) — the round-269 double-❗ acks fix
+landing from an earlier no-regen round, NOT this round's work.
+
+**PROOF** — `outputs/_probe_r273_gojournal.cjs`, ONE PROCESS PER STATE (the r246 trap),
+**ALL CHECKS PASS both ways**, re-run against the regenerated corpus:
+
+- fix-ON: SCCH302_3_0 ships EXACTLY ONE heading, no bare duplicate row; all 7 affected
+  modules byte-identical to the shipped (regenerated) corpus; every named page carries
+  the heading and no duplicate.
+- `GOJOURNALDUP_OFF=1`: the duplicate returns on EXACTLY the 10 named pages and nowhere
+  else — each gains exactly one heading — a faithful A/B reversal.
+- canaries BLL210 / OSAH501 / ENGS302 / HIS1006 byte-identical to disk in BOTH states.
+
+**THE SCOPED SHIP (§10a) — ship #1 since the round-266 full ship.** Regenerated the 7
+affected modules with `--force`; blast radius **12 pages** = the 10 duplicate pages +
+`MXFL103_0_0` and `SCPH301_0_0` coming current with the round-269 acks fix (named
+above; the double-❗ marker is gone from all 7 modules, 56 pages elsewhere still await
+a regen). Checkpoint results: content-hash **0-stale** (7 affected regenerated, the
+other 406 modules byte-identical to the manifest, mtime ignored); **containment OK** —
+the 7 changed modules are a subset of the 7 affected; **completeness spot-check
+12/12 byte-identical**, run IN MEMORY via the new `outputs/_spotcheck_inmemory.cjs`
+because regenerating a sample would have written unrelated pending work from earlier
+no-regen rounds into the corpus and widened this round's blast radius beyond the scope
+Chris authorised. Manifest + fast-loop baseline refreshed; ship ledger records scoped
+ship 1 of 8 (7 of headroom before the full backstop is due).
+
+**GATES — every protected gate HELD, exact and decomposition-proven**
+(`_fastloop_diff.py --commit` over the affected set; unaffected modules unchanged by
+construction, so the corpus aggregate moves by exactly the affected-set delta):
+skeleton SCAFFOLD mean **49.86% (IMPROVED)** / pages ≥50% **983** / ≥75% **190**;
+compare_structure exact **11157** / EXTRA **185** / missing **579**; body_compare
+**267**; structurally-clean **97.81%**; literal-`[tag]` leak **288 occ / 46 pages** —
+all HELD at the round-266 baselines. Standing checks: index-sync **33 browser / 28
+node OK**; entry-parity **PASS**; tags **9557/9557, REAL FAILURES 0**; flipCard
+**TOTAL 33 / divergence 0**; speechBubble **29 built, defect 0**; flipCard /
+speechBubble / accordion selftests **GREEN**.
+
+**AFTER.** Zero duplicate go-journal pairs remain anywhere in the corpus.
+
+---
+
 ## 2026-08-06 (round 272, build 260618.44) — EXACT-MATCH SUGGESTION (**engine-advisory only; no output change — the conversion path is untouched by construction; no regeneration — the round-266 baselines still describe the corpus**)
 
 **THE PLAIN-ENGLISH LEAD.** Gavin: when a module being processed has a distilled
