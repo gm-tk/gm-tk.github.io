@@ -186,9 +186,57 @@ The realistic ceiling for this widget is therefore about **61 of 142** genuine d
   reo placeholder **"Tīpakongia"** (TRR110/TRR301 only, and no reo dropdown reaches the
   builder today), and `randomize the order`.
 
-**RECOMMENDED, waiting to be asked: `REGENERATE CORPUS`.** Nine rounds are now pending
-(r276–r283 plus this one) and they overlap heavily; only a full rebuild re-establishes the
-§9 baselines, which have described the round-275 state since round 284's regeneration.
+### 10. THE FULL REGENERATION (Chris, same session: "Now REGENERATE CORPUS" — no scope, so the whole corpus + every protected gate; FULL ship, ledger reset to 0)
+
+**A CORRECTION THIS REGENERATION FORCED.** §9 above originally recommended the rebuild on
+the grounds that "nine rounds are pending (r276–r283 plus this one)". **That was wrong.**
+Round 284 *was* the full regeneration of the eight-round interactive-coverage chain and
+round 285 closed its residual, so rounds 276–283 were already in the corpus. **Round 287 was
+the only pending round** — and the regeneration proves it: the content manifest differs by
+**exactly 13 pages / 11 modules, 0 added, 0 removed**, and every one is a round-287 dropdown
+build. (13, not 14, because BLL273 has no Claude dir — the round-285 ghost-dir trap.)
+
+**416 dirs rebuilt in 36 batches; `_stalecheck.sh` reports 0 stale; 2102 pages / 416 dirs —
+no pagination churn.**
+
+**EVERY PROTECTED GATE HELD-OR-IMPROVED, and nothing needed decomposing that was not
+already named:**
+
+| Gate | Result vs the r284 baseline |
+|---|---|
+| **PRIMARY skeleton** | **≥50 981 · ≥75 194 · ≥90 16 — EXACT · RAW 33.922 → 33.941% IMPROVED** · mean 49.778 → 49.771% (−0.007pp) · 1940 pairs, **skipped 0** |
+| structural-defect | clean **2056/2102 = 97.8%** · leak **288 occ / 46 pages** — EXACT |
+| compare_structure | exact **11207** · EXTRA **185** · missing **585** — EXACT |
+| body_compare | ANY **242** — EXACT |
+| tags | **9557/9557, REAL FAILURES 0** |
+| flipCard (§9) | TOTAL 49 · exact 21 · **divergence 0 ✓** |
+| speechBubble | 45 built · **defect 0 ✓** |
+| clickDrop | **defect 0 ✓** |
+| dropDown (new) | 14 groups · 128 units · exact 76 · **defect 0 ✓** |
+| entry-parity · index-sync | **PASS** · **33/28 OK** |
+
+**THE SKELETON MOVEMENT, DECOMPOSED.** 22 pages moved against `_r284_sk_final.json` while
+only 13 changed bytes — because that state file predates round 285. Splitting it:
+
+* **10 pages are round 285's restoration** — contribution **−0.0064pp mean / +0.0052pp RAW**.
+  The round-285 note predicted, for exactly this regeneration, "≈ −0.006pp mean / ≈ +0.005pp
+  RAW; re-establish at the next full regeneration". **It lands on the digit.** HPFUN101_0_0
+  alone is −15.25pp of it, the named flipCard-now-builds case.
+* **12 pages are round 287's dropdowns** — contribution **−0.0011pp mean / +0.0143pp RAW**.
+  Buckets untouched; the rounding-scale mean dip is the documented net-positive class (a
+  built widget collapses to one scaffold marker where the hand-off box's nodes happened to
+  match), and RAW — which sees inside the widget — rises. The 13th page, XLP02_4_0, scores
+  identically because its dropdown sits inside a collapsed marker either way.
+
+**NEW BASELINE: SCAFFOLD mean 49.771% / ≥50 981 / ≥75 194 / ≥90 16 / skipped 0 @ 1940;
+RAW 33.941%** (state `outputs/_r288_sk_final.json`, 8-shard + `outputs/_r288_sk_merge.py`).
+
+**SHIP.** Content manifest refreshed (2102 pages / 413 modules) · ship ledger recorded as a
+FULL ship, scoped counter reset to 0 · fast-loop baselines refreshed, with the skeleton
+baseline **seeded from the 8-shard merge** because the full-corpus run exceeds the 45s wall
+(the documented r176/r264/r266 pattern) — and note it had been **stale since before round
+284** (1941 pages, the r275-era population) for exactly that reason; it is now the true
+shipped state · feature index rebuilt (`--rehtml` + `--merge`, selftest GREEN).
 
 ## 2026-08-07 (round 285, build 260618.57) — CLOSING THE ROUND-284 DATA-RECOVERY RESIDUAL: 15 of the 27 lost pages recovered by proof, 12 named (Chris — the R285 kickoff; **SCOPED regeneration of the 257 affected modules, NOT a full one — `REGENERATE CORPUS` was not in the request**)
 
