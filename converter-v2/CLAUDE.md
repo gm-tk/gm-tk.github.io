@@ -1223,6 +1223,14 @@ next rounds.
   refuses a symlink for exactly this reason. If it has already happened: fix the real file, then
   `rm` the fork and `ln -s ../pageforge-site/converter-v2/<name>` (the `rm` needs
   `allow_cowork_file_delete`), and `diff` the two paths to confirm.
+- **`_stalecheck.sh`'s data scan is SCOPED to the engine's `data_map` (round 288).** It used to
+  treat every `data/*.json` as output-affecting, so rebuilding the DIAGNOSTIC
+  `Module_Feature_Index.json` — which §13 requires after every regeneration — declared all 413
+  modules stale seconds after a clean 0-stale run, on every full ship (recorded at r275, fixed
+  at r288). It now reads `app/js/_modules.json`'s `data_map` (19 files) and falls back to the
+  whole directory if that read fails. Proven both ways: 0 stale after a feature-index rebuild,
+  413 stale after touching `Emit_Templates.json` or an engine `.js`. **The same over-broad scan
+  is still in `_coverage_dashboard.py`'s freshness guard — narrow it the same way.**
 - **`_stalecheck.sh`'s trailing slashes are LOAD-BEARING (round 228).** `CONVERTER_V2/app`
   and `CONVERTER_V2/data` are symlinks; GNU find (default -P) does NOT traverse a symlink
   given as the FINAL path component, so `find ../../data` silently saw nothing from

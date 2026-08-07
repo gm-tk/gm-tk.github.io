@@ -238,6 +238,31 @@ baseline **seeded from the 8-shard merge** because the full-corpus run exceeds t
 284** (1941 pages, the r275-era population) for exactly that reason; it is now the true
 shipped state · feature index rebuilt (`--rehtml` + `--merge`, selftest GREEN).
 
+### 11. `_stalecheck.sh` REPAIRED — the false positive that fires on every full ship
+
+Rebuilding the feature index, which CLAUDE.md §13 **requires** after a regeneration, made
+`_stalecheck.sh` declare all **413 modules stale seconds after a clean 0-stale run**. The
+cause: it treated every `data/*.json` as output-affecting, but `data/` also holds
+DIAGNOSTIC files no conversion reads — `Module_Feature_Index.json` above all
+(`engine_loaded:false`, absent from `_modules.json`'s `data_map`). Round 275 recorded this
+as a known false positive and asked for the scan to be narrowed; it fired again here, so it
+is now fixed rather than re-recorded.
+
+The engine's own loader manifest names the files `DataService` loads, so **that list — not
+the directory — is the honest definition of "output-affecting"** (19 files today). If the
+manifest cannot be read the check FALLS BACK to scanning all of `data/`: over-reporting is
+the safe direction for a staleness gate.
+
+**PROVEN BOTH WAYS.** After the feature-index rebuild it now reports **0 stale** (it had
+reported 413); touching a genuinely engine-loaded `data/Emit_Templates.json` still reports
+**413 stale**, and touching an engine `.js` still reports **413 stale**. The two files
+touched for that detection test were restored to their true mtimes (contents md5-verified
+unchanged, working tree clean against the shipped commit), and the final state is **0 stale
+· content manifest IDENTICAL, 0 pages differ · index-sync 33/28 OK**.
+
+The same over-broad scan lives in `_coverage_dashboard.py`'s freshness guard (also recorded
+at r275) — narrowing it the same way is the obvious follow-up, left for its own round.
+
 ## 2026-08-07 (round 285, build 260618.57) — CLOSING THE ROUND-284 DATA-RECOVERY RESIDUAL: 15 of the 27 lost pages recovered by proof, 12 named (Chris — the R285 kickoff; **SCOPED regeneration of the 257 affected modules, NOT a full one — `REGENERATE CORPUS` was not in the request**)
 
 **THE PLAIN-ENGLISH LEAD.** Round 284 rebuilt ten data blocks that a `git checkout` had
