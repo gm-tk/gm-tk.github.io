@@ -903,6 +903,16 @@
 		"============================================================================"
 	],
 	"interactive_builders": {
+		"hint": {
+			"enabled": true,
+			"title_tags": ["title bar"],
+			"default_title": "Need help?",
+			"require_body": true,
+			"link": "<p class=\"hintLink\">{title} <span class=\"hint\"></span></p>",
+			"drop_open": "<div class=\"hintDropContent\">",
+			"drop_close": "</div>",
+			"_note": "ROUND 277 — the HINT ELEMENT. hint and hintSlider are DIFFERENT elements (measured over all 2,385 gold pages: hintSlider = div.hintSlider > hintRow > infoContainer > frontInfo|backInfo, 161 occ / 56 modules; hint = a title + a span.hint trigger + a sibling div.hintDropContent), and interactive_builders carried NO hint key at all — so Build returned null at its missing-template guard BEFORE dispatch and the writer's Need-help tip had never built, not once, on any of the 64 places a writer tagged one. The emitted form is the MEASURED plurality, 40 of 53 = 75.5% in the authoring modules (the SSOG span[style]+b and SSCI104 title-inside-the-drop minorities are recorded, not chased). Requires a tagged TITLE and real BODY, so an instruction masquerading as a title declines. Env HINTELEM_OFF."
+		},
 		"mtk_quiz": {
 			"_doc": "ROUND 232 (Change Ledger CL-0038, 16 Jul — Chris). Any [MTKquiz]-family marker (any modifiers; the span-level retag in Tag_Lexicon._meta.mtk_quiz_retag does the matching) ends in the canonical button `<a href=\"#\" target=\"_blank\"><div class=\"button\">Go to quiz</div></a>` — href intentionally BLANK, the developer wires the D2L quicklink at publish time (gold's populated quickLink hrefs ARE that publish-time wiring, the CL-0044 class; the href divergence from gold is INTENTIONAL) — plus ONE Designer/Developer To Do note (kind 'todo', red_flag.todo_form, class cv2-note = gate-excluded) carrying the writer's raw quiz spec so the modifier prose ('supports engagement, audio, video, file sharing', 'should go to teacher dropbox' — which does NOT attach a dropbox wrapper) is never silently stripped. Writer quiz content stays rendered (constraint 1): the retag makes the marker an ELEMENT, so it never opens a capturing bundle. ADJACENT WRITER BUTTON ABSORB (the dedup rule — gold ships ONE button per quiz): a writer-typed quiz button in the marker's window — a [button] item labelled per button_label_pattern ('Go to quiz.'/'Quiz' — ARFUN02/ARFUN04/TEFUN02/TEFUN06-08) or a standalone [Go to quiz]-span bundle per marker_span_pattern (HPRE301) — is UPGRADED to the canonical anchored form and the marker's own button suppressed (its To Do note still emits). The window walks window_back/window_forward non-blank items, stopping at another mtk item, an [Activity] opener, or a section/page/closer boundary, so it can never leak across activities; a [go to quiz] span OUTSIDE any mtk window is untouched (the corpus-wide standalone class, ~40 modules, is a recorded follow-up — NOT this rule). A marker-claimed thin bundle (no content members) emits the button INSTEAD of its placeholder box; a fat one keeps its box (content never lost). Population: 33 spans / 21 modules (outputs/_detect_mtkquiz.cjs); 5 of them (SCFUN01, MXFUN02, SSOG103, SSOG301, EXPFUN07) have NO gold button — the rule is forward-looking and outranks gold there (named CHANGE-LEDGER OVERRIDE deltas, never chased). Env MTKQUIZ_OFF reverts the family byte-for-byte.",
 			"enabled": true,
@@ -916,6 +926,27 @@
 		},
 		"_principle": "PRINCIPLE (anchor_compare two-layer test; reference/Principles_Audit_and_Reconciliation.md). Every builder here builds the widget the WRITER's tag specifies. The human developer's finished widget is the reference ONLY where the writer's tag corresponds to the human's element (Decision-Framework B). Where the human editorially SUBSTITUTED a different element (e.g. writer [flip card] -> human accordion; writer [carousel] left as static images), that substitution is NON-derivable (Decision-Framework A1): build the WRITER's tagged widget anyway and judge it on the widget VERIFIER (_verify_*.cjs, divergence/defect 0), NOT on skeleton-vs-the-human's-substitution. A skeleton dip vs a human substitution is the expected, documented cost (rounds 115/116), not a regression. Never half-build: build cleanly or keep the honest placeholder.",
 		"modal": {
+			"modal_sets": {
+				"enabled": true,
+				"filename_istock": "iStock-{id}.jpg",
+				"image_mode_P": "<img class=\"img-fluid TKmodalButton\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
+				"image_mode_P_comment": "<!-- <img class=\"img-fluid TKmodalButton\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
+				"image_mode_D": "<img class=\"img-fluid TKmodalButton\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\">",
+				"modal_open": "<div class=\"TKmodal\" size=\"{size}\">",
+				"modal_close": "</div>",
+				"default_size": "M",
+				"image_slug_fallback": true,
+				"asset_request_note": true,
+				"skip_button_members": true,
+				"numbered_sets": true,
+				"same_block_label": true,
+				"table_sets": true,
+				"tag_text_label": true,
+				"label_max_words": 9,
+				"min_modals": 1,
+				"min_inferred_modals": 2,
+				"_note": "ROUND 280 — the general TKmodal set composer, tried LAST after the r216 image-pair form and the r73 document button, so all 88 pre-round builds are byte-identical by construction. Emits the corpus convention (div.button.TKmodalButton + its sibling div.TKmodal) from four delimiters: numbered [Modal N …] sub-tags, the SAME-BLOCK label line, a captured TABLE (one row = one modal), and the tag's own text. The text trigger is DOMINANT in the gold — 213 of 283 TKmodals = 75.3% across 52 modules — while the converter previously had no builder for it at all. min_modals 1 (a lone modal is the gold's plurality); label_max_words 9 is GOLD-BACKED (of 125 gold text triggers 96.8% are <=6 words and 100% <=9), so a longer writer line is not a trigger and the set declines rather than putting a paragraph on a button. A strict label/modal alternation keeps a multiple-choice quiz from becoming a row of buttons. Env MODALSETS_OFF."
+			},
 			"enabled": true,
 			"default_label": "Go to resource",
 			"label_max_chars": 70,
@@ -965,6 +996,14 @@
 			"note": "ROUND 56 (Chris, OSAI201-01). A [glossary] interactive is a flat list of 'Term – Meaning' lines (en/em-dash or spaced hyphen separated). InteractiveBuilder.#glossary parses each captured black line via split_pattern (term = before the first dash, meaning = after) and builds the human's Term/Meaning table: <div class=\"glossary\"><h3 class=\"glossaryTitle\"><span>Glossary</span></h3> + <table class=\"table table-fixed search-table\"> with a 'Term'|'Meaning' header (tr.title-g) and one row per entry. The outer row>col-md-8 wrapper is supplied by the body emitter, so only the inner div.glossary (which carries the wavy-border CSS) is built here. Declines (placeholder) if fewer than min_rows dash lines are found. The boundary bank now terminates the glossary at the next heading so a following [H3] is not swallowed."
 		},
 		"hintSlider": {
+			"labelled_pairs": {
+				"enabled": true,
+				"min_rows": 1,
+				"trailing_body": true,
+				"front_label_words": ["front"],
+				"back_label_words": ["back"],
+				"_note": "ROUND 277 — the LABELLED-PAIR slider: a general composer run LAST, so all 22 pre-round slider builds are byte-identical by construction. ONE rule (a row is a FRONT then a BACK) covers every measured dialect: the front riding the opener, a [back]/[body] tag, a labelled red span, halves named in the bracket, a black bullet. min_rows 1 because 44.7% of the gold's 161 sliders are single-row. Trailing over-captured prose renders AFTER the widget (the r196 rule) so building never loses the writer's words. Env HINTPAIR_OFF."
+			},
 			"_comment": [
 				"hintSlider — a list of click-to-reveal rows. Captured as ONE 2-column table:",
 				"  column 1 = the visible hint (front), column 2 = the reveal (back).",
@@ -988,6 +1027,10 @@
 			"close": "</div>"
 		},
 		"accordion": {
+			"panel_delimiters": {
+				"enabled": true,
+				"_note": "ROUND 278 — the PANEL DELIMITER VOCABULARY, tried LAST after the strict paths and both modes of the r246 rich fallback, so it is strictly additive and the 253 pre-round builds are byte-identical by construction. Panels resolve from an ordered vocabulary, each derivation gold-verified: D1 [accordion N] widened to the word/ordinal spellings, a heading-less panel taking its head from its own first [H2]-[H6]; D2 a captured TABLE, ONE ROW = ONE PANEL (head = a short first cell, else the content cell's BOLD LEAD); D3 a repeating same-level heading; D4 repeating BOLD-LEAD black lines. min_panels 1 for the explicit D1 (56.5% of gold accordions have one panel) but 2 for the inferred D2/D3/D4, so one table row is never guessed into an accordion. Env ACCPANELS_OFF."
+			},
 			"_comment": [
 				"accordion — a stack of click-to-open panels, each a heading + a revealed body.",
 				"IMPORTANT: an accordion is built from MEMBERS, not a data table. In the Writers",
@@ -1104,6 +1147,24 @@
 			}
 		},
 		"speechBubble": {
+			"rich": {
+				"enabled": true,
+				"plain_cell_bubbles": true,
+				"image_slug_fallback": true,
+				"image_re": "image\\b",
+				"bubble_re": "bubble",
+				"head_re": "^h[1-6]\\b",
+				"text_re": "^(body|list)\\b",
+				"decline_tags": "^(activity|button|video|audio|external link|accordion|carousel|tabs|flip|click|drag|modal|hint|glossary|quiz)\\b",
+				"tag_roles": {
+					"bubble": ["speech bubble"],
+					"image": ["image"],
+					"head": ["h1", "h2", "h3", "h4", "h5", "heading", "story heading"],
+					"text": ["body", "list"],
+					"STOP": ["activity", "button", "video", "audio", "external link", "external link button", "audio button", "supervisor button"]
+				},
+				"_note": "ROUND 276 — the RICH GENERAL COMPOSER, run LAST so the four existing branches keep their populations byte-for-byte (a fallback cannot break what already works). Flattens members AND every table cell into an ordered stream of PARTS and emits ONE `row speechBubble` per bubble, in the gold-measured plurality forms (1,218 gold rows / 143 modules: one bubble per row 80.4%, avatar rows layout=speech 97.6% + bubble-right 58.6%, image-less col-12 + bubble-basic bubble-top). Never half-builds: a foreign element with its own content, a captured non-bubble table, an un-nameable image, or a bubble with no text all decline. Env SBRICH_OFF."
+			},
 			"_comment": [
 				"speechBubble — a character image beside a STATIC speech/thought bubble of text.",
 				"CAPTURED AS: exactly ONE 1x2 table (one row, two cells) PLUS exactly one image URL in",
@@ -1205,6 +1266,23 @@
 			"_paragraph_note": "The writer's ' / ' inside a bubble is a PARAGRAPH break when every part is sentence/paragraph-like — at least paragraph_min_words words AND containing ending punctuation (.!?); then the parts render as multiple <p> (OSAI501-02 #7's GenAI bubble). A ' / ' list of SHORT labels (or any bulleted/numbered bubble — OSBY301's kaitiakitanga list) is left as the honest placeholder. Lower this only if a genuine multi-paragraph bubble has unusually short paragraphs."
 		},
 		"flipCard": {
+			"general_cards": {
+				"enabled": true,
+				"card_tags": ["flip card"],
+				"card_tag_pattern": "^\\[\\s*(?:start\\s+of\\s+)?flip\\s*card\\s+(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\s*[:.]?\\s*\\]$",
+				"card_ordinal_pattern": "^\\[\\s*(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\\s+flip\\s*card\\s*[:.]?\\s*\\]$",
+				"face_tags": ["front", "back"],
+				"face_label_pattern": "^(?:front|facing|face)\\s*[:.-]",
+				"face_label_back_pattern": "^(?:back|reverse|on\\s+flip|flip\\s+side)\\s*[:.-]",
+				"asset_reference_pattern": "\\bistock\\b|\\bgetty\\b|\\bwikipedia\\s+commons\\b|\\bgm\\d{6,}|^\\W*(?:image|images|picture|photo|graphic|illustration|link\\s+for\\s+(?:the\\s+)?image)\\b",
+				"instruction_span_prefixes": ["please", "can you", "could you", "could we", "is it possible", "we would like", "note to", "dev team"],
+				"image_caption_as_text": true,
+				"image_slug_fallback": true,
+				"leak_guard": true,
+				"min_cards": 1,
+				"min_inferred_cards": 2,
+				"_note": "ROUND 282 — the general CARD composer, tried LAST so all 49 pre-round builds are byte-identical by construction. Cards resolve from an ordered delimiter vocabulary: T1 face-marker ROWS that repeat; T1b a face-marker COLUMN; T1c per-cell face markers riding with the content; T2 a TWO-ROW table with no markers, one card per COLUMN; T3 N x 2 rows; M1/M2 [Flip Card N] / [front]/[back] tags with a TEXT-ONLY front allowed; M3 face LABEL WORDS; M4 a bare MEDIA SERIES. A COMPLETED BACK ENDS A CARD, and content arriving while the FRONT is open is FRONT content. GOLD-BACKED: text-only cards are 43% of the library (a front is a HEADING alone 22.3% / a PARAGRAPH alone 20.7%), so an image is never required; min_cards 1 for an explicit delimiter but 2 for an inferred one; NO length cap on a front (a gold front runs past ten words 4.3% of the time); a label is NEVER invented. Env FLIPCARDS_OFF."
+			},
 			"_comment": [
 				"flipCard — a grid of cards, each a FRONT that flips to reveal a BACK.",
 				"CAPTURED AS: one 2-column table — column 1 is every card's FRONT, column 2 its BACK.",
@@ -1257,6 +1335,10 @@
 			"filename_generic": "flipCard-image.jpg"
 		},
 		"tabs": {
+			"general_panes": {
+				"enabled": true,
+				"_note": "ROUND 281 — the general PANE composer, tried LAST so all 17 pre-round builds are byte-identical by construction, and deliberately NOT registry-gated: neutralising every gold-choice gate moves tabs 17 -> 18, so the registry was never the blocker (Chris's r246 A1 ruling settles the anti-rows). Panes resolve from an ordered delimiter vocabulary: D1 [Tab N] tags; D2 a table read COLUMN-major (header row = labels, plus a role-labelled first column, and a peeled leading single-cell TITLE row); D3 a table read ROW-major or a one-row table one pane per CELL; D4 a repeating same-level heading run. GOLD-BACKED: min_panes 2 because a ONE-pane tab group does not exist in the gold (0 of 319); a label is <=3 words 92.3% / <=6 99.2%, so the cap stays 6; labels ship PLAIN (99.0%). Guards: a wholly-red label row, duplicate labels, an orphan leading '/'. Env TABPANES_OFF."
+			},
 			"_comment": [
 				"tabs — a strip of clickable tab headings, each revealing its own content pane.",
 				"CAPTURED AS MEMBERS (not a table), exactly like accordion: a [tabs] opener, then one [Tab N] tag",
@@ -1467,6 +1549,32 @@
 			"close": "</div>"
 		},
 		"carousel": {
+			"table_slides": {
+				"enabled": true,
+				"min_slides": 2,
+				"max_slides": 20,
+				"require_content": true,
+				"title_max_words": 6,
+				"segment_separator": "\\s+/\\s+",
+				"media_marker_pattern": "\\[\\s*(image|video|audio|caption|embed)[^\\]]*\\]",
+				"dangling_marker_repair": "\\[\\s*(image|video|audio|caption|embed)\\b(?![^\\[\\]\\n]*\\])",
+				"leak_pattern_dangling": "\\[\\s*(?:image|video|audio|caption|embed)\\b(?![^\\[\\]\\n]*\\])",
+				"instruction_guard": true,
+				"exclude_reo": true,
+				"header_max_words": 3,
+				"leak_guard": true,
+				"leak_pattern": "\\[\\s*[A-Za-z][^\\]\\n](0, 40)\\]",
+							"heading": "<h4>{text}</h4>",
+				"heading_bold": "<p><b>{text}</b></p>",
+				"item": "<div class=\"item\">\n{parts}\n</div>",
+				"caption_open": "<div class=\"carousel-caption\">",
+				"caption_close": "</div>",
+				"_note": "ROUND 279 — THE TABLE-SLIDE FALLBACK, tried LAST in #carousel so every dialect above keeps its population byte-for-byte. ONE DATA ROW IS ONE SLIDE (the gold's own rule); a single-row table is one slide per CELL (the r266 form); a leading header/label row is dropped. A cell becomes ordered PARTS through the rich walk's vocabulary, so a table-authored carousel and a member-authored one render identically. min_slides 2 is GOLD-BACKED (a 1-slide carousel is 4 of 1,648 golds = 0.2%). NEVER HALF-BUILDS: no parts, a red developer instruction, too few/many slides, no real content, or a finished carousel still showing a bracketed tag (leak_guard, the r167 rule at this seam). ROUND 284 adds dangling_marker_repair + leak_pattern_dangling — see those keys. Env CARTABLE_OFF."
+			},
+			"same_type_merge": {
+				"enabled": true,
+				"_note": "ROUND 279 — 'carousel + carousel' in a bundle's extraTypes is only the un-built placeholder LABEL, not a genuinely mixed widget (the r242 accordion finding / r215 tabs self-merge restated). Decides 52 of the 104 extraTypes declines. Env CARSAMETYPE_OFF."
+			},
 			"_meta": "Carousel auto-build (conservative). TWO clean forms: (1) homogeneous VIDEO carousel — every slide a YouTube video (item_video); (2) image+caption TABLE carousel — a 2-column table pairing a derivable image-URL cell with a [body] caption cell (item_image). InteractiveBuilder.#carousel keeps the placeholder the moment the data is richer/ambiguous: a non-YouTube video, a mixed/text slide, <min_slides slides, a 3+-column or irregular table, an image cell with no derivable istock id, or red developer-instruction text. Structure uses the dominant form below; the human exact item/videoSection/col classes VARY by series (item vs item.video/item.image, videoSection icon vs plain, col-12 vs col-md-12 viewer), so the verifiers match on CONTENT (video IDs / image ids + captions), not byte-for-byte. {embed} fills from Emit_Templates.video.youtube; {image} honours image Mode P/D like every other image; the iStock id (digits after 'gm' in the URL) → images/iStock-<id>.jpg. A leading single-cell [Title] row and an 'Images | Text' column-label row are dropped; a trailing non-slide [body] paragraph after the table renders as free body (trailing_body). Human reference: 01-Finalized_Modules_/OSGM501/OSGM501-01.html. Empty-image / member-text / mixed carousels stay honest placeholders.",
 			"enabled": true,
 			"open": "<div class=\"row carousel\">\n<div class=\"col-md-12 col-12 viewer\">",
@@ -1493,6 +1601,16 @@
 			"item_image_caption": "<div class=\"item image\">\n{image}\n<div class=\"carousel-caption\">\n{caption}\n</div>\n</div>",
 			"rich_slides_accordion_sibling_note": "see interactive_builders.accordion.rich_panels.head_from_first_line — the round-246 accordion half of the same directive.",
 			"rich_slides": {
+				"member_vocabulary": {
+					"enabled": true,
+					"note_asset_requests": true,
+					"asset_request": true,
+					"image_slug_fallback": true,
+					"audio_member": true,
+					"invocation_opens_slide": true,
+					"text_tags": ["data marker"],
+					"_note": "ROUND 279 — the member vocabulary the rich slide walk reads. A non-iStock image takes the r126 url-SLUG placeholder; an image with no url, or an unembeddable video/[embed], is an ASSET REQUEST — skipped and surfaced as the standard red Writers Note (r214/r242: never a silent drop, never an invented filename); [Caption] resolves to the CANONICAL tag 'data marker'; [audio] is slide content; a REPEATED [carousel] once a slide holds content is a SLIDE MARKER. Env CARMEMBER_OFF."
+				},
 				"enabled": true,
 				"item": "<div class=\"item\">\n{parts}\n</div>",
 				"heading": "<h4>{text}</h4>",
@@ -1612,6 +1730,23 @@
 			}
 		},
 		"clickDrop": {
+			"general_items": {
+				"enabled": true,
+				"delimiter_tags": ["click drop"],
+				"delimiter_pattern": "^\\[\\s*(?:start\\s+of\\s+)?click\\s*[- ]?drop(?:\\s+(?:heading|panel|item))?\\s*(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\s*[:.]?\\s*\\]$",
+				"delimiter_ordinal_pattern": "^\\[\\s*(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\\s+click\\s*[- ]?drop\\s*[:.]?\\s*\\]$",
+				"delimiter_media_role": true,
+				"asset_request_note": true,
+				"note_tags": ["button", "data marker"],
+				"text_tags": ["external link"],
+				"min_items": 1,
+				"min_inferred_items": 2,
+				"label_max_words": 8,
+				"require_panel_text": true,
+				"leak_guard": true,
+				"image_slug_fallback": true,
+				"_note": "ROUND 283 — the general ITEM composer, tried LAST so all 61 pre-round builds are byte-identical by construction. Items resolve from an ordered delimiter vocabulary: D1 labelled [click drop N] tags over the full member vocabulary; D2 a captured TABLE read five ways (T0 self-delimited CELLS, T1 a face-marker COLUMN, T2/T3 a peeled header then N x 2 rows, T4 one item per COLUMN, T5 one item per CELL); D3 a repeating same-level HEADING run. Two general rules carry it: content before the first button is the widget's own LEAD prose, rendered above the widget in the writer's place rather than thrown away, and a run of media immediately before a delimiter belongs to the item it opens. GOLD-BACKED (1,199 groups / 211 modules / 3,036 buttons): min_items 1 for an explicit delimiter (a one-item clickDrop is the gold's plurality at 43.5%) but min_inferred_items 2; label_max_words 8 (<=3 words 83.7%, <=8 99.2%); a label is NEVER invented, a bare URL is never a label, and a panel with no visible text is a half-build. Env CLICKDROPS_OFF."
+			},
 			"_comment": [
 				"clickDrop — a row of click-to-reveal BUTTONS, each revealing its own content panel.",
 				"MEMBER-based (like accordion/tabs): the writer types one [click drop N] tag per item; the",

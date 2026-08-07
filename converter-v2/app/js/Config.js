@@ -910,7 +910,130 @@ class Config {
 	// a leading label-less [click drop] is the opener, and text riding along with the
 	// URL is body continuation. Coverage 21.4% -> 23.4%; NEW BUILDS accordion +54 /
 	// carousel +48 / clickDrop +1, LOST 0 across every type.
-	static AppVersion = "260618.47";
+	// ROUND 276 (260618.48): SPEECHBUBBLE — BUILD EVERY VARIATION (Chris, the
+	// interactive-coverage chain, round 1 of 8). A decline-reason probe that rewrites
+	// every `return null` in the speechBubble region to a recorder made the SHIPPED
+	// builder report its own verdict: 100% of the 258 declines were decided in the
+	// narrow 1x2-table branch, on guards about the writer's LAYOUT rather than the
+	// widget — 72 "not exactly one table", 67 "any modifier at all", 50 "more than one
+	// row", 38 "not exactly two cells". SBRICH_OFF — the RICH GENERAL COMPOSER, tried
+	// LAST so all four existing branches stay byte-identical: members and every table
+	// cell flatten into an ordered stream of parts (bubble / image / head / text /
+	// note) and one `row speechBubble` is emitted per bubble, avatar form or text-only
+	// form, reusing the round-246/247 templates because the gold measurement (1218
+	// rows / 143 modules) says those ARE the plurality. Table cells group by the axis
+	// that yields one bubble per group; a plain-cell table under a bubble invocation
+	// becomes one bubble per cell; a non-iStock image takes the round-126 slug name;
+	// asset requests and writer instructions ride along as red Writers Notes.
+	// speechBubble coverage 55.9% -> 86.3% (327 -> 505 of 585); overall interactive
+	// coverage 23.4% -> 26.9%; NEW BUILDS 178, LOST 0 across every type.
+	// ROUND 277 (260618.49): hint + hintSlider — build every variation (Chris — the
+	// interactive-coverage chain, round 2 of 8). THE HEADLINE: `hint` and `hintSlider`
+	// are two DIFFERENT elements, and `hint` had no template in Emit_Templates at all,
+	// so Build returned null at its missing-template guard and not one of its 64 tagged
+	// bundles ever reached a builder. Adds the measured p.hintLink + span.hint +
+	// hintDropContent element (HINTELEM_OFF), a general LABELLED-PAIR slider composer
+	// that runs last so every pre-277 build is byte-identical (HINTPAIR_OFF), and the
+	// scanner rule that stops a writer's own [Title] paragraph — a `title bar`
+	// SECTION_MARKER, an absolute terminator — from ending the capture before anything
+	// was collected (HINTTITLE_OFF). hint 0 -> 48 of 64; hintSlider 22 -> 32 of 44;
+	// overall interactive coverage 26.9% -> 28.1%; NEW BUILDS 58, LOST 0 in every type.
+	// ROUND 278 (260618.50): ACCORDION — BUILD EVERY VARIATION (Chris, the
+	// interactive-coverage chain, round 3 of 8). The decline recorder accounted for
+	// 100% of the accordion's 454 declines and the biggest class — 239 / 105 modules —
+	// was ONE mechanism: content arrived before any panel opened, because only an
+	// [accordion N] tag could open a panel while writers delimit panels with a table,
+	// a repeating heading or a bold lead just as often. #accordionPanels resolves all
+	// four (ACCPANELS_OFF), and a trailing [button] now ends the capture so it renders
+	// as a real button instead of being swallowed (ACCBTNTAIL_OFF).
+	// accordion 253 -> 371 of 707 (35.8% -> 52.5%); overall coverage 28.1% -> 30.5%;
+	// NEW BUILDS 126, LOST 0 in every type.
+	// ROUND 279 (260618.51): CAROUSEL — BUILD EVERY VARIATION (Chris, the
+	// interactive-coverage chain, round 4 of 8). The decline recorder accounted for
+	// 100% of the carousel's 561 declines: 277 carry a captured TABLE, and 143 of
+	// those died at a DEAD-END where the one narrow image|caption branch RETURNED its
+	// null so no fallback was ever tried. #carouselTableSlides reads any of them by
+	// the gold's own rule — one data ROW is one slide (CARTABLE_OFF); a captured table
+	// with another carousel ahead now ENDS the walk, so XTAS101's three slideshows are
+	// three carousels as the gold has them (CARSPLIT_OFF); the member vocabulary names
+	// a non-iStock image, an unembeddable video, a [Caption] and an [audio]
+	// (CARMEMBER_OFF); and "carousel + carousel" is only the placeholder label
+	// (CARSAMETYPE_OFF).
+	// carousel 308 -> 639 of 896 (35.4% -> 71.3%); overall coverage 30.5% -> 36.8%;
+	// NEW BUILDS 331, LOST 0 in every type.
+	// ROUND 280 (260618.52): MODAL — BUILD EVERY VARIATION (Chris, the
+	// interactive-coverage chain, round 5 of 8). The decline recorder accounted for
+	// 100% of the modal's 292 declines and they collapsed onto TWO guards of the
+	// round-73 BUTTON path. The cause underneath: there was a builder for the
+	// IMAGE-triggered modal (r216) and one for a modal that is really a link to a PDF
+	// (r73), and NOTHING for the ordinary TEXT-triggered modal — which the gold says
+	// is DOMINANT (div.button.TKmodalButton 213 of 283 = 75.3%, 52 modules).
+	// #modalSets is tried LAST and emits the corpus convention (trigger + its sibling
+	// div.TKmodal) from four delimiters: numbered [Modal N …] sub-tags, the
+	// same-block label line, a table row, and the tag's own text (MODALSETS_OFF);
+	// the scanner recovers the first set's label from the line above (MODALLEAD_OFF).
+	// modal 88 -> 161 of 380 (23.2% -> 42.4%); overall coverage 36.8% -> 38.2%;
+	// NEW BUILDS 73, LOST 0 in every type.
+	// ROUND 281 (260618.53): TABS — BUILD EVERY VARIATION (Chris, the
+	// interactive-coverage chain, round 6 of 8). Tabs already had FIVE builders, four
+	// of them gated by a mined gold-choice REGISTRY row, so the round opened by
+	// testing the obvious hypothesis: neutralising EVERY registry gate moved tabs
+	// from 17 built to 18 — a gain of exactly ONE. The registry was never the
+	// blocker, only the first door. The real blocker is that the writer's pane
+	// DELIMITER is usually a TABLE (or a plain heading run) no builder reads, and one
+	// unplaceable member bails the whole widget. #tabsPanes is a general composer
+	// tried LAST (so all 17 pre-round builds are byte-identical by construction),
+	// resolving panes from an ordered delimiter vocabulary — [Tab N] tags, a table
+	// read column-major (incl. a role-labelled first column), a table read row-major
+	// or cell-per-pane, and a repeating heading run — over the shared round-278
+	// member vocabulary (TABPANES_OFF). Two guards the tabs VERIFIER caught before
+	// they shipped: a wholly-red label row (a flipCard [front]/[drop] table was
+	// becoming four tabs all labelled "front") and duplicate labels.
+	// tabs 17 -> 34 of 113 (15.0% -> 30.1%); overall coverage 38.2% -> 38.5%;
+	// NEW BUILDS 17, LOST 0 in every type.
+	// ROUND 282 (260618.54): FLIPCARD — BUILD EVERY VARIATION (Chris, the
+	// interactive-coverage chain, round 7 of 8). flipCard was the WORST-COVERED
+	// widget in the library (49 of 484 = 10.1%) and the second-largest class by
+	// modules (191). The decline recorder accounted for 100% of the 435 declines and
+	// they collapsed onto two mechanisms: 289 carry a captured TABLE the four dialect
+	// builders cannot read (220 of them died on the single line `if (width !== 2)` —
+	// the dialects know three table layouts, the writers use at least six), and
+	// #flipCardMembers DEMANDS an image on every card, which the gold contradicts
+	// outright (measured over 643 gold groups / 3122 cards, a front is a HEADING
+	// alone 22.3% and a PARAGRAPH alone 20.7% — text-only cards are 43% of the
+	// library). #flipCardCards is a general composer tried LAST (so all 49 pre-round
+	// builds are byte-identical by construction), resolving cards from an ordered
+	// delimiter vocabulary — face-marker rows, a face-marker label COLUMN, per-cell
+	// face markers, a two-row column table, an N x 2 row table, [Flip Card N] tags,
+	// [front]/[back] markers, face LABEL WORDS, and a bare media series
+	// (FLIPCARDS_OFF). THREE bugs the flipCard VERIFIER caught before they shipped:
+	// the writer's PHOTO BRIEF rendering as visible card text, a bare URL rendering
+	// as a paragraph, and — in the verifier itself — the gold's `class="front
+	// flipImage"` faces (1065 of them) never being harvested at all.
+	// flipCard 49 -> 228 of 484 (10.1% -> 47.1%); overall coverage 38.5% -> 42.0%;
+	// NEW BUILDS 179, LOST 0 in every type.
+	// ROUND 283 (260618.55): CLICKDROP — BUILD EVERY VARIATION (Chris, the
+	// interactive-coverage chain, round 8 of 8 — THE LAST). clickDrop was the
+	// worst-covered widget left (61 of 690 = 8.8%) and the third-largest class by
+	// modules (143). The decline recorder accounted for 100% of the 629 declines and
+	// CORRECTED the coverage dashboard: the [image] blocker it named was fixed at
+	// round 275 and decides only 23 declines now. The real ones: 240 an item with a
+	// LABEL and NO CONTENT, 125 NO item resolved at all (85 of them a TABLE the walk
+	// never looked at), 94 content arriving BEFORE the first button, 85 a member it
+	// cannot place. #clickDropItems is a general composer tried LAST (so all 61
+	// pre-round builds are byte-identical by construction) resolving items from an
+	// ordered delimiter vocabulary — labelled [click drop N] tags, a captured table
+	// read five ways, and a repeating heading run — over the round-278 member
+	// vocabulary shared verbatim (CLICKDROPS_OFF). Gold-backed guards from 1199 gold
+	// groups / 211 modules: a ONE-item clickDrop is the gold's own plurality at
+	// 43.5%, and of 3036 gold labels <=8 words is 99.2%. THREE bugs the clickDrop
+	// VERIFIER caught before they shipped: the writer's PHOTO BRIEF becoming a button
+	// label, a bare URL becoming a label over an empty panel, and — in the verifier
+	// itself — a non-greedy regex that could not read a panel containing a nested
+	// <div> (674 of the gold's own panels do).
+	// clickDrop 61 -> 163 of 690 (8.8% -> 23.6%); overall coverage 41.9% -> 43.9%;
+	// NEW BUILDS 102, LOST 0 in every type; 67 modules.
+	static AppVersion = "260618.56";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -470,7 +470,7 @@
 			"widget_types": [
 				"hint"
 			],
-			"_note": "ROUND 65+ (Chris): split out from 'hint slider' — a bare [hint] is the simple click-to-reveal hint (catalogue #25), NOT the multi-row hint slider (#26). The 'hint' widget_type dispatches to the SHARED hintSlider builder (a single hint = a one-row slider) so no build is lost. Reverts by data (re-add 'hint' to the hint slider aliases)."
+			"_note": "ROUND 65+ (Chris): split out from 'hint slider' — a bare [hint] is the simple click-to-reveal hint (catalogue #25), NOT the multi-row hint slider (#26). ROUND 277 CORRECTION: the old claim that 'a single hint = a one-row slider, so no build is lost' was WRONG in both halves. They are different ELEMENTS in the gold — hint is p.hintLink + span.hint + div.hintDropContent, hintSlider is div.hintSlider > hintRow > frontInfo|backInfo — and dispatching the hint widget_type at the shared builder lost EVERY build, because Emit_Templates.interactive_builders had no 'hint' key, so Build returned null at its missing-template guard before any builder ran (0 of 64 built). Both types now enter InteractiveBuilder#hintEntry, which routes on the authored CONTENT rather than the tag: the tag is not a reliable discriminator ([hint sliders] resolves here, to widget_type hint, yet IS a slider; OSAI401/501 author sliders under [hint slider]). Reverts by data (re-add 'hint' to the hint slider aliases); env HINTELEM_OFF restores the pre-277 no-build state."
 		},
 		"hint slider": {
 			"directive": "INTERACTIVE",

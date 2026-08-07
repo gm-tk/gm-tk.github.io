@@ -99,9 +99,14 @@ class InteractiveBuilder {
 			let html = null;
 			switch (type) {
 				// ---- easy widgets, added one at a time -------------------------
-				case "hint":            // a single [hint] tag is really just a one-row hintSlider, so it reuses that builder
+				// ROUND 277 — `hint` and `hintSlider` are DIFFERENT elements (ONE click-to-reveal
+				// tip vs a LIST of reveal rows), and the writer's TAG does not reliably tell them
+				// apart: [hint sliders] resolves to widget type `hint`, while OSAI401/501 author
+				// real sliders under [hint slider]. So both types enter ONE entry that routes on
+				// the authored CONTENT, and it needs BOTH templates + renderBlock for hint bodies.
+				case "hint":
 				case "hintSlider":
-					html = this.#hintSlider({ bundle, tpl, renderInline });
+					html = this.#hintEntry({ bundle, tpl, templates, renderInline, renderBlock });
 					break;
 				case "accordion":
 					// renderTable added round 275 — the rich panel walk renders a captured data
@@ -111,7 +116,8 @@ class InteractiveBuilder {
 					// speechBubble needs `run` (for the image Mode P/D), so it is
 					// the first builder we hand the run context to.
 				case "speechBubble":
-					html = this.#speechBubble({ bundle, tpl, renderInline, run });
+					// round 276: the four narrow branches, then the RICH general composer.
+					html = this.#speechBubbleEntry({ bundle, tpl, renderInline, run });
 					break;
 				case "flipCard":
 					html = this.#flipCard({ bundle, tpl, renderInline, run });
@@ -128,7 +134,12 @@ class InteractiveBuilder {
 					html = this.#shapeHover({ bundle, tpl, renderInline, run });
 					break;
 				case "clickDrop":
-					html = this.#clickDrop({ bundle, tpl, renderInline, run });
+					// round 283: the narrow member walk, then the GENERAL composer.
+					// renderBlock/renderTable/renderNested added this round — a clickDrop's
+					// revealed panel is ordinary page content (gold: 1600 <p>, 401 headings,
+					// 472 <img>, 395 lists, 106 tables) and must render through the
+					// converter's own emitters, exactly as the accordion's panels do.
+					html = this.#clickDropEntry({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested });
 					break;
 				case "glossary":
 					html = this.#glossary({ bundle, tpl, renderInline });
@@ -139,8 +150,12 @@ class InteractiveBuilder {
 				case "dragAndDrop": // the narrow N:N text-matching case only (layout=standard)
 					html = this.#dragAndDrop({ bundle, tpl, renderInline });
 					break;
-				case "modal":       // image-pair form → TKmodal set; else a single document/PDF URL → a button
-					html = this.#modal({ bundle, tpl, renderInline, renderBlock, run });
+				case "modal":       // image-pair form → TKmodal set; single document/PDF URL → a button;
+					// else (round 280) the general trigger+TKmodal set fallback. renderNested/
+					// renderTable/renderImage added round 280 — a modal's content is ordinary page
+					// content (a kept table, a nested widget, an image) and must render through the
+					// converter's own emitters, exactly as the accordion's panels do.
+					html = this.#modal({ bundle, tpl, renderInline, renderBlock, renderNested, renderTable, renderImage, run });
 					break;
 				// (infoTrigger
 				//  will be added here as each is proven against the human builds.)
@@ -295,6 +310,355 @@ class InteractiveBuilder {
 		for (let i = 0; i < answers.length; i++) out.push(Utils.FillTemplate(tpl.drag, { n: i + 1, answer: inline(answers[i]) }));
 		out.push(tpl.close);
 		return out.join("\n");
+	}
+
+	/**
+	 * THE HINT-FAMILY ENTRY (ROUND 277) — routes on the authored CONTENT, not the tag.
+	 *
+	 * WHY AN ENTRY AT ALL. `hint` and `hintSlider` are two different HTML elements, but
+	 * the writer's tag does not decide which one was authored:
+	 *   • `[hint sliders]` (plural) resolves to widget type `hint` — yet it IS a slider;
+	 *   • `[hint slider 1] Misleading advice:` + `[back][body] …` (OSAI401/501) is a
+	 *     slider authored under the slider tag but with none of the shapes the original
+	 *     table builder knew;
+	 *   • `[Hint Button]` + `[Title]` + `[Body]` is the single-tip ELEMENT, and before
+	 *     this round it had no template at all, so `Build` returned null at its
+	 *     missing-template guard and no builder ever ran on any of its 64 bundles.
+	 *
+	 * ORDER (the round-276 architecture — the narrow branches first, the general
+	 * composers LAST, so every pre-277 build stays byte-identical BY CONSTRUCTION):
+	 *   1. the front/back MEMBER form      (unchanged, #hintSliderMembers)
+	 *   2. the 2-column TABLE form         (unchanged, #hintSliderTable)
+	 *   3. the LABELLED-PAIR slider        (new — HINTPAIR_OFF)
+	 *   4. the single-tip hint ELEMENT     (new — HINTELEM_OFF)
+	 *
+	 * @param {object}   args
+	 * @param {object}   args.bundle       - the captured interactive
+	 * @param {object}   args.tpl          - THIS bundle type's template
+	 * @param {object}   args.templates    - all interactive_builders (both hint templates)
+	 * @param {function} args.renderInline - inline markup renderer
+	 * @param {function} args.renderBlock  - block renderer (<p>/<ul>) for a hint body
+	 * @returns {string|null} built HTML, or null to keep the hand-off box
+	 */
+	static #hintEntry({ bundle, tpl, templates, renderInline, renderBlock }) {
+		const sliderTpl = templates?.hintSlider ?? (bundle?.type === "hintSlider" ? tpl : null);
+		const hintTpl = templates?.hint ?? (bundle?.type === "hint" ? tpl : null);
+		// HINTELEM_OFF must restore the PRE-277 state exactly, and before this round a
+		// `hint`-typed bundle never reached a builder at all: there was no `hint` key in
+		// interactive_builders, so Build returned null at its missing-template guard. The
+		// toggle therefore reverts the whole hint-type reachability, not just the element
+		// composer — otherwise a toggle-OFF corpus would still differ from round 276.
+		if (bundle?.type === "hint"
+			&& typeof process !== "undefined" && process.env && process.env.HINTELEM_OFF) return null;
+
+		// THE GUARD IS SCOPED SO IT CAN NEVER REMOVE A PRE-277 BUILD. Before this round
+		// only a `hintSlider`-typed bundle could reach branches 1+2, so for that type they
+		// keep their exact previous behaviour — including two ENFUN09 / OSSM501 builds that
+		// already shipped a visible leak (a PRE-EXISTING defect, recorded as a follow-up,
+		// not this round's to silently change). Every path this round newly opened — the
+		// same branches reached by a `hint`-typed bundle, and branches 3+4 — is guarded.
+		const preExisting = bundle?.type === "hintSlider";
+
+		// 1 + 2 — the two original branches, called EXACTLY as before.
+		if (sliderTpl && sliderTpl.enabled !== false) {
+			const narrow = this.#hintSlider({ bundle, tpl: sliderTpl, renderInline });
+			if (narrow) return this.#hintLeakGuard(narrow, !preExisting);
+			// 3 — the general labelled-pair slider.
+			const pairs = this.#hintSliderPairs({ bundle, tpl: sliderTpl, renderInline, renderBlock });
+			if (pairs) return this.#hintLeakGuard(pairs);
+		}
+		// 4 — the single-tip hint element.
+		if (hintTpl && hintTpl.enabled !== false) {
+			const el = this.#hintElement({ bundle, tpl: hintTpl, renderInline, renderBlock });
+			if (el) return this.#hintLeakGuard(el);
+		}
+		return null;
+	}
+
+	/**
+	 * THE LEAK GUARD (ROUND 277) — the round-167 rule applied at the hint seam.
+	 *
+	 * Adding the missing `hint` template made the ORIGINAL table builder reachable for
+	 * `hint`-typed bundles for the first time, and one of them (TEDC402-3.0) is a 1x2
+	 * LAYOUT table whose two cells are whole page blocks. Built as front|back it shipped
+	 * the writer's raw "[H3]", "[Body]", "[hint sliders]", "[image]" as VISIBLE text —
+	 * inside a hand-off box that text is gate-excluded chrome, but as a real widget it is
+	 * a counted literal leak on the finished page.
+	 *
+	 * So a finished hint/slider that still shows a bracketed structural tag is DECLINED
+	 * and the honest hand-off box is kept. Building can therefore never ADD a leak — only
+	 * prevent one. (Prose that merely contains brackets — "[178, 165, 190]" — is not a
+	 * tag: the pattern requires a leading letter, matching the round-104 discriminator.)
+	 *
+	 * @param {string|null} html - the built widget
+	 * @returns {string|null} the same HTML, or null when it leaks
+	 */
+	static #hintLeakGuard(html, guard = true) {
+		if (!html || !guard) return html ?? null;
+		return /\[\s*[A-Za-z][^\]\n]{0,40}\]/.test(html) ? null : html;
+	}
+
+	/**
+	 * hintSlider — THE LABELLED-PAIR form (ROUND 277). The general composer for every
+	 * slider the writer did NOT lay out as a 2-column table or as [front]/[back] members.
+	 *
+	 * MEASURED DIALECTS IT COVERS (all from the live corpus, all previously declined):
+	 *   ENGR202  [Hintslider 1] Front || Which fruit…   +  red span "Back || Strawberries"
+	 *   OSSC501  [hint slider] [Front] || Surprise      +  [Back] || Was the message…
+	 *   OSSM501  [hint slider 1] || Take breaks…        +  [back] || Try putting your phone…
+	 *   OSAI401  [hint slider 1] || Misleading advice:  +  [back] [body] || AI might suggest…
+	 *   TEDC402  • **A bit**  (a black bullet)          +  red span "reveals 🡪 A bit is a 1 or 0"
+	 *   SCPH301  [hint slider front] || …               +  [hint slider back] || …
+	 *
+	 * THE ONE RULE BEHIND ALL OF THEM: a row is a FRONT followed by a BACK, and either
+	 * half may arrive as the opener's own trailing text, as a tagged member, or as a
+	 * red span whose leading word is a back-label ("back", "bottom", "reveals",
+	 * "answer"). Which of those the writer used is layout, not meaning.
+	 *
+	 * NEVER HALF-BUILDS → null: a front with no reveal (BLL246's six sentence starters,
+	 * MXEX401's lone question — a slider with nothing to reveal is not a slider), a
+	 * captured table (that is branch 2's or a genuine decline), a media/asset request
+	 * (HES1005's "[Insert media item 51]"), an image/video member, or no complete row.
+	 * Writer instructions are SKIPPED and still surface as red notes after the widget
+	 * (the round-214 rule), never silently dropped.
+	 *
+	 * TRAILING CONTENT: prose the walk over-captured after the last complete row is
+	 * rendered AFTER the widget rather than dropped (the round-196 trailing_body rule),
+	 * so building can never lose the writer's text.
+	 */
+	static #hintSliderPairs({ bundle, tpl, renderInline, renderBlock }) {
+		const cfg = tpl?.labelled_pairs;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.HINTPAIR_OFF) return null;
+		if ((bundle?.tables ?? []).length) return null;       // a table is branch 2's business
+
+		const inline = renderInline ?? ((s) => s);
+		const backWords = (cfg.back_label_words ?? []).map((w) => String(w).toLowerCase());
+		const frontWords = (cfg.front_label_words ?? []).map((w) => String(w).toLowerCase());
+		// "Back", "Back:", "reveals 🡪" — a label word, optionally followed by punctuation
+		// or an arrow glyph, and nothing else. The REMAINDER (if any) is the back's text.
+		const labelOnly = (s, words) => {
+			const t = this.#cellText(s).replace(/\*\*/g, "").replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{27BF}\u{1F800}-\u{1F8FF}]/gu, " ").trim();
+			const m = /^([A-Za-z]+)\s*[:.\-–—]?\s*$/.exec(t);
+			return !!m && words.includes(m[1].toLowerCase());
+		};
+		const stripLabel = (s, words) => {
+			let t = this.#cellText(s).replace(/^\s*\*\*\s*/, "").trim();
+			const m = /^([A-Za-z]+)\s*[:.\-–—]?\s*/.exec(t);
+			if (m && words.includes(m[1].toLowerCase())) t = t.slice(m[0].length);
+			// a leading arrow glyph the writer used as the reveal marker
+			return t.replace(/^[\s*]*[\u{1F800}-\u{1F8FF}\u{2190}-\u{21FF}\u{27A1}\u{2192}>]+[\s*]*/gu, "").replace(/\*\*/g, "").trim();
+		};
+		// The opener's bracket may itself name the half: "[hint slider front]" (SCPH301).
+		const bracketHalf = (m) => {
+			const raw = String(m?.text ?? "").toLowerCase();
+			if (frontWords.some((w) => new RegExp(`\\b${w}\\b`).test(raw))) return "front";
+			if (backWords.some((w) => new RegExp(`\\b${w}\\b`).test(raw))) return "back";
+			return null;
+		};
+
+		const rows = [];
+		const trailing = [];
+		let cur = null;                       // the row awaiting its back
+		const pushFront = (text) => {
+			if (!text) return false;
+			if (cur && !cur.back) return false;   // two fronts running → not a clean pair form
+			cur = { front: text, back: "" };
+			rows.push(cur);
+			return true;
+		};
+		const pushBack = (text) => {
+			// The reveal marker the writer typed between the label and the answer
+			// ("reveals 🡪 A bit is a 1 or 0") is punctuation, not content — the gold's
+			// backInfo carries the answer alone. Strip a leading arrow glyph and any
+			// bold markers left orphaned around it.
+			const t = String(text ?? "")
+				.replace(/^[\s*]*[\u{1F800}-\u{1F8FF}\u{2190}-\u{21FF}\u{27A1}\u{2192}>→]+[\s*]*/gu, "")
+				.trim();
+			if (!cur || !t) return false;
+			cur.back = cur.back ? `${cur.back} ${t}` : t;
+			return true;
+		};
+
+		for (const m of (bundle?.memberItems ?? [])) {
+			if (!m) continue;
+			if (m.type === "table") return null;                       // a data table → not this form
+			const tag = m.type === "tag" ? m.parse?.primary?.tag : null;
+			const tags = (m.parse?.tags ?? []).map((t) => t.tag);
+			const raw = m.type === "tag" ? (m.blackAfter ?? "") : (m.text ?? "");
+			const text = this.#cellText(raw).trim();
+
+			// (a) a writer instruction / asset request — skipped, and still surfaced as a
+			//     red note after the built widget (the round-214 rule). An instruction is
+			//     never learner content, so it can neither open nor close a row.
+			const isNote = m.type === "tag"
+				&& (m.parse?.class === "instruction" || m.parse?.class === "noise" || m.parse?.instructionFragment);
+			// (b) a MEDIA / asset member — an image, a video, or a media-list reference
+			//     ("[Insert media item 51]"). The slider form has nowhere to put it and we
+			//     will not silently drop it. Decline.
+			if (["image", "video", "audio"].includes(tag)) return null;
+			if (m.type === "tag" && /\binsert (?:media|item)\b/i.test(String(m.text ?? ""))) return null;
+
+			// (c) the widget's own invocation. Its trailing text is the row's FRONT (or,
+			//     when the bracket names a half, that half). A bare repeat opens nothing.
+			if (m.parse?.primary?.directive === "INTERACTIVE") {
+				const half = bracketHalf(m);
+				if (!text) continue;                                   // a bare repeat — no content
+				if (half === "back") { if (!pushBack(text)) return null; continue; }
+				if (!pushFront(text)) return null;
+				continue;
+			}
+			// (d) an explicit [back] member — including OSAI401's "[back] [body]" span,
+			//     where the PRIMARY resolves to `body` but [back] is present in the span.
+			if (tag === "back" || tags.includes("back")) {
+				if (!text) continue;
+				if (!pushBack(text)) return null;
+				continue;
+			}
+			// (e) an explicit [front] member.
+			if (tag === "front" || tags.includes("front")) {
+				if (!pushFront(text)) return null;
+				continue;
+			}
+			// (f) a red span used as a LABEL: "Back || Strawberries", "reveals 🡪 …".
+			//     The label may be the span's text with the content in blackAfter, or the
+			//     whole thing may ride one string ("Reveals 🡪 Binary arithmetic is …").
+			if (m.type === "tag" && !m.parse?.primary) {
+				const own = String(m.text ?? "");
+				if (labelOnly(own, backWords)) { if (!pushBack(text)) return null; continue; }
+				if (labelOnly(own, frontWords)) { if (!pushFront(text)) return null; continue; }
+				const merged = stripLabel(`${this.#cellText(own)} ${text}`.trim(), backWords);
+				if (/^\s*(?:reveals?|back|bottom|answer)\b/i.test(this.#cellText(own)) && merged) {
+					if (!pushBack(merged)) return null;
+					continue;
+				}
+				if (isNote) continue;                                  // an ordinary instruction span
+				return null;
+			}
+			if (isNote) continue;
+
+			// (g) a BLACK line. A bullet ("• **A bit**") opens a row's front when the row
+			//     before it is complete; ordinary prose AFTER the last complete row is
+			//     TRAILING content and renders after the widget rather than being lost.
+			//     ONCE trailing prose has started the writer has moved on, so everything
+			//     after it is trailing too — otherwise its own bullet list ("• conduction",
+			//     SCPH301) would be misread as a new row's front.
+			if (m.type === "black") {
+				if (!text) continue;
+				if (/^\s*\(?\d{1,3}[.)]\s*$/.test(text)) continue;      // a bare list-number artifact
+				if (trailing.length) { trailing.push(text); continue; }
+				const bullet = /^[•·]\s*(.+)$/.exec(text);
+				if (bullet && (!cur || cur.back)) { if (!pushFront(bullet[1].trim())) return null; continue; }
+				if (cur && cur.back) { trailing.push(text); continue; }
+				return null;                                           // prose mid-row → not this form
+			}
+			// (h) a [body] with no [back] — the writer resuming prose after the rows.
+			if (tag === "body" && cur && cur.back) { if (text) trailing.push(text); continue; }
+			return null;
+		}
+
+		// A TRAILING front with no reveal is the writer's lead-in to whatever comes next
+		// (OSAI401's "Unfair predictions:", whose answer the scanner put in the FOLLOWING
+		// bundle). It is not a row, and it is not ours to drop — it becomes trailing text.
+		while (rows.length && !rows[rows.length - 1].back) trailing.unshift(rows.pop().front);
+		const complete = rows.filter((r) => r.front && r.back);
+		if (complete.length !== rows.length) return null;               // an INTERIOR front with no reveal
+		if (complete.length < (cfg.min_rows ?? 1)) return null;
+
+		const body = complete.map((r) => Utils.FillTemplate(tpl.row, {
+			front: inline(r.front), back: inline(r.back),
+		}));
+		let html = [tpl.open, ...body, tpl.close].join("\n");
+		if (trailing.length && cfg.trailing_body !== false && typeof renderBlock === "function") {
+			// renderBlock returns an ARRAY of <p>/<ul> chunks (the shared black-text
+			// renderer's contract) — join them, never string-concatenate the array.
+			const rendered = renderBlock(trailing.join("\n"));
+			const after = (Array.isArray(rendered) ? rendered : [rendered])
+				.filter((h) => h && String(h).trim()).join("\n");
+			if (after) html += `\n${after}`;
+		}
+		return html;
+	}
+
+	/**
+	 * hint — THE WRITER'S [Hint Button] (ROUND 277): ONE click-to-reveal tip attached to
+	 * a line of text. This element had NO template before this round, so `Build` returned
+	 * null at its missing-template guard and all 64 tagged hints shipped as a hand-off box
+	 * without any builder ever running on them.
+	 *
+	 * HOW THE WRITER AUTHORS IT (the dominant form — 37 of the 64, 9 modules):
+	 *   [Hint Button]
+	 *   [Title]  **Need help ?**
+	 *   [Body]   Email or phone the kaiako. You can ring 0800 65 99 88 …
+	 * The title arrives either folded into the opener's own red span (HPRE203, SSOG103 —
+	 * adjacent lines merge) or as its own [Title] member (TEDC402, SSEA203 — recovered by
+	 * the round-277 scanner rule, since [Title] is otherwise an absolute terminator).
+	 *
+	 * BUILDS (the measured gold plurality — 40 of 53 in the authoring modules = 75.5%):
+	 *   <p class="hintLink">{title} <span class="hint"></span></p>
+	 *   <div class="hintDropContent">{body}</div>
+	 * The title is rendered through the inline renderer, so the writer's own **bold**
+	 * survives exactly as TEDC401/402's gold ships it; the body goes through renderBlock
+	 * so bullets become a real list.
+	 *
+	 * NEVER HALF-BUILDS → null: no title tag at all (we do not invent one — OSGM201's
+	 * "Pop-up text when 'user controls' is clicked:" is an instruction, not a title), no
+	 * body content, a captured table, or any media / other widget member.
+	 */
+	static #hintElement({ bundle, tpl, renderInline, renderBlock }) {
+		if (typeof process !== "undefined" && process.env && process.env.HINTELEM_OFF) return null;
+		if ((bundle?.tables ?? []).length) return null;
+		const inline = renderInline ?? ((s) => s);
+		const titleTags = (tpl.title_tags ?? ["title bar"]);
+		let title = null;
+		const bodyLines = [];
+
+		const openerTitle = (m) => {
+			// the [Title] folded into the opener's OWN span: "[Hint Button] [Title]" with
+			// the title text in blackAfter.
+			const tags = (m.parse?.tags ?? []).map((t) => t.tag);
+			return tags.some((t) => titleTags.includes(t)) ? this.#cellText(m.blackAfter ?? "").trim() : null;
+		};
+
+		for (const m of [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])]) {
+			if (!m) continue;
+			if (m.type === "table") return null;
+			const tag = m.type === "tag" ? m.parse?.primary?.tag : null;
+			const raw = m.type === "tag" ? (m.blackAfter ?? "") : (m.text ?? "");
+			const text = this.#cellText(raw).trim();
+
+			if (m.parse?.primary?.directive === "INTERACTIVE") {
+				const t = openerTitle(m);
+				if (t !== null && title === null) title = t;           // may be "" → default below
+				continue;
+			}
+			if (tag && titleTags.includes(tag)) { if (title === null) title = text; continue; }
+			if (["image", "video", "audio"].includes(tag)) return null;
+			if (m.type === "tag"
+				&& (m.parse?.class === "instruction" || m.parse?.class === "noise" || m.parse?.instructionFragment)) continue;
+			if (tag === "body" || m.type === "black") { if (text) bodyLines.push(text); continue; }
+			if (this.#isInlineMarkerMember(m)) { if (text) bodyLines.push(text); continue; }
+			return null;                                               // any other tag → not this form
+		}
+
+		if (title === null) return null;                               // the writer tagged no title
+		if (!title) title = tpl.default_title ?? "";                   // tagged but empty
+		if (!title) return null;
+		if (tpl.require_body !== false && !bodyLines.length) return null;
+
+		// renderBlock returns an ARRAY of <p>/<ul> chunks (the shared black-text renderer's
+		// contract), so the writer's bullets become a real list inside the drop.
+		const rendered = typeof renderBlock === "function" ? renderBlock(bodyLines.join("\n")) : null;
+		const bodyHtml = rendered
+			? (Array.isArray(rendered) ? rendered : [rendered]).filter((h) => h && String(h).trim()).join("\n")
+			: bodyLines.map((l) => `<p>${inline(l)}</p>`).join("");
+		if (!String(bodyHtml || "").trim()) return null;
+		return [
+			Utils.FillTemplate(tpl.link, { title: inline(title) }),
+			tpl.drop_open,
+			bodyHtml,
+			tpl.drop_close,
+		].join("\n");
 	}
 
 	/**
@@ -473,9 +837,16 @@ class InteractiveBuilder {
 			// therefore only ever ADD builds, never remove one.
 			const withRule = this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable });
 			if (withRule !== null) return withRule;
-			return this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable, legacyPanels: true });
+			const legacy = this.#accordionRich({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable, legacyPanels: true });
+			if (legacy !== null) return legacy;
 		}
-		return null;
+		// ROUND 278 — THE PANEL-DELIMITER FALLBACK, tried LAST. Every path above has
+		// declined, so this is strictly additive: it can only ADD a build, never change
+		// one. It exists because the measured biggest decline class was not a rendering
+		// gap at all — it was that ONLY an [accordion N] tag could open a panel, while
+		// writers delimit panels with a table, a repeating heading or a bold lead just
+		// as often. See #accordionPanels. Env ACCPANELS_OFF.
+		return this.#accordionPanels({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable });
 	}
 
 	/**
@@ -740,10 +1111,34 @@ class InteractiveBuilder {
 
 		// (2) RENDER every panel. Each needs a heading + at least one rendered part.
 		if (!panels.length) return null;
+		const built = this.#accRenderPanels(panels, { tpl, inline, run, renderBlock, renderNested, rich });
+		if (!built) return null;
+		const recovered = panels.some((p) => p.r246Head);
+		// ROUND 242: surface the skipped layout markers ONLY on a successful build (a
+		// decline keeps the placeholder + raw dump byte-identical); #bundleInstructions
+		// de-duplicates downstream, and the note renders red after the widget.
+		if (markerNotes.length) bundle.instructions = [...(bundle.instructions ?? []), ...markerNotes];
+		if (recovered) bundle.r246Accordion = true;                    // detector/affected-set marker
+		return [tpl.open, ...built, tpl.close].join("\n");
+	}
+
+	/**
+	 * SHARED PANEL RENDERER (ROUND 278 — a pure extraction from #accordionRich, so its
+	 * output is byte-identical by construction; the census run with the round's toggles
+	 * OFF is the proof). Turns a resolved `[{ head, parts }]` list into the finished
+	 * accHead/accContent rows. Every panel needs a heading AND at least one rendered
+	 * part — a panel that renders to nothing declines the WHOLE accordion (never
+	 * half-build). Shared by the round-246 rich fallback and the round-278
+	 * panel-delimiter fallback, so both emit the exact same markup.
+	 *
+	 * A part is one of: {p:text} · {img:filename} · {video:id} · {embed:html} ·
+	 * {h:level,text} · {html:string} · {nested:subBundle}.
+	 *
+	 * @returns {string[]|null} one filled tpl.row per panel, or null to decline
+	 */
+	static #accRenderPanels(panels, { tpl, inline, run, renderBlock, renderNested, rich }) {
 		const built = [];
-		let recovered = false;
 		for (const p of panels) {
-			if (p.r246Head) recovered = true;
 			if (!p.head || !p.parts.length) return null;
 			if (this.#hasRedText(p.head)) return null;
 			const chunks = [];
@@ -754,6 +1149,8 @@ class InteractiveBuilder {
 					const vt = DataService.Data.EmitTemplates.video?.youtube;
 					if (!vt) return null;
 					chunks.push(Utils.FillTemplate(vt, { videoId: part.video, params: "" }));
+				} else if (part.embed) {
+					chunks.push(part.embed);         // ROUND 278: a non-YouTube embeddable media URL
 				} else if (part.nested) {
 					if (typeof renderNested !== "function") return null;
 					const ph = renderNested(part.nested);
@@ -763,7 +1160,7 @@ class InteractiveBuilder {
 					// accContent 3's READYSAFE tabs sit inside <div class="row">); an un-built
 					// nested placeholder stays bare, exactly as before. Data
 					// rich_panels.nested_built_wrap; env ACCRICH2_OFF reverts (no wrap).
-					const wrapTpl = rich.nested_built_wrap;
+					const wrapTpl = rich?.nested_built_wrap;
 					const wrap = wrapTpl && part.nested.built
 						&& !(typeof process !== "undefined" && process.env && process.env.ACCRICH2_OFF);
 					chunks.push(wrap ? Utils.FillTemplate(wrapTpl, { html: ph }) : ph);
@@ -781,12 +1178,575 @@ class InteractiveBuilder {
 			if (!content.trim()) return null;                          // panel with no rendered body
 			built.push(Utils.FillTemplate(tpl.row, { head: inline(p.head), content }));
 		}
-		// ROUND 242: surface the skipped layout markers ONLY on a successful build (a
-		// decline keeps the placeholder + raw dump byte-identical); #bundleInstructions
-		// de-duplicates downstream, and the note renders red after the widget.
-		if (markerNotes.length) bundle.instructions = [...(bundle.instructions ?? []), ...markerNotes];
-		if (recovered) bundle.r246Accordion = true;                    // detector/affected-set marker
-		return [tpl.open, ...built, tpl.close].join("\n");
+		return built;
+	}
+
+	// =======================================================================
+	// ROUND 278 — THE PANEL-DELIMITER FALLBACK
+	// =======================================================================
+	/**
+	 * PANEL-DELIMITER accordion (ROUND 278, Chris — the interactive-coverage chain,
+	 * round 3 of 8: "if the writer has used the accordion tag … attempt to generate
+	 * an accordion"). Tried LAST, only where the strict text/image paths AND both
+	 * modes of the round-246 rich fallback have all returned null — so it is
+	 * STRICTLY ADDITIVE and every accordion that built before this round builds
+	 * identically after it, by construction (env ACCPANELS_OFF proves it).
+	 *
+	 * WHY IT EXISTS. The decline-reason recorder (outputs/_measure_r278_accordion.cjs,
+	 * which rewrites every `return null` in the shipped accordion region to a recorder
+	 * so the builder names its own verdict) accounted for 100% of the 454 declines,
+	 * and the single biggest class — 239 declines / 105 modules — was ONE mechanism:
+	 * CONTENT ARRIVED BEFORE ANY PANEL OPENED. Only an `[accordion N]` tag could open
+	 * a panel, but writers delimit panels in at least four other ways, and the human
+	 * builds an accordion from every one of them (each derivation below is quoted
+	 * against its gold):
+	 *
+	 *   D1 [accordion N] tags — the existing rule, WIDENED to the word/ordinal forms
+	 *      the funnel found ("[accordion one:]", "[first accordion]", "[Start of
+	 *      Accordion 2]", "[Accordion heading 1]"), and a heading-less panel may now
+	 *      take its head from its own first [H2]-[H6] SUB-HEADING.
+	 *        CEDO501-2.1  "[Accordion 1]" "[H3] Jobseeker Support" "[Body] …"
+	 *        gold         <div class="accHead"><h4>Jobseeker Support</h4></div>
+	 *   D2 a captured TABLE with no panel open — ONE ROW = ONE PANEL.
+	 *        ENGI303-2.0  | Look around ║ Check the words and sentences before …
+	 *        gold         <h4>Look around</h4> + <p>Check the words …</p>
+	 *        CEDR101-1.0  | **Helping the followers** / • What makes a good leader…
+	 *        gold         <h4>Helping the followers</h4> + the bullets
+	 *   D3 a repeating same-level [H2]-[H6] heading (the round-196 tabs heading-pane
+	 *      rule transposed).
+	 *   D4 repeating BOLD-LEAD black lines.
+	 *        CEDO102-0.0  **Use less energy:** We can use less electricity …
+	 *        gold         <h4>Use less energy</h4> + <p>We can use less electricity…</p>
+	 *
+	 * The member VOCABULARY is widened at the same time, because a panel is worth
+	 * nothing if one member inside it bails the widget: a NON-iSTOCK image takes the
+	 * round-126 URL-slug placeholder name (as the speech bubble has since round 276),
+	 * a URL-LESS media-list reference ("[Insert image 5]", PHE1003) is an ASSET
+	 * REQUEST — skipped as build content and surfaced as the standard red note after
+	 * the widget, never silently dropped (the round-214/242 class) — and a video whose
+	 * host is not YouTube renders through the generic iframe (the round-275 carousel
+	 * precedent).
+	 *
+	 * NEVER HALF-BUILDS. No delimiter resolves ≥ min_panels panels · a panel with no
+	 * heading or no rendered body · red writer-instruction text in a heading · a
+	 * member it cannot place at all · or a finished accordion that still shows a
+	 * resolved [tag] (#accLeakGuard — the round-167/275/277 rule at this seam, so
+	 * building can only ever PREVENT a visible leak, never add one).
+	 *
+	 * Data interactive_builders.accordion.panel_delimiters; env ACCPANELS_OFF.
+	 */
+	static #accordionPanels({ bundle, tpl, renderInline, run, renderBlock, renderNested, renderTable }) {
+		const cfg = tpl?.panel_delimiters;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.ACCPANELS_OFF) return null;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return null;
+		if (typeof renderBlock !== "function") return null;      // need the body renderer
+		const inline = renderInline ?? ((s) => s);
+		const rich = tpl.rich_panels ?? {};
+		const notes = [];
+
+		// (1) Classify every member into an ordered PART with a ROLE. Classifying by
+		//     the RESOLVED TAG (not the writer's spelling) is the round-276 lesson —
+		//     "[Insert image of a robot]" matches no ^image pattern.
+		const parts = this.#accMemberParts(members, { tpl, cfg, run, renderTable, notes });
+		if (!parts) return null;
+
+		// (2) Resolve the panels from the first delimiter kind that is present.
+		const panels = this.#accResolvePanels(parts, cfg, tpl);
+		if (!panels || panels.length < (cfg.min_panels ?? 1)) return null;
+
+		// (3) Render through the SHARED panel renderer, so this fallback and the
+		//     round-246 rich one emit byte-identical markup.
+		const built = this.#accRenderPanels(panels, { tpl, inline, run, renderBlock, renderNested, rich });
+		if (!built) return null;
+		const html = [tpl.open, ...built, tpl.close].join("\n");
+		if (this.#accLeakGuard(html, cfg)) return null;           // a build must never ADD a leak
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.r278Accordion = true;                              // detector / affected-set marker
+		return html;
+	}
+
+	/**
+	 * ROUND 278 — every captured member as an ordered {role,…} PART, or null when a
+	 * member cannot be placed at all. Roles: panel · head · text · img · video ·
+	 * embed · table · nested. Instruction/noise members and image-arrangement layout
+	 * markers become NOTES (surfaced red after a successful build, never dropped).
+	 *
+	 * ROUND 281 — SHARED WITH TABS. The vocabulary itself (what an image / a video /
+	 * an asset request / a table / a note IS) is widget-independent; only the
+	 * DELIMITER tag differs. `opts.delims` lets a caller name its own delimiter and
+	 * opener tags; omitted, every default is the round-278 accordion behaviour
+	 * verbatim, so the accordion path is byte-identical BY CONSTRUCTION.
+	 */
+	static #accMemberParts(members, { tpl, cfg, run, renderTable, notes, delims }) {
+		const parts = [];
+		const idRe = new RegExp(cfg.video_youtube_id_re
+			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
+		// A panel delimiter must carry a NUMBER (digit or word) — the bare "[accordion]"
+		// is the widget's OPENER, not a panel, and treating it as one collapsed the whole
+		// bundle into a single heading-less panel (caught live on CEDO102/ENGI303).
+		const numbered = new RegExp(delims?.panel_tag_pattern ?? cfg.panel_tag_pattern
+			?? "^\\[\\s*(?:start\\s+of\\s+)?accordion(?:\\s+(?:heading|panel))?\\s+(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\s*[:.]?\\s*\\]$", "i");
+		const ordinal = new RegExp(delims?.panel_ordinal_pattern ?? cfg.panel_ordinal_pattern
+			?? "^\\[\\s*(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\\s+accordion\\s*[:.]?\\s*\\]$", "i");
+		// the DELIMITER tag(s) that open a panel/pane, and the widget's own opener tag(s)
+		// which carry no content. Default = the accordion's, so nothing moves for it.
+		const delimTags = delims?.tags ?? ["accordion"];
+		const openerTags = delims?.opener_tags ?? [];
+
+		for (const m of members) {
+			if (!m) continue;
+			const tag = m.type === "tag" ? m.parse?.primary?.tag : null;
+			// the widget's own invocation / closer — no content of its own (tabs' [tabs]).
+			if (tag && openerTags.includes(tag)) continue;
+
+			// an image-ARRANGEMENT layout marker (round 242) — a note, never content
+			const layoutMk = this.#imageLayoutMarker(m, tpl);
+			if (layoutMk) { notes.push(layoutMk); continue; }
+
+			if (m.type === "nested") { parts.push({ role: "nested", bundle: m.nestedBundle }); continue; }
+
+			if (m.type === "table") {
+				if (typeof renderTable !== "function") return null;
+				// Rendered EAGERLY (renderTable is only in scope here) so the table can serve
+				// either job: as the panel SOURCE (D2, which reads item.block.rows) or, when
+				// another delimiter owns the panels, as ordinary panel CONTENT through the
+				// converter's own kept-table emitter — the round-275 seam.
+				const html = renderTable(m);
+				parts.push({ role: "table", item: m, html: (html && String(html).trim()) ? String(html) : null });
+				continue;
+			}
+
+			if (m.type === "black") {
+				const t = String(m.text ?? "");
+				if (!t.trim()) continue;
+				// the docx numbered-list artifact ("1." alone on its line) renders nothing
+				if (/^\s*\(?\d{1,3}[.)]\s*$/.test(t)) continue;
+				parts.push({ role: "text", text: t });
+				continue;
+			}
+
+			// ROUND 282 — a FACE LABEL WORD. Some writers name the two sides of a flip
+			// card in words rather than tags ("Facing:" / "Reverse:", EXPFUN06-0.0's
+			// "[on flip]"), which arrive as instruction/noise spans and were surfaced as
+			// notes with their content lost. A span whose OWN text matches the caller's
+			// face_label_pattern sets the face instead, and its trailing black text is
+			// that face's content. Empty for every other caller → nothing moves.
+			if (m.type === "tag" && delims?.face_label_pattern) {
+				const own = this.#cellText(String(m.text ?? "")).replace(/^\[|\]$/g, "").trim();
+				const fm = own.match(new RegExp(delims.face_label_pattern, "i"));
+				if (fm) {
+					const back = new RegExp(delims.face_label_back_pattern ?? "back|reverse|flip", "i").test(own);
+					parts.push({ role: "face", face: back ? "back" : "front", text: this.#cellText(m.blackAfter ?? "") });
+					continue;
+				}
+			}
+
+			// a writer instruction / noise span — surfaced as a red note, never build content
+			if (m.type === "tag"
+				&& (m.parse?.class === "instruction" || m.parse?.class === "noise" || m.parse?.instructionFragment)) {
+				const t = this.#cellText(m.blackAfter ?? "") || this.#cellText(m.text ?? "");
+				if (t) notes.push(t);
+				continue;
+			}
+
+			const raw = m.type === "tag" ? (m.blackAfter ?? "") : "";
+			const text = this.#cellText(raw);
+
+			if (tag && delimTags.includes(tag)) {
+				const own = this.#cellText(String(m.text ?? ""));
+				const isDelim = !text && (numbered.test(own) || ordinal.test(own));
+				// ROUND 283 — a DELIMITER TAG NAMING A SUB-ROLE. Some writers split one item
+				// across several tags of the same family, each naming a part of it:
+				// "[Insert ClickDrop 1] <title>" then "[Video for ClickDrop 1] <url>" then
+				// "[Text for ClickDrop 1]" (XGF9001-2.0), or "[click drop 1 image] <url>"
+				// then "[clickdrop 1 text]" (BLL244-2.0). The tag whose payload is nothing
+				// but a MEDIA URL is that item's media, not a new item with a URL for a
+				// label — which is what the shared bail below (rightly, for a heading) used
+				// to make of it. Opt-in per caller: undefined for the accordion and tabs, so
+				// their paths are byte-identical BY CONSTRUCTION.
+				if (delims?.delimiter_media_role && text && !this.#hasRedText(raw)
+					&& !(typeof process !== "undefined" && process.env && process.env.CLICKDROPS_OFF)
+					&& /^\s*https?:\/\/\S+\s*$/.test(text.replace(/\s+/g, " "))) {
+					const vm = text.match(idRe);
+					if (vm) { parts.push({ role: "video", id: vm[1] }); continue; }
+					const fn = this.#accImageFilename(text.trim(), tpl, cfg);
+					if (fn) { parts.push({ role: "img", filename: fn }); continue; }
+					const gen = cfg.generic_embed !== false
+						? DataService.Data.EmitTemplates.video?.generic_iframe : null;
+					if (gen) { parts.push({ role: "embed", html: Utils.FillTemplate(gen, { url: text.trim() }) }); continue; }
+					return null;
+				}
+				if (text) {
+					if (this.#hasRedText(raw) || /https?:\/\//.test(text)) return null;
+					// A HEADING IS SHORT. When the writer put a whole sentence on the panel tag
+					// ("[Accordion 1] **Recycle** means when we send certain materials to special
+					// places…", CEDW101-0.0) only its BOLD LEAD is the heading and the rest is the
+					// panel's first body line — the same rule D2 and D4 use. Without this the
+					// build shipped a paragraph inside <h4>, which no gold panel does. With no
+					// bold lead to fall back on, the panel is left head-less so the D1 resolver
+					// declines rather than inventing one.
+					const maxWords = cfg.head_max_words ?? 14;
+					const firstLine = text.split("\n")[0].trim();
+					if (text.split(/\s+/).length > maxWords || /\n/.test(text)) {
+						const lead = this.#accBoldLead(firstLine, cfg);
+						if (!lead) { parts.push({ role: "panel", head: "" , overlong: true }); continue; }
+						parts.push({ role: "panel", head: lead.head });
+						const rest = [lead.rest, ...text.split("\n").slice(1)].filter((s) => String(s).trim()).join("\n");
+						if (rest.trim()) parts.push({ role: "text", text: rest });
+						continue;
+					}
+					parts.push({ role: "panel", head: text });
+				} else if (isDelim) {
+					parts.push({ role: "panel", head: "" });
+				}
+				// a bare unnumbered "[accordion]" is the widget OPENER — skipped
+				continue;
+			}
+
+			if (["h2", "h3", "h4", "h5", "h6"].includes(tag)) {
+				if (this.#hasRedText(raw)) return null;
+				const t = text.replace(/\*\*/g, "").trim();
+				if (!t) continue;
+				parts.push({ role: "head", level: tag, text: t });
+				continue;
+			}
+
+			if (tag === "image") {
+				const url = this.#cellMediaUrl(raw);
+				if (!url) {
+					// AN ASSET REQUEST, not an image: the writer named a Media-List item
+					// ("[Insert image 5]", PHE1003) with no URL to render. Skipped as build
+					// content and surfaced as a red note so the developer knows to place it —
+					// the round-214/242 rule, never a silent drop and never a made-up filename.
+					if (cfg.asset_request_note === false) return null;
+					const t = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
+					if (t.trim()) notes.push(t.trim());
+					continue;
+				}
+				const fn = this.#accImageFilename(url, tpl, cfg);
+				if (!fn) return null;                              // a video url / unnameable → bail
+				parts.push({ role: "img", filename: fn });
+				// a real caption riding with the image stays as panel text
+				const residual = text.replace(/^\s*\[[^\]]*\]\s*/, "")
+					.replace(/https?:\/\/\S+/g, "").replace(/\S*gm-?\d{6,10}\S*/g, "")
+					.replace(/[/|]/g, " ").trim();
+				if (residual && (cfg.image_caption_as_text !== false)) parts.push({ role: "text", text: residual });
+				continue;
+			}
+
+			if (tag === "video" || tag === "audio") {
+				if (this.#hasRedText(raw) && !this.#cellMediaUrl(raw) && !/https?:\/\//.test(raw)) return null;
+				const idm = String(raw).match(idRe);
+				if (idm) { parts.push({ role: "video", id: idm[1] }); continue; }
+				// NOT YouTube — render the generic iframe, exactly as the body path and the
+				// round-275 carousel do, instead of bailing the whole widget on the host.
+				const url = String(raw).match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
+				const gen = url && cfg.generic_embed !== false
+					? DataService.Data.EmitTemplates.video?.generic_iframe
+					: null;
+				if (gen && url) { parts.push({ role: "embed", html: Utils.FillTemplate(gen, { url }) }); continue; }
+				if (!url) {                                        // a media-list reference again
+					if (cfg.asset_request_note === false) return null;
+					const t = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
+					if (t.trim()) notes.push(t.trim());
+					continue;
+				}
+				return null;
+			}
+
+			if (tag === "body") {
+				if (this.#hasRedText(raw)) return null;
+				if (!text.trim()) continue;
+				parts.push({ role: "text", text });
+				continue;
+			}
+
+			if (this.#isInlineMarkerMember(m)) {
+				if (this.#hasRedText(raw)) return null;
+				if (text.trim()) parts.push({ role: "text", text });
+				continue;
+			}
+
+			if (tag && /\blist\b/.test(tag)) continue;             // a no-op list delimiter
+
+			// ROUND 281, CALLER-SUPPLIED EXTENSIONS (all empty by default → the accordion
+			// path is byte-identical). A widget whose gold panes legitimately carry an
+			// element the base vocabulary has no role for can name it here rather than
+			// bailing the whole build:
+			//   head_tags — treat as a sub-heading at head_level
+			//   text_tags — render as pane prose (an [external link]'s own line)
+			//   note_tags — surface as a red Writers Note (never silent, never invented)
+			if (tag && (delims?.head_tags ?? []).includes(tag)) {
+				if (this.#hasRedText(raw)) return null;
+				const ht = text.replace(/\*\*/g, "").trim();
+				if (ht) parts.push({ role: "head", level: delims.head_level ?? "h4", text: ht });
+				continue;
+			}
+			if (tag && (delims?.text_tags ?? []).includes(tag)) {
+				if (this.#hasRedText(raw)) return null;
+				if (text.trim()) parts.push({ role: "text", text });
+				continue;
+			}
+			if (tag && (delims?.note_tags ?? []).includes(tag)) {
+				const nt = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
+				if (nt.trim()) notes.push(nt.trim());
+				continue;
+			}
+			// ROUND 282 — face_tags: a widget whose members carry a FACE marker
+			// ([front]/[back] on a flipCard) rather than a panel delimiter. Empty for
+			// every other caller, so the accordion and tabs paths cannot move.
+			if (tag && (delims?.face_tags ?? []).includes(tag)) {
+				if (this.#hasRedText(raw)) return null;
+				parts.push({ role: "face", face: tag, text: text.replace(/\*\*/g, "").trim() });
+				continue;
+			}
+
+			return null;                                           // a foreign tag we cannot place
+		}
+		return parts;
+	}
+
+	/**
+	 * ROUND 278 — resolve PANELS from the ordered parts, trying each delimiter kind
+	 * in turn (D1 explicit tags → D2 a table → D3 repeating headings → D4 bold-lead
+	 * lines) and taking the first that yields a panel with a heading. Returns
+	 * `[{ head, parts }]` for #accRenderPanels, or null.
+	 */
+	static #accResolvePanels(parts, cfg, tpl) {
+		const substantive = parts.filter((p) => p.role !== "note");
+		if (!substantive.length) return null;
+
+		// ---- D1: explicit [accordion …] panel delimiters -----------------------
+		if (parts.some((p) => p.role === "panel")) {
+			const panels = [];
+			let cur = null;
+			for (const p of parts) {
+				if (p.role === "panel") {
+					if (p.overlong) return null;              // a sentence-long tag text with no bold lead
+					cur = { head: p.head, parts: [] }; panels.push(cur); continue;
+				}
+				if (!cur) return null;                             // content still precedes the first panel
+				// a heading-less panel takes its head from its own first sub-heading
+				if (p.role === "head" && !cur.head && !cur.parts.length) { cur.head = p.text; continue; }
+				if (!this.#accPushPart(cur.parts, p)) return null;
+			}
+			this.#accHeadFromFirstLine(panels, cfg);
+			return panels.every((p) => p.head && p.parts.length) ? panels : null;
+		}
+
+		// ---- D2: a captured TABLE — one row = one panel ------------------------
+		const tables = parts.filter((p) => p.role === "table");
+		if (tables.length === 1 && cfg.table_panels !== false) {
+			const others = substantive.filter((p) => p.role !== "table");
+			// only when the table IS the widget (nothing substantive but a lead line)
+			if (others.every((p) => p.role === "text")) {
+				const panels = this.#accTablePanels(tables[0].item, cfg, tpl);
+				if (panels && panels.length >= (cfg.min_inferred_panels ?? 2)) return panels;
+			}
+		}
+
+		// ---- D3: a repeating same-level heading --------------------------------
+		if (cfg.heading_panels !== false) {
+			const heads = parts.filter((p) => p.role === "head");
+			const levels = [...new Set(heads.map((h) => h.level))];
+			if (heads.length >= (cfg.min_heading_panels ?? 2) && levels.length === 1) {
+				const panels = [];
+				let cur = null;
+				for (const p of parts) {
+					if (p.role === "note") continue;
+					if (p.role === "head") { cur = { head: p.text, parts: [] }; panels.push(cur); continue; }
+					if (!cur) {
+						// a lead line before the first heading is the accordion's intro — allowed
+						// only while nothing substantive has been dropped
+						if (p.role === "text") continue;
+						return null;
+					}
+					if (!this.#accPushPart(cur.parts, p)) return null;
+				}
+				if (panels.length >= (cfg.min_inferred_panels ?? 2) && panels.every((p) => p.head && p.parts.length)) return panels;
+			}
+		}
+
+		// ---- D4: repeating BOLD-LEAD black lines -------------------------------
+		if (cfg.bold_lead_panels !== false) {
+			const lines = [];
+			for (const p of parts) {
+				if (p.role === "note") continue;
+				if (p.role !== "text") { lines.length = 0; break; }   // mixed content → not this dialect
+				for (const l of String(p.text).split("\n")) if (l.trim()) lines.push(l);
+			}
+			if (lines.length >= (cfg.min_bold_panels ?? 2)) {
+				const panels = [];
+				let cur = null;
+				for (const l of lines) {
+					const lead = this.#accBoldLead(l, cfg);
+					if (lead) { cur = { head: lead.head, parts: [] }; panels.push(cur); if (lead.rest) cur.parts.push({ p: lead.rest }); continue; }
+					if (!cur) continue;                              // an intro line before the first panel
+					if (!this.#accPushPart(cur.parts, { role: "text", text: l })) return null;
+				}
+				if (panels.length >= (cfg.min_bold_panels ?? 2) && panels.every((p) => p.head && p.parts.length)) return panels;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * ROUND 278 — append a classified part to a panel's render parts.
+	 * @returns {boolean} false when the part cannot be placed (→ decline the accordion)
+	 */
+	static #accPushPart(out, p) {
+		if (p.role === "text") {
+			const last = out[out.length - 1];
+			if (last && last.p !== undefined) { last.p += `\n${p.text}`; return true; }   // keep a run in one block
+			out.push({ p: p.text });
+			return true;
+		}
+		if (p.role === "img") { out.push({ img: p.filename }); return true; }
+		if (p.role === "video") { out.push({ video: p.id }); return true; }
+		if (p.role === "embed") { out.push({ embed: p.html }); return true; }
+		if (p.role === "head") { out.push({ h: p.level, text: p.text }); return true; }
+		if (p.role === "nested") { out.push({ nested: p.bundle }); return true; }
+		// a table used as panel CONTENT — the kept-table emitter already ran; a null
+		// means its own leak guard refused it, so the whole accordion declines.
+		if (p.role === "table") { if (!p.html) return false; out.push({ html: p.html }); return true; }
+		return false;
+	}
+
+	/**
+	 * ROUND 278 — the ROUND-246 heading-less recovery, reused: a panel with no heading
+	 * takes it from its own FIRST text line (which is what that line is), and the line
+	 * is removed from the body so it is never shown twice.
+	 */
+	static #accHeadFromFirstLine(panels, cfg) {
+		const maxWords = cfg.head_max_words ?? 14;
+		for (const p of panels) {
+			if (p.head || !p.parts.length) continue;
+			const first = p.parts[0];
+			if (!first || first.p === undefined) continue;
+			const lines = String(first.p).split("\n").map((s) => s.trim()).filter(Boolean);
+			if (lines.length < 2) continue;                        // the whole part IS the body
+			const head = this.#cellText(lines[0]).replace(/^[•·]\s*/, "").replace(/\*\*/g, "").trim();
+			if (!head || head.split(/\s+/).length > maxWords) continue;
+			if (this.#hasRedText(lines[0])) continue;
+			p.head = head;
+			first.p = lines.slice(1).join("\n");
+			if (!first.p.trim()) p.parts.shift();
+		}
+	}
+
+	/**
+	 * ROUND 278 — a captured TABLE whose rows ARE the panels. Per row: an image cell
+	 * becomes the panel image (an unnameable/URL-less one is an asset request, so the
+	 * row still builds), a SHORT first text cell is the panel HEADING, otherwise the
+	 * heading is the BOLD LEAD of the content cell. Declines the whole table (→ the
+	 * hand-off box) the moment a row yields no heading or no content.
+	 */
+	static #accTablePanels(tableItem, cfg, tpl) {
+		const rows = tableItem?.block?.rows ?? [];
+		if (rows.length < (cfg.min_panels ?? 1)) return null;
+		const maxHead = cfg.table_head_max_words ?? 10;
+		const panels = [];
+		for (const row of rows) {
+			const cells = (row ?? []).map((c) => String(typeof c === "string" ? c : (c?.text ?? "")));
+			const kept = [];
+			let img = null;
+			for (const c of cells) {
+				if (!this.#cellText(c).trim()) continue;
+				const url = this.#cellMediaUrl(c);
+				if (url) {
+					const fn = this.#accImageFilename(url, tpl, cfg);
+					if (!fn) return null;
+					if (img) return null;                          // two images in one panel → too rich
+					img = fn;
+					continue;
+				}
+				const plain = this.#cellText(c);
+				// a bracketed tag with no URL is a Media-List asset request — not a heading
+				if (/^\s*\[[^\]]*\]/.test(plain) && !plain.replace(/^\s*\[[^\]]*\]\s*/, "").trim()) continue;
+				kept.push(plain);
+			}
+			if (!kept.length) return null;
+			let head = null, body = [];
+			if (kept.length >= 2 && this.#accIsShortLabel(kept[0], maxHead)) {
+				head = kept[0].replace(/\*\*/g, "").replace(/\s*:\s*$/, "").trim();
+				body = kept.slice(1);
+			} else {
+				// the LONGEST cell is the content; its bold lead is the heading
+				const idx = kept.reduce((best, c, i, a) => (c.length > a[best].length ? i : best), 0);
+				const lead = this.#accBoldLead(String(kept[idx]).split("\n")[0], cfg);
+				if (!lead) return null;
+				head = lead.head;
+				const restLines = String(kept[idx]).split("\n").slice(1);
+				body = [[lead.rest, ...restLines].filter(Boolean).join("\n"), ...kept.filter((_, i) => i !== idx)];
+			}
+			const parts = [];
+			if (img) parts.push({ img });
+			for (const b of body) if (String(b).trim()) parts.push({ p: String(b) });
+			if (!head || !parts.length) return null;
+			if (this.#accHasBracketTag(head)) return null;         // never put a raw tag in a heading
+			panels.push({ head, parts });
+		}
+		return panels;
+	}
+
+	/** ROUND 278 — a short, single-line, bullet-free label (a panel heading, not prose). */
+	static #accIsShortLabel(s, maxWords) {
+		const t = String(s ?? "").replace(/\*\*/g, "").trim();
+		if (!t || /\n/.test(t) || /^[•·]/.test(t)) return false;
+		if (this.#accHasBracketTag(t)) return false;
+		return t.split(/\s+/).length <= maxWords;
+	}
+
+	/** ROUND 278 — "**Head:** rest" → { head, rest }, or null when the line has no bold lead. */
+	static #accBoldLead(line, cfg) {
+		const t = String(line ?? "").trim();
+		const m = t.match(new RegExp(cfg.bold_lead_pattern ?? "^\\*\\*(.+?)\\*\\*\\s*[:：]?\\s*([\\s\\S]*)$"));
+		if (!m) return null;
+		const head = String(m[1]).replace(/\s*:\s*$/, "").trim();
+		const maxWords = cfg.head_max_words ?? 14;
+		if (!head || head.split(/\s+/).length > maxWords) return null;
+		if (this.#accHasBracketTag(head)) return null;
+		return { head, rest: String(m[2] ?? "").trim() };
+	}
+
+	/** ROUND 278 — does this text still show a bracketed writer tag? */
+	static #accHasBracketTag(s) {
+		return /\[[^\]\n]{1,60}\]/.test(String(s ?? ""));
+	}
+
+	/**
+	 * ROUND 278 — THE LEAK GUARD (the round-167/275/277 rule at this seam). A finished
+	 * accordion whose VISIBLE text still shows a bracketed tag the normaliser resolves
+	 * would turn gate-excluded hand-off chrome into a counted literal leak on the page,
+	 * so the build declines and the honest box stays. Building can therefore only ever
+	 * PREVENT a leak. Scoped to THIS fallback, so it can never remove a pre-278 build.
+	 */
+	static #accLeakGuard(html, cfg) {
+		if (cfg && cfg.leak_guard === false) return false;
+		// The round-277 #hintLeakGuard form: a bracketed word in the VISIBLE text (the
+		// Mode-P image comment is a real HTML comment and is stripped first, so it never
+		// trips the guard). Deliberately normaliser-free — over-firing merely keeps the
+		// honest hand-off box, which is the conservative direction.
+		const vis = String(html ?? "").replace(/<!--[\s\S]*?-->/g, " ").replace(/<[^>]+>/g, " ");
+		return /\[\s*[A-Za-z][^\]\n]{0,40}\]/.test(vis);
+	}
+
+	/**
+	 * ROUND 278 — the panel image FILENAME. An iStock URL names itself; an image the
+	 * writer sourced elsewhere (alamy, a school SharePoint, a museum page) still has to
+	 * render, so it falls back to the same URL-slug placeholder the rotating banner has
+	 * used since round 126 and the speech bubble since round 276. A VIDEO url is never
+	 * a panel image and still declines.
+	 */
+	static #accImageFilename(url, tpl, cfg) {
+		if (!url) return null;
+		if (/youtu\.?be|youtube\.com|vimeo/i.test(url)) return null;
+		const istock = this.#istockFilename(url, tpl);
+		if (istock) return istock;
+		if (cfg && cfg.image_slug_fallback === false) return null;
+		return this.#bannerImageFilename(url, tpl);
 	}
 
 	/**
@@ -1365,6 +2325,402 @@ class InteractiveBuilder {
 		}).join("\n");
 	}
 
+	// =======================================================================
+	// THE RICH GENERAL COMPOSER (round 276) — see the doc block on #speechBubbleRich
+	// =======================================================================
+
+	/** every `[...]` bracket inside a red span, lower-cased and trimmed. */
+	static #sbBrackets(spanText) {
+		return [...String(spanText ?? "").matchAll(/\[([^\]\n]{0,140}?)\]/g)]
+			.map((m) => m[1].replace(/\s+/g, " ").trim().toLowerCase())
+			.filter(Boolean);
+	}
+
+	/**
+	 * Classify ONE writer marker (a red span's brackets + the text that follows it)
+	 * into the composer's part roles. Returns { role, ... } or null when the marker
+	 * carries nothing the composer recognises. `role` is one of:
+	 *   bubble | image | head | text | note | STOP
+	 * STOP means "this bundle is not a bubble layout" → the caller declines.
+	 * Every pattern lives in data (speechBubble.rich), so a new writer spelling is a
+	 * data edit, never a code change.
+	 */
+	static #sbMarkerRole(brackets, cfg) {
+		const bubbleRe = new RegExp(cfg.bubble_re ?? "bubble", "i");
+		const imageRe = new RegExp(cfg.image_re ?? "^image\\b", "i");
+		const headRe = new RegExp(cfg.head_re ?? "^h[1-6]\\b", "i");
+		const textRe = new RegExp(cfg.text_re ?? "^body\\b", "i");
+		const declineRe = new RegExp(cfg.decline_tags ?? "^activity\\b", "i");
+		const roles = new Set();
+		for (const b of brackets) {
+			if (bubbleRe.test(b)) { roles.add("bubble"); continue; }   // "speech bubble", "thought bubble green", …
+			if (imageRe.test(b)) { roles.add("image"); continue; }
+			if (headRe.test(b)) { roles.add("head"); continue; }
+			if (textRe.test(b)) { roles.add("text"); continue; }
+			if (declineRe.test(b)) { roles.add("STOP"); continue; }    // an [Activity]/[button]/another widget → not ours
+			// anything else is a position / asset hint ("first panda on the left") — ignored
+		}
+		return roles;
+	}
+
+	/**
+	 * A raw captured CELL (or a member's own span text) → an ordered list of parts.
+	 * A cell is a string carrying "🔴[RED TEXT] … [/RED TEXT]🔴" markers with black
+	 * text between them; each marker plus the text following it is one part.
+	 */
+	static #sbCellParts(cell, cfg, tpl) {
+		const raw = String(cell ?? "");
+		if (!raw.trim()) return [];
+		const RE = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const parts = [];
+		let last = 0, m;
+		const chunks = [];
+		while ((m = RE.exec(raw)) !== null) {
+			chunks.push({ lead: raw.slice(last, m.index), span: m[1] });
+			last = m.index + m[0].length;
+		}
+		chunks.push({ lead: raw.slice(last), span: null });
+		// text BEFORE the first marker belongs to whatever came before (a caption line)
+		for (let i = 0; i < chunks.length; i++) {
+			const c = chunks[i];
+			const tail = (chunks[i + 1] ? "" : "");   // placeholder — text is taken as `lead` of the NEXT chunk
+			if (i === 0 && c.lead.trim()) parts.push({ role: "text", text: c.lead.trim() });
+			if (!c.span) { if (i > 0 && c.lead.trim()) { /* handled below via prev marker */ } continue; }
+			const following = (chunks[i + 1]?.lead ?? "").trim();
+			const roles = this.#sbMarkerRole(this.#sbBrackets(c.span), cfg);
+			if (roles.has("STOP")) return null;
+			const url = following.match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
+			const rest = this.#sbRestText(following);
+			if (roles.has("image")) {
+				parts.push({ role: "image", url, hint: this.#cellText(c.span).trim() });
+				if (!roles.has("bubble") && rest) parts.push({ role: "text", text: rest });
+			}
+			if (roles.has("bubble")) {
+				parts.push({ role: "bubble", text: rest, tagText: this.#cellText(c.span) });
+			} else if (roles.has("head")) {
+				if (rest) parts.push({ role: "head", text: rest });
+			} else if (roles.has("text")) {
+				if (rest) parts.push({ role: "text", text: rest });
+			} else if (!roles.size) {
+				// A red span with no recognised marker is the writer LABELLING the cell
+				// ("Person 1", "Insert with icons"): the MARKER is a designer instruction
+				// and is surfaced as a note (never silently dropped, §6), but the black
+				// text after it is the learner CONTENT and stays content — folding the
+				// two together would have buried OSBY301's four bubbles inside a note.
+				const noteTxt = this.#cellText(c.span).replace(/\s+/g, " ").trim();
+				if (noteTxt) parts.push({ role: "note", text: noteTxt });
+				if (rest) parts.push({ role: "text", text: rest });
+			}
+			void tail;
+		}
+		return parts;
+	}
+
+	/** a member item → parts (same roles as #sbCellParts). null = decline. */
+	static #sbMemberParts(m, cfg, tpl) {
+		if (!m) return [];
+		if (m.type === "nested") return null;
+		if (m.type === "black") {
+			const t = String(m.text ?? "").replace(/\s+/g, " ").trim();
+			return t ? [{ role: "text", text: t }] : [];
+		}
+		if (m.type !== "tag") return [];
+		const p = m.parse?.primary;
+		const after = String(m.blackAfter ?? "").replace(/\s+/g, " ").trim();
+		if (!p) {
+			// a red span the normaliser resolved to nothing: an instruction/noise the
+			// writer left for the designer → rides along as a note (the r214 rule).
+			if (["instruction", "noise"].includes(m.parse?.class)) {
+				const t = `${String(m.text ?? "").trim()} ${after}`.replace(/\s+/g, " ").trim();
+				return t ? [{ role: "note", text: t }] : [];
+			}
+			return null;
+		}
+		// A MEMBER is classified by its RESOLVED tag first — the writer's spelling is
+		// unreliable ("[Insert image of a robot]" never matches an ^image pattern, and
+		// 11 declines were exactly that), and the normaliser has already done the work.
+		// The SPELLING is still read afterwards, for the bubble/thought cue and for a
+		// span that resolved to something the tag map does not cover.
+		const roles = new Set();
+		const tag = String(p.tag ?? "").toLowerCase();
+		const map = cfg.tag_roles ?? {};
+		for (const [role, list] of Object.entries(map)) if ((list ?? []).includes(tag)) roles.add(role);
+		if (!roles.size) for (const r of this.#sbMarkerRole(this.#sbBrackets(m.text ?? ""), cfg)) roles.add(r);
+		if (roles.has("STOP")) return null;
+		const url = after.match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
+		const rest = this.#sbRestText(after);
+		const out = [];
+		if (roles.has("image")) {
+			out.push({ role: "image", url: url ?? this.#memberLinkUrl(m), hint: String(m.text ?? "").trim() });
+			if (!roles.has("bubble") && rest) out.push({ role: "text", text: rest });
+		}
+		if (roles.has("bubble") || p.directive === "INTERACTIVE") {
+			out.push({ role: "bubble", text: rest, tagText: String(m.text ?? "") });
+		} else if (roles.has("head")) {
+			if (rest) out.push({ role: "head", text: rest });
+		} else if (roles.has("text")) {
+			if (rest) out.push({ role: "text", text: rest });
+		} else if (!roles.size && !out.length) {
+			return null;   // a resolved structural tag we do not recognise → never half-build
+		}
+		return out;
+	}
+
+	/**
+	 * The CONTENT text following a writer marker, once the marker's own URL has been
+	 * consumed into an image filename. Removing the URL can orphan a markdown emphasis
+	 * marker — the writer very often types "**<url>** / **the bubble text**", and a
+	 * naive edge-trim that strips `*` would unbalance the REST of the line and turn the
+	 * bubble into "<b> You simply </b>add it to the end**" (caught live on CHFUN05).
+	 * So: drop the URL, drop an emphasis marker that is now empty AND the writer's " / "
+	 * separator with it, and trim only whitespace/brackets — never an emphasis marker
+	 * that still has a partner.
+	 */
+	static #sbRestText(following) {
+		return String(following ?? "")
+			.replace(/https?:\/\/[^\s\]"<>)]+/g, " ")
+			.replace(/^\s*[\]}]\s*/, "")                              // a split bracket's orphan closer (the r104 STRAYLEAD class)
+			.replace(/^\s*(?:\*{1,2}|_{1,2})?\s*(?:[/|]\s*)+/, "")   // the orphaned emphasis + " / "
+			.replace(/^[\s(),:;\-–—]+/, "")
+			.replace(/[\s/|(),\-–—]+$/, "")
+			.replace(/\s+/g, " ")
+			.trim();
+	}
+
+	/** the hyperlink a member carries on its own source block, if any. */
+	static #memberLinkUrl(m) {
+		const links = m?.block?.links ?? [];
+		return links.length ? String(links[0]?.target ?? "") : null;
+	}
+
+	/** a captured table → an ordered list of cell-part GROUPS (see the doc block). */
+	static #sbTableGroups(tbl, cfg, tpl, openerIsBubble) {
+		const rows = (tbl?.rows ?? []).filter((r) => Array.isArray(r) && r.length);
+		if (!rows.length) return null;
+		const cols = Math.max(...rows.map((r) => r.length));
+		const cellParts = rows.map((r) => {
+			const out = [];
+			for (let c = 0; c < cols; c++) out.push(this.#sbCellParts(r[c], cfg, tpl));
+			return out;
+		});
+		if (cellParts.some((r) => r.some((p) => p === null))) return null;   // a decline_tags marker
+		const nBub = (parts) => (parts ?? []).filter((p) => p.role === "bubble").length;
+		const totalBub = cellParts.flat().reduce((n, p) => n + nBub(p), 0);
+		const totalImg = cellParts.flat().reduce((n, p) => n + (p ?? []).filter((x) => x.role === "image").length, 0);
+		if (!totalBub && !totalImg) {
+			// THE PLAIN-CELL TABLE. The writer put the bubble tag on the invocation and
+			// the bubble TEXTS in a bare table — "[Put the three quotations each into a
+			// speech bubble]" above a 1x3 table of three quotes (CEDR501), "[speech
+			// bubbles - conversation layout] … 4 separate speech bubbles/people" above a
+			// 4x2 table (OSBY301). One bubble per non-empty cell, in cell order. Gated on
+			// the bundle's OWN opener being the bubble invocation and on every cell being
+			// plain text, so a captured DATA table (the over-capture class) still declines.
+			if (!openerIsBubble || !cfg.plain_cell_bubbles) return null;
+			const flat = cellParts.flat();
+			if (flat.some((p) => (p ?? []).some((x) => x.role !== "text" && x.role !== "note"))) return null;
+			const out = [];
+			for (const p of flat) {
+				const txt = (p ?? []).filter((x) => x.role === "text").map((x) => x.text).join(" ").trim();
+				const notes = (p ?? []).filter((x) => x.role === "note");
+				if (!txt) { if (notes.length) out.push(notes); continue; }
+				out.push([...notes, { role: "bubble", text: txt, tagText: "" }]);
+			}
+			return out.length ? out : null;
+		}
+		// GROUP by the axis that yields at most ONE bubble per group: rows, then
+		// columns (the image-row-above-caption-row grid), else cell by cell.
+		const byRow = cellParts.map((r) => r.flat());
+		if (byRow.every((g) => nBub(g) <= 1)) return byRow;
+		const byCol = [];
+		for (let c = 0; c < cols; c++) byCol.push(cellParts.map((r) => r[c] ?? []).flat());
+		if (byCol.every((g) => nBub(g) <= 1)) return byCol;
+		return cellParts.flat();
+	}
+
+	/**
+	 * THE RICH GENERAL COMPOSER — round 276 (Chris, the interactive-coverage chain,
+	 * round 1 of 8). Tried LAST, after conversation / no-table-avatar / text-only /
+	 * 1x2-table have all declined, so every bubble those four already build is
+	 * BYTE-IDENTICAL by construction and this branch can only ADD builds.
+	 *
+	 * WHY IT EXISTS. The round's decline-reason probe (outputs/_measure_r276_speechbubble.cjs,
+	 * which rewrites every `return null` in the speechBubble region to a recorder so the
+	 * SHIPPED builder reports its own verdict) accounted for 100% of the 258 declines and
+	 * found every one of them decided inside the narrow 1x2-table branch, on a guard about
+	 * the writer's LAYOUT rather than about the widget:
+	 *     72  "not exactly one captured table"   (69 of them had NO table at all)
+	 *     67  "the bundle carries any modifier"  (the modifiers are "left", "orange",
+	 *                                             "insert bookworm on right hand side" …)
+	 *     50  "the table has more than one row"
+	 *     38  "the row does not have exactly two cells" (27 of them ONE cell)
+	 * Those four are 87% of the class, and each is a VARIATION of how the bubble was
+	 * typed — the thing this round exists to handle.
+	 *
+	 * HOW. Members, and every cell of a captured table, are flattened into an ordered
+	 * stream of PARTS carrying a role (bubble / image / head / text / note). A bubble
+	 * part opens a bubble; head and text attach to it; an image becomes its avatar.
+	 * ONE `row speechBubble` is emitted per bubble — the AVATAR form when it has an
+	 * image, else the TEXT-ONLY form, reusing the round-246/247 templates because the
+	 * gold measurement (outputs/_measure_r276_goldforms.py, 1218 rows / 143 modules)
+	 * says those ARE the corpus plurality: one bubble per row 80.4%, avatar rows
+	 * layout=speech 97.6% and bubble-right 58.6% vs bubble-left 12.4%, image-less rows
+	 * col-12 + bubble-basic no-hover bubble-top.
+	 *
+	 * NEVER HALF-BUILDS. Declines (keeping the honest hand-off box) on: a structural
+	 * marker in decline_tags — an [Activity] opener, another widget's invocation, a
+	 * [button]/[video]/[link] carrying its own content; a nested widget; a captured
+	 * table holding neither a bubble nor an image (an over-capture); an image URL we
+	 * cannot name; or no bubble with any content. A URL-LESS image marker is SKIPPED
+	 * as the asset request it is and surfaced in the widget's red Writers Note (the
+	 * round-242 rule), and instruction/noise spans ride along the same way (round 214).
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive
+	 * @param {object} args.tpl - the speechBubble template block (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
+	 * @param {object} [args.run] - conversion run context (drives Mode P/D image rendering)
+	 * @returns {string|null} the built bubble rows, or null to keep the hand-off box
+	 */
+	static #speechBubbleRich({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl?.rich;
+		if (!cfg || cfg.enabled === false || !bundle) return null;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (env.SBRICH_OFF) return null;
+
+		// (1) FLATTEN — members in order; a table member expands into its groups.
+		// A bundle whose OWN opener is the bubble invocation licenses the plain-cell
+		// table form (the writer's "put each of these into a speech bubble" dialect).
+		const openerIsBubble = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]
+			.some((m) => m?.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE");
+		const groups = [];
+		let cur = [];
+		const pushCur = () => { if (cur.length) groups.push(cur); cur = []; };
+		for (const m of bundle.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table") {
+				const g = this.#sbTableGroups(m.block, cfg, tpl, openerIsBubble);
+				if (!g) return null;
+				pushCur();
+				for (const one of g) if (one.length) groups.push(one);
+				continue;
+			}
+			const parts = this.#sbMemberParts(m, cfg, tpl);
+			if (parts === null) return null;
+			cur.push(...parts);
+		}
+		pushCur();
+		if (!groups.length) return null;
+
+		// (2) GROUP THE PARTS INTO BUBBLES. A bubble part opens one; head/text attach
+		// to the open bubble (or, before the first bubble, to the one that follows —
+		// the writer's caption-then-bubble cell order); an image attaches as the
+		// avatar of the bubble it sits with.
+		const notes = [];
+		const bubbles = [];
+		for (const g of groups) {
+			let b = null;
+			const pending = [];            // text/head seen before this group's bubble
+			let pendingImg = null;
+			for (const p of g) {
+				if (p.role === "note") { if (p.text) notes.push(p.text); continue; }
+				if (p.role === "image") {
+					if (!p.url) { if (p.hint) notes.push(p.hint); continue; }   // an asset REQUEST (r242)
+					// An image the writer sourced OUTSIDE iStock (alamy, a school SharePoint,
+					// a museum page) still has to render, so it falls back to the same
+					// URL-slug placeholder name the rotating banner has used since round 126
+					// — a placeholder the developer swaps for the real asset, exactly like
+					// every Mode-P image. A VIDEO url is never an avatar and still declines.
+					const fn = (cfg.image_slug_fallback === false)
+						? this.#istockFilename(p.url, tpl)
+						: (/youtu\.?be|youtube\.com|vimeo/i.test(p.url) ? null : this.#bannerImageFilename(p.url, tpl));
+					if (!fn) return null;   // an image we cannot name — never half-build
+					if (b) { if (b.img) return null; b.img = fn; } else { if (pendingImg) return null; pendingImg = fn; }
+					continue;
+				}
+				if (p.role === "bubble") {
+					b = { img: pendingImg, lines: [...pending], thought: new RegExp(cfg.thought_re ?? "thought", "i").test(p.tagText ?? "") };
+					pendingImg = null; pending.length = 0;
+					if (p.text) b.lines.push({ head: false, text: p.text });
+					bubbles.push(b);
+					continue;
+				}
+				const line = { head: p.role === "head", text: p.text };
+				if (b) b.lines.push(line); else pending.push(line);
+			}
+			// trailing text with no bubble in this group joins the last bubble made
+			if (pending.length && bubbles.length) bubbles[bubbles.length - 1].lines.push(...pending);
+			if (pendingImg && bubbles.length && !bubbles[bubbles.length - 1].img) {
+				bubbles[bubbles.length - 1].img = pendingImg;
+			}
+		}
+
+		// (3) An invocation with nothing to say contributes nothing — drop it rather
+		// than bailing the whole widget (BLLR201's "[Insert bookworm on right hand
+		// side of page with speech bubble + audiovisual item 5]" opener sits beside
+		// the real bubble; its text is kept as a Writers Note above).
+		const min = cfg.min_chars ?? 2;
+		const live = bubbles.filter((b) => b.lines.some((l) => (l.text ?? "").replace(/[^\p{L}\p{N}]/gu, "").length >= min));
+		for (const b of bubbles) {
+			if (live.includes(b)) continue;
+			for (const l of b.lines) if (l.text) notes.push(l.text);
+		}
+		if (!live.length) return null;
+		if (live.some((b) => b.lines.length > (cfg.max_paragraphs ?? 8))) return null;
+
+		// (4) EMIT — one row per bubble, reusing the measured round-246/247 shapes.
+		const inline = renderInline ?? ((s) => s);
+		const av = tpl.no_table_image ?? {};
+		const to = tpl.text_only ?? {};
+		const body = (b) => {
+			const ps = [];
+			let open = null;
+			for (const l of b.lines) {
+				const t = String(l.text ?? "").trim();
+				// a "line" with no letter or digit in any script is stray punctuation a
+				// split bracket or a stripped URL left behind (the round-104 STRAYLEAD
+				// rule, which the text-only branch applies to its own paragraphs) — it
+				// must never reach the page as <p>*</p>.
+				if (!t || !/[\p{L}\p{N}]/u.test(t)) continue;
+				if (l.head) { if (open) ps.push(open); open = `<b>${inline(t)}</b>`; continue; }
+				if (/[•·]/.test(t)) {                       // a bulleted bubble → the r73 list body
+					if (open) { ps.push(open); open = null; }
+					const html = this.#bubbleBody(t, inline);
+					if (html) ps.push({ block: html });
+					continue;
+				}
+				if (open) open += `<br>${inline(t)}`; else ps.push(inline(t));
+			}
+			if (open) ps.push(open);
+			const html = ps.map((p) => (p && p.block) ? p.block : `<p>${p}</p>`).join("\n");
+			return ps.length > 1 ? `<div>\n${html}\n</div>` : html;
+		};
+		const out = [];
+		for (const b of live) {
+			const text = body(b);
+			if (!text) return null;
+			if (b.img) {
+				out.push([
+					Utils.FillTemplate(av.open ?? tpl.open, { layout: tpl.layout_attr ?? "speech" }),
+					Utils.FillTemplate(av.image_col ?? tpl.image_col, { image: this.#assetImage(b.img, tpl, run) }),
+					Utils.FillTemplate(av.text_col_right ?? tpl.text_right, { text }),
+					av.close ?? tpl.close,
+				].join("\n"));
+			} else {
+				out.push([
+					Utils.FillTemplate(to.open ?? tpl.open, { layout: b.thought ? (to.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech") }),
+					to.col_open ?? "<div class=\"col-12\">",
+					Utils.FillTemplate(to.bubble ?? "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>", { text }),
+					to.col_close ?? "</div>",
+					to.close ?? tpl.close,
+				].join("\n"));
+			}
+		}
+		// the skipped asset requests / writer instructions surface as the standard red
+		// Writers Note after the widget — ONLY on a successful build (the r242 rule).
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...new Set(notes)];
+		return out.join("\n");
+	}
+
 	/**
 	 * The full speechBubble dispatcher: tries the multi-turn CONVERSATION form first,
 	 * then falls back to the plain static ONE-IMAGE + ONE-TEXT-BUBBLE form documented
@@ -1554,6 +2910,19 @@ class InteractiveBuilder {
 	}
 
 	/**
+	 * The speechBubble ENTRY: the four narrow branches above in their historical
+	 * order, then the round-276 RICH general composer as the last resort. Splitting
+	 * the entry from #speechBubble keeps every existing branch byte-untouched — the
+	 * composer can only run where all four already returned null, so the 327 bubbles
+	 * that built before this round build identically after it, by construction.
+	 */
+	static #speechBubbleEntry({ bundle, tpl, renderInline, run }) {
+		const narrow = this.#speechBubble({ bundle, tpl, renderInline, run });
+		if (narrow) return narrow;
+		return this.#speechBubbleRich({ bundle, tpl, renderInline, run });
+	}
+
+	/**
 	 * Renders a BULLETED speech-bubble body: the writer's " / "-separated parts where
 	 * a "• "-led part is a list item. Consecutive bullets group into one <ul>; other parts are
 	 * <p>. (OSBY201-02 #8's "intro / • a / • b / • c / closing" → <p>intro</p><ul>…</ul><p>closing</p>.)
@@ -1680,23 +3049,46 @@ class InteractiveBuilder {
 	}
 
 	/**
-	 * The full flipCard dispatcher — see the "flipCard — a grid of cards..." doc block
-	 * above (near shapeHover) for the general shape/safety rules. Tries several capture
-	 * forms most-specific-first, falling through to the next when one declines:
+	 * THE flipCard ENTRY POINT (round 282). Tries the four SPECIALISED dialect builders
+	 * first (unchanged — see #flipCardDialects), then falls through to the GENERAL
+	 * composer #flipCardCards. The composer runs LAST on purpose: the round-276
+	 * architecture — a fallback cannot break what already works, so every build the
+	 * dialect builders already produced is byte-identical BY CONSTRUCTION.
+	 *
+	 * Before round 282 each dialect's refusal was `return null`, which ended the whole
+	 * dispatch and kept the placeholder — the round-279 DEAD-END class. Now a refusal
+	 * falls through.
+	 *
+	 * @param {object} args - see #flipCardDialects / #flipCardCards
+	 * @returns {string|null} the built flipCard HTML, or null to keep the orange placeholder
+	 */
+	static #flipCard(args) {
+		const built = this.#flipCardDialects(args);
+		if (built !== null) return built;
+		return this.#flipCardCards(args);
+	}
+
+	/**
+	 * The four SPECIALISED flipCard dialect builders — see the "flipCard — a grid of
+	 * cards..." doc block above (near shapeHover) for the general shape/safety rules.
+	 * Tries each capture form most-specific-first, falling through to the next when one
+	 * declines:
 	 *   1. no table at all                                            → #flipCardMembers (image-front cards captured as [Flip Card N] tags)
 	 *   2. Front|Back|Front|Back… header, ONE data row (2N columns)    → #flipCardAlternating
 	 *   3. Front|Back|Front|Back… header, MULTIPLE data rows           → #flipCardMultiRow
 	 *   4. exactly 2 rows, whole COLUMNS are fronts/backs (not rows)   → #flipCardTransposed
 	 *   5. plain 2-column table (front | back)                        → the default path below
+	 * A null from here is NOT the end of the road any more — #flipCard hands the bundle
+	 * to the general composer next.
 	 *
 	 * @param {object} args
 	 * @param {object} args.bundle - the captured interactive (opener/member items — see file header)
 	 * @param {object} args.tpl - this widget's editable markup templates (Emit_Templates.json)
 	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
 	 * @param {object} [args.run] - conversion run context (drives Mode P/D image rendering)
-	 * @returns {string|null} the built flipCard HTML, or null to keep the orange placeholder
+	 * @returns {string|null} the built flipCard HTML, or null to fall through to the composer
 	 */
-	static #flipCard({ bundle, tpl, renderInline, run }) {
+	static #flipCardDialects({ bundle, tpl, renderInline, run }) {
 		const tables = bundle?.tables ?? [];
 		// MEMBER-CAPTURED image-front cards (verified against OSAI501-03): NO table, the writer
 		// authored [Flip Card N] + [Front][H4] title + [image] url + [back] text per card. Build the
@@ -1845,6 +3237,498 @@ class InteractiveBuilder {
 		return [tpl.container_open, ...built, tpl.container_close].join("\n");
 	}
 
+	// =========================================================================
+	//  ROUND 282 — THE GENERAL flipCard COMPOSER  (env FLIPCARDS_OFF)
+	//
+	//  Chris, the interactive-coverage chain round 7 of 8. flipCard was the
+	//  WORST-COVERED widget in the library (49 of 484 = 10.1%) and the second
+	//  largest class by modules (191). The decline recorder
+	//  (outputs/_measure_r282_flipcard.cjs) accounted for 100% of the 435
+	//  declines and they collapsed onto two mechanisms, neither about the
+	//  writer's material being wrong:
+	//
+	//    • 289 declines / 44 modules carry a captured TABLE the four dialect
+	//      builders could not read — 220 of them died on the single line
+	//      `if (width !== 2)`. The dialects only know THREE table layouts;
+	//      the writers use at least five.
+	//    • 146 declines are member-authored, and 52 of those died because
+	//      #flipCardMembers DEMANDS an image on every card — which the gold
+	//      contradicts outright: measured over 643 gold groups / 3122 cards,
+	//      a front is img+h 24.5%, img alone 23.7%, a HEADING alone 22.3% and
+	//      a PARAGRAPH alone 20.7%. Text-only cards are 43% of the library.
+	//
+	//  So the composer reads CARDS from an ordered delimiter vocabulary, over a
+	//  cell/member vocabulary shared with the round-278 accordion. It runs LAST,
+	//  so all 49 pre-round builds are byte-identical BY CONSTRUCTION.
+	//
+	//  GOLD-BACKED GUARDS (outputs/_measure_r282_flipgold.py, body-scoped):
+	//    • min_cards 1 for an EXPLICIT delimiter (face markers / [Flip Card N])
+	//      — a 1-card group is 6.1% of the gold, so it is real; but
+	//      min_inferred_cards 2 for an INFERRED reading, where one card would be
+	//      a guess (the round-278 explicit-vs-inferred split).
+	//    • NO length cap on a front. Unlike a tab label, a gold flip front runs
+	//      to 4.3% over ten words (BLL264's conversation starters are whole
+	//      sentences), so capping it would refuse real cards.
+	//    • Both faces must carry content — a card with an empty face is not a card.
+	//    • A LABEL IS NEVER INVENTED. BLL264's gold numbers its 12 word-cards
+	//      <h5>1</h5>…<h5>12</h5>, a front that appears in no Writers Template;
+	//      that one-cell-per-card dialect therefore DECLINES (recorded, §8).
+	// =========================================================================
+
+	/**
+	 * THE GENERAL COMPOSER. Resolves cards from whichever delimiter the writer used,
+	 * then renders the corpus convention (container → per card: front face + back face).
+	 * Never half-builds: a card missing a face, an unreadable member, a nested widget or
+	 * a second table all return null and keep the honest hand-off box.
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive
+	 * @param {object} args.tpl - the flipCard template block (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
+	 * @param {object} [args.run] - conversion run context (drives Mode P/D image rendering)
+	 * @param {function} [args.renderTable] - the converter's kept-table emitter
+	 * @returns {string|null} the built flipCard HTML, or null to keep the placeholder
+	 */
+	static #flipCardCards({ bundle, tpl, renderInline, run, renderTable }) {
+		const cfg = tpl?.general_cards;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.FLIPCARDS_OFF) return null;
+		const inline = renderInline ?? ((s) => s);
+		const notes = [];
+		const tables = bundle?.tables ?? [];
+		if (tables.length > 1) return null;                       // a multi-table bundle → recorded follow-up
+
+		const cards = tables.length
+			? this.#flipTableCards(tables[0].rows ?? [], { tpl, cfg, run, inline, notes })
+			: this.#flipMemberCards(bundle, { tpl, cfg, run, inline, notes, renderTable });
+		if (!cards || !cards.length) return null;
+
+		const built = [];
+		for (const c of cards) {
+			if (!c.front || !c.back) return null;                 // both faces must carry content
+			// THE LEAK GUARD (the round-167 rule at this seam, as rounds 277/278/279/280/281
+			// ship it): a finished card still showing a bracketed writer tag would ADD a
+			// visible literal-[tag] leak, so it declines instead. Building can only ever
+			// PREVENT a leak, never cause one — proven per-module in both toggle states.
+			if (this.#accLeakGuard(c.front, cfg) || this.#accLeakGuard(c.back, cfg)) return null;
+			built.push(Utils.FillTemplate(tpl.card, { front: c.front, back: c.back }));
+		}
+		// a successful build surfaces the writer's skipped instructions / asset requests as
+		// the standard red Writers Notes after the widget — the round-214/278 rule, never
+		// a silent drop (a DECLINE never mutates the bundle).
+		if (notes.length) {
+			const seen = new Set(bundle.instructions ?? []);
+			bundle.instructions = [...(bundle.instructions ?? [])];
+			for (const n of notes) if (n && !seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
+		}
+		return [tpl.container_open, ...built, tpl.container_close].join("\n");
+	}
+
+	/**
+	 * TABLE readings, tried in order; the first that resolves enough cards wins.
+	 *
+	 *   T1  FACE-MARKER rows — any row whose every non-empty cell is a wholly-red
+	 *       [front]/[back] marker names the faces of the columns BELOW it, and repeats
+	 *       (OSOH501-4.0/5.0 lay four cards out as face-row, data-row, face-row,
+	 *       data-row — the existing multirow builder read the SECOND face row as data
+	 *       and bailed). Cards = (front column, back column) pairs per data row.
+	 *   T1b A FACE-MARKER COLUMN — the same convention turned 90°: column 0 holds the
+	 *       red "Front" / "Back" labels and every OTHER column is a card (ENGI303-4.0,
+	 *       the whole CHFUN05 family). The label column is dropped and its faces name
+	 *       the rows, then the table reads as T1/T2.
+	 *   T2  A TWO-ROW table with NO face markers: row 0 is every card's FRONT and row 1
+	 *       its BACK, one card per COLUMN. GOLD-VERIFIED on SSFUN03-0.0, whose three map
+	 *       cards the gold ships exactly this way. This is #flipCardTransposed minus its
+	 *       requirement that the writer label the faces.
+	 *   T3  N rows x 2 columns — one card per ROW, a leading column-label row dropped.
+	 *       The plain path, but over the richer cell vocabulary below.
+	 *
+	 * @returns {Array<{front:string,back:string}>|null}
+	 */
+	static #flipTableCards(allRows, ctx) {
+		let rows = (allRows ?? []).filter((r) => Array.isArray(r) && r.some((c) => this.#cellText(c).trim()));
+		if (!rows.length) return null;
+		const minExp = ctx.cfg.min_cards ?? 1, minInf = ctx.cfg.min_inferred_cards ?? 2;
+
+		// ---- T1b: a leading FACE-MARKER COLUMN (the T1 convention turned 90°) -----
+		// Column 0 holds the red "Front"/"Back" labels and every other column is a card.
+		// Drop it, remember the per-ROW faces, and let T1/T2 read what is left.
+		let rowFaces = null;
+		if (rows.length >= 2 && Math.max(0, ...rows.map((r) => r.length)) >= 2) {
+			const col0 = rows.map((r) => this.#flipCellFace(r[0]));
+			const col0Text = rows.map((r) => this.#cellText(r[0]).trim());
+			const labelled = col0.every((f, i) => f || !col0Text[i]) && col0.filter(Boolean).length === rows.length;
+			if (labelled && col0.includes("front") && col0.includes("back")) {
+				rowFaces = col0;
+				rows = rows.map((r) => r.slice(1));
+				if (!rows.some((r) => r.some((c) => this.#cellText(c).trim()))) return null;
+			}
+		}
+		const width = Math.max(0, ...rows.map((r) => r.length));
+		if (rowFaces) {
+			// one card per COLUMN, its faces named by the label column
+			const fi = rowFaces.indexOf("front"), bi = rowFaces.indexOf("back");
+			if (fi < 0 || bi < 0) return null;
+			const cards = [];
+			for (let c = 0; c < width; c++) {
+				if (!this.#cellText(rows[fi][c]).trim() && !this.#cellText(rows[bi][c]).trim()) continue;
+				const front = this.#flipFaceHtml(rows[fi][c], ctx, "front");
+				const back = this.#flipFaceHtml(rows[bi][c], ctx, "back");
+				if (front === null || back === null) return null;
+				cards.push({ front, back });
+			}
+			return cards.length >= minExp ? cards : null;
+		}
+
+		// ---- T1: face-marker rows ------------------------------------------------
+		const faceRow = (r) => {
+			const faces = r.map((c) => this.#flipCellFace(c)).filter((f, i) => this.#cellText(r[i]).trim() || f);
+			const named = r.map((c) => ({ f: this.#flipCellFace(c), t: this.#cellText(c).trim() }));
+			// every non-empty cell must be JUST a face marker (no content of its own)
+			if (!named.some((x) => x.f)) return null;
+			for (const x of named) if (x.t && !x.f) return null;
+			return r.map((c) => this.#flipCellFace(c));
+		};
+		if (rows.some((r) => faceRow(r))) {
+			const cards = [];
+			let faces = null;
+			for (const r of rows) {
+				const fr = faceRow(r);
+				if (fr) { faces = fr; continue; }
+				if (!faces) return null;                          // data before any face row → not this form
+				for (let c = 0; c + 1 < width; c++) {
+					if (faces[c] !== "front" || faces[c + 1] !== "back") continue;
+					const front = this.#flipFaceHtml(r[c], ctx, "front");
+					const back = this.#flipFaceHtml(r[c + 1], ctx, "back");
+					if (front === null || back === null) return null;
+					cards.push({ front, back });
+				}
+			}
+			return cards.length >= minExp ? cards : null;
+		}
+
+		// ---- T1c: PER-CELL face markers (the marker rides WITH the content) -------
+		// CEDO501-3.0/8.0 prefix every cell with its own "[Front of card]" /
+		// "[Back of the card]", so there is no marker ROW to find — the rows themselves
+		// alternate front, back, front, back. A row whose every non-empty cell opens with
+		// the same face marker HAS that face; consecutive front/back rows pair by column.
+		{
+			const faces = rows.map((r) => this.#flipRowFace(r));
+			if (faces.some((f) => f === "front") && faces.some((f) => f === "back")
+				&& faces.every((f) => f)) {
+				const cards = [];
+				for (let i = 0; i + 1 < rows.length; i += 2) {
+					if (faces[i] !== "front" || faces[i + 1] !== "back") return null;
+					for (let c = 0; c < width; c++) {
+						if (!this.#cellText(rows[i][c]).trim() && !this.#cellText(rows[i + 1][c]).trim()) continue;
+						const front = this.#flipFaceHtml(rows[i][c], ctx, "front");
+						const back = this.#flipFaceHtml(rows[i + 1][c], ctx, "back");
+						if (front === null || back === null) return null;
+						cards.push({ front, back });
+					}
+				}
+				return cards.length >= minExp ? cards : null;
+			}
+		}
+
+		// ---- T2: two rows, one card per column -----------------------------------
+		if (rows.length === 2 && width >= 2) {
+			const cards = [];
+			for (let c = 0; c < width; c++) {
+				if (!this.#cellText(rows[0][c]).trim() && !this.#cellText(rows[1][c]).trim()) continue;
+				const front = this.#flipFaceHtml(rows[0][c], ctx, "front");
+				const back = this.#flipFaceHtml(rows[1][c], ctx, "back");
+				if (front === null || back === null) return null;
+				cards.push({ front, back });
+			}
+			return cards.length >= minInf ? cards : null;
+		}
+
+		// ---- T3: N x 2, one card per row -----------------------------------------
+		if (width === 2) {
+			let data = rows.filter((r) => r.length === 2);
+			if (data.length && this.#looksLikeFlipHeader(data[0], ctx.tpl)) data = data.slice(1);
+			const cards = [];
+			for (const r of data) {
+				const front = this.#flipFaceHtml(r[0], ctx, "front");
+				const back = this.#flipFaceHtml(r[1], ctx, "back");
+				if (front === null || back === null) return null;
+				cards.push({ front, back });
+			}
+			return cards.length >= minInf ? cards : null;
+		}
+		return null;
+	}
+
+	/**
+	 * The FACE a wholly-red cell names ("front"/"back"), or null when the cell is not a
+	 * bare face marker. Deliberately `#isFullyRed`-scoped and content-free: the round-281
+	 * lesson in the mirror — a red marker followed by BLACK content is a real face WITH
+	 * content, not a delimiter row, so it must not be mistaken for one.
+	 */
+	static #flipCellFace(cell) {
+		if (!this.#isFullyRed(cell)) return null;
+		const t = this.#cellText(cell).replace(/^\[|\]$/g, "").trim().toLowerCase();
+		return (t === "front" || t === "back") ? t : null;
+	}
+
+	/**
+	 * The face a cell's LEADING red marker names, when the marker rides WITH the cell's
+	 * content ("🔴[Front of card]🔴 / 🔴[Image]🔴 …", CEDO501-3.0). Only the FIRST red
+	 * span is read, and only when it is wholly a face phrase — so a red content word
+	 * later in the cell can never be mistaken for a face.
+	 */
+	static #flipCellFacePrefix(cell) {
+		const m = String(cell ?? "").match(/^\s*\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/u);
+		if (!m) return null;
+		const t = String(m[1]).replace(/[[\]]/g, "").trim().toLowerCase();
+		if (/^front(?:\s+(?:of|of\s+the)\s+(?:the\s+)?card)?$/.test(t)) return "front";
+		if (/^back(?:\s+(?:of|of\s+the)\s+(?:the\s+)?card)?$/.test(t)) return "back";
+		return null;
+	}
+
+	/** The single face every non-empty cell of a row names by its leading marker, or null. */
+	static #flipRowFace(row) {
+		const faces = [];
+		for (const c of row ?? []) {
+			if (!this.#cellText(c).trim()) continue;
+			const f = this.#flipCellFacePrefix(c) ?? this.#flipCellFace(c);
+			if (!f) return null;
+			faces.push(f);
+		}
+		return faces.length && faces.every((f) => f === faces[0]) ? faces[0] : null;
+	}
+
+	/**
+	 * ONE FACE of a card → its finished HTML, or null to decline the whole widget.
+	 *
+	 * THE CELL VOCABULARY (the round-278/279/281 member vocabulary at cell level):
+	 *   • the writer's structural markup ([front]/[back]/[body]/[H#]) is stripped
+	 *   • a developer INSTRUCTION span (CS:/Dev:/Note:/please/[Item N]…) is surfaced as
+	 *     a red Writers Note and skipped as content — never silently dropped
+	 *   • an iStock URL becomes the Mode P/D image; a non-iStock image URL takes the
+	 *     round-126 slug placeholder rather than blocking the card
+	 *   • an image REFERENCE with no URL is an ASSET REQUEST — noted, skipped
+	 *   • the writer's " / " and hard newlines split the face into parts; a "• " part
+	 *     is a list item (consecutive items group into one <ul>), a SHORT lead on a
+	 *     front becomes its <h4>, everything else is a <p>
+	 * Returns "" for an empty face (the caller decides — both faces must have content).
+	 */
+	static #flipFaceHtml(raw, { tpl, cfg, run, inline, notes }, face) {
+		let s = String(raw ?? "");
+		if (!s.trim()) return "";
+		// a wholly-red bare face marker cell carries no content of its own
+		if (this.#flipCellFace(s)) return "";
+		// a LEADING face marker riding with the content ("[Front of card] / …") is a
+		// delimiter, not text — dropped here so it never reaches the page (T1c).
+		if (this.#flipCellFacePrefix(s)) {
+			s = s.replace(/^\s*\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}\s*\/?\s*/u, "");
+		}
+		s = this.#stripStructuralTags(s);
+		// developer instructions out (noted); whatever red survives is the writer's own
+		// content, coloured for emphasis (BLL/XMES phonics words) — the r281 discriminator.
+		const dropped = [];
+		s = String(s).replace(/\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu, (m, content) => {
+			const raw = String(content).trim();
+			if (!raw) return "";
+			// A span made ENTIRELY of bracketed tokens is MARKUP by construction — the
+			// writer stacked their tags ("[image][media item 8]", CHFUN05-0.0) so the
+			// single-tag structural strip above could not see it. Dropped, and noted when
+			// it names an asset so the developer still gets the request.
+			if (/^(?:\s*\[[^\]]*\]\s*)+$/.test(raw)) {
+				if (/\b(?:image|photo|media|audio|video|item)\b/i.test(raw)) dropped.push(raw.replace(/\s+/g, " "));
+				return " ";
+			}
+			const c = raw.replace(/^[\s[]+/, "").trim();
+			const re = new RegExp(`^(?:${(cfg.instruction_span_prefixes ?? []).join("|")})\\b`, "i");
+			if ((cfg.instruction_span_prefixes ?? []).length && re.test(c)) { dropped.push(c); return " "; }
+			return content;                                       // the writer's own red content
+		});
+		for (const d of dropped) notes.push(d);
+
+		const img = [], body = [];
+		const imgRe = /istockphoto|gettyimages|\.(?:jpe?g|png|gif|webp|svg)\b|\[\s*image\b|\[IMAGE\b/i;
+		const segs = s.split(/\s\/\s|\n/).map((p) => p.trim()).filter((p) => p !== "");
+		for (const seg of segs) {
+			const url = this.#cellMediaUrl(seg);
+			if (url) {
+				const fn = this.#flipImageFilename(url, tpl, cfg);
+				if (!fn) return null;                             // a video url here → not a card face
+				img.push(this.#assetImage(fn, tpl, run));
+				// a caption riding with the URL stays as face text
+				const rest = this.#cellText(seg.replace(/https?:\/\/\S+/g, "").replace(/^\s*\[[^\]]*\]\s*/, "")
+					.replace(/\(\s*\)/g, "").replace(/[|]/g, " ")).trim();
+				// …but the residual is usually the writer's PHOTO BRIEF, not a caption
+				// ("iStock: Young woman's first day…", CEDO501-2.0). Same asset-reference
+				// rule: noted for the developer, never shown on the card.
+				if (rest && cfg.asset_reference_pattern
+					&& new RegExp(cfg.asset_reference_pattern, "i").test(rest)) { notes.push(rest); continue; }
+				if (rest && cfg.image_caption_as_text !== false) body.push(rest);
+				continue;
+			}
+			// AN ASSET REQUEST: the writer NAMED an image with no URL to render — either
+			// with a tag ("[Image] …") or, just as often, in prose ("iStock: Young woman's
+			// first day…", "Image: isolated outline hand drawn check", "Wikipedia Commons.").
+			// It is a note to the developer, never card content and never a made-up
+			// filename (the round-214/242/278 rule). THE VERIFIER CAUGHT THIS: without the
+			// prose forms, CEDO501's and CEDR501's photo briefs shipped as visible card text.
+			if (imgRe.test(seg) || (cfg.asset_reference_pattern
+				&& new RegExp(cfg.asset_reference_pattern, "i").test(this.#cellText(seg).trim()))) {
+				const t = this.#cellText(seg).trim();
+				if (t) notes.push(t);
+				continue;
+			}
+			const t = this.#cellText(seg).trim();
+			if (t) body.push(t);
+		}
+
+		let html = img.join("");
+		// a SHORT lead line on a FRONT is its heading — the corpus convention (a gold front
+		// is img+h 24.5% / h alone 22.3%); everything else is prose.
+		let lead = null;
+		if (face === "front" && body.length
+			&& body[0].split(/\s+/).length <= (cfg.front_head_max_words ?? 8)
+			&& !/^[•·]/.test(body[0])) {
+			lead = body.shift();
+		}
+		if (lead) html += `<${cfg.front_head_level ?? "h4"}>${inline(lead)}</${cfg.front_head_level ?? "h4"}>`;
+		let ul = [];
+		const flushUl = () => { if (ul.length) { html += "<ul>" + ul.map((t) => `<li>${inline(t)}</li>`).join("") + "</ul>"; ul = []; } };
+		for (const p of body) {
+			const bm = p.match(/^[•·]\s*(.+)$/);
+			if (bm && bm[1].trim()) { ul.push(bm[1].trim()); continue; }
+			flushUl();
+			html += `<p>${inline(p)}</p>`;
+		}
+		flushUl();
+		return html;
+	}
+
+	/** An image URL → the flipCard filename (iStock id, else the round-126 URL slug). */
+	static #flipImageFilename(url, tpl, cfg) {
+		if (!url || /youtu\.?be|youtube\.com|vimeo/i.test(url)) return null;
+		const istock = this.#istockFilename(url, tpl);
+		if (istock) return istock;
+		if (cfg && cfg.image_slug_fallback === false) return null;
+		return this.#bannerImageFilename(url, tpl);
+	}
+
+	/**
+	 * MEMBER readings (no table), over the SHARED round-278 member vocabulary
+	 * (#accMemberParts with flipCard's own delimiter + the new face_tags extension —
+	 * omitted by every other caller, so the accordion and tabs are untouched).
+	 *
+	 *   M1  [Flip Card N] tags open a card; [front]/[back] set the face.
+	 *   M2  [front]/[back] marker pairs with no [Flip Card N] — each [front] opens a card.
+	 *   M3  A MEDIA SERIES — a repeating (image, text…) run with no markers at all:
+	 *       each image opens a card and the text that follows is its back
+	 *       (XDLS502-2.0's three photo cards). INFERRED, so min_inferred_cards applies.
+	 *
+	 * The face rule that unblocked 58 declines: content arriving while the face is
+	 * "front" is FRONT content. The old builder bailed outright (`face !== "back"`),
+	 * which refused every card the writer titled on its own line.
+	 *
+	 * @returns {Array<{front:string,back:string}>|null}
+	 */
+	static #flipMemberCards(bundle, { tpl, cfg, run, inline, notes, renderTable }) {
+		const members = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])];
+		if (!members.length) return null;
+		const parts = this.#accMemberParts(members, {
+			tpl, cfg, run, renderTable, notes,
+			delims: {
+				tags: cfg.card_tags ?? ["flip card"],
+				panel_tag_pattern: cfg.card_tag_pattern,
+				panel_ordinal_pattern: cfg.card_ordinal_pattern,
+				face_tags: cfg.face_tags ?? ["front", "back"],
+				face_label_pattern: cfg.face_label_pattern,
+				face_label_back_pattern: cfg.face_label_back_pattern,
+				text_tags: cfg.text_tags ?? [],
+				note_tags: cfg.note_tags ?? [],
+			},
+		});
+		if (!parts) return null;
+		if (parts.some((p) => p.role === "nested" || p.role === "table")) return null;   // richer → placeholder
+
+		const cards = [];
+		let cur = null, face = "front", explicit = false;
+		const open = () => { cur = { front: [], back: [] }; cards.push(cur); face = "front"; };
+		const push = (o) => { if (!cur) open(); cur[face].push(o); };
+		for (const p of parts) {
+			if (p.role === "note") { continue; }
+			if (p.role === "panel") {                              // a [Flip Card N] delimiter
+				explicit = true; open();
+				if (p.head) cur.front.push({ h: cfg.front_head_level ?? "h4", text: p.head });
+				continue;
+			}
+			if (p.role === "face") {
+				explicit = true;
+				if (p.face === "front" && cur && (cur.front.length || cur.back.length)) open();
+				else if (!cur) open();
+				face = p.face;
+				if (p.text) push(face === "front" && !cur.front.length
+					? { h: cfg.front_head_level ?? "h4", text: p.text } : { text: p.text });
+				continue;
+			}
+			if (p.role === "img") {
+				// M3: with no explicit delimiter an image OPENS a card once the current one
+				// has a back — the media-series reading (the round-247 carousel rule).
+				if (!explicit && cur && cur.back.length) open();
+				push({ img: p.filename });
+				continue;
+			}
+			if (p.role === "head") {
+				if (cur && face === "back" && cur.back.length) open();   // a finished back ends the card
+				push({ h: p.level, text: p.text });
+				continue;
+			}
+			if (p.role === "text") {
+				// A BARE URL LINE IS THE IMAGE, not text. The writer often pastes the photo
+				// link on its own line with no [image] tag, and rendering it as a paragraph
+				// put a raw URL on the card (BLL123-1.0 — THE VERIFIER CAUGHT THIS).
+				const bare = String(p.text ?? "").trim();
+				if (/^https?:\/\/\S+$/.test(bare)) {
+					const fn = this.#flipImageFilename(this.#cellMediaUrl(bare), tpl, cfg);
+					if (!fn) return null;                          // a video url on a card face
+					if (!explicit && cur && cur.back.length) open();
+					push({ img: fn });
+					continue;
+				}
+				// A COMPLETED BACK ENDS A CARD: the next content is the next card's front.
+				// This is what resolves the label-word series (EXPFUN06-0.0's
+				// "Whakawhanaungatanga" / "[on flip] Is about…" repeated four times).
+				if (cur && face === "back" && cur.back.length) open();
+				// with no markers, text after an image is the card's BACK
+				else if (!explicit && cur && cur.front.length && !cur.back.length) face = "back";
+				push({ text: p.text });
+				continue;
+			}
+			return null;                                           // video/embed on a card face → placeholder
+		}
+		if (!cards.length) return null;
+		const min = explicit ? (cfg.min_cards ?? 1) : (cfg.min_inferred_cards ?? 2);
+		if (cards.length < min) return null;
+
+		const render = (arr) => {
+			let html = "", ul = [];
+			const flushUl = () => { if (ul.length) { html += "<ul>" + ul.map((t) => `<li>${inline(t)}</li>`).join("") + "</ul>"; ul = []; } };
+			for (const o of arr) {
+				if (o.img) { flushUl(); html += this.#assetImage(o.img, tpl, run); continue; }
+				if (o.h) { flushUl(); html += `<${o.h}>${inline(this.#cellText(o.text))}</${o.h}>`; continue; }
+				for (const line of String(o.text).split(/\n/)) {
+					const t = this.#cellText(line).trim();
+					if (!t) continue;
+					const bm = t.match(/^[•·]\s*(.+)$/);
+					if (bm && bm[1].trim()) { ul.push(bm[1].trim()); continue; }
+					flushUl();
+					html += `<p>${inline(t)}</p>`;
+				}
+			}
+			flushUl();
+			return html;
+		};
+		return cards.map((c) => ({ front: render(c.front), back: render(c.back) }));
+	}
+
 	/**
 	 * modal → BUTTON. A [modal] whose captured content is a SINGLE
 	 * document/PDF URL (no data table) is the human's external-resource BUTTON
@@ -1859,18 +3743,40 @@ class InteractiveBuilder {
 	 * @param {object} args.tpl - this widget's editable markup templates (Emit_Templates.json)
 	 * @returns {string|null} the built button HTML, or null to keep the orange placeholder
 	 */
-	static #modal({ bundle, tpl, renderInline, renderBlock, run }) {
+	static #modal({ bundle, tpl, renderInline, renderBlock, renderNested, renderTable, renderImage, run }) {
 		if (!tpl || tpl.enabled === false) return null;
 		// ROUND 216 (r214-a, Chris 2026-07-12: build the WRITER'S modal): the IMAGE-PAIR form
 		// is tried FIRST — repeated "[modal][image] <iStock URL>" triggers each followed by its
 		// [body]/black content (OSOH501-01's six ergonomics modals; the writer's CS note asks
 		// for exactly this). On any mismatch it declines and the function proceeds EXACTLY as
-		// before (the r73 single-document button, else the placeholder) — measured corpus-wide
-		// (outputs/_measure_modalpairs.cjs, 369 modal bundles): the clean pair form fires on
-		// EXACTLY 1 bundle; the near-miss dialects (EXPFUN tile-modals, MXDI "[Modal N Image]",
-		// BLL image-enlarge no-body) all decline by construction and are recorded follow-ups.
+		// before (the r73 single-document button, else the round-280 set fallback).
 		const ip = this.#modalImagePairs({ bundle, tpl, renderInline, renderBlock, run });
 		if (ip) return ip;
+		// ROUND 73 — the single-document BUTTON. Its own guards now FALL THROUGH to the
+		// round-280 fallback instead of ending the dispatch (the round-279 dead-end lesson:
+		// a branch that returns its refusal as the final answer denies every later builder
+		// a look at the bundle — that alone was 143 of the carousel's 561 declines).
+		const btn = this.#modalDocButton({ bundle, tpl });
+		if (btn) return btn;
+		// ROUND 280 — the general TRIGGER + TKmodal set fallback, tried LAST so every modal
+		// that built before this round builds identically after it, BY CONSTRUCTION.
+		return this.#modalSets({ bundle, tpl, renderInline, renderBlock, renderNested, renderTable, renderImage, run });
+	}
+
+	/**
+	 * modal → the ROUND-73 single-document BUTTON (extracted from #modal unchanged at
+	 * round 280 so its declines can fall through to #modalSets). A [modal] whose captured
+	 * content is exactly ONE document/PDF URL and no table is the human's external-resource
+	 * button. Env MODALBTN_OFF disables THIS ATTEMPT ONLY — since round 280 the set
+	 * fallback may still build; MODALBTN_OFF + MODALSETS_OFF together restore the
+	 * pre-280 "keep the placeholder" behaviour exactly.
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (opener/member items — see file header)
+	 * @param {object} args.tpl - this widget's editable markup templates (Emit_Templates.json)
+	 * @returns {string|null} the built button HTML, or null to fall through
+	 */
+	static #modalDocButton({ bundle, tpl }) {
 		if (typeof process !== "undefined" && process.env && process.env.MODALBTN_OFF) return null;
 		if ((bundle?.tables ?? []).length) return null;
 		const urls = [];
@@ -2017,6 +3923,595 @@ class InteractiveBuilder {
 		return out.join("\n");
 	}
 
+	// =======================================================================
+	// ROUND 280 — THE GENERAL TRIGGER + TKmodal SET FALLBACK
+	// =======================================================================
+	/**
+	 * MODAL SETS (ROUND 280, Chris — the interactive-coverage chain, round 5 of 8).
+	 * Tried LAST, only where the round-216 image-pair form AND the round-73 document
+	 * button have both declined — so it is STRICTLY ADDITIVE and every modal that built
+	 * before this round builds identically after it, by construction (env MODALSETS_OFF
+	 * proves it).
+	 *
+	 * WHY IT EXISTS. The decline-reason recorder (outputs/_measure_r280_modal.cjs, which
+	 * rewrites every `return null` in the shipped modal region to a recorder so the
+	 * builder names its own verdict) accounted for 100% of the 292 declines, and they
+	 * collapsed onto just TWO guards — 246 at the button path's "exactly one URL" test
+	 * and 46 at its "no captured table" test. Underneath, the cause is a single fact:
+	 * the converter had a builder for the IMAGE-triggered modal (round 216) and one for
+	 * a modal that is really a link to a PDF (round 73), and NOTHING AT ALL for the
+	 * ordinary TEXT-triggered modal — which the gold measurement
+	 * (outputs/_measure_r280_modgold.py, 283 TKmodal across 62 modules) shows is the
+	 * DOMINANT form: the trigger is `div.button.TKmodalButton` 213 times (75.3%, 52
+	 * modules) against an `img.TKmodalButton` 59 times (20.8%, 5 modules).
+	 *
+	 * THE CORPUS CONVENTION IT EMITS (gold CEDK401, byte-verified):
+	 *     <div class="button TKmodalButton">Mahinga Kai Crusaders</div>
+	 *     <div class="TKmodal" size="M"> …the pop-out content… </div>
+	 * an image-triggered set emits the round-216 img.TKmodalButton in place of the div.
+	 * `size` is editorial (the WT never gives one) → the corpus-dominant M (124 M / 83 L
+	 * / 72 XL / 4 S). min_modals is 1 because a lone modal is the gold's own plurality
+	 * (54 gold pages carry exactly one) — unlike the carousel, where a 1-slide widget is
+	 * 0.2% and the floor is 2.
+	 *
+	 * THE THREE DELIMITERS, each quoted against the writer's own template:
+	 *   D1 NUMBERED [Modal N …] sub-tags — the number is the delimiter, exactly as
+	 *      [accordion N] is for a panel (round 278) and [Slide N] for a slide. The
+	 *      bracket's own wording gives the sub-role: "image" → the trigger image,
+	 *      "text"/"body" → the content, bare → the opener/title.
+	 *        BLL120-0.0   [Modal 1 Image] https://www.istockphoto.com/photo/fresh-carrots-…
+	 *                     [Modal 1 text] 1. Find things in your house that start with /k/
+	 *                     [Modal 2 Image] … [Modal 2 text] 2. Watch the video. [video] …
+	 *        MXDB201-2.0  [Modal 1] [Modal image 1] <iStock url> [Modal 1 body text] Garden
+	 *                     Solutions offered a discounted price of $350 …
+	 *   D2 the SAME-BLOCK LABEL line — the writer types the visible label and its pop-out
+	 *      content on ONE line, so the label arrives as a black item sharing the tag's
+	 *      source BLOCK (the round-105 "continuous sentence" discriminator, and the same
+	 *      test the round-246 avatar absorb uses):
+	 *        XGF9004-9.0  "Everyone gets the same size piece of cake, even though someone
+	 *                      is hungrier. [Pop-out] Fairness can depend on need. Sometimes
+	 *                      equal isn't the same as fair."
+	 *                     → <div class="button TKmodalButton">Everyone gets the same size
+	 *                        piece of cake…</div> + its TKmodal holding the explanation.
+	 *   D3 a captured TABLE — ONE ROW = ONE MODAL, the third time this round-278/279
+	 *      rule has proven to be the writer's own delimiter. The writer even labels the
+	 *      columns:
+	 *        ENGR302-2.0  | [Modal image] ║ [Modal text]          ← the header row
+	 *                     | Link for image ║ **Intellectual** / McBean shows his expertise…
+	 *
+	 * NEVER HALF-BUILDS. A set with no trigger at all (neither a label nor a nameable
+	 * image — a label is NEVER invented) · a set with no content · no delimiter resolving
+	 * min_modals sets · red writer-instruction text in a label · a member it cannot place ·
+	 * or a finished set that still shows a resolved [tag] (#accLeakGuard, the shared
+	 * round-167/275/277/278 rule at this seam, so building can only ever PREVENT a
+	 * visible leak, never add one).
+	 *
+	 * Data interactive_builders.modal.modal_sets; env MODALSETS_OFF.
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (opener/member items — see file header)
+	 * @param {object} args.tpl - this widget's editable markup templates (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
+	 * @param {function} [args.renderBlock] - paragraph/list renderer (bullets → <ul>)
+	 * @param {function} [args.renderNested] - nested sub-bundle renderer
+	 * @param {function} [args.renderTable] - the converter's kept-table emitter
+	 * @param {object} [args.run] - conversion run context (image Mode P/D)
+	 * @returns {string|null} the built trigger+modal sets, or null to keep the placeholder
+	 */
+	static #modalSets({ bundle, tpl, renderInline, renderBlock, renderNested, renderTable, run }) {
+		const cfg = tpl?.modal_sets;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.MODALSETS_OFF) return null;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return null;
+		if (typeof renderBlock !== "function") return null;         // need the body renderer
+		const inline = renderInline ?? ((s) => s);
+		const notes = [];
+
+		// (1) every member as an ordered {role,…} PART. Classifying by the RESOLVED TAG
+		//     rather than the writer's spelling is the round-276 lesson.
+		const parts = this.#modalMemberParts(members, { tpl, cfg, run, renderTable, notes });
+		if (!parts) return null;
+
+		// (2) the SETS, from the first delimiter kind that is present.
+		const sets = this.#modalResolveSets(parts, cfg, tpl);
+		if (!sets || sets.length < (cfg.min_modals ?? 1)) return null;
+
+		// (3) render through the shared set renderer.
+		const built = this.#modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested });
+		if (!built) return null;
+		const html = built.join("\n");
+		if (this.#accLeakGuard(html, cfg)) return null;             // a build must never ADD a leak
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.r280Modal = true;                                    // detector / affected-set marker
+		return html;
+	}
+
+	/**
+	 * ROUND 280 — every captured member as an ordered {role,…} PART, or null when a member
+	 * cannot be placed at all. Roles: modal · text · img · video · embed · head · table ·
+	 * nested. Instruction/noise members and asset requests become NOTES (surfaced red
+	 * after a successful build, never silently dropped — the round-214/242/278 rule).
+	 *
+	 * A `modal` part carries { num, sub, text, block }: `num` is the writer's own number
+	 * when the bracket has one, `sub` is "image" | "text" | "open" read from the bracket's
+	 * wording, `block` is the source paragraph (D2's discriminator).
+	 */
+	static #modalMemberParts(members, { tpl, cfg, run, renderTable, notes }) {
+		const parts = [];
+		const idRe = new RegExp(cfg.video_youtube_id_re
+			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
+		const imgSub = new RegExp(cfg.sub_image_pattern ?? "\\bimage|\\bpic|\\bphoto", "i");
+		const txtSub = new RegExp(cfg.sub_text_pattern ?? "\\btext|\\bbody|\\bcontent", "i");
+
+		for (let i = 0; i < members.length; i++) {
+			const m = members[i];
+			if (!m) continue;
+			const tag = m.type === "tag" ? m.parse?.primary?.tag : null;
+
+			// an image-ARRANGEMENT layout marker (round 242) — a note, never content
+			const layoutMk = this.#imageLayoutMarker(m, tpl);
+			if (layoutMk) { notes.push(layoutMk); continue; }
+
+			if (m.type === "nested") { parts.push({ role: "nested", bundle: m.nestedBundle }); continue; }
+
+			if (m.type === "table") {
+				if (typeof renderTable !== "function") return null;
+				// Rendered EAGERLY (renderTable is only in scope here) so the table can serve
+				// either job: the set SOURCE (D3, which reads item.block.rows) or, when another
+				// delimiter owns the sets, ordinary modal CONTENT — the round-275/278 seam.
+				const html = renderTable(m);
+				parts.push({ role: "table", item: m, html: (html && String(html).trim()) ? String(html) : null });
+				continue;
+			}
+
+			if (m.type === "black") {
+				const t = String(m.text ?? "");
+				if (!t.trim()) continue;
+				if (/^\s*\(?\d{1,3}[.)]\s*$/.test(t)) continue;   // the docx numbered-list artifact
+				parts.push({ role: "text", text: t, block: m.block });
+				continue;
+			}
+
+			// a writer instruction / noise span — a red note, never build content
+			if (m.type === "tag"
+				&& (m.parse?.class === "instruction" || m.parse?.class === "noise" || m.parse?.instructionFragment)) {
+				const t = this.#cellText(m.blackAfter ?? "") || this.#cellText(m.text ?? "");
+				if (t) notes.push(t);
+				continue;
+			}
+
+			const raw = m.type === "tag" ? (m.blackAfter ?? "") : "";
+			const text = this.#cellText(raw);
+
+			if (tag === "modal") {
+				const own = this.#cellText(String(m.text ?? ""));
+				const numM = own.match(/(\d{1,3})/);
+				const sub = imgSub.test(own) ? "image" : (txtSub.test(own) ? "text" : "open");
+				const part = {
+					role: "modal", num: numM ? parseInt(numM[1], 10) : null,
+					sub, text, block: m.block, red: this.#hasRedText(raw),
+				};
+				// An IMAGE sub-tag's URL sits either on its own line ("[Modal 1 Image] <url>",
+				// BLL120) or on the NEXT black line ("[Modal image 1]" then the bare url,
+				// MXDB201) — take the following line when it is nothing but a URL, so the
+				// same rule reads both dialects.
+				if (sub === "image") {
+					let url = this.#cellMediaUrl(raw);
+					if (!url) {
+						const nxt = members[i + 1];
+						const nt = nxt && nxt.type === "black" ? String(nxt.text ?? "").trim() : "";
+						if (nt && /^https?:\/\/\S+$/.test(nt)) { url = this.#cellMediaUrl(nt); if (url) i++; }
+					}
+					part.imgUrl = url;
+				}
+				parts.push(part);
+				continue;
+			}
+
+			if (["h2", "h3", "h4", "h5", "h6"].includes(tag)) {
+				if (this.#hasRedText(raw)) return null;
+				const t = text.replace(/\*\*/g, "").trim();
+				if (!t) continue;
+				parts.push({ role: "head", level: tag, text: t });
+				continue;
+			}
+
+			if (tag === "image") {
+				const url = this.#cellMediaUrl(raw);
+				if (!url) {
+					// AN ASSET REQUEST, not an image (the round-278 rule): the writer named a
+					// Media-List item with no URL to render. Skipped as build content and
+					// surfaced as a red note — never a silent drop, never a made-up filename.
+					if (cfg.asset_request_note === false) return null;
+					const t = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
+					if (t.trim()) notes.push(t.trim());
+					continue;
+				}
+				const fn = this.#accImageFilename(url, cfg, cfg);
+				if (!fn) return null;
+				parts.push({ role: "img", filename: fn });
+				const residual = text.replace(/^\s*\[[^\]]*\]\s*/, "")
+					.replace(/https?:\/\/\S+/g, "").replace(/\S*gm-?\d{6,10}\S*/g, "")
+					.replace(/[/|]/g, " ").trim();
+				if (residual) parts.push({ role: "text", text: residual, block: m.block });
+				continue;
+			}
+
+			if (tag === "video" || tag === "audio") {
+				if (this.#hasRedText(raw) && !this.#cellMediaUrl(raw) && !/https?:\/\//.test(raw)) return null;
+				// the URL may ride the NEXT black line ("(https://www.youtube.com/watch?v=…)",
+				// CEDT102) — the round-247 video tail-URL rule at this seam
+				let vraw = String(raw);
+				if (!/https?:\/\//.test(vraw)) {
+					const nxt = members[i + 1];
+					const nt = nxt && nxt.type === "black" ? String(nxt.text ?? "").trim() : "";
+					if (nt && /^\(?https?:\/\/\S+\)?$/.test(nt)) { vraw = nt; i++; }
+				}
+				const idm = vraw.match(idRe);
+				if (idm) { parts.push({ role: "video", id: idm[1] }); continue; }
+				const url = vraw.match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
+				const gen = url && cfg.generic_embed !== false
+					? DataService.Data.EmitTemplates.video?.generic_iframe
+					: null;
+				if (gen && url) { parts.push({ role: "embed", html: Utils.FillTemplate(gen, { url }) }); continue; }
+				if (!url) {                                        // a media-list reference again
+					if (cfg.asset_request_note === false) return null;
+					const t = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
+					if (t.trim()) notes.push(t.trim());
+					continue;
+				}
+				return null;
+			}
+
+			if (tag === "body") {
+				if (this.#hasRedText(raw)) return null;
+				if (!text.trim()) continue;
+				parts.push({ role: "text", text, block: m.block });
+				continue;
+			}
+
+			if (this.#isInlineMarkerMember(m)) {
+				if (this.#hasRedText(raw)) return null;
+				if (text.trim()) parts.push({ role: "text", text, block: m.block });
+				continue;
+			}
+
+			if (tag === "button" && cfg.skip_button_members !== false) {
+				// A [button] is NOT modal content: the gold puts one inside a TKmodal in only
+				// 5 of 283 cases (1.8% — the same finding as the round-278 accordion's 1.7%).
+				// It is the page's own button that rode into the bundle, and the writer's
+				// go-to-journal button is ALREADY owned by the round-239 rule, whose
+				// #goJournalTail ships the templated <h4 class="goJournal"> for a
+				// member-CAPTURED button whether or not the widget builds — so releasing or
+				// re-rendering it here would duplicate it (the round-273 bug). Skipped
+				// silently for that one; every other button surfaces as a red note so the
+				// developer still sees it. Placing it properly is the round-278
+				// `button_tail_terminates` extension — a recorded follow-up.
+				if (!this.#modalIsGoJournal(m)) {
+					const t = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
+					if (t.trim()) notes.push(t.trim());
+				}
+				continue;
+			}
+
+			if (tag && /\blist\b/.test(tag)) continue;             // a no-op list delimiter
+
+			return null;                                           // a foreign tag we cannot place
+		}
+		return parts;
+	}
+
+	/**
+	 * ROUND 280 — is this member the writer's GO-TO-JOURNAL button? Uses the SAME two data
+	 * patterns as the round-239 rule that owns it (buttons.go_journal), so the two can
+	 * never drift apart — the round-278 #isGoJournalButton form.
+	 */
+	static #modalIsGoJournal(item) {
+		const gj = DataService.Data.EmitTemplates.buttons?.go_journal;
+		if (!gj || gj.enabled === false) return false;
+		const strip = (s) => String(s ?? "")
+			.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		const label = strip(item?.blackAfter ?? "");
+		if (gj.label_match && new RegExp(gj.label_match, "i").test(label)) return true;
+		const raw = strip(item?.text ?? "");
+		return !!(gj.raw_match && new RegExp(gj.raw_match, "i").test(raw));
+	}
+
+	/**
+	 * ROUND 280 — resolve the modal SETS from the ordered parts, trying each delimiter in
+	 * turn (D1 numbered sub-tags → D2 same-block label lines → D3 a table) and taking the
+	 * first that yields sets with a trigger. Returns `[{ label, filename, parts }]` for
+	 * #modalRenderSets, or null.
+	 */
+	static #modalResolveSets(parts, cfg, tpl) {
+		const modals = parts.filter((p) => p.role === "modal");
+		if (!modals.length && !parts.some((p) => p.role === "table")) return null;
+		const maxWords = cfg.label_max_words ?? 20;
+		const labelOk = (t) => {
+			const s = String(t ?? "").replace(/\*+/g, "").trim();
+			return !!s && s.split(/\s+/).length <= maxWords && !this.#accHasBracketTag(s);
+		};
+
+		// ---- D1: NUMBERED [Modal N …] sub-tags -------------------------------------
+		if (modals.some((p) => p.num != null) && cfg.numbered_sets !== false) {
+			const sets = [];
+			let cur = null;
+			for (const p of parts) {
+				if (p.role === "modal") {
+					if (p.red) return null;                         // a writer instruction on the tag
+					// a NEW number opens a new set; the same number continues the current one
+					if (!cur || (p.num != null && p.num !== cur.num)) {
+						cur = { num: p.num, label: "", filename: null, parts: [] };
+						sets.push(cur);
+					}
+					if (p.sub === "image") {
+						if (p.imgUrl) {
+							const fn = this.#accImageFilename(p.imgUrl, cfg, cfg);
+							if (!fn) return null;
+							cur.filename = cur.filename ?? fn;
+						}
+						// an image sub-tag with no URL is an asset request; the set falls back
+						// to its text label (and declines below if it has neither)
+						continue;
+					}
+					if (p.text) {
+						// the tag's own trailing text is the set's LABEL while it has none and
+						// nothing has been added yet; otherwise it is content.
+						if (!cur.label && !cur.parts.length && p.sub !== "text" && labelOk(p.text)) cur.label = p.text;
+						else cur.parts.push({ role: "text", text: p.text });
+					}
+					continue;
+				}
+				if (!cur) {
+					if (p.role === "text") continue;                // a lead line before the first set
+					return null;
+				}
+				if (!this.#modalPushPart(cur.parts, p)) return null;
+			}
+			return this.#modalFinishSets(sets, cfg);
+		}
+
+		// ---- D2: the SAME-BLOCK LABEL line ------------------------------------------
+		if (cfg.same_block_label !== false) {
+			const idx = parts.map((p, i) => [p, i]).filter(([p]) => p.role === "modal");
+			const paired = idx.filter(([p, i]) => {
+				const prev = parts[i - 1];
+				return prev && prev.role === "text" && prev.block && p.block && prev.block === p.block;
+			});
+			if (paired.length && paired.length >= Math.min(modals.length, cfg.min_same_block ?? 1)) {
+				const sets = [];
+				let cur = null;
+				let pendingLabel = null;
+				for (let i = 0; i < parts.length; i++) {
+					const p = parts[i];
+					if (p.role === "text") {
+						const nxt = parts[i + 1];
+						if (nxt && nxt.role === "modal" && p.block && nxt.block && p.block === nxt.block) {
+							pendingLabel = p.text;                  // this line labels the NEXT modal
+							continue;
+						}
+						if (!cur) continue;                         // a lead line before the first modal
+						// STRICT ALTERNATION. In this dialect the pop-out's content rides the
+						// tag's OWN trailing text, so a black line AFTER a modal that does not
+						// label the next one is not modal content — it is ordinary body the
+						// walk swept in. XGF9004-11.0 is the reason: it is a multiple-choice
+						// quiz where only the CORRECT option carries "[Correct] [Pop-out]
+						// <feedback>" and the DISTRACTOR options are plain lines between the
+						// tags. Without this the build put the distractors inside the previous
+						// option's pop-out and turned a quiz into a row of buttons — a
+						// half-build, caught by the round-280 per-toggle decomposition.
+						return null;
+					}
+					if (p.role === "modal") {
+						if (p.red) return null;
+						cur = { label: labelOk(pendingLabel) ? pendingLabel : "", filename: null, parts: [] };
+						pendingLabel = null;
+						sets.push(cur);
+						if (p.sub === "image" && p.imgUrl) {
+							const fn = this.#accImageFilename(p.imgUrl, cfg, cfg);
+							if (!fn) return null;
+							cur.filename = fn;
+						} else if (p.text) {
+							cur.parts.push({ role: "text", text: p.text });
+						}
+						continue;
+					}
+					if (!cur) return null;
+					if (!this.#modalPushPart(cur.parts, p)) return null;
+				}
+				return this.#modalFinishSets(sets, cfg);
+			}
+		}
+
+		// ---- D3: a captured TABLE — one row = one modal ------------------------------
+		const tables = parts.filter((p) => p.role === "table");
+		if (tables.length === 1 && cfg.table_sets !== false) {
+			const others = parts.filter((p) => p.role !== "table");
+			// only when the table IS the widget (nothing substantive but the invocation and
+			// its lead line) — a layout table beside real content is NOT a set source
+			if (others.every((p) => p.role === "text" || (p.role === "modal" && !p.text))) {
+				const sets = this.#modalTableSets(tables[0].item, cfg, tpl);
+				if (sets && sets.length >= (cfg.min_inferred_modals ?? 2)) return this.#modalFinishSets(sets, cfg);
+			}
+		}
+
+		// ---- D4: the tag's OWN text is the label, the content follows ----------------
+		// "[Modal] Factor trees" then the [video]/[body] that pops out (MXFU301-7.0). The
+		// label test is the same gold-backed one D1/D2 use, so a tag carrying a whole
+		// paragraph (MXDB202's "[Information popout] As you will notice here…") is NOT a
+		// label and the set declines rather than putting a paragraph on a button.
+		if (modals.length && cfg.tag_text_label !== false) {
+			const sets = [];
+			let cur = null;
+			for (const p of parts) {
+				if (p.role === "modal") {
+					if (p.red) return null;
+					if (p.sub === "image" && p.imgUrl && cur && !cur.filename) {
+						const fn = this.#accImageFilename(p.imgUrl, cfg, cfg);
+						if (!fn) return null;
+						cur.filename = fn;
+						continue;
+					}
+					if (!labelOk(p.text)) return null;             // not a trigger label — decline
+					cur = { label: p.text, filename: null, parts: [] };
+					sets.push(cur);
+					continue;
+				}
+				if (!cur) {
+					if (p.role === "text") continue;               // a lead line before the first modal
+					return null;
+				}
+				if (!this.#modalPushPart(cur.parts, p)) return null;
+			}
+			if (sets.length) return this.#modalFinishSets(sets, cfg);
+		}
+
+		return null;
+	}
+
+	/** ROUND 280 — push one ordered content part onto a set, or false if it cannot be placed. */
+	static #modalPushPart(list, p) {
+		if (p.role === "text") { list.push({ role: "text", text: p.text }); return true; }
+		if (p.role === "img") { list.push({ role: "img", filename: p.filename }); return true; }
+		if (p.role === "video") { list.push({ role: "video", id: p.id }); return true; }
+		if (p.role === "embed") { list.push({ role: "embed", html: p.html }); return true; }
+		if (p.role === "head") { list.push({ role: "head", level: p.level, text: p.text }); return true; }
+		if (p.role === "nested") { list.push({ role: "nested", bundle: p.bundle }); return true; }
+		if (p.role === "table") { if (!p.html) return false; list.push({ role: "html", html: p.html }); return true; }
+		return false;
+	}
+
+	/**
+	 * ROUND 280 — the final never-half-build check on the resolved sets: every set needs a
+	 * TRIGGER (a label or a nameable image — a label is never invented) and real CONTENT.
+	 */
+	static #modalFinishSets(sets, cfg) {
+		if (!sets || !sets.length) return null;
+		for (const s of sets) {
+			if (!s.label && !s.filename) return null;              // no trigger at all
+			if (!s.parts.length) return null;                      // an empty pop-out
+			if (s.label && this.#hasRedText(s.label)) return null;
+		}
+		return sets;
+	}
+
+	/**
+	 * ROUND 280 — D3: a captured table where ONE ROW IS ONE MODAL. The writer labels the
+	 * columns themselves ("[Modal image] ║ [Modal text]", ENGR302-2.0), so a leading
+	 * header row is dropped. The trigger is the row's IMAGE cell when one carries a
+	 * nameable URL, else its short first cell; the other cell is the pop-out content.
+	 */
+	static #modalTableSets(item, cfg, tpl) {
+		const rows = (item?.block?.rows ?? []).map((r) => (r ?? []).map((c) => this.#cellText(typeof c === "string" ? c : c?.text)));
+		if (rows.length < 1) return null;
+		const cols = Math.max(0, ...rows.map((r) => r.length));
+		if (cols !== 2) return null;                               // only the label|content pair form
+		let body = rows;
+		// a HEADER row names the columns and is not a modal
+		const hdr = rows[0].join(" ").toLowerCase();
+		if (/\bmodal\b|\bimage\b|\bpop.?out\b|\btext\b/.test(hdr)
+			&& rows[0].every((c) => c.split(/\s+/).filter(Boolean).length <= (cfg.header_max_words ?? 4))) {
+			body = rows.slice(1);
+		}
+		if (!body.length) return null;
+		const maxWords = cfg.label_max_words ?? 9;
+		const assetReq = new RegExp(cfg.asset_request_cell_pattern ?? "^\\W*(?:link\\s+for\\s+)?(?:image|picture|photo|graphic)\\b", "i");
+		const sets = [];
+		for (const r of body) {
+			if (r.length !== 2) return null;
+			const [a, b] = r.map((s) => String(s ?? "").trim());
+			if (!a && !b) continue;
+			if (this.#hasRedText(a) || this.#hasRedText(b)) return null;
+			const ua = this.#cellMediaUrl(a), ub = this.#cellMediaUrl(b);
+			let filename = null, label = "", content = "";
+			if (ua || ub) {
+				const fn = this.#accImageFilename(ua || ub, cfg, cfg);
+				if (!fn) return null;
+				filename = fn;
+				content = ua ? b : a;
+			} else {
+				// No URL anywhere in the row. A cell that merely ASKS for an image ("Link for
+				// image", ENGR302-2.0) is an asset request, never a trigger label — the other
+				// cell carries both. Otherwise the SHORT cell is the label.
+				const aAsset = assetReq.test(a) && !ua, bAsset = assetReq.test(b) && !ub;
+				if (aAsset && !bAsset) content = b;
+				else if (bAsset && !aAsset) content = a;
+				else {
+					const aw = a.split(/\s+/).filter(Boolean).length;
+					const bw = b.split(/\s+/).filter(Boolean).length;
+					if (aw <= maxWords && aw <= bw) { label = a; content = b; }
+					else if (bw <= maxWords && bw < aw) { label = b; content = a; }
+					else return null;
+				}
+			}
+			if (!content.trim()) return null;
+			// A BOLD LEAD inside the content IS the trigger label when the row supplies no
+			// other one — the round-278 accordion D2 rule, and the writer's own emphasis
+			// (ENGR302-2.0: "**Intellectual** / McBean shows his expertise in creating…"
+			// → trigger "Intellectual", pop-out the rest).
+			if (!label && !filename) {
+				const lead = this.#accBoldLead(content.split("\n")[0].trim(), { ...cfg, head_max_words: maxWords });
+				if (!lead || !lead.rest.trim()) return null;
+				label = lead.head;
+				content = [lead.rest, ...content.split("\n").slice(1)].filter((s) => String(s).trim()).join("\n");
+			}
+			if (!content.trim()) return null;
+			if (label && this.#accHasBracketTag(label)) return null;
+			sets.push({ label, filename, parts: [{ role: "text", text: content }] });
+		}
+		return sets.length ? sets : null;
+	}
+
+	/**
+	 * ROUND 280 — render the resolved sets as the corpus TRIGGER + TKmodal convention.
+	 * An image-carrying set emits the round-216 `img.TKmodalButton`; every other set emits
+	 * the gold-dominant `div.button.TKmodalButton` holding the writer's own label.
+	 *
+	 * @returns {string[]|null} one trigger+modal pair per set, or null to decline
+	 */
+	static #modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested }) {
+		const out = [];
+		for (const s of sets) {
+			const chunks = [];
+			for (const part of s.parts) {
+				if (part.role === "img") {
+					chunks.push(this.#assetImage(part.filename, cfg.content_image ?? cfg, run));
+				} else if (part.role === "video") {
+					const vt = DataService.Data.EmitTemplates.video?.youtube;
+					if (!vt) return null;
+					chunks.push(Utils.FillTemplate(vt, { videoId: part.id, params: "" }));
+				} else if (part.role === "embed") {
+					chunks.push(part.html);
+				} else if (part.role === "nested") {
+					if (typeof renderNested !== "function") return null;
+					const ph = renderNested(part.bundle);
+					if (!ph) return null;
+					chunks.push(ph);
+				} else if (part.role === "head") {
+					chunks.push(`<${part.level}>${inline(part.text)}</${part.level}>`);
+				} else if (part.role === "html") {
+					chunks.push(part.html);
+				} else if (part.role === "text") {
+					const rendered = renderBlock(part.text);
+					const arr = Array.isArray(rendered) ? rendered : [rendered];
+					for (const h of arr) if (h && String(h).trim()) chunks.push(String(h));
+				}
+			}
+			const content = chunks.join("");
+			if (!content.trim()) return null;                      // a pop-out that renders to nothing
+			const trigger = s.filename
+				? this.#assetImage(s.filename, cfg, run)
+				: Utils.FillTemplate(cfg.trigger_button ?? "<div class=\"button TKmodalButton\">{label}</div>",
+					{ label: inline(String(s.label).replace(/\*+/g, "").trim()) });
+			out.push(trigger + "\n"
+				+ Utils.FillTemplate(cfg.modal_open ?? "<div class=\"TKmodal\" size=\"{size}\">",
+					{ size: cfg.default_size ?? "M" })
+				+ "\n" + content + "\n" + (cfg.modal_close ?? "</div>"));
+		}
+		return out.length ? out : null;
+	}
+
 	/**
 	 * tabs — a strip of tab headings, each revealing its own content pane.
 	 *
@@ -2113,9 +4608,14 @@ class InteractiveBuilder {
 			const listCfg = tpl.list_opener;
 			const listOff = typeof process !== "undefined" && process.env && process.env.TABLIST_OFF;
 			if (listCfg && listCfg.enabled !== false && !listOff) {
-				return this.#tabsFromList({ bundle, tpl, inline, listCfg });
+				// ROUND 279 DEAD-END LESSON: this used to `return` the list form's verdict,
+				// so its refusal ENDED the dispatch and the general composer below was
+				// never reached. It now falls through.
+				const built = this.#tabsFromList({ bundle, tpl, inline, listCfg });
+				if (built !== null) return built;
 			}
-			return null;   // no [Tab N] tabs and the list/heading forms declined → honest placeholder
+			// ROUND 281 — the GENERAL composer, tried LAST (see #tabsPanes).
+			return this.#tabsPanes({ bundle, tpl, inline, run, renderBlock, renderTable });
 		}
 
 		// STRICT text path first (the original walk, byte-identical for the bundles it
@@ -2134,7 +4634,372 @@ class InteractiveBuilder {
 		const rich = tpl.rich_panes;
 		const richOff = typeof process !== "undefined" && process.env && process.env.TABRICH_OFF;
 		if (rich && rich.enabled !== false && !richOff) {
-			return this.#tabsRich({ bundle, tpl, inline, run, renderBlock, renderTable });
+			// falls through on a decline (the round-279 dead-end lesson) so the general
+			// composer below gets its look at the bundle.
+			const built = this.#tabsRich({ bundle, tpl, inline, run, renderBlock, renderTable });
+			if (built !== null) return built;
+		}
+		// ROUND 281 — the GENERAL composer, tried LAST (see #tabsPanes).
+		return this.#tabsPanes({ bundle, tpl, inline, run, renderBlock, renderTable });
+	}
+
+	/**
+	 * ROUND 281 — THE GENERAL TABS COMPOSER (`TABPANES_OFF`).
+	 *
+	 * The five earlier tabs builders each read ONE authoring dialect and four of them
+	 * are gated by a mined gold-choice REGISTRY row. Measured (outputs/_measure_r281_tabs.cjs
+	 * + _measure_r281_noreg.cjs): neutralising EVERY registry gate moves tabs from 17
+	 * built to 18 — a gain of exactly one — so the registry was never the blocker, only
+	 * the first door. The blocker is that the writer's own pane DELIMITER is usually a
+	 * TABLE (or a plain heading run) that no builder reads, and that one unplaceable
+	 * member bails the whole widget.
+	 *
+	 * This composer is tried LAST, after all five, so **every pre-round build is
+	 * byte-identical BY CONSTRUCTION** (the round-276 architecture: a fallback cannot
+	 * break what already works). It is deliberately NOT registry-gated — the anti-rows
+	 * were mined as "the human built an ACCORDION from this form", and Chris's round-246
+	 * A1 ruling settles that: build the widget the writer tagged.
+	 *
+	 * DELIMITER VOCABULARY, in order — the first that resolves ≥ min_panes panes wins:
+	 *   D1  explicit [Tab N] tags                       (CEDO501-8.0, OSAI401, HES1005)
+	 *   D2  a TABLE read COLUMN-major — the header row is the labels; an optional
+	 *       leading single-cell TITLE row is peeled to a heading; a ROLE-LABELLED first
+	 *       column ([Title] / [Image] / [Link for image] down column 0) makes columns
+	 *       1..N the tabs and each row contributes by its role   (ENFUN01-0.0 ×3,
+	 *       whose gold ships exactly these tabs: Persuade|Inform|Entertain)
+	 *   D3  a TABLE read ROW-major — one row = one pane (short label cell + content
+	 *       cell); a ONE-ROW table is one pane per CELL, each labelled from its own
+	 *       bold or colon lead                                    (AGH1003-5.0)
+	 *   D4  a repeating same-level heading run                     (the round-196 form,
+	 *       un-gated)
+	 *
+	 * MEMBER VOCABULARY: the round-278 one, shared verbatim (#accMemberParts) — a
+	 * non-iStock image takes the round-126 URL slug, an image with no URL is an ASSET
+	 * REQUEST (skipped, surfaced as a red Writers Note, never invented), a non-YouTube
+	 * video renders through the generic iframe, a captured table renders through the
+	 * converter's own kept-table emitter, and a writer instruction becomes a note.
+	 *
+	 * GOLD-BACKED GUARDS (outputs/_measure_r281_tabgold.py, 319 body tab groups / 142
+	 * modules): min_panes is **2** because a ONE-pane tab group does not exist in the
+	 * gold library (0 of 319); a nav label is ≤ 3 words 92.3% of the time, ≤ 6 words
+	 * 99.2% and ≤ 7 words 100%, so a longer line is prose, not a label — the pane keeps
+	 * it and the label comes from a bold lead, or the composer declines rather than
+	 * putting a sentence in the nav. Labels ship PLAIN (gold 99.0%).
+	 *
+	 * NEVER HALF-BUILDS: fewer than min_panes, a pane with no label or no rendered
+	 * content, a member the vocabulary cannot place, or a finished widget still showing
+	 * a resolved [tag] (#accLeakGuard — the round-167/275/277/278 rule at this seam, so
+	 * building can only ever PREVENT a visible leak, never add one).
+	 *
+	 * Data interactive_builders.tabs.general_panes; env TABPANES_OFF.
+	 */
+	static #tabsPanes({ bundle, tpl, inline, run, renderBlock, renderTable }) {
+		const cfg = tpl?.general_panes;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.TABPANES_OFF) return null;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return null;
+		if (typeof renderBlock !== "function") return null;      // need the body renderer
+		const rich = tpl.rich_panes ?? {};
+		const notes = [];
+
+		// (1) every member → an ordered {role,…} part, through the SHARED round-278
+		//     vocabulary; [Tab N] is this widget's delimiter and [tabs] its opener.
+		const parts = this.#accMemberParts(members, {
+			tpl: rich, cfg, run, renderTable, notes,
+			delims: {
+				tags: cfg.delimiter_tags ?? ["tab n", "tab"],
+				opener_tags: cfg.opener_tags ?? ["tabs"],
+				panel_tag_pattern: cfg.pane_tag_pattern
+					?? "^\\[\\s*tab\\s*(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)?\\s*[:.]?\\s*\\]$",
+				panel_ordinal_pattern: cfg.pane_ordinal_pattern
+					?? "^\\[\\s*(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\\s+tab\\s*[:.]?\\s*\\]$",
+				// MEASURED tabs-only extensions. The gold puts a `button` inside a tab group
+				// in 27 of 319 groups (8.5%) — far more than the accordion's 1.7% — but the
+				// button emitter is not in scope at this seam, so it surfaces as a note
+				// rather than being silently dropped. A bare [heading] is a sub-heading; an
+				// [external link]'s own line is pane prose (renderBlock links a bare URL).
+				head_tags: cfg.head_tags ?? ["heading"],
+				head_level: cfg.head_level ?? "h4",
+				text_tags: cfg.text_tags ?? ["external link"],
+				note_tags: cfg.note_tags ?? ["button"],
+			},
+		});
+		if (!parts) return null;
+
+		// (2) resolve the panes from the first delimiter kind that is present.
+		const panes = this.#tabResolvePanes(parts, cfg, rich);
+		if (!panes || panes.length < (cfg.min_panes ?? 2)) return null;
+
+		// (3) render through the shared pane-part renderer, so this composer and the
+		//     five dialect builders emit the same markup.
+		const navItems = [], paneItems = [];
+		for (const p of panes) {
+			if (!p.head || !p.parts.length) return null;
+			const head = String(p.head).replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
+			if (!head || this.#hasRedText(head) || /[\[\]]/.test(head)) return null;
+			if (head.split(/\s+/).length > (cfg.label_max_words ?? 6)) return null;
+			const chunks = [];
+			for (const part of p.parts) {
+				const got = this.#tabsRichPart(part, rich, run, renderBlock);
+				if (got === null) return null;
+				chunks.push(...got);
+			}
+			const content = chunks.join("");
+			if (!content.trim()) return null;                    // a pane with no rendered body
+			navItems.push(Utils.FillTemplate(tpl.nav_item, { head: inline(head) }));
+			paneItems.push(Utils.FillTemplate(tpl.pane, { content }));
+		}
+		const html = (panes.titleHtml ?? "") + [tpl.open, tpl.nav_open, ...navItems, tpl.nav_close,
+			tpl.content_open, ...paneItems, tpl.content_close, tpl.close].join("\n");
+		if (this.#accLeakGuard(html, cfg)) return null;           // a build must never ADD a leak
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.r281Tabs = true;                                   // detector / affected-set marker
+		return html;
+	}
+
+	/**
+	 * ROUND 281 — resolve PANES from the ordered parts, trying each delimiter kind in
+	 * turn (D1 explicit [Tab N] → D2 a table read column-major → D3 a table read
+	 * row-major → D4 a repeating heading run) and taking the first that yields panes.
+	 * Returns `[{head, parts}]` (optionally carrying `.titleHtml`), or null.
+	 */
+	static #tabResolvePanes(parts, cfg, rich) {
+		const substantive = parts.filter((p) => p.role !== "note");
+		if (!substantive.length) return null;
+		const maxLabel = cfg.label_max_words ?? 6;
+
+		// ---- D1: explicit [Tab N] delimiters -----------------------------------
+		if (parts.some((p) => p.role === "panel")) {
+			const panes = [];
+			let cur = null;
+			for (const p of parts) {
+				if (p.role === "panel") {
+					if (p.overlong) return null;                 // a sentence-long tag text, no bold lead
+					cur = { head: p.head, parts: [] }; panes.push(cur); continue;
+				}
+				if (!cur) {
+					// content BEFORE the first [Tab N] is a lead-in, not pane content; only
+					// plain text may precede (anything richer means the walk swept a section in).
+					if (p.role === "text") continue;
+					return null;
+				}
+				// a label-less pane takes its label from its own first sub-heading
+				if (p.role === "head" && !cur.head && !cur.parts.length) { cur.head = p.text; continue; }
+				if (!this.#tabPushPart(cur.parts, p, cfg, maxLabel)) return null;
+			}
+			return panes.every((p) => p.head && p.parts.length) ? panes : null;
+		}
+
+		// ---- D2/D3: a captured TABLE is the whole widget ------------------------
+		const tables = parts.filter((p) => p.role === "table");
+		if (tables.length === 1 && cfg.table_panes !== false) {
+			const others = substantive.filter((p) => p.role !== "table");
+			if (others.every((p) => p.role === "text")) {          // only a lead line may ride along
+				const rows = (tables[0].item?.block?.rows ?? []).map((r) => (r ?? []).map((c) => String(typeof c === "string" ? c : (c?.text ?? ""))));
+				const panes = this.#tabTablePanes(rows, cfg, rich);
+				if (panes && panes.length >= (cfg.min_inferred_panes ?? 2)) return panes;
+			}
+		}
+
+		// ---- D4: a repeating same-level heading run -----------------------------
+		if (cfg.heading_panes !== false) {
+			const heads = parts.filter((p) => p.role === "head");
+			const levels = [...new Set(heads.map((h) => h.level))];
+			if (heads.length >= (cfg.min_inferred_panes ?? 2) && levels.length === 1) {
+				const panes = [];
+				let cur = null;
+				for (const p of parts) {
+					if (p.role === "note") continue;
+					if (p.role === "head") {
+						if (String(p.text).split(/\s+/).length > maxLabel) {
+							if (!cur) return null;                 // a long heading before any pane
+							if (!this.#tabPushPart(cur.parts, { role: "text", text: p.text }, cfg, maxLabel)) return null;
+							continue;                              // prose, not a label — keep it in the pane
+						}
+						cur = { head: p.text, parts: [] }; panes.push(cur); continue;
+					}
+					if (!cur) { if (p.role === "text") continue; return null; }
+					if (!this.#tabPushPart(cur.parts, p, cfg, maxLabel)) return null;
+				}
+				if (panes.length >= (cfg.min_inferred_panes ?? 2)
+					&& panes.every((p) => p.head && p.parts.length)) return panes;
+			}
+		}
+		return null;
+	}
+
+	/** ROUND 281 — push ONE resolved part into a pane's part list, translating the
+	 *  shared round-278 roles into the {p|img|video|html} shapes #tabsRichPart renders.
+	 *  Returns false when the part cannot belong to a pane (→ never half-build). */
+	static #tabPushPart(list, p, cfg, maxLabel) {
+		if (p.role === "text") {
+			const t = String(p.text ?? "").trim();
+			if (!t) return true;
+			const last = list[list.length - 1];
+			if (last && last.p) { last.p += "\n" + t; return true; }
+			list.push({ p: t }); return true;
+		}
+		if (p.role === "head") {
+			// a sub-heading INSIDE a pane (the writer's own [H4]) — gold ships h4 in 21%
+			// of tab groups, so it renders rather than bailing the widget.
+			const t = String(p.text ?? "").trim();
+			if (!t) return true;
+			const lvl = /^h[1-6]$/.test(String(p.level)) ? p.level : "h4";
+			list.push({ html: `<${lvl}>${t}</${lvl}>` }); return true;
+		}
+		if (p.role === "img") { list.push({ img: p.filename }); return true; }
+		if (p.role === "video") { list.push({ video: p.id }); return true; }
+		if (p.role === "embed") { list.push({ html: p.html }); return true; }
+		if (p.role === "table") { if (!p.html) return false; list.push({ html: p.html }); return true; }
+		if (p.role === "nested") return false;                    // a nested widget → its own round
+		return false;
+	}
+
+	/** ROUND 281 — one table cell's text → the pane's lines. The writer separates a
+	 *  cell's own lines with " / " (the converter's long-standing cell convention); an
+	 *  ORPHAN leading or trailing separator is dropped rather than shipped as a stray
+	 *  "/" at the top of the pane (AGH1003-5.0 "In a home garden: / • dig the soil …",
+	 *  caught by the tabs verifier). */
+	static #tabSplitCell(s) {
+		return String(s ?? "").split(/\s+\/\s+/)
+			.map((x) => x.replace(/^\s*\/\s*/, "").replace(/\s*\/\s*$/, "").trim())
+			.filter(Boolean).join("\n");
+	}
+
+	/**
+	 * ROUND 281 — read ONE captured table as a set of panes, COLUMN-major first
+	 * (the dominant tabs form: the header row is the labels) and ROW-major second.
+	 * Returns `[{head, parts}]` (optionally with `.titleHtml`), or null.
+	 */
+	static #tabTablePanes(rows, cfg, rich) {
+		const maxLabel = cfg.label_max_words ?? 6;
+		const clean = (s) => this.#cellText(String(s ?? "")).replace(/\*\*/g, "").replace(/\s+/g, " ").trim()
+			.replace(/^[\/|]\s*/, "").replace(/\s*[\/|]$/, "").trim();
+		// A LABEL ROW MAY NOT BE **WHOLLY** RED. Red marks the writer's own structural
+		// spec, and a flipCard/clickDrop table is laid out as ENTIRELY-red [front]/[drop]
+		// marker rows over the card faces (OSAI201-3.0) — which the column reader would
+		// otherwise turn into four tabs all labelled "front". But a red [Tab N] marker
+		// followed by BLACK label text is a perfectly good label (OSSC401-3.0
+		// "🔴[Tab 1]🔴 Ari's story"), so the test is #isFullyRed per cell, not "any red".
+		// Both directions were caught by the tabs verifier — the blanket form silently
+		// cost OSSC401 and ENFUN05 their builds.
+		const rowIsRed = (r) => (r ?? []).some((c) => this.#isFullyRed(c));
+		// …and a real tab set has DISTINCT labels; repeats mean we read the wrong row.
+		const distinct = (hs) => new Set(hs.map((h) => h.toLowerCase())).size === hs.length;
+		const roleRe = new RegExp(cfg.role_column_pattern
+			?? "^\\[?\\s*(title|label|heading|image|images|link for image|link|video|body|text|caption)\\b[^\\]]*\\]?\\s*:?$", "i");
+		let titleHtml = "";
+
+		// A leading SINGLE-CELL row is a TITLE for the whole set. Peeled to a heading at
+		// the writer's own [H*] level when it carries one (the round-215 rule, generalised
+		// off its CEDT-only gate); with no level to derive we decline rather than invent.
+		if (rows.length > 2 && (rows[0] ?? []).length === 1) {
+			const t0 = clean(rows[0][0]);
+			const m = t0.match(/^\[\s*h([1-6])\b[^\]]*\]\s*(.+)$/i);
+			if (m) {
+				if (/[\[\]]/.test(m[2])) return null;
+				titleHtml = `<h${m[1]}>${m[2]}</h${m[1]}>\n`;
+			} else {
+				// NO level to derive: the writer's topic line ships as a LEAD PARAGRAPH above
+				// the tabs (faithful — nothing is lost) rather than inventing a heading rank.
+				if (!t0 || /[\[\]]/.test(t0)) return null;
+				titleHtml = `<p>${t0}</p>\n`;
+			}
+			rows = rows.slice(1);
+		}
+		if (rows.length < 1) return null;
+		const nCols = (rows[0] ?? []).length;
+		if (rows.some((r) => r.length !== nCols)) return null;    // ragged → a richer form
+
+		// ---- ROLE-LABELLED first column (ENFUN01: [Title]/[Image]/[Link for image]) --
+		if (nCols >= 3 && rows.length >= 2 && rows.every((r) => roleRe.test(clean(r[0])))) {
+			const roles = rows.map((r) => clean(r[0]).replace(/[[\]:]/g, "").trim().toLowerCase());
+			const ti = roles.findIndex((r) => /^(title|label|heading)$/.test(r));
+			if (ti < 0) return null;
+			// column 0 is the ROLE column and is legitimately red ([Title]); no OTHER cell may be.
+			if (rows.some((r) => r.slice(1).some((c) => this.#isFullyRed(c)))) return null;
+			const panes = [];
+			for (let c = 1; c < nCols; c++) {
+				const head = clean(rows[ti][c]);
+				if (!head || head.split(/\s+/).length > maxLabel) return null;
+				const parts = [];
+				for (let r = 0; r < rows.length; r++) {
+					if (r === ti) continue;
+					const cell = clean(rows[r][c]);
+					if (!cell) continue;
+					if (/^(image|images|link for image|link)$/.test(roles[r])) {
+						const url = this.#cellMediaUrl(rows[r][c]);
+						if (!url) continue;                        // no asset yet — nothing to render
+						const fn = this.#accImageFilename(url, rich, cfg);
+						if (!fn) return null;
+						parts.push({ img: fn });
+						continue;
+					}
+					if (/[\[\]]/.test(cell)) return null;
+					parts.push({ p: cell });
+				}
+				if (!parts.length) return null;
+				panes.push({ head, parts });
+			}
+			if (panes.length >= (cfg.min_inferred_panes ?? 2) && distinct(panes.map((p) => p.head))) {
+				panes.titleHtml = titleHtml; return panes;
+			}
+			return null;
+		}
+
+		// ---- COLUMN-major: row 0 = the labels, rows 1.. = each column's body --------
+		if (nCols >= 2 && rows.length >= 2 && !rows.some(rowIsRed)) {
+			const heads = rows[0].map(clean);
+			if (distinct(heads) && heads.every((h) => h && !/[\[\]]/.test(h) && !/https?:\/\//.test(h)
+				&& h.split(/\s+/).length <= maxLabel)) {
+				const panes = [];
+				for (let c = 0; c < nCols; c++) {
+					const body = [];
+					for (let r = 1; r < rows.length; r++) {
+						const cell = clean(rows[r][c]);
+						if (!cell) continue;
+						if (/[\[\]]/.test(cell)) return null;
+						body.push(this.#tabSplitCell(cell));
+					}
+					if (!body.length) return null;
+					panes.push({ head: heads[c], parts: [{ p: body.join("\n") }] });
+				}
+				if (panes.length >= (cfg.min_inferred_panes ?? 2)) { panes.titleHtml = titleHtml; return panes; }
+			}
+		}
+
+		// ---- ROW-major: one row = one pane (short label cell + content cell) --------
+		if (nCols === 2 && rows.length >= (cfg.min_inferred_panes ?? 2) && !rows.some(rowIsRed)) {
+			const panes = [];
+			for (const r of rows) {
+				const head = clean(r[0]), body = clean(r[1]);
+				if (!head || !body) { panes.length = 0; break; }
+				if (/[\[\]]/.test(head) || /[\[\]]/.test(body)) { panes.length = 0; break; }
+				if (head.split(/\s+/).length > maxLabel) { panes.length = 0; break; }
+				panes.push({ head, parts: [{ p: this.#tabSplitCell(body) }] });
+			}
+			if (panes.length >= (cfg.min_inferred_panes ?? 2) && distinct(panes.map((p) => p.head))) {
+				panes.titleHtml = titleHtml; return panes;
+			}
+		}
+
+		// ---- ONE-ROW table: one pane per CELL, labelled from its own lead -----------
+		if (rows.length === 1 && nCols >= (cfg.min_inferred_panes ?? 2) && cfg.cell_panes !== false
+			&& !rows.some(rowIsRed)) {
+			const panes = [];
+			for (const c of rows[0]) {
+				const cell = clean(c);
+				if (!cell || /[\[\]]/.test(cell)) return null;
+				const lead = cell.match(/^([^:•\n]{1,80}?)\s*:\s*(.+)$/);
+				if (!lead || lead[1].split(/\s+/).length > maxLabel) return null;
+				const body = this.#tabSplitCell(lead[2]);
+				if (!body) return null;
+				panes.push({ head: lead[1].trim(), parts: [{ p: body }] });
+			}
+			if (panes.length >= (cfg.min_inferred_panes ?? 2) && distinct(panes.map((p) => p.head))) {
+				panes.titleHtml = titleHtml; return panes;
+			}
 		}
 		return null;
 	}
@@ -3242,8 +6107,22 @@ class InteractiveBuilder {
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return null;
 		// extraTypes set = a multi-widget activity merged in (carousel + X) — too
-		// ambiguous to build cleanly.
-		if (bundle.extraTypes && bundle.extraTypes.length) return null;
+		// ambiguous to build cleanly. ROUND 279: except when every merged type is our
+		// OWN — "carousel + carousel" is only the placeholder LABEL, not two different
+		// widgets (the round-242 accordion finding and the round-215 tabs self-merge,
+		// restated for the carousel). Writers repeat [carousel] as a SLIDE marker
+		// (HPFUN302-0.0 opens six slides that way, HES1006-7.0 four), and where they
+		// really did mean two slideshows the round-279 scanner rule splits them at the
+		// table before the builder ever sees them. MEASURED: 52 of the 104 extraTypes
+		// declines are same-type-only, across 38 modules. Data carousel.same_type_merge;
+		// env CARSAMETYPE_OFF.
+		const extra = bundle.extraTypes ?? [];
+		if (extra.length) {
+			const sameOnly = (tpl.same_type_merge?.enabled !== false)
+				&& !(typeof process !== "undefined" && process.env && process.env.CARSAMETYPE_OFF)
+				&& extra.every((t) => t === bundle.type);
+			if (!sameOnly) return null;
+		}
 
 		// ROTATING/ROLLING BANNER (verified against BLL117-02). A [rolling banner]/[rotating
 		// banner]/[banner] folds to a carousel bundle, but the human builds a looping image
@@ -3289,8 +6168,14 @@ class InteractiveBuilder {
 		}
 
 		// IMAGE-CAPTION TABLE form: exactly one captured table, no video anywhere.
+		// ROUND 279: its null no longer ENDS the dispatch. It used to be `return
+		// this.#carouselImageTable(...)`, so a single-table carousel that failed this
+		// one narrow shape never reached any later branch — 143 of the 561 declines
+		// (75 modules) died at that dead-end without a fallback ever being tried.
+		// Returning only on a BUILD cannot change a single existing build.
 		if (!hasVideo && tables.length === 1) {
-			return this.#carouselImageTable({ bundle, tpl, renderInline, run });
+			const it = this.#carouselImageTable({ bundle, tpl, renderInline, run });
+			if (it !== null) return it;
 		}
 		// IMAGE-SLIDE MEMBER form: no video, no table — a [carousel] opener + per slide
 		// a [heading]/[story heading] + [image] + a [black] body (verified against OSAI201-03 #16).
@@ -3305,11 +6190,19 @@ class InteractiveBuilder {
 		const vid = this.#carouselVideo({ bundle, tpl });
 		if (vid !== null) return vid;
 
-		// RICH SLIDE FALLBACK (round 246) — the last resort, after every strict dialect has
-		// declined, so each of them stays byte-identical. Builds the writer's carousel from
-		// whatever mix of heading / image / video / prose the members actually carry.
+		// RICH SLIDE FALLBACK (round 246) — after every strict dialect has declined, so each
+		// of them stays byte-identical. Builds the writer's carousel from whatever mix of
+		// heading / image / video / prose the members actually carry.
 		// See #carouselRich. Data carousel.rich_slides; env CARNOTBL_OFF.
-		return this.#carouselRich({ bundle, tpl, renderInline, run, renderBlock });
+		const rich = this.#carouselRich({ bundle, tpl, renderInline, run, renderBlock });
+		if (rich !== null) return rich;
+
+		// TABLE-SLIDE FALLBACK (ROUND 279) — THE LAST RESORT, so every branch above keeps
+		// its own population byte-for-byte. The writer's other big slideshow dialect is a
+		// plain TABLE, and the three table branches above each recognise one narrow shape;
+		// this one reads any of them by the general rule the gold uses — one data ROW is
+		// one slide. See #carouselTableSlides. Data carousel.table_slides; env CARTABLE_OFF.
+		return this.#carouselTableSlides({ bundle, tpl, renderInline, run, renderBlock });
 	}
 
 	/**
@@ -3358,7 +6251,10 @@ class InteractiveBuilder {
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return null;
 		if ((bundle.tables ?? []).length) return null;               // the table dialects own that shape
-		if ((bundle.extraTypes ?? []).length) return null;           // a merged multi-widget bundle
+		// ROUND 279: a SAME-TYPE merge ("carousel + carousel") is only the placeholder
+		// label — the dispatcher has already made that call, so mirror it here rather
+		// than bailing a second time. A genuinely mixed bundle still never reaches this.
+		if ((bundle.extraTypes ?? []).some((t) => t !== bundle.type)) return null;
 
 		const inline = renderInline ?? ((s) => s);
 		const slideTags = new Set(cfg.slide_tags ?? []);
@@ -3396,6 +6292,16 @@ class InteractiveBuilder {
 		// of its own — every such bundle declines today — so it is strictly additive.
 		// Data rich_slides.video_url_recovery; env CARVIDEO_OFF (CARVIDTAIL_OFF still reverts
 		// the whole r247 lookahead).
+		// ROUND 279 — THE MEMBER VOCABULARY (env CARMEMBER_OFF reverts all of it). The
+		// decline recorder showed that after the table classes the next-biggest reasons
+		// are all one thing: a member the walk knows perfectly well but cannot NAME —
+		// an image on a non-iStock host (62 declines), a video/[embed] it cannot embed
+		// (61), a [Caption] (which resolves to canonical tag `data marker`, so the
+		// text_tags entry "caption" never matched it — 17), an [audio] (5). Data
+		// carousel.member_vocabulary.
+		const mv = (env.CARMEMBER_OFF || cfg.member_vocabulary?.enabled === false)
+			? {} : (cfg.member_vocabulary ?? {});
+		let mvUsed = false;                                          // did a round-279 rule fire?
 		const vrCfg = cfg.video_url_recovery ?? {};
 		const widenTail = (vrCfg.follow_any_member ?? false) && !env.CARVIDEO_OFF;
 		const tailWindow = vrCfg.follow_window ?? 3;
@@ -3466,9 +6372,17 @@ class InteractiveBuilder {
 				if (t && !this.#carouselBareMediaRef(m.blackAfter, cfg, env)) pending.push(String(m.blackAfter));
 				continue;
 			}
-			// the widget's own invocation contributes only its trailing prose
+			// the widget's own invocation contributes only its trailing prose.
+			// ROUND 279: a REPEATED invocation once the open slide already holds content
+			// is the writer using [carousel] as a SLIDE MARKER (HPFUN302-0.0 opens six
+			// slides that way, HES1006-7.0 four) — so it opens the next slide, exactly as
+			// a [Slide N] marker does. The FIRST invocation (nothing captured yet) still
+			// only contributes its trailing prose, so every existing build is unchanged.
 			if (tag === bundle.canonTag || tag === "carousel") {
 				if (this.#hasRedText(raw)) return null;
+				if (mv.invocation_opens_slide && cur && (cur.parts.length || pending.length)) {
+					mvUsed = true; flush(); open();
+				}
 				const t = this.#cellText(raw).trim();
 				if (t) pending.push(String(raw));
 				continue;
@@ -3510,7 +6424,20 @@ class InteractiveBuilder {
 				}
 				const alt = (vrCfg.other_hosts !== false) && !env.CARVIDEO_OFF
 					? this.#carouselVideoEmbed(url, tpl, cfg) : null;
-				if (!alt) return null;                               // a video we cannot resolve → bail
+				// ROUND 279: a video/[embed] we cannot resolve is an ASSET REQUEST, not a
+				// build failure — the writer is naming media the developer will source
+				// (the decodable-story [embed book] family is 67 of these declines, and
+				// round 126 already treats that as a scaffold on the free-body path). It
+				// is SKIPPED as slide content and surfaced as the standard red Writers
+				// Note after the widget, exactly as the rich accordion treats one
+				// (r214/r242/r278) — never silently dropped, never given an invented
+				// embed. A carousel left with too few real slides still declines.
+				if (!alt) {
+					if (!mv.asset_request) return null;              // a video we cannot resolve → bail
+					mvUsed = true;
+					this.#carNoteAssetRequest(bundle, m, raw, mv);
+					continue;
+				}
 				flush();
 				if (!cur || (mediaOpens && cur.parts.some((pt) => pt.img || pt.video))) open();
 				cur.parts.push({ html: alt });
@@ -3519,11 +6446,34 @@ class InteractiveBuilder {
 			// an IMAGE — the standard Mode P/D asset, named from the iStock id
 			if (tag === "image" || (url && !this.#cellText(String(raw).replace(/https?:\/\/[^\s\]"<>]+/g, "")).trim())) {
 				if (this.#hasRedText(raw)) return null;
-				const id = (String(url).match(/gm-?(\d{6,10})/) || String(url).match(/\/id\/(\d{4,10})/) || [])[1];
-				if (!id) return null;                                // a non-derivable image → bail
+				// ROUND 279: the same two-step the speech bubble (r276) and the accordion
+				// (r278) already use. A NON-iStock url still names a real picture, so it
+				// takes the round-126 url-SLUG placeholder instead of bailing the widget;
+				// only an image with NO url at all is an asset request (skip + red note).
+				const file = this.#carImageFilename(url, tpl, mv);
+				if (!file) {
+					if (!mv.asset_request) return null;              // a non-derivable image → bail
+					mvUsed = true;
+					this.#carNoteAssetRequest(bundle, m, raw, mv);
+					continue;
+				}
+				if (!/^iStock-/i.test(file)) mvUsed = true;          // the r126 slug fallback
 				flush();
 				if (!cur || (mediaOpens && cur.parts.some((pt) => pt.img || pt.video))) open();
-				cur.parts.push({ img: Utils.FillTemplate(tpl.filename_istock, { id }) });
+				cur.parts.push({ img: file });
+				continue;
+			}
+			// AUDIO (ROUND 279) — the gold ships an <audio> player on 148 slides across 23
+			// modules, so an [audio] member is slide CONTENT, not an unknown tag. With a
+			// resolvable file it plays; with none it is an asset request like any other.
+			if (mv.audio_member && tag === "audio") {
+				mvUsed = true;
+				if (this.#hasRedText(raw)) return null;
+				const au = this.#carAudioHtml(url, raw, mv);
+				if (!au) { this.#carNoteAssetRequest(bundle, m, raw, mv); continue; }
+				flush();
+				if (!cur || (mediaOpens && cur.parts.some((pt) => pt.img || pt.video || pt.html))) open();
+				cur.parts.push({ html: au });
 				continue;
 			}
 			// PROSE — a plain black line or a text-family element tag. ROUND 275: a line that
@@ -3532,7 +6482,8 @@ class InteractiveBuilder {
 			// the same rule MediaBuilder applies on the body path (r80 stripMediaResidue).
 			// Without this, every URL line the tail lookahead did not claim rendered as a
 			// visible link paragraph on the slide.
-			if (m.type === "black" || textTags.has(tag)) {
+			if (m.type === "black" || textTags.has(tag) || (mv.text_tags ?? []).includes(tag)) {
+				if (!textTags.has(tag) && (mv.text_tags ?? []).includes(tag)) mvUsed = true;
 				if (this.#hasRedText(raw)) return null;
 				if (this.#carouselBareMediaRef(raw, cfg, env)) continue;
 				if (this.#cellText(raw).trim()) pending.push(String(raw));
@@ -3551,6 +6502,39 @@ class InteractiveBuilder {
 		if (cfg.require_content !== false
 			&& !slides.some((s) => s.parts.some((p) => p.img || p.video || p.html || p.p))) return null;
 
+		const html = this.#carRenderSlides(slides, { tpl, cfg, inline, run, renderBlock, videoTpl });
+		if (html === null) return null;
+		// THE LEAK GUARD, SCOPED TO THE ROUND-279 WIDENING (`mvUsed`). A carousel that
+		// only builds because one of this round's member rules fired must not put a
+		// literal writer tag on the page — BLL263-1.0's "[Embed audio book]" line was
+		// caught exactly here. Scoping it to mvUsed is deliberate: an unscoped guard
+		// would also refuse builds that have been shipping since round 246, which is
+		// the mistake round 277 caught in its own guard.
+		if (mvUsed && this.#carHasBracketTag(html, tpl.table_slides ?? {})) return null;
+		bundle.r246Carousel = true;                                  // detector/affected-set marker
+		return html;
+	}
+
+	/**
+	 * ROUND 279 — the SLIDE RENDERER, a pure extraction from the tail of
+	 * #carouselRich so the round-246 rich fallback and the new
+	 * #carouselTableSlides emit byte-identical markup from the same part list
+	 * (the round-278 #accRenderPanels pattern). Nothing about the existing
+	 * output changed: the loop below is the round-275 code verbatim.
+	 *
+	 * A slide is an ordered list of PARTS, each exactly one of:
+	 *   {h}     a heading            -> cfg.heading
+	 *   {img}   an image FILENAME    -> the Mode P/D asset
+	 *   {video} a YouTube id         -> the shared embed
+	 *   {html}  ready-made markup    -> a shorts/other-host embed, an audio player
+	 *   {p}     prose                -> renderBlock, inside a carousel-caption
+	 * Consecutive prose parts share ONE caption div; any other part closes it.
+	 *
+	 * @param {Array<{parts:Array<object>}>} slides - the resolved slides
+	 * @param {object} args - tpl / cfg / inline / run / renderBlock / videoTpl
+	 * @returns {string|null} the finished carousel, or null to keep the placeholder
+	 */
+	static #carRenderSlides(slides, { tpl, cfg, inline, run, renderBlock, videoTpl }) {
 		const items = [];
 		for (const s of slides) {
 			if (!s.parts.length) return null;                        // an empty slide → never half-build
@@ -3583,8 +6567,367 @@ class InteractiveBuilder {
 			if (capOpen) chunks.push(cfg.caption_close);
 			items.push(Utils.FillTemplate(cfg.item, { parts: chunks.join("\n") }));
 		}
-		bundle.r246Carousel = true;                                  // detector/affected-set marker
 		return [tpl.open, ...items, tpl.close].join("\n");
+	}
+
+	/**
+	 * ROUND 279 — the IMAGE FILENAME for a carousel slide, the two-step the speech
+	 * bubble (round 276) and the accordion (round 278) already use. An iStock id
+	 * names the corpus asset; any OTHER host still names a real picture, so it
+	 * takes the round-126 url-SLUG placeholder rather than bailing the widget. No
+	 * url at all → null, and the caller treats the member as an asset request.
+	 *
+	 * @param {string} url - the member's/cell's media url
+	 * @param {object} tpl - the carousel template block
+	 * @param {object} mv  - carousel.member_vocabulary (empty when CARMEMBER_OFF)
+	 * @returns {string|null} the filename, or null when nothing can be named
+	 */
+	static #carImageFilename(url, tpl, mv = {}) {
+		const u = String(url ?? "");
+		if (!u) return null;
+		const id = (u.match(/gm-?(\d{6,10})/) || u.match(/\/id\/(\d{4,10})/) || [])[1];
+		if (id) return Utils.FillTemplate(tpl.filename_istock, { id });
+		if (!mv.image_slug_fallback) return null;
+		return this.#bannerImageFilename(u, tpl);
+	}
+
+	/**
+	 * ROUND 279 — an AUDIO slide part. The gold ships an <audio> player on 148
+	 * slides across 23 modules, so an [audio] member is slide CONTENT. Uses the
+	 * shared body-path audio template so a carousel's player is the page's player.
+	 *
+	 * @param {string} url - the member's media url
+	 * @param {object} mv  - carousel.member_vocabulary
+	 * @returns {string|null} the player markup, or null when there is no file
+	 */
+	static #carAudioHtml(url, raw, mv = {}) {
+		const t = DataService.Data.EmitTemplates?.audio?.form;
+		if (!t) return null;
+		const u = String(url ?? "");
+		const m = u.match(/\/([^/?#]+\.(?:mp3|wav|m4a|ogg))(?:\?|#|$)/i);
+		if (!m) return null;                                         // no real file → an asset request
+		return Utils.FillTemplate(t, {
+			filename: m[1],
+			title: this.#cellText(String(raw ?? "").replace(/https?:\/\/[^\s\]"<>]+/g, "")).trim(),
+		});
+	}
+
+	/**
+	 * ROUND 279 — record a member the builder could not turn into slide content
+	 * because the ASSET does not exist yet (an image with no url, an [embed book]
+	 * whose story lives on an external site, a "[Insert media item 6]" reference).
+	 * It is skipped as content and pushed onto bundle.instructions, which the
+	 * converter already surfaces as the standard red Writers Note AFTER the widget
+	 * — the round-214/242/278 rule, so the writer's words are never silently lost.
+	 *
+	 * @param {object} bundle - the captured interactive
+	 * @param {object} m - the member item
+	 * @param {string} raw - its raw text
+	 * @param {object} mv - carousel.member_vocabulary
+	 */
+	/**
+	 * TABLE-SLIDE carousel (ROUND 279 — Chris, the interactive-coverage chain) — the
+	 * carousel's sibling of the round-278 accordion panel-delimiter vocabulary, and
+	 * the LAST branch tried, so every existing dialect keeps its population
+	 * byte-for-byte.
+	 *
+	 * WHY IT EXISTS. A carousel's other big authoring form is a plain TABLE, and the
+	 * three table branches above each recognise exactly ONE shape: every cell a media
+	 * cell (r266), a media cell paired with prose and at least one video (r271), or an
+	 * image URL paired with a caption (r63). Everything else died — and because the
+	 * r63 branch RETURNED its null, most of it died without any fallback being tried
+	 * at all. MEASURED by the shipped builder's own verdict
+	 * (outputs/_measure_r279_carousel.cjs, all 454 modules): 277 of the 561 declines
+	 * carry a captured table — 143 at the r63 dead-end, 95 refused outright by the
+	 * rich fallback, the rest on min_slides — across 114 modules.
+	 *
+	 * THE RULE IS THE GOLD'S OWN: ONE DATA ROW IS ONE SLIDE.
+	 *   AGH1002-1.0  3 rows (empty image cell | caption) -> the gold's 3 slides
+	 *   EXPFUN06-0.0 3 rows (image brief   | caption)    -> the gold's 3 slides
+	 *   XTAS101-0.0  7 rows (1 header + 6)               -> the gold's 6 slides
+	 * A table with exactly ONE data row and several cells is instead one slide per
+	 * CELL — the r266 form, and again gold-checked (XTAS101's 1x2 video row is two
+	 * gold slides). A leading header/label row is dropped (the shared
+	 * #isCarouselTitleOrLabelRow). Several tables (only reachable when the round-279
+	 * scanner rule did NOT split them, i.e. the writer wrote one invocation) append in
+	 * document order.
+	 *
+	 * A CELL becomes ordered PARTS through the same vocabulary the rich fallback uses:
+	 * a media cell contributes its image/video, a prose cell its title and copy (split
+	 * on the writer's own " / " exactly as the round-271 media|caption form does), and
+	 * a cell naming an asset that does not exist yet — "ocean cleanup", "[image] teens
+	 * doing art together" — is an ASSET REQUEST: skipped as content and surfaced as the
+	 * red Writers Note after the widget. The gold agrees, visibly: EXPFUN06's slides
+	 * show the caption only, never the writer's image brief.
+	 *
+	 * NEVER HALF-BUILDS (null → the honest hand-off box): a row that yields no parts, a
+	 * red developer instruction in a cell, fewer than min_slides slides, more than
+	 * max_slides, slides carrying no real content, or a finished carousel still showing
+	 * a bracketed tag (#carLeakGuard — the round-167 rule at this seam, so building can
+	 * only ever PREVENT a leak).
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive
+	 * @param {object} args.tpl - the carousel template block (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer
+	 * @param {object} [args.run] - conversion run context (Mode P/D images)
+	 * @param {function} [args.renderBlock] - the black-text block renderer
+	 * @returns {string|null} the built carousel, or null to keep the placeholder
+	 */
+	static #carouselTableSlides({ bundle, tpl, renderInline, run, renderBlock }) {
+		const cfg = tpl?.table_slides;
+		if (!cfg || cfg.enabled === false) return null;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (env.CARTABLE_OFF) return null;
+		if (typeof renderBlock !== "function") return null;
+		const tables = (bundle.memberItems ?? []).filter((m) => m && m.type === "table");
+		if (!tables.length) return null;
+		if ((bundle.extraTypes ?? []).some((t) => t !== bundle.type)) return null;
+		// REO / BILINGUAL modules are excluded (the round-145 exclusion class). Their
+		// tables are the bilingual machinery's own — TRR301's "Picture | AudioImage |
+		// Reretūpono | Correct word to highlight" grid is the round-135 phonics
+		// audioImage form, and reading it as a slideshow produced four-cell prose
+		// slides and put three literal tags on the page.
+		if (cfg.exclude_reo !== false && MenuBuilder.isReoModule(run)) return null;
+
+		const rich = tpl.rich_slides ?? {};
+		const mv = (env.CARMEMBER_OFF || rich.member_vocabulary?.enabled === false)
+			? {} : (rich.member_vocabulary ?? {});
+		const inline = renderInline ?? ((s) => s);
+		const videoTpl = DataService.Data.EmitTemplates.video?.youtube;
+		const idRe = new RegExp(rich.video_id_re ?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
+
+		const slides = [];
+		for (const item of tables) {
+			const rows = (item.block?.rows ?? []).filter((r) => Array.isArray(r));
+			if (!rows.length) return null;
+			// drop a leading header/label row ("Image ║ Caption", an all-red label row).
+			// NOT the round-63 #isCarouselTitleOrLabelRow: that one counts a row with a
+			// single non-empty cell as a label, which is exactly AGH1002's shape (an
+			// EMPTY image cell beside the caption) and would eat every data row.
+			let data = rows;
+			while (data.length > 1 && this.#carIsHeaderRow(data[0], cfg, tpl)) data = data.slice(1);
+			if (!data.length) return null;
+			// ONE ROW = ONE SLIDE; a single-row table is one slide per CELL (the r266 form).
+			const groups = data.length === 1
+				? data[0].map((c) => [c]).filter((g) => this.#cellText(g[0]).trim() || /https?:\/\//.test(String(g[0] ?? "")))
+				: data.map((r) => r);
+			for (const cells of groups) {
+				const parts = [];
+				for (const cell of cells) {
+					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline });
+					if (got === null) return null;                   // red instruction / unreadable cell
+					parts.push(...got);
+				}
+				if (!parts.length) continue;                         // an empty row (a spacer) — skipped
+				slides.push({ parts });
+			}
+		}
+
+		if (slides.length < (cfg.min_slides ?? tpl.min_slides ?? 2)) return null;
+		if (slides.length > (cfg.max_slides ?? rich.max_slides ?? 20)) return null;
+		// SUBSTANCE GUARD (never half-build): slides carrying no image, video or prose
+		// are not a slideshow — the writer's real material did not reach the bundle.
+		if (cfg.require_content !== false
+			&& !slides.some((s) => s.parts.some((p) => p.img || p.video || p.html || p.p))) return null;
+
+		// The slide-title FORM is a per-GROUP house style (ROUND 214, measured): the
+		// default is <h4>, and the subjects in caption_title_bold ship the title as a
+		// bold <p> lead instead. Reuse that registry rather than mining a second one.
+		const capCfg = tpl.caption_title_bold;
+		const prefix = String(run?.moduleCode ?? "").match(/^[A-Z]+/)?.[0] ?? "";
+		const boldTitle = !(env.CARCAP_OFF) && capCfg && capCfg.enabled !== false
+			&& (capCfg.subjects ?? []).includes(prefix);
+		const html = this.#carRenderSlides(slides, {
+			tpl,
+			cfg: { ...rich, ...cfg, ...(boldTitle ? { heading: cfg.heading_bold ?? "<p><b>{text}</b></p>" } : {}) },
+			inline, run, renderBlock, videoTpl,
+		});
+		if (html === null) return null;
+		if (this.#carHasBracketTag(html, cfg)) return null;           // the leak guard (r167 at this seam)
+		bundle.r279CarouselTable = true;                             // detector/affected-set marker
+		return html;
+	}
+
+	/**
+	 * ROUND 279 — one table CELL to its ordered slide PARTS, using the same
+	 * vocabulary as the rich member walk so a table-authored carousel and a
+	 * member-authored one render identically.
+	 *
+	 * @param {*} cell - the raw cell
+	 * @param {object} ctx - bundle / tpl / cfg / mv / rich / idRe / inline
+	 * @returns {Array<object>|null} the parts, or null to decline the whole build
+	 */
+	static #carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe }) {
+		let raw = String(cell ?? "");
+		if (!raw.trim()) return [];
+		// RED TEXT IN A CELL IS NOT AUTOMATICALLY AN INSTRUCTION. In this dialect the
+		// writer colours the slide's own words — AGH1002-1.0's captions are entirely
+		// red ("Parakiwai / Alluvial soil which is formed through rivers…") and the
+		// GOLD ships them as the slide text — so a table cell follows the round-271
+		// media|caption convention: #cellText strips the sentinels and the words are
+		// content. What IS held back is a red span carrying a WRITER-INSTRUCTION cue
+		// from the shared Instruction_Cues vocabulary ("please", "can you", "dev
+		// team", "note to…"). Only THAT SPAN is lifted out — not the whole cell —
+		// because the writer routinely mixes the two in one cell (XTAS101-0.0's
+		// "[video] Autistic special interests (dev team start at 0:04)"), and it
+		// surfaces as the standard red Writers Note after the widget.
+		raw = this.#carStripInstructionSpans(raw, cfg, (t) => this.#carNoteAssetRequest(bundle, null, t, mv));
+		if (!raw.trim()) return [];
+		// ROUND 284 — REPAIR A DANGLING MEDIA MARKER before anything reads the cell.
+		// A writer who drops the CLOSING bracket ("[image Young man gaming", XMES203-2.0,
+		// whose well-formed siblings are "[image] online chats on phone") defeats BOTH the
+		// kind test and the bracket strip below — they each require a "]" — so the marker
+		// shipped as visible slide text. Round 174 repaired the missing-OPEN form at the
+		// extractor and deliberately left missing-CLOSE alone because RenderText's optional
+		// "]?" absorbed it; this cell path derives its text with its own regexes and never
+		// goes through RenderText, so the same asymmetry re-appeared at a new seam. Repair
+		// the bracket rather than strip the run: the writer's words ("Young man gaming") are
+		// the caption its siblings produce. The negative lookahead means a well-formed
+		// "[image] x" is untouched BY CONSTRUCTION.
+		if (cfg.dangling_marker_repair) {
+			raw = raw.replace(new RegExp(cfg.dangling_marker_repair, "gi"), "[$1] ");
+		}
+		const url = this.#cellMediaUrl(cell) || (raw.match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
+		const kind = (raw.match(new RegExp(cfg.media_marker_pattern ?? "\\[\\s*(image|video|audio|caption|embed)[^\\]]*\\]", "i")) || [])[1];
+		const isVideo = url && (idRe.test(url) || this.#carouselVideoUrlOk(url, rich));
+		// EVERY bracketed marker comes out of the visible text, not just the media one:
+		// the writer brackets media-list references beside it ("[Item 64] [Image] lamp",
+		// TRR102-1.0) and any survivor would be a literal tag on the finished page. Same
+		// strip the round-271 media|caption form uses.
+		const text = this.#cellText(raw).replace(/\[[^\]]*\]/g, " ")
+			.replace(/https?:\/\/[^\s\]"<>]+/g, " ").replace(/\s+/g, " ").trim();
+
+		// a VIDEO cell
+		if (isVideo && (!kind || /video|embed/i.test(kind) || !text)) {
+			const id = String(url).match(idRe)?.[1];
+			const embed = id ? { video: id } : (() => {
+				const alt = this.#carouselVideoEmbed(url, tpl, rich);
+				return alt ? { html: alt } : null;
+			})();
+			if (!embed) { this.#carNoteAssetRequest(bundle, null, raw, mv); return []; }
+			return text ? [embed, { p: text }] : [embed];
+		}
+		// an IMAGE cell — a url names the asset; a brief with no url is an asset request
+		if (url || /^image$/i.test(kind ?? "")) {
+			const file = this.#carImageFilename(url, tpl, mv);
+			if (!file) { this.#carNoteAssetRequest(bundle, null, raw, mv); return text ? [{ p: text }] : []; }
+			return text ? [{ img: file }, { p: text }] : [{ img: file }];
+		}
+		// an AUDIO cell
+		if (/^audio$/i.test(kind ?? "")) {
+			const au = this.#carAudioHtml(url, raw, mv);
+			if (!au) { this.#carNoteAssetRequest(bundle, null, raw, mv); return text ? [{ p: text }] : []; }
+			return text ? [{ html: au }, { p: text }] : [{ html: au }];
+		}
+		// a PROSE cell. The writer separates a slide's title from its copy with " / "
+		// (the round-271 media|caption convention); a SHORT leading segment titles the
+		// slide, a long one is simply the first paragraph.
+		if (!text) return [];
+		const sep = new RegExp(cfg.segment_separator ?? "\\s+/\\s+");
+		const segs = text.split(sep).map((s) => s.trim()).filter(Boolean);
+		if (segs.length > 1 && this.#carIsSlideTitle(segs[0], cfg)) {
+			return [{ h: segs[0] }, { p: segs.slice(1).join("\n") }];
+		}
+		return [{ p: segs.join("\n") }];
+	}
+
+	/**
+	 * ROUND 279 — does this table cell read as a WRITER INSTRUCTION rather than
+	 * slide content? Built from the SHARED Instruction_Cues vocabulary (the same
+	 * data TagNormaliser classifies spans with), so extending it stays a data edit.
+	 * Only a cell whose RED text carries a cue counts: a black cell is the writer's
+	 * own copy, and a red cell that merely names an asset ("[image] teens doing art
+	 * together") is handled as an asset request by the media branches above.
+	 */
+	static #carStripInstructionSpans(raw, cfg = {}, note = () => {}) {
+		if (cfg.instruction_guard === false) return raw;
+		if (!this.#hasRedText(raw)) return raw;
+		// The cue must OPEN the span. The shared Instruction_Cues.cue_patterns list is
+		// built for classifying a whole red SPAN, and several of its entries are
+		// ordinary English ("below", "above", "beside", "note") — matching them
+		// anywhere inside a caption would delete the writer's own prose (AGH1002-1.0's
+		// soil captions). An addressed opener cannot be confused with copy.
+		const openers = cfg.instruction_openers
+			?? (DataService.Data.InstructionCues?.addressee_prefixes ?? [])
+				.concat(["please", "can you", "could you", "could we", "is it possible", "we would like"]);
+		if (!openers.length) return raw;
+		const openRe = new RegExp(`^(?:${openers.join("|")})\\b`, "i");
+		return String(raw).replace(/🔴\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]🔴/g, (whole, inner) => {
+			const words = String(inner).replace(/\[[^\]]*\]/g, " ").replace(/^[^\p{L}\p{N}]+/u, "").trim();
+			if (!words || !openRe.test(words)) return whole;         // content, or a bare marker
+			note(words);
+			return " ";
+		});
+	}
+
+	/**
+	 * ROUND 279 — is this the table's HEADER row (to be dropped) rather than the
+	 * first slide? Only two shapes count: every non-empty cell is entirely RED (the
+	 * writer's column labels, "Image ║ Caption"), or every non-empty cell is exactly
+	 * a label WORD. Deliberately stricter than the round-63
+	 * #isCarouselTitleOrLabelRow, which also treats any single-non-empty-cell row as
+	 * a label — the shape of AGH1002's every data row (an EMPTY image cell beside
+	 * the caption), so reusing it here ate the whole slideshow.
+	 */
+	static #carIsHeaderRow(row, cfg = {}, tpl = {}) {
+		if (!Array.isArray(row) || !row.length) return false;
+		const cells = row.filter((c) => this.#cellText(c).trim());
+		if (!cells.length) return true;                              // a wholly empty spacer row
+		// an all-red row of SHORT labels ("Image ║ Caption", "Slide 1"). The length test
+		// matters: AGH1002-1.0's writer coloured the slide CAPTIONS red, whole sentences
+		// at a time, and without it every data row read as a header and the slideshow
+		// emptied itself.
+		const maxW = cfg.header_max_words ?? 3;
+		if (cells.every((c) => this.#isFullyRed(c))
+			&& cells.every((c) => !/https?:\/\//.test(String(c ?? "")))
+			&& cells.every((c) => this.#cellText(c).replace(/\[[^\]]*\]/g, " ").trim().split(/\s+/).length <= maxW)) return true;
+		const labels = (cfg.header_label_keywords && cfg.header_label_keywords.length)
+			? cfg.header_label_keywords
+			: (tpl.header_label_keywords ?? ["images", "image", "text", "caption", "title", "slide"]);
+		const re = new RegExp(`^(${labels.join("|")})$`, "i");
+		return cells.every((c) => re.test(this.#cellText(c).replace(/\[[^\]]*\]/g, " ").trim()));
+	}
+
+	/** ROUND 279 — a short leading segment is the slide's TITLE, not its first line. */
+	static #carIsSlideTitle(s, cfg = {}) {
+		const t = String(s ?? "").trim();
+		if (!t) return false;
+		const words = t.split(/\s+/).length;
+		// A trailing full stop does not disqualify a SHORT lead — writers punctuate
+		// their slide titles inconsistently and treating "Water levels in soil." as
+		// copy while "Sunlight" became a heading left ONE carousel with two different
+		// slide shapes (AGH1002-3.0). A long sentence is still copy.
+		if (/[.!?]$/.test(t) && words > (cfg.title_max_words ?? 6)) return false;
+		return words <= (cfg.title_max_words ?? 6);
+	}
+
+	/**
+	 * ROUND 279 — THE LEAK GUARD (the round-167 rule at this seam). A finished
+	 * carousel that still shows a bracketed writer tag would put raw markup on the
+	 * page, so it declines and the honest hand-off box is kept instead. Building can
+	 * therefore only ever PREVENT a visible leak, never add one.
+	 */
+	static #carHasBracketTag(html, cfg = {}) {
+		if (cfg.leak_guard === false) return false;
+		const vis = String(html ?? "").replace(/<!--[\s\S]*?-->/g, " ");
+		const re = new RegExp(cfg.leak_pattern ?? "\\[\\s*[A-Za-z][^\\]\\n]{0,40}\\]");
+		if (re.test(vis)) return true;
+		// ROUND 284 — the guard had the SAME blind spot as the strip it backstops: its
+		// pattern requires a CLOSING bracket, so a dangling "[image Young man gaming"
+		// was invisible to it and the build shipped with a visible tag. A second arm
+		// catches an unclosed marker, but only for a KNOWN media tag word, so it can
+		// never refuse a build over an ordinary "[" in the writer's prose.
+		if (!cfg.leak_pattern_dangling) return false;
+		return new RegExp(cfg.leak_pattern_dangling, "i").test(vis);
+	}
+
+	static #carNoteAssetRequest(bundle, m, raw, mv = {}) {
+		if (mv.note_asset_requests === false) return;
+		const txt = this.#cellText(String(m?.text ?? "") || String(raw ?? "")).trim();
+		if (!txt) return;
+		const list = (bundle.instructions ??= []);
+		if (!list.some((s) => String(s).trim() === txt)) list.push(txt);
 	}
 
 	/**
@@ -4302,6 +7645,521 @@ class InteractiveBuilder {
 				: renderBody(p.body))).join(""),
 		}));
 		return [tpl.open, ...buttons, ...contents, tpl.close].join("\n");
+	}
+
+	// =======================================================================
+	// ROUND 283 — THE GENERAL clickDrop COMPOSER
+	// =======================================================================
+	/**
+	 * clickDrop ENTRY (ROUND 283, Chris — the interactive-coverage chain, round 8 of 8).
+	 * The narrow member walk above runs FIRST and is untouched, so all 61 pre-round
+	 * builds are byte-identical BY CONSTRUCTION (the round-276 architecture: a fallback
+	 * cannot break what already works — env CLICKDROPS_OFF proves it).
+	 */
+	static #clickDropEntry({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested }) {
+		const narrow = this.#clickDrop({ bundle, tpl, renderInline, run });
+		if (narrow) return narrow;
+		return this.#clickDropItems({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested });
+	}
+
+	/**
+	 * THE GENERAL clickDrop COMPOSER (ROUND 283; `CLICKDROPS_OFF`).
+	 *
+	 * WHY IT EXISTS. The decline recorder (outputs/_measure_r283_clickdrop.cjs — the
+	 * round-276→282 tool re-pointed, which accounted for 100% of the 629 declines)
+	 * found the blocker is NOT the [image] the coverage dashboard named (round 275
+	 * already fixed that; only 23 declines are image-decided now). It is that the
+	 * narrow walk knows exactly ONE authoring form — a run of labelled [click drop N]
+	 * tags each followed by plain [body] text — and the writers use at least six:
+	 *
+	 *   240  an item with a LABEL and NO CONTENT the walk could keep
+	 *   125  NO item resolved at all — 85 of them lay the items out in a TABLE
+	 *    94  content arrived BEFORE the first button (a lead paragraph, or a
+	 *         heading-delimited series) and the walk treated that as fatal
+	 *    85  a member it cannot place ([H3] 77, [data marker] 18, [video] 62,
+	 *         [button] 58, [external link] 5 — the cross-cutting foreign-member
+	 *         blocker the dashboard also lists against dragAndDrop and accordion)
+	 *
+	 * SO: resolve items from an ordered DELIMITER vocabulary, over the round-278
+	 * member vocabulary shared verbatim (#accMemberParts + its round-281 `delims`
+	 * extension — omitted keys keep every accordion/tabs default, so those paths
+	 * cannot move). First delimiter that yields enough items wins:
+	 *
+	 *   D1  labelled [click drop N] tags            the classic form, now over the
+	 *                                               full member vocabulary
+	 *   D2  a captured TABLE, read five ways (#cdTableItems)
+	 *   D3  a repeating same-level HEADING run      [click drop] [H3] a [H3] b …
+	 *
+	 * GOLD-BACKED GUARDS (outputs/_measure_r283_cdgold.py — 1199 groups / 211 modules,
+	 * body-scoped, class matched as a TOKEN per the round-282 trap):
+	 *   • min_items 1 for an EXPLICIT delimiter — a ONE-item clickDrop is the gold's
+	 *     own PLURALITY at 43.5% — but min_inferred_items 2, because one item from an
+	 *     inferred reading would be a guess (the round-278 explicit-vs-inferred split).
+	 *   • label_max_words 8: of 3036 gold labels, ≤3 words is 83.7% and ≤8 is 99.2%.
+	 *     A longer line is not a button label, so the item takes its BOLD LEAD or the
+	 *     text before the writer's own " / " separator (the round-271/279 rule) — and
+	 *     if neither is there the composer declines rather than putting a paragraph
+	 *     on a button.
+	 *   • A LABEL IS NEVER INVENTED (the round-282 rule).
+	 *
+	 * NEVER HALF-BUILDS: no delimiter resolves enough items · an item with no label or
+	 * no rendered content · red writer-instruction text in a label · a member it cannot
+	 * place · or a finished widget that still shows a resolved [tag] (#accLeakGuard —
+	 * the round-167/275/277/278 rule at this seam, so building can only ever PREVENT a
+	 * visible leak, never add one).
+	 *
+	 * Data interactive_builders.clickDrop.general_items.
+	 */
+	static #clickDropItems({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested }) {
+		const cfg = tpl?.general_items;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.CLICKDROPS_OFF) return null;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return null;
+		const inline = renderInline ?? ((s) => s);
+		const notes = [];
+
+		// (1) Every member as an ordered {role,…} PART — the round-278 vocabulary,
+		//     shared verbatim. `delims` names clickDrop's own delimiter/face tags and
+		//     the elements its gold panels legitimately carry; every omitted key keeps
+		//     the accordion default, so the accordion and tabs cannot move.
+		const parts = this.#accMemberParts(members, {
+			tpl, cfg, run, renderTable, notes,
+			delims: {
+				tags: cfg.delimiter_tags ?? ["click drop"],
+				opener_tags: cfg.opener_tags ?? [],
+				panel_tag_pattern: cfg.delimiter_pattern,
+				panel_ordinal_pattern: cfg.delimiter_ordinal_pattern,
+				head_tags: cfg.head_tags ?? [],
+				head_level: cfg.head_level ?? "h4",
+				text_tags: cfg.text_tags ?? [],
+				note_tags: cfg.note_tags ?? [],
+				face_tags: cfg.face_tags ?? [],
+				delimiter_media_role: cfg.delimiter_media_role !== false,
+			},
+		});
+		if (!parts) return null;
+
+		// (2) Resolve the ITEMS from the first delimiter kind that is present.
+		const items = this.#cdResolveItems(parts, cfg, tpl);
+		if (!items) return null;
+		const floor = items.inferred ? (cfg.min_inferred_items ?? 2) : (cfg.min_items ?? 1);
+		if (items.list.length < floor) return null;
+
+		// (3) Render. The gold's shape is ALL buttons first, then ALL content panels,
+		//     paired by position (the JS pairs button[i] -> content[i]) — the same emit
+		//     the narrow walk uses, so a build from either path is indistinguishable.
+		const built = this.#cdRenderItems(items.list, { tpl, cfg, inline, run, renderBlock, renderNested, lead: items.lead });
+		if (!built) return null;
+		const html = [tpl.open, ...built.buttons, ...built.contents, tpl.close].join("\n");
+		if (this.#accLeakGuard(html, cfg)) return null;            // a build must never ADD a leak
+		// LEAD PROSE — anything the writer put before the first button renders in its
+		// own place ABOVE the widget (the round-196 trailing_body rule, inverted), so
+		// building can never lose a line the writer wrote.
+		const lead = built.lead.filter((h) => h && String(h).trim());
+		if (lead.length && this.#accLeakGuard(lead.join("\n"), cfg)) return null;
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.r283ClickDrop = true;                               // detector / affected-set marker
+		return [...lead, html].join("\n");
+	}
+
+	/**
+	 * ROUND 283 — resolve clickDrop ITEMS from the ordered parts. Returns
+	 * `{ list:[{label, parts:[…]}], lead:[…], inferred:bool }` or null.
+	 *
+	 * `inferred` marks a reading the writer did not delimit explicitly (a table shape,
+	 * a heading run), which raises the item floor to min_inferred_items.
+	 */
+	static #cdResolveItems(parts, cfg, tpl) {
+		const substantive = parts.filter((p) => p.role !== "note");
+		if (!substantive.length) return null;
+
+		// ---- D1: explicit [click drop N] delimiters ---------------------------
+		if (parts.some((p) => p.role === "panel")) {
+			const r = this.#cdWalk(parts, cfg, (p) => (p.role === "panel" ? p.head : null));
+			if (r && r.list.length) return { ...r, inferred: false };
+			return null;
+		}
+
+		// ---- D2: a captured TABLE ---------------------------------------------
+		const tables = parts.filter((p) => p.role === "table");
+		if (tables.length === 1) {
+			const rows = tables[0].item?.block?.rows ?? [];
+			const list = this.#cdTableItems(rows, cfg, tpl);
+			if (list && list.length) {
+				// anything OUTSIDE the table (a lead paragraph, the widget's central image)
+				// keeps its place before the widget.
+				const lead = parts.filter((p) => p.role !== "table" && p.role !== "note");
+				return { list, lead, inferred: true };
+			}
+		}
+
+		// ---- D3: a repeating same-level HEADING run ---------------------------
+		const heads = parts.filter((p) => p.role === "head");
+		if (heads.length >= 2) {
+			const lvl = heads[0].level;
+			if (heads.every((h) => h.level === lvl)) {
+				const r = this.#cdWalk(parts, cfg, (p) => (p.role === "head" && p.level === lvl ? p.text : null));
+				if (r && r.list.length) return { ...r, inferred: true };
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * ROUND 283 — the shared item WALK. `openerOf(part)` returns the label text when
+	 * that part opens a new item, else null. Two general rules live here:
+	 *
+	 *  • CONTENT BEFORE THE FIRST BUTTON is the widget's own LEAD prose, not a reason
+	 *    to throw the widget away (94 declines died on that) — it renders above the
+	 *    widget, in the writer's own place, so no line is ever lost.
+	 *  • A RUN OF MEDIA IMMEDIATELY BEFORE A DELIMITER BELONGS TO THE ITEM IT OPENS.
+	 *    Writers put the item's picture first and name it after ("[click drop 1 image]
+	 *    <url>" then "[H4] Basketball vocabulary", BLL244-2.0), so trailing media is
+	 *    buffered and handed FORWARD; a media part with ordinary content after it is
+	 *    flushed in place and stays where the writer put it.
+	 */
+	static #cdWalk(parts, cfg, openerOf) {
+		const list = [], lead = [];
+		let cur = null, pending = [];
+		const isMedia = (p) => p.role === "img" || p.role === "video" || p.role === "embed";
+		const flush = () => { if (pending.length) { (cur ? cur.parts : lead).push(...pending); pending = []; } };
+		for (const p of parts) {
+			if (p.role === "note") continue;
+			const label = openerOf(p);
+			if (label !== null && label !== undefined) {
+				const lab = this.#cdLabel(label, cfg);
+				if (!lab) return null;
+				const carried = pending; pending = [];
+				cur = { label: lab.label, parts: [...carried] };
+				if (lab.rest) cur.parts.push({ role: "text", text: lab.rest });
+				list.push(cur);
+				continue;
+			}
+			if (isMedia(p)) { pending.push(p); continue; }
+			flush();
+			(cur ? cur.parts : lead).push(p);
+		}
+		flush();
+		return { list, lead };
+	}
+
+	/**
+	 * ROUND 283 — a button LABEL from a line of writer text, or null.
+	 *
+	 * MEASURED (outputs/_measure_r283_cdgold.py, 3036 gold labels): ≤3 words 83.7%,
+	 * ≤6 97.0%, ≤8 99.2%. So a line longer than label_max_words is NOT a label: it is
+	 * the item's own content with its label at the front, and the writer marks that
+	 * front two ways — a **bold lead** (the round-278 accordion rule) or the " / "
+	 * separator the same writers use for a line break (rounds 271/279). Whichever is
+	 * present wins; with neither, the composer declines rather than inventing one.
+	 */
+	/**
+	 * ROUND 283 — a table CELL's own line breaks. The docx extractor serialises the
+	 * line breaks inside a table cell as the writer's " / " separator, and the human
+	 * ships one <p> per part: OSOH501-01's Whanaungatanga panel is three separate
+	 * paragraphs in the gold, from one " / "-joined cell. So " / " becomes a newline
+	 * and the standard black-text renderer takes it from there (a "• " part still
+	 * groups into a real <ul>, per round 241). The round-276 speechBubble precedent,
+	 * and the same `\s+/\s+` form the carousel's segment_separator uses.
+	 */
+	static #cdCellLines(text, cfg) {
+		const t = String(text ?? "");
+		if (cfg.cell_line_split === false) return t;
+		const re = new RegExp(cfg.cell_line_separator ?? "\\s+/\\s+", "g");
+		return t.split(re).map((s) => s.trim()).filter(Boolean).join("\n");
+	}
+
+	static #cdLabel(raw, cfg) {
+		const t = this.#cellText(String(raw ?? "")).replace(/\s+/g, " ").trim();
+		if (!t) return null;
+		if (this.#hasRedText(raw)) return null;
+		// A BARE URL IS NEVER A LABEL. ENGC301-5.0's table is ten Google Drive links and
+		// nothing else, and reading it as label|content shipped five buttons whose face
+		// was a raw URL over an empty panel — caught live by the verifier. A label is
+		// never invented, so a table with no words in it declines.
+		if (/^\s*https?:\/\/\S+\s*$/.test(t)) return null;
+		if (!/\p{L}/u.test(t)) return null;                        // no letters = not a label
+		const max = cfg.label_max_words ?? 8;
+		const plain = t.replace(/\*\*/g, "").trim();
+		if (plain && plain.split(/\s+/).length <= max && !this.#accHasBracketTag(plain)) {
+			return { label: plain, rest: "" };
+		}
+		// (a) a bold lead — "**Stage 1.** • Action: …"
+		const bl = this.#accBoldLead(t, { ...cfg, head_max_words: max });
+		if (bl) return { label: bl.head, rest: bl.rest };
+		// (b) the writer's own " / " separator — "Manaaki / Show respect and kind…"
+		const sep = cfg.label_separator ?? " / ";
+		const i = t.indexOf(sep);
+		if (i > 0) {
+			const head = t.slice(0, i).replace(/\*\*/g, "").trim();
+			if (head && head.split(/\s+/).length <= max && !this.#accHasBracketTag(head)) {
+				return { label: head, rest: t.slice(i + sep.length).trim() };
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * ROUND 283 — ITEMS FROM A CAPTURED TABLE. The single biggest structural blocker:
+	 * 85 of the 125 "no item resolved" declines lay the items out in a table the walk
+	 * never looked at. Five readings, tried in order, each triangulated against a
+	 * writer's template and the human's finished page:
+	 *
+	 *  T1  a FACE-MARKER COLUMN — column 0 is [front]/[drop] repeating, so each
+	 *      front-row/drop-row PAIR gives one item per remaining COLUMN
+	 *      (OSSC401-2.0's 4x5 scam table; the round-282 flipCard T1b turned 90°).
+	 *  T2  a HEADER ROW ([front] | [drop], or known label words) peeled, then
+	 *  T3  N rows x 2 columns — label | content per ROW. The dominant clean form
+	 *      (OSSC401-2.0 misinformation/disinformation/malinformation; XMES203's
+	 *      six image|caption rows, where the image cell IS the button — the gold
+	 *      ships an <img> inside 26.2% of its 3036 buttons).
+	 *  T4  a TWO-ROW table with no markers — one item per COLUMN, row 0 the label
+	 *      and row 1 the content (ENGI401-4.0's five events over five YouTube links).
+	 *  T5  otherwise ONE ITEM PER CELL, each split by #cdLabel (OSOH501-1.0's
+	 *      "[Click drop] Manaaki / Show respect and kind…" — the human's finished
+	 *      page ships exactly those three buttons: Whanaungatanga, Manaaki, Tika).
+	 *
+	 * A cell that is WHOLLY the writer's red instruction text is markup, not content
+	 * (the round-281 rule: #isFullyRed per cell, never "any red").
+	 */
+	static #cdTableItems(rows, cfg, tpl) {
+		if (!Array.isArray(rows) || !rows.length) return null;
+		const cellRaw = (c) => String((c && typeof c === "object" ? c.text : c) ?? "");
+		const grid = rows.map((r) => (r ?? []).map(cellRaw));
+		const w = Math.max(0, ...grid.map((r) => r.length));
+		if (!w) return null;
+		const faceRe = new RegExp(cfg.face_marker_pattern ?? "^\\[?\\s*(front|drop|back|reveal)\\s*\\]?$", "i");
+		const isFace = (s) => faceRe.test(this.#cellText(s).replace(/\*\*/g, "").trim());
+		const has = (s) => this.#cellText(s).replace(/\s+/g, " ").trim().length > 0;
+		// A cell carrying the writer's OWN [click drop] tag is a self-delimited item.
+		const cellDelimRe = new RegExp(cfg.cell_delimiter_pattern ?? "\\[\\s*click\\s*drop[^\\]]*\\]", "i");
+		const isSelfDelim = (s) => cellDelimRe.test(String(s ?? ""));
+
+		// ---- T0: the writer tagged the CELLS themselves ----------------------
+		// When >=2 cells carry their own [click drop] tag the table is not a
+		// label|content grid at all — each tagged CELL is one item, exactly as if the
+		// writer had typed the tags in a paragraph run (OSOH501-1.0's three values,
+		// whose finished page ships precisely those three buttons). Tested FIRST,
+		// because the row/column readings below would otherwise pair a tagged cell
+		// with its neighbour and lose the delimiter the writer actually gave.
+		if (grid.reduce((n, r) => n + r.filter(isSelfDelim).length, 0) >= 2) {
+			const items = [];
+			for (const r of grid) {
+				for (const c of r) {
+					if (!has(c) || !isSelfDelim(c)) continue;
+					const bare = this.#stripStructuralTags(this.#cellText(c).replace(cellDelimRe, " ")).trim();
+					const lab = this.#cdLabel(bare, cfg);
+					if (!lab || !lab.rest) return null;        // a button with nothing behind it
+					items.push({ label: lab.label, parts: [{ role: "text", text: this.#cdCellLines(lab.rest, cfg) }] });
+				}
+			}
+			return items.length ? items : null;
+		}
+
+		// ---- T1: a face-marker COLUMN --------------------------------------
+		if (w >= 2 && grid.length >= 2 && grid.every((r) => isFace(r[0] ?? ""))) {
+			const items = [];
+			for (let r = 0; r + 1 < grid.length; r += 2) {
+				for (let c = 1; c < w; c++) {
+					const lab = this.#cdLabel(grid[r][c] ?? "", cfg);
+					const body = this.#cellText(grid[r + 1][c] ?? "");
+					if (!lab) continue;                       // an unlabelled column is skipped, not fatal
+					const ps = [];
+					if (lab.rest) ps.push({ role: "text", text: this.#cdCellLines(lab.rest, cfg) });
+					if (body) ps.push({ role: "text", text: this.#cdCellLines(body, cfg) });
+					if (!ps.length) continue;                 // never a button with nothing behind it
+					items.push({ label: lab.label, parts: ps });
+				}
+			}
+			return items.length ? items : null;
+		}
+
+		// ---- T2: peel a header row -----------------------------------------
+		let body = grid;
+		if (body.length > 1 && (body[0].every((c) => isFace(c) || !has(c)) && body[0].some((c) => isFace(c)))) {
+			body = body.slice(1);
+		} else if (body.length > 1 && this.#looksLikeHeaderRow(rows[0] ?? [], tpl)) {
+			body = body.slice(1);
+		}
+		if (!body.length) return null;
+
+		// ---- T3: N rows x 2 columns — label | content ------------------------
+		if (w === 2 && body.length >= 1) {
+			const items = [];
+			for (const r of body) {
+				const a = r[0] ?? "", b = r[1] ?? "";
+				if (!has(a) && !has(b)) continue;
+				if (this.#isFullyRed(a) || this.#isFullyRed(b)) return null;   // a marker row we did not peel
+				const item = this.#cdRowItem(a, b, cfg, tpl);
+				if (!item) return null;
+				items.push(item);
+			}
+			return items.length ? items : null;
+		}
+
+		// ---- T4: a TWO-ROW table — one item per COLUMN -----------------------
+		if (body.length === 2 && w >= 2) {
+			const items = [];
+			for (let c = 0; c < w; c++) {
+				const a = body[0][c] ?? "", b = body[1][c] ?? "";
+				if (!has(a) && !has(b)) continue;
+				const item = this.#cdRowItem(a, b, cfg, tpl);
+				if (!item) return null;
+				items.push(item);
+			}
+			return items.length ? items : null;
+		}
+
+		// ---- T5: one item per CELL -------------------------------------------
+		const items = [];
+		for (const r of body) {
+			for (const c of r) {
+				if (!has(c)) continue;
+				if (this.#isFullyRed(c)) continue;             // a bare marker cell is markup
+				const lab = this.#cdLabel(c, cfg);
+				if (!lab || !lab.rest) return null;            // a label with nothing behind it
+				items.push({ label: lab.label, parts: [{ role: "text", text: this.#cdCellLines(lab.rest, cfg) }] });
+			}
+		}
+		return items.length ? items : null;
+	}
+
+	/**
+	 * ROUND 283 — ONE ITEM from a label CELL and a content CELL. The label cell is
+	 * either text, or an [image] the writer made the button itself (XMES203's six
+	 * image|caption rows; the gold ships an <img> inside 794 of its 3036 buttons).
+	 */
+	static #cdRowItem(labCell, conCell, cfg, tpl) {
+		const conText = this.#cellText(conCell).trim();
+		const url = this.#cellMediaUrl(labCell) || this.#cellMediaUrl(conCell);
+		const labText = this.#cellText(labCell).trim();
+		// (a) an IMAGE button — the label cell names an image, with or without a URL.
+		const labIsImage = /^\s*\u{1f534}?\[?\s*(?:insert\s+)?image\b/iu.test(labText)
+			|| /\[\s*(?:insert\s+)?image\b[^\]]*\]/i.test(String(labCell ?? ""));
+		if (labIsImage) {
+			const fn = url ? this.#accImageFilename(url, tpl, cfg) : null;
+			// NO URL = a media-list ASSET REQUEST, and there is no button face to build:
+			// the writer's words there are the PHOTO BRIEF ("quiet space", "man preparing
+			// for bed"), not a label a reader should ever see — the round-282 rule, which
+			// that round's verifier caught shipping as visible card text. A filename is
+			// never invented and a label is never invented, so the widget declines and the
+			// request surfaces as the standard red Writers Note.
+			if (!fn) return null;
+			const alt = this.#stripStructuralTags(labText)
+				.replace(/\[[^\]\n]{0,60}\]/g, " ")
+				.replace(/https?:\/\/\S+/g, " ")
+				.replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
+			if (!conText) return null;
+			return {
+				label: alt || "",
+				labelImg: fn,
+				parts: [{ role: "text", text: this.#cdCellLines(conText, cfg) }],
+			};
+		}
+		// (b) the ordinary label | content row.
+		const lab = this.#cdLabel(labCell, cfg);
+		if (!lab) return null;
+		const ps = [];
+		if (lab.rest) ps.push({ role: "text", text: this.#cdCellLines(lab.rest, cfg) });
+		if (conText) {
+			if (url && !conText.replace(/https?:\/\/\S+/g, "").trim()) {
+				// the content cell is nothing but a media URL — render the media, not a link
+				const vid = String(conCell).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);
+				if (vid) ps.push({ role: "video", id: vid[1] });
+				else {
+					const fn = this.#accImageFilename(url, tpl, cfg);
+					if (!fn) return null;
+					ps.push({ role: "img", filename: fn });
+				}
+			} else {
+				ps.push({ role: "text", text: this.#cdCellLines(conText, cfg) });
+			}
+		}
+		if (!ps.length) return null;
+		return { label: lab.label, parts: ps };
+	}
+
+	/**
+	 * ROUND 283 — render the resolved items into the gold's shape: ALL buttons first,
+	 * then ALL content panels, paired by position. Content routes through the SAME
+	 * black-text renderer the narrow walk has used since round 241, so a panel built
+	 * either way is byte-identical.
+	 */
+	static #cdRenderItems(list, { tpl, cfg, inline, run, renderBlock, renderNested, lead: leadParts }) {
+		const buttons = [], contents = [];
+		const listContent = (tpl.list_content ?? false)
+			&& !(typeof process !== "undefined" && process.env && process.env.CDLIST_OFF);
+		const renderText = (text) => {
+			if (!String(text ?? "").trim()) return "";
+			if (listContent) return ListsAndRuns.renderBlackText(String(text), run, [], false).join("");
+			return `<p>${inline(String(text))}</p>`;
+		};
+		const renderParts = (rawParts) => {
+			// CONSECUTIVE TEXT IS ONE BLOCK. The writer's bullet lines arrive as separate
+			// parts, and rendering each on its own gave every bullet its own <ul>; the gold
+			// ships one list (round 241). Joining them first lets the standard black-text
+			// renderer group them exactly as it does in free body text.
+			const parts = [];
+			for (const p of rawParts) {
+				const last = parts[parts.length - 1];
+				if (p.role === "text" && last && last.role === "text") {
+					last.text = `${last.text}\n${p.text}`;
+					continue;
+				}
+				parts.push(p.role === "text" ? { ...p } : p);
+			}
+			const chunks = [];
+			for (const p of parts) {
+				if (p.role === "img") chunks.push(this.#assetImage(p.filename, tpl, run));
+				else if (p.role === "video") {
+					const vt = DataService.Data.EmitTemplates.video?.youtube;
+					if (!vt) return null;
+					chunks.push(Utils.FillTemplate(vt, { videoId: p.id, params: "" }));
+				} else if (p.role === "embed") chunks.push(p.html);
+				else if (p.role === "head") chunks.push(`<${p.level}>${inline(p.text)}</${p.level}>`);
+				else if (p.role === "table") { if (!p.html) return null; chunks.push(p.html); }
+				else if (p.role === "nested") {
+					if (typeof renderNested !== "function") return null;
+					const ph = renderNested(p.bundle);
+					if (!ph) return null;
+					chunks.push(ph);
+				} else if (p.role === "text") {
+					const h = renderText(p.text);
+					if (h) chunks.push(h);
+				} else if (p.role === "face") {
+					const h = renderText(p.text);
+					if (h) chunks.push(h);
+				} else return null;                            // a role this widget cannot place
+			}
+			return chunks.join("");
+		};
+
+		for (const it of list) {
+			if (!it.label && !it.labelImg) return null;         // never an unlabelled button
+			if (this.#hasRedText(it.label)) return null;
+			const content = renderParts(it.parts);
+			if (content === null) return null;
+			if (!String(content).trim()) return null;           // never a button with nothing behind it
+			// …and never a button whose panel has NOTHING A READER CAN SEE. A panel built
+			// only from a media placeholder strips to no text at all; the gold's own
+			// image-first panels always carry words too, so an all-chrome panel is a
+			// half-build and the widget keeps its honest hand-off box.
+			if (cfg.require_panel_text !== false
+				&& !String(content).replace(/<!--[\s\S]*?-->/g, " ").replace(/<[^>]+>/g, " ").trim()) return null;
+			const labelHtml = it.labelImg
+				? this.#assetImage(it.labelImg, tpl, run)
+				: inline(it.label);
+			buttons.push(Utils.FillTemplate(tpl.button, { label: labelHtml }));
+			contents.push(Utils.FillTemplate(tpl.content, { content }));
+		}
+		const lead = [];
+		if ((leadParts ?? []).length) {
+			const h = renderParts(leadParts.filter((p) => p.role !== "note"));
+			if (h === null) return null;
+			if (String(h).trim()) lead.push(String(h));
+		}
+		return { buttons, contents, lead };
 	}
 
 	// =======================================================================

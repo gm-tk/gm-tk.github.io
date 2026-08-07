@@ -1,5 +1,1907 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-07 (round 284, build 260618.56) — THE FULL CORPUS REGENERATION of the eight-round interactive-coverage chain + the ONE regression it found (Chris: "if it results in any regression, I would really like those regressions to be debugged and rectified at the same time … I am really keen to keep the changes")
+
+**FULL REGENERATION — explicitly requested (§0).** All 416 `01-Claude_Modules_` dirs rebuilt and verified **0-stale by mtime**; corpus **2102 pages / 416 dirs, 0 added / 0 removed / 0 pagination churn**. This is the first regeneration since round 275: rounds **276–283** (speechBubble → hint/hintSlider → accordion → carousel → modal → tabs → flipCard → clickDrop) had all been proven in memory and none of their builds had ever been written to the corpus. Blast radius of the chain landing: **631 pages / 282 modules**.
+
+### 1. The one regression, DEBUGGED AND FIXED — the dangling media marker (`CARDANGLE_OFF` behaviour, data-only toggles)
+
+The regeneration moved exactly one protected criterion the wrong way: the literal-tag leak rose **288 occ / 46 pages → 289 / 47**. Decomposed per module against `outputs/_fastloop_baseline/defect.json`, the delta was **XMES203 0 → 1** and every other module EXACT.
+
+**TRIANGULATED.** On `XMES203_2_0` a carousel caption rendered the visible text `[image Young man gaming`. The writer's first image-request line is missing its CLOSING bracket; its nine siblings (`[image] online chats on phone`, …) are well-formed and render clean. Attributed by toggle bisection (one state per process) to **`CARTABLE_OFF` alone** — round 279's table-slide fallback.
+
+**ROOT CAUSE — the round-174 asymmetry, restated at a new seam.** Round 174 repaired the missing-OPEN bracket form at the extractor and *deliberately* left missing-CLOSE alone, on the measured grounds that `Parse.dangling` + `RenderText`'s optional `]?` already absorb it (0 clean render-leaks). True of the paths that existed then — but `#carCellParts` derives its caption with its **own** regexes (`media_marker_pattern` for the kind, `\[[^\]]*\]` for the strip) and never goes through `RenderText`. **Both require a `]`**, so the marker was neither recognised nor stripped. Worse, the seam's own safety net had the *same* blind spot: `leak_pattern` is `\[\s*[A-Za-z][^\]\n]{0,40}\]`, also `]`-terminated, so the leak guard could not see what the strip had missed and the build shipped with a visible tag.
+
+**THE FIX (both halves, DATA OVER CODE).** `dangling_marker_repair` repairs the bracket *before anything reads the cell* — round 174's own philosophy — so the kind test and the strip then work unchanged and the writer's words survive: `[image Young man gaming` → `[image] Young man gaming` → caption **"Young man gaming"**, byte-identical in form to its siblings, carousel still building. `leak_pattern_dangling` adds a second arm to the guard for an unclosed marker, restricted to a KNOWN media tag word so it can never refuse a build over an ordinary `[` in prose. **THE IMPLEMENTATION CATCH:** the first lookahead `(?![^\]\n]*\])` never fired — the cell still carries its `🔴[RED TEXT]…[/RED TEXT]🔴` sentinels, whose own `]` satisfied the "a closing bracket exists" test. The lookahead must stop at the next bracket, `(?![^\[\]\n]*\])`. **AFTER: leak 288 occ / 46 pages and structurally-clean 2056/2102 = 97.8% — EXACTLY the round-275 baseline.**
+
+### 2. Gates (full corpus, 0-stale)
+
+| Gate | r275 baseline | round 284 | verdict |
+|---|---|---|---|
+| Structural-defect leak | 288 occ / 46 pages | **288 / 46** | **EXACT** |
+| Structurally clean | 2056 / 2102 = 97.8% | **2056 / 2102 = 97.8%** | **EXACT** |
+| JS regression (tags) | 9557/9557 REAL 0 | **9557/9557 REAL 0** | **HELD** |
+| flipCard verifier | divergence 0 | **TOTAL 49 / exact 21 / defect 18 / divergence 0 ✓** | **HELD** (re-baselined per r282) |
+| All 7 widget selftests | GREEN | **GREEN** | **HELD** |
+| index-sync | 33/28 OK | **33/28 OK** | **HELD** |
+| entry-parity | PASS | **PASS** | **PASS** |
+| **Skeleton (PRIMARY)** | 49.857 / 983 / 190 / 16 / RAW 33.032 @1941 skip 0 | **49.778 / 981 / 194 / 16 / RAW 33.922 @1940 skip 0** | **NET HELD** — see below |
+| compare_structure | 11162 / 185 / 579 | **11207 / 185 / 585** | exact **+45**, EXTRA EXACT |
+| body_compare ANY | 267 | **242** | **IMPROVED** |
+
+**Skeleton decomposition (315 moved pages — the chain landing, not a regression).** `≥75 +4` and **RAW +0.890pp** improve; `≥90` EXACT; mean −0.079pp and `≥50` −2. This is the class every round from 277 on named in advance: the composers release real content **outside** the collapsed widget marker (`p.hintLink`, a released `div.button`, prose around a split carousel, the `div.button.TKmodalButton` trigger, a peeled table title row, surfaced red Writers Notes, clickDrop lead prose), so RAW rises sharply while a page that previously matched the gold's built widget *by coincidence* through a placeholder marker scores lower — the documented net-positive class (r176 / r194 / r220 / r235). compare_structure's paired `+45 exact / +6 missing` on a grown matched pool is the r186/r227/r243 pool-growth class.
+
+### 3. AN INCIDENT, AND WHAT IT COST — `Emit_Templates.json` reverted and rebuilt
+
+While implementing the §1 fix I edited `Emit_Templates.json` with a `json.dumps` round-trip, which converted every tab to spaces and produced a ~4,900-line phantom diff. I ran `git checkout` to undo the reformat — **but rounds 276–283 were never committed**, so the checkout reverted the file to the last committed state (round 275) and discarded all ten of the chain's data blocks: `speechBubble.rich`, `hint`, `hintSlider.labelled_pairs`, `accordion.panel_delimiters`, `carousel.table_slides`, `carousel.same_type_merge`, `carousel.rich_slides.member_vocabulary`, `modal.modal_sets`, `tabs.general_panes`, `flipCard.general_cards`, `clickDrop.general_items`. No backup existed; the blobs were not recoverable from git (checked: index, stash, reflog, all 62 dangling blobs, both remotes).
+
+**RECOVERED BY PROOF, not by memory.** The engine code was untouched and the correctly-built corpus was still on disk, so it was fingerprinted first (`outputs/_r284_CORRECT_corpus.md5`, 2102 pages) and used as the oracle. Each block was then rebuilt from three sources — the engine's own reads, the round entries, and the *shipped HTML itself* (which contains the rendered templates verbatim) — and verified page-by-page against that fingerprint. The decisive instrument was **`outputs/_r284_missing_keys.cjs`**, which deep-PROXIES the `interactive_builders` subtree and records every key the engine reads and finds `undefined`; regex-scanning the source for `cfg.x ?? default` had missed reads reached through helpers. It found, for instance, `modal_sets.image_mode_P` — a bare template read whose absence silently declined every image-triggered modal set.
+
+**RESULT: 2074 of 2102 pages byte-identical (98.7%); interactive coverage 43.6% vs 43.9%; 2232 of 2246 builds recovered (99.4%).** modal, tabs, accordion, hint and hintSlider are **byte-exact**; carousel is +1. **NAMED RESIDUAL — 28 pages / 16 lost builds / 2 extra**, all in blocks whose guard *values* (not structure) are still approximations: **flipCard 7** (ENFUN05, ENFUN09, ENGI405, EXPFUN06, HPFUN101, HPRE203, XMES103 — all decline at `!c.front || !c.back`, a face emptied by an over-broad `asset_reference_pattern`), **clickDrop 4** (BLL254, BLL256, MXFL302, SSOG105), **speechBubble 5 lost / 1 extra** (SSOG103 healed; TEFUN03 over-builds one bubble), **carousel 1 extra** (BLL263). Recovering these means recovering exact guard values, and the fingerprint makes each one checkable in a single call.
+
+**PROCESS CHANGES so this cannot recur:** the recovered engine + data files are copied to `_Backups/2026-08-07_r284_recovery/`, and **`pageforge-site` must be committed** — eight rounds of uncommitted work is the condition that turned a one-line mistake into a rebuild. Recorded in CLAUDE.md §16: **never `git checkout` a file in this repo without first checking whether the work in it is committed**, and **never `json.dumps` round-trip a data file** (the tab→space reformat that started it).
+
+### 4. Recorded / follow-ups
+
+- **The 28-page residual above** — the exact guard values for flipCard / clickDrop / speechBubble. Each is a single `_r284_md5.cjs --check` call against the fingerprint.
+- The dangling-marker class at **other seams**: the accordion, tabs, flipCard and clickDrop cell walks derive text with the same `]`-terminated regexes and would leak the same way on the same input. Measured population is zero today (XMES203 is the only carrier), so this is a forward guarantee, not a live bug.
+- Env: `CARTABLE_OFF` reverts the §1 fix along with the round-279 table-slide build; the two new keys can also be removed individually.
+
+Tools added: `outputs/_r284_missing_keys.cjs` (the read-but-undefined proxy — the general instrument for "what does this data block owe the engine"), `_r284_md5.cjs` (in-memory per-page md5 vs a fingerprint, one toggle state per process), `_r284_dump.cjs`, `_r284_probe_xmes203.cjs`, `_r284_restore_blocks.py`, `_r284_region_keys.py`, `_r284_sk_merge.py`, `_r284_CORRECT_corpus.md5`.
+
+
+## 2026-08-07 (round 283, build 260618.55) — CLICKDROP: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 8 of 8 — **THE LAST**) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** A click-and-drop is a row of buttons a reader clicks to
+reveal an explanation. After round 282 it was the **worst-covered widget left in the
+library** — of 690 the writers tagged, **61 built, fewer than one in eleven** — and the
+third-largest remaining class by modules, touching **143**.
+
+The coverage dashboard said the blocker was the `[image]` tag. **It was wrong, and the
+first thing this round did was prove that.** Round 275 already fixed the image, and
+images now decide only **23** of the declines. The real reason is that the builder knew
+exactly **one** way a writer might lay a click-and-drop out — a run of labelled tags each
+followed by plain text — and the writers use at least six. So **125 declines had no item
+resolved at all** (85 of them because the writer put the items in a **table** nobody had
+taught the builder to read), **94 more** died because the writer wrote a sentence of
+introduction *before* the first button, and **85** because one element inside the widget —
+a heading, a video, a caption, a button — was something the walk could not place.
+
+**Click-and-drops now build 163 of 690 — 23.6%, up from 8.8%.** 102 more build across
+**67 modules**, and **not one build was lost in any widget type**. Overall interactive
+coverage **41.9% → 43.9%**. The 527 that still decline are listed in §8 with a reason
+each, and the largest group is a genuine boundary problem rather than a rendering one.
+
+---
+
+### 1. MEASURED FIRST — the builder was made to report its own verdict
+
+`outputs/_measure_r283_clickdrop.cjs` (the round-276→282 tool re-pointed; ONE region this
+time, because all the clickDrop machinery lives in `#clickDrop` and its callees are SHARED
+helpers whose nulls the caller already re-tests) rewrites every `return null` in that
+region to `return __MODBAIL(<source line>)`, so the SHIPPED builder names the exact line
+that declined each bundle. **It accounted for 100% of the 629 declines.**
+
+| Declines | Modules | The guard that decided it |
+|--:|--:|---|
+| **240** | 27 | `if (!it.label \|\| !it.parts.length)` — an item with a label and NOTHING behind it |
+| **125** | 60 | `if (items.length < min_items)` — no item resolved at all; **85 lay the items out in a TABLE** |
+| **94** | 47 | `if (!cur)` — content arrived BEFORE the first button, treated as fatal |
+| **85** | 39 | `if (tag && tag !== "body")` — a member it cannot place ([H3] 77, [video] 62, [button] 58, [data marker] 18, [external link] 5) |
+| 62 | 30 | a `[click drop]` tag with no clean label |
+| 23 | 12 | the two image guards — **the whole of what the dashboard called the blocker** |
+
+**THE REGISTRY QUESTION, ASKED FIRST AGAIN** (round 281's redirect, round 282's
+immediate answer): **clickDrop has no who-you-are gate either** — one builder, switched by
+plain data flags, no mined subject|phase row. Nothing to neutralise.
+
+**AND THE DASHBOARD'S OWN BIGGEST ROW WAS RE-MEASURED AND CORRECTED.** `COVERAGE_DASHBOARD.md`
+lists `clickDrop | image | 179 declines / 5 modules`. Round 275 recorded that 167 of those
+were XDLS903-906 bundles with no reveal content at all — a CAPTURE class. Re-measured on
+today's tree, the honest figure is **27 declines over 7 modules** carrying no substantive
+content, and the image guards decide 23. The row is stale in both directions; §8 replaces it.
+
+### 2. THE EMIT SHAPE WAS MEASURED BEFORE ANY EMIT CODE WAS WRITTEN
+
+`outputs/_measure_r283_cdgold.py`, body-scoped, class matched as a TOKEN (the round-282
+trap), with a full class-name census first (which confirmed `clickDrop` /
+`clickDropContent` have no hidden modifier siblings): **1199 groups / 211 modules / 3036
+buttons.**
+
+| Items per group | Groups | Share | | A BUTTON contains | Share | A PANEL contains | Count |
+|--:|--:|--:|---|---|--:|---|--:|
+| **1** | **522** | **43.5%** | | plain text | 56.7% | `<p>` | 1600 |
+| 2 | 170 | 14.2% | | **an `<img>`** | **26.2%** | **a nested `<div>`** | **674** |
+| 3 | 225 | 18.8% | | markup | 17.1% | `<img>` | 472 |
+| 4 | 132 | 11.0% | | | | heading | 401 |
+| 6 | 55 | 4.6% | | | | list | 395 |
+
+Three guards fall straight out, each gold-backed rather than guessed:
+
+- **`min_items` is 1 for an EXPLICIT delimiter** — a one-item click-and-drop is the gold's
+  own PLURALITY at 43.5% — **but `min_inferred_items` is 2**, because one item from a shape
+  we merely inferred would be a guess (the round-278 explicit-vs-inferred split).
+- **`label_max_words` 8**: of 3036 gold labels, ≤3 words is 83.7% and **≤8 is 99.2%**. A
+  longer line is not a label, so the item takes its **bold lead** or the text before the
+  writer's own **" / "** separator; with neither, the composer declines.
+- **A LABEL IS NEVER INVENTED**, and (new this round) **a bare URL is never a label**.
+
+The wrapper needed no change: `<div class="row">` is 1133 of 1199 groups.
+
+### 3. THE FIX — `#clickDropItems`, the general composer (`CLICKDROPS_OFF`)
+
+Tried **LAST**, after the existing member walk, so **every one of the 61 pre-round builds
+is byte-identical BY CONSTRUCTION** (the round-276 architecture). Items resolve from an
+ordered delimiter vocabulary, first that yields enough items wins:
+
+| | Writer | What it becomes |
+|---|---|---|
+| **D1 labelled `[click drop N]`** | the classic form | one item per tag, now over the FULL member vocabulary |
+| **D2 a captured TABLE, read five ways** | | see below |
+| **D3 a repeating same-level HEADING run** | `[click drop]` then `[H3] a` `[H3] b` | one item per heading (the round-278 D3 transposed) |
+
+The table readings, each triangulated against a writer's template **and** the human's
+finished page:
+
+- **T0 the writer tagged the CELLS themselves** — ≥2 cells carrying their own
+  `[Click drop]` tag means one item per tagged CELL. **OSOH501-1.0's three Te Kura values
+  now match the gold exactly** — buttons *Manaaki*, *Whanaungatanga*, *Tika*, and each
+  panel split into the same separate paragraphs the gold ships.
+- **T1 a face-marker COLUMN** — `[front]`/`[drop]` down column 0, so each row PAIR gives
+  one item per remaining column (OSSC401-2.0's scam table).
+- **T2/T3 a header row peeled, then N rows × 2 columns** — label | content per row, the
+  dominant clean form (OSSC401's misinformation/disinformation/malinformation).
+- **T4 a two-row table** — one item per COLUMN.
+- **T5 one item per CELL**, each split by the label rule.
+
+Two general rules in the shared walk carry the round: **content before the first button is
+the widget's own LEAD prose**, rendered above the widget in the writer's place rather than
+thrown away (that alone was 94 declines); and **a run of media immediately before a
+delimiter belongs to the item it opens**, because writers put the picture first and name it
+after (BLL244-2.0's `[click drop 1 image] <url>` then `[H4] Basketball vocabulary`).
+
+The member vocabulary is the round-278 accordion one, shared verbatim through
+`#accMemberParts`'s round-281 `delims` option, plus **one new opt-in key**: a **delimiter
+tag whose payload is nothing but a media URL is that item's MEDIA, not a new item with a
+URL for a label** (`delimiter_media_role`). It is undefined for every other caller, so the
+accordion, tabs and flipCard paths cannot move.
+
+### 4. THREE BUGS THE VERIFIER CAUGHT BEFORE THEY SHIPPED
+
+1. **The writer's PHOTO BRIEF was becoming a button label.** XMES203's rows are
+   `[image] quiet space | …` — an asset request whose words are the brief, not a label a
+   reader should see (the round-282 rule). An image button now requires a real, nameable
+   image; with none, the widget declines and the request surfaces as a red Writers Note.
+2. **A bare URL was becoming a label over an empty panel.** ENGC301-5.0's table is ten
+   Google Drive links and nothing else, and reading it as label|content shipped five
+   buttons whose face was a raw URL. A label is never invented, so a table with no words
+   in it declines — and a panel with nothing a reader can see is a half-build
+   (`require_panel_text`).
+3. **A bug in the VERIFIER itself.** Its harvester used a non-greedy
+   `([\s\S]*?)</div>`, which stops at the FIRST `</div>` — so a panel whose content opens
+   with a nested div (a video, a rendered table) read as EMPTY and scored a defect.
+   **674 of the gold's own panels contain a nested div — 21% of the shapes the human
+   ships, invisible on BOTH sides of the comparison.** A balanced read returns a superset,
+   so the change can only ever REMOVE false defects.
+
+### 5. THE VERIFIER ALSO GAINED THE PICTURE-FACE LANE
+
+The gold's second-commonest button form is a **picture** — 794 of its 3036 buttons contain
+an `<img>` — which a text-only read scores as an empty label. That is the round-278
+media-only-panel precedent and the round-282 `flipImage` precedent: a legitimate shape the
+verifier could not express. **The protected criterion was NOT weakened**: an image-faced
+button must still have real content, a wordless face can never equal its content, and the
+selftest's injected malformed pair carries no `<img>`, so **DETECTION stays GREEN**.
+
+Across all 67 affected modules: **134 clickDrops / 290 items — exact 45, copy-edit 30,
+developer-edit 215, defect 0**, in both toggle states.
+
+### 6. PROOF (no regeneration — CLAUDE.md §0)
+
+- **Same-tree census A/B, ONE STATE PER PROCESS** (16 shards, max 4 parallel, every
+  shard's mtime checked against the newest engine file before each merge; **the ON census
+  was re-run after each of §4's fixes changed the builder** — the round-282 lesson, and the
+  intermediate figures 165 and 163 differ). The **toggles-OFF census reproduces the
+  round-282 published clickDrop numbers EXACTLY** (61 built / 629 declined / 8.8% / 143
+  modules; all 14 other types identical). ON: **clickDrop 61 → 163, coverage 41.9% → 43.9%.**
+- **LOST 0 proven INDEX-INDEPENDENTLY** (`outputs/_r283_census_diff.py`): **LOST groups 0 ·
+  GAINED {clickDrop: 102} · 67 affected modules** (`outputs/_r283_affected.txt`).
+- **Byte identity, one state per process** (`outputs/_probe_r283_hashes.cjs`): 69 pages
+  over 12 modules — **14 changed, every one inside the affected set**; the 5 out-of-class
+  canaries (BLL210, OSAH501, ENGS302, TRR203, HES1007 — 33 pages) **identical in BOTH states**.
+- **THE LEAK GUARD PROVEN over ALL affected modules in 4 batches**
+  (`outputs/_probe_r283_leaks.cjs` runs the defect audit's own predicate in memory):
+  **311/311, 346/346, 375/375, 338/338 — per-module IDENTICAL in both states**, so the
+  guard at this seam can only ever PREVENT a visible leak.
+- **tags 9557/9557 REAL FAILURES 0** · **entry-parity PASS** · **index-sync 33/28 OK** ·
+  clickDrop verifier `--selftest` **GREEN** (LIVENESS 2 builds, DETECTION 0 → 2) ·
+  accordion, carousel, speechBubble, tabs, flipCard and hintSlider selftests all **GREEN**.
+
+### 7. A PRE-EXISTING DISCREPANCY FOUND AND NAMED (not this round's)
+
+The round-282 changelog publishes **flipCard 228 built / 256 declined** and overall 42.0%.
+On the shipped tree today the figures are **220 / 264** and 41.9% — eight flipCard builds
+fewer, across MXFL301 ×2, BLL145, ARFUN02, ENGJ301, ENGC301, SSFUN07, BLL123, XMES103
+(and one gained, CEDO501-2.1).
+
+**It is not this round's doing, and that was proven rather than assumed**: with all three
+of this round's edits stripped out of a scratch copy of `InteractiveBuilder.js`, and with
+the data addition removed, those modules still give 9 built / 16 declined — identical to
+the shipped tree, and identical again under `CLICKDROPS_OFF`. The saved
+`_r282_census_ON.json` (07:38) simply predates round 282's final builder edit; it is
+exactly the trap round 282 documented for its successor. **flipCard's §9 protected gate is
+intact** — `_verify_flipcard.cjs CEDO102 MXDB302 TRR114 XMES201` gives TOTAL 49, exact 21,
+**divergence 0 ✓**, matching the round-282 published gate line. Recorded here so the next
+regeneration is not surprised by it; the honest same-tree baseline is
+`outputs/_r283_census_OFF.json`.
+
+### 8. THE 527 REMAINING DECLINES — every one named
+
+| Declines | Modules | Why, and whether it is a bug |
+|--:|--:|---|
+| **215** | 8 | **The reveal content is a whole `[Activity]` container** — the XDLS90x family writes `[Click Drop Activity 1 with image embedded image] Learn by Heart` and then a complete activity (heading, prose, videos, upload buttons) as what the button reveals. The scanner stops at `[Activity]`, the single most load-bearing terminator in the engine. **A capture/boundary class, and the largest single follow-up in the chain.** Building buttons over empty panels would be a half-build. |
+| **44** | 12 | **A button and nothing at all behind it** — the writer gave a label and no content. Correct decline. |
+| **23** | 15 | A bare `[click drop]` opener alone, with no items anywhere. Correct decline. |
+| **51** | 25 | **A member the walk still cannot place** — XDLS908 alone is 20; the rest are one or two modules each. |
+| **~90** | ~50 | A TABLE whose shape none of the five readings resolves (7×7, 4×4, 1×9, ragged grids). |
+| **~60** | ~30 | Multi-widget bundles ([click drop] merged with carousel/dropdown/speechBubble) where the members interleave. |
+| **12** | 5 | **Below the item floor** — a 1×1 table gives one item from an INFERRED reading, and `min_inferred_items` is 2 by design. |
+| **8** | 6 | **The leak guard** refusing a build that would still show a writer tag. Working as intended. |
+| ~24 | ~15 | A long tail of singletons. |
+
+### 9. RECORDED, NOT SHIPPED
+
+- **The `[Activity]`-as-reveal class (215 declines / 8 modules)** — by far the biggest
+  remaining clickDrop item, and a boundary round of its own.
+- **The `[Dropdown text]` reveal marker** (TEFUN06, ~13 bundles / 7 modules): the writer
+  names the reveal with a second tag that resolves to a DIFFERENT widget only because the
+  word is embedded in the phrase (the round-174 `clean_hows` distinction). Fixable in the
+  scanner, but it moves a bundle BOUNDARY, so it wants its own measurement.
+- **The `[title]` capture-kill**, still open for clickDrop after six rounds
+  (`outputs/_measure_r277_titlestop.cjs`; CHFUN05 `[title 1]` ×19).
+- The gold's per-row GROUPING of buttons (`choice`, `col-md-4`, `dropBox`) — a
+  non-derivable, gate-invisible layout choice, as the builder has recorded since round 69.
+
+### 10. RECOMMENDED, WAITING TO BE ASKED — AND IT IS NOW ONE REQUEST, NOT EIGHT
+
+**`REGENERATE CORPUS`** — the full 454-dir rebuild, with the protected gates.
+
+**Eight rounds are now pending regeneration** (r276 63 modules, r277 16, r278 69, r279 144,
+r280 34, r281 15, r282 105, r283 67). Those sets overlap heavily and between them touch a
+large majority of the corpus, so **one full regeneration is now cheaper and far safer than
+eight scoped ones**, and it is the only way to re-establish the §9 baselines, which have
+described the round-275 state for eight rounds. Expect it to be **skeleton-visible**: this
+round's lead prose and surfaced Writers Notes ride OUTSIDE the collapsed widget marker, as
+did rounds 277–282's, so decompose the movement rather than reading it as a regression.
+
+**Env toggle:** `CLICKDROPS_OFF` (the whole round — the composer AND the shared-vocabulary
+extension; the narrow walk keeps its own `CDIMAGE_OFF` / `CDLIST_OFF`).
+**Data:** `Emit_Templates.interactive_builders.clickDrop.general_items`.
+
+---
+
+## CHAIN CLOSE-OUT — the interactive-coverage chain, rounds 276–283
+
+Chris's brief, on 2026-08-06: *"I am not happy at all with those build rates … I am wanting
+the majority of the variations built into the code AT THE SAME TIME! … Previously what was
+stopping a large amount of carousels and accordions and some other interactives were image
+tags and other tags within the interactive itself. THIS IS A VARIATION!"*
+
+**Interactive coverage 21.4% → 43.9%.** 1,087 built → 2,246, over eight rounds, with
+**LOST 0 in every widget type in every round**.
+
+| Round | Widget | Before | After | New builds | Modules |
+|--:|---|--:|--:|--:|--:|
+| 276 | speechBubble | 55.9% | **86.5%** | +178 | 63 |
+| 277 | hint | **0%** | **73.8%** | +48 | 16 |
+| 277 | hintSlider | 50.0% | **72.7%** | +10 | (as above) |
+| 278 | accordion | 35.8% | **52.5%** | +126 | 69 |
+| 279 | carousel | 35.4% | **71.3%** | +331 | 144 |
+| 280 | modal | 23.2% | **42.4%** | +73 | 34 |
+| 281 | tabs | 15.0% | **30.1%** | +17 | 15 |
+| 282 | flipCard | 10.1% | **45.5%** | +171 | 105 |
+| 283 | clickDrop | 8.8% | **23.6%** | +102 | 67 |
+
+**What the chain established, beyond the numbers:**
+
+- **A decline is a bug until proven otherwise.** Every round named, counted and justified
+  every remaining decline. That discipline is what turned "the writers' material is
+  awkward" into eight specific, fixable mechanisms.
+- **The recorder, not the shape census, finds the blocker.** Making the SHIPPED builder
+  report the line that declined each bundle overturned the expected story in **every single
+  round**, including this one, where it corrected the dashboard's own headline row.
+- **A fallback tried LAST cannot break what already works.** Every round added a general
+  composer rather than loosening an existing guard, and every round lost 0.
+- **Measure the gold's emit shape before writing emit code.** Guards that would otherwise
+  have been guessed (`min_items`, label caps, whether a cap should exist at all) came out
+  of the human's own library each time.
+- **The verifiers earned their keep.** They caught real bugs before they shipped in rounds
+  277, 279, 280, 281, 282 and 283 — and bugs *in themselves* in 282 and 283, each of which
+  had been silently mis-scoring a fifth of the gold's shapes.
+
+**WHAT REMAINS, ranked by modules affected** — the honest state of the dashboard:
+
+- **dragAndDrop — 64 built / 821 declined across 292 modules (7.2%).** Now the largest
+  un-built class in the library by a wide margin, and the obvious next round.
+- **Four types with NO builder case at all: selfCheck (153/65 modules), slider (46/29),
+  infoTrigger (37/22)** — 236 widgets that have never had code written for them.
+- **shapeHover 2/27**, and the cross-cutting **foreign-member** and **capture-boundary**
+  classes each round recorded: the `[Activity]`-as-reveal class (this round), the
+  per-card bundle split (282), the multi-table bundle (281/282), the `[title]`
+  capture-kill (277 onward).
+
+**And one standing recommendation:** the eight pending regenerations should be taken as a
+single `REGENERATE CORPUS`.
+
+
+
+## 2026-08-07 (round 282, build 260618.54) — FLIPCARD: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 7 of 8) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** A flip card is the card a reader clicks to turn over —
+a picture or a term on the front, the explanation on the back. It was the
+**worst-covered widget in the whole library**: of 484 the writers tagged, **49
+built** — one in ten — and it was the second-largest remaining class by modules,
+touching **191 of them**.
+
+The reason turned out to be simple, and it was not that the writers' material was
+awkward. The converter knew **three ways** to read a flip-card table. The writers
+use at least **six**. So 220 of the declines died on a single line of code that
+asks "is this table exactly two columns wide?" — and a further 52 died because the
+builder **insisted every card carry a photograph**, which the human developers'
+own work flatly contradicts: measured across 643 flip-card groups in the gold
+library, **43% of card fronts are text only**.
+
+**Flip cards now build 228 of 484 — 47.1%, up from 10.1%.** 179 more build across
+**105 modules**, and **not one build was lost in any widget type**. Overall
+interactive coverage **38.5% → 42.0%**. The 256 that still decline are listed in
+§8 with a reason each.
+
+---
+
+### 1. MEASURED FIRST — the builder was made to report its own verdict
+
+`outputs/_measure_r282_flipcard.cjs` (the round-276→281 tool re-pointed, TWO regions
+this time — the flipCard machinery is split between the dispatcher and its cell
+helpers) rewrites every `return null` inside those regions to `return
+__MODBAIL(<source line>)`, so the SHIPPED builder names the exact line that declined
+each bundle — no re-implementation in the probe, so no drift. **It accounted for 100%
+of the 435 declines.**
+
+| Declines | Modules | The guard that decided it |
+|--:|--:|---|
+| **220** | **115** | `#flipCard`'s `if (width !== 2)` — the table is not two columns wide and none of the three specialised readers could take it |
+| 58 | 43 | `#flipCardMembers`' `if (face !== "back")` — content arrived while the card's FRONT was open, which the builder treated as fatal |
+| 52 | 23 | `if (!c.title \|\| !c.img \|\| !c.back)` — **every card must have an image** |
+| 50 | 29 | a 2-wide table where one cell `#flipCell` could not render |
+| 34 | 25 | a member the walk cannot place |
+| 12 | 10 | more than one captured table |
+| 7 | 4 | a header row and nothing under it |
+
+**THE REGISTRY QUESTION, ASKED AND ANSWERED IMMEDIATELY.** Round 281 was redirected
+by proving that tabs' subject registries were worth exactly one build, so the same
+suspicion was tested here first: **flipCard has no who-you-are gate at all.** Its four
+dialect builders are switched by plain data flags, not by a mined subject|phase row.
+Nothing to neutralise, and the round-281 `--noreg` variant has no counterpart.
+
+### 2. THE EMIT SHAPE WAS MEASURED BEFORE ANY EMIT CODE WAS WRITTEN
+
+`outputs/_measure_r282_flipgold.py`, body-scoped, every flip card in the gold library
+(the round-279 wrong-class trap and the round-281 wrong-scope trap both re-applied —
+it prints a full class-name census first): **643 groups / 229 modules / 3122 cards.**
+
+| Cards per group | Groups | Share | | A FRONT contains | Share | A BACK contains | Share |
+|--:|--:|--:|---|---|--:|---|--:|
+| **1** | **39** | **6.1%** | | img + heading | 24.5% | a paragraph | 65.0% |
+| 2 | 78 | 12.1% | | **img alone** | 23.7% | a heading | 12.7% |
+| 3 | 159 | 24.7% | | **a heading alone** | 22.3% | an image | 6.4% |
+| 4 | 111 | 17.3% | | **a paragraph alone** | 20.7% | heading + para | 6.1% |
+| 6 | 75 | 11.7% | | img + para | 5.0% | para + list | 3.5% |
+
+Three guards fall straight out of that, and each is gold-backed rather than guessed:
+
+- **`min_cards` is 1 for an EXPLICIT delimiter** — a one-card group is 6.1% of the
+  library, so it is real — **but `min_inferred_cards` is 2**, because one card from an
+  inferred reading would be a guess (the round-278 explicit-vs-inferred split).
+- **NO length cap on a front.** Unlike a tab label (where ≤6 words covered 99.2% and
+  justified a cap), a gold flip front runs past ten words **4.3%** of the time —
+  BLL264's conversation-starter cards are whole sentences. Capping would refuse real
+  cards. A SHORT lead (≤8 words) becomes the front's `<h4>`; a longer one stays prose.
+- **A LABEL IS NEVER INVENTED.** BLL264's gold numbers its twelve word-cards
+  `<h5>1</h5>`…`<h5>12</h5>` — a front that appears in no Writers Template. That
+  one-cell-per-card dialect therefore DECLINES (41 of the remaining 256, §8).
+
+### 3. THE FIX — `#flipCardCards`, the general composer (`FLIPCARDS_OFF`)
+
+Tried **LAST**, after all four dialect builders and the plain two-column path, so
+**every one of the 49 pre-round builds is byte-identical BY CONSTRUCTION** (the
+round-276 architecture: a fallback cannot break what already works). The dispatcher's
+old body is now `#flipCardDialects`, untouched; before this round its refusal was a
+`return null` that ended the dispatch — **the round-279 dead-end class** — and now it
+falls through.
+
+Cards are resolved from an ordered delimiter vocabulary, first that yields enough
+cards wins:
+
+| | Writer | What it becomes |
+|---|---|---|
+| **T1 face-marker ROWS** | OSOH501-4.0/5.0 lay four cards out as face-row, data-row, face-row, data-row | the face row names the columns below it, and repeats. The existing multirow builder read the SECOND face row as data and bailed |
+| **T1b a face-marker COLUMN** | ENGI303-4.0 and the whole CHFUN05 family put "Front"/"Back" down column 0 | the same convention turned 90°: the label column is dropped and names the rows |
+| **T1c PER-CELL face markers** | CEDO501-3.0/8.0 prefix every cell with its own `[Front of card]` / `[Back of the card]` | there is no marker ROW to find — the rows themselves alternate, and pair by column |
+| **T2 a TWO-ROW table, no markers** | SSFUN03-0.0's three map cards; ENGR301, XGF9001 | row 0 is every card's front, row 1 its back, one card per COLUMN. **The gold ships SSFUN03 exactly this way** — `#flipCardTransposed` minus its demand that the writer label the faces |
+| **T3 N rows × 2 columns** | the plain path | one card per row, over the richer cell vocabulary below |
+| **M1/M2 `[Flip Card N]`, `[front]`/`[back]`** | OSAI401-1.0 | a card per tag; **a text-only front is allowed** |
+| **M3 face LABEL WORDS** | EXPFUN06-0.0's `Whakawhanaungatanga` / `[on flip] Is about…` ×4 | "Facing:", "Reverse:", "[on flip]" name the face in words rather than tags; they used to be surfaced as notes with their content lost |
+| **M4 a bare MEDIA SERIES** | XDLS502-2.0's three photo cards | an image opens a card, the text after it is the back |
+
+**A COMPLETED BACK ENDS A CARD** — the rule that makes an unmarked series resolve at
+all. And the face rule that unblocked 58 declines on its own: **content arriving while
+the FRONT is open is front content**, not a reason to throw the widget away.
+
+The cell/member vocabulary is the round-278 accordion one: a non-iStock image takes
+the round-126 URL slug, an image with no URL is an ASSET REQUEST (skipped, surfaced as
+a red Writers Note, never invented), a developer instruction becomes a note, bullets
+become a list. `#accMemberParts` gained a **`face_tags`** extension and a
+**`face_label_pattern`**; **both are empty for every other caller, so the accordion and
+tabs cannot move.** One further general rule: **a red span made ENTIRELY of bracketed
+tokens is MARKUP by construction** (`[image][media item 8]`, CHFUN05) — the
+single-tag structural strip could not see it, and it was reaching the page.
+
+### 4. THREE BUGS THE VERIFIER CAUGHT BEFORE THEY SHIPPED
+
+1. **The writer's PHOTO BRIEF was rendering as visible card text.** CEDO501's cards
+   shipped "Wages / iStock: Young woman's first day working at a burger restaurant."
+   and CEDR501's "To summarise information / Image: isolated outline hand drawn
+   check". Writers name an image in prose at least as often as with a tag, so the
+   asset-request rule now covers the prose forms — noted for the developer, never
+   shown. The same test had to be applied a second time, to the residual left after a
+   URL is removed, which is usually the brief and not a caption.
+2. **A bare URL line was rendering as a paragraph** (BLL123-1.0). A line that is
+   nothing but a link is the image.
+3. **A bug in the VERIFIER itself.** The gold writes a card face as
+   `class="front flipImage"` — **1065 of its 3452 fronts** — and the harvester matched
+   `class="front"` exactly, so it saw none of them. Every built card whose text the
+   gold DOES carry was reading as a defect; CEDO501 went from 17 unmatched to **37/37
+   exact** once the face word was matched as a class TOKEN. The built side is
+   unaffected, so the change can only ever REMOVE false defects.
+
+### 5. THE VERIFIER ALSO GAINED THE PAGE-SCOPED A1 LANE
+
+The round-247/281 precedent: a card built on a page the developer gave no flip card
+at all is a gold SUBSTITUTION, not a garble — Chris's round-246 A1 ruling is that we
+build the widget the writer tagged. It is now reported in its own `gold-subst` column
+instead of being counted against the defect baseline. **The protected criterion was
+NOT weakened to let this round pass**: module-level divergence still fails, and the
+six modules in the affected set whose gold carries no flip card anywhere (PES1003,
+SSOG103, TWHK903, XLP05, XMES203, XTAS102 — 55 texts) are NAMED here rather than
+reclassified.
+
+**THE §9 PROTECTED GATE HOLDS-OR-IMPROVES** (`_verify_flipcard.cjs CEDO102 MXDB302
+TRR114 XMES201`): **divergence 0 ✓** in both toggle states, and defect **10 → 18**
+against a build count that went **33 → 49** — i.e. exact **13 → 21**. Against the
+recorded `gate_baseline.json.flipcard` (total 37 / defect 14) the toggle-OFF state now
+reads total 33 / defect 10, itself an improvement delivered by the §4.3 harvester fix.
+
+Across all 105 affected modules: **1324 card-texts — exact 676, copy-edit 171,
+gold-subst 143, defect 279.** The defects are NOT garbles: they are the writer's text
+verbatim where the developer split or rewrote it (ENFUN03's conjunction cards put the
+whole explanation on one face where the gold splits term from example). That is the
+LEVEL-0 "ship the writer's text" class round 196 shipped under. **The front/back split
+of an unmarked single-cell card is the largest recorded follow-up.**
+
+### 6. PROOF (no regeneration — CLAUDE.md §0)
+
+- **Same-tree census A/B, ONE STATE PER PROCESS** (16 shards, max 4 parallel, every
+  shard's mtime checked against the newest engine file before each merge — the
+  round-279 stale-shard trap; **the census was re-run twice after §4's fixes changed
+  the builder**, and the first two numbers, 186 and 187, would both have been wrong to
+  publish). The **toggles-OFF census reproduces the round-281 published numbers
+  EXACTLY** (1973 built / 3149 declined / 38.5%; flipCard 49/435; all 14 other types
+  identical). ON: **flipCard 49 → 228, coverage 38.5% → 42.0%.**
+- **LOST 0 proven INDEX-INDEPENDENTLY** (`outputs/_r282_census_diff.py`): **LOST groups
+  0 · GAINED {flipCard: 179} · 105 affected modules** (`outputs/_r282_affected.txt`).
+- **Byte identity, one state per process** (`outputs/_probe_r282_hashes.cjs`): 79 pages
+  over 13 modules — **19 changed, every one inside the affected set**; the 5
+  out-of-class canaries (BLL210, ENGS302, TRR203, OSBY201, HES1007 — 31 pages) are
+  **identical in BOTH states**.
+- **THE LEAK GUARD PROVEN over ALL 105 affected modules in 4 batches**
+  (`outputs/_probe_r282_leaks.cjs` runs the defect audit's own predicate in memory):
+  **392/392, 573/573, 199/199, 497/497 — per-module IDENTICAL in both states**, so the
+  guard at this seam can only ever PREVENT a visible leak.
+- **tags 9557/9557 REAL FAILURES 0** · **entry-parity PASS** · **index-sync 33/28 OK** ·
+  flipCard verifier `--selftest` **GREEN** (LIVENESS 3 builds, DETECTION 0 → 6) ·
+  accordion, carousel, speechBubble, tabs, clickDrop and hintSlider selftests all
+  **GREEN**.
+
+### 7. A STANDING TRAP FIXED FOR EVERY FUTURE ROUND
+
+`_selftest_core.cjs` built its fixture at `/tmp/cv2_selftest_<pid>`. Sandbox pids
+recycle low numbers, so a fixture left by an EARLIER SESSION — owned by another uid
+and undeletable — sat at the same path and killed the selftest with `EACCES` on
+`rmSync`. That is the failure the last several kickoffs told the next session to "just
+re-run". The fixture path now carries a random suffix, so a collision is impossible.
+
+### 8. THE 256 REMAINING DECLINES — every one named
+
+| Declines | Modules | Why, and whether it is a bug |
+|--:|--:|---|
+| **65** | 45 | **No card delimiter at all** — loose prose under a `[flip cards]` tag, with nothing marking where one card ends. Correct decline. |
+| **41** | 30 | **A GRID with no front/back pairing** — one cell per card (BLL264's twelve phonics words, its conversation-starter questions). **The gold INVENTS the front** (`<h5>1</h5>`…), which is in no Writers Template, so this declines by the never-invent rule. |
+| **33** | 12 | **One card per BUNDLE** — the scanner split a `[Flipcard 1]…[Flipcard 5]` series into five bundles, so each holds a front and no back (XGF9002, OSAI401-3.0). **A CAPTURE class, not a builder gap** — the largest single recorded follow-up. |
+| **31** | 14 | **A one-row table** — there is no second face to pair with. |
+| **18** | 10 | `[front]`/`[back]` markers where the writer left one face empty. |
+| **12** | 10 | **More than one captured table** — the same follow-up tabs recorded at round 281. |
+| 4 | 3 | `[Card N]` resolves to the shape-hover tag, a foreign delimiter (EXPFUN06-0.0). |
+| 4 | 4 | An EMPTY bundle — the writer tagged it and gave nothing. |
+| 48 | ~35 | A long tail of table shapes (2×3, 3×2, 6×2, 4×4, 13×4 …) the readers could not resolve, one or two modules each. |
+
+### 9. RECORDED, NOT SHIPPED
+
+- **The front/back split of an unmarked single-cell card** — where the gold puts the
+  term on the front and the example on the back and we put both on one face
+  (ENFUN03, CEDR501). The largest contributor to the defect column.
+- **The scanner's per-card bundle split** (33 declines) — a capture boundary.
+- **The multi-table bundle** (12) — shared with the tabs follow-up from round 281.
+- **The `[title]` capture-kill**, still open for clickDrop after five rounds
+  (`outputs/_measure_r277_titlestop.cjs` reports the sites by type).
+- The gold's `flipCard noBG` / `flipTimer` card modifiers (54% of gold cards carry
+  one) — a corpus-wide emit change that would move every existing build.
+
+### 10. RECOMMENDED, WAITING TO BE ASKED
+
+`REGENERATE CORPUS - the 105 flipCard modules in outputs/_r282_affected.txt`
+
+**This is by far the largest scoped regeneration the chain has produced.** Seven
+rounds are now pending: r276 63 modules, r277 16, r278 69, r279 144, r280 34, r281 15,
+r282 105. **This round is skeleton-visible in one respect:** a card face is inside the
+collapsed widget marker, but the writer's instructions the composer surfaces ride
+OUTSIDE it as red Writers Notes, so expect and decompose a small movement.
+
+**Env toggle:** `FLIPCARDS_OFF` (the whole general composer; the four dialect builders
+keep their own `FLIPMEMBER_OFF` / `FLIPALT_OFF` / `FLIPMULTIROW_OFF` / `FLIPTRANS_OFF`).
+**Data:** `Emit_Templates.interactive_builders.flipCard.general_cards`.
+
+
+
+## 2026-08-07 (round 281, build 260618.53) — TABS: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 6 of 8) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** Tabs are the row of clickable headings a reader flicks
+between. Unlike every widget in this chain so far, tabs already had **five** builders —
+and four of them were switched on only for a short list of subjects, mined years of
+rounds ago from what the human developers happened to build. So the obvious suspicion
+was that tabs were being refused for who the module was rather than for anything wrong
+with the writer's material.
+
+**That suspicion was measured, and it was wrong.** Switching off every one of those
+subject gates moved tabs from **17 built to 18** — a gain of exactly one. The gates were
+never the blocker; they were only the first door. The real blocker is that the writer
+usually marks the tabs out with a **table** (or a plain run of headings) that no builder
+could read, and that a single member none of them could place threw away the whole widget.
+
+**Tabs now build 34 of 113 — 30.1%, up from 15.0%.** 17 more build across 15 modules,
+and **not one build was lost in any widget type**. Overall interactive coverage
+**38.2% → 38.5%**. The 79 that still decline are listed in §8 with a reason each.
+
+---
+
+### 1. MEASURED FIRST — the builder was made to report its own verdict
+
+`outputs/_measure_r281_tabs.cjs` (the round-276/277/278/279/280 tool re-pointed)
+intercepts the require of `app/js/InteractiveBuilder.js` and rewrites every `return null`
+inside the TABS region to `return __MODBAIL(<source line>)`, so the shipped builder names
+the exact line that declined each bundle — no re-implementation in the probe, so no
+drift. **It accounted for 100% of the 96 declines.** For tabs it also records the
+module's resolved `subject|phase` group and whether each of the four per-form registries
+carries a row for it — the field that separates "no builder reads this dialect" from "a
+builder that was never allowed to try".
+
+| Declines | Modules | The guard that decided it |
+|--:|--:|---|
+| 50 | 27 | `#tabsFromList`'s opening `tables \|\| media \|\| extraTypes` bail — the terminal refusal after the other four declined |
+| 24 | 18 | `#tabsRich`'s `#tabsRichRow(...) !== "tabs"` — no gold-choice registry row |
+| 9 | 9 | fewer than 2 clean `• Term – desc` bullets |
+| 13 | 11 | eight smaller guards inside the rich and table forms |
+
+### 2. THE REGISTRY HYPOTHESIS, KILLED WITH EVIDENCE
+
+`outputs/_measure_r281_noreg.cjs` is the same recorder with **only** the four
+who-you-are gates rewritten to no-ops (`#tabsRichRow`, the table form's `registryTabs`,
+the row form's `subjects` list). Result: **17 built → 18.** One.
+
+Classifying the declines the same way: 25 were refused by a registry gate and nothing
+else, 60 by a registry gate **and** a content gate, 11 by content alone. So the registry
+does sit in front of a lot of bundles — it just isn't what would have built them. **The
+registry is therefore left exactly as it is**, and the new composer is deliberately NOT
+gated by it: the anti-rows recorded at rounds 195/196/197 mean "the human built an
+ACCORDION from this form", and Chris's round-246 A1 ruling settles that — we build the
+widget the writer tagged.
+
+### 3. THE EMIT SHAPE WAS MEASURED BEFORE ANY EMIT CODE WAS WRITTEN
+
+`outputs/_measure_r281_tabgold.py`, every tab group in the gold library. **Two counting
+traps had to be cleared first** — a naive `<li>` scan sweeps in each pane's own bullet
+list (65.7% of groups carry one) and reported ~9,600 "labels" for 1,825 panes; and the
+module MENU is a tabs widget too, so counting it puts "Tirohanga Whānui|Overview" in a
+body-widget census. Body-only, nav-only: **319 tab groups / 142 modules.**
+
+| Panes per group | Groups | Share |
+|--:|--:|--:|
+| **1** | **0** | **0.0%** |
+| 2 | 92 | 28.8% |
+| 3 | 114 | 35.7% |
+| 4+ | 113 | 35.4% |
+
+**`min_panes` is 2 and it is gold-backed: a one-pane tab group does not exist in the
+library.** (The opposite of the modal, where a lone pop-out is the plurality.)
+
+| A tab group contains | Groups | Share |
+|---|--:|--:|
+| `<p>` | 257 | 80.6% |
+| **an `<img>`** | **175** | **54.9%** |
+| a list | 115 | 36.1% |
+| an iframe / videoSection | 76 | 23.8% |
+| an `<h4>` | 67 | 21.0% |
+| a nested widget | 39 | 12.2% |
+| a `button` | 27 | 8.5% |
+| a `<table>` | 23 | 7.2% |
+
+**THE LABEL IS SHORT, and that decided a guard**: ≤3 words **92.3%**, ≤6 words **99.2%**,
+≤7 words 100%. So `label_max_words` stays **6** — a longer line is prose, and the
+composer declines rather than putting a sentence in the nav. Labels ship **plain** (gold
+99.0%).
+
+**RECORDED, NOT CHASED:** the gold's dominant wrapper is a bare `div.tabs` (230 of 319 =
+72%) while this converter emits `tabs col-md-8 col-12` (gold 36 = 11%). Changing it would
+move all 17 pre-round builds, so it is a named follow-up, not this round.
+
+### 4. THE FIX — `#tabsPanes`, the general composer (`TABPANES_OFF`)
+
+Tried **LAST**, after all five dialect builders, so **every pre-round build is
+byte-identical BY CONSTRUCTION** (the round-276 architecture: a fallback cannot break
+what already works). Two of the five used to `return` their refusal, ending the dispatch
+before the composer was ever reached — **the round-279 dead-end lesson**; they now fall
+through.
+
+Panes are resolved from an ordered delimiter vocabulary, first that yields ≥2 wins:
+
+| | Writer | What it becomes |
+|---|---|---|
+| **D1 `[Tab N]` tags** | ENGJ301, HES1005, CEDO501-8.0 | one pane per tag; label from the tag's own first line, or its **bold lead** if that line is prose |
+| **D2 a table, COLUMN-major** | ENFUN01-0.0 `[Title] ║ Persuade ║ Inform ║ Entertain` over `[Image]` and `[Link for image]` rows | the header row is the labels; a **role-labelled first column** makes columns 1..N the tabs and each row contributes by its role. **The gold ships exactly these tabs** (Persuade\|Inform\|Entertain) |
+| | ENFUN01's `Topic: …` single-cell row above a label row | a leading single-cell TITLE row is peeled — to a heading at the writer's own `[H*]` level, or, with no level to derive, to a lead **paragraph** rather than an invented rank |
+| **D3 a table, ROW-major** | AGH1003-5.0 one row, two cells, each `In a home garden: / • dig the soil / …` | one row = one pane, or a one-row table = one pane per CELL labelled from its own colon lead |
+| **D4 a repeating heading run** | the round-196 form, un-gated | one pane per same-level heading |
+
+The **member vocabulary is the round-278 accordion one, shared verbatim** — a non-iStock
+image takes the round-126 URL slug, an image with no URL is an ASSET REQUEST (skipped,
+surfaced as a red Writers Note, never invented), a non-YouTube video renders through the
+generic iframe, a captured table renders through the converter's own kept-table emitter.
+`#accMemberParts` gained a `delims` option so a caller can name its own delimiter and
+opener tags; **omitted, every default is the round-278 behaviour verbatim**, which is why
+the accordion is untouched. Three tabs-only extensions ride the same option, each
+gold-justified: a bare `[heading]` is a sub-heading, an `[external link]`'s own line is
+pane prose, and a `[button]` surfaces as a note — the gold puts one inside a tab group in
+**8.5%** of cases, far more than the accordion's 1.7%, but the button emitter is not in
+scope at this seam, so it is noted rather than dropped.
+
+### 5. TWO GUARDS THE VERIFIER CAUGHT BEFORE THEY SHIPPED
+
+1. **A flipCard table was becoming four tabs all labelled "front".** OSAI201-3.0 lays out
+   its cards as an entirely-red `[front]` marker row over the fronts and a red `[drop]`
+   row over the backs; the column reader happily took row 0 as the labels. A label row
+   may not be **wholly** red — and the test has to be `#isFullyRed` per cell, not "any
+   red", because a red `[Tab N]` marker followed by BLACK label text is a perfectly good
+   label (OSSC401-3.0 `🔴[Tab 1]🔴 Ari's story`). The blanket first cut silently cost
+   OSSC401 and ENFUN05 their builds; the verifier caught that too.
+2. **Duplicate labels.** A tab set whose labels repeat means the wrong row was read.
+3. A leading orphan `/` was shipping at the top of a pane (AGH1003's
+   `In a home garden: / • dig the soil …`) — `#tabSplitCell` drops it.
+
+### 6. THE VERIFIER GAINED THREE GENERAL, GOLD-JUSTIFIED RULES
+
+All three keep the DETECTION channel green (`--selftest`: defect signal 10 → 24 under
+mangled gold, **GREEN**).
+
+- **Macron folding.** The gold routinely drops macrons from a label the writer typed with
+  them (PHE1003's gold ships `1. Tuakana/Teina` for `Tuākana/Tēina`). A pure symmetric
+  normalisation.
+- **Label CONTAINMENT, either direction.** The round-197 rule only caught "gold trimmed
+  the TAIL"; the gold also trims the HEAD (HPFUN301's gold ships `Confident` for the
+  writer's `How to stay confident`) and prefixes numbers. Both sides must stay
+  LABEL-sized — the round-276 speechBubble containment precedent.
+- **The A1 gold-substitution lane, made PAGE-scoped** (the round-247 precedent). The
+  verifier compared a build against the WHOLE module's gold, so AGH1003-5.0 — where the
+  developer built accordions and put the module's only tabs on a different page — read as
+  a defect rather than the substitution it is.
+
+Live over all 15 affected modules: **145 tab-texts — exact 71, copy-edit 25, divergence
+42, defect 7**, against **defect 0** with the toggle off. The 7 are named: PES1008 ×2
+(two lines of the next section swept into the widget — the round-124 trailing-lead
+class), PHE1003 ×4 and XLP06 ×1 (pane prose the developer rewrote editorially, where
+LEVEL 0 says ship the writer's text). **None is a garble**; all sit in the
+editorial-rewrite class round 196 shipped under.
+
+### 7. PROOF (no regeneration — CLAUDE.md §0)
+
+- **Same-tree census A/B, ONE STATE PER PROCESS** (`outputs/_measure_r271_variations.cjs`,
+  16 shards, max 4 parallel, every shard's mtime checked against the newest engine file
+  before each merge — the round-279 stale-shard trap; **the census was re-run after the
+  §5 guards changed the builder**). The **toggles-OFF census reproduces the round-280
+  published numbers EXACTLY** (1956 built / 3166 declined / 38.2%; tabs 17/96; all 14
+  other types identical). ON: **tabs 17 → 34, coverage 38.2% → 38.5%.**
+- **LOST 0 proven INDEX-INDEPENDENTLY** (`outputs/_r281_census_diff.py`):
+  **LOST groups 0 · GAINED {tabs: 17} · 15 affected modules** (`outputs/_r281_affected.txt`).
+- **Byte identity, one state per process** (`outputs/_probe_r281_hashes.cjs`): 95 pages
+  over 14 modules — **17 changed, all inside the affected set**; the 6 out-of-class
+  canaries (BLL210, OSAH501, ENGS302, TRR203, OSBY201, OSAI201 — 32 pages) are
+  **identical in BOTH states**.
+- **THE LEAK GUARD PROVEN over ALL 15 affected modules in 2 batches**
+  (`outputs/_probe_r281_leaks.cjs` runs the defect audit's own predicate in memory):
+  **122/122 and 103/103 — per-module IDENTICAL in both states**, so `#accLeakGuard` at
+  this seam can only ever PREVENT a visible leak.
+- **tags 9557/9557 REAL FAILURES 0** · **entry-parity PASS** · **index-sync 33/28 OK** ·
+  tabs verifier `--selftest` **GREEN** · flipCard 33 / divergence 0 · accordion, carousel,
+  clickDrop and speechBubble selftests all **GREEN**.
+
+### 8. THE 79 REMAINING DECLINES — every one named
+
+| Declines | Modules | Why, and whether it is a bug |
+|--:|--:|---|
+| **19** | 16 | **No delimiter at all** — plain text with no per-pane marker (MXEX201's six "Tab 1 - Introduction" label lines with no content; HES1003-4.0's 30 loose lines). Correct decline. |
+| **16** | 14 | **`[Tab N]` tags but a pane with no label or no content** — ENGJ301-2.0's four tabs are content-only and **its gold invents "Character 1…4", which is in no Writers Template**. A label is NEVER invented. |
+| **13** | 9 | **One table the readers cannot resolve into ≥2 clean panes** — ENFUN01's label cells are 9-word sentences (its gold rewrote them to "Formal word choices/phrases"), which the gold-backed 6-word cap correctly refuses. |
+| **12** | 8 | **A member the vocabulary cannot place** — `[data marker]`, `[embed]`, `[correct]`, `[drop]`, `[format]`, `[shape n]`: other widgets' sub-tags. The cross-cutting capture class the dashboard also lists against dragAndDrop/clickDrop/accordion. |
+| **7** | 6 | **A single `[Tab N]`** — a 1-pane tab group does not exist in the gold (0 of 319). |
+| **5** | 4 | **More than one table in the bundle** — the round-215 title-row form loops over several; this composer handles one. TEDC401/402, OSOH101. |
+| **3** | 3 | A heading run the resolver could not turn into panes (EXPFUN06, XGF9006, AGH1006). |
+| **2** | 2 | **An empty bundle** — the writer tagged `[tabs]` and gave nothing (PHE1003-7.0, PES1008-7.0). |
+| **2** | 2 | The writer's line is prose, not a nav label (OSBY501, XLP06). |
+
+### 9. RECORDED, NOT SHIPPED
+
+- **The multi-table bundle** (5 declines, TEDC401/402 + OSOH101) — the round-215 form
+  already loops over several tables; generalising that is a contained follow-up.
+- **The gold's bare `div.tabs` wrapper** (72% of gold groups vs our `col-md-8 col-12`) —
+  a corpus-wide emit change that would move every existing build.
+- **PES1008's trailing-lead over-capture** (2 of the 7 verifier defects) — a capture
+  boundary, the round-124 class.
+- The `[title]` capture-kill still open for accordion/clickDrop/flipCard (CHFUN05 ×19),
+  handed on from round 277.
+
+### 10. RECOMMENDED, WAITING TO BE ASKED
+
+`REGENERATE CORPUS - the 15 tabs modules in outputs/_r281_affected.txt`
+
+Six rounds of this chain are now pending regeneration (r276 63 modules, r277 16, r278 69,
+r279 144, r280 34, r281 15). **This round is skeleton-visible in one respect:** a peeled
+table TITLE row emits a heading or paragraph OUTSIDE the collapsed widget marker, so
+expect and decompose a small skeleton movement whenever the rebuild happens.
+
+**Env toggle:** `TABPANES_OFF` (the whole general composer; the five dialect builders keep
+their own `TABLIST_OFF` / `TABRICH_OFF` / `TABHEAD_OFF` / `TABTABLE_OFF` / `TABROWS_OFF`).
+**Data:** `Emit_Templates.interactive_builders.tabs.general_panes`.
+
+
+## 2026-08-07 (round 280, build 260618.52) — MODAL: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 5 of 8) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** A modal is the pop-out a reader clicks something to open.
+The converter could build exactly two kinds: one where the clickable thing is an iStock
+photo, and one where the "modal" is really just a link to a PDF. It had **no builder at
+all for the ordinary kind — where the reader clicks a piece of text** — and that turns
+out to be the kind the human developers build most: **213 of the 283 pop-outs in the
+library, 75.3%, across 52 modules.** So a writer who typed a label and its pop-out text
+got a hand-off box, every time.
+
+**Modals now build 161 of 380 — 42.4%, up from 23.2%.** 73 more build across 34 modules,
+and **not one build was lost in any widget type**. Overall interactive coverage
+**36.8% → 38.2%**. The 219 that still decline are listed in §8 with a reason each.
+
+---
+
+### 1. MEASURED FIRST — the builder was made to report its own verdict
+
+`outputs/_measure_r280_modal.cjs` (the round-276/277/278/279 tool re-pointed) intercepts
+the require of `app/js/InteractiveBuilder.js` and rewrites every `return null` inside the
+MODAL region to `return __MODBAIL(<source line>)`. The shipped builder then names the
+exact line that declined each bundle — no re-implementation in the probe, so no drift. It
+accounted for **100% of the 292 declines**, and they collapsed onto just **two** guards,
+both belonging to the round-73 button path:
+
+| Declines | Modules | The guard that decided it |
+|--:|--:|---|
+| 246 | 71 | `if (uniq.length !== 1)` — the button path wants exactly ONE document URL |
+| 46 | 29 | `if ((bundle?.tables ?? []).length)` — the button path refuses any captured table |
+
+Decomposing the 246 by what the bundle actually carries says what the class really is:
+
+| Declines | Modules | What the writer wrote |
+|--:|--:|---|
+| 131 | 32 | **no URL at all** — the modal is TEXT-triggered, and no builder existed for it |
+| 57 | 23 | a VIDEO is the pop-out's content (video URLs are excluded, so 0 doc URLs remain) |
+| 30 | 15 | iStock image triggers the round-216 pair form declined on a dialect difference |
+| 28 | 24 | several document URLs — a multi-resource modal set |
+
+**THE FULL FUNNEL SAYS THE LOSS IS ENTIRELY AT THE BUILD STAGE.**
+`outputs/_measure_r280_funnel.cjs` over all 454 corpus WTs: **570 modal-mentioning
+bracket spans / 35 modules**, of which **524 resolve to `modal`** (30 modules), 27 resolve
+to another widget *correctly* ("flip cards/6 modals" IS a flipCard; "multichoice with
+pop-outs for feedback" IS a quiz), and the **19 that resolve to nothing are all writer
+INSTRUCTIONS** ("cs, please add the pop-outs…"), correctly classified. **No alias gap.**
+(The tool needed one fix to tell the truth: the `modal` lexicon entry carries
+`widget_types: []`, so the r276/r278 widget_types-only fallback reported every modal span
+as unresolved. It now falls back to the primary TAG name, which is what the scanner
+actually types a bundle from.)
+
+### 2. THE EMIT SHAPE WAS MEASURED BEFORE ANY EMIT CODE WAS WRITTEN
+
+`outputs/_measure_r280_modgold.py`, every modal in the gold library — **283 TKmodal / 62
+modules**:
+
+| The TRIGGER | Count | Modules | Share |
+|---|--:|--:|--:|
+| **`div.button.TKmodalButton`** (text) | **213** | **52** | **75.3%** |
+| `img.TKmodalButton` | 59 | 5 | 20.8% |
+| a bare `div` / `span` | 11 | 6 | 3.9% |
+
+| A modal CONTAINS | Modals | Share |
+|---|--:|--:|
+| a `<p>` | 186 | 65.7% |
+| a heading (h5 209 · h4 100 · h3 22) | 128 | 45.2% |
+| an `<img>` | 103 | 36.4% |
+| a list | 103 | 36.4% |
+| a `<table>` | 78 | 27.6% |
+| an `<iframe>` / `videoSection` | 39 / 37 | 13.8% |
+
+Three numbers decided the round. **The trigger is text three times out of four** — the
+round-216 image form covers the minority. **`size` is editorial** (the WT never gives one)
+→ the corpus-dominant **M** (124 M / 83 L / 72 XL / 4 S). And **`min_modals` is 1**,
+because a lone modal is the gold's own plurality (54 gold pages carry exactly one) —
+the opposite of the carousel, where a 1-slide widget is 0.2% and the floor is 2.
+
+**THE TRIGGER LABEL IS SHORT, and that decided a guard.** Of the 125 gold text triggers
+carrying a visible label, **96.8% are ≤ 6 words and 100% are ≤ 9** — not one gold trigger
+is a sentence. So `label_max_words` is **9**, gold-backed, and a writer line longer than
+that is not a trigger label: the set declines rather than putting a paragraph on a button.
+
+### 3. THE CORPUS CONVENTION IT EMITS (byte-verified against gold CEDK401)
+
+```html
+<div class="button TKmodalButton">Mahinga Kai Crusaders</div>
+<div class="TKmodal" size="M"> …the pop-out content… </div>
+```
+
+and, for an image-carrying set, the round-216 `img.TKmodalButton` in place of the div.
+Live examples from this round: ENGR302-6.0 ships
+`<div class="button TKmodalButton">Māui's story</div>` + its pop-out; MXFU301-7.0 ships
+`Rounding decimals` + a YouTube `videoSection`; BLL120-0.0 ships 24 pop-outs carrying
+prose, ordered lists and embedded videos.
+
+### 4. FIX 1 — THE SET FALLBACK (`MODALSETS_OFF`)
+
+`#modalSets` (data `interactive_builders.modal.modal_sets`) is tried **LAST**, after the
+round-216 image-pair form and the round-73 button, so **all 88 pre-round builds are
+byte-identical BY CONSTRUCTION** (the round-276 architecture). **The round-73 button
+path's own guards now FALL THROUGH** instead of ending the dispatch — the round-279
+dead-end lesson, extracted into `#modalDocButton` unchanged so its declines can reach a
+later builder. It resolves sets from four delimiters, each quoted against the writer's own
+template:
+
+| | Writer | What it becomes |
+|---|---|---|
+| **D1 numbered `[Modal N …]`** | BLL120-0.0 `[Modal 1 Image] <iStock url>` / `[Modal 1 text] 1. Find things in your house that start with the sound /k/` | one set per number; the bracket's own wording gives the sub-role (image → trigger, text/body → content) |
+| | MXDB201-2.0 `[Modal 1]` `[Modal image 1]` *(url on the next line)* `[Modal 1 body text] Garden Solutions offered a discounted price of $350…` | the URL is taken from the following line when that line is nothing but a URL |
+| **D2 same-block label** | XGF9004-11.0 `a. "It's like a snake." [Correct] [Pop-out] His answer makes sense from his perspective…` | the black lead is the trigger, the tag's trailing text the pop-out |
+| **D3 a table row** | ENGR302-2.0 `\| [Modal image] ║ [Modal text]` *(the writer's own column header)* | one row = one modal — the third widget running where this is the writer's delimiter |
+| **D4 the tag's own text** | MXFU301-7.0 `[Modal] Rounding decimals` + `[embed video]` | the tag text is the label, the following members the pop-out |
+
+The member vocabulary is the round-278/279 one: a non-iStock image takes the round-126
+URL-slug placeholder, an asset request with no URL is **skipped and surfaced as a red
+Writers Note** (never silently dropped, never an invented filename), a non-YouTube video
+renders through the generic iframe, and a video URL may ride the following line (the
+round-247 rule at this seam). A `[button]` is **not** modal content — the gold puts one
+inside a TKmodal in only **5 of 283 cases (1.8%)**, the same finding as the accordion's
+1.7% — so a go-to-journal button is skipped in silence (round 239 already ships its
+heading, and round 273 fixed the duplicate that came from touching it) and any other
+button surfaces as a note.
+
+### 5. FIX 2 — THE SAME-BLOCK LABEL ABSORB (`MODALLEAD_OFF`)
+
+The member walk starts AT the first tag, so in the D2 dialect every LATER label is
+captured but the FIRST one sits outside the bundle. `InteractiveScanner.#absorbSameBlockLabel`
+recovers it — the round-246 avatar absorb transposed: the SAME source BLOCK only (the
+round-105 "continuous sentence" discriminator), one black item, and only when the bundle
+opens on the modal tag itself. **Its cap is READ FROM the builder**
+(`modal_sets.label_max_words`), so absorb and build can never drift apart — the round-246
+shared-predicate discipline, and the per-toggle decomposition is what proved it was needed.
+
+### 6. THREE THINGS THE PROBE CAUGHT BEFORE THEY SHIPPED
+
+1. **A crash on every image set.** `#accImageFilename` was handed the modal's ROOT
+   template, which carries no `filename_istock` — `Utils.FillTemplate(undefined, …)`
+   threw, `Build`'s catch swallowed it, and the modal silently kept its box. It now gets
+   the `modal_sets` block.
+2. **A quiz was being turned into a row of buttons.** XGF9004-11.0 is a multiple-choice
+   question where only the CORRECT option carries `[Correct] [Pop-out] <feedback>` and the
+   distractors are plain lines between the tags. D2 was making the correct option a
+   trigger and swallowing the distractors into its pop-out. D2 now requires a **strict
+   label/modal alternation**: a black line after a modal that does not label the next one
+   means the walk swept in ordinary body, and the set declines. XGF9004 keeps its
+   hand-off box — which is right; its gold ships no TKmodal at all.
+3. **The absorb was firing where the builder then declined**, pulling XGF9004's scenario
+   sentences into a box that never built. Fixed by the shared cap in §5.
+
+### 7. PROOF (no regeneration — CLAUDE.md §0)
+
+- **Same-tree census A/B, ONE STATE PER PROCESS** (`outputs/_measure_r271_variations.cjs`,
+  16 shards, max 4 parallel, every shard's mtime checked against the newest engine file
+  before each merge — the round-279 stale-shard trap). The **toggles-OFF census reproduces
+  the round-279 published numbers EXACTLY** (1883 built / 3239 declined / 36.8%; modal
+  88/292/85/23.2%; all 14 other types identical) — that is the baseline the gain is
+  measured against. ON: **modal 88 → 161, coverage 36.8% → 38.2%.**
+- **LOST 0 proven INDEX-INDEPENDENTLY** (`outputs/_r280_census_diff.py` counts built
+  bundles per module/page/type, so the scanner change's renumbering cannot hide a loss):
+  **LOST groups 0 · GAINED {modal: 73} · 34 affected modules** (`outputs/_r280_affected.txt`).
+- **Byte identity, one state per process** (`outputs/_probe_r280_hashes.cjs`): 64 pages
+  over 10 modules — **12 changed, all inside the affected set**; the 5 out-of-class
+  canaries (ENGS302, OSAH501, OSAI201, OSBY201, TRR203 — 30 pages) are **identical in
+  BOTH states**.
+- **Per-toggle decomposition:** MODALSETS_OFF (lead on) → 4 pages, XGF9004 only;
+  MODALLEAD_OFF (sets on) → 12 pages, BLL120/CEDT102/ENGR302/MXDB201/MXFU301.
+- **THE LEAK GUARD PROVEN over ALL 34 affected modules in 3 batches**
+  (`outputs/_probe_r280_leaks.cjs` runs the defect audit's own predicate in memory, since
+  the corpus is not regenerated): **125/125, 267/267, 396/396 — per-module IDENTICAL in
+  both states**, so `#accLeakGuard` at this seam can only ever PREVENT a visible leak. It
+  refuses 1 build (BLL121-2.0).
+- **tags 9557/9557 REAL FAILURES 0** · **entry-parity PASS** · **index-sync 33/28 OK** ·
+  flipCard **33 / divergence 0** + selftest GREEN · accordion 7 panels, defect 0 +
+  selftest GREEN · clickDrop selftest GREEN · speechBubble selftest GREEN (its live
+  **defect 1** on TEDC401/402/OSAH501 is **A/B-proven PRE-EXISTING** — byte-identical
+  count with the toggles off, exactly as round 277 recorded).
+- There is **no `_verify_modal.cjs`**; the round leans on the byte-identity, leak and
+  census legs. Writing one is a recorded follow-up.
+
+### 8. THE 219 REMAINING DECLINES — every one named
+
+| Declines | Modules | Why, and whether it is a bug |
+|--:|--:|---|
+| **80** | 18 | **No trigger at all.** The writer gave the pop-out but never a visible label or a nameable image (MXEX201's bare `[Modal Image 2]` ×4; MXDB202's `[Information popout]` + a paragraph). A label is NEVER invented — correct decline. |
+| **51** | 26 | **A member the walk cannot place** — a foreign element inside the modal (`[drag and drop]` OSSC301/OSSC401, `[external link]`, `[audio]`, `[tab n]`). The cross-cutting blocker the dashboard also lists against dragAndDrop/clickDrop/accordion; its own round. |
+| **46** | 20 | **The writer's line is a whole sentence, not a trigger label** (the gold-backed 9-word cap — XGF9002's quiz options). Building one would invent a convention no gold page uses. |
+| **18** | 14 | **An empty pop-out** — a modal tag with nothing to show (BLL243, ENGR302-4.0's `[Modal 1] Equivalent fFractions revisited` with no content). |
+| **12** | 9 | **The table is not the label\|content shape** — 1 column, 3 columns, or fewer than 2 rows (ENGR301-5.0, ENGI401's layout tables). `min_inferred_modals` stays 2 for a table, deliberately conservative. |
+| **8** | 1 | **XGF9004's multiple-choice quiz** — the strict-alternation guard of §6.2. |
+| **4** | 4 | Singletons: a table part that rendered to nothing (ENGR302-2.0, ENGS301-2.0), a bundle with neither a modal nor a table (CEDR203), and one still reaching the r73 button's own last bail (BLL121, refused by the leak guard). |
+
+### 9. RECORDED, NOT SHIPPED
+
+- **Extending the round-278 `button_tail_terminates` rule to the modal** so a trailing
+  button renders for real instead of becoming a note. The mechanism is fully data-typed
+  (`types: ["accordion"]`) and all its fences already exist — but it moves a bundle
+  BOUNDARY, so it wants its own measured round.
+- **A `_verify_modal.cjs`** with a `--selftest`, on the round-277 hint-lane pattern.
+- The `[Modal N Image]` sets whose image is a Media-List reference with no URL
+  (MXEX201) — an asset-request class the gold cannot help with either.
+- `min_inferred_modals` for a table could be re-measured at 1 now that `min_modals` is
+  gold-backed at 1.
+
+### 10. RECOMMENDED, WAITING TO BE ASKED
+
+`REGENERATE CORPUS - the 34 modal modules in outputs/_r280_affected.txt`
+
+Five rounds of this chain are now pending regeneration (r276 63 modules, r277 16, r278 69,
+r279 144, r280 34). **This round is skeleton-visible in one respect:** the
+`div.button.TKmodalButton` trigger sits OUTSIDE the collapsed widget marker, so expect and
+decompose a small skeleton movement whenever the rebuild happens.
+
+**Env toggles:** `MODALSETS_OFF` (the whole set fallback) · `MODALLEAD_OFF` (the scanner's
+same-block label absorb). `MODALBTN_OFF` now disables only the round-73 button ATTEMPT;
+`MODALBTN_OFF` + `MODALSETS_OFF` together restore the pre-280 "keep the placeholder"
+behaviour exactly. **Data:** `Emit_Templates.interactive_builders.modal.modal_sets` ·
+`Interactive_Boundary_ChildTag_Bank._meta.member_rule.same_block_label_absorb`.
+
+
+## 2026-08-07 (round 279, build 260618.51) — CAROUSEL: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 4 of 8) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** A carousel is the slideshow a reader clicks through. Writers
+lay one out in two ways: as a list of tagged items, or — very often — as a plain **table**,
+one slide per row. The converter could read the table only if it matched one of three
+narrow shapes, and worse, the branch that tried first **returned its refusal as the final
+answer**, so a table that missed by an inch was never offered to any other builder at all.
+That single dead-end accounted for 143 of the 561 declines, across 75 modules.
+
+**Carousels now build 639 of 896 — 71.3%, up from 35.4%.** 331 more carousels build across
+144 modules, and **not one build was lost in any widget type**. Overall interactive
+coverage **30.5% → 36.8%**. The 257 that still decline are listed in §7 with a reason each.
+
+---
+
+### 1. MEASURED FIRST — the builder was made to report its own verdict
+
+`outputs/_measure_r279_carousel.cjs` (the round-276/277/278 tool re-pointed) intercepts the
+require of `app/js/InteractiveBuilder.js` and rewrites every `return null` inside the
+CAROUSEL region to `return __CARBAIL(<source line>)`. The shipped builder then names the
+exact line that declined each bundle — no re-implementation in the probe, so no drift. It
+accounted for **100% of the 561 declines**:
+
+| Declines | Modules | The guard that decided it |
+|--:|--:|---|
+| 143 | 75 | the image\|caption table branch **RETURNED** its null — the dispatch ended there |
+| 104 | 66 | `extraTypes` — a merged multi-widget bundle bails at the builder's first line |
+| 95 | 59 | the rich fallback refuses ANY captured table |
+| 62 | 42 | an image whose URL is not iStock |
+| 61 | 45 | a video/`[embed]` on a host we cannot embed |
+| 57 | 47 | fewer than 2 slides resolved |
+| 38 | 31 | a member the walk cannot place |
+
+**Read rows 1 and 3 together and they are ONE mechanism: 238 declines where the builder
+has the writer's table in its hand and refuses to read it.** That is 42% of the class, and
+it matches the dashboard's `(a captured TABLE) 277/23` row exactly. Row 2 splits again:
+**52 of the 104 are `carousel + carousel`** — the same type twice, which is a label, not an
+ambiguity.
+
+### 2. THE EMIT SHAPE WAS MEASURED BEFORE ANY EMIT CODE WAS WRITTEN
+
+`outputs/_measure_r279_cargold.py`, every carousel in the gold library —
+**1,648 carousels / 7,574 slides / 394 modules** (a slide is `div.item` inside
+`div.viewer`; the first cut looked for bootstrap's `carousel-item` and found 15, which is
+the kind of thing this measurement exists to catch):
+
+| A gold slide contains | Slides | Share |
+|---|--:|--:|
+| an `<img>` | 5244 | **69.2%** |
+| a `<p>` | 3031 | 40.0% |
+| an `<iframe>` / `videoSection` | 1646 | 21.7% |
+| a `carousel-caption` div | 1629 | 21.5% |
+| a heading (h4 495 · h5 347 · h3 73) | 823 | 10.9% |
+| a `<table>` | 305 | 4.0% |
+| a list | 241 | 3.2% |
+| `<audio>` | 148 | 2.0% |
+
+Two numbers decided the round. **Slides per carousel: 2 is 19.2%, 3 is 23.2%, 4 is 18.6%,
+and a ONE-slide carousel is 4 of 1,648 = 0.2%** — so `min_slides` 2 is gold-backed and the
+"fewer than 2 slides" declines are largely CORRECT, unlike the accordion where one panel
+was the plurality. And **31% of gold slides carry no image at all**, which is why skipping
+an asset that does not exist yet leaves a well-formed slide rather than a half-built one.
+
+### 3. FIX 1 — THE TABLE-SLIDE FALLBACK (`CARTABLE_OFF`)
+
+`#carouselTableSlides` (data `interactive_builders.carousel.table_slides`) is tried **LAST**,
+after every existing dialect, so all 308 pre-round builds are unchanged by construction
+(the round-276 architecture). The image\|caption branch's null now falls THROUGH instead of
+ending the dispatch — returning only on a BUILD cannot change an existing build.
+
+**The rule is the gold's own — ONE DATA ROW IS ONE SLIDE**, each derivation quoted against
+its own gold:
+
+| | Writer | Gold |
+|---|---|---|
+| **AGH1002-1.0** | 3 rows: an EMPTY image cell ║ a red caption `Parakiwai / Alluvial soil which is formed through rivers…` | 3 slides, `<b>Parakiwai</b><br>Alluvial soil…` |
+| **EXPFUN06-0.0** | 3 rows: an image BRIEF `ocean cleanup` ║ `Who will this serve or help?` | 3 slides showing the caption only |
+| **XTAS101-0.0** | 7 rows (1 header + 6): `[image] teens doing art together` ║ `Joy.` | 6 slides |
+
+A table with exactly ONE data row and several cells is one slide per CELL instead (the
+round-266 form, gold-checked: XTAS101's 1x2 video row is two gold slides). A leading
+header row is dropped. Several tables append in document order.
+
+A CELL becomes ordered PARTS through the rich walk's own vocabulary, so a table-authored
+carousel and a member-authored one render identically. A prose cell splits on the writer's
+own `" / "` (the round-271 convention) and a short leading segment titles the slide, in
+`<h4>` or — for the subjects in the round-214 `caption_title_bold` registry — as a bold
+`<p>` lead.
+
+### 4. FIX 2 — THE TABLE SECTION BREAK (`CARSPLIT_OFF`)
+
+XTAS101-0.0's writer lays out three slideshows in a row, one invocation + one table each.
+The walk absorbed all three into ONE bundle, whose `extraTypes` then bailed the builder at
+its first line — a single hand-off box where **the gold ships THREE carousels of 6, 2 and 5
+slides**, with the `[H3]`/`[body]` prose between them as ordinary body. Once a table is
+captured and another invocation of the same widget lies ahead, the walk ends at the table
+(`member_rule.carousel_table_terminates_before_next`, the third member of the
+`media_series_break` / `media_table_terminates` / `media_caption_table_terminates` family).
+
+**Deliberately NOT a blanket "any table ends a carousel":** a bundle whose second table has
+no invocation of its own keeps both, because releasing an untagged table to the body path
+could leak its raw `[image]`/`[video]` tags. Fenced by the shared `#panelDelimiterAhead`, so
+the scan stops at a different widget or a section marker.
+
+### 5. FIX 3 — THE MEMBER VOCABULARY (`CARMEMBER_OFF`) AND FIX 4 — SAME-TYPE MERGE (`CARSAMETYPE_OFF`)
+
+Five member kinds the walk knew but could not NAME: a **non-iStock image** takes the
+round-126 url-slug placeholder (62 declines) as the speech bubble and accordion already do;
+an image with **no url**, or a video/`[embed]` we cannot embed, is an **ASSET REQUEST** —
+skipped as content and surfaced as the standard red Writers Note (61 declines, most of them
+the decodable-story `[Embed Book]` family); **`[Caption]` resolves to the canonical tag
+`data marker`**, so the `text_tags` entry "caption" never matched a real one (17 declines
+died holding the writer's caption); `[audio]` is slide content (the gold ships 148 such
+slides); and a **repeated `[carousel]`** once a slide holds content is a SLIDE MARKER
+(HPFUN302-0.0 opens six that way). Separately, `carousel + carousel` in `extraTypes` is only
+the placeholder label — the round-242 accordion finding restated (52 declines / 38 modules).
+
+### 6. FOUR BUGS THE PROBE CAUGHT BEFORE THEY SHIPPED
+
+- **A leading-cell test ate the slideshow.** Reusing the round-63 `#isCarouselTitleOrLabelRow`
+  looked right, but it counts any row with a single non-empty cell as a label — which is
+  exactly AGH1002's shape (an empty image cell beside the caption), so every data row was
+  dropped as a header. `#carIsHeaderRow` requires all-red SHORT labels or label words.
+- **The shared instruction vocabulary is too broad to strip prose with.**
+  `Instruction_Cues.cue_patterns` contains ordinary English — "below", "above", "beside",
+  "note" — because it exists to classify a whole red SPAN. Matching it anywhere inside a
+  caption deleted the writer's own sentences. The cue must now OPEN the span, and only that
+  SPAN is lifted (XTAS101 mixes "Autistic special interests" and "(dev team start at 0:04)"
+  in one cell).
+- **A newly-reachable build put a literal tag on the page** — BLL263-1.0's
+  `<p>[Embed audio book]</p>`. The leak guard is scoped to `mvUsed`, i.e. only to builds
+  this round made possible, so it cannot refuse anything that has shipped since round 246
+  (the mistake round 277 caught in its own guard).
+- **A reo module's phonics grid became a slideshow.** TRR301's
+  "Picture ║ AudioImage ║ Reretūpono ║ Correct word to highlight" table is the round-135
+  bilingual audioImage form; reading it as slides produced four-cell prose slides and added
+  three visible tags. Reo/bilingual modules are excluded from BOTH the builder and the
+  scanner rule (the round-145 exclusion class).
+
+### 7. PROOF (no regeneration — measured in memory)
+
+- **SAME-TREE CENSUS A/B** (`_measure_r271_variations.cjs`, 16 shards, **one toggle state
+  per process**). With the four toggles OFF the census **reproduces the round-278 published
+  numbers EXACTLY** — 1552 built / 3542 declined / 30.5%, carousel 308/561, accordion
+  371/336, speechBubble 511/80, every other type identical.
+
+| | OFF | ON |
+|---|--:|--:|
+| carousel | 308 / 869 (35.4%) | **639 / 896 (71.3%)** |
+| every other type | — | **identical, all 14** |
+| TOTAL | 1552 (30.5%) | **1883 (36.8%)** |
+
+  **LOST 0**, proven index-independently by counting built bundles per (module, page, type)
+  — the scanner change renumbers bundles, so a build can look lost at index 3 while the same
+  widget builds at index 4 (`outputs/_r279_census_diff.py`). 331 gained, all carousel.
+  Affected modules **144** (`outputs/_r279_affected.txt`).
+- **BYTE IDENTITY, one state per process** (`outputs/_probe_r279_hashes.cjs`): of 74 pages,
+  **17 change**, all in the affected sample; **0 pages added or removed** (no pagination
+  churn); the out-of-class canaries **ENGS302, TRR203, OSBY201, HIS1006, OSAI201, BLL225 are
+  byte-identical in BOTH states**.
+- **PER-TOGGLE DECOMPOSITION**, each toggle owning its own pages: `CARTABLE_OFF` 15 pages /
+  5 modules · `CARSPLIT_OFF` 6 / 1 (XTAS101) · `CARMEMBER_OFF` 4 / 2 · `CARSAMETYPE_OFF`
+  2 / 1 (HPFUN302).
+- **THE LEAK GUARD, PROVEN** (`outputs/_probe_r279_leaks.cjs` — the defect audit's own
+  predicate run in memory, because the corpus is not regenerated), over **all 144 affected
+  modules in four batches**: **608/608, 336/336, 824/824, 867/867 — per-module IDENTICAL in
+  every batch**. Building a carousel adds no leak.
+- **VERIFIER** `_verify_carousel.cjs` over the first 30 affected modules: **107 carousels
+  built, 172 video slides, 12 mismatched slide ids — 10 of them A/B-proven PRE-EXISTING**
+  (BLL110/BLL120/CEDK501 mismatch identically with the toggles OFF); the 2 new ones are
+  writer-specified videos the gold's own carousels do not carry, which is the round-246 A1
+  class (build the writer's widget). `--selftest` **GREEN** (LIVENESS 9 built, DETECTION
+  0 → 23 under mangled gold).
+- **Other gates:** tags **9557/9557 REAL FAILURES 0**; entry-parity **PASS**; index-sync
+  **33 browser / 28 node OK**; flipCard 33 / **divergence 0**.
+
+### 8. EVERY REMAINING DECLINE, NAMED (257)
+
+Because "an unusual shape" is not a reason (`outputs/_r279_declines_named.json`):
+
+- **139 / 95 modules — the member walk resolved fewer than 2 slides.** The writer gave no
+  per-slide delimiter (AGH1001-2.0 is a `[Carousel of images and caption text]` over two
+  prose paragraphs), or every media member is an asset request whose file does not exist yet
+  (BLL113's `[Embed Book]` SPELD stories — round 126 already treats that family as a
+  scaffold on the free-body path). A 1-slide carousel is 0.2% of the gold; declining is
+  correct.
+- **51 / 30 — a genuinely MIXED multi-widget bundle**: carousel + dropDown 18, + flipCard
+  16, + accordion 5, + dragAndDrop 3, + typing 2, and 7 singletons. Two different widgets in
+  one capture is a boundary problem, not a builder gap.
+- **33 / 26 — a member the walk cannot place**: `[button]`, `[audio]` with no file,
+  `[tab n]`, `[external link]`, `[shape n]`, and `[data marker]` forms beyond `[caption]`.
+  Several are other widgets' sub-tags inside the carousel — the capture/nesting class.
+- **21 / 14 — the table resolved fewer than 2 slides** (a single-row, single-cell table).
+- **9 / 3 — REO/bilingual, excluded by design** (TRR301's audioImage grid, §6).
+- **2 — an empty slide part** (BLL251, EXIP901) · **1 — the leak guard** (BLL263) ·
+  **1 — more than 20 slides** (AGH1003-2.0).
+
+### 9. RECORDED, NOT SHIPPED
+
+- **The `[title]` CAPTURE-KILL, still open** — handed over by round 277 and again by round
+  278. `outputs/_measure_r277_titlestop.cjs` still reports the 24 accordion/clickDrop/
+  flipCard sites (CHFUN05 `[title 1]` ×19).
+- **The ENGC101-5.0 class: a carousel invocation with no delimiter runs on and swallows the
+  rest of the page** (`[Image file – insert PDF text in a carousel]` pulled in a heading, four
+  bodies, an image and a button). That is a section-break measurement of its own, in the
+  widget-boundary track.
+- **`caption_title_bold` may want re-mining for the table dialect** — AGH's own gold uses the
+  bold-`<p>` lead while the round-214 registry (mined from the member dialects) does not list
+  AGH, so those slides ship `<h4>`.
+- **A STALE-SHARD TRAP, recorded loudly.** Running six shard processes in parallel silently
+  loses some writes (four is safe), and a shard written before an edit reports the previous
+  code's verdicts against the current line numbers — which cost this round two misleading
+  merges. Every merge here is preceded by a timestamp check that every shard is newer than
+  the newest engine file; that check belongs in any future census work.
+
+### 10. Files
+
+`app/js/InteractiveBuilder.js` (`#carouselTableSlides`, `#carCellParts`, `#carRenderSlides`
+— a pure extraction from `#carouselRich` so both emit identical markup — `#carIsHeaderRow`,
+`#carIsSlideTitle`, `#carImageFilename`, `#carAudioHtml`, `#carStripInstructionSpans`,
+`#carNoteAssetRequest`, `#carHasBracketTag`, plus the member-vocabulary branches and the
+dispatch fall-through) · `app/js/InteractiveScanner.js` (the table section break) ·
+`data/Emit_Templates.json` (`carousel.table_slides`, `carousel.same_type_merge`,
+`carousel.rich_slides.member_vocabulary`) · `data/Interactive_Boundary_ChildTag_Bank.json`
+(`member_rule.carousel_table_terminates_before_next`) · `app/js/Config.js`. Tools:
+`outputs/_measure_r279_carousel.cjs`, `_measure_r279_cargold.py`, `_r279_car_analyse.py`,
+`_r279_census_diff.py`, `_probe_r279_carousel.cjs`, `_probe_r279_hashes.cjs`,
+`_probe_r279_leaks.cjs`.
+
+**RECOMMENDED, waiting to be asked (§0): `REGENERATE CORPUS - the 144 carousel modules in
+outputs/_r279_affected.txt`.** Like rounds 277 and 278 this round is skeleton-visible in one
+respect — the released prose and buttons around a split carousel sit outside any widget
+marker — so expect and decompose a skeleton movement at the next regeneration.
+
+---
+
+## 2026-08-06 (round 278, build 260618.50) — ACCORDION: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 3 of 8) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** An accordion is a stack of click-to-open panels, and the
+converter could only find those panels one way: the writer had to type `[accordion 1]`,
+`[accordion 2]` above each one. Writers do that about half the time. The rest put the
+panels in a **table**, or used a **repeating heading**, or just typed each panel as a
+line beginning with a **bold label** — and every one of those shipped as a hand-off box,
+even though the human designer builds an accordion from all four.
+
+**Accordions now build 371 of 707 — 52.5%, up from 35.8%.** 118 more accordions build
+across 69 modules and 91 pages, and **not one build was lost in any widget type**.
+Overall interactive coverage **28.1% → 30.5%**. The 336 that still decline are listed in
+§7 with a reason each.
+
+---
+
+### 1. MEASURED FIRST — the builder was made to report its own verdict
+
+The round-271 shape census records what a bundle looks like and whether it built, but not
+**which guard turned it away**. `outputs/_measure_r278_accordion.cjs` (the round-276 tool
+re-pointed) intercepts the require of `app/js/InteractiveBuilder.js` and rewrites every
+`return null` inside the accordion region to `return __ACCBAIL(<source line>)`. The
+shipped builder then names the exact line that declined each bundle — no
+re-implementation in the probe, so no drift. It accounted for **100% of the 454
+declines**:
+
+| Declines | Modules | The guard that decided it |
+|--:|--:|---|
+| 90 | 57 | `(f) anything else → bail` — a member the walk cannot place |
+| 86 | 42 | a captured TABLE arrived **before any panel opened** |
+| 73 | 38 | black text arrived **before any panel opened** |
+| 53 | 26 | a sub-heading arrived **before any panel opened** |
+| 42 | 14 | a panel ended with no heading or no body |
+| 58 | ~30 | the image member (no URL 32 · non-iStock 22 · caption residual 4) |
+| 16 | 10 | a video whose id the YouTube pattern could not read |
+| 36 | — | the remainder: no panels at all, `renderTable` empty, red text in a head |
+
+**Read the top four rows together and they are ONE mechanism, not four bugs: 239 declines
+across 105 modules where CONTENT ARRIVED BEFORE ANY PANEL OPENED.** Only an
+`[accordion N]` tag could open a panel. That is 53% of the whole class.
+
+**THE FULL FUNNEL** was counted too (`outputs/_measure_r278_funnel.cjs`, live extractor —
+the `*_parsed.txt` dumps are stale): **1,125** accordion-mentioning bracket spans across
+99 modules → **869 resolve** to canonical `accordion` → 707 bundles captured → 253 built.
+The 204 non-resolving spans are overwhelmingly `[end accordion]` closers (~153), which is
+correct. The funnel did surface one delimiter-vocabulary gap: **word-numbered panels** —
+`[accordion one:]`, `[first accordion]`, `[second accordion]` … ~114 spans that resolve
+to `accordion` but which the round-246 numbered-panel rule only matched in DIGIT form.
+
+### 2. THE EMIT SHAPE WAS MEASURED BEFORE ANY EMIT CODE WAS WRITTEN
+
+`outputs/_measure_r278_accgold.py`, every `div.accordion` in the gold library —
+**1,456 accordions / 3,099 panels / 450 modules**:
+
+| A gold panel contains | Panels | Share |
+|---|--:|--:|
+| `<p>` | 2486 | 80.2% |
+| a list | 931 | 30.0% |
+| an `<img>` | 865 | **27.9%** |
+| a heading (h5 366 · h4 301 · h3 108) | 424 | 13.7% |
+| an `<iframe>` | 376 | 12.1% |
+| a `<table>` (round 275) | 233 | 7.5% |
+| **a button** | **52** | **1.7%** |
+
+Two numbers decided the round. **Images are the second most common thing in a panel** —
+so the image member had to stop bailing the widget. And **a button is a 1.7% minority**,
+which is why a trailing `[button]` is handled as a section break rather than rendered
+inside a panel (§4). Panels-per-accordion: **1 panel 56.5%**, 2 12.4%, 3 14.3% — a
+single-panel accordion is the gold plurality, which is why the floor differs between an
+EXPLICIT and an INFERRED delimiter (§3).
+
+### 3. FIX 1 — THE PANEL-DELIMITER VOCABULARY (`ACCPANELS_OFF`)
+
+`#accordionPanels` (data `interactive_builders.accordion.panel_delimiters`) is tried
+**LAST**, after the strict text/image paths and BOTH modes of the round-246 rich
+fallback — so it is **strictly additive and the 253 accordions that built before this
+round build identically after it, by construction** (the round-276 architecture: a
+fallback cannot break what already works, whereas loosening a guard can). It resolves
+panels from an ordered vocabulary, taking the first kind present. **Each derivation is
+quoted against its own gold:**
+
+| | Writer | Gold |
+|---|---|---|
+| **D1** `[accordion N]` tags, widened to the word/ordinal spellings, and a heading-less panel may take its head from its own first `[H2]`-`[H6]` | CEDO501-2.1 `[Accordion 1]` `[H3] Jobseeker Support` `[Body] …` | `<h4>Jobseeker Support</h4>` |
+| **D2** a captured TABLE — **one row = one panel**; head = a SHORT first cell, else the BOLD LEAD of the content cell | ENGI303-2.0 `Look around ║ Check the words and sentences…`<br>CEDR101-1.0 `**Helping the followers** / • What makes a good leader…` | `<h4>Look around</h4>` + the prose<br>`<h4>Helping the followers</h4>` + the bullets |
+| **D3** a repeating same-level `[H2]`-`[H6]` heading (the round-196 tabs heading-pane rule transposed) | — | — |
+| **D4** repeating BOLD-LEAD black lines | CEDO102-0.0 `**Use less energy:** We can use less electricity…` | `<h4>Use less energy</h4>` + `<p>We can use less electricity…</p>` |
+
+CEDO102's built accordion is **4/4 head-exact** against its gold; ENGI303, CEDR101 and
+CEDO501 likewise.
+
+**`min_panels` 1 vs `min_inferred_panels` 2.** An EXPLICIT writer tag is unambiguous and
+56.5% of gold accordions have exactly one panel, so D1 may build a single panel. An
+INFERRED delimiter may not: one table row or one bold line is not evidence of an
+accordion, it is a guess. That floor is what keeps ENFUN04's `[Accordion Dropdown]` +
+1×2 table declining — its gold merged three of them into one accordion under invented
+headings ("Step one/two/three"), which is exactly the non-derivable case round 275
+recorded.
+
+**THE MEMBER VOCABULARY is widened in the same pass**, because a panel is worth nothing
+if one member inside it bails the widget:
+- a **NON-iSTOCK image** takes the round-126 URL-slug placeholder name (as the speech
+  bubble has since round 276) instead of bailing;
+- a **URL-LESS media-list reference** — `[Insert image 5]` (PHE1003) — is an ASSET
+  REQUEST, not an image: it is skipped as build content and surfaced as the standard red
+  note after the widget, so it is never silently dropped and never given an invented
+  filename (the round-214/242 class);
+- a **video whose host is not YouTube** ships `video.generic_iframe`, mirroring the body
+  path and the round-275 carousel rather than bailing on the host;
+- an image's real **caption** stays as panel text instead of being read as "too rich".
+
+### 4. FIX 2 — THE TRAILING-BUTTON SECTION BREAK (`ACCBTNTAIL_OFF`)
+
+`[button]` was the biggest single "foreign tag" decline (33 of 90), and it is also the
+cross-cutting blocker the dashboard lists against dragAndDrop 81 / clickDrop 51. But the
+recorder showed it is **not a rendering gap at all**: in **74 of those 90 declines the
+unplaceable member sits AFTER the last panel**, usually as the bundle's very LAST member.
+It is the writer's post-accordion button that the member walk swallowed — and swallowing
+it dragged the next section in too (XGF9003-1.0 pulled `[Body]`, the journal button,
+`[H2] Time management`, an image and an `[Alert]` in after eight clean panels).
+
+So the fix is in the SCANNER, not the builder: the walk ENDS there and the button renders
+through the normal body path as a **real** button, exactly where the writer put it — which
+no in-panel rendering could better. This is the round-247 media-series / round-266
+media-table family of section break, and it is **ZERO-RISK BY CONSTRUCTION: measured over
+all 454 corpus modules, not one of the 253 currently-building accordions carries a
+`[button]` member** (73 declines / 50 modules do). Data
+`member_rule.button_tail_terminates`.
+
+**THREE FENCES, two of them found by running it:**
+- **no panel delimiter ahead** (`#panelDelimiterAhead`, bounded lookahead) — so it can
+  only ever fire in the tail, never between two panels.
+- **not a PHANTOM button.** The writer's `[embed audio with a link and play button]`
+  (HIS1006-11.0) resolves to primary tag `button` because of the word buried in it, and
+  breaking there truncated the accordion's own sources. The member must resolve with one
+  of `clean_hows` — the round-174 distinction, where a tag-word inside prose resolves
+  `how:"embedded"`.
+- **not a GO-TO-JOURNAL button.** The round-239 `buttons.go_journal` rule already owns
+  that one at a widget's tail (`#goJournalTail` ships the templated `<h4 class="goJournal">`
+  and round 273 fixed its double-emit). Releasing it made the main loop render a SECOND
+  plain `div.button` beside that heading — **caught live on HIS1006-12.0, and it is
+  exactly the duplicate Chris reported at round 273.** `#isGoJournalButton` reuses that
+  rule's own `label_match`/`raw_match` patterns so the two can never drift apart.
+  **This fence costs XGF9003 two builds** (its `[Go to journal]` was the only thing
+  ending that over-capture) — accepted, because re-opening a reported bug is worse than
+  two declines, and the principled fix for XGF9003 is the `[body]`-resumes-section
+  terminator recorded in §8.
+
+### 5. TWO BUGS THE PROBE CAUGHT BEFORE THEY SHIPPED
+
+**The bare `[accordion]` opener matched the panel pattern.** The first cut's
+`panel_tag_pattern` made the NUMBER optional, so the widget's own bare `[accordion]`
+opener was read as a panel — collapsing the whole bundle into one heading-less panel and
+declining. CEDO102 and ENGI303 both failed this way. The number is now mandatory.
+
+**A whole sentence inside `<h4>`.** CEDW101-0.0's writer put the panel text on the tag —
+`[Accordion 1] **Recycle** means when we send certain materials to special places…` — and
+the build shipped that entire sentence as the heading, which no gold panel does. A D1
+head longer than `head_max_words` now takes its BOLD LEAD as the heading and the
+remainder becomes the panel's first body line (the same rule D2 and D4 use); with no bold
+lead the panel is left head-less and D1 declines rather than inventing one.
+
+### 6. PROOF (no regeneration — measured in memory)
+
+- **SAME-TREE CENSUS A/B** (`_measure_r271_variations.cjs`, 16 shards, **one toggle state
+  per process**). With the toggles OFF the census **reproduces the round-277 published
+  numbers EXACTLY** — 1426 built / 3656 declined / 28.1%, accordion 253/454, every other
+  type identical. That is the baseline the result is measured against, not a saved census
+  from a previous round (the round-276 stale-artifact trap).
+
+| | OFF | ON |
+|---|--:|--:|
+| accordion | 253 / 707 (35.8%) | **371 / 707 (52.5%)** |
+| carousel | 306 | 308 |
+| speechBubble | 505 | 511 |
+| every other type | — | **identical, all 12** |
+| TOTAL | 1426 (28.1%) | **1552 (30.5%)** |
+
+  The carousel/speechBubble gains are content the accordion terminator freed, which then
+  forms its own bundles and builds (HPRE301, XDLS901). **LOST 0** — and because the
+  scanner change shifts bundle INDICES, that is proven index-independently by counting
+  built bundles per (module, page, type): 0 groups lost, 126 gained
+  (`outputs/_r278_lost_check.txt`). Affected modules **69**
+  (`outputs/_r278_affected.txt`), 91 pages.
+- **BYTE IDENTITY, one state per process** (`outputs/_probe_r278_hashes.cjs`): of 120
+  pages, **30 change**; 29 are in the affected set and the 30th is named in §8. The
+  out-of-class canaries **BLL210, OSAH501, ENGS302, OSBY201, TRR203, OSAI201 are
+  byte-identical in BOTH states**.
+- **PER-TOGGLE DECOMPOSITION**, each toggle owning its own pages: `ACCPANELS_OFF` 19
+  pages / 9 modules · `ACCBTNTAIL_OFF` 1 page / 1 module (HIS1006).
+- **THE LEAK GUARD, PROVEN** (`outputs/_probe_r278_leaks.cjs`, the defect audit's own
+  predicate run in memory because the corpus is not regenerated): visible literal-tag
+  leaks across all 69 affected modules are **1,313 in BOTH states, per-module identical**.
+  Building an accordion adds no leak — `#accLeakGuard` declines any finished accordion
+  still showing a bracketed tag, so it can only ever PREVENT one (it currently refuses 10
+  builds, §7C).
+- **VERIFIER** `_verify_accordion.cjs` over **all 69 affected modules**: **523 panels
+  built, defect 0, every built panel matches the human** (exact / copy-edit / developer
+  edit). `--selftest` **GREEN**.
+- **Other gates:** tags **9557/9557 REAL FAILURES 0**; entry-parity **PASS**; index-sync
+  **33 browser / 28 node OK**; flipCard 33 / **divergence 0**; clickDrop 25 items /
+  **defect 0**; speechBubble/carousel/clickDrop/tabs/hintSlider selftests **GREEN**.
+  speechBubble reports defect 1 on TEDC401/TEDC402/OSAH501 — **A/B-proven PRE-EXISTING**,
+  identical with the toggles OFF (as round 277 recorded).
+
+**ONE VERIFIER RULE ADDED, justified by the gold.** `_verify_accordion.cjs` reduced a
+panel to plain TEXT, so a body whose whole content is an embed scored as MALFORMED. The
+gold ships that shape: measured over the whole library, **110 of 3,101 accContent blocks
+carry no text at all and 109 of those are exactly a media embed** (TRR109-3.0's four video
+panels, HPFUN901-0.0's image panel, MXFUN01). Only ONE gold panel is genuinely empty. A
+text-less body now counts as present when it carries media; a truly empty one is still a
+defect and the head===body test — the selftest's DETECTION channel — is untouched.
+
+### 7. EVERY REMAINING DECLINE, NAMED (336)
+
+Because "an unusual shape" is not a reason. Three guards account for all of them
+(`outputs/_r278_declines_named.txt`):
+
+- **201 / 89 modules — no delimiter resolved enough panels.**
+  - **66** a headed `[accordion]` tag exists but a panel ended with no body (XGF9001,
+    ENGR302, **CHFUN05** — whose `[title 1]` markers kill the capture, §8).
+  - **36** plain text only, with no bold lead to name a panel (CEDT101, BLL175). The
+    human invents headings here; deriving them is guessing.
+  - **~70** ONE table whose rows are not head|content — most of them a single-column or
+    matrix table (the ENFUN04 "Step one" class above), spread thinly over 20+ shapes.
+  - **11** a single heading (one panel would be a guess) · **5** more than one table ·
+    **4** headings at mixed levels · 18 other.
+- **125 / 70 modules — a member the walk cannot place.** `[button]` 28 (the residue the
+  go-journal fence and the no-delimiter-ahead fence leave), `[data marker]` 17,
+  `[external link]` 15, `[shape n]` 13, `[table]` 7, `[embed]` 6, `[mtk quiz]` 5,
+  `[speech bubble]` 4, `[dropdown]` 4, `[modal]` 4, `[front]` 3, `[audio button]` 3, and
+  4 singletons. **The last eight are other widgets' sub-tags inside the accordion — a
+  capture/nesting class, not a member-vocabulary gap**, and they belong to the widget
+  boundary track rather than here.
+- **10 / 9 modules — the leak guard refused the finished build** (BLL255, BLL257,
+  CEDO501 ×2, HIS1002, HIS1005, HPFUN903, HPRE301, XMES203, XTAS102). These are builds
+  that would have put a raw `[tag]` on the page; the honest box is correct.
+
+### 8. RECORDED, NOT SHIPPED
+
+- **The `[body]`-RESUMES-SECTION terminator for accordions.** XGF9003/XGF9004 over-capture
+  the next section after their last panel, and the principled break is the `[Body]` that
+  resumes free body — not the button that happens to follow it. The rule family already
+  exists (`body_terminates_after_face` / `_after_table` / `_after_invocation_text`);
+  accordion is not in those lists, and adding it needs its own measurement because
+  accordion panels legitimately contain `[Body]` members (CEDO501 uses them as panel
+  content). **This is the sized follow-up that would recover XGF9003's two builds.**
+- **The `[title]` CAPTURE-KILL handed over from round 277** — `[title N]` resolves to
+  `title bar`, an absolute terminator, so CHFUN05's 19 panels each become a one-member
+  bundle. Round 277 fixed exactly this for the hint family
+  (`member_rule.hint_title_member`) and fenced the other 24 sites by widget type;
+  `outputs/_measure_r277_titlestop.cjs` still reports them. It is a small, already-proven
+  change, deliberately left with the widget-boundary work rather than bundled here.
+- **HIS1006-7.0 — a NAMED delta with no build gain.** Its accordion still declines, but
+  the trailing `Check answers.` button now leaves the hand-off dump and renders as a real
+  `<div class="button">`. Strictly better; named because it is the one changed page
+  outside the affected set.
+- **CHFUN05's `[tilte N]` typo** (the writer's own misspelling) resolves to an instruction
+  span, so its panel headings are lost even once the capture is fixed.
+
+### 9. Files
+
+`app/js/InteractiveBuilder.js` (`#accordionPanels`, `#accMemberParts`,
+`#accResolvePanels`, `#accTablePanels`, `#accRenderPanels` — a pure extraction from
+`#accordionRich` so both emit identical markup — `#accPushPart`, `#accHeadFromFirstLine`,
+`#accBoldLead`, `#accIsShortLabel`, `#accHasBracketTag`, `#accLeakGuard`,
+`#accImageFilename`) · `app/js/InteractiveScanner.js` (the trailing-button section break,
+`#panelDelimiterAhead`, `#isGoJournalButton`) · `data/Emit_Templates.json`
+(`interactive_builders.accordion.panel_delimiters`) ·
+`data/Interactive_Boundary_ChildTag_Bank.json` (`member_rule.button_tail_terminates`) ·
+`app/js/Config.js` · `reference/tests/_verify_accordion.cjs`. Tools:
+`outputs/_measure_r278_accordion.cjs`, `_measure_r278_funnel.cjs`,
+`_measure_r278_accgold.py`, `_r278_acc_analyse.py`, `_r278_acc_foreign.py`,
+`_r278_census_diff.py`, `_probe_r278_accordion.cjs`, `_probe_r278_hashes.cjs`,
+`_probe_r278_leaks.cjs`, `_probe_r278_pagediff.cjs`.
+
+**RECOMMENDED, waiting to be asked (§0): `REGENERATE CORPUS - the 69 accordion modules in
+outputs/_r278_affected.txt`.** Like round 277 and unlike round 276 this round IS
+skeleton-visible in one respect — the released `div.button` sits outside any widget
+marker — so expect and decompose a small skeleton movement at the next regeneration.
+
+---
+## 2026-08-06 (round 277, build 260618.49) — HINT + HINTSLIDER: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 2 of 8) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** The writer's little "Need help?" tip — the one that hides a
+line of help behind a click — never once built. Not sometimes: **never**, on any of the 64
+places a writer tagged one. The reason turned out to be a single missing entry in a data
+file, and underneath it a wrong assumption that had been written down and believed since
+round 65: that a hint is just a one-row hint slider. **It is not.** They are two different
+elements in the human's own HTML, and treating them as one lost every build of the smaller
+one.
+
+**Hints now build 48 of 64 (0% → 75%). Hint sliders build 32 of 44 (50% → 72.7%).
+Together 22 → 80 of 108. Overall interactive coverage 26.9% → 28.1%, and not one build
+was lost in any widget type.** 58 new builds across 16 modules / 45 pages. The 28 that
+still decline are listed in §6 with a reason each.
+
+---
+
+### 1. THE HEADLINE — `hint` and `hintSlider` are different elements
+
+The round-2 kickoff proposed aliasing `hint` to the hintSlider template as "probably a
+one-line fix". **That would have put the wrong markup on 64 widgets across 12 modules.**
+Measured over all 2,385 gold pages (`outputs/_measure_r277_hint.py`,
+`_measure_r277_hintforms.py`):
+
+| | `.hintSlider` | the `hint` element |
+|---|---|---|
+| gold occurrences | **161 / 56 modules** | **593 raw nodes**, of which **247 are writer hints** |
+| markup | `div.hintSlider[hintCssFile]` > N × `hintRow > infoContainer > frontInfo + backInfo` | a title, a **`<span class="hint">`** trigger, and a sibling `div.hintDropContent` |
+| what it is | a LIST of click-to-reveal rows | ONE click-to-reveal tip on a line of text |
+
+The 593 raw `class="hint"` nodes are **three different populations**, and only the third
+is this round's business: **191 (33%) are the round-239 download-journal chrome** (an
+empty `div.hint` beside a Download-journal button, paired with an empty
+`hintDropContent[hintType]` — already emitted), **85 (15%) are quiz chrome** (a per-question
+hint inside `col-12 mcqQuestion`), and **247 (43%) are WRITER hints** (a title + a drop
+carrying real text). TEDC402's gold ships both the chrome and the writer form on one page,
+which is the cleanest possible discriminator and the reason the split had to be measured
+rather than assumed.
+
+**THE MECHANICAL CAUSE:** `Emit_Templates.interactive_builders` had **no `hint` key**, so
+`InteractiveBuilder.Build` returned null at its missing-template guard *before dispatch* —
+no builder ever ran on a hint bundle. `Tag_Lexicon` had split the two tags correctly at
+round 65, but its own `_note` recorded the false claim that they share a builder "so no
+build is lost". That note is corrected in this round's data.
+
+### 2. THE EMIT FORM IS MEASURED, NOT CHOSEN
+
+Across the 247 writer hints the gold uses more than one wrapper. Within the modules that
+actually author `[Hint Button]` + `[Title]` + `[Body]`, the split is:
+
+| Form | Count | Modules |
+|---|--:|---|
+| **F1 `<p class="hintLink">{title} <span class="hint"></span></p>` + `<div class="hintDropContent">`** | **40 (75.5%)** | TEDC401, TEDC402, SSCI205, HPRE203, SSEA203, HPRE301 |
+| F2 `<span style="…"><b>{title}</b></span>` + the drop in its own `row>col` | 9 | SSOG103, SSOG105 |
+| F3 `<div class="hint"></div>` with the title moved INSIDE the drop | 4 | SSCI104 |
+
+40/53 is an r182 SOLIDIFY, so **F1 ships** and the two minority forms are recorded, not
+chased. The title renders through the inline renderer, so the writer's own `**bold**`
+survives exactly as TEDC401/402's gold ships it.
+
+### 3. THE THREE FIXES
+
+**`HINTELEM_OFF` — the hint ELEMENT** (data `interactive_builders.hint`). `#hintElement`
+requires a tagged TITLE and real BODY content; the body goes through `renderBlock` so the
+writer's bullets become a real list. It never invents a title: OSGM201's "Pop-up text when
+'user controls' is clicked:" is an instruction, not a title, and declines. The toggle
+reverts the whole hint-type reachability, not just the composer, so a toggle-OFF corpus is
+the exact pre-277 state.
+
+**`HINTPAIR_OFF` — the LABELLED-PAIR slider** (data `hintSlider.labelled_pairs`). A general
+composer that runs **LAST**, after both original branches, so **all 22 pre-277 slider builds
+are byte-identical BY CONSTRUCTION** (the round-276 architecture: a fallback cannot break
+what already works, whereas loosening a guard can). It reads one rule — *a row is a FRONT
+then a BACK* — and accepts either half however the writer delivered it:
+
+| Dialect | Writer's markup |
+|---|---|
+| the front rides the opener | `[hint slider 1] The whistle blew, and the game began.` |
+| the back is a `[back]`/`[body]` tag | `[back] [body] AI might suggest resources that favour one perspective…` |
+| the back is a LABELLED red span | `reveals 🡪 A bit is a 1 or 0` |
+| the halves are named in the bracket | `[hint slider front]` / `[hint slider back]` |
+| the front is a black bullet | `• **A bit**` |
+
+Trailing prose the walk over-captured renders AFTER the widget (the round-196 rule) rather
+than being dropped, and a trailing front with no reveal becomes trailing text — OSAI401's
+"Unfair predictions:" lead-in, whose answer the scanner put in the *following* bundle.
+
+**`HINTTITLE_OFF` — the `[Title]` capture** (data `member_rule.hint_title_member`).
+`[Title]` resolves to primary tag `title bar` / SECTION_MARKER, and `title bar` is an
+ABSOLUTE terminator — so a writer who put the hint's title in its OWN paragraph ended the
+member walk before anything was captured, while a writer who put it on the ADJACENT line
+kept it (there the two tags merge into one red span). Same widget, same intent, opposite
+outcome. **The "bare invocation" hints were a capture failure, not empty widgets.** Four
+fences make it impossible to steal a real page title: the bundle is hint-family, it has
+captured no CONTENT yet (the opener is itself a member, which is what the first
+implementation got wrong), the folded tag is exactly `[title]` (a page bar folds to
+`[title bar]`), and the blackAfter is short.
+
+**MEASURED (`outputs/_measure_r277_titlestop.cjs`, all 454 corpus WTs):** an interactive
+opener is immediately followed by a title-bar SECTION_MARKER at **34 sites**, of which the
+hint-family `[title]` form is **EXACTLY 10 / 2 modules** (TEDC402, SSEA203 — blackAfter
+"**Need help ?**", 3 words every time). The other 24 belong to accordion / clickDrop /
+flipCard (CHFUN05 `[title 1]` ×19, BLL266, OSBY401, SSFUN07) and are untouchable BY
+CONSTRUCTION through the `types` gate — **recorded as a follow-up for those widgets' own
+rounds, starting with the accordion in round 3.**
+
+### 4. TWO BUGS THE PROBE CAUGHT BEFORE THEY SHIPPED
+
+**A build that ADDED a visible leak.** Supplying the missing `hint` template made the
+original TABLE builder reachable for hint-typed bundles for the first time, and TEDC402-3.0
+is a 1×2 LAYOUT table whose two cells are whole page blocks. Built as front|back it shipped
+the writer's raw `[H3]`, `[Body]`, `[hint sliders]`, `[image]` as VISIBLE page text. Inside
+a hand-off box that text is gate-excluded chrome; as a real widget it is a counted literal
+leak. `#hintLeakGuard` (the round-167/275 rule at this seam) declines any finished
+hint/slider that still shows a bracketed tag, so building can only ever PREVENT a leak.
+
+**THE GUARD IS SCOPED SO IT CANNOT REMOVE A PRE-277 BUILD** — the first cut silently cost 2
+builds (ENFUN09, OSSM501), because those two were *already* shipping a leaky build down the
+pre-existing path. Restoring them keeps "LOST 0" true and leaves a pre-existing defect
+exactly where it was: **RECORDED — ENFUN09-0.0 and OSSM501-3.0 build a slider whose row
+text contains `[image]` / `[hintslider]` / `[speech bubble]`; a follow-up, not this round's
+to change silently.**
+
+**A stray reveal marker.** The writer's `reveals 🡪` arrow is punctuation between the label
+and the answer, not content; the gold's backInfo carries the answer alone. It is now
+stripped, so `<p><b>🡪</b> Decimal 5 → Binary 0101</p>` ships as `<p>Decimal 5 → Binary 0101</p>`.
+
+Also fixed while testing: `renderBlock` returns an **array** of chunks (the shared
+black-text renderer's contract) — string-concatenating it left literal commas between
+paragraphs.
+
+### 5. PROOF (no regeneration — measured in memory)
+
+- **SAME-TREE CENSUS A/B** (`_measure_r271_variations.cjs`, 16 shards, **one toggle state
+  per process**). With the toggles OFF the census **reproduces the round-276 published
+  numbers EXACTLY** — 1368 built / 3714 declined / 26.9%, hint 0/64, hintSlider 22/22, and
+  every other type identical. That is the baseline the result is measured against, not a
+  saved census from a previous round (the round-276 stale-artifact trap).
+
+| | OFF | ON |
+|---|--:|--:|
+| hint | 0 / 64 (0.0%) | **48 / 64 (75.0%)** |
+| hintSlider | 22 / 44 (50.0%) | **32 / 44 (72.7%)** |
+| every other type | — | **identical, all 13** |
+| TOTAL | 1368 (26.9%) | **1426 (28.1%)** |
+
+  `outputs/_r277_census_diff.py`: **GAINED 58 / LOST 0**, bundles 5082 both sides, none
+  appearing or vanishing. Affected modules (`outputs/_r277_affected.txt`, 16): TEDC402 9,
+  TEDC401 7, HPRE203 6, SSCI205 6, SSOG105 6, SSEA203 5, SSOG103 4, SSCI104 3, ENGR202 2,
+  HPRE301 2, OSAI401 2, OSAI501 2, MXEX401 1, OSSC501 1, OSSM501 1, SCPH301 1.
+- **BYTE IDENTITY, one state per process** (`outputs/_probe_r277_hashes.cjs`): of 128 pages,
+  **45 change and every one is in the 10 affected modules**; the 6 out-of-class canaries
+  (BLL210, OSAH501, ENGS302, HIS1006, **OSBY201, OSAI201** — the last two hint-family
+  carriers whose builds pre-date this round) are **byte-identical in BOTH states**.
+- **PER-TOGGLE DECOMPOSITION**, each toggle owning its own pages: `HINTELEM_OFF` 34 pages /
+  5 modules · `HINTPAIR_OFF` 13 / 6 · `HINTTITLE_OFF` 12 / 2 (exactly SSEA203 + TEDC402,
+  the measured population).
+- **VERIFIER** `_verify_hintslider.cjs`, EXTENDED with a hint-element lane (a tip is a
+  `class="hint"` trigger whose drop carries text and no `hintType`, which excludes both
+  chrome populations) — and given the round-197 **copy-edit tolerance** on both lanes,
+  because the human routinely tidies the writer's text while keeping the structure: SSEA203
+  5/5 tips, TEDC402 8/8, SSOG103 3 of 4, HPRE203 6 exact — the recurring difference is the
+  writer's "Need help **?**" against the gold's "Need help?", i.e. the faithful render
+  (LEVEL 0). Rows: OSSC501 5/5 and SCPH301 1/1 EXACT; ENGR202 5 rows against the gold's 5
+  in the same order, where the human swapped "students" for "ākonga" throughout — the
+  round-124 editorial-rewrite class. **`--selftest` GREEN** (liveness 16 rows on OSBY201;
+  detection 0 → 16 under a mangled gold).
+- **Other gates:** tags **9557/9557 REAL FAILURES 0**; entry-parity **PASS**; index-sync
+  **33 browser / 28 node OK**; flipCard 33 / **divergence 0**; accordion 12 panels all
+  human-matching; clickDrop 25 items / **defect 0**. speechBubble reports defect 1 on
+  TEDC401/TEDC402/OSAH501 — **A/B-proven PRE-EXISTING**, identical with the toggles OFF.
+
+### 6. EVERY REMAINING DECLINE, NAMED (28)
+
+Because "an unusual shape" is not a reason. They are 28 distinct one-offs, not a class:
+
+- **9 — the writer supplied no reveal.** BLL246's six `[hint slider N]` sentence-starters
+  (a numbering device, no backs), MXEX401-5.0 and -1.0, ENG1005 (bare tag), HES1005 ×1
+  (three `[Insert media item]` asset requests), OSGM201, SCCH301, SSCI104-1.0. A slider
+  with nothing to reveal is not a slider.
+- **11 — a captured TABLE the slider form cannot place.** ENGI401, ENGS301 and ENGR101 are
+  the **LAYOUT-TABLE WRAPPER class**: the front|back pairs are real, but the same table
+  also carries an image, an audio tag or the section's prose, and building the pairs alone
+  would silently drop them. The gold renders those as siblings AROUND the slider — the
+  right fix is the layout-table→grid path, **a sized follow-up, deliberately not guessed
+  here**. Also BLL211 (an image-ordering game the writer labelled `[Hint slider N]`),
+  SSCI104 ×3, OSGM101, TEDC402 ×3, TEDC401.
+- **8 — mixed content mid-widget:** CHFUN05 ×2, TEDC402-4.0 ×2 (a reveal whose answer is
+  itself a nested bullet list), TEDC402-6.0, OSBY201-3.0, TEDC401-3.0 ×2 (an `[image]`
+  member, and black prose with no title tag).
+
+**RECORDED, not shipped:** TEDC401-2.0's newly-built slider shows the writer's own
+`**Good design** | **Poor design**` column labels as its first row. A "first row wholly
+bold in both cells = a header" rule would fix it, but the measured population is **one
+bundle**, so it is recorded rather than shipped as an unmeasured general rule.
+
+### 7. Files
+
+`app/js/InteractiveBuilder.js` (`#hintEntry`, `#hintElement`, `#hintSliderPairs`,
+`#hintLeakGuard`) · `app/js/InteractiveScanner.js` (`#hintTitleMember` + the terminator
+seam) · `data/Emit_Templates.json` (`interactive_builders.hint`,
+`hintSlider.labelled_pairs`) · `data/Interactive_Boundary_ChildTag_Bank.json`
+(`member_rule.hint_title_member`) · `data/Tag_Lexicon.json` (the corrected `hint._note`) ·
+`app/js/Config.js` · `reference/tests/_verify_hintslider.cjs`. Tools:
+`outputs/_measure_r277_hint.py`, `_measure_r277_hintforms.py`, `_measure_r277_hintdialects.cjs`,
+`_measure_r277_titlestop.cjs`, `_dump_r277_hint.cjs`, `_probe_r277_hint.cjs`,
+`_probe_r277_hashes.cjs`, `_r277_census_diff.py`.
+
+**RECOMMENDED, waiting to be asked (§0): `REGENERATE CORPUS - the 16 hint modules in
+outputs/_r277_affected.txt`.** Note that unlike round 276 this round IS skeleton-visible:
+the hint element ships `p.hintLink` + `span.hint` OUTSIDE any widget marker, so expect and
+decompose a skeleton movement at the next regeneration.
+
+---
+
+## 2026-08-06 (round 276, build 260618.48) — SPEECHBUBBLE: BUILD EVERY VARIATION (Chris — the interactive-coverage chain, round 1 of 8) (**NO REGENERATION — not requested; the gates were NOT re-run and the round-275 baselines still describe the corpus; proven in memory**)
+
+**THE PLAIN-ENGLISH LEAD.** Chris asked for close to 100% builds on eight "non-complex"
+interactive types, starting with speech bubbles, and said plainly that anything different
+about the ones that fail *is* a variation and needs handling — not an argument about
+whether it counts as one. He is right, and this round treats it as settled.
+
+**Speech bubbles now build 505 of 585 — 86.3%, up from 55.9%.** 178 more bubbles build,
+across 63 modules and 112 pages, and **not one build was lost in any widget type**.
+Overall interactive coverage **23.4% → 26.9%**. The 80 that still decline are listed in
+§5 below with a reason each, because "unusual shape" is not a reason.
+
+---
+
+### 1. MEASURED FIRST — and the builder was made to report its own verdict
+
+The round-271 shape census records what a bundle LOOKS like and whether it built, but not
+which guard turned it away — and for speech bubbles the shape signature is provably too
+coarse: **the two largest declining families are also the two largest BUILDING families**
+("TABLE 1x2 bubble+iStock" builds 112 and declines 19; "NO TABLE, bubble only" builds 95
+and declines 34). So the shape cannot be the explanation.
+
+**`outputs/_measure_r276_speechbubble.cjs`** intercepts the require of
+`app/js/InteractiveBuilder.js` and rewrites every `return null` inside the speechBubble
+region to `return __SBBAIL(<source line>)`. The shipped builder then names the exact line
+that declined each bundle — no re-implementation in the probe, so no drift. It accounts
+for **100% of the 258 declines**, and every single one was decided inside the narrow
+1x2-TABLE branch:
+
+| Declines | Modules | The guard that decided it |
+|--:|--:|---|
+| 72 | 26 | `tables.length !== 1` — **69 of them had no table at all** |
+| 67 | 37 | `bundle.modifier` — ANY modifier text bails ("left", "orange", "insert bookworm on right hand side") |
+| 50 | 27 | `rows.length !== 1` — a multi-row table |
+| 38 | 12 | `row.length !== 2` — **27 of them a ONE-cell table** |
+| 31 | — | the fine guards: a 2nd red span (12), image residual (5), a short " / " list (5), a newline (3), no image cell (3), 2 images (2), a video (1) |
+
+Those four top rows are 87% of the class and **none of them is a property of the widget** —
+they are properties of how the writer laid the bubble out. That is the variation.
+
+**THE FULL FUNNEL** was counted too (`outputs/_measure_r276_funnel.cjs`, live extractor —
+the `*_parsed.txt` dumps are stale): **1,005** bubble-mentioning bracket spans across 60
+modules → **992 (98.7%) resolve** to canonical `speechBubble` → 585 bundles captured → 505
+built. The alias gap is tiny and named: `hoverbubble` ×6 (a HOVER widget, deliberately not
+re-pointed), `speeechbubble` ×2, `rhs thoughtbubble` ×1.
+
+**THE EMIT SHAPE was measured before any emit code was written**
+(`outputs/_measure_r276_goldforms.py`, every `div.row.speechBubble` in the gold library —
+**1,218 rows / 143 modules**): ONE bubble per row **80.4%** (an r182 SOLIDIFY — which is
+why a multi-bubble group emits stacked rows, not one packed row); avatar rows are
+`layout="speech"` **97.6%** and bubble-RIGHT **58.6%** vs bubble-left 12.4%; image-less
+rows take `col-12` + `bubble-basic no-hover bubble-top` as the plurality. Those are
+exactly the shapes rounds 246/247 already ship, so this round **reuses those templates
+rather than inventing any**.
+
+### 2. THE FIX — one rich general composer, not five loosened guards
+
+**`SBRICH_OFF`** (data `interactive_builders.speechBubble.rich`). `#speechBubbleRich` is
+tried **LAST**, only where conversation / no-table-avatar / text-only / 1x2-table have all
+returned null — so it is **strictly additive and the 327 bubbles that built before this
+round build identically after it, by construction.** Loosening the existing guards would
+have put those 327 at risk; adding a fallback cannot.
+
+It stops asking for a shape and reads the bundle as an ordered stream of PARTS with a
+role — **bubble / image / head / text / note**. A bubble part opens a bubble; a heading
+attaches as its `<b>` lead line and text lines follow; an image becomes its avatar. One
+`row speechBubble` per bubble. Specifically:
+
+- **Table cells are parts too**, and a captured table GROUPS by the axis that yields at
+  most one bubble per group — rows first (the classic image|bubble row), then columns
+  (TEFUN03's 2x3 grid: an image row above a caption+bubble row), else cell by cell.
+- **The PLAIN-CELL table** (`plain_cell_bubbles`): the writer put the tag on the
+  invocation and the texts in a bare table — *"[Put the three quotations each into a
+  speech bubble]"* over a 1x3 table of quotes (CEDR501), *"[speech bubbles - conversation
+  layout] … 4 separate speech bubbles/people"* over a 4x2 table (OSBY301). One bubble per
+  non-empty cell, gated on the bundle's own opener being the bubble invocation AND every
+  cell being plain text, so a captured DATA table still declines.
+- **Members are classified by their RESOLVED TAG first** (`tag_roles`), not by the
+  writer's spelling — `[Insert image of a robot]` matches no `^image` pattern, and 11
+  declines were exactly that.
+- `image_re` is deliberately **unanchored**: an anchored pattern sent OSBY301's
+  `[flipped image]` cell into the decline list via its "flip" prefix.
+- **A non-iStock image** (`image_slug_fallback`) takes the URL-slug placeholder name the
+  rotating banner has used since round 126 instead of blocking the whole widget. A VIDEO
+  url is never an avatar and still declines.
+- **An empty invocation no longer bails the widget**: BLLR201 pairs *"[Insert bookworm on
+  right hand side of page with speech bubble + audiovisual item 5]"* with the real bubble;
+  the asset request is surfaced as a red Writers Note and the real bubble builds.
+- **Asset requests and writer instructions ride along** as the standard red Writers Note
+  after the widget (the r242/r214 rule), instead of bailing — and only on a successful
+  build.
+
+### 3. NEVER HALF-BUILDS
+
+Declines, keeping the honest hand-off box: a structural marker in `decline_tags` (an
+`[Activity]` opener, another widget's invocation, a `[button]`/`[video]`/`[link]` carrying
+its own content); a nested widget; a captured table holding neither a bubble nor an image
+(the over-capture class); an image URL we cannot name; a bubble with no text at all.
+
+### 4. THE TWO THINGS THAT WENT WRONG, AND HOW THEY WERE CAUGHT
+
+Both were caught by the speechBubble VERIFIER, not by eye.
+
+1. **Markdown corruption.** Removing a URL from `**<url>** / **the bubble text**` orphans
+   the leading `**`, and a naive edge-trim that strips `*` then unbalanced the rest of the
+   line — CHFUN05 shipped `<b> You simply </b>add it to the end**`. `#sbRestText` now drops
+   the orphaned emphasis together with the writer's " / " separator and never trims an
+   emphasis marker that still has a partner.
+2. **Two defects the verifier flagged.** A bubble rendering `<p>*</p>` (OSBY301) and a
+   leading `]` from a split bracket (TEDC402) — both the round-104 STRAYLEAD class, now
+   applied to the composer's own lines and to the text after a marker.
+
+**One verifier rule was added, and it is general.** TEDC402-3.0's gold MERGES two adjacent
+writer bubbles into one longer bubble, so our faithful build of the first is a complete
+prefix of the human's — Jaccard overlap 0.25, which the old rule called a partial garble.
+CONTAINMENT is the discriminator: a genuinely garbled build carries words the human does
+not have, so it can never be contained. Guarded to ≥4 tokens (the round-197
+label-truncation precedent generalised); the selftest's DETECTION half still fires.
+
+### 5. EVERY REMAINING DECLINE, NAMED AND COUNTED (80 of 585)
+
+| Declines | Modules | What it is | Verdict |
+|--:|--:|---|---|
+| 29 | 19 | a FOREIGN element inside the widget carrying its own content — **17 of them a `[button]`**, the rest `[data marker]`/`[video]`/`[embed]`/`[mtk quiz]` | **the cross-cutting blocker**: the dashboard lists the same one against dragAndDrop 81, clickDrop 51, accordion 49. Building the bubbles while silently dropping a button would LOSE content, so it declines. Worth its own cross-type round. |
+| 22 | 8 | a captured TABLE that is not bubble content — an `[Activity]` opener, a `[Front]`/`[Reverse]` flip-card table, a data table | correct: a capture-boundary problem, not a builder gap |
+| 11 | 5 | the writer tagged a bubble with **NO TEXT AT ALL** (`[thought bubble green]`, XWHA02 ×5) | nothing exists to build |
+| 10 | 7 | TWO images for one bubble — a whole page section swallowed by the bundle (TEFUN07) | over-capture |
+| 4 | 2 | the "image" is a VIDEO url (TEFUN03's video-screenshot grid) | not an avatar |
+| 4 | 4 | more than 8 paragraphs in one bubble | over-capture |
+
+### 6. PROOF (in memory — **the corpus was NOT regenerated; Chris did not ask, per §0**)
+
+- **Toggle reversal at corpus scale.** The full 16-shard census re-run with `SBRICH_OFF=1`
+  **reproduces the round-275 published census EXACTLY** — coverage 23.4%, speechBubble
+  327/585 = 55.9%, and every one of the other 14 types identical to its r275 number.
+- **Before/after against that same-tree baseline: NEW BUILDS 178 / LOST 0**, and LOST 0 in
+  *every* type (dragAndDrop 64, clickDrop 61, carousel 306, accordion 253, flipCard 49,
+  modal 88, tabs 17, shapeHover 2, hintSlider 22, glossary 1, selfCheck/hint/slider/
+  infoTrigger 0 — all unchanged). Affected set **63 modules / 112 pages**
+  (`outputs/_r276_affected.txt`).
+- **Byte identity, ONE TOGGLE STATE PER PROCESS** (the r246 trap):
+  `SBRICH_OFF=1` reproduces the shipped corpus on the in-class canaries **30/30 pages
+  byte-identical**; fix-ON changes exactly 12 of those 30; and the out-of-class canaries
+  **TRR203 / ENGS302 / HIS1006 are 25/25 byte-identical in the fix-ON state**.
+- **Verifiers:** speechBubble **77 built / defect 0** (exact 70, copy-edit 4, dev-edit 1,
+  gold-subst 2) + selftest GREEN; flipCard 33 / divergence 0; accordion 17 panels, all
+  human-matching; carousel / clickDrop / tabs selftests GREEN.
+- **tags 9557/9557, REAL FAILURES 0**; **entry-parity PASS**; **index-sync OK 33/28**.
+- A stale-artifact trap recorded: the r275 census FILE reports 5 accordions as built that
+  today's tree declines in BOTH toggle states — proven identical OFF vs ON across all five
+  shards, so it is drift in that artifact, not this round. Always diff against a
+  same-tree `*_OFF` baseline, never against a saved census from a previous round.
+
+### 7. GATES — NOT RE-RUN, AND NOT IMPLIED
+
+No regeneration was requested, so the protected gates were **not** re-run and the
+**round-275 baselines still describe the corpus**. `SBRICH_OFF` is the reversal
+guarantee. This change is widget-INTERNAL — `speechBubble` is a `WIDGET_MARKER`, so the
+PRIMARY skeleton gate collapses it on both sides and is inert here by construction; RAW
+skeleton and the acks/leak lanes will move on the 112 pages at the next regeneration.
+**RECOMMENDED, waiting to be asked: `REGENERATE CORPUS - the 63 speechBubble modules in
+outputs/_r276_affected.txt`.**
+
+**Env** `SBRICH_OFF`. **Data** `Emit_Templates.interactive_builders.speechBubble.rich`.
+**Tools** `outputs/_measure_r276_speechbubble.cjs` (the decline-reason recorder),
+`_measure_r276_funnel.cjs`, `_measure_r276_goldforms.py`, `_probe_r276_speechbubble.cjs`,
+`_dump_r276_sb.cjs`, `_dump_r276_built.cjs`.
+
+---
+
 ## 2026-08-06 (round 275, build 260618.47) — THE THREE BUILDER BLOCKERS: carousel/video · accordion/TABLE · clickDrop/image (**FULL REGENERATION + ALL PROTECTED GATES — authorised in the request; FULL ship, ledger reset to 0**)
 
 **THE PLAIN-ENGLISH LEAD.** Chris named three things the builders were giving up on,

@@ -542,6 +542,14 @@ class InteractiveScanner {
 			// human's one-row avatar+bubble instead of a loose image followed by a hand-off box.
 			// See #absorbSameBlockImage. Data member_rule.same_block_image_absorb; env SBNOTBL_OFF.
 			this.#absorbSameBlockImage(bundle, items, i);
+			// BACKWARD SAME-BLOCK LABEL ABSORB (round 280). A modal the writer typed as ONE
+			// LINE — "<the visible label> [Pop-out] <the pop-out content>" — splits into a
+			// black item then the tag, so the FIRST modal's label sits just ABOVE the
+			// invocation and outside the bundle while every later one is captured. Recover it
+			// (same source BLOCK only) so the builder can emit the human's
+			// div.button.TKmodalButton trigger instead of dropping the label.
+			// See #absorbSameBlockLabel. Data member_rule.same_block_label_absorb; env MODALLEAD_OFF.
+			this.#absorbSameBlockLabel(bundle, items, i);
 			// ROUND 217 (Chris, boundary audit): a BARE GENERIC INVOCATION bundle — the
 			// standalone "[Interactive]" re-tag (Tag_Lexicon qualifier_alias_demote.
 			// standalone_becomes) — that captured NOTHING AT ALL (no forward members, no
@@ -844,6 +852,45 @@ class InteractiveScanner {
 	};
 
 	/**
+	 * TRUE when an ABSOLUTE-terminator item is really the writer's own [Title] for a
+	 * HINT (ROUND 277), so the member walk swallows it instead of stopping there.
+	 *
+	 * THE PROBLEM. `[Title]` resolves to primary tag `title bar` (SECTION_MARKER), which
+	 * is in `terminators_absolute`. A writer who typed the hint's title in its OWN
+	 * paragraph therefore ended the walk before anything was captured, and the hint
+	 * shipped as an empty hand-off box; a writer who typed it on the ADJACENT line kept
+	 * the title, because there the two tags merge into a single red span. Same widget,
+	 * same intent, opposite outcome — a variation, and this is its fix.
+	 *
+	 * THE FENCES (all four required, so a real page title bar is never stolen):
+	 *   1. the bundle's type is in `types` (hint / hintSlider) — every other widget's
+	 *      title-stop behaviour is untouched BY CONSTRUCTION;
+	 *   2. the bundle has captured no CONTENT yet — every member so far is the widget's
+	 *      own invocation (the opener is itself collected as a member), so the title must
+	 *      immediately follow the invocation and this can never reach a later section;
+	 *   3. the folded tag is exactly "[title]" — a genuine page bar folds to "[title bar]";
+	 *   4. the blackAfter is non-empty and <= max_words (measured: 3 words, every site).
+	 *
+	 * @param {Object} bundle - the open bundle
+	 * @param {Object} item   - the candidate terminator item
+	 * @param {Object} p      - item.parse.primary
+	 * @returns {boolean} true → swallow as a member; false → normal terminator handling
+	 */
+	static #hintTitleMember(bundle, item, p) {
+		if (typeof process !== "undefined" && process.env && process.env.HINTTITLE_OFF) return false;
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.hint_title_member;
+		if (!cfg || cfg.enabled === false) return false;
+		if (!(cfg.types ?? []).includes(bundle?.type)) return false;
+		// "captured no content yet": the opener tag is itself collected as a member, so
+		// allow the invocation(s) and nothing else — the title must sit directly after it.
+		if ((bundle?.memberItems ?? []).some((m) => m?.parse?.primary?.directive !== "INTERACTIVE")) return false;
+		if (String(item?.parse?.folded ?? "").trim().toLowerCase() !== String(cfg.folded ?? "[title]")) return false;
+		const black = String(item?.blackAfter ?? "").trim();
+		if (!black) return false;
+		return black.split(/\s+/).length <= (cfg.max_words ?? 12);
+	};
+
+	/**
 	 * The bilingual activity NUMBER ("1A") carried in a table's "Activity NX:" / "Ngohe NX:" label
 	 * row, or null. The number is digit(s) + a single letter followed by a colon (the writer's
 	 * label form); ordinary prose mentioning "activity" without that digit+letter+colon shape never
@@ -856,6 +903,65 @@ class InteractiveScanner {
 		const text = (block && block.text) || "";
 		const m = /\b(?:activity|ngohe)\s*([0-9]+\s*[A-Za-z])\s*:/i.exec(text);
 		return m ? m[1].replace(/\s+/g, "").toUpperCase() : null;
+	};
+
+	/**
+	 * ROUND 278 — is there another PANEL DELIMITER for THIS widget still ahead?
+	 *
+	 * The fence on the trailing-button section break: the break must only ever fire in
+	 * the widget's TAIL, never between two panels (which would truncate a real
+	 * multi-panel accordion and spill the rest into free body). Looks ahead over the
+	 * unconsumed items for another tag of the bundle's OWN type, stopping at the first
+	 * item that would end this widget anyway — a different widget's invocation, or a
+	 * SECTION_MARKER / PAGE_BOUNDARY — and at `lookahead` items, so the scan can never
+	 * see a later, unrelated accordion further down the page.
+	 *
+	 * @param {Array} items - the page's item stream
+	 * @param {number} from - index to start looking from
+	 * @param {Object} bundle - the open bundle
+	 * @param {Object} cfg - member_rule.button_tail_terminates
+	 * @returns {boolean} true when another panel delimiter for this widget lies ahead
+	 */
+	/**
+	 * ROUND 278 — is this member a GO-TO-JOURNAL button?
+	 *
+	 * The round-239 `buttons.go_journal` rule ALREADY owns that button at a widget's
+	 * tail: `#goJournalTail` ships the templated <h4 class="goJournal"> after the
+	 * widget while the raw text stays in the hand-off dump, and round 273 fixed the
+	 * double-emit that came with it. Releasing the same button from the bundle would
+	 * make the main loop render a SECOND, plain `div.button` beside that heading —
+	 * caught live on HIS1006-12.0, which is exactly the duplicate Chris reported at
+	 * round 273. So the trailing-button section break steps aside for it and leaves
+	 * the round-239 machinery in charge. Uses the SAME two data patterns as that rule,
+	 * so the two can never drift apart.
+	 *
+	 * @param {Object} item - the candidate [button] member
+	 * @returns {boolean}
+	 */
+	static #isGoJournalButton(item) {
+		const gj = DataService.Data.EmitTemplates.buttons?.go_journal;
+		if (!gj || gj.enabled === false) return false;
+		const strip = (s) => String(s ?? "")
+			.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		const label = strip(item?.blackAfter ?? "");
+		if (gj.label_match && new RegExp(gj.label_match, "i").test(label)) return true;
+		const raw = strip(item?.text ?? "");
+		return !!(gj.raw_match && new RegExp(gj.raw_match, "i").test(raw));
+	};
+
+	static #panelDelimiterAhead(items, from, bundle, cfg = {}) {
+		const limit = Math.min(items.length, from + (cfg.lookahead ?? 12));
+		for (let k = from; k < limit; k++) {
+			const it = items[k];
+			if (!it || it.consumedBy !== undefined) continue;
+			if (it.type !== "tag") continue;
+			const pr = it.parse?.primary;
+			if (!pr) continue;
+			if (pr.tag === bundle.canonTag || pr.tag === bundle.type) return true;   // another panel of ours
+			if (pr.directive === "INTERACTIVE") return false;                        // a different widget starts
+			if (pr.directive === "SECTION_MARKER" || pr.directive === "PAGE_BOUNDARY") return false;
+		}
+		return false;
 	};
 
 	/**
@@ -1080,6 +1186,35 @@ class InteractiveScanner {
 						break;
 					}
 				}
+				// TABLE SECTION BREAK BEFORE THE NEXT CAROUSEL (ROUND 279 — the third
+				// member of the r266/r271 family, and the only one that is shape-BLIND).
+				// A writer who lays out several slideshows in a row types one invocation
+				// + one table each; the walk absorbed the lot into ONE bundle (whose
+				// extraTypes then bailed the builder outright), so XTAS101-0.0 shipped a
+				// single hand-off box where the GOLD ships THREE separate carousels of
+				// 6, 2 and 5 slides — one per table, exactly as written. Once a table is
+				// captured and ANOTHER invocation of this same widget lies ahead, the
+				// table IS this widget and the walk ends at it; the prose between the two
+				// renders as ordinary body, again matching the gold. Deliberately NOT a
+				// blanket "any table ends a carousel": a bundle whose SECOND table has no
+				// invocation of its own keeps both (the builder makes slides from both),
+				// because releasing an untagged table to the body path could leak its raw
+				// [image]/[video] tags. Data member_rule.carousel_table_terminates_before_next;
+				// env CARSPLIT_OFF.
+				{
+					const ctT = DataService.Data.BoundaryBank._meta.member_rule.carousel_table_terminates_before_next;
+					if (ctT && ctT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.CARSPLIT_OFF)
+						&& (ctT.types ?? ["carousel"]).includes(bundle.type)
+						// REO / BILINGUAL modules excluded (the r145 class): their tables belong
+						// to the bilingual machinery, and releasing what follows one into the body
+						// put three literal tags on TRR301's pages.
+						&& !(ctT.exclude_reo !== false && InteractiveScanner.#reoModeFor(run))
+						&& this.#panelDelimiterAhead(items, j + 1, bundle, ctT)) {
+						j++;   // the table itself stays captured; the walk ends AFTER it
+						break;
+					}
+				}
 				continue;
 			}
 			if (next.type === "black") {           // free_text_content
@@ -1140,6 +1275,46 @@ class InteractiveScanner {
 				if (_entryID?.uses_data_table && _nextTable) {
 					this.#collectMember(bundle, next, run);
 					continue;
+				}
+			}
+
+			// TRAILING-BUTTON SECTION BREAK (ROUND 278 — Chris, the interactive-coverage
+			// chain, round 3 of 8). The accordion's biggest single "foreign tag" decline was
+			// a [button], and the recorder showed WHY: in 74 of the 90 foreign-tag declines
+			// the unplaceable member sits AFTER the last panel — 33 of them a [button], and
+			// usually the bundle's very LAST member. It is the writer's post-accordion button
+			// ("[Go to journal]") that the member walk swallowed, not panel content: the GOLD
+			// puts a button inside a panel in only 52 of 3,099 panels = 1.7%
+			// (outputs/_measure_r278_accgold.py), and it accounts for the accordion running on
+			// into the next section entirely (XGF9003-1.0 swallowed [Body], the journal button,
+			// "[H2] Time management", an image and an [Alert] after its eight clean panels).
+			// So the walk ENDS at it and the button renders through the normal body path — a
+			// REAL button, exactly where the writer put it, which no in-panel rendering could
+			// better. This is the round-247 media-series / round-266 media-table family of
+			// section break, and it is ZERO-RISK BY CONSTRUCTION: measured over all 454 corpus
+			// modules, NOT ONE of the 253 currently-building accordions carries a [button]
+			// member (73 declines / 50 modules do), so it cannot change an existing build.
+			// FENCED so it can never truncate a real multi-panel accordion: it fires only once
+			// the bundle has captured content AND no further panel delimiter lies ahead.
+			// Data member_rule.button_tail_terminates; env ACCBTNTAIL_OFF.
+			{
+				const btT = DataService.Data.BoundaryBank._meta.member_rule.button_tail_terminates;
+				if (btT && btT.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.ACCBTNTAIL_OFF)
+					&& (btT.types ?? ["accordion"]).includes(bundle.type)
+					&& (btT.tags ?? ["button"]).includes(p?.tag)
+					&& p?.directive !== "INTERACTIVE"
+					// A PHANTOM button — the writer's "[embed audio with a link and play
+					// button]" (HIS1006-11.0) resolves to primary tag `button` because of the
+					// word BURIED in it, and breaking there truncated the accordion's own
+					// sources. The round-174 `clean_hows` distinction is exactly this test: a
+					// genuine tag resolves exact/denumbered, a tag-word inside prose resolves
+					// how:"embedded".
+					&& (btT.clean_hows ?? ["exact", "denumbered", "denumbered_head", "exception"]).includes(p?.how)
+					&& !this.#isGoJournalButton(next)
+					&& bundle.memberItems.some((m) => m && (m.type !== "tag" || m.parse?.primary?.directive !== "INTERACTIVE"))
+					&& !this.#panelDelimiterAhead(items, j + 1, bundle, btT)) {
+					break;
 				}
 			}
 
@@ -1681,6 +1856,25 @@ class InteractiveScanner {
 			}
 			// (new [Activity N]) — absolute
 			if (p?.tag === "activity" || next.parse.tags.some((t) => t.tag === "activity")) break;
+			// HINT TITLE (ROUND 277) — the writer's own [Title] for a [Hint Button].
+			// [Title] resolves to primary tag `title bar` / SECTION_MARKER, and `title bar`
+			// is an ABSOLUTE terminator, so a writer who put the hint's title in its OWN
+			// paragraph (TEDC402, SSEA203) ended the walk immediately and the bundle captured
+			// NOTHING — while a writer who put it on the ADJACENT line (HPRE203, SSOG103) kept
+			// it, because there the two tags merge into one red span. The "bare invocation"
+			// hints were a CAPTURE FAILURE, not empty widgets. Swallow it as the hint's TITLE
+			// instead. FOUR conditions, all required, so a genuine page title bar can never be
+			// stolen: the bundle is HINT-family, it has captured NOTHING yet (the title
+			// immediately follows the opener), the folded form is exactly "[title]" (a real
+			// page bar folds to "[title bar]"), and the blackAfter is non-empty and short.
+			// MEASURED over all 454 corpus WTs: the hint-family form is EXACTLY 10 sites / 2
+			// modules; the other 24 title-stops belong to accordion/clickDrop/flipCard and are
+			// untouchable BY CONSTRUCTION through the `types` gate. Data
+			// member_rule.hint_title_member; env HINTTITLE_OFF.
+			if (p && absolute.has(p.tag) && this.#hintTitleMember(bundle, next, p)) {
+				this.#collectMember(bundle, next, run);
+				continue;
+			}
 			// the bank's absolute terminator list (alert, important,
 			// end activity, page boundaries, section markers, h1 …)
 			if (p && absolute.has(p.tag)) break;
@@ -1900,6 +2094,65 @@ class InteractiveScanner {
 			}
 		}
 	};
+
+	/**
+	 * BACKWARD SAME-BLOCK LABEL ABSORB (ROUND 280 — Chris, the interactive-coverage chain,
+	 * round 5 of 8; the round-246 #absorbSameBlockImage transposed to the modal).
+	 *
+	 * THE WRITER'S FORM (XGF9004-9.0, one paragraph per modal):
+	 *     "Everyone gets the same size piece of cake, even though someone is hungrier.
+	 *      [Pop-out] Fairness can depend on need. Sometimes equal isn't the same as fair."
+	 * The black lead is the VISIBLE trigger label and the tag's trailing text is the
+	 * pop-out. Because the walk starts AT the first tag, every later label is captured
+	 * (each is the black item preceding the next tag) but the FIRST one is left outside
+	 * the bundle — so the builder would either drop that label or decline the whole
+	 * widget for want of a trigger.
+	 *
+	 * CONTAINMENT: the SAME source BLOCK only (the round-105 "continuous sentence vs a
+	 * paragraph later" discriminator), a single BLACK item, label-sized, and only when the
+	 * bundle's first member is the modal tag itself. A different block, a structural tag,
+	 * an already-consumed item or a long paragraph all decline, so the absorb can never
+	 * swallow a real preceding element. The item is left in place for the builder to read
+	 * as a member; nothing is consumed that the builder cannot use, because a label it
+	 * cannot place simply renders as the set's trigger text.
+	 *
+	 * Data member_rule.same_block_label_absorb; env MODALLEAD_OFF.
+	 *
+	 * @param {object} bundle - the bundle being assembled
+	 * @param {object[]} items - the page's item stream
+	 * @param {number} tagIdx - index of the opening invocation
+	 */
+	static #absorbSameBlockLabel(bundle, items, tagIdx) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.same_block_label_absorb;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.MODALLEAD_OFF) return;
+		if (!(cfg.types ?? ["modal"]).includes(bundle.type)) return;
+		if ((bundle.tables ?? []).length) return;
+
+		// the bundle must OPEN on the widget tag itself — otherwise the label is already in
+		const first = bundle.memberItems?.[0];
+		if (!first || first.type !== "tag" || first.parse?.primary?.tag !== (cfg.tag ?? "modal")) return;
+
+		const blk = items[tagIdx]?.block;
+		if (!blk) return;
+		const prev = items[tagIdx - 1];
+		if (!prev || prev.consumedBy !== undefined || prev.block !== blk) return;
+		if (prev.type !== "black") return;
+
+		const t = String(prev.text ?? "").replace(/\*+/g, "").trim();
+		if (!t) return;
+		// THE SHARED CAP (the round-246 discipline: the scanner must not consume something
+		// the builder would then decline, or the text is TRAPPED inside a hand-off box that
+		// never builds). It reads the BUILDER's own gold-backed label cap, so absorb and
+		// build cannot drift apart — caught live by the round-280 per-toggle decomposition
+		// on XGF9004, whose scenario sentences are far too long to be trigger labels.
+		const bCap = DataService.Data.EmitTemplates?.interactive_builders?.modal?.modal_sets?.label_max_words;
+		const cap = bCap ?? cfg.max_label_words ?? 9;
+		if (t.split(/\s+/).length > cap) return;              // a whole sentence, not a label
+
+		bundle.memberItems.unshift(prev);
+		bundle.startIndex = tagIdx - 1;
+	}
 
 	/** The lead-in LABEL shape (data-driven, first match wins; else "prose"). */
 	static #labelSignature(text, cfg) {

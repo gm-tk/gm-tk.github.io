@@ -284,6 +284,16 @@
 				"cell_tag_pattern": "\\[\\s*(image|video)\\s*\\]",
 				"_note": "ROUND 266 (CHFUN01, Chris's screenshot annotations). The CHFUN family authors a slideshow as ONE table whose every cell is a media cell ([image]/[video] red tag + URL, optional [caption]); the table IS the whole widget, so the member walk ENDS right after capturing it — the following [dropquiz] quiz section becomes its OWN bundle instead of being swallowed into the carousel's hand-off box. Cell test is all-or-nothing (a caption-only / text / tag-less-URL cell fails), so the rotate-banner and image|caption-table families never match. Measured corpus-wide: the media-cell table form is EXACTLY CHFUN01/04/05/06/07 (38 table lines). Env toggle: CARMEDTBL_OFF (also reverts the matching carousel media_table BUILD in Emit_Templates)."
 			},
+			"hint_title_member": {
+				"enabled": true,
+				"types": [
+					"hint",
+					"hintSlider"
+				],
+				"folded": "[title]",
+				"max_words": 12,
+				"_note": "ROUND 277 (Chris — the interactive-coverage chain). [Title] resolves to primary tag `title bar` / SECTION_MARKER, and `title bar` is in terminators_absolute — so a writer who puts a hint's title in its OWN paragraph got a bundle with NO members at all, while a writer who put it on the ADJACENT line kept it (the two tags merge into one red span there). The 'bare invocation' hints were therefore a CAPTURE FAILURE, not empty widgets. Inside a HINT-family bundle that has captured nothing yet, a [title]-folded marker with a short non-empty blackAfter is swallowed as the hint's TITLE instead of ending the walk. SCOPING (all four required): the bundle type is in `types`, memberItems is still EMPTY, the folded form is exactly `[title]` (a real page bar folds to `[title bar]`), and the blackAfter is non-empty and <= max_words. MEASURED over all 454 corpus WTs by outputs/_measure_r277_titlestop.cjs: an interactive opener is immediately followed by a title-bar SECTION_MARKER at 34 sites, of which the HINT-family [title] form is EXACTLY 10 / 2 modules (TEDC402, SSEA203; blackAfter '**Need help ?**', 3 words every time). The other 24 belong to accordion / clickDrop / flipCard (CHFUN05 [title 1] x19, BLL266, OSBY401, SSFUN07) and are untouchable BY CONSTRUCTION through the `types` gate — recorded as a follow-up for those widgets' own rounds. Env toggle: HINTTITLE_OFF."
+			},
 			"media_caption_table_terminates": {
 				"enabled": true,
 				"_note": "ROUND 271 (Chris, OSSC401-1.0). The SIBLING of round 266's media_table_terminates for the MEDIA|CAPTION dialect: when a carousel captures a table whose every data row pairs ONE media cell ([video]/[image] tag + URL) with prose cell(s), THAT TABLE IS THE WHOLE WIDGET, so the member walk ENDS right after capturing it. Without this the carousel ran on and swallowed the next section — OSSC401's '[H4] Types of AI scams' heading, its body and its own [video] were all pulled into the carousel's hand-off box, while the gold ends the carousel at the table and renders that section as ordinary body. Video-scoped (require_video) exactly like the builder, so the image|caption table families keep their existing capture byte-for-byte. Env toggle: CARCAPTBL_OFF.",
@@ -293,6 +303,43 @@
 				"require_video": true,
 				"min_rows": 2,
 				"media_tag_pattern": "\\[\\s*(image|video)\\s*\\]"
+			},
+			"carousel_table_terminates_before_next": {
+				"enabled": true,
+				"exclude_reo": true,
+				"types": [
+					"carousel"
+				],
+				"lookahead": 12,
+				"_note": "ROUND 279 (Chris — the interactive-coverage chain, round 4 of 8). The THIRD member of the media_series_break (r247) / media_table_terminates (r266) / media_caption_table_terminates (r271) family, and the only one that is shape-BLIND: once a carousel bundle has captured ANY table, a further invocation of the SAME widget ahead ends the member walk right after that table. THE GOLD PROVES THE SPLIT: XTAS101-0.0's writer lays out three slideshows in a row ('[insert carousel with pictures and captions]' + a 7x2 table, '[insert video carousel]' + a 1x2 table, '[insert carousel images + captions]' + a 5x2 table) and the gold ships THREE separate carousels of 6, 2 and 5 slides — one per table, with the [H3]/[body] prose between them rendered as ordinary body. The old walk absorbed all three into ONE bundle whose extraTypes then bailed the builder at its very first line, so the page shipped a single hand-off box. MEASURED (outputs/_measure_r279_carousel.cjs, the shipped builder's own verdict over all 454 modules): 104 declines / 66 modules bail on extraTypes, 52 of them a same-type carousel+carousel merge, and 63 declines carry more than one table. DELIBERATELY NOT a blanket 'any table ends a carousel': a bundle whose SECOND table has no invocation of its own keeps both tables (the round-279 #carouselTableSlides builder makes slides from both in document order), because releasing an untagged table to the body path could leak its raw [image]/[video] tags — the r167 leak rule at this seam. FENCED by the shared #panelDelimiterAhead, so the scan stops at a different widget's invocation or a section/page marker and a later unrelated carousel is invisible to it. Env toggle: CARSPLIT_OFF.",
+				"_measured": "BUILT carousels carrying more than one table: 0. BUILT carousels carrying extraTypes: 0 (they bail before the builder). The 6 built bundles with any member after their table (BLL117/127/137/157 rotateBanner, CEDO105, OSGM501) carry no further carousel invocation, so the lookahead cannot fire on them."
+			},
+			"button_tail_terminates": {
+				"enabled": true,
+				"types": [
+					"accordion"
+				],
+				"tags": [
+					"button"
+				],
+				"lookahead": 12,
+				"_note": "ROUND 278 (Chris — the interactive-coverage chain, round 3 of 8). A [button] member in an accordion's TAIL ENDS the member walk, so the button renders through the normal body path as a REAL button exactly where the writer put it. MEASURED: the accordion's biggest 'foreign tag' decline was a [button] (33 of 90), and the decline-reason recorder showed that in 74 of those 90 the unplaceable member sits AFTER the last panel — usually as the bundle's very LAST member ('[Go to journal]'). It is the writer's post-accordion button that the walk swallowed, not panel content, and swallowing it also dragged the next section in (XGF9003-1.0 pulled [Body], the journal button, '[H2] Time management', an image and an [Alert] in after eight clean panels). The GOLD agrees: a button sits inside a panel in only 52 of 3,099 panels = 1.7% (outputs/_measure_r278_accgold.py). ZERO-RISK BY CONSTRUCTION: over all 454 corpus modules NOT ONE of the 253 currently-building accordions carries a [button] member (73 declines / 50 modules do), so this cannot change an existing build. FENCED against truncating a real multi-panel accordion: it fires only once the bundle has captured content AND #panelDelimiterAhead finds no further panel tag of the same type within `lookahead` items (the scan stops at another widget's invocation or a section/page marker, so a later unrelated accordion is invisible to it). Same family as media_series_break (r247) / media_table_terminates (r266) / media_caption_table_terminates (r271). Env toggle: ACCBTNTAIL_OFF. EXCLUDES a GO-TO-JOURNAL button: the round-239 buttons.go_journal rule already owns that one at a widget's tail (#goJournalTail ships the templated <h4 class=\"goJournal\"> after the widget and round 273 fixed its double-emit), so releasing it here made the main loop render a SECOND plain div.button beside that heading — caught live on HIS1006-12.0, which is exactly the duplicate Chris reported at round 273. #isGoJournalButton reuses that rule's OWN label_match/raw_match patterns so the two can never drift apart. EXCLUDES a PHANTOM button: the writer's \"[embed audio with a link and play button]\" (HIS1006-11.0) resolves to primary tag button because of the word buried in it, and breaking there truncated the accordion's own sources — so the member must resolve with one of clean_hows (the round-174 distinction: a tag-word inside prose resolves how:\"embedded\").",
+				"exclude_go_journal": true,
+				"clean_hows": [
+					"exact",
+					"denumbered",
+					"denumbered_head",
+					"exception"
+				]
+			},
+			"same_block_label_absorb": {
+				"enabled": true,
+				"types": [
+					"modal"
+				],
+				"tag": "modal",
+				"max_label_words": 9,
+				"_comment": "ROUND 280 (Chris — the interactive-coverage chain, round 5 of 8). The round-246 same_block_image_absorb transposed to the modal. A writer types a modal as ONE LINE — '<the visible label> [Pop-out] <the pop-out content>' (XGF9004-9.0, XGF9002-4.0) — so the black lead is the trigger LABEL and the tag's trailing text is the pop-out. The member walk starts AT the first tag, so every LATER label is captured (it is the black item preceding the next tag) but the FIRST one is left outside the bundle. This recovers it: the SAME source BLOCK only (the r105 'continuous sentence' discriminator), a single BLACK item, label-sized (the cap is READ FROM the builder: interactive_builders.modal.modal_sets.label_max_words, so absorb and build can never drift apart — the r246 shared-predicate discipline), and only when the bundle's first member is the modal tag itself — a different block, a structural tag, an already-consumed item or a whole paragraph all decline, so it cannot swallow a real preceding element. Consumed in place and read by InteractiveBuilder.#modalSets (D2). Env MODALLEAD_OFF."
 			}
 		},
 		"per_interactive_fields": {
