@@ -1,5 +1,178 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-07 (round 285, build 260618.57) — CLOSING THE ROUND-284 DATA-RECOVERY RESIDUAL: 15 of the 27 lost pages recovered by proof, 12 named (Chris — the R285 kickoff; **SCOPED regeneration of the 257 affected modules, NOT a full one — `REGENERATE CORPUS` was not in the request**)
+
+**THE PLAIN-ENGLISH LEAD.** Round 284 rebuilt ten data blocks that a `git checkout` had
+destroyed, and got 2074 of 2102 pages byte-identical. This round closes the gap it left. It
+found **four wrong values and one missing block**, and each turned out to be a real
+convention rather than a tuning knob — so **15 of the 27 outstanding pages are now
+byte-identical to the original again**, with the other 12 named in §5 rather than fitted.
+**Every protected criterion is EXACT**, and the corpus changed on **exactly 15 pages, 0
+added, 0 removed** — nothing else moved anywhere.
+
+**The oracle for the whole round** is `outputs/_r284_CORRECT_corpus.md5`, a fingerprint of
+the correctly-built corpus taken before the loss. Every change below was accepted only when
+it moved pages toward that fingerprint *and* left the canaries byte-identical; two were
+withdrawn when they did not (§4).
+
+### 1. `face_label_pattern` / `face_label_back_pattern` — the writer's face marker is a BARE bracketed word
+
+**MEASURED FIRST, over every Writers Template in the library:** `[front]` **358** ·
+`[back]` **354** · `[reverse]` **104** · `[facing]` **22** · `[on flip]` **5** ·
+`[reverse side]` **4** — and **ZERO occurrences of the separator form** the reconstructed
+pattern demanded (`^(?:front|facing|face)\s*[:.-]`). The pattern could therefore never fire
+on real input.
+
+That matters because of a lexicon quirk: **`facing` is an alias of `back`**, so `[Facing]`
+and `[Reverse]` both resolve to the *same* canonical tag and the tag route cannot tell the
+two sides of the card apart. Only the label branch — which runs first — can, and it was
+dead. HPFUN101's twelve cards each opened `[Facing]` and every one of them was filed as a
+back, so no card ever had a front and the whole widget declined.
+
+Both patterns now accept the bare word with an OPTIONAL separator, END-ANCHORED so a label
+can never be prose (`^(?:front|facing|face|back|reverse|reverse\s+side|on\s+flip|flip\s+side)\s*[:.\-]?\s*$`).
+**The gate pattern has to carry the back words too** — the engine tests
+`face_label_back_pattern` only *after* `face_label_pattern` has matched — and EXPFUN06 proves
+why: its `[on flip]` and `Facing:`/`Reverse:` markers resolve to **no tag at all**, so the
+label branch is the only thing that can place them. FIXES **HPFUN101, HPRE203, EXPFUN06**.
+
+### 2. `asset_reference_pattern` — an asset request is LABELLED, TAGGED, or a bare id
+
+The reconstructed pattern was doing two opposite jobs and doing both too eagerly. It has to
+turn the writer's photo BRIEF into a developer note while leaving real card text alone, and
+it was eating the text:
+
+| The writer wrote | Must be | The broken pattern |
+|---|---|---|
+| `Link for image (these were made by me in Canva)` — ENFUN05's column label | card text | ate it (`link for image` was its own arm) |
+| `Images like these (these ones are made by me in Canva)` — ENFUN09 | card text | ate it (`images`, plural) |
+| `A Cute Bird … Stock Illustration - Download Image Now - iStock` — ENGI405's iStock page TITLE | card text | ate it (`\bistock\b`, unanchored) |
+| `Picture of person` — XMES103 | a note | ✓ |
+| `iStock: Learning Through Play stock photo.` — CEDO501 | a note | ✓ |
+| `**Government benefits** [Image] iStock. New Zealand government buildings.` — CEDO501 | a note | ✓ (unanchored) |
+
+The last two rows are why anchoring alone fails, and the third row is why leaving it
+unanchored fails. **The rule that satisfies all six is that an asset request announces
+itself three ways**: it is LABELLED at the start (`iStock:`, `Image:`, `Wikipedia Commons.`),
+or it carries the writer's own `[Image]` tag, or it is a bare iStock id —
+`^\W*(?:istock|getty|wikipedia\s+commons|image|picture|photo|graphic|illustration)\b|\[\s*image\b|\bgm\d{6,}`.
+Note `image\b` never matches "Images", which is the singular/plural distinction doing real
+work: a brief names ONE asset, the plural is prose. FIXES **ENFUN05, ENFUN09, XMES103,
+ENGI405** — and CEDO501/CEDR501, whose briefs were the reason the value was tuned this way
+in the first place, stay byte-identical.
+
+### 3. clickDrop `note_tags` += `engagement quiz button`
+
+Both remaining clickDrop pages declined on the **same** foreign member — the writer's
+`[Trigger engagement]` marker, which the member walk could not place. It is a widget marker,
+not reveal content (the round-87 measurement already classes `(trigger engagement)` that
+way), so it belongs beside `button` and `data marker` in `note_tags`: skipped as content,
+surfaced as the standard red Writers Note. FIXES **BLL254, MXFL302_8_0**; the clickDrop
+canaries (OSOH501, OSSC401, SCPH301, HES1007, ENGC301) are byte-identical and the verifier
+reports **defect 0** over the touched modules.
+
+### 4. `modal.modal_sets.content_image` — the block that was missing entirely
+
+The read-but-undefined proxy (`outputs/_r284_missing_keys.cjs` — the instrument that cracked
+round 284) reported `modal_sets.content_image` as READ and UNDEFINED, and the engine's
+fallback is `cfg.content_image ?? cfg` — so an image **inside** a modal was being rendered
+with the block's own trigger template, i.e. wearing the `TKmodalButton` class that makes a
+thing clickable.
+
+**MEASURED against the human library:** inside a `div.TKmodal` the gold ships
+`class="img-fluid"` **456 times** and `img-fluid TKmodalButton` **once**. The block was
+restored in the shape the accordion and clickDrop already use for exactly this job (600x400
+placeholder, plain `img-fluid`, lazy). **This one key fixed SIX pages: BLL171, ENGI401,
+ENGS401, MXFU301, MXFUN01, OSOH201** — the largest single recovery of the round.
+
+**TWO CHANGES WITHDRAWN.** A `[:.\-]`-separator requirement on the asset pattern fixed
+XMES103_5_0 and broke XMES103_4_0, and was replaced by the singular/plural rule above.
+Adding `note_tags`/`text_tags` to `flipCard.general_cards` (mirroring clickDrop) was
+**inert** on every page tested — no fix and no break — so it was reverted rather than
+shipped: data with no evidence behind it is not recovery.
+
+### 5. THE 12 PAGES STILL OUTSTANDING — NAMED, NOT FITTED
+
+`ARFUN04_0_0` · `TEFUN03_0_0` · `BLL263_1_0` · `ENGR202_2_0` · `ENGS102_3_0` ·
+`MXEX401_5_0` · `MXFL302_6_0` · `OSGM201_3_0` · `SCPH301_1_0` · `TEDC402_4_0` ·
+`XGF9003_1_0` · `XLP01_2_0`.
+
+**The read-but-undefined proxy reports no key that explains any of them** — every value it
+still flags (`speechBubble.rich.thought_re` / `max_paragraphs` / `min_chars`,
+`flipCard.general_cards.front_head_level` / `front_head_max_words`, the clickDrop and
+carousel walk keys) is provably at its correct value already, because pages that exercise it
+are byte-identical: ENGI405 emits `<h4>ENFUN07 - Paragraphs - English NCEA Level 1</h4>`
+from a 7-word lead and matches the fingerprint exactly, which pins `front_head_level` at
+`h4` and `front_head_max_words` at 8; the round-276 changelog pins `max_paragraphs` at 8 in
+its own decline table. Two cases are diagnosed but not derivable: **TEFUN03** over-builds one
+speech bubble (its `[Image]` asset-brief / `[Link] Deep AI` grid, which the round-283 census
+records as a decline) and **BLL263** over-builds one carousel (the `[Embed audio book]`
+decodable-story family, which round 279 already records as an accepted decline class).
+
+Recovering these means recovering a judgement call that left no trace in the engine, the
+corpus or the changelog. Per the kickoff's own standard, they are recorded rather than tuned
+— a pattern fitted page-by-page to the fingerprint would pass today and fail the next writer
+who types something slightly different. **The 28th page, `XMES203_2_0`, differs BY DESIGN:
+the fingerprint still contains the round-284 dangling-marker bug and the corpus contains its
+fix.**
+
+### 6. PROOF
+
+- **Oracle:** full-corpus `md5sum -c` against `_r284_CORRECT_corpus.md5` — **28 → 13
+  differing**, i.e. **27 real → 12** plus the by-design `XMES203_2_0`.
+- **Containment, exact:** `_content_manifest.py diff` = **15 changed / 0 added / 0 removed**,
+  and the 15 changed modules are precisely the 15 recovered ones. Nothing else in the corpus
+  moved.
+- **Scoped ship (§10a).** Affected set = every module carrying a flipCard, clickDrop or modal
+  (`outputs/_r285_affected.txt`, derived from the round-283 census) — **257 with a Claude
+  dir**, the deliberate over-selection §13 prescribes. 23 batches + 2 splits, all rc 0;
+  **content-hash 0-stale** (`_content_manifest.py fresh --affected`), manifest re-snapshotted,
+  ledger scoped #1 of 8.
+- **Gates, all EXACT at the round-284/275 baseline:** literal-tag leak **288 occ / 46 pages**
+  · structurally clean **2056 / 2102 = 97.8%** · tags **9557/9557 REAL FAILURES 0** ·
+  flipCard **TOTAL 49 / exact 21 / defect 18 / divergence 0 ✓** · clickDrop verifier **defect
+  0** · **all 7 widget selftests GREEN** · entry-parity **PASS** · index-sync **33/28 OK** ·
+  corpus **2102 pages / 413 modules**. (speechBubble's live `defect 1` is the PRE-EXISTING
+  one CLAUDE.md §14 records from round 277; nothing in this round touches speechBubble.)
+- **PRIMARY skeleton — scored on the 15 changed modules against the round-284 state file**
+  (`_skeleton_compare.py --json`, 80 pages, **skipped_parse_errors 0**; the full-corpus run
+  was NOT re-done — this is a scoped ship). **Buckets EXACT: ≥50% 38→38, ≥75% 10→10, ≥90%
+  5→5.** **RAW +10.04 pp-sum (IMPROVED)**; scaffold −12.40 pp-sum, of which **−15.25 is
+  HPFUN101_0_0 alone** — its flipCard now BUILDS where a hand-off box previously stood, and
+  its own RAW rises +4.15pp. That is the documented net-positive class every round from 277
+  on named in advance: a page that matched the gold's built widget *by coincidence* through a
+  collapsed placeholder marker scores lower on scaffold once the real widget appears. Only 10
+  of the 80 pages moved at all; projected over the full 1940-pair population that is
+  **≈ −0.006pp mean / ≈ +0.005pp RAW**. **The restored pages are byte-identical to the
+  ORIGINAL corpus**, so this movement is the r284 baseline returning to the state it was
+  measured against before the loss — §9's skeleton line still describes round 284 ± exactly
+  these 10 pages, and will be re-established at the next full regeneration.
+
+### 7. A TRAP, AND A TOOL
+
+**THE GHOST FLAT DIR, HIT AND CLEANED.** The affected set was derived from the census, which
+covers all 445 gold dirs — but 32 of those have **no Claude dir**, and regenerating a module
+with no existing dir creates a FLAT one at the top of `01-Claude_Modules_` (the documented
+§10 trap, previously hit at r215/r232). The freshness check reported them as "truly stale",
+which is what provoked the mistake. All 32 were deleted and the affected list is now filtered
+to modules that actually have output. **Derive an affected set from what `_batch_plan.py`
+gates, not from the census alone.**
+
+**`outputs/_r285_flipfaces.cjs`** (new, diagnostic): patches the one line
+`if (!c.front || !c.back) return null;` to print each resolved card's two faces before the
+guard runs, plus an optional `--segs <regex>` that dumps a cell's text and split segments.
+That is what named `\bistock\b` as the guard eating ENGI405's back face. **It also caught a
+trap worth recording: `app/` is a SYMLINK, so node reports the REAL path — a require hook
+must match by filename SUFFIX, never by `path.resolve()` of the symlinked path**, which is
+why the first version of the probe silently instrumented nothing.
+
+**Data only — no engine change, no new env toggle** (this is a recovery of lost values, not
+new behaviour; the reversal is a `git checkout` of `Emit_Templates.json`, which is now safely
+committed). Data: `interactive_builders.flipCard.general_cards.face_label_pattern` /
+`face_label_back_pattern` / `asset_reference_pattern` ·
+`clickDrop.general_items.note_tags` · `modal.modal_sets.content_image`.
+
+
 ## 2026-08-07 (round 284, build 260618.56) — THE FULL CORPUS REGENERATION of the eight-round interactive-coverage chain + the ONE regression it found (Chris: "if it results in any regression, I would really like those regressions to be debugged and rectified at the same time … I am really keen to keep the changes")
 
 **FULL REGENERATION — explicitly requested (§0).** All 416 `01-Claude_Modules_` dirs rebuilt and verified **0-stale by mtime**; corpus **2102 pages / 416 dirs, 0 added / 0 removed / 0 pagination churn**. This is the first regeneration since round 275: rounds **276–283** (speechBubble → hint/hintSlider → accordion → carousel → modal → tabs → flipCard → clickDrop) had all been proven in memory and none of their builds had ever been written to the corpus. Blast radius of the chain landing: **631 pages / 282 modules**.

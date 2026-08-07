@@ -1033,7 +1033,24 @@ class Config {
 	// <div> (674 of the gold's own panels do).
 	// clickDrop 61 -> 163 of 690 (8.8% -> 23.6%); overall coverage 41.9% -> 43.9%;
 	// NEW BUILDS 102, LOST 0 in every type; 67 modules.
-	static AppVersion = "260618.56";
+	//
+	// ROUND 285 (260618.57): CLOSING THE ROUND-284 DATA-RECOVERY RESIDUAL — DATA ONLY,
+	// no engine change, no new toggle. Four wrong values and one missing block, each
+	// recovered as a real convention and proven against outputs/_r284_CORRECT_corpus.md5:
+	//   * flipCard face_label_pattern / face_label_back_pattern — a face marker is a BARE
+	//     bracketed word (measured [front] 358 / [back] 354 / [reverse] 104 / [facing] 22 /
+	//     [on flip] 5; ZERO separator forms corpus-wide). The gate must carry BOTH faces:
+	//     'facing' is a lexicon alias of 'back', and EXPFUN06's [on flip] has no tag at all.
+	//   * flipCard asset_reference_pattern — an asset request is LABELLED at the start, or
+	//     carries the writer's own [Image] tag, or is a bare gm-id. image\b never matches
+	//     "Images": a brief names ONE asset, the plural is prose.
+	//   * clickDrop note_tags += "engagement quiz button" — a widget marker, like [button].
+	//   * modal_sets.content_image — the block was MISSING, so an image inside a modal wore
+	//     the trigger's TKmodalButton class (gold ships img-fluid 456:1 inside a TKmodal).
+	// Oracle 28 -> 13 differing (27 real -> 12, named in the changelog; XMES203_2_0 differs
+	// BY DESIGN). Scoped ship: 257 modules regenerated, EXACTLY 15 pages changed / 0 added /
+	// 0 removed; every protected criterion EXACT.
+	static AppVersion = "260618.57";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
