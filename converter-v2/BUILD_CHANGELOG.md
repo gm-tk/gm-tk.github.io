@@ -1,5 +1,195 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-07 (round 287, build 260618.58) — THE DROPDOWN: the first builder this widget has ever had (Chris — "dropDown is the largest completely-unbuilt widget type in the library: 390 widgets across 163 modules, and not one has ever been attempted"; **NO REGENERATION — not requested; the gates were NOT re-run and the round-284/285 baselines still describe the corpus**)
+
+**THE PLAIN-ENGLISH LEAD.** A dropdown is the little select-an-answer box a learner picks
+from. The converter had never built one — not once, anywhere in the library — and the
+reason turned out to be mundane: `Emit_Templates.json` had no `dropDown` entry and the
+dispatch had no `case`, so every single one of the 390 captured dropdowns was refused by
+`Build`'s own missing-template guard *before* any dropdown code could run. There was no
+dropdown code to run.
+
+**Dropdowns now build 14 of 390, over 12 modules, with LOST 0 in every other widget type.**
+That is a deliberately conservative first shipment, and §8 names every one of the 376
+declines. The two findings below are what the round is really worth, because both change
+what a later round can safely attempt.
+
+---
+
+### 1. THE POPULATION IS NOT WHAT THE TYPE NAME SAYS — and the kickoff's figures were short a shard
+
+`Tag_Lexicon` aliases `dropbox` and `drop box` onto this same widget type. **A dropbox is
+not a dropdown**: it is the file-upload area where a student submits a photo, a video or an
+audio recording. The human developers agree they are different things — the gold ships
+`class="activity dropbox"` (an activity MODIFIER, 558 occurrences) for one and
+`div.dropDown` for the other.
+
+Measured over every Writers Template, from the writer's own opener:
+
+| Family | Bundles | Modules |
+|---|--:|--:|
+| **dropbox — student file upload** | **240** | **87** |
+| **genuine dropdown** | **142** | **82** |
+| no opener tag in the capture | 11 | 10 |
+
+**A SHARD HAD BEEN SILENTLY LOST.** The kickoff quoted 363 bundles / 153 modules from
+`_r287_dropdown.json`; shard 11 of 16 was missing from the merge, so the real figure is
+**393 / 166**. Re-running it showed the cause is *not* the round-279 parallel-write trap
+but something simpler and worth recording: **shard 11 is a slow shard that exceeds the 40s
+wall when run alongside three others, and completes alone.** A merge that silently accepts
+15 of 16 shards will under-report; `_measure_r287_ddauthor.cjs` now prints a loud
+`!! SHARDS MISSING` line rather than merging quietly.
+
+**RECONCILING THE TWO POPULATION COUNTS** (the kickoff asked): the scan hook sees **393**,
+the Build hook **390**. Four bundles are scanned but never reach the builder — PNR101-1.0,
+TRR109-2.0, TRR109-3.0, TWHT903-0.0, all reo-path modules whose bilingual dispatch owns
+them — and one (XMES201-5.0) reaches Build twice as a nested sub-bundle. 393 − 4 + 1 = 390.
+The honest coverage denominator is **390**, what the builder is actually asked to build.
+
+**THE FENCE, NOT A RE-CUT.** Re-cutting the lexicon alias would move 240 bundles' capture
+and hand-off labels across 87 modules — a blast radius with nothing to do with building a
+dropdown. So the builder fires only where the writer's opener names a dropdown, and every
+dropbox bundle is untouched **by construction**. Proven: 10 dropbox-heavy modules, 61
+pages, byte-identical in both toggle states. The alias correction is recorded in §9.
+
+### 2. THE ANSWER SIGNAL IS NOT ONLY RED
+
+Writers mark the correct option two ways, and the kickoff only named one:
+
+* **red text** — `…is (18, 19, 20)` with `19` coloured; and
+* **an explicit `[correct]` tag** placed immediately before the right option — BLL273's raw
+  WT reads `Someone who is saved from danger is (🔴[correct]🔴rescued, dropped, forgotten).`
+
+Both reduce to the same thing — **a MARK at a character position** — so one derivation
+serves both. Several openers say so outright: `[Drop down questions] [Correct answer in
+red]`, `[Insert interactive – self-check with drop down true/not true. Correct one in red]`.
+
+The extractor delivers a sentence with three coloured words as one black lead plus three
+red spans each carrying the rest of its own parenthesis, so the builder first **rebuilds
+the paragraph the writer typed while remembering where the marks fell**. Nothing else can
+see the option groups.
+
+### 3. THE FOUR DIALECTS, each quoted against its gold
+
+* **D1 PARAGRAPH-PARENS.** Options in a parenthesis inside prose, one marked.
+  BLL273-2.0 → the gold's `dropQuiz autoCheck layout="paragraph"` >
+  `dropParaContainer` > `<ol>` > `<li>` with the dropdown inline in the sentence, and
+  `answer="1"` for `[correct]rescued`, `answer="2"` for `(invited, [correct]kidnapped`.
+  **Our build matches that structure element for element.**
+* **D2 QUESTION + MARK.** A question line, then the answer as a marked span. The option set
+  is the DISTINCT answers across the questions — recoverable without parsing the writer's
+  English, and it agrees with the set PHE1007's Dev note states in prose ("all questions
+  have the same three options … Skeletal, Smooth, Cardiac. I will write the correct answer
+  in red").
+* **D3 TABLE + RED.** An answers COLUMN beside a statements column, or a GRID of red cells
+  under a header row. SCCH301-1.0's Solids|Liquids|Gases yes/no table now emits the gold's
+  own arrangement: the row's statement as an `<ol><li>`, then one `dropQuestion` per column.
+* **D4 BULLETS + (correct).** A bullet run of options with the right one carrying a
+  `(correct)` marker — ENGC101-4.0's symbol quiz, whose gold builds exactly this, and whose
+  answers (2, 1, 3) our build reproduces.
+
+### 4. WHY NOT `#accMemberParts`
+
+The kickoff proposed reusing the shared round-278 member walk with new `delims` keys. That
+walk **strips the red markers and bails on red text** — but here the red text *is* the
+answer, so reusing it would mean inverting its core rule for one caller and putting the
+other five widgets at risk. The dropdown walk is therefore local and sets **no shared
+keys at all**, so the accordion, tabs, clickDrop and flipCard cannot move by construction;
+the shared *helpers* (`#cellText`, `#accImageFilename`, `#assetImage`, `#cellMediaUrl`) are
+reused unchanged.
+
+### 5. THREE BUGS CAUGHT BEFORE THEY SHIPPED — one of them in the verifier
+
+* **A captured table was being silently dropped.** The stream's `push` helper ignored a
+  token with no text, and a table token carries none — so MXDB302-4.0 built as though the
+  data table its questions are *about* were not there. Structural tokens now always push.
+  A writer's table is never silently lost.
+* **The widget's own lead prose was being swallowed into question 1** ("Select the correct
+  type of muscle that makes up the body part. 1. Liver"). A PREAMBLE pass now lifts lead
+  prose, the data table and any diagram out and renders them ABOVE the quiz — which is
+  exactly what MXDB302's gold does (prose, table, image, then the dropQuiz). The rule is
+  "the last paragraph before the first mark belongs to the first question", with a
+  **bullet exception**: in a bullet run every line before the marker is an option, so no
+  prose is lifted when a bullet appears (ENGC101 would otherwise lose its first option).
+* **A bug in the NEW VERIFIER** (the round-282/283 class). Its option-matching fold strips
+  punctuation so the gold's macron-less spellings still match — but applied to the
+  DUPLICATE-OPTION defect test it made `"+ 10"`, `"× 10"` and `"- 10"` all fold to `"10"`
+  and reported a perfectly good MXDB302 unit as three identical choices. Duplicate
+  detection now uses a case/whitespace-only fold; matching keeps the aggressive one.
+
+### 6. RESULT
+
+**dropDown 0 → 14 of 390. NEW BUILDS 14 / LOST 0 in EVERY widget type. 12 modules**
+(`outputs/_r287_affected.txt`): BLL273, BLLR201, ENGC101, ENGR302, HES1006, MXDB302,
+MXFL301, MXFL302, MXFU301, PHE1007, SCCH301, XLP02.
+
+Same-tool coverage moves **2247 → 2261 of 7602 captured bundles (29.6% → 29.7%)**. Note
+this recorder's denominator is not the standing dashboard's — do not mix the two figures.
+
+### 7. PROOF (no regeneration)
+
+* **The toggles-OFF census reproduces round 286 EXACTLY** — every type's captured / built /
+  module counts identical, totals 7602 / 2247. That is the same-tree baseline the +14 / −0
+  is measured against, and the ON census was **re-run after each fix changed the builder**
+  (the round-282 rule; the intermediate figures would have been wrong to publish).
+* **Byte identity, ONE STATE PER PROCESS** (the round-246 trap): of 101 pages across the 12
+  affected modules, **exactly 14 differ** — precisely the 14 built bundles' pages — and 6
+  out-of-class canaries (BLL210, OSAH501, ENGS302, TRR203, OSBY201, OSAI201; 26 pages) are
+  **identical in BOTH states**.
+* **The dropbox fence**: 10 dropbox-heavy modules, 61 pages, **identical in both states**.
+* **The leak guard proven** by running the defect audit's own predicate in memory over all
+  12 affected modules in both states: **684 visible literal-tag leaks, PER-MODULE
+  IDENTICAL**. Building a dropdown can only ever PREVENT a leak.
+* **NEW `_verify_dropdown.cjs` with `--selftest`** (LIVENESS + DETECTION, **GREEN**), added
+  to the selftest spec. Live over the 12 affected modules: **14 groups, 128 units — exact
+  76, copy-edit 1, dev-edit 51, defect 0 ✓**. Seventy-six units match the human's option
+  list and answer index verbatim.
+* tags **9557/9557 REAL FAILURES 0** · entry-parity **PASS** · index-sync **33/28 OK** ·
+  flipCard §9 **divergence 0 ✓** · all **eight** widget selftests GREEN.
+
+### 8. ALL 376 DECLINES NAMED
+
+Of the 390 bundles reaching the builder: **249** are the dropbox family the fence refuses
+(correct by design), **116** resolve no dialect, **11** carry a member the walk cannot
+place. Decomposing the 127 genuine-dropdown declines:
+
+| Bundles | Modules | Why |
+|--:|--:|---|
+| **76** | **52** | **the correct option is not marked anywhere** — no red, no `[correct]`. An answer is never invented. |
+| 21 | 19 | a captured TABLE none of the readings resolves |
+| 18 | 15 | marks present but the shape is not a quiz (TWHT903's U/K/D curriculum labels, CEDT104's stray `]`) |
+| 7 | 5 | another widget or element the walk cannot place (`typing quiz`, `tab n`, `mcq`, `drag and drop`) |
+| 5 | 5 | no substantive content at all |
+
+The realistic ceiling for this widget is therefore about **61 of 142** genuine dropdowns;
+76 of them are undecidable from the Writers Template as written.
+
+### 9. RECORDED, NOT SHIPPED
+
+* **The `dropbox` lexicon alias** — `dropbox`/`drop box` should not resolve to `dropDown`,
+  and the human's `class="activity dropbox"` activity modifier is not emitted at all
+  (Claude ships it 0 times against the gold's 558). Its own round: 240 bundles / 87 modules.
+* **The BOLD-marked slash-option table** — ENGR301/OSAH301/OSAH501 and three others mark
+  the answer with `**bold**` inside a `" / "`-separated cell (27 cells / 6 modules).
+  Measured and deliberately declined: bold is a far weaker signal than red.
+* **ENFUN09's separate options TABLE** (`Number | Dropdown option 1..4`) with `[class="red-text" (N)]`
+  markers numbering the blanks in the prose.
+* **MXDB302-6.0's option set stated only in a red instruction** ("please have all dropdown
+  options as: hundreds, tens, ones, …").
+* **ENGC101's first question loses its image to the capture boundary** — the scanner starts
+  the bundle at the first `[dropdown]` tag, which sits *after* the first `[image]`, so that
+  symbol renders just above the quiz instead of inside question 1 (the gold puts it inside).
+  The content is on the page and correct; the fix is a backward lead-image absorb, the
+  round-246 `same_block_image_absorb` class, and it moves a bundle boundary — its own round.
+* **SCCH301's `Check answers` / `Undo` / `Reset` button trio** that follows its grid.
+* The multi-select `answer="1 2 3"` form (49 gold units), `layout="scatter"` (3), the te
+  reo placeholder **"Tīpakongia"** (TRR110/TRR301 only, and no reo dropdown reaches the
+  builder today), and `randomize the order`.
+
+**RECOMMENDED, waiting to be asked: `REGENERATE CORPUS`.** Nine rounds are now pending
+(r276–r283 plus this one) and they overlap heavily; only a full rebuild re-establishes the
+§9 baselines, which have described the round-275 state since round 284's regeneration.
+
 ## 2026-08-07 (round 285, build 260618.57) — CLOSING THE ROUND-284 DATA-RECOVERY RESIDUAL: 15 of the 27 lost pages recovered by proof, 12 named (Chris — the R285 kickoff; **SCOPED regeneration of the 257 affected modules, NOT a full one — `REGENERATE CORPUS` was not in the request**)
 
 **THE PLAIN-ENGLISH LEAD.** Round 284 rebuilt ten data blocks that a `git checkout` had

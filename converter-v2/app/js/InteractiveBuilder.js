@@ -141,6 +141,13 @@ class InteractiveBuilder {
 					// converter's own emitters, exactly as the accordion's panels do.
 					html = this.#clickDropEntry({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested });
 					break;
+				case "dropDown":
+					// ROUND 287 — the first builder this type has ever had. FENCED on the
+					// writer's opener naming a dropdown, because the lexicon aliases the
+					// student file-upload "dropbox" onto this same widget type and the two
+					// are unrelated things (240 of 393 captured bundles are dropbox).
+					html = this.#dropDown({ bundle, tpl, renderInline, run, renderTable });
+					break;
 				case "glossary":
 					html = this.#glossary({ bundle, tpl, renderInline });
 					break;
@@ -8339,6 +8346,558 @@ class InteractiveBuilder {
 		const spans = String(cell ?? "").match(/\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu) || [];
 		return spans.filter((s) =>
 			s.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().length > 0).length;
+	}
+
+	// =======================================================================
+	// ROUND 287 — THE DROPDOWN
+	// =======================================================================
+	/**
+	 * dropDown (ROUND 287, Chris — "dropDown is the largest completely-unbuilt widget
+	 * type in the library: 390 widgets across 163 modules, and not one has ever been
+	 * attempted"). The FIRST builder this widget has had; every one of those 390
+	 * declined at Build's own missing-template guard, before the dispatch was reached.
+	 *
+	 * TWO THINGS HAD TO BE SETTLED BEFORE A LINE OF THIS COULD BE WRITTEN.
+	 *
+	 * (1) THE POPULATION IS NOT WHAT THE TYPE NAME SAYS. Tag_Lexicon aliases
+	 *     `dropbox`/`drop box` onto this same widget type, but a DROPBOX is the
+	 *     file-upload area where a student submits a photo, a video or an audio
+	 *     recording. Measured over every Writers Template: of 393 captured bundles,
+	 *     240 (87 modules) are dropbox and 142 (82 modules) are a genuine dropdown.
+	 *     The gold agrees they are different things — `class="activity dropbox"` (an
+	 *     activity MODIFIER, 558 occurrences) versus `div.dropDown`. So the builder is
+	 *     FENCED on the writer's own opener naming a dropdown, which leaves every
+	 *     dropbox bundle byte-identical BY CONSTRUCTION. Re-cutting the lexicon alias
+	 *     would move 240 bundles' capture and hand-off labels across 87 modules and is
+	 *     recorded as its own round, not done here.
+	 *
+	 * (2) THE ANSWER SIGNAL IS NOT ONLY RED. Writers mark the correct option EITHER by
+	 *     colouring it red OR with an explicit [correct] tag immediately before it
+	 *     (BLL273, BLLR201 — the raw WT reads "…is (🔴[correct]🔴rescued, dropped,
+	 *     forgotten)." and the gold ships answer="1"). Both reduce to a MARK at a
+	 *     character position, so ONE derivation serves both.
+	 *
+	 * FOUR DIALECTS, each quoted against its gold:
+	 *   D1 PARAGRAPH-PARENS — options in a parenthesis inside prose, one marked.
+	 *        BLL273-2.0  "Someone who is saved from danger is ([correct]rescued, dropped, forgotten)."
+	 *        gold        dropQuiz autoCheck layout="paragraph" > dropParaContainer > ol > li
+	 *                    with <div class="dropDown" answer="1"> inline in the sentence.
+	 *   D2 QUESTION + MARK — a question line, then the answer as a marked span; the
+	 *      OPTION SET is the DISTINCT answers across the questions, which is
+	 *      recoverable without parsing the writer's English (PHE1007's Dev note names
+	 *      the same three words it then colours red, so the two agree).
+	 *        PHE1007-1.0 "1. Liver" / red "Smooth" · "1. Bicep" / red "Skeletal" …
+	 *   D3 TABLE + RED — an answers COLUMN beside a statements column, or a whole grid
+	 *      of red cells under a header row.
+	 *        SCCH301-1.0 header Solids|Liquids|Gases, every body cell red [yes]/[no]
+	 *   D4 BULLETS + (correct) — a bullet RUN of options, the right one carrying a
+	 *      `(correct)` marker.
+	 *        ENGC101-4.0 "• For people with bikes / • For people with disabilities
+	 *                    (correct) / • For people without cars"
+	 *        gold        dropQuiz autoCheck > row > dropQuestion > img + dropDown answer="2"
+	 *
+	 * A LABEL, AN OPTION AND AN ANSWER ARE NEVER INVENTED. The single largest decline
+	 * bucket — 76 bundles over 52 modules — is a dropdown whose correct option the
+	 * writer never marked at all, and those keep their honest hand-off box.
+	 *
+	 * NEVER HALF-BUILDS: no dialect resolves ≥ min_units units · an option set outside
+	 * min/max_options · a member the walk cannot place · an empty option · or a
+	 * finished widget that still shows a resolved [tag] (#ddLeakGuard — the round
+	 * 167/275/277/278 rule at this seam, so building can only ever PREVENT a leak).
+	 *
+	 * WHY NOT #accMemberParts. The shared round-278 walk STRIPS the red markers and
+	 * BAILS on red text — but here the red text IS the answer, so reusing it would
+	 * mean inverting its core rule for one caller and putting the other five widgets
+	 * at risk. This walk is local and sets NO shared keys, so the accordion, tabs,
+	 * clickDrop and flipCard cannot move BY CONSTRUCTION; the shared HELPERS
+	 * (#cellText, #accImageFilename, #assetImage) are reused unchanged.
+	 *
+	 * Data interactive_builders.dropDown; env DROPDOWN_OFF.
+	 */
+	static #dropDown({ bundle, tpl, renderInline, run, renderTable }) {
+		if (!tpl || tpl.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DROPDOWN_OFF) return null;
+		if (!this.#ddIsDropdownFamily(bundle, tpl)) return null;   // the dropbox fence
+		const inline = renderInline ?? ((s) => s);
+		const notes = [];
+		const all = this.#ddStream(bundle, tpl, notes);
+		if (!all) return null;
+		// the autoCheck class, resolved ONCE from the writer's own opener wording
+		const ac = this.#ddAutocheck(bundle, tpl);
+		// the widget's own PREAMBLE — lead prose, a data table, an image — lifted out so
+		// it renders ABOVE the quiz exactly as the gold does, instead of being swallowed
+		// into the first question or (worse) silently lost.
+		const { pre, toks } = this.#ddPreamble(all, tpl, inline, run, renderTable);
+		if (pre === null) return null;
+
+		// The dialects, in order. The first that resolves owns the bundle.
+		const body = this.#ddParagraph(toks, tpl, inline, run, ac)
+			?? this.#ddBullets(toks, tpl, inline, run, ac)
+			?? this.#ddQuestions(toks, tpl, inline, run, ac)
+			?? this.#ddTable(bundle, tpl, inline, ac);
+		if (!body) return null;
+		const built = [...pre, body].join("\n");
+		if (this.#ddLeakGuard(built, tpl)) return null;            // a build must never ADD a leak
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.r287DropDown = true;                                // detector / affected-set marker
+		return built;
+	}
+
+	/**
+	 * ROUND 287 — THE PREAMBLE. A dropdown often opens with material that belongs to the
+	 * whole quiz rather than to any one question: an instruction line ("Study this table
+	 * and graph…"), the DATA TABLE the questions are about, a diagram. The gold renders
+	 * all three above the container (MXDB302-4.0: prose, then the table, then the image,
+	 * then the dropQuiz), so they are lifted out here and the dialects see only the
+	 * question material.
+	 *
+	 * Returns { pre, toks }, or pre === null when a captured table cannot be rendered —
+	 * a writer's table is NEVER silently dropped, so that declines the build.
+	 *
+	 * THE BULLET EXCEPTION. "the last paragraph before the first mark belongs to the
+	 * first question" is right for prose (PHE1007's lead) but wrong for a bullet RUN,
+	 * where every line before the marker is an option (ENGC101). So no prose is lifted
+	 * when a bullet appears in the preamble.
+	 */
+	static #ddPreamble(all, tpl, inline, run, renderTable) {
+		const firstMark = all.findIndex((t) => t.kind === "mark");
+		if (firstMark < 0) return { pre: [], toks: all };
+		const head = all.slice(0, firstMark);
+		const bulletish = head.some((t) => t.kind === "plain" && /^\s*[•●▪‣]/.test(String(t.text ?? "")));
+		const pre = [];
+		const keep = [];
+		const plainIdx = head.map((t, i) => (t.kind === "plain" ? i : -1)).filter((i) => i >= 0);
+		const lastPlain = plainIdx.length ? plainIdx[plainIdx.length - 1] : -1;
+		for (let i = 0; i < head.length; i++) {
+			const t = head[i];
+			if (t.kind === "table") {
+				if (typeof renderTable !== "function" || !t.item) return { pre: null, toks: all };
+				const html = renderTable(t.item);
+				if (!html || !String(html).trim()) return { pre: null, toks: all };
+				pre.push(String(html));
+				continue;
+			}
+			if (t.kind === "img") {
+				if (run) pre.push(this.#assetImage(t.text, tpl, run));
+				continue;
+			}
+			if (t.kind === "plain" && !bulletish && i !== lastPlain) {
+				const s = this.#ddTidy(t.text);
+				if (s) pre.push(Utils.FillTemplate(tpl.question_text, { text: inline(s) }));
+				continue;
+			}
+			keep.push(t);
+		}
+		return { pre, toks: [...keep, ...all.slice(firstMark)] };
+	}
+
+	/**
+	 * THE FAMILY FENCE. True only when the writer's own opener names a DROPDOWN.
+	 * A bundle whose opener says "dropbox" (the student file-upload area) is not this
+	 * widget and is left exactly as it was.
+	 */
+	static #ddIsDropdownFamily(bundle, tpl) {
+		const deny = new RegExp(tpl.opener_deny_pattern ?? "drop\\s*box", "i");
+		const allow = new RegExp(tpl.opener_pattern ?? "drop[\\s-]*down|dropquiz|drop\\s*quiz", "i");
+		for (const m of bundle?.memberItems ?? []) {
+			if (m?.type !== "tag") continue;
+			if (!(tpl.delimiter_tags ?? ["dropdown"]).includes(m.parse?.primary?.tag)) continue;
+			const own = String(m.text ?? "");
+			return allow.test(own) && !deny.test(own);
+		}
+		return false;
+	}
+
+	/**
+	 * ROUND 287 — the captured members as an ordered token stream, or null when a
+	 * member cannot be placed. Each token is { text, kind } where kind is:
+	 *   "plain" ordinary prose · "mark" an ANSWER mark (red text, or a [correct] tag,
+	 *   which carries no text of its own) · "img" a nameable image · "delim" a repeated
+	 *   invocation opening a new item · "note" a writer instruction, surfaced red after
+	 *   a successful build and never silently dropped (the round-214/242 rule).
+	 *
+	 * The point of the stream is that it REBUILDS the paragraph the writer typed while
+	 * remembering where the marks fell — the extractor delivers a sentence with three
+	 * coloured words as one black lead plus three red spans each carrying the rest of
+	 * its own parenthesis, so nothing else can see the option groups.
+	 */
+	static #ddStream(bundle, tpl, notes) {
+		const toks = [];
+		const delims = tpl.delimiter_tags ?? ["dropdown"];
+		const textTags = tpl.text_tags ?? [];
+		const noteTags = tpl.note_tags ?? [];
+		const imageTags = tpl.image_tags ?? [];
+		const maxAns = tpl.max_answer_words ?? 12;
+		let seenOpener = false;
+
+		// A token with no text still MATTERS when it is a structural marker — a captured
+		// table above all. Dropping an empty "table" token let a bundle build as though
+		// the writer's table were not there (caught live on MXDB302-4.0, whose data table
+		// feeds the questions); the paragraph/question/bullet dialects test for it and
+		// decline, so the table can never be silently lost.
+		const structural = new Set(["mark", "delim", "img", "table"]);
+		const push = (t, kind) => { if (t || structural.has(kind)) toks.push({ text: t, kind }); };
+		const after = (m) => { const t = this.#cellText(m.blackAfter ?? ""); if (t) push(t, "plain"); };
+
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table") { toks.push({ text: "", kind: "table", item: m }); continue; }
+			if (m.type === "nested") return null;
+			if (m.type === "black") {
+				const t = this.#cellText(m.text ?? "");
+				if (t) push(t, "plain");
+				continue;
+			}
+			if (m.type !== "tag") return null;
+			const tag = m.parse?.primary?.tag ?? null;
+
+			// the widget's OWN invocation (first) vs a REPEATED one (an item delimiter)
+			if (tag && delims.includes(tag)) {
+				if (!seenOpener) { seenOpener = true; after(m); continue; }
+				push("", "delim"); after(m); continue;
+			}
+			// an EXPLICIT [correct] marker: the option that FOLLOWS it is the answer
+			if (tag === "correct") { push("", "mark"); after(m); continue; }
+
+			// an UNRESOLVED RED span — the writer coloured a word and it matched no tag.
+			// Short and unbracketed = an answer token; anything else is a writer note.
+			// (Class alone cannot separate them: "Give a hug" and "cheer her dad up" are
+			// real answers that trip an instruction cue, while "[Dev – two options]" is a
+			// note that does not.)
+			if (!tag && (m.parse?.class === "noise" || m.parse?.class === "instruction")) {
+				const own = this.#cellText(m.text ?? "");
+				if (own && !own.startsWith("[") && own.split(/\s+/).length <= maxAns) push(own, "mark");
+				else if (own) notes.push(own);
+				after(m);
+				continue;
+			}
+			if (tag && imageTags.includes(tag)) {
+				const url = this.#cellMediaUrl(m.blackAfter ?? "");
+				const fn = url ? this.#accImageFilename(url, tpl, tpl) : null;
+				if (fn) push(fn, "img");
+				else {                                             // an asset REQUEST, not an image
+					const t = this.#cellText(m.text ?? "") + " " + this.#cellText(m.blackAfter ?? "");
+					if (t.trim()) notes.push(t.trim());
+				}
+				continue;
+			}
+			if (tag && textTags.includes(tag)) { after(m); continue; }
+			if (tag && noteTags.includes(tag)) {
+				const t = this.#cellText(m.text ?? "") + " " + this.#cellText(m.blackAfter ?? "");
+				if (t.trim()) notes.push(t.trim());
+				after(m);
+				continue;
+			}
+			return null;                                           // a foreign tag we cannot place
+		}
+		return toks;
+	}
+
+	/**
+	 * ROUND 287 — the token stream as one string plus the character ranges the answer
+	 * marks occupy. A ZERO-WIDTH range is an explicit [correct] insertion point: the
+	 * option that FOLLOWS it is the answer.
+	 */
+	static #ddRebuild(toks) {
+		const buf = [];
+		const marks = [];
+		const starts = [];
+		let pos = 0;
+		for (const t of toks) {
+			if (t.kind === "note" || t.kind === "table" || t.kind === "img" || t.kind === "delim") continue;
+			if (t.kind === "mark" && !t.text) { marks.push([pos, pos]); continue; }
+			if (!t.text) continue;
+			const prev = buf.length ? buf[buf.length - 1] : "";
+			const need = prev && !/[(\s\n]$/.test(prev) && !/^[,).\s\n]/.test(t.text);
+			if (need) { buf.push(" "); pos += 1; }
+			// AN ITEM BOUNDARY. Each black paragraph arrives as its own token, so a token
+			// that OPENS with the writer's numbering starts a new numbered item. Reading it
+			// here rather than from the joined string is what makes the split reliable: the
+			// reconstruction joins the paragraphs with spaces, so a "1." that began a
+			// paragraph is indistinguishable from one mid-sentence once joined.
+			if (t.kind === "plain" && /^\s*\(?\d{1,3}[.)]\s+\S/.test(t.text)) starts.push(pos);
+			if (t.kind === "mark") marks.push([pos, pos + t.text.length]);
+			buf.push(t.text); pos += t.text.length;
+		}
+		return { text: buf.join(""), marks, starts };
+	}
+
+	/** ROUND 287 — one parenthesised option group -> {options, answer, span} or null. */
+	static #ddGroup(text, start, inner, marks, tpl) {
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
+		const opts = [];
+		let off = 0;
+		for (const part of inner.split(",")) {
+			opts.push({ text: part.trim(), a: start + off, b: start + off + part.length });
+			off += part.length + 1;
+		}
+		if (opts.length < min || opts.length > max) return null;
+		if (opts.some((o) => !o.text)) return null;
+		const hit = new Set();
+		opts.forEach((o, i) => {
+			for (const [ra, rb] of marks) {
+				if (ra === rb) { if (o.a <= ra && ra <= o.b) hit.add(i); }      // explicit [correct]
+				else if (!(o.b <= ra || o.a >= rb)) hit.add(i);
+			}
+		});
+		if (hit.size !== 1) return null;
+		return { options: opts.map((o) => o.text), answer: [...hit][0] + 1 };
+	}
+
+	/**
+	 * D1 — PARAGRAPH-PARENS. Prose carrying parenthesised option groups with one
+	 * option marked. Emits the gold's paragraph form: dropQuiz layout="paragraph" >
+	 * dropParaContainer > <ol> with one <li> per sentence, the dropdown inline where
+	 * the writer put the parenthesis.
+	 */
+	static #ddParagraph(toks, tpl, inline, run, ac) {
+		if (toks.some((t) => t.kind === "table" || t.kind === "img" || t.kind === "delim")) return null;
+		const { text, marks, starts } = this.#ddRebuild(toks);
+		if (!marks.length || !text.trim()) return null;
+		const groups = [];
+		const re = /\(([^()]{2,300})\)/g;
+		let m;
+		while ((m = re.exec(text)) !== null) {
+			const g = this.#ddGroup(text, m.index + 1, m[1], marks, tpl);
+			if (g) groups.push({ ...g, from: m.index, to: m.index + m[0].length });
+		}
+		if (groups.length < (tpl.min_units ?? 1)) return null;
+		// Split the prose into ITEMS on the writer's own numbering, so each numbered
+		// sentence becomes one <li> exactly as the gold does.
+		const items = this.#ddSplitItems(text, groups, starts);
+		if (!items.length) return null;
+		const lis = [];
+		for (const it of items) {
+			const parts = [];
+			let cur = it.from;
+			for (const g of it.groups) {
+				const lead = text.slice(cur, g.from);
+				if (lead.trim()) parts.push(inline(this.#ddTidy(lead)));
+				parts.push([tpl.question_open, this.#ddUnit(g, tpl), tpl.question_close].join("\n"));
+				cur = g.to;
+			}
+			const tail = text.slice(cur, it.to);
+			if (tail.trim()) parts.push(inline(this.#ddTidy(tail)));
+			lis.push(`${tpl.para_item_open}\n${parts.join("\n")}\n${tpl.para_item_close}`);
+		}
+		const open = Utils.FillTemplate(tpl.paragraph_open, { autocheck: ac ?? "" });
+		return [open, ...lis, tpl.paragraph_close].join("\n");
+	}
+
+	/** ROUND 287 — split the rebuilt prose into numbered items, each owning its groups. */
+	static #ddSplitItems(text, groups, starts) {
+		const cuts = [...new Set([0, ...(starts ?? [])])].sort((a, b) => a - b);
+		const items = [];
+		for (let i = 0; i < cuts.length; i++) {
+			const from = cuts[i], to = i + 1 < cuts.length ? cuts[i + 1] : text.length;
+			const mine = groups.filter((g) => g.from >= from && g.to <= to);
+			if (mine.length) items.push({ from, to, groups: mine });
+		}
+		return items;
+	}
+
+	/** ROUND 287 — tidy a prose fragment for display: drop the writer's item number and
+	 *  collapse the whitespace the reconstruction leaves at a join. */
+	static #ddTidy(s) {
+		return String(s ?? "").replace(/^\s*\(?\d{1,3}[.)]\s*/, "").replace(/\s+/g, " ").trim();
+	}
+
+	/**
+	 * D4 — BULLETS + (correct). A bullet RUN of options with the correct one carrying
+	 * a `(correct)` marker. One dropdown per run; an image immediately before a run
+	 * belongs to that run's question (ENGC101's symbol quiz, which the gold builds the
+	 * same way).
+	 */
+	static #ddBullets(toks, tpl, inline, run, ac) {
+		const markRe = new RegExp(tpl.correct_marker_pattern ?? "^\\(?\\s*correct\\s*\\)?$", "i");
+		const items = [];
+		let cur = null;
+		const flush = () => { if (cur && cur.options.length) items.push(cur); cur = null; };
+		let pendingImg = null;
+		for (const t of toks) {
+			if (t.kind === "table" || t.kind === "delim") { flush(); continue; }
+			if (t.kind === "img") { flush(); pendingImg = t.text; continue; }
+			if (t.kind === "mark" && markRe.test(String(t.text ?? "").trim())) {
+				if (cur && cur.options.length) cur.answer = cur.options.length;
+				continue;
+			}
+			for (const raw of String(t.text ?? "").split("\n")) {
+				const line = raw.trim();
+				if (!line) continue;
+				const bullet = /^[•●▪‣\-*]\s*/.test(line);
+				if (bullet) {
+					if (!cur) cur = { img: pendingImg, options: [], answer: 0, question: "" };
+					cur.options.push(line.replace(/^[•●▪‣\-*]\s*/, "").trim());
+				} else { flush(); pendingImg = null; }
+			}
+		}
+		flush();
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
+		const good = items.filter((i) => i.answer > 0 && i.options.length >= min && i.options.length <= max
+			&& i.options.every((o) => o));
+		if (good.length < (tpl.min_units ?? 1) || good.length !== items.length) return null;
+		return this.#ddQuestionForm(good, tpl, inline, run, ac);
+	}
+
+	/**
+	 * D2 — QUESTION + MARK. A question line, then the correct answer as a marked span.
+	 * The OPTION SET is the distinct answers across the questions — recoverable without
+	 * parsing the writer's English, and it agrees with the option set the writer states
+	 * in prose where they state one at all.
+	 */
+	static #ddQuestions(toks, tpl, inline, run, ac) {
+		if (toks.some((t) => t.kind === "table" || t.kind === "img" || t.kind === "delim")) return null;
+		if (toks.some((t) => t.kind === "plain" && /\(/.test(t.text))) return null;   // a paren form is D1's
+		const qs = [];
+		const lead = [];
+		let pending = [];
+		for (const t of toks) {
+			if (t.kind === "note") continue;
+			if (t.kind === "mark") {
+				const a = String(t.text ?? "").trim();
+				if (!a || !pending.length) return null;
+				// THE QUESTION IS THE LAST PARAGRAPH BEFORE THE MARK. Each black paragraph
+				// arrives as its own token, so anything earlier in the buffer is the widget's
+				// own LEAD prose ("Select the correct type of muscle…", PHE1007) — which the
+				// gold renders as a <p> ABOVE the quiz, not inside its first question.
+				const q = this.#ddTidy(String(pending.pop()).replace(/^[•●▪‣\-*]\s*/, ""));
+				if (qs.length === 0) for (const p of pending) { const s = this.#ddTidy(p); if (s) lead.push(s); }
+				else if (pending.length) return null;   // stray prose mid-quiz — not this shape
+				pending = [];
+				if (q) qs.push({ question: q, answer: a });
+			} else if (String(t.text ?? "").trim()) pending.push(t.text);
+		}
+		if (qs.length < 2) return null;
+		const maxQ = tpl.max_question_words ?? 60;
+		if (qs.some((q) => q.question.split(/\s+/).length > maxQ)) return null;
+		const opts = [...new Set(qs.map((q) => q.answer))];
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
+		if (opts.length < min || opts.length > max) return null;
+		const body = this.#ddQuestionForm(
+			qs.map((q) => ({ question: q.question, options: opts, answer: opts.indexOf(q.answer) + 1 })),
+			tpl, inline, run, ac);
+		if (!body) return null;
+		const pre = lead.map((s) => Utils.FillTemplate(tpl.question_text, { text: inline(s) }));
+		return [...pre, body].join("\n");
+	}
+
+	/**
+	 * D3 — TABLE + RED. Either an answers COLUMN beside a statements column (TWHA902's
+	 * "Statements: | Answers:"), or a whole GRID of red cells under a header row
+	 * (SCCH301's Solids|Liquids|Gases yes/no table).
+	 */
+	static #ddTable(bundle, tpl, inline, ac) {
+		const tabs = (bundle?.memberItems ?? []).filter((m) => m?.type === "table");
+		if (tabs.length !== 1) return null;
+		const rows = (tabs[0].block?.rows ?? [])
+			.map((r) => (r ?? []).map((c) => (typeof c === "string" ? c : c?.text) ?? ""))
+			.filter((r) => r.some((c) => String(c).trim()));
+		if (rows.length < 2) return null;
+		const w = Math.max(...rows.map((r) => r.length));
+		const body = rows.slice(1);
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
+		const clean = (c) => this.#cellText(c).replace(/^\[|\]$/g, "").trim();
+
+		// (a) GRID — a header row, then every body cell beyond the first is red.
+		const bodyCells = body.flatMap((r) => r.slice(1).filter((c) => String(c).trim()));
+		if (w >= 3 && bodyCells.length && bodyCells.every((c) => this.#isFullyRed(c))) {
+			const vals = bodyCells.map(clean).filter(Boolean);
+			const opts = [...new Set(vals)];
+			if (opts.length < min || opts.length > max) return null;
+			// The gold arranges a grid as the ROW's statement (an <ol><li>) followed by one
+			// dropQuestion per COLUMN, the column head being that question's label
+			// (SCCH301-1.0: "Does it have a definite shape?" then Solids / Liquids / Gases).
+			const units = [];
+			let nRow = 0;
+			for (const r of body) {
+				const label = this.#cellText(r[0] ?? "");
+				nRow++;
+				let first = true;
+				for (let c = 1; c < w; c++) {
+					const v = clean(r[c] ?? "");
+					if (!v) continue;
+					const head = this.#cellText(rows[0][c] ?? "");
+					const u = { question: head, options: opts, answer: opts.indexOf(v) + 1 };
+					if (first && label && tpl.grid_row_label) {
+						u.before = Utils.FillTemplate(tpl.grid_row_label, { n: String(nRow), text: label });
+					}
+					first = false;
+					units.push(u);
+				}
+			}
+			if (units.length < (tpl.min_units ?? 1)) return null;
+			return this.#ddQuestionForm(units, tpl, inline, null, ac);
+		}
+
+		// (b) COLUMN — a red header on the answers column, answers beneath it.
+		if (w === 2 && rows[0].length > 1 && this.#isFullyRed(rows[0][1])) {
+			const pairs = body.filter((r) => r.length > 1 && String(r[1]).trim())
+				.map((r) => ({ q: this.#cellText(r[0] ?? ""), a: this.#cellText(r[1] ?? "") }));
+			if (pairs.length < 2 || pairs.some((p) => !p.q || !p.a)) return null;
+			const maxAns = tpl.max_answer_words ?? 12;
+			if (pairs.some((p) => p.a.split(/\s+/).length > maxAns)) return null;
+			const opts = [...new Set(pairs.map((p) => p.a))];
+			if (opts.length < min || opts.length > max) return null;
+			return this.#ddQuestionForm(
+				pairs.map((p) => ({ question: p.q, options: opts, answer: opts.indexOf(p.a) + 1 })),
+				tpl, inline, null, ac);
+		}
+		return null;
+	}
+
+	/** ROUND 287 — the question/grid output form: dropQuiz > row > dropQuestion*. */
+	static #ddQuestionForm(units, tpl, inline, run, ac) {
+		const qs = units.map((u) => {
+			const bits = [];
+			if (u.img && run) bits.push(this.#assetImage(u.img, tpl, run));
+			if (u.question) bits.push(Utils.FillTemplate(tpl.question_text, { text: inline(u.question) }));
+			bits.push(this.#ddUnit(u, tpl));
+			const q = [tpl.question_open, ...bits, tpl.question_close].join("\n");
+			return u.before ? `${u.before}\n${q}` : q;      // a grid's row statement
+		});
+		const open = Utils.FillTemplate(tpl.container_open, { autocheck: ac ?? "" });
+		return [open, tpl.row_open, ...qs, tpl.row_close, tpl.container_close].join("\n");
+	}
+
+	/** ROUND 287 — one <div class="dropDown" answer="N"> unit. */
+	static #ddUnit(u, tpl) {
+		const options = u.options.map((o) =>
+			Utils.FillTemplate(tpl.option, { option: String(o).replace(/\*\*/g, "").trim() })).join("\n");
+		return Utils.FillTemplate(tpl.unit, {
+			answer: String(u.answer),
+			placeholder: tpl.placeholder_text ?? "Select one",
+			options,
+		});
+	}
+
+	/**
+	 * ROUND 287 — the autoCheck class. The gold ships `dropQuiz autoCheck` on a third
+	 * of its groups (105 of 312) and the writer asks for it in words on the opener
+	 * ("+ auto check", "self-marking", "automarked").
+	 */
+	static #ddAutocheck(bundle, tpl) {
+		const words = tpl.autocheck_words ?? [];
+		const delims = tpl.delimiter_tags ?? ["dropdown"];
+		let hay = String(bundle?.modifier ?? "");
+		for (const m of bundle?.memberItems ?? []) {
+			if (m?.type === "tag" && delims.includes(m.parse?.primary?.tag)) { hay += " " + String(m.text ?? ""); break; }
+		}
+		hay = hay.toLowerCase();
+		return words.some((w) => hay.includes(String(w).toLowerCase())) ? (tpl.autocheck_class ?? " autoCheck") : "";
+	}
+
+	/**
+	 * ROUND 287 — THE LEAK GUARD (the round-167/275/277/278 rule at this seam). A
+	 * finished dropdown whose VISIBLE text still shows a bracketed writer tag would
+	 * turn gate-excluded hand-off chrome into a counted literal leak on the page, so
+	 * the build declines and the honest box stays. Building can therefore only ever
+	 * PREVENT a leak; scoped to this builder, so it can never remove a pre-287 build
+	 * (there are none — but the scoping is the round-277 lesson kept).
+	 */
+	static #ddLeakGuard(html, tpl) {
+		if (tpl && tpl.leak_guard === false) return false;
+		const vis = String(html ?? "").replace(/<!--[\s\S]*?-->/g, " ").replace(/<[^>]+>/g, " ");
+		return /\[\s*[A-Za-z][^\]\n]{0,40}\]/.test(vis);
 	}
 
 	/**

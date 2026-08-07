@@ -1050,7 +1050,27 @@ class Config {
 	// Oracle 28 -> 13 differing (27 real -> 12, named in the changelog; XMES203_2_0 differs
 	// BY DESIGN). Scoped ship: 257 modules regenerated, EXACTLY 15 pages changed / 0 added /
 	// 0 removed; every protected criterion EXACT.
-	static AppVersion = "260618.57";
+	//
+	// ROUND 287 (260618.58): THE DROPDOWN — the first builder this widget has ever had.
+	// All 390 captured dropDown bundles used to decline at Build's own missing-template
+	// guard, before the dispatch: there was no `dropDown` key in Emit_Templates and no
+	// case in the switch. Two things had to be settled before any code:
+	//   * THE POPULATION IS NOT WHAT THE TYPE NAME SAYS. The lexicon aliases the student
+	//     file-upload "dropbox" onto this same widget type. Measured over every Writers
+	//     Template: 240 of 393 captured bundles are dropbox (87 modules), 142 are a
+	//     genuine dropdown (82). The builder is FENCED on the writer's own opener, so
+	//     every dropbox bundle is byte-identical BY CONSTRUCTION (proven on 61 pages).
+	//   * THE ANSWER SIGNAL IS NOT ONLY RED. Writers mark the correct option by colouring
+	//     it red OR with an explicit [correct] tag before it; both reduce to a MARK at a
+	//     character position, so one derivation serves both.
+	// Four dialects, each gold-quoted: D1 paragraph-parens (BLL273), D2 question+mark
+	// (PHE1007), D3 table+red (SCCH301), D4 bullets+(correct) (ENGC101). A label, an
+	// option and an answer are NEVER invented — the largest decline bucket (76 bundles /
+	// 52 modules) is a dropdown whose answer the writer never marked.
+	// RESULT dropDown 0 -> 14 of 390; NEW BUILDS 14 / LOST 0 in every type; 12 modules.
+	// Verifier: 128 units, exact 76, defect 0, selftest GREEN. No regeneration (not
+	// requested) — the r284/r285 baselines still describe the corpus. env DROPDOWN_OFF.
+	static AppVersion = "260618.58";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
