@@ -1250,7 +1250,33 @@ class Config {
 	// INERT since round 284 — its pattern's quantifier was written "(0, 40)" instead of
 	// "{0,40}" — so BLL263-1.0 has been shipping a visible "[Embed audio book]" ever since,
 	// the very leak round 279's note says it caught. Repaired behind CARLEAKFIX_OFF.
-	static AppVersion = "260618.66";
+	// ROUND 296 (260618.67): THE SPEECH BUBBLE — build every variation (the interactive-coverage
+	// chain, round 8 of 8 — THE LAST; and a FULL corpus regeneration, Chris's own override of
+	// the §0a whole-type sweep). 525 of 594 build, up from 512; NEW BUILDS 13 / LOST 0 in every
+	// widget type. Speech bubbles were already the best-covered type in the library, so the
+	// reachable pool is stated first and it is small: of the 80 hand-off boxes, 29 are a foreign
+	// element with its own content, 22 a captured non-bubble table, 12 have no words at all.
+	// THE BRIEF'S REASON COUNTS ARE ESSENTIALLY RIGHT — four of six EXACT (18/10, 15/3, 11/11,
+	// 14) and the other two differ by two — which round 292's rule predicts, since
+	// #speechBubbleRich is tried LAST and every one of the 80 declines is decided inside it.
+	// BUT ITS RANKING IS UPSIDE DOWN AND ITS #2 IS THE ONE NOT TO BUILD: "one picture serves the
+	// first bubble; later bubbles alternate without one" is drawn from a TRUNCATED quotation of
+	// SSCI104's gold — the gold gives the second bubble kiri.jpg, and building the brief's rule
+	// would ship a bubble missing a picture the human gave it. Its #1 (TEDC402's page-layout
+	// table, 13 activities) is the wrong seam AND its avatar has no address; its #3 reaches ONE
+	// activity and its #4 reaches ONE. THE LARGEST LEVER IS ABSENT FROM THE BRIEF ENTIRELY: 15
+	// declines end in a trailing [button], which is the rule rounds 278 and 295 already ship —
+	// so speechBubble joins member_rule.button_tail_terminates (SBBTNTAIL_OFF), gold-backed at
+	// 0 of 1,216 body-scoped bubble rows = 0.00%, the strongest of the three, and zero-risk by
+	// construction since not one of the 512 building bubbles carries a button. Two data-listed
+	// refinements were needed for it to reach anything at all: a following [speech bubble] is a
+	// DIFFERENT SPEAKER not a further panel, and a bubble's content very often rides ON its own
+	// invocation. ALSO SHIPPED: several avatars for one bubble (SBAVATARS_OFF, OSBY401/OSBY501
+	// gold-exact, gold carries two pictures on 8.9% of its rows), the CAST ROW of characters
+	// beneath a bubble (SBCASTROW_OFF, ENGR101 gold-exact), and a [video] cell whose only
+	// address is an iStock still image (SBVIDEOMISLABEL_OFF, OSOH501, exactly one decline
+	// matches corpus-wide). Every protected gate HELD or IMPROVED with no named movers.
+	static AppVersion = "260618.67";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

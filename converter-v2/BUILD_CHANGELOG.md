@@ -1,5 +1,246 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 296, build 260618.67) — THE SPEECH BUBBLE: build every variation (Chris — the interactive-coverage chain, round 8 of 8, **THE LAST**: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown ✅ → carousel ✅ → speechBubble ✅; **and a FULL CORPUS REGENERATION — Chris's own override of the §0a whole-type sweep, in his words "regenerate the full corpus once this session has finished implementing fixes for the unbuilt speechbubbles"**)
+
+**THE PLAIN-ENGLISH LEAD.** A speech bubble is a character saying something — usually a
+picture of them beside a rounded balloon. They were already the best-covered activity type
+in the library, 512 of 592 after rounds 246, 247 and 276, so this was always going to be
+the smallest round of the chain and the useful part is the accounting. **They now build 525
+of 594, with 13 new builds and nothing lost in any widget type.**
+
+**THE REACHABLE POOL, STATED FIRST (the round-294/295 discipline).** Of the 80 hand-off
+boxes, **29 are a foreign element carrying its own content** (17 of them a `[button]`),
+**22 are a captured non-bubble table**, and **12 have no words for the bubble anywhere in
+the writer's document** — the writer described the balloon's colour and position and never
+wrote what goes in it. That is 63 of 80 before a builder question is even asked. **The
+genuinely reachable slice was about twenty activities, and the round reached most of it.**
+
+---
+
+### 1. THE BRIEF'S REASON COUNTS ARE ESSENTIALLY RIGHT — and round 292's rule says why
+
+`WHY_UNBUILT__speechBubble.md` is the fourth brief in this chain whose reasons hold up, and
+the structural reason is the one round 292 identified: **`#speechBubbleRich` is tried LAST**,
+after conversation / no-table-avatar / text-only / 1x2-table, and **all 80 declines are
+decided inside it** — the four narrow branches are pure pass-throughs (the recorder shows
+every decline traversing all four). Its technical notes for reasons D and E name
+`#speechBubble` line numbers that decide nothing, but it does say "reaching
+`#speechBubbleRich`", so it is half right about that too.
+
+Recorder: `outputs/_measure_r296_speechbubble.cjs` (the round-295 tool re-pointed; 70 sites
+patched, count asserted per round 294), decomposed to the INNER refusal by
+`outputs/_r296_analyse.py` (the round-295 refinement — the caller's `if (parts === null)` /
+`if (!g)` re-raise tells you nothing).
+
+| The brief | Its count | Measured |
+|---|--:|---|
+| A. a piece on the stop list | 18 / 10 | **18 / 10 ✓ EXACT** |
+| B. a table cell it cannot classify | 15 / 3 | **15 / 3 ✓ EXACT** |
+| C. a label it does not recognise | 11 / 11 | **11 / 11 ✓ EXACT** |
+| E. the character picture cannot be placed | 14 / 9 | **14 / 8** (10 a second picture + 4 an unnameable one) |
+| D. nothing survived to become a bubble | 14 / 9 | 12 / 6 |
+| Z. other one-off checks | 8 / 5 | 10 |
+
+D and Z differ by two in opposite directions and sum identically, so the brief has simply
+put two paragraph-cap failures in the wrong column.
+
+### 2. ITS RANKING IS UPSIDE DOWN — and its #2 is the one NOT to build
+
+| The brief says | The measurement says |
+|---|---|
+| **#1** recognise TEDC402's page-layout table — "13, all in TEDC402" | **13 is exact**, but it is the WRONG SEAM: the left cell holds whole activities (an `[Activity]` number, headings, a slider, click-drops, `[Correct:]` answers, a journal button) and rendering that from inside a bubble builder is a layout-recognition change upstream — which the brief half-concedes. **And it would not get the picture anyway:** every TEDC402 avatar is `[Image] avatar Tina … <iStock page TITLE>` with **no address at all** — round 292's Media-List class |
+| **#2** one picture serves the first bubble; later bubbles alternate without one — "most of 14", "SSCI104's build gives the exact rule" | **DO NOT BUILD THIS. The gold contradicts it.** The brief quotes SSCI104's second bubble and closes the `</div>` one line early, dropping the `<div class="col-2"><img src="images/kiri.jpg">` that follows. **The human gave BOTH bubbles a picture**, hand-cutting one source illustration into `rocko.jpg` and `kiri.jpg` (and `iStock-603189348-1/-2` on page 4). Building the brief's rule would ship a bubble missing a picture the human supplied |
+| **#3** treat `[Label]` as the speaker's name — "part of 11" | **ONE activity** (ANZH205). Only 7 declines carry a `data marker` member at all, and the rest are `[Audiovisual item N]` audio requests, `[definition:` split-bracket hovers and `[Label for 5: "…"]` design instructions |
+| **#4** follow the web address when it contradicts its label — "~4" | **ONE activity** (OSOH501 — it rescues four bubbles inside it). Shipped |
+| *(absent from the brief entirely)* | **THE LARGEST LEVER: 15 declines across 7 modules end in a trailing `[button]`** — the rule rounds 278 and 295 already ship |
+
+**The real cause of SSCI104's three declines is not "one picture, two bubbles" at all**: its
+image cell holds THREE pictures, because the writer asks Creative Services to composite props
+into the character illustration ("Can Rocko be holding a calendar", "Kiri dangling a pocket
+watch"). Those declines are correct and stay.
+
+### 3. WHAT SHIPPED — re-ranked by measured reach, every rule gold-checked first
+
+Gold measured before any emit code (`outputs/_measure_r296_sbgold.py`, body-scoped,
+top-level balanced spans: **1,216 bubble rows / 142 modules / 2,385 pages**).
+
+* **`SBBTNTAIL_OFF` — the trailing-button section break, the largest lever and a pure DATA
+  edit.** speechBubble joins `member_rule.button_tail_terminates.types` with its own
+  `env_by_type` entry. **THE GOLD IS THE STRONGEST OF THE THREE TYPES: a button appears
+  inside a speech-bubble row in 0 of 1,216 rows = 0.00%** (accordion 1.7%, carousel 0.7%),
+  and like the accordion it is **ZERO-RISK BY CONSTRUCTION — not one of the 512 currently
+  building bubbles carries a `[button]` member** (still hash-proven in both states, the
+  round-295 discipline). **It reached ZERO builds until two data-listed refinements were
+  added, and finding that out is most of the round's engineering:**
+  * `delimiter_ahead_skip_types` — the lookahead fence protects a MULTI-PANEL widget whose
+    panels are sub-tags. A speech bubble's "panels" are separate INVOCATIONS, so a following
+    `[speech bubble]` is a **different speaker**, and with TEDC401 carrying 201 bubble markers
+    one is almost always inside the 12-item window. The fence was blocking every candidate.
+  * `content_on_invocation_types` — the break fires only once the bundle has captured content,
+    tested as "some member that is not just another invocation". TEDC401-3.0 writes
+    `[speech bubble] Remember: Good design is responsible design.` and nothing else, so the
+    only captured member IS the invocation and the guard refused. An invocation carrying black
+    text counts as content, which is what it plainly is.
+* **`SBAVATARS_OFF` — several avatars for ONE bubble**, scoped to pictures arriving BEFORE it.
+  OSBY401-4.0 and OSBY501-4.0 write `[image] german-shepherd ║ [image] fun-bulldog ║ [speech
+  bubble] Online bullying can be against the law!` in one table row, and **the gold ships
+  exactly that arrangement** — two picture columns then the bubble column. Corpus-wide **108
+  of 1,216 gold rows = 8.9% carry two pictures** and 35 more carry three or more. **An image
+  arriving when the OPEN bubble already has one still declines**, which is precisely what
+  keeps SSCI104's composite props out.
+* **`SBCASTROW_OFF` — the CAST ROW.** ENGR101-1.0/-7.0: one bubble introducing the TK News
+  Team, then a table row of five character pictures. **The gold builds the text-only bubble
+  and then a plain `<div class="row">` of five `<div class="col"><img></div>`** — pictures
+  OUTSIDE the bubble row — and that is byte-for-byte what this emits, down to
+  `iStock-1361357351`. Fenced at `min_images` 2 so a bubble-less group holding ONE picture
+  still takes the pre-existing trailing-image fold, byte-identically.
+* **`SBVIDEOMISLABEL_OFF` — a mislabelled picture.** OSOH501-4.0 is a 3x3 grid of four
+  complete bubbles in which one middle cell reads `[video]
+  https://www.istockphoto.com/photo/super-cow-3d-illustration-…`. **SELF-FENCING AND
+  ZERO-RISK BY CONSTRUCTION:** a stop-list marker always ends the widget, so every bundle
+  carrying one is already in the decline set — and **exactly one decline corpus-wide matches**.
+
+### 4. FOUR THINGS DECLINED WITH THE MEASUREMENT RECORDED
+
+TEDC402's page-layout table (wrong seam + no resolvable avatar) · the brief's #2 (the gold
+contradicts it) · `[Label]` as the speaker name (one activity, and it needs the video-citation
+rule with it) · the paragraph cap (the brief is right that a long passage in a small balloon
+looks broken, and six activities is a small price).
+
+### 5. THE BUG THE PROOF CAUGHT — and it was in MY OWN CHECK, for the sixth round running
+
+The cast row was reported missing on ENGR101 and the assertion failed. The builder was
+correct and **the probe was wrong**: the converter wraps every widget in its own
+`<div class="row"><div class="col-md-8 col-12">`, and my `castRows()` consumed that outer
+row first and skipped past the real cast row inside it. Fixed by not advancing past a matched
+span. Rounds 291, 292, 293, 294 and 295 each found the same class of error in their own checks.
+
+### 6. THE PROOF
+
+* **The toggles-OFF census reproduces the shipped tree EXACTLY** — 7605 captured / 2442 built
+  / 32.1%, speechBubble 512, all 32 types. **The ON census was re-run after the builder
+  changed** (the first run reported +7 before the two data-listed refinements; publishing that
+  would have been wrong).
+* **ALL-OFF IS THE SHIPPED CORPUS BYTE-FOR-BYTE**: every page of all 95 bubble-carrying
+  modules that have a Claude dir — **681 files compared, 0 mismatches**.
+* **THE AFFECTED SET FROM BYTES, NOT BUILDS** (the round-293 lesson): hashing every page of
+  all **104** speechBubble-carrying modules in both states finds **28 files / 9 modules
+  changed, 0 added, 0 removed** — 19 HTML pages + 9 hand-off txt files. The census names 8
+  modules; ANZH304 changes bytes without gaining a build, because its swallowed button now
+  renders on the page.
+* **Byte identity ONE STATE PER PROCESS** (the r246 trap). **Six out-of-class canaries** —
+  AGH1001, ANZH101, ARFUN01, ART1004, BLL110, CEDK401, one per other ticked type — **identical
+  in BOTH states and identical to the shipped corpus**.
+* **Per-toggle decomposition**: BTNTAIL 13 pages / 4 modules · AVATARS 5 / 4 · CASTROW 3 / 2 ·
+  MISLABEL 1 / 1. (ENGR101 and OSOH101 appear under both AVATARS and CASTROW because the
+  multi-picture accumulation is what lets the cast row exist — stated rather than hidden.)
+* **The leak guard**, the defect audit's own predicate in memory over all 9 affected modules:
+  **101 visible literal-tag leaks in BOTH states, PER-MODULE IDENTICAL.**
+* **A TEXT-DELTA CHECK over all 56 pages** of the changed modules. Every "lost" word is
+  hand-off-box chrome disappearing when a widget builds, a raw URL becoming a `src`, or an
+  iStock page title becoming a filename; the gains are the writer's own journal buttons and
+  Writers Notes returning to the page.
+* **Quality scan**: 184 built bubble rows ON (160 OFF), **2 flagged — the same two in BOTH
+  states**, so pre-existing.
+* **23 named assertions, ALL PASS, including FOUR NEGATIVE ones** pinning what must NOT
+  build: SSCI104 (composite props), XWHA02 (no words anywhere), ENGS202 (a real YouTube
+  `[Video]`, which the mislabel rule must not touch), TEDC402 (the page-layout table).
+
+### 7. THE FULL CORPUS REGENERATION (Chris's override of §0a)
+
+**All 416 gated dirs**, 36 batches plus 5 wall splits, **content-hash 0-stale**, `2102 pages
+/ 413 modules`.
+
+**Exactly 19 pages / 9 modules differ, 0 added, 0 removed** — reconciling the in-memory hash
+proof exactly. **The full regeneration found NO pending work from any earlier round**, the
+third clean sweep in a row, and being corpus-wide it also proves rounds 289–295 are entirely
+in the corpus.
+
+**EVERY VERIFIER OVER ITS WHOLE POPULATION:**
+
+| Type | modules | result |
+|---|--:|---|
+| speechBubble | 86 | 469 built; 32 defects, **every one proven pre-existing** — 4 sit in changed modules and are A/B-identical in both toggle states, the other 28 in modules the manifest proves byte-identical to the pre-round corpus |
+| accordion | 129 | 864 panels, **every built panel matches the human ✓** |
+| clickDrop | 74 | 354 items, **defect 0 ✓** |
+| modal | 61 | 301 triggers, **defect 0 ✓** |
+| dropDown | 11 | 147 units, **defect 0 ✓** |
+| tabs | 29 | 262, defect 13 — **the identical five modules and identical count rounds 293b and 295 proved pre-existing**; none is among the 9 |
+| flipCard | §9 gate | **divergence 0 ✓** (61: exact 32, copy-edit 11, defect 18 — the r295 baseline exactly). Over the whole 126-module population the divergences are the r290-recorded A1 class and all sit outside the 9; **the 6 changed modules that carry flip cards are identical in both states, divergence 0** |
+| carousel | changed set | **identical in both states, 0 mismatched slide ids**; the other 234 are byte-identical to the round-295-swept state |
+
+tags **9557/9557, REAL FAILURES 0** · entry-parity **PASS** · index-sync **33/28 OK** ·
+**all NINE widget selftests GREEN**.
+
+### 8. GATES — every one HELD or IMPROVED, with no named movers
+
+| Gate | baseline (r295) | new | verdict |
+|---|---|---|---|
+| skeleton SCAFFOLD mean | 49.72% | **49.725%** | **IMPROVED** |
+| skeleton pages ≥50% | 982 | **982** | **HELD** |
+| skeleton pages ≥75% | 192 | **192** | **HELD** |
+| skeleton pages ≥90% | 16 | **16** | **HELD** |
+| skeleton RAW | 34.066% | **34.074%** | **IMPROVED** |
+| skeleton pairs / skipped | 1940 / 0 | **1940 / 0** | **HELD** |
+| compare_structure exact | 11213 | **11213** | **HELD** |
+| compare_structure EXTRA | 185 | **185** | **HELD** |
+| compare_structure missing | 590 | **590** | **HELD** |
+| body_compare ANY | 242 | **242** | **HELD** |
+| structurally clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | **HELD** |
+| tags | 9557/9557 | **9557/9557** | **HELD** |
+
+**`--accept-named` was not needed.** Over the 13 moved pages **scaffold rises +1.07 pp-sum
+and RAW rises +17.02 pp-sum** — both directions positive, which has not happened in this
+chain before. ENGR101_7_0 is the largest single gain (+3.27 scaffold, +5.54 RAW); the two
+pages that fall on scaffold, OSOH101_3_0 (−1.96) and OSOH501_4_0 (−1.56), both **rise on
+RAW** (+2.35, +1.72) — the documented net-positive signature, and both are pages where a
+hand-off box became real content.
+
+### 9. ALL 69 REMAINING DECLINES NAMED
+
+| Bundles | Modules | Why |
+|--:|--:|---|
+| **14** | 2 | TEDC402's page-layout table (13) + ENGS202 — a LAYOUT question, not a bubble one, and the avatars have no address |
+| **13** | 8 | a foreign element carrying its own content that is not a trailing button — an `[audio]` recording request, a mid-bundle `[accordion]`, a `[flip card]`, an `[external link]` |
+| **12** | 6 | **no words for the bubble anywhere** — XWHA02 gives only its colour and position; XMES102's "bubble" is a suggestion to the design team. No code helps |
+| **11** | 11 | a resolved tag the composer has no rule for — mostly `[Audiovisual item N]` audio requests, `[definition:` split-bracket hovers, `[Label for N: "…"]` design instructions, and one `[Alert or speech bubble]` either/or |
+| 6 | 6 | more paragraphs than the balloon shape holds — declined deliberately |
+| 5 | 3 | a second picture for an already-pictured bubble (SSCI104's composite props, XDLS908's in-bubble icons) |
+| 4 | 2 | a picture we cannot name (TEFUN03's "please create something like this") |
+| 3 | 1 | TEDC401's plain-cell table carrying a non-text role |
+| 1 | 1 | ENGI202 — the opener is not the bubble invocation |
+
+### 10. RECORDED, NOT SHIPPED
+
+* **OSOH101-3.0 is the round's one debatable build and is named as such.** Its writer laid a
+  comic strip out as pictures-above / speeches-below; we ship one balloon containing both
+  speeches plus a cast row of the two speakers, where the gold ships two balloons flanked by
+  the pictures. Every word and both of the gold's own pictures are on the page and nothing is
+  invented, but the exchange reads as one balloon. A "one bubble per plain text cell when the
+  opener is the invocation" rule would fix it and is worth measuring on more than one activity.
+* **TEDC402's page-layout table (13 activities) is the largest named class left** and belongs
+  upstream of this builder.
+* The `[Label]` speaker name and the timestamped-citation note (ANZH205, one activity together).
+* The `[image] first speaker` hint text disappears when the picture renders in that position;
+  the information is now expressed structurally rather than as words.
+
+**Env** `SBBTNTAIL_OFF` / `SBAVATARS_OFF` / `SBCASTROW_OFF` / `SBVIDEOMISLABEL_OFF`.
+**Data** `member_rule.button_tail_terminates` (`types` += speechBubble, `env_by_type`,
+`delimiter_ahead_skip_types`, `content_on_invocation_types`),
+`interactive_builders.speechBubble.rich.multi_avatar` / `.cast_row` /
+`.mislabelled_media_image`. **Tools** `outputs/_measure_r296_speechbubble.cjs`,
+`_r296_analyse.py`, `_measure_r296_sbgold.py`, `_measure_r296_census.cjs`,
+`_probe_r296_speechbubble.cjs`, `_probe_r296_leaks.cjs`, `_r296_textdelta.cjs`,
+`_dbg_r296_members.cjs`, `_dbg_r296_cast.cjs`, `_r296_affected_bytes.txt`, `_r296_batches.sh`,
+`_r296_sk_final.json`.
+
+**THE CHAIN IS CLOSED.** Rounds 289–296 took interactive coverage from **29.6% to 32.2%** on
+this recorder's denominator (2261 → 2455 of 7605), adding **267 builds and losing one, which
+was a defect removed**. Every round corrected its own brief; three found that the brief's
+top-ranked change was the one not to make.
+
+---
+
 ## 2026-08-09 (round 295, build 260618.66) — THE CAROUSEL: build every variation (Chris — the interactive-coverage chain, round 7 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown ✅ → carousel ✅ → speechBubble; **the STANDING whole-type regeneration of all 373 modules carrying a ticked type — CLAUDE.md §0a**)
 
 **THE PLAIN-ENGLISH LEAD.** A carousel is the slideshow a reader clicks through. It was

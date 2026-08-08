@@ -1202,6 +1202,23 @@
 				"enabled": true,
 				"plain_cell_bubbles": true,
 				"image_slug_fallback": true,
+				"multi_avatar": {
+					"enabled": true,
+					"_note": "ROUND 296 (Chris — the interactive-coverage chain, round 8 of 8, THE LAST). A bubble may carry MORE THAN ONE character picture. Before this round the composer took the first image and DECLINED at the second (speechBubbleRich `if (b.img) / if (pendingImg)`), which cost OSBY401-4.0 and OSBY501-4.0 their whole build: the writer lays out '[image] german-shepherd ║ [image] fun-bulldog ║ [speech bubble] Online bullying can be against the law!' in ONE table row, and both dogs belong to the one bubble. THE GOLD AGREES AND GIVES THE ARRANGEMENT: OSBY401_4.0 ships exactly `row speechBubble > col-md-3 paddingR{img} + col-md-3 paddingL{img} + col-md-6 paddingL{bubble}` — the two pictures as consecutive columns in the bubble's own row. Corpus-wide the shape is ordinary: of 1,216 body-scoped gold bubble rows, 108 = 8.9% carry TWO images and 35 more carry three or more (outputs/_measure_r296_sbgold.py). SCOPED TO IMAGES THAT ARRIVE BEFORE THE BUBBLE (the `pendingImgs` accumulation): an image arriving when the open bubble ALREADY has one still declines exactly as before, which is what keeps SSCI104 out — its extra pictures are PROPS the writer asks Creative Services to composite into the character illustration ('Can Rocko be holding a calendar', 'Kiri dangling a pocket watch'), and the human answered that by hand-cutting one source illustration into rocko.jpg and kiri.jpg, neither of them derivable from the Writers Template. Emits one `image_col` per picture in document order, then the text column. Env SBAVATARS_OFF."
+				},
+				"cast_row": {
+					"enabled": true,
+					"min_images": 2,
+					"open": "<div class=\"row\">",
+					"col": "<div class=\"col\">{image}</div>",
+					"close": "</div>",
+					"_note": "ROUND 296. A group of character pictures with NO bubble of its own is a CAST ROW — the writer's row of characters beneath the bubble that introduces them. ENGR101-1.0 and -7.0 are the shape: one `[speech bubble]` cell ('Kia ora! We are the Te Kura News Team…') in table row 1, then FIVE `[image]` cells in table row 2. The composer accumulated the first picture and declined at the second, so both pages kept a hand-off box. THE GOLD BUILDS EXACTLY THIS: ENGR101_01.0 ships the text-only bubble (`col-md-12 col-12 > bubble-basic no-hover bubble-top`) and then a PLAIN `<div class=\"row\">` of five `<div class=\"col\"><img class=\"img-fluid\"…></div>` — the pictures OUTSIDE the bubble row, which is what this template reproduces. FENCED so it cannot disturb an existing build: `min_images` 2 means a bubble-less group holding exactly ONE picture still takes the pre-existing trailing-image fold onto the last bubble, byte-identically. Env SBCASTROW_OFF."
+				},
+				"mislabelled_media_image": {
+					"enabled": true,
+					"tags": ["video", "audio"],
+					"_note": "ROUND 296. A `[video]`/`[audio]` marker whose ONLY web address is a nameable iStock STILL image, and which carries no video host at all, is the writer mislabelling a picture — so it is read as an IMAGE instead of ending the widget. OSOH501-4.0 is the case the brief names: a 3x3 grid of four complete speech bubbles in which ONE middle cell is labelled `[video]` and holds https://www.istockphoto.com/photo/super-cow-3d-illustration-… . That single wrong label cost the whole activity. SELF-FENCING AND ZERO-RISK BY CONSTRUCTION: a decline_tags marker always ends the widget, so every bundle containing one is already in the decline set — and measured over all 454 corpus modules EXACTLY ONE decline matches this pattern (OSOH501-4.0). A marker carrying a real YouTube/Vimeo address, or no address the iStock namer recognises, is untouched. Env SBVIDEOMISLABEL_OFF."
+				},
 				"image_re": "image\\b",
 				"bubble_re": "bubble",
 				"head_re": "^h[1-6]\\b",

@@ -1319,8 +1319,20 @@ class InteractiveScanner {
 					// how:"embedded".
 					&& (btT.clean_hows ?? ["exact", "denumbered", "denumbered_head", "exception"]).includes(p?.how)
 					&& !this.#isGoJournalButton(next)
-					&& bundle.memberItems.some((m) => m && (m.type !== "tag" || m.parse?.primary?.directive !== "INTERACTIVE"))
-					&& !this.#panelDelimiterAhead(items, j + 1, bundle, btT)) {
+					&& bundle.memberItems.some((m) => m && (m.type !== "tag" || m.parse?.primary?.directive !== "INTERACTIVE"
+						// ROUND 296: for a speech bubble the content very often rides ON the
+						// invocation ("[speech bubble] Remember: Good design is responsible
+						// design." and nothing else), so an invocation carrying black text
+						// counts as captured content. DATA-listed per type.
+						|| ((btT.content_on_invocation_types ?? []).includes(bundle.type)
+							&& String(m.blackAfter ?? "").trim() !== "")))
+					// ROUND 296: the lookahead fence protects a MULTI-PANEL widget whose
+					// panels are SUB-tags (accordion, carousel). A speech bubble's "panels"
+					// are separate INVOCATIONS, so a following [speech bubble] is a DIFFERENT
+					// SPEAKER — and with TEDC401 carrying 201 bubble markers the fence blocked
+					// every one of the rule's speechBubble candidates. DATA-listed per type.
+					&& ((btT.delimiter_ahead_skip_types ?? []).includes(bundle.type)
+						|| !this.#panelDelimiterAhead(items, j + 1, bundle, btT))) {
 					// ROUND 295: mark the bundle so the BUILDER can scope its leak guard
 					// to builds this break made possible. A widget that only becomes
 					// buildable because a trailing button was released must not put a

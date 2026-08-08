@@ -2683,6 +2683,37 @@ class InteractiveBuilder {
 	// =======================================================================
 
 	/** every `[...]` bracket inside a red span, lower-cased and trimmed. */
+	/**
+	 * ROUND 296 — is this STOP marker really a MISLABELLED PICTURE?
+	 *
+	 * A `[video]`/`[audio]` marker whose ONLY web address is a nameable iStock STILL
+	 * image, and which carries no video host at all, is the writer using the wrong
+	 * label — not a video that ends the widget. OSOH501-4.0 is the measured case: a
+	 * 3x3 grid of four complete bubbles in which one middle cell reads
+	 * `[video] https://www.istockphoto.com/photo/super-cow-3d-illustration-…`, and that
+	 * one wrong label cost the whole activity.
+	 *
+	 * SELF-FENCING: a decline_tags marker always ends the widget, so every bundle
+	 * carrying one is already in the decline set — this can only ever ADD a build.
+	 * Measured over all 454 corpus modules: EXACTLY ONE decline matches.
+	 *
+	 * @param {string} tagWord - the marker's own word ("video" / "audio"), lower-cased
+	 * @param {string} following - the black text following the marker
+	 * @param {object} cfg - speechBubble.rich
+	 * @param {object} tpl - the speechBubble template block
+	 * @returns {boolean} true when the marker should be read as an image instead
+	 */
+	static #sbMislabelledImage(tagWord, following, cfg, tpl) {
+		const mm = cfg?.mislabelled_media_image;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (!mm || mm.enabled === false || env.SBVIDEOMISLABEL_OFF) return false;
+		if (!(mm.tags ?? ["video", "audio"]).includes(String(tagWord ?? "").toLowerCase())) return false;
+		const txt = String(following ?? "");
+		if (/youtu\.?be|youtube\.com|vimeo/i.test(txt)) return false;      // a real video → untouched
+		const url = txt.match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
+		return !!(url && this.#istockFilename(url, tpl));                 // a nameable iStock STILL image
+	}
+
 	static #sbBrackets(spanText) {
 		return [...String(spanText ?? "").matchAll(/\[([^\]\n]{0,140}?)\]/g)]
 			.map((m) => m[1].replace(/\s+/g, " ").trim().toLowerCase())
@@ -2716,6 +2747,16 @@ class InteractiveBuilder {
 		return roles;
 	}
 
+	/** ROUND 296 — the leading word of the bracket that put this marker on the stop list. */
+	static #sbStopWord(brackets, cfg) {
+		const declineRe = new RegExp(cfg.decline_tags ?? "^activity\\b", "i");
+		for (const b of brackets) {
+			if (!declineRe.test(b)) continue;
+			return String(b).trim().split(/[\s:\]]/)[0].toLowerCase();
+		}
+		return "";
+	}
+
 	/**
 	 * A raw captured CELL (or a member's own span text) → an ordered list of parts.
 	 * A cell is a string carrying "🔴[RED TEXT] … [/RED TEXT]🔴" markers with black
@@ -2741,7 +2782,13 @@ class InteractiveBuilder {
 			if (!c.span) { if (i > 0 && c.lead.trim()) { /* handled below via prev marker */ } continue; }
 			const following = (chunks[i + 1]?.lead ?? "").trim();
 			const roles = this.#sbMarkerRole(this.#sbBrackets(c.span), cfg);
-			if (roles.has("STOP")) return null;
+			if (roles.has("STOP")) {
+				// ROUND 296: a `[video]`/`[audio]` cell whose only address is a nameable
+				// iStock STILL image is a mislabelled PICTURE, not a video that ends the
+				// widget (OSOH501-4.0). Everything else on the stop list still declines.
+				if (!this.#sbMislabelledImage(this.#sbStopWord(this.#sbBrackets(c.span), cfg), following, cfg, tpl)) return null;
+				roles.delete("STOP"); roles.add("image");
+			}
 			const url = following.match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
 			const rest = this.#sbRestText(following);
 			if (roles.has("image")) {
@@ -2799,7 +2846,13 @@ class InteractiveBuilder {
 		const map = cfg.tag_roles ?? {};
 		for (const [role, list] of Object.entries(map)) if ((list ?? []).includes(tag)) roles.add(role);
 		if (!roles.size) for (const r of this.#sbMarkerRole(this.#sbBrackets(m.text ?? ""), cfg)) roles.add(r);
-		if (roles.has("STOP")) return null;
+		if (roles.has("STOP")) {
+			// ROUND 296 — see #sbMislabelledImage. The stop word is the member's own
+			// resolved tag when the tag_roles map put it on the list, else the bracket's.
+			const sw = (cfg.tag_roles?.STOP ?? []).includes(tag) ? tag : this.#sbStopWord(this.#sbBrackets(m.text ?? ""), cfg);
+			if (!this.#sbMislabelledImage(sw, after, cfg, tpl)) return null;
+			roles.delete("STOP"); roles.add("image");
+		}
 		const url = after.match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
 		const rest = this.#sbRestText(after);
 		const out = [];
@@ -2970,10 +3023,18 @@ class InteractiveBuilder {
 		// avatar of the bubble it sits with.
 		const notes = [];
 		const bubbles = [];
+		// ROUND 296 — a CAST ROW is a bubble-less run of >=2 character pictures (the
+		// writer's row of characters under the bubble that introduces them). Recorded
+		// with the number of bubbles seen so far so it emits in document order.
+		const casts = [];
+		const mAv = cfg.multi_avatar;
+		const multiAvatarOn = !!(mAv && mAv.enabled !== false) && !env.SBAVATARS_OFF;
+		const castCfg = cfg.cast_row;
+		const castOn = !!(castCfg && castCfg.enabled !== false) && !env.SBCASTROW_OFF;
 		for (const g of groups) {
 			let b = null;
 			const pending = [];            // text/head seen before this group's bubble
-			let pendingImg = null;
+			let pendingImgs = [];
 			for (const p of g) {
 				if (p.role === "note") { if (p.text) notes.push(p.text); continue; }
 				if (p.role === "image") {
@@ -2987,12 +3048,20 @@ class InteractiveBuilder {
 						? this.#istockFilename(p.url, tpl)
 						: (/youtu\.?be|youtube\.com|vimeo/i.test(p.url) ? null : this.#bannerImageFilename(p.url, tpl));
 					if (!fn) return null;   // an image we cannot name — never half-build
-					if (b) { if (b.img) return null; b.img = fn; } else { if (pendingImg) return null; pendingImg = fn; }
+					// ROUND 296 — SEVERAL AVATARS FOR ONE BUBBLE, scoped to pictures that
+					// arrive BEFORE it (OSBY401/OSBY501's "[image] ║ [image] ║ [speech
+					// bubble]" row, whose gold ships both as columns of the bubble's own
+					// row; the gold carries two images on 8.9% of its 1,216 bubble rows).
+					// An image arriving when the OPEN bubble already has one still declines,
+					// which is what keeps SSCI104's composite PROPS out — the human answered
+					// those by hand-cutting one illustration into two named assets.
+					if (b) { if (b.imgs.length) return null; b.imgs.push(fn); }
+					else { if (pendingImgs.length && !multiAvatarOn) return null; pendingImgs.push(fn); }
 					continue;
 				}
 				if (p.role === "bubble") {
-					b = { img: pendingImg, lines: [...pending], thought: new RegExp(cfg.thought_re ?? "thought", "i").test(p.tagText ?? "") };
-					pendingImg = null; pending.length = 0;
+					b = { imgs: pendingImgs, lines: [...pending], thought: new RegExp(cfg.thought_re ?? "thought", "i").test(p.tagText ?? "") };
+					pendingImgs = []; pending.length = 0;
 					if (p.text) b.lines.push({ head: false, text: p.text });
 					bubbles.push(b);
 					continue;
@@ -3002,8 +3071,15 @@ class InteractiveBuilder {
 			}
 			// trailing text with no bubble in this group joins the last bubble made
 			if (pending.length && bubbles.length) bubbles[bubbles.length - 1].lines.push(...pending);
-			if (pendingImg && bubbles.length && !bubbles[bubbles.length - 1].img) {
-				bubbles[bubbles.length - 1].img = pendingImg;
+			if (pendingImgs.length === 1 && bubbles.length && !bubbles[bubbles.length - 1].imgs.length) {
+				// the PRE-EXISTING single trailing-image fold — unchanged, which is what
+				// keeps every bundle that already built byte-identical.
+				bubbles[bubbles.length - 1].imgs.push(pendingImgs[0]);
+			} else if (castOn && bubbles.length && pendingImgs.length >= (castCfg.min_images ?? 2)) {
+				// ROUND 296 — the CAST ROW (ENGR101-1.0/-7.0: one bubble, then a table row
+				// of five character pictures). The gold ships them as a plain row of
+				// columns OUTSIDE the bubble row, which is exactly what this emits.
+				casts.push({ after: bubbles.length, imgs: pendingImgs.slice() });
 			}
 		}
 
@@ -3048,13 +3124,29 @@ class InteractiveBuilder {
 			return ps.length > 1 ? `<div>\n${html}\n</div>` : html;
 		};
 		const out = [];
-		for (const b of live) {
+		// ROUND 296 — a cast row is emitted once the bubbles it follows have been passed,
+		// so the pictures land in the writer's own document order.
+		const flushCasts = (upto) => {
+			for (const c of casts) {
+				if (c.emitted || c.after > upto) continue;
+				c.emitted = true;
+				out.push([
+					castCfg.open ?? "<div class=\"row\">",
+					...c.imgs.map((fn) => Utils.FillTemplate(castCfg.col ?? "<div class=\"col\">{image}</div>", { image: this.#assetImage(fn, tpl, run) })),
+					castCfg.close ?? "</div>",
+				].join("\n"));
+			}
+		};
+		let seen = 0;
+		for (const b of bubbles) {
+			seen++;
+			if (!live.includes(b)) { flushCasts(seen); continue; }
 			const text = body(b);
 			if (!text) return null;
-			if (b.img) {
+			if (b.imgs.length) {
 				out.push([
 					Utils.FillTemplate(av.open ?? tpl.open, { layout: tpl.layout_attr ?? "speech" }),
-					Utils.FillTemplate(av.image_col ?? tpl.image_col, { image: this.#assetImage(b.img, tpl, run) }),
+					...b.imgs.map((fn) => Utils.FillTemplate(av.image_col ?? tpl.image_col, { image: this.#assetImage(fn, tpl, run) })),
 					Utils.FillTemplate(av.text_col_right ?? tpl.text_right, { text }),
 					av.close ?? tpl.close,
 				].join("\n"));
@@ -3067,7 +3159,9 @@ class InteractiveBuilder {
 					to.close ?? tpl.close,
 				].join("\n"));
 			}
+			flushCasts(seen);
 		}
+		flushCasts(bubbles.length);
 		// the skipped asset requests / writer instructions surface as the standard red
 		// Writers Note after the widget — ONLY on a successful build (the r242 rule).
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...new Set(notes)];
