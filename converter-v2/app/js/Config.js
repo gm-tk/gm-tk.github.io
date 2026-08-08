@@ -1192,7 +1192,25 @@ class Config {
 	// points landing above the tabs instead of after them. Scoped ship: 6 regenerated,
 	// 9 pages / 0 added / 0 removed — of which 3 are ROUNDS 289/290's pending work,
 	// proven by toggle, a real under-scope by those rounds' sampled hash proofs.
-	static AppVersion = "260618.63";
+	// ROUND 293b (260618.64): THE WHOLE-TYPE REGENERATION SWEEP (Chris — this must run
+	// after EVERY individual interactive session, over every module carrying that type,
+	// not just the affected set). All 307 modules carrying a ticked type (accordion,
+	// flipCard, clickDrop, modal, tabs) regenerated: 22 pages / 16 modules moved, NONE of
+	// them round 293's — every one is rounds 289–292's pending work landing, because
+	// those rounds proved byte-identity on a SAMPLE rather than the whole population.
+	// Every protected gate PASSED and the scaffold mean IMPROVED 49.72 -> 49.74%.
+	// THE SWEEP FOUND ONE REAL DEFECT: XDLS501-2.0 shipped an accordion panel whose
+	// entire body was its own title repeated ("Friendly Poses" over "Friendly Poses") —
+	// a learner clicking it saw the title again and nothing else. PROVEN to pre-date the
+	// chain (byte-identical with every r293 and r289 toggle off), so per Chris's rule it
+	// was FIXED, not reverted: #accDropDuplicateHead drops a panel's sole part when it is
+	// a heading repeating its own title, the panel is then empty, the build declines and
+	// the writer's words survive in the honest hand-off box. MEASURED Claude 2 panels /
+	// 1 module, human ZERO. THE FIRST CUT OF THE FIX WAS WRONG — dropping the heading
+	// eagerly also stripped ENGJ302's legitimate "Pre-Writing"/"Drafting" sub-headings,
+	// so it is a POST-PASS testing "the heading is the panel's ONLY part". Final blast:
+	// exactly XDLS501, one page, proven over all 173 accordion modules.
+	static AppVersion = "260618.64";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

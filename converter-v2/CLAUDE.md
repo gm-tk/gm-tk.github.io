@@ -45,6 +45,37 @@ regenerate; they no longer decide WHEN. Without a regeneration:
 The §10a scoped-ship machinery, the ship ledger and the full-ship cadence are all subordinate
 to this rule: **no code in this repository triggers a regeneration on its own initiative.**
 
+### 0a. STANDING RULE — THE WHOLE-TYPE REGENERATION AFTER EVERY INTERACTIVE-BUILD ROUND (Chris, 2026-08-08)
+
+**Chris authorised this standingly for the whole interactive-coverage chain, and it is not
+optional.** After a round that builds or changes an interactive type:
+
+> **Regenerate EVERY MODULE THAT CARRIES THAT TYPE — the whole population, not just the
+> modules whose bytes changed — together with every module carrying a type already ticked
+> off the chain. Then run each of those types' verifiers over that whole population.**
+
+**Why:** the point is to prove the new code has not broken the interactives of that type
+that were ALREADY building. Rounds 289–293 each regenerated only their own affected set
+and proved byte-identity on a SAMPLE of their widget's population; modules they never
+rebuilt were still carrying pre-289 bytes three rounds later, and the sweep that finally
+ran at round 293b **found a real defect no round had seen** (XDLS501's accordion panel
+whose entire body was its own title repeated).
+
+**WHEN IT FINDS SOMETHING — Chris's rule, verbatim:** *"if it does result in errors being
+detected, these are to be investigated and debugged at the same time, and the process
+continues until all the bugs are ironed out"*, and **"DO NOT simply revert the converter
+code, but work at fixing the discrepancies so that the previously working code AND the new
+code can both work."** Disabling a new rule to silence a verifier is not a fix. If a defect
+turns out to PRE-DATE the round, fix it anyway (round 293b did). If a defect is genuinely
+pre-existing and out of scope, PROVE it by toggling the round's flags off and showing the
+module is byte-identical — never assume it.
+
+**Mechanics:** build the module list from the census rows (not by hand), filter to modules
+that have a Claude dir (the r285 ghost-directory trap), batch through `_batch_plan.py` /
+`_regen_safe.sh` one call each, prove `_content_manifest.py fresh` reports 0 truly stale,
+explain every changed module, then run the verifiers and the gates. Worked example:
+round 293b, `outputs/_r293b_typeregen.txt` (307 modules, 26 batches).
+
 ---
 
 ## 1. Mission

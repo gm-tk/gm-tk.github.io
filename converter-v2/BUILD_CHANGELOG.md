@@ -1,5 +1,130 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-08 (round 293b, build 260618.64) — THE WHOLE-TYPE REGENERATION SWEEP, and the one real defect it found (Chris — "the modules that have each of these interactive types are to be regenerated as part of the process, after EVERY INDIVIDUAL interactive session, to ensure the newly implemented code does not cause issues for the existing algorithms"; **AUTHORISED regeneration of all 307 modules carrying a ticked interactive type**)
+
+**THE PLAIN-ENGLISH LEAD.** Rounds 289–293 each regenerated only the handful of modules
+whose bytes that round changed. That is not the check Chris asked for. The check is:
+**rebuild every module that has the interactive type you just worked on — the whole
+population, not the affected set — and prove the new code has not broken any of the ones
+that were already building.** This round does that, cumulatively, for all five types
+ticked off so far, and **it found one real defect and fixed it.** The instruction is now
+written into the remaining kickoffs as a required step, along with Chris's rule for what
+to do when it fires: **do not revert the converter — fix it so the old and the new code
+both work.**
+
+---
+
+### 1. THE SWEEP
+
+**307 modules** carry an accordion, flip card, click-and-drop, pop-out or tab set and
+have a Claude dir (`outputs/_r293b_typeregen.txt`; the union is 343, of which 36 have no
+output folder and would only create ghost directories). All 307 regenerated, 26 batches,
+**content-hash 0-stale**.
+
+**22 pages / 16 modules changed** — and **not one of them is round 293's**. Every one is
+rounds 289–292's pending work landing at last: those rounds proved byte-identity on a
+SAMPLE of their widget's population rather than all of it, so modules they never
+regenerated were still carrying pre-289 bytes. Round 293's own entry already recorded
+three such pages in XGF9006; this sweep finds the rest. **All five widget verifiers pass
+on all 16.**
+
+**Every protected gate PASSES, and the scaffold mean IMPROVED** as that work landed:
+
+| Gate | before the sweep | after | Verdict |
+|---|---|---|---|
+| skeleton SCAFFOLD mean | 49.72% | **49.74%** | **IMPROVED** |
+| skeleton pages ≥50% / ≥75% | 982 / 193 | **982 / 193** | EXACT |
+| compare_structure exact / EXTRA / missing | 11209 / 185 / 586 | **11209 / 185 / 586** | EXACT |
+| body_compare ANY | 242 | **242** | EXACT |
+| clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | EXACT |
+| tags | 9557/9557 | 9557/9557 | EXACT |
+
+(The mtime staleness guard fires after a 307-module regeneration; the CONTENT manifest is
+the authority per §16 and proved only 16 modules moved, so the diff was taken with
+`--allow-stale-baseline` on that basis.)
+
+### 2. THE DEFECT IT FOUND — and it is exactly the kind this sweep exists to catch
+
+The full-population accordion verifier flagged **XDLS501-2.0**:
+
+```html
+<div class="accHead"><h4>Friendly Poses</h4></div>
+<div class="accContent"><h2>Friendly Poses</h2></div>
+```
+
+A panel whose entire body is its own title repeated — **a learner clicking it sees the
+title again and nothing else.** The writer typed `[Accordion 3] Friendly Poses` and then,
+on the next line, `[H2] Friendly Poses`; the panel's real content is an
+`[Audio Animation 7]` asset request with no URL, so the duplicate heading was all that
+was left.
+
+**PROVEN NOT ROUND 293'S** before anything was changed: XDLS501 is byte-identical with
+all six of this round's toggles off, and unchanged by rounds 289's toggles either — it
+predates the chain. **Chris's rule applies: fix it, do not revert.**
+
+**THE FIX** (`#accDropDuplicateHead`, env `ACCDUPEHEAD_OFF`, data
+`rich_panels.drop_duplicate_head`): a panel whose ONLY part is a heading that fold-equals
+its own title drops that part; the panel is then empty, the callers' own
+every-panel-needs-content rule declines, and **the writer's words survive in the honest
+hand-off box** — which is exactly what XDLS501-2.0 now ships. The round-75/80
+lesson-title de-dup at panel scale, wired into both `#accordionRich` and
+`#accResolvePanels`.
+
+**MEASURED FIRST over BOTH corpora** (`outputs/_measure_r293b_dupehead.py`): Claude **2
+panels / 1 module**; the human **ZERO** — its 9 look-alikes all carry a button
+(CEDT204's `<div class="button">Geometric art</div>`) or an audioImage grid (BLL271's
+SVG row) that a text-only test cannot see. **The r283/r292 media-only false-positive
+class, checked rather than assumed.**
+
+**AND THE FIRST CUT OF THE FIX WAS WRONG.** It dropped the heading the moment it arrived
+while the panel was still empty — which also stripped legitimate sub-headings from panels
+that go on to hold real content: **ENGJ302-2.0 and 4.0 lost "Pre-Writing", "Drafting",
+"Onomatopoeia" and "Personification".** Whether a heading is a duplicate or a section
+label cannot be known until the panel is complete, so the rule is a POST-PASS and the
+test is "the heading is the panel's ONLY part", never "the heading came first". **Caught
+by spot-checking all 173 accordion modules byte-for-byte, not by the verifier** — which
+is the same lesson round 293 learned about the build census.
+
+**FINAL BLAST RADIUS: exactly XDLS501, one page**, proven over all 173 accordion modules.
+Every gate held; accordion verifier and selftest GREEN.
+
+### 3. THE FULL-POPULATION VERIFIER SWEEP — the numbers, and what they mean
+
+| Type | modules | result |
+|---|--:|---|
+| accordion | 173 | **every built panel matches the human ✓** (after the fix above) |
+| clickDrop | 131 | 354 items, **defect 0 ✓** |
+| modal | 93 | 181 groups / 301 triggers, **defect 0 ✓** |
+| tabs | 56 | 262 texts, exact 190, **defect 13** — all PRE-EXISTING |
+| flipCard | 184 | **§9 protected gate divergence 0 ✓**; the wider population's defect/divergence columns are the tracked baseline |
+
+**The 13 tabs defects are pre-existing and PROVEN so**, not assumed: HES1003, PES1008,
+PHE1003, PHE1005 and XLP06 are byte-identical between round 293's two toggle states
+(0 of 48 pages differ), so round 293 did not touch them. They are the recorded round-124/
+195/196 **editorial-rewrite class** — the human rewrote the pane prose, and Level 0 says
+ship the writer's text.
+
+**The flipCard population's 83 divergences are the documented A1 class** that round 290
+named: the writer tagged a flip card and the human built something else, and Chris's
+round-246 ruling is to build the writer's tag and judge it on the verifier. The
+**protected §9 criterion — divergence 0 on CEDO102/MXDB302/TRR114/XMES201 — holds**, and
+12 of the defect-carrying modules were proven byte-identical with every toggle of this
+round and of round 293 turned off, so none of it is ours.
+
+### 4. WHAT CHANGES FROM NOW ON
+
+The whole-type regeneration is now a **required, named step** of every remaining round in
+the chain, written into the kickoffs: regenerate **every module carrying the type you
+just built** (and, cumulatively, the types already ticked), run that type's verifier over
+the whole population, and **if something that used to work stops working, debug it —
+never revert the new code.** Round 293b is the worked example.
+
+**Env** `ACCDUPEHEAD_OFF`. **Data** `interactive_builders.accordion.rich_panels.drop_duplicate_head`.
+**Tools** `outputs/_measure_r293b_dupehead.py`, `_r293b_typeregen.txt`, `_r293b_batches.sh`,
+`_r293b_{accordion,flipCard,clickDrop,modal,tabs}.txt`.
+
+---
+
 ## 2026-08-08 (round 293, build 260618.63) — TABS: build every variation (Chris — the interactive-coverage chain, round 5 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown → carousel → speechBubble; **SCOPED regeneration of the 6 affected modules, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289/290/291/292 state except for the 9 pages named below**)
 
 **THE PLAIN-ENGLISH LEAD.** Tabs are a row of clickable headings with a panel behind

@@ -1116,6 +1116,11 @@ class InteractiveBuilder {
 			}
 		}
 
+		// ROUND 293b — a panel whose ENTIRE body is its own title repeated (see
+		// #accDropDuplicateHead). Run after the grouping and the r246 head recovery, so
+		// "the heading is the panel's only part" is decided on the finished panel.
+		this.#accDropDuplicateHead(panels, rich);
+
 		// (2) RENDER every panel. Each needs a heading + at least one rendered part.
 		if (!panels.length) return null;
 		const built = this.#accRenderPanels(panels, { tpl, inline, run, renderBlock, renderNested, rich });
@@ -1819,6 +1824,7 @@ class InteractiveBuilder {
 				if (!this.#accPushPart(cur.parts, p)) return null;
 			}
 			this.#accHeadFromFirstLine(panels, cfg);
+			this.#accDropDuplicateHead(panels, cfg);   // ROUND 293b
 			return panels.every((p) => p.head && p.parts.length) ? panels : null;
 		}
 
@@ -1905,6 +1911,47 @@ class InteractiveBuilder {
 	 * takes it from its own FIRST text line (which is what that line is), and the line
 	 * is removed from the body so it is never shown twice.
 	 */
+	/**
+	 * ROUND 293b — A PANEL WHOSE ENTIRE BODY IS ITS OWN TITLE REPEATED.
+	 *
+	 * XDLS501-2.0's writer types "[Accordion 3] Friendly Poses" and then, on the next
+	 * line, "[H2] Friendly Poses"; the panel's real content is an [Audio Animation]
+	 * asset request with no URL, so the panel shipped as
+	 *     <div class="accHead"><h4>Friendly Poses</h4></div>
+	 *     <div class="accContent"><h2>Friendly Poses</h2></div>
+	 * and a learner clicking it saw the title again and nothing else. Dropping the
+	 * repeat leaves the panel EMPTY, so the callers' own every-panel-needs-content rule
+	 * then declines and the writer's words survive in the honest hand-off box.
+	 *
+	 * A POST-PASS, deliberately: the first cut dropped the heading the moment it arrived
+	 * while the panel was still empty, which ALSO stripped legitimate sub-headings from
+	 * panels that go on to hold real content — ENGJ302-2.0/4.0 lost "Pre-Writing",
+	 * "Drafting", "Onomatopoeia" and "Personification" that way. Whether the heading is a
+	 * duplicate or a section label cannot be known until the panel is complete, so the
+	 * test is "the heading is the panel's ONLY part", never "the heading came first".
+	 * Caught by spot-checking the whole accordion population byte-for-byte.
+	 *
+	 * MEASURED over both corpora (`outputs/_measure_r293b_dupehead.py`): Claude 2 panels
+	 * / 1 module; the human ZERO — its 9 look-alikes all carry a button or an audioImage
+	 * grid a text-only test cannot see (the r283/r292 media-only false-positive class).
+	 * The round-75/80 lesson-title de-dup at panel scale. env ACCDUPEHEAD_OFF.
+	 */
+	static #accDropDuplicateHead(panels, cfg) {
+		if (cfg && cfg.drop_duplicate_head === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.ACCDUPEHEAD_OFF) return;
+		for (const p of panels) {
+			if (!p || !p.head || !p.parts || p.parts.length !== 1) continue;
+			const only = p.parts[0];
+			// the two shapes a heading part takes: {h,text} (#accordionRich) and
+			// {role:"head",text} translated to {html:"<hN>…"} by #accPushPart.
+			const txt = only.h ? only.text
+				: (typeof only.html === "string" ? only.html.replace(/^<h[1-6][^>]*>|<\/h[1-6]>$/gi, "") : null);
+			if (txt == null) continue;
+			if (only.html && !/^<h[1-6]\b/i.test(only.html)) continue;
+			if (Utils.Fold(String(txt)) === Utils.Fold(String(p.head))) p.parts.length = 0;
+		}
+	}
+
 	static #accHeadFromFirstLine(panels, cfg) {
 		const maxWords = cfg.head_max_words ?? 14;
 		for (const p of panels) {
