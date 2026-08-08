@@ -1093,7 +1093,31 @@ class Config {
 	// and the two-column panel table incl. BLL165's read-past-the-table.
 	// RESULT accordion 371 -> 428 of 707; NEW BUILDS 57 / LOST 0 in every type; 39
 	// modules. Scoped ship: 36 regenerated, 44 pages / 0 added / 0 removed.
-	static AppVersion = "260618.59";
+	//
+	// ROUND 290 (260618.60): THE FLIP CARD — build every variation (the chain, round 2
+	// of 8). The measurement corrected the brief SIX times before a line was written.
+	// (1) Its nine reasons collapse to FOUR terminal causes and none is what its own
+	//     technical notes name — round 282 put a general composer behind all four
+	//     dialect builders, so their refusals are no longer final: 149 no reading
+	//     resolved a card, 97 a card with an EMPTY FACE (74 back-empty of which 55 have
+	//     no back anywhere — genuinely front-only), 12 multi-table, 5 the leak guard.
+	// (2) Its ranking is upside down: the bold-lead split it ranks FIRST at "~95" fires
+	//     on 6 activities, the named header row it ranks second at "~half of 91" on ONE,
+	//     and "one card per cell" — its third — is the largest at 24.
+	// SHIPPED, each its own reversal: ONE CARD PER CELL with the faces marked inside it
+	// (FLIPCELLFACES_OFF); the BOLD-LEAD front/back split modelled byte-for-byte on
+	// TWHK901's human build (FLIPBOLDLEAD_OFF); the ROLE-NAME header row, CEDO102's own
+	// model (FLIPHEADROW_OFF); numbered sub-role delimiters + [Card N] (FLIPCARDROLE_OFF);
+	// a face word beside the label + [Side A]/[Side B] + the spurious-split fix
+	// (FLIPFACEWORD_OFF); flipCard's own text/note tag vocabulary (FLIPMEMVOCAB_OFF).
+	// THE PROOF CAUGHT THREE BUGS: a colon typed OUTSIDE the bold declining a whole
+	// table; a role-mapped title shipping as <h4><b>…</b></h4> where the gold ships it
+	// plain; and a front marker straight after a card delimiter opening a SPURIOUS EMPTY
+	// CARD — which, not where the word "back" was typed, is why OSAH301 declined.
+	// RESULT flipCard 221 -> 269 of 484; NEW BUILDS 32 / LOST 1 (HPRE301-11.0, NAMED: 14
+	// cards pairing consecutive bullets as front/back become an honest box); 20 modules.
+	// Scoped ship: 19 regenerated (2 have no Claude dir), 31 pages / 0 added / 0 removed.
+	static AppVersion = "260618.60";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

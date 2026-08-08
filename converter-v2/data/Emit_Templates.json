@@ -1309,6 +1309,8 @@
 				"face_tags": ["front", "back"],
 				"face_label_pattern": "^(?:front|facing|face|back|reverse|reverse\\s+side|on\\s+flip|flip\\s+side)\\s*[:.\\-]?\\s*$",
 				"face_label_back_pattern": "^(?:back|reverse|reverse\\s+side|on\\s+flip|flip\\s+side)\\s*[:.\\-]?\\s*$",
+				"face_label_pattern_r290": "^(?:front|facing|face|back|reverse|reverse\\s+side|on\\s+flip|flip\\s+side|side\\s*a|side\\s*b)\\s*[:.\\-]?\\s*$",
+				"face_label_back_pattern_r290": "^(?:back|reverse|reverse\\s+side|on\\s+flip|flip\\s+side|side\\s*b)\\s*[:.\\-]?\\s*$",
 				"asset_reference_pattern": "^\\W*(?:istock|getty|wikipedia\\s+commons|image|picture|photo|graphic|illustration)\\b|\\[\\s*image\\b|\\bgm\\d{6,}",
 				"instruction_span_prefixes": ["please", "can you", "could you", "could we", "is it possible", "we would like", "note to", "dev team"],
 				"image_caption_as_text": true,
@@ -1316,6 +1318,37 @@
 				"leak_guard": true,
 				"min_cards": 1,
 				"min_inferred_cards": 2,
+				"face_front_pattern": "^(?:front|facing|face|side\\s*a|front\\s+(?:of|side\\s+of)\\s+(?:the\\s+)?(?:card|flip\\s*card))$",
+				"face_back_pattern": "^(?:back|reverse|on\\s+flip|flip(?:ped)?\\s+side|side\\s*b|other\\s+side|back\\s+(?:of|side\\s+of)\\s+(?:the\\s+)?(?:card|flip\\s*card))$",
+				"face_cotag_pattern": "^(?:h[1-6]|body|image|text|heading|caption)$",
+				"cell_face_split": {
+					"enabled": true,
+					"_note": "ROUND 290 — T0, ONE CARD PER CELL with the faces marked INSIDE it. Measured 24 activities / 16 modules: each cell is a whole card (ENGR102-3.0 '[H4] ai / [Image] Paint / [Body] paint / Back Try reading these words…', XGF9004-17.0 '[Front] … / [Back] …', CEDW501-5.0 '**Physical impacts** / [Reverse] …'). EVERY non-empty cell must split into a non-empty front and a non-empty back, so a table where only some cells carry a marker is a different shape and keeps its box. The marker may be a red span, a plain bracket, or the bare word, and may carry structural CO-TAGS ('[Back] [H3]') which are dropped. Env FLIPCELLFACES_OFF."
+				},
+				"bold_lead_faces": {
+					"enabled": true,
+					"head_level": "h5",
+					"max_words": 8,
+					"lead_pattern": "^<p><b>\\s*([^<>]{1,90}?)\\s*(?::\\s*</b>|</b>\\s*:)",
+					"_note": "ROUND 290 — the BOLD-LEAD front/back split, modelled byte-for-byte on TWHK901-0.0's human build: the bold opening phrase becomes the front <h5> with its colon dropped, and the WHOLE caption stays on the back unchanged. Fires ONLY when every resolved card has an EMPTY front and a bold-lead back, which is what makes it safe — a table where only some rows have a bold lead is a different shape and keeps its box. Measured 10 activities / 4 modules (TWHK901, AGH1006 x4, AGH1009, CEDK101). Env FLIPBOLDLEAD_OFF."
+				},
+				"header_roles": {
+					"enabled": true,
+					"role_map": {
+						"image": "front_image", "images": "front_image", "picture": "front_image", "pictures": "front_image", "photo": "front_image",
+						"title": "front_head", "titles": "front_head", "heading": "front_head", "name": "front_head", "word": "front_head", "term": "front_head",
+						"explanation": "back", "explanations": "back", "caption": "back", "captions": "back", "description": "back", "definition": "back", "meaning": "back", "text": "back", "answer": "back"
+					},
+					"repeat_title_on_back": true,
+					"_note": "ROUND 290 — a first row whose every non-empty cell NAMES a role ('Image | Title | Explanation', CEDO102-0.0) maps the remaining rows: one card per row, the Image cell the front picture, the Title cell the front heading and the Explanation cell the back. repeat_title_on_back follows CEDO102's own gold, which repeats the title as the back's heading. A role name must be the WHOLE cell, so a real card row can never be mistaken for a header. Also DROPS a role header the composer would otherwise read as a card (TWHK901's 'Images | Captions'). Env FLIPHEADROW_OFF."
+				},
+				"face_in_text_pattern": "(?:^|\\s)\\[?\\s*(front|back|facing|reverse|side\\s*a|side\\s*b)\\s*\\]?(?=\\s*\\[)",
+				"card_role_pattern": "^\\[\\s*(?:the\\s+)?(?:(\\d+|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|\\d+(?:st|nd|rd|th))\\s+)?flip\\s*card\\s*(?:(\\d+)\\s*)?(front\\s*[.]?\\s*image|inside\\s+text|back\\s+text|image|text|front|back)\\s*[:.]?\\s*\\]\\s*[-–—]?\\s*$",
+				"card_role_face": { "image": "front", "front": "front", "front image": "front", "front. image": "front", "text": "back", "inside text": "back", "back": "back", "back text": "back" },
+				"card_marker_tags": ["shape n"],
+				"card_marker_pattern": "^\\[\\s*(?:card|tile)\\s+(\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\s*\\]\\s*(front|facing|face|back|reverse)?\\s*[:.]?\\s*$",
+				"text_tags": ["data marker", "external link", "format"],
+				"note_tags": ["table"],
 				"_note": "ROUND 282 — the general CARD composer, tried LAST so all 49 pre-round builds are byte-identical by construction. Cards resolve from an ordered delimiter vocabulary: T1 face-marker ROWS that repeat; T1b a face-marker COLUMN; T1c per-cell face markers riding with the content; T2 a TWO-ROW table with no markers, one card per COLUMN; T3 N x 2 rows; M1/M2 [Flip Card N] / [front]/[back] tags with a TEXT-ONLY front allowed; M3 face LABEL WORDS; M4 a bare MEDIA SERIES. A COMPLETED BACK ENDS A CARD, and content arriving while the FRONT is open is FRONT content. GOLD-BACKED: text-only cards are 43% of the library (a front is a HEADING alone 22.3% / a PARAGRAPH alone 20.7%), so an image is never required; min_cards 1 for an explicit delimiter but 2 for an inferred one; NO length cap on a front (a gold front runs past ten words 4.3% of the time); a label is NEVER invented. Env FLIPCARDS_OFF."
 			},
 			"_comment": [

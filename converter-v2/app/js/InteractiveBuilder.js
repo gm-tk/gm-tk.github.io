@@ -1431,6 +1431,23 @@ class InteractiveBuilder {
 				}
 			}
 
+			// ROUND 290 — a CARD MARKER carried on a FOREIGN tag. "[Card 1]" and "[Tile 2]"
+			// resolve to 'shape n', so EXPFUN06-0.0's four complete cards were refused
+			// before its "Facing:"/"Reverse:" face words were ever considered. Opt-in per
+			// caller (card_marker_tags) — undefined everywhere else, so nothing can move.
+			if (m.type === "tag" && delims?.card_marker_pattern
+				&& (delims.card_marker_tags ?? []).includes(tag)) {
+				const own = this.#cellText(String(m.text ?? "")).trim();
+				const cm = own.match(new RegExp(delims.card_marker_pattern, "i"));
+				if (cm) {
+					parts.push({ role: "panel", head: "" });
+					const trail = this.#cellText(m.blackAfter ?? "").trim();
+					if (cm[2]) parts.push({ role: "face", face: /back|reverse|flip/i.test(cm[2]) ? "back" : "front", text: trail });
+					else if (trail) parts.push({ role: "text", text: trail });
+					continue;
+				}
+			}
+
 			// a writer instruction / noise span — surfaced as a red note, never build content
 			if (m.type === "tag"
 				&& (m.parse?.class === "instruction" || m.parse?.class === "noise" || m.parse?.instructionFragment)) {
@@ -1442,8 +1459,41 @@ class InteractiveBuilder {
 			const raw = m.type === "tag" ? (m.blackAfter ?? "") : "";
 			const text = this.#cellText(raw);
 
+			// ROUND 290 — A FACE WORD TYPED BESIDE THE LABEL RATHER THAN INSIDE IT.
+			// OSAH301-1.0 writes "front [image – small]" and "back [text] + I know what
+			// online abuse and harassment is." — everything a card needs, defeated only by
+			// where the word "back" was typed. TEFUN06-0.0's "[Front] [Image 5]" and
+			// "[Side B] [Image]" are the same thing with the face in its own bracket. The
+			// face is set and the member is then handled exactly as it would have been.
+			if (m.type === "tag" && delims?.face_in_text_pattern) {
+				const fm = String(m.text ?? "").match(new RegExp(delims.face_in_text_pattern, "i"));
+				if (fm) parts.push({ role: "face", face: /back|reverse|side\s*b/i.test(fm[1]) ? "back" : "front", text: "" });
+			}
+
 			if (tag && delimTags.includes(tag)) {
 				const own = this.#cellText(String(m.text ?? ""));
+				// ROUND 290 — A NUMBERED DELIMITER NAMING A SUB-ROLE. The two halves of one
+				// card often arrive as two tags of the same family: "[flipcard 1 image] <url>"
+				// then "[flip card 1 inside text]" (BLL224-2.0), "[flipcard 1 front] <url>"
+				// then "[flipcard 1 back] <text>" (SCCH301/SCPH301), "[1st flipcard image]"
+				// (BLL166). They are card N's FACES, not two cards. The same shape the
+				// clickDrop reads through delimiter_media_role; opt-in per caller.
+				if (delims?.card_role_pattern) {
+					const rm = own.trim().match(new RegExp(delims.card_role_pattern, "i"));
+					if (rm) {
+						const sub = String(rm[3] ?? "").replace(/\s+/g, " ").toLowerCase();
+						parts.push({ role: "carddelim", n: String(rm[2] ?? rm[1] ?? ""), sub });
+						if (text) {
+							if (this.#hasRedText(raw)) return null;
+							if (/^\s*https?:\/\/\S+\s*$/.test(text.replace(/\s+/g, " "))) {
+								const fn = this.#accImageFilename(text.trim(), tpl, cfg);
+								if (!fn) return null;
+								parts.push({ role: "img", filename: fn });
+							} else parts.push({ role: "text", text });
+						}
+						continue;
+					}
+				}
 				const isDelim = !text && (numbered.test(own) || ordinal.test(own));
 				// ROUND 283 — a DELIMITER TAG NAMING A SUB-ROLE. Some writers split one item
 				// across several tags of the same family, each naming a part of it:
@@ -3446,10 +3496,11 @@ class InteractiveBuilder {
 		const tables = bundle?.tables ?? [];
 		if (tables.length > 1) return null;                       // a multi-table bundle → recorded follow-up
 
-		const cards = tables.length
+		let cards = tables.length
 			? this.#flipTableCards(tables[0].rows ?? [], { tpl, cfg, run, inline, notes })
 			: this.#flipMemberCards(bundle, { tpl, cfg, run, inline, notes, renderTable });
 		if (!cards || !cards.length) return null;
+		cards = this.#flipBoldLeadFaces(cards, cfg) ?? cards;
 
 		const built = [];
 		for (const c of cards) {
@@ -3470,6 +3521,39 @@ class InteractiveBuilder {
 			for (const n of notes) if (n && !seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
 		}
 		return [tpl.container_open, ...built, tpl.container_close].join("\n");
+	}
+
+	/**
+	 * ROUND 290 — THE BOLD-LEAD FRONT/BACK SPLIT, modelled byte-for-byte on TWHK901's
+	 * human build. The writer laid the cards out as one column of captions, each opening
+	 * with a bold phrase and a colon, and left the picture column empty; the human made
+	 * the bold phrase the front heading and kept the WHOLE caption on the back.
+	 *
+	 * "Where does the front of the card end?" is the one judgement this converter has
+	 * always refused to make on its own, so the fence is absolute: EVERY card must have
+	 * an EMPTY front and a bold-lead back, and the phrase must be short enough to sit on
+	 * a card. A table where only some rows lead with a bold phrase is a different shape
+	 * and keeps its honest box. Returns the amended cards, or null to leave them alone.
+	 */
+	static #flipBoldLeadFaces(cards, cfg) {
+		const bl = cfg?.bold_lead_faces;
+		if (!bl || bl.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.FLIPBOLDLEAD_OFF) return null;
+		if (!cards.length || !cards.every((c) => !String(c.front ?? "").trim() && String(c.back ?? "").trim())) return null;
+		const re = new RegExp(bl.lead_pattern ?? "^<p><b>\\s*([^<>]{1,90}?)\\s*:\\s*</b>");
+		const lvl = bl.head_level ?? "h5", max = bl.max_words ?? 8;
+		const out = [];
+		for (const c of cards) {
+			const m = String(c.back).match(re);
+			if (!m) return null;
+			const head = String(m[1]).trim();
+			if (!head || head.split(/\s+/).length > max) return null;
+			// there must be real text AFTER the lead — a bold phrase alone is not a card
+			const rest = String(c.back).slice(m[0].length).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+			if (rest.length < 10) return null;
+			out.push({ front: `<${lvl}>${head}</${lvl}>`, back: c.back });
+		}
+		return out;
 	}
 
 	/**
@@ -3497,6 +3581,70 @@ class InteractiveBuilder {
 		let rows = (allRows ?? []).filter((r) => Array.isArray(r) && r.some((c) => this.#cellText(c).trim()));
 		if (!rows.length) return null;
 		const minExp = ctx.cfg.min_cards ?? 1, minInf = ctx.cfg.min_inferred_cards ?? 2;
+
+		// ---- T0a: a ROLE-NAME HEADER ROW ------------------------------------------
+		// "Image | Title | Explanation" (CEDO102-0.0) names what each column is, and the
+		// writer's own opening instruction says the same in words. Map the columns and
+		// build one card per remaining row. A header naming only faces/back roles (
+		// TWHK901's "Images | Captions") yields no front_head, so it is DROPPED here and
+		// the readings below see the data rows alone.
+		const hdrRoles = rows.length >= 2 ? this.#flipHeaderRoles(rows[0], ctx.cfg) : null;
+		if (hdrRoles) {
+			const data = rows.slice(1);
+			const hasHead = hdrRoles.includes("front_head"), hasBack = hdrRoles.includes("back");
+			if (hasHead && hasBack) {
+				const cards = [];
+				for (const r of data) {
+					let fimg = "", fhead = "", bk = "";
+					for (let c = 0; c < hdrRoles.length; c++) {
+						const cell = r[c]; if (cell === undefined) continue;
+						if (hdrRoles[c] === "front_image") fimg += (fimg ? "\n" : "") + String(cell ?? "");
+						else if (hdrRoles[c] === "front_head") fhead += (fhead ? " " : "") + String(cell ?? "");
+						else if (hdrRoles[c] === "back") bk += (bk ? "\n" : "") + String(cell ?? "");
+					}
+					const title = this.#cellText(fhead).replace(/\*\*/g, "").trim();
+					if (!title && !this.#cellText(bk).trim()) continue;
+					// The heading is emitted DIRECTLY rather than left to the short-lead
+					// heuristic, so the role the writer named is the role it gets — and its
+					// ** is dropped, because a heading is already emphasis (CEDO102's gold
+					// ships a plain <h4>).
+					const lvl = ctx.cfg.front_head_level ?? "h4";
+					const imgHtml = String(fimg).trim() ? this.#flipFaceHtml(fimg, ctx, "front") : "";
+					const bodyHtml = String(bk).trim() ? this.#flipFaceHtml(bk, ctx, "back") : "";
+					if (imgHtml === null || bodyHtml === null) return null;
+					const head = title ? `<${lvl}>${ctx.inline(title)}</${lvl}>` : "";
+					// CEDO102's gold repeats the title as the back's heading — its own model.
+					const backHead = (ctx.cfg.header_roles?.repeat_title_on_back && head) ? head : "";
+					cards.push({ front: imgHtml + head, back: backHead + bodyHtml });
+				}
+				if (cards.length >= minExp) return cards;
+				return null;
+			}
+			if (data.some((r) => r.some((c) => this.#cellText(c).trim()))) rows = data;
+		}
+
+		// ---- T0: ONE CARD PER CELL, the faces marked INSIDE it ---------------------
+		// Every non-empty cell must split at its own back marker (ENGR102-3.0,
+		// XGF9004-17.0, CEDW501-5.0, TEDC401-4.0). "Every" is the fence: a table where
+		// only some cells carry a marker is a different shape and keeps its box.
+		if (ctx.cfg.cell_face_split && ctx.cfg.cell_face_split.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.FLIPCELLFACES_OFF)) {
+			const cells = [];
+			for (const r of rows) for (const c of r) if (this.#cellText(c).trim() || /https?:\/\//.test(String(c ?? ""))) cells.push(c);
+			if (cells.length) {
+				const split = cells.map((c) => this.#flipCellSplitFaces(c, ctx.cfg));
+				if (split.every(Boolean)) {
+					const cards = [];
+					for (const s of split) {
+						const front = this.#flipFaceHtml(s.front, ctx, "front");
+						const back = this.#flipFaceHtml(s.back, ctx, "back");
+						if (front === null || back === null) { cards.length = 0; break; }
+						cards.push({ front, back });
+					}
+					if (cards.length >= minExp) return cards;
+				}
+			}
+		}
 
 		// ---- T1b: a leading FACE-MARKER COLUMN (the T1 convention turned 90°) -----
 		// Column 0 holds the red "Front"/"Back" labels and every other column is a card.
@@ -3561,7 +3709,7 @@ class InteractiveBuilder {
 		// alternate front, back, front, back. A row whose every non-empty cell opens with
 		// the same face marker HAS that face; consecutive front/back rows pair by column.
 		{
-			const faces = rows.map((r) => this.#flipRowFace(r));
+			const faces = rows.map((r) => this.#flipRowFace(r, ctx.cfg));
 			if (faces.some((f) => f === "front") && faces.some((f) => f === "back")
 				&& faces.every((f) => f)) {
 				const cards = [];
@@ -3626,25 +3774,133 @@ class InteractiveBuilder {
 	 * span is read, and only when it is wholly a face phrase — so a red content word
 	 * later in the cell can never be mistaken for a face.
 	 */
-	static #flipCellFacePrefix(cell) {
+	static #flipCellFacePrefix(cell, cfg = null) {
 		const m = String(cell ?? "").match(/^\s*\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/u);
 		if (!m) return null;
+		// ROUND 290 — the same phrase read through the WIDER data vocabulary, so
+		// "[Front of flipcard]" (CEDW501-3.0) and "[Side A]" name a face too. `cfg` is
+		// omitted by the round-282 callers, which keep the narrower literal below
+		// BY CONSTRUCTION, so T1c cannot move unless a caller opts in.
+		if (cfg && cfg.cell_face_split && cfg.cell_face_split.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.FLIPCELLFACES_OFF)) {
+			return this.#flipFacePhrase(m[1], cfg);
+		}
 		const t = String(m[1]).replace(/[[\]]/g, "").trim().toLowerCase();
 		if (/^front(?:\s+(?:of|of\s+the)\s+(?:the\s+)?card)?$/.test(t)) return "front";
 		if (/^back(?:\s+(?:of|of\s+the)\s+(?:the\s+)?card)?$/.test(t)) return "back";
 		return null;
 	}
 
+	/**
+	 * ROUND 290 — the FACE a marker names ("front"/"back"), or null when it names
+	 * neither. The marker's text is read as TOKENS: each bracketed group plus any bare
+	 * residue. One token must be a face phrase and every OTHER token must be a
+	 * structural co-tag, so the writer's "[Back] [H3]" (XGF9002-2.0) and bare "Back"
+	 * (ENGR102-3.0) both read as the back while "[Back] Try reading these words" — a
+	 * marker with real content — does not.
+	 */
+	static #flipFacePhrase(raw, cfg) {
+		const s = String(raw ?? "").replace(/\s+/g, " ").trim();
+		if (!s) return null;
+		const fre = new RegExp(cfg.face_front_pattern ?? "^front$", "i");
+		const bre = new RegExp(cfg.face_back_pattern ?? "^back$", "i");
+		const cre = new RegExp(cfg.face_cotag_pattern ?? "^(?:h[1-6]|body|image|text)$", "i");
+		const norm = (t) => String(t).replace(/\s+/g, " ").replace(/[:.]+$/, "").trim().toLowerCase();
+		const toks = [];
+		let rest = s;
+		for (const m of s.matchAll(/\[([^\]]*)\]/g)) { toks.push(norm(m[1])); }
+		rest = norm(rest.replace(/\[[^\]]*\]/g, " "));
+		if (rest) toks.push(rest);
+		if (!toks.length) return null;
+		let face = null;
+		for (const t of toks) {
+			if (!t) continue;
+			if (fre.test(t)) { if (face && face !== "front") return null; face = "front"; continue; }
+			if (bre.test(t)) { if (face && face !== "back") return null; face = "back"; continue; }
+			if (!cre.test(t)) return null;                    // a marker carrying real content
+		}
+		return face;
+	}
+
+	/**
+	 * ROUND 290 — T0's reader: ONE CELL, split into its two faces at the writer's own
+	 * in-cell BACK marker. Returns `{front, back}` of RAW cell text (each still to be
+	 * rendered by #flipFaceHtml), or null when the cell has no clean split.
+	 *
+	 * The marker may be a RED span ("🔴[Back] [H3]🔴", "🔴Back🔴"), a plain bracket
+	 * ("[Reverse]") or the bare word, and may carry structural co-tags which are
+	 * dropped. Any face marker surviving in either half is removed, so the writer's
+	 * trailing "[front]" (TEDC401-4.0 puts it AFTER its own content) never reaches the
+	 * page. Both halves must hold something a reader can see.
+	 */
+	static #flipCellSplitFaces(cell, cfg) {
+		const raw = String(cell ?? "");
+		if (!raw.trim()) return null;
+		// (1) index every marker — red spans first, then plain bracket runs in what is left
+		const marks = [];                                     // [{start,end,face}]
+		const redRe = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const covered = [];
+		for (const m of raw.matchAll(redRe)) {
+			covered.push([m.index, m.index + m[0].length]);
+			const f = this.#flipFacePhrase(m[1], cfg);
+			if (f) marks.push({ start: m.index, end: m.index + m[0].length, face: f });
+		}
+		const inRed = (i) => covered.some(([a, b]) => i >= a && i < b);
+		for (const m of raw.matchAll(/(?:\[[^\]]*\]\s*)+/g)) {
+			if (inRed(m.index)) continue;
+			const f = this.#flipFacePhrase(m[0], cfg);
+			if (f) marks.push({ start: m.index, end: m.index + m[0].length, face: f });
+		}
+		marks.sort((a, b) => a.start - b.start);
+		const back = marks.find((x) => x.face === "back");
+		if (!back) return null;
+		// (2) split at the FIRST back marker, then scrub every marker from both halves
+		let front = raw.slice(0, back.start);
+		for (const mk of marks.filter((x) => x.end <= back.start).reverse()) {
+			front = front.slice(0, mk.start) + " " + front.slice(mk.end);
+		}
+		front = front.replace(/^[\s/]+|[\s/]+$/g, "");
+		const rear = raw.slice(back.end).replace(/^[\s/]+/, "");
+		const rearScrub = rear.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, (mm) =>
+			this.#flipFacePhrase(mm.replace(/^\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}$/gu, ""), cfg) ? " " : mm);
+		if (!this.#cellText(front).trim() && !/https?:\/\//.test(front)) return null;
+		if (!this.#cellText(rearScrub).trim() && !/https?:\/\//.test(rearScrub)) return null;
+		return { front, back: rearScrub };
+	}
+
 	/** The single face every non-empty cell of a row names by its leading marker, or null. */
-	static #flipRowFace(row) {
+	static #flipRowFace(row, cfg = null) {
 		const faces = [];
 		for (const c of row ?? []) {
 			if (!this.#cellText(c).trim()) continue;
-			const f = this.#flipCellFacePrefix(c) ?? this.#flipCellFace(c);
+			const f = this.#flipCellFacePrefix(c, cfg) ?? this.#flipCellFace(c);
 			if (!f) return null;
 			faces.push(f);
 		}
 		return faces.length && faces.every((f) => f === faces[0]) ? faces[0] : null;
+	}
+
+	/**
+	 * ROUND 290 — is this row a ROLE-NAME HEADER ("Image | Title | Explanation",
+	 * CEDO102-0.0; "Images | Captions", TWHK901-0.0)? Every non-empty cell must be a
+	 * role name WHOLE — a real card row carries prose, a URL or a bold term and can
+	 * never match. Returns the per-column roles, or null.
+	 */
+	static #flipHeaderRoles(row, cfg) {
+		const hr = cfg?.header_roles;
+		if (!hr || hr.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.FLIPHEADROW_OFF) return null;
+		const map = hr.role_map ?? {};
+		const roles = [];
+		let named = 0;
+		for (const c of row ?? []) {
+			const t = this.#cellText(c).replace(/^\s*\[|\]\s*$/g, "").replace(/[:.]+$/, "").replace(/\s+/g, " ").trim().toLowerCase();
+			if (!t) { roles.push(null); continue; }
+			const r = map[t];
+			if (!r) return null;                              // a cell that is not a role name → not a header
+			roles.push(r); named++;
+		}
+		return named >= 2 ? roles : null;
 	}
 
 	/**
@@ -3669,7 +3925,7 @@ class InteractiveBuilder {
 		if (this.#flipCellFace(s)) return "";
 		// a LEADING face marker riding with the content ("[Front of card] / …") is a
 		// delimiter, not text — dropped here so it never reaches the page (T1c).
-		if (this.#flipCellFacePrefix(s)) {
+		if (this.#flipCellFacePrefix(s, cfg)) {
 			s = s.replace(/^\s*\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}\s*\/?\s*/u, "");
 		}
 		s = this.#stripStructuralTags(s);
@@ -3781,6 +4037,30 @@ class InteractiveBuilder {
 	static #flipMemberCards(bundle, { tpl, cfg, run, inline, notes, renderTable }) {
 		const members = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])];
 		if (!members.length) return null;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		// A FACE WORD THAT NEVER NAMES THE OTHER SIDE IS NOT A DELIMITER. XLP05-4.0
+		// heads EVERY member "Facing [Insert media item 30]" — the writer's word for
+		// the layout, not a boundary, and its own opener says the cards "do not need to
+		// flip". Reading it as a face put every line on the front and left no back at
+		// all, so this whole page LOST its build. The face-beside-the-label rule
+		// therefore only applies where a BACK is signalled somewhere in the bundle —
+		// which is exactly what makes OSAH301's "front …/back …" pair a real delimiter.
+		// ROUND 290 — "[Side A]" / "[Side B]" name the two faces too (HPRE301-11.0).
+		// The widened patterns are SEPARATE data keys chosen by the toggle, so a
+		// toggle-OFF corpus is the round-282 state exactly (the §2 reversal rule).
+		const facePat = env.FLIPFACEWORD_OFF ? cfg.face_label_pattern : (cfg.face_label_pattern_r290 ?? cfg.face_label_pattern);
+		const faceBackPat = env.FLIPFACEWORD_OFF ? cfg.face_label_back_pattern : (cfg.face_label_back_pattern_r290 ?? cfg.face_label_back_pattern);
+		const backRe = new RegExp(faceBackPat ?? "^back$", "i");
+		const fitRe = cfg.face_in_text_pattern ? new RegExp(cfg.face_in_text_pattern, "i") : null;
+		const hasBackSignal = members.some((m) => {
+			if (!m || m.type !== "tag") return false;
+			const t = m.parse?.primary?.tag;
+			if (t && (cfg.face_tags ?? []).includes(t) && /back/i.test(t)) return true;
+			const own = this.#cellText(String(m.text ?? "")).replace(/^\[|\]$/g, "").trim();
+			if (own && backRe.test(own)) return true;
+			const fm = fitRe ? String(m.text ?? "").match(fitRe) : null;
+			return !!(fm && /back|reverse|side\s*b/i.test(fm[1]));
+		});
 		const parts = this.#accMemberParts(members, {
 			tpl, cfg, run, renderTable, notes,
 			delims: {
@@ -3788,36 +4068,64 @@ class InteractiveBuilder {
 				panel_tag_pattern: cfg.card_tag_pattern,
 				panel_ordinal_pattern: cfg.card_ordinal_pattern,
 				face_tags: cfg.face_tags ?? ["front", "back"],
-				face_label_pattern: cfg.face_label_pattern,
-				face_label_back_pattern: cfg.face_label_back_pattern,
-				text_tags: cfg.text_tags ?? [],
-				note_tags: cfg.note_tags ?? [],
+				face_label_pattern: facePat,
+				face_label_back_pattern: faceBackPat,
+				// ROUND 290, each its own reversal (§2). Empty/undefined restores the
+				// round-282 walk exactly, so a toggle-OFF corpus is the pre-round state.
+				face_in_text_pattern: (env.FLIPFACEWORD_OFF || !hasBackSignal) ? null : cfg.face_in_text_pattern,
+				card_role_pattern: env.FLIPCARDROLE_OFF ? null : cfg.card_role_pattern,
+				card_marker_pattern: env.FLIPCARDROLE_OFF ? null : cfg.card_marker_pattern,
+				card_marker_tags: cfg.card_marker_tags ?? [],
+				text_tags: env.FLIPMEMVOCAB_OFF ? [] : (cfg.text_tags ?? []),
+				note_tags: env.FLIPMEMVOCAB_OFF ? [] : (cfg.note_tags ?? []),
 			},
 		});
 		if (!parts) return null;
 		if (parts.some((p) => p.role === "nested" || p.role === "table")) return null;   // richer → placeholder
 
 		const cards = [];
-		let cur = null, face = "front", explicit = false;
+		let cur = null, face = "front", explicit = false, numbered = false, justOpened = false;
+		const byNum = new Map();
 		const open = () => { cur = { front: [], back: [] }; cards.push(cur); face = "front"; };
 		const push = (o) => { if (!cur) open(); cur[face].push(o); };
+		const roleFace = cfg.card_role_face ?? {};
 		for (const p of parts) {
 			if (p.role === "note") { continue; }
+			// ROUND 290 — a NUMBERED SUB-ROLE delimiter: card N's image / text / front /
+			// back. Cards are keyed by the writer's own number in first-seen order, so the
+			// two halves land on the same card instead of making two.
+			if (p.role === "carddelim") {
+				explicit = true; numbered = true; justOpened = true;
+				const key = String(p.n || `#${cards.length + 1}`);
+				if (!byNum.has(key)) { const c = { front: [], back: [] }; byNum.set(key, c); cards.push(c); }
+				cur = byNum.get(key);
+				face = roleFace[p.sub] ?? "front";
+				continue;
+			}
 			if (p.role === "panel") {                              // a [Flip Card N] delimiter
-				explicit = true; open();
+				explicit = true; open(); justOpened = true;
 				if (p.head) cur.front.push({ h: cfg.front_head_level ?? "h4", text: p.head });
 				continue;
 			}
 			if (p.role === "face") {
 				explicit = true;
-				if (p.face === "front" && cur && (cur.front.length || cur.back.length)) open();
+				// ROUND 290 — A FRONT MARKER DIRECTLY AFTER A CARD DELIMITER NAMES THIS
+				// CARD'S FRONT, not the next card. OSAH301's "[flip card title: Kete 1" then
+				// "front [image – small]" then "back [text] …" is a complete card, and the
+				// round-282 open-on-front rule was splitting it in two — the title on card
+				// one with no back, the picture and text on card two. `justOpened` is false
+				// for every bundle with no delimiter, so the M2 face-pair series is
+				// byte-identical BY CONSTRUCTION.
+				if (p.face === "front" && !(justOpened && !env.FLIPFACEWORD_OFF) && cur && (cur.front.length || cur.back.length)) open();
 				else if (!cur) open();
+				justOpened = false;
 				face = p.face;
 				if (p.text) push(face === "front" && !cur.front.length
 					? { h: cfg.front_head_level ?? "h4", text: p.text } : { text: p.text });
 				continue;
 			}
 			if (p.role === "img") {
+				justOpened = false;
 				// M3: with no explicit delimiter an image OPENS a card once the current one
 				// has a back — the media-series reading (the round-247 carousel rule).
 				if (!explicit && cur && cur.back.length) open();
@@ -3825,11 +4133,14 @@ class InteractiveBuilder {
 				continue;
 			}
 			if (p.role === "head") {
-				if (cur && face === "back" && cur.back.length) open();   // a finished back ends the card
+				justOpened = false;
+				// under a NUMBERED reading the writer's own numbers own the boundaries
+				if (!numbered && cur && face === "back" && cur.back.length) open();   // a finished back ends the card
 				push({ h: p.level, text: p.text });
 				continue;
 			}
 			if (p.role === "text") {
+				justOpened = false;
 				// A BARE URL LINE IS THE IMAGE, not text. The writer often pastes the photo
 				// link on its own line with no [image] tag, and rendering it as a paragraph
 				// put a raw URL on the card (BLL123-1.0 — THE VERIFIER CAUGHT THIS).
@@ -3844,7 +4155,7 @@ class InteractiveBuilder {
 				// A COMPLETED BACK ENDS A CARD: the next content is the next card's front.
 				// This is what resolves the label-word series (EXPFUN06-0.0's
 				// "Whakawhanaungatanga" / "[on flip] Is about…" repeated four times).
-				if (cur && face === "back" && cur.back.length) open();
+				if (!numbered && cur && face === "back" && cur.back.length) open();
 				// with no markers, text after an image is the card's BACK
 				else if (!explicit && cur && cur.front.length && !cur.back.length) face = "back";
 				push({ text: p.text });

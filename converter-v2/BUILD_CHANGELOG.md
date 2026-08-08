@@ -1,5 +1,264 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-08 (round 290, build 260618.60) — THE FLIP CARD: build every variation (Chris — the interactive-coverage chain, round 2 of 8: accordion ✅ → flipCard ✅ → clickDrop → modal → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 19 affected modules that have a Claude dir, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289 state except for the 31 pages named below**)
+
+**THE PLAIN-ENGLISH LEAD.** A flip card has a front and a back, and 263 of the 484 the
+writers tagged were shipping as hand-off boxes. **They now build 269 of 484 — up from
+221 — with nothing lost in any other widget type.** As at round 289, the measurement
+came before the code, and it corrected the brief in six places — including which of
+its own changes was worth doing first.
+
+---
+
+### 1. THE NINE REASONS ARE REALLY FOUR — and none of them is what the brief names
+
+`WHY_UNBUILT__flipCard.md` ends every reason with a technical note pointing at a line
+in one of the four SPECIALISED dialect builders (`#flipTableCards:3467`,
+`#flipCardMembers:3238/3228`, `#flipCellFacePrefix:3490`, `#flipCardDialects:3105`).
+**Not one of those is where a flip card is actually refused.** Round 282 put a general
+composer behind all four and made their refusals FALL THROUGH, so reading the LAST
+guard rather than the second-to-last collapses all 263 declines onto four:
+
+| Terminal cause | Activities | Modules |
+|---|--:|--:|
+| `flipCardCards` — no reading resolved a single card | **149** | 90 |
+| `flipCardCards` — a card resolved with an EMPTY FACE | **97** | 54 |
+| `flipCardCards` — more than one table in the bundle | 12 | 10 |
+| `flipCardCards` — the leak guard | 5 | 5 |
+
+The empty-face 97 split **74 back-empty / 23 front-empty**, and of the 74 back-empty,
+**55 have no back signal anywhere in the document** — genuinely front-only cards, where
+the brief is right that the box is the honest answer.
+
+**The recorder had to be rebuilt to say this.** `_r289_authoring.json` was recorded on
+7 August, before round 289 changed the SHARED member walk that flipCard reaches through
+its own `delims`, so its member-path verdicts could no longer be trusted.
+`outputs/_measure_r290_flipcard.cjs` re-runs the same instrumentation against the current
+tree and adds the three things the older recorder could not say: WHICH TAG hit the
+foreign-tag bail, WHICH FACE was empty and what the other face held, and how many cards
+each reading resolved. All 24 shards present; 484 captured / 221 built reconciles exactly.
+
+### 2. THE BRIEF'S RANKING IS UPSIDE DOWN — measured, before coding
+
+| The brief's order | Its claim | **Measured reach** |
+|---|---|---|
+| 1. bold-lead front/back split | ~95 | **6 activities / 3 modules** |
+| 2. named header row | ~half of 91 | **1 activity** (CEDO102) + one header row that was shipping AS a card |
+| 3. one card per cell, faces inside | "large part of 91" | **24 activities / 16 modules — the largest** |
+| 4. face word outside the bracket | 26 | **1 card**, on XGF9004 — see §4 |
+| 5. numbered role words | part of 33 | 12 activities / 9 modules |
+| 6. `[Card N]` marker | part of 33 | 4 activities / 2 modules |
+
+**And the accordion's biggest lever is not this widget's.** Round 289's member-vocabulary
+change was worth 28 activities there; the same foreign-tag bail decides only **16** flip-card
+declines in total, across eight different tags. It ships, but as the smallest of the six.
+
+### 3. WHAT SHIPPED
+
+**`FLIPCELLFACES_OFF` — ONE CARD PER CELL, the faces marked inside it (T0).** Each cell is a
+whole card and the writer switches sides part-way through it: ENGR102-3.0's
+`[H4] ai / [Image] Paint / [Body] paint / Back Try reading these words: / • rain …`,
+XGF9004-17.0's `[Front] … / [Back] …`, CEDW501-5.0's `**Physical impacts** / [Reverse] …`,
+TEDC401-4.0's — where the writer puts `[front]` AFTER its own content. The marker may be a red
+span, a plain bracket or the bare word, and may carry structural co-tags (`[Back] [H3]`) which
+are dropped; every face marker is scrubbed from both halves so none reaches the page. **EVERY
+non-empty cell must split** — that fence is what keeps a table where only some cells carry a
+marker in its box. The same widened vocabulary reaches `#flipCellFacePrefix`, so
+CEDW501-3.0's `[Front of flipcard]` (which the round-282 literal did not know) now names a
+face too.
+
+**`FLIPBOLDLEAD_OFF` — the bold-lead front/back split**, modelled byte-for-byte on TWHK901's
+human build: the bold opening phrase becomes the front `<h5>` with its colon dropped, and the
+WHOLE caption stays on the back. *Where does the front of the card end?* is the one judgement
+this converter has always refused to make on its own, so the fence is absolute — **every**
+resolved card must have an empty front and a bold-lead back, and the phrase must be short
+enough to sit on a card. **A BUG THE PROBE CAUGHT:** the writer types the colon INSIDE the
+bold on three of TWHK901's four captions and OUTSIDE it on the fourth
+(`**International Aid and Cooperation**: Reducing poverty…` — quoted in the brief's own
+extract). One card failing means every card failing, so the first pattern silently declined
+the whole table.
+
+**`FLIPHEADROW_OFF` — a role-name header row.** `Image | Title | Explanation` (CEDO102) maps
+the columns: the Title cell to the front heading, the Image cell to the front picture, the
+Explanation cell to the back — and, following CEDO102's own gold, the title is repeated as the
+back's heading. A role name must be the WHOLE cell, so a real card row cannot be mistaken for a
+header. **A SECOND BUG THE PROBE CAUGHT:** the heading was going through the short-lead
+heuristic and shipping as `<h4><b>Concealing colouration</b></h4>`, where the gold ships it
+plain — a heading is already emphasis. It is now emitted directly with its `**` dropped. The
+rule also DROPS a role header the composer was reading as a card (TWHK901's
+`Images | Captions`), which is what lets the bold-lead rule see that table's four real rows.
+
+**`FLIPCARDROLE_OFF` — numbered delimiters naming a sub-role.** The two halves of one card
+often arrive as two tags of the same family: `[flipcard 1 image] <url>` then
+`[flip card 1 inside text]` (BLL224), `[flipcard 1 front] <url>` then `[flipcard 1 back] <text>`
+(SCCH301, SCPH301), `[1st flipcard image]` (BLL166). They are card N's faces, not two cards, and
+cards are keyed by the writer's own number in first-seen order. The same shape the clickDrop
+reads through `delimiter_media_role` at round 283. Plus **`[Card N]` as a card marker** —
+`[Card 1]` and `[Tile 2]` resolve to `shape n`, so EXPFUN06's four complete cards were being
+refused before its `Facing:` / `Reverse:` face words were ever considered.
+
+**`FLIPFACEWORD_OFF` — a face word typed BESIDE the label rather than inside it**, plus
+`[Side A]` / `[Side B]` as face names, plus the spurious-split fix in §4.
+
+**`FLIPMEMVOCAB_OFF` — flipCard's own `text_tags` / `note_tags`** (a `[Caption]`, an
+`[external link]` and a `[format]` span are pane prose; a bare `[table]` is an asset request),
+supplied through the round-281 `delims` mechanism, so every other caller is byte-identical BY
+CONSTRUCTION.
+
+### 4. THREE BUGS AND ONE NEAR-MISS THE PROOF CAUGHT BEFORE THEY SHIPPED
+
+Beyond the two named above:
+
+**A FRONT MARKER DIRECTLY AFTER A CARD DELIMITER WAS OPENING A SPURIOUS EMPTY CARD.** OSAH301's
+`[flip card title: Kete 1` then `front [image – small]` then `back [text] I know what online
+abuse and harassment is.` is a complete card — and the round-282 open-on-front rule was
+splitting it in two, the title on card one with no back at all, the picture and text on card
+two. **This, not where the writer typed the word "back", is why OSAH301 declined**; the brief's
+reason-D headline fix was necessary but nowhere near sufficient. OSAH301 pages 1.0 and 2.0 now
+build 3 correct cards where they built 1 broken one.
+
+**A FACE WORD THAT NEVER NAMES THE OTHER SIDE IS NOT A DELIMITER.** XLP05-4.0 heads EVERY member
+`Facing [Insert media item 30]`, and its own opener says the cards *"do not need to flip as all
+the information is contained on one side"*. Reading that as a face put every line on the front,
+left no back at all, and **cost the whole page its build** — caught by the LOST check, not by
+inspection. The rule now applies only where a back is signalled somewhere in the bundle, which
+is exactly what makes OSAH301's front/back pair a real delimiter.
+
+**A NEAR-MISS ON THE REVERSAL GUARANTEE.** Two of the fixes were first written as edits to
+patterns and code paths that are not toggle-gated — `face_label_pattern` and the spurious-split
+guard — so a toggle-OFF corpus would NOT have been the pre-round state. Both are now selected by
+their toggle (`face_label_pattern_r290` is a separate data key), and the all-OFF byte identity in
+§5 is what proves it.
+
+### 5. THE PROOF
+
+* Toggles-OFF census **reproduces round 289 exactly** — 2318 built of 7602 = 30.5%, accordion
+  428, flipCard 221, every one of the 32 types identical. ON gives **2366 = 31.1%**, flipCard
+  **269**.
+* **NEW BUILDS 32 / LOST 1**, proven index-independently by per-(module,page,type) build counts.
+  **The one loss is named and is an improvement** — see §6.
+* **Byte identity, ONE TOGGLE STATE PER PROCESS** (the round-246 trap): all-OFF in memory ==
+  the shipped corpus on **every page of 18 of the 20 affected modules** (the other two, BLL266
+  and HPRE301, have no Claude dir at all); **6 out-of-class canaries — BLL210, OSAH501, ENGS302,
+  TRR203, OSOH501, SCCH302, 24 pages — identical in BOTH states** and identical to disk.
+* **Per-toggle decomposition** over the affected set (231 cards with everything on):
+  CELLFACES **114**, BOLDLEAD **45**, HEADROW **17**, CARDROLE **16**, MEMVOCAB **9**,
+  FACEWORD **−7 net** (+1 on XGF9004, −14 on HPRE301 — §6).
+* **THE LEAK GUARD PROVEN over all 20 affected modules in four batches — 88/88, 83/83, 96/96,
+  56/56, PER-MODULE IDENTICAL.** Building adds no visible leak.
+* **A QUALITY SCAN of every card face** (`outputs/_probe_r290_quality.cjs`, flagging a bare URL,
+  a leftover bracket, a red marker, a photo brief or an empty face — but NOT a media-only face,
+  which is the false positive that made round 283's verifier report defects on 674 of the gold's
+  own panels): **462 faces inspected, 2 flagged, and both are PRE-EXISTING** — present on
+  XGF9004_3_0 in the OFF state too.
+* **§9 PROTECTED flipCard gate HOLDS-OR-IMPROVES: divergence 0 ✓ in BOTH states**; TOTAL 49→61,
+  exact 21→**32**, copy-edit 10→11, **defect 18→18 EXACT**.
+* Live over the affected modules whose gold carries a flip card: **334 card-texts, divergence 0**.
+* tags **9557/9557 REAL 0**; entry-parity **PASS**; index-sync **33/28**; all EIGHT widget
+  selftests GREEN.
+
+### 6. THE ONE LOSS, NAMED — and why it is a gain
+
+**HPRE301-11.0 built 14 cards and now builds none.** Its writer marks the faces `[Side A]` and
+`[Side B]`, which round 282 could not read, so the old reading fell back to pairing CONSECUTIVE
+BULLET POINTS as fronts and backs:
+
+```html
+<div class="flipCard">
+  <div class="front"><ul><li>Does not cause problems in daily life</li></ul></div>
+  <div class="back"><ul><li>Supports connection with others</li></ul></div>
+</div>
+```
+
+Fourteen of those. A card that turns over to reveal an unrelated bullet is not a flip card, and
+the honest box is better. With `[Side A]`/`[Side B]` read correctly the page declines for a real
+reason: the writer's picture is a media-list reference with no URL (an asset request, noted for
+the developer) and the front's only other line is a `[Subtitle]` span that resolves to no tag —
+so the front is genuinely empty. **HPRE301 has no Claude output directory, so this never reaches
+the corpus**; it is recorded here because the census sees it.
+
+### 7. GATES — held-or-improved, with both movers named and decomposed page by page
+
+Scoped ship #2 since round 288. Containment perfect (19 changed ⊆ 19 regenerated); content-hash
+**0-stale**; completeness spot-check **12/12 byte-identical, run IN MEMORY**
+(`_spotcheck_inmemory.cjs` — regenerating the sample would have written earlier no-regen rounds'
+pending work into the corpus, past the authorised scope: the round-273 trap). **Two modules were
+excluded from the regen because they have no Claude dir** — the round-285 ghost-directory trap.
+Blast **31 pages / 19 modules, 0 added, 0 removed**.
+
+| Gate | r289 | r290 | Verdict |
+|---|---|---|---|
+| skeleton pages ≥50% | 981 | **982** | **+1 IMPROVED** |
+| skeleton pages ≥75% | 194 | 193 | −1 — NAMED, below |
+| skeleton pages ≥90% | 16 | **16** | EXACT |
+| skeleton SCAFFOLD mean | 49.764% | 49.760% | −0.004pp — NAMED, below |
+| compare_structure exact / EXTRA / missing | 11209 / 185 / 585 | **11209 / 185 / 585** | EXACT |
+| body_compare ANY | 242 | **242** | EXACT |
+| clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | EXACT |
+| tags | 9557/9557 | 9557/9557 | EXACT |
+
+**THE SKELETON MOVEMENT, DECOMPOSED.** 25 pages moved, all inside the rebuilt set. Over the 111
+affected pages the scaffold sum falls **7.44 pp** while the RAW sum rises **35.40 pp**, and the
+fall is dominated by ONE page that is not a content change at all:
+
+* **CEDW501_7_0 → CEDW501_7_2 is a PAIRING re-resolution, −3.45pp of the −7.44.** The gate pairs
+  by content order; CEDW501's page now scores against gold `7.2` instead of `7.0`. Page counts
+  are unchanged on both sides (0 added, 0 removed). The documented pairing-visibility class
+  (r186 / r222 / r235 / r243 / r245 / r275).
+* **Every other moved page together is −3.99pp of scaffold against +35.40pp of RAW.** That is the
+  signature of the documented net-positive class (r176/r194/r220/r235/r284/r289): the scaffold
+  view collapses a widget to one marker, so a page that matched the gold's built widget only by
+  coincidence through a placeholder marker scores lower once real content ships, while RAW — which
+  sees inside the widget — rises. Row by row: SCCH301_6_0 −2.62 / **RAW +2.63**; AGH1006_2_0
+  −2.09 / **+2.38**; TWHK901_0_0 −0.14 / **+2.58**; CEDR501_1_0 −0.82 / **+4.60**; and the
+  round's best page, CEDT501_7_0, **+5.69 / RAW +12.07**, which is the ≥50% gain.
+* **The ≥75% loss is one page: OSAH301_2_0, 75.5 → 74.1.** It built NO flip card before and builds
+  one correct card now; the placeholder marker it replaced had coincidentally matched the gold.
+
+Both movers were passed to `_fastloop_diff.py --accept-named` (round 289's own tooling), which
+records them in the baseline manifest and still fails on any metric not named.
+
+### 8. ALL 215 REMAINING DECLINES, NAMED
+
+* **~55 front-only cards with no back anywhere in the document** (OSSM501 ×12, OSAI401 ×5,
+  CEDR203 ×5 …). The material does not exist; the box is correct and no builder change helps.
+  The brief's suggestion of shipping the front as a picture-and-caption block with a designer
+  note is a POLICY decision for Chris, not a code problem — recorded, not taken.
+* **~30 unpaired grids** — BLL240 ×6, BLL230, BLL260 ×3, BLL250, BLL225, CEDR101, XTAS103 …
+  where which word pairs with which picture is stated nowhere.
+* **BLL240 IS A POLICY QUESTION FOR CHRIS, NOT A SILENT CHOICE.** Its human *did* build the
+  cards — by **numbering them `1`, `2`, `3` themselves**, a front that appears in no Writers
+  Template. Nine words in a grid become nine cards if PageForge is allowed to invent the front.
+  It is 6 activities on BLL240 alone and the same shape recurs on BLL230/BLL260/BLL250/XTAS103
+  and on the conversation-starter grids (BLL171/BLL226/BLL247/BLL264, already recorded as a
+  decline at round 282). **Put to Chris with the measurement; not decided here** — inventing a
+  front is the one thing this converter has never been allowed to do.
+* 12 multi-table bundles · 5 the leak guard working as intended · 16 a member the walk cannot
+  place (button 4, `shape n` 4, heading 2, format 2, data marker / external link / embed /
+  click drop 1 each) · the remainder tables whose shape none of the readings resolves.
+
+### 9. RECORDED, NOT SHIPPED
+
+* **The verifier's DEFECT column is MODULE-scoped while its gold-substitution lane is
+  PAGE-scoped** (round 282 fixed the latter, not the former). Building cards on a page whose gold
+  counterpart has none, in a module that has flip cards elsewhere, therefore counts as a defect:
+  ENGR102 goes 10 → 26 that way, and its built form matches the human's quoted markup exactly.
+  Divergence — the protected criterion — is 0. **Deliberately not changed this round**: widening
+  a gate's tolerance inside the round it would flatter is exactly what round 282's note warns
+  against.
+* **Four modules build the writer's tagged flip card where the human built something else
+  entirely** and their gold carries ZERO flipCard markers anywhere: **AGH1006, AGH1009, CEDK101,
+  ENGI102**. Chris's standing A1 ruling (round 246) is to build the writer's tag and judge it on
+  the widget verifier; the brief itself says the same of AGH1006. Named, as round 282 named its six.
+* The `[Subtitle]` span (HPRE301) resolves to no tag and is noted rather than read as a heading.
+* The BLL "Sound on the front | Image on the back | Word beneath image" four-column header family
+  (BLL236/237/247/257) — a role header whose roles are audio and image, needing its own reading.
+
+**Env** `FLIPCELLFACES_OFF` / `FLIPBOLDLEAD_OFF` / `FLIPHEADROW_OFF` / `FLIPCARDROLE_OFF` /
+`FLIPFACEWORD_OFF` / `FLIPMEMVOCAB_OFF`. **Data** `interactive_builders.flipCard.general_cards`
+(`cell_face_split`, `bold_lead_faces`, `header_roles`, `card_role_pattern`, `card_marker_pattern`,
+`face_in_text_pattern`, `face_*_pattern`, `text_tags`, `note_tags`).
+
 ## 2026-08-08 (round 289, build 260618.59) — THE ACCORDION: build every variation (Chris — the interactive-coverage chain, round 1 of 8: accordion → flipCard → clickDrop → modal → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 36 affected modules that have a Claude dir, authorised in the request — NOT a full corpus rebuild; the §9 baselines still describe the round-288 state except for the 44 pages named below**)
 
 **THE PLAIN-ENGLISH LEAD.** An accordion is a stack of click-to-open panels, and 336 of the
