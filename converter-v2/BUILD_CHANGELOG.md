@@ -1,5 +1,272 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-08 (round 291, build 260618.61) — THE CLICK-AND-DROP: build every variation (Chris — the interactive-coverage chain, round 3 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 14 affected modules that have a Claude dir, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289/290 state except for the 17 pages named below**)
+
+**THE PLAIN-ENGLISH LEAD.** A click-and-drop is a row of buttons; clicking one reveals an
+explanation. 528 of the 690 the writers tagged were shipping as hand-off boxes — the
+largest count of any activity type in the set. **They now build 181 of 690 — up from
+162 — with nothing lost in any other widget type.** But the more useful half of the
+round is what the measurement found before a line of code was written, because **it
+corrected the brief three times, and the biggest correction says its top-ranked change
+is the one NOT to make.**
+
+---
+
+### 1. THE BRIEF'S #1 CHANGE WOULD HAVE SHIPPED ~215 BUTTONS THAT REVEAL NOTHING
+
+`WHY_UNBUILT__clickDrop.md` ranks first, at ~189 activities: *"There is no reveal panel
+at all… Skip the panel check entirely for this form, because a tile legitimately has
+nothing behind it. That is the one rule currently stopping all 189 of these."*
+
+**Measured against the human's own pages, that is wrong.** Counting tiles against
+`clickDropContent` panels on every page of the XDLS tile family — 6 modules, 38 pages —
+the panel is there **every time**:
+
+| Gold page | tiles | panels |
+|---|--:|--:|
+| XDLS903 .01–.07 | 6 | **6** (all seven pages) |
+| XDLS902 / 904 / 905 / 906, all pages | 6 | **6** |
+| XDLS901 .01 / .02 / .03 | 4 / 2 / 6 | **4 / 2 / 6** |
+| XDLS909 .01–.04 | 6 / 6 / 5 / 5 | 7 / 6 / 8 / 5 |
+
+The tile is `div.choice.clickDrop.dropBox`, and the site JS pairs the *N*th `.clickDrop`
+with the *N*th `.clickDropContent`; a tile with no panel does nothing when a learner
+clicks it. The human's panels are simply built around the **separately-written Activity
+blocks further down the page** (`<div class="clickDropContent activity dropbox"
+number="1A">`). And the writer's material for them exists — XDLS903's activity-1A prose
+sits in the NEXT captured bundle, after the marker that opens tile 1B. **That is a
+capture problem, exactly as the brief's own "which kind of reason is this?" section
+concedes** ("Nothing in the button-building code can fix this"), and it is 215 of the
+237 in that class. **DECLINED, with the measurement recorded.**
+
+The brief's **#4** ("a repeated bare label opens an item", ~30) is the same story by a
+different route: ARFUN04's repeated `[click and drop]` markers each carry a paragraph of
+content and **no name anywhere in the document**. A label is never invented. Declined.
+
+### 2. THE NINE REASONS ARE REALLY FIVE — and four of them are measured in dead code
+
+Every technical note in the brief is a line number from a tree ~452 lines shorter than
+today's, and **reasons F, G, I and H point at `#clickDrop`, the NARROW walk, whose
+refusal round 283 made non-terminal** — `#clickDropEntry` runs the general composer
+after it. Re-running the instrumentation against the current tree
+(`outputs/_measure_r291_clickdrop.cjs`, 24 shards, **100% of the 528 accounted for,
+690/162 reconciling exactly**) and keying on the LAST trace entry gives:
+
+| Terminal cause | Activities | Modules |
+|---|--:|--:|
+| `clickDropItems` — the render step produced an empty panel | **237** | 19 |
+| `clickDropItems` — no reading resolved any item | **218** | 88 |
+| `clickDropItems` — a member the shared walk cannot place | 54 | 28 |
+| `clickDropItems` — below the item floor | 12 | 5 |
+| `clickDropItems` — the leak guard | 7 | 5 |
+
+The 218 decompose further: **135 no reading at all** (71 of them a single TABLE), **50
+explicit `[click drop N]` markers that yielded no label**, 33 a label the walk refused.
+The 54 are `[carousel]` 7, `[shape n]` 6, `[heading]` 3, `[table]` 3 and a tail — plus
+21 where the delimiter itself carries red text or a URL (XDLS908 ×19).
+
+### 3. WHAT SHIPPED
+
+**`CDROLEWORD_OFF` — role words on a delimiter, the biggest lever (271 declines / 45
+modules carry the form).** A `[click drop …]` bracket that names a PART of an item is
+that part, not a new item — four dialects, one rule:
+
+```
+[Clickdrop 1 Image] same image from BLL110   /  [Clickdrop 1 text] Find things…   BLL230
+[ClickDrop with Image] / [H2] Kōrero awhi /  [ClickDrop Text] This can mean…      HES1004
+[Insert ClickDrop 1] <title> / [Video for ClickDrop 1] <url> / [Text for …]       XGF9001
+[Clickdrop image] / archaic greece.jpg    /  [Body] Archaic – when…               SSCI205
+```
+
+The shared walk emits the part RAW (`{role:"itemdelim", n, sub, text}`) and the CALLER
+decides what each role means, because the same word means different things to different
+widgets — "text" is panel prose to a click-and-drop and a card face to a flip card.
+`item_role_pattern` is undefined for every other caller, so nothing else can move BY
+CONSTRUCTION. Items are keyed by the writer's OWN NUMBER where they gave one; a picture
+role opens the next item and a text role fills the one already open. **A picture role
+whose payload is not a web address is a design-team ASSET REQUEST** ("same image from
+BLL110") and surfaces as the standard red Writers Note — never as panel prose, never as
+an invented filename. **A label is never invented**, which is why BLL230, whose button
+faces are pictures named only in a note to the designer, is still refused.
+
+**`CDHEADLABEL_OFF` — a bare delimiter takes its name from the heading that OPENS the
+item.** HPFUN901-0.0 writes `[click drop 1]` then `[h4] Where do I keep my medication?`
+then `[body text] …`, and one nameless marker was killing the whole widget. **The
+human's own page ships exactly those three headings as its three buttons**, and so do we
+now — 3 buttons, 3 panels, gold word for word.
+
+**`CDCELLTAGS_OFF` — a self-delimited table cell read by its own inner tags.**
+OSOH501-2.0 marks each cell up completely — `[click drop][image] <url> / [H4] Don't
+share your device without permission / [body] **Why?** …` — and round 283 ran the WHOLE
+cell through the label reader, which met a URL where it wanted a name. Six items now
+build with the writer's own headings as their buttons.
+
+**`CDMULTIBRACKET_OFF` — a marker's sibling brackets are each offered to the delimiter
+tests.** Writers put more than one bracket in one red span: `[ClickDrop with Image]
+[Insert image 18]` and `[interactive tool] click drop x 3 ⏎ [click drop 1]`. The
+delimiter is found wherever they put it.
+
+**`CDMEMVOCAB_OFF` — clickDrop's own member vocabulary** through the round-281
+caller-scoped `delims`: a `[heading]` is a sub-heading, a bare `[table]` is an asset
+request.
+
+### 4. FOUR BUGS AND A NEAR-MISS THE PROOF CAUGHT BEFORE THEY SHIPPED
+
+**A NEAR-MISS ON THE REVERSAL GUARANTEE — caught by the census, not by inspection.** The
+member vocabulary was first a data-only widening with no toggle, so the toggles-OFF
+state built **2369 where round 290 published 2366**. A toggle-OFF corpus would not have
+been the pre-round state. It is now selected by `CDMEMVOCAB_OFF` and the OFF census
+reproduces round 290 to the last digit. (Round 290 hit the identical trap; it is now
+two-for-two and worth a standing check.)
+
+**BLL260's SIX BOLD-LEAD TITLES READ AS PROSE — LOST 6.** `[Clickdrop 1 text]
+**Scrunch & Shrink Art** Find a shrinky-art video…` is a name and a panel, exactly as
+round 283's panel head read it; treating the payload as prose cost five BLL pages every
+button they had been building since round 283. The first payload of a nameless item is
+now read the same way it always was.
+
+**A TRAILING DELIMITER OPENING AN ITEM THE BUNDLE DOES NOT CONTAIN — LOST 2.**
+BLL266-2.0's capture ends `… [embed video] / [clickdrop 2 image and title]`, whose
+content is in the next bundle. Before this round that marker matched no delimiter
+pattern and was invisible; reading its role must not now sink the page. Only a LAST slot
+that is completely empty is dropped — an empty slot in the middle is a real half-build
+and still declines.
+
+**OSAH401 PUT THE NEXT SECTION'S HEADING ON ITS BUTTON.** `[clickdrop answer] Online
+abuse and harassment (OAH) is…` is followed by `[H5] Task 2 Identifying online
+harassment` — the next task's title. A heading names an item only while the item has no
+prose of its own. **And the fence had to be refined once more:** requiring the heading to
+be the item's FIRST part cost six BLL pages their build, because BLL231-2.0 writes
+`[clickdrop 1 image]` then a bare iStock URL on its own line then `[clickdrop 1 text]`
+then `[H3] Escape` — a web address is the picture's location, not the item's writing.
+
+### 5. THE PROOF
+
+* Toggles-OFF census **reproduces round 290 exactly** — 2366 built of 7602 = 31.1%,
+  clickDrop 162, every one of the 32 types identical. ON gives **2385 = 31.4%**,
+  clickDrop **181**.
+* **NEW BUILDS 18 / LOST 0 in every type**, proven index-independently by
+  per-(module,page,type) build counts. The census was **re-run after each fix changed the
+  builder** (the round-282 rule; the intermediate 175 and 182 would both have been wrong
+  to publish), and a stale-shard check on every merge (four shards of the ON run were
+  left over from an earlier code state and were re-run — the round-279/287 trap).
+* **Byte identity, ONE TOGGLE STATE PER PROCESS** (the round-246 trap): all-OFF in memory
+  == the shipped corpus on **all 64 pages of 7 affected modules**; **6 out-of-class
+  canaries — BLL210, OSAH501, TRR203, ENGS302, SCCH302, HIS1006, 32 pages — identical in
+  BOTH states** and identical to disk.
+* **Per-toggle decomposition** over those 64 pages: ROLEWORD **6**, MULTIBRACKET 2,
+  HEADLABEL 1, CELLTAGS 1, MEMVOCAB 1 — 9 changed pages, every one predicted.
+* **THE LEAK GUARD PROVEN over all 16 modules in two batches — 247/247 and 104/104,
+  PER-MODULE IDENTICAL.** Building adds no visible leak.
+* **A QUALITY SCAN of every button and panel** (`outputs/_probe_r291_quality.cjs` —
+  flagging a URL face, a leftover bracket, a red marker, a photo brief, a duplicate name
+  or an empty panel, but NOT an image-faced button or a media-carrying panel, which the
+  gold ships in 794 of 3,036 and 939 of 2,877 respectively): **85 buttons inspected, 6
+  flagged, and every one is PRE-EXISTING** — ARFUN04's repeated "Watch" faces and
+  XLP02-4.0's two "Need help?" are present in the OFF state too.
+* **clickDrop verifier over all 15 affected modules: 34 groups / 84 items — exact 25,
+  copy-edit 3, dev-edit 56, defect 0 ✓.** ENGJ403 **5 exact of 6**; SSCI205 **10 of 10
+  exact**; OSOH501 7 exact.
+* tags **9557/9557 REAL 0**; entry-parity **PASS**; index-sync **33/28**; §9 protected
+  flipCard gate **divergence 0 ✓**; all EIGHT widget selftests GREEN.
+
+### 6. GATES — held-or-improved, with the one mover named and decomposed page by page
+
+Scoped ship #3 since round 288. Containment perfect (14 changed ⊆ 14 regenerated);
+content-hash **0-stale**; completeness spot-check **12/12 byte-identical, run IN MEMORY**
+(`_spotcheck_inmemory.cjs` — regenerating the sample would have written earlier
+no-regen rounds' pending work into the corpus, past the authorised scope: the round-273
+trap). **SSOG105 was excluded from the regen because it has no Claude dir** — the
+round-285 ghost-directory trap. Blast **17 pages / 14 modules, 0 added, 0 removed**.
+
+| Gate | r290 | r291 | Verdict |
+|---|---|---|---|
+| skeleton pages ≥50% | 982 | **982** | EXACT |
+| skeleton pages ≥75% | 193 | **193** | EXACT |
+| skeleton SCAFFOLD mean | 49.76% | 49.74% | −0.02pp — NAMED, below |
+| compare_structure exact / EXTRA / missing | 11209 / 185 / 585 | **11209 / 185 / 585** | EXACT |
+| body_compare ANY | 242 | **242** | EXACT |
+| clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | EXACT |
+| tags | 9557/9557 | 9557/9557 | EXACT |
+
+**THE SKELETON MOVEMENT, DECOMPOSED.** 16 pages moved, all inside the rebuilt set. Over
+them the scaffold sum falls **26.75 pp** while the RAW sum rises **28.73 pp**, 13 of the
+16 gaining on RAW — the documented net-positive signature (r176/r194/r220/r235/r284/
+r289/r290): the scaffold view collapses a widget to one marker, so a page that matched
+the gold's built widget only by coincidence through a placeholder marker scores lower
+once real content ships, while RAW — which sees inside the widget — rises. Three pages
+carry the whole fall, and each was checked against its own gold:
+
+* **ENGJ403_5_0 −16.39 / RAW +0.73 — and it is the round's best build.** The gold's page
+  5.0 ships `Dialogue · Stage directions · Subtext · Pacing and pauses · Visual cues ·
+  Audio cues`, and so do we; the verifier scores 5 exact + 1 copy-edit, defect 0. The
+  gold carries a second group on that page which we still hand off, so the collapsed
+  view now sees one real widget beside one marker where it used to see two markers.
+* **XDLS901_3_0 −10.45 / RAW −0.65.** The human built ICON TILES on that page — the very
+  form declined in §1 — and we build the writer's plain buttons. Chris's standing A1
+  ruling (round 246): build the writer's tag and judge it on the widget verifier, which
+  passes with defect 0.
+* **OSOH501_2_0 −6.70 / RAW +1.62.** The human MOVED that material off the page (gold
+  `-02` carries no click-and-drop at all) — the A1 class again.
+* Every other moved page nets positive, led by **CEDO502_3_0 +4.62 scaffold** and
+  **MXFU301_7_0 +4.11**, with **CEDO502_2_0 RAW +7.89** and **SSCI205_6_0 RAW +6.76**.
+
+The mover was passed to `_fastloop_diff.py --accept-named` (round 289's tooling), which
+records it in the baseline manifest and still fails on any metric not named.
+
+### 7. ALL 509 REMAINING DECLINES, NAMED
+
+* **215 the XDLS icon-tile family** — §1. The tile shape is real and derivable; its
+  PANEL is in the next captured bundle, so it is a capture round, not a builder one.
+  Recommend it be taken with the XDLS908 red/URL delimiter class (19) in one XDLS round.
+* **~130 no reading resolves an item**, of which **71 are a single TABLE** whose shape
+  none of the six readings (T0–T5) resolves — 40 modules, the largest genuinely fixable
+  structural class left, and the natural next clickDrop round. Two clean sub-shapes are
+  already identified: a ROLE-NAME first column (`Image` / `Drop` down column 0 —
+  ENGJ301-3.0's six items) and a role-name header row (`Click Drop Heading` / `Links` —
+  ENGC301-1.0). Both were sized at 2 activities and left, since neither module's gold
+  builds a click-and-drop at all.
+* **~90 an item with a label and no content**, or content and no label — including
+  BLL230's numbered halves, where the face is a picture identified only as "same image
+  from BLL110".
+* **33 the whole activity is notes to the design team** (XDLS909 ×13, ENGI202 ×5) —
+  nothing to build, correctly refused.
+* **21 the delimiter itself carries red text or a web address** (XDLS908 ×19).
+* 24 a member the shared walk cannot place — `[carousel]` 7, `[shape n]` 6, `[heading]`
+  3, `[table]` 3 and a tail of other widgets' invocations (a gathering class, as round
+  289 recorded for the accordion) · 12 below the item floor · 7 the leak guard working
+  as intended.
+
+### 8. RECORDED, NOT SHIPPED
+
+* **A DUPLICATE-BUTTON-FACE GUARD.** ARFUN04-0.0 ships five buttons named "Watch" —
+  four of them **pre-existing**, from round 283's repeating-heading reading, and this
+  round's member vocabulary adds a fifth plus two well-named ones. Tabs declines on
+  duplicate labels (round 281) and the same rule almost certainly belongs here, but
+  adding it would REMOVE a build that has been shipping since round 283, so it needs its
+  own measured round rather than a quiet change inside this one — the round-290
+  discipline about not widening or tightening a criterion inside the round it would
+  flatter.
+* **HES1004-3.0 is a MEASURED DECLINE, not a loss** (0 buttons with the toggles off
+  too). Its role words now read correctly; its six headings run to twelve words —
+  *"Tikanga – doing things the right way, according to our values and customs"* — and a
+  gold button label is longer than eight words in 0.8% of 3,036. The name is simply too
+  long to sit on a button.
+* SSCI205's bare-filename button faces (`archaic greece.jpg`): the human used the
+  picture with hand-written alt text, which needs an image path the converter cannot
+  derive; the three items build from their `[Body]` text instead.
+* ENGJ403's `[insert clickdrop button] **Slugline**` followed by `[modal clickdrop]
+  **Slugline** also known as…` opens two items with the same name, the first empty —
+  it declines, correctly, and would be picked up by the duplicate-face guard above.
+
+**Env** `CDROLEWORD_OFF` / `CDHEADLABEL_OFF` / `CDCELLTAGS_OFF` / `CDMULTIBRACKET_OFF` /
+`CDMEMVOCAB_OFF`. **Data** `interactive_builders.clickDrop.general_items`
+(`item_role_pattern`, `head_label`, `cell_inner_tags`, `delimiter_multi_bracket`,
+`member_vocabulary`). **Tools** `outputs/_measure_r291_clickdrop.cjs` (the decline
+recorder, with a `--only CODE` leg that prints one module's members and trace),
+`_measure_r291_census.cjs`, `_probe_r291_clickdrop.cjs`, `_probe_r291_leaks.cjs`,
+`_probe_r291_quality.cjs`.
+
 ## 2026-08-08 (round 290, build 260618.60) — THE FLIP CARD: build every variation (Chris — the interactive-coverage chain, round 2 of 8: accordion ✅ → flipCard ✅ → clickDrop → modal → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 19 affected modules that have a Claude dir, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289 state except for the 31 pages named below**)
 
 **THE PLAIN-ENGLISH LEAD.** A flip card has a front and a back, and 263 of the 484 the

@@ -1494,7 +1494,50 @@ class InteractiveBuilder {
 						continue;
 					}
 				}
-				const isDelim = !text && (numbered.test(own) || ordinal.test(own));
+				// ROUND 291 — A ROLE WORD ON A clickDrop DELIMITER. The single biggest
+				// clickDrop lever, measured: the writer splits ONE item across several tags
+				// of the same family, each bracket naming which PART of it this is —
+				// "[Clickdrop 1 Image]" then "[Clickdrop 1 text]" (BLL230), "[ClickDrop with
+				// Image]" then "[ClickDrop Text]" (HES1004), "[Video for ClickDrop 1]" then
+				// "[Text for ClickDrop 1]" (XGF9001), "[Clickdrop image]" (SSCI205). The
+				// round-283 delimiter_media_role rule catches only the case where the payload
+				// is a bare URL; here the BRACKET ITSELF says the role, so an image half with
+				// a design-team note for a payload ("same image from BLL110") is still
+				// recognised as the picture half and never mistaken for a new item.
+				//
+				// The part is emitted RAW ({role, n, sub, text}) and the CALLER decides what
+				// each role means — the walk must not guess, because "text" is panel prose to
+				// a clickDrop and would be a card face to a flip card. `item_role_pattern` is
+				// undefined for every other caller, so nothing else can move BY CONSTRUCTION.
+				// ROUND 291 — A MARKER MAY CARRY SIBLING BRACKETS. Writers put more than one
+				// bracket in one red span: "[ClickDrop with Image] [Insert image 18]"
+				// (HES1004) and "[interactive tool] click drop x 3 ⏎ [click drop 1]"
+				// (HPFUN901). Both patterns below are anchored to a WHOLE bracket, so each
+				// bracket of the marker is offered to them in turn — the delimiter is found
+				// wherever the writer put it. Opt-in per caller; `CDMULTIBRACKET_OFF`.
+				const multiBracket = delims?.delimiter_multi_bracket
+					&& !(typeof process !== "undefined" && process.env && process.env.CDMULTIBRACKET_OFF);
+				const ownForms = [own.trim(), ...(multiBracket ? (own.match(/\[[^\]]*\]/g) ?? []) : [])];
+				const firstMatch = (re) => { for (const f of ownForms) { const x = f.match(re); if (x) return x; } return null; };
+				if (delims?.item_role_pattern
+					&& !(typeof process !== "undefined" && process.env && process.env.CDROLEWORD_OFF)) {
+					const rm = firstMatch(new RegExp(delims.item_role_pattern, "i"));
+					const sub = rm ? String((rm.groups ?? {}).role1 || (rm.groups ?? {}).role2 || "").trim() : "";
+					// NO ROLE WORD = the ordinary "[click drop 1] Label" delimiter, which the
+					// panel path below has always handled. Only a bracket that NAMES a part
+					// becomes an itemdelim, so the existing form cannot move.
+					if (rm && sub) {
+						if (this.#hasRedText(raw) && text) return null;
+						parts.push({
+							role: "itemdelim",
+							n: String((rm.groups ?? {}).n ?? "").trim(),
+							sub: sub.replace(/\s+/g, " ").toLowerCase(),
+							text, raw: String(m.text ?? ""),
+						});
+						continue;
+					}
+				}
+				const isDelim = !text && ownForms.some((f) => numbered.test(f) || ordinal.test(f));
 				// ROUND 283 — a DELIMITER TAG NAMING A SUB-ROLE. Some writers split one item
 				// across several tags of the same family, each naming a part of it:
 				// "[Insert ClickDrop 1] <title>" then "[Video for ClickDrop 1] <url>" then
@@ -8182,6 +8225,14 @@ class InteractiveBuilder {
 		//     shared verbatim. `delims` names clickDrop's own delimiter/face tags and
 		//     the elements its gold panels legitimately carry; every omitted key keeps
 		//     the accordion default, so the accordion and tabs cannot move.
+		// ROUND 291 — clickDrop's OWN member vocabulary, through the round-281 caller-scoped
+		// `delims` mechanism (a [heading] is a sub-heading; a bare [table] is an asset
+		// request, never content). Gated so a toggle-OFF corpus is exactly the pre-round
+		// state — a data-only widening with no toggle would have broken that guarantee,
+		// and the census caught it: +3 builds with every other toggle set. `CDMEMVOCAB_OFF`.
+		const memVocab = (cfg.member_vocabulary
+			&& !(typeof process !== "undefined" && process.env && process.env.CDMEMVOCAB_OFF))
+			? cfg.member_vocabulary : null;
 		const parts = this.#accMemberParts(members, {
 			tpl, cfg, run, renderTable, notes,
 			delims: {
@@ -8189,12 +8240,14 @@ class InteractiveBuilder {
 				opener_tags: cfg.opener_tags ?? [],
 				panel_tag_pattern: cfg.delimiter_pattern,
 				panel_ordinal_pattern: cfg.delimiter_ordinal_pattern,
-				head_tags: cfg.head_tags ?? [],
+				head_tags: [...(cfg.head_tags ?? []), ...(memVocab?.head_tags ?? [])],
 				head_level: cfg.head_level ?? "h4",
-				text_tags: cfg.text_tags ?? [],
-				note_tags: cfg.note_tags ?? [],
+				text_tags: [...(cfg.text_tags ?? []), ...(memVocab?.text_tags ?? [])],
+				note_tags: [...(cfg.note_tags ?? []), ...(memVocab?.note_tags ?? [])],
 				face_tags: cfg.face_tags ?? [],
 				delimiter_media_role: cfg.delimiter_media_role !== false,
+				item_role_pattern: cfg.item_role_pattern,              // ROUND 291
+				delimiter_multi_bracket: cfg.delimiter_multi_bracket,  // ROUND 291
 			},
 		});
 		if (!parts) return null;
@@ -8204,6 +8257,10 @@ class InteractiveBuilder {
 		if (!items) return null;
 		const floor = items.inferred ? (cfg.min_inferred_items ?? 2) : (cfg.min_items ?? 1);
 		if (items.list.length < floor) return null;
+		// ROUND 291 — an ASSET REQUEST an item carried ("[Clickdrop 1 Image] same image
+		// from BLL110") is surfaced as the standard red Writers Note on a SUCCESSFUL build,
+		// never silently dropped (the r214/r242 rule).
+		for (const it of items.list) for (const n of (it.notes ?? [])) if (String(n).trim()) notes.push(String(n).trim());
 
 		// (3) Render. The gold's shape is ALL buttons first, then ALL content panels,
 		//     paired by position (the JS pairs button[i] -> content[i]) — the same emit
@@ -8232,6 +8289,16 @@ class InteractiveBuilder {
 	static #cdResolveItems(parts, cfg, tpl) {
 		const substantive = parts.filter((p) => p.role !== "note");
 		if (!substantive.length) return null;
+
+		// ---- D0: ROLE-WORD delimiters (ROUND 291) -----------------------------
+		// Tried FIRST, because a bundle mixing "[Clickdrop 1 Image]" with a plain
+		// "[click drop 2] Label" must read BOTH as item delimiters; the panel walk
+		// below cannot see an itemdelim at all.
+		if (parts.some((p) => p.role === "itemdelim")) {
+			const r = this.#cdRoleItems(parts, cfg, tpl);
+			if (r && r.list.length) return { ...r, inferred: false };
+			return null;
+		}
 
 		// ---- D1: explicit [click drop N] delimiters ---------------------------
 		if (parts.some((p) => p.role === "panel")) {
@@ -8283,15 +8350,26 @@ class InteractiveBuilder {
 		let cur = null, pending = [];
 		const isMedia = (p) => p.role === "img" || p.role === "video" || p.role === "embed";
 		const flush = () => { if (pending.length) { (cur ? cur.parts : lead).push(...pending); pending = []; } };
+		// ROUND 291 — A BARE DELIMITER TAKES ITS NAME FROM THE ITEM'S OWN FIRST HEADING.
+		// HPFUN901-0.0 writes "[click drop 1]" then "[h4] Where do I keep my medication?"
+		// then "[body text] …" — the marker carries no name of its own, so #cdLabel("")
+		// refused it and ONE bare delimiter killed the whole widget. The human's finished
+		// page ships exactly those three headings as its three buttons, word for word.
+		// Only a GENUINELY EMPTY delimiter qualifies: a panel marked `overlong` carried a
+		// whole sentence of its own (that sentence is the item's content and the heading
+		// after it is the NEXT section's, OSAH401-1.0), so it still declines.
+		const headLabel = (cfg.head_label !== false)
+			&& !(typeof process !== "undefined" && process.env && process.env.CDHEADLABEL_OFF);
 		for (const p of parts) {
 			if (p.role === "note") continue;
 			const label = openerOf(p);
 			if (label !== null && label !== undefined) {
-				const lab = this.#cdLabel(label, cfg);
-				if (!lab) return null;
+				const bare = !String(label).trim() && !p.overlong;
+				const lab = bare ? null : this.#cdLabel(label, cfg);
+				if (!lab && !(bare && headLabel)) return null;
 				const carried = pending; pending = [];
-				cur = { label: lab.label, parts: [...carried] };
-				if (lab.rest) cur.parts.push({ role: "text", text: lab.rest });
+				cur = { label: lab ? lab.label : null, parts: [...carried], needsHead: !lab };
+				if (lab && lab.rest) cur.parts.push({ role: "text", text: lab.rest });
 				list.push(cur);
 				continue;
 			}
@@ -8300,6 +8378,232 @@ class InteractiveBuilder {
 			(cur ? cur.parts : lead).push(p);
 		}
 		flush();
+		if (!this.#cdPromoteHeadLabels(list, cfg)) return null;
+		return { list, lead };
+	}
+
+	/**
+	 * ROUND 291 — give every still-nameless item the text of its OWN first heading, and
+	 * remove that heading from the panel so the name is not shown twice. A LABEL IS NEVER
+	 * INVENTED (the standing rule): an item with no heading of its own declines, which is
+	 * what keeps ARFUN04's repeated bare "[click and drop]" paragraphs — where no button
+	 * face exists anywhere in the document — in their honest hand-off box.
+	 */
+	static #cdPromoteHeadLabels(list, cfg) {
+		for (const it of list) {
+			if (!it.needsHead) continue;
+			delete it.needsHead;
+			const i = this.#cdOpeningHead(it.parts);
+			if (i < 0) return false;
+			const lab = this.#cdLabel(it.parts[i].text, cfg);
+			if (!lab) return false;
+			it.parts.splice(i, 1);
+			it.label = lab.label;
+			if (lab.rest) it.parts.splice(i, 0, { role: "text", text: lab.rest });
+		}
+		return true;
+	}
+
+	/** ROUND 291 — PROSE, for the opening-heading test. A text part that is nothing but
+	 *  a web address is the picture's location, not the item's writing: BLL231-2.0 writes
+	 *  "[clickdrop 1 image]" then a bare iStock URL on its own line, then
+	 *  "[clickdrop 1 text]" then "[H3] Escape" — and the heading there plainly does open
+	 *  the item. Counting that URL as prose cost six BLL pages their build, which the
+	 *  LOST check caught. */
+	static #cdIsProse(p) {
+		if (!p) return false;
+		if (p.role === "table" || p.role === "nested" || p.role === "face") return true;
+		if (p.role !== "text") return false;
+		const t = String(p.text ?? "").replace(/https?:\/\/\S+/g, " ").replace(/\s+/g, " ").trim();
+		return /\p{L}/u.test(t);
+	}
+
+	/**
+	 * ROUND 291 — the index of the heading that OPENS an item, or -1.
+	 *
+	 * A heading names the item only while the item has no PROSE of its own. Once it
+	 * has, a heading after it belongs to the next section — OSAH401-1.0's
+	 * "[clickdrop answer] Online abuse and harassment (OAH) is…" is followed by
+	 * "[H5] Task 2 Identifying online harassment", the NEXT task's title, and reading
+	 * that as the button put the wrong words on the page. Media does NOT count as
+	 * prose: the walk hands a trailing picture forward to the item it opens, so
+	 * HPFUN901's second and third items legitimately open picture-then-heading.
+	 */
+	static #cdOpeningHead(parts) {
+		const content = (parts ?? []).findIndex((p) => this.#cdIsProse(p));
+		const i = (parts ?? []).findIndex((p) => p.role === "head" && String(p.text ?? "").trim());
+		if (i < 0) return -1;
+		return (content < 0 || i < content) ? i : -1;
+	}
+
+	/**
+	 * ROUND 291 — ITEMS FROM ROLE-WORD DELIMITERS (`CDROLEWORD_OFF`).
+	 *
+	 * THE MEASURED BLOCKER. The decline recorder rebuilt against the current tree
+	 * (outputs/_measure_r291_clickdrop.cjs, 100% of the 528 declines accounted for) found
+	 * 271 declines / 45 modules whose writer names each HALF of an item in the bracket
+	 * itself. Four dialects, all the same idea:
+	 *
+	 *   [Clickdrop 1 Image] same image from BLL110      the picture for item 1
+	 *   [Clickdrop 1 text]  Find things in your house…  the panel  for item 1   (BLL230)
+	 *   [ClickDrop with Image] / [H2] Kōrero awhi / [ClickDrop Text] This can mean…  (HES1004)
+	 *   [Insert ClickDrop 1] <title> / [Video for ClickDrop 1] <url> / [Text for …]  (XGF9001)
+	 *   [Clickdrop image] / archaic greece.jpg / [Body] Archaic – when…              (SSCI205)
+	 *
+	 * WHAT EACH ROLE MEANS — decided HERE, not in the shared walk, because the same word
+	 * means different things to different widgets ("text" is panel prose to a clickDrop
+	 * and a card face to a flip card):
+	 *
+	 *   image / photo / picture      the item's PICTURE — a URL renders as the standard
+	 *                                Mode P/D asset; a payload that is not a URL is a
+	 *                                design-team ASSET REQUEST ("same image from BLL110")
+	 *                                and surfaces as the usual red Writers Note, never as
+	 *                                panel prose and never as an invented filename
+	 *   video / audio                the item's media, through the same machinery
+	 *   text / content / answer / body   the item's PANEL prose
+	 *   button / title / heading / label the item's NAME
+	 *
+	 * ITEM IDENTITY is the writer's OWN NUMBER where they gave one (first-seen order), so
+	 * "[Clickdrop 1 Image]" and "[Clickdrop 1 text]" are two halves of item 1 rather than
+	 * two items. With no number, a PICTURE role opens the next item (every measured
+	 * dialect puts the picture first) and a TEXT role attaches to the item already open.
+	 *
+	 * A LABEL IS NEVER INVENTED. An item whose roles yielded no name and which has no
+	 * heading of its own declines and keeps its honest hand-off box — which is why
+	 * BLL230, whose button faces are pictures named only as "same image from BLL110",
+	 * is still refused.
+	 */
+	static #cdRoleItems(parts, cfg, tpl) {
+		const roleOf = (sub) => {
+			const s = String(sub ?? "").toLowerCase();
+			if (/\b(?:image|images|photo|picture|pic|icon)\b/.test(s)) return "img";
+			if (/\b(?:video|audio|clip)\b/.test(s)) return "media";
+			if (/\b(?:button|title|heading|head|label|name)\b/.test(s)) return "label";
+			if (/\b(?:text|texts|content|answer|answers|body|info|information|drop|reveal)\b/.test(s)) return "text";
+			return null;
+		};
+		const slots = [];                                          // ordered items
+		const byNum = new Map();
+		const lead = [];
+		let cur = null;
+		const openSlot = (n) => {
+			if (n && byNum.has(n)) return byNum.get(n);
+			const s = { label: null, parts: [], notes: [] };
+			slots.push(s);
+			if (n) byNum.set(n, s);
+			return s;
+		};
+		for (const p of parts) {
+			if (p.role === "note") continue;
+
+			if (p.role === "itemdelim") {
+				const kind = roleOf(p.sub);
+				if (!kind) return null;                            // a role word we cannot place
+				const n = p.n;
+				if (kind === "img" || kind === "media" || kind === "label" || (n && !byNum.has(n))) {
+					cur = openSlot(n);
+				} else if (!cur) {
+					cur = openSlot(n);
+				} else if (n && byNum.has(n)) {
+					cur = byNum.get(n);
+				}
+				const txt = String(p.text ?? "").trim();
+				if (!txt) continue;
+				if (kind === "label") {
+					const lab = this.#cdLabel(txt, cfg);
+					if (!lab) return null;
+					if (!cur.label) cur.label = lab.label;
+					if (lab.rest) cur.parts.push({ role: "text", text: lab.rest });
+					continue;
+				}
+				if (kind === "img" || kind === "media") {
+					const url = this.#cellMediaUrl(p.raw) || this.#cellMediaUrl(txt);
+					if (!url) { cur.notes.push(String(p.raw ?? txt).trim()); continue; }
+					const idRe = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/;
+					const vm = String(url).match(idRe);
+					if (vm) { cur.parts.push({ role: "video", id: vm[1] }); continue; }
+					const fn = this.#accImageFilename(url, tpl, cfg);
+					if (!fn) return null;
+					cur.parts.push({ role: "img", filename: fn });
+					continue;
+				}
+				// TEXT-family: the payload is the item's own panel prose — and, on an
+				// otherwise nameless item, its FIRST payload is read exactly as the
+				// round-283 panel head was: a short line is the whole name, and a line
+				// that opens with a **bold title** gives its name from the bold and keeps
+				// the rest as the panel. BLL260's "[Clickdrop 1 text] **Scrunch & Shrink
+				// Art** Find a shrinky-art video…" is that form, on six items a page —
+				// and the LOST check caught it, because reading the payload as prose only
+				// cost the page all six buttons it had been building since round 283.
+				if (!cur.label && !cur.parts.length) {
+					const lab = this.#cdLabel(txt, cfg);
+					if (lab) {
+						cur.label = lab.label;
+						if (lab.rest) cur.parts.push({ role: "text", text: this.#cdCellLines(lab.rest, cfg) });
+						continue;
+					}
+				}
+				cur.parts.push({ role: "text", text: this.#cdCellLines(txt, cfg) });
+				continue;
+			}
+
+			// A PLAIN "[click drop N] Label" delimiter still opens its own item, so a
+			// bundle that MIXES the two forms reads correctly.
+			if (p.role === "panel") {
+				cur = openSlot("");
+				if (String(p.head ?? "").trim() && !p.overlong) {
+					const lab = this.#cdLabel(p.head, cfg);
+					if (!lab) return null;
+					cur.label = lab.label;
+					if (lab.rest) cur.parts.push({ role: "text", text: lab.rest });
+				}
+				continue;
+			}
+
+			if (!cur) { lead.push(p); continue; }
+			// A HEADING NAMES THE ITEM ONLY IF IT OPENS IT. Once the item has content of
+			// its own, a heading after it belongs to the NEXT section, not to this button:
+			// OSAH401-1.0's "[clickdrop answer] Online abuse and harassment (OAH) is…" is
+			// followed by "[H5] Task 2 Identifying online harassment", which is the next
+			// task's title — and reading it as the label put the wrong words on the button.
+			// Caught by eye on the built output, not by any gate.
+			if (p.role === "head" && !cur.label && String(p.text ?? "").trim()
+				&& !cur.parts.some((q) => this.#cdIsProse(q))) {
+				const lab = this.#cdLabel(p.text, cfg);
+				if (lab && !lab.rest) { cur.label = lab.label; continue; }
+			}
+			cur.parts.push(p);
+		}
+		// A TRAILING DELIMITER BELONGS TO THE NEXT BUNDLE. BLL266-2.0's capture ends
+		// "[clickdrop 1 text] Leaf Art / …prose… / [embed video] / [clickdrop 2 image and
+		// title]" — the last marker opens item 2, whose content is in the NEXT bundle.
+		// Before this round that marker was INVISIBLE (it matched no delimiter pattern),
+		// so the page built; reading its role must not now sink it. Only a LAST slot that
+		// is completely empty is dropped — an empty slot in the middle is a real
+		// half-build and still declines. Caught by the LOST check, not by inspection.
+		while (slots.length > 1) {
+			const last = slots[slots.length - 1];
+			if (last.label || last.parts.length) break;
+			for (const [k, v] of byNum) if (v === last) byNum.delete(k);
+			slots.pop();
+		}
+		if (!slots.length) return null;
+		const list = [];
+		for (const s of slots) {
+			if (!s.label) {
+				// the heading that OPENS it, else decline — a label is never invented, and
+				// a heading that arrives after the item's own content names the next
+				// section (the OSAH401 rule above).
+				const i = this.#cdOpeningHead(s.parts);
+				if (i < 0) return null;
+				const lab = this.#cdLabel(s.parts[i].text, cfg);
+				if (!lab) return null;
+				s.parts.splice(i, 1);
+				s.label = lab.label;
+				if (lab.rest) s.parts.splice(i, 0, { role: "text", text: lab.rest });
+			}
+			list.push({ label: s.label, parts: s.parts, notes: s.notes });
+		}
 		return { list, lead };
 	}
 
@@ -8407,6 +8711,14 @@ class InteractiveBuilder {
 			for (const r of grid) {
 				for (const c of r) {
 					if (!has(c) || !isSelfDelim(c)) continue;
+					// ROUND 291 — READ THE CELL BY ITS OWN INNER TAGS FIRST. OSOH501-2.0's
+					// writer marks each cell up completely — "[click drop][image] <url> /
+					// [H4] Don't share your device without permission / [body] **Why?** …" —
+					// so the heading inside it is the button and the rest is the panel. The
+					// round-283 reading ran the WHOLE cell through #cdLabel, which met a URL
+					// where it wanted a name and refused the table. `CDCELLTAGS_OFF`.
+					const byTag = this.#cdCellByTags(c, cfg, tpl);
+					if (byTag) { items.push(byTag); continue; }
 					const bare = this.#stripStructuralTags(this.#cellText(c).replace(cellDelimRe, " ")).trim();
 					const lab = this.#cdLabel(bare, cfg);
 					if (!lab || !lab.rest) return null;        // a button with nothing behind it
@@ -8482,6 +8794,60 @@ class InteractiveBuilder {
 			}
 		}
 		return items.length ? items : null;
+	}
+
+	/**
+	 * ROUND 291 — ONE ITEM from a SELF-DELIMITED CELL, read by the tags the writer put
+	 * INSIDE it (`CDCELLTAGS_OFF`). The cell is split on the extractor's own " / " line
+	 * separator and each line classified by its leading bracket:
+	 *
+	 *   [click drop] [image] <url>   the item's picture (a URL only — a bare marker is an
+	 *                                asset request and simply contributes nothing here)
+	 *   [H2]-[H6] <words>            the button's NAME
+	 *   [body] <prose>               the panel
+	 *
+	 * Returns null (so the round-283 whole-cell reading still runs) unless the cell gave
+	 * BOTH a name and something behind it — a label is never invented and a button with
+	 * nothing behind it is never shipped.
+	 */
+	static #cdCellByTags(cell, cfg, tpl) {
+		if (cfg.cell_inner_tags === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.CDCELLTAGS_OFF) return null;
+		const raw = String(cell ?? "");
+		if (!raw.trim()) return null;
+		const lines = this.#cdCellLines(this.#cellText(raw), cfg).split("\n").map((s) => s.trim()).filter(Boolean);
+		if (!lines.length) return null;
+		let label = null; const parts = [];
+		const urls = (raw.match(/https?:\/\/[^\s\]"<>)]+/g) ?? []).slice();
+		let ui = 0;
+		for (const ln of lines) {
+			const hm = ln.match(/^\[\s*h\s*([2-6])\s*\]\s*(.*)$/i);
+			if (hm) {
+				const t = String(hm[2] ?? "").replace(/\*\*/g, "").trim();
+				if (!t) continue;
+				if (!label) { const lab = this.#cdLabel(t, cfg); if (!lab || lab.rest) return null; label = lab.label; }
+				else parts.push({ role: "head", level: `h${hm[1]}`, text: t });
+				continue;
+			}
+			const im = ln.match(/^(?:\[[^\]]*\]\s*)*\[\s*(?:insert\s+)?image[^\]]*\]\s*(.*)$/i);
+			if (im) {
+				const url = urls[ui] && /image|istock|\.(?:jpe?g|png|gif|webp)/i.test(urls[ui]) ? urls[ui] : null;
+				if (url) { const fn = this.#accImageFilename(url, tpl, cfg); if (!fn) return null; ui++; parts.push({ role: "img", filename: fn }); }
+				const rest = String(im[1] ?? "").replace(/https?:\/\/\S+/g, " ").replace(/\s+/g, " ").trim();
+				if (rest) parts.push({ role: "text", text: rest });
+				continue;
+			}
+			const bm = ln.match(/^(?:\[[^\]]*\]\s*)*\[\s*(?:body|text|content)[^\]]*\]\s*(.*)$/i);
+			if (bm) { const t = String(bm[1] ?? "").trim(); if (t) parts.push({ role: "text", text: t }); continue; }
+			// a line that is nothing but the widget's own marker contributes nothing
+			if (/^(?:\[[^\]]*\]\s*)+$/.test(ln)) continue;
+			if (/^https?:\/\/\S+$/.test(ln)) continue;
+			if (this.#accHasBracketTag(ln)) return null;        // a tag this reading cannot place
+			parts.push({ role: "text", text: ln });
+		}
+		if (!label) return null;
+		if (!parts.some((p) => p.role === "text" && String(p.text ?? "").trim())) return null;
+		return { label, parts };
 	}
 
 	/**

@@ -1117,7 +1117,30 @@ class Config {
 	// RESULT flipCard 221 -> 269 of 484; NEW BUILDS 32 / LOST 1 (HPRE301-11.0, NAMED: 14
 	// cards pairing consecutive bullets as front/back become an honest box); 20 modules.
 	// Scoped ship: 19 regenerated (2 have no Claude dir), 31 pages / 0 added / 0 removed.
-	static AppVersion = "260618.60";
+	// ROUND 291 (260618.61): THE CLICK-AND-DROP — build every variation (the
+	// interactive-coverage chain, round 3 of 8). 528 of 690 were hand-off boxes, the
+	// largest count in the set. THE MEASUREMENT CORRECTED THE BRIEF THREE TIMES, and
+	// its #1-ranked change is the one NOT to make: the icon-tile form is not
+	// panel-less — every XDLS tile page in the gold ships one clickDropContent PER
+	// TILE (6/6, 4/4, 2/2 across 38 pages), so waiving the panel check would have
+	// shipped ~215 buttons that reveal nothing; the content sits in the NEXT bundle,
+	// which is a capture class, not a builder one. Its #4 (a repeated bare label
+	// opens an item) has no button face anywhere — a label is never invented. The
+	// nine reasons collapse to FIVE terminal causes, all in #clickDropItems, and the
+	// four the brief attributes to #clickDrop are the NARROW walk, non-terminal since
+	// round 283. SHIPPED: role words on a delimiter (CDROLEWORD_OFF, the biggest
+	// lever); a bare delimiter taking its name from the heading that OPENS the item —
+	// HPFUN901 gold-exact (CDHEADLABEL_OFF); a self-delimited table cell read by its
+	// own inner tags (CDCELLTAGS_OFF); a marker's sibling brackets each offered to the
+	// delimiter tests (CDMULTIBRACKET_OFF); clickDrop's own member vocabulary
+	// (CDMEMVOCAB_OFF). THE PROOF CAUGHT FOUR: a reversal-guarantee near-miss (a
+	// data-only vocabulary widening with no toggle, +3 builds with everything OFF);
+	// BLL260's six bold-lead titles read as prose; a trailing delimiter opening an
+	// item the bundle does not contain; and OSAH401 taking the NEXT section's heading
+	// as its button. RESULT clickDrop 162 -> 181 of 690; NEW BUILDS 18 / LOST 0 in
+	// every type; 15 modules. Scoped ship: 14 regenerated (SSOG105 has no Claude dir),
+	// 17 pages / 0 added / 0 removed.
+	static AppVersion = "260618.61";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
