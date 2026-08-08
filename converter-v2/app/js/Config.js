@@ -1276,7 +1276,10 @@ class Config {
 	// beneath a bubble (SBCASTROW_OFF, ENGR101 gold-exact), and a [video] cell whose only
 	// address is an iStock still image (SBVIDEOMISLABEL_OFF, OSOH501, exactly one decline
 	// matches corpus-wide). Every protected gate HELD or IMPROVED with no named movers.
-	static AppVersion = "260618.67";
+	// ROUND 297 (260618.68): CATALOGUE ROUND — the orphan [data marker] red note
+	// measured and written up (WHY_UNBUILT__orphan_dataMarker.md). NO converter,
+	// data or corpus change; this bump only dates the measurement.
+	static AppVersion = "260618.68";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

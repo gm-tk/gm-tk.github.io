@@ -1,5 +1,221 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 297, build 260618.68) — THE ORPHAN `[data marker]` NOTE: catalogued, not built (Chris — "catalogue every writer's tag that ends up producing this note, show the writer's own words, check what the human did with that TYPE of tag, and propose a fix from that evidence")
+
+**A CATALOGUE ROUND. NOTHING IN THE CONVERTER, THE DATA FILES OR THE CORPUS WAS CHANGED.**
+The deliverable is one document, `WHY_UNBUILT__orphan_dataMarker.md` at the project root,
+plus its row in `WHY_UNBUILT__INDEX.md`. **No regeneration (none requested, none needed —
+no engine or data edit); the round-296 gate baselines describe the corpus unchanged and
+HOLD BY CONSTRUCTION.** The only file touched under `app/` is `Config.js`'s `AppVersion`,
+so the work is dated and findable. The eight `WHY_UNBUILT__*` documents set the standard
+and every one of the build rounds that followed them was better for having the measurement
+done first; this is the same discipline applied to a single marker rather than an activity.
+
+**THE PLAIN-ENGLISH LEAD.** When the converter meets a marker that only makes sense inside
+a bigger activity — a `[front]` belongs to a flip card, a `[slide 2]` to a carousel — and
+finds it sitting in open prose, it renders the writer's words anyway and leaves a red note:
+*"Orphan sub-tag [data marker] outside an interactive."* It prints that note **399 times on
+146 pages across 78 modules**, and the note is useless as it stands, because **`data marker`
+is the program's internal name for EIGHTEEN different writer words** (`term`, `definition`,
+`label`, `caption`, `row`, `column`, `item`, `clue`, `word`, `hint text`, `feedback`,
+`across`, `down`, `incorrect`, `static`, `insert thumbnail`, `merge source`, `on click`).
+A developer is told `[data marker]` when the writer typed `[definition: a term used to
+compare two or more numbers`. **Recovering the writer's real word is the whole catalogue.**
+
+**It is the largest orphan class in the library** — 399 of 1,019 orphan flags of all kinds
+(`[tab n]` 177, `[shape n]` 155, `[correct]` 107, `[answer]` 73, `[slide n]` 35, tail 73).
+
+---
+
+### 1. THE HONEST ACCOUNTING, STATED FIRST (the round-294/295 discipline)
+
+| | flags | what it is |
+|---|--:|---|
+| **could be built** | **~150** | the program has the machinery and the human's own pages show the target |
+| **could only get a better note** | **~220** | the writer points at something outside the document — a numbered asset, a legacy course, an unrecorded audio file |
+| **nothing to do** | **~29** | one-off instructions to the design team, no two alike |
+
+---
+
+### 2. THE TWELVE FAMILIES — verified, and the kickoff's table corrected in four places
+
+Measured by **`outputs/_measure_orphan_datamarker.cjs`** (the r276/289/296 recorder pattern
+— it rewrites the ONE emit site so the SHIPPED converter reports its own verdict and the
+probe cannot drift from the code; patch count asserted per the r294 discipline), grouped by
+the NEW **`outputs/_orphan_dm_families.py`**.
+
+| # | the writer's tag | flags | mods | pages | text | split |
+|--:|---|--:|--:|--:|--:|--:|
+| 1 | `[definition: …]` | **108** | 21 | 50 | 103 | 50 |
+| 2 | `[Item N]` | **85** | 6 | 7 | 81 | 39 |
+| 3 | `[Merge item / source N]` | **58** | 9 | 17 | 47 | 1 |
+| 4 | `[Audiovisual item N]` | **56** | 9 | 19 | 22 | 0 |
+| 5 | `[caption N]` | 18 | 8 | 13 | 6 | 0 |
+| 6 | `[hover over …]` | 13 | 7 | 7 | 12 | 0 |
+| 7 | `[word]` | 9 | 2 | 3 | 8 | 0 |
+| 8 | `[embedded webpage]` | 6 | 2 | 5 | 6 | 0 |
+| 9 | `[Auto-feedback]` | 6 | 2 | 5 | 6 | 4 |
+| 10 | `[Insert thumbnail]` | 4 | 1 | 1 | 4 | 0 |
+| 11 | `[Label]` / `[tab label]` | 4 | 2 | 2 | 4 | 0 |
+| 12 | `[Incorrect]` | 3 | 1 | 1 | 0 | 0 |
+| — | one-off design instructions | 29 | 24 | 25 | 7 | 8 |
+| | **TOTAL** | **399** | **78** | **146** | **306** | **102** |
+
+Every column sums exactly. **Four families are 77% of the class.** The kickoff's table was
+right on eight families and out by a few on four (fam 4 52→**56**, fam 6 12→**13**, fam 1
+106→**108**, one-offs 36→**29**) — the differences are compound forms the kickoff filed as
+one-offs (`[Insert bookworm … + audiovisual item 15]`, `[insert merged item 1 HPO1091]`,
+`[Bold 'articulate' and add hover: …]`), now classified by a documented contains-pass.
+
+**THE COUNTING TRAP, HIT AND CORRECTED.** 102 records show "(no bracket)" and a first pass
+filed them as a family of their own. They are the **split-bracket** shape — the writer typed
+`[definition:` and the closing `]` landed in a separate red span, so the recorder sees an
+unterminated head (`how:"head"` 49, `"denumbered_head"` 35). **Group by the writer's TEXT
+HEAD, not the completed bracket**, or the biggest family is under-counted by half and a
+phantom one is invented. **Also: 8 of the 78 modules have no Claude output dir** (the r285
+ghost-directory trap), so **353 of the 399 reach the shipped corpus**, on 128 pages.
+
+---
+
+### 3. THE HEADLINE FINDING — for the biggest family the NOTE IS THE SMALLER PROBLEM
+
+`[definition: …]` is 108 flags across 21 modules and 50 pages, and it is not a hand-off box
+a developer can ignore. **The writer's sentence is being broken into three or four separate
+paragraphs with the red note wedged in the middle, and a word cut in half.** ENGR302 page
+1.0, as SHIPPED:
+
+```html
+<p>… whenever a character in a story holds a hierarchical</p>
+<p class="cv2-note" …>Red Flag: Orphan sub-tag [data marker] outside an interactive …</p>
+<p>rranged according to level of importance.</p>
+<p>position that places <i>them</i> at the top of the hierarchy and others below them. …</p>
+```
+
+The writer typed `[definition: Arranged according…` and Word coloured only the first
+character red. **Its gold is one sentence**: `holds a <span class="infoTrigger" info="Arranged
+according to level of importance.">hierarchical</span> position that places them…`.
+
+**The note is gate-excluded (`cv2-note`, r72) and therefore invisible to every measurement
+in §9 — which is exactly why this has survived so long.** On the page it is the most visible
+defect in the class.
+
+---
+
+### 4. THE CORRECTION WORTH CARRYING ELSEWHERE — the `✅` anchor mark is NOT in the extractor
+
+The writer marks the word a definition attaches to by HIGHLIGHTING it, and the `_parsed.txt`
+dumps render that highlight as `✅` — present on 121 of 156 sampled `[definition:` sites. It
+is a tempting anchor rule and **it does not survive**. Run the live extractor on ENGR302 and
+`block.text` comes back `…holds a hierarchical ` — **no `✅`, and the block carries no
+highlight channel at all** (keys: `kind,text,links,wtPage,list,listLevel`). Proven live this
+round. **`CLAUDE.md` §16's stale-`_parsed.txt` trap in its most inviting form.**
+
+The anchor is still derivable, **by POSITION**: measured over 1,998 gold spans the anchor is
+**one word 80.7%**, two 14.5%, three+ 4.8%, and it is **always adjacent to where the marker
+sat** (15 of 15 hand-checked across 8 modules). Round 201's `hoverStitch` already uses that
+exact rule. **Single-word anchors get 80.7% right; the phrase anchors are not derivable
+without adding a highlight channel to `DocxExtractor`, which is a separate change.**
+
+---
+
+### 5. WHAT THE HUMAN BUILT, PER FAMILY (the counts, not the impressions)
+
+- **definition → `infoTrigger`, universal.** **2,046 `class="infoTrigger"` in 269 modules**;
+  the definition always in an **`info=` attribute** (2,376 elements, zero `data-info`/`title`).
+  **All 21 modules in the family ship it; not one ships zero.** ENGR302 converted 17 of its
+  21 markers straight to spans, dropped 3, rewrote 1, and *added* 2 with no marker at all.
+- **`[Item N]` → a cross-reference into the Media List `Item No.` column.** The marker never
+  survives (0 literal in rendered gold; 7 files keep it as a provenance COMMENT). CEDT104
+  resolves **19/20 YouTube and 26/30 iStock ids**, ARFUN02 **41/43 iStock**. But **the number
+  never determines the container** — the same module turns items 80/81/82 into a carousel,
+  83/84/85 into a `<ul>` of audioTriggers and 45/46/47 into inline links inside a quiz hint;
+  the container comes from a NEIGHBOURING tag. And where body link and Media-List URL
+  disagree, **the human followed the body link**.
+- **`[Merge item]` → nothing, in the largest blocks.** **62 of ~78 markers produced an empty
+  `<div class="fundamentalsPanel" phase="N"></div>` or a bare `<p style="color: red">Designer
+  note: no content provided</p>`.** **Every named source course is ABSENT from this corpus**
+  (MXO301/302/313/323/331/333/341/414/432/442/443/521, HEO1005, HPO1091, HTO1101/1103) — the
+  references point OUTWARD to legacy D2L courses. There is no shared-asset mechanism in the
+  HTML at all; where a merge landed the human retyped it and provenance was destroyed.
+- **`[Audiovisual item N]` → an `audioButton`, but the name is not derivable.** 1,340
+  audioButtons in 90 modules; **`audioName` is a real value 96.0% of the time** and BLL270's
+  are `BLL270_2A_6` — module code, **activity code**, item number, and **the activity code is
+  nowhere in the marker**. BLL270's Media List has **`Item No.` blank on every row** and **42
+  Video / 21 Image / 1 Photo / ZERO Audio rows**. BLLR201 has 18 markers and ships **zero
+  audio of any kind**. What the human does consistently is leave a note — `Designer note:
+  Audio to come` ×8 in BLL270, `awaiting audio` ×4 in SSCI205.
+- **caption → `<p class="captionText">`.** **562 occurrences in 64 modules, 519 = 92.3% the
+  bare form**, and **70.5% sit on the line immediately after an `<img>`** as a sibling in the
+  same column. No `<figure>` anywhere in the corpus.
+- **`[Auto-feedback]` → nothing, and there is nowhere for it to go.** Across all 2,385 gold
+  files: `feedback="` **0**, `class="…feedback…"` **0**, `correctText`/`incorrectText` **0**,
+  any `*feedback*=` attribute **0**. Every one of the 546 occurrences of the word is body
+  prose. **The framework has no feedback slot.** Each writer feedback sentence was searched
+  for by hand — 7 of 7 absent from the gold.
+- **`[Incorrect]` → nothing, correctly.** `value="correct"` **3,440** times vs
+  `value="incorrect"` **45** (1.3%, vestigial): being wrong is the DEFAULT, so the marker
+  should emit nothing.
+- **`[Label]` → two modules, two different conventions**, no shared class anywhere.
+
+---
+
+### 6. THE RANKED PROPOSALS (in the document in full; summarised here)
+
+1. **The caption widening — 15 of 18 flags, 7 modules — DO FIRST.** Round 239's
+   `elements.caption_text` branch ALREADY sits at this exact orphan site; it declines only
+   because its pattern is one character too strict. Three sub-shapes account for all 18: a
+   numbered `[caption 1]` (5, SCFUN01), the caption words arriving as the NEXT item so
+   `blackAfter` is empty (6), and the words INSIDE the red span (4). The shipped pages
+   already put the words in the right place — only the class and the note are wrong.
+2. **The glossary definition — 108 flags — THE LARGEST LEVER.** A ROUTING question, not a
+   new rule: `hoverStitch`'s `render_stitch.head_words` **already lists "definition"**,
+   `split_bracket.def_black_tail` (r223) **already handles this exact split shape**, and
+   `caption_text` (r239) **is the precedent for the seam**. Fold families 6 and 7 in (+12).
+   **Three things the round must settle**, all named: the backward reach into `parts` for an
+   anchor already emitted (the r123/162/163 un-close move); an EXPLICIT statement that round
+   239's `definition` decline concerned markers INSIDE a widget bundle (247 spans) while
+   **every flag here is by definition outside one**, so it is not being overturned; and
+   single-word anchors only.
+3. **The three note families — 199 flags, 24 modules.** `[Item N]` + `[Merge item]` +
+   `[Audiovisual item N]`: **no build, one change** — route them to a `Designer/Developer To
+   Do:` note (the r219 scheme's existing `todo` kind) naming the writer's own word and
+   keeping their link and edit instructions verbatim. Close to what the human wrote by hand
+   in all three. **It also fixes a real leak**: BLLR201 currently ships
+   `<p>[Audiovisual item 1]</p>` — a raw writer tag visible on a live page.
+4. **The one-off mis-classification — ~15 flags.** `[Three tiles across the page]` matches a
+   `data marker` alias on the word "tile" and should be a `Writers Note:`. The r245
+   buried-marker guard is the shape.
+
+**DECLINED WITH THE MEASUREMENT, do not re-measure:** `[Auto-feedback]` (no slot exists),
+`[Merge item]` as a build (sources absent, human dropped 62 of 78), `[Audiovisual item N]`
+as a build (name needs an activity code that is not in the marker), `[Label]` (two
+conventions, four flags), `[Incorrect]` (correct to consume but it belongs with the 107
+`[correct]` + 73 `[answer]` orphans — a GATHERING class), `[Item N]` as a build (reachable in
+principle via round 292's Media-List resolution, but that is an asset-resolution class and
+should be measured with the rest of that work, not inside a `data marker` round).
+
+---
+
+### 7. GATES
+
+**No engine, data or corpus change → every protected gate HOLDS BY CONSTRUCTION at the round
+296 baselines** (skeleton SCAFFOLD 49.725% / ≥50 982 / ≥75 192 / ≥90 16 / RAW 34.074% @1940
+skipped 0 · clean 2056/2102 = 97.81% / leak 288,46 · cs 11213/185/590 · body 242 · tags
+9557/9557 · flipCard divergence 0). `Config.js AppVersion` is UI-only and not stamped into
+output. **The gates were NOT re-run and no gate coverage is implied.**
+
+**Tools added:** `outputs/_measure_orphan_datamarker.cjs` (already present from the r296
+session; verified, 16 shards, merge clean), `outputs/_orphan_dm_families.py` (NEW — the
+family grouping, with the split-bracket trap documented in the file header).
+
+**Follow-up recorded:** the same tool already holds **the other 620 orphan flags** with the
+writer's raw text for every one. `[correct]` (107 / 19 modules) and `[answer]` (73 / 32) are
+quiz parts that escaped their quiz, and `[shape n]` (155 / 56) and `[tab n]` (177 / 32) are
+widget parts that escaped their widget — **a catalogue would say so; a builder round would
+not help them.** Sibling catalogues are cheap now the pattern is set.
+
+---
+
 ## 2026-08-09 (round 296, build 260618.67) — THE SPEECH BUBBLE: build every variation (Chris — the interactive-coverage chain, round 8 of 8, **THE LAST**: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown ✅ → carousel ✅ → speechBubble ✅; **and a FULL CORPUS REGENERATION — Chris's own override of the §0a whole-type sweep, in his words "regenerate the full corpus once this session has finished implementing fixes for the unbuilt speechbubbles"**)
 
 **THE PLAIN-ENGLISH LEAD.** A speech bubble is a character saying something — usually a
