@@ -1387,7 +1387,22 @@ class InteractiveBuilder {
 			if (!m) continue;
 			const tag = m.type === "tag" ? m.parse?.primary?.tag : null;
 			// the widget's own invocation / closer — no content of its own (tabs' [tabs]).
-			if (tag && openerTags.includes(tag)) continue;
+			// ROUND 293 — UNLESS THE OPENER ITSELF REPEATS AND CARRIES THE LABEL. PHE1007-1.0
+			// writes "[Tabs – tab one] Skeletal muscle", "[Tabs – tab two] Smooth muscle", …
+			// so the pane name went out with the opener. The CALLER sets opener_label_pattern
+			// only once it has seen the shape repeat, so a lone "[Tabs]" can never become a
+			// pane; undefined for every other caller. env TABOPENERLABEL_OFF.
+			if (tag && openerTags.includes(tag)) {
+				if (delims?.opener_label_pattern
+					&& !(typeof process !== "undefined" && process.env && process.env.TABOPENERLABEL_OFF)) {
+					const ownOp = this.#cellText(String(m.text ?? "")).trim();
+					const labOp = this.#cellText(m.blackAfter ?? "").replace(/\*\*/g, "").trim();
+					if (labOp && new RegExp(delims.opener_label_pattern, "i").test(ownOp)) {
+						parts.push({ role: "panel", head: labOp });
+					}
+				}
+				continue;
+			}
 
 			// an image-ARRANGEMENT layout marker (round 242) — a note, never content
 			const layoutMk = this.#imageLayoutMarker(m, tpl);
@@ -1470,6 +1485,38 @@ class InteractiveBuilder {
 				if (fm) parts.push({ role: "face", face: /back|reverse|side\s*b/i.test(fm[1]) ? "back" : "front", text: "" });
 			}
 
+			// ROUND 293 — A PANE MARKER RIDING ON ANOTHER TAG. Writers put the marker in the
+			// SAME red span as the thing that opens the pane, so the span's PRIMARY tag is
+			// h3/h2/video and the delimiter test below — which only looks when the primary
+			// is already a delimiter tag — never saw it: "[Tab 1] [H3] Read about it"
+			// (XGF9006-6.0), "[Tab 1] [H2] Building the basics" (XGF9003-0.0), "[Tab 1 -
+			// Maori] [Video 1]" (CEDW101-0.0). Round 291's delimiter_multi_bracket
+			// transposed: every bracket of the span is offered to the pattern in turn. The
+			// marker opens the pane and the member is then handled EXACTLY as it would have
+			// been, so its own content becomes that pane's first content and nothing is
+			// displaced. A label inside the bracket names the pane; without one the pane is
+			// left head-less for the resolver's own first-sub-heading rule.
+			// Opt-in per caller (marker_bracket_pattern) — undefined everywhere else, so no
+			// other widget can move BY CONSTRUCTION. env TABMARKERBRACKET_OFF.
+			if (m.type === "tag" && delims?.marker_bracket_pattern && !delimTags.includes(tag)
+				&& !(typeof process !== "undefined" && process.env && process.env.TABMARKERBRACKET_OFF)) {
+				const mbRe = new RegExp(delims.marker_bracket_pattern, "i");
+				const denyRe = delims.marker_bracket_deny
+					? new RegExp(delims.marker_bracket_deny, "i") : null;
+				const brackets = String(m.text ?? "").match(/\[[^\]]*\]/g) ?? [];
+				for (const br of brackets) {
+					const bm = this.#cellText(br).trim().match(mbRe);
+					if (!bm) continue;
+					let lab = String((bm.groups ?? {}).label ?? "").replace(/\*\*/g, "").trim();
+					// A NAME IS NOT A TAG WORD: "[Tab 1 - H3]" names the heading LEVEL, not
+					// the tab (HPFUN301-0.0). Treated as label-less so the pane still takes
+					// its name from its own first sub-heading.
+					if (denyRe && lab && denyRe.test(lab)) lab = "";
+					parts.push({ role: "panel", head: lab });
+					break;                                     // one marker per span
+				}
+			}
+
 			if (tag && delimTags.includes(tag)) {
 				const own = this.#cellText(String(m.text ?? ""));
 				// ROUND 290 — A NUMBERED DELIMITER NAMING A SUB-ROLE. The two halves of one
@@ -1537,7 +1584,25 @@ class InteractiveBuilder {
 						continue;
 					}
 				}
-				const isDelim = !text && ownForms.some((f) => numbered.test(f) || ordinal.test(f));
+				let isDelim = !text && ownForms.some((f) => numbered.test(f) || ordinal.test(f));
+				// ROUND 293 — A LABEL INSIDE THE DELIMITER'S OWN BRACKET. CEDW101-0.0 writes
+				// "[Tab 5 - Fijian]" with the video on the next line; the numbered pattern
+				// requires the bracket to hold nothing but "tab N", so the marker was DROPPED
+				// and the Fijian video was swept into the Cook Islands pane — a silent
+				// content error, caught by comparing the built pane count against the gold.
+				// Only consulted when the member has NO trailing text of its own, so the
+				// existing "[Tab 1] Introduction" form is untouched. env TABMARKERBRACKET_OFF.
+				if (!text && !isDelim && delims?.marker_bracket_pattern
+					&& !(typeof process !== "undefined" && process.env && process.env.TABMARKERBRACKET_OFF)) {
+					const bm2 = own.trim().match(new RegExp(delims.marker_bracket_pattern, "i"));
+					if (bm2) {
+						let lab2 = String((bm2.groups ?? {}).label ?? "").replace(/\*\*/g, "").trim();
+						if (lab2 && delims.marker_bracket_deny
+							&& new RegExp(delims.marker_bracket_deny, "i").test(lab2)) lab2 = "";
+						if (lab2) { parts.push({ role: "panel", head: lab2 }); continue; }
+						isDelim = true;
+					}
+				}
 				// ROUND 283 — a DELIMITER TAG NAMING A SUB-ROLE. Some writers split one item
 				// across several tags of the same family, each naming a part of it:
 				// "[Insert ClickDrop 1] <title>" then "[Video for ClickDrop 1] <url>" then
@@ -5350,6 +5415,23 @@ class InteractiveBuilder {
 		const rich = tpl.rich_panes ?? {};
 		const notes = [];
 
+		// ROUND 293 — is this the PHE1007 shape, where the OPENER repeats carrying the
+		// label? Decided HERE, over the whole member list, so the walk can never turn a
+		// lone "[Tabs]" into a pane: the pattern is handed down only when at least
+		// min_panes openers match it AND each carries its own trailing text.
+		const opCfg = cfg.opener_label;
+		let openerLabelPattern = null;
+		if (opCfg && opCfg.enabled !== false && opCfg.pattern) {
+			const opRe = new RegExp(opCfg.pattern, "i");
+			const openerTagList = cfg.opener_tags ?? ["tabs"];
+			const hits = members.filter((m) => m && m.type === "tag"
+				&& openerTagList.includes(m.parse?.primary?.tag)
+				&& String(m.blackAfter ?? "").trim()
+				&& opRe.test(this.#cellText(String(m.text ?? "")).trim()));
+			if (hits.length >= (cfg.min_panes ?? 2)) openerLabelPattern = opCfg.pattern;
+		}
+		const mbCfg = cfg.marker_bracket;
+
 		// (1) every member → an ordered {role,…} part, through the SHARED round-278
 		//     vocabulary; [Tab N] is this widget's delimiter and [tabs] its opener.
 		const parts = this.#accMemberParts(members, {
@@ -5357,6 +5439,11 @@ class InteractiveBuilder {
 			delims: {
 				tags: cfg.delimiter_tags ?? ["tab n", "tab"],
 				opener_tags: cfg.opener_tags ?? ["tabs"],
+				// ROUND 293 — the two opt-in extensions (both undefined for every other
+				// caller, so the accordion / flipCard / clickDrop walks cannot move).
+				marker_bracket_pattern: (mbCfg && mbCfg.enabled !== false) ? mbCfg.pattern : undefined,
+					marker_bracket_deny: (mbCfg && mbCfg.enabled !== false) ? mbCfg.label_deny_pattern : undefined,
+				opener_label_pattern: openerLabelPattern ?? undefined,
 				panel_tag_pattern: cfg.pane_tag_pattern
 					?? "^\\[\\s*tab\\s*(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)?\\s*[:.]?\\s*\\]$",
 				panel_ordinal_pattern: cfg.pane_ordinal_pattern
@@ -5397,8 +5484,34 @@ class InteractiveBuilder {
 			navItems.push(Utils.FillTemplate(tpl.nav_item, { head: inline(head) }));
 			paneItems.push(Utils.FillTemplate(tpl.pane, { content }));
 		}
-		const html = (panes.titleHtml ?? "") + [tpl.open, tpl.nav_open, ...navItems, tpl.nav_close,
-			tpl.content_open, ...paneItems, tpl.content_close, tpl.close].join("\n");
+		// ROUND 293 — the writer's own lead / trailing content, rendered through the SAME
+		// pane renderer so a bullet run becomes a real <ul> (see #tabResolvePanes).
+		const renderAside = (list) => {
+			if (!list || !list.length) return "";
+			// consecutive text parts coalesce into ONE block, exactly as they do inside a
+			// pane (#tabPushPart), so a run of bullets becomes a single <ul> rather than
+			// one <ul> per line.
+			const merged = [];
+			for (const part of list) {
+				const last = merged[merged.length - 1];
+				if (part.p && last && last.p) { last.p += "\n" + part.p; continue; }
+				merged.push(part.p ? { p: part.p } : part);
+			}
+			const acc = [];
+			for (const part of merged) {
+				const got = this.#tabsRichPart(part, rich, run, renderBlock);
+				if (got === null) return null;
+				acc.push(...got);
+			}
+			return acc.join("");
+		};
+		const leadHtml = renderAside(panes.leadParts);
+		const tailHtml = renderAside(panes.tailParts);
+		if (leadHtml === null || tailHtml === null) return null;
+		const html = (leadHtml ?? "") + (panes.titleHtml ?? "")
+			+ [tpl.open, tpl.nav_open, ...navItems, tpl.nav_close,
+				tpl.content_open, ...paneItems, tpl.content_close, tpl.close].join("\n")
+			+ (tailHtml ? "\n" + tailHtml : "");
 		if (this.#accLeakGuard(html, cfg)) return null;           // a build must never ADD a leak
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
 		bundle.r281Tabs = true;                                   // detector / affected-set marker
@@ -5419,6 +5532,10 @@ class InteractiveBuilder {
 		// ---- D1: explicit [Tab N] delimiters -----------------------------------
 		if (parts.some((p) => p.role === "panel")) {
 			const panes = [];
+			const leadCfgD1 = cfg.lead_before_first_pane;
+			const leadOnD1 = leadCfgD1 && leadCfgD1.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.TABLEADIN_OFF);
+			const leadHtml = [];
 			let cur = null;
 			for (const p of parts) {
 				if (p.role === "panel") {
@@ -5429,23 +5546,74 @@ class InteractiveBuilder {
 					// content BEFORE the first [Tab N] is a lead-in, not pane content; only
 					// plain text may precede (anything richer means the walk swept a section in).
 					if (p.role === "text") continue;
+					// ROUND 293 — …and a HEADING may lead too, rendered above the widget in
+					// the writer's place rather than refusing it. XGF9006-6.0 opens "[H3]
+					// Presentation tips and tricks" before "[Tab 1] [H3] Read about it", and
+					// its gold ships exactly the three tabs beneath that heading. env
+					// TABLEADIN_OFF.
+					if (leadOnD1 && p.role === "head") {
+						const t = String(p.text ?? "").trim();
+						const lvl = /^h[1-6]$/.test(String(p.level)) ? p.level : "h4";
+						if (t && !/[\[\]]/.test(t)) leadHtml.push(`<${lvl}>${t}</${lvl}>`);
+						continue;
+					}
 					return null;
 				}
 				// a label-less pane takes its label from its own first sub-heading
 				if (p.role === "head" && !cur.head && !cur.parts.length) { cur.head = p.text; continue; }
 				if (!this.#tabPushPart(cur.parts, p, cfg, maxLabel)) return null;
 			}
-			return panes.every((p) => p.head && p.parts.length) ? panes : null;
+			if (!panes.every((p) => p.head && p.parts.length)) return null;
+			if (leadHtml.length) panes.titleHtml = leadHtml.join("\n") + "\n";
+			return panes;
 		}
 
 		// ---- D2/D3: a captured TABLE is the whole widget ------------------------
 		const tables = parts.filter((p) => p.role === "table");
 		if (tables.length === 1 && cfg.table_panes !== false) {
 			const others = substantive.filter((p) => p.role !== "table");
-			if (others.every((p) => p.role === "text")) {          // only a lead line may ride along
+			// ROUND 293 — CONTENT BEFORE THE TABLE IS THE WIDGET'S OWN LEAD, not a
+			// disqualifier. Round 281 demanded that every other part be plain text, so a
+			// single [H3] riding along refused the widget outright — and that, not the
+			// "Tab N:" prefix its brief ranks first, is what really blocks TEDC401-1.0, the
+			// brief's own headline example ([Tabs] → [H3] Permissions and files check-up →
+			// [Body] Choose an app… → the table). The rounds 283 (clickDrop) and 289
+			// (accordion) rule, which tabs never got: a HEADING or plain text may lead and
+			// is rendered above the tabs in the writer's place; anything richer still means
+			// the walk swept a section in. env TABLEADIN_OFF.
+			const leadCfg = cfg.lead_before_first_pane;
+			const leadOn = leadCfg && leadCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.TABLEADIN_OFF);
+			const allowed = leadOn ? ["text", "head"] : ["text"];
+			if (others.every((p) => allowed.includes(p.role))) {
 				const rows = (tables[0].item?.block?.rows ?? []).map((r) => (r ?? []).map((c) => String(typeof c === "string" ? c : (c?.text ?? ""))));
 				const panes = this.#tabTablePanes(rows, cfg, rich);
-				if (panes && panes.length >= (cfg.min_inferred_panes ?? 2)) return panes;
+				if (panes && panes.length >= (cfg.min_inferred_panes ?? 2)) {
+					// Whatever rode along with the table is rendered IN THE WRITER'S OWN
+					// PLACE — before the table it leads, after the table it trails. Both
+					// used to be dropped on the floor: PES1004-4.0's three [key points]
+					// bullets sit after the table, are in its gold, and were silently lost.
+					// An earlier cut put everything above the widget, which restored the
+					// words but in the wrong order — caught by diffing the page rather than
+					// counting builds.
+					if (leadOn && others.length) {
+						// Carried as PART LISTS, not strings, so #tabsPanes renders them through
+						// the same renderer the panes use: a run of "\u2022 \u2026" lines becomes a real
+						// <ul>, exactly as it does inside a pane (the round-241 clickDrop lesson),
+						// instead of three literal bullet paragraphs.
+						const toPart = (p) => p.role === "head"
+							? { html: `<${/^h[1-6]$/.test(String(p.level)) ? p.level : "h4"}>${String(p.text ?? "").trim()}</${/^h[1-6]$/.test(String(p.level)) ? p.level : "h4"}>` }
+							: { p: String(p.text ?? "").trim() };
+						const ok = (x) => (x.html ? !/>\s*<\//.test(x.html) : !!x.p)
+							&& !/[\[\]]/.test(x.html ?? x.p ?? "");
+						const ti = parts.indexOf(tables[0]);
+						const before = others.filter((p) => parts.indexOf(p) < ti).map(toPart).filter(ok);
+						const after = others.filter((p) => parts.indexOf(p) > ti).map(toPart).filter(ok);
+						if (before.length) panes.leadParts = before;
+						if (after.length) panes.tailParts = after;
+					}
+					return panes;
+				}
 			}
 		}
 
@@ -5521,8 +5689,26 @@ class InteractiveBuilder {
 	 */
 	static #tabTablePanes(rows, cfg, rich) {
 		const maxLabel = cfg.label_max_words ?? 6;
+		// ROUND 293 — A "Tab N:" PREFIX ON A LABEL CELL (the brief's #1-ranked change).
+		// The writer numbers the label so its order cannot be mistaken — "Tab 1: Step 1" —
+		// and the human ships "Step 1". MEASURED REACH: ONE activity, not the "8+ of 39"
+		// the brief claims; TEDC402's four are the cell_inner_tags shape. env TABPREFIX_OFF.
+		const lpCfg = cfg.label_prefix_strip;
+		const lpRe = (lpCfg && lpCfg.enabled !== false && lpCfg.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env.TABPREFIX_OFF))
+			? new RegExp(lpCfg.pattern, "i") : null;
 		const clean = (s) => this.#cellText(String(s ?? "")).replace(/\*\*/g, "").replace(/\s+/g, " ").trim()
 			.replace(/^[\/|]\s*/, "").replace(/\s*[\/|]$/, "").trim();
+		// LABELS ONLY. `clean` does double duty here — it reads both the label cells and
+		// the CONTENT cells — so stripping the prefix inside it would silently edit a
+		// pane's prose whenever a sentence happened to open "Tab 2 …". Every label read
+		// below goes through cleanLabel; every content read stays on clean.
+		const cleanLabel = (s) => {
+			const t = clean(s);
+			if (!lpRe) return t;
+			const m = t.match(lpRe);
+			return m ? String((m.groups ?? {}).label ?? t).trim() : t;
+		};
 		// A LABEL ROW MAY NOT BE **WHOLLY** RED. Red marks the writer's own structural
 		// spec, and a flipCard/clickDrop table is laid out as ENTIRELY-red [front]/[drop]
 		// marker rows over the card faces (OSAI201-3.0) — which the column reader would
@@ -5531,9 +5717,29 @@ class InteractiveBuilder {
 		// "🔴[Tab 1]🔴 Ari's story"), so the test is #isFullyRed per cell, not "any red".
 		// Both directions were caught by the tabs verifier — the blanket form silently
 		// cost OSSC401 and ENFUN05 their builds.
-		const rowIsRed = (r) => (r ?? []).some((c) => this.#isFullyRed(c));
 		// …and a real tab set has DISTINCT labels; repeats mean we read the wrong row.
-		const distinct = (hs) => new Set(hs.map((h) => h.toLowerCase())).size === hs.length;
+		const distinctOf = (hs) => new Set(hs.map((h) => String(h).toLowerCase())).size === hs.length;
+		// ROUND 293 — …BUT A WHOLLY-RED ROW MAY BE THE LABEL ROW ITSELF. TEDC401-1.0 writes
+		// its four labels entirely in red ("Tab 1: Step 1" … "Tab 4: Worked example") and
+		// its human developer shipped exactly those four tabs. The flipCard shape this
+		// guard exists to refuse is a row of REPEATED ROLE WORDS ([front]|[front]|…), so
+		// the two are separated by distinctness plus the role-word list: a red row whose
+		// cells reduce to distinct, short, non-role text is a label row. env TABMARKERROW_OFF.
+		const mrCfgEarly = cfg.marker_row;
+		const mrOn = mrCfgEarly && mrCfgEarly.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TABMARKERROW_OFF);
+		const roleWordSet = mrOn ? (mrCfgEarly.role_words ?? []).map((w) => String(w).toLowerCase()) : [];
+		const redRowIsLabels = (r) => {
+			if (!mrOn) return false;
+			const cells = (r ?? []).filter((c) => String(c ?? "").trim());
+			if (cells.length < (cfg.min_inferred_panes ?? 2)) return false;
+			if (!cells.every((c) => this.#isFullyRed(c))) return false;
+			const labs = cells.map((c) => cleanLabel(c));
+			return labs.every((t) => t && !roleWordSet.includes(t.toLowerCase())
+				&& !/[\[\]]/.test(t) && t.split(/\s+/).length <= maxLabel) && distinctOf(labs);
+		};
+		const rowIsRed = (r) => (r ?? []).some((c) => this.#isFullyRed(c)) && !redRowIsLabels(r);
+		const distinct = distinctOf;
 		const roleRe = new RegExp(cfg.role_column_pattern
 			?? "^\\[?\\s*(title|label|heading|image|images|link for image|link|video|body|text|caption)\\b[^\\]]*\\]?\\s*:?$", "i");
 		let titleHtml = "";
@@ -5556,8 +5762,99 @@ class InteractiveBuilder {
 			rows = rows.slice(1);
 		}
 		if (rows.length < 1) return null;
+
+		// ---- ROUND 293 — A WHOLLY-RED ROW IS A ROLE ROW OR THE LABEL ROW ------------
+		// Round 281 refused a wholly-red row outright, because a flipCard table is laid
+		// out as entirely-red [front]/[drop] marker rows over the card faces. OSAI201-3.0
+		// IS that shape — and its human developer built TABS from it, taking the four
+		// labels from the row BENEATH the "front" marker row. So a wholly-red row whose
+		// cells reduce to a ROLE WORD names the row beneath it, and the marker rows drop
+		// out; a wholly-red row that reduces to real distinct SHORT text is the label row
+		// itself (TEDC401-1.0's "Tab 1: Step 1", the brief's own model). Anything else
+		// still declines, so a genuine flipCard face table cannot become four tabs.
+		// GOLD: OSAI201 4/4 and TEDC401-1.0 4/4 exact. env TABMARKERROW_OFF.
+		const mrCfg = cfg.marker_row;
+		if (mrCfg && mrCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TABMARKERROW_OFF)) {
+			const roleWords = (mrCfg.role_words ?? []).map((w) => String(w).toLowerCase());
+			const isRoleRow = (r) => (r ?? []).length
+				&& (r ?? []).every((c) => !String(c ?? "").trim()
+					|| (this.#isFullyRed(c) && roleWords.includes(clean(c).toLowerCase())));
+			if (rows.some(isRoleRow)) {
+				const kept = rows.filter((r) => !isRoleRow(r));
+				// a role row must have named something: at least a label row + one content row
+				if (kept.length >= 2) rows = kept;
+			}
+		}
+
 		const nCols = (rows[0] ?? []).length;
 		if (rows.some((r) => r.length !== nCols)) return null;    // ragged → a richer form
+
+		// ---- ROUND 293 — A CELL CARRIES ITS OWN NAMING MARKER ----------------------
+		// The writer lays the whole set out as one table and tags each cell from the
+		// inside: "[Tab 1] Video / [insert video] …" (XMES103-3.0), "[H3] **File systems,
+		// folders and metadata**" over "[Body] …" (TEDC402-4.0). Round 291's T0 clickDrop
+		// reading transposed: the marker names the pane, the rest of the cell and the
+		// cells beneath are its content. A column that names NO pane and has nothing
+		// behind it is not a pane and is dropped (TEDC402's [RHS] avatar column, which
+		// its gold also omits); a column that names a pane but has nothing behind it
+		// declines the whole build, per never-half-build.
+		// GOLD: XMES103 2/2 and TEDC402 3/3 exact. env TABCELLTAGS_OFF.
+		const ciCfg = cfg.cell_inner_tags;
+		if (ciCfg && ciCfg.enabled !== false && nCols >= (cfg.min_inferred_panes ?? 2)
+			&& !(typeof process !== "undefined" && process.env && process.env.TABCELLTAGS_OFF)) {
+			const ciRe = new RegExp(ciCfg.label_pattern, "i");
+			const dropRoles = (ciCfg.drop_role_headers ?? []).map((w) => String(w).toLowerCase());
+			const headerOf = (c) => {
+				// the cell's FIRST line, with its own marker peeled off
+				const first = this.#cellText(String(c ?? "")).split(/\s*\/\s*|\n/)[0] ?? "";
+				const mm = first.replace(/\s+/g, " ").trim().match(ciRe);
+				if (!mm) return null;
+				return String((mm.groups ?? {}).label ?? "").replace(/\*\*/g, "").trim();
+			};
+			const isDropCol = (c) => {
+				const own = this.#cellText(String(c ?? "")).replace(/\s+/g, " ").trim();
+				const bm = own.match(/^\[\s*([^\]]+?)\s*\]/);
+				return !!bm && dropRoles.includes(bm[1].toLowerCase());
+			};
+			const marked = (rows[0] ?? []).map(headerOf);
+			if (marked.filter((x) => x).length >= (cfg.min_inferred_panes ?? 2)) {
+				const panes = [];
+				let bad = false;
+				for (let c = 0; c < nCols && !bad; c++) {
+					const head = marked[c];
+					const body = [];
+					// row 0 carried the NAME, so only what follows the marker on that line is
+					// its content; rows 1.. are content in full. (Written once — an earlier
+					// cut handled the one-row case twice and duplicated every pane's text.)
+					const restOfHead = head
+						? this.#cellText(String(rows[0][c] ?? "")).split(/\s*\/\s*|\n/).slice(1).join("\n")
+							.replace(/^\s*\[[^\]]*\]\s*/gm, "").replace(/\*\*/g, "").trim()
+						: "";
+					if (restOfHead) body.push(restOfHead);
+					for (let r = 1; r < rows.length; r++) {
+						// strip a leading structural marker ("[Body] …") from the content cell
+						const raw = this.#cellText(String(rows[r][c] ?? ""))
+							.replace(/^\s*\[[^\]]*\]\s*/, "").replace(/\*\*/g, "").trim();
+						if (raw) body.push(this.#tabSplitCell(raw));
+					}
+					const text = body.join("\n").trim();
+					if (!head) {
+						// no name: only droppable when the writer marked it as furniture AND
+						// it holds nothing — otherwise a real pane would be silently lost.
+						if (isDropCol(rows[0][c]) && !text) continue;
+						bad = true; break;
+					}
+					if (!text || /[\[\]]/.test(head) || /[\[\]]/.test(text)) { bad = true; break; }
+					if (head.split(/\s+/).length > maxLabel) { bad = true; break; }
+					panes.push({ head, parts: [{ p: text }] });
+				}
+				if (!bad && panes.length >= (cfg.min_inferred_panes ?? 2)
+					&& distinct(panes.map((p) => p.head))) {
+					panes.titleHtml = titleHtml; return panes;
+				}
+			}
+		}
 
 		// ---- ROLE-LABELLED first column (ENFUN01: [Title]/[Image]/[Link for image]) --
 		if (nCols >= 3 && rows.length >= 2 && rows.every((r) => roleRe.test(clean(r[0])))) {
@@ -5568,7 +5865,7 @@ class InteractiveBuilder {
 			if (rows.some((r) => r.slice(1).some((c) => this.#isFullyRed(c)))) return null;
 			const panes = [];
 			for (let c = 1; c < nCols; c++) {
-				const head = clean(rows[ti][c]);
+				const head = cleanLabel(rows[ti][c]);
 				if (!head || head.split(/\s+/).length > maxLabel) return null;
 				const parts = [];
 				for (let r = 0; r < rows.length; r++) {
@@ -5597,7 +5894,7 @@ class InteractiveBuilder {
 
 		// ---- COLUMN-major: row 0 = the labels, rows 1.. = each column's body --------
 		if (nCols >= 2 && rows.length >= 2 && !rows.some(rowIsRed)) {
-			const heads = rows[0].map(clean);
+			const heads = rows[0].map(cleanLabel);
 			if (distinct(heads) && heads.every((h) => h && !/[\[\]]/.test(h) && !/https?:\/\//.test(h)
 				&& h.split(/\s+/).length <= maxLabel)) {
 				const panes = [];
@@ -5620,7 +5917,7 @@ class InteractiveBuilder {
 		if (nCols === 2 && rows.length >= (cfg.min_inferred_panes ?? 2) && !rows.some(rowIsRed)) {
 			const panes = [];
 			for (const r of rows) {
-				const head = clean(r[0]), body = clean(r[1]);
+				const head = cleanLabel(r[0]), body = clean(r[1]);
 				if (!head || !body) { panes.length = 0; break; }
 				if (/[\[\]]/.test(head) || /[\[\]]/.test(body)) { panes.length = 0; break; }
 				if (head.split(/\s+/).length > maxLabel) { panes.length = 0; break; }

@@ -1421,7 +1421,40 @@
 		"tabs": {
 			"general_panes": {
 				"enabled": true,
-				"_note": "ROUND 281 — the general PANE composer, tried LAST so all 17 pre-round builds are byte-identical by construction, and deliberately NOT registry-gated: neutralising every gold-choice gate moves tabs 17 -> 18, so the registry was never the blocker (Chris's r246 A1 ruling settles the anti-rows). Panes resolve from an ordered delimiter vocabulary: D1 [Tab N] tags; D2 a table read COLUMN-major (header row = labels, plus a role-labelled first column, and a peeled leading single-cell TITLE row); D3 a table read ROW-major or a one-row table one pane per CELL; D4 a repeating same-level heading run. GOLD-BACKED: min_panes 2 because a ONE-pane tab group does not exist in the gold (0 of 319); a label is <=3 words 92.3% / <=6 99.2%, so the cap stays 6; labels ship PLAIN (99.0%). Guards: a wholly-red label row, duplicate labels, an orphan leading '/'. Env TABPANES_OFF."
+				"_note": "ROUND 281 — the general PANE composer, tried LAST so all 17 pre-round builds are byte-identical by construction, and deliberately NOT registry-gated: neutralising every gold-choice gate moves tabs 17 -> 18, so the registry was never the blocker (Chris's r246 A1 ruling settles the anti-rows). Panes resolve from an ordered delimiter vocabulary: D1 [Tab N] tags; D2 a table read COLUMN-major (header row = labels, plus a role-labelled first column, and a peeled leading single-cell TITLE row); D3 a table read ROW-major or a one-row table one pane per CELL; D4 a repeating same-level heading run. GOLD-BACKED: min_panes 2 because a ONE-pane tab group does not exist in the gold (0 of 319); a label is <=3 words 92.3% / <=6 99.2%, so the cap stays 6; labels ship PLAIN (99.0%). Guards: a wholly-red label row, duplicate labels, an orphan leading '/'. Env TABPANES_OFF.",
+				"_note_r293": "ROUND 293 measured the 79 declines against the SHIPPED dispatch and found the seven brief reasons collapse to THREE terminal causes, all in #tabsPanes — the brief's reasons B and F name #tabsRich, whose refusal has fallen through since round 281 and decides nothing. Gold re-measured over 317 body groups / 141 modules: labels <=6 words 99.15%, <=7 100%, PLAIN 1055/1055; a pane holds a picture 47% of the time and a video 14%; ZERO one-pane groups. The five rules below are each gold-verified on a page whose human build ships the same labels.",
+				"marker_bracket": {
+					"enabled": true,
+					"_note": "R293 FIX 1 — A [Tab N] BRACKET RIDING ON ANOTHER TAG. Writers put the pane marker in the SAME red span as the thing that opens the pane: '[Tab 1] [H3] Read about it' (XGF9006-6.0), '[Tab 1] [H2] Building the basics' (XGF9003-0.0), '[Tab 1 - Maori] [Video 1]' (CEDW101-0.0). The span's PRIMARY tag is then h3/h2/video, so the delimiter test — which only looks when the primary is already 'tab n' — never saw it. This is round 291's delimiter_multi_bracket transposed: every bracket of the span is offered to the pattern in turn. GOLD: XGF9006 3/3 and XGF9003 3/3 exact, CEDW101 5 of its 6. The member's own content then becomes that pane's first content, so nothing is displaced.",
+					"pattern": "^\\[\\s*tab\\s*(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\b\\s*(?:[-–:]\\s*(?<label>[^\\]]+?))?\\s*\\]$",
+					"label_deny_pattern": "^(?:h[1-6]|heading|body|text|image|images|video|audio|link|title|caption|rhs|lhs)$",
+					"_note_deny": "A NAME IS NOT A TAG WORD. HPFUN301-0.0 writes '[Tab 1 - H3] How to stay confident' — the 'H3' is the writer telling the designer the HEADING LEVEL to use, not the tab's name, and reading it as the label shipped three tabs all called 'H3' over a build that was already correct. Caught by hashing every page of every tabs module in both toggle states (the round-292 byte-level check), not by the build census, which saw no change in the COUNT. When the captured label is a structural tag word the marker is treated as having no label, and the pane takes its name from its own first sub-heading exactly as before."
+				},
+				"cell_inner_tags": {
+					"enabled": true,
+					"_note": "R293 FIX 2 — A TABLE CELL CARRIES ITS OWN NAMING MARKER. The writer lays the whole set out as one table and tags each cell from the inside: '[Tab 1] Video / [insert video] …' (XMES103-3.0), '[H3] **File systems, folders and metadata**' over '[Body] …' (TEDC402-4.0), '[tab title: Level 1] …' (TEDC401-4.0). Round 291's T0 clickDrop reading transposed. GOLD: XMES103 2/2 and TEDC402 3/3 exact. A column whose header cell names no pane AND whose content cells are empty is not a pane and is dropped (TEDC402's [RHS] avatar column, which its gold also omits); a column that names a pane but has nothing behind it declines the whole build, per never-half-build.",
+					"label_pattern": "^\\[\\s*(?:tab\\s*(?:title)?\\s*(?:\\d+|one|two|three|four|five|six)?\\s*[:\\-–]?|h[1-6])\\s*\\]\\s*(?<label>.+)$",
+					"drop_role_headers": ["rhs", "lhs", "image", "images", "avatar", "video"]
+				},
+				"marker_row": {
+					"enabled": true,
+					"_note": "R293 FIX 3 — A WHOLLY-RED ROW IS EITHER A ROLE ROW OR THE LABEL ROW. Round 281 rightly refused a wholly-red row, because a flipCard table is laid out as entirely-red [front]/[drop] rows over the card faces — but OSAI201-3.0 IS that shape and its human developer built TABS from it, taking the four labels from the row BENEATH the 'front' marker row. So: a wholly-red row whose cells reduce to a ROLE WORD names the row beneath it (label row, then content rows); a wholly-red row whose cells reduce to real, distinct, short TEXT is the label row itself (TEDC401-1.0's 'Tab 1: Step 1'). Anything else still declines. GOLD: OSAI201 4/4 and TEDC401-1.0 4/4 exact.",
+					"role_words": ["front", "back", "drop", "label", "title", "heading", "body", "content", "text", "image", "images", "answer"]
+				},
+				"label_prefix_strip": {
+					"enabled": true,
+					"_note": "R293 FIX 4 — THE 'Tab N' PREFIX ON A LABEL CELL (the brief's #1-ranked change). The writer numbers the label so its order cannot be mistaken — 'Tab 1: Step 1' — and the human ships 'Step 1'. MEASURED REACH ON THE DECLINES: ONE activity, not the '8+ of 39, half of them in two modules' the brief claims; TEDC402's four are the cell_inner_tags shape above. The separator is OPTIONAL because the writer often leaves it out: OSSC401-3.0 writes a red '[Tab 1]' marker then black 'Ari's story', which the round-281 reading concatenated into the label 'Tab 1 Ari's story' while its gold ships 'Ari's story'. That is an EXISTING build corrected toward the gold, 4/4, and it is named in the round's changelog rather than hidden. A bare 'Tab 1' with nothing after it never matches, so a label cannot be emptied.",
+					"pattern": "^(?:tab|side\\s*tab)\\s*(?:\\d+|one|two|three|four|five|six)\\s*(?:[:\\-–]\\s*|\\s+)(?<label>.+)$"
+				},
+				"opener_label": {
+					"enabled": true,
+					"_note": "R293 FIX 5 — THE OPENER REPEATS AND CARRIES THE LABEL. PHE1007-1.0 writes '[Tabs – tab one] Skeletal muscle', '[Tabs – tab two] Smooth muscle', '[Tabs – tab three] Cardiac muscle'. The opener tag is skipped as carrying no content of its own, so the label went with it. When the OPENER tag repeats with an ordinal or number in its bracket AND its own trailing text, each occurrence opens a pane named by that text. GOLD: PHE1007 3/3 exact.",
+					"pattern": "^\\[\\s*(?:side\\s+)?tabs?\\b[^\\]]*\\b(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\s*\\]$"
+				},
+				"lead_before_first_pane": {
+					"enabled": true,
+					"_note": "R293 FIX 6 — CONTENT BEFORE THE FIRST DELIMITER IS THE WIDGET'S OWN LEAD, rendered above the tabs in the writer's place rather than disqualifying the whole reading. The rounds 283 (clickDrop) and 289 (accordion) rule, which tabs never got: the table reading demanded that EVERY other part be plain text, so a single [H3] riding along with the table refused the widget outright — which is what really blocks TEDC401-1.0, the brief's own headline example, before its 'Tab N:' prefix is ever reached. Only a heading or plain text may lead; anything richer still means the walk swept a section in."
+				}
 			},
 			"_comment": [
 				"tabs — a strip of clickable tab headings, each revealing its own content pane.",

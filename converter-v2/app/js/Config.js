@@ -1166,7 +1166,33 @@ class Config {
 	// run (Mode-P images ship twice, once in a comment, so every trigger counted double).
 	// RESULT modal 161 -> 195 of 380; NEW BUILDS 34 / LOST 0 in every type; 9 modules.
 	// Scoped ship: 9 regenerated, 10 pages / 0 added / 0 removed.
-	static AppVersion = "260618.62";
+	// ROUND 293 (260618.63): TABS — build every variation (the interactive-coverage
+	// chain, round 5 of 8). 79 of 113 were hand-off boxes: the smallest population and
+	// the worst covered. THE BRIEF'S SEVEN REASONS COLLAPSE TO THREE TERMINAL CAUSES,
+	// ALL IN #tabsPanes — and its reasons B and F (17 activities) name #tabsRich, whose
+	// refusal has FALLEN THROUGH since round 281 and decides nothing. Round 292's rule
+	// held exactly: a brief is trustworthy about reasons when its composer is last in
+	// the dispatch, and tabs has six readings. Its RANKING is upside down again: its
+	// #1-ranked "strip a Tab N: prefix from a table header cell", claimed at "8+ of 39,
+	// half of them in two modules", reaches EXACTLY ONE activity — and that one is
+	// blocked by two other things first. Its #5 ("allow [image] inside a pane", claimed
+	// 12) has reach ZERO: [image] blocks nothing, the appear-vs-block artefact for the
+	// fourth round running. SHIPPED, all gold-verified on a page whose human build ships
+	// the same labels: a [Tab N] bracket riding on ANOTHER tag (TABMARKERBRACKET_OFF —
+	// XGF9006 3/3 and XGF9003 3/3); a wholly-red row read as a ROLE row or as the LABEL
+	// row (TABMARKERROW_OFF — OSAI201 4/4, TEDC401 4/4); content before the table read
+	// as the widget's own LEAD, and after it as its TAIL (TABLEADIN_OFF — the rounds
+	// 283/289 rule tabs never got, and the real blocker behind the brief's own headline
+	// example); the Tab N prefix (TABPREFIX_OFF); the opener repeating with the label
+	// (TABOPENERLABEL_OFF — PHE1007 3/3); a cell's own naming marker (TABCELLTAGS_OFF —
+	// runs on 7 activities, builds 0, proven inert). RESULT tabs 34 -> 38 of 113; NEW
+	// BUILDS 4 / LOST 0 in every type. THREE BUGS THE PROOF CAUGHT: "[Tab 1 - H3]" read
+	// as a label, shipping three tabs called "H3" over a build that was already right;
+	// the prefix strip editing pane PROSE as well as labels; and PES1004's restored key
+	// points landing above the tabs instead of after them. Scoped ship: 6 regenerated,
+	// 9 pages / 0 added / 0 removed — of which 3 are ROUNDS 289/290's pending work,
+	// proven by toggle, a real under-scope by those rounds' sampled hash proofs.
+	static AppVersion = "260618.63";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

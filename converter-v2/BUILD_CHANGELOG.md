@@ -1,5 +1,292 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-08 (round 293, build 260618.63) — TABS: build every variation (Chris — the interactive-coverage chain, round 5 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown → carousel → speechBubble; **SCOPED regeneration of the 6 affected modules, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289/290/291/292 state except for the 9 pages named below**)
+
+**THE PLAIN-ENGLISH LEAD.** Tabs are a row of clickable headings with a panel behind
+each. 79 of the 113 the writers tagged were hand-off boxes — the smallest population in
+the set and the worst covered, fewer than a third building. **They now build 38 of 113,
+up from 34, with nothing lost in any other widget type.** The count is the least
+interesting thing about the round. **Round 292's rule — that a brief's stated reasons are
+trustworthy exactly when its widget's composer is last in the dispatch — predicted this
+round precisely, and tabs is the case where it does not hold**: six readings, five of
+which have fallen through to a general composer since round 281, so the brief's technical
+notes point at code that decides nothing. Its ranking is upside down for the fourth round
+running, its top-ranked change reaches **one** activity, and its fifth reaches **zero**.
+Against that, five separate rules landed on the human developer's own labels exactly.
+
+---
+
+### 1. THE SEVEN REASONS ARE THREE — and two of the brief's name dead code
+
+`WHY_UNBUILT__tabs.md` gives seven reasons. Replaying the SHIPPED dispatch over all 454
+modules (`outputs/_measure_r293_tabs.cjs`, 24 shards, 113 bundles captured / 34 built /
+79 declined — reconciling the brief's totals exactly) and keying on the LAST trace entry,
+the only one that decided anything:
+
+| Terminal cause | Activities | Modules |
+|---|--:|--:|
+| `#tabsPanes` — nothing resolved two panes | **65** | 45 |
+| `#tabsPanes` — a member the shared walk cannot place | **12** | 8 |
+| `#tabsPanes` — a label past six words | **2** | 2 |
+
+**Not one decline is terminal anywhere else.** The brief's reason B (15 activities) and
+reason F (2) both cite `#tabsRich`, and round 281 made its refusal fall through to
+`#tabsPanes`; those line numbers have not decided anything for twelve rounds. Reason B
+is separately the round-281 finding restated — neutralising every gold-choice registry
+gate moves tabs 17 → 18 — and re-running that probe on the current tree confirms it
+still holds. **A round aimed at the registry would have been chasing a phantom.**
+
+### 2. THE RANKING IS UPSIDE DOWN, AND ITS #5 HAS REACH ZERO
+
+**#1, "strip a `Tab N:` prefix from a table header cell", claimed at "8+ of 39, half of
+them in two modules": ONE activity.** TEDC401-1.0 is the only decline whose table header
+carries that prefix; TEDC402's four are a different shape entirely. And that one activity
+is blocked by **two other things first** — a `[H3]` heading riding along with the table
+disqualified the whole table reading before the prefix was ever reached, and the header
+row is wholly red, which round 281 refuses outright. Three blockers stacked, for a reach
+of one.
+
+**#5, "allow `[image]` and other ordinary items inside a pane", claimed at 12: ZERO.**
+The brief says "`[image]` is the blocker in 8 of the 12". Replaying the walk gives the
+true first blocker on all twelve: `embed` 2, `speech bubble` 2, `correct` 2, then
+`format`, `shape n`, `drop`, `accordion`, `flip card`, `data marker` — one each.
+**`[image]` blocks nothing.** Every one of the twelve is another widget's marker swept in
+by the capture: a gathering class, exactly as rounds 289 and 292 found for their widgets.
+This is the appear-vs-block artefact for the fourth round running.
+
+**#4, "marry a leading strip of tab names to the sections that follow", ranked moderate:
+not a builder change at all.** CEDO301, CEDW101, CEDW201, CEDR203 and CEDT208 declare
+five `[Tab N]` names and then stop — the bundle contains the names and nothing else, so
+the panes have labels and no content. The material is in the next capture. It is the
+round-291 XDLS finding in another costume, and its gold agrees: **CEDT208 and XGF9002
+have no tab markup anywhere in their human builds.**
+
+### 3. WHAT SHIPPED — re-ranked by measured reach, every rule gold-checked first
+
+The gold was re-measured before any code (`outputs/_measure_r293_tabgold.py`, body-scoped
+— the module MENU is a tabs widget too and lives in `#header`): **317 body tab groups /
+244 pages / 141 modules**; labels **≤6 words 99.15%, ≤7 100%, PLAIN 1055/1055**; **ZERO
+one-pane groups**, so `min_panes` 2 stands; a pane holds a picture 47% of the time and a
+video 14%, so the vocabulary was never the problem.
+
+**`TABMARKERBRACKET_OFF` — a `[Tab N]` bracket riding on ANOTHER tag.** Writers put the
+marker in the same red span as the thing that opens the pane: `[Tab 1] [H3] Read about
+it` (XGF9006-6.0), `[Tab 1] [H2] Building the basics` (XGF9003-0.0), `[Tab 1 - Maori]
+[Video 1]` (CEDW101-0.0). The span's primary tag is then h3/h2/video, and the delimiter
+test only looks when the primary is already `tab n`, so it never saw them. Round 291's
+`delimiter_multi_bracket` transposed. **GOLD: XGF9006 3/3 and XGF9003 3/3 exact.**
+
+**`TABMARKERROW_OFF` — a wholly-red row is a ROLE row or the LABEL row.** Round 281
+refuses a wholly-red row because a flipCard table is laid out as entirely-red
+`[front]`/`[drop]` rows over the card faces — and **OSAI201-3.0 IS that shape, yet its
+human developer built TABS from it**, taking the four labels from the row BENEATH the
+`front` marker. So a red row reducing to a ROLE WORD names the row beneath it and drops
+out; a red row reducing to distinct, short, non-role text is the label row itself. The
+flipCard shape stays refused because its cells REPEAT a role word. **GOLD: OSAI201 4/4
+and TEDC401-1.0 4/4 exact**, and the r281 flipCard canaries OSSC401 and ENFUN05 still
+build.
+
+**`TABLEADIN_OFF` — content around the table is the writer's own lead and tail.** Round
+281 demanded that every non-table part be plain text, so one `[H3]` refused the widget.
+This is the rounds 283 (clickDrop) and 289 (accordion) rule, which tabs never got: a
+heading or prose BEFORE the table leads, AFTER it trails, and both render in the writer's
+own place through the same renderer the panes use — so a run of bullets becomes a real
+`<ul>`. **It also recovers content that was being silently dropped**: PES1004-4.0's three
+`[key points]` bullets are in its gold and were going nowhere at all.
+
+**`TABPREFIX_OFF` — the `Tab N` prefix.** The brief's #1, reach one on the declines — but
+it also corrects an EXISTING build: OSSC401-3.0 was shipping `Tab 1 Ari's story` where
+its gold ships `Ari's story`, 4/4. The separator is optional because the writer often
+leaves it out.
+
+**`TABOPENERLABEL_OFF` — the opener repeats and carries the label.** PHE1007-1.0 writes
+`[Tabs – tab one] Skeletal muscle`, `[Tabs – tab two] Smooth muscle`, … and the name went
+out with the opener, which is skipped as carrying no content. The caller only hands the
+pattern down once it has seen the shape repeat, so a lone `[Tabs]` can never become a
+pane. **GOLD: PHE1007 3/3 exact.**
+
+**`TABCELLTAGS_OFF` — a cell's own naming marker, and it is REPORTED AS REACH ZERO.**
+XMES103-3.0 writes `[Tab 1] Video` inside the cell, TEDC402-4.0 `[H3] **File systems…**`
+over `[Body] …` — round 291's T0 clickDrop reading transposed, and both golds match it
+(2/2 and 3/3). **It fires on 7 activities and builds none of them**, because each is
+stopped by something else: a `[hover definition:` marker mid-cell (the round-289 deferred
+class), an `[insert video]` needing the full member machinery, or a foreign tag. It is
+shipped **proven byte-inert** — setting its toggle alone reverts nothing across all 64
+tabs modules — so it carries no risk and is exercised the moment its blockers clear.
+Saying it did work would be false.
+
+### 4. THREE BUGS THE PROOF CAUGHT BEFORE THEY SHIPPED
+
+* **`[Tab 1 - H3]` is not a label.** HPFUN301-0.0 writes `[Tab 1 - H3] How to stay
+  confident` — the `H3` tells the designer the HEADING LEVEL. Read as the name it shipped
+  **three tabs all called "H3"** over a build that was already correct and matched its
+  gold. **The build CENSUS could not see this — the count did not change** — it was
+  caught by hashing every page of every tabs module in both toggle states, the check
+  round 292 added for exactly this. A captured label that is a structural tag word is now
+  treated as no label.
+* **The prefix strip was editing pane PROSE.** `clean()` in the table reader does double
+  duty for labels and content, so a sentence opening "Tab 2 …" would have been quietly
+  truncated. Split into `clean` and `cleanLabel`; four label reads switched.
+* **PES1004's restored key points landed in the wrong place** — above the tabs, when the
+  writer put them after the table. Caught by diffing the page rather than counting
+  builds; lead and tail are now split at the table's own position.
+
+**And two of my own checks were wrong before any code was** (the round-291/292 finding,
+holding for a third round): the assert probe read `run.pages[].html` instead of
+`run.outputs`, reporting 6/6 FAIL against a correct builder; and an assertion used a
+straight apostrophe where the writer typed a curly one. A `--show` leg printing the built
+markup is what separated "the builder is wrong" from "the check is wrong" in both cases.
+
+### 5. THE PROOF
+
+* Toggles-OFF census **reproduces round 292 exactly** — 7602 captured / **2419 built /
+  31.8%**, tabs 34, and all 32 types identical. ON gives **2423 = 31.9%**, tabs **38**.
+  Re-run in full after every builder edit; every shard's mtime checked against the newest
+  engine and data file before each merge.
+* **NEW BUILDS 4 / LOST 0 in every type**, proven index-independently by
+  per-(module,page,type) build counts.
+* **THE AFFECTED SET DERIVED FROM BYTES, NOT BUILDS.** Three changes sit in the shared
+  member walk and the table reader, which also run for bundles that already build.
+  Hashing every page of **all 64 modules that have a tabs bundle** in each state: **431
+  pages compared, exactly 6 changed, 0 added, 0 removed, 6 modules** — two of them
+  (OSSC401, PES1004) invisible to the census, which found only 4.
+* **Byte identity, ONE TOGGLE STATE PER PROCESS** (the round-246 trap): **6 out-of-class
+  canaries — BLL210, OSAH501, TRR203, ENGS302, CEDW501, MXFL301, 41 pages — identical in
+  BOTH states**.
+* **Per-toggle decomposition**, each alone: LEADIN 3 pages (PES1004, TEDC401, XGF9006) ·
+  MARKERROW 2 (OSAI201, TEDC401) · PREFIX 2 (OSSC401, TEDC401) · MARKERBRACKET 1
+  (XGF9006) · OPENERLABEL 1 (PHE1007) · **CELLTAGS 0 — reported, not hidden**.
+* **The leak guard proven over all 6 affected modules — 126 leaks in BOTH states,
+  PER-MODULE IDENTICAL.**
+* **A quality scan of every label and pane** (`outputs/_probe_r293_quality.cjs`, run in
+  BOTH states — round 290's and 291's flags were all pre-existing): **ON 25 labels / 25
+  panes, 0 flagged; OFF 4 flagged**, and the four are exactly the OSSC401 prefix defect
+  this round removes.
+* **The tabs verifier over all 6: 50 tab-texts — exact 48, copy-edit 2, defect 0,
+  divergence 0 ✓.** Every built tab matches a human tab.
+* **9 named build assertions ALL PASS**, including three NEGATIVE ones that pin decisions
+  the measurement forced: CEDW101 must NOT build (its sixth tab has no video and shipping
+  five would silently lose the Tongan row), XGF9003 must NOT build (a `[format]` marker),
+  ENGJ301 must NOT build (**its human invented "Character 1…4"; a label is never
+  invented**).
+* tags **9557/9557 REAL 0**; entry-parity **PASS**; index-sync **33/28**; §9 protected
+  flipCard gate **divergence 0 ✓**; **all NINE widget selftests GREEN**.
+* **The tabs verifier's selftest probe was reviewed as the kickoff asked.** It still uses
+  the mangled-gold form rather than an injected build, and that is still correct here:
+  its protected criterion is "every built tab matches a human tab", mangling the gold
+  drives the defect signal 10 → 24, so the detection channel genuinely fires. No change.
+
+### 6. GATES — held-or-improved, with both movers named and decomposed page by page
+
+Scoped ship #5 since round 288 (backstop every 8, hard stop 16 — **a full `ship.sh` is
+not yet due**, 3 of headroom). Containment perfect (6 changed ⊆ 6 regenerated); **every
+affected module has a Claude dir**; content-hash **0-stale** (6 regenerated, 407 untouched
+byte-identical, the mtime false alarm defeated); completeness spot-check **12/12
+byte-identical, run IN MEMORY** (`_spotcheck_inmemory.cjs` — regenerating the sample would
+have written earlier rounds' pending work into the corpus, the round-273 trap).
+
+| Gate | r292 | r293 | Verdict |
+|---|---|---|---|
+| skeleton pages ≥50% | 982 | **982** | EXACT |
+| skeleton pages ≥75% | 193 | **193** | EXACT |
+| skeleton SCAFFOLD mean | 49.74% | 49.72% | −0.02pp — NAMED, below |
+| compare_structure exact / EXTRA | 11209 / 185 | **11209 / 185** | EXACT |
+| compare_structure missing | 585 | 586 | +1 — NAMED, below |
+| body_compare ANY | 242 | **242** | EXACT |
+| clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | EXACT |
+| tags | 9557/9557 | 9557/9557 | EXACT |
+
+**THE MOVEMENT, DECOMPOSED.** Nine pages moved. Over them the scaffold sum falls **3.25
+pp** while the RAW sum rises **24.19 pp** — the documented net-positive signature
+(r176/r194/r220/r235/r284/r289/r290/r291/r292): the scaffold view collapses a widget to
+one marker, so a page that matched the gold's built widget only by coincidence through a
+placeholder marker scores lower once real content ships, while RAW, which sees inside the
+widget, rises. One page (XGF9006_7_0) becomes newly PAIRED, which is why `sk_pages` goes
+1939 → 1940 and `cs_matched` 13203 → 13204, taking `missing` with it — the matched-pool-
+growth class. Page by page:
+
+* **OSAI201_3_0 scaffold EXACT / RAW +5.48** and **PHE1007_1_0 scaffold EXACT / RAW
+  +5.30** — pure gains, both gold-exact builds.
+* **TEDC401_1_0 −0.39 scaffold / RAW +2.89** — the brief's own headline example, now
+  shipping the gold's four labels.
+* **PES1004_4_0 −0.38 / RAW −0.25 — the only page down on both, and it is content
+  RESTORED.** Its three key points were being dropped entirely; the gold has them, inside
+  a `[key points]` alert box that is a separate unshipped rule, so our bare `<ul>` adds
+  nodes the gold nests differently. The words were missing; now they are not.
+* **XGF9006_1_0 −1.32 / RAW +10.33** and **XGF9006_6_0 −1.16 / RAW +0.86** — the pairing
+  ladder re-resolving around the newly-paired `_7_0`.
+
+**THREE OF THE NINE PAGES ARE NOT THIS ROUND'S, AND THAT IS A FINDING.** XGF9006_3_0,
+_5_0 and _7_0 differ from the shipped manifest with **all six of this round's toggles
+OFF**, and **match it exactly once rounds 289's and 290's toggles are also off** —
+proven, not inferred. XGF9006 carries accordion and flipCard bundles on those pages and
+is in neither round's affected list. **Rounds 289 and 290 proved byte-identity on a
+SAMPLE of their widget's modules (6 and 18) rather than the whole population; round 292
+was the first to hash all 101 of its own**, and that is the method that would have caught
+this. The residue is swept here. **A full `REGENERATE CORPUS` would sweep any remaining
+residue of the same kind and is worth asking for**, though the cadence does not yet
+require it.
+
+### 7. ALL 75 REMAINING DECLINES, NAMED
+
+* **22 the `[Tab N]` markers resolve but the panes have no content** (18 modules) —
+  dominated by the LEADING NAME STRIP (CEDO301, CEDW101, CEDW201, CEDR203, CEDT208,
+  XGF9004 ×3): the writer declares the names and the material is in the next capture. A
+  gathering class, and **CEDT208's and XGF9002's golds have no tab markup at all**.
+* **25 no delimiter of any kind** (21 modules) — MXEX201's and CEDO402's six lines name
+  whole LESSONS (a module navigation strip, and their golds agree), CEDT102/CEDT207/
+  CEDK401 are bare name lists, PES1008's `Example 1:`/`Example 2:` are a colon-led
+  repeating phrase in plain text, HES1003 is a bullet list the round-124 form declines.
+* **12 a member the shared walk cannot place** (8 modules) — every one another widget's
+  marker: `embed` 2, `speech bubble` 2, `correct` 2, `format`, `shape n`, `drop`,
+  `accordion`, `flip card`, `data marker`. The cross-cutting gathering class.
+* **12 the table reading declines** (9 modules) — and the gold justifies nearly all:
+  **PES1004-7.0's and ENFUN01's labels were INVENTED or rewritten by the human**
+  ('Example 1/2/3' where the writer wrote "AIM: to find how the height of the bounce…";
+  'Formal word choices/phrases' where the writer wrote "Example of the email with a
+  formal word choice"), and MXFU401's and SSCI104's golds carry no tabs at all.
+  TEDC402-4.0 is the one clean loss, stopped by a `[hover definition:` mid-cell.
+* **5 multi-table bundles** (TEDC401-1.0, TEDC402 ×2, OSOH101, OSOH201) · **3 the whole
+  bundle is notes to the design team** (HIS1002, PES1008, PHE1003 — nothing could ever be
+  built) · **2 a label past six words** (XLP06, OSBY501).
+
+### 8. RECORDED, NOT SHIPPED
+
+* **ENGJ403 is the most valuable single follow-up and it is the round-292 Media-List
+  class again.** Its `[tab 1] … [close tab 1]` open-and-close form — "the newest style of
+  writing", and the brief's #2 — **already resolves its three panes perfectly**; what
+  stops it is that its videos carry a TITLE and no URL (`[insert video] Plot Mountain! |
+  The Plot Diagram Song | Scratch Garden`), and its gold ships the YouTube embed. Its
+  three labels are gold-exact today. Resolving a video by title against the Media List is
+  derivable and wants its own measured round. 4 activities / 3 modules.
+* **The cell-inner-tag reading's own blockers**: a `[hover definition:` marker mid-cell
+  (TEDC402-4.0 — the round-289 deferred class, where rendering only the tail would drop
+  the term out of the writer's sentence) and an `[insert video]` inside a cell needing the
+  full member machinery (XMES103-3.0). Clear both and `TABCELLTAGS_OFF` starts building.
+* **The bold lead is kept as plain text in a table pane.** TEDC401-1.0's gold ships
+  `<p><b>Identify</b></p>`; the column reader strips `**` for labels and content alike.
+  Fixing it would change every existing column-major build, so it wants its own round.
+* **A label-less pane taking its name from its own BOLD LEAD** (HPFUN902, 9 activities /
+  6 modules carry a bold-lead line) — the r278/283/290/291/292 rule, not taken here
+  because HPFUN902's gold has no tabs and the class needs its own gold check.
+* **`outputs/_r292_affected.txt` was overwritten** by this round's first census run before
+  its output filename was corrected; round 292's authoritative set is
+  `_r292_affected_bytes.txt` (9 modules), which is intact. Both facts are recorded in
+  `outputs/_r292_affected.README.txt` and the clobbered file kept alongside.
+
+**Env** `TABMARKERBRACKET_OFF` / `TABMARKERROW_OFF` / `TABLEADIN_OFF` / `TABPREFIX_OFF` /
+`TABOPENERLABEL_OFF` / `TABCELLTAGS_OFF`. **Data**
+`interactive_builders.tabs.general_panes` (`marker_bracket` + `label_deny_pattern`,
+`marker_row`, `cell_inner_tags`, `label_prefix_strip`, `opener_label`,
+`lead_before_first_pane`). **Tools** `outputs/_measure_r293_tabs.cjs` (the decline
+recorder, with a `--only CODE` leg), `_r293_tabs_report.py`, `_r293_tabs_classify.py`,
+`_r293_tabs_levers.py`, `_r293_tabs_tablegate.py`, `_r293_tabs_shapes.py`,
+`_measure_r293_tabgold.py`, `_measure_r293_census.cjs`, `_probe_r293_tabs.cjs`,
+`_probe_r293_leaks.cjs`, `_probe_r293_quality.cjs`, `_dbg_r293_cells.cjs`,
+`_dbg_r293_page.cjs`, `_dbg_r293_re.cjs`.
+
+---
+
 ## 2026-08-08 (round 292, build 260618.62) — THE POP-OUT (MODAL): build every variation (Chris — the interactive-coverage chain, round 4 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 9 affected modules, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289/290/291 state except for the 10 pages named below**)
 
 **THE PLAIN-ENGLISH LEAD.** A pop-out is the window that opens when a learner clicks
