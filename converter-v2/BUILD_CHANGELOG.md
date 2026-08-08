@@ -1,5 +1,212 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-08 (round 289, build 260618.59) — THE ACCORDION: build every variation (Chris — the interactive-coverage chain, round 1 of 8: accordion → flipCard → clickDrop → modal → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 36 affected modules that have a Claude dir, authorised in the request — NOT a full corpus rebuild; the §9 baselines still describe the round-288 state except for the 44 pages named below**)
+
+**THE PLAIN-ENGLISH LEAD.** An accordion is a stack of click-to-open panels, and 336 of the
+707 the writers tagged were shipping as hand-off boxes. **They now build 428 of 707 — up
+from 371 — with nothing lost in any other widget type.** But the more useful part of this
+round is what the measurement found before a line of code was written, because it
+contradicted the brief twice, and both corrections change what the next rounds should do.
+
+---
+
+### 1. THE BRIEF'S TOP TWO ITEMS HAVE NO REACH AT ALL — they were fixed at round 278
+
+`WHY_UNBUILT__accordion.md` ranks its work as: **1.** allow `[body]` inside a panel (68 of
+the 122), **2.** allow `[video]` and `[image]` (~50). Those two items are ~118 of its
+claimed reach and **both are already true.** `#accMemberParts` has placed a `[body]`
+paragraph, a `[video]` and an `[image]` inside a panel since round 278; not one of them can
+bail the walk.
+
+The brief's own numbers come from its recorder's `foreignTags()`, which lists **every**
+non-own tag in a failing activity **whether or not the walk places it** — so they answer
+"which item types appear in a failing accordion", not "which one stopped it". Replaying the
+shipped walk's tag dispatch over all 122 records (0 truncated, 0 unexplained) gives the
+true FIRST BLOCKER:
+
+| First blocker | Activities | Modules |
+|---|--:|--:|
+| **`[button]`** | **28** | 25 |
+| `[data marker]` (a caption, a label, a hover definition) | 17 | 14 |
+| `[external link]` | 15 | 15 |
+| `[shape n]` (`[purple coloured box]`) | 13 | 8 |
+| `[table]` (the TAG — an asset request) | 7 | 6 |
+| `[embed]` / `[pdf]` | 6 | 8 |
+| another widget's invocation | ~36 | — |
+
+**CEDT208 — the brief's own headline example, quoted at length to prove the video was the
+blocker — is blocked by its trailing `[Button] Go to journal`.** Its four videos were never
+the problem. It now builds with the writer's four panel names, its sentences as paragraphs
+and its videos as the program's own video frames — byte-for-byte the shape the brief quotes
+from the human's page.
+
+### 2. THE NINE REASONS ARE REALLY THREE
+
+The brief's reasons C (39) and Z (37) are described as the older reading producing nothing.
+That reading's refusal is **never terminal** — `#accordion` tries it, then its legacy mode,
+then the round-278 path. Reading the LAST guard rather than the second-to-last collapses all
+336 declines onto three:
+
+| Terminal cause | Activities | Modules |
+|---|--:|--:|
+| `accordionPanels:1264` — no panels resolved | **201** | 89 |
+| `accordionPanels:1260` — a member the walk cannot place | **125** | 70 |
+| `accordionPanels:1271` — the leak guard | 10 | 9 |
+
+So there is no separate "older reading" class to fix, and **a future round aimed at reasons
+C or Z would have been chasing a phantom.** The two real levers are the member vocabulary
+(this round) and panel resolution (the larger prize, and its own round).
+
+### 3. WHAT SHIPPED
+
+**`ACCMEMBER_OFF` — the accordion's own member vocabulary.** Supplied through the SAME
+caller-scoped `delims` mechanism tabs (r281), flipCard (r282) and clickDrop (r283) already
+use, so every other caller is byte-identical BY CONSTRUCTION and each family reverses on its
+own data key. `prose_tags` — an `[external link]`/`[website]`/`[Link]`, a
+`[Caption]`/`[label …]`/`[Insert toolbox item]` and an `[embed]`/`[pdf]` carrying black
+content render as panel prose (renderBlock links a bare URL, so the writer's link survives as
+a link); carrying none they surface as a red Writers Note rather than being silently skipped
+(`text_tags_note_when_empty`, accordion-only). `note_tags` — a bare `[table]`/`[Insert Table]`
+is an asset request and a `[purple coloured box]` is a design instruction; both are notes,
+never content. `head_tags` — a `[heading]` is a sub-heading.
+
+**`defer_pattern` — WHAT WAS DELIBERATELY NOT BUILT.** A hover marker sits MID-SENTENCE:
+the defined term is inside the bracket and the rest of the sentence rides after it
+(`[definition: horizontal axis]` + "does not label 11:00 am but…", ENGJ301-4.0). Rendering
+only the trailing text would drop the term out of the writer's own sentence, and weaving it
+back is the round-201 render stitch, deliberately off inside a widget. Those 8 members / 6
+activities still decline and keep the honest box.
+
+**`ACCGOJOURNAL_OFF` — the go-to-journal button**, the single biggest blocker (21 of the 122;
+19 become fully clear once it is handled). **The scanner fence is deliberately left alone**:
+round 278 excludes this button from `button_tail_terminates` because releasing it into the
+body stream produced the duplicate Chris reported at round 273, so capture is untouched.
+Instead the member is skipped as panel content — the gold puts a button inside a panel in 52
+of 3,099 panels (1.7%) — and the accordion emits round 239's own templated
+`<h4 class="goJournal">` after the widget, where the human puts it. **Lossless by
+measurement, not assumption:** of the 24 declining pages whose accordion carries one, 13
+already showed the heading (round 239's member branch, which only fires for a bundle-owned
+activity) and **11 did not**, so simply skipping would have lost the button on 11 pages. The
+double-emit is prevented at the other end — the builder sets `bundle._goJournalEmitted` and
+the member branch stands down (`buttons.go_journal.member_branch_yields_to_builder`).
+
+**`ACCLEADIN_OFF` — content before the first panel is the accordion's own lead**, rendered
+above the widget in the writer's place, exactly as the clickDrop reading has done since round
+283. Guarded: only text, image, video, embed and heading parts may lead; a table or a nested
+widget before the first panel still declines.
+
+### 4. WHAT WAS DECLINED, WITH THE MEASUREMENT
+
+**The one-panel bare-opener rule** (the brief's item 3, "most of 98"). Of the 119 no-table
+records in the no-panel class, only **33** have a first line usable as a heading — and the
+headings it would use are `We are learning:` (×7 on XGF9006 alone), `Page 2`, and
+`This is Rita and her coach, Hoani.` Those are lead-in labels and sentences, not panel names.
+XGF9006's gold heading, "Jump offline! My Genius Hour poster", **is in no Writers Template at
+all** — the brief's own extract shows it. A rule that invents a bad heading on the majority of
+its fires is worse than the honest box.
+
+**The two-column panel table** (XTAS103, BLL165). BLL165 needs the reading to keep going past
+the table and re-attach each panel body where its name is repeated; without that its three
+panels build empty. Sized, not attempted.
+
+**The legacy-route table permission** (the brief's item 5, "most of 37") — **measured a
+NON-FIX**, per §2 above.
+
+### 5. THE PROOF
+
+* Toggles-OFF census **reproduces round 288 exactly** (2261 built of 7602 = 29.7%, accordion
+  371, every one of the 32 types identical); ON gives **2318 = 30.5%**, accordion 428.
+* **NEW BUILDS 57 / LOST 0 in every type**, proven index-independently by per-(module,page,type)
+  build counts — the round-278 rule, since a walk change renumbers bundles.
+* **Byte identity, one toggle state per process** (the round-246 trap): all-OFF in memory ==
+  the shipped corpus on 42 pages of 6 accordion-heavy modules; 6 out-of-class canaries
+  (BLL210, OSAH501, TRR203, ENGS302, OSOH501, SCCH302 — 24 pages) **identical in BOTH states**.
+* **Per-toggle decomposition** on 9 representative modules: MEM owns 4 pages, GJ 4, LEAD 6,
+  with HIS1006_2_0 correctly needing both MEM and GJ.
+* **THE LEAK GUARD PROVEN over all 39 affected modules in 3 batches — 91/91, 705/705, 354/354,
+  per-module IDENTICAL.** Building adds no visible leak.
+* **The go-journal contract proven two ways** over 286 pages: **0 pages lose a heading, 7 gain
+  one (+1 each, each with a newly-built accordion), 0 adjacent duplicates, 0 contract
+  violations.**
+* **Accordion verifier over all 39 affected modules: 437 panels, defect 0, every built panel
+  matches the human.** All EIGHT widget selftests GREEN.
+* **A quality scan of every new panel** (476 inspected) flagged **1** — `<h4>] Text
+  recommendations</h4>` on ENGI405_6_0 — and it is **PRE-EXISTING**: present in the shipped
+  corpus and in the OFF state, on a page this round does not touch.
+* tags **9557/9557 REAL 0**; entry-parity **PASS**; index-sync **33/28**; flipCard protected
+  gate **divergence 0**.
+
+### 6. GATES — held-or-improved, with the one mover named and decomposed
+
+Scoped ship #1 since round 288. Containment perfect (36 changed ⊆ 36 affected); content-hash
+0-stale; completeness spot-check **12/12 byte-identical, run IN MEMORY** (`_spotcheck_inmemory.cjs`
+— regenerating the sample would have written round 287's pending dropdown work into the
+corpus, past the authorised scope: the round-273 trap). Blast **44 pages / 36 modules, 0
+added, 0 removed**.
+
+| Gate | r288 | r289 | Verdict |
+|---|---|---|---|
+| skeleton ≥50% / ≥75% / ≥90% | 981 / 194 / 16 | **981 / 194 / 16** | EXACT |
+| skeleton RAW | 33.941% | **34.003%** | **IMPROVED +0.062pp** |
+| skeleton SCAFFOLD mean | 49.771% | 49.764% | −0.007pp — NAMED, below |
+| clean / leak | 97.8% / 288 occ, 46 pages | **97.8% / 288, 46** | EXACT |
+| compare_structure exact / EXTRA / missing | 11207 / 185 / 585 | **11209 / 185 / 585** | **+2 IMPROVED** / EXACT / EXACT |
+| body_compare ANY | 242 | **242** | EXACT |
+| tags | 9557/9557 | 9557/9557 | EXACT |
+
+**THE SCAFFOLD MEAN, DECOMPOSED PAGE BY PAGE.** 19 pages moved, all inside the rebuilt set
+(0 outside). The movement is **−27.69 pp-sum**, of which **two named pages are 87%**:
+
+* **ENG1004_0_0 −17.43pp is a PAIRING CHANGE, not a content regression.** ENG1004 ships 8
+  pages against a gold of 4, and the gate pairs by content order; the ladder re-resolved, so
+  ENG1004_0_0 is now scored against gold `0.1` instead of `0.0` and one Claude page falls out
+  of pairing altogether (pairs 1940 → 1939). That is the documented pairing-visibility class
+  (r186 / r222 / r235 / r243 / r245 / r275). The page's own content is clean — three
+  accordions, five well-named panels.
+* **XGF9001_2_0 −6.53pp is the A1 class**: an accordion built where the gold page has none
+  (gold ships 2 accordions there, we now ship 5). Chris's standing ruling is to build the
+  writer's tag and judge it on the widget verifier, which passes.
+* Every other moved page together is **−3.74pp**.
+
+**And the same 39 moved pages gain +115.73 pp-sum on the RAW skeleton (34 up, 5 down);
+excluding the two named pages, RAW is +140.10 against a scaffold −3.74.** That is the
+signature of the documented net-positive class (r176/r194/r220/r235/r284): the scaffold view
+collapses a widget to one marker, so a page that matched the gold's built widget only by
+coincidence through a placeholder marker scores lower once real content ships, while the RAW
+view — which sees inside the widget — rises.
+
+### 7. TOOLING: THE NAMED-MOVEMENT OVERRIDE
+
+`_fastloop_diff.py` treats any wrong-way metric as FAIL and exits before `--commit`, so a
+round with a decomposed, named movement could only refresh the baseline by editing it **by
+hand** — silent and unreviewable. It now takes **`--accept-named "<metric>"`**: the mover must
+be named on the command line, the name is recorded in the baseline manifest
+(`accepted_named_movement`), and **any metric the operator did NOT name still fails**, so it
+can never wave through an unexamined regression. Verified both ways before use.
+
+### 8. RECORDED, NOT SHIPPED
+
+* **The panel-heading emphasis divergence** — the gold carries `<b>` inside an accordion panel
+  heading in 33 of 3,068 (1.1%) and `<i>` in 21 (0.7%); Claude ships `<b>` in 93 of 1,278
+  (7.3%). **Proven PRE-EXISTING** (present in the OFF state on XGF9001_2_0). A sized follow-up.
+* `<h4>] Text recommendations</h4>` on ENGI405_6_0 — a stray bracket in a panel heading, also
+  pre-existing (the r104 stray-lead class).
+* The remaining 51 reason-A activities: ~36 are another widget's invocation collected into the
+  accordion (a GATHERING class, not a builder one), 10 are non-journal buttons, 6 the deferred
+  hover markers.
+* ENG1004's over-pagination (8 pages against a gold of 4), which is what makes its pairing
+  unstable.
+
+**Env** `ACCMEMBER_OFF` / `ACCGOJOURNAL_OFF` / `ACCLEADIN_OFF`.
+**Data** `interactive_builders.accordion.panel_delimiters.member_vocabulary` ·
+`.go_journal_member` · `.lead_before_first_panel` · `buttons.go_journal.member_branch_yields_to_builder`.
+**Tools** `outputs/_measure_r289a_census.cjs` (the build census, LOST proven index-independently) ·
+`_probe_r289a_accordion.cjs` · `_probe_r289a_gj.cjs` (the duplicate check) ·
+`_probe_r289a_leaks.cjs` · `_probe_r289a_quality.cjs` (eyeball every new panel) ·
+`_r289a_sk_merge.py` (the skeleton state chain).
+
+---
+
 ## 2026-08-07 (round 287, build 260618.58) — THE DROPDOWN: the first builder this widget has ever had (Chris — "dropDown is the largest completely-unbuilt widget type in the library: 390 widgets across 163 modules, and not one has ever been attempted"; **NO REGENERATION — not requested; the gates were NOT re-run and the round-284/285 baselines still describe the corpus**)
 
 **THE PLAIN-ENGLISH LEAD.** A dropdown is the little select-an-answer box a learner picks

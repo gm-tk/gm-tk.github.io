@@ -1148,8 +1148,26 @@ class InteractiveBuilder {
 		for (const p of panels) {
 			if (!p.head || !p.parts.length) return null;
 			if (this.#hasRedText(p.head)) return null;
+			const chunks = this.#accRenderChunks(p.parts, { tpl, inline, run, renderBlock, renderNested, rich });
+			if (chunks === null) return null;
+			const content = chunks.join("");
+			if (!content.trim()) return null;                          // panel with no rendered body
+			built.push(Utils.FillTemplate(tpl.row, { head: inline(p.head), content }));
+		}
+		return built;
+	}
+
+	/**
+	 * ROUND 289 — the per-part chunk loop of #accRenderPanels, extracted VERBATIM so the
+	 * round-289 lead (content the writer put before the first panel) renders through the
+	 * exact same machinery as a panel body. A pure move: #accRenderPanels' output is
+	 * byte-identical by construction, which the round's toggles-OFF leg proves at corpus
+	 * scale. Returns null when a part cannot be rendered (→ decline the accordion).
+	 */
+	static #accRenderChunks(parts, { tpl, inline, run, renderBlock, renderNested, rich }) {
+		{
 			const chunks = [];
-			for (const part of p.parts) {
+			for (const part of parts) {
 				if (part.img) {
 					chunks.push(this.#assetImage(part.img, tpl, run));
 				} else if (part.video) {
@@ -1181,11 +1199,37 @@ class InteractiveBuilder {
 					for (const h of arr) if (h && String(h).trim()) chunks.push(String(h));
 				}
 			}
-			const content = chunks.join("");
-			if (!content.trim()) return null;                          // panel with no rendered body
-			built.push(Utils.FillTemplate(tpl.row, { head: inline(p.head), content }));
+			return chunks;
 		}
-		return built;
+	}
+
+	/**
+	 * ROUND 289 — render the accordion's LEAD: the parts the writer put before the
+	 * first panel marker, emitted ABOVE the widget in their own place (the clickDrop
+	 * rule; data lead_before_first_panel). Roles convert through the SAME #accPushPart
+	 * the panels use, then render through the SAME #accRenderChunks, so a lead
+	 * paragraph, picture or video is byte-identical to the panel form. Returns null
+	 * when a part cannot be placed, [] when the lead renders to nothing.
+	 */
+	static #accRenderLead(lead, { tpl, inline, run, renderBlock, renderNested, rich, max }) {
+		if (lead.length > (max ?? 12)) return null;              // an unusually long lead → keep the box
+		const rp = [];
+		for (const p of lead) if (!this.#accPushPart(rp, p)) return null;
+		if (!rp.length) return [];
+		const chunks = this.#accRenderChunks(rp, { tpl, inline, run, renderBlock, renderNested, rich });
+		if (chunks === null) return null;
+		return chunks.filter((c) => c && String(c).trim());
+	}
+
+	/**
+	 * ROUND 289 — round 239's own templated go-to-journal heading, emitted after the
+	 * accordion when its member walk skipped the writer's button (see
+	 * panel_delimiters.go_journal_member). Read from buttons.go_journal, never copied.
+	 */
+	static #accGoJournalHtml() {
+		const gj = DataService.Data.EmitTemplates?.buttons?.go_journal;
+		if (!gj || gj.enabled === false || !gj.form) return [];
+		return [Utils.FillTemplate(gj.form, { label: Utils.EscapeHtml(gj.label ?? "Go to your journal") })];
 	}
 
 	// =======================================================================
@@ -1256,19 +1300,56 @@ class InteractiveBuilder {
 		// (1) Classify every member into an ordered PART with a ROLE. Classifying by
 		//     the RESOLVED TAG (not the writer's spelling) is the round-276 lesson —
 		//     "[Insert image of a robot]" matches no ^image pattern.
-		const parts = this.#accMemberParts(members, { tpl, cfg, run, renderTable, notes });
+		// ROUND 289 — the accordion's OWN member vocabulary, supplied through the same
+		// caller-scoped `delims` mechanism tabs/flipCard/clickDrop already use. Every
+		// key is read from data, so a family reverses on its own data key; with the
+		// vocabulary disabled the object is empty and the walk is the r278 default
+		// verbatim, which is what ACCMEMBER_OFF produces.
+		const mv = (cfg.member_vocabulary && cfg.member_vocabulary.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACCMEMBER_OFF))
+			? cfg.member_vocabulary : null;
+		const gjCfg = (cfg.go_journal_member && cfg.go_journal_member.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACCGOJOURNAL_OFF))
+			? cfg.go_journal_member : null;
+		const flags = {};
+		const delims = (mv || gjCfg) ? {
+			prose_tags: mv?.prose_tags ?? [],
+			note_tags: mv?.note_tags ?? [],
+			head_tags: mv?.head_tags ?? [],
+			head_level: mv?.head_level ?? "h4",
+			defer_pattern: mv?.defer_pattern,
+			text_tags_note_when_empty: !!mv,
+			skip_go_journal: !!gjCfg,
+		} : undefined;
+
+		const parts = this.#accMemberParts(members, { tpl, cfg, run, renderTable, notes, delims, flags });
 		if (!parts) return null;
 
-		// (2) Resolve the panels from the first delimiter kind that is present.
-		const panels = this.#accResolvePanels(parts, cfg, tpl);
+		// (2) Resolve the panels from the first delimiter kind that is present. ROUND 289
+		//     — content arriving BEFORE the first panel is the accordion's own LEAD and is
+		//     rendered above the widget in the writer's place (the clickDrop rule), rather
+		//     than declining the build outright.
+		const leadCfg = (cfg.lead_before_first_panel && cfg.lead_before_first_panel.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACCLEADIN_OFF))
+			? cfg.lead_before_first_panel : null;
+		const lead = [];
+		const panels = this.#accResolvePanels(parts, cfg, tpl, leadCfg ? lead : null);
 		if (!panels || panels.length < (cfg.min_panels ?? 1)) return null;
 
 		// (3) Render through the SHARED panel renderer, so this fallback and the
 		//     round-246 rich one emit byte-identical markup.
 		const built = this.#accRenderPanels(panels, { tpl, inline, run, renderBlock, renderNested, rich });
 		if (!built) return null;
-		const html = [tpl.open, ...built, tpl.close].join("\n");
+		const leadHtml = lead.length
+			? this.#accRenderLead(lead, { tpl, inline, run, renderBlock, renderNested, rich, max: leadCfg?.max_lead_parts ?? 12 })
+			: [];
+		if (leadHtml === null) return null;
+		const html = [...leadHtml, tpl.open, ...built, tpl.close,
+			...(flags.goJournal ? this.#accGoJournalHtml() : [])].join("\n");
 		if (this.#accLeakGuard(html, cfg)) return null;           // a build must never ADD a leak
+		// the r239 member branch must not emit a SECOND identical heading (see
+		// buttons.go_journal.member_branch_yields_to_builder)
+		if (flags.goJournal) bundle._goJournalEmitted = true;
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
 		bundle.r278Accordion = true;                              // detector / affected-set marker
 		return html;
@@ -1286,7 +1367,7 @@ class InteractiveBuilder {
 	 * opener tags; omitted, every default is the round-278 accordion behaviour
 	 * verbatim, so the accordion path is byte-identical BY CONSTRUCTION.
 	 */
-	static #accMemberParts(members, { tpl, cfg, run, renderTable, notes, delims }) {
+	static #accMemberParts(members, { tpl, cfg, run, renderTable, notes, delims, flags }) {
 		const parts = [];
 		const idRe = new RegExp(cfg.video_youtube_id_re
 			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
@@ -1485,15 +1566,47 @@ class InteractiveBuilder {
 			//   head_tags — treat as a sub-heading at head_level
 			//   text_tags — render as pane prose (an [external link]'s own line)
 			//   note_tags — surface as a red Writers Note (never silent, never invented)
+			// ROUND 289 — A DEFERRED MARKER. A hover/definition marker sits MID-SENTENCE:
+			// the defined term is inside the bracket and the rest of the sentence rides
+			// after it ("[definition: horizontal axis]" + "does not label 11:00 am but…",
+			// ENGJ301-4.0). Rendering only the trailing text would drop the term out of
+			// the writer's own sentence, and weaving it back in is the r201 render stitch,
+			// which is deliberately OFF inside a widget. So the accordion still declines
+			// and keeps the honest box — measured 8 members / 6 activities. Undefined for
+			// every other caller, so nothing else can move.
+			if (tag && delims?.defer_pattern && (delims.prose_tags ?? []).includes(tag)
+				&& new RegExp(delims.defer_pattern, "i").test(String(m.text ?? ""))) {
+				return null;
+			}
+
+			// ROUND 289 — THE GO-TO-JOURNAL BUTTON (accordion only). Skipped as panel
+			// content — the gold puts a button inside a panel in 1.7% of panels — and the
+			// caller emits round 239's own templated <h4 class="goJournal"> after the
+			// widget instead. The label patterns are READ FROM buttons.go_journal so this
+			// and r239 can never drift apart (the r278 #isGoJournalButton discipline).
+			if (tag === "button" && delims?.skip_go_journal && this.#accIsGoJournal(m)) {
+				if (flags) flags.goJournal = true;
+				continue;
+			}
+
 			if (tag && (delims?.head_tags ?? []).includes(tag)) {
 				if (this.#hasRedText(raw)) return null;
 				const ht = text.replace(/\*\*/g, "").trim();
 				if (ht) parts.push({ role: "head", level: delims.head_level ?? "h4", text: ht });
 				continue;
 			}
-			if (tag && (delims?.text_tags ?? []).includes(tag)) {
+			// ROUND 289 — prose_tags is the accordion's own name for text_tags; both are
+			// read so a caller may use either. text_tags_note_when_empty (accordion only,
+			// default false) turns a CONTENT-LESS member into a red Writers Note instead
+			// of silently skipping it — the r214/r242 never-silently-dropped rule. Tabs
+			// and clickDrop omit the key, so their paths are byte-identical.
+			if (tag && [...(delims?.text_tags ?? []), ...(delims?.prose_tags ?? [])].includes(tag)) {
 				if (this.#hasRedText(raw)) return null;
-				if (text.trim()) parts.push({ role: "text", text });
+				if (text.trim()) { parts.push({ role: "text", text }); continue; }
+				if (delims?.text_tags_note_when_empty) {
+					const nt = this.#cellText(String(m.text ?? "")).trim();
+					if (nt) notes.push(nt);
+				}
 				continue;
 			}
 			if (tag && (delims?.note_tags ?? []).includes(tag)) {
@@ -1521,7 +1634,7 @@ class InteractiveBuilder {
 	 * lines) and taking the first that yields a panel with a heading. Returns
 	 * `[{ head, parts }]` for #accRenderPanels, or null.
 	 */
-	static #accResolvePanels(parts, cfg, tpl) {
+	static #accResolvePanels(parts, cfg, tpl, lead = null) {
 		const substantive = parts.filter((p) => p.role !== "note");
 		if (!substantive.length) return null;
 
@@ -1533,6 +1646,14 @@ class InteractiveBuilder {
 				if (p.role === "panel") {
 					if (p.overlong) return null;              // a sentence-long tag text with no bold lead
 					cur = { head: p.head, parts: [] }; panels.push(cur); continue;
+				}
+				// ROUND 289 — a part arriving before the first panel is the accordion's own
+				// LEAD, rendered above the widget where the writer put it (the clickDrop
+				// rule). Only the simple roles may lead: a TABLE or a NESTED widget before
+				// the first panel is a shape whose intent is genuinely unclear, so those
+				// still decline. `lead` is null when the rule is off → the r278 bail.
+				if (!cur && lead && ["text", "img", "video", "embed", "head"].includes(p.role)) {
+					lead.push(p); continue;
 				}
 				if (!cur) return null;                             // content still precedes the first panel
 				// a heading-less panel takes its head from its own first sub-heading
@@ -1716,6 +1837,26 @@ class InteractiveBuilder {
 		if (!head || head.split(/\s+/).length > maxWords) return null;
 		if (this.#accHasBracketTag(head)) return null;
 		return { head, rest: String(m[2] ?? "").trim() };
+	}
+
+	/**
+	 * ROUND 289 — is this member the writer's GO-TO-JOURNAL button? The patterns are
+	 * READ FROM buttons.go_journal (round 239's own rule) rather than copied, so the
+	 * builder's skip and #goJournalTail's emit can never drift apart — the round-278
+	 * #isGoJournalButton discipline. A button carrying a URL is a real link button and
+	 * is never one of these.
+	 */
+	static #accIsGoJournal(m) {
+		const gj = DataService.Data.EmitTemplates?.buttons?.go_journal;
+		if (!gj || gj.enabled === false) return false;
+		if (!m || m.type !== "tag") return false;
+		const p = m.parse?.primary;
+		if (!p || p.tag !== "button") return false;
+		const raw = String(m.text ?? ""), after = String(m.blackAfter ?? "");
+		if (/https?:\/\//.test(after) || /https?:\/\//.test(raw)) return false;
+		const label = after.replace(/\*/g, "").trim() || raw.replace(/[[\]*]/g, "").trim();
+		return (!!label && new RegExp(gj.label_match, "i").test(label))
+			|| new RegExp(gj.raw_match, "i").test(raw.trim());
 	}
 
 	/** ROUND 278 — does this text still show a bracketed writer tag? */

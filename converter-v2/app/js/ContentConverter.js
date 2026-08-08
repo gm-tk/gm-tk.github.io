@@ -4435,6 +4435,15 @@ class ContentConverter {
 		// into the bundle like an Undo/Reset control) still ships its h4 inside the
 		// box — the r232 mtkQuizBundleTail pattern: the member stays verbatim in the
 		// raw hand-off dump, the canonical form emits in the live rendering.
+		// ROUND 289 — the BUILDER MAY HAVE EMITTED IT ALREADY. The accordion's member
+		// walk now skips a go-to-journal button as panel content and emits this same
+		// heading after the widget (interactive_builders.accordion.panel_delimiters.
+		// go_journal_member), so for a bundle that BUILT, emitting here as well would
+		// ship two identical headings — the round-273 duplicate by another route. A
+		// bundle that did not build never sets the flag, so every hand-off box behaves
+		// exactly as it did at round 288. Data buttons.go_journal.member_branch_yields_to_builder.
+		if (bundle && bundle._goJournalEmitted
+			&& gjCfg.member_branch_yields_to_builder !== false) return [];
 		if (bundle) {
 			for (const m of (bundle.memberItems ?? [])) {
 				if (m && isGoJournal(m)) return h4();

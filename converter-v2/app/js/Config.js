@@ -1070,7 +1070,30 @@ class Config {
 	// RESULT dropDown 0 -> 14 of 390; NEW BUILDS 14 / LOST 0 in every type; 12 modules.
 	// Verifier: 128 units, exact 76, defect 0, selftest GREEN. No regeneration (not
 	// requested) — the r284/r285 baselines still describe the corpus. env DROPDOWN_OFF.
-	static AppVersion = "260618.58";
+	//
+	// ROUND 289 (260618.59): THE ACCORDION — build every variation (the interactive-
+	// coverage chain, round 1 of 8). MEASURING FIRST CORRECTED THE BRIEF TWICE.
+	//   * The brief ranked [body] (68), [video] and [image] as the top blockers. They
+	//     are not blockers at all — all three have been placed inside a panel since
+	//     round 278. The brief counted which item types APPEAR in a failing accordion,
+	//     not which one bails. Replaying the shipped walk over all 122 records gives the
+	//     true first blocker: button 28 / data marker 17 / external link 15 / shape n 13
+	//     / table 7 / embed 6. CEDT208, the brief's own headline, is blocked by its
+	//     trailing [Button] Go to journal, not by its videos.
+	//   * The nine reasons collapse to THREE terminal causes: 201 no panels resolved,
+	//     125 a member the walk cannot place, 10 the leak guard. The brief's reasons C
+	//     and Z are not terminal — the older reading's refusal is never final, because
+	//     the round-278 path runs after it, so all 74 really end at one of those three.
+	// SHIPPED: the accordion's own member vocabulary through the caller-scoped `delims`
+	// mechanism (ACCMEMBER_OFF); the go-to-journal button skipped as panel content with
+	// round 239's own heading emitted after the widget and its member branch standing
+	// down (ACCGOJOURNAL_OFF); content before the first panel rendered above the widget
+	// (ACCLEADIN_OFF). DECLINED WITH THE MEASUREMENT RECORDED: the one-panel bare-opener
+	// rule (only 33 of 119, and the heads it would use are lead-in labels and sentences)
+	// and the two-column panel table incl. BLL165's read-past-the-table.
+	// RESULT accordion 371 -> 428 of 707; NEW BUILDS 57 / LOST 0 in every type; 39
+	// modules. Scoped ship: 36 regenerated, 44 pages / 0 added / 0 removed.
+	static AppVersion = "260618.59";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
