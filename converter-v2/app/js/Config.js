@@ -1140,7 +1140,33 @@ class Config {
 	// as its button. RESULT clickDrop 162 -> 181 of 690; NEW BUILDS 18 / LOST 0 in
 	// every type; 15 modules. Scoped ship: 14 regenerated (SSOG105 has no Claude dir),
 	// 17 pages / 0 added / 0 removed.
-	static AppVersion = "260618.61";
+	// ROUND 292 (260618.62): THE POP-OUT (MODAL) — build every variation (the
+	// interactive-coverage chain, round 4 of 8). 219 of 380 were hand-off boxes across
+	// 69 modules. UNLIKE THE LAST THREE ROUNDS THE BRIEF'S REASON COUNTS ARE ACCURATE —
+	// the modal composer is already tried LAST and keeps its OWN member walk, so its
+	// refusals are genuinely terminal (verified, not assumed: 100% of the 219 replayed).
+	// But its RANKING is still upside down. Its #1 — follow [Insert media item N] to a
+	// picture — reaches 15 activities in 3 modules, NOT "most of the 80"; and the real
+	// blocker in those modules is something the brief never mentions: a LEADING
+	// numberless marker (the writer setting the widget up) and a [Close Modal] CLOSER
+	// were each opening a trigger-less pop-out that sank the whole widget. Its "51 pieces
+	// that cannot be placed" is the appear-vs-block artefact again — [button] and [video]
+	// are not blockers at all, and the true joint-largest lever is 26 STRAY MARKERS from
+	// a neighbouring activity ([Tab 2], [trigger engagement]), every one of which sits at
+	// the very end of its bundle carrying no text, so dropping them is measurably
+	// lossless. And 25 of its 46 "sentence, not a label" carry NO text whatsoever.
+	// SHIPPED: the stray marker skipped like a [button] (MODALSTRAY_OFF, 26 activities /
+	// 6 BLL modules); a closer is not a pop-out (MODALCLOSER_OFF); a leading text-less
+	// numberless marker is the widget's opener (MODALOPENER_OFF); the Media-List tile
+	// strip, which lands on EXPFUN04's gold's own three filenames and its own column
+	// class (MODALTILES_OFF); the bold opening phrase as the name (MODALBOLDLEAD_OFF,
+	// CEDT208); [external link] as pop-out content (MODALMEMVOCAB_OFF). ALSO: the modal
+	// was the ONLY widget in the chain with NO VERIFIER — _verify_modal.cjs is written,
+	// in run_all_gates.sh, selftest GREEN, and it caught a bug in ITSELF on its first
+	// run (Mode-P images ship twice, once in a comment, so every trigger counted double).
+	// RESULT modal 161 -> 195 of 380; NEW BUILDS 34 / LOST 0 in every type; 9 modules.
+	// Scoped ship: 9 regenerated, 10 pages / 0 added / 0 removed.
+	static AppVersion = "260618.62";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

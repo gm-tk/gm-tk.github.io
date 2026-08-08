@@ -1,5 +1,273 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-08 (round 292, build 260618.62) — THE POP-OUT (MODAL): build every variation (Chris — the interactive-coverage chain, round 4 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 9 affected modules, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289/290/291 state except for the 10 pages named below**)
+
+**THE PLAIN-ENGLISH LEAD.** A pop-out is the window that opens when a learner clicks
+something. 219 of the 380 the writers tagged were shipping as hand-off boxes — the most
+concentrated type in the set, only 69 modules, a few families dominating. **They now
+build 195 of 380, up from 161, with nothing lost in any other widget type.** Two things
+are worth more than the count. **The brief's reason counts are ACCURATE this time — the
+first in the chain — and its ranking is still upside down**, with its top-ranked change
+reaching a fifth of what it claims while the real biggest lever goes unmentioned. And
+**the modal was the only widget in this chain with no verifier at all**; there is one
+now, and it caught a bug in itself before it caught anything else.
+
+---
+
+### 1. THE FIRST BRIEF IN THE CHAIN WHOSE REASONS ARE RIGHT — AND WHY
+
+Rounds 289, 290 and 291 each found their brief's technical notes pointing at code whose
+refusal was no longer final. `WHY_UNBUILT__modal.md` does not have that problem, and the
+reason is structural: **`#modalSets` is already tried LAST** (after the round-216
+image-pair form and the round-73 document button), and **the modal keeps its OWN member
+walk, `#modalMemberParts`**, rather than reaching the shared one through `delims`. Its
+nulls really are terminal. Verified rather than assumed — `outputs/_measure_r292_modal.cjs`
+re-runs the instrumentation on the current tree, 24 shards, and accounts for **100% of
+the 219**, reconciling 380/161 exactly:
+
+| Terminal cause | Activities | Modules | The brief's reason |
+|---|--:|--:|---|
+| `modalFinishSets` — no trigger at all | **80** | 18 | A (80/18 ✓) |
+| `modalMemberParts` — a member it cannot place | **51** | 26 | B (51/26 ✓) |
+| `modalResolveSets` — not a trigger label | **46** | 20 | C (46/20 ✓) |
+| `modalFinishSets` — an empty pop-out | **18** | 14 | D (18/14 ✓) |
+| no delimiter / strict alternation / floor / leak guard | 24 | — | E+Z (24 ✓) |
+
+Its line numbers are ~495 short of today's tree but they name live code. **Recorded for
+the chain: a brief is trustworthy about reasons exactly when its widget's composer is
+last in the dispatch. Tabs (round 5) has five builders and is not.**
+
+### 2. THE RANKING IS STILL UPSIDE DOWN, IN BOTH DIRECTIONS
+
+**Its #1 reaches 15 activities, not "most of the 80".** Following `[Insert media item N]`
+to a picture is a real and correct change — but only **15 activities in 3 modules**
+(EXPFUN04, EXPFUN05, HES1006) contain such a reference at all. The claim that it "would
+cover most of EXPFUN04's 7 and EXPFUN05's 22" is right about EXPFUN04 and wrong about
+EXPFUN05, whose pop-outs are all named already.
+
+**And it never mentions the thing actually blocking those two modules.** Both write:
+
+```
+[Click modal XL with a graphic on the front of the tile…]   ← the writer setting it up
+| [Insert media item 4] ║ [Insert media item 5] ║ [Insert media item 6] |
+[Modal 1] … [Modal 2] … [Close Modal] [Modal 3] …
+```
+
+The leading marker has no number, so it opened a numberless pop-out **which then
+swallowed the tile table** and had nothing to click; `[Close Modal]` did the same thing
+lower down. Both sank the widget on the very next check. 13 of the 80 open with a closer
+and 17 with a set-up instruction — **30 of the 80, and neither is in the brief.**
+
+**Its "51 pieces that cannot be placed" is the appear-vs-block artefact of rounds
+289–291 in a third form.** The brief lists `[button]` in 38 and `[video]` in 38; **neither
+blocks anything** — both have been handled since round 280. Replaying the walk's own
+dispatch gives the true first blocker: **a tab strip 13, a quiz-engagement button 13**,
+an external link 7, then a tail of other widgets' invocations. The two at the top are
+**stray markers belonging to a different activity further down the page**, and they are
+the joint-largest lever in the round.
+
+**And 25 of its 46 "the line is a sentence, not a button label" carry NO TEXT AT ALL** —
+they reach the label test with an empty string. Reason C is half what it says it is.
+
+### 3. WHAT SHIPPED — re-ranked by measured reach
+
+**`MODALSTRAY_OFF` — a stray marker from a neighbouring activity, 26 activities / 6 BLL
+modules.** `[Tab 2]` and `[trigger engagement]` are content-less markers for an activity
+further down the page that the capture swept in, and refusing on them cost six BLL
+phonics modules every pop-out they had. **MEASURED LOSSLESS, which is why it ships as a
+skip rather than a guess: all 26 sit at the very END of their bundle** — last member, or
+followed only by another such marker — **and carry no trailing text whatsoever**. Treated
+exactly as a `[button]` is (round 278/280): skipped as content, surfaced as a red note if
+it carries any words. BLL110 now ships the writer's six complete pop-outs.
+
+**`MODALOPENER_OFF` — the leading marker is the widget's opener, not pop-out zero.** In a
+NUMBERED bundle the pop-outs are keyed by the writer's own number, so a marker with no
+number **and no text of its own** arriving before the first numbered one cannot be one.
+Requiring it to be text-less means a genuinely unnumbered but LABELLED pop-out can never
+be swallowed by this rule.
+
+**`MODALCLOSER_OFF` — a closer is not a pop-out.** `[Close Modal]` resolves to the same
+`modal` tag as a real invocation; 41 such members corpus-wide.
+
+**`MODALTILES_OFF` — the Media-List tile strip.** The writer's lead table of numbered
+references supplies the pop-outs' trigger PICTURES from the Media List the run already
+parses for the acknowledgements. **It lands on the human developer's own choice:**
+EXPFUN04's items 4/5/6 resolve to `iStock-1156854907.jpg`, `iStock-155353286.jpg` and
+`iStock-1371047758.jpg` — byte-for-byte the three files its gold page uses — laid out in
+the gold's own `row` of `col-md-4 col-12 paddingLR` columns followed by the pop-outs. An
+item is matched by its own number where the Media List numbers its rows and by POSITION
+where it does not (EXPFUN05 leaves that column blank throughout). **ALL OR NOTHING:** every
+cell must resolve or the strip is abandoned, so a row is never half pictures and half
+words — which is exactly what happens on EXPFUN05, whose third item is a cancer.org.nz
+page its developer hand-saved under a name no rule can derive; its three pop-outs ship
+with the writer's own words instead.
+
+**`MODALBOLDLEAD_OFF` — the bold opening phrase is the name.** CEDT208 writes
+`**Hawaiian Tapa Cloth:** We'll start our journey in Hawaii…`; the name is sitting in
+bold at the front of the content. The round-278/283/290/291 rule, with round 290's fence:
+EVERY set must yield one or none does, so a group is never part-named.
+
+**`MODALMEMVOCAB_OFF` — an `[external link]` is pop-out content**, not a foreign tag. The
+writer's `[Link] https://docs.google.com/…` is the resource the pop-out is FOR.
+
+### 4. THE VERIFIER — written this round, and it caught a bug in itself first
+
+`_verify_modal.cjs` + `--selftest` (LIVENESS + DETECTION, GREEN), in `run_all_gates.sh`.
+A DEFECT is a build that reaches a learner broken: **triggers ≠ pop-outs in one group**
+(the site pairs the *N*th of each, so an unpaired trigger does nothing — the round-291
+tile/panel finding turned into a standing check) · an empty pop-out · a trigger with no
+words AND no picture · a raw `[tag]` on either side · a label past twelve words. **NOT a
+defect, deliberately: a picture trigger and a media-only pop-out** — the gold ships 59 of
+the former, and calling them empty is the false positive that made round 283's verifier
+report defects on 674 of the gold's own panels. Duplicate labels are reported, not
+counted (round 291 recorded the same guard as needing its own round).
+
+**Its first live run reported OSOH501's perfectly good six pairs as "12 triggers vs 6
+pop-outs".** In image Mode P every picture ships TWICE — a visible placeholder and the
+real reference in an HTML comment for the developer — so a raw scan counted two triggers
+for every one. A bug in the VERIFIER, the round-283 class, fixed before it was trusted.
+
+**The gold measurement it rests on** (`outputs/_measure_r292_modgold.py`, body-scoped,
+**283 pop-outs / 62 modules / 98 pages**): trigger `div` 217 vs `img` 59 · **115 text
+labels, the longest SEVEN words** · **ZERO empty pop-outs** · size M 124 / L 83 / XL 72 /
+S 4 · one pop-out on 54 pages, which is why `min_modals` is 1. Two measured DECLINES from
+it: `choiceImg` sits on 33 of 59 picture triggers (0.56 — below the solidify floor, so the
+template is unchanged) and `size` stays the corpus-dominant M.
+
+### 5. THE PROOF
+
+* Toggles-OFF census **reproduces round 291 exactly** — 2385 built of 7602 = 31.4%, modal
+  161, clickDrop 181, every one of the 32 types identical. ON gives **2419 = 31.8%**,
+  modal **195**.
+* **NEW BUILDS 34 / LOST 0 in every type**, proven index-independently by
+  per-(module,page,type) build counts. Every shard's mtime checked against the newest
+  engine file before the merge (the round-279/287/291 stale-shard trap); the merge prints
+  `!! SHARDS MISSING` rather than merging quietly.
+* **THE AFFECTED SET DERIVED FROM BYTES, NOT BUILDS.** Three of this round's changes sit
+  in the member walk, which also runs for bundles that already build — so a module could
+  change bytes without changing its build count and be missed. `outputs/_probe_r292_hashes.cjs`
+  hashes every page of **all 101 modules that have a modal bundle** in each state: **581
+  pages compared, exactly 10 changed, 0 added, 0 removed, 9 modules** — the same set the
+  census found, confirmed independently.
+* **Byte identity, ONE TOGGLE STATE PER PROCESS** (the round-246 trap): all-OFF in memory
+  == the shipped corpus on **all 36 pages of the 9 affected modules**; **6 out-of-class
+  canaries — BLL210, OSAH501, TRR203, ENGS302, OSOH501, XGF9004, 42 pages — identical in
+  BOTH states** and identical to disk.
+* **Per-toggle decomposition**, each alone: STRAY BLL110 36→6, BLL120 47→24, BLL130 36→30
+  · OPENER EXPFUN04 15→0, EXPFUN05 14→12 · TILES EXPFUN04 15→0 · BOLDLEAD CEDT208 4→0 ·
+  MEMVOCAB ENGJ301 2→0, MXFL301 6→2 · CLOSER MXFL301 6→5, MXFU301 7→6. Every toggle has
+  named, measured effect.
+* **THE LEAK GUARD PROVEN over all 9 affected modules — 345 leaks in BOTH states,
+  PER-MODULE IDENTICAL.** Building adds no visible leak.
+* **A QUALITY SCAN of every trigger and pop-out** (`outputs/_probe_r292_quality.cjs` —
+  flagging a bare URL as a name, a leftover bracket, a red marker, the writer's photo
+  brief, a duplicate name or an empty pop-out, but NOT a picture trigger or a media-only
+  pop-out): **167 triggers inspected, 0 flagged.**
+* **The modal verifier over all 9: 47 groups / 167 triggers — exact 16, copy-edit 1,
+  dev-edit 150, defect 0 ✓.** ENGJ301 2 of 2 exact; EXPFUN05 13 exact + 1 copy-edit.
+* **13 named build assertions, ALL PASS** (`outputs/_probe_r292_modal.cjs --assert`),
+  including EXPFUN04's three tile filenames and its column class against the gold.
+* tags **9557/9557 REAL 0**; entry-parity **PASS**; index-sync **33/28**; §9 protected
+  flipCard gate **divergence 0 ✓**; **all NINE widget selftests GREEN**.
+
+**TWO ASSERTIONS OF MY OWN WERE WRONG BEFORE ANY CODE WAS.** The probe's "no raw media
+reference left on the page" fired twice: first because its strip used a non-greedy
+`[\s\S]*?</div>` that stops at the first close and was reading a DIFFERENT unbuilt
+widget's hand-off dump (the round-283 class, in the probe this time), then because items
+7 and 8 are videos elsewhere on the page whose asset request the designer still needs and
+which correctly ship as a red Writers Note. The round-291 finding holds: **most first-run
+failures are failures of the check.**
+
+### 6. GATES — held-or-improved, with the one mover named and decomposed page by page
+
+Scoped ship #4 since round 288 (the backstop is every 8, hard stop 16 — **a full `ship.sh`
+is not yet due**). Containment perfect (9 changed ⊆ 9 regenerated); content-hash
+**0-stale**; completeness spot-check **12/12 byte-identical, run IN MEMORY**
+(`_spotcheck_inmemory.cjs` — regenerating the sample would have written earlier no-regen
+rounds' pending work into the corpus, past the authorised scope: the round-273 trap).
+**Every affected module has a Claude dir** — no ghost-directory exclusion this round.
+Blast **10 pages / 9 modules, 0 added, 0 removed**.
+
+| Gate | r291 | r292 | Verdict |
+|---|---|---|---|
+| skeleton pages ≥50% | 982 | **982** | EXACT |
+| skeleton pages ≥75% | 193 | **193** | EXACT |
+| skeleton SCAFFOLD mean | 49.74% | 49.74% | −0.00pp — NAMED, below |
+| compare_structure exact / EXTRA / missing | 11209 / 185 / 585 | **11209 / 185 / 585** | EXACT |
+| body_compare ANY | 242 | **242** | EXACT |
+| clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | EXACT |
+| tags | 9557/9557 | 9557/9557 | EXACT |
+
+`compare_structure`'s matched POOL grows 13115 → 13203 (+88) with exact, EXTRA and
+missing all unmoved — the documented matched-pool-growth class.
+
+**THE SKELETON MOVEMENT, DECOMPOSED.** 13 pages moved, all inside the rebuilt set. Over
+them the scaffold sum falls **4.08 pp** while the RAW sum rises **9.73 pp**, and **12 of
+the 13 gain on RAW** — the documented net-positive signature (r176/r194/r220/r235/r284/
+r289/r290/r291): the scaffold view collapses a widget to one marker, so a page that
+matched the gold's built widget only by coincidence through a placeholder marker scores
+lower once real content ships, while RAW — which sees inside the widget — rises. Two
+pages carry the fall, and each was checked against its own gold:
+
+* **EXPFUN04_0_0 −5.67 scaffold / RAW +0.95 — and it is the round's most gold-faithful
+  build.** Its three tiles are the gold's own three files in the gold's own column class.
+  Five collapsed widget markers become five real pop-out groups, so the collapsed view
+  loses coincidental matches while RAW rises.
+* **MXFL301_9_0 −4.50 / RAW −0.54 — the A1 class, and the gold proves it.** The writer
+  tagged pop-outs named London, Hawaii, Orlando and Japan; **the human developer built an
+  ACCORDION with exactly those four headings**, and its gold page carries no pop-out
+  markup at all. Chris's standing A1 ruling (round 246) is to build the writer's tag and
+  judge it on the widget verifier, which passes with defect 0.
+* Every other moved page nets positive, led by **MXFU301_7_0 +4.11 scaffold**,
+  **EXPFUN05_0_0 +1.09**, **MXFU301_9_0 +1.56** and **ENGJ301_2_0 +0.81 / RAW +2.43**.
+
+The mover was passed to `_fastloop_diff.py --accept-named`, which records it in the
+baseline manifest and still fails on any metric not named — verified both ways.
+
+### 7. ALL 185 REMAINING DECLINES, NAMED
+
+* **77 no trigger at all** (19 modules), decomposing to **35 with content but genuinely
+  no name and no nameable picture**, **24 where the picture is identified only in a note
+  to the designer** ("same image from BLL110" — BLL140/150/160/170/210/240; round 291
+  found the identical class on BLL230, and **a label is never invented**), and 18 that
+  have nothing in the pop-out either.
+* **38 the line is not a trigger label** — 21 a real sentence (the gold's longest is seven
+  words, so the box is right) and 17 carrying no text at all.
+* **20 a member the walk cannot place** — `drag and drop` 5, `click drop` 4, `embed` 3,
+  `data marker` 2, `dropdown` 2, `carousel` 2, `shape n` 1, `correct` 1. **Down from 51**;
+  what remains is almost entirely OTHER WIDGETS' invocations, a gathering class exactly as
+  round 289 recorded for the accordion.
+* **18 an empty pop-out** — the gold ships ZERO empty pop-outs in 283, so this is correct.
+* **13 no delimiter resolves** (9 of them a single table whose shape the row reading cannot
+  take) · **10 the bundle holds nothing but an opener or a closer** (8) or a table that
+  renders to nothing (2) · **8 the strict alternation guard on XGF9004's multiple-choice
+  quiz**, working exactly as round 280 intended · 1 the leak guard.
+
+### 8. RECORDED, NOT SHIPPED
+
+* **The BLL "same image from BLL110" family (24 activities / 6 modules) is the largest
+  fixable class left, and it is a POLICY question for Chris**, not a code one: the picture
+  exists — in another module. Resolving a cross-module asset reference is derivable in
+  principle and has never been attempted; inventing a name for it is not.
+* **HES1006's Media List gives "Stock photo ID:1344939844" instead of a URL** — a third
+  reference dialect the tile rule cannot read. 3 activities.
+* **ENGJ301-4.0's `[M Modal]` + `[Example 1]`/`[Example 2]`** (the brief's #5): the names
+  are ideal and two words each, but they arrive as tags that resolve to nothing at all, so
+  reading them needs its own rule. 1 activity.
+* **ENGJ302-2.0's nine two-row tables**, one per pop-out, with `[Button] Manatee` as the
+  name — a multi-table shape the single-table reading declines.
+* The duplicate-trigger-name guard (reported by the verifier, not counted) — round 291
+  recorded the same for click-and-drops as needing its own measured round.
+
+**Env** `MODALSTRAY_OFF` / `MODALCLOSER_OFF` / `MODALOPENER_OFF` / `MODALTILES_OFF` /
+`MODALBOLDLEAD_OFF` / `MODALMEMVOCAB_OFF`. **Data**
+`interactive_builders.modal.modal_sets` (`closer_pattern`, `stray_marker_tags`,
+`prose_tags`, `opener_leading_numberless`, `bold_lead_label`, `media_tiles`). **Tools**
+`outputs/_measure_r292_modal.cjs` (the decline recorder, with a `--only CODE` leg),
+`_measure_r292_medialist.cjs`, `_measure_r292_modgold.py`, `_measure_r292_census.cjs`,
+`_probe_r292_hashes.cjs`, `_probe_r292_modal.cjs`, `_probe_r292_leaks.cjs`,
+`_probe_r292_quality.cjs`; **`reference/tests/_verify_modal.cjs`** (new, in the gate suite).
+
 ## 2026-08-08 (round 291, build 260618.61) — THE CLICK-AND-DROP: build every variation (Chris — the interactive-coverage chain, round 3 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal → tabs → dropDown → carousel → speechBubble; **SCOPED regeneration of the 14 affected modules that have a Claude dir, authorised in the request — NOT a full rebuild; the §9 baselines still describe the round-288/289/290 state except for the 17 pages named below**)
 
 **THE PLAIN-ENGLISH LEAD.** A click-and-drop is a row of buttons; clicking one reveals an

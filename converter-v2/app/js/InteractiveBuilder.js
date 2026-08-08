@@ -4516,7 +4516,7 @@ class InteractiveBuilder {
 		if (!parts) return null;
 
 		// (2) the SETS, from the first delimiter kind that is present.
-		const sets = this.#modalResolveSets(parts, cfg, tpl);
+		const sets = this.#modalResolveSets(parts, cfg, tpl, run);
 		if (!sets || sets.length < (cfg.min_modals ?? 1)) return null;
 
 		// (3) render through the shared set renderer.
@@ -4588,6 +4588,16 @@ class InteractiveBuilder {
 
 			if (tag === "modal") {
 				const own = this.#cellText(String(m.text ?? ""));
+				// ROUND 292 — A CLOSER IS NOT A POP-OUT. "[Close Modal]" / "[End modal]"
+				// marks where a pop-out ENDS; it resolves to the same `modal` tag as a real
+				// invocation, so it was becoming a modal PART and opening a numberless set
+				// with no trigger and nothing in it — which sank the whole widget on the
+				// very next check. 41 such members corpus-wide; consuming them is what lets
+				// EXPFUN04 and EXPFUN05 build at all. Env MODALCLOSER_OFF.
+				const closeRe = cfg.closer_pattern
+					&& !(typeof process !== "undefined" && process.env && process.env.MODALCLOSER_OFF)
+					? new RegExp(cfg.closer_pattern, "i") : null;
+				if (closeRe && closeRe.test(String(m.text ?? "").trim())) continue;
 				const numM = own.match(/(\d{1,3})/);
 				const sub = imgSub.test(own) ? "image" : (txtSub.test(own) ? "text" : "open");
 				const part = {
@@ -4699,6 +4709,35 @@ class InteractiveBuilder {
 
 			if (tag && /\blist\b/.test(tag)) continue;             // a no-op list delimiter
 
+			// ROUND 292 — AN [external link] IS POP-OUT CONTENT, not a foreign tag. The
+			// writer's "[Link] https://docs.google.com/…" is the resource the pop-out is
+			// FOR (ENGJ301, MXFL301, HIS1005, CEDR203 …); renderBlock weaves a bare URL
+			// into a real link on its own. 7 activities / 7 modules. Env MODALMEMVOCAB_OFF.
+			if (tag && (cfg.prose_tags ?? []).includes(tag)
+				&& !(typeof process !== "undefined" && process.env && process.env.MODALMEMVOCAB_OFF)) {
+				if (this.#hasRedText(raw)) return null;
+				if (text.trim()) parts.push({ role: "text", text, block: m.block });
+				else { const t = this.#cellText(String(m.text ?? "")); if (t.trim()) notes.push(t.trim()); }
+				continue;
+			}
+
+			// ROUND 292 — A STRAY MARKER FROM A NEIGHBOURING ACTIVITY. "[Tab 2]" and
+			// "[trigger engagement]" are content-less markers for a DIFFERENT activity
+			// further down the page that the capture swept in; refusing on them cost 26
+			// activities across six BLL phonics modules their entire build. MEASURED
+			// LOSSLESS (outputs/_measure_r292_modal.cjs): every one of the 26 sits at the
+			// very END of its bundle — last member, or followed only by another such
+			// marker — and carries NO trailing text whatsoever, so nothing the writer
+			// wrote is dropped. Treated exactly as a [button] is: skipped as build
+			// content, surfaced as a red note if it carries any words at all. Env
+			// MODALSTRAY_OFF.
+			if (tag && (cfg.stray_marker_tags ?? []).includes(tag)
+				&& !(typeof process !== "undefined" && process.env && process.env.MODALSTRAY_OFF)) {
+				const t = this.#cellText(String(m.blackAfter ?? ""));
+				if (t.trim()) notes.push(t.trim());
+				continue;
+			}
+
 			return null;                                           // a foreign tag we cannot place
 		}
 		return parts;
@@ -4726,7 +4765,7 @@ class InteractiveBuilder {
 	 * first that yields sets with a trigger. Returns `[{ label, filename, parts }]` for
 	 * #modalRenderSets, or null.
 	 */
-	static #modalResolveSets(parts, cfg, tpl) {
+	static #modalResolveSets(parts, cfg, tpl, run) {
 		const modals = parts.filter((p) => p.role === "modal");
 		if (!modals.length && !parts.some((p) => p.role === "table")) return null;
 		const maxWords = cfg.label_max_words ?? 20;
@@ -4738,10 +4777,22 @@ class InteractiveBuilder {
 		// ---- D1: NUMBERED [Modal N …] sub-tags -------------------------------------
 		if (modals.some((p) => p.num != null) && cfg.numbered_sets !== false) {
 			const sets = [];
+			const lead = [];                                        // parts before the first set
 			let cur = null;
+			// ROUND 292 — THE LEADING MARKER IS THE WIDGET'S OPENER, NOT POP-OUT 0. In a
+			// NUMBERED bundle the sets are keyed by the writer's own number, so a marker
+			// with no number AND no text of its own that arrives before the first numbered
+			// one cannot be a pop-out — it is the writer setting the widget up ("[Click
+			// modal XL with a graphic on the front of the tile…]", EXPFUN04/05). It was
+			// opening a trigger-less first set that swallowed the tile table and sank both
+			// modules. Requiring it to carry no text of its own means a genuinely
+			// unnumbered LABELLED pop-out can never be swallowed. Env MODALOPENER_OFF.
+			const openerRule = cfg.opener_leading_numberless !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.MODALOPENER_OFF);
 			for (const p of parts) {
 				if (p.role === "modal") {
 					if (p.red) return null;                         // a writer instruction on the tag
+					if (openerRule && !cur && p.num == null && !String(p.text ?? "").trim() && !p.imgUrl) continue;
 					// a NEW number opens a new set; the same number continues the current one
 					if (!cur || (p.num != null && p.num !== cur.num)) {
 						cur = { num: p.num, label: "", filename: null, parts: [] };
@@ -4766,11 +4817,15 @@ class InteractiveBuilder {
 					continue;
 				}
 				if (!cur) {
-					if (p.role === "text") continue;                // a lead line before the first set
+					// ROUND 292 — LEAD content, kept rather than refused: the writer's tile
+					// TABLE lives here, and it is where the triggers come from (below).
+					lead.push(p);
+					if (p.role === "text" || p.role === "table") continue;
 					return null;
 				}
 				if (!this.#modalPushPart(cur.parts, p)) return null;
 			}
+			this.#modalMediaTiles(sets, lead, cfg, run);
 			return this.#modalFinishSets(sets, cfg);
 		}
 
@@ -4885,11 +4940,86 @@ class InteractiveBuilder {
 	}
 
 	/**
+	 * ROUND 292 — THE MEDIA-LIST TILE STRIP. The writer opens the group with a table whose
+	 * cells are numbered Media-List references and nothing else:
+	 *
+	 *   [Click modal XL with a graphic on the front of the tile…]     ← the opener
+	 *   | [Insert media item 4] ║ [Insert media item 5] ║ [Insert media item 6] |
+	 *   [Modal 1] …  [Modal 2] …  [Modal 3] …                          ← the three pop-outs
+	 *
+	 * Each cell is the TRIGGER PICTURE of the correspondingly-numbered pop-out. The Media
+	 * List is already parsed into `run.mediaItems` for the acknowledgements, so following
+	 * the number costs nothing — and it lands on the human developer's own choice:
+	 * EXPFUN04's items 4/5/6 resolve to iStock-1156854907.jpg, iStock-155353286.jpg and
+	 * iStock-1371047758.jpg, which are byte-for-byte the three files its gold page uses.
+	 *
+	 * An item is matched by its OWN number where the Media List numbers its rows, and by
+	 * 1-based POSITION where it does not (EXPFUN05 leaves the column blank throughout).
+	 *
+	 * ALL OR NOTHING. Every cell must resolve to a nameable picture or the strip is
+	 * abandoned and the sets fall back to their own text labels — so a row is never half
+	 * pictures and half words. That is what happens on EXPFUN05, whose third item is a
+	 * cancer.org.nz page its developer hand-saved as a file no rule can name: its three
+	 * pop-outs ship with the writer's own words on them instead.
+	 *
+	 * Env MODALTILES_OFF. Data interactive_builders.modal.modal_sets.media_tiles.
+	 */
+	static #modalMediaTiles(sets, lead, cfg, run) {
+		const mt = cfg?.media_tiles;
+		if (!mt || mt.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.MODALTILES_OFF) return;
+		if (!sets.length || sets.some((s) => s.filename)) return;   // already triggered
+		const items = run?.mediaItems ?? [];
+		if (!items.length) return;
+		const tables = lead.filter((p) => p.role === "table");
+		if (tables.length !== 1) return;
+		const rows = (tables[0].item?.block?.rows ?? [])
+			.map((r) => (r ?? []).map((c) => this.#cellText(typeof c === "string" ? c : c?.text)));
+		const cells = rows.flat().map((c) => String(c ?? "").trim()).filter(Boolean);
+		if (cells.length !== sets.length) return;                   // one tile per pop-out, or not this form
+		const re = new RegExp(mt.reference_pattern ?? "\\b(?:media\\s+)?item\\s*(\\d+)\\b", "i");
+		const names = [];
+		for (const c of cells) {
+			const m = c.match(re);
+			if (!m) return;                                         // not a media reference — not this form
+			const n = parseInt(m[1], 10);
+			const numbered = items.find((it) => parseInt(String(it.itemNo ?? "").replace(/\D/g, ""), 10) === n);
+			const it = numbered ?? items[n - 1];                    // by number, else by position
+			const fn = it && it.url ? this.#accImageFilename(it.url, cfg, cfg) : null;
+			if (!fn) return;                                        // ALL or nothing
+			names.push(fn);
+		}
+		sets.forEach((s, i) => { s.filename = names[i]; s.tile = true; });
+	}
+
+	/**
 	 * ROUND 280 — the final never-half-build check on the resolved sets: every set needs a
 	 * TRIGGER (a label or a nameable image — a label is never invented) and real CONTENT.
+	 *
+	 * ROUND 292 adds the BOLD-LEAD label. A set with no trigger of its own takes the bold
+	 * phrase its first line opens with — the rule already used for accordion panels (r278),
+	 * click-and-drop buttons (r283/291) and flip-card faces (r290). CEDT208 writes four
+	 * pop-outs as "[Modal 1] / [Modal Image] / **Hawaiian Tapa Cloth:** We'll start our
+	 * journey in Hawaii…", where the name is sitting in bold at the front of the content.
+	 * EVERY set must yield one or none does (the round-290 fence), so a group is never
+	 * part-named. Env MODALBOLDLEAD_OFF.
 	 */
 	static #modalFinishSets(sets, cfg) {
 		if (!sets || !sets.length) return null;
+		if (cfg?.bold_lead_label !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.MODALBOLDLEAD_OFF)
+			&& sets.every((s) => !s.label && !s.filename && s.parts[0]?.role === "text")) {
+			const leads = sets.map((s) => this.#accBoldLead(String(s.parts[0].text).split("\n")[0].trim(),
+				{ ...cfg, head_max_words: cfg.label_max_words ?? 9 }));
+			if (leads.every((l) => l && l.rest.trim())) {
+				sets.forEach((s, i) => {
+					s.label = leads[i].head;
+					const rest = [leads[i].rest, ...String(s.parts[0].text).split("\n").slice(1)]
+						.filter((x) => String(x).trim()).join("\n");
+					s.parts[0] = { role: "text", text: rest };
+				});
+			}
+		}
 		for (const s of sets) {
 			if (!s.label && !s.filename) return null;              // no trigger at all
 			if (!s.parts.length) return null;                      // an empty pop-out
@@ -4974,6 +5104,11 @@ class InteractiveBuilder {
 	 */
 	static #modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested }) {
 		const out = [];
+		// ROUND 292 — a TILE STRIP is laid out the way its human developer lays it out:
+		// all the tiles together in one row of columns, then the pop-outs after it (the
+		// site pairs the Nth trigger with the Nth pop-out, so the order is what matters,
+		// not the nesting). EXPFUN04's gold page is the model, down to the column class.
+		const tiles = sets.length && sets.every((s) => s.tile) ? [] : null;
 		for (const s of sets) {
 			const chunks = [];
 			for (const part of s.parts) {
@@ -5006,10 +5141,20 @@ class InteractiveBuilder {
 				? this.#assetImage(s.filename, cfg, run)
 				: Utils.FillTemplate(cfg.trigger_button ?? "<div class=\"button TKmodalButton\">{label}</div>",
 					{ label: inline(String(s.label).replace(/\*+/g, "").trim()) });
-			out.push(trigger + "\n"
-				+ Utils.FillTemplate(cfg.modal_open ?? "<div class=\"TKmodal\" size=\"{size}\">",
-					{ size: cfg.default_size ?? "M" })
-				+ "\n" + content + "\n" + (cfg.modal_close ?? "</div>"));
+			const modal = Utils.FillTemplate(cfg.modal_open ?? "<div class=\"TKmodal\" size=\"{size}\">",
+				{ size: cfg.default_size ?? "M" })
+				+ "\n" + content + "\n" + (cfg.modal_close ?? "</div>");
+			if (tiles) { tiles.push(trigger); out.push(modal); continue; }
+			out.push(trigger + "\n" + modal);
+		}
+		if (tiles && tiles.length) {
+			const mt = cfg.media_tiles ?? {};
+			const cls = (mt.col_by_count ?? {})[String(tiles.length)] ?? mt.col_default ?? "col-md-4 col-12 paddingLR";
+			const strip = (mt.row_open ?? "<div class=\"row\">") + "\n"
+				+ tiles.map((t) => Utils.FillTemplate(mt.col_open ?? "<div class=\"{cls}\">", { cls })
+					+ "\n" + t + "\n" + (mt.col_close ?? "</div>")).join("\n")
+				+ "\n" + (mt.row_close ?? "</div>");
+			out.unshift(strip);
 		}
 		return out.length ? out : null;
 	}

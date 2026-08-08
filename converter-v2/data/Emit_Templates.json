@@ -953,7 +953,23 @@
 				"label_max_words": 9,
 				"min_modals": 1,
 				"min_inferred_modals": 2,
-				"_note": "ROUND 280 — the general TKmodal set composer, tried LAST after the r216 image-pair form and the r73 document button, so all 88 pre-round builds are byte-identical by construction. Emits the corpus convention (div.button.TKmodalButton + its sibling div.TKmodal) from four delimiters: numbered [Modal N …] sub-tags, the SAME-BLOCK label line, a captured TABLE (one row = one modal), and the tag's own text. The text trigger is DOMINANT in the gold — 213 of 283 TKmodals = 75.3% across 52 modules — while the converter previously had no builder for it at all. min_modals 1 (a lone modal is the gold's plurality); label_max_words 9 is GOLD-BACKED (of 125 gold text triggers 96.8% are <=6 words and 100% <=9), so a longer writer line is not a trigger and the set declines rather than putting a paragraph on a button. A strict label/modal alternation keeps a multiple-choice quiz from becoming a row of buttons. Env MODALSETS_OFF."
+				"closer_pattern": "^\\[\\s*(?:close|end)\\b",
+				"stray_marker_tags": ["tab n", "engagement quiz button"],
+				"prose_tags": ["external link"],
+				"opener_leading_numberless": true,
+				"bold_lead_label": true,
+				"media_tiles": {
+					"enabled": true,
+					"reference_pattern": "\\b(?:media\\s+)?item\\s*(\\d+)\\b",
+					"row_open": "<div class=\"row\">",
+					"row_close": "</div>",
+					"col_open": "<div class=\"{cls}\">",
+					"col_close": "</div>",
+					"col_by_count": { "2": "col-md-6 col-12 paddingLR", "3": "col-md-4 col-12 paddingLR", "4": "col-md-3 col-12 paddingLR", "6": "col-md-2 col-12 paddingLR" },
+					"col_default": "col-md-4 col-12 paddingLR"
+				},
+				"_note_r292": "ROUND 292 — five measured additions, each on its own env toggle. closer_pattern: a modal member whose bracket says close/end is a CLOSER and never opens a pop-out (41 such members corpus-wide; [Close Modal] was opening an empty set and sinking the whole widget — MODALCLOSER_OFF). stray_marker_tags: a content-less marker belonging to a NEIGHBOURING activity ([Tab 2], [trigger engagement]) is skipped like a [button] instead of bailing the walk — MEASURED LOSSLESS, all 26 occurrences sit at the very end of their bundle and carry no text at all (MODALSTRAY_OFF; 26 activities / 6 BLL modules, the joint-largest lever). prose_tags: an [external link] carrying a URL is pop-out CONTENT, not a foreign tag (MODALMEMVOCAB_OFF; 7 activities). opener_leading_numberless: in a NUMBERED bundle a leading text-less numberless marker is the widget's own opener, not pop-out 0 — it was creating a trigger-less first set that sank EXPFUN04/05 (MODALOPENER_OFF). bold_lead_label: a numbered set with no label takes the BOLD LEAD of its first line, the round-278/283/290/291 rule (MODALBOLDLEAD_OFF; CEDT208's four tapa cloths). media_tiles: the writer's lead table of [Insert media item N] references supplies the numbered sets' TRIGGER PICTURES from the Media List the run already parses — EXPFUN04's items 4/5/6 resolve to iStock-1156854907 / iStock-155353286 / iStock-1371047758, the three filenames its human developer used, and the emit is the human's own row of tile columns followed by the pop-outs. EVERY cell must resolve or none does, so a strip is never half pictures and half words (MODALTILES_OFF)."
+				,"_note": "ROUND 280 — the general TKmodal set composer, tried LAST after the r216 image-pair form and the r73 document button, so all 88 pre-round builds are byte-identical by construction. Emits the corpus convention (div.button.TKmodalButton + its sibling div.TKmodal) from four delimiters: numbered [Modal N …] sub-tags, the SAME-BLOCK label line, a captured TABLE (one row = one modal), and the tag's own text. The text trigger is DOMINANT in the gold — 213 of 283 TKmodals = 75.3% across 52 modules — while the converter previously had no builder for it at all. min_modals 1 (a lone modal is the gold's plurality); label_max_words 9 is GOLD-BACKED (of 125 gold text triggers 96.8% are <=6 words and 100% <=9), so a longer writer line is not a trigger and the set declines rather than putting a paragraph on a button. A strict label/modal alternation keeps a multiple-choice quiz from becoming a row of buttons. Env MODALSETS_OFF."
 			},
 			"enabled": true,
 			"default_label": "Go to resource",
