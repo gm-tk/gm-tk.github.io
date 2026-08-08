@@ -1681,7 +1681,7 @@
 				"exclude_reo": true,
 				"header_max_words": 3,
 				"leak_guard": true,
-				"leak_pattern": "\\[\\s*[A-Za-z][^\\]\\n](0, 40)\\]",
+				"leak_pattern": "\\[\\s*[A-Za-z][^\\]\\n]{0,40}\\]",
 							"heading": "<h4>{text}</h4>",
 				"heading_bold": "<p><b>{text}</b></p>",
 				"item": "<div class=\"item\">\n{parts}\n</div>",
@@ -1781,6 +1781,19 @@
 					"media_opens_slide": true,
 					"video_tail_url": true,
 					"_note": "ROUND 247 (Chris, ENGS404) — the MEDIA-SERIES refinements. media_opens_slide (env CARMEDSLIDE_OFF): in a bundle with NO [Slide N] markers, each image/video member OPENS its own slide — the writer's back-to-back media list is one slide per item ('[image 1]..[image 4]' = 4 slides; 2 [video]s = 2 slides, which previously piled into ONE slide and failed min_slides); a heading/prose-opened slide still receives its FIRST media item, so the heading+image dialect is byte-unchanged. video_tail_url (env CARVIDTAIL_OFF): a [video]/[insert video] member with no URL of its own takes it from the immediately-following black link/title line (the r240 D2 title-anchored class inside a widget — MEASURED 137 members / 38 modules corpus-wide, NONE currently building, outputs/_detect_r247.cjs); the line is consumed as that video's reference. Pairs with the scanner's member_rule.media_series_break (env CARSERIES_OFF), which stops the run's capture at the first following non-media element."
+				},
+				"go_journal_member": {
+					"enabled": true,
+					"_note": "ROUND 295 — the round-289 accordion rule transposed to the carousel. The scanner's member_rule.button_tail_terminates deliberately EXCLUDES a go-to-journal button (round 239 owns it, and releasing it produced the duplicate Chris reported at round 273), so it stays a captured member and the member walk bailed on it as an unrecognised piece. It is now SKIPPED as slide content and the shared round-239 <h4 class=\"goJournal\"> is emitted after the widget, via the SAME #accGoJournalHtml helper and the SAME #accIsGoJournal predicate the accordion uses, so the two can never drift apart. GOLD BACKING: a button sits inside a carousel's viewer in 13 of 1,768 body-scoped gold carousels = 0.7% (outputs/_measure_r295_cargold.py) — even lower than the accordion's 1.7%, so a trailing button belongs after the widget. `bundle._goJournalEmitted` stops the r239 member branch shipping a second identical heading. Env CARGOJOURNAL_OFF."
+				},
+				"slide_label": {
+					"enabled": true,
+					"pattern": "^(?:slide|image|picture|photo)\\s*(\\d{1,2})\\s*[:.)\\-–]?\\s*(.*)$",
+					"min_labels": 2,
+					"max_number": 30,
+					"max_rest_words": 24,
+					"note_unresolved_media": true,
+					"_note": "ROUND 295 (Chris — the interactive-coverage chain, round 7 of 8). THE NUMBERED SLIDE LABEL. Two writer dialects that are one rule underneath: the label rides the widget's OWN invocation ('[Carousel] Slide 1' … 'Slide 3', SSEA203-1.0/2.0) or it is a red span the normaliser resolved to NO structural tag ('Image 1: <iStock url>', HPFUN102/HPFUN202-0.0; 'Picture 1: dormant trees during winter', AGH1001-4.0). Neither reached a delimiter before: the invocation branch (r279 invocation_opens_slide) only opens a slide when one is ALREADY open, so a bundle whose every image is an asset request never opened its first; and a no-primary span is read as prose, so a whole run piled into ONE slide and failed min_slides. The label itself is CHROME — the gold captions no slide 'Slide 1' — and whatever follows it on the line is that slide's content (a media url becomes the picture or the embed, the rest becomes the caption), so nothing the writer typed is lost. SCOPED BY CONSTRUCTION to members with no primary tag plus the widget's own invocation: TWHA906-0.0 writes 'Slide 2: [body text]' on a real [body] ELEMENT and is invisible to the rule, which is what keeps the ONE building bundle carrying a 'Slide N:' label byte-identical (measured over all 896 captured carousels: 4 bundles carry ≥2 bracketed labels, all SSEA203, all declining; 5 carry ≥2 plain 'Slide N:' lines, of which only TWHA906 builds). NEVER HALF-BUILDS: a rising number series is required (a lone label or a repeated 'Slide 1' is not a series), and any slide a label opened that resolves to NOTHING declines the whole build — MXEO201-5.0's 'Slide 2:' is a bare link to an external resource page we cannot embed and carries no words of its own. GOLD BACKING: a slide carries no <img>/<iframe> in 742 of 7,700 gold slides = 9.6% (outputs/_measure_r295_cargold.py), so a caption-only slide is a well-formed gold shape, not a half-build. Env CARSLIDELABEL_OFF."
 				},
 				"slide_tags": [
 					"slide n",

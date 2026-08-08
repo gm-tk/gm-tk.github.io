@@ -1301,6 +1301,13 @@ class InteractiveScanner {
 				const btT = DataService.Data.BoundaryBank._meta.member_rule.button_tail_terminates;
 				if (btT && btT.enabled !== false
 					&& !(typeof process !== "undefined" && process.env && process.env.ACCBTNTAIL_OFF)
+					// ROUND 295: the rule now also covers the CAROUSEL, and each type
+					// reverses on its OWN env toggle so the two decompose independently
+					// (CLAUDE.md §2). `env_by_type` is DATA — covering a further type is
+					// a data edit plus one map entry, never a code change.
+					&& !(typeof process !== "undefined" && process.env
+						&& (btT.env_by_type ?? {})[bundle.type]
+						&& process.env[(btT.env_by_type ?? {})[bundle.type]])
 					&& (btT.types ?? ["accordion"]).includes(bundle.type)
 					&& (btT.tags ?? ["button"]).includes(p?.tag)
 					&& p?.directive !== "INTERACTIVE"
@@ -1314,6 +1321,13 @@ class InteractiveScanner {
 					&& !this.#isGoJournalButton(next)
 					&& bundle.memberItems.some((m) => m && (m.type !== "tag" || m.parse?.primary?.directive !== "INTERACTIVE"))
 					&& !this.#panelDelimiterAhead(items, j + 1, bundle, btT)) {
+					// ROUND 295: mark the bundle so the BUILDER can scope its leak guard
+					// to builds this break made possible. A widget that only becomes
+					// buildable because a trailing button was released must not put a
+					// literal writer tag on the page — BLL262-1.0's black "[Audio]" line
+					// was caught exactly here, and the round-279 guard is scoped to
+					// `mvUsed` and cannot see this new route.
+					bundle._r295ButtonTail = true;
 					break;
 				}
 			}

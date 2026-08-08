@@ -1,5 +1,266 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 295, build 260618.66) — THE CAROUSEL: build every variation (Chris — the interactive-coverage chain, round 7 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown ✅ → carousel ✅ → speechBubble; **the STANDING whole-type regeneration of all 373 modules carrying a ticked type — CLAUDE.md §0a**)
+
+**THE PLAIN-ENGLISH LEAD.** A carousel is the slideshow a reader clicks through. It was
+already the best-covered big activity type — 640 of 896 built after rounds 266, 271 and
+279 — so this was always going to be a small round, and the useful part is the honest
+accounting rather than the count. **They now build 654 of 896, up from 640, with 15 new
+builds and ONE loss that is a defect removed rather than a build lost.**
+
+**THE REACHABLE POOL, STATED FIRST (the round-294 discipline).** Of the 256 hand-off
+boxes, **139 are "fewer than two slides could be resolved" spread one-per-module across
+95 modules** — and decomposing them shows **43 are the reading-book family** (the slides
+are pages of an external PDF the program never sees, a decline round 279 already recorded
+as correct) and **65 more carry nothing a builder could resolve two slides from**. That is
+108 of 139 undecidable from the writer's document. A further 51 are two activities the
+gatherer merged into one, which is a capture problem, not a builder gap. **The genuinely
+reachable slice was about 30 activities, and the round reached half of them.**
+
+---
+
+### 1. THE BRIEF'S REASON COUNTS ARE EXACT — five for five, and the structural reason generalises
+
+`WHY_UNBUILT__carousel.md` is the **third brief in this chain whose reasons are right**,
+and round 292's rule predicts it: a brief is trustworthy when its widget's composer is
+last in the dispatch. The carousel has nine readings, but **`#carouselRich` and
+`#carouselTableSlides` partition on "does this bundle carry a table", and each is terminal
+inside its own partition** — so between them they decide everything.
+
+The recorder had to be rebuilt against the current tree (`outputs/_measure_r295_carousel.cjs`,
+the round-279 tool re-pointed, with round 294's assertion that the patch actually applied —
+101 sites). Its naive "last null" is misleading here, because `#carouselTableSlides` runs
+last and bails at once on a table-less bundle; discounting that pass-through
+(`outputs/_r295_analyse.py`) gives the true terminal cause:
+
+| Deciding guard | Activities | Modules | The brief's reason |
+|---|--:|--:|---|
+| `carouselRich` — fewer than 2 slides | **139** | 95 | A (139/95 ✓) |
+| `carousel` — a merged second widget | **51** | 30 | B (51/30 ✓) |
+| `carouselRich` — a member it cannot place | **33** | 26 | C (33/26 ✓) |
+| `carouselTableSlides` — table/reo/max | **31** | 18 | D (31/18 ✓) |
+| `carouselRich` — a slide rendered to nothing | **2** | 2 | E (2/2 ✓) |
+
+### 2. ITS RANKING IS UPSIDE DOWN — and its #1 misdescribes its own headline example
+
+| The brief says | The measurement says |
+|---|---|
+| **#1** build the first activity when the second's marker arrives after it is complete — "up to a third of 51", "BLL110 is the model" | **11 of 51** have the foreign invocation in the last two members — and **BLL110 is not one of them.** Its flip card is member index 1, *before* all six of the banner's pictures; the material is genuinely interleaved, which is the case the brief itself says to keep the box for |
+| **#2** treat a repeated `[Carousel] Slide N` as a slide boundary — "~14" | **4 activities in EXACTLY ONE module** (SSEA203) |
+| **#3** a colon-led plain-text `Slide N:` | **4 activities in 2 modules** |
+| **#4** let a trailing button sit after the slideshow — "part of 33" | **the largest lever: 16 of the 33 end in a run of buttons, across 13 modules** |
+| **#5** build from numbered captions with no pictures | **3 activities in 3 modules** |
+
+It is also wrong that "a third clears itself the moment dropdowns are handled": the 18
+dropdown-tangled bundles fail at the **gatherer**, and a better dropdown *builder* cannot
+unmerge them. Round 294 changed nothing here, as this round's own census confirms.
+
+### 3. WHAT SHIPPED — re-ranked by measured reach, every rule gold-checked first
+
+Gold measured before any emit code (`outputs/_measure_r295_cargold.py`, body-scoped:
+**1,768 carousels / 7,700 slides / 392 modules**): a button sits inside a viewer in **13
+groups = 0.7%** (lower than the accordion's 1.7%), and **742 slides = 9.6% carry no image
+or video at all**, so a caption-only slide is a well-formed gold shape.
+
+* **`CARBTNTAIL_OFF` — the trailing-button section break, the largest lever.** The rule
+  already existed for the accordion (round 278) and is fully data-driven; the carousel
+  joins `member_rule.button_tail_terminates.types`, and a new **`env_by_type`** map gives
+  each type its own toggle so the two decompose independently. **This is deliberately NOT
+  claimed zero-risk by construction:** unlike the accordion, **11 currently-building
+  carousels carry a trailing button**, so the blast radius is proven by hashing every
+  carousel-carrying module in both states rather than by argument. What it recovers is
+  substantial — CEDR401-1.0's six captioned videos, MXFL102-2.0's three, CEDT501-3.0's
+  whole reporting sequence — and on the modules that already built it **restores buttons
+  the writer typed that were being silently swallowed** (ENGC302 three, CEDK501's response
+  sheet, AGH1003's help link, BLL117's fourth "Go to check in").
+* **`CARSLIDELABEL_OFF` — the numbered slide label.** Two writer dialects, one rule: the
+  label rides the widget's own invocation (`[Carousel] Slide 1`, SSEA203) or a red span
+  the normaliser resolved to no tag at all (`Image 1: <iStock url>`, HPFUN102/HPFUN202;
+  `Picture 1: dormant trees during winter`, AGH1001). Neither reached a delimiter before:
+  round 279's `invocation_opens_slide` only opens a slide when one is *already* open, so a
+  bundle whose every picture is an asset request never opened its first. The label is
+  chrome — **the gold captions no slide "Slide 1"** — and whatever follows it on the line
+  becomes that slide's picture, embed or caption, so nothing the writer typed is lost.
+  **SCOPED to members with no primary tag**, which is exactly what keeps TWHA906-0.0 —
+  the one building bundle that writes `Slide 2: [body text]` on a real element —
+  byte-identical.
+* **`CARGOJOURNAL_OFF` — the go-to-journal button**, round 289's accordion rule
+  transposed. The scanner break deliberately excludes this one button (round 239 owns it,
+  and releasing it caused the duplicate Chris reported at round 273), so it stayed a
+  member and the walk bailed on it. It is now skipped as slide content and round 239's own
+  `<h4 class="goJournal">` is emitted after the widget, through the **same helper and the
+  same predicate** the accordion uses.
+* **MEASURED AND DECLINED, with the measurement recorded:** the plain-text `Slide N:`
+  form (MXEO201's slide content is a title plus a video URL inside a *noise* span, which
+  the prose branch renders as a visible link — a half-build; MXEO201 builds anyway, via
+  the label rule reading its `Slide N:` spans, but the general widening is not shipped).
+
+### 4. A PRE-EXISTING DEFECT FIXED RATHER THAN REVERTED — and it is the round's most useful find
+
+The first cut of the label rule let BLL262-1.0 build a slideshow whose caption was the
+literal text `[Audio]`. Chasing it found something bigger: **the round-279 carousel leak
+guard has been INERT since round 284.** Its pattern is
+`\[\s*[A-Za-z][^\]\n](0, 40)\]` — the quantifier written with parentheses instead of
+braces, so it matches essentially nothing. It is in the committed tree and pre-dates this
+round; a scan of every data file found **exactly one such typo**, consistent with the
+round-284 data-recovery residual.
+
+The consequence is on the page today: **`01-Claude_Modules_/Standard/BLL263/BLL263_1_0.html`
+ships `[Embed audio book]` as visible text inside a built carousel** — the very leak
+round 279's own note says this guard caught.
+
+Per Chris's round-293b rule the fix is to repair it, not to work around it. The pattern is
+corrected in data and the guard's SCOPE is widened to the two new routes into the builder
+(`labelMode`, `bundle._r295ButtonTail`) — still scoped, never unconditional, so it cannot
+refuse anything shipping since round 246. **Cost: BLL263 loses its build and keeps the
+honest hand-off box.** That is the single LOST build, and it is a defect removed.
+`CARLEAKFIX_OFF` restores the inert guard so the round's A/B is exact.
+
+### 5. FOUR BUGS THE PROOF CAUGHT — and two were in my own checks, for the FIFTH round running
+
+* **HPFUN102 "every slide carries two pictures".** Mode P ships every image twice, once
+  inside an HTML comment — **the bug round 292's modal verifier caught in itself**, in my
+  probe this time. The scan now strips comments first.
+* **CEDR401 "zero videos".** The corpus embed host is **youtube-nocookie.com**; my regex
+  looked for youtube.com and reported a correct six-video build as empty.
+* **BLL262's `[Audio]` caption** (§4) — and the leak guard that should have refused it.
+* **BLL117 appearing to ship "Go to check in" twice.** Checking the writer's own document
+  settled it: **the writer typed four separate "Go to check in" buttons**, and the second
+  on that page is the carousel's, restored. Not a duplicate.
+
+### 6. THE PROOF
+
+* **The toggles-OFF census reproduces the shipped tree EXACTLY** — 7602 captured /
+  **2426 built** / 31.9%, carousel 640, all 32 types identical to round 294's published
+  figures. The ON census was **re-run after every builder edit** (three times).
+* **THE AFFECTED SET FROM BYTES, NOT BUILDS** (the round-293 lesson, and it mattered
+  again): the census names **13 modules**; hashing **every page of all 314
+  carousel-carrying modules** in both states finds **65 pages / 33 modules changed, 0
+  added, 0 removed**. The extra 20 are modules that already built and whose bytes moved
+  because the scanner released a swallowed button.
+* **Byte identity ONE STATE PER PROCESS** (the r246 trap). **Six out-of-class canaries** —
+  TRR203, OSBY201, CEDO501, XDLS501, ENGS302, HIS1006, 59 pages — **identical in BOTH states**.
+* **Per-toggle decomposition**, each owning its own pages: BTNTAIL 50 pages / 26 modules ·
+  SLIDELABEL 9 / 4 · GOJOURNAL 4 / 2 · LEAKFIX 2 / 1.
+* **The leak guard**, the defect audit's own predicate in memory over all 33 affected
+  modules in two batches: **430/430 per-module IDENTICAL**, and **110 → 109 IMPROVED** in
+  the other batch — the one removal being BLL263's.
+* **A TEXT-DELTA CHECK over all 201 pages of the changed modules**, comparing the visible
+  word bags in both states. Every "lost" word is hand-off-box chrome disappearing when a
+  widget builds, a URL becoming an `href`, or a video title dropped by round 80's own
+  rule. **CEDT501-2_0 is strictly better**: its answers table leaves the box and a raw
+  `[Hover: wider community]` becomes a correctly woven `infoTrigger`. **MXFU201-8_0
+  recovers a whole section** (`<h4>8H Conclusions</h4>`, its paragraph and a real `<img>`)
+  that was flat text in a dump. **ENFUN03-0_0's adverb section returns to the writer's
+  own three-column layout.**
+* **Quality scan** of every built slide: 243 slides, 15 flagged, all "a URL visible in the
+  caption"; **the same URLs were already visible on the page in the OFF state** (page-level
+  counts identical) except one on ENFUN03 that had been silently dropped.
+* **28 named assertions, ALL PASS, including SIX NEGATIVE ones** pinning what must NOT
+  build: MXEO201-5.0 (its `Slide 2:` is a bare link to an unembeddable resource page and
+  carries no words — a blank slide is a half-build), BLL143 and BLL262/BLL263 (the
+  reading-book family), TWHA906 (a real element carrying a `Slide N:` prefix), TRR301 (the
+  te reo exclusion, untouched by design).
+
+### 7. THE WHOLE-TYPE REGENERATION SWEEP (CLAUDE.md §0a)
+
+**373 modules** carrying a carousel, accordion, flip card, click-and-drop, pop-out, tab
+set or dropdown and having a Claude dir (`outputs/_r295_typeregen.txt`; 37 more have none
+and would only create ghosts — the r285 trap). All 373 regenerated in 31 batches,
+**content-hash 0-stale**.
+
+**Exactly 38 pages / 29 modules changed**, and the arithmetic reconciles the in-memory
+proof exactly: 33 modules changed in memory − **4 with no Claude dir** (BLL266, CEDR101,
+CEDR401, SSEA203) = 29 on disk. **The sweep found NO pending work from any earlier round**
+— the second completely clean sweep in a row.
+
+**EVERY VERIFIER OVER ITS WHOLE POPULATION:**
+
+| Type | modules | result |
+|---|--:|---|
+| carousel | 286 | 74 mismatched slide ids across 24 modules — **every one PROVEN pre-existing**: only CEDK501 is among the 29 changed modules, and its carousel span is byte-identical (its only change is a restored button) |
+| accordion | 173 | 864 panels, **every built panel matches the human ✓** |
+| clickDrop | 131 | 354 items, **defect 0 ✓** |
+| modal | 93 | 301 triggers, **defect 0 ✓** |
+| dropDown | 147 | 147 units, **defect 0 ✓** |
+| tabs | 56 | defect 13 in HES1003, PES1008, PHE1003, PHE1005, XLP06 — **the identical five modules and identical count round 293b proved pre-existing**; none is among the 29 |
+| flipCard | §9 gate | **divergence 0 ✓** (61: exact 32, copy-edit 11, defect 18) |
+
+tags **9557/9557, REAL FAILURES 0** · entry-parity **PASS** · index-sync **33/28 OK** ·
+**all NINE widget selftests GREEN**.
+
+### 8. GATES — three movers, each decomposed page by page
+
+| Gate | baseline | new | verdict |
+|---|---|---|---|
+| skeleton pages ≥50% | 982 | **982** | **HELD** |
+| skeleton pages ≥90% | 16 | **16** | **HELD** |
+| skeleton RAW | 33.941% | **34.066%** | **IMPROVED** |
+| skeleton pairs / skipped | 1940 / 0 | **1940 / 0** | **HELD** |
+| compare_structure exact | 11209 | **11213** | **IMPROVED** |
+| compare_structure EXTRA | 185 | **185** | **HELD** |
+| body_compare ANY | 242 | **242** | **HELD** |
+| structurally clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | **HELD** |
+| tags | 9557/9557 | **9557/9557** | **HELD** |
+| skeleton SCAFFOLD mean | 49.74% | 49.72% | **NAMED** |
+| skeleton pages ≥75% | 193 | 192 | **NAMED** |
+| compare_structure missing | 586 | 590 | **NAMED** |
+
+The three movers were accepted through `_fastloop_diff.py --accept-named`, **verified to
+still FAIL when only two of the three are named**, and decompose as follows (a fresh
+8-shard full-corpus score, `outputs/_r295_sk_merge.py`, because the newest full state file
+predates rounds 290–294 and a chain would have credited their movement to this round):
+
+* **Of the 107 pages that moved against the round-288 baseline, only 30 are this round's.**
+  Over those 30, **scaffold falls 14.59 pp-sum while RAW rises 12.48 pp-sum** — the
+  documented net-positive signature (r176/r194/r220/r235/r284/r289–r293): the widget is
+  scaffold-COLLAPSED, so a page that matched the gold's built widget through a placeholder
+  marker scores lower, while RAW rises because it sees inside. The other 77 belong to
+  rounds 289–294 and are named as theirs.
+* **The ≥75% −1 is ONE page: MXEO201_3_0, 76.32 → 73.42 — and it is the round's clearest
+  win.** It had a hand-off box; it now ships the three-video slideshow the writer described
+  with its two buttons beneath, and **its RAW rises 58.95 → 72.53, +13.58pp.**
+* **compare_structure missing +4 rides exact +4** on a matched pool that grew by 9
+  (13,204 → 13,213) — the matched-pool-growth class: content that left a hand-off box
+  becomes comparable on both sides at once.
+
+### 9. ALL 242 REMAINING DECLINES NAMED
+
+| Bundles | Modules | Why |
+|--:|--:|---|
+| **65** | 43 | nothing resolvable at all — the writer named a slideshow and gave no delimiter, no media and no captions |
+| **43** | 33 | **the reading-book family** — the slides are pages of an external PDF; round 279 recorded this as a correct decline and the placeholder frame is the honest answer |
+| **51** | 30 | two activities merged into one capture (dropDown 18, flipCard 16, accordion 5, …) — a **gatherer** problem; a better dropdown builder does not touch it |
+| 24 | 20 | a media run or a lone media item with no per-slide delimiter |
+| 19 | 16 | a member the walk still cannot place — an interior `[button]` (19 of the 33 LEAD with one), `[tab n]`, `[external link]`, `[shape n]` |
+| 21 | 14 | a table resolving fewer than two slides (11 of them a single 1x1 cell) |
+| 9 | 3 | **te reo / bilingual, excluded by design** — TRR301's audioImage grid |
+| 3 | 3 | an empty slide part, or more than 20 slides |
+
+### 10. RECORDED, NOT SHIPPED
+
+* **THE 51 MERGED-CAPTURE BUNDLES ARE THE LARGEST NAMED CLASS LEFT and they are a
+  GATHERER round, not a builder one** — and the brief's claim that dropdown work clears a
+  third of them is measurably false. BLL110/BLL120/BLL130 alone are 16 of them, all the
+  `[Rolling banner]` + flip-card shape, and their material is genuinely interleaved.
+* **The plain-text `Slide N:` widening** (§3) — declined with the measurement.
+* **ENFUN03-0_0 now shows a bare Google Drive link in a slide caption** that was
+  previously dropped without trace. Showing the writer's own content is the project's
+  standing preference, but a "a caption that is only a link" rule is worth measuring.
+* **The full-ship cadence: this is SCOPED SHIP #7 of 8.** A full `REGENERATE CORPUS` is
+  due at or before the next round, and the next round is the last of the chain.
+
+**Env** `CARSLIDELABEL_OFF` / `CARBTNTAIL_OFF` / `CARGOJOURNAL_OFF` / `CARLEAKFIX_OFF`.
+**Data** `interactive_builders.carousel.rich_slides.slide_label` + `.go_journal_member`,
+`carousel.table_slides.leak_pattern` (repaired), `member_rule.button_tail_terminates`
+(`types` += carousel, new `env_by_type`). **Tools** `outputs/_measure_r295_carousel.cjs`,
+`_measure_r295_census.cjs`, `_measure_r295_cargold.py`, `_r295_analyse.py`, `_r295_pool.py`,
+`_r295_cands.py`, `_probe_r295_carousel.cjs`, `_probe_r295_leaks.cjs`,
+`_r295_textdelta.cjs`, `_dbg_r295_diff.cjs`, `_r295_sk_merge.py`, `_r295_typeregen.txt`,
+`_r295_batches.sh`.
+
+---
+
 ## 2026-08-08 (round 294, build 260618.65) — THE DROPDOWN: build every variation (Chris — the interactive-coverage chain, round 6 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown ✅ → carousel → speechBubble; **the STANDING whole-type regeneration of all 330 modules carrying a ticked type — CLAUDE.md §0a, authorised standingly**)
 
 **THE PLAIN-ENGLISH LEAD.** A dropdown is the select-an-answer box a learner picks from.

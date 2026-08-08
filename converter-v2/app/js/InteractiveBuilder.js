@@ -7265,6 +7265,47 @@ class InteractiveBuilder {
 		// its own takes it from the immediately-following black link/title line (the r240 D2
 		// title-anchored class inside a widget — measured 137 members / 38 modules, none building);
 		// that line is CONSUMED as the video's reference, exactly as MediaBuilder treats it.
+		// ROUND 295 — THE NUMBERED SLIDE LABEL (data rich_slides.slide_label; env
+		// CARSLIDELABEL_OFF). The writers' commonest un-read delimiter is a NUMBERED
+		// LABEL that carries no structural tag of its own, in two dialects that are one
+		// rule underneath:
+		//     [Carousel] Slide 1 / [Carousel] Slide 2 …   (SSEA203 — on the widget's
+		//                                                  OWN invocation)
+		//     Image 1: <iStock url> …                     (HPFUN102/HPFUN202 — a red
+		//     Picture 1: dormant trees in winter …         span with no primary tag;
+		//                                                  AGH1001's captions likewise)
+		// Neither reaches a delimiter today: the invocation branch only opens a slide
+		// when one is ALREADY open (so a bundle whose media are all asset requests never
+		// opens its first), and a no-primary span is treated as prose, so a whole run of
+		// them piles into ONE slide and fails min_slides.
+		// SCOPED BY CONSTRUCTION to members with NO primary tag plus the widget's own
+		// invocation: TWHA906-0.0 writes "Slide 2: [body text]" on a real [body] ELEMENT
+		// and is therefore invisible to this rule — which is what keeps the one BUILDING
+		// bundle carrying a Slide N: label byte-identical.
+		const slCfg = (cfg.slide_label && cfg.slide_label.enabled !== false && !env.CARSLIDELABEL_OFF)
+			? cfg.slide_label : null;
+		// ROUND 295 — THE GO-TO-JOURNAL BUTTON, the round-289 accordion rule transposed.
+		// The scanner's button_tail_terminates deliberately EXCLUDES this one button
+		// (round 239 owns it, and releasing it caused the duplicate Chris reported at
+		// round 273), so it stays a captured member and the walk bailed on it. It is
+		// SKIPPED as slide content — the gold puts a button inside a carousel's viewer in
+		// 13 of 1,768 groups = 0.7% — and the shared round-239 heading is emitted after
+		// the widget instead, through the SAME helper the accordion uses so the two can
+		// never drift apart. Data rich_slides.go_journal_member; env CARGOJOURNAL_OFF.
+		const gjCfg = (cfg.go_journal_member && cfg.go_journal_member.enabled !== false
+			&& !env.CARGOJOURNAL_OFF) ? cfg.go_journal_member : null;
+		let gjSeen = false;
+		const slideLabels = slCfg
+			? members.filter((m) => this.#carSlideLabel(m, bundle, slCfg) !== null)
+			: [];
+		// ≥2 labels, and their numbers must RISE — a lone label, or a repeated "Slide 1",
+		// is not a series and must not be read as one.
+		let labelMode = false;
+		if (slCfg && slideLabels.length >= (slCfg.min_labels ?? 2)) {
+			const ns = slideLabels.map((m) => this.#carSlideLabel(m, bundle, slCfg).n);
+			labelMode = ns.every((v, i) => i === 0 || v > ns[i - 1]);
+		}
+
 		const msCfg = cfg.media_series ?? {};
 		const slideMarked = members.some((m) => m?.type === "tag"
 			&& (m.parse?.primary?.tag === "slide n" || m.parse?.primary?.tag === "slide"
@@ -7331,6 +7372,7 @@ class InteractiveBuilder {
 		}
 
 		const slides = [];
+		const labelSlides = new Set();                               // r295: slides a label opened
 		let cur = null;
 		let pending = [];                                            // accumulating prose for the open slide
 		const open = () => { cur = { parts: [] }; slides.push(cur); return cur; };
@@ -7353,6 +7395,39 @@ class InteractiveBuilder {
 			const url = tailUrls.get(m)
 				?? m.block?.links?.[0]?.target ?? (String(raw).match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
 
+			// ROUND 295 — the GO-TO-JOURNAL button is not slide content (see gjCfg above).
+			if (gjCfg && tag === "button" && this.#accIsGoJournal(m)) { gjSeen = true; continue; }
+			// ROUND 295 — A NUMBERED SLIDE LABEL opens the next slide. The label itself is
+			// chrome (the gold never captions a slide "Slide 1"); whatever follows it on the
+			// same line — a media url, a title, a description — is that slide's content, so
+			// nothing the writer typed is lost. Only reachable in labelMode, i.e. when the
+			// bundle carries a RISING SERIES of ≥2 such labels.
+			if (labelMode) {
+				const lab = this.#carSlideLabel(m, bundle, slCfg);
+				if (lab) {
+					if (this.#hasRedText(lab.rest)) return null;
+					flush(); open();
+					labelSlides.add(slides.length - 1);
+					// the line's own media (an iStock picture, an embeddable video), then
+					// whatever prose is left over as the caption
+					const lurl = String(lab.rest).match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "";
+					const restText = this.#cellText(String(lab.rest).replace(/https?:\/\/[^\s\]"<>]+/g, " ")).trim();
+					if (lurl) {
+						const vid = String(lurl).match(idRe)?.[1];
+						const file = vid ? null : this.#carImageFilename(lurl, tpl, mv);
+						if (vid && videoTpl) cur.parts.push({ video: vid });
+						else if (file) cur.parts.push({ img: file });
+						else {
+							const alt = this.#carouselVideoEmbed(lurl, tpl, cfg);
+							if (alt) cur.parts.push({ html: alt });
+							else if (slCfg.note_unresolved_media !== false) this.#carNoteAssetRequest(bundle, m, lab.rest, mv);
+							else return null;                        // a url we cannot place → keep the box
+						}
+					}
+					if (restText) pending.push(restText);
+					continue;
+				}
+			}
 			// a writer INSTRUCTION / noise span is not slide content — skip it exactly as the
 			// rich accordion does (round 214): the scanner already filed it in
 			// bundle.instructions, so it still surfaces as a red Writers Note after the widget
@@ -7485,6 +7560,13 @@ class InteractiveBuilder {
 		}
 		flush();
 
+		// ROUND 295 — NEVER HALF-BUILD A LABELLED SERIES. A slide the writer explicitly
+		// numbered must end up carrying something a reader can see; if one resolved to
+		// nothing (MXEO201-5.0's "Slide 2:" is a bare link to an external resource page
+		// we cannot embed and that carries no words of its own) the honest hand-off box
+		// is better than a slideshow with a blank slide in the middle of it.
+		if (labelMode && [...labelSlides].some((i) => !slides[i] || !slides[i].parts.length)) return null;
+
 		if (slides.length < (cfg.min_slides ?? tpl.min_slides ?? 2)) return null;
 		if (slides.length > (cfg.max_slides ?? 20)) return null;
 		// SUBSTANCE GUARD (never half-build): a carousel whose slides are ALL bare headings
@@ -7493,15 +7575,27 @@ class InteractiveBuilder {
 		if (cfg.require_content !== false
 			&& !slides.some((s) => s.parts.some((p) => p.img || p.video || p.html || p.p))) return null;
 
-		const html = this.#carRenderSlides(slides, { tpl, cfg, inline, run, renderBlock, videoTpl });
+		let html = this.#carRenderSlides(slides, { tpl, cfg, inline, run, renderBlock, videoTpl });
 		if (html === null) return null;
+		// ROUND 295 — round 239's own templated heading, after the widget, for the
+		// go-to-journal button this walk skipped. The r289 accordion helper is reused
+		// verbatim and `_goJournalEmitted` stops the r239 member branch shipping a
+		// SECOND identical heading (buttons.go_journal.member_branch_yields_to_builder
+		// — the round-273 duplicate).
+		if (gjSeen) html = [html, ...this.#accGoJournalHtml()].join("\n");
 		// THE LEAK GUARD, SCOPED TO THE ROUND-279 WIDENING (`mvUsed`). A carousel that
 		// only builds because one of this round's member rules fired must not put a
 		// literal writer tag on the page — BLL263-1.0's "[Embed audio book]" line was
 		// caught exactly here. Scoping it to mvUsed is deliberate: an unscoped guard
 		// would also refuse builds that have been shipping since round 246, which is
 		// the mistake round 277 caught in its own guard.
-		if (mvUsed && this.#carHasBracketTag(html, tpl.table_slides ?? {})) return null;
+		// ROUND 295 WIDENS THE SCOPE to the two new routes into this builder — a build the
+		// numbered-label rule made possible, and one the scanner's trailing-button break
+		// made possible. Still SCOPED (never unconditional), so it cannot refuse anything
+		// that has shipped since round 246 — the mistake round 277 caught in its own guard.
+		if ((mvUsed || labelMode || bundle._r295ButtonTail)
+			&& this.#carHasBracketTag(html, tpl.table_slides ?? {})) return null;
+		if (gjSeen) bundle._goJournalEmitted = true;
 		bundle.r246Carousel = true;                                  // detector/affected-set marker
 		return html;
 	}
@@ -7573,6 +7667,42 @@ class InteractiveBuilder {
 	 * @param {object} mv  - carousel.member_vocabulary (empty when CARMEMBER_OFF)
 	 * @returns {string|null} the filename, or null when nothing can be named
 	 */
+	/**
+	 * ROUND 295 — is this member a NUMBERED SLIDE LABEL, and if so what follows it?
+	 *
+	 * TWO dialects, one rule: the label rides the widget's OWN invocation
+	 * ("[Carousel] Slide 1", SSEA203) or it is a red span the normaliser resolved to
+	 * NO structural tag at all ("Image 1: <url>", HPFUN102; "Picture 1: dormant trees
+	 * during winter", AGH1001). Anything carrying a real primary tag is EXCLUDED BY
+	 * CONSTRUCTION — which is precisely what keeps TWHA906-0.0, the one BUILDING
+	 * bundle that writes "Slide 2:" on a [body text] element, byte-identical.
+	 *
+	 * @param {object} m - the bundle member
+	 * @param {object} bundle - the captured interactive (for its own canonical tag)
+	 * @param {object} cfg - rich_slides.slide_label
+	 * @returns {{n:number, rest:string}|null} the slide number and the rest of the line
+	 */
+	static #carSlideLabel(m, bundle, cfg) {
+		if (!cfg || !m || m.type !== "tag") return null;
+		const p = m.parse?.primary;
+		const own = p && (p.tag === bundle?.canonTag || p.tag === "carousel");
+		if (p && !own) return null;                                  // a real element owns its own line
+		if (!p && !["instruction", "noise"].includes(m.parse?.class)) return null;
+		// the label lives in the member's OWN span text; a leading [bracket] (the
+		// invocation) is chrome and is stripped before matching.
+		const text = this.#cellText(String(m.text ?? "").replace(/^\s*\[[^\]\n]{0,60}\]\s*/, "")).trim();
+		const re = new RegExp(cfg.pattern ?? "^(?:slide|image|picture|photo)\\s*(\\d{1,2})\\s*[:.)\\-–]?\\s*(.*)$", "i");
+		const mm = text.match(re);
+		if (!mm) return null;
+		const n = parseInt(mm[1], 10);
+		if (!Number.isFinite(n) || n < 1 || n > (cfg.max_number ?? 30)) return null;
+		const own_rest = String(mm[2] ?? "").trim();
+		// a label must be a LABEL, not a sentence that happens to start with the word
+		if (own_rest.split(/\s+/).filter(Boolean).length > (cfg.max_rest_words ?? 24)) return null;
+		const after = String(m.blackAfter ?? "").trim();
+		return { n, rest: [own_rest, after].filter(Boolean).join(" ").trim() };
+	}
+
 	static #carImageFilename(url, tpl, mv = {}) {
 		const u = String(url ?? "");
 		if (!u) return null;
@@ -7901,6 +8031,13 @@ class InteractiveBuilder {
 	 */
 	static #carHasBracketTag(html, cfg = {}) {
 		if (cfg.leak_guard === false) return false;
+		// ROUND 295 — the toggle that reproduces the PRE-ROUND state. This guard has been
+		// INERT since round 284: its pattern's quantifier was written "(0, 40)" instead of
+		// "{0,40}" (a data-recovery residual), so it matched nothing and BLL263-1.0 has
+		// been shipping a visible "[Embed audio book]" inside a built carousel ever since —
+		// the very leak round 279's note says this guard caught. The pattern is repaired in
+		// data; CARLEAKFIX_OFF makes the guard inert again so the round's A/B is exact.
+		if (typeof process !== "undefined" && process.env && process.env.CARLEAKFIX_OFF) return false;
 		const vis = String(html ?? "").replace(/<!--[\s\S]*?-->/g, " ");
 		const re = new RegExp(cfg.leak_pattern ?? "\\[\\s*[A-Za-z][^\\]\\n]{0,40}\\]");
 		if (re.test(vis)) return true;

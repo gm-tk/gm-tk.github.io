@@ -1228,7 +1228,29 @@ class Config {
 	// DECLINED with the measurement recorded: the cell-paragraph option list, which after
 	// the asset-request false positives resolves exactly ONE bundle. The whole-type sweep
 	// (330 modules) moved exactly 3 pages and found NO pending work from any earlier round.
-	static AppVersion = "260618.65";
+	// ROUND 295 (260618.66): THE CAROUSEL — build every variation (the interactive-coverage
+	// chain, round 7 of 8). 654 of 896 build, up from 640; NEW BUILDS 15 / LOST 1, and the
+	// one loss is a DEFECT REMOVED. Carousels were already the best-covered big type, so the
+	// honest reachable pool is small and saying so is the point: of the 139 "fewer than two
+	// slides" declines, 43 are the reading-book family (slides are pages of an external PDF)
+	// and 65 carry nothing resolvable at all. THE BRIEF'S REASON COUNTS ARE EXACT — five for
+	// five, the third accurate brief in the chain, because #carouselRich and
+	// #carouselTableSlides partition on "has a table" and each is terminal in its partition.
+	// ITS RANKING IS NOT: #1 misdescribes its own headline example (BLL110's flip card is the
+	// SECOND member, not after the banner's pictures), #2 reaches 4 activities in ONE module
+	// and #5 reaches 3 — while #4, which it ranks fourth, is the largest lever. SHIPPED:
+	// #carSlideLabel (CARSLIDELABEL_OFF) reads a numbered label the writer put on the widget's
+	// own invocation or on a tag-less red span — SSEA203's "[Carousel] Slide 1", HPFUN102's
+	// "Image 1: <iStock url>", AGH1001's "Picture 1: dormant trees during winter" — and is
+	// scoped to members with NO primary tag, which is what keeps TWHA906 byte-identical; the
+	// trailing-button section break extended to the carousel (CARBTNTAIL_OFF via the new
+	// data-driven env_by_type), gold-backed at 13 of 1,768 groups = 0.7%; and the go-to-journal
+	// skip (CARGOJOURNAL_OFF), reusing round 289's own helper. AND A PRE-EXISTING DEFECT FIXED
+	// RATHER THAN REVERTED (Chris's r293b rule): the round-279 carousel leak guard has been
+	// INERT since round 284 — its pattern's quantifier was written "(0, 40)" instead of
+	// "{0,40}" — so BLL263-1.0 has been shipping a visible "[Embed audio book]" ever since,
+	// the very leak round 279's note says it caught. Repaired behind CARLEAKFIX_OFF.
+	static AppVersion = "260618.66";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
