@@ -1210,7 +1210,25 @@ class Config {
 	// eagerly also stripped ENGJ302's legitimate "Pre-Writing"/"Drafting" sub-headings,
 	// so it is a POST-PASS testing "the heading is the panel's ONLY part". Final blast:
 	// exactly XDLS501, one page, proven over all 173 accordion modules.
-	static AppVersion = "260618.64";
+	// ROUND 294 (260618.65): THE DROPDOWN — build every variation (the interactive-coverage
+	// chain, round 6 of 8). 18 of 390 build, up from 14, LOST 0 in every type. THE HEADLINE
+	// IS THE DENOMINATOR: 249 of the 376 declines are the student UPLOAD BOX sharing this
+	// widget's name (correctly fenced, not this builder's work), and 93 of the 127 genuine
+	// dropdowns never mark the correct answer anywhere — an answer is never invented — so
+	// the reachable pool is 34 bundles, not 376. THE BRIEF'S RANKING IS UPSIDE DOWN: its
+	// top-ranked paragraph tolerances reach at most 28 of the 72 it claims, and the table
+	// reading it ranks second is the larger pool at 35 of 40. What shipped is neither:
+	// #ddCellParagraph (DDCELLPARENS_OFF) points the round-287 paragraph reading at a TABLE
+	// CELL, one question per cell, emitting the same paragraph form — which is what the
+	// human ships for exactly these tables, matching MXFL302_05.1 (10 units), BLL275_1_0
+	// (8) and BLLR201_2_0 (7) cell for cell. Plus the thousands-separator guard
+	// (DDNUMCOMMA_OFF): "(1,400 km, 1,500 km)" is two options, not four, the discriminator
+	// being the absent space — REPORTED AS CHANGING NOTHING ON ITS OWN, since it only
+	// matters in combination, where it takes MXFL301 from 9 resolvable groups to 15.
+	// DECLINED with the measurement recorded: the cell-paragraph option list, which after
+	// the asset-request false positives resolves exactly ONE bundle. The whole-type sweep
+	// (330 modules) moved exactly 3 pages and found NO pending work from any earlier round.
+	static AppVersion = "260618.65";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,5 +1,224 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-08 (round 294, build 260618.65) — THE DROPDOWN: build every variation (Chris — the interactive-coverage chain, round 6 of 8: accordion ✅ → flipCard ✅ → clickDrop ✅ → modal ✅ → tabs ✅ → dropDown ✅ → carousel → speechBubble; **the STANDING whole-type regeneration of all 330 modules carrying a ticked type — CLAUDE.md §0a, authorised standingly**)
+
+**THE PLAIN-ENGLISH LEAD.** A dropdown is the select-an-answer box a learner picks from.
+376 of the 390 the writers tagged were hand-off boxes. **They now build 18 of 390, up from
+14, with nothing lost in any other widget type** — and the small number is the honest
+finding of the round, not a shortfall in it.
+
+**THE DENOMINATOR IS NOT 376, AND SAYING SO IS THE MOST USEFUL THING HERE.** Round 287
+established that the labelling system treats *dropbox* — the box a learner uploads their
+work into — as the same thing as a dropdown. Re-measured live this round from the writer's
+own opening words: **249 of the 376 are upload boxes**, correctly refused by a fence, and
+they are not this builder's work at all. That leaves **127 genuine dropdowns**, and of
+those **93 do not mark the correct answer anywhere in the writer's document.** An answer is
+never invented, so those keep their boxes. **The pool any dropdown round can reach is 34
+bundles, not 376** — and a headline of "376 → N" would be misleading whatever N was.
+
+---
+
+### 1. THE MEASUREMENT CORRECTED THE BRIEF THREE TIMES — and its top-ranked change is worth a third of what it claims
+
+`WHY_UNBUILT__dropDown.md` is the **second brief in this chain whose reason counts are
+accurate** (376 = 249 + 72 + 40 + 11 + 2 + 2 reconciles exactly), and the reason is again
+structural, exactly as round 292 predicted: **`#dropDown` is the only case for its type, is
+reached straight from `Build`, and keeps its own member walk**, so its refusals are
+genuinely terminal. That is now two for two on the round-292 rule, and tabs' failure of it
+was the exception that proved it.
+
+**But its RANKING is upside down, and its estimate is three times its reach.**
+
+| The brief says | The measurement says |
+|---|---|
+| #1 tolerate a lead-in, an aside and Word's numbering around a paragraph quiz — **"most of 72"**, "the best value in this document" | **at most 28** of the 72 have any answer signal at all; the other 44 have none, and no tolerance can conjure one |
+| #2 the one-question-per-column table — "large part of 40" | **35 of the 40** carry a marked answer — **the LARGER pool**, and the brief ranks it second |
+| #3 accept a tick ✅ | **ONE bundle** corpus-wide (OSSC301) |
+| #5 allow ordinary items inside the quiz — 11 | 11 confirmed, and they are 7 distinct foreign widgets — a gathering class, not a builder change |
+
+So the brief's #1 and #2 should trade places, and neither number survives contact with the
+corpus. **My own first classifier was wrong in the same direction** and had to be tightened
+twice: counting any red in a table as an answer mark scored 35 hits, but a writer's
+`[image]` tag is red too, and so is a column header reading "Dropdown 1" — a red
+STRUCTURAL TAG is not an answer. (It also missed `[Q1Correct]` outright, because `\b` does
+not fire between a digit and a letter. The same one-character regex trap round 292 hit.)
+
+### 2. WHAT SHIPPED — the reading the writers actually use, which is neither of the brief's top two
+
+Simulating both candidate readings before writing either found the real shape: **the
+writers put the round-287 paragraph form — prose with a parenthesised option set, one
+option marked — INSIDE A TABLE CELL, one question per cell.**
+
+```
+BLL275-1.0     "He reka ( te, [correct]ngā ) papana."                     ×8 cells
+BLLR201-3.0    "Sam likes to (perform, reform, [correct]inform) his mum."  ×7
+MXFL302-5.1    "2 ½ + 3 ¾ (6 ¼, 6 ¾, 5 ¼)"                                ×10
+MXFL301-2.0    "…rounded to the nearest 100 km is (1,400 km, 1,500 km)"    ×15
+```
+
+The reading that understands this has existed since round 287. It simply never saw the
+material: `#ddParagraph` bails the moment a table appears, and `#ddTable`'s two readings
+expect the OPTIONS to be the cells rather than to sit inside one. **`DDCELLPARENS_OFF`** —
+`#ddCellParagraph`, tried LAST so every round-287 build is byte-identical by construction
+(the r276 architecture) — points the same derivation at the cell and emits the **same
+paragraph form**, which is what the human ships for exactly these tables.
+
+**THE GOLD AGREES CELL FOR CELL, and this was checked before a line was written** rather
+than taken from the brief: `MXFL302_05.1` ships `dropQuiz layout="paragraph" >
+dropParaContainer > <ol>` with **10 units**, `BLL275_1_0` **8**, `BLLR201_2_0` **7** — the
+same counts this reading resolves, and BLL275's eight answers land on the writer's own
+`[correct]` positions in order (2,1,1,1,2,2,1,2). The gold's own output conventions were
+re-measured too (312 groups / 1818 units): a bare `dropQuiz` is the plurality at 64%, a
+bare `dropQuestion` at 42%, `answer` is 1-based in 97% — **our round-287 templates were
+already the gold's plurality and needed no change.**
+
+**`DDNUMCOMMA_OFF`** — the thousands separator. `(1,400 km, 1,500 km)` was being read as
+*four* options, which cost MXFL301-2.0 six of its fifteen questions and therefore, under
+never-half-build, the whole quiz. **The discriminator is the absent space**, and it is
+measured: every real option break in the corpus is written `", "`, so MXFL302's own live
+`(20, 200, 400)` is out of the rule's reach by construction. **REPORTED HONESTLY: this
+toggle changes NOTHING on its own — zero files, zero builds.** It earns its place only in
+combination, where it takes MXFL301 from 9 resolvable groups to 15.
+
+**DECLINED, WITH THE MEASUREMENT RECORDED** (the round-291 precedent): the brief's #3, an
+option list separated by the cell's own paragraph breaks. It looks like 14 bundles until
+the asset requests are removed — ENGR301's cells hold `Steve Jobs / [Image of Steve Jobs]`,
+a name and a photo brief, not two options — and once every partially-marked case is
+excluded under all-or-nothing, **exactly ONE bundle resolves completely** (OSGM201, whose
+gold uses a third per-item two-column arrangement we have no template for). Its five
+companions each mark only some of their rows. Not worth the false-positive surface.
+
+### 3. FOUR BUGS THE PROOF CAUGHT — and two of them were in MY OWN CHECKS, for the fourth round running
+
+* **A fence that was too strict cost MXFL301 its entire quiz.** The first cut refused any
+  bundle with an answer mark in the token stream, to stop the preamble rendering the
+  writer's table twice. But the duplication only happens when the table sits BEFORE the
+  first mark; MXFL301 has one stray red span and lost fifteen questions to it. The fence is
+  now the precise condition.
+* **Containment vs overlap, decided by one character.** A writer who colours the opening
+  bracket along with the first option puts the mark one character outside the group.
+  Requiring containment silently dropped a question; overlap is the correct test.
+* **A group that is plainly an option set but carries no mark now DECLINES the bundle**
+  rather than vanishing from the quiz. A bracket that is ordinary prose — "(more than
+  one)" — is one segment and is left alone. Shipping a quiz with a question quietly missing
+  its dropdown is a half-build by another name.
+* **My assertion that `[correct]` must not appear on BLL275's page was wrong** — the page
+  carries a *different* activity's raw hand-off dump, which quotes the writer's markers
+  verbatim by design. The check now reads the built widget, not the page. **And my census
+  tool still wrote to round 293's affected-list filename** — the exact trap round 293
+  recorded, caught before it ran.
+
+### 4. RESULT
+
+**dropDown 14 → 18 of 390. NEW BUILDS 4 / LOST 0 in EVERY widget type. 4 modules**
+(`outputs/_r294_affected.txt`): BLL275, BLLR201, MXFL301, MXFL302 — **40 new dropdown
+units**. Genuine declines 127 → 123. Same-tool coverage 2422 → 2426 of 7602.
+
+### 5. PROOF
+
+* **The toggles-OFF census reproduces the shipped tree** — 7602 captured / **2422 built**,
+  all 32 types. Round 293 published 2423; the difference is **accordion 428 → 427, which is
+  round 293b's own duplicate-heading fix**, so the reconciliation is exact.
+* **THE AFFECTED SET FROM BYTES, NOT BUILDS** (the r293 lesson — the thousands guard sits
+  in a helper the paragraph reading shares, so a module could have moved without changing a
+  count): every page of **all 81 modules carrying a genuine dropdown**, hashed in both
+  states — **579 pages, exactly 8 files differ** (4 HTML pages and their 4 hand-off
+  `interactives.txt`), **0 added, 0 removed**, in the same 4 modules the census names.
+* **Byte identity ONE STATE PER PROCESS** (the r246 trap). **Six out-of-class canaries** —
+  BLL210, ENGS302, TRR203, OSBY201, CEDO501, XDLS901, 43 pages — **identical in BOTH states**.
+* **Per-toggle decomposition:** CELLPARENS alone → 3 modules; **NUMCOMMA alone → 0 files**,
+  reported as zero rather than implied to have worked.
+* **The leak guard**: the defect audit's own predicate, in memory, over the 4 affected
+  modules in both states — **205 leaks, PER-MODULE IDENTICAL**.
+* **Quality scan** of every option and answer: **61 units, 0 flagged**; 0 flagged with the
+  toggles off too.
+* **32 named assertions, ALL PASS, including THREE NEGATIVE ones** pinning what must NOT
+  build: SSCI104 (its `[QnCorrect]` column table is a reading this round did not ship),
+  **OSAH401** (the writer says "correct answers in green" and green is invisible to the
+  program — an answer is never invented), and **ENGR301** (a name beside a photo brief).
+
+### 6. THE WHOLE-TYPE REGENERATION SWEEP (CLAUDE.md §0a)
+
+**330 modules** carrying a dropdown, accordion, flip card, click-and-drop, pop-out or tab
+set and having a Claude dir (`outputs/_r294_typeregen.txt`; 37 more have no output folder
+and would only create ghosts — the r285 trap). All 330 regenerated in 28 batches,
+**content-hash 0-stale**.
+
+**Exactly 3 pages / 3 modules changed** — BLLR201, MXFL301, MXFL302. **BLL275 is the
+fourth build and does not reach the corpus because it has no Claude dir** (the same
+ghost-dir arithmetic as round 287's "13, not 14"). **And the sweep found NO pending work
+from any earlier round** — round 293b's sweep had already cleared it, which is the first
+time this check has come back completely clean.
+
+**EVERY VERIFIER OVER ITS WHOLE POPULATION:**
+
+| Type | modules | result |
+|---|--:|---|
+| dropDown | 146 | 147 units, **defect 0 ✓** (BLL275 8/8 exact against the human's page) |
+| accordion | 173 | every built panel matches the human ✓ |
+| clickDrop | 131 | 354 items, **defect 0 ✓** |
+| modal | 93 | 301 triggers, **defect 0 ✓** |
+| tabs | 56 | 262 texts, defect 13 — **the identical figure round 293b proved pre-existing** |
+| flipCard | 184 | **§9 protected divergence 0 ✓**; the population's 83 divergences are the identical A1 figure round 290 named |
+
+**EVERY PROTECTED GATE HELD, EXACT, WITH ZERO MOVEMENT:**
+
+| Gate | baseline | new | verdict |
+|---|---|---|---|
+| skeleton SCAFFOLD mean / ≥50% / ≥75% | 49.74 / 982 / 193 | **49.74 / 982 / 193** | **HELD** |
+| compare_structure exact / EXTRA / missing | 11209 / 185 / 586 | **11209 / 185 / 586** | **EXACT** |
+| body_compare ANY | 242 | **242** | **EXACT** |
+| clean / leak | 97.81% / 288 occ, 46 pages | **97.81% / 288, 46** | **EXACT** |
+| tags | 9557/9557 | **9557/9557, REAL FAILURES 0** | **EXACT** |
+
+entry-parity **PASS** · index-sync **33/28 OK** · **all NINE widget selftests GREEN**. (The
+mtime staleness guard fires after a 330-module regeneration; the CONTENT manifest is the
+authority per §16 and proved only 3 modules moved, which is the basis for
+`--allow-stale-baseline`, exactly as at round 293b.) Content manifest refreshed (2102 pages
+/ 413 modules); fast-loop baseline patched; ship ledger scoped #6 of 8.
+
+### 7. ALL 372 REMAINING DECLINES NAMED
+
+| Bundles | Modules | Why |
+|--:|--:|---|
+| **249** | **92** | the **dropbox fence** — an upload box, not a quiz. Correct by design; giving it its own element is its own round (240 bundles / 87 modules) |
+| **93** | **61** | **the correct option is not marked anywhere.** An answer is never invented |
+| 19 | 17 | a table with no answer signal in any cell (incl. OSAH401's "correct answers in green") |
+| 11 | 8 | a member the walk cannot place — 7 distinct foreign widgets (`typing quiz`, `tab n`, `mcq`, `drag and drop`, `option`, `shape n`) |
+| ~14 | ~14 | an option list in a cell that resolves only partially (ENGS201 4 of 7, ENGI103 2 of 4, HPRE203 2 of 4, OSSC301 2 of 3) |
+| 2 | 2 | marked only with `**bold**` — measured and declined at round 287, unchanged |
+| rest | | one-off shapes, spread one per module |
+
+### 8. RECORDED, NOT SHIPPED
+
+* **THE `dropbox` ALIAS RE-CUT IS A QUESTION FOR CHRIS, NOT A BUILD ROUND.** It is the
+  largest single class in this document — 240 bundles across 87 modules — the writers are
+  consistent, and the human's `class="activity dropbox"` gives the target markup (558
+  occurrences; we emit it 0 times). But it moves capture and hand-off labels across a fifth
+  of the library for a change that has nothing to do with building a dropdown.
+* **The `[QnCorrect]` column table** (SSCI104, and 12 more bundles / 12 modules of the same
+  family) — the answer is marked in the cell and scattered deliberately across rows because
+  each belongs to a different question. The reading is well defined and gold-backed; it is
+  the obvious next dropdown round, and it is bigger than anything this one shipped.
+* The partially-marked option lists above — each needs the writer to resolve an ambiguity
+  (two marks in one row), not the program.
+* Everything round 287 recorded and this round did not reach: ENFUN09's separate options
+  table, MXDB302-6.0's option set stated only in a red instruction, ENGC101's first-question
+  image lost to the capture boundary, SCCH301's `Check answers`/`Undo`/`Reset` trio, the
+  multi-select `answer="1 2 3"` form (49 gold units), `layout="scatter"` (3), the te reo
+  placeholder "Tīpakongia".
+
+**Env** `DDCELLPARENS_OFF` / `DDNUMCOMMA_OFF`. **Data**
+`interactive_builders.dropDown.cell_parens` + `.cell_correct_pattern` + `.thousands_guard`.
+**Tools** `outputs/_measure_r294_dropdown.cjs` (the decline recorder, with a fence recorder
+and a token histogram), `_measure_r294_census.cjs`, `_measure_r294_ddgold.py`,
+`_r294_analyse.py`, `_r294_marks.py`, `_r294_cellmarks.py`, `_r294_simulate.py`,
+`_r294_tables.py`, `_probe_r294_dropdown.cjs`, `_probe_r294_leaks.cjs`,
+`_probe_r294_quality.cjs`, `_dbg_r294_cells.cjs`, `_dbg_r294_units.cjs`,
+`_dbg_r294_find.cjs`, `_r294_typeregen.txt`, `_r294_batches.sh`.
+
+---
+
 ## 2026-08-08 (round 293b, build 260618.64) — THE WHOLE-TYPE REGENERATION SWEEP, and the one real defect it found (Chris — "the modules that have each of these interactive types are to be regenerated as part of the process, after EVERY INDIVIDUAL interactive session, to ensure the newly implemented code does not cause issues for the existing algorithms"; **AUTHORISED regeneration of all 307 modules carrying a ticked interactive type**)
 
 **THE PLAIN-ENGLISH LEAD.** Rounds 289–293 each regenerated only the handful of modules

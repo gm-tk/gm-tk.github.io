@@ -2036,7 +2036,11 @@
 			"text_tags": ["body"],
 			"note_tags": ["button", "data marker", "external link", "video", "audio"],
 			"image_tags": ["image"],
-			"leak_guard": true
+			"leak_guard": true,
+			"_r294_note": "ROUND 294 (Chris): cell_parens — the round-287 D1 paragraph reading applied to a table CELL, one question per cell, emitting the SAME paragraph form the human ships for exactly these tables (MXFL302_05.1, BLL275_1_0, BLLR201_2_0 match it cell for cell). cell_correct_pattern names the explicit [correct]-family bracket inside a cell; note it has NO leading \\b, because the writers type [Q1Correct] and \\b does not fire between a digit and a letter. thousands_guard — a comma with digits IMMEDIATELY on both sides is a thousands separator, not an option break ('(1,400 km, 1,500 km)' is two options, not four); the discriminator is the absent space, so a real option break written ', ' is untouched. env DDCELLPARENS_OFF / DDNUMCOMMA_OFF.",
+			"cell_parens": true,
+			"cell_correct_pattern": "\\[[^\\]]{0,30}correct\\b[^\\]]{0,20}\\]",
+			"thousands_guard": true
 		}
 	},
 	"skeleton": {

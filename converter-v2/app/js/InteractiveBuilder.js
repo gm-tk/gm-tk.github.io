@@ -9738,10 +9738,13 @@ class InteractiveBuilder {
 		if (pre === null) return null;
 
 		// The dialects, in order. The first that resolves owns the bundle.
+		// ROUND 294 — #ddCellParagraph is LAST, so every round-287 build is byte-identical
+		// BY CONSTRUCTION (the r276 fallback architecture).
 		const body = this.#ddParagraph(toks, tpl, inline, run, ac)
 			?? this.#ddBullets(toks, tpl, inline, run, ac)
 			?? this.#ddQuestions(toks, tpl, inline, run, ac)
-			?? this.#ddTable(bundle, tpl, inline, ac);
+			?? this.#ddTable(bundle, tpl, inline, ac)
+			?? this.#ddCellParagraph(bundle, toks, tpl, inline, ac);
 		if (!body) return null;
 		const built = [...pre, body].join("\n");
 		if (this.#ddLeakGuard(built, tpl)) return null;            // a build must never ADD a leak
@@ -9929,12 +9932,42 @@ class InteractiveBuilder {
 		return { text: buf.join(""), marks, starts };
 	}
 
+	/**
+	 * ROUND 294 — split a parenthesised group into its options on the writer's commas,
+	 * PROTECTING A THOUSANDS SEPARATOR. "(1,400 km, 1,500 km)" is two options, not four,
+	 * and reading it as four cost MXFL301-2.0 six of its fifteen questions — which, under
+	 * the never-half-build rule, cost it the whole quiz.
+	 *
+	 * THE DISCRIMINATOR IS THE ABSENT SPACE, and it is measured: every real option break
+	 * in the corpus is written ", ", so a comma with digits IMMEDIATELY on both sides is a
+	 * number and never a break. MXFL302's own live "(20, 200, 400)" is untouched BY
+	 * CONSTRUCTION — the space after its commas takes it out of the rule's reach.
+	 *
+	 * The parts still rejoin with "," , so the character offsets #ddGroup computes from
+	 * their lengths are unchanged.
+	 */
+	static #ddOptionSplit(inner, tpl) {
+		const off = (typeof process !== "undefined" && process.env && process.env.DDNUMCOMMA_OFF);
+		if (off || (tpl && tpl.thousands_guard === false)) return String(inner).split(",");
+		const s = String(inner);
+		const out = [];
+		let buf = "";
+		for (let i = 0; i < s.length; i++) {
+			const ch = s[i];
+			const thousands = ch === "," && i > 0 && /\d/.test(s[i - 1]) && /\d/.test(s[i + 1] ?? "");
+			if (ch === "," && !thousands) { out.push(buf); buf = ""; continue; }
+			buf += ch;
+		}
+		out.push(buf);
+		return out;
+	}
+
 	/** ROUND 287 — one parenthesised option group -> {options, answer, span} or null. */
 	static #ddGroup(text, start, inner, marks, tpl) {
 		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
 		const opts = [];
 		let off = 0;
-		for (const part of inner.split(",")) {
+		for (const part of this.#ddOptionSplit(inner, tpl)) {
 			opts.push({ text: part.trim(), a: start + off, b: start + off + part.length });
 			off += part.length + 1;
 		}
@@ -10150,6 +10183,135 @@ class InteractiveBuilder {
 				tpl, inline, null, ac);
 		}
 		return null;
+	}
+
+	/**
+	 * ROUND 294 — D5, THE OPTION GROUP INSIDE A TABLE CELL.
+	 *
+	 * The writers use the round-287 D1 form — prose carrying a parenthesised option set
+	 * with one option marked — INSIDE A TABLE CELL, one question per cell:
+	 *
+	 *   BLL275-1.0    "He reka ( te, [correct]ngā ) papana."          ×8 cells
+	 *   BLLR201-3.0   "Sam likes to (perform, reform, [correct]inform) his mum."  ×7
+	 *   MXFL302-5.1   "2 ½ + 3 ¾ (6 ¼, 6 ¾, 5 ¼)"                     ×10
+	 *   MXFL301-2.0   "…is about (1,400 km, 1,500 km)…"               ×15
+	 *
+	 * The reading that understands this has existed since round 287; it simply never saw
+	 * the material, because #ddParagraph bails the moment a table token appears and
+	 * #ddTable's two readings expect the OPTIONS to be the cells rather than to be inside
+	 * one. So this is the same derivation pointed at the cell, and it emits the SAME
+	 * paragraph form — which is what the human ships for exactly these tables
+	 * (MXFL302_05.1's gold is `dropQuiz layout="paragraph" > dropParaContainer > <ol>`
+	 * with one <li> per cell, and its unit count, and BLL275's and BLLR201's, match this
+	 * reading cell for cell).
+	 *
+	 * ALL OR NOTHING (the round-292 tile rule): a parenthesis a MARK falls inside is meant
+	 * to be an option set, so if any such group cannot be resolved the whole bundle keeps
+	 * its honest hand-off box. A parenthesis with no mark inside it is ordinary prose —
+	 * "(more than one)" — and is left alone rather than counted as a failure.
+	 *
+	 * THE ONE FENCE, and it is narrower than it first looks. #ddPreamble lifts everything
+	 * BEFORE the first answer mark out of the stream and renders it above the quiz — so a
+	 * table that sits before a mark has ALREADY been rendered, and building it as the quiz
+	 * as well would ship the writer's table twice. A table AFTER the mark was never lifted
+	 * and is safe. (The first cut of this fence refused any bundle with a mark anywhere,
+	 * and that silently cost MXFL301-2.0 its whole fifteen-question quiz over one stray
+	 * red span — caught by the round's own assertions.)
+	 *
+	 * Data interactive_builders.dropDown.cell_parens; env DDCELLPARENS_OFF.
+	 */
+	static #ddCellParagraph(bundle, toks, tpl, inline, ac) {
+		if (!tpl || tpl.cell_parens === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DDCELLPARENS_OFF) return null;
+		const firstMark = (toks ?? []).findIndex((t) => t.kind === "mark");
+		const firstTable = (toks ?? []).findIndex((t) => t.kind === "table");
+		if (firstMark >= 0 && firstTable >= 0 && firstTable < firstMark) return null;   // already rendered above
+		const tabs = (bundle?.memberItems ?? []).filter((m) => m?.type === "table");
+		if (tabs.length !== 1) return null;
+		const rows = (tabs[0].block?.rows ?? [])
+			.map((r) => (r ?? []).map((c) => (typeof c === "string" ? c : c?.text) ?? ""));
+		if (!rows.length) return null;
+
+		const lis = [];
+		for (const row of rows) {
+			for (const cell of row) {
+				const { text, marks } = this.#ddCellMarks(cell, tpl);
+				if (!text.trim() || !marks.length) continue;
+				const groups = [];
+				const re = /\(([^()]{2,300})\)/g;
+				let m;
+				while ((m = re.exec(text)) !== null) {
+					const from = m.index, to = m.index + m[0].length;
+					// OVERLAP, not containment: a writer who colours the opening bracket along
+					// with the first option puts the mark one character OUTSIDE the group, and
+					// requiring containment lost MXFL301-2.0 a question to that single character.
+					const marked = marks.some(([a, b]) => (a === b ? (a >= from && a <= to) : (a < to && b > from)));
+					// AN OPTION SET IS AN OPTION SET WHETHER OR NOT IT IS MARKED. Two or more
+					// option-sized comma segments is the writer laying out choices, so if such a
+					// group carries no single mark the bundle keeps its hand-off box rather than
+					// shipping a quiz with one question silently missing its dropdown. A bracket
+					// that is ordinary prose — "(more than one)" — is one segment and is left be.
+					const segs = this.#ddOptionSplit(m[1], tpl).map((s) => s.trim());
+					const maxAns = tpl.max_answer_words ?? 12;
+					const optionish = segs.length >= (tpl.min_options ?? 2) && segs.every((s) => s && s.split(/\s+/).length <= maxAns);
+					if (!marked) { if (optionish) return null; continue; }
+					const g = this.#ddGroup(text, from + 1, m[1], marks, tpl);
+					if (!g) return null;                                // marked, but undecidable
+					groups.push({ ...g, from, to });
+				}
+				if (!groups.length) continue;
+				const parts = [];
+				let cur = 0;
+				for (const g of groups) {
+					const lead = text.slice(cur, g.from);
+					if (lead.trim()) parts.push(inline(this.#ddTidy(lead)));
+					parts.push([tpl.question_open, this.#ddUnit(g, tpl), tpl.question_close].join("\n"));
+					cur = g.to;
+				}
+				const tail = text.slice(cur);
+				if (tail.trim()) parts.push(inline(this.#ddTidy(tail)));
+				lis.push(`${tpl.para_item_open}\n${parts.join("\n")}\n${tpl.para_item_close}`);
+			}
+		}
+		if (lis.length < (tpl.min_units ?? 1)) return null;
+		const open = Utils.FillTemplate(tpl.paragraph_open, { autocheck: ac ?? "" });
+		return [open, ...lis, tpl.paragraph_close].join("\n");
+	}
+
+	/**
+	 * ROUND 294 — a table cell as plain text plus the character ranges its ANSWER MARKS
+	 * occupy: the shape #ddGroup already consumes, computed for a cell instead of the
+	 * rebuilt paragraph.
+	 *
+	 * A red run that is WHOLLY a bracketed writer tag ([image], [H3], [body]) is STRUCTURE
+	 * and contributes no mark — reading it as one is how a "Steve Jobs / [Image of Steve
+	 * Jobs]" cell turns into a two-option quiz, which it plainly is not. An explicit
+	 * [correct]-family bracket is removed and leaves a ZERO-WIDTH mark, so the option that
+	 * FOLLOWS it is the answer (the round-287 convention, unchanged).
+	 */
+	static #ddCellMarks(cell, tpl) {
+		const RE = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const correct = new RegExp(tpl.cell_correct_pattern ?? "\\[[^\\]]{0,30}correct\\b[^\\]]{0,20}\\]", "i");
+		const s = String(cell ?? "");
+		const out = [];
+		const marks = [];
+		let pos = 0, i = 0, m;
+		while ((m = RE.exec(s)) !== null) {
+			const lead = s.slice(i, m.index);
+			out.push(lead); pos += lead.length;
+			const inner = m[1];
+			if (correct.test(inner)) {
+				marks.push([pos, pos]);                                 // the NEXT option is the answer
+			} else if (inner.trim() && !/^\s*(\[[^\]]*\]\s*)+$/.test(inner.trim())) {
+				marks.push([pos, pos + inner.length]);
+				out.push(inner); pos += inner.length;
+			} else {
+				out.push(inner); pos += inner.length;                   // a structural tag: no mark
+			}
+			i = m.index + m[0].length;
+		}
+		out.push(s.slice(i));
+		return { text: out.join(""), marks };
 	}
 
 	/** ROUND 287 — the question/grid output form: dropQuiz > row > dropQuestion*. */
