@@ -1,5 +1,77 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 301b — THE FULL CORPUS REGENERATION, build unchanged at 260618.72) — Chris: "REGENERATE CORPUS"
+
+**NO code, data or engine change — no AppVersion bump** (the round-204 precedent). This is
+the full-ship backstop the four scoped ships since round 296 had been accruing, run in one
+pass on Chris's explicit instruction, and its result is the strongest one available.
+
+### THE HEADLINE: the regeneration is BYTE-IDENTICAL to the shipped corpus
+
+416 dirs rebuilt in 36 batches (3 auto-splits), **`./_stalecheck.sh` 0 stale**, and
+`_content_manifest.py diff` reports **IDENTICAL — 0 pages differ, 2102 pages / 413 modules.**
+
+That is worth stating plainly: **rounds 296–301 are fully in the corpus with nothing
+pending, and the four scoped ships left nothing behind.** Every scoped ship since r296
+claimed "no pending work from any earlier round"; a full rebuild has now proved it rather
+than inferred it. It also means every widget-verifier figure below is identical to the
+r296/r301 state BY CONSTRUCTION — no module's bytes moved.
+
+### THE PRIMARY GATE, RE-SCORED FRESH — and it IMPROVED
+
+The skeleton was scored **fresh over the whole corpus in 8 shards**
+(`outputs/_r302_sk_merge.py` → `_r302_sk_final.json`) rather than chained, because the
+newest full-corpus state file `_r296_sk_final.json` predates rounds 298–301 and a chain
+would attribute their movement to nothing in particular.
+
+| | r296 baseline | now | |
+|---|--:|--:|---|
+| SCAFFOLD mean | 49.725% | **49.766%** | **IMPROVED** |
+| pages ≥50% | 982 | **986** | **IMPROVED** |
+| pages ≥75% | 192 | 192 | EXACT |
+| pages ≥90% | 16 | 16 | EXACT |
+| RAW mean | 34.074% | **34.086%** | **IMPROVED** |
+| pairs / skipped | 1940 / 0 | 1940 / 0 | EXACT |
+
+**THE MOVEMENT DECOMPOSES PERFECTLY, WITH NOTHING UNATTRIBUTED.** 55 pages moved, 0 added,
+0 dropped, and every one is owned by a chain round's own affected list:
+
+| round | pages | scaffold pp-sum | RAW pp-sum |
+|---|--:|--:|--:|
+| 298 (captions) | 7 | **+1.05** | **+1.21** |
+| 299 (definitions) | 46 | **+74.58** | **+21.00** |
+| 300 (asset notes) | 2 | **+2.50** | **+1.05** |
+| 301 (mis-classification) | **0** | — | — |
+| unattributed | **0** | — | — |
+
+Round 299 is the chain's real structural win — ENGJ301 5.0 **+10.25pp**, MXFL301 0.0
+**+8.05pp**, ENGJ301 2.0 **+6.23pp** — because a re-joined sentence is real page structure
+where a red flag is not. **Round 301 moves exactly zero skeleton pages**, which is what a
+prefix-and-body swap inside a gate-excluded `cv2-note` should do, and it is pleasing to see
+the prediction land at 0 rather than "about 0".
+
+### EVERY OTHER PROTECTED GATE, RUN DIRECTLY
+
+clean **2056/2102 = 97.81%** · leak **288 occ / 46 pages** · cs exact **11216** / EXTRA
+**185** / missing **590** · body **242** · tags **9557/9557 REAL FAILURES 0** · index-sync
+**33 browser / 28 node** · entry-parity **PASS** · flipCard **TOTAL 61, divergence 0 ✓** ·
+**all NINE widget selftests GREEN** (accordion, clickDrop, tabs, modal, dropDown, carousel,
+hintSlider, flipCard, speechBubble). speechBubble's live defect 1 and flipCard's defect 18
+are the tracked pre-existing baselines — byte-identical corpus, so identical by construction.
+
+### THE SHIP
+
+Fast-loop baseline refreshed (cs / bc / defect re-snapshotted; **the skeleton baseline was
+checked row-by-row against the fresh 8-shard score and is EXACT on all 1940 pages** — an
+independent validation of `_fastloop_diff.py --commit`'s patching). Content manifest
+re-snapshotted. **FULL ship recorded — the scoped counter is reset to 0, 8 of headroom.**
+`Module_Feature_Index.json` rebuilt (§13) — 16 shards + `--rehtml` + `--merge`, selftest
+GREEN.
+
+**NEW PROTECTED BASELINES: the §9 table now describes this state.**
+
+---
+
 ## 2026-08-09 (round 301, build 260618.72) — THE MIS-CLASSIFICATION GUARD: orphan-`[data marker]` chain, round 4 of 4 — **THE LAST; THE CHAIN IS CLOSED** (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
 
 Chain order: 1 — the caption widening ✅ (round 298) → 2 — the glossary definition weave ✅
