@@ -1,5 +1,217 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 305, build 260618.76) — THE MULTIPLE-CHOICE QUIZ, and the `dropbox` modifier: the orphan-remaining chain, round 4 of 4 — **THE LAST; THE CHAIN IS CLOSED** (Chris — "implement as many fixes as possible from `WHY_UNBUILT__orphan_remaining.md`", plus his two decisions this round: **"Full REGENERATE CORPUS"** and **the dropbox re-cut "Do it in this round"**; **FULL CORPUS REGENERATION — ledger reset to 0**)
+
+Chain order: 1 — the `scope_tags` widening ✅ (r302) → 2 — the bare `[Tab N]`/`[Slide N]`
+openers ✅ (r303) → 3 — the `[summary box]` callout ✅ (r304) → **4 — the quiz families
+(THIS ROUND), which deletes the brief.**
+
+### 1. WHAT CHANGED, IN ONE LINE EACH
+
+**The multiple-choice quiz now builds.** It never could: `multiChoiceQuiz` had no key in
+`interactive_builders` at all, so all **326 captured bundles across 142 modules** bailed at
+`Build`'s missing-template guard before a line of code ran — the round-287 dropDown
+situation exactly. `mcqOption` appeared **ZERO times** in the shipped corpus while the human
+ships the widget on **417 pages across 225 modules**.
+
+**And an activity whose writer put an upload button in it now carries the human's `dropbox`
+class** — the re-cut Chris asked for, though not in the shape the brief described.
+
+### 2. THE ROUND'S MANDATE WAS THE ORPHAN FLAGS, AND MEASURING THEM REDIRECTED IT
+
+The catalogue's §4 says to fold `[correct]` 107, `[answer]` 73, `[Question N]` 21 and
+`[option]` 9 into round 294's territory and take its recorded next step, the `[QnCorrect]`
+column table. Re-measured fresh (`outputs/_measure_r305_quiz.cjs`, 16 shards, every shard
+newer than the newest engine file), **the family count reconciles to the flag** — 189 today
+= 218 minus the 29 round 302 relabelled. Everything after that needed correcting:
+
+* **Round 294's named next step cannot reach the corpus at all.** SSCI104, and HPRE301 and
+  SSEA203 with it, **have no Claude directory** — the r285 ghost-dir class, which the
+  catalogue warns about for the class and then does not apply to its own reach counts.
+* **79 of the 189 flags sit on pages where a quiz ALREADY builds** — the marker is a stray
+  beside working output, not a missing build.
+* Only **26 pages** have output, have a gold page, and carry no quiz today.
+* **My own gold detector counted commented-out markup.** SCCH301's human BUILT the mcq and
+  then commented the whole thing out, shipping round 232's "Go to quiz" button instead —
+  so the first measurement read its page as "the human builds a quiz". Live-markup-only
+  measurement is used throughout; the commented form is a **3-page exception**, not a
+  convention, and 422 gold pages ship live mcq.
+
+What the flags were really pointing at was a widget with no builder, and that is what the
+round built.
+
+### 3. THE DERIVATION, PROVEN AGAINST THE HUMAN BEFORE A LINE WAS WRITTEN
+
+The writer's answer bracket **FOLLOWS the option it marks**. CEDO202 settles it beyond
+argument because that writer marks the WRONG ones too:
+
+```
+[Question 1] + How long does it take for the earth to go around the Sun?
+1. 24 hours (one day).      [Incorrect]
+1. 365 days (one year).     [Correct]
+1. Seven days (one week).   [Incorrect]
+```
+
+and its gold puts `value="correct"` on **365 days (one year).**, on **The invisible line on
+which the earth spins.** and on **Two (northern and southern).** — all three exactly where
+this rule puts them. SCCH301 (`a. Solid. [correct]`) and XGF9004 agree.
+
+**THE FENCE THAT MATTERS:** BLL264's writer types the checkbox FIRST — `☐ [correct] everyday
+spoken language` — so under this rule its marked option would be the empty checkbox glyph.
+**A marked option that is empty or checkbox-only declines the build.**
+
+### 4. THE OUTPUT SHAPE IS THE GOLD'S, AND THE CHOICES THAT DO NOT SOLIDIFY ARE RECORDED, NOT INVENTED
+
+Measured live-markup-only over the whole library (`outputs/_measure_r305_mcqgold.py`): **793
+groups / 2,444 questions / 8,092 options**. `mcqOptions` 97.5% and `mcqOption` 96.4% are
+solid and ship. Two are NOT:
+
+* **`autoCheck` is on 443/793 = 0.559** — below the r182 floor, and per-module PURE 187/225.
+  So it is **not taken from a plurality**: it is derived from the **writer's own opener
+  words** (`autocheck_words`, the r287 dropDown precedent), which reach 35 bundles.
+* **The question column token is a genuine tie** (`col-12` 0.444 / `col` 0.404, per-module
+  PURE 174/229, and no structural discriminator). The plurality ships and its divergences
+  are NAMED — the r304 `alert` precedent.
+
+A correct option carries `value="correct"`; the others carry no value attribute at all
+(4,749 of 8,092 gold options have none; `incorrect` is 0.57% and is not emitted).
+
+### 5. FOUR BUGS THE PROOF CAUGHT, AND TWO WERE IN MY OWN CHECKS — THE ELEVENTH ROUND RUNNING
+
+* **A writer instruction shipped as a quiz option.** CEDO202's `[bold the words direct
+  sunlight]` is a formatting note whose black tail CONTINUES the question sentence; it was
+  becoming an option and splitting question 4 in two. Now the bracket is dropped, noted, and
+  its tail rejoins the question — which makes question 4 read exactly as the gold does.
+* **A quiz built out of photographs.** ARFUN05's writer poses each question as an iStock
+  link; bare URLs became question text and three image questions merged into one. A URL is
+  an asset, never text — the build declines.
+* **A WRONG ANSWER, and it is the one defect that comparing every built answer with the
+  human's page found.** SSEA203's Yes/No/Don't-know set reaches the extractor as the single
+  glued token `YesNo`, so the marker landed on an option that is really two and we would
+  have shipped "YesNo" as correct where the human ships "No". A lowercase letter running
+  into a capital is that signature, and the build declines rather than assert an answer the
+  source cannot support.
+* **My leak probe was not the audit's predicate.** It reported +3 leaks on HPRE301; the
+  audit strips `cv2-interactive` subtrees and `cv2-note` paragraphs before scanning, and
+  once the probe did the same the answer was 15/15 modules IDENTICAL. **And my word-loss
+  check found a real loss I had caused** — CEDO202's opener "insert multi choice quiz after
+  the video" vanished with its hand-off box, so a wordy opener now surfaces as the standard
+  red Writers Note (the r43 rule).
+
+### 6. THE DROPBOX RE-CUT — DONE, BUT NOT THE THING THE BRIEF DESCRIBED
+
+Chris asked for this and the measurement corrected its framing twice before anything shipped.
+
+* **A dropbox is NOT its own element and never was.** All **1,050** gold occurrences are a
+  **modifier CLASS** on an ordinary activity div (`activity dropbox`, `clickDropContent
+  activity dropbox`, `activity interactive dropbox`). "Give the upload box its own element"
+  was the wrong shape to build.
+* **The writer's own `[dropbox]` TAG does not predict it.** Matched box-for-box by the
+  `number=` id over **2,695 pairs**: a dropbox bracket inside our box fires on **five** boxes
+  and is right on three; a dropDown hand-off box predicts the class at **0.364** — wrong 112
+  times to be right 64. **The round-96 "non-derivable" verdict stands for those signals, and
+  re-cutting the lexicon alias would not have produced the class.** It is also not a house
+  style: **228 of 236** gold modules are MIXED.
+* **What DOES predict it is the writer's own button** — `[3 buttons – film, camera and
+  microphone] Upload to dropbox`. Over 1,730 paired pages the rule fires **123 times and is
+  wrong 11 — 0.91 precision**. Its **recall is 17%** of the 718 paired gold dropbox boxes and
+  that is stated rather than hidden: the rest carry no upload button in our output at all,
+  most often because the writer's one activity was split into a widget box and a body box so
+  the button and the `number=` land in different divs. The looser "the box mentions dropbox
+  anywhere" rule was measured and **REJECTED at 0.51 — a coin flip**.
+
+Live on a 15-module sample: **77 classes emitted, 75 agreeing with a gold dropbox box, 1 in
+excess.**
+
+### 7. RESULT
+
+**mcq 0 → 10 groups / 45 questions across 6 modules** (BLL251, CEDO202, TWHR905, XGF9004,
+and HPRE301 + SSEA203 as forward guarantees). **dropbox 0 → 123 classes.** Orphan
+`[correct]`-family flags fall where the quizzes build.
+
+### 8. PROOF
+
+* **THE REVERSAL GUARANTEE AT CORPUS SCALE: with `MCQ_OFF` + `ACTDROPBOX_OFF` +
+  `SUMMARYBOX_OFF` set, all 2,102 pages of the whole 454-module conversion are BYTE-IDENTICAL
+  to the shipped disk and 0 differ** (161 outputs have no disk file — the ghost class). That
+  also re-proves round 304's toggle independently.
+* **Affected set from BYTES, not builds** (`outputs/_detect_r305.cjs`, all 454 modules, one
+  toggle state per process): **159 outputs / 80 modules, 0 added, 0 removed** — of which
+  **round 304's pending work is exactly 48 outputs / 11 modules, matching its changelog to
+  the file**, and **this round alone is 111 outputs / 69 modules**.
+* **Per-toggle decomposition:** mcq **14 outputs / 6 modules**; dropbox **98 / 63**.
+* **Leak scan (the defect audit's own predicate, per module, both states): 15/15 IDENTICAL,
+  0 worse.**
+* **No writer word lost.** Every word that disappears is hand-off-box chrome (the widget-type
+  label, the reference index) or an option letter the gold itself strips.
+* **NEW `_verify_mcq.cjs` + `--selftest`** (LIVENESS + four DETECTION channels, all firing):
+  live over all six modules — **45 questions, answer exact 17, divergence 0, DEFECTS 0**.
+
+### 9. THE FULL CORPUS REGENERATION (Chris: "Full REGENERATE CORPUS")
+
+416 gated dirs in 36 batches (four split for the wall), **0 stale**, corpus **2,102 pages /
+413 modules**. `_content_manifest.py diff` = **137 pages / 74 modules changed, 0 added, 0
+removed** — the 6-module gap to the in-memory 80 is exactly the modules with no Claude dir.
+
+**EVERY PROTECTED GATE HELD OR IMPROVED:**
+
+| Gate | r303 baseline | now | verdict |
+|---|---|---|---|
+| skeleton SCAFFOLD mean | 49.771% | **49.834%** | **IMPROVED** |
+| pages ≥50% / ≥75% / ≥90% | 988 / 192 / 16 | **997 / 192 / 16** | **≥50 +9 IMPROVED**, others EXACT |
+| skeleton RAW | 34.089% | **34.142%** | **IMPROVED** |
+| compare_structure exact / EXTRA / missing | 11215 / 185 / 590 | **11240 / 186 / 588** | **exact +25, missing −2 IMPROVED**; EXTRA +1 named |
+| body_compare ANY | 242 | **239** | **IMPROVED** |
+| structural clean / leak | 97.81% / 288, 46 | **97.8% / 288, 46** | **EXACT** |
+| tags | 9557/9557 | **9557/9557, REAL FAILURES 0** | **EXACT** |
+| flipCard | divergence 0 | **divergence 0 ✓** | **EXACT** |
+
+index-sync **33/28** · entry-parity **PASS** · **all NINE existing widget selftests GREEN**
+plus the new mcq one. State `outputs/_r305_sk_final.json`, chained from `_r303_sk_final.json`
+with the 74 changed modules rescored in two halves (a full `--json` re-score exceeds the 45s
+wall — the r176 limit); merge `outputs/_r305_sk_merge.py`.
+
+**THE TWO MOVEMENTS, NAMED.** `EXTRA +1` is the mcq group's own `row`/`mcqQuestion`
+containers on a page whose gold has no quiz — the documented r61 greenlit class, against
++25 exact and −2 missing. **Pages 1940 → 1939: XLP03_2_0 lost its pairing** — XLP03's gold
+splits lesson 1 across two files, and it is a ROUND-304 module whose summary-box promotion
+changed that page's content, so the content-order ladder re-resolved (the r186/r222/r235/
+r243/r245/r275 class). Over the 58 moved pages **scaffold +122.61 pp-sum and RAW +100.47
+pp-sum, both positive**.
+
+### 10. DECLINED, WITH THE MEASUREMENT RECORDED
+
+* **The `[Question N]`-less dialects.** Of the 326 mcq bundles: 96 a captured TABLE, **79
+  numbered questions with NO answer marked anywhere** (an answer is never invented), 40
+  merged with another widget, 37 opener-only, 33 no recognisable shape. The derivable pool
+  was ~34 and the round reached it.
+* **The RED-OPTION dialect** (BLL173's "all correct answers are B (in red)") — 9 bundles,
+  and only 4 have as many red options as questions. Recorded, not built.
+* **`[rhetoric question]`** — a rhetorical question is prose; gathering it would be a defect.
+* **`[front]`/`[back]`** — the catalogue's own decline, unchanged.
+
+### 11. WHAT IS LEFT, AND WHAT THIS ROUND CLOSES
+
+`WHY_UNBUILT__orphan_remaining.md` **is deleted with this round; the chain is closed.** Over
+the four rounds the orphan-remaining classes fell from 620 to **385**, and the two catalogues
+together have been corrected in every single round — a brief's counts have been reliable, its
+inferences from them have not.
+
+**RECORDED for whoever picks the queue up next:** the `dropbox` alias re-cut itself remains
+undone and is now measured to be **not worth doing for the class** (the class is derivable
+from the button, not the tag) — what IS open is the 240 upload-box bundles still captured as
+dropDown widgets · the mcq TABLE dialect (96 bundles, the largest single class left) · the
+79 unmarked quizzes, which need the writer, not the program · and round 294's own residue.
+
+**Env** `MCQ_OFF` / `ACTDROPBOX_OFF`. **Data** `interactive_builders.multiChoiceQuiz` +
+`body_region.activity_dropbox_postpass`. **Tools** `outputs/_measure_r305_quiz.cjs`,
+`_r305_analyse.py`, `_measure_r305_mcq.cjs`, `_r305_mcq_dialects.py`,
+`_measure_r305_mcqgold.py`, `_r305_dropbox_pair.py`, `_r305_dropbox_rule.py`,
+`_detect_r305.cjs`, `_probe_r305_vsgold.cjs`, `_probe_r305_quality.cjs`,
+`_r305_sk_merge.py`, `reference/tests/_verify_mcq.cjs`.
+
+---
+
 ## 2026-08-09 (round 304, build 260618.75) — THE LESSON-SUMMARY BOX: the orphan-remaining chain, round 3 of 4 (Chris — "implement as many fixes as possible from `WHY_UNBUILT__orphan_remaining.md`", the r298–r303 chain methodology; **NO REGENERATION — Chris's explicit decision this round, "this can be done by the next round". The gates were NOT re-run corpus-wide and the ROUND-303 BASELINES BELOW STILL DESCRIBE THE CORPUS. `SUMMARYBOX_OFF` is the reversal guarantee, and it is proven at corpus scale below.**)
 
 Chain order: 1 — the `scope_tags` widening ✅ (r302) → 2 — the bare `[Tab N]` / `[Slide N]`

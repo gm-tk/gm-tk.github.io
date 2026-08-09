@@ -1375,7 +1375,17 @@ class Config {
 	// IDENTICAL to the shipped disk on 2,515 pages. NO REGENERATION (Chris) — the
 	// r303 baselines still describe the corpus. Data Tag_Lexicon _meta.tag_promote
 	// + Emit_Templates callouts.promoted_box_empty_guard; env SUMMARYBOX_OFF.
-	static AppVersion = "260618.75";
+	// ROUND 305 (260618.76): THE MULTIPLE-CHOICE QUIZ — the first builder this widget
+	// has ever had (326 captured bundles / 142 modules bailed at Build's missing-template
+	// guard; mcqOption appeared ZERO times in the corpus against the human's 417 pages).
+	// The answer bracket FOLLOWS the option it marks — proven on CEDO202, whose writer
+	// marks the wrong ones too and whose three gold answers land exactly. PLUS the
+	// `dropbox` ACTIVITY MODIFIER (Chris): NOT its own element and NOT predicted by the
+	// writer's [dropbox] tag (5 boxes) — predicted by the writer's own upload BUTTON at
+	// 0.91 precision. FULL CORPUS REGENERATION (Chris); ledger reset to 0.
+	// Data interactive_builders.multiChoiceQuiz + body_region.activity_dropbox_postpass;
+	// env MCQ_OFF / ACTDROPBOX_OFF.
+	static AppVersion = "260618.76";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

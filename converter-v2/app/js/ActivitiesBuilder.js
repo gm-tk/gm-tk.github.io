@@ -108,6 +108,69 @@ class ActivitiesBuilder {
 	 * @param {string} html - the fully assembled page HTML
 	 * @returns {string} the same HTML with `.interactive` added to any activity box that needed it
 	 */
+	/**
+	 * ROUND 305 — THE `dropbox` ACTIVITY MODIFIER (Chris, "do it this round").
+	 *
+	 * THE FIRST THING THE MEASUREMENT CORRECTED: a dropbox is NOT its own element and
+	 * never was. Every one of the 1,050 occurrences in the gold library is a MODIFIER
+	 * CLASS on an ordinary activity box — `class="activity dropbox"`, `"clickDropContent
+	 * activity dropbox"`, `"activity interactive dropbox"` — so "give the upload box its
+	 * own element" was the wrong shape to build, and the rounds-287/294 note calling the
+	 * gold markup "the target" was pointing at a class token.
+	 *
+	 * THE SECOND: the writer's own `[dropbox]` TAG does NOT predict it. Matched box-for-box
+	 * by the `number=` id against the human's own page, a dropbox bracket inside our box
+	 * fires on FIVE boxes corpus-wide and is right on three; a hand-off box typed dropDown
+	 * predicts the class at 0.364 — wrong 112 times to be right 64. The round-96 verdict
+	 * that this class is non-derivable stands for those signals, and re-cutting the
+	 * `dropbox` alias would not have produced it.
+	 *
+	 * WHAT DOES predict it is the writer's own BUTTON. The writer types "[3 buttons – film,
+	 * camera and microphone] Upload to dropbox" inside the activity, and the human ships
+	 * that box as a dropbox: measured page-for-page over 1,730 paired pages, this rule
+	 * fires 123 times and is wrong 11 — 0.91 precision. Its RECALL is only 17% of the 718
+	 * paired gold dropbox boxes and that is reported rather than hidden: the rest carry no
+	 * upload button anywhere in our output, most often because the writer's activity was
+	 * split into a widget box and a body box, so the button and the `number=` id land in
+	 * different divs. Widening to "the box mentions dropbox anywhere" was measured and
+	 * REJECTED — 0.51 precision, a coin flip.
+	 *
+	 * Data body_region.activity_dropbox_postpass; env ACTDROPBOX_OFF.
+	 */
+	static activityDropboxPostpass(html) {
+		const tpl = DataService.Data.EmitTemplates;
+		const cfg = tpl.body_region?.activity_dropbox_postpass;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env.ACTDROPBOX_OFF) return html;
+		const label = new RegExp(cfg.button_label_pattern ?? "drop\\s?box|upload", "i");
+		const token = cfg.class_token ?? "dropbox";
+		const btnRe = new RegExp(cfg.button_pattern ?? '<div class="[^"]*\\bbutton\\b[^"]*"[^>]*>([\\s\\S]*?)</div>', "gi");
+		const divEnd = (start) => {
+			const re = /<(\/?)div\b/gi; re.lastIndex = start;
+			let depth = 0, mm;
+			while ((mm = re.exec(html))) { depth += mm[1] ? -1 : 1; if (depth === 0) return re.lastIndex; }
+			return html.length;
+		};
+		const reOpen = /<div class="(activity)(\s[^"]*)?"/g;
+		const inserts = [];
+		let m;
+		while ((m = reOpen.exec(html))) {
+			if (new RegExp("(^|\\s)" + token + "(\\s|$)").test(m[2] || "")) continue;   // already marked
+			const seg = html.slice(m.index, divEnd(m.index));
+			btnRe.lastIndex = 0;
+			let hit = false, b;
+			while ((b = btnRe.exec(seg))) {
+				const txt = String(b[1] ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+				if (label.test(txt)) { hit = true; break; }
+			}
+			if (hit) inserts.push(m.index + 20);      // just past the literal `activity` word
+		}
+		if (!inserts.length) return html;
+		let out = html;
+		for (const pos of inserts.sort((a, b) => b - a)) out = out.slice(0, pos) + " " + token + out.slice(pos);
+		return out;
+	};
+
 	static activityInteractivePostpass(html) {
 		const tpl = DataService.Data.EmitTemplates;
 		const cfg = tpl.body_region?.activity_interactive_postpass;

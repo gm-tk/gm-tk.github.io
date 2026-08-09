@@ -141,6 +141,10 @@ class InteractiveBuilder {
 					// converter's own emitters, exactly as the accordion's panels do.
 					html = this.#clickDropEntry({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested });
 					break;
+				case "multiChoiceQuiz":
+					// ROUND 305 — the first builder this type has ever had.
+					html = this.#multiChoiceQuiz({ bundle, tpl, renderInline });
+					break;
 				case "dropDown":
 					// ROUND 287 — the first builder this type has ever had. FENCED on the
 					// writer's opener naming a dropdown, because the lexicon aliases the
@@ -11065,6 +11069,195 @@ class InteractiveBuilder {
 			.replace(/\[\s*(?:body|front|back|h[1-6]|heading|flip\s?card)\s*\d*\s*\]/gi, " ")
 			.replace(/[ \t]{2,}/g, " ")
 			.trim();
+	}
+
+	/* ================================================================== *
+	 *  ROUND 305 — THE MULTIPLE-CHOICE QUIZ
+	 *  ------------------------------------------------------------------
+	 *  The FIRST builder this widget has ever had. multiChoiceQuiz had no
+	 *  key in interactive_builders at all, so every one of its 326 captured
+	 *  bundles (142 modules) bailed at Build's missing-template guard before
+	 *  any code ran — the round-287 dropDown situation exactly. The human
+	 *  ships the widget on 417 pages across 225 modules; we shipped mcqOption
+	 *  ZERO times.
+	 *
+	 *  THE DERIVATION (proven against the gold BEFORE writing): the writer's
+	 *  answer bracket FOLLOWS the option it marks. CEDO202 settles it beyond
+	 *  argument because that writer marks the wrong ones too, and all three of
+	 *  its gold answers land exactly where this rule puts them.
+	 *
+	 *  NEVER HALF-BUILDS. A marked option that is empty or checkbox-only
+	 *  (BLL264's "☐ [correct] everyday spoken language" types the box FIRST),
+	 *  a question with too few options, a captured table, a merged bundle, a
+	 *  foreign widget member, or no answer marked anywhere → null, and the
+	 *  honest hand-off box stays.
+	 *
+	 *  Data interactive_builders.multiChoiceQuiz; env MCQ_OFF.
+	 * ================================================================== */
+	static #multiChoiceQuiz({ bundle, tpl, renderInline }) {
+		if (!tpl || tpl.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.MCQ_OFF) return null;
+		if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget
+		const inline = renderInline ?? ((s) => s);
+
+		const reCorrect = new RegExp(tpl.correct_pattern, "i");
+		const reIncorrect = new RegExp(tpl.incorrect_pattern, "i");
+		const reList = new RegExp(tpl.list_marker_pattern, "u");
+		const reBox = new RegExp(tpl.checkbox_only_pattern, "u");
+		const reQEnd = new RegExp(tpl.question_end_pattern);
+		const qTags = tpl.question_tags ?? ["question"];
+		const openTags = tpl.opener_tags ?? ["mcq"];
+		const deny = tpl.decline_tags ?? [];
+
+		const notes = [];
+		const stripped = (s) => String(s ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, " ")
+			.replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
+		const optText = (s) => stripped(String(s ?? "").replace(reList, ""));
+		const words = (s) => stripped(s).split(/\s+/).filter(Boolean).length;
+
+		/* --- the member stream, flattened to ordered STEPS ---------------- */
+		const steps = [];
+		let seenOpener = false;
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table" || m.type === "nested") return null;
+			if (m.type === "black") {
+				for (const ln of String(m.text ?? "").split(/\n+/))
+					if (stripped(ln)) steps.push({ k: "line", t: ln });
+				continue;
+			}
+			const p = m.parse?.primary;
+			const tag = p?.tag ?? null;
+			const raw = String(m.text ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, "").trim();
+			// the widget's own invocation, once
+			if (!seenOpener && openTags.includes(tag)) {
+				seenOpener = true;
+				// The opener often carries PLACEMENT guidance for the designer
+				// ("[insert multi choice quiz after the video]"). When the widget builds,
+				// its hand-off box disappears and that sentence would go with it — so a
+				// wordy opener surfaces as the standard red Writers Note instead of being
+				// silently dropped (the r43 rule; caught by this round's word-loss check,
+				// which found "after" vanishing from CEDO202 altogether).
+				if (stripped(raw).split(/\s+/).filter(Boolean).length > (tpl.opener_note_min_words ?? 3)) notes.push(raw);
+				continue;
+			}
+			if (tag && deny.includes(tag)) return null;            // a foreign widget — not ours to place
+			// A FORMATTING/marker bracket ("[bold the words direct sunlight]", CEDO202) is an
+			// instruction to the designer, not an option — but the black text that follows it
+			// CONTINUES the writer's sentence, so the bracket is dropped and the tail kept.
+			if (tag && (tpl.skip_tags ?? []).includes(tag) && !reCorrect.test(raw) && !reIncorrect.test(raw)) {
+				if (stripped(raw)) notes.push(raw);
+				for (const ln of String(m.blackAfter ?? "").split(/\n+/))
+					if (stripped(ln)) steps.push({ k: "line", t: ln });
+				continue;
+			}
+			if (qTags.includes(tag)) {
+				steps.push({ k: "q", t: stripped(m.blackAfter) || stripped(raw) });
+				continue;
+			}
+			if (reCorrect.test(raw)) { steps.push({ k: "mark" }); }
+			else if (reIncorrect.test(raw)) { steps.push({ k: "unmark" }); }
+			else if (m.parse?.class === "instruction" || m.parse?.class === "noise") {
+				// a writer instruction is never silently stripped (the r43/r214 rule)
+				if (stripped(raw)) notes.push(raw);
+			} else if (stripped(raw)) {
+				// a red span that is WHOLLY a bracketed phrase is a design instruction (r301),
+				// never a quiz option; anything else is the writer's own text.
+				if (/^\[[^\]]*\]$/.test(stripped(raw))) notes.push(raw);
+				else steps.push({ k: "line", t: raw });
+			}
+			for (const ln of String(m.blackAfter ?? "").split(/\n+/))
+				if (stripped(ln)) steps.push({ k: "line", t: ln });
+		}
+		if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented
+
+		/* --- questions ---------------------------------------------------- */
+		const tagged = steps.some((s) => s.k === "q");
+		const qs = [];
+		let cur = null;
+		const startQ = (t) => { cur = { text: t, opts: [] }; qs.push(cur); };
+		for (const s of steps) {
+			if (s.k === "q") { startQ(s.t); continue; }
+			if (s.k === "mark" || s.k === "unmark") {
+				if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark
+				const last = cur.opts[cur.opts.length - 1];
+				if (reBox.test(last.text) || !last.text) return null;   // the BLL264 checkbox fence
+				if (s.k === "mark") last.correct = true;
+				continue;
+			}
+			const txt = optText(s.t);
+			if (!txt) continue;
+			// with no [Question N] tags the writer's question line is the one ending in "?"
+			if (!tagged && reQEnd.test(stripped(s.t)) && (!cur || cur.opts.length)) { startQ(txt); continue; }
+			if (!cur) { if (tagged) return null; startQ(txt); continue; }
+			// CEDO202 Q4: "[Question 4] If the hemisphere is in direct sunlight" +
+			// "[bold …] it will experience …". With no option collected yet and no list
+			// marker on the line, the writer is still writing the QUESTION.
+			if (tagged && !cur.opts.length && !reList.test(String(s.t))) {
+				cur.text = (cur.text ? cur.text + " " : "") + txt;
+				continue;
+			}
+			cur.opts.push({ text: txt, correct: false });
+		}
+		if (qs.length < (tpl.min_questions ?? 1)) return null;
+
+		/* --- the guards --------------------------------------------------- */
+		// A bare URL is an ASSET the writer is pointing at, never question or option TEXT
+		// (ARFUN05 builds its quiz out of iStock photo links). Rendering it as words made a
+		// question whose text was a URL and merged three image questions into one — caught
+		// live, and this declines it rather than half-building an image quiz.
+		const isUrl = (t) => /^\s*https?:\/\/\S+\s*$/i.test(String(t ?? ""));
+		// TWO OPTIONS GLUED INTO ONE. SSEA203's writer typed a Yes / No / Don't-know set
+		// that reaches the extractor as the single token "YesNo", so the answer marker
+		// would land on an option that is really two — and we would ship "YesNo" as the
+		// right answer where the human ships "No". A lowercase letter running straight
+		// into a capital is that signature; the build declines rather than assert an
+		// answer the source cannot support. (Caught by comparing every built answer with
+		// the human's own page — it is the one defect that comparison found.)
+		const glued = new RegExp(tpl.glued_option_pattern ?? "[a-z\u00e0-\u00ff][A-Z\u00c0-\u00dd]");
+		for (const q of qs) {
+			if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;
+			if (q.opts.some((o) => glued.test(o.text))) return null;
+			if (!q.text || words(q.text) > (tpl.max_question_words ?? 63)) return null;
+			if (q.opts.length < (tpl.min_options ?? 2)) return null;
+			if (q.opts.length > (tpl.max_options ?? 10)) return null;
+			if (q.opts.some((o) => words(o.text) > (tpl.max_option_words ?? 40))) return null;
+			if (!q.opts.some((o) => o.correct)) return null;        // every question needs its answer
+		}
+
+		/* --- emit the gold's own shape ------------------------------------ */
+		const ac = this.#mcqAutocheck(bundle, tpl);
+		const out = [Utils.FillTemplate(tpl.group_open, { autocheck: ac })];
+		for (const q of qs) {
+			out.push(tpl.question_open);
+			out.push(Utils.FillTemplate(tpl.question_text, { text: inline(q.text) }));
+			out.push(tpl.options_open);
+			for (const o of q.opts)
+				out.push(Utils.FillTemplate(o.correct ? tpl.option_correct : tpl.option, { text: inline(o.text) }));
+			out.push(tpl.options_close);
+			out.push(tpl.question_close);
+		}
+		out.push(tpl.group_close);
+		const built = out.join("\n");
+		if (this.#mcqLeakGuard(built)) return null;                 // a build must never ADD a leak
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.r305Mcq = true;                                      // detector / affected-set marker
+		return built;
+	}
+
+	/** the autoCheck class, from the WRITER's own opener words (the r287 precedent). */
+	static #mcqAutocheck(bundle, tpl) {
+		const ws = tpl.autocheck_words ?? [];
+		const head = (bundle?.memberItems ?? []).slice(0, 2)
+			.map((m) => String(m?.text ?? "") + " " + String(m?.blackAfter ?? "")).join(" ").toLowerCase();
+		return ws.some((w) => head.includes(w)) ? (tpl.autocheck_class ?? " autoCheck") : "";
+	}
+
+	/** a finished quiz still showing a writer bracket is a defect, not a build (r167/r279). */
+	static #mcqLeakGuard(html) {
+		// ANY square bracket surviving into a built quiz is a writer marker we failed to
+		// place — the build declines and the honest hand-off box stays (r167/r279).
+		return /\[[^\]\n]{0,120}\]/.test(String(html ?? ""));
 	}
 }
 

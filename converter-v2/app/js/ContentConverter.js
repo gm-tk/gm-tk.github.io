@@ -3053,8 +3053,8 @@ class ContentConverter {
 		// finalBody against bodyHtml) stays purely about whether the inquiry wrapping changed
 		// anything, uncontaminated by unrelated residue-stripping.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#dropNoteResidueBullets(this.#alertTitleHeading(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				this.#relevelHeadings(body.filter(Boolean).join("\n")))))),
+			this.#dropNoteResidueBullets(this.#alertTitleHeading(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				this.#relevelHeadings(body.filter(Boolean).join("\n"))))))),
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
