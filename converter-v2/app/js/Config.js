@@ -1344,7 +1344,16 @@ class Config {
 	// 416 modules with output rebuilt, and exactly 26 pages / 22 modules changed —
 	// the already-working quiz-and-box half proven byte-identical. Every protected
 	// gate EXACT. Scoped ship #1 since r301b.
-	static AppVersion = "260618.73";
+	// ROUND 303 (260618.74): THE BARE [Tab N] / [Slide N] OPENER — the orphan-remaining
+	// chain, round 2 of 4. A writer numbers the PARTS of a tab strip or slideshow and never
+	// types the whole, so nothing opened a widget and every part arrived alone under a red
+	// flag with its bracket leaking onto the page. The first marker of a qualifying series
+	// now acts as the opener and rounds 293/295 build it. The catalogue called this "the
+	// largest single fixable thing in the document" at 212 flags over 40 pages; measured, the
+	// true reach is 12 pages, because most of those markers are ALREADY consumed correctly by
+	// the inquiry and fundamentals panel builders. 7 tab strips whose nav labels are the
+	// writer's own tails verbatim. FULL corpus regeneration (Chris); every gate held.
+	static AppVersion = "260618.74";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

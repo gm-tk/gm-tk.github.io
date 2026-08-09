@@ -242,7 +242,21 @@ class InteractiveScanner {
 			// Data EmitTemplates.elements.hover_definition_inline; env HOVERDEF_OFF.
 			if (it.consumedBy === undefined && this.#weaveHoverDefinition(items, i, normaliser)) continue;
 
-			if (it.type !== "tag" || it.parse.primary?.directive !== "INTERACTIVE") continue;
+			// BARE NUMBERED SERIES OPENER (ROUND 303 — the orphan-remaining chain, round 2).
+			// A widget is opened here only when the item's primary tag is INTERACTIVE. Some
+			// writers number the PARTS and never type the whole: "[Tab 1] Subtraction in parts /
+			// [Tab 2] Add instead of subtract / [Tab 3] Algorithm" with no [tabs] anywhere. Those
+			// parts are SUBTAGs, so nothing ever opened a bundle and each one arrived alone under
+			// an orphan red flag with its bracket leaking onto the page as literal text. When the
+			// series qualifies (see #bareSeriesOpener for the four measured fences — clean
+			// numbered form, real content BETWEEN the panes, no opener already on the page, and
+			// for tabs a label on every marker), the FIRST marker acts as the opener: the bundle
+			// is created with the partner widget's type and the marker stays in memberItems, so
+			// round 293's #tabsPanes and round 295's carousel builder read it exactly as they read
+			// any other bundle. Data member_rule.bare_series_opener; env TABOPENER_OFF /
+			// SLIDEOPENER_OFF.
+			const bareSeries = InteractiveScanner.#bareSeriesOpener(items, i);
+			if (!bareSeries && (it.type !== "tag" || it.parse.primary?.directive !== "INTERACTIVE")) continue;
 			if (it.consumedBy !== undefined) continue;   // already inside a bundle
 
 			// ACCORDION-AS-PHASES SUPPRESSION (registry-gated to specific module families — see
@@ -271,8 +285,14 @@ class InteractiveScanner {
 			if (InteractiveScanner.#dropdownMenuMarker(items, i, run)) continue;
 
 			// ---- the invocation ------------------------------------------
-			const canonTag = it.parse.primary.tag;
-			const type = this.#widgetTypeFor(canonTag, it.parse.primary.alias, normaliser);
+			// A bare-series opener (round 303) is a SUBTAG standing in for the whole widget, so
+			// the type comes from the data map rather than the marker's own tag. The alias is
+			// deliberately NOT passed through: [Slide N]'s alias is "slide", which is not a
+			// carousel alias, and letting it reach #resolveWidgetType could pick a variant the
+			// writer never asked for.
+			const canonTag = bareSeries ? bareSeries.opener_tag : it.parse.primary.tag;
+			const type = bareSeries ? bareSeries.widget
+				: this.#widgetTypeFor(canonTag, it.parse.primary.alias, normaliser);
 
 			// STANDALONE INLINE MARKER (in free body, not inside any open widget): it
 			// is NOT a widget — the human renders it inline ON the surrounding text
@@ -436,7 +456,10 @@ class InteractiveScanner {
 				type, canonTag,
 				// pre-fold widget VARIANT (e.g. rotateBanner before it folds to carousel) so a
 				// shared parent builder can branch on the sub-form the writer used.
-				variant: this.#resolveWidgetType(canonTag, it.parse.primary?.alias, normaliser),
+				variant: bareSeries ? bareSeries.widget
+					: this.#resolveWidgetType(canonTag, it.parse.primary?.alias, normaliser),
+				// round 303 — an INFERRED opener; see the fence in #swallowMembers
+				_bareSeries: bareSeries ? bareSeries.family : undefined,
 				modifier: this.#modifierFor(it),
 				activityId: null, headingText: "",
 				openerItems: [], memberItems: [], tables: [],
@@ -521,6 +544,20 @@ class InteractiveScanner {
 
 			// ---- members: walk FORWARD until a terminator -----------------
 			bundle.endIndex = this.#swallowMembers(bundle, items, i + 1, headingTerminates, absolute, run, normaliser);
+			// GATHER THE WHOLE INFERRED SERIES, OR NONE OF IT (ROUND 303). A bare-series bundle
+			// is a guess about a widget the writer never named, so it is only worth making when
+			// the capture actually reaches the series the guess was based on. If a terminator
+			// truncates it short of the SECOND marker, the bundle can only ever hold one pane —
+			// below every builder's min_panes/min_slides floor — so it would decline and leave a
+			// developer hand-off box standing where readable body text used to be. SCFUN01-0.0 is
+			// the live case: its writer closes each pane with an explicit "[end tab]", which is a
+			// CONTAINER_CLOSE and rightly ends the walk after the first. Abandoning the bundle
+			// here leaves every item unconsumed, so that page stays byte-identical — the
+			// never-half-build rule applied at the gathering seam rather than the building one.
+			if (bareSeries && bundle.endIndex <= bareSeries.secondIndex) {
+				for (const m of bundle.memberItems) if (m) m.consumedBy = undefined;
+				continue;
+			}
 			// TRAILING-MEDIA FIX: a [video]/[audio] the writer placed AFTER the
 			// widget's content was swallowed as a member, but the human renders it
 			// as its OWN element. Trim it back out so the normal converter path
@@ -806,6 +843,125 @@ class InteractiveScanner {
 		if (!reo) return false;
 		return new RegExp(cfg.opener_pattern ?? "^\\[content for drop[ -]?down menu\\]$", "i")
 			.test((items[i].parse?.folded ?? "").trim());
+	};
+
+	/**
+	 * THE BARE NUMBERED SERIES OPENER (ROUND 303).
+	 *
+	 * Decide whether the item at `i` — a SUBTAG such as `[Tab 1]` or `[Slide 1]`, which can
+	 * never open a widget on its own — is in fact the start of a numbered series the writer
+	 * meant as a whole widget and simply never named. Round 293 gave tabs six ways to read a
+	 * bundle and round 295 finished the carousel; neither can help when no bundle is created
+	 * for them to read, and that is the only thing this predicate changes.
+	 *
+	 * FOUR FENCES, every one measured over all 454 modules before a line was written (see the
+	 * data block's `_note`/`_measured`, and the round-303 changelog):
+	 *
+	 *   1. CLEAN NUMBERED FORM. The marker must have parsed as a clean numbered tag (`how` in
+	 *      clean_hows) AND carry a numeric number. `[New tab]` ×89, `[Tab Nav]` ×35,
+	 *      `[Tab layout]`, `[Template tab here]` and every other prose form parse as
+	 *      `how:"embedded"` with no number, so the fundamentals-panel and choice-page marker
+	 *      families are excluded BY CONSTRUCTION rather than by a word list.
+	 *   2. CONTENT BETWEEN THE PANES (`min_gap`). This is the load-bearing one. The BLL and
+	 *      CED INQUIRY families declare `[Tab 1]…[Tab 6]` as a CONTIGUOUS crumb list naming
+	 *      the module's pages, and the round-100/111 panel builders already turn those into
+	 *      correct inquiry panels. Measured: all 20 such pages have gaps of exactly 1 between
+	 *      consecutive markers; all 6 pages whose gold builds a real tab strip have gaps of 3
+	 *      or more. A tab strip has content in its panes; a crumb list does not.
+	 *   3. NO OPENER ALREADY ON THE PAGE. If any INTERACTIVE invocation of the partner widget
+	 *      exists anywhere on this page, the markers escaping it is a capture or builder
+	 *      question — rounds 293 and 295 own those — not a gathering one.
+	 *   4. A LABEL IS NEVER INVENTED (tabs only). Every marker must carry its own trailing
+	 *      text within `label_max_words`. MXDI201-9.0's markers carry whole PARAGRAPHS and its
+	 *      human developer invented four short names instead; TWHA901/906 and TWHK903 carry
+	 *      none at all. A SLIDE needs no label — round 295 measured captions as optional and
+	 *      9.6% of the gold's slides carry no media either — so a slide's content is simply
+	 *      whatever follows its marker.
+	 *
+	 * @param {Object[]} items - the page's item stream
+	 * @param {number} i - index of the candidate first marker
+	 * @returns {{widget:string, opener_tag:string, family:string, count:number}|null}
+	 *   the resolved widget when the series qualifies, else null (the item is skipped exactly
+	 *   as before, so every page that does not qualify is byte-identical by construction)
+	 */
+	static #bareSeriesOpener(items, i) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.bare_series_opener;
+		if (!cfg || cfg.enabled === false) return null;
+		const it = items[i];
+		if (!it || it.type !== "tag" || it.consumedBy !== undefined) return null;
+		const prim = it.parse?.primary;
+		if (!prim) return null;
+		const fam = (cfg.families ?? {})[prim.tag];
+		if (!fam) return null;
+		if (fam.env && typeof process !== "undefined" && process.env && process.env[fam.env]) return null;
+
+		const cleanHows = cfg.clean_hows ?? ["exact", "denumbered", "denumbered_head"];
+		const minGap = cfg.min_gap ?? 2;
+		const minMembers = cfg.min_members ?? 2;
+		const numOf = (m) => {
+			if (!m || m.type !== "tag" || m.consumedBy !== undefined) return null;
+			const p = m.parse?.primary;
+			if (!p || p.tag !== prim.tag) return null;
+			if (!cleanHows.includes(String(p.how ?? ""))) return null;
+			const raw = (m.parse.numbers ?? [])[0];
+			const n = parseInt(raw, 10);
+			return (/^\d+$/.test(String(raw ?? "")) && Number.isFinite(n)) ? n : null;
+		};
+		// FENCE 1 — this item must itself be a clean numbered marker.
+		const first = numOf(it);
+		if (first === null) return null;
+
+		// FENCE 3 — an INTERACTIVE invocation of the partner widget anywhere on the page.
+		for (const m of items) {
+			if (!m || m.type !== "tag") continue;
+			const p = m.parse?.primary;
+			if (!p || p.directive !== "INTERACTIVE") continue;
+			const wt = (DataService.Data.TagLexicon?.tags?.[p.tag] || {}).widget_types || [];
+			if (p.tag === fam.opener_tag || wt.includes(fam.widget)) return null;
+		}
+
+		// The RISING run starting here, gathered over the clean numbered markers only.
+		const label = (m) => {
+			const tail = String(m.blackAfter ?? "").trim();
+			if (tail) return tail;
+			const mm = /\][ \t]*(\S.*)$/.exec(String(m.text ?? "").trim());
+			return mm ? mm[1].trim() : "";
+		};
+		// The CONSECUTIVE run starting here. Consecutive, not merely rising: a gap in the
+		// writer's own numbering means a marker the walk could not read, so the series is not
+		// fully understood and building from it would be a guess. ANZH105-6.0 is the live
+		// case — its second series reads [Slide 1] … [Slide 3] because the middle marker was
+		// typed as "[Slide 2] [H4]" and resolves to the heading tag instead; capturing 1 and 3
+		// swept in an "[H4] New Zealand Māori" whose heading the widget walk then dropped.
+		// Requiring 1,2,3… leaves that series exactly as it was.
+		const consecutive = cfg.require_consecutive !== false;
+		const run = [{ idx: i, n: first, item: it }];
+		for (let j = i + 1; j < items.length; j++) {
+			const n = numOf(items[j]);
+			if (n === null) continue;
+			const prev = run[run.length - 1].n;
+			if (consecutive ? (n !== prev + 1) : (n <= prev)) break;   // series ended
+			run.push({ idx: j, n, item: items[j] });
+		}
+		if (run.length < minMembers) return null;
+
+		// FENCE 2 — real content between every consecutive pair.
+		for (let k = 0; k + 1 < run.length; k++) {
+			if (run[k + 1].idx - run[k].idx < minGap) return null;
+		}
+		// FENCE 4 — a label on every marker, never invented, never a paragraph.
+		if (fam.require_label) {
+			const maxW = fam.label_max_words ?? 6;
+			for (const r of run) {
+				const l = label(r.item).replace(/\*+/g, "").trim();
+				if (!l) return null;
+				if (l.split(/\s+/).length > maxW) return null;
+			}
+		}
+		return {
+			widget: fam.widget, opener_tag: fam.opener_tag, family: prim.tag,
+			count: run.length, secondIndex: run[1].idx,
+		};
 	};
 
 	static #accordionPhaseForm(it, run) {
@@ -1747,6 +1903,18 @@ class InteractiveScanner {
 			if (p?.directive === "INTERACTIVE") {
 				const meta = DataService.Data.BoundaryBank._meta.member_rule;
 				const extra = normaliser ? this.#widgetTypeFor(p.tag, p.alias, normaliser) : null;
+				// BARE-SERIES BUNDLES NEVER SWALLOW ANOTHER WIDGET (ROUND 303). This host has no
+				// opener of its own — it was inferred from a numbered [Tab N]/[Slide N] series
+				// (#bareSeriesOpener) — so there is no writer evidence that it extends past the
+				// next widget the writer DID name. Every absorb rule below assumes an explicit
+				// invocation marked the widget's start; the activity-scoped
+				// same_activity_multi_widget rule in particular would take the follower as an
+				// extraType, and MXDB202-2.0 proved the cost — its inferred tabs bundle swallowed
+				// the [self check] typing quiz that follows the third tab, the builder then bailed
+				// on extraTypes, and a page that had been rendering as readable body text shipped a
+				// developer hand-off box instead. Strictly NARROWING: it can only ever end a bundle
+				// THIS round created, so no bundle that existed before round 303 can move.
+				if (bundle._bareSeries && extra !== null && extra !== bundle.type) break;
 				// INLINE MARKERS ([highlight text] → wordSelect/wordHighlighter) are NOT
 				// standalone widgets — they mark text the human highlights INLINE on the
 				// surrounding container. Inside an open widget they must be ABSORBED as a

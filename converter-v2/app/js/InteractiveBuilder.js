@@ -1658,6 +1658,19 @@ class InteractiveBuilder {
 
 			if (["h2", "h3", "h4", "h5", "h6"].includes(tag)) {
 				if (this.#hasRedText(raw)) return null;
+				// A HEADING WRITTEN INSIDE ITS OWN BRACKET (ROUND 303). A member's text has
+				// always been taken from its blackAfter alone, which is right for a bare
+				// "[H4]" with the heading on the line beneath. But writers also type the
+				// heading INSIDE the red span — ANZH105-6.0 writes "[H4] New Zealand Māori"
+				// with "Kapa haka" as the black line under it — and then the blackAfter is the
+				// CAPTION, not the heading. The old reading took "Kapa haka" as the heading
+				// and DROPPED "New Zealand Māori" entirely: the writer's own words were lost,
+				// which is a half-build. The ordinary body path has always rendered the
+				// embedded payload as the heading and the black line as the text beneath it,
+				// so this brings the widget walk into line with it rather than inventing a
+				// new convention. Env HEADPAYLOAD_OFF.
+				const payload = this.#accHeadPayload(m);
+				if (payload) { parts.push({ role: "head", level: tag, text: payload }); continue; }
 				const t = text.replace(/\*\*/g, "").trim();
 				if (!t) continue;
 				parts.push({ role: "head", level: tag, text: t });
@@ -2051,6 +2064,43 @@ class InteractiveBuilder {
 	 * #isGoJournalButton discipline. A button carrying a URL is a real link button and
 	 * is never one of these.
 	 */
+	/**
+	 * THE HEADING A WRITER TYPED INSIDE ITS OWN BRACKET (ROUND 303).
+	 *
+	 * Returns the heading text carried in the member's OWN red span — "[H4] New Zealand
+	 * Māori" → "New Zealand Māori" — or "" when the span is a bare marker and the heading
+	 * is on the black line beneath it, which is the far commoner form and the one every
+	 * caller already handles. Deliberately narrow: the span must resolve to exactly ONE
+	 * bracket and carry nothing but that bracket plus its payload, so a multi-bracket
+	 * marker ("[Slide 2] [H4]") or anything with a second tag is left to the existing
+	 * reading untouched.
+	 *
+	 * @param {Object} m - the member item
+	 * @returns {string} the embedded heading, or "" when there is none
+	 */
+	static #accHeadPayload(m) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.head_bracket_payload;
+		if (!cfg || cfg.enabled === false) return "";
+		if (typeof process !== "undefined" && process.env && process.env.HEADPAYLOAD_OFF) return "";
+		if (!m || m.type !== "tag") return "";
+		// ONLY when the black line beneath is EMPTY, which is the unambiguous case. When a
+		// member carries BOTH a payload and a black line the two are indistinguishable by
+		// shape and the human treats them in OPPOSITE ways: ANZH105-6.0's "[H4] New Zealand
+		// Māori" + "Kapa haka" is JOINED into one gold heading, while SSCI205-8.0's "[H5]
+		// overlayed image" + "Government" has its payload DROPPED — it is a design
+		// instruction, and the gold ships the word "overlayed" nowhere at all. Nothing in the
+		// document separates them, so the both-present form keeps its existing reading rather
+		// than being decided by a pattern fitted to one string (the round-301 rule).
+		if (String(m.blackAfter ?? "").trim()) return "";
+		const raw = String(m.text ?? "").trim();
+		const brackets = raw.match(/\[[^\]]*\]/g) ?? [];
+		if (brackets.length !== 1) return "";                       // one bracket only
+		const after = raw.slice(raw.indexOf(brackets[0]) + brackets[0].length);
+		const t = this.#cellText(after).replace(/\*\*/g, "").trim();
+		if (!t || /[\[\]]/.test(t)) return "";
+		return t;
+	};
+
 	static #accIsGoJournal(m) {
 		const gj = DataService.Data.EmitTemplates?.buttons?.go_journal;
 		if (!gj || gj.enabled === false) return false;

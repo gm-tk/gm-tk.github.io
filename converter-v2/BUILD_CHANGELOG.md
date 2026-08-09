@@ -1,5 +1,216 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 303, build 260618.74) — THE BARE `[Tab N]` / `[Slide N]` OPENER: the orphan-remaining chain, round 2 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_remaining.md", the r298–r301 chain methodology; **FULL CORPUS REGENERATION, authorised by Chris when the measurement showed the §0b family was 85% of the corpus anyway — ledger reset to 0**)
+
+Chain order: 1 — the `scope_tags` widening ✅ (r302) → **2 — the bare `[Tab N]` / `[Slide N]`
+openers (THIS ROUND)** → 3 — the `[coloured box]` callout → 4 — the quiz families, folded
+into round 294's territory, which deletes the brief.
+
+**EVERY PROTECTED GATE HELD-OR-IMPROVED. `--accept-named` was neither used nor needed.**
+The PRIMARY skeleton rose on mean, on pages ≥50% and on RAW, and over the 16 moved pages
+**scaffold +10.61 pp-sum AND RAW +4.46 pp-sum, both positive.**
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+A writer numbers the PARTS of a tab strip and never types the whole — `[Tab 1] Subtraction
+in parts`, `[Tab 2] Add instead of subtract`, `[Tab 3] Algorithm`, with no `[tabs]` anywhere.
+The scanner opens a widget only on a tag whose directive is INTERACTIVE, so **nothing ever
+started**, each part arrived alone under `Red Flag: Orphan sub-tag [tab n]`, and its bracket
+leaked onto the page as literal text. The first marker of a qualifying series now acts as the
+opener and stays in the member list, so round 293's `#tabsPanes` and round 295's carousel
+builder read it exactly as they read any other bundle. **No builder, no template and no
+member vocabulary changed.**
+
+### 2. THE CATALOGUE'S HEADLINE IS WRONG BY A FACTOR OF THREE, AND THE REASON IS THE ROUND
+
+`WHY_UNBUILT__orphan_remaining.md` calls this "the largest single fixable thing in the
+document, and the plainest" — 212 flags, and "on 40 of the 73 pages carrying a `[Tab N]`, the
+converted page has no tabs activity of any kind on it." The second half is true and the
+inference from it is not. Measured page by page against the shipped corpus
+(`outputs/_measure_r303_bareseries.cjs` 16 shards + `_r303_analyse.py`), of the **46 pages**
+carrying a qualifying series:
+
+| what the page actually carries | pages | modules | markers |
+|---|--:|--:|--:|
+| **INQUIRY / CHOICE panels already built from these very markers** (r100/r111/r226) | **20** | 20 | 189 |
+| a hand-off box from a DIFFERENT widget | 13 | 10 | 45 |
+| **FUNDAMENTALS panels already built from them** (r98/r106) | 6 | 6 | 63 |
+| no converted page at all (ghost dir) | 6 | 6 | 60 |
+| nothing whatsoever | 1 | 1 | 8 |
+
+**26 of the 46 pages are already correct today**, and a naive "no tabs on the page, therefore
+nothing gathered" rule would have destroyed all 26. The BLL and CED families declare
+`[Tab 1]…[Tab 6]` as a crumb list naming the module's own pages; rounds 100 and 111 turn
+those into inquiry panels, and they leak nothing (0 literal brackets on every one).
+
+**THE DISCRIMINATOR IS MEASURED, NOT ARGUED: the gap between consecutive markers.** All 20
+inquiry-crumb pages have gaps of exactly **1** — the markers are contiguous, nothing between
+them. All 6 pages whose gold builds a real tab strip have gaps of **3 or more**. A tab strip
+has content in its panes; a crumb list does not. That single fence is what makes this round
+safe, and it is why `min_gap` is the load-bearing line in the data block.
+
+**AND THE CORRECTION TO MY OWN CHECKS, TWICE, before any of that was believable** (the
+r282–r302 class, NINTH round running): the first bucketing counted the module MENU, which is
+itself a `div.tabs` in `#header`, so 22 pages read as "already builds tabs" — round 293's gold
+measurement had to make the identical correction. The second counted a CAROUSEL on a `[Tab N]`
+page as the tab strip already existing.
+
+### 3. WHAT SHIPPED — one rule, four fences, every fence measured
+
+`InteractiveScanner.#bareSeriesOpener` (data `member_rule.bare_series_opener`), consulted at
+the one line that skips a non-INTERACTIVE tag. **`TABOPENER_OFF` / `SLIDEOPENER_OFF`** reverse
+the two families independently (the r295 `env_by_type` pattern).
+
+1. **CLEAN NUMBERED FORM.** The marker must parse with a clean `how` AND carry a numeric
+   number. That excludes **`[New tab]` ×89** (the fundamentals panel delimiters — the single
+   most common raw bracket in the family), **`[Tab Nav]` ×35** (the r226 choice pages),
+   `[Tab layout]`, `[Template tab here]` and every prose form, BY CONSTRUCTION rather than by
+   a word list.
+2. **`min_gap` 2** — content between the panes; §2 above.
+3. **NO OPENER ALREADY ON THE PAGE.** With one present, markers escaping it is a capture or
+   builder question — rounds 293 and 295 own those.
+4. **A LABEL IS NEVER INVENTED** (tabs only). Every marker must carry its own trailing text
+   within `label_max_words`. This excludes TWHA901/902/903/906, TWHK903, XGF9003, HPFUN901,
+   ENGJ102 and ENGJ302 (no or partial labels), and **MXDI201-9.0, whose markers carry whole
+   PARAGRAPHS and whose human developer invented four short names instead** ("Place value",
+   "One million"). A SLIDE needs no label — round 295 measured captions as optional and 9.6%
+   of the gold's slides carry no media either.
+
+Plus **`require_consecutive`**: the numbering must run 1,2,3… A gap means a marker the walk
+could not read (ANZH105-6.0's middle marker is typed `[Slide 2] [H4]` and resolves to the
+heading tag), so the series is not understood and building from it would be a guess.
+
+**TWO NARROWING RULES THE PROOF FORCED, both of which protect content:**
+
+* **A bare-series bundle never swallows another widget.** MXDB202-2.0's inferred tabs bundle
+  absorbed the `[self check]` typing quiz that follows the third tab, the builder bailed on
+  extraTypes, and **a page that had been rendering as readable body text shipped a developer
+  hand-off box instead.** The host has no opener of its own, so there is no writer evidence it
+  extends past the next widget the writer DID name. Strictly narrowing — it can only end a
+  bundle this round created.
+* **Gather the whole series or none of it.** If a terminator truncates the capture short of
+  the second marker the bundle can only ever hold one pane, below every builder's floor, so it
+  would decline and leave a hand-off box standing where body text used to be. **SCFUN01-0.0 is
+  the live case** — its writer closes each pane with an explicit `[end tab]`, a CONTAINER_CLOSE
+  — and the bundle now dissolves, leaving the page byte-identical. Round 192's changelog names
+  SCFUN01's Pouākai/Moon pair as "class T, gold builds that tab pair as REAL TABS"; **that
+  follow-up therefore remains OPEN, and this round says so rather than claiming it.**
+
+### 4. A PRE-EXISTING DEFECT FIXED RATHER THAN WORKED AROUND (Chris's r293b rule)
+
+`ANZH105-6.0` writes `[H4] New Zealand Māori` with `Kapa haka` as the black line beneath. The
+shared member walk has always taken a member's text from its blackAfter ALONE, so it used
+"Kapa haka" as the heading and **dropped "New Zealand Māori" entirely** — the writer's words
+lost inside a widget. `#accHeadPayload` (data `member_rule.head_bracket_payload`, env
+**`HEADPAYLOAD_OFF`**) reads the heading the writer typed inside the bracket, bringing the
+widget walk into line with what the ordinary body path has always done.
+
+**STRICTLY the empty-tail case, and the reason is the round's most interesting measurement.**
+When a member carries BOTH a payload and a black line the two are indistinguishable by shape,
+and the human treats them in OPPOSITE ways: ANZH105's gold ships `<h4>New Zealand Māori Kapa
+haka</h4>`, JOINED, while **SSCI205-8.0's `[H5] overlayed image` + `Government` has its
+payload DROPPED — the word "overlayed" appears nowhere in its gold at all**, because it is a
+design instruction. Nothing in the writer's document separates the two, so the both-present
+form keeps its existing reading rather than being decided by a pattern fitted to one string
+(round 301's rule against curve-fitting). The first, wider cut of this rule broke SSCI205 and
+was caught by measuring the fix ALONE across all 454 modules.
+
+**Blast measured alone: EXACTLY 3 pages / 2 modules.** EXBP901-3.0's accordion now BUILDS
+("Be a Learner" / "Be a Communicator" / "Be a Thinker" — it had no panel headings at all
+before), and XDLS902-5.0 regains "The sexual health check-up".
+
+### 5. RESULT
+
+**12 pages fire / 7 modules. 7 TAB STRIPS BUILD AND THEIR NAV LABELS ARE THE WRITER'S OWN
+TAILS, VERBATIM** — MXDB202-2.0 `Subtraction in parts / Add instead of subtract / Algorithm`
+3 of 3 against its gold, MXEO301 3 of 3, MXFU301-1.0 3 of 3, MXFU301-2.0 3 of 3, MXFL301 3 of
+3, MXDB202-5.0 2 of 3 (the third differing only by the human's own "Center"/"Centre"
+spelling). Nothing is invented, which is the catalogue's central claim and it holds — on 6
+pages, not 40. **36 orphan red flags removed; literal `[Tab N]`/`[Slide N]` brackets gone from
+every affected page except ANZH105-6.0, which keeps 3 by design.**
+
+**TWO NAMED A1 DIVERGENCES**, shipped under Chris's round-246 rule that the writer's own tag
+is the target: MXFU202-2.0 and ANZH105-7.0, whose humans built an accordion from the same
+markers. **FOUR pages open a bundle the builder then DECLINES** (ANZH105-4.0/5.0/7.0,
+MXFU202-3.0) — round 279's reading-book family, whose slides are pages of an external PDF —
+so their content moves from loose body text into the widget's honest hand-off box while the
+raw brackets stop leaking. **Chris was asked and accepted this explicitly**; it is what every
+other un-buildable carousel in the library already does.
+
+### 6. PROOF (`outputs/_probe_r303_bareseries.cjs`, ONE TOGGLE STATE PER PROCESS, part-aware)
+
+* **OFF (all three toggles): ALL 33 modules BYTE-IDENTICAL to the shipped disk.**
+* **ON: 118 assertions, 0 failures** — 7 named nav-label sets quoted from the gold, 18 NEGATIVE
+  module assertions (the inquiry crumb list, the `[New tab]` family, the no-label modules,
+  MXDI201, SCFUN01), 6 out-of-class canaries, page-scoped keeps for ANZH105/EXBP901/XDLS902,
+  **and a page-scoped ABSENT assertion that "overlayed" never reaches SSCI205's page.**
+* **Affected set from BYTES, not builds** (`outputs/_detect_r303.cjs`, all 454 modules, ON and
+  OFF in separate processes): **50 outputs / 9 modules, 0 added, 0 removed** — reconciling
+  exactly with the content manifest's 42 pages + 8 hand-off manifests.
+* **PER-TOGGLE DECOMPOSITION IS EXACT: TAB 38 pages / SLIDE 9 / HEAD 3 = 50**, each toggle
+  withdrawing only its own.
+* **No writer word lost in any module.** **My own check was wrong here, for the ninth round
+  running**: it counted word FREQUENCY and reported three failures against correct output,
+  because the shipped disk DUPLICATES a writer instruction that a built widget surfaces once
+  (MXFU301's "Is it possible to have a button…" appears 5 times on disk and twice now — one
+  per distinct instruction). Round 300's rule is that no word may VANISH; that is what it
+  tests now. It then flagged "accordion" on EXBP901, which is hand-off box chrome that
+  legitimately goes when the accordion builds (the r296 class).
+
+### 7. THE FULL REGENERATION
+
+416 dirs in 36 batches, **`_stalecheck.sh` 0 stale**, and `_content_manifest.py diff` =
+**42 pages / 9 modules, 0 added, 0 removed** — and **no pending work from any earlier round**,
+the sixth clean sweep running. Chris authorised the full rebuild once the measurement showed
+§0b's tag family (`[tabs]`/`[tab]`/`[slide]`/`[carousel]` plus the widgets those markers
+belong to) came to **350 of the 413 modules with output — 85% of the corpus** — so a "scoped"
+sweep would have been a de-facto full ship with a less honest baseline.
+
+### 8. GATES — every one held or improved
+
+**PRIMARY skeleton** (chained from `_r302_sk_final.json`, 9 modules rescored;
+`outputs/_r303_sk_merge.py`): SCAFFOLD mean **49.766 → 49.771% IMPROVED** · ≥50%
+**986 → 988 IMPROVED** · ≥75% **192 EXACT** · ≥90% **16 EXACT** · RAW **34.086 → 34.089%
+IMPROVED** @ 1940 pairs, skipped 0. **16 pages moved, 0 added, 0 dropped**; pp-sum
+**scaffold +10.61 / RAW +4.46**, both positive. **The two largest dips are PROVEN not to be
+content changes**: MXFU301-9.0 (−16.45) and -11.0 (−8.18) have byte diffs consisting of
+*nothing but* `data-cv2-index`, which is not in the skeleton's `KEEP_ATTR`, so their own bytes
+cannot move their score — the content-order pairing ladder re-resolved after page 2.0's
+overlap changed (`_9_0 ← 10.0`, `_10_0 ← 9.0`, `_11_0 ← 8.0`), the documented
+r186/r222/r235/r243/r245/r275 class.
+
+clean **2056/2102 = 97.81% EXACT** · leak **288 occ / 46 pages EXACT** · body **242 EXACT** ·
+tags **9557/9557 REAL 0** · flipCard **divergence 0 ✓** · index-sync **33/28** · entry-parity
+**PASS** · **all NINE widget selftests GREEN**.
+
+**compare_structure exact 11216 → 11215 (−1), EXTRA 185 EXACT, missing 590 EXACT — and the −1
+is decomposed, not asserted.** Regenerating the 9 affected modules toggle-OFF and re-running
+scoped: content elements **1850 → 1717** (133 elements moved inside widget subtrees, which the
+comparator excludes), text-matched pool **215 → 214**, exact **168 → 167**, EXTRA and missing
+both unchanged. The matched pool shrank by exactly the one relocated element — the documented
+r57/r147 relocation artefact, with no over-nesting and no new missing container.
+
+**VERIFIERS OVER THE WHOLE §0b FAMILY, not a sample** (the r293b lesson): tabs **15 defects, of
+which 13 are in modules the content manifest proves BYTE-IDENTICAL** (HES1003 5 — the r124
+editorial-rewrite class — PES1008 2, PHE1003 4, PHE1005 1, XLP06 1), matching the recorded
+figure exactly. **The 2 new ones are MXEO301 and MXFL301 and they are the same class, shown
+not assumed**: the writer wrote "If another 110 people liked this idea as well, how many
+people were surveyed?" and the human rewrote it as "If 25% is 110 people, how many people were
+surveyed in total?" — the pane PROSE is editorial, while the nav LABELS are gold-exact, which
+is precisely what this round claims. Carousel: MXEO301's 4 mismatched slide ids are
+**identical with the toggles OFF**, proven pre-existing.
+
+### 9. WHAT IS LEFT
+
+`[Tab N]` orphan flags **177 → 141**, `[Slide N]` **35 → 20**. The residue is NOT more of this
+shape: **~120 of the remaining `[Tab N]` are the inquiry and fundamentals crumb lists, which
+are already correct**, and most of the rest carry no label at all. **RECORDED, not taken:**
+round 192's SCFUN01 `[end tab]` closer dialect (a writer who delimits panes explicitly — the
+one shape this rule cannot gather) · ANZH105-6.0's `[Slide 2] [H4]` multi-bracket marker · the
+both-present heading payload, which needs a discriminator the writer's document does not carry.
+
+---
+
 ## 2026-08-09 (round 302, build 260618.73) — THE `scope_tags` WIDENING: the orphan-remaining chain, round 1 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_remaining.md", the r298–r301 chain methodology, now carrying CLAUDE.md §0b's tag-family regeneration)
 
 Chain order: **1 — the `scope_tags` widening (THIS ROUND)** → 2 — the bare `[Tab N]` /
