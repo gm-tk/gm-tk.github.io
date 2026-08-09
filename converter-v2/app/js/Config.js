@@ -1287,7 +1287,22 @@ class Config {
 	// OSOH101 fail the head pattern BY CONSTRUCTION. Data
 	// elements.caption_text.widen; env CAPTIONWIDE_OFF (CAPTIONTEXT_OFF still
 	// reverts the whole branch). Scoped ship #1 since r296; every gate EXACT.
-	static AppVersion = "260618.69";
+	// ROUND 299 (260618.70): THE GLOSSARY DEFINITION WEAVE — the orphan-[data
+	// marker] chain, round 2 of 4, and the catalogue's largest single lever. A
+	// writer's inline "[definition: …]" in open prose resolved to the SUBTAG
+	// `data marker`, so it printed a red flag AND — because Word splits the
+	// bracket across coloured runs — shipped the writer's ONE sentence as three
+	// or four paragraphs with the flag in the middle and the anchor word cut in
+	// half ("holds a hierarchical" / flag / "rranged according to…"). A pre-pass
+	// re-joins the sentence and inserts the SAME U+E000…U+E001 sentinel
+	// inlineMarkup has turned into <span class="infoTrigger"> since round 75 —
+	// the sentinel rather than a bracket literal because an unanchored sentinel
+	// is DROPPED to plain text, so the fix can never create a visible leak.
+	// 110 orphan flags removed / 106 infoTrigger spans gained across 22 modules
+	// / 51 pages; leak IDENTICAL per module; every gate held-or-improved.
+	// Data elements.hover_definition_inline.orphan_definition_weave; env
+	// DEFWEAVE_OFF / DEFANCHORNAMED_OFF / DEFWORDFLAG_OFF. Scoped ship #2.
+	static AppVersion = "260618.70";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

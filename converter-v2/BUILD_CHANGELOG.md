@@ -1,5 +1,163 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 299, build 260618.70) — THE GLOSSARY DEFINITION WEAVE: orphan-`[data marker]` chain, round 2 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
+
+**The catalogue's largest single lever, and the only one that removes visibly broken prose
+rather than a note.** Chain order: 1 — the caption widening ✅ (round 298) → **2 — the
+glossary definition weave (THIS ROUND)** → 3 — the three note families (199 flags →
+`Designer/Developer To Do:` notes) → 4 — the one-off mis-classification guard. The brief
+(`WHY_UNBUILT__orphan_dataMarker.md`) is deleted by the LAST round of the chain, not this one.
+
+**SCOPED SHIP #2 since the r296 full ship** (7 of 8 headroom remaining). The §9 baselines
+describe the r296/r298 state ± the 51 pages below; `_fastloop_diff.py --commit` re-scored
+the 22 affected modules and **EVERY protected gate HELD-or-IMPROVED — no movement needed
+naming, and `--accept-named` was NOT used.**
+
+### 1. THE REACHABLE POOL, STATED FIRST (the r294/r295 discipline)
+
+Family 1 of the catalogue: **107 flags / 20 modules / 49 pages** on the post-r298 tree (the
+catalogue's 108/21/50 counts one compound form this round's head-only grouping excludes; the
+whole `[data marker]` class is **384 / 73 / 136**, down from 399 by exactly round 298's 15
+captions, which confirms r298 landed). A weave needs three things and the flag count states
+only one of them, so `outputs/_measure_r299_definitions.cjs` (16 shards) measured all three
+— a definition, an anchor behind, a continuation ahead:
+
+- **SHAPE A — 74 flags / 17 modules / 39 pages.** The marker interrupts a sentence, so the
+  anchor is the LAST WORD behind it — the human's own convention at **80.7% of 1,998 gold
+  spans**. The test that it really does interrupt is that the text behind does not end at a
+  sentence boundary.
+- **SHAPE B — 11 flags / 2 modules.** The writer NAMES the anchor (`[Definition] culture:
+  Refers to the shared beliefs…`) and that word IS in the text behind.
+- **DECLINED, gold-verified — 14 flags** where the marker follows a completed sentence and
+  names nothing. **ENGJ301-2.0 settles it: the gold anchors `infamous`, while the last word
+  behind is `protagonists` and the tail begins `antagonists.`** The anchor is identifiable
+  only from the ✅ highlight, and round 297 proved that highlight does not survive
+  `DocxExtractor` at all (the block carries no highlight channel). An anchor is never invented.
+- **DECLINED — 8 more** (ENGI202-1.0) whose named word is not in the text behind; reaching it
+  needs a page-wide forward search, a different mechanism.
+
+Families 6 (`[hover over …]`, 13) and 7 (`[word]`, 9) ride the same pre-pass.
+
+### 2. ROUND 239's SCANNER-SIDE `definition` DECLINE IS NOT OVERTURNED
+
+That decline concerned the **247 `[definition…]` spans INSIDE widget bundles**, where weaving
+would break widget capture. **Every flag here is, by the definition of "orphan", OUTSIDE any
+bundle** — bundle members never reach the orphan branch — so the two populations cannot
+overlap, and the pre-pass additionally skips any item a bundle has consumed. Stated here
+explicitly so the decline is not later read as having been reversed.
+
+### 3. WHAT SHIPPED — a pre-pass, not a new rule
+
+`ContentConverter.#definitionWeavePrepass` (beside the r160/r232 pre-passes) re-joins the
+split sentence and inserts the **same U+E000…U+E001 sentinel** `ListsAndRuns.inlineMarkup`
+has turned into `<span class="infoTrigger" info="DEF">anchor</span>` since round 75. **The
+sentinel is used rather than a re-written bracket literal on purpose:** inlineMarkup's last
+sentinel rule DROPS an unanchored sentinel to plain text, so the pre-pass can never turn a
+red flag into a NEW visible leak — the worst case is a missing tooltip.
+
+**FIVE writer shapes, all measured from the LIVE extractor** (the `_parsed.txt` dumps are
+stale): an OPEN bracket split MID-WORD (`[definition: A` + `rranged…` → `Arranged…`, joined
+with NO space because the black tail carries no leading one) or split at a space
+(`[definition: A ` + ` spending plan.`); an OPEN bracket with an empty inner (the tail IS the
+definition); the `how="exact"` form (`[definition` + `: The values…`, a leading separator to
+strip); a CLOSED bracket, where the inner is the definition and the tail is the sentence
+CONTINUATION; and a CLOSED bracket with an empty inner (shape B). **The tail's own leading
+whitespace is the only signal distinguishing a mid-word split from a spaced one** — a detail
+that decides `Arranged` vs `A rranged` and `A spending plan.` vs `Aspending plan.`
+
+Family 6's hover forms split at their first separator (a spaced plain hyphen folded to an en
+dash, so an in-word hyphen never splits); `scaffold_strip` removes PHE1002's 5-occurrence
+"… as other word" designer scaffolding so its definitions read as the synonyms they are.
+Family 7 needs no rule of its own — a definition's anchor IS the preceding `[word]`'s tail —
+and `suppress_paired_word_flag` then drops the now-structural `[word]` flag.
+
+Data `elements.hover_definition_inline.orphan_definition_weave`; env **`DEFWEAVE_OFF`** (all
+of it) / **`DEFANCHORNAMED_OFF`** (shape B alone) / **`DEFWORDFLAG_OFF`** (the paired-`[word]`
+flag suppression alone).
+
+### 4. FOUR BUGS THE PROOF CAUGHT, AND TWO OF THEM WERE IN MY OWN CHECKS
+
+1. **The definition rendered TWICE and kept its flag** (ENGI405-0.0). This loop has **no
+   general `_consumed` guard for a tag item** — only the positional "advance over consumed
+   neighbours" idiom some branches run — so a consumed marker still reached the orphan branch.
+   That is the **round-273 duplicate-render class exactly**; fixed with an explicit
+   `_defWeaveConsumed` skip beside the r273 `_goJournalAbsorbed` one.
+2. **A silently LOST definition** (PHE1004). The writer names the anchor `reason(s)`, so the
+   sentinel landed after `)`, where inlineMarkup can wrap nothing and drops it — consuming the
+   marker (removing its flag) while losing the definition. Now fenced with **inlineMarkup's
+   own anchor condition**, so the flag and the writer's text both stay.
+3. **A stricter letters-only version of that fence wrongly refused a good anchor** — ENGR302's
+   `‘calling the shots’` ends in a closing quote, which inlineMarkup's word class allows. The
+   two conditions must match exactly; caught by the flag/span accounting going 1 the wrong way.
+4. **The hover head strip stopped at the head**, shipping `info="over the word ‘describing’ –
+   stating the features of"`. Caught by reading the output against the gold.
+5. **In MY OWN CHECK (twice):** the no-lost-words leg inlined the `info=` text *inside* the
+   `<span …>` tag, where the tag-stripper then swallowed it, reporting every successful weave
+   as a loss; and the family-7 negative asserted 8 flags where the scan counts only the 4
+   `[data marker]` ones (the other four are `[answer]`). **The r291–r296 finding holds for the
+   sixth round running: a failing check is as likely to be wrong as the code.**
+
+### 5. PROOF (`outputs/_probe_r299_definitions.cjs`, ONE TOGGLE STATE PER PROCESS — the r246 trap)
+
+- **OFF (`DEFWEAVE_OFF=1`): ALL 33 modules byte-identical to the shipped disk** — the 22
+  affected + 5 declines + 6 canaries. The canaries include **HIS1002 and ENGJ403, the live
+  carriers of the r201 render-stitch and the r223 quoted-anchor weave**, and **XDLS905, which
+  already ships five r201-woven infoTrigger spans** — byte-identity there proves the existing
+  weave paths are untouched by the new one.
+- **ON: 30 named assertions PASS** — anchor AND definition by name, ten of them gold-exact
+  (ENGR302 `hierarchical`, ENGC101 `techniques`/`gestures`/`adjectives`, ENGI202
+  `culture`/`sustainable`/`insight`, ENGI405 `Texts`/`Analyse`) — **plus 5 NEGATIVE
+  assertions** pinning the measured declines (ENGJ301's `protagonists`/`antagonists`,
+  ENGI202's glossary page, PHE1003's definition-less marker, and ENGI405-1.0's `[word]` +
+  `[answer]` run, whose gold is a drag-and-drop). Every decline and canary stays byte-identical
+  in the ON state too.
+- **THE ACCOUNTING CLOSES EXACTLY: 110 orphan flags removed, 106 infoTrigger spans gained**,
+  and the ONLY module where those differ is ENGI405, by exactly 4 — its four by-design
+  `[word]` suppressions.
+- **Leak scan IDENTICAL in every module, both states** (53 → 53; ENGJ302's pre-existing 40 and
+  XDLS905's 7 unchanged). **No private-use sentinel reaches any page (0).**
+- **NO WRITER WORD IS LOST**, checked as visible text PLUS tooltip text: every delta is one of
+  three explained classes — a definition moving into a tooltip, a shape-B named word losing
+  its duplicate copy while remaining in the prose as the anchor, or **a beheaded word healing**
+  (`rranged`→`Arranged`, `utside`→`Outside`, `system`+`s`→`systems`).
+
+### 6. THE SCOPED SHIP
+
+Affected set derived from **BYTES, not builds** (`outputs/_detect_r299.cjs`, all 454 modules,
+the r292/r295/r296 discipline) = **22 modules**, filtered to those with a Claude dir (38 have
+none — the r285 ghost-dir trap, and counting them as "changed" was a reporting bug fixed in the
+detector). Regenerated in 4 batches; `_content_manifest.py fresh` **0 truly stale**; `diff` =
+**EXACTLY 51 pages / 22 modules, 0 added, 0 removed** — containment perfect, and **no pending
+work from any earlier round**, so rounds 296–298 are fully in the corpus.
+
+**GATES — every one HELD-or-IMPROVED, nothing named:** skeleton SCAFFOLD mean **49.73 →
+49.76 IMPROVED** / ≥50% **982 → 986 IMPROVED** / ≥75% **192 EXACT** · cs exact **11213 →
+11216 IMPROVED** / EXTRA **185** / missing **590** EXACT · body **242** EXACT · clean
+**97.81%** EXACT · leak **288/46** EXACT · tags **9557/9557 REAL 0** · index-sync **33/28** ·
+entry-parity **PASS** · flipCard §9 **divergence 0 ✓, and TOTAL/exact/defect IDENTICAL in both
+toggle states** · all NINE widget selftests GREEN. The skeleton rises because an infoTrigger
+`<span>` is a node the gold ships too.
+
+### 7. RECORDED FOR THE NEXT ROUNDS
+
+- **Round 3 (next): the three note families** — `[Item N]` 85 / `[Merge item]` 58 /
+  `[Audiovisual item N]` 56 → `Designer/Developer To Do:` notes naming the writer's own word,
+  links and edit instructions kept verbatim (the r219 "todo" kind). Also fixes **BLLR201's
+  live `<p>[Audiovisual item 1]</p>` leak**. No build for any of the three — the catalogue's
+  standing declines.
+- **Round 4: the one-off mis-classification guard** (~15 design instructions that should be
+  `Writers Note:`, the r245 `IsInstructionDominant` shape). **Round 4 deletes the brief.**
+- **The largest definition class left is the 8 shape-B′ flags on ENGI202-1.0** — the named word
+  is not behind the marker, and a page-wide forward search is a mechanism of its own. Beside it
+  sit the 14 gold-verified no-anchor declines, which are only recoverable if `DocxExtractor`
+  ever grows a highlight channel — a much bigger and separately measurable change.
+- The **19.3% phrase-anchor** share stays partial by design (`shots’` where gold has `‘calling
+  the shots’`, `customs` where gold has `ancient customs`) — the r201 comment's own stated
+  position, and the definition is still correct on a partial anchor.
+- The human's editorial rewrites are NOT chased: PHE1002/PHE1004's golds rewrite the writer's
+  definitions wholesale, and ENGR302's gold drops 3 of its own 21 and invents 2, so even the
+  best-behaved module is 17 of 21.
+
 ## 2026-08-09 (round 298, build 260618.69) — THE CAPTION WIDENING: orphan-`[data marker]` chain, round 1 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
 
 **The first build round of the orphan-`[data marker]` chain** (round 297 was the catalogue).

@@ -1331,6 +1331,13 @@ class ContentConverter {
 		// form). See #mtkQuizPrepass below for the full story.
 		this.#mtkQuizPrepass(bodyItems, bundles, tpl);
 
+		// GLOSSARY DEFINITION WEAVE pre-pass (ROUND 299 — the orphan-[data marker]
+		// chain, round 2): a writer's inline "[definition: …]" in open prose is
+		// re-joined into its sentence and woven onto its anchor word as the human's
+		// infoTrigger span, instead of splitting the sentence into three paragraphs
+		// around a red flag. See #definitionWeavePrepass below for the full story.
+		this.#definitionWeavePrepass(bodyItems, tpl, run, page);
+
 		for (let i = 0; i < bodyItems.length; i++) {
 			const it = bodyItems[i];
 
@@ -1395,6 +1402,20 @@ class ContentConverter {
 			// Data flag: buttons.go_journal.absorb_suppresses_own_render
 			// Env toggle: GOJOURNALDUP_OFF
 			if (it._goJournalAbsorbed) continue;
+
+			// A definition marker (and its bare "]" closer) that the ROUND-299 glossary
+			// weave has already folded into the sentence behind it renders NOTHING on its
+			// own turn: its definition is now inside an infoTrigger attribute and its
+			// trailing prose has been re-joined to that same paragraph. Skipping the item
+			// outright is REQUIRED, not tidiness — this loop has no general `_consumed`
+			// guard for a tag item (only the positional "advance over consumed
+			// neighbours" idiom that some branches run), so without this the item would
+			// reach the orphan branch and ship BOTH a red flag and a second, visible copy
+			// of the definition text. That is the round-273 duplicate-render class
+			// exactly, and it was caught by this round's probe on ENGI405-0.0.
+			// Data flag: elements.hover_definition_inline.orphan_definition_weave
+			// Env toggle: DEFWEAVE_OFF
+			if (it._defWeaveConsumed) continue;
 
 			// ---- interactive ranges → ONE placeholder at range start -----
 			if (it.consumedBy !== undefined) {
@@ -2759,8 +2780,14 @@ class ContentConverter {
 					}
 					// a sub-tag outside any interactive = mis-structured
 					// source: render its content, flag the orphan (surface,
-					// never absorb)
-					emit(NotesAndComments.redFlag(
+					// never absorb).
+					// EXCEPT (ROUND 299, family 7): a "[word]" marker whose own tail
+					// the definition pre-pass used as the ANCHOR for a following
+					// "[definition]" has done a real structural job — the pair is the
+					// writer's vocabulary list — so its flag is noise, not a warning.
+					// Its content still renders (now carrying the woven infoTrigger).
+					// Env toggle: DEFWORDFLAG_OFF (the flag returns; the weave stays).
+					if (!it._defAnchorUsed) emit(NotesAndComments.redFlag(
 						`Orphan sub-tag [${primary.tag}] outside an interactive — content kept below; check the source structure.`, run));
 					if (it.blackAfter.trim()) emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
 					break;
@@ -4276,6 +4303,255 @@ class ContentConverter {
 		}
 		return out;
 	};
+
+	/**
+	 * THE GLOSSARY DEFINITION WEAVE (ROUND 299 — the orphan-[data marker]
+	 * chain, round 2; the catalogue's largest single lever).
+	 *
+	 * THE PROBLEM. A writer marks a hover definition inline: they type the
+	 * word, then the explanation in square brackets right after it —
+	 * "…holds a hierarchical [definition: Arranged according to level of
+	 * importance.] position that places them…". The word "definition" is one
+	 * of eighteen the lexicon folds into the canonical `data marker`, whose
+	 * directive is SUBTAG ("only meaningful inside a bigger activity"), so in
+	 * open prose it reached the ORPHAN branch and printed a red flag. Worse:
+	 * Word routinely splits that bracket across coloured runs, so the opening
+	 * "[definition: A" is one red span, the rest of the explanation is
+	 * ordinary black text, and the closing "]" is a THIRD span — which made
+	 * the writer's ONE sentence ship as three or four separate paragraphs
+	 * with the flag wedged in the middle and the word "Arranged" beheaded.
+	 * Because a cv2-note is excluded from every gate in CLAUDE.md §9, none of
+	 * this was visible to any measurement; on the page it is the most obvious
+	 * defect in the class.
+	 *
+	 * THE FIX IS ROUTING, NOT A NEW RULE. Everything needed already exists:
+	 * ListsAndRuns.inlineMarkup has turned a U+E000…U+E001 sentinel into
+	 * <span class="infoTrigger" info="DEF">anchor</span> since round 75. This
+	 * pre-pass simply re-joins the split sentence and drops that sentinel in
+	 * at the anchor, so the normal render path produces the human's own
+	 * markup. It inserts the SENTINEL rather than a re-written bracket
+	 * literal on purpose: inlineMarkup's last sentinel rule DROPS an
+	 * unanchored sentinel to plain text, so this pre-pass can never turn a
+	 * red flag into a new VISIBLE leak — the worst case is a missing tooltip.
+	 *
+	 * WHERE THE ANCHOR COMES FROM. Two shapes, both measured:
+	 *   SHAPE A — the marker interrupts a sentence, so the anchor is the LAST
+	 *     WORD of the text already behind it. That is the human's own
+	 *     convention (80.7% of 1,998 gold spans are a single word). The test
+	 *     that the marker really does interrupt is that the text behind does
+	 *     NOT end at a sentence boundary; a marker sitting after a full stop
+	 *     is annotating something NAMED, and the last word before the stop is
+	 *     emphatically not it.
+	 *   SHAPE B — the writer NAMES the anchor: "[Definition] culture: Refers
+	 *     to the shared beliefs…". The named word is looked up in the text
+	 *     behind (LAST occurrence, the round-201 rule) and the sentinel goes
+	 *     there; the definition is the part after the colon.
+	 * When neither yields a clean anchor the item is left completely alone —
+	 * the flag still prints, exactly as before. An anchor is never invented.
+	 *
+	 * THE FIVE WRITER SHAPES, all measured from the LIVE extractor (the
+	 * *_parsed.txt dumps are stale and their ✅ anchor marks do not survive
+	 * extraction at all): an OPEN bracket split MID-WORD ("[definition: A" +
+	 * "rranged…", joined with NO space because the black tail carries no
+	 * leading one) or split at a space ("[definition: A " + " spending
+	 * plan."); an OPEN bracket with an empty inner, where the definition is
+	 * the whole black tail; the how="exact" form ("[definition" + ": The
+	 * values…") with a leading separator to strip; a CLOSED bracket, where
+	 * the inner IS the definition and the black tail is the sentence
+	 * CONTINUATION; and a CLOSED bracket with an empty inner (shape B).
+	 *
+	 * ROUND 239's SCANNER-SIDE `definition` DECLINE IS NOT CONTRADICTED. That
+	 * decline concerned the 247 [definition…] spans INSIDE widget bundles,
+	 * where weaving would break widget capture. Every marker this pre-pass
+	 * can see is, by the definition of "orphan", outside any bundle — bundle
+	 * members never reach the orphan branch — so the two populations cannot
+	 * overlap and this pre-pass skips any item a bundle has consumed.
+	 *
+	 * Data flag: elements.hover_definition_inline.orphan_definition_weave
+	 * Env toggles: DEFWEAVE_OFF (all of it) / DEFANCHORNAMED_OFF (shape B
+	 * alone) / DEFWORDFLAG_OFF (the paired-[word] flag suppression alone).
+	 */
+	static #definitionWeavePrepass(bodyItems, tpl, run, page) {
+		const cfg = tpl.elements?.hover_definition_inline?.orphan_definition_weave;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.DEFWEAVE_OFF) return;
+		const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+		const headRe = new RegExp(cfg.head_pattern, "i");
+		const hoverRe = cfg.hover_head_pattern ? new RegExp(cfg.hover_head_pattern, "i") : null;
+		const closerRe = new RegExp(cfg.closer_pattern, "");
+		const namedRe = new RegExp(cfg.named_anchor_pattern, "");
+		const quotedRe = new RegExp(cfg.quoted_anchor_pattern, "");
+		const leadSepRe = new RegExp(cfg.lead_separator_strip, "");
+		const defSplitRe = new RegExp(cfg.hover_def_split ?? "^\\s*([^:=–—]*?)\\s*[:=–—]\\s*(\\S[\\s\\S]*)$", "");
+		const sentEndRe = new RegExp(cfg.sentence_end_pattern, "");
+		const scaffoldRe = cfg.scaffold_strip ? new RegExp(cfg.scaffold_strip, "i") : null;
+		const wordHeadRe = cfg.paired_word_head ? new RegExp(cfg.paired_word_head, "i") : null;
+		const maxDef = cfg.max_def_len ?? 400;
+		const namedOn = cfg.named_anchor !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.DEFANCHORNAMED_OFF);
+		const wordFlagOn = cfg.suppress_paired_word_flag !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.DEFWORDFLAG_OFF);
+		// the SAME hygiene the two existing weave paths use (round 146): a "definition"
+		// that is really a note to the designer, or that carries a URL, is not a definition.
+		const hyg = tpl.elements?.hover_weave_hygiene;
+		const instrRe = (hyg && hyg.enabled !== false && hyg.instruction_def_guard !== false)
+			? new RegExp(hyg.instruction_cue_pattern ?? "\\b(?:please|can you|could you|note to (?:dev|cs)\\b|dev team)\\b", "i") : null;
+
+		/** the field a given item renders its prose from. */
+		const textOf = (p) => (p.type === "black" ? p.text : p.blackAfter);
+		const setText = (p, s) => { if (p.type === "black") p.text = s; else p.blackAfter = s; };
+		const live = (p) => p && !p._consumed && p.consumedBy === undefined;
+
+		/** the nearest carriers of already-emitted prose behind index i. */
+		const carriersBehind = (i, back) => {
+			const out = [];
+			for (let k = i - 1; k >= 0 && k >= i - back; k--) {
+				const p = bodyItems[k];
+				if (!p) break;
+				if (p.type === "table") break;              // never reach across a table
+				if (!live(p)) continue;                      // a bundle already owns it
+				const s = String(textOf(p) ?? "");
+				if (!s.trim()) continue;
+				out.push(p);
+				if (out.length >= 3) break;
+			}
+			return out;
+		};
+
+		/** the LAST whole-word occurrence of `term` in `hay` (the round-201 rule). */
+		const lastWordIndex = (hay, term) => {
+			const esc = String(term).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+			let re;
+			try { re = new RegExp("(?:^|[^\\p{L}\\p{N}])(" + esc + ")(?![\\p{L}\\p{N}])", "giu"); }
+			catch { return -1; }
+			let m, idx = -1;
+			while ((m = re.exec(hay)) !== null) {
+				idx = m.index + m[0].length - m[1].length;
+				if (re.lastIndex === m.index) re.lastIndex++;
+			}
+			return idx;
+		};
+
+		let woven = 0;
+		for (let i = 0; i < bodyItems.length; i++) {
+			const it = bodyItems[i];
+			if (!live(it) || it.type !== "tag") continue;
+			const primary = it.parse?.primary;
+			if (!primary || primary.directive !== "SUBTAG") continue;
+			const raw = String(it.text ?? "");
+			const isDef = headRe.test(raw), isHover = hoverRe && hoverRe.test(raw);
+			if (!isDef && !isHover) continue;
+
+			// ---- (a) the DEFINITION, and what the black tail is FOR ----------------
+			const headStripped = raw.replace(/^[^\[]*\[?/, "");          // drop everything up to and incl. "["
+			let afterHead = headStripped.replace(isDef ? headRe : hoverRe, "").replace(/^\]?/, "");
+			// A HOVER head (family 6) is usually followed by the writer TELLING the designer
+			// which word to hover — "[hover over the word ‘describing’ – stating the features
+			// of]". Everything up to the first separator is that instruction (and the place the
+			// quoted anchor lives); the definition is what follows it. A hover marker with NO
+			// separator names no definition at all and is left alone (PHE1003's one-off
+			// "[hover over Mahi Tahi and show the word teamwork]").
+			let between = "";
+			if (isHover && !isDef) {
+				// a SPACED plain hyphen is the same separator as an en dash (PHE1002 writes
+				// "[hover - showing as other word]"); an UNSPACED one is inside a word
+				// ("well-known") and must never split, so only the spaced form is folded.
+				const hs = defSplitRe.exec(afterHead.replace(/\s-\s/, " – "));
+				if (!hs) continue;
+				between = hs[1]; afterHead = hs[2];
+			}
+			const closed = afterHead.includes("]");
+			const inner = closed ? afterHead.slice(0, afterHead.indexOf("]")) : afterHead;
+			const tailRaw = String(it.blackAfter ?? "");
+			let def, continuation;
+			if (closed && inner.replace(leadSepRe, "").trim()) {
+				def = inner.replace(leadSepRe, "");
+				continuation = tailRaw;                                   // the sentence resumes
+			} else {
+				// OPEN bracket, or a closed one with nothing inside: the tail IS the definition.
+				// Join inner+tail preserving the boundary — the tail's own LEADING whitespace is
+				// the only signal of whether Word split mid-word ("A"+"rranged") or at a space.
+				const innerT = inner.replace(leadSepRe, "").replace(/\s+$/, "");
+				def = (innerT + tailRaw.replace(leadSepRe, "")).replace(/\s+/g, " ").trim();
+				continuation = null;                                      // the closer carries it
+			}
+			if (scaffoldRe) def = def.replace(scaffoldRe, "");
+			def = String(def).replace(/[\*​]/g, "").replace(/\s+/g, " ").trim();
+
+			// hygiene — never weave a note-to-the-designer, a URL, or a runaway string;
+			// never carry a bracket into an attribute.
+			if (!def || !/\p{L}/u.test(def) || def.length > maxDef
+				|| /https?:\/\//i.test(def) || /[\[\]]/.test(def)
+				|| (instrRe && instrRe.test(def))) continue;
+
+			// ---- (b) THE ANCHOR ----------------------------------------------------
+			const cars = carriersBehind(i, cfg.max_named_lookback ?? 3);
+			if (!cars.length) continue;
+			let target = null, at = -1;
+
+			// SHAPE B / the quoted form — the writer NAMED the anchor.
+			const qm = quotedRe.exec(between || raw);
+			const nm = namedRe.exec(def);
+			const namedTerm = qm ? qm[1].trim() : (nm ? nm[1].trim() : "");
+			if (namedOn && namedTerm && /\p{L}/u.test(namedTerm)) {
+				for (const p of cars) {
+					const idx = lastWordIndex(String(textOf(p)), namedTerm);
+					if (idx >= 0) { target = p; at = idx + namedTerm.length; break; }
+				}
+				if (target && nm && !qm) def = nm[2].trim();              // "word: definition" -> the definition
+			}
+
+			// SHAPE A — the marker interrupts a sentence: the anchor is the last word behind.
+			if (!target) {
+				const p = cars[0];
+				const s = String(textOf(p)).replace(/[\*\s]+$/, "");
+				if (sentEndRe.test(s)) continue;                          // a completed sentence — not our anchor
+				const wm = s.match(/([\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N}'’\-]*)$/u);
+				if (!wm) continue;
+				target = p; at = s.length;
+			}
+			if (!target || at < 0) continue;
+			// THE SENTINEL MUST LAND ON A WORD — tested with inlineMarkup's OWN anchor
+			// condition, not an approximation of it. That method wraps the word run
+			// immediately before the sentinel and, finding none, silently DROPS the
+			// sentinel — which would consume the marker (removing its flag) while losing
+			// the definition altogether. PHE1004's writer names the anchor "reason(s)", so
+			// the insertion point falls after ")" and nothing can be wrapped: decline, and
+			// the flag and the writer's text both stay. (A stricter letters-only test was
+			// tried first and wrongly refused a legitimate anchor ending in a closing
+			// quote — ENGR302's ‘calling the shots’ — so the two conditions must match
+			// exactly, trailing quote and hyphen included.)
+			if (!/[\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N}'’\-]*$/u.test(String(textOf(target)).slice(0, at))) continue;
+
+			// ---- (c) WEAVE, and re-join the sentence -------------------------------
+			const before = String(textOf(target));
+			let merged = before.slice(0, at) + IT0 + def + IT1 + before.slice(at);
+
+			// the CLOSER: a bare "]" span whose own black tail resumes the sentence.
+			const nx = bodyItems[i + 1];
+			if (continuation === null && live(nx) && nx.type === "tag" && closerRe.test(String(nx.text ?? ""))) {
+				continuation = String(nx.blackAfter ?? "");
+				nx._consumed = true; nx._defWeaveConsumed = true;
+			}
+			if (continuation && continuation.trim()) {
+				const c = continuation.replace(/^\s+/, "");
+				// no space before punctuation that closes the clause ("…setting</span>, characters")
+				merged += (/^[,.;:!?)\]]/.test(c) ? "" : " ") + c;
+			}
+			setText(target, merged);
+			it._consumed = true; it._defWeaveConsumed = true;
+			woven++;
+
+			// FAMILY 7 — the vocabulary-list alternation ([word] Texts / [definition] …).
+			// The definition's anchor IS the preceding [word]'s tail, so that marker has
+			// done a structural job and its own orphan flag is now noise. (ENGI405-1.0's
+			// [word]+[answer] run never reaches here: an [answer] is not a definition head.)
+			if (wordFlagOn && wordHeadRe && target.type === "tag" && wordHeadRe.test(String(target.text ?? "")))
+				target._defAnchorUsed = true;
+		}
+		if (woven) run.AddNote("info", "ContentConverter",
+			`Page ${page?.lessonLabel ?? "?"}: ${woven} inline definition${woven === 1 ? "" : "s"} woven onto the anchor word (orphan definition weave).`);
+	}
 
 	/**
 	 * [MTKquiz] — the "Go to quiz" button family (ROUND 232 — Change Ledger
