@@ -1316,7 +1316,23 @@ class Config {
 	// except BLLR201, where the rider removes 2 raw brackets from live pages.
 	// Data elements.asset_todo_notes; env TODONOTE_OFF / TODOITEM_OFF /
 	// TODOMERGE_OFF / TODOAV_OFF / TODOBLACK_OFF. Scoped ship #3.
-	static AppVersion = "260618.71";
+	// ROUND 301 (260618.72): THE MIS-CLASSIFICATION GUARD — the orphan-[data
+	// marker] chain, round 4 of 4, THE LAST; the brief is deleted with it. Some
+	// spans reaching the orphan branch are INSTRUCTIONS TO THE DESIGN TEAM whose
+	// bracket happens to contain a `data marker` alias buried in the prose, so a
+	// request to a person prints as a structural red flag. They now print the
+	// r219 scheme's "Writers Note:" carrying the writer's raw span verbatim — the
+	// same form line 1982 already uses. The test is round 245's EXISTING
+	// IsInstructionDominant, reused unchanged, with NO new vocabulary anywhere;
+	// the how==="embedded" fence excludes every [Item N] Media-List shape and
+	// every exact-form single-word marker BY CONSTRUCTION. MEASURED fire
+	// population: EXACTLY 13 flags / 13 modules / 13 pages of the 75 remaining.
+	// TWO NAMED DECLINES: the catalogue's own headline "[Three tiles across the
+	// page]" is unreachable (no cue fires, and no general rule separates it from
+	// a definition of the same shape); and adding "can we" to the SHARED cue
+	// vocabulary would move widget capture on ~92 modules. Data
+	// elements.orphan_instruction_reclass; env ORPHANCS_OFF. Scoped ship #4.
+	static AppVersion = "260618.72";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

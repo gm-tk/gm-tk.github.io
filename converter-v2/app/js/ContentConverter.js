@@ -2814,6 +2814,35 @@ class ContentConverter {
 							break;
 						}
 					}
+					// ROUND 301 (the orphan-[data marker] chain, round 4 — THE LAST)
+					// — THE MIS-CLASSIFICATION GUARD. Some spans that reach this
+					// branch are not structural markers at all: they are
+					// INSTRUCTIONS TO THE DESIGN TEAM whose bracket happens to
+					// contain a `data marker` alias buried in the prose ("[Please
+					// put the Maths Minute activities in a box in the right
+					// column]" matches on `column`). They print a structural red
+					// flag, which is both wrong and useless to a developer. The
+					// test is the EXISTING round-245 predicate reused unchanged —
+					// no new vocabulary anywhere — and the note is the ordinary
+					// writer-instruction form line 1982 already uses: the raw span
+					// verbatim under the r219 scheme's "Writers Note:" prefix.
+					// The content below is untouched. MEASURED fire population:
+					// EXACTLY 13 flags / 13 modules over the whole 695-record
+					// orphan census; the how==="embedded" fence excludes every
+					// [Item N] Media-List shape and every exact-form single-word
+					// marker BY CONSTRUCTION. Env ORPHANCS_OFF.
+					{
+						const _mc = DataService.Data.EmitTemplates.elements?.orphan_instruction_reclass;
+						const _mcOn = _mc && _mc.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env.ORPHANCS_OFF);
+						if (_mcOn && (_mc.scope_tags ?? ["data marker"]).includes(primary.tag)
+							&& this.#norm && typeof this.#norm.IsInstructionDominant === "function"
+							&& this.#norm.IsInstructionDominant(it.parse, _mc.min_words ?? 3)) {
+							emit(NotesAndComments.redFlag(it.text, run, _mc.note_kind ?? "cs"));
+							if (it.blackAfter.trim()) emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
+							break;
+						}
+					}
 					// a sub-tag outside any interactive = mis-structured
 					// source: render its content, flag the orphan (surface,
 					// never absorb).

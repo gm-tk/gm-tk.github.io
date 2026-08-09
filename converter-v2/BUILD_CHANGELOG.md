@@ -1,5 +1,187 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 301, build 260618.72) — THE MIS-CLASSIFICATION GUARD: orphan-`[data marker]` chain, round 4 of 4 — **THE LAST; THE CHAIN IS CLOSED** (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
+
+Chain order: 1 — the caption widening ✅ (round 298) → 2 — the glossary definition weave ✅
+(round 299) → 3 — the three note families ✅ (round 300) → **4 — the one-off
+mis-classification guard (THIS ROUND), which deletes the brief.**
+
+**SCOPED SHIP #4 since the r296 full ship** (4 of 8 headroom remaining). The §9 baselines
+describe the r296/r298/r299/r300 state ± the 13 pages below, and `_fastloop_diff.py
+--commit` re-scored the 13 affected modules with **EVERY protected gate EXACT — zero
+movement on every metric, `--accept-named` neither used nor needed.**
+
+### 1. THE SMALLEST ROUND OF THE CHAIN, AND THE FINDING IS THE DECLINE
+
+Some writer spans that reach the orphan sub-tag branch are not structural markers at all.
+They are **instructions to the design team** whose bracket happens to contain a
+`data marker` alias buried in the prose, so the tag resolver files them as markers and the
+page prints `Red Flag: Orphan sub-tag [data marker] outside an interactive` over a request
+to a person. They now print the r219 scheme's **`Writers Note:`** carrying the writer's own
+raw span verbatim — the same form line 1982 has used for every span the resolver
+classifies as an instruction in the first place. **Nothing is built, nothing is dropped,
+and the content below the marker is untouched.** Env **`ORPHANCS_OFF`**; data
+`elements.orphan_instruction_reclass`.
+
+**THE REACHABLE POOL, STATED FIRST** (`outputs/_measure_r301_misclass.cjs`, 16 shards — it
+runs the predicate AT the emit site and prints every input to it). Re-measured over the
+whole post-r300 tree the `[data marker]` class is **75 flags / 40 modules / 50 pages**,
+down from 274 by exactly round 300's WT-side 199 — so r300 landed to the flag. The
+catalogue's `— one-off design instructions` bucket is **29 flags / 24 modules / 25 pages,
+its figure to the flag**, of which 28 reach a shipped page. **The guard reaches 13.**
+
+### 2. THE CATALOGUE'S OWN HEADLINE EXAMPLE IS NOT REACHABLE — the fourth correction in four rounds
+
+The brief proposes reusing round 245's `TagNormaliser.IsInstructionDominant`, and names
+XGF9006's **`[Three tiles across the page]`** as the case. Measured: **no Instruction_Cues
+cue fires on it**, so the mechanism the brief proposes cannot see its own example. The
+same is true of `[Make word green/red/blue]` (CEDK501 ×3), `[insert arrow down]`
+(XTAS103), `[One basket with the label 'Fair' and one with 'Unfair']` (XGF9004),
+`[Insert links to the 4 individual phases – side by side across screen]` (ARFUN01),
+`[allow them to be able to move the words between boxes …]` (BLL147, 48 words) and
+`[Displayed as links to lessons …]` (XDLS902).
+
+**And there is no general discriminator that would reach them.** `[Three tiles across the
+page]` is a whole-span, multi-word, `how="embedded"` bracket — and so is ANZH203's
+`[Definition of inaccuracies = something that is not correct]`, which is a definition, i.e.
+content. The separation is SEMANTIC, not structural. A bespoke verb-and-layout vocabulary
+fitted to eight strings would be a curve fit (CLAUDE.md §6) and is **DECLINED**. This is
+the shipped page, side by side, and it is the round in two lines:
+
+```html
+SCCH301_2_0  <p class="cv2-note" …>Writers Note: [Three click and drops next to each other in a row]</p>
+XGF9006_6_0  <p class="cv2-note" …>Red Flag: Orphan sub-tag [data marker] outside an interactive…</p>
+```
+
+The first fires only because `next to` is already in the shared cue vocabulary.
+
+### 3. THE ONE VOCABULARY FIX THAT LOOKED RIGHT, MEASURED AND DECLINED
+
+`Instruction_Cues.cue_patterns` carries "can you", "could you", "could we", "can this",
+"can there" but **not "can we"** — which is the single reason ART1006's `[Can we have a
+side bar on this page called INVESTIGATE in a red box down the side]` classifies as a tag.
+The file's own `_meta.extension_rule` says a missing phrasing is added THERE, as one
+pattern. It was measured before it was made (`outputs/_measure_r301_canwe.cjs`, every red
+span in all 454 Writers Templates): **750 spans contain "can we", and 227 across 92 modules
+currently classify as `tag`** — overwhelmingly real widget tags with a request riding along
+(`[drop and drag] Can we make something like this please …` across the whole BLL phonics
+family, `[Rolling banner] Can we have something like this please …`, `[audio] can we attach
+the audio …`). `cue_patterns` is SHARED: it feeds `IsInstructionDominant`, which
+InteractiveScanner uses to decide whether a span is swallowed as an instruction MEMBER, and
+the r245 PageSplitter lesson-boundary guard. **One word would move widget capture on ~92
+modules. DECLINED; do not re-measure it without a full ship.**
+
+### 4. WHAT SHIPPED — an existing predicate, no new vocabulary anywhere
+
+One guarded branch in the SUBTAG default, after round 300's and before the flag. The test
+is `IsInstructionDominant` reused unchanged: `parse.class === "tag"` AND every tag
+`how === "embedded"` AND a cue fires AND ≥ `min_words` words. Gate by gate over the 75:
+class is `tag` for all 75 · the **`how === "embedded"` fence removes 36** — every
+`[Item N]`/`[item #N]` Media-List shape and every exact-form single-word marker
+(`[definition]`, `[word]`, `[Label]`, `[Incorrect]`, `[Insert thumbnail]`,
+`[embedded webpage]`), excluded BY CONSTRUCTION · the cue removes 26 more · `min_words` 3
+leaves **EXACTLY 13 flags / 13 modules / 13 pages, all corpus-side**.
+
+`min_words` is **3** here rather than the scanner's 8, and the relaxation is measured, not
+assumed: at this site the span has already failed to be a usable structural marker, and the
+three records between 3 and 8 words are all genuine instructions (BLLR201 7w, CEDW501 7w,
+SSFUN02 3w). **12 of the 13 are the catalogue's one-off bucket; the 13th** — BLLR201 6.0
+`[word highlighting] Two colours as outlined below` — the family script files under family
+7 by its head word, and it is a design instruction with no `[definition]` partner, so round
+299's family-7 pairing is untouched.
+
+### 5. THE BUG WAS IN MY OWN CHECK AGAIN — the r291–r300 class, seventh round running
+
+The accounting leg asserted `orphan flags removed == Writers-Note PREFIXES gained == 13`
+and failed at 13 / 10 against **correct** output. The three "missing" notes are
+CEDW501, ENGS302 and EXBP901, where **round 203's coalesce** folded the relabelled
+instruction into an adjacent existing Writers Note — one paragraph, one prefix, bodies
+joined by `<br>`, which is exactly what r203 was built to do and exactly what a developer
+wants (`Edit to end 14.28` now sits with the swear-word instruction it belongs to). The
+leg counts note BODIES now. Nothing in the engine changed.
+
+### 6. PROOF (`outputs/_probe_r301_misclass.cjs`, ONE TOGGLE STATE PER PROCESS — the r246 trap)
+
+- **OFF (`ORPHANCS_OFF=1`): ALL 33 modules BYTE-IDENTICAL to the shipped disk** — 13
+  affected + 14 declines + 6 canaries. The canaries carry a live example of every note kind
+  in the shared r219 scheme, **including OSAH501, a Writers-Note carrier — this round's own
+  prefix** — plus CEDT101 (a whitelisted Word comment) and OSAI501 (an existing
+  Designer/Developer To Do).
+- **ON: 13 named note assertions + 15 NEGATIVE assertions ALL PASS**, and every decline and
+  canary stays byte-identical in the ON state too. The negatives pin the round's honesty:
+  **XGF9006, XGF9004, XTAS103, ARFUN01, ART1006, BLL147, XDLS902** must still print the
+  flag; **SSOG301** must (its `Party B can govern alone (incorrect)]` is a QUIZ DISTRACTOR
+  fragment belonging to the 107 `[correct]` / 73 `[answer]` gathering class, not an
+  instruction); **ANZH203** must (a definition of the same shape — the proof the rule is not
+  curve-fitted); and CEDT104 / XGF9001 / ENGI201 / ANZH205 / TEDC402 / XDLS905 must, being
+  excluded by construction.
+- **A PLACEHOLDER-OMIT assertion.** Kind `"cs"` runs the r86 omit check, so a relabelled
+  instruction matching a WT template-placeholder phrase would be **silently dropped** —
+  a breach of CLAUDE.md §6. **cv2-omit markers gained across the affected set: 0.**
+- **THE ACCOUNTING CLOSES EXACTLY: 13 orphan flags removed, 13 Writers-Note bodies gained**,
+  and it reconciles per module against the census.
+- **Leak scan: no module gains a visible bracket.** **No writer word lost in any module**
+  (the bag COUNTS note text — round 300's rule, not 299's — with only the old flag's fixed
+  boilerplate excluded by name).
+
+### 7. THE SCOPED SHIP
+
+Affected set derived from **BYTES, not builds** (`outputs/_detect_r301.cjs`, all 454
+modules, 16 shards), filtered to modules with a Claude dir = **13 modules**. Regenerated in
+3 batches; `_content_manifest.py fresh` **0 truly stale**; `diff` = **EXACTLY 13 pages / 13
+modules, 0 added, 0 removed** — containment perfect, one page per module, and **no pending
+work from any earlier round**, the fourth clean sweep running. (The 3 convert errors
+TRR104/105/115 are the pre-existing empty gold dirs recorded since r186.)
+
+**GATES — every one EXACT, nothing named:** skeleton SCAFFOLD mean **49.77** / ≥50% **986**
+/ ≥75% **192** · cs exact **11216** / EXTRA **185** / missing **590** · body **242** ·
+clean **97.81%** · leak **288/46** · tags **9557/9557 REAL 0** · index-sync **33/28** ·
+entry-parity **PASS** · flipCard §9 **divergence 0 ✓** · **all NINE widget selftests
+GREEN**. A note is `cv2-note` and gate-excluded, so a prefix-and-body swap inside one is
+gate-inert by construction — and it measured that way, to the digit.
+
+### 8. THE CHAIN IS CLOSED — what the four rounds did, and what is left
+
+`WHY_UNBUILT__orphan_dataMarker.md` is **DELETED** with this round (§12 step 5 applied to
+the brief the chain was written against, as the eight `WHY_UNBUILT__*` activity documents
+were deleted by the rounds that carried them out). `WHY_UNBUILT__INDEX.md` carries the
+closing row.
+
+| | at the start (round 297) | at the end |
+|---|--:|--:|
+| `[data marker]` orphan flags | **399** | **62** |
+| modules | 78 | 38 |
+
+Round 298 built 15 captions; round 299 removed 110 red flags for 106 live definitions and
+healed three beheaded words; round 300 turned 154 useless flags into actionable notes and
+recovered writer content the branch was discarding; round 301 relabelled 13.
+
+**DECLINED WITH THE MEASUREMENT — do not re-open:** `[Auto-feedback]` as a build (no
+feedback slot anywhere in 2,385 gold files) · `[Merge item]` as a build (every named source
+course absent) · `[Audiovisual item N]` as a build (no activity code in the marker) ·
+`[Label]` (two modules, two conventions) · the eight cue-less design instructions above ·
+the "can we" cue extension.
+
+**RECORDED, NOT TAKEN — the one thing this round could have added.** Family 9's six
+`[Auto-feedback]` markers (TEDC401/TEDC402) deserve the catalogue's own suggested note
+("automatic feedback text supplied; the template has no feedback slot"). That is a
+different family with a different prefix (`todo`, not `cs`) and its own wording, fenced by
+the family-9 head pattern with zero bleed — 6 flags / 2 modules. It is not the
+mis-classification this round is named for, so it was left out rather than smuggled in.
+
+**WHAT TO DO NEXT, on the catalogue's own evidence.** The same recorder holds **620 further
+orphan flags of other kinds, and they are not a builder problem**: `[correct]` 107 and
+`[answer]` 73 are quiz parts that escaped their quiz; `[shape n]` 155 and `[tab n]` 177 are
+widget parts that escaped their widget. Both are **GATHERING classes** — the capture
+boundary put the marker outside the activity it belongs to — which is a different and
+larger kind of round than any of these four. Beside them sit two items the chain handed on:
+**the `dropbox` alias re-cut** (240 activities / 87 modules; round 294 recorded it as a
+policy question for Chris) and **the Media-List asset-resolution class** (round 300's
+`[Item N]` decline, which belongs with round 292's work). And after four consecutive scoped
+ships, **a full `REGENERATE CORPUS` is a reasonable thing to ask for.**
+
+---
+
 ## 2026-08-09 (round 300, build 260618.71) — THE THREE NOTE FAMILIES: orphan-`[data marker]` chain, round 3 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
 
 **A round that builds nothing, and that is the point.** Chain order: 1 — the caption
