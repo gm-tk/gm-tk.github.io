@@ -1302,7 +1302,21 @@ class Config {
 	// / 51 pages; leak IDENTICAL per module; every gate held-or-improved.
 	// Data elements.hover_definition_inline.orphan_definition_weave; env
 	// DEFWEAVE_OFF / DEFANCHORNAMED_OFF / DEFWORDFLAG_OFF. Scoped ship #2.
-	static AppVersion = "260618.70";
+	// ROUND 300 (260618.71): THE THREE NOTE FAMILIES — the orphan-[data marker]
+	// chain, round 3 of 4. [Item N] / [Merge item|source N] / [Audiovisual item N]
+	// all name an asset OUTSIDE the writer's document, so all three are measured
+	// build DECLINES; what changes is the note. "Red Flag: Orphan sub-tag [data
+	// marker]" becomes "Designer/Developer To Do: Media List item 7 goes here",
+	// naming the writer's own number and carrying the writer's own remaining
+	// words — which the orphan branch had been DISCARDING, since only blackAfter
+	// renders there (MXFUN01 was throwing away "MXO302 … use all content on page"
+	// and shipping a naked D2L URL under a useless flag), plus any hyperlink the
+	// writer attached. 154 orphan flags removed / 156 notes gained across 17
+	// modules / 28 pages; NO writer word lost anywhere; leak identical everywhere
+	// except BLLR201, where the rider removes 2 raw brackets from live pages.
+	// Data elements.asset_todo_notes; env TODONOTE_OFF / TODOITEM_OFF /
+	// TODOMERGE_OFF / TODOAV_OFF / TODOBLACK_OFF. Scoped ship #3.
+	static AppVersion = "260618.71";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

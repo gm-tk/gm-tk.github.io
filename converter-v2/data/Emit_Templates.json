@@ -371,6 +371,57 @@
 			},
 			"_doc": "ROUND 239 (Dev-Feedback R2, B2 — SCCH302-02). A FREE-BODY [caption] (outside any interactive) is the writer's image caption; the human ships <p class=\"captionText\">…</p> (gold x545). 'caption' stays an alias of the data-marker SUBTAG, so inside widget bundles nothing changes (carousel/flipCard captions etc — measured 175 [caption] occ / 22 modules, nearly all widget members); this rule fires ONLY at the orphan-sub-tag branch (which by definition is outside every interactive), replacing the 'Orphan sub-tag [data marker]' red flag + plain <p> with the captionText paragraph. The match is the EXACT bare bracket ([caption] and nothing else in the span) so a caption marker carrying extra instruction text still surfaces as a flag. Env CAPTIONTEXT_OFF reverts."
 		},
+		"asset_todo_notes": {
+			"enabled": true,
+			"_round": "300 (the orphan-[data marker] chain, round 3 of 4) — THE THREE NOTE FAMILIES. Families 2/3/4 of WHY_UNBUILT__orphan_dataMarker.md all point at an asset that is OUTSIDE the writer's document: a numbered Media-List slot, a page of a legacy D2L course, a sound not yet recorded. All three are MEASURED BUILD DECLINES (see decline_evidence below) — nothing is built here. What changes is the NOTE: 'Red Flag: Orphan sub-tag [data marker] outside an interactive' tells a developer nothing, where 'Designer/Developer To Do: Media List item 7 goes here' tells them exactly what to fetch. Kind 'todo' = the r219 ledger scheme's Designer/Developer To Do prefix (red + bold, class cv2-note, gate-excluded by construction), in use for deferred assets since r239. THE LARGER FINDING, which the catalogue did not state: at the orphan branch only the item's blackAfter renders, so the marker's OWN residue is DISCARDED — MXFUN01 was throwing away 'MXO302 Parts of a Whole: Lesson 1.0 Decimals - use all content on page' and shipping a naked D2L URL under a useless flag. The note now carries that residue, so the round RECOVERS writer content as well as re-labelling.",
+			"_fire_population": "MEASURED over the whole 274-record post-r299 orphan census (outputs/_measure_orphan_datamarker.cjs, 16 shards + _orphan_dm_families.py): the three head patterns match EXACTLY the 199 records of families 2/3/4 and NOTHING ELSE in the census — zero cross-family bleed, verified record by record. WT-side reach 199 flags / 21 modules; CORPUS-side reach 154 flags / 17 modules / 26 pages, because SEVEN of family 4's nine modules (the BLL27x phonics family) have no 01-Claude_Modules_ dir (the r285 ghost-dir trap — the catalogue's own family counts did not apply it). The remaining 45 are a forward guarantee.",
+			"decline_evidence": {
+				"item": "Round 292's MEDIA-LIST ASSET-RESOLUTION class, not a data-marker one. The asset is outside the document and, measured across CEDT104 and ARFUN02, THE NUMBER NEVER DETERMINES THE CONTAINER — the neighbouring red tag does ([Please create a carousel], [Create Flip cards]). Resolve it with the rest of the Media-List work, not here.",
+				"merge": "ZERO, permanently. Every named source course (MXO301/302/313/323/331/333/341/414/432/442/443/521, HEO1005, HPO1091, HTO1101/1103) is ABSENT from this corpus — they are legacy D2L courses — and where the human COULD reach them they dropped 62 of ~78 markers into empty panels. There is no shared-asset mechanism in the HTML at all.",
+				"audiovisual": "ZERO without the recordings. The gold's audioButton needs an audioName of the form {CODE}_{ACTIVITY}_{N} and THE ACTIVITY CODE IS NOWHERE IN THE MARKER; BLL270's Media List has Item No. blank on every row and zero Audio rows; and the human's own answer differs by module (BLLR201 ships no audio at all, SSCI205 uses audioImage tiles). A silent button is worse than an honest note."
+			},
+			"families": [
+				{
+					"key": "item",
+					"env": "TODOITEM_OFF",
+					"head": "^\\[?\\s*(?:insert\\s+)?items?\\s*(?:no\\.?|number)?\\s*#?\\s*(\\d+)?\\s*[:.\\]]*\\s*",
+					"note": "Media List item {n} goes here.",
+					"note_rest": "Media List item {n} goes here — {rest}",
+					"note_nonum": "A Media List item goes here.",
+					"note_nonum_rest": "A Media List item goes here — {rest}"
+				},
+				{
+					"key": "merge",
+					"env": "TODOMERGE_OFF",
+					"head": "^\\[?\\s*(?:insert\\s+|see\\s+)?merge[dr]?\\s+(?:item|source)s?\\s*#?\\s*([\\d,\\s]*(?:and\\s*\\d+)?)\\s*[:.\\]]*\\s*",
+					"contains": "\\bmerged?\\s+items?\\b",
+					"note": "Merged content from another course (item {n}).",
+					"note_rest": "Merged content from another course — {rest}",
+					"note_nonum": "Merged content from another course.",
+					"note_nonum_rest": "Merged content from another course — {rest}",
+					"note_contains": "{rest} — merged content from another course."
+				},
+				{
+					"key": "audiovisual",
+					"env": "TODOAV_OFF",
+					"head": "^\\[?\\s*(?:insert\\s+)?(?:audio\\s*visual|audiovisual|av)\\s*items?\\s*#?\\s*(\\d+)?\\s*[:.\\]]*\\s*",
+					"contains": "\\baudio\\s*visual\\s*items?\\s*#?\\s*(\\d+)",
+					"note": "Audiovisual item {n} — the recording is to come.",
+					"note_rest": "Audiovisual item {n} — the recording is to come. {rest}",
+					"note_nonum": "An audiovisual item — the recording is to come.",
+					"note_nonum_rest": "An audiovisual item — the recording is to come. {rest}",
+					"note_contains": "{rest} — the audiovisual recording is to come."
+				}
+			],
+			"residue_strip_lead": "^[\\s\\[\\]:.,;–—-]+",
+			"residue_strip_tail": "[\\s\\[\\]]+$",
+			"link_suffix": " Link: {url}",
+			"black_line": {
+				"enabled": true,
+				"_doc": "THE RIDER, and a CORRECTION TO THE CATALOGUE. The catalogue says BLLR201's visible <p>[Audiovisual item 1]</p> is 'a data marker rendered through the normal text path' and can therefore be fixed by the note change. IT CANNOT: measured against the LIVE extractor (outputs/_probe_r300_bllr201.cjs), that block carries NO red span at all — the writer made the bracket the ANCHOR TEXT of a hyperlink to the asset — so it is a BLACK item, never reaches the orphan branch, and prints no flag. It leaks because the gate's own LITERAL_TAG vocabulary in _structural_defect_audit.py does not list 'item'/'audiovisual item'/'merge item', so the 5 visible occurrences corpus-wide are invisible to the leak count (not, as the catalogue says, because of the render path). This rule catches the honest ones: a BLACK item whose ENTIRE text is one of the three families' brackets becomes the same todo note, with any hyperlink target carried in the note text. FIRE POPULATION corpus-wide: EXACTLY 2 (BLLR201_0_0 [Audiovisual item 1], BLLR201_2_0 [audiovisual item 4]). The other three visible occurrences (TRR102/TRR106/TRR109 [Item N]) sit inside BILINGUAL TABLE CELLS beside leaking [Image]/[Body] markers — the standing r167 reoMode class, rendered by the table path, untouched by construction. Env TODOBLACK_OFF reverts the rider alone.",
+				"whole_line": true
+			}
+		},
 		"image_attrs": {
 			"_round": "240 (Dev-Feedback R3, D1) — content-image alt text + loading=\"lazy\"",
 			"enabled": true,

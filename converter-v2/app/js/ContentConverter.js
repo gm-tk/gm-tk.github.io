@@ -410,6 +410,13 @@ class ContentConverter {
 		// its own block, so a bullet list arrives as N separate items —
 		// joining them lets the list builder group "• …" lines into ONE
 		// <ul> instead of N single-item lists)
+		// ROUND 300 RIDER — the black-line asset request. MUST run BEFORE the
+		// coalesce: once consecutive black paragraphs are joined into one item
+		// the marker is a LINE inside a run, not an item, and splitting a run
+		// after the fact would risk breaking the bullet grouping the coalesce
+		// exists to make. Before it, the marker is still its own item with its
+		// own block (and its own hyperlink).
+		this.#assetTodoPrepass(bodyItems, tpl);
 		ListsAndRuns.coalesceBlackRuns(menuItems);
 		ListsAndRuns.coalesceBlackRuns(bodyItems);
 
@@ -1948,6 +1955,15 @@ class ContentConverter {
 				continue;
 			}
 
+			// ROUND 300 RIDER — the black-line asset request (see #assetTodoPrepass).
+			// The pre-pass has already replaced the item, so this only has to emit.
+			if (it.type === "assettodo") {
+				rowFor("textRun");
+				emit(NotesAndComments.redFlag(it.note, run, "todo"));
+				markContent();
+				continue;
+			}
+
 			if (it.type === "black") {
 				rowFor("textRun");
 				emit(...actDeBold(ListsAndRuns.renderBlackText(it.text, run, it.block?.links)));
@@ -2776,6 +2792,26 @@ class ContentConverter {
 									}
 								}
 							}
+						}
+					}
+					// ROUND 300 (the orphan-[data marker] chain, round 3) — THE THREE
+					// NOTE FAMILIES. [Item N] / [Merge item|source N] / [Audiovisual
+					// item N] all name an asset that lives OUTSIDE this document, so
+					// none of them can be built (the evidence for each decline is
+					// recorded in elements.asset_todo_notes.decline_evidence). What
+					// they get instead is a note a developer can act on, naming the
+					// writer's own number and carrying the writer's own remaining
+					// words — which the orphan branch had been discarding entirely,
+					// since only blackAfter renders here. The content below is
+					// unchanged. Env TODONOTE_OFF / TODOITEM_OFF / TODOMERGE_OFF /
+					// TODOAV_OFF.
+					{
+						const _todo = primary.tag === "data marker"
+							? this.#assetTodoNote(it.text, tpl, it.block?.links) : null;
+						if (_todo) {
+							emit(NotesAndComments.redFlag(_todo, run, "todo"));
+							if (it.blackAfter.trim()) emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
+							break;
 						}
 					}
 					// a sub-tag outside any interactive = mis-structured
@@ -4371,6 +4407,137 @@ class ContentConverter {
 	 * Env toggles: DEFWEAVE_OFF (all of it) / DEFANCHORNAMED_OFF (shape B
 	 * alone) / DEFWORDFLAG_OFF (the paired-[word] flag suppression alone).
 	 */
+	/**
+	 * ROUND 300 — THE THREE NOTE FAMILIES (the orphan-[data marker] chain, round
+	 * 3 of 4). Families 2/3/4 of WHY_UNBUILT__orphan_dataMarker.md — [Item N],
+	 * [Merge item / source N] and [Audiovisual item N] — ALL point at an asset
+	 * that is OUTSIDE the writer's document: a numbered Media-List slot, a page
+	 * of a legacy D2L course, a sound not yet recorded. All three are MEASURED
+	 * BUILD DECLINES (the evidence is recorded verbatim in the data block's
+	 * decline_evidence, so it is not re-litigated). NOTHING IS BUILT HERE.
+	 *
+	 * What changes is the NOTE. "Red Flag: Orphan sub-tag [data marker] outside
+	 * an interactive" tells a developer nothing; "Designer/Developer To Do:
+	 * Media List item 7 goes here" tells them exactly what to fetch. The note
+	 * names the WRITER'S OWN NUMBER and carries the WRITER'S OWN remaining
+	 * words — which is the round's larger finding: at the orphan branch only the
+	 * item's blackAfter renders, so the marker's own residue was being DISCARDED.
+	 * MXFUN01 was throwing away "MXO302 Parts of a Whole: Lesson 1.0 Decimals –
+	 * use all content on page" and shipping a naked D2L URL under a useless flag.
+	 *
+	 * Returns the note BODY (the prefix is added by NotesAndComments.redFlag with
+	 * kind "todo" — the r219 ledger scheme), or null when no family matches, in
+	 * which case the caller's behaviour is byte-identical to before.
+	 *
+	 * FIRE POPULATION, measured over the whole 274-record post-r299 orphan census:
+	 * the three head patterns match EXACTLY the 199 records of families 2/3/4 and
+	 * NOTHING ELSE — zero cross-family bleed, verified record by record.
+	 *
+	 * Data flag: elements.asset_todo_notes
+	 * Env toggles: TODONOTE_OFF (all of it) / TODOITEM_OFF / TODOMERGE_OFF /
+	 * TODOAV_OFF (one family each) / TODOBLACK_OFF (the black-line rider alone).
+	 */
+	static #assetTodoNote(text, tpl, links) {
+		const cfg = tpl.elements?.asset_todo_notes;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.TODONOTE_OFF) return null;
+		const raw = String(text ?? "").trim();
+		if (!raw) return null;
+		const lead = new RegExp(cfg.residue_strip_lead ?? "^[\\s\\[\\]:.,;–—-]+");
+		const tail = new RegExp(cfg.residue_strip_tail ?? "[\\s\\[\\]]+$");
+		// a residue with no letter or digit in ANY script is punctuation the
+		// writer glued to the bracket, not content — the round-104 STRAYLEAD rule
+		const hasWord = (s) => /[\p{L}\p{N}]/u.test(s);
+		const clean = (s) => {
+			const t = String(s ?? "").replace(lead, "").replace(tail, "").trim();
+			return hasWord(t) ? t : "";
+		};
+		const fill = (form, n, rest) => Utils.FillTemplate(form, { n, rest });
+		for (const fam of (cfg.families ?? [])) {
+			if (!fam || fam.enabled === false) continue;
+			if (fam.env && typeof process !== "undefined" && process.env && process.env[fam.env]) continue;
+			let body = null;
+			const m = fam.head ? new RegExp(fam.head, "i").exec(raw) : null;
+			if (m && m[0].trim()) {
+				const n = String(m[1] ?? "").trim();
+				const rest = clean(raw.slice(m[0].length));
+				body = fill(n ? (rest ? fam.note_rest : fam.note)
+					: (rest ? fam.note_nonum_rest : fam.note_nonum), n, rest);
+			} else if (fam.contains) {
+				// the COMPOUND form — the writer wrapped the marker in a sentence
+				// ("Insert bookworm on right side of page + audiovisual item 15").
+				// The whole sentence IS what the developer needs to read (BLLR201's
+				// human built the bookworm and dropped the audio), so it becomes the
+				// note body and the standing phrase follows it.
+				const c = new RegExp(fam.contains, "i").exec(raw);
+				if (!c) continue;
+				const rest = clean(raw);
+				if (!rest) continue;
+				body = fill(fam.note_contains ?? fam.note_nonum_rest,
+					String(c[1] ?? "").trim(), rest);
+			}
+			if (!body) continue;
+			// a hyperlink on the same block points AT the asset — the one thing a
+			// developer most needs. Carried as text: the note is cv2-note, which is
+			// gate-excluded by construction, so nothing here can move a gate.
+			const url = (links ?? []).map((l) => l && l.target).find((t) => t);
+			if (url && cfg.link_suffix && !body.includes(url)) {
+				body += Utils.FillTemplate(cfg.link_suffix, { url });
+			}
+			return body;
+		}
+		return null;
+	}
+
+	/**
+	 * ROUND 300 RIDER — the BLACK-LINE asset request, and a CORRECTION to the
+	 * catalogue.
+	 *
+	 * BLLR201 ships a visible <p>[Audiovisual item 1]</p>, which
+	 * WHY_UNBUILT__orphan_dataMarker.md calls "a data marker rendered through
+	 * the normal text path" and therefore fixable by the note change above. It
+	 * is NOT. Measured against the LIVE extractor (outputs/_probe_r300_bllr201.cjs)
+	 * that block carries NO red span at all — the writer made the bracket the
+	 * ANCHOR TEXT of a hyperlink to the asset — so it arrives as a BLACK item,
+	 * never reaches the orphan branch and prints no flag. It escapes the leak
+	 * count because the defect audit's LITERAL_TAG vocabulary does not list
+	 * "item"/"audiovisual item"/"merge item", not because of the render path.
+	 *
+	 * A black item whose ENTIRE text is one of the three families' brackets is
+	 * an asset request like any other and gets the same note, with the
+	 * hyperlink target carried in it. Replacing the item (rather than handling
+	 * it at render time) is what lets this run BEFORE coalesceBlackRuns: after
+	 * the coalesce the marker is one LINE inside a joined run, and splitting a
+	 * run apart again would risk breaking the bullet grouping that coalesce
+	 * exists to produce.
+	 *
+	 * FIRE POPULATION corpus-wide: EXACTLY 2 (BLLR201_0_0 "[Audiovisual item 1]",
+	 * BLLR201_2_0 "[audiovisual item 4]"). The three other visible occurrences
+	 * (TRR102/TRR106/TRR109 "[Item N]") sit inside BILINGUAL TABLE CELLS beside
+	 * leaking [Image]/[Body] markers — the standing round-167 reoMode class,
+	 * rendered by the table path and untouched by construction.
+	 *
+	 * Data flag: elements.asset_todo_notes.black_line · env TODOBLACK_OFF
+	 * (TODONOTE_OFF reverts this too, since it gates the shared note builder).
+	 */
+	static #assetTodoPrepass(bodyItems, tpl) {
+		const cfg = tpl.elements?.asset_todo_notes;
+		const bl = cfg?.black_line;
+		if (!cfg || cfg.enabled === false || !bl || bl.enabled === false) return;
+		if (typeof process !== "undefined" && process.env
+			&& (process.env.TODONOTE_OFF || process.env.TODOBLACK_OFF)) return;
+		for (const it of bodyItems) {
+			if (!it || it.type !== "black" || it.consumedBy !== undefined || it._consumed) continue;
+			// the WHOLE line must be the bracket — a marker sitting inside real
+			// prose is content, and a bulleted line belongs to its list
+			if (!/^\s*\[[^\]\n]*\]\s*$/.test(String(it.text ?? ""))) continue;
+			const note = this.#assetTodoNote(it.text, tpl, it.block?.links);
+			if (!note) continue;
+			it.type = "assettodo";
+			it.note = note;
+		}
+	}
+
 	static #definitionWeavePrepass(bodyItems, tpl, run, page) {
 		const cfg = tpl.elements?.hover_definition_inline?.orphan_definition_weave;
 		if (!cfg || cfg.enabled === false) return;

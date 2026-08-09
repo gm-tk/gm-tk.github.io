@@ -1,5 +1,199 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 300, build 260618.71) — THE THREE NOTE FAMILIES: orphan-`[data marker]` chain, round 3 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
+
+**A round that builds nothing, and that is the point.** Chain order: 1 — the caption
+widening ✅ (round 298) → 2 — the glossary definition weave ✅ (round 299) → **3 — the
+three note families (THIS ROUND)** → 4 — the one-off mis-classification guard, which
+deletes the brief.
+
+**SCOPED SHIP #3 since the r296 full ship** (5 of 8 headroom remaining). The §9 baselines
+describe the r296/r298/r299 state ± the 28 pages below; `_fastloop_diff.py --commit`
+re-scored the 17 affected modules and **EVERY protected gate HELD-or-IMPROVED — nothing
+needed naming and `--accept-named` was NOT used.**
+
+### 1. THE REACHABLE POOL, STATED FIRST (the r294/r295 discipline)
+
+Re-measured over the whole post-r299 tree (`outputs/_measure_orphan_datamarker.cjs`, 16
+shards + `_orphan_dm_families.py`): the `[data marker]` class is now **274 flags / 58
+modules / 89 pages**, down from 384 by exactly round 299's 110 — so r299 landed. Families
+2/3/4 measure **85 / 58 / 56 = 199, the catalogue's figures to the flag** (the third
+accurate brief slice in a row).
+
+**But the CORPUS-side reach is 154, not 199, and the catalogue's own family counts did not
+apply its own warning.** Seven of family 4's nine modules — the whole BLL27x phonics family
+— have **no `01-Claude_Modules_` dir** (the r285 ghost-dir trap), so only 11 of its 56 flags
+reach a shipped page:
+
+| family | WT-side | reaches the corpus | modules / pages |
+|---|--:|--:|---|
+| 2 `[Item N]` | 85 | **85** | 6 / 7 |
+| 3 `[Merge item / source N]` | 58 | **58** | 9 / 17 |
+| 4 `[Audiovisual item N]` | 56 | **11** | 2 / 2 |
+| | **199** | **154** | **17 / 26** |
+
+The other 45 are a forward guarantee. **154 orphan flags were removed and 156 notes gained
+— the +2 being the rider below, which replaces no flag because those lines never had one.**
+
+### 2. THE LARGER FINDING: the writer's own words were being DISCARDED
+
+The catalogue frames this as a labelling problem. It is also a **content-loss** problem,
+and that is worth more. At the orphan branch only the item's `blackAfter` renders, so the
+marker's OWN residue never reaches the page at all. `MXFUN01_10_0` was shipping:
+
+```html
+<p class="cv2-note" …>Red Flag: Orphan sub-tag [data marker] outside an interactive…</p>
+<p><a href="https://tekura.desire2learn.com/…/174984/View">https://…/174984/View</a></p>
+```
+
+— a useless flag over a naked URL, having thrown away the writer's `MXO302 Parts of a
+Whole: Lesson 1.0 Decimals – use all content on page`, which is the only record of what to
+harvest and how to edit it. It now ships:
+
+```html
+<p class="cv2-note" …>Designer/Developer To Do: Merged content from another course —
+   MXO302 Parts of a Whole: Lesson 1.0 Decimals – use all content on page
+   Link: https://tekura.desire2learn.com/…/174984/View</p>
+```
+
+The same recovery reaches CEDT104 (`iStock image:`), ARFUN02 (`Image/graphic of a`),
+PHE1001, ART1002 and XDLS502's `[dev – these are a mix of content and activities…]`.
+
+### 3. WHAT SHIPPED — one helper, three data-described vocabularies
+
+`ContentConverter.#assetTodoNote` returns a note BODY (the prefix comes from the r219
+scheme via `NotesAndComments.redFlag(…, run, "todo")` — red, bold, `cv2-note`, gate-excluded
+by construction, in use for deferred assets since r239) or **null**, in which case the
+caller is byte-identical to before. Each family carries its own head pattern, its own
+number capture and four wording variants (number/no-number × residue/no-residue), plus a
+`contains` form for the compound shape. A hyperlink on the writer's block is appended as
+`Link: <url>` — **which is why CEDT104's notes now carry its iStock URLs and MXFUN01's its
+D2L links**, an outcome the round's own assertions had not predicted.
+
+**THE FENCE IS MEASURED, NOT ASSUMED:** tested record by record against the whole
+274-record census, the three head patterns match **EXACTLY the 199 records of families
+2/3/4 and NOTHING ELSE** — zero cross-family bleed. Data `elements.asset_todo_notes`; env
+**`TODONOTE_OFF`** (all of it) / **`TODOITEM_OFF`** / **`TODOMERGE_OFF`** / **`TODOAV_OFF`**.
+
+### 4. THE THREE BUILD DECLINES, RESTATED SO THEY ARE NOT RE-LITIGATED
+
+Recorded verbatim in `asset_todo_notes.decline_evidence`:
+
+- **`[Item N]`** — this is **round 292's Media-List asset-resolution class**, not a
+  `data marker` one. The asset is outside the document and, measured across CEDT104 and
+  ARFUN02, **the number never determines the container** — the neighbouring red tag does
+  (`[Please create a carousel]`, `[Create Flip cards]`). It should be measured with the rest
+  of the Media-List work.
+- **`[Merge item]`** — **zero, permanently.** Every named source course (MXO301/302/313/
+  323/331/333/341/414/432/442/443/521, HEO1005, HPO1091, HTO1101/1103) is ABSENT from this
+  corpus; where the human could reach them they dropped 62 of ~78 markers into empty panels;
+  and there is no shared-asset mechanism in the HTML at all.
+- **`[Audiovisual item N]`** — **zero without the recordings.** The gold's `audioButton`
+  needs an `audioName` of the form `{CODE}_{ACTIVITY}_{N}` and **the activity code is nowhere
+  in the marker**; BLL270's Media List has `Item No.` blank on every row and zero Audio rows;
+  and the human's own answer differs by module. A silent button is worse than an honest note.
+
+### 5. THE RIDER — and a CORRECTION to the catalogue's headline example
+
+The catalogue says BLLR201's visible `<p>[Audiovisual item 1]</p>` is "a data marker
+rendered through the normal text path" and therefore fixable by the note change. **It is
+not, and the note change cannot reach it.** Measured against the LIVE extractor
+(`outputs/_probe_r300_bllr201.cjs` — the `_parsed.txt` dumps are stale, §16): that block
+carries **no red span at all** — the writer made the bracket the **anchor text of a
+hyperlink** to the asset — so it arrives as a BLACK item, never reaches the orphan branch
+and prints no flag. The census agrees: it records BLLR201 flags on page **6.0 only**, while
+the leaks are on **0_0 and 2_0**. It escapes the leak count because the defect audit's
+`LITERAL_TAG` vocabulary does not list `item` / `audiovisual item` / `merge item` — not,
+as the catalogue says, because of the render path.
+
+Shipped as `#assetTodoPrepass`: a black item whose ENTIRE text is one of the three families'
+brackets becomes the same note, carrying its hyperlink. It runs **before**
+`coalesceBlackRuns` — after the coalesce the marker is one LINE inside a joined run, and
+splitting a run apart again would risk the bullet grouping the coalesce exists to produce.
+**FIRE POPULATION corpus-wide: EXACTLY 2** (BLLR201_0_0, BLLR201_2_0). The three other
+visible occurrences (TRR102/TRR106/TRR109 `[Item N]`) sit inside **bilingual table cells**
+beside leaking `[Image]`/`[Body]` markers — the standing r167 reoMode class, rendered by the
+table path and untouched by construction (proven: all three byte-identical in both states).
+Env **`TODOBLACK_OFF`**.
+
+### 6. THE BUG WAS IN MY OWN CHECKS, THREE TIMES — the r291–r299 class, sixth round running
+
+1. **Ten named assertions failed against correct output** because they asserted exact
+   equality and the notes carry the `Link:` suffix. The code was right and better than the
+   assertion; the check now uses `startsWith`.
+2. **A negative assertion pinned ENGJ301** as "still prints its orphan flag" — the post-r299
+   tree carries **zero** for it, so it could never have passed. Removed with a note.
+3. **The probe's own guard refused `on` with a single-family toggle**, so three
+   decomposition runs silently reported the *previous* toggle's scan file — the r279/r287
+   stale-artifact trap, in my own harness. A partial-toggle run now writes to its own
+   `_r300_scan_on_TODOxxx_OFF.json`.
+
+The one genuine code bug — the rider firing on nothing — was **not** a logic error but a
+seam error: the item was already coalesced by the time the render loop saw it.
+
+### 7. PROOF (`outputs/_probe_r300_notes.cjs`, ONE TOGGLE STATE PER PROCESS — the r246 trap)
+
+- **OFF (`TODONOTE_OFF=1 TODOBLACK_OFF=1`): ALL 31 modules BYTE-IDENTICAL to the shipped
+  disk** — 17 affected + 7 declines + 7 canaries — **re-run after the final code change**
+  (the r279 stale-artifact rule). The canaries deliberately include a live carrier of every
+  OTHER note kind in the shared r219 scheme — OSAH501 (Writers Note), **CEDT101 (a
+  whitelisted Word comment)**, OSAI501 (an existing Designer/Developer To Do) — plus HIS1002
+  and XDLS905, the live r201 render-stitch and woven-infoTrigger carriers.
+- **ON: 10 named note assertions + 2 rider assertions + 2 leak-gone assertions + 4 NEGATIVE
+  assertions ALL PASS**, and every decline/canary stays byte-identical in the ON state too.
+- **A QUALITY SCAN of all 156 notes: 0 malformed** (none empty, none carrying a raw bracket
+  through the residue strip).
+- **THE ACCOUNTING CLOSES EXACTLY: 154 orphan flags removed, 156 notes gained**, and the
+  difference is precisely the 2 rider notes. Per module it reconciles to the census flag by
+  flag (CEDT104 55→3, MXFUN01 25→0, SSCI205 7→0, BLLR201 5→1 …).
+- **NO WRITER WORD IS LOST IN ANY MODULE.** The word bag COUNTS note text (unlike r299's,
+  which strips it) because a note is this round's product; the OLD flag's fixed boilerplate
+  is excluded by name. Losses: **zero, in all 17**.
+- **Leak scan IDENTICAL per module in both states — except BLLR201, 2 → 0.**
+- **PER-TOGGLE DECOMPOSITION, all four measured:** `TODOITEM_OFF` reverts exactly the 6
+  family-2 modules · `TODOMERGE_OFF` exactly the 9 family-3 modules · `TODOAV_OFF` SSCI205
+  and BLLR201 entirely (it owns the rider too, the rider being audiovisual-only) ·
+  `TODOBLACK_OFF` **only** the rider (BLLR201 → orphan 1 / todo 7 / leak 2).
+
+### 8. THE SCOPED SHIP
+
+Affected set derived from **BYTES, not builds** (`outputs/_detect_r300.cjs`, all 454
+modules, 16 shards), filtered to modules with a Claude dir = **17 modules**. Regenerated in
+3 batches; `_content_manifest.py fresh` **0 truly stale**; `diff` = **EXACTLY 28 pages / 17
+modules, 0 added, 0 removed** — containment perfect, and **no pending work from any earlier
+round**, so rounds 296–299 are fully in the corpus. (The 3 convert errors TRR104/105/115 are
+the pre-existing empty gold dirs recorded since r186.)
+
+**GATES — every one HELD-or-IMPROVED, nothing named:** skeleton SCAFFOLD mean **49.76 →
+49.77 IMPROVED** / ≥50% **986** / ≥75% **192** EXACT · cs exact **11216** / EXTRA **185** /
+missing **590** EXACT · body **242** EXACT · clean **97.81%** EXACT · leak **288/46** EXACT ·
+tags **9557/9557 REAL 0** · index-sync **33/28** · entry-parity **PASS** · flipCard §9
+**divergence 0 ✓** · **all NINE widget selftests GREEN**. A note is `cv2-note` and therefore
+gate-excluded, so the round is gate-inert by construction; the scaffold's small rise is the
+rider removing a `<p>` from BLLR201_0_0 that the gold does not have.
+
+### 9. RECORDED FOR THE NEXT ROUND, AND BEYOND
+
+- **Round 4 (next, and the LAST of the chain): the one-off mis-classification guard** —
+  ~15 of the 29 "one-off design instructions" (`[Three tiles across the page]`) are
+  instructions to the designer and should print as **`Writers Note:`**, not as an orphan
+  structural flag. The shape to reuse is round 245's `TagNormaliser.IsInstructionDominant`.
+  **Round 4 deletes `WHY_UNBUILT__orphan_dataMarker.md`.**
+- **CEDW501's three notes read oddly on purpose** — `[See merged item information at the top
+  of this template.]` is the catalogue's **dangling pointer** (the preamble it names does not
+  exist in its template), so the note faithfully says so rather than inventing a source.
+- **The COALESCE question is settled by measurement, not assumption.** CEDT104 emits 52
+  notes on one page and round 203's coalesce would fold consecutive same-prefix notes into
+  one — but they are **not** consecutive (3 adjacent pairs out of 120 notes on that page), so
+  each note stays beside the asset it describes, which is what a developer needs.
+- **The gate's `LITERAL_TAG` vocabulary does not list these words**, which is why 5 visible
+  raw brackets sit outside the leak count. Widening it is a gate-tooling change and must not
+  be done in a round it would flatter (§16).
+- **`[Item N]` as a build belongs with round 292's Media-List asset resolution**, which
+  already lands EXPFUN04's gold's own three filenames for the pop-out.
+
+---
+
 ## 2026-08-09 (round 299, build 260618.70) — THE GLOSSARY DEFINITION WEAVE: orphan-`[data marker]` chain, round 2 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
 
 **The catalogue's largest single lever, and the only one that removes visibly broken prose
