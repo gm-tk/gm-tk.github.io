@@ -1,5 +1,194 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 302, build 260618.73) — THE `scope_tags` WIDENING: the orphan-remaining chain, round 1 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_remaining.md", the r298–r301 chain methodology, now carrying CLAUDE.md §0b's tag-family regeneration)
+
+Chain order: **1 — the `scope_tags` widening (THIS ROUND)** → 2 — the bare `[Tab N]` /
+`[Slide N]` openers → 3 — the `[coloured box]` callout → 4 — the quiz families, folded
+into round 294's territory, which deletes the brief.
+
+**SCOPED SHIP #1 since the r301b full ship** (7 of 8 headroom). **EVERY PROTECTED GATE
+EXACT — zero movement on every metric; `--accept-named` neither used nor needed**, which
+is what a prefix-and-body swap inside a gate-excluded `cv2-note` should do, and the second
+round running that the prediction landed at 0 rather than "about 0".
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+Round 301 taught the converter that some writer brackets reaching the orphan branch are
+**instructions to the design team**, not structural markers, and printed them as the r219
+scheme's `Writers Note:` instead of `Red Flag: Orphan sub-tag [data marker]`. It scoped
+that to ONE canonical tag. **This round points the same predicate at five more**, which is
+a DATA edit: `scope_tags` gains `shape n`, `answer`, `correct`, `question`, `option`,
+`drop`. Nothing is built, nothing is dropped, the content below each marker is untouched.
+
+```
+BEFORE  Red Flag: Orphan sub-tag [shape n] outside an interactive — content kept below…
+AFTER   Writers Note: [Please create a tick box where ākonga can earn a star ⭐️]
+```
+
+### 2. THE REACHABLE POOL, MEASURED FRESH — and the catalogue's figure lands TO THE FLAG
+
+`outputs/_measure_r302_scopetags.cjs` (the r301 recorder with a PER-TAG merge, 16 shards).
+**The saved r301 census was STALE by exactly r301's own engine edit** — merged 14:49
+against a ContentConverter written 14:56 — so it was re-run rather than trusted (the r279
+stale-artifact trap, caught by mtime before the merge). The recorder sits AFTER round
+301's branch, so its 13 spans are absent BY CONSTRUCTION and this is a "what is left"
+census, not a re-count.
+
+| the writer's label | flags left | class=tag | allEmbedded | cue | **guard reaches** | corpus-side |
+|---|--:|--:|--:|--:|--:|--:|
+| `tab n` | 177 | 177 | 25 | 0 | **0** | 0 |
+| `shape n` | 155 | 155 | 126 | 12 | **12** | 11 |
+| `correct` | 107 | 107 | 20 | 10 | **10** | 10 |
+| `answer` | 73 | 73 | 47 | 14 | **14** | 7 |
+| `data marker` | 62 | 62 | 26 | 0 | 0 (r301) | — |
+| `slide n` | 35 | 35 | 0 | 0 | **0** | 0 |
+| `question` | 21 | 21 | 16 | 2 | **2** | 2 |
+| `front` / `back` | 34 | 34 | 19 | 0 | **0** | 0 |
+| `option` | 9 | 9 | 6 | 2 | **2** | 2 |
+| `drop` | 8 | 8 | 8 | 1 | **1** | 1 |
+| | **682** | | | | **41** | **33** |
+
+**41 flags / 24 modules / 29 pages, of which 33 flags / 22 modules reach a converted
+page** — the catalogue's own figure, exact, and its per-tag split exact too (shape n 12,
+answer 14, correct 10, question 2, option 2, drop 1). The other 8 are ghost-directory
+(SSEA203 ×6, CEDW303) and are reported as a forward guarantee, never as reach.
+
+**`min_words` 3 was INHERITED, not re-tuned.** Measured, the reach is IDENTICAL at 0, 3
+and 4, and there are **zero near-misses below 3** — the floor does no work in this
+population, so it was left alone rather than moved for effect.
+
+### 3. EVERY ONE OF THE 41 IS AN INSTRUCTION — and two are judgement calls, named
+
+`[Please create a tick box where ākonga can earn a star ⭐️]` · `[Blocks for the type of
+learning it supports – please randomise. Correct match in brackets]` · `[The options below
+can be presented as click-drops]` · `[Can you put this Maths moment in a box with a
+coloured background…]` · `[Drag an drop] Note to designer: these are in the correct order
+now.` · XGF9004's 170-word `[Module Structure – notes for CS …]`.
+
+**(a) Six spans carry an answer VALUE alongside the instruction** — SSEA203's
+`[Answer = $70.00 or $70] CS ensure $ symbol is out of the box`, one red span, inseparable.
+The catalogue warns (family 4) that "an answer key is content the learner must not see",
+and that warning is about a BUILD — rendering a key as learner-visible content. **This is
+not that.** A `cv2-note` is designer-facing chrome in the same channel the structural flag
+already occupies, gate-excluded, and deleted by the developer (the gold ships zero). What
+changes is that the writer's `CS ensure $ symbol is out of the box`, which today renders
+**nowhere at all**, now reaches the person it was written for (CLAUDE.md §6: never
+silently strip a documented instruction). **The pure answer keys are excluded BY
+CONSTRUCTION and that is the load-bearing fact**: `[answers] seven, 65, 15, 24 …`
+(MXFU201) and `[Answers: 1= C, 2 = D, 3 = A, 4. = B]` (TWHT903) fire no cue, so the guard
+cannot reach a key that stands alone. All six are ghost-directory: corpus blast ZERO.
+
+**(b) CEDW303's span is `What did you learn? [Use the same box please]`** — the learner
+question and the instruction are one red span. Today NEITHER renders, so the note
+RECOVERS the writer's words rather than exposing anything; ghost-directory, blast ZERO.
+
+### 4. THE TRAP THIS ROUND HAD TO AVOID: four modules are on ROUND 301'S OWN DECLINE LIST
+
+ANZH205, CEDT104, ENGI201 and XGF9004 are named in round 301 as "must still print the
+flag". That list is about their `data marker` spans; the spans this round relabels on
+those same modules are DIFFERENT spans under `shape n` / `correct` / `answer`. A
+module-level assertion would have been meaningless. **The probe asserts both halves per
+span** — and they hold: CEDT104 gains 5 `shape n` notes while keeping its `data marker`
+(3), `shape n` (1) and `answer` (1) flags; **XGF9006 gains a `correct` note while still
+printing the catalogue's own headline decline, `[Three tiles across the page]`.**
+
+**Round 2's territory gains nothing**, asserted: `tab n` (177) and `slide n` (35) reach
+**zero** — no cue fires on any of them — so the bare-opener round starts from an
+undisturbed population.
+
+### 5. WHAT SHIPPED — data, with a per-family reversal
+
+`scope_tags` + a NEW `scope_tags_env` map (the r295 `env_by_type` pattern), so each family
+reverses on its own toggle: **`ORPHANCS_SHAPE_OFF` · `ORPHANCS_ANSWER_OFF` ·
+`ORPHANCS_CORRECT_OFF` · `ORPHANCS_QUESTION_OFF` · `ORPHANCS_OPTION_OFF` ·
+`ORPHANCS_DROP_OFF`**; **`ORPHANCS_R302_OFF`** reverts the whole widening to r301's
+`["data marker"]`; `ORPHANCS_OFF` still reverts the guard entirely. The engine change is
+21 lines at the one branch: it resolves the effective scope by filtering `scope_tags`
+through the env map. **No new vocabulary anywhere.** `Instruction_Cues` is untouched — the
+"can we" extension stays DECLINED on round 301's measurement (227 spans across 92 modules
+that are real widget tags).
+
+### 6. PROOF (`outputs/_probe_r302_scopetags.cjs`, ONE TOGGLE STATE PER PROCESS)
+
+- **OFF (`ORPHANCS_R302_OFF=1`): ALL 49 modules BYTE-IDENTICAL to the shipped disk** — 22
+  affected + 11 of round 301's own affected modules + 10 declines + 6 canaries. The
+  canaries include **MXDB302 (×8) and ENGR202 (×7), the corpus's biggest `shape n`
+  carriers, which reach ZERO** — they prove the widening did not over-fire on family 2,
+  the 155-flag population round 3 will build against.
+- **ON: 28 named note assertions + 16 PER-SPAN negatives + 10 decline assertions ALL
+  PASS**, and every decline, canary and r301-affected module stays byte-identical.
+- **A PLACEHOLDER-OMIT assertion.** Kind `"cs"` runs the r86 omit check, so a relabelled
+  instruction matching a WT template-placeholder phrase would be **silently dropped** — a
+  breach of CLAUDE.md §6. **cv2-omit markers gained: 0.**
+- **THE ACCOUNTING CLOSES EXACTLY: 33 orphan flags removed, 33 Writers-Note BODIES
+  gained**, reconciling per module against the census record for record (CEDT104 −5/+5 on
+  one page, which is why bodies are counted and not prefixes — round 203's coalesce).
+- **PER-FAMILY DECOMPOSITION, each in its own process: shape 11 · answer 7 · correct 10 ·
+  question 2 · option 2 · drop 1 = 33**, each withdrawing EXACTLY its own notes and
+  leaving the other families on the same pages undisturbed.
+- **Leak scan: no module gains a visible bracket. No writer word lost in any module** (the
+  bag COUNTS note text — round 300's rule).
+
+**THE BUG WAS IN MY OWN CHECKS AGAIN — the r282–r301 class, EIGHTH round running, twice.**
+The first ON run reported **26 failures against correct output**: the assertion lists are
+global while each process converts half the set, so every module in the other half scored
+zero. Every assertion is PART-AWARE now and the corpus-wide total is asserted in a
+separate merge pass, so a half-converted set can never be reported as a whole-round total.
+Then the per-family leg asserted `33 − n` for a figure that is scoped to that family's own
+modules and so can never equal it; it now asserts what it actually proves.
+
+### 7. THE REGENERATION — §0b's FIRST TAG-FAMILY SWEEP, and it is 95% of the corpus
+
+Affected set from **BYTES, not builds** (`outputs/_detect_r302.cjs`, all 454 modules, 16
+shards) = **22 modules**, matching the census independently.
+
+**Then CLAUDE.md §0b: rebuild the WORKING half too.** The family was built from the
+feature index, not by hand — the six tags this round touches (329 modules) **plus the
+widgets those markers belong to**: mcq, dropDown, selfCheck, radio quiz, click drop, drag
+and drop. **394 of the 416 modules that have output — 95% of the corpus.** It was run in
+full: 34 batches (3 auto-splits), `_content_manifest.py fresh` **0 truly stale** (TRR115 is
+one of the three empty-output dirs recorded since r186 — it carries no HTML at all, so it
+can never be "fresh"), and
+
+> **`_content_manifest.py diff` = 26 pages / 22 modules, 0 added, 0 removed.**
+
+**The other 372 family modules are byte-identical.** That is exactly what §0b exists to
+prove: rebuilding the whole quiz-and-box family — every module where `[correct]`,
+`[answer]`, `[option]` and the box tags already work — disturbed nothing. And **no pending
+work from any earlier round**, the fifth clean sweep running.
+
+**FOR CHRIS: this round is a de-facto full ship.** The family came to 95% of the corpus,
+so only 22 modules (which carry none of the six tags) were not rebuilt. It is recorded as
+scoped ship #1 to stay inside the authorised scope, but a formal `REGENERATE CORPUS` would
+now cost very little and would reset the ledger honestly.
+
+### 8. GATES — every one EXACT
+
+Verifiers over the WHOLE family, not a sample (the r293b lesson): **dropDown 211 modules /
+168 units, defect 0 ✓** · **clickDrop 158 modules / 403 items, defect 0 ✓** · flipCard §9
+**TOTAL 61, divergence 0 ✓** · **all NINE widget selftests GREEN**.
+
+skeleton SCAFFOLD mean **49.77** / ≥50% **986** / ≥75% **192** · cs exact **11216** /
+EXTRA **185** / missing **590** · body **242** · clean **2056/2102 = 97.81%** · leak
+**288 occ / 46 pages** · tags **9557/9557 REAL 0** · index-sync **33/28** · entry-parity
+**PASS**. Every figure was ALSO produced by a direct full-corpus run, independently of the
+fast-loop, because the fast-loop's staleness guard fired on the 391 unaffected modules the
+family sweep rebuilt — an mtime alarm the content manifest had already proven false.
+
+### 9. WHAT IS LEFT, on the catalogue's own evidence
+
+`[data marker]` orphan flags **62**; the other labels **620 → 587**. The remaining work is
+not this shape: **`[Tab N]` 177 and `[Slide N]` 35 are a GATHERING change** (round 2, and
+it needs a FULL ship because it moves bundle boundaries), **`[coloured box]` 155 is a
+callout the emitter already exists for** (round 3, 94.7% human agreement), and the quiz
+families belong in round 294's `[QnCorrect]` territory (round 4).
+
+**RECORDED, NOT TAKEN:** family 9's six `[Auto-feedback]` markers still deserve their own
+`todo` note (round 301 recorded this and it remains true — a different family, a different
+prefix, zero bleed).
+
+---
+
 ## 2026-08-09 (round 301b — THE FULL CORPUS REGENERATION, build unchanged at 260618.72) — Chris: "REGENERATE CORPUS"
 
 **NO code, data or engine change — no AppVersion bump** (the round-204 precedent). This is

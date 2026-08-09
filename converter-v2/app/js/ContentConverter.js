@@ -2831,11 +2831,29 @@ class ContentConverter {
 					// orphan census; the how==="embedded" fence excludes every
 					// [Item N] Media-List shape and every exact-form single-word
 					// marker BY CONSTRUCTION. Env ORPHANCS_OFF.
+					//
+					// ROUND 302 (the orphan-remaining chain, round 1 of 4) — THE
+					// SCOPE_TAGS WIDENING. The same predicate, pointed at five more
+					// canonical tags, reaches 41 further spans that are also plainly
+					// instructions ("[Please create a tick box where ākonga can earn a
+					// star]" under `shape n`, "[Blocks for the type of learning it
+					// supports – please randomise]" under `correct`). DATA ONLY: the
+					// tag list lives in scope_tags and each entry reverses on its own
+					// env toggle via scope_tags_env, so a family can be pulled back
+					// without disturbing the others (the r295 env_by_type pattern).
+					// ORPHANCS_R302_OFF reverts the whole widening to r301's
+					// ["data marker"]; ORPHANCS_OFF still reverts the guard entirely.
 					{
 						const _mc = DataService.Data.EmitTemplates.elements?.orphan_instruction_reclass;
-						const _mcOn = _mc && _mc.enabled !== false
-							&& !(typeof process !== "undefined" && process.env && process.env.ORPHANCS_OFF);
-						if (_mcOn && (_mc.scope_tags ?? ["data marker"]).includes(primary.tag)
+						const _env = (typeof process !== "undefined" && process.env) ? process.env : {};
+						const _mcOn = _mc && _mc.enabled !== false && !_env.ORPHANCS_OFF;
+						const _mcScope = (_mc?.scope_tags ?? ["data marker"]).filter((t) => {
+							if (t === "data marker") return true;              // the r301 population
+							if (_env.ORPHANCS_R302_OFF) return false;          // the whole widening
+							const ev = _mc?.scope_tags_env?.[t];               // this family alone
+							return !(ev && _env[ev]);
+						});
+						if (_mcOn && _mcScope.includes(primary.tag)
 							&& this.#norm && typeof this.#norm.IsInstructionDominant === "function"
 							&& this.#norm.IsInstructionDominant(it.parse, _mc.min_words ?? 3)) {
 							emit(NotesAndComments.redFlag(it.text, run, _mc.note_kind ?? "cs"));

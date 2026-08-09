@@ -1332,7 +1332,19 @@ class Config {
 	// a definition of the same shape); and adding "can we" to the SHARED cue
 	// vocabulary would move widget capture on ~92 modules. Data
 	// elements.orphan_instruction_reclass; env ORPHANCS_OFF. Scoped ship #4.
-	static AppVersion = "260618.72";
+	//
+	// ROUND 302 (260618.73): THE scope_tags WIDENING — the orphan-remaining chain,
+	// round 1 of 4, against WHY_UNBUILT__orphan_remaining.md. The round-301 guard
+	// pointed at five more canonical tags (shape n / answer / correct / question /
+	// option / drop) by a DATA edit; MEASURED FRESH the catalogue's figure lands to
+	// the flag — 41 spans / 24 modules, 33 of them corpus-side, every one an
+	// instruction to a person. Each family reverses on its own toggle via the new
+	// scope_tags_env map (ORPHANCS_SHAPE_OFF …); ORPHANCS_R302_OFF reverts the whole
+	// widening. Instruction_Cues untouched. §0b's FIRST tag-family sweep: 394 of the
+	// 416 modules with output rebuilt, and exactly 26 pages / 22 modules changed —
+	// the already-working quiz-and-box half proven byte-identical. Every protected
+	// gate EXACT. Scoped ship #1 since r301b.
+	static AppVersion = "260618.73";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
