@@ -475,6 +475,7 @@ class TagNormaliser {
 
 		// Step 4 CLASSIFY the span
 		let primary = null;
+		let promotedMark = null;      // ROUND 304 — set by a tag_promote rule carrying `mark`
 		let cls;
 		if (tags.length) {
 			// the primary tag = highest directive precedence; ties keep the
@@ -679,9 +680,21 @@ class TagNormaliser {
 						if (t.tag === rule.from) {
 							t.tag = rule.to;
 							if (rule.to_directive) t.directive = rule.to_directive;
+							// ROUND 304: `clear_remainder` — the bracket words left over
+							// after the alias matched are the writer's NAME for the thing
+							// ("[summary box]" leaves "summary"), not positional MODIFIERS
+							// of it. ActivitiesBuilder.containerModifiers maps leftovers
+							// through callouts.modifier_classes, which happens to contain
+							// "summary", so without this a promoted box would ship
+							// class="alert summary" — a class the gold library never uses
+							// (measured over every gold callout: alert / alert solid /
+							// alert blank / alert top / alertActivity only). Opt-in per
+							// rule, so the r170 and r239 rules are byte-untouched.
+							if (rule.clear_remainder) t.remainder = "";
 							changed = true;
 						}
 					}
+					if (changed && rule.mark) promotedMark = rule.mark;
 					if (changed) {
 						primary = tags.reduce((best, t) => {
 							const p = TagNormaliser.#PRECEDENCE[t.directive] ?? 0;
@@ -816,6 +829,12 @@ class TagNormaliser {
 		return {
 			tags, primary, class: cls, instructionFragment,
 			folded: s, remainders, hasBrackets: brackets.length > 0, numbers, free,
+			// ROUND 304: which tag_promote rule (if any) rewrote this span, so a
+			// downstream emitter can apply a guard to ITS OWN promotions without
+			// re-testing the rule's regex — and without that guard being able to
+			// reach any span the rule did not touch. Undefined for every span no
+			// rule matched, so nothing that existed before this round can read it.
+			promoted: promotedMark,
 		};
 	};
 

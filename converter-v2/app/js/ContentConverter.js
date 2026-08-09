@@ -2074,6 +2074,39 @@ class ContentConverter {
 				}
 
 				case "CONTAINER_OPEN": {
+					// ROUND 304 — NEVER HALF-BUILD THE PROMOTED SUMMARY BOX.
+					// The r304 tag_promote turns "[summary box]" into an `alert`, and the
+					// callout machinery then gathers its content by the STRICT rule
+					// (callouts.containment): the marker's own payload plus the BLACK text
+					// following it, stopping at the next tag span. That is right for the
+					// dominant shape — the writer's summary run follows as plain text — but
+					// three writers tagged the summary instead ("[Summary box:]" then
+					// "[body] We hope you enjoyed…", or "[H4] Lesson Summary"), and there the
+					// strict gather stops immediately and the box would ship EMPTY with the
+					// summary rendered underneath it. An empty box is worse than no box, so
+					// the promotion DECLINES here and the page renders exactly as it does
+					// today (the content was never inside a box on our side anyway). The
+					// guard is scoped by `parse.promoted` to spans THIS round's rule
+					// rewrote, so no writer-authored [alert] can reach it. Measured: 3
+					// pages — CEDK401 2.0, XDLS912 4.0, XTAS101 1.0. Widening the gather to
+					// cross a [body] would change containment for every callout in the
+					// corpus (the documented OSAI201 over-nesting fix) and is RECORDED as
+					// its own round rather than taken here.
+					// Env toggle: SUMMARYBOX_OFF (the whole promotion, guard included).
+					if (it.parse?.promoted === "summary_box") {
+						const gcfg = DataService.Data.EmitTemplates.callouts?.promoted_box_empty_guard;
+						if (gcfg?.enabled !== false && !(it.blackAfter ?? "").trim()) {
+							let j = i + 1;
+							while (j < bodyItems.length && bodyItems[j]?._consumed) j++;
+							const nx = bodyItems[j];
+							const gatherable = nx && nx.type === "black" && String(nx.text ?? "").trim();
+							if (!gatherable) {
+								run.AddNote("info", "ContentConverter",
+									`Page ${page.lessonLabel}: [summary box] declined — the writer tagged its content, so a strict callout would be empty (r304 empty guard).`);
+								break;
+							}
+						}
+					}
 					if (primary.tag === "activity") {
 						// CONSECUTIVE ACTIVITY OPENERS describe ONE box, not two. Writers pair a
 						// layout/mode NOTE tag with the real numbered tag — HIS1008 "[Activity

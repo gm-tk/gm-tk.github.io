@@ -1353,7 +1353,29 @@ class Config {
 	// true reach is 12 pages, because most of those markers are ALREADY consumed correctly by
 	// the inquiry and fundamentals panel builders. 7 tab strips whose nav labels are the
 	// writer's own tails verbatim. FULL corpus regeneration (Chris); every gate held.
-	static AppVersion = "260618.74";
+	// ROUND 304 (260618.75): THE LESSON-SUMMARY BOX — the orphan-remaining chain,
+	// round 3 of 4. A writer's "[summary box]" resolves to the widget sub-part
+	// `shape n` (SUBTAG), so it reached the ORPHAN branch, printed a red flag and
+	// the lesson summary shipped as loose paragraphs. A Tag_Lexicon tag_promote
+	// rule rewrites that ONE spelling to `alert`, and the r105 callout machinery
+	// builds it — no emitter, template or containment rule changed. The placement
+	// comes free: container_auto_close.activity_close_before already lists
+	// CONTAINER_OPEN, so an activity still open at the marker closes and the box
+	// lands in its own section row, which is where the gold puts it 27/29.
+	// MEASURED PER WRITER FORM: [summary box] boxed 28/28 = 100%, [coloured box]
+	// 10/15 = 67%, plain [Box] 0/10 — so the catalogue's "94.7%, ~120 flags" is an
+	// average over three populations that disagree, and both other forms are
+	// measured DECLINES. Class + heading are per-module EDITORIAL (the r200
+	// videoSection-icon situation) — `alert` ships as the 0.64 majority and the 3
+	// alert-solid modules are named divergences; no heading rule was added.
+	// 43 promoted -> 40 boxes built + 3 declined by the empty guard (the writer
+	// TAGGED the content, so a strict callout would be empty — never half-build);
+	// 31 orphan flags removed; 1 leaking bracket consumed. Affected set from
+	// BYTES: 48 outputs / 11 modules / 0 added / 0 removed. Toggle-OFF is BYTE-
+	// IDENTICAL to the shipped disk on 2,515 pages. NO REGENERATION (Chris) — the
+	// r303 baselines still describe the corpus. Data Tag_Lexicon _meta.tag_promote
+	// + Emit_Templates callouts.promoted_box_empty_guard; env SUMMARYBOX_OFF.
+	static AppVersion = "260618.75";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

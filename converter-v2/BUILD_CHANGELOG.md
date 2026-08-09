@@ -1,5 +1,167 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 304, build 260618.75) — THE LESSON-SUMMARY BOX: the orphan-remaining chain, round 3 of 4 (Chris — "implement as many fixes as possible from `WHY_UNBUILT__orphan_remaining.md`", the r298–r303 chain methodology; **NO REGENERATION — Chris's explicit decision this round, "this can be done by the next round". The gates were NOT re-run corpus-wide and the ROUND-303 BASELINES BELOW STILL DESCRIBE THE CORPUS. `SUMMARYBOX_OFF` is the reversal guarantee, and it is proven at corpus scale below.**)
+
+Chain order: 1 — the `scope_tags` widening ✅ (r302) → 2 — the bare `[Tab N]` / `[Slide N]`
+openers ✅ (r303) → **3 — the `[coloured box]` / `[summary box]` callout (THIS ROUND)** →
+4 — the quiz families, folded into round 294's territory, which deletes the brief.
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+A writer ends a lesson with `[summary box]` and the module's summary beneath it. The word
+`box` is an alias of the widget sub-part `shape n`, whose directive is SUBTAG, so the marker
+reached the ORPHAN branch, printed `Red Flag: Orphan sub-tag [shape n] outside an
+interactive`, and the summary shipped as loose paragraphs with a red flag over them. The
+human developer boxes it. A `tag_promote` rule now rewrites that one spelling to `alert`, and
+the callout machinery that has existed since round 105 builds it. **No emitter, no template
+and no containment rule changed.**
+
+### 2. THE CATALOGUE'S 94.7% IS AN AVERAGE OVER THREE FORMS THAT DISAGREE — AND ONE OF THEM IS 0%
+
+`WHY_UNBUILT__orphan_remaining.md` calls family 2 "the strongest evidence in this document
+and the least risky thing in it — 155 flags, 94.7% human agreement, ~120 reach". The first
+number reconciles exactly (**143 today: 155 minus the 12 round 302 relabelled**). The rest
+does not survive being counted. Measured page-for-page against the human's own gold
+(`outputs/_measure_r304_box.cjs`, 16 shards + `_r304_analyse.py`):
+
+**(a) The bracket vocabulary is not narrow.** Of the 143 flags only **89 are a container
+request** at all; the rest are tick boxes (9), text-entry boxes (6), tiles (12), section
+markers (8), books (2), closers (6) and prose that merely mentions a box (10) — including
+`[a traditional Māori treasure box that was used to store valuable items]`, which is a
+definition, and `[I think this should be a box not a button?]`, which is a question to the
+designer.
+
+**(b) The three writer forms behave completely differently:**
+
+| the writer's form | judgeable pages | human boxes it | rate |
+|---|--:|--:|---|
+| `[summary box]` / `[Summary box:]` / `[insert summary box]` | 28 | **28** | **100%** |
+| `[coloured box]` / `[red coloured box]` / `[Coloured box purple]` … | 15 | 10 | 67% |
+| `[Box]` / `[Box N]` / `[box]` | 10 | **0** | **0%** |
+
+**The plain `[Box]` form would be wrong on every single one** — ENGR202's human builds an
+ACCORDION from it (`accHead`/`accContent`, verified in the gold), and SSFUN01's five
+`[Box N:]` are debate prompts the human renders another way. `[coloured box]` is a coin-flip:
+MXFL203 is un-boxed on three pages and MXFU202's human rewrote the content outright.
+**Both are MEASURED DECLINES recorded in the data block, not deferred work.**
+
+### 3. THE TWO STYLE CHOICES ARE EDITORIAL, AND BOTH ARE THE ROUND-200 SITUATION
+
+**The CLASS does not come from the writer's document.** Over the same population the gold
+uses `alert` 18 times and `alert solid` 10 — and **every module is internally PURE** (XMES203,
+XTAS101, XTAS102, XTAS103, XLP02, XLP04 always `alert`; XMES201, XMES202, XDLS912 always
+`alert solid`). XMES201 and XMES202 sit beside XMES203 in the same series, with the identical
+writer spelling, and disagree. That is the r200 videoSection-icon finding exactly: a per-module
+editorial choice with no signal to derive from. `alert` is the 0.64 majority (0.67 by module),
+above the r182 solidify floor and not a tie, so it ships and **the three `alert solid` modules
+are NAMED divergences, never chased**.
+
+**The HEADING is the same, and it is deliberately NOT given a rule.** The gold heads the box
+`<h4>` 18 times and leaves it plain 10; the obvious discriminator — does the writer's lead
+line end in a colon — is only 0.67 and splits by module too (XMES always heads, XTAS never);
+and **5 of the 18 gold headings are in NO writer text at all**. A heading is never invented
+(the r303 rule), so nothing was added: the shared callout `lead_element` behaves here exactly
+as it does for every other alert in the library.
+
+### 4. THE PIECE THAT MAKES THE PLACEMENT RIGHT — AND IT WAS ALREADY THERE
+
+**The gold puts this box at TOP LEVEL on 27 of 29 gold occurrences**, in its own row after the
+lesson's activity. In the shipped corpus the marker sits INSIDE an open `<div class="activity">`
+on **16 of 24** pages, so a naive emit would have nested it wrongly two-thirds of the time —
+and placement is precisely what the PRIMARY gate reads. It needs no new code:
+`container_auto_close.activity_close_before` already lists `CONTAINER_OPEN` (the round-143
+finding), so promoting the marker closes the open activity first and the box lands in its own
+section row. **XMES203 1.0 now matches its gold element for element**, `<div class="alert">` >
+`row` > `col-12` > `<h4>` > `<ul>`.
+
+### 5. TWO HAZARDS THE MEASUREMENT CAUGHT BEFORE THEY SHIPPED
+
+**`clear_remainder` is load-bearing.** `ActivitiesBuilder.containerModifiers` maps a bracket's
+leftover words through `callouts.modifier_classes`, which contains `summary` — so the promoted
+box would have shipped `class="alert summary"`, a class the gold library never uses. The rule
+clears the remainder (the writer's word NAMES the box; it is not a positional modifier), opt-in
+per rule so the r170 and r239 rules are byte-untouched.
+
+**THE EMPTY BOX — a half-build, found and fenced.** Three writers TAGGED their summary
+(`[Summary box:]` then `[body] We hope you enjoyed…`, or `[H4] Lesson Summary`). The strict
+gather stops at the next tag span, so the box opened EMPTY with the summary rendered beneath
+it. `callouts.promoted_box_empty_guard` declines the promotion there — scoped by
+`parse.promoted === "summary_box"` so no writer-authored `[alert]` can reach it. **Measured
+population EXACTLY 3 pages (CEDK401 2.0, XDLS912 4.0, XTAS101 1.0), and empty-alert flags
+return to the toggle-OFF baseline of 4, all four proven pre-existing.** Widening the gather to
+cross a `[body]` would change containment for every callout in the corpus (the documented
+OSAI201 over-nesting fix) — RECORDED as its own round, not taken here.
+
+### 6. RESULT
+
+**43 markers promoted → 40 boxes BUILT + 3 principled declines. 31 orphan red flags removed
+(34 → 3), and one literal `[Summary box:]` bracket that had been leaking onto XLP04's page is
+now consumed.** The 3 flags left on those modules belong to other `shape n` markers
+(`[Reflection box]` and the like) and correctly stay.
+
+**Ten of the changed pages carried no flag at all, and that is the round's second finding:**
+on XDLS912, XLP02, XLP03, XLP04 and XTAS103 the marker had been swallowed INTO a widget's
+hand-off dump, so the writer's whole summary was trapped in a developer box. As a
+`CONTAINER_OPEN` it now terminates that walk — XDLS912's placeholder label drops from
+"clickDrop + clickDrop + clickDrop" to "clickDrop" and the summary becomes real content. The
+r296/r303 "content freed from a dump" class.
+
+### 7. PROOF (`outputs/_probe_r304_summarybox.cjs`, ONE TOGGLE STATE PER PROCESS, PART-AWARE)
+
+* **THE REVERSAL GUARANTEE, AT CORPUS SCALE: with `SUMMARYBOX_OFF` set, 2,515 pages of the
+  whole 454-module conversion are BYTE-IDENTICAL to the shipped disk and 0 differ** (199 have
+  no disk file — the ghost-directory class). The guard edits were separately re-proven inert
+  under the toggle on 349 pages.
+* **ON: 31 assertions, 0 failures** — 10 named box builds quoted against the gold's own
+  wrapper, 2 that the modifier map never reaches the class, 3 that the flag is gone where the
+  box builds, **8 NEGATIVE** (ENGR202, MXFL203, MXFU201, MXDB302, MXEO301, SSFUN01, BLL120
+  must all STILL flag, and a declined form must never become a box), 3 that the empty guard
+  ships no half-build, and 5 that the writer's own words still render.
+* **Affected set from BYTES, not builds** (`outputs/_detect_r304.cjs`, all 454 modules, ON and
+  OFF in separate processes): **48 outputs / 11 modules, 0 added, 0 removed** — 43 HTML pages
+  and 5 hand-off `.txt` files.
+* **Leak scan (the defect audit's own predicate, per module): 26 of 27 modules IDENTICAL, and
+  the one that moves is XLP04 19 → 18 — a leak REMOVED.**
+* **No writer word lost.** Three words vanish and all three are explained: `flag` (the removed
+  red-flag boilerplate), `photographs` (hand-off box chrome — still in the interactives.txt, 6
+  occurrences in both states), `summary` (the literal leaking bracket the leak scan just
+  counted as removed).
+
+**THE BUG WAS IN MY OWN CHECKS AGAIN — the r282–r303 class, TENTH round running, three times.**
+An assertion demanded SSFUN01 carry no `<div class="alert">` at all; it carries twelve from its
+own `[alert]` tags, identical in both toggle states, so the check was meaningless and failed
+against correct output — it now asserts what it should, that SSFUN01's five box markers still
+flag. Before that, the gold matcher used exact substring and reported XMES202 as "text absent"
+because the human had copy-edited "Let's" to "Let us"; and `page_key` omitted the dot-separated
+`XTAS102.00.html` form, reporting six modules with perfectly good gold summary boxes as having
+no comparable page. **Both under-reported the human agreement and both were fixed before any
+figure in this entry was believed.**
+
+### 8. GATES — engine-level only, and the round says so
+
+**NO REGENERATION (Chris). The protected corpus gates were NOT re-run; the round-303 baselines
+above still describe the corpus.** What was run, because `TagNormaliser` was touched:
+**tags 9557/9557, REAL FAILURES 0** · **index-sync 33/28** · **entry-parity PASS** (static,
+dynamic and selftest) · **all NINE widget selftests GREEN**, every DETECTION channel firing.
+
+**FOR CHRIS: the §0b callout family for this round is 381 of the 416 modules with output — 92%
+of the corpus** (`[alert]`, `[important]`, `[side alert]`, `[whakatauki]`, `[quote]`,
+`[wananga]`, `[supervisor note]` and the box tags, built from the feature index). Whenever the
+next regeneration happens, a full `REGENERATE CORPUS` costs barely more than the sweep and
+would re-establish the baselines honestly.
+
+### 9. WHAT IS LEFT
+
+`[shape n]` orphan flags **143 → 112**. **RECORDED, MEASURED, NOT TAKEN:** the `[coloured box]`
+form (67%, and its declines are concentrated — it needs a discriminator nobody has yet) · the
+plain `[Box]` form (**0/10 — do not build it**) · the 6 closers (`[close coloured box]`,
+`[coloured box closes here]`), which resolve to `shape n` and not to a container close, and are
+moot while `[coloured box]` is declined · the `[body]`-follows-callout gather widening, which
+would reach the 3 guarded pages but changes containment corpus-wide · and the tick-box,
+text-entry-box, tile, section and book markers, which are different things entirely.
+
+---
+
 ## 2026-08-09 (round 303, build 260618.74) — THE BARE `[Tab N]` / `[Slide N]` OPENER: the orphan-remaining chain, round 2 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_remaining.md", the r298–r301 chain methodology; **FULL CORPUS REGENERATION, authorised by Chris when the measurement showed the §0b family was 85% of the corpus anyway — ledger reset to 0**)
 
 Chain order: 1 — the `scope_tags` widening ✅ (r302) → **2 — the bare `[Tab N]` / `[Slide N]`
