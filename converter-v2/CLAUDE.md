@@ -76,6 +76,45 @@ that have a Claude dir (the r285 ghost-directory trap), batch through `_batch_pl
 explain every changed module, then run the verifiers and the gates. Worked example:
 round 293b, `outputs/_r293b_typeregen.txt` (307 modules, 26 batches).
 
+### 0b. STANDING RULE — THE TAG-FAMILY REGENERATION: rebuild the BROKEN tag AND the WORKING one (Chris, 2026-08-09)
+
+**§0a says "regenerate every module carrying that TYPE". §0b says the same thing about a TAG
+FAMILY, and it is the rule that catches the damage §0a cannot see.** After a round that
+changes how ANY writer tag is read, gathered or built:
+
+> **Regenerate every module carrying the tag the round FIXED *and* every module carrying the
+> RELATED tags that were already working — the whole family, not just the broken half.**
+
+**Chris's own example, in his words:** *"after fixing the `[Tab N]` issue, the modules that had
+this writer's tag would be regenerated AS WELL AS any module that uses the `[tab]` or `[tabs]`
+tags to ensure that in the process of implementing a fix for the `[Tab N]` issue the code has
+not accidentally mucked up the existing `[tab]` conversion functions."*
+
+**Why this is not covered by §0a.** A round that teaches the scanner to open a tabs bundle from
+a bare `[Tab N]` touches the SAME code path that already serves `[tabs]` — but the fixed
+modules and the working modules are largely DISJOINT SETS, so a sweep scoped to "modules this
+round changed" or even to "modules carrying `[Tab N]`" never rebuilds the 100+ modules whose
+tabs already build correctly. Those are exactly the ones a regression would hide in. The r289
+lesson generalises: *the point is to prove the new code has not broken what was already working.*
+
+**WHEN IT FINDS SOMETHING — Chris's rule, unchanged from §0a and restated because it is the
+part that gets forgotten under time pressure:** *"rather than simply reverting the changes and
+the new code, Claude should debug and work out how it can ensure that the new changes and
+existing code work together by further refining the conversion function."* **Disabling the new
+rule to silence a verifier is not a fix.** Narrow the trigger, add the missing fence, split the
+path — but both populations must build. If a defect turns out to PRE-DATE the round, fix it
+anyway (round 293b did). If it is genuinely pre-existing and out of scope, PROVE it by toggling
+the round's flags off and showing the module is byte-identical — never assume it.
+
+**Mechanics.** Build the family list from the LEXICON, not by hand: resolve the round's tag to
+its canonical name, take every alias of that canonical, and detect every module whose Writers
+Template carries any of them (`reference/tests/regen_scope.cjs --feature <name>` already does
+the widget-level version of this and OVER-SELECTS by design — prefer it). Then §0a's mechanics:
+filter to modules with a Claude dir, batch through `_batch_plan.py` / `_regen_safe.sh` one call
+each, prove `_content_manifest.py fresh` reports 0 truly stale, **explain every changed module**
+— a module from the already-working half appearing in the diff is the finding this rule exists
+to surface — and run that widget's verifier over the WHOLE family, not a sample.
+
 ---
 
 ## 1. Mission
