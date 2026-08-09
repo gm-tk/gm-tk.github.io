@@ -345,6 +345,12 @@
 			"enabled": true,
 			"match": "^\\[\\s*caption\\s*\\]\\s*$",
 			"template": "<p class=\"captionText\">{text}</p>",
+			"widen": {
+				"enabled": true,
+				"head": "^\\[\\s*caption\\s*\\d*\\s*\\]\\s*$",
+				"inspan": "^\\s*\\[\\s*caption\\s*\\d*\\s*\\]\\s*(\\S[\\s\\S]*)$",
+				"_doc": "ROUND 298 (the orphan-[data marker] chain, round 1). Three widenings of the r239 branch, fire population measured to EXACTLY 15 flags / 6 modules over the whole 1,019-record orphan census (outputs/_measure_orphan_datamarker.cjs + _orphan_dm_families.py): (A) 'head' accepts the writer's NUMBER — [caption 2], SCFUN01 x5; (C) 'inspan' takes the caption words riding the span itself (original case from the raw span text) — HIS1007 x3, HIS1008 x1; (B) a bare head with an empty tail takes the NEXT black item WHOLE as the caption (gold ships the whole item as ONE captionText — HIS1005-4.0/-9.0 verbatim, newlines as <br>) and consumes it — SSFUN05, HIS1005 x2, HIS1006, HIS1007, HIS1008. GOLD-VERIFIED DECLINES, never widen further: [Caption:] + [Caption for the map] (HIS1001 — gold ships a PLAIN <p>/<h4>, not captionText) and [caption hover] (OSOH101 — gold builds a carousel caption); all three fail the head pattern BY CONSTRUCTION. Env CAPTIONWIDE_OFF reverts the widening alone (the r239 exact-bracket + blackAfter path byte-identical); CAPTIONTEXT_OFF still reverts the whole branch."
+			},
 			"_doc": "ROUND 239 (Dev-Feedback R2, B2 — SCCH302-02). A FREE-BODY [caption] (outside any interactive) is the writer's image caption; the human ships <p class=\"captionText\">…</p> (gold x545). 'caption' stays an alias of the data-marker SUBTAG, so inside widget bundles nothing changes (carousel/flipCard captions etc — measured 175 [caption] occ / 22 modules, nearly all widget members); this rule fires ONLY at the orphan-sub-tag branch (which by definition is outside every interactive), replacing the 'Orphan sub-tag [data marker]' red flag + plain <p> with the captionText paragraph. The match is the EXACT bare bracket ([caption] and nothing else in the span) so a caption marker carrying extra instruction text still surfaces as a flag. Env CAPTIONTEXT_OFF reverts."
 		},
 		"image_attrs": {

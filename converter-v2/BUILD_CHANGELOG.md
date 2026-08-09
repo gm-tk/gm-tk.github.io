@@ -1,5 +1,112 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-09 (round 298, build 260618.69) — THE CAPTION WIDENING: orphan-`[data marker]` chain, round 1 of 4 (Chris — "implement as many fixes as possible from WHY_UNBUILT__orphan_dataMarker.md", the r289–r296 chain methodology)
+
+**The first build round of the orphan-`[data marker]` chain** (round 297 was the catalogue).
+The chain order, from the catalogue's own ranked "Suggested order of work": **1 — the caption
+widening (THIS ROUND)** → 2 — the glossary definition weave (108 flags, the largest lever,
++ families 6/7) → 3 — the three note families (199 flags → `Designer/Developer To Do:` notes)
+→ 4 — the one-off mis-classification guard (~15 flags). Each round generates the next
+session's kickoff; the brief (`WHY_UNBUILT__orphan_dataMarker.md`) is deleted by the LAST
+round of the chain, not this one.
+
+**SCOPED SHIP #1 since the r296 full ship.** The §9 baselines describe the r296 state ± the
+10 named pages below; `_fastloop_diff.py --commit` re-scored the 6 affected modules and
+**EVERY protected gate HELD-or-IMPROVED, EXACT** (table below).
+
+### 1. THE REACHABLE POOL, STATED FIRST (the r294/r295 discipline)
+
+Family 5 of the catalogue: 18 `[caption]`-family orphan flags across 8 modules. **The
+reachable pool is 15 of 18, across 6 modules and 10 pages** — and the widened patterns catch
+**exactly those 15 out of the whole 1,019-record orphan census**, nothing else, by
+construction. The 3 declines are gold-verified: HIS1001's `[Caption for the map]` ships in
+gold as a **PLAIN `<p>`** (HIS1001-2.0, the Tupaia map) and its `[Caption:]` "Source A"
+form gets different treatment (the 10.0 sources are an `<h4>`/plain-`<p>` arrangement);
+OSOH101's `[caption hover]` is a different interaction (gold builds a carousel caption).
+All three fail the widened head pattern BY CONSTRUCTION (a colon or prose inside the
+bracket) — no guard code was needed for them.
+
+### 2. WHAT SHIPPED — three widenings of the r239 `caption_text` branch, one toggle
+
+The r239 branch (`ContentConverter.js`, the orphan-SUBTAG emit site) fired only on the EXACT
+bare `[caption]` with the caption in the item's own black tail. The writers did it three
+other ways, and the catalogue's verdict — "the pattern is one character too strict" — held:
+
+- **(A) the writer NUMBERED the bracket** — `[caption 2]` (SCFUN01 ×5, `how=denumbered`).
+  The caption was already in `blackAfter`; the ONLY blocker was the pattern. Widened head
+  `^\[\s*caption\s*\d*\s*\]\s*$`.
+- **(C) the caption words ride INSIDE the span** — `[Caption] Cape Coast castle, …`
+  (HIS1007 ×3, HIS1008 ×1). Original case recovered from the span's own raw `it.text`,
+  never the folded form.
+- **(B) the bracket is bare, the tail empty, and the caption is the NEXT black item**
+  (SSFUN05, HIS1005 ×2, HIS1006, HIS1007, HIS1008 = 6). **Gold ships the WHOLE item as ONE
+  `captionText`** — HIS1005-4.0 (the Tangi caption) and HIS1005-9.0 (the US-government
+  diagram, complete with its `<br><br>` line separation) verbatim, HIS1008-4.0 (Walter
+  Gadsden) verbatim. Newlines → `<br>` (the gold's own separator); the item is consumed via
+  the standard `_consumed` + advance idiom so it can never double-render (probe-asserted).
+
+Bold/italic ship PLAIN through the existing `\*`-strip — the r164/r168 documented
+net-positive class (HIS1005-9.0's gold keeps a `<b>HINT:</b>`; SSFUN05's gold drops its
+caption entirely — both editorial, not chased).
+
+Data `elements.caption_text.widen` (head + inspan patterns, both data-driven); env
+**`CAPTIONWIDE_OFF`** reverts the widening alone (the r239 exact-bracket path is then
+byte-identical — proven); `CAPTIONTEXT_OFF` still reverts the whole branch.
+
+### 3. PROOF (`outputs/_probe_r298_caption.cjs`, ONE TOGGLE STATE PER PROCESS — the r246 trap)
+
+- **OFF (`CAPTIONWIDE_OFF=1`): ALL 12 modules byte-identical to the shipped disk** — the 6
+  affected + the 2 decline modules + 4 canaries (ENGS302/CEDO105 = the LIVE r239 caption
+  carriers, proving the legacy path is untouched; BLL210/OSAH501 out-of-class). 12/12.
+- **ON: every decline module + canary STILL byte-identical to disk** (6/6); **12 named
+  caption assertions PASS** (content by name, original case on the in-span shapes); **2
+  NEGATIVE assertions PASS** (HIS1001's two forms do NOT become captionText); the consumed
+  shape-(B) caption is **not duplicated** as a plain `<p>`.
+- **The cross-state scan decomposes exactly**: orphan `[data marker]` flags removed = 15 =
+  the measured population (SCFUN01 5→0 · SSFUN05 1→0 · HIS1005 2→0 · HIS1006 4→3 ·
+  HIS1007 4→0 · HIS1008 2→0; HIS1006's other 3 are other families). Leak counts IDENTICAL
+  per module in both states (HIS1005's pre-existing 3 unchanged).
+
+### 4. THE SCOPED SHIP
+
+Affected set `outputs/_r298_affected.txt` = the 6 modules (all have Claude dirs — the r285
+ghost-dir trap checked); regenerated in 2 batches, `_content_manifest.py fresh` **0 truly
+stale**, `diff` = **EXACTLY 10 pages / 6 modules changed, 0 added, 0 removed** (containment
+perfect — every changed page is a caption page). Baseline patched + manifest refreshed +
+ledger scoped #1.
+
+**GATES — every one EXACT:** skeleton SCAFFOLD mean **49.73% (+0.00)** / ≥50% **982** /
+≥75% **192** · cs exact **11213** / EXTRA **185** / missing **590** · body **242** · clean
+**97.81%** · leak **288/46** · tags **9557/9557 REAL 0** · index-sync **33/28** ·
+entry-parity **PASS**. The `p` → `p.captionText` class change is skeleton-visible in
+principle; over these 10 pages the corpus aggregate moved zero at displayed precision.
+
+### 5. RECORDED FOR THE NEXT ROUNDS (the chain continues)
+
+- **Round 2 (next): the glossary definition weave** — 108 flags / 21 modules / 50 pages, the
+  only item that removes VISIBLY BROKEN PROSE (a writer's sentence in 3–4 pieces with the
+  flag in the middle). The three pre-settled points from the catalogue: the backward anchor
+  reach into `parts` (the r123/r162/r163 un-close-and-re-open move); the explicit statement
+  that r239's scanner-side `definition` decline concerned IN-BUNDLE markers and cannot be
+  contradicted by an orphan-branch rule; single-word anchors only (80.7% of 1,998 gold
+  spans; the `✅` highlight is NOT in the live extractor — the stale-`_parsed.txt` trap).
+  Fold families 6 (`[hover over …]`, ~8 reachable) and 7 (`[word]`+`[definition]`
+  alternation, 4 on ENGI405-0.0 — the `[word]`+`[answer]` run on 1.0 must keep declining)
+  into the same round.
+- **Round 3: the three note families** — `[Item N]` 85 / `[Merge item]` 58 /
+  `[Audiovisual item N]` 56 → `Designer/Developer To Do:` notes naming the writer's own
+  word, links + edit instructions kept verbatim (the r219 "todo" kind). Also fixes
+  BLLR201's live `<p>[Audiovisual item 1]</p>` leak.
+- **Round 4: the one-off mis-classification guard** — ~15 one-off design instructions
+  (`[Three tiles across the page]`) should be `Writers Note:`, not an orphan flag; the
+  r245 `IsInstructionDominant` shape.
+- The catalogue's standing declines (never re-measure): `[Auto-feedback]` (no feedback slot
+  in 2,385 gold files), `[Merge item]` as a build (every source course absent),
+  `[Audiovisual item N]` as a build (audioName's activity code is nowhere derivable),
+  `[Label]` (2 modules, 2 conventions), `[Incorrect]` (belongs with the `[correct]`/
+  `[answer]` gathering class), `[Item N]` as a build (an asset-resolution class for the
+  Media-List work, not a data-marker round).
+
 ## 2026-08-09 (round 297, build 260618.68) — THE ORPHAN `[data marker]` NOTE: catalogued, not built (Chris — "catalogue every writer's tag that ends up producing this note, show the writer's own words, check what the human did with that TYPE of tag, and propose a fix from that evidence")
 
 **A CATALOGUE ROUND. NOTHING IN THE CONVERTER, THE DATA FILES OR THE CORPUS WAS CHANGED.**

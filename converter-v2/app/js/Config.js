@@ -1279,7 +1279,15 @@ class Config {
 	// ROUND 297 (260618.68): CATALOGUE ROUND — the orphan [data marker] red note
 	// measured and written up (WHY_UNBUILT__orphan_dataMarker.md). NO converter,
 	// data or corpus change; this bump only dates the measurement.
-	static AppVersion = "260618.68";
+	// ROUND 298 (260618.69): THE CAPTION WIDENING — orphan-[data marker] chain,
+	// round 1 of 4. Three widenings of the r239 caption_text branch (numbered
+	// [caption N] / caption words in the span / caption as the NEXT black item,
+	// consumed) — fire population EXACTLY 15 flags / 6 modules / 10 pages over
+	// the whole 1,019-record orphan census; gold-verified declines HIS1001 x2 +
+	// OSOH101 fail the head pattern BY CONSTRUCTION. Data
+	// elements.caption_text.widen; env CAPTIONWIDE_OFF (CAPTIONTEXT_OFF still
+	// reverts the whole branch). Scoped ship #1 since r296; every gate EXACT.
+	static AppVersion = "260618.69";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -2690,20 +2690,71 @@ class ContentConverter {
 					// members never reach this orphan branch). A free-body [caption] is the
 					// writer's image caption, which the human ships as
 					// <p class="captionText">…</p> (gold ×545) — not an orphan-structure
-					// red flag. The match is the EXACT bare bracket, so a caption marker
-					// carrying extra instruction text still surfaces as a flag below.
-					// Data flag: elements.caption_text   Env toggle: CAPTIONTEXT_OFF
+					// red flag. The r239 match is the EXACT bare bracket with the caption
+					// in the item's own black tail.
+					// ROUND 298 (the orphan-[data marker] chain, round 1) WIDENS it three
+					// ways, each measured to a named fire population of EXACTLY 15 flags /
+					// 6 modules over the whole 1,019-record orphan census:
+					//   (A) the writer NUMBERED the bracket — [caption 2] (SCFUN01 ×5);
+					//   (C) the caption words ride INSIDE the span — "[Caption] Cape Coast
+					//       castle, …" (HIS1007 ×3, HIS1008 ×1); original case recovered
+					//       from the span's own raw text, never the folded form;
+					//   (B) the bracket is bare and the caption is the NEXT black item
+					//       (SSFUN05, HIS1005 ×2, HIS1006, HIS1007, HIS1008 — gold ships
+					//       the WHOLE item as ONE captionText, HIS1005-4.0/-9.0 verbatim;
+					//       newlines → <br>, the gold's own separator); consumed via the
+					//       standard _consumed + advance idiom.
+					// DECLINES (gold-verified, do not widen further): [Caption:] and
+					// [Caption for the map] (HIS1001 — gold ships a PLAIN <p>/<h4>), and
+					// [caption hover] (OSOH101 — gold builds a carousel caption). All three
+					// fail the widened head pattern BY CONSTRUCTION (colon / prose / extra
+					// word before the bracket closes).
+					// Data flag: elements.caption_text (+ .widen)
+					// Env toggles: CAPTIONTEXT_OFF (whole branch) / CAPTIONWIDE_OFF (the
+					// r298 widening alone — OFF reverts to the exact r239 behaviour).
 					{
 						const _capCfg = tpl.elements?.caption_text;
 						if (_capCfg && _capCfg.enabled !== false
 							&& !(typeof process !== "undefined" && process.env && process.env.CAPTIONTEXT_OFF)
-							&& primary.tag === "data marker"
-							&& new RegExp(_capCfg.match ?? "^\\[\\s*caption\\s*\\]\\s*$", "i")
-								.test((it.parse?.folded ?? Utils.Fold(String(it.text ?? ""))).trim())
-							&& it.blackAfter.trim()) {
-							emit(...actDeBold([Utils.FillTemplate(_capCfg.template,
-								{ text: ListsAndRuns.inlineMarkup(it.blackAfter.replace(/\*/g, "").trim()) })]));
-							break;
+							&& primary.tag === "data marker") {
+							const _capFold = (it.parse?.folded ?? Utils.Fold(String(it.text ?? ""))).trim();
+							const _wCfg = _capCfg.widen;
+							const _wOn = _wCfg && _wCfg.enabled !== false
+								&& !(typeof process !== "undefined" && process.env && process.env.CAPTIONWIDE_OFF);
+							const _capHead = new RegExp(
+								_wOn ? (_wCfg.head ?? "^\\[\\s*caption\\s*\\d*\\s*\\]\\s*$")
+									: (_capCfg.match ?? "^\\[\\s*caption\\s*\\]\\s*$"), "i");
+							const _capEmit = (words) => emit(...actDeBold([Utils.FillTemplate(_capCfg.template,
+								{ text: ListsAndRuns.inlineMarkup(String(words).replace(/\*/g, "").trim())
+									.replace(/\n+/g, "<br>") })]));
+							// (A) — the r239 path, head pattern widened to accept a number
+							if (_capHead.test(_capFold) && it.blackAfter.trim()) {
+								_capEmit(it.blackAfter);
+								break;
+							}
+							if (_wOn) {
+								// (C) — the caption words ride the span itself (original case)
+								const _mC = new RegExp(_wCfg.inspan
+									?? "^\\s*\\[\\s*caption\\s*\\d*\\s*\\]\\s*(\\S[\\s\\S]*)$", "i")
+									.exec(String(it.text ?? "").trim());
+								if (_mC) {
+									_capEmit(_mC[1]);
+									if (it.blackAfter.trim()) emit(...actDeBold(
+										ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
+									break;
+								}
+								// (B) — bare head, empty tail: the caption is the NEXT black item
+								if (_capHead.test(_capFold)) {
+									const _nx = bodyItems[i + 1];
+									if (_nx && _nx.type === "black" && String(_nx.text ?? "").trim()
+										&& _nx.consumedBy === undefined && !_nx._consumed) {
+										_capEmit(_nx.text);
+										_nx._consumed = true;
+										while (bodyItems[i + 1]?._consumed) i++;
+										break;
+									}
+								}
+							}
 						}
 					}
 					// a sub-tag outside any interactive = mis-structured
