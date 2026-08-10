@@ -2224,6 +2224,15 @@
 				"width variants are editorial and are not reproduced)."
 			],
 			"enabled": true,
+			"upload_box": {
+				"_doc": "ROUND 308 (Chris, 2026-08-11 — 'Build it'; the round-306 follow-through chain ticket 2). A bundle the family fence refuses because the writer's opener names a DROPBOX (the student upload area) now builds the gold's own upload button instead of a red flag or a hand-off box: `<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>` + ONE Designer/Developer To Do note carrying the writer's own bracket words. MEASURED (outputs/_r308_dropbox.json, 241 dropbox bundles / 88 modules): the gold ships this button 1,076 times across 263 modules — label 'Upload to dropbox' 96%, class `button` outside BLL and `buttonD` inside BLL (the round-66 house style, read from buttons.dropbox_orange_house_style so the two rules cannot drift), and 142 of the gold's own buttons carry the EMPTY href we ship (the unwired pre-publish form; the populated ones carry a per-module D2L rcode that is in NO Writers Template — the r232/CL-0044 class, an INTENTIONAL divergence). FENCES, each measured: an 'alert dropbox' opener is a REVEAL box, not an upload area (opener_exclude_pattern — exactly CEDT101 ×4, whose gold drops them); a MERGED capture (extraTypes) is the round-310 gathering class; a captured table, media, or another widget's member keeps the honest hand-off box (40 bundles). Captured black/[body] text is RELEASED after the button in the writer's own order (renderBlock — bullets become real lists); a no-primary red span's own text joins the note spec, never learner content. 12 modules whose gold ships NO upload button (BLL155, BLL266, ENGI400, ENGJ302, ENGJ403, HPRE301, SSEA203, SSOG103, TEDC401, TEDC402, TRR304, XMES201) are forward-looking NAMED divergences, never chased. Env DBXBUTTON_OFF reverts every upload-box bundle to its red flag / hand-off box byte-for-byte.",
+				"enabled": true,
+				"env": "DBXBUTTON_OFF",
+				"opener_exclude_pattern": "\\balert\\b",
+				"text_member_tags": ["body"],
+				"button_html": "<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>",
+				"todo_note": "Wire this button's D2L dropbox quicklink (the href is intentionally blank — the per-module rcode is in no Writers Template). Writer: {spec}"
+			},
 			"container_open": "<div class=\"dropQuiz{autocheck}\">",
 			"container_close": "</div>",
 			"row_open": "<div class=\"row\">",
@@ -4604,6 +4613,7 @@
 			"enabled": true,
 			"class_token": "dropbox",
 			"button_pattern": "<div class=\"[^\"]*\\bbutton\\b[^\"]*\"[^>]*>([\\s\\S]*?)</div>",
+			"_r308_widening_declined": "ROUND 308 — a widened pattern reaching the round-66 ORANGE `buttonD` form was BUILT, MEASURED and DECLINED; do not re-add it without re-measuring. The r305 \\bbutton\\b pattern cannot match 'buttonD' (no word boundary before the D), which looked like a gap: 79 buttonD upload buttons across 45 BLL-family modules sat inside activities the postpass never marked. Measured against the gold BY PAIRED number= id, the blindness is accidentally CORRECT: of 103 paired gold activities holding a buttonD upload button, gold marks `dropbox` on 2 and ships 101 PLAIN — the BLL family's own convention is a plain activity around the orange button (the widening cost BLL233_2_0 −12.3pp / BLL137_1_0 −7.2pp on the PRIMARY skeleton before it was caught). The GREEN population confirms the r305 rule where it already fires: the r308 upload buttons' activities pair to gold 31 marked / 5 plain (0.86). So the r305 pattern stands EXACTLY as shipped; new green buttons join its class automatically; new buttonD buttons correctly stay unmarked.",
 			"button_label_pattern": "drop\\s?box|upload"
 		},
 		"activity_interactive_postpass": {

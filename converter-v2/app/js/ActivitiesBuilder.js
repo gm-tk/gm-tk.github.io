@@ -144,6 +144,12 @@ class ActivitiesBuilder {
 		if (typeof process !== "undefined" && process.env && process.env.ACTDROPBOX_OFF) return html;
 		const label = new RegExp(cfg.button_label_pattern ?? "drop\\s?box|upload", "i");
 		const token = cfg.class_token ?? "dropbox";
+		// ROUND 308 — a widening to the round-66 ORANGE `buttonD` form was built,
+		// measured and DECLINED: gold pairs 101 PLAIN : 2 marked on buttonD-holding
+		// activities (the BLL convention is a plain box around the orange button),
+		// vs 31 : 5 FOR the class on green buttons — so \bbutton\b's blindness to
+		// buttonD is accidentally CORRECT. See activity_dropbox_postpass
+		// ._r308_widening_declined; do not re-add without re-measuring.
 		const btnRe = new RegExp(cfg.button_pattern ?? '<div class="[^"]*\\bbutton\\b[^"]*"[^>]*>([\\s\\S]*?)</div>', "gi");
 		const divEnd = (start) => {
 			const re = /<(\/?)div\b/gi; re.lastIndex = start;

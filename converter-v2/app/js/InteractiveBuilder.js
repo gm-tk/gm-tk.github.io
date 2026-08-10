@@ -150,7 +150,7 @@ class InteractiveBuilder {
 					// writer's opener naming a dropdown, because the lexicon aliases the
 					// student file-upload "dropbox" onto this same widget type and the two
 					// are unrelated things (240 of 393 captured bundles are dropbox).
-					html = this.#dropDown({ bundle, tpl, renderInline, run, renderTable });
+					html = this.#dropDown({ bundle, tpl, renderInline, run, renderTable, renderBlock });
 					break;
 				case "glossary":
 					html = this.#glossary({ bundle, tpl, renderInline });
@@ -10136,10 +10136,14 @@ class InteractiveBuilder {
 	 *
 	 * Data interactive_builders.dropDown; env DROPDOWN_OFF.
 	 */
-	static #dropDown({ bundle, tpl, renderInline, run, renderTable }) {
+	static #dropDown({ bundle, tpl, renderInline, run, renderTable, renderBlock }) {
 		if (!tpl || tpl.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env.DROPDOWN_OFF) return null;
-		if (!this.#ddIsDropdownFamily(bundle, tpl)) return null;   // the dropbox fence
+		// the dropbox fence — and, since ROUND 308, the upload-box BUILD behind it:
+		// a bundle the fence refuses because the writer's opener names a DROPBOX gets
+		// the gold's own "Upload to dropbox" button (else null → red flag / hand-off
+		// box exactly as before; #ddUploadBox declines everything it cannot render).
+		if (!this.#ddIsDropdownFamily(bundle, tpl)) return this.#ddUploadBox({ bundle, tpl, run, renderBlock });
 		const inline = renderInline ?? ((s) => s);
 		const notes = [];
 		const all = this.#ddStream(bundle, tpl, notes);
@@ -10231,6 +10235,92 @@ class InteractiveBuilder {
 			return allow.test(own) && !deny.test(own);
 		}
 		return false;
+	}
+
+	/**
+	 * ROUND 308 — THE UPLOAD BOX (Chris, 2026-08-11: "Build it"). The student
+	 * file-upload dropbox the family fence refuses is not a quiz and never was;
+	 * the human's answer, 1,076 times across 263 gold modules, is a link button —
+	 * `<a href="" target="_blank"><div class="button">Upload to dropbox</div></a>`
+	 * (`buttonD` in the BLL family — the round-66 house style, read from ITS OWN
+	 * data block so the two rules cannot drift) — with the D2L quicklink wired at
+	 * publish time (142 of the gold's own buttons still carry the empty href).
+	 * One Designer/Developer To Do note carries the writer's own bracket words.
+	 *
+	 * MEASURED FENCES (outputs/_r308_dropbox.json — 241 bundles / 88 modules):
+	 * an "alert dropbox" opener is a REVEAL box, not an upload area (CEDT101 ×4,
+	 * whose gold drops them) · a MERGED capture (extraTypes) is the round-310
+	 * gathering class · a captured table, media item, or another widget's member
+	 * keeps the honest hand-off box. Captured black/[body] text is RELEASED after
+	 * the button in the writer's own order; a no-primary red span's text joins
+	 * the note spec (designer-facing words are never shipped as learner content).
+	 *
+	 * Data interactive_builders.dropDown.upload_box; env DBXBUTTON_OFF.
+	 */
+	static #ddUploadBox({ bundle, tpl, run, renderBlock }) {
+		const cfg = tpl.upload_box;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DBXBUTTON_OFF) return null;
+		// the OPENER — the same member scan as the family fence, so the two cannot drift
+		const delims = tpl.delimiter_tags ?? ["dropdown"];
+		const deny = new RegExp(tpl.opener_deny_pattern ?? "drop\\s*box", "i");
+		let opener = null;
+		for (const m of bundle?.memberItems ?? []) {
+			if (m?.type !== "tag") continue;
+			if (!delims.includes(m.parse?.primary?.tag)) continue;
+			opener = m; break;
+		}
+		if (!opener || !deny.test(String(opener.text ?? ""))) return null;
+		if (new RegExp(cfg.opener_exclude_pattern ?? "\\balert\\b", "i").test(String(opener.text ?? ""))) return null;
+		// a SAME-TYPE merge ("dropDown + dropDown") is only the placeholder LABEL
+		// (the r242/r279 rule — two dropbox brackets scanned into one bundle, ONE
+		// upload area); any MIXED merge is the round-310 gathering class → decline.
+		if ((bundle.extraTypes ?? []).some((e) => e !== "dropDown")) return null;
+		if ((bundle.tables ?? []).length || (bundle.media ?? []).length) return null;
+		const allow = new RegExp(tpl.opener_pattern ?? "drop[\\s-]*down|dropquiz|drop\\s*quiz", "i");
+		const textTags = new Set(cfg.text_member_tags ?? ["body"]);
+		const spec = [];       // the writer's own designer-facing words → ONE To Do note
+		const content = [];    // captured learner text, released in the writer's own order
+		const rb = renderBlock ?? ((t) => [`<p>${t}</p>`]);
+		const push = (t) => { const s = String(t ?? "").trim(); if (s) content.push(rb(s).join("")); };
+		for (const m of bundle.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "black") { push(m.text); continue; }
+			if (m.type !== "tag") return null;                    // a table or anything else → decline
+			const prim = m.parse?.primary?.tag ?? null;
+			if (prim && !delims.includes(prim) && !textTags.has(prim)) return null;   // a foreign widget's piece
+			if (prim && delims.includes(prim)) {
+				const own = String(m.text ?? "");
+				// a GENUINE dropdown bracket merged in means a QUIZ rode along — never
+				// release quiz material as plain prose; the hand-off box stays honest.
+				if (allow.test(own) && !deny.test(own)) return null;
+				const raw = own.replace(/\s+/g, " ").trim();
+				if (raw) spec.push(raw);                          // every bracket's words reach the note
+			} else if (!prim) {
+				const raw = String(m.text ?? "").replace(/\s+/g, " ").trim();
+				if (raw) spec.push(raw);
+			}
+			push(m.blackAfter);
+		}
+		// colour: the round-66 house style, from its own data block (one source of truth)
+		const dox = DataService.Data.EmitTemplates.buttons?.dropbox_orange_house_style;
+		const prefix = run?.moduleCode?.match(/^[A-Za-z]+/)?.[0] ?? "";
+		const orange = !!(dox?.enabled
+			&& !(typeof process !== "undefined" && process.env && process.env.DROPBOXD_OFF)
+			&& (dox.module_prefixes ?? []).includes(prefix));
+		// THE LEAK GUARD at this seam (the r167/r275/r287 rule): the RELEASED content
+		// must never show a bracketed literal the dump was hiding — a black line like
+		// "[Activity 4E] Hand washing" means the bundle swallowed the NEXT section
+		// (the round-310 gathering class; caught live on XDLS912_4_0, +1 counted leak).
+		// The button and the To Do note are safe BY CONSTRUCTION (the note is cv2-note,
+		// gate-excluded, and deliberately quotes the writer's bracket).
+		if (this.#ddLeakGuard(content.join("\n"), tpl)) return null;
+		const btn = Utils.FillTemplate(cfg.button_html, { cls: orange ? "buttonD" : "button" });
+		const note = NotesAndComments.redFlag(
+			Utils.FillTemplate(cfg.todo_note, { spec: spec.join(" · ") || "(bare [dropbox] marker)" }),
+			run, "todo");
+		bundle.r308UploadBox = true;                              // detector / affected-set marker
+		return [btn, note, ...content].join("\n");
 	}
 
 	/**

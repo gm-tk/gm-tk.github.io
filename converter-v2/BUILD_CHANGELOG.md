@@ -1,5 +1,146 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-11 (round 308, build 260618.79) — THE UPLOAD BOX (Chris, 2026-08-11: **"Build it"** — the round-306 follow-through chain, ticket 2 of 4, against `WHY_UNBUILT__dropDown.md` reason 1; **SCOPED regeneration per the chain's standing authority + the §0a/§0b dropDown-FAMILY sweep — scoped ship #2 since the round-306 full; the chain's FULL `REGENERATE CORPUS` lands at round 310**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A writer's `[dropbox]` bracket — the student "hand your work in here" upload area the
+round-287 family fence rightly refuses to treat as a quiz — now ships the gold's own
+button instead of a red flag or a rainbow hand-off box:** `<a href="" target="_blank">
+<div class="button">Upload to dropbox</div></a>` (orange `buttonD` in the BLL family —
+the round-66 house style, read from ITS OWN data block so the two rules cannot drift),
+plus ONE red+bold `Designer/Developer To Do:` note carrying the writer's own bracket
+words verbatim, plus any captured black/[body] text RELEASED after the button in the
+writer's own order (renderBlock — bullets become real lists). **RESULT: 172 buttons
+(45 orange / 127 green) + 172 notes, 1:1, across 65 modules; the upload-box red-flag
+class goes 146 → 0** (the 5 flags left corpus-wide are all GENUINE-dropdown quiz
+markers with nothing captured — the honest r287 declines: `[Keep the dropdown]`,
+`[Dropdown Quiz Autocheck]`…). Env `DBXBUTTON_OFF` reverts every one byte-for-byte;
+data `interactive_builders.dropDown.upload_box`.
+
+### 2. THE FORM IS THE GOLD'S OWN, BYTE-VERIFIED FIRST
+
+Counted across the whole human library before a line of code: **1,076 upload-button
+anchors over 263 modules** — label "Upload to dropbox" 96% (889 + "Go to dropbox" 37),
+class `button` 447 outside BLL vs `buttonD` 439 inside BLL (the r66 house rule holds),
+`target="_blank"` 95%, **and 142 of the gold's own buttons carry the EMPTY href we
+ship** (the unwired pre-publish form; the 934 populated ones carry a per-module D2L
+`rcode` that appears in NO Writers Template — the r232/CL-0044 class, an INTENTIONAL
+divergence, one To Do note each). BLL153's gold carries the exact emit — sentence,
+`<a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>`,
+released Congratulations paragraph — and BLL163's gold ships TWO buttons on the page
+where the writer typed two brackets, which is why one-per-bracket is the rule and
+per-page dedupe would have been wrong.
+
+### 3. THE FENCES, EACH MEASURED (241 dropbox bundles / 88 modules — `outputs/_r308_dropbox.json`)
+
+* **An "alert dropbox" opener is a REVEAL box, not an upload area** — exactly CEDT101
+  ×4 (`[Alert dropbox Kaimahi guide notes`), whose gold DROPS the content entirely and
+  ships one button elsewhere; `opener_exclude_pattern` declines all four (byte-proven).
+* **A same-type "dropDown + dropDown" merge is only the placeholder label** (the
+  r242/r279 rule) — two dropbox brackets scanned into one bundle are ONE upload area,
+  ONE button, both brackets' words in the note (ENGI400, XTAS101/102/103, CEDR101);
+  a GENUINE dropdown bracket inside the merge still declines (quiz material is never
+  released as plain prose), and any MIXED merge is the round-310 gathering class.
+* **A captured table, media item, or another widget's member keeps the honest
+  hand-off box** (40 bundles; MXDB102's `[button]`+`[engagement quiz button]` pairs,
+  TEDC402's `[Button: Go to Dropbox]`+image). **ENGS302 is the one predicted-fire that
+  declined at runtime** — its bundle carries a captured media reference the census
+  could not see (the same guard that kept BLL141's media-list-boilerplate bundle
+  honest: building it would have shipped template junk as learner text).
+* **THE LEAK GUARD AT THIS SEAM, caught live** (the r167/r275/r287 rule): the first
+  cut shipped `<p>[Activity 4E] Hand washing</p>` on XDLS912_4_0 — the bundle had
+  swallowed the NEXT section and releasing it put a bracketed literal on the page
+  (+1 counted leak). Per Chris's rule the fix is the guard, not a revert: released
+  content still showing a resolved-tag literal declines the build, and the leak
+  identity went back to **2,153 = 2,153 per-module over all 104 candidate modules**.
+
+### 4. THE ROUND'S BIGGEST CORRECTION: THE POSTPASS WIDENING WAS BUILT, MEASURED, AND **DECLINED**
+
+The kickoff asked this round to "extend round 305's dropbox-class postpass where the
+new button gives it a signal it lacked", and the gap looked real: the r305 pattern's
+`\bbutton\b` cannot match the round-66 ORANGE `buttonD` form, leaving **79 upload
+buttons across 45 BLL-family modules** inside activities the postpass never marked. A
+widened pattern was shipped behind its own toggle — and the FIRST gate run caught it:
+BLL233_2_0 −12.3pp and BLL137_1_0 −7.2pp on the PRIMARY skeleton. Measured properly,
+paired activity-for-activity by the `number=` id: **of 103 gold activities holding a
+buttonD upload button, the gold marks `dropbox` on 2 and ships 101 PLAIN — the BLL
+family's own convention is a plain activity around the orange button.** The GREEN
+population proves the r305 rule where it already fires: this round's new green
+buttons' activities pair to gold **31 marked / 5 plain (0.86)**. So the r305 pattern's
+blindness to `buttonD` is accidentally CORRECT; the widening was REMOVED, the decline
+is recorded in `activity_dropbox_postpass._r308_widening_declined` (do not re-add
+without re-measuring), and the new green buttons join the r305 class automatically —
+**activity `dropbox` classes 148 → 230, every one on the green rule's own evidence.**
+
+### 5. NAMED DIVERGENCES AND RECORDED FOLLOW-UPS
+
+* **12 modules whose gold ships NO upload button** get one anyway (forward-looking,
+  the r232 class, never chased): BLL155, BLL266, ENGI400, ENGJ302, ENGJ403, HPRE301,
+  SSEA203, SSOG103, TEDC401, TEDC402, TRR304, XMES201.
+* **XDLS501 is the named OVER-EMIT**: the writer repeated the bracket ~17 times (once
+  per activity), the gold consolidates to 4 — one-per-bracket ships, the developer
+  consolidates at publish (the brief's own "4 have fewer" class).
+* **XDLS908's fence-two note (the r296-era speechBubble brief) is CLOSED with a named
+  outcome**: its dropbox marker never even forms a dropDown bundle — it is swallowed
+  whole by the giant merged clickDrop+speechBubble captures, wholly the round-310
+  gathering class; no bubble-blocking upload button exists any more.
+* **The URL-only `[button]` class from round 307's handover is RECORDED, not taken**
+  (~75 items / 46 modules, `outputs/_r307_btncount.cjs`): a `[button]` whose tail is
+  only a URL still ships an unlinked journal-default button and loses the URL outside
+  the r307 released-tile route — general button-route territory, its own measured
+  round.
+* The BLL141/ENGS302-class media-swallowed bundles and XDLS912_4_0's over-capture go
+  to **round 310's gathering class** with the rest.
+
+### 6. PROOF (one toggle state per process — `outputs/_probe_r308_convert.cjs` + `_probe_r308_assert.py`, 32 assertions, 0 fail)
+
+**ON == the shipped regenerated disk** byte-for-byte (17 disk modules); **OFF == the
+PRE-ROUND manifest hashes** (the reversal guarantee — BLL273 is a ghost dir, noted);
+**8 NEGATIVE assertions** (CEDT101's four alerts, MXDB102's foreign members, the
+genuine-quiz canaries SCCH301/OSSM301/BLL273, the r307 tile family XDLS902, bilingual
+TRR203, and the postpass-gap module BLL125 — ALL byte-identical in both states);
+**word-loss clean** on every changed page (the removed hand-off chrome is the only
+loss); **quality scan** — every button anchor-wrapped, empty-href, never nested;
+**leak per-module IDENTICAL over all 104 candidates** (2,153 = 2,153). **THE BUG WAS
+IN MY OWN CHECKS FOUR TIMES, the thirteenth round running**: a canary mislabelled
+(BLL273 was a widening fire while the widening lived), a wrong BLL141 expectation
+(its second bundle's media decline is CORRECT), TEDC402 arithmetic that missed a
+pre-existing prose phrase, and a per-module gate decomposition run off a JUNE-stale
+`_fastloop_current` file (the r279 stale-artifact trap, in the analysis this time —
+the fresh gate output lives in `reference/tests/`, always check the mtime).
+
+### 7. THE SWEEP AND THE GATES — every §0a/§0b obligation met
+
+**The §0b family sweep regenerated 185 modules** (every dropDown-family module with
+output — dropbox AND working-quiz halves — plus the 45 postpass-candidate modules):
+content-hash **0-stale**, and the manifest diff is **122 pages / 65 modules / 0 added
+/ 0 removed** with **containment PERFECT** (changed ⊆ predicted; ENGS302 the one
+named runtime decline) — **the other 120 family modules, including every working
+dropdown quiz, came back BYTE-IDENTICAL**, which is exactly what §0b exists to prove.
+The dropDown verifier ran over the WHOLE genuine-quiz family (73 modules, 3 batches):
+**27 groups / 147 units — exact 84, copy-edit 1, dev-edit 62, defect 0**, r302's
+figure to the unit. All ELEVEN selftests GREEN (dropdown, mcq, modal, flipCard,
+speechBubble, accordion, clickDrop, tabs, carousel, hintslider, intextract);
+index-sync **33/28**; entry-parity **PASS**; tags **9557/9557 REAL 0**.
+
+**GATES (fast-loop over the 65 changed, committed):** skeleton SCAFFOLD mean
+**49.89 → 49.94 (+0.04 IMPROVED)** · pages ≥50% **997 → 1000 (+3 IMPROVED)** ·
+compare_structure exact **11241 → 11244 (+3 IMPROVED)** · EXTRA **186 EXACT** ·
+body_compare **209 → 199 (−10 IMPROVED)** · clean **97.81% EXACT** · leak **288/46
+EXACT** — and the TWO movers accepted BY NAME (`--accept-named`), each decomposed:
+**≥75% −2** = ENGJ403_7_0 (75.0 → 73.3 — a no-gold-button module, the §5 divergence
+class) + BLL224_2_0 (75.4 → 74.2 — gold consolidates its buttons elsewhere), both
+threshold-grazers; **missing +5** = the XTAS101/102/103 trio ALONE, riding matched
+pool **+8** and exact **+3** — the documented matched-pool-growth class (the new
+buttons pair with the gold's own buttons and their neighbours join the comparison).
+Over the **110 moved pages: pp-sum scaffold +81.30 AND RAW +89.65, BOTH positive**
+(≥50 crossings +4/−1). The fast-loop's mtime staleness alarm fired on the 82 swept
+byte-identical modules — the documented r302/r307 false-alarm class, overridden with
+the content-manifest proof on record. Ship ledger: **scoped #2 since the r306 full**
+(6 headroom; round 310's full regeneration closes the chain). Feature index rebuilt
+(`--rehtml` + `--merge`, selftest GREEN).
+
 ## 2026-08-11 (round 307, build 260618.78) — THE XDLS ACTIVITY-CHOOSER TILE ROW (Chris — the round-306 follow-through chain, ticket 1 of 4, against `WHY_UNBUILT__clickDrop.md` reason 1a; **SCOPED regeneration per the chain's standing authority + the §0a whole-type clickDrop sweep — scoped ship #1 since the round-306 full; a FULL `REGENERATE CORPUS` closes the chain at round 310**)
 
 ### 1. WHAT CHANGED, IN ONE LINE EACH

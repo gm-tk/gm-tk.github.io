@@ -1420,7 +1420,28 @@ class Config {
 	// panel). 180 tiles / 180 paired panels / verifier tile lane 180 gold-matched,
 	// 0 defects; body_compare −30 IMPROVED. Data interactive_builders.clickDrop
 	// .tile_grid; env CDTILES_OFF / CDTILEID_OFF / CDTILEPAIR_OFF.
-	static AppVersion = "260618.78";
+	//
+	// ROUND 308 (260618.79): THE UPLOAD BOX (Chris: "Build it" — the round-306
+	// follow-through chain, ticket 2 of 4). A bundle the r287 family fence refuses
+	// because the writer's opener names a DROPBOX (the student upload area) now
+	// builds the gold's own button — <a href="" target="_blank"><div class=
+	// "button">Upload to dropbox</div></a>, buttonD in the BLL family (the r66
+	// house style, read from its own data block) — plus ONE Designer/Developer
+	// To Do note carrying the writer's own bracket words; captured black/[body]
+	// text is RELEASED after the button; the empty href is the gold's own unwired
+	// form (142 of its 1,076 buttons ship it; the populated rcode is in no WT —
+	// the r232/CL-0044 class). Fences, each measured: 'alert dropbox' = a reveal
+	// box (CEDT101 ×4, gold drops them) · merged captures = the r310 gathering
+	// class · tables/media/foreign members keep the hand-off box · released
+	// content showing a bracketed literal declines (the r287 leak guard at this
+	// seam — caught live, XDLS912_4_0). A postpass WIDENING to the r66 ORANGE
+	// buttonD form was built, measured and DECLINED: gold pairs 101 PLAIN : 2
+	// marked on buttonD-holding activities vs 31:5 FOR the class on green — the
+	// r305 pattern's blindness to buttonD is accidentally correct (recorded in
+	// activity_dropbox_postpass._r308_widening_declined). New green r308 buttons
+	// join the r305 class automatically (31:5 toward gold). Data
+	// interactive_builders.dropDown.upload_box; env DBXBUTTON_OFF.
+	static AppVersion = "260618.79";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
