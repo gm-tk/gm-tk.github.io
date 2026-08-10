@@ -902,8 +902,28 @@ class DocxExtractor {
 				const bold = /<w:b\/>|<w:b w:val="(?:1|true)"\/>/.test(run);
 				const italic = /<w:i\/>|<w:i w:val="(?:1|true)"\/>/.test(run);
 
+				// ANSWER MARKS (ROUND 309 — reasons 4+5 of the dropDown catalogue). A writer
+				// marks a quiz's correct answer with a yellow HIGHLIGHTER (<w:highlight>,
+				// never read before this round) or with GREEN text (00b050 — the writer's
+				// answer green; the template's guidance green 316757 stays ignored). The
+				// mark is recorded on a SIDE-CHANNEL (block.marks below) and NEVER touches
+				// the serialised text, so red-span granularity and every downstream byte
+				// are identical by construction — the tags gate (9557/9557) is the canary.
+				// A consumer must bring its own fence (round 309's dropDown reading needs
+				// the writer's own "Correct answers highlighted / in green" announcement).
+				// Data: Input_Doc_Rules.answer_marks   Env toggle: ANSMARK_OFF
+				const am = rules.answer_marks;
+				const amOn = am && am.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.ANSMARK_OFF);
+				let mark = null;
+				if (amOn) {
+					const hl = run.match(/<w:highlight w:val="([^"]+)"/)?.[1];
+					if (hl && !(am.exclude_highlight_values ?? ["none", "white"]).includes(hl)) mark = "hl";
+					else if ((am.green_hex_values ?? ["00b050"]).includes(color)) mark = "green";
+				}
+
 				if (currentLink) links.push({ text, target: currentLink });
-				pieces.push({ text, red, bold, italic });
+				pieces.push({ text, red, bold, italic, mark });
 			}
 		}
 
@@ -1043,7 +1063,27 @@ class DocxExtractor {
 		if (list === "bullet" && out.trim()) out = `${indent}${rules.formatting_markers.bullet_prefix}${out}`;
 		if (list === "number" && out.trim() && !/^\s*\d+[.)]/.test(out)) out = `${indent}1. ${out}`;
 
-		return { kind: "para", text: out, links, wtPage: page.current, list, listLevel };
+		// ANSWER-MARK side-channel (ROUND 309): merge consecutive same-kind marked
+		// pieces (Word fragments one highlighted phrase into several runs; a pure
+		// whitespace gap between two same-kind marked pieces bridges — the red-merge
+		// convention). block.text is untouched — the marks travel beside it.
+		const marks = [];
+		{
+			let cur = null;
+			const flush = () => { if (cur && cur.text.trim()) marks.push({ text: cur.text.trim(), kind: cur.kind }); cur = null; };
+			for (const p of pieces) {
+				if (p.mark) {
+					if (cur && cur.kind === p.mark) { cur.text += p.text; continue; }
+					flush(); cur = { text: p.text, kind: p.mark };
+				} else if (cur && /^\s*$/.test(p.text)) cur.text += p.text;
+				else flush();
+			}
+			flush();
+		}
+
+		const blk = { kind: "para", text: out, links, wtPage: page.current, list, listLevel };
+		if (marks.length) blk.marks = marks;
+		return blk;
 	};
 
 	/**
@@ -1062,23 +1102,31 @@ class DocxExtractor {
 		// also bump the global counter as they're encountered
 		const tablePage = page.current;
 
+		let anyCellMark = false;
+		const cellMarks = [];   // rows-aligned: cellMarks[r][c] = [{text,kind}] (ROUND 309)
 		for (const rowMatch of xml.matchAll(/<w:tr\b[\s\S]*?<\/w:tr>/g)) {
 			const cells = [];
 			const thisRowLinks = [];
+			const thisRowMarks = [];
 			for (const cellMatch of rowMatch[0].matchAll(/<w:tc\b[\s\S]*?<\/w:tc>/g)) {
 				// every paragraph in the cell, joined with the in-cell
 				// line-break marker (phase-4 convention: " / ")
 				const paras = [];
+				const cm = [];
 				for (const pm of cellMatch[0].matchAll(/<w:p[ >][\s\S]*?<\/w:p>/g)) {
 					const block = this.#parseParagraph(pm[0], rels, new Map(), page, rules);
 					if (block.text.trim()) paras.push(block.text.trim());
 					links.push(...block.links);
 					thisRowLinks.push(...block.links);
+					if (block.marks) cm.push(...block.marks);   // the r309 answer-mark side-channel
 				}
 				cells.push(paras.join(rules.table_markers.in_cell_line_break));
+				thisRowMarks.push(cm);
+				if (cm.length) anyCellMark = true;
 			}
 			rows.push(cells);
 			rowLinks.push(thisRowLinks);
+			cellMarks.push(thisRowMarks);
 		}
 
 		// the corpus text form — what the tag pipeline scans
@@ -1089,7 +1137,9 @@ class DocxExtractor {
 			tm.close,
 		].join("\n");
 
-		return { kind: "table", rows, rowLinks, links, wtPage: tablePage, text };
+		const blk = { kind: "table", rows, rowLinks, links, wtPage: tablePage, text };
+		if (anyCellMark) blk.cellMarks = cellMarks;   // ROUND 309 answer-mark side-channel
+		return blk;
 	};
 
 	/**

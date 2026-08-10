@@ -1441,7 +1441,17 @@ class Config {
 	// activity_dropbox_postpass._r308_widening_declined). New green r308 buttons
 	// join the r305 class automatically (31:5 toward gold). Data
 	// interactive_builders.dropDown.upload_box; env DBXBUTTON_OFF.
-	static AppVersion = "260618.79";
+	// ROUND 309 (260618.80): THE WRITER'S HIGHLIGHTER AND ANSWER-GREEN through the
+	// extractor (the r306 follow-through chain ticket 3 — WHY_UNBUILT__dropDown
+	// reasons 4+5). <w:highlight> and the writer's answer green 00b050 are carried
+	// on a SIDE-CHANNEL (block.marks / block.cellMarks) that never touches a text
+	// byte; the dropDown readings consume them as the THIRD answer-mark source
+	// (red / [correct] / colour) under the writer's own per-bundle ANNOUNCEMENT
+	// fence ("Correct answers highlighted" / "in green"). Also repairs the
+	// pre-existing r287 grid misread that shipped SCCH301-2.0's raw "options: …"
+	// strings as choices. Data Input_Doc_Rules.answer_marks +
+	// interactive_builders.dropDown.colour_marks; env ANSMARK_OFF + DDMARKS_OFF.
+	static AppVersion = "260618.80";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

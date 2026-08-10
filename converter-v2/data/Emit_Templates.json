@@ -2269,7 +2269,20 @@
 			"_r294_note": "ROUND 294 (Chris): cell_parens — the round-287 D1 paragraph reading applied to a table CELL, one question per cell, emitting the SAME paragraph form the human ships for exactly these tables (MXFL302_05.1, BLL275_1_0, BLLR201_2_0 match it cell for cell). cell_correct_pattern names the explicit [correct]-family bracket inside a cell; note it has NO leading \\b, because the writers type [Q1Correct] and \\b does not fire between a digit and a letter. thousands_guard — a comma with digits IMMEDIATELY on both sides is a thousands separator, not an option break ('(1,400 km, 1,500 km)' is two options, not four); the discriminator is the absent space, so a real option break written ', ' is untouched. env DDCELLPARENS_OFF / DDNUMCOMMA_OFF.",
 			"cell_parens": true,
 			"cell_correct_pattern": "\\[[^\\]]{0,30}correct\\b[^\\]]{0,20}\\]",
-			"thousands_guard": true
+			"thousands_guard": true,
+			"colour_marks": {
+				"enabled": true,
+				"_doc": "ROUND 309 (Chris — the r306 follow-through chain ticket 3, WHY_UNBUILT__dropDown reasons 4+5). THE THIRD ANSWER-MARK SOURCE: a writer marks the correct option with a yellow HIGHLIGHTER or GREEN text (00b050), and says so in their own words — the extractor's r309 answer_marks side-channel carries the marks, and this block lets the dropDown readings consume them ALONGSIDE red and [correct], through the same derivation (a mark reduces to a range/text matched against the options). THE FENCE IS THE WRITER'S OWN ANNOUNCEMENT, per BUNDLE: the opener bracket or a member line must say so ('Correct answers highlighted' — SCCH301 puts it in all three openers; 'Correct answers in green' — OSAH401's standalone green line, OSSM401's and OSOH401's openers; the announce wording selects the mark KIND, so a green-announced quiz never reads a stray yellow guidance highlight). MEASURED ESSENTIAL: without an announcement, highlight is editorial (TRR109 highlights whole paragraphs; ENFUN02/ENGC201 mark answers but never say so — named declines) and green can be the OPTIONS themselves (OSAI101 — reading it as an answer ships a WRONG quiz) or a label (CEDT104 'Lyrics:'). A standalone member line that IS the announcement (word-limited) is consumed like the opener's own wording — the r287 configuration-wording class. FOUR consumption sites, all-or-nothing per bundle: (S1) block marks become ranges in the rebuilt paragraph stream, so the existing D1 parens reading fires (ENGJ301-6.0 — gold's own paragraph form, answer-for-answer); (S2) optlist_head_pattern — the '[answer options: …]' option-tag + question-line pairs (SCCH301-3.0, the brief's 10-out-of-10 page); (S3) the D3 grid variant where every body cell is an options-bracket + a marked option (SCCH301-2.0 — WHICH ALSO REPAIRS A PRE-EXISTING DEFECT: the r287 grid read those identical option-list strings as answer VALUES and shipped answer=1 on every question); (S4) lettered option lines in table columns/cells ('A. Human Rights Act 1993' — OSAH401-3.0 column form, OSSM401-4.0 cell form with a row image, OSOH401-2.0 one-cell-of-options form). Named declines, measured: the numbered-gap + options-TABLE form (ENFUN09, OSAI501 — reason-3-adjacent, its own round); a bundle whose announcement sits on a DIFFERENT bundle (OSSM401-3.0 — the per-bundle fence is the safety, the module-level widening is recorded); announced quizzes of OTHER widget types (OSBY501/OSAH501/OSOH501/BLL223/ANZH304 self-check/mcq/clicking-order — their own families' rounds). env DDMARKS_OFF reverts every consumption site (the extractor channel reverts separately via ANSMARK_OFF).",
+				"announce_highlight_pattern": "correct\\s+answers?[^\\n]{0,40}?highlight|highlighted\\s+answers?[^\\n]{0,30}?correct|answers?\\s+(?:are\\s+|is\\s+)?highlighted",
+				"announce_green_pattern": "correct\\s+answers?[^\\n]{0,40}?(?:in|are|is)\\s+green|answers?\\s+in\\s+green",
+				"announce_consume_max_words": 10,
+				"optlist_tags": [
+					"option"
+				],
+				"optlist_head_pattern": "^\\[?\\s*(?:answer\\s+)?options?\\s*:\\s*([^\\]]+?)\\]?\\s*$",
+				"letter_line_pattern": "^[A-Za-z][.)]\\s+",
+				"question_label_pattern": "^question\\s*\\d+\\s*$"
+			}
 		}
 	},
 	"skeleton": {

@@ -10146,7 +10146,14 @@ class InteractiveBuilder {
 		if (!this.#ddIsDropdownFamily(bundle, tpl)) return this.#ddUploadBox({ bundle, tpl, run, renderBlock });
 		const inline = renderInline ?? ((s) => s);
 		const notes = [];
-		const all = this.#ddStream(bundle, tpl, notes);
+		// ROUND 309 — THE THIRD ANSWER-MARK SOURCE. When the writer ANNOUNCES that the
+		// correct answers are highlighted / in green (the per-bundle fence), the
+		// extractor's answer-mark side-channel becomes a mark source alongside red and
+		// [correct]. kinds is null whenever the fence does not pass — and then every
+		// r309 branch below is dormant and the stream is byte-identical to round 308.
+		// Data interactive_builders.dropDown.colour_marks; env DDMARKS_OFF.
+		const kinds = this.#ddMarkKinds(bundle, tpl);
+		const all = this.#ddStream(bundle, tpl, notes, kinds);
 		if (!all) return null;
 		// the autoCheck class, resolved ONCE from the writer's own opener wording
 		const ac = this.#ddAutocheck(bundle, tpl);
@@ -10157,13 +10164,16 @@ class InteractiveBuilder {
 		if (pre === null) return null;
 
 		// The dialects, in order. The first that resolves owns the bundle.
-		// ROUND 294 — #ddCellParagraph is LAST, so every round-287 build is byte-identical
-		// BY CONSTRUCTION (the r276 fallback architecture).
+		// ROUND 294 — #ddCellParagraph is LAST among the r287/r294 set, so every earlier
+		// build is byte-identical BY CONSTRUCTION (the r276 fallback architecture); the
+		// ROUND 309 mark dialects run after ALL of them, and only under the fence.
 		const body = this.#ddParagraph(toks, tpl, inline, run, ac)
 			?? this.#ddBullets(toks, tpl, inline, run, ac)
 			?? this.#ddQuestions(toks, tpl, inline, run, ac)
-			?? this.#ddTable(bundle, tpl, inline, ac)
-			?? this.#ddCellParagraph(bundle, toks, tpl, inline, ac);
+			?? this.#ddTable(bundle, tpl, inline, ac, kinds)
+			?? this.#ddCellParagraph(bundle, toks, tpl, inline, ac)
+			?? this.#ddOptList(toks, tpl, inline, ac, kinds)
+			?? this.#ddCellOptions(bundle, toks, tpl, inline, run, ac, kinds);
 		if (!body) return null;
 		const built = [...pre, body].join("\n");
 		if (this.#ddLeakGuard(built, tpl)) return null;            // a build must never ADD a leak
@@ -10336,13 +10346,18 @@ class InteractiveBuilder {
 	 * coloured words as one black lead plus three red spans each carrying the rest of
 	 * its own parenthesis, so nothing else can see the option groups.
 	 */
-	static #ddStream(bundle, tpl, notes) {
+	static #ddStream(bundle, tpl, notes, kinds) {
 		const toks = [];
 		const delims = tpl.delimiter_tags ?? ["dropdown"];
 		const textTags = tpl.text_tags ?? [];
 		const noteTags = tpl.note_tags ?? [];
 		const imageTags = tpl.image_tags ?? [];
 		const maxAns = tpl.max_answer_words ?? 12;
+		// ROUND 309 — the colour-mark vocabulary is live ONLY under the announcement
+		// fence (kinds non-null); with kinds null every r309 branch below is dead code
+		// and the stream is byte-identical to the round-308 reading.
+		const cfg = tpl.colour_marks ?? {};
+		const optTags = kinds ? (cfg.optlist_tags ?? []) : [];
 		let seenOpener = false;
 
 		// A token with no text still MATTERS when it is a structural marker — a captured
@@ -10360,7 +10375,19 @@ class InteractiveBuilder {
 			if (m.type === "nested") return null;
 			if (m.type === "black") {
 				const t = this.#cellText(m.text ?? "");
-				if (t) push(t, "plain");
+				if (t) {
+					// ROUND 309 — a standalone member line that IS the announcement
+					// ("Correct answers in green", OSAH401's green line) is the writer's
+					// configuration wording, consumed exactly as the opener's own wording
+					// is (the r287 autocheck class); the build itself expresses it.
+					if (kinds && this.#ddAnnounceLine(t, tpl)) continue;
+					const tok = { text: t, kind: "plain" };
+					if (kinds) tok.blk = m.block ?? null;   // r309 same-block pairing (r105 class)
+					// block marks ride the token so #ddRebuild can place them as ranges
+					const bm = kinds ? this.#ddBlockMarks(m, kinds, tpl) : [];
+					if (bm.length) tok.marks = bm;
+					toks.push(tok);
+				}
 				continue;
 			}
 			if (m.type !== "tag") return null;
@@ -10400,12 +10427,347 @@ class InteractiveBuilder {
 			if (tag && noteTags.includes(tag)) {
 				const t = this.#cellText(m.text ?? "") + " " + this.#cellText(m.blackAfter ?? "");
 				if (t.trim()) notes.push(t.trim());
-				after(m);
+				// the r287 behaviour verbatim (the tail also rides the stream), plus a
+				// ROUND-309 provenance FLAG — a property no earlier dialect reads, so
+				// their behaviour is byte-identical; the r309 dialects skip these
+				// tokens (a [button] label "Undo" is chrome, never a question line).
+				{
+					const bt = this.#cellText(m.blackAfter ?? "");
+					if (bt) toks.push({ text: bt, kind: "plain", noteTail: true });
+				}
 				continue;
+			}
+			// ROUND 309 — the "[answer options: …]" OPTION-LIST member (SCCH301-3.0's
+			// form). Reachable only under the announcement fence; without it the tag
+			// stays foreign and the bundle declines exactly as it did before this round.
+			if (tag && optTags.includes(tag)) {
+				const head = new RegExp(cfg.optlist_head_pattern ?? "^\\[?\\s*(?:answer\\s+)?options?\\s*:\\s*([^\\]]+?)\\]?\\s*$", "i");
+				const hm = this.#cellText(m.text ?? "").match(head);
+				if (hm) {
+					toks.push({ text: "", kind: "optlist", payload: hm[1], marks: this.#ddBlockMarks(m, kinds, tpl), blk: m.block ?? null });
+					after(m);
+					continue;
+				}
+				return null;                                       // an option tag that is not a list
 			}
 			return null;                                           // a foreign tag we cannot place
 		}
 		return toks;
+	}
+
+	/**
+	 * ROUND 309 — the announcement fence. The colour-mark channel is live for a bundle
+	 * ONLY when the writer's own words say the answers are marked — in the opener
+	 * bracket ("[interactive. Dropdown quiz. Autocheck. Correct answers highlighted.]",
+	 * SCCH301 ×3) or on a member line ("Correct answers in green", OSAH401's green
+	 * line). The wording selects the mark KIND, so a green-announced quiz never reads
+	 * a stray yellow guidance highlight as an answer. Table cell text is deliberately
+	 * NOT scanned (OSAI501's header-cell announcement belongs to the numbered-gap
+	 * form, a recorded decline). Returns { hl, green } or null.
+	 */
+	static #ddMarkKinds(bundle, tpl) {
+		const cfg = tpl?.colour_marks;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DDMARKS_OFF) return null;
+		// the whole consumer goes dormant when the EXTRACTOR channel is off, so each
+		// toggle is a faithful full revert on its own (ANSMARK_OFF alone must not
+		// leave the announce fence blocking the old builds).
+		if (typeof process !== "undefined" && process.env && process.env.ANSMARK_OFF) return null;
+		const am = (typeof DataService !== "undefined") ? DataService.Data?.InputDocRules?.answer_marks : null;
+		if (am && am.enabled === false) return null;
+		const hlRe = new RegExp(cfg.announce_highlight_pattern ?? "correct\\s+answers?[^\\n]{0,40}?highlight", "i");
+		const grRe = new RegExp(cfg.announce_green_pattern ?? "correct\\s+answers?[^\\n]{0,40}?(?:in|are|is)\\s+green", "i");
+		let hl = false, green = false;
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m || m.type === "table" || m.type === "nested") continue;
+			const t = this.#cellText(m.text ?? "") + " " + this.#cellText(m.blackAfter ?? "");
+			if (hlRe.test(t)) hl = true;
+			if (grRe.test(t)) green = true;
+		}
+		return (hl || green) ? { hl, green } : null;
+	}
+
+	/** ROUND 309 — true when a member line IS the announcement (word-limited, so a
+	 *  content sentence that merely mentions the convention is never consumed). */
+	static #ddAnnounceLine(text, tpl) {
+		const cfg = tpl?.colour_marks ?? {};
+		const t = String(text ?? "").trim();
+		if (!t || t.split(/\s+/).length > (cfg.announce_consume_max_words ?? 10)) return false;
+		const hlRe = new RegExp(cfg.announce_highlight_pattern ?? "correct\\s+answers?[^\\n]{0,40}?highlight", "i");
+		const grRe = new RegExp(cfg.announce_green_pattern ?? "correct\\s+answers?[^\\n]{0,40}?(?:in|are|is)\\s+green", "i");
+		return hlRe.test(t) || grRe.test(t);
+	}
+
+	/** ROUND 309 — a member's block marks, filtered to the ANNOUNCED kinds, as trimmed
+	 *  texts. The extractor's kinds are "hl" (any non-guidance w:highlight) and "green"
+	 *  (the writer's answer green 00b050). */
+	static #ddBlockMarks(m, kinds, tpl) {
+		if (!kinds) return [];
+		const out = [];
+		for (const mk of m?.block?.marks ?? []) {
+			if (mk.kind === "hl" && !kinds.hl) continue;
+			if (mk.kind === "green" && !kinds.green) continue;
+			const t = String(mk.text ?? "").trim();
+			if (t) out.push(t);
+		}
+		return out;
+	}
+
+	/** ROUND 309 — cell marks for table row r / cell c, kind-filtered, as texts. */
+	static #ddCellMarkTexts(block, r, c, kinds) {
+		if (!kinds) return [];
+		const out = [];
+		for (const mk of block?.cellMarks?.[r]?.[c] ?? []) {
+			if (mk.kind === "hl" && !kinds.hl) continue;
+			if (mk.kind === "green" && !kinds.green) continue;
+			const t = String(mk.text ?? "").trim();
+			if (t) out.push(t);
+		}
+		return out;
+	}
+
+	/**
+	 * ROUND 309 — match the announced marks against an option list: fold case and
+	 * whitespace, strip a letter prefix ("A. ") and edge punctuation from both sides,
+	 * then accept equality or containment (a mark can carry a trailing comma the
+	 * writer highlighted along, "Sublimation,"; a green mark can carry the letter,
+	 * "b. Echo chamber."). Returns the 1-based answer index, or 0 unless EXACTLY ONE
+	 * option is hit — an ambiguous or unmatched mark never guesses.
+	 */
+	static #ddMarkAnswer(options, markTexts, tpl) {
+		const fold = (s) => String(s ?? "")
+			.replace(new RegExp(tpl?.colour_marks?.letter_line_pattern ?? "^[A-Za-z][.)]\\s+"), "")
+			.toLowerCase().replace(/\s+/g, " ")
+			.replace(/^[\s.,;:!?'"“”‘’\-–—]+|[\s.,;:!?'"“”‘’\-–—]+$/g, "").trim();
+		const opts = options.map(fold);
+		const hit = new Set();
+		for (const raw of markTexts ?? []) {
+			const mk = fold(raw);
+			if (!mk) continue;
+			opts.forEach((o, i) => {
+				if (!o) return;
+				if (o === mk || (mk.length >= 3 && o.includes(mk)) || (o.length >= 3 && mk.includes(o))) hit.add(i);
+			});
+		}
+		return hit.size === 1 ? [...hit][0] + 1 : 0;
+	}
+
+	/**
+	 * ROUND 309 — S3, THE GRID OF OPTION LISTS (SCCH301-2.0). Row labels down the
+	 * first column, subject columns across the header, and EVERY body cell one red
+	 * "[options: …]" bracket whose correct option is highlighted. One unit per body
+	 * cell — question = the column head, options = the cell's own list, answer = the
+	 * cell's mark — with the row label as the gold's own <ol> statement (the D3(a)
+	 * grid arrangement, r287). ALL OR NOTHING.
+	 */
+	static #ddGridOptLists(block, tpl, inline, ac, kinds) {
+		const cfg = tpl.colour_marks ?? {};
+		if (!block?.cellMarks) return null;
+		const headRe = new RegExp(cfg.optlist_head_pattern ?? "^\\[?\\s*(?:answer\\s+)?options?\\s*:\\s*([^\\]]+?)\\]?\\s*$", "i");
+		const raw = (block?.rows ?? [])
+			.map((r, ri) => ({ ri, cells: (r ?? []).map((c) => (typeof c === "string" ? c : c?.text) ?? "") }))
+			.filter((r) => r.cells.some((c) => String(c).trim()));
+		if (raw.length < 2) return null;
+		const w = Math.max(...raw.map((r) => r.cells.length));
+		if (w < 3) return null;
+		const header = raw[0];
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
+		const units = [];
+		let nRow = 0;
+		for (const r of raw.slice(1)) {
+			const label = this.#cellText(r.cells[0] ?? "");
+			nRow++;
+			let first = true;
+			for (let c = 1; c < w; c++) {
+				const cellRaw = r.cells[c];
+				if (!String(cellRaw ?? "").trim()) continue;
+				if (!this.#isFullyRed(cellRaw)) return null;
+				const hm = this.#cellText(cellRaw).match(headRe);
+				if (!hm) return null;
+				const options = this.#ddOptionSplit(hm[1], tpl).map((s) => s.trim()).filter(Boolean);
+				if (options.length < min || options.length > max) return null;
+				const answer = this.#ddMarkAnswer(options, this.#ddCellMarkTexts(block, r.ri, c, kinds), tpl);
+				if (!answer) return null;
+				const u = { question: this.#cellText(header.cells[c] ?? ""), options, answer };
+				if (first && label && tpl.grid_row_label) {
+					u.before = Utils.FillTemplate(tpl.grid_row_label, { n: String(nRow), text: label });
+				}
+				first = false;
+				units.push(u);
+			}
+		}
+		if (units.length < (tpl.min_units ?? 1)) return null;
+		return this.#ddQuestionForm(units, tpl, inline, null, ac);
+	}
+
+	/**
+	 * ROUND 309 — S2, THE OPTION-LIST PAIRS (SCCH301-3.0, the catalogue's ten-out-of-
+	 * ten page). The writer types each question WITH its own "[answer options: …]"
+	 * bracket in ONE paragraph — question first, list after, the correct option
+	 * HIGHLIGHTED inside the bracket — so the stream alternates plain question /
+	 * optlist, the pair sharing a source BLOCK (the r105 same-block discriminator;
+	 * the catalogue quoted the members and read the pairing the other way round —
+	 * corrected here by the extractor's own block structure). A LEADING bare list
+	 * with no question and no mark is the writer's unused template row (SCCH301
+	 * carries eleven lists for ten questions) and is dropped, losing nothing. The
+	 * writer's own broken "1." numbering is stripped (every line is "1." — the
+	 * human ships a real ordered list). ALL OR NOTHING: every other list must
+	 * resolve to exactly one marked option and own a question, else the box stays.
+	 */
+	static #ddOptList(toks, tpl, inline, ac, kinds) {
+		if (!kinds || !toks) return null;
+		// note-tail tokens ([button] labels — "Undo", "Reset") are chrome the notes
+		// already carry; they are never questions and never strays here.
+		const seq = toks.filter((t) => !t.noteTail);
+		const lists = seq.filter((t) => t.kind === "optlist");
+		if (lists.length < Math.max(2, tpl.min_units ?? 1)) return null;
+		if (seq.some((t) => t.kind === "table" || t.kind === "img" || t.kind === "delim" || t.kind === "mark")) return null;
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
+		const units = [];
+		const lead = [];
+		let dropped = 0;
+		const consumed = new Set();
+		for (let i = 0; i < seq.length; i++) {
+			const t = seq[i];
+			if (t.kind !== "optlist") continue;
+			const options = this.#ddOptionSplit(t.payload, tpl).map((s) => s.trim()).filter(Boolean);
+			if (options.length < min || options.length > max) return null;
+			const answer = this.#ddMarkAnswer(options, t.marks, tpl);
+			const qTok = seq[i - 1];
+			const hasQ = qTok && qTok.kind === "plain" && String(qTok.text ?? "").trim()
+				&& !consumed.has(i - 1)
+				&& (!t.blk || !qTok.blk || t.blk === qTok.blk);    // same source block when known
+			// an UNMARKED, QUESTION-LESS list is the writer's unused template row —
+			// dropped, losing no learner content. A MARKED list with no question, or
+			// an unmarked one WITH a question, is a real gap — the box stays.
+			if (!hasQ && !answer) { dropped++; continue; }
+			if (!answer || !hasQ) return null;
+			consumed.add(i - 1);                                   // the question line is consumed
+			const question = this.#ddTidy(String(qTok.text).replace(/^\s*\d{1,3}[.)]\s+/, ""));
+			if (!question) return null;
+			units.push({ question, options, answer });
+		}
+		// every plain line must be a consumed question or lead prose BEFORE the first
+		// list — a stray line elsewhere means this is not the alternating shape.
+		const firstList = seq.findIndex((t) => t.kind === "optlist");
+		for (let i = 0; i < seq.length; i++) {
+			const t = seq[i];
+			if (t.kind !== "plain" || consumed.has(i)) continue;
+			if (i < firstList) { const s = this.#ddTidy(t.text); if (s) lead.push(s); continue; }
+			return null;
+		}
+		if (units.length + dropped !== lists.length || units.length < Math.max(2, tpl.min_units ?? 1)) return null;
+		const body = this.#ddQuestionForm(units, tpl, inline, null, ac);
+		if (!body) return null;
+		const pre = lead.map((s) => Utils.FillTemplate(tpl.question_text, { text: inline(s) }));
+		return [...pre, body].join("\n");
+	}
+
+	/**
+	 * ROUND 309 — S4, LETTERED OPTION LINES IN A TABLE. Two orientations, decided by
+	 * trying columns first:
+	 *
+	 *   COLUMN — one question per COLUMN: a "Question N" label row, a question row,
+	 *   then either one option-cell of " / "-joined lettered lines (OSOH401-2.0) or
+	 *   one ROW per lettered option (OSAH401-3.0). The marked lettered line is the
+	 *   answer for its column.
+	 *
+	 *   CELL — one question per ROW: a content cell carrying "N. question / a. … /
+	 *   b. …" with the marked line the answer, an optional image cell beside it
+	 *   (OSSM401-4.0).
+	 *
+	 * Letters are stripped from the shipped options (the human's own form — OSAH401's
+	 * gold ships "Copyright Act", not "A. Copyright Act"). ALL OR NOTHING per bundle.
+	 */
+	static #ddCellOptions(bundle, toks, tpl, inline, run, ac, kinds) {
+		if (!kinds) return null;
+		// the stream must be nothing but the table + plain lead prose — the lead
+		// renders above the quiz (OSAH401's "Read the right and choose the law…",
+		// which its gold ships as exactly that <p>), anything else keeps the box.
+		if (!toks || toks.some((t) => t.kind === "img" || t.kind === "delim" || t.kind === "mark" || t.kind === "optlist")) return null;
+		const lead = [];
+		for (const t of toks) {
+			if (t.kind !== "plain" || t.noteTail) continue;
+			const s = this.#ddTidy(t.text);
+			if (s) lead.push(s);
+		}
+		const cfg = tpl.colour_marks ?? {};
+		const tabs = (bundle?.memberItems ?? []).filter((m) => m?.type === "table");
+		if (tabs.length !== 1) return null;
+		const block = tabs[0].block;
+		const rows = (block?.rows ?? []).map((r) => (r ?? []).map((c) => (typeof c === "string" ? c : c?.text) ?? ""));
+		if (!rows.length || !block?.cellMarks) return null;
+		const letterRe = new RegExp(cfg.letter_line_pattern ?? "^[A-Za-z][.)]\\s+", "");
+		const labelRe = new RegExp(cfg.question_label_pattern ?? "^question\\s*\\d+\\s*$", "i");
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10;
+		const sep = " ";
+		const lines = (cell) => this.#cellText(cell).split(/\s*\/\s+|\n/).map((s) => s.trim()).filter(Boolean);
+		const stripLetter = (s) => s.replace(letterRe, "").trim();
+
+		// COLUMN orientation
+		const width = Math.max(...rows.map((r) => r.length));
+		const colUnits = [];
+		let colOk = width >= 2;
+		for (let c = 0; c < width && colOk; c++) {
+			const qLines = [], opts = [], marks = [];
+			for (let r = 0; r < rows.length; r++) {
+				const cell = rows[r][c];
+				if (cell === undefined || !String(cell).trim()) continue;
+				for (const ln of lines(cell)) {
+					if (labelRe.test(ln)) continue;                    // "Question N" chrome
+					if (letterRe.test(ln)) opts.push(stripLetter(ln));
+					else qLines.push(ln);
+				}
+				marks.push(...this.#ddCellMarkTexts(block, r, c, kinds));
+			}
+			if (opts.length < min || opts.length > max || !qLines.length) { colOk = false; break; }
+			const answer = this.#ddMarkAnswer(opts, marks, tpl);
+			if (!answer) { colOk = false; break; }
+			colUnits.push({ question: this.#ddTidy(qLines.join(" ")), options: opts, answer });
+		}
+		const finish = (units) => {
+			const body = this.#ddQuestionForm(units, tpl, inline, run, ac);
+			if (!body) return null;
+			const pre = lead.map((s) => Utils.FillTemplate(tpl.question_text, { text: inline(s) }));
+			return [...pre, body].join("\n");
+		};
+		if (colOk && colUnits.length >= Math.max(2, tpl.min_units ?? 1)) {
+			return finish(colUnits);
+		}
+
+		// CELL orientation — one unit per row; an image cell may sit beside the content
+		const cellUnits = [];
+		for (let r = 0; r < rows.length; r++) {
+			let unit = null, img = null;
+			for (let c = 0; c < (rows[r] ?? []).length; c++) {
+				const cell = rows[r][c];
+				if (!String(cell ?? "").trim()) continue;
+				// an image cell: a red [image] span with a nameable URL
+				if (/^\s*\u{1f534}\[RED TEXT\]\s*\[image\]?\s*\[\/RED TEXT\]\u{1f534}/iu.test(String(cell))) {
+					const url = this.#cellMediaUrl(this.#cellText(cell).replace(/^\[image\]?\s*/i, ""));
+					const fn = url ? this.#accImageFilename(url, tpl, tpl) : null;
+					if (!fn) return null;                              // an asset request — never half-build
+					img = fn;
+					continue;
+				}
+				const qLines = [], opts = [];
+				for (const ln of lines(cell)) {
+					if (labelRe.test(ln)) continue;
+					if (letterRe.test(ln)) opts.push(stripLetter(ln));
+					else qLines.push(ln);
+				}
+				if (opts.length < min || opts.length > max || !qLines.length) return null;
+				const answer = this.#ddMarkAnswer(opts, this.#ddCellMarkTexts(block, r, c, kinds), tpl);
+				if (!answer) return null;
+				if (unit) return null;                                 // two content cells in one row — not this shape
+				unit = { question: this.#ddTidy(qLines.join(" ")), options: opts, answer };
+			}
+			if (!unit) return null;
+			if (img) unit.img = img;
+			cellUnits.push(unit);
+		}
+		if (cellUnits.length < Math.max(2, tpl.min_units ?? 1)) return null;
+		return finish(cellUnits);
 	}
 
 	/**
@@ -10419,7 +10781,7 @@ class InteractiveBuilder {
 		const starts = [];
 		let pos = 0;
 		for (const t of toks) {
-			if (t.kind === "note" || t.kind === "table" || t.kind === "img" || t.kind === "delim") continue;
+			if (t.kind === "note" || t.kind === "table" || t.kind === "img" || t.kind === "delim" || t.kind === "optlist") continue;
 			if (t.kind === "mark" && !t.text) { marks.push([pos, pos]); continue; }
 			if (!t.text) continue;
 			const prev = buf.length ? buf[buf.length - 1] : "";
@@ -10432,6 +10794,20 @@ class InteractiveBuilder {
 			// paragraph is indistinguishable from one mid-sentence once joined.
 			if (t.kind === "plain" && /^\s*\(?\d{1,3}[.)]\s+\S/.test(t.text)) starts.push(pos);
 			if (t.kind === "mark") marks.push([pos, pos + t.text.length]);
+			// ROUND 309 — a plain token carrying ANNOUNCED colour marks contributes each
+			// mark as a range at the mark text's own position, so the round-287 group
+			// derivation reads a highlighted option exactly as it reads a red one
+			// (ENGJ301-6.0's "(exasperated, happy, gloomy)" with "exasperated"
+			// highlighted). A mark whose text cannot be located contributes nothing —
+			// an unfound mark never guesses.
+			if (t.kind === "plain" && t.marks) {
+				for (const mk of t.marks) {
+					const needle = String(mk).trim();
+					if (!needle) continue;
+					const idx = t.text.indexOf(needle);
+					if (idx >= 0) marks.push([pos + idx, pos + idx + needle.length]);
+				}
+			}
 			buf.push(t.text); pos += t.text.length;
 		}
 		return { text: buf.join(""), marks, starts };
@@ -10631,9 +11007,25 @@ class InteractiveBuilder {
 	 * "Statements: | Answers:"), or a whole GRID of red cells under a header row
 	 * (SCCH301's Solids|Liquids|Gases yes/no table).
 	 */
-	static #ddTable(bundle, tpl, inline, ac) {
+	static #ddTable(bundle, tpl, inline, ac, kinds) {
 		const tabs = (bundle?.memberItems ?? []).filter((m) => m?.type === "table");
 		if (tabs.length !== 1) return null;
+		// (a0) ROUND 309 — THE GRID OF OPTION LISTS. Every body cell is a red
+		// "[options: …]" bracket with the correct option HIGHLIGHTED inside it
+		// (SCCH301-2.0's particles grid). Tried FIRST under the announcement fence
+		// because branch (a) below cannot read this shape — it took the identical
+		// option-list strings as answer VALUES and shipped answer="1" on every
+		// question (the pre-existing r287 misread this round repairs; with the
+		// toggles off the old bytes reproduce exactly).
+		if (kinds) {
+			const s3 = this.#ddGridOptLists(tabs[0].block, tpl, inline, ac, kinds);
+			if (s3) return s3;
+			// an ANNOUNCED options-bracket grid that S3 cannot resolve must never
+			// fall through to (a)'s misread — the honest box is the right answer.
+			const headRe = new RegExp(tpl.colour_marks?.optlist_head_pattern ?? "^\\[?\\s*(?:answer\\s+)?options?\\s*:\\s*([^\\]]+?)\\]?\\s*$", "i");
+			const anyOpt = (tabs[0].block?.rows ?? []).some((r) => (r ?? []).some((c) => headRe.test(this.#cellText(typeof c === "string" ? c : c?.text))));
+			if (anyOpt) return null;
+		}
 		const rows = (tabs[0].block?.rows ?? [])
 			.map((r) => (r ?? []).map((c) => (typeof c === "string" ? c : c?.text) ?? ""))
 			.filter((r) => r.some((c) => String(c).trim()));

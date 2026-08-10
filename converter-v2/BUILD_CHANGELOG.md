@@ -1,5 +1,160 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-11 (round 309, build 260618.80) — THE WRITER'S HIGHLIGHTER AND ANSWER-GREEN THROUGH THE EXTRACTOR (Chris — the round-306 follow-through chain, ticket 3 of 4, against `WHY_UNBUILT__dropDown.md` reasons 4+5; **SCOPED regeneration per the chain's standing authority + the §0a/§0b dropDown-FAMILY sweep of all 185 family modules — scoped ship #3 since the round-306 full; the chain's FULL `REGENERATE CORPUS` lands at round 310**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**The extractor kept two shades of red and nothing else; it now carries the writer's
+yellow HIGHLIGHTER (`<w:highlight>`, never read before this round) and answer GREEN
+(`00b050` — split at last from the template's guidance green `316757`) on a SIDE-CHANNEL
+that never touches a text byte, and the dropDown readings consume them as the THIRD
+answer-mark source (red / `[correct]` / colour) under the writer's own per-bundle
+ANNOUNCEMENT fence — six pages across five modules now ship real quizzes whose 45
+answers match the human's own pages 45-for-45, and a live pre-existing defect
+(SCCH301_2_0 shipping the raw "options: …" strings as choices with `answer="1"` on
+every question) is repaired on the way.**
+
+### 2. THE MEASUREMENT, AND WHAT IT CORRECTED
+
+The census (`outputs/_measure_r309_marks.cjs`, raw XML over all 454 WTs + the live
+shape dumps `_measure_r309_shape.cjs`/`_measure_r309_cells.cjs`):
+
+* **The bug was in my own check first, the thirteenth round running.** The census's
+  minimal unzip read sizes from the LOCAL zip headers; Google-Docs-exported docx files
+  put the real sizes in the data descriptor, so SCCH301 and OSAH401 — the brief's own
+  headline examples — were silently skipped and the first merge reported an
+  announcement population of ZERO. Rewritten to walk the CENTRAL DIRECTORY; the true
+  picture: **434 of 454 modules carry a highlight somewhere** (almost all front-matter
+  guidance chrome), **53 carry the answer green**, and **31 carry the writer's own
+  announcement** ("Correct answers highlighted" / "Correct answers in green").
+* **The announcement fence is MEASURED ESSENTIAL, twice over.** OSAI101 marks the
+  OPTIONS themselves green — reading green as an answer there ships a WRONG quiz;
+  CEDT104's green is a label ("Lyrics:"); TRR109 highlights whole paragraphs
+  editorially; ENFUN02 and ENGC201 mark answers but never say so (named declines —
+  the brief's own caution, held to). The fence is PER BUNDLE (opener bracket or a
+  member line), and the wording selects the mark KIND, so a green-announced quiz can
+  never read a stray yellow guidance highlight.
+* **The brief's pairing for SCCH301-3.0 was read the other way round.** Its member
+  quote suggested option-list-then-question; the extractor's own block structure shows
+  each question shares ONE paragraph with ITS OWN list (question first), and the bare
+  list at the top is the writer's unused template row — eleven lists for ten
+  questions. The pairing is same-block (the r105 discriminator), question before list.
+* **A LIVE PRE-EXISTING DEFECT found and repaired (the r293b rule — fixed, not worked
+  around):** the r287 D3 grid read SCCH301-2.0's identical "[options: …]" cell strings
+  as answer VALUES and shipped a quiz whose every dropdown offered the three raw list
+  strings as choices with `answer="1"`. Under the fence the new grid-of-option-lists
+  reading (S3) builds it correctly — [1,2,3,1,2,3,1,2,2], the human's own answers —
+  and an ANNOUNCED options-bracket grid that S3 cannot resolve now declines to the
+  honest box rather than falling through to the misread. Toggles off, the old bytes
+  reproduce exactly.
+
+### 3. WHAT SHIPPED
+
+**Extractor** (`DocxExtractor.#parseParagraph` + `#parseTable`; data
+`Input_Doc_Rules.answer_marks`; env `ANSMARK_OFF`): per-run detection of
+`<w:highlight>` (any value bar `none`/`white` — white is the OS-family "How to Merge
+Content" chrome) and the writer's green `00b050`; consecutive same-kind marked runs
+merge (a pure-whitespace gap bridges, the red-merge convention) into `block.marks =
+[{text, kind}]` on a paragraph and rows-aligned `block.cellMarks` on a table.
+**`block.text` is untouched by a single byte**, so tag granularity, red-span structure
+and every existing consumer are byte-identical BY CONSTRUCTION — the tags gate
+(**9557/9557, REAL FAILURES 0**) is the canary and holds exactly.
+
+**dropDown consumer** (`InteractiveBuilder`; data
+`interactive_builders.dropDown.colour_marks`; env `DDMARKS_OFF`; the consumer also
+goes dormant under `ANSMARK_OFF` so EACH toggle is a faithful full revert on its own —
+caught live when `ANSMARK_OFF` alone left the S3 fence blocking the old p2 build).
+Four consumption sites, every one all-or-nothing per bundle, every one behind the
+announcement fence:
+
+* **S1 — ranges in the rebuilt paragraph stream:** a plain token carrying announced
+  block marks contributes each mark at its own character position, so the round-287
+  D1 parens derivation reads a highlighted option exactly as it reads a red one.
+  ENGJ301-6.0 builds its thirteen inline dropdowns — gold answers thirteen-for-
+  thirteen — and the `[body]` lead line D1 drops is the line the GOLD drops too.
+* **S2 — `#ddOptList`:** the "[answer options: …]" option-tag + question pairs
+  (SCCH301-3.0, the catalogue's ten-out-of-ten page — built [3,5,1,4,2,1,2,6,1,4],
+  gold-exact). The `option` SUBTAG joins the stream vocabulary ONLY under the fence;
+  without it the tag stays foreign and the bundle declines exactly as before.
+* **S3 — `#ddGridOptLists`:** the grid of option-list cells (SCCH301-2.0, the defect
+  repair above), emitting the D3(a) grid arrangement with the row label as the gold's
+  own `<ol>` statement.
+* **S4 — `#ddCellOptions`:** lettered option lines in a table, column-per-question
+  (OSAH401-3.0 [2,3,1,3] gold-exact; OSOH401-2.0 [2,3,1,2,4] gold-exact) or
+  cell-per-row with an image beside it (OSSM401-4.0 [1,2,3,1,1] gold-exact — and its
+  green "Spot fake news." mark carries no letter, which is why the matcher folds
+  letter prefixes and accepts containment). Letters are stripped from the shipped
+  options — the human's own form. Lead prose renders above the quiz as the gold's own
+  `<p>`.
+
+A standalone member line that IS the announcement ("Correct answers in green",
+OSAH401's green line) is consumed as configuration wording — the r287 autocheck
+class; the build itself expresses it. `[button]` label tails ("Undo", "Reset") gain a
+provenance FLAG in the stream (a property no earlier dialect reads — their behaviour
+is byte-identical) so the r309 dialects skip them as the chrome the notes already
+carry.
+
+### 4. THE PROOF (one toggle state per process, throughout)
+
+* **OFF byte-identity:** both-toggles-off reproduces the shipped disk **32/32 pages**
+  on the five affected modules; `DDMARKS_OFF` alone **9/9**; `ANSMARK_OFF` alone
+  **22/22** (after the dormancy fix above).
+* **ON confinement, from BYTES:** 228 pages across 40 modules hashed fix-ON — every
+  announcement carrier, every named negative (ENFUN02, ENGC201, OSAI101, CEDT104)
+  and every existing r287/r294 build (BLL210, MXFL301/302, PHE1007, ENGC101,
+  TWHA902, MXDB302) — **exactly the 6 named pages differ**.
+* **Gold answers:** all six pages match the human's own `answer=` values
+  **45-for-45** (SCCH301_2_0 [1,2,3,1,2,3,1,2,2] · SCCH301_3_0 [3,5,1,4,2,1,2,6,1,4]
+  · OSAH401 [2,3,1,3] · OSOH401 [2,3,1,2,4] · OSSM401 [1,2,3,1,1] · ENGJ301
+  [1,2,3,1,2,1,3,1,2,1,3,3,2]).
+* **Word-loss, per changed page:** every lost word accounted — hand-off box chrome,
+  option LETTERS (stripped, the human's form), "Question N" label rows (the human
+  drops them too), the announcement line (consumed), iStock URLs becoming `src`
+  attributes (the r295 class), SCCH301-2.0's defective triple-duplication collapsing,
+  and ENGJ301's lead line dropped exactly as the gold drops it. No writer word left
+  any page unaccounted.
+* **Leaks:** zero new — the six ON pages scan clean; OSOH401_2_0's five `[image]`
+  literals are PRE-EXISTING and per-page identical in both states.
+* **The §0a/§0b FAMILY SWEEP:** all **185** dropDown-family modules regenerated
+  (18 batches), content-hash **0-stale**, manifest diff **exactly 6 pages / 5 modules
+  / 0 added / 0 removed** — the other 180, including every working dropdown quiz,
+  BYTE-IDENTICAL. The family-wide verifier: **184 units, defect 0 in all 15 batches**;
+  the affected five **55 units, exact 55**.
+* **Gates (fast-loop, committed; the mtime alarm on the 180 byte-identical sweep
+  modules is the documented r302 class, overridden with the manifest proof on
+  record):** skeleton SCAFFOLD mean **+0.00 IMPROVED** / ≥50% **1000** / ≥75% **191**
+  EXACT · cs **11244/186/593** EXACT · body **199** EXACT · clean **97.81%** / leak
+  **288/46** EXACT — a hand-off box and a built quiz collapse to the same widget
+  marker, so the movement is gate-invisible BY CONSTRUCTION; `--accept-named` neither
+  used nor needed. tags **9557/9557 REAL 0** · flipCard §9 **divergence 0 ✓** ·
+  index-sync **33/28** · entry-parity **PASS** · **all ELEVEN selftests GREEN** (incl.
+  the skeleton gate's own).
+
+### 5. NAMED DECLINES AND FOLLOW-UPS (measured, recorded — do not re-litigate blind)
+
+* **The numbered-gap + options-TABLE form** (ENFUN09-0.0, OSAI501-1.0/-3.0 — red
+  `[class="red-text" (N)]` gap markers + a "Number | Dropdown option 1..4" table with
+  highlighted cells) is reason-3-adjacent and needs the options-table pairing — its
+  own round.
+* **OSSM401-3.0**: its marks are real but its announcement sits on the NEXT page's
+  bundle — the per-bundle fence is the safety, and the module-level widening is
+  recorded as a measured follow-up, not taken.
+* **Announced quizzes of OTHER widget types** (OSBY501/OSAH501 drop-quiz checkboxes,
+  OSOH501 clicking-order, BLL223 self-check, ANZH304 T/F, OSSC401's mcq-shaped
+  "Correct answer in green", ENGJ302/HIS100x/SSFUN/TEFUN/XGF9004 …) — the marks now
+  reach their builders' blocks; consuming them is those families' own rounds.
+* **OSGM501-3.0**: its scenario table's options are unlettered and its announcement
+  line sits outside the bundle — declines on both counts, honestly.
+* **ENFUN02 / ENGC201 / OSAI101 / CEDT104**: no announcement — the fence's own named
+  negatives, proven byte-identical.
+
+### 6. FOR ROUND 310 (the gathering round + THE FULL REGENERATION)
+
+The chain's full `REGENERATE CORPUS` lands next round; this round leaves **no pending
+work** (the sweep already carried the 6 pages into the corpus). The gathering
+measurement should note that XDLS912_4_0's over-capture and the ENGS302-class
+media-swallowed dropbox bundles are already on its list from round 308.
+
 ## 2026-08-11 (round 308, build 260618.79) — THE UPLOAD BOX (Chris, 2026-08-11: **"Build it"** — the round-306 follow-through chain, ticket 2 of 4, against `WHY_UNBUILT__dropDown.md` reason 1; **SCOPED regeneration per the chain's standing authority + the §0a/§0b dropDown-FAMILY sweep — scoped ship #2 since the round-306 full; the chain's FULL `REGENERATE CORPUS` lands at round 310**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
