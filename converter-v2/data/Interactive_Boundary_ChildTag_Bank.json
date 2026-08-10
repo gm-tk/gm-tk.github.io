@@ -14,6 +14,7 @@
 		},
 		"opener_rule": {
 			"rule": "A span immediately preceding an interactive tag belongs to its block when its primary tag resolves (via Tag_Lexicon.json) to one of opener_tags — it is the activity wrapper/title for that interactive.",
+			"owner_id_from_tail": true,
 			"opener_tags": [
 				"activity",
 				"activity heading",
@@ -122,6 +123,7 @@
 			"leading_pattern_absorb_note": "ROUND 176 (Chris, ENGC101-02). THE BACKWARD LEAD-PAIR ABSORB — the general 'detect a repeating pattern, then walk UP to recover the missed first pairing' Chris asked for. A bundle is scanned FORWARD from the first interactive tag, so when the writer's element is a REPEATING (lead-in label, widget) series the FIRST label — which sits ABOVE the first tag — is orphaned (ENGC101-02: 'We can use words to describe what we see:' left as a stray body <p>, its 'feel:'/'think:' siblings correctly inside the box; XGF9004 True/False modals: statement '1.' left outside, '2.'..'12.' inside). AFTER #swallowMembers, this pass collapses the members to a per-source-block token string (W=interactive tag, L=standalone black label, O=table), and ONLY when it is a STRICT clean widget-first alternation (widget_first_alternation ^W(LW)+$, >=2 widgets, one label per interior widget, no L-runs, no tables) does it consider absorbing. It then extrapolates the unit BACKWARD: it walks up from the tag over UNCONSUMED black items whose label SIGNATURE (label_signatures, first match wins) equals the DOMINANT interior-label signature (Chris's 'similarly structured') and are label_like (num/alpha/colon/bullet — never free prose or a URL), capped at exactly the MISSING count (widgets - interior labels = 1 for this envelope) and at a word count near the interior labels (never a body paragraph). Matched labels are prepended to memberItems + startIndex moved back (the ownership loop then consumes them). MEASURED corpus-wide (outputs/_measure_intleadpair.cjs, all 390 WTs): 559 label-precedes bundles, but the strict+similarity guard fires on exactly 7 bundles / 2 modules (ENGC101 speechBubble colon, XGF9004 x6 modal numbered) — MXEX302's carousel (interior 'label' a URL, above free prose) and every already-consumed 'above' correctly DECLINE. inline_only:true (an activity-owned bundle's startIndex is the [Activity] tag, whose predecessor is section content, not a widget label — a sized follow-up). Env INTLEADPAIR_OFF (or enabled:false) reverts to the forward-only capture. Looser envelopes (trailing-label WLWLWL, table-interleaved) are deferred follow-ups.",
 			"same_block_image_absorb": {
 				"enabled": true,
+				"owner_start_fix": true,
 				"types": [
 					"speechBubble"
 				],
@@ -275,6 +277,14 @@
 				"min_member_chars": 40
 			},
 			"bare_invocation_dissolve_empty_note": "ROUND 217 (Chris, boundary audit). The bare generic '[Interactive]' invocation (Tag_Lexicon _meta.qualifier_alias_demote.standalone_becomes -> canonical 'interactive') opens a widget bundle so the following instruction + data table are captured and activity_wrapper.standalone_widget_box wraps them (AGH1001-01). But a bundle that captured NO table and under min_member_chars of member text (a media member does NOT exempt: the image reverts to its normal standalone Mode P/D render) is too thin to hand off as a widget box — it DISSOLVES at scan finalization (before ownership marking): the items stay unconsumed and render down the ordinary unhandled-tag/note path, the pre-217 form (gate-neutral cv2 note). min_member_chars mirrors body_compare's 40-char EMPTY-container threshold: without the dissolve the alias re-tag pushed EMPTY +6..7 pages. Rides env INTALIAS_OFF.",
+			"_r306_owner_id_note": "ROUND 306 — opener_rule.owner_id_from_tail (set below in opener_rule) + member_rule.same_block_image_absorb.owner_start_fix (set in that block): two repairs the layout-table dissolution exposed. owner_start_fix — the same-block avatar absorb used to OVERWRITE the activity-owner lookback's startIndex, leaving the [Activity]/[H3]/[Body] lead items unconsumed so the whole activity rendered TWICE (once by the plain loop, once inside the bundle-owned box), and the avatar's caption text leaked as '<p>avatar Tina</p>' inside the box; startIndex now only ever moves BACKWARD and an absorbed lead item leaves the lead list. Env SBOWNERFIX_OFF. owner_id_from_tail — the writer's activity number may ride in the opener's BLACK tail ('[Activity] **1A**'); 'number' is a skeleton KEEP_ATTR (r223), so the writer's own id is recovered (never invented). Env SBOWNERID_OFF.",
+			"foreign_table_terminates": {
+				"enabled": true,
+				"types": [
+					"speechBubble"
+				],
+				"_note": "ROUND 306 (Chris — free the speech bubble from the page-layout table). A free [speech bubble] whose member walk swallows a table that is NOT bubble material — the writer's next SECTION laid out as a table ('[H3] Wireframes | [embed video]', TEDC401-3.0; the slider/click-drop activity tables, TEDC402-2.0) — declined the whole widget and trapped the section in the hand-off box with it. The walk now ENDS BEFORE such a table (left UNCONSUMED, unlike the r266/r271 capture-then-break rules): a table carrying its own invocation self-captures as its own widget via #interactiveInTable, and the rest takes the normal table path. 'Foreign' is the BUILDER'S OWN verdict — InteractiveBuilder.SbTableForeign (promoted public, the r246 shared-predicate discipline) runs the rich composer's table reading under its most permissive opener assumption; a table it declines even then belongs to a bundle already in TODAY'S DECLINE SET, so the rule is additive by construction (the r278 argument; the round-306 byte-hash run over every bubble-carrying module is the proof). Fenced on captured content (the r278 fence — a bubble invocation's own black text counts, the r296 content_on_invocation semantics), so an empty-bubble bundle keeps its exact current shape. Env SBFOREIGNTBL_OFF."
+			},
 			"media_table_terminates": {
 				"enabled": true,
 				"types": [

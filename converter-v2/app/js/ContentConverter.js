@@ -1664,7 +1664,17 @@ class ContentConverter {
 						};
 						// the title can ride on the [activity] tag itself or the lead items
 						const leadStream = [];
-						if (bundle.activityOwner.blackAfter?.trim()) {
+						// ROUND 306 — when the box's id was recovered FROM this tail
+						// ("[Activity] **1A**", the scanner's owner_id_from_tail), the tail
+						// IS the number and must not also render as an "<h3>1A</h3>" title —
+						// the writer's own [H3] lead then becomes the box heading, which is
+						// the gold's arrangement (number="1A" + <h3>Where do we see data?</h3>).
+						// Scoped to _idFromTail bundles, so a bracket-numbered activity whose
+						// tail happens to repeat its id keeps its exact current rendering.
+						const _tailIsId = bundle._idFromTail && bundle.activityId
+							&& bundle.activityOwner.blackAfter
+							&& bundle.activityOwner.blackAfter.replace(/[*\s]+/g, "").toUpperCase() === String(bundle.activityId).toUpperCase();
+						if (bundle.activityOwner.blackAfter?.trim() && !_tailIsId) {
 							leadStream.push({ type: "black", text: bundle.activityOwner.blackAfter });
 						}
 						for (const l of (bundle.activityLeadItems ?? [])) leadStream.push(l);

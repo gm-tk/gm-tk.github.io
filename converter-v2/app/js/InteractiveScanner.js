@@ -681,6 +681,18 @@ class InteractiveScanner {
 			if (!id && b.activityOwner) {
 				const m = (b.activityOwner.text || "").match(/activit(?:y|ies)\b[^a-z0-9]*#?\s*(\d+\s*[a-z]?)/i);
 				if (m) id = m[1].replace(/\s+/g, "").toUpperCase();
+				// ROUND 306 — the writer's number may ride in the opener's BLACK tail
+				// instead of the coloured span ("[Activity] **1A**", the whole TEDC402
+				// layout-table family once dissolved). `number` is a skeleton KEEP_ATTR
+				// (r223), so recovering the writer's own id — never inventing one — is
+				// what lets the box pair with the gold's `number="1A"`.
+				// Data opener_rule.owner_id_from_tail; env SBOWNERID_OFF.
+				if (!id && (DataService.Data.BoundaryBank._meta.opener_rule.owner_id_from_tail ?? false)
+					&& !(typeof process !== "undefined" && process.env && process.env.SBOWNERID_OFF)) {
+					const m2 = ((b.activityOwner.text || "") + " " + (b.activityOwner.blackAfter || ""))
+						.match(/activit(?:y|ies)\b[^a-z0-9]*#?\s*(\d+\s*[a-z]?)/i);
+					if (m2) { id = m2[1].replace(/\s+/g, "").toUpperCase(); b._idFromTail = true; }
+				}
 			}
 			if (!id) continue;
 			while (seenAct.has(id)) id = this.#nextActivityId(id);
@@ -1298,6 +1310,36 @@ class InteractiveScanner {
 								`${bundle.type}: nested [${ctN}] table absorbed as a sub-bundle; host continues.`);
 							continue;
 						}
+					}
+				}
+				// FOREIGN-TABLE SECTION BREAK (ROUND 306 — free the speech bubble from the
+				// page-layout table, reason 1's walk-swallowed half). A free [speech bubble]
+				// whose member walk then swallows a table that is NOT bubble material — the
+				// writer's next SECTION laid out as a table ("[H3] Wireframes | [embed video]",
+				// TEDC401-3.0; the slider/click-drop activity tables, TEDC402-2.0) — declined
+				// the whole widget, and the section was trapped in the hand-off box with it.
+				// The walk ENDS BEFORE such a table (left unconsumed, unlike the r266/r271
+				// capture-then-break rules): a table carrying its own invocation self-captures
+				// as its own widget via #interactiveInTable, and the rest takes the normal
+				// table path. "Foreign" is the BUILDER'S OWN verdict — the promoted public
+				// InteractiveBuilder.SbTableForeign runs the rich composer's table reading
+				// under its most permissive assumption, so a table it would decline even then
+				// belongs to a bundle already in TODAY'S DECLINE SET (the r278 additivity
+				// argument; the round-306 hash run over every bubble module is the proof).
+				// Fenced on captured content (the r278 fence; a bubble invocation's own black
+				// text counts — the r296 content_on_invocation semantics), so an empty-bubble
+				// bundle keeps its exact current shape. Data member_rule.foreign_table_terminates;
+				// env SBFOREIGNTBL_OFF.
+				{
+					const ftT = mrT.foreign_table_terminates;
+					if (ftT && ftT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.SBFOREIGNTBL_OFF)
+						&& (ftT.types ?? ["speechBubble"]).includes(bundle.type)
+						&& bundle.memberItems.some((m) => m && ((m.type === "black" && String(m.text ?? "").trim() !== "")
+							|| (m.type === "tag" && String(m.blackAfter ?? "").trim() !== "")))
+						&& typeof InteractiveBuilder !== "undefined"
+						&& InteractiveBuilder.SbTableForeign(next.block)) {
+						break;   // the table is NOT captured — it takes the normal page path
 					}
 				}
 				bundle.tables.push(next.block);
@@ -2278,7 +2320,23 @@ class InteractiveScanner {
 		}
 
 		bundle.memberItems.unshift(...run);
-		bundle.startIndex = tagIdx - run.length;
+		// ROUND 306 — THE OWNER-START FIX. This absorb used to OVERWRITE the activity-owner
+		// lookback's `startIndex = activityIdx` with the image's own index, so a bundle that
+		// had BOTH an [Activity] owner and a same-block avatar left the [Activity]/[H3]/[Body]
+		// lead items UNCONSUMED — the main loop rendered them once (an empty-ish activity box
+		// + a loose heading) and the bundle-owned path rendered them AGAIN inside its box
+		// (flushLead), doubling the whole activity. Unreachable before round 306 dissolved
+		// TEDC402's layout tables into exactly this shape, but a defect in its own right:
+		// startIndex only ever moves BACKWARD, and a lead item the absorb turned into a
+		// MEMBER leaves the lead list (else the avatar's own caption text rendered inside
+		// the box as "<p>avatar Tina</p>" AND as the bubble's picture).
+		// Data member_rule.same_block_image_absorb.owner_start_fix; env SBOWNERFIX_OFF.
+		const _ownerFix = (cfg.owner_start_fix ?? true)
+			&& !(typeof process !== "undefined" && process.env && process.env.SBOWNERFIX_OFF);
+		bundle.startIndex = _ownerFix ? Math.min(bundle.startIndex, tagIdx - run.length) : (tagIdx - run.length);
+		if (_ownerFix && Array.isArray(bundle.activityLeadItems)) {
+			bundle.activityLeadItems = bundle.activityLeadItems.filter((x) => !run.includes(x));
+		}
 		bundle.sameBlockImage = imgs[0];              // the builder's no_table_image branch keys on this
 		for (const a of run) {
 			this.#harvestMedia(bundle, a);

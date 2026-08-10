@@ -1,5 +1,168 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-11 (round 306, build 260618.77) — FREE THE SPEECH BUBBLE FROM THE PAGE-LAYOUT TABLE (Chris — the round-306 kickoff against `WHY_UNBUILT__speechBubble.md`, reasons 1 + 10 + the reason-2 tile lever; **FULL CORPUS REGENERATION, Chris's explicit override of the §0a sweep — ledger reset to 0**)
+
+### 1. WHAT CHANGED, IN ONE LINE EACH
+
+**A table that traps a speech bubble beside an [Activity] now DISSOLVES into ordinary
+stacked blocks** — the human's own answer, byte-verified against TEDC402-1.0 — and the
+freed bubble builds through the exact round-246 avatar machinery this very module's
+free-body bubbles already use. **A table that is not bubble material ends the bubble's
+member walk** instead of sinking the widget. **The bubble's bracket reader accepts the
+dangling `[speech bubble` form** TagNormaliser.Parse has tolerated since round 174.
+**`[tile N]` opens a new bubble** (OSGM201). And TWO PRE-EXISTING DEFECTS were repaired
+rather than worked around (the r293b rule): the same-block avatar absorb no longer
+overwrites the activity-owner's startIndex — **TEDC401's shipped pages had been rendering
+whole activities TWICE since round 246** — and a numberless owner box now recovers the
+writer's own id from its black tail (`[Activity] **1A**` → `number="1A"`, the golds' own
+KEEP_ATTR).
+
+**RESULT: speechBubble 525 → 552 of 594 = 88.4% → 92.9%; NEW BUILDS +27 / LOST 0 in
+EVERY widget type** (the full 24-shard census re-run in both states; the 19 extra
+records are new bundles the dissolution legitimately exposes — freed slider/dnd/sketcher
+invocations now captured honestly).
+
+### 2. THE MEASUREMENT CORRECTED THE BRIEF, AND THE OBVIOUS RULE, BEFORE ANY CODE
+
+* **"Dissolve any table with an [Activity] marker in a cell" would have been wrong by an
+  order of magnitude.** Measured over all 454 modules (`outputs/_measure_r306_layouttables.cjs`),
+  that predicate fires on ~120 tables across ~20 modules — the bilingual TRR family's
+  embedded-activity tables, the HPFUN/TWHK fundamentals slide tables, and CEDO501's
+  round-305 quiz tables, every one of which must STAY a table. The shipped predicate —
+  an activity opener AND a speech-bubble invocation in the SAME table — fires on
+  **12 tables, ALL TEDC402**, nothing else in the library. A table carrying any
+  PAGE_BOUNDARY/SECTION_MARKER span never dissolves (ENGS202's page-opener table stays
+  declined, by design and by NEGATIVE assertion).
+* **The brief's tile lever reaches 1 activity, not 2** — OSGM201 page 1.0 carries no
+  `[tile N]` marker at all (it is the reason-3 over-capture family, declining on
+  max_paragraphs).
+* The walk-release needs no dissolution for the activity-less tables (TEDC401's
+  `[H3] Wireframes | [embed video]`): a released table with its own invocation
+  self-captures as its own widget, and the rest takes the round-46 layout grid — the
+  released `[Alert]` cell renders as plain grid text, ZERO new leaks.
+
+### 3. THE MECHANISM, PIECE BY PIECE (each independently reversible)
+
+* **`SBLAYOUT_OFF`** — `DocxExtractor.DissolveBubbleLayoutTables`, at the TrimFrontMatter
+  choke point BEFORE the r174 bracket repair (so a dissolved cell's `Activity]` typo heals
+  like any paragraph's). One paragraph block per cell in reading order, in-cell " / "
+  breaks restored to newlines (the r227 soft-break form). The [Activity] item then opens
+  its box, the [H3]/[Body] flow in, and the [Image]+[speech bubble] cell is EXACTLY the
+  r246 one-paragraph avatar dialect. TEDC402-2.0 now ships
+  `<div class="activity" number="1A">` + `<h3>Where do we see data?</h3>` + body + the
+  avatar bubble — the gold's own structure (the one arrangement difference: our bubble
+  sits inside the box, the bundle-owned convention; the gold's sits after it).
+  Data `Input_Doc_Rules.tables.bubble_layout_dissolve`.
+* **`SBFOREIGNTBL_OFF`** — the foreign-table section break in `#swallowMembers`, BEFORE
+  capture (unlike the r266/r271 capture-then-break rules). "Foreign" is the BUILDER'S OWN
+  verdict — `InteractiveBuilder.SbTableForeign`, promoted public (the r246 shared-predicate
+  discipline), runs the rich table reading under its most permissive assumption; a table
+  it declines even then belongs to a bundle already in today's decline set, so the rule is
+  additive by construction. Fenced on captured content (the r278 fence).
+  Data `member_rule.foreign_table_terminates`.
+* **`SBDANGLE_OFF`** — `#sbBrackets` accepts a bracket that opens in a red span and never
+  closes; the orphan `]` in the following black is stripped at #sbRestText (already) AND
+  at the noTable/textOnly cleans (new, same toggle). Sole cause of 2 declines, co-cause
+  of 7 more. Data `rich.dangling_bracket`.
+* **`SBTILE_OFF`** — `[tile N]` (canonical `shape n`) opens a new bubble in the rich
+  composer; additive by construction (every tile-carrying bundle was in the decline set).
+  The invocation's own layout sentence ("Have six tiles surround the image…") demotes to
+  the red Writers Note — §6, never silently stripped (the first cut dropped it; the probe
+  caught it). NAMED CAVEAT (the brief's own): the human packs all six balloons into ONE
+  row and joins bullets with `<br>`; we ship the measured one-row-per-bubble convention
+  with `<ul>` bodies — every word right and in order, the arrangement differs.
+  Data `rich.tile_bubble_tags`.
+* **`SBOWNERFIX_OFF`** — the owner-start repair: `#absorbSameBlockImage` used to OVERWRITE
+  the owner lookback's `startIndex = activityIdx`, leaving the [Activity]/[H3]/[Body] lead
+  items unconsumed — the main loop rendered them once and the bundle-owned box rendered
+  them AGAIN (and the avatar's caption leaked as `<p>avatar Tina</p>` inside the box).
+  **Pre-existing on the shipped disk** (TEDC401_3_0 shipped "design dungeon" twice; disk 2
+  → 1 now). startIndex only ever moves BACKWARD; an absorbed lead item leaves the lead
+  list. Data `same_block_image_absorb.owner_start_fix`.
+* **`SBOWNERID_OFF`** — the writer's number may ride the opener's BLACK tail
+  (`[Activity] **1A**`); `number` is a skeleton KEEP_ATTR (r223), so the writer's own id
+  is recovered (never invented) and a tail that IS the id no longer also renders as an
+  `<h3>1A</h3>` title (scoped by `_idFromTail`, so bracket-numbered boxes are untouched).
+  **The rider reaches beyond the four named modules, in the gold's direction:** ENGJ402,
+  OSSM401, XDLS901/902/904/905/906/908 gain the `number="3G"`-style attributes their gold
+  pages already carry (XDLS902's gold ships 1A–1G; its boxes were numberless).
+  Data `opener_rule.owner_id_from_tail`.
+
+### 4. TWO GARBLES THE PROOF CAUGHT, FENCED RATHER THAN SHIPPED — AND A VERIFIER BUG, THE TWELFTH ROUND RUNNING
+
+* **The weak-evidence fence** (rides SBDANGLE by construction): a table whose ONLY bubble
+  evidence is a dangling bracket, with 2+ other cells of substantial text, is another
+  widget's material — TEDC402's Messy/Clean CLICK-DROP table (whose human page builds a
+  clickDrop and a separate bubble) was becoming one giant balloon containing the column
+  headers and the avatar's iStock title. It keeps its honest box.
+* **The quiz-feedback fence** (`rich.decline_note_patterns`, rides SBFOREIGNTBL): a bundle
+  carrying the writer's `[Auto feedback: …]` span (whole, or Word-split into "Auto" +
+  "feedback:" pieces) is a TASK with a bubble beside it — TEDC402-6.0's "Choose the
+  format…" bubble had swallowed the Pathway A/B task paragraphs; the gold ships the bubble
+  ALONE. Proven against the OFF census: no pre-round build carries such a member.
+* **The verifier read only the FIRST `<p>` of a built bubble** (`texts(h)[0]`), so a
+  label-first multi-paragraph bubble was judged on its 2-word label (ENGI202's faithful
+  whakataukī bubble scored 0.13 against the human's identical one-`<p>` form). Harvest
+  corrected to per-bubble-row, all paragraphs (the r283 precedent — a fuller read can only
+  REMOVE false defects; DETECTION selftest still GREEN). Under the corrected read the
+  verifier's remaining **15 TEDC + 6 XDLS908 defects are IDENTICAL in both toggle states**
+  — all pre-existing (the r296 named class) — and the round REMOVES one ("Learn more and
+  refresh…") while adding none.
+
+### 5. NO WRITER WORD LOST — every delta decomposed
+
+The word-bag check over every changed page decomposes completely: activity ids moving
+from visible `<h3>` titles into `number=` attributes (the gold's own form) · avatar
+captions consumed into avatar images (the r246 convention) · the writer's auto-feedback
+lines moving from under an r300-class orphan flag into their own quiz's hand-off box
+(the human ships them nowhere visible) · and the healed DUPLICATES of the pre-existing
+double-render. The quality scan of every built bubble: **0 flagged** (and the 2
+pre-existing "] "-led bubbles on shipped pages heal with the same strip).
+
+### 6. PROOF
+
+One toggle state per process throughout. **All six toggles OFF ⇒ byte-identical to the
+shipped disk on 120 pages across 16 modules** (and on all 101 bubble-carrying modules in
+the hash run — 92 identical even with fixes ON). **34 assertions ALL PASS incl. six
+NEGATIVE** (ENGS202's page-opener stays declined; XWHA02/HES1003/CEDR501 byte-identical
+with fixes ON). Per-toggle decomposition: LAYOUT 9pp · FOREIGNTBL 15pp · DANGLE 10pp ·
+TILE 1pp · OWNERFIX 6pp · OWNERID 8pp + the 9 rider pages — every toggle moves only its
+class. Affected set from BYTES (the manifest, below) reconciles with the census exactly.
+
+### 7. THE FULL REGENERATION + GATES (all HELD-or-IMPROVED; `--accept-named` neither used nor needed)
+
+416 dirs in 36 batches, **0-stale by mtime against the final engine**; content manifest:
+**33 pages / 12 modules changed, 0 added, 0 removed** (ENGI202, ENGJ402, OSGM201,
+OSSM401, TEDC401, TEDC402, XDLS901/902/904/905/906/908 — the last eight the SBOWNERID
+gold-ward rider). PRIMARY skeleton (chained state `outputs/_r306_sk_final.json`, the
+r303/r305 pattern, merge `outputs/_r306_sk_merge.py`): **SCAFFOLD mean 49.827% / ≥50%
+997 EXACT / ≥75% 193 (+1 IMPROVED) / ≥90% 16 EXACT / RAW 34.151% (+0.009 IMPROVED) @
+1939 pairs, skipped 0**. 27 pages moved / 0 added / 0 dropped; pp-sum **scaffold −13.88
+vs RAW +18.28** — the documented net-positive signature, and the fall is TWO NAMED pages
+(TEDC402_6_0 −14.25 and _3_0 −13.47, whose raw RISES +4.30): hand-off boxes that
+coincidentally matched gold's built widgets through the collapsed marker now ship real
+activity boxes, bubbles and released tables (the r176/r194/r284 class). All other gates:
+clean **2056/2102 = 97.8%** / leak **288/46** EXACT · cs exact **11241 (+1 IMPROVED)** /
+EXTRA **186** / missing **588** EXACT · body **239** EXACT · tags **9557/9557 REAL 0** ·
+flipCard §9 **divergence 0 ✓, identical in both toggle states** · entry-parity PASS ·
+index-sync 33/28 · **all TEN selftests GREEN**. FULL ship recorded (ledger 0); manifest +
+fast-loop baselines refreshed (skeleton seeded from the chained state); feature index
+rebuilt (`--rehtml` + `--merge`).
+
+### 8. WHAT REMAINS, NAMED
+
+TEDC402 keeps 1 speechBubble hand-off ref (page 7_0's fenced quiz-material bundle) and
+TEDC401's r246-era dev-rewrite defects stay the pre-existing named class. The remaining
+50 bubble declines are the brief's reasons 3–9 and 11 (over-capture, the "text to speech"
+alias, orphan markers, trailing buttons, XWHA02's heading-as-words, composite pictures,
+un-nameable pictures, words not in the document) — none of them this round's scope, all
+still catalogued in `WHY_UNBUILT__speechBubble.md`. **The transfer verdict Chris asked
+for: the layout-table dissolution transfers.** Reason 1 was one instance of the
+437-activity "one activity collected as two" class, and the dissolve-don't-capture
+treatment (a data-listed marker pair + per-cell paragraph blocks) is exactly the shape
+the clickDrop 265 and modal 51 sub-classes need; the XDLS tile row (~212–231, with
+`iconType` 97.8% derivable) is the next ranked round.
+
 ## 2026-08-09 (round 305, build 260618.76) — THE MULTIPLE-CHOICE QUIZ, and the `dropbox` modifier: the orphan-remaining chain, round 4 of 4 — **THE LAST; THE CHAIN IS CLOSED** (Chris — "implement as many fixes as possible from `WHY_UNBUILT__orphan_remaining.md`", plus his two decisions this round: **"Full REGENERATE CORPUS"** and **the dropbox re-cut "Do it in this round"**; **FULL CORPUS REGENERATION — ledger reset to 0**)
 
 Chain order: 1 — the `scope_tags` widening ✅ (r302) → 2 — the bare `[Tab N]`/`[Slide N]`

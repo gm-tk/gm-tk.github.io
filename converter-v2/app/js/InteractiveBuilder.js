@@ -2596,7 +2596,16 @@ class InteractiveBuilder {
 	 * @returns {string[]|null} the bubble's paragraphs, or null to decline
 	 */
 	static NoTableBubbleParagraphs(members, skip, cfg) {
-		const clean = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+		// ROUND 306 — a dangling "[speech bubble" invocation leaves its orphan "]"
+		// glued to the FRONT of the bubble text ("] You just explored…"). Strip it
+		// here exactly as #sbRestText's r104 STRAYLEAD rule does; tied to the same
+		// reason-10 toggle so SBDANGLE_OFF reverts BOTH halves together.
+		const _dangleOn = !(typeof process !== "undefined" && process.env && process.env.SBDANGLE_OFF);
+		const clean = (s) => {
+			let t = String(s ?? "").replace(/\s+/g, " ").trim();
+			if (_dangleOn) t = t.replace(/^[\]}]\s*/, "");
+			return t;
+		};
 		const list = members ?? [];
 		const from = list.findIndex((m) => m?.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE");
 		if (from === -1) return null;
@@ -2680,7 +2689,14 @@ class InteractiveBuilder {
 		if (env.SBTEXT_OFF) return null;
 		if ((bundle.tables ?? []).length || (bundle.media ?? []).length || bundle.sameBlockImage) return null;
 		if ((bundle.extraTypes ?? []).some((t) => t !== bundle.type)) return null;   // same-type merge only
-		const clean = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+		// ROUND 306 — strip a dangling invocation's orphan leading "]" (see
+		// NoTableBubbleParagraphs; same SBDANGLE_OFF reversal).
+		const _dangleOn2 = !(typeof process !== "undefined" && process.env && process.env.SBDANGLE_OFF);
+		const clean = (s) => {
+			let t = String(s ?? "").replace(/\s+/g, " ").trim();
+			if (_dangleOn2) t = t.replace(/^[\]}]\s*/, "");
+			return t;
+		};
 		const maxP = cfg.max_paragraphs ?? 4;
 		const thoughtRe = new RegExp(cfg.thought_re ?? "thought", "i");
 		const bubbles = [];
@@ -2768,10 +2784,49 @@ class InteractiveBuilder {
 		return !!(url && this.#istockFilename(url, tpl));                 // a nameable iStock STILL image
 	}
 
-	static #sbBrackets(spanText) {
-		return [...String(spanText ?? "").matchAll(/\[([^\]\n]{0,140}?)\]/g)]
+	static #sbBrackets(spanText, cfg = null) {
+		const s = String(spanText ?? "");
+		const out = [...s.matchAll(/\[([^\]\n]{0,140}?)\]/g)]
 			.map((m) => m[1].replace(/\s+/g, " ").trim().toLowerCase())
 			.filter(Boolean);
+		// ROUND 306 — THE CLOSING BRACKET OUTSIDE THE COLOURED TEXT (reason 10). Word
+		// lets a writer colour part of a line red and leave the rest black; two of
+		// TEDC402's bubbles were typed "[speech bubble [/RED TEXT]🔴]" — the "]" on the
+		// far side of the colour boundary — and ENGI202's whole table hangs on the same
+		// "[Thought bubble " span. The complete-pair scan above finds no marker, so the
+		// bubble reading treated the invocation as a designer note and had no bubble to
+		// attach the words to. Accept a bracket that OPENS inside the span and never
+		// closes (the same tolerance TagNormaliser.Parse has had since round 174 for
+		// classification — the bubble's own bracket reader never learned it). The
+		// orphan "]" left in the following black text is already stripped by
+		// #sbRestText's r104 STRAYLEAD rule. Data rich.dangling_bracket; env SBDANGLE_OFF.
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (cfg && (cfg.dangling_bracket ?? false) && !env.SBDANGLE_OFF) {
+			const m = s.match(/\[([^\[\]\n]{0,140})$/);
+			const inner = m ? m[1].replace(/\s+/g, " ").trim().toLowerCase() : "";
+			if (inner) out.push(inner);
+		}
+		return out;
+	}
+
+	/**
+	 * ROUND 306 — is this captured table FOREIGN to the speech bubble (not bubble
+	 * material under even the most permissive reading)? PROMOTED PUBLIC for the
+	 * scanner's foreign-table section break (member_rule.foreign_table_terminates —
+	 * the r246 shared-predicate discipline: the scanner asks the BUILDER, so capture
+	 * and build can never drift apart). Runs the rich composer's own table reading
+	 * with the openerIsBubble assumption at its most permissive: a table that
+	 * declines even then (a STOP-class marker in a cell, or tagged heads/text with
+	 * no bubble and no image) belongs to a bundle already in today's decline set.
+	 *
+	 * @param {object} block - the captured table block (rows of sentinel-marked cells)
+	 * @returns {boolean} true when the bubble machinery could never use this table
+	 */
+	static SbTableForeign(block) {
+		const tpl = DataService?.Data?.EmitTemplates?.interactive_builders?.speechBubble;
+		const cfg = tpl?.rich;
+		if (!tpl || !cfg || cfg.enabled === false) return false;
+		try { return this.#sbTableGroups(block, cfg, tpl, true) === null; } catch { return false; }
 	}
 
 	/**
@@ -2835,12 +2890,12 @@ class InteractiveBuilder {
 			if (i === 0 && c.lead.trim()) parts.push({ role: "text", text: c.lead.trim() });
 			if (!c.span) { if (i > 0 && c.lead.trim()) { /* handled below via prev marker */ } continue; }
 			const following = (chunks[i + 1]?.lead ?? "").trim();
-			const roles = this.#sbMarkerRole(this.#sbBrackets(c.span), cfg);
+			const roles = this.#sbMarkerRole(this.#sbBrackets(c.span, cfg), cfg);
 			if (roles.has("STOP")) {
 				// ROUND 296: a `[video]`/`[audio]` cell whose only address is a nameable
 				// iStock STILL image is a mislabelled PICTURE, not a video that ends the
 				// widget (OSOH501-4.0). Everything else on the stop list still declines.
-				if (!this.#sbMislabelledImage(this.#sbStopWord(this.#sbBrackets(c.span), cfg), following, cfg, tpl)) return null;
+				if (!this.#sbMislabelledImage(this.#sbStopWord(this.#sbBrackets(c.span, cfg), cfg), following, cfg, tpl)) return null;
 				roles.delete("STOP"); roles.add("image");
 			}
 			const url = following.match(/https?:\/\/[^\s\]"<>)]+/)?.[0] ?? null;
@@ -2850,7 +2905,11 @@ class InteractiveBuilder {
 				if (!roles.has("bubble") && rest) parts.push({ role: "text", text: rest });
 			}
 			if (roles.has("bubble")) {
-				parts.push({ role: "bubble", text: rest, tagText: this.#cellText(c.span) });
+				// ROUND 306 — record whether this bubble marker was only ever a DANGLING
+				// bracket (no complete [..] pair resolves a bubble in this span): weak
+				// evidence, which #sbTableGroups fences below.
+				const complete = this.#sbMarkerRole(this.#sbBrackets(c.span, null), cfg).has("bubble");
+				parts.push({ role: "bubble", text: rest, tagText: this.#cellText(c.span), dangling: !complete });
 			} else if (roles.has("head")) {
 				if (rest) parts.push({ role: "head", text: rest });
 			} else if (roles.has("text")) {
@@ -2899,11 +2958,25 @@ class InteractiveBuilder {
 		const tag = String(p.tag ?? "").toLowerCase();
 		const map = cfg.tag_roles ?? {};
 		for (const [role, list] of Object.entries(map)) if ((list ?? []).includes(tag)) roles.add(role);
-		if (!roles.size) for (const r of this.#sbMarkerRole(this.#sbBrackets(m.text ?? ""), cfg)) roles.add(r);
+		// ROUND 306 — [tile N] AS A NEW BUBBLE (the round's reason-2 lever, a data
+		// edit). OSGM201 writes "[speech bubble with hover] Have six tiles surround
+		// the image…" then "[tile 1]", "[tile 2]" …, each with a bold line and
+		// bullets — and the human's finished page shows each [tile N] IS a bubble
+		// (the bold line its first paragraph, the bullets its second). [tile N]
+		// resolves to the SUBTAG `shape n`, which nothing here recognised, so the
+		// whole bundle declined at this member — meaning every bundle a tile tag
+		// appears in is in TODAY'S DECLINE SET and the mapping is additive by
+		// construction. Kept OUT of tag_roles so it reverses independently.
+		// Data rich.tile_bubble_tags; env SBTILE_OFF.
+		{
+			const envT = (typeof process !== "undefined" && process.env) ? process.env : {};
+			if (!roles.size && (cfg.tile_bubble_tags ?? []).includes(tag) && !envT.SBTILE_OFF) roles.add("bubble");
+		}
+		if (!roles.size) for (const r of this.#sbMarkerRole(this.#sbBrackets(m.text ?? "", cfg), cfg)) roles.add(r);
 		if (roles.has("STOP")) {
 			// ROUND 296 — see #sbMislabelledImage. The stop word is the member's own
 			// resolved tag when the tag_roles map put it on the list, else the bracket's.
-			const sw = (cfg.tag_roles?.STOP ?? []).includes(tag) ? tag : this.#sbStopWord(this.#sbBrackets(m.text ?? ""), cfg);
+			const sw = (cfg.tag_roles?.STOP ?? []).includes(tag) ? tag : this.#sbStopWord(this.#sbBrackets(m.text ?? "", cfg), cfg);
 			if (!this.#sbMislabelledImage(sw, after, cfg, tpl)) return null;
 			roles.delete("STOP"); roles.add("image");
 		}
@@ -2967,6 +3040,26 @@ class InteractiveBuilder {
 		const nBub = (parts) => (parts ?? []).filter((p) => p.role === "bubble").length;
 		const totalBub = cellParts.flat().reduce((n, p) => n + nBub(p), 0);
 		const totalImg = cellParts.flat().reduce((n, p) => n + (p ?? []).filter((x) => x.role === "image").length, 0);
+		// ROUND 306 — WEAK-EVIDENCE FENCE for the dangling bracket (reason 10). When the
+		// table's ONLY bubble evidence is a dangling "[speech bubble" (no complete pair
+		// anywhere), and the table also carries 2+ OTHER cells of substantial text, it is
+		// another widget's material with one bubble cell embedded in it — TEDC402's
+		// Messy/Clean click-drop table, whose human page builds a clickDrop and a SEPARATE
+		// bubble. Building all of it into one balloon is a garble; the honest hand-off box
+		// stands (exactly the pre-round outcome). A single-cell table (ENGI202's whakataukī)
+		// has no other cells and still builds.
+		{
+			const flatB = cellParts.flat().flatMap((p) => (p ?? []).filter((x) => x.role === "bubble"));
+			if (flatB.length && flatB.every((b) => b.dangling)) {
+				let otherCells = 0;
+				for (const rowP of cellParts) for (const p of rowP) {
+					if ((p ?? []).some((x) => x.role === "bubble")) continue;
+					const txt = (p ?? []).filter((x) => x.role === "text" || x.role === "head").map((x) => x.text).join(" ");
+					if (txt.replace(/[^\p{L}\p{N}]/gu, "").length >= 20) otherCells++;
+				}
+				if (otherCells >= 2) return null;
+			}
+		}
 		if (!totalBub && !totalImg) {
 			// THE PLAIN-CELL TABLE. The writer put the bubble tag on the invocation and
 			// the bubble TEXTS in a bare table — "[Put the three quotations each into a
@@ -3052,6 +3145,17 @@ class InteractiveBuilder {
 		// table form (the writer's "put each of these into a speech bubble" dialect).
 		const openerIsBubble = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]
 			.some((m) => m?.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE");
+		// ROUND 306 — in a TILE bundle (see rich.tile_bubble_tags in #sbMemberParts) the
+		// invocation's own black text is the writer's LAYOUT INSTRUCTION to the design
+		// team ("Have six tiles surround the image three on each side"), never a bubble:
+		// each [tile N] is the bubble. Demote the invocation's bubble part to a NOTE so
+		// the instruction surfaces as the standard red Writers Note (§6 — never silently
+		// stripped) instead of shipping inside a balloon. Env SBTILE_OFF (with the map).
+		const _envTile = (typeof process !== "undefined" && process.env) ? process.env : {};
+		const _tileTags = cfg.tile_bubble_tags ?? [];
+		const tileBundle = _tileTags.length && !_envTile.SBTILE_OFF
+			&& (bundle.memberItems ?? []).some((m) => m?.type === "tag"
+				&& _tileTags.includes(String(m.parse?.primary?.tag ?? "").toLowerCase()));
 		const groups = [];
 		let cur = [];
 		const pushCur = () => { if (cur.length) groups.push(cur); cur = []; };
@@ -3064,8 +3168,34 @@ class InteractiveBuilder {
 				for (const one of g) if (one.length) groups.push(one);
 				continue;
 			}
-			const parts = this.#sbMemberParts(m, cfg, tpl);
+			let parts = this.#sbMemberParts(m, cfg, tpl);
 			if (parts === null) return null;
+			// ROUND 306 — QUIZ-FEEDBACK FENCE. A bundle carrying the writer's
+			// "[Auto feedback: …]" span is a TASK with a bubble beside it, not a bubble:
+			// TEDC402-6.0's "Choose the format…" bubble had swallowed the Pathway A/B
+			// task paragraphs and their auto-feedback, and building it put the task
+			// inside the balloon (the gold ships the bubble alone and the task as the
+			// activity's own body). Never half-build — the honest box stands. Reversal
+			// rides SBFOREIGNTBL_OFF (the walk-break is what made these reachable);
+			// proven against the OFF census: NO pre-round build carries such a member.
+			{
+				const dn = cfg.decline_note_patterns ?? [];
+				if (dn.length && !env.SBFOREIGNTBL_OFF) {
+					for (const p of parts) {
+						if (p.role === "note" && dn.some((re) => new RegExp(re, "i").test(String(p.text ?? "").trim()))) return null;
+					}
+				}
+			}
+			if (tileBundle && m.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE") {
+				parts = parts.map((p) => (p.role === "bubble" && p.text) ? { role: "note", text: p.text } : p)
+					.filter((p) => !(p.role === "bubble" && !p.text));
+				// the writer's layout sentence may ride INSIDE the invocation's own span
+				// ("[speech bubble with hover] Have six tiles surround the image…") — it is
+				// an instruction to the design team, never bubble content, and must not be
+				// silently dropped (§6): surface it as the red Writers Note too.
+				const embedded = String(m.text ?? "").replace(/^\s*\[[^\]]*\]\s*/, "").replace(/\s+/g, " ").trim();
+				if (embedded && /[\p{L}\p{N}]/u.test(embedded)) parts.push({ role: "note", text: embedded });
+			}
 			cur.push(...parts);
 		}
 		pushCur();

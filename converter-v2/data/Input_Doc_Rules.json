@@ -74,6 +74,13 @@
 		"close": "└─── END TABLE ───",
 		"in_cell_line_break": " / "
 	},
+	"tables": {
+		"bubble_layout_dissolve": {
+			"enabled": true,
+			"interactive_tags": ["speech bubble"],
+			"_note": "ROUND 306 (Chris — free the speech bubble from the page-layout table). A table whose red spans resolve to BOTH an ACTIVITY-family CONTAINER_OPEN marker AND a speech-bubble INTERACTIVE invocation is a PAGE-LAYOUT table, not widget data: the writer laid the activity out in one cell and the character+balloon in the other, and the HUMAN'S OWN ANSWER is to dissolve the table — the finished page ships the two cells as ordinary stacked blocks in reading order (TEDC402-1.0, byte-verified). DocxExtractor.DissolveBubbleLayoutTables turns each cell into one paragraph block (in-cell ' / ' line breaks restored to plain newlines — the r227 soft-break form), BEFORE the r174 bracket repair so a cell's 'Activity]' typo heals too; the [Activity] opener then opens its box and the [Image]+[speech bubble] cell rides the r246 no-table avatar dialect this very module's free-body bubbles already build through. THE FENCE IS MEASURED (outputs/_measure_r306_layouttables.cjs, all 454 modules): activity-marker-alone fires on ~120 tables across ~20 modules that must all STAY tables (bilingual TRR embedded-activity tables, fundamentals accordion/slide tables, CEDO501's r305 quiz tables); BOTH-markers fires on 12 tables, ALL TEDC402. A table carrying any PAGE_BOUNDARY/SECTION_MARKER span never dissolves (an in-cell [End page] reaching the page splitter would churn pagination — ENGS202's page-opener table stays exactly as it is, by design). Env SBLAYOUT_OFF reverts byte-for-byte."
+		}
+	},
 	"formatting_markers": {
 		"bold": "**",
 		"italic": "*",

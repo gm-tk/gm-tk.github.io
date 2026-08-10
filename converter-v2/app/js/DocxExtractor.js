@@ -336,10 +336,95 @@ class DocxExtractor {
 			result = blocks;
 		}
 
+		// ROUND 306 — a PAGE-LAYOUT table that traps a speech bubble beside an
+		// [Activity] dissolves into ordinary stacked blocks (the human's own
+		// answer). Runs BEFORE the bracket repair below, so a dissolved cell's
+		// "Activity]" typo is repaired like any other paragraph's.
+		result = this.DissolveBubbleLayoutTables(result, normaliser, run);
+
 		// Some writers accidentally drop the opening square bracket off a tag
 		// — e.g. typing "H2] Know:" instead of "[H2] Know:". Repair that here,
 		// once, before any other part of the pipeline reads these blocks.
 		return this.RepairContentTags(result, normaliser, run);
+	};
+
+	/**
+	 * ROUND 306 — DISSOLVES A PAGE-LAYOUT TABLE THAT TRAPS A SPEECH BUBBLE.
+	 *
+	 * WHAT PROBLEM THIS SOLVES:
+	 * One writer family (measured: EXACTLY TEDC402, 12 tables corpus-wide) lays a
+	 * whole lesson activity out inside a two-column table — the [Activity] with its
+	 * heading/instructions in one cell, the character picture + [speech bubble] in
+	 * the other. The bubble's collector took the whole table, met the [Activity]
+	 * marker, and correctly concluded "not a bubble layout" — so BOTH cells shipped
+	 * inside a developer hand-off box. The human developer's own answer is to THROW
+	 * THE TABLE AWAY: the finished page ships the two cells as two ordinary stacked
+	 * blocks in reading order — a normal activity box, then a normal bubble row
+	 * (TEDC402-1.0, byte-verified in the round-306 brief).
+	 *
+	 * HOW: a qualifying table's cells become ordinary paragraph blocks, one block
+	 * per cell in reading order, with the in-cell line-break marker restored to a
+	 * plain newline (the round-227 soft-break form every downstream reader already
+	 * handles). Every existing mechanism then does the rest: the [Activity] opener
+	 * opens its box, and the [Image]+[speech bubble] cell is EXACTLY the one-
+	 * paragraph avatar dialect round 246's no-table bubble builder already builds
+	 * on this very module's free-body pages.
+	 *
+	 * THE FENCE IS MEASURED, NOT GUESSED (outputs/_measure_r306_layouttables.cjs,
+	 * all 454 modules): a table dissolves ONLY when its red spans resolve to BOTH
+	 * an ACTIVITY-family CONTAINER_OPEN marker AND a speech-bubble INTERACTIVE
+	 * invocation. "Activity marker alone" would have fired on ~120 tables across
+	 * ~20 modules — the bilingual TRR embedded-activity tables, the fundamentals
+	 * accordion/slide tables, CEDO501's round-305 quiz tables — every one of which
+	 * must STAY a table. Both-markers fires on 12 tables, ALL TEDC402. A table
+	 * carrying any PAGE_BOUNDARY / SECTION_MARKER span never dissolves (exposing an
+	 * in-cell [End page] to the page splitter would churn pagination — the ENGS202
+	 * page-opener class stays exactly as it is).
+	 *
+	 * Data: Input_Doc_Rules.tables.bubble_layout_dissolve. Env: SBLAYOUT_OFF.
+	 *
+	 * @param {Object[]} blocks - content blocks (tables carry .rows / .rowLinks)
+	 * @param {TagNormaliser|null} normaliser - resolves the cell spans (required)
+	 * @param {ConversionRun|null} run - note surfacing
+	 * @returns {Object[]} a new block list with qualifying tables dissolved
+	 */
+	static DissolveBubbleLayoutTables(blocks, normaliser, run = null) {
+		const cfg = DataService?.Data?.InputDocRules?.tables?.bubble_layout_dissolve;
+		if (!normaliser || !cfg || cfg.enabled === false) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env.SBLAYOUT_OFF) return blocks;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const needTags = new Set(cfg.interactive_tags ?? ["speech bubble"]);
+		const brk = DataService.Data.InputDocRules?.table_markers?.in_cell_line_break ?? " / ";
+		const out = [];
+		for (const b of blocks) {
+			if (!b || b.kind !== "table" || !Array.isArray(b.rows)) { out.push(b); continue; }
+			let hasAct = false, hasBubble = false, hasBoundary = false;
+			for (const m of String(b.text ?? "").matchAll(RED)) {
+				let p; try { p = normaliser.Parse(m[1]); } catch { continue; }
+				const pr = p && p.primary;
+				if (!pr) continue;
+				if (pr.tag === "activity" && pr.directive === "CONTAINER_OPEN") hasAct = true;
+				else if (pr.directive === "INTERACTIVE" && needTags.has(pr.tag)) hasBubble = true;
+				else if (pr.directive === "PAGE_BOUNDARY" || pr.directive === "SECTION_MARKER") hasBoundary = true;
+			}
+			if (!hasAct || !hasBubble || hasBoundary) { out.push(b); continue; }
+			let made = 0;
+			for (let r = 0; r < b.rows.length; r++) {
+				for (const cell of (b.rows[r] ?? [])) {
+					const text = String(cell ?? "").split(brk).join("\n").trim();
+					if (!text) continue;
+					out.push({
+						kind: "para", text,
+						links: (b.rowLinks?.[r] ?? b.links ?? []).slice(),
+						wtPage: b.wtPage, list: "", listLevel: 0,
+					});
+					made++;
+				}
+			}
+			run?.AddNote("info", "DocxExtractor",
+				`Page-layout table dissolved into ${made} stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).`);
+		}
+		return out;
 	};
 
 	/**

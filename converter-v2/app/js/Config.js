@@ -1385,7 +1385,24 @@ class Config {
 	// 0.91 precision. FULL CORPUS REGENERATION (Chris); ledger reset to 0.
 	// Data interactive_builders.multiChoiceQuiz + body_region.activity_dropbox_postpass;
 	// env MCQ_OFF / ACTDROPBOX_OFF.
-	static AppVersion = "260618.76";
+	// ROUND 306 (260618.77): FREE THE SPEECH BUBBLE FROM THE PAGE-LAYOUT TABLE (Chris —
+	// the round-306 brief's reasons 1 + 10 + the tile lever; FULL CORPUS REGENERATION).
+	// A table carrying BOTH an [Activity] and a [speech bubble] is a PAGE LAYOUT, not
+	// widget data — it DISSOLVES into stacked blocks (the human's own answer; measured:
+	// 12 tables, ALL TEDC402); a foreign table ends the bubble's member walk (the
+	// builder's own verdict, promoted public as SbTableForeign); the bubble's bracket
+	// reader accepts the dangling "[speech bubble" form Parse has tolerated since r174;
+	// [tile N] opens a new bubble (OSGM201). TWO pre-existing defects repaired: the
+	// same-block avatar absorb no longer overwrites the activity-owner's startIndex
+	// (TEDC401's shipped double-render healed), and a numberless owner box recovers the
+	// writer's own id from the black tail ("[Activity] **1A**" -> number="1A", the golds'
+	// own attribute — reaches XDLS902/908, ENGJ402, OSSM401 too). speechBubble 525 -> 552
+	// of 594 (92.9%), +27 / LOST 0 in every type. Data Input_Doc_Rules.tables
+	// .bubble_layout_dissolve + member_rule.foreign_table_terminates + rich.dangling_bracket
+	// /tile_bubble_tags/decline_note_patterns + opener_rule.owner_id_from_tail; env
+	// SBLAYOUT_OFF / SBFOREIGNTBL_OFF / SBDANGLE_OFF / SBTILE_OFF / SBOWNERFIX_OFF /
+	// SBOWNERID_OFF.
+	static AppVersion = "260618.77";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
