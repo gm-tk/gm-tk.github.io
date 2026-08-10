@@ -2015,6 +2015,22 @@
 				"image_slug_fallback": true,
 				"_note": "ROUND 283 — the general ITEM composer, tried LAST so all 61 pre-round builds are byte-identical by construction. Items resolve from an ordered delimiter vocabulary: D1 labelled [click drop N] tags over the full member vocabulary; D2 a captured TABLE read five ways (T0 self-delimited CELLS, T1 a face-marker COLUMN, T2/T3 a peeled header then N x 2 rows, T4 one item per COLUMN, T5 one item per CELL); D3 a repeating same-level HEADING run. Two general rules carry it: content before the first button is the widget's own LEAD prose, rendered above the widget in the writer's place rather than thrown away, and a run of media immediately before a delimiter belongs to the item it opens. GOLD-BACKED (1,199 groups / 211 modules / 3,036 buttons): min_items 1 for an explicit delimiter (a one-item clickDrop is the gold's plurality at 43.5%) but min_inferred_items 2; label_max_words 8 (<=3 words 83.7%, <=8 99.2%); a label is NEVER invented, a bare URL is never a label, and a panel with no visible text is a half-build. Env CLICKDROPS_OFF."
 			},
+			"tile_grid": {
+				"enabled": true,
+				"min_tiles": 2,
+				"min_numbered": 1,
+				"label_max_words": 8,
+				"header_pattern": "\\bx\\s*\\d+",
+				"panel_id_pattern": "^\\d{0,2}[A-Z]$",
+				"pair_panels": true,
+				"panel_class_prefix": "clickDropContent ",
+				"anchor_id_from_tail": true,
+				"released_url_button": true,
+				"row_open": "<div class=\"row\">\n<div class=\"col-md-8 col-12 choicePage choiceHeightMatch\">",
+				"row_close": "</div>\n</div>",
+				"tile": "<div class=\"choice clickDrop dropBox col-md-4 col-6\">\n<div class=\"choiceImg\">\n<div class=\"iconCentral iconD\" iconType=\"{iconType}\"></div>\n</div>\n<div class=\"choiceText\">\n<h5>{label}</h5>\n</div>\n</div>",
+				"_note": "ROUND 307 — THE XDLS ACTIVITY-CHOOSER TILE GRID (WHY_UNBUILT__clickDrop.md reason 1a; the round-306 kickoff chain, ticket 1). The writer authors a page as a run of one-name click-drop SCRAPS ([Click Drop x 6] header + [Click Drop N] Label, or [Click Drop Activity NX with embedded image] Label + a URL-less LS-library icon reference) whose panels are the ordinary [Activity]-opened boxes further down the page. The human ships one TILE ROW (row > col-md-8 col-12 choicePage choiceHeightMatch > div.choice.clickDrop.dropBox.col-md-4.col-6 per tile, iconType = camelCase of the writer's own label — measured 262/268 = 97.8% across the library — label = the writer's words verbatim) and pairs the Nth tile with the Nth clickDropContent panel BY POSITION (the site JS contract; the gold RENUMBERS writer id typos positionally — measured on XDLS902 pages 4/5 — so id lookup is NOT the pairing rule, correcting the brief). NO <img> is emitted (the gold's own XDLS909 no-img tile form; the LS-library photo paths are hand-placed, case-inconsistent — ../images vs ../Images on ONE page — and never in the WT; the writer's icon reference is FULFILLED by the iconType div). FENCES, all measured: every clickDrop bundle on the page must be a clean scrap (click-drop members + URL-less image refs + releasable trailing headings ONLY — XDLS908/911/912's content-carrying bundles decline the page), named tiles >= min_tiles, numbered evidence (an x-N header or >= min_numbered numbered markers — TEFUN06/HES1006's bare repeats decline), a tile label is never an id-shaped reference ('4B'), and the page must carry >= as many bare-id-tail [Activity] anchors as tiles (XDLS909's short scrap runs + BLLR201's slideshow panels decline — never a tile without a panel, the round-291 rule). Scraps that stole a NEIGHBOUR's [Activity]/heading as owner-lead (the backward lookback on XDLS902 tiles 4-6) are RELEASED back to the body flow. Env CDTILES_OFF (whole feature), CDTILEID_OFF (the anchor bare-id-tail -> number= repair alone, scoped to paired anchors because the gold ITSELF ships <h3>4A</h3> id-titles on XTAS101/XLP01/XMES203/TEDC402 — a blanket repair would diverge), CDTILEPAIR_OFF (the clickDropContent postpass alone)."
+			},
 			"_comment": [
 				"clickDrop — a row of click-to-reveal BUTTONS, each revealing its own content panel.",
 				"MEMBER-based (like accordion/tabs): the writer types one [click drop N] tag per item; the",

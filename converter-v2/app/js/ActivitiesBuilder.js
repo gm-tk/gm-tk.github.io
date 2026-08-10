@@ -440,11 +440,30 @@ class ActivitiesBuilder {
 		// carries its own text) instead starts a fully self-contained box, so a LATER
 		// bare [Activity] tag is treated as a brand-new sibling activity and gets
 		// renumbered rather than merged into this one.
+		// ROUND 307 — an opener whose black tail IS its bare activity id (a tile-grid
+		// panel anchor, "[Activity] **1A**", tagged _r307TailIsId by the ContentConverter
+		// pre-pass): the tail is the NUMBER, not a title and not content. It must not
+		// render as an "<h3>1A</h3>" title below — the writer's own following [H2]
+		// heading then becomes the box heading under the ordinary title-protection rule
+		// (no content in the box yet) instead of closing the box early. titledOpener
+		// deliberately STAYS true: the id-tail IS the opener's own identity, so the
+		// NEXT bare [Activity] anchor opens a SIBLING box rather than merging in as a
+		// re-emphasis (setting it false collapsed a whole page into one box — caught
+		// live on XDLS905 before shipping).
+		// Data: interactive_builders.clickDrop.tile_grid.anchor_id_from_tail
+		// Env: CDTILEID_OFF (the pre-pass only sets the flag while the repair is on)
+		const tailIsId = it._r307TailIsId === true;
+		// A tagged PANEL ANCHOR (either id shape) is always a self-contained sibling:
+		// titledOpener=true stops the NEXT bare [Activity] anchor merging into it as a
+		// re-emphasis. (XDLS903-7.0: the bracket-numbered "[Activity 7e]" opener has an
+		// EMPTY tail, so under the plain rule the writer's following "[Activity] 7F"
+		// merged into box 7E and the sixth panel vanished — a merge the shipped disk
+		// also carries; the gold ships six separate panels.)
 		stack.push({ tag: "activity", close: tpl.activity_wrapper.close, mode: "activity",
-			hasContent: false, titledOpener: (it.blackAfter ?? "").trim().length > 0, id });
+			hasContent: false, titledOpener: it._r307PanelId ? true : (it.blackAfter ?? "").trim().length > 0, id });
 		// renderBlack=false lets the activity-OWNED path lay out the lead itself
 		// (first line → <h3> title); the standalone container path keeps true.
-		if (renderBlack && it.blackAfter.trim()) {
+		if (renderBlack && !tailIsId && it.blackAfter.trim()) {
 			// STANDALONE activity TITLE: for an activity that ISN'T owned by an
 			// interactive widget bundle (renderBlack is true here, meaning this method
 			// is doing the layout itself instead of deferring to the widget's own lead

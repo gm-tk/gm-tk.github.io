@@ -1402,7 +1402,25 @@ class Config {
 	// /tile_bubble_tags/decline_note_patterns + opener_rule.owner_id_from_tail; env
 	// SBLAYOUT_OFF / SBFOREIGNTBL_OFF / SBDANGLE_OFF / SBTILE_OFF / SBOWNERFIX_OFF /
 	// SBOWNERID_OFF.
-	static AppVersion = "260618.77";
+	// ROUND 307 (260618.78): THE XDLS ACTIVITY-CHOOSER TILE ROW (Chris — the r306
+	// follow-through chain, ticket 1 of 4; WHY_UNBUILT__clickDrop.md reason 1a). A page
+	// authored as one-name click-drop SCRAPS whose panels are the [Activity] boxes
+	// further down ships the human's tile row (div.choice.clickDrop.dropBox per writer
+	// name, iconType = camelCase of the label — the library's own 262/268 = 97.8%
+	// convention; NO invented img — the gold's own XDLS909 no-img form) and pairs the
+	// Nth tile with the Nth panel POSITIONALLY (the site JS contract; the gold
+	// RENUMBERS the writer's typo ids positionally, correcting the brief's
+	// pair-by-id-lookup rule) by prepending clickDropContent to the anchor's box and
+	// recovering the writer's own id as number= (typos kept verbatim). A scrap that
+	// stole a neighbour's [Activity]+section as owner-lead is RELEASED; a released
+	// URL-only [button] ships the r76 anchored externalButton (a pre-existing
+	// URL-loss the word-check caught; the general ~75-item class is recorded).
+	// Fires on EXACTLY 30 pages / 5 modules (XDLS902-906) of the 158 clickDrop
+	// modules — every other page declines by measured fence (never a tile without a
+	// panel). 180 tiles / 180 paired panels / verifier tile lane 180 gold-matched,
+	// 0 defects; body_compare −30 IMPROVED. Data interactive_builders.clickDrop
+	// .tile_grid; env CDTILES_OFF / CDTILEID_OFF / CDTILEPAIR_OFF.
+	static AppVersion = "260618.78";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,5 +1,150 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-11 (round 307, build 260618.78) — THE XDLS ACTIVITY-CHOOSER TILE ROW (Chris — the round-306 follow-through chain, ticket 1 of 4, against `WHY_UNBUILT__clickDrop.md` reason 1a; **SCOPED regeneration per the chain's standing authority + the §0a whole-type clickDrop sweep — scoped ship #1 since the round-306 full; a FULL `REGENERATE CORPUS` closes the chain at round 310**)
+
+### 1. WHAT CHANGED, IN ONE LINE EACH
+
+**The XDLS "choose your activity" pages now ship the human's tile row and its paired
+panels.** A page the writer authors as a run of one-name click-and-drop SCRAPS —
+`[Click Drop x 6]` then `[Click Drop N] Label` (XDLS902), or `[Click Drop Activity NX
+with embedded image] Label` + a URL-less LS-library icon reference (XDLS903-906) —
+becomes ONE tile row (`row > col-md-8 col-12 choicePage choiceHeightMatch` holding six
+`div.choice.clickDrop.dropBox.col-md-4.col-6` tiles, `<h5>` = the writer's own words
+VERBATIM, `iconType` = their camelCase — the library's own convention at 262/268 =
+97.8%), and the Nth tile's reveal panel — the ordinary `[Activity]` box further down
+the SAME page — gains the gold's leading `clickDropContent` class token plus the
+writer's own id as `number=`. **RESULT: 30 pages across the 5 modules ship 180 tiles
+and 180 paired panels; the verifier's new tile lane reads 180/180 gold-matched labels,
+0 divergence, 0 defects; the 30 pages' clickDrop hand-off boxes are gone.**
+
+### 2. THE MEASUREMENT CORRECTED THE BRIEF, TWICE, BEFORE ANY CODE
+
+* **"The id is in the marker, so this is a lookup, not a guess" — the brief's pairing
+  rule — is NOT what the human does.** The writer's ids carry TYPOS (XDLS902 page 4's
+  activities read 4A, 4B, **5C**, 4D, 4E, **5F**; page 5 ends 1E, 1F; the CD markers
+  number Judge and Create both "5") and the gold RENUMBERS them positionally (4A-4G,
+  5A-5G). Pairing is POSITIONAL — the site JS pairs the Nth `.clickDrop` with the Nth
+  `.clickDropContent` — and the writer's typo ids ship VERBATIM as `number=` (the
+  round-306 rule: the writer's own id, never invented; the gold's renumber is a NAMED
+  divergence, never chased).
+* **The brief's "212 of 231 are XDLS902-906" flattened per-page structure the fences
+  need.** Live per-page: 902 fires 7/7; 903 6/7 (page 1 has a scrap that captured
+  body+button content); 904 6/7 and 905 6/7 (one page each has an anchor trapped
+  inside ANOTHER widget's capture — the round-310 gathering class, declined by the
+  never-a-tile-without-a-panel fence); 906 5/7 (two fat scraps hold panel content).
+  XDLS901's scraps carry unresolved-tag members (0 pages), XDLS909's tile names are
+  red-span-trapped AND its scrap runs are SHORT (2-4 scraps vs 4 anchors — deeper than
+  the brief's red-name fix; both recorded), XDLS908/911/912 decline on content-carrying
+  or table-carrying bundles. **Every decline is by measured fence, not module name.**
+
+### 3. THE MECHANISM (data `interactive_builders.clickDrop.tile_grid`; each piece reversible)
+
+* **`CDTILES_OFF`** — the whole feature. `ContentConverter.#cdTilePrepass` (beside the
+  r232/r299 pre-passes) qualifies the page: EVERY clickDrop bundle a clean scrap
+  (click-drop members with a one-line label or an x-N header · URL-less `[image]` icon
+  references, FULFILLED by the tile's iconType div · releasable trailing heading
+  members · a NUMBERLESS nameless content-less marker is a writer's stray duplicate,
+  skipped LOSSLESS — XDLS903-4.0's `[Click Drop Activity image]`; a NUMBERED nameless
+  marker means an unreadable tile name and declines the page, which is what keeps
+  XDLS909 honest) · named tiles ≥ min_tiles 2 · numbered evidence · a label is never
+  id-shaped ("4B" is a reference — XDLS908's tails) · and ≥ as many PANEL ANCHORS as
+  tiles. An anchor is an `[Activity]` in either writer shape: a PLAIN opener whose
+  black tail IS a bare id (`**1A**`, the bolded-letter `4**F**`, the letter-only "F"
+  typo) or a BRACKET-numbered opener with an EMPTY tail (`[Activity 7F]`); a
+  bracket-numbered opener with a TEXT tail is a stray re-mention (XDLS905-3.0's
+  `[Activity 3A] Activity 3A…` repeat — excluded). A scrap that STOLE a neighbouring
+  [Activity] + section as owner-lead (the backward lookback — XDLS902 tiles 4-6,
+  XDLS905 throughout) RELEASES them to the body flow. The FIRST scrap emits the row
+  (parts.push, its own row — the sentinel idiom), the rest render NOTHING, all count
+  BUILT (the manifest drops their worklist entries).
+* **`CDTILEID_OFF`** — the anchor id repair: a tagged anchor's tail becomes `number=`
+  and is NOT also rendered as an `<h3>1A</h3>` title, so the writer's own [H2] becomes
+  the box heading under the ordinary title-protection rule instead of CLOSING the box
+  early — the brief's item 5, which had XDLS902 shipping id-title husks with their
+  content as loose rows, HEALED (and the pairing rides these number attrs, so this
+  toggle also unmarks the panels — a diagnostic decomposition state). DELIBERATELY
+  SCOPED to prepass-tagged anchors: **the gold ITSELF ships `<h3>4A</h3>` id-titles on
+  XTAS101/XLP01/XMES203/TEDC402** (measured), so a blanket bare-id-tail repair would
+  diverge there — the general class is a recorded follow-up. A tagged anchor is always
+  titledOpener=true — a self-contained sibling — which the proof forced TWICE: false
+  collapsed a whole page into one box (XDLS905, the bare-reemphasis merge), and the
+  bracket-numbered empty-tail form re-hit it on XDLS903-7.0, where the shipped disk's
+  own `[Activity] 7F` merges into box 7E and the sixth panel vanishes (gold ships six).
+* **`CDTILEPAIR_OFF`** — the pairing post-pass alone (`#cdTilePair`, the r305
+  dropbox-postpass sibling, wired AFTER activityDropboxPostpass so the panel's final
+  class reads the gold's own `clickDropContent activity dropbox` token order;
+  cursor-forward search keeps duplicate writer ids order-safe; fires only on a
+  really-emitted row — never a dead button, the round-291 objection kept).
+* **THE RIDER (rides `CDTILES_OFF`; data `tile_grid.released_url_button`)** — a
+  RELEASED lead `[button]` whose tail is ONLY a URL ships the round-76 anchored
+  externalButton (default label) instead of falling to the journal-label default,
+  which shipped an UNLINKED "Go to your journal" button and silently LOST the writer's
+  URL — **a PRE-EXISTING button-route defect this round's own word-loss check caught**
+  (XDLS902 pages 6/7; the gold anchors both URLs). The same URL-only-[button] shape
+  exists on **~75 items across ~46 modules** corpus-wide (measured,
+  `outputs/_r307_btncount.cjs`) — general repair of that route is its OWN measured
+  round, recorded beside the round-308 upload box.
+
+### 4. NO WRITER WORD LOST — every delta decomposed to three verified classes
+
+The word-bag check over all 30 changed pages decomposes completely: activity ids
+moving from visible `<h3>` titles into `number=` attributes (the gold's own form) ·
+URLs moving into `href` attributes (the rider's anchored buttons — gold anchors them
+too) · and four full-line media/iStock REFERENCE lines the released body path drops
+under the STANDING round-240-D3 rule, **each individually checked against its gold
+page, which ships ZERO of them**. The tile labels move from hand-off-box dumps into
+visible `<h5>`s. Quality scan: 180 tiles, 0 flagged.
+
+### 5. PROOF (one toggle state per process throughout)
+
+**All-OFF ⇒ byte-identical to the shipped disk on 120 pages across 18 modules**
+(the family + XDLS908/909/911/912 + BLLR201/TEFUN06/OSGM501/HES1007 + canaries
+BLL210/OSAH501/TEDC402/ENGJ403). **63 assertions ALL PASS incl. ELEVEN NEGATIVE**
+(XDLS901/908/911/912, BLLR201 — whose gold builds `button clickDrop` buttons, not
+tiles — TEFUN06, the per-module declining pages, and the r226 choice-page nav tiles
+proven untouched on every overview). **The fire population and the affected set agree
+from two independent directions**: the shipped-predicate detector over all 158
+clickDrop-carrying modules fires on EXACTLY the 5 (`outputs/_detect_r307.cjs`), and
+the BYTES hash of all 845 pages of those 158 modules differs on EXACTLY 30 pages /
+5 modules, 0 added, 0 removed. Per-toggle decomposition: each state moves exactly the
+30 fired pages, behaviours spot-verified (IDOFF: tiles, no numbers, no pairing;
+PAIROFF: tiles + numbers, no clickDropContent). **Leak: the audit's own predicate,
+per module, IDENTICAL in both states (366 = 366).** The `_verify_clickdrop.cjs` tile
+lane is NEW (segment-based harvest — a lazy regex would bleed across the library's
+296 icon-less gold tiles), selftest GREEN with a detection channel.
+
+### 6. THE REGENERATION + GATES (all HELD-or-IMPROVED; `--accept-named` neither used nor needed)
+
+**The §0a whole-type sweep**: all 137 clickDrop-carrying modules with output
+regenerated (13 batches + splits, content-hash **0-stale**); the content manifest
+reports **30 pages / 5 modules changed, 0 added, 0 removed — the other 132 swept
+modules byte-identical, and no pending work from any earlier round** (the clean-sweep
+streak continues). The clickDrop VERIFIER over the WHOLE population: 182 ordinary
+clickDrops / 407 items, **defect 0 in every shard**; TILES 180 built, 180 gold-match,
+0 divergence, 0 defect. Gates (fast-loop decomposition over the 5, committed):
+skeleton SCAFFOLD mean **49.83 → 49.89 (+0.07 IMPROVED)** / ≥50% **997** / ≥75% **193**
+EXACT · cs exact **11241** / EXTRA **186** / missing **588** EXACT · **body_compare
+239 → 209 (−30 IMPROVED — the healed XDLS902 boxes and freed panel content)** · clean
+**97.81%** / leak **288/46** EXACT · tags **9557/9557 REAL 0** · flipCard §9
+**divergence 0 ✓** · entry-parity PASS · index-sync 33/28 · **all ELEVEN selftests
+GREEN** (the clickDrop verifier's new tile lane included). The fast-loop commit ran
+with `--allow-stale-baseline` — its mtime alarm named the 132 swept modules, which the
+content manifest had ALREADY proven byte-identical (the r302 class); ledger scoped #1
+(the blocked first scoped-ship attempt double-recorded and was corrected to one entry).
+
+### 7. WHAT REMAINS, NAMED
+
+The 5 declining family pages are the round-310 gathering class (a panel trapped
+inside another widget's capture, or a scrap that swallowed panel content) — exactly
+the shape the chain's last round exists for. XDLS909 needs BOTH the red-name reading
+and its missing-marker recovery (its scrap runs are short even with names); XDLS901's
+unresolved-tag members and XDLS911/912/908 stay the brief's own declines. The
+URL-only-[button] route (~75 items / 46 modules) is recorded for the round-308
+neighbourhood. The general bare-id-title repair (gold MIXED: XTAS101/XLP01/XMES203/
+TEDC402 keep id-titles) is recorded with its populations. XDLS906-2.0's released
+heading renders in the writer's own position (above its box, not inside — gold nests
+it; faithful order kept, nothing lost).
+
 ## 2026-08-11 (round 306, build 260618.77) — FREE THE SPEECH BUBBLE FROM THE PAGE-LAYOUT TABLE (Chris — the round-306 kickoff against `WHY_UNBUILT__speechBubble.md`, reasons 1 + 10 + the reason-2 tile lever; **FULL CORPUS REGENERATION, Chris's explicit override of the §0a sweep — ledger reset to 0**)
 
 ### 1. WHAT CHANGED, IN ONE LINE EACH

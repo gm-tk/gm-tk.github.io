@@ -1345,6 +1345,16 @@ class ContentConverter {
 		// around a red flag. See #definitionWeavePrepass below for the full story.
 		this.#definitionWeavePrepass(bodyItems, tpl, run, page);
 
+		// XDLS ACTIVITY-CHOOSER TILE-GRID pre-pass (ROUND 307 — WHY_UNBUILT__clickDrop.md
+		// reason 1a, the round-306 chain's ticket 1): a page authored as a run of one-name
+		// click-drop SCRAPS whose panels are the ordinary [Activity] boxes further down
+		// becomes the human's tile row + positionally-paired clickDropContent panels.
+		// The pre-pass qualifies the run, stashes the tile list on the FIRST scrap bundle,
+		// marks the rest consumed, RELEASES any neighbour [Activity]/heading items a scrap
+		// wrongly captured, and tags the paired panel anchors. See #cdTilePrepass below.
+		// Data: interactive_builders.clickDrop.tile_grid   Env: CDTILES_OFF
+		const r307Tiles = this.#cdTilePrepass(bodyItems, bundles, tpl, run, page);
+
 		for (let i = 0; i < bodyItems.length; i++) {
 			const it = bodyItems[i];
 
@@ -1460,6 +1470,30 @@ class ContentConverter {
 				}
 				if (bundle && !bundle._emitted) {
 					bundle._emitted = true;
+					// ROUND 307 — a tile-grid scrap bundle the pre-pass CONSUMED renders
+					// NOTHING on its own turn: its tile is already part of the row the
+					// FIRST scrap emits, and its released [Activity]/heading items flow
+					// through the normal body path. No autoClose either — the marker is
+					// invisible, so it must not close the still-open panel box above it.
+					// bundle.built marks it for the manifest (it IS built — as the row).
+					if (bundle._r307TileConsumed) { bundle.built = true; continue; }
+					// ROUND 307 — the FIRST scrap of a qualified tile run emits the whole
+					// tile row as its OWN section row (the gold's row > choicePage col >
+					// one div.choice tile per writer name), exactly at the writer's own
+					// position for the run. Every scrap of the run is thereby BUILT.
+					if (bundle._r307TileRow) {
+						bundle.built = true;
+						while (stack.length) emit(stack.pop().close);
+						breakRow();
+						// parts.push, NOT emit(): the row carries its OWN row/col wrappers
+						// (the gold's row > choicePage col), so it must bypass the lazy
+						// row>col machinery — the comment-note / panel-sentinel idiom.
+						parts.push(this.#cdTileRowHtml(bundle._r307TileRow, tpl));
+						if (r307Tiles) r307Tiles.rowEmitted = true;   // the pairing post-pass only ever fires on a really-emitted row
+						run.AddNote("info", "ContentConverter",
+							`Page ${page.lessonLabel}: click-and-drop tile row built (${bundle._r307TileRow.length} tiles, panels paired positionally).`);
+						continue;
+					}
 					autoClose(it);
 					// a new activity-owned (or numbered) bundle closes any
 					// still-open activity first (bank's "(new [Activity N])"
@@ -2235,7 +2269,20 @@ class ContentConverter {
 						// ActivitiesBuilder has no access to the normaliser (#norm) needed to do this
 						// itself; see long_payload_as_content for the fuller explanation.
 						if (supNote) supNote._payloadText = this.#norm.RenderText(supNote.text ?? "");
-						emit(...ActivitiesBuilder.activityOpen(it, stack, run, true, it._activityIdOverride ?? null, false, supNote, this.#pageLessonNumber, this.#lessonLetterMap));
+						// ROUND 307 — a tile-grid PANEL anchor ("[Activity] **1A**", tagged by
+						// #cdTilePrepass) takes the bare id its black tail IS as the box's
+						// number= (the writer's own id, never invented; typos kept — the gold
+						// renumbers them positionally, a named divergence), and the tail is NOT
+						// also rendered as an "<h3>1A</h3>" title (it._r307TailIsId, honoured
+						// inside ActivitiesBuilder.activityOpen) — so the writer's own [H2]
+						// heading becomes the box's heading and, with no content yet in the box,
+						// no longer closes it early (the title-protection rule): the panel keeps
+						// its whole section, which is what the clickDropContent pairing needs.
+						// DELIBERATELY SCOPED to prepass-tagged anchors: the gold ITSELF ships
+						// "<h3>4A</h3>" id-titles on XTAS101/XLP01/XMES203/TEDC402, so a blanket
+						// bare-id-tail repair would diverge there (measured; recorded follow-up).
+						// Data: tile_grid.anchor_id_from_tail   Env: CDTILEID_OFF
+						emit(...ActivitiesBuilder.activityOpen(it, stack, run, true, it._r307PanelId ?? it._activityIdOverride ?? null, false, supNote, this.#pageLessonNumber, this.#lessonLetterMap));
 						// When the note sits immediately next to the opener, the loop index jumps
 						// past it right away; when it was instead found by the lookahead scan
 						// further down the item stream, the loop index is left in place and the
@@ -3062,9 +3109,12 @@ class ContentConverter {
 		// PanelsBuilder.inquiryPanels so that the inquiryActive check below (which compares
 		// finalBody against bodyHtml) stays purely about whether the inquiry wrapping changed
 		// anything, uncontaminated by unrelated residue-stripping.
+		// #cdTilePair (ROUND 307) runs AFTER activityDropboxPostpass so the panel's
+		// final class reads "clickDropContent activity dropbox" in the gold's own
+		// token order (pairing PREPENDS its token to whatever the dropbox pass left).
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#dropNoteResidueBullets(this.#alertTitleHeading(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				this.#relevelHeadings(body.filter(Boolean).join("\n"))))))),
+			this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				this.#relevelHeadings(body.filter(Boolean).join("\n"))))), r307Tiles, run))),
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -4811,6 +4861,206 @@ class ContentConverter {
 	}
 
 	/**
+	 * THE XDLS ACTIVITY-CHOOSER TILE GRID (ROUND 307 — WHY_UNBUILT__clickDrop.md
+	 * reason 1a, items 1+2+5 of its suggested order; the round-306 kickoff chain,
+	 * ticket 1). The writer authors a "choose your activity" page as a run of
+	 * one-name click-and-drop SCRAPS — "[Click Drop x 6]" then "[Click Drop N]
+	 * Label" (XDLS902), or "[Click Drop Activity NX with embedded image] Label" +
+	 * a URL-less LS-library icon reference (XDLS903-906) — whose reveal panels are
+	 * the ordinary [Activity]-opened boxes further down the SAME page. The human
+	 * ships ONE tile row (six div.choice.clickDrop.dropBox tiles, iconType =
+	 * camelCase of the writer's own label, measured 262/268 = 97.8%) and pairs the
+	 * Nth tile with the Nth clickDropContent panel BY POSITION — the site JS
+	 * contract, and the gold's own answer to the writer's id typos (it RENUMBERS
+	 * them positionally: XDLS902 page 4's writer ids read 4A,4B,5C,4D,4E,5F and
+	 * the gold ships 4A-4G — so "pair by the id in the marker", the brief's rule,
+	 * is NOT what the human does; this corrects WHY_UNBUILT__clickDrop.md).
+	 *
+	 * QUALIFICATION (all fences measured — see the round-307 changelog):
+	 *   • EVERY clickDrop bundle on the page must be a clean scrap: click-drop
+	 *     members with a short one-line label (or an x-N header), URL-less [image]
+	 *     icon references, releasable trailing HEADING members, and nothing else —
+	 *     no tables, no body/black/button members (XDLS908/911/912 decline whole).
+	 *   • named tiles ≥ min_tiles, and numbered evidence — an x-N header or
+	 *     ≥ min_numbered numbered markers (TEFUN06/HES1006's bare repeats decline).
+	 *   • a label is never an id-shaped reference ("4B" — XDLS908's tails).
+	 *   • the page must carry ≥ as many PANEL ANCHORS as tiles — a plain
+	 *     [Activity] item with NO bracket number whose black tail IS a bare id
+	 *     ("**1A**"/"1A") after the run starts. XDLS909's short scrap runs and
+	 *     BLLR201's slideshow panels decline here: NEVER a tile without a panel
+	 *     (the round-291 objection, kept).
+	 *
+	 * On qualification: the FIRST scrap emits the whole tile row (see the loop);
+	 * the rest are consumed; a scrap that STOLE a neighbouring [Activity] and its
+	 * section as owner-lead (the backward lookback — XDLS902 tiles 4-6) RELEASES
+	 * them back to the body flow, exactly like a captured heading member; and the
+	 * first N anchors are tagged for the id repair + the pairing post-pass.
+	 *
+	 * Data: interactive_builders.clickDrop.tile_grid
+	 * Env:  CDTILES_OFF (whole feature) · CDTILEID_OFF (the anchor id-from-tail
+	 *       repair — WITH pairing, which needs the number= it writes) ·
+	 *       CDTILEPAIR_OFF (the clickDropContent post-pass alone)
+	 */
+	static #cdTilePrepass(bodyItems, bundles, tpl, run, page) {
+		const cfg = tpl.interactive_builders?.clickDrop?.tile_grid;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.CDTILES_OFF) return null;
+		const cds = [];
+		for (let bi = 0; bi < bundles.length; bi++) if (bundles[bi]?.type === "clickDrop") cds.push(bi);
+		if (!cds.length) return null;
+		const headerRe = new RegExp(cfg.header_pattern ?? "\\bx\\s*\\d+", "i");
+		const idRe = new RegExp(cfg.panel_id_pattern ?? "^\\d{0,2}[A-Z]$");
+		const maxWords = cfg.label_max_words ?? 8;
+		const names = [];
+		const headingReleases = new Map();     // bundleIdx -> [heading member items]
+		let numbered = 0, sawHeader = false;
+		for (const bi of cds) {
+			const b = bundles[bi];
+			if ((b.tables ?? []).length) return null;                  // a table-carrying bundle is not a scrap (XDLS912)
+			const rel = [];
+			for (const m of [...(b.openerItems ?? []), ...(b.memberItems ?? [])]) {
+				const ptag = m?.parse?.primary?.tag;
+				if (ptag === "click drop") {
+					const rawTxt = String(m.parse?.raw ?? m.text ?? "");
+					const after = String(m.blackAfter ?? "").trim();
+					if (headerRe.test(rawTxt) && !after) {              // the "[Click Drop x 6]" group opener — no tile
+						sawHeader = true;
+						if ((m.parse?.numbers ?? []).length) numbered++;
+						continue;
+					}
+					const nl = after.search(/\n/);
+					const first = nl >= 0 ? after.slice(0, nl) : after;
+					const rest = nl >= 0 ? after.slice(nl + 1).trim() : "";
+					const name = first.replace(/\*+/g, "").replace(/[:\s]+$/, "").trim();
+					// a NUMBERLESS, nameless, content-less marker is a writer's stray
+					// duplicate ("[Click Drop Activity image]", XDLS903-4.0) — skipped,
+					// LOSSLESS BY CONSTRUCTION (zero words). A NUMBERED nameless marker
+					// is a real tile whose name is unreachable (XDLS909's red-span
+					// names) — the page declines rather than ship a partial row.
+					if (!name && !rest && !(m.parse?.numbers ?? []).length) continue;
+					if (!name || rest) return null;                     // nameless numbered marker / extra content lines
+					if (idRe.test(name.replace(/\s+/g, "").toUpperCase())) return null;   // "4B" is a reference, not a label (XDLS908)
+					if (name.split(/\s+/).length > maxWords) return null;
+					names.push(name);
+					if ((m.parse?.numbers ?? []).length) numbered++;
+				} else if (ptag === "image") {
+					// a URL-less icon reference ("[image explain icon from LS global
+					// edits]") — FULFILLED by the tile's iconType div, so it is consumed
+					// with the scrap; a member naming a REAL picture (any URL) is beyond
+					// this form and declines the page (recorded follow-up, none measured).
+					if (/https?:\/\/|www\./i.test(String(m.parse?.raw ?? "") + " " + String(m.blackAfter ?? ""))) return null;
+				} else if (["h1", "h2", "h3", "h4", "h5", "h6", "heading"].includes(ptag)) {
+					rel.push(m);                                        // a captured section heading — released below (XDLS906-2.0)
+				} else {
+					return null;                                        // any other member = content, not a scrap (XDLS908/911)
+				}
+			}
+			if (rel.length) headingReleases.set(bi, rel);
+		}
+		if (names.length < (cfg.min_tiles ?? 2)) return null;
+		if (!sawHeader && numbered < (cfg.min_numbered ?? 1)) return null;
+		const scrapSet = new Set(cds);
+		let firstIdx = -1, firstBi = -1;
+		for (let i2 = 0; i2 < bodyItems.length; i2++) {
+			const cb = bodyItems[i2].consumedBy;
+			if (cb !== undefined && scrapSet.has(cb)) { firstIdx = i2; firstBi = cb; break; }
+		}
+		if (firstIdx < 0) return null;
+		// PANEL ANCHORS — the [Activity] items after the run starts, in the writer's
+		// two id shapes: a PLAIN opener whose black tail IS a bare id ("**1A**"/"1A"/
+		// the bolded-letter "4**F**" and the letter-only "F" typo — the id pattern
+		// tolerates 0-2 leading digits), or a BRACKET-numbered opener with an EMPTY
+		// tail ("[Activity 7F]"). A bracket-numbered opener with a TEXT tail is a
+		// stray re-mention, not an anchor (XDLS905-3.0's "[Activity 3A] Activity
+		// 3A …" repeat — excluded by the tail test). An anchor a SCRAP wrongly
+		// consumed still counts (it is about to be released); one a DIFFERENT
+		// widget consumed does not — that page declines (never a tile whose panel
+		// is trapped inside another widget; XDLS904-5.0, the gathering-round class).
+		const anchors = [];
+		for (let i2 = firstIdx + 1; i2 < bodyItems.length; i2++) {
+			const a = bodyItems[i2];
+			if (a?.type !== "tag" || a?.parse?.primary?.tag !== "activity") continue;
+			if (!(a.consumedBy === undefined || scrapSet.has(a.consumedBy))) continue;
+			const tail = String(a.blackAfter ?? "").replace(/[*\s]+/g, "").toUpperCase();
+			const nums = a.parse?.numbers ?? [];
+			if (!nums.length && idRe.test(tail)) anchors.push({ item: a, id: tail, fromTail: true });
+			else if (nums.length === 1 && !tail && idRe.test(String(nums[0]).toUpperCase()))
+				anchors.push({ item: a, id: String(nums[0]).toUpperCase(), fromTail: false });
+		}
+		if (anchors.length < names.length) return null;                 // never a tile without a panel
+		// ---- QUALIFIED: release, mark, tag --------------------------------
+		for (const bi of cds) {
+			const b = bundles[bi];
+			if (b.activityOwner) {                                      // the stolen-neighbour release (XDLS902 tiles 4-6)
+				if (b.activityOwner.consumedBy === bi) b.activityOwner.consumedBy = undefined;
+				for (const l of (b.activityLeadItems ?? [])) if (l && l.consumedBy === bi) { l.consumedBy = undefined; l._r307Released = true; }
+				b.activityOwner = undefined; b.activityLeadItems = []; b.activityId = null;
+			}
+			for (const hm of (headingReleases.get(bi) ?? [])) if (hm.consumedBy === bi) { hm.consumedBy = undefined; hm._r307Released = true; }
+			if (bi === firstBi) b._r307TileRow = names;
+			else b._r307TileConsumed = true;
+		}
+		const idOn = cfg.anchor_id_from_tail !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.CDTILEID_OFF);
+		const panelIds = [];
+		for (const a of anchors.slice(0, names.length)) {
+			panelIds.push(a.id);
+			// A tail-form anchor needs BOTH the id and the render suppression; a
+			// bracket-numbered anchor already carries its id and has no tail to
+			// suppress — it is tagged for the pairing only.
+			if (idOn) { a.item._r307PanelId = a.id; if (a.fromTail) a.item._r307TailIsId = true; }
+		}
+		// Pairing rides the number= attributes the id repair writes, so CDTILEID_OFF
+		// (a diagnostic decomposition state) also leaves the panels unmarked.
+		const pair = idOn && cfg.pair_panels !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.CDTILEPAIR_OFF);
+		return { panelIds, pair, cfg, rowEmitted: false };
+	}
+
+	/** ROUND 307 — the tile row itself: the gold's row > choicePage col > one
+	 *  div.choice.clickDrop.dropBox per tile (label = the writer's words VERBATIM,
+	 *  iconType = their camelCase — 262/268 = 97.8% of the library's own tiles).
+	 *  NO <img> is emitted: the gold's own XDLS909 no-img tile form — the photo
+	 *  paths on the other golds are hand-placed and case-inconsistent (../images
+	 *  vs ../Images on ONE page), and the writer's icon reference is satisfied by
+	 *  the iconType div, which is what it names. */
+	static #cdTileRowHtml(names, tpl) {
+		const cfg = tpl.interactive_builders.clickDrop.tile_grid;
+		const camel = (label) => {
+			const w = String(label).toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter(Boolean);
+			return w.map((x, i) => (i ? x[0].toUpperCase() + x.slice(1) : x)).join("");
+		};
+		const tiles = names.map((n) => Utils.FillTemplate(cfg.tile, { iconType: camel(n), label: Utils.EscapeHtml(n) }));
+		return [cfg.row_open, ...tiles, cfg.row_close].join("\n");
+	}
+
+	/** ROUND 307 — half two, THE PAIRING POST-PASS (the round-305 dropbox-postpass
+	 *  sibling): on a page whose tile row was actually emitted, the Nth tile's
+	 *  panel — the activity box carrying the Nth anchor's number= — gains the
+	 *  gold's leading clickDropContent class token (the site JS pairs the Nth
+	 *  .clickDrop with the Nth .clickDropContent, so tiles must NEVER ship
+	 *  without exactly this marking — the round-291 dead-button objection).
+	 *  Cursor-forward search keeps duplicate writer ids order-safe.
+	 *  Env: CDTILEPAIR_OFF. */
+	static #cdTilePair(html, state, run) {
+		if (!state || !state.rowEmitted || !state.pair) return html;
+		const prefix = state.cfg.panel_class_prefix ?? "clickDropContent ";
+		let out = html, cursor = 0, missed = 0;
+		for (const id of state.panelIds) {
+			const re = new RegExp(`<div class="(activity[^"]*)"( number="${id}")`, "g");
+			re.lastIndex = cursor;
+			const m = re.exec(out);
+			if (!m) { missed++; continue; }
+			const rep = `<div class="${prefix}${m[1]}"${m[2]}`;
+			out = out.slice(0, m.index) + rep + out.slice(m.index + m[0].length);
+			cursor = m.index + rep.length;
+		}
+		if (missed) run.AddNote("warn", "ContentConverter",
+			`${missed} tile panel(s) could not be paired to an activity box — the tile row and its panels should be checked by hand.`);
+		return out;
+	}
+
+	/**
 	 * [MTKquiz] — the "Go to quiz" button family (ROUND 232 — Change Ledger
 	 * CL-0038, 16 Jul; Chris). Four small pieces, all gated by the SAME data
 	 * flag + env toggle as the TagNormaliser retag that feeds them
@@ -5313,6 +5563,26 @@ class ContentConverter {
 						trailing = after;   // running prose after the URL → body, not the label
 					}
 				}
+			}
+			// ROUND 307 rider — a RELEASED tile-grid lead "[button]" whose tail is ONLY a
+			// URL ships the round-76 anchored external-link button (externalButton class +
+			// derivable default label) instead of falling to the journal-label default,
+			// which shipped an UNLINKED "Go to your journal" button and silently LOST the
+			// writer's URL (caught by this round's word-loss check on XDLS902 pages 6/7;
+			// the gold ships anchored buttons there — its editorial labels are recorded C).
+			// DELIBERATELY SCOPED to _r307Released items: the same URL-only-[button] shape
+			// exists on ~75 items across ~46 modules corpus-wide (measured,
+			// outputs/_r307_btncount.cjs) and general repair of that route is its OWN
+			// measured round — recorded as a follow-up beside the round-308 upload box.
+			// Data: interactive_builders.clickDrop.tile_grid.released_url_button
+			// Env: CDTILES_OFF (a release only ever happens while the feature is on)
+			if (it._r307Released && key === "button" && url && !label
+				&& !(it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim()
+				&& (tpl.interactive_builders?.clickDrop?.tile_grid?.released_url_button !== false)) {
+				const ext = tpl.buttons["external link button"];
+				const lbl = /youtu|vimeo|\bvideo\b/i.test(url) ? (ext.video_label ?? "Go to video") : (ext.default_label ?? "Go to website");
+				out.push(Utils.FillTemplate(ext.form, { url, label: Utils.EscapeHtml(lbl) }));
+				return out;
 			}
 			if (!label) label = (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim()
 				|| tpl.buttons.journal_label_default;
