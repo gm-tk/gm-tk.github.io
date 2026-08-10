@@ -1,5 +1,133 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-11 (round 310, build 260618.81) — THE GATHERING ROUND: THE DROPBOX SPLIT + the flipCard trailing button, and THE CHAIN'S FULL CORPUS REGENERATION (Chris — the round-306 follow-through chain, ticket 4 of 4, THE LAST; **FULL `REGENERATE CORPUS` per the chain's standing authority — ledger reset to 0; THE CHAIN IS CLOSED and its kickoff file is deleted with this round**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**The student file-upload DROPBOX is never part of another activity's basket: a follower
+resolving to the dropDown type whose bracket names a dropbox now TERMINATES the host
+widget's member walk instead of being swept into its extraTypes as a phantom "second
+widget" — so the host builds clean (BLL156's three-video carousel, refused since it was
+first converted, now ships) and the freed marker opens its own bundle, which round 308's
+upload-box builder turns into the gold's "Upload to dropbox" button. Over the affected
+set that is +71 anchored upload buttons and +8 built carousels across 42 modules; a
+second, smaller fix adds flipCard to the round-278 trailing-button family (fire
+population after its fence: exactly one page, and that finding is recorded as the
+result).**
+
+### 2. THE MEASUREMENT, AND WHAT IT CORRECTED
+
+The 24-shard decline census was re-run fresh against build 260618.80 (all shards
+mtime-verified against the newest engine AND data file) and decomposed by
+`outputs/_r310_analyse.py`:
+
+* **The gathering class is not one class.** MIXED BASKETS (a foreign type in
+  extraTypes) = 337 declined bundles / 137 modules; ONE-MARKER BUNDLES (the bundle
+  holds its own marker and nothing else) = 476 / 181; and the two barely overlap.
+  Within the mixed baskets, ONE coherent, fenced, zero-risk slice dominates:
+  **86 bundles / 46 modules (43 reachable) carry a DROPBOX marker merged in as a
+  phantom second widget** — and the census risk scan found **not one currently-building
+  non-dropDown bundle carrying a dropbox member**, zero-risk by construction, re-proven
+  by hash. The remainder (mixed-other 251/109, one-marker 476/181) is decomposed and
+  RECORDED in the data block's `_r310_remainder` so it is never re-measured from
+  scratch: each shape is its own mechanism wanting its own fence (CHFUN05's
+  immediate-stop accordions, the MXDI101/XGF9003 label-and-popout-in-one-sentence modal
+  family, TEDC402's empty-member bundles, XDLS909's short scrap runs).
+* **The index's item-D flipCard projection ("~23 recovered") did not survive
+  measurement.** 12 declined flipCard bundles / 11 modules carry a trailing button and
+  ZERO built ones do — additive by construction — but after the garble fence (below)
+  the release fires on EXACTLY ONE page (PHE1007-9.0, whose writer button ships as a
+  real button), and ENGI405's byte changes turned out to belong to the dropbox split
+  entirely, proven by per-toggle decomposition.
+
+### 3. THE TWO CATCHES THE PROBE FORCED — BOTH SHIPPED AS FENCES, NOT REVERTS
+
+* **CEDK401-6.0 BUILT A GARBLE** when the unfenced flipCard release made its
+  marker-less prose bundle reachable: consecutive paragraphs paired as faces, a section
+  [H2] inside a card front, the writer's example lines lost — the round-290 HPRE301
+  class. The fence: a type listed in `panel_subtags_by_type` releases its tail button
+  ONLY when the deck is EXPLICITLY face-delimited (>=1 captured [front]/[back]/[Card N]
+  member); the same map also teaches `#panelDelimiterAhead` that a flip card's panels
+  are sub-tags, so a button BETWEEN two cards can never read as a tail. The map is
+  empty for every pre-round type — accordion/carousel/speechBubble cannot move.
+* **THE REVERSE ARM OF THE SPLIT WAS BUILT, CAUGHT, AND REMOVED** — and the bug was in
+  my own check first, the fourteenth round running: the word-loss regex required 3+
+  letters, so it could not see that freeing a dropbox-opener HOST's foreign followers
+  (6 bundles corpus-wide) lost the writer's paired **"[button] No"** on ENGI401 — the
+  freed [Modal] reached the r73 single-URL button path, which silently drops an
+  unplaceable [button] member — while the dropbox half still declined for its own
+  reasons. The arm recovered nothing on its entire population and lost writer content;
+  removed, recorded in the data doc so it is not re-attempted (if ever wanted, the
+  r73/r280 modal member handling must first stop swallowing a [button] in silence).
+
+### 4. THE PROOF (one toggle state per process)
+
+OFF state (both toggles) reproduces the shipped r309 corpus **byte-for-byte: 377/377
+pages across all 64 reachable candidate modules**, plus 6 out-of-class canaries
+(OSAH501, SCCH301, BLL210, TRR203, OSOH501, ENGJ301) **34/34 pages identical in BOTH
+states and to disk**. ON: named assertions (BLL156's 3 gold videos + anchored button +
+kept congratulations text; XMES203 buttons 8→16; XMES101 5→10) + NEGATIVE assertions
+(CEDT101's [alert dropbox] reveal boxes byte-identical; BLL124's inquiry crumb family
+byte-identical; ENGI401 byte-identical with its "No" preserved 3→3) ALL PASS. Leak
+parity by the audit's own predicate (cv2 subtrees + notes stripped first): ON <= OFF
+per module, every module. Word-loss (2-letter-aware after the catch) accounted on every
+changed module — every delta is hand-off chrome, a URL becoming an href, or duplicate
+box-label text. Quality scan: 0 empty buttons. Per-toggle decomposition: DBXSPLIT ~99
+pages / 44 modules · FCBTNTAIL 1 page / 1 module. Affected set FROM BYTES: **100 pages
+/ 45 modules**, of which the 3 without a Claude dir (BLL264, BLL265, XMES202) are
+forward guarantees. Tags gate **9557/9557, REAL FAILURES 0** (the scanner was touched;
+span granularity untouched).
+
+### 5. THE FULL CORPUS REGENERATION + GATES (the chain's contractual close)
+
+416 dirs rebuilt (36-batch plan + OSSC301), **0-stale**; `_content_manifest.py diff` =
+**91 pages / 42 modules changed, 0 added, 0 removed** — exactly the probe's reachable
+prediction, and **no pending work from any earlier round** (rounds 307–309 left
+nothing behind; the seventh clean sweep running). Gates, r309 committed baseline →
+r310, **every one held-or-improved except two decomposed, NAMED movements**:
+
+* PRIMARY skeleton: pages ≥50% **1000 EXACT** · ≥75% **191 EXACT** · pairs 1939 / 0
+  added / 0 dropped · mean 49.94 → **49.92 (−0.02pp)** — 55 moved pages decompose to
+  **scaffold −32.47 pp-sum vs RAW +33.76 pp-sum, the documented net-positive
+  signature** (real buttons, notes and released content appear outside collapsed
+  widget markers). The largest dip is NAMED: BLL143_1_1 −11.76 with RAW flat — the
+  freed buttonD + To Do note ship in their own section row (the gold's own BLL
+  convention) and the box loses its `.interactive` modifier as the dropDown token
+  departs; a scaffold pairing shift on a sub-paginated module.
+* compare_structure exact **11244 → 11247 (+3 IMPROVED)** / EXTRA **186 EXACT** /
+  missing 593 → **595 (+2)** riding a matched pool that grew 13262 → 13268 — the
+  documented matched-pool-growth class (content leaving compare-excluded placeholder
+  subtrees).
+* body_compare **199 → 197 IMPROVED** · clean **2056/2102 = 97.81% EXACT** · leak
+  **288 occ / 46 pages EXACT** · tags **9557/9557 REAL 0** · flipCard §9 **divergence
+  0 ✓** · index-sync **33/28** · entry-parity **PASS** · **all ELEVEN selftests
+  GREEN** · carousel verifier over the affected: **11 built / 5 video slides / 0
+  mismatched ids** · dropDown verifier over the affected: **defect 0**.
+
+FULL ship recorded (scoped counter reset to 0); fast-loop baselines committed from the
+patched structs; content manifest refreshed (2102 pages / 413 modules); feature index
+rebuilt. NOTE: the fast-loop's mtime staleness alarm fired on the 374 unaffected
+modules the full regen rebuilt — the documented r302/r307 false-positive class, with
+the content manifest's byte-identity as the standing proof.
+
+### 6. WHAT REMAINS OF THE GATHERING CLASS, NAMED (the chain's honest close)
+
+Recorded in `Interactive_Boundary_ChildTag_Bank.json` `dropbox_never_merges._r310_remainder`
+and in the WHY_UNBUILT index: mixed-other 251 bundles / 109 modules (largest pairs:
+unclassified+dragAndDrop 17 · carousel+flipCard 16 = the BLL110 written-as-one-block
+family whose gold built neither-or-one, splitting alone recovers ~0 builds — measured
+DECLINE for now · dragAndDrop+typing 11) and the one-marker family 476 / 181 (CHFUN05
+21 · TEDC402 20 · TEDC401 17 · XDLS909 11 · XGF9003 10 · MXDI101 9). Each is its own
+mechanism; none shares this round's predicate; the honest next levers are the
+label-and-popout one-sentence modal family and the CHFUN05 immediate-stop class.
+
+**THE ROUND-306 FOLLOW-THROUGH CHAIN (rounds 307–310) IS CLOSED**: the XDLS tile row,
+the upload box, the writer's highlighter, and the gathering round's largest coherent
+slice + the full regeneration. Env `DBXSPLIT_OFF` / `FCBTNTAIL_OFF`; data
+`member_rule.dropbox_never_merges` + `button_tail_terminates` (types += flipCard,
+panel_subtags_by_type). Tools `outputs/_r310_analyse.py`, `_probe_r310_convert.cjs`,
+`_r310_assert.py`.
+
 ## 2026-08-11 (round 309, build 260618.80) — THE WRITER'S HIGHLIGHTER AND ANSWER-GREEN THROUGH THE EXTRACTOR (Chris — the round-306 follow-through chain, ticket 3 of 4, against `WHY_UNBUILT__dropDown.md` reasons 4+5; **SCOPED regeneration per the chain's standing authority + the §0a/§0b dropDown-FAMILY sweep of all 185 family modules — scoped ship #3 since the round-306 full; the chain's FULL `REGENERATE CORPUS` lands at round 310**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

@@ -1451,7 +1451,21 @@ class Config {
 	// pre-existing r287 grid misread that shipped SCCH301-2.0's raw "options: …"
 	// strings as choices. Data Input_Doc_Rules.answer_marks +
 	// interactive_builders.dropDown.colour_marks; env ANSMARK_OFF + DDMARKS_OFF.
-	static AppVersion = "260618.80";
+	// ROUND 310 (260618.81): THE GATHERING ROUND — the DROPBOX SPLIT + the
+	// flipCard trailing button, and THE CHAIN'S FULL CORPUS REGENERATION (the
+	// r306 follow-through chain ticket 4 of 4, THE LAST — the chain is CLOSED).
+	// A dropbox-marker follower TERMINATES another widget's member walk instead
+	// of merging as a phantom "second widget" (86 declined bundles / 46 modules
+	// measured; 0 built carriers = zero-risk by construction): the host builds
+	// clean (BLL156's carousel) and the freed marker reaches r308's upload-box
+	// builder (+71 buttons / +8 carousels over the affected set). flipCard joins
+	// button_tail_terminates behind the face-delimited fence (the CEDK401 garble
+	// catch); the reverse split arm was built, caught losing ENGI401's "No"
+	// button, and REMOVED (recorded). 91 pages / 42 modules; every gate
+	// held-or-improved, the two movements named. Data
+	// member_rule.dropbox_never_merges + button_tail_terminates; env
+	// DBXSPLIT_OFF + FCBTNTAIL_OFF.
+	static AppVersion = "260618.81";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

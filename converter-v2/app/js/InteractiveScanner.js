@@ -1126,6 +1126,12 @@ class InteractiveScanner {
 			const pr = it.parse?.primary;
 			if (!pr) continue;
 			if (pr.tag === bundle.canonTag || pr.tag === bundle.type) return true;   // another panel of ours
+			// ROUND 310: a widget whose panels are SUB-tags rather than same-type tags
+			// (the flip card's [front]/[back]/[Card N]) needs those sub-tags recognised
+			// as panel delimiters, or a button BETWEEN two cards would read as a tail
+			// and truncate the deck. DATA-listed per type (panel_subtags_by_type);
+			// EMPTY for every pre-round type, so nothing that fired before moves.
+			if ((((cfg.panel_subtags_by_type ?? {})[bundle.type]) ?? []).includes(pr.tag)) return true;
 			if (pr.directive === "INTERACTIVE") return false;                        // a different widget starts
 			if (pr.directive === "SECTION_MARKER" || pr.directive === "PAGE_BOUNDARY") return false;
 		}
@@ -1524,6 +1530,19 @@ class InteractiveScanner {
 						// counts as captured content. DATA-listed per type.
 						|| ((btT.content_on_invocation_types ?? []).includes(bundle.type)
 							&& String(m.blackAfter ?? "").trim() !== "")))
+					// ROUND 310: a type listed in panel_subtags_by_type (flipCard) releases
+					// its tail button ONLY when the deck is EXPLICITLY face-delimited — at
+					// least one captured [front]/[back]/[Card N] member. The probe caught
+					// the alternative live: CEDK401-6.0's marker-less prose bundle, made
+					// reachable by the release, BUILT A GARBLE (consecutive paragraphs
+					// paired as faces, a section heading inside a card front, the writer's
+					// example lines lost). A marker-less deck keeps its honest hand-off
+					// box; the face-marked decks (ENGI405, PHE1007) release and build
+					// their humans' own cards. No entry for a type = no extra requirement,
+					// so accordion/carousel/speechBubble are byte-identical.
+					&& ((((btT.panel_subtags_by_type ?? {})[bundle.type]) == null)
+						|| bundle.memberItems.some((m) => m && m.type === "tag"
+							&& (((btT.panel_subtags_by_type ?? {})[bundle.type]) ?? []).includes(m.parse?.primary?.tag)))
 					// ROUND 296: the lookahead fence protects a MULTI-PANEL widget whose
 					// panels are SUB-tags (accordion, carousel). A speech bubble's "panels"
 					// are separate INVOCATIONS, so a following [speech bubble] is a DIFFERENT
@@ -2033,6 +2052,45 @@ class InteractiveScanner {
 					if ((laterPanel && panelsSoFar >= 1) || tailOk) {
 						j = this.#absorbNestedSubBundle(bundle, items, j, next, extra, p, absolute, run, normaliser) - 1;
 						continue;
+					}
+				}
+				// ROUND 310 — THE DROPBOX SPLIT (the gathering round). The student
+				// file-upload DROPBOX is never part of another activity's basket, in
+				// EITHER direction. Measured fresh this round over the whole census
+				// (outputs/_r310_analyse.py): 86 declined bundles across 46 modules carry
+				// a dropbox marker merged in as a phantom "second widget", and NOT ONE
+				// currently-building non-dropDown bundle carries one — zero-risk by
+				// construction. Before this rule, the same_activity_multi_widget absorb
+				// below swept the marker into the host's extraTypes; every builder then
+				// bailed on the mixed basket (BLL156's clean three-video carousel was
+				// refused because the upload button at the end of the activity was
+				// mis-filed as a second widget), AND the trapped dropbox never reached
+				// round 308's upload-box builder. Terminating instead lets the host
+				// build clean and the dropbox open its OWN bundle, which #ddUploadBox
+				// turns into the gold's "Upload to dropbox" button. The discriminator
+				// is round 308's OWN predicate pair, read live from the dropDown
+				// template block so the two rules can never drift: deny =
+				// opener_deny_pattern ("drop box"), minus the upload_box
+				// opener_exclude_pattern ("alert" — an [alert dropbox] is a REVEAL box,
+				// CEDT101, and keeps today's behaviour byte-for-byte). ONE DIRECTION
+				// ONLY: the probe caught the reverse arm (a dropbox-opener HOST
+				// releasing its foreign followers) losing the writer's paired "No"
+				// button on ENGI401 — the freed [Modal] reached the r73 single-URL
+				// button path, which silently drops an unplaceable [button] member —
+				// while its dropbox box still declined, so the arm delivered nothing
+				// on its whole 6-bundle population. Removed, recorded in the data doc.
+				// Data member_rule.dropbox_never_merges; env DBXSPLIT_OFF.
+				{
+					const dbx = meta.dropbox_never_merges;
+					if (dbx && dbx.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.DBXSPLIT_OFF)
+						&& extra === "dropDown" && bundle.type !== "dropDown") {
+						const ddTpl = DataService.Data.EmitTemplates.interactive_builders?.dropDown ?? {};
+						const deny = new RegExp(ddTpl.opener_deny_pattern ?? "drop\\s*box", "i");
+						const excl = new RegExp(ddTpl.upload_box?.opener_exclude_pattern ?? "\\balert\\b", "i");
+						const own = String(next.text ?? "");
+						// the follower is the student upload area → the host's walk ends here
+						if (deny.test(own) && !excl.test(own)) break;
 					}
 				}
 				// SAME widget type = a CONTINUATION (multi-panel: accordion strips,

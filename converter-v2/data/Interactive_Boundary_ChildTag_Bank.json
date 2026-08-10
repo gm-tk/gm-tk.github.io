@@ -362,12 +362,22 @@
 				"types": [
 					"accordion",
 					"carousel",
-					"speechBubble"
+					"speechBubble",
+					"flipCard"
 				],
 				"env_by_type": {
 					"carousel": "CARBTNTAIL_OFF",
-					"speechBubble": "SBBTNTAIL_OFF"
+					"speechBubble": "SBBTNTAIL_OFF",
+					"flipCard": "FCBTNTAIL_OFF"
 				},
+				"panel_subtags_by_type": {
+					"flipCard": [
+						"front",
+						"back",
+						"shape n"
+					]
+				},
+				"_r310_flipcard_note": "ROUND 310 (the gathering round). flipCard joins the trailing-button section break — the WHY_UNBUILT index's item D, re-measured fresh this round: gold puts a button inside a finished flip card 5 times in 3,379 faces = 0.15% (the lowest of the four types), and ZERO of the currently-building flip cards carry a [button] member (12 declined bundles / 11 modules do, 10 of the 12 with the button as the very LAST member) — additive by construction, still hash-proven. panel_subtags_by_type serves TWO fences: (1) in #panelDelimiterAhead — a flip card's panels are [front]/[back]/[Card N] SUB-tags rather than same-type tags, so without it a button BETWEEN two cards would read as a tail and truncate the deck; (2) at the release itself — a type listed here releases its tail button ONLY when the deck is EXPLICITLY face-delimited (>=1 captured face-marked member). Fence (2) was forced by the probe, not designed in advance: CEDK401-6.0's marker-less prose bundle, made reachable by an unfenced release, BUILT A GARBLE (consecutive paragraphs paired as faces, a section [H2] inside a card front, the writer's example lines lost) — the round-290 HPRE301 class. THE HONEST MEASURED EFFECT after the fence, per-toggle-decomposed: the release fires on EXACTLY ONE page (PHE1007-9.0 — the writer's 'Go to journal. Complete activity 9A.' ships as a REAL button outside the box instead of raw dump text; the face-marked deck itself still declines and keeps its honest box), ENGI405's byte changes turned out to belong to the dropbox split entirely, and every marker-less carrier is byte-identical — the index's '~23 recovered' projection did not survive measurement, and that finding is this entry's real content. The map is EMPTY for every pre-round type, so accordion/carousel/speechBubble cannot move. Env FCBTNTAIL_OFF reverts flipCard membership alone (the r295 env_by_type pattern), and with it set the subtags key is dormant.",
 				"tags": [
 					"button"
 				],
@@ -388,6 +398,12 @@
 					"denumbered_head",
 					"exception"
 				]
+			},
+			"dropbox_never_merges": {
+				"enabled": true,
+				"_doc": "ROUND 310 — THE DROPBOX SPLIT (the gathering round, the chain's largest coherent measured slice). The student file-upload DROPBOX is never part of another activity's basket, in EITHER direction. MEASURED FRESH against build 260618.80 (outputs/_r310_analyse.py over the 24-shard census): 86 declined bundles / 46 modules (43 reachable) carry a dropbox marker swept into a host bundle's extraTypes by same_activity_multi_widget — every builder then bails on the mixed basket (BLL156's clean three-video carousel refused because the upload button at the end of the activity was mis-filed as a second widget) AND the trapped dropbox never reaches round 308's upload-box builder, so the button the gold ships 1,156 times is lost twice over. ZERO-RISK BY CONSTRUCTION AND BY HASH: not one currently-building non-dropDown bundle carries a dropbox member (the census risk scan), re-proven by hashing every affected module in both toggle states. THE RULE IS ONE DIRECTION: a FOLLOWER resolving to the dropDown type whose text matches round 308's OWN deny predicate (opener_deny_pattern, minus upload_box.opener_exclude_pattern — an [alert dropbox] is a REVEAL box, CEDT101, byte-identical today) TERMINATES the host's walk instead of absorbing; the marker then opens its own bundle and #ddUploadBox ships the gold's button. THE REVERSE ARM WAS BUILT, CAUGHT BY THE PROBE, AND REMOVED — recorded so it is not re-attempted: releasing a dropbox-opener HOST's foreign followers ('dropDown + modal' x3, '+ clickDrop' x2, '+ dragAndDrop' x1 — 6 bundles total) freed ENGI401's [Modal] into the r73 single-URL button path, which built a button and SILENTLY DROPPED the writer's paired '[button] No' member (a 2-letter word the first word-loss check could not even see — its regex required 3+ letters), while the dropbox half still declined at #ddUploadBox for its own reasons; the arm lost writer content and recovered nothing on its entire population. If the reverse split is ever wanted, the r73/r280 modal member handling must first stop swallowing an unplaceable [button] in silence. The predicate pair is READ LIVE from interactive_builders.dropDown so the scanner and the builder can never drift (the r308 discipline). Env DBXSPLIT_OFF.",
+				"_r310_remainder": "The gathering class's decomposed remainder, recorded so it is not re-measured from scratch: MIXED-OTHER 251 bundles / 109 modules (top pairs: unclassified+dragAndDrop 17, carousel+flipCard 16 = the BLL110 written-as-one-block family whose gold built NEITHER-or-one — splitting alone recovers ~0 builds, measured DECLINE for now; dragAndDrop+typing 11, clickDrop+carousel 9, multiChoiceQuiz+modal 8) and ONE-MARKER BUNDLES 476 / 181 modules (top: CHFUN05 21 — the walk stops at the very next item; TEDC402 20 / TEDC401 17 — empty-member bundles; XDLS909 11 — short scrap runs, r307's caveat; XGF9003 10 + MXDI101 9 — the label-and-popout-in-one-sentence modal family). Each is its OWN mechanism wanting its own measured fence; none shares this rule's predicate.",
+				"types_never_split": []
 			},
 			"same_block_label_absorb": {
 				"enabled": true,
