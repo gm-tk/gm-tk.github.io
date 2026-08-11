@@ -4671,6 +4671,20 @@ class InteractiveBuilder {
 	static #modalDocButton({ bundle, tpl }) {
 		if (typeof process !== "undefined" && process.env && process.env.MODALBTN_OFF) return null;
 		if ((bundle?.tables ?? []).length) return null;
+		// ROUND 311 — A CONTENT-CARRYING BUNDLE IS NOT A LINK BUTTON. This path builds a
+		// bare anchored button and SILENTLY DROPS every other member — the r310 warning
+		// made live: once the round-311 gathering captured "[H5] Sione's Learning Goal…"
+		// + its paragraph into EXPFUN02's modal bundle, this path shipped the heading AS
+		// THE BUTTON LABEL and the paragraph NOWHERE (caught by the word-loss check).
+		// A bundle holding a captured HEADING member falls through to #modalSets, which
+		// either composes the content into a real pop-out or declines to the honest box
+		// — never a silent drop. UNREACHABLE FOR EVERY PRE-311 BUILD BY CONSTRUCTION:
+		// before round 311 a heading always TERMINATED the modal's member walk, so no
+		// pre-311 bundle can carry one. Rides MODHEADMEM_OFF (the rule that makes
+		// heading members possible at all).
+		if (!(typeof process !== "undefined" && process.env && process.env.MODHEADMEM_OFF)
+			&& (bundle?.memberItems ?? []).some((m) => m && m.type === "tag"
+				&& ["h2", "h3", "h4", "h5"].includes(m.parse?.primary?.tag))) return null;
 		const urls = [];
 		const labels = [];
 		for (const m of (bundle?.media ?? [])) {
@@ -5020,7 +5034,31 @@ class InteractiveBuilder {
 			}
 
 			if (tag === "image") {
-				const url = this.#cellMediaUrl(raw);
+				let url = this.#cellMediaUrl(raw);
+				// ROUND 311 (gathered-members build side; env MODGATHERBUILD_OFF): the tile
+				// dialects put the image's URL on the NEXT black line ("[Insert image for
+				// front of tile] Collecting plastic – father and son" then the bare iStock
+				// address, CEDR203) — the same next-line rule the modal-sub and video
+				// branches have carried since r280/r247, now at the IMAGE member too.
+				if (!url && cfg.gathered_members !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.MODGATHERBUILD_OFF)) {
+					const nxt = members[i + 1];
+					const nt = nxt && nxt.type === "black" ? String(nxt.text ?? "").trim() : "";
+					if (nt && /^\(?https?:\/\/\S+\)?$/.test(nt)) {
+						url = this.#cellMediaUrl(nt);
+						if (url) {
+							i++;
+							// the tag's OWN words beyond the bracket are the writer's placement
+							// instruction ("[Image] can this please be placed to the RHS…",
+							// MXFUN01-6.5) — surfaced as a note, never silently dropped (§6);
+							// before this rule the url-less member took the note path and the
+							// words survived that way.
+							const ownTx = this.#cellText(String(m.text ?? ""))
+								.replace(/^\s*\[[^\]]*\]\s*/, "").trim();
+							if (ownTx) notes.push(ownTx);
+						}
+					}
+				}
 				if (!url) {
 					// AN ASSET REQUEST, not an image (the round-278 rule): the writer named a
 					// Media-List item with no URL to render. Skipped as build content and
@@ -5127,6 +5165,21 @@ class InteractiveBuilder {
 				if (t.trim()) notes.push(t.trim());
 				continue;
 			}
+			// ROUND 311 (gathered-members build side; env MODGATHERBUILD_OFF): a URL-less
+			// FACE/ICON sub-tag inside a modal bundle ("[Icon for front of tile]
+			// Ocean/waves", CEDR203's tile dialect — reachable once the gathering rules
+			// merge a tile's whole authoring into one bundle) is an ASSET REQUEST for the
+			// tile's front, not placeable content: skipped and surfaced as a red note,
+			// the round-278 rule at this seam. A face tag WITH a URL never reaches here
+			// (the image branch above owns it).
+			if (tag && (cfg.asset_subtag_tags ?? ["front", "back"]).includes(tag)
+				&& cfg.gathered_members !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.MODGATHERBUILD_OFF)
+				&& !this.#cellMediaUrl(raw)) {
+				const t = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
+				if (t.trim()) notes.push(t.trim());
+				continue;
+			}
 
 			return null;                                           // a foreign tag we cannot place
 		}
@@ -5212,6 +5265,29 @@ class InteractiveBuilder {
 					lead.push(p);
 					if (p.role === "text" || p.role === "table") continue;
 					return null;
+				}
+				// ROUND 311 (gathered-members build side; env MODGATHERBUILD_OFF): a set
+				// with NO trigger yet takes its trigger FILENAME from the first IMAGE that
+				// arrives before any real content — the tile dialects put the tile's front
+				// picture right after the numbered marker, as an [image] member (CEDR203)
+				// or as a bare iStock-page URL line (EXPFUN02/03's "[Click modal 3]" then
+				// the address). Fenced to sets whose parts are at most HEADINGS so far (the
+				// pop-out's own title may precede the picture), so a URL the writer wants
+				// INSIDE the pop-out is never stolen — and only a NAMEABLE image address
+				// counts (#accImageFilename), so a document link still falls through to
+				// the r73 button or to content.
+				if (cfg.gathered_members !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.MODGATHERBUILD_OFF)
+					&& !cur.filename && !cur.label
+					&& cur.parts.every((x) => x.role === "head")) {
+					if (p.role === "img" && p.filename) { cur.filename = p.filename; continue; }
+					if (p.role === "text") {
+						const u = String(p.text ?? "").trim().replace(/^\(|\)$/g, "");
+						if (/^https?:\/\/\S+$/.test(u)) {
+							const fn = this.#accImageFilename(u, cfg, cfg);
+							if (fn) { cur.filename = fn; continue; }
+						}
+					}
 				}
 				if (!this.#modalPushPart(cur.parts, p)) return null;
 			}
@@ -11131,6 +11207,28 @@ class InteractiveBuilder {
 
 		const lis = [];
 		for (const row of rows) {
+			// ROUND 311 — THE STATEMENT-COLUMN FENCE. In this reading a question's
+			// STATEMENT is the marked cell's own lead text ("2 ½ + 3 ¾ (6 ¼, 6 ¾, 5 ¼)",
+			// MXFL302 — every r294-proven build is that shape). A table that puts the
+			// statement in a SEPARATE column ("Australian dollar = 0.902517" | "(9.02517,
+			// 902.517, 90.2517)", MXFL301-5.0's rounding quiz, released to this builder by
+			// the round-311 modal gathering) has mark-less statement cells this loop
+			// SKIPS — the quiz built with its statements silently dropped, and the gold
+			// ships that dialect TABLE-form with the statements kept. Decline the whole
+			// bundle instead (all-or-nothing, the honest box keeps every word): the
+			// table-form build is the r309-named numbered-gap/options-table follow-up.
+			if (tpl.cell_parens_statement_fence !== false) {
+				let markedNoLead = false, statementCell = false;
+				for (const cell of row) {
+					const { text: ct, marks: cm } = this.#ddCellMarks(cell, tpl);
+					if (!ct.trim()) continue;
+					if (cm.length) {
+						const outside = ct.replace(/\(([^()]{2,300})\)/g, "").trim();
+						if (!outside) markedNoLead = true;
+					} else statementCell = true;
+				}
+				if (markedNoLead && statementCell) return null;
+			}
 			for (const cell of row) {
 				const { text, marks } = this.#ddCellMarks(cell, tpl);
 				if (!text.trim() || !marks.length) continue;

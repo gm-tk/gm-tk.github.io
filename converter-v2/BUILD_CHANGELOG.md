@@ -1,5 +1,163 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-11 (round 311, build 260618.82) — THE ONE-SENTENCE MODAL FAMILY: the one-marker gathering chain, ticket 1 of 3 (Chris — the gathering-remainder kickoff against the `_r310_remainder` decomposition; **NO REGENERATION — §0 is back in force and the request carried no `REGENERATE CORPUS` code. The gates were NOT re-run corpus-wide and the ROUND-310 BASELINES STILL DESCRIBE THE CORPUS; the four `*_OFF` toggles are the reversal guarantee, proven at corpus scale below. RECOMMENDED: `REGENERATE CORPUS - the 12 modal-gathering modules in outputs/_r311_affected_final.txt` (the §0a/§0b modal-family sweep rides whatever is granted).**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A pop-out whose label and content sit in the same breath of the writer's document is no
+longer abandoned at its own first heading: the modal's member walk now captures the
+pop-out's content heading under measured fences, a `[close modal]` span stops being a
+phantom widget invocation, a trailing video stays with the label that introduces it, and
+the builder composes what the walk now delivers — modal builds 196 → 202, modal declines
+184 → 153, and the 52-bundle one-marker family the census named is decomposed to its last
+member.**
+
+### 2. THE MEASUREMENT, AND WHAT IT CORRECTED
+
+The 24-shard census was re-run fresh against build 260618.81 (shards mtime-verified, four
+writers at a time) and a NEW instrument — `outputs/_measure_r311_walkstop.cjs`, the census
+require-hook pointed at the SCANNER: every `break;` inside `#swallowMembers` gains a
+recorder carrying `(line, bundle, items, j)` — pinned the EXACT source line each one-marker
+walk stopped on. The family is **52 bundles / 21 modules (19 reachable)**, the kickoff's
+figure to the bundle, and the mechanism decomposes as:
+
+* **THE HEADLINE MECHANISM IS AN ABSENCE: modal has NO boundary-bank entry**, so headings
+  terminate its walk by the bank default — and the writers' dominant pop-out shapes put a
+  heading at the TOP of the pop-out's own content (`[Modal 1 Image] → [H3] Threading Beads
+  → [Body] …` MXDI101 ×9 / MXEX201 ×4; `[modal] How do I convert? → [H5] → body → video →
+  [close modal]` MXFL301/MXFU301/MXDB302/BLL243). Every such walk stopped dead at L2178.
+* **The closer is a saboteur in one spelling and a good citizen in another.** The SAME
+  module (MXFL301) builds its p2.0 modals — whose writer typed `[modal ends]`, resolving
+  `end other`/CONTAINER_CLOSE — and shipped chaos where the writer typed `[close modal]`,
+  which resolves to the same `modal` INTERACTIVE tag as a real invocation: absorbed
+  mid-walk it let the bundle run into the next section (p5.0's swallowed two whole modal
+  groups plus the following drop-down quiz and its table); reached at an open site it
+  OPENED its own bundle (EXPFUN05's four one-marker closer boxes; MXFU301's closer bundle
+  swallowed 14 members of the next section).
+* **`#trimTrailingMedia` was emptying the label+video dialect**: `[modal] Author Neil
+  Gaiman speaks on his drafting process` + `[video]` captured BOTH members, then the
+  trailing-media pop (right for an accordion's post-widget explainer) removed the video —
+  the very content the r292 D4 dialect exists for — and shipped a one-marker box.
+* **The kickoff's XGF9003 example is in the family but NOT in the fix**: its `[Pop-out]`
+  tails carry the CONTENT and the labels are the [H2]s BEFORE each marker; the writer's
+  own instruction asks for a hover and the gold builds a shapeHover. Protected BY
+  CONSTRUCTION (fence (a) below) and recorded for a shapeHover round — the brief's
+  reason-2 verdict, confirmed.
+
+### 3. THE FOUR RULES (each with its own toggle; all-OFF == the shipped corpus byte-for-byte)
+
+* **`MODHEADMEM_OFF` — the pop-out's own content heading is a MEMBER**
+  (`InteractiveScanner.#modalHeadingMember`; data `member_rule.modal_gathering`). Fences,
+  each carrying a caught bug: (a) NEVER when the next unconsumed item is a same-type
+  marker — that heading is the next set's label (XGF9003's hover matrix byte-identical BY
+  CONSTRUCTION); (b) ARM-N: the bundle holds a NUMBERED same-type member, ONE heading per
+  set — and **the digit must sit INSIDE THE SAME BRACKET as the modal word**
+  (`numbered_pattern`, a lookahead pair): a bare `/\d/` read the "4" in a co-tag
+  `[Modal] [H4]` (ENGI202) and the "2" in "(same as in FUNdamental phase 2)" (ENFUN07) as
+  series evidence — both caught live by the byte decomposition and now NEGATIVE-asserted;
+  (c) ARM-C: a modal CLOSER lies ahead within the lookahead, so multi-step closer-delimited
+  pop-outs keep ALL their [H5] steps, while a LONE modal with no series evidence
+  (ENGS102-2.0, whose following [H3] is genuinely the next section) terminates exactly as
+  today.
+* **`MODCLOSER_OFF` — a `[close modal]` span never OPENS a bundle and ENDS an unnumbered
+  bundle's walk** (consumed in range; residue like "(stop at 4:01)" surfaces via
+  `bundle.instructions` as the red Writers Note — §6). **A LEXICON PROMOTE TO
+  CONTAINER_CLOSE WAS MEASURED AND REJECTED**: the closer population is 46 spans / 8
+  modules and 34 sit INTERLEAVED inside EXPFUN04/05's BUILT numbered tile modals, whose
+  walks absorb them mid-run by design — the numbered-member fence is what keeps those
+  builds byte-identical, and a directive change would have stopped their walks at the
+  first closer and shattered them.
+* **`MODTRAILMEDIA_OFF` — the modal keeps a trailing VIDEO when it can build**
+  (`member_rule.trailing_media_keep_types`; label-fenced by `#modalTrailKeep`, reading the
+  builder's own `label_max_words` live — the r308 no-drift discipline). **The fence was
+  forced by FOUR live regressions the probe caught before it existed**: an unfenced keep
+  lost ENGJ101 a rendered embed, turned PES1008's video into a note line, cost OSBY201 its
+  two r76 external-video buttons and MXEO301 an audio player — a declined bundle turns
+  kept media into dump text. Video-only (the builder has no audio role) and never on a
+  table-carrying bundle.
+* **`MODGATHERBUILD_OFF` — the gathered-members build side**
+  (`interactive_builders.modal.modal_sets.gathered_members`): a URL-less front-icon
+  subtag is an asset-request NOTE (CEDR203's tiles); an [image] member takes its URL from
+  the NEXT black line (the modal-sub/video next-line rule at the image seam, WITH the
+  tag's own placement instruction surfaced as a note — "can this please be placed to the
+  RHS…", MXFUN01-6.5, caught by the word-loss check); a D1 set with no trigger takes its
+  filename from the first NAMEABLE image/URL arriving before content (EXPFUN02/03's tile
+  fronts, iStock-1130753719 — gold's own 18-TKmodal form); and **the r73 doc-button FALLS
+  THROUGH when the bundle carries a captured heading — the r310 warning made live**: the
+  first run shipped "[H5] Sione's Learning Goal…" AS THE BUTTON LABEL with the paragraph
+  NOWHERE (an iStock purchase link labelled by a heading), unreachable for every pre-311
+  build by construction since pre-311 walks stopped at headings.
+
+**PLUS ONE FENCE OUTSIDE THE MODAL — the r294 cell-parens STATEMENT-COLUMN fence**
+(`dropDown.cell_parens_statement_fence`): the closer rule released MXFL301-5.0's rounding
+quiz to the dropDown builder, whose cell-parens reading built it with the STATEMENT COLUMN
+silently dropped ("Australian dollar = 0.902517" nowhere, options floating) — the gold
+ships that dialect TABLE-form with statements kept. A marked-parens cell with no same-cell
+statement in a row with unmarked statement cells now declines the whole bundle (the honest
+box keeps every word); every r294-proven carrier (MXFL302/BLLR201/BLL273/MXFL301-2.0)
+byte-identical; the table-form build is the r309-named options-table follow-up.
+
+### 4. THE PROOF (one toggle state per process)
+
+**OFF state (all four toggles) reproduces the shipped r310 corpus BYTE-FOR-BYTE: 535/535
+pages across all 93 reachable modal-carrying modules** — re-proven against the FINAL code.
+Affected set FROM BYTES: **25 pages / 12 modules** (BLLR201, ENFUN09, EXPFUN02/03/04/05,
+MXDB302, MXDI101, MXEX201, MXFL301, MXFU301, MXFUN01), 0 added, 0 removed; per-toggle
+decomposition HEADMEM 8 modules · CLOSER 4 · TRAILMEDIA 3 · GATHERBUILD 3. **35 assertions
+ALL PASS, including TWELVE NEGATIVE** (XGF9003 · ENGS102 · ENGI202 · ENFUN07 · ENGJ101 ·
+PES1008 · OSBY201 · MXEO301 · ENGI401 — r310's own canary — · HES1005 · ENGR302 · EXBP901,
+each byte-identical ON==OFF). Leak parity by the audit's own predicate: ON <= OFF on every
+affected module. Word-loss (2-letter regex) accounted to zero on every module — every
+delta is box chrome, the r73 default label, a URL becoming a src, or a bracket prefix
+whose instruction words survive as a note. Modal verifier: ON **73 groups / 65 triggers /
+defect 0** vs OFF 66/45/0, selftest GREEN. Census (re-run after EVERY builder edit — four
+times this round): **modal built 196 → 202, declined 184 → 153; NEW build locations 8;
+LOST 3, every one decomposed and NAMED**: MXFL301-3.0 accordion −1 = a PHANTOM group that
+had mis-captured the modal's escaped h5+content as a bogus panel — replaced by the gold's
+own nesting (the TKmodal sits inside accContent exactly where MXFL301's gold puts its
+clickDrop reveal); CEDR203 −2 = a ghost-dir module (no converted output) whose five
+pre-round FRAGMENT builds become three WHOLE tile builds + two honest declines on
+in-content hover markers (the r201 in-widget class, recorded). Engine gates: tags
+**9557/9557 REAL 0** · entry-parity **PASS** · index-sync **33/28** · **all ELEVEN
+selftests GREEN**.
+
+### 5. BUILD OUTCOMES, NAMED (the r246 A1 lens)
+
+**BUILDS (gold-shaped)**: MXFL301 ×5 new TKmodals ("A ratio?", "How do I convert?" —
+nested in its accordion panel exactly as the gold nests its reveal — "Rounding and
+estimating", "Revision", "Rounding to two d.p."), MXFU301 "Relative frequency" page-7
+group completions, MXDB302 ×3 ("Optional Extra"/"Dividing Decimals…"/"A Clever Tip"),
+ENFUN09 "Author Neil Gaiman speaks on his drafting process" (label+video — the gold
+flattened to h5+video, a NAMED A1 divergence, as are the clickDrop-reveal golds of
+MXFL301/BLL243), EXPFUN02/03 tile TKmodals with image triggers (gold's own 18-TKmodal
+form — replacing five r73 "Go to resource" pseudo-buttons that linked iStock PURCHASE
+pages and scattered the content), EXPFUN04 a fourth tile, BLL243 (ghost-dir forward
+guarantee). **EXPFUN04/05's EXISTING builds improve gold-ward** — each pop-out gains its
+in-modal Learning-Goal heading, which the gold carries INSIDE the TKmodal. **BOXES WITH
+CONTENT (honest declines)**: MXDI101 ×9 → 3 one-per-activity boxes carrying the full
+three-set content with the goJournal h4 still shipping outside (the no-address
+`[Modal N Image]` family — the WHY_UNBUILT reason-1b verdict, unchanged), MXEX201 ×4
+likewise, MXFU301-8.0 (in-content `[definition:` markers, the r201 class). **RELEASED
+CONTENT**: BLLR201-1.1's swallowed paragraph returns to the body; MXFL301-5.0's dropdown
+quiz is released and honestly DECLINES under the statement-column fence.
+
+### 6. WHAT REMAINS OF THE FAMILY, NAMED
+
+XGF9003's hover matrix (gold shapeHover — a shapeHover round) · the 12 layout-TABLE
+one-marker bundles (the brief's reason 5, no fix by design) · ENGR302-4.0's
+nested-carousel modal (Google-Slides carousel inside a modal — the nesting class) ·
+HES1005's media-list items (the r292 tiles dialect's Media-List arm) · EXPFUN05's
+remaining tile dialect residue (r216) · MXDB302's "A Clever Tip"-class unnumbered
+closerless multi-heading modals (no series evidence to key on) · the in-widget
+`[definition:` weave (r201/r299, MXFU301-8.0 + CEDR203's last two tiles).
+
+Env `MODHEADMEM_OFF` / `MODCLOSER_OFF` / `MODTRAILMEDIA_OFF` / `MODGATHERBUILD_OFF`; data
+`member_rule.modal_gathering` + `trailing_media_keep_types` +
+`interactive_builders.modal.modal_sets.gathered_members` (+ `cell_parens_statement_fence`).
+Tools `outputs/_measure_r311_walkstop.cjs` (NEW — the scanner-side break recorder),
+`_measure_r311_closers.cjs`, `_r311_hashcmp.py`, `_r311_assert.py`. NEXT IN THE CHAIN:
+round 312 — the CHFUN05 immediate-stop class.
+
 ## 2026-08-11 (round 310, build 260618.81) — THE GATHERING ROUND: THE DROPBOX SPLIT + the flipCard trailing button, and THE CHAIN'S FULL CORPUS REGENERATION (Chris — the round-306 follow-through chain, ticket 4 of 4, THE LAST; **FULL `REGENERATE CORPUS` per the chain's standing authority — ledger reset to 0; THE CHAIN IS CLOSED and its kickoff file is deleted with this round**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

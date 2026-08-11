@@ -1465,7 +1465,28 @@ class Config {
 	// held-or-improved, the two movements named. Data
 	// member_rule.dropbox_never_merges + button_tail_terminates; env
 	// DBXSPLIT_OFF + FCBTNTAIL_OFF.
-	static AppVersion = "260618.81";
+	// ROUND 311 (260618.82): THE ONE-SENTENCE MODAL FAMILY (the gathering-
+	// remainder chain, ticket 1 of 3). Modal has no boundary-bank entry, so
+	// headings TERMINATED its member walk by default — and the writers' pop-out
+	// shapes put a heading at the TOP of the pop-out's own content, leaving 52
+	// one-marker bundles across 21 modules. Four coupled rules: the pop-out's
+	// own content heading is CAPTURED under measured fences (MODHEADMEM_OFF);
+	// a "[close modal]" span — which resolves to the same modal tag as a real
+	// invocation — never OPENS a bundle and ENDS an unnumbered bundle's walk
+	// (MODCLOSER_OFF; the lexicon promote was measured and REJECTED — 34 of the
+	// 46 closers sit interleaved inside EXPFUN04/05's BUILT numbered tile
+	// modals); the modal keeps a trailing VIDEO when its invocation carries a
+	// buildable label (MODTRAILMEDIA_OFF — label-fenced after four live
+	// regressions); and the gathered-members build side (MODGATHERBUILD_OFF):
+	// front-icon subtags as asset notes, the image next-line-URL rule, D1's
+	// trigger-from-leading-image, and the r73 doc-button falling through when
+	// a bundle carries a captured heading (it was shipping the heading AS the
+	// button label and dropping the paragraph — the r310 warning made live).
+	// Modal builds 196 -> 202, declines 184 -> 153; 25 pages / 12 modules; OFF
+	// state byte-identical to the shipped corpus 535/535. Data
+	// member_rule.modal_gathering + trailing_media_keep_types +
+	// interactive_builders.modal.modal_sets.gathered_members.
+	static AppVersion = "260618.82";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -294,6 +294,36 @@ class InteractiveScanner {
 			const type = bareSeries ? bareSeries.widget
 				: this.#widgetTypeFor(canonTag, it.parse.primary.alias, normaliser);
 
+			// A MODAL CLOSER NEVER OPENS A BUNDLE (ROUND 311 — the one-marker gathering
+			// chain). "[Close Modal]" resolves to the SAME `modal` tag as a real invocation
+			// (unlike "[modal ends]", which resolves CONTAINER_CLOSE and behaves), so a
+			// closer the preceding walk never reached OPENED ITS OWN BUNDLE — a useless
+			// one-marker hand-off box at best (EXPFUN05 ×4) and at worst a bundle that
+			// swallowed the whole FOLLOWING SECTION into a dump (MXFL301/MXFU301, up to 14
+			// members of unrelated body). It is the writer's end delimiter: consume it as a
+			// no-op. RESIDUE-FENCED: a closer span carrying other words keeps today's
+			// behaviour, so a writer instruction riding the bracket is never silently
+			// dropped here (measured population of that shape at an OPEN site: zero — the
+			// one residue span corpus-wide, "(stop at 4:01) [close modal]", is reached
+			// MID-WALK and handled by the member-walk rule instead). A lexicon promote to
+			// CONTAINER_CLOSE was measured and REJECTED: EXPFUN04/05's BUILT tile modals
+			// absorb 30+ interleaved closers mid-walk, and a directive change would have
+			// stopped their walks at the first one and shattered the builds.
+			// Data member_rule.modal_gathering (closer_pattern); env MODCLOSER_OFF.
+			{
+				const mgO = DataService.Data.BoundaryBank._meta.member_rule.modal_gathering;
+				if (mgO && mgO.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.MODCLOSER_OFF)
+					&& (mgO.types ?? ["modal"]).includes(type) && !bareSeries && it.parse?.primary) {
+					const foldO = String(it.parse.folded ?? "");
+					if (new RegExp(mgO.closer_pattern, "i").test(foldO)
+						&& !foldO.replace(new RegExp(mgO.closer_strip_pattern ?? mgO.closer_pattern, "i"), "").replace(/[\[\]\s]+/g, "")) {
+						it.type = "black"; it.text = it.blackAfter ?? ""; it.blackAfter = "";
+						continue;
+					}
+				}
+			}
+
 			// STANDALONE INLINE MARKER (in free body, not inside any open widget): it
 			// is NOT a widget — the human renders it inline ON the surrounding text
 			// (a [highlight text] highlight, or a [rollover definition] tooltip span).
@@ -1976,6 +2006,40 @@ class InteractiveScanner {
 				// developer hand-off box instead. Strictly NARROWING: it can only ever end a bundle
 				// THIS round created, so no bundle that existed before round 303 can move.
 				if (bundle._bareSeries && extra !== null && extra !== bundle.type) break;
+				// A MODAL CLOSER MEMBER ENDS THE WALK (ROUND 311 — the one-marker gathering
+				// chain). "[close modal]" resolves to the same `modal` INTERACTIVE tag as a
+				// real invocation, so a walk that reached one ABSORBED it via the same-type
+				// path below and ran straight on into the next section (MXFL301-5.0's bundle
+				// swallowed two whole modal groups plus the following drop-down quiz and its
+				// table; -3.0/-4.0 ran into the next accordion/alert). The closer is the
+				// writer's own end delimiter — consume it IN RANGE (so it can never open a
+				// bundle of its own) and stop. FENCED to a bundle with NO NUMBERED same-type
+				// member: EXPFUN04/05's BUILT tile modals are numbered series whose 30+
+				// interleaved closers are absorbed mid-walk by design, and they keep today's
+				// behaviour byte-for-byte. A closer span carrying OTHER words ("(stop at
+				// 4:01) [close modal]") surfaces that residue via bundle.instructions — the
+				// standard red Writers Note — so a writer instruction riding the bracket is
+				// never silently stripped (§6). This check sits at the TOP of the
+				// INTERACTIVE-member block because the same-type absorb below would otherwise
+				// capture the closer first. Data member_rule.modal_gathering; env MODCLOSER_OFF.
+				{
+					const mgC = meta.modal_gathering;
+					if (mgC && mgC.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.MODCLOSER_OFF)
+						&& (mgC.types ?? ["modal"]).includes(bundle.type)
+						&& p.tag === bundle.canonTag) {
+						const closerRe = new RegExp(mgC.closer_pattern, "i");
+						const foldC = String(next.parse?.folded ?? "");
+						if (closerRe.test(foldC) && !this.#modalHasNumberedMember(bundle, closerRe)) {
+							const residue = foldC
+								.replace(new RegExp(mgC.closer_strip_pattern ?? mgC.closer_pattern, "i"), "")
+								.replace(/[\[\]]+/g, " ").replace(/\s+/g, " ").trim();
+							if (residue) bundle.instructions.push(residue);
+							j++;   // the closer stays INSIDE the consumed range — it opens nothing
+							break;
+						}
+					}
+				}
 				// INLINE MARKERS ([highlight text] → wordSelect/wordHighlighter) are NOT
 				// standalone widgets — they mark text the human highlights INLINE on the
 				// surrounding container. Inside an open widget they must be ABSORBED as a
@@ -2174,13 +2238,148 @@ class InteractiveScanner {
 			if (p && absolute.has(p.tag)) break;
 			if (p?.directive === "CONTAINER_CLOSE") break;   // explicit close ends the open container (over-capture #3)
 				if (p?.directive === "PAGE_BOUNDARY") break;   // belt & braces
-			// conditional terminators: h2–h5 per the widget's flag
-			if (p && ["h2", "h3", "h4", "h5"].includes(p.tag) && headingTerminates) break;
+			// conditional terminators: h2–h5 per the widget's flag — EXCEPT the pop-out's
+			// own content heading (ROUND 311): see #modalHeadingMember. (The modal CLOSER
+			// walk-stop lives at the top of the INTERACTIVE-member block above — a
+			// same-type member never reaches this far down.)
+			if (p && ["h2", "h3", "h4", "h5"].includes(p.tag) && headingTerminates) {
+				if (!this.#modalHeadingMember(bundle, items, j, p, absolute)) break;
+				this.#collectMember(bundle, next, run);
+				continue;
+			}
 
 			// not a terminator → swallowed as a member
 			this.#collectMember(bundle, next, run);
 		}
 		return j;
+	};
+
+	/** ROUND 311 — does this modal bundle already hold a NUMBERED same-type member?
+	 *  The numbered-series discriminator the gathering rules fence on: EXPFUN04/05's
+	 *  built tile dialect is numbered and keeps today's behaviour. The digit must sit
+	 *  INSIDE THE SAME BRACKET as the modal word (data numbered_pattern — a lookahead
+	 *  pair, so "[3 Click modal XL…]" counts with the digit BEFORE the word): a bare
+	 *  /\d/ over the whole fold read the "4" in a co-tag "[Modal] [H4]" (ENGI202) and
+	 *  the "2" in a parenthetical "(same as in FUNdamental phase 2)" (ENFUN07) as
+	 *  series evidence — both caught live by the round's byte decomposition. */
+	static #modalHasNumberedMember(bundle, closerRe) {
+		const mg = DataService.Data.BoundaryBank._meta.member_rule.modal_gathering ?? {};
+		const numRe = new RegExp(mg.numbered_pattern
+			?? "\\[(?=[^\\]]*(?:modal|pop\\s*-?\\s*out|popout))(?=[^\\]]*\\d)[^\\]]*\\]", "i");
+		for (const m of [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
+			if (!m || m.type !== "tag") continue;
+			if (m.parse?.primary?.tag !== bundle.canonTag) continue;
+			const f = String(m.parse?.folded ?? "");
+			if (closerRe && closerRe.test(f)) continue;
+			if (numRe.test(f)) return true;
+		}
+		return false;
+	};
+
+	/** ROUND 311 — is this modal bundle's kept trailing media SAFE to keep? True only
+	 *  when the INVOCATION carries a plausible trigger label on its own tail — the r280
+	 *  D4 dialect's precondition, tested with the BUILDER'S OWN label rules read live
+	 *  (label_max_words from interactive_builders.modal.modal_sets — the r308 no-drift
+	 *  discipline): non-empty, within the word cap, not a bare URL, not itself a
+	 *  bracketed instruction. A label-less bundle cannot build, and keeping media in a
+	 *  bundle that then declines LOSES the rendered embed into dump text. */
+	static #modalTrailKeep(bundle) {
+		// Only a trailing VIDEO is kept — the gold-backed D4 dialect is label+video, and
+		// #modalPushPart has no audio role, so a kept trailing AUDIO in a declining
+		// bundle vanishes into dump text (MXEO301's player, caught live). Data
+		// member_rule.trailing_media_keep_tags.
+		const mr = DataService.Data.BoundaryBank._meta.member_rule ?? {};
+		const keepTags = mr.trailing_media_keep_tags ?? ["video"];
+		const last = (bundle.memberItems ?? [])[(bundle.memberItems ?? []).length - 1];
+		if (!last || last.type !== "tag" || !keepTags.includes(last.parse?.primary?.tag)) return false;
+		// A TABLE-carrying bundle is a different dialect the builder mostly declines
+		// (PES1008's info-box table, caught live: its kept video became a note line) —
+		// the pop is the safe default there.
+		if ((bundle.tables ?? []).length) return false;
+		let inv = null;
+		for (const m of [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
+			if (m && m.type === "tag" && m.parse?.primary?.tag === bundle.canonTag
+				&& m.parse?.primary?.directive === "INTERACTIVE") { inv = m; break; }
+		}
+		if (!inv) return false;
+		const tail = String(inv.blackAfter ?? "")
+			.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "")
+			.replace(/\*+/g, "").trim();
+		if (!tail) return false;
+		if (/https?:\/\//i.test(tail) || /\[[^\]]*\]/.test(tail)) return false;
+		const maxWords = DataService.Data.EmitTemplates?.interactive_builders?.modal
+			?.modal_sets?.label_max_words ?? 9;
+		return tail.split(/\s+/).length <= maxWords;
+	};
+
+	/** ROUND 311 — THE POP-OUT'S OWN CONTENT HEADING (the one-marker gathering chain's
+	 *  headline mechanism). Modal has no boundary-bank entry, so headings TERMINATE its
+	 *  member walk by default — and the writers' dominant pop-out shapes put a heading
+	 *  at the TOP of the pop-out's own content: "[Modal 1 Image] → [H3] Threading Beads
+	 *  → [Body] …" (MXDI101 ×9, MXEX201 ×4) and "[modal] How do I convert? → [H5] → body
+	 *  → video → [close modal]" (MXFL301/MXFU301/BLL243). Every such walk stopped dead at
+	 *  the heading, the bundle shipped as a ONE-MARKER hand-off box, and the pop-out's
+	 *  content rendered as loose body text — 52 bundles / 21 modules measured fresh
+	 *  (outputs/_measure_r311_walkstop.cjs pinned the exact break line on every one).
+	 *
+	 *  A heading is CAPTURED as modal content only under the measured fences:
+	 *   (a) NEVER when the next unconsumed item is a same-type marker — that heading is
+	 *       the NEXT set's label / a between-group section heading (XGF9003's hover
+	 *       matrix, whose [H2] labels sit directly before each [Pop-out], keeps its
+	 *       exact current shape BY CONSTRUCTION — the gold builds a shapeHover there);
+	 *   (b) ARM-N: the bundle already holds a NUMBERED same-type member (the writer is
+	 *       keying sets by number — the D1 dialect), ONE heading per set (a second
+	 *       heading since the last same-type marker is the section resuming → terminate);
+	 *   (c) ARM-C: a modal CLOSER lies AHEAD within the lookahead — the writer told us
+	 *       where the widget ends, so headings up to it are content (multi-step pop-outs
+	 *       keep all their [H5] steps). The ahead-scan stops at absolute terminators,
+	 *       activity tags, different-type INTERACTIVE invocations and page boundaries,
+	 *       so a LONE modal with no series evidence (ENGS102-2.0, whose following [H3]
+	 *       is genuinely the next section) terminates exactly as today.
+	 *  Data member_rule.modal_gathering; env MODHEADMEM_OFF. */
+	static #modalHeadingMember(bundle, items, j, p, absolute) {
+		const mg = DataService.Data.BoundaryBank._meta.member_rule.modal_gathering;
+		if (!mg || mg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env.MODHEADMEM_OFF) return false;
+		if (!(mg.types ?? ["modal"]).includes(bundle.type)) return false;
+		const closerRe = new RegExp(mg.closer_pattern, "i");
+		// (a) heading directly followed by a same-type marker = the next set's label
+		let k = j + 1;
+		while (k < items.length && items[k]
+			&& ((items[k].type === "black" && !String(items[k].text ?? "").trim()) || items[k].consumedBy)) k++;
+		const nx = items[k];
+		if (nx && nx.type === "tag" && nx.parse?.primary?.directive === "INTERACTIVE"
+			&& nx.parse.primary.tag === bundle.canonTag) return false;
+		// (b) ARM-N — numbered series, one heading per set
+		if (this.#modalHasNumberedMember(bundle, closerRe)) {
+			for (let m = (bundle.memberItems ?? []).length - 1; m >= 0; m--) {
+				const mm = bundle.memberItems[m];
+				if (!mm || mm.type !== "tag") continue;
+				const mp = mm.parse?.primary;
+				if (mp?.tag === bundle.canonTag) return true;              // no heading since the last marker
+				if (["h2", "h3", "h4", "h5"].includes(mp?.tag)) return false;   // second heading → section resumes
+			}
+			return true;
+		}
+		// (c) ARM-C — a modal closer ahead bounds the capture
+		const closeRe = mg.closer_close_pattern ? new RegExp(mg.closer_close_pattern, "i") : null;
+		const cap = Math.min(items.length, j + 1 + (mg.lookahead ?? 40));
+		for (let a = j + 1; a < cap; a++) {
+			const itA = items[a];
+			if (!itA || itA.consumedBy) continue;
+			if (itA.type !== "tag") continue;
+			const pa = itA.parse?.primary;
+			if (!pa) continue;
+			const fa = String(itA.parse?.folded ?? "");
+			if (pa.directive === "INTERACTIVE" && pa.tag === bundle.canonTag && closerRe.test(fa)) return true;
+			if (pa.directive === "CONTAINER_CLOSE" && closeRe && closeRe.test(fa)) return true;
+			if (absolute && absolute.has(pa.tag)) return false;
+			if (pa.tag === "activity" || itA.parse?.tags?.some((t) => t.tag === "activity")) return false;
+			if (pa.directive === "INTERACTIVE" && pa.tag !== bundle.canonTag) return false;
+			if (pa.directive === "PAGE_BOUNDARY" || pa.directive === "CONTAINER_OPEN"
+				|| pa.directive === "SECTION_MARKER" || pa.directive === "CONTAINER_CLOSE") return false;
+		}
+		return false;
 	};
 
 	/**
@@ -2207,6 +2406,23 @@ class InteractiveScanner {
 		// is the last SLIDE, not post-widget media — trimming it would drop a slide and
 		// duplicate it as a standalone element after the widget. (member_rule.trailing_media_extract_exempt_types)
 		if ((mr.trailing_media_extract_exempt_types ?? []).includes(bundle.type)) return endIndex;
+		// ROUND 311 — the MODAL keeps its trailing media WHEN IT CAN BUILD: a [video]
+		// directly after "[modal] <label>" IS the pop-out's content by the widget's own
+		// semantics (the r292 D4 dialect exists for exactly that shape, and the golds
+		// render the label and video as ONE unit — ENFUN09's h5+video, MXDB302's
+		// h4+video, MXFU301's TKmodal). The pop was emptying those bundles into
+		// one-marker hand-off boxes with their content stranded outside. LABEL-FENCED
+		// (#modalTrailKeep): the keep fires ONLY when the invocation's own tail is a
+		// plausible trigger label, because a label-less bundle DECLINES at the builder
+		// and a declined bundle turns its kept media into dump text — the probe caught
+		// four live regressions of exactly that shape (ENGJ101 lost a rendered embed,
+		// PES1008's video became a note line, OSBY201 lost its two r76 external-video
+		// buttons, MXEO301 an audio player) before this fence existed. Separate key +
+		// toggle so the OSBY301 post-accordion semantics of the original rule are
+		// untouched. Data member_rule.trailing_media_keep_types; env MODTRAILMEDIA_OFF.
+		if ((mr.trailing_media_keep_types ?? []).includes(bundle.type)
+			&& !(typeof process !== "undefined" && process.env && process.env.MODTRAILMEDIA_OFF)
+			&& this.#modalTrailKeep(bundle)) return endIndex;
 		const extract = mr.trailing_media_extract ?? [];
 		if (!extract.length) return endIndex;
 		// The last memberItem always lines up with items[endIndex-1] (members are
