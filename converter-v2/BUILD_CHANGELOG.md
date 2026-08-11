@@ -1,5 +1,130 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-11 (round 312, build 260618.83) — THE CHFUN05 IMMEDIATE-STOP CLASS: the writer's [title N] panel dialect (Chris — the gathering-remainder kickoff, ticket 2 of 3, against the `_r310_remainder` decomposition; **NO REGENERATION — not requested, so the round-311 §9/§14 baselines still describe the corpus; the change is proven in memory on all 190 accordion-carrying modules and the scoped regeneration is RECOMMENDED below, waiting to be asked**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**CHFUN05's twenty accordions — nineteen of which captured NOTHING — now all build, 48
+panels, every one matching the human's own page: the writer's numbered `[title 1]`,
+`[title 2]`, … markers are the PANEL DELIMITERS, the panel heading riding as each tag's
+black tail, and the walk now captures them instead of dying on them.**
+
+### 2. THE MEASUREMENT, AND WHAT IT CORRECTED
+
+The round-311 walk-stop recorder, re-pointed at accordion/flipCard bundles
+(`outputs/_measure_r312_walkstop.cjs`), pinned the mechanism in one run — and **it is the
+OPPOSITE of what the WHY_UNBUILT brief recorded.** The brief said the blocker was the
+writer's misspelled `[tilte N]` ("matches no known marker and is filed as a note, so no
+panel opens") and that fixing the misspelling recovers one activity. Measured live:
+
+* **The CORRECT spelling was the blocker.** `[title N]` resolves to primary tag
+  `title bar` / SECTION_MARKER — an ABSOLUTE terminator — so all nineteen
+  correctly-spelled sections stopped dead at their own first panel marker (`L2238
+  absolute.has(p.tag)`), capturing nothing.
+* **The misspelling was the survivor.** `[tilte N]` resolves to NO tag, so nothing
+  terminated — that one walk ran on (13 members) until the r68 body-after-data-table
+  break truncated it mid-panel-2, and its build declined on the unknown members.
+* **The corpus population is EXACTLY ONE MODULE.** A live-extractor scan of all 454 WTs
+  (`outputs/_measure_r312_titles.cjs`, 24 shards) finds the numbered title form in
+  CHFUN05 alone: **48 occurrences — 45 `title` + 3 `tilte` — 46 of them hosted by an
+  accordion invocation.** So the kickoff's misspelling-vocabulary question answers
+  itself: `tilte` is a DATA-LISTED spelling alternation in one pattern
+  (`ti(?:tle|lte)`), reaching exactly three spans corpus-wide; no fuzzy matcher was
+  built, and the round-277 unnumbered `[Title]` stops (BLL266/OSBY401/SSFUN07) never
+  match the pattern and keep terminating exactly as today.
+* **CEDR401 — the brief's bundled sibling ("CHFUN05 and CEDR401 are 29 of the 46") — is
+  a DIFFERENT mechanism entirely.** Its ten accordions stop at `[Dropdown text]`
+  reveal-body markers, not titles; it is a ghost-dir module (zero corpus reach) and is
+  recorded, not actioned.
+
+### 3. THE TWO RULES (each with its own toggle; all-OFF == the shipped corpus byte-for-byte)
+
+* **`ACCTITLEMEM_OFF` — the scanner half** (data `member_rule.title_panel_member`):
+  inside an accordion-family bundle, a marker matching the numbered-title pattern is a
+  MEMBER, not a terminator (`#titlePanelMember`, the r277 hint-title mechanism at the
+  same call site); and once one is captured the walk follows the SERIES
+  (`#titleSeriesDecision`, shared by the `[body]` site and the table branch): a `[body]`
+  or MEDIA table directly after a title, or with another numbered title within the
+  lookahead, is IN-PANEL content — the gold nests each panel's "Watch the video…" +
+  video table INSIDE accContent — while a `[body]`/media-table arriving after the LAST
+  panel already has content ends the walk, so the trailing video ships OUTSIDE the
+  widget, exactly where the gold puts it. **The media-table fence was forced by a live
+  catch:** a first cut broke on ANY trailing table and cost the 要/会 section its
+  comparison TABLE — a data table directly under its `[title 2]` IS the panel's content
+  (gold-nested) — so a table only enters the series decision when it is a MEDIA table
+  (the r266 predicate, single-cell form allowed). The suppressed instruction-note ride:
+  a captured `[tilte N]` classifies as an instruction and was surfacing as a spurious
+  "Writers Note: [tilte 1]…" beside the very panels it delimits — suppressed under the
+  same fences (nothing silently stripped: the builder renders every word of the tail,
+  and a declined bundle still shows the marker verbatim in its dump).
+* **`ACCTITLEPANEL_OFF` — the builder half** (data
+  `interactive_builders.accordion.panel_delimiters.title_members`): a numbered-title
+  member OPENS A PANEL, heading = its black tail bold-stripped (the gold ships the whole
+  tail as the accHead h4; `head_max_words` 20, longer tails fall back to their bold lead
+  per the r278 D1 discipline) — placed BEFORE the instruction/noise branch so the
+  misspelled members become panels rather than notes; the BARE opener's tail ("Click on
+  the tab to see examples.", once typed inside the red span) is the accordion's LEAD —
+  the gold's own `<p>` above the widget — never a bogus zero-part first panel; and an
+  in-panel MEDIA TABLE translates per cell into the panel's own videoSection (a
+  `/shorts/` URL ships the corpus youtubeShort 1x1 form, READ FROM the round-266
+  carousel media_table block — one source, the r308 no-drift discipline) + caption
+  `<p>`, with any prose riding in the media segment kept ahead of the embed — instead of
+  a kept table whose raw media cell the leak guard would rightly decline. Every builder
+  behaviour is fenced to bundles actually carrying a title member, and `title_members`
+  lives only on the accordion's config, so tabs/flipCard/clickDrop — which share this
+  walk — are untouched BY CONSTRUCTION.
+
+### 4. THE PROOF (one toggle state per process; final code, every suite re-run after the last edit)
+
+**OFF (both toggles) reproduces the shipped corpus BYTE-FOR-BYTE: 190/190
+accordion-carrying modules, 1,256 output files, 0 diffs** (`_probe_r312_convert.cjs
+--hashes`, 8 shards ×4 states + `_r312_hashcmp.py`). **ON changes EXACTLY 1 module / 2
+files — CHFUN05_0_0.html + its worklist txt — across all 190**: the affected set from
+BYTES equals the corpus measurement to the module. Per-toggle decomposition: MEM-only =
+the same 1 module (the scanner owns the blast); **PANEL-only = ZERO bytes anywhere**
+(without the captures its member sets still truncate — reported as the honest r294
+DDNUMCOMMA class, a toggle that changes nothing alone). Canaries: the r277-list
+title-stop modules SSFUN07/HPFUN301 + BLL210/OSAH501/TRR203 disk-byte-identical in BOTH
+states; ghost-dirs BLL266/SSEA203 ON==OFF in memory. **18 named probe assertions ALL
+PASS** — among them: 45/45 gold accHeads present + the writer's 3 extra panels (the gold
+merged them — named A1 divergences), the opener-tail lead `<p>`, the This/That panel
+nesting its video+caption INSIDE accContent, the trailing "count along" video staying
+OUTSIDE, zero title brackets anywhere, no bold in heads, the 6A quiz staying its own
+bundle. **15 audit-side assertions ALL PASS** (`_r312_assert.py`): leak parity by the
+audit's own predicate **112 == 112**; word-loss ZERO under the named chrome/URL classes
+with raw phrase-count invariants ("Watch the video" 34==34, "Check your understanding"
+68==68); quality scan 48 heads none empty; page inventory — accordions 1→21, flipCards
+34==34, carousels 22==22, hand-off boxes 55→38, videoSections 20→24. Accordion verifier:
+**48 panels built / every one matches the human ✓ / defect 0**, selftest GREEN; tags
+**9557/9557 REAL 0**; entry-parity **PASS**; index-sync **33/28**; **all ELEVEN
+selftests GREEN**. Two catches the proof forced before ship: the trailing-table break
+eating the 要/会 comparison table (§3), and the media-cell translation dropping the
+cell's own leading prose line ("Watch the video for more examples." in the 觉得/想 cell)
+— both fixed, both re-proven.
+
+### 5. WHAT REMAINS OF CHFUN05, AND OF THE FAMILY, NAMED
+
+CHFUN05's other one-markers are NOT this mechanism: 1 wordDrag (`[Audio] [wordDrag]…`
+stopping at the next quiz's own invocation — another family) and **9 empty-opener
+speechBubble bundles — the round-313 TEDC-empties class, on this very module**. CEDR401's
+`[Dropdown text]` dialect (10 bundles, ghost dir) is recorded. The `_r310_remainder`
+data note is updated with all of this.
+
+### 6. THE RECOMMENDED REGENERATION (waiting to be asked)
+
+`REGENERATE CORPUS - CHFUN05` folds the round in (1 page + 1 worklist txt). The §0a
+whole-type sweep over the 190 accordion-carrying modules is already byte-proven a no-op
+on the other 189 — the content manifest will confirm it cheaply whenever the next
+regeneration of any scope runs.
+
+Env `ACCTITLEMEM_OFF` / `ACCTITLEPANEL_OFF`; data `member_rule.title_panel_member` +
+`interactive_builders.accordion.panel_delimiters.title_members`. Tools
+`outputs/_measure_r312_titles.cjs` (NEW — the numbered-title census),
+`_measure_r312_walkstop.cjs` (the r311 recorder, type-parameterised),
+`_r312_itemdump.cjs`, `_probe_r312_convert.cjs`, `_r312_hashcmp.py`, `_r312_assert.py`.
+NEXT IN THE CHAIN: round 313 — the TEDC401/402 empty-member bundles (+ CHFUN05's own 9)
++ the re-measure, and the chain's CLOSE.
+
 ## 2026-08-11 (round 311, build 260618.82) — THE ONE-SENTENCE MODAL FAMILY: the one-marker gathering chain, ticket 1 of 3 (Chris — the gathering-remainder kickoff against the `_r310_remainder` decomposition; **SCOPED REGENERATION GRANTED AND RUN in the same session — Chris: `REGENERATE CORPUS - the 12 modal-gathering modules in outputs/_r311_affected_final.txt` — with the §0a whole-type modal-family sweep (all 93 reachable modal-carrying modules rebuilt); scoped ship #1 since the round-310 full; every protected gate HELD-or-IMPROVED (§7 below).**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

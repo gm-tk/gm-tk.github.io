@@ -1392,6 +1392,20 @@ class InteractiveBuilder {
 		const delimTags = delims?.tags ?? ["accordion"];
 		const openerTags = delims?.opener_tags ?? [];
 
+		// ROUND 312 — the NUMBERED [title N]/[tilte N] PANEL delimiters (the CHFUN05
+		// dialect; the scanner captures them under member_rule.title_panel_member).
+		// `title_members` lives ONLY on the accordion's panel_delimiters config, so
+		// tabs/flipCard/clickDrop — which pass their own cfg through this shared walk —
+		// are untouched BY CONSTRUCTION. hasTitleMembers additionally fences every
+		// title-mode behaviour below to bundles that actually carry the dialect
+		// (measured: EXACTLY CHFUN05 corpus-wide). env ACCTITLEPANEL_OFF.
+		const tmCfg = (cfg.title_members && cfg.title_members.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.ACCTITLEPANEL_OFF))
+			? cfg.title_members : null;
+		const tmRe = tmCfg ? new RegExp(tmCfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i") : null;
+		const hasTitleMembers = !!(tmRe && members.some((m) =>
+			m?.type === "tag" && tmRe.test(this.#cellText(String(m.text ?? "")).trim())));
+
 		for (const m of members) {
 			if (!m) continue;
 			const tag = m.type === "tag" ? m.parse?.primary?.tag : null;
@@ -1420,6 +1434,20 @@ class InteractiveBuilder {
 			if (m.type === "nested") { parts.push({ role: "nested", bundle: m.nestedBundle }); continue; }
 
 			if (m.type === "table") {
+				// ROUND 312 — in a TITLE-delimited accordion, a MEDIA TABLE (every non-empty
+				// cell = an [image]/[video] red-span tag + a URL, optional [caption] + text)
+				// is the PANEL'S OWN EMBEDDED MEDIA, not a data table: the gold nests the
+				// videoSection + its caption <p> INSIDE accContent (CHFUN05's This/That
+				// panels). Rendering it through contentTable instead would show the raw
+				// media cell and the leak guard would rightly decline the whole build.
+				// Translated per cell into video/img parts + a trailing caption text part;
+				// any non-media-shaped cell → the whole test fails and the table falls
+				// through to the ordinary handling below, unchanged. Fenced to
+				// hasTitleMembers, so no existing table-carrying accordion build can move.
+				if (hasTitleMembers && tmCfg?.media_table_parts !== false) {
+					const med = this.#accMediaTableParts(m, tpl, cfg, idRe);
+					if (med) { for (const pt of med) parts.push(pt); continue; }
+				}
 				if (typeof renderTable !== "function") return null;
 				// Rendered EAGERLY (renderTable is only in scope here) so the table can serve
 				// either job: as the panel SOURCE (D2, which reads item.block.rows) or, when
@@ -1470,6 +1498,35 @@ class InteractiveBuilder {
 					else if (trail) parts.push({ role: "text", text: trail });
 					continue;
 				}
+			}
+
+			// ROUND 312 — a NUMBERED [title N]/[tilte N] member OPENS A PANEL, its black
+			// tail the panel's heading (the CHFUN05 dialect; gold h4s ship the whole tail,
+			// bold stripped). MUST run before the instruction/noise branch: the misspelled
+			// "[tilte N]" resolves to NO tag and classifies as noise, which would have
+			// filed the writer's panel heading as a red note — the brief's "filed as a
+			// note, so no panel opens". A tail longer than head_max_words falls back to
+			// its bold lead (the r278 D1 discipline), else the panel is left head-less so
+			// the resolver declines rather than inventing a heading.
+			if (hasTitleMembers && m.type === "tag"
+				&& tmRe.test(this.#cellText(String(m.text ?? "")).trim())) {
+				const tRaw = m.blackAfter ?? "";
+				if (this.#hasRedText(tRaw)) return null;
+				const tLines = this.#cellText(tRaw).split("\n").map((s) => s.trim()).filter(Boolean);
+				const tHead = (tLines[0] ?? "").replace(/\*\*/g, "").trim();
+				if (!tHead) { parts.push({ role: "panel", head: "" }); continue; }
+				const tMax = tmCfg.head_max_words ?? 20;
+				if (tHead.split(/\s+/).length > tMax) {
+					const lead = this.#accBoldLead(tLines[0], cfg);
+					if (!lead) { parts.push({ role: "panel", head: "", overlong: true }); continue; }
+					parts.push({ role: "panel", head: lead.head });
+					const rest = [lead.rest, ...tLines.slice(1)].filter((s) => String(s).trim()).join("\n");
+					if (rest.trim()) parts.push({ role: "text", text: rest });
+					continue;
+				}
+				parts.push({ role: "panel", head: tHead });
+				if (tLines.length > 1) parts.push({ role: "text", text: tLines.slice(1).join("\n") });
+				continue;
 			}
 
 			// a writer instruction / noise span — surfaced as a red note, never build content
@@ -1528,6 +1585,26 @@ class InteractiveBuilder {
 
 			if (tag && delimTags.includes(tag)) {
 				const own = this.#cellText(String(m.text ?? ""));
+				// ROUND 312 — when the panels are TITLE-delimited, the BARE (unnumbered)
+				// opener's tail is the accordion's LEAD, never a panel head: CHFUN05 opens
+				// every section "[accordion] Click on the tab to see examples." and the
+				// gold ships that sentence as a <p> ABOVE the widget. Without this the
+				// bare-opener-with-tail dialect (r242's un-numbered repeated-label form)
+				// would make a bogus first panel whose zero parts decline the whole build.
+				// One writer typed the phrase INSIDE the red span ("[accordion] click on
+				// the tab…"); the bracket-stripped residual is the same lead. Fenced to
+				// hasTitleMembers, so the r242 dialect is untouched everywhere else.
+				if (hasTitleMembers && tmCfg?.opener_tail_as_lead !== false
+					&& !numbered.test(own.trim()) && !ordinal.test(own.trim())) {
+					if (text) {
+						if (this.#hasRedText(raw)) return null;
+						parts.push({ role: "text", text });
+					} else {
+						const resid = own.replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim();
+						if (resid) parts.push({ role: "text", text: resid });
+					}
+					continue;
+				}
 				// ROUND 290 — A NUMBERED DELIMITER NAMING A SUB-ROLE. The two halves of one
 				// card often arrive as two tags of the same family: "[flipcard 1 image] <url>"
 				// then "[flip card 1 inside text]" (BLL224-2.0), "[flipcard 1 front] <url>"
@@ -1806,6 +1883,69 @@ class InteractiveBuilder {
 			return null;                                           // a foreign tag we cannot place
 		}
 		return parts;
+	}
+
+	/**
+	 * ROUND 312 — a captured MEDIA TABLE translated into panel parts (the CHFUN05
+	 * title-dialect only — see the call site's fence). Every non-empty cell must be
+	 * media-shaped: an [image]/[video] red-span tag + a URL, with an optional
+	 * [caption] marker whose trailing text is the media's caption (the gold ships it
+	 * as a <p> AFTER the videoSection inside accContent). Any other cell shape →
+	 * null, and the caller falls back to the ordinary kept-table handling.
+	 *
+	 * @param {Object} item - the table member
+	 * @param {Object} tpl - the accordion template config
+	 * @param {Object} cfg - panel_delimiters
+	 * @param {RegExp} idRe - the YouTube id extractor
+	 * @returns {Object[]|null} parts (video/img/embed + caption text), or null
+	 */
+	static #accMediaTableParts(item, tpl, cfg, idRe) {
+		const rows = item?.block?.rows ?? [];
+		const tagRe = /\[\s*(image|video)\s*\]/i;
+		const out = [];
+		let n = 0;
+		for (const r of rows) {
+			if (!Array.isArray(r)) return null;
+			for (const c of r) {
+				const clean = this.#cellText(String(c ?? ""));
+				if (!clean.trim()) continue;
+				const tm = clean.match(tagRe);
+				if (!tm) return null;                              // a non-media cell → not a media table
+				const segs = clean.split(/\[\s*caption\s*\]/i);
+				const url = (segs[0].match(/https?:\/\/[^\s\]"<>]+/) ?? [])[0];
+				if (!url) return null;                             // media tag without a URL → not clean
+				// any PROSE riding in the media segment (before/around the markers) is the
+				// writer's own intro line — kept ahead of the embed, never silently dropped
+				const pre = segs[0].replace(/https?:\/\/[^\s\]"<>]+/g, " ")
+					.replace(/\[[^\]]*\]/g, " ").replace(/\s+\/\s+/g, " ")
+					.replace(/^\s*\/+|\/+\s*$/g, " ").replace(/\s+/g, " ").trim();
+				if (pre) out.push({ role: "text", text: pre });
+				if (/video/i.test(tm[1])) {
+					// a /shorts/ URL ships the corpus youtubeShort 1x1 form — READ FROM the
+					// round-266 carousel media_table block (one source, the r308 no-drift
+					// discipline), which the CHFUN golds follow 57/57.
+					const mt = DataService.Data.EmitTemplates.interactive_builders?.carousel?.media_table ?? {};
+					const sm = url.match(new RegExp(mt.shorts_id_re ?? "youtube\\.com/shorts/([\\w-]{11})"));
+					const vm = url.match(idRe);
+					if (sm && mt.shorts_embed) out.push({ role: "embed", html: Utils.FillTemplate(mt.shorts_embed, { videoId: sm[1] }) });
+					else if (vm) out.push({ role: "video", id: vm[1] });
+					else {
+						const gen = cfg.generic_embed !== false
+							? DataService.Data.EmitTemplates.video?.generic_iframe : null;
+						if (!gen) return null;
+						out.push({ role: "embed", html: Utils.FillTemplate(gen, { url }) });
+					}
+				} else {
+					const fn = this.#accImageFilename(url, tpl, cfg);
+					if (!fn) return null;                          // an un-nameable image → fall back
+					out.push({ role: "img", filename: fn });
+				}
+				const cap = (segs[1] ?? "").replace(/https?:\/\/\S+/g, "").trim();
+				if (cap) out.push({ role: "text", text: cap });
+				n++;
+			}
+		}
+		return n >= 1 ? out : null;
 	}
 
 	/**

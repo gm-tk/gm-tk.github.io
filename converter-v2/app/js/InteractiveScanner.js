@@ -1089,6 +1089,116 @@ class InteractiveScanner {
 	};
 
 	/**
+	 * ROUND 312 — the writer's NUMBERED [title N] PANEL DELIMITER (the CHFUN05 dialect).
+	 *
+	 * CHFUN05's writer delimits every accordion panel with "[title 1]", "[title 2]", …
+	 * (three of them misspelled "[tilte N]"), the panel's heading riding as the tag's
+	 * black tail. "[title N]" resolves to primary tag `title bar` / SECTION_MARKER — an
+	 * ABSOLUTE terminator — so 19 of the page's 20 accordions captured NOTHING (the walk
+	 * died at its own first panel), while the ONE section whose writer misspelled the
+	 * word captured everything, because "[tilte N]" resolves to NO tag at all and nothing
+	 * terminates. The gold builds all 20 accordions / 45 panels from exactly these
+	 * markers. So: inside an accordion-family bundle, a numbered title marker is a
+	 * MEMBER, not a terminator. MEASURED over all 454 corpus WTs
+	 * (outputs/_measure_r312_titles.cjs): the numbered form is EXACTLY ONE MODULE —
+	 * CHFUN05, 48 occurrences (45 "title" + 3 "tilte") — so the fence (numbered + an
+	 * accordion-family walk) has fire population CHFUN05 BY CONSTRUCTION; the UNNUMBERED
+	 * [Title] stops of BLL266/OSBY401/SSFUN07 (round 277's measurement) never match the
+	 * pattern and keep terminating exactly as today. The misspelling is a DATA-listed
+	 * spelling alternation in the pattern, not a fuzzy matcher — "tilte" exists nowhere
+	 * else in the corpus. Data member_rule.title_panel_member; env ACCTITLEMEM_OFF.
+	 *
+	 * @param {Object} bundle - the open bundle
+	 * @param {Object} item   - the candidate terminator item
+	 * @param {Object} p      - item.parse.primary
+	 * @returns {boolean} true → swallow as a member; false → normal terminator handling
+	 */
+	static #titlePanelMember(bundle, item, p) {
+		if (typeof process !== "undefined" && process.env && process.env.ACCTITLEMEM_OFF) return false;
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.title_panel_member;
+		if (!cfg || cfg.enabled === false) return false;
+		if (!(cfg.types ?? []).includes(bundle?.type)) return false;
+		if (p?.tag !== "title bar") return false;
+		return new RegExp(cfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i")
+			.test(String(item?.text ?? "").trim());
+	};
+
+	/**
+	 * ROUND 312 — is another NUMBERED [title N]/[tilte N] panel delimiter still AHEAD?
+	 *
+	 * The fence on the title-series section-break below: content between two title
+	 * delimiters is the earlier panel's content (including its "[body] Watch the
+	 * video…" + video table — the gold nests those INSIDE accContent), so the
+	 * body-after-data-table section break must not fire between panels. Once no
+	 * further title lies ahead, the series is over and the break semantics resume.
+	 * Mirrors #panelDelimiterAhead, except the thing sought IS a SECTION_MARKER
+	 * (title bar), so a title-bar item never stops the scan; the misspelled
+	 * "[tilte N]" carries no primary at all, which is why the test is on the raw
+	 * bracket text rather than the resolved tag.
+	 *
+	 * @param {Array} items - the page's item stream
+	 * @param {number} from - index to start looking from
+	 * @param {Object} cfg  - member_rule.title_panel_member
+	 * @returns {boolean}
+	 */
+	/**
+	 * ROUND 312 — the TITLE-SERIES capture decision, shared by the [body] site and the
+	 * table branch of #swallowMembers. Null when the bundle is not in title-series mode
+	 * (no captured numbered title member — which the corpus measurement pins to CHFUN05
+	 * alone); "capture" while the current panel is still empty OR another numbered title
+	 * lies ahead (in-panel content — the gold nests each panel's video INSIDE
+	 * accContent); "break" when the last panel already has content and no title remains
+	 * (the section resuming — the gold ships the trailing video OUTSIDE the widget).
+	 * Data member_rule.title_panel_member (body_break/lookahead); env ACCTITLEMEM_OFF.
+	 *
+	 * @param {Object} bundle - the open bundle
+	 * @param {Array} items - the page's item stream
+	 * @param {number} j - the current walk index
+	 * @returns {"capture"|"break"|null}
+	 */
+	static #titleSeriesDecision(bundle, items, j, item = null) {
+		if (typeof process !== "undefined" && process.env && process.env.ACCTITLEMEM_OFF) return null;
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.title_panel_member;
+		if (!cfg || cfg.enabled === false || cfg.body_break === false) return null;
+		if (!(cfg.types ?? []).includes(bundle?.type)) return null;
+		// a TABLE only enters the series decision when it is a MEDIA table (the r266
+		// predicate; single-cell form allowed) — a data/comparison table directly under
+		// its [title N] IS the panel's content (CHFUN05's 要/会 comparison, gold-nested)
+		// and must fall through to the ordinary capture.
+		if (item && item.type === "table"
+			&& !this.#isMediaTable(item.block, { min_cells: cfg.trailing_table_min_cells ?? 1 })) return null;
+		const re = new RegExp(cfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i");
+		let lastTitle = -1;
+		for (let q = (bundle.memberItems ?? []).length - 1; q >= 0; q--) {
+			const mm = bundle.memberItems[q];
+			if (mm?.type === "tag" && re.test(String(mm.text ?? "").trim())) { lastTitle = q; break; }
+		}
+		if (lastTitle < 0) return null;
+		const panelHasContent = lastTitle < bundle.memberItems.length - 1;
+		if (!panelHasContent || this.#titleAheadFence(items, j + 1, cfg)) return "capture";
+		return "break";
+	};
+
+	static #titleAheadFence(items, from, cfg) {
+		const re = new RegExp(cfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i");
+		const limit = Math.min(items.length, from + (cfg.lookahead ?? 25));
+		for (let k = from; k < limit; k++) {
+			const it = items[k];
+			if (!it || it.consumedBy !== undefined) continue;
+			if (it.type === "table" || it.type === "black") continue;
+			if (it.type !== "tag") continue;
+			if (re.test(String(it.text ?? "").trim())) return true;
+			const pr = it.parse?.primary;
+			if (!pr) continue;                                        // an unresolved span — read on
+			if (pr.tag === "activity") return false;
+			if (pr.directive === "INTERACTIVE") return false;         // a different widget starts
+			if (pr.directive === "PAGE_BOUNDARY") return false;
+			if (pr.directive === "SECTION_MARKER") return false;      // a REAL section marker ends the series
+		}
+		return false;
+	};
+
+	/**
 	 * The bilingual activity NUMBER ("1A") carried in a table's "Activity NX:" / "Ngohe NX:" label
 	 * row, or null. The number is digit(s) + a single letter followed by a colon (the writer's
 	 * label form); ordinary prose mentioning "activity" without that digit+letter+colon shape never
@@ -1258,6 +1368,13 @@ class InteractiveScanner {
 			const next = items[j];
 
 			if (next.type === "table") {           // content_data — usually a member
+				// ROUND 312 — TITLE-SERIES trailing-table semantics: in a [title N]-delimited
+				// accordion, a table arriving after the LAST panel already has content is the
+				// section's own trailing media (CHFUN05's 觉得/想 video), which the gold ships
+				// OUTSIDE the widget — the walk ends. A table BETWEEN titles (panel content,
+				// the This/That in-panel videos) falls through to the normal capture below.
+				// See #titleSeriesDecision; env ACCTITLEMEM_OFF.
+				if (this.#titleSeriesDecision(bundle, items, j, next) === "break") break;
 				// reoMode SECTION boundary: a `[H1] N.M` decimal section-opener table starts a NEW
 				// section box (BilingualBuilder.bilingualSection), so a widget bundle must STOP here
 				// and never swallow the next section's heading/prose into itself (which would produce
@@ -1794,6 +1911,26 @@ class InteractiveScanner {
 				}
 			}
 
+			// TITLE-SERIES [body] SEMANTICS (ROUND 312 — the CHFUN05 [title N] dialect).
+			// Once a bundle holds a captured NUMBERED title member, a [body] is decided by
+			// the SERIES, not by the table-data section break below: (a) a [body] directly
+			// after a title is that panel's opening content — captured; (b) a [body]
+			// arriving while ANOTHER numbered title lies ahead is still in-panel content
+			// (the gold nests each panel's "[body] Watch the video…" + video table INSIDE
+			// accContent — CHFUN05's This/That panels); (c) a [body] arriving after the
+			// LAST panel already has content is the writer's section RESUMING — the walk
+			// ends, and the trailing "[body] Watch the video and count along." + its video
+			// table ship OUTSIDE the widget, exactly where CHFUN05's gold puts them. Fire
+			// population = bundles carrying a numbered title member, which the corpus
+			// measurement pins to CHFUN05 alone. Data member_rule.title_panel_member
+			// (body_break/lookahead); env ACCTITLEMEM_OFF (title members are only ever
+			// captured under the same toggle, so this block is dormant with it).
+			if (p?.tag === "body") {
+				const tsd = this.#titleSeriesDecision(bundle, items, j);
+				if (tsd === "capture") { this.#collectMember(bundle, next, run); continue; }
+				if (tsd === "break") break;           // series over — the section resumes
+			}
+
 			// TABLE-DATA SECTION-BREAK resumption (OSBY201-02 + OSAI501-01): a [Body] ELEMENT or an
 			// [H2]-[H5] section HEADING that appears AFTER a TABLE-DATA widget (uses_data_table —
 			// typing/dragAndDrop/dropQuiz/memoryGame…) has captured its table is the writer starting
@@ -2230,6 +2367,13 @@ class InteractiveScanner {
 			// untouchable BY CONSTRUCTION through the `types` gate. Data
 			// member_rule.hint_title_member; env HINTTITLE_OFF.
 			if (p && absolute.has(p.tag) && this.#hintTitleMember(bundle, next, p)) {
+				this.#collectMember(bundle, next, run);
+				continue;
+			}
+			// TITLE PANEL DELIMITER (ROUND 312) — the writer's numbered [title N] is an
+			// accordion PANEL marker, not a page title bar: swallow it as a member (the
+			// CHFUN05 dialect; see #titlePanelMember). env ACCTITLEMEM_OFF.
+			if (p && absolute.has(p.tag) && this.#titlePanelMember(bundle, next, p)) {
 				this.#collectMember(bundle, next, run);
 				continue;
 			}
@@ -3031,6 +3175,19 @@ class InteractiveScanner {
 		if (item.type !== "tag") return;
 		const parse = item.parse;
 		if (parse.class === "instruction" || parse.instructionFragment) {
+			// ROUND 312 — a NUMBERED [title N]/[tilte N] panel delimiter is a STRUCTURAL
+			// marker of the title dialect, not a writer instruction (the misspelled
+			// "[tilte N]" resolves to no tag and classifies as one): its content — the
+			// panel's heading — ships INSIDE the built widget as the accHead, so the red
+			// note would duplicate the heading it sits under. Suppressed under exactly the
+			// capture rule's fences; nothing is silently stripped — the builder renders
+			// every word of the tail, and a DECLINED bundle still shows the marker verbatim
+			// in its hand-off dump. env ACCTITLEMEM_OFF.
+			const tCfg = DataService.Data.BoundaryBank?._meta?.member_rule?.title_panel_member;
+			if (tCfg && tCfg.enabled !== false && (tCfg.types ?? []).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env.ACCTITLEMEM_OFF)
+				&& new RegExp(tCfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i")
+					.test(String(item.text ?? "").trim())) return;
 			// the whole span is a writer instruction
 			bundle.instructions.push(item.text.replace(/\s+/g, " ").trim());
 		}

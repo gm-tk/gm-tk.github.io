@@ -1486,7 +1486,19 @@ class Config {
 	// state byte-identical to the shipped corpus 535/535. Data
 	// member_rule.modal_gathering + trailing_media_keep_types +
 	// interactive_builders.modal.modal_sets.gathered_members.
-	static AppVersion = "260618.82";
+	// ROUND 312 (260618.83): THE CHFUN05 IMMEDIATE-STOP CLASS (the gathering-
+	// remainder chain, ticket 2 of 3). The writer's numbered [title N]/[tilte N]
+	// markers are accordion PANEL delimiters (measured: EXACTLY ONE MODULE
+	// corpus-wide) — captured as members instead of terminating the walk, the
+	// series governing [body]/media-table breaks, the builder opening a panel
+	// per title with the tail as its heading, the bare opener's tail as the
+	// lead <p>, and in-panel media tables as videoSections. CHFUN05 accordions
+	// 0→20 built / 48 panels, every one matching the human; OFF byte-identical
+	// on all 190 accordion-carrying modules (1,256 files), ON confined to
+	// CHFUN05 by bytes. Env ACCTITLEMEM_OFF / ACCTITLEPANEL_OFF; data
+	// member_rule.title_panel_member +
+	// interactive_builders.accordion.panel_delimiters.title_members.
+	static AppVersion = "260618.83";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
