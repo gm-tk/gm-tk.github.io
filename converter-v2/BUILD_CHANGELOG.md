@@ -1,6 +1,6 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
-## 2026-08-11 (round 311, build 260618.82) — THE ONE-SENTENCE MODAL FAMILY: the one-marker gathering chain, ticket 1 of 3 (Chris — the gathering-remainder kickoff against the `_r310_remainder` decomposition; **NO REGENERATION — §0 is back in force and the request carried no `REGENERATE CORPUS` code. The gates were NOT re-run corpus-wide and the ROUND-310 BASELINES STILL DESCRIBE THE CORPUS; the four `*_OFF` toggles are the reversal guarantee, proven at corpus scale below. RECOMMENDED: `REGENERATE CORPUS - the 12 modal-gathering modules in outputs/_r311_affected_final.txt` (the §0a/§0b modal-family sweep rides whatever is granted).**)
+## 2026-08-11 (round 311, build 260618.82) — THE ONE-SENTENCE MODAL FAMILY: the one-marker gathering chain, ticket 1 of 3 (Chris — the gathering-remainder kickoff against the `_r310_remainder` decomposition; **SCOPED REGENERATION GRANTED AND RUN in the same session — Chris: `REGENERATE CORPUS - the 12 modal-gathering modules in outputs/_r311_affected_final.txt` — with the §0a whole-type modal-family sweep (all 93 reachable modal-carrying modules rebuilt); scoped ship #1 since the round-310 full; every protected gate HELD-or-IMPROVED (§7 below).**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
 
@@ -150,6 +150,29 @@ HES1005's media-list items (the r292 tiles dialect's Media-List arm) · EXPFUN05
 remaining tile dialect residue (r216) · MXDB302's "A Clever Tip"-class unnumbered
 closerless multi-heading modals (no series evidence to key on) · the in-widget
 `[definition:` weave (r201/r299, MXFU301-8.0 + CEDR203's last two tiles).
+
+### 7. THE GRANTED REGENERATION (same session — scoped ship #1 since the r310 full)
+
+Chris granted `REGENERATE CORPUS - the 12 modal-gathering modules in
+outputs/_r311_affected_final.txt`. Run WITH the §0a whole-type sweep: **all 93 reachable
+modal-carrying modules rebuilt** (10 weight-aware batches, one call each; the 22-module
+BLL batch self-split at the wall and its printed continuation was run). Containment
+PERFECT: `_content_manifest.py fresh --affected` = **0 truly stale** (the 12 freshly
+regenerated, the other 401 corpus modules byte-identical to the manifest — which also
+proves the sweep's 81 other family modules changed NOTHING); `diff` = **exactly 25 pages
+/ 12 modules changed, 0 added, 0 removed** — the probe's prediction page-for-page. The
+§0a modal verifier over the WHOLE 93-module family: **189 pop-out groups / 327 triggers /
+defect 0**; flipCard §9 **divergence 0 ✓** (TOTAL 61, exact 32). GATES (fast-loop
+decomposition over the 12, committed; the mtime staleness alarm named the 81 swept
+modules the content manifest had already byte-proven identical — the documented
+r302/r307 false-positive class, override with the proof on record): skeleton SCAFFOLD
+mean 49.92 → **49.94 (+0.02 IMPROVED)** · pages ≥50% **1000 EXACT** · ≥75% **191 EXACT**
+· pairs 1939 / 0 added / 0 dropped · compare_structure exact **11247 → 11255 (+8
+IMPROVED)** / EXTRA **186 EXACT** / missing **595 EXACT** (matched pool 13268 → 13288,
+the documented growth class) · body_compare **197 → 193 IMPROVED** · clean **97.81%
+EXACT** · leak **288/46 EXACT** — **every protected gate held-or-improved,
+`--accept-named` neither used nor needed.** Fast-loop baseline PATCHED + content manifest
+refreshed (2102 pages / 413 modules); ledger **scoped ship #1** since the round-310 full.
 
 Env `MODHEADMEM_OFF` / `MODCLOSER_OFF` / `MODTRAILMEDIA_OFF` / `MODGATHERBUILD_OFF`; data
 `member_rule.modal_gathering` + `trailing_media_keep_types` +
