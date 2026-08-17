@@ -217,6 +217,17 @@ The §0a whole-type and §0b tag-family sweeps are satisfied by construction —
 module in the corpus was rebuilt. Content manifest, fast-loop baselines and the
 ship ledger are refreshed; **FULL ship recorded, scoped counter reset to 0.**
 
+**ONE HOUSEKEEPING NOTE FOR THE NEXT SESSION: `_stalecheck.sh` will report 413
+stale modules, and it is a FALSE ALARM — proven twice.** The corrected §8 figures
+were written into `Input_Doc_Rules.json`'s `_note` AFTER the regeneration, and the
+stale check is mtime-based over the 19 engine-loaded data files, so it cannot tell
+documentation from behaviour. (1) BY CONSTRUCTION: diffing that file against the
+pre-edit commit with every `_note`/`_doc` key stripped is **IDENTICAL** — the edit
+changed prose only. (2) BY MEASUREMENT: re-converting the 89 candidate modules in
+memory after the edit is **byte-identical to the regenerated corpus on all 587
+files**, and `_content_manifest.py diff` reports **IDENTICAL, 0 pages differ**. The
+corpus is fresh; do not re-run the 36 batches on the strength of that counter.
+
 ### 10. THE CHAIN IS CLOSED
 
 Rounds 311–313: the one-sentence modal family (modal builds 196→202), the CHFUN05
