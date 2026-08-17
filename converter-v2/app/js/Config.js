@@ -1498,7 +1498,24 @@ class Config {
 	// CHFUN05 by bytes. Env ACCTITLEMEM_OFF / ACCTITLEPANEL_OFF; data
 	// member_rule.title_panel_member +
 	// interactive_builders.accordion.panel_delimiters.title_members.
-	static AppVersion = "260618.83";
+	// ROUND 313 (260618.84): THE GATHERING REMAINDER, MEASURED HONESTLY — and the
+	// chain's close. The remainder note's headline was an artifact twice over: a
+	// TABLE member carries `rows`, not `raw`, so every table-carrying bundle read
+	// as "empty" (true empties: ZERO), and "one-marker" counted any bundle with a
+	// single member even when that member is a whole content-bearing table (true
+	// one-markers: 17, not 476). TEDC401/402 are the round-306 layout-table class,
+	// not a gathering class. Two small measured fixes ship: the SINGLE-CELL layout
+	// table dissolves (a one-cell table has no second cell for data to live in —
+	// ENGI400 x2, TEDC402; HPFUN903 declines on require_explicit_activity_opener,
+	// the fence this round's own word-loss check forced), and a bare "[close
+	// accordion]" / "[Finish carousel]" no longer OPENS its own empty widget (the
+	// r311 modal rule generalised — measured zero built bundles at risk). The
+	// obvious generalisation, "activity + ANY interactive invocation", was measured
+	// and DECLINED: 23 of its 35 tables are genuine data tables. 18 files / 5
+	// modules; OFF byte-identical on all 89 candidates bar round 312's own pending
+	// CHFUN05. Env SBSINGLECELL_OFF / CLOSEROPEN_OFF; data
+	// tables.bubble_layout_dissolve.single_cell + member_rule.closer_never_opens.
+	static AppVersion = "260618.84";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

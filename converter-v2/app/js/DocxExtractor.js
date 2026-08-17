@@ -381,7 +381,19 @@ class DocxExtractor {
 	 * in-cell [End page] to the page splitter would churn pagination — the ENGS202
 	 * page-opener class stays exactly as it is).
 	 *
-	 * Data: Input_Doc_Rules.tables.bubble_layout_dissolve. Env: SBLAYOUT_OFF.
+	 * ROUND 313 adds the SECOND qualifying shape, and it needs no proxy at all: a
+	 * ONE-ROW ONE-CELL table has no second cell for data to sit in, so an activity
+	 * marker inside one is a box the writer drew, not widget data. Measured over all
+	 * 454 WTs that shape is 7 tables / 5 modules; the 3 reo ones are excluded (the
+	 * r145/r167 class — reoMode routes tables through the bilingual handlers) leaving
+	 * ENGI400 x2, HPFUN903 and TEDC402, every one gold-verified to ship no table.
+	 * The other generalisation — "any INTERACTIVE invocation, not just a bubble" —
+	 * was measured and DECLINED: it fires on 35 tables and 23 of those are genuine
+	 * DATA tables (CEDO501's r305 quiz grids, flipCard front/back tables, drag-and-drop
+	 * option grids, the TRR English|Te Reo pairs). The tag is not the discriminator.
+	 *
+	 * Data: Input_Doc_Rules.tables.bubble_layout_dissolve (+ .single_cell).
+	 * Env: SBLAYOUT_OFF (whole rule) / SBSINGLECELL_OFF (the r313 arm alone).
 	 *
 	 * @param {Object[]} blocks - content blocks (tables carry .rows / .rowLinks)
 	 * @param {TagNormaliser|null} normaliser - resolves the cell spans (required)
@@ -395,19 +407,45 @@ class DocxExtractor {
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
 		const needTags = new Set(cfg.interactive_tags ?? ["speech bubble"]);
 		const brk = DataService.Data.InputDocRules?.table_markers?.in_cell_line_break ?? " / ";
+		/* ROUND 313 — the single-cell arm, independently reversible. */
+		const scCfg = cfg.single_cell;
+		const scOn = !!scCfg && scCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.SBSINGLECELL_OFF)
+			&& !(scCfg.exclude_code_prefixes ?? []).some((p) => String(run?.moduleCode ?? "").startsWith(p));
 		const out = [];
 		for (const b of blocks) {
 			if (!b || b.kind !== "table" || !Array.isArray(b.rows)) { out.push(b); continue; }
-			let hasAct = false, hasBubble = false, hasBoundary = false;
+			let hasAct = false, hasBubble = false, hasBoundary = false, hasPlainAct = false;
 			for (const m of String(b.text ?? "").matchAll(RED)) {
 				let p; try { p = normaliser.Parse(m[1]); } catch { continue; }
 				const pr = p && p.primary;
 				if (!pr) continue;
-				if (pr.tag === "activity" && pr.directive === "CONTAINER_OPEN") hasAct = true;
+				if (pr.tag === "activity" && pr.directive === "CONTAINER_OPEN") {
+					hasAct = true;
+					/* Is it an EXPLICIT activity opener the writer typed ("[Activity 2A]"),
+					 * or a widget request that merely ALIASES to one ("[interactive tool]
+					 * quiz — tick box yes or no DEV: answers will vary")?  Only the first
+					 * qualifies the single-cell arm — see scOpener below. */
+					if (/^\s*\[?\s*activity\b/i.test(String(m[1] ?? ""))) hasPlainAct = true;
+				}
 				else if (pr.directive === "INTERACTIVE" && needTags.has(pr.tag)) hasBubble = true;
 				else if (pr.directive === "PAGE_BOUNDARY" || pr.directive === "SECTION_MARKER") hasBoundary = true;
 			}
-			if (!hasAct || !hasBubble || hasBoundary) { out.push(b); continue; }
+			/* THE SINGLE-CELL ARM. `scOpener` is the fence the round's own word-loss
+			 * check forced: HPFUN903's one-cell table has no explicit opener at all —
+			 * what makes it "an activity" is the WIDGET REQUEST "[interactive tool]
+			 * quiz — tick box yes or no DEV: answers will vary", which aliases to the
+			 * activity tag. Dissolving that hands a widget spec to the body path, and
+			 * measured live it (a) dropped the writer's "DEV:" instruction from the
+			 * page — a §6 violation — and (b) promoted the first bullet to the box's
+			 * <h3> (the gold ships ZERO bullet headings in 2,385 files). Requiring a
+			 * bracket the writer opened with the word "activity" separates that case
+			 * from ENGI400's "[Activity 2A]" and TEDC402's "Activity] 1D" cleanly and
+			 * for a structural reason, not a per-module one. */
+			const scOpener = scCfg?.require_explicit_activity_opener === false || hasPlainAct;
+			const singleCell = scOn && scOpener
+				&& b.rows.length === 1 && (b.rows[0]?.length ?? 0) === 1;
+			if (!hasAct || hasBoundary || !(hasBubble || singleCell)) { out.push(b); continue; }
 			let made = 0;
 			for (let r = 0; r < b.rows.length; r++) {
 				for (const cell of (b.rows[r] ?? [])) {
@@ -421,8 +459,9 @@ class DocxExtractor {
 					made++;
 				}
 			}
-			run?.AddNote("info", "DocxExtractor",
-				`Page-layout table dissolved into ${made} stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).`);
+			run?.AddNote("info", "DocxExtractor", hasBubble
+				? `Page-layout table dissolved into ${made} stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).`
+				: `Single-cell page-layout table dissolved into ${made} stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).`);
 		}
 		return out;
 	};

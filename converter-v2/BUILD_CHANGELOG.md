@@ -1,5 +1,177 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-08-17 (round 313, build 260618.84) — THE GATHERING REMAINDER, MEASURED HONESTLY — and the chain's close (Chris — the gathering-remainder kickoff, ticket 3 of 3, **THE LAST; the kickoff file is deleted with this round**; **NO REGENERATION — not requested, so the round-311 §9/§14 baselines still describe the corpus. The change is proven in memory on all 89 candidate modules and the scoped regeneration is RECOMMENDED in §9 below, waiting to be asked**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**The chain's remaining population turned out to be three times smaller and a
+different kind of problem than the note said, so the round's main product is the
+corrected measurement; two small, gold-checked fixes ship alongside it — a
+one-cell table that is only a box the writer drew now dissolves, and a bare
+"[close accordion]" / "[Finish carousel]" no longer opens an empty widget of its
+own — and the generalisation that looked obvious was measured and declined.**
+
+### 2. THE MEASUREMENT, AND WHAT IT CORRECTED — TWICE
+
+The ticket asked me to diagnose "TEDC402 20 / TEDC401 17 — empty-member bundles"
+and then re-measure what was left. Re-running the 24-shard census (mtime-checked,
+0 shards missing) and decomposing it with `outputs/_r313_analyse.py`:
+
+* **THERE ARE NO EMPTY-MEMBER BUNDLES. Zero.** The description came from reading
+  each member's `raw` field — and a TABLE member does not have one; its text lives
+  in `rows`. So every table-carrying bundle in the census printed as "empty". My
+  own first cut of the analyser reproduced the same mistake before I checked a
+  record by hand, which is how I found it.
+* **"ONE-MARKER BUNDLES: 476 / 181 modules" IS ALSO AN ARTIFACT**, and this is the
+  bigger correction. The test was `nMembersTotal <= 1 OR nothing collected`, and
+  the first arm sweeps in every bundle whose SINGLE member is a whole
+  content-bearing table. On the honest test — *the walk collected nothing but the
+  marker* — the population is **17 bundles / 14 modules (13 / 10 reachable)**,
+  spread thinly across six host types with no concentration. Not 476.
+* **TEDC401/402 have neither.** All 37 of their bundles hold captured content.
+  What they are is the **round-306 layout-table class**: this pair of writers lays
+  activities out inside table cells, and round 306 dissolved only the ones a
+  speech bubble shares.
+* So **the real remainder is a BUILDER-coverage class, not a gathering one**: 411
+  bundles / 169 modules whose single member is a table no builder can read, plus
+  265 mixed baskets / 117 modules. The writer's content is captured and present;
+  what is missing is a reading of the table's shape.
+
+### 3. THE GENERALISATION THAT LOOKED OBVIOUS, AND WHY IT IS DECLINED
+
+Round 306's fence is a data list — `interactive_tags: ["speech bubble"]` — so
+"accept any INTERACTIVE invocation" is a one-line edit. Re-running r306's own
+tool over all 454 WTs (118 activity-marker tables) says **do not**: it would fire
+on 35 tables and **23 of the extra ones are genuine DATA tables** — CEDO501's
+three 1x4 round-305 quiz grids (the very tables r306 named), ENGI400's 6x2
+flipCard fronts/backs, TEDC402's own 4x4 flipCard and 5x3/3x3 drag-and-drop
+option grids, HPFUN901's 3x1 click-drop column, and the TRR English|Te Reo pair
+tables. **The interactive tag is not the discriminator; the shape is.** Recorded
+in the data so it is not re-attempted.
+
+### 4. FIX A — THE SINGLE-CELL LAYOUT TABLE (`SBSINGLECELL_OFF`)
+
+A **one-row one-cell** table needs no proxy: there is no second cell for data to
+sit in, so an activity marker inside one is a box the writer drew. Measured, that
+shape is **7 tables / 5 modules**; 3 are reo (TRR112, TRR113 x2 — held out by
+prefix, the r145/r167 class, that track owns them) and HPFUN903 declines on the
+fence below, leaving **ENGI400 x2 and TEDC402**. All gold-verified first:
+ENGI400's gold ships 2A and 2C as plain blocks in their activity boxes, HPFUN903's
+gold ships **zero** `<table>` elements on the whole page, TEDC402's gold ships 1D
+as heading + body + quote + slider + journal button with no table anywhere.
+
+ENGI400 2A now matches its gold closely — `<h3>`, the gold's own
+`iStock-686975996` image with its alt text, the prose, the journal button — where
+before the whole activity was raw `[H3]`/`[Body]`/`[Button]` text inside a `<th>`.
+TEDC402 gains its `number="1D"` box; **its body is still inside the slider
+hand-off box and that residue is asserted by name**, because `slider` has no
+builder at all.
+
+### 5. THE FENCE THE ROUND'S OWN WORD-LOSS CHECK FORCED
+
+The first cut dissolved HPFUN903's cell too. It freed the seven bike-check
+questions into a real `<ul>` — and it also **dropped the writer's "DEV: answers
+will vary" instruction from the page entirely** (§6 forbids that outright; it
+survived only in the developer hand-off `.txt`) and **promoted the first bullet
+into the box's `<h3>`** — a shape the gold ships **0 times in 2,385 files**
+against Claude's 2 (CEDO502 7_0, a different emitter, pre-existing, recorded).
+
+HPFUN903's cell has no opener the writer typed as an activity: what makes it "an
+activity" is the widget request `[interactive tool] quiz – tick box yes or no
+DEV: answers will vary`, which merely aliases to the activity tag.
+`require_explicit_activity_opener` therefore requires a bracket opening with the
+word "activity", which separates it from `[Activity 2A]` and `Activity] 1D`
+structurally rather than per-module. **HPFUN903 is a recorded follow-up, not a
+permanent decline** — it wants the activity-title rule taught that a bullet is
+never a title, and the widget-request residue surfaced as a note.
+
+### 6. FIX B — A CLOSER IS NOT AN INVOCATION (`CLOSEROPEN_OFF`)
+
+Round 311 taught the modal walk that a bare `[close modal]` is the writer's end
+delimiter. The identical shape still opened empty widgets for two other families,
+because the lexicon aliases `end accordion`/`end carousel` to CONTAINER_CLOSE but
+not the writer's `close`/`finish` spellings. Measured two ways: a raw-span scan of
+all 454 WTs finds 410 closer-shaped spans, 381 already correct and 29 resolving
+INTERACTIVE; the census says the reachable damage is **4 bundles / 3 modules that
+are nothing but a closer** (ENGJ402 6.0, MXFL301 2.0 + 3.0, MXFU301 8.0).
+
+**Round 311's reason for refusing a lexicon promote does not apply here, and that
+is why this ships where that did not:** r311 refused because EXPFUN04/05's *built*
+tile modals absorb 30+ interleaved closers mid-walk. For these two families the
+bundles carrying a closer alongside other members are 4, and **all four are already
+declining** — no built bundle is at risk anywhere in the corpus. Kept as its own
+data block and toggle so the modal path is byte-identical by construction, and
+**clickDrop is deliberately left out** (its 20 spans are the BLL27x/ENGJ403
+families, round-307/310 gathering territory).
+
+### 7. THE PROOF
+
+One toggle state per process throughout.
+
+* **REVERSAL GUARANTEE** — all toggles OFF is byte-identical to the shipped corpus
+  on **88 of 89 candidate modules / 587 files**; the 89th is CHFUN05, and adding
+  round 312's own toggles makes it match too, so that is r312's documented pending
+  work, not this round.
+* **AFFECTED SET FROM BYTES** — 18 files / **5 modules**, 0 added, 0 removed
+  (ENGI400, ENGJ402, MXFL301, MXFU301, TEDC402).
+* **7 of the 8 "extra" changed pages are proven index-only** — they differ solely
+  by `data-cv2-index` renumbering after a bundle is removed (the r303 class);
+  `data-cv2-ref` is unchanged, so the search-by-code contract holds. The eighth,
+  ENGJ402_6_0, is the closer site itself.
+* **PER-TOGGLE DECOMPOSITION** — single-cell alone reaches ENGI400 + TEDC402;
+  closer alone reaches ENGJ402 + MXFL301 + MXFU301; together exactly the union,
+  no interaction.
+* **27 ASSERTIONS ALL PASS, 9 of them NEGATIVE** — pinning CEDO501's quiz tables,
+  both reo modules, HPFUN901's click-drop column, TEDC401's multi-cell tables,
+  ENGI405 and ENGJ403's bundles, clickDrop's exclusion, and r311's untouched types
+  list. Three of my first-run assertions were wrong before any code was (the
+  fifteenth round running): one counted tables across the whole module against a
+  per-page number, one asserted TEDC402's heading was freed when it is not, and
+  one tested that CEDO501's mcq "still builds" when **that module ships zero mcq
+  markup on any page in either state**.
+* **LEAK PARITY** — the defect audit's own predicate over all 89 modules: 2,194 in
+  both states, **identical per module**.
+* **WORD LOSS** — 2+ letters (the r310 rule). Every remaining delta is accounted
+  for: the closer modules lose only the empty box's chrome and the delimiter word
+  itself; TEDC402 and ENGI400 lose only raw bracket words now consumed as tags,
+  and ENGI400 **gains 40 distinct words** of freed prose and alt text. TEDC402's
+  hand-off box was checked phrase by phrase and carries the writer's cell verbatim.
+* **NAMED RESIDUE** — ENGI400 2C's article instruction is surfaced as a Writers
+  Note rather than leaking as `<th>` text (an improvement), but the note is
+  **truncated**; the writer's full words remain in the hand-off `.txt`. That
+  truncation is the pre-existing r301/r302 instruction-bracket class, exposed by
+  the routing rather than caused by it, and it is asserted so it is not forgotten.
+* **ENGINE GATES** — tags **9557/9557, REAL FAILURES 0**; entry-parity **PASS**;
+  index-sync **33/28**; **all ELEVEN widget selftests GREEN**; accordion (43
+  panels, every one matching the human) and carousel (4 built, 0 mismatched ids)
+  verifiers **identical in both states**.
+
+### 8. GATES NOT RE-RUN
+
+No regeneration was requested, so the protected gates were **not** re-run and the
+round-311 §9/§14 baselines still describe the corpus. `SBSINGLECELL_OFF` and
+`CLOSEROPEN_OFF` are the reversal guarantee.
+
+### 9. RECOMMENDED, WAITING TO BE ASKED
+
+**`REGENERATE CORPUS`** — a full one. Two rounds of pending work are now
+outstanding (round 312's CHFUN05 and this round's five modules), the chain is
+finished, and only a full rebuild re-establishes the §9 baselines honestly. A
+narrower `REGENERATE CORPUS - ENGI400 ENGJ402 MXFL301 MXFU301 TEDC402 CHFUN05`
+would fold both rounds in at minimum cost.
+
+### 10. THE CHAIN IS CLOSED
+
+Rounds 311–313: the one-sentence modal family (modal builds 196→202), the CHFUN05
+`[title N]` dialect (its accordions 0→20, 48 panels all matching the human), and
+this round. The kickoff file is deleted. **What the chain leaves behind is a
+better-described problem than it found:** the gathering class is largely spent,
+and the 411 single-table bundles are a builder-coverage queue — the natural next
+round is a reading of the TEDC layout-table shape, which is the largest single
+instance at 104 declines across the pair.
+
+---
+
 ## 2026-08-11 (round 312, build 260618.83) — THE CHFUN05 IMMEDIATE-STOP CLASS: the writer's [title N] panel dialect (Chris — the gathering-remainder kickoff, ticket 2 of 3, against the `_r310_remainder` decomposition; **NO REGENERATION — not requested, so the round-311 §9/§14 baselines still describe the corpus; the change is proven in memory on all 190 accordion-carrying modules and the scoped regeneration is RECOMMENDED below, waiting to be asked**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

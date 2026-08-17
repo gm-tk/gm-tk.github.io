@@ -324,6 +324,37 @@ class InteractiveScanner {
 				}
 			}
 
+			// ROUND 313 — THE SAME SHAPE FOR THE ACCORDION AND THE CAROUSEL. The
+			// lexicon aliases "end accordion" / "end carousel" to CONTAINER_CLOSE,
+			// but not the writer's "close" / "finish" spellings, which fall through
+			// to the plain INTERACTIVE tag and OPEN a bundle holding nothing but the
+			// closer — an empty hand-off box on a finished page (ENGJ402-6.0
+			// "[Finish carousel]", MXFL301-2.0/-3.0 and MXFU301-8.0
+			// "[close accordion]"). Consume it as a no-op, exactly as r311 does for
+			// the modal. THE r311 REJECTION REASON DOES NOT APPLY: it refused a
+			// lexicon promote because EXPFUN04/05's BUILT tile modals absorb 30+
+			// interleaved closers mid-walk; measured for these two families, the four
+			// bundles that carry a closer alongside other members are ALL ALREADY
+			// DECLINING, so no built walk can move. Kept as its OWN data block and
+			// toggle so the modal path stays byte-identical by construction.
+			// OPEN SITE ONLY (a closer met mid-walk keeps today's behaviour) and BARE
+			// ONLY (a closer bracket carrying any other word is left alone, so a
+			// writer instruction riding it is never silently dropped).
+			// Data member_rule.closer_never_opens; env CLOSEROPEN_OFF.
+			{
+				const cnO = DataService.Data.BoundaryBank._meta.member_rule.closer_never_opens;
+				if (cnO && cnO.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.CLOSEROPEN_OFF)
+					&& (cnO.types ?? []).includes(type) && !bareSeries && it.parse?.primary) {
+					const foldC = String(it.parse.folded ?? "");
+					const reC = new RegExp(cnO.pattern, "i");
+					if (reC.test(foldC) && !foldC.replace(reC, "").replace(/[\[\]\s]+/g, "")) {
+						it.type = "black"; it.text = it.blackAfter ?? ""; it.blackAfter = "";
+						continue;
+					}
+				}
+			}
+
 			// STANDALONE INLINE MARKER (in free body, not inside any open widget): it
 			// is NOT a widget — the human renders it inline ON the surrounding text
 			// (a [highlight text] highlight, or a [rollover definition] tooltip span).

@@ -1,4 +1,3 @@
 #!/bin/bash
-# Round 311 — push the one-sentence modal family commit (Chris runs this; the sandbox cannot push)
-cd "$(dirname "$0")"
+# Round 312 (260618.83) — the CHFUN05 [title N] panel dialect. Run from pageforge-site/.
 git push origin main
