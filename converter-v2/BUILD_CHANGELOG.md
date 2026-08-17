@@ -1,6 +1,6 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
-## 2026-08-17 (round 313, build 260618.84) — THE GATHERING REMAINDER, MEASURED HONESTLY — and the chain's close (Chris — the gathering-remainder kickoff, ticket 3 of 3, **THE LAST; the kickoff file is deleted with this round**; **NO REGENERATION — not requested, so the round-311 §9/§14 baselines still describe the corpus. The change is proven in memory on all 89 candidate modules and the scoped regeneration is RECOMMENDED in §9 below, waiting to be asked**)
+## 2026-08-17 (round 313, build 260618.84) — THE GATHERING REMAINDER, MEASURED HONESTLY — and the chain's close (Chris — the gathering-remainder kickoff, ticket 3 of 3, **THE LAST; the kickoff file is deleted with this round**; **FULL CORPUS REGENERATION — Chris granted `REGENERATE CORPUS` in the same session; every protected gate HELD-or-IMPROVED, NEW §9/§14 baselines below, FULL ship, ledger reset to 0**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
 
@@ -9,7 +9,10 @@ different kind of problem than the note said, so the round's main product is the
 corrected measurement; two small, gold-checked fixes ship alongside it — a
 one-cell table that is only a box the writer drew now dissolves, and a bare
 "[close accordion]" / "[Finish carousel]" no longer opens an empty widget of its
-own — and the generalisation that looked obvious was measured and declined.**
+own — and the generalisation that looked obvious was measured and declined. The
+full regeneration Chris then granted caught a fourth module my own detector had
+missed (ENGI103, a gold-ward win) and, with it, a tool blind spot that had been
+hiding 63% of the library from the measurement.**
 
 ### 2. THE MEASUREMENT, AND WHAT IT CORRECTED — TWICE
 
@@ -146,19 +149,73 @@ One toggle state per process throughout.
   panels, every one matching the human) and carousel (4 built, 0 mismatched ids)
   verifiers **identical in both states**.
 
-### 8. GATES NOT RE-RUN
+### 8. THE FULL CORPUS REGENERATION (Chris: "REGENERATE CORPUS") — AND WHAT IT CAUGHT
 
-No regeneration was requested, so the protected gates were **not** re-run and the
-round-311 §9/§14 baselines still describe the corpus. `SBSINGLECELL_OFF` and
-`CLOSEROPEN_OFF` are the reversal guarantee.
+Granted and run in the same session. **416 dirs, 36 batches (5 split for the 45s
+wall), 0 stale by mtime, 2102 pages / 413 modules.** The content manifest differs
+by **15 pages / 7 modules, 0 added, 0 removed.**
 
-### 9. RECOMMENDED, WAITING TO BE ASKED
+**IT CAUGHT A MODULE MY OWN DETECTOR HAD MISSED, and the cause is a tool trap
+worth carrying forward.** ENGI103 changed, and it was not in my 89-module
+candidate list. Investigated rather than waved through:
 
-**`REGENERATE CORPUS`** — a full one. Two rounds of pending work are now
-outstanding (round 312's CHFUN05 and this round's five modules), the chain is
-finished, and only a full rebuild re-establishes the §9 baselines honestly. A
-narrower `REGENERATE CORPUS - ENGI400 ENGJ402 MXFL301 MXFU301 TEDC402 CHFUN05`
-would fold both rounds in at minimum cost.
+* **ENGI103 is a genuine gold-ward win.** Its activity 1B was trapped inside
+  activity 1A's box as literal `[Activity 1B]` / `[Activity Heading]` / `[body]`
+  text, with the supervisor note attached to the wrong activity. It now ships its
+  own `number="1B"` box with the note as a `super-content row` — **exactly what its
+  gold ships, and that gold has zero `<table>` elements in the whole module.** Word
+  check: only the raw bracket words are gone; no content lost.
+* **WHY THE DETECTOR MISSED IT.** The measurement tool (round 306's, which I
+  re-used) skips every `.docx` whose filename matches `/media list/` — meant to
+  skip a separate Media List document. But **286 of the corpus's 454 modules ship
+  as a combined `<CODE> Writers Template + Media List.docx`**, so the scan was
+  **blind to 63% of the library** and reported 118 tables / 19 modules on its first
+  run. Filter repaired in both tools; re-run, it reports **143 tables / 32
+  modules**, finds ENGI103, and now agrees exactly with a live-path check
+  (`outputs/_r313_firecheck.cjs`, which counts the dissolve's own run note through
+  `PrepareRun` over all 454 modules): **the single-cell arm fires on 4 tables / 3
+  modules — ENGI103, ENGI400 x2, TEDC402 — and the r306 bubble arm still fires on
+  TEDC402 x12 and nowhere else.** Every figure in §3–§4 above is the corrected one.
+  **Round 306's own fence measurement was taken with the blind spot in place**; its
+  conclusion survives the live check, but re-measure rather than lean on it.
+* The DECLINE is stronger, not weaker, with the blind spot removed: "activity + any
+  interactive" now reaches **46 tables / 18 modules**, adding ENGC302, ENGS301,
+  ENGI401, CEDK102 and XLP01 to the data tables that must stay.
+
+### 9. THE GATES — EVERY ONE HELD OR IMPROVED
+
+**PRIMARY skeleton — NEW BASELINE `49.941% / >=50 1000 / >=75 191 / >=90 16 /
+RAW 34.430% @ 1939 pairs, skipped 0`** (state `outputs/_r313_sk_final.json`).
+Against r310: mean **+0.022 IMPROVED**, RAW **+0.005 IMPROVED**, and **>=50%,
+>=75% and >=90% all EXACT**. 18 pages moved across 14 modules, **pp-sum scaffold
++40.66 and RAW +11.91 — both positive**; 1 page added and 1 dropped, a 1-for-1
+MXDI101 pairing re-resolution (net zero). `--accept-named` was neither used nor
+needed.
+
+**A SECOND STALENESS CATCH, in my own method.** I first scored the gate by
+CHAINING from `_r310_sk_final.json` (the documented cheap path). A fresh
+full-corpus score — which fitted inside the wall this round — disagreed with the
+chain on **9 pages across 7 modules this round never touched** (EXPFUN02/03/04/05,
+ENFUN09, MXDB302, MXDI101). Those are **round 311's scoped-regeneration modules:
+r311 rebuilt them in the corpus but never refreshed the skeleton state, so the
+r310 state file has been carrying pre-r311 scores ever since** — the r288 / r301b
+class. The fresh score is the baseline; the chain and its postscript are kept in
+`outputs/_r313_sk_merge.py` as the record.
+
+Everything else: structurally clean **2056/2102 = 97.81% EXACT** / leak **288 occ
+/ 46 pages EXACT** · compare_structure exact **11263 (+16 IMPROVED)** / EXTRA
+**186 EXACT** / missing **595 EXACT** · body_compare **192 (−5 IMPROVED)** · tags
+**9557/9557, REAL FAILURES 0** · flipCard **divergence 0 ✓** (TOTAL 61, and
+identical in both toggle states) · accordion 96 panels all human-matching ·
+carousel 0 mismatched ids · clickDrop 42 tiles, divergence 0 · modal defect 0 ·
+dropDown defect 0 · tabs defect 0, divergence 0 · mcq defect 0 · speechBubble's 16
+defects **A/B-proven pre-existing (identical in both states)** · entry-parity
+**PASS** · index-sync **33/28** · skeleton `--selftest` **PASS** · all ELEVEN
+widget selftests **GREEN**.
+
+The §0a whole-type and §0b tag-family sweeps are satisfied by construction — every
+module in the corpus was rebuilt. Content manifest, fast-loop baselines and the
+ship ledger are refreshed; **FULL ship recorded, scoped counter reset to 0.**
 
 ### 10. THE CHAIN IS CLOSED
 
