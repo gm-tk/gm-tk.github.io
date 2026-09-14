@@ -1,0 +1,2833 @@
+{
+ "gold": {
+  "nonBLL": {
+   "trailing": 12,
+   "inside": 702,
+   "free": 19
+  },
+  "PNR": {
+   "trailing": 1
+  },
+  "TRR": {
+   "inside": 23
+  },
+  "SSFUN": {
+   "inside": 7
+  },
+  "TEFUN": {
+   "inside": 1
+  },
+  "BLL": {
+   "inside": 1024
+  },
+  "CEDK": {
+   "inside": 9
+  },
+  "CEDO": {
+   "inside": 22
+  },
+  "CEDR": {
+   "inside": 21
+  },
+  "CEDT": {
+   "inside": 31
+  },
+  "CEDW": {
+   "inside": 17
+  },
+  "EXPFUN": {
+   "inside": 13
+  },
+  "TWHA": {
+   "inside": 45
+  },
+  "TWHK": {
+   "inside": 7
+  },
+  "TWHR": {
+   "inside": 7,
+   "trailing": 1
+  },
+  "XDLS": {
+   "inside": 55,
+   "free": 17,
+   "trailing": 5
+  },
+  "AGH": {
+   "inside": 12
+  },
+  "ANZH": {
+   "inside": 22
+  },
+  "ART": {
+   "inside": 18
+  },
+  "BLLR": {
+   "inside": 1
+  },
+  "ENG": {
+   "inside": 14
+  },
+  "ENGC": {
+   "inside": 12,
+   "trailing": 1
+  },
+  "ENGI": {
+   "inside": 29
+  },
+  "ENGJ": {
+   "inside": 17
+  },
+  "ENGR": {
+   "inside": 8
+  },
+  "ENGS": {
+   "inside": 26
+  },
+  "EXBP": {
+   "inside": 13
+  },
+  "EXIP": {
+   "inside": 7
+  },
+  "HES": {
+   "inside": 6
+  },
+  "HIS": {
+   "inside": 32,
+   "trailing": 1
+  },
+  "HPRE": {
+   "inside": 3,
+   "free": 1
+  },
+  "MXDB": {
+   "inside": 7
+  },
+  "MXDI": {
+   "inside": 21
+  },
+  "MXEO": {
+   "inside": 12
+  },
+  "MXEX": {
+   "inside": 13
+  },
+  "MXFL": {
+   "inside": 18,
+   "free": 1
+  },
+  "MXFU": {
+   "inside": 15
+  },
+  "PES": {
+   "inside": 14
+  },
+  "PHE": {
+   "inside": 9
+  },
+  "SCCH": {
+   "trailing": 2,
+   "inside": 1
+  },
+  "SCPH": {
+   "inside": 2
+  },
+  "SSCI": {
+   "inside": 6
+  },
+  "SSEA": {
+   "inside": 1
+  },
+  "SSOG": {
+   "inside": 8
+  },
+  "TEDC": {
+   "inside": 5
+  },
+  "XGF": {
+   "trailing": 1,
+   "inside": 9
+  },
+  "XMES": {
+   "inside": 65
+  },
+  "XTAS": {
+   "inside": 6
+  },
+  "XWHA": {
+   "inside": 12
+  }
+ },
+ "claude": {
+  "nonBLL": {
+   "inside": 127,
+   "free": 212,
+   "trailing": 166
+  },
+  "MXFUN": {
+   "inside": 1
+  },
+  "BLL": {
+   "inside": 214,
+   "trailing": 196,
+   "free": 2
+  },
+  "CEDK": {
+   "inside": 3,
+   "free": 1
+  },
+  "CEDO": {
+   "inside": 7,
+   "trailing": 2
+  },
+  "CEDR": {
+   "inside": 2,
+   "free": 1
+  },
+  "CEDT": {
+   "free": 2,
+   "trailing": 3,
+   "inside": 1
+  },
+  "CEDW": {
+   "inside": 1,
+   "trailing": 3,
+   "free": 2
+  },
+  "TWHA": {
+   "free": 11,
+   "trailing": 4,
+   "inside": 12
+  },
+  "XDLS": {
+   "trailing": 39,
+   "inside": 14,
+   "free": 163
+  },
+  "ANZH": {
+   "trailing": 5,
+   "inside": 7,
+   "free": 1
+  },
+  "ART": {
+   "free": 1
+  },
+  "BLLR": {
+   "inside": 1
+  },
+  "ENG": {
+   "free": 6
+  },
+  "ENGC": {
+   "trailing": 3,
+   "inside": 3
+  },
+  "ENGI": {
+   "inside": 10,
+   "trailing": 6,
+   "free": 1
+  },
+  "ENGJ": {
+   "inside": 12,
+   "trailing": 1,
+   "free": 1
+  },
+  "ENGR": {
+   "inside": 3,
+   "trailing": 2
+  },
+  "ENGS": {
+   "trailing": 6,
+   "inside": 1
+  },
+  "EXBP": {
+   "free": 3,
+   "trailing": 2
+  },
+  "EXIP": {
+   "free": 2,
+   "trailing": 3
+  },
+  "HES": {
+   "inside": 1
+  },
+  "HIS": {
+   "inside": 5,
+   "trailing": 6,
+   "free": 1
+  },
+  "HPRE": {
+   "trailing": 2
+  },
+  "MXDB": {
+   "inside": 2
+  },
+  "MXDI": {
+   "inside": 3,
+   "trailing": 2
+  },
+  "MXEO": {
+   "trailing": 5,
+   "inside": 2,
+   "free": 1
+  },
+  "MXEX": {
+   "trailing": 3,
+   "inside": 1
+  },
+  "MXFL": {
+   "inside": 5,
+   "trailing": 2,
+   "free": 1
+  },
+  "MXFU": {
+   "trailing": 3,
+   "inside": 2,
+   "free": 3
+  },
+  "PES": {
+   "trailing": 1,
+   "free": 1
+  },
+  "SCCH": {
+   "inside": 2,
+   "trailing": 1
+  },
+  "SCPH": {
+   "trailing": 1
+  },
+  "SSCI": {
+   "free": 2
+  },
+  "SSOG": {
+   "inside": 3,
+   "free": 3,
+   "trailing": 1
+  },
+  "TEDC": {
+   "trailing": 2,
+   "inside": 1
+  },
+  "XGF": {
+   "trailing": 4,
+   "free": 2
+  },
+  "XMES": {
+   "inside": 11,
+   "trailing": 32
+  },
+  "XTAS": {
+   "free": 3,
+   "trailing": 22,
+   "inside": 11
+  }
+ },
+ "gold_inside_marked": {
+  "nonBLL:marked": 633,
+  "nonBLL:plain": 69,
+  "BLL:plain": 476,
+  "BLL:marked": 36
+ },
+ "claude_trailing": [
+  {
+   "module": "BLL230",
+   "page": "BLL230_0_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3218,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL240",
+   "page": "BLL240_1_1.html",
+   "activity": "1F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 259,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL240",
+   "page": "BLL240_1_2.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 259,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL240",
+   "page": "BLL240_1_3.html",
+   "activity": "3E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 259,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL240",
+   "page": "BLL240_1_4.html",
+   "activity": "4E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 259,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL240",
+   "page": "BLL240_1_5.html",
+   "activity": "5F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 271,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL240",
+   "page": "BLL240_1_6.html",
+   "activity": "6E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 271,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL240",
+   "page": "BLL240_1_7.html",
+   "activity": "7E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 271,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 2478,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 8026,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "CEDT301",
+   "page": "CEDT301_6_0.html",
+   "activity": "4D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 763,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "TWHA902",
+   "page": "TWHA902_0_0.html",
+   "activity": "",
+   "cls": "activity interactive",
+   "label": "Go to portfolio",
+   "gap_chars": 10953,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "TWHA902",
+   "page": "TWHA902_0_0.html",
+   "activity": "1920",
+   "cls": "activity interactive",
+   "label": "Go to portfolio",
+   "gap_chars": 5833,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "TWHA902",
+   "page": "TWHA902_0_0.html",
+   "activity": "1920",
+   "cls": "activity interactive",
+   "label": "Go to portfolio",
+   "gap_chars": 10454,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "TWHA902",
+   "page": "TWHA902_0_0.html",
+   "activity": "1920",
+   "cls": "activity interactive",
+   "label": "Go to portfolio",
+   "gap_chars": 23284,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_1_0.html",
+   "activity": "1A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1999,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_1_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3642,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_1_0.html",
+   "activity": "1C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_1_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 9715,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_2_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 982,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_2_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 204,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_3_0.html",
+   "activity": "3D",
+   "cls": "activity super-content-button",
+   "label": "Upload to dropbox",
+   "gap_chars": 8187,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_3_0.html",
+   "activity": "3E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 2068,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS901",
+   "page": "XDLS901_4_0.html",
+   "activity": "4A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3529,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS903",
+   "page": "XDLS903_1_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 614,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS903",
+   "page": "XDLS903_1_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 663,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS903",
+   "page": "XDLS903_1_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 728,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "ANZH101",
+   "page": "ANZH101_3_0.html",
+   "activity": "3B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 2101,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "ANZH303",
+   "page": "ANZH303_6_0.html",
+   "activity": "6A",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 1000,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ANZH401",
+   "page": "ANZH401_11_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1150,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "ANZH401",
+   "page": "ANZH401_5_0.html",
+   "activity": "5A",
+   "cls": "activity interactive",
+   "label": "Go to dropbox.",
+   "gap_chars": 1736,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "ANZH404",
+   "page": "ANZH404_3_0.html",
+   "activity": "3B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 430,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL123",
+   "page": "BLL123_2_0.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 747,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL124",
+   "page": "BLL124_1_0.html",
+   "activity": "1A",
+   "cls": "activity interactive super-content-button",
+   "label": "Upload to dropbox",
+   "gap_chars": 491,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL124",
+   "page": "BLL124_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1182,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL125",
+   "page": "BLL125_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 1492,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL127",
+   "page": "BLL127_1_0.html",
+   "activity": "1B",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 1804,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL127",
+   "page": "BLL127_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL134",
+   "page": "BLL134_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL135",
+   "page": "BLL135_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 545,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL137",
+   "page": "BLL137_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL141",
+   "page": "BLL141_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL143",
+   "page": "BLL143_1_1.html",
+   "activity": "2A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL143",
+   "page": "BLL143_1_1.html",
+   "activity": "2C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL144",
+   "page": "BLL144_1_0.html",
+   "activity": "1A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL146",
+   "page": "BLL146_1_0.html",
+   "activity": "1B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 554,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL147",
+   "page": "BLL147_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL152",
+   "page": "BLL152_1_1.html",
+   "activity": "2A",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 1046,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL152",
+   "page": "BLL152_1_1.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL153",
+   "page": "BLL153_1_0.html",
+   "activity": "1A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL153",
+   "page": "BLL153_1_0.html",
+   "activity": "1C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1051,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL154",
+   "page": "BLL154_1_1.html",
+   "activity": "2A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 634,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL154",
+   "page": "BLL154_1_1.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL154",
+   "page": "BLL154_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL155",
+   "page": "BLL155_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 848,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL156",
+   "page": "BLL156_1_1.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 901,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL156",
+   "page": "BLL156_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL157",
+   "page": "BLL157_1_1.html",
+   "activity": "2C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL157",
+   "page": "BLL157_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL161",
+   "page": "BLL161_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL161",
+   "page": "BLL161_1_1.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 562,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL162",
+   "page": "BLL162_1_1.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 562,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL163",
+   "page": "BLL163_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 848,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL164",
+   "page": "BLL164_1_0.html",
+   "activity": "1A",
+   "cls": "activity interactive super-content-button",
+   "label": "Upload to dropbox",
+   "gap_chars": 2410,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL164",
+   "page": "BLL164_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL165",
+   "page": "BLL165_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL165",
+   "page": "BLL165_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL166",
+   "page": "BLL166_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL167",
+   "page": "BLL167_1_0.html",
+   "activity": "1B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 672,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL167",
+   "page": "BLL167_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL171",
+   "page": "BLL171_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL174",
+   "page": "BLL174_1_1.html",
+   "activity": "2E",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL175",
+   "page": "BLL175_1_1.html",
+   "activity": "2C",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "BLL176",
+   "page": "BLL176_1_1.html",
+   "activity": "2C",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL212",
+   "page": "BLL212_1_0.html",
+   "activity": "1E",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 278,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL216",
+   "page": "BLL216_2_0.html",
+   "activity": "2C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1159,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL217",
+   "page": "BLL217_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL221",
+   "page": "BLL221_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 845,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL222",
+   "page": "BLL222_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL223",
+   "page": "BLL223_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1076,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL223",
+   "page": "BLL223_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL224",
+   "page": "BLL224_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1176,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL224",
+   "page": "BLL224_2_0.html",
+   "activity": "2C",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL224",
+   "page": "BLL224_2_0.html",
+   "activity": "2C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 160,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL225",
+   "page": "BLL225_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1077,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL226",
+   "page": "BLL226_2_0.html",
+   "activity": "2C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1095,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL226",
+   "page": "BLL226_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL227",
+   "page": "BLL227_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 584,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL227",
+   "page": "BLL227_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL231",
+   "page": "BLL231_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1109,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL231",
+   "page": "BLL231_2_0.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL231",
+   "page": "BLL231_2_0.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 156,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL232",
+   "page": "BLL232_1_0.html",
+   "activity": "1E",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 317,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL232",
+   "page": "BLL232_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "BLL232",
+   "page": "BLL232_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 156,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "BLL234",
+   "page": "BLL234_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 600,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL235",
+   "page": "BLL235_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL236",
+   "page": "BLL236_1_0.html",
+   "activity": "1B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 265,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL237",
+   "page": "BLL237_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL237",
+   "page": "BLL237_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 177,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL242",
+   "page": "BLL242_1_1.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 537,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL244",
+   "page": "BLL244_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 555,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL244",
+   "page": "BLL244_2_0.html",
+   "activity": "2G",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL245",
+   "page": "BLL245_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1269,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL251",
+   "page": "BLL251_2_0.html",
+   "activity": "2C",
+   "cls": "activity super-content-button",
+   "label": "Upload to dropbox",
+   "gap_chars": 1513,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL251",
+   "page": "BLL251_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 176,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL253",
+   "page": "BLL253_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3232,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL254",
+   "page": "BLL254_2_0.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1783,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL254",
+   "page": "BLL254_2_0.html",
+   "activity": "2C",
+   "cls": "activity super-content-button",
+   "label": "Upload to dropbox",
+   "gap_chars": 2138,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL262",
+   "page": "BLL262_1_0.html",
+   "activity": "1C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3018,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL262",
+   "page": "BLL262_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 2226,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL262",
+   "page": "BLL262_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 2303,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL262",
+   "page": "BLL262_3_0.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL262",
+   "page": "BLL262_3_0.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 156,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL262",
+   "page": "BLL262_3_0.html",
+   "activity": "2F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 710,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL262",
+   "page": "BLL262_3_0.html",
+   "activity": "2F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3222,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL263",
+   "page": "BLL263_1_0.html",
+   "activity": "1A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "BLL263",
+   "page": "BLL263_3_0.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL263",
+   "page": "BLL263_3_0.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 156,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "BLL263",
+   "page": "BLL263_3_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to Dropbox",
+   "gap_chars": 714,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "BLL263",
+   "page": "BLL263_3_0.html",
+   "activity": "2G",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 1272,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "BLL263",
+   "page": "BLL263_3_0.html",
+   "activity": "2G",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1345,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "CEDO502",
+   "page": "CEDO502_3_0.html",
+   "activity": "3B",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox.",
+   "gap_chars": 458,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "CEDO502",
+   "page": "CEDO502_7_0.html",
+   "activity": "7B",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 529,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "CEDW501",
+   "page": "CEDW501_2_1.html",
+   "activity": "2B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 24587,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "CEDW501",
+   "page": "CEDW501_6_0.html",
+   "activity": "6B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 836,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "CEDW501",
+   "page": "CEDW501_6_0.html",
+   "activity": "6C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 567,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "ENGC101",
+   "page": "ENGC101_5_0.html",
+   "activity": "5C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 614,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "ENGC201",
+   "page": "ENGC201_6_0.html",
+   "activity": "6C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "ENGC301",
+   "page": "ENGC301_7_0.html",
+   "activity": "7B",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 306,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "ENGI103",
+   "page": "ENGI103_6_0.html",
+   "activity": "6F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGI202",
+   "page": "ENGI202_4_0.html",
+   "activity": "4A",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 1218,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "ENGI303",
+   "page": "ENGI303_3_0.html",
+   "activity": "3D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGI303",
+   "page": "ENGI303_5_0.html",
+   "activity": "5B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGI400",
+   "page": "ENGI400_3_0.html",
+   "activity": "3B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1519,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGI405",
+   "page": "ENGI405_5_0.html",
+   "activity": "5D",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGJ102",
+   "page": "ENGJ102_5_0.html",
+   "activity": "5C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 257,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "ENGR201",
+   "page": "ENGR201_6_0.html",
+   "activity": "6E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGR202",
+   "page": "ENGR202_7_0.html",
+   "activity": "",
+   "cls": "activity dropbox interactive",
+   "label": "Go to dropbox.",
+   "gap_chars": 406,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "ENGS102",
+   "page": "ENGS102_1_0.html",
+   "activity": "1C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 4611,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGS102",
+   "page": "ENGS102_3_0.html",
+   "activity": "3A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGS102",
+   "page": "ENGS102_6_0.html",
+   "activity": "5E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGS201",
+   "page": "ENGS201_7_0.html",
+   "activity": "7D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGS301",
+   "page": "ENGS301_7_0.html",
+   "activity": "7A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "ENGS401",
+   "page": "ENGS401_1_0.html",
+   "activity": "1B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "EXBP901",
+   "page": "EXBP901_3_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Go to dropbox.",
+   "gap_chars": 3899,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "EXBP901",
+   "page": "EXBP901_3_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 3946,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "EXIP901",
+   "page": "EXIP901_4_0.html",
+   "activity": "4B",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox.",
+   "gap_chars": 1916,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "EXIP901",
+   "page": "EXIP901_5_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to Dropbox.",
+   "gap_chars": 16987,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "EXIP901",
+   "page": "EXIP901_5_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 17882,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "HIS1005",
+   "page": "HIS1005_7_0.html",
+   "activity": "7D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "HIS1006",
+   "page": "HIS1006_10_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 739,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "HIS1006",
+   "page": "HIS1006_12_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 1382,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "HIS1006",
+   "page": "HIS1006_6_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 848,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "HIS1007",
+   "page": "HIS1007_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 238,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "HIS1008",
+   "page": "HIS1008_5_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 928,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "HPRE203",
+   "page": "HPRE203_7_0.html",
+   "activity": "7E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 690,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "HPRE203",
+   "page": "HPRE203_7_0.html",
+   "activity": "7E",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 1459,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "MXDI202",
+   "page": "MXDI202_6_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 320,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "MXDI301",
+   "page": "MXDI301_7_0.html",
+   "activity": "7A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 1605,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "MXEO201",
+   "page": "MXEO201_3_0.html",
+   "activity": "1G",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "MXEO201",
+   "page": "MXEO201_5_0.html",
+   "activity": "2G",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "MXEO201",
+   "page": "MXEO201_7_0.html",
+   "activity": "3J",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 83,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "MXEO301",
+   "page": "MXEO301_4_0.html",
+   "activity": "4E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 650,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "MXEO401",
+   "page": "MXEO401_3_0.html",
+   "activity": "3B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 290,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "MXEX301",
+   "page": "MXEX301_6_0.html",
+   "activity": "6B",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox.",
+   "gap_chars": 850,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "MXEX302",
+   "page": "MXEX302_7_0.html",
+   "activity": "7C",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 308,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "MXEX401",
+   "page": "MXEX401_3_0.html",
+   "activity": "3C",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 761,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "MXFL203",
+   "page": "MXFL203_11_0.html",
+   "activity": "11E",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 1408,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "MXFL401",
+   "page": "MXFL401_3_0.html",
+   "activity": "3B",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 477,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "MXFU201",
+   "page": "MXFU201_9_0.html",
+   "activity": "9D",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox.",
+   "gap_chars": 3218,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "MXFU401",
+   "page": "MXFU401_3_0.html",
+   "activity": "3C",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 707,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "MXFU402",
+   "page": "MXFU402_7_0.html",
+   "activity": "7A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1364,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "PES1002",
+   "page": "PES1002_10_0.html",
+   "activity": "",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 260,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "SCCH301",
+   "page": "SCCH301_8_0.html",
+   "activity": "8A",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 1803,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "SCPH301",
+   "page": "SCPH301_8_0.html",
+   "activity": "8A",
+   "cls": "activity",
+   "label": "Go to dropbox",
+   "gap_chars": 1409,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "SSOG301",
+   "page": "SSOG301_4_0.html",
+   "activity": "4A",
+   "cls": "activity interactive",
+   "label": "Go to dropbox",
+   "gap_chars": 2723,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "TEDC401",
+   "page": "TEDC401_6_0.html",
+   "activity": "6A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 9567,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "TEDC401",
+   "page": "TEDC401_6_0.html",
+   "activity": "6A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox.",
+   "gap_chars": 12924,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS502",
+   "page": "XDLS502_3_0.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 6533,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "XDLS502",
+   "page": "XDLS502_4_0.html",
+   "activity": "4A",
+   "cls": "activity super-content-button",
+   "label": "Upload to dropbox",
+   "gap_chars": 3474,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS904",
+   "page": "XDLS904_5_0.html",
+   "activity": "5F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 134,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS905",
+   "page": "XDLS905_3_0.html",
+   "activity": "3A",
+   "cls": "activity dropbox",
+   "label": "Upload to dropbox.",
+   "gap_chars": 508,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS906",
+   "page": "XDLS906_3_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 818,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS906",
+   "page": "XDLS906_5_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 848,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_3_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 399,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_3_0.html",
+   "activity": "",
+   "cls": "activity super-content-button",
+   "label": "Upload to dropbox.",
+   "gap_chars": 2249,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_3_0.html",
+   "activity": "",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox.",
+   "gap_chars": 2673,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_3_0.html",
+   "activity": "",
+   "cls": "activity super-content-button",
+   "label": "Upload to dropbox.",
+   "gap_chars": 4540,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_3_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 2794,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_3_0.html",
+   "activity": "3I",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 1291,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_3_0.html",
+   "activity": "3G",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 2329,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_4_0.html",
+   "activity": "4A",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 1857,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_4_0.html",
+   "activity": "3D",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 615,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_5_0.html",
+   "activity": "",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 378,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_5_0.html",
+   "activity": "5E",
+   "cls": "activity super-content-button",
+   "label": "Upload to dropbox.",
+   "gap_chars": 3359,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_6_0.html",
+   "activity": "5B",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 651,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_7_0.html",
+   "activity": "7C",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 4980,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS908",
+   "page": "XDLS908_8_0.html",
+   "activity": "8C",
+   "cls": "activity",
+   "label": "Upload to dropbox.",
+   "gap_chars": 3527,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XDLS912",
+   "page": "XDLS912_1_0.html",
+   "activity": "1A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 5825,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS912",
+   "page": "XDLS912_1_0.html",
+   "activity": "1C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 7843,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS912",
+   "page": "XDLS912_2_0.html",
+   "activity": "2A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 2219,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS912",
+   "page": "XDLS912_3_0.html",
+   "activity": "3B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 924,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS912",
+   "page": "XDLS912_3_0.html",
+   "activity": "3C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 797,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS912",
+   "page": "XDLS912_5_0.html",
+   "activity": "5A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 725,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XDLS912",
+   "page": "XDLS912_5_0.html",
+   "activity": "5C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XGF9001",
+   "page": "XGF9001_5_0.html",
+   "activity": "1A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 2694,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "XGF9001",
+   "page": "XGF9001_6_0.html",
+   "activity": "9D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 376,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XGF9004",
+   "page": "XGF9004_13_0.html",
+   "activity": "7D",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 2618,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XGF9004",
+   "page": "XGF9004_8_0.html",
+   "activity": "7C",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 2082,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES101",
+   "page": "XMES101_2_0.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES101",
+   "page": "XMES101_3_0.html",
+   "activity": "3A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES101",
+   "page": "XMES101_6_0.html",
+   "activity": "6B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES101",
+   "page": "XMES101_6_0.html",
+   "activity": "6C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 4189,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "XMES101",
+   "page": "XMES101_8_0.html",
+   "activity": "8A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES101",
+   "page": "XMES101_8_0.html",
+   "activity": "8B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES103",
+   "page": "XMES103_1_0.html",
+   "activity": "1A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES103",
+   "page": "XMES103_1_0.html",
+   "activity": "1C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES103",
+   "page": "XMES103_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES103",
+   "page": "XMES103_2_0.html",
+   "activity": "2F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 536,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES103",
+   "page": "XMES103_3_0.html",
+   "activity": "3C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 273,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES103",
+   "page": "XMES103_4_0.html",
+   "activity": "4C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES103",
+   "page": "XMES103_5_0.html",
+   "activity": "5D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES201",
+   "page": "XMES201_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES201",
+   "page": "XMES201_1_0.html",
+   "activity": "3F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 190,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES201",
+   "page": "XMES201_2_0.html",
+   "activity": "2D",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES201",
+   "page": "XMES201_2_0.html",
+   "activity": "2E",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 500,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES201",
+   "page": "XMES201_2_0.html",
+   "activity": "2F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 171,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XMES201",
+   "page": "XMES201_5_0.html",
+   "activity": "5B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 1904,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_1_0.html",
+   "activity": "1B",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 233,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_2_0.html",
+   "activity": "2D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_2_0.html",
+   "activity": "2H",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_3_0.html",
+   "activity": "3A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_3_0.html",
+   "activity": "3D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_3_0.html",
+   "activity": "3F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 194,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_3_0.html",
+   "activity": "3G",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 265,
+   "wt_marker_inside_activity": null
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_4_0.html",
+   "activity": "4A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_4_0.html",
+   "activity": "4B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_4_0.html",
+   "activity": "4C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_4_0.html",
+   "activity": "4D",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 329,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_4_0.html",
+   "activity": "4E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XMES203",
+   "page": "XMES203_5_0.html",
+   "activity": "5A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3863,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS101",
+   "page": "XTAS101_1_0.html",
+   "activity": "1C",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 389,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS101",
+   "page": "XTAS101_1_0.html",
+   "activity": "1E",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 733,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS101",
+   "page": "XTAS101_1_0.html",
+   "activity": "1F",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS101",
+   "page": "XTAS101_1_0.html",
+   "activity": "1G",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS101",
+   "page": "XTAS101_2_0.html",
+   "activity": "2A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 447,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS101",
+   "page": "XTAS101_3_0.html",
+   "activity": "3B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 200,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS101",
+   "page": "XTAS101_4_0.html",
+   "activity": "4A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 2606,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_1_0.html",
+   "activity": "1B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 3723,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_1_0.html",
+   "activity": "1C",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_1_0.html",
+   "activity": "1D",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_2_0.html",
+   "activity": "2D",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_2_0.html",
+   "activity": "2E",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_2_0.html",
+   "activity": "2F",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 347,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_2_0.html",
+   "activity": "2G",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_2_0.html",
+   "activity": "2H",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 625,
+   "wt_marker_inside_activity": false
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_3_0.html",
+   "activity": "3A",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 366,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_4_0.html",
+   "activity": "4A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 158,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS102",
+   "page": "XTAS102_5_0.html",
+   "activity": "5C",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 110,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS103",
+   "page": "XTAS103_1_0.html",
+   "activity": "1B",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 857,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS103",
+   "page": "XTAS103_3_0.html",
+   "activity": "3A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 515,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS103",
+   "page": "XTAS103_3_0.html",
+   "activity": "3A",
+   "cls": "activity",
+   "label": "Upload to dropbox",
+   "gap_chars": 536,
+   "wt_marker_inside_activity": true
+  },
+  {
+   "module": "XTAS103",
+   "page": "XTAS103_4_0.html",
+   "activity": "4C",
+   "cls": "activity interactive",
+   "label": "Upload to dropbox",
+   "gap_chars": 431,
+   "wt_marker_inside_activity": true
+  }
+ ],
+ "affected_modules": [
+  "BLL230",
+  "BLL240",
+  "CEDT104",
+  "CEDT301",
+  "TWHA902",
+  "XDLS901",
+  "XDLS903",
+  "ANZH101",
+  "ANZH303",
+  "ANZH401",
+  "ANZH404",
+  "BLL123",
+  "BLL124",
+  "BLL125",
+  "BLL127",
+  "BLL134",
+  "BLL135",
+  "BLL137",
+  "BLL141",
+  "BLL143",
+  "BLL144",
+  "BLL146",
+  "BLL147",
+  "BLL152",
+  "BLL153",
+  "BLL154",
+  "BLL155",
+  "BLL156",
+  "BLL157",
+  "BLL161",
+  "BLL162",
+  "BLL163",
+  "BLL164",
+  "BLL165",
+  "BLL166",
+  "BLL167",
+  "BLL171",
+  "BLL174",
+  "BLL175",
+  "BLL176",
+  "BLL212",
+  "BLL216",
+  "BLL217",
+  "BLL221",
+  "BLL222",
+  "BLL223",
+  "BLL224",
+  "BLL225",
+  "BLL226",
+  "BLL227",
+  "BLL231",
+  "BLL232",
+  "BLL234",
+  "BLL235",
+  "BLL236",
+  "BLL237",
+  "BLL242",
+  "BLL244",
+  "BLL245",
+  "BLL251",
+  "BLL253",
+  "BLL254",
+  "BLL262",
+  "BLL263",
+  "CEDO502",
+  "CEDW501",
+  "ENGC101",
+  "ENGC201",
+  "ENGC301",
+  "ENGI103",
+  "ENGI202",
+  "ENGI303",
+  "ENGI400",
+  "ENGI405",
+  "ENGJ102",
+  "ENGR201",
+  "ENGR202",
+  "ENGS102",
+  "ENGS201",
+  "ENGS301",
+  "ENGS401",
+  "EXBP901",
+  "EXIP901",
+  "HIS1005",
+  "HIS1006",
+  "HIS1007",
+  "HIS1008",
+  "HPRE203",
+  "MXDI202",
+  "MXDI301",
+  "MXEO201",
+  "MXEO301",
+  "MXEO401",
+  "MXEX301",
+  "MXEX302",
+  "MXEX401",
+  "MXFL203",
+  "MXFL401",
+  "MXFU201",
+  "MXFU401",
+  "MXFU402",
+  "PES1002",
+  "SCCH301",
+  "SCPH301",
+  "SSOG301",
+  "TEDC401",
+  "XDLS502",
+  "XDLS904",
+  "XDLS905",
+  "XDLS906",
+  "XDLS908",
+  "XDLS912",
+  "XGF9001",
+  "XGF9004",
+  "XMES101",
+  "XMES103",
+  "XMES201",
+  "XMES203",
+  "XTAS101",
+  "XTAS102",
+  "XTAS103"
+ ]
+}
