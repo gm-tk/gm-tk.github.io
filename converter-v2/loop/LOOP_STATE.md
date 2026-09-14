@@ -4,26 +4,26 @@
 **Session 2 started:** 2026-09-14 (Claude Code, same machine). Budget: 12 rounds or 10 hours. Resumed Round 1 (engine r314) from session 1's recipe (tree PASS, HEAD 763e036) and shipped it.
 **Authority carried by the kickoff message:** `REGENERATE CORPUS` for every round, scoped by CLAUDE.md §0a/§0b.
 
-## >>> STOPPED 2026-09-15 03:43 NZST on the loop's own PLATEAU rule (§4) after Round 7 — 7 rounds shipped, 1 declined, 0 blocked <<<
-- **Why:** three consecutive shipped rounds — r318 (0.000pp), r319 (0.000pp), r320 (+0.003pp) — each moved the skeleton mean by less than
-  0.02pp and moved no other protected gate. The ≥20-page, derivable, gate-MOVING classes are exhausted; what remains needs a human decision
-  (below) or is a multi-round interactive build (the coverage dashboard's levers).
-- **Everything is committed** (pageforge-site, 8 commits this session: 314–320 + the Round-1 stop record); nothing pushed. `git status` clean.
-- **DECISIONS FOR CHRIS (each unblocks a round):**
-  1. **c47 exact-duplicate heading drop** — the KB says drop a lesson-page body heading that equals the header title; the gold keeps it 57:43
-     (and 111 gold pages keep one). Apply the KB regardless (a ~21-page named dip, ~14 pages gain) or leave the gold's way? Recommendation: apply
-     only AFTER the TRR title-source fix (below), because 41 of the 70 hits are pages whose title is wrong.
-  2. **The TRR / MTK title source** — TRR108/114/203/304 ship `Finished!` (and other stray `[H1]`s) as the lesson title, and TRR overview pages
-     ship NO title spans; the constraint-79 source order for the MTK docx pathway needs designing against the 07 skeletons. Gate-neutral by
-     itself (text only) but it unblocks decision 1 and the c79 remainder (141 module-title fallbacks). Recommendation: yes, one round.
-  3. **c65 / CL-0082 MTK quiz-content omission** — 56 Claude shells still carry quiz content the KB says to omit silently; skeleton-visible
-     as an override (the gold keeps the content on 157 of 199 shells). Recommendation: apply — it is a locked ledger decision like c90.
-  4. **The Standard-template lesson-pair ORDER** (r316): English-first 4 : as-written 2 (n = 6) — leave as written, or follow the reoTranslate
-     rule everywhere? Recommendation: leave until the population grows.
-  5. **Interactive-build rounds** — the coverage dashboard's remaining levers are unbuilt widget types (each a multi-round build with its own
-     verifier). Recommendation: a separate kickoff per type, not this loop.
-- **Follow-ups that need no decision** (small, recorded): `anchor_compare.wt_items` first-file read; the speechBubble verifier's 300 s wall
-  on MXFL301; the 13 TRR modules with an unparsed Writers Template docx (Round-0 ceiling gap).
+## >>> STOPPED 2026-09-15 ≈08:15 NZST on the BUDGET rule (§4) — the 10-hour session cap (hard stop 09:21) after 8 shipped rounds <<<
+- **Why:** Chris answered the plateau report ("Yes to 2 and 3 — start with the TRR title source") at ≈07:48 NZST; Round 8 (decision 2, the MTK
+  title source) shipped at 08:06 with ≈75 min of the 10-hour budget left — not enough to design, measure, prove and regenerate decision 3
+  (c65 / CL-0082) to the loop's standard, so it is recorded below as the AUTHORISED NEXT KICKOFF rather than left half-built at the hard stop.
+- **Everything is committed** (pageforge-site, 10 commits this session: 314–321 + the two loop-state records); nothing pushed. `git status` clean;
+  `verify_after_transfer.sh` PASS; corpus 0-stale, manifest / fast-loop baseline / feature index / gate_baseline.json refreshed at r321.
+- **NEXT KICKOFF (authorised by Chris — decision 3): c65 / CL-0082, the `[MTKquiz]` shell without the quiz content.** Measured 2026-09-15
+  (`outputs/_r322_mtkquiz_shells.json`): 68 activity shells holding a "Go to quiz" button on 30 pages / 24 modules; **39 carry list/table
+  markup** (the questions/options/answers the KB says to omit SILENTLY — no Red Flag, no comment), 11 of them with answer/correct wording; 29 are
+  already the four-child shape. The KB form (constraint 65): a numbered `activity` box holding ONLY (1) `<h3>` = the writer's quiz title or
+  `Quiz`, (2) the writer's student instructions (omitted where none), (3) the `Designer/Developer To Do:` note (create in MTK DEV, orgunit link),
+  (4) `<a href="#" target="_blank"><div class="button">Go to quiz</div></a>` — in that order. Design sketch: reverse round 232's "marker is a
+  non-capturing ELEMENT" retag for the MTKquiz family so the marker opens a capturing bundle again; classify members — title (the first heading /
+  a `[H3]`/`[H4]` before the marker), instructions (prose before the first question), quiz content (numbered/lettered items, `[answer]`/`[correct]`
+  marks, option tables, answer keys — the r287/r305 mcq token stream already recognises these) — and emit the four children in the KB order,
+  dropping the quiz-content members without a note; a `_verify_mtkquiz.cjs` selftest (LIVENESS + DETECTION: a doctored shell that leaks an
+  `<ol>` must raise). Gate-visible as a NAMED override (the gold keeps the content on 157 of 199 shells — pre-rule); judge net of the named
+  pages like round 317. Family regen: every module carrying an MTKquiz marker (24 + the r232 detector's 21). Budget: one full round.
+- **Decisions still open for Chris:** 1 (c47 exact-duplicate heading drop — now unblocked on the TRR side: the `Finished!` titles are gone),
+  4 (the Standard-template lesson-pair order), 5 (interactive-build kickoffs per widget type).
 
 ## Session 2 — (started 2026-09-14 23:21 NZST; stopped 03:43 after 7 rounds; the power cut during Round 3 cost ~15 min)
 - **Round 1 (engine r314) SHIPPED** (commit f1f4de2) — KB c43, the trailing upload box inside its activity.
@@ -51,9 +51,8 @@
 - **MEASUREMENT RULE FROM ROUND 2 ON:** `reference/tests/anchor_compare.py` is void-aware now. Any comparison across round 315 must use the
   repaired tool on both sides; the r313/r314 skeleton state files were scored with the void-blind pairing (1939 pairs) and are NOT comparable
   page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
-- **RESUMED 2026-09-15 07:48 NZST on Chris's instruction: "Yes to 2 and 3 — start with the TRR title source."** Round 8 = decision 2 (the TRR / MTK
-  lesson title source, engine r321), Round 9 = decision 3 (c65 / CL-0082 MTK quiz-content omission, engine r322). Decisions 1, 4, 5 stay open.
-  Budget unchanged: 12 rounds / 10 h from the session start (7 shipped; ≈1.5 h left, hard stop 09:21 NZST).
+- **RESUMED 2026-09-15 07:48 NZST on Chris's instruction: "Yes to 2 and 3 — start with the TRR title source."** Round 8 = decision 2 SHIPPED
+  (engine r321, commit 968bf14). Decision 3 (c65 / CL-0082, engine r322) = the next kickoff (above). Decisions 1, 4, 5 stay open.
 
 ## Environment (decided 2026-09-14, session 1)
 - **All gate tools, probes and regenerations run in WSL** (`wsl.exe -e bash -lc '...'`, project at
