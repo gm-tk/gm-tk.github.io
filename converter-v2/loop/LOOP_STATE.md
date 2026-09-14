@@ -4,7 +4,7 @@
 **Session 2 started:** 2026-09-14 (Claude Code, same machine). Budget: 12 rounds or 10 hours. Resumed Round 1 (engine r314) from session 1's recipe (tree PASS, HEAD 763e036) and shipped it.
 **Authority carried by the kickoff message:** `REGENERATE CORPUS` for every round, scoped by CLAUDE.md §0a/§0b.
 
-## >>> STOPPED 2026-09-15 ≈04:40 NZST on the loop's own PLATEAU rule (§4) after Round 7 — 7 rounds shipped, 1 declined, 0 blocked <<<
+## >>> STOPPED 2026-09-15 03:43 NZST on the loop's own PLATEAU rule (§4) after Round 7 — 7 rounds shipped, 1 declined, 0 blocked <<<
 - **Why:** three consecutive shipped rounds — r318 (0.000pp), r319 (0.000pp), r320 (+0.003pp) — each moved the skeleton mean by less than
   0.02pp and moved no other protected gate. The ≥20-page, derivable, gate-MOVING classes are exhausted; what remains needs a human decision
   (below) or is a multi-round interactive build (the coverage dashboard's levers).
@@ -25,7 +25,7 @@
 - **Follow-ups that need no decision** (small, recorded): `anchor_compare.wt_items` first-file read; the speechBubble verifier's 300 s wall
   on MXFL301; the 13 TRR modules with an unparsed Writers Template docx (Round-0 ceiling gap).
 
-## Session 2 — (started 2026-09-14 23:21 NZST; stopped ≈04:40 after 7 rounds; the power cut during Round 3 cost ~15 min)
+## Session 2 — (started 2026-09-14 23:21 NZST; stopped 03:43 after 7 rounds; the power cut during Round 3 cost ~15 min)
 - **Round 1 (engine r314) SHIPPED** (commit f1f4de2) — KB c43, the trailing upload box inside its activity.
 - **Round 2 (engine r315) SHIPPED** (commit 3528986) — KB c28, the XHTML shell, FULL regeneration + the `anchor_compare` pairing-parser repair.
 - **Round 3 (engine r316) SHIPPED 2026-09-15** — KB c79, the lesson's own bilingual title pair (two h1 spans, code stripped, Te Reo first in
