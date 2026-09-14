@@ -2302,6 +2302,14 @@
 	"skeleton": {
 		"doctype": "<!DOCTYPE html>",
 		"html_open": "<html lang=\"en\"{levelAttr} template=\"{templateAttr}\" class=\"notranslate\" translate=\"no\">",
+		"html_class_cohorts": {
+			"enabled": true,
+			"env": "HTMLCOHORT_OFF",
+			"rules": [
+				{ "code_prefix": "X", "add_class": "learningSupport", "kb": "constraint 89 / CL-0089" }
+			],
+			"_round319_note": "ROUND 319 (the autonomous loop's Round 6, 2026-09-15 \u2014 KB constraint 89 / CL-0089, a locked admin decision): a module whose CODE begins with X is a learning-support module and ships `learningSupport` appended to the <html> class list on every page (class=\"notranslate learningSupport\"), never replacing notranslate and never altering template= (constraint 21); a non-X module never receives it. The test is the code, not the reference files (06_TEMPLATE_RECOGNITION \u00a74.4). A CSS hook (a larger font from the stylesheet) \u2014 the converter writes no font CSS. Each rule here is a code-prefix cohort; SkeletonBuilder appends add_class to the filled html_open tag's class list for every rule whose prefix matches run.moduleCode. MEASURED: Claude 0 of 228 X pages / 35 modules carried it; the gold carries it on 72 of 250 X pages and 0 non-X pages \u2014 the KB outranks (the gold predates the rule). Gate-neutral (the <html> tag is outside the skeleton). Env toggle HTMLCOHORT_OFF reverts to the round-318 form byte-for-byte."
+		},
 		"level_attr_map": {
 			"empty": " level=\"\"",
 			"absent": "",

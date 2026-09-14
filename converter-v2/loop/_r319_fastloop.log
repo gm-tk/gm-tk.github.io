@@ -1,0 +1,21 @@
+re-scoring 35 affected module(s): XDLS501 XDLS502 XDLS901 XDLS902 XDLS903 XDLS904 XDLS905 XDLS906 XDLS908 XDLS909 XDLS911 XDLS912 XFUN01 XFUN02 XGF9001 XGF9002 XGF9003 XGF9004 XGF9006 XLP01 XLP02 XLP03 XLP04 XLP05 XLP06 XMES101 XMES102 XMES103 XMES201 XMES203 XTAS101 XTAS102 XTAS103 XWHA01 XWHA02
+baseline taken: 2026-09-14T14:58:38Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  50.32      50.32      0.00  HELD
+  skeleton pages >=50%                       1028       1028         0  HELD
+  skeleton pages >=75%                        192        192         0  HELD
+  compare_structure exact chain             11355      11355         0  HELD
+  compare_structure EXTRA container           186        186         0  HELD
+  compare_structure missing container         591        591         0  HELD
+  body_compare ANY breakdown                  192        192         0  HELD
+  defect structurally-clean %               97.81      97.81      0.00  HELD
+  literal-[tag] leak (occ)                    288        288         0  HELD
+  literal-[tag] leak (pages)                   46         46         0  HELD
+
+  context (no pass/fail): sk_pages: 1954->1954  cs_matched: 13393->13393  body_pages: 2102->2102  df_total: 2102->2102  df_clean: 2056->2056
+
+RESULT: PASS — every protected gate held-or-improved corpus-wide (exact, decomposition-proven).
+[commit] fast-loop baseline PATCHED (1954 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.

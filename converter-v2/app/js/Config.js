@@ -1565,7 +1565,13 @@ class Config {
 	// modules; the gold agrees inside the hosts (76.6% without). Gate-neutral,
 	// skeleton page-for-page identical. Full corpus regeneration. Env LAZYHOST_OFF;
 	// data formatter.lazy_free_hosts.
-	static AppVersion = "260618.89";
+	// ROUND 319 (260618.90): learningSupport ON EVERY X-PREFIXED MODULE'S <html> (KB
+	// constraint 89 / CL-0089; the autonomous loop's Round 6). SkeletonBuilder
+	// #cohortHtmlClass appends each matching code-prefix cohort's class to the
+	// html_open tag's class list (X -> learningSupport; a CSS hook, no font CSS).
+	// 228 pages / 35 modules; gate-neutral, skeleton page-for-page identical.
+	// Scoped regeneration of the 35. Env HTMLCOHORT_OFF; data skeleton.html_class_cohorts.
+	static AppVersion = "260618.90";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

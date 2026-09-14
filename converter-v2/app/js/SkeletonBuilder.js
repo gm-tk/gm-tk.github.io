@@ -322,7 +322,7 @@ class SkeletonBuilder {
 		// ---- assemble -----------------------------------------------------------
 		return [
 			tpl.skeleton.doctype,
-			Utils.FillTemplate(tpl.skeleton.html_open, { levelAttr, templateAttr }),
+			SkeletonBuilder.#cohortHtmlClass(Utils.FillTemplate(tpl.skeleton.html_open, { levelAttr, templateAttr }), run, tpl),
 			head,
 			Utils.FillTemplate(tpl.skeleton.body_open, { bodyClass: mode.bodyClass, bodyAttrs: mode.bodyAttrs }),
 			header,
@@ -335,6 +335,30 @@ class SkeletonBuilder {
 			tpl.skeleton.html_close,
 		].filter(Boolean).join("\n");
 	};
+
+	/**
+	 * ROUND 319 (loop Round 6 — KB constraint 89): a code-prefix COHORT adds a class to
+	 * the <html> tag — the X-prefixed learning-support modules ship `learningSupport`
+	 * appended to the existing class list on every page (a CSS hook for the larger
+	 * font; no font CSS is ever written). Data skeleton.html_class_cohorts (a list of
+	 * { code_prefix, add_class } rules); env HTMLCOHORT_OFF. Returns the tag unchanged
+	 * when off, when no rule matches, or when the class is already present.
+	 */
+	static #cohortHtmlClass(htmlOpen, run, tpl) {
+		const cfg = tpl.skeleton?.html_class_cohorts;
+		if (!cfg || cfg.enabled === false || !Array.isArray(cfg.rules)) return htmlOpen;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "HTMLCOHORT_OFF"]) return htmlOpen;
+		const code = String(run?.moduleCode || "");
+		let tag = htmlOpen;
+		for (const r of cfg.rules) {
+			if (!r || !r.code_prefix || !r.add_class || !code.startsWith(r.code_prefix)) continue;
+			const m = /\bclass="([^"]*)"/.exec(tag);
+			if (!m) { tag = tag.replace(/>$/, ` class="${r.add_class}">`); continue; }
+			if (m[1].split(/\s+/).includes(r.add_class)) continue;
+			tag = tag.replace(m[0], `class="${(m[1] + " " + r.add_class).trim()}"`);
+		}
+		return tag;
+	}
 
 	/**
 	 * ROUND 316 (loop Round 3 — KB constraint 79, the lesson's own bilingual pair).

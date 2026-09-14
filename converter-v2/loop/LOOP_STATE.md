@@ -18,13 +18,17 @@
 - **Round 4 (engine r317) SHIPPED** (commit 81dfb05).
 - **Round 5 (engine r318) SHIPPED 2026-09-15** — KB c83, no `loading="lazy"` inside moving interactives (2424 images / 228 pages / 146 modules);
   FULL regeneration, gate-neutral (skeleton page-for-page identical). Commit: see the round log.
-- **Corpus / engine state:** the r318 FULL regeneration (228 pages changed, 0 stale); content manifest, fast-loop baseline, feature index, ledger
-  (full ship, counter 0), gate_baseline.json all refreshed; skeleton state `outputs/_r318_sk_final.json` FRESH (== r317 page-for-page). Build 260618.89.
+- **Round 5 (engine r318) SHIPPED** (commit bd2ca1b).
+- **Round 6 (engine r319) SHIPPED 2026-09-15** — KB c89, `learningSupport` on every X-prefixed module's `<html>` (228 pages / 35 modules); scoped
+  regeneration, gate-neutral. Commit: see the round log.
+- **Corpus / engine state:** the r319 scoped regeneration on top of the r318 full (228 pages changed, 0 stale); content manifest, fast-loop baseline,
+  feature index, ledger (scoped #1 since the r318 full), gate_baseline.json refreshed; skeleton state `outputs/_r319_sk_final.json` FRESH
+  (== r317 page-for-page). Build 260618.90.
 - **MEASUREMENT RULE FROM ROUND 2 ON:** `reference/tests/anchor_compare.py` is void-aware now. Any comparison across round 315 must use the
   repaired tool on both sides; the r313/r314 skeleton state files were scored with the void-blind pairing (1939 pairs) and are NOT comparable
   page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
-- **If this session is interrupted:** everything describes round 318 as shipped; resume at Round 6 (PICK). Plateau guard: R5 was gate-neutral;
-  R6 may be gate-neutral (c89 learningSupport) but R7 MUST move a gate (c47/c95 Lesson-N strip, c79 remainder, or a dashboard class).
+- **If this session is interrupted:** everything describes round 319 as shipped; resume at Round 7 (PICK). **Plateau guard: R5 and R6 were
+  gate-neutral — R7 MUST move a gate** (c47/c95 Lesson-N strip 89 pages, c79's remaining mechanisms, or the dashboard's top gold-matching class).
 
 ## Environment (decided 2026-09-14, session 1)
 - **All gate tools, probes and regenerations run in WSL** (`wsl.exe -e bash -lc '...'`, project at
@@ -59,9 +63,11 @@
   `KB_AMALGAMATION_STATUS.md` rows 45 + 90 → CAPTURED-LIVE, full ship recorded (ledger 0).
 - Round 5 (engine r318, KB c83 — no lazy inside moving interactives): SHIPPED 2026-09-15. AppVersion 260618.89, CLAUDE.md §11/§14,
   `KB_AMALGAMATION_STATUS.md` row 83 → CAPTURED-LIVE, full ship recorded (ledger 0).
-- Round 6: NOT STARTED. Queue (§D, KB rows first): c89 learningSupport (228 pages, gate-neutral), c47/c95 Lesson-N strip (89 pages, skeleton-
-  visible), c79's remaining source-order/fallback mechanisms (141 fallback pages — size per mechanism), c65 quiz omission (56), c55 full stops
-  (420 buttons), stickyNav, c67; then the dashboard's top gold-matching class.
+- Round 6 (engine r319, KB c89 — learningSupport on X-prefixed <html>): SHIPPED 2026-09-15. AppVersion 260618.90, CLAUDE.md §11/§14,
+  `KB_AMALGAMATION_STATUS.md` row 89 → CAPTURED-LIVE, scoped ship #1 since the r318 full.
+- Round 7: NOT STARTED — MUST be gate-moving. Queue (§D, KB rows first): c47/c95 Lesson-N body-heading strip (89 pages, skeleton-visible), c79's
+  remaining source-order/fallback mechanisms (141 fallback pages — size per mechanism), c65 quiz omission (56, skeleton-visible override), c55 full
+  stops (420 buttons, neutral), stickyNav, c67 (27 pages); then the dashboard's top gold-matching class.
 
 ## The ceiling (Round 0 result — quote it in every report)
 - Paired population 1880 pairs = the gate's 1939 minus 59 unmeasurable (13 TRR modules with a Media-List-only
@@ -218,6 +224,28 @@
   the round's verifier 0 lazy images inside hosts corpus-wide; every differing line an img losing exactly the attribute; OFF re-conversion 387/387 = manifest.
 - **Gates:** every gate EXACT to r317; skeleton page-for-page identical (0 moved); 10 verifiers identical ON vs OFF over 20 affected modules; 12 selftests GREEN.
 
+## Round 6 PICK (engine r319) — written before any code, 2026-09-15 03:05 NZST
+- **Class:** KB constraint 89 (CL-0089, a locked admin decision) — a module whose CODE begins with `X` is a learning-support module and ships
+  `learningSupport` appended to the `<html>` class list on every page (`class="notranslate learningSupport"`), never touching `template=`;
+  a non-X module never receives it. Claude: 0 of 228 X pages (35 modules) carry it. Gate-neutral (the `<html>` tag is outside the skeleton).
+- **Authority (§1b):** 1 = KB constraint 89 + `06_TEMPLATE_RECOGNITION` §4.4 ("the test is the code, not the reference files"); the gold has it on
+  72 of 250 X pages (29%) and on 0 non-X pages — the KB outranks (the gold predates the rule); a CSS hook (larger font), no font CSS is written.
+- **Triangulated:** XFUN01_00 / XDLS9004_03_0 / XWHA01-02 are the KB's own observed forms; Claude XMES101_0_0 `<html lang="en" level=""
+  template="combo" class="notranslate" translate="no">` → target `class="notranslate learningSupport"`.
+- **Measured:** Claude X pages 228 / 35 modules (XMES, XTAS, XDLS, XGF, XLP, XWHA …); non-X 1874 pages untouched. Gold X: LS 72 / no-LS 178.
+- **Mechanism (planned):** data `skeleton.html_class_cohorts` {enabled, env HTMLCOHORT_OFF, rules [{code_prefix "X", add_class "learningSupport"}]};
+  `SkeletonBuilder` appends each matching rule's class to the filled `html_open` tag's class list. Scoped regeneration: the 35 X modules +
+  a completeness spot-check of non-X modules (byte-identical by construction).
+- **Gate expectation:** every gate EXACT; proof = OFF == manifest, ON differs from OFF only in the `<html>` tag's class attribute.
+- **Plateau guard:** R5 and R6 are gate-neutral; R7 MUST move a gate.
+
+## Round 6 (engine r319) — what shipped
+- **Fix:** `skeleton.html_class_cohorts` {enabled, env HTMLCOHORT_OFF, rules [{code_prefix X, add_class learningSupport}]}; `SkeletonBuilder.#cohortHtmlClass`
+  at the html_open fill. Splice `_r319_splice.py`.
+- **Regeneration:** scoped, the 35 X modules / 5 batches; 0 stale; 228 pages changed = the population; verifier 0 violations over 2102 pages; OFF
+  re-conversion 228/228 = manifest; canaries change only the <html> line, non-X byte-identical.
+- **Gates:** every gate EXACT; skeleton page-for-page identical; decomposition PASS; 12 selftests GREEN.
+
 ## Follow-up candidates surfaced by Round 1 (NOT queued — each needs a PICK + corpus-wide measure per §3)
 - **The dropbox bundle terminates its activity.** Gold: the upload button is the box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%).
   After an r314 hold the box stays open to the next auto-close boundary (XTAS101 1G swallows `[body] Listen and read…` + a carousel before the
@@ -248,3 +276,4 @@
 - r3 (engine r316) · KB constraint 79, the lesson's own bilingual title pair (two h1 spans, code stripped, Te Reo first in reoTranslate) · SHIPPED 2026-09-15 (finished after a power cut) · scaffold 50.289→50.345 (+0.056) · buckets EXACT · pages moved 40, all up (45 pages / 17 modules rebuilt of 179) · 55.0% of achievable · commit (see git log)
 - r4 (engine r317) · KB constraints 45 + 90, the acks block's template form (acksTemplate wrapper, statements generated not typed) · SHIPPED 2026-09-15 · FULL regeneration, 394 pages · NAMED KB-over-gold override: scaffold 50.345→50.322 (−0.024, all on the 387 named pages; identical net of them), RAW-scope +0.062, every other gate EXACT · 54.9% of achievable (55.0% net) · commit (see git log)
 - r5 (engine r318) · KB constraint 83, no loading="lazy" inside moving interactives · SHIPPED 2026-09-15 · FULL regeneration, 228 pages / 146 modules (2424 images) · gate-neutral, skeleton page-for-page identical, every gate EXACT · 54.9% of achievable · commit (see git log)
+- r6 (engine r319) · KB constraint 89, learningSupport on every X-prefixed module's <html> · SHIPPED 2026-09-15 · scoped regeneration, 228 pages / 35 modules · gate-neutral, every gate EXACT · 54.9% of achievable · commit (see git log)

@@ -1,5 +1,46 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 319, build 260618.90) — `learningSupport` ON EVERY X-PREFIXED MODULE'S `<html>`: KB constraint 89 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 6; **SCOPED REGENERATION under the loop's standing mandate — the 35 X-prefixed modules; every protected gate EXACT and the skeleton page-for-page identical — gate-neutral; scoped ship #1 since the round-318 full**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A module whose code begins with `X` (the learning-support cohort) now ships `learningSupport` appended to the `<html>` class list on every page — `class="notranslate learningSupport"` — with `template=` untouched; 228 pages / 35 modules change by that one attribute and nothing else.**
+
+### 2. THE EVIDENCE
+
+- **KB constraint 89** (CL-0089, a locked admin decision): *"A module whose CODE begins with `X` is a learning support module and ships `learningSupport` in the `<html>` class list on every page … The test is the code, not the reference files … a non-X-prefixed module never receives the class."* A CSS hook (the larger font comes from the stylesheet); the converter writes no font CSS (constraint 2).
+- **Claude before, XMES101_0_0:** `<html lang="en" level="" template="1-3" class="notranslate" translate="no">`. **After:** `class="notranslate learningSupport"`.
+- **The gold** carries the class on 72 of 250 X-prefixed pages (29%) and on 0 non-X pages — the KB outranks the gold (the gold predates the rule; the KB's own observed forms are `XFUN01_00`, `XDLS9004_03_0`, `XWHA01-02`).
+
+### 3. THE MEASUREMENT
+
+- Claude: **228 X-prefixed pages / 35 modules**, 0 with the class (XMES, XTAS, XDLS, XGF, XLP, XWHA …); 1874 non-X pages, 0 with the class (correct, untouched).
+
+### 4. THE FIX (engine general, shape in data)
+
+- **Data** `Emit_Templates.json` → `skeleton.html_class_cohorts` `{ enabled, env: "HTMLCOHORT_OFF", rules: [{ code_prefix: "X", add_class: "learningSupport" }] }` — a list of code-prefix cohort rules.
+- **`SkeletonBuilder.#cohortHtmlClass(htmlOpen, run, tpl)`** — for every rule whose prefix matches `run.moduleCode`, appends `add_class` to the filled `html_open` tag's class list (never duplicating, never touching any other attribute); applied at the one place the tag is assembled.
+- **Env toggle `HTMLCOHORT_OFF`** reverts to the round-318 form byte-for-byte. Splice `outputs/_r319_splice.py` (anchored, idempotent — proven by a second run).
+
+### 5. THE REGENERATION AND THE PROOF
+
+- Scoped: the 35 X modules in 5 batches (~2.5 min); `_content_manifest.py fresh --affected` → **0 truly stale**; diff → **228 pages / 35 modules changed, 0 added / 0 removed** — exactly the population.
+- **The round's own verifier (corpus-wide):** every X page carries `learningSupport` after `notranslate` with `template=` present; no non-X page carries it — **0 violations over 2102 pages**.
+- **Toggle-OFF invariant:** the 35 modules re-converted OFF hash to the pre-round manifest on **228/228 pages**; the in-memory canaries (6 X + 6 non-X modules) — OFF == disk on 57/57 pages, ON changes only the X modules' pages and **only the `<html>` line** (0 other diff lines), non-X byte-identical.
+
+### 6. PROTECTED GATES — every one EXACT (fresh full runs, `outputs/_r319_gates.log`; `_r319_sk_final.json`)
+
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.322% / ≥50% 1028 / ≥75% 192 / ≥90% 15 / skipped 0 @ 1954; RAW 34.724% — page-for-page IDENTICAL to round 318 (0 moved / 0 added / 0 dropped)**; the decomposition proof (`_fastloop_diff.py` over the 35, `--commit`) PASS with every metric HELD.
+- Structurally clean **2056/2102 = 97.81%** / leak **288 occ / 46 pages** · compare_structure exact **11355** / EXTRA **186** / missing **591** · body_compare **192** · tags **9557/9557, REAL FAILURES 0** · flipCard gate set **TOTAL 61, divergence 0 ✓** · speechBubble gate set TOTAL 62 / defect 4 · entry-parity **PASS** · index-sync **33/28** · skeleton `--selftest` PASS · pairs skipped **0** · **all TWELVE widget selftests GREEN.**
+- **Ceiling:** SCAFFOLD 50.322% = 54.9% of achievable (unchanged).
+- Ledger: scoped ship #1 since the round-318 full. Content manifest, fast-loop baseline and feature index refreshed.
+
+### 7. NOTED
+
+- The plateau guard: rounds 318 and 319 are both gate-neutral (the KB's output-quality rules). **Round 7 must move a gate** — the queue's next skeleton-visible rows are c47/c95 (the `Lesson N` body-heading strip, 89 pages) and constraint 79's remaining source-order / fallback mechanisms (141 fallback pages).
+
+**Ledger:** scoped ship #1 · data `skeleton.html_class_cohorts` · env `HTMLCOHORT_OFF` · tools `outputs/_r319_splice.py` · state `outputs/_r319_sk_final.json` · logs `_r319_gates.log`, `_r319_sk_full.log`, `_r319_fastloop.log`, `_r319_selftests.log` · `KB_AMALGAMATION_STATUS.md` row 89 → CAPTURED-LIVE.
+
 ## 2026-09-15 (round 318, build 260618.89) — NO `loading="lazy"` INSIDE A MOVING INTERACTIVE: KB constraint 83 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 5; **FULL CORPUS REGENERATION under the loop's standing mandate — the host family is 303 modules, over the §10a 60% guard; ledger reset to 0; every protected gate EXACT and the skeleton page-for-page identical — a gate-neutral, KB-and-gold-aligned round**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
