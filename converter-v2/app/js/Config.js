@@ -1556,7 +1556,16 @@ class Config {
 	// -0.024pp on exactly the 387 named pages, identical net of them, every other
 	// gate exact. Full corpus regeneration. Env ACKSTEMPLATE_OFF; data
 	// Acks_Formats.standing_items.kb_template_form.
-	static AppVersion = "260618.88";
+	// ROUND 318 (260618.89): NO loading="lazy" INSIDE A MOVING INTERACTIVE (KB constraint
+	// 83 / CL-0083; the autonomous loop's Round 5). HtmlFormatter.#lazyFreeHosts -- a
+	// whole-document, void-aware tag walk before the line passes -- strips the
+	// attribute from every <img> inside a banner / carousel / drag-and-drop /
+	// click-drop (+ its content panel) / flip card / memory game / sketcher; every
+	// other image keeps it (the r240 forward rule). 2424 images on 228 pages / 146
+	// modules; the gold agrees inside the hosts (76.6% without). Gate-neutral,
+	// skeleton page-for-page identical. Full corpus regeneration. Env LAZYHOST_OFF;
+	// data formatter.lazy_free_hosts.
+	static AppVersion = "260618.89";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

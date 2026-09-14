@@ -58,6 +58,54 @@ class HtmlFormatter {
 	};
 
 	/**
+	 * ROUND 318 (loop Round 5 — KB constraint 83): strips loading="lazy" from every
+	 * <img> that sits INSIDE a moving-or-draggable interactive (data host_classes:
+	 * banner, carousel, drag-and-drop, click-drop + its content panel, flip card,
+	 * memory game, sketcher). A whole-document, void-aware tag walk: an open
+	 * element pushes (with the host class it carries, if any), a close tag pops
+	 * to its match, and an <img> met while any stacked ancestor is a host loses
+	 * the attribute. Images outside a host keep it (the round-240 forward rule).
+	 * Returns the html unchanged when off (data flag, env LAZYHOST_OFF, no data).
+	 */
+	static #lazyFreeHosts(html) {
+		if (typeof process !== "undefined" && process.env && process.env.LAZYHOST_OFF) return html;
+		let cfg;
+		try { cfg = DataService.Data.EmitTemplates.formatter?.lazy_free_hosts; } catch (e) { return html; }
+		if (!cfg || !cfg.enabled || !Array.isArray(cfg.host_classes) || !cfg.host_classes.length) return html;
+		if (cfg.env && typeof process !== "undefined" && process.env && process.env[cfg.env]) return html;
+		const hosts = new Set(cfg.host_classes);
+		const attr = cfg.attribute ?? 'loading="lazy"';
+		const tagRe = /<(\/?)([a-zA-Z][\w-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/g;
+		const stack = [];   // [tagName, isHost]
+		let out = "", last = 0, inHost = 0, m;
+		while ((m = tagRe.exec(html)) !== null) {
+			const closing = m[1] === "/", name = m[2].toLowerCase(), attrs = m[3];
+			if (closing) {
+				for (let i = stack.length - 1; i >= 0; i--) {
+					if (stack[i][0] === name) {
+						for (let k = stack.length - 1; k >= i; k--) if (stack[k][1]) inHost--;
+						stack.length = i; break;
+					}
+				}
+				continue;
+			}
+			if (name === "img") {
+				if (inHost > 0 && attrs.includes(attr)) {
+					out += html.slice(last, m.index) + m[0].replace(new RegExp("\\s*" + attr.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), "");
+					last = m.index + m[0].length;
+				}
+				continue;
+			}
+			if (HtmlFormatter.#VOID.has(name) || /\/\s*$/.test(attrs)) continue;   // a void never opens
+			const cm = /\bclass="([^"]*)"/.exec(attrs);
+			const isHost = !!cm && cm[1].split(/\s+/).some((c) => hosts.has(c));
+			stack.push([name, isHost]);
+			if (isHost) inHost++;
+		}
+		return last ? out + html.slice(last) : html;
+	};
+
+	/**
 	 * ROUND 315 (loop Round 2 — KB constraint 28): the XHTML void pass, or null
 	 * when off (data flag disabled, env XHTMLVOID_OFF, or no data). Returns
 	 * { doctype, re, close }: `re` matches one void open tag attribute-aware (a
@@ -125,6 +173,10 @@ class HtmlFormatter {
 				.map((l) => HtmlFormatter.#breakBlocks(l, breakSet))
 				.join("\n");
 		}
+
+		// ROUND 318 (KB constraint 83): no loading="lazy" inside a moving interactive —
+		// a whole-document walk, before the per-line passes (see #lazyFreeHosts).
+		html = HtmlFormatter.#lazyFreeHosts(html);
 
 		// ROUND 315 (KB constraint 28): lowercase doctype + XHTML self-closing voids,
 		// applied per line after the block breaking so every void tag is seen once.

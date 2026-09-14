@@ -1,0 +1,124 @@
+{
+ "summary": {
+  "claude": {
+   "outside_lazy": 9183,
+   "outside_nolazy": 197,
+   "inside_nolazy": 2612
+  },
+  "claude_by_host": {
+   "carousel": {
+    "nolazy": 1188
+   },
+   "front": {
+    "nolazy": 1040
+   },
+   "back": {
+    "nolazy": 74
+   },
+   "clickDropContent": {
+    "nolazy": 182
+   },
+   "bannerItem": {
+    "nolazy": 86
+   },
+   "clickDrop": {
+    "nolazy": 42
+   }
+  },
+  "claude_by_template": {
+   "Fundamentals": {
+    "nolazy": 472
+   },
+   "Inquiry": {
+    "nolazy": 106
+   },
+   "Standard": {
+    "nolazy": 2034
+   }
+  },
+  "claude_pages_with_lazy_inside": 0,
+  "claude_modules_with_lazy_inside": 0,
+  "gold": {
+   "inside_nolazy": 11730,
+   "outside_lazy": 4369,
+   "inside_lazy": 3574,
+   "outside_nolazy": 10731
+  },
+  "gold_by_host": {
+   "front": {
+    "nolazy": 1178,
+    "lazy": 705
+   },
+   "back": {
+    "nolazy": 228,
+    "lazy": 111
+   },
+   "canvasContainer": {
+    "nolazy": 31
+   },
+   "drag": {
+    "nolazy": 2738,
+    "lazy": 414
+   },
+   "carousel": {
+    "nolazy": 4106,
+    "lazy": 1540
+   },
+   "ddColumn": {
+    "lazy": 156,
+    "nolazy": 990
+   },
+   "cardHidden": {
+    "nolazy": 201,
+    "lazy": 139
+   },
+   "dragAndDrop": {
+    "lazy": 112,
+    "nolazy": 741
+   },
+   "clickDropContent": {
+    "lazy": 267,
+    "nolazy": 626
+   },
+   "drop": {
+    "nolazy": 85,
+    "lazy": 9
+   },
+   "bannerItem": {
+    "nolazy": 314,
+    "lazy": 51
+   },
+   "clickDrop": {
+    "nolazy": 480,
+    "lazy": 70
+   },
+   "ddContainer": {
+    "nolazy": 11
+   },
+   "flipCard": {
+    "nolazy": 1
+   }
+  },
+  "gold_by_template": {
+   "Bilingual": {
+    "nolazy": 315,
+    "lazy": 287
+   },
+   "Fundamentals": {
+    "nolazy": 1147,
+    "lazy": 216
+   },
+   "Inquiry": {
+    "nolazy": 1462,
+    "lazy": 538
+   },
+   "Standard": {
+    "nolazy": 8806,
+    "lazy": 2533
+   }
+  },
+  "gold_pages_with_lazy_inside": 400
+ },
+ "claude_modules": [],
+ "claude_pages": []
+}

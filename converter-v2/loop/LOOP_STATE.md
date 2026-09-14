@@ -15,13 +15,16 @@
 - **Round 3 (engine r316) SHIPPED** (commit 414ef28).
 - **Round 4 (engine r317) SHIPPED 2026-09-15** — KB c45 + c90, the acks block's template form (`acks acksTemplate`, no typed statements); FULL
   regeneration, a NAMED KB-over-gold override (skeleton −0.024pp on exactly the 387 named pages, identical net of them). Commit: see the round log.
-- **Corpus / engine state:** the r317 FULL regeneration (394 pages changed, 0 stale); content manifest, fast-loop baseline, feature index, ledger
-  (full ship, counter 0), gate_baseline.json all refreshed; skeleton state `outputs/_r317_sk_final.json` FRESH. Build 260618.88.
+- **Round 4 (engine r317) SHIPPED** (commit 81dfb05).
+- **Round 5 (engine r318) SHIPPED 2026-09-15** — KB c83, no `loading="lazy"` inside moving interactives (2424 images / 228 pages / 146 modules);
+  FULL regeneration, gate-neutral (skeleton page-for-page identical). Commit: see the round log.
+- **Corpus / engine state:** the r318 FULL regeneration (228 pages changed, 0 stale); content manifest, fast-loop baseline, feature index, ledger
+  (full ship, counter 0), gate_baseline.json all refreshed; skeleton state `outputs/_r318_sk_final.json` FRESH (== r317 page-for-page). Build 260618.89.
 - **MEASUREMENT RULE FROM ROUND 2 ON:** `reference/tests/anchor_compare.py` is void-aware now. Any comparison across round 315 must use the
   repaired tool on both sides; the r313/r314 skeleton state files were scored with the void-blind pairing (1939 pairs) and are NOT comparable
   page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
-- **If this session is interrupted:** everything describes round 317 as shipped; resume at Round 5 (PICK). Plateau guard: R1/R3/R4 moved the
-  skeleton, R2 was neutral — R5 may be gate-neutral (c83 lazy / c89 learningSupport) but not two neutral rounds in a row after it.
+- **If this session is interrupted:** everything describes round 318 as shipped; resume at Round 6 (PICK). Plateau guard: R5 was gate-neutral;
+  R6 may be gate-neutral (c89 learningSupport) but R7 MUST move a gate (c47/c95 Lesson-N strip, c79 remainder, or a dashboard class).
 
 ## Environment (decided 2026-09-14, session 1)
 - **All gate tools, probes and regenerations run in WSL** (`wsl.exe -e bash -lc '...'`, project at
@@ -54,9 +57,11 @@
   `KB_AMALGAMATION_STATUS.md` row 79 → PARTIAL (pair mechanism LIVE), scoped ship #1 since the r315 full.
 - Round 4 (engine r317, KB c45 + c90 — the acks block's template form): SHIPPED 2026-09-15. AppVersion 260618.88, CLAUDE.md §9/§11/§14,
   `KB_AMALGAMATION_STATUS.md` rows 45 + 90 → CAPTURED-LIVE, full ship recorded (ledger 0).
-- Round 5: NOT STARTED. Queue (§D, KB rows first): c83 lazy in moving widgets (243 pages, gate-neutral), c89 learningSupport (228 pages,
-  gate-neutral), c47/c95 Lesson-N strip (89 pages), c79's remaining source-order/fallback mechanisms (141 fallback pages — size per mechanism),
-  c65 quiz omission (56), c55 full stops (420 buttons), stickyNav, c67; then the dashboard's top gold-matching class.
+- Round 5 (engine r318, KB c83 — no lazy inside moving interactives): SHIPPED 2026-09-15. AppVersion 260618.89, CLAUDE.md §11/§14,
+  `KB_AMALGAMATION_STATUS.md` row 83 → CAPTURED-LIVE, full ship recorded (ledger 0).
+- Round 6: NOT STARTED. Queue (§D, KB rows first): c89 learningSupport (228 pages, gate-neutral), c47/c95 Lesson-N strip (89 pages, skeleton-
+  visible), c79's remaining source-order/fallback mechanisms (141 fallback pages — size per mechanism), c65 quiz omission (56), c55 full stops
+  (420 buttons), stickyNav, c67; then the dashboard's top gold-matching class.
 
 ## The ceiling (Round 0 result — quote it in every report)
 - Paired population 1880 pairs = the gate's 1939 minus 59 unmeasurable (13 TRR modules with a Media-List-only
@@ -186,6 +191,33 @@
   34.662 → 34.724 IMPROVED; every other gate EXACT to r316; verifiers identical ON vs OFF; 12 selftests GREEN. **54.9% of achievable (55.0% net).**
 - **Named:** the gold's old last-page acks placement (249 paired overviews without a block) — constraint 33 already overrides it; never chase.
 
+## Round 5 PICK (engine r318) — written before any code, 2026-09-15 02:35 NZST
+- **Class:** KB constraint 83 (CL-0083) — NEVER `loading="lazy"` on an image INSIDE a moving-or-draggable interactive (rotating banner, carousel,
+  drag-and-drop, click-drop incl. `.clickDropContent`, flip card, memory game, sketcher); every other image keeps it. Round 240's `FinishImg`
+  adds the attribute to every image it builds, host-blind. Gate-neutral (`loading` is not a KEEP_ATTR; no gate reads it).
+- **Authority (§1b):** 1 = KB constraint 83 (universal) + `01_PIPELINE` Images → Rules Common to Both Modes; 3 = gold AGREES: inside the hosts the
+  gold ships 11730 images without the attribute vs 3574 with (76.6% — above the 0.60 floor); outside them the gold is era-mixed (4369 lazy :
+  10731 not) and the r240 forward rule stands.
+- **Triangulated:** XMES101 2D's clickDropContent (Claude `<img class="img-fluid" loading="lazy" …>` inside `.clickDropContent`; gold: no
+  attribute inside its clickDrop); a flipCard front image (Claude lazy inside `.front`); a carousel slide image (Claude lazy inside `.carousel`).
+- **MEASURED (`outputs/_measure_r318_lazyhosts.py` → `_r318_lazyhosts.json`; a void-aware depth walk on every page):** Claude 2424 lazy images
+  inside hosts on 228 pages / 146 modules — carousel 1000, flipCard front 1040 + back 74, clickDropContent 182, bannerItem 86, clickDrop 42;
+  by template Standard 1846, Fundamentals 472, Inquiry 106, Bilingual 0. Outside hosts: 9183 lazy (kept). Gold inside hosts: 23.4% lazy.
+- **Mechanism (planned):** `HtmlFormatter` gains a whole-document pass `formatter.lazy_free_hosts` {enabled, env LAZYHOST_OFF, host_classes
+  [the KB's 19], attribute} run before `Indent`'s line walk: a void-aware tag walk keeps an open-element stack and strips the attribute from any
+  `<img>` whose ancestor carries a host class. One choke point (PageAssembler → Indent). Scoped regeneration: the 146 affected ∪ every module
+  carrying any host class (the §0a whole-type family — the working half must come back byte-identical).
+- **Gate expectation:** every gate EXACT; proof = OFF == manifest, and ON differs from OFF ONLY by the removed attribute on images inside hosts
+  (normalise and compare). Widget verifiers A/B (the flipCard verifier's Mode-P template mentions the attribute — check it is identical).
+- **Plateau guard:** R4 moved (the named dip); R5 gate-neutral is allowed; R6 may be neutral too (c89) but R7 must move.
+
+## Round 5 (engine r318) — what shipped
+- **Fix:** `formatter.lazy_free_hosts` {enabled, env LAZYHOST_OFF, attribute, host_classes [the KB's 19]}; `HtmlFormatter.#lazyFreeHosts` (a whole-document
+  void-aware tag walk before the line passes). Unit test `_r318_unit.cjs` (9 containment cases). Splice `_r318_splice.py`. Probe `_measure_r318_lazyhosts.py`.
+- **Regeneration:** FULL (the host family is 303 modules, over the 60% guard); 0 stale; 228 pages / 146 modules changed = the measured population;
+  the round's verifier 0 lazy images inside hosts corpus-wide; every differing line an img losing exactly the attribute; OFF re-conversion 387/387 = manifest.
+- **Gates:** every gate EXACT to r317; skeleton page-for-page identical (0 moved); 10 verifiers identical ON vs OFF over 20 affected modules; 12 selftests GREEN.
+
 ## Follow-up candidates surfaced by Round 1 (NOT queued — each needs a PICK + corpus-wide measure per §3)
 - **The dropbox bundle terminates its activity.** Gold: the upload button is the box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%).
   After an r314 hold the box stays open to the next auto-close boundary (XTAS101 1G swallows `[body] Listen and read…` + a carousel before the
@@ -215,3 +247,4 @@
 - r2 (engine r315) · KB constraint 28, the XHTML shell (lowercase doctype + ` />` voids) + the pairing-parser repair it exposed · SHIPPED 2026-09-15 · FULL regeneration, 2102 pages · converter change gate-neutral (ON == OFF under the repaired parser); skeleton RE-BASELINED 1939→1954 pairs, 50.031→50.289 (all of it the repair) · 54.9% of achievable · commit (see git log)
 - r3 (engine r316) · KB constraint 79, the lesson's own bilingual title pair (two h1 spans, code stripped, Te Reo first in reoTranslate) · SHIPPED 2026-09-15 (finished after a power cut) · scaffold 50.289→50.345 (+0.056) · buckets EXACT · pages moved 40, all up (45 pages / 17 modules rebuilt of 179) · 55.0% of achievable · commit (see git log)
 - r4 (engine r317) · KB constraints 45 + 90, the acks block's template form (acksTemplate wrapper, statements generated not typed) · SHIPPED 2026-09-15 · FULL regeneration, 394 pages · NAMED KB-over-gold override: scaffold 50.345→50.322 (−0.024, all on the 387 named pages; identical net of them), RAW-scope +0.062, every other gate EXACT · 54.9% of achievable (55.0% net) · commit (see git log)
+- r5 (engine r318) · KB constraint 83, no loading="lazy" inside moving interactives · SHIPPED 2026-09-15 · FULL regeneration, 228 pages / 146 modules (2424 images) · gate-neutral, skeleton page-for-page identical, every gate EXACT · 54.9% of achievable · commit (see git log)

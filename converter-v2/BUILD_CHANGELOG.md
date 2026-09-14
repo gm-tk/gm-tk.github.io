@@ -1,5 +1,50 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 318, build 260618.89) — NO `loading="lazy"` INSIDE A MOVING INTERACTIVE: KB constraint 83 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 5; **FULL CORPUS REGENERATION under the loop's standing mandate — the host family is 303 modules, over the §10a 60% guard; ledger reset to 0; every protected gate EXACT and the skeleton page-for-page identical — a gate-neutral, KB-and-gold-aligned round**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**An image inside a moving-or-draggable interactive — rotating banner, carousel, drag-and-drop, click-drop (and its content panel), flip card, memory game, sketcher — no longer carries `loading="lazy"`; every other image keeps it. 2424 images on 228 pages / 146 modules lose the attribute; nothing else on any page changes.**
+
+### 2. THE EVIDENCE
+
+- **KB constraint 83** (CL-0083): *"NEVER add `loading="lazy"` to an image inside a moving-or-draggable interactive … the image can arrive late, mid-animation, or with the wrong measured size, disrupting positioning, animation and hit-detection … Every other image keeps `loading="lazy"`."* The KB lists the hosts by class: `.rotateBanner/.bannerContainer/.bannerItem`, `.carousel`, `.dragAndDrop` (`.drag/.drop/.ddContainer/.ddColumn`), `.clickDrop/.clickDropContent`, `.flipCard` (`.front/.back/.flipImage`), `.memoryGame` (`.memCard/.cardHidden`), `.canvasContainer`.
+- **Claude before, XMES101 2D:** `<div class="clickDropContent"><p>…</p><img class="img-fluid" loading="lazy" src="…" alt="…" />` — round 240's `MediaBuilder.FinishImg` injects the attribute into every image it finishes and cannot know the host.
+- **Claude after:** `<img class="img-fluid" src="…" alt="…" />` inside the panel; the same image outside a host is untouched.
+- **The gold agrees with the KB inside the hosts:** 11,730 host-internal images without the attribute vs 3,574 with (**76.6%**, above the r182 solidify floor); outside the hosts the gold is era-mixed (4,369 lazy : 10,731 not) and round 240's forward rule stands.
+
+### 3. THE MEASUREMENT (`outputs/_measure_r318_lazyhosts.py` → `_r318_lazyhosts.json`; a void-aware depth walk over every page on both sides — an image is "inside a host" when any open ancestor carries a host class)
+
+- Claude: **2,424 lazy images inside hosts on 228 pages / 146 modules** — carousel 1000, flipCard front 1040 + back 74, clickDropContent 182, bannerItem 86, clickDrop 42; by template Standard 1846, Fundamentals 472, Inquiry 106, Bilingual 0. Outside hosts: 9,183 lazy (kept), 197 not.
+- Host family (§0a — every module whose pages carry any host class): **303 modules**, 73% of the corpus → full ship.
+
+### 4. THE FIX (engine general, shape in data)
+
+- **Data** `Emit_Templates.json` → `formatter.lazy_free_hosts` `{ enabled, env: "LAZYHOST_OFF", attribute: 'loading="lazy"', host_classes: [the KB's 19] }`.
+- **`HtmlFormatter.#lazyFreeHosts(html)`** — a whole-document pass run in `Indent` before the per-line passes: a void-aware tag walk keeps an open-element stack (each entry notes whether the element carries a host class), a close tag pops to its match, and any `<img>` met while a host is open loses the attribute — real images, `placehold.co` placeholders and the Mode-P commented real reference alike. `.clickDropContent` is the click-drop panel's SIBLING, so it is listed in its own right; the inner names (`drag`, `front`, …) sit inside their outer hosts anyway. One choke point (`PageAssembler` → `Indent`).
+- **Unit test** `outputs/_r318_unit.cjs` drives the REAL `Indent` on 9 containment cases (outside keeps; carousel loses, the next sibling keeps; front + back; the sibling panel; an accordion is not a host; a `dragImage`; the commented reference; after the host closes; memory game + sketcher) — ON all pass, OFF every image keeps it.
+- **Env toggle `LAZYHOST_OFF`** reverts to the round-317 form byte-for-byte. Splice `outputs/_r318_splice.py` (anchored, idempotent — proven by a second run).
+
+### 5. THE REGENERATION AND THE PROOF
+
+- FULL: 416 dirs / 36 batches (~15 min WSL), `_stalecheck.sh` **0 stale**; `_content_manifest.py diff` → **228 pages / 146 modules changed, 0 added / 0 removed — exactly the measured population.**
+- **The round's own verifier (the same walk, post-regeneration): 0 lazy images inside a host corpus-wide** (2,612 host-internal images, all without); outside hosts still 9,183 lazy / 197 not — untouched.
+- **Toggle-OFF invariant:** 12 in-memory canaries — OFF == disk on 59/59 pages, ON changes 10 pages and **every differing line is an `<img>` losing exactly ` loading="lazy"`** (0 other lines); every-5th-module OFF re-conversion **387/387 pages hash to the pre-round manifest**.
+
+### 6. PROTECTED GATES — every one EXACT (fresh full runs, `outputs/_r318_gates.log`; `_r318_sk_final.json`)
+
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.322% / ≥50% 1028 / ≥75% 192 / ≥90% 15 / skipped 0 @ 1954; RAW 34.724% — page-for-page IDENTICAL to round 317 (0 moved / 0 added / 0 dropped)**, as predicted (`loading` is not a KEEP_ATTR).
+- Structurally clean **2056/2102 = 97.81%** / leak **288 occ / 46 pages** · compare_structure exact **11355** / EXTRA **186** / missing **591** · body_compare **192** · tags **9557/9557, REAL FAILURES 0** · flipCard gate set **TOTAL 61, divergence 0 ✓** · speechBubble gate set TOTAL 62 / defect 4 · modal gate set defect 0 · entry-parity **PASS** · index-sync **33/28** · skeleton `--selftest` PASS · pairs skipped **0**.
+- **Widget verifiers over 20 affected modules, ON vs `LAZYHOST_OFF=1`: all ten line-for-line IDENTICAL** (flipCard 115 cards divergence 0 — its Mode-P template read of the attribute is unaffected; carousel 33 built; clickDrop 23 items defect 0; …); **all TWELVE widget selftests GREEN.**
+- **Ceiling:** SCAFFOLD 50.322% = 54.9% of achievable (unchanged; 55.0% net of the round-317 override).
+- Ledger: **FULL ship, counter reset to 0**. Content manifest, fast-loop baseline, feature index and `gate_baseline.json` refreshed.
+
+### 7. NOTED
+
+- The plateau guard: rounds 315 and 318 are gate-neutral by design (the KB's output-quality rules); rounds 314, 316 and 317 moved the skeleton. Round 6 may take one more gate-neutral KB row (c89 `learningSupport`); after that a gate-moving class is due.
+
+**Ledger:** full ship · data `formatter.lazy_free_hosts` · env `LAZYHOST_OFF` · tools `outputs/_measure_r318_lazyhosts.py`, `_r318_splice.py`, `_r318_unit.cjs` · state `outputs/_r318_sk_final.json` · logs `_r318_gates.log`, `_r318_sk_full.log`, `_r318_verify_ON/OFF.log`, `_r318_selftests.log`, `_r318_fastloop_snapshot.log` · `KB_AMALGAMATION_STATUS.md` row 83 → CAPTURED-LIVE.
+
 ## 2026-09-15 (round 317, build 260618.88) — THE ACKNOWLEDGEMENTS BLOCK'S TEMPLATE FORM: KB constraints 45 + 90 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 4; **FULL CORPUS REGENERATION under the loop's standing mandate — acks is corpus-wide by construction; ledger reset to 0. A NAMED KB-OVER-GOLD OVERRIDE: the skeleton dips −0.024pp on exactly the 387 named pages (each matching its pre-computed delta) and is IDENTICAL net of them; every other gate EXACT — judged per `Subject_Global_Parameters._meta.gold_override_policy` (b), read §5**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

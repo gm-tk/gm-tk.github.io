@@ -4983,6 +4983,21 @@
 	},
 	"formatter": {
 		"_comment": "ROUND 243 (Dev-Feedback R6, E4): block-level line breaking. The emitters glue structural runs onto one line (<div class=\"activity\"...><div class=\"row\"><div class=\"col-12\">, <tr><td>...</td><td>...</td></tr>); the human gold breaks every mixed div/table-structural glued boundary onto its own line (measured broken-share 0.88-1.00, _measure_r243_linebreaks.py) and keeps ONLY the empty-element one-liners glued (<div></div> 0.018 broken, <td></td> 0.010, <th></th> 0.000). HtmlFormatter.Indent splits a zero-whitespace >< boundary when BOTH tags are in `tags`, EXCEPT an open tag immediately followed by its own close (the empty-element exception). Whitespace-only between tags, never inside a text node - semantically byte-inert; every protected gate parses via html.parser + \\s+ normalisation. Env LINEBREAK_OFF reverts to the glued round-242 form.",
+		"lazy_free_hosts": {
+			"enabled": true,
+			"env": "LAZYHOST_OFF",
+			"attribute": "loading=\"lazy\"",
+			"host_classes": [
+				"rotateBanner", "bannerContainer", "bannerItem",
+				"carousel",
+				"dragAndDrop", "drag", "drop", "ddContainer", "ddColumn",
+				"clickDrop", "clickDropContent",
+				"flipCard", "front", "back", "flipImage",
+				"memoryGame", "memCard", "cardHidden",
+				"canvasContainer"
+			],
+			"_round318_note": "ROUND 318 (the autonomous loop's Round 5, 2026-09-15 \u2014 KB constraint 83 / CL-0083: NEVER add loading=\"lazy\" to an image inside a moving-or-draggable interactive \u2014 lazy loading defers the image until the browser judges it near the viewport, which breaks any interactive whose images move; the KB names the rotating banner, carousel, drag and drop, click drop (incl. .clickDropContent), flip card, memory game and sketcher, in both image modes, real images and placehold.co placeholders alike; every OTHER image keeps the attribute). Round 240's MediaBuilder.FinishImg adds the attribute to every image it builds and cannot know its host, so the rule lives here as a whole-document pass in HtmlFormatter.Indent, run before the line walk: a void-aware tag walk keeps an open-element stack and strips `attribute` from any <img> whose open ancestor carries one of host_classes (the KB's own list; the inner names \u2014 drag, drop, front, back, item-level classes \u2014 sit inside their outer hosts anyway, and .clickDropContent is the click-drop panel's SIBLING, so it is listed in its own right). MEASURED (outputs/_measure_r318_lazyhosts.py, the same walk on every page): Claude 2424 lazy images inside hosts on 228 pages / 146 modules (carousel 1000, flipCard 1114, clickDrop 224, banner 86); the gold AGREES with the KB inside hosts \u2014 11730 images without the attribute vs 3574 with (76.6%) \u2014 and is era-mixed outside them, where the r240 forward rule stands. Gate-neutral (`loading` is not a KEEP_ATTR). Env toggle LAZYHOST_OFF reverts to the round-317 form byte-for-byte."
+		},
 		"xhtml_voids": {
 			"enabled": true,
 			"env": "XHTMLVOID_OFF",
