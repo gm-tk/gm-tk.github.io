@@ -4,7 +4,28 @@
 **Session 2 started:** 2026-09-14 (Claude Code, same machine). Budget: 12 rounds or 10 hours. Resumed Round 1 (engine r314) from session 1's recipe (tree PASS, HEAD 763e036) and shipped it.
 **Authority carried by the kickoff message:** `REGENERATE CORPUS` for every round, scoped by CLAUDE.md §0a/§0b.
 
-## Session 2 — IN PROGRESS (started 2026-09-14 23:21 NZST; hard stop 09:21 NZST 2026-09-15 or 12 rounds)
+## >>> STOPPED 2026-09-15 ≈04:40 NZST on the loop's own PLATEAU rule (§4) after Round 7 — 7 rounds shipped, 1 declined, 0 blocked <<<
+- **Why:** three consecutive shipped rounds — r318 (0.000pp), r319 (0.000pp), r320 (+0.003pp) — each moved the skeleton mean by less than
+  0.02pp and moved no other protected gate. The ≥20-page, derivable, gate-MOVING classes are exhausted; what remains needs a human decision
+  (below) or is a multi-round interactive build (the coverage dashboard's levers).
+- **Everything is committed** (pageforge-site, 8 commits this session: 314–320 + the Round-1 stop record); nothing pushed. `git status` clean.
+- **DECISIONS FOR CHRIS (each unblocks a round):**
+  1. **c47 exact-duplicate heading drop** — the KB says drop a lesson-page body heading that equals the header title; the gold keeps it 57:43
+     (and 111 gold pages keep one). Apply the KB regardless (a ~21-page named dip, ~14 pages gain) or leave the gold's way? Recommendation: apply
+     only AFTER the TRR title-source fix (below), because 41 of the 70 hits are pages whose title is wrong.
+  2. **The TRR / MTK title source** — TRR108/114/203/304 ship `Finished!` (and other stray `[H1]`s) as the lesson title, and TRR overview pages
+     ship NO title spans; the constraint-79 source order for the MTK docx pathway needs designing against the 07 skeletons. Gate-neutral by
+     itself (text only) but it unblocks decision 1 and the c79 remainder (141 module-title fallbacks). Recommendation: yes, one round.
+  3. **c65 / CL-0082 MTK quiz-content omission** — 56 Claude shells still carry quiz content the KB says to omit silently; skeleton-visible
+     as an override (the gold keeps the content on 157 of 199 shells). Recommendation: apply — it is a locked ledger decision like c90.
+  4. **The Standard-template lesson-pair ORDER** (r316): English-first 4 : as-written 2 (n = 6) — leave as written, or follow the reoTranslate
+     rule everywhere? Recommendation: leave until the population grows.
+  5. **Interactive-build rounds** — the coverage dashboard's remaining levers are unbuilt widget types (each a multi-round build with its own
+     verifier). Recommendation: a separate kickoff per type, not this loop.
+- **Follow-ups that need no decision** (small, recorded): `anchor_compare.wt_items` first-file read; the speechBubble verifier's 300 s wall
+  on MXFL301; the 13 TRR modules with an unparsed Writers Template docx (Round-0 ceiling gap).
+
+## Session 2 — (started 2026-09-14 23:21 NZST; stopped ≈04:40 after 7 rounds; the power cut during Round 3 cost ~15 min)
 - **Round 1 (engine r314) SHIPPED** (commit f1f4de2) — KB c43, the trailing upload box inside its activity.
 - **Round 2 (engine r315) SHIPPED** (commit 3528986) — KB c28, the XHTML shell, FULL regeneration + the `anchor_compare` pairing-parser repair.
 - **Round 3 (engine r316) SHIPPED 2026-09-15** — KB c79, the lesson's own bilingual title pair (two h1 spans, code stripped, Te Reo first in
@@ -21,14 +42,17 @@
 - **Round 5 (engine r318) SHIPPED** (commit bd2ca1b).
 - **Round 6 (engine r319) SHIPPED 2026-09-15** — KB c89, `learningSupport` on every X-prefixed module's `<html>` (228 pages / 35 modules); scoped
   regeneration, gate-neutral. Commit: see the round log.
-- **Corpus / engine state:** the r319 scoped regeneration on top of the r318 full (228 pages changed, 0 stale); content manifest, fast-loop baseline,
-  feature index, ledger (scoped #1 since the r318 full), gate_baseline.json refreshed; skeleton state `outputs/_r319_sk_final.json` FRESH
-  (== r317 page-for-page). Build 260618.90.
+- **Round 6 (engine r319) SHIPPED** (commit 0827965).
+- **Round 7 (engine r320) SHIPPED 2026-09-15** — the upload box keeps the writer's order around its button (6 pages / 4 modules, a small ship
+  under the floor; the round's first candidate c47/c95 DECLINED on measurement). Commit: see the round log.
+- **Corpus / engine state:** the r320 scoped dropDown-family regeneration on top of r319 (6 pages changed, 0 stale); content manifest, fast-loop
+  baseline, feature index, ledger (scoped #2 since the r318 full), gate_baseline.json refreshed; skeleton state `outputs/_r320_sk_final.json`
+  FRESH. Build 260618.91.
 - **MEASUREMENT RULE FROM ROUND 2 ON:** `reference/tests/anchor_compare.py` is void-aware now. Any comparison across round 315 must use the
   repaired tool on both sides; the r313/r314 skeleton state files were scored with the void-blind pairing (1939 pairs) and are NOT comparable
   page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
-- **If this session is interrupted:** everything describes round 319 as shipped; resume at Round 7 (PICK). **Plateau guard: R5 and R6 were
-  gate-neutral — R7 MUST move a gate** (c47/c95 Lesson-N strip 89 pages, c79's remaining mechanisms, or the dashboard's top gold-matching class).
+- **If a new session starts:** everything describes round 320 as shipped and the loop STOPPED on the plateau rule; do not resume the loop
+  until Chris has answered the decisions above (a new kickoff names the class).
 
 ## Environment (decided 2026-09-14, session 1)
 - **All gate tools, probes and regenerations run in WSL** (`wsl.exe -e bash -lc '...'`, project at
@@ -65,9 +89,10 @@
   `KB_AMALGAMATION_STATUS.md` row 83 → CAPTURED-LIVE, full ship recorded (ledger 0).
 - Round 6 (engine r319, KB c89 — learningSupport on X-prefixed <html>): SHIPPED 2026-09-15. AppVersion 260618.90, CLAUDE.md §11/§14,
   `KB_AMALGAMATION_STATUS.md` row 89 → CAPTURED-LIVE, scoped ship #1 since the r318 full.
-- Round 7: NOT STARTED — MUST be gate-moving. Queue (§D, KB rows first): c47/c95 Lesson-N body-heading strip (89 pages, skeleton-visible), c79's
-  remaining source-order/fallback mechanisms (141 fallback pages — size per mechanism), c65 quiz omission (56, skeleton-visible override), c55 full
-  stops (420 buttons, neutral), stickyNav, c67 (27 pages); then the dashboard's top gold-matching class.
+- Round 7 (engine r320 — the upload box's release order; c47/c95 measured and DECLINED): SHIPPED 2026-09-15. AppVersion 260618.91, CLAUDE.md
+  §11/§14, scoped ship #2 since the r318 full. **LOOP STOPPED (plateau).**
+- Remaining KB queue (§D): c65 quiz omission (56 shells — decision 3), c55 full stops (420 buttons, gate-neutral), stickyNav (33 modules,
+  gate-neutral), c67 overflowYScroll (27 pages), c79's remaining mechanisms (decision 2), c47 (decision 1).
 
 ## The ceiling (Round 0 result — quote it in every report)
 - Paired population 1880 pairs = the gate's 1939 minus 59 unmeasurable (13 TRR modules with a Media-List-only
@@ -246,6 +271,36 @@
   re-conversion 228/228 = manifest; canaries change only the <html> line, non-X byte-identical.
 - **Gates:** every gate EXACT; skeleton page-for-page identical; decomposition PASS; 12 selftests GREEN.
 
+## Round 7 PICK (engine r320) — written before any code, 2026-09-15 03:50 NZST
+- **Class:** the round-308 upload box releases the writer's captured text AFTER the button (button, To Do note, then the text), even when the
+  writer typed that text BEFORE the dropbox marker ("3. Upload some pictures … here. [insert dropbox link]" → gold `<li>Upload some pictures…</li>`
+  then the button). The gold keeps the button as the activity box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%) boxes, and
+  KB constraint 43 speaks of an activity that ENDS in the dropbox button. Gate-moving (the skeleton is order-sensitive).
+- **Authority (§1b):** 3 = the gold (87% / 97%, above the floor; the writer's own order is the discriminator) with 1 = KB c43's wording; the r0b
+  "dropbox terminates its activity" follow-up, narrowed to the part the bundle itself controls. The c47/c95 heading class was DECLINED first (above).
+- **Triangulated:** XTAS101 1G (WT `3. Upload some pictures … here.[insert dropbox link] photo/video` → gold `<li>Upload some pictures…</li></ol>` +
+  button → Claude button + note + `<ol><li>Upload some pictures…</li></ol>`); XDLS901_4_0 (WT marker THEN `Ka pai! You can now arrange…` → gold
+  button then the text → Claude the same: text AFTER the marker stays after the button — the split is by the writer's order, not a blanket flip);
+  CEDW501_6_0 (WT text then marker → gold text then button).
+- **MEASURED (current corpus, `outputs/_r320_dbxlast_rows.json` + the signature count):** 49 upload boxes on 46 pages / 35 modules ship released
+  content directly after the button (48 `<p>`, 1 `<ol>`); 37 activity boxes on 35 pages / 27 modules carry content after their dropbox button
+  (gold convention: last child 87% / 97%). The scanner keeps memberItems in document order (backward absorptions `unshift`), so "before the
+  opener" is exact.
+- **Mechanism (planned):** data `interactive_builders.dropDown.upload_box.release_split` {enabled, env DBXORDER_OFF}; `#ddUploadBoxScan` returns
+  rawBefore / rawAfter (members before the opener vs the opener's trailing text + later members); `#ddUploadBox` emits [before…, button, note,
+  after…]; the leak guard still sees all released content; `UploadBoxCandidate` unchanged. Scoped regeneration: the affected modules + the §0b
+  dropDown family (the r314 set, 212 modules).
+- **Gate expectation:** skeleton ≥ hold (the reorder matches the gold's form where the text precedes the marker); every other gate EXACT; the
+  dropDown verifier over the whole family defect 0.
+
+## Round 7 (engine r320) — what shipped
+- **Fix:** `interactive_builders.dropDown.upload_box.release_split` {enabled, env DBXORDER_OFF}; `#ddUploadBoxScan` counts released items before the LAST
+  dropbox bracket member; `#ddUploadBox` emits [before…, button, note, after…]. Splice `_r320_splice.py`; member dump `_r320_memberdump.cjs`.
+- **Regeneration:** the 212-module dropDown family (192 real) / 17 batches; 0 stale; 6 pages / 4 modules changed (ENGI400, XTAS101/102/103), 208
+  working-half modules byte-identical; OFF re-conversion 22/22 = manifest; dropDown verifier 252 groups / 184 units defect 0.
+- **Gates:** skeleton 50.322 → 50.325 (+0.003pp; XTAS102_0_0 +4.65, XTAS101_0_0 +1.29, ENGI400_3_0 +0.30), buckets EXACT; every other gate EXACT.
+- **Measured and kept as is:** the gold keeps the button BEFORE after-marker text 16 : 3 (84%), so round 308's order for that case stands.
+
 ## Follow-up candidates surfaced by Round 1 (NOT queued — each needs a PICK + corpus-wide measure per §3)
 - **The dropbox bundle terminates its activity.** Gold: the upload button is the box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%).
   After an r314 hold the box stays open to the next auto-close boundary (XTAS101 1G swallows `[body] Listen and read…` + a carousel before the
@@ -263,7 +318,16 @@
   stickyNav (series convention), c67 overflowYScroll (27 pages).
 
 ## Declined classes
-(none yet)
+- **c47 / CL-0095 — the duplicate body heading on a lesson page (Round 7 candidate, measured 2026-09-15 03:30, `outputs/_measure_r320_dupheading.py`
+  → `_r320_dupheading.json`).** 88 cases / 77 pages where a Claude body heading equals the header title (exact, or after a `Lesson N` / label
+  prefix). (a) The `Lesson N`-PREFIXED opening duplicate: gold drops 11/11 first-heading cases (12 with one later) — a 100% convention, both
+  authorities agree — but only **12 pages**, under the loop's 20-page floor. (b) The EXACT duplicate: 70 cases, but 41 of them only match because
+  Claude's TITLE is wrong (TRR108/114/203/304 `Finished!` — the MTK title-source defect, a c79 sub-mechanism); among the 14 first-heading cases
+  where both sides carry the same title the gold drops 8 (57%) and keeps 6 (XDLS903 `Poi`, ENGI101 `Being Frank`, ENGJ101, MXEO202, OSSM301 …);
+  corpus-wide the gold KEEPS an exact duplicate on 111 lesson pages. Share 0.57 < 0.60 and a signature that misfires on wrong titles → DECLINED
+  under §2/§3 (the r182 solidify rule). c47 is pre-ledger documentation, not a locked admin decision, so the KB-over-gold override was not
+  invoked for a 21-page dip. Re-open (a) as part of a later heading round once the TRR title-source class lands, or if Chris says the KB's
+  universal wording should be applied regardless of the gold (then: strip + drop the opening duplicate on lesson pages, strip-only on the overview).
 
 ## Blocked classes
 (none yet)
@@ -277,3 +341,4 @@
 - r4 (engine r317) · KB constraints 45 + 90, the acks block's template form (acksTemplate wrapper, statements generated not typed) · SHIPPED 2026-09-15 · FULL regeneration, 394 pages · NAMED KB-over-gold override: scaffold 50.345→50.322 (−0.024, all on the 387 named pages; identical net of them), RAW-scope +0.062, every other gate EXACT · 54.9% of achievable (55.0% net) · commit (see git log)
 - r5 (engine r318) · KB constraint 83, no loading="lazy" inside moving interactives · SHIPPED 2026-09-15 · FULL regeneration, 228 pages / 146 modules (2424 images) · gate-neutral, skeleton page-for-page identical, every gate EXACT · 54.9% of achievable · commit (see git log)
 - r6 (engine r319) · KB constraint 89, learningSupport on every X-prefixed module's <html> · SHIPPED 2026-09-15 · scoped regeneration, 228 pages / 35 modules · gate-neutral, every gate EXACT · 54.9% of achievable · commit (see git log)
+- r7 (engine r320) · the upload box keeps the writer's order around its button (text before the last marker → before the button) · SHIPPED 2026-09-15 (a small ship: 6 pages / 4 modules) · scaffold 50.322→50.325 (+0.003) · every other gate EXACT · c47/c95 DECLINED on measurement · 54.9% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r318 0.000, r319 0.000, r320 +0.003)**

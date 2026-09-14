@@ -1,5 +1,39 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 320, build 260618.91) — THE UPLOAD BOX KEEPS THE WRITER'S ORDER AROUND ITS BUTTON (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 7; **SCOPED REGENERATION of the 212-module dropDown family (§0b) under the loop's standing mandate; every protected gate HELD-or-IMPROVED; scoped ship #2 since the round-318 full. A SMALL SHIP — 6 pages / 4 modules, under the loop's 20-page floor, shipped because the fix was already built and proven and is right; the round's larger candidate (constraint 47/95) was DECLINED on measurement, see §4. THE LOOP STOPS AFTER THIS ROUND ON THE PLATEAU RULE — see §6.**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**When a round-308 upload box has captured writer text that sits BEFORE its last dropbox marker (a same-type merge of two markers with a list item between them — XTAS101 1G's "3. Upload some pictures … here." followed by the second marker), that text now renders before the button instead of after it; text the writer typed after the marker still follows the button, which is what the gold does 16 : 3 where comparable.**
+
+### 2. THE EVIDENCE (WT → human → Claude)
+
+- **XTAS101 1G** — WT `2. Some of your special interest things … [insert dropbox link] microphone` … `3. Upload some pictures and/or videos … here.[insert dropbox link] photo/video` → the scanner merges the two markers into ONE bundle (the r242/r279 same-type merge: one button) with the list item captured BETWEEN them → gold `<li>Upload some pictures…</li></ol>` then the button → Claude before: button, To Do note, `<ol><li>Upload some pictures…</li></ol>`; after: the list item, then the button + note.
+- **XDLS901_4_0** — WT marker then `Ka pai! You can now arrange an online meet…` → gold button then the text → Claude unchanged (the text follows the marker).
+- **The gold**: the dropbox button is the activity box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%) boxes; where the writer put text after the marker the gold keeps the button before that text 16 : 3 (84%) — so the rule is the writer's order around the LAST marker, not a blanket "button last".
+
+### 3. THE MEASUREMENT
+
+- 49 upload boxes on 46 pages / 35 modules ship released text after the button; 37 activity boxes on 35 pages carry content after their dropbox button — **every one the round-308 "text after the marker" form**, which the gold keeps 84% of the time. Text captured BEFORE the last marker — the only part that moves — exists on **6 pages / 4 modules** (ENGI400, XTAS101, XTAS102, XTAS103), found by rebuilding the whole dropDown family. The other 208 family modules rebuilt byte-identical.
+- The first draft split at the OPENER and moved nothing (the merged bundle's text sits between its two markers); the in-memory member dump (`outputs/_r320_memberdump.cjs`) showed the shape and the split moved to the LAST bracket member.
+
+### 4. THE ROUND'S FIRST CANDIDATE, DECLINED: KB constraint 47 / CL-0095 (`outputs/_measure_r320_dupheading.py` → `_r320_dupheading.json`)
+
+88 cases on 77 pages where a Claude body heading equals the header title. (a) The `Lesson N`-prefixed opening duplicate — gold drops 11/11 first-heading cases (12 with one later), a 100% convention, both authorities agree — is only **12 pages**, under the 20-page floor. (b) The exact duplicate: of 70 cases, 41 match only because Claude's TITLE is wrong (TRR108/114/203/304 ship `Finished!` as the lesson title — the MTK title-source defect, a constraint-79 sub-mechanism); among the 14 first-heading cases where both sides carry the same title the gold drops 8 (57%) and keeps 6 (XDLS903 `Poi`, ENGI101 `Being Frank`, ENGJ101 `When a dragon moves in`, MXEO202, OSSM301); corpus-wide the gold keeps an exact duplicate on 111 lesson pages. Share 0.57 < 0.60 with a signature that misfires on wrong titles → DECLINED under the r182 rule; constraint 47 is pre-ledger documentation, not a locked admin decision, so the KB-over-gold override was not invoked for a 21-page dip. Recorded in `LOOP_STATE.md` → Declined classes with the re-open conditions.
+
+### 5. THE FIX, THE PROOF, THE GATES
+
+- **Data** `interactive_builders.dropDown.upload_box.release_split` `{ enabled, env: "DBXORDER_OFF" }`. **`InteractiveBuilder.#ddUploadBoxScan`** counts the released items pushed before each dropbox bracket member (`nBefore = raw.length` at the LAST one; `memberItems` is document order — the scanner's backward absorptions `unshift`); **`#ddUploadBox`** emits `[before…, button, note, after…]`; the leak guard still sees every released item; `UploadBoxCandidate` unchanged. Env `DBXORDER_OFF` reverts to the round-308 order byte-for-byte. Splice `outputs/_r320_splice.py` (its history recorded in its docstring; the first data block's superseded wording was found duplicated by the re-run and removed).
+- **Regeneration:** the 212-module dropDown family (192 with a Claude dir) in 17 batches; `_content_manifest.py fresh` **0 truly stale**; diff **6 pages / 4 modules changed, 0 added / 0 removed**; the 4 modules re-converted OFF hash to the pre-round manifest **22/22**; dropDown verifier over the family **252 groups / 184 units, defect 0 ✓**.
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.322% → 50.325% (+0.003pp) / ≥50% 1028 / ≥75% 192 / ≥90% 15 / skipped 0 @ 1954; RAW 34.724% EXACT** — 5 pages moved (XTAS102_0_0 +4.65, XTAS101_0_0 +1.29, ENGI400_3_0 +0.30, XTAS101_1_0 RAW +0.58, XTAS103_0_0 RAW −1.25 / scaffold 0.00), 0 added / dropped; decomposition PASS. Every other gate EXACT: clean **2056/2102** / leak **288/46** · cs exact **11355** / EXTRA **186** / missing **591** · body **192** · tags **9557/9557** · flipCard TOTAL 61 divergence 0 · entry-parity PASS · index-sync 33/28 · pairs skipped 0.
+- **Ceiling:** 54.9% of achievable. Ledger: scoped ship #2 since the round-318 full.
+
+### 6. THE LOOP STOPS HERE — the plateau rule (`LOOP__Autonomous_Rounds.md` §4)
+
+Three consecutive shipped rounds — 318 (0.000pp), 319 (0.000pp), 320 (+0.003pp) — each moved the skeleton mean by less than 0.02pp and moved no other protected gate. The derivable, ≥20-page, gate-moving classes are exhausted at this point: the KB queue's remaining rows are gate-neutral (c55 full stops, stickyNav, c67) or need a human decision (c47's exact-duplicate drop against a 57:43 gold, c65's 56-shell quiz-content omission — a skeleton-visible override, the TRR title-source class behind the `Finished!` titles); the dashboard's remaining levers are unbuilt interactive types, each a multi-round build. The session report names the decisions.
+
+**Ledger:** scoped ship #2 · data `upload_box.release_split` · env `DBXORDER_OFF` · tools `outputs/_r320_splice.py`, `_r320_memberdump.cjs`, `_measure_r320_dupheading.py` (the declined candidate's probe) · state `outputs/_r320_sk_final.json` · logs `_r320_gates.log`, `_r320_sk_full.log`, `_r320_fastloop.log`.
+
 ## 2026-09-15 (round 319, build 260618.90) — `learningSupport` ON EVERY X-PREFIXED MODULE'S `<html>`: KB constraint 89 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 6; **SCOPED REGENERATION under the loop's standing mandate — the 35 X-prefixed modules; every protected gate EXACT and the skeleton page-for-page identical — gate-neutral; scoped ship #1 since the round-318 full**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

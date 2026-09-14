@@ -10499,6 +10499,12 @@ class InteractiveBuilder {
 		const textTags = new Set(cfg.text_member_tags ?? ["body"]);
 		const spec = [];       // the writer's own designer-facing words → ONE To Do note
 		const raw = [];        // captured learner text, in the writer's own order (unrendered)
+		// ROUND 320: the split point — the button stands where the writer's LAST dropbox
+		// marker stood (a same-type merge holds two brackets and ONE button, the r242/r279
+		// rule), so text captured before that marker (memberItems is document order —
+		// the scanner's backward absorptions unshift) renders before the button and the
+		// marker's own trailing text and later members after it.
+		let nBefore = 0;
 		const push = (t) => { const s = String(t ?? "").trim(); if (s) raw.push(s); };
 		for (const m of bundle.memberItems ?? []) {
 			if (!m) continue;
@@ -10513,13 +10519,14 @@ class InteractiveBuilder {
 				if (allow.test(own) && !deny.test(own)) return null;
 				const w = own.replace(/\s+/g, " ").trim();
 				if (w) spec.push(w);                              // every bracket's words reach the note
+				nBefore = raw.length;                             // ROUND 320: text so far precedes this marker
 			} else if (!prim) {
 				const w = String(m.text ?? "").replace(/\s+/g, " ").trim();
 				if (w) spec.push(w);
 			}
 			push(m.blackAfter);
 		}
-		return { opener, spec, raw };
+		return { opener, spec, raw, nBefore };
 	}
 
 	/** ROUND 314 — would round 308 build this bundle's Upload-to-dropbox button?
@@ -10577,6 +10584,13 @@ class InteractiveBuilder {
 			Utils.FillTemplate(cfg.todo_note, { spec: spec.join(" · ") || "(bare [dropbox] marker)" }),
 			run, "todo");
 		bundle.r308UploadBox = true;                              // detector / affected-set marker
+		// ROUND 320 — the writer's order around the button: text captured before the
+		// marker renders before it, text after the marker after it (gold: the button is
+		// the box's last child 87% / 97%). Data upload_box.release_split; env DBXORDER_OFF.
+		const rs = cfg.release_split;
+		const rsOn = !!rs && rs.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[rs.env ?? "DBXORDER_OFF"]);
+		if (rsOn && scan.nBefore > 0) return [...content.slice(0, scan.nBefore), btn, note, ...content.slice(scan.nBefore)].join("\n");
 		return [btn, note, ...content].join("\n");
 	}
 

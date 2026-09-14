@@ -1571,7 +1571,15 @@ class Config {
 	// html_open tag's class list (X -> learningSupport; a CSS hook, no font CSS).
 	// 228 pages / 35 modules; gate-neutral, skeleton page-for-page identical.
 	// Scoped regeneration of the 35. Env HTMLCOHORT_OFF; data skeleton.html_class_cohorts.
-	static AppVersion = "260618.90";
+	// ROUND 320 (260618.91): THE UPLOAD BOX KEEPS THE WRITER'S ORDER AROUND ITS BUTTON
+	// (the autonomous loop's Round 7). Released text captured BEFORE the bundle's
+	// LAST dropbox bracket (a same-type merge: two brackets, one button) renders
+	// before the button; text after the marker still follows it (gold 16:3). A
+	// small ship -- 6 pages / 4 modules, under the loop's floor; the round's first
+	// candidate (constraint 47/95) was declined on measurement. Env DBXORDER_OFF;
+	// data interactive_builders.dropDown.upload_box.release_split. THE LOOP STOPS
+	// AFTER THIS ROUND ON THE PLATEAU RULE (three rounds under 0.02pp).
+	static AppVersion = "260618.91";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
