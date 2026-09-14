@@ -51,8 +51,9 @@
 - **MEASUREMENT RULE FROM ROUND 2 ON:** `reference/tests/anchor_compare.py` is void-aware now. Any comparison across round 315 must use the
   repaired tool on both sides; the r313/r314 skeleton state files were scored with the void-blind pairing (1939 pairs) and are NOT comparable
   page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
-- **If a new session starts:** everything describes round 320 as shipped and the loop STOPPED on the plateau rule; do not resume the loop
-  until Chris has answered the decisions above (a new kickoff names the class).
+- **RESUMED 2026-09-15 07:48 NZST on Chris's instruction: "Yes to 2 and 3 — start with the TRR title source."** Round 8 = decision 2 (the TRR / MTK
+  lesson title source, engine r321), Round 9 = decision 3 (c65 / CL-0082 MTK quiz-content omission, engine r322). Decisions 1, 4, 5 stay open.
+  Budget unchanged: 12 rounds / 10 h from the session start (7 shipped; ≈1.5 h left, hard stop 09:21 NZST).
 
 ## Environment (decided 2026-09-14, session 1)
 - **All gate tools, probes and regenerations run in WSL** (`wsl.exe -e bash -lc '...'`, project at
@@ -91,8 +92,9 @@
   `KB_AMALGAMATION_STATUS.md` row 89 → CAPTURED-LIVE, scoped ship #1 since the r318 full.
 - Round 7 (engine r320 — the upload box's release order; c47/c95 measured and DECLINED): SHIPPED 2026-09-15. AppVersion 260618.91, CLAUDE.md
   §11/§14, scoped ship #2 since the r318 full. **LOOP STOPPED (plateau).**
-- Remaining KB queue (§D): c65 quiz omission (56 shells — decision 3), c55 full stops (420 buttons, gate-neutral), stickyNav (33 modules,
-  gate-neutral), c67 overflowYScroll (27 pages), c79's remaining mechanisms (decision 2), c47 (decision 1).
+- Round 8 (engine r321 — the MTK title source, decision 2): SHIPPED 2026-09-15 08:2x. AppVersion 260618.92, CLAUDE.md §9/§11/§14, scoped ship #3.
+- Remaining KB queue (§D): c65 quiz omission (56 shells — decision 3, NEXT), c55 full stops (420 buttons, gate-neutral), stickyNav (33 modules,
+  gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
 ## The ceiling (Round 0 result — quote it in every report)
 - Paired population 1880 pairs = the gate's 1939 minus 59 unmeasurable (13 TRR modules with a Media-List-only
@@ -301,6 +303,36 @@
 - **Gates:** skeleton 50.322 → 50.325 (+0.003pp; XTAS102_0_0 +4.65, XTAS101_0_0 +1.29, ENGI400_3_0 +0.30), buckets EXACT; every other gate EXACT.
 - **Measured and kept as is:** the gold keeps the button BEFORE after-marker text 16 : 3 (84%), so round 308's order for that case stands.
 
+## Round 8 PICK (engine r321) — Chris's decision 2, written before any code, 2026-09-15 08:10 NZST
+- **Class:** the MTK (Te Reo Rangatira, `reoTranslate`) title source. Claude ships NO title on 13 TRR overview pages, a stray body heading
+  (`Finished!`, `Karakia Whakakapi`) as the lesson title on ~10 pages, and a single title where the gold has the pair on PNR102/104 lessons.
+- **Authority (§1b):** 1 = `07A` "Sections to EXTRACT" (the metadata table → module code + title; the `[TITLE BAR]` row; the per-page
+  `[H1] TRR1XX … | …` repetition), `07C/07D` rule 7 (titles Māori first, English second on every page; lesson page = the lesson's own title else
+  the module titles), constraint 79; 3 = gold (TRR overviews all carry the pair Māori-first; lessons repeat the module pair where no own title).
+- **Triangulated:** TRR108 (docx Module Code cell `TRR108: Ngā Orokati Tuarua – Final Consonants`; the `[TITLE BAR]` rows EMPTY → gold
+  `Ngā Orokati Tuarua` / `Final Consonants` on every page → Claude overview no title, lesson 1 `Finished!`, lesson 2 `Karakia Whakakapi`);
+  TRR102 (cell `TRR102 – Ngā Oropuare Aa`, every lesson opens `[H1] TRR102 The vowels: Aa | Ngā Oropuare: Aa` → gold the pair Māori-first on
+  all 6 pages → Claude overview empty, lessons right since r316); PNR102 (metadata Module Name `Nga tau: 2 | Numbers: 2` → gold the pair on
+  every page → Claude lessons `Nga tau: 2` only — the registry h1_count cap).
+- **Measured:** 19 Bilingual-template modules with a Claude dir (16 TRR + 3 PNR); 13 TRR overviews without a title; 7 stray-heading lesson
+  titles (TRR107 ×2, TRR108, TRR114 ×2, TRR203, TRR304) + 2 `Karakia Whakakapi`; PNR102/104 4 single-title lessons. Gate-visible (h1 count).
+- **Mechanism (planned), one data block `header.mtk_titles` {enabled, env MTKTITLES_OFF, body_class "reoTranslate"}:** (A) DocxExtractor captures the
+  Module Code cell's remainder as `metadata.moduleCodeTitle`; (B) PageAssembler's title fallback (after the r212 Module-Name source): the first
+  `[H1]`/`[Title Bar]` item carrying a `|` anywhere (code stripped), else the cell remainder (pipe / spaced-dash-with-macron / single);
+  (C) the overview emits the Māori-looking title first in reoTranslate modules; (D) a reoTranslate lesson with no own title pushes BOTH module
+  titles (Māori first), exempt from the h1_count cap; (E) PageSplitter's first-heading harvest accepts only `[H1]` in reoTranslate modules.
+  Scoped regeneration: the 19 Bilingual modules (+ a non-reo spot-check, byte-identical by construction).
+
+## Round 8 (engine r321) — what shipped (Chris's decision 2)
+- **Fix:** `header.mtk_titles` {enabled, env MTKTITLES_OFF, body_class reoTranslate, repetition_tags, harvest_heading_tags} + `front_matter_metadata.
+  title_in_code_cell`: five seams (DocxExtractor cell remainder; PageAssembler fallback — [H1]/[Title Bar] repetition with a pipe, else the cell;
+  SkeletonBuilder overview Māori-first; lesson without an own title = both module titles Māori-first, cap-exempt; PageSplitter harvest h1-only).
+  Splice `_r321_splice.py`; title dump `_r321_titledump.cjs`.
+- **Regeneration:** the 19 Bilingual modules / 4 batches; 0 stale; 24 pages / 14 modules changed; OFF re-conversion 57/57 = manifest; 6 non-reo canaries byte-identical.
+- **Gates:** skeleton 50.325 → 50.368 (+0.043pp; 21 up / 2 down, named: TRR114_0_0 −1.01 vs the gold's two EMPTY title lines, TRR203_1_0 −0.38),
+  buckets EXACT; cs exact +5; every other gate EXACT; 12 selftests GREEN. **55.0% of achievable.**
+- **Named residue (the ceiling):** TRR203's English title, TRR304's second line, TRR111/112/113's module-level titles are in no WT; TRR114 gold empty.
+
 ## Follow-up candidates surfaced by Round 1 (NOT queued — each needs a PICK + corpus-wide measure per §3)
 - **The dropbox bundle terminates its activity.** Gold: the upload button is the box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%).
   After an r314 hold the box stays open to the next auto-close boundary (XTAS101 1G swallows `[body] Listen and read…` + a carousel before the
@@ -342,3 +374,4 @@
 - r5 (engine r318) · KB constraint 83, no loading="lazy" inside moving interactives · SHIPPED 2026-09-15 · FULL regeneration, 228 pages / 146 modules (2424 images) · gate-neutral, skeleton page-for-page identical, every gate EXACT · 54.9% of achievable · commit (see git log)
 - r6 (engine r319) · KB constraint 89, learningSupport on every X-prefixed module's <html> · SHIPPED 2026-09-15 · scoped regeneration, 228 pages / 35 modules · gate-neutral, every gate EXACT · 54.9% of achievable · commit (see git log)
 - r7 (engine r320) · the upload box keeps the writer's order around its button (text before the last marker → before the button) · SHIPPED 2026-09-15 (a small ship: 6 pages / 4 modules) · scaffold 50.322→50.325 (+0.003) · every other gate EXACT · c47/c95 DECLINED on measurement · 54.9% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r318 0.000, r319 0.000, r320 +0.003)**
+- r8 (engine r321) · the MTK / Te Reo Rangatira title source (Chris's decision 2) · SHIPPED 2026-09-15 · scoped regeneration, 24 pages / 14 modules · scaffold 50.325→50.368 (+0.043), cs exact +5, every other gate EXACT · 55.0% of achievable · commit (see git log)

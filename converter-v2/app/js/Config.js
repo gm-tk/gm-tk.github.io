@@ -1579,7 +1579,15 @@ class Config {
 	// candidate (constraint 47/95) was declined on measurement. Env DBXORDER_OFF;
 	// data interactive_builders.dropDown.upload_box.release_split. THE LOOP STOPS
 	// AFTER THIS ROUND ON THE PLATEAU RULE (three rounds under 0.02pp).
-	static AppVersion = "260618.91";
+	// ROUND 321 (260618.92): THE MTK / TE REO RANGATIRA TITLE SOURCE (Chris's decision 2;
+	// the autonomous loop's Round 8). A reoTranslate module takes its module title from
+	// the per-page [H1] "CODE English | Maori" repetition, else the title glued into the
+	// Module Code cell (metadata.moduleCodeTitle, DocxExtractor); the overview shows the
+	// Maori title first; a lesson with no own title repeats both module titles, Maori
+	// first, exempt from the h1_count cap; the page-title harvest accepts only [H1] there
+	// (no more "Finished!" titles). 24 pages / 14 modules. Env MTKTITLES_OFF; data
+	// header.mtk_titles + front_matter_metadata.title_in_code_cell.
+	static AppVersion = "260618.92";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

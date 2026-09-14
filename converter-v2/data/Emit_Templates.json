@@ -2438,6 +2438,14 @@
 	"header": {
 		"open": "<div id=\"header\">",
 		"close": "</div>",
+		"mtk_titles": {
+			"enabled": true,
+			"env": "MTKTITLES_OFF",
+			"body_class": "reoTranslate",
+			"repetition_tags": ["h1", "title bar"],
+			"harvest_heading_tags": ["h1"],
+			"_round321_note": "ROUND 321 (the autonomous loop's Round 8, 2026-09-15 \u2014 Chris's decision 2: the MTK / Te Reo Rangatira title source; KB 07A 'Sections to EXTRACT' (the metadata table \u2192 module code + title; the [TITLE BAR] row; the per-page [H1] TRR1XX \u2026 | \u2026 repetition), 07C/07D rule 7 (titles M\u0101ori first, English second on every page; a lesson page carries its own title else the module titles), constraint 79). The TRR1xx docx leaves its [TITLE BAR] rows EMPTY and has no Module Name row: the module title rides in the Module Code cell ('TRR108: Ng\u0101 Orokati Tuarua \u2013 Final Consonants', 'TRR102 \u2013 Ng\u0101 Oropuare Aa') and the English half, where the writer gave one, in the per-page '[H1] TRR102 The vowels: Aa | Ng\u0101 Oropuare: Aa' repetition. Claude shipped NO title on 13 TRR overview pages, a stray body heading (Finished!, Karakia Whakakapi) as 9 lesson titles \u2014 the first-heading harvest has no [Activity] tag to stop at on an MTK page \u2014 and a single title where the gold has the pair on PNR102/104 lessons (the registry h1_count cap). THE RULE, scoped to modules whose resolved body class matches body_class: (A) DocxExtractor keeps the Module Code cell's remainder after the code token as metadata.moduleCodeTitle; (B) when the [TITLE BAR] and Module Name gave no title, PageAssembler takes the first repetition_tags item anywhere in the item stream whose text carries a pipe (code stripped, halves in payload order), else the cell remainder (pipe \u2192 pair; ONE spaced dash with a macron on exactly one side \u2192 pair; else one title); (C) the overview emits the M\u0101ori-looking title (macron, or the M\u0101ori alphabet) first; (D) a lesson page with no own title emits BOTH module titles, M\u0101ori first, exempt from the h1_count cap; (E) the page-title harvest accepts only harvest_heading_tags. Gold: every TRR overview carries the pair M\u0101ori-first; lessons repeat the module pair where the writer gave no lesson title. Env toggle MTKTITLES_OFF reverts all five to the round-320 form byte-for-byte."
+		},
 		"module_code_element": "<div id=\"module-code\">\n<h1>{rendered}</h1>\n</div>",
 		"module_code_value_map": {
 			"full-code": "{code}",

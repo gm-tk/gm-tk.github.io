@@ -360,6 +360,23 @@ class SkeletonBuilder {
 		return tag;
 	}
 
+	/** ROUND 321 — is header.mtk_titles on for this module (a reoTranslate body class)? */
+	static #mtkOn(rules, tpl) {
+		const mtk = tpl.header?.mtk_titles;
+		if (!mtk || mtk.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[mtk.env ?? "MTKTITLES_OFF"]) return false;
+		return new RegExp(mtk.body_class ?? "reoTranslate", "i").test(String(rules?.body_class || ""));
+	}
+
+	/** ROUND 321 — does a title read as te reo Māori? A macron, or letters only from the
+	 *  Māori alphabet (a e i o u h k m n p r t w g) — the round-153 lone-title guard's test. */
+	static #looksMaori(s) {
+		const t = String(s ?? "");
+		if (/[\u0101\u0113\u012b\u014d\u016b\u0100\u0112\u012a\u014c\u016a]/.test(t)) return true;
+		const letters = t.toLowerCase().replace(/[^a-z]/g, "");
+		return letters.length > 0 && !/[bcdfjlqsvxyz]/.test(letters);
+	}
+
 	/**
 	 * ROUND 316 (loop Round 3 — KB constraint 79, the lesson's own bilingual pair).
 	 * Splits a lesson's OWN title into [first, second] when it carries one of the
@@ -513,6 +530,11 @@ class SkeletonBuilder {
 			// and takes priority over the plain single teReo slot below.
 			if (content.titleBar.teReoLines?.length) titles.push(...content.titleBar.teReoLines);
 			else if (content.titleBar.teReo) titles.push(content.titleBar.teReo);
+			// ROUND 321 (the MTK title source): in a reoTranslate module the overview shows
+			// the Māori title first, English second (07C/07D rule 7) — decided by the text
+			// (a macron, or the Māori alphabet), not by the slot, because the r212 metadata
+			// fallback files the halves in payload order. Data header.mtk_titles; env MTKTITLES_OFF.
+			if (SkeletonBuilder.#mtkOn(rules, tpl) && titles.length === 2 && SkeletonBuilder.#looksMaori(titles[1]) && !SkeletonBuilder.#looksMaori(titles[0])) titles.reverse();
 			// SUBJECT-FAMILY DISPLAY TITLE for an overview page whose [Title] tag was left
 			// completely empty by the writer. When no title could be derived from the
 			// source document at all (titles is still empty at this point) and this is a
@@ -546,7 +568,19 @@ class SkeletonBuilder {
 			// the gold's form on 40/40 measured pages — with the module code stripped and,
 			// in a reoTranslate module, Te Reo first (07D MTK rule 7). See #lessonPair.
 			// Data header.lesson_bilingual_pair; env LESSONPAIR_OFF.
-			const pairTitles = SkeletonBuilder.#lessonPair(page.pageTitle || "", run, rules, tpl.header.lesson_bilingual_pair);
+			let pairTitles = SkeletonBuilder.#lessonPair(page.pageTitle || "", run, rules, tpl.header.lesson_bilingual_pair);
+			// ROUND 321 (the MTK title source): a reoTranslate lesson page with no own title
+			// (none harvested, or one that fold-equals a module title) repeats BOTH module
+			// titles, Māori first (07D rule 7; the gold on every such TRR/PNR lesson), exempt
+			// from the registry h1_count cap. Data header.mtk_titles; env MTKTITLES_OFF.
+			if (!pairTitles && SkeletonBuilder.#mtkOn(rules, tpl) && run.englishTitle && run.teReoTitle) {
+				const own = Utils.Fold(page.pageTitle || "");
+				if (!own || own === Utils.Fold(run.englishTitle) || own === Utils.Fold(run.teReoTitle)) {
+					const pair = [run.englishTitle, run.teReoTitle];
+					if (SkeletonBuilder.#looksMaori(pair[1]) && !SkeletonBuilder.#looksMaori(pair[0])) pair.reverse();
+					pairTitles = pair;
+				}
+			}
 			if (pairTitles) titles.push(...pairTitles);
 			else titles.push(page.pageTitle || run.englishTitle || content.titleBar.english || "");
 			// CL-0042 (ROUND 230 — the OSSC pair, Chris). For the subject code

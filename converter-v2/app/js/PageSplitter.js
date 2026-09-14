@@ -887,7 +887,16 @@ class PageSplitter {
 				const pt2 = it2.parse.primary?.tag;
 				const ht2 = (it2.blackAfter || it2.parse.remainders.join(" ")).replace(/\*/g, "").trim();
 				if (_btaOn && pt2 === "activity" && !/^lesson\s+\d/i.test(ht2)) break;   // stop at 1st activity
-				if (["h1", "h2", "h3", "h4", "h5", "heading"].includes(pt2)
+				// ROUND 321 (the MTK title source): a reoTranslate page has no [Activity] tag to
+				// stop the harvest, so a body [H3] ("Finished!") became the page title; only
+				// the writer's [H1] title repetition may name the page there — else the module
+				// titles (SkeletonBuilder). Data header.mtk_titles.harvest_heading_tags; env MTKTITLES_OFF.
+				const _mtk = DataService?.Data?.EmitTemplates?.header?.mtk_titles;
+				const _mtkOn = _mtk && _mtk.enabled !== false && Array.isArray(_mtk.harvest_heading_tags)
+					&& !(typeof process !== "undefined" && process.env && process.env[_mtk.env ?? "MTKTITLES_OFF"])
+					&& new RegExp(_mtk.body_class ?? "reoTranslate", "i").test(String(run?.resolvedRules?.body_class || ""));
+				const _hTags = _mtkOn ? _mtk.harvest_heading_tags : ["h1", "h2", "h3", "h4", "h5", "heading"];
+				if (_hTags.includes(pt2)
 					&& (it2.blackAfter.trim() || it2.parse.remainders.length)) { firstHeading = it2; break; }
 			}
 			if (!firstHeading) continue;

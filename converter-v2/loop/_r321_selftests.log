@@ -1,0 +1,13 @@
+accordion: SELFTEST _verify_accordion.cjs: GREEN
+carousel: SELFTEST _verify_carousel.cjs: GREEN
+clickdrop: SELFTEST _verify_clickdrop.cjs: GREEN
+dropdown: SELFTEST _verify_dropdown.cjs: GREEN
+flipcard: SELFTEST _verify_flipcard.cjs: GREEN
+hintslider: SELFTEST _verify_hintslider.cjs: GREEN
+image_carousel: SELFTEST _verify_image_carousel.cjs: GREEN
+intextract: SELFTEST _verify_intextract.cjs: GREEN
+mcq: SELFTEST GREEN
+modal: SELFTEST _verify_modal.cjs: GREEN
+speechbubble: SELFTEST _verify_speechbubble.cjs: GREEN
+tabs: SELFTEST _verify_tabs.cjs: GREEN
+skeleton: SELFTEST PASS

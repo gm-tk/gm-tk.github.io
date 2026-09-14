@@ -136,6 +136,11 @@
 		"table_row_fields": [
 			"moduleName"
 		],
+		"title_in_code_cell": {
+			"labels": ["module code"],
+			"field": "moduleCodeTitle",
+			"_round321_note": "ROUND 321: the TRR1xx MTK front-matter table has no Module Name row; the Module Code cell reads 'TRR108: Ng\u0101 Orokati Tuarua \u2013 Final Consonants'. The text after the code token (and an optional colon/dash) is kept as metadata.moduleCodeTitle for PageAssembler's MTK title fallback (header.mtk_titles). The moduleCode field itself is unchanged. Env MTKTITLES_OFF."
+		},
 		"_table_row_fields_note": "ROUND 212: the PNR family's front matter carries its metadata as a TABLE ('Module Name | Nga tau: 1 | Numbers: 1'), not 'Label: value' paragraphs. Only the fields listed here are captured from 2-column table rows (label cell | value cell) — deliberately NOT course/moduleCode, so the Course-is-title-backup path can never start firing on modules it never fired on before. Used as the bilingual title source when the module has no [TITLE BAR] payload (PageAssembler; the value pipe-splits reo|english in payload order). Env REODROPMENU_OFF disables the table capture."
 	},
 	"paragraph": {

@@ -222,6 +222,24 @@ class DocxExtractor {
 				}
 			}
 		}
+		// ROUND 321 (the MTK title source): the TRR1xx table has NO Module Name row — the
+		// Module Code cell carries the title after the code ("TRR108: Ngā Orokati Tuarua –
+		// Final Consonants"). Keep that remainder as metadata.moduleCodeTitle for the
+		// PageAssembler fallback. Data front_matter_metadata.title_in_code_cell; env MTKTITLES_OFF.
+		const tic = cfg.title_in_code_cell;
+		if (tic && tic.enabled !== false && Array.isArray(tic.labels)
+			&& !(typeof process !== "undefined" && process.env && process.env.MTKTITLES_OFF)) {
+			const clean2 = (s) => String(s ?? "").replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "").replace(/\*\*/g, "").trim();
+			const want = new Set(tic.labels.map((l) => Utils.Fold(l)));
+			for (const b of blocks) {
+				if (b.kind !== "table" || out[tic.field ?? "moduleCodeTitle"]) continue;
+				for (const row of (b.rows ?? [])) {
+					if (!Array.isArray(row) || row.length < 2 || !want.has(Utils.Fold(clean2(row[0])))) continue;
+					const m = /^\s*[A-Za-z]{2,8}\d{2,5}[A-Za-z]?\s*[:\u2013\u2014\-]?\s*(.+)$/.exec(clean2(row[1]));
+					if (m && m[1].trim()) { out[tic.field ?? "moduleCodeTitle"] = m[1].trim(); break; }
+				}
+			}
+		}
 		return out;
 	};
 

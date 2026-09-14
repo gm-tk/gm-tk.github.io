@@ -237,6 +237,53 @@ class PageAssembler {
 		// lone title to the Te Reo slot and use Course as the English title
 		// (front_matter_metadata.course_is_english_title_backup; verified
 		// need on OSAI301: payload was only "Kirirarautanga Matihiko AI").
+		// ROUND 321 (loop Round 8 — the MTK / Te Reo Rangatira title source, Chris's
+		// decision 2). The TRR1xx docx leaves its [TITLE BAR] rows empty and has no Module
+		// Name row, so both run titles are still empty here. Sources, in order: the first
+		// [H1] / [Title Bar] item anywhere whose text carries a pipe (the per-page
+		// "TRR102 The vowels: Aa | Ngā Oropuare: Aa" repetition, code stripped, halves in
+		// payload order), else the Module Code cell's remainder (metadata.moduleCodeTitle:
+		// a pipe, or one spaced dash with a macron on exactly one side, splits it). The
+		// skeleton orders the pair Māori-first for these modules (header.mtk_titles).
+		{
+			const mtk = DataService.Data.EmitTemplates.header?.mtk_titles;
+			const mtkOn = mtk && mtk.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[mtk.env ?? "MTKTITLES_OFF"])
+				&& new RegExp(mtk.body_class ?? "reoTranslate", "i").test(String(run.resolvedRules?.body_class || ""));
+			if (mtkOn && !run.englishTitle && !run.teReoTitle) {
+				const code = String(run.moduleCode || "");
+				const esc = code.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+				const stripCode = (s) => code ? String(s).replace(new RegExp("^\\s*" + esc + "\\s*[:\\-\u2013\u2014]?\\s*", "i"), "") : String(s);
+				const tidy = (s) => String(s ?? "").replace(/\*+/g, "").replace(/^[\s:\-\u2013\u2014|]+|[\s:\-\u2013\u2014|]+$/g, "").replace(/\s+/g, " ").trim();
+				let parts = null, src = "";
+				const tags = new Set(mtk.repetition_tags ?? ["h1", "title bar"]);
+				outer: for (const p of run.pages) {
+					for (const it of (p.items ?? [])) {
+						if (it.type !== "tag" || !tags.has(it.parse?.primary?.tag)) continue;
+						const txt = tidy(stripCode(tidy(it.blackAfter || "")));
+						if (!txt.includes("|")) continue;
+						const h = txt.split("|").map(tidy).filter(Boolean);
+						if (h.length >= 2) { parts = h.slice(0, 2); src = `[${it.parse.primary.tag}] repetition on page ${p.lessonLabel}`; break outer; }
+					}
+				}
+				const cell = tidy(run.metadata?.moduleCodeTitle);
+				if (!parts && cell) {
+					const M = /[\u0101\u0113\u012b\u014d\u016b\u0100\u0112\u012a\u014c\u016a]/;
+					if (cell.includes("|")) parts = cell.split("|").map(tidy).filter(Boolean).slice(0, 2);
+					else {
+						const d = cell.split(/\s+[\u2013\u2014\-]\s+/);
+						parts = (d.length === 2 && (M.test(d[0]) !== M.test(d[1])) && d.every((h) => tidy(h).replace(/[^A-Za-zÀ-ſ]/g, "").length >= 3)) ? d.map(tidy) : [cell];
+					}
+					src = "the Module Code cell";
+				}
+				if (parts && parts.length) {
+					run.englishTitle = parts[0];
+					run.teReoTitle = parts[1] ?? "";
+					run.AddNote("info", "PageAssembler",
+						`No [TITLE BAR] / Module Name title — MTK module title taken from ${src}: "${parts.join(" | ")}" (round 321).`);
+				}
+			}
+		}
 		const tb = overviewProduct?.content.titleBar;
 		const course = run.metadata?.course;
 		const titlePhOn = (DataService.Data.EmitTemplates.header.title_split.placeholder_title_rule?.enabled !== false)

@@ -1,5 +1,46 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 321, build 260618.92) — THE MTK / TE REO RANGATIRA TITLE SOURCE (Chris — decision 2 of the loop's plateau report, "Yes to 2 and 3 — start with the TRR title source"; the autonomous loop, session 2, Round 8; **SCOPED REGENERATION of the 19 Bilingual-template modules; every protected gate HELD-or-IMPROVED; scoped ship #3 since the round-318 full**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A Te Reo Rangatira / Pāngarau (`reoTranslate`) module now gets its module title from where the MTK Writers Template actually keeps it — the per-page `[H1] TRR102 The vowels: Aa | Ngā Oropuare: Aa` repetition, else the title glued into the Module Code cell (`TRR108: Ngā Orokati Tuarua – Final Consonants`) — ships it Māori first on every page, repeats BOTH module titles on a lesson with no title of its own, and no longer takes a stray body heading ("Finished!", "Karakia Whakakapi") as a lesson title. 24 pages / 14 modules change.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **TRR108** — docx: `[TITLE BAR]` rows EMPTY, no Module Name row, Module Code cell `TRR108: Ngā Orokati Tuarua – Final Consonants` → gold `Ngā Orokati Tuarua` / `Final Consonants` on all three pages → Claude before: overview NO title, lesson 1 `Finished!`, lesson 2 `Karakia Whakakapi`; after: the gold's pair on all three pages, byte-exact in the header.
+- **TRR102** — cell `TRR102 – Ngā Oropuare Aa` (Māori only); every lesson opens `[H1] **TRR102 The vowels: Aa | Ngā Oropuare: Aa**` → gold the pair Māori-first on all 6 pages → Claude before: overview empty (the lessons were right since round 316); after: the overview carries the pair too.
+- **PNR102 / PNR104** — metadata Module Name `Nga tau: 2 | Numbers: 2` → gold the pair on every page → Claude before: lessons `Nga tau: 2` only (the registry `h1_count` cap); after: the pair.
+- **KB:** `07A` "Sections to EXTRACT" (the metadata table → module code + title; the `[TITLE BAR]` row; the per-page title-bar repetition), `07C/07D` skeleton rule 7 (*"Titles in `<h1><span>` — Māori first, English second"*; lesson page = the lesson's own title else the module titles), constraint 79.
+
+### 3. THE MEASUREMENT (every Bilingual-template page, Claude vs gold header spans)
+
+- 19 modules with a Claude dir (16 TRR + 3 PNR; TRR104/105/115 have no Writers Template and cannot convert). Before: **13 TRR overviews with no title**, **9 lesson titles taken from a stray heading** (TRR107 ×2, TRR108 ×2, TRR114 ×3, TRR203, TRR304), **4 PNR lessons with a single title**. Gold: every TRR overview carries the pair Māori-first; lessons repeat the module pair where the writer gave no lesson title (TRR102–106, 108, 203, 301, 304) or carry their own (TRR109, 111, 112).
+- Cells read: TRR107 `Ngā Orokati Tuatahi | First Consonants` (a pipe), TRR108 (a spaced dash with a macron on one side), TRR103 `Ngā Oropuare – Ee` (a dash that must NOT split — the guard below), TRR109 `TRR109` (nothing), TRR111/112/113/114 Māori only.
+
+### 4. THE FIX — one data block, five seams, all under `header.mtk_titles` `{ enabled, env: "MTKTITLES_OFF", body_class: "reoTranslate", repetition_tags: [h1, title bar], harvest_heading_tags: [h1] }` + `Input_Doc_Rules.front_matter_metadata.title_in_code_cell`
+
+- **A `DocxExtractor`** — the Module Code cell's text after the code token (`CODE[: –-] remainder`) is kept as `metadata.moduleCodeTitle`; `moduleCode` itself unchanged.
+- **B `PageAssembler`** — after the round-212 Module-Name source and before the Course backup, when both run titles are still empty in a `reoTranslate` module: the first `[H1]` / `[Title Bar]` item anywhere whose text carries a pipe (code stripped, halves in payload order — it carries BOTH halves where the cell has one), else the cell remainder: a pipe → pair; ONE spaced dash with a macron on exactly one side AND ≥3 letters on each side → pair (so `Ngā Oropuare – Ee` stays one title); else one title. An info note names the source.
+- **C `SkeletonBuilder` overview** — the Māori-looking title (a macron, or letters only from the Māori alphabet — the round-153 lone-title guard's test) goes first; decided by the text, not the slot, because the round-212 fallback files halves in payload order.
+- **D `SkeletonBuilder` lesson** — a `reoTranslate` lesson with no own title (none harvested, or one that fold-equals a module title) pushes BOTH module titles, Māori first, exempt from the registry `h1_count` cap.
+- **E `PageSplitter`** — the first-heading page-title harvest accepts only `harvest_heading_tags` (`[H1]`) in a `reoTranslate` module: MTK pages carry no `[Activity]` tag to stop at, so a body `[H3]` label became the title.
+- **Env toggle `MTKTITLES_OFF`** reverts all five to the round-320 form byte-for-byte. Splice `outputs/_r321_splice.py` (idempotent — proven by a second run; the dash-split letter guard was added after the in-memory probe showed TRR103's cell).
+
+### 5. THE PROOF AND THE GATES
+
+- In memory, all 19 Bilingual modules + 6 non-reo canaries (XMES101 ENFUN02 OSAH501 HIS1007 ANZH101 MXFL101): OFF == disk on every page; ON changes only Bilingual pages; the canaries byte-identical. Scoped regeneration: 19 modules / 4 batches; `_content_manifest.py fresh` → 0 truly stale; diff → **24 pages / 14 modules changed, 0 added / 0 removed**; the 14 re-converted OFF hash to the pre-round manifest **57/57**.
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.325% → 50.368% (+0.043pp) IMPROVED / ≥50% 1028 / ≥75% 192 / ≥90% 15 EXACT / skipped 0 @ 1954; RAW 34.724% → 34.749% IMPROVED.** 23 pages moved — 21 up / 2 down — 0 added / dropped; pp-sum scaffold +83.67 AND RAW +50.54. Largest rises TRR107_3_0 +8.95, TRR107_2_0 +7.94, TRR102_0_0 +7.55; the two dips NAMED: TRR114_0_0 −1.01 (Claude now ships one title `Ngā Kuoro` — the only title in its docx — where the gold ships two EMPTY `<h1><span></span>` lines) and TRR203_1_0 −0.38. Decomposition PASS, baseline committed.
+- Every other gate: compare_structure exact **11355 → 11360 (+5 IMPROVED)** / EXTRA **186** / missing **591** · structurally clean **2056/2102** / leak **288/46** · body **192** · tags **9557/9557** · flipCard TOTAL 61 divergence 0 · entry-parity PASS · index-sync 33/28 · pairs skipped 0 · **all TWELVE widget selftests GREEN** + skeleton selftest PASS.
+- **Ceiling:** SCAFFOLD 50.368% = **55.0% of achievable**.
+
+### 6. NAMED, NOT CHASED
+
+- TRR203's English title ("The Low-Frequency Prefixes"), TRR304's second line and TRR111/112/113's module-level titles are in no Writers Template — the ceiling. TRR114's gold ships EMPTY title lines. TRR109's overview takes lesson 1's pair (the cell holds only the code).
+- Decision 1 (constraint 47's exact-duplicate heading drop) is now unblocked on the TRR side — the `Finished!` titles are gone — and stays open for Chris.
+
+**Ledger:** scoped ship #3 · data `header.mtk_titles`, `front_matter_metadata.title_in_code_cell` · env `MTKTITLES_OFF` · tools `outputs/_r321_splice.py`, `_r321_titledump.cjs` · state `outputs/_r321_sk_final.json` · logs `_r321_gates.log`, `_r321_sk_full.log`, `_r321_fastloop.log`, `_r321_selftests.log` · `KB_AMALGAMATION_STATUS.md` row 79 → the MTK source mechanism CAPTURED-LIVE.
+
 ## 2026-09-15 (round 320, build 260618.91) — THE UPLOAD BOX KEEPS THE WRITER'S ORDER AROUND ITS BUTTON (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 7; **SCOPED REGENERATION of the 212-module dropDown family (§0b) under the loop's standing mandate; every protected gate HELD-or-IMPROVED; scoped ship #2 since the round-318 full. A SMALL SHIP — 6 pages / 4 modules, under the loop's 20-page floor, shipped because the fix was already built and proven and is right; the round's larger candidate (constraint 47/95) was DECLINED on measurement, see §4. THE LOOP STOPS AFTER THIS ROUND ON THE PLATEAU RULE — see §6.**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
