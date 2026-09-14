@@ -10464,27 +10464,19 @@ class InteractiveBuilder {
 	}
 
 	/**
-	 * ROUND 308 — THE UPLOAD BOX (Chris, 2026-08-11: "Build it"). The student
-	 * file-upload dropbox the family fence refuses is not a quiz and never was;
-	 * the human's answer, 1,076 times across 263 gold modules, is a link button —
-	 * `<a href="" target="_blank"><div class="button">Upload to dropbox</div></a>`
-	 * (`buttonD` in the BLL family — the round-66 house style, read from ITS OWN
-	 * data block so the two rules cannot drift) — with the D2L quicklink wired at
-	 * publish time (142 of the gold's own buttons still carry the empty href).
-	 * One Designer/Developer To Do note carries the writer's own bracket words.
-	 *
-	 * MEASURED FENCES (outputs/_r308_dropbox.json — 241 bundles / 88 modules):
-	 * an "alert dropbox" opener is a REVEAL box, not an upload area (CEDT101 ×4,
-	 * whose gold drops them) · a MERGED capture (extraTypes) is the round-310
-	 * gathering class · a captured table, media item, or another widget's member
-	 * keeps the honest hand-off box. Captured black/[body] text is RELEASED after
-	 * the button in the writer's own order; a no-primary red span's text joins
-	 * the note spec (designer-facing words are never shipped as learner content).
-	 *
-	 * Data interactive_builders.dropDown.upload_box; env DBXBUTTON_OFF.
+	 * ROUND 314 — the round-308 upload-box decline scan, factored out of #ddUploadBox
+	 * VERBATIM (every guard in its original order) and PROMOTED PUBLIC through
+	 * UploadBoxCandidate (the r246 NoTableBubbleParagraphs / r306 SbTableForeign
+	 * shared-predicate discipline): ContentConverter's dropbox-tail hold asks "would
+	 * this freed bundle build the button?" with the builder's OWN answer, so the
+	 * scanner (r310), the builder (r308) and the holder (r314) cannot drift. Pure —
+	 * reads only, never mutates the bundle. Returns { opener, spec, raw } (raw = the
+	 * trimmed learner-text pieces in the writer's own order, still unrendered) or
+	 * null on any decline; the leak guard stays in the builder because it needs the
+	 * rendered content.
 	 */
-	static #ddUploadBox({ bundle, tpl, run, renderBlock }) {
-		const cfg = tpl.upload_box;
+	static #ddUploadBoxScan(bundle, tpl) {
+		const cfg = tpl?.upload_box;
 		if (!cfg || cfg.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env.DBXBUTTON_OFF) return null;
 		// the OPENER — the same member scan as the family fence, so the two cannot drift
@@ -10506,9 +10498,8 @@ class InteractiveBuilder {
 		const allow = new RegExp(tpl.opener_pattern ?? "drop[\\s-]*down|dropquiz|drop\\s*quiz", "i");
 		const textTags = new Set(cfg.text_member_tags ?? ["body"]);
 		const spec = [];       // the writer's own designer-facing words → ONE To Do note
-		const content = [];    // captured learner text, released in the writer's own order
-		const rb = renderBlock ?? ((t) => [`<p>${t}</p>`]);
-		const push = (t) => { const s = String(t ?? "").trim(); if (s) content.push(rb(s).join("")); };
+		const raw = [];        // captured learner text, in the writer's own order (unrendered)
+		const push = (t) => { const s = String(t ?? "").trim(); if (s) raw.push(s); };
 		for (const m of bundle.memberItems ?? []) {
 			if (!m) continue;
 			if (m.type === "black") { push(m.text); continue; }
@@ -10520,14 +10511,54 @@ class InteractiveBuilder {
 				// a GENUINE dropdown bracket merged in means a QUIZ rode along — never
 				// release quiz material as plain prose; the hand-off box stays honest.
 				if (allow.test(own) && !deny.test(own)) return null;
-				const raw = own.replace(/\s+/g, " ").trim();
-				if (raw) spec.push(raw);                          // every bracket's words reach the note
+				const w = own.replace(/\s+/g, " ").trim();
+				if (w) spec.push(w);                              // every bracket's words reach the note
 			} else if (!prim) {
-				const raw = String(m.text ?? "").replace(/\s+/g, " ").trim();
-				if (raw) spec.push(raw);
+				const w = String(m.text ?? "").replace(/\s+/g, " ").trim();
+				if (w) spec.push(w);
 			}
 			push(m.blackAfter);
 		}
+		return { opener, spec, raw };
+	}
+
+	/** ROUND 314 — would round 308 build this bundle's Upload-to-dropbox button?
+	 *  The builder's own scan, promoted public for ContentConverter's dropbox-tail
+	 *  hold (see #ddUploadBoxScan). Pure. */
+	static UploadBoxCandidate(bundle, ddTpl) {
+		return this.#ddUploadBoxScan(bundle, ddTpl) !== null;
+	}
+
+	/**
+	 * ROUND 308 — THE UPLOAD BOX (Chris, 2026-08-11: "Build it"). The student
+	 * file-upload dropbox the family fence refuses is not a quiz and never was;
+	 * the human's answer, 1,076 times across 263 gold modules, is a link button —
+	 * `<a href="" target="_blank"><div class="button">Upload to dropbox</div></a>`
+	 * (`buttonD` in the BLL family — the round-66 house style, read from ITS OWN
+	 * data block so the two rules cannot drift) — with the D2L quicklink wired at
+	 * publish time (142 of the gold's own buttons still carry the empty href).
+	 * One Designer/Developer To Do note carries the writer's own bracket words.
+	 *
+	 * MEASURED FENCES (outputs/_r308_dropbox.json — 241 bundles / 88 modules):
+	 * an "alert dropbox" opener is a REVEAL box, not an upload area (CEDT101 ×4,
+	 * whose gold drops them) · a MERGED capture (extraTypes) is the round-310
+	 * gathering class · a captured table, media item, or another widget's member
+	 * keeps the honest hand-off box. Captured black/[body] text is RELEASED after
+	 * the button in the writer's own order; a no-primary red span's text joins
+	 * the note spec (designer-facing words are never shipped as learner content).
+	 *
+	 * Data interactive_builders.dropDown.upload_box; env DBXBUTTON_OFF.
+	 */
+	static #ddUploadBox({ bundle, tpl, run, renderBlock }) {
+		// ROUND 314 — the whole decline scan lives in #ddUploadBoxScan so the
+		// public UploadBoxCandidate predicate and this builder can never drift.
+		const scan = this.#ddUploadBoxScan(bundle, tpl);
+		if (!scan) return null;
+		const cfg = tpl.upload_box;
+		const spec = scan.spec;          // the writer's own designer-facing words → ONE To Do note
+		const rb = renderBlock ?? ((t) => [`<p>${t}</p>`]);
+		// captured learner text, released in the writer's own order
+		const content = scan.raw.map((s) => rb(s).join(""));
 		// colour: the round-66 house style, from its own data block (one source of truth)
 		const dox = DataService.Data.EmitTemplates.buttons?.dropbox_orange_house_style;
 		const prefix = run?.moduleCode?.match(/^[A-Za-z]+/)?.[0] ?? "";

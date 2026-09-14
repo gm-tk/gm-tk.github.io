@@ -1758,10 +1758,28 @@ class ContentConverter {
 						// INSIDE this activity box (ROUND 239 — Dev-Feedback R2, B4; the
 						// human's h4.goJournal sits inside the box; see #goJournalTail).
 						emit(...this.#goJournalTail(bodyItems, i, run, bundle));
-						// close the activity at the bundle's end (the
-						// terminator that ended the widget — e.g. the [H3])
-						emit(stack.pop().close);
-						breakRow();
+						// ROUND 314 (loop Round 1 — KB constraint 43). A writer's dropbox marker
+						// that sits INSIDE this activity's span but AFTER the widget that owns
+						// the box (the round-310 freed upload-box bundle) used to land in its
+						// own row UNDER the closed box; the human keeps the "Upload to dropbox"
+						// button inside the box (gold non-BLL 702/733, BLL 1024/1024) and marks
+						// it `activity dropbox`. When the lookahead finds such a bundle before
+						// any activity boundary, the frame is LEFT OPEN: the dropbox bundle then
+						// renders through the ordinary non-owner path inside the still-open box,
+						// autoClose (or the page-end drain) closes it at the next boundary, and
+						// the round-305 postpass adds the `dropbox` class. The ENFUN prose|widget
+						// row split (pirKey) is excluded — its widget row is already closed here.
+						// Data activity_wrapper.owned_activity_keeps_trailing_dropbox; env ACTDBXINSIDE_OFF.
+						if (!pirKey && this.#dropboxTailHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
+							markContent();
+							run.AddNote("info", "ContentConverter",
+								`Page ${page.lessonLabel}: activity box kept open for its trailing upload box (round 314).`);
+						} else {
+							// close the activity at the bundle's end (the
+							// terminator that ended the widget — e.g. the [H3])
+							emit(stack.pop().close);
+							breakRow();
+						}
 					} else {
 						// An inline widget FLOWS into the current section row, per the row-grouping
 						// rule set up earlier in this method; only the older, non-grouping rule gave it
@@ -2521,7 +2539,11 @@ class ContentConverter {
 				}
 
 				case "CONTAINER_CLOSE": {
-					if (stack.length) {
+					// ROUND 314 — a widget's own unconsumed end tag that the dropbox-tail
+					// hold walked over must not pop the activity frame it deliberately left
+					// open (before the hold this closer met an EMPTY stack and was ignored —
+					// the same outcome, the same info note). See #dropboxTailHold.
+					if (stack.length && !it._dbxStrayCloser) {
 						const top = stack.pop();
 						// EMPTY SPAN-WRAP KILL (ROUND 239 — Dev-Feedback R2, B1 part 2). A
 						// span-mode callout opens its inner row>col-12 wrapper EAGERLY (the
@@ -5318,6 +5340,79 @@ class ContentConverter {
 			break;   // the first real item was not a go-to-journal button — stop
 		}
 		return [];
+	}
+
+	/**
+	 * ROUND 314 (loop Round 1 — KB constraint 43, the dropbox placement class;
+	 * XMES101 2D / XTAS101 1C). A bundle-OWNED activity box closes at its widget's
+	 * end, so a writer's dropbox marker placed after the widget but still inside the
+	 * activity ([Activity 2D] … [clickdrop button] … [microphone, camera and video
+	 * dropbox buttons] [End page]) escaped into its own row under the closed box —
+	 * round 310 frees the marker into its own bundle, round 308 builds the button,
+	 * and round 305's postpass (which marks `dropbox` only when the button is INSIDE
+	 * the box) never fired. The gold keeps the button inside 96% (non-BLL) / 100%
+	 * (BLL) of the time (outputs/_measure_r314_dbxplace.py: 166 non-BLL trailing
+	 * buttons, 22 modules with the writer's marker inside the activity span).
+	 *
+	 * Called at the owner close site: walks forward from the bundle's opening item
+	 * with the auto-close boundary semantics (scanSupNote's walk), skipping the
+	 * owner's own members, consumed items and blank lines; black text, tables and
+	 * non-boundary tags are content and continue; a stray non-activity
+	 * CONTAINER_CLOSE (the widget's own unconsumed end tag — the same item
+	 * #goJournalTail steps over) is FLAGGED `_dbxStrayCloser` so the main loop's
+	 * CONTAINER_CLOSE case cannot pop the held frame; a heading <= rendered_heading_max,
+	 * an activity_close_before directive/tag, an activity closer, a page boundary, a
+	 * section marker, or an item consumed by a DIFFERENT non-dropbox bundle ends the
+	 * walk with NO hold. Returns true — hold the frame — only when the first foreign
+	 * bundle reached is a freed upload-box bundle (InteractiveBuilder.UploadBoxCandidate,
+	 * round 308's own scan promoted public so scanner/builder/holder cannot drift)
+	 * with no activity of its own (the loop's own isNewActivity test, inverted).
+	 * Data activity_wrapper.owned_activity_keeps_trailing_dropbox; env ACTDBXINSIDE_OFF.
+	 */
+	static #dropboxTailHold(bodyItems, i, bundles, ownerIdx, tpl, renderedHeading) {
+		const cfg = tpl.activity_wrapper?.owned_activity_keeps_trailing_dropbox;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ACTDBXINSIDE_OFF"]) return false;
+		const ddTpl = tpl.interactive_builders?.dropDown;
+		if (!ddTpl) return false;
+		const ownerBundle = bundles[ownerIdx];
+		if (!ownerBundle) return false;
+		const ccfg = tpl.container_auto_close?.activity_close_before ?? {};
+		const hMax = (typeof process !== "undefined" && process.env && process.env.ACTHEAD_OFF)
+			? (ccfg.rendered_heading_max_legacy ?? 3) : (ccfg.rendered_heading_max ?? 4);
+		const max = cfg.max_lookahead ?? 120;
+		const strays = [];
+		for (let j = i + 1; j < bodyItems.length && j <= i + max; j++) {
+			const c = bodyItems[j];
+			if (!c || c._consumed) continue;
+			if (c.consumedBy !== undefined && c.consumedBy !== null) {
+				if (c.consumedBy === ownerIdx) continue;                 // the owner's own members
+				if (c.consumedBy === "activity-super-content") continue;  // hoisted into THIS box's panel
+				const b = bundles[c.consumedBy];
+				if (!b) return false;                                     // a merge sentinel = a new activity
+				if (b === ownerBundle) continue;
+				if (b.type === "dropDown" && b.canonTag !== "activity"
+					&& b.activityOwner === undefined && b.activityId === null
+					&& InteractiveBuilder.UploadBoxCandidate(b, ddTpl)) {
+					for (const s of strays) s._dbxStrayCloser = true;
+					return true;
+				}
+				return false;                                             // a different widget = a boundary
+			}
+			if (c.type !== "tag") continue;                               // prose, a blank line, a table = content
+			const p = c.parse?.primary;
+			if (!p) continue;                                             // an instruction / noise span
+			if (p.directive === "CONTAINER_CLOSE") {
+				if (p.tag === "end activity" || /\bactivity\b/i.test(p.tag ?? "")) return false;
+				strays.push(c); continue;                                 // the widget's own end tag
+			}
+			if (p.directive === "PAGE_BOUNDARY" || p.directive === "SECTION_MARKER") return false;
+			if ((ccfg.directives ?? []).includes(p.directive) || (ccfg.tags ?? []).includes(p.tag)) return false;
+			const isTitle = (ccfg.title_heading_tags ?? []).includes(p.tag);
+			const hh = isTitle ? null : renderedHeading(p);
+			if (hh !== null && hh <= hMax) return false;                  // a section heading closes the box
+		}
+		return false;
 	}
 
 	/** A pre-pass-claimed BUTTON bundle with no real content members — its

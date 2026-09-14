@@ -1,0 +1,293 @@
+=== index/manifest sync ===
+INDEX/MANIFEST SYNC: OK — 33 browser files, 28 node engine files, app/js disk set in sync.
+  [0s] index/manifest sync
+
+=== entry parity (app↔harness) ===
+ENTRY-PARITY verifier — fixtures: BLL225
+— static contract (both entries use the ONE prep sequence) —
+  ✓ App.js: choke point only, no private prep steps
+  ✓ batch_convert.cjs: choke point only, no private prep steps
+  ✓ ModuleResolver.PrepareRun: present, carries the canonical mtkFlag decision
+— dynamic options parity (batch options vs app UI defaults) —
+  ✓ BLL225: 4 outputs byte-identical across both option constructions
+— selftest: DETECTION (an injected divergence must be flagged) —
+  ✓ static scanner FLAGS an injected private prep step
+  ✓ BLL225: LIVENESS — fixture builds (4 outputs)
+  ✓ dynamic differ SEES a real option divergence (imageMode P vs D)
+RESULT: PASS (entry parity holds)
+  [21s] entry parity (app↔harness)
+
+=== skeleton (PRIMARY) ===
+SKELETON STRUCTURAL MATCH — 1939 paired pages (text-immune, 100% of structure)
+
+pairs skipped (parse error): 0
+RAW match (full structure, incl. widget internals): mean 34.5%
+   ^ low because Phase-1 widgets are by-design PLACEHOLDERS vs the human's built widgets.
+
+SCAFFOLD match (widgets collapsed to one marker — the Phase-1 target: rows/cols/
+activities/sections + widget POSITIONS): mean 50.0%  median 50.7%
+  pages >=  95% SCAFFOLD match:    0 ( 0.0%)
+  pages >=  90% SCAFFOLD match:   16 ( 0.8%)
+  pages >=  75% SCAFFOLD match:  192 ( 9.9%)
+  pages >=  50% SCAFFOLD match: 1005 (51.8%)
+  pages <  50% scaffold match: 934
+
+== per-module mean SCAFFOLD match (worst 25) ==
+  ARFUN04     2.0%  (1 pages)
+  EXPFUN03    3.0%  (1 pages)
+  MXFUN02     3.1%  (1 pages)
+  EXPFUN05    3.2%  (1 pages)
+  MXFUN03     3.9%  (1 pages)
+  EXPFUN04    4.0%  (1 pages)
+  EXPFUN02    4.3%  (1 pages)
+  BLL110      5.6%  (1 pages)
+  BLL120      6.0%  (1 pages)
+  CEDW201     6.0%  (1 pages)
+  CEDT104     6.1%  (1 pages)
+  TWHK901     6.9%  (1 pages)
+  CEDR302     7.4%  (1 pages)
+  CEDR201     7.7%  (1 pages)
+  TWHA901     7.8%  (1 pages)
+  CEDR301     7.8%  (1 pages)
+  TWHA905     8.4%  (1 pages)
+  SSFUN05     8.7%  (1 pages)
+  SSFUN01     9.4%  (1 pages)
+  TWHK903     9.7%  (1 pages)
+  CEDR204     9.9%  (1 pages)
+  CHFUN05    10.3%  (1 pages)
+  TWHA902    10.9%  (1 pages)
+  TWHA903    10.9%  (1 pages)
+  CEDT201    11.0%  (1 pages)
+
+== worst individual pages by SCAFFOLD match (top 20) ==
+  MXFUN01_0_0.html           scaffold   0.8%  (raw    1%)
+  ARFUN04_0_0.html           scaffold   2.0%  (raw    1%)
+  EXPFUN03_0_0.html          scaffold   3.0%  (raw    6%)
+  MXFUN02_0_0.html           scaffold   3.1%  (raw    2%)
+  EXPFUN05_0_0.html          scaffold   3.2%  (raw    5%)
+  BLL144_1_0.html            scaffold   3.7%  (raw    4%)
+  MXFUN03_0_0.html           scaffold   3.9%  (raw    3%)
+  EXPFUN04_0_0.html          scaffold   4.0%  (raw    6%)
+  EXPFUN02_0_0.html          scaffold   4.3%  (raw    8%)
+  BLL240_1_0.html            scaffold   4.5%  (raw    3%)
+  TRR304_3_0.html            scaffold   5.1%  (raw    5%)
+  BLL110_0_0.html            scaffold   5.6%  (raw   10%)
+  BLL120_0_0.html            scaffold   6.0%  (raw    4%)
+  CEDW201_0_0.html           scaffold   6.0%  (raw    9%)
+  TEDC401_3_0.html           scaffold   6.1%  (raw    3%)
+  CEDT104_0_0.html           scaffold   6.1%  (raw    7%)
+  TWHK901_0_0.html           scaffold   6.9%  (raw    7%)
+  EXIP901_4_0.html           scaffold   7.0%  (raw    5%)
+  SSFUN07_2_0.html           scaffold   7.2%  (raw    5%)
+  CEDR302_0_0.html           scaffold   7.4%  (raw    9%)
+  [50s] skeleton (PRIMARY)
+
+=== structural defect audit ===
+STRUCTURAL DEFECT AUDIT — 2102 Claude pages
+STRUCTURALLY CLEAN pages (zero structural defects): 2056/2102 = 97.8%
+pages WITH >=1 structural defect: 46
+
+== defect CLASS ranking (total occurrences | pages affected) ==
+  A_literal_tag_leak                        288 occ |   46 pages
+
+== modules with the most structural defects (top 25) ==
+  ENGFUN02   150  {'A_literal_tag_leak': 150}
+  HIS1005     47  {'A_literal_tag_leak': 47}
+  HIS1002     40  {'A_literal_tag_leak': 40}
+  CEDO501     11  {'A_literal_tag_leak': 11}
+  HIS1001      8  {'A_literal_tag_leak': 8}
+  HIS1006      7  {'A_literal_tag_leak': 7}
+  XGF9004      2  {'A_literal_tag_leak': 2}
+  MXFU302      2  {'A_literal_tag_leak': 2}
+  ENGI102      2  {'A_literal_tag_leak': 2}
+  ENFUN09      2  {'A_literal_tag_leak': 2}
+  ARFUN05      2  {'A_literal_tag_leak': 2}
+  TRR304       1  {'A_literal_tag_leak': 1}
+  TRR109       1  {'A_literal_tag_leak': 1}
+  TRR106       1  {'A_literal_tag_leak': 1}
+  TRR102       1  {'A_literal_tag_leak': 1}
+  TEFUN07      1  {'A_literal_tag_leak': 1}
+  SSFUN05      1  {'A_literal_tag_leak': 1}
+  MXFUN01      1  {'A_literal_tag_leak': 1}
+  MXEO301      1  {'A_literal_tag_leak': 1}
+  MXDI201      1  {'A_literal_tag_leak': 1}
+  ENGS302      1  {'A_literal_tag_leak': 1}
+  ENGS101      1  {'A_literal_tag_leak': 1}
+  CEDT104      1  {'A_literal_tag_leak': 1}
+  ART1003      1  {'A_literal_tag_leak': 1}
+  ANZH401      1  {'A_literal_tag_leak': 1}
+
+== worst individual pages (top 20) ==
+  ENGFUN02_1_0.html           88  {'A_literal_tag_leak': 88}
+  ENGFUN02_0_0.html           62  {'A_literal_tag_leak': 62}
+  HIS1005_1_0.html            21  {'A_literal_tag_leak': 21}
+  HIS1005_2_0.html            13  {'A_literal_tag_leak': 13}
+  CEDO501_3_1.html            11  {'A_literal_tag_leak': 11}
+  HIS1002_18_0.html            9  {'A_literal_tag_leak': 9}
+  HIS1002_16_0.html            8  {'A_literal_tag_leak': 8}
+  HIS1002_11_0.html            7  {'A_literal_tag_leak': 7}
+  HIS1005_0_0.html             6  {'A_literal_tag_leak': 6}
+  HIS1002_13_0.html            6  {'A_literal_tag_leak': 6}
+  HIS1001_8_0.html             6  {'A_literal_tag_leak': 6}
+  HIS1002_14_0.html            5  {'A_literal_tag_leak': 5}
+  HIS1006_0_0.html             4  {'A_literal_tag_leak': 4}
+  HIS1005_3_0.html             3  {'A_literal_tag_leak': 3}
+  XGF9004_7_0.html             2  {'A_literal_tag_leak': 2}
+  HIS1006_1_0.html             2  {'A_literal_tag_leak': 2}
+  HIS1002_9_0.html             2  {'A_literal_tag_leak': 2}
+  HIS1002_10_0.html            2  {'A_literal_tag_leak': 2}
+  ENGI102_0_0.html             2  {'A_literal_tag_leak': 2}
+  ENFUN09_0_0.html             2  {'A_literal_tag_leak': 2}
+  [10s] structural defect audit
+
+=== compare_structure ===
+modules compared: 413 (comparator errors: 0)
+claude content elements: ~39448 | text-matched against human: 13393 (34.0% — unmatched = developer rewording/restructuring)
+  exact wrapper chain:         11355  (84.8%)
+  same wrappers, diff order:    1042  (7.8%)
+  claude EXTRA container:        186  (1.4%)  ← over-nesting
+  claude MISSING container:      591  (4.4%)
+  row wrap missing:               23  (0.2%)
+  other chain diffs:             196  (1.5%)
+rows ratio (claude/human content rows) avg: 1.36
+acks content (per-module MEDIAN — pooled totals are skewed by legacy giants):
+  human entries found in claude: median 36.4%  (pooled 7264/20222)
+  claude entries found in human: median 75.8%  (pooled 7229/11573) | claude ❗ todo lines: 8631
+worst over-nesting: [('ANZH401', 12), ('TEDC402', 12), ('MXDB302', 10), ('BLL120', 7), ('ANZH303', 6), ('BLL130', 6), ('HIS1005', 6), ('SSFUN03', 6)]
+  [26s] compare_structure
+
+=== body_compare ===
+BODY-CONTENT BREAKDOWN — 2102 pages compared (free-body excludes widget subtrees both sides)
+  OVER-CAPTURE (a widget ate body the human keeps free): 43 pages
+  RUNAWAY ABSORPTION (one widget absorbed >=4 types):     4 pages
+  EMPTY interactive container:                            147 pages
+  pages with ANY breakdown flag:                          192
+
+WORST-BROKEN PAGES (top 30):
+  TEDC402/TEDC402_1_0.html       | OVER-CAPTURE 53% (human keeps 46 blocks free)
+  CEDK501/CEDK501_3_0.html       | OVER-CAPTURE 70% (human keeps 44 blocks free)
+  MXFUN01/MXFUN01_6_1.html       | OVER-CAPTURE 44% (human keeps 36 blocks free)
+  MXFL202/MXFL202_7_0.html       | OVER-CAPTURE 64% (human keeps 30 blocks free)
+  ENGJ301/ENGJ301_1_0.html       | OVER-CAPTURE 65% (human keeps 29 blocks free)
+  MXFL204/MXFL204_3_0.html       | OVER-CAPTURE 40% (human keeps 25 blocks free)
+  XDLS909/XDLS909_2_0.html       | OVER-CAPTURE 47% (human keeps 24 blocks free)
+  MXEO201/MXEO201_5_0.html       | OVER-CAPTURE 56% (human keeps 23 blocks free)
+  CEDT207/CEDT207_7_0.html       | OVER-CAPTURE 74% (human keeps 20 blocks free)
+  SSOG103/SSOG103_1_0.html       | OVER-CAPTURE 55% (human keeps 18 blocks free)
+  PHE1005/PHE1005_5_0.html       | OVER-CAPTURE 62% (human keeps 17 blocks free)
+  ENGR102/ENGR102_5_0.html       | OVER-CAPTURE 43% (human keeps 12 blocks free)
+  MXDB102/MXDB102_6_0.html       | OVER-CAPTURE 47% (human keeps 11 blocks free)
+  ENGC202/ENGC202_7_0.html       | OVER-CAPTURE 40% (human keeps 10 blocks free)
+  HES1005/HES1005_6_0.html       | OVER-CAPTURE 52% (human keeps 9 blocks free); 1 EMPTY widget(s)
+  OSGM501/OSGM501_3_0.html       | OVER-CAPTURE 54% (human keeps 9 blocks free)
+  TEDC401/TEDC401_0_0.html       | OVER-CAPTURE 52% (human keeps 9 blocks free)
+  HES1003/HES1003_4_0.html       | OVER-CAPTURE 41% (human keeps 8 blocks free)
+  AGH1007/AGH1007_3_0.html       | OVER-CAPTURE 41% (human keeps 7 blocks free)
+  TEDC402/TEDC402_8_1.html       | OVER-CAPTURE 52% (human keeps 7 blocks free)
+  AGH1007/AGH1007_8_0.html       | OVER-CAPTURE 59% (human keeps 6 blocks free)
+  ENGS102/ENGS102_3_0.html       | OVER-CAPTURE 50% (human keeps 6 blocks free)
+  MXEO401/MXEO401_0_0.html       | OVER-CAPTURE 96% (human keeps 6 blocks free)
+  OSGM401/OSGM401_3_0.html       | OVER-CAPTURE 50% (human keeps 6 blocks free)
+  CEDW501/CEDW501_3_1.html       | OVER-CAPTURE 72% (human keeps 5 blocks free)
+  CEDK501/CEDK501_6_0.html       | OVER-CAPTURE 45% (human keeps 5 blocks free)
+  ENGC302/ENGC302_6_0.html       | OVER-CAPTURE 49% (human keeps 5 blocks free)
+  MXFL201/MXFL201_7_0.html       | OVER-CAPTURE 78% (human keeps 5 blocks free)
+  ENGC301/ENGC301_5_0.html       | OVER-CAPTURE 42% (human keeps 4 blocks free)
+  ENGC302/ENGC302_4_0.html       | OVER-CAPTURE 49% (human keeps 4 blocks free)
+
+MODULES WITH THE MOST BROKEN PAGES:
+  BLL240: 7 broken page(s)
+  TEDC402: 6 broken page(s)
+  MXDI103: 5 broken page(s)
+  TRR109: 5 broken page(s)
+  TRR113: 5 broken page(s)
+  TRR112: 5 broken page(s)
+  AGH1007: 4 broken page(s)
+  MXFL203: 4 broken page(s)
+  PHE1003: 4 broken page(s)
+  MXFUN01: 3 broken page(s)
+  XGF9004: 3 broken page(s)
+  CEDK501: 2 broken page(s)
+  XDLS909: 2 broken page(s)
+  PHE1005: 2 broken page(s)
+  HES1005: 2 broken page(s)
+  [20s] body_compare
+
+=== JS regression (tags) ===
+TOTAL 9557 | HANDLED 9557 (100.00%) | REAL FAILURES 0 (0.00%)
+  primary                  6283
+  context                  1548
+  cross                    959
+  instruction              384
+  freetext                 359
+  heading_family           19
+  tag_in_instruction_line  5
+Failing sections:
+  [1s] JS regression (tags)
+
+=== flipCard verifier ===
+🟢 [ModuleResolver] CEDO102 is a recorded page_model exception — using single-file.
+CEDO102: built 15 card-texts [exact 12, copy-edit 2, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.47): Some people catch too many fish from the ocean, and this can upset the balance of life in the coral reef. It's like if w
+🟠 [ModuleResolver] Multiple module-code candidates found (MXDB302, MXO421) — using MXDB302 from filename "MXDB302 Writers Template + Media List.docx".
+MXDB302: built 14 card-texts [exact 2, copy-edit 8, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.00): 1m = 100cm
+   unmatched (overlap 0.00): 1m = 1000mm
+   unmatched (overlap 0.00): 1000m = 1km
+   unmatched (overlap 0.00): 1cm = 10mm
+🟠 [DocxExtractor] No [TITLE BAR]/[Fundamental content] opener — content started at the first structural tag instead; check the first page for stray front-matter.
+TRR114: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XMES201: built 32 card-texts [exact 18, copy-edit 1, gold-subst 0, defect 13] 13 unmatched (baseline)
+   unmatched (overlap 0.25): Dog dog on white background
+   unmatched (overlap 0.50): Cat tabby cat
+   unmatched (overlap 0.50): Horse chestnut horse
+   unmatched (overlap 0.25): Goat goat on white background
+   unmatched (overlap 0.50): Rabbit soft rabbit
+   unmatched (overlap 0.50): dog eating
+   unmatched (overlap 0.50): rabbit and guinea pig
+   unmatched (overlap 0.00): budgies eating seed
+   unmatched (overlap 0.33): goats and horse eating hay
+   unmatched (overlap 0.50): cat toy
+   unmatched (overlap 0.50): dog toy
+   unmatched (overlap 0.14): bird toy
+   unmatched (overlap 0.20): hamster wheel
+
+TOTAL 61: exact 32, copy-edit 11, gold-subst 0, defect 18, divergence 0.
+RESULT: divergence 0 ✓ (protected). exact/copy-edit/defect are a tracked baseline — diff vs gate_baseline.json.flipcard, hold-or-improve.
+  [3s] flipCard verifier
+
+=== speechBubble verifier ===
+OSAI501: built 11 [exact 8, copy-edit 2, dev-edit 1, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSAI401: built 22 [exact 7, copy-edit 1, dev-edit 0, gold-subst 11, defect 3] DEFECT ✗
+   DEFECT (overlap 0.44): Prompt 1: Create a list of tasks AI can and can't do. Make the answers read in the first person from the AI point of vie
+   DEFECT (overlap 0.19): Prompt 4: Create an analogy on the limits of AI. AI response: Analogy: AI is like a super-fast calculator with a huge li
+   DEFECT (overlap 0.18): Do a quiz.
+OSAH501: built 8 [exact 2, copy-edit 5, dev-edit 0, gold-subst 0, defect 1] DEFECT ✗ | image-id miss 7
+   DEFECT (overlap 0.57): If you come across harmful behaviour online do not deal with it alone. Talk to someone you can trust and who knows how t
+   image-id not in human file: iStock-1170338101
+   image-id not in human file: iStock-1199375092
+   image-id not in human file: iStock-987355284
+   image-id not in human file: iStock-987354734
+   image-id not in human file: iStock-1190660690
+   image-id not in human file: iStock-1148188506
+   image-id not in human file: iStock-987354734
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR101, EN000) — using ENGR101 from filename "ENGR101 Writers Template + Media List.docx".
+ENGR101: built 8 [exact 5, copy-edit 3, dev-edit 0, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSGM501: built 13 [exact 9, copy-edit 0, dev-edit 4, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+
+TOTAL built 62: exact 31, copy-edit 11, dev-edit 5, gold-subst 11, defect 4; image-id misses 7.
+RESULT: real defects present ✗ — fix before proceeding.
+  [1s] speechBubble verifier
+
+=== modal verifier ===
+OSOH501: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+MXFU301: 3 pop-out group(s), 7 trigger(s) [exact 1, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+ENGR302: 2 pop-out group(s), 4 trigger(s) [exact 3, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+MXDB201: 1 pop-out group(s), 3 trigger(s) [exact 0, copy-edit 0, dev-edit 3, defect 0]  ✓ every pop-out well-formed
+EXPFUN04: 6 pop-out group(s), 18 trigger(s) [exact 0, copy-edit 0, dev-edit 18, defect 0]  ✓ every pop-out well-formed
+
+TOTAL: 13 pop-out group(s) across 5 module(s), 38 triggers; exact 4, copy-edit 0, dev-edit 34, defect 0.
+RESULT: every built pop-out is well-formed ✓
+  [3s] modal verifier
+
+=== gate suite complete ===

@@ -1515,7 +1515,19 @@ class Config {
 	// modules; OFF byte-identical on all 89 candidates bar round 312's own pending
 	// CHFUN05. Env SBSINGLECELL_OFF / CLOSEROPEN_OFF; data
 	// tables.bubble_layout_dissolve.single_cell + member_rule.closer_never_opens.
-	static AppVersion = "260618.84";
+	// ROUND 314 (260618.85): THE UPLOAD BOX INSIDE ITS ACTIVITY (KB constraint 43,
+	// the autonomous loop's Round 1). A bundle-OWNED activity box used to close at
+	// its widget's end, so a writer's dropbox marker placed after the widget but
+	// still inside the activity escaped into its own row under the closed box;
+	// the human keeps the "Upload to dropbox" button INSIDE (gold non-BLL 702/733,
+	// BLL 1024/1024) and marks the box `activity dropbox`. ContentConverter
+	// #dropboxTailHold looks ahead from the owner close site with the auto-close
+	// boundary semantics and leaves the frame open when the first foreign bundle
+	// is a freed upload box (InteractiveBuilder.UploadBoxCandidate — round 308's
+	// own scan, promoted public). 65 pages / 43 modules; §0b family sweep of all
+	// 212 dropDown modules, the working half byte-identical. Env ACTDBXINSIDE_OFF;
+	// data activity_wrapper.owned_activity_keeps_trailing_dropbox.
+	static AppVersion = "260618.85";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

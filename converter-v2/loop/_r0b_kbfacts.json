@@ -1,10 +1,10 @@
 {
  "meta": {
   "tool": "_measure_r0b_kbstatus.py",
-  "generated": "2026-09-14 22:31:38",
+  "generated": "2026-09-15 00:06:41",
   "gold_modules": 454,
   "claude_modules": 416,
-  "seconds": 53
+  "seconds": 54
  },
  "gold": {
   "modules": 454,

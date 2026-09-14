@@ -18,3 +18,8 @@ them from here.
 | `_r0b_kbfacts.json` | `CONVERTER_V2/outputs/` | Round 0b — its output |
 | `KB_AMALGAMATION_STATUS.md` | `FINAL_MODULE_DATA/` (folder root) | Round 0b — one row per front-facing KB decision with its PageForge status |
 | `LOOP_STATE.md` | `FINAL_MODULE_DATA/` (folder root) | the loop's position, declined/blocked classes, round log |
+| `_measure_r314_dbxplace.py` / `_r314_dbxplace.json` / `_r314_affected.txt` | `CONVERTER_V2/outputs/` | Round 1 (engine r314) — the dropbox-placement probe and its results (121 affected modules) |
+| `_r314_splice_UNAPPLIED.py` / `_r314_splice_APPLIED.py` | `CONVERTER_V2/outputs/` | Round 1 — the anchored engine/data edit; the session-1 draft (owner-close anchor one tab too deep) and the applied version |
+| `_r314_bundledump.cjs` | `CONVERTER_V2/outputs/` | Round 1 — bundle-state diagnostic |
+| `_r314_regen_set.txt` / `_r314_family_dropdown.txt` / `_r314_changed_modules.txt` | `CONVERTER_V2/outputs/` | Round 1 — the 243-module regeneration set (121 affected ∪ 212 dropDown family), the family list, and the 43 modules whose bytes changed |
+| `_r314_gates.log` / `_r314_sk_full.log` / `_r314_verify_dropdown.log` / `_r314_fastloop.log` | `CONVERTER_V2/outputs/` | Round 1 — the gate suite, the fresh full skeleton score, the dropDown family verifier, the decomposition proof |
