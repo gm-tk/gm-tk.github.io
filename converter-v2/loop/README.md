@@ -29,4 +29,6 @@ them from here.
 | `_measure_r316_lessonpair.py` / `_r316_lessonpair.json` / `_r316_affected.txt` / `_r316_regen_set.txt` | `CONVERTER_V2/outputs/` | Round 3 (engine r316) — the lesson bilingual-pair probe and its results; the 17 affected and the 179-module regeneration set |
 | `_r316_splice.py` | `CONVERTER_V2/outputs/` | Round 3 — the anchored engine/data edit (SkeletonBuilder + Emit_Templates) |
 | `_r316_gates.log` / `_r316_sk_full.log` / `_r316_fastloop.log` / `_r316_selftests.log` | `CONVERTER_V2/outputs/` | Round 3 — the gate suite, the fresh skeleton score, the decomposition proof, the selftests |
+| `_measure_r317_acks.py` / `_r317_acks.json` / `_r317_splice.py` | `CONVERTER_V2/outputs/` | Round 4 (engine r317) — the acks probe (the KB form simulated + scored before coding: the named override list) and the splice |
+| `_r317_gates.log` / `_r317_sk_full.log` / `_r317_fastloop_snapshot.log` / `_r317_selftests.log` | `CONVERTER_V2/outputs/` | Round 4 — the gate suite, the fresh skeleton score, the full-ship baseline snapshot, the selftests |
 | *(not mirrored)* `batch_results.json.corrupt-2026-09-15-powercut` | `CONVERTER_V2/reference/tests/` | Round 3 — the batch runner's results ledger as the power cut left it (a 48-byte NUL run); 4.5 MB, kept on disk beside the repaired working copy, deliberately not committed |

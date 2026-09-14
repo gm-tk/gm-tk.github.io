@@ -1,5 +1,48 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 317, build 260618.88) — THE ACKNOWLEDGEMENTS BLOCK'S TEMPLATE FORM: KB constraints 45 + 90 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 4; **FULL CORPUS REGENERATION under the loop's standing mandate — acks is corpus-wide by construction; ledger reset to 0. A NAMED KB-OVER-GOLD OVERRIDE: the skeleton dips −0.024pp on exactly the 387 named pages (each matching its pre-computed delta) and is IDENTICAL net of them; every other gate EXACT — judged per `Subject_Global_Parameters._meta.gold_override_policy` (b), read §5**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**Every acknowledgements block now ships the KB's template form — the wrapper `<div class="acks acksTemplate">` (`… acksAI` where the module has AI media, as before) and the apology, the `Copyright © <span class="currentYear">` line and the AI statement are no longer typed (the template classes generate them; typing them too doubled them up on the published page); the one line still typed is "All other images © Te Aho o Te Kura Pounamu…". 394 overview pages change; the 19 AI-variant pages already had this form since round 241.**
+
+### 2. THE EVIDENCE
+
+- **KB constraint 90** (CL-0090, a LOCKED admin decision — Design Team Lead, 27 August 2026, `WJFUN105_0.0.html` as the example): *"`acksTemplate` and `acksAI` GENERATE their statements — never type them as plain text as well … The classes are mandatory, not a trade."* **Constraint 45:** the wrapper is `acks acksTemplate` (+ `acksAI`). `05C_COMP14_ACKNOWLEDGEMENTS.md` → Basic block. Constraint 33 (the block sits at the bottom of the overview page) was already live on 413/413 Claude pages.
+- **Claude before, XMES101_0_0:** `<div class="acks">` … `<div class="acksLesson"><p><i>Every effort has been made…</i></p>…</div>` … the lesson groups … `<div class="acksLesson"><p>All other images ©…</p></div>` `<div class="acksLesson"><p><i>Copyright © <span class="currentYear"></span> Board of Trustees…</i></p></div>`.
+- **Claude after:** `<div class="acks acksTemplate">` … the lesson groups … `<div class="acksLesson"><p>All other images ©…</p></div>` — and nothing else.
+- **The gold is the OLD convention:** bare `acks` with the statements typed on 421 blocks; the template classes on 74 (35 generated, 23 mixed, 13 typed under `acks acksTemplate`); and 249 of the paired gold overview pages carry NO block at all because the old convention put it on the LAST lesson page (XMES101.08) — a placement constraint 33 rejects. Under the loop's order of authority (§1b) the KB outranks the gold because the gold predates the rule.
+
+### 3. THE MEASUREMENT (`outputs/_measure_r317_acks.py` → `_r317_acks.json` — every paired Claude acks page, the KB form SIMULATED on the page text and scored against the gold with the skeleton gate's own scorer, BEFORE any code)
+
+- Claude blocks: bare `acks` typed **394** (Standard 286, Fundamentals 50, Inquiry 47, Bilingual 11) + AI variant 19 (all four templates). Paired: 406, of which **387 would change**.
+- **The predicted delta — the named override:** pp-sum **−46.05** → corpus mean **−0.024pp**; 88 pages down (every one a gold overview carrying the old bare block, ≈ −0.5pp each), 12 up (gold `acks acksTemplate`), 287 zero (the gold overview has no block / already matches); bucket crossers ≥50 0, ≥75 1, ≥90 2. By template: Bilingual +5.20, Fundamentals −9.14, Inquiry −12.09, Standard −30.02 pp-sum.
+
+### 4. THE FIX (engine general, shape in data)
+
+- **Data** `Acks_Formats.json` → `standing_items.kb_template_form` `{ enabled, env: "ACKSTEMPLATE_OFF", acks_class_standard: "acks acksTemplate", omit_always: true }` (the legacy `container.acks_class_standard = "acks"` is kept for the OFF state).
+- **`AcksBuilder`** — the standard container class comes from the block when it is on; the round-241 `template_variant_omit` list (apology / AI statement / copyright) applies ALWAYS instead of only on the AI variant (`hasAi || (ktfOn && omit_always)`); the AI-variant class, the empty-opening-group drop and `ACKSBOILER_OFF` are unchanged. `PageAssembler`'s acks seam (`indexOf('<div class="acks')`) still matches.
+- **Env toggle `ACKSTEMPLATE_OFF`** reverts both the class and the always-omit to the round-316 form byte-for-byte. Splice `outputs/_r317_splice.py` (anchored, idempotent — proven by a second run).
+
+### 5. THE OVERRIDE ACCOUNTING (gold_override_policy (b): a structural KB emission that diverges from gold ships as a NAMED delta and the gates are judged net of exactly those pages)
+
+- **The round's own verifier (a):** every one of the corpus's **413 acks blocks** carries `acksTemplate` (394 `acks acksTemplate`, 19 `acks acksTemplate acksAI`); **0** type the apology, copyright, `currentYear` or AI statement; **413/413** keep the catch-all; no statement appears outside a block. **413/413 in the KB form.**
+- **Skeleton (PRIMARY), fresh full `--json` (`_r317_sk_final.json`): RAW figures SCAFFOLD mean 50.345% → 50.322% (−0.024pp) / ≥50% 1028 EXACT / ≥75% 193 → 192 / ≥90% 16 → 15 / skipped 0 @ 1954; RAW-scope mean 34.662% → 34.724% IMPROVED.** 386 pages moved (12 up / 88 down / 286 to a RAW-only change), 0 added / 0 dropped; **every mover is one of the 387 named pages, and 387/387 match their predicted delta to the hundredth of a point**. **NET of the named pages the corpus is IDENTICAL: 49.050% = 49.050% over the other 1568 pages.** The crossers, named: OSBY401_0_0 76.92 → 73.85 (≥75), BLL246_0_0 90.14 → 88.73 and BLL242_0_0 90.78 → 89.36 (≥90; one page crossed up, net −1). `--accept-named` is exactly what this is.
+- **Every OTHER gate (b) EXACT to round 316:** structurally clean **2056/2102 = 97.81%** / leak **288 occ / 46 pages** · compare_structure exact **11355** / EXTRA **186** / missing **591** · body_compare **192** · tags **9557/9557, REAL FAILURES 0** · flipCard gate set **TOTAL 61, divergence 0 ✓** · speechBubble gate set TOTAL 62 / defect 4 · modal gate set defect 0 · entry-parity **PASS** · index-sync **33/28** · skeleton `--selftest` PASS · pairs skipped **0**. All eleven widget verifiers line-for-line IDENTICAL ON vs `ACKSTEMPLATE_OFF=1` over a 12-module sample; **all TWELVE widget selftests GREEN**.
+- **Ceiling:** SCAFFOLD 50.322% = **54.9% of achievable** (ceiling 91.6%); net of the named override the achievable share is unchanged at 55.0%.
+
+### 6. THE REGENERATION
+
+- FULL: 416 dirs / 36 batches (~15 min WSL), `_stalecheck.sh` **0 stale**; `_content_manifest.py diff` → **394 pages / 394 modules changed, 0 added / 0 removed** — exactly the bare-acks overview pages. In-memory canaries (12 modules): OFF == disk on 12/12; ON changes ONLY the overview page and ONLY the acks lines (0 non-acks diff lines); the three AI-variant modules (TRR109/111/112) byte-identical ON. Every-5th-module OFF re-conversion: **387/387 pages hash to the pre-round manifest.**
+- Ledger: **FULL ship, counter reset to 0**. Content manifest, fast-loop baseline, feature index (`--rehtml`) and `gate_baseline.json` refreshed.
+
+### 7. NAMED, NOT CHASED
+
+- The gold's old **last-page acks placement** (249 paired overviews without a block): constraint 33 already puts Claude's block on the overview — an override already in force since the acks builder was written; never chase the gold back.
+- The catch-all's expanded human form ("All other images and audio …") — the converter cannot know when audio is present (`catch_all_note`), unchanged.
+
+**Ledger:** full ship · data `standing_items.kb_template_form` · env `ACKSTEMPLATE_OFF` · tools `outputs/_measure_r317_acks.py`, `_r317_splice.py` · state `outputs/_r317_sk_final.json` · logs `_r317_gates.log`, `_r317_sk_full.log`, `_r317_verify_ON/OFF.log`, `_r317_selftests.log`, `_r317_fastloop_snapshot.log` · `KB_AMALGAMATION_STATUS.md` rows 45 + 90 → CAPTURED-LIVE.
+
 ## 2026-09-15 (round 316, build 260618.87) — THE LESSON'S OWN BILINGUAL TITLE PAIR: KB constraint 79 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 3; **SCOPED REGENERATION under the loop's standing `REGENERATE CORPUS` mandate — 179 modules = the 17 affected ∪ the 172-module two-span-title family (§0b); every protected gate HELD-or-IMPROVED, 40 pages moved and ALL 40 UP; scoped ship #1 since the round-315 full. Finished after a power cut mid-round — see §8.**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

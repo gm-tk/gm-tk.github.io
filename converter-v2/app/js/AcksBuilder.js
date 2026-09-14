@@ -83,8 +83,18 @@ class AcksBuilder {
 		const g = fmt.lesson_groups;
 		const html = [];
 
+		// ROUND 317 (loop Round 4 — KB constraints 45 + 90, CL-0090 locked). The wrapper is
+		// `acks acksTemplate` on EVERY module and the template classes generate the
+		// apology / copyright / AI statements, so the round-241 omit applies always —
+		// the gold's bare `acks` + typed statements is the pre-rule form the KB outranks
+		// (a named override, measured -0.024pp). Data standing_items.kb_template_form;
+		// env ACKSTEMPLATE_OFF (the AI variant and ACKSBOILER_OFF are unchanged).
+		const ktf = fmt.standing_items.kb_template_form;
+		const ktfOn = !!ktf && ktf.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ktf.env ?? "ACKSTEMPLATE_OFF"]);
 		html.push(Utils.FillTemplate(fmt.container.wrapper_open, {
-			acksClass: hasAi ? fmt.container.acks_class_ai_variant : fmt.container.acks_class_standard,
+			acksClass: hasAi ? fmt.container.acks_class_ai_variant
+				: (ktfOn && ktf.acks_class_standard) ? ktf.acks_class_standard : fmt.container.acks_class_standard,
 		}));
 
 		// TEMPLATE-VARIANT BOILERPLATE OMIT (ROUND 241 — Dev-Feedback R4, E3: the
@@ -101,7 +111,7 @@ class AcksBuilder {
 		// Acks_Formats.standing_items.template_variant_omit ("omit" lists which
 		// standing items go). Env toggle: ACKSBOILER_OFF (emits all three again).
 		const tvo = fmt.standing_items.template_variant_omit;
-		const omitList = (hasAi && tvo && tvo.enabled !== false
+		const omitList = ((hasAi || (ktfOn && ktf.omit_always !== false)) && tvo && tvo.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.ACKSBOILER_OFF))
 			? (tvo.omit ?? []) : [];
 

@@ -1547,7 +1547,16 @@ class Config {
 	// title beside it. 45 pages / 17 modules; scoped regeneration of 179 (the
 	// two-span-title family rebuilt byte-identical). Env LESSONPAIR_OFF; data
 	// header.lesson_bilingual_pair.
-	static AppVersion = "260618.87";
+	// ROUND 317 (260618.88): THE ACKNOWLEDGEMENTS BLOCK'S TEMPLATE FORM (KB constraints
+	// 45 + 90, CL-0090 locked; the autonomous loop's Round 4). Every acks block ships
+	// the wrapper "acks acksTemplate" (+ acksAI with AI media) and no longer types the
+	// apology / copyright (currentYear) / AI statements -- the template classes
+	// generate them; only "All other images (c) ..." stays typed. 394 overview pages;
+	// a NAMED KB-over-gold override (the gold is the old typed form): skeleton
+	// -0.024pp on exactly the 387 named pages, identical net of them, every other
+	// gate exact. Full corpus regeneration. Env ACKSTEMPLATE_OFF; data
+	// Acks_Formats.standing_items.kb_template_form.
+	static AppVersion = "260618.88";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
