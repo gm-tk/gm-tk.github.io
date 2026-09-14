@@ -78,6 +78,12 @@
 			"head_pattern": "mtk[\\s-]*quiz",
 			"exclude_pattern": "^\\s*\\[?\\s*end\\b",
 			"bracketless_max_words": 12,
+			"omit_quiz_content_drop": {
+				"_doc": "ROUND 322 (KB constraint 65 / CL-0082). Extra co-tags dropped by the retag under the omit round's own toggle: a callout tag resolved from the marker's PROSE (SCCH301 '[MTK quiz. Trigger engagement. Automarked. Alert teachers …]' kept `alert` as the survivor primary, so the marker opened an alert box and neither the round-232 emit nor the round-322 shell ever saw it). Measured over all 64 markers: `alert` is the only such survivor; no marker legitimately co-tags a callout. Env MTKQUIZOMIT_OFF reverts (MTKQUIZ_OFF reverts the whole retag).",
+				"enabled": true,
+				"env": "MTKQUIZOMIT_OFF",
+				"tags": ["alert"]
+			},
 			"drop_tags": [
 				"mcq",
 				"engagement quiz button",

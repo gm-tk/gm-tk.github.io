@@ -1587,7 +1587,17 @@ class Config {
 	// first, exempt from the h1_count cap; the page-title harvest accepts only [H1] there
 	// (no more "Finished!" titles). 24 pages / 14 modules. Env MTKTITLES_OFF; data
 	// header.mtk_titles + front_matter_metadata.title_in_code_cell.
-	static AppVersion = "260618.92";
+	// ROUND 322 (2026-09-15, build 260618.93): the [MTKquiz] SHELL without the quiz content
+	// (KB constraint 65 / CL-0082, decision 3 of the loop's plateau report): the box holds
+	// ONLY its h3 title, the writer's instructions, the "create this quiz in MTK DEV …" To Do
+	// note and the LAST-child "Go to quiz" button; questions / options / [correct] marks /
+	// answer keys / option tables / the in-page quiz widget are omitted SILENTLY (no Red Flag).
+	// Deferred emit + instruction run + silence in ContentConverter (mtkGuard), the quiz-type
+	// bundle shell (#mtkQuizShellBundle "widget"/"lead"), a plain `activity` shell box, a
+	// non-quiz widget ends the silence, the retag drops a prose `alert`. 30 pages / 23
+	// modules. Env MTKQUIZOMIT_OFF; data interactive_builders.mtk_quiz.omit_quiz_content +
+	// Tag_Lexicon._meta.mtk_quiz_retag.omit_quiz_content_drop. Gate _verify_mtkquiz.cjs.
+	static AppVersion = "260618.93";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

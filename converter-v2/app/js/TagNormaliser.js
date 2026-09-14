@@ -752,6 +752,14 @@ class TagNormaliser {
 					&& (tags.length || brackets.length
 						|| s.trim().split(/\s+/).length <= (mqr.bracketless_max_words ?? 12))) {
 					const drop = new Set(mqr.drop_tags ?? []);
+					// ROUND 322 (KB c65 / CL-0082): an extra drop list that rides the omit round's own
+					// toggle — a marker's prose word ("Alert teachers", SCCH301) must never leave a
+					// callout tag as the survivor primary, or the shell never opens.
+					const od = mqr.omit_quiz_content_drop;
+					if (od && od.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[od.env ?? "MTKQUIZOMIT_OFF"])) {
+						for (const t of (od.tags ?? [])) drop.add(t);
+					}
 					const oldPrimaryDropped = !!(primary && drop.has(primary.tag));
 					const kept = tags.filter((t) => !drop.has(t.tag));
 					tags.length = 0; tags.push(...kept);

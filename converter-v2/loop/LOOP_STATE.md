@@ -3,6 +3,10 @@
 **Session 1 started:** 2026-09-14 (Claude Code on Chris's Windows machine). Budget: 10 rounds or 6 hours.
 **Session 2 started:** 2026-09-14 (Claude Code, same machine). Budget: 12 rounds or 10 hours. Resumed Round 1 (engine r314) from session 1's recipe (tree PASS, HEAD 763e036) and shipped it.
 **Authority carried by the kickoff message:** `REGENERATE CORPUS` for every round, scoped by CLAUDE.md §0a/§0b.
+**Session 3 started:** 2026-09-15 09:41 NZST (Claude Code, same machine; hard stop 19:41). Budget: 12 rounds or 10 hours. Chris's kickoff:
+"Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … commit after every round, never push."
+Health check: `verify_after_transfer.sh` PASS, git clean at 1914ab5 (nothing uncommitted — nothing to reconcile), no stale index.lock.
+**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082, the `[MTKquiz]` shell without the quiz content (Chris's decision 3); commit (see git log). NEXT: Round 10 — PICK not yet written (candidates: c55 trailing full stops on buttons — gate-neutral; stickyNav; c67 overflowYScroll; the r322 residues need their own measured rounds). Plateau guard: r322 moved +0.043pp (gate-moving).**
 
 ## >>> STOPPED 2026-09-15 ≈08:15 NZST on the BUDGET rule (§4) — the 10-hour session cap (hard stop 09:21) after 8 shipped rounds <<<
 - **Why:** Chris answered the plateau report ("Yes to 2 and 3 — start with the TRR title source") at ≈07:48 NZST; Round 8 (decision 2, the MTK
@@ -103,7 +107,8 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Round 7 (engine r320 — the upload box's release order; c47/c95 measured and DECLINED): SHIPPED 2026-09-15. AppVersion 260618.91, CLAUDE.md
   §11/§14, scoped ship #2 since the r318 full. **LOOP STOPPED (plateau).**
 - Round 8 (engine r321 — the MTK title source, decision 2): SHIPPED 2026-09-15 08:2x. AppVersion 260618.92, CLAUDE.md §9/§11/§14, scoped ship #3.
-- Remaining KB queue (§D): c65 quiz omission (56 shells — decision 3, NEXT), c55 full stops (420 buttons, gate-neutral), stickyNav (33 modules,
+- Round 9 (engine r322 — the [MTKquiz] shell without the quiz content, decision 3 / KB c65): SHIPPED 2026-09-15 ≈11:35 (session 3). AppVersion 260618.93, CLAUDE.md §9/§11/§14, KB status row 65 → CAPTURED-LIVE, new gate `_verify_mtkquiz.cjs` in `run_all_gates.sh` (13 selftests), scoped ship #4.
+- Remaining KB queue (§D): c55 full stops (420 buttons, gate-neutral — NEXT candidate), stickyNav (33 modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
 ## The ceiling (Round 0 result — quote it in every report)
@@ -343,6 +348,89 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   buckets EXACT; cs exact +5; every other gate EXACT; 12 selftests GREEN. **55.0% of achievable.**
 - **Named residue (the ceiling):** TRR203's English title, TRR304's second line, TRR111/112/113's module-level titles are in no WT; TRR114 gold empty.
 
+## Round 9 PICK (engine r322) — Chris's decision 3, written before any code, 2026-09-15 10:55 NZST
+- **Class:** KB constraint 65 / CL-0082 — the `[MTKquiz]` shell WITHOUT the quiz content. Round 232 (CL-0038) made the marker a non-capturing
+  ELEMENT that emits the "Go to quiz" button + a To Do note and left the writer's quiz content rendered. CL-0082 (the designer's locked decision of
+  21 Aug 2026) REVERSES that limb: the activity box holds ONLY (1) `<h3>` title, (2) the writer's student instructions, (3) the `Designer/Developer
+  To Do:` note, (4) the button — in that order; the questions / options / `[correct]` marks / answer keys / the in-page quiz widget the writer also
+  described / the quiz's own in-D2L title+instructions are omitted SILENTLY (no Red Flag). Gate-visible (skeleton: the dropped `<ol>`/`<p>`/tables).
+- **Authority (§1b):** 1 = KB c65 + `05D_COMP14_BUTTONS_TABLES_COLUMNS.md` → MTK Quiz + constraint 1(b) (the one sanctioned silent omission);
+  3 = the gold AGREES on every triangulated shell: SCPH301 4E (the quiz COMMENTED OUT, then note + button), ARFUN03 1A / ARFUN04 1H + 2E /
+  TEFUN02 1D + 2A / TEFUN06 1A / TEFUN07 1A / EXBP901 1E (title + instructions + button, nothing else; EXBP901 and TEFUN07 SYNTHESISE the
+  box), ENG1004 Checkpoint 1 (the four steps dropped). The gold keeps the content on the 157-of-199 pre-rule shells the old scan counted only
+  where the writer typed NO marker (BLL110's 18 writer `[button] Go to quiz`s carry no `[MTKquiz]`) — those are outside the KB rule's scope.
+- **Triangulated:** SCPH301 4E (WT `[activity 4E] Quiz` / `[body] Complete this quiz…` / `[MTK quiz. Trigger engagement…]` / `[button] Quiz` /
+  Q1–11 with `[correct]` `[type answer]` `[Answer guide…]` / `[end activity]` → gold h3 + p + (commented quiz) + note + button → Claude h3 + p +
+  To Do + button + EVERY question as `<ol>`/`<p>` + 20 orphan-`[correct]` Red Flags); TEFUN02 1A (WT `[H3] Show your kaiako` `[Body] If you would
+  like to…` `[button] Go to quiz` `[MTK quiz…]` `[H3] Show your kaiako` `[Body] Now you can share…` `[end quiz]` → gold h3 + p + button (the
+  post-marker H3/Body — the quiz's in-D2L text — dropped) → Claude h3, p, button, note, h4, p); ARFUN04 2E (opener `[Activity 2E] [MTK Quiz…]
+  [H3] True or false…` then 8 `1. … ☐ True ☐ False` lines, no closer — the box auto-closes at the next `[H3]` → gold h3 + note + button → Claude
+  h3 + notes + button + 8 `<ol>` + 16 `<p>`).
+- **MEASURED (`outputs/_measure_r322_mtkquiz.cjs` → `_r322_mtkquiz_windows.json`, the LIVE engine over every WT the r232 detector lists —
+  `_detect_mtkquiz.cjs` re-run: 64 spans / 25 modules, up from 33/21 at r232 with the corpus intake):** 64 markers on 33 pages / 25 modules;
+  63 have content after them inside their window. Path 1 (an UNCONSUMED marker): 41 — 24 inside a writer's `[Activity]` box, 4 that ARE the
+  opener (`[Activity 2B] [MTK quiz…][H3]`), 13 with no box at all (SCFUN01 ×4, TEFUN07 ×4, MXFUN02 ×2, EXBP901, SSOG301, ENG1005 ×1 loose).
+  Path 2a (the marker rides a QUIZ-TYPE bundle — mcq / radioQuiz / dragAndDrop / clickDrop — as its opening span or a member): 15 — ARFUN03 ×4,
+  ARFUN05 ×4, ARFUN04 ×2, TEFUN03 ×3, HPRE301 ×1, MXFUN02 ×1. Path 2b (a member of a NON-quiz container bundle — accordion ENG1004/1005 ×5,
+  speechBubble TEDC401, `unclassified` HPRE203 p1 + MXFU402): 8 — NAMED, not chased this round (the widget's own member renderer; ENG1004's
+  accordion is un-built anyway). Window ends: explicit `[end …]` closer 36, end of page 18, next `[Activity]` 5, page/section boundary 3, next
+  marker 1, `[end MTKQuiz]` 1. By template: Fundamentals 36 (ARFUN/TEFUN/SCFUN/MXFUN/EXPFUN), Standard 27, Inquiry 1 (EXBP901); the 20-page
+  floor is met (33 pages) and the KB row outranks (§1c).
+- **Mechanism (planned), one data block `interactive_builders.mtk_quiz.omit_quiz_content` {enabled, env MTKQUIZOMIT_OFF, note_first true,
+  todo_note (the KB wording + the writer's spec), silence_end {…}}:**
+  (A) `#mtkQuizEmit` emits note THEN button (KB order) and ALWAYS the button — a writer's own quiz button the r232 pre-pass claimed
+  (`_mtkQuizAnchor` / bundle `_mtkQuizBtn`) renders NOTHING under the flag (the button is the box's LAST child, the gold's 16:3 / 87% convention
+  already recorded at r320), so one button ships per quiz.
+  (B) SILENCE: after the marker emits (directly, or through `#mtkQuizBundleTail`), the page loop skips every content item until the quiz block
+  ends — the enclosing activity box's close (explicit `[end …]` or the existing heading auto-close, ARFUN04 2E), any CONTAINER_CLOSE, the next
+  `[Activity]` opener, a page/section boundary, the next marker, or — with NO box open — a rendered heading ≤ `rendered_heading_max` / any
+  CONTAINER_OPEN (SSOG301's `[H2] Forming a government` ends it at once; EXBP901's `[Alert]` rubric stops it after the first table). A bundle whose
+  trigger item is silenced is marked emitted (never renders later); the box-close and boundary items themselves still process.
+  (C) Path 2a: a quiz-type bundle carrying the marker builds the SHELL instead of the widget — [owned activity open] + the members BEFORE the marker
+  rendered as content (TEFUN03's `[Body] Show your kaiako…`) + note + button; the members after it dropped; the box closes at the widget's end as
+  now. The un-built placeholder box is not emitted either (the whole widget is the quiz).
+  Scoped regeneration: the 25 affected modules ∪ the §0b family = every module whose WT carries an MTK-quiz span (the detector's list IS the
+  family — the tag has one canonical) plus the r232 button family (modules with a writer `[button] Go to quiz`: the ~40-module standalone class,
+  so the prepass change is proven inert there).
+- **Gate expectation:** skeleton: the 33 pages lose the dropped `<ol>`/`<p>`/tables and un-built quiz placeholders; where the gold commented the
+  quiz out or shipped the shell (every triangulated case) the page RISES; a page whose gold kept the content visible (pre-rule — the old scan's
+  "39 carry list/table markup") DIPS — a NAMED KB-over-gold override, judged per `gold_override_policy` (b): the round's own verifier
+  (`_verify_mtkquiz.cjs`: every marker's box holds no `<ol>`/`<table>`/question `<p>` after the note+button; LIVENESS + DETECTION) and every other
+  gate holding. Compare_structure / body_compare may move on the 33 pages (fewer content elements); leak/clean ≥ hold (fewer orphan-tag flags).
+- **Plateau guard:** R8 moved (+0.043); this round is gate-moving (a named override, possibly net negative — judged net of the named pages).
+
+## Round 9 (engine r322) — what shipped (Chris's decision 3, KB constraint 65 / CL-0082)
+- **Fix:** `interactive_builders.mtk_quiz.omit_quiz_content` {enabled, env MTKQUIZOMIT_OFF, note_first, todo_note, instruction_max_items 2,
+  instruction_tags, question_pattern, answer_mark_pattern, shell_max_members_before 2, quiz_bundle_types, non_quiz_widget_ends_silence,
+  shell_box_plain, absorb_tags ["engagement quiz button"], absorb_window 2} + `Tag_Lexicon._meta.mtk_quiz_retag.omit_quiz_content_drop` {tags ["alert"]}.
+  Seams (ContentConverter): the marker's emit DEFERRED behind an instruction run (`mtkPending` / `#mtkQuizRunStep`), note + button flushed in the
+  open box, then the SILENCE (`mtkGuard`) to the block's end — an explicit `[end …]` ahead runs it there (`mtkCloserAhead`), a NON-quiz widget
+  ends it (HPRE203 2D / SSOG103 6A speech bubbles kept); a quiz-type bundle carrying the marker builds the shell instead of the widget
+  (`#mtkQuizShellBundle` "widget" / "lead", `#mtkQuizShellPre`, `#mtkQuizTrimLead`), its box the plain `activity` form (gold 142 plain vs 14
+  interactive around "Go to quiz"); the writer's claimed button and a bare `[Trigger engagement]` render nothing; TagNormaliser drops a
+  prose-resolved `alert`. Splice `_r322_splice.py` (22 steps — reproduces the four live files from the committed r321 files; idempotent);
+  probe `_r322_probe.cjs` (in-memory A/B vs disk, `--save`); windows `_measure_r322_mtkquiz.cjs` → `_r322_mtkquiz_windows.json`, `_r322_showwin.py`.
+- **New gate:** `reference/tests/_verify_mtkquiz.cjs` (+ `_selftest_core.cjs` SPEC, `run_all_gates.sh`): the KB shell per emitted note —
+  note→button adjacency, nothing but title/instructions/bullets/inline before the button, no `<ol>`/table/media/quiz-type placeholder/answer-mark
+  residue/question line, one button; a Path-2b non-quiz placeholder counts as residue. 61 shells / 23 modules defect 0; `--selftest` GREEN.
+- **Regeneration:** the 58-module §0b family (25 marker modules ∪ 33 "go to quiz"/[quiz] WT mentions) / 10 batches; 0 stale; 30 pages / 23
+  modules changed = the probe's set byte-for-byte; OFF in memory = disk on 306/306 family pages; the mcq/clickDrop/dropDown/accordion
+  verifiers line-for-line identical ON vs OFF (mcq: engine console notes only).
+- **Gates:** skeleton 50.368 → 50.411 (+0.043pp; 19 moved, 15 up / 3 down, NAMED KB-over-gold: TEFUN03_0_0 −4.60, ARFUN05_0_0 −2.19,
+  TEFUN02_0_0 −0.33 — their gold built the writer's in-page [Quiz] widgets the KB says the MTK marker outranks), ≥50 1028 → 1030, ≥75 192 → 193,
+  RAW 34.749 → 34.771; every other gate EXACT; 13 selftests GREEN. **55.0% of achievable.**
+- **Named residue:** Path 2b — 8 markers captured by a NON-quiz container bundle (accordion ENG1004 ×3 / ENG1005 ×3, unclassified HPRE203 1C /
+  MXFU402 5C, speechBubble TEDC401) keep the r232 form (HPRE203 1C's gold keeps the pre-marker image table, so the "widget" shell's table skip is
+  the wrong tool there); the box-less shell — 32 of 61 shells have no [Activity] box, no synthesised box / default `Quiz` h3 (SCFUN01, ARFUN03,
+  ARFUN05, TEFUN07/08, ENG1004/1005, MXFUN02, EXBP901, EXPFUN07, SSOG301, TEDC401); trailing prose inside the box after the quiz is silenced with it
+  (EXPFUN07 1A "Well done…" — gold keeps it after the button); EXBP901 1.0's rubric alert + question-box table survive after the button (box-less
+  silence ends at the first container open); ARFUN04 1H (mid-list member of the previous drag-and-drop's over-capture, r310 class); the post-marker
+  instruction line BLLR201's gold dropped is kept; h4 vs the KB's h3 on the writer's titled boxes (pre-existing).
+- **Lessons:** the r315 "suffix trap" bit twice more (steps (6)/(3c) early, (10b) late) — every splice step is now keyed on a unique substring;
+  a Bash-tool heredoc halves backslashes AND turns `\r` into a raw CR — write any patch with escapes via the Write tool; a Windows-written code
+  list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
+  bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
+
 ## Follow-up candidates surfaced by Round 1 (NOT queued — each needs a PICK + corpus-wide measure per §3)
 - **The dropbox bundle terminates its activity.** Gold: the upload button is the box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%).
   After an r314 hold the box stays open to the next auto-close boundary (XTAS101 1G swallows `[body] Listen and read…` + a carousel before the
@@ -385,3 +473,4 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - r6 (engine r319) · KB constraint 89, learningSupport on every X-prefixed module's <html> · SHIPPED 2026-09-15 · scoped regeneration, 228 pages / 35 modules · gate-neutral, every gate EXACT · 54.9% of achievable · commit (see git log)
 - r7 (engine r320) · the upload box keeps the writer's order around its button (text before the last marker → before the button) · SHIPPED 2026-09-15 (a small ship: 6 pages / 4 modules) · scaffold 50.322→50.325 (+0.003) · every other gate EXACT · c47/c95 DECLINED on measurement · 54.9% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r318 0.000, r319 0.000, r320 +0.003)**
 - r8 (engine r321) · the MTK / Te Reo Rangatira title source (Chris's decision 2) · SHIPPED 2026-09-15 · scoped regeneration, 24 pages / 14 modules · scaffold 50.325→50.368 (+0.043), cs exact +5, every other gate EXACT · 55.0% of achievable · commit (see git log)
+- r9 (engine r322) · KB constraint 65 / CL-0082, the [MTKquiz] shell without the quiz content (Chris's decision 3) · SHIPPED 2026-09-15 · scoped regeneration, 30 pages / 23 modules (58-module family rebuilt) · scaffold 50.368→50.411 (+0.043; 15 up / 3 down NAMED KB-over-gold), ≥50 +2, ≥75 +1, RAW +0.022 · every other gate EXACT · new gate _verify_mtkquiz.cjs 61 shells defect 0 · 55.0% of achievable · commit (see git log)
