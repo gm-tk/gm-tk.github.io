@@ -1,5 +1,61 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 315, build 260618.86) — THE KB'S XHTML SHELL: lowercase `<!doctype html>` + self-closing voids (KB constraint 28), and THE PAIRING PARSER REPAIR it exposed (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 2; **FULL CORPUS REGENERATION under the loop's standing `REGENERATE CORPUS` mandate — a shell change is corpus-wide by construction; ledger reset to 0; every protected gate HELD-or-IMPROVED, and the skeleton gate RE-BASELINED under a repaired page-pairing parser — read §5 before comparing numbers across this round**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**Every page now ships the KB's output shell — `<!doctype html>` in lowercase and every void element self-closed in the XHTML form (`<img … />`, `<br />`, `<meta … />`, `<hr />` …) — a byte-inert change to every gate; and the change exposed that the gate suite's page-PAIRING parser (`anchor_compare.Tree`/`ATree`) had no void handling, so it mis-parsed every plain-void page on both sides; that parser is repaired and the skeleton gate re-baselined (1954 pairs, 15 more true pairs than before).**
+
+### 2. THE EVIDENCE (gold in the KB style → Claude; the Writers Template has no say in the shell)
+
+- **KB:** constraint 28 — *"Use lowercase `<!doctype html>` and XHTML-style self-closing tags on void elements"*; `01A_TEMPLATE_LEVELS_CORE.md` "Void element self-closing syntax" / "DOCTYPE casing"; the `02C` verification checklist lines 19 and 23.
+- **Human gold, TRR114_1.0.html / XDLS912_01.0.html:** `<!doctype html>` … `<meta charset="utf-8" />` … `<img class="img-fluid" loading="lazy" src="images/iStock-659661462.jpg" alt="" />`.
+- **Claude before:** `<!DOCTYPE html>` on 2102/2102 pages; `<img class="img-fluid" loading="lazy" src="…" alt="">`, `<br>` — 0 of 11992 `<img>` and 0 of 2930 `<br>` self-closed (the head's `<meta … />` tags were already in the KB form, from the skeleton data).
+- **Claude after:** `<!doctype html>`; `<img … alt="" />`; `<br />` — every void on every page in the ` />` form (checked: 0 remaining plain voids across the regenerated corpus sample).
+
+### 3. THE MEASUREMENT (gold, every page — `LOOP_STATE.md` Round 2 PICK)
+
+- Doctype: **UPPER 1810 : lower 572 : none 3**. Self-closing on the lowercase-doctype pages: ` />` **10371** : `/>` 552 : `>` 2519 (**77%**; img 80%, meta 99%, br 53%); on the uppercase-doctype pages: 1% (395 + 108 of 40853). So the two halves of constraint 28 are ONE style with a space before the slash, and **the gold majority does NOT follow it** — under the loop's order of authority (§1b) the KB outranks the gold because the gold predates the rule: an INTENTIONAL OVERRIDE, and gate-neutral (every gate parses through html.parser, where `<img … />` and `<img …>` are the same node; the doctype and `<html>` sit outside the skeleton).
+- By family (lower / UPPER): BLL 99/222 · TRR 48/35 · XDLS 41/52 · ENGS 33/39 · XGF 22/25 · ENGI 10/81 · MX*, HIS, AGH, PES, ARFUN 0 lower.
+- Population: every page — 2102 pages / 413 modules (416 dirs).
+
+### 4. THE FIX (engine general, shape in data)
+
+- **Data** `Emit_Templates.json` → `formatter.xhtml_voids` `{ enabled, env: "XHTMLVOID_OFF", doctype: "<!doctype html>", void_tags: [img br meta link hr input source wbr area base col embed track], close: " />" }`.
+- **`HtmlFormatter`** — `#voidPass()` reads the block (null when off) and builds ONE attribute-aware regex (`<(names)(?=[\s/>])((?:"[^"]*"|'[^']*'|[^>"'/]|/(?!\s*>))*?)\s*/?>` — a quoted value may hold `>` or `/`); `#xhtmlVoids(line, vp)` rewrites the doctype line whole (case-insensitive) and normalises every void open tag's tail to `close`, whatever form it arrived in — idempotent. Hooked into `Indent` per line, after the round-243 block breaking, so each void is seen once. One choke point (`PageAssembler` → `Indent`).
+- **Unit test** `outputs/_r315_unit.cjs` drives the REAL `Indent` on 18 edge cases (`<br>`, `<br/>`, `<BR>`, alt text holding `>`, an unquoted `src=a/b.png`, `<p>one<br>two<br />three</p>`, `<brand>`/`<br-x>`/`<column>`/`.brick` non-matches, `<a><img></a>` inline) — ON: all pass, idempotent; OFF: every line unchanged.
+- **Env toggle `XHTMLVOID_OFF`** reverts to the round-314 form byte-for-byte. Splice `outputs/_r315_splice.py` (anchored, idempotent — its first idempotency test let an insert whose "new" ends with its own anchor re-apply on a re-run and both files briefly carried a duplicate block; caught by `node --check` / a duplicate-key JSON load, removed, and the test corrected to look for the inserted prefix — recorded so the next splice does not repeat it).
+
+### 5. THE PAIRING-PARSER REPAIR — why the skeleton gate moved on a byte-inert change, and what was done about it
+
+- **What happened.** The in-memory proof (§6) showed ON differs from OFF ONLY by the doctype line and void-tag tails, on 469/469 pages. Yet the skeleton gate moved: 1939 → 1941 pairs, mean 50.031 → 50.131, 18 pages moved, 5 added / 3 dropped — all in the heavy maths/pipeline modules (MXFU301 −21.36, MXFL302 −14.85, SCCH301 +40.72, AGH1007 +29.26 …). Every OTHER gate was EXACT.
+- **Why.** The skeleton gate pairs Claude pages with gold pages through `_discrepancy_audit.pairs`, whose page signature is built by `anchor_compare.parse` → `Tree`. **Neither `Tree` nor `ATree` in `anchor_compare.py` had any void handling**: html.parser fires `handle_starttag` for a plain `<br>` with no matching `handle_endtag`, but `handle_startendtag` (= start + end) for `<br />`; both parsers pushed EVERY start tag and popped on EVERY end tag, so a plain void left a phantom stack entry and a permanently inflated `depth` — the widget-skip (`depth <= skip_depth`) never released after a widget holding an image, the wrapper chain drifted, and `ATree` dropped any `<p>` holding a `<br>` (its `</p>` met `br` on the stack top). Every Claude page and the gold's 1810 plain-void pages had been parsed that way; the 572 self-closing gold pages had not. Moving Claude's pages to the ` />` form sidestepped the defect on ONE side only, and the pairing changed. Measured with the old parser: the OFF and ON versions of the SAME page produced a DIFFERENT `Tree` parse on **298 of 469** pages and a different `ATree` parse on **309 of 469**.
+- **The repair** (`outputs/_r315_repair_anchor_compare.py`, idempotent; `_r315_anchor_compare_BEFORE.py` is the pre-repair copy): a `VOID_TAGS` set beside `STRUCT`; both parsers `return` from `handle_starttag` for a void (Tree still counts it in its inventory) and from `handle_endtag` for a void's synthetic end. With the repair the OFF and ON parses are **identical on 469/469 pages for both classes** — the pairing is now form-independent, so under the repaired tool the OFF corpus and the ON corpus score identically BY CONSTRUCTION (the skeleton's own `TreeBuilder` was already void-aware).
+- **The repaired pairing is visibly more correct**, not merely different: AGH1003 was paired off-by-one (Claude `5_0` ↔ gold `06.0`, `6_0` unpaired) and now pairs `5_0`↔`05.0`, `6_0`↔`06.0`; MXDB301's `4_0/5_0/6_0` were paired to gold `3.0/4.0/5.0` and now pair `4.0/5.0` with `6_0` correctly released (no gold counterpart); BLL167 gains its `1_1`↔`2.0` pair. The 11 "dropped" pairs are released mis-pairs; the 26 "added" are found true pairs — **net +15 pairs**, the round-190 class ("the pre-190 bug hid 238 pairs").
+- **The ceiling under the repaired pairing** (`outputs/_ceiling_r315.json/.md`, baseline `_r315_sk_final.json`): **CEILING 91.6% unchanged**, loose 94.2%; 1894 joined pages (was 1879).
+
+### 6. PROOF THAT THE CONVERTER CHANGE IS BYTE-INERT (the toggle-OFF invariant, three ways)
+
+- In memory, 10 modules / 59 pages (`_probe_r308_convert.cjs`, one toggle state per process): **OFF == disk on 59/59; ON == normalise(OFF) on 59/59** (normalise = the same doctype + void-tail rewrite applied by a Python regex); every void in ON in the ` />` form.
+- After the full regeneration, every 5th module (84 modules, TRR105 excluded — the no-Writers-Template module the probe cannot prep) re-converted OFF: **OFF hashes to the pre-round manifest on 387/387 pages; ON (disk) == normalise(OFF) on 387/387**. The 13 modules whose skeleton pages moved before the repair, re-converted OFF: 82/82 pages the same two ways.
+- `_content_manifest.py diff`: **2102 changed / 0 added / 0 removed** (every page carries the doctype). `_stalecheck.sh`: **0 stale** (36 batches, `_batch_plan.py --raw`, ~15 min WSL).
+
+### 7. PROTECTED GATES
+
+- **Every gate other than the skeleton is EXACT to round 314** (fresh full runs, `outputs/_r315_gates.log`): structurally clean **2056/2102 = 97.81%** / leak **288 occ / 46 pages** · compare_structure exact **11355** / EXTRA **186** / missing **591** / row-wrap-missing 23 · body_compare **192** (over-capture 43 / runaway 4 / empty 147) · tags **9557/9557, REAL FAILURES 0** · flipCard gate set **TOTAL 61, divergence 0 ✓** · speechBubble gate set TOTAL 62 / defect 4 (unchanged) · modal gate set defect 0 · entry-parity **PASS** · index-sync **33/28** · skeleton `--selftest` PASS · pairs skipped (parse error) **0**.
+- **Skeleton (PRIMARY) — RE-BASELINED under the repaired pairing, `outputs/_r315_sk_final.json` (a FRESH single full `--json` run): SCAFFOLD mean 50.289% / ≥50% 1028 / ≥75% 193 / ≥90% 16 / skipped 0 @ 1954 pairs; RAW 34.624%.** Against the r314 record (old pairing, 1939 pairs): mean +0.258pp, ≥50 +23, ≥75 +1, ≥90 EXACT, pairs +15 net (26 found / 11 released), 74 pages moved, pp-sum scaffold +449.79 / RAW +357.25. **None of that movement is the converter change** (§5, §6: under the repaired tool ON == OFF on every page parsed); all of it is the pairing repair — the same pages, paired right. For the record, the pre-repair run of this round's corpus is kept as `_r315_sk_prerepair.json` (1941 pairs, mean 50.131). `--accept-named` neither used nor needed.
+- **Ceiling:** SCAFFOLD 50.289% = **54.9% of achievable** (band 53.4–54.9%; ceiling 91.6%).
+- **Widget verifiers** (in-memory conversion, ON vs `XHTMLVOID_OFF=1`, over the 83-module sample): all ELEVEN line-for-line IDENTICAL in both states — accordion 204 panels ✓ · carousel 120 built / 7 mismatched slide ids (pre-existing, identical) · clickDrop 35 / 50 items defect 0 ✓ · dropDown 42 groups / 52 units defect 0 ✓ · tabs 38 divergence 0 ✓ · mcq 5 defect 0 ✓ · modal 44 groups / 72 triggers defect 0 ✓ · hintslider ✓ · image-carousel 2 (3 slides, defect 3 pre-existing, identical) · speechBubble truncated at the same point in both states (the verifier hits the 300 s wall on MXFL301 — a pre-existing slowness, noted) · flipCard 382 cards, divergence 92 / defect 81 on this wide sample, IDENTICAL in both states (pre-existing; the protected 4-module gate set is divergence 0).
+- **All TWELVE widget selftests GREEN** + skeleton selftest PASS.
+- Ledger: **FULL ship, counter reset to 0**. Content manifest, fast-loop baseline, feature index (`--rehtml` + merge) and `gate_baseline.json` refreshed.
+
+### 8. NAMED, NOT CHASED
+
+- `anchor_compare.wt_items` still reads the first parsed file of an unsorted listdir (the Round-0 two-file trap) — a measurement-tool repair of its own; untouched here.
+- The plateau guard: this round is gate-neutral by design (the skeleton movement is the tool repair, not the converter). Round 3 must be a gate-moving class.
+
+**Ledger:** full ship · data `formatter.xhtml_voids` · env `XHTMLVOID_OFF` · tools `outputs/_r315_splice.py`, `_r315_unit.cjs`, `_r315_repair_anchor_compare.py` (+ `_r315_anchor_compare_BEFORE.py`) · state `outputs/_r315_sk_final.json` (+ `_r315_sk_prerepair.json`), `_ceiling_r315.json/.md` · logs `_r315_gates.log`, `_r315_sk_full.log`, `_r315_verify_ON/OFF.log`, `_r315_selftests.log`, `_r315_regen_b01–36.log` · `KB_AMALGAMATION_STATUS.md` row 28 → CAPTURED-LIVE.
+
 ## 2026-09-15 (round 314, build 260618.85) — THE UPLOAD BOX INSIDE ITS ACTIVITY: KB constraint 43 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 1; **SCOPED REGENERATION under the loop's standing `REGENERATE CORPUS` mandate, resolved by the §0a/§0b family rules — 243 modules (the 121 affected ∪ the 212-module dropDown tag family); every protected gate HELD-or-IMPROVED, fresh full-corpus skeleton score, scoped ship #1 since the round-313 full**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

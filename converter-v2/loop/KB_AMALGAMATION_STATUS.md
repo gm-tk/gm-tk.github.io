@@ -45,7 +45,7 @@
 | 25 | (superseded by 79) | CL-0069 | — | SUPERSEDED | — |
 | 26 | D&D standard layout: text in `questionContainer`, images in `dragContainer` | pre-ledger | dragAndDrop modules (292) | **NOT CAPTURED** — no dragAndDrop builder (coverage chain) | — |
 | 27 | DropQuiz standalone pairs use list layout | pre-ledger | dropdown modules | **UNVERIFIED** (dropDown builder r294 — check its layout choice) | `interactive_builders.dropDown` |
-| 28 | Lowercase `<!doctype html>`; XHTML self-closing void tags | pre-ledger | every page | **NOT CAPTURED** — `<!DOCTYPE` upper on 2102 / 2102 Claude pages (gold 1807 upper : 572 lower — the KB outranks); self-closing voids: 0 of 11992 Claude `<img>` and 0 of 2930 `<br>` self-close (gold mixed: 7759 : 22694) | PageAssembler shell / HtmlFormatter; gate-neutral |
+| 28 | Lowercase `<!doctype html>`; XHTML self-closing void tags | pre-ledger | every page | **CAPTURED-LIVE (round 315, 2026-09-15 — the loop's Round 2)** — `HtmlFormatter.Indent`'s `formatter.xhtml_voids` pass (`XHTMLVOID_OFF`): `<!doctype html>` on 2102/2102 Claude pages, every void self-closed ` />` (the form of the gold's 572 lowercase-doctype pages, 77% ` />`); the gold majority (1810 UPPER, plain voids) predates the rule — a KB-over-gold override, gate-neutral. Side effect: exposed and repaired the void-unaware `anchor_compare` parsers (the skeleton gate's pairing) — 15 more true pairs | `HtmlFormatter` + `Emit_Templates.formatter.xhtml_voids`; gate-neutral |
 | 29 | Speech-bubble image-column padding sides (left → `paddingR`, right → `paddingL`; HPE head-only exception) | CL-0055; CL-0067 | speechBubble modules | **CAPTURED-INERT** (cl0055 "live emit deferred"; gold majority is unpadded — a KB override) | `_universal_conventions.cl0055_bubble_image_padding` |
 | 30 | Ask for the image mode | pre-ledger | — | N/A (PageForge has its own Mode P/D control) | App.js |
 | 31 | Mode D clean `<img>`; Mode P commented reference | pre-ledger | every module | **LIVE** | MediaBuilder.image |
@@ -225,7 +225,7 @@ Front-facing = changes the generated HTML/CSS (constraint 87). Each front-facing
 | 3 | c79 lesson h1 = lesson title (+ the lesson's bilingual pair) | 652 mismatched lesson pages; 227 missing dual-h1 pages | skeleton-visible (h1 count) | the boundary tag / `[H2]` / `[Lesson Overview]` source order | several sub-mechanisms — triangulate before sizing the derivable share; the bilingual pair (227 pages) is the largest single one |
 | 4 | c89 `learningSupport` on X-prefixed `<html>` | 228 pages / 36 modules | gate-neutral | the module code | locked admin decision; the cheapest KB win |
 | 5 | c83 no `loading="lazy"` in moving widgets | 1121 images / ≈ 243 pages | gate-neutral | the host widget class | reverse of the r240 add inside the listed hosts |
-| 6 | c28 lowercase `<!doctype html>` + XHTML self-closing voids | 2102 pages | gate-neutral | unconditional | trivial shell/formatter edit |
+| ~~6~~ | c28 lowercase `<!doctype html>` + XHTML self-closing voids | **SHIPPED round 315** (2102 pages, full regeneration) | gate-neutral | — | see row 28; the pairing-parser repair rode along |
 | 7 | c47 / c95 `Lesson N` body-heading strip / drop | 89 pages | skeleton-visible | the heading's own prefix vs the `<h1>` | |
 | 8 | c65 MTK quiz content omission (CL-0082) | 56 shells (12 WT modules) | skeleton-visible (override vs gold) | the `[MTKquiz]` marker | silent omission, no note |
 | 9 | c55 button labels ending in a full stop | 420 buttons | gate-neutral (text) | the label's own trailing punctuation | |

@@ -1,0 +1,8 @@
+accordion: SELFTEST _verify_accordion.cjs: GREEN
+carousel: SELFTEST _verify_carousel.cjs: GREEN
+clickdrop: SELFTEST _verify_clickdrop.cjs: GREEN
+dropdown: SELFTEST _verify_dropdown.cjs: GREEN
+flipcard: SELFTEST _verify_flipcard.cjs: GREEN
+hintslider: SELFTEST _verify_hintslider.cjs: GREEN
+image_carousel: SELFTEST _verify_image_carousel.cjs: GREEN
+intextract: 

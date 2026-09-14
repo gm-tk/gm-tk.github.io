@@ -5,10 +5,15 @@
 **Authority carried by the kickoff message:** `REGENERATE CORPUS` for every round, scoped by CLAUDE.md §0a/§0b.
 
 ## Session 2 — IN PROGRESS (started 2026-09-14 23:21 NZST; hard stop 09:21 NZST 2026-09-15 or 12 rounds)
-- **Round 1 (engine r314) SHIPPED 2026-09-15** — KB constraint 43, the trailing upload box inside its activity. Commit: see the round log.
-- **Corpus / engine state:** the r313 corpus + the r314 scoped regeneration (243 modules rebuilt, 65 pages / 43 modules changed, 0 stale,
-  content manifest + fast-loop baseline + feature index refreshed, skeleton state `outputs/_r314_sk_final.json` FRESH). Build 260618.85.
-- **If this session is interrupted:** the corpus and every state file describe round 314 as shipped; resume at Round 2 (PICK).
+- **Round 1 (engine r314) SHIPPED** (commit f1f4de2) — KB c43, the trailing upload box inside its activity.
+- **Round 2 (engine r315) SHIPPED 2026-09-15** — KB c28, the XHTML shell (lowercase doctype + ` />` voids), FULL regeneration; and the
+  `anchor_compare` pairing-parser repair it exposed (skeleton re-baselined at 1954 pairs). Commit: see the round log.
+- **Corpus / engine state:** the r315 FULL regeneration (2102 pages, 0 stale); content manifest, fast-loop baseline, feature index, ledger
+  (full ship, counter 0), gate_baseline.json all refreshed; skeleton state `outputs/_r315_sk_final.json` FRESH (repaired pairing). Build 260618.86.
+- **MEASUREMENT RULE FROM ROUND 2 ON:** `reference/tests/anchor_compare.py` is void-aware now. Any comparison across round 315 must use the
+  repaired tool on both sides; the r313/r314 skeleton state files were scored with the void-blind pairing (1939 pairs) and are NOT comparable
+  page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
+- **If this session is interrupted:** everything describes round 315 as shipped; resume at Round 3 (PICK — must be a GATE-MOVING class, see below).
 
 ## Environment (decided 2026-09-14, session 1)
 - **All gate tools, probes and regenerations run in WSL** (`wsl.exe -e bash -lc '...'`, project at
@@ -35,8 +40,12 @@
 - Round 0b (KB amalgamation audit): DONE 2026-09-14, commit 784305b.
 - Round 1 (engine r314, KB c43 — the upload box inside its activity): SHIPPED 2026-09-15 (session 2). Changelog entry written, AppVersion
   260618.85, CLAUDE.md §9/§11/§14 updated, `KB_AMALGAMATION_STATUS.md` row 43 → CAPTURED-LIVE, gate_baseline.json refreshed, ledger scoped #1.
-- Round 2: NOT STARTED — next PICK from §D of `KB_AMALGAMATION_STATUS.md` (c90/c45 acks, c79 lesson title, c89 learningSupport, c83 lazy, c28 doctype, …)
-  merged with the dashboard, KB rows first (§1c). Follow-up candidates below are NOT yet queued — each needs its own PICK + measure.
+- Round 2 (engine r315, KB c28 — the XHTML shell + the pairing-parser repair): SHIPPED 2026-09-15. AppVersion 260618.86, CLAUDE.md §9/§11/§14/§16,
+  `KB_AMALGAMATION_STATUS.md` row 28 → CAPTURED-LIVE, full ship recorded.
+- Round 3: NOT STARTED — must be GATE-MOVING (plateau guard: r315 was gate-neutral by design). Candidates in order: c79 lesson-title bilingual
+  pair (227 pages, skeleton-visible, gold-aligned), c90/c45 acks (413 pages, a NAMED override needing the gate override policy), c47/c95 Lesson-N
+  strip (89 pages), then the dashboard's top gold-matching class. Gate-neutral KB rows still queued for alternation: c83 lazy (243 pages), c89
+  learningSupport (228 pages), c55 full stops, stickyNav, c67.
 
 ## The ceiling (Round 0 result — quote it in every report)
 - Paired population 1880 pairs = the gate's 1939 minus 59 unmeasurable (13 TRR modules with a Media-List-only
@@ -60,6 +69,39 @@
   dropDown family verifier 295 groups / 205 units defect 0; all other verifiers line-for-line identical ON vs OFF; 12 selftests GREEN.
   **54.5% → 54.6% of achievable.**
 - **Named dip:** ENGS201_7_0 −4.04 (its 7D box now IS the gold's inside-button `dropbox` form; alignment artefact of the removed row).
+
+## Round 2 PICK (engine r315) — written before any code, 2026-09-15 00:20 NZST
+- **Class:** KB constraint 28 — lowercase `<!doctype html>` + XHTML-style self-closing void elements (` />`). Claude ships `<!DOCTYPE html>` on
+  2102/2102 pages and 0 self-closing voids (11992 `<img>`, 2930 `<br>`, every `<meta>`/`<link>`/`<hr>`).
+- **Authority (§1b):** 1 = KB constraint 28 (universal) + `01A_TEMPLATE_LEVELS_CORE.md` "Void element self-closing syntax" / "DOCTYPE casing"
+  + the `02C` verification checklist. The gold MAJORITY does NOT follow it (doctype UPPER 1810 : lower 572 : none 3) — the KB outranks the gold
+  (the gold predates the rule); INTENTIONAL OVERRIDE, gate-neutral (every protected gate parses via html.parser, where `<img … />` == `<img …>`;
+  the doctype and `<html>` are outside the skeleton).
+- **Measured (gold, this session):** the two halves are ONE style — lowercase-doctype pages self-close ` />` 10371 : `/>` 552 : `>` 2519 (77%;
+  img 80%, meta 99%, br 53%), uppercase-doctype pages self-close 1% (395+108 of 40853). Form = a space before the slash (` />`). Families:
+  BLL lower 99 / UPPER 222 · TRR 48/35 · XDLS 41/52 · ENGS 33/39 · XGF 22/25 · ENGI 10/81 · MX*, HIS, AGH, PES, ARFUN 0 lower.
+- **Population:** every page (2102 / 413 modules) — corpus-wide by construction (a shell/formatter change) → FULL regeneration (§2; ~12 min WSL).
+- **Mechanism (planned):** `HtmlFormatter.Indent` gains a data-flagged pass `formatter.xhtml_voids` {enabled, env XHTMLVOID_OFF, doctype
+  "<!doctype html>", void_tags [img br meta link hr input source wbr area base col embed track], close " />"}: the doctype line is rewritten and
+  every void open tag (attribute-aware, the #GLUED pattern) gets its tail normalised to ` />`. One choke point (PageAssembler → Indent).
+- **Gate expectation:** all EXACT (gate-neutral); proof = every gate identical to r314 + a byte-level check that ON differs from OFF ONLY by the
+  doctype line and void-tag tails (normalise both and compare = identical).
+- **Plateau guard:** gate-neutral KB rounds must alternate with gate-moving ones (LOOP §4 plateau = three consecutive <0.02pp rounds).
+  Round 3 will therefore be a gate-moving class (c79 lesson-title bilingual pair, c90/c45 acks, or the dashboard's top gold-matching class).
+
+## Round 2 (engine r315) — what shipped
+- **Fix:** `formatter.xhtml_voids` {enabled, env XHTMLVOID_OFF, doctype, void_tags, close " />"}; `HtmlFormatter.#voidPass` + `#xhtmlVoids` per line in
+  `Indent`. Unit test `outputs/_r315_unit.cjs` (18 cases ON/OFF). Splice `outputs/_r315_splice.py` (idempotent AFTER the prefix-test fix — a "new"
+  that ends with its own anchor re-applied once and duplicated both blocks; caught by node --check + a duplicate-key JSON load).
+- **Regeneration:** FULL, 416 dirs / 36 batches (~15 min WSL), 0 stale; 2102 pages changed / 0 added/removed. Toggle-OFF invariant proven three ways
+  (59 in-memory pages; 387 pages of every-5th-module re-converted OFF = manifest, ON = normalise(OFF); the 82 pages of the 13 movers the same).
+- **The exposed defect:** `anchor_compare.Tree`/`ATree` (the skeleton gate's PAIRING parser) had no void handling — OFF vs ON parses differed on
+  298/469 (Tree) and 309/469 (ATree) pages. Repaired (`outputs/_r315_repair_anchor_compare.py`; pre-repair copy `_r315_anchor_compare_BEFORE.py`):
+  identical on 469/469. Under the old parser this round's corpus scored 1941 pairs / 50.131 (kept as `_r315_sk_prerepair.json`).
+- **Gates:** every gate other than the skeleton EXACT to r314. Skeleton RE-BASELINED: 1954 pairs (26 true pairs found, 11 off-by-one mis-pairs
+  released — AGH1003 5_0↔06.0 became 5_0↔05.0 + 6_0↔06.0; MXDB301 4/5/6_0↔3/4/5.0 became 4/5_0↔4/5.0 + 6_0 released), mean 50.289 / ≥50 1028 /
+  ≥75 193 / ≥90 16 / RAW 34.624; ceiling 91.6% unchanged (`_ceiling_r315.json`) → **54.9% of achievable**. Verifiers ON vs OFF over 83 modules:
+  all ELEVEN verifier logs line-for-line IDENTICAL ON vs OFF (speechBubble truncated at the same 300 s point in both — MXFL301 is pathologically slow in that verifier, pre-existing). 12 selftests GREEN + skeleton selftest PASS.
 
 ## Follow-up candidates surfaced by Round 1 (NOT queued — each needs a PICK + corpus-wide measure per §3)
 - **The dropbox bundle terminates its activity.** Gold: the upload button is the box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%).
@@ -87,3 +129,4 @@
 - r0 · the ceiling instrument · shipped (tool + measurement, no converter change) · ceiling 91.6%, SCAFFOLD 49.941% = 54.5% of achievable · pages moved 0 · commit ca59d13
 - r0b · KB amalgamation status (95 CLs, 92 constraints, 12 families; 11 queued rows) · shipped (document, no converter change) · pages moved 0 · commit 784305b
 - r1 (engine r314) · KB constraint 43, the trailing upload box inside its activity (+ `dropbox` modifier) · SHIPPED 2026-09-15 · scaffold 49.941→50.031 (+0.090) · ≥50 +5 / ≥75 +1 · pages moved 60 (65 pages / 43 modules rebuilt) · 54.5%→54.6% of achievable · commit (see git log)
+- r2 (engine r315) · KB constraint 28, the XHTML shell (lowercase doctype + ` />` voids) + the pairing-parser repair it exposed · SHIPPED 2026-09-15 · FULL regeneration, 2102 pages · converter change gate-neutral (ON == OFF under the repaired parser); skeleton RE-BASELINED 1939→1954 pairs, 50.031→50.289 (all of it the repair) · 54.9% of achievable · commit (see git log)

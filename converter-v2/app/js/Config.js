@@ -1527,7 +1527,17 @@ class Config {
 	// own scan, promoted public). 65 pages / 43 modules; §0b family sweep of all
 	// 212 dropDown modules, the working half byte-identical. Env ACTDBXINSIDE_OFF;
 	// data activity_wrapper.owned_activity_keeps_trailing_dropbox.
-	static AppVersion = "260618.85";
+	// ROUND 315 (260618.86): THE KB'S XHTML SHELL (KB constraint 28, the autonomous
+	// loop's Round 2). Every page ships <!doctype html> in lowercase and every void
+	// element self-closed in the XHTML form (<img ... />, <br />, <meta ... />) -- the
+	// KB's output spec, which the gold majority predates (doctype UPPER 1810 : lower
+	// 572; the lowercase pages self-close " />" 77%). HtmlFormatter.Indent's final
+	// pass rewrites the doctype line and normalises every void tag's tail; byte-inert
+	// to every gate. The change exposed that anchor_compare's two parsers (the
+	// skeleton gate's page PAIRING) had no void handling -- repaired, skeleton
+	// re-baselined at 1954 pairs. Full corpus regeneration. Env XHTMLVOID_OFF; data
+	// formatter.xhtml_voids.
+	static AppVersion = "260618.86";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -58,6 +58,39 @@ class HtmlFormatter {
 	};
 
 	/**
+	 * ROUND 315 (loop Round 2 — KB constraint 28): the XHTML void pass, or null
+	 * when off (data flag disabled, env XHTMLVOID_OFF, or no data). Returns
+	 * { doctype, re, close }: `re` matches one void open tag attribute-aware (a
+	 * quoted value may hold '>' or '/'), capturing the name and the attribute
+	 * run WITHOUT any trailing whitespace or slash, so the tail can be rewritten
+	 * to `close` (" />") whatever form it arrived in — `<img a="b">`, `<img a="b"/>`
+	 * and `<img a="b" />` all become `<img a="b" />` (idempotent).
+	 */
+	static #voidPass() {
+		if (typeof process !== "undefined" && process.env && process.env.XHTMLVOID_OFF) return null;
+		try {
+			const cfg = DataService.Data.EmitTemplates.formatter?.xhtml_voids;
+			if (!cfg || !cfg.enabled || !Array.isArray(cfg.void_tags) || !cfg.void_tags.length) return null;
+			if (cfg.env && typeof process !== "undefined" && process.env && process.env[cfg.env]) return null;
+			const names = cfg.void_tags.map((t) => String(t).toLowerCase()).join("|");
+			// name, then the attribute run: quoted values or any non-quote non-'>'
+			// character, ending BEFORE optional whitespace + optional '/' + '>'
+			const re = new RegExp("<(" + names + ")(?=[\\s/>])((?:\"[^\"]*\"|'[^']*'|[^>\"'/]|/(?!\\s*>))*?)\\s*/?>", "gi");
+			return { doctype: cfg.doctype ?? null, re, close: cfg.close ?? " />" };
+		} catch (e) { return null; }
+	};
+
+	/**
+	 * Round 315: applies the void pass to one line — the doctype line is
+	 * rewritten whole (case-insensitive match on `<!doctype html>`), every
+	 * void open tag gets the `close` tail.
+	 */
+	static #xhtmlVoids(line, vp) {
+		if (vp.doctype && /^<!doctype\s+html\s*>$/i.test(line)) return vp.doctype;
+		return line.replace(vp.re, (whole, name, attrs) => "<" + name + attrs.replace(/\s+$/, "") + vp.close);
+	};
+
+	/**
 	 * Round 243 (E4): splits glued block-tag boundaries in one emitter line.
 	 * A boundary qualifies when BOTH tags are in `set`; an OPEN tag glued to
 	 * its OWN close (`<div></div>`, `<td></td>`) stays a one-liner — the
@@ -93,9 +126,14 @@ class HtmlFormatter {
 				.join("\n");
 		}
 
+		// ROUND 315 (KB constraint 28): lowercase doctype + XHTML self-closing voids,
+		// applied per line after the block breaking so every void tag is seen once.
+		const vp = HtmlFormatter.#voidPass();
+
 		for (const raw of html.split("\n")) {
-			const line = raw.trim();
+			let line = raw.trim();
 			if (!line) continue;   // emitter blank lines carry no meaning
+			if (vp) line = HtmlFormatter.#xhtmlVoids(line, vp);
 
 			const opens = [...line.matchAll(/<([a-zA-Z][\w-]*)(?=[\s>])/g)]
 				.map((m) => m[1].toLowerCase())
