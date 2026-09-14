@@ -6,6 +6,196 @@ code or docs adds an entry here (what changed, why, files touched, test `pass/to
 
 ---
 
+## 2026-08-26 (later still) — measured: MTK renders MathML, not LaTeX (docs only)
+
+**What.** No code change. `PageForge_Test_Material/MTK_Equation_Rendering_Test.html` was run six
+times in the live MTK environment and the result is recorded in `CLAUDE.md` and in
+`PageForge_Test_Material/MTK_Equation_Rendering_Test__RESULTS.md`.
+
+**The finding.** MathML renders in MTK; LaTeX does not — and not because anything is blocked.
+Two MathJax builds collide. Brightspace loads
+`https://s.brightspace.com/lib/mathjax/3.2.2/mml-chtml.js`, the **MathML-input-only** component
+build with no TeX input jax. The Te Kura template's `packages/mathJax/script.js` then loads
+`https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js`, which *is* TeX-capable — but it
+arrives second, and MathJax 3 will not initialise twice. First one wins, so `\(…\)` is never
+typeset and the Te Kura package's ~1 MB download does nothing.
+
+**Reproduced** in headless Chromium with the two real component builds, which matches every run:
+`mml-chtml` then `tex-mml-chtml` → LaTeX NOT typeset, `startup.input` has no TeX; the reverse
+order → typeset. That also explains why the test page's own jsDelivr load *did* typeset (415 ms,
+before Brightspace's) while cdnjs (885 ms) and unpkg (1054 ms) did not. A timing race is not a
+basis for production, so a module page must never load its own MathJax.
+
+**Also established.** Native MathML support is present, so MathML renders even with no MathJax at
+all. **Zero CSP violations across all six runs** — jsDelivr, cdnjs and unpkg all load fine;
+nothing in MTK is blocking CDNs. The corpus's existing 2,018 `<math>` elements are vindicated.
+
+**What it does NOT change.** The parser still emits LaTeX only. Chris's call: the downstream
+Convertor project converts it to `<math>` before the HTML ships, keeping one carrier in the
+parsed `.txt` and one job for the knowledge base.
+
+**Follow-up owed elsewhere (not this repo).** The `/kb` `COMP_12` rule — *"MathJax / Equations —
+Standard LaTeX syntax. Inline: `\( \)`. Block: `\[ \]`"* — is **wrong as written for MTK
+today**: LaTeX left in a finished page will not render. It needs rewriting in a `/kb` round to
+say the output must be MathML.
+
+**Files.** `CLAUDE.md`, `PageForge_Test_Material/MTK_Equation_Rendering_Test__RESULTS.md` (new,
+outside this repo).
+
+**Tests.** 243/243 passing, unchanged — no code was touched.
+
+---
+
+## 2026-08-26 (later) — the equation carrier is LaTeX, not MathML
+
+**What.** The parsed `.txt` now carries each Word equation as LaTeX — `\(…\)` where the
+writer put it inline, `\[…\]` where they put it on its own line — instead of the MathML
+shipped in the entry below. Same recovery of the same 315 lost equations; different
+carrier.
+
+**Why.** Creative Services' instruction to writers (Persephone Samuels, 26 Aug 2026, "FW:
+Math Pātai") is: screenshot the equation, ask an AI to *"convert the equation in this
+image to latex for word"*, paste the LaTeX into Word, then press **Alt + =**. Maths content
+is not to use images at all, so this is the standard route. Two things follow.
+
+1. **The LaTeX cannot be "retained".** Alt + = makes Word *swallow* it: the file stores
+   OMML and keeps no copy of what was typed. Checked directly against MathMLTest.docx —
+   there is not one backslash-command anywhere in `word/document.xml`. So the LaTeX in the
+   parsed `.txt` has to be regenerated from the equation object, whichever carrier we pick.
+2. **Given that, one carrier beats two.** A writer who skips Alt + = leaves raw LaTeX
+   sitting in the paragraph as plain text, which already passes through the parser
+   untouched. Emitting MathML for the converted equations and LaTeX for the unconverted
+   ones would hand the downstream Convertor two shapes to recognise. Emitting LaTeX for
+   both gives it one job — LaTeX to the page's maths markup — which is what its existing
+   `COMP_12` **"MathJax / Equations — Standard LaTeX syntax. Inline: `\( \)`. Block:
+   `\[ \]`"** rule already describes. Chris's call; the delimiters are that rule's.
+
+**How.** New `js/omml-to-latex.js` (`OmmlToLatex`), the same shape as `OmmlToMathml` and
+covering the same grammar. `DocxParser.ommlConverter` is now an `OmmlToLatex`; nothing else
+in the parser changed, and the formatter's verbatim `isMath` rule is unchanged — it already
+protects backslashes and braces exactly as it protected angle brackets.
+
+Word tells us inline from display, so we do not guess: `<m:oMath>` is `\(…\)`,
+`<m:oMathPara>` is `\[…\]`.
+
+**Token rules.** A symbol command always carries a guard space *only where a letter
+follows*, because a LaTeX command name is letters only — `\Delta E` keeps its space,
+`\times4200` tightens up, which is the shape the writers' own AI produces
+(`\frac{8\times15}{2\times3}`). Greek letters become their commands. Function names
+become `\sin` and friends.
+
+**Two real bugs the tests and the corpus flushed out — both were in the MathML converter
+too, and both are fixed in both.**
+
+1. **"mc" is not a word.** Any letter run of 2+ characters was being treated as prose, so
+   `E=mc` came out as `\text{mc}` and `P=VI` as `\text{VI}`. Word gives no signal —
+   "specific heat capacity" and "mc" are both just letters in a run — so the rule is now:
+   one letter is always a variable; three or more is prose; **exactly two** is a variable
+   pair *unless* it sits one space from a word of 3+ letters, which makes it part of a
+   phrase ("amount **of** heat energy"). Checked against every equation in
+   PES1007/PES1008/MXFU401: every phrase lands in prose, every variable product in maths.
+2. **Word's equations are full of typographic spaces.** `_isSpace` knew about space, tab,
+   newline and NO-BREAK SPACE — but the equation editor also writes **U+2008 PUNCTUATION
+   SPACE** and **U+2009 THIN SPACE**. Those were falling through as letters, leaving stray
+   characters inside the markup (`\frac{1}{2 }m {v}^{2}`). Now `/\s/` plus U+200B, which
+   covers the lot. This one only showed up on real writer content, not on fixtures.
+
+**Verified.** Real parser and formatter over MathMLTest.docx with a real XML DOM: 32 of 32
+equations, **15 inline + 17 display**, zero unrecognised OMML. An A/B with the converter
+disabled, with the equations stripped back out of the ON side, is **byte-identical** to the
+OFF side — the only difference is the one bullet whose entire content was an equation and
+which therefore used to be dropped as an empty paragraph. A character sweep of all 32
+equations leaves exactly one non-ASCII character: `º` (U+00BA MASCULINE ORDINAL) in
+`29ºC`, which is the **writer's** typo for `°` and passes through uncorrected, per the
+content-fidelity invariant. Against the real PES1008 Writers Template: 24 of 24, zero
+unknown elements.
+
+**`OmmlToMathml` stays.** It is no longer in the parse path, but it remains wired, tested
+and carrying both fixes above — it is the deterministic alternative for the day the
+downstream LaTeX-to-markup step wants replacing with code. `tests/omml-mathml.test.js`
+says so at the top.
+
+**Files.** `js/omml-to-latex.js` (new), `js/omml-to-mathml.js`, `js/docx-parser.js`,
+`index.html`, `tests/test-runner.js`, `tests/omml-latex.test.js` (new),
+`tests/omml-fixtures.js` (new), `tests/omml-mathml.test.js`, `CLAUDE.md`, `README.md`.
+
+**Test fixtures.** The tiny XML reader that lets the equation tests be written as the OMML
+Word actually emits now lives in `tests/omml-fixtures.js`, loaded by the runner before the
+test files (it is not a `*.test.js`, so auto-discovery skips it) and shared by both suites.
+
+**Tests.** 243/243 passing (was 204/204).
+
+---
+
+## 2026-08-26 — Word equations reach the parsed output as MathML
+
+**What.** A writer's equations — anything typed with Word's equation editor — now come
+through the Module Development parse as MathML instead of vanishing.
+
+**Why.** Word does not store an equation in a `<w:r>` run. It stores it in `<m:oMath>`
+(inline) or `<m:oMathPara>` (its own line), which sit BESIDE the runs inside the
+paragraph. `DocxParser._extractParagraphContent` had branches for `w:r`, `w:hyperlink`,
+`w:ins`, `w:del`, `w:sdt`, `w:bookmarkStart/End` and `w:pPr` — and nothing else, so every
+equation fell through the gap. The failure was silent: no marker, no warning, no
+placeholder, just a sentence ending in "…using the following formula:" followed by
+nothing. Measured over the 26 Writers Templates whose finished HTML carries real MathML,
+8 ship OMML — MXDB301, MXDI102, MXDI301, MXEX301, MXFU302, MXFU401, PES1007, PES1008 —
+315 equations, all of them lost.
+
+**Output shape.** A bare `<math xmlns="http://www.w3.org/1998/Math/MathML">…</math>`,
+emitted inline where the equation sat. That is the form the human developers hand-wrote:
+1822 of the ~2009 `<math>` tags across `01-Finalized_Modules_` are exactly it (105 add
+`display="inline"`, 66 `display="block"`), so the downstream HTML build can pass the
+equation straight through. The token conventions follow the same corpus — a single letter
+is `<mi>`, digits are `<mn>` (a thousands separator or decimal point stays inside one
+number), prose inside an equation is one `<mtext>`, and everything else including both
+deltas is `<mo>` (the corpus has 45 `<mo>Δ</mo>`).
+
+**How.** New `js/omml-to-mathml.js` (`OmmlToMathml`): a pure string-producing converter
+that walks DOM-shaped nodes and covers the whole vocabulary the corpus contains —
+`m:r`/`m:t`, `m:f`, `m:d`, `m:sSup`, `m:sSub`, `m:rad` — plus the rest of the common OMML
+grammar (n-ary operators, roots with degrees, matrices, equation arrays, accents, bars,
+limits, function application, pre-scripts) so a future template cannot reintroduce the
+bug. Anything still unrecognised is recursed into as an `<mrow>` and counted in
+`stats.unknownElements`, so a new construct surfaces instead of disappearing. Tracked
+changes inside an equation follow the parser's existing rule: insertions kept, deletions
+dropped.
+
+`DocxParser` gains `M_NS`, an optional `ommlConverter` (null when the script is not
+loaded — the parser then behaves exactly as before), `_extractMath` / `_extractMathPara` /
+`_makeMathRun`, `_isMNS`, and a `stats.mathEquations` counter. The equation becomes a run
+flagged `isMath`. `OutputFormatter.formatParagraph` emits such a run verbatim: no
+bold/italic markers, no whitespace trim, no highlight tick, no hyperlink suffix — each of
+those would corrupt the markup.
+
+**Verified.** Driving the real parser and formatter over Chris's MathMLTest.docx with a
+real XML DOM: 32 of 32 equations converted, 32 `<math>` elements in the output, zero
+unrecognised OMML elements. An A/B of the same run with the converter disabled shows the
+non-equation output is **byte-identical** — the only difference is the recovered
+equations, plus one bullet that had nothing but an equation in it and so used to be
+dropped as an empty paragraph. Against the real PES1008 Writers Template: 24 of 24
+equations converted, zero unknown elements, structurally matching the human developer's
+gold MathML in `01-Finalized_Modules_/Standard/PES1008` (and better-formed in places —
+the gold has `<mi>(<mo>Δ</mo>E)</mi>`).
+
+**Known, deliberately not "fixed".** Word writes ∆ (U+2206 INCREMENT); the finished
+modules use Δ (U+0394 GREEK CAPITAL DELTA). Both render identically and both become
+`<mo>`. The writer's character passes through unchanged, per the content-fidelity
+invariant — normalise downstream if the HTML build ever wants one of them.
+
+**Files.** `js/omml-to-mathml.js` (new), `js/docx-parser.js`, `js/formatter.js`,
+`index.html`, `tests/test-runner.js`, `tests/omml-mathml.test.js` (new), `CLAUDE.md`,
+`README.md`.
+
+**Test runner.** Now also loads `js/docx-parser.js`. Only its `parse(file)` entry point
+touches JSZip and the DOM; the paragraph/run walk underneath works on plain node objects,
+so it can be driven directly from a test. `OutputManager` stays mocked as before.
+
+**Tests.** 204/204 passing (was 174/174; 30 added). Removing the two production branches
+fails 5 of them.
+
+---
+
 ## 2026-07-30 — Page Stitcher upload container: ADDITIVE drops + a removable file list
 
 **What.** Three changes to the Page Stitcher's one upload container, plus refreshed intro copy.

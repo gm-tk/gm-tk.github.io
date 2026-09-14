@@ -28,11 +28,26 @@ The upload container is **accumulating**: the pages and the built interactives u
 
 ---
 
-## The two features
+## The three features
 
 **1. Native Word comment capture.** When a writer's `.docx` carries native Word editor comments, PageForge keeps only the **actionable** ones from the six Creative-Services reviewers (an asymmetric filter drops pure copyright/permission boilerplate but keeps anything with an action signal) and re-emits each as a **red note** in the parsed `.txt`, immediately before the thing it refers to. A comment anchored to a Media List row is matched to the body element that uses the same media (by URL, iStock id, or YouTube id). Whitelist + filter are data-driven in [`data/comment-authors.json`](data/comment-authors.json).
 
-**2. Page Stitcher (with SPLIT MODE).** The downstream converter can emit a long single-page module as a base homepage + per-section files (so each generation stays within length limits); the Page Stitcher recombines them losslessly via an explicit marker contract.
+**2. Word equations as LaTeX.** An equation typed with Word's equation editor is stored as
+OMML (`<m:oMath>` / `<m:oMathPara>`) beside the ordinary text runs, not inside them — so it
+used to be walked straight past and never reached the parsed `.txt` at all. PageForge now
+converts it to LaTeX: `\(…\)` where the writer had it inline, `\[…\]` where they gave it
+its own line.
+
+LaTeX because that is how the equations get written. Writers are asked to convert their
+maths to LaTeX and paste it into Word, then press **Alt + =** — which makes Word swallow
+the LaTeX and store an equation object, so the LaTeX cannot be kept, only regenerated.
+Regenerating it means the parsed `.txt` reads the same whether the writer pressed Alt + =
+or left their LaTeX as plain text, and the downstream Convertor has one job instead of two.
+
+Fractions, brackets, super/subscripts, roots, n-ary operators, matrices, accents and limits
+are all covered; anything unrecognised is recursed into rather than dropped.
+
+**3. Page Stitcher (with SPLIT MODE).** The downstream converter can emit a long single-page module as a base homepage + per-section files (so each generation stays within length limits); the Page Stitcher recombines them losslessly via an explicit marker contract.
 
 ---
 
@@ -52,7 +67,9 @@ css/styles.css          Styles
 data/
   comment-authors.json    Comment whitelist + asymmetric content filter + media-match config
 js/
-  docx-parser.js          .docx reader (JSZip); extended for native comment extraction
+  docx-parser.js          .docx reader (JSZip); extended for native comment extraction + equations
+  omml-to-latex.js        Word equation objects (OMML) -> LaTeX  (the shipped carrier)
+  omml-to-mathml.js       the same, targeting MathML — kept as the deterministic standby
   comment-extractor.js    comments.xml parse + anchor/rowUrl capture + carry-forward
   comment-filter.js       author whitelist/normalisation + asymmetric omit filter
   comment-inserter.js     body + media-match placement; red-note rendering
@@ -80,7 +97,7 @@ No dependencies — the runner is plain Node:
 node tests/test-runner.js
 ```
 
-It loads every `js/` module and auto-discovers `tests/*.test.js`, printing a pass/total summary. The suite is **151/151 passing**. A full Page Stitcher round-trip on a real module runs automatically when the finalized-module corpus is present beside the app, and skips cleanly when it isn't.
+It loads every `js/` module and auto-discovers `tests/*.test.js`, printing a pass/total summary. The suite is **243/243 passing**. A full Page Stitcher round-trip on a real module runs automatically when the finalized-module corpus is present beside the app, and skips cleanly when it isn't.
 
 ---
 

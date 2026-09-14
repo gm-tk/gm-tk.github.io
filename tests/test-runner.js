@@ -105,9 +105,14 @@ function loadScript(filePath) {
 
 // Load modules in dependency order (Module Development carry-over set + toast).
 // The Standard-mode HTML-conversion pipeline was dropped in this build, so only
-// the carried-over modules are loaded here. DocxParser / OutputManager need
-// browser APIs (JSZip / DOM / Blob) and are mocked by the tests, so -- as in V1 --
-// they are intentionally not loaded by this headless runner.
+// the carried-over modules are loaded here. OutputManager needs browser APIs
+// (JSZip / DOM / Blob) and is mocked by the tests, so -- as in V1 -- it is not
+// loaded by this headless runner. DocxParser IS loaded: only its parse(file)
+// entry point touches JSZip and the DOM, while the paragraph/run walk underneath
+// works on plain node objects, so it can be driven directly from a test.
+loadScript('js/omml-to-mathml.js');
+loadScript('js/omml-to-latex.js');
+loadScript('js/docx-parser.js');
 loadScript('js/toast.js');
 loadScript('js/formatter.js');
 loadScript('js/comment-extractor.js');
@@ -119,6 +124,10 @@ loadScript('js/media-list-converter.js');
 loadScript('js/module-results-page.js');
 loadScript('js/mode-toggle-filename.js');
 loadScript('js/mode-toggle.js');
+
+// Shared test fixtures (not a *.test.js file, so the auto-discovery below skips
+// it): the tiny XML reader the equation suites use to write real OMML.
+loadScript('tests/omml-fixtures.js');
 
 // Expose the canonical comment-capture data to tests (so they validate the real
 // shipped whitelist + regexes, not a hand-copied fixture).

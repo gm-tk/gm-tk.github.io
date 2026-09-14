@@ -137,6 +137,14 @@ class OutputFormatter {
 
             if (!chunk) continue;
 
+            // A converted Word equation. Its text is already MathML, so it goes
+            // through untouched: no bold/italic markers, no whitespace trim, no
+            // hyperlink suffix — every one of those would corrupt the markup.
+            if (run.isMath) {
+                text += chunk;
+                continue;
+            }
+
             const fmt = run.formatting || {};
 
             // Red text wrapping (takes priority)
@@ -281,13 +289,25 @@ class OutputFormatter {
         for (let r = 0; r < table.rows.length; r++) {
             const row = table.rows[r];
             const cellTexts = [];
+            // Nested tables found in this row, emitted directly beneath it so
+            // that reading order is preserved and the row line itself is
+            // unchanged (a table with no nested table is byte-identical to the
+            // pre-fix output).
+            const nestedBlocks = [];
 
             for (let c = 0; c < row.cells.length; c++) {
                 const cell = row.cells[c];
                 const cellContent = [];
 
                 for (let p = 0; p < cell.paragraphs.length; p++) {
-                    const formatted = this.formatParagraph(cell.paragraphs[p]);
+                    const para = cell.paragraphs[p];
+
+                    if (para && para.nestedTable) {
+                        nestedBlocks.push({ cell: c + 1, table: para.nestedTable });
+                        continue;
+                    }
+
+                    const formatted = this.formatParagraph(para);
                     if (formatted !== null) {
                         cellContent.push(formatted);
                     }
@@ -297,9 +317,43 @@ class OutputFormatter {
             }
 
             lines.push('\u2502 ' + cellTexts.join(' \u2551 '));
+
+            for (let n = 0; n < nestedBlocks.length; n++) {
+                lines.push.apply(lines, this._formatNestedTable(
+                    nestedBlocks[n].table, r + 1, nestedBlocks[n].cell
+                ));
+            }
         }
 
         lines.push('\u2514\u2500\u2500\u2500 END TABLE \u2500\u2500\u2500');
         return lines.join('\n');
+    }
+
+    /**
+     * Format a table that sits inside a cell of another table.
+     *
+     * Returned as an indented block of lines carrying the parent row/cell it
+     * belongs to, so a writer's quiz grid or vocabulary table nested inside a
+     * layout cell reads in its proper place. Recurses, so a table nested inside
+     * a nested table is handled too.
+     */
+    _formatNestedTable(table, parentRow, parentCell) {
+        const out = [];
+        const label = ' (in row ' + parentRow + ', cell ' + parentCell + ') ';
+        out.push('\u2502 \u250c\u2500\u2500\u2500 NESTED TABLE' + label + '\u2500\u2500\u2500');
+
+        if (table && table.rows && table.rows.length) {
+            const inner = this.formatTable(table).split('\n');
+            // Drop the recursive call's own TABLE / END TABLE frame; this block
+            // supplies its own, labelled with the parent position. A cell whose
+            // text carries a line break of its own arrives here as a line with
+            // no frame character, so it is indented to stay inside the block.
+            for (let i = 1; i < inner.length - 1; i++) {
+                out.push(inner[i].charAt(0) === '\u2502' ? '\u2502 ' + inner[i] : '\u2502 \u2502   ' + inner[i]);
+            }
+        }
+
+        out.push('\u2502 \u2514\u2500\u2500\u2500 END NESTED TABLE \u2500\u2500\u2500');
+        return out;
     }
 }

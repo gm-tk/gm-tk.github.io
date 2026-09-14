@@ -50,7 +50,8 @@ class DocxParser {
             insertionsKept: 0,
             sdtUnwrapped: 0,
             redTextSegments: 0,
-            contentStartParagraph: 0
+            contentStartParagraph: 0,
+            mathEquations: 0
         };
 
         /** WordprocessingML namespace */
@@ -58,6 +59,28 @@ class DocxParser {
 
         /** Relationships namespace */
         this.R_NS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+
+        /** Office Math Markup (OMML) namespace — Word's equation objects. */
+        this.M_NS = 'http://schemas.openxmlformats.org/officeDocument/2006/math';
+
+        /**
+         * OMML -> LaTeX converter. A Word equation lives in an <m:oMath>
+         * element that sits BESIDE the <w:r> runs, not inside one, so without
+         * this the run walk steps straight past it and the writer's formula
+         * never reaches the parsed output.
+         *
+         * LaTeX rather than MathML because Creative Services asks writers to
+         * produce their equations AS LaTeX and then press Alt + = — which makes
+         * Word swallow the LaTeX and store OMML instead. Regenerating LaTeX here
+         * gives the parsed .txt one carrier for maths whichever route the writer
+         * took, so the downstream Convertor has a single job. `OmmlToMathml` is
+         * the deterministic alternative if that ever needs reversing.
+         *
+         * Optional by construction: when the script is not loaded the parser
+         * behaves exactly as it did before.
+         * @type {OmmlToLatex|null}
+         */
+        this.ommlConverter = (typeof OmmlToLatex !== 'undefined') ? new OmmlToLatex() : null;
 
         /** Progress callback */
         this.onProgress = null;
@@ -200,8 +223,12 @@ class DocxParser {
             insertionsKept: 0,
             sdtUnwrapped: 0,
             redTextSegments: 0,
-            contentStartParagraph: 0
+            contentStartParagraph: 0,
+            mathEquations: 0
         };
+        if (this.ommlConverter) {
+            this.ommlConverter.stats = { equations: 0, unknownElements: {} };
+        }
     }
 
     // ------------------------------------------------------------------
@@ -517,12 +544,62 @@ class DocxParser {
                 if (sdtContent) {
                     this._extractParagraphContent(sdtContent, result);
                 }
+            } else if (localName === 'oMath' && this._isMNS(child)) {
+                // A Word equation sitting inline in the paragraph.
+                this._extractMath(child, result);
+            } else if (localName === 'oMathPara' && this._isMNS(child)) {
+                // A Word equation on its own line (it may hold several).
+                this._extractMathPara(child, result);
             } else if (localName === 'bookmarkStart' || localName === 'bookmarkEnd') {
                 // Skip bookmark markers
             } else if (localName === 'pPr') {
                 // Already handled above
             }
         }
+    }
+
+    // ------------------------------------------------------------------
+    // Internal: equations (OMML -> MathML)
+    // ------------------------------------------------------------------
+
+    /**
+     * Convert one <m:oMath> and push it as a run. The run is flagged
+     * `isMath` so the formatter emits the MathML verbatim instead of
+     * treating it as prose to be trimmed and wrapped in bold/italic markers.
+     */
+    _extractMath(oMathEl, result) {
+        if (!this.ommlConverter) { return; }
+        const mathml = this.ommlConverter.convert(oMathEl);
+        if (!mathml) { return; }
+        this.stats.mathEquations++;
+        result.runs.push(this._makeMathRun(mathml));
+    }
+
+    /** Convert an <m:oMathPara> wrapper — one or more display equations. */
+    _extractMathPara(oMathParaEl, result) {
+        if (!this.ommlConverter) { return; }
+        const list = this.ommlConverter.convertPara(oMathParaEl);
+        for (let i = 0; i < list.length; i++) {
+            if (!list[i]) { continue; }
+            this.stats.mathEquations++;
+            result.runs.push(this._makeMathRun(list[i]));
+        }
+    }
+
+    _makeMathRun(mathml) {
+        return {
+            text: mathml,
+            isMath: true,
+            formatting: {
+                bold: false,
+                italic: false,
+                underline: false,
+                strikethrough: false,
+                color: null,
+                highlight: null,
+                isRed: false
+            }
+        };
     }
 
     // ------------------------------------------------------------------
@@ -685,6 +762,25 @@ class DocxParser {
 
                     if (localName === 'p' && this._isWNS(child)) {
                         cellParagraphs.push(this._extractParagraph(child));
+                    } else if (localName === 'tbl' && this._isWNS(child)) {
+                        // NESTED TABLE. A writer who builds a quiz, a vocabulary
+                        // grid or a working-out box inside a cell produces
+                        // <w:tbl> here. Before this branch existed the whole
+                        // nested table was skipped and its content vanished from
+                        // the parsed output (measured: 45 modules, ~65,500
+                        // characters of writer content). Recurse, and carry the
+                        // result on a paragraph-shaped placeholder so that every
+                        // other consumer of a cell (media-list converter,
+                        // comment inserter, boilerplate scan) sees an ordinary
+                        // empty paragraph and is unaffected. Only the formatter
+                        // reads `nestedTable`.
+                        this.stats.nestedTables = (this.stats.nestedTables || 0) + 1;
+                        cellParagraphs.push({
+                            runs: [], text: '', heading: null,
+                            listLevel: null, listNumId: null, listFormat: null,
+                            isListItem: false,
+                            nestedTable: this._extractTable(child)
+                        });
                     } else if (localName === 'sdt' && this._isWNS(child)) {
                         this.stats.sdtUnwrapped++;
                         const sdtContent = this._getChildNS(child, 'sdtContent');
@@ -902,6 +998,11 @@ class DocxParser {
     /** Check if an element is in the WordprocessingML namespace */
     _isWNS(el) {
         return !el.namespaceURI || el.namespaceURI === this.W_NS;
+    }
+
+    /** Check if an element is in the Office Math (OMML) namespace */
+    _isMNS(el) {
+        return !el.namespaceURI || el.namespaceURI === this.M_NS;
     }
 
     /** Get the first child element with the given local name in W namespace */
