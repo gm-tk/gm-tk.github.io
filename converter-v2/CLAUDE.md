@@ -380,6 +380,17 @@ A `.docx` is a zip — unzip to inspect `word/document.xml` + `word/numbering.xm
 
 ## 9. Protected gates — must HOLD-OR-IMPROVE
 
+**THE CEILING (round 0 of the autonomous loop, 2026-09-14 — `LOOP__Autonomous_Rounds.md` §1).**
+`outputs/_measure_ceiling.py` measures the share of the human's text-bearing structure that has
+NO source in the Writers Template (round-110 tolerance, widget internals excluded, corpus
+boilerplate netted out; the UNION of every `_parsed.txt` in the gold dir — the Media List sorts
+first, never read one file): **8.4% net on the 1880 measurable pairs → CEILING 91.6% (loose
+upper bound 94.2%)**. Every report now states the skeleton as a share of that: **SCAFFOLD
+49.941% = 54.5% of achievable (band 53.0–54.5%)**; RAW 34.430% = 39.5% of its own 87.1% ceiling.
+State `outputs/_ceiling_r0.json`, report `_ceiling_r0.md` (outlier pages + boilerplate listed);
+re-run after any corpus intake. 13 TRR modules ship only a Media-List parsed file (+ TRR115 /
+ENGJ403 none) and are unmeasurable — 59 of the gate's 1939 pairs sit outside the ceiling.
+
 Run from `CONVERTER_V2/reference/tests/`. **Current baselines = round 76 (build 260616.55)** — the
 table rows below are the older round-64 text; the live numbers are in §14 + the round-76 changelog
 (authoritative). Round-76 live: skeleton SCAFFOLD **47.8%** / pages≥50% **402** (+1 from the external-link/

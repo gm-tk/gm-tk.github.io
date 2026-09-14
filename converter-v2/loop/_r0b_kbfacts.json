@@ -1,0 +1,3088 @@
+{
+ "meta": {
+  "tool": "_measure_r0b_kbstatus.py",
+  "generated": "2026-09-14 22:31:38",
+  "gold_modules": 454,
+  "claude_modules": 416,
+  "seconds": 53
+ },
+ "gold": {
+  "modules": 454,
+  "pages": 2379,
+  "pages_missing_body_tag": 99,
+  "pages_footer_hrefs_nonempty": 68,
+  "footer_anchors_nonempty": 81,
+  "footer_anchors": 6521,
+  "pages_acks_present": 494,
+  "pages_acks_template_cls": 74,
+  "pages_acks_typed_statements": 443,
+  "acks_wrapper_classes": {
+   "acks": 419,
+   "acks acksTemplate acksAI": 39,
+   "acks acksTemplate": 35,
+   "acksLesson": 1
+  },
+  "buttons_trailing_period": 3,
+  "x_modules": 36,
+  "x_pages": 250,
+  "x_pages_learning_support": 72,
+  "nonx_pages_learning_support": 0,
+  "cjk_pages": 10,
+  "cjk_pages_with_lang_cls": 5,
+  "lang_cls_spans": {
+   "ch-text": 1245,
+   "pinyin": 1083
+  },
+  "img_in_moving_hosts": 15322,
+  "lazy_in_moving_hosts": 3472,
+  "lazy_total": 7819,
+  "activity_inner_col": {
+   "col-12": 6763,
+   "col-12 col-md-8": 399,
+   "col-12 col-md-12": 129,
+   "col-8": 52,
+   "col-md-12": 48,
+   "col-12 col-md-10": 12,
+   "col-12 col-md-6": 11,
+   "col-3": 9
+  },
+  "activities_with_inner_col": 7499,
+  "button_labels_top": {
+   "Go to journal": 1010,
+   "Upload to dropbox": 818,
+   "Reset": 226,
+   "Go to quiz": 196,
+   "Download journal": 172,
+   "Check answer": 154,
+   "": 130,
+   "Check answers": 109,
+   "Go to portfolio": 80,
+   "Go to dropbox": 57,
+   "Go to PDF": 33,
+   "Year planner": 28,
+   "Answer": 20,
+   "Click to reveal": 20,
+   "Check your answer": 18
+  },
+  "ext_button_count": 921,
+  "ext_button_go_to_website": 28,
+  "go_to_dropbox": 58,
+  "upload_to_dropbox": 819,
+  "bare_dropbox": 3,
+  "go_to_quiz": 204,
+  "quiz_shells": 199,
+  "quiz_shells_with_content": 157,
+  "supervisor_new": 518,
+  "supervisor_legacy": 2,
+  "embed_pdf_new": 113,
+  "embed_pdf_generic": 1776,
+  "ai_guidelines_old_name": 0,
+  "col10_activity": 271,
+  "red_note_pages": 591,
+  "red_notes": 1650,
+  "template_attr": {
+   "1-3": 732,
+   "NCEA": 526,
+   "4-6": 332,
+   "7-8": 310,
+   "combo": 283,
+   "9-10": 183,
+   "ncea": 12,
+   "": 1
+  },
+  "body_class": {
+   "container-fluid": 1889,
+   "container-fluid mathJax": 113,
+   "fundamentals container-fluid": 103,
+   "": 100,
+   "container-fluid reoTranslate": 91,
+   "inquiry container-fluid": 73,
+   "Fundamentals container-fluid": 5,
+   " inquiry container-fluid": 3
+  }
+ },
+ "claude": {
+  "modules": 416,
+  "pages": 2102,
+  "pages_missing_body_tag": 0,
+  "pages_footer_hrefs_nonempty": 0,
+  "footer_anchors_nonempty": 0,
+  "footer_anchors": 5305,
+  "pages_acks_present": 413,
+  "pages_acks_template_cls": 19,
+  "pages_acks_typed_statements": 394,
+  "acks_wrapper_classes": {
+   "acks": 394,
+   "acks acksTemplate acksAI": 19
+  },
+  "buttons_trailing_period": 420,
+  "x_modules": 35,
+  "x_pages": 228,
+  "x_pages_learning_support": 0,
+  "nonx_pages_learning_support": 0,
+  "cjk_pages": 7,
+  "cjk_pages_with_lang_cls": 0,
+  "lang_cls_spans": {},
+  "img_in_moving_hosts": 1215,
+  "lazy_in_moving_hosts": 1121,
+  "lazy_total": 5800,
+  "activity_inner_col": {
+   "col-12": 6115
+  },
+  "activities_with_inner_col": 6115,
+  "button_labels_top": {
+   "Upload to dropbox": 310,
+   "Go to your journal": 275,
+   "Upload to dropbox.": 137,
+   "Go to quiz": 72,
+   "Reset": 56,
+   "Check answers": 38,
+   "Learning journal.": 37,
+   "Quiz": 32,
+   "Check answers.": 27,
+   "Go to resource": 27,
+   "Go to portfolio": 22,
+   "Go to journal": 22,
+   "": 21,
+   "Need help?": 18,
+   "check": 17
+  },
+  "ext_button_count": 264,
+  "ext_button_go_to_website": 167,
+  "go_to_dropbox": 17,
+  "upload_to_dropbox": 475,
+  "bare_dropbox": 10,
+  "go_to_quiz": 113,
+  "quiz_shells": 80,
+  "quiz_shells_with_content": 56,
+  "supervisor_new": 359,
+  "supervisor_legacy": 0,
+  "embed_pdf_new": 0,
+  "embed_pdf_generic": 0,
+  "ai_guidelines_old_name": 0,
+  "col10_activity": 0,
+  "red_note_pages": 1797,
+  "red_notes": 8068,
+  "template_attr": {
+   "1-3": 622,
+   "NCEA": 528,
+   "7-8": 274,
+   "4-6": 258,
+   "combo": 242,
+   "9-10": 178
+  },
+  "body_class": {
+   "container-fluid": 1899,
+   "fundamentals container-fluid": 80,
+   "container-fluid reoTranslate": 63,
+   "inquiry container-fluid": 32,
+   "container-fluid mathJax": 28
+  }
+ },
+ "lesson_title_c79": {
+  "paired_lesson_pages": 1534,
+  "claude_title_matches_gold": 882,
+  "claude_title_is_module_title": 141,
+  "gold_title_is_module_title": 233,
+  "claude_dual_h1": 10,
+  "gold_dual_h1": 237,
+  "claude_has_lesson_prefix": 5,
+  "gold_has_lesson_prefix": 6,
+  "claude_empty_title": 0,
+  "mismatch_samples": [
+   {
+    "module": "PNR101",
+    "gold_page": "PNR101_2_0.html",
+    "claude_page": "PNR101_1_0.html",
+    "gold": [
+     "Ngā tau: 1",
+     "Numbers: 1"
+    ],
+    "claude": [
+     "PNR101 Number 1 | Te tau 1"
+    ],
+    "gold_h1s": [
+     "01",
+     "Ngā tau: 1",
+     "Numbers: 1"
+    ],
+    "claude_h1s": [
+     "PNR101 Number 1 | Te tau 1"
+    ]
+   },
+   {
+    "module": "TRR106",
+    "gold_page": "TRR106_2.0.html",
+    "claude_page": "TRR106_2_0.html",
+    "gold": [
+     "Ngā Oropuare: Uu",
+     "The vowels: Uu"
+    ],
+    "claude": [
+     "TRR106 The vowels: Uu | Ngā Oropuare: Uu"
+    ],
+    "gold_h1s": [
+     "2.0",
+     "Ngā Oropuare: Uu",
+     "The vowels: Uu"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "TRR106 The vowels: Uu | Ngā Oropuare: Uu"
+    ]
+   },
+   {
+    "module": "TRR113",
+    "gold_page": "TRR113_4.0.html",
+    "claude_page": "TRR113_2_0.html",
+    "gold": [
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude": [
+     "TRR113 –The vowel blend: ue | Te oropuare pūrua: ue"
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "TRR113 –The vowel blend: ue | Te oropuare pūrua: ue"
+    ]
+   },
+   {
+    "module": "TRR113",
+    "gold_page": "TRR113_3.0.html",
+    "claude_page": "TRR113_3_0.html",
+    "gold": [
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude": [
+     "TRR109 –The vowel blend: ao | Te oropuare pūrua: ao"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "TRR109 –The vowel blend: ao | Te oropuare pūrua: ao"
+    ]
+   },
+   {
+    "module": "TRR113",
+    "gold_page": "TRR113_2.0.html",
+    "claude_page": "TRR113_4_0.html",
+    "gold": [
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude": [
+     "TRR113 –The vowel blend: uo | Te oropuare pūrua: uo"
+    ],
+    "gold_h1s": [
+     "2.0",
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude_h1s": [
+     "4.0",
+     "TRR113 –The vowel blend: uo | Te oropuare pūrua: uo"
+    ]
+   },
+   {
+    "module": "TRR113",
+    "gold_page": "TRR113_5.0.html",
+    "claude_page": "TRR113_5_0.html",
+    "gold": [
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude": [
+     "TRR113 –The vowel blends: u | Ngā oropuare pūrua: u"
+    ],
+    "gold_h1s": [
+     "5.0",
+     "Oro tōpū ū",
+     "The Dipthongs: u"
+    ],
+    "claude_h1s": [
+     "5.0",
+     "TRR113 –The vowel blends: u | Ngā oropuare pūrua: u"
+    ]
+   },
+   {
+    "module": "AGH1003",
+    "gold_page": "AGH1003_04.0.html",
+    "claude_page": "AGH1003_4_0.html",
+    "gold": [
+     "Effluent and Organic Matter"
+    ],
+    "claude": [
+     "Effluent and Organic Matter."
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Effluent and Organic Matter"
+    ],
+    "claude_h1s": [
+     "4.0",
+     "Effluent and Organic Matter."
+    ]
+   },
+   {
+    "module": "AGH1003",
+    "gold_page": "AGH1003_06.0.html",
+    "claude_page": "AGH1003_5_0.html",
+    "gold": [
+     "Cultivation"
+    ],
+    "claude": [
+     "Lime"
+    ],
+    "gold_h1s": [
+     "6.0",
+     "Cultivation"
+    ],
+    "claude_h1s": [
+     "5.0",
+     "Lime"
+    ]
+   },
+   {
+    "module": "ANZH101",
+    "gold_page": "ANZH101_1.0.html",
+    "claude_page": "ANZH101_1_0.html",
+    "gold": [
+     "Tangata Whenua Origin Stories",
+     "Ko ngā Ingoa Waahi ngā Kōrero ake"
+    ],
+    "claude": [
+     "First People of the Land"
+    ],
+    "gold_h1s": [
+     "01",
+     "Tangata Whenua Origin Stories",
+     "Ko ngā Ingoa Waahi ngā Kōrero ake"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "First People of the Land"
+    ]
+   },
+   {
+    "module": "ANZH101",
+    "gold_page": "ANZH101_2.0.html",
+    "claude_page": "ANZH101_2_0.html",
+    "gold": [
+     "Stories",
+     "Pūrākau"
+    ],
+    "claude": [
+     "Pūrākau | Stories"
+    ],
+    "gold_h1s": [
+     "02",
+     "Stories",
+     "Pūrākau"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "Pūrākau | Stories"
+    ]
+   },
+   {
+    "module": "ANZH101",
+    "gold_page": "ANZH101_4.0.html",
+    "claude_page": "ANZH101_3_0.html",
+    "gold": [
+     "Pepeha",
+     "Pepeha"
+    ],
+    "claude": [
+     "Sharing Pūrākau in Different Ways"
+    ],
+    "gold_h1s": [
+     "04",
+     "Pepeha",
+     "Pepeha"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "Sharing Pūrākau in Different Ways"
+    ]
+   },
+   {
+    "module": "ANZH304",
+    "gold_page": "ANZH304_0.1.html",
+    "claude_page": "ANZH304_1_0.html",
+    "gold": [
+     "Missionaries and Māori"
+    ],
+    "claude": [
+     "Mana Motuhake"
+    ],
+    "gold_h1s": [
+     "1.0",
+     "Missionaries and Māori"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "Mana Motuhake"
+    ]
+   },
+   {
+    "module": "ANZH304",
+    "gold_page": "ANZH304_0.2.html",
+    "claude_page": "ANZH304_2_0.html",
+    "gold": [
+     "The Importance Of Mana"
+    ],
+    "claude": [
+     "Mana Motuhake"
+    ],
+    "gold_h1s": [
+     "2.0",
+     "The Importance Of Mana"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "Mana Motuhake"
+    ]
+   },
+   {
+    "module": "ANZH304",
+    "gold_page": "ANZH304_0.3.html",
+    "claude_page": "ANZH304_3_0.html",
+    "gold": [
+     "Te Tiriti o Waitangi and mana Māori"
+    ],
+    "claude": [
+     "So, how did this happen?"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Te Tiriti o Waitangi and mana Māori"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "So, how did this happen?"
+    ]
+   },
+   {
+    "module": "ANZH304",
+    "gold_page": "ANZH304_0.4.html",
+    "claude_page": "ANZH304_4_0.html",
+    "gold": [
+     "Early reactions to Te Tiriti o Waitangi | The Treaty of Waitangi"
+    ],
+    "claude": [
+     "Mana Motuhake"
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Early reactions to Te Tiriti o Waitangi | The Treaty of Waitangi"
+    ],
+    "claude_h1s": [
+     "4.0",
+     "Mana Motuhake"
+    ]
+   },
+   {
+    "module": "ANZH304",
+    "gold_page": "ANZH304_0.5.html",
+    "claude_page": "ANZH304_5_0.html",
+    "gold": [
+     "Ethics and empathy"
+    ],
+    "claude": [
+     "Mana Motuhake"
+    ],
+    "gold_h1s": [
+     "5.0",
+     "Ethics and empathy"
+    ],
+    "claude_h1s": [
+     "5.0",
+     "Mana Motuhake"
+    ]
+   },
+   {
+    "module": "ANZH304",
+    "gold_page": "ANZH304_0.6.html",
+    "claude_page": "ANZH304_6_0.html",
+    "gold": [
+     "Review"
+    ],
+    "claude": [
+     "Mana Motuhake"
+    ],
+    "gold_h1s": [
+     "6.0",
+     "Review"
+    ],
+    "claude_h1s": [
+     "6.0",
+     "Mana Motuhake"
+    ]
+   },
+   {
+    "module": "ART1006",
+    "gold_page": "ART1006_1.0.html",
+    "claude_page": "ART1006_2_0.html",
+    "gold": [
+     "Art Passion Project"
+    ],
+    "claude": [
+     "Introduction: What are your art passions?"
+    ],
+    "gold_h1s": [
+     "1.0",
+     "Art Passion Project"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "Introduction: What are your art passions?"
+    ]
+   },
+   {
+    "module": "ART1006",
+    "gold_page": "ART1006_3.0.html",
+    "claude_page": "ART1006_3_1.html",
+    "gold": [
+     "Let's Get Creating!"
+    ],
+    "claude": [
+     "Task 4: Let&#39;s Begin!"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Let's Get Creating!"
+    ],
+    "claude_h1s": [
+     "3.1",
+     "Task 4: Let&#39;s Begin!"
+    ]
+   },
+   {
+    "module": "ART1006",
+    "gold_page": "ART1006_4.0.html",
+    "claude_page": "ART1006_4_0.html",
+    "gold": [
+     "Art Passion Project"
+    ],
+    "claude": [
+     "Step 5: Refine and evaluate"
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Art Passion Project"
+    ],
+    "claude_h1s": [
+     "4.0",
+     "Step 5: Refine and evaluate"
+    ]
+   },
+   {
+    "module": "BLL147",
+    "gold_page": "BLL147-1.0.html",
+    "claude_page": "BLL147_1_0.html",
+    "gold": [
+     "j, ai, oa, ie, ee, or"
+    ],
+    "claude": [
+     "ai, j, oa, ie, ee, or"
+    ],
+    "gold_h1s": [
+     "1.0",
+     "j, ai, oa, ie, ee, or"
+    ],
+    "claude_h1s": [
+     "01",
+     "ai, j, oa, ie, ee, or"
+    ]
+   },
+   {
+    "module": "BLL147",
+    "gold_page": "BLL147-2.0.html",
+    "claude_page": "BLL147_1_1.html",
+    "gold": [
+     "j, ai, oa, ie, ee, or"
+    ],
+    "claude": [
+     "ai, j, oa, ie, ee, or"
+    ],
+    "gold_h1s": [
+     "2.0",
+     "j, ai, oa, ie, ee, or"
+    ],
+    "claude_h1s": [
+     "01",
+     "ai, j, oa, ie, ee, or"
+    ]
+   },
+   {
+    "module": "ENG1004",
+    "gold_page": "ENG1004_0.1.html",
+    "claude_page": "ENG1004_0_0.html",
+    "gold": [
+     "Task A: Life Lines"
+    ],
+    "claude": [
+     "Achievement standard 91924 internal assessment."
+    ],
+    "gold_h1s": [
+     "1.0",
+     "Task A: Life Lines"
+    ],
+    "claude_h1s": [
+     "ENG1004",
+     "Achievement standard 91924 internal assessment."
+    ]
+   },
+   {
+    "module": "ENG1004",
+    "gold_page": "ENG1004_0.3.html",
+    "claude_page": "ENG1004_2_0.html",
+    "gold": [
+     "Task C: Vernacular spectacular"
+    ],
+    "claude": [
+     "Vernacular spectacular"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Task C: Vernacular spectacular"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "Vernacular spectacular"
+    ]
+   },
+   {
+    "module": "ENGI202",
+    "gold_page": "ENGI202_1.0.html",
+    "claude_page": "ENGI202_1_0.html",
+    "gold": [
+     "What is a traditional story?"
+    ],
+    "claude": [
+     "Lesson One"
+    ],
+    "gold_h1s": [
+     "01",
+     "What is a traditional story?"
+    ],
+    "claude_h1s": [
+     "01",
+     "Lesson One"
+    ]
+   },
+   {
+    "module": "ENGI202",
+    "gold_page": "ENGI202_2.0.html",
+    "claude_page": "ENGI202_2_0.html",
+    "gold": [
+     "Traditional stories from Aotearoa"
+    ],
+    "claude": [
+     "Lesson Two"
+    ],
+    "gold_h1s": [
+     "02",
+     "Traditional stories from Aotearoa"
+    ],
+    "claude_h1s": [
+     "02",
+     "Lesson Two"
+    ]
+   },
+   {
+    "module": "ENGI202",
+    "gold_page": "ENGI202_4.0.html",
+    "claude_page": "ENGI202_3_0.html",
+    "gold": [
+     "Traditional stories from te Ao/the World"
+    ],
+    "claude": [
+     "Lesson Three"
+    ],
+    "gold_h1s": [
+     "04",
+     "Traditional stories from te Ao/the World"
+    ],
+    "claude_h1s": [
+     "03",
+     "Lesson Three"
+    ]
+   },
+   {
+    "module": "ENGI202",
+    "gold_page": "ENGI202_5.0.html",
+    "claude_page": "ENGI202_5_0.html",
+    "gold": [
+     "Cultural Symbols and Values found in traditional stories"
+    ],
+    "claude": [
+     "Lesson Five"
+    ],
+    "gold_h1s": [
+     "05",
+     "Cultural Symbols and Values found in traditional stories"
+    ],
+    "claude_h1s": [
+     "05",
+     "Lesson Five"
+    ]
+   },
+   {
+    "module": "ENGI202",
+    "gold_page": "ENGI202_6.0.html",
+    "claude_page": "ENGI202_6_0.html",
+    "gold": [
+     "Celebration of your Learning"
+    ],
+    "claude": [
+     "Lesson Six"
+    ],
+    "gold_h1s": [
+     "06",
+     "Celebration of your Learning"
+    ],
+    "claude_h1s": [
+     "06",
+     "Lesson Six"
+    ]
+   },
+   {
+    "module": "ENGI405",
+    "gold_page": "ENGI405_1.0.html",
+    "claude_page": "ENGI405_1_0.html",
+    "gold": [
+     "Important skills &ndash; Features of texts"
+    ],
+    "claude": [
+     "Important skills – Features of texts"
+    ],
+    "gold_h1s": [
+     "1.0",
+     "Important skills &ndash; Features of texts"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "Important skills – Features of texts"
+    ]
+   },
+   {
+    "module": "ENGI405",
+    "gold_page": "ENGI405_3.0.html",
+    "claude_page": "ENGI405_3_0.html",
+    "gold": [
+     "Reading to write"
+    ],
+    "claude": [
+     "The reading process and paragraphing"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Reading to write"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "The reading process and paragraphing"
+    ]
+   },
+   {
+    "module": "ENGI405",
+    "gold_page": "ENGI405_4.0.html",
+    "claude_page": "ENGI405_4_1.html",
+    "gold": [
+     "Building our essay writing skills"
+    ],
+    "claude": [
+     "Essay structure"
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Building our essay writing skills"
+    ],
+    "claude_h1s": [
+     "4.1",
+     "Essay structure"
+    ]
+   },
+   {
+    "module": "ENGI405",
+    "gold_page": "ENGI405_6.0.html",
+    "claude_page": "ENGI405_6_0.html",
+    "gold": [
+     "Choose a text &ndash; write a response"
+    ],
+    "claude": [
+     "Choose a text – write a response"
+    ],
+    "gold_h1s": [
+     "6.0",
+     "Choose a text &ndash; write a response"
+    ],
+    "claude_h1s": [
+     "6.0",
+     "Choose a text – write a response"
+    ]
+   },
+   {
+    "module": "ENGJ402",
+    "gold_page": "ENGJ402_1.0.html",
+    "claude_page": "ENGJ402_1_0.html",
+    "gold": [
+     "An Introduction to Lyric Poetry"
+    ],
+    "claude": [
+     "Lesson One – An Introduction to Lyric Poetry"
+    ],
+    "gold_h1s": [
+     "1.0",
+     "An Introduction to Lyric Poetry"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "Lesson One – An Introduction to Lyric Poetry"
+    ]
+   },
+   {
+    "module": "ENGJ402",
+    "gold_page": "ENGJ402_2.0.html",
+    "claude_page": "ENGJ402_2_0.html",
+    "gold": [
+     "The Ode",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude": [
+     "Lesson Two – The Ode"
+    ],
+    "gold_h1s": [
+     "2.0",
+     "The Ode",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "Lesson Two – The Ode"
+    ]
+   },
+   {
+    "module": "ENGJ402",
+    "gold_page": "ENGJ402_3.0.html",
+    "claude_page": "ENGJ402_3_0.html",
+    "gold": [
+     "The Sonnet",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude": [
+     "Lesson Three – The Sonnet"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "The Sonnet",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "Lesson Three – The Sonnet"
+    ]
+   },
+   {
+    "module": "ENGJ402",
+    "gold_page": "ENGJ402_4.0.html",
+    "claude_page": "ENGJ402_4_0.html",
+    "gold": [
+     "Mastering Shakespearean Sonnets",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude": [
+     "Lesson Four – Mastering Shakespearean Sonnets"
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Mastering Shakespearean Sonnets",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude_h1s": [
+     "4.0",
+     "Lesson Four – Mastering Shakespearean Sonnets"
+    ]
+   },
+   {
+    "module": "ENGJ402",
+    "gold_page": "ENGJ402_6.0.html",
+    "claude_page": "ENGJ402_6_0.html",
+    "gold": [
+     "Exploring Contemporary Lyric Poetry",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude": [
+     "Lesson Six – Exploring Contemporary Lyric Poetry"
+    ],
+    "gold_h1s": [
+     "6.0",
+     "Exploring Contemporary Lyric Poetry",
+     "2 Genealogy Title Lorem Ipsum Dolor"
+    ],
+    "claude_h1s": [
+     "6.0",
+     "Lesson Six – Exploring Contemporary Lyric Poetry"
+    ]
+   },
+   {
+    "module": "ENGR302",
+    "gold_page": "ENGR302_2.0.html",
+    "claude_page": "ENGR302_1_0.html",
+    "gold": [
+     "Spotlight on a political power relationship"
+    ],
+    "claude": [
+     "Uncovering power in relationships"
+    ],
+    "gold_h1s": [
+     "2.0",
+     "Spotlight on a political power relationship"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "Uncovering power in relationships"
+    ]
+   },
+   {
+    "module": "ENGS401",
+    "gold_page": "ENGS401_6.0.html",
+    "claude_page": "ENGS401_6_0.html",
+    "gold": [
+     "Responding to Texts",
+     "Te whakautu i ngā kuputuhi"
+    ],
+    "claude": [
+     "Your Response"
+    ],
+    "gold_h1s": [
+     "ENGS401",
+     "Responding to Texts",
+     "Te whakautu i ngā kuputuhi"
+    ],
+    "claude_h1s": [
+     "6.0",
+     "Your Response"
+    ]
+   },
+   {
+    "module": "HES1005",
+    "gold_page": "HES1005_1.0.html",
+    "claude_page": "HES1005_1_0.html",
+    "gold": [
+     "Expressing Kindness And Respect For Others",
+     "Manaakitanga"
+    ],
+    "claude": [
+     "Manaakitanga"
+    ],
+    "gold_h1s": [
+     "1.0",
+     "Expressing Kindness And Respect For Others",
+     "Manaakitanga"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "Manaakitanga"
+    ]
+   },
+   {
+    "module": "HES1005",
+    "gold_page": "HES1005_3.0.html",
+    "claude_page": "HES1005_3_0.html",
+    "gold": [
+     "Forming And Maintaining Relationships",
+     "Whanaungatanga"
+    ],
+    "claude": [
+     "Whanaungatanga"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Forming And Maintaining Relationships",
+     "Whanaungatanga"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "Whanaungatanga"
+    ]
+   },
+   {
+    "module": "HES1005",
+    "gold_page": "HES1005_4.0.html",
+    "claude_page": "HES1005_5_0.html",
+    "gold": [
+     "Guardianship",
+     "Kaitiakitanga"
+    ],
+    "claude": [
+     "KAITIAKITANGA – BE A KAITIAKI"
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Guardianship",
+     "Kaitiakitanga"
+    ],
+    "claude_h1s": [
+     "5.0",
+     "KAITIAKITANGA – BE A KAITIAKI"
+    ]
+   },
+   {
+    "module": "HIS1005",
+    "gold_page": "HIS1005-10.1.html",
+    "claude_page": "HIS1005_1_0.html",
+    "gold": [
+     "a mule, a wizard and jim crow"
+    ],
+    "claude": [
+     "SOVEREIGNTY"
+    ],
+    "gold_h1s": [
+     "10.0",
+     "a mule, a wizard and jim crow"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "SOVEREIGNTY"
+    ]
+   },
+   {
+    "module": "MXDB201",
+    "gold_page": "MXDB201_3.0.html",
+    "claude_page": "MXDB201_3_0.html",
+    "gold": [
+     "Painting the Fence"
+    ],
+    "claude": [
+     "Community gardens"
+    ],
+    "gold_h1s": [
+     "03",
+     "Painting the Fence"
+    ],
+    "claude_h1s": [
+     "03",
+     "Community gardens"
+    ]
+   },
+   {
+    "module": "MXDB201",
+    "gold_page": "MXDB201_4.0.html",
+    "claude_page": "MXDB201_4_0.html",
+    "gold": [
+     "Buying Soil"
+    ],
+    "claude": [
+     "Community gardens"
+    ],
+    "gold_h1s": [
+     "04",
+     "Buying Soil"
+    ],
+    "claude_h1s": [
+     "04",
+     "Community gardens"
+    ]
+   },
+   {
+    "module": "MXDB201",
+    "gold_page": "MXDB201_5.0.html",
+    "claude_page": "MXDB201_5_0.html",
+    "gold": [
+     "Planting"
+    ],
+    "claude": [
+     "Community gardens"
+    ],
+    "gold_h1s": [
+     "05",
+     "Planting"
+    ],
+    "claude_h1s": [
+     "05",
+     "Community gardens"
+    ]
+   },
+   {
+    "module": "MXDB201",
+    "gold_page": "MXDB201_6.0.html",
+    "claude_page": "MXDB201_6_0.html",
+    "gold": [
+     "Activities"
+    ],
+    "claude": [
+     "Community gardens"
+    ],
+    "gold_h1s": [
+     "06",
+     "Activities"
+    ],
+    "claude_h1s": [
+     "06",
+     "Community gardens"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_1.0.html",
+    "claude_page": "MXDI201_1_0.html",
+    "gold": [
+     "Numbers from 1–999"
+    ],
+    "claude": [
+     "Our place value system"
+    ],
+    "gold_h1s": [
+     "1.0",
+     "Numbers from 1–999"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "Our place value system"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_3.0.html",
+    "claude_page": "MXDI201_3_0.html",
+    "gold": [
+     "Counting and Addition Strategies"
+    ],
+    "claude": [
+     "3A Strategies of counting"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Counting and Addition Strategies"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "3A Strategies of counting"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_4.0.html",
+    "claude_page": "MXDI201_4_0.html",
+    "gold": [
+     "Rounding and compensating"
+    ],
+    "claude": [
+     "4A rounding"
+    ],
+    "gold_h1s": [
+     "4.0",
+     "Rounding and compensating"
+    ],
+    "claude_h1s": [
+     "4.0",
+     "4A rounding"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_6.0.html",
+    "claude_page": "MXDI201_6_0.html",
+    "gold": [
+     "Multiplying by 10, 100, 1000"
+    ],
+    "claude": [
+     "6A Creating new numbers"
+    ],
+    "gold_h1s": [
+     "6.0",
+     "Multiplying by 10, 100, 1000"
+    ],
+    "claude_h1s": [
+     "6.0",
+     "6A Creating new numbers"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_7.0.html",
+    "claude_page": "MXDI201_7_0.html",
+    "gold": [
+     "100 hungry ants times tables"
+    ],
+    "claude": [
+     "100 hungry ants"
+    ],
+    "gold_h1s": [
+     "7.0",
+     "100 hungry ants times tables"
+    ],
+    "claude_h1s": [
+     "7.0",
+     "100 hungry ants"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_8.0.html",
+    "claude_page": "MXDI201_8_0.html",
+    "gold": [
+     "Times table Patterns"
+    ],
+    "claude": [
+     "8A Hundreds square patterns"
+    ],
+    "gold_h1s": [
+     "8.0",
+     "Times table Patterns"
+    ],
+    "claude_h1s": [
+     "8.0",
+     "8A Hundreds square patterns"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_9.0.html",
+    "claude_page": "MXDI201_9_0.html",
+    "gold": [
+     "How Much is 1,000,000?"
+    ],
+    "claude": [
+     "How much is a Million?"
+    ],
+    "gold_h1s": [
+     "9.0",
+     "How Much is 1,000,000?"
+    ],
+    "claude_h1s": [
+     "9.0",
+     "How much is a Million?"
+    ]
+   },
+   {
+    "module": "MXDI201",
+    "gold_page": "MXDI201_10.0.html",
+    "claude_page": "MXDI201_10_0.html",
+    "gold": [
+     "How Much is 1,000,000?"
+    ],
+    "claude": [
+     "10A Expanded Form"
+    ],
+    "gold_h1s": [
+     "10.0",
+     "How Much is 1,000,000?"
+    ],
+    "claude_h1s": [
+     "10.0",
+     "10A Expanded Form"
+    ]
+   },
+   {
+    "module": "MXEO401",
+    "gold_page": "MXEO401_3.0.html",
+    "claude_page": "MXEO401_3_0.html",
+    "gold": [
+     "Scatter graphs"
+    ],
+    "claude": [
+     "Scatter graphs and the line of best fit"
+    ],
+    "gold_h1s": [
+     "3.0",
+     "Scatter graphs"
+    ],
+    "claude_h1s": [
+     "3.0",
+     "Scatter graphs and the line of best fit"
+    ]
+   },
+   {
+    "module": "MXEO401",
+    "gold_page": "MXEO401_5.0.html",
+    "claude_page": "MXEO401_5_0.html",
+    "gold": [
+     "Practise Task – Whodunit?"
+    ],
+    "claude": [
+     "Practice task – whodunit?"
+    ],
+    "gold_h1s": [
+     "5.0",
+     "Practise Task – Whodunit?"
+    ],
+    "claude_h1s": [
+     "5.0",
+     "Practice task – whodunit?"
+    ]
+   },
+   {
+    "module": "MXFL101",
+    "gold_page": "MXFL101_1.0.html",
+    "claude_page": "MXFL101_1_0.html",
+    "gold": [
+     "Numbers 1&ndash;10",
+     "Ngā tau 1&ndash;10"
+    ],
+    "claude": [
+     "One | Tahi"
+    ],
+    "gold_h1s": [
+     "MXFL101",
+     "Numbers 1&ndash;10",
+     "Ngā tau 1&ndash;10"
+    ],
+    "claude_h1s": [
+     "1.0",
+     "One | Tahi"
+    ]
+   },
+   {
+    "module": "MXFL101",
+    "gold_page": "MXFL101_2.0.html",
+    "claude_page": "MXFL101_2_0.html",
+    "gold": [
+     "Numbers 1&ndash;10",
+     "Ngā tau 1&ndash;10"
+    ],
+    "claude": [
+     "Two | Rua"
+    ],
+    "gold_h1s": [
+     "MXFL101",
+     "Numbers 1&ndash;10",
+     "Ngā tau 1&ndash;10"
+    ],
+    "claude_h1s": [
+     "2.0",
+     "Two | Rua"
+    ]
+   }
+  ]
+ },
+ "scope_counts": {
+  "modules_with_wt": 452,
+  "mtkquiz": 12,
+  "ai_guidelines": 0,
+  "fundamental_label": 1,
+  "lesson_n_h2": 82,
+  "external_link": 16,
+  "title_bar_two_pipes": 5,
+  "supervisor": 93,
+  "lesson_overview_tag": 91,
+  "emoji": 452,
+  "cjk": 3,
+  "audiovisual": 0,
+  "dropbox": 187,
+  "istock_dual_id": 365,
+  "captions": 26
+ },
+ "scope_modules": {
+  "mtkquiz": [
+   "ARFUN02",
+   "ARFUN04",
+   "EXBP901",
+   "EXPFUN07",
+   "MXFUN02",
+   "SCFUN01",
+   "SSOG301",
+   "TEFUN02",
+   "TEFUN03",
+   "TEFUN06",
+   "TEFUN07",
+   "TEFUN08"
+  ],
+  "ai_guidelines": [],
+  "fundamental_label": [
+   "MXFL301"
+  ],
+  "lesson_n_h2": [
+   "AGH1001",
+   "AGH1002",
+   "AGH1003",
+   "AGH1004",
+   "AGH1005",
+   "AGH1006",
+   "AGH1008",
+   "AGH1009",
+   "ANZH101",
+   "ANZH104",
+   "ANZH105",
+   "ANZH205",
+   "ANZH301",
+   "ANZH303",
+   "CEDO105",
+   "ENGC201",
+   "ENGC202",
+   "ENGC301",
+   "ENGC302",
+   "ENGC401",
+   "ENGI103",
+   "ENGI201",
+   "ENGI202",
+   "ENGI302",
+   "ENGI303",
+   "ENGI401",
+   "ENGJ201",
+   "ENGJ202",
+   "ENGJ402",
+   "ENGR101",
+   "ENGR102",
+   "ENGR201",
+   "ENGR202",
+   "ENGR301",
+   "ENGS101",
+   "ENGS102",
+   "ENGS201",
+   "ENGS202",
+   "ENGS301",
+   "ENGS302",
+   "ENGS401",
+   "HES1006",
+   "HIS1003",
+   "HIS1004",
+   "MXDB301",
+   "MXDB302",
+   "MXDI301",
+   "MXEO102",
+   "MXEO202",
+   "MXEO301",
+   "MXEO401",
+   "MXEX101",
+   "MXEX301",
+   "MXEX401",
+   "MXFL104",
+   "MXFL202",
+   "MXFL301",
+   "MXFL302",
+   "MXFL401",
+   "MXFU301",
+   "MXFU302",
+   "MXFU401",
+   "PES1007",
+   "PES1008",
+   "PHE1001",
+   "PHE1002",
+   "PHE1003",
+   "PHE1004",
+   "PHE1005",
+   "PHE1006",
+   "PHE1007",
+   "PHE1008",
+   "SSOG101",
+   "SSOG301",
+   "TWHK901",
+   "TWHK902",
+   "TWHT903",
+   "XLP01",
+   "XLP02",
+   "XMES101",
+   "XMES102",
+   "XMES103"
+  ],
+  "external_link": [
+   "ENFUN01",
+   "ENFUN04",
+   "ENGC201",
+   "ENGC202",
+   "ENGC401",
+   "ENGI301",
+   "ENGI302",
+   "ENGI303",
+   "ENGI401",
+   "ENGJ201",
+   "ENGJ202",
+   "ENGR201",
+   "ENGS102",
+   "HES1006",
+   "HIS1002",
+   "PHE1008"
+  ],
+  "title_bar_two_pipes": [
+   "ANZH304",
+   "HIS1007",
+   "HIS1008",
+   "TEFUN01",
+   "TEFUN04"
+  ],
+  "supervisor": [
+   "ANZH104",
+   "ANZH105",
+   "BLL110",
+   "BLL111",
+   "BLL112",
+   "BLL113",
+   "BLL114",
+   "BLL115",
+   "BLL116",
+   "BLL117",
+   "BLL120",
+   "BLL121",
+   "BLL122",
+   "BLL123",
+   "BLL124",
+   "BLL125",
+   "BLL126",
+   "BLL127",
+   "BLL130",
+   "BLL131",
+   "BLL132",
+   "BLL133",
+   "BLL134",
+   "BLL135",
+   "BLL136",
+   "BLL137",
+   "BLL140",
+   "BLL141",
+   "BLL142",
+   "BLL143",
+   "BLL144",
+   "BLL145",
+   "BLL146",
+   "BLL147",
+   "BLL150",
+   "BLL151",
+   "BLL152",
+   "BLL153",
+   "BLL154",
+   "BLL155",
+   "BLL156",
+   "BLL157",
+   "BLL160",
+   "BLL161",
+   "BLL162",
+   "BLL163",
+   "BLL164",
+   "BLL165",
+   "BLL166",
+   "BLL167",
+   "BLL170",
+   "BLL171",
+   "BLL172",
+   "BLL173",
+   "BLL174",
+   "BLL175",
+   "BLL176",
+   "BLL177",
+   "BLL210",
+   "BLL211",
+   "BLL212",
+   "BLL213",
+   "BLL214",
+   "BLL215",
+   "BLL216",
+   "BLL217",
+   "BLL220",
+   "BLL221",
+   "CEDK102",
+   "CEDO105",
+   "CEDR101",
+   "CEDR204",
+   "CEDT102",
+   "CEDW201",
+   "ENFUN02",
+   "ENFUN09",
+   "ENGC101",
+   "ENGC102",
+   "ENGI103",
+   "ENGI201",
+   "ENGJ101",
+   "ENGR101",
+   "ENGR102",
+   "ENGS102",
+   "MXDI102",
+   "MXDI103",
+   "MXEO202",
+   "MXFL101",
+   "MXFL103",
+   "MXFL104",
+   "MXFL202",
+   "MXFUN01",
+   "TEFUN02"
+  ],
+  "lesson_overview_tag": [
+   "AGH1001",
+   "AGH1002",
+   "AGH1003",
+   "AGH1004",
+   "AGH1005",
+   "AGH1006",
+   "AGH1008",
+   "AGH1009",
+   "ANZH301",
+   "ART1004",
+   "CEDR203",
+   "CEDT207",
+   "ENG1004",
+   "ENG1005",
+   "ENGC101",
+   "ENGC201",
+   "ENGC202",
+   "ENGC301",
+   "ENGC302",
+   "ENGC401",
+   "ENGI102",
+   "ENGI103",
+   "ENGI201",
+   "ENGI202",
+   "ENGI203",
+   "ENGI301",
+   "ENGI302",
+   "ENGI303",
+   "ENGI401",
+   "ENGJ201",
+   "ENGJ202",
+   "ENGJ301",
+   "ENGJ302",
+   "ENGJ402",
+   "ENGR101",
+   "ENGR201",
+   "ENGR301",
+   "ENGR302",
+   "ENGS102",
+   "ENGS201",
+   "ENGS202",
+   "ENGS301",
+   "ENGS302",
+   "ENGS401",
+   "HES1005",
+   "HES1006",
+   "HIS1001",
+   "HIS1002",
+   "HIS1003",
+   "HIS1004",
+   "HIS1005",
+   "HIS1006",
+   "HIS1007",
+   "HIS1008",
+   "MXDB301",
+   "MXDB302",
+   "MXDI201",
+   "MXDI202",
+   "MXDI301",
+   "MXEO102",
+   "MXEO201",
+   "MXEO202",
+   "MXEO301",
+   "MXEX101",
+   "MXEX301",
+   "MXFL104",
+   "MXFL203",
+   "MXFL204",
+   "MXFL301",
+   "MXFL302",
+   "MXFU201",
+   "MXFU202",
+   "MXFU301",
+   "MXFU302",
+   "PES1001",
+   "PES1002",
+   "PES1003",
+   "PES1004",
+   "PES1005",
+   "PES1007",
+   "PES1008",
+   "SSFUN02",
+   "SSFUN05",
+   "TWHK901",
+   "TWHK902",
+   "TWHT903",
+   "XLP01",
+   "XLP02",
+   "XMES101",
+   "XMES102",
+   "XMES103"
+  ],
+  "emoji": [
+   "AGH1001",
+   "AGH1002",
+   "AGH1003",
+   "AGH1004",
+   "AGH1005",
+   "AGH1006",
+   "AGH1007",
+   "AGH1008",
+   "AGH1009",
+   "ANZH101",
+   "ANZH104",
+   "ANZH105",
+   "ANZH203",
+   "ANZH205",
+   "ANZH301",
+   "ANZH303",
+   "ANZH304",
+   "ANZH401",
+   "ANZH404",
+   "ARFUN01",
+   "ARFUN02",
+   "ARFUN03",
+   "ARFUN04",
+   "ARFUN05",
+   "ART1002",
+   "ART1003",
+   "ART1004",
+   "ART1005",
+   "ART1006",
+   "BLL110",
+   "BLL111",
+   "BLL112",
+   "BLL113",
+   "BLL114",
+   "BLL115",
+   "BLL116",
+   "BLL117",
+   "BLL120",
+   "BLL121",
+   "BLL122",
+   "BLL123",
+   "BLL124",
+   "BLL125",
+   "BLL126",
+   "BLL127",
+   "BLL130",
+   "BLL131",
+   "BLL132",
+   "BLL133",
+   "BLL134",
+   "BLL135",
+   "BLL136",
+   "BLL137",
+   "BLL140",
+   "BLL141",
+   "BLL142",
+   "BLL143",
+   "BLL144",
+   "BLL145",
+   "BLL146",
+   "BLL147",
+   "BLL150",
+   "BLL151",
+   "BLL152",
+   "BLL153",
+   "BLL154",
+   "BLL155",
+   "BLL156",
+   "BLL157",
+   "BLL160",
+   "BLL161",
+   "BLL162",
+   "BLL163",
+   "BLL164",
+   "BLL165",
+   "BLL166",
+   "BLL167",
+   "BLL170",
+   "BLL171",
+   "BLL172",
+   "BLL173",
+   "BLL174",
+   "BLL175",
+   "BLL176",
+   "BLL177",
+   "BLL210",
+   "BLL211",
+   "BLL212",
+   "BLL213",
+   "BLL214",
+   "BLL215",
+   "BLL216",
+   "BLL217",
+   "BLL220",
+   "BLL221",
+   "BLL222",
+   "BLL223",
+   "BLL224",
+   "BLL225",
+   "BLL226",
+   "BLL227",
+   "BLL230",
+   "BLL231",
+   "BLL232",
+   "BLL233",
+   "BLL234",
+   "BLL235",
+   "BLL236",
+   "BLL237",
+   "BLL240",
+   "BLL241",
+   "BLL242",
+   "BLL243",
+   "BLL244",
+   "BLL245",
+   "BLL246",
+   "BLL247",
+   "BLL250",
+   "BLL251",
+   "BLL252",
+   "BLL253",
+   "BLL254",
+   "BLL255",
+   "BLL256",
+   "BLL257",
+   "BLL260",
+   "BLL261",
+   "BLL262",
+   "BLL263",
+   "BLL264",
+   "BLL265",
+   "BLL266",
+   "BLL270",
+   "BLL271",
+   "BLL272",
+   "BLL273",
+   "BLL274",
+   "BLL275",
+   "BLL276",
+   "BLLR201",
+   "CEDK101",
+   "CEDK102",
+   "CEDK401",
+   "CEDK501",
+   "CEDO102",
+   "CEDO105",
+   "CEDO201",
+   "CEDO202",
+   "CEDO301",
+   "CEDO402",
+   "CEDO501",
+   "CEDO502",
+   "CEDR101",
+   "CEDR201",
+   "CEDR203",
+   "CEDR204",
+   "CEDR301",
+   "CEDR302",
+   "CEDR401",
+   "CEDR501",
+   "CEDT101",
+   "CEDT102",
+   "CEDT104",
+   "CEDT201",
+   "CEDT202",
+   "CEDT203",
+   "CEDT204",
+   "CEDT207",
+   "CEDT208",
+   "CEDT301",
+   "CEDT404",
+   "CEDT501",
+   "CEDW101",
+   "CEDW201",
+   "CEDW303",
+   "CEDW501",
+   "CHFUN01",
+   "CHFUN04",
+   "CHFUN05",
+   "CHFUN06",
+   "CHFUN07",
+   "ENFUN01",
+   "ENFUN02",
+   "ENFUN03",
+   "ENFUN04",
+   "ENFUN05",
+   "ENFUN07",
+   "ENFUN08",
+   "ENFUN09",
+   "ENG1004",
+   "ENG1005",
+   "ENG1007",
+   "ENGC101",
+   "ENGC102",
+   "ENGC201",
+   "ENGC202",
+   "ENGC301",
+   "ENGC302",
+   "ENGC401",
+   "ENGFUN02",
+   "ENGI101",
+   "ENGI102",
+   "ENGI103",
+   "ENGI201",
+   "ENGI202",
+   "ENGI203",
+   "ENGI301",
+   "ENGI302",
+   "ENGI303",
+   "ENGI400",
+   "ENGI401",
+   "ENGI405",
+   "ENGJ101",
+   "ENGJ102",
+   "ENGJ201",
+   "ENGJ202",
+   "ENGJ301",
+   "ENGJ302",
+   "ENGJ402",
+   "ENGR101",
+   "ENGR102",
+   "ENGR201",
+   "ENGR202",
+   "ENGR301",
+   "ENGR302",
+   "ENGS101",
+   "ENGS102",
+   "ENGS201",
+   "ENGS202",
+   "ENGS301",
+   "ENGS302",
+   "ENGS401",
+   "ENGS405",
+   "EXBP901",
+   "EXIP901",
+   "EXPFUN02",
+   "EXPFUN03",
+   "EXPFUN04",
+   "EXPFUN05",
+   "EXPFUN06",
+   "EXPFUN07",
+   "HES1003",
+   "HES1004",
+   "HES1005",
+   "HES1006",
+   "HES1007",
+   "HIS1001",
+   "HIS1002",
+   "HIS1003",
+   "HIS1004",
+   "HIS1005",
+   "HIS1006",
+   "HIS1007",
+   "HIS1008",
+   "HPFUN101",
+   "HPFUN102",
+   "HPFUN103",
+   "HPFUN201",
+   "HPFUN202",
+   "HPFUN203",
+   "HPFUN301",
+   "HPFUN302",
+   "HPFUN303",
+   "HPFUN401",
+   "HPFUN402",
+   "HPFUN403",
+   "HPFUN901",
+   "HPFUN902",
+   "HPFUN903",
+   "HPRE203",
+   "HPRE301",
+   "MXDB102",
+   "MXDB201",
+   "MXDB202",
+   "MXDB301",
+   "MXDB302",
+   "MXDI101",
+   "MXDI102",
+   "MXDI103",
+   "MXDI201",
+   "MXDI202",
+   "MXDI301",
+   "MXEO102",
+   "MXEO201",
+   "MXEO202",
+   "MXEO301",
+   "MXEO401",
+   "MXEX101",
+   "MXEX201",
+   "MXEX202",
+   "MXEX301",
+   "MXEX302",
+   "MXEX401",
+   "MXFL101",
+   "MXFL102",
+   "MXFL103",
+   "MXFL104",
+   "MXFL201",
+   "MXFL202",
+   "MXFL203",
+   "MXFL204",
+   "MXFL301",
+   "MXFL302",
+   "MXFL401",
+   "MXFU201",
+   "MXFU202",
+   "MXFU301",
+   "MXFU302",
+   "MXFU401",
+   "MXFU402",
+   "MXFUN01",
+   "MXFUN02",
+   "MXFUN03",
+   "OSAH301",
+   "OSAH401",
+   "OSAH501",
+   "OSAI101",
+   "OSAI201",
+   "OSAI301",
+   "OSAI401",
+   "OSAI501",
+   "OSBY101",
+   "OSBY201",
+   "OSBY301",
+   "OSBY401",
+   "OSBY501",
+   "OSGM101",
+   "OSGM201",
+   "OSGM301",
+   "OSGM401",
+   "OSGM501",
+   "OSOH101",
+   "OSOH201",
+   "OSOH301",
+   "OSOH401",
+   "OSOH501",
+   "OSSC301",
+   "OSSC401",
+   "OSSC501",
+   "OSSM301",
+   "OSSM401",
+   "OSSM501",
+   "PES1001",
+   "PES1002",
+   "PES1003",
+   "PES1004",
+   "PES1005",
+   "PES1007",
+   "PES1008",
+   "PHE1001",
+   "PHE1002",
+   "PHE1003",
+   "PHE1004",
+   "PHE1005",
+   "PHE1006",
+   "PHE1007",
+   "PHE1008",
+   "PNR101",
+   "PNR102",
+   "PNR104",
+   "SCCH301",
+   "SCFUN01",
+   "SCPH301",
+   "SSCI104",
+   "SSCI205",
+   "SSEA203",
+   "SSFUN01",
+   "SSFUN02",
+   "SSFUN03",
+   "SSFUN05",
+   "SSFUN06",
+   "SSFUN07",
+   "SSFUN08",
+   "SSOG101",
+   "SSOG103",
+   "SSOG105",
+   "SSOG301",
+   "TEDC401",
+   "TEDC402",
+   "TEFUN01",
+   "TEFUN02",
+   "TEFUN03",
+   "TEFUN04",
+   "TEFUN05",
+   "TEFUN06",
+   "TEFUN07",
+   "TEFUN08",
+   "TRR102",
+   "TRR103",
+   "TRR104",
+   "TRR105",
+   "TRR106",
+   "TRR107",
+   "TRR108",
+   "TRR109",
+   "TRR110",
+   "TRR111",
+   "TRR112",
+   "TRR113",
+   "TRR114",
+   "TRR203",
+   "TRR301",
+   "TRR304",
+   "TWHA901",
+   "TWHA902",
+   "TWHA903",
+   "TWHA904",
+   "TWHA905",
+   "TWHA906",
+   "TWHK901",
+   "TWHK902",
+   "TWHK903",
+   "TWHK907",
+   "TWHR905",
+   "TWHR907",
+   "TWHT903",
+   "XDLS501",
+   "XDLS502",
+   "XDLS901",
+   "XDLS902",
+   "XDLS903",
+   "XDLS904",
+   "XDLS905",
+   "XDLS906",
+   "XDLS908",
+   "XDLS909",
+   "XDLS911",
+   "XDLS912",
+   "XFUN01",
+   "XFUN02",
+   "XGF9001",
+   "XGF9002",
+   "XGF9003",
+   "XGF9004",
+   "XGF9006",
+   "XLP01",
+   "XLP02",
+   "XLP03",
+   "XLP04",
+   "XLP05",
+   "XLP06",
+   "XMES101",
+   "XMES102",
+   "XMES103",
+   "XMES201",
+   "XMES202",
+   "XMES203",
+   "XTAS101",
+   "XTAS102",
+   "XTAS103",
+   "XWHA01",
+   "XWHA02"
+  ],
+  "cjk": [
+   "CHFUN05",
+   "CHFUN06",
+   "MXFL202"
+  ],
+  "audiovisual": [],
+  "dropbox": [
+   "ANZH101",
+   "ANZH104",
+   "ANZH105",
+   "ANZH203",
+   "ANZH205",
+   "ANZH301",
+   "ANZH303",
+   "ANZH304",
+   "ANZH401",
+   "ANZH404",
+   "ART1002",
+   "ART1004",
+   "ART1005",
+   "ART1006",
+   "BLL123",
+   "BLL124",
+   "BLL125",
+   "BLL126",
+   "BLL127",
+   "BLL130",
+   "BLL132",
+   "BLL133",
+   "BLL134",
+   "BLL135",
+   "BLL136",
+   "BLL137",
+   "BLL140",
+   "BLL141",
+   "BLL142",
+   "BLL143",
+   "BLL144",
+   "BLL145",
+   "BLL146",
+   "BLL147",
+   "BLL150",
+   "BLL151",
+   "BLL152",
+   "BLL153",
+   "BLL154",
+   "BLL155",
+   "BLL156",
+   "BLL157",
+   "BLL160",
+   "BLL161",
+   "BLL162",
+   "BLL163",
+   "BLL164",
+   "BLL165",
+   "BLL166",
+   "BLL167",
+   "BLL170",
+   "BLL171",
+   "BLL172",
+   "BLL173",
+   "BLL174",
+   "BLL175",
+   "BLL176",
+   "BLL177",
+   "BLL210",
+   "BLL211",
+   "BLL212",
+   "BLL213",
+   "BLL214",
+   "BLL215",
+   "BLL216",
+   "BLL217",
+   "BLL220",
+   "BLL221",
+   "CEDK101",
+   "CEDK102",
+   "CEDK401",
+   "CEDO102",
+   "CEDO105",
+   "CEDO201",
+   "CEDO301",
+   "CEDO402",
+   "CEDR101",
+   "CEDR203",
+   "CEDR204",
+   "CEDT101",
+   "CEDT104",
+   "CEDT208",
+   "CEDT301",
+   "CEDT404",
+   "CEDW101",
+   "CEDW201",
+   "ENG1004",
+   "ENG1005",
+   "ENGC101",
+   "ENGC102",
+   "ENGC201",
+   "ENGC202",
+   "ENGC301",
+   "ENGC302",
+   "ENGC401",
+   "ENGI101",
+   "ENGI102",
+   "ENGI103",
+   "ENGI201",
+   "ENGI202",
+   "ENGI203",
+   "ENGI301",
+   "ENGI302",
+   "ENGI303",
+   "ENGI401",
+   "ENGJ101",
+   "ENGJ102",
+   "ENGJ201",
+   "ENGJ202",
+   "ENGJ301",
+   "ENGJ302",
+   "ENGJ402",
+   "ENGR101",
+   "ENGR102",
+   "ENGR201",
+   "ENGR202",
+   "ENGR301",
+   "ENGR302",
+   "ENGS101",
+   "ENGS102",
+   "ENGS201",
+   "ENGS202",
+   "ENGS301",
+   "ENGS302",
+   "ENGS401",
+   "EXBP901",
+   "EXIP901",
+   "HES1004",
+   "HIS1002",
+   "HIS1003",
+   "HIS1004",
+   "HIS1005",
+   "HIS1006",
+   "HIS1007",
+   "HIS1008",
+   "MXDB102",
+   "MXDB202",
+   "MXDB301",
+   "MXDB302",
+   "MXDI101",
+   "MXDI102",
+   "MXDI103",
+   "MXDI201",
+   "MXDI202",
+   "MXDI301",
+   "MXEO102",
+   "MXEO201",
+   "MXEO202",
+   "MXEO301",
+   "MXEO401",
+   "MXEX101",
+   "MXEX202",
+   "MXEX301",
+   "MXEX302",
+   "MXEX401",
+   "MXFL103",
+   "MXFL104",
+   "MXFL201",
+   "MXFL202",
+   "MXFL203",
+   "MXFL204",
+   "MXFL301",
+   "MXFL302",
+   "MXFL401",
+   "MXFU201",
+   "MXFU202",
+   "MXFU301",
+   "MXFU302",
+   "MXFU401",
+   "MXFUN01",
+   "MXFUN02",
+   "PES1001",
+   "PES1002",
+   "PES1003",
+   "PES1004",
+   "PES1005",
+   "PES1007",
+   "PES1008",
+   "PHE1006",
+   "SSCI104",
+   "SSOG101",
+   "SSOG301",
+   "TEFUN08",
+   "TRR304",
+   "XMES101",
+   "XMES103",
+   "XWHA02"
+  ],
+  "istock_dual_id": [
+   "AGH1001",
+   "AGH1002",
+   "AGH1003",
+   "AGH1004",
+   "AGH1005",
+   "AGH1006",
+   "AGH1007",
+   "AGH1008",
+   "AGH1009",
+   "ANZH101",
+   "ANZH104",
+   "ANZH105",
+   "ANZH205",
+   "ANZH304",
+   "ARFUN01",
+   "ARFUN02",
+   "ARFUN03",
+   "ARFUN04",
+   "ARFUN05",
+   "ART1002",
+   "ART1006",
+   "BLL110",
+   "BLL111",
+   "BLL112",
+   "BLL113",
+   "BLL114",
+   "BLL115",
+   "BLL116",
+   "BLL117",
+   "BLL120",
+   "BLL121",
+   "BLL122",
+   "BLL123",
+   "BLL124",
+   "BLL125",
+   "BLL126",
+   "BLL127",
+   "BLL130",
+   "BLL131",
+   "BLL132",
+   "BLL133",
+   "BLL134",
+   "BLL135",
+   "BLL136",
+   "BLL137",
+   "BLL140",
+   "BLL141",
+   "BLL142",
+   "BLL143",
+   "BLL144",
+   "BLL145",
+   "BLL146",
+   "BLL147",
+   "BLL150",
+   "BLL151",
+   "BLL152",
+   "BLL157",
+   "BLL160",
+   "BLL161",
+   "BLL162",
+   "BLL164",
+   "BLL166",
+   "BLL167",
+   "BLL170",
+   "BLL171",
+   "BLL172",
+   "BLL177",
+   "BLL210",
+   "BLL211",
+   "BLL213",
+   "BLL215",
+   "BLL216",
+   "BLL217",
+   "BLL220",
+   "BLL221",
+   "BLL222",
+   "BLL223",
+   "BLL224",
+   "BLL225",
+   "BLL226",
+   "BLL227",
+   "BLL230",
+   "BLL231",
+   "BLL232",
+   "BLL233",
+   "BLL234",
+   "BLL235",
+   "BLL236",
+   "BLL237",
+   "BLL240",
+   "BLL241",
+   "BLL242",
+   "BLL243",
+   "BLL244",
+   "BLL245",
+   "BLL246",
+   "BLL247",
+   "BLL250",
+   "BLL251",
+   "BLL255",
+   "BLL256",
+   "BLL260",
+   "BLL262",
+   "BLL263",
+   "BLL265",
+   "BLL266",
+   "BLL270",
+   "BLL271",
+   "BLL272",
+   "BLL273",
+   "BLL274",
+   "BLL275",
+   "BLL276",
+   "BLLR201",
+   "CEDK101",
+   "CEDK102",
+   "CEDK401",
+   "CEDK501",
+   "CEDO102",
+   "CEDO105",
+   "CEDO201",
+   "CEDO202",
+   "CEDO301",
+   "CEDO402",
+   "CEDO501",
+   "CEDO502",
+   "CEDR101",
+   "CEDR203",
+   "CEDR204",
+   "CEDR401",
+   "CEDR501",
+   "CEDT101",
+   "CEDT102",
+   "CEDT104",
+   "CEDT207",
+   "CEDT208",
+   "CEDT301",
+   "CEDT404",
+   "CEDT501",
+   "CEDW101",
+   "CEDW201",
+   "CEDW501",
+   "CHFUN01",
+   "CHFUN04",
+   "CHFUN05",
+   "CHFUN06",
+   "CHFUN07",
+   "ENFUN01",
+   "ENFUN02",
+   "ENFUN03",
+   "ENFUN04",
+   "ENFUN05",
+   "ENFUN07",
+   "ENFUN08",
+   "ENFUN09",
+   "ENGC101",
+   "ENGC102",
+   "ENGC201",
+   "ENGC202",
+   "ENGC301",
+   "ENGC401",
+   "ENGI101",
+   "ENGI103",
+   "ENGI203",
+   "ENGI302",
+   "ENGI303",
+   "ENGI400",
+   "ENGI401",
+   "ENGI405",
+   "ENGJ101",
+   "ENGJ102",
+   "ENGJ201",
+   "ENGJ202",
+   "ENGR101",
+   "ENGR102",
+   "ENGR201",
+   "ENGR202",
+   "ENGR301",
+   "ENGR302",
+   "ENGS101",
+   "ENGS102",
+   "ENGS201",
+   "ENGS202",
+   "ENGS301",
+   "ENGS401",
+   "ENGS405",
+   "EXBP901",
+   "EXIP901",
+   "EXPFUN02",
+   "EXPFUN03",
+   "EXPFUN04",
+   "EXPFUN05",
+   "EXPFUN06",
+   "EXPFUN07",
+   "HES1003",
+   "HES1007",
+   "HPFUN101",
+   "HPFUN102",
+   "HPFUN103",
+   "HPFUN201",
+   "HPFUN202",
+   "HPFUN203",
+   "HPFUN301",
+   "HPFUN302",
+   "HPFUN303",
+   "HPFUN401",
+   "HPFUN402",
+   "HPFUN403",
+   "HPFUN902",
+   "HPFUN903",
+   "HPRE203",
+   "HPRE301",
+   "MXDB102",
+   "MXDB201",
+   "MXDB202",
+   "MXDB301",
+   "MXDI101",
+   "MXDI102",
+   "MXDI103",
+   "MXDI201",
+   "MXDI202",
+   "MXDI301",
+   "MXEO201",
+   "MXEO202",
+   "MXEO401",
+   "MXEX101",
+   "MXEX201",
+   "MXEX202",
+   "MXEX302",
+   "MXEX401",
+   "MXFL101",
+   "MXFL102",
+   "MXFL103",
+   "MXFL104",
+   "MXFL201",
+   "MXFL202",
+   "MXFL203",
+   "MXFL204",
+   "MXFL301",
+   "MXFL401",
+   "MXFU201",
+   "MXFU202",
+   "MXFU302",
+   "MXFU401",
+   "MXFU402",
+   "MXFUN01",
+   "MXFUN02",
+   "MXFUN03",
+   "OSAH301",
+   "OSAH401",
+   "OSAH501",
+   "OSAI101",
+   "OSAI201",
+   "OSAI301",
+   "OSAI401",
+   "OSAI501",
+   "OSBY101",
+   "OSBY201",
+   "OSBY301",
+   "OSBY401",
+   "OSBY501",
+   "OSGM101",
+   "OSGM201",
+   "OSGM301",
+   "OSGM401",
+   "OSGM501",
+   "OSOH101",
+   "OSOH201",
+   "OSOH301",
+   "OSOH401",
+   "OSOH501",
+   "OSSC301",
+   "OSSC401",
+   "OSSC501",
+   "OSSM301",
+   "OSSM401",
+   "OSSM501",
+   "PES1002",
+   "PES1007",
+   "PHE1005",
+   "PHE1006",
+   "PHE1008",
+   "PNR101",
+   "PNR102",
+   "PNR104",
+   "SCCH301",
+   "SCFUN01",
+   "SCPH301",
+   "SSCI104",
+   "SSCI205",
+   "SSEA203",
+   "SSFUN01",
+   "SSFUN03",
+   "SSFUN05",
+   "SSFUN07",
+   "SSOG101",
+   "SSOG103",
+   "SSOG105",
+   "SSOG301",
+   "TEDC401",
+   "TEDC402",
+   "TEFUN01",
+   "TEFUN02",
+   "TEFUN03",
+   "TEFUN04",
+   "TEFUN05",
+   "TEFUN06",
+   "TEFUN07",
+   "TEFUN08",
+   "TRR102",
+   "TRR103",
+   "TRR104",
+   "TRR105",
+   "TRR106",
+   "TRR107",
+   "TRR108",
+   "TRR114",
+   "TRR203",
+   "TWHA901",
+   "TWHA902",
+   "TWHA903",
+   "TWHA904",
+   "TWHA905",
+   "TWHA906",
+   "TWHK901",
+   "TWHK902",
+   "TWHK903",
+   "TWHK907",
+   "TWHR905",
+   "TWHR907",
+   "TWHT903",
+   "XDLS501",
+   "XDLS502",
+   "XDLS901",
+   "XDLS902",
+   "XDLS903",
+   "XDLS904",
+   "XDLS905",
+   "XDLS906",
+   "XDLS908",
+   "XDLS909",
+   "XDLS912",
+   "XFUN02",
+   "XGF9001",
+   "XGF9002",
+   "XGF9003",
+   "XGF9004",
+   "XGF9006",
+   "XLP01",
+   "XLP02",
+   "XLP03",
+   "XLP04",
+   "XLP05",
+   "XLP06",
+   "XMES101",
+   "XMES102",
+   "XMES103",
+   "XMES201",
+   "XMES202",
+   "XMES203",
+   "XTAS101",
+   "XTAS102",
+   "XTAS103",
+   "XWHA01",
+   "XWHA02"
+  ],
+  "captions": [
+   "ANZH203",
+   "ANZH301",
+   "ANZH303",
+   "ANZH304",
+   "ANZH401",
+   "CEDO105",
+   "CEDR101",
+   "CEDR401",
+   "ENGS302",
+   "HES1005",
+   "HES1006",
+   "HIS1001",
+   "HIS1004",
+   "HIS1005",
+   "HIS1006",
+   "HIS1007",
+   "HIS1008",
+   "MXFL104",
+   "PES1007",
+   "SCFUN01",
+   "SSFUN05",
+   "SSOG301",
+   "TEFUN06",
+   "TEFUN07",
+   "TEFUN08",
+   "TWHR905"
+  ]
+ },
+ "families": {
+  "14.7 BLL": {
+   "modules": 110,
+   "with_claude_dir": 92,
+   "gold_pages": 320,
+   "claude_pages": 262,
+   "codes": [
+    "BLL110",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147",
+    "BLL150",
+    "BLL151",
+    "BLL152",
+    "BLL153",
+    "BLL154",
+    "BLL155",
+    "BLL156",
+    "BLL157",
+    "BLL160",
+    "BLL161",
+    "BLL162",
+    "BLL163",
+    "BLL164",
+    "BLL165",
+    "BLL166",
+    "BLL167",
+    "BLL170",
+    "BLL171",
+    "BLL172",
+    "BLL173",
+    "BLL174",
+    "BLL175",
+    "BLL176",
+    "BLL177",
+    "BLL210",
+    "BLL211",
+    "BLL212",
+    "BLL213",
+    "BLL214",
+    "BLL215",
+    "BLL216",
+    "BLL217",
+    "BLL220",
+    "BLL221",
+    "BLL222",
+    "BLL223",
+    "BLL224",
+    "BLL225",
+    "BLL226",
+    "BLL227",
+    "BLL230",
+    "BLL231",
+    "BLL232",
+    "BLL233",
+    "BLL234",
+    "BLL235",
+    "BLL236",
+    "BLL237",
+    "BLL240",
+    "BLL241",
+    "BLL242",
+    "BLL243",
+    "BLL244",
+    "BLL245",
+    "BLL246",
+    "BLL247",
+    "BLL250",
+    "BLL251",
+    "BLL252",
+    "BLL253",
+    "BLL254",
+    "BLL255",
+    "BLL256",
+    "BLL257",
+    "BLL260",
+    "BLL261",
+    "BLL262",
+    "BLL263",
+    "BLL264",
+    "BLL265",
+    "BLL266",
+    "BLL270",
+    "BLL271",
+    "BLL272",
+    "BLL273",
+    "BLL274",
+    "BLL275",
+    "BLL276"
+   ]
+  },
+  "14.9 BLLR": {
+   "modules": 1,
+   "with_claude_dir": 1,
+   "gold_pages": 7,
+   "claude_pages": 8,
+   "codes": [
+    "BLLR201"
+   ]
+  },
+  "14.10 MiW/WJ": {
+   "modules": 0,
+   "with_claude_dir": 0,
+   "gold_pages": 0,
+   "claude_pages": 0,
+   "codes": []
+  },
+  "14.5 H&PE FUNdamentals": {
+   "modules": 15,
+   "with_claude_dir": 15,
+   "gold_pages": 15,
+   "claude_pages": 15,
+   "codes": [
+    "HPFUN101",
+    "HPFUN102",
+    "HPFUN103",
+    "HPFUN201",
+    "HPFUN202",
+    "HPFUN203",
+    "HPFUN301",
+    "HPFUN302",
+    "HPFUN303",
+    "HPFUN401",
+    "HPFUN402",
+    "HPFUN403",
+    "HPFUN901",
+    "HPFUN902",
+    "HPFUN903"
+   ]
+  },
+  "14.8 HPE content": {
+   "modules": 22,
+   "with_claude_dir": 21,
+   "gold_pages": 192,
+   "claude_pages": 187,
+   "codes": [
+    "HES1003",
+    "HES1004",
+    "HES1005",
+    "HES1006",
+    "HES1007",
+    "HPRE203",
+    "HPRE301",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1001",
+    "PHE1002",
+    "PHE1003",
+    "PHE1004",
+    "PHE1005",
+    "PHE1006",
+    "PHE1007",
+    "PHE1008"
+   ]
+  },
+  "14.6 LS": {
+   "modules": 18,
+   "with_claude_dir": 18,
+   "gold_pages": 124,
+   "claude_pages": 112,
+   "codes": [
+    "XDLS501",
+    "XDLS502",
+    "XDLS901",
+    "XDLS902",
+    "XDLS903",
+    "XDLS904",
+    "XDLS905",
+    "XDLS906",
+    "XDLS908",
+    "XDLS909",
+    "XDLS911",
+    "XDLS912",
+    "XLP01",
+    "XLP02",
+    "XLP03",
+    "XLP04",
+    "XLP05",
+    "XLP06"
+   ]
+  },
+  "X-prefixed (c89)": {
+   "modules": 36,
+   "with_claude_dir": 35,
+   "gold_pages": 250,
+   "claude_pages": 228,
+   "codes": [
+    "XDLS501",
+    "XDLS502",
+    "XDLS901",
+    "XDLS902",
+    "XDLS903",
+    "XDLS904",
+    "XDLS905",
+    "XDLS906",
+    "XDLS908",
+    "XDLS909",
+    "XDLS911",
+    "XDLS912",
+    "XFUN01",
+    "XFUN02",
+    "XGF9001",
+    "XGF9002",
+    "XGF9003",
+    "XGF9004",
+    "XGF9006",
+    "XLP01",
+    "XLP02",
+    "XLP03",
+    "XLP04",
+    "XLP05",
+    "XLP06",
+    "XMES101",
+    "XMES102",
+    "XMES103",
+    "XMES201",
+    "XMES202",
+    "XMES203",
+    "XTAS101",
+    "XTAS102",
+    "XTAS103",
+    "XWHA01",
+    "XWHA02"
+   ]
+  },
+  "14.1 Languages": {
+   "modules": 5,
+   "with_claude_dir": 5,
+   "gold_pages": 5,
+   "claude_pages": 5,
+   "codes": [
+    "CHFUN01",
+    "CHFUN04",
+    "CHFUN05",
+    "CHFUN06",
+    "CHFUN07"
+   ]
+  },
+  "14.2 Pathways": {
+   "modules": 0,
+   "with_claude_dir": 0,
+   "gold_pages": 0,
+   "claude_pages": 0,
+   "codes": []
+  },
+  "14.3 Taonga": {
+   "modules": 10,
+   "with_claude_dir": 10,
+   "gold_pages": 77,
+   "claude_pages": 22,
+   "codes": [
+    "ARFUN01",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1002",
+    "ART1003",
+    "ART1004",
+    "ART1005",
+    "ART1006"
+   ]
+  },
+  "14.4 CED P5": {
+   "modules": 6,
+   "with_claude_dir": 6,
+   "gold_pages": 76,
+   "claude_pages": 79,
+   "codes": [
+    "CEDK501",
+    "CEDO501",
+    "CEDO502",
+    "CEDR501",
+    "CEDT501",
+    "CEDW501"
+   ]
+  },
+  "14.12 Technology": {
+   "modules": 8,
+   "with_claude_dir": 8,
+   "gold_pages": 8,
+   "claude_pages": 8,
+   "codes": [
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ]
+  },
+  "OSSC (c70)": {
+   "modules": 3,
+   "with_claude_dir": 3,
+   "gold_pages": 15,
+   "claude_pages": 15,
+   "codes": [
+    "OSSC301",
+    "OSSC401",
+    "OSSC501"
+   ]
+  }
+ }
+}

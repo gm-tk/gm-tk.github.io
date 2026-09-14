@@ -1,5 +1,74 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-14 (round 0, build 260618.84 unchanged) — THE CEILING INSTRUMENT: what no converter rule can ever close (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md` §1, session 1, Round 0; **NO converter change, NO regeneration — the round-313 baselines still describe the corpus; the deliverable is a measurement and its tool**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**Nothing in the engine or the data. The round builds `outputs/_measure_ceiling.py`, the
+instrument that measures how much of the human developer's page structure has NO source in
+the Writers Template — the part of the gold-vs-Claude gap no rule that reads the template can
+close — so that from now on every report states the skeleton score as "X% of achievable"
+beside the raw number. First result: CEILING 91.6%, and the round-313 SCAFFOLD 49.941% is
+54.5% of achievable.**
+
+### 2. THE METHOD (plain English first)
+
+A *block* is one piece of text on the human's finished page — a heading, a paragraph, a
+bullet, a table cell. A block has a *source* when its words, or a distinctive run of them,
+appear anywhere in the module's parsed input (the round-110 tolerance from
+`anchor_compare._phrase_present`, reused verbatim: verbatim, or the 6-word head, or any 3
+consecutive words holding a ≥6-letter word; 1–2 word blocks must match on word boundaries).
+Blocks with no source were written by the developer — verbal writer feedback, house copy —
+and are the ceiling. Three refinements, all reported side by side: **scaffold scope** drops
+blocks inside widget subtrees (the skeleton gate collapses those to one marker anyway);
+**net** removes *boilerplate* — no-source text that recurs in ≥5 modules' gold (module-code
+chips, "We are learning:", the acks statements — conventions a rule CAN emit, 170 strings
+listed); and a **loose** upper bound (every content word of the block present somewhere in
+the template) brackets the short-rewording cases the round-110 test refuses. The headline
+population is the PAIRED one — the gold pages the skeleton gate actually scores, paired by
+`_discrepancy_audit.pairs` with the same acks/glossary filter — so the ceiling and the
+baseline describe the same pages. Grouped by template folder, HTML sub-type (KB 06), subject,
+series and KB family (14.x), with the outlier pages listed with samples of their unsourced
+text. Selftest: LIVENESS + DETECTION (reworded text matches; developer text does not; the
+two-file trap below).
+
+### 3. THE NUMBERS (paired population — 1880 measurable pairs of the gate's 1939)
+
+- no-source share, scaffold scope: per-page mean **raw 11.1% → net 8.4%** (pooled 11.1% → 9.2%); full scope (widget internals included) 16.2% → 12.9%.
+- **CEILING (scaffold) 91.6%**, loose upper bound 94.2%; full-scope ceiling 87.1% / 89.5%.
+- **SCAFFOLD 49.941% = 54.5% of achievable (band 53.0%–54.5%)**; RAW 34.430% = 39.5% of its own ceiling; per-page mean of (score ÷ own ceiling) 55.2% over 1879 joined pages.
+- By template folder: Standard 91.8% · Inquiry 86.8% · Fundamentals 91.1% · Bilingual 95.1% (14 pages only — see §4b). By KB family: BLL 96.5% · HPE content 97.0% · Languages 94.9% · CED 89.4% · LS 90.1% · Taonga/Arts 82.7%. By subject: Maths 87.9%, English 90.7%, NCEA1 81.6%, Leaving to Learn / Online Safety ≈ 74–76% (developer-authored lesson-menu copy — the KB 10 §5 source gap).
+- **42 outlier pages** (≥50% net unsourced, ≥8 blocks) — listed in `outputs/_ceiling_r0.md` with samples. Human outliers named there, never to be chased: XLP06's module chip typed `XPL06`, OSOH101's chip `OSOH301` with `TE REO TRANSLATION HERE` as its Te Reo title, XDLS911's `[Dropboxes have been requested to be made]` shipped as an `<h4>`.
+- The legacy/refresh split (KB 06 §1) is moot: **0** gold pages carry `level="prm"` / `#container` — the whole library is Refresh.
+
+### 4. TWO TRAPS THE VALIDATION CAUGHT — BOTH RECORDED
+
+- **(a) THE TWO-FILE TRAP.** 153 modules carry TWO `_parsed.txt` files, and `<CODE> Media List_parsed.txt` sorts BEFORE `<CODE> Writers Template_parsed.txt`. A first-file read scored those modules against the Media List: the first full run reported CHFUN01, PNR102, CEDO501 … at ~100% unsourced and a ceiling of 68.4%. Block-level inspection of the worst pages exposed it; the tool now reads the UNION of every parsed file (a Media List caption IS writer input) and the selftest pins it. **`anchor_compare.wt_items` carries the same first-file read** (`pf[0]` of an unsorted listdir) — noted for its own repair round, untouched here.
+- **(b) THE MEDIA-LIST-ONLY MODULES.** 13 Bilingual TRR modules have ONLY a Media List parsed file: for 11 of them (TRR102/103/107/108/109/111/112/113/203/301/304) the `Writers Template.docx` is on disk but was never parsed to text; TRR104 and TRR105 have no Writers Template docx at all; TRR115 and ENGJ403 have no parsed file of any kind. They cannot be measured and are EXCLUDED from every population (the report names them); 59 of the gate's 1939 pairs therefore sit outside the ceiling. A corpus-input gap, not a converter matter — parsing the 11 docx files would close most of it.
+
+### 5. ROUND 0b, STARTED — the KB amalgamation facts
+
+`outputs/_measure_r0b_kbstatus.py` (committed alongside) reads every gold and Claude page once
+and, for each front-facing KB rule with a checkable signature, counts how many pages carry it
+on each side, and sizes each rule's scope from the Writers Templates. It is the evidence
+behind `KB_AMALGAMATION_STATUS.md` (next commit). Headline facts already in hand — gold /
+Claude: `<body>` tag missing 99 / **0**; footer hrefs non-empty 68 / **0** (constraint 71 live);
+activity inner column `col-12` 6763 of 7499 / **6115 of 6115** (constraint 63 live);
+`learningSupport` on X-prefixed pages 72 of 250 / **0 of 228** (constraint 89 NOT captured);
+`jp-text`/`ch-text` on CJK pages 5 of 10 / **0 of 7** (constraint 92 NOT captured);
+`loading="lazy"` on images inside moving widgets 3472 of 15322 / **1121 of 1215** (constraint 83
+NOT captured); MTK-quiz shells still carrying quiz content 157 of 199 / **56 of 80** (CL-0082
+NOT captured); acks blocks typing the three template statements 443 / **394** with the
+`acksTemplate` class on 74 / **19** (CL-0090, locked admin decision, NOT captured); button
+labels ending in a full stop 3 / **420**.
+
+### 6. FILES
+
+`outputs/_measure_ceiling.py` (NEW), `outputs/_ceiling_r0.json` + `_ceiling_r0.md` (NEW, its first
+output), `outputs/_measure_r0b_kbstatus.py` + `_r0b_kbfacts.json` (NEW). Committed copies under
+`converter-v2/loop/` (the harness is outside the repo; see that folder's README). `CLAUDE.md` §9
+gains the ceiling line. `Config.js` untouched — no engine change, no version bump.
+
 ## 2026-08-17 (round 313, build 260618.84) — THE GATHERING REMAINDER, MEASURED HONESTLY — and the chain's close (Chris — the gathering-remainder kickoff, ticket 3 of 3, **THE LAST; the kickoff file is deleted with this round**; **FULL CORPUS REGENERATION — Chris granted `REGENERATE CORPUS` in the same session; every protected gate HELD-or-IMPROVED, NEW §9/§14 baselines below, FULL ship, ledger reset to 0**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
