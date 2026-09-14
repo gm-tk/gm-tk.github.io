@@ -1,5 +1,60 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 316, build 260618.87) — THE LESSON'S OWN BILINGUAL TITLE PAIR: KB constraint 79 (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 3; **SCOPED REGENERATION under the loop's standing `REGENERATE CORPUS` mandate — 179 modules = the 17 affected ∪ the 172-module two-span-title family (§0b); every protected gate HELD-or-IMPROVED, 40 pages moved and ALL 40 UP; scoped ship #1 since the round-315 full. Finished after a power cut mid-round — see §8.**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A lesson page whose own title is a pipe-joined bilingual pair — `One | Tahi`, `TRR102 The vowels: Aa | Ngā Oropuare: Aa` — now ships the LESSON's English + Te Reo pair as two `<h1><span>` lines with the module code stripped, Te Reo first in the Māori-medium (`reoTranslate`) modules and in the writer's order elsewhere; before, the whole string sat inside one span.**
+
+### 2. THE EVIDENCE (WT → human → Claude)
+
+- **ANZH101 lesson 2** — WT `[H2] *Lesson 2: Pūrākau | Stories*` → gold `<h1><span>Stories</span></h1>` + `<h1><span>Pūrākau</span></h1>` → Claude before `<h1><span>Pūrākau | Stories</span></h1>`; after `Pūrākau` / `Stories` (the writer's order; the gold's English-first flip is one of 4 : 2 in the Standard group — see §3).
+- **MXFL101 lesson 1** — WT `[H1] One | Tahi` → gold repeats the MODULE pair `Numbers 1–10` / `Ngā tau 1–10` on every lesson page (the constraint-79 human anti-pattern, 118 gold pages corpus-wide) → Claude before `One | Tahi`; after `One` / `Tahi` (the KB's answer; the span COUNT now matches the gold, and the skeleton is text-stripped).
+- **TRR102 lesson 1** — WT docx (never parsed to text — the Round-0 Media-List-only class; the engine reads the docx) → gold `Ngā Oropuare: Aa` / `The vowels: Aa` → Claude before `TRR102 The vowels: Aa | Ngā Oropuare: Aa`; after `Ngā Oropuare: Aa` / `The vowels: Aa` — byte-for-byte the gold's two lines.
+- **KB:** constraint 79 — *"a second `<h1><span>` appears only where the writer gave THAT lesson its own bilingual name, and is then the LESSON's English + Te Reo pair … split by the same TITLE BAR parsing rule"*; `01A` "YEARS 9–10 and NCEA lesson pages — a single title, unless the LESSON itself is bilingual" (its example ANZH104 `Ngā Whare` / `Housing`); `07D` MTK skeleton rule 7 *"Titles in `<h1><span>` — Māori first, English second"*.
+
+### 3. THE MEASUREMENT (`outputs/_measure_r316_lessonpair.py` → `_r316_lessonpair.json`; every Claude lesson page paired with its gold page through the gate's own — since round 315 void-aware — pairing)
+
+- 1549 lesson pairs. **40 paired pipe pages / 16 modules**: Bilingual template 27 (TRR 26 + PNR 1), Standard 13 (MXFL101 6, ANZH 2, HIS1006, MXDB202, TEDC402, XDLS501, XGF9002 1 each). **The gold ships two spans on 40 of 40.**
+- **Order.** The `reoTranslate` modules (TRR, PNR): gold Te Reo FIRST on 27/27 although the writer types English | Te Reo — the `07D` MTK rule. The Standard-template modules: gold English-first 4 (ANZH101, MXDB202, XDLS501, XGF9002 — flipped from the writer's Te Reo-first) vs as-written 2 (ANZH105, HIS1006) — n = 6, below the r182 solidify floor, so the writer's order is kept there (the same rule the overview `[TITLE BAR]` splitter follows; recorded as measured, undetermined).
+- **Module code in a lesson title:** Claude 30 pages (TRR 25, PNR 1, MXEO102 4) vs gold **0 lesson pages** (the gold's 6 code-prefixed titles are all overview / glossary pages). MXEO102's four are a module-title FALLBACK carrying the overview's unsplit code-prefixed slash title — a different seam (the broader constraint-79 class), untouched.
+- Detector over the r315 corpus (the toggle-OFF state): **17 modules / 45 pipe lesson pages** (the 16 above + XGF9004, whose pipe page is unpaired).
+
+### 4. THE FIX (engine general, shape in data)
+
+- **Data** `Emit_Templates.json` → `header.lesson_bilingual_pair` `{ enabled, env: "LESSONPAIR_OFF", separators: ["|"], strip_module_code: true, reo_first_when_body_class: "reoTranslate", reo_detect: "macron", reo_fallback: "second" }`.
+- **`SkeletonBuilder.#lessonPair(title, run, rules, cfg)`** — strips a leading module-code token (+ an optional dash/colon) from the lesson's own title (`page.pageTitle`), splits on the first data separator, trims each half of stray separator punctuation; in a module whose resolved body class matches `reo_first_when_body_class` the Te Reo half goes first — the macron-bearing half, or the `reo_fallback` (second) half when the macron cannot decide (PNR101 `Number 1 | Te tau 1` → `Te tau 1` / `Number 1`); elsewhere the writer's order. Pure; the overview is untouched.
+- The lesson branch of `#buildHeader` pushes the pair when present (else the old single push), **does not** push the module's Te Reo title beside a lesson pair (constraint 79), and exempts the pair from the registry `h1_count` cap (`cap = max(wanted, pair.length)`), so a registry that mined `h1_count = 1` for the family cannot drop the second span.
+- **Env toggle `LESSONPAIR_OFF`** reverts to the single joined span byte-for-byte. Splice `outputs/_r316_splice.py` (anchored; idempotent by the prefix test the round-315 postscript prescribes — proven by a second run reporting every edit "already applied").
+
+### 5. THE REGENERATION (§0b: the affected set + the whole two-span-title family)
+
+- **Resolved set, stated before the rebuild:** 17 affected ∪ 172 modules whose pages already ship a two-span title header (the code path a lesson pair now shares — the working half) = **179 modules / 18 batches** (`_batch_plan.py --raw`, `timeout 600`, ~9 min WSL). `_content_manifest.py fresh --affected` → **0 truly stale**.
+- **Blast:** `_content_manifest.py diff` → **45 pages / 17 modules changed, 0 added / 0 removed**: ANZH101 ANZH105 HIS1006 MXDB202 MXFL101 PNR101 TEDC402 TRR102 TRR103 TRR106 TRR109 TRR111 TRR112 TRR113 XDLS501 XGF9002 XGF9004. **Containment exact: changed == the 17 affected; the 162 working-half modules rebuilt byte-identical** (the finding §0b exists to surface is empty).
+- **Toggle-OFF proof:** the 17 changed modules re-converted in memory with `LESSONPAIR_OFF=1` hash to the pre-round manifest on **127/127 pages**; the 18-module canary set (the 12 pipe modules + ENFUN02 OSAH501 XMES102 CEDT207 OSSC301 MXEO102) — OFF == disk on 18/18, ON moves only the 12 pipe modules, and across all 32 changed sample pages **every differing line is an `<h1><span>` title line** (0 other lines).
+- After: the 17 modules carry **0** header spans with a pipe and **0** with a module-code prefix.
+
+### 6. PROTECTED GATES — every one HELD-or-IMPROVED (fresh full runs, `outputs/_r316_gates.log`; skeleton state `_r316_sk_final.json`, a FRESH single full `--json` run under the repaired pairing)
+
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.289% → 50.345% (+0.056pp) IMPROVED / ≥50% 1028 / ≥75% 193 / ≥90% 16 EXACT / skipped 0 @ 1954; RAW 34.624% → 34.662% IMPROVED.** 40 pages moved — **all 40 UP, 0 down** — 0 added / 0 dropped, every mover inside the 17 changed modules (the 40 paired pipe pages exactly); pp-sum **scaffold +110.47 AND RAW +74.77**. Largest rises XDLS501_1_0 +8.12, ANZH105_1_0 +8.08, XGF9002_9_0 +6.18, TEDC402_1_0 +5.04; smallest TRR111_1_0 +1.31. `--accept-named` neither used nor needed. The decomposition proof (`_fastloop_diff.py` over the 179 rebuilt, `--commit`) agrees: +0.06 / buckets HELD / every other metric HELD.
+- **Ceiling:** SCAFFOLD 50.345% = **55.0% of achievable** (ceiling 91.6%; 54.9% at r315).
+- Structurally clean **2056/2102 = 97.81% EXACT** / leak **288 occ / 46 pages EXACT** · compare_structure exact **11355** / EXTRA **186** / missing **591** EXACT · body_compare **192 EXACT** · tags **9557/9557, REAL FAILURES 0** · flipCard gate set **TOTAL 61, divergence 0 ✓** · speechBubble gate set TOTAL 62 / defect 4 (unchanged) · modal gate set defect 0 · entry-parity **PASS** · index-sync **33/28** · skeleton `--selftest` PASS · pairs skipped **0**.
+- **Widget verifiers over the 17 changed modules, ON vs `LESSONPAIR_OFF=1`:** accordion 18 panels ✓ · carousel 11 built / 11 mismatched ids (identical both states, pre-existing) · clickDrop 0 · dropDown 22 groups defect 0 ✓ · tabs 47 divergence 0 ✓ · mcq 10 questions defect 0 (the only log difference: the OFF run's "h1_count wants 2 title(s) but the source provided 1" notes, now satisfied) · modal 38 triggers defect 0 ✓ · hintslider ✓ · image-carousel 0 · speechBubble 74 built / defect 7 (identical) · flipCard 121 / divergence 0 ✓ (identical). **All TWELVE widget selftests GREEN.**
+- Ledger: scoped ship #1 since the round-315 full. Content manifest, fast-loop baseline, feature index (`--rehtml`) and `gate_baseline.json` refreshed.
+
+### 7. NAMED, NOT CHASED
+
+- **The Standard-group order** (English-first 4 : as-written 2, n = 6): kept as written; re-measure when the population grows.
+- **MXEO102** — the overview `[TITLE BAR]` `MXEO102 Expressing Yourself … / Tō āhuatanga …` never splits (a code prefix ahead of a slash), and every lesson falls back to it: the broader constraint-79 source-order class (the lesson's own `[H2] Lesson 1.0 What are Patterns?` is in red text), queued.
+- **TRR overview pages carry NO title spans at all** (gold: two) — the MTK pathway's title bar, a separate class.
+- **TRR112/TRR113** — the gold rewords the English half (`Oro tōpū` / `The Diphthong`), editorial (C); the span count and the Te Reo half now match.
+
+### 8. THE POWER CUT (recorded so the next session knows what was checked)
+
+The machine lost power during this round's in-memory proof, after the two engine/data edits and before any rebuild. On restart: `verify_after_transfer.sh` reported FAIL on 8 checksums — every one the committed round-314/315 work plus these two files (proven against `git diff 9fb3ebd HEAD` and the committed `_r315_anchor_compare_AFTER.py` mirror); the migration manifests (`CHECKSUMS__engine/gates.txt`) were a snapshot of the round-313 tree and are now refreshed at each commit (the old ones kept as `*.pre-r316.bak`). The only real casualty: `reference/tests/batch_results.json` — the batch runner's diagnostic results ledger — carried a 48-byte NUL run at a 128 KB write boundary (a warning note in ARFUN04's entry, written by the last round-315 batch); it made every `batch_convert.cjs` call exit 1 silently. Kept as `batch_results.json.corrupt-2026-09-15-powercut`; the working copy has the hole patched with a marker and parses. Also checked: `git fsck` clean, all 2,372 harness/corpus JSON files parse, 0 pages with NUL bytes, and the corpus byte-identical to the round-315 manifest (2102/2102) before the rebuild.
+
+**Ledger:** scoped ship #1 since the r315 full · data `header.lesson_bilingual_pair` · env `LESSONPAIR_OFF` · tools `outputs/_measure_r316_lessonpair.py`, `_r316_splice.py` · state `outputs/_r316_sk_final.json` · logs `_r316_gates.log`, `_r316_sk_full.log`, `_r316_verify_ON/OFF.log`, `_r316_selftests.log`, `_r316_fastloop.log`, `_r316_regen_b01–18.log` · `KB_AMALGAMATION_STATUS.md` row 79 → PARTIAL (the bilingual-pair mechanism LIVE; the source-order / fallback mechanisms still queued).
+
 ## 2026-09-15 (round 315, build 260618.86) — THE KB'S XHTML SHELL: lowercase `<!doctype html>` + self-closing voids (KB constraint 28), and THE PAIRING PARSER REPAIR it exposed (Chris — the autonomous loop, `LOOP__Autonomous_Rounds.md`, session 2, Round 2; **FULL CORPUS REGENERATION under the loop's standing `REGENERATE CORPUS` mandate — a shell change is corpus-wide by construction; ledger reset to 0; every protected gate HELD-or-IMPROVED, and the skeleton gate RE-BASELINED under a repaired page-pairing parser — read §5 before comparing numbers across this round**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

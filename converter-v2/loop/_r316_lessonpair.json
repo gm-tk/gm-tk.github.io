@@ -1,0 +1,1571 @@
+{
+ "summary": {
+  "lesson_pairs": 1549,
+  "pipe_pages": 40,
+  "code_prefix_pages": 30,
+  "pipe_modules": [
+   "ANZH101",
+   "ANZH105",
+   "HIS1006",
+   "MXDB202",
+   "MXFL101",
+   "PNR101",
+   "TEDC402",
+   "TRR102",
+   "TRR103",
+   "TRR106",
+   "TRR109",
+   "TRR111",
+   "TRR112",
+   "TRR113",
+   "XDLS501",
+   "XGF9002"
+  ],
+  "code_prefix_modules": [
+   "MXEO102",
+   "PNR101",
+   "TRR102",
+   "TRR103",
+   "TRR106",
+   "TRR109",
+   "TRR111",
+   "TRR112",
+   "TRR113"
+  ],
+  "pipe_by_family": {
+   "PNR": {
+    "pipe": 1,
+    "of_lesson_pairs": 5,
+    "gold_two_span": 1,
+    "gold_order": {
+     "gold-other-pair": 1
+    }
+   },
+   "TRR": {
+    "pipe": 26,
+    "of_lesson_pairs": 42,
+    "gold_two_span": 26,
+    "gold_order": {
+     "reo-first": 16,
+     "gold-other-pair": 10
+    }
+   },
+   "ANZH": {
+    "pipe": 2,
+    "of_lesson_pairs": 68,
+    "gold_two_span": 2,
+    "gold_order": {
+     "reo-first": 1,
+     "as-written": 1
+    }
+   },
+   "HIS": {
+    "pipe": 1,
+    "of_lesson_pairs": 67,
+    "gold_two_span": 1,
+    "gold_order": {
+     "as-written": 1
+    }
+   },
+   "MXDB": {
+    "pipe": 1,
+    "of_lesson_pairs": 36,
+    "gold_two_span": 1,
+    "gold_order": {
+     "reo-first": 1
+    }
+   },
+   "MXFL": {
+    "pipe": 6,
+    "of_lesson_pairs": 83,
+    "gold_two_span": 6,
+    "gold_order": {
+     "gold-other-pair": 6
+    }
+   },
+   "TEDC": {
+    "pipe": 1,
+    "of_lesson_pairs": 15,
+    "gold_two_span": 1,
+    "gold_order": {
+     "gold-other-pair": 1
+    }
+   },
+   "XDLS": {
+    "pipe": 1,
+    "of_lesson_pairs": 64,
+    "gold_two_span": 1,
+    "gold_order": {
+     "reo-first": 1
+    }
+   },
+   "XGF": {
+    "pipe": 1,
+    "of_lesson_pairs": 33,
+    "gold_two_span": 1,
+    "gold_order": {
+     "gold-other-pair": 1
+    }
+   }
+  },
+  "pipe_by_template": {
+   "Bilingual": 27,
+   "Standard": 13
+  },
+  "code_prefix_by_family": {
+   "PNR": 1,
+   "TRR": 25,
+   "MXEO": 4
+  }
+ },
+ "pipe_rows": [
+  {
+   "code": "PNR101",
+   "fam": "PNR",
+   "tmpl": "Bilingual",
+   "page": "PNR101_1_0.html",
+   "gold": "PNR101_2_0.html",
+   "claude_spans": [
+    "PNR101 Number 1 | Te tau 1"
+   ],
+   "gold_spans": [
+    "Ngā tau: 1",
+    "Numbers: 1"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "Number 1",
+    "Te tau 1"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_1_0.html",
+   "gold": "TRR102_1.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_2_0.html",
+   "gold": "TRR102_2.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_3_0.html",
+   "gold": "TRR102_3.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_5_0.html",
+   "gold": "TRR102_5.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR103",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR103_1_0.html",
+   "gold": "TRR103_1.0.html",
+   "claude_spans": [
+    "TRR103 The vowels: Ee | Ngā Oropuare: Ee"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Ee",
+    "The vowels: Ee"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Ee",
+    "Ngā Oropuare: Ee"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR103",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR103_2_0.html",
+   "gold": "TRR103_2.0.html",
+   "claude_spans": [
+    "TRR103 The vowels: Ee | Ngā Oropuare: Ee"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Ee",
+    "The vowels: Ee"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Ee",
+    "Ngā Oropuare: Ee"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR103",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR103_3_0.html",
+   "gold": "TRR103_3.0.html",
+   "claude_spans": [
+    "TRR103 The vowels: Ee | Ngā Oropuare: Ee"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Ee",
+    "The vowels: Ee"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Ee",
+    "Ngā Oropuare: Ee"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR106",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR106_2_0.html",
+   "gold": "TRR106_2.0.html",
+   "claude_spans": [
+    "TRR106 The vowels: Uu | Ngā Oropuare: Uu"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Uu",
+    "The vowels: Uu"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Uu",
+    "Ngā Oropuare: Uu"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_1_0.html",
+   "gold": "TRR109_1.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: ao | Te oropuare pūrua: ao"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ao",
+    "The vowel blend: ao"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ao",
+    "Te oropuare pūrua: ao"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_2_0.html",
+   "gold": "TRR109_2.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: ae | Te oropuare pūrua: ae"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ae",
+    "The vowel blend: ae"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ae",
+    "Te oropuare pūrua: ae"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_3_0.html",
+   "gold": "TRR109_4.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: ai | Te oropuare pūrua: ai"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: au",
+    "The vowel blend: au"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ai",
+    "Te oropuare pūrua: ai"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_4_0.html",
+   "gold": "TRR109_3.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: au| Te oropuare pūrua: au"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ai",
+    "The vowel blend: ai"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: au",
+    "Te oropuare pūrua: au"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_5_0.html",
+   "gold": "TRR109_5.0.html",
+   "claude_spans": [
+    "TRR109 The vowel blends: a | Ngā oropuare pūrua: a"
+   ],
+   "gold_spans": [
+    "Ngā oropuare pūrua: a",
+    "The vowel blends: a"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blends: a",
+    "Ngā oropuare pūrua: a"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_1_0.html",
+   "gold": "TRR111_1.0.html",
+   "claude_spans": [
+    "TRR111 –The vowel blend: ia | Ngā oropuare pūrua: ia"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare Pūrua: i",
+    "The Vowel Blends: i"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ia",
+    "Ngā oropuare pūrua: ia"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_2_0.html",
+   "gold": "TRR111_2.0.html",
+   "claude_spans": [
+    "TRR111 – io | Te oropuare pūrua: io"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: io",
+    "The Vowel Blend: io"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "io",
+    "Te oropuare pūrua: io"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_3_0.html",
+   "gold": "TRR111_3.0.html",
+   "claude_spans": [
+    "TRR111 –The vowel blend: iu | Te oropuare pūrua: iu"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: iu",
+    "The Vowel Blend: iu"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: iu",
+    "Te oropuare pūrua: iu"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_4_0.html",
+   "gold": "TRR111_4.0.html",
+   "claude_spans": [
+    "TRR111 –The vowel blend: ie | Te oropuare pūrua: ie"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ie",
+    "The Vowel Blend: ie"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ie",
+    "Te oropuare pūrua: ie"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_5_0.html",
+   "gold": "TRR111_5.0.html",
+   "claude_spans": [
+    "TRR111 – Vowel blends: ia, ie, io, iu | Ngā Oropuare Pūrua: ia, ie, io, iu"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare Pūrua: ia, ie, io, iu",
+    "Vowel Blends: ia, ie, io, iu"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "Vowel blends: ia, ie, io, iu",
+    "Ngā Oropuare Pūrua: ia, ie, io, iu"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_2_0.html",
+   "gold": "TRR112_2.0.html",
+   "claude_spans": [
+    "TRR112 –The vowel blend: oe | Te oropuare pūrua: oe"
+   ],
+   "gold_spans": [
+    "Oro tōpū: oe",
+    "The sound: oe"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: oe",
+    "Te oropuare pūrua: oe"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_3_0.html",
+   "gold": "TRR112_3.0.html",
+   "claude_spans": [
+    "TRR112 –The vowel blend: oi | Te oropuare pūrua: oi"
+   ],
+   "gold_spans": [
+    "Oro tōpū: oi",
+    "The Diphthong: oi"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: oi",
+    "Te oropuare pūrua: oi"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_4_0.html",
+   "gold": "TRR112_4.0.html",
+   "claude_spans": [
+    "TRR112 –The vowel blend: ou | Te oropuare pūrua: ou"
+   ],
+   "gold_spans": [
+    "Oro tōpū: ou",
+    "The Diphthong: ou"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ou",
+    "Te oropuare pūrua: ou"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_5_0.html",
+   "gold": "TRR112_5.0.html",
+   "claude_spans": [
+    "TRR112 – The Vowel blends: o | Ngā oropuare pūrua: o"
+   ],
+   "gold_spans": [
+    "Ngā oro tōpū: o",
+    "The diphthongs: o"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The Vowel blends: o",
+    "Ngā oropuare pūrua: o"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR113",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR113_2_0.html",
+   "gold": "TRR113_4.0.html",
+   "claude_spans": [
+    "TRR113 –The vowel blend: ue | Te oropuare pūrua: ue"
+   ],
+   "gold_spans": [
+    "Oro tōpū ū",
+    "The Dipthongs: u"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ue",
+    "Te oropuare pūrua: ue"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR113",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR113_3_0.html",
+   "gold": "TRR113_3.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: ao | Te oropuare pūrua: ao"
+   ],
+   "gold_spans": [
+    "Oro tōpū ū",
+    "The Dipthongs: u"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "TRR109 –The vowel blend: ao",
+    "Te oropuare pūrua: ao"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR113",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR113_4_0.html",
+   "gold": "TRR113_2.0.html",
+   "claude_spans": [
+    "TRR113 –The vowel blend: uo | Te oropuare pūrua: uo"
+   ],
+   "gold_spans": [
+    "Oro tōpū ū",
+    "The Dipthongs: u"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: uo",
+    "Te oropuare pūrua: uo"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR113",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR113_5_0.html",
+   "gold": "TRR113_5.0.html",
+   "claude_spans": [
+    "TRR113 –The vowel blends: u | Ngā oropuare pūrua: u"
+   ],
+   "gold_spans": [
+    "Oro tōpū ū",
+    "The Dipthongs: u"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blends: u",
+    "Ngā oropuare pūrua: u"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "ANZH101",
+   "fam": "ANZH",
+   "tmpl": "Standard",
+   "page": "ANZH101_2_0.html",
+   "gold": "ANZH101_2.0.html",
+   "claude_spans": [
+    "Pūrākau | Stories"
+   ],
+   "gold_spans": [
+    "Stories",
+    "Pūrākau"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Pūrākau",
+    "Stories"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "ANZH105",
+   "fam": "ANZH",
+   "tmpl": "Standard",
+   "page": "ANZH105_1_0.html",
+   "gold": "ANZH105_01.0.html",
+   "claude_spans": [
+    "Nō Hea Koe? | Where Are You From?"
+   ],
+   "gold_spans": [
+    "Nō Hea Koe?",
+    "Where Are You From?"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Nō Hea Koe?",
+    "Where Are You From?"
+   ],
+   "gold_order": "as-written"
+  },
+  {
+   "code": "HIS1006",
+   "fam": "HIS",
+   "tmpl": "Standard",
+   "page": "HIS1006_10_0.html",
+   "gold": "HIS1006-2.0.html",
+   "claude_spans": [
+    "Mautohe | Protest"
+   ],
+   "gold_spans": [
+    "Mautohe",
+    "Protest"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Mautohe",
+    "Protest"
+   ],
+   "gold_order": "as-written"
+  },
+  {
+   "code": "MXDB202",
+   "fam": "MXDB",
+   "tmpl": "Standard",
+   "page": "MXDB202_3_0.html",
+   "gold": "MXDB202_3.0.html",
+   "claude_spans": [
+    "Rapa Nui | Easter Island"
+   ],
+   "gold_spans": [
+    "Easter Island",
+    "Rapa Nui"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Rapa Nui",
+    "Easter Island"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "MXFL101",
+   "fam": "MXFL",
+   "tmpl": "Standard",
+   "page": "MXFL101_1_0.html",
+   "gold": "MXFL101_1.0.html",
+   "claude_spans": [
+    "One | Tahi"
+   ],
+   "gold_spans": [
+    "Numbers 1–10",
+    "Ngā tau 1–10"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "One",
+    "Tahi"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "MXFL101",
+   "fam": "MXFL",
+   "tmpl": "Standard",
+   "page": "MXFL101_2_0.html",
+   "gold": "MXFL101_2.0.html",
+   "claude_spans": [
+    "Two | Rua"
+   ],
+   "gold_spans": [
+    "Numbers 1–10",
+    "Ngā tau 1–10"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Two",
+    "Rua"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "MXFL101",
+   "fam": "MXFL",
+   "tmpl": "Standard",
+   "page": "MXFL101_3_0.html",
+   "gold": "MXFL101_3.0.html",
+   "claude_spans": [
+    "Four | Wha"
+   ],
+   "gold_spans": [
+    "Numbers 1–10",
+    "Ngā tau 1–10"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Four",
+    "Wha"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "MXFL101",
+   "fam": "MXFL",
+   "tmpl": "Standard",
+   "page": "MXFL101_3_2.html",
+   "gold": "MXFL101_6.0.html",
+   "claude_spans": [
+    "Six | Ono"
+   ],
+   "gold_spans": [
+    "Numbers 1–10",
+    "Ngā tau 1–10"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Six",
+    "Ono"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "MXFL101",
+   "fam": "MXFL",
+   "tmpl": "Standard",
+   "page": "MXFL101_3_4.html",
+   "gold": "MXFL101_8.0.html",
+   "claude_spans": [
+    "Eight | Waru"
+   ],
+   "gold_spans": [
+    "Numbers 1–10",
+    "Ngā tau 1–10"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Eight",
+    "Waru"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "MXFL101",
+   "fam": "MXFL",
+   "tmpl": "Standard",
+   "page": "MXFL101_3_6.html",
+   "gold": "MXFL101_10.0.html",
+   "claude_spans": [
+    "Ten | Tekau"
+   ],
+   "gold_spans": [
+    "Numbers 1–10",
+    "Ngā tau 1–10"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Ten",
+    "Tekau"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TEDC402",
+   "fam": "TEDC",
+   "tmpl": "Standard",
+   "page": "TEDC402_1_0.html",
+   "gold": "TEDC402-9.0.html",
+   "claude_spans": [
+    "Whakatau | Welcome"
+   ],
+   "gold_spans": [
+    "Data story: from numbers to narrative",
+    "He Kōrero Raraunga: Mai i ngā Tau ki te Tuhinga"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Whakatau",
+    "Welcome"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "XDLS501",
+   "fam": "XDLS",
+   "tmpl": "Standard",
+   "page": "XDLS501_1_0.html",
+   "gold": "XDLS501.00.html",
+   "claude_spans": [
+    "Whakawhanaungatanga | Learning to relate well with others"
+   ],
+   "gold_spans": [
+    "Learning to relate well with others",
+    "Whakawhanaungatanga"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "Whakawhanaungatanga",
+    "Learning to relate well with others"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "XGF9002",
+   "fam": "XGF",
+   "tmpl": "Standard",
+   "page": "XGF9002_9_0.html",
+   "gold": "XGF9002_9_0.html",
+   "claude_spans": [
+    "He kupu whakakapi | Closing words and module wrap-up and reflection"
+   ],
+   "gold_spans": [
+    "Closing Words and Reflection",
+    "He Kupu Whakakapi"
+   ],
+   "pipe": true,
+   "code_prefix": false,
+   "halves": [
+    "He kupu whakakapi",
+    "Closing words and module wrap-up and reflection"
+   ],
+   "gold_order": "gold-other-pair"
+  }
+ ],
+ "code_prefix_rows": [
+  {
+   "code": "PNR101",
+   "fam": "PNR",
+   "tmpl": "Bilingual",
+   "page": "PNR101_1_0.html",
+   "gold": "PNR101_2_0.html",
+   "claude_spans": [
+    "PNR101 Number 1 | Te tau 1"
+   ],
+   "gold_spans": [
+    "Ngā tau: 1",
+    "Numbers: 1"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "Number 1",
+    "Te tau 1"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_1_0.html",
+   "gold": "TRR102_1.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_2_0.html",
+   "gold": "TRR102_2.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_3_0.html",
+   "gold": "TRR102_3.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR102",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR102_5_0.html",
+   "gold": "TRR102_5.0.html",
+   "claude_spans": [
+    "TRR102 The vowels: Aa | Ngā Oropuare: Aa"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Aa",
+    "The vowels: Aa"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Aa",
+    "Ngā Oropuare: Aa"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR103",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR103_1_0.html",
+   "gold": "TRR103_1.0.html",
+   "claude_spans": [
+    "TRR103 The vowels: Ee | Ngā Oropuare: Ee"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Ee",
+    "The vowels: Ee"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Ee",
+    "Ngā Oropuare: Ee"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR103",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR103_2_0.html",
+   "gold": "TRR103_2.0.html",
+   "claude_spans": [
+    "TRR103 The vowels: Ee | Ngā Oropuare: Ee"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Ee",
+    "The vowels: Ee"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Ee",
+    "Ngā Oropuare: Ee"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR103",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR103_3_0.html",
+   "gold": "TRR103_3.0.html",
+   "claude_spans": [
+    "TRR103 The vowels: Ee | Ngā Oropuare: Ee"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Ee",
+    "The vowels: Ee"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Ee",
+    "Ngā Oropuare: Ee"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR106",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR106_2_0.html",
+   "gold": "TRR106_2.0.html",
+   "claude_spans": [
+    "TRR106 The vowels: Uu | Ngā Oropuare: Uu"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare: Uu",
+    "The vowels: Uu"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowels: Uu",
+    "Ngā Oropuare: Uu"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_1_0.html",
+   "gold": "TRR109_1.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: ao | Te oropuare pūrua: ao"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ao",
+    "The vowel blend: ao"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ao",
+    "Te oropuare pūrua: ao"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_2_0.html",
+   "gold": "TRR109_2.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: ae | Te oropuare pūrua: ae"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ae",
+    "The vowel blend: ae"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ae",
+    "Te oropuare pūrua: ae"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_3_0.html",
+   "gold": "TRR109_4.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: ai | Te oropuare pūrua: ai"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: au",
+    "The vowel blend: au"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ai",
+    "Te oropuare pūrua: ai"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_4_0.html",
+   "gold": "TRR109_3.0.html",
+   "claude_spans": [
+    "TRR109 –The vowel blend: au| Te oropuare pūrua: au"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ai",
+    "The vowel blend: ai"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: au",
+    "Te oropuare pūrua: au"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR109",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR109_5_0.html",
+   "gold": "TRR109_5.0.html",
+   "claude_spans": [
+    "TRR109 The vowel blends: a | Ngā oropuare pūrua: a"
+   ],
+   "gold_spans": [
+    "Ngā oropuare pūrua: a",
+    "The vowel blends: a"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blends: a",
+    "Ngā oropuare pūrua: a"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_1_0.html",
+   "gold": "TRR111_1.0.html",
+   "claude_spans": [
+    "TRR111 –The vowel blend: ia | Ngā oropuare pūrua: ia"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare Pūrua: i",
+    "The Vowel Blends: i"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ia",
+    "Ngā oropuare pūrua: ia"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_2_0.html",
+   "gold": "TRR111_2.0.html",
+   "claude_spans": [
+    "TRR111 – io | Te oropuare pūrua: io"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: io",
+    "The Vowel Blend: io"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "io",
+    "Te oropuare pūrua: io"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_3_0.html",
+   "gold": "TRR111_3.0.html",
+   "claude_spans": [
+    "TRR111 –The vowel blend: iu | Te oropuare pūrua: iu"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: iu",
+    "The Vowel Blend: iu"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: iu",
+    "Te oropuare pūrua: iu"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_4_0.html",
+   "gold": "TRR111_4.0.html",
+   "claude_spans": [
+    "TRR111 –The vowel blend: ie | Te oropuare pūrua: ie"
+   ],
+   "gold_spans": [
+    "Te oropuare pūrua: ie",
+    "The Vowel Blend: ie"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ie",
+    "Te oropuare pūrua: ie"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR111",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR111_5_0.html",
+   "gold": "TRR111_5.0.html",
+   "claude_spans": [
+    "TRR111 – Vowel blends: ia, ie, io, iu | Ngā Oropuare Pūrua: ia, ie, io, iu"
+   ],
+   "gold_spans": [
+    "Ngā Oropuare Pūrua: ia, ie, io, iu",
+    "Vowel Blends: ia, ie, io, iu"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "Vowel blends: ia, ie, io, iu",
+    "Ngā Oropuare Pūrua: ia, ie, io, iu"
+   ],
+   "gold_order": "reo-first"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_2_0.html",
+   "gold": "TRR112_2.0.html",
+   "claude_spans": [
+    "TRR112 –The vowel blend: oe | Te oropuare pūrua: oe"
+   ],
+   "gold_spans": [
+    "Oro tōpū: oe",
+    "The sound: oe"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: oe",
+    "Te oropuare pūrua: oe"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_3_0.html",
+   "gold": "TRR112_3.0.html",
+   "claude_spans": [
+    "TRR112 –The vowel blend: oi | Te oropuare pūrua: oi"
+   ],
+   "gold_spans": [
+    "Oro tōpū: oi",
+    "The Diphthong: oi"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: oi",
+    "Te oropuare pūrua: oi"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_4_0.html",
+   "gold": "TRR112_4.0.html",
+   "claude_spans": [
+    "TRR112 –The vowel blend: ou | Te oropuare pūrua: ou"
+   ],
+   "gold_spans": [
+    "Oro tōpū: ou",
+    "The Diphthong: ou"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ou",
+    "Te oropuare pūrua: ou"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR112",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR112_5_0.html",
+   "gold": "TRR112_5.0.html",
+   "claude_spans": [
+    "TRR112 – The Vowel blends: o | Ngā oropuare pūrua: o"
+   ],
+   "gold_spans": [
+    "Ngā oro tōpū: o",
+    "The diphthongs: o"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The Vowel blends: o",
+    "Ngā oropuare pūrua: o"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR113",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR113_2_0.html",
+   "gold": "TRR113_4.0.html",
+   "claude_spans": [
+    "TRR113 –The vowel blend: ue | Te oropuare pūrua: ue"
+   ],
+   "gold_spans": [
+    "Oro tōpū ū",
+    "The Dipthongs: u"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: ue",
+    "Te oropuare pūrua: ue"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR113",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR113_4_0.html",
+   "gold": "TRR113_2.0.html",
+   "claude_spans": [
+    "TRR113 –The vowel blend: uo | Te oropuare pūrua: uo"
+   ],
+   "gold_spans": [
+    "Oro tōpū ū",
+    "The Dipthongs: u"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blend: uo",
+    "Te oropuare pūrua: uo"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "TRR113",
+   "fam": "TRR",
+   "tmpl": "Bilingual",
+   "page": "TRR113_5_0.html",
+   "gold": "TRR113_5.0.html",
+   "claude_spans": [
+    "TRR113 –The vowel blends: u | Ngā oropuare pūrua: u"
+   ],
+   "gold_spans": [
+    "Oro tōpū ū",
+    "The Dipthongs: u"
+   ],
+   "pipe": true,
+   "code_prefix": true,
+   "halves": [
+    "The vowel blends: u",
+    "Ngā oropuare pūrua: u"
+   ],
+   "gold_order": "gold-other-pair"
+  },
+  {
+   "code": "MXEO102",
+   "fam": "MXEO",
+   "tmpl": "Standard",
+   "page": "MXEO102_1_0.html",
+   "gold": "MXEO102_01.0.html",
+   "claude_spans": [
+    "MXEO102 Expressing Yourself Through Patterns and Shapes / Tō āhuatanga whakapuaki i roto mai i ngā tauira me ngā āhua kōwhaiwhai"
+   ],
+   "gold_spans": [
+    "Patterns Rules"
+   ],
+   "pipe": false,
+   "code_prefix": true
+  },
+  {
+   "code": "MXEO102",
+   "fam": "MXEO",
+   "tmpl": "Standard",
+   "page": "MXEO102_2_0.html",
+   "gold": "MXEO102_02.0.html",
+   "claude_spans": [
+    "MXEO102 Expressing Yourself Through Patterns and Shapes / Tō āhuatanga whakapuaki i roto mai i ngā tauira me ngā āhua kōwhaiwhai"
+   ],
+   "gold_spans": [
+    "Slide, Flip and Turn"
+   ],
+   "pipe": false,
+   "code_prefix": true
+  },
+  {
+   "code": "MXEO102",
+   "fam": "MXEO",
+   "tmpl": "Standard",
+   "page": "MXEO102_3_0.html",
+   "gold": "MXEO102_03.0.html",
+   "claude_spans": [
+    "MXEO102 Expressing Yourself Through Patterns and Shapes / Tō āhuatanga whakapuaki i roto mai i ngā tauira me ngā āhua kōwhaiwhai"
+   ],
+   "gold_spans": [
+    "Finding Perimeter and Area of Shapes"
+   ],
+   "pipe": false,
+   "code_prefix": true
+  },
+  {
+   "code": "MXEO102",
+   "fam": "MXEO",
+   "tmpl": "Standard",
+   "page": "MXEO102_4_0.html",
+   "gold": "MXEO102_04.0.html",
+   "claude_spans": [
+    "MXEO102 Expressing Yourself Through Patterns and Shapes / Tō āhuatanga whakapuaki i roto mai i ngā tauira me ngā āhua kōwhaiwhai"
+   ],
+   "gold_spans": [
+    "Making My Own Artwork"
+   ],
+   "pipe": false,
+   "code_prefix": true
+  }
+ ]
+}

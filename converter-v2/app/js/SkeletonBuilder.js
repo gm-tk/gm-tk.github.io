@@ -337,6 +337,45 @@ class SkeletonBuilder {
 	};
 
 	/**
+	 * ROUND 316 (loop Round 3 — KB constraint 79, the lesson's own bilingual pair).
+	 * Splits a lesson's OWN title into [first, second] when it carries one of the
+	 * data separators, or returns null (no separator / feature off / an empty half).
+	 * A leading module-code token (+ an optional dash or colon) is stripped first —
+	 * the writer's "TRR102 –The vowel blend: ao | Te oropuare pūrua: ao" — because
+	 * gold lesson pages never carry the code (0 of 1371). ORDER: in a module whose
+	 * resolved body class matches reo_first_when_body_class (the reoTranslate
+	 * Māori-medium modules) the Te Reo half goes first — the macron-bearing half,
+	 * or the reo_fallback half when the macron cannot decide (PNR101 "Number 1 |
+	 * Te tau 1"); everywhere else the halves keep the writer's order, the same rule
+	 * the overview [TITLE BAR] splitter follows. Pure; never touches the overview.
+	 */
+	static #lessonPair(title, run, rules, cfg) {
+		if (!cfg || cfg.enabled === false || !title) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "LESSONPAIR_OFF"]) return null;
+		const seps = Array.isArray(cfg.separators) && cfg.separators.length ? cfg.separators : ["|"];
+		const sep = seps.find((s) => title.includes(s));
+		if (!sep) return null;
+		let t = String(title);
+		if (cfg.strip_module_code !== false && run.moduleCode) {
+			const esc = String(run.moduleCode).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+			t = t.replace(new RegExp("^\\s*" + esc + "\\s*[\\-\u2013\u2014:]?\\s*", "i"), "");
+		}
+		const i = t.indexOf(sep);
+		if (i < 0) return null;
+		const clean = (s) => s.replace(/^[\s\-\u2013\u2014:|]+|[\s\-\u2013\u2014:|]+$/g, "").replace(/\s+/g, " ").trim();
+		const a = clean(t.slice(0, i)), b = clean(t.slice(i + sep.length));
+		if (!a || !b) return null;
+		const reoCls = cfg.reo_first_when_body_class;
+		const reoMode = !!reoCls && new RegExp(reoCls, "i").test(String(rules?.body_class || ""));
+		if (!reoMode) return [a, b];
+		const M = /[\u0101\u0113\u012b\u014d\u016b\u0100\u0112\u012a\u014c\u016a]/;   // āēīōū
+		const ma = M.test(a), mb = M.test(b);
+		if (mb && !ma) return [b, a];
+		if (ma && !mb) return [a, b];
+		return (cfg.reo_fallback ?? "second") === "second" ? [b, a] : [a, b];
+	}
+
+	/**
 	 * Builds the #header element: the module-code "chip", the title <h1>
 	 * line(s) (the WT's own English/Te Reo split, or an editorial fallback
 	 * when no title could be derived), the menu-open button, and the menu
@@ -477,7 +516,15 @@ class SkeletonBuilder {
 			// lesson pages: the lesson's own title (corpus practice), falling
 			// back to the module title when the writer gave none. Lessons DO
 			// follow the registry count (they show the lesson title only).
-			titles.push(page.pageTitle || run.englishTitle || content.titleBar.english || "");
+			// ROUND 316 (loop Round 3 — KB constraint 79). A lesson whose OWN title is a
+			// pipe-joined bilingual pair ("One | Tahi", "TRR102 The vowels: Aa | Ngā
+			// Oropuare: Aa") ships the LESSON's English + Te Reo pair as two h1 spans —
+			// the gold's form on 40/40 measured pages — with the module code stripped and,
+			// in a reoTranslate module, Te Reo first (07D MTK rule 7). See #lessonPair.
+			// Data header.lesson_bilingual_pair; env LESSONPAIR_OFF.
+			const pairTitles = SkeletonBuilder.#lessonPair(page.pageTitle || "", run, rules, tpl.header.lesson_bilingual_pair);
+			if (pairTitles) titles.push(...pairTitles);
+			else titles.push(page.pageTitle || run.englishTitle || content.titleBar.english || "");
 			// CL-0042 (ROUND 230 — the OSSC pair, Chris). For the subject code
 			// prefixes in header.lesson_title_h1.subjects (the OSSC short-course
 			// family), a lesson page carries EXACTLY ONE title h1 — its own lesson
@@ -511,8 +558,11 @@ class SkeletonBuilder {
 				&& !(typeof process !== "undefined" && process.env && process.env.LESSONTEREO_OFF)
 				&& !!page.pageTitle && !!modEng
 				&& Utils.Fold(page.pageTitle) !== Utils.Fold(modEng);
-			if (run.teReoTitle && wanted > 1 && !lthSuppress && !distinctSuppress) titles.push(run.teReoTitle);
-			while (titles.length > wanted) titles.pop();
+			// ROUND 316: a lesson that carries its OWN pair never takes the module's Te Reo
+			// title beside it, and the pair is exempt from the registry h1_count cap.
+			if (!pairTitles && run.teReoTitle && wanted > 1 && !lthSuppress && !distinctSuppress) titles.push(run.teReoTitle);
+			const cap = pairTitles ? Math.max(wanted, pairTitles.length) : wanted;
+			while (titles.length > cap) titles.pop();
 			if (titles.filter(Boolean).length < wanted) {
 				run.AddNote("info", "SkeletonBuilder",
 					`Page ${page.lessonLabel}: h1_count wants ${wanted} title(s) but the source provided ${titles.filter(Boolean).length} — emitted what exists.`);

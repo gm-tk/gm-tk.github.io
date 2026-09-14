@@ -1537,7 +1537,17 @@ class Config {
 	// skeleton gate's page PAIRING) had no void handling -- repaired, skeleton
 	// re-baselined at 1954 pairs. Full corpus regeneration. Env XHTMLVOID_OFF; data
 	// formatter.xhtml_voids.
-	static AppVersion = "260618.86";
+	// ROUND 316 (260618.87): THE LESSON'S OWN BILINGUAL TITLE PAIR (KB constraint 79,
+	// the autonomous loop's Round 3). A lesson whose own title is a pipe-joined pair
+	// ("One | Tahi", "TRR102 The vowels: Aa | Nga Oropuare: Aa") ships the LESSON's
+	// English + Te Reo pair as two h1 spans, module code stripped, Te Reo first in
+	// the reoTranslate modules (07D MTK rule 7) and the writer's order elsewhere --
+	// the gold's form on 40/40 measured pages. SkeletonBuilder.#lessonPair; the pair
+	// is exempt from the registry h1_count cap and never takes the module Te Reo
+	// title beside it. 45 pages / 17 modules; scoped regeneration of 179 (the
+	// two-span-title family rebuilt byte-identical). Env LESSONPAIR_OFF; data
+	// header.lesson_bilingual_pair.
+	static AppVersion = "260618.87";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
