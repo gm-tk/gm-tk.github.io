@@ -1,0 +1,53 @@
+lesson pages with a module menu: claude 1085 / gold 1079; Claude lead-in labels inside the menu: 1491
+ALL                                                n=1491 pages= 690 mods=127 | gold {'h5': 840, 'p': 315, 'absent': 199, 'h3': 89, 'h4': 40, 'li': 4, 'no-gold-menu': 4} h5/found 0.65
+  Claude <h5>                                      n=1257 pages= 658 mods=123 | gold {'h5': 781, 'p': 235, 'absent': 147, 'h3': 54, 'h4': 36, 'no-gold-menu': 4} h5/found 0.71
+  Claude <p>                                       n= 206 pages= 176 mods= 42 | gold {'p': 80, 'h5': 59, 'absent': 39, 'h3': 24, 'li': 4} h5/found 0.35
+  Claude other                                     n=  28 pages=  28 mods=  6 | gold {'absent': 13, 'h3': 11, 'h4': 4} h5/found 0.00
+
+Claude <p> labels in the menu — by template:
+  Standard                                         n= 197 pages= 167 mods= 40 | gold {'p': 71, 'h5': 59, 'absent': 39, 'h3': 24, 'li': 4} h5/found 0.37
+  Bilingual                                        n=   0 pages=   0 mods=  0 | gold {} h5/found 0.00
+  Fundamentals                                     n=   5 pages=   5 mods=  1 | gold {'p': 5} h5/found 0.00
+  Inquiry                                          n=   4 pages=   4 mods=  1 | gold {'p': 4} h5/found 0.00
+
+Claude <p> labels — by phrase:
+  we are learning                                  n= 125 pages= 125 mods= 27 | gold {'p': 56, 'h5': 49, 'h3': 15, 'li': 3, 'absent': 2} h5/found 0.40
+  ākonga will                                      n=  45 pages=  45 mods= 12 | gold {'p': 24, 'absent': 21} h5/found 0.00
+  you will show your understanding                 n=  33 pages=  33 mods=  6 | gold {'absent': 15, 'h5': 9, 'h3': 9} h5/found 0.50
+  i can                                            n=   2 pages=   2 mods=  2 | gold {'li': 1, 'h5': 1} h5/found 0.50
+  we learning                                      n=   1 pages=   1 mods=  1 | gold {'absent': 1} h5/found 0.00
+
+Claude <p> labels — by subject (n>=3):
+  1-10 English                                     n=  86 pages=  65 mods= 15 | gold {'h5': 27, 'h3': 24, 'p': 22, 'absent': 10, 'li': 3} h5/found 0.36
+  Online Safety (OS9000)                           n=  32 pages=  32 mods= 10 | gold {'absent': 16, 'p': 16} h5/found 0.00
+  1-10 Mathematics                                 n=  31 pages=  23 mods=  5 | gold {'p': 17, 'absent': 13, 'h5': 1} h5/found 0.06
+  ConnectED                                        n=  25 pages=  25 mods=  6 | gold {'p': 20, 'h5': 5} h5/found 0.20
+  NCEA1                                            n=  19 pages=  18 mods=  4 | gold {'h5': 18, 'li': 1} h5/found 0.95
+  None                                             n=   8 pages=   8 mods=  1 | gold {'h5': 8} h5/found 1.00
+  Leaving to Learn                                 n=   5 pages=   5 mods=  1 | gold {'p': 5} h5/found 0.00
+
+Claude <p> labels — by exact text (top 20):
+  'we are learning'                                n=  47 pages=  47 mods=  9 | gold {'p': 26, 'h5': 21} h5/found 0.45
+  'we are learning about to'                       n=  29 pages=  29 mods= 10 | gold {'h5': 20, 'h3': 7, 'p': 2} h5/found 0.69
+  'we are learning about'                          n=  23 pages=  23 mods=  4 | gold {'p': 15, 'h3': 5, 'h5': 3} h5/found 0.13
+  'you will show your understanding by'            n=  16 pages=  16 mods=  3 | gold {'h3': 9, 'absent': 4, 'h5': 3} h5/found 0.25
+  'ākonga will'                                    n=  13 pages=  13 mods=  2 | gold {'p': 8, 'absent': 5} h5/found 0.00
+  'we are learning to'                             n=  11 pages=  11 mods=  3 | gold {'p': 4, 'h5': 4, 'h3': 3} h5/found 0.36
+  'we are learning to identify classify and des'   n=   3 pages=   3 mods=  1 | gold {'p': 3} h5/found 0.00
+  'you will show your understanding by identify'   n=   3 pages=   3 mods=  1 | gold {'absent': 3} h5/found 0.00
+  'ākonga will recognise what online harassment'   n=   2 pages=   2 mods=  2 | gold {'absent': 1, 'p': 1} h5/found 0.00
+  'ākonga will learn about the benefits of gami'   n=   2 pages=   2 mods=  1 | gold {'absent': 2} h5/found 0.00
+  'ākonga will learn what social media is'         n=   2 pages=   2 mods=  2 | gold {'absent': 2} h5/found 0.00
+  'ākonga will learn how to use social media sa'   n=   2 pages=   2 mods=  2 | gold {'absent': 2} h5/found 0.00
+  'i can justify the use of key management prac'   n=   1 pages=   1 mods=  1 | gold {'li': 1} h5/found 0.00
+  'i can'                                          n=   1 pages=   1 mods=  1 | gold {'h5': 1} h5/found 1.00
+  'we are learning how emotions and expressions'   n=   1 pages=   1 mods=  1 | gold {'h5': 1} h5/found 1.00
+  'we learning'                                    n=   1 pages=   1 mods=  1 | gold {'absent': 1} h5/found 0.00
+  'we are learning to a'                           n=   1 pages=   1 mods=  1 | gold {'p': 1} h5/found 0.00
+  'you will show your understanding by respondi'   n=   1 pages=   1 mods=  1 | gold {'absent': 1} h5/found 0.00
+  'we are learning to read listen to and view t'   n=   1 pages=   1 mods=  1 | gold {'li': 1} h5/found 0.00
+  'you will show your understanding by explorin'   n=   1 pages=   1 mods=  1 | gold {'h5': 1} h5/found 1.00
+
+FIX POPULATION (Claude p in menu → gold h5 for the same label): 59 labels / 56 pages / 15 modules
+modules: AGH1002 AGH1003 CEDO502 CEDR501 ENGC201 ENGI202 ENGI203 ENGI401 ENGJ402 ENGJ403 ENGR301 MXDI301 PES1005 PES1007 SCPH301
+gold keeps <p> (KB-over-gold sites if applied): 80 labels / 80 pages / 20 modules: [('1-10 English', 22), ('ConnectED', 20), ('1-10 Mathematics', 17), ('Online Safety (OS9000)', 16), ('Leaving to Learn', 5)]

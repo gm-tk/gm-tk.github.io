@@ -1,0 +1,20 @@
+WORD-NUMBERED lists in the WTs: 2530 in 330 modules
+ALL                                          n=2530 mods=330 | gold {"ol":729,"ul":142,"absent":1128,"not-a-list":531} ol/found 0.84
+  learning-intention context                 n=  53 mods= 26 | gold {"absent":15,"ol":13,"ul":24,"not-a-list":1} ol/found 0.35
+  other context                              n=2477 mods=321 | gold {"ol":716,"ul":118,"absent":1113,"not-a-list":530} ol/found 0.86
+  Standard — LI context                      n=  48 mods= 22 | gold {"ul":24,"absent":12,"ol":11,"not-a-list":1} ol/found 0.31
+  Standard — other                           n=1845 mods=235 | gold {"absent":765,"ol":576,"not-a-list":418,"ul":86} ol/found 0.87
+  Bilingual — LI context                     n=   0 mods=  0 | gold {} ol/found -
+  Bilingual — other                          n=   3 mods=  2 | gold {"ol":2,"ul":1} ol/found 0.67
+  Fundamentals — LI context                  n=   1 mods=  1 | gold {"absent":1} ol/found -
+  Fundamentals — other                       n= 407 mods= 49 | gold {"ol":62,"absent":247,"not-a-list":82,"ul":16} ol/found 0.79
+  Inquiry — LI context                       n=   4 mods=  3 | gold {"absent":2,"ol":2} ol/found 1.00
+  Inquiry — other                            n= 222 mods= 35 | gold {"ol":76,"not-a-list":30,"ul":15,"absent":101} ol/found 0.84
+
+LI-context by subject (n >= 3):
+  NCEA1                                      n=  26 mods=  4 | gold {"ul":24,"absent":2} ol/found 0.00
+  1-10 Blended Literacy                      n=  10 mods=  9 | gold {"ol":3,"absent":7} ol/found 1.00
+  Leaving to Learn                           n=   7 mods=  4 | gold {"absent":1,"ol":5,"not-a-list":1} ol/found 1.00
+  Te ara Whakapuawa -Wellbeing               n=   4 mods=  3 | gold {"absent":2,"ol":2} ol/found 1.00
+
+LI-context gold=ul pages: 24 lists in 3 modules: AGH1001 AGH1004 AGH1005

@@ -1,0 +1,39 @@
+Claude lead-in elements (paired pages, non-acks): 3190
+ALL                                                  n=3190 pages=1142 mods=369 | gold {'h5': 1372, 'p': 796, 'absent': 664, 'h4': 214, 'h3': 115, 'li': 20, 'h2': 9} h5/found 0.54
+  Claude ships <p>                                   n= 903 pages= 547 mods=311 | gold {'p': 542, 'absent': 178, 'h5': 138, 'li': 19, 'h3': 17, 'h4': 6, 'h2': 3} h5/found 0.19
+  Claude ships <h5>                                  n=1988 pages= 971 mods=332 | gold {'h5': 1158, 'absent': 415, 'p': 250, 'h4': 88, 'h3': 76, 'li': 1} h5/found 0.74
+  Claude ships other                                 n= 299 pages= 168 mods=114 | gold {'h4': 120, 'h5': 76, 'absent': 71, 'h3': 22, 'h2': 6, 'p': 4} h5/found 0.33
+
+Claude <p> lead-ins — by template:
+  Standard                                           n= 750 pages= 470 mods=249 | gold {'p': 427, 'absent': 163, 'h5': 128, 'h3': 17, 'li': 12, 'h4': 3} h5/found 0.22
+  Bilingual                                          n=   9 pages=   4 mods=  2 | gold {'li': 6, 'p': 3} h5/found 0.00
+  Fundamentals                                       n=  82 pages=  34 mods= 29 | gold {'p': 65, 'h5': 7, 'absent': 5, 'h2': 3, 'h4': 2} h5/found 0.09
+  Inquiry                                            n=  62 pages=  39 mods= 31 | gold {'p': 47, 'absent': 10, 'h5': 3, 'li': 1, 'h4': 1} h5/found 0.06
+
+Claude <p> lead-ins — lesson vs overview:
+  lesson pages                                       n= 356 pages= 251 mods= 73 | gold {'h5': 120, 'p': 102, 'absent': 97, 'li': 17, 'h3': 17, 'h4': 3} h5/found 0.46
+  overview pages                                     n= 547 pages= 296 mods=296 | gold {'p': 440, 'absent': 81, 'h5': 18, 'h4': 3, 'h2': 3, 'li': 2} h5/found 0.04
+
+Claude <p> lead-ins — by phrase (lesson pages):
+  we are learning                                    n= 199 pages= 195 mods= 46 | gold {'h5': 85, 'p': 57, 'absent': 48, 'h3': 8, 'li': 1} h5/found 0.56
+  i can                                              n=  81 pages=  64 mods= 24 | gold {'p': 28, 'h5': 24, 'li': 16, 'absent': 13} h5/found 0.35
+  ākonga will                                        n=  35 pages=  35 mods= 12 | gold {'absent': 18, 'p': 17} h5/found 0.00
+  you will show your understanding                   n=  20 pages=  20 mods=  5 | gold {'h3': 9, 'absent': 6, 'h5': 5} h5/found 0.36
+  success criteria                                   n=  16 pages=   4 mods=  3 | gold {'absent': 9, 'h5': 6, 'h4': 1} h5/found 0.86
+  learning intentions                                n=   3 pages=   3 mods=  3 | gold {'absent': 2, 'h4': 1} h5/found 0.00
+  we learning                                        n=   1 pages=   1 mods=  1 | gold {'absent': 1} h5/found 0.00
+  walt                                               n=   1 pages=   1 mods=  1 | gold {'h4': 1} h5/found 0.00
+
+Claude <p> lead-ins — by subject (lesson pages, n>=4):
+  1-10 English                                       n=  99 pages=  66 mods= 18 | gold {'absent': 40, 'h5': 28, 'h3': 17, 'p': 10, 'li': 3, 'h4': 1} h5/found 0.47
+  Leaving to Learn                                   n=  72 pages=  42 mods= 13 | gold {'p': 45, 'h5': 14, 'absent': 10, 'h4': 2, 'li': 1} h5/found 0.23
+  None                                               n=  51 pages=  27 mods=  4 | gold {'h5': 40, 'absent': 6, 'li': 5} h5/found 0.89
+  Online Safety (OS9000)                             n=  40 pages=  30 mods= 11 | gold {'h5': 18, 'absent': 13, 'p': 9} h5/found 0.67
+  NCEA1                                              n=  32 pages=  32 mods=  9 | gold {'absent': 17, 'h5': 14, 'li': 1} h5/found 0.93
+  ConnectED                                          n=  32 pages=  29 mods=  7 | gold {'p': 26, 'h5': 6} h5/found 0.19
+  1-10 Mathematics                                   n=  17 pages=  17 mods=  5 | gold {'absent': 9, 'p': 8} h5/found 0.00
+  Te Marautanga o Aotearoa TMoA                      n=   9 pages=   4 mods=  2 | gold {'li': 6, 'p': 3} h5/found 0.00
+
+FIX POPULATION (lesson pages, Claude p → gold h5): 120 lines / 90 pages / 21 modules
+modules: BLLR201 CEDO502 CEDR501 CEDT207 ENGI202 ENGI203 ENGJ402 ENGJ403 ENGR301 OSSC401 OSSC501 PES1002 PES1004 PES1005 PES1007 SCPH301 TEDC401 TEDC402 XDLS902 XDLS903 XDLS904
+sample texts: [('we are learning', 65), ('i can', 24), ('we are learning about', 12), ('success criteria', 6), ('we are learning to', 4), ('we are learning about to', 4), ('you will show your understanding by', 3), ('you will show your understanding bysummarising an origin story of ngā ', 1), ('you will show your understanding byi', 1)]
