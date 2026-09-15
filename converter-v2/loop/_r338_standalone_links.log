@@ -1,0 +1,74 @@
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR115: prep refused (no-wt)
+
+modules prepared 451 (no gold dir 0, prep refused 3); hyperlink instances 25888 (para 13145, table 12743)
+
+== THE CLASS: UNTAGGED hyperlink paragraphs, by position ==
+STANDALONE phrase (not list, not URL)        n= 486 mods=164 goldpages= 49 | BTN 6 +plain 0 | stdA 0 inlA 33 plain 50 absent 397 | button share (of found) 0.067 (of all) 0.012
+STANDALONE bare URL (not list)               n=1226 mods=208 goldpages=115 | BTN 27 +plain 1 | stdA 7 inlA 318 plain 36 absent 837 | button share (of found) 0.072 (of all) 0.023
+STANDALONE inside a list item                n=  25 mods=  7 goldpages=  8 | BTN 0 +plain 7 | stdA 7 inlA 0 plain 4 absent 7 | button share (of found) 0.389 (of all) 0.280
+INLINE in prose (not list)                   n= 621 mods=113 goldpages=114 | BTN 27 +plain 4 | stdA 3 inlA 120 plain 108 absent 359 | button share (of found) 0.118 (of all) 0.050
+INLINE in a list item                        n= 364 mods=283 goldpages= 21 | BTN 6 +plain 0 | stdA 1 inlA 13 plain 23 absent 321 | button share (of found) 0.140 (of all) 0.016
+TABLE cell                                   n=12743 mods=318 goldpages=324 | BTN 117 +plain 22 | stdA 23 inlA 707 plain 2060 absent 9814 | button share (of found) 0.047 (of all) 0.011
+
+== TAGGED hyperlink paragraphs (other rounds own these), by first tag ==
+  [image] 1651 standalone                    n=2090 mods=248 goldpages= 56 | BTN 2 +plain 0 | stdA 2 inlA 67 plain 63 absent 1956 | button share (of found) 0.015 (of all) 0.001
+  [video] 830 standalone                     n=1999 mods=252 goldpages=199 | BTN 13 +plain 0 | stdA 0 inlA 1021 plain 149 absent 816 | button share (of found) 0.011 (of all) 0.007
+  [link] 192 standalone                      n= 242 mods= 47 goldpages= 58 | BTN 48 +plain 4 | stdA 6 inlA 42 plain 11 absent 131 | button share (of found) 0.468 (of all) 0.215
+  [insert media item] 199 standalone         n= 227 mods= 26 goldpages= 14 | BTN 0 +plain 0 | stdA 0 inlA 17 plain 22 absent 188 | button share (of found) 0.000 (of all) 0.000
+  [insert video] 141 standalone              n= 206 mods= 49 goldpages= 38 | BTN 0 +plain 0 | stdA 0 inlA 80 plain 30 absent 96 | button share (of found) 0.000 (of all) 0.000
+  [body] 2 standalone                        n= 180 mods= 77 goldpages= 64 | BTN 21 +plain 4 | stdA 0 inlA 27 plain 51 absent 77 | button share (of found) 0.243 (of all) 0.139
+  [button] 31 standalone                     n= 170 mods= 53 goldpages= 41 | BTN 57 +plain 5 | stdA 0 inlA 3 plain 13 absent 92 | button share (of found) 0.795 (of all) 0.365
+  [modal  image] 166 standalone              n= 166 mods= 14 goldpages=  1 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 2 absent 164 | button share (of found) 0.000 (of all) 0.000
+  [] 135 standalone                          n= 161 mods= 44 goldpages= 30 | BTN 2 +plain 1 | stdA 0 inlA 105 plain 0 absent 53 | button share (of found) 0.028 (of all) 0.019
+  [embed video] 149 standalone               n= 150 mods= 13 goldpages=  8 | BTN 0 +plain 0 | stdA 7 inlA 12 plain 1 absent 130 | button share (of found) 0.000 (of all) 0.000
+  [insert image] 84 standalone               n= 122 mods= 34 goldpages=  4 | BTN 0 +plain 0 | stdA 0 inlA 2 plain 3 absent 117 | button share (of found) 0.000 (of all) 0.000
+  [video link] 89 standalone                 n= 114 mods= 21 goldpages= 15 | BTN 7 +plain 0 | stdA 0 inlA 24 plain 4 absent 79 | button share (of found) 0.200 (of all) 0.061
+  [image link] 91 standalone                 n= 111 mods= 18 goldpages= 12 | BTN 1 +plain 0 | stdA 0 inlA 32 plain 4 absent 74 | button share (of found) 0.027 (of all) 0.009
+  [h] 0 standalone                           n=  86 mods= 23 goldpages=  7 | BTN 1 +plain 0 | stdA 0 inlA 34 plain 1 absent 50 | button share (of found) 0.028 (of all) 0.012
+
+== THE CLASS by TEMPLATE family (standalone phrase, untagged, not list) ==
+  Standard                                   n= 359 mods=138 goldpages= 32 | BTN 3 +plain 0 | stdA 0 inlA 12 plain 21 absent 323 | button share (of found) 0.083 (of all) 0.008
+  Inquiry                                    n= 126 mods= 25 goldpages= 16 | BTN 3 +plain 0 | stdA 0 inlA 20 plain 29 absent 74 | button share (of found) 0.058 (of all) 0.024
+  Fundamentals                               n=   1 mods=  1 goldpages=  1 | BTN 0 +plain 0 | stdA 0 inlA 1 plain 0 absent 0 | button share (of found) 0.000 (of all) 0.000
+
+== THE CLASS by SUBJECT family (≥ 8 instances) ==
+  1-10 Blended Literacy                      n= 229 mods=100 goldpages= 18 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 25 absent 204 | button share (of found) 0.000 (of all) 0.000
+  ConnectED                                  n=  71 mods= 12 goldpages=  5 | BTN 3 +plain 0 | stdA 0 inlA 20 plain 12 absent 36 | button share (of found) 0.086 (of all) 0.042
+  1-10 English                               n=  62 mods=  6 goldpages=  2 | BTN 0 +plain 0 | stdA 0 inlA 2 plain 0 absent 60 | button share (of found) 0.000 (of all) 0.000
+  NCEA1                                      n=  49 mods= 13 goldpages= 11 | BTN 1 +plain 0 | stdA 0 inlA 6 plain 5 absent 37 | button share (of found) 0.083 (of all) 0.020
+  1-10 Mathematics                           n=  26 mods= 10 goldpages=  5 | BTN 1 +plain 0 | stdA 0 inlA 2 plain 4 absent 19 | button share (of found) 0.143 (of all) 0.038
+  Leaving to Learn                           n=  20 mods= 11 goldpages=  5 | BTN 1 +plain 0 | stdA 0 inlA 2 plain 2 absent 15 | button share (of found) 0.200 (of all) 0.050
+  ?                                          n=  10 mods=  3 goldpages=  0 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 0 absent 10 | button share (of found) - (of all) 0.000
+  Te ara Whakapuawa -Wellbeing               n=   9 mods=  4 goldpages=  2 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 2 absent 7 | button share (of found) 0.000 (of all) 0.000
+
+== THE CLASS by PREFIX (≥ 6 instances) ==
+  BLL                                        n= 229 mods=100 goldpages= 18 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 25 absent 204 | button share (of found) 0.000 (of all) 0.000
+  ENGJ                                       n=  42 mods=  2 goldpages=  1 | BTN 0 +plain 0 | stdA 0 inlA 1 plain 0 absent 41 | button share (of found) 0.000 (of all) 0.000
+  CEDW                                       n=  32 mods=  2 goldpages=  1 | BTN 0 +plain 0 | stdA 0 inlA 14 plain 1 absent 17 | button share (of found) 0.000 (of all) 0.000
+  CEDT                                       n=  28 mods=  4 goldpages=  3 | BTN 2 +plain 0 | stdA 0 inlA 6 plain 11 absent 9 | button share (of found) 0.105 (of all) 0.071
+  AGH                                        n=  28 mods=  3 goldpages=  5 | BTN 1 +plain 0 | stdA 0 inlA 3 plain 2 absent 22 | button share (of found) 0.167 (of all) 0.036
+  ENGI                                       n=  17 mods=  2 goldpages=  0 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 0 absent 17 | button share (of found) - (of all) 0.000
+  HIS                                        n=  14 mods=  5 goldpages=  3 | BTN 0 +plain 0 | stdA 0 inlA 1 plain 2 absent 11 | button share (of found) 0.000 (of all) 0.000
+  XLP                                        n=  10 mods=  5 goldpages=  3 | BTN 0 +plain 0 | stdA 0 inlA 1 plain 2 absent 7 | button share (of found) 0.000 (of all) 0.000
+  TWHA                                       n=   9 mods=  4 goldpages=  2 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 2 absent 7 | button share (of found) 0.000 (of all) 0.000
+  MXFU                                       n=   9 mods=  3 goldpages=  0 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 0 absent 9 | button share (of found) - (of all) 0.000
+  TEDC                                       n=   7 mods=  1 goldpages=  0 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 0 absent 7 | button share (of found) - (of all) 0.000
+  XMES                                       n=   7 mods=  3 goldpages=  2 | BTN 1 +plain 0 | stdA 0 inlA 1 plain 0 absent 5 | button share (of found) 0.500 (of all) 0.143
+  CEDO                                       n=   6 mods=  2 goldpages=  0 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 0 absent 6 | button share (of found) - (of all) 0.000
+  MXEO                                       n=   6 mods=  2 goldpages=  1 | BTN 0 +plain 0 | stdA 0 inlA 0 plain 1 absent 5 | button share (of found) 0.000 (of all) 0.000
+
+== Gold BUTTON label vs the writer's phrase (the class, gold BUTTON) ==
+  same as writer 3 / "Go to …" 0 / other 3
+    CEDT404: "November 29, 2021: NGĀ MOTU! Discover the world of Te Ao Māori with Minecraft: Education Edition. Educators around the w" → "Ngā Motu"
+    AGH1009: "Close to 60 people hospitalised from 2016 Havelock North gastro outbreak, study finds | Stuff.co.nz" → "Hawke's Bay case"
+    XMES201: "There is a printable copy here." → "Printable copy"
+
+== Claude's CURRENT form on the class ==
+  {"BUTTON":0,"BUTTON_PLAIN":11,"STANDALONE_A":148,"INLINE_A":38,"PLAIN":202,"ABSENT":87}
+
+== Class matched by HREF vs by TEXT only (gold BUTTON) ==
+  by href 6 / by text 0
+
+class modules 164; class pages (gold, found) 49

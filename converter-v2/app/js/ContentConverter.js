@@ -5782,6 +5782,37 @@ class ContentConverter {
 		return out;
 	}
 
+	/**
+	 * ROUND 338 — an EXTERNAL destination is the KB's externalButton. KB 05D "Buttons" gives
+	 * two forms — Internal `<a href target=_blank><div class="button">` and External
+	 * `<div class="externalButton">` — and the gold follows it by HOST: relative paths, `#`,
+	 * Google Drive / Docs, the LMS and the vimeo player are `button` (586:1 / 92:6 / 17:8 /
+	 * 6:0), every outside website is `externalButton` (youtube 1:24, earth.google 0:16,
+	 * teara 3:11, nzhistory 0:11 …). The generic [button] emit shipped `div.button` for every
+	 * destination (304 external-host buttons / 147 pages; the gold ships externalButton on
+	 * 0.916 of the paired sites). At the plain-[button] seam only (key === "button"), a
+	 * button carrying an http(s) URL whose host is not in `internal_hosts` (exact, or a
+	 * sub-domain of an entry) and whose resolved form is the plain `div.button`
+	 * (`plain_form_match` — never buttonD / downloadButton / an already-external form)
+	 * ships the external form; a label that fell to journal_label_default reads
+	 * `default_label` ("Go to website"), or `video_label` for a video host — constraint 75's
+	 * "a bare URL with no accompanying words → Go to website". A writer's label is never
+	 * touched. Data buttons.external_destination; env EXTDEST_OFF.
+	 * Returns null when the rule does not apply, else { form, label }.
+	 */
+	static #externalDestination(url, key, form, tpl) {
+		const cfg = tpl?.buttons?.external_destination;
+		if (!cfg || cfg.enabled === false || key !== "button") return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "EXTDEST_OFF"]) return null;
+		const u = String(url ?? "").trim();
+		const host = u.match(/^https?:\/\/([^/?#\s]+)/i)?.[1]?.toLowerCase().replace(/^www\./, "");
+		if (!host) return null;
+		if ((cfg.internal_hosts ?? []).some((h) => { const e = String(h).toLowerCase(); return host === e || host.endsWith("." + e); })) return null;
+		if (!String(form ?? "").includes(cfg.plain_form_match ?? "<div class=\"button\">")) return null;
+		const isVideo = new RegExp(cfg.video_host_match ?? "youtu|vimeo|\\bvideo\\b", "i").test(u);
+		return { form: cfg.form, label: isVideo ? (cfg.video_label ?? "Go to video") : (cfg.default_label ?? "Go to website") };
+	}
+
 	static #mtkQuizOmitCfg() {
 		const mq = DataService.Data.EmitTemplates.interactive_builders?.mtk_quiz;
 		if (!mq || mq.enabled === false) return null;
@@ -6269,8 +6300,14 @@ class ContentConverter {
 				out.push(Utils.FillTemplate(ext.form, { url, label: Utils.EscapeHtml(lbl) }));
 				return out;
 			}
-			if (!label) label = (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim()
-				|| tpl.buttons.journal_label_default;
+			// ROUND 338: remember when the label fell to the JOURNAL default — a URL-only
+			// "[Button: https://…]" has no writer label, and the KB's default for an external
+			// destination is "Go to website", not the journal wording (see #externalDestination).
+			let labelDefaulted = false;
+			if (!label) {
+				label = (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim();
+				if (!label) { label = tpl.buttons.journal_label_default; labelDefaulted = true; }
+			}
 			// DOWNLOAD-JOURNAL TEMPLATED SCAFFOLD (ROUND 239 — Dev-Feedback R2, B5;
 			// SCCH302-02 activity 2B). The writer's "[button to download journal with
 			// standard instructions]" ships the design team's templated download scaffold
@@ -6403,6 +6440,15 @@ class ContentConverter {
 					.replace(/\s*\bbuttons?\b\s*$/i, "")      // strip the trailing "button(s)" word
 					.replace(/\*/g, "").replace(/\s+/g, " ").trim();
 				if (dlLabel) { label = dlLabel; form = dlCfg.form; }
+			}
+			// ROUND 338: an EXTERNAL destination is the KB's externalButton (05D — Internal
+			// `div.button`, External `div.externalButton`; the gold follows it by host), and a
+			// label that fell to the journal default reads "Go to website" / "Go to video"
+			// (constraint 75). Data buttons.external_destination; env EXTDEST_OFF.
+			const extDest = this.#externalDestination(url, key, form, tpl);
+			if (extDest) {
+				form = extDest.form;
+				if (labelDefaulted) label = extDest.label;
 			}
 			// ROUND 323 (KB row 55): the writer's sentence full stop is not part of the label
 			label = this.#buttonLabelTrim(label, tpl);

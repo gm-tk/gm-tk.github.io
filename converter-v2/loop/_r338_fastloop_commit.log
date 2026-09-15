@@ -1,0 +1,24 @@
+re-scoring 71 affected module(s): AGH1003 AGH1004 AGH1007 AGH1009 ANZH303 ANZH401 ANZH404 BLL234 CEDK102 CEDK501 CEDO102 CEDO301 CEDO501 CEDR501 CEDT104 ENFUN02 ENFUN04 ENFUN05 ENGC202 ENGI303 ENGI400 ENGI401 ENGR201 ENGS101 ENGS301 HES1007 HIS1001 HIS1002 HIS1003 HIS1005 HIS1006 HIS1007 HIS1008 HPFUN303 HPRE203 MXDB202 MXDI201 MXDI202 MXDI301 MXEO201 MXEO401 MXEX201 MXEX302 MXEX401 MXFL203 MXFL401 MXFU401 MXFU402 MXFUN01 OSOH401 PES1001 SSCI205 SSOG103 SSOG301 TWHA905 TWHA906 TWHK901 TWHK903 XDLS902 XDLS912 XGF9001 XGF9002 XGF9003 XGF9004 XGF9006 XLP03 XLP05 XMES102 XMES103 XMES201 XMES203
+baseline taken: 2026-09-15T10:25:37Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  51.08      51.10     +0.02  IMPROVED
+  skeleton pages >=50%                       1066       1065        -1  REGRESSED
+  skeleton pages >=75%                        200        201        +1  IMPROVED
+  compare_structure exact chain             11375      11375         0  HELD
+  compare_structure EXTRA container           171        171         0  HELD
+  compare_structure missing container         593        593         0  HELD
+  body_compare ANY breakdown                  191        191         0  HELD
+  defect structurally-clean %               97.81      97.81      0.00  HELD
+  literal-[tag] leak (occ)                    288        288         0  HELD
+  literal-[tag] leak (pages)                   46         46         0  HELD
+
+  context (no pass/fail): sk_pages: 1954->1954  cs_matched: 13398->13398  body_pages: 2102->2102  df_total: 2102->2102  df_clean: 2056->2056
+
+RESULT: MOVED, ACCEPTED AS NAMED — skeleton pages >=50%
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] fast-loop baseline PATCHED (1954 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: skeleton pages >=50%

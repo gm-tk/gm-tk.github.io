@@ -1,0 +1,71 @@
+== Claude anchored buttons with an http(s) href, by host class × Claude's class ==
+  host external · Claude button                      n= 304 pages= 147 mods= 80 | gold externalButton  120 / button   11 / not found  173 | ext share of found 0.916
+  host external · Claude externalButton              n= 230 pages= 123 mods= 68 | gold externalButton   87 / button    1 / not found  142 | ext share of found 0.989
+  host internal · Claude button                      n= 178 pages= 139 mods= 78 | gold externalButton    4 / button   18 / not found  156 | ext share of found 0.182
+  host internal · Claude externalButton              n=  34 pages=  31 mods= 23 | gold externalButton    2 / button    4 / not found   28 | ext share of found 0.333
+
+== THE CLASS: external-host buttons Claude ships as `button` — by template ==
+  Standard                                           n= 250 pages= 126 mods= 62 | gold externalButton  105 / button   10 / not found  135 | ext share of found 0.913
+  Inquiry                                            n=  43 pages=  13 mods= 11 | gold externalButton   10 / button    1 / not found   32 | ext share of found 0.909
+  Fundamentals                                       n=  11 pages=   8 mods=  7 | gold externalButton    5 / button    0 / not found    6 | ext share of found 1.000
+
+== by subject family (≥ 5) ==
+  NCEA1                                              n=  82 pages=  44 mods= 13 | gold externalButton   30 / button    0 / not found   52 | ext share of found 1.000
+  Leaving to Learn                                   n=  68 pages=  24 mods= 13 | gold externalButton   53 / button    2 / not found   13 | ext share of found 0.964
+  1-10 Mathematics                                   n=  53 pages=  26 mods= 14 | gold externalButton    8 / button    4 / not found   41 | ext share of found 0.667
+  EXPlore                                            n=  25 pages=   2 mods=  2 | gold externalButton    0 / button    0 / not found   25 | ext share of found 0.000
+  1-10 English                                       n=  19 pages=  15 mods= 12 | gold externalButton   10 / button    0 / not found    9 | ext share of found 1.000
+  ConnectED                                          n=  14 pages=   9 mods=  7 | gold externalButton    8 / button    0 / not found    6 | ext share of found 1.000
+  ANZH                                               n=  13 pages=   5 mods=  3 | gold externalButton    2 / button    3 / not found    8 | ext share of found 0.400
+  1-10 Social Science                                n=  11 pages=   7 mods=  4 | gold externalButton    3 / button    0 / not found    8 | ext share of found 1.000
+  Te ara Whakapuawa -Wellbeing                       n=   8 pages=   4 mods=  4 | gold externalButton    5 / button    1 / not found    2 | ext share of found 0.833
+
+== by external host (≥ 4) ==
+  www.youtube.com                                    n=  43 pages=  32 mods= 14 | gold externalButton    4 / button    1 / not found   38 | ext share of found 0.800
+  www.istockphoto.com                                n=  38 pages=  13 mods= 11 | gold externalButton    0 / button    0 / not found   38 | ext share of found 0.000
+  app.educationperfect.com                           n=  17 pages=   6 mods=  3 | gold externalButton    0 / button    0 / not found   17 | ext share of found 0.000
+  www.twinkl.co.nz                                   n=  16 pages=  11 mods=  7 | gold externalButton    2 / button    0 / not found   14 | ext share of found 1.000
+  teara.govt.nz                                      n=   9 pages=   4 mods=  4 | gold externalButton    2 / button    2 / not found    5 | ext share of found 0.500
+  earth.google.com                                   n=   8 pages=   6 mods=  5 | gold externalButton    7 / button    1 / not found    0 | ext share of found 0.875
+  nzhistory.govt.nz                                  n=   6 pages=   5 mods=  4 | gold externalButton    3 / button    0 / not found    3 | ext share of found 1.000
+  www.davidsongifted.org                             n=   6 pages=   6 mods=  1 | gold externalButton    6 / button    0 / not found    0 | ext share of found 1.000
+  www.nzonscreen.com                                 n=   5 pages=   5 mods=  3 | gold externalButton    1 / button    1 / not found    3 | ext share of found 0.500
+  kidsinbirmingham1963.org                           n=   4 pages=   2 mods=  2 | gold externalButton    2 / button    0 / not found    2 | ext share of found 1.000
+
+== the converse: INTERNAL-host buttons — by host (the rule must leave these alone) ==
+  docs.google.com                                    n=  90 pages=  73 mods= 37 | gold externalButton    0 / button   15 / not found   75 | ext share of found 0.000
+  mytekuraschool.sharepoint.com                      n=  64 pages=  57 mods= 34 | gold externalButton    1 / button    1 / not found   62 | ext share of found 0.500
+  drive.google.com                                   n=  31 pages=  20 mods= 18 | gold externalButton    1 / button    0 / not found   30 | ext share of found 1.000
+  tekura.desire2learn.com                            n=  12 pages=  11 mods=  9 | gold externalButton    1 / button    4 / not found    7 | ext share of found 0.200
+  mytekuraschool-my.sharepoint.com                   n=   9 pages=   6 mods=  5 | gold externalButton    0 / button    2 / not found    7 | ext share of found 0.000
+  tekuradev.desire2learn.com                         n=   3 pages=   2 mods=  2 | gold externalButton    0 / button    0 / not found    3 | ext share of found 0.000
+  www.tekura.school.nz                               n=   3 pages=   2 mods=  2 | gold externalButton    3 / button    0 / not found    0 | ext share of found 1.000
+
+== Claude labels on the class (top 12) ==
+    52  Go to your journal
+    21  Go to resource
+     7  Go to journal
+     6  EDUCATION PERFECT
+     5  Go to Phase 4 FUNDAMENTALS
+     4  Making kites
+     4  Play
+     4  External link
+     4  link to PDF
+     4  Davidson Institute
+     3  Yes
+     3  Play Video
+
+== gold label vs Claude label on the class where the gold has the button (href-matched) ==
+  same 79 / different 52
+    ENFUN02/ENFUN02_0_0.html: "Go to your journal" → gold "Thoughtful Learning"
+    ENFUN02/ENFUN02_0_0.html: "Go to your journal" → gold "Thoughtful Learning"
+    ENFUN04/ENFUN04_0_0.html: "Collins Online Thesaurus" → gold "Collins Thesaurus"
+    SSFUN01/SSFUN01_0_0.html: "The United Nations is an intergovernmental" → gold "We Are All Born Free"
+    BLL240/BLL240_1_2.html: "Find things in your house or neighbourhood that have the ‘tch’ sound." → gold "Memory Game"
+    CEDK102/CEDK102_0_0.html: "Pixlr Free Online AI Photo Editor, Image Generator &amp; Design tool (pixlr.com)" → gold "Pixlr Photo Editor"
+    CEDK501/CEDK501_5_0.html: "Money personality quiz" → gold "Go to money personality quiz"
+    CEDO102/CEDO102_0_0.html: "Go to website" → gold "Young ocean explorers"
+    CEDO102/CEDO102_0_0.html: "Go to website" → gold "Māui dolphin"
+    TWHA905/TWHA905_0_0.html: "Go to your journal" → gold "Go to Kiwiharvest"
+    TWHK903/TWHK903_0_0.html: "IOS Guided" → gold "iOS Guided Access"
+    TWHK903/TWHK903_0_0.html: "Android Screen pinning" → gold "iOS Guided Access"

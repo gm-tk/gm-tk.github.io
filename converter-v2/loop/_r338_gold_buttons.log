@@ -1,0 +1,219 @@
+gold externalButtons 873 on 440 pages / 198 modules (prepared 198, prep refused 0)
+  source: HREF 526 · TEXT-only 140 · NONE 207 · NOPREP 0
+
+== gold buttons by WT source signature (count · pages · modules · Claude today) ==
+  NONE                                                        207 · 135 pages ·  84 mods · claude {"ABSENT":187,"PLAIN":7,"A":11,"BUTTON_PLAIN":1,"BUTTON":1}
+  HREF/table                                                   74 ·  28 pages ·  24 mods · claude {"BUTTON_PLAIN":2,"A":38,"BUTTON":1,"ABSENT":29,"PLAIN":4}
+  HREF/para/[button]/INLINE/URL                                43 ·  23 pages ·  14 mods · claude {"BUTTON_PLAIN":33,"ABSENT":2,"BUTTON":3,"A":5}
+  TEXT/para/untagged/INLINE                                    33 ·  25 pages ·  19 mods · claude {"PLAIN":28,"ABSENT":2,"A":2,"BUTTON":1}
+  HREF/para/[link]/STANDALONE/URL                              33 ·  22 pages ·  14 mods · claude {"BUTTON":13,"ABSENT":1,"A":5,"BUTTON_PLAIN":14}
+  HREF/para/untagged/STANDALONE/URL                            25 ·  20 pages ·  16 mods · claude {"A":13,"BUTTON_PLAIN":6,"ABSENT":6}
+  TEXT/table                                                   20 ·  15 pages ·   7 mods · claude {"PLAIN":19,"ABSENT":1}
+  TEXT/para/[body]/INLINE                                      20 ·  20 pages ·  13 mods · claude {"PLAIN":19,"ABSENT":1}
+  HREF/para/untagged/INLINE/URL                                20 ·  14 pages ·  10 mods · claude {"A":15,"ABSENT":3,"BUTTON_PLAIN":1,"PLAIN":1}
+  HREF/para/[button  h]/INLINE/URL                             17 ·   5 pages ·   1 mods · claude {"BUTTON_PLAIN":17}
+  HREF/para/[body]/INLINE/URL                                  11 ·  10 pages ·   9 mods · claude {"A":5,"BUTTON":4,"ABSENT":1,"BUTTON_PLAIN":1}
+  HREF/para/[body]/INLINE                                      10 ·   8 pages ·   8 mods · claude {"A":3,"ABSENT":3,"BUTTON_PLAIN":1,"BUTTON":2,"PLAIN":1}
+  HREF/para/[webpage]/STANDALONE                               10 ·   7 pages ·   3 mods · claude {"A":5,"BUTTON":5}
+  HREF/para/[external link]/STANDALONE/URL                      9 ·   7 pages ·   7 mods · claude {"BUTTON":8,"BUTTON_PLAIN":1}
+  HREF/para/[alerttop]/INLINE/URL                               9 ·   5 pages ·   4 mods · claude {"A":9}
+  HREF/para/[link]/STANDALONE                                   9 ·   7 pages ·   4 mods · claude {"A":4,"BUTTON":5}
+  HREF/para/[video]/INLINE/URL                                  8 ·   7 pages ·   5 mods · claude {"PLAIN":3,"ABSENT":2,"BUTTON":2,"A":1}
+  HREF/para/untagged/STANDALONE                                 8 ·   7 pages ·   6 mods · claude {"ABSENT":1,"PLAIN":2,"A":5}
+  HREF/para/[button]/INLINE                                     7 ·   3 pages ·   3 mods · claude {"BUTTON_PLAIN":6,"A":1}
+  HREF/para/[link]/INLINE/URL                                   6 ·   6 pages ·   6 mods · claude {"ABSENT":1,"BUTTON":3,"A":1,"PLAIN":1}
+  TEXT/para/[h]/INLINE                                          6 ·   6 pages ·   6 mods · claude {"PLAIN":5,"BUTTON":1}
+  HREF/para/[website]/STANDALONE/URL                            6 ·   3 pages ·   2 mods · claude {"BUTTON":4,"A":2}
+  HREF/para/[embedded webpage]/STANDALONE                       6 ·   6 pages ·   2 mods · claude {"A":6}
+  HREF/para/[button link]/STANDALONE/URL                        6 ·   2 pages ·   1 mods · claude {"BUTTON":6}
+  HREF/para/[insert link only]/INLINE/list/URL                  5 ·   1 pages ·   1 mods · claude {"A":5}
+  TEXT/para/[button link to]/INLINE                             5 ·   3 pages ·   2 mods · claude {"PLAIN":4,"BUTTON_PLAIN":1}
+  HREF/para/untagged/INLINE/list/URL                            5 ·   2 pages ·   2 mods · claude {"ABSENT":1,"A":4}
+  TEXT/para/untagged/INLINE/list                                5 ·   5 pages ·   5 mods · claude {"PLAIN":4,"BUTTON_PLAIN":1}
+  HREF/para/[video]/STANDALONE/URL                              4 ·   3 pages ·   3 mods · claude {"A":2,"ABSENT":2}
+  HREF/para/[interactive please create]/STANDALONE/URL          4 ·   2 pages ·   2 mods · claude {"A":4}
+  HREF/para/untagged/INLINE                                     4 ·   3 pages ·   3 mods · claude {"BUTTON_PLAIN":1,"A":1,"ABSENT":2}
+  HREF/para/[alert]/INLINE/URL                                  4 ·   4 pages ·   4 mods · claude {"ABSENT":1,"BUTTON":2,"PLAIN":1}
+  HREF/para/[video link]/STANDALONE/URL                         4 ·   4 pages ·   2 mods · claude {"A":3,"ABSENT":1}
+  HREF/para/[embed link]/STANDALONE/URL                         4 ·   3 pages ·   3 mods · claude {"A":1,"PLAIN":1,"ABSENT":2}
+  HREF/para/[website]/STANDALONE                                4 ·   2 pages ·   2 mods · claude {"BUTTON":4}
+  HREF/para/[source link]/STANDALONE/URL                        4 ·   2 pages ·   1 mods · claude {"BUTTON_PLAIN":2,"A":2}
+  HREF/para/[embedded webpage item]/STANDALONE                  4 ·   3 pages ·   1 mods · claude {"A":4}
+  HREF/para/[external link]/INLINE/URL                          4 ·   4 pages ·   4 mods · claude {"BUTTON":4}
+  HREF/para/[insert button to]/STANDALONE/URL                   4 ·   3 pages ·   2 mods · claude {"A":4}
+  HREF/para/[button for external]/INLINE/URL                    4 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":4}
+  TEXT/para/[alert box]/INLINE                                  3 ·   2 pages ·   1 mods · claude {"BUTTON_PLAIN":3}
+  TEXT/para/[button to pdf]/INLINE                              3 ·   2 pages ·   1 mods · claude {"BUTTON_PLAIN":3}
+  HREF/para/[alert box]/INLINE/URL                              3 ·   2 pages ·   2 mods · claude {"A":2,"BUTTON_PLAIN":1}
+  HREF/para/[insert link]/INLINE/URL                            3 ·   3 pages ·   2 mods · claude {"ABSENT":2,"A":1}
+  HREF/para/[external link button]/INLINE                       3 ·   2 pages ·   2 mods · claude {"BUTTON_PLAIN":2,"BUTTON":1}
+  HREF/para/[external link button]/STANDALONE/URL               3 ·   3 pages ·   3 mods · claude {"BUTTON":2,"ABSENT":1}
+  HREF/para/[embed text]/STANDALONE/URL                         3 ·   1 pages ·   1 mods · claude {"A":3}
+  HREF/para/[embedded link]/STANDALONE                          3 ·   3 pages ·   2 mods · claude {"BUTTON":3}
+  TEXT/para/[link]/INLINE                                       3 ·   2 pages ·   2 mods · claude {"BUTTON":1,"A":2}
+  HREF/para/[insert button]/STANDALONE/URL                      3 ·   3 pages ·   3 mods · claude {"ABSENT":2,"BUTTON_PLAIN":1}
+  HREF/para/[tile  website]/STANDALONE/URL                      2 ·   1 pages ·   1 mods · claude {"A":1,"BUTTON":1}
+  HREF/para/[link]/INLINE                                       2 ·   2 pages ·   2 mods · claude {"BUTTON":2}
+  HREF/para/[interactive]/INLINE/URL                            2 ·   2 pages ·   2 mods · claude {"A":2}
+  HREF/para/[video link]/INLINE/URL                             2 ·   1 pages ·   1 mods · claude {"PLAIN":2}
+  HREF/para/[website link]/STANDALONE/URL                       2 ·   2 pages ·   1 mods · claude {"BUTTON_PLAIN":2}
+  HREF/para/[button  link]/INLINE                               2 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":2}
+  HREF/para/[button]/STANDALONE                                 2 ·   2 pages ·   2 mods · claude {"BUTTON_PLAIN":1,"ABSENT":1}
+  HREF/para/[web link]/STANDALONE/URL                           2 ·   1 pages ·   1 mods · claude {"ABSENT":2}
+  HREF/para/[insert web link]/STANDALONE/URL                    2 ·   2 pages ·   1 mods · claude {"ABSENT":2}
+  HREF/para/[insert button]/INLINE/URL                          2 ·   2 pages ·   2 mods · claude {"ABSENT":1,"A":1}
+  HREF/para/[button]/STANDALONE/URL                             2 ·   2 pages ·   2 mods · claude {"BUTTON_PLAIN":1,"ABSENT":1}
+  TEXT/para/[image link]/INLINE                                 2 ·   2 pages ·   1 mods · claude {"PLAIN":2}
+  HREF/para/[image  website]/INLINE                             2 ·   1 pages ·   1 mods · claude {"PLAIN":2}
+  HREF/para/[insert link button]/STANDALONE/URL                 2 ·   1 pages ·   1 mods · claude {"BUTTON":2}
+  HREF/para/[external link button]/INLINE/URL                   2 ·   2 pages ·   2 mods · claude {"BUTTON":1,"A":1}
+  TEXT/para/[button]/INLINE                                     2 ·   2 pages ·   2 mods · claude {"BUTTON_PLAIN":2}
+  HREF/para/[embed text]/STANDALONE                             2 ·   1 pages ·   1 mods · claude {"A":2}
+  HREF/para/[external link]/STANDALONE                          2 ·   1 pages ·   1 mods · claude {"BUTTON":2}
+  TEXT/para/[add link]/INLINE                                   2 ·   2 pages ·   1 mods · claude {"PLAIN":2}
+  HREF/para/[external link]/INLINE                              2 ·   1 pages ·   1 mods · claude {"BUTTON":2}
+  TEXT/para/[add button]/INLINE                                 2 ·   2 pages ·   1 mods · claude {"BUTTON_PLAIN":2}
+  HREF/para/[article link]/STANDALONE/URL                       2 ·   2 pages ·   2 mods · claude {"BUTTON_PLAIN":2}
+  TEXT/para/[link]/STANDALONE                                   2 ·   2 pages ·   1 mods · claude {"PLAIN":2}
+  HREF/para/[button link]/INLINE/URL                            2 ·   2 pages ·   2 mods · claude {"BUTTON_PLAIN":1,"PLAIN":1}
+  HREF/para/[link item]/STANDALONE                              2 ·   2 pages ·   1 mods · claude {"BUTTON":2}
+  HREF/para/[embedded link item]/STANDALONE                     2 ·   2 pages ·   1 mods · claude {"BUTTON":2}
+  HREF/para/[embedded webpage]/INLINE                           2 ·   2 pages ·   1 mods · claude {"A":2}
+  TEXT/para/[supervisor]/INLINE                                 2 ·   2 pages ·   1 mods · claude {"PLAIN":2}
+  HREF/para/[insert button to]/INLINE/URL                       2 ·   2 pages ·   2 mods · claude {"BUTTON_PLAIN":2}
+  HREF/para/[insert button link]/STANDALONE/URL                 2 ·   2 pages ·   1 mods · claude {"BUTTON_PLAIN":2}
+  HREF/para/[insert button]/STANDALONE                          2 ·   2 pages ·   1 mods · claude {"BUTTON_PLAIN":2}
+  HREF/para/[item  powerpoint]/STANDALONE                       1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[insert item ]/STANDALONE/URL                       1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[carousel is it]/STANDALONE/URL                     1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[activity body]/INLINE                              1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[are we able]/STANDALONE/URL                        1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[article]/STANDALONE/URL                            1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[add button]/INLINE/URL                             1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[insert alert]/INLINE                               1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[alert box rhs]/INLINE/URL                          1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[if we can]/STANDALONE/URL                          1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[button  link]/INLINE                               1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[button interactive link]/STANDALONE/URL            1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[link httpstearagovtnzenngatupumaiihawaikiplantsfrompolynesiapage]/INLINE/URL    1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[template tab here]/INLINE/URL                      1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[image]/STANDALONE/URL                              1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  TEXT/para/[body for modal]/INLINE                             1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[link to pdf]/STANDALONE/URL                        1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[h lesson]/INLINE                                   1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  TEXT/para/[accordion]/INLINE                                  1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[link httpsplaygooglecomstoreappsdetailsidnztrafficsignshlen]/INLINE/list/URL    1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[supervisor two person]/INLINE/URL                  1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[kiwi kai]/STANDALONE                               1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[button interactive link]/INLINE                    1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  TEXT/para/[button weblink]/STANDALONE                         1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[button  external]/STANDALONE/URL                   1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[here is a]/STANDALONE                              1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[video]/STANDALONE                                  1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[image]/INLINE                                      1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[source]/STANDALONE/URL                             1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[embedded mapleftcentre]/INLINE/URL                 1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[source  papers]/STANDALONE/URL                     1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[pdf]/STANDALONE/URL                                1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[embed link or]/STANDALONE/URL                      1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[please embed this]/STANDALONE/URL                  1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[button statistics table]/STANDALONE/URL            1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[button map]/STANDALONE/URL                         1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[add button button]/STANDALONE/URL                  1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[click drop six]/INLINE/URL                         1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[slide  with]/STANDALONE                            1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[supervisor note]/INLINE/URL                        1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[slide  screenshot]/STANDALONE/URL                  1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[button create your]/STANDALONE/URL                 1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[url httpsactionforhappinessorgallcalendars]/INLINE    1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[externallink]/STANDALONE/URL                       1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[embed video]/STANDALONE                            1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  TEXT/para/[external link]/STANDALONE                          1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  TEXT/para/[activity heading h]/INLINE                         1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[external linkbutton]/INLINE/URL                    1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[button external link]/INLINE/URL                   1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[insert item ]/INLINE                               1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[insert item ]/STANDALONE                           1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[insert item ]/STANDALONE                           1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[m modal insert]/INLINE                             1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[designer please link]/STANDALONE/URL               1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  TEXT/para/[image link]/STANDALONE                             1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[link httpscollectionstepapagovtnzsearchnuclearfreeresultspager]/INLINE/URL    1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  TEXT/para/[activity embedded]/INLINE                          1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[from secsend]/STANDALONE                           1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[from secsend]/STANDALONE                           1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[link]/INLINE/list                                  1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[video link from]/STANDALONE                        1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[graph link]/STANDALONE/URL                         1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[link to external]/STANDALONE/URL                   1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  TEXT/para/[embedded webpage item]/INLINE                      1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[h]/INLINE                                          1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[interactive activityitem]/STANDALONE               1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[pdf item]/STANDALONE                               1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[interactive activity item]/STANDALONE              1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[pdfitem]/STANDALONE                                1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  TEXT/para/[embedded webpage]/STANDALONE                       1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[cs please can]/STANDALONE/URL                      1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[alert]/STANDALONE/URL                              1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[school journal link]/INLINE/URL                    1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[body text]/INLINE                                  1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[embeded link item]/STANDALONE                      1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[video item]/STANDALONE                             1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[embed website]/STANDALONE/URL                      1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[embedded tool]/STANDALONE                          1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[interactive tool]/INLINE                           1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[have a go]/STANDALONE/URL                          1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[external link button]/INLINE/list/URL              1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[alert  pop]/INLINE/URL                             1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[activity c optional]/INLINE/URL                    1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[activity  selfcheck]/INLINE/URL                    1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[]/INLINE/URL                                       1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[item]/INLINE/URL                                   1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[itemvideo]/STANDALONE/URL                          1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[itemvideo]/INLINE                                  1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[website]/INLINE/URL                                1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[embed]/INLINE/URL                                  1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[activity embedded]/INLINE                          1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[insert item]/STANDALONE                            1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  TEXT/para/[external link to]/INLINE                           1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[alert solid set]/INLINE/URL                        1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[button link to]/INLINE/URL                         1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  TEXT/para/[hover]/INLINE                                      1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[link to a]/INLINE/URL                              1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[link button]/INLINE/URL                            1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  TEXT/para/[button link]/INLINE                                1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[insert link]/INLINE                                1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  HREF/para/[accordion]/INLINE/URL                              1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[button for external]/STANDALONE/URL                1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  TEXT/para/[front h]/INLINE                                    1 ·   1 pages ·   1 mods · claude {"BUTTON_PLAIN":1}
+  HREF/para/[]/STANDALONE/URL                                   1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[link on text]/STANDALONE/URL                       1 ·   1 pages ·   1 mods · claude {"A":1}
+  HREF/para/[insert link on]/INLINE/URL                         1 ·   1 pages ·   1 mods · claude {"A":1}
+  TEXT/para/[images are snipped]/STANDALONE                     1 ·   1 pages ·   1 mods · claude {"PLAIN":1}
+  HREF/para/[insert link]/STANDALONE                            1 ·   1 pages ·   1 mods · claude {"BUTTON":1}
+  TEXT/para/[insert button]/INLINE                              1 ·   1 pages ·   1 mods · claude {"ABSENT":1}
+  HREF/para/[insert linkbutton]/STANDALONE/URL                  1 ·   1 pages ·   1 mods · claude {"A":1}
+
+== label vs the writer's link text (HREF-sourced para buttons) ==
+  same 34 · "Go to …" 25 · other 52 · writer link is a bare URL 341
+    TRR301 TRR301_3.0.html: "Pick a path story" → "Tīpakotia he ara / Pick a path story"  [[Item 129] [Powerpoint]] STANDALONE
+    SSFUN02 SSFUN02_00.html: "HEREhttps://geology.com/world/world-map.shtml" → "World map"  [[link]] INLINE
+    TEFUN07 TEFUN07.html: "the three baskets of knowledge that Tāne brought down from t" → "Knowledge basket"  [[Body] | [Link 1, to https://www.knowledge-basket.] INLINE
+    CEDK102 CEDK102.html: "Free Online AI Photo Editor, Image Generator & Design tool (" → "Pixlr Photo Editor"  [[Button – link to website]] INLINE
+    CEDK102 CEDK102.html: "Free Online AI Photo Editor, Image Generator & Design tool (" → "Pixlr"  [[Button – link to website]] INLINE
+    CEDO102 CEDO102_0.0.html: "ttps://www.doc.govt.nz/nature/native-animals/marine-mammals/" → "Māui dolphin"  [untagged] INLINE
+    CEDT404 CEDT404.html: "November 29, 2021: NGĀ MOTU! Discover the world of Te Ao Māo" → "Ngā Motu"  [untagged] STANDALONE
+    TWHK903 TWHK903_Digital_Citizenship.html: "IOS Guided Control" → "iOS Guided Access"  [[Button: | Control] and | [Button: | ]] INLINE
+    TWHK903 TWHK903_Digital_Citizenship.html: "Netsafe - Reporting" → "Netsafe &ndash; Reporting"  [[button: | ]] INLINE
+    AGH1001 AGH1001.03.html: "Kiwi Kai interactive game" → "kiwikai.nz"  [Kiwi Kai:] STANDALONE
+    AGH1009 AGH1009.04.0.html: "Close to 60 people hospitalised from 2016 Havelock North gas" → "Hawke's Bay case"  [untagged] STANDALONE
+    AGH1009 AGH1009.08.html: "NZGAP" → "Crop growers"  [Here is a link to an example of an environmental p] STANDALONE
+    ANZH101 ANZH101_1.0.html: "ANZH Tangata Whenua – video 2" → "Tangata Whenua"  [[Video]] STANDALONE
+    ANZH205 ANZH205_01.0.html: "Link to letter" → "Image of the letter"  [[Image – Website Link]] INLINE
+    ANZH205 ANZH205_01.0.html: "Link to He Whakaputanga" → "Image of He Whakaputanga"  [[Image – Website Link]] INLINE
+
+== by template (all gold buttons: HREF / TEXT / NONE) ==
+  Standard       661 · HREF 397 · TEXT 106 · NONE 158
+  Inquiry        126 · HREF 78 · TEXT 11 · NONE 37
+  Fundamentals   81 · HREF 50 · TEXT 20 · NONE 11
+  Bilingual      5 · HREF 1 · TEXT 3 · NONE 1

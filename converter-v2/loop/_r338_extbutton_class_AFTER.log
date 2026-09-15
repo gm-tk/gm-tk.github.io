@@ -1,0 +1,46 @@
+== Claude anchored buttons with an http(s) href, by host class × Claude's class ==
+  host external · Claude button                      n=  41 pages=  18 mods= 13 | gold externalButton    2 / button    1 / not found   38 | ext share of found 0.667
+  host external · Claude externalButton              n= 493 pages= 224 mods=117 | gold externalButton  210 / button   11 / not found  272 | ext share of found 0.950
+  host internal · Claude button                      n= 176 pages= 138 mods= 78 | gold externalButton    2 / button   18 / not found  156 | ext share of found 0.100
+  host internal · Claude externalButton              n=  36 pages=  32 mods= 24 | gold externalButton    4 / button    4 / not found   28 | ext share of found 0.500
+
+== THE CLASS: external-host buttons Claude ships as `button` — by template ==
+  Standard                                           n=  11 pages=  11 mods=  8 | gold externalButton    0 / button    1 / not found   10 | ext share of found 0.000
+  Inquiry                                            n=  28 pages=   5 mods=  3 | gold externalButton    1 / button    0 / not found   27 | ext share of found 1.000
+  Fundamentals                                       n=   2 pages=   2 mods=  2 | gold externalButton    1 / button    0 / not found    1 | ext share of found 1.000
+
+== by subject family (≥ 5) ==
+  EXPlore                                            n=  25 pages=   2 mods=  2 | gold externalButton    0 / button    0 / not found   25 | ext share of found 0.000
+  1-10 English                                       n=   5 pages=   5 mods=  3 | gold externalButton    0 / button    0 / not found    5 | ext share of found 0.000
+
+== by external host (≥ 4) ==
+  www.istockphoto.com                                n=  29 pages=   6 mods=  5 | gold externalButton    0 / button    0 / not found   29 | ext share of found 0.000
+
+== the converse: INTERNAL-host buttons — by host (the rule must leave these alone) ==
+  docs.google.com                                    n=  90 pages=  73 mods= 37 | gold externalButton    0 / button   15 / not found   75 | ext share of found 0.000
+  mytekuraschool.sharepoint.com                      n=  64 pages=  57 mods= 34 | gold externalButton    1 / button    1 / not found   62 | ext share of found 0.500
+  drive.google.com                                   n=  31 pages=  20 mods= 18 | gold externalButton    1 / button    0 / not found   30 | ext share of found 1.000
+  tekura.desire2learn.com                            n=  12 pages=  11 mods=  9 | gold externalButton    1 / button    4 / not found    7 | ext share of found 0.200
+  mytekuraschool-my.sharepoint.com                   n=   9 pages=   6 mods=  5 | gold externalButton    0 / button    2 / not found    7 | ext share of found 0.000
+  tekuradev.desire2learn.com                         n=   3 pages=   2 mods=  2 | gold externalButton    0 / button    0 / not found    3 | ext share of found 0.000
+  www.tekura.school.nz                               n=   3 pages=   2 mods=  2 | gold externalButton    3 / button    0 / not found    0 | ext share of found 1.000
+
+== Claude labels on the class (top 12) ==
+    21  Go to resource
+     4  Making kites
+     2  Clean rivers
+     2  Congratulations! You have now completed this module!
+     2  Go to journal
+     1  The United Nations is an intergovernmental
+     1  AI is a tool
+     1  Find things in your house or neighbourhood that have the ‘tch’ sound.
+     1  Find things in your house or neighbourhood that have the ‘ear’ sound.
+     1  Watch the video and make your own reindeer headband.
+     1  Awarua The Taniwha of Porirua Shadow Puppet (
+     1  Battle
+
+== gold label vs Claude label on the class where the gold has the button (href-matched) ==
+  same 0 / different 3
+    SSFUN01/SSFUN01_0_0.html: "The United Nations is an intergovernmental" → gold "We Are All Born Free"
+    BLL240/BLL240_1_2.html: "Find things in your house or neighbourhood that have the ‘tch’ sound." → gold "Memory Game"
+    MXFL401/MXFL401_4_0.html: "What’s the catch?" → gold "Kiwisaver Benefits"

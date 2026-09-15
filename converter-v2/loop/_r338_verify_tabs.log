@@ -1,0 +1,102 @@
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1003, PPO1033) — using AGH1003 from filename "AGH1003 Writers Template + Media List.docx".
+AGH1003: 4 tab-texts on pages whose gold has NO tabs → A1 gold-substitution DIVERGENCE
+AGH1003: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+AGH1004: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+AGH1007: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1009, PPO1051) — using AGH1009 from filename "AGH1009 Writers Template + Media List.docx".
+AGH1009: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ANZH303: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ANZH401, SSO303) — using ANZH401 from filename "ANZH401 Writers Template + Media List.docx".
+ANZH401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ANZH404: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+BLL234: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+CEDK102: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+CEDK501: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟢 [ModuleResolver] CEDO102 is a recorded page_model exception — using single-file.
+CEDO102: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+CEDO301: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+CEDO501: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+CEDR501: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT104: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ENFUN02: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ENFUN04: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ENFUN05: built 6 tab-texts — human file has NO tabs → DIVERGENCE (developer omitted/restructured), not a defect
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC202, EN000) — using ENGC202 from filename "ENGC202 Writers Template + Media List.docx".
+ENGC202: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI303, EN000) — using ENGI303 from filename "ENGI303 Writers Template + Media List.docx".
+ENGI303: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI400, ENO509) — using ENGI400 from filename "ENGI400 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGI400: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI401, EN000) — using ENGI401 from filename "ENGI401 Writers Template + Media List.docx".
+ENGI401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR201, EN000) — using ENGR201 from filename "ENGR201 Writers Template + Media List.docx".
+ENGR201: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ENGS101: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS301, EN000) — using ENGS301 from filename "ENGS301 Writers Template + Media List.docx".
+ENGS301: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HES1007: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HIS1003: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HIS1005: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HIS1006: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HPFUN303: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] HPRE203: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+HPRE203: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXDB202: built 11 tab-texts [exact 8, copy-edit 3, defect 0] OK ✓
+MXDI201: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXDI202: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXDI301: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXEO201: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXEO401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXEX201: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXEX302: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX401, MXO421) — using MXEX401 from filename "MXEX401 Writers Template + Media List.docx".
+MXEX401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXFL203: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXFL401: built 8 tab-texts [exact 8, copy-edit 0, defect 0] OK ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (MXFU401, MX000) — using MXFU401 from filename "MXFU401 Writers Template + Media List.docx".
+MXFU401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXFU402: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟢 [ModuleResolver] MXFUN01 is a recorded page_model exception — using multi-file.
+MXFUN01: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+OSOH401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+PES1001: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟢 [ModuleResolver] SSCI205 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI205: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+SSOG103: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (SSOG301, SSSO301) — using SSOG301 from filename "SSOG301 Writers Template + Media List.docx".
+SSOG301: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+TWHA905: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TWHA906, TWHO903) — using TWHA906 from filename "TWHA906 Writers Template.docx".
+TWHA906: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+TWHK901: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+TWHK903: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XDLS902: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XDLS912: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XGF9001: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟢 [ModuleResolver] XGF9002 is not in the registry members — inherited from its level XGF9 (sibling rule).
+XGF9002: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XGF9003: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XGF9004: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XGF9006: built 6 tab-texts [exact 6, copy-edit 0, defect 0] OK ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP03, XFUN03) — using XLP03 from filename "XLP03 Writers Template.docx".
+XLP03: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP05, XFUN09) — using XLP05 from filename "XLP05 Writers Template + Media List.docx".
+XLP05: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XMES102: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XMES103: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XMES201: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XMES203: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+
+TOTAL 35: exact 22, copy-edit 3, defect 0, divergence 10.
+RESULT: every built tab matches a human tab (exact or copy-edit), modulo developer divergences ✓

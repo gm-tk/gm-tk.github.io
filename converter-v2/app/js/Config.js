@@ -1665,7 +1665,11 @@ class Config {
 	// ListsAndRuns.TypedNumberList, a full-page post-pass at the EmojiStrip seam, turns a run of consecutive numbered
 	// paragraphs (the writer's typed count or the extractor's all-"1." Word-list marker) into one <ol>; scoped 24 modules;
 	// env TYPEDOL_OFF.
-	static AppVersion = "260619.08";
+	// ROUND 338 (2026-09-15, build 260619.09): an external destination is the KB's externalButton (05D — Internal
+	// div.button, External div.externalButton; the gold follows it by host) and a URL-only button reads "Go to website" /
+	// "Go to video" (constraint 75) — ContentConverter.#externalDestination at the plain-[button] seam; scoped 71 modules;
+	// env EXTDEST_OFF.
+	static AppVersion = "260619.09";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
