@@ -1,0 +1,84 @@
+per colour (paragraphs with near-red text): bracket vs no-bracket
+  ed0000  bracket  366  nobracket  170
+  c00000  bracket  133  nobracket   46
+  fa0000  bracket  103  nobracket    8
+  cc0000  bracket    0  nobracket    2
+  f72b2b  bracket    1  nobracket    0
+  ed1c24  bracket    1  nobracket    0
+
+per module (any near-red):
+  HIS1002   bracket 163  nobracket 126  {'ed0000:bracket': 156, 'ed0000:nobracket': 126, 'c00000:bracket': 7}
+       ed0000: 'Perspectives: Te Mā’ohi Nui, Australia, Aotearoa New Zealand, France'
+       ed0000: 'Historical Contexts (drag and drop labels): vocal public objections to nuclear testing; a '
+       ed0000: 'Influences (drag and drop labels): location in Te Moana-nui-a-Kiwa; Māori relationships wi'
+  HIS1005   bracket 103  nobracket  10  {'ed0000:bracket': 102, 'ed0000:nobracket': 10, 'f72b2b:bracket': 1}
+       ed0000: 'Please place this original image of the Declaration in the white space of the right hand c'
+       ed0000: 'With the caption: '
+       ed0000: 'I have created a google doc with the info and what it should look like: '
+  ENGFUN02  bracket 102  nobracket   8  {'fa0000:bracket': 102, 'fa0000:nobracket': 8}
+       fa0000: 'Note to developer – Because of copywrite, the details all need to remain together. Could w'
+       fa0000: 'Note to developer, is there a basic &quot;clip art&quot; image of this you can insert here'
+       fa0000: 'Note to developer, is there a basic &quot;clip art&quot; image of this you can insert here'
+  TRR102    bracket  53  nobracket  23  {'ed0000:bracket': 53, 'ed0000:nobracket': 23}
+       ed0000: 'Audio Files'
+       ed0000: 'c. 5 '
+       ed0000: 'd. a little line over the vowel.'
+  CEDO501   bracket  32  nobracket   7  {'c00000:bracket': 32, 'c00000:nobracket': 7}
+       c00000: 'Internet'
+       c00000: 'World Wide Web (www)'
+       c00000: 'Website'
+  HIS1006   bracket  19  nobracket  10  {'ed0000:bracket': 19, 'ed0000:nobracket': 10}
+       ed0000: 'Lesson 1 (1.0)'
+       ed0000: 'Lesson 2 (2.0)'
+       ed0000: 'Lesson 3 (3.0)'
+  TRR111    bracket  10  nobracket  16  {'c00000:bracket': 8, 'c00000:nobracket': 16, 'ed0000:bracket': 2}
+       c00000: 'āe √'
+       c00000: 'kāhore '
+       c00000: 'āe'
+  ARFUN05   bracket  18  nobracket   0  {'c00000:bracket': 18}
+  OSGM301   bracket  13  nobracket   5  {'c00000:bracket': 13, 'c00000:nobracket': 5}
+       c00000: 'Send a kind message to support the new player and encourage others to be kind.'
+       c00000: 'Mute the player and continue playing calmly.'
+       c00000: 'Say “GG” (Good Game) and take a break.'
+  OSGM501   bracket  11  nobracket   3  {'c00000:bracket': 11, 'c00000:nobracket': 3}
+       c00000: 'Send a kind message to support the new player and encourage others to be kind.'
+       c00000: 'Mute the player and continue playing calmly.'
+       c00000: 'Say “GG” (good game) and take a break.'
+  OSGM401   bracket  11  nobracket   0  {'c00000:bracket': 11}
+  TEFUN03   bracket  10  nobracket   0  {'c00000:bracket': 10}
+  HIS1001   bracket   8  nobracket   0  {'ed0000:bracket': 8}
+  OSAH501   bracket   8  nobracket   0  {'c00000:bracket': 8}
+  MXFU302   bracket   0  nobracket   7  {'c00000:nobracket': 7}
+       c00000: '+ 5 = 9'
+       c00000: '__+ 5 = 9'
+       c00000: '6 + = 17'
+  TRR106    bracket   4  nobracket   1  {'ed0000:nobracket': 1, 'ed0000:bracket': 4}
+       ed0000: 'Note to CS – '
+  CEDK401   bracket   5  nobracket   0  {'ed0000:bracket': 5}
+  ENGI401   bracket   0  nobracket   5  {'c00000:nobracket': 5}
+       c00000: 'tone'
+       c00000: 'pace'
+       c00000: ' intonation'
+  TRR103    bracket   4  nobracket   0  {'ed0000:bracket': 4}
+  TRR112    bracket   4  nobracket   0  {'ed0000:bracket': 4}
+  TRR113    bracket   4  nobracket   0  {'ed0000:bracket': 4}
+  OSOH301   bracket   4  nobracket   0  {'c00000:bracket': 4}
+  OSOH401   bracket   4  nobracket   0  {'c00000:bracket': 4}
+  TRR109    bracket   2  nobracket   0  {'ed0000:bracket': 2}
+  TRR110    bracket   2  nobracket   0  {'ed0000:bracket': 2}
+  ENGS101   bracket   2  nobracket   0  {'c00000:bracket': 2}
+  MXFL101   bracket   0  nobracket   2  {'cc0000:nobracket': 2}
+       cc0000: 'waru'
+       cc0000: 'ten'
+  XDLS904   bracket   2  nobracket   0  {'c00000:bracket': 2}
+  XDLS905   bracket   2  nobracket   0  {'c00000:bracket': 2}
+  TEFUN05   bracket   1  nobracket   0  {'c00000:bracket': 1}
+  ENGI102   bracket   1  nobracket   0  {'fa0000:bracket': 1}
+  ENGS301   bracket   0  nobracket   1  {'c00000:nobracket': 1}
+       c00000: 'What do you think about when you see earthy tones, like brown, in Kōwhai and the Giants?'
+  MXEX401   bracket   0  nobracket   1  {'c00000:nobracket': 1}
+       c00000: '&quot;'
+  OSBY101   bracket   0  nobracket   1  {'c00000:nobracket': 1}
+       c00000: ' Red is sad and low.'
+  PES1008   bracket   1  nobracket   0  {'ed1c24:bracket': 1}
+  XDLS912   bracket   1  nobracket   0  {'ed0000:bracket': 1}

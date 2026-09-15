@@ -1,0 +1,2048 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+  ~ HIS1001_8_0.html: -7 +11
+     - <p>[Can the white space on the right-hand side of the module please be decorated with these images from Marsha
+     - <p>[Image Caption] Neimony Netwon, ‘Bombing for Mankind’</p>
+     - <p>[Image link: <a href="https://static.wixstatic.com/media/503583_9c57c741145a41de881832f035e0b323~mv2.jpg/v1
+     - <p>[Image Caption] Marino Morris, ‘… for the good of mankind’</p>
+     - <p>[Image Link: <a href="https://static.wixstatic.com/media/503583_23b482d53da344439842e3c71cafbcac~mv2.jpg/v1
+     - <p>[Image Caption] Thoper Runny and Faith Netwon, ‘The Nuclear Test in Me’</p>
+     - <p>[Image link: <a href="https://static.wixstatic.com/media/503583_b8143c252d8f4998bb937c1779c4160a~mv2.jpg/v1
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/can-the-white-space-on-the-right-hand-si.jpg" alt="" />
+     + <p>Neimony Netwon, ‘Bombing for Mankind’</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Marino Morris, ‘… for the good of mankind’</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/https-wixstatic-com-media-503583-23b482d.jpg" alt="" />
+     + <p>Thoper Runny and Faith Netwon, ‘The Nuclear Test in Me’</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ HIS1001_10_0.html: -2 +3
+     - <h3>Moratorium and a Partial Best Ban</h3>
+     - <p>[Image link: <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/PTBT_Participation.svg/350p
+     + <h3>Moratorium and a Partial Best <span class="infoTrigger" info="a temporary stop to an activity">Ban</span><
+     + <!-- <img class="img-fluid" loading="lazy" src="images/https-upload-wikimedia-org-wikipedia-com.jpg" alt="" />
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+HIS1001: identical 6 / changed 2
+  ~ HIS1002_0_0.html: -0 +3
+     + <!-- Lesson 20.0 -->
+     + <div class="acksLesson">
+     + </div>
+  ~ HIS1002_3_0.html: -29 +34
+     - <p>[Can you please make a drag and drop activity something like this below. Can the words be drag and drop lab
+     - <p>[Answers]</p>
+     - <p>[Image link: <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Kiwi_%28PSF%29.png/640px-Ki
+     - <p>Va’a image link: <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Va%27a_canoe%2C_Matavai
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="HIS1002-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Source A] New Zealand Request for Pr
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: accordion (left to right the) — Acti
+     - <div style="font-size: 0.95em">
+     - <p>Request for the Indication of Interim Measures of Protection Submitted by the Government of New Zealand, 14
+     - <p>Source: International Court of Justice, ‘Request for the indication of Interim Measures of Protection submi
+     - <p><b>The Rationale for Nuclear Acquisition</b></p>
+     - <p>The Soviet threat and intra-alliance policy were thus two main drivers of policy in the transatlantic setti
+     - <p><b>Building an Independent Nuclear Force</b></p>
+     - <p>During the course of the 1960s and 1970s France pursued the development of its first-generation nuclear ars
+     - <p>Source: Niklas Granholm and John Rydqvist, ‘Nuclear weapons in Europe: British and French deterrence forces
+     - <p>Note that, in this source, the territorial defence of France (“France proper”) meant the defence of Western
+     - <p>Whereas the claims formulated by the Government of Australia in its Application are as follows:</p>
+     - <p>(i) The right of Australia and its people, in common with other States and their peoples, to be free from a
+     - <p>(ii) The deposit of radio-active fall-out on the territory of Australia and its dispersion in Australia&#39
+     - <p>(iii) the interference with ships and aircraft on the high seas and in the superjacent airspace, and the po
+     - <p>Whereas the Government of Australia also alleges that the atmospheric nuclear explosions carried out by Fra
+     - <p>Source: International Court of Justice, ‘Nuclear Tests Case (Australia v. France), 22 June 1973, pp. 100-10
+     - <p>[Button] Check answers.</p>
+     - <p>[Answers]</p>
+     + <div class="activity interactive" number="3C">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="HIS1002-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop (can you please make a s
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Kiwi_%28PSF%29.png/640px-Kiwi_%28PSF%29.
+     + <p>Va’a image link: <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Va%27a_canoe%2C_Matavai
+     + </div>
+     + </div>
+     + </div>
+     + <div class="accordion">
+     + <div class="accHead"><h4>The Rationale for Nuclear Acquisition</h4></div>
+     + <div class="accContent"><p>The Soviet threat and intra-alliance policy were thus two main drivers of policy in
+     + <div class="accHead"><h4>Building an Independent Nuclear Force</h4></div>
+     + <div class="accContent"><p>During the course of the 1960s and 1970s France pursued the development of its firs
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Source A] New Zealand Request 
+     + … 14 more added
+  ~ HIS1002_5_0.html: -12 +13
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="HIS1002-05-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: tabs (please have a mind map here. o
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HIS1002-05-02" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dropDown (information for each) — Ac
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="HIS1002-05-03" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: wordFind (please make a with the wor
+     - <p>[Please have the image that you made for Fundamental 1: Connections here. Please have the quotation (below 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="HIS1002-05-04" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: accordion + accordion — Activity (in
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HIS1002-05-01" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: tabs (please have a mind map here. o
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="HIS1002-05-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dropDown (information for each) — Ac
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="HIS1002-05-03" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: wordFind (please make a with the wor
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/please-have-the-image-that-you-made-for.jpg" alt="" /> 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HIS1002-05-04" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion + accordion — Activity (in
+  ~ HIS1002_7_0.html: -22 +24
+     - <a href="https://nzhistory.govt.nz/politics/nuclear-free-nz" target="_blank"><div class="externalButton">Exter
+     - <a href="https://nvdatabase.swarthmore.edu/content/new-zealand-declares-nuclear-free-zone-1963-1985" target="_
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HIS1002-07-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion + accordion (please have t
+     - <p>[Link: <a href="https://paperspast.natlib.govt.nz/newspapers/CHP19790307.2.89?items_per_page=10" target="_b
+     - <p>[Link: <a href="https://paperspast.natlib.govt.nz/newspapers/CHP19790120.2.7?items_per_page=10" target="_bl
+     - <p>[Link: <a href="https://paperspast.natlib.govt.nz/newspapers/CHP19790120.2.112.7?items_per_page=10" target=
+     - <p>[Image link: <a href="https://teara.govt.nz/en/ephemera/32715/nuclear-warship-protests-poster]" target="_bl
+     - <p>[Option boxes: <b>heroic</b> and <b>irresponsible</b>]</p>
+     - <p>[Option boxes: <b>yes</b> and <b>no</b>]</p>
+     - <p>[Button] Check answers.</p>
+     - <p>[Answers</p>
+     - <ol>
+     - <li>The New Zealand Police did not officially support the actions of the Peace Squadron protestors. Sources A 
+     - <li>Many Kiwis protested the arrival of the nuclear submarine Haddo. Source D states that there were 100 boats
+     - <li>Source F is a poster which is an example of how people worked together. Information was shared publicly on
+     - </ol>
+     - <p>If you want to learn more about the Peace Squadrons, listen to the story on Radio New Zealand. [Button] Ext
+     - <p>A Humanitarian Evacuation</p>
+     - <p>While Kiwis were protesting United States military visits to our harbours, all was not quiet in Te Moana-nu
+     - <p>Play the video to learn more.</p>
+     + <a href="https://nzhistory.govt.nz/politics/nuclear-free-nz" target="_blank"><div class="externalButton">Exter
+     + <a href="https://nzhistory.govt.nz/politics/nuclear-free-nz" target="_blank"><div class="externalButton">Go to
+     + <a href="" target="_blank"><div class="button">External link</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="HIS1002-07-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: accordion + accordion (please have t
+     + <p><a href="https://teara.govt.nz/en/ephemera/32715/nuclear-warship-protests-poster" target="_blank">https://t
+     + <div class="button">Check answers</div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [answer] outside an intera
+     + <ol>
+     + <li>The New Zealand Police did not officially support the actions of the Peace Squadron protestors. Sources A 
+     + <li>Many Kiwis protested the arrival of the nuclear submarine Haddo. Source D states that there were 100 boats
+     + <li>Source F is a poster which is an example of how people worked together. Information was shared publicly on
+     + </ol>
+     + <p>If you want to learn more about the Peace Squadrons, listen to the story on Radio New Zealand.</p>
+     + <a href="https://www.rnz.co.nz/audio/player?audio_id=201820402" target="_blank"><div class="externalButton">Ex
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>A Humanitarian Evacuation</h3>
+     + … 4 more added
+  ~ HIS1002_9_0.html: -36 +64
+     - <iframe src="https://tekura.desire2learn.com/d2l/le/content/11928/viewContent/115471/View" loading="lazy" titl
+     - <p>[Can you please make a chronology with an arrow running up the side of the page and dots or something like 
+     - <li>17 September, Paris – In a front-page article, the French newspaper <i>Le Monde</i> <span class="infoTrigg
+     - <li>22 September, Paris – The French Prime Minister, Laurent Fabius, gave a televised address revealing that F
+     - <li>22 November 1985 – Alain Mafart and Dominique Prieur were found guilty of <span class="infoTrigger" info="
+     - <p>[Alert box in the right-hand column:</p>
+     - <p>“The New Zealand public was outraged that France could carry out such an attack on New Zealand territory. T
+     - <p>Source: Greenpeace, ‘Rainbow Warrior Educational Resources,’ <i>Greenpeace,</i> n.p.</p>
+     - <p>End of Alert box]</p>
+     - <p>[Source A]</p>
+     - <p>[Source link: <a href="https://natlib.govt.nz/records/32197674?search%5Bi%5D%5Bcreator%5D=Taranaki+daily+ne
+     - <p>[Source B]</p>
+     - <p>[multichoice options please]</p>
+     - <p><b>Source A</b></p>
+     - <p>French people wear berets and striped tops.</p>
+     - <p>France is not really an ally as it carried out a terrorist attack in New Zealand.</p>
+     - <p>Spying, bombing and murdering are common among allies.</p>
+     - <p>France is unlikely to be responsible for the attack because it is an ally.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [answer] outside an intera
+     - <div class="button">Check answer</div>
+     - <p><b>Source B</b></p>
+     - <p>People were shocked at the bombing of the <i>Rainbow</i> <i>Warrior.</i></p>
+     - <p>Greenpeace International paid tribute to New Zealanders.</p>
+     - <p>People were sympathetic to the crew of the <i>Rainbow</i> <i>Warrior</i> and wanted to help.</p>
+     - <p>Elaine Shaw had many friends.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [answer] outside an intera
+     - <div class="button">Check answer</div>
+     - <p>[H3] Escape Room</p>
+     - <p>[Button] Play</p>
+     - <p>[Link: <a href="https://docs.google.com/presentation/d/1EpR7mTI5hUnJSVU39AmaqHfJmBe2e3BxNeDdp8aDHLM/preview
+     - <p>[H3] Annotating a source</p>
+     - <p>[Button] Go to journal.</p>
+     - <p>[Button] Check answers.</p>
+     - <p>While two of the bombers were caught by the New Zealand police, tried and found guilty of manslaughter. The
+     - <p>[Button] Play</p>
+     - <p>[Video link: <a href="https://www.youtube.com/watch?v=9SIrJlOMh1Y" target="_blank">https://www.youtube.com/
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     + <a href="https://tekura.desire2learn.com/d2l/le/content/11928/viewContent/115471/View" target="_blank"><div cl
+     + <li>17 September, Paris – In a front-page article, the French newspaper <i>Le Monde</i> alleged the French gov
+     + <li>22 September, Paris – The French Prime Minister, Laurent Fabius, gave a televised address revealing that F
+     + <li>22 November 1985 – Alain Mafart and Dominique Prieur were found guilty of manslaughter. They were each sen
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: alert note: in the right-hand</p>
+     + <div class="alert">
+     + <p>“The New Zealand public was outraged that France could carry out such an attack on New Zealand territory. T
+     + <p>Source: Greenpeace, ‘Rainbow Warrior Educational Resources,’ <i>Greenpeace,</i> n.p.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Source A]</p>
+     + <a href="https://natlib.govt.nz/records/32197674?search%5Bi%5D%5Bcreator%5D=Taranaki+daily+news+%28Newspaper%2
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Source B]</p>
+     + <div class="activity interactive" number="9A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="HIS1002-09-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: multiChoiceQuiz (please) — Activity
+     + … 44 more added
+  ~ HIS1002_10_0.html: -4 +4
+     - <p>[Image]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Please see this google doc for the c
+     - <p><a href="https://docs.google.com/document/d/1MsgNVsLsdWUvhPOe_G8UWwEy_DemV-Jc/edit?usp=sharing" target="_bl
+     - <p>[Image link: <a href="https://history.greenpeace.org/aotearoa/nuclear%20/" target="_blank">https://history.
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/please-see-this-google-doc-for-the-image.jpg" alt="" />
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ HIS1002_11_0.html: -33 +45
+     - <p>[Image: Can this please go in the right-hand column next to the paragraph above? Image link: <a href="https
+     - <p>[H3] <b>Who was responsible for the bombing of the</b> <b>Rainbow Warrior?</b></p>
+     - <p>[Please insert a full width modal box with the source on one side and the annotation on the other]</p>
+     - <p>[H3] Source A</p>
+     - <p>[Link for the source: <a href="https://www.greenpeace.org/static/planet4-aotearoa-stateless/2018/05/27dcad4
+     - <p>[Annotation for beside this source]</p>
+     - <p>[Please insert a full-width modal box with the source on one side and the annotation on the other]</p>
+     - <p>[H3] Source B</p>
+     - <p>[Source Link: <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90-00965R000201630021-0.pdf" target="_bl
+     - <p>[Annotation for beside this source]</p>
+     - <p>[Source link: <a href="https://www.lemonde.fr/archives/article/1985/09/18/le-rainbow-warrior-aurait-ete-cou
+     - <p>[Button] Go to journal.</p>
+     - <p>[Button] Check answer.</p>
+     - <p>[Answer</p>
+     - <p>This source is useful because it clearly states that “two combat swimmers from the French army” carried out
+     - <p>[Body Text]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="HIS1002-11-01" style="border: 8px so
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Source A:<br />[Source B:</p>
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: accordion (please put these sources 
+     - <p>[Source link: <a href="https://paperspast.natlib.govt.nz/periodicals/RIU19850201.2.35.1?items_per_page=50" 
+     - <p>[Image]</p>
+     - <p>[Source link: <a href="https://paperspast.natlib.govt.nz/periodicals/RIU19850201.2.35.1?items_per_page=50" 
+     - <p>[Source C]</p>
+     - <p>Note: You can select any of these sources to answer the question. Each source shows some of the things that
+     - <p>[Button] Go to journal.</p>
+     - <p>Your kaiako will give you feedback on your response.</p>
+     - <p>[Button] Upload journal.</p>
+     - <p>If you want to trace the story of the <i>Rainbow</i> <i>Warrior</i> further, Television New Zealand has a 3
+     - <p>[Image]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="HIS1002-11-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: puzzle + puzzle (please see the of 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/can-this-please-go-in-the-right-hand-nex.jpg" alt="" />
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <h4>Who was responsible for the bombing of the Rainbow Warrior?</h4>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [modal] marker — no content capt
+     + <h4>Source A</h4>
+     + <div class="ratio ratio-16x9">
+     + <iframe src="https://www.greenpeace.org/static/planet4-aotearoa-stateless/2018/05/27dcad40-nzsis-declassified-
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Annotation for beside this source]</
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [modal] marker — no content capt
+     + <h4>Source B</h4>
+     + <div class="ratio ratio-16x9">
+     + <iframe src="https://www.cia.gov/readingroom/docs/CIA-RDP90-00965R000201630021-0.pdf" loading="lazy" framebord
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Annotation for beside this source]</
+     + <a href="https://www.lemonde.fr/archives/article/1985/09/18/le-rainbow-warrior-aurait-ete-coule-par-une-troisi
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="button">Check answer</div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [answer] outside an intera
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: This source is useful because it clea
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 25 more added
+  ~ HIS1002_12_0.html: -3 +3
+     - <p>[Button] Play</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Perspectives on the Rainbow Warrior:
+     - <p><a href="https://www.youtube.com/watch?v=z8CfAxtuVtA" target="_blank">https://www.youtube.com/watch?v=z8CfA
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/z8CfAxtuVtA" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ HIS1002_13_0.html: -78 +89
+     - <p>Many demonstrations promoted <span class="infoTrigger" info="tangata whenua; existing in the land from the 
+     - <p>[Image: Hirini Melbourne. Please have an image of Hirini Melbourne here if possible.]</p>
+     - <p>[Button] Play [Link: <a href="https://www.youtube.com/watch?v=kRFAsOcK_TI" target="_blank">https://www.yout
+     - <p>[H2] Hinemoana: Understanding Place</p>
+     - <p>[Please place this indented so that it is clear it is a quotation. Ngā mihi.]</p>
+     - <p>“[Kaitiakitanga] is the idea that any right over a human or resource carries with it a reciprocal obligatio
+     - <ul>
+     - <li>Joe Williams, first Māori justice of the Supreme Court, quoted in Kennedy Warne, ‘Face up to tikanga; Cour
+     - </ul>
+     - <p>[Button] External link. [Link: <a href="https://soundcloud.com/aucklandmuseum/moruroa]" target="_blank">htt
+     - <p>The creation and sustenance of relationships are often driven by worldview. In a Western <span class="infoT
+     - <div class="activity" number="7A">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Defining and Applying Concepts</h3>
+     - <p>Conceptual thinking provides a lens to help us make sense of the past. Historical concepts allow us to expl
+     - <p>Rollover the concepts below for a definition. Remember that different iwi and hapū in Aotearoa will have th
+     - <p>[Please have three tabs or labels (I hope you know what I mean) across the page, with rollover definitions.
+     - <p>Tuakiri (Identity) [A set of characteristics that make recognisable and distinct, an individual or group of
+     - <p>Whakapapa [Genealogy lineage; A framework that maps interrelationships between all things]</p>
+     - <p>Effect</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [how many people’s lives were affecte
+     - <p>In the table below, drag and drop each definition next to the concept it defines. Then drag and drop a cont
+     - <p>[Can you please make a drag and drop activity something like this below. Can the definitions and historical
+     - <p>[Definitions:</p>
+     - <p>Tuakiri (Identity) [A set of characteristics that make recognisable and distinct, an individual or group of
+     - <p>Whakapapa [Genealogy lineage; A framework that maps interrelationships between all things]</p>
+     - <p>Effect [how many people’s lives were affected by the context at the time, and since (<b>resonance</b>)]</p>
+     - <p>Contexts:</p>
+     - <p>Connections across Te Moana-nui-a-Kiwa</p>
+     - <p>The Bombing of Hiroshima and Nagasaki</p>
+     - <p>Nuclear Free Zones</p>
+     - <p>[Answers]</p>
+     - <th>Concepts</th>
+     - <th></th>
+     - <th>Definition</th>
+     - <th></th>
+     - <th>Historical Context</th>
+     - <tr>
+     - <td>Whakapapa</td>
+     - <td></td>
+     - … 38 more removed
+     + <p>Many demonstrations promoted indigenous self-determination alongside calls for an end to the testing regime
+     + <!-- <img class="img-fluid" loading="lazy" src="images/hirini-melbourne-please-have-an-of-hirin.jpg" alt="" />
+     + <a href="https://www.youtube.com/watch?v=kRFAsOcK_TI" target="_blank"><div class="externalButton">Play</div></
+     + <a href="https://www.youtube.com/watch?v=kRFAsOcK_TI" target="_blank"><div class="externalButton">Go to video<
+     + <h3>Hinemoana: Understanding Place</h3>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: quote note: please place this indente
+     + <div class="quoteText">
+     + <p>“[Kaitiakitanga] is the idea that any right over a human or resource carries with it a reciprocal obligatio
+     + <ul>
+     + <li>Joe Williams, first Māori justice of the Supreme Court, quoted in Kennedy Warne, ‘Face up to tikanga; Cour
+     + </ul>
+     + <a href="https://soundcloud.com/aucklandmuseum/moruroa" target="_blank"><div class="externalButton">External l
+     + <a href="https://soundcloud.com/aucklandmuseum/moruroa" target="_blank"><div class="externalButton">Go to webs
+     + <p>The creation and sustenance of relationships are often driven by worldview. In a Western worldview, people 
+     + <div class="activity interactive" number="7A">
+     + <h3>Defining and Applying Concepts</h3>
+     + <p>Conceptual thinking provides a lens to help us make sense of the past. Historical concepts allow us to expl
+     + <p>Rollover the concepts below for a definition. Remember that different iwi and hapū in Aotearoa will have th
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="HIS1002-13-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 69 more added
+  ~ HIS1002_14_0.html: -134 +2
+     - <h1><span>Leadership and Mana</span></h1>
+     - <h5>We are learning to:</h5>
+     - <ul>
+     - <li>use historical concepts to explore a context</li>
+     - <li>examine the concept of mana in relation to the leadership of resistance movements.</li>
+     - </ul>
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>explaining the relevance of mana to understanding the success of resistance actions.</li>
+     - </ul>
+     - <p>[LESSON 8] LEADERSHIP AND MANA</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Mana is the right and ability of a person or group to make decisions for themselves and their community, to
+     - <p>How are mana and leadership different?</p>
+     - <p>Many of the qualities of mana and leadership are shared. However, mana can never be self-serving, or it is 
+     - <p>*Adapted from Paekupu.co.nz</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Case Studies</h3>
+     - <p>You have learned about many amazing protest actions by people across Te Moana-nui-a-Kiwa. Read the case stu
+     - <p>[Modal]</p>
+     - <p>[Image link: <a href="https://pacificans.com/the-woman-who-made-palau-the-only-nuclear-free-country-in-the-
+     - <p><b>Leader:</b> Mirair Gabriela Ngirmang</p>
+     - <p><b>Country:</b> Palau</p>
+     - <p><b>Organisation:</b> Otil a Beluad (the Anchor of the Land)</p>
+     - <p><b>Leadership:</b> Gabriela Ngirmang’s parents both held high-ranking positions in their clans. As Mirair o
+     - <p><b>Actions:</b> She led Otil a Beluad for 50 years and worked for social justice for her people throughout 
+     - <p><b>Connections:</b> The Palauan anti-nuclear movement inspired people across Te Moana-nui-a-Kiwa including 
+     - <p>[Button] External link.</p>
+     - <p>[Link: <a href="https://www.spc.int/mirair-gabriela-ngirmang" target="_blank">https://www.spc.int/mirair-ga
+     - <p><b>[Alert Box for the right-hand column next to the modal for Gabriela Ngirmang above</b></p>
+     - <p>[Alert Box] “Unfortunately, the US had different intentions for Palau. The Pentagon wanted one-third of Pal
+     - <p><b>End of alert box]</b></p>
+     - <p>[Modal]</p>
+     - <p>[Image link: <a href="https://nvdatabase.swarthmore.edu/content/tahitians-campaign-stop-french-nuclear-test
+     - <p><b>Leader:</b> Oscar Temaru</p>
+     - <p><b>Country:</b> Mā’ohi Nui</p>
+     - … 94 more removed
+     + <h1><span>Lesson Summary</span></h1>
+     + <p>You have learned to apply concepts to historical context to offer a deeper understanding of events, places 
+  ~ HIS1002_15_0.html: -2 +161
+     - <h1><span>Lesson Summary</span></h1>
+     - <p>You have learned about leadership and mana. You have learned that mana is a multifaceted concept. Not all l
+     + <h1><span>Leadership and Mana</span></h1>
+     + <h5>We are learning to:</h5>
+     + <ul>
+     + <li>use historical concepts to explore a context</li>
+     + <li>examine the concept of mana in relation to the leadership of resistance movements.</li>
+     + </ul>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>explaining the relevance of mana to understanding the success of resistance actions.</li>
+     + </ul>
+     + <p>[LESSON 8] LEADERSHIP AND MANA</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Mana is the right and ability of a person or group to make decisions for themselves and their community, to
+     + <p>How are mana and leadership different?</p>
+     + <p>Many of the qualities of mana and leadership are shared. However, mana can never be self-serving, or it is 
+     + <p>*Adapted from Paekupu.co.nz</p>
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 141 more added
+  ~ HIS1002_16_0.html: -148 +2
+     - <h1><span>History is not linear</span></h1>
+     - <h5>We are learning to:</h5>
+     - <ul>
+     - <li>write an explanation with evidence</li>
+     - <li>apply multiple concepts to a variety of contexts.</li>
+     - </ul>
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>applying two concepts to multiple contexts.</li>
+     - </ul>
+     - <p>[LESSON 9] HISTORY IS NOT LINEAR: THE SPIRAL CONNECTIONS OF TE MOANANUI-Ā-KIWA</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>“the great force of history is that we carry it within ourselves.” – James Baldwin</p>
+     - <p>Is the story of the past better understood as a spiral or an arrow? If our present is the outcome of past e
+     - <p>[H3] Concepts</p>
+     - <p>A concept can be a way to see or understand something. The koru is the representation of the concept of the
+     - <p>You have been introduced to many concepts throughout the Nuclear Pacific modules. Click on the diagram belo
+     - <p>[Image link: <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/NZ_flag_design_NZ_One_by_Tr
+     - <p>[Please have the concepts grouped around the image of a koru like the one below – although it would be grea
+     - <p>[Image]</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/please-see-this-google-doc-for-the-no-it.jpg" alt="" />
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/wikimedia-commons-pounamu-koru.jpg" alt="" /> -->
+     - <p>Tūrangawaewae [place where one has rights of residence and belonging through kinship and whakapapa]</p>
+     - <p>Causation [the relationship of cause and effect between one event or action and the result. Cause and effec
+     - <p>Mana [the relationship of cause and effect between one event or action and the result. Cause and effect can
+     - <p>Tuakiri (Identity) [A set of characteristics that make recognisable and distinct an individual or group of 
+     - <p>Whakapapa [Genealogy lineage; A framework that maps interrelationships between all things]</p>
+     - <p>[Body Text]</p>
+     - <p>You can practice your understanding of these concepts by using Quizlet.</p>
+     - <p>[Button] External link.</p>
+     - <p>[Link: <a href="https://quizlet.com/nz/834539061/demonstrate-understanding-of-historical-concepts-in-contex
+     - <p>[Body Text]</p>
+     - <p>[H3] Whakapapa</p>
+     - <p>Whakapapa investigates History through relationships, that is the lattice of connections that underpin cont
+     - <p>[Activity: Individual] 9A</p>
+     - <p>[H3] Applying Concepts to Contexts</p>
+     - <p>Over the course of two modules on the nuclearisation of Te Moana-nui-a-Kiwa in the years following World Wa
+     - … 108 more removed
+     + <h1><span>Lesson Summary</span></h1>
+     + <p>You have learned about leadership and mana. You have learned that mana is a multifaceted concept. Not all l
+  ~ HIS1002_17_0.html: -2 +157
+     - <h1><span>Lesson Summary</span></h1>
+     - <p>You have learned to think conceptually in your approach to investigating the nuclearisation of Te Moana-nui
+     + <h1><span>History is not linear</span></h1>
+     + <h5>We are learning to:</h5>
+     + <ul>
+     + <li>write an explanation with evidence</li>
+     + <li>apply multiple concepts to a variety of contexts.</li>
+     + </ul>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>applying two concepts to multiple contexts.</li>
+     + </ul>
+     + <p>[LESSON 9] HISTORY IS NOT LINEAR: THE SPIRAL CONNECTIONS OF TE MOANANUI-Ā-KIWA</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>“the great force of history is that we carry it within ourselves.” – James Baldwin</p>
+     + <p>Is the story of the past better understood as a spiral or an arrow? If our present is the outcome of past e
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Concepts</h3>
+     + … 137 more added
+  ~ HIS1002_18_0.html: -242 +2
+     - <h1><span>The Pacific Whānau</span></h1>
+     - <h5>We are learning to:</h5>
+     - <ul>
+     - <li>make links between concepts across more than one context.</li>
+     - </ul>
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>writing an explanation using historical concepts.</li>
+     - </ul>
+     - <p>[LESSON 10] THE PACIFIC WHĀNAU</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>In June 1995, newly elected French President Jacques Chirac announced that France would recommence nuclear 
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/mQIxZikEj30" loading="lazy" title="YouTube video player" f
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Anger in Tahiti</h3>
+     - <p>The understandable response in Tahiti was anger at the continued desecration of their lands and moana. Fift
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Vaka ki Moruroa and the Flotilla</h3>
+     - <p>The Cook Islands Parliament and Government unanimously agreed to send a traditional vaka to Moruroa Atoll t
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/e32Jk0BcpYY" loading="lazy" title="YouTube video player" f
+     - </div>
+     - <p><i>Te Au o Tonga</i> met with a large flotilla outside the test zone. The size of the flotilla grew when Gr
+     - <a href="https://cdn6.nzgeo.com/1970/01/77_Moruroa_06-390x600.jpg" target="_blank"><div class="externalButton"
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/in-the-right-hand-please.jpg" alt="" /> -->
+     - <p>[Image]</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/please-see-this-google-doc-for-the-if-ne.jpg" alt="" />
+     - <p><b>Source A</b></p>
+     - <p>A naval ship, <i>HMNZS Tui,</i> also joined the peace flotilla to provide medical and logistical support to
+     - … 202 more removed
+     + <h1><span>Lesson Summary</span></h1>
+     + <p>You have learned to think conceptually in your approach to investigating the nuclearisation of Te Moana-nui
+  ~ HIS1002_19_0.html: -11 +266
+     - <h1><span>Nuclear pacific 2 the resistance</span></h1>
+     - <h3>Summary</h3>
+     - <p>You have completed your learning on this massive topic that stretches for 50 years over the world’s largest
+     - <p>Tō tātou mahi nui hoki e te honu manawa rahi.</p>
+     - <p>What an amazing feat, you are of great endurance.</p>
+     - <p>[Body Text]</p>
+     - <p>Upload your journal to the dropbox.</p>
+     - <p>[Button] Upload journal.</p>
+     - <p>Your final step is to complete your Concepts Assessment Portfolio to prepare for Achievement Standard 92026
+     - <a href="" target="_blank"><div class="button">Go to Concepts Assessment Portfolio</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h1><span>The Pacific Whānau</span></h1>
+     + <h5>We are learning to:</h5>
+     + <ul>
+     + <li>make links between concepts across more than one context.</li>
+     + </ul>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>writing an explanation using historical concepts.</li>
+     + </ul>
+     + <p>[LESSON 10] THE PACIFIC WHĀNAU</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>In June 1995, newly elected French President Jacques Chirac announced that France would recommence nuclear 
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/mQIxZikEj30" loading="lazy" title="YouTube video player" f
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 246 more added
+HIS1002: identical 5 / changed 15 / missing-on-disk 1
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+  ~ HIS1005_0_0.html: -13 +37
+     - <p>[Body text]</p>
+     - <p>[H1] Ātete | Resist – Part A</p>
+     - <p>[Whakatauki]</p>
+     - <p>Kaua e mate wheke mate ururoa</p>
+     - <p>Don&#39;t die like an octopus, die like a hammerhead shark</p>
+     - <p>[Body text]</p>
+     - <p>[Activity Interactive]</p>
+     - <p>[H2] The past shapes the present</p>
+     - <p>Before you begin the lessons, watch these two short documentaries. They both link aspects of the history yo
+     - <p>[Interactive] Please embed a play button in an image of the opening scene of each video clip</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please arrange these videos side by s
+     - <p>[H4] Ihumātao [Video Link] <a href="https://www.youtube.com/watch?v=THhHU9XNv0s" target="_blank">https://ww
+     - <p>[H4] Black Lives Matter [Video Link] <a href="https://www.youtube.com/watch?v=QbCnlZvPSWg" target="_blank">
+     + <h3>Ātete | Resist – Part A</h3>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="whakatauki">
+     + <p>Kaua e mate wheke mate ururoa</p>
+     + <p>Don&#39;t die like an octopus, die like a hammerhead shark</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>The past shapes the present</h3>
+     + <p>Before you begin the lessons, watch these two short documentaries. They both link aspects of the history yo
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Interactive [interactive] reached the con
+     + <h5>Ihumātao [Video Link] <a href="https://www.youtube.com/watch?v=THhHU9XNv0s" target="_blank">https://www.yo
+     + <h5>Black Lives Matter [Video Link] <a href="https://www.youtube.com/watch?v=QbCnlZvPSWg" target="_blank">http
+     + … 17 more added
+  ~ HIS1005_1_0.html: -102 +267
+     - <p>[Important box] Dame Claudia Orange: ... <i>sovereignty is a concept, … it really is power on the ground, p
+     - <p>[Body text]</p>
+     - <p>[Activity Individual]</p>
+     - <p>[Activity 1A] Your journal</p>
+     - <p>As you work your way through the lessons in this module, you will need to complete some tasks in your journ
+     - <li>You will need to be signed into your Google account. This is important as it will allow you to directly ac
+     - <ol>
+     - <li>Click on the button Download the journal. Make a copy of the journal and save it with your own name (first
+     - <li>After you save and close this document, the Go to journal button will take you to your personal learning j
+     - </ol>
+     - <p><b>Try completing your first journal task – Defining sovereignty.</b></p>
+     - <p>Using the information you have read above, write your own definition of sovereignty.</p>
+     - <p>[add button] Go to journal</p>
+     - <p>[H2] Tipping the power balance</p>
+     - <p>[Body text]</p>
+     - <p>For historians it is not only the words written in these primary sources that are important<a href="https:/
+     - <p>[H2] Petihana Nga Rangatira o te Iwi Māori ki Kingi Wirimu | Petition to King William IV 1831</p>
+     - <p>From about 1808 Northern rangatira began meeting in formal assembly to agree on law and policy concerning P
+     - <p>[Activity embedded]</p>
+     - <p>[Activity 1B]</p>
+     - <p>[H3] State Diplomacy</p>
+     - <p>Historians can find <b>primary sources</b> very useful when investigating the past. If you don’t remember w
+     - <p>Click on the button below to view a scanned version of the petition sent to King William IV on the website 
+     - <p>Refer to either the original te reo Māori or English version of this petition. Try to decipher the old scri
+     - <p>Note: You can enlarge the text with the ‘Zoom’ function.</p>
+     - <ol>
+     - <li>Where was the petition signed?</li>
+     - <li>Why was the British king referred to as a “great chief of the other side [of] the water”?</li>
+     - <li>Quote the words that describe why there are some British citizens already living in Aotearoa.</li>
+     - <li>Refer to the te reo Māori version<a href="https://teara.govt.nz/en/zoomify/36994/petition-about-lawlessnes
+     - <li>Referring to the English version<a href="https://teara.govt.nz/en/zoomify/36994/petition-about-lawlessness
+     - </ol>
+     - <p>[Add button] Original petition</p>
+     - <p>[Link] <a href="https://teara.govt.nz/en/zoomify/36994/petition-about-lawlessness#:~:text=This%20petition%2
+     - <p>[Add button] English transcript</p>
+     - <p>[Link – please convert this doc to a pdf]</p>
+     - <p><a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/ETHqoeAPzrNGsnyNGaFQMwwBf5JjXFN2je6zM
+     - <p>[Activity Individual]</p>
+     - <p>[Activity 1C]</p>
+     - <p>[H3] Usefulness of a source</p>
+     - … 62 more removed
+     + <div class="alert solid">
+     + <p>Dame Claudia Orange: ... <i>sovereignty is a concept, … it really is power on the ground, power to run affa
+     + <div class="activity" number="1A">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Your journal</h3>
+     + <p>As you work your way through the lessons in this module, you will need to complete some tasks in your journ
+     + <ol>
+     + <li>You will need to be signed into your Google account. This is important as it will allow you to directly ac
+     + </ol>
+     + <ol>
+     + <li>Click on the button Download the journal. Make a copy of the journal and save it with your own name (first
+     + <li>After you save and close this document, the Go to journal button will take you to your personal learning j
+     + </ol>
+     + <p><b>Try completing your first journal task – Defining sovereignty.</b></p>
+     + <p>Using the information you have read above, write your own definition of sovereignty.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 247 more added
+  ~ HIS1005_2_0.html: -49 +210
+     - <p>[Interactive] Please insert this image with the caption.</p>
+     - <p>[Image link] <a href="https://www.flickr.com/photos/archivesnz/25363620341" target="_blank">https://www.fli
+     - <p>[Caption] First signed at Waitangi on 6 February 1840, Te Tiriti o Waitangi (The Treaty of Waitangi) is not
+     - <p>[Body text continued]</p>
+     - <p>There are two accepted versions of the Treaty of Waitangi: a Māori text known as Te Tiriti o Waitangi and t
+     - <p>[Interactive] Insert image</p>
+     - <p>[Image Link] <a href="https://learn.aucklandmuseum.com/resource/diy-treaty-of-waitangi" target="_blank">htt
+     - <p>However, reference to these Treaty principles has proven controversial and not everyone agrees that they sh
+     - <p>Click on the following sources to view/read varying perspectives about treaty principles.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="HIS1005-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: accordion (please place the sources 
+     - <p>Source 1 – Professor Paul Moon.</p>
+     - <p>[Interactive] please embed this video with an image of the first screen and a play button</p>
+     - <p>[video link] <a href="https://www.youtube.com/watch?v=Hw71JSPCRAc" target="_blank">https://www.youtube.com/
+     - <p>Source 2 – Ani Mikaere</p>
+     - <p>In her book, <i>Colonising myths – Māori realities: he rukuruku whakaaro</i> (2011), Ani Mikaere argues tha
+     - <p>Source: Ani Mikaere. Quoted in ‘Teaching Te Tiriti o Waitangi,’ <i>NZ History,</i> n.p.</p>
+     - <p>[Activity Interactive]</p>
+     - <p>[Activity 2B]</p>
+     - <p>[H3] Was sovereignty given or taken?</p>
+     - <p>[quote link] <a href="https://theconversation.com/explainer-the-significance-of-the-treaty-of-waitangi-1109
+     - <p>Te Tiriti o Waitangi (The Treaty of Waitangi), its drafting, its signing, its intent, its promises and the 
+     - <p>Click on the play button to watch the short video below. It contains a variety of perspectives about <i>The
+     - <p>[H4] The question of sovereignty</p>
+     - <p>[Interactive] Please arrange the following people’s names in list/column and beside each put “boxes/dots” t
+     - <p>I have created a google doc with the info and what it should look like: <a href="https://mytekuraschool.sha
+     - <div class="button">Check your answers</div>
+     - <div class="button">Reset</div>
+     - <p>[H2] The New Zealand Constitution Act 1852</p>
+     - <p>[Interactive] Insert image beside the text above</p>
+     - <p>[Image Link] <a href="https://www.flickr.com/photos/archivesnz/34723511813" target="_blank">https://www.fli
+     - <p>[Activity Individual]</p>
+     - <p>[Activity 2C]</p>
+     - <p>[H3] Finding evidence</p>
+     - <p>Use the literacy skills of skimming and scanning to search for evidence to answer the focus question below.
+     - <p><b>Focus Question: What was the main issue with the constitution for Māori?</b></p>
+     - <p>You need to <b>quote</b> some evidence from the source to support your answer. Record your answer in your j
+     - <p>[Accordion Tabs: Can source a and b be arranged full width across the page in two tabs]</p>
+     - … 9 more removed
+     + <div class="activity interactive" number="2A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="HIS1005-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive — Activity (inline) — se
+     + <p><a href="https://www.flickr.com/photos/archivesnz/25363620341" target="_blank">https://www.flickr.com/photo
+     + <p>First signed at Waitangi on 6 February 1840, Te Tiriti o Waitangi (The Treaty of Waitangi) is not a single 
+     + <p>There are two accepted versions of the Treaty of Waitangi: a Māori text known as Te Tiriti o Waitangi and t
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HIS1005-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive + accordion — Activity 2
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://learn.aucklandmuseum.com/resource/diy-treaty-of-waitangi" target="_blank">https://learn.au
+     + <p>However, reference to these Treaty principles has proven controversial and not everyone agrees that they sh
+     + <p>Click on the following sources to view/read varying perspectives about treaty principles.</p>
+     + </div>
+     + … 190 more added
+  ~ HIS1005_3_0.html: -11 +22
+     - <p>[Activity Individual – across full page width so students can view sources]</p>
+     - <p>[Activity 3B]</p>
+     - <p>[H3] The shadow and the substance</p>
+     - <p>There have been many perspectives about te Tiriti o Waitangi, at the time of signing and in the decades aft
+     - <p>You will read the two sources by clicking on the buttons. Then open your journal and complete the activitie
+     - <a href="https://nzhistory.govt.nz/files/documents/classroom/teaching-te-tiriti-shadow-substance-resource.pdf"
+     - <a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/EWaByIVO3MZIv65EndPvGz8BVSZNbcjyf7wRmj2w
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [embed] with no URL found — add the embed
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="HIS1005-03-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: modal (this source is not a link, ca
+     + <div class="activity" number="3B">
+     + <h3>The shadow and the substance</h3>
+     + <p>There have been many perspectives about te Tiriti o Waitangi, at the time of signing and in the decades aft
+     + <p>You will read the two sources by clicking on the buttons. Then open your journal and complete the activitie
+     + <a href="https://nzhistory.govt.nz/files/documents/classroom/teaching-te-tiriti-shadow-substance-resource.pdf"
+     + <a href="" target="_blank"><div class="button">Source 2</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/EWaByIVO3MZIv65EndPvGz8BVSZNbcjyf7wRmj2w
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [embed] with no URL found — add the embed
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="HIS1005-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: modal (this source is not a link, c
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 2 more added
+  ~ HIS1005_4_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HIS1005-04-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="HIS1005-04-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: interactive — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="HIS1005-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="HIS1005-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: interactive — Activity (inline) — s
+  ~ HIS1005_5_0.html: -172 +7
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="HIS1005-05-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: accordion — Activity (inline) — see 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HIS1005-05-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion — Activity (inline) — see 
+     - <p>[Important]</p>
+     - <p>[Next Page –New Page 5.1]</p>
+     - <h3>Parihaka: Erueti Te Whiti-o-Rongomai III and Tohu Kākahi</h3>
+     - <p>Parihaka was founded in 1866 by two Te Āti Awa rangatira, Te Whiti and Tohu. Although they took part in the
+     - <p>Parihaka was soon attracting dispossessed and disillusioned Māori from around the country and during the 18
+     - <p>Te Raukura, the white albatross feather, which Te Whiti’s followers adopted as a symbol protecting the mana
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="5D">
+     - <h3>Parihaka – Oral history</h3>
+     - <p>This is an example of a pūrakau passed down through generations. This historical narrative means the princi
+     - <p>Watch this short video clip produced by Youth Butterflies. In it the young wahine relates an oral history s
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/paOIF8pBUYo" loading="lazy" title="YouTube video player" f
+     - </div>
+     - <div class="activity interactive" number="5E">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="HIS1005-05-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: interactive — Activity (inline) — se
+     - <div style="font-size: 0.95em">
+     - <p>In the video you have just watched, there was a brief view of two primary sources used as evidence to back 
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - … 132 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="HIS1005-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: accordion — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="HIS1005-05-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: accordion — Activity (inline) — see
+     + <div class="alert solid">
+  ~ HIS1005_6_0.html: -194 +2
+     - <p>[Important]</p>
+     - <p>Go to the next page to learn about prejudice in Pukekohe and how past events link to the present.</p>
+     - <p>[Next Page –New Page 6.1]</p>
+     - <h3>Ignorance and its Impact</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Pukekohe prejudice</h4>
+     - <p>A US psychologist visiting Aotearoa New Zealand in the 1950s, David Ausubel, was appalled at the level of r
+     - <p>In his book <i>No Māori Allowed</i> (2020), Robert Bartholomew a University of Auckland sociologist, says d
+     - <p>“It is about reclaiming that narrative and who’s telling our history, and why. It’s important for us to abs
+     - <p>If you are curious to know more, you can watch the full documentary on TVNZ+. It contains fascinating oral 
+     - <a href="https://www.tvnz.co.nz/shows/no-maori-allowed" target="_blank"><div class="externalButton">No Māori A
+     - <a href="https://www.tvnz.co.nz/shows/no-maori-allowed" target="_blank"><div class="externalButton">Go to webs
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="6D">
+     - <h3>Using sources</h3>
+     - <p>First watch this short video in which Robert Bartholomew (author of <i>No Māori Allowed</i>) is interviewed
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/watch?app=desktop&amp;v=3anm3FXNuY8&amp;embeds_referring_euri=https%3A%2F
+     - </div>
+     - <p>[video link]</p>
+     - <p>Click on the statements below and identify five forms of <b>discrimination</b> that are mentioned in the vi
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [answer] outside an intera
+     - <ul>
+     - <li>Barbers refused to cut Māori hair and one who did had a ‘Māori Only’ chair</li>
+     - <li>Māori were not allowed to go to the movie theatre</li>
+     - <li>On the bus service between Pukekohe and Auckland, Māori had to stand if it was full</li>
+     - <li>The local school had separate toilets for Māori and Pākeha</li>
+     - <li>Restaurants would not allow Māori to eat inside, they had to sit in a field</li>
+     - <li>No one would rent to Māori, so they were forced to live in slum housing by the market gardens.</li>
+     - <li>No Pukekohe businesses would allow Māori to use the toilets or telephones.</li>
+     - <li>Kids were allowed to wash at the swimming pool on Fridays</li>
+     - </ul>
+     - <div class="activity interactive" number="6E">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="HIS1005-06-01" style="border: 8px s
+     - … 154 more removed
+     + <div class="alert solid">
+     + <p>Go to the next page to learn about prejudice in Pukekohe and how past events link to the present.</p>
+  ~ HIS1005_7_0.html: -5 +4
+     - <p>[body text]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="HIS1005-07-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: accordion (please arrange the sourc
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="HIS1005-09-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: accordion (please arrange the sourc
+  ~ HIS1005_9_0.html: -187 +2
+     - <p>[Important]</p>
+     - <p>Go to the next page to learn about the Bill of Rights and how even today the United States struggles to ack
+     - <p>[Next Page – New Page 9.1]</p>
+     - <h3>Bill of Rights – But Not for Everyone!</h3>
+     - <p>On 15 December 1791 Secretary of State Thomas Jefferson certified 10 amendments to the Constitution, which 
+     - <p>Once again this was a document that aspired to lofty ideals but contained glaring inequalities. It was not 
+     - <p>Native Americans were entirely outside the constitutional system, defined as an alien people in their own l
+     - <p>For the first 78 years after it was ratified, the Constitution protected slavery and legalised racial discr
+     - <p>As a result, Congress felt able to ignore the Bill of Rights in the passing of Fugitive Slave Laws of 1793 
+     - <p>Find out more about the importance of fugitive slave laws by clicking the play button on this short video.<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/JkHK8qDrTTM" loading="lazy" title="YouTube video player" f
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="alert">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [alert] — the writer left a callout
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h5>The Underground Railroad</h5>
+     - <p>This was a network of people and safe houses that helped Black Americans escape from slavery in the South t
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/7M2FAEM3blQ" loading="lazy" title="YouTube video player" f
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="9D">
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Dred Scott vs Stanford</h3>
+     - <p>The Supreme Court in the United States is the only court that can make rulings regarding the American Const
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/J0OW18pIo8c" loading="lazy" title="YouTube video player" f
+     - … 147 more removed
+     + <div class="alert solid">
+     + <p>Go to the next page to learn about the Bill of Rights and how even today the United States struggles to ack
+  ~ HIS1005_10_0.html: -2 +10
+     - <p><i>[body text]</i></p>
+     - <p>[Important]</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="alert solid">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+HIS1005: identical 2 / changed 10 / missing-on-disk 3
+  ~ HIS1006_0_0.html: -19 +30
+     - <p>[Body text]</p>
+     - <p>[H1] <b>Mautohe | Protest – Part B</b></p>
+     - <p>[Whakataukī]</p>
+     - <p>Kaua e mate wheke mate ururoa</p>
+     - <p>Don&#39;t die like an octopus, die like a hammerhead shark</p>
+     - <p>[Body text]</p>
+     - <p>[Activity Interactive]</p>
+     - <p>[H2] The Past Shapes the Present</p>
+     - <p>Before you begin the lessons in this module, watch these two short documentaries. They both link aspects of
+     - <p>As you watch, consider the difficult history that has led to these modern day situations and the links betw
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Interactive [interactive] reached the con
+     - <h3>Colonisation and Modern Māori</h3>
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/Z-KFMh2PqyU" loading="lazy" title="YouTube video player" f
+     - <h3>American Apple Pie</h3>
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/AjQBgBcbOyQ" loading="lazy" title="YouTube video player" f
+     - <!-- Lesson 1.1 -->
+     - <!-- Lesson 12.0 -->
+     + <h3>Mautohe | Protest – Part B</h3>
+     + <div class="whakatauki">
+     + <p>Kaua e mate wheke mate ururoa</p>
+     + <p>Don&#39;t die like an octopus, die like a hammerhead shark</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>The Past Shapes the Present</h3>
+     + <p>Before you begin the lessons in this module, watch these two short documentaries. They both link aspects of
+     + <p>As you watch, consider the difficult history that has led to these modern day situations and the links betw
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Interactive [interactive] reached the con
+     + <h5>Colonisation and Modern Māori</h5>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/Z-KFMh2PqyU" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <h5>American Apple Pie</h5>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/AjQBgBcbOyQ" loading="lazy" title="YouTube video player" f
+     + … 10 more added
+  ~ HIS1006_1_0.html: -5 +26
+     - <p>[Activity Individual]</p>
+     - <p>[Activity 1A] What Does it Mean?</p>
+     - <p>Using the information in the alert box above (beside the text), write what the acronyms NAACP and CCLC stan
+     - <p>[add button] Go to journal.</p>
+     - <div class="accContent"><p>Open your journal and complete the analysis of each perspective. Do not forget to i
+     + <div class="activity" number="1A">
+     + <h3>What Does it Mean?</h3>
+     + <p>Using the information in the alert box above (beside the text), write what the acronyms NAACP and CCLC stan
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="accContent"><p>Open your journal and complete the analysis of each perspective. Do not forget to i
+     + <h4 class="goJournal">Go to your journal</h4>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="alert solid">
+     + <div class="row">
+     + <div class="col-12">
+     + … 6 more added
+  ~ HIS1006_2_0.html: -2 +7
+     - <p>[Important]</p>
+     - <p>Go to the next page to learn about how the historical context of the Montgomery Bus Boycott can demonstrate
+     + <div class="alert solid">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Go to the next page to learn about how the historical context of the Montgomery Bus Boycott can demonstrate
+     + </div>
+     + </div>
+     + </div>
+  ~ HIS1006_3_0.html: -95 +115
+     - <h1><span>Ain’t Nobody Gonna Turn Me Around</span></h1>
+     - <p>[Next Page] (2.1)</p>
+     - <p>Inspired by the victory of the protest at Montgomery, King cemented his national leadership position by fou
+     - <p>By 1960, thousands of Black college students, and many white students as well, had joined youth councils of
+     - <h3>More Buses – Freedom Riders 1960</h3>
+     - <p>There was a lot of resistance to desegregating buses and bus stations across the South. Interstate transpor
+     - <p>In May 1961, CORE and SNCC organised Freedom Rides. On these rides, white and Black American civil rights a
+     - <p>The first freedom ride was on 4 May 1961 and multiple buses went from Washington, DC, to New Orleans. They 
+     - <div class="activity" number="2F">
+     - <h3>Significant Connections</h3>
+     - <p>The Freedom Rides provoked a strong, violent backlash by white supremacists in the towns that they visited.
+     - <p>You are going to use information from the video below to consider how the aspect of <b>Relationships</b> <b
+     - <p>An explanation of this aspect is:</p>
+     - <p>The event, person, or place may be seen as important in forming, maintaining, or disrupting the relationshi
+     - <p>To help you think of ideas consider the following questions:</p>
+     - <li>Why is it significant that SNCC leader John Lewis and fellow Freedom fighter James Zwerg were brutally bea
+     - <li>What is significant about where the Freedom Riders stayed overnight in Montgomery Alabama and who stayed w
+     - <li>Why is it significant that President Kennedy had to send in Federal troops?</li>
+     - <p>HINT: Think about the whakapapa of protest in this town, what happened there before this event, who was inv
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <iframe src="https://www.youtube-nocookie.com/embed/1zBY6gkpbTg" loading="lazy" title="YouTube video player" f
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: alert note: beside the above</p>
+     - <div class="alert">
+     - <h5>Aspects of Significance</h5>
+     - <p>When analysing the significance of events, historians consider aspects of significance and look for evidenc
+     - <ul>
+     - <li>Relationships (whakapapa)</li>
+     - <li>Role (tuakiri)</li>
+     - <li>Results (impact)</li>
+     - <li>Resonance</li>
+     - <li>Recollection (collective maūmaharatanga).</li>
+     - </ul>
+     - <div class="activity" number="2G">
+     - <h3>Driving Change</h3>
+     - <p>The Freedom rides were a radical idea, and participants risked their lives attempting to ride through the d
+     - <p>Watch this short video clip and consider the interplay of local government, the federal government, and the
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <div class="videoSection icon ratio ratio-16x9">
+     - … 55 more removed
+     + <h1><span>The Battle for Birmingham</span></h1>
+     + <h5>We are learning to:</h5>
+     + <ul>
+     + <li>read sources for understanding and information</li>
+     + <li>compare ideas across multiple sources</li>
+     + <li>evaluate the strengths and limitations of source.</li>
+     + </ul>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>annotating a source (n your annotation, you will note the strengths and limitations of the source)</li>
+     + <li>identifying connections among historical sources</li>
+     + <li>comparing and explaining the main ideas of multiple sources.</li>
+     + </ul>
+     + <p>Lesson 3 (3.0)</p>
+     + <h3>Project C</h3>
+     + <p>Many Black civil rights activists fought to desegregate their own home towns. Birmingham, Alabama was one o
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/into-white-space-of-right-hand.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + … 95 more added
+  ~ HIS1006_4_0.html: -384 +7
+     - <h1><span>The Battle for Birmingham</span></h1>
+     - <h5>We are learning to:</h5>
+     - <ul>
+     - <li>read sources for understanding and information</li>
+     - <li>compare ideas across multiple sources</li>
+     - <li>evaluate the strengths and limitations of source.</li>
+     - </ul>
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>annotating a source (n your annotation, you will note the strengths and limitations of the source)</li>
+     - <li>identifying connections among historical sources</li>
+     - <li>comparing and explaining the main ideas of multiple sources.</li>
+     - </ul>
+     - <p>Lesson 3 (3.0)</p>
+     - <h4>Project C</h4>
+     - <p>Many Black civil rights activists fought to desegregate their own home towns. Birmingham, Alabama was one o
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/into-white-space-of-right-hand.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Photograph of Eugene &quot;Bull&quot; Connor from the 1960 Annual Report published by the Birmingham Police
+     - <p>After a failed campaign in Albany, the SNCC and the SCLC agree to join forces with the ACMHR to confront se
+     - <h4>The Birmingham Manifesto</h4>
+     - <p>Project C – Phase 1, 3rd April 1963: The ACHMR publicly issued the <i>Birmingham Manifesto</i> setting out 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Letter from a Birmingham Jail</h4>
+     - <p>Project C – Phase 2, 6th April 1963: Mass marches began to try and jam the jails with people and attract me
+     - <p>Despite this, SCLC leaders – Martin Luther King and Ralph Abernathy – led 50 volunteers on a march. They kn
+     - <p>“For years now I have heard the word &#39;Wait!&#39; It rings in the ear of every Negro with piercing famil
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/in-the-white-space-of-the-right-hand.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="captionText">Reverend Martin Luther King reflects on the Birmingham campaign whilst in solitary conf
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Children’s Crusade</h4>
+     - … 344 more removed
+     + <h1><span>Next Steps</span></h1>
+     + <div class="alert solid">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [important] — the writer left a cal
+     + <p>Now that you have a very thorough knowledge of events, participants, causes and effects of the 1963 civil r
+     + <p><b>Once you have completed your Sources Assessment, make sure you upload it for grading in the Final Assess
+     + <a href="" target="_blank"><div class="button">Go to AS92024</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+  ~ HIS1006_5_0.html: -6 +204
+     - <h1><span>Next Steps</span></h1>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [important] — the writer left a cal
+     - <p>Now that you have a very thorough knowledge of events, participants, causes and effects of the 1963 civil r
+     - <p><b>Once you have completed your Sources Assessment, make sure you upload it for grading in the Final Assess
+     - <a href="" target="_blank"><div class="button">Go to AS92024</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h1><span>The Children’s Crusade</span></h1>
+     + <h5>We are learning to:</h5>
+     + <ul>
+     + <li>identify and explain historical perspectives</li>
+     + <li>analyse the significance of an event using evidence.</li>
+     + </ul>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>identifying and explaining two historical perspectives using historical sources</li>
+     + <li>constructing historical perspectives using evidence from sources</li>
+     + <li>analysing the significance of the Brimingham Campaign using aspects of significance.</li>
+     + </ul>
+     + <p>Lesson 4</p>
+     + <p>In the previous lesson you learned details about the third phase of Project C, known as the Children’s Crus
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <a href="https://www.nzherald.co.nz/resizer/v2/LFKIQVKK6VALJFDT7E5WCWT2KQ.JPG?auth=f9672046e4c779d96d3e9ba857c
+     + <p class="captionText">In this primary source photograph, Walter Gadsden, 15, an onlooker to the protest, is a
+     + <h3>Many Perspectives</h3>
+     + <p>As you have already learned in HISFUN 05 Tirohanga | Perspective: there is more than one way of viewing an 
+     + … 184 more added
+  ~ HIS1006_6_0.html: -123 +331
+     - <h1><span>The Children’s Crusade</span></h1>
+     - <li>identify and explain historical perspectives</li>
+     - <li>analyse the significance of an event using evidence.</li>
+     - <li>identifying and explaining two historical perspectives using historical sources</li>
+     - <li>constructing historical perspectives using evidence from sources</li>
+     - <li>analysing the significance of the Brimingham Campaign using aspects of significance.</li>
+     - <p>Lesson 4</p>
+     - <p>In the previous lesson you learned details about the third phase of Project C, known as the Children’s Crus
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <a href="https://www.nzherald.co.nz/resizer/v2/LFKIQVKK6VALJFDT7E5WCWT2KQ.JPG?auth=f9672046e4c779d96d3e9ba857c
+     - <p class="captionText">In this primary source photograph, Walter Gadsden, 15, an onlooker to the protest, is a
+     - <h3>Many Perspectives</h3>
+     - <p>As you have already learned in HISFUN 05 Tirohanga | Perspective: there is more than one way of viewing an 
+     - <p>A person&#39;s own values, beliefs, motivations and experiences inform their opinion of an event and how th
+     - <p>Historians should consider multiple perspectives to enrich their understanding of the event itself and its 
+     - <p>Particularly important in the historic context of the Children&#39;s Crusade during the Birmingham campaign
+     - <p>In direct opposition to this was a growing Black Civil Rights movement. Encouraged by successful campaigns 
+     - <div class="activity" number="4A">
+     - <h3>Confronting Carnage</h3>
+     - <p>To gain a deeper understanding of perspectives in this event watch this full-length documentary. It is 40 m
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/5enZRwbnISQ" loading="lazy" title="YouTube video player" f
+     - <ol>
+     - <li>Why was Birmingham so racist?</li>
+     - <li>What was one theory behind starting the Birmingham campaign?</li>
+     - <li>What did SCLC leader Dorothy Cotton tell the student recruits about nonviolent direct action?</li>
+     - <li>How did the radio DJs help?</li>
+     - <li>Why were the students willing to risk their lives?</li>
+     - <li>Why did James Bevel send the students out in groups of 50?</li>
+     - <li>What was Martin Luther King’s initial reaction to involving children and what did he later tell parents wh
+     - <li>What did Bull Conner hide in the 16th Street Baptist Church?</li>
+     - <li>Why did the students want to go to jail and what happened to them there?</li>
+     - <li>Did the students know what they were fighting for?</li>
+     - </ol>
+     - <div class="activity" number="4B">
+     - <h3>Opposing Perspectives</h3>
+     - <p>When attempting to understand different perspectives that people had in the past, it is important to try an
+     - <p>When historians consider perspectives, they do so with empathy. You will remember from Fundamental lesson 0
+     - <ul>
+     - <li>Place and time of the event</li>
+     - … 83 more removed
+     + <h1><span>The price of freedom</span></h1>
+     + <li>extract information from sources</li>
+     + <li>identify the barriers to voting for African Americans.</li>
+     + <li>finding evidence to answer questions in four sources</li>
+     + <li>identifying the usefulness of a source to answer a focus question.</li>
+     + <p>Lesson 5</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: The writer&#39;s title is ALL CAPS (&quot
+     + <h3>Freedom Summer</h3>
+     + <p>In the summer of 1964, the Student NonViolent Coordinating Committee (SNCC), in cooperation with the local 
+     + <p>Many of Mississippi’s white population deeply resented this campaign and fought back violently. State and d
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: activity note: individual - full widt
+     + <div class="activity interactive">
+     + <h3>Extracting Evidence</h3>
+     + <p>Historians use a variety of primary sources to find evidence about what happened in an event.</p>
+     + <p>Click on each source tab to read the primary source. Each source has a corresponding question that you need
+     + <p>Source 1: What were Freedom Summer volunteers told about nonviolence and why was it important for them to p
+     + <p>Source 2: What was the purpose of this advertisement and what does it tell you about the perspective of thi
+     + <p>Source 3: Why was this letter sent to parents of volunteers and what was problematic about the FBI agents i
+     + <p>Source 4: What was COFO and what could they do for African Americans in Mississippi?</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HIS1006-09-01" style="border: 8px so
+     + … 311 more added
+  ~ HIS1006_7_0.html: -289 +148
+     - <h1><span>The price of freedom</span></h1>
+     - <li>extract information from sources</li>
+     - <li>identify the barriers to voting for African Americans.</li>
+     - <li>finding evidence to answer questions in four sources</li>
+     - <li>identifying the usefulness of a source to answer a focus question.</li>
+     - <p>Lesson 5</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: The writer&#39;s title is ALL CAPS (&quot
+     - <h3>Freedom Summer</h3>
+     - <p>In the summer of 1964, the Student NonViolent Coordinating Committee (SNCC), in cooperation with the local 
+     - <p>Many of Mississippi’s white population deeply resented this campaign and fought back violently. State and d
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: activity note: individual - full widt
+     - <h3>Extracting Evidence</h3>
+     - <p>Historians use a variety of primary sources to find evidence about what happened in an event.</p>
+     - <p>Click on each source tab to read the primary source. Each source has a corresponding question that you need
+     - <p>Source 1: What were Freedom Summer volunteers told about nonviolence and why was it important for them to p
+     - <p>Source 2: What was the purpose of this advertisement and what does it tell you about the perspective of thi
+     - <p>Source 3: Why was this letter sent to parents of volunteers and what was problematic about the FBI agents i
+     - <p>Source 4: What was COFO and what could they do for African Americans in Mississippi?</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HIS1006-08-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown (please the following sourc
+     - <div style="font-size: 0.95em">
+     - <p><a href="https://content.wisconsinhistory.org/digital/collection/p15932coll2/id/6140?_gl=1" target="_blank"
+     - <p><a href="https://www.flickr.com/photos/elycefeliz/6751093087" target="_blank">https://www.flickr.com/photos
+     - <p><a href="https://cdm15932.contentdm.oclc.org/digital/collection/p15932coll2/id/30329" target="_blank">https
+     - <p><a href="https://www.lookandlearn.com/history-images/YSH004100/Leaflet-for-Mississippi-Freedom-Summer" targ
+     - <p>Go to journal.</p>
+     - <h4>Hunting for the Proof</h4>
+     - <p>Campaign organisers appealed to President Johnson who sent 200 navy sailors to search the swamp and fields.
+     - <!-- <img class="img-fluid" loading="lazy" src="images/right-hand-beside-the-above.jpg" alt="" /> -->
+     - <a href="https://en.wikipedia.org/wiki/Murders_of_Chaney,_Goodman,_and_Schwerner#/media/File:FBI_Poster_of_Mis
+     - <p>The FBI took Sheriff Lawrence Rainey and Deputy Sheriff Cecil Price, along with 19 other local men to the S
+     - <h4>Play Them at Their Own Game</h4>
+     - <p>Alongside their voter registration campaign, the Freedom Summer activists decided to establish an alternati
+     - <p>For John Lewis and many other student activists this was a turning point. Before this they had grudgingly s
+     - <h4>One Man, One Vote</h4>
+     - … 249 more removed
+     + <h1><span>Panthers on the Prowl</span></h1>
+     + <li>identify causation, that is, the causes and effects of events</li>
+     + <li>identify perspectives in a historical source.</li>
+     + <li>identifying the perspectives of the Black Panthers in historical sources</li>
+     + <li>finding evidence in a source to support a perspective.</li>
+     + <p>Lesson 6</p>
+     + <h3>A Powerful Awakening</h3>
+     + <p>The Civil Rights Act and the Voting Rights Act brought changes, but they did not prevent racism in the dail
+     + <p>Why? Because the barriers they faced in daily life were manifold: continued poverty, substandard housing, j
+     + <p>As Muhammad Ali put it: “No Vietnamese ever called me n***<i>r [sic]</i>.”</p>
+     + <p>*This word is a racist term and unacceptable, it is included here to maintain the historic accuracy of the 
+     + <p>Quote source: Roydon Agent, A Study of Black Civil Rights in the USA: Public Image, Private Shame, Pearson,
+     + <p>Martin Luther King questioned the hypocrisy of asking young Black men to remain nonviolent when the US gove
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Task 6A]</p>
+     + <h4>Causes and Effects</h4>
+     + <p>By the mid-1960s, Black anger and resentment in Black urban neighbourhoods boiled over. Uprisings and riots
+     + <p>Click on the play button to watch an explanation of what happened in the Detroit riots.</p>
+     + <p>Then sort the information cards into three categories, Causes, Events and Effects.</p>
+     + <p><a href="https://www.youtube.com/watch?v=ykzOhWWOAHU" target="_blank">https://www.youtube.com/watch?v=ykzOh
+     + <div class="activity interactive" number="7A">
+     + … 128 more added
+  ~ HIS1006_8_0.html: -175 +70
+     - <h1><span>Panthers on the Prowl</span></h1>
+     - <li>identify causation, that is, the causes and effects of events</li>
+     - <li>identify perspectives in a historical source.</li>
+     - <li>identifying the perspectives of the Black Panthers in historical sources</li>
+     - <li>finding evidence in a source to support a perspective.</li>
+     - <p>Lesson 6</p>
+     - <h3>A Powerful Awakening</h3>
+     - <p>The Civil Rights Act and the Voting Rights Act brought changes, but they did not prevent racism in the dail
+     - <p>Why? Because the barriers they faced in daily life were manifold: continued poverty, substandard housing, j
+     - <p>As Muhammad Ali put it: “No Vietnamese ever called me n***<i>r [sic]</i>.”</p>
+     - <p>*This word is a racist term and unacceptable, it is included here to maintain the historic accuracy of the 
+     - <p>Quote source: Roydon Agent, A Study of Black Civil Rights in the USA: Public Image, Private Shame, Pearson,
+     - <p>Martin Luther King questioned the hypocrisy of asking young Black men to remain nonviolent when the US gove
+     - <div class="activity interactive">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Task 6A]</p>
+     - <h4>Causes and Effects</h4>
+     - <p>By the mid-1960s, Black anger and resentment in Black urban neighbourhoods boiled over. Uprisings and riots
+     - <p>Click on the play button to watch an explanation of what happened in the Detroit riots.</p>
+     - <p>Then sort the information cards into three categories, Causes, Events and Effects.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <p><a href="https://www.youtube.com/watch?v=ykzOhWWOAHU" target="_blank">https://www.youtube.com/watch?v=ykzOh
+     - <div class="activity interactive" number="8A">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="HIS1006-09-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dragAndDrop (please create a where 
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th>Discrimination by landlords and employers</th>
+     - <th>Inequality of schools, health care and housing</th>
+     - <th>White flight from the inner city to the suburbs</th>
+     - <th>Unprecedented destruction, injury and death</th>
+     - </tr>
+     - … 135 more removed
+     + <h1><span>Renaissance</span></h1>
+     + <li>understand that historical narratives are constructed and contested</li>
+     + <li>construct a paragraph with historical evidence.</li>
+     + <li>identifying narratives in a primary source</li>
+     + <li>writing a paragraph explaining a historical context and backing your points up with evidence from sources.
+     + <p>Lesson 7</p>
+     + <h3>Renaissance</h3>
+     + <p>In the early 20th century, much of New Zealand&#39;s population was unintentionally segregated. While more 
+     + <p>After World War Two that situation changed, as Māori moved from the countryside to the cities to find work 
+     + <p>During the rapid urbanisation, Māori were expected to leave their traditional customs behind on their marae
+     + <p>Young Māori, born in urban centres, grew up disconnected from their iwi and their language. Without the tra
+     + <h4>New Awakening</h4>
+     + <p>In the late 1960s and early 1970s, a new generation of urban well-educated Māori began to draw attention to
+     + <p>Young Māori radicals began arguing that, for Māori, the way forward was to return to and rediscover their r
+     + <p>A very active and influential group, Ngā Tamatoa (the Warriors), emerged out of a conference at Auckland Un
+     + <p>“Member Taura Eruera said of the group&#39;s beginning &quot;Our tohu at the time was tama tu, tama ora, ta
+     + <p>What they were talking about wasn’t all that radical. Their chief concerns were the continuing confiscation
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Task 7A]</p>
+     + <h4>Speaking Out</h4>
+     + <p>Syd Jackson and Hana Te Hemara were founding members of Ngā Tamatoa and the young activists who exercised t
+     + … 50 more added
+  ~ HIS1006_9_0.html: -71 +196
+     - <h1><span>Renaissance</span></h1>
+     - <h5>We are learning to:</h5>
+     - <li>understand that historical narratives are constructed and contested</li>
+     - <li>construct a paragraph with historical evidence.</li>
+     - <li>identifying narratives in a primary source</li>
+     - <li>writing a paragraph explaining a historical context and backing your points up with evidence from sources.
+     - <p>Lesson 7</p>
+     - <h3>Renaissance</h3>
+     - <p>In the early 20th century, much of New Zealand&#39;s population was unintentionally segregated. While more 
+     - <p>After World War Two that situation changed, as Māori moved from the countryside to the cities to find work 
+     - <p>During the rapid urbanisation, Māori were expected to leave their traditional customs behind on their marae
+     - <p>Young Māori, born in urban centres, grew up disconnected from their iwi and their language. Without the tra
+     - <h4>New Awakening</h4>
+     - <p>In the late 1960s and early 1970s, a new generation of urban well-educated Māori began to draw attention to
+     - <p>Young Māori radicals began arguing that, for Māori, the way forward was to return to and rediscover their r
+     - <p>A very active and influential group, Ngā Tamatoa (the Warriors), emerged out of a conference at Auckland Un
+     - <p>“Member Taura Eruera said of the group&#39;s beginning &quot;Our tohu at the time was tama tu, tama ora, ta
+     - <p>What they were talking about wasn’t all that radical. Their chief concerns were the continuing confiscation
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Task 7A]</p>
+     - <h4>Speaking Out</h4>
+     - <p>Syd Jackson and Hana Te Hemara were founding members of Ngā Tamatoa and the young activists who exercised t
+     - <p>Click on the play button to watch an interview with them in 1972. Then go to your learning journal and comp
+     - <li>Identify two untrue narratives that Māori were brought up with and told to believe.</li>
+     - <li>What evidence do Hana and Syd have that disproves those narratives?</li>
+     - <li>What do Hana and Syd aim to achieve and what do they want Aotearoa New Zealand society to look like?</li>
+     - <iframe src="https://www.youtube-nocookie.com/embed/1lvgVqYOLZI" loading="lazy" title="YouTube video player" f
+     - <p>Ngā Tamatoa sought ways to empower Māori and it was Hana who presented a petition on the steps of Parliamen
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Task 7B]</p>
+     - <h3>Assessing the Impact</h3>
+     - <p>In 1987, the Māori language became an official language of New Zealand. Not much more than a generation pre
+     - <p>When assessing the significance of an event, historians can consider the impact it had.</p>
+     - <p>Click on the button below. It will take you to the webpage <i>I Am Hana</i>, the wahine activist who presen
+     - <p>Look for evidence on this page that explains the <b>impact</b> of this petition (hint: there is also some e
+     - <a href="https://iamhana.nz/nga-tamatoa-the-movement/" target="_blank"><div class="externalButton">I Am Hana</
+     - <h4>Haka Party Incident</h4>
+     - <p>Another young Māori activist group, known as He Taua, was founded by Auckland University students Hilda Hal
+     - <h5>The Engineers Mock*** Haka</h5>
+     - <p>Kamate! Kamate!</p>
+     - <p>Hori*! Hori!</p>
+     - <p>I got the pox**</p>
+     - … 31 more removed
+     + <h1><span>Mautohe</span></h1>
+     + <h1><span>Protest</span></h1>
+     + <h5>We are learning about:</h5>
+     + <li>evaluating sources and assessing the usefulness and reliability of a collection of sources</li>
+     + <li>evaluating the significance of an event against criteria.</li>
+     + <li>evaluating a source and assessing the usefulness and reliability of a collection of sources, with regard t
+     + <li>evaluating the significance of an event using criteria and finding evidence.</li>
+     + <p>Lesson 8</p>
+     + <p>“By the turn of the century [20th] all the best land had been alienated, and only two million hectares rema
+     + <p>Quote source: Ranginui Walker, <i>Ka Whawhai Tonu Matou – Struggle Without End</i>, Penguin Books, 2004, p.
+     + <p>In 1953, the government introduced the Māori Affairs Act. A new law that invited citizens to report ‘unused
+     + <p>These Acts merely compounded the damage done by the Public Works Act of 1928, which allowed the government 
+     + <p>Māori had endured Crown land confiscations as punishment after the Land Wars of the 1860s and had witnessed
+     + <h3>Hīkoi</h3>
+     + <p>Early in March 1975, a hui was called at Te Puea Marae in Mangere, South Auckland, to talk about Māori land
+     + <p>It was decided a new approach was needed and Dame Whina proposed a hīkoi. Because of her <b>mana</b> and <b
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/right-hand-beside-above.jpg" alt="" /> -->
+     + <a href="https://www.flickr.com/photos/allan_harris/4432363639/in/photostream/" target="_blank"><div class="ex
+     + <p>Te Rōpū o te Matakite built on the long held te ao Māori tradition of resisting Crown oppression and combin
+     + … 176 more added
+  ~ HIS1006_10_0.html: -212 +79
+     - <h1><span>Mautohe</span></h1>
+     - <h1><span>Protest</span></h1>
+     - <li>evaluating sources and assessing the usefulness and reliability of a collection of sources</li>
+     - <li>evaluating the significance of an event against criteria.</li>
+     - <li>evaluating a source and assessing the usefulness and reliability of a collection of sources, with regard t
+     - <li>evaluating the significance of an event using criteria and finding evidence.</li>
+     - <p>Lesson 8</p>
+     - <p>“By the turn of the century [20th] all the best land had been alienated, and only two million hectares rema
+     - <p>Quote source: Ranginui Walker, <i>Ka Whawhai Tonu Matou – Struggle Without End</i>, Penguin Books, 2004, p.
+     - <p>In 1953, the government introduced the Māori Affairs Act. A new law that invited citizens to report ‘unused
+     - <p>These Acts merely compounded the damage done by the Public Works Act of 1928, which allowed the government 
+     - <p>Māori had endured Crown land confiscations as punishment after the Land Wars of the 1860s and had witnessed
+     - <h3>Hīkoi</h3>
+     - <p>Early in March 1975, a hui was called at Te Puea Marae in Mangere, South Auckland, to talk about Māori land
+     - <p>It was decided a new approach was needed and Dame Whina proposed a hīkoi. Because of her <b>mana</b> and <b
+     - <!-- <img class="img-fluid" loading="lazy" src="images/right-hand-beside-above.jpg" alt="" /> -->
+     - <a href="https://www.flickr.com/photos/allan_harris/4432363639/in/photostream/" target="_blank"><div class="ex
+     - <p>Te Rōpū o te Matakite built on the long held te ao Māori tradition of resisting Crown oppression and combin
+     - <p>They would walk the length of Te Ika a Māui, over 1000 kilometres, from Te Hāpua in the Far North to Wellin
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: activity note: individual - full widt
+     - <h3>Why we March</h3>
+     - <p>Te Rōpū O Te Matakite produced a booklet explaining why the Land March took place. It outlines their perspe
+     - <p>How have Māori been affected by land loss and what will they do with the remaining land?</p>
+     - <p>Click on the tab to view this primary source document.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="HIS1006-11-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: accordion (please this primary sour
+     - <p>Source 1: Why We March</p>
+     - <p><a href="https://en.wikipedia.org/wiki/M%C4%81ori_land_march#/media/File:M%C4%81ori_Land_March_(1975)_-_Why
+     - <p>A booklet issued by Te Rōpū O Te Matakite explaining why the Land March took place, addressing previous gri
+     - <p>Now go to your learning journal and practise annotating this source.</p>
+     - <p>Dame Whina Cooper insisted the march be a model of discipline and respectability, there would be no alcohol
+     - <h3>Journey for Justice</h3>
+     - <p>On Māori Language Day, the 14th of September 1975, 50 protestors left Te Hāpua in Northland. At their head 
+     - <!-- <img class="img-fluid" loading="lazy" src="images/right-hand-beside-the-above.jpg" alt="" /> -->
+     - <a href="https://www.stuff.co.nz/taranaki-daily-news/news/300665840/how-i-got-the-shot-whina-cooper-and-the-im
+     - <p class="captionText">This famously iconic image was taken by New Zealand Herald press photographer Michael T
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Task 8B]</p>
+     - <h4>E pā tō hau</h4>
+     - … 172 more removed
+     + <h1><span>Mana motuhake</span></h1>
+     + <li>how historians use concepts to make sense of the past.</li>
+     + <li>using the concept of mana to explain the role of Dame Whina Cooper in the 1975 Land March</li>
+     + <li>using two historical concepts to construct a narrative of events at Takaparawhā (Bastion Point).</li>
+     + <p>Lesson 9</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: The writer&#39;s title is ALL CAPS (&quot
+     + <h3>A Wahine of Great Mana</h3>
+     + <p>At the end of the march, the participants split into factions. Ngā Tamatoa members of the group held a thre
+     + <p>“It is a testimony to the charisma and mana of Whina Cooper that she held the movement together for eight m
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [embed] with no URL found — add the embed
+     + <a href="https://en.wikipedia.org/wiki/Whina_Cooper#/media/File:Whina_Cooper_in_Hamilton.jpg" target="_blank">
+     + <p class="captionText">&quot;Woman of mana, teacher, storekeeper, community leader&quot;, this description was
+     + <p>Dame Whina Cooper already held great mana in te ao Māori and Pākehā worlds. She had a strong whakapapa of r
+     + <p>As Whina grew older she continued to be outspoken, defying other iwi leaders, and continued to support her 
+     + <h5>Koha</h5>
+     + <p>If you would like to find out more detail about Dame Whina Cooper’s life, then click on the button to view 
+     + <a href="https://www.nzonscreen.com/title/koha-whina-cooper-part-2-1983" target="_blank"><div class="externalB
+     + <h3>What Makes a Leader?</h3>
+     + <p>The following are primary sources related to Dame Whina Cooper and her life. Within them is evidence as to 
+     + <p>After you view these sources go to your journal and complete the following tasks:</p>
+     + … 59 more added
+  ~ HIS1006_11_0.html: -97 +91
+     - <h1><span>Mana motuhake</span></h1>
+     - <li>how historians use concepts to make sense of the past.</li>
+     - <ul>
+     - <li>using the concept of mana to explain the role of Dame Whina Cooper in the 1975 Land March</li>
+     - <li>using two historical concepts to construct a narrative of events at Takaparawhā (Bastion Point).</li>
+     - </ul>
+     - <p>Lesson 9</p>
+     - <p>[H1] Mana Motuhake</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: The writer&#39;s title is ALL CAPS (&quot
+     - <h3>A Wahine of Great Mana</h3>
+     - <p>At the end of the march, the participants split into factions. Ngā Tamatoa members of the group held a thre
+     - <p>“It is a testimony to the charisma and mana of Whina Cooper that she held the movement together for eight m
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [embed] with no URL found — add the embed
+     - <a href="https://en.wikipedia.org/wiki/Whina_Cooper#/media/File:Whina_Cooper_in_Hamilton.jpg" target="_blank">
+     - <p class="captionText">&quot;Woman of mana, teacher, storekeeper, community leader&quot;, this description was
+     - <p>Dame Whina Cooper already held great mana in te ao Māori and Pākehā worlds. She had a strong whakapapa of r
+     - <p>As Whina grew older she continued to be outspoken, defying other iwi leaders, and continued to support her 
+     - <h5>Koha</h5>
+     - <p>If you would like to find out more detail about Dame Whina Cooper’s life, then click on the button to view 
+     - <a href="https://www.nzonscreen.com/title/koha-whina-cooper-part-2-1983" target="_blank"><div class="externalB
+     - <h3>What Makes a Leader?</h3>
+     - <p>The following are primary sources related to Dame Whina Cooper and her life. Within them is evidence as to 
+     - <p>After you view these sources go to your journal and complete the following tasks:</p>
+     - <li>Record some evidence, for each source, that explains what made Dame Whina Cooper a great leader who had ma
+     - <li>Use the evidence to write a paragraph answering this question:</li>
+     - <p>How did the mana motuhake of Dame Whina Cooper influence the events of the 1975 Land March?</p>
+     - <p>Use what you have learned about the context and evidence from these sources to back up your ideas.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="HIS1006-12-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: accordion (add the following source
+     - <div style="font-size: 0.95em">
+     - <p>Source 12 – Poem</p>
+     - <p>Poem for Whina - Hone Tuwhare.docx</p>
+     - <p>Source 13 – This Is Your Life</p>
+     - <p><i><a href="https://www.youtube.com/watch?v=OELVhAXwS3U" target="_blank">https://www.youtube.com/watch?v=OE
+     - <p>Source 14 – Trail Blazers</p>
+     - … 57 more removed
+     + <h1><span>Reparations and Reconciliation</span></h1>
+     + <li>how difficult history needs to be acknowledged and attempts made at reconciliation.</li>
+     + <p>- organising ideas about Treaty reconciliation into positive and negative outcomes</p>
+     + <p>- considering the debate over public memorials and statues and formulating your own suggestions.</p>
+     + <p>Lesson 10</p>
+     + <p>“... I would argue that a mature nation needs to own its history, warts and all. And so there are these unp
+     + <p>Quote Source: Vincent O’Malley, <a href="https://natlib.govt.nz/he-tohu/korero/interview-with-vincent-o-mal
+     + <h3>Steps Towards Equality?</h3>
+     + <p>From the 1980s, the Treaty of Waitangi began to assume far greater importance to the New Zealand government
+     + <p>In 1987, the Court of Appeal ruled that the treaty embodied specific principles that should apply to the pr
+     + <!-- <img class="img-fluid" loading="lazy" src="images/i-only-want-the-summary-of-the-principle.jpg" alt="" />
+     + <a href="https://learn.aucklandmuseum.com/resource/diy-treaty-of-waitangi" target="_blank"><div class="externa
+     + <p>So far, the Waitangi Tribunal has heard well over 1000 claims and written reports related to 79% of Aotearo
+     + <p>- formal apology by the crown</p>
+     + <p>- financial reparation</p>
+     + <p>- transfer or option to purchase property</p>
+     + <p>- restoration of traditional geographical names.</p>
+     + <p>Once the Waitangi Tribunal produces a report making recommendations in an iwi’s favour, then they must nego
+     + <p>Te Tiriti o Waitangi (the Treaty of Waitangi) remains highly significant in the 21st century. Originally a 
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Task 10A]</p>
+     + … 71 more added
+HIS1006: identical 0 / changed 12 / missing-on-disk 3
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+  ~ OSAH501_5_0.html: -45 +23
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Empty </th>
+     - <th><b>[Click drop]Taha wairua</b> – <b>spiritual wellbeing</b> / A person may be challenged if the person’s s
+     - <th> Empty </th>
+     - </tr>
+     - <tr>
+     - <td><b>[Click drop]Taha tinana</b> – <b>physical wellbeing</b> / A person may suffer due to disrupted sleep or
+     - <td> [image] / <a href="https://www.istockphoto.com/vector/lifeline-for-digitally-addicted-man-drowning-in-mob
+     - <td><b>[Click drop]Taha hinengaro</b> – <b>mental and emotional wellbeing</b> / A person may be impacted negat
+     - </tr>
+     - <tr>
+     - <td> Empty </td>
+     - <td><b>[Click drop]Taha whānau</b> – <b>social wellbeing</b> / A person’s relationships can be strained if the
+     - <td> Empty </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Empty </th>
+     - <th><b>[Click drop]Taha Wairua</b> –<b>spiritual wellbeing</b> / The person may have to deal with conflicting 
+     - <th> Empty </th>
+     - </tr>
+     - <tr>
+     - <td><b>[Click drop]Taha tinana</b> – <b>physical wellbeing</b> / A person may be affected through disrupted sl
+     - <td> [image] / <a href="https://www.istockphoto.com/vector/stop-cyber-crime-gm1012083748-272663330" target="_b
+     - <td><b>[Click drop]Taha hinengaro</b> – <b>mental and emotional wellbeing</b> / A person may be impacted by fe
+     - </tr>
+     - <tr>
+     - <td> Empty </td>
+     - <td><b>[Click drop]Taha whānau</b> – <b>social wellbeing</b> / Can be strained if trust is lost among peers, t
+     - <td> Empty </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="OSAH501-05-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - … 5 more removed
+     + <div class="row">
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>A person may be challenged if the person’s
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>A person may suffer due to disrupted sleep 
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>A person may be impacted negati
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>A person’s relationships can be strained if t
+     + <div class="row">
+     + <div class="button clickDrop">Taha Wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>–<b>spiritual wellbeing</b></p><p>The person may have to deal with conflictin
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>A person may be affected through disrupted 
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>A person may be impacted by fee
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>Can be strained if trust is lost among peers,
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="OSAH501-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + … 3 more added
+OSAH501: identical 5 / changed 1
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+  ~ OSGM301_1_0.html: -1 +1
+     - <p><b> </b> **</p>
+     + <p>**</p>
+  ~ OSGM301_2_0.html: -24 +13
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Empty </th>
+     - <th><b>[Click drop]Taha wairua</b> – <b>spiritual wellbeing</b> / This is about your beliefs, values, and sens
+     - <th> Empty </th>
+     - </tr>
+     - <tr>
+     - <td><b>[Click drop]Taha tinana</b> – <b>physical wellbeing</b> / This is about looking after your body. It inc
+     - <td> [image] <a href="https://www.istockphoto.com/photo/fun-cat-3d-illustration-gm973342708-264863906" target=
+     - <td><b>[Click drop]Taha hinengaro</b> – <b>mental and emotional wellbeing</b> / This is about your thoughts an
+     - </tr>
+     - <tr>
+     - <td> Empty </td>
+     - <td><b>[Click drop]Taha whānau</b> – <b>social wellbeing</b> / This is about your relationships with others – 
+     - <td> Empty </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="OSGM301-02-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 2A — see OSGM
+     - </div>
+     - </div>
+     + <div class="row">
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>This is about your beliefs, values, and se
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>This is about looking after your body. It i
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>This is about your thoughts and
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>This is about your relationships with others 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="OSGM301-02-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dragAndDrop — Activity 2A — see OSGM
+     + </div>
+  ~ OSGM301_3_0.html: -8 +8
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="OSGM301-03-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dropDown — Activity 3A — see OSGM301
+     - Quit the game without saying anything. / [Show Answer] Do this when answer is correct / Supporting others and 
+     - <td>You’re playing a team game and using voice chat. One player keeps interrupting others and shouting instruc
+     - <td>You lose a close match in an online game. You feel frustrated and want to say something. / [Drop down answ
+     - <td>You’re playing an online game and someone you don’t know asks for your real name and what school you go to
+     - <td>You’re playing a free game on your phone, and it offers a cool skin or power-up for real money. You really
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="OSGM301-03-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown — Activity 3A — see OSGM301
+     + Quit the game without saying anything. / [Show Answer] Do this when answer is correct / Supporting others and 
+     + <td>You’re playing a team game and using voice chat. One player keeps interrupting others and shouting instruc
+     + <td>You lose a close match in an online game. You feel frustrated and want to say something. / [Drop down answ
+     + <td>You’re playing an online game and someone you don’t know asks for your real name and what school you go to
+     + <td>You’re playing a free game on your phone, and it offers a cool skin or power-up for real money. You really
+OSGM301: identical 1 / changed 3
+  ~ OSGM401_1_0.html: -23 +12
+     - <td>[H4]Benefits</td>
+     - <td>[H4]Risks</td>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Empty </th>
+     - <th><b>[Click drop] Taha wairua – spiritual wellbeing</b> / Games can support your spiritual wellbeing by help
+     - <th> Empty </th>
+     - </tr>
+     - <tr>
+     - <td><b>[Click drop]Taha tinana</b> – <b>physical wellbeing</b> / Some games can help your physical wellbeing b
+     - <td> [image] <a href="https://www.istockphoto.com/photo/fun-cat-3d-illustration-gm973342708-264863906" target=
+     - <td><b>[Click drop]Taha hinengaro</b> – <b>mental and emotional wellbeing</b> / Gaming can be good for your me
+     - </tr>
+     - <tr>
+     - <td> Empty </td>
+     - <td><b>[Click drop]Taha whānau</b> <b>– social wellbeing</b> / Gaming is a fun way to connect with others, bot
+     - <td> Empty </td>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     + <td> [H4] Benefits</td>
+     + <td> [H4] Risks</td>
+     + <div class="row">
+     + <div class="button clickDrop">Taha wairua – spiritual wellbeing</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>/ Games can support your spiritual wellbeing by helping you explore your iden
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>Some games can help your physical wellbeing
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>Gaming can be good for your men
+     + <div class="clickDropContent"><p><b>– social wellbeing</b></p><p>Gaming is a fun way to connect with others, b
+     + </div>
+  ~ OSGM401_2_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="OSGM401-02-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: reorder — Activity 2A — see OSGM401_
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="OSGM401-02-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: shapeHover — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="OSGM401-02-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: reorder — Activity 2A — see OSGM401_
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="OSGM401-02-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: shapeHover — Activity (inline) — see
+  ~ OSGM401_3_0.html: -8 +8
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="OSGM401-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dragAndDrop — Activity 3A — see OSG
+     - <th>Send a kind message to support the new player and encourage others to be kind. / [Show Answer] Do this whe
+     - <td>Mute the player and continue playing calmly. / [Show Answer] Do this when answer is correct / You cannot c
+     - <td>Say “GG” (good game) and take a break. / [Show Answer] Do this when answer is correct / Showing good sport
+     - <td>Report the behaviour and check in with your team. / [Show Answer] Do this when answer is correct / Rage qu
+     - <td>Politely ask them to follow the plan and explain why. / [Show Answer] Do this when answer is correct / By 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="OSGM401-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dragAndDrop — Activity 3A — see OSG
+     + <th>Send a kind message to support the new player and encourage others to be kind. / [Show Answer] Do this whe
+     + <td>Mute the player and continue playing calmly. / [Show Answer] Do this when answer is correct / You cannot c
+     + <td>Say “GG” (good game) and take a break. / [Show Answer] Do this when answer is correct / Showing good sport
+     + <td>Report the behaviour and check in with your team. / [Show Answer] Do this when answer is correct / Rage qu
+     + <td>Politely ask them to follow the plan and explain why. / [Show Answer] Do this when answer is correct / By 
+  ~ OSGM401_4_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="OSGM401-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: dragAndDrop — Activity 4A — see OSG
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="OSGM401-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: slider + slider + slider — Activity
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="OSGM401-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: dragAndDrop — Activity 4A — see OSG
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="OSGM401-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: slider + slider + slider — Activity
+OSGM401: identical 1 / changed 4
+  ~ OSGM501_1_0.html: -2 +2
+     - <td>[H4] Benefits</td>
+     - <td>[H4] Risks</td>
+     + <td> [H4] Benefits</td>
+     + <td> [H4] Risks</td>
+  ~ OSGM501_3_0.html: -5 +5
+     - <th>You are playing a team-based online game with three other players. One teammate is new and keeps making mi
+     - <td>You’re playing a team game and using voice chat. One player keeps interrupting others and shouting instruc
+     - <td>You lose a close match in an online game. You feel frustrated and want to say something. / [Drop down answ
+     - <td>You’re playing a team-based game, and one player gets angry after losing a round. They start yelling in vo
+     - <td>You’re in a co-op game, but one player refuses to follow the team plan and keeps doing their own thing, ca
+     + <th>You are playing a team-based online game with three other players. One teammate is new and keeps making mi
+     + <td>You’re playing a team game and using voice chat. One player keeps interrupting others and shouting instruc
+     + <td>You lose a close match in an online game. You feel frustrated and want to say something. / [Drop down answ
+     + <td>You’re playing a team-based game, and one player gets angry after losing a round. They start yelling in vo
+     + <td>You’re in a co-op game, but one player refuses to follow the team plan and keeps doing their own thing, ca
+  ~ OSGM501_5_0.html: -24 +13
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Empty </th>
+     - <th><b>[Click drop] Taha wairua</b> – <b>spiritual wellbeing</b> / Gaming can support spiritual wellbeing by a
+     - <th> Empty </th>
+     - </tr>
+     - <tr>
+     - <td><b>[Click drop] Taha tinana</b> – <b>physical wellbeing</b> / Gaming can be beneficial for physical wellbe
+     - <td> [image] <a href="https://www.istockphoto.com/photo/fun-cat-3d-illustration-gm973342708-264863906" target=
+     - <td><b>[Click drop] Taha hinengaro</b> – <b>mental and emotional wellbeing</b> / Gaming can support mental wel
+     - </tr>
+     - <tr>
+     - <td> Empty </td>
+     - <td><b>[Click drop]Taha whānau</b> – <b>social wellbeing</b> / Gaming often involves social interaction, both 
+     - <td> Empty </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="OSGM501-05-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: dragAndDrop — Activity 5A — see OSG
+     - </div>
+     - </div>
+     + <div class="row">
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>Gaming can support spiritual wellbeing by 
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>Gaming can be beneficial for physical wellb
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>Gaming can support mental wellb
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>Gaming often involves social interaction, bot
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="OSGM501-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: dragAndDrop — Activity 5A — see OSG
+     + </div>
+OSGM501: identical 3 / changed 3
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+  ~ OSOH301_1_0.html: -30 +19
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Empty </th>
+     - <th><b>[Click drop]Taha wairua</b> – <b>spiritual wellbeing</b> / This is about your beliefs, values, and sens
+     - <th> Empty </th>
+     - </tr>
+     - <tr>
+     - <td><b>[Click drop]Taha tinana</b> – <b>physical wellbeing</b> / This is about looking after your body. With o
+     - <td> [image] <a href="https://www.istockphoto.com/photo/super-cow-3d-illustration-gm646368652-117213367" targe
+     - <td><b>[Click drop]Taha hinengaro</b> – <b>mental and emotional wellbeing</b> / This is about your thoughts an
+     - </tr>
+     - <tr>
+     - <td> Empty </td>
+     - <td><b>[Click drop]Taha whānau</b> – <b>social wellbeing</b> / This is about your relationships with others – 
+     - <td> Empty </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="OSOH301-01-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: accordion + accordion + accordion — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="OSOH301-01-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: reorder — Activity (inline) — see OS
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="OSOH301-01-03" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: accordion — Activity (inline) — see 
+     - </div>
+     - </div>
+     + <div class="row">
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>This is about your beliefs, values, and se
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>This is about looking after your body. With
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>This is about your thoughts and
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>This is about your relationships with others 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="OSOH301-01-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: accordion + accordion + accordion — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="OSOH301-01-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: reorder — Activity (inline) — see OS
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="OSOH301-01-03" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: accordion — Activity (inline) — see 
+     + </div>
+  ~ OSOH301_2_0.html: -5 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="OSOH301-02-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="OSOH301-02-02" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: typing — Activity 2A — see OSOH301_i
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="OSOH301-02-01" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dragAndDrop — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="OSOH301-02-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: typing — Activity 2A — see OSOH301_i
+  ~ OSOH301_3_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="OSOH301-03-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: unclassified — Activity 3A — see OSO
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="OSOH301-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity 3A — see OS
+OSOH301: identical 1 / changed 3
+  ~ OSOH401_1_0.html: -30 +19
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Empty </th>
+     - <th><b>[Click drop] Taha Wairua</b> – <b>Spiritual wellbeing</b> / When learning online this can relate to und
+     - <th> Empty </th>
+     - </tr>
+     - <tr>
+     - <td><b>[Click drop] Taha Tinana</b> – <b>Physical wellbeing</b> / With online learning this can include making
+     - <td> [image] <a href="https://www.istockphoto.com/photo/super-cow-3d-illustration-gm646368652-117213367" targe
+     - <td><b>[Click drop] Taha Hinengaro</b> – <b>Mental and emotional wellbeing</b> / It includes how you handle st
+     - </tr>
+     - <tr>
+     - <td> Empty </td>
+     - <td><b>[Click drop] Taha Whānau</b> – <b>Social wellbeing</b> / This can include how you connect with your lea
+     - <td> Empty </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="OSOH401-01-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dragAndDrop — Activity 1B — see OSOH
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="OSOH401-01-03" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dragAndDrop — Activity 1C — see OSOH
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="OSOH401-01-04" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: radioQuiz — Activity 1D — see OSOH40
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="OSOH401-01-05" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: wordFind — Activity 1E — see OSOH40
+     - </div>
+     - </div>
+     + <div class="button clickDrop">Taha Wairua</div>
+     + <div class="button clickDrop">Taha Tinana – Physical wellbeing</div>
+     + <div class="button clickDrop">Taha Hinengaro – Mental and emotional wellbeing</div>
+     + <div class="button clickDrop">Taha Whānau – Social wellbeing</div>
+     + <div class="clickDropContent"><p>– <b>Spiritual wellbeing</b></p><p>When learning online this can relate to un
+     + <div class="clickDropContent"><p>With online learning this can include making sure your physical learning spac
+     + <div class="clickDropContent"><p>It includes how you handle stress and good online learning habits. It is also
+     + <div class="clickDropContent"><p>This can include how you connect with your learning community. This could be 
+     + <div class="row">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="OSOH401-01-02" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dragAndDrop — Activity 1B — see OSOH
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="OSOH401-01-03" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dragAndDrop — Activity 1C — see OSOH
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="OSOH401-01-04" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: radioQuiz — Activity 1D — see OSOH4
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="OSOH401-01-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: wordFind — Activity 1E — see OSOH40
+     + </div>
+  ~ OSOH401_2_0.html: -9 +9
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="OSOH401-02-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: clickDrop — Activity (inline) — see
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="OSOH401-02-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: reorder — Activity 2A — see OSOH401
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="OSOH401-02-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: typing — Activity 2B — see OSOH401_
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="OSOH401-02-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: clickDrop — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="OSOH401-02-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: reorder — Activity 2A — see OSOH401
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="OSOH401-02-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: typing — Activity 2B — see OSOH401_
+  ~ OSOH401_3_0.html: -12 +12
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="OSOH401-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: clickDrop — Activity (inline) — see
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="OSOH401-03-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: slider (graph chart) — Activity 3A 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="OSOH401-03-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: typing — Activity (inline) — see OS
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="OSOH401-03-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity 3B — see OS
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="OSOH401-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: clickDrop — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="OSOH401-03-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: slider (graph chart) — Activity 3A 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="OSOH401-03-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: typing — Activity (inline) — see OS
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="OSOH401-03-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: unclassified — Activity 3B — see OS
+  ~ OSOH401_4_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="OSOH401-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: clickDrop — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="OSOH401-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: clickDrop — Activity (inline) — see
+OSOH401: identical 1 / changed 4
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+
+TOTAL: identical 597 / changed 57 / missing 7 over 104 modules
+CHANGED: HIS1001/HIS1001_8_0.html HIS1001/HIS1001_10_0.html HIS1002/HIS1002_0_0.html HIS1002/HIS1002_3_0.html HIS1002/HIS1002_5_0.html HIS1002/HIS1002_7_0.html HIS1002/HIS1002_9_0.html HIS1002/HIS1002_10_0.html HIS1002/HIS1002_11_0.html HIS1002/HIS1002_12_0.html HIS1002/HIS1002_13_0.html HIS1002/HIS1002_14_0.html HIS1002/HIS1002_15_0.html HIS1002/HIS1002_16_0.html HIS1002/HIS1002_17_0.html HIS1002/HIS1002_18_0.html HIS1002/HIS1002_19_0.html HIS1005/HIS1005_0_0.html HIS1005/HIS1005_1_0.html HIS1005/HIS1005_2_0.html HIS1005/HIS1005_3_0.html HIS1005/HIS1005_4_0.html HIS1005/HIS1005_5_0.html HIS1005/HIS1005_6_0.html HIS1005/HIS1005_7_0.html HIS1005/HIS1005_9_0.html HIS1005/HIS1005_10_0.html HIS1006/HIS1006_0_0.html HIS1006/HIS1006_1_0.html HIS1006/HIS1006_2_0.html HIS1006/HIS1006_3_0.html HIS1006/HIS1006_4_0.html HIS1006/HIS1006_5_0.html HIS1006/HIS1006_6_0.html HIS1006/HIS1006_7_0.html HIS1006/HIS1006_8_0.html HIS1006/HIS1006_9_0.html HIS1006/HIS1006_10_0.html HIS1006/HIS1006_11_0.html OSAH501/OSAH501_5_0.html OSGM301/OSGM301_1_0.html OSGM301/OSGM301_2_0.html OSGM301/OSGM301_3_0.html OSGM401/OSGM401_1_0.html OSGM401/OSGM401_2_0.html OSGM401/OSGM401_3_0.html OSGM401/OSGM401_4_0.html OSGM501/OSGM501_1_0.html OSGM501/OSGM501_3_0.html OSGM501/OSGM501_5_0.html OSOH301/OSOH301_1_0.html OSOH301/OSOH301_2_0.html OSOH301/OSOH301_3_0.html OSOH401/OSOH401_1_0.html OSOH401/OSOH401_2_0.html OSOH401/OSOH401_3_0.html OSOH401/OSOH401_4_0.html

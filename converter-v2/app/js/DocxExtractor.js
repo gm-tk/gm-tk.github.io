@@ -884,6 +884,11 @@ class DocxExtractor {
 		const links = [];
 		// pieces: [{ text, red, bold, italic }] in order — grouped later
 		const pieces = [];
+		// ROUND 341: the near-red BRACKET DEPTH left open by earlier near-red runs of this
+		// paragraph — a bracket-less near-red run INSIDE an open tag (Word split the tag
+		// across runs) stays red, exactly as a standard-red run would; a black run with
+		// real text ends the context. Measured 51 such split sites (HIS1002 32).
+		let nearOpen = 0;
 
 		// hyperlink spans first: record target + remember their range so
 		// runs inside know their link. We process by replacing hyperlink
@@ -954,7 +959,27 @@ class DocxExtractor {
 				if (!text) continue;
 
 				const color = run.match(/<w:color w:val="([0-9A-Fa-f]{6})"/)?.[1]?.toLowerCase();
-				const red = rules.red_runs.red_hex_values.includes(color);
+				// THE NEAR-RED TAG RUN (ROUND 341 — the autonomous loop, session 9). Only a
+				// run whose colour is on red_hex_values was ever scanned for tags, so a
+				// writer whose red is ed0000 (the HIS NCEA1 writer), fa0000 (ENGFUN02) or
+				// Word's standard "Dark Red" c00000 (OS* / CED / ARFUN / TEFUN) shipped
+				// "[H3] Using browser controls…" as a literal paragraph — 598 tag brackets
+				// on 30 modules, the bulk of the literal-tag-leak gate. A run in the hue
+				// band (r >= min_r, g <= max_g, b <= max_b) counts as red ONLY when it
+				// carries a bracket (require_bracket): c00000 is ALSO used for content
+				// ("+ 5 = 9", "tone", "pace"), and a blanket rule would strip it as an
+				// instruction. Strictly additive — a run that is red today is unchanged
+				// and a bracket-less run is unchanged. The exact list stays primary.
+				// Data: Input_Doc_Rules.red_runs.near_red_tag_runs   Env toggle: NEARRED_OFF
+				const nr = rules.red_runs.near_red_tag_runs;
+				const nearRedOn = nr && nr.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.NEARRED_OFF);
+				const listRed = rules.red_runs.red_hex_values.includes(color);
+				const nearRed = !listRed && nearRedOn && !!color && this.#nearRed(color, nr)
+					&& (!nr.require_bracket || nearOpen > 0 || /[\[\]]/.test(text));
+				const red = listRed || nearRed;
+				if (nearRed) nearOpen = Math.max(0, nearOpen + (text.match(/\[/g) || []).length - (text.match(/\]/g) || []).length);
+				else if (!listRed && text.trim()) nearOpen = 0;
 				// <w:b/> means bold on; <w:b w:val="0"/> means explicitly off
 				const bold = /<w:b\/>|<w:b w:val="(?:1|true)"\/>/.test(run);
 				const italic = /<w:i\/>|<w:i w:val="(?:1|true)"\/>/.test(run);
@@ -1204,6 +1229,17 @@ class DocxExtractor {
 	 * @param {string} s
 	 * @returns {string}
 	 */
+	/**
+	 * ROUND 341 — is a w:color hex a NEAR-RED (a shade the writer used AS red but
+	 * red_hex_values does not name)? Pure arithmetic on the six hex digits against
+	 * the data band; a non-hex value is never near-red.
+	 */
+	static #nearRed(hex, nr) {
+		if (!/^[0-9a-f]{6}$/.test(hex)) return false;
+		const r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16);
+		return r >= (nr.min_r ?? 176) && g <= (nr.max_g ?? 64) && b <= (nr.max_b ?? 64);
+	}
+
 	static #decodeXml(s) {
 		return s
 			.replace(/&lt;/g, "<").replace(/&gt;/g, ">")

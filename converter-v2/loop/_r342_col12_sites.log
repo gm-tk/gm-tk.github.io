@@ -1,0 +1,134 @@
+140 sites on 112 pages / 64 modules; per template: {'Standard': 125, 'Inquiry': 2, 'Fundamentals': 8, 'Bilingual': 5}
+
+Claude line AFTER the col-12:
+   106  h3
+    16  ┌ 2× repeated:
+     8  p
+     6  WIDGET
+     4  ┌ 4× repeated:
+
+Claude line BEFORE the col-12:
+   117  div.row
+    23  h3
+
+--- first 12 sites with context (gold | claude) ---
+
+## AGH1003 Standard AGH1003_1_0.html <- AGH1003_01.0.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity.interactive[number=1A]      |         div.activity
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               ol
+            div.row                                |                 ┌ 19× repeated:
+              div.col-md-12.col-12                 |                   li
+
+## ANZH104 Standard ANZH104_5_0.html <- ANZH104_05.0.html gold: div.col-md-8.col-12
+        div.col-md-12.col-12                       |       div.col-md-8.col-12
+          div.activity.interactive[number=5B]      |         div.activity
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+            div.row                                |               p
+              div.col-md-12.col-12                 |               ┌ 12× repeated:
+                img.img-fluid                      |                 p
+
+## ANZH104 Standard ANZH104_6_0.html <- ANZH104_06.0.html gold: div.col-md-12.col-12
+              div.row                              |             div.row
+                div.col-12                         |               div.col-12
+                  h3                               |                 h3
+                div.col-md-12.col-12               |               div.col-12
+                  p                                |                 p
+                  a                                |           div.row
+                    div.externalButton             |             div.col-12
+            div.row                                |               h3
+
+## ANZH304 Standard ANZH304_3_0.html <- ANZH304_0.3.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity.interactive[number=3A]      |         div.activity
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |     div.row
+              div.col-12                           |       div.col-md-8.col-12
+                div.table-responsive               |         div.activity[number=3A]
+
+## BLL113 Standard BLL113_1_0.html <- BLL113-02.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity[number=1A]                  |         div.activity[number=1A]
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               p
+              div.row                              |               WIDGET
+                div.col-md-6.col-12                |     div.row
+
+## BLL113 Standard BLL113_1_0.html <- BLL113-02.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity[number=1C]                  |         div.activity[number=1C]
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                h5                                 |               ┌ 2× repeated:
+                p                                  |                 p
+                ul                                 |               ul
+
+## BLL114 Standard BLL114_1_0.html <- BLL114-02.html gold: div.col-md-8.col-12
+        div.col-12                                 |               div.col-12
+          div.activity[number=1A]                  |                 p
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               p
+                img.img-fluid                      |               ┌ 2× repeated:
+                p                                  |                 p
+
+## BLL121 Standard BLL121_1_0.html <- BLL121-02.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity.interactive[number=1B]      |         div.activity.interactive[number=1B]
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               p
+              div.col-md-12.col-12                 |               p
+                WIDGET                             |                 b
+
+## BLL121 Standard BLL121_1_0.html <- BLL121-02.html gold: div.col-md-8.col-12
+                  ┌ 2× repeated:                   |               div.col-12
+                    p                              |                 p
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               p
+                  b                                |                 b
+                p                                  |               p
+
+## BLL121 Standard BLL121_2_0.html <- BLL121-03.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity[number=2E]                  |         div.activity[number=2E]
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               p
+              div.row                              |               WIDGET
+                ┌ 3× repeated:                     |   div#footer
+
+## BLL146 Standard BLL146_2_0.html <- BLL146-2.0.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity.interactive[number=2A]      |         div.activity[number=2A]
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               p
+              div.col-12                           |               WIDGET
+                div.row                            |     div.row.supervisor
+
+## BLL147 Standard BLL147_1_1.html <- BLL147-2.0.html gold: div.col-md-8.col-12
+        div.col-12                                 |       div.col-md-8.col-12
+          div.activity.interactive[number=2A]      |         div.activity[number=2A]
+            div.row                                |           div.row
+              div.col-md-8.col-12                  |             div.col-12
+                h3                                 |               h3
+                p                                  |               p
+              WIDGET                               |     div.row
+      div.row.supervisor                           |       div.col-md-8.col-12

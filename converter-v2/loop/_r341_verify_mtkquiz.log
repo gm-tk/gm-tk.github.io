@@ -1,0 +1,26 @@
+ARFUN05: 4 shell(s) [boxed 4, box-less 0, defect 0]  gold "Go to quiz" 4  ✓ every shell is the KB shell
+CEDO501: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+ENGFUN02: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+ENGS101: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+HIS1001: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 4
+HIS1002: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+HIS1005: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+HIS1006: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+OSAH501: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 1
+OSGM301: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 1
+OSGM401: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 1
+OSGM501: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 1
+OSOH301: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 1
+OSOH401: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 1
+PES1003: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+PES1008: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+TEFUN03: 3 shell(s) [boxed 3, box-less 0, defect 0]  gold "Go to quiz" 6  ✓ every shell is the KB shell
+TRR102: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+TRR106: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+TRR109: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+XDLS904: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+XDLS905: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+XDLS912: 0 shells (no [MTKquiz] marker reached the shell path) — gold "Go to quiz" 0
+
+TOTAL: 7 shell(s) across 2 module(s); boxed 7, box-less 0, residue 0, defect 0.
+RESULT: every MTK quiz shell is the KB shell ✓

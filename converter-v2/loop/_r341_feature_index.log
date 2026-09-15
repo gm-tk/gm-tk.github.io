@@ -1,0 +1,33 @@
+shard 0 -> 57 modules
+shard 2 -> 57 modules
+shard 1 -> 57 modules
+shard 3 -> 57 modules
+shard 7 -> 56 modules
+shard 6 -> 56 modules
+shard 4 -> 57 modules
+shard 5 -> 57 modules
+feature index -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/data/Module_Feature_Index.json
+  454 modules, 137 distinct features
+  body                      451 modules
+  title bar                 448 modules
+  end page                  444 modules
+  h2                        443 modules
+  image                     439 modules
+  activity                  429 modules
+  button                    429 modules
+  heading                   416 modules
+  acks                      413 modules
+  list                      413 modules
+  menu                      413 modules
+  h1                        413 modules
+  ok   LIVENESS: index holds 454 modules (>300)
+  ok   LIVENESS: 452/454 modules carry WT tags (>80%)
+  ok   DETECTION: OSSC401 (a carousel module) is in the carousel scope
+  ok   DETECTION: CHFUN01 (the r266 carousel module) is in the carousel scope
+  ok   DETECTION: the carousel scope EXCLUDES 112 modules (a scope that selected everything would be useless)
+  ok   SAFETY: feature "carousel" resolves to 333 modules (non-empty)
+  ok   SAFETY: feature "accordion" resolves to 212 modules (non-empty)
+  ok   SAFETY: feature "speechBubble" resolves to 112 modules (non-empty)
+  ok   SAFETY: feature "flipCard" resolves to 222 modules (non-empty)
+  ok   SAFETY: feature "clickDrop" resolves to 158 modules (non-empty)
+SELFTEST build_feature_index: GREEN

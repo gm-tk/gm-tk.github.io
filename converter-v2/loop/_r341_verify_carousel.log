@@ -1,0 +1,31 @@
+ARFUN05: built 0 carousels (all fell back)
+CEDO501: built 0 carousels (all fell back)
+ENGFUN02: built 0 carousels (all fell back)
+ENGS101: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 carousels (all fell back)
+HIS1005: built 0 carousels (all fell back)
+HIS1006: built 0 carousels (all fell back)
+OSAH501: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+OSGM301: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+OSGM401: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+OSGM501: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+OSOH301: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+OSOH401: built 3 carousel(s), 1 video slides  ✗ 1 slide id(s) NOT in the human carousels
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+PES1008: built 0 carousels (all fell back)
+TEFUN03: built 0 carousels (all fell back)
+TRR102: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 carousels (all fell back)
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 carousels (all fell back)
+XDLS904: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+XDLS905: built 0 carousels (all fell back)
+XDLS912: built 8 carousel(s), 0 video slides  ✓ all slide ids match the human
+
+TOTAL: 20 carousels built across 10 modules, 10 video slides; 1 mismatched slide ids.
+RESULT: mismatches present ✗

@@ -1,0 +1,25 @@
+!! BASELINE is STALE — 390 UNAFFECTED module(s) were regenerated AFTER the baseline snapshot, so their baseline contribution is wrong (e.g. AGH1001 AGH1002 AGH1003 AGH1004 AGH1005 AGH1006 …).
+      fix:  ./ship.sh   (full 0-stale regen + refresh), or python3 _fastloop_snapshot.py if already fresh
+>> --allow-stale-baseline set: proceeding anyway — DELTAS MAY BE WRONG.
+
+re-scoring 23 affected module(s): ARFUN05 CEDO501 ENGFUN02 ENGS101 HIS1001 HIS1002 HIS1005 HIS1006 OSAH501 OSGM301 OSGM401 OSGM501 OSOH301 OSOH401 PES1003 PES1008 TEFUN03 TRR102 TRR106 TRR109 XDLS904 XDLS905 XDLS912
+baseline taken: 2026-09-15T20:32:50Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  51.11      51.13     +0.02  IMPROVED
+  skeleton pages >=50%                       1066       1073        +7  IMPROVED
+  skeleton pages >=75%                        201        200        -1  REGRESSED
+  compare_structure exact chain             11379      11482      +103  IMPROVED
+  compare_structure EXTRA container           171        175        +4  REGRESSED
+  compare_structure missing container         593        608       +15  REGRESSED
+  body_compare ANY breakdown                  191        191         0  HELD
+  defect structurally-clean %               97.81      98.91     +1.10  IMPROVED
+  literal-[tag] leak (occ)                    288         26      -262  IMPROVED
+  literal-[tag] leak (pages)                   46         23       -23  IMPROVED
+
+  context (no pass/fail): sk_pages: 1954->1962  cs_matched: 13402->13532  body_pages: 2102->2110  df_total: 2102->2110  df_clean: 2056->2087
+
+RESULT: FAIL — REGRESSED: skeleton pages >=75%, compare_structure EXTRA container, compare_structure missing container
+        (inner-loop only — investigate before the ship checkpoint; toggle the fix OFF and re-run to isolate.)

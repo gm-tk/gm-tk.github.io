@@ -1,0 +1,342 @@
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+  ~ CEDO501_2_1.html: -54 +58
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="CEDO501-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion (start of) — Activity (inl
+     - <div style="font-size: 0.95em">
+     - <p>Disability Allowance and Supported Living Payments</p>
+     - <p><a href="https://www.istockphoto.com/photo/caregiver-pushing-the-wheelchair-of-a-disabled-woman-gm205346048
+     - <p>The Disability Allowance is money from the government to help people who have regular, ongoing costs becaus
+     - <p>You don’t have to be on another benefit to get the Disability Allowance. It’s designed to help anyone who h
+     - <p>[Alert] You can usually get the Disability Allowance if you:</p>
+     - <ul>
+     - <li>have a disability or health condition that will last at least six months</li>
+     - <li>have regular costs because of it</li>
+     - <li>meet residency rules (NZ citizen or lived here 3+ years with a residence visa).</li>
+     - </ul>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="CEDO501-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: accordion (start of) — Activity (inl
+     - <div style="font-size: 0.95em">
+     - <p>Sole Parent Support</p>
+     - <p><b>Sole Parent Support</b> is money the government gives to single parents or caregivers who are the main p
+     - <p>It helps with living costs when caring for children makes it hard to work full-time. Parents receiving Sole
+     - <p>How much you get depends on things like your income, number of children, and living situation.</p>
+     - <p>[Alert] You can usually get Sole Parent Support if you:</p>
+     - <ul>
+     - <li>are 18 or older (some 16–17 year olds may qualify in special cases)</li>
+     - <li>care for at least one dependent child under 14</li>
+     - <li>are not living with a partner</li>
+     - <li>meet residency rules (NZ citizen or lived here 2+ years with a residence visa).</li>
+     - </ul>
+     - <p>Listen to Teina tell his story about needing the Sole Parent Support.</p>
+     - <p>[Audio] Audio-Script template - Lesson 2 - Teina&#39;s Story</p>
+     - <div class="table-responsive">
+     - … 14 more removed
+     + <div class="accHead"><h4>Disability Allowance and Supported Living Payments</h4></div>
+     + <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2053460480" alt="
+     + <p>You can usually get the Disability Allowance if you:</p>
+     + <li>have a disability or health condition that will last at least six months</li>
+     + <li>have regular costs because of it</li>
+     + <li>meet residency rules (NZ citizen or lived here 3+ years with a residence visa).</li>
+     + <div class="accordion">
+     + <div class="accHead"><h4>Sole Parent Support</h4></div>
+     + <div class="accContent"><p><b>Sole Parent Support</b> is money the government gives to single parents or careg
+     + <div class="alert">
+     + <p>You can usually get Sole Parent Support if you:</p>
+     + <ul>
+     + <li>are 18 or older (some 16–17 year olds may qualify in special cases)</li>
+     + <li>care for at least one dependent child under 14</li>
+     + <li>are not living with a partner</li>
+     + <li>meet residency rules (NZ citizen or lived here 2+ years with a residence visa).</li>
+     + </ul>
+     + <p>Listen to Teina tell his story about needing the Sole Parent Support.</p>
+     + <p><a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/IQC42Gz5ni3oTZ-SYaawIHeoATPmKQU88OGGV
+     + <p>Kōrero 1: Teina’s Story</p>
+     + … 38 more added
+  ~ CEDO501_3_1.html: -21 +52
+     - <p>[Video] Youtube. <a href="https://www.youtube.com/watch?v=UIxJ3aCb25k" target="_blank">https://www.youtube.
+     - <p>[Image] Screenshot. Please add a picture like this. I have cut this from a Youtube video.</p>
+     - <p>[Image – This image has come directly from a copyrighted source. Please create a similar image where a stud
+     - <p>[Add a picture like this but from a PC browser from Studylink.]</p>
+     - <p>[H3] Using browser controls to navigate the web</p>
+     - <p>[Image] iStock. Computer key combinations set of key combinations. <a href="https://www.istockphoto.com/vec
+     - <p>[Image] iStock. Button with left arrove symbol black computer keyboard. <a href="https://www.istockphoto.co
+     - <p>[Image] iStock. Button with right arrove symbol black computer keyboard. <a href="https://www.istockphoto.c
+     - <p>[Image] iStock. Key with with F5 symbol. Black computer keyboard. <a href="https://www.istockphoto.com/vect
+     - <p>[[Image] iStock. Single black keys of keyboard with different letters. <a href="https://www.istockphoto.com
+     - <p>[Image] iStock. Computer keyboard keys home. <a href="https://www.istockphoto.com/photo/computer-keyboard-k
+     - <th>Your Browser / [All images in this column have been screen shot. Please find appropriate ones that appear 
+     - <p>[H3] Returning to the browser home screen</p>
+     - <p>[Add a button WATCH, then add this link.]</p>
+     - <p>[Video] Youtube. a link to <a href="https://www.youtube.com/watch?v=FUK-2V4OIaE" target="_blank">https://ww
+     - <p>[H3] Searching within a browser and opening tabs</p>
+     - <p>[Create an image like this but searching for budgeting tips for students.]</p>
+     - <th>[H3] Understanding Hyperlinks / [Body] A hyperlink (or link) is text or an image that you can click to jum
+     - <th>[Image] iStock. Move curser clicks the link button. <a href="https://www.istockphoto.com/vector/mouse-curs
+     - <p>After learning about how browsers work, you’re ready to apply those skills through a practical activity.</p
+     - <p>In the activity here, you’ll follow a series of guided steps and use the features that will be part of your
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/UIxJ3aCb25k" loading="lazy" title="YouTube video player" f
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: - Beginner basics of Google Chrome [0
+     + <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Creative Services: Designer, use the G
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/this-has-come-directly-from-a-copyrighte.jpg" alt="" />
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/add-a-like-this-but-from-a-pc-browser-fr.jpg" alt="" />
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Using browser controls to navigate the web</h3>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1496205359" alt="Computer 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1496205359.jpg" alt="Computer Key Combinations S
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1318821294" alt="Button wi
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1318821294.jpg" alt="Button with Left Arrow Symb
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1318821359" alt="Button wi
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1318821359.jpg" alt="Button with Right Arrow Sym
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1316587539" alt="Key with 
+     + … 32 more added
+CEDO501: identical 14 / changed 2
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+  ~ ENGFUN02_0_0.html: -214 +97
+     - <p>[H1] Lesson 1 Basic Camera Shots</p>
+     - <p>[H2] Close-up</p>
+     - <p>[H3] Definition: [Body] A close-up shot is just a singular object being focused on and very little else. Us
+     - <p>[H3] Purpose: [Body] It is used to draw the audience&#39;s focus. When it is a character&#39;s face, it can
+     - <p>[H2] Extreme Close up</p>
+     - <p>[H3] Definition: [Body] An extreme close-up, or an ECU, is when the camera is zoomed right into the actor&#
+     - <p>[H3] Purpose: [Body] An ECU is used to invade the character&#39;s space, to make the audience feel more con
+     - <p>[H2] Mid shot</p>
+     - <p>[H3] Definition: [Body] A shot taken at mid-range, showing the object and some of the context or background
+     - <p>[H3] Purpose: [Body] A mid shot is often used for dialogue scenes so that body language and some of the set
+     - <p>[H2] Long shot</p>
+     - <p>[H3] Definition: [Body] A long shot is used to show the subject and its context. If it is of a person, it w
+     - <p>[H3] Purpose: [Body] A long shot will show the audience who is in the scene, where it&#39;s set, and when i
+     - <p>[H2] Establishing shot</p>
+     - <p>[H3] Definition: [Body] An establishing shot establishes where the scene is taking place. If it shows the s
+     - <p>[H3] Purpose: [Body] An establishing shot literally establishes the context of the scene and usually the fi
+     - <p>[H3] Drag and Drop activity 1A</p>
+     - <p>[H1] Lesson 2 Camera angles</p>
+     - <p>[H2] High angle</p>
+     - <p>[H3] Definition: [Body] A high angle shot is one that looks down on the subject from a height, above eyelin
+     - <p>[H3] Purpose: [Body] A high angle to make the subject seem smaller, powerless, or otherwise insignificant. 
+     - <p>Here are some examples of different reasons high angles are used.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Note to designer - Single accordion t
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th>Purpose</th>
+     - <th>High Angle shot</th>
+     - <th>Effect</th>
+     - </tr>
+     - <tr>
+     - <td>To make the subject seem small and powerless.</td>
+     - <td>A high angle shot of Daniel Radcliffe in the final Harry Potter film. He is on the ground with his wand ra
+     - <td>This shot makes Harry look small and scared. We know that he is a powerful and clever wizard, so whatever 
+     - </tr>
+     - <tr>
+     - <td>To indicate to the audience or remind them of important things about the characters.</td>
+     - <td>A high angle shot of Sadie Sink as Max, Gaten Matarazzo as Dustin, and Priah Ferguson as Erica in <i>Stran
+     - <td>Despite their heroics throughout this programme already, this shot reminds us that these are children, fig
+     - </tr>
+     - … 174 more removed
+     + <h3>Lesson 1</h3>
+     + <p>Basic Camera Shots</p>
+     + <h4>Close-up</h4>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>Definition:</h5>
+     + <p>A close-up shot is just a singular object being focused on and very little else. Usually, a character&#39;s
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>Purpose:</h5>
+     + <p>It is used to draw the audience&#39;s focus. When it is a character&#39;s face, it can make them feel the e
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Extreme Close up</h4>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 77 more added
+  ~ ENGFUN02_1_0.html: -132 +243
+     - <h1><span>Drag and Drop Activity 3A</span></h1>
+     - <p>[H1] Lesson 3 Camera Transitions</p>
+     - <p>[H2] Cut</p>
+     - <p>[H3] Definition: [Body] A cut shot refers to a basic editing technique where one shot is immediately follow
+     - <p>[H3] Purpose: [Body] The purpose of using cut shots in film is to convey information, evoke emotions, and c
+     - <p>[H3] Example: [Body] Imagine a scene where you have a close-up shot of a character&#39;s face expressing su
+     - <p>Note to developer - could you find two images of each of these and place them below the description with an
+     - <p>[H2] Flashback and flashforward</p>
+     - <p>[H3] Definition: [Body] A flashback/ flashforward is a narrative device that interrupts the present timelin
+     - <p>[H3] Purpose: [Body] The purpose of using this technique is the same in a film as it is in a written text, 
+     - <p>[H3] Example: [Body]</p>
+     - <p>Imagine a character, let&#39;s call her Sarah, is sitting alone in a dimly lit room, lost in thought. The s
+     - <p>Note to developer - There are great examples of flashback in the children&#39;s movies Ratatouille and Moan
+     - <p>The flashback takes the viewer to a sunny park, where a younger version of Sarah is playing with her childh
+     - <p>As the flashback progresses, we see snippets of key moments from Sarah&#39;s past. It could include pivotal
+     - <p>Note to developer - could we use either the opening scene or final scene of Remember the Titans as an examp
+     - <p>[H2] Fade</p>
+     - <p>[H3] Definition: [Body] In film, a fade is a gradual transition between shots where the image slowly appear
+     - <p>[H3] Purpose: [Body] Fades can be used to introduce or close a scene. They might be used to show a new time
+     - <p>[H3] Example: [Body] Imagine a scene where the current shot is gradually fading out, becoming increasingly 
+     - <p>Fades can vary in duration, intensity, and the specific visual elements involved. They can involve smooth t
+     - <p>To further explore and visualise different types of fades in films, search for examples online or referring
+     - <p>Note to developer - could you find an example of a fade in a film we have copyright to and put a few second
+     - <p>[H2] Zoom</p>
+     - <p>[H3] Definition: [Body] In film, a zoom refers to a camera technique where the focal length of the lens is 
+     - <p>[H3] Purpose: [Body] A zoom can magnify emotions and direct the audience&#39;s attention to a specific deta
+     - <p>[H3] Example: [Body]</p>
+     - <p>Imagine a scene set in a bustling city street. The camera starts with a wide-angle shot capturing the entir
+     - <p>The zoom-in begins slowly, smoothly adjusting the focal length of the lens. As the camera continues to zoom
+     - <p>During the zoom-in, the background elements, such as the other people and the surrounding buildings, may be
+     - <p>The pace of the zoom-in can be carefully timed to match the emotional impact of the scene. For example, as 
+     - <p>Drag and drop the descriptions to match the transition type</p>
+     - <th>Cut</th>
+     - <th>An editing technique where one shot is immediately followed by another.</th>
+     - <td>Fade</td>
+     - <td>A gradual transition between shots.</td>
+     - <td>Flashback</td>
+     - <td>Where the viewer sees an excerpt from a character’s past.</td>
+     - <td>Flashforward</td>
+     - <td>Where the narrative jumps forward to a future setting.</td>
+     - … 92 more removed
+     + <h1><span>Camera angles</span></h1>
+     + <h3>Lesson 2</h3>
+     + <p>Camera angles</p>
+     + <h4>High angle</h4>
+     + <h5>Definition:</h5>
+     + <p>A high angle shot is one that looks down on the subject from a height, above eyeline.</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>Purpose:</h5>
+     + <p>A high angle to make the subject seem smaller, powerless, or otherwise insignificant. In other instances, i
+     + <p>Here are some examples of different reasons high angles are used.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Note to designer - Single accordion t
+     + <th>Purpose</th>
+     + <th>High Angle shot</th>
+     + <th>Effect</th>
+     + <td>To make the subject seem small and powerless.</td>
+     + <td>A high angle shot of Daniel Radcliffe in the final Harry Potter film. He is on the ground with his wand ra
+     + <td>This shot makes Harry look small and scared. We know that he is a powerful and clever wizard, so whatever 
+     + <td>To indicate to the audience or remind them of important things about the characters.</td>
+     + <td>A high angle shot of Sadie Sink as Max, Gaten Matarazzo as Dustin, and Priah Ferguson as Erica in <i>Stran
+     + … 223 more added
+ENGFUN02: identical 0 / changed 2 / missing-on-disk 3
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+  ~ ENGS101_4_0.html: -1 +1
+     - <div class="accContent"><p>[Body]For example</p></div>
+     + <div class="accContent"><p>For example</p></div>
+ENGS101: identical 5 / changed 1
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 513 / changed 5 / missing 3 over 104 modules
+CHANGED: CEDO501/CEDO501_2_1.html CEDO501/CEDO501_3_1.html ENGFUN02/ENGFUN02_0_0.html ENGFUN02/ENGFUN02_1_0.html ENGS101/ENGS101_4_0.html

@@ -1,0 +1,31 @@
+ARFUN05: built 0 pop-outs (all fell back)
+CEDO501: built 0 pop-outs (all fell back)
+ENGFUN02: built 0 pop-outs (all fell back)
+ENGS101: 1 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 pop-outs (all fell back)
+HIS1005: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+HIS1006: built 0 pop-outs (all fell back)
+OSAH501: built 0 pop-outs (all fell back)
+OSGM301: built 0 pop-outs (all fell back)
+OSGM401: built 0 pop-outs (all fell back)
+OSGM501: built 0 pop-outs (all fell back)
+OSOH301: built 0 pop-outs (all fell back)
+OSOH401: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 0 pop-outs (all fell back)
+PES1008: 2 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+TEFUN03: 3 pop-out group(s), 2 trigger(s) [exact 0, copy-edit 0, dev-edit 2, defect 0]  ✓ every pop-out well-formed
+TRR102: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 pop-outs (all fell back)
+XDLS904: built 0 pop-outs (all fell back)
+XDLS905: built 0 pop-outs (all fell back)
+XDLS912: built 0 pop-outs (all fell back)
+
+TOTAL: 8 pop-out group(s) across 5 module(s), 4 triggers; exact 0, copy-edit 0, dev-edit 4, defect 0.
+RESULT: every built pop-out is well-formed ✓

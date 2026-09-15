@@ -1,0 +1,102 @@
+WT modules scanned: 452 | tag brackets: red 96817 | near-red 598 | black 300 | other 271
+non-red by position: leading 887 mid 282
+
+non-red colours:
+    311  ed0000
+    192  auto
+    165  fa0000
+    120  c00000
+    114  1155cc
+    112  3494ba
+    101  000000
+     22  0563c1
+      4  212121
+      3  0f0f0f
+      3  4a86e8
+      3  374151
+      3  c0504d
+      2  0070c0
+      2  333333
+      2  1f1f1f
+      1  1e1f27
+      1  0000ff
+      1  3d3d3d
+      1  f72b2b
+
+non-red tags (canon):
+    274  audio
+    161  heading
+    158  body
+    128  image
+     75  button
+     51  data marker
+     41  click drop
+     39  activity
+     37  video
+     26  dropdown
+     18  external link
+     12  info trigger
+     12  end page
+     11  audio button
+     11  lesson
+     11  important
+      8  option
+      8  accordion
+      7  alert
+      7  word select
+      6  module introduction
+      6  correct
+      5  flip card
+      5  quote
+      5  end other
+
+modules with >=1 non-red tag: 203 (Claude dirs: 190 )  >=5: 53 (Claude: 49 )
+per template (modules with >=1 / >=5 non-red):
+  Bilingual      18 WTs | >=1:  12 | >=5:   8 | non-red brackets   165 | red  10895
+  Fundamentals   53 WTs | >=1:  20 | >=5:   5 | non-red brackets    67 | red   9647
+  Inquiry        65 WTs | >=1:  34 | >=5:  14 | non-red brackets   333 | red  11490
+  Standard      316 WTs | >=1: 137 | >=5:  26 | non-red brackets   604 | red  64785
+
+top modules by non-red tags:
+  ENGFUN02  Inquiry      claude=Y red=   8 nearred=164 black=  0 other=  0 lead=102 mid= 62 {'fa0000': 164} | fa0000:L:[H1]; fa0000:L:[H2]; fa0000:L:[H3]
+  HIS1005   Standard     claude=Y red= 520 nearred= 97 black=  5 other=  2 lead=100 mid=  4 {'ed0000': 96, 'auto': 3, '4a86e8': 2} | ed0000:L:[Body text]; ed0000:L:[H1]; ed0000:L:[Whakatauki]
+  HIS1002   Standard     claude=Y red= 212 nearred= 83 black= 12 other=  1 lead= 95 mid=  1 {'ed0000': 79, 'auto': 12, 'c00000': 4} | auto:L:[MODULE INTRODUCTION]; auto:L:[LESSON 1]; auto:L:[End page]
+  TRR102    Bilingual    claude=Y red= 812 nearred= 72 black=  0 other=  0 lead= 27 mid= 45 {'ed0000': 72} | ed0000:L:[Body]; ed0000:L:[Body]; ed0000:L:[Item 41]
+  CEDO501   Standard     claude=Y red= 581 nearred= 27 black=  0 other=  0 lead= 26 mid=  1 {'c00000': 27} | c00000:L:[Body]; c00000:L:[Alert]; c00000:L:[Alert]
+  BLL260    Inquiry      claude=n red= 311 nearred=  0 black=  4 other= 22 lead= 24 mid=  2 {'0563c1': 22, 'auto': 2, '000000': 2} | 0563c1:L:[Audio]; 0563c1:L:[audio]; 0563c1:L:[Clickdrop 6 Image]
+  TRR111    Bilingual    claude=Y red=1042 nearred= 20 black=  4 other=  0 lead= 12 mid= 12 {'c00000': 16, 'ed0000': 4, 'auto': 2} | c00000:L:[Item 13]; c00000:M:[Audio]; c00000:L:[Item 14]
+  BLL250    Inquiry      claude=n red= 284 nearred=  0 black=  0 other= 23 lead= 23 mid=  0 {'3494ba': 23} | 3494ba:L:[Audio]; 3494ba:L:[audio]; 3494ba:L:[audio]
+  TRR109    Bilingual    claude=Y red=1339 nearred=  4 black= 15 other=  0 lead= 13 mid=  6 {'auto': 15, 'ed0000': 4} | auto:L:[H1]; auto:L:[H1]; auto:L:[H2]
+  HIS1006   Standard     claude=Y red= 604 nearred= 15 black=  1 other=  0 lead= 16 mid=  0 {'ed0000': 15, '212121': 1} | ed0000:L:[Body text]; ed0000:L:[H1]; ed0000:L:[Body text]
+  ARFUN05   Fundamentals claude=Y red= 101 nearred= 15 black=  0 other=  0 lead=  7 mid=  8 {'c00000': 15} | c00000:L:[Insert video]; c00000:L:[H3]; c00000:L:[H3]
+  BLL210    Inquiry      claude=Y red= 347 nearred=  0 black=  0 other= 15 lead= 13 mid=  2 {'1155cc': 15} | 1155cc:L:[audio 1]; 1155cc:L:[audio 2]; 1155cc:L:[audio]
+  BLL243    Standard     claude=n red=  70 nearred=  0 black=  0 other= 14 lead= 14 mid=  0 {'3494ba': 14} | 3494ba:L:[audio 1]; 3494ba:L:[audio 2]; 3494ba:L:[audio 3]
+  XDLS902   Standard     claude=Y red= 294 nearred=  0 black= 13 other=  0 lead= 12 mid=  1 {'auto': 13} | auto:L:[Video https://www.youtube.com/watch?v=6; auto:L:[Video https://www.youtube.com/watch?v=l; auto:L:[Video https://www.youtube.com/watch?v=6
+  BLL240    Inquiry      claude=Y red= 359 nearred=  0 black=  0 other= 12 lead= 12 mid=  0 {'3494ba': 12} | 3494ba:L:[audio]; 3494ba:L:[audio]; 3494ba:L:[audio]
+  BLL220    Inquiry      claude=Y red= 265 nearred=  0 black=  1 other= 10 lead= 11 mid=  0 {'1155cc': 10, 'auto': 1} | 1155cc:L:[audio]; 1155cc:L:[audio 1]; 1155cc:L:[audio]
+  MXDB301   Standard     claude=Y red=  85 nearred=  0 black= 11 other=  0 lead=  9 mid=  2 {'auto': 8, '000000': 3} | 000000:L:[Image]; 000000:L:[Image]; 000000:M:[Hover trigger]
+  TRR106    Bilingual    claude=Y red= 398 nearred=  6 black=  4 other=  1 lead=  9 mid=  2 {'ed0000': 6, 'auto': 4, '00ffff': 1} | 00ffff:L:[h3 headings]; auto:L:[H2]; auto:L:[H2]
+  XGF9004   Standard     claude=Y red=1371 nearred=  0 black= 11 other=  0 lead=  5 mid=  6 {'000000': 11} | 000000:M:[Options for missing word: quieter, loud; 000000:L:[H3]; 000000:L:[H3]
+  BLL245    Standard     claude=Y red=  78 nearred=  0 black=  0 other= 10 lead= 10 mid=  0 {'3494ba': 10} | 3494ba:L:[audio]; 3494ba:L:[audio]; 3494ba:L:[audio]
+  TEFUN03   Fundamentals claude=Y red= 266 nearred= 10 black=  0 other=  0 lead= 10 mid=  0 {'c00000': 10} | c00000:L:[Body]; c00000:L:[Image]; c00000:L:[Body]
+  XMES101   Standard     claude=Y red= 310 nearred=  0 black=  0 other= 10 lead=  5 mid=  5 {'3494ba': 10} | 3494ba:L:[Audio animation]; 3494ba:L:[insert audio]; 3494ba:L:[insert audio]
+  ANZH301   Standard     claude=Y red= 313 nearred=  0 black=  5 other=  3 lead=  2 mid=  6 {'000000': 5, '0070c0': 2, '3494ba': 1} | 0070c0:L:[Audio link]; 000000:M:[options for drop-down: in urban areas, ; 000000:M:[options for drop-down: encouraged, forc
+  BLL160    Inquiry      claude=Y red= 281 nearred=  0 black=  0 other=  8 lead=  8 mid=  0 {'1155cc': 8} | 1155cc:L:[audio button]; 1155cc:L:[audio button]; 1155cc:L:[audio]
+  CEDR203   Inquiry      claude=n red= 171 nearred=  0 black=  5 other=  3 lead=  8 mid=  0 {'000000': 4, '374151': 3, 'auto': 1} | 000000:L:[Embed video]; 000000:L:[Body to go above the word find]; 374151:L:[Video 1]
+  OSAH501   Standard     claude=Y red= 209 nearred=  8 black=  0 other=  0 lead=  8 mid=  0 {'c00000': 8} | c00000:L:[Click drop]; c00000:L:[Click drop]; c00000:L:[Click drop]
+  OSGM301   Standard     claude=Y red=  93 nearred=  8 black=  0 other=  0 lead=  8 mid=  0 {'c00000': 8} | c00000:L:[image]; c00000:L:[image]; c00000:L:[H4]
+  TRR103    Bilingual    claude=Y red= 511 nearred=  8 black=  0 other=  0 lead=  4 mid=  4 {'ed0000': 8} | ed0000:L:[Item 61]; ed0000:M:[Image]; ed0000:L:[Button]
+  TRR112    Bilingual    claude=Y red=1081 nearred=  8 black=  0 other=  0 lead=  4 mid=  4 {'ed0000': 8} | ed0000:L:[Item 235]; ed0000:M:[Image]; ed0000:L:[Button]
+  XDLS905   Standard     claude=Y red= 601 nearred=  7 black=  0 other=  1 lead=  1 mid=  7 {'c00000': 7, '3494ba': 1} | 3494ba:L:[Audio Animation 1: Note this will be re; c00000:M:[definition]; c00000:M:[definition]
+  BLL241    Standard     claude=Y red=  82 nearred=  0 black=  0 other=  7 lead=  4 mid=  3 {'3494ba': 7} | 3494ba:L:[Audio]; 3494ba:L:[Audio]; 3494ba:L:[Audio]
+  BLL263    Standard     claude=Y red= 128 nearred=  0 black=  1 other=  6 lead=  7 mid=  0 {'3494ba': 6, 'auto': 1} | 3494ba:L:[Embed audio book]; 3494ba:L:[insert audio]; 3494ba:L:[insert audio]
+  HIS1004   Standard     claude=Y red= 503 nearred=  0 black=  7 other=  0 lead=  6 mid=  1 {'auto': 6, '000000': 1} | 000000:L:[Image link]; auto:L:[Image link]; auto:L:[Image link]
+  TRR113    Bilingual    claude=Y red= 866 nearred=  7 black=  0 other=  0 lead=  4 mid=  3 {'ed0000': 7} | ed0000:L:[Item 181]; ed0000:M:[Image]; ed0000:L:[Button]
+Traceback (most recent call last):
+  File "C:\Users\Gavin\TeKura\FINAL_MODULE_DATA\CONVERTER_V2\outputs\_measure_r342_blacktags.py", line 93, in <module>
+    print("  %-9s %-12s claude=%s red=%4d nearred=%3d black=%3d other=%3d lead=%3d mid=%3d %s | %s"%(r["code"],r["tmpl"],"Y" if r["claude"] else "n",r["red"],r["nearred"],r["black"],r["other"],r["nonred_lead"],r["nonred_mid"],dict(sorted(r["colours"].items(),key=lambda kv:-kv[1])[:3]),"; ".join(r["examples"][:3])))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gavin\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u0101' in position 145: character maps to <undefined>

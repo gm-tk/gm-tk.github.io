@@ -45,6 +45,15 @@
 			"ff0000",
 			"ee0000"
 		],
+		"near_red_tag_runs": {
+			"enabled": true,
+			"env": "NEARRED_OFF",
+			"min_r": 176,
+			"max_g": 64,
+			"max_b": 64,
+			"require_bracket": true,
+			"_note": "ROUND 341 (the autonomous loop, session 9): a writer's structural [tag] typed in a NON-STANDARD RED shipped as literal text, because only a run whose w:color is in red_hex_values was ever scanned for tags. Measured over every Writers Template (outputs/_measure_r342_blacktags.py): 96,817 tag brackets are ff0000/ee0000 and 598 sit in a NEAR-RED the list does not name — ed0000 (the HIS NCEA1 writer, 311), fa0000 (ENGFUN02, 165), c00000 (Word's standard Dark Red — the OS* / CED / ARFUN / TEFUN writers, 120), ed1c24, f72b2b — on 30 modules; the gold renders every one of them as its tag (the literal-tag-leak gate's 288 leaks / 46 pages were largely this). THE FENCE (require_bracket): a near-red run counts as red ONLY when it carries a [ or ] — because c00000 is also used for CONTENT (MXFU302 '+ 5 = 9', ENGI401 'tone' / 'pace', ENGS301) and a blanket rule would turn that content into stripped red-text instructions. Strictly additive: no run that is red today changes, no bracket-less run changes. Hue band: r >= min_r AND g <= max_g AND b <= max_b (c0504d — Word's Accent-2 — falls outside on g). The exact list above stays the primary rule. Env NEARRED_OFF reverts."
+		},
 		"marker_open": "🔴[RED TEXT] ",
 		"marker_close": " [/RED TEXT]🔴",
 		"collapse_whitespace_only": true,

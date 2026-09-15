@@ -1,0 +1,34 @@
+ARFUN05: built 0 clickDrops (all fell back)
+CEDO501: built 0 clickDrops (all fell back)
+ENGFUN02: built 0 clickDrops (all fell back)
+ENGS101: built 0 clickDrops (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 clickDrops (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 clickDrops (all fell back)
+HIS1005: built 0 clickDrops (all fell back)
+HIS1006: built 0 clickDrops (all fell back)
+OSAH501: 3 clickDrop(s), 12 items [exact 0, copy-edit 0, dev-edit 12, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+OSGM301: 1 clickDrop(s), 4 items [exact 0, copy-edit 0, dev-edit 4, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+OSGM401: 1 clickDrop(s), 4 items [exact 0, copy-edit 1, dev-edit 3, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+OSGM501: 2 clickDrop(s), 10 items [exact 5, copy-edit 1, dev-edit 4, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+OSOH301: 1 clickDrop(s), 4 items [exact 0, copy-edit 0, dev-edit 4, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+OSOH401: 4 clickDrop(s), 20 items [exact 0, copy-edit 0, dev-edit 20, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 0 clickDrops (all fell back)
+PES1008: built 0 clickDrops (all fell back)
+TEFUN03: 2 clickDrop(s), 2 items [exact 0, copy-edit 0, dev-edit 2, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+TRR102: built 0 clickDrops (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 clickDrops (all fell back)
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 clickDrops (all fell back)
+XDLS904: TILES 36 [gold-match 36, divergence 0, defect 0]
+XDLS904: built 0 clickDrops (all fell back)
+XDLS905: TILES 36 [gold-match 36, divergence 0, defect 0]
+XDLS905: built 0 clickDrops (all fell back)
+XDLS912: 1 clickDrop(s), 1 items [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ all items match the human (exact / copy-edit / developer edit)
+
+TOTAL: 15 clickDrop(s) across 8 module(s), 57 items; exact 5, copy-edit 2, dev-edit 50, defect 0.
+TILES: 72 built [gold-match 72, divergence 0, tile-defect 0].
+RESULT: every built clickDrop item matches the human gold (modulo developer edits) ✓

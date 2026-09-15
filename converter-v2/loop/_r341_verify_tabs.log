@@ -1,0 +1,33 @@
+ARFUN05: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+CEDO501: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ENGFUN02: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ENGS101: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HIS1005: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HIS1006: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+OSAH501: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+OSGM301: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+OSGM401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+OSGM501: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+OSOH301: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+OSOH401: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+PES1008: built 10 tab-texts [exact 5, copy-edit 3, defect 2] DEFECT ✗
+   DEFECT (overlap 0.06): CHECK YOU UNDERSTANDING
+   DEFECT (overlap 0.09): Go to your workbook and complete activity 8B.
+TEFUN03: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+TRR102: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XDLS904: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XDLS905: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+XDLS912: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+
+TOTAL 10: exact 5, copy-edit 3, defect 2, divergence 0.
+RESULT: real defects present ✗

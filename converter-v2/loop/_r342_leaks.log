@@ -1,0 +1,144 @@
+288 leaks on 46 pages / 26 modules
+
+by leaked tag (top 40):
+    80  [h3
+    71  [body
+    49  [image
+    32  [h2
+    23  [activity
+    12  [h4
+     7  [h1
+     7  [accordion
+     2  [h5
+     1  [hintslider
+     1  [drag and drop
+     1  [answer
+     1  [carousel
+     1  [rollover
+
+per module:
+
+## ENGFUN02 150 leaks on 2 pages
+    ENGFUN02_0_0.html | [H1 | id="body"> [H1] Lesson 1 Basic Camera Shots [H2
+    ENGFUN02_0_0.html | [H2 | "> [H1] Lesson 1 Basic Camera Shots [H2] Close-up [H3] Definition: [Body
+    ENGFUN02_0_0.html | [H3 | H1] Lesson 1 Basic Camera Shots [H2] Close-up [H3] Definition: [Body] A close-up shot is 
+    ENGFUN02_0_0.html | [Body | c Camera Shots [H2] Close-up [H3] Definition: [Body] A close-up shot is just a singular obj
+    ENGFUN02_0_0.html | [H3 | d very little else. Usually, a character&#39;s face. [H3] Purpose: [Body] It is used to draw th
+    ENGFUN02_0_0.html | [Body | lse. Usually, a character&#39;s face. [H3] Purpose: [Body] It is used to draw the audience&#39;s 
+    ENGFUN02_0_0.html | [H2 | ot to be crossed or doubted. [H2] Extreme Close up [H3] Definitio
+    ENGFUN02_0_0.html | [H1 | st up. a mid shot. [H1] Lesson 2 Camera angles [H2] Hig
+    ENGFUN02_0_0.html | [H4 | lm. [H3] Canted angle [H4] Definition: [Body] This is when the c
+    ENGFUN02_0_0.html | [H4 |  horizontal. This is also called a Dutch angle shot. [H4] Purpose: [Body] A canted angle is use
+    ENGFUN02_1_0.html | [Accordion |  in film production. Here are some of the key types: [Accordion 1] [H4] Key Light [Body] The key light 
+    ENGFUN02_1_0.html | [Accordion | t help define the shape and contours of the subject. [Accordion 1] [H4] Fill Light [Body] The fill ligh
+
+## HIS1005 47 leaks on 8 pages
+    HIS1005_0_0.html | [H1 | id="body"> [H1] Ātete | Resist – Part A [Whakat
+    HIS1005_0_0.html | [Body | 9;t die like an octopus, die like a hammerhead shark [Body text] The whakataukī chosen for 
+    HIS1005_0_0.html | [Activity | ond one for this topic, Mautohe | Protest – Part B [Activity Interactive] [H2] The past shape
+    HIS1005_0_0.html | [H2 | he | Protest – Part B [Activity Interactive] [H2] The past shapes the present Bef
+    HIS1005_0_0.html | [H4 | image of the opening scene of each video clip [H4] Ihumātao [Video Link] https://www.yout
+    HIS1005_0_0.html | [H4 | o Link] https://www.youtube.com/watch?v=THhHU9XNv0s [H4] Black Lives Matter [Video Link] https:
+    HIS1005_10_0.html | [body | id="body"> Reconstruction [body text] After the Civil War and d
+    HIS1005_1_0.html | [Activity |  power that disenfranchised Māori as tangata whenua. [Activity Individual] [Activity 1A] Your j
+    HIS1005_1_0.html | [H2 | on of sovereignty. [add button] Go to journal [H2] Tipping the power balance [Body
+    HIS1005_1_0.html | [H3 | rch. [Activity embedded] [Activity 1B] [H3] State Diplomacy Historians can 
+    HIS1005_1_0.html | [H3 | x [Activity Individual] [Activity 1C] [H3] Usefulness of a source There ar
+    HIS1005_1_0.html | [Image | t became particularly significant to northern Māori. [Image Link] https://commons.wikimedia.org/wik
+    HIS1005_1_0.html | [Image | o, Te Peha and Hone Wiremu Heke Pokai are not there. [Image Link] https://commons.wikimedia.org/wi
+    HIS1005_2_0.html | [Accordion | ort your answer. Record your answer in your journal. [Accordion Tabs: Can source a and b be arranged fu
+
+## HIS1002 40 leaks on 8 pages
+    HIS1002_10_0.html | [Image | id="body"> [Image] https://docs.google.com/
+    HIS1002_10_0.html | [Image | uid=102968754945735656641&amp;rtpof=true&amp;sd=true [Image link: https://history.greenpeace.org/ao
+    HIS1002_11_0.html | [H3 | stance at home and abroad. [H3] Who was responsible for the bombing o
+    HIS1002_11_0.html | [H3 |  source on one side and the annotation on the other] [H3] Source A Source: New Zealand Se
+    HIS1002_11_0.html | [Answer | Button] Go to journal. [Button] Check answer. [Answer Compare your annotation to the s
+    HIS1002_11_0.html | [Body | the official French position of the Tricot Inquiry.] [Body Text] Maki
+    HIS1002_13_0.html | [H2 | Link: https://www.youtube.com/watch?v=kRFAsOcK_TI ] [H2] Hinemoana: Understanding Place 
+    HIS1002_13_0.html | [Body | a; Court of Appeal to EPA, E-Tangata, p. 9. [Body Text] As this quote from Joe Wil
+    HIS1002_16_0.html | [Activity | hallenged the nuclear powers in Te Moana-nui-a-Kiwa. [Activity: Individual] 9A [H3] Applying Co
+    HIS1002_18_0.html | [H2 |  Ban Treaty. Nuclear testing in Mā’ohi Nui was over. [H2] The history does not end here F
+
+## CEDO501 11 leaks on 1 pages
+    CEDO501_3_1.html | [Image | isit a website today. It is launched from this icon. [Image] Screenshot. Please add a picture like 
+    CEDO501_3_1.html | [Image | the browser to see what each button or feature does. [Image – This image has come directly from a c
+    CEDO501_3_1.html | [H3 | . Move on to learn how to use these more effectively [H3] Using browser controls to navigate the
+    CEDO501_3_1.html | [H3 | ding if it’s slow or frozen. [H3] Returning to the browser home screen 
+
+## HIS1001 8 leaks on 3 pages
+    HIS1001_10_0.html | [Image |  Moratorium and a Partial Best Ban [Image link: https://upload.wikimedia.org/wiki
+    HIS1001_5_0.html | [Image | explanations. See the example below. Source C [Image: https://blog.nuclearsecrecy.com/2012/0
+
+## HIS1006 7 leaks on 3 pages
+    HIS1006_0_0.html | [H1 | id="body"> [H1] Mautohe | Protest – Part B [W
+    HIS1006_0_0.html | [Body | 9;t die like an octopus, die like a hammerhead shark [Body text] The whakataukī chosen for 
+    HIS1006_0_0.html | [Activity | ed the learning in module Ātete | Resist – Part A . [Activity Interactive] [H2] The Past Shape
+    HIS1006_0_0.html | [H2 | te | Resist – Part A . [Activity Interactive] [H2] The Past Shapes the Present Bef
+    HIS1006_1_0.html | [Activity | th after Alabama outlawed the presence of the NAACP. [Activity Individual] [Activity 1A] What D
+    HIS1006_3_0.html | [H2 |  [H2] Connections and Concepts Just l
+
+## ARFUN05 2 leaks on 1 pages
+    ARFUN05_0_0.html | [H3 |  https://www.youtube.com/watch?v=MlXi8LfKv-0 [H3] Split stage Split stage is a d
+    ARFUN05_0_0.html | [H3 |  https://www.youtube.com/watch?v=uwmww8-DTy0 [H3] Activity: Stage directions 
+
+## ENFUN09 2 leaks on 1 pages
+    ENFUN09_0_0.html | [image | have to write about. [image] / https://www.istockphoto.com/vector
+    ENFUN09_0_0.html | [hintslider | playing-in-a-treehouse-gm1358742390-432277829 [hintslider] keep open when clicked / Splashing wa
+
+## ENGI102 2 leaks on 1 pages
+    ENGI102_0_0.html | [image |  clearly.. ❗ Photo: [ASSET ID REQUIRED], [image] clipart style of boy and girl writing 
+    ENGI102_0_0.html | [Image | ok Māori). ❗ Photo: [ASSET ID REQUIRED], [Image] of cartoon style fun looking completio
+
+## MXFU302 2 leaks on 2 pages
+    MXFU302_4_0_0.html | [H5 | ded by 12 equals 3. What is the number? [H5] Magic Number Puzzle: Pick an
+    MXFU302_6_0.html | [carousel | ( l ) in the equation: l=7k+2 [carousel] 
+
+## XGF9004 2 leaks on 1 pages
+    XGF9004_7_0.html | [H3 | to figure who took it. Can you solve the mystery? [H3] The Mystery: Someone took Timmy’s fa
+    XGF9004_7_0.html | [H3 | k Timmy’s favourite toy car from the living room. [H3] Clues: Clue 1:
+
+## AGH1006 1 leaks on 1 pages
+    AGH1006_5_0.html | [H3 | s this can lead to the spread of fungal diseases. [H3] Knowledge CheckTrue/False > 
+
+## ANZH401 1 leaks on 1 pages
+    ANZH401_1_0.html | [H3 |  [H3] More migration stories? You can find m
+
+## ART1003 1 leaks on 1 pages
+    ART1003_0_0.html | [H5 | new page with some notes explaining the connections. [H5] Activity 1d Create an A4 Mixed
+
+## CEDT104 1 leaks on 1 pages
+    CEDT104_0_0.html | [H3 |  the poi words. Ready for the next activity. [H3] Activity 3C: Let&#39;s wake up our Poi
+
+## ENGS101 1 leaks on 1 pages
+    ENGS101_4_0.html | [Body | urnal Write your silly sentences! [Body]For example &quo
+
+## ENGS302 1 leaks on 1 pages
+    ENGS302_0_0.html | [drag and drop |  here. ❗ Image for activity: Activity 2B [drag and drop – can we create a fun looking timeline,
+
+## MXDI201 1 leaks on 1 pages
+    MXDI201_8_0.html | [body |  8D Comparing multiplication and division sums [body text] In the next activity you will nee
+
+## MXEO301 1 leaks on 1 pages
+    MXEO301_1_0.html | [Activity | s up. Our final answer becomes 2³ × 3 = 24. [Activity 1A – self-marking drag and drop] Prime 
+
+## MXFUN01 1 leaks on 1 pages
+    MXFUN01_6_5.html | [Activity |  Simplifying fractions match-up [Activity body] Match the fractions on the right
+
+## SSFUN05 1 leaks on 1 pages
+    SSFUN05_0_0.html | [Image | s. Source D: Mahi toi/advertisement [Image] https://www.odt.co.nz/news/national/ne
+
+## TEFUN07 1 leaks on 1 pages
+    TEFUN07_0_0.html | [Rollover | story and significance of what they are using uses [Rollover definition] patents or trademarks (Pate
+
+## TRR102 1 leaks on 1 pages
+    TRR102_1_0.html | [Image |  [Item 63] [Image] Kiwi Tohatoha 
+
+## TRR106 1 leaks on 1 pages
+    TRR106_2_0.html | [Image |  [Item 62] [Image] Vowels end 
+
+## TRR109 1 leaks on 1 pages
+    TRR109_5_0.html | [Image | āku i ako ai? What have I learned? [Item 305] [Image] Kiwi Tohatoha KWM [Butt
+
+## TRR304 1 leaks on 1 pages
+    TRR304_2_0.html | [Image | parts of the occupation image to add labels: Body] [Image label interactive] Click on parts of t

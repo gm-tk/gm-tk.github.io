@@ -1,0 +1,31 @@
+ARFUN05: built 0 dropDowns (all fell back)
+CEDO501: built 0 dropDowns (all fell back)
+ENGFUN02: built 0 dropDowns (all fell back)
+ENGS101: built 0 dropDowns (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 dropDowns (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 dropDowns (all fell back)
+HIS1005: built 0 dropDowns (all fell back)
+HIS1006: built 0 dropDowns (all fell back)
+OSAH501: built 0 dropDowns (all fell back)
+OSGM301: built 0 dropDowns (all fell back)
+OSGM401: built 0 dropDowns (all fell back)
+OSGM501: built 0 dropDowns (all fell back)
+OSOH301: built 0 dropDowns (all fell back)
+OSOH401: 1 dropDown group(s), 5 units [exact 5, copy-edit 0, dev-edit 0, defect 0]  ✓ every unit well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 0 dropDowns (all fell back)
+PES1008: built 0 dropDowns (all fell back)
+TEFUN03: built 0 dropDowns (all fell back)
+TRR102: built 0 dropDowns (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 dropDowns (all fell back)
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 dropDowns (all fell back)
+XDLS904: built 0 dropDowns (all fell back)
+XDLS905: built 0 dropDowns (all fell back)
+XDLS912: 8 dropDown group(s), 0 units [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every unit well-formed
+
+TOTAL: 9 dropDown group(s) across 2 module(s), 5 units; exact 5, copy-edit 0, dev-edit 0, defect 0.
+RESULT: every built dropDown unit is well-formed ✓

@@ -1,0 +1,46 @@
+ARFUN05: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+CEDO501: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+ENGFUN02: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+ENGS101: built 28 [exact 3, copy-edit 0, dev-edit 0, gold-subst 23, defect 2] DEFECT ✗
+   DEFECT (overlap 0.10): "Oh, also I lassoed the sun You're welcome! To stretch the days and bring you fun"
+   DEFECT (overlap 0.10): "Also I harnessed the breeze You're welcome! To fill your sails and shake your trees"
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+HIS1005: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+HIS1006: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+OSAH501: built 8 [exact 2, copy-edit 5, dev-edit 0, gold-subst 0, defect 1] DEFECT ✗ | image-id miss 7
+   DEFECT (overlap 0.57): If you come across harmful behaviour online do not deal with it alone. Talk to someone you can trust and who knows how t
+   image-id not in human file: iStock-1170338101
+   image-id not in human file: iStock-1199375092
+   image-id not in human file: iStock-987355284
+   image-id not in human file: iStock-987354734
+   image-id not in human file: iStock-1190660690
+   image-id not in human file: iStock-1148188506
+   image-id not in human file: iStock-987354734
+OSGM301: built 3 [exact 3, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSGM401: built 9 [exact 8, copy-edit 0, dev-edit 1, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSGM501: built 13 [exact 9, copy-edit 0, dev-edit 4, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSOH301: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+OSOH401: built 9 [exact 7, copy-edit 2, dev-edit 0, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+PES1008: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+TEFUN03: built 7 [exact 1, copy-edit 0, dev-edit 1, gold-subst 0, defect 5] DEFECT ✗
+   DEFECT (overlap 0.31): from I love the textured surface of this butterfly egg. / I would need to learn some new skills to shape a box this way.
+   DEFECT (overlap 0.16): The 5-lobed shapes of these seed pods look interesting. / They may be a simpler shape to make than the butterfly's egg.
+   DEFECT (overlap 0.16): Deep AI response to the prompt, "jewellery box shaped like a butterfly egg". Not what I wanted, but attaching something 
+   DEFECT (overlap 0.15): Deep AI response to the prompt, "jewellery box shaped like a seed pod". I think the shape here looks easier to achieve t
+   DEFECT (overlap 0.14): Deep AI response to the prompt, "jewellery box shaped like a sea shell". I don't like this, but the little feet undernea
+TRR102: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+XDLS904: built 2 [exact 2, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+XDLS905: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+XDLS912: built 0 [exact 0, copy-edit 0, dev-edit 0, gold-subst 0, defect 0] no builds
+
+TOTAL built 79: exact 35, copy-edit 7, dev-edit 6, gold-subst 23, defect 8; image-id misses 7.
+RESULT: real defects present ✗ — fix before proceeding.

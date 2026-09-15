@@ -1,0 +1,14 @@
+module     matched    exact    EXTRA  missing   examples of NEW extra/missing
+ARFUN05         +4       +4       +0       +0   
+CEDO501         +7       +7       +0       +0   
+HIS1005       +133     +107       +4      +17   HIS1005_1_0.html:p 'you have learned more about ' C=['row', 'col'] H=['row', 'col', 'alert', 'row', 'col']; HIS1005_1_0.html:p 'you have learned to identify' C=['row', 'col'] H=['row', 'col', 'alert', 'row', 'col']
+HIS1006         -2       -3       +0       -2   HIS1006_1_2.html:h4 'lesson summary' C=['row', 'col'] H=['row', 'col', 'alert', 'row', 'col']
+PES1003         +1       +1       +0       +0   
+TRR109         -14      -14       +0       +0   
+XDLS912         +1       +1       +0       +0   
+TOTAL over the 23: {'matched': 130, 'exact_chain': 103, 'claude_extra_container': 4, 'claude_missing_container': 15}
+modules OUTSIDE the 23 with a cs change: none
+== HIS1005 example kinds now: {"chain differs: claude ['row', 'col'] vs human ['col']": 1, "chain differs: claude ['row', 'col', 'whakatauki'] vs human ['col', 'whakatauki']": 2, "human wrapped in ['alert']; claude did not": 2}
+  new missing/human-wraps sites: 5 | pages: ['HIS1005_0_0.html', 'HIS1005_1_0.html']
+== HIS1006 example kinds now: {"chain differs: claude ['row', 'col'] vs human ['col']": 1, "chain differs: claude ['row', 'col', 'whakatauki'] vs human ['col', 'whakatauki']": 2, "human wrapped in ['alert']; claude did not": 1}
+  new missing/human-wraps sites: 4 | pages: ['HIS1006_0_0.html', 'HIS1006_1_2.html']

@@ -1,0 +1,535 @@
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+  ~ PES1003_8_0.html: -1 +1
+     - <p>Pressure can be used to cool things through a process called <b><span class="infoTrigger" info="(adiabatic 
+     + <p>Pressure can be used to cool things through a process called <b><span class="infoTrigger" info="adiabatic m
+PES1003: identical 10 / changed 1
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+  ~ PES1008_7_0.html: -1 +11
+     - <p>[Important] Static electricity is the separation of electrical charges. This separation of charges comes fr
+     + <div class="alert solid">
+     + <p>Static electricity is the separation of electrical charges. This separation of charges comes from the movem
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+PES1008: identical 18 / changed 1
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+  ~ TEFUN03_0_0.html: -17 +27
+     - <p>[Image] birds</p>
+     - <p>[Image] Da Vinci COPYRIGHT CHECK</p>
+     - <p>[Speech bubble LHS] Planes can only take off and land on the ground.</p>
+     - <p>[Video] Seaplane 0:30-0:45</p>
+     - <p>[Speech bubble RHS] Nothing can travel faster than the speed of sound.</p>
+     - <p>[Video] Navy F/A-18 Breaking The Sound Barrier Over Water - YouTube (0:15-0:20)</p>
+     - <div class="bubble-basic no-hover bubble-top"><p>It is impossible for humans to go to outer space.</p></div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="TEFUN03-00-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="TEFUN03-00-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="TEFUN03-00-10" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="TEFUN03-00-11" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="TEFUN03-00-12" style="border: 8px s
+     - <div class="row speechBubble" layout="speech">
+     - <div class="col-12">
+     + <p>birds</p>
+     + <p>Da Vinci COPYRIGHT CHECK</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="TEFUN03-00-08" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: speechBubble + speechBubble + speec
+     + <p>Planes can only take off and land on the ground.</p>
+     + <p>Seaplane 0:30-0:45</p>
+     + <p>Nothing can travel faster than the speed of sound.</p>
+     + <p>Navy F/A-18 Breaking The Sound Barrier Over Water - YouTube (0:15-0:20)</p>
+     + <p>It is impossible for humans to go to outer space.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="TEFUN03-00-09" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="TEFUN03-00-10" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="TEFUN03-00-11" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="TEFUN03-00-12" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="TEFUN03-00-13" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + … 7 more added
+TEFUN03: identical 0 / changed 1
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+  ~ TRR102_1_0.html: -14 +14
+     - <td>[ Item 41 ] [Audio] a short</td>
+     - <td>[ Item 42 ] [Audio] e short</td>
+     - <td>[ Item 43 ] [Audio] i short</td>
+     - <td>[ Item 44 ] [Audio] o short</td>
+     - <td>[ Item 45 ] [Audio] u short</td>
+     - <td>[ Item 46 ] [Audio]ā long</td>
+     - <td>[ Item 47 ] [Audio]ē long</td>
+     - <td>[ Item 48 ] [Audio]ī long</td>
+     - <td>[ Item 49 ] [Audio]ō long</td>
+     - <td>[ Item 50 ] [Audio]ū long</td>
+     - <td>[Body] <b>Look at the list below and choose some fun ways to practise learning the shape of the vowels.</b
+     - <td>[Body] <b>Titiro ki te rārangi o raro iho nei,</b> t<b>īpakongia ētahi mahi ngahau i te rārangi i raro nei
+     - <td>[Body] <b>What have I learned?</b> / Test your vowel knowledge. Answer the following questions. / <b>1. Ho
+     - <td>[Body] <b>He aha tāku i ako ai?</b> / Whakamātauria ō mōhiotanga mō ngā oropuare. Whakautua ngā pātai e wh
+     + <td> [Item 41] [Audio] a short</td>
+     + <td> [Item 42] [Audio] e short</td>
+     + <td> [Item 43] [Audio] i short</td>
+     + <td> [Item 44] [Audio] o short</td>
+     + <td> [Item 45] [Audio] u short</td>
+     + <td> [Item 46] [Audio] ā long</td>
+     + <td> [Item 47] [Audio] ē long</td>
+     + <td> [Item 48] [Audio] ī long</td>
+     + <td> [Item 49] [Audio] ō long</td>
+     + <td> [Item 50] [Audio] ū long</td>
+     + <td> [Body] <b>Look at the list below and choose some fun ways to practise learning the shape of the vowels.</
+     + <td> [Body] <b>Titiro ki te rārangi o raro iho nei,</b> t<b>īpakongia ētahi mahi ngahau i te rārangi i raro ne
+     + <td> [Body] <b>What have I learned?</b> / Test your vowel knowledge. Answer the following questions. / <b>1. H
+     + <td> [Body] <b>He aha tāku i ako ai?</b> / Whakamātauria ō mōhiotanga mō ngā oropuare. Whakautua ngā pātai e w
+  ~ TRR102_2_0.html: -115 +186
+     - <div class="activity interactive">
+     - <div class="row">
+     - <div class="col-12">
+     - <p eng>Note to CS – Please only include letters, check font is correct for ‘a’ eg BLL117-02 – Blended Literacy
+     - <h3 reo>Ngā tohutohu hei mahi</h3>
+     - <h3 eng>Instructions:</h3>
+     - <p reo>Ata titiro ki ngā pū i roto i te pouaka. Rapua ngā <b>‘a’</b> katoa e huna ana.</p>
+     - <p eng>Look at the letters in the box below. Find all the <b>&#39;a&#39;</b> that are hiding.</p>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> [Side Alert] </th>
+     - </tr>
+     - <tr>
+     - <td> [Body] Look at this other special way to write ‘<b>Pūriki a</b>’. / We often see this shape when we are u
+     - <td> [Body] Titiro ki tētahi atu āhua motuhake mō te ‘<b>Pūriki a</b>’. / He maha te wā ka kitea tēnei āhua i 
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>[Item 80] [Image] a double storey</td>
+     - </tr>
+     - </table>
+     - <div class="activity interactive">
+     - <div class="row">
+     - <div class="col-12">
+     - <h3 reo>Ngā tohutohu hei mahi</h3>
+     - <h3 eng>Instructions:</h3>
+     - <p reo>Pāwhiritia te kupu kia rongo.</p>
+     - <p reo>Me maumahara, e ngana ana tātou ki rongo ki te oro poto o <b>‘a</b>’.</p>
+     - <p reo>Tōia te oro tika ki te pikitia tika.</p>
+     - <p eng>Click on the word to listen to it.</p>
+     - <p eng>Remember we are trying to hear the short ‘<b>a’</b> sound.</p>
+     - <p eng>Drag the correct word sound to the picture.</p>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th> Picture </th>
+     - … 75 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="TRR102-02-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: wordFind — Activity (inline) — see T
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table">
+     + <tr>
+     + <th> [Activity Embedded] [Wordfind] Note to CS – Please only include letters, check font is correct for ‘a’ eg
+     + </tr>
+     + <tr>
+     + <td> [H3] <b>Instructions:</b></td>
+     + <td> [H3] <b>Ngā</b> <b>tohutohu hei mahi</b></td>
+     + <td></td>
+     + <td></td>
+     + </tr>
+     + <tr>
+     + … 166 more added
+  ~ TRR102_3_0.html: -31 +47
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="TRR102-03-01" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: wordSelect — Activity (inline) — see
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="TRR102-03-02" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: memoryGame — Activity (inline) — see
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th>Te reoMaōri</th>
+     - <th>English Translation</th>
+     - <th><b>PR1</b></th>
+     - <th><b>PR2</b></th>
+     - </tr>
+     - <tr>
+     - <td> [H2] <b>What have I learned?</b></td>
+     - <td> [H2] <b>He aha tāku i ako ai?</b></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>[Item 145] [Image] Kiwi Tohatoha / [Button] [ Dropbox Checklist]</td>
+     - </tr>
+     - <tr>
+     - <td> [Body] Tick the things that you have learnt about <b>Pūriki a:</b> / • I can recognise the shape. / • I c
+     - <td> [Body] Tohua ngā mea kua akona e koe mō <b>Pūriki a:</b> / • Ka mōhio au ki tōna āhua. / • Ka mōhio au ki
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="TRR102-03-01" style="border: 8px sol
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: wordSelect — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="TRR102-03-02" style="border: 8px sol
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: memoryGame — Activity (inline) — see
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="TRR102-03-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: selectionBox — Activity (inline) — 
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table">
+     + <tr>
+     + <th>Te reoMaōri</th>
+     + … 27 more added
+  ~ TRR102_4_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="TRR102-04-01" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: multiChoiceQuiz — Activity (inline) 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="TRR102-04-02" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: multiChoiceQuiz (embedded and) — Act
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="TRR102-04-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="TRR102-04-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: multiChoiceQuiz (embedded and) — Ac
+  ~ TRR102_5_0.html: -31 +47
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="TRR102-05-01" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dragAndDrop — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="TRR102-05-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dragAndDrop — Activity (inline) — s
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th>Te reoMaōri</th>
+     - <th>English Translation</th>
+     - <th><b>PR1</b></th>
+     - <th><b>PR2</b></th>
+     - </tr>
+     - <tr>
+     - <td> [H2] <b>What have I learned?</b></td>
+     - <td> [H2] <b>He aha tāku i ako ai?</b></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>[Item 196] [Image] Kiwi Tohatoha / [Button] [ Dropbox Checklist]</td>
+     - </tr>
+     - <tr>
+     - <td> [Body] Tick the things that you have learned about <b>Pūmatua A</b><b>:</b> / • I can recognise the shape
+     - <td> [Body] Tohua ngā mea kua akona e koe mō <b>Pūmatua A</b><b>:</b> / • Ka mōhio au ki tōna āhua. / • Ka mōh
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="TRR102-05-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dragAndDrop — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="TRR102-05-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: dragAndDrop — Activity (inline) — s
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="TRR102-05-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: selectionBox — Activity (inline) — 
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table">
+     + <tr>
+     + <th>Te reoMaōri</th>
+     + … 27 more added
+TRR102: identical 1 / changed 5
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+  ~ TRR106_2_0.html: -27 +43
+     - <th>[Body] Holding your pencil the right way makes it easier to write. / Look at the picture and check to see 
+     - <th>[Body] Mātakitaki i te ataata, ā, whai mai me tō matimati, kātahi tikina āu tino tae hei tuhi māu! / Titir
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table">
+     - <tr>
+     - <th>Te Reo Maōri</th>
+     - <th>English Translation</th>
+     - <th><b>PR1</b></th>
+     - <th><b>PR2</b></th>
+     - </tr>
+     - <tr>
+     - <td> [H2] <b>What have I learned?</b></td>
+     - <td> [H2] <b>He aha tāku i ako ai</b></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>[Item 61] [Image] Kiwi Tohatoha / [Button] [Dropbox Checklist]</td>
+     - </tr>
+     - <tr>
+     - <td> [Body] Tick the things that you have learned about <b>Pūmatua U</b> and <b>Pūriki u</b>: / • I can recogn
+     - <td> [Body] Tīpakohia ngā mea kua akone e koe mō <b>Pūmatua U</b> rāua ko <b>Pūriki u</b>: / • Ka taea e au te
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     + <th> [Body] Holding your pencil the right way makes it easier to write. / Look at the picture and check to see
+     + <th> [Body] Mātakitaki i te ataata, ā, whai mai me tō matimati, kātahi tikina āu tino tae hei tuhi māu! / Titi
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="TRR106-01-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: selectionBox — Activity (inline) — s
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table">
+     + <tr>
+     + <th>Te Reo Maōri</th>
+     + <th>English Translation</th>
+     + <th><b>PR1</b></th>
+     + <th><b>PR2</b></th>
+     + </tr>
+     + <tr>
+     + <td> [H2] <b>What have I learned?</b></td>
+     + … 23 more added
+TRR106: identical 1 / changed 1
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+  ~ TRR109_5_0.html: -37 +34
+     - <h3 reo>Kua tutuki!</h3>
+     - <h3 eng>We’ve finished</h3>
+     - <p reo><b>Tō kerewa hoki.</b></p>
+     - <p eng><b>Tō kerewa hoki.</b></p>
+     - <p reo>Kua oti i a koe te kōwae katoa.</p>
+     - <p eng>You have finished the entire kōwae.</p>
+     - <p reo>Me āta titiro, whakarongo tonu koe mō mātou i ngā mea ka pānui, ka rongo, ka whakahua anō hoki koe.</p>
+     - <p eng>Keep looking and listening for us in the things you <b>read, hear</b> and <b>say.</b></p>
+     - <p reo>Mā te kaha kite, rongo, whakahua hoki i ngā oro, e māmā ake te maumahara.</p>
+     - <p eng>The more times we <b>see, hear</b> and <b>say</b> a sound, the easier it is to remember it.</p>
+     - <p reo>Whakaotia te rārangi arowhai kei raro nei hei tuari ki tō kaiako o ngā mea katoa kua akona e koe.</p>
+     - <p eng>Complete the checklist below to share with your kaiako all the things you have learned.</p>
+     - <p reo>Kia rite koe, anga whakamua ki te kōwae e whai ake nei. Kei reira mātou katoa e tatari ana mōu!</p>
+     - <p eng>When you are ready you can move on to the next kōwae. We will all be there waiting for you!</p>
+     - <p reo>Ka kite ākuanei.</p>
+     - <p eng>Ka kite ākuanei.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-304-image-a-oro-topu-end.jpg" alt="" /> -->
+     - <h3 reo>He aha tāku i ako ai?</h3>
+     - <h3 eng>What have I learned?</h3>
+     - <p>[Item 305] [Image] <a href="https://mytekuraschool.sharepoint.com/:i:/t/TeRoopWhanakeMarautangaoAotearoa/EY
+     - <p>KWM</p>
+     - <p>[Button] [Checklist]</p>
+     - <p reo>Tīkina ngā mea kua akona e koe mō ngā oropuare pūrua ‘<b>a</b>’ e whā:</p>
+     - <p eng>Tick the things that you have learnt about the four oropuare pūrua ‘<b>a</b>’<b>:</b></p>
+     - <ul reo>
+     - <li>E mōhio ana au ki ngā pū e waihanga ana i te oropuare pūrua <b>‘a’</b>.</li>
+     - <li>Ka taea e au te tautohu i ngā oro o te oropuare pūrua ‘<b>a</b>’.</li>
+     - <li>Ka taea e au te whakahua tika i te oropuare pūrua ‘<b>a</b>’.</li>
+     - <li>E mōhio ana au ki ngā kupu e whakamahi ana i te oropuare pūrua ‘<b>a’.</b></li>
+     - </ul>
+     - <ul eng>
+     - <li>I know the letters that make the oropuare pūrua ‘<b>a’</b>.</li>
+     - <li>I can recognise the sounds of the oropuare pūrua <b>‘a’</b>.</li>
+     - <li>I can correctly pronounce the oropuare pūrua ‘<b>a</b>’.</li>
+     - <li>I know words that use the oropuare pūrua <b>‘a’</b>.</li>
+     - </ul>
+     + <div class="activity interactive" number="5.5">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3 reo>Kua tutuki!</h3>
+     + <h3 eng>We’ve finished</h3>
+     + <p reo><b>Tō kerewa hoki.</b></p>
+     + <p eng><b>Tō kerewa hoki.</b></p>
+     + <p reo>Kua oti i a koe te kōwae katoa.</p>
+     + <p eng>You have finished the entire kōwae.</p>
+     + <p reo>Me āta titiro, whakarongo tonu koe mō mātou i ngā mea ka pānui, ka rongo, ka whakahua anō hoki koe.</p>
+     + <p eng>Keep looking and listening for us in the things you <b>read, hear</b> and <b>say.</b></p>
+     + <p reo>Mā te kaha kite, rongo, whakahua hoki i ngā oro, e māmā ake te maumahara.</p>
+     + <p eng>The more times we <b>see, hear</b> and <b>say</b> a sound, the easier it is to remember it.</p>
+     + <p reo>Whakaotia te rārangi arowhai kei raro nei hei tuari ki tō kaiako o ngā mea katoa kua akona e koe.</p>
+     + <p eng>Complete the checklist below to share with your kaiako all the things you have learned.</p>
+     + <p reo>Kia rite koe, anga whakamua ki te kōwae e whai ake nei. Kei reira mātou katoa e tatari ana mōu!</p>
+     + <p eng>When you are ready you can move on to the next kōwae. We will all be there waiting for you!</p>
+     + <p reo>Ka kite ākuanei.</p>
+     + <p eng>Ka kite ākuanei.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + … 14 more added
+TRR109: identical 5 / changed 1
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+  ~ XDLS904_5_0.html: -2 +2
+     - <li>why aroha [definition] (Love, concern, compassion.) is important.</li>
+     - <p>Create something to express the aroha you and your whānau feel towards each other. You could create a meal,
+     + <li>why <span class="infoTrigger" info="Love, concern, compassion.">aroha</span> is important.</li>
+     + <p>Create something to express the aroha you and your whānau feel towards each other. You could create a meal,
+XDLS904: identical 7 / changed 1
+  ~ XDLS905_7_0.html: -2 +2
+     - <p>“Everyone has the right to a standard of living adequate [definition] (amount needed) for the health and we
+     - <p>“Everyone has the right to a standard of living [definition] (money and services people) adequate [definiti
+     + <p>“Everyone has the right to a standard of living <span class="infoTrigger" info="amount needed">adequate</sp
+     + <p>“Everyone has the right to a standard of <span class="infoTrigger" info="money and services people">living<
+XDLS905: identical 7 / changed 1
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+  ~ XDLS912_4_0.html: -22 +24
+     - <div class="activity interactive" number="4D">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="XDLS912-04-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: dropDown — Activity (inline) — see 
+     - <p>[Activity 4E] Hand washing</p>
+     - <p>Now let’s try washing our hands. Clean hands stop us from spreading bugs and from getting sick.</p>
+     - <p>Follow this <b>First – Then</b> guide to help you.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="XDLS912-04-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: slider (insert) — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <p>Well done! You’ve completed the guide to washing your hands.</p>
+     + <div class="activity dropbox" number="4D">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity" number="4E">
+     + <h3>Hand washing</h3>
+     + <p>Now let’s try washing our hands. Clean hands stop us from spreading bugs and from getting sick.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="XDLS912-04-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: slider (insert) — Activity 4E — see
+     + <p>Well done! You’ve completed the guide to washing your hands.</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="col-12">
+     + <p>Follow this <b>First – Then</b> guide to help you.</p>
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 4 more added
+XDLS912: identical 5 / changed 1
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 530 / changed 13 / missing 0 over 104 modules
+CHANGED: PES1003/PES1003_8_0.html PES1008/PES1008_7_0.html TEFUN03/TEFUN03_0_0.html TRR102/TRR102_1_0.html TRR102/TRR102_2_0.html TRR102/TRR102_3_0.html TRR102/TRR102_4_0.html TRR102/TRR102_5_0.html TRR106/TRR106_2_0.html TRR109/TRR109_5_0.html XDLS904/XDLS904_5_0.html XDLS905/XDLS905_7_0.html XDLS912/XDLS912_4_0.html

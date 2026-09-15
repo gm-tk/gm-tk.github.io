@@ -4954,6 +4954,10 @@ class ContentConverter {
 		const sentEndRe = new RegExp(cfg.sentence_end_pattern, "");
 		const scaffoldRe = cfg.scaffold_strip ? new RegExp(cfg.scaffold_strip, "i") : null;
 		const wordHeadRe = cfg.paired_word_head ? new RegExp(cfg.paired_word_head, "i") : null;
+		// ROUND 341: the PARENTHESISED-TAIL definition (data paren_tail_def / env DEFPAREN_OFF).
+		const parenOn = cfg.paren_tail_def === true
+			&& !(typeof process !== "undefined" && process.env && process.env.DEFPAREN_OFF);
+		const parenRe = parenOn ? new RegExp(cfg.paren_tail_pattern ?? "^\\s*\\(([^()]{1,400})\\)\\s*([\\s\\S]*)$", "") : null;
 		const maxDef = cfg.max_def_len ?? 400;
 		const namedOn = cfg.named_anchor !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.DEFANCHORNAMED_OFF);
@@ -4973,10 +4977,23 @@ class ContentConverter {
 		/** the nearest carriers of already-emitted prose behind index i. */
 		const carriersBehind = (i, back) => {
 			const out = [];
-			for (let k = i - 1; k >= 0 && k >= i - back; k--) {
+			// ROUND 341: a marker THIS pre-pass has already consumed is invisible prose-wise (its
+			// text was merged into the carrier it anchored on), so it does not spend the lookback
+			// budget — the 4th [definition] of one sentence still finds the sentence (XDLS905-7.0).
+			// Data: lookback_skips_consumed (rides paren_tail_def's toggle DEFPAREN_OFF).
+			const skipConsumed = parenOn && cfg.lookback_skips_consumed === true;
+			const blk = bodyItems[i] ? bodyItems[i].block : undefined;
+			let budget = back;
+			for (let k = i - 1; k >= 0 && budget > 0; k--) {
 				const p = bodyItems[k];
 				if (!p) break;
 				if (p.type === "table") break;              // never reach across a table
+				// r341: a weave-consumed marker in the SAME source paragraph spends no budget — the
+				// sentence continues through it. A consumed marker in an EARLIER paragraph still does
+				// (a definition's anchor is in its own sentence; reaching the previous paragraph let the
+				// named-anchor shape match a word inside that paragraph's tooltip — CEDT104-0.0).
+				if (skipConsumed && p._defWeaveConsumed && blk && p.block === blk) continue;
+				budget--;
 				if (!live(p)) continue;                      // a bundle already owns it
 				const s = String(textOf(p) ?? "");
 				if (!s.trim()) continue;
@@ -5040,8 +5057,25 @@ class ContentConverter {
 				// Join inner+tail preserving the boundary — the tail's own LEADING whitespace is
 				// the only signal of whether Word split mid-word ("A"+"rranged") or at a space.
 				const innerT = inner.replace(leadSepRe, "").replace(/\s+$/, "");
-				def = (innerT + tailRaw.replace(leadSepRe, "")).replace(/\s+/g, " ").trim();
-				continuation = null;                                      // the closer carries it
+				// ROUND 341 (the autonomous loop, session 9 — surfaced when the near-red rule let
+				// XDLS904/905's c00000 [definition] markers reach this weave): a CLOSED empty bracket
+				// whose tail OPENS with a parenthesised phrase and then CONTINUES — "aroha
+				// [definition] (Love, concern, compassion.) is important." — the parenthesis IS the
+				// definition (parens dropped: the gold's own info="amount needed" form, XDLS905-7.0)
+				// and the prose after it RESUMES the sentence; taking the whole tail as the
+				// definition swallowed "is important." into the tooltip. Only when prose FOLLOWS the
+				// parenthesis — a full-tail "(def)" keeps the standing form byte-for-byte.
+				// (an empty "[definition]" reaches this branch with its "]" already stripped, so the
+				// test is "no closer span follows" rather than `closed`)
+				const nxc = bodyItems[i + 1];
+				const closerAhead = live(nxc) && nxc.type === "tag" && closerRe.test(String(nxc.text ?? ""));
+				const pm = (parenRe && !innerT && !closerAhead) ? parenRe.exec(tailRaw.replace(leadSepRe, "")) : null;
+				if (pm && pm[2].trim()) {
+					def = pm[1]; continuation = pm[2];
+				} else {
+					def = (innerT + tailRaw.replace(leadSepRe, "")).replace(/\s+/g, " ").trim();
+					continuation = null;                                      // the closer carries it
+				}
 			}
 			if (scaffoldRe) def = def.replace(scaffoldRe, "");
 			def = String(def).replace(/[\*​]/g, "").replace(/\s+/g, " ").trim();

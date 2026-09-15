@@ -1,0 +1,72 @@
+moved 39 up 20 down 19 scaffold pp-sum 70.06 raw pp-sum 68.51
+movers OUTSIDE the affected set: none
+HIS1006_9_0.html       HIS1006    66.42 ->  23.37  -43.05   raw  66.4-> 25.0
+HIS1006_11_0.html      HIS1006    53.17 ->  34.02  -19.15   raw  42.3-> 28.1
+HIS1005_2_0.html       HIS1005    39.27 ->  22.01  -17.27   raw  27.3-> 14.3
+ARFUN05_0_0.html       ARFUN05    34.12 ->  29.07   -5.04   raw  26.5-> 23.9
+TRR109_5_0.html        TRR109     56.30 ->  51.95   -4.35   raw  39.2-> 35.5
+HIS1005_0_0.html       HIS1005    42.11 ->  38.20   -3.90   raw  31.3-> 30.4
+HIS1002_3_0.html       HIS1002    36.89 ->  33.64   -3.25   raw  21.4-> 22.4
+OSGM501_5_0.html       OSGM501    77.01 ->  74.03   -2.98   raw  53.6-> 57.1
+CEDO501_2_1.html       CEDO501    20.97 ->  18.32   -2.65   raw  17.5-> 14.4
+OSGM301_2_0.html       OSGM301    60.26 ->  57.67   -2.59   raw  39.8-> 42.7
+OSOH301_1_0.html       OSOH301    47.68 ->  45.57   -2.11   raw  23.6-> 25.5
+HIS1006_0_0.html       HIS1006    40.51 ->  38.64   -1.87   raw  29.7-> 28.3
+HIS1002_11_0.html      HIS1002    42.42 ->  40.58   -1.84   raw  34.5-> 34.6
+OSOH401_1_0.html       OSOH401    51.83 ->  50.45   -1.38   raw  20.0-> 20.4
+OSAH501_5_0.html       OSAH501    63.16 ->  61.93   -1.23   raw  41.1-> 39.4
+OSGM401_1_0.html       OSGM401    60.77 ->  60.00   -0.77   raw  41.7-> 44.9
+XDLS905_7_0.html       XDLS905    24.81 ->  24.43   -0.38   raw  18.0-> 17.8
+XDLS904_5_0.html       XDLS904    30.10 ->  29.80   -0.30   raw  12.7-> 12.1
+TRR106_2_0.html        TRR106     19.86 ->  19.73   -0.14   raw   7.6->  7.5
+HIS1001_10_0.html      HIS1001    24.00 ->  24.11   +0.11   raw  16.9-> 17.0
+XDLS912_4_0.html       XDLS912    44.52 ->  44.73   +0.21   raw  19.9-> 23.1
+HIS1005_10_0.html      HIS1005    64.43 ->  65.33   +0.90   raw  64.4-> 65.3
+TRR102_3_0.html        TRR102     46.09 ->  47.41   +1.33   raw  28.1-> 28.3
+HIS1005_7_0.html       HIS1005    53.38 ->  54.80   +1.42   raw  44.1-> 45.3
+TRR102_5_0.html        TRR102     31.86 ->  33.33   +1.47   raw  17.2-> 17.7
+PES1008_7_0.html       PES1008    35.71 ->  37.35   +1.64   raw  33.3-> 34.9
+HIS1001_8_0.html       HIS1001    29.47 ->  31.35   +1.88   raw  25.6-> 27.1
+HIS1002_7_0.html       HIS1002    40.42 ->  42.38   +1.97   raw  28.2-> 31.5
+HIS1002_13_0.html      HIS1002    30.77 ->  33.07   +2.30   raw  26.4-> 25.9
+TRR102_2_0.html        TRR102     41.24 ->  45.52   +4.29   raw  30.2-> 10.5
+HIS1002_9_0.html       HIS1002    50.18 ->  54.75   +4.57   raw  44.7-> 45.3
+ENGFUN02_0_0.html      ENGFUN02   11.71 ->  19.63   +7.92   raw  11.0-> 11.7
+HIS1005_1_0.html       HIS1005    20.25 ->  28.57   +8.32   raw  15.0-> 24.9
+HIS1005_3_0.html       HIS1005    39.50 ->  49.19   +9.70   raw  31.6-> 39.7
+HIS1005_5_0.html       HIS1005    41.00 ->  54.61  +13.61   raw  33.1-> 46.9
+CEDO501_3_1.html       CEDO501    26.23 ->  46.23  +20.00   raw  24.0-> 43.0
+HIS1006_10_0.html      HIS1006    23.37 ->  53.39  +30.02   raw  25.0-> 42.4
+HIS1005_9_0.html       HIS1005    22.92 ->  54.87  +31.96   raw  21.0-> 54.9
+HIS1005_6_0.html       HIS1005    21.59 ->  62.30  +40.70   raw  19.8-> 62.3
+added 12 ['ENGFUN02_1_0.html', 'HIS1002_19_0.html', 'ENGFUN02_2_0.html', 'ENGFUN02_4_0.html', 'HIS1005_9_1.html', 'ENGFUN02_3_0.html', 'HIS1005_6_1.html', 'HIS1002_17_0.html', 'HIS1005_5_1.html', 'HIS1006_8_0.html', 'HIS1002_15_0.html', 'HIS1005_10_1.html']
+dropped 4 ['HIS1002_18_0.html', 'HIS1006_12_0.html', 'HIS1002_16_0.html', 'HIS1002_14_0.html']
+>= 50: crossers up ['HIS1005_6_0.html', 'HIS1005_9_0.html', 'HIS1006_10_0.html', 'HIS1005_5_0.html'] down ['HIS1006_11_0.html', 'HIS1006_9_0.html'] | added-above ['HIS1005_6_1.html', 'HIS1002_17_0.html', 'HIS1005_5_1.html', 'HIS1006_8_0.html', 'HIS1002_15_0.html', 'HIS1005_10_1.html'] dropped-above ['HIS1002_14_0.html']
+>= 75: crossers up [] down ['OSGM501_5_0.html'] | added-above [] dropped-above []
+>= 90: crossers up [] down [] | added-above [] dropped-above []
+
+== per-module (pairs, mean scaffold %, pp-sum over paired pages) — the 23 affected ==
+ARFUN05   pairs  1-> 1  mean  34.12 ->  29.07 ( -5.04)  pp-sum    34.1 ->    29.1 (  -5.0)
+CEDO501   pairs 15->15  mean  46.15 ->  47.30 ( +1.16)  pp-sum   692.2 ->   709.6 ( +17.4)
+ENGFUN02  pairs  1-> 5  mean  11.71 ->  26.76 (+15.05)  pp-sum    11.7 ->   133.8 (+122.1)
+ENGS101   pairs  6-> 6  mean  45.88 ->  45.88 ( +0.00)  pp-sum   275.3 ->   275.3 (  +0.0)
+HIS1001   pairs  8-> 8  mean  32.75 ->  33.00 ( +0.25)  pp-sum   262.0 ->   264.0 (  +2.0)
+HIS1002   pairs 11->11  mean  43.28 ->  44.85 ( +1.57)  pp-sum   476.0 ->   493.3 ( +17.3)
+HIS1005   pairs 11->15  mean  41.45 ->  50.69 ( +9.24)  pp-sum   456.0 ->   760.3 (+304.4)
+HIS1006   pairs  5-> 5  mean  43.50 ->  43.17 ( -0.33)  pp-sum   217.5 ->   215.8 (  -1.7)
+OSAH501   pairs  6-> 6  mean  64.98 ->  64.78 ( -0.20)  pp-sum   389.9 ->   388.7 (  -1.2)
+OSGM301   pairs  4-> 4  mean  73.96 ->  73.31 ( -0.65)  pp-sum   295.8 ->   293.3 (  -2.6)
+OSGM401   pairs  5-> 5  mean  78.37 ->  78.21 ( -0.15)  pp-sum   391.8 ->   391.1 (  -0.8)
+OSGM501   pairs  6-> 6  mean  73.27 ->  72.77 ( -0.50)  pp-sum   439.6 ->   436.6 (  -3.0)
+OSOH301   pairs  4-> 4  mean  71.89 ->  71.36 ( -0.53)  pp-sum   287.5 ->   285.4 (  -2.1)
+OSOH401   pairs  5-> 5  mean  66.32 ->  66.04 ( -0.28)  pp-sum   331.6 ->   330.2 (  -1.4)
+PES1003   pairs 11->11  mean  58.83 ->  58.83 ( +0.00)  pp-sum   647.1 ->   647.1 (  +0.0)
+PES1008   pairs 12->12  mean  39.85 ->  39.98 ( +0.14)  pp-sum   478.2 ->   479.8 (  +1.6)
+TEFUN03   pairs  1-> 1  mean   9.78 ->   9.78 ( +0.00)  pp-sum     9.8 ->     9.8 (  +0.0)
+TRR102    pairs  6-> 6  mean  43.00 ->  44.18 ( +1.18)  pp-sum   258.0 ->   265.1 (  +7.1)
+TRR106    pairs  2-> 2  mean  41.08 ->  41.01 ( -0.07)  pp-sum    82.2 ->    82.0 (  -0.1)
+TRR109    pairs  6-> 6  mean  43.12 ->  42.40 ( -0.73)  pp-sum   258.7 ->   254.4 (  -4.4)
+XDLS904   pairs  8-> 8  mean  37.83 ->  37.79 ( -0.04)  pp-sum   302.6 ->   302.3 (  -0.3)
+XDLS905   pairs  8-> 8  mean  39.69 ->  39.64 ( -0.05)  pp-sum   317.5 ->   317.1 (  -0.4)
+XDLS912   pairs  6-> 6  mean  51.08 ->  51.12 ( +0.04)  pp-sum   306.5 ->   306.7 (  +0.2)
+pp-sum over the 23 modules: 449.06

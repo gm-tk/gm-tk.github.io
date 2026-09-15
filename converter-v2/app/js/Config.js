@@ -1678,7 +1678,11 @@ class Config {
 	// [external link] emitter) — seam A in ContentConverter.#inline + seam B in MediaBuilder.media's following-link source
 	// (a url-less [video]/[embed] takes the following url-only [link] line); whole-paragraph url-only fence; scoped 9 modules;
 	// env LINKVID_OFF.
-	static AppVersion = "260619.11";
+	// ROUND 341 (2026-09-16, build 260619.12): a writer's tag typed in a NON-STANDARD RED is still a tag — a run in the red hue
+	// band (ed0000 / fa0000 / c00000 …) counts as red when it carries a bracket or continues an open one (DocxExtractor,
+	// Input_Doc_Rules.red_runs.near_red_tag_runs, env NEARRED_OFF); the r299 definition weave learns the parenthesised-tail
+	// form + a same-paragraph lookback (env DEFPAREN_OFF). Leak gate 288/46 -> 26/23; FULL regeneration (the backstop).
+	static AppVersion = "260619.12";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

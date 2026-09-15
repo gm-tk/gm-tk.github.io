@@ -1,0 +1,44 @@
+ARFUN05: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+CEDO501: built 8 panels [exact 2, copy-edit 6, dev-edit 0, defect 0] | human 18 | ✓ exact/copy-edit/dev-edit only
+ENGFUN02: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 11 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Key Light
+   dev-diverged: Fill Light
+   dev-diverged: Backlight
+   dev-diverged: Natural lights (sometimes called practical lights)
+   dev-diverged: Soft Lighting
+   dev-diverged: Hard Lighting
+ENGS101: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 20 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 2 panels [exact 0, copy-edit 0, dev-edit 2, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: The Rationale for Nuclear Acquisition
+   dev-restructured: Building an Independent Nuclear Force
+HIS1005: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Was it Slavery?
+HIS1006: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Little Rock Paragraphs.docx
+   dev-diverged: Source A – Police Report
+   dev-diverged: Source B – Boycott Leaflet
+   dev-diverged: Source C – Interview with a Black Women
+OSAH501: built 6 panels [exact 0, copy-edit 6, dev-edit 0, defect 0] | human 13 | ✓ exact/copy-edit/dev-edit only
+OSGM301: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+OSGM401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+OSGM501: built 4 panels [exact 2, copy-edit 2, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+OSOH301: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+OSOH401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+PES1008: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 10 | no builds
+TEFUN03: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+TRR102: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+XDLS904: built 17 panels [exact 2, copy-edit 15, dev-edit 0, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+XDLS905: built 18 panels [exact 9, copy-edit 9, dev-edit 0, defect 0] | human 22 | ✓ exact/copy-edit/dev-edit only
+XDLS912: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+
+TOTAL: 67 panels built across 10 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓

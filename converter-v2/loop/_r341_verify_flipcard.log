@@ -1,0 +1,70 @@
+ARFUN05: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDO501: built 37 card-texts [exact 37, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+ENGFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGS101: built 42 card-texts [exact 24, copy-edit 1, gold-subst 0, defect 17] 17 unmatched (baseline)
+   unmatched (overlap 0.20): They love the rain Raincoat
+   unmatched (overlap 0.00): F unny cartoon smiling monster character.
+   unmatched (overlap 0.00): Cartoon angry gremlin.
+   unmatched (overlap 0.00): Cute monster.
+   unmatched (overlap 0.05): Funny cartoon furry monster character
+   unmatched (overlap 0.11): Funny Blue Monster Head with Long Arms
+   unmatched (overlap 0.00): Happy cool cartoon fat monster.
+   unmatched (overlap 0.06): Monster girl funny
+   unmatched (overlap 0.11): Funny yellow monster with tongue hanging out.
+   unmatched (overlap 0.23): Dad donate heart to a child. Adopted girl with father. Asking for Help
+   unmatched (overlap 0.14): Happy Family Characters Laughing. Father, Mother, Grandfather and Children Telling Funny Stories Sharing Ideas
+   unmatched (overlap 0.50): Little girl listening Listening Carefully
+   unmatched (overlap 0.33): Girl artist with paints and brush Trying New Things
+   unmatched (overlap 0.10): Boy jumping over skipping rope, cartoon character. Practicing Skills
+   unmatched (overlap 0.20): Vector illustration of mind map, arrow, brain, brainstorm, Using Pictures
+   unmatched (overlap 0.30): Boys and girls standing and sitting around desk Learning with others
+   unmatched (overlap 0.46): Huinga ako: Come along to your local huinga ako. You can learn with others who are also at Te Kura. Group activities : J
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSAH501: built 22 card-texts [exact 9, copy-edit 0, gold-subst 12, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.00): COUNCELLORS
+OSGM301: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM401: built 27 card-texts [exact 27, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM501: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH301: built 12 card-texts [exact 4, copy-edit 7, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.56): Don't share your device without permission
+OSOH401: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 14 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+PES1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TEFUN03: built 20 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 20] 20 unmatched (baseline)
+   unmatched (overlap 0.11): CS Designed versions of Thinkers Keys Brainstorming Brainstorming Come up with multiple ways to find a solution.
+   unmatched (overlap 0.04): How To: Write down or draw as many ideas as you can, no matter how silly or wild they seem. Even if it is only half an i
+   unmatched (overlap 0.05): CS Designed versions of Thinkers Keys Combinations Combinations Blend products into something brand new.
+   unmatched (overlap 0.14): How to: Think about two products that already exist that could make a great product. Take the parts that you think are t
+   unmatched (overlap 0.08): CS Designed versions of Thinkers Keys Improvements Improvements Make an existing product better.
+   unmatched (overlap 0.11): How to: You don't need to start from the beginning! Think of something that already exists. Maybe your end user is alrea
+   unmatched (overlap 0.13): CS Designed versions of Thinkers Keys Challenge Challenge Find an assumption and try to prove it is possible.
+   unmatched (overlap 0.15): How to: Some things are impossible, but what if they weren't? Stretch your brain and see what comes out. Ask yourself, w
+   unmatched (overlap 0.05): CS Designed versions of Thinkers Keys Inventions Inventions Develop unusual ways of doing things.
+   unmatched (overlap 0.13): How to: Think sideways and dream up a device that can solve an everyday problem. First, draw it on a piece of paper or o
+   unmatched (overlap 0.06): CS Designed versions of Thinkers Keys BAR BAR Make it B igger. A dd something else. R eplace a part of it.
+   unmatched (overlap 0.07): How to: Take an object. Think: Can I make this bigger or smaller? Can I add anything to improve my design? What could I 
+   unmatched (overlap 0.11): CS Designed versions of Thinkers Keys Brick Wall Brick Wall Explore what is standing in your way.
+   unmatched (overlap 0.11): How to: Identify what is holding you back from being able to develop your idea or product. Think of as many ways as you 
+   unmatched (overlap 0.07): CS Designed versions of Thinkers Keys In Common In Common Show how two different things are alike.
+   unmatched (overlap 0.11): How to: Take two concepts that seem really different and find what connects them. This will help you to better understan
+   unmatched (overlap 0.09): CS Designed versions of Thinkers Keys Reverse Reverse Flip your thinking.
+   unmatched (overlap 0.15): How to: Are you stuck on a problem? Take the question you have and ask the opposite instead. It might sound silly, but w
+   unmatched (overlap 0.08): CS Designed versions of Thinkers Keys Prediction Prediction Think into the future.
+   unmatched (overlap 0.11): How to: Imagine what the future will look like in 10, 20 or even 100 years from now. What could technology be like then?
+TRR102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+TRR106: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] TRR109 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR109: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS904: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS905: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS912: built 7 card-texts [exact 7, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+
+TOTAL 194: exact 121, copy-edit 8, gold-subst 12, defect 39, divergence 14.
+RESULT: divergence 14 ✗ — a built card has no human flipCard counterpart; investigate before ship.
