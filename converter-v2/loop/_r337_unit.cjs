@@ -1,0 +1,26 @@
+// ROUND 337 unit probe — TypedNumberList on the exact shapes the corpus carries
+const eng = require("../reference/tests/_engine_load.cjs");
+const Data = eng.loadData(); globalThis.DataService = { Data, async FetchOembed() { return { ok: false }; } }; eng.loadEngine();
+const T = (name, input, expect) => { const out = ListsAndRuns.TypedNumberList(input); const ok = expect.every((e) => out.includes(e)); console.log((ok ? "ok  " : "FAIL") + " " + name); if (!ok) console.log("   got: " + JSON.stringify(out)); };
+T("plain run", `<div class="accContent"><p>1. What happened?</p>\n<p>2. Why did Spotty?</p>\n<p>3. Have you been?</p></div>`, ["<ol>\n<li>What happened?</li>\n<li>Why did Spotty?</li>\n<li>Have you been?</li>\n</ol>"]);
+T("bold lead", `<p><b>1. Warm-Up</b><br>Do 5 minutes</p>\n<p><b>2. Drills</b><br>Do 10</p>`, ["<li><b>Warm-Up</b><br>Do 5 minutes</li>", "<li><b>Drills</b><br>Do 10</li>"]);
+T("start=2", `<p>2. Ngā ingoa wāhi</p>\n<p>3. Ngā kupu</p>`, [`<ol start="2">`, "<li>Ngā ingoa wāhi</li>"]);
+T("restart splits", `<p>1. a</p>\n<p>2. b</p>\n<p>1. c</p>\n<p>2. d</p>`, ["<ol>\n<li>a</li>\n<li>b</li>\n</ol>", "<ol>\n<li>c</li>\n<li>d</li>\n</ol>"]);
+T("single numbered p untouched", `<p>1. only one</p>\n<p>plain</p>`, ["<p>1. only one</p>"]);
+T("gap breaks the run", `<p>1. a</p>\n<p>3. c</p>`, ["<p>1. a</p>", "<p>3. c</p>"]);
+T("non-consecutive (text between)", `<p>1. a</p>\n<p>note</p>\n<p>2. b</p>`, ["<p>1. a</p>", "<p>2. b</p>"]);
+T("attributed p never joins", `<p class="x">1. a</p>\n<p class="x">2. b</p>`, [`<p class="x">1. a</p>`]);
+T("flipCard verbatim", `<div class="flipCard"><div class="front"><p>1. Partnership</p>\n<p>2. Protection</p></div></div>`, ["<p>1. Partnership</p>\n<p>2. Protection</p>"]);
+T("dragAndDrop verbatim", `<div class="dragAndDrop"><div class="question"><p>1. Aria</p>\n<p>2. Bob</p></div></div>`, ["<p>1. Aria</p>\n<p>2. Bob</p>"]);
+T("cv2 dump verbatim", `<div class="cv2-interactive"><div><p>1. a</p>\n<p>2. b</p></div></div>`, ["<p>1. a</p>\n<p>2. b</p>"]);
+T("cv2 note verbatim", `<p class="cv2-note">1. a</p>\n<p class="cv2-note">2. b</p>`, [`<p class="cv2-note">1. a</p>`]);
+T("live after a verbatim widget", `<div class="flipCard"><p>1. x</p>\n<p>2. y</p></div><div class="activity"><div class="row"><div class="col-12"><p>1. do</p>\n<p>2. it</p></div></div></div>`, ["<p>1. x</p>", "<li>do</li>", "<li>it</li>"]);
+T("bracket form 1)", `<p>1) a</p>\n<p>2) b</p>`, ["<li>a</li>", "<li>b</li>"]);
+process.env.TYPEDOL_OFF = "1";
+T("toggle OFF", `<p>1. a</p>\n<p>2. b</p>`, ["<p>1. a</p>\n<p>2. b</p>"]);
+delete process.env.TYPEDOL_OFF;
+T("word-list marker form (all 1.)", `<div class="accContent"><p>1. Why did Spotty?</p><p>1. How was Sant?</p><p>1. Can ants swim?</p></div>`, ["<ol>\n<li>Why did Spotty?</li>\n<li>How was Sant?</li>\n<li>Can ants swim?</li>\n</ol>"]);
+T("marker form then a typed restart", `<p>1. a</p><p>1. b</p><p>2. c</p>`, ["<li>a</li>\n<li>b</li>\n<li>c</li>"]);
+T("bold-wrapped number", `<p><b>1.</b> Play <b>10 rounds</b> and tally.</p>\n<p><b>2.</b> Record your results.</p>`, ["<li>Play <b>10 rounds</b> and tally.</li>", "<li>Record your results.</li>"]);
+T("number before a bold title", `<p>1. <b>Set the scene</b>\nPlace three objects.</p>\n<p>2. <b>Count</b>\nSay it.</p>`, ["<li><b>Set the scene</b>\nPlace three objects.</li>"]);
+T("bold lead containing the number and text", `<p><b>1. Sunlight In:</b> The sun sends light.</p>\n<p><b>2. Heat Out:</b> It emits heat.</p>`, ["<li><b>Sunlight In:</b> The sun sends light.</li>", "<li><b>Heat Out:</b> It emits heat.</li>"]);

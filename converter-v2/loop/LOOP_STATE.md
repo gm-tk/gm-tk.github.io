@@ -204,6 +204,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - FULL-SHIP BACKSTOP after r334 (no code change): all 416 gated dirs regenerated 2026-09-15 19:26–19:43 (36 batches, all rc 0), `_stalecheck.sh` 0 stale, `_content_manifest.py diff` IDENTICAL (0 pages) — eight scoped ships proven complete; `_fastloop_snapshot.py` re-baselined from the fresh corpus (values unchanged), manifest snapshot, `_ship_ledger.py record-full --build 260619.05` (counter 0).
 - Session 5 Round 6 = Session 6 Round 1 (engine r335 — the `[Engagement quiz button]` KB form, 01F + c65): BUILT + PROBE-PROVEN in session 5, SHIPPED OFF at Chris's stop, **flipped ON + SHIPPED 2026-09-15 ≈21:2x (session 6)**. AppVersion 260619.06, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #1 since the r334 full backstop. Skeleton +0.018pp; every other gate EXACT.
 - Session 6 Round 2 (engine r336 — the Fundamentals overview chip is a family convention, a registry correction): SHIPPED 2026-09-15 (session 6). AppVersion 260619.07, CLAUDE.md §9/§11/§14, scoped ship #2 since the r334 full backstop. Skeleton +0.000pp; every other gate EXACT.
+- Session 6 Round 3 (engine r337 — numbered steps are a semantic <ol>, KB constraint 42): SHIPPED 2026-09-15 (session 6). AppVersion 260619.08, CLAUDE.md §9/§11/§14, KB status row 42 → CAPTURED-LIVE + D-row, scoped ship #3 since the r334 full backstop. Skeleton +0.001pp; every other gate EXACT. **THE LOOP STOPPED after it (plateau rule: r335 +0.018 / r336 +0.000 / r337 +0.001).**
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -626,6 +627,54 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   a Bash-tool heredoc halves backslashes AND turns `\r` into a raw CR — write any patch with escapes via the Write tool; a Windows-written code
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
+
+## Session 6 · Round 3 (engine r337) — what shipped (numbered steps are a semantic <ol>, never <p>1. …</p>)
+- **Fix:** `body_region.typed_number_list` {enabled, env TYPEDOL_OFF, lead_pattern, min_run 2, sequential, marker_form_all_equal,
+  start_attr, verbatim_widget_classes} → `ListsAndRuns.TypedNumberList(html)`, a full-page post-pass at the r234 EmojiStrip seam
+  (PageAssembler, body only): a run of ≥ 2 consecutive bare `<p>`s opening with sequential numbers or the extractor's all-"1."
+  Word-list marker → one `<ol>` (`start="n"` when n > 1), the number stripped from the first text node (an emptied `<b>` dropped);
+  verbatim zones = EmojiStrip's + the built widgets that own their inner shape. Unit probe 20/20.
+- **Regeneration:** scoped — the in-memory OFF/ON probe over ALL 416 modules: OFF = disk 2102/2102; ON = exactly 24 pages / 24 modules
+  (`_r337_affected.txt`); planner batches all rc 0; 0 truly stale; manifest diff = exactly the 24.
+- **Gates:** skeleton 51.078 → 51.079 (+0.001pp; 3 moved — 2 up / 1 down, every mover in the affected set, pp-sum +1.89 (XLP05_5_0 +2.01, MXFU402_3_0 +0.09; PES1001_5_0 −0.21 NAMED = its new <li>s keep the writer's bold lead the gold strips inside the list, the r164/r165 bold class — the <ol> itself now matches); the other 21 changed pages sit inside collapsed accordion widget markers and cannot move the scaffold); ≥50 1066 → 1066; ≥75 200 → 200; ≥90 15; every other gate
+  line-for-line EXACT with r336 (fastloop PASS; full suite `_r337_gates.log`); accordion verifier over the 24: 166 panels / 22 modules, every panel matches the human, defect 0; 13 selftests GREEN.
+  **55.8% of achievable.** A small ship under the 20-page floor (14 pages by the strict census, 24 by the shipped rule) — the r320 precedent.
+- **Named:** CEDW501's quiz-as-list (the gold builds an MCQ — a nested-quiz follow-up); c41's untagged captions (editorial, "line after
+  an image" is a caption at ~0.00); c75's 452 untagged hyperlink buttons (255 pages — needs the live extractor's link channel to measure;
+  the next session's first PICK). Ship ledger: scoped #3 since the r334 full backstop.
+  **Plateau window: r335 +0.018 · r336 +0.000 · r337 +0.001 — three consecutive shipped rounds under 0.02pp with no other protected
+  gate moved → THE LOOP STOPPED after this round (§4 plateau).**
+
+## Session 6 · Round 3 PICK (engine r337) — written 2026-09-15 22:20 NZST (the measurement first, the code alongside it)
+- **Queue after r336:** the post-r335 substitution ranking has no derivable structural class ≥ 20 pages left (every Standard row is
+  declined / blocked / named; Fundamentals' chip shipped as r336). The KB §A rows still carrying a gap: **c42** (numbered steps = `<ol>`,
+  typed `<p>1.` numbering on 28 Claude pages), c41 (captions — Claude 38 pages vs gold 155), c75 (external-link buttons — Claude 117 vs
+  gold 417 pages). c42 is a numbered Universal constraint with an exact mechanism; picked first.
+- **Class:** KB constraint 42 (Universal): numbered instructions / steps / sub-questions are semantic `<ol><li>` (`start="N"` for a
+  continuation), NEVER `<p>1. …</p>`. Claude ships numbered paragraphs in TWO forms: the writer's typed sequence (`1. 2. 3.`) and the
+  extractor's Word-numbered-list marker — `DocxExtractor` prefixes EVERY numbered-list paragraph with `1. ` and never counts, so a Word
+  list inside a built widget panel ships `<p>1. …</p><p>1. …</p>` (every question numbered 1 — BLL213/214/235/236/237/263). The free-body
+  path (`ListsAndRuns.renderBlackText`) already turns both forms into `<ol>`; the widget panels render lines as `<p>` and never see it.
+  **Measured on the engine's own adjacency rule (`_measure_r337_numruns.py`): 16 runs on 14 pages / 14 modules, all inside accordion
+  panels** (11 marker runs + 5 typed). The wider typed-number census (`_measure_r337_typednum.py`, 218 paragraphs / 34 pages) counts
+  single numbered `<p>`s in separate containers too (flipCard faces, D&D questions, captions — not lists; the gold keeps a flipCard's
+  `1.` as the card title, a D&D question as a plain `<p>`); where the gold holds the run text it is `<ol>` 111 / `<ul>` 30 / `<p>` 30.
+- **Triangulated:** BLL213 lesson 2 — docx `w:numPr` list "Why did Spotty…" → gold `<ol><li>Why did Spotty…</li>…` in the accordion panel →
+  Claude `<p>1. Why did Spotty…</p><p>1. How was Sant…</p>` (every item "1."). BLL212 lesson 2 — typed `1. What happened…` → gold `<ol>` →
+  Claude `<p>1. …</p><p>2. …</p>`. SCCH301 lesson 1 — the syringe steps, the same.
+- **Authority (§1b):** level 1 — constraint 42 is a numbered Universal constraint; the gold agrees (`<ol>` 0.63 / a list 0.81).
+- **Fix:** `body_region.typed_number_list` {enabled, env `TYPEDOL_OFF`, lead_pattern, min_run 2, sequential, marker_form_all_equal,
+  start_attr, verbatim_widget_classes} → `ListsAndRuns.TypedNumberList(html)`, a full-page post-pass at the r234 EmojiStrip seam
+  (PageAssembler, after the emoji list clause, before LinkTextDisplay, body only): a run of ≥ 2 consecutive bare `<p>`s whose text
+  opens with sequential numbers or the all-`1.` marker → one `<ol>` (`start="n"` when n > 1), the number removed from the first text
+  node; verbatim zones = EmojiStrip's (cv2 boxes, notes, script/style) + the built widgets that own their inner shape (flipCard,
+  dragAndDrop, clickDrop, dropQuiz, mcq, speechBubble, carousel, tabs, hintSlider, TKmodal, selfCheck, memoryGame, rotateBanner).
+  Unit probe `_r337_unit.cjs` 17/17. **Under the 20-page floor — shipped small on the r320 precedent** (built, proven, KB-right, and
+  the marker form is a visible defect).
+- **Gate expectation:** gate-neutral by construction (the accordion panel is inside a widget marker the skeleton collapses; cs / body
+  exclude widget subtrees; the accordion verifier strips tags and word-overlaps) — every gate EXACT; the accordion verifier over the
+  affected modules must stay defect 0. **Plateau window: r335 +0.018 · r336 +0.000 · r337 (expected 0.000) → the plateau rule fires
+  after this round unless the queue yields a gate-moving class.**
 
 ## Session 6 · Round 2 (engine r336) — what shipped (the Fundamentals overview chip is a family convention)
 - **Fix (DATA only, no toggle):** five `Style_Anchor_Registry.json` `module_code` rows — ARFUN / ENFUN / TEFUN base_rules `{overview: absent,
@@ -1244,5 +1293,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s5-full · the FULL-SHIP BACKSTOP after r334 · 416 dirs regenerated, 0 stale, manifest IDENTICAL (0 pages) · baselines re-snapshotted unchanged · ledger record-full (counter 0) · 2026-09-15 19:43
 - s5-r6 / s6-r1 (engine r335) · the `[Engagement quiz button]` is the KB's external quiz link button (01F; c65 label `Go to quiz`, blank publish-time href, ONE To Do note with the writer's link) · BUILT + PROBE-PROVEN in session 5 (OFF = disk 2102/2102; ON = 28 pages / 28 modules), SHIPPED OFF at Chris's stop, **flipped ON + SHIPPED 2026-09-15 (session 6)** · scoped regeneration, 28 pages / 28 modules · scaffold 51.060→51.078 (+0.018; 28 moved — 19 up / 9 down, every mover in the affected set, pp-sum +35.31; the 9 dips ≤ 0.33pp NAMED = the scorer's alignment artefact on pages whose gold box has no inner row > col-12 (OSBY501_5, OSSC501_5, OSSC301_3, OSAI201_3, OSOH501_5, OSSC401_4, ARFUN01_0, HPFUN401_0, ARFUN02_0 — the element sequence h3 → p → a → div.button is now the gold's)), ≥50 1066→1066, every other gate EXACT · engagementTrigger divs 28→0 · 55.8% of achievable · scoped ship #1 since the r334 full · commit (see git log)
 - s6-r2 (engine r336) · the Fundamentals overview `#module-code` chip is a family convention (a `Style_Anchor_Registry.json` correction: ARFUN / ENFUN / TEFUN / MXFUN0 drop the chip the golds never ship, SSFUN gains the chip its golds ship 5/6) · SHIPPED 2026-09-15 · scoped regeneration, 31 pages / 31 modules · scaffold 51.078→51.078 (+0.000; 31 moved — 9 up / 22 down, every mover in the affected set, pp-sum +0.62; the 22 dips ≤ 0.32pp NAMED = the scorer's alignment artefact: the phantom chip's `h1` line had been coincidentally matching the gold's second (Te Reo) `h1`, which Claude never ships — the element sequence is now the gold's; SSFUN07_0_0 +2.52 the largest gain), ≥50 1066→1066, ≥75 200→200, every other gate EXACT · chips = the family form on 30/31 · 55.8% of achievable · scoped ship #2 since the r334 full · sub-heading level / heading ladder / paddingR / p⇐h5 DECLINED on measurement; alertPadding → needs Chris · commit (see git log)
+- s6-r3 (engine r337) · numbered steps are a semantic `<ol>`, never `<p>1. …</p>` (KB constraint 42: a run of consecutive numbered paragraphs — the writer's typed count or the extractor's all-"1." Word-list marker inside a built accordion panel — becomes one `<ol>`, `start=N` when needed; a full-page post-pass at the EmojiStrip seam, the built widgets that own their shape verbatim) · SHIPPED 2026-09-15 · scoped regeneration, 24 pages / 24 modules (a small ship under the 20-page floor, the r320 precedent) · scaffold 51.078→51.079 (+0.001; 3 moved — 2 up / 1 down, every mover in the affected set, pp-sum +1.89 (XLP05_5_0 +2.01, MXFU402_3_0 +0.09; PES1001_5_0 −0.21 NAMED = its new <li>s keep the writer's bold lead the gold strips inside the list, the r164/r165 bold class — the <ol> itself now matches); the other 21 changed pages sit inside collapsed accordion widget markers and cannot move the scaffold), every other gate EXACT · numbered-paragraph runs 26→0 · 55.8% of achievable · scoped ship #3 since the r334 full · c41 captions declined (editorial), c75 untagged buttons → next PICK · commit (see git log) · **LOOP STOPPED — plateau (r335 +0.018, r336 +0.000, r337 +0.001)**
 
 **Next session starts with:** (1) finish Round 6 / engine r335 — flip `buttons["engagement quiz button"].kb_form.enabled` to true, regenerate the 28 modules in `outputs/_r335_affected.txt`, run the gates (expect skeleton +0.02pp, every other gate EXACT), finalise (AppVersion 260619.06, changelog, CLAUDE.md §9/§11/§14, KB status D-row, ledger scoped #1 since the r334 full ship), commit; (2) then Chris's decisions — (a) the EQUATION FORM (Word equations are dropped entirely: 329 OMML equations / 12 WTs; MathML per the gold + the V1.5 production finding vs LaTeX per KB 05A — see Blocked classes; the V1.5 converters `pageforge-site/js/omml-to-mathml.js` / `omml-to-latex.js` are the ready parts), (b) stickyNav, (c) decision 5 interactives, (d) decision 4 title-pair order, (e) decision 1 c47, (f) the KB table form 05D vs 06 §6, (g) the CED revision-brief modules; (3) without a decision, the derivable ≥ 20-page structural queue is EXHAUSTED for gate-moving work — the substitution instrument (`outputs/_measure_r334_subst.py`) and the gap ranking (`_measure_r334_skelgaps.py`) are the two rankers to re-run; the remaining measured candidates are all under the plateau threshold (the box-less `[MTKquiz]` shells ~17 pages, the c79 module-title fallbacks ~24, the 172 empty hand-off boxes, the body `inquiry` token on 23 crumb-less pages, `body.mathJax` 71 pages — not derivable per module).

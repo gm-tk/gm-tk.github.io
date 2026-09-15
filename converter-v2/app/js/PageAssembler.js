@@ -414,14 +414,22 @@ class PageAssembler {
 				// markers. Verbatim zones (cv2-interactive hand-off boxes,
 				// cv2-note / cv2-comment quotes) are skipped inside the pass.
 				// Data: Input_Doc_Rules.emoji_strip; env EMOJISTRIP_OFF.
+				// TYPED-NUMBER RUNS → <ol> (ROUND 337 — KB constraint 42): after the
+				// emoji pass and BEFORE the link-text pass, TypedNumberList turns a
+				// run of consecutive plain <p>s whose text opens with sequential typed
+				// numbers ("1. …", "2. …") into one semantic <ol> (start="N" when the
+				// run does not begin at 1), the typed number stripped. Body only; the
+				// same verbatim zones as EmojiStrip plus the built widgets that own
+				// their inner shape (flipCard / dragAndDrop / carousel / …).
+				// Data: Emit_Templates body_region.typed_number_list; env TYPEDOL_OFF.
 				content: HtmlFormatter.Indent(
 					(() => {
 						const tidied = NotesAndComments.TidyDeveloperNotes(
 							NotesAndComments.OmitPlaceholderResidue(html));
-						const deEmoji = (seg) => ListsAndRuns.EmojiStrip(seg, () =>
+						const deEmoji = (seg) => ListsAndRuns.TypedNumberList(ListsAndRuns.EmojiStrip(seg, () =>
 							NotesAndComments.redFlag(
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
-								run, "diagnostic"));
+								run, "diagnostic")));
 						const ai = tidied.indexOf("<div class=\"acks");
 						return ai < 0
 							? ListsAndRuns.LinkTextDisplay(deEmoji(tidied))

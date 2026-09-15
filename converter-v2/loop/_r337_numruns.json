@@ -1,0 +1,46 @@
+{
+ "forms": {
+  "word-list (all 1.)": 11,
+  "typed-sequential": 5
+ },
+ "pages": {
+  "word-list (all 1.)": [
+   "01-Claude_Modules_\\Fundamentals\\HPFUN402\\HPFUN402_0_0.html",
+   "01-Claude_Modules_\\Standard\\BLL213\\BLL213_2_0.html",
+   "01-Claude_Modules_\\Standard\\BLL214\\BLL214_2_0.html",
+   "01-Claude_Modules_\\Standard\\BLL235\\BLL235_2_0.html",
+   "01-Claude_Modules_\\Standard\\BLL236\\BLL236_2_0.html",
+   "01-Claude_Modules_\\Standard\\CEDW501\\CEDW501_1_0.html",
+   "01-Claude_Modules_\\Standard\\XLP04\\XLP04_3_0.html",
+   "01-Claude_Modules_\\Standard\\XMES203\\XMES203_2_0.html",
+   "01-Claude_Modules_\\Standard\\XTAS101\\XTAS101_3_0.html"
+  ],
+  "typed-sequential": [
+   "01-Claude_Modules_\\Standard\\BLL212\\BLL212_2_0.html",
+   "01-Claude_Modules_\\Standard\\BLL215\\BLL215_2_0.html",
+   "01-Claude_Modules_\\Standard\\BLL232\\BLL232_2_0.html",
+   "01-Claude_Modules_\\Standard\\BLL237\\BLL237_2_0.html",
+   "01-Claude_Modules_\\Standard\\XTAS103\\XTAS103_3_1.html"
+  ]
+ },
+ "modules": [
+  "BLL212",
+  "BLL213",
+  "BLL214",
+  "BLL215",
+  "BLL232",
+  "BLL235",
+  "BLL236",
+  "BLL237",
+  "CEDW501",
+  "HPFUN402",
+  "XLP04",
+  "XMES203",
+  "XTAS101",
+  "XTAS103"
+ ],
+ "runs_by": {
+  "word-list (all 1.)|accContent": 11,
+  "typed-sequential|accContent": 5
+ }
+}

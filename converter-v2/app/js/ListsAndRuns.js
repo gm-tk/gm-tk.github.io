@@ -792,6 +792,125 @@ class ListsAndRuns {
 		}
 		return out;
 	};
+
+	/**
+	 * TYPED-NUMBER RUNS → A SEMANTIC <ol> (round 337 — KB constraint 42, Universal).
+	 * A writer who TYPES the step numbers ("1. Pull the plunger…", "2. …") gives the
+	 * extractor plain paragraphs, not a Word numbered list, so LISTNEST never sees a
+	 * list and the page shipped one <p> per line with the digit inside it — the KB
+	 * says numbered steps / sub-questions are <ol><li> (start="N" when the run does
+	 * not begin at 1), NEVER manual numbering, and the human developers build the
+	 * <ol> (BLL212 / SCCH301 / ENGR101: 0.63 <ol>, 0.81 a list of either kind).
+	 *
+	 * A full-page post-pass at the EmojiStrip seam (PageAssembler, body only): a
+	 * run of >= min_run CONSECUTIVE bare <p> elements (nothing but whitespace
+	 * between one </p> and the next <p>) whose text opens with SEQUENTIAL typed
+	 * numbers (n, n+1, …; a restart or a gap ends the group) becomes one <ol> of
+	 * <li>s, the lead removed from the paragraph's first text node (a lead inside
+	 * a leading <b>/<i> is removed there, the inline tag kept).
+	 *
+	 * VERBATIM zones are copied through untouched, exactly as EmojiStrip carves
+	 * them (cv2-interactive hand-off boxes, cv2-note / cv2-comment, script, style)
+	 * PLUS every built-widget subtree whose class opens with one of the data-listed
+	 * verbatim_widget_classes: a flipCard face keeps its typed number as the card
+	 * title, a dragAndDrop question stays a plain <p>, a carousel caption a <p> —
+	 * those widgets own their inner shape and their verifiers read it. Accordion
+	 * panels, activity boxes and free body are LIVE (the measured population).
+	 * The paragraph-content pattern is guarded so it can never cross a </p>
+	 * (the r234 lesson). Data: Emit_Templates body_region.typed_number_list;
+	 * env TYPEDOL_OFF.
+	 *
+	 * @param {string} html - one finished page's HTML (before the acks block)
+	 * @returns {string}
+	 */
+	static TypedNumberList(html) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TYPEDOL_OFF"]) return html;
+		const src = String(html);
+		if (!/<p>\s*(?:<[^>]+>\s*)*\d/.test(src)) return src;   // no candidate at all
+		const leadRe = new RegExp(cfg.lead_pattern || "^\\s*(\\d{1,2})\\s*[.)]\\s+");
+		const minRun = Math.max(2, cfg.min_run ?? 2);
+		const widgets = (cfg.verbatim_widget_classes ?? []).map((c) => String(c).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+
+		// ---- carve the page into LIVE zones and VERBATIM zones ---------------
+		const openRe = new RegExp("<div class=\"(?:cv2-interactive|" + widgets.join("|")
+			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
+		const pieces = [];
+		{
+			let i = 0, m;
+			while ((m = openRe.exec(src))) {
+				const j = m.index;
+				let end;
+				if (m[0].startsWith("<div")) {           // subtree by <div> depth
+					const re = /<div\b|<\/div>/g;
+					re.lastIndex = j; let depth = 0, mm; end = src.length;
+					while ((mm = re.exec(src))) {
+						depth += mm[0] === "</div>" ? -1 : 1;
+						if (depth === 0) { end = re.lastIndex; break; }
+					}
+				} else if (m[0].startsWith("<p")) {
+					const k = src.indexOf("</p>", j); end = k < 0 ? src.length : k + 4;
+				} else {
+					const close = m[0].startsWith("<script") ? "</script>" : "</style>";
+					const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
+				}
+				if (j > i) pieces.push({ live: true, s: src.slice(i, j) });
+				pieces.push({ live: false, s: src.slice(j, end) });
+				i = end; openRe.lastIndex = end;
+			}
+			if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
+		}
+
+		// ---- 2+ consecutive sequentially-numbered plain <p>s → one <ol> --------
+		const P_INNER = "(?:(?!<\\/p>)[^])*";
+		const RUN_RE = new RegExp("<p>" + P_INNER + "<\\/p>(?:\\s*<p>" + P_INNER + "<\\/p>)+", "g");
+		const ITEM_RE = () => new RegExp("(<p>(" + P_INNER + ")<\\/p>)(\\s*)", "g");
+		// the lead sits in the FIRST text node: optional leading inline tags, then the number,
+		// then EITHER the whitespace before the text OR a closing inline tag when the writer
+		// bolded the number on its own ("<b>1.</b> Play …" → "Play …", the emptied <b> dropped)
+		const LEAD_HTML = new RegExp("^((?:\\s*<[^>]+>)*)\\s*\\d{1,2}\\s*[.)](?:\\s+|(\\s*<\\/(b|i|strong|em|u)>)\\s*)");
+		const stripLead = (inner) => inner.replace(LEAD_HTML, (all, open, closeTag, closeName) => {
+			if (!closeTag) return open;
+			// drop the LAST opening tag of the same name from the leading tag run (it wrapped only the number)
+			const re = new RegExp("(\\s*<" + closeName + "(?:\\s[^>]*)?>)(?![\\s\\S]*<" + closeName + "(?:\\s[^>]*)?>)");
+			return open.replace(re, "");
+		}).replace(/^[ \t ]+/, "");
+		const numberOf = (inner) => {
+			const m = inner.replace(/<[^>]+>/g, "").match(leadRe);
+			return m ? parseInt(m[1], 10) : null;
+		};
+		const listify = (chunk) => chunk.replace(RUN_RE, (run) => {
+			const items = [];
+			const re = ITEM_RE(); let mm;
+			while ((mm = re.exec(run))) items.push({ html: mm[1], inner: mm[2], ws: mm[3], n: numberOf(mm[2]) });
+			let out = "", group = [];
+			const flush = () => {
+				if (group.length >= minRun) {
+					const lis = group.map((g) => "<li>" + stripLead(g.inner) + "</li>");
+					const start = cfg.start_attr !== false && group[0].n !== 1 ? ` start="${group[0].n}"` : "";
+					out += "<ol" + start + ">\n" + lis.join("\n") + "\n</ol>\n";
+				} else for (const g of group) out += g.html + g.ws;
+				group = [];
+			};
+			for (const it of items) {
+				// SEQUENTIAL = the writer's typed count (n, n+1, …) OR the extractor's Word-numbered-list
+				// marker, which prefixes EVERY item with "1." (DocxExtractor never counts) — a run whose
+				// numbers are all the same is that marker form and is one <ol> too (marker_form_all_equal).
+				const last = group.length ? group[group.length - 1].n : null;
+				const allEqual = group.length > 0 && group.every((g) => g.n === group[0].n);
+				const seq = it.n !== null && (group.length === 0 || cfg.sequential === false
+					|| it.n === last + 1
+					|| (cfg.marker_form_all_equal !== false && allEqual && it.n === group[0].n));
+				if (it.n !== null && seq) group.push(it);
+				else if (it.n !== null) { flush(); group.push(it); }   // a restart opens a new group
+				else { flush(); out += it.html + it.ws; }
+			}
+			flush();
+			return out;
+		});
+		return pieces.map((p) => (p.live ? listify(p.s) : p.s)).join("");
+	};
 }
 
 // Node test-harness hook; browsers ignore it.

@@ -1661,7 +1661,11 @@ class Config {
 	// ROUND 336 (2026-09-15, build 260619.07): the Fundamentals overview #module-code chip is a family convention —
 	// Style_Anchor_Registry rows for ARFUN / ENFUN / TEFUN / MXFUN0 (absent) and SSFUN (full-code) mined from the golds
 	// (unanimous / 0.83); a data-only registry correction, scoped regeneration of 31 modules; no new toggle.
-	static AppVersion = "260619.07";
+	// ROUND 337 (2026-09-15, build 260619.08): numbered steps are a semantic <ol>, never <p>1. …</p> (KB constraint 42) —
+	// ListsAndRuns.TypedNumberList, a full-page post-pass at the EmojiStrip seam, turns a run of consecutive numbered
+	// paragraphs (the writer's typed count or the extractor's all-"1." Word-list marker) into one <ol>; scoped 24 modules;
+	// env TYPEDOL_OFF.
+	static AppVersion = "260619.08";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
