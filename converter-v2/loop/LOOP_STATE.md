@@ -124,6 +124,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Round 11 (engine r324 — a `Lesson N` label is not a lesson title, KB c79): SHIPPED 2026-09-15 ≈12:35 (session 3). AppVersion 260618.95, CLAUDE.md §9/§11/§14, KB status row 79 → the label mechanism CAPTURED-LIVE, scoped ship #1 since the r323 full. c67 overflowYScroll DECLINED on measurement.
 - Round 12 (engine r325 — phase-scoped activity numbering on the Fundamentals pages, the r217/r266 follow-up): SHIPPED 2026-09-15 ≈13:10 (session 3). AppVersion 260618.96, CLAUDE.md §9/§11/§14, scoped ship #2 since the r323 full. **THE LOOP STOPPED after it (plateau rule).**
 - Session 4 Round 1 (engine r326 — a call-to-action button is an anchor, the KB's universal button form): SHIPPED 2026-09-15 ≈15:05 (session 4). AppVersion 260618.97, CLAUDE.md §9/§11/§14, KB status D-row added, FULL regeneration (scoped-ship counter reset).
+- Session 4 Round 2 (engine r327 — a multi-word ALL-CAPS title renders in sentence case, the KB's title-casing rule): SHIPPED 2026-09-15 ≈15:15 (session 4). AppVersion 260618.98, CLAUDE.md §9/§11/§14, KB status row 1 → ALL-CAPS normalisation CAPTURED-LIVE, scoped ship #1 since the r326 full. Gate-neutral.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -547,6 +548,45 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 4 · Round 2 (engine r327) — what shipped (the KB's title-casing rule)
+- **Fix:** `header.title_casing` {enabled, env TITLECASE_OFF, min_words 2, keep_tokens_with_digits true, red_flag} — `SkeletonBuilder.#titleCasing`
+  at the header title fill (plain / lowercase-span templates; the BLL phonics template untouched): a multi-word all-caps title → sentence case
+  (macrons kept, digit tokens kept, single token untouched) + ONE red flag quoting the original (the KB's proper-noun caution applied to all).
+- **Regeneration:** scoped — the in-memory ON probe over all 416 named 47 pages / 15 modules (= the measured population); regenerated; 0 truly
+  stale; OFF vs disk on the 15 = exactly the 47 pages; ON = disk 160/160. Claude all-caps multi-word header spans 47 → 0; 47 flags.
+- **Gates:** every gate EXACT (fastloop PASS, all deltas 0; full suite identical; skeleton 50.492 page-for-page identical, 0 moved); 13 selftests
+  GREEN; the r324 title classifier exact 550 → 567 / case-only 88 → 71. **55.1% of achievable** (unchanged). KB status row 1 → the
+  ALL-CAPS normalisation CAPTURED-LIVE.
+- **Plateau window:** r326 +0.057 · r327 0.000 (gate-neutral, KB-driven) — one sub-threshold round.
+
+## Session 4 · Round 2 PICK (engine r327) — written before any code, 2026-09-15 14:58 NZST
+- **Class:** a writer's MULTI-WORD ALL-CAPS title ships ALL CAPS in the header `<h1><span>` (`DREAM IT, PLAN IT, DO IT`, `TE TIRITI O WAITANGI`,
+  `INTRODUCTION TO POTENTIAL ENERGY AND WORK`). The KB (01A_TEMPLATE_LEVELS_CORE "Title casing — normalise a MULTI-WORD ALL-CAPS title",
+  10_CORPUS_VALIDATED_SCAFFOLDING §1, constraint 1's permitted normalisations — KB status row 1 "ALL-CAPS title UNVERIFIED") says: render it in
+  SENTENCE CASE (first letter capitalised, the rest lowercase; the Te Reo span the same, macrons kept); a SINGLE all-caps token is left as written
+  (proper noun / acronym); sentence-casing cannot restore internal capitals, so raise a visible red flag quoting the original. Gate-neutral (the
+  skeleton is text-stripped).
+- **Authority (§1b):** 1 = the KB rule (corpus-validated in the KB itself: 0 of 105 multi-word header spans all-caps). The gold agrees on every
+  paired case but is era-mixed in HOW it re-cases (sentence case 26, Title Case 14, lowercase 2 — `a mule, a wizard and jim crow`); the KB's
+  sentence case is the target, not the gold's variant.
+- **MEASURED (every header `<h1><span>`, acks / glossary pages excluded):** gold 3,047 spans — 15 all-caps multi-word, ALL of them unreplaced
+  placeholders (`TE REO TRANSLATION HERE`, `MODULE TITLE TE REO`, `TRANSLATION NEEDED`), i.e. 0 real titles. **Claude 2,345 spans — 47 all-caps
+  multi-word on 47 pages / 15 modules** (Standard 44 / Inquiry 3 / Bilingual 0 / Fundamentals 0; CEDK501 3, CEDO502 6, HES1003 5, HES1004 2,
+  HIS1001 6, HIS1005 9, HIS1006 3, HIS1007 4, HIS1008 3, PES1007 2, MXEO401 1, ENGS101 1, CEDO501 1, HES1005 1, PES1008 1); every one is the
+  writer's own ALL-CAPS text carried verbatim (`claude-in-WT` on all). The wider case-only title class (66 pages) is the gold's editorial
+  Title-Case / sentence-case choices on titles the writer typed in mixed case — the KB says render those exactly as written → class C, not chased.
+- **Triangulated:** CEDK501 1 (WT `DREAM IT, PLAN IT, DO IT` → gold `Dream it, plan it, do it` → Claude ALL CAPS); HIS1005 2 (WT `TE TIRITI O
+  WAITANGI` → gold `Te tiriti o waitangi` → Claude ALL CAPS — the proper-noun caution: the gold itself lost the capitals, the flag exists for this);
+  PES1007 4 (WT `INTRODUCTION TO POTENTIAL ENERGY AND WORK` → gold `Introduction to potential energy and work` → Claude ALL CAPS).
+- **Fix (planned):** `Emit_Templates.header.title_casing` {enabled, env TITLECASE_OFF, min_words 2, keep_tokens_with_digits true (`(US7121)` is a
+  code, not a word), red_flag text quoting the original}; `SkeletonBuilder.#titleCasing` at the header title fill (the plain / lowercase-span
+  templates; the BLL phonics template untouched — its lead is the round-125 mechanism). ONE red flag (cv2-note, gate-neutral) after the h1 on
+  every normalised title: the KB's proper-noun caution applied to all of them, because the converter cannot tell `Castle Bravo` from `castle bravo`.
+- **Regeneration:** the r324 pattern — in-memory ON probe over all 416 modules names the changed set; scoped regeneration of those modules;
+  OFF in memory = disk on every page.
+- **Gate expectation:** every gate EXACT (text-immune skeleton; compare/body fold case); the r324 title classifier's `case/ws/macron-only` row
+  drops by the normalised pages that now match the gold exactly. Plateau window: r326 +0.057 → this round is the first sub-threshold candidate.
+
 ## Session 4 · Round 1 (engine r326) — what shipped (the KB's universal button form)
 - **Fix:** `buttons.anchor_wrap` {enabled, env BTNANCHOR_OFF, form `<a href="{href}" target="_blank">{button}</a>`, todo_note, exclude_label_match,
   targets [dropbox / portfolio / quiz(href #) / journal|workbook / download], default} — `ContentConverter.#buttonAnchorWrap` at the generic
@@ -654,3 +694,4 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - r11 (engine r324) · KB constraint 79, a `Lesson N` label is not a lesson title (the first real heading names the page; `continued` sub-pages inherit) · SHIPPED 2026-09-15 · scoped regeneration, 79 pages / 24 modules · scaffold 50.411→50.416 (+0.005; 11 up / 3 down named), ≥50 +1, every other gate EXACT · titles exact 528→550 · c67 DECLINED · 55.0% of achievable · commit (see git log)
 - r12 (engine r325) · phase-scoped activity numbering on the Fundamentals pages (the r217/r266 follow-up: the phase ordinal as the activity-number prefix, the writer's bare digit over the scanner's collision letter) · SHIPPED 2026-09-15 · scoped regeneration, 17 pages / 17 modules · scaffold 50.416→50.435 (+0.019; 12 up / 5 down named), every other gate EXACT · number matches 66→178 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r323 0.000, r324 +0.005, r325 +0.019)**
 - s4-r1 (engine r326) · a call-to-action button is an anchor (the KB's universal button form: a plain `[button]` ships inside `<a href target=_blank>` — the writer's hyperlink kept, else a blank href + one To Do note; reveal-type labels stay the gold's JS button) · SHIPPED 2026-09-15 · FULL regeneration, 713 pages / 286 modules · scaffold 50.435→50.492 (+0.057; 675 moved, 210 up; dips NAMED = scorer repeat-collapsing, identical net of the changed pages), ≥50 −1 named, ≥75 +3, body 192→191 · every other gate EXACT · bare buttons 1,800→338, 285 lost links recovered · 55.1% of achievable · commit (see git log)
+- s4-r2 (engine r327) · a multi-word ALL-CAPS header title renders in sentence case (the KB's title-casing rule: macrons kept, code tokens kept, single token untouched, one red flag quoting the original) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 15 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · all-caps titles 47→0, titles exact 550→567 · 55.1% of achievable · commit (see git log)

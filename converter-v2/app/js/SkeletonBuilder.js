@@ -368,6 +368,31 @@ class SkeletonBuilder {
 		return new RegExp(mtk.body_class ?? "reoTranslate", "i").test(String(rules?.body_class || ""));
 	}
 
+	/**
+	 * ROUND 327 (the KB's title-casing rule — 01A "normalise a MULTI-WORD ALL-CAPS title",
+	 * 10_CORPUS_VALIDATED_SCAFFOLDING §1). A header title whose words are ALL CAPS and
+	 * number >= min_words renders in SENTENCE CASE: the first letter capitalised, the rest
+	 * lowercase (macrons survive a lowercase), a token carrying a digit ("(US7121)") kept
+	 * as the code it is. A single all-caps token ("STOMP") and any title already in
+	 * sentence / title / mixed case are returned untouched. Returns { text, changed }.
+	 * Data header.title_casing; env TITLECASE_OFF.
+	 */
+	static #titleCasing(title, tpl) {
+		const cfg = tpl?.header?.title_casing;
+		const t = String(title ?? "");
+		if (!cfg || cfg.enabled === false || !t.trim()) return { text: t, changed: false };
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TITLECASE_OFF"]) return { text: t, changed: false };
+		const keepDigits = cfg.keep_tokens_with_digits !== false;
+		const tokens = t.split(/\s+/).filter(Boolean);
+		const words = tokens.filter((w) => /\p{L}/u.test(w) && !(keepDigits && /\d/.test(w)));
+		if (words.length < (cfg.min_words ?? 2)) return { text: t, changed: false };
+		if (!words.every((w) => w === w.toUpperCase() && w !== w.toLowerCase())) return { text: t, changed: false };
+		if (!words.some((w) => w.replace(/[^\p{L}]/gu, "").length > 1)) return { text: t, changed: false };
+		let lowered = t.replace(/\S+/g, (w) => (keepDigits && /\d/.test(w)) ? w : w.toLowerCase());
+		lowered = lowered.replace(/\p{L}/u, (ch) => ch.toUpperCase());
+		return { text: lowered, changed: lowered !== t };
+	}
+
 	/** ROUND 321 — does a title read as te reo Māori? A macron, or letters only from the
 	 *  Māori alphabet (a e i o u h k m n p r t w g) — the round-153 lone-title guard's test. */
 	static #looksMaori(s) {
@@ -652,7 +677,14 @@ class SkeletonBuilder {
 				continue;
 			}
 			firstTitle = false;
-			parts.push(Utils.FillTemplate(titleTpl, { title: Utils.EscapeHtml(t) }));
+			// ROUND 327: a multi-word ALL-CAPS writer title renders in sentence case (the KB's
+			// title-casing rule) + one red flag quoting the original (proper-noun caution)
+			const cased = SkeletonBuilder.#titleCasing(t, tpl);
+			parts.push(Utils.FillTemplate(titleTpl, { title: Utils.EscapeHtml(cased.text) }));
+			if (cased.changed && tpl.header.title_casing?.red_flag) {
+				parts.push(NotesAndComments.redFlag(
+					Utils.FillTemplate(tpl.header.title_casing.red_flag, { original: t }), run, "diagnostic"));
+			}
 		}
 
 		// ---- menu button + content (menu_type pattern) ---------------------

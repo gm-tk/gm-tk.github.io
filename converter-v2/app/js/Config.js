@@ -1620,7 +1620,11 @@ class Config {
 	// + one To Do note, a [button] whose label carries the writer's hyperlink keeps it (285 links
 	// were being lost), reveal-type labels (Check answers / Reset) stay the gold's JS button.
 	// 713 pages / 286 modules, FULL regeneration. Env BTNANCHOR_OFF; data buttons.anchor_wrap.
-	static AppVersion = "260618.97";
+	// ROUND 327 (2026-09-15, build 260618.98): a multi-word ALL-CAPS header title renders in sentence
+	// case (the KB's title-casing rule) + one red flag quoting the original; a single all-caps token
+	// and a code token keep their case. 47 pages / 15 modules, scoped. Env TITLECASE_OFF; data
+	// header.title_casing.
+	static AppVersion = "260618.98";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

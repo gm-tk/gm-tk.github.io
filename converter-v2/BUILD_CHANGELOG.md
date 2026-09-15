@@ -1,5 +1,43 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 327, build 260618.98) — A MULTI-WORD ALL-CAPS TITLE RENDERS IN SENTENCE CASE (the KB's title-casing rule — 01A_TEMPLATE_LEVELS_CORE, 10_CORPUS_VALIDATED_SCAFFOLDING §1, constraint 1's permitted normalisations; the autonomous loop, session 4, Round 2; **SCOPED regeneration of the 15 affected modules; gate-neutral — every protected gate EXACT; scoped ship #1 since the round-326 full**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A writer's multi-word ALL-CAPS header title (`DREAM IT, PLAN IT, DO IT`, `TE TIRITI O WAITANGI`) now renders in sentence case — `Dream it, plan it, do it` — with macrons kept, a code token like `(US7121)` left alone, a single all-caps token (`STOMP`) untouched, and ONE red flag quoting the original so the designer can restore any proper-noun capitals. 47 pages / 15 modules changed; Claude's all-caps multi-word header spans 47 → 0.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **CEDK501 lesson 1** — docx: `DREAM IT, PLAN IT, DO IT` → gold: `<h1><span>Dream it, plan it, do it</span></h1>` → Claude before: `<h1><span>DREAM IT, PLAN IT, DO IT</span></h1>`; after: the gold's form + `Red Flag: The writer's title is ALL CAPS ("DREAM IT, PLAN IT, DO IT") — rendered in sentence case per the KB's title-casing rule; restore any proper-noun or acronym capitals the writer intended.`
+- **HIS1005 lesson 2** — docx: `TE TIRITI O WAITANGI` → gold: `Te tiriti o waitangi` (the human lost the proper-noun capitals too — exactly what the KB's flag exists for) → Claude after: `Te tiriti o waitangi` + the flag.
+- **PES1007 lesson 4** — docx: `INTRODUCTION TO POTENTIAL ENERGY AND WORK` → gold: `Introduction to potential energy and work` → Claude after: the same.
+- **The KB:** `01A_TEMPLATE_LEVELS_CORE.md` "Title casing — normalise a MULTI-WORD ALL-CAPS title (corpus-validated)": sentence case, the Te Reo span the same with macrons preserved, a single all-caps token left as written, a proper-noun caution with a visible red flag quoting the original; titles already in sentence / title / mixed case rendered exactly as written. `10_CORPUS_VALIDATED_SCAFFOLDING.md` §1: 0 of 105 finished multi-word header spans are all-caps. Constraint 1 lists "ALL-CAPS title → sentence case" among the permitted normalisations; `KB_AMALGAMATION_STATUS.md` row 1 had it UNVERIFIED.
+
+### 3. THE MEASUREMENT (every header `<h1><span>`, acks / glossary pages excluded)
+
+- Gold 3,047 spans — 15 all-caps multi-word, every one an unreplaced placeholder (`TE REO TRANSLATION HERE`, `MODULE TITLE TE REO`, `TRANSLATION NEEDED`): 0 real titles. **Claude 2,345 spans — 47 all-caps multi-word on 47 pages / 15 modules** (Standard 44 / Inquiry 3; HIS1005 9, HIS1001 6, CEDO502 6, HES1003 5, HIS1007 4, CEDK501 3, HIS1006 3, HIS1008 3, HES1004 2, PES1007 2, CEDO501 / ENGS101 / HES1005 / MXEO401 / PES1008 1), all the writer's own capitals carried verbatim. The gold re-cases every paired one but is era-mixed in HOW (sentence case 26, Title Case 14, lowercase 2 — `a mule, a wizard and jim crow`); the KB's sentence case is the target.
+- The wider case-only title class (r324's classifier: 88 pages) is otherwise the gold's editorial Title-Case / sentence-case choices on titles the writer typed in mixed case — the KB says render those as written → class C. After this round the classifier reads **exact 550 → 567, case/ws/macron-only 88 → 71** (`_r327_lessontitles_after.json`).
+
+### 4. THE FIX — one data block `Emit_Templates.header.title_casing` `{ enabled, env: "TITLECASE_OFF", min_words: 2, keep_tokens_with_digits: true, red_flag }`
+
+- **`SkeletonBuilder.#titleCasing`** at the header title fill (the plain `title_h1` and the lowercase-span templates; the BLL phonics template is the round-125 mechanism and is untouched): a title whose letter-tokens (≥ `min_words`, a token carrying a digit excluded) are ALL upper-case and include at least one token longer than one letter is lower-cased (macrons survive — `HARURUTANGA ME NGĀ KŌHIMUHIMU` → `Harurutanga me ngā kōhimuhimu`) and its first letter capitalised; `(US7121)` keeps its case; `STOMP` / `A B` / `EXPFUN02` are untouched. One `NotesAndComments.redFlag(…, "diagnostic")` cv2-note follows the `<h1>` on every normalised title — the KB's proper-noun caution applied to all of them, because the converter cannot tell `Castle Bravo` from `castle bravo`.
+- **Env toggle `TITLECASE_OFF`** reverts byte-for-byte.
+
+### 5. THE PROOF AND THE GATES
+
+- The in-memory ON probe over ALL 416 modules (`_r327_probe_on_0*.log`) names exactly **47 pages / 15 modules** = the measured population; scoped regeneration of the 15 (`_r327_batches_run.sh`, 2 batches); `_content_manifest.py fresh --affected` → **0 truly stale** (398 untouched modules byte-identical to the r326 manifest); OFF in memory vs disk on the 15 = exactly the 47 changed pages, ON in memory = disk on 160/160.
+- **Every protected gate EXACT** (`_fastloop_diff.py` on the 15 → PASS, every metric delta 0; the full suite `_r327_gates.log` identical to r326): skeleton SCAFFOLD mean **50.492%** / ≥50% 1030 / ≥75% 196 / ≥90% 15 / skipped 0 @ 1954, RAW 34.831% (`_r327_sk_final.json`: 0 pages moved — the skeleton is text-stripped, the note is a cv2-note) · cs exact 11360 / EXTRA 186 / missing 591 · clean 2056/2102 / leak 288/46 · body 191 · tags 9557/9557 · flipCard TOTAL 61 divergence 0 · mtkQuiz 17 shells defect 0 · entry-parity PASS · index-sync 33/28 · **13 selftests GREEN**.
+- Claude all-caps multi-word header spans **47 → 0**; 47 red flags emitted (one per title).
+- **Ceiling:** SCAFFOLD 50.492% = **55.1% of achievable** (unchanged).
+
+### 6. NAMED, NOT CHASED
+
+- The gold's own Title-Case and lowercase re-casings of mixed-case writer titles (the remaining 71 case-only pages) — the KB says render as written; class C.
+- `*SPECIFIC LATENT HEAT*` (PES1008 5) keeps its asterisks — a Word emphasis residue in the title source, a separate mechanism.
+- The KB's proper-noun heuristic ("likely contains a proper noun") is applied as "always flag" — recorded as the deliberate reading.
+
+**Ledger:** scoped ship #1 since the r326 full · data `header.title_casing` · env `TITLECASE_OFF` · tools `outputs/_r327_finalise.py` (the measurement is the inline probe recorded in `LOOP_STATE.md`; the r324 classifier re-run → `_r327_lessontitles_after.json` / `_r327_lessontitles.log`) · state `outputs/_r327_sk_final.json` (FRESH, identical to r326) · logs `_r327_gates.log`, `_r327_sk_full.log`, `_r327_fastloop.log`, `_r327_selftests.log`, `_r327_probe_on_0*.log`, `_r327_probe_off.log`, `_r327_probe_on.log`, `_r327_regen.log`, `_r327_affected.txt`.
+
 ## 2026-09-15 (round 326, build 260618.97) — A CALL-TO-ACTION BUTTON IS AN ANCHOR (the KB's universal button form, 05D_COMP14_BUTTONS_TABLES_COLUMNS; the autonomous loop, session 4, Round 1; **FULL regeneration — the `[button]` tag family is the corpus; skeleton +0.057pp with a NAMED KB-over-gold dip on the ≥50 bucket (1031 → 1030), every other gate HELD-or-IMPROVED; the loop's plateau window restarts here at +0.057pp**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
