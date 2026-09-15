@@ -1597,7 +1597,13 @@ class Config {
 	// non-quiz widget ends the silence, the retag drops a prose `alert`. 30 pages / 23
 	// modules. Env MTKQUIZOMIT_OFF; data interactive_builders.mtk_quiz.omit_quiz_content +
 	// Tag_Lexicon._meta.mtk_quiz_retag.omit_quiz_content_drop. Gate _verify_mtkquiz.cjs.
-	static AppVersion = "260618.93";
+	// ROUND 323 (2026-09-15, build 260618.94): a button label never ends in a full stop (KB row
+	// 55's text defect — the writer's sentence stop rode into the label: "Upload to dropbox."
+	// ×142, "Learning journal." ×37, "Check answers." ×27; gold 9 of 5,553). ONE trailing full stop
+	// stripped at the generic [button] emit (#buttonLabelTrim); ellipsis / abbreviation kept;
+	// "?" "!" ":" untouched. 212 pages / 82 modules, full regeneration. Env BTNSTOP_OFF;
+	// data buttons.label_trailing_stop.
+	static AppVersion = "260618.94";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

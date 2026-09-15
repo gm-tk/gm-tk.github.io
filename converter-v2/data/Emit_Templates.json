@@ -854,6 +854,13 @@
 		"button_linked": {
 			"form": "<a href=\"{url}\" target=\"_blank\"><div class=\"button\">{label}</div></a>"
 		},
+		"label_trailing_stop": {
+			"_doc": "ROUND 323 (the autonomous loop's session-3 Round 10, 2026-09-15 — KB row 55's recorded text defect). A writer types the button label as a sentence — '[button] Learning journal.', '[button] Upload to dropbox.', '[button] Check answers.' — and the full stop rode into the label. The KB's canonical labels (constraint 55 'Go to dropbox' / 'Go to portfolio', 14.11 'Upload to Dropbox', constraint 75 'Go to website', CL-0038 'Go to quiz') carry no terminal punctuation, and the gold agrees: 9 of 5,553 gold buttons end in a full stop (sentence-like labels) against 441 of 3,052 Claude buttons on 221 pages / 90 modules (outputs/_measure_r323_buttonstop.py). ONE trailing full stop is stripped from the label at the generic [button]-family emit (the only seam that fills a writer's label into a button form); an ellipsis and an abbreviation (e.g. / i.e. / etc.) keep theirs; '?' '!' ':' are never touched (the gold keeps them: 64 / 17 / 10). Env BTNSTOP_OFF reverts byte-for-byte.",
+			"enabled": true,
+			"env": "BTNSTOP_OFF",
+			"strip_pattern": "\\.$",
+			"keep_pattern": "(\\.\\.|\\b(?:e\\.g|i\\.e|etc|vs|approx|no|pp?|cf))\\.$"
+		},
 		"absorb_following_url": {
 			"enabled": true,
 			"_round88_note": "ROUND 88 (Chris, ENGI302-02): a plain [Button] (e.g. 'Go to journal') whose URL sits on the IMMEDIATELY-FOLLOWING standalone bare-URL paragraph is the human's LINKED button — the URL is loaded onto the button as its href, the bare-URL <p> is dropped (human '<a href=URL target=_blank><div class=\"button\">Download journal</div></a>'; verified ENGI302/ENGJ202/SSOG301/MXDI301). Claude rendered '<div class=\"button\">Go to journal</div>' + a separate '<p><a>URL</a></p>'. FIX: #element button branch — when key==='button', the button has NO url of its own, and bodyItems[i+1] is a STANDALONE bare URL (whole content is one http(s) URL, not a tag/element, not consumed), absorb it as the href (buttons.button_linked.form) and mark it _consumed (the loop's round-72 skip drops it). The href VALUE is the WT URL (the human re-points to a fresh copy-doc / generic Drive link — non-derivable editorial); the STRUCTURE + label match. Tight: only the bare-URL-alone next item (same discriminator as round 76), never prose; skipped when the dropbox-orange override fires. Env BTNURL_OFF reverts to the un-linked button + separate bare-URL <p>."

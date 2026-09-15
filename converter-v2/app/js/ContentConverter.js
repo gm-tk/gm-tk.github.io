@@ -5616,6 +5616,23 @@ class ContentConverter {
 	 * family or the round is off (mtk_quiz.enabled false / MTKQUIZ_OFF / omit disabled /
 	 * MTKQUIZOMIT_OFF) — every round-322 seam keys off this one predicate.
 	 */
+	/**
+	 * ROUND 323 (KB row 55's text defect) — a button label never ends in a full stop: the
+	 * writer typed the label as a sentence ("[button] Upload to dropbox.") and the stop rode
+	 * into the label (441 Claude buttons vs 9 gold). ONE trailing full stop is stripped;
+	 * an ellipsis or an abbreviation (keep_pattern) keeps it; "?" "!" ":" are never touched.
+	 * Data buttons.label_trailing_stop; env BTNSTOP_OFF.
+	 */
+	static #buttonLabelTrim(label, tpl) {
+		const cfg = tpl?.buttons?.label_trailing_stop;
+		if (!cfg || cfg.enabled === false || !label) return label;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BTNSTOP_OFF"]) return label;
+		const s = String(label).trim();
+		if (!new RegExp(cfg.strip_pattern ?? "\\.$").test(s)) return label;
+		if (cfg.keep_pattern && new RegExp(cfg.keep_pattern, "i").test(s)) return label;
+		return s.replace(new RegExp(cfg.strip_pattern ?? "\\.$"), "").trim();
+	}
+
 	static #mtkQuizOmitCfg() {
 		const mq = DataService.Data.EmitTemplates.interactive_builders?.mtk_quiz;
 		if (!mq || mq.enabled === false) return null;
@@ -6190,6 +6207,8 @@ class ContentConverter {
 					.replace(/\*/g, "").replace(/\s+/g, " ").trim();
 				if (dlLabel) { label = dlLabel; form = dlCfg.form; }
 			}
+			// ROUND 323 (KB row 55): the writer's sentence full stop is not part of the label
+			label = this.#buttonLabelTrim(label, tpl);
 			out.push(Utils.FillTemplate(form, {
 				label: Utils.EscapeHtml(label), url: Utils.EscapeHtml(url),
 			}));

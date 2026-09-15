@@ -6,7 +6,7 @@
 **Session 3 started:** 2026-09-15 09:41 NZST (Claude Code, same machine; hard stop 19:41). Budget: 12 rounds or 10 hours. Chris's kickoff:
 "Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … commit after every round, never push."
 Health check: `verify_after_transfer.sh` PASS, git clean at 1914ab5 (nothing uncommitted — nothing to reconcile), no stale index.lock.
-**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082, the `[MTKquiz]` shell without the quiz content (Chris's decision 3); commit (see git log). NEXT: Round 10 — PICK not yet written (candidates: c55 trailing full stops on buttons — gate-neutral; stickyNav; c67 overflowYScroll; the r322 residues need their own measured rounds). Plateau guard: r322 moved +0.043pp (gate-moving).**
+**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). NEXT: Round 11 — PICK not yet written (candidates: c67 overflowYScroll 27 pages; the c79 fallback mechanisms sized per mechanism; the r322 residues). stickyNav (KB queue rank 10) is BLOCKED — needs Chris (see Blocked classes). Plateau guard: r322 moved +0.043pp.**
 
 ## >>> STOPPED 2026-09-15 ≈08:15 NZST on the BUDGET rule (§4) — the 10-hour session cap (hard stop 09:21) after 8 shipped rounds <<<
 - **Why:** Chris answered the plateau report ("Yes to 2 and 3 — start with the TRR title source") at ≈07:48 NZST; Round 8 (decision 2, the MTK
@@ -108,7 +108,8 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   §11/§14, scoped ship #2 since the r318 full. **LOOP STOPPED (plateau).**
 - Round 8 (engine r321 — the MTK title source, decision 2): SHIPPED 2026-09-15 08:2x. AppVersion 260618.92, CLAUDE.md §9/§11/§14, scoped ship #3.
 - Round 9 (engine r322 — the [MTKquiz] shell without the quiz content, decision 3 / KB c65): SHIPPED 2026-09-15 ≈11:35 (session 3). AppVersion 260618.93, CLAUDE.md §9/§11/§14, KB status row 65 → CAPTURED-LIVE, new gate `_verify_mtkquiz.cjs` in `run_all_gates.sh` (13 selftests), scoped ship #4.
-- Remaining KB queue (§D): c55 full stops (420 buttons, gate-neutral — NEXT candidate), stickyNav (33 modules,
+- Round 10 (engine r323 — a button label never ends in a full stop, KB row 55's text defect): SHIPPED 2026-09-15 (session 3). AppVersion 260618.94, CLAUDE.md §9/§11/§14, KB status row 55 → defect CLEARED, FULL regeneration (the first since r318; scoped-ship counter reset). stickyNav BLOCKED — needs Chris.
+- Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
 ## The ceiling (Round 0 result — quote it in every report)
@@ -399,6 +400,45 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   gate holding. Compare_structure / body_compare may move on the 33 pages (fewer content elements); leak/clean ≥ hold (fewer orphan-tag flags).
 - **Plateau guard:** R8 moved (+0.043); this round is gate-moving (a named override, possibly net negative — judged net of the named pages).
 
+## Round 10 PICK (engine r323) — written before any code, 2026-09-15 11:50 NZST
+- **Class:** KB row 55's recorded text defect — a button label that ends in a full stop (`[button] Learning journal.` → `<div class="button">Learning journal.</div>`).
+  The KB's canonical labels (constraint 55 "Go to dropbox" / "Go to portfolio", 14.11 "Upload to Dropbox", constraint 75 "Go to website", CL-0038 "Go to quiz")
+  carry no terminal punctuation; the writer's full stop is sentence punctuation, not label. Authority: §1b-1 the KB's label forms + §1b-3/4 the gold
+  convention (below) — the two agree.
+- **Measurement (`outputs/_measure_r323_buttonstop.py` → `_r323_buttonstop.json`, every Claude and gold page, `button` / `externalButton` / `buttonD`
+  divs, widget chrome excluded):** gold **9 of 5,553** buttons end in a full stop (0.16% — seven sentence-like labels: "Finished? Go to the next step." ×3,
+  "4. Keep it real." …); Claude **441 of 3,052** (14.5%) on **221 pages / 90 modules** — Standard 381/2,486, Inquiry 49/334, Fundamentals 11/232; every
+  subject family (MX 125, XDLS 89, HIS 37, BLL 30, CED 18 …); `button` 436 / `buttonD` 5 / `externalButton` 0. Top labels: "Upload to dropbox." 142,
+  "Learning journal." 37, "Check answers." 27, "Go to quiz." 13, "Go to learning journal." 13, "Go to dropbox." 11, "Portfolio." 11, "Reset." 9. Other
+  terminal punctuation the gold KEEPS ("?" 64, "!" 17, ":" 10) is NOT touched. Share ≥ 0.60 in every group → the rule is corpus-wide, one data flag.
+- **Triangulation:** MXFL203 WT `[button] Learning journal.` / `[button] Check answers.` / `[button] Reset.` → gold `Go to journal` (an editorial
+  relabel, class C — the full stop is gone either way) / `Check answers` / no full stop anywhere → Claude `Learning journal.` ×14, `Check answers.`;
+  BLL233 WT `Upload to dropbox.` → gold `<div class="buttonD">Upload to dropbox</div>` → Claude `Upload to dropbox.`; HPFUN103 `[button] Check answers.`
+  → gold `Check answers` (widget chrome) → Claude `Check answers.`.
+- **Mechanism:** ONE seam — the generic `[button]`-family emit in `ContentConverter.#element` (the only site that fills a writer's label into a button
+  form: 6,194; the external-link labelled site already refuses a label ending in `.!?:`): `label = #buttonLabelTrim(label)` strips ONE trailing full
+  stop (never an ellipsis, never an abbreviation `e.g.`/`i.e.`/`etc.`) under `buttons.label_trailing_stop` {enabled, env BTNSTOP_OFF,
+  strip_pattern, keep_pattern}. Nothing else changes.
+- **Family (§0b):** the `button` tag family = 429 modules (`Module_Feature_Index.by_feature.button`) — the whole corpus → a FULL regeneration
+  (allowed: the change is tag-family-wide; scoped ship count since the r318 full: 4). Expect 221 pages / 90 modules changed, 0 added/removed.
+- **Gate expectation:** gate-neutral to the skeleton (text-immune); compare_structure / body_compare text-matching may IMPROVE (a label now equals the
+  gold's); every other gate EXACT. Plateau guard: this is a text round — r322 was gate-moving, so no plateau risk yet.
+- **Verifier:** the measure script re-run after the regeneration must report Claude full-stop buttons = the gold-like residue only (labels whose stop is
+  an abbreviation) — expected 0–3; `--selftest`-style check: the ON probe over BLL233 shows `Upload to dropbox.` → `Upload to dropbox`.
+
+## Round 10 (engine r323) — what shipped (KB row 55's text defect)
+- **Fix:** `buttons.label_trailing_stop` {enabled, env BTNSTOP_OFF, strip_pattern "\\.$", keep_pattern (ellipsis / e.g. / i.e. / etc. …)} — ONE seam,
+  the generic `[button]`-family emit in `ContentConverter.#element` (`label = #buttonLabelTrim(label, tpl)` before the fill). Splice `_r323_splice.py`
+  (3 steps, idempotent). Measure `_measure_r323_buttonstop.py` → `_r323_buttonstop.json` (before) / `_r323_buttonstop_after.json` (after).
+- **Regeneration:** FULL — the `[button]` tag family is 429 modules (`Module_Feature_Index.by_feature.button`), so the whole corpus (416 modules / 70
+  batches, `_r323_batches_run.sh`); 0 stale; **212 pages / 82 modules changed, 0 added/removed**; OFF in memory = disk on 2,102/2,102 pages
+  before the regeneration (`_r323_probe_off_0*.log`). After: 29 of 3052 Claude buttons end in a full stop (the widget-internal label pickers' own sentence-labels — 'Wearable Art (WOW) entry to raise awareness of Cancer.' ×6, BLL 'Find things in your house that have the … sound in them.', story titles 'Weka in a flap.' — a different seam (InteractiveBuilder's URL-button / tile labels), the r307/r308 sentence-button class, named).
+- **Gates:** skeleton 50.411 → 50.411 (+0.000pp; 0 moved, text-immune), ≥50 1030 / ≥75 193 / ≥90 15; cs exact 11360 / EXTRA 186 /
+  missing 591 (text-matched 13398); clean 2056/2102; leak 288/46; body 192; tags 9557/9557; every verifier line identical; 13 selftests GREEN.
+  **55.0% of achievable.**
+- **Named residue:** the gold's own nine sentence-labels (class C); a writer's sentence that became a button loses only its stop (the r307/r308
+  "sentence [button]" class is its own round).
+
 ## Round 9 (engine r322) — what shipped (Chris's decision 3, KB constraint 65 / CL-0082)
 - **Fix:** `interactive_builders.mtk_quiz.omit_quiz_content` {enabled, env MTKQUIZOMIT_OFF, note_first, todo_note, instruction_max_items 2,
   instruction_tags, question_pattern, answer_mark_pattern, shell_max_members_before 2, quiz_bundle_types, non_quiz_widget_ends_silence,
@@ -460,7 +500,18 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   universal wording should be applied regardless of the gold (then: strip + drop the opening duplicate on lesson pages, strip-only on the overview).
 
 ## Blocked classes
-(none yet)
+- **stickyNav `<head>` include (KB queue rank 10; 14A/14B/14D) — BLOCKED 2026-09-15, needs Chris.** Measured (`outputs/_measure_r323_stickynav.py` →
+  `_r323_stickynav.json`): the gold carries `<script src="js/stickyNav.js" type="text/javascript" class="stickyNav"></script>` right after `<title>` on
+  **1,504 of 2,385 pages (63%)**, per MODULE all-or-nothing (253 modules every page, 171 none, 30 mixed), ≥ 0.60 in 30 series (MX 0.92, ENGI/ENGR/HIS/
+  AGH/MXDI/MXEO 1.00, ANZH 0.92, CED 0.96, HES 1.00, PHE 0.98 …) and 0 in others (TRR/PNR Bilingual 0/92, BLL 0.31, ARFUN 0, SC 0.05, HPRE 0/21);
+  Claude 0 of 2,102. **The conflict:** the KB (14.1 Languages P1–4 every page + a "set up the stickyNav.js file" To Do note; CED Phase 5; 14.8 HPE)
+  says ADD it, and the gold does so far more widely; Chris's own project instruction (`00_PROJECT_CONTEXT_AND_PHILOSOPHY.md` "stickyNav — a templating
+  error that was copied across modules; never emit it"; `00_PHASE1_READINESS_BRIEF.md` "Never emit stickyNav.js — deliberate exclusion";
+  `Emit_Templates.skeleton.never_emit`) says NEVER. Two of Chris's instructions disagree; the loop does not arbitrate that unattended. Gate-neutral
+  (the `<head>` is outside every gate; a `cv2-note` is skeleton-inert). **Recommendation:** honour the KB in its three named families only (Languages
+  P1–4, CED Phase 5, HPE — ≈ 33 modules, include + the KB's To Do note) and keep the ban everywhere else (the MX/ENG/HIS… copies are exactly the
+  "templating error copied across modules" the philosophy names). Decision needed: (a) KB families only, (b) every ≥ 0.60 series, (c) keep the ban.
+
 
 ## Round log
 - r0 · the ceiling instrument · shipped (tool + measurement, no converter change) · ceiling 91.6%, SCAFFOLD 49.941% = 54.5% of achievable · pages moved 0 · commit ca59d13
@@ -474,3 +525,4 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - r7 (engine r320) · the upload box keeps the writer's order around its button (text before the last marker → before the button) · SHIPPED 2026-09-15 (a small ship: 6 pages / 4 modules) · scaffold 50.322→50.325 (+0.003) · every other gate EXACT · c47/c95 DECLINED on measurement · 54.9% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r318 0.000, r319 0.000, r320 +0.003)**
 - r8 (engine r321) · the MTK / Te Reo Rangatira title source (Chris's decision 2) · SHIPPED 2026-09-15 · scoped regeneration, 24 pages / 14 modules · scaffold 50.325→50.368 (+0.043), cs exact +5, every other gate EXACT · 55.0% of achievable · commit (see git log)
 - r9 (engine r322) · KB constraint 65 / CL-0082, the [MTKquiz] shell without the quiz content (Chris's decision 3) · SHIPPED 2026-09-15 · scoped regeneration, 30 pages / 23 modules (58-module family rebuilt) · scaffold 50.368→50.411 (+0.043; 15 up / 3 down NAMED KB-over-gold), ≥50 +2, ≥75 +1, RAW +0.022 · every other gate EXACT · new gate _verify_mtkquiz.cjs 61 shells defect 0 · 55.0% of achievable · commit (see git log)
+- r10 (engine r323) · KB row 55, a button label never ends in a full stop (`Upload to dropbox.` → `Upload to dropbox`) · SHIPPED 2026-09-15 · FULL regeneration (the [button] family = the corpus), 212 pages / 82 modules · scaffold 50.411→50.411 (+0.000pp), cs exact 11360, every other gate EXACT · 55.0% of achievable · stickyNav BLOCKED (needs Chris) · commit (see git log)

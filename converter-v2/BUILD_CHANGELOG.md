@@ -1,5 +1,42 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 323, build 260618.94) — A BUTTON LABEL NEVER ENDS IN A FULL STOP (KB row 55's recorded text defect; the autonomous loop, session 3, Round 10; **FULL regeneration — the `[button]` tag family is the corpus (429 modules); every protected gate HELD-or-IMPROVED; the first full ship since round 318**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A writer types the button label as a sentence — `[button] Learning journal.`, `[button] Upload to dropbox.`, `[button] Check answers.` — and the full stop rode into the label. ONE trailing full stop is now stripped from every `[button]`-family label (an ellipsis and an abbreviation keep theirs; `?` `!` `:` are never touched — the gold keeps them 64 / 17 / 10). `Upload to dropbox.` → `Upload to dropbox`, on 212 pages / 82 modules.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **MXFL203** — docx: `[button] Learning journal.` ×14, `[button] Check answers.`, `[button] Reset.` → gold: `Go to journal` (an editorial relabel, class C — the stop is gone either way), `Check answers` (widget chrome), no full stop on any button → Claude before: `Learning journal.` ×14; after: `Learning journal`.
+- **BLL233 / the BLL family** — docx: `Upload to dropbox.` → gold: `<div class="buttonD">Upload to dropbox</div>` → Claude: `Upload to dropbox.` ×142 corpus-wide; after: `Upload to dropbox`.
+- **HPFUN103** — docx: `[button] Check answers.` → gold: `Check answers` → Claude before: `Check answers.`; after: `Check answers`.
+- **KB:** constraint 55 (`Go to dropbox` / `Go to portfolio`), 14.11 (`Upload to Dropbox`), constraint 75 (`Go to website`), CL-0038 (`Go to quiz`) — every canonical label the KB states carries no terminal punctuation; `KB_AMALGAMATION_STATUS.md` row 55 recorded the 420-button defect at round 0b.
+
+### 3. THE MEASUREMENT (every Claude and gold page — `outputs/_measure_r323_buttonstop.py` → `_r323_buttonstop.json`)
+
+- Gold: **9 of 5,553** buttons end in a full stop (0.16% — seven sentence-like labels: "Finished? Go to the next step." ×3, "4. Keep it real." …). Claude: **441 of 3,052** (14.5%) on **221 pages / 90 modules** — Standard 381 / 2,486, Inquiry 49 / 334, Fundamentals 11 / 232; every subject family (MX 125, XDLS 89, HIS 37, BLL 30, CED 18, EXB 18, EXP 17, EXI 17 …); `button` 436, `buttonD` 5, `externalButton` 0 (that site already refused a label ending in `.!?:`). Top labels: "Upload to dropbox." 142, "Learning journal." 37, "Check answers." 27, "Go to quiz." 13, "Go to learning journal." 13, "Go to dropbox." 11, "Portfolio." 11, "Reset." 9. Share ≥ 0.60 in every template and subject group → one corpus-wide data flag.
+- After the regeneration: Claude **29 of 3052** buttons end in a full stop (the widget-internal label pickers' own sentence-labels — 'Wearable Art (WOW) entry to raise awareness of Cancer.' ×6, BLL 'Find things in your house that have the … sound in them.', story titles 'Weka in a flap.' — a different seam (InteractiveBuilder's URL-button / tile labels), the r307/r308 sentence-button class, named).
+
+### 4. THE FIX — one data block `Emit_Templates.buttons.label_trailing_stop` `{ enabled, env: "BTNSTOP_OFF", strip_pattern: "\\.$", keep_pattern: "(\\.\\.|\\b(?:e\\.g|i\\.e|etc|vs|approx|no|pp?|cf))\\.$" }`
+
+- **ONE seam** — the generic `[button]`-family emit in `ContentConverter.#element` (the only site that fills a writer's label into a button form; the journal / dropbox / download / linked-URL forms all pass through it): `label = #buttonLabelTrim(label, tpl)` just before the fill. The helper strips one trailing full stop unless `keep_pattern` matches (an ellipsis, `e.g.` / `i.e.` / `etc.` …). Nothing else in the label changes — case, "Go to", the r66 orange house style, the r88 absorbed URL, the r239 journal forms all as before.
+- **Env toggle `BTNSTOP_OFF`** reverts byte-for-byte. Splice `outputs/_r323_splice.py` (3 steps; idempotent — proven by a second run; reproduces the two live files from the committed r322 files).
+
+### 5. THE PROOF AND THE GATES
+
+- **In memory** (`outputs/_r322_probe.cjs`, the batch_convert path): OFF over ALL 416 modules = disk on **2,102 / 2,102 pages** (`_r323_probe_off_0*.log`). FULL regeneration: 416 modules / 70 batches; `_content_manifest.py fresh --affected` (every module) → **0 truly stale**; diff → **212 pages / 82 modules changed, 0 added / 0 removed** — exactly the measured population.
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.411% → 50.411% (+0.000pp) / ≥50% 1030 / ≥75% 193 / ≥90% 15 / skipped 0 @ 1954; RAW 34.771% → 34.771%.** Page-for-page IDENTICAL to r322 (0 moved) — a text-only round, the skeleton is text-immune.
+- Every other gate: compare_structure exact **11360** / EXTRA **186** / missing **591** · structurally clean **2056/2102** / leak **288/46** · body **192** · tags **9557/9557** · flipCard TOTAL 61 divergence 0 · every verifier line identical to r322 · entry-parity PASS · index-sync 33/28 · pairs skipped 0 · **all THIRTEEN widget selftests GREEN**.
+- **Ceiling:** SCAFFOLD 50.411% = **55.0% of achievable**.
+
+### 6. NAMED, NOT CHASED
+
+- The gold's own nine sentence-labels ("Finished? Go to the next step.") are editorial (class C). A label that is itself a writer's sentence ("Complete activity 5A in your learning journal.", "and choose two different games to play …") loses only its stop — that a sentence became a button is the r307/r308 "URL-only / sentence [button]" class, its own measured round.
+- **stickyNav (KB queue rank 10) is BLOCKED — needs Chris:** the KB (14.1 / CED P5 / 14.8) and the gold (1,504 of 2,385 pages, per module all-or-nothing, ≥ 0.60 in 30 series) say ADD the `<head>` include; Chris's project instruction (`00_PROJECT_CONTEXT_AND_PHILOSOPHY.md`, `skeleton.never_emit`) says NEVER. Measured (`_measure_r323_stickynav.py` → `_r323_stickynav.json`), recorded in `LOOP_STATE.md` "Blocked classes" with a recommendation (KB families only), not applied.
+
+**Ledger:** FULL ship (scoped-ship counter reset) · data `buttons.label_trailing_stop` · env `BTNSTOP_OFF` · tools `outputs/_r323_splice.py`, `_measure_r323_buttonstop.py`, `_measure_r323_stickynav.py` · state `outputs/_r323_sk_final.json` · logs `_r323_gates.log`, `_r323_sk_full.log`, `_r323_fastloop.log`, `_r323_selftests.log`, `_r323_probe_off_0*.log`, `_r323_regen.log` · `KB_AMALGAMATION_STATUS.md` row 55 → the text defect CLEARED.
+
 ## 2026-09-15 (round 322, build 260618.93) — THE `[MTKquiz]` SHELL WITHOUT THE QUIZ CONTENT (Chris — decision 3 of the loop's plateau report, KB constraint 65 / CL-0082 of 21 Aug 2026; the autonomous loop, session 3, Round 9; **SCOPED REGENERATION of the 58-module MTK-quiz family (§0b: the 25 marker modules ∪ every module whose Writers Template mentions "go to quiz" / [quiz]); every protected gate HELD-or-IMPROVED; scoped ship #4 since the round-318 full**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
