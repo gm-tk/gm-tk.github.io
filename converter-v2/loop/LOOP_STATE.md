@@ -6,10 +6,10 @@
 **Session 3 started:** 2026-09-15 09:41 NZST (Claude Code, same machine; hard stop 19:41). Budget: 12 rounds or 10 hours. Chris's kickoff:
 "Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … commit after every round, never push."
 Health check: `verify_after_transfer.sh` PASS, git clean at 1914ab5 (nothing uncommitted — nothing to reconcile), no stale index.lock.
-**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). Round 11 (engine r324) SHIPPED 2026-09-15 ≈12:35 NZST — KB c79's `Lesson N` LABEL titles (79 pages / 24 modules, scoped; commit 1afd467). Round 12 (engine r325) SHIPPED 2026-09-15 ≈13:50 NZST — phase-scoped activity numbering on the Fundamentals pages (17 pages / 17 modules, scoped; commit — see git log).
+**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). Round 11 (engine r324) SHIPPED 2026-09-15 ≈12:35 NZST — KB c79's `Lesson N` LABEL titles (79 pages / 24 modules, scoped; commit 1afd467). Round 12 (engine r325) SHIPPED 2026-09-15 ≈13:10 NZST — phase-scoped activity numbering on the Fundamentals pages (17 pages / 17 modules, scoped; commit — see git log).
 
-## >>> STOPPED 2026-09-15 ≈13:55 NZST on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r323 0.000pp, r324 +0.005pp, r325 +0.019pp <<<
-**Session 3 shipped four rounds (r322 → r325; 4 commits) in ≈4h15m of the 10-hour budget.** Everything is committed; nothing is uncommitted; nothing was pushed.
+## >>> STOPPED 2026-09-15 ≈13:10 NZST on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r323 0.000pp, r324 +0.005pp, r325 +0.019pp <<<
+**Session 3 shipped four rounds (r322 → r325; 4 commits) in ≈3h30m of the 10-hour budget.** Everything is committed; nothing is uncommitted; nothing was pushed.
 **Next session starts with:** Chris's decisions — (a) stickyNav (BLOCKED: the KB 14 families say ADD the `<head>` include, the project instruction says NEVER; recommendation = KB families only), (b) decision 5 — the interactive builds (the corpus's largest class: 824 un-built drag-and-drops, 237 widgets with no builder, invisible to the gates by design), (c) decision 4 — the Standard-template title-pair order, (d) decision 1 — c47. With none of those, the derivable ≥ 20-page queue is exhausted for gate-moving work; the remaining measured candidates are the box-less `[MTKquiz]` shells (now numberable — 32 shells, ~17 pages), the Bilingual `number="N.M"` section-id boxes (KB 07B; 72 boxes / 25 pages, est. +0.01pp), the c79 trailing-punctuation titles (8), and the 172 empty hand-off boxes (15 shapes, none ≥ 20). stickyNav (KB queue rank 10) is BLOCKED — needs Chris (see Blocked classes). Plateau guard: r322 moved +0.043pp.**
 
 ## >>> STOPPED 2026-09-15 ≈08:15 NZST on the BUDGET rule (§4) — the 10-hour session cap (hard stop 09:21) after 8 shipped rounds <<<
@@ -114,7 +114,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Round 9 (engine r322 — the [MTKquiz] shell without the quiz content, decision 3 / KB c65): SHIPPED 2026-09-15 ≈11:35 (session 3). AppVersion 260618.93, CLAUDE.md §9/§11/§14, KB status row 65 → CAPTURED-LIVE, new gate `_verify_mtkquiz.cjs` in `run_all_gates.sh` (13 selftests), scoped ship #4.
 - Round 10 (engine r323 — a button label never ends in a full stop, KB row 55's text defect): SHIPPED 2026-09-15 (session 3). AppVersion 260618.94, CLAUDE.md §9/§11/§14, KB status row 55 → defect CLEARED, FULL regeneration (the first since r318; scoped-ship counter reset). stickyNav BLOCKED — needs Chris.
 - Round 11 (engine r324 — a `Lesson N` label is not a lesson title, KB c79): SHIPPED 2026-09-15 ≈12:35 (session 3). AppVersion 260618.95, CLAUDE.md §9/§11/§14, KB status row 79 → the label mechanism CAPTURED-LIVE, scoped ship #1 since the r323 full. c67 overflowYScroll DECLINED on measurement.
-- Round 12 (engine r325 — phase-scoped activity numbering on the Fundamentals pages, the r217/r266 follow-up): SHIPPED 2026-09-15 ≈13:50 (session 3). AppVersion 260618.96, CLAUDE.md §9/§11/§14, scoped ship #2 since the r323 full. **THE LOOP STOPPED after it (plateau rule).**
+- Round 12 (engine r325 — phase-scoped activity numbering on the Fundamentals pages, the r217/r266 follow-up): SHIPPED 2026-09-15 ≈13:10 (session 3). AppVersion 260618.96, CLAUDE.md §9/§11/§14, scoped ship #2 since the r323 full. **THE LOOP STOPPED after it (plateau rule).**
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -432,7 +432,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - **Verifier:** the measure script re-run after the regeneration must report Claude full-stop buttons = the gold-like residue only (labels whose stop is
   an abbreviation) — expected 0–3; `--selftest`-style check: the ON probe over BLL233 shows `Upload to dropbox.` → `Upload to dropbox`.
 
-## Round 12 PICK + what shipped (engine r325) — phase-scoped activity numbering, 2026-09-15 12:45–13:50 NZST
+## Round 12 PICK + what shipped (engine r325) — phase-scoped activity numbering, 2026-09-15 12:40–13:10 NZST
 - **PICK (written before code):** the r217 / r266 recorded follow-up — "fundamentals number by PHASE". Measured (`_measure_r325_phasenumbers.py`):
   788 gold boxes on the 51 Fundamentals phase-panel modules vs Claude 397 (111 unnumbered, 45 bare digits); the gold numbers `{phase}{letter}`
   restarting per phase (53 of 101 pages exactly, the rest the same rule with human gaps); position-wise number matches 66, simulated 133.
