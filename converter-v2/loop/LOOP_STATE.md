@@ -106,6 +106,20 @@ achievable, ceiling 91.6%); ≥50 1030 → 1066; ≥75 196 → 200; ≥90 15; cs
 - **RESUMED 2026-09-15 07:48 NZST on Chris's instruction: "Yes to 2 and 3 — start with the TRR title source."** Round 8 = decision 2 SHIPPED
   (engine r321, commit 968bf14). Decision 3 (c65 / CL-0082, engine r322) = the next kickoff (above). Decisions 1, 4, 5 stay open.
 
+## Decisions from Chris (session 6 — 2026-09-15; every instruction he gave, in order; the durable record)
+- **2026-09-15 20:49 — the session-6 kickoff.** Question: continue the loop? Answer (verbatim in the header above): continue in this folder;
+  health check first; read the loop file + LOOP_STATE; reconcile git with the state file, never `git checkout`/`git restore` uncommitted
+  engine/data files; honour every prior "Decisions from Chris" entry and never re-ask; **the message carries `REGENERATE CORPUS` for every
+  round, scoped by CLAUDE.md §0a/§0b**; budget **12 rounds or 10 hours** (hard stop 06:49 NZST 16 Sep); §6 context diet; update LOOP_STATE
+  before and after every round; commit after every round, never push; on stopping give the §5 report + push block and end LOOP_STATE with
+  "Next session starts with:". Authorises: finishing r335 (flag ON, the 28-module scoped regeneration, gates, finalise, commit) and every
+  further round's scoped/family regeneration + per-round commit under the same rules.
+- **2026-09-15 ≈21:10 — "continue the loop once the gates finish."** Question: (implicit) carry on past r335? Answer: yes — continue the loop
+  after the r335 proof suite. Authorises: the session's remaining rounds under the kickoff's budget and rules.
+- **Still open from earlier sessions (NOT re-asked):** stickyNav, decision 5 (interactive builds), decision 4 (Standard title-pair order),
+  decision 1 (c47), the KB table form (05D vs 06 §6), the CED revision-brief modules, the equation form (MathML vs LaTeX) — all under
+  Blocked classes; new this session: the `alertPadding` activity class (below).
+
 ## Decisions from Chris (session 5 — 2026-09-15; every instruction he gave, in order; the durable record)
 - **2026-09-15 ≈16:05 — the session-5 kickoff.** Question: continue the loop? Answer (verbatim in the header above): continue in this folder;
   health check first; read the loop file + LOOP_STATE; reconcile git with the state file, never `git checkout`/`git restore` uncommitted
@@ -189,6 +203,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 5 Round 5 (engine r334 — the activity box's title heading is h3, KB 01F): SHIPPED 2026-09-15 ≈19:17 (session 5, commit b89f20c). AppVersion 260619.05, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #8 since the r326 full — the full-ship backstop is DUE. Skeleton +0.167pp, ≥50 +17; every other gate EXACT.
 - FULL-SHIP BACKSTOP after r334 (no code change): all 416 gated dirs regenerated 2026-09-15 19:26–19:43 (36 batches, all rc 0), `_stalecheck.sh` 0 stale, `_content_manifest.py diff` IDENTICAL (0 pages) — eight scoped ships proven complete; `_fastloop_snapshot.py` re-baselined from the fresh corpus (values unchanged), manifest snapshot, `_ship_ledger.py record-full --build 260619.05` (counter 0).
 - Session 5 Round 6 = Session 6 Round 1 (engine r335 — the `[Engagement quiz button]` KB form, 01F + c65): BUILT + PROBE-PROVEN in session 5, SHIPPED OFF at Chris's stop, **flipped ON + SHIPPED 2026-09-15 ≈21:2x (session 6)**. AppVersion 260619.06, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #1 since the r334 full backstop. Skeleton +0.018pp; every other gate EXACT.
+- Session 6 Round 2 (engine r336 — the Fundamentals overview chip is a family convention, a registry correction): SHIPPED 2026-09-15 (session 6). AppVersion 260619.07, CLAUDE.md §9/§11/§14, scoped ship #2 since the r334 full backstop. Skeleton +0.000pp; every other gate EXACT.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -611,6 +626,47 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   a Bash-tool heredoc halves backslashes AND turns `\r` into a raw CR — write any patch with escapes via the Write tool; a Windows-written code
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
+
+## Session 6 · Round 2 (engine r336) — what shipped (the Fundamentals overview chip is a family convention)
+- **Fix (DATA only, no toggle):** five `Style_Anchor_Registry.json` `module_code` rows — ARFUN / ENFUN / TEFUN base_rules `{overview: absent,
+  lesson: absent}` (new rows; the chip had resolved from the `defaults` tier), MXFUN0 delta overview `absent` (was the mis-mined
+  `free-text:"MXFUN01"`), SSFUN base_rules overview `full-code` (was the em-dash no-evidence marker → element omitted); a `_note` on each.
+  The reversal is the committed pre-round registry; the blast radius is the resolved-rules diff over all 416 modules (`_r336_resolve_all.cjs`).
+- **Regeneration:** scoped — exactly the 31 modules whose resolved `module_code` changed (the five bases' every member with a Claude dir);
+  4 planner batches all rc 0; 0 truly stale; manifest diff = exactly 31 pages / 31 modules, 0 added/removed.
+- **Gates:** skeleton 51.078 → 51.078 (+0.000pp; 31 moved — 9 up / 22 down, every mover in the affected set, pp-sum +0.62; the 22 dips ≤ 0.32pp NAMED = the scorer's alignment artefact: the phantom chip's `h1` line had been coincidentally matching the gold's second (Te Reo) `h1`, which Claude never ships — the element sequence is now the gold's; SSFUN07_0_0 +2.52 the largest gain); ≥50 1066 → 1066; ≥75 200 → 200; ≥90 15; every other gate
+  line-for-line EXACT with r335 (fastloop PASS; full suite `_r336_gates.log`); 13 selftests GREEN. **55.8% of achievable.**
+- **Verifier:** Fundamentals overview chips = the gold's family form on 30 of 31 (SSFUN07's gold chip is a lesson number — named).
+  Ship ledger: scoped #2 since the r334 full-ship backstop. **Plateau window: r334 +0.167 · r335 +0.018 · r336 +0.000.**
+
+## Session 6 · Round 2 PICK (engine r336) — written before any code, 2026-09-15 21:50 NZST
+- **Queue re-run after r335:** `_measure_r336_subst.py` → `_r336_subst.json` (the r334 substitution instrument) + the two probes above.
+  Standard's top rows are all settled: the widened wrapper (DECLINED c17/c56), `iframe.embed-responsive-item` (KB-correct), `videoSection
+  icon` (r200's solidified groups shipped; the rest are r182 near-ties, the KB never names `icon`), `col-md-10` (the KB forbids it),
+  `paddingR` (gold 0.22 even in paired rows — a padding choice, declined inline), `p ⇐ h5` (25 text-matched cases / 17 pages — editorial),
+  `body.mathJax` (the equations BLOCKED class), `h4/h3 ⇐ h5` (the outside-box heading LADDER — per-MODULE, declined above). Inquiry:
+  the acks override (r317, never chase) + the `inquiry` body token (the engine ships it only where the panels build, as the gold does —
+  the crumb-less dialect rounds). **Fundamentals: `┌ 2× repeated ⇐ div#module-code` 22 occ / 22 pages / 22 modules — the header CHIP.**
+- **Class:** the Fundamentals overview `#module-code` chip is a per-FAMILY convention the registry has no evidence for. Gold header census
+  (`_measure_r336_funchip.py`): **ARFUN 54/54 pages no chip, ENFUN 8/8 no chip, TEFUN 8/8 no chip** — Claude ships the chip on all 21
+  (the registry rows for those bases carry no `module_code`, so the `defaults` `full-code` applies); **SSFUN 5/6 chip (full code)** —
+  Claude ships NO chip on its 6 (the SSFUN base row's overview value is the em-dash no-evidence marker → element omitted). HPFUN (13/15
+  chip), CHFUN (5/5), MXFUN (8/11), XFUN (6/7) already match. **27 overview pages / 27 modules.** The second h1 (the ENFUN/TEFUN Te Reo
+  title) is NOT in those Writers Templates — editorial, declined; SSFUN's Te Reo title is in the WT and already ships (r177).
+- **Triangulated:** ARFUN02 — WT `[Title] Colour and shape`; gold header `<h1><span>Colour and shape</span></h1>` (no chip); Claude
+  `<div id="module-code"><h1>ARFUN02</h1></div>` + the h1. ENFUN02 — the same shape (gold: two h1 spans, no chip; Claude: chip + one
+  h1). SSFUN05 — gold `<div id="module-code"><h1>SSFUN05</h1></div>` + two h1 spans; Claude: no chip + two h1 spans.
+- **Authority (§1b):** level 2/4 — the family's own siblings are unanimous (ARFUN 1.00 / ENFUN 1.00 / TEFUN 1.00 / SSFUN 0.83, all ≥ 0.60);
+  KB 06 §3.3 (Fundamentals) is silent on the chip (§3.1 describes it for Standard only). The registry is the sanctioned carrier of a
+  family convention (`Style_Anchor_Registry.json`; the r263 / r285 / r332 registry-correction precedent).
+- **Fix (planned, DATA only):** `Style_Anchor_Registry.json` base_rules `module_code` for ARFUN / ENFUN / TEFUN → `{"overview": "absent",
+  "lesson": "absent"}` (ARFUN04's lesson-like files are chip-less in the gold too) and SSFUN → `{"overview": "full-code", "lesson":
+  free-text as mined}`; no engine change, no toggle (a registry correction — the reversal is the committed pre-round registry, and the
+  in-memory before/after probe proves the blast radius). Regeneration: scoped to the 27 modules (the affected set = every module whose
+  resolved `module_code` changes, derived by resolving ALL 416 codes before and after — the r175 complete-detector rule).
+- **Gate expectation:** skeleton ≥ hold (each of the 27 overview pages loses or gains the `div#module-code` + `h1` header lines exactly
+  as the gold has them; est. +0.02–0.04pp); every other gate EXACT (the header is outside cs / body / defect). **Plateau window:
+  r334 +0.167 · r335 +0.018 · r336 ?**
 
 ## Session 6 · Round 1 = Session 5 · Round 6 (engine r335) — what shipped (the [Engagement quiz button] is the KB's external quiz link button)
 - **Fix (built in session 5, flipped ON here):** `buttons["engagement quiz button"].kb_form` {enabled, env ENGQUIZ_OFF, form `<a href="{href}"
@@ -1071,6 +1127,14 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   stickyNav (series convention), c67 overflowYScroll (27 pages).
 
 ## Declined classes
+- **The activity box's SUB-heading level (the r334 sibling: every heading inside a box after its title) — DECLINED 2026-09-15 (session 6,
+  Round 2 PICK; `outputs/_measure_r336_subhead.py` → `_r336_subhead.json` + `_r336_subhead.log`).** Gold census of 2nd+ headings inside
+  Standard boxes: h4 0.494 / h3 0.321 / h5 0.172 (n=5125) — no level ≥ 0.60, the level follows the writer's own digit. Paired BY TEXT
+  within the same `number=` box, Claude already matches the gold at **0.957** in Standard (225/235; 5 differing pages / 5 modules),
+  0.885 Inquiry (2 pages), Bilingual 0.575 (4 pages / 3 modules — the r331 TRR/PNR box rule). The r334 note's "gold h3→h4 655 vs
+  Claude h3→h3 657" was a POSITION-wise artefact: the gold's first sub-heading is usually a heading Claude never ships (the gold's
+  own `Go to your journal` h4 sits at a different slot), so position pairing compared different elements. Nothing to build.
+
 - **The widened activity wrapper (KB c17 / c56 — `col-md-12 col-12` for wide interactives, `col-12` for a D&D column with many images) —
   DECLINED 2026-09-15 (session 5, Round 5 PICK; measured inline over every gold activity box by the widget type inside it).** The gold keeps
   `col-md-8 col-12` as the MAJORITY for every type — text-only 0.85, videoSection 0.88, D&D standard 0.72, typing 0.78, dropQuiz 0.82, D&D
@@ -1102,6 +1166,18 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - **The KB's default table class `table table-bordered` (05D) — NOT PICKED 2026-09-15 (session 5, Round 2 PICK; measured inline).** Claude ships bare `table.table` on 1,063 tables / 518 pages. The gold is a genuine TIE in Standard (bordered 0.51 of 1,432 tables; 104 modules all-bordered / 51 none / 78 mixed), ≥ 0.60 in Inquiry 0.72 / Fundamentals 0.69 / Bilingual 0.86; `tableFixed` does NOT follow the KB's 2-column guidance (2-col tables 0.19; it tracks 4+ columns). The KB's own two documents disagree (05D `table table-bordered` default vs 06 §6 Refresh baseline `table noHover tableFixed`). A `table-bordered` default would be a KB-over-gold override costing ≈ −133 matched table lines in Standard for +74 in Inquiry / Fundamentals — needs Chris to settle 05D vs 06 (see Blocked classes). Not attempted.
 
 ## Blocked classes
+- **The `alertPadding` activity class — KB 01F table vs the gold's majority — needs Chris, 2026-09-15 (session 6, Round 2 PICK; measured
+  inline over every gold Standard activity box).** KB 01F's tag table maps `activity` + ID (text/workbook) → `<div class="activity
+  alertPadding">` and 05B's example labels `activity alertPadding` "Standard text activity" — but 05B also says "follow the activity's own
+  class set and simply append `dropbox`", and the gold ships plain `activity` **1773** vs `activity alertPadding` **411** (0.19) on the
+  non-interactive boxes (`activity interactive` 2213 / `activity interactive alertPadding` 160 / `activity dropbox` 439). Claude ships plain
+  `activity` on every text box (the r305/r308 `dropbox` modifier aside). Not a numbered constraint, not a CL, no 14 family rule — a
+  component-doc mapping the gold contradicts 4:1, the same shape as the table form (05D vs 06 §6). Applying it corpus-wide would be a
+  KB-over-gold override on ~1,700 boxes (skeleton ≈ −0.5pp, every plain-`activity` gold page down); leaving it keeps the gold form.
+  Decision needed: (a) apply 01F's `alertPadding` to every text/workbook activity (a named override), (b) leave the plain form (the gold
+  0.81 majority + 05B's "own class set"), (c) make it a KB constraint first and then apply. Recommendation: (b) until the KB says it is
+  a rule, not an example — `alertPadding` is a padding choice the developer makes, with no writer-side signal.
+
 - **WORD EQUATIONS ARE DROPPED — the form needs Chris, 2026-09-15 (session 5, Round 6 PICK; measured over the live docx files).** The V2 extractor
   has NO OMML path (`DocxExtractor.js` never reads `m:oMath` / `m:oMathPara`, which sit BESIDE the `w:r` runs in a `w:p`), so every Word equation
   is silently absent from the page: **12 WTs carry 329 equations** (MXDI102 154, MXDI301 69, PES1008 24, MXEX301 18, PES1007 17, MXFU302 15,
@@ -1167,5 +1243,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s5-r5 (engine r334) · the activity box's title heading is h3 (KB 01F `activity_heading`; a writer's in-box `[H3]`/`[H4]` carried the body shift and the re-leveller skips activity subtrees — a post-pass pins the box's first-child heading to h3; PNR excluded) · SHIPPED 2026-09-15 · scoped regeneration, 226 pages / 73 modules · scaffold 50.893→51.060 (+0.167; 150 up / 20 down, dips named), ≥50 +17, every other gate EXACT · activity titles at h4/h5 590→0 · 55.7% of achievable · scoped ship #8 — full backstop DUE · commit (see git log)
 - s5-full · the FULL-SHIP BACKSTOP after r334 · 416 dirs regenerated, 0 stale, manifest IDENTICAL (0 pages) · baselines re-snapshotted unchanged · ledger record-full (counter 0) · 2026-09-15 19:43
 - s5-r6 / s6-r1 (engine r335) · the `[Engagement quiz button]` is the KB's external quiz link button (01F; c65 label `Go to quiz`, blank publish-time href, ONE To Do note with the writer's link) · BUILT + PROBE-PROVEN in session 5 (OFF = disk 2102/2102; ON = 28 pages / 28 modules), SHIPPED OFF at Chris's stop, **flipped ON + SHIPPED 2026-09-15 (session 6)** · scoped regeneration, 28 pages / 28 modules · scaffold 51.060→51.078 (+0.018; 28 moved — 19 up / 9 down, every mover in the affected set, pp-sum +35.31; the 9 dips ≤ 0.33pp NAMED = the scorer's alignment artefact on pages whose gold box has no inner row > col-12 (OSBY501_5, OSSC501_5, OSSC301_3, OSAI201_3, OSOH501_5, OSSC401_4, ARFUN01_0, HPFUN401_0, ARFUN02_0 — the element sequence h3 → p → a → div.button is now the gold's)), ≥50 1066→1066, every other gate EXACT · engagementTrigger divs 28→0 · 55.8% of achievable · scoped ship #1 since the r334 full · commit (see git log)
+- s6-r2 (engine r336) · the Fundamentals overview `#module-code` chip is a family convention (a `Style_Anchor_Registry.json` correction: ARFUN / ENFUN / TEFUN / MXFUN0 drop the chip the golds never ship, SSFUN gains the chip its golds ship 5/6) · SHIPPED 2026-09-15 · scoped regeneration, 31 pages / 31 modules · scaffold 51.078→51.078 (+0.000; 31 moved — 9 up / 22 down, every mover in the affected set, pp-sum +0.62; the 22 dips ≤ 0.32pp NAMED = the scorer's alignment artefact: the phantom chip's `h1` line had been coincidentally matching the gold's second (Te Reo) `h1`, which Claude never ships — the element sequence is now the gold's; SSFUN07_0_0 +2.52 the largest gain), ≥50 1066→1066, ≥75 200→200, every other gate EXACT · chips = the family form on 30/31 · 55.8% of achievable · scoped ship #2 since the r334 full · sub-heading level / heading ladder / paddingR / p⇐h5 DECLINED on measurement; alertPadding → needs Chris · commit (see git log)
 
 **Next session starts with:** (1) finish Round 6 / engine r335 — flip `buttons["engagement quiz button"].kb_form.enabled` to true, regenerate the 28 modules in `outputs/_r335_affected.txt`, run the gates (expect skeleton +0.02pp, every other gate EXACT), finalise (AppVersion 260619.06, changelog, CLAUDE.md §9/§11/§14, KB status D-row, ledger scoped #1 since the r334 full ship), commit; (2) then Chris's decisions — (a) the EQUATION FORM (Word equations are dropped entirely: 329 OMML equations / 12 WTs; MathML per the gold + the V1.5 production finding vs LaTeX per KB 05A — see Blocked classes; the V1.5 converters `pageforge-site/js/omml-to-mathml.js` / `omml-to-latex.js` are the ready parts), (b) stickyNav, (c) decision 5 interactives, (d) decision 4 title-pair order, (e) decision 1 c47, (f) the KB table form 05D vs 06 §6, (g) the CED revision-brief modules; (3) without a decision, the derivable ≥ 20-page structural queue is EXHAUSTED for gate-moving work — the substitution instrument (`outputs/_measure_r334_subst.py`) and the gap ranking (`_measure_r334_skelgaps.py`) are the two rankers to re-run; the remaining measured candidates are all under the plateau threshold (the box-less `[MTKquiz]` shells ~17 pages, the c79 module-title fallbacks ~24, the 172 empty hand-off boxes, the body `inquiry` token on 23 crumb-less pages, `body.mathJax` 71 pages — not derivable per module).

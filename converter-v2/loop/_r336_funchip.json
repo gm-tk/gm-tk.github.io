@@ -1,0 +1,1282 @@
+[
+ {
+  "tmpl": "Bilingual",
+  "base": "PNR",
+  "n": 3,
+  "gold": {
+   "full-code": 3
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Bilingual",
+  "base": "TRR",
+  "n": 13,
+  "gold": {
+   "full-code": 13
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 13
+  },
+  "resolved": {
+   "full-code": 13
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "ARFUN",
+  "n": 5,
+  "gold": {
+   "absent": 5
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 5,
+  "flag": "CLASS"
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "CHFUN",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "ENFUN",
+  "n": 8,
+  "gold": {
+   "absent": 8
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "full-code": 8
+  },
+  "resolved": {
+   "full-code": 8
+  },
+  "mismatch_modules": 8,
+  "flag": "CLASS"
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "HPFUN",
+  "n": 15,
+  "gold": {
+   "full-code": 13,
+   "absent": 2
+  },
+  "gold_form": "full-code",
+  "share": 0.87,
+  "claude": {
+   "full-code": 15
+  },
+  "resolved": {
+   "full-code": 15
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "MXFUN",
+  "n": 3,
+  "gold": {
+   "absent": 3
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "free-text:\"MXFUN01\"": 3
+  },
+  "mismatch_modules": 3,
+  "flag": "CLASS"
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "SCFUN",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "mismatch_modules": 1,
+  "flag": ""
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "SSFUN",
+  "n": 6,
+  "gold": {
+   "absent": 1,
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 0.83,
+  "claude": {
+   "absent": 6
+  },
+  "resolved": {
+   "\u2014": 6
+  },
+  "mismatch_modules": 6,
+  "flag": "CLASS"
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "TEFUN",
+  "n": 8,
+  "gold": {
+   "absent": 8
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "full-code": 8
+  },
+  "resolved": {
+   "full-code": 8
+  },
+  "mismatch_modules": 8,
+  "flag": "CLASS"
+ },
+ {
+  "tmpl": "Fundamentals",
+  "base": "XFUN",
+  "n": 2,
+  "gold": {
+   "absent": 1,
+   "full-code": 1
+  },
+  "gold_form": "absent",
+  "share": 0.5,
+  "claude": {
+   "full-code": 2
+  },
+  "resolved": {
+   "free-text:\"XFUN02\"": 2
+  },
+  "mismatch_modules": 2,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "BLL",
+  "n": 11,
+  "gold": {
+   "absent": 6,
+   "full-code": 4,
+   "decimal": 1
+  },
+  "gold_form": "absent",
+  "share": 0.55,
+  "claude": {
+   "padded-number": 7,
+   "full-code": 4
+  },
+  "resolved": {
+   "free-text:\"Module": 4,
+   "padded-number": 7
+  },
+  "mismatch_modules": 11,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "CEDK",
+  "n": 3,
+  "gold": {
+   "absent": 2,
+   "full-code": 1
+  },
+  "gold_form": "absent",
+  "share": 0.67,
+  "claude": {
+   "absent": 2,
+   "full-code": 1
+  },
+  "resolved": {
+   "\u2014": 2,
+   "full-code": 1
+  },
+  "mismatch_modules": 1,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "CEDO",
+  "n": 2,
+  "gold": {
+   "absent": 2
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1,
+   "absent": 1
+  },
+  "resolved": {
+   "full-code": 1,
+   "\u2014": 1
+  },
+  "mismatch_modules": 1,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "CEDR",
+  "n": 4,
+  "gold": {
+   "absent": 4
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "absent": 4
+  },
+  "resolved": {
+   "\u2014": 4
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "CEDT",
+  "n": 10,
+  "gold": {
+   "absent": 8,
+   "full-code": 2
+  },
+  "gold_form": "absent",
+  "share": 0.8,
+  "claude": {
+   "absent": 10
+  },
+  "resolved": {
+   "\u2014": 10
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "CEDW",
+  "n": 2,
+  "gold": {
+   "absent": 2
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "absent": 2
+  },
+  "resolved": {
+   "\u2014": 2
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "ENGFUN",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "free-text:\"ENGFUN03\"": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "EXPFUN",
+  "n": 5,
+  "gold": {
+   "absent": 5
+  },
+  "gold_form": "absent",
+  "share": 1.0,
+  "claude": {
+   "absent": 5
+  },
+  "resolved": {
+   "\u2014": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "TWHA",
+  "n": 6,
+  "gold": {
+   "full-code": 6
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "TWHK",
+  "n": 2,
+  "gold": {
+   "full-code": 2
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Inquiry",
+  "base": "XDLS",
+  "n": 3,
+  "gold": {
+   "free-text": 3
+  },
+  "gold_form": "free-text",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "mismatch_modules": 3,
+  "flag": "CLASS"
+ },
+ {
+  "tmpl": "Standard",
+  "base": "AGH",
+  "n": 9,
+  "gold": {
+   "full-code": 9
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 9
+  },
+  "resolved": {
+   "full-code": 9
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ANZH",
+  "n": 10,
+  "gold": {
+   "full-code": 10
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 10
+  },
+  "resolved": {
+   "full-code": 10
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ART",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "BLL",
+  "n": 80,
+  "gold": {
+   "free-text": 73,
+   "full-code": 7
+  },
+  "gold_form": "free-text",
+  "share": 0.91,
+  "claude": {
+   "padded-number": 1,
+   "free-text": 79
+  },
+  "resolved": {
+   "padded-number": 48,
+   "free-text:\"Module": 32
+  },
+  "mismatch_modules": 1,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "BLLR",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "free-text": 1
+  },
+  "resolved": {
+   "free-text:\"Module": 1
+  },
+  "mismatch_modules": 1,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "CEDO",
+  "n": 4,
+  "gold": {
+   "full-code": 4
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 4
+  },
+  "resolved": {
+   "full-code": 4
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "CEDR",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "CEDT",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "CEDW",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ENG",
+  "n": 3,
+  "gold": {
+   "full-code": 3
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ENGC",
+  "n": 7,
+  "gold": {
+   "full-code": 7
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 7
+  },
+  "resolved": {
+   "full-code": 7
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ENGI",
+  "n": 12,
+  "gold": {
+   "full-code": 12
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 12
+  },
+  "resolved": {
+   "full-code": 12
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ENGJ",
+  "n": 8,
+  "gold": {
+   "full-code": 8
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 8
+  },
+  "resolved": {
+   "full-code": 8
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ENGR",
+  "n": 6,
+  "gold": {
+   "full-code": 6
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "ENGS",
+  "n": 8,
+  "gold": {
+   "full-code": 8
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 8
+  },
+  "resolved": {
+   "full-code": 8
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "EXBP",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "EXIP",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "EXPFUN",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "mismatch_modules": 1,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "HES",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "HIS",
+  "n": 8,
+  "gold": {
+   "full-code": 8
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 8
+  },
+  "resolved": {
+   "full-code": 8
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "HPRE",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "MXDB",
+  "n": 5,
+  "gold": {
+   "full-code": 4,
+   "free-text": 1
+  },
+  "gold_form": "full-code",
+  "share": 0.8,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "MXDI",
+  "n": 6,
+  "gold": {
+   "full-code": 6
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "MXEO",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "MXEX",
+  "n": 6,
+  "gold": {
+   "full-code": 6
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "MXFL",
+  "n": 11,
+  "gold": {
+   "full-code": 11
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 11
+  },
+  "resolved": {
+   "full-code": 11
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "MXFU",
+  "n": 6,
+  "gold": {
+   "full-code": 6
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "OSAH",
+  "n": 3,
+  "gold": {
+   "full-code": 3
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "OSAI",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "OSBY",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "OSGM",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "OSOH",
+  "n": 5,
+  "gold": {
+   "free-text": 2,
+   "full-code": 3
+  },
+  "gold_form": "full-code",
+  "share": 0.6,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "OSSC",
+  "n": 3,
+  "gold": {
+   "full-code": 3
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "OSSM",
+  "n": 2,
+  "gold": {
+   "full-code": 2
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "PES",
+  "n": 7,
+  "gold": {
+   "full-code": 7
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 7
+  },
+  "resolved": {
+   "full-code": 7
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "PHE",
+  "n": 8,
+  "gold": {
+   "full-code": 8
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 8
+  },
+  "resolved": {
+   "full-code": 8
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "SCCH",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "SCPH",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "SSCI",
+  "n": 1,
+  "gold": {
+   "full-code": 1
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "SSFUN",
+  "n": 1,
+  "gold": {
+   "decimal": 1
+  },
+  "gold_form": "decimal",
+  "share": 1.0,
+  "claude": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "mismatch_modules": 1,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "SSOG",
+  "n": 3,
+  "gold": {
+   "full-code": 3
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "TEDC",
+  "n": 2,
+  "gold": {
+   "padded-number": 2
+  },
+  "gold_form": "padded-number",
+  "share": 1.0,
+  "claude": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "mismatch_modules": 2,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "XDLS",
+  "n": 9,
+  "gold": {
+   "full-code": 7,
+   "free-text": 2
+  },
+  "gold_form": "full-code",
+  "share": 0.78,
+  "claude": {
+   "full-code": 9
+  },
+  "resolved": {
+   "full-code": 9
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "XGF",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "XLP",
+  "n": 6,
+  "gold": {
+   "free-text": 3,
+   "full-code": 3
+  },
+  "gold_form": "free-text",
+  "share": 0.5,
+  "claude": {
+   "full-code": 6
+  },
+  "resolved": {
+   "free-text:\"XPL06\"": 6
+  },
+  "mismatch_modules": 6,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "XMES",
+  "n": 5,
+  "gold": {
+   "full-code": 5
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "XTAS",
+  "n": 3,
+  "gold": {
+   "full-code": 3
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ },
+ {
+  "tmpl": "Standard",
+  "base": "XWHA",
+  "n": 2,
+  "gold": {
+   "full-code": 2
+  },
+  "gold_form": "full-code",
+  "share": 1.0,
+  "claude": {
+   "full-code": 2
+  },
+  "resolved": {
+   "free-text:\"XWHA02\"": 2
+  },
+  "mismatch_modules": 0,
+  "flag": ""
+ }
+]

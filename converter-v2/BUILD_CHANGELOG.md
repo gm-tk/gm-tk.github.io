@@ -1,5 +1,40 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 336, build 260619.07) — THE FUNDAMENTALS OVERVIEW CHIP IS A FAMILY CONVENTION THE REGISTRY HAD NO EVIDENCE FOR (a `Style_Anchor_Registry.json` correction — ARFUN / ENFUN / TEFUN / MXFUN0 drop the `#module-code` chip, SSFUN gains it; the autonomous loop's session-6 Round 2; **SCOPED regeneration of the 31 affected modules; skeleton +0.000pp, every other gate EXACT; scoped ship #2 since the round-334 full-ship backstop**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**Five Fundamentals families resolved their overview `#module-code` chip from a tier that had no evidence for them — ARFUN / ENFUN / TEFUN from the `defaults` (`full-code`, no base row at all), MXFUN0 from a mis-mined `free-text:"MXFUN01"` literal, SSFUN from the em-dash no-evidence marker (element omitted) — while their own golds are unanimous the other way: ARFUN 54/54 pages, ENFUN 8/8, TEFUN 8/8 and MXFUN01–03 3/3 ship NO chip, SSFUN ships the full-code chip on 5 of 6. The registry now says so.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **ARFUN02** — WT `[Title] …`; gold header `<h1><span>…</span></h1>` with no `#module-code`; Claude before: `<div id="module-code"><h1>ARFUN02</h1></div>` + the h1; after: the h1 alone.
+- **ENFUN02 / TEFUN02 / MXFUN01** — the same shape (gold: no chip; Claude before: the chip). **SSFUN05** — gold `<div id="module-code"><h1>SSFUN05</h1></div>` then the two h1 spans; Claude before: no chip; after: the chip + the spans.
+- **The KB:** 06 §3.1 describes the chip for the Standard header; §3.3 (Fundamentals) is silent on it — the authority is the family's own siblings (LOOP §1b level 2/4, unanimous), carried by the registry as every family convention is (the r263 / r285 / r332 registry-correction precedent).
+
+### 3. THE MEASUREMENT (`outputs/_r336_resolve_all.cjs` → `_r336_resolved.json` + `_measure_r336_funchip.py` → `_r336_funchip.json`; surfaced by the re-run substitution instrument `_measure_r336_subst.py` → `_r336_subst.json` — Fundamentals `┌ 2× repeated ⇐ div#module-code` 22 occ / 22 pages / 22 modules)
+
+- For every registry base with Claude output, the gold's overview chip FORM (absent / full-code / padded-number / free-text) against the value the registry RESOLVES: the class = the bases whose gold form solidifies (≥ 0.60) and whose resolved value differs — **ARFUN absent 1.00 (5) · ENFUN absent 1.00 (8) · TEFUN absent 1.00 (8) · MXFUN0 absent 1.00 (3) · SSFUN full-code 0.83 (6)**. Named, not chased: the Inquiry XDLS chips (the gold's chip reads the LMS code `XDLS9003` — the r194 code-variant class, text-only, both sides ship the chip), TEDC 2 modules (padded-number, n = 2), CEDO Inquiry 2, and the singletons SCFUN01 / EXPFUN / BLLR201. The families' second h1 (the ENFUN / TEFUN Te Reo title) is in NO Writers Template — editorial, declined; SSFUN's is in the WT and already ships (r177).
+- The affected set is derived from the RESOLVED RULES, not by hand: `_r336_resolve_all.cjs` before and after the edit over all 416 modules → **31 modules** whose resolved `module_code` changed (the five bases' every member with a Claude dir; `_r336_affected.txt`). `Style_Anchor_Registry.json` is read only by `ModuleResolver.Resolve` (and the browser-only reference picker), so identical resolved rules = identical output by construction for the other 385.
+
+### 4. THE FIX — DATA ONLY: five `Style_Anchor_Registry.json` rows, each carrying a `_note`
+
+- `1-10 Arts / ARFUN / base_rules.module_code` → `{overview: absent, lesson: absent}` (new); `1-10 English / ENFUN / base_rules.module_code` → the same (new); `1-10 Technology / TEFUN / base_rules.module_code` → the same (new); `1-10 Mathematics / MXFUN / levels.MXFUN0.delta.module_code.overview` → `absent` (was `free-text:"MXFUN01"`); `1-10 Social Science / SSFUN / base_rules.module_code.overview` → `full-code` (was `—`). No engine change, no new env toggle — the reversal is the committed pre-round registry (`git show HEAD~1:converter-v2/data/Style_Anchor_Registry.json`) and the blast radius is proven by the resolved-rules diff + the manifest.
+
+### 5. THE PROOF AND THE GATES
+
+- Scoped regeneration in the planner's 4 batches (`_r336_batches_run.sh`, all rc 0; `_r336_regen.log`); `_content_manifest.py fresh --affected` → **0 truly stale**; `diff` = **exactly 31 pages / 31 modules, 0 added/removed** (one overview page per module; ARFUN04's lesson-like single file and SSFUN07's Standard-folder overview included).
+- **Skeleton (PRIMARY): SCAFFOLD mean 51.078% → 51.078% (+0.000pp) / ≥50% 1066 → 1066 / ≥75% 200 → 200 / ≥90% 15 / skipped 0 @ 1954; RAW 35.256% → 35.256%** (state `outputs/_r336_sk_final.json`, FRESH). 31 moved — 9 up / 22 down, every mover in the affected set, pp-sum +0.62; the 22 dips ≤ 0.32pp NAMED = the scorer's alignment artefact: the phantom chip's `h1` line had been coincidentally matching the gold's second (Te Reo) `h1`, which Claude never ships — the element sequence is now the gold's; SSFUN07_0_0 +2.52 the largest gain.
+- Every other gate EXACT (`_fastloop_diff.py` on the 31 PASS; full suite `_r336_gates.log` line-for-line identical to r335 outside the skeleton block): cs exact 11375 / EXTRA 171 / missing 593 · clean 2056/2102 / leak 288/46 · body 191 · tags 9557/9557 · flipCard TOTAL 61 divergence 0 · entry-parity PASS · index-sync 33/28 · **13 selftests GREEN** (`_r336_selftests.log`). **Ceiling:** SCAFFOLD 51.078% = **55.8% of achievable** (ceiling 91.6%).
+- **Verifier:** Fundamentals overview chips Claude vs gold — ARFUN 0/5 = gold, ENFUN 0/8, TEFUN 0/8, MXFUN01–03 0/3, SSFUN 6/6 (gold 5/6, SSFUN0x's absent chip = the family's 1-of-6 deviation, the family form ships).
+
+### 6. NAMED, NOT CHASED
+
+- SSFUN07's gold overview chip is a lesson NUMBER (its Standard-folder multi-file form); the family's full-code chip ships — 1 page. The ENFUN / TEFUN second h1 (Te Reo, not in the WT). The XDLS LMS-code chip text (r194). TEDC / CEDO / the singletons (n < 3).
+- Also DECLINED this round on measurement (LOOP_STATE Declined classes): the activity box's SUB-heading level (text-paired agreement already 0.957 in Standard — the r334 note's 655-vs-657 was a position-wise artefact); the outside-box heading LADDER (per-module, no subject shift solidifies in any group ≥ 20 pages); `paddingR` (0.22 even in paired rows); `p ⇐ h5` (25 cases / 17 pages). BLOCKED for Chris: the `alertPadding` activity class (KB 01F table vs the gold's 0.81 plain majority + 05B's "follow the activity's own class set").
+
+**Ledger:** scoped ship #2 since the r334 full-ship backstop · data `Style_Anchor_Registry.json` (five `module_code` rows) · no env toggle (registry correction) · tools `outputs/_measure_r336_subst.py` (+ `_r336_subst.json`), `_measure_r336_subhead.py` (+ `_r336_subhead.json`), `_r336_resolve.cjs`, `_r336_resolve_all.cjs` (+ `_r336_resolved.json` / `_r336_resolved_after.json`), `_measure_r336_funchip.py` (+ `_r336_funchip.json`), `_r336_headladder.json`, `_r336_affected.txt`, `_r336_batches_plan.txt` / `_r336_batches_run.sh`, `_r336_proof.sh`, `_r336_finalise.py` · state `outputs/_r336_sk_final.json` (FRESH) · logs `_r336_regen.log`, `_r336_fastloop.log`, `_r336_gates.log`, `_r336_sk_full.log`, `_r336_selftests.log`, `_r336_fastloop_commit.log`.
+
 ## 2026-09-15 (round 335, build 260619.06) — THE `[Engagement quiz button]` IS THE KB'S EXTERNAL QUIZ LINK BUTTON (KB 01F `engagement_quiz_button` + constraint 65 / CL-0038; the autonomous loop's session-5 Round 6, BUILT + probe-proven there and SHIPPED OFF at Chris's stop, flipped ON and FINALISED in session 6; **SCOPED regeneration of the 28 affected modules; skeleton +0.018pp, every other gate EXACT; scoped ship #1 since the round-334 full-ship backstop**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

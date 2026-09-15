@@ -1658,7 +1658,10 @@ class Config {
 	// ROUND 335 (2026-09-15, build 260619.06): the [Engagement quiz button] is the KB's external quiz link button
 	// (01F engagement_quiz_button + constraint 65): the anchored "Go to quiz" form + one To Do note carrying the
 	// writer's link replaces the bare engagementTrigger div; scoped regeneration of 28 modules; env ENGQUIZ_OFF.
-	static AppVersion = "260619.06";
+	// ROUND 336 (2026-09-15, build 260619.07): the Fundamentals overview #module-code chip is a family convention —
+	// Style_Anchor_Registry rows for ARFUN / ENFUN / TEFUN / MXFUN0 (absent) and SSFUN (full-code) mined from the golds
+	// (unanimous / 0.83); a data-only registry correction, scoped regeneration of 31 modules; no new toggle.
+	static AppVersion = "260619.07";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

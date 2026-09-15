@@ -130,7 +130,13 @@
 		"bases": {
 			"ARFUN": {
 				"base_code": "ARFUN",
-				"base_rules": {},
+				"base_rules": {
+					"module_code": {
+						"overview": "absent",
+						"lesson": "absent"
+					},
+					"_note": "ROUND 336 (the autonomous loop, session 6 Round 2): the ARFUN golds carry NO #module-code chip on any page (54/54 pages, all five modules); with no base row the chip resolved from the defaults tier (full-code). The registry never had ARFUN evidence for this field (outputs/_measure_r336_funchip.py)."
+				},
 				"levels": {
 					"ARFUN0": {
 						"members": [
@@ -440,7 +446,12 @@
 			"ENFUN": {
 				"base_code": "ENFUN",
 				"base_rules": {
-					"body_class": "container-fluid fundamentals"
+					"body_class": "container-fluid fundamentals",
+					"module_code": {
+						"overview": "absent",
+						"lesson": "absent"
+					},
+					"_note": "ROUND 336 (the autonomous loop, session 6 Round 2): the ENFUN golds carry NO #module-code chip (8/8 overview pages); the chip resolved from the defaults tier (full-code) because this base row had no module_code field (outputs/_measure_r336_funchip.py)."
 				},
 				"levels": {
 					"ENFUN0": {
@@ -1324,9 +1335,10 @@
 							"template_phase": "combo",
 							"acknowledgements": "yes",
 							"module_code": {
-								"overview": "free-text:\"MXFUN01\"",
+								"overview": "absent",
 								"lesson": "padded-number"
 							},
+							"_note": "ROUND 336 (the autonomous loop, session 6 Round 2): the MXFUN01/02/03 golds carry NO #module-code chip on their single page (3/3); the mined module_code.overview free-text:\"MXFUN01\" literal matched nothing in those golds and shipped a chip (the r194 CHIPLIT guard rendered the run's own code) — corrected to absent (outputs/_measure_r336_funchip.py). The lesson pattern is left as mined.",
 							"h1_count": {
 								"overview": "2",
 								"lesson": "1"
@@ -1653,9 +1665,10 @@
 				"base_rules": {
 					"body_class": "container-fluid fundamentals",
 					"module_code": {
-						"overview": "—",
+						"overview": "full-code",
 						"lesson": "free-text:\"SSFUN02\""
 					},
+					"_note": "ROUND 336 (the autonomous loop, session 6 Round 2): the SSFUN golds carry the full-code #module-code chip on 5 of 6 overview pages (0.83); the mined overview value was the em-dash no-evidence marker, which SkeletonBuilder omits (element dropped with a warn) — corrected to full-code (outputs/_measure_r336_funchip.py). The lesson pattern is left as mined.",
 					"h1_count": {
 						"overview": "—",
 						"lesson": "2"
@@ -1757,7 +1770,13 @@
 		"bases": {
 			"TEFUN": {
 				"base_code": "TEFUN",
-				"base_rules": {},
+				"base_rules": {
+					"module_code": {
+						"overview": "absent",
+						"lesson": "absent"
+					},
+					"_note": "ROUND 336 (the autonomous loop, session 6 Round 2): the TEFUN golds carry NO #module-code chip (8/8 overview pages); with no base row the chip resolved from the defaults tier (full-code) (outputs/_measure_r336_funchip.py)."
+				},
 				"levels": {
 					"TEFUN0": {
 						"members": [
