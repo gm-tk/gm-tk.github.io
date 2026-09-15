@@ -4498,6 +4498,22 @@
 			"none": [],
 			"_rule": "footer_links pattern value per page type → ordered link keys. 'none' = the footer div renders with an empty nav ul omitted (just the #footer div) — matching ConnectED practice."
 		},
+		"kb_position_defaults": {
+			"_doc": "ROUND 332 (the autonomous loop's session-5 Round 3, 2026-09-15 — KB 01B_MODULE_MENUS_FOOTER 'Footer and Acknowledgements': the footer nav differs BY PAGE POSITION — overview `next-lesson + home-nav`, middle pages all three, FINAL page `prev-lesson + home-nav` only). The Style-Anchor registry carries the miner's NO-EVIDENCE marker (an em dash) as the `footer_links.final` value on ~60 groups (and `lesson` on OSSC), and `SkeletonBuilder.#buildFooter` treated any present value as a pattern: `value_map[\"—\"]` is undefined, so the footer shipped with NO links on 141 Claude pages / ~125 modules (120 of them the module's last page) while the gold on those pages is never empty (`prev+next+home` 82 / `prev+home` 29 / no footer 12). ON: a registry footer_links value with no value_map entry falls back to the KB's value for the page position (`overview` / `lesson` / `final`); a value that IS in the map is untouched, so every module whose registry carries real evidence is byte-identical. Where the gold's final page keeps `next` the KB's `prev+home` is a NAMED override (LOOP §1b). Env FOOTERPOS_OFF reverts byte-for-byte (the empty footer + the warn note).",
+			"enabled": true,
+			"env": "FOOTERPOS_OFF",
+			"overview": "next+home",
+			"lesson": "prev+next+home",
+			"final": "prev+home",
+			"by_footer_class": {
+				"_doc": "The sub-type forms the KB names in 06_TEMPLATE_RECOGNITION §3: `fundamentals-nav` is \"typically home-nav only\" (gold 63 home : 12 all-three = 0.84); `inquiry-nav` pages follow the position rule (gold overview next+home 86 / lesson all three 199 / final prev+home 40) except the CED inquiry SHELL pages, which keep all three and arrive through `forceLinks` (the r102/r108 inquiry fallback) — that value takes precedence over these defaults. Keyed by a class token of the resolved footer class.",
+				"fundamentals-nav": {
+					"overview": "home",
+					"lesson": "home",
+					"final": "home"
+				}
+			}
+		},
 		"auto_chain_note": "2026-06-13: prev/next hrefs are auto-chained to the sibling output filenames ({CODE}-NN.html) by PageAssembler so the generated bundle navigates page-to-page out of the box. The corpus leaves these empty for the iDoc runtime to fill; the explicit links are an additive convenience and harmless in MTK. SUPERSEDED by nav_links_empty (round 228, CL-0044) — the chaining survives only as the FOOTEREMPTY_OFF revert path.",
 		"nav_links_empty": {
 			"enabled": true,

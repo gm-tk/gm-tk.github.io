@@ -1,5 +1,42 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 332, build 260619.03) — THE EMPTY FOOTER: A NO-EVIDENCE REGISTRY VALUE FALLS BACK TO THE KB'S PAGE-POSITION FORM, and the BLL1 footer class (KB 01B "Footer and Acknowledgements" + 06 §3; the autonomous loop, session 5, Round 3; **SCOPED regeneration of the 130 affected modules; skeleton +0.269pp / ≥50% +10 / ≥75% +4, every other gate EXACT; scoped ship #6 since the round-326 full**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**141 Claude pages shipped a `<div id="footer">` with NO links at all — the Style-Anchor registry carries the miner's no-evidence marker (an em dash) as the `footer_links.final` value on ~60 groups (and `lesson` on OSSC), and `SkeletonBuilder.#buildFooter` treated any present value as a pattern. A registry footer value with no `value_map` entry now falls back to the KB's form for the page position — overview `next + home`, middle `prev + next + home`, final `prev + home` (01B); `home` only under `fundamentals-nav` (06 §3.3); the CED inquiry shell's forced links outrank it. And the BLL1 series' stale registry delta `footer_class: footer-nav` is removed, so BLL1 inherits the subject rule `footer-nav inquiry-nav` that its gold ships on 128 of 150 pages. 239 pages / 130 modules changed.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **BLL112** — gold `-03` (the last page): `<ul class="footer-nav inquiry-nav">` with `prev-lesson + next-lesson + home-nav`; gold `-01`/`-02` the same class → Claude before: `_2_0` an empty `<div id="footer"></div>`, `_0_0`/`_1_0` plain `footer-nav`; after: `inquiry-nav` on all three, `prev + home` on the last.
+- **OSSC401 lessons 1–3** — gold `prev + next + home` → Claude before: empty (registry `lesson: —`); after: `prev + next + home`.
+- **HIS1001 lesson 10** — gold `prev + home` → Claude before: empty (registry `final: —`); after: `prev + home`.
+- **The KB:** 01B — "Footer nav differs by page position: Overview `next-lesson + home-nav` only; Middle pages all three; Final page `prev-lesson + home-nav` only"; 06 §3.3 — `footer-nav fundamentals-nav` "typically home-nav only"; 06 §3.4 — the inquiry shell "with prev + next + home".
+
+### 3. THE MEASUREMENT (all paired pages; the r331 skeleton-gap instrument surfaced the footer lines — `a.home-nav` missing on 280 gold pages, `ul.footer-nav.inquiry-nav` on 164)
+
+- Footer composition gold == Claude on 904 Standard pages; the mismatches decompose into **(A) the empty footer — 141 Claude pages / ~125 modules** (BLL1 49, TRR1 10, AGH1 9, OSSC 9, HIS1 8, PNR 5, CEDT 5, MXFL 5, CEDR 3, SSOG 3 …; 120 the module's last page, the rest OSSC401/501's lessons), where the gold is never empty (`prev+next+home` 82 / `prev+home` 29 / no footer at all 12 / `next+home` 2); **(B) the BLL1 class — 98 Claude pages plain `footer-nav`**, the gold `footer-nav inquiry-nav` on 41 of 48 BLL1 modules (0.85; BLL121 / 172 / 174–177 plain, BLL171 mixed) — the same as BLL2 (123 : 25) and the subject rule; and editorial residue (link ORDER `home+prev+next`, `active` items, a doubled `prev`), not chased.
+- Gold by footer class (every gold page): `footer-nav` all-three 1493 / `next+home` 164 / `prev+home` 134 / `home` 20; `inquiry-nav` 199 / 86 / 40 / 4; `fundamentals-nav` **home 63 : all-three 12 = 0.84**.
+- The registry's no-evidence `final` marker sits on ~60 groups (BLL, ENGS, HPE, MX*, Science, SocSci, CED*, ECE, EXP*, XDLS/XMES, NCEA1, OS*, TMoA, TWHA …) — `outputs/_r332_probe_on.log` names every page the fallback reaches.
+
+### 4. THE FIX — Part A, one data block `footer.kb_position_defaults` `{ enabled, env: "FOOTERPOS_OFF", overview, lesson, final, by_footer_class }`; Part B, a registry correction
+
+- `SkeletonBuilder.#buildFooter`: when the registry's `footer_links` value has no `value_map` entry, the KB's value for the page position applies — the sub-type map first (`by_footer_class`, keyed on a token of the resolved footer class: `fundamentals-nav` → `home`), else `overview` / `lesson` / `final`; a caller-forced link set (`forceLinks`, the r102/r108 CED inquiry shell) outranks both; a registry value that IS in the map is never touched, so every module carrying real evidence is byte-identical. The warn note becomes an info note naming the fallback. **Env `FOOTERPOS_OFF`** reverts byte-for-byte (the empty footer returns).
+- Part B — `Style_Anchor_Registry.json` `1-10 Blended Literacy / bases / BLL / levels / BLL1 / delta`: `footer_class` removed (a dated correction note left in its place); the level now inherits `footer-nav inquiry-nav`. No engine change; the reversal is git (the r263 / r285 registry-correction precedent).
+
+### 5. THE PROOF AND THE GATES
+
+- The in-memory probe over ALL 416 modules (`_r332_probe.cjs`, four shards): ON names **239 pages / 130 modules**, every differing line one of: 141 empty footers gaining `<ul>` + links (141 `home-nav`, 118 `prev-lesson`, 31 `next-lesson`; 171 `inquiry-nav` / 67 `footer-nav` / 1 `fundamentals-nav` uls) and 98 BLL1 `<ul class="footer-nav">` → `inquiry-nav` — nothing else; OFF (`FOOTERPOS_OFF=1`) leaves exactly Part B's 98 BLL1 lines. Scoped regeneration in the planner's 12 batches (`_r332_batches_run.sh`); `_content_manifest.py fresh --affected` → **0 truly stale**; `diff` = exactly the 239 pages, 0 added/removed; ON in memory = disk 2102/2102 afterwards.
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.558% → 50.827% (+0.269pp) IMPROVED / ≥50% 1034 → 1044 / ≥75% 196 → 200 / ≥90% 15 / skipped 0 @ 1954; RAW 34.881% → 35.066%.** 207 pages moved — **185 up / 22 down**, pp-sum +526.22 (BLL1 128 pages +254.7; OSSC +55.3, TRR1 +39.2, AGH1 +30.4, CEDT +23.5, PNR +22.8, HIS1 +20.3 …; TRR107_3_0 +10.78, OSSC501_2_0 +10.27). The 22 dips NAMED: 16 on the BLL1 plain-footer minority (BLL121 / 172 / 174 / 175 / 176 / 177 / 145 — the series' 0.15, −0.6 to −1.8 each) = the series-consensus cost; SSOG101_7_0 −3.5 / MXFL401_7_0 −3.4 / XDLS502_4_0 / TRR102_5_0 / CEDK102_0_0 = final pages whose gold keeps `next` — the KB's `prev+home` override (LOOP §1b).
+- Every other gate EXACT (`_fastloop_diff.py` PASS; full suite `_r332_gates.log` line-for-line identical to r331 outside the skeleton block): cs exact 11360 / EXTRA 186 / missing 591 · clean 2056/2102 / leak 288/46 · body 191 · tags 9557/9557 · flipCard TOTAL 61 divergence 0 · mtkQuiz 17 shells defect 0 · entry-parity PASS · index-sync 33/28 · **13 selftests GREEN**.
+- **Ceiling:** SCAFFOLD 50.827% = **55.5% of achievable** (55.49).
+
+### 6. NAMED, NOT CHASED
+
+- The registry's no-evidence marker on other fields (`module_code`, `h1_count`, `menu_type` — the r238 unknown-literal class) — the r263 "registry re-mine round" stays the durable fix; the CED Inquiry overview pages the shell does not force (12, now `next+home` where the gold ships all three); the gold's editorial link orders.
+
+**Ledger:** scoped ship #6 since the r326 full · data `footer.kb_position_defaults` + the `Style_Anchor_Registry` BLL1 delta correction · env `FOOTERPOS_OFF` (Part A) · tools `outputs/_r332_probe.cjs`, `_r332_finalise.py` (the measurement is the inline footer census recorded in `LOOP_STATE.md`) · state `outputs/_r332_sk_final.json` (FRESH) · logs `_r332_gates.log`, `_r332_sk_full.log`, `_r332_fastloop.log`, `_r332_fastloop_commit.log`, `_r332_selftests.log`, `_r332_probe_on_0*.log`, `_r332_probe_on.log`, `_r332_probe_off.log`, `_r332_probe_on2_0*.log`, `_r332_regen.log`, `_r332_fresh.log`, `_r332_affected.txt`, `_r332_batches_run.sh`.
+
 ## 2026-09-15 (round 331, build 260619.02) — A BILINGUAL SECTION BOX'S HEADINGS RENDER AT THE KB'S ACTIVITY LEVEL (KB 07B_MTK_CONTENT_PATTERNS "Activity Structure" + 05B activities; the autonomous loop, session 5, Round 2; **SCOPED regeneration of the 5 affected modules; skeleton +0.022pp / ≥50% +1, every other gate EXACT; scoped ship #5 since the round-326 full**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

@@ -22,7 +22,7 @@ from Chris' and never re-ask them … commit after every round, never push." Hea
 (nothing uncommitted — nothing to reconcile), no stale index.lock. **Plateau counter:** the session-4 stop was the plateau rule's "needs a human
 decision"; Chris's explicit "continue" IS that decision (the same reading sessions 2 and 4 used), so the three-round window restarts at this
 session's first shipped round. stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5 stay open (not re-asked); the loop
-works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp) · SHIPPED ≈17:10.**
+works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp; commit 612da6d) · r332 (the empty footers, scoped 130 modules, +0.269pp) · SHIPPED ≈17:40.**
 
 ## >>> STOPPED 2026-09-15 ≈15:45 NZST (session 4) on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r327 0.000pp, r328 0.000pp, r329 +0.004pp <<<
 **Session 4 shipped four rounds (r326 → r329; commits 955c0c8 · bdb33a1 · 2d478e4 · 6e25190) in ≈2h15m of the 10-hour budget (13:27 → 15:42).** Everything is committed; nothing is uncommitted; nothing was pushed.
@@ -143,6 +143,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 4 Round 4 (engine r329 — `[trigger engagement]` is a marker, not a button, KB constraint 43): SHIPPED 2026-09-15 ≈15:45 (session 4). AppVersion 260619.00, CLAUDE.md §9/§11/§14, scoped ship #3 since the r326 full. **THE LOOP STOPPED after it (plateau rule: r327 0.000 / r328 0.000 / r329 +0.004).**
 - Session 5 Round 1 (engine r330 — the bilingual section id is the activity number, not a heading, KB 07B): SHIPPED 2026-09-15 ≈16:40 (session 5). AppVersion 260619.01, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #4 since the r326 full. Skeleton +0.040pp — the plateau window restarts.
 - Session 5 Round 2 (engine r331 — a bilingual section box's headings render at the KB's activity level h3, KB 07B): SHIPPED 2026-09-15 ≈17:10 (session 5). AppVersion 260619.02, CLAUDE.md §9/§11/§14, scoped ship #5 since the r326 full. Skeleton +0.022pp.
+- Session 5 Round 3 (engine r332 — the empty footer → the KB's page-position form, KB 01B; + the BLL1 registry footer class): SHIPPED 2026-09-15 ≈17:40 (session 5). AppVersion 260619.03, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #6 since the r326 full. Skeleton +0.269pp, ≥50 +10, ≥75 +4.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -566,6 +567,50 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 5 · Round 3 (engine r332) — what shipped (the empty footer → the KB's page-position form; the BLL1 footer class)
+- **Fix:** Part A — `footer.kb_position_defaults` {enabled, env FOOTERPOS_OFF, overview next+home, lesson prev+next+home, final prev+home,
+  by_footer_class {fundamentals-nav: home}} in `SkeletonBuilder.#buildFooter`: a registry `footer_links` value with no `value_map` entry (the
+  miner's em-dash no-evidence marker) takes the KB's page-position form; forceLinks (the CED inquiry shell) outranks it; a mapped registry
+  value is untouched. Part B — the BLL1 registry delta's stale `footer_class: footer-nav` removed (→ `footer-nav inquiry-nav`, gold 0.85).
+- **Regeneration:** scoped — the in-memory probe over ALL 416 modules (4 shards) named 239 pages / 130 modules; every diff line = 141 empty
+  footers gaining links (141 home, 118 prev, 31 next) + 98 BLL1 class swaps, nothing else; OFF = exactly the 98 BLL1 lines; the planner's 12
+  batches, all rc 0; 0 truly stale; manifest diff = exactly the 239; ON = disk 2102/2102.
+- **Gates:** skeleton 50.558 → 50.827 (+0.269pp; 207 moved, 185 up / 22 down — dips NAMED: 16 on the BLL1 plain-footer minority modules
+  BLL121/172/174–177/145 (the series' 0.15), SSOG101_7_0 −3.5 / MXFL401_7_0 −3.4 / XDLS502_4_0 / TRR102_5_0 / CEDK102_0_0 = final pages whose gold
+  keeps `next` under the KB's `prev+home`); ≥50 1034 → 1044; ≥75 196 → 200; every other gate line-for-line EXACT with r331; 13 selftests GREEN.
+  **55.5% of achievable.**
+- **Verifier:** Claude empty footers 141 → 0; BLL1 plain-footer pages 98 → 0. **Plateau window: r330 +0.040 · r331 +0.022 · r332 +0.269.**
+
+## Session 5 · Round 3 PICK (engine r332) — written before any code, 2026-09-15 17:20 NZST
+- **Class (Part A — corpus-wide, KB-backed):** the page FOOTER ships EMPTY (`<div id="footer">` with no `<ul>`/links) on **141 Claude pages /
+  ~125 modules** (BLL1 49, TRR1 10, AGH1 9, OSSC 9, HIS1 8, PNR 5, CEDT 5, MXFL 5, CEDR 3, SSOG 3 …) — 120 of them the module's last page, the
+  rest OSSC401/501's lesson pages (+ lexical-sort artefacts). Cause: `Style_Anchor_Registry` carries the miner's NO-EVIDENCE marker `—` as the
+  `footer_links.final` (≈ 60 groups) / `lesson` (OSSC) value, and `SkeletonBuilder.#buildFooter` treats a present-but-unknown value as a
+  pattern (`value_map["—"]` undefined → a warn note + a footer with no links). The KB (01B "Footer and Acknowledgements") fixes the form BY
+  PAGE POSITION: overview `next-lesson + home-nav`; middle `prev + next + home`; **final `prev-lesson + home-nav` only** — and the gold on
+  exactly those 141 pages is never empty (`prev+next+home` 82 / `prev+home` 29 / no footer at all 12 / `next+home` 2).
+- **Class (Part B — the BLL1 series, registry data):** the BLL1 delta's `footer_class` = `footer-nav`, but the BLL1 gold ships
+  `footer-nav inquiry-nav` on 128 of 150 pages (41 of 48 modules = 0.85; BLL2 123:25 and the subject rule already say `inquiry-nav`; the
+  KB is silent for BLL — 06's table maps `inquiry-nav` to the Inquiry body, BLL1's body is `container-fluid`). Claude ships plain `footer-nav`
+  on 98 BLL1 pages. A stale mined value (the r263 class), §1b level 4 (series consensus ≥ 0.60).
+- **MEASURED (inline census, all paired pages; `outputs/_r331_skelgaps.json` surfaced the footer lines — `a.home-nav` missing on 280 gold
+  pages, `ul.footer-nav.inquiry-nav` on 164):** footer composition gold == Claude on 904 Standard pages; the mismatches decompose into the
+  empty-footer class (141) and the BLL1 class (98), plus editorial residue (gold `home+prev+next` orders, `active` items, doubled prev).
+- **Authority (§1b):** Part A = 1 (KB 01B, by page position) — where the gold's final page keeps `next` (82) the KB's `prev+home` is a
+  NAMED override, and an empty footer matched none of them; Part B = 4 (the BLL1 series consensus 0.85, the registry's own instrument).
+- **Triangulated:** BLL112 (gold `-03` `prev+next+home` in `ul.footer-nav.inquiry-nav`; Claude `_2_0` an empty `<div id="footer">`, `_0_0`/`_1_0`
+  plain `footer-nav`); OSSC401 lessons 1–3 (gold `prev+next+home`; Claude empty — registry `lesson: —`); HIS1001 lesson 10 (gold
+  `prev+home`; Claude empty — registry `final: —`).
+- **Fix (planned):** Part A — data `footer.kb_position_defaults` {enabled, env FOOTERPOS_OFF, overview next+home, lesson prev+next+home,
+  final prev+home}: in `#buildFooter`, a registry `footer_links` value with no `value_map` entry (the `—` / `n/a` no-evidence literals)
+  falls back to the KB's value for the page position; a registry value that IS in the map is untouched; the warn note becomes an info note
+  naming the fallback. Part B — delete `footer_class` from the BLL1 delta (it then inherits the subject rule `footer-nav inquiry-nav`); no
+  engine change, reversal = git (the r263 / r285 registry-correction precedent). Regeneration: scoped to the modules the in-memory probe
+  names over all 416 (≈ 125 + 49 BLL1).
+- **Gate expectation:** skeleton ≥ hold (the footer's `ul > li > a` lines appear where the gold has them; BLL1 `ul.footer-nav.inquiry-nav`
+  lines match); every other gate EXACT (the footer is outside compare_structure / body_compare / the defect audit). Est. +0.05–0.10pp.
+  **Plateau window: r330 +0.040 · r331 +0.022.**
+
 ## Session 5 · Round 2 (engine r331) — what shipped (a bilingual section box's headings render at the KB's activity level)
 - **Fix:** `elements.dual_language.section_grouping.boxed_heading_level` {enabled, env REOBOXH_OFF, from_level 2, to_level 3, exclude_code_prefixes
   [PNR]}: `BilingualBuilder.boxedHeadingRelevel` moves every `<h2>` open/close pair inside a BOXED section's inner HTML to h3; un-boxed sections
@@ -886,5 +931,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s4-r4 (engine r329) · `[trigger engagement]` is a marker, not a button (KB constraint 43: the dropbox-trigger condition; the phantom `button engagementTrigger` journal button no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 60 pages / 42 modules · scaffold 50.492→50.496 (+0.004; 57 up / 3 down, dips named), every other gate EXACT · phantoms 99→28 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r327 0.000, r328 0.000, r329 +0.004)**
 - s5-r1 (engine r330) · the bilingual section id is the activity number, not a heading (KB 07B: the writer's bare `[H1] N.M` → `number="N.M"` on the boxed section, decimal preferred; the phantom `<h3>1.1</h3>` pair no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 25 pages / 7 modules · scaffold 50.496→50.536 (+0.040; 17 up / 4 down, dips named), ≥50 +3, every other gate EXACT · phantoms 234→0, unnumbered boxes 72→0 · 55.2% of achievable · commit (see git log)
 - s5-r2 (engine r331) · a bilingual section box's headings render at the KB's activity level (KB 07B: the writer's `[H2]` inside a TRR section box → h3; PNR excluded by data) · SHIPPED 2026-09-15 · scoped regeneration, 21 pages / 5 modules · scaffold 50.536→50.558 (+0.022; 18 up / 3 down, dips named), ≥50 +1, every other gate EXACT · TRR in-box h2 155→0 · alertImage sidebar DECLINED, table-class KB conflict → needs Chris · 55.2% of achievable · commit (see git log)
+- s5-r3 (engine r332) · the empty footer → the KB's page-position form (KB 01B: a no-evidence registry footer value falls back to overview next+home / lesson all three / final prev+home; fundamentals-nav home) + the BLL1 registry footer class (inquiry-nav, gold 0.85) · SHIPPED 2026-09-15 · scoped regeneration, 239 pages / 130 modules · scaffold 50.558→50.827 (+0.269; 185 up / 22 down, dips named), ≥50 +10, ≥75 +4, every other gate EXACT · empty footers 141→0 · 55.5% of achievable · commit (see git log)
 
 **Next session starts with:** Chris's decisions (stickyNav / decision 5 interactives / decision 4 title-pair order / decision 1 c47) — see the session-4 STOP banner at the top; without one, the Bilingual `number="N.M"` section-id boxes (KB 07B, 25 pages, est. +0.01pp) are the next PICK and the plateau rule will stop the loop again after it.

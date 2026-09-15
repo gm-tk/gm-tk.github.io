@@ -296,7 +296,7 @@
 						],
 						"delta": {
 							"template_phase": "1-3",
-							"footer_class": "footer-nav",
+							"footer_class_correction_note": "2026-09-15 (round 332, the autonomous loop): the mined delta `footer_class: footer-nav` REMOVED — the BLL1 gold ships `footer-nav inquiry-nav` on 128 of 150 pages (41 of 48 modules = 0.85; BLL121/172/174–177 plain, BLL171 mixed), the same as BLL2 (123:25) and the subject rule the level now inherits. The r263 stale-registry class.",
 							"module_code": {
 								"overview": "padded-number",
 								"lesson": "padded-number"

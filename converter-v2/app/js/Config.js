@@ -1642,7 +1642,13 @@ class Config {
 	// activity level h3 (07B "Activity Structure"), not the writer's h2 — 157 headings on 21 pages / 5 TRR
 	// modules, scoped; the PNR dialect keeps its own gold's h2 (data-excluded). Env REOBOXH_OFF; data
 	// elements.dual_language.section_grouping.boxed_heading_level. Skeleton +0.022pp, >=50% +1.
-	static AppVersion = "260619.02";
+	// ROUND 332 (2026-09-15, build 260619.03): the empty footer — a registry footer_links value with no
+	// value_map entry (the style-anchor miner's no-evidence marker) falls back to the KB's page-position
+	// form (01B: overview next+home / lesson prev+next+home / final prev+home; fundamentals-nav home) —
+	// 141 pages had no links; and the stale BLL1 registry footer_class delta removed (inquiry-nav, gold
+	// 0.85). 239 pages / 130 modules, scoped. Env FOOTERPOS_OFF; data footer.kb_position_defaults.
+	// Skeleton +0.269pp, >=50% +10, >=75% +4.
+	static AppVersion = "260619.03";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

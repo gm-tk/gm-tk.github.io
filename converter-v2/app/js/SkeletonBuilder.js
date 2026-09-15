@@ -848,12 +848,35 @@ class SkeletonBuilder {
 		const rules = run.resolvedRules;
 
 		const patternKey = isFinal && rules.footer_links?.final ? "final" : pageType;
-		const value = rules.footer_links?.[patternKey] ?? "none";
-		const linkKeys = tpl.footer.value_map[value];
+		let value = rules.footer_links?.[patternKey] ?? "none";
+		let linkKeys = tpl.footer.value_map[value];
 
 		if (linkKeys === undefined) {
-			run.AddNote("warn", "SkeletonBuilder",
-				`footer_links value "${value}" has no footer.value_map entry — footer emitted with no links; add the value to Emit_Templates.`);
+			// ROUND 332 (KB 01B): a registry footer_links value with NO value_map entry is the
+			// style-anchor miner's no-evidence marker (an em dash / "n/a"), not a pattern — the
+			// footer shipped with no links on 141 pages. Fall back to the KB's form for the page
+			// position (overview next+home / lesson prev+next+home / final prev+home). A value
+			// that IS in the map is never touched. Data footer.kb_position_defaults; env FOOTERPOS_OFF.
+			const kb = tpl.footer.kb_position_defaults;
+			const kbOn = kb && kb.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[kb.env || "FOOTERPOS_OFF"]);
+			// the sub-type form first (fundamentals-nav = home only, keyed by a token of the
+			// resolved footer class), else the KB's position rule; a caller-forced link set
+			// (the CED inquiry shell) outranks both and is left to the path below.
+			const fcls = String(footerClassOverride ?? rules.footer_class ?? "").split(/\s+/);
+			const byCls = kbOn && kb.by_footer_class
+				? Object.keys(kb.by_footer_class).find((k) => k !== "_doc" && fcls.includes(k)) : undefined;
+			const kbValue = !kbOn || (forceLinks && forceLinks.length) ? undefined
+				: (byCls ? kb.by_footer_class[byCls][patternKey] : kb[patternKey]);
+			if (kbValue !== undefined && tpl.footer.value_map[kbValue] !== undefined) {
+				run.AddNote("info", "SkeletonBuilder",
+					`footer_links "${patternKey}" value "${value}" is not a footer pattern (the registry's no-evidence marker) — the KB's ${patternKey}-page form "${kbValue}" applied (footer.kb_position_defaults).`);
+				value = kbValue;
+				linkKeys = tpl.footer.value_map[value];
+			} else {
+				run.AddNote("warn", "SkeletonBuilder",
+					`footer_links value "${value}" has no footer.value_map entry — footer emitted with no links; add the value to Emit_Templates.`);
+			}
 		}
 
 		const parts = [tpl.footer.open];
