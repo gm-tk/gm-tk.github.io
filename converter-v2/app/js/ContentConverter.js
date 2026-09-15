@@ -6133,6 +6133,26 @@ class ContentConverter {
 			}
 			const key = tpl.buttons[tag] ? tag : "button";
 			const btn = tpl.buttons[key];
+			// ROUND 329: "[trigger engagement]" is a CONDITION MARKER (KB constraint 43 / 05B — the
+			// dropbox-trigger signal on the activity; the gold carries no engagement element), not
+			// the engagement quiz button its alias folds into. A label-less marker emits nothing;
+			// a bracket carrying other words surfaces them as one red flag. Data
+			// buttons["engagement quiz button"].trigger_marker; env ENGMARKER_OFF.
+			const tm = key === "engagement quiz button" ? btn?.trigger_marker : null;
+			if (tm && tm.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[tm.env ?? "ENGMARKER_OFF"])
+				&& !String(it.blackAfter ?? "").replace(/\*/g, "").trim()) {
+				const bracket = Utils.Fold(String(it.text ?? "")).replace(/^[\s\[]+|[\s\]]+$/g, "").replace(/\s+/g, " ").trim();
+				const alias = (tm.aliases ?? []).map((a) => Utils.Fold(a).trim()).find((a) => bracket === a || bracket.endsWith(" " + a) || bracket.endsWith("-" + a) || bracket.endsWith("–" + a));
+				if (alias) {
+					const extra = bracket.slice(0, bracket.length - alias.length).replace(/[\s\-–—:;.,]+$/g, "").trim();
+					if (extra && tm.words_flag) {
+						out.push(NotesAndComments.redFlag(Utils.FillTemplate(tm.words_flag,
+							{ bracket: String(it.text ?? "").replace(/\s+/g, " ").trim() }), run, "diagnostic"));
+					}
+					return out;
+				}
+			}
 			let url = it.block?.links?.[0]?.target
 				?? (it.blackAfter.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
 			// EXTERNAL LINK BUTTON handling: writers often drop this marker INLINE in the

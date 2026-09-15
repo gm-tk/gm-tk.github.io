@@ -14,7 +14,13 @@ from Chris' and never re-ask them … commit after every round, never push." Hea
 (nothing uncommitted — nothing to reconcile), no stale index.lock, KB repo unchanged at ee2853c. **Plateau counter:** the session-3 stop was the
 plateau rule's "needs a human decision"; Chris's explicit "continue" IS that decision, so the three-round window restarts at this session's first
 shipped round (the same reading session 2 used after the r320 stop). stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5
-stay open (not re-asked); the loop works the derivable queue that needs no decision.
+stay open (not re-asked); the loop works the derivable queue that needs no decision. **Session 4 result: r326 (button anchor, FULL, +0.057pp) · r327 (ALL-CAPS titles, 0.000) · r328 (c55 labels, 0.000) · r329 (engagement marker, +0.004) — STOPPED on the plateau rule at ≈15:45; commits 955c0c8 · bdb33a1 · 2d478e4 · (r329: see git log).**
+
+## >>> STOPPED 2026-09-15 ≈15:45 NZST (session 4) on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r327 0.000pp, r328 0.000pp, r329 +0.004pp <<<
+**Session 4 shipped four rounds (r326 → r329; 4 commits) in ≈2h20m of the 10-hour budget (13:27 → 15:45).** Everything is committed; nothing is uncommitted; nothing was pushed.
+- r326 (FULL regeneration) moved the skeleton +0.057pp (the KB's universal button anchor; 285 lost hyperlinks recovered) and restarted the plateau window; r327 (ALL-CAPS titles → sentence case), r328 (constraint 55's label half) and r329 (the `[trigger engagement]` marker) were KB-backed rounds that could not move the gate by 0.02pp — the derivable, KB-backed queue above the 20-page floor is now spent.
+- **Scorecard 13:27 → 15:45:** SCAFFOLD 50.435% → **50.496%** (55.1% of achievable, ceiling 91.6%); ≥50 1031 → 1030 (a NAMED scorer-alignment dip on r326, identical net of the changed pages); ≥75 193 → **196**; ≥90 15; body 192 → **191**; every other gate EXACT; 13 selftests GREEN at every round.
+**Next session starts with:** Chris's decisions — unchanged from session 3 and NOT re-asked: (a) stickyNav (BLOCKED: the KB 14 families say ADD the `<head>` include, the project instruction says NEVER; recommendation = KB families only), (b) decision 5 — the interactive builds (the corpus's largest class by far: 824 un-built drag-and-drops, 237 widgets with no builder; the writer's `[button] Check answers` / `Reset` controls (219 buttons / 38 modules) belong to this class), (c) decision 4 — the Standard-template title-pair order, (d) decision 1 — c47. With none of those, the remaining measured candidates are all under the plateau threshold: the Bilingual `number="N.M"` section-id boxes (KB 07B; 72 boxes / 25 pages, est. +0.01pp — the one still-unshipped KB row ≥ 20 pages), the 28 residual compound engagement brackets, the `[engagement quiz button]`'s own form (23 modules), the 44 c79 module-title fallbacks (~24 derivable across four source tags, none ≥ 20 alone), the box-less `[MTKquiz]` shells (~17 pages). If Chris wants the loop to run without a decision, start with the Bilingual section-id boxes (a KB row) and expect the plateau rule to stop it again after it.
 
 ## >>> STOPPED 2026-09-15 ≈13:10 NZST on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r323 0.000pp, r324 +0.005pp, r325 +0.019pp <<<
 **Session 3 shipped four rounds (r322 → r325; 4 commits) in ≈3h30m of the 10-hour budget.** Everything is committed; nothing is uncommitted; nothing was pushed.
@@ -126,6 +132,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 4 Round 1 (engine r326 — a call-to-action button is an anchor, the KB's universal button form): SHIPPED 2026-09-15 ≈15:05 (session 4). AppVersion 260618.97, CLAUDE.md §9/§11/§14, KB status D-row added, FULL regeneration (scoped-ship counter reset).
 - Session 4 Round 2 (engine r327 — a multi-word ALL-CAPS title renders in sentence case, the KB's title-casing rule): SHIPPED 2026-09-15 ≈15:15 (session 4). AppVersion 260618.98, CLAUDE.md §9/§11/§14, KB status row 1 → ALL-CAPS normalisation CAPTURED-LIVE, scoped ship #1 since the r326 full. Gate-neutral.
 - Session 4 Round 3 (engine r328 — a submission button keeps its full 'Go to' label, KB constraint 55's label half): SHIPPED 2026-09-15 ≈15:25 (session 4). AppVersion 260618.99, CLAUDE.md §9/§11/§14, KB status row 55 → the label half CAPTURED, scoped ship #2 since the r326 full. Gate-neutral.
+- Session 4 Round 4 (engine r329 — `[trigger engagement]` is a marker, not a button, KB constraint 43): SHIPPED 2026-09-15 ≈15:45 (session 4). AppVersion 260619.00, CLAUDE.md §9/§11/§14, scoped ship #3 since the r326 full. **THE LOOP STOPPED after it (plateau rule: r327 0.000 / r328 0.000 / r329 +0.004).**
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -549,6 +556,47 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 4 · Round 4 (engine r329) — what shipped (`[trigger engagement]` is a marker, not a button)
+- **Fix:** `buttons["engagement quiz button"].trigger_marker` {enabled, env ENGMARKER_OFF, aliases [trigger engagement, engagement trigger],
+  words_flag} at the generic `[button]` seam before the label / URL derivation: a label-less marker (bracket equals or ends in an alias, no
+  black text) emits nothing; a bracket with other words → one diagnostic red flag. `[engagement quiz button]` untouched.
+- **Regeneration:** scoped — the in-memory ON probe over all 416 named 60 pages / 42 modules; regenerated; 0 truly stale; OFF vs disk = exactly
+  the 60 pages; ON = disk 266/266. Phantom `button engagementTrigger` 99 → 28 (the residue = compound / text-bearing brackets, named).
+- **Gates:** skeleton 50.492 → 50.496 (+0.004pp; 60 moved, 57 up / 3 down — dips NAMED CEDO105_5_0 −7.63 (one removed skeleton line re-aligns
+  difflib's blocks; the element sequence is strictly closer to the gold), MXEO301_7_0 −1.15 (repeat-collapse), ENGI401_6_0 −0.42); every other
+  gate EXACT; 13 selftests GREEN. **55.1% of achievable.**
+- **Plateau:** r327 0.000 · r328 0.000 · r329 +0.004 → the third consecutive sub-threshold round → STOP (§4).
+
+## Session 4 · Round 4 PICK (engine r329) — written before any code, 2026-09-15 15:28 NZST
+- **Class:** the writer's `[trigger engagement]` / `[engagement trigger]` / `[to trigger engagement]` is a CONDITION MARKER, not a button — the KB
+  reads it as the dropbox-trigger signal (constraint 43: "any activity that ends in a dropbox submission button ('Go to dropbox' / 'Upload to
+  dropbox' / `[trigger engagement]`) carries the `dropbox` modifier"; 05B "whose writer source carries `[trigger engagement]`"; 01F the BLL
+  form) and the finished modules carry NO engagement markup at all (0 of 2,385 gold pages have any `engag…` class or attribute). Claude's
+  Tag_Lexicon folds those aliases into `engagement quiz button` (the KB's `engagement_quiz_button` = "External quiz link button" — a real
+  button, `[engagement quiz button]` ×23) and the generic seam emits a PHANTOM `<div class="button engagementTrigger">Go to your journal</div>`
+  (the label-less tag falls to `journal_label_default`): **99 phantom buttons on 88 pages / 70 modules** (Standard 74 / Inquiry 10 / Fundamentals
+  4 pages; 84 with the journal default label, 15 with a swept-in filename or the bracket's own words). Skeleton-visible: a `div.button` node the
+  gold never has.
+- **Authority (§1b):** 1 = the KB (c43 / 05B / 01F: a marker on the activity, no element; 01D/01F: `engagement quiz button` is the button, its
+  aliases do not include the trigger forms); 3 = the gold, 100% (no engagement element anywhere). The engine already treats the marker as
+  content-less in two places (r292 InteractiveBuilder "a stray marker", r322 `_mtkEngAbsorbed`); this closes the third seam.
+- **MEASURED (WT bracket forms, all 454 modules):** `[trigger engagement]` 183, `[dropbox to trigger engagement]` 25, `[engagement trigger]` 21,
+  `[dev – quiz to trigger engagement …]` 18, `[to trigger engagement]` 8, `[insert mtk quiz – trigger engagement]` 8, MTK-quiz compounds 9,
+  `[insert text box for student response – engagement trigger]` 3 — 275 occurrences in 71 modules; `[engagement quiz button]` 23 + 4 quiz
+  compounds (the real button, untouched). Gold at the `[trigger engagement]` sites (BLL240 1F, ENGI401 4, XDLS908): the dropbox button and nothing
+  after it.
+- **Triangulated:** BLL240 1 (WT `[Button] Upload to dropbox [trigger engagement]` → gold `<a href="" target="_blank"><div class="button">Upload
+  to dropbox</div></a>` then the box closes → Claude the upload button + `<div class="button engagementTrigger">Go to your journal</div>`);
+  ENGI401 4 (WT `[Button] Upload to dropbox. [Trigger Engagement]` → gold the dropbox anchor only → Claude + the phantom); ARFUN01 (WT `[Insert text
+  box for student response – Engagement trigger]` → gold an MTK "Go to quiz" (its own class) → Claude the phantom journal button).
+- **Fix (planned):** `buttons["engagement quiz button"].trigger_marker` {enabled, env ENGMARKER_OFF, aliases ["trigger engagement", "engagement
+  trigger"], words_flag true}: at the generic seam, an `engagement quiz button` item whose bracket text ends in a marker alias and carries no
+  black text emits NOTHING (the r292 rule: a content-less marker); a bracket carrying other words (`[insert text box for student response –
+  engagement trigger]`) surfaces them as one diagnostic red flag (cv2-note) so nothing the writer wrote is lost. `[engagement quiz button]` itself
+  is untouched. Scoped regeneration (the in-memory probe names the set); OFF = disk.
+- **Gate expectation:** skeleton ≥ hold (a phantom `div.button` node removed where the gold has none); every other gate EXACT or improved
+  (compare_structure may gain an exact chain). **Plateau window: r327 0.000 · r328 0.000 — this round must move ≥ 0.02pp or the loop stops after it.**
+
 ## Session 4 · Round 3 (engine r328) — what shipped (KB constraint 55's label half)
 - **Fix:** `buttons.canonical_labels` {enabled, env BTNLABEL_OFF, rules [quiz → Go to quiz; portfolio → Go to portfolio; dropbox → Go to dropbox,
   family_labels BLL / LS / HPE → Upload to Dropbox]} — `ContentConverter.#buttonCanonicalLabel` at the generic `[button]` seam, after the r323
@@ -727,3 +775,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s4-r1 (engine r326) · a call-to-action button is an anchor (the KB's universal button form: a plain `[button]` ships inside `<a href target=_blank>` — the writer's hyperlink kept, else a blank href + one To Do note; reveal-type labels stay the gold's JS button) · SHIPPED 2026-09-15 · FULL regeneration, 713 pages / 286 modules · scaffold 50.435→50.492 (+0.057; 675 moved, 210 up; dips NAMED = scorer repeat-collapsing, identical net of the changed pages), ≥50 −1 named, ≥75 +3, body 192→191 · every other gate EXACT · bare buttons 1,800→338, 285 lost links recovered · 55.1% of achievable · commit (see git log)
 - s4-r2 (engine r327) · a multi-word ALL-CAPS header title renders in sentence case (the KB's title-casing rule: macrons kept, code tokens kept, single token untouched, one red flag quoting the original) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 15 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · all-caps titles 47→0, titles exact 550→567 · 55.1% of achievable · commit (see git log)
 - s4-r3 (engine r328) · a submission button keeps its full 'Go to' label (KB constraint 55's label half: bare `Quiz` / `Portfolio` / `Dropbox` → `Go to quiz` / `Go to portfolio` / `Go to dropbox`, `Upload to Dropbox` in BLL / LS / HPE) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 40 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · bare-noun labels 84→0 · 55.1% of achievable · commit (see git log)
+- s4-r4 (engine r329) · `[trigger engagement]` is a marker, not a button (KB constraint 43: the dropbox-trigger condition; the phantom `button engagementTrigger` journal button no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 60 pages / 42 modules · scaffold 50.492→50.496 (+0.004; 57 up / 3 down, dips named), every other gate EXACT · phantoms 99→28 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r327 0.000, r328 0.000, r329 +0.004)**
+
+**Next session starts with:** Chris's decisions (stickyNav / decision 5 interactives / decision 4 title-pair order / decision 1 c47) — see the session-4 STOP banner at the top; without one, the Bilingual `number="N.M"` section-id boxes (KB 07B, 25 pages, est. +0.01pp) are the next PICK and the plateau rule will stop the loop again after it.

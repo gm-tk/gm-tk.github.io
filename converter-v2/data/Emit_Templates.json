@@ -916,7 +916,14 @@
 			"_round56_note": "Chris, OSAI201-02. The human's external-link button is <a target=_blank><div class=\"externalButton\">LABEL</div></a> (class externalButton, NOT button — measured 830 human externalButtons). The writer often drops the marker INLINE in a body sentence ('Click here to play Quick Draw [external link button] https://… then come back and do the activity.'), so the text AFTER the URL is running prose, not the button label. ContentConverter.#element: for an external link button it extracts the URL, uses a SHORT (<=label_max_words, no end-punctuation) trailing phrase as the label else a derivable DEFAULT ('Go to website', or 'Go to video' for a video URL — the human's two dominant defaults), and RE-EMITS the remaining trailing prose as body so it is neither lost nor mislabelled. (The exact editorial label e.g. 'Quick, Draw!' is the game's proper name — not derivable from the WT; the default is the safe convention.)"
 		},
 		"engagement quiz button": {
-			"form": "<div class=\"button engagementTrigger\">{label}</div>"
+			"form": "<div class=\"button engagementTrigger\">{label}</div>",
+			"trigger_marker": {
+				"_doc": "ROUND 329 (the autonomous loop, session 4 Round 4, 2026-09-15). The writer's `[trigger engagement]` / `[engagement trigger]` / `[to trigger engagement]` is a CONDITION MARKER, not a button: the KB reads it as the dropbox-trigger signal on the activity (constraint 43, 05B, 01F) and the finished modules carry no engagement markup at all (0 of 2,385 gold pages), while the Tag_Lexicon folds those aliases into `engagement quiz button` (the KB's `engagement_quiz_button` = the real external quiz link button, `[engagement quiz button]`) and the generic seam shipped a PHANTOM `<div class=\"button engagementTrigger\">Go to your journal</div>` — the label-less tag falling to journal_label_default — 99 times on 88 pages / 70 modules. An `engagement quiz button` item whose bracket text ENDS in one of `aliases` and carries no black text now emits nothing (the round-292 / round-322 reading of the same marker); a bracket carrying other words (`[insert text box for student response – engagement trigger]`) surfaces them as ONE diagnostic red flag (cv2-note) so nothing the writer wrote is lost. `[engagement quiz button]` itself is untouched. Env ENGMARKER_OFF reverts byte-for-byte.",
+				"enabled": true,
+				"env": "ENGMARKER_OFF",
+				"aliases": ["trigger engagement", "engagement trigger"],
+				"words_flag": "Writer's engagement-trigger marker carried extra words: {bracket}"
+			}
 		},
 		"supervisor button": {
 			"form": "<div class=\"button supervisor\">{label}</div>"

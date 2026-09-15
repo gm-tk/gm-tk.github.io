@@ -1628,7 +1628,12 @@ class Config {
 	// constraint 55 / CL-0038 / 14.11): a writer's bare "Quiz" / "Portfolio" / "Dropbox" becomes "Go to
 	// quiz" / "Go to portfolio" / "Go to dropbox" ("Upload to Dropbox" in BLL / LS / HPE). 47 pages /
 	// 40 modules, scoped. Env BTNLABEL_OFF; data buttons.canonical_labels.
-	static AppVersion = "260618.99";
+	// ROUND 329 (2026-09-15, build 260619.00): "[trigger engagement]" is a marker, not a button — the KB's
+	// dropbox-trigger condition (constraint 43); the phantom <div class="button engagementTrigger">Go to
+	// your journal</div> no longer ships (99 -> 28 on 60 pages / 42 modules, scoped). Env ENGMARKER_OFF;
+	// data buttons["engagement quiz button"].trigger_marker. THE LOOP STOPPED after this round on the
+	// plateau rule (r327 0.000 / r328 0.000 / r329 +0.004pp).
+	static AppVersion = "260619.00";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
