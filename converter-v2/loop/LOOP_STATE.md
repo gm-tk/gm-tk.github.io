@@ -6,7 +6,7 @@
 **Session 3 started:** 2026-09-15 09:41 NZST (Claude Code, same machine; hard stop 19:41). Budget: 12 rounds or 10 hours. Chris's kickoff:
 "Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … commit after every round, never push."
 Health check: `verify_after_transfer.sh` PASS, git clean at 1914ab5 (nothing uncommitted — nothing to reconcile), no stale index.lock.
-**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). NEXT: Round 11 — PICK not yet written (candidates: c67 overflowYScroll 27 pages; the c79 fallback mechanisms sized per mechanism; the r322 residues). stickyNav (KB queue rank 10) is BLOCKED — needs Chris (see Blocked classes). Plateau guard: r322 moved +0.043pp.**
+**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). Round 11 (engine r324) SHIPPED 2026-09-15 ≈13:40 NZST — KB c79's `Lesson N` LABEL titles (79 pages / 24 modules, scoped); commit (see git log). c67 DECLINED; stickyNav BLOCKED. NEXT: Round 12 — PICK not yet written. **PLATEAU GUARD: r323 0.000pp, r324 +0.005pp — a third round under 0.02pp (moving no other gate) STOPS the loop (§4).** stickyNav (KB queue rank 10) is BLOCKED — needs Chris (see Blocked classes). Plateau guard: r322 moved +0.043pp.**
 
 ## >>> STOPPED 2026-09-15 ≈08:15 NZST on the BUDGET rule (§4) — the 10-hour session cap (hard stop 09:21) after 8 shipped rounds <<<
 - **Why:** Chris answered the plateau report ("Yes to 2 and 3 — start with the TRR title source") at ≈07:48 NZST; Round 8 (decision 2, the MTK
@@ -109,6 +109,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Round 8 (engine r321 — the MTK title source, decision 2): SHIPPED 2026-09-15 08:2x. AppVersion 260618.92, CLAUDE.md §9/§11/§14, scoped ship #3.
 - Round 9 (engine r322 — the [MTKquiz] shell without the quiz content, decision 3 / KB c65): SHIPPED 2026-09-15 ≈11:35 (session 3). AppVersion 260618.93, CLAUDE.md §9/§11/§14, KB status row 65 → CAPTURED-LIVE, new gate `_verify_mtkquiz.cjs` in `run_all_gates.sh` (13 selftests), scoped ship #4.
 - Round 10 (engine r323 — a button label never ends in a full stop, KB row 55's text defect): SHIPPED 2026-09-15 (session 3). AppVersion 260618.94, CLAUDE.md §9/§11/§14, KB status row 55 → defect CLEARED, FULL regeneration (the first since r318; scoped-ship counter reset). stickyNav BLOCKED — needs Chris.
+- Round 11 (engine r324 — a `Lesson N` label is not a lesson title, KB c79): SHIPPED 2026-09-15 ≈13:40 (session 3). AppVersion 260618.95, CLAUDE.md §9/§11/§14, KB status row 79 → the label mechanism CAPTURED-LIVE, scoped ship #1 since the r323 full. c67 overflowYScroll DECLINED on measurement.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -426,6 +427,48 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - **Verifier:** the measure script re-run after the regeneration must report Claude full-stop buttons = the gold-like residue only (labels whose stop is
   an abbreviation) — expected 0–3; `--selftest`-style check: the ON probe over BLL233 shows `Upload to dropbox.` → `Upload to dropbox`.
 
+## Round 11 PICK (engine r324) — written before any code, 2026-09-15 12:50 NZST
+- **Class:** KB constraint 79 / CL-0069/0076 (a locked decision: the lesson page `<h1><span>` is the lesson's OWN title; `Lesson N` is stripped;
+  the module title only as a disclosed fallback) — the `Lesson N` LABEL sub-mechanism, which the KB status row lists as still queued. Claude
+  ships a header title that is nothing but a lesson label — `Lesson One` (ENGI102/ENGI202 ×9), `Lesson 1` (ANZH203), `Lesson #3 Opening
+  Doors…` (ENGC201/ENGI203/ENGI301/ENGJ301/ENGJ302 ×23: the existing strip accepts `Lesson 3` but not `Lesson #3`), `Lesson One – The Ode`
+  (ENGJ402 ×5: word numbers), `Lesson 5 continued` (CEDT501 sub-pages ×2) — where the gold ships the lesson's own title. Authority §1b-1.
+- **Measurement (`outputs/_measure_r324_lessontitles.py` → `_r324_lessontitles.json`; every paired lesson page, the Claude title vs the gold's,
+  classified by the difference):** 1,247 paired pages — exact 528 · case/whitespace/macron-only 87 · `Lesson N` label 44 · trailing punctuation
+  only 8 · Claude = module title while the gold has its own 50 (the gold's source in the WT is scattered: plain line 11, not in the WT 14,
+  [H2] 13, [LESSON] 6, [PAGE] 4 — no single derivable mechanism ≥ 20, recorded) · gold = module title 95 (the KB rejects, never chased) ·
+  pair-count 45 · pair order 2 (decision 4, open) · other / editorial 388 (class C). The label class: Standard-template English modules
+  (ENGI/ENGJ/ENGC/ANZH) + CEDT501's sub-pages; the gold strips the label on every one of the 44 (100%).
+- **Triangulation:** ENGI202 WT `[LESSON] Lesson One` → `[H1] What is a traditional story?` → gold h1 `What is a traditional story?` (no body
+  repeat) → Claude h1 `Lesson One` + body `<h3>What is a traditional story?</h3>`; ANZH203 `[LESSON] Lesson 1` → `[H2] *First European
+  Explorers*` → gold `First European Explorers` → Claude `Lesson 1` + body h3; ENGC201 `[H2] *Lesson #3* Opening Doors with Open Questions`
+  → gold `Opening Doors with Open Questions` → Claude `Lesson #3 Opening Doors with Open Questions`.
+- **Mechanism (PageSplitter's title harvest, one seam):** `body_region.lesson_title_dedup.lesson_label_titles` {enabled, env LESSONLABEL_OFF,
+  label_pattern (digits, `#N`, word numbers one–twelve, an optional `continued`), strip_existing_title, inherit_parent_on_subpage}: a page
+  title that is ONLY a label is treated like the bare number the round-NN rule already replaces — the first real heading (label-only headings
+  skipped) becomes the title, label stripped; a label-prefixed title keeps its own words (`Lesson One – The Ode` → `The Ode`); a label-only
+  sub-page (`N.M`, M > 0) with no heading of its own inherits its parent lesson's title (CEDT501 5.1 → `Speaking up`). The lesson-NUMBER
+  logic (the writer's `Lesson N` heading number wins) is untouched. The existing body de-dup then drops the body heading that now equals the
+  title — the gold's shape (ENGI202 1.0, ANZH203 1.0).
+- **Family (§0b):** the [LESSON]/[PAGE] page-title harvest touches every multi-page module → the OFF invariant is proven in memory over the whole
+  corpus (`_r322_probe.cjs`); the regeneration is the affected set (the ON-changed modules) — a scoped ship (#1 since the r323 full).
+- **Gate expectation:** skeleton-moving UP on the pages whose body heading is now de-duplicated (one h3 fewer, the gold's shape); h1 count
+  unchanged; every other gate EXACT. ENGJ302's off-by-one (Claude page 2.0 carries `Lesson #1: Definitions` while the gold's 2.0 is `Wild
+  Maths`) is a pagination difference — the strip still applies, the title stays different, NAMED.
+
+## Round 11 (engine r324) — what shipped (KB constraint 79, the `Lesson N` label mechanism)
+- **Fix:** `body_region.lesson_title_dedup.lesson_label_titles` {enabled, env LESSONLABEL_OFF, label_pattern (digits / `#N` / one–twelve / `continued`),
+  strip_existing_title, inherit_parent_on_subpage}: PageSplitter's harvest skips label-only headings, strips the label from the harvested one,
+  replaces a label-only page title, keeps a prefixed title's own words; a still-label-only sub-page inherits its parent's title; the body de-dup
+  strips the same forms. Splice `_r324_splice.py` (5 steps); measure `_measure_r324_lessontitles.py` → `_r324_lessontitles{,_before,_after}.json`.
+- **Regeneration:** scoped — 24 modules / 4 batches; 0 stale; **79 pages / 24 modules changed** = the ON probe's set; OFF in memory = disk on
+  2,102/2,102 pages (`_r324_probe_off_0*.log`).
+- **Gates:** skeleton 50.411 → 50.416 (+0.005pp; 14 moved, 11 up / 3 down — ENGI102_12_0 −2.82, _10_0 −1.22, _2_0 −0.54 NAMED: the pre-existing
+  page re-leveller ranks the remaining [H2] headings h3 once the title heading is de-duplicated, where the gold keeps h4), ≥50 1030 → 1031; every
+  other gate EXACT; 13 selftests GREEN. Titles: exact 528 → 550, the label class 44 → 0. **55.0% of achievable.**
+- **Named residue:** Claude = module title while the gold has its own (44 pages, scattered WT sources); 8 trailing-punctuation titles; ENGJ302's
+  off-by-one pagination; the gold's editorial re-wording of stripped titles (class C).
+
 ## Round 10 (engine r323) — what shipped (KB row 55's text defect)
 - **Fix:** `buttons.label_trailing_stop` {enabled, env BTNSTOP_OFF, strip_pattern "\\.$", keep_pattern (ellipsis / e.g. / i.e. / etc. …)} — ONE seam,
   the generic `[button]`-family emit in `ContentConverter.#element` (`label = #buttonLabelTrim(label, tpl)` before the fill). Splice `_r323_splice.py`
@@ -488,6 +531,10 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   stickyNav (series convention), c67 overflowYScroll (27 pages).
 
 ## Declined classes
+- **c67 `overflowYScroll scroll="500"` on long panels — DECLINED 2026-09-15 (Round 11 PICK).** Measured over every gold accordion / tab panel
+  (4,932 panels): the class rides 25 accContent + 6 tab-pane + 8 other panels on 27 pages (HIS1004 ×9), and its share is ≤ 0.05 in EVERY
+  length bucket (accContent 1–2k chars 9/164, 2–4k 8/158, 4–8k 4/186, 8k+ 2/178; tab-pane 2–4k 4/97) — panel length does not predict it, no
+  other discriminator exists. Below the r182 solidify floor in every group.
 - **c47 / CL-0095 — the duplicate body heading on a lesson page (Round 7 candidate, measured 2026-09-15 03:30, `outputs/_measure_r320_dupheading.py`
   → `_r320_dupheading.json`).** 88 cases / 77 pages where a Claude body heading equals the header title (exact, or after a `Lesson N` / label
   prefix). (a) The `Lesson N`-PREFIXED opening duplicate: gold drops 11/11 first-heading cases (12 with one later) — a 100% convention, both
@@ -526,3 +573,4 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - r8 (engine r321) · the MTK / Te Reo Rangatira title source (Chris's decision 2) · SHIPPED 2026-09-15 · scoped regeneration, 24 pages / 14 modules · scaffold 50.325→50.368 (+0.043), cs exact +5, every other gate EXACT · 55.0% of achievable · commit (see git log)
 - r9 (engine r322) · KB constraint 65 / CL-0082, the [MTKquiz] shell without the quiz content (Chris's decision 3) · SHIPPED 2026-09-15 · scoped regeneration, 30 pages / 23 modules (58-module family rebuilt) · scaffold 50.368→50.411 (+0.043; 15 up / 3 down NAMED KB-over-gold), ≥50 +2, ≥75 +1, RAW +0.022 · every other gate EXACT · new gate _verify_mtkquiz.cjs 61 shells defect 0 · 55.0% of achievable · commit (see git log)
 - r10 (engine r323) · KB row 55, a button label never ends in a full stop (`Upload to dropbox.` → `Upload to dropbox`) · SHIPPED 2026-09-15 · FULL regeneration (the [button] family = the corpus), 212 pages / 82 modules · scaffold 50.411→50.411 (+0.000pp), cs exact 11360, every other gate EXACT · 55.0% of achievable · stickyNav BLOCKED (needs Chris) · commit (see git log)
+- r11 (engine r324) · KB constraint 79, a `Lesson N` label is not a lesson title (the first real heading names the page; `continued` sub-pages inherit) · SHIPPED 2026-09-15 · scoped regeneration, 79 pages / 24 modules · scaffold 50.411→50.416 (+0.005; 11 up / 3 down named), ≥50 +1, every other gate EXACT · titles exact 528→550 · c67 DECLINED · 55.0% of achievable · commit (see git log)

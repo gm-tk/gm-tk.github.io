@@ -5906,9 +5906,17 @@ class ContentConverter {
 				const _ddCfg = tpl.body_region?.lesson_title_dedup;
 				const _pfxOn = (_ddCfg?.strip_lesson_prefix !== false)
 					&& !(typeof process !== "undefined" && process.env && process.env.LESSONPFX_OFF);
-				const _stripLessonPfx = (s) => _pfxOn
-					? (String(s).replace(/^lesson\s+#?\d+(?:\.\d+)?[a-z]?\s*[:.\-–—]?\s*/i, "") || String(s))
-					: String(s);
+				// ROUND 324 (KB c79 label titles): the de-dup strips the same label forms as the harvest
+				// (word numbers, "#N", "continued") — data lesson_title_dedup.lesson_label_titles
+				const _llCfg = _ddCfg?.lesson_label_titles;
+				const _llOn = !!_llCfg && _llCfg.enabled !== false && !!_llCfg.label_pattern
+					&& !(typeof process !== "undefined" && process.env && process.env[_llCfg.env ?? "LESSONLABEL_OFF"]);
+				const _llRe = _llOn ? new RegExp(_llCfg.label_pattern, "i") : null;
+				const _stripLessonPfx = (s) => {
+					if (!_pfxOn) return String(s);
+					if (_llRe) { const m = _llRe.exec(String(s).replace(/\*/g, "").trim()); if (m && String(m[3] ?? "").trim()) return String(m[3]).trim(); }
+					return String(s).replace(/^lesson\s+#?\d+(?:\.\d+)?[a-z]?\s*[:.\-–—]?\s*/i, "") || String(s);
+				};
 				if (this.#pageLessonTitle
 					&& Utils.Fold(_stripLessonPfx(text)).replace(/\s+/g, "") === Utils.Fold(_stripLessonPfx(this.#pageLessonTitle)).replace(/\s+/g, "")) {
 					// keep any genuinely-following body text (Part-3 "BOTH" case)

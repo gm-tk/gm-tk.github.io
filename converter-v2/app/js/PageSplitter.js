@@ -881,11 +881,24 @@ class PageSplitter {
 			const _btaOn = (DataService?.Data?.EmitTemplates?.body_region?.lesson_title_dedup
 				?.harvest_before_activity_only !== false)
 				&& !(typeof process !== "undefined" && process.env && process.env.LESSONTITLE_OFF);
+			// ROUND 324 (KB constraint 79 — the `Lesson N` LABEL titles): a title that is nothing but a
+			// lesson label ("Lesson One", "Lesson #3", "Lesson 5 continued") is no title — the first REAL
+			// heading names the page (label-only headings skipped, the label stripped from a prefixed one).
+			// Data body_region.lesson_title_dedup.lesson_label_titles; env LESSONLABEL_OFF.
+			const _llCfg = DataService?.Data?.EmitTemplates?.body_region?.lesson_title_dedup?.lesson_label_titles;
+			const _llOn = !!_llCfg && _llCfg.enabled !== false && !!_llCfg.label_pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[_llCfg.env ?? "LESSONLABEL_OFF"]);
+			const _llRe = _llOn ? new RegExp(_llCfg.label_pattern, "i") : null;
+			const _llMatch = (s) => (_llRe ? _llRe.exec(String(s ?? "").replace(/\*/g, "").trim()) : null);
+			const _labelOnly = (s) => { const m = _llMatch(s); return !!m && !String(m[3] ?? "").trim(); };
+			const _stripLabel = (s) => { const m = _llMatch(s); const rest = m ? String(m[3] ?? "").trim() : ""; return rest || String(s ?? "").trim(); };
 			let firstHeading = null;
 			for (const it2 of p.items) {
 				if (it2.type !== "tag") continue;
 				const pt2 = it2.parse.primary?.tag;
 				const ht2 = (it2.blackAfter || it2.parse.remainders.join(" ")).replace(/\*/g, "").trim();
+				// a heading that is only a lesson label never names the page — keep scanning
+				if (_llOn && ["h1", "h2", "h3", "h4", "h5", "heading"].includes(pt2) && ht2 && _labelOnly(ht2)) continue;
 				if (_btaOn && pt2 === "activity" && !/^lesson\s+\d/i.test(ht2)) break;   // stop at 1st activity
 				// ROUND 321 (the MTK title source): a reoTranslate page has no [Activity] tag to
 				// stop the harvest, so a body [H3] ("Finished!") became the page title; only
@@ -934,9 +947,14 @@ class PageSplitter {
 			const _lnOn = (_lnCfg?.enabled !== false)
 				&& !(typeof process !== "undefined" && process.env && process.env.LESSONNAME_OFF);
 			const _bareNum = /^\s*\d+(?:\.\d+)?[a-z]?\s*$/i.test(String(p.pageTitle ?? "").trim());
-			const _newTitle = (lm ? lm[2] : text).trim();
+			// ROUND 324: the harvested heading loses its own label ("Lesson #3 Opening Doors…" → "Opening Doors…")
+			const _newTitle = (_llOn ? _stripLabel(lm ? lm[2] : text) : (lm ? lm[2] : text)).trim();
 			if (!p.pageTitle) p.pageTitle = _newTitle;
 			else if (_lnOn && _bareNum && _newTitle) p.pageTitle = _newTitle;
+			// ROUND 324: a label-only title ("Lesson One") is replaced by the first real heading; a
+			// label-prefixed one ("Lesson One – The Ode") keeps its own words
+			else if (_llOn && _labelOnly(p.pageTitle) && !(_llMatch(p.pageTitle)?.[2]) && _newTitle && !_labelOnly(_newTitle)) p.pageTitle = _newTitle;   // a "continued" sub-page inherits instead (below)
+			else if (_llOn && _llCfg.strip_existing_title !== false && _stripLabel(p.pageTitle) !== String(p.pageTitle).trim()) p.pageTitle = _stripLabel(p.pageTitle);
 			if (lm && p.lessonNumber !== lm[1]) {
 				// the writer's own heading number wins over our ordinal —
 				// but a disagreement is worth a summary line
@@ -946,6 +964,36 @@ class PageSplitter {
 				}
 				p.lessonNumber = lm[1];
 				p.lessonLabel = `${lm[1]}.0`;
+			}
+		}
+
+		// ROUND 324 (KB constraint 79): a page whose title is STILL only a lesson label after the harvest
+		// (no heading of its own) — a sub-page (N.M, M > 0) inherits its parent lesson's title
+		// (CEDT501 5.1 "Lesson 5 continued" → "Speaking up"); a label-PREFIXED title with no heading
+		// still loses its label. Data lesson_title_dedup.lesson_label_titles; env LESSONLABEL_OFF.
+		{
+			const _llCfg = DataService?.Data?.EmitTemplates?.body_region?.lesson_title_dedup?.lesson_label_titles;
+			const _llOn = !!_llCfg && _llCfg.enabled !== false && !!_llCfg.label_pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[_llCfg.env ?? "LESSONLABEL_OFF"]);
+			if (_llOn) {
+				const _llRe = new RegExp(_llCfg.label_pattern, "i");
+				const _m = (s) => _llRe.exec(String(s ?? "").replace(/\*/g, "").trim());
+				const _only = (s) => { const m = _m(s); return !!m && !String(m[3] ?? "").trim(); };
+				const _strip = (s) => { const m = _m(s); const r = m ? String(m[3] ?? "").trim() : ""; return r || String(s ?? "").trim(); };
+				const _byLabel = new Map(pages.filter((q) => q.lessonLabel).map((q) => [String(q.lessonLabel), q]));
+				for (const p of pages) {
+					if (p.isOverview || !p.pageTitle) continue;
+					if (_only(p.pageTitle)) {
+						if (_llCfg.inherit_parent_on_subpage === false) continue;
+						const lab = String(p.lessonLabel ?? "");
+						const mm = /^(\d+)\.(\d+)$/.exec(lab);
+						if (!mm || mm[2] === "0") continue;
+						const parent = _byLabel.get(`${mm[1]}.0`);
+						if (parent && parent.pageTitle && !_only(parent.pageTitle)) p.pageTitle = parent.pageTitle;
+					} else if (_llCfg.strip_existing_title !== false && _strip(p.pageTitle) !== String(p.pageTitle).trim()) {
+						p.pageTitle = _strip(p.pageTitle);
+					}
+				}
 			}
 		}
 

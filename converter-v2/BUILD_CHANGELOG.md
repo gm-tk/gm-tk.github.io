@@ -1,5 +1,48 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 324, build 260618.95) — A `Lesson N` LABEL IS NOT A LESSON TITLE (KB constraint 79 / CL-0069/0076, the label sub-mechanism; the autonomous loop, session 3, Round 11; **SCOPED regeneration of the 24 affected modules; every protected gate HELD-or-IMPROVED; scoped ship #1 since the round-323 full**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A lesson page whose header title was nothing but a lesson label — `Lesson One`, `Lesson 1`, `Lesson #3 Opening Doors with Open Questions`, `Lesson One – The Ode`, `Lesson 5 continued` — now carries the lesson's OWN title: the first real heading (a label-only heading is skipped), the label stripped from a prefixed one, and a `continued` sub-page inherits its parent lesson's title. 79 pages / 24 modules; the existing body de-dup then drops the body heading that now equals the title — the gold's shape.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **ENGI202 1.0** — docx: `[LESSON] Lesson One` then `[H1] What is a traditional story?` → gold: h1 `What is a traditional story?`, no body repeat → Claude before: h1 `Lesson One` + body `<h3>What is a traditional story?</h3>`; after: the gold's h1, the body heading de-duplicated.
+- **ANZH203 1.0** — docx: `[LESSON] Lesson 1` then `[H2] *First European Explorers*` → gold: `First European Explorers`, body `<h3>Abel Tasman (1603–1659)</h3>` → Claude before: `Lesson 1` + h3/h4/h5 stack; after: the gold's h1 and the gold's h3.
+- **ENGC201 3.0** — docx: `[H2] *Lesson #3* Opening Doors with Open Questions` → gold: `Opening Doors with Open Questions` → Claude before: `Lesson #3 Opening Doors with Open Questions` (the existing strip accepted `Lesson 3` but not `Lesson #3`); after: the gold's.
+- **CEDT501 5.1** — a `continued` sub-page with the lesson's own heading further down → gold: the parent lesson's title `Speaking up` → Claude before: `Lesson 5 continued`; after: `Speaking up`.
+- **MXFL201 1.0** (a side effect of skipping label-only headings) — docx: a label-only `[H2] Lesson 1` heading stopped the harvest and the MODULE title (`Taku hararei Aotearoa`) filled the header → gold: `Exploring holiday destinations and tourism in Aotearoa` → Claude after: the gold's (7 MXFL201 pages, ENGR301, XLP/XTAS pages).
+- **KB:** constraint 79 / CL-0069/0076 — the lesson page `<h1><span>` is the lesson's own title; `Lesson N` is stripped; the module title only as a disclosed fallback.
+
+### 3. THE MEASUREMENT (every paired lesson page, the Claude title vs the gold's, classified by the difference — `outputs/_measure_r324_lessontitles.py` → `_r324_lessontitles.json`)
+
+- Before: 1,247 paired lesson pages — exact **528** · case / whitespace / macron only 87 · **`Lesson N` label 44** · trailing punctuation only 8 · Claude = module title while the gold has its own 50 (the gold's WT source is scattered: plain line 11, not in the WT 14, `[H2]` 13, `[LESSON]` 6, `[PAGE]` 4 — no single derivable mechanism ≥ 20; recorded) · gold = module title 95 (the KB rejects; never chased) · pair-count 45 · pair order 2 (decision 4, open) · other / editorial 388.
+- After: exact **550 (+22)** · the label class **0** · Claude = module title 44 (−6) · other 407 (+19: label pages whose stripped title the gold then re-worded — `Heroes and Heroines: Crafting Characters for their quest` → `Heroes and Heroines` — class C; and ENGJ302's off-by-one pagination, NAMED).
+
+### 4. THE FIX — one data block `Emit_Templates.body_region.lesson_title_dedup.lesson_label_titles` `{ enabled, env: "LESSONLABEL_OFF", label_pattern, strip_existing_title, inherit_parent_on_subpage }`
+
+- **A `PageSplitter`'s title harvest** — a heading that is only a label never names the page (the scan continues to the next heading); the harvested heading loses its label; a label-only page title (the `[LESSON]` tag's own payload) is replaced by the first real heading exactly the way the bare-number rule already worked; a label-prefixed title keeps its own words.
+- **B `PageSplitter`, after the harvest** — a page still label-only: a sub-page (`N.M`, M > 0) inherits its parent lesson's title (`continued` pages never take their own first heading — the gold uses the parent's); a label-prefixed title with no heading still loses its label.
+- **C `ContentConverter`'s body de-dup** strips the same label forms (word numbers, `#N`, `continued`) so the body heading that equals the new title is dropped (ENGJ402 1.0 had kept `Lesson One – An Introduction to Lyric Poetry` as an h3 and pushed every following heading down a level).
+- The lesson-NUMBER logic (a `Lesson N` heading's number wins over the ordinal) is untouched — a word number never renumbers a page.
+- **Env toggle `LESSONLABEL_OFF`** reverts byte-for-byte. Splice `outputs/_r324_splice.py` (5 steps; idempotent; reproduces the three live files from the committed r323 files).
+
+### 5. THE PROOF AND THE GATES
+
+- **In memory** (`outputs/_r322_probe.cjs`): OFF over ALL 416 modules = disk on **2,102 / 2,102 pages**; ON changes **79 pages / 24 modules** (`_r324_probe_on_0*.log`). Scoped regeneration of the 24; `_content_manifest.py fresh` → **0 truly stale**; diff → **79 pages / 24 modules changed, 0 added / 0 removed** = the probe's set.
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.411% → 50.416% (+0.005pp) IMPROVED / ≥50% 1030 → 1031 (+1) / ≥75% 193 / ≥90% 15 / skipped 0 @ 1954; RAW 34.771% → 34.776%.** 14 pages moved — 11 up / 3 down. Rises ENGI202_4_0 +5.13 (crossed 50%), ANZH203_1_0 +3.54, ENGI202_5_0 +3.06; **the three dips NAMED:** ENGI102_12_0 −2.82, ENGI102_10_0 −1.22, ENGI102_2_0 −0.54 — with the title heading de-duplicated the page's remaining `[H2]` headings are the page's top rank, so the pre-existing page re-leveller (`heading_relevel`) ranks them h3 where the gold keeps h4 (the gold's h3 lives inside a widget); the re-leveller's rank rule, not this round's, is the seam.
+- Every other gate: compare_structure exact **11360** / EXTRA **186** / missing **591** · structurally clean **2056/2102** / leak **288/46** · body **192** · tags **9557/9557** · flipCard TOTAL 61 divergence 0 · every verifier line identical to r323 · entry-parity PASS · index-sync 33/28 · pairs skipped 0 · **all THIRTEEN widget selftests GREEN**.
+- **Ceiling:** SCAFFOLD 50.416% = **55.0% of achievable**.
+
+### 6. NAMED, NOT CHASED
+
+- The remaining c79 residue after this round: Claude = module title while the gold has its own title on 44 pages (no single derivable source ≥ 20); trailing punctuation on 8 titles (`Cultivation.`, `Column Addition:`); the Standard-template pair order (decision 4, open); the gold's own module-title repeats (97, the KB rejects).
+- **c67 `overflowYScroll` DECLINED on measurement** (Round 11 PICK): 39 gold panels on 27 pages, share ≤ 0.05 in every panel-length bucket over 4,932 accordion / tab panels — no discriminator.
+- The plateau guard: r323 0.000pp, r324 +0.005pp — a third round under 0.02pp stops the loop.
+
+**Ledger:** scoped ship #1 since the r323 full · data `body_region.lesson_title_dedup.lesson_label_titles` · env `LESSONLABEL_OFF` · tools `outputs/_r324_splice.py`, `_measure_r324_lessontitles.py` · state `outputs/_r324_sk_final.json` · logs `_r324_gates.log`, `_r324_sk_full.log`, `_r324_fastloop.log`, `_r324_selftests.log`, `_r324_probe_off_0*.log`, `_r324_probe_on_0*.log`, `_r324_regen.log` · `KB_AMALGAMATION_STATUS.md` row 79 → the label mechanism CAPTURED-LIVE.
+
 ## 2026-09-15 (round 323, build 260618.94) — A BUTTON LABEL NEVER ENDS IN A FULL STOP (KB row 55's recorded text defect; the autonomous loop, session 3, Round 10; **FULL regeneration — the `[button]` tag family is the corpus (429 modules); every protected gate HELD-or-IMPROVED; the first full ship since round 318**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

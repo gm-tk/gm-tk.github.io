@@ -1603,7 +1603,13 @@ class Config {
 	// stripped at the generic [button] emit (#buttonLabelTrim); ellipsis / abbreviation kept;
 	// "?" "!" ":" untouched. 212 pages / 82 modules, full regeneration. Env BTNSTOP_OFF;
 	// data buttons.label_trailing_stop.
-	static AppVersion = "260618.94";
+	// ROUND 324 (2026-09-15, build 260618.95): a "Lesson N" LABEL is not a lesson title (KB
+	// constraint 79 / CL-0069/0076): a header title that is only a label ("Lesson One",
+	// "Lesson #3 Title", "Lesson 5 continued") takes the lesson's own title — the first real
+	// heading (label-only headings skipped, the label stripped), a "continued" sub-page inherits
+	// its parent's; the body de-dup strips the same label forms. 79 pages / 24 modules, scoped.
+	// Env LESSONLABEL_OFF; data body_region.lesson_title_dedup.lesson_label_titles.
+	static AppVersion = "260618.95";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
