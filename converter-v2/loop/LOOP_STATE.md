@@ -22,7 +22,7 @@ from Chris' and never re-ask them … commit after every round, never push." Hea
 (nothing uncommitted — nothing to reconcile), no stale index.lock. **Plateau counter:** the session-4 stop was the plateau rule's "needs a human
 decision"; Chris's explicit "continue" IS that decision (the same reading sessions 2 and 4 used), so the three-round window restarts at this
 session's first shipped round. stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5 stay open (not re-asked); the loop
-works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp; commit 612da6d) · r332 (the empty footers, scoped 130 modules, +0.269pp) · SHIPPED ≈17:40.**
+works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp; commit 612da6d) · r332 (the empty footers, scoped 130 modules, +0.269pp; commit 8a347d4) · r333 (the right-hand alert side column + the summary token, scoped 53 modules, +0.066pp) · SHIPPED ≈18:30.**
 
 ## >>> STOPPED 2026-09-15 ≈15:45 NZST (session 4) on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r327 0.000pp, r328 0.000pp, r329 +0.004pp <<<
 **Session 4 shipped four rounds (r326 → r329; commits 955c0c8 · bdb33a1 · 2d478e4 · 6e25190) in ≈2h15m of the 10-hour budget (13:27 → 15:42).** Everything is committed; nothing is uncommitted; nothing was pushed.
@@ -144,6 +144,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 5 Round 1 (engine r330 — the bilingual section id is the activity number, not a heading, KB 07B): SHIPPED 2026-09-15 ≈16:40 (session 5). AppVersion 260619.01, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #4 since the r326 full. Skeleton +0.040pp — the plateau window restarts.
 - Session 5 Round 2 (engine r331 — a bilingual section box's headings render at the KB's activity level h3, KB 07B): SHIPPED 2026-09-15 ≈17:10 (session 5). AppVersion 260619.02, CLAUDE.md §9/§11/§14, scoped ship #5 since the r326 full. Skeleton +0.022pp.
 - Session 5 Round 3 (engine r332 — the empty footer → the KB's page-position form, KB 01B; + the BLL1 registry footer class): SHIPPED 2026-09-15 ≈17:40 (session 5). AppVersion 260619.03, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #6 since the r326 full. Skeleton +0.269pp, ≥50 +10, ≥75 +4.
+- Session 5 Round 4 (engine r333 — a right-hand alert is a side column; rhs / summary are not classes, KB 05B): SHIPPED 2026-09-15 ≈18:30 (session 5). AppVersion 260619.04, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #7 since the r326 full (backstop due at 8). Skeleton +0.066pp, ≥50 +5; compare_structure exact +15 / EXTRA −15 / missing +2 named.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -567,6 +568,70 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 5 · Round 4 (engine r333) — what shipped (a right-hand alert is a side column; `rhs` / `summary` are not classes)
+- **Fix:** `callouts.positional_side_alert` {enabled, env ALERTRHS_OFF, tags [alert, important], keywords [rhs, rhc], strip_tokens
+  {rhs, rhc, summary}, after_activity (the KB activity sidebar `col-md-4 offset-md-0 col-12 > alertActivity`, lead h4), after_content
+  (`col-md-4 col-12 > alert top`, lead h4)}: at the callout emit site a strict-mode `alert`/`important` carrying a keyword, with the preceding
+  content row just closed, is spliced as that row's right sibling through the r123 pairing (`#sideAlertCol`, which now honours a def's
+  lead through the r61 module convention); an empty box keeps the ordinary path and its "Empty" flag; with no preceding row or in span
+  mode the plain box ships with the token stripped; `summary` is stripped everywhere. `emit` records `lastRowOpenIdx` so the closed row's
+  first block (activity vs content) decides the def.
+- **Regeneration:** scoped — the in-memory probe over ALL 416 modules (4 shards): OFF = disk 2102/2102; ON named 143 pages / 53 modules;
+  every diff line = 150 rhs opens + 98 summary opens gone, 92 side columns (61 alert top / 31 alertActivity) + 106 plain alerts gained,
+  content lines balancing exactly (0 lost / 0 gained); the planner's 7 batches, all rc 0; 0 truly stale; manifest diff = exactly the 143.
+  The first cut lost 10 "Empty [alert]" flags and rendered the lead as a fixed h4 — both fixed before the regeneration (`_r333_probe_on1_*`).
+- **Gates:** skeleton 50.827 → 50.893 (+0.066pp; 87 moved, 73 up / 14 down — dips NAMED: TEFUN05_0_0 −4.9 / TEFUN04_0_0 −3.2 / ANZH304_6_0
+  −3.4 / ANZH303_6_0 −2.8 = alignment artefacts with the position-free overlap rising; MXFL301_1_0 −2.9 + MXEX302_6_0 −1.5 = the
+  after-content rule's gold-plain-alert / gold-alertActivity minorities; ENGI102_6_0 −1.1 a coincidental match); ≥50 1044 → 1049; ≥75 200;
+  compare_structure exact 11360 → 11375 / EXTRA 186 → 171 / missing 591 → 593 (ACCEPTED BY NAME: ANZH301_3_0 + HIS1004_2_0, the
+  after-activity rule's 2-of-20 minority where the gold keeps a full-width `alert`); every other gate EXACT; 13 selftests GREEN.
+  **55.6% of achievable.**
+- **Verifier:** `alert rhs` 150 → 0; `alert summary` 98 → 0; 92 side columns. **Plateau window: r331 +0.022 · r332 +0.269 · r333 +0.066.**
+  Ship ledger: scoped #7 since the r326 full — **the full-ship backstop is due at the next scoped ship (8).**
+
+## Session 5 · Round 4 PICK (engine r333) — written before any code, 2026-09-15 17:58 NZST
+- **Class:** two alert modifier tokens the writer's positional/label words map to that the gold NEVER ships and the KB does not define
+  (`Emit_Templates.callouts.modifier_classes` rhs/rhc → ` rhs`, summary → ` summary`): **`alert rhs` 135 occ / 94 pages / 48 modules** (writer
+  `[alert box rhs]` / `[alert box rhc]` / `[rhs alert]` / `[alert rhs]` / `[important info box rhs]` / `[alert.rhs]`) and **`alert summary` /
+  `alert solid summary` 63 occ / 62 pages / 11 modules** (`[alert box lesson summary]`, `[alert box – summary statement]`, `[alert box module
+  summary]`; AGH/ANZH). KB 05B's alert vocabulary is `alert` / `alert solid` / `alert top` / `alert blank` / `alert teacher` (+ cultural); its
+  sidebar form (01F "Activity sidebar", 05B) is `col-md-4 offset-md-0 col-12 > div.alertActivity > h4 + p`; `alert top` = `<div class="alert
+  top"><h4>Heading</h4><p>Text</p></div>`. Gold non-KB alert tokens corpus-wide are padding0 29 / paddingL 10 / combined 9 / alertSolid 8 …
+  — `rhs` 0, `summary` 0.
+- **MEASURED (`outputs/_measure_r333_alertmods.py` / `_alerttags.py` / `_rhsdisc.py` / `_rhscol.py`, every paired Standard page, each Claude
+  box matched to the gold by its first 8 words):**
+  · `summary` — the gold wraps the same text in plain `alert` **25** / `alert solid` **4** / never `summary` (29/29 = 1.00; the writer's
+    spelling makes no difference). Drop the token.
+  · `rhs` — the gold box's class splits `alert top` 27 / `alertActivity` 23 / `alert` 20 (no form ≥ 0.60 on the class alone) **but its
+    COLUMN solidifies: a side column (`col-md-4` / `col-4`) as the RIGHT sibling of a `col-md-8` content column on 56/70 = 0.80** (alertActivity
+    23/23, alert top 26/27, alert 7/20). The class is decided by what PRECEDES the box: **after an activity box → `alertActivity` 15/20 = 0.75**
+    (the KB's "Activity sidebar" form); **after plain content → `alert top` 26/41 = 0.63** of the side-column matches (alertActivity 8,
+    plain alert 7). The writer's spelling is not a discriminator (`[alert box rhc]` → alertActivity 5 / alert 2 / alert top 2). Subject and
+    length are not discriminators either (XGF9 alert 6 : top 7; MXFL 4 : 5 : 4). Fundamentals/Inquiry rhs boxes: 8 matched (5 alertActivity,
+    3 alert top), 19 unmatched (single-page pairing) — the same rule applies, the probe names them.
+- **Authority (§1b):** level 1 for the vocabulary (KB 05B — `rhs`/`summary` are not classes; a right-hand box beside an activity IS the KB's
+  activity sidebar) + level 4 consensus for the two side forms (0.80 side column; 0.75 / 0.63 per position). Where the gold keeps a plain
+  full-width `alert` for an rhs box (13/70) the side column is a NAMED consensus-over-gold delta. Engine precedents: r92/r94 already render
+  the TABLE-form positional alert as `col-md-4 > alert top` paired right (ENGS302), r121/r123 render `[Side alert]` as the paired
+  `alertActivity` column, r239 promoted the exact spelling `[right-hand alert]` to `side alert` and RECORDED this wider family (80 occ / 40
+  modules) as the follow-up.
+- **Triangulated:** ANZH101 lesson 1 (WT `[rhs alert]` after activity 1B; gold `row > col-md-8 [activity 1B] + col-md-4 col-12 > alertActivity >
+  p`; Claude `row > col-md-8 > alert rhs` in its own row under the activity's row); XGF9006 lesson 2 (WT `[alert.rhs]` after prose; gold
+  `col-md-8 paddingR [prose] + col-md-4 col-12 paddingL > alert top > p`; Claude a full-width `alert rhs` row); ANZH404 lesson 1 (WT `[alert box
+  lesson summary]`; gold `alert`; Claude `alert summary`).
+- **Fix (planned), data `callouts.positional_side_alert` {enabled, env `ALERTRHS_OFF`, tags [alert, important], keywords [rhs, rhc], strip_tokens
+  {rhs: " rhs", rhc: " rhs", summary: " summary"}, after_activity def (= the KB activity sidebar: `col-md-4 offset-md-0 col-12 > alertActivity`,
+  lead h4), after_content def (`col-md-4 col-12 > alert top`, lead h4)}:** at the callout emit site, an `alert`/`important` whose remainder
+  carries an rhs keyword, in STRICT mode, with the preceding content row closed, is spliced as the RIGHT sibling of that row's `col-md-8`
+  column through the r123 pairing (`#sideAlertCol`, which gains an optional h4 lead so an embedded payload is never dropped) — the
+  `alertActivity` def when the closed row's first block is an activity box, the `alert top` def otherwise; with no preceding content row, or
+  in SPAN mode, it renders as a plain `alert` with the token stripped. `summary` is stripped everywhere (→ `alert` / `alert solid`). OFF =
+  byte-identical (the tokens stay, no routing). Regeneration: scoped to the modules the in-memory probe names over all 416.
+- **Gate expectation:** skeleton ≥ hold — the rhs boxes gain the gold's `col-md-4` sibling line + the gold's class on ~56 of 70 paired sites
+  (and lose a phantom own-row); the summary boxes' class line matches on 29/29; compare_structure may move (a container relocates into
+  the preceding row — the r123 precedent moved exact +5); body/defect/leak EXACT. Est. +0.03–0.08pp. **Plateau window: r330 +0.040 ·
+  r331 +0.022 · r332 +0.269.**
+
 ## Session 5 · Round 3 (engine r332) — what shipped (the empty footer → the KB's page-position form; the BLL1 footer class)
 - **Fix:** Part A — `footer.kb_position_defaults` {enabled, env FOOTERPOS_OFF, overview next+home, lesson prev+next+home, final prev+home,
   by_footer_class {fundamentals-nav: home}} in `SkeletonBuilder.#buildFooter`: a registry `footer_links` value with no `value_map` entry (the
@@ -932,5 +997,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s5-r1 (engine r330) · the bilingual section id is the activity number, not a heading (KB 07B: the writer's bare `[H1] N.M` → `number="N.M"` on the boxed section, decimal preferred; the phantom `<h3>1.1</h3>` pair no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 25 pages / 7 modules · scaffold 50.496→50.536 (+0.040; 17 up / 4 down, dips named), ≥50 +3, every other gate EXACT · phantoms 234→0, unnumbered boxes 72→0 · 55.2% of achievable · commit (see git log)
 - s5-r2 (engine r331) · a bilingual section box's headings render at the KB's activity level (KB 07B: the writer's `[H2]` inside a TRR section box → h3; PNR excluded by data) · SHIPPED 2026-09-15 · scoped regeneration, 21 pages / 5 modules · scaffold 50.536→50.558 (+0.022; 18 up / 3 down, dips named), ≥50 +1, every other gate EXACT · TRR in-box h2 155→0 · alertImage sidebar DECLINED, table-class KB conflict → needs Chris · 55.2% of achievable · commit (see git log)
 - s5-r3 (engine r332) · the empty footer → the KB's page-position form (KB 01B: a no-evidence registry footer value falls back to overview next+home / lesson all three / final prev+home; fundamentals-nav home) + the BLL1 registry footer class (inquiry-nav, gold 0.85) · SHIPPED 2026-09-15 · scoped regeneration, 239 pages / 130 modules · scaffold 50.558→50.827 (+0.269; 185 up / 22 down, dips named), ≥50 +10, ≥75 +4, every other gate EXACT · empty footers 141→0 · 55.5% of achievable · commit (see git log)
+- s5-r4 (engine r333) · a right-hand alert is a side column; rhs / summary are not classes (KB 05B: `[alert box rhs]`-family boxes pair as the right sibling of the content column they follow — the KB activity sidebar alertActivity after an activity box, alert top after prose; `[alert box lesson summary]` → the plain alert) · SHIPPED 2026-09-15 · scoped regeneration, 143 pages / 53 modules · scaffold 50.827→50.893 (+0.066; 73 up / 14 down, dips named), ≥50 +5, compare_structure exact +15 / EXTRA −15 / missing +2 NAMED, every other gate EXACT · alert rhs 150→0, alert summary 98→0, 92 side columns · 55.6% of achievable · commit (see git log)
 
 **Next session starts with:** Chris's decisions (stickyNav / decision 5 interactives / decision 4 title-pair order / decision 1 c47) — see the session-4 STOP banner at the top; without one, the Bilingual `number="N.M"` section-id boxes (KB 07B, 25 pages, est. +0.01pp) are the next PICK and the plateau rule will stop the loop again after it.

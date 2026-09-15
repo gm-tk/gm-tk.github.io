@@ -667,6 +667,32 @@
 			"summary": " summary",
 			"_rule": "Two-tier positional rule (§5.6): a positional phrase that maps to a documented class here is ACTIONED into the class; one that doesn't is rendered as a red flag at the box."
 		},
+		"positional_side_alert": {
+			"enabled": true,
+			"env": "ALERTRHS_OFF",
+			"tags": ["alert", "important"],
+			"keywords": ["rhs", "rhc"],
+			"strip_tokens": {
+				"rhs": " rhs",
+				"rhc": " rhs",
+				"summary": " summary"
+			},
+			"after_activity": {
+				"open": "<div class=\"alertActivity\">",
+				"close": "</div>",
+				"lead_element": "h4",
+				"wrap_content": false,
+				"side_column": "col-md-4 offset-md-0 col-12"
+			},
+			"after_content": {
+				"open": "<div class=\"alert top\">",
+				"close": "</div>",
+				"lead_element": "h4",
+				"wrap_content": false,
+				"side_column": "col-md-4 col-12"
+			},
+			"_doc": "ROUND 333 (the autonomous loop, session 5 Round 4) — A RIGHT-HAND ALERT IS A SIDE COLUMN; `rhs` and `summary` ARE NOT CLASSES. The writer's positional words (`[alert box rhs]`, `[alert box rhc]`, `[rhs alert]`, `[alert rhs]`, `[important info box rhs]`, `[alert.rhs]`) and label words (`[alert box lesson summary]`) reached the page through modifier_classes as `alert rhs` (135 occ / 94 pages / 48 modules) and `alert summary` (63 occ / 62 pages / 11 modules) — tokens the gold ships 0 times and KB 05B does not define (its alert vocabulary: alert / solid / top / blank / teacher / cultural; its sidebar: col-md-4 offset-md-0 col-12 > alertActivity > h4 + p). MEASURED on every paired Standard page (outputs/_measure_r333_alertmods.py + _alerttags.py + _rhsdisc.py + _rhscol.py): a `summary` box is plain `alert` 25 / `alert solid` 4 in the gold (29/29 — drop the token); an `rhs` box sits in a SIDE COLUMN (col-md-4 / col-4) as the RIGHT sibling of a col-md-8 content column 56/70 = 0.80, its class decided by what precedes it — after an ACTIVITY box the KB activity sidebar `alertActivity` (15/20 = 0.75), after plain content `alert top` (26/41 = 0.63 of the side matches); the writer's spelling, the subject and the box length are not discriminators. MECHANISM: at the callout emit site an `alert`/`important` whose leftover remainder words carry a keyword, in STRICT mode, with the preceding content row just closed, is spliced as that row's right sibling through the r123 pairing (#sideAlertCol, which now honours a def's lead_element so an embedded payload lead is never dropped) — `after_activity` when the closed row's first block is an activity box, `after_content` otherwise; with no preceding content row, or in SPAN mode, it renders as the plain box with the token stripped. `strip_tokens` are removed from the modifier string wherever a callout opens. Engine precedents: r92/r94 (the table-form positional alert → col-md-4 > alert top paired right, ENGS302), r121/r123 ([Side alert] → the paired alertActivity column), r239 (the exact spelling [right-hand alert] promoted to side alert; this wider family recorded then as the follow-up). NAMED consensus-over-gold deltas: the 13/70 rhs sites whose gold keeps a full-width plain alert; the gold's editorial column padding (paddingL 13 / none 8 / col-4 6 on the alert-top sites) is not chased. Env ALERTRHS_OFF reverts byte-for-byte (the tokens ship, no routing)."
+		},
 		"corpus_note": "alert / 'alert solid' / whakatauki / wananga / quoteText counted from the finished corpus (e.g. 95× quoteText, 176× whakatauki).",
 		"lead_note": "lead_element: a short embedded title renders as this element inside the box (corpus: .alert leads are h4-dominant). Callouts without the key keep the bolded <p> lead.",
 		"promoted_box_empty_guard": {

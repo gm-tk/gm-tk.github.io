@@ -1648,7 +1648,11 @@ class Config {
 	// 141 pages had no links; and the stale BLL1 registry footer_class delta removed (inquiry-nav, gold
 	// 0.85). 239 pages / 130 modules, scoped. Env FOOTERPOS_OFF; data footer.kb_position_defaults.
 	// Skeleton +0.269pp, >=50% +10, >=75% +4.
-	static AppVersion = "260619.03";
+	// ROUND 333 (2026-09-15, build 260619.04): a right-hand alert is a side column; rhs and summary are
+	// not classes (KB 05B) — the writer's [alert box rhs] / [rhs alert] family pairs as the right sibling of
+	// the content column it follows (alertActivity after an activity box, alert top after prose), and
+	// [alert box lesson summary] ships the plain alert; scoped regeneration of 53 modules; env ALERTRHS_OFF.
+	static AppVersion = "260619.04";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -954,6 +954,10 @@ class ContentConverter {
 		// to open, then resets it back to empty.
 		// Data flag: body_region.content_row_open, the '{rowClass}' template slot
 		let nextRowClass = "";
+		// ROUND 333: the index in `parts` of the most recently opened content row, so the
+		// positional side-alert routing below can look at the FIRST block of the row it is
+		// about to pair with (an activity box vs plain content). Set by the lazy row open only.
+		let lastRowOpenIdx = -1;
 		const emit = (...html) => {
 			// lazy row opening — a row only exists once REAL content arrives, so an
 			// emit() with nothing to push (e.g. a de-duped lesson-title heading that
@@ -961,6 +965,7 @@ class ContentConverter {
 			const content = html.filter(Boolean);
 			if (!content.length) return;
 			if (!rowOpen) {
+				lastRowOpenIdx = parts.length;
 				parts.push(Utils.FillTemplate(tpl.body_region.content_row_open,
 					{ contentColClass: tpl.body_region.content_col_class_default, rowClass: nextRowClass }));
 				rowOpen = true; nextRowClass = "";
@@ -2683,7 +2688,57 @@ class ContentConverter {
 					// Data flag: callouts.side_column_backward_pair
 					// Env toggle: SIDEPAIR_OFF (independent of SIDEALERT_OFF, which reverts the
 					// side-column alert CLASS entirely, not just its pairing behaviour)
-					const _sideDef = tpl.callouts.by_tag[primary.tag];
+					// ROUND 333 — A RIGHT-HAND ALERT IS A SIDE COLUMN (the autonomous loop, session 5
+					// Round 4). The writer's positional words ("[alert box rhs]", "[rhs alert]",
+					// "[alert box rhc]", "[important info box rhs]") used to reach the page as the
+					// class token "rhs", which the human gold ships 0 times and KB 05B does not define.
+					// Measured on every paired Standard page: the gold puts such a box in a SIDE
+					// column (col-md-4) as the right sibling of the preceding col-md-8 content column
+					// 56/70 = 0.80 — the KB's "Activity sidebar" alertActivity form when the box
+					// follows an ACTIVITY box (15/20), an "alert top" box after plain content
+					// (26/41). So the box is routed through the r123 side-alert pairing below with
+					// one of two data-described defs, chosen by the FIRST block of the content row
+					// that has just been closed. Strict mode only (a writer's explicit [end alert]
+					// ahead, or a structured-content wrap, keeps the ordinary path); with no
+					// preceding content row to pair with, the ordinary path renders the plain box
+					// with the token stripped (#calloutOpen). The leftover-word red flags the
+					// ordinary path would have emitted ride along inside the column.
+					// Data flag: callouts.positional_side_alert   Env toggle: ALERTRHS_OFF
+					let _rhsDef = null, _rhsPre = [];
+					{
+						const psa = tpl.callouts.positional_side_alert;
+						const psaOn = psa && psa.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[psa.env || "ALERTRHS_OFF"])
+							&& (psa.tags ?? []).includes(primary.tag) && !stack.length;
+						if (psaOn) {
+							const words = it.parse.tags.map((t) => t.remainder ?? "").join(" ")
+								.toLowerCase().split(/\s+/).filter(Boolean);
+							if (words.some((w) => (psa.keywords ?? []).includes(w))) {
+								const spansAhead = this.#explicitCloseAhead(bodyItems, i, primary.tag)
+									|| this.#calloutWrapsStructured(it, bodyItems, i);
+								// an EMPTY box (no embedded lead, no black text of its own, no unconsumed
+								// black run following) keeps the ordinary path, whose "Empty [alert]" red
+								// flag tells the developer the writer left the callout blank
+								const _payload = this.#norm.RenderText(it.text);
+								const hasContent = !!((it.blackAfter || "").trim()
+									|| (_payload && !it.parse.instructionFragment && _payload.split(" ").length <= 12)   // a longer payload is neither lead nor content on the ordinary path either
+									|| (bodyItems[i + 1] && bodyItems[i + 1].type === "black" && bodyItems[i + 1].consumedBy === undefined
+										&& String(bodyItems[i + 1].text || "").trim()));
+								if (!spansAhead && hasContent && parts.length
+									&& parts[parts.length - 1] === tpl.body_region.content_row_close
+									&& lastRowOpenIdx >= 0 && lastRowOpenIdx < parts.length - 1
+									&& String(parts[lastRowOpenIdx]).startsWith('<div class="row')) {
+									const first = String(parts[lastRowOpenIdx + 1] ?? "");
+									const afterActivity = /^<div class="activity[\s"]/.test(first);
+									_rhsDef = afterActivity ? psa.after_activity : psa.after_content;
+									_rhsPre = ActivitiesBuilder.containerModifiers(it, tpl.callouts.modifier_classes, run).flags;
+									run.AddNote("info", "ContentConverter",
+										`[${primary.tag}] right-hand box → ${afterActivity ? "the activity sidebar (alertActivity)" : "an alert top"} side column paired with the preceding ${afterActivity ? "activity" : "content"} row (positional_side_alert).`);
+								}
+							}
+						}
+					}
+					const _sideDef = _rhsDef ?? tpl.callouts.by_tag[primary.tag];
 					const _sideAlertOff = typeof process !== "undefined" && process.env && process.env.SIDEALERT_OFF;
 					const _sidePairOff = typeof process !== "undefined" && process.env && process.env.SIDEPAIR_OFF;
 					const _sidePairOn = _sideDef && _sideDef.side_column
@@ -2695,7 +2750,7 @@ class ContentConverter {
 						&& parts[parts.length - 1] === tpl.body_region.content_row_close) {
 						parts.pop();                                   // un-close the preceding content row
 						parts.push("</div>");                          // re-close just the col-md-8 main column
-						parts.push(this.#sideAlertCol(it, bodyItems, i, run, _sideDef));   // alert as right sibling
+						parts.push(this.#sideAlertCol(it, bodyItems, i, run, _sideDef, _rhsPre));   // alert as right sibling
 						parts.push("</div>");                          // close the shared row
 						rowOpen = false;
 						while (bodyItems[i + 1]?._consumed) i++;       // its strict text run was consumed
@@ -6603,14 +6658,25 @@ class ContentConverter {
 	 * be called EXACTLY ONCE per side-alert (the calling emit site is responsible for
 	 * guaranteeing that).
 	 */
-	static #sideAlertCol(it, bodyItems, i, run, def) {
+	static #sideAlertCol(it, bodyItems, i, run, def, pre = []) {
 		const inner = [];
 		const following = MediaBuilder.gatherFollowing(it, bodyItems, i);
 		const _txt = following.trim() ? following : (it.blackAfter || "").trim();
 		const deBold = this.#alertBoldStripper(def, run);   // the alertActivity box class is one of the measured alert-family buckets, so bold gets stripped here too
+		// ROUND 333: a def carrying a lead_element (the positional_side_alert defs — the KB's
+		// sidebar and alert-top forms both open with an <h4>) renders the tag's short embedded
+		// payload as that lead, exactly as the ordinary #calloutOpen path does, so routing a
+		// "[alert box rhs] Remember!" into the side column never drops the writer's words.
+		// The "[side alert]" def has no lead_element and is byte-untouched.
+		if (def.lead_element) {
+			const embedded = this.#norm.RenderText(it.text);
+			const lead = embedded && embedded.split(" ").length <= 12 && !it.parse.instructionFragment ? embedded : "";
+			const leadEl = run.conventions?.calloutLead || def.lead_element;   // the r61 group convention, as #calloutOpen
+			if (lead) inner.push(...deBold([`<${leadEl}>${ListsAndRuns.inlineMarkup(lead)}</${leadEl}>`]));
+		}
 		if (_txt) inner.push(...deBold(ListsAndRuns.renderBlackText(_txt, run, it.block?.links)));
 		const box = `${def.open}\n${inner.join("\n")}\n${def.close}`;
-		return `<div class="${def.side_column}">\n${box}\n</div>`;
+		return `<div class="${def.side_column}">\n${[...pre, box].join("\n")}\n</div>`;
 	}
 
 	static #calloutOpen(it, bodyItems, i, stack, run, spans, wrapStructured = false) {
@@ -6659,7 +6725,22 @@ class ContentConverter {
 			return [`<div class="row">\n${this.#sideAlertCol(it, bodyItems, i, run, def)}\n</div>`];
 		}
 
-		const { modifiers, flags } = ActivitiesBuilder.containerModifiers(it, tpl.callouts.modifier_classes, run);
+		let { modifiers, flags } = ActivitiesBuilder.containerModifiers(it, tpl.callouts.modifier_classes, run);
+		// ROUND 333: the writer's positional / label words that modifier_classes maps to the
+		// tokens "rhs" and "summary" are NOT classes (the gold ships neither; KB 05B defines
+		// neither) — strip them from the modifier string wherever a callout opens. The side
+		// column routing for "rhs" happens at the emit site; this is the fallback (no
+		// preceding row / span mode) and the whole of the "summary" rule.
+		// Data flag: callouts.positional_side_alert.strip_tokens   Env toggle: ALERTRHS_OFF
+		{
+			const psa = tpl.callouts.positional_side_alert;
+			if (psa && psa.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[psa.env || "ALERTRHS_OFF"])) {
+				for (const cls of Object.values(psa.strip_tokens ?? {})) {
+					if (cls) modifiers = modifiers.split(cls).join("");
+				}
+			}
+		}
 		const out = [...flags];
 		out.push(Utils.FillTemplate(def.open, { modifiers }));
 
