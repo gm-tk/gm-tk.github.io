@@ -125,6 +125,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Round 12 (engine r325 — phase-scoped activity numbering on the Fundamentals pages, the r217/r266 follow-up): SHIPPED 2026-09-15 ≈13:10 (session 3). AppVersion 260618.96, CLAUDE.md §9/§11/§14, scoped ship #2 since the r323 full. **THE LOOP STOPPED after it (plateau rule).**
 - Session 4 Round 1 (engine r326 — a call-to-action button is an anchor, the KB's universal button form): SHIPPED 2026-09-15 ≈15:05 (session 4). AppVersion 260618.97, CLAUDE.md §9/§11/§14, KB status D-row added, FULL regeneration (scoped-ship counter reset).
 - Session 4 Round 2 (engine r327 — a multi-word ALL-CAPS title renders in sentence case, the KB's title-casing rule): SHIPPED 2026-09-15 ≈15:15 (session 4). AppVersion 260618.98, CLAUDE.md §9/§11/§14, KB status row 1 → ALL-CAPS normalisation CAPTURED-LIVE, scoped ship #1 since the r326 full. Gate-neutral.
+- Session 4 Round 3 (engine r328 — a submission button keeps its full 'Go to' label, KB constraint 55's label half): SHIPPED 2026-09-15 ≈15:25 (session 4). AppVersion 260618.99, CLAUDE.md §9/§11/§14, KB status row 55 → the label half CAPTURED, scoped ship #2 since the r326 full. Gate-neutral.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -548,6 +549,36 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 4 · Round 3 (engine r328) — what shipped (KB constraint 55's label half)
+- **Fix:** `buttons.canonical_labels` {enabled, env BTNLABEL_OFF, rules [quiz → Go to quiz; portfolio → Go to portfolio; dropbox → Go to dropbox,
+  family_labels BLL / LS / HPE → Upload to Dropbox]} — `ContentConverter.#buttonCanonicalLabel` at the generic `[button]` seam, after the r323
+  trim and before the r326 anchor. 'Journal' (10) untouched (no KB rule).
+- **Regeneration:** scoped — the in-memory ON probe over all 416 named 47 pages / 40 modules; regenerated; 0 truly stale; OFF vs disk = exactly
+  the 47 pages; ON = disk 152/152. Bare `Quiz` / `Quiz button` / `Portfolio` / `Dropbox` labels 84 → 0.
+- **Gates:** every gate EXACT (fastloop PASS, 10 metrics HELD; full suite identical; skeleton 50.492, 0 moved); 13 selftests GREEN. **55.1% of
+  achievable** (unchanged). KB status row 55 → the label half CAPTURED.
+- **Plateau window:** r326 +0.057 · r327 0.000 · r328 0.000 — two consecutive sub-threshold rounds; a third stops the loop (§4).
+
+## Session 4 · Round 3 PICK (engine r328) — written before any code, 2026-09-15 15:12 NZST
+- **Class:** KB constraint 55's LABEL half — a submission button "keeps its full 'Go to' label — 'Go to dropbox' / 'Go to portfolio' — the
+  leading 'Go to' is never dropped to a bare 'Dropbox' / 'Portfolio'"; CL-0038 / constraint 65 — the quiz button reads 'Go to quiz'; 14.11 /
+  14D — the BLL, LS and HPE families label the dropbox button 'Upload to Dropbox' (series-scoped, alongside the universal default). Claude ships
+  the writer's bare noun as the label: `[Button] Portfolio` → `Portfolio`, `[Add button] Quiz button` → `Quiz button`, `[Add button] Quiz` →
+  `Quiz`, `[Button] Dropbox` → `Dropbox`. Gate-neutral (text). Round 323 captured row 55's full-stop half; this is the prefix half.
+- **Authority (§1b):** 1 = KB c55 + CL-0038 + 14.11; 3 = the gold agrees in every module carrying the class (below).
+- **MEASURED (`_r328` inline probe over every Claude page):** **94 bare-noun labels on 54 pages / 44 modules** — quiz 34 + 'quiz button' 11,
+  portfolio 25, dropbox 13 + 'drop box' 1, journal 10 (by template Fundamentals 35 / Standard 32 / Inquiry 27). In the same modules the gold's
+  labels: quiz → `Go to quiz` ×128 (no other form), portfolio → `Go to portfolio` ×77, dropbox → `Upload to dropbox` ×58. 'Journal' (10) has no
+  KB label rule → left alone (the r239 h4 rule covers 'go to journal' labels only). The gold's bare 'Quiz' (4) / 'Dropbox' (3) are its outliers.
+- **Triangulated:** EXPFUN04 (WT `[Button] Portfolio` ×3 → gold `<a …><div class="button">Go to portfolio</div></a>` → Claude `Portfolio`);
+  HIS1004 (WT `[Add button] Quiz button` → gold `Go to quiz` → Claude `Quiz button`); HPFUN101 (WT `[Add button] Quiz` → gold `Go to quiz` →
+  Claude `Quiz`).
+- **Fix (planned):** `Emit_Templates.buttons.canonical_labels` {enabled, env BTNLABEL_OFF, rules [quiz → 'Go to quiz'; portfolio → 'Go to
+  portfolio'; dropbox → 'Go to dropbox' with the 14.11 family override 'Upload to Dropbox' for the BLL / LS (XLP, XDLS, XLS, LS, SLO, SL) / HPE
+  (HES, PHE, PES, HPE) prefixes]} applied at the generic `[button]` seam after the r323 trim and before the r326 anchor (so the quiz row's `#`
+  href and To Do wording key on the canonical label). Scoped regeneration (the in-memory probe names the set); OFF = disk.
+- **Gate expectation:** every gate EXACT (text). Plateau window: r326 +0.057 · r327 0.000 · r328 0.000 → the next sub-threshold round stops the loop.
+
 ## Session 4 · Round 2 (engine r327) — what shipped (the KB's title-casing rule)
 - **Fix:** `header.title_casing` {enabled, env TITLECASE_OFF, min_words 2, keep_tokens_with_digits true, red_flag} — `SkeletonBuilder.#titleCasing`
   at the header title fill (plain / lowercase-span templates; the BLL phonics template untouched): a multi-word all-caps title → sentence case
@@ -695,3 +726,4 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - r12 (engine r325) · phase-scoped activity numbering on the Fundamentals pages (the r217/r266 follow-up: the phase ordinal as the activity-number prefix, the writer's bare digit over the scanner's collision letter) · SHIPPED 2026-09-15 · scoped regeneration, 17 pages / 17 modules · scaffold 50.416→50.435 (+0.019; 12 up / 5 down named), every other gate EXACT · number matches 66→178 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r323 0.000, r324 +0.005, r325 +0.019)**
 - s4-r1 (engine r326) · a call-to-action button is an anchor (the KB's universal button form: a plain `[button]` ships inside `<a href target=_blank>` — the writer's hyperlink kept, else a blank href + one To Do note; reveal-type labels stay the gold's JS button) · SHIPPED 2026-09-15 · FULL regeneration, 713 pages / 286 modules · scaffold 50.435→50.492 (+0.057; 675 moved, 210 up; dips NAMED = scorer repeat-collapsing, identical net of the changed pages), ≥50 −1 named, ≥75 +3, body 192→191 · every other gate EXACT · bare buttons 1,800→338, 285 lost links recovered · 55.1% of achievable · commit (see git log)
 - s4-r2 (engine r327) · a multi-word ALL-CAPS header title renders in sentence case (the KB's title-casing rule: macrons kept, code tokens kept, single token untouched, one red flag quoting the original) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 15 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · all-caps titles 47→0, titles exact 550→567 · 55.1% of achievable · commit (see git log)
+- s4-r3 (engine r328) · a submission button keeps its full 'Go to' label (KB constraint 55's label half: bare `Quiz` / `Portfolio` / `Dropbox` → `Go to quiz` / `Go to portfolio` / `Go to dropbox`, `Upload to Dropbox` in BLL / LS / HPE) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 40 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · bare-noun labels 84→0 · 55.1% of achievable · commit (see git log)

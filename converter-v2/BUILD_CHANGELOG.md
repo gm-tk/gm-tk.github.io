@@ -1,5 +1,41 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 328, build 260618.99) — A SUBMISSION BUTTON KEEPS ITS FULL "GO TO" LABEL (KB constraint 55's label half + CL-0038 / constraint 65 + 14.11; the autonomous loop, session 4, Round 3; **SCOPED regeneration of the 40 affected modules; gate-neutral — every protected gate EXACT; scoped ship #2 since the round-326 full**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A writer's bare noun on a submission button — `[Button] Portfolio`, `[Add button] Quiz button`, `[Add button] Quiz`, `[Button] Dropbox` — now ships the KB's canonical label: `Go to portfolio`, `Go to quiz`, `Go to dropbox` (and `Upload to Dropbox` in the BLL / LS / HPE families, 14.11). 47 pages / 40 modules changed; Claude's bare `Quiz` / `Quiz button` / `Portfolio` / `Dropbox` labels 84 → 0.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **EXPFUN04** — docx: `[Button] Portfolio` ×6 (after "Head back to the journal or portfolio you are using…") → gold: `<a …><div class="button">Go to portfolio</div></a>` → Claude before: `Portfolio`; after: `Go to portfolio`.
+- **HIS1004 lessons 2 / 3 / 6** — docx: `[Add button] Quiz button` / `[Add button] Quiz` → gold: `Go to quiz` → Claude before: `Quiz button` / `Quiz`; after: `Go to quiz` (the r326 anchor's quiz row already gave these `href="#"` and the quiz To Do wording — the canonical label now keys them by name).
+- **HPFUN101** — docx: `[Add button] Quiz` → gold: `Go to quiz` → Claude after: `Go to quiz`.
+- **The KB:** constraint 55 — "A submission button that sends the student to the dropbox or to their portfolio keeps its full 'Go to' label — 'Go to dropbox' / 'Go to portfolio' — the leading 'Go to' is never dropped to a bare 'Dropbox' / 'Portfolio'"; CL-0038 / constraint 65 — the quiz button reads `Go to quiz`; 14.11 / 14D — "the BLL, LS and HPE families label the dropbox button 'Upload to Dropbox'", a series-scoped label alongside the universal default. Round 323 captured row 55's full-stop half; this is the prefix half.
+
+### 3. THE MEASUREMENT (every Claude page)
+
+- **94 bare-noun labels on 54 pages / 44 modules** — quiz 34 + `quiz button` 11, portfolio 25, dropbox 13 + `drop box` 1, journal 10 (Fundamentals 35 / Standard 32 / Inquiry 27). In the same modules the gold's labels: quiz → `Go to quiz` ×128 (no other form), portfolio → `Go to portfolio` ×77, dropbox → `Upload to dropbox` ×58 (the gold's dominant dropbox label corpus-wide; the KB's universal default is `Go to dropbox` — the KB outranks the gold, §1b-1). `Journal` (10) has no KB label rule and is untouched (the r239 h4 rule covers `go to journal` labels only). The gold's own bare `Quiz` (4) / `Dropbox` (3) are its outliers.
+- After: bare `Quiz` / `Quiz button` / `Portfolio` / `Dropbox` / `Drop box` **0**; `Go to quiz` 130, `Go to portfolio` 52, `Go to dropbox` 46, `Upload to Dropbox` 34 (the 14.11 families).
+
+### 4. THE FIX — one data block `Emit_Templates.buttons.canonical_labels` `{ enabled, env: "BTNLABEL_OFF", rules[] }`
+
+- **`ContentConverter.#buttonCanonicalLabel`** at the generic `[button]` seam (key === "button" only), after the round-323 trim and before the round-326 anchor: the first rule whose `label_match` hits the trimmed label supplies the canonical label (`^(?:the )?quiz(?: button)?$` → `Go to quiz`; portfolio → `Go to portfolio`; `drop ?box` → `Go to dropbox`); a rule's `family_labels` row wins for a module whose code prefix is listed (BLL / XLP XDLS XLS LS SLO SL / HES PHE PES HPE → `Upload to Dropbox`). Any other label is untouched.
+- **Env toggle `BTNLABEL_OFF`** reverts byte-for-byte.
+
+### 5. THE PROOF AND THE GATES
+
+- The in-memory ON probe over ALL 416 modules (`_r328_probe_on_0*.log`) names **47 pages / 40 modules**; scoped regeneration (`_r328_batches_run.sh`); `_content_manifest.py fresh --affected` → **0 truly stale**; OFF in memory vs disk on the 40 = exactly the 47 changed pages; ON in memory = disk on 152/152.
+- **Every protected gate EXACT** (`_fastloop_diff.py` PASS — 10 metrics HELD, every delta 0; the full suite `_r328_gates.log` identical to r327): skeleton SCAFFOLD mean **50.492%** / ≥50% 1030 / ≥75% 196 / ≥90% 15 / skipped 0 @ 1954, RAW 34.831% (`_r328_sk_final.json`: 0 pages moved) · cs exact 11360 / EXTRA 186 / missing 591 · clean 2056/2102 / leak 288/46 · body 191 · tags 9557/9557 · flipCard TOTAL 61 divergence 0 · mtkQuiz 17 shells defect 0 · entry-parity PASS · index-sync 33/28 · **13 selftests GREEN**.
+- **Ceiling:** SCAFFOLD 50.492% = **55.1% of achievable** (unchanged).
+
+### 6. NAMED, NOT CHASED
+
+- The round-308 upload box's own `Upload to dropbox` label (the `[dropbox]` marker family, Chris's "Build it") and the writer-typed `Upload to dropbox` labels are untouched — constraint 55 governs the bare-noun defect, not a re-labelling of the gold-dominant form.
+- `[Button] Journal` (10) — no KB label rule; `[Button] Go to` (13, a truncated writer label) — nothing derivable.
+
+**Ledger:** scoped ship #2 since the r326 full · data `buttons.canonical_labels` · env `BTNLABEL_OFF` · tools `outputs/_r328_finalise.py` (the measurement is the inline probe recorded in `LOOP_STATE.md`) · state `outputs/_r328_sk_final.json` (FRESH, identical) · logs `_r328_gates.log`, `_r328_sk_full.log`, `_r328_fastloop.log`, `_r328_selftests.log`, `_r328_probe_on_0*.log`, `_r328_probe_off.log`, `_r328_probe_on.log`, `_r328_regen.log`, `_r328_affected.txt`.
+
 ## 2026-09-15 (round 327, build 260618.98) — A MULTI-WORD ALL-CAPS TITLE RENDERS IN SENTENCE CASE (the KB's title-casing rule — 01A_TEMPLATE_LEVELS_CORE, 10_CORPUS_VALIDATED_SCAFFOLDING §1, constraint 1's permitted normalisations; the autonomous loop, session 4, Round 2; **SCOPED regeneration of the 15 affected modules; gate-neutral — every protected gate EXACT; scoped ship #1 since the round-326 full**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

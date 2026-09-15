@@ -868,6 +868,16 @@
 			"strip_pattern": "\\.$",
 			"keep_pattern": "(\\.\\.|\\b(?:e\\.g|i\\.e|etc|vs|approx|no|pp?|cf))\\.$"
 		},
+		"canonical_labels": {
+			"_doc": "ROUND 328 (the autonomous loop, session 4 Round 3, 2026-09-15 — KB constraint 55's LABEL half + CL-0038 / constraint 65 + 14.11 / 14D). A submission button keeps its full 'Go to' label: the writer's bare noun — `[Button] Portfolio`, `[Add button] Quiz button`, `[Add button] Quiz`, `[Button] Dropbox` — is the label the KB says never ships bare ('the leading Go to is never dropped to a bare Dropbox / Portfolio'; the quiz button reads 'Go to quiz'). The first rule whose label_match hits the resolved, trimmed label supplies the canonical label; a rule's family_labels row wins for a module whose code prefix is listed (14.11: the BLL / LS / HPE families label the dropbox button 'Upload to Dropbox'). MEASURED: 94 bare-noun labels on 54 pages / 44 modules (quiz 45, portfolio 25, dropbox 14, journal 10 — journal has no KB label rule and is untouched); in the same modules the gold ships 'Go to quiz' ×128, 'Go to portfolio' ×77. Applied at the generic [button] seam after the round-323 trim and before the round-326 anchor, so the anchor's quiz href and To Do wording key on the canonical label. Env BTNLABEL_OFF reverts byte-for-byte.",
+			"enabled": true,
+			"env": "BTNLABEL_OFF",
+			"rules": [
+				{ "label_match": "^(?:the )?quiz(?: button)?$", "label": "Go to quiz" },
+				{ "label_match": "^(?:the )?portfolio(?: button)?$", "label": "Go to portfolio" },
+				{ "label_match": "^(?:the )?drop ?box(?: button)?$", "label": "Go to dropbox", "family_labels": [ { "prefixes": ["BLL", "XLP", "XDLS", "XLS", "LS", "SLO", "SL", "HES", "PHE", "PES", "HPE"], "label": "Upload to Dropbox" } ] }
+			]
+		},
 		"anchor_wrap": {
 			"_doc": "ROUND 326 (the autonomous loop, session 4 Round 1, 2026-09-15). A call-to-action button is an ANCHOR: the KB's universal button form (05D_COMP14_BUTTONS_TABLES_COLUMNS — `<a href=\"URL\" target=\"_blank\"><div class=\"button\">…</div></a>`; constraint 65's `href=\"#\"` quiz button) and the gold (an `<a>` around 0.997 of Standard / 0.977 Inquiry / 1.000 Bilingual + Fundamentals non-JS div.button/div.buttonD; 62 of 62 subject prefixes >= 0.60; outputs/_measure_r326_buttonanchor.py) both put the button inside `<a … target=\"_blank\">` even where the developer has not wired the target yet (`href=\"\"`/`#` on 244 gold buttons). Claude's generic [button] emit shipped the BARE div whenever no URL was absorbed — 1,800 bare buttons on 762 pages / 306 modules (upload 480, journal 460, quiz 25, download 17, plain). At the generic [button] seam (key === 'button' — never the engagement / supervisor / audio forms, never a widget builder's own JS button) a bare form (one that does not itself start with an anchor) is wrapped in `form` and followed by ONE Designer/Developer To Do note (cv2-note, gate-neutral — the round-308 upload-box pattern) naming what to wire: the first `targets` row whose label_match hits the resolved label, else `default`. The href stays blank on purpose: the per-module D2L rcode / journal document / link target is in no Writers Template. Env BTNANCHOR_OFF reverts byte-for-byte.",
 			"enabled": true,

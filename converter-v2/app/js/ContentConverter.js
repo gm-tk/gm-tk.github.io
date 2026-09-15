@@ -5670,6 +5670,26 @@ class ContentConverter {
 	}
 
 	/**
+	 * ROUND 328 — KB constraint 55's LABEL half (+ CL-0038 / constraint 65, 14.11): a
+	 * submission button keeps its full "Go to" label. The writer's bare noun ("Portfolio",
+	 * "Quiz button", "Dropbox") becomes the KB's canonical label — the first rule whose
+	 * label_match hits the trimmed label; a rule's family_labels row wins for a module whose
+	 * code prefix is listed (the BLL / LS / HPE "Upload to Dropbox"). Any other label is
+	 * returned untouched. Data buttons.canonical_labels; env BTNLABEL_OFF.
+	 */
+	static #buttonCanonicalLabel(label, key, run, tpl) {
+		const cfg = tpl?.buttons?.canonical_labels;
+		if (!cfg || cfg.enabled === false || key !== "button" || !label) return label;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BTNLABEL_OFF"]) return label;
+		const lbl = String(label).trim();
+		const rule = (cfg.rules ?? []).find((r) => r.label_match && new RegExp(r.label_match, "i").test(lbl));
+		if (!rule) return label;
+		const prefix = String(run?.moduleCode ?? "").match(/^[A-Za-z]+/)?.[0]?.toUpperCase() ?? "";
+		const fam = (rule.family_labels ?? []).find((f) => (f.prefixes ?? []).some((p) => String(p).toUpperCase() === prefix));
+		return (fam?.label ?? rule.label ?? label);
+	}
+
+	/**
 	 * ROUND 326 — a call-to-action button is an ANCHOR. The KB's universal button form
 	 * (`<a href="URL" target="_blank"><div class="button">…</div></a>`, constraint 65's
 	 * `href="#"` quiz button) and the gold (an <a> around 99.7% of non-JS div.button /
@@ -6291,6 +6311,9 @@ class ContentConverter {
 			}
 			// ROUND 323 (KB row 55): the writer's sentence full stop is not part of the label
 			label = this.#buttonLabelTrim(label, tpl);
+			// ROUND 328 (KB constraint 55's label half): a bare "Quiz" / "Portfolio" / "Dropbox"
+			// becomes the KB's canonical "Go to …" label (the 14.11 family form for BLL / LS / HPE)
+			label = this.#buttonCanonicalLabel(label, key, run, tpl);
 			// ROUND 326: a plain [button] with no URL still ships inside the KB's anchor
 			// (`<a href="" target="_blank">`) + one To Do note — never a bare div.
 			out.push(...this.#buttonAnchorWrap(Utils.FillTemplate(form, {

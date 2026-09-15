@@ -1624,7 +1624,11 @@ class Config {
 	// case (the KB's title-casing rule) + one red flag quoting the original; a single all-caps token
 	// and a code token keep their case. 47 pages / 15 modules, scoped. Env TITLECASE_OFF; data
 	// header.title_casing.
-	static AppVersion = "260618.98";
+	// ROUND 328 (2026-09-15, build 260618.99): a submission button keeps its full "Go to" label (KB
+	// constraint 55 / CL-0038 / 14.11): a writer's bare "Quiz" / "Portfolio" / "Dropbox" becomes "Go to
+	// quiz" / "Go to portfolio" / "Go to dropbox" ("Upload to Dropbox" in BLL / LS / HPE). 47 pages /
+	// 40 modules, scoped. Env BTNLABEL_OFF; data buttons.canonical_labels.
+	static AppVersion = "260618.99";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
