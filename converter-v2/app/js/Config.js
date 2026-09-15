@@ -1609,7 +1609,13 @@ class Config {
 	// heading (label-only headings skipped, the label stripped), a "continued" sub-page inherits
 	// its parent's; the body de-dup strips the same label forms. 79 pages / 24 modules, scoped.
 	// Env LESSONLABEL_OFF; data body_region.lesson_title_dedup.lesson_label_titles.
-	static AppVersion = "260618.95";
+	// ROUND 325 (2026-09-15, build 260618.96): phase-scoped activity numbering on the single-file
+	// Fundamentals pages (the r217 / r266 follow-up): every phase boundary advances the page's
+	// activity-number prefix (following the PANELS, not every phasebreak item), a writer's bare
+	// digit wins over the scanner's module-wide collision letter, the r217 synthetic box asserts
+	// there. 17 pages / 17 modules, scoped. Env PHASENUM_OFF; data activity_wrapper.phase_numbering.
+	// THE LOOP STOPPED after this round on the plateau rule (r323 0.000 / r324 +0.005 / r325 +0.019pp).
+	static AppVersion = "260618.96";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

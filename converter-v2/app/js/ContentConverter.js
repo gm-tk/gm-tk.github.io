@@ -1510,11 +1510,24 @@ class ContentConverter {
 				// derivable here because the level markers are explicit). Only the
 				// level-pages dialect sets run._levelMenu, so every other
 				// fundamentals family keeps its numberless pages exactly.
-				if (run._levelMenu) {
+				// ROUND 325 (the r217 / r266 follow-up): the same phase ordinal on EVERY page that has
+				// no lesson number of its own — the single-file Fundamentals modules — so the bare-digit
+				// renumber (r88) and the synthetic standalone box (r217) fire {phase}{letter} there too.
+				// Data activity_wrapper.phase_numbering; env PHASENUM_OFF.
+				const _pnCfg = tpl.activity_wrapper?.phase_numbering;
+				const _pnOn = !!_pnCfg && _pnCfg.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_pnCfg.env ?? "PHASENUM_OFF"])
+					&& page.lessonNumber == null;
+				// the ordinal follows the PANELS: PanelsBuilder drops an empty segment between two
+				// sentinels, so a phasebreak whose previous segment made no panel does not advance
+				const _pnPrevEmpty = _pnOn && !run._levelMenu && page._pnSegStart != null
+					&& parts.slice(page._pnSegStart).join("").trim() === "";
+				if (run._levelMenu || (_pnOn && !_pnPrevEmpty)) {
 					this.#pageLessonNumber = (typeof this.#pageLessonNumber === "number")
 						? this.#pageLessonNumber + 1 : 1;
 				}
 				parts.push(it.kind === "lesson" ? FUND_LESSON_SENTINEL : FUND_PHASETEXT_SENTINEL);
+				page._pnSegStart = parts.length;
 				continue;
 			}
 
@@ -1791,7 +1804,11 @@ class ContentConverter {
 						// ActivitiesBuilder itself has no access to the normaliser (#norm) needed to do
 						// this rendering (see long_payload_as_content for the fuller explanation).
 						if (bSupNote) bSupNote._payloadText = this.#norm.RenderText(bSupNote.text ?? "");
-						emit(...ActivitiesBuilder.activityOpen(actOwner, stack, run, false, bundle.activityId, forceInt, bSupNote, this.#pageLessonNumber, this.#lessonLetterMap, actOwner === saOwner || actOwner === lvOwner));
+						// ROUND 325: on a PHASE-numbered page the human leaves its invented boxes UNNUMBERED
+						// (TEFUN04 gold 1A,-,-,-,1B) — the synthetic box takes no letter there
+						const _pnPhasePage = typeof this.#pageLessonNumber === "number" && !run._levelMenu
+							&& (tpl.activity_wrapper?.phase_numbering?.synthetic_unnumbered !== false);
+						emit(...ActivitiesBuilder.activityOpen(actOwner, stack, run, false, this.#phaseBareId(actOwner, bundle.activityId, tpl), forceInt, bSupNote, this.#pageLessonNumber, this.#lessonLetterMap, (actOwner === saOwner && !_pnPhasePage) || actOwner === lvOwner));
 						if (bSupNote) bSupNote.consumedBy = "activity-super-content";
 						// ROUND 266 (level-pages id-led box): the writer's own lead title —
 						// "1A Check your understanding" minus the id — is the box's heading
@@ -2465,7 +2482,7 @@ class ContentConverter {
 						// "<h3>4A</h3>" id-titles on XTAS101/XLP01/XMES203/TEDC402, so a blanket
 						// bare-id-tail repair would diverge there (measured; recorded follow-up).
 						// Data: tile_grid.anchor_id_from_tail   Env: CDTILEID_OFF
-						emit(...ActivitiesBuilder.activityOpen(it, stack, run, true, it._r307PanelId ?? it._activityIdOverride ?? null, false, supNote, this.#pageLessonNumber, this.#lessonLetterMap));
+						emit(...ActivitiesBuilder.activityOpen(it, stack, run, true, this.#phaseBareId(it, it._r307PanelId ?? it._activityIdOverride ?? null, tpl), false, supNote, this.#pageLessonNumber, this.#lessonLetterMap));
 						// When the note sits immediately next to the opener, the loop index jumps
 						// past it right away; when it was instead found by the lookahead scan
 						// further down the item stream, the loop index is left in place and the
@@ -5623,6 +5640,25 @@ class ContentConverter {
 	 * an ellipsis or an abbreviation (keep_pattern) keeps it; "?" "!" ":" are never touched.
 	 * Data buttons.label_trailing_stop; env BTNSTOP_OFF.
 	 */
+	/**
+	 * ROUND 325 — under PHASE numbering a writer's BARE-DIGIT id wins over the scanner's
+	 * collision letter: the InteractiveScanner de-dupes repeated ids module-wide ("[Activity 1]"
+	 * in phases 1, 2, 3 → "1", "1A", "1B") and activityOpen KEEPS a lettered id, so ENFUN02's
+	 * phase-2 box shipped "1A" instead of "2A". With the phase ordinal live the writer's own
+	 * bare digit is passed instead and the round-88 renumber makes it {phase}{letter}.
+	 * Data activity_wrapper.phase_numbering.writer_digit_over_dedupe; env PHASENUM_OFF.
+	 */
+	static #phaseBareId(it, override, tpl) {
+		const cfg = tpl?.activity_wrapper?.phase_numbering;
+		if (!cfg || cfg.enabled === false || cfg.writer_digit_over_dedupe === false) return override;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PHASENUM_OFF"]) return override;
+		if (typeof this.#pageLessonNumber !== "number") return override;   // only a phase-derived ordinal
+		const writer = String(it?.parse?.numbers?.[0] ?? "").toUpperCase();
+		if (/^\d+$/.test(writer) && override != null && /^\d+[A-Z]$/.test(String(override))
+			&& String(override).slice(0, -1) === writer) return writer;
+		return override;
+	}
+
 	static #buttonLabelTrim(label, tpl) {
 		const cfg = tpl?.buttons?.label_trailing_stop;
 		if (!cfg || cfg.enabled === false || !label) return label;

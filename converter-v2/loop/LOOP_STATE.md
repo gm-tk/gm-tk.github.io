@@ -6,7 +6,11 @@
 **Session 3 started:** 2026-09-15 09:41 NZST (Claude Code, same machine; hard stop 19:41). Budget: 12 rounds or 10 hours. Chris's kickoff:
 "Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … commit after every round, never push."
 Health check: `verify_after_transfer.sh` PASS, git clean at 1914ab5 (nothing uncommitted — nothing to reconcile), no stale index.lock.
-**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). Round 11 (engine r324) SHIPPED 2026-09-15 ≈13:40 NZST — KB c79's `Lesson N` LABEL titles (79 pages / 24 modules, scoped); commit (see git log). c67 DECLINED; stickyNav BLOCKED. NEXT: Round 12 — PICK not yet written. **PLATEAU GUARD: r323 0.000pp, r324 +0.005pp — a third round under 0.02pp (moving no other gate) STOPS the loop (§4).** stickyNav (KB queue rank 10) is BLOCKED — needs Chris (see Blocked classes). Plateau guard: r322 moved +0.043pp.**
+**Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). Round 11 (engine r324) SHIPPED 2026-09-15 ≈12:35 NZST — KB c79's `Lesson N` LABEL titles (79 pages / 24 modules, scoped; commit 1afd467). Round 12 (engine r325) SHIPPED 2026-09-15 ≈13:50 NZST — phase-scoped activity numbering on the Fundamentals pages (17 pages / 17 modules, scoped; commit — see git log).
+
+## >>> STOPPED 2026-09-15 ≈13:55 NZST on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r323 0.000pp, r324 +0.005pp, r325 +0.019pp <<<
+**Session 3 shipped four rounds (r322 → r325; 4 commits) in ≈4h15m of the 10-hour budget.** Everything is committed; nothing is uncommitted; nothing was pushed.
+**Next session starts with:** Chris's decisions — (a) stickyNav (BLOCKED: the KB 14 families say ADD the `<head>` include, the project instruction says NEVER; recommendation = KB families only), (b) decision 5 — the interactive builds (the corpus's largest class: 824 un-built drag-and-drops, 237 widgets with no builder, invisible to the gates by design), (c) decision 4 — the Standard-template title-pair order, (d) decision 1 — c47. With none of those, the derivable ≥ 20-page queue is exhausted for gate-moving work; the remaining measured candidates are the box-less `[MTKquiz]` shells (now numberable — 32 shells, ~17 pages), the Bilingual `number="N.M"` section-id boxes (KB 07B; 72 boxes / 25 pages, est. +0.01pp), the c79 trailing-punctuation titles (8), and the 172 empty hand-off boxes (15 shapes, none ≥ 20). stickyNav (KB queue rank 10) is BLOCKED — needs Chris (see Blocked classes). Plateau guard: r322 moved +0.043pp.**
 
 ## >>> STOPPED 2026-09-15 ≈08:15 NZST on the BUDGET rule (§4) — the 10-hour session cap (hard stop 09:21) after 8 shipped rounds <<<
 - **Why:** Chris answered the plateau report ("Yes to 2 and 3 — start with the TRR title source") at ≈07:48 NZST; Round 8 (decision 2, the MTK
@@ -109,7 +113,8 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Round 8 (engine r321 — the MTK title source, decision 2): SHIPPED 2026-09-15 08:2x. AppVersion 260618.92, CLAUDE.md §9/§11/§14, scoped ship #3.
 - Round 9 (engine r322 — the [MTKquiz] shell without the quiz content, decision 3 / KB c65): SHIPPED 2026-09-15 ≈11:35 (session 3). AppVersion 260618.93, CLAUDE.md §9/§11/§14, KB status row 65 → CAPTURED-LIVE, new gate `_verify_mtkquiz.cjs` in `run_all_gates.sh` (13 selftests), scoped ship #4.
 - Round 10 (engine r323 — a button label never ends in a full stop, KB row 55's text defect): SHIPPED 2026-09-15 (session 3). AppVersion 260618.94, CLAUDE.md §9/§11/§14, KB status row 55 → defect CLEARED, FULL regeneration (the first since r318; scoped-ship counter reset). stickyNav BLOCKED — needs Chris.
-- Round 11 (engine r324 — a `Lesson N` label is not a lesson title, KB c79): SHIPPED 2026-09-15 ≈13:40 (session 3). AppVersion 260618.95, CLAUDE.md §9/§11/§14, KB status row 79 → the label mechanism CAPTURED-LIVE, scoped ship #1 since the r323 full. c67 overflowYScroll DECLINED on measurement.
+- Round 11 (engine r324 — a `Lesson N` label is not a lesson title, KB c79): SHIPPED 2026-09-15 ≈12:35 (session 3). AppVersion 260618.95, CLAUDE.md §9/§11/§14, KB status row 79 → the label mechanism CAPTURED-LIVE, scoped ship #1 since the r323 full. c67 overflowYScroll DECLINED on measurement.
+- Round 12 (engine r325 — phase-scoped activity numbering on the Fundamentals pages, the r217/r266 follow-up): SHIPPED 2026-09-15 ≈13:50 (session 3). AppVersion 260618.96, CLAUDE.md §9/§11/§14, scoped ship #2 since the r323 full. **THE LOOP STOPPED after it (plateau rule).**
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -427,6 +432,25 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - **Verifier:** the measure script re-run after the regeneration must report Claude full-stop buttons = the gold-like residue only (labels whose stop is
   an abbreviation) — expected 0–3; `--selftest`-style check: the ON probe over BLL233 shows `Upload to dropbox.` → `Upload to dropbox`.
 
+## Round 12 PICK + what shipped (engine r325) — phase-scoped activity numbering, 2026-09-15 12:45–13:50 NZST
+- **PICK (written before code):** the r217 / r266 recorded follow-up — "fundamentals number by PHASE". Measured (`_measure_r325_phasenumbers.py`):
+  788 gold boxes on the 51 Fundamentals phase-panel modules vs Claude 397 (111 unnumbered, 45 bare digits); the gold numbers `{phase}{letter}`
+  restarting per phase (53 of 101 pages exactly, the rest the same rule with human gaps); position-wise number matches 66, simulated 133.
+  Authority §1b-3/4 (the gold convention at ≥ 0.85; no KB rule on Fundamentals numbering). Also sized and passed over: the empty hand-off boxes
+  (`_measure_r325_emptyboxes.py`: 172 on 112 pages / 85 modules, 15 widget types — clickDrop 50, dragAndDrop 48 — no single shape ≥ 20; the
+  TEFUN06 `[Clickdrop] + [Dropdown text]` pair is one module), the Bilingual `number="N.M"` section boxes (72 boxes / 25 pages, est. +0.01pp).
+- **Fix:** `activity_wrapper.phase_numbering` {enabled, env PHASENUM_OFF, writer_digit_over_dedupe true, synthetic_unnumbered false}: the phasebreak
+  ordinal on every lesson-number-less page, following the PANELS (an empty segment between sentinels makes no panel — ARFUN02 reached ordinal 6
+  for 4 panels before the repair); `#phaseBareId` passes the writer's bare digit over the scanner's module-wide collision letter (ENFUN02 `1A` →
+  `2A`); the r217 synthetic box asserts. A fourth seam (unnumbered synthetic boxes, the gold's `1A,-,-,-,1B` shape) was built, measured −0.004pp
+  and turned OFF in the data. Splice `_r325_splice.py` (9 steps, reproduces the two files from the committed r324 tree).
+- **Regeneration:** the 51 phase-panel modules (the §0b family — phase panels exist only in Fundamentals); 0 stale; 17 pages / 17 modules changed;
+  OFF in memory = disk on 2,102/2,102 pages. Position-wise number matches 66 → 178.
+- **Gates:** skeleton 50.416 → 50.435 (+0.019pp; 17 moved, 12 up / 5 down — ARFUN05 +21.86, ARFUN03 +8.28, ENFUN02 +3.45; dips NAMED: ENFUN05 −2.83
+  with every box on the gold's number = a scorer alignment artefact, SSFUN03 −0.97 / TEFUN04 −0.96 / TEFUN05 −0.28 / TEFUN01 −0.26 = the r217
+  synthetic boxes where the gold's invented boxes are unnumbered); every other gate EXACT; 13 selftests GREEN. **55.1% of achievable.**
+- **Plateau:** +0.019pp < 0.02pp → the third consecutive sub-threshold round → STOP (§4).
+
 ## Round 11 PICK (engine r324) — written before any code, 2026-09-15 12:50 NZST
 - **Class:** KB constraint 79 / CL-0069/0076 (a locked decision: the lesson page `<h1><span>` is the lesson's OWN title; `Lesson N` is stripped;
   the module title only as a disclosed fallback) — the `Lesson N` LABEL sub-mechanism, which the KB status row lists as still queued. Claude
@@ -574,3 +598,4 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - r9 (engine r322) · KB constraint 65 / CL-0082, the [MTKquiz] shell without the quiz content (Chris's decision 3) · SHIPPED 2026-09-15 · scoped regeneration, 30 pages / 23 modules (58-module family rebuilt) · scaffold 50.368→50.411 (+0.043; 15 up / 3 down NAMED KB-over-gold), ≥50 +2, ≥75 +1, RAW +0.022 · every other gate EXACT · new gate _verify_mtkquiz.cjs 61 shells defect 0 · 55.0% of achievable · commit (see git log)
 - r10 (engine r323) · KB row 55, a button label never ends in a full stop (`Upload to dropbox.` → `Upload to dropbox`) · SHIPPED 2026-09-15 · FULL regeneration (the [button] family = the corpus), 212 pages / 82 modules · scaffold 50.411→50.411 (+0.000pp), cs exact 11360, every other gate EXACT · 55.0% of achievable · stickyNav BLOCKED (needs Chris) · commit (see git log)
 - r11 (engine r324) · KB constraint 79, a `Lesson N` label is not a lesson title (the first real heading names the page; `continued` sub-pages inherit) · SHIPPED 2026-09-15 · scoped regeneration, 79 pages / 24 modules · scaffold 50.411→50.416 (+0.005; 11 up / 3 down named), ≥50 +1, every other gate EXACT · titles exact 528→550 · c67 DECLINED · 55.0% of achievable · commit (see git log)
+- r12 (engine r325) · phase-scoped activity numbering on the Fundamentals pages (the r217/r266 follow-up: the phase ordinal as the activity-number prefix, the writer's bare digit over the scanner's collision letter) · SHIPPED 2026-09-15 · scoped regeneration, 17 pages / 17 modules · scaffold 50.416→50.435 (+0.019; 12 up / 5 down named), every other gate EXACT · number matches 66→178 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r323 0.000, r324 +0.005, r325 +0.019)**

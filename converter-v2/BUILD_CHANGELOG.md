@@ -1,5 +1,44 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 325, build 260618.96) — PHASE-SCOPED ACTIVITY NUMBERING ON THE FUNDAMENTALS PAGES (the round-217 / round-266 recorded follow-up; the autonomous loop, session 3, Round 12; **SCOPED regeneration of the 51 phase-panel modules; every protected gate HELD-or-IMPROVED; scoped ship #2 since the round-323 full — and THE LOOP STOPS HERE on the plateau rule: r323 0.000pp, r324 +0.005pp, r325 +0.019pp**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**On a page with no lesson number of its own — the single-file Fundamentals modules — every phase boundary now advances the page's activity-number prefix, so the boxes number `{phase}{letter}` the way the human numbers them: a writer's `[Activity 1]` in phase 2 ships `2A` (it shipped `1` or, after the scanner's module-wide collision letter, `1A`), the round-217 synthetic box around a bare task widget asserts there for the first time, and the writer's own letter ids are kept. 17 pages / 17 modules changed.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **ENFUN02** — docx: `[Activity 1]…[Activity 4]` restarting in every `Phase N` block → gold: `1A 1B 1C 1D 1E | 2A 2B | 3A 3B 3C 3D | 4A 4B 4C 4D` → Claude before: `1A 1B 1C | 1A 2B | 1B 2A 3A 4A | 1C 2B 3B 4D 4E` (the InteractiveScanner de-dupes repeated ids module-wide, `1` → `1A` → `1B`, and a lettered id is kept); after: `1A 1B 1C | 2A 2B | 3A 3B 3C 3D | 4A 4B 4C 4D…` — 13 of 14 boxes on the gold's number.
+- **ARFUN05** — docx: `[Activity 3]` + a bare `[Insert MTK Quiz]` per phase → gold: `1A | 2A 2B | 3A 3B 3C` → Claude before: two boxes numbered `3` and `3A`; after: `1A | 2A | 3A 3A…` — the page's SCAFFOLD match 12.41% → 32.86%.
+- **ARFUN02** — the writer's `[Activity 3a]` letters are KEPT (the phase prefix agrees), the r217 synthetic box takes the next letter.
+- **The gold's convention** (`outputs/_measure_r325_phasenumbers.py` → `_r325_phasenumbers.json`, every Fundamentals gold page): 101 pages carry numbered boxes; 53 follow `{phase}{letter}` with the letters restarting in each phase EXACTLY, the other 48 are the same rule with the human's own gaps / duplicates / sub-page continuations (ARFUN04's 1B 1B 1C 1D…). 788 gold boxes vs Claude's 397 (111 unnumbered, 45 bare digits).
+
+### 3. THE MEASUREMENT (Claude vs gold, box by box within each `fundamentalsPanel`, 51 modules)
+
+- Before: **66** position-wise number matches; simulated before coding: 133 (renumber the unnumbered / bare-digit boxes, keep writer letters). After the round: **178** (the scanner-dedupe repair beat the simulation); Claude boxes 397 → 452 (the r217 synthetic boxes now assert), bare digits 45 → 4.
+- A fourth seam was BUILT, MEASURED and TURNED OFF: leaving the synthetic box UNNUMBERED on phase pages (the gold's `1A, -, -, -, 1B` shape on TEFUN04 / TEFUN05 / SSFUN03) scored −0.004pp against the numbered form (TEFUN04 −1.93 vs −0.96, TEFUN01 −1.88 vs −0.26); it stays in the data as `synthetic_unnumbered: false` so it is not re-litigated.
+
+### 4. THE FIX — one data block `Emit_Templates.activity_wrapper.phase_numbering` `{ enabled, env: "PHASENUM_OFF", writer_digit_over_dedupe: true, synthetic_unnumbered: false }`
+
+- **A the phase ordinal** (`ContentConverter`'s phasebreak handler) — the round-266 level-pages increment now fires on every page whose `lessonNumber` is null; it follows the PANELS, not every phasebreak item (PanelsBuilder drops an empty segment between two sentinels — ARFUN02 carried phasebreaks that make no panel and reached ordinal 6 for 4 panels), so a phasebreak whose previous segment produced no panel does not advance.
+- **B the writer's bare digit over the scanner's collision letter** (`#phaseBareId`, both `activityOpen` call sites) — with a phase-derived ordinal live, a writer bare-digit id (`numbers[0]` = `1`) is passed instead of the scanner's de-duped `1A`/`1B`, and the round-88 renumber makes it `{phase}{letter}`; a writer id that carries its own letter is untouched; ordinary lesson pages (a string lesson number) never enter.
+- **C** the round-217 synthetic standalone-widget box asserts on these pages by construction (it was withheld where no number was derivable) — numbered, per the measurement above.
+- **Env toggle `PHASENUM_OFF`** reverts byte-for-byte. Splice `outputs/_r325_splice.py` (9 steps; idempotent; reproduces the two live files from the committed r324 files).
+
+### 5. THE PROOF AND THE GATES
+
+- **In memory** (`outputs/_r322_probe.cjs`): OFF over ALL 416 modules = disk on **2,102 / 2,102 pages** (`_r325_probe_off_0*.log`); phase panels exist on the 52 Fundamentals modules only (0 Standard / Inquiry / Bilingual), so the §0b family is the 51 with a gold pair. Scoped regeneration of the 51; `_content_manifest.py fresh` → **0 truly stale**; diff → **17 pages / 17 modules changed, 0 added / 0 removed**.
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.416% → 50.435% (+0.019pp) IMPROVED / ≥50% 1031 / ≥75% 193 / ≥90% 15 / skipped 0 @ 1954; RAW 34.776% → 34.794%.** 17 pages moved — 12 up / 5 down; pp-sum +37.10. Rises ARFUN05_0_0 +21.86, ARFUN03_0_0 +8.28, ENFUN02_0_0 +3.45, ENFUN07 +1.96, ENFUN09 +1.85; **the dips NAMED:** ENFUN05_0_0 −2.83 (every one of its 14 boxes now carries the gold's number — the skeleton's sequence matcher aligns the 833-line page against the gold's 895 lines differently once the old cross-phase coincidences (`1A` in phase 3 matching phase 1's `1A`) are gone; an alignment artefact of the scorer, recorded), SSFUN03 −0.97, TEFUN04 −0.96, TEFUN05 −0.28, TEFUN01 −0.26 (the r217 synthetic boxes where the gold's invented boxes are unnumbered).
+- Every other gate: compare_structure exact **11360** / EXTRA **186** / missing **591** · structurally clean **2056/2102** / leak **288/46** · body **192** · tags **9557/9557** · flipCard TOTAL 61 divergence 0 · every verifier line identical to r324 · entry-parity PASS · index-sync 33/28 · pairs skipped 0 · **all THIRTEEN widget selftests GREEN**.
+- **Ceiling:** SCAFFOLD 50.435% = **55.1% of achievable**.
+
+### 6. NAMED, NOT CHASED — AND THE STOP
+
+- The number-less writer `[Activity]` openers on phase pages (111 boxes) stay unnumbered — the gold is mixed there (its own invented boxes are unnumbered); the box-less `[MTKquiz]` shells (r322's residue) can now take a phase number once they get a box — its own round.
+- **THE LOOP STOPS on the plateau rule (§4):** three consecutive shipped rounds — r323 0.000pp, r324 +0.005pp, r325 +0.019pp — each under 0.02pp with no other protected gate moved. The next levers need Chris: stickyNav (BLOCKED — the KB says add, the project instruction says never), decision 5 (the interactive builds — the corpus's largest class by far: 824 un-built drag-and-drops, 237 widgets with no builder), decision 4 (the Standard-template title-pair order), decision 1 (c47).
+
+**Ledger:** scoped ship #2 since the r323 full · data `activity_wrapper.phase_numbering` · env `PHASENUM_OFF` · tools `outputs/_r325_splice.py`, `_measure_r325_phasenumbers.py`, `_measure_r325_emptyboxes.py` (the empty hand-off boxes sized: 172 on 112 pages, 15 widget types, no single shape ≥ 20 — recorded) · state `outputs/_r325_sk_final.json` · logs `_r325_gates.log`, `_r325_sk_full.log`, `_r325_fastloop.log`, `_r325_selftests.log`, `_r325_probe_off_0*.log`, `_r325_probe_on.log`, `_r325_regen.log`.
+
 ## 2026-09-15 (round 324, build 260618.95) — A `Lesson N` LABEL IS NOT A LESSON TITLE (KB constraint 79 / CL-0069/0076, the label sub-mechanism; the autonomous loop, session 3, Round 11; **SCOPED regeneration of the 24 affected modules; every protected gate HELD-or-IMPROVED; scoped ship #1 since the round-323 full**)
 
 ### 1. WHAT CHANGED, IN ONE LINE
