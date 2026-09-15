@@ -141,6 +141,13 @@ achievable, ceiling 91.6%); ≥50 1030 → 1066; ≥75 196 → 200; ≥90 15; cs
   further round's scoped/family regeneration + per-round commit under the same rules.
 - **2026-09-15 ≈21:10 — "continue the loop once the gates finish."** Question: (implicit) carry on past r335? Answer: yes — continue the loop
   after the r335 proof suite. Authorises: the session's remaining rounds under the kickoff's budget and rules.
+- **2026-09-15 ≈22:42 — "STOP THE LOOP at the next safe point."** Question: (implicit) how to close. Answer: do not start any new round or class;
+  finish the current step only if it can be finished AND proven in under 5 minutes, otherwise switch the round's toggle OFF so the corpus is back to
+  its last proven state; then (1) record every decision given this session under "Decisions from Chris", (2) update LOOP_STATE with exactly where the
+  loop is and end with "Next session starts with:", (3) commit everything finished in pageforge-site, (4) the §5 report + push block, (5) a
+  one-sentence safe-to-close confirmation. State at the instruction: the loop had ALREADY stopped on the plateau rule after r337 (committed 66c81c5)
+  and its stop state was committed (f37135d) — no round in progress, no class in progress, no toggle to switch, nothing uncommitted. Authorises:
+  this final LOOP_STATE record + its commit; no push.
 - **Still open from earlier sessions (NOT re-asked):** stickyNav, decision 5 (interactive builds), decision 4 (Standard title-pair order),
   decision 1 (c47), the KB table form (05D vs 06 §6), the CED revision-brief modules, the equation form (MathML vs LaTeX) — all under
   Blocked classes; new this session: the `alertPadding` activity class (below).
