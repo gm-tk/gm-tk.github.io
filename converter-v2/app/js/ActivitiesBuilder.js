@@ -177,6 +177,57 @@ class ActivitiesBuilder {
 		return out;
 	};
 
+	/**
+	 * ROUND 334 — THE ACTIVITY BOX'S TITLE HEADING IS h3 (KB 01F `activity_heading`; the
+	 * gold 0.997 / 0.995 / 1.000 per template). A writer's `[H3]` typed after the
+	 * `[Activity]` opener takes the body shift (+1 → h4, `[H4]` → h5) and #relevelHeadings
+	 * skips activity subtrees (the r55 anchor exclusion), so the in-box title never
+	 * normalised back to the level the r66 first-line title and the opener's embedded
+	 * payload already ship at. This post-pass runs on the assembled body right after
+	 * #relevelHeadings: for every activity box open it skips an optional super-content
+	 * panel (balanced), and when the box's own `row > col-12` opens with a heading, that
+	 * heading's open + close tags are rewritten to the configured level. Nothing else in
+	 * the box moves. The reoTranslate family is excluded by data — its boxes are built by
+	 * BilingualBuilder under the r330/r331 rules.
+	 * Data: activity_wrapper.title_heading_level   Env toggle: ACTTITLEH3_OFF
+	 */
+	static activityTitleLevelPostpass(html, run) {
+		const cfg = DataService.Data.EmitTemplates.activity_wrapper?.title_heading_level;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ACTTITLEH3_OFF"]) return html;
+		if (cfg.exclude_body_class_match
+			&& new RegExp(cfg.exclude_body_class_match).test(String(run?.resolvedRules?.body_class ?? ""))) return html;
+		const lvl = Number(cfg.level ?? 3);
+		const openRe = /<div class="activity[^"]*"[^>]*>/g;
+		const panelRe = new RegExp('^\\s*<div class="' + String(cfg.skip_panel_class ?? "super-content row").replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '"');
+		const titleRe = /^(\s*<div class="row">\s*<div class="col-12">\s*)<h([1-6])\b([^>]*)>/;
+		const balancedEnd = (s, from) => {   // index just past the </div> closing the <div at `from`
+			const re = /<div\b|<\/div>/g; re.lastIndex = from; let depth = 0, m;
+			while ((m = re.exec(s))) { depth += m[0] === "<div" ? 1 : -1; if (depth === 0) return m.index + m[0].length; }
+			return s.length;
+		};
+		let out = "", last = 0, m, changed = 0;
+		while ((m = openRe.exec(html))) {
+			let i = m.index + m[0].length;
+			const pm = panelRe.exec(html.slice(i, i + 200));
+			if (pm) i = balancedEnd(html, i + pm.index + pm[0].length - pm[0].trimStart().length);
+			const tm = titleRe.exec(html.slice(i, i + 400));
+			if (!tm || Number(tm[2]) === lvl) continue;
+			const openStart = i + tm[1].length;
+			const openEnd = i + tm[0].length;
+			const closeTag = `</h${tm[2]}>`;
+			const c = html.indexOf(closeTag, openEnd);
+			if (c < 0) continue;
+			out += html.slice(last, openStart) + `<h${lvl}${tm[3]}>` + html.slice(openEnd, c) + `</h${lvl}>`;
+			last = c + closeTag.length; changed++;
+			openRe.lastIndex = Math.max(openRe.lastIndex, last);
+		}
+		if (!changed) return html;
+		out += html.slice(last);
+		if (run) run.AddNote("info", "ActivitiesBuilder", `${changed} activity title heading(s) set to h${lvl} (title_heading_level).`);
+		return out;
+	};
+
 	static activityInteractivePostpass(html) {
 		const tpl = DataService.Data.EmitTemplates;
 		const cfg = tpl.body_region?.activity_interactive_postpass;

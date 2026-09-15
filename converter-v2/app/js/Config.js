@@ -1652,7 +1652,10 @@ class Config {
 	// not classes (KB 05B) — the writer's [alert box rhs] / [rhs alert] family pairs as the right sibling of
 	// the content column it follows (alertActivity after an activity box, alert top after prose), and
 	// [alert box lesson summary] ships the plain alert; scoped regeneration of 53 modules; env ALERTRHS_OFF.
-	static AppVersion = "260619.04";
+	// ROUND 334 (2026-09-15, build 260619.05): the activity box's title heading is h3 (KB 01F activity_heading;
+	// the gold 0.997) — a post-pass right after the re-leveller pins the box's first-child heading to h3 (the
+	// writer's in-box [H3]/[H4] carried the body shift); scoped regeneration of 73 modules; env ACTTITLEH3_OFF.
+	static AppVersion = "260619.05";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

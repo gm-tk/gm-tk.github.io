@@ -1,5 +1,40 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 334, build 260619.05) — THE ACTIVITY BOX'S TITLE HEADING IS h3 (KB 01F `activity_heading`; the autonomous loop, session 5, Round 5; **SCOPED regeneration of the 73 affected modules; skeleton +0.167pp / ≥50% +17, every other gate EXACT; scoped ship #8 since the round-326 full — the full-ship backstop is now DUE**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A writer's `[H3]` typed after the `[Activity]` opener took the body shift (+1 → h4; `[H4]` → h5) and `#relevelHeadings` skips activity subtrees, so the box's own title never normalised back — Claude shipped it at h4/h5 on 590 boxes (465 h4 + 125 h5, incl. the 115 XDLS tile panels) while the gold ships h3 at 0.997 / 0.995 / 1.000 per template and the KB's `activity_heading` form is `<h3>`. A post-pass now pins the box's first-child heading to h3.**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **MXFL203 lesson 1, activity 1E** — WT `[Activity 1E]` then `[H3] New Zealand's biggest A&P show` → gold `<div class="activity" number="1E"><div class="row"><div class="col-12"><h3>New Zealand's biggest A&P show</h3>` → Claude before: the same box with `<h4>`; after: `<h3>`.
+- **HIS1005 lesson 2** — the same shape (writer `[H3]` in the box, gold h3, Claude h4); **XDLS904 lesson 1** — the r307 tile-grid panels (`activity dropbox`, gold `<h3>Learn some moves with your whānau</h3>`) shipped h5 titles; after: h3.
+- **The KB:** 01F "Activities" — `activity_heading` → `<h3>Activity heading text</h3>` within activity.
+
+### 3. THE MEASUREMENT (`outputs/_measure_r334_acttitle.py` → `_r334_acttitle.json`; the class was surfaced by the new substitution instrument `_measure_r334_subst.py` → `_r334_subst.json`, the gate's own `replace` opcodes read line-for-line — Standard `h3 ⇐ h4` 209 occ / 142 pages / 66 modules)
+
+- Wherever an activity box's first child is a heading the gold ships h3 on **4548 : 12** Standard (0.997), **1029 : 5** Inquiry (0.995), **581 : 0** Fundamentals (1.000), 196 : 4 Bilingual. Claude shipped h4 on 456 boxes + h5 on 10 in the plain form — 202 pages / 69 modules — plus h5 on 115 XDLS tile panels the census only saw once the r307 class prefix was accounted for; 590 headings in all.
+- The r66 first-line title and the opener's embedded payload already shipped at the fixed h3 (3359 boxes); only the writer's explicit `[H3]`/`[H4]` inside the box carried the shift.
+- Set aside on the record from the same instrument (`LOOP_STATE.md` Declined): the widened activity wrapper (KB c17/c56 — gold `col-md-8` is the majority for every widget type, D&D column 0.51), `iframe.embed-responsive-item` (the KB's iframe forms are class-less), `videoSection.icon` (r200/r331), the in-box SUB-heading level (gold `h3 → h4` 655 vs Claude `h3 → h3` 657 — a second class, not this round), and the CED revision-brief modules (a content-start finding — LOOP_STATE Blocked).
+
+### 4. THE FIX — one data block `activity_wrapper.title_heading_level` `{ enabled, env: "ACTTITLEH3_OFF", level: 3, exclude_body_class_match: "reoTranslate", skip_panel_class: "super-content row" }`
+
+- `ActivitiesBuilder.activityTitleLevelPostpass(html, run)`, run in the body chain right after `#relevelHeadings` (before `#promoteNamedHeadings` / the interactive and dropbox post-passes / `#cdTilePair`): for every activity box open it skips an optional super-content panel (balanced), and when the box's own `row > col-12` opens with a heading, that heading's open + close tags are rewritten to h3. Nothing else in the box moves; the reoTranslate family is excluded (its boxes are BilingualBuilder's, under the r330/r331 rules — PNR keeps h2 by name).
+
+### 5. THE PROOF AND THE GATES
+
+- The in-memory probe over ALL 416 modules (`_r334_probe.cjs`, four shards): **OFF (`ACTTITLEH3_OFF=1`) = disk 2102/2102**; ON names **226 pages / 73 modules** and every differing line is a heading tag swap — 465 `<h4>` + 125 `<h5>` → 590 `<h3>`, nothing else. Scoped regeneration in the planner's 9 batches (`_r334_batches_run.sh`, all rc 0); `_content_manifest.py fresh --affected` → **0 truly stale**; `diff` = exactly the 226 pages, 0 added/removed.
+- **Skeleton (PRIMARY): SCAFFOLD mean 50.893% → 51.060% (+0.167pp) IMPROVED / ≥50% 1049 → 1066 / ≥75% 200 / ≥90% 15 / skipped 0 @ 1954; RAW 35.119% → 35.243%.** 170 pages moved — **150 up / 20 down**, pp-sum +326 (MXFUN01_3_0 +15.5, ANZH104_4_0 +12.2, MXFL203_2_0 +11.9, HIS1007_2_0 +11.5, ANZH301_4_0 +10.0; by module MXFL203 +33.5, HIS1007 +25.2, HIS1004 +20.2, ANZH104 +19.8, MXEX302 +19.1). The 20 dips NAMED (`_r334_bagcheck.py`, position-free overlap OFF → ON): MXFU401_3_0 −8.4 / PHE1003_1_0 −4.6 / MXEO202_6_0 −4.6 / MXEO202_3_0 −3.3 / HIS1007_3_1 −3.2 / TEFUN08_0_0 −2.9 = the scorer's alignment artefact with the overlap RISING or flat on each (95→96, 53→54, 61→62, 46→47, 91→93, 327→327); ANZH301_9_0 −3.5 and ANZH304_6_0 −3.4 = one box each whose gold title is not h3 (the gold's 12-of-4560 minority; overlap −1); twelve more under 2.6.
+- Every other gate EXACT (`_fastloop_diff.py` PASS with nothing to name; full suite `_r334_gates.log` line-for-line identical to r333 outside the skeleton block): cs exact 11375 / EXTRA 171 / missing 593 · clean 2056/2102 / leak 288/46 · body 191 · tags 9557/9557 · flipCard TOTAL 61 divergence 0 · mtkQuiz 17 shells defect 0 · entry-parity PASS · index-sync 33/28 · **13 selftests GREEN**.
+- **Verifier:** activity title slots corpus-wide h3 4013 / h2 14 (the PNR exclusion) / h4 0 / h5 0 (was h4 465 / h5 125). **Ceiling:** SCAFFOLD 51.060% = **55.7% of achievable** (55.74).
+
+### 6. NAMED, NOT CHASED
+
+- The gold's 12 non-h3 activity titles (h4 10, h2 2 in Standard); the in-box sub-heading level (a separate measured class); the PNR boxes' h2 titles (the r331 named exclusion).
+
+**Ledger:** scoped ship #8 since the r326 full — **the full `ship.sh` backstop is DUE at the next ship** · data `activity_wrapper.title_heading_level` · env `ACTTITLEH3_OFF` · tools `outputs/_measure_r334_subst.py` (+ `_r334_subst.json`), `_measure_r334_skelgaps.py` (+ `_r334_skelgaps.json`), `_measure_r334_acttitle.py` (+ `_r334_acttitle.json`), `_r334_itemdump.cjs`, `_r334_probe.cjs`, `_r334_bagcheck.py`, `_r334_finalise.py` · state `outputs/_r334_sk_final.json` (FRESH) · logs `_r334_gates.log`, `_r334_sk_full.log`, `_r334_fastloop.log`, `_r334_fastloop_commit.log`, `_r334_selftests.log`, `_r334_probe_off_0*.log`, `_r334_probe_on_0*.log`, `_r334_probe_offsave.log`, `_r334_regen.log`, `_r334_fresh.log`, `_r334_affected.txt`, `_r334_batches_run.sh`, `_r334_off_pages/` (the dip check).
+
 ## 2026-09-15 (round 333, build 260619.04) — A RIGHT-HAND ALERT IS A SIDE COLUMN; `rhs` AND `summary` ARE NOT CLASSES (KB 05B "Alerts" + 01F/05B "Activity sidebar"; the autonomous loop, session 5, Round 4; **SCOPED regeneration of the 53 affected modules; skeleton +0.066pp / ≥50% +5, compare_structure exact +15 / EXTRA −15 / missing +2 NAMED, every other gate EXACT; scoped ship #7 since the round-326 full**)
 
 ### 1. WHAT CHANGED, IN ONE LINE

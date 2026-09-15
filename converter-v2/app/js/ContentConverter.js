@@ -3375,7 +3375,7 @@ class ContentConverter {
 		// token order (pairing PREPENDS its token to whatever the dropbox pass left).
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
 			this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				this.#relevelHeadings(body.filter(Boolean).join("\n"))))), r307Tiles, run))),
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))),
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row

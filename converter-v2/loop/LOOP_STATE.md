@@ -22,7 +22,7 @@ from Chris' and never re-ask them … commit after every round, never push." Hea
 (nothing uncommitted — nothing to reconcile), no stale index.lock. **Plateau counter:** the session-4 stop was the plateau rule's "needs a human
 decision"; Chris's explicit "continue" IS that decision (the same reading sessions 2 and 4 used), so the three-round window restarts at this
 session's first shipped round. stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5 stay open (not re-asked); the loop
-works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp; commit 612da6d) · r332 (the empty footers, scoped 130 modules, +0.269pp; commit 8a347d4) · r333 (the right-hand alert side column + the summary token, scoped 53 modules, +0.066pp) · SHIPPED ≈18:30.**
+works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp; commit 612da6d) · r332 (the empty footers, scoped 130 modules, +0.269pp; commit 8a347d4) · r333 (the right-hand alert side column + the summary token, scoped 53 modules, +0.066pp; commit c6660da) · r334 (the activity title heading h3, scoped 73 modules, +0.167pp) · SHIPPED ≈19:20.**
 
 ## >>> STOPPED 2026-09-15 ≈15:45 NZST (session 4) on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r327 0.000pp, r328 0.000pp, r329 +0.004pp <<<
 **Session 4 shipped four rounds (r326 → r329; commits 955c0c8 · bdb33a1 · 2d478e4 · 6e25190) in ≈2h15m of the 10-hour budget (13:27 → 15:42).** Everything is committed; nothing is uncommitted; nothing was pushed.
@@ -144,7 +144,8 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 5 Round 1 (engine r330 — the bilingual section id is the activity number, not a heading, KB 07B): SHIPPED 2026-09-15 ≈16:40 (session 5). AppVersion 260619.01, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #4 since the r326 full. Skeleton +0.040pp — the plateau window restarts.
 - Session 5 Round 2 (engine r331 — a bilingual section box's headings render at the KB's activity level h3, KB 07B): SHIPPED 2026-09-15 ≈17:10 (session 5). AppVersion 260619.02, CLAUDE.md §9/§11/§14, scoped ship #5 since the r326 full. Skeleton +0.022pp.
 - Session 5 Round 3 (engine r332 — the empty footer → the KB's page-position form, KB 01B; + the BLL1 registry footer class): SHIPPED 2026-09-15 ≈17:40 (session 5). AppVersion 260619.03, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #6 since the r326 full. Skeleton +0.269pp, ≥50 +10, ≥75 +4.
-- Session 5 Round 4 (engine r333 — a right-hand alert is a side column; rhs / summary are not classes, KB 05B): SHIPPED 2026-09-15 ≈18:30 (session 5). AppVersion 260619.04, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #7 since the r326 full (backstop due at 8). Skeleton +0.066pp, ≥50 +5; compare_structure exact +15 / EXTRA −15 / missing +2 named.
+- Session 5 Round 4 (engine r333 — a right-hand alert is a side column; rhs / summary are not classes, KB 05B): SHIPPED 2026-09-15 ≈18:20 (session 5, commit c6660da). AppVersion 260619.04, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #7 since the r326 full (backstop due at 8). Skeleton +0.066pp, ≥50 +5; compare_structure exact +15 / EXTRA −15 / missing +2 named.
+- Session 5 Round 5 (engine r334 — the activity box's title heading is h3, KB 01F): SHIPPED 2026-09-15 ≈19:20 (session 5). AppVersion 260619.05, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #8 since the r326 full — the full-ship backstop is DUE. Skeleton +0.167pp, ≥50 +17; every other gate EXACT.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -568,6 +569,53 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 5 · Round 5 (engine r334) — what shipped (the activity box's title heading is h3)
+- **Fix:** `activity_wrapper.title_heading_level` {enabled, env ACTTITLEH3_OFF, level 3, exclude_body_class_match reoTranslate, skip_panel_class
+  "super-content row"} → `ActivitiesBuilder.activityTitleLevelPostpass(html, run)` in the body chain right after `#relevelHeadings`: every
+  activity box's first-child heading (after an optional super-content panel, balanced) is rewritten to h3; nothing else in the box moves;
+  the reoTranslate family excluded (PNR keeps h2 by name, r331).
+- **Regeneration:** scoped — the in-memory probe over ALL 416 modules (4 shards): OFF = disk 2102/2102; ON named 226 pages / 73 modules and
+  every diff line is a heading tag swap (465 h4 + 125 h5 → 590 h3, the 125 including the 115 XDLS tile panels the census only saw once the r307
+  class prefix was accounted for); the planner's 9 batches, all rc 0; 0 truly stale; manifest diff = exactly the 226.
+- **Gates:** skeleton 50.893 → 51.060 (+0.167pp; 170 moved, 150 up / 20 down — dips NAMED: MXFU401_3_0 −8.4 / PHE1003_1_0 −4.6 / MXEO202_6_0 −4.6 /
+  MXEO202_3_0 −3.3 / HIS1007_3_1 −3.2 / TEFUN08_0_0 −2.9 = alignment artefacts with the position-free overlap rising or flat; ANZH301_9_0 −3.5 +
+  ANZH304_6_0 −3.4 = one box each whose gold title is not h3, the gold's 12-of-4560 minority); ≥50 1049 → 1066; ≥75 200; every other gate
+  line-for-line EXACT with r333 (fastloop PASS, nothing to name); 13 selftests GREEN. **55.7% of achievable.**
+- **Verifier:** activity title slots h4/h5 590 → 0 (h3 4013, h2 14 = the PNR exclusion). **Plateau window: r332 +0.269 · r333 +0.066 · r334 +0.167.**
+  Ship ledger: scoped #8 since the r326 full — **the full-ship backstop is DUE: the next shipped round runs `ship.sh` (full regeneration).**
+
+## Session 5 · Round 5 PICK (engine r334) — written before any code, 2026-09-15 18:40 NZST
+- **Class:** the ACTIVITY BOX'S TITLE HEADING LEVEL. KB 01F `activity_heading` → `<h3>Activity heading text</h3>` within the activity;
+  the gold, wherever a box's first child is a heading, ships h3 on **4548 : 12** Standard (0.997), **1029 : 5** Inquiry (0.995), **581 : 0**
+  Fundamentals (1.000), 196 : 4 Bilingual. Claude ships the box's title at **h4 on 456 boxes (+ h5 10) — 202 pages / 69 modules** (Standard 346
+  boxes / 174 pages / 48 modules — MXFL203 59, HIS1005 37, HIS1004/1006 33 …; Fundamentals 109 / 23 / 16; Inquiry 11 / 5 / 5), because a
+  writer's `[H3]` typed after the `[Activity]` opener takes the body shift (+1 → h4, `[H4]` → h5) and `#relevelHeadings` SKIPS activity
+  subtrees (the r55 anchor exclusion), so the in-box title never normalises back; the r66 first-line title and the opener's embedded
+  payload already ship at the fixed h3 (2283 boxes). (`outputs/_measure_r334_acttitle.py` → `_r334_acttitle.json`.)
+- **Triangulated:** MXFL203 lesson 1 activity 1E — WT `[Activity 1E]` then `[H3] New Zealand's biggest A&P show`; gold `<div class="activity"
+  number="1E"><div class="row"><div class="col-12"><h3>New Zealand's biggest A&P show</h3>`; Claude the same box with `<h4>`. HIS1005 lesson 2:
+  the same shape. The Bilingual family's 14 h2 titles are the PNR boxes the r331 rule excluded by name (PNR's gold keeps h2 — 0.72) and stay
+  out of this rule (`exclude_body_class_match: reoTranslate`).
+- **How this PICK was found:** the new substitution instrument `outputs/_measure_r334_subst.py` (`_r334_subst.json`) — the gate's own
+  `replace` opcodes read line-for-line as "gold ships X where Claude ships Y": Standard `h3 ⇐ h4` 209 occ / 142 pages / 66 modules was the
+  largest heading swap; the activity-title census decomposed it. Set aside on the record from the same instrument: `div.col-12 ⇐
+  div.col-md-8.col-12` 254 / 220 pages (the KB c17/c56 widened activity wrapper — the gold keeps `col-md-8` as the majority for EVERY widget
+  type, D&D column 0.51 / 0.49 widened, and the layout is the developer's choice, not in the tag → DECLINED); `iframe.embed-responsive-item ⇐
+  iframe` 130 / 121 (the KB's iframe forms carry no class → Claude is KB-correct); `videoSection.icon` 103 / 90 (the r200/r331 set-aside);
+  `body.container-fluid.mathJax` 71 / 17 modules (a page-level class the KB is silent on — measure another round); the 36 Inquiry modules
+  whose gold ships `div.crumbs`+`div.inquiryPanel` but Claude does not (KB 06 §3.4) decompose into six delimiter dialects, and the largest
+  reachable one (8 CED modules with ALL-CAPS Wonder/Explore/Connect/Act/Reflect lines) turned out to be REVISION BRIEFS whose docx carries the
+  edit notes before an unfilled blank template — the live extractor starts at the template's `[TITLE BAR]` and ships the placeholders; a
+  content-start question, not a panel round (recorded under Declined/Blocked below).
+- **Authority (§1b):** level 1 (KB 01F `activity_heading`) + the gold at 0.997 / 0.995 / 1.000 — no override needed.
+- **Fix (planned), data `activity_wrapper.title_heading_level` {enabled, env `ACTTITLEH3_OFF`, level 3, exclude_body_class_match
+  "reoTranslate"}:** `ActivitiesBuilder.activityTitleLevelPostpass(html, run)`, run in the body chain right after `#relevelHeadings`: for
+  every activity box open, skip an optional `super-content row` panel (balanced), then if the box's own `row > col-12` opens with a heading,
+  that heading's open + close tags are rewritten to h3. Nothing else in the box moves. OFF = byte-identical. Regeneration: scoped to the
+  modules the in-memory probe names over all 416.
+- **Gate expectation:** skeleton ≥ hold — 466 title lines gain the gold's `h3` (est. +0.05–0.10pp; ≥50 +); compare_structure / body /
+  defect / leak EXACT (a heading level never enters the wrapper chain). **Plateau window: r331 +0.022 · r332 +0.269 · r333 +0.066.**
+
 ## Session 5 · Round 4 (engine r333) — what shipped (a right-hand alert is a side column; `rhs` / `summary` are not classes)
 - **Fix:** `callouts.positional_side_alert` {enabled, env ALERTRHS_OFF, tags [alert, important], keywords [rhs, rhc], strip_tokens
   {rhs, rhc, summary}, after_activity (the KB activity sidebar `col-md-4 offset-md-0 col-12 > alertActivity`, lead h4), after_content
@@ -941,6 +989,18 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   stickyNav (series convention), c67 overflowYScroll (27 pages).
 
 ## Declined classes
+- **The widened activity wrapper (KB c17 / c56 — `col-md-12 col-12` for wide interactives, `col-12` for a D&D column with many images) —
+  DECLINED 2026-09-15 (session 5, Round 5 PICK; measured inline over every gold activity box by the widget type inside it).** The gold keeps
+  `col-md-8 col-12` as the MAJORITY for every type — text-only 0.85, videoSection 0.88, D&D standard 0.72, typing 0.78, dropQuiz 0.82, D&D
+  column **0.51** (col-12 0.26 / col-md-12 0.23), memoryGame 0.53, flipCard 0.54 — so no widened form solidifies (≥ 0.60), and the D&D
+  LAYOUT (column vs standard) is the developer's choice, not in the writer's tag; Claude does not build D&D (decision 5). The substitution
+  instrument (`_r334_subst.json`) shows the class as `div.col-12 ⇐ div.col-md-8.col-12` 254 occ / 220 pages + `div.col-md-12.col-12 ⇐ …` 166 /
+  142 + `col-md-10` 82 / 69 (the KB forbids col-md-10). Re-open only if the writer's tag carries the layout.
+- **`iframe.embed-responsive-item` (130 occ / 121 pages / 59 modules) — Claude is KB-correct**: every KB iframe form (01E, 04A, 05A) is
+  class-less; the gold's class is era-mixed. Not chased. Same for `body.container-fluid.mathJax` (71 pages / 17 modules — the KB is silent;
+  measure before any round).
+- **The activity box's own h4 SUB-headings after the title (gold `h3 → h4` 655 vs Claude `h3 → h3` 657 on the title→next pair)** — a second,
+  separate heading class inside the box (the writer's digit is the discriminator to measure); not this round.
 - **c67 `overflowYScroll scroll="500"` on long panels — DECLINED 2026-09-15 (Round 11 PICK).** Measured over every gold accordion / tab panel
   (4,932 panels): the class rides 25 accContent + 6 tab-pane + 8 other panels on 27 pages (HIS1004 ×9), and its share is ≤ 0.05 in EVERY
   length bucket (accContent 1–2k chars 9/164, 2–4k 8/158, 4–8k 4/186, 8k+ 2/178; tab-pane 2–4k 4/97) — panel length does not predict it, no
@@ -960,6 +1020,16 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - **The KB's default table class `table table-bordered` (05D) — NOT PICKED 2026-09-15 (session 5, Round 2 PICK; measured inline).** Claude ships bare `table.table` on 1,063 tables / 518 pages. The gold is a genuine TIE in Standard (bordered 0.51 of 1,432 tables; 104 modules all-bordered / 51 none / 78 mixed), ≥ 0.60 in Inquiry 0.72 / Fundamentals 0.69 / Bilingual 0.86; `tableFixed` does NOT follow the KB's 2-column guidance (2-col tables 0.19; it tracks 4+ columns). The KB's own two documents disagree (05D `table table-bordered` default vs 06 §6 Refresh baseline `table noHover tableFixed`). A `table-bordered` default would be a KB-over-gold override costing ≈ −133 matched table lines in Standard for +74 in Inquiry / Fundamentals — needs Chris to settle 05D vs 06 (see Blocked classes). Not attempted.
 
 ## Blocked classes
+- **The CED REVISION-BRIEF modules (CEDR201/301/302, CEDT201–204, CEDW303 — 8 Inquiry modules, 8 pages scoring 8–20%) — a content-start
+  finding, needs Chris, 2026-09-15 (session 5, Round 5 PICK).** Their `Writers Template + Media List.docx` is an EDIT BRIEF (`[Keep rest of
+  content]`, `[Edit page: …]`, `[Remove video]`, ALL-CAPS Wonder/Explore/Connect/Act/Reflect phase lines) followed by the UNFILLED blank template;
+  the live extractor's content start lands on the blank template's `[TITLE BAR]` and ships its placeholders (`Lesson # and title`, `Learning
+  outcome/intention`) — the module's real content is either "keep what exists" (not in the WT) or sits before the template. The gold is the
+  finished module (crumbs + 6 `inquiryPanel`s, KB 06 §3.4). Options: (a) treat the brief as the source (start at its first `[H1]`, derive the
+  inquiry-cycle crumbs from the ALL-CAPS phase lines, ship the edit notes as Writers Notes — the pages would still lack the "kept" content),
+  (b) leave them (the gate counts them at ~10%), (c) exclude revision briefs from the comparison set. The other 28 crumb-less Inquiry modules
+  are six delimiter dialects (`[tab N]` 11 modules — most with no Claude dir; `[LESSON N]`-as-panels 5; `[page N]` 2; EXPFUN `[section N]` 4;
+  TWH* new-tab/tab 5) — each a PanelsBuilder dialect round of its own (the r106/r189/r191/r192 pattern), sized 1–14 pages each.
 - **stickyNav `<head>` include (KB queue rank 10; 14A/14B/14D) — BLOCKED 2026-09-15, needs Chris.** Measured (`outputs/_measure_r323_stickynav.py` →
   `_r323_stickynav.json`): the gold carries `<script src="js/stickyNav.js" type="text/javascript" class="stickyNav"></script>` right after `<title>` on
   **1,504 of 2,385 pages (63%)**, per MODULE all-or-nothing (253 modules every page, 171 none, 30 mixed), ≥ 0.60 in 30 series (MX 0.92, ENGI/ENGR/HIS/
@@ -998,5 +1068,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s5-r2 (engine r331) · a bilingual section box's headings render at the KB's activity level (KB 07B: the writer's `[H2]` inside a TRR section box → h3; PNR excluded by data) · SHIPPED 2026-09-15 · scoped regeneration, 21 pages / 5 modules · scaffold 50.536→50.558 (+0.022; 18 up / 3 down, dips named), ≥50 +1, every other gate EXACT · TRR in-box h2 155→0 · alertImage sidebar DECLINED, table-class KB conflict → needs Chris · 55.2% of achievable · commit (see git log)
 - s5-r3 (engine r332) · the empty footer → the KB's page-position form (KB 01B: a no-evidence registry footer value falls back to overview next+home / lesson all three / final prev+home; fundamentals-nav home) + the BLL1 registry footer class (inquiry-nav, gold 0.85) · SHIPPED 2026-09-15 · scoped regeneration, 239 pages / 130 modules · scaffold 50.558→50.827 (+0.269; 185 up / 22 down, dips named), ≥50 +10, ≥75 +4, every other gate EXACT · empty footers 141→0 · 55.5% of achievable · commit (see git log)
 - s5-r4 (engine r333) · a right-hand alert is a side column; rhs / summary are not classes (KB 05B: `[alert box rhs]`-family boxes pair as the right sibling of the content column they follow — the KB activity sidebar alertActivity after an activity box, alert top after prose; `[alert box lesson summary]` → the plain alert) · SHIPPED 2026-09-15 · scoped regeneration, 143 pages / 53 modules · scaffold 50.827→50.893 (+0.066; 73 up / 14 down, dips named), ≥50 +5, compare_structure exact +15 / EXTRA −15 / missing +2 NAMED, every other gate EXACT · alert rhs 150→0, alert summary 98→0, 92 side columns · 55.6% of achievable · commit (see git log)
+- s5-r5 (engine r334) · the activity box's title heading is h3 (KB 01F `activity_heading`; a writer's in-box `[H3]`/`[H4]` carried the body shift and the re-leveller skips activity subtrees — a post-pass pins the box's first-child heading to h3; PNR excluded) · SHIPPED 2026-09-15 · scoped regeneration, 226 pages / 73 modules · scaffold 50.893→51.060 (+0.167; 150 up / 20 down, dips named), ≥50 +17, every other gate EXACT · activity titles at h4/h5 590→0 · 55.7% of achievable · scoped ship #8 — full backstop DUE · commit (see git log)
 
 **Next session starts with:** Chris's decisions (stickyNav / decision 5 interactives / decision 4 title-pair order / decision 1 c47) — see the session-4 STOP banner at the top; without one, the Bilingual `number="N.M"` section-id boxes (KB 07B, 25 pages, est. +0.01pp) are the next PICK and the plateau rule will stop the loop again after it.
