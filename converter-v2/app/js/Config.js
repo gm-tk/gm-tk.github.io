@@ -1669,7 +1669,11 @@ class Config {
 	// div.button, External div.externalButton; the gold follows it by host) and a URL-only button reads "Go to website" /
 	// "Go to video" (constraint 75) — ContentConverter.#externalDestination at the plain-[button] seam; scoped 71 modules;
 	// env EXTDEST_OFF.
-	static AppVersion = "260619.09";
+	// ROUND 339 (2026-09-16, build 260619.10): a [button] whose destination is a VIDEO is the embedded video (the gold's
+	// consensus 0.90; the nearest KB rule 01E [video] -> videoSection) — ContentConverter.#videoDestination at the plain-[button]
+	// seam (own url / next [video] tag / next url-only tag / next bare url line) + the r88 absorb guard; scoped 14 modules;
+	// env VIDBTN_OFF.
+	static AppVersion = "260619.10";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

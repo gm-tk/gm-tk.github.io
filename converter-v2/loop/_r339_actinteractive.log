@@ -1,0 +1,99 @@
+paired activity boxes (same number on the paired page): 4213
+ALL: agree-yes 1208 · agree-no 1964 · GAP gold-yes/claude-no  758 · OVER gold-no/claude-yes  283
+  Standard      agree-yes  925 · agree-no 1404 · GAP gold-yes/claude-no  620 · OVER gold-no/claude-yes  214
+  Inquiry       agree-yes  124 · agree-no  473 · GAP gold-yes/claude-no   66 · OVER gold-no/claude-yes   16
+  Fundamentals  agree-yes  123 · agree-no   87 · GAP gold-yes/claude-no   72 · OVER gold-no/claude-yes   50
+  Bilingual     agree-yes   36 · agree-no    0 · GAP gold-yes/claude-no    0 · OVER gold-no/claude-yes    3
+
+GAP boxes 758 on 455 pages / 238 modules — by what Claude's box holds:
+   249  plain
+   234  handoff:unclassified+widget:table
+    41  widget:img-fluid
+    33  widget:videoSection
+    21  widget:carousel
+    16  widget:flipCard
+    13  handoff:interactive
+    12  widget:accordion
+    10  handoff:carousel
+    10  widget:infoTrigger
+     9  handoff:clickDrop+widget:table
+     8  handoff:flipCard+widget:table
+     8  handoff:unclassified
+     8  widget:clickDrop
+     8  widget:speechBubble
+     7  widget:audioPlayer
+     7  widget:table
+     7  handoff:slider+widget:table
+     6  handoff:wordFind
+     4  widget:nav-tabs
+     4  handoff:accordion+widget:table
+     4  handoff:clickDrop
+     3  widget:dragAndDrop
+     3  widget:hintSlider
+     3  handoff:sketcher
+
+  … and what the GOLD box holds for the same GAP boxes:
+   212  widget:dragAndDrop
+   101  plain
+    76  widget:mcq
+    76  widget:typing
+    51  widget:img-fluid
+    41  widget:dropQuiz
+    31  widget:clickDrop
+    29  widget:memoryGame
+    28  widget:carousel
+    24  widget:flipCard
+    20  widget:table
+    14  widget:videoSection
+
+OVER boxes 283 on 215 pages — by what Claude's box holds:
+    45  handoff:multiChoiceQuiz
+    41  plain
+    39  handoff:dragAndDrop+widget:table
+    36  handoff:unclassified+widget:table
+    22  handoff:multiChoiceQuiz+widget:table
+    21  handoff:dragAndDrop
+    14  handoff:selfCheck+widget:table
+     7  handoff:carousel
+     7  handoff:selfCheck
+     5  handoff:interactive
+     4  handoff:radioQuiz+widget:table
+     4  handoff:dropDown+widget:table
+
+PRECISION per Claude-content signature among boxes Claude ships PLAIN (gold interactive share):
+  plain                                n= 967  gold-interactive  249 (0.26)  gap pages 187
+  handoff:unclassified+widget:table    n= 474  gold-interactive  234 (0.49)  gap pages 187
+  widget:videoSection                  n= 225  gold-interactive   33 (0.15)  gap pages 30
+  widget:carousel                      n= 196  gold-interactive   21 (0.11)  gap pages 20
+  widget:img-fluid                     n= 189  gold-interactive   41 (0.22)  gap pages 34
+  handoff:carousel                     n=  79  gold-interactive   10 (0.13)  gap pages 7
+  widget:accordion                     n=  54  gold-interactive   12 (0.22)  gap pages 10
+  handoff:clickDrop                    n=  52  gold-interactive    4 (0.08)  gap pages 4
+  widget:clickDrop                     n=  44  gold-interactive    8 (0.18)  gap pages 8
+  widget:TKmodal                       n=  40  gold-interactive    0 (0.00)  gap pages 0
+  handoff:interactive                  n=  36  gold-interactive   13 (0.36)  gap pages 9
+  widget:flipCard                      n=  36  gold-interactive   16 (0.44)  gap pages 15
+  handoff:modal                        n=  35  gold-interactive    2 (0.06)  gap pages 2
+  widget:infoTrigger                   n=  33  gold-interactive   10 (0.30)  gap pages 9
+  handoff:flipCard+widget:table        n=  25  gold-interactive    8 (0.32)  gap pages 8
+  widget:speechBubble                  n=  25  gold-interactive    8 (0.32)  gap pages 7
+  widget:audioPlayer                   n=  21  gold-interactive    7 (0.33)  gap pages 7
+  handoff:unclassified                 n=  18  gold-interactive    8 (0.44)  gap pages 8
+  handoff:clickDrop+widget:table       n=  18  gold-interactive    9 (0.50)  gap pages 9
+  handoff:accordion                    n=  15  gold-interactive    2 (0.13)  gap pages 2
+
+GAP by subject (≥ 5):
+   204  1-10 Blended Literacy
+   159  1-10 Mathematics
+   121  1-10 English
+    73  Leaving to Learn
+    36  NCEA1
+    34  Online Safety (OS9000)
+    31  ConnectED
+    29  None
+    25  1-10 Social Science
+    10  ANZH
+    10  1-10 Science
+    10  Te ara Whakapuawa -Wellbeing
+     7  1-10 Health and PE
+     5  1-10 Technology

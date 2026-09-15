@@ -1,0 +1,22 @@
+re-scoring 14 affected module(s): ANZH404 HIS1001 HIS1002 HIS1005 HIS1006 HIS1007 HIS1008 HPFUN303 MXEO401 MXEX401 MXFU401 TWHA905 TWHK903 XGF9006
+baseline taken: 2026-09-15T11:52:08Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  51.10      51.11     +0.01  IMPROVED
+  skeleton pages >=50%                       1065       1066        +1  IMPROVED
+  skeleton pages >=75%                        201        201         0  HELD
+  compare_structure exact chain             11375      11378        +3  IMPROVED
+  compare_structure EXTRA container           171        171         0  HELD
+  compare_structure missing container         593        593         0  HELD
+  body_compare ANY breakdown                  191        191         0  HELD
+  defect structurally-clean %               97.81      97.81      0.00  HELD
+  literal-[tag] leak (occ)                    288        288         0  HELD
+  literal-[tag] leak (pages)                   46         46         0  HELD
+
+  context (no pass/fail): sk_pages: 1954->1954  cs_matched: 13398->13401  body_pages: 2102->2102  df_total: 2102->2102  df_clean: 2056->2056
+
+RESULT: PASS — every protected gate held-or-improved corpus-wide (exact, decomposition-proven).
+        Still run ship.sh (full regen + full suite + 0-stale + baseline refresh) before finalising,
+        or scoped_ship.sh (which calls this with --commit to refresh the baseline in place).

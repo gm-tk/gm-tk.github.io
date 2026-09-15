@@ -1,0 +1,33 @@
+ANZH404: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+HIS1005: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Was it Slavery?
+HIS1006: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Little Rock Paragraphs.docx
+   dev-diverged: Source A – Police Report
+   dev-diverged: Source B – Boycott Leaflet
+   dev-diverged: Source C – Interview with a Black Women
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 5 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Little Rock Paragraphs.docx
+   dev-restructured: Source A – Police report
+   dev-diverged: Source B – Boycott leaflet
+   dev-diverged: Source C – Interview with a black women
+HPFUN303: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+MXEO401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX401, MXO421) — using MXEX401 from filename "MXEX401 Writers Template + Media List.docx".
+MXEX401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXFU401, MX000) — using MXFU401 from filename "MXFU401 Writers Template + Media List.docx".
+MXFU401: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 18 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Watch the following videos to see 8 different equations solved using a
+TWHA905: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 5 | no builds
+TWHK903: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+XGF9006: built 4 panels [exact 1, copy-edit 3, dev-edit 0, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+
+TOTAL: 14 panels built across 5 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓

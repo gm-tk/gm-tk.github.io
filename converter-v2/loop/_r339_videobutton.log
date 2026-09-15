@@ -1,0 +1,42 @@
+button-family blocks carrying a video-host URL: 109 in 34 modules
+A:own-url                                n= 21 mods= 17 | gold {"EMBED":9,"BUTTON":5,"ABSENT":4,"NOID":2,"OTHER":1} embed/found 0.60 | claude {"OTHER":7,"BUTTON":7,"EMBED":5,"NOID":2}
+B:next-[video]-block                     n= 52 mods= 18 | gold {"EMBED":47,"ABSENT":4,"OTHER":1} embed/found 0.98 | claude {"ABSENT":3,"EMBED":24,"BUTTON":20,"OTHER":5}
+C:next-bare-url                          n= 32 mods=  6 | gold {"EMBED":22,"ABSENT":9,"OTHER":1} embed/found 0.96 | claude {"OTHER":3,"EMBED":4,"BUTTON":25}
+D:next-prose-with-video-url              n=  4 mods=  3 | gold {"NOID":1,"EMBED":2,"BUTTON":1} embed/found 0.67 | claude {"NOID":1,"OTHER":1,"BUTTON":2}
+
+by instruction-like bracket (a sentence containing 'button') vs a real [button] tag:
+  instruction-like                       n= 63 mods=  6 | gold {"EMBED":50,"ABSENT":11,"OTHER":2} embed/found 0.96 | claude {"OTHER":8,"EMBED":19,"BUTTON":36}
+  real button tag                        n= 46 mods= 30 | gold {"EMBED":30,"BUTTON":6,"NOID":3,"ABSENT":6,"OTHER":1} embed/found 0.81 | claude {"OTHER":8,"BUTTON":18,"ABSENT":3,"NOID":3,"EMBED":14}
+
+by template:
+  Standard                               n=101 mods= 26 | gold {"NOID":3,"EMBED":73,"ABSENT":17,"OTHER":3,"BUTTON":5} embed/found 0.90 | claude {"NOID":3,"EMBED":33,"OTHER":13,"BUTTON":51,"ABSENT":1}
+  Inquiry                                n=  4 mods=  4 | gold {"EMBED":3,"BUTTON":1} embed/found 0.75 | claude {"ABSENT":2,"BUTTON":2}
+  Fundamentals                           n=  4 mods=  4 | gold {"EMBED":4} embed/found 1.00 | claude {"OTHER":3,"BUTTON":1}
+
+by label (top 12):
+  "(none)"                               n= 72 mods= 12 | gold {"EMBED":57,"ABSENT":12,"OTHER":2,"BUTTON":1} embed/found 0.95 | claude {"BUTTON":43,"OTHER":8,"ABSENT":1,"EMBED":20}
+  "play"                                 n=  4 mods=  2 | gold {"EMBED":4} embed/found 1.00 | claude {"BUTTON":4}
+  "here’s a helpful video if you would   n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"OTHER":1}
+  "ssfun03 phase 3 mapping the earth i   n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"OTHER":1}
+  "supporters of tiritiri matangi"       n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"ABSENT":1}
+  "love food hate waste"                 n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"BUTTON":1}
+  "android and ios have settings for p   n=  1 mods=  1 | gold {"BUTTON":1} embed/found 0.00 | claude {"BUTTON":1}
+  "use the quiz button below to share    n=  1 mods=  1 | gold {"NOID":1} embed/found - | claude {"NOID":1}
+  "making sand -"                        n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"EMBED":1}
+  "as your child shows off their moves   n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"EMBED":1}
+  "in māori mythology, taniwha are lar   n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"EMBED":1}
+  "spiderman’s origin story"             n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"EMBED":1}
+
+button tag spellings (top 12):
+  "[button]"                             n= 15 mods= 10 | gold {"EMBED":10,"BUTTON":1,"NOID":1,"ABSENT":3} embed/found 0.91 | claude {"OTHER":2,"EMBED":6,"BUTTON":5,"NOID":1,"ABSENT":1}
+  "[embed video with image and play butt n=  9 mods=  3 | gold {"EMBED":6,"ABSENT":3} embed/found 1.00 | claude {"EMBED":4,"BUTTON":5}
+  "[insert button]"                      n=  5 mods=  4 | gold {"EMBED":2,"ABSENT":2,"BUTTON":1} embed/found 0.67 | claude {"OTHER":1,"ABSENT":1,"EMBED":2,"BUTTON":1}
+  "[please embed video with image and pl n=  5 mods=  3 | gold {"EMBED":3,"OTHER":2} embed/found 0.60 | claude {"OTHER":2,"EMBED":2,"BUTTON":1}
+  "[embed video with play button and ima n=  4 mods=  2 | gold {"ABSENT":2,"EMBED":2} embed/found 1.00 | claude {"BUTTON":4}
+  "[button] play video"                  n=  3 mods=  2 | gold {"EMBED":3} embed/found 1.00 | claude {"BUTTON":3}
+  "[embed video with image and a play bu n=  3 mods=  2 | gold {"ABSENT":1,"EMBED":2} embed/found 1.00 | claude {"BUTTON":3}
+  "[button] [video N]"                   n=  3 mods=  3 | gold {"EMBED":2,"ABSENT":1} embed/found 1.00 | claude {"BUTTON":3}
+  "[button:"                             n=  2 mods=  2 | gold {"EMBED":1,"BUTTON":1} embed/found 0.50 | claude {"BUTTON":2}
+  "[supervisor note]"                    n=  2 mods=  2 | gold {"EMBED":1,"OTHER":1} embed/found 0.50 | claude {"EMBED":2}
+  "[please embed this video with a play  n=  2 mods=  2 | gold {"EMBED":2} embed/found 1.00 | claude {"EMBED":1,"BUTTON":1}
+  "[please embed the following video lin n=  2 mods=  2 | gold {"EMBED":2} embed/found 1.00 | claude {"EMBED":2}

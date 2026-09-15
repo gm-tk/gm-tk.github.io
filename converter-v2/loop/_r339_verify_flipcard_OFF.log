@@ -1,0 +1,23 @@
+ANZH404: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN303: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXEO401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX401, MXO421) — using MXEX401 from filename "MXEX401 Writers Template + Media List.docx".
+MXEX401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXFU401, MX000) — using MXFU401 from filename "MXFU401 Writers Template + Media List.docx".
+MXFU401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHA905: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHK903: built 8 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+XGF9006: built 56 card-texts [exact 44, copy-edit 0, gold-subst 12, defect 0] all matched ✓
+
+TOTAL 64: exact 44, copy-edit 0, gold-subst 12, defect 0, divergence 8.
+RESULT: divergence 8 ✗ — a built card has no human flipCard counterpart; investigate before ship.

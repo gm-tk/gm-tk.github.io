@@ -1,0 +1,3 @@
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs MXFU401 XGF9006 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs ANZH404 HIS1001 HIS1002 HIS1005 HIS1006 HIS1007 HIS1008 HPFUN303 MXEO401 MXEX401 TWHA905 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs TWHK903 --force

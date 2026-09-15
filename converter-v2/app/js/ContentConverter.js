@@ -5813,6 +5813,57 @@ class ContentConverter {
 		return { form: cfg.form, label: isVideo ? (cfg.video_label ?? "Go to video") : (cfg.default_label ?? "Go to website") };
 	}
 
+	/**
+	 * ROUND 339 — a [button] whose destination is a VIDEO is the gold's embedded video. The
+	 * writer's "[Button] Play video" + "[video link] URL", "[Button: youtube-url]", and the
+	 * instruction brackets the normaliser reads as a button ("[embed video with image and
+	 * play button]" + a bare URL line) all reached the page as an anchored button (the r88
+	 * following-URL absorb / the r326 anchor); the gold embeds the video on 0.90 of the
+	 * paired sites (109 blocks / 34 modules; by shape: own URL 0.60, a following [video]-tag
+	 * block 0.98, a following bare URL 0.96). At the plain-[button] seam only (key ===
+	 * "button"; a released tile-grid lead keeps the r307 form), returns the SHAPE the caller
+	 * routes on: "own" (the button's own URL is a video host), "next-tag" (the next unconsumed
+	 * item is a [video]/[audio]-family tag carrying a video-host URL — it embeds itself, so the
+	 * button must not absorb it), "next-url" (the next unconsumed item is a bare video-host
+	 * URL line — the media gather takes it), or null. Data buttons.video_destination;
+	 * env VIDBTN_OFF.
+	 */
+	static #videoDestination(url, it, bodyItems, i, key, tpl) {
+		const cfg = tpl?.buttons?.video_destination;
+		if (!cfg || cfg.enabled === false || key !== "button") return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "VIDBTN_OFF"]) return null;
+		if (cfg.exclude_released !== false && it._r307Released) return null;
+		const host = new RegExp(cfg.host_match ?? "youtube\\.com/(?:watch\\?|shorts/|embed/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i");
+		const isVid = (u) => !!u && /^https?:\/\//i.test(String(u)) && host.test(String(u));
+		const ownText = String(it.blackAfter ?? "") + "\n" + String(it.text ?? "");
+		if (isVid(url)) {
+			// the URL must be the BUTTON'S OWN — typed in its text, or a hyperlink whose run text
+			// sits in its text (a block shared with a [video] item lends its first link to every
+			// sibling button: SSOG301's quiz controls, never this button's destination)
+			const own = ownText.includes(String(url))
+				|| (it.block?.links ?? []).some((l) => l?.target === url && String(l.text ?? "").trim() && ownText.includes(String(l.text).trim()));
+			return own ? "own" : null;
+		}
+		if (url) return null;                                   // a real (non-video) link — the button keeps it
+		const nxt = bodyItems?.[i + 1];
+		if (!nxt || nxt._consumed || nxt.consumedBy !== undefined) return null;
+		const nraw = String(nxt.blackAfter ?? (nxt.type === "black" ? nxt.text : "") ?? "").replace(/\*/g, "").trim();
+		const nurl = nxt.block?.links?.[0]?.target ?? (nraw.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
+		if (!isVid(nurl)) return null;
+		// the following item's WHOLE content is the one URL (the r88 "bare URL and nothing else" test)
+		const urlOnly = nraw === nurl || nraw === "" || /^https?:\/\/\S+$/.test(nraw);
+		if (nxt.type === "tag") {
+			const fam = new Set(cfg.next_tag_families ?? ["video", "audio"]);
+			if (fam.has(nxt.parse?.primary?.tag)) return "next-tag";      // a [video] item: it embeds itself
+			// a URL-only NON-video tag item ("[link] https://youtube…", "[external link] …") after the
+			// button IS the video reference — rendered as the embed, consumed; a structural tag never
+			const dir = nxt.parse?.primary?.directive;
+			const structural = dir && ["CONTAINER_OPEN", "CONTAINER_CLOSE", "PAGE_BOUNDARY", "SECTION_MARKER", "INTERACTIVE"].includes(dir);
+			return (urlOnly && !structural) ? "next-tag-url" : null;
+		}
+		return urlOnly ? "next-url" : null;
+	}
+
 	static #mtkQuizOmitCfg() {
 		const mq = DataService.Data.EmitTemplates.interactive_builders?.mtk_quiz;
 		if (!mq || mq.enabled === false) return null;
@@ -6261,6 +6312,44 @@ class ContentConverter {
 			}
 			let url = it.block?.links?.[0]?.target
 				?? (it.blackAfter.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
+			// ROUND 339: a [button] whose destination is a VIDEO is the gold's embedded video,
+			// not a link button — "[Button] Play video" + "[video link] URL", "[Button: youtube-url]",
+			// "[embed video with image and play button]" + a bare URL line (measured: the gold
+			// embeds 0.90 of them). Data buttons.video_destination; env VIDBTN_OFF.
+			const vdest = this.#videoDestination(url, it, bodyItems, i, key, tpl);
+			if (vdest) {
+				const vcfg = tpl.buttons.video_destination;
+				const vlabel = (this.#norm.RenderText(it.text) || "").replace(/\*/g, "").trim()
+					|| (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim();
+				const playLike = !vlabel || new RegExp(vcfg.play_label_match ?? "^(play|watch)( the)?( video| now)?[.!]?$|^go to (the )?video[.!]?$|^video[.!]?$", "i").test(vlabel);
+				if (vdest === "next-tag") {
+					// the following [video] item renders the embed itself and is never absorbed
+					// (the absorb below skips a video URL); a label-less / "Play video" button IS
+					// that embed's play button and renders nothing — a writer's real label
+					// ("Go to journal", "Download learning journal") keeps its own button below
+					if (playLike) { run.AddNote("info", "ContentConverter", `[button] naming a video → the following [video] embeds it (video_destination).`); return out; }
+				} else {
+					// a writer's SENTENCE on the button is prose, never silently stripped; a short
+					// label ("Play video", the resource's name) is the embed's own title and drops
+					if (vlabel && vlabel.split(/\s+/).length > (vcfg.label_max_words ?? 4)) {
+						out.push(...ListsAndRuns.renderBlackText(vlabel, run, it.block?.links));
+					}
+					// the media gather is FENCED to the button + its URL item: the prose after them is
+					// the page's, not a caption (a following article link must never be eaten as
+					// "media residue" — HIS1005 8A's rnz link)
+					if (vdest === "next-tag-url") {
+						// the URL-only "[link]"-style item after the button IS the video: render it as
+						// the standard [video] element and consume it
+						const nxt = bodyItems[i + 1];
+						out.push(...MediaBuilder.media(nxt, bodyItems.slice(0, i + 2), i + 1, "video", run));
+						nxt._consumed = true;
+					} else {
+						out.push(...MediaBuilder.media(it, bodyItems.slice(0, vdest === "next-url" ? i + 2 : i + 1), i, "video", run));
+					}
+					run.AddNote("info", "ContentConverter", `[button] with a video URL → the video embed (video_destination, ${vdest}).`);
+					return out;
+				}
+			}
 			// EXTERNAL LINK BUTTON handling: writers often drop this marker INLINE in the
 			// middle of an ordinary body sentence, so the text that follows the URL is really
 			// just running prose continuing that sentence, NOT a button label. This uses a
@@ -6409,7 +6498,13 @@ class ContentConverter {
 					const nurl = /^https?:\/\/\S+$/.test(nraw) ? nraw
 						: (nlink?.target && /^https?:\/\//.test(nlink.target)
 							&& (nraw === "" || nraw === nlink.target) ? nlink.target : "");
-					if (nurl && !nIsStruct) {
+					// ROUND 339: a VIDEO URL on the following item is that video's embed, never
+					// this button's href (buttons.video_destination; env VIDBTN_OFF)
+					const vdc = tpl.buttons.video_destination;
+					const noVideoAbsorb = vdc && vdc.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[vdc.env ?? "VIDBTN_OFF"])
+						&& nurl && new RegExp(vdc.host_match ?? "youtube\\.com/(?:watch\\?|shorts/|embed/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i").test(nurl);
+					if (nurl && !nIsStruct && !noVideoAbsorb) {
 						url = nurl;
 						form = tpl.buttons.button_linked.form;
 						nxt._consumed = true;
