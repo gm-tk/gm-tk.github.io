@@ -1,0 +1,5504 @@
+{
+ "gold_total": {
+  "Standard": 281,
+  "Fundamentals": 36,
+  "Inquiry": 61,
+  "Bilingual": 10
+ },
+ "rows": [
+  {
+   "code": "AGH1009",
+   "page": "AGH1009_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1358858097.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ANZH104",
+   "page": "ANZH104_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity dropbox supervisor super-content-button alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-174700477.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ANZH105",
+   "page": "ANZH105_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Polynesian Migration Aotearoa.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ANZH105",
+   "page": "ANZH105_5_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ANZH304",
+   "page": "ANZH304_1_0.html",
+   "gold_num": "1D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/mini_magick20251009-9-x92jh2.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ANZH304",
+   "page": "ANZH304_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L4/Te_Rangihaeta_Wairau.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ARFUN01",
+   "page": "ARFUN01_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1249634540.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ART1002",
+   "page": "ART1002_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 2,
+   "src": "images/iStock-1207479512.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ART1002",
+   "page": "ART1002_1_0.html",
+   "gold_num": "1C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 7,
+   "src": "images/image2.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ART1002",
+   "page": "ART1002_5_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-955186278.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ART1002",
+   "page": "ART1002_5_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1364209752.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ART1006",
+   "page": "ART1006_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1227496074.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ART1006",
+   "page": "ART1006_4_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1363529966.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "BLL116",
+   "page": "BLL116_2_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1478282630.jpg",
+   "pos": "before",
+   "claude": [
+    "2C",
+    "activity",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL122",
+   "page": "BLL122_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity super-content-button",
+   "gold_imgs_inside": 6,
+   "src": "images/iStock-492364771.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    12,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL130",
+   "page": "BLL130_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1990668208.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL130",
+   "page": "BLL130_0_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1473703361.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL134",
+   "page": "BLL134_1_0.html",
+   "gold_num": "1E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Exclamation mark.png",
+   "pos": "before",
+   "claude": [
+    "1E",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL135",
+   "page": "BLL135_1_1.html",
+   "gold_num": "2B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1448731280.jpg",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL140",
+   "page": "BLL140_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1704439270.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL140",
+   "page": "BLL140_0_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-139747596.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL140",
+   "page": "BLL140_0_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2021146559.jpg",
+   "pos": "before",
+   "claude": [
+    "6A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL140",
+   "page": "BLL140_0_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1294430807.jpg",
+   "pos": "before",
+   "claude": [
+    "7A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL144",
+   "page": "BLL144_1_1.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2175202526.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL145",
+   "page": "BLL145_1_1.html",
+   "gold_num": "2A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 6,
+   "src": "images/iStock-493375210.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL150",
+   "page": "BLL150_0_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2172430948.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL150",
+   "page": "BLL150_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1447437521.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL150",
+   "page": "BLL150_0_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1673913481.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL150",
+   "page": "BLL150_0_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1053136512.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL153",
+   "page": "BLL153_1_1.html",
+   "gold_num": "2E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-92166537.jpg",
+   "pos": "before",
+   "claude": [
+    "2E",
+    "activity interactive",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL160",
+   "page": "BLL160_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 6,
+   "src": "images/iStock-1807849845.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL160",
+   "page": "BLL160_0_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1270015386.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL160",
+   "page": "BLL160_0_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-515750748.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL163",
+   "page": "BLL163_1_1.html",
+   "gold_num": "2E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/SPELD_SA_Set_6_Sant_the_Ant_has_lunch-DS_Page_8 - image.jpg",
+   "pos": "before",
+   "claude": [
+    "2E",
+    "activity interactive",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL170",
+   "page": "BLL170_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity super-content-button",
+   "gold_imgs_inside": 4,
+   "src": "images/L3/iStock-2171673276.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    10,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL170",
+   "page": "BLL170_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity super-content-button",
+   "gold_imgs_inside": 4,
+   "src": "images/L4/iStock-1666056470.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    10,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL170",
+   "page": "BLL170_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity super-content-button",
+   "gold_imgs_inside": 4,
+   "src": "images/L6/iStock-1328973694.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    10,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL173",
+   "page": "BLL173_1_1.html",
+   "gold_num": "2E",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/2E_ant.png",
+   "pos": "before",
+   "claude": [
+    "2E",
+    "activity interactive",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL175",
+   "page": "BLL175_1_1.html",
+   "gold_num": "2E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-960326250.jpg",
+   "pos": "before",
+   "claude": [
+    "2E",
+    "activity",
+    2,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "BLL242",
+   "page": "BLL242_1_1.html",
+   "gold_num": "2D",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/lesson 2.0/iStock-859710966.jpg",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL244",
+   "page": "BLL244_1_0.html",
+   "gold_num": "1E",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/lesson 1.0/1E/iStock-1486055037.jpg",
+   "pos": "before",
+   "claude": [
+    "1E",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLL252",
+   "page": "BLL252_1_0.html",
+   "gold_num": "1E",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1325190537.svg",
+   "pos": "before",
+   "claude": [
+    "1E",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "BLLR201",
+   "page": "BLLR201_6_0.html",
+   "gold_num": "5F",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2221050756.png",
+   "pos": "before",
+   "claude": [
+    "5F",
+    "activity dropbox",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDK102",
+   "page": "CEDK102_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 6,
+   "src": "images/iStock-1369759135.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDK102",
+   "page": "CEDK102_0_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity interactive dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-658906706.jpg",
+   "pos": "before",
+   "claude": [
+    "5B",
+    "activity dropbox",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDK501",
+   "page": "CEDK501_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 6,
+   "src": "images/iStock-2192399395.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDK501",
+   "page": "CEDK501_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2223756267.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDK501",
+   "page": "CEDK501_2_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1215093975.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDK501",
+   "page": "CEDK501_5_1.html",
+   "gold_num": "5B",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2199000101.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDK501",
+   "page": "CEDK501_5_1.html",
+   "gold_num": "5C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2205397109.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDK501",
+   "page": "CEDK501_6_1.html",
+   "gold_num": "6F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2226385991.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDK501",
+   "page": "CEDK501_7_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2198999593.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-1209763710.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L2/iStock-1417615736.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L3/iStock-1061085192.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "3C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 2,
+   "src": "images/L1/iStock-1209763710.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-1167872606.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-968289008.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1089940056.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-152974309.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "7B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1089940056.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "8A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L8/iStock-2034012241.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "8B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1089940056.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "9A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L3/iStock-1469498103.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO202",
+   "page": "CEDO202_0_0.html",
+   "gold_num": "9B",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L9/iStock-1441841795.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDO502",
+   "page": "CEDO502_5_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1143219316.jpg",
+   "pos": "before",
+   "claude": [
+    "5B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDO502",
+   "page": "CEDO502_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1336820311.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDR204",
+   "page": "CEDR204_0_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1251751570.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDR204",
+   "page": "CEDR204_0_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2183276741.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT101",
+   "page": "CEDT101_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/moana-g9fcb76f61_1920.png",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT101",
+   "page": "CEDT101_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/120857-moana-disney-hq-image-free.png",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT101",
+   "page": "CEDT101_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1313586267.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT101",
+   "page": "CEDT101_0_0.html",
+   "gold_num": "3C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-910368122.jpg",
+   "pos": "before",
+   "claude": [
+    "3C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT101",
+   "page": "CEDT101_0_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-878410376.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "1D",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1441978104.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "3F",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-640014178.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "4C",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1292017341.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2150970953.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1289470419.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1134766450.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "7B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2170516642.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "gold_num": "7C",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-604335356.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT207",
+   "page": "CEDT207_0_0.html",
+   "gold_num": "5C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1423617346.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT207",
+   "page": "CEDT207_6_0.html",
+   "gold_num": "5C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1423617346.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT208",
+   "page": "CEDT208_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Sketching.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT301",
+   "page": "CEDT301_6_0.html",
+   "gold_num": "6C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/google maps example 2.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDT404",
+   "page": "CEDT404_0_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-523964429.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDT501",
+   "page": "CEDT501_8_0.html",
+   "gold_num": "8A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1419157251.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "CEDW201",
+   "page": "CEDW201_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1294303809.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDW201",
+   "page": "CEDW201_0_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1319777946.jpg",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDW201",
+   "page": "CEDW201_0_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1739153288.jpg",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "CEDW501",
+   "page": "CEDW501_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1019175570.jpg",
+   "pos": "before",
+   "claude": [
+    "6B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN03",
+   "page": "ENFUN03_0_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-502635124.jpg",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN03",
+   "page": "ENFUN03_0_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1202641472.jpg",
+   "pos": "before",
+   "claude": [
+    "3D",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN04",
+   "page": "ENFUN04_0_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/RTR-The Hole in the Kings Sock-Online_page-0007_cropped.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN05",
+   "page": "ENFUN05_0_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Janet_Frame_1993_(cropped).jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN05",
+   "page": "ENFUN05_0_0.html",
+   "gold_num": "4C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1650720405.jpg",
+   "pos": "before",
+   "claude": [
+    "4C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN08",
+   "page": "ENFUN08_0_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1350358491.jpg",
+   "pos": "before",
+   "claude": [
+    "2C",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN09",
+   "page": "ENFUN09_0_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2126873258.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN09",
+   "page": "ENFUN09_0_0.html",
+   "gold_num": "1E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1153687765.jpg",
+   "pos": "before",
+   "claude": [
+    "1E",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN09",
+   "page": "ENFUN09_0_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 1,
+   "src": "images/Spider.png",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENFUN09",
+   "page": "ENFUN09_0_0.html",
+   "gold_num": null,
+   "gold_cls": "(no activity in row)",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1736885766.jpg",
+   "pos": "none",
+   "claude": null
+  },
+  {
+   "code": "ENGC101",
+   "page": "ENGC101_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-1449796456.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC101",
+   "page": "ENGC101_3_0.html",
+   "gold_num": "3E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1435538494.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGC102",
+   "page": "ENGC102_4_0.html",
+   "gold_num": "4F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1491162655.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGC102",
+   "page": "ENGC102_7_0.html",
+   "gold_num": "7C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-156330111.jpg",
+   "pos": "before",
+   "claude": [
+    "7C",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC201",
+   "page": "ENGC201_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1473500227.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC201",
+   "page": "ENGC201_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/2A.png",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC201",
+   "page": "ENGC201_6_0.html",
+   "gold_num": "6C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-147846860.jpg",
+   "pos": "before",
+   "claude": [
+    "6C",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC202",
+   "page": "ENGC202_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 1,
+   "src": "images/Shapes.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC202",
+   "page": "ENGC202_8_0.html",
+   "gold_num": "8A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "gif/Planning - Drafting.gif",
+   "pos": "before",
+   "claude": [
+    "8A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC301",
+   "page": "ENGC301_7_0.html",
+   "gold_num": "7D",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L7/iStock-1304650223.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGC302",
+   "page": "ENGC302_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/kahu brazil steps.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC302",
+   "page": "ENGC302_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/kahu japan temple.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGC302",
+   "page": "ENGC302_2_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/kahu japan streets.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGC302",
+   "page": "ENGC302_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/kahu big ben.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGC302",
+   "page": "ENGC302_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/kahu australia sydney opera house.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGC302",
+   "page": "ENGC302_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/kahu new zealand auckland sky tower.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGC401",
+   "page": "ENGC401_5_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1267372412.jpg",
+   "pos": "before",
+   "claude": [
+    "5B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI103",
+   "page": "ENGI103_5_0.html",
+   "gold_num": "5D",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/waka ama/ENGI103-The-Boys-in-the-Waka-Ama-(c)-Angie-Belcher-and-Debbie-Tipuna-17.jpg",
+   "pos": "before",
+   "claude": [
+    "5D",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI302",
+   "page": "ENGI302_2_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 1,
+   "src": "images/Rona-and-the-moon-booklet.png",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI302",
+   "page": "ENGI302_4_0.html",
+   "gold_num": null,
+   "gold_cls": "(no activity in row)",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1068850064.jpg",
+   "pos": "none",
+   "claude": null
+  },
+  {
+   "code": "ENGI302",
+   "page": "ENGI302_4_0.html",
+   "gold_num": "4C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1068850064.jpg",
+   "pos": "before",
+   "claude": [
+    "4C",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI302",
+   "page": "ENGI302_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1625314806.jpg",
+   "pos": "before",
+   "claude": [
+    "6B",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI302",
+   "page": "ENGI302_6_0.html",
+   "gold_num": "6C",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1220068397.jpg",
+   "pos": "before",
+   "claude": [
+    "6C",
+    "activity dropbox",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI303",
+   "page": "ENGI303_2_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/lesson 2/SJ-L3-June-Princess Iwa_page-0003 (1).jpg",
+   "pos": "before",
+   "claude": [
+    "2C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI303",
+   "page": "ENGI303_6_0.html",
+   "gold_num": "6D",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/lesson 6/editing.svg",
+   "pos": "before",
+   "claude": [
+    "6D",
+    "activity dropbox interactive",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI401",
+   "page": "ENGI401_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2162098675.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGI401",
+   "page": "ENGI401_11_0.html",
+   "gold_num": "6.3C",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-1793516926.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGJ202",
+   "page": "ENGJ202_3_0.html",
+   "gold_num": "3C",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1335305981.jpg",
+   "pos": "before",
+   "claude": [
+    "3C",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGJ301",
+   "page": "ENGJ301_2_0.html",
+   "gold_num": null,
+   "gold_cls": "(no activity in row)",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1442489365.jpg",
+   "pos": "none",
+   "claude": null
+  },
+  {
+   "code": "ENGJ301",
+   "page": "ENGJ301_5_0.html",
+   "gold_num": "5E",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-532956537.jpg",
+   "pos": "before",
+   "claude": [
+    "5E",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGJ301",
+   "page": "ENGJ301_7_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1619080873.jpg",
+   "pos": "before",
+   "claude": [
+    "7A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGR101",
+   "page": "ENGR101_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding super-content-button",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1336791163.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGR101",
+   "page": "ENGR101_2_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1962393902.jpg",
+   "pos": "before",
+   "claude": [
+    "2C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGR101",
+   "page": "ENGR101_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-2178341500.jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGR101",
+   "page": "ENGR101_7_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/7A.JPG",
+   "pos": "before",
+   "claude": [
+    "7A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGR101",
+   "page": "ENGR101_7_0.html",
+   "gold_num": "7B",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1065599838.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGR101",
+   "page": "ENGR101_7_0.html",
+   "gold_num": "7C",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/hat.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGR102",
+   "page": "ENGR102_3_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity interactive alertPadding super-content-button",
+   "gold_imgs_inside": 0,
+   "src": "images/vickyvowel.png",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGR201",
+   "page": "ENGR201_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1283602523.jpg",
+   "pos": "before",
+   "claude": [
+    "6B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGR301",
+   "page": "ENGR301_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1763926700.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS101",
+   "page": "ENGS101_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/shutterstock_2404595479.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS101",
+   "page": "ENGS101_2_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/nz2-e-10-maui-and-the-giant-ika-story-cut-outs_Page_1_2 - Copy.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGS101",
+   "page": "ENGS101_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-468529648.jpg",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity",
+    4,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS101",
+   "page": "ENGS101_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 10,
+   "src": "images/iStock-1331903841.jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS101",
+   "page": "ENGS101_5_0.html",
+   "gold_num": "5C",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-466577103.jpg",
+   "pos": "before",
+   "claude": [
+    "5C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-501964776.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_4_0.html",
+   "gold_num": "4C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-472036309.jpg",
+   "pos": "before",
+   "claude": [
+    "4C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_4_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity  alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1045302096.jpg",
+   "pos": "before",
+   "claude": [
+    "4D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_7_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Web_of_Spider-Man_Vol_1_129-1.jpg",
+   "pos": "before",
+   "claude": [
+    "7A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_7_0.html",
+   "gold_num": "7B",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 6,
+   "src": "images/Planning.svg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_7_0.html",
+   "gold_num": "7C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Drafting.svg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_7_0.html",
+   "gold_num": "7D",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/editing.svg",
+   "pos": "before",
+   "claude": [
+    "7D",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_8_0.html",
+   "gold_num": "8A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 23,
+   "src": "images/640px-Winston_Reid_in_September_2014.jpeg",
+   "pos": "before",
+   "claude": [
+    "8A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_8_0.html",
+   "gold_num": "8B",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 6,
+   "src": "images/Planning.svg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_8_0.html",
+   "gold_num": "8C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Drafting.svg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGS201",
+   "page": "ENGS201_8_0.html",
+   "gold_num": "8D",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/editing.svg",
+   "pos": "before",
+   "claude": [
+    "8D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS301",
+   "page": "ENGS301_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-671835640.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "ENGS301",
+   "page": "ENGS301_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1454928178.jpg",
+   "pos": "before",
+   "claude": [
+    "6B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS401",
+   "page": "ENGS401_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1327693614.jpg",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS401",
+   "page": "ENGS401_3_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1489681172.jpg",
+   "pos": "before",
+   "claude": [
+    "3D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS401",
+   "page": "ENGS401_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-485835346.jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "ENGS401",
+   "page": "ENGS401_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1317945712.jpg",
+   "pos": "before",
+   "claude": [
+    "6A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "EXBP901",
+   "page": "EXBP901_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/mindmap.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "EXIP901",
+   "page": "EXIP901_4_0.html",
+   "gold_num": "2I",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-672690216.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "HES1004",
+   "page": "HES1004_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1472881521.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "HIS1001",
+   "page": "HIS1001_9_0.html",
+   "gold_num": "9C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Perspectives.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "HIS1003",
+   "page": "HIS1003_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/55669-max.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "HIS1003",
+   "page": "HIS1003_7_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 2,
+   "src": "images/Ships_in_Wellington_Harbour_during_the_1951_wharf_strike,_1951_(3377606459).jpg",
+   "pos": "before",
+   "claude": [
+    "7A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HIS1004",
+   "page": "HIS1004_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Apartheid-signs-trainstation.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HIS1004",
+   "page": "HIS1004_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/81tour-011.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HIS1004",
+   "page": "HIS1004_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Nelson_Mandela_street_art_San_Francisco.jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HIS1005",
+   "page": "HIS1005_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/te tiriti.jpeg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HIS1005",
+   "page": "HIS1005_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Anti-indian cartoon.jpg",
+   "pos": "before",
+   "claude": [
+    "6B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HIS1005",
+   "page": "HIS1005_7_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/Cape_Coast_Slave_Castle.jpg",
+   "pos": "before",
+   "claude": [
+    "7A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HIS1007",
+   "page": "HIS1007_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/Cape_Coast_Slave_Castle.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HPFUN203",
+   "page": "HPFUN203_0_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1485228101.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "HPFUN203",
+   "page": "HPFUN203_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1636003232.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HPFUN303",
+   "page": "HPFUN303_0_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1211734773.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "HPFUN303",
+   "page": "HPFUN303_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 3,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HPRE203",
+   "page": "HPRE203_3_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-2197757483.jpg",
+   "pos": "before",
+   "claude": [
+    "3D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HPRE203",
+   "page": "HPRE203_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-503324704.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity interactive",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "HPRE203",
+   "page": "HPRE203_5_0.html",
+   "gold_num": "5E",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 2,
+   "src": "images/Afi's example.png",
+   "pos": "before",
+   "claude": [
+    "5E",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDB102",
+   "page": "MXDB102_7_0.html",
+   "gold_num": "7C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1328895170.jpg",
+   "pos": "before",
+   "claude": [
+    "7C",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDB102",
+   "page": "MXDB102_8_0.html",
+   "gold_num": "8B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1157711650.jpg",
+   "pos": "before",
+   "claude": [
+    "8B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDB102",
+   "page": "MXDB102_9_0.html",
+   "gold_num": "9B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-860844010.jpg",
+   "pos": "before",
+   "claude": [
+    "9B",
+    "activity interactive",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDB102",
+   "page": "MXDB102_9_0.html",
+   "gold_num": "9C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-959027480.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDB302",
+   "page": "MXDB302_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-1198566659.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDB302",
+   "page": "MXDB302_4_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1881100015.jpg",
+   "pos": "before",
+   "claude": [
+    "4D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_2_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1368491419.jpg",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_2_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-173578418.jpg",
+   "pos": "before",
+   "claude": [
+    "2C",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_3_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-121305365.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_3_0.html",
+   "gold_num": "3F",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1414629966.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_4_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-637765812.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_5_0.html",
+   "gold_num": "5D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1345840913.jpg",
+   "pos": "before",
+   "claude": [
+    "5D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_5_0.html",
+   "gold_num": "5H",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1400214486.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_5_0.html",
+   "gold_num": "5I",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/3458.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_5_0.html",
+   "gold_num": "5J",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/38452.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_6_0.html",
+   "gold_num": "6E",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-184267921.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_6_0.html",
+   "gold_num": "6I",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-170553925.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_7_0.html",
+   "gold_num": "7D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-133313561.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_7_0.html",
+   "gold_num": "7F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-1494332944.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_8_0.html",
+   "gold_num": "8F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1415494891.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_9_0.html",
+   "gold_num": "9A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-492361863.jpg",
+   "pos": "before",
+   "claude": [
+    "9A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_10_0.html",
+   "gold_num": "10B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1796504931.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXDI201",
+   "page": "MXDI201_10_0.html",
+   "gold_num": "10G",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1049733278.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO201",
+   "page": "MXEO201_4_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-499206681.jpg",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEO202",
+   "page": "MXEO202_4_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity super-content-button alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-961002460.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO202",
+   "page": "MXEO202_5_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity super-content-button alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-961002460.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO202",
+   "page": "MXEO202_7_0.html",
+   "gold_num": "8D",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-1957478548.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO301",
+   "page": "MXEO301_1_0.html",
+   "gold_num": "1H",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1550299715.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO301",
+   "page": "MXEO301_2_0.html",
+   "gold_num": "2E",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1312199001.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO301",
+   "page": "MXEO301_4_0.html",
+   "gold_num": "4G",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2179146909.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO301",
+   "page": "MXEO301_5_1_0.html",
+   "gold_num": "5K",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1480331112.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO301",
+   "page": "MXEO301_6_0.html",
+   "gold_num": "6F",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1181247083.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO301",
+   "page": "MXEO301_7_0.html",
+   "gold_num": "7B",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/shutterstock_1986299942.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEO401",
+   "page": "MXEO401_1_0.html",
+   "gold_num": "1D",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-185960221.png",
+   "pos": "before",
+   "claude": [
+    "1D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEO401",
+   "page": "MXEO401_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-479492139.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEO401",
+   "page": "MXEO401_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-493858832.jpg",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEO401",
+   "page": "MXEO401_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1361395468.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEO401",
+   "page": "MXEO401_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1500219413.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEX201",
+   "page": "MXEX201_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-492809898.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEX202",
+   "page": "MXEX202_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1384931744.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEX202",
+   "page": "MXEX202_6_0.html",
+   "gold_num": "8B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1413199830.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXEX302",
+   "page": "MXEX302_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-175005911.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    2,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXEX302",
+   "page": "MXEX302_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-466335022.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEX302",
+   "page": "MXEX302_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1481856929.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEX302",
+   "page": "MXEX302_5_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2159775255.jpg",
+   "pos": "before",
+   "claude": [
+    "5B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEX302",
+   "page": "MXEX302_5_0.html",
+   "gold_num": "5E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1389344891.jpg",
+   "pos": "before",
+   "claude": [
+    "5E",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXEX302",
+   "page": "MXEX302_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 1,
+   "src": "images/[Click drop images].png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL102",
+   "page": "MXFL102_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/6A.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL102",
+   "page": "MXFL102_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/6B.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL102",
+   "page": "MXFL102_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/6C.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL102",
+   "page": "MXFL102_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/6D.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL102",
+   "page": "MXFL102_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/6E.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL103",
+   "page": "MXFL103_1_1.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Dusk.gif",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_3_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1486255707.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_3_0.html",
+   "gold_num": "3E",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/fraction wall.png",
+   "pos": "before",
+   "claude": [
+    "3E",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/427.png",
+   "pos": "before",
+   "claude": [
+    "6B",
+    "activity",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_6_0.html",
+   "gold_num": "6D",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Fractions wall.png",
+   "pos": "before",
+   "claude": [
+    "6D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_6_0.html",
+   "gold_num": "6E",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1400214486.jpg",
+   "pos": "before",
+   "claude": [
+    "6E",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_8_0.html",
+   "gold_num": "8B",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1384935092.jpg",
+   "pos": "before",
+   "claude": [
+    "8B",
+    "activity",
+    2,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_10_0.html",
+   "gold_num": "9C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1494311769.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_10_0.html",
+   "gold_num": "9E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-172259558.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_11_0.html",
+   "gold_num": "11A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1152558196.jpg",
+   "pos": "before",
+   "claude": [
+    "11A",
+    "activity",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL203",
+   "page": "MXFL203_11_0.html",
+   "gold_num": "11B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2065674519.jpg",
+   "pos": "before",
+   "claude": [
+    "11B",
+    "activity",
+    2,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL204",
+   "page": "MXFL204_1_0.html",
+   "gold_num": "1C",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-518426229.jpg",
+   "pos": "before",
+   "claude": [
+    "1C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL204",
+   "page": "MXFL204_2_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2176151243.jpg",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL204",
+   "page": "MXFL204_3_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 10,
+   "src": "images/iStock-1315026289.jpg",
+   "pos": "before",
+   "claude": [
+    "3D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL204",
+   "page": "MXFL204_3_1.html",
+   "gold_num": "4C",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1372111418.jpg",
+   "pos": "before",
+   "claude": [
+    "4C",
+    "activity",
+    2,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXFL204",
+   "page": "MXFL204_5_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-579257282.jpg",
+   "pos": "before",
+   "claude": [
+    "5B",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL204",
+   "page": "MXFL204_7_0.html",
+   "gold_num": "7C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1391263582.jpg",
+   "pos": "before",
+   "claude": [
+    "7C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL204",
+   "page": "MXFL204_8_0.html",
+   "gold_num": "8C",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2103654245.jpg",
+   "pos": "before",
+   "claude": [
+    "8C",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFL302",
+   "page": "MXFL302_3_0.html",
+   "gold_num": "3C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/image22.png",
+   "pos": "before",
+   "claude": [
+    "3C",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_1_0.html",
+   "gold_num": "1D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1490375140.jpg",
+   "pos": "before",
+   "claude": [
+    "1D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_3_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-456107851.jpg",
+   "pos": "before",
+   "claude": [
+    "3D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_3_0.html",
+   "gold_num": "3E",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 8,
+   "src": "images/iStock-1084208640-06.png",
+   "pos": "before",
+   "claude": [
+    "3E",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_3_0.html",
+   "gold_num": "3F",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1187076840.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_4_0.html",
+   "gold_num": "4C",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1084208640-06.png",
+   "pos": "before",
+   "claude": [
+    "4C",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_4_0.html",
+   "gold_num": "4F",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1084208640-04.png",
+   "pos": "before",
+   "claude": [
+    "4F",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_4_0.html",
+   "gold_num": "4G",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1783696912.jpg",
+   "pos": "before",
+   "claude": [
+    "4G",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_5_0.html",
+   "gold_num": "5D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-123339405.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_5_0.html",
+   "gold_num": "5H",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1498900010.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_6_0.html",
+   "gold_num": "6D",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-952700958.jpg",
+   "pos": "before",
+   "claude": [
+    "6D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_6_0.html",
+   "gold_num": "6E",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1445677694.jpg",
+   "pos": "before",
+   "claude": [
+    "6E",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_7_0.html",
+   "gold_num": "7D",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-595341764.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_8_0.html",
+   "gold_num": "8D",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1896426047.jpg",
+   "pos": "before",
+   "claude": [
+    "8D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_8_0.html",
+   "gold_num": "8F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-499199098.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_8_0.html",
+   "gold_num": "8H",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1456547836.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_9_0.html",
+   "gold_num": "9B",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2148221665.jpg",
+   "pos": "before",
+   "claude": [
+    "9B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_9_0.html",
+   "gold_num": "9C",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-1299358877.jpg",
+   "pos": "before",
+   "claude": [
+    "9C",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_9_0.html",
+   "gold_num": "9E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1178840144.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU201",
+   "page": "MXFU201_9_0.html",
+   "gold_num": "9F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-655644194.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-1188357748.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_1_0.html",
+   "gold_num": "1C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-1605826541.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_1_0.html",
+   "gold_num": "1E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/L1/iStock-1428253536.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L2/greater-lesser.png",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_2_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_2_0.html",
+   "gold_num": "2F",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L2/iStock-1403617423.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_4_0.html",
+   "gold_num": "4E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L4/iStock-1252548900.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_4_0.html",
+   "gold_num": "4H",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L4/iStock-1413770877.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_5_0.html",
+   "gold_num": "5F",
+   "gold_cls": "activity alertpadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L5/iStock-1731418450.jpg",
+   "pos": "before",
+   "claude": [
+    "5F",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_6_0.html",
+   "gold_num": "6A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L6/iStock-471507895.jpg",
+   "pos": "before",
+   "claude": [
+    "6A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_6_0.html",
+   "gold_num": "6E",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L6/iStock-2086975545.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_6_0.html",
+   "gold_num": "6G",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L6/iStock-509611490.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_7_0.html",
+   "gold_num": "7B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L7/iStock-1086566442.jpg",
+   "pos": "before",
+   "claude": [
+    "7B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_7_0.html",
+   "gold_num": "7C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L7/iStock-177437649.jpg",
+   "pos": "before",
+   "claude": [
+    "7C",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_8_0.html",
+   "gold_num": "8E",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/L8/iStock-1435517138.jpg",
+   "pos": "before",
+   "claude": [
+    "8E",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_8_0.html",
+   "gold_num": "8F",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L8/iStock-459964807.jpg",
+   "pos": "before",
+   "claude": [
+    "8F",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_9_0.html",
+   "gold_num": "9C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L9/iStock-1909728127.jpg",
+   "pos": "before",
+   "claude": [
+    "9C",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_9_0.html",
+   "gold_num": "9D",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 45,
+   "src": "images/L9/iStock-171577953.jpg",
+   "pos": "before",
+   "claude": [
+    "9D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU202",
+   "page": "MXFU202_9_0.html",
+   "gold_num": "9F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L9/iStock-1435522441.jpg",
+   "pos": "before",
+   "claude": [
+    "9F",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU401",
+   "page": "MXFU401_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2148145546.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    2,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXFU401",
+   "page": "MXFU401_2_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2135115669.jpg",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity",
+    2,
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXFU401",
+   "page": "MXFU401_2_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-501364397.jpg",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity",
+    2,
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXFU401",
+   "page": "MXFU401_2_0.html",
+   "gold_num": "2F",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-96419299.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "MXFU401",
+   "page": "MXFU401_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-623590506.jpg",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity",
+    2,
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXFU401",
+   "page": "MXFU401_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2162646041.jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity",
+    2,
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "MXFU402",
+   "page": "MXFU402_4_0.html",
+   "gold_num": "4C",
+   "gold_cls": "activity ",
+   "gold_imgs_inside": 0,
+   "src": "images/Lesson 4/iStock-858619528.jpg",
+   "pos": "before",
+   "claude": [
+    "4C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "MXFU402",
+   "page": "MXFU402_7_0.html",
+   "gold_num": "7B",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/Lesson 7/iStock-2156101419.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "OSBY101",
+   "page": "OSBY101_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1196951261.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "OSBY101",
+   "page": "OSBY101_2_0.html",
+   "gold_num": null,
+   "gold_cls": "(no activity in row)",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1408884616.jpg",
+   "pos": "none",
+   "claude": null
+  },
+  {
+   "code": "OSBY101",
+   "page": "OSBY101_3_0.html",
+   "gold_num": null,
+   "gold_cls": "(no activity in row)",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-673874228.jpg",
+   "pos": "none",
+   "claude": null
+  },
+  {
+   "code": "PES1003",
+   "page": "PES1003_3_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/p50-frozen-water.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "PES1007",
+   "page": "PES1007_4_0.html",
+   "gold_num": null,
+   "gold_cls": "(no activity in row)",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-690896398.jpg",
+   "pos": "none",
+   "claude": null
+  },
+  {
+   "code": "PES1007",
+   "page": "PES1007_9_0.html",
+   "gold_num": "8A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/p50-frozen-water.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "PES1008",
+   "page": "PES1008_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-173003187.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "PES1008",
+   "page": "PES1008_3_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Physics_18.jpg",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "PES1008",
+   "page": "PES1008_5_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1791690530.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "PHE1001",
+   "page": "PHE1001_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/shutterstock_2200127803.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "PHE1003",
+   "page": "PHE1003_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Kotahitanga-look-sound-feel.png",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "PHE1003",
+   "page": "PHE1003_4_0.html",
+   "gold_num": "3C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1420057741.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "PHE1006",
+   "page": "PHE1006_5_0.html",
+   "gold_num": "5B",
+   "gold_cls": "activity dropbox paddingAlert",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1473382714.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "PHE1007",
+   "page": "PHE1007_3_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Lesson 3/GettyImages-1331714671.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "SSCI205",
+   "page": "SSCI205_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/time travel passport.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSCI205",
+   "page": "SSCI205_5_0.html",
+   "gold_num": "5E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/postcard.png",
+   "pos": "before",
+   "claude": [
+    "5E",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN02",
+   "page": "SSFUN02_0_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/story-pdf.jpg",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN02",
+   "page": "SSFUN02_0_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-154954937.jpg",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN02",
+   "page": "SSFUN02_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2169449761.jpg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN02",
+   "page": "SSFUN02_0_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Breakfast_for_lunch_in_the_Boon_Trunk_Elephant_Snack_Box_(8480757848).jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN02",
+   "page": "SSFUN02_0_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1131749859.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "SSFUN03",
+   "page": "SSFUN03_0_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1413376936.jpg",
+   "pos": "before",
+   "claude": [
+    "2B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN03",
+   "page": "SSFUN03_0_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 1,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "2D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN03",
+   "page": "SSFUN03_0_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Figure 1.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN05",
+   "page": "SSFUN05_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 2,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    4,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN05",
+   "page": "SSFUN05_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 2,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    4,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN05",
+   "page": "SSFUN05_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 2,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    4,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN05",
+   "page": "SSFUN05_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 2,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    4,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN05",
+   "page": "SSFUN05_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 2,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    4,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN05",
+   "page": "SSFUN05_0_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 2,
+   "src": "",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    4,
+    false,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN06",
+   "page": "SSFUN06_0_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/Malala_Yousafzai.jpg",
+   "pos": "before",
+   "claude": [
+    "4A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSFUN07",
+   "page": "SSFUN07_3_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-825103816.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "SSFUN08",
+   "page": "SSFUN08_0_0.html",
+   "gold_num": "2B",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-510952329.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "SSFUN08",
+   "page": "SSFUN08_0_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1411928177.jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSOG101",
+   "page": "SSOG101_3_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1145836766.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSOG101",
+   "page": "SSOG101_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1171408085.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "SSOG101",
+   "page": "SSOG101_6_0.html",
+   "gold_num": "6B",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/59c04801-dd7f-4756-95b1-6a218781208c.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "SSOG101",
+   "page": "SSOG101_7_0.html",
+   "gold_num": "7A",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1171407274.jpg",
+   "pos": "before",
+   "claude": [
+    "7A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSOG103",
+   "page": "SSOG103_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/postman journal icon.svg",
+   "pos": "before",
+   "claude": [
+    "1A",
+    "activity",
+    2,
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSOG103",
+   "page": "SSOG103_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 2,
+   "src": "images/postman journal icon.svg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "SSOG103",
+   "page": "SSOG103_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-1391746253.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    4,
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSOG103",
+   "page": "SSOG103_3_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 2,
+   "src": "images/iStock-1213076658.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity",
+    6,
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "code": "SSOG301",
+   "page": "SSOG301_1_0.html",
+   "gold_num": "1A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1133537960.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TEFUN01",
+   "page": "TEFUN01_0_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "https://tekuradev.desire2learn.com/content/enforced/7801-PrimOnline/1-10 Technology/TEFUN01/images/iStock-1089291530.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "TEFUN05",
+   "page": "TEFUN05_0_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity alertPadding interactive",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-141242964-vert.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "TEFUN05",
+   "page": "TEFUN05_0_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-169946485.jpg",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "TEFUN06",
+   "page": "TEFUN06_0_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-140443078.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "TRR102",
+   "page": "TRR102_1_0.html",
+   "gold_num": "1C",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 7,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR102",
+   "page": "TRR102_3_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR102",
+   "page": "TRR102_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR102",
+   "page": "TRR102_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/elephant-and-mouse.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR102",
+   "page": "TRR102_5_0.html",
+   "gold_num": "5C",
+   "gold_cls": "activity dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR106",
+   "page": "TRR106_2_0.html",
+   "gold_num": "2.2",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/boy-in-rain.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR106",
+   "page": "TRR106_2_0.html",
+   "gold_num": "2.4",
+   "gold_cls": "activity",
+   "gold_imgs_inside": 0,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR111",
+   "page": "TRR111_1_0.html",
+   "gold_num": "1.3",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR111",
+   "page": "TRR111_2_0.html",
+   "gold_num": "2.4",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "TRR111",
+   "page": "TRR111_4_0.html",
+   "gold_num": "4.5",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/Kiwi Tohatoha.png",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XDLS912",
+   "page": "XDLS912_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-2177048540.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XDLS912",
+   "page": "XDLS912_1_0.html",
+   "gold_num": "1C",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/L1/iStock-1126025369.jpg",
+   "pos": "before",
+   "claude": [
+    "1C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XDLS912",
+   "page": "XDLS912_2_0.html",
+   "gold_num": "2A",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 3,
+   "src": "images/L2/iStock-1387268099.jpg",
+   "pos": "before",
+   "claude": [
+    "2A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XDLS912",
+   "page": "XDLS912_3_0.html",
+   "gold_num": "3C",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L3/iStock-1278082136.svg",
+   "pos": "before",
+   "claude": [
+    "3C",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XDLS912",
+   "page": "XDLS912_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 7,
+   "src": "images/L4/iStock-471441475.jpg",
+   "pos": "before",
+   "claude": [
+    "4B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XDLS912",
+   "page": "XDLS912_4_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 9,
+   "src": "images/L4/iStock-2149680097.jpg",
+   "pos": "before",
+   "claude": [
+    "4D",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XGF9001",
+   "page": "XGF9001_5_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2022778487.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity interactive",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_2_0.html",
+   "gold_num": "2D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_3_0.html",
+   "gold_num": "3D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_4_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_5_0.html",
+   "gold_num": "5D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_6_0.html",
+   "gold_num": "6D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_7_0.html",
+   "gold_num": "7D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XGF9002",
+   "page": "XGF9002_8_0.html",
+   "gold_num": "8D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2158754166.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XLP04",
+   "page": "XLP04_3_0.html",
+   "gold_num": "3E",
+   "gold_cls": "activity ",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1314930776.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XLP04",
+   "page": "XLP04_4_0.html",
+   "gold_num": "4A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2146718890.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XLP04",
+   "page": "XLP04_4_0.html",
+   "gold_num": "4B",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-679688908.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XLP04",
+   "page": "XLP04_4_0.html",
+   "gold_num": "4C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1061792074.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XLP04",
+   "page": "XLP04_4_0.html",
+   "gold_num": "4D",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-1176814054.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XLP04",
+   "page": "XLP04_4_0.html",
+   "gold_num": "4E",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2161953284.jpg",
+   "pos": "before",
+   "claude": null
+  },
+  {
+   "code": "XMES101",
+   "page": "XMES101_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 3,
+   "src": "images/L5/iStock-1130475702.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XMES101",
+   "page": "XMES101_6_0.html",
+   "gold_num": "6C",
+   "gold_cls": "activity alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/L6/iStock-614875802.jpg",
+   "pos": "before",
+   "claude": [
+    "6C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XMES201",
+   "page": "XMES201_2_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity interactive alertPadding",
+   "gold_imgs_inside": 1,
+   "src": "images/iStock-2186781388.jpg",
+   "pos": "before",
+   "claude": [
+    "2C",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XMES201",
+   "page": "XMES201_5_0.html",
+   "gold_num": "5A",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2002616424.jpg",
+   "pos": "before",
+   "claude": [
+    "5A",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XTAS101",
+   "page": "XTAS101_3_0.html",
+   "gold_num": "3B",
+   "gold_cls": "activity alertPadding dropbox",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-2173090359.jpg",
+   "pos": "before",
+   "claude": [
+    "3B",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XTAS102",
+   "page": "XTAS102_1_0.html",
+   "gold_num": "1B",
+   "gold_cls": "activity interactive alertPadding dropbox",
+   "gold_imgs_inside": 6,
+   "src": "images/iStock-2160275016.jpg",
+   "pos": "before",
+   "claude": [
+    "1B",
+    "activity",
+    0,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XTAS102",
+   "page": "XTAS102_3_0.html",
+   "gold_num": "3A",
+   "gold_cls": "activity interactive dropbox",
+   "gold_imgs_inside": 7,
+   "src": "images/iStock-2196800456.jpg",
+   "pos": "before",
+   "claude": [
+    "3A",
+    "activity dropbox interactive",
+    0,
+    true,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XTAS103",
+   "page": "XTAS103_1_0.html",
+   "gold_num": "1C",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 4,
+   "src": "images/iStock-182909733.jpg",
+   "pos": "before",
+   "claude": [
+    "1C",
+    "activity",
+    2,
+    false,
+    false,
+    false
+   ]
+  },
+  {
+   "code": "XTAS103",
+   "page": "XTAS103_2_0.html",
+   "gold_num": "2C",
+   "gold_cls": "activity dropbox alertPadding",
+   "gold_imgs_inside": 0,
+   "src": "images/iStock-144871646.jpg",
+   "pos": "before",
+   "claude": [
+    "2C",
+    "activity dropbox",
+    0,
+    true,
+    false,
+    false
+   ]
+  }
+ ],
+ "claude_img_boxes": {
+  "Standard": {
+   "plain | img-elsewhere | gold no sidebar": 233,
+   "plain | last-is-img | gold no sidebar": 62,
+   "dropbox | img-elsewhere | gold no sidebar": 12,
+   "plain | img-elsewhere | gold SIDEBAR": 31,
+   "plain | last-is-img | gold SIDEBAR": 13,
+   "dropbox | img-elsewhere | gold SIDEBAR": 2,
+   "interactive | img-elsewhere | gold no sidebar": 5,
+   "interactive | img-elsewhere | gold SIDEBAR": 2,
+   "interactive | last-is-img | gold no sidebar": 1
+  },
+  "Fundamentals": {
+   "plain | img-elsewhere | gold no sidebar": 21,
+   "plain | img-elsewhere | gold SIDEBAR": 4,
+   "plain | last-is-img | gold no sidebar": 12,
+   "dropbox | img-elsewhere | gold no sidebar": 1,
+   "plain | last-is-img | gold SIDEBAR": 1
+  },
+  "Inquiry": {
+   "plain | img-elsewhere | gold no sidebar": 79,
+   "interactive | img-elsewhere | gold no sidebar": 2,
+   "plain | last-is-img | gold no sidebar": 10,
+   "plain | img-elsewhere | gold SIDEBAR": 13,
+   "dropbox | img-elsewhere | gold SIDEBAR": 1,
+   "dropbox | img-elsewhere | gold no sidebar": 3
+  },
+  "Bilingual": {
+   "interactive | last-is-img | gold no sidebar": 14,
+   "interactive | img-elsewhere | gold no sidebar": 30
+  }
+ }
+}

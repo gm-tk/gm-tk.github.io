@@ -573,13 +573,42 @@ class BilingualBuilder {
 		// grouped col-md-8 column with no box at all, matching how the human build
 		// leaves a meaningful share of lesson sections un-boxed.
 		let body = "";
+		// ROUND 331 (KB 07B / 05B): inside the section BOX a writer [H2] heading renders at the
+		// KB's activity level h3 — the round-55 re-leveller never reaches an activity-anchored
+		// heading, so the box kept the writer's h2. Data section_grouping.boxed_heading_level.
+		const boxedInner = hasWidget ? this.boxedHeadingRelevel(innerHtml, run) : innerHtml;
 		if (inner.length) body = hasWidget
-			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="activity interactive"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${innerHtml}\n</div>\n</div>\n</div>\n</div>\n</div>`
+			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="activity interactive"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${boxedInner}\n</div>\n</div>\n</div>\n</div>\n</div>`
 			: `<div class="row">\n<div class="col-md-8 col-12">\n${innerHtml}\n</div>\n</div>`;
 		// A [H2] Lesson N opener prepends its bare-col <h2> title BEFORE the box (or
 		// bare body) that was just built.
 		const html = titleHtml ? (body ? `${titleHtml}\n${body}` : titleHtml) : body;
 		return { html, next: j };
+	};
+
+	/**
+	 * ROUND 331 (KB 07B / 05B) — re-levels the writer's `<h{from} reo|eng>` headings inside a
+	 * bilingual SECTION BOX to the KB's activity heading level (h3), leaving every other level
+	 * alone (the gold keeps the writer's `[H3]` at h3). Off (data `enabled:false`, env
+	 * REOBOXH_OFF) or an excluded module prefix (the PNR dialect keeps its own gold's h2) →
+	 * the HTML is returned untouched.
+	 *
+	 * @param {string} html - the box's gathered inner HTML
+	 * @param {ConversionRun} run - the current run (its moduleCode drives the exclusion)
+	 * @returns {string} the inner HTML with the box headings re-levelled
+	 */
+	static boxedHeadingRelevel(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.dual_language?.section_grouping?.boxed_heading_level;
+		if (!cfg || cfg.enabled === false) return html;
+		const env = cfg.env || "REOBOXH_OFF";
+		if (typeof process !== "undefined" && process.env && process.env[env]) return html;
+		const code = String(run?.moduleCode || "").toUpperCase();
+		if ((cfg.exclude_code_prefixes || []).some((p) => code.startsWith(String(p).toUpperCase()))) return html;
+		const from = Number(cfg.from_level || 2), to = Number(cfg.to_level || 3);
+		if (!(from >= 1 && from <= 6 && to >= 1 && to <= 6) || from === to) return html;
+		// every h{from} open/close tag in the box (attributed reo/eng or plain) — open and close must move together
+		const re = new RegExp("<(/?)h" + from + "( +(?:reo|eng)(?=[ >])[^>]*|)>", "g");
+		return html.replace(re, (m, slash, attrs) => "<" + slash + "h" + to + attrs + ">");
 	};
 
 	/**

@@ -22,7 +22,7 @@ from Chris' and never re-ask them … commit after every round, never push." Hea
 (nothing uncommitted — nothing to reconcile), no stale index.lock. **Plateau counter:** the session-4 stop was the plateau rule's "needs a human
 decision"; Chris's explicit "continue" IS that decision (the same reading sessions 2 and 4 used), so the three-round window restarts at this
 session's first shipped round. stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5 stay open (not re-asked); the loop
-works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts) · SHIPPED ≈16:45.**
+works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp) · SHIPPED ≈17:10.**
 
 ## >>> STOPPED 2026-09-15 ≈15:45 NZST (session 4) on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r327 0.000pp, r328 0.000pp, r329 +0.004pp <<<
 **Session 4 shipped four rounds (r326 → r329; commits 955c0c8 · bdb33a1 · 2d478e4 · 6e25190) in ≈2h15m of the 10-hour budget (13:27 → 15:42).** Everything is committed; nothing is uncommitted; nothing was pushed.
@@ -142,6 +142,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 4 Round 3 (engine r328 — a submission button keeps its full 'Go to' label, KB constraint 55's label half): SHIPPED 2026-09-15 ≈15:25 (session 4). AppVersion 260618.99, CLAUDE.md §9/§11/§14, KB status row 55 → the label half CAPTURED, scoped ship #2 since the r326 full. Gate-neutral.
 - Session 4 Round 4 (engine r329 — `[trigger engagement]` is a marker, not a button, KB constraint 43): SHIPPED 2026-09-15 ≈15:45 (session 4). AppVersion 260619.00, CLAUDE.md §9/§11/§14, scoped ship #3 since the r326 full. **THE LOOP STOPPED after it (plateau rule: r327 0.000 / r328 0.000 / r329 +0.004).**
 - Session 5 Round 1 (engine r330 — the bilingual section id is the activity number, not a heading, KB 07B): SHIPPED 2026-09-15 ≈16:40 (session 5). AppVersion 260619.01, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #4 since the r326 full. Skeleton +0.040pp — the plateau window restarts.
+- Session 5 Round 2 (engine r331 — a bilingual section box's headings render at the KB's activity level h3, KB 07B): SHIPPED 2026-09-15 ≈17:10 (session 5). AppVersion 260619.02, CLAUDE.md §9/§11/§14, scoped ship #5 since the r326 full. Skeleton +0.022pp.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -565,6 +566,48 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 5 · Round 2 (engine r331) — what shipped (a bilingual section box's headings render at the KB's activity level)
+- **Fix:** `elements.dual_language.section_grouping.boxed_heading_level` {enabled, env REOBOXH_OFF, from_level 2, to_level 3, exclude_code_prefixes
+  [PNR]}: `BilingualBuilder.boxedHeadingRelevel` moves every `<h2>` open/close pair inside a BOXED section's inner HTML to h3; un-boxed sections
+  and h1 / h3+ untouched; PNR excluded (its own gold keeps h2).
+- **Regeneration:** scoped — the in-memory probe over the whole Bilingual family (19 modules / 63 pages) named 21 pages / 5 modules (TRR109/111/
+  112/113 + TRR301's 2 lines); OFF = disk 63/63; every diff line = 157 `<h2 reo|eng>` → `<h3>`; regenerated; 0 truly stale; manifest diff =
+  exactly the 21; ON = disk 63/63.
+- **Gates:** skeleton 50.536 → 50.558 (+0.022pp; 21 moved, 18 up / 3 down — dips NAMED TRR113_0_0 −6.25, TRR109_3_0 −4.38, TRR112_0_0 −2.61 =
+  the scorer's alignment artefact, position-free overlap RISING on each; TRR111_2_0's r330 dip reversed exactly); ≥50 1033 → 1034; every
+  other gate line-for-line EXACT with r330; 13 selftests GREEN. **55.2% of achievable.**
+- **Verifier:** the in-box census after → TRR in-box h2 0 (h3 209). **Plateau window: r330 +0.040 · r331 +0.022.**
+
+## Session 5 · Round 2 PICK (engine r331) — written before any code, 2026-09-15 16:50 NZST
+- **How the PICK was made:** a new corpus-wide instrument, `outputs/_measure_r331_skelgaps.py` (the PRIMARY gate's own difflib opcodes tallied —
+  which skeleton lines are most often MISSING in Claude / EXTRA vs the gold, per template folder; `_r331_skelgaps.json`). Its large signals were
+  each KB-checked: the gold's `iframe.embed-responsive-item` (448 pages) and `videoSection.icon` (519) — the KB's canonical embed (05A COMP_13) is
+  the plain `videoSection ratio ratio-16x9` + bare `iframe` that Claude already ships, and the KB is silent on `icon` (r200's Chris-approved
+  registry) → not classes; the table class `table-bordered` (518 pages) → a KB-internal conflict (05D vs 06 §6) + a Standard gold TIE 0.51 →
+  recorded under Blocked (needs Chris); the activity image SIDEBAR `alertImage` (388 gold sidebars, Claude 0) → measured and DECLINED (56% of the
+  sidebar images are absent from the writer's document; the derivable signal predicts at 0.13); `[engagement quiz button]`'s form → 28 pages
+  in total, the real-button subset ~12 (under the floor). What remains derivable and KB-backed at the floor is in the r330 area:
+- **Class:** inside a bilingual (TRR-dialect) SECTION BOX, a writer `[H2]` heading renders at **h3** — the KB 07B activity structure's heading
+  level (`<h3 reo>…</h3><h3 eng>…</h3>` as the box's children) — not at the writer's h2. Claude keeps h2 inside the box because the round-55
+  re-leveller excludes activity-anchored headings from its pool (correct for the Standard template's `[Activity]` boxes, where the writer's
+  `[H3]` is the title), while the bilingual keystone box is opened on `[H1] N.M` with the writer's `[H2]` section title inside it.
+- **MEASURED (inline census over the Bilingual family, gold vs Claude, reo/eng headings INSIDE an activity box):** gold h3 348 / h2 42 / h4 …
+  (0.89 h3 on the 8 writer-id modules; the box's FIRST heading h3 117 : h2 21 = 0.85); per module TRR109/110/111/112/113 in-box h2 = 0 in the gold;
+  the label-form family (TRR102/108/114/203/301) gold in-box h3/h4 only and Claude already h3 there. **The 42 gold h2 are the PNR family**
+  (PNR101 12 / PNR102 12 / PNR104 14 — the newer "Te Aka Taumatua" MTK template whose section title is a `[H1] Lesson Title:` row the gold keeps
+  at h2, 0.72; 07B does not describe that dialect → its own gold governs, §1b level 3) → **PNR excluded by data**. Claude today: in-box h2 211
+  (TRR109/111/112/113 ≈ 155 + PNR 56) / h3 24. Skeleton-visible on every boxed TRR page (≈ 20 pages / 4 modules) — the h2 lines become the
+  gold's h3 lines.
+- **Authority (§1b):** 1 = the KB (07B "Activity Structure": the activity's headings are `<h3>`; 05B activities `<h3>` title); 3 = the TRR gold
+  (0.9+). Class B-ii (an output convention).
+- **Triangulated:** TRR111 lesson 1 §1.2 (WT `| [H2] The sound: ia | [H2] Te oro: ia |` inside the boxed section → gold `<h3 reo>Te oro: ia</h3>
+  <h3 eng>The sound: ia</h3>` inside `number="1.2"` → Claude `<h2 reo>Te oro: ia</h2><h2 eng>The sound: ia</h2>`); TRR109 lesson 2 (gold in-box
+  `<h3>` ×N, Claude `<h2>`); TRR112 lesson 1 §1.3 (gold `<h3 reo>Te oro: oa</h3>` inside `number="1C"` → Claude `<h2>`).
+- **Fix (planned):** data `section_grouping.boxed_heading_level` {enabled, env REOBOXH_OFF, from_level 2, to_level 3, exclude_code_prefixes
+  ["PNR"]}: in `bilingualSection`, when the section is boxed, every `<h2 reo|eng>` / `</h2>` in the gathered inner HTML is re-levelled to h3
+  (h1 / h3+ untouched — the gold keeps the writer's `[H3]` at h3). Scoped regeneration of the Bilingual family (the in-memory probe names the set).
+- **Gate expectation:** skeleton ≥ hold (h2→h3 lines on ~20 boxed pages; est. +0.01–0.03pp); every other gate EXACT. **Plateau window: r330 +0.040.**
+
 ## Session 5 · Round 1 (engine r330) — what shipped (the bilingual section id is the activity number, not a heading)
 - **Fix:** `elements.dual_language.section_grouping.section_id_number` {enabled, env REOSECID_OFF, strip_heading, number_from_section, id_pattern}
   in `BilingualBuilder`: the interleave strip drops a rendered heading whose whole text is a bare `N.M`; a `[H1] N.M`-opened boxed section with no
@@ -803,6 +846,9 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   invoked for a 21-page dip. Re-open (a) as part of a later heading round once the TRR title-source class lands, or if Chris says the KB's
   universal wording should be applied regardless of the gold (then: strip + drop the opening duplicate on lesson pages, strip-only on the overview).
 
+- **The activity image SIDEBAR (`col-md-4 offset-md-0 > div.alertImage`, KB 05B / 02B) — DECLINED 2026-09-15 (session 5, Round 2 PICK; `outputs/_measure_r331_alertimage.py` + `_r331_alertimage_pos.py` → `_r331_alertimage.json`).** The gold ships 388 sidebars on the paired pages (Standard 281 / Inquiry 61 / Fundamentals 36 / Bilingual 10), Claude 0 — but **216 of the 388 (56%) use an image that is absent from the writer's document** (the designer's own beautification asset — class C), 36 sit in cv2 hand-off dumps (widget builds), 49 have no same-numbered Claude box; of the derivable remainder the only WT signal — the writer's image inside the activity — predicts a sidebar at **0.13** (48 of 361 Claude boxes holding an image; "last member before the button" 0.17; "image-only row right after the box" 5:11) — below the r182 solidify floor in every template. The KB defines the sidebar's FORM (05B), not a writer-side trigger. Never re-attempt without a new discriminator.
+- **The KB's default table class `table table-bordered` (05D) — NOT PICKED 2026-09-15 (session 5, Round 2 PICK; measured inline).** Claude ships bare `table.table` on 1,063 tables / 518 pages. The gold is a genuine TIE in Standard (bordered 0.51 of 1,432 tables; 104 modules all-bordered / 51 none / 78 mixed), ≥ 0.60 in Inquiry 0.72 / Fundamentals 0.69 / Bilingual 0.86; `tableFixed` does NOT follow the KB's 2-column guidance (2-col tables 0.19; it tracks 4+ columns). The KB's own two documents disagree (05D `table table-bordered` default vs 06 §6 Refresh baseline `table noHover tableFixed`). A `table-bordered` default would be a KB-over-gold override costing ≈ −133 matched table lines in Standard for +74 in Inquiry / Fundamentals — needs Chris to settle 05D vs 06 (see Blocked classes). Not attempted.
+
 ## Blocked classes
 - **stickyNav `<head>` include (KB queue rank 10; 14A/14B/14D) — BLOCKED 2026-09-15, needs Chris.** Measured (`outputs/_measure_r323_stickynav.py` →
   `_r323_stickynav.json`): the gold carries `<script src="js/stickyNav.js" type="text/javascript" class="stickyNav"></script>` right after `<title>` on
@@ -816,6 +862,8 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   P1–4, CED Phase 5, HPE — ≈ 33 modules, include + the KB's To Do note) and keep the ban everywhere else (the MX/ENG/HIS… copies are exactly the
   "templating error copied across modules" the philosophy names). Decision needed: (a) KB families only, (b) every ≥ 0.60 series, (c) keep the ban.
 
+
+- **KB table form — 05D vs 06 §6 (a KB-internal conflict) — needs Chris, 2026-09-15 (session 5).** 05D (the component doc) says the general default is `<div class="table-responsive"><table class="table table-bordered">` with `tableFixed` for two-column comparison tables; 06 §6 (the Refresh element reference) shows `<table class="table noHover tableFixed">`. The gold: Standard `table-bordered` 0.51 (a tie), Inquiry 0.72, Fundamentals 0.69, Bilingual 0.86; `noHover` 0.09; `tableFixed` 0.30 and tied to column count (4+ cols 0.51, 2 cols 0.19), not to the KB's comparison-table guidance. Claude ships bare `table.table` (KB-correct wrapper `table-responsive` + `th` headers already). Decision needed: (a) apply 05D's `table table-bordered` default corpus-wide (a named override, skeleton ≈ −0.01pp in Standard / + in Inquiry & Fundamentals), (b) apply it only where the gold family agrees ≥ 0.60 (Inquiry / Fundamentals / Bilingual — a `Template_Modes.json`-style flag), (c) leave `table` bare. Recommendation: (b) — the KB rule where the gold confirms it, the tie left alone until the KB reconciles 05D with 06.
 
 ## Round log
 - r0 · the ceiling instrument · shipped (tool + measurement, no converter change) · ceiling 91.6%, SCAFFOLD 49.941% = 54.5% of achievable · pages moved 0 · commit ca59d13
@@ -837,5 +885,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s4-r3 (engine r328) · a submission button keeps its full 'Go to' label (KB constraint 55's label half: bare `Quiz` / `Portfolio` / `Dropbox` → `Go to quiz` / `Go to portfolio` / `Go to dropbox`, `Upload to Dropbox` in BLL / LS / HPE) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 40 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · bare-noun labels 84→0 · 55.1% of achievable · commit (see git log)
 - s4-r4 (engine r329) · `[trigger engagement]` is a marker, not a button (KB constraint 43: the dropbox-trigger condition; the phantom `button engagementTrigger` journal button no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 60 pages / 42 modules · scaffold 50.492→50.496 (+0.004; 57 up / 3 down, dips named), every other gate EXACT · phantoms 99→28 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r327 0.000, r328 0.000, r329 +0.004)**
 - s5-r1 (engine r330) · the bilingual section id is the activity number, not a heading (KB 07B: the writer's bare `[H1] N.M` → `number="N.M"` on the boxed section, decimal preferred; the phantom `<h3>1.1</h3>` pair no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 25 pages / 7 modules · scaffold 50.496→50.536 (+0.040; 17 up / 4 down, dips named), ≥50 +3, every other gate EXACT · phantoms 234→0, unnumbered boxes 72→0 · 55.2% of achievable · commit (see git log)
+- s5-r2 (engine r331) · a bilingual section box's headings render at the KB's activity level (KB 07B: the writer's `[H2]` inside a TRR section box → h3; PNR excluded by data) · SHIPPED 2026-09-15 · scoped regeneration, 21 pages / 5 modules · scaffold 50.536→50.558 (+0.022; 18 up / 3 down, dips named), ≥50 +1, every other gate EXACT · TRR in-box h2 155→0 · alertImage sidebar DECLINED, table-class KB conflict → needs Chris · 55.2% of achievable · commit (see git log)
 
 **Next session starts with:** Chris's decisions (stickyNav / decision 5 interactives / decision 4 title-pair order / decision 1 c47) — see the session-4 STOP banner at the top; without one, the Bilingual `number="N.M"` section-id boxes (KB 07B, 25 pages, est. +0.01pp) are the next PICK and the plateau rule will stop the loop again after it.

@@ -1638,7 +1638,11 @@ class Config {
 	// <h3 reo>1.1</h3><h3 eng>1.1</h3> pair no longer ships (234 -> 0) and the boxed section carries the
 	// writer's own id as number= (72 boxes; 25 pages / 7 modules, scoped). Env REOSECID_OFF; data
 	// elements.dual_language.section_grouping.section_id_number. Skeleton +0.040pp, >=50% +3.
-	static AppVersion = "260619.01";
+	// ROUND 331 (2026-09-15, build 260619.02): a bilingual section box's [H2] heading renders at the KB's
+	// activity level h3 (07B "Activity Structure"), not the writer's h2 — 157 headings on 21 pages / 5 TRR
+	// modules, scoped; the PNR dialect keeps its own gold's h2 (data-excluded). Env REOBOXH_OFF; data
+	// elements.dual_language.section_grouping.boxed_heading_level. Skeleton +0.022pp, >=50% +1.
+	static AppVersion = "260619.02";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

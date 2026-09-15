@@ -146,6 +146,14 @@
 					"strip_heading": true,
 					"number_from_section": true,
 					"id_pattern": "^\\s*(\\d{1,2}\\.\\d{1,2})\\s*[:.]?\\s*$"
+				},
+				"boxed_heading_level": {
+					"_doc": "ROUND 331 (the autonomous loop's session-5 Round 2, 2026-09-15 — KB 07B_MTK_CONTENT_PATTERNS 'Activity Structure' + 05B activities). Inside a bilingual SECTION BOX the writer's `[H2]` heading renders at the KB's activity level h3 (`<h3 reo>…</h3><h3 eng>…</h3>`), not at the writer's h2: the round-55 re-leveller excludes activity-anchored headings from its pool (right for the Standard template, whose `[Activity]` box title is the writer's `[H3]`), but the bilingual keystone box opens on `[H1] N.M` with the writer's `[H2]` section title INSIDE it, so Claude shipped h2 there. Measured over the Bilingual family (reo/eng headings inside an activity box): gold h3 348 / h2 42 on the 8 writer-id modules (0.89; the box's first heading h3 117 : h2 21), the TRR modules 0 in-box h2; the label-form family (TRR102/108/114/203/301) gold h3/h4 only and Claude already h3. The 42 gold h2 are the PNR family (PNR101/102/104 — the newer 'Te Aka Taumatua' MTK template whose `[H1] Lesson Title:` section row the gold keeps at h2, 0.72; 07B does not describe that dialect, so its own gold governs) → `exclude_code_prefixes`. Claude before: in-box h2 211 / h3 24. Mechanism: `BilingualBuilder.bilingualSection`, when the section is boxed, re-levels every `<h{from_level} reo|eng>` open/close tag in the gathered inner HTML to `to_level`; h1 and h3+ untouched (the gold keeps the writer's `[H3]` at h3). Env REOBOXH_OFF reverts byte-for-byte.",
+					"enabled": true,
+					"env": "REOBOXH_OFF",
+					"from_level": 2,
+					"to_level": 3,
+					"exclude_code_prefixes": ["PNR"]
 				}
 			},
 			"page_split": {
