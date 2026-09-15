@@ -1,5 +1,40 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-15 (round 335, build 260619.06) — THE `[Engagement quiz button]` IS THE KB'S EXTERNAL QUIZ LINK BUTTON (KB 01F `engagement_quiz_button` + constraint 65 / CL-0038; the autonomous loop's session-5 Round 6, BUILT + probe-proven there and SHIPPED OFF at Chris's stop, flipped ON and FINALISED in session 6; **SCOPED regeneration of the 28 affected modules; skeleton +0.018pp, every other gate EXACT; scoped ship #1 since the round-334 full-ship backstop**)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**The writer's `[Engagement quiz button] <sharepoint quiz doc URL>` shipped `<div class="button engagementTrigger">…</div>` — a bare div carrying a class the gold has on 0 of 2,385 pages, no anchor, and a label that fell to the journal default (`Go to your journal` on 13 of 28) or to the quiz DOCUMENT'S FILENAME; it now ships the KB's external quiz link button `<a href="#" target="_blank"><div class="button">Go to quiz</div></a>` with ONE Designer/Developer To Do note carrying the writer's link, which is what the gold ships at every paired site (30/30).**
+
+### 2. THE EVIDENCE (docx → human → Claude)
+
+- **OSAI301 lesson 3** — WT `[Engagement quiz button] https://mytekuraschool.sharepoint.com/…` → gold `<a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&type=quiz&rcode=TCS_Dev-74927" target="_blank"><div class="button">Go to quiz</div></a>` → Claude before: `<div class="button engagementTrigger">Go to your journal</div>` (the sharepoint link lost); after: the anchored `Go to quiz` button + the To Do note quoting the writer's link.
+- **OSGM301** — the same shape; **OSSC301 / OSAH501** — the label had fallen to the quiz document's filename (`Online Safety Scams OSSC301 Quiz - Copy`, `Writers Template -OSAH501 …docx`); after: `Go to quiz`, the filename preserved in the note.
+- **The KB:** 01F `engagement_quiz_button` → "External quiz link button" (the `button` form); constraint 65 / CL-0038 (round 232) fixed the quiz button's label `Go to quiz` and its blank publish-time href — the gold's D2L `rcode` is publish-time wiring (the r232 / CL-0044 class), never in a Writers Template.
+
+### 3. THE MEASUREMENT (session 5, `outputs/_r335_probe.cjs` in four shards — `_r335_probe_off_0*.log` / `_r335_probe_on_0*.log`; `_r335_carriers.txt`)
+
+- The tag lives in the OS family + ARFUN01/02 + HPFUN401: **28 pages / 28 modules, 28 buttons**. The gold ships `engagementTrigger` on **0** of 2,385 pages and the anchored `Go to quiz` form at every paired site: **25 in the OS golds, ARFUN01 4, HPFUN401 1**.
+- In-memory over ALL 416 modules: **OFF (`ENGQUIZ_OFF=1`) = disk 2102/2102**; ON names **exactly 28 pages / 28 modules** and every differing line is the one button swap (28 legacy divs → 28 anchored buttons + 28 To Do notes, cv2-note, gate-neutral).
+
+### 4. THE FIX — one data block `buttons["engagement quiz button"].kb_form` `{ enabled, env: "ENGQUIZ_OFF", form: "<a href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>", href: "#", label: "Go to quiz", todo_note }` (built in session 5, `enabled:false` at Chris's stop, `enabled:true` this round)
+
+- At the `ContentConverter` button seam, right after the r329 trigger-marker test, an `engagement quiz button` item ships `kb_form.form` with the canonical `href` + `label` and ONE Designer/Developer To Do note (`todo_note`: "Wire this engagement quiz's D2L quicklink (the href is intentionally blank). Writer's quiz source: {url}{text}") carrying the writer's link and any other words of the bracket's tail; the legacy `engagementTrigger` div is the OFF form. Nothing else at the seam moves — `[trigger engagement]` markers (r329) and every other `[button]` route are untouched.
+
+### 5. THE PROOF AND THE GATES
+
+- Session 6 flipped the flag, regenerated the 28 modules (`outputs/_r335_batches_run.sh`, 5 batches, all rc 0; `_r335_regen_s6.log`), `_content_manifest.py fresh --affected` → **0 truly stale**, `diff` = **exactly the 28 pages, 0 added/removed** (the 385 untouched modules byte-identical to the r334 full-ship manifest).
+- **Skeleton (PRIMARY): SCAFFOLD mean 51.060% → 51.078% (+0.018pp) / ≥50% 1066 → 1066 / ≥75% 200 / ≥90% 15 / skipped 0 @ 1954; RAW 35.243% → 35.256%** (state `outputs/_r335_sk_final.json`, FRESH). 28 moved — 19 up / 9 down, every mover in the affected set, pp-sum +35.31; the 9 dips ≤ 0.33pp NAMED = the scorer's alignment artefact on pages whose gold box has no inner row > col-12 (OSBY501_5, OSSC501_5, OSSC301_3, OSAI201_3, OSOH501_5, OSSC401_4, ARFUN01_0, HPFUN401_0, ARFUN02_0 — the element sequence h3 → p → a → div.button is now the gold's).
+- Every other gate EXACT (`_fastloop_diff.py` on the 28 PASS; full suite `_r335_gates_s6.log` line-for-line identical to r334 outside the skeleton block): cs exact 11375 / EXTRA 171 / missing 593 · clean 2056/2102 / leak 288/46 · body 191 · tags 9557/9557 · flipCard TOTAL 61 divergence 0 · mtkQuiz shells defect 0 · entry-parity PASS · index-sync 33/28 · **13 selftests GREEN** (`_r335_selftests_s6.log`). **Ceiling:** SCAFFOLD 51.078% = **55.8% of achievable** (ceiling 91.6%).
+- **Verifier:** `button engagementTrigger` divs corpus-wide 28 → 0; anchored `Go to quiz` buttons at the engagement sites 0 → 28, notes 28 (1:1).
+- **A gotcha caught this round:** `outputs/_r335_affected.txt` was written on Windows with CRLF, so `xargs < file` handed `_fastloop_diff.py` codes ending in `\r` — every module read as "not regenerated" and the baseline as "stale". The file is LF now; a code list a WSL tool consumes must be LF (`_content_manifest.py` strips whitespace and was never fooled).
+
+### 6. NAMED, NOT CHASED
+
+- The gold's populated D2L `rcode` quicklinks (publish-time wiring — the r232 / CL-0044 class); the 28 residual compound `[… engagement trigger]` brackets (r329 named); the `[engagement quiz button]` sites whose gold carries no button at all (none in the paired set).
+
+**Ledger:** scoped ship #1 since the r334 full-ship backstop · data `buttons["engagement quiz button"].kb_form` · env `ENGQUIZ_OFF` · tools (session 5) `outputs/_r335_probe.cjs`, `_r335_affected.txt`, `_r335_carriers.txt`, `_r335_batches_plan.txt` / `_r335_batches_run.sh`; (session 6) `_r335_proof_s6.sh`, `_r335_finalise.py` · state `outputs/_r335_sk_final.json` (FRESH) · logs `_r335_regen_s6.log`, `_r335_fresh.log`, `_r335_fastloop_s6.log`, `_r335_gates_s6.log`, `_r335_sk_full.log`, `_r335_selftests_s6.log`, `_r335_fastloop_commit_s6.log`.
+
 ## 2026-09-15 (after round 334, build 260619.05 unchanged) — THE FULL-SHIP BACKSTOP, and round 335 BUILT + PROBE-PROVEN, SHIPPED OFF (Chris stopped the loop)
 
 - **Full-ship backstop (no code change):** the ship ledger reached 8 scoped ships after r334, so all 416 gated dirs were regenerated (36 batches, all rc 0; `outputs/_r335_fullship_regen.log`), `_stalecheck.sh` **0 stale**, and `_content_manifest.py diff` came back **IDENTICAL — 0 pages differ**: the eight scoped ships r327–r334 left nothing under-scoped. `_fastloop_snapshot.py` re-baselined from the fresh corpus (every value unchanged: skeleton 51.060 / 1066 / 200 / 15, cs 11375 / 171 / 593, body 191, clean 2056/2102, leak 288/46), manifest snapshot, `_ship_ledger.py record-full --build 260619.05` (counter 0).

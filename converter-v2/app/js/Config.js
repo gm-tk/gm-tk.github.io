@@ -1655,7 +1655,10 @@ class Config {
 	// ROUND 334 (2026-09-15, build 260619.05): the activity box's title heading is h3 (KB 01F activity_heading;
 	// the gold 0.997) — a post-pass right after the re-leveller pins the box's first-child heading to h3 (the
 	// writer's in-box [H3]/[H4] carried the body shift); scoped regeneration of 73 modules; env ACTTITLEH3_OFF.
-	static AppVersion = "260619.05";
+	// ROUND 335 (2026-09-15, build 260619.06): the [Engagement quiz button] is the KB's external quiz link button
+	// (01F engagement_quiz_button + constraint 65): the anchored "Go to quiz" form + one To Do note carrying the
+	// writer's link replaces the bare engagementTrigger div; scoped regeneration of 28 modules; env ENGQUIZ_OFF.
+	static AppVersion = "260619.06";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

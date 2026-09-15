@@ -968,8 +968,8 @@
 		"engagement quiz button": {
 			"form": "<div class=\"button engagementTrigger\">{label}</div>",
 			"kb_form": {
-				"enabled": false,
-				"_status": "BUILT AND PROBE-PROVEN, SHIPPED OFF (Chris stopped the loop 2026-09-15 ≈20:00 before its gate suite finished): OFF = disk 2102/2102, ON = exactly 28 pages / 28 modules, _fastloop_diff PASS on the 28. The next session flips enabled:true, regenerates the 28 modules in _r335_affected.txt, runs the gates and finalises.",
+				"enabled": true,
+				"_status": "SHIPPED ON 2026-09-15 (loop session 6, finishing session 5's Round 6): built + probe-proven in session 5 (OFF = disk 2102/2102, ON = exactly 28 pages / 28 modules), shipped OFF at Chris's stop, flipped ON and finalised as engine r335 in session 6.",
 				"env": "ENGQUIZ_OFF",
 				"form": "<a href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
 				"href": "#",
