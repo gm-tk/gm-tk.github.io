@@ -1,0 +1,7199 @@
+{
+ "rows": [
+  {
+   "code": "AGH1001",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 109,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "AGH1002",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 128,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Carousel of images]"
+   ]
+  },
+  {
+   "code": "AGH1003",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 144,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "AGH1004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 137,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[hover definition]"
+   ]
+  },
+  {
+   "code": "AGH1005",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 114,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "AGH1006",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 182,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[H3]"
+   ]
+  },
+  {
+   "code": "AGH1007",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 128,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "AGH1008",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 174,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "AGH1009",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 212,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ANZH101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 98,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ANZH104",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 65,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[MODULE INTRODUCTION]"
+   ]
+  },
+  {
+   "code": "ANZH105",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 157,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ANZH203",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 146,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ANZH205",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 135,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ANZH301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 313,
+   "nearred": 0,
+   "black": 5,
+   "other": 3,
+   "nonred_lead": 2,
+   "nonred_mid": 6,
+   "colours": {
+    "0070c0": 2,
+    "000000": 5,
+    "3494ba": 1
+   },
+   "examples": [
+    "0070c0:L:[Audio link]",
+    "000000:M:[options for drop-down: in urban areas, ",
+    "000000:M:[options for drop-down: encouraged, forc",
+    "000000:M:[options for drop-down: rapidly, slowly,",
+    "000000:M:[options for drop-down: 73%, 83%, 53%]",
+    "000000:M:[options for drop-down: exciting, devast"
+   ]
+  },
+  {
+   "code": "ANZH303",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 153,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ANZH304",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 208,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ANZH401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 260,
+   "nearred": 0,
+   "black": 1,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "1e1f27": 1,
+    "0f0f0f": 1
+   },
+   "examples": [
+    "1e1f27:L:[Alert \u2013 Breakout Box]",
+    "0f0f0f:M:[H3]"
+   ]
+  },
+  {
+   "code": "ANZH404",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 168,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[text]"
+   ]
+  },
+  {
+   "code": "ARFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 29,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ARFUN02",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 171,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[embed video here: Copy Cat Claps]"
+   ]
+  },
+  {
+   "code": "ARFUN03",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 84,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ARFUN04",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 562,
+   "nearred": 0,
+   "black": 5,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 5,
+   "colours": {
+    "auto": 2,
+    "000000": 3
+   },
+   "examples": [
+    "auto:M:[Insert item #8: video]",
+    "auto:M:[insert item#80: images]",
+    "000000:M:[insert item#118: video]",
+    "000000:M:[insert item#122: video]",
+    "000000:M:[insert item#128: video]"
+   ]
+  },
+  {
+   "code": "ARFUN05",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 101,
+   "nearred": 15,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 7,
+   "nonred_mid": 8,
+   "colours": {
+    "c00000": 15
+   },
+   "examples": [
+    "c00000:L:[Insert video]",
+    "c00000:L:[H3]",
+    "c00000:L:[H3]",
+    "c00000:L:[Insert image]",
+    "c00000:M:[Incorrect]",
+    "c00000:M:[Correct]"
+   ]
+  },
+  {
+   "code": "ART1002",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 76,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ART1003",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 84,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[H5]"
+   ]
+  },
+  {
+   "code": "ART1004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 71,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ART1005",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 113,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ART1006",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 72,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[MODULE INTRODUCTION]"
+   ]
+  },
+  {
+   "code": "BLL110",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 363,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL111",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 65,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL112",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 60,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL113",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 91,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL114",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 57,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2
+   },
+   "examples": [
+    "1155cc:L:[audio of instructions]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL115",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 59,
+   "nearred": 0,
+   "black": 0,
+   "other": 4,
+   "nonred_lead": 3,
+   "nonred_mid": 1,
+   "colours": {
+    "1155cc": 4
+   },
+   "examples": [
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:M:[audio on how to write the letter]"
+   ]
+  },
+  {
+   "code": "BLL116",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 82,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL117",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 56,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL120",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 547,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[Insert audio 25]"
+   ]
+  },
+  {
+   "code": "BLL121",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 66,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[insert audio 8]"
+   ]
+  },
+  {
+   "code": "BLL122",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 68,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL123",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 61,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL124",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 69,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL125",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 66,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL126",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 69,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL127",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 59,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL130",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 348,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL131",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 68,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL132",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 60,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL133",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 68,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL134",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 57,
+   "nearred": 0,
+   "black": 6,
+   "other": 0,
+   "nonred_lead": 6,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 6
+   },
+   "examples": [
+    "auto:L:[audio 1]",
+    "auto:L:[audio 2]",
+    "auto:L:[audio 3]",
+    "auto:L:[audio 4]",
+    "auto:L:[audio 5]",
+    "auto:L:[audio 6]"
+   ]
+  },
+  {
+   "code": "BLL135",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 66,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL136",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 60,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL137",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 64,
+   "nearred": 0,
+   "black": 1,
+   "other": 2,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2,
+    "auto": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]",
+    "auto:L:[body]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL140",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 311,
+   "nearred": 0,
+   "black": 0,
+   "other": 4,
+   "nonred_lead": 2,
+   "nonred_mid": 2,
+   "colours": {
+    "1155cc": 4
+   },
+   "examples": [
+    "1155cc:L:[audio button]",
+    "1155cc:M:[audio button]",
+    "1155cc:M:[audio button]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL141",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 58,
+   "nearred": 0,
+   "black": 0,
+   "other": 4,
+   "nonred_lead": 1,
+   "nonred_mid": 3,
+   "colours": {
+    "1155cc": 4
+   },
+   "examples": [
+    "1155cc:M:[audio]",
+    "1155cc:M:[audio]",
+    "1155cc:M:[audio]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL142",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 50,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL143",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 68,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL144",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 60,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL145",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 56,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL146",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 61,
+   "nearred": 0,
+   "black": 0,
+   "other": 6,
+   "nonred_lead": 6,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 6
+   },
+   "examples": [
+    "1155cc:L:[audio 1]",
+    "1155cc:L:[audio 2]",
+    "1155cc:L:[audio 3]",
+    "1155cc:L:[audio 4]",
+    "1155cc:L:[audio 5]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL147",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 60,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL150",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 283,
+   "nearred": 0,
+   "black": 0,
+   "other": 5,
+   "nonred_lead": 5,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 5
+   },
+   "examples": [
+    "1155cc:L:[audio button]",
+    "1155cc:L:[audio button]",
+    "1155cc:L:[audio button]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL151",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 62,
+   "nearred": 0,
+   "black": 1,
+   "other": 2,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2,
+    "auto": 1
+   },
+   "examples": [
+    "1155cc:L:[Audio]",
+    "1155cc:L:[audio]",
+    "auto:L:[body]"
+   ]
+  },
+  {
+   "code": "BLL152",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 51,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL153",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 52,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL154",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 55,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL155",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 80,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL156",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 56,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL157",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 74,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2
+   },
+   "examples": [
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL160",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 281,
+   "nearred": 0,
+   "black": 0,
+   "other": 8,
+   "nonred_lead": 8,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 8
+   },
+   "examples": [
+    "1155cc:L:[audio button]",
+    "1155cc:L:[audio button]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL161",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 70,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[Audio]"
+   ]
+  },
+  {
+   "code": "BLL162",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 67,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2
+   },
+   "examples": [
+    "1155cc:L:[Audio]",
+    "1155cc:L:[audio 1]"
+   ]
+  },
+  {
+   "code": "BLL163",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 53,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL164",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 53,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL165",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 46,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[insert audio 1]"
+   ]
+  },
+  {
+   "code": "BLL166",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 56,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2
+   },
+   "examples": [
+    "1155cc:L:[Insert audio 1]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL167",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 70,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL170",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 310,
+   "nearred": 0,
+   "black": 0,
+   "other": 6,
+   "nonred_lead": 6,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 6
+   },
+   "examples": [
+    "1155cc:L:[audio button]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL171",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 58,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL172",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 63,
+   "nearred": 0,
+   "black": 4,
+   "other": 1,
+   "nonred_lead": 5,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1,
+    "auto": 4
+   },
+   "examples": [
+    "1155cc:L:[audio]",
+    "auto:L:[audio 1]",
+    "auto:L:[audio 2]",
+    "auto:L:[audio 3]",
+    "auto:L:[audio 4]"
+   ]
+  },
+  {
+   "code": "BLL173",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 49,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[insert audio 1]"
+   ]
+  },
+  {
+   "code": "BLL174",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 48,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2
+   },
+   "examples": [
+    "1155cc:L:[audio 1]",
+    "1155cc:L:[insert audio 2]"
+   ]
+  },
+  {
+   "code": "BLL175",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 53,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[insert audio 1]"
+   ]
+  },
+  {
+   "code": "BLL176",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 50,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 2
+   },
+   "examples": [
+    "1155cc:L:[insert audio 1]",
+    "1155cc:L:[audio 2]"
+   ]
+  },
+  {
+   "code": "BLL177",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 63,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL210",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 347,
+   "nearred": 0,
+   "black": 0,
+   "other": 15,
+   "nonred_lead": 13,
+   "nonred_mid": 2,
+   "colours": {
+    "1155cc": 15
+   },
+   "examples": [
+    "1155cc:L:[audio 1]",
+    "1155cc:L:[audio 2]",
+    "1155cc:L:[audio]",
+    "1155cc:M:[audio button]",
+    "1155cc:M:[audio button]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL211",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 68,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL212",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 57,
+   "nearred": 0,
+   "black": 0,
+   "other": 4,
+   "nonred_lead": 4,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 4
+   },
+   "examples": [
+    "1155cc:L:[audio 1]",
+    "1155cc:L:[insert audio 2]",
+    "1155cc:L:[audio 3]",
+    "1155cc:L:[audio 4]"
+   ]
+  },
+  {
+   "code": "BLL213",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 54,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL214",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 54,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "0000ff": 1
+   },
+   "examples": [
+    "0000ff:L:[Insert audio 1]"
+   ]
+  },
+  {
+   "code": "BLL215",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 67,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL216",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 77,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "0f0f0f": 1
+   },
+   "examples": [
+    "0f0f0f:L:[clickDrop content 2]"
+   ]
+  },
+  {
+   "code": "BLL217",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 63,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL220",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 265,
+   "nearred": 0,
+   "black": 1,
+   "other": 10,
+   "nonred_lead": 11,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 10,
+    "auto": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio 1]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "auto:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL221",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 81,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 0,
+   "nonred_mid": 2,
+   "colours": {
+    "1155cc": 2
+   },
+   "examples": [
+    "1155cc:M:[audio]",
+    "1155cc:M:[audio]"
+   ]
+  },
+  {
+   "code": "BLL222",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 59,
+   "nearred": 0,
+   "black": 0,
+   "other": 6,
+   "nonred_lead": 6,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 6
+   },
+   "examples": [
+    "1155cc:L:[audio 1]",
+    "1155cc:L:[audio 2]",
+    "1155cc:L:[audio 3]",
+    "1155cc:L:[audio 4]",
+    "1155cc:L:[audio 5]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL223",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 76,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL224",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 79,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL225",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 61,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL226",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 67,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL227",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 62,
+   "nearred": 0,
+   "black": 0,
+   "other": 5,
+   "nonred_lead": 5,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 5
+   },
+   "examples": [
+    "1155cc:L:[audio 1]",
+    "1155cc:L:[audio 2]",
+    "1155cc:L:[audio 3]",
+    "1155cc:L:[audio 4]",
+    "1155cc:L:[audio 5]"
+   ]
+  },
+  {
+   "code": "BLL230",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 361,
+   "nearred": 0,
+   "black": 1,
+   "other": 5,
+   "nonred_lead": 6,
+   "nonred_mid": 0,
+   "colours": {
+    "1155cc": 4,
+    "4a86e8": 1,
+    "auto": 1
+   },
+   "examples": [
+    "1155cc:L:[audio]",
+    "1155cc:L:[audio]",
+    "4a86e8:L:[audio]",
+    "1155cc:L:[audio]",
+    "auto:L:[audio]",
+    "1155cc:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL231",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 82,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL232",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 65,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL233",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 60,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL234",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 63,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL235",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 78,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL236",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 78,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL237",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 102,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL240",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 359,
+   "nearred": 0,
+   "black": 0,
+   "other": 12,
+   "nonred_lead": 12,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 12
+   },
+   "examples": [
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[Audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[Audio]"
+   ]
+  },
+  {
+   "code": "BLL241",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 82,
+   "nearred": 0,
+   "black": 0,
+   "other": 7,
+   "nonred_lead": 4,
+   "nonred_mid": 3,
+   "colours": {
+    "3494ba": 7
+   },
+   "examples": [
+    "3494ba:L:[Audio]",
+    "3494ba:L:[Audio]",
+    "3494ba:L:[Audio]",
+    "3494ba:L:[audio]",
+    "3494ba:M:[Audio]",
+    "3494ba:M:[Audio]"
+   ]
+  },
+  {
+   "code": "BLL242",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 77,
+   "nearred": 0,
+   "black": 0,
+   "other": 4,
+   "nonred_lead": 4,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 4
+   },
+   "examples": [
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL243",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 70,
+   "nearred": 0,
+   "black": 0,
+   "other": 14,
+   "nonred_lead": 14,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 14
+   },
+   "examples": [
+    "3494ba:L:[audio 1]",
+    "3494ba:L:[audio 2]",
+    "3494ba:L:[audio 3]",
+    "3494ba:L:[audio 4]",
+    "3494ba:L:[audio 5]",
+    "3494ba:L:[Audio]"
+   ]
+  },
+  {
+   "code": "BLL244",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 84,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL245",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 78,
+   "nearred": 0,
+   "black": 0,
+   "other": 10,
+   "nonred_lead": 10,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 10
+   },
+   "examples": [
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL246",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 134,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL247",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 108,
+   "nearred": 0,
+   "black": 0,
+   "other": 3,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 3
+   },
+   "examples": [
+    "3494ba:L:[Audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]"
+   ]
+  },
+  {
+   "code": "BLL250",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 284,
+   "nearred": 0,
+   "black": 0,
+   "other": 23,
+   "nonred_lead": 23,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 23
+   },
+   "examples": [
+    "3494ba:L:[Audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[audio]",
+    "3494ba:L:[Audio]",
+    "3494ba:L:[Audio]",
+    "3494ba:L:[Audio]"
+   ]
+  },
+  {
+   "code": "BLL251",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 91,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 3
+   },
+   "examples": [
+    "auto:L:[Audio]",
+    "auto:L:[Audio]",
+    "auto:M:[audio]"
+   ]
+  },
+  {
+   "code": "BLL252",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 88,
+   "nearred": 0,
+   "black": 0,
+   "other": 6,
+   "nonred_lead": 1,
+   "nonred_mid": 5,
+   "colours": {
+    "3494ba": 6
+   },
+   "examples": [
+    "3494ba:M:[audio]",
+    "3494ba:M:[audio]",
+    "3494ba:M:[audio]",
+    "3494ba:M:[audio]",
+    "3494ba:M:[audio]",
+    "3494ba:L:[p\u016briri]"
+   ]
+  },
+  {
+   "code": "BLL253",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 166,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "3494ba": 2
+   },
+   "examples": [
+    "3494ba:L:[Text to Video AI - Audiovisual request ",
+    "3494ba:M:[Audio]"
+   ]
+  },
+  {
+   "code": "BLL254",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 123,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 2
+   },
+   "examples": [
+    "3494ba:L:[Audio]",
+    "3494ba:L:[Audio]"
+   ]
+  },
+  {
+   "code": "BLL255",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 137,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL256",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 102,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL257",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 130,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL260",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 311,
+   "nearred": 0,
+   "black": 4,
+   "other": 22,
+   "nonred_lead": 24,
+   "nonred_mid": 2,
+   "colours": {
+    "0563c1": 22,
+    "auto": 2,
+    "000000": 2
+   },
+   "examples": [
+    "0563c1:L:[Audio]",
+    "0563c1:L:[audio]",
+    "0563c1:L:[Clickdrop 6 Image]",
+    "auto:M:[trigger engagement]",
+    "0563c1:L:[Audio]",
+    "000000:L:[Image]"
+   ]
+  },
+  {
+   "code": "BLL261",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 119,
+   "nearred": 0,
+   "black": 3,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 3,
+   "colours": {
+    "auto": 3,
+    "3494ba": 1
+   },
+   "examples": [
+    "auto:M:[drop down]",
+    "auto:M:[drop down]",
+    "auto:M:[drop down]",
+    "3494ba:L:[insert audio]"
+   ]
+  },
+  {
+   "code": "BLL262",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 161,
+   "nearred": 0,
+   "black": 1,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "3494ba": 1,
+    "auto": 1
+   },
+   "examples": [
+    "3494ba:L:[Audio]",
+    "auto:M:[Dropbox to trigger engagement]"
+   ]
+  },
+  {
+   "code": "BLL263",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 128,
+   "nearred": 0,
+   "black": 1,
+   "other": 6,
+   "nonred_lead": 7,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 6,
+    "auto": 1
+   },
+   "examples": [
+    "3494ba:L:[Embed audio book]",
+    "3494ba:L:[insert audio]",
+    "3494ba:L:[insert audio]",
+    "3494ba:L:[insert audio]",
+    "3494ba:L:[insert audio]",
+    "3494ba:L:[insert audio]"
+   ]
+  },
+  {
+   "code": "BLL264",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 97,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL265",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 113,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 2,
+   "colours": {
+    "auto": 2
+   },
+   "examples": [
+    "auto:M:[dropdown]",
+    "auto:M:[correct Q10]"
+   ]
+  },
+  {
+   "code": "BLL266",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 111,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 3
+   },
+   "examples": [
+    "auto:L:[flipcards]",
+    "auto:L:[image]",
+    "auto:L:[video]"
+   ]
+  },
+  {
+   "code": "BLL270",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 207,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL271",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 105,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL272",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 96,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL273",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 98,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL274",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 87,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL275",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 119,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLL276",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 83,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "BLLR201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 376,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDK101",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 141,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDK102",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 272,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Flipcards with image on the front and t"
+   ]
+  },
+  {
+   "code": "CEDK401",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 153,
+   "nearred": 4,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 0,
+   "colours": {
+    "ed0000": 4
+   },
+   "examples": [
+    "ed0000:L:[Link]",
+    "ed0000:L:[Link]",
+    "ed0000:L:[Link]",
+    "ed0000:L:[Link]"
+   ]
+  },
+  {
+   "code": "CEDK501",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 366,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1,
+    "000000": 2
+   },
+   "examples": [
+    "auto:L:[Image]",
+    "000000:M:[body]",
+    "000000:L:[H3]"
+   ]
+  },
+  {
+   "code": "CEDO102",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 133,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDO105",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 144,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDO201",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 117,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDO202",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 94,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDO301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 114,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Body]"
+   ]
+  },
+  {
+   "code": "CEDO402",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 152,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDO501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 581,
+   "nearred": 27,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 26,
+   "nonred_mid": 1,
+   "colours": {
+    "c00000": 27
+   },
+   "examples": [
+    "c00000:L:[Body]",
+    "c00000:L:[Alert]",
+    "c00000:L:[Alert]",
+    "c00000:L:[Audio]",
+    "c00000:L:[Body]",
+    "c00000:L:[Video]"
+   ]
+  },
+  {
+   "code": "CEDO502",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 462,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDR101",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 279,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDR201",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 19,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 1,
+    "auto": 1
+   },
+   "examples": [
+    "000000:L:[Dropdown]",
+    "auto:M:[Embed video]"
+   ]
+  },
+  {
+   "code": "CEDR203",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 171,
+   "nearred": 0,
+   "black": 5,
+   "other": 3,
+   "nonred_lead": 8,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 4,
+    "374151": 3,
+    "auto": 1
+   },
+   "examples": [
+    "000000:L:[Embed video]",
+    "000000:L:[Body to go above the word find]",
+    "374151:L:[Video 1]",
+    "374151:L:[Video 2]",
+    "374151:L:[Video 3]",
+    "000000:L:[Video 4]"
+   ]
+  },
+  {
+   "code": "CEDR204",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 179,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[table]"
+   ]
+  },
+  {
+   "code": "CEDR301",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 19,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Dropdown]"
+   ]
+  },
+  {
+   "code": "CEDR302",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 21,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDR401",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 169,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDR501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 499,
+   "nearred": 0,
+   "black": 4,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 4
+   },
+   "examples": [
+    "auto:L:[Body]",
+    "auto:L:[Image]",
+    "auto:L:[Image]",
+    "auto:L:[Image]"
+   ]
+  },
+  {
+   "code": "CEDT101",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 76,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDT102",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 99,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDT104",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 236,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[H3]"
+   ]
+  },
+  {
+   "code": "CEDT201",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 18,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Dropdown]"
+   ]
+  },
+  {
+   "code": "CEDT202",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 19,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Dropdown]"
+   ]
+  },
+  {
+   "code": "CEDT203",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 18,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Dropdown]"
+   ]
+  },
+  {
+   "code": "CEDT204",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 24,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Dropdown]"
+   ]
+  },
+  {
+   "code": "CEDT207",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 102,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDT208",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 85,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Body]"
+   ]
+  },
+  {
+   "code": "CEDT301",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 117,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDT404",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 78,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDT501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 445,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDW101",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 160,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDW201",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 68,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDW303",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 22,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CEDW501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 410,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[body]"
+   ]
+  },
+  {
+   "code": "CHFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 85,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CHFUN04",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 130,
+   "nearred": 0,
+   "black": 5,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 4,
+   "colours": {
+    "000000": 5
+   },
+   "examples": [
+    "000000:M:[true or false]",
+    "000000:M:[true or false]",
+    "000000:M:[true or false]",
+    "000000:M:[true or false]",
+    "000000:L:[body]"
+   ]
+  },
+  {
+   "code": "CHFUN05",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 761,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CHFUN06",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 141,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "CHFUN07",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 119,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Audio transcript]"
+   ]
+  },
+  {
+   "code": "ENFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 176,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 2
+   },
+   "examples": [
+    "000000:L:[Drag and Drop]",
+    "000000:M:[quote by Lee Child]"
+   ]
+  },
+  {
+   "code": "ENFUN02",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 179,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENFUN03",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 202,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENFUN04",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 205,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENFUN05",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 177,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENFUN07",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 133,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENFUN08",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 183,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENFUN09",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 191,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENG1004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 299,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[link to ENGFUN03]"
+   ]
+  },
+  {
+   "code": "ENG1005",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 208,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENG1007",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 59,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGC101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 221,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGC102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 191,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGC201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 225,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGC202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 213,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGC301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 212,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGC302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 159,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGC401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 243,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGFUN02",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 8,
+   "nearred": 164,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 102,
+   "nonred_mid": 62,
+   "colours": {
+    "fa0000": 164
+   },
+   "examples": [
+    "fa0000:L:[H1]",
+    "fa0000:L:[H2]",
+    "fa0000:L:[H3]",
+    "fa0000:M:[Body]",
+    "fa0000:L:[H3]",
+    "fa0000:M:[Body]"
+   ]
+  },
+  {
+   "code": "ENGI101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 107,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 319,
+   "nearred": 1,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "fa0000": 1
+   },
+   "examples": [
+    "fa0000:L:[Body]"
+   ]
+  },
+  {
+   "code": "ENGI103",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 237,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 139,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 386,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 2
+   },
+   "examples": [
+    "000000:L:[Body]",
+    "000000:L:[Embed video]"
+   ]
+  },
+  {
+   "code": "ENGI203",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 195,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 85,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 161,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI303",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 232,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI400",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 143,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[body]"
+   ]
+  },
+  {
+   "code": "ENGI401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 350,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGI405",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 335,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 2
+   },
+   "examples": [
+    "auto:L:[image]",
+    "auto:L:[button]"
+   ]
+  },
+  {
+   "code": "ENGJ101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 128,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGJ102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 146,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[body]"
+   ]
+  },
+  {
+   "code": "ENGJ201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 157,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGJ202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 135,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGJ301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 334,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGJ302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 396,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[video]"
+   ]
+  },
+  {
+   "code": "ENGJ402",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 335,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGJ403",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 230,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGR101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 226,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGR102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 429,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGR201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 211,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGR202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 288,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGR301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 210,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGR302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 290,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGS101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 202,
+   "nearred": 2,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 1,
+    "c00000": 2
+   },
+   "examples": [
+    "000000:M:[image hover trigger]",
+    "c00000:L:[Body]",
+    "c00000:L:[Body]"
+   ]
+  },
+  {
+   "code": "ENGS102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 290,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGS201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 306,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGS202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 206,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGS301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 194,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGS302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 284,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[imbed video]"
+   ]
+  },
+  {
+   "code": "ENGS401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 242,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "ENGS405",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 27,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "EXBP901",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 248,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "EXIP901",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 270,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "EXPFUN02",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 298,
+   "nearred": 0,
+   "black": 5,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 5,
+   "colours": {
+    "000000": 5
+   },
+   "examples": [
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]"
+   ]
+  },
+  {
+   "code": "EXPFUN03",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 310,
+   "nearred": 0,
+   "black": 6,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 6,
+   "colours": {
+    "000000": 6
+   },
+   "examples": [
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]"
+   ]
+  },
+  {
+   "code": "EXPFUN04",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 124,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "EXPFUN05",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 313,
+   "nearred": 0,
+   "black": 6,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 5,
+   "colours": {
+    "000000": 6
+   },
+   "examples": [
+    "000000:M:[Button]",
+    "000000:L:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]",
+    "000000:M:[Button]"
+   ]
+  },
+  {
+   "code": "EXPFUN06",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 81,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "EXPFUN07",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 43,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 2
+   },
+   "examples": [
+    "000000:L:[Image 10]",
+    "000000:M:[Box to type answer, with the bullet poi"
+   ]
+  },
+  {
+   "code": "HES1003",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 138,
+   "nearred": 0,
+   "black": 2,
+   "other": 1,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "3d3d3d": 1,
+    "212121": 1,
+    "auto": 1
+   },
+   "examples": [
+    "3d3d3d:L:[insert item 10 \u2013 link]",
+    "212121:L:[Insert item 23 \u2013 video]",
+    "auto:L:[insert item 24 \u2013 video]"
+   ]
+  },
+  {
+   "code": "HES1004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 130,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HES1005",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 239,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HES1006",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 157,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[MODULE INTRODUCTION]"
+   ]
+  },
+  {
+   "code": "HES1007",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 305,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HIS1001",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 50,
+   "nearred": 3,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "ed0000": 3
+   },
+   "examples": [
+    "ed0000:L:[Image Caption]",
+    "ed0000:L:[Image Caption]",
+    "ed0000:L:[Image Caption]"
+   ]
+  },
+  {
+   "code": "HIS1002",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 212,
+   "nearred": 83,
+   "black": 12,
+   "other": 1,
+   "nonred_lead": 95,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 12,
+    "ed0000": 79,
+    "c0504d": 1,
+    "c00000": 4
+   },
+   "examples": [
+    "auto:L:[MODULE INTRODUCTION]",
+    "auto:L:[LESSON 1]",
+    "auto:L:[End page]",
+    "auto:L:[LESSON 2]",
+    "ed0000:L:[Answers]",
+    "ed0000:L:[end of source]"
+   ]
+  },
+  {
+   "code": "HIS1003",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 344,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HIS1004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 503,
+   "nearred": 0,
+   "black": 7,
+   "other": 0,
+   "nonred_lead": 6,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 1,
+    "auto": 6
+   },
+   "examples": [
+    "000000:L:[Image link]",
+    "auto:L:[Image link]",
+    "auto:L:[Image link]",
+    "auto:L:[Image link]",
+    "auto:L:[Image link]",
+    "auto:M:[Interactive]"
+   ]
+  },
+  {
+   "code": "HIS1005",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 520,
+   "nearred": 97,
+   "black": 5,
+   "other": 2,
+   "nonred_lead": 100,
+   "nonred_mid": 4,
+   "colours": {
+    "ed0000": 96,
+    "4a86e8": 2,
+    "212121": 2,
+    "auto": 3,
+    "f72b2b": 1
+   },
+   "examples": [
+    "ed0000:L:[Body text]",
+    "ed0000:L:[H1]",
+    "ed0000:L:[Whakatauki]",
+    "ed0000:L:[Body text]",
+    "ed0000:L:[Activity Interactive]",
+    "ed0000:L:[H2]"
+   ]
+  },
+  {
+   "code": "HIS1006",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 604,
+   "nearred": 15,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 16,
+   "nonred_mid": 0,
+   "colours": {
+    "ed0000": 15,
+    "212121": 1
+   },
+   "examples": [
+    "ed0000:L:[Body text]",
+    "ed0000:L:[H1]",
+    "ed0000:L:[Body text]",
+    "ed0000:L:[Activity Interactive]",
+    "ed0000:L:[H2]",
+    "ed0000:L:[Activity Individual]"
+   ]
+  },
+  {
+   "code": "HIS1007",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 251,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[quote your evidence here]"
+   ]
+  },
+  {
+   "code": "HIS1008",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 442,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Body]"
+   ]
+  },
+  {
+   "code": "HPFUN101",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 126,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[facing]"
+   ]
+  },
+  {
+   "code": "HPFUN102",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 82,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN103",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 80,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN201",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 153,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN202",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 108,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN203",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 77,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN301",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 131,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN302",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 112,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[h4]"
+   ]
+  },
+  {
+   "code": "HPFUN303",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 76,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN401",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 123,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN402",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 139,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN403",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 63,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN901",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 183,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN902",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 103,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPFUN903",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 271,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "HPRE203",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 525,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "00b050": 1
+   },
+   "examples": [
+    "00b050:M:[Correct]"
+   ]
+  },
+  {
+   "code": "HPRE301",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 564,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXDB102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 176,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXDB201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 177,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXDB202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 217,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1,
+    "0f0f0f": 1
+   },
+   "examples": [
+    "auto:L:[Flip Cards]",
+    "0f0f0f:L:[embed image]"
+   ]
+  },
+  {
+   "code": "MXDB301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 85,
+   "nearred": 0,
+   "black": 11,
+   "other": 0,
+   "nonred_lead": 9,
+   "nonred_mid": 2,
+   "colours": {
+    "000000": 3,
+    "auto": 8
+   },
+   "examples": [
+    "000000:L:[Image]",
+    "000000:L:[Image]",
+    "000000:M:[Hover trigger]",
+    "auto:L:[Image]",
+    "auto:L:[Image]",
+    "auto:L:[Image]"
+   ]
+  },
+  {
+   "code": "MXDB302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 447,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXDI101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 156,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXDI102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 143,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXDI103",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 253,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXDI201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 595,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[body text]"
+   ]
+  },
+  {
+   "code": "MXDI202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 564,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[interactive activity]"
+   ]
+  },
+  {
+   "code": "MXDI301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 98,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 2,
+   "colours": {
+    "auto": 2
+   },
+   "examples": [
+    "auto:M:[Hover Trigger]",
+    "auto:M:[Hover Trigger]"
+   ]
+  },
+  {
+   "code": "MXEO102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 53,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXEO201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 189,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXEO202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 211,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXEO301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 461,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Activity 1A \u2013 self-marking drag and dro"
+   ]
+  },
+  {
+   "code": "MXEO401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 204,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 3
+   },
+   "examples": [
+    "auto:L:[image1]",
+    "auto:L:[image2]",
+    "auto:L:[image3]"
+   ]
+  },
+  {
+   "code": "MXEX101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 63,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[H2]"
+   ]
+  },
+  {
+   "code": "MXEX201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 98,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXEX202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 95,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Button]"
+   ]
+  },
+  {
+   "code": "MXEX301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 109,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 1,
+    "auto": 1
+   },
+   "examples": [
+    "000000:M:[Hover trigger]",
+    "auto:L:[Image]"
+   ]
+  },
+  {
+   "code": "MXEX302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 329,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXEX401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 221,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 252,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 100,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL103",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 155,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL104",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 218,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 182,
+   "nearred": 0,
+   "black": 4,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 4
+   },
+   "examples": [
+    "auto:L:[Image]",
+    "auto:L:[Image]",
+    "auto:L:[Image]",
+    "auto:L:[Image]"
+   ]
+  },
+  {
+   "code": "MXFL202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 188,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL203",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 645,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL204",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 375,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 495,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 420,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFL401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 231,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFU201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 589,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFU202",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 520,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 2,
+   "colours": {
+    "auto": 2
+   },
+   "examples": [
+    "auto:M:[image]",
+    "auto:M:[Engagement trigger]"
+   ]
+  },
+  {
+   "code": "MXFU301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 432,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFU302",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 208,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 3
+   },
+   "examples": [
+    "auto:L:[H5]",
+    "auto:L:[Body]",
+    "auto:L:[carousel]"
+   ]
+  },
+  {
+   "code": "MXFU401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 155,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:M:[link]"
+   ]
+  },
+  {
+   "code": "MXFU402",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 320,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "MXFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 689,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 2
+   },
+   "examples": [
+    "000000:L:[Activity body]",
+    "000000:M:[Button]"
+   ]
+  },
+  {
+   "code": "MXFUN02",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 399,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 3
+   },
+   "examples": [
+    "000000:L:[H4]",
+    "000000:L:[Activity 1D]",
+    "000000:M:[video]"
+   ]
+  },
+  {
+   "code": "MXFUN03",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 583,
+   "nearred": 0,
+   "black": 5,
+   "other": 0,
+   "nonred_lead": 5,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 5
+   },
+   "examples": [
+    "auto:L:[Image]",
+    "auto:L:[Image]",
+    "auto:L:[Image]",
+    "auto:L:[Image]",
+    "auto:L:[Image]"
+   ]
+  },
+  {
+   "code": "OSAH301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 94,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSAH401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 149,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[H2]"
+   ]
+  },
+  {
+   "code": "OSAH501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 209,
+   "nearred": 8,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 8,
+   "nonred_mid": 0,
+   "colours": {
+    "c00000": 8
+   },
+   "examples": [
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]"
+   ]
+  },
+  {
+   "code": "OSAI101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 184,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSAI201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 175,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSAI301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 154,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSAI401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 327,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSAI501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 430,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSBY101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 134,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSBY201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 161,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[body]"
+   ]
+  },
+  {
+   "code": "OSBY301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 84,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSBY401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 205,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[image]"
+   ]
+  },
+  {
+   "code": "OSBY501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 295,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 2
+   },
+   "examples": [
+    "auto:L:[image]",
+    "auto:L:[image]"
+   ]
+  },
+  {
+   "code": "OSGM101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 109,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSGM201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 135,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSGM301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 93,
+   "nearred": 8,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 8,
+   "nonred_mid": 0,
+   "colours": {
+    "c00000": 8
+   },
+   "examples": [
+    "c00000:L:[image]",
+    "c00000:L:[image]",
+    "c00000:L:[H4]",
+    "c00000:L:[H4]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]"
+   ]
+  },
+  {
+   "code": "OSGM401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 210,
+   "nearred": 6,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 6,
+   "nonred_mid": 0,
+   "colours": {
+    "c00000": 6
+   },
+   "examples": [
+    "c00000:L:[H4]",
+    "c00000:L:[H4]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]"
+   ]
+  },
+  {
+   "code": "OSGM501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 232,
+   "nearred": 6,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 6,
+   "nonred_mid": 0,
+   "colours": {
+    "c00000": 6
+   },
+   "examples": [
+    "c00000:L:[H4]",
+    "c00000:L:[H4]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]"
+   ]
+  },
+  {
+   "code": "OSOH101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 182,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSOH201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 177,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSOH301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 132,
+   "nearred": 4,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 0,
+   "colours": {
+    "c00000": 4
+   },
+   "examples": [
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]"
+   ]
+  },
+  {
+   "code": "OSOH401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 203,
+   "nearred": 4,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 0,
+   "colours": {
+    "c00000": 4
+   },
+   "examples": [
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]",
+    "c00000:L:[Click drop]"
+   ]
+  },
+  {
+   "code": "OSOH501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 376,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSSC301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 106,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSSC401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 196,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[external link]"
+   ]
+  },
+  {
+   "code": "OSSC501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 273,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSSM301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 147,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSSM401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 162,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "OSSM501",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 460,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PES1001",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 158,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PES1002",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 296,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[hover trigger]"
+   ]
+  },
+  {
+   "code": "PES1003",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 142,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PES1004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 142,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Link to fundamental lesson 2]"
+   ]
+  },
+  {
+   "code": "PES1005",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 170,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[MODULE INTRODUCTION]"
+   ]
+  },
+  {
+   "code": "PES1007",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 151,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PES1008",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 231,
+   "nearred": 1,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "ed1c24": 1
+   },
+   "examples": [
+    "ed1c24:L:[Important]"
+   ]
+  },
+  {
+   "code": "PHE1001",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 60,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PHE1002",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 41,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Body]"
+   ]
+  },
+  {
+   "code": "PHE1003",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 231,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PHE1004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 47,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PHE1005",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 85,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "c0504d": 2
+   },
+   "examples": [
+    "c0504d:L:[insert image 20]",
+    "c0504d:L:[insert image 1]"
+   ]
+  },
+  {
+   "code": "PHE1006",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 69,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PHE1007",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 289,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Body]"
+   ]
+  },
+  {
+   "code": "PHE1008",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 137,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "PNR101",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 277,
+   "nearred": 0,
+   "black": 2,
+   "other": 1,
+   "nonred_lead": 2,
+   "nonred_mid": 1,
+   "colours": {
+    "ffffff": 1,
+    "auto": 1,
+    "000000": 1
+   },
+   "examples": [
+    "ffffff:L:[H1]",
+    "auto:L:[Body]",
+    "000000:M:[Drag and drop]"
+   ]
+  },
+  {
+   "code": "PNR102",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 304,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[Flipcard]"
+   ]
+  },
+  {
+   "code": "PNR104",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 319,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Flipcard]"
+   ]
+  },
+  {
+   "code": "SCCH301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 394,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SCFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 163,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Tile 2]"
+   ]
+  },
+  {
+   "code": "SCPH301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 342,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSCI104",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 443,
+   "nearred": 0,
+   "black": 1,
+   "other": 1,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1,
+    "333333": 1
+   },
+   "examples": [
+    "auto:L:[dropbox activity]",
+    "333333:L:[end page]"
+   ]
+  },
+  {
+   "code": "SSCI205",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 766,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSEA203",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 413,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 145,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 2,
+    "auto": 1
+   },
+   "examples": [
+    "000000:L:[Highlight text for whakatauk\u012b]",
+    "auto:L:[Quiz body]",
+    "000000:L:[Website]"
+   ]
+  },
+  {
+   "code": "SSFUN02",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 170,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[Body]"
+   ]
+  },
+  {
+   "code": "SSFUN03",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 72,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSFUN05",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 170,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 1,
+    "auto": 1
+   },
+   "examples": [
+    "000000:M:[image]",
+    "auto:L:[Image]"
+   ]
+  },
+  {
+   "code": "SSFUN06",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 190,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSFUN07",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 106,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSFUN08",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 128,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSOG101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 120,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSOG103",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 497,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSOG105",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 578,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "SSOG301",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 237,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "333333": 1
+   },
+   "examples": [
+    "333333:M:[Dropdown (education, healthcare, financ"
+   ]
+  },
+  {
+   "code": "TEDC401",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 620,
+   "nearred": 0,
+   "black": 1,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "000000": 1,
+    "7030a0": 1
+   },
+   "examples": [
+    "000000:M:[hover trigger, definition: as above]",
+    "7030a0:L:[Accordion]"
+   ]
+  },
+  {
+   "code": "TEDC402",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 768,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[MODULE INTRODUCTION]"
+   ]
+  },
+  {
+   "code": "TEFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 136,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TEFUN02",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 134,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[TITLE BAR]"
+   ]
+  },
+  {
+   "code": "TEFUN03",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 266,
+   "nearred": 10,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 10,
+   "nonred_mid": 0,
+   "colours": {
+    "c00000": 10
+   },
+   "examples": [
+    "c00000:L:[Body]",
+    "c00000:L:[Image]",
+    "c00000:L:[Body]",
+    "c00000:L:[Image]",
+    "c00000:L:[Body]",
+    "c00000:L:[Body]"
+   ]
+  },
+  {
+   "code": "TEFUN04",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 111,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TEFUN05",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 120,
+   "nearred": 1,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 2,
+    "c00000": 1
+   },
+   "examples": [
+    "000000:L:[TITLE BAR]",
+    "000000:L:[Insert image white hat from]",
+    "c00000:L:[Body]"
+   ]
+  },
+  {
+   "code": "TEFUN06",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 142,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TEFUN07",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 116,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "1f1f1f": 2
+   },
+   "examples": [
+    "1f1f1f:M:[Rollover definition]",
+    "1f1f1f:L:[Image 43]"
+   ]
+  },
+  {
+   "code": "TEFUN08",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 163,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TRR102",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 812,
+   "nearred": 72,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 27,
+   "nonred_mid": 45,
+   "colours": {
+    "ed0000": 72
+   },
+   "examples": [
+    "ed0000:L:[Body]",
+    "ed0000:L:[Body]",
+    "ed0000:L:[Item 41]",
+    "ed0000:M:[Audio]",
+    "ed0000:L:[Item 42]",
+    "ed0000:M:[Audio]"
+   ]
+  },
+  {
+   "code": "TRR103",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 511,
+   "nearred": 8,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 4,
+   "colours": {
+    "ed0000": 8
+   },
+   "examples": [
+    "ed0000:L:[Item 61]",
+    "ed0000:M:[Image]",
+    "ed0000:L:[Button]",
+    "ed0000:M:[ Dropbox Checklist]",
+    "ed0000:L:[Item 96]",
+    "ed0000:M:[Image]"
+   ]
+  },
+  {
+   "code": "TRR106",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 398,
+   "nearred": 6,
+   "black": 4,
+   "other": 1,
+   "nonred_lead": 9,
+   "nonred_mid": 2,
+   "colours": {
+    "00ffff": 1,
+    "auto": 4,
+    "ed0000": 6
+   },
+   "examples": [
+    "00ffff:L:[h3 headings]",
+    "auto:L:[H2]",
+    "auto:L:[H2]",
+    "ed0000:L:[Body]",
+    "ed0000:L:[Body]",
+    "auto:L:[H2]"
+   ]
+  },
+  {
+   "code": "TRR107",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 436,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TRR108",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 308,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TRR109",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 1339,
+   "nearred": 4,
+   "black": 15,
+   "other": 0,
+   "nonred_lead": 13,
+   "nonred_mid": 6,
+   "colours": {
+    "auto": 15,
+    "ed0000": 4
+   },
+   "examples": [
+    "auto:L:[H1]",
+    "auto:L:[H1]",
+    "auto:L:[H2]",
+    "auto:L:[H2]",
+    "auto:L:[Body]",
+    "auto:L:[Item 39]"
+   ]
+  },
+  {
+   "code": "TRR110",
+   "tmpl": "Bilingual",
+   "claude": false,
+   "red": 964,
+   "nearred": 4,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 2,
+   "colours": {
+    "ed0000": 4
+   },
+   "examples": [
+    "ed0000:L:[Item 212]",
+    "ed0000:M:[Image]",
+    "ed0000:L:[Button]",
+    "ed0000:M:[ Dropbox Checklist]"
+   ]
+  },
+  {
+   "code": "TRR111",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 1042,
+   "nearred": 20,
+   "black": 4,
+   "other": 0,
+   "nonred_lead": 12,
+   "nonred_mid": 12,
+   "colours": {
+    "c00000": 16,
+    "auto": 2,
+    "000000": 2,
+    "ed0000": 4
+   },
+   "examples": [
+    "c00000:L:[Item 13]",
+    "c00000:M:[Audio]",
+    "c00000:L:[Item 14]",
+    "c00000:M:[Audio]",
+    "c00000:L:[Item 15]",
+    "c00000:M:[Audio]"
+   ]
+  },
+  {
+   "code": "TRR112",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 1081,
+   "nearred": 8,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 4,
+   "colours": {
+    "ed0000": 8
+   },
+   "examples": [
+    "ed0000:L:[Item 235]",
+    "ed0000:M:[Image]",
+    "ed0000:L:[Button]",
+    "ed0000:M:[ Dropbox Checklist]",
+    "ed0000:L:[Item 235]",
+    "ed0000:M:[Image]"
+   ]
+  },
+  {
+   "code": "TRR113",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 866,
+   "nearred": 7,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 4,
+   "nonred_mid": 3,
+   "colours": {
+    "ed0000": 7
+   },
+   "examples": [
+    "ed0000:L:[Item 181]",
+    "ed0000:M:[Image]",
+    "ed0000:L:[Button]",
+    "ed0000:M:[ Dropbox Checklist]",
+    "ed0000:L:[Image 181]",
+    "ed0000:L:[Button]"
+   ]
+  },
+  {
+   "code": "TRR114",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 528,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TRR115",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 317,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TRR203",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 367,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TRR301",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 549,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TRR304",
+   "tmpl": "Bilingual",
+   "claude": true,
+   "red": 477,
+   "nearred": 0,
+   "black": 7,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 5,
+   "colours": {
+    "000000": 1,
+    "auto": 6
+   },
+   "examples": [
+    "000000:M:[Body]",
+    "auto:M:[p\u0101p\u0101tanga]",
+    "auto:M:[p\u016bkenga e hiahiatia ana]",
+    "auto:M:[p\u016bkenga rerek\u0113]",
+    "auto:M:[p\u016bkenga]",
+    "auto:L:[Item]"
+   ]
+  },
+  {
+   "code": "TWHA901",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 102,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHA902",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 72,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHA903",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 48,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Insert media item RHS of text]"
+   ]
+  },
+  {
+   "code": "TWHA904",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 65,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[Insert media item RHS of text]"
+   ]
+  },
+  {
+   "code": "TWHA905",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 71,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHA906",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 282,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHK901",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 58,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHK902",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 49,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHK903",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 99,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHK907",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 252,
+   "nearred": 0,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "444444": 1
+   },
+   "examples": [
+    "444444:L:[body text]"
+   ]
+  },
+  {
+   "code": "TWHR905",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 94,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHR907",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 74,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "TWHT903",
+   "tmpl": "Inquiry",
+   "claude": false,
+   "red": 60,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XDLS501",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 100,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XDLS502",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 161,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 1
+   },
+   "examples": [
+    "000000:L:[end supervisor note]"
+   ]
+  },
+  {
+   "code": "XDLS901",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 326,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1,
+    "000000": 1
+   },
+   "examples": [
+    "auto:L:[body]",
+    "000000:M:[definition]"
+   ]
+  },
+  {
+   "code": "XDLS902",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 294,
+   "nearred": 0,
+   "black": 13,
+   "other": 0,
+   "nonred_lead": 12,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 13
+   },
+   "examples": [
+    "auto:L:[Video https://www.youtube.com/watch?v=6",
+    "auto:L:[Video https://www.youtube.com/watch?v=l",
+    "auto:L:[Video https://www.youtube.com/watch?v=6",
+    "auto:L:[Video https://www.youtube.com/watch?v=l",
+    "auto:L:[Video https://www.youtube.com/watch?v=6",
+    "auto:L:[Video https://www.youtube.com/watch?v=l"
+   ]
+  },
+  {
+   "code": "XDLS903",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 558,
+   "nearred": 0,
+   "black": 1,
+   "other": 2,
+   "nonred_lead": 3,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 2,
+    "000000": 1
+   },
+   "examples": [
+    "3494ba:L:[Audio Animation 1: Note this will be re",
+    "3494ba:L:[Audio Animation 2: Note this will be re",
+    "000000:L:[body]"
+   ]
+  },
+  {
+   "code": "XDLS904",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 604,
+   "nearred": 2,
+   "black": 2,
+   "other": 2,
+   "nonred_lead": 4,
+   "nonred_mid": 2,
+   "colours": {
+    "3494ba": 2,
+    "c00000": 2,
+    "000000": 2
+   },
+   "examples": [
+    "3494ba:L:[Audio Animation 1: Note this will be re",
+    "3494ba:L:[Audio Animation 2:  Note this will be r",
+    "c00000:M:[definition]",
+    "000000:L:[body]",
+    "000000:L:[body]",
+    "c00000:M:[definition]"
+   ]
+  },
+  {
+   "code": "XDLS905",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 601,
+   "nearred": 7,
+   "black": 0,
+   "other": 1,
+   "nonred_lead": 1,
+   "nonred_mid": 7,
+   "colours": {
+    "3494ba": 1,
+    "c00000": 7
+   },
+   "examples": [
+    "3494ba:L:[Audio Animation 1: Note this will be re",
+    "c00000:M:[definition]",
+    "c00000:M:[definition]",
+    "c00000:M:[definition]",
+    "c00000:M:[definition]",
+    "c00000:M:[definition]"
+   ]
+  },
+  {
+   "code": "XDLS906",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 608,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XDLS908",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 853,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XDLS909",
+   "tmpl": "Inquiry",
+   "claude": true,
+   "red": 162,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[link to PDF]"
+   ]
+  },
+  {
+   "code": "XDLS911",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 266,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XDLS912",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 381,
+   "nearred": 1,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "ed0000": 1,
+    "auto": 1
+   },
+   "examples": [
+    "ed0000:L:[Activity 4E]",
+    "auto:L:[Body]"
+   ]
+  },
+  {
+   "code": "XFUN01",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 100,
+   "nearred": 0,
+   "black": 3,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 2,
+   "colours": {
+    "auto": 3
+   },
+   "examples": [
+    "auto:L:[Accordion 2]",
+    "auto:M:[Link to this section]",
+    "auto:M:[Link to hub instructions on setting up "
+   ]
+  },
+  {
+   "code": "XFUN02",
+   "tmpl": "Fundamentals",
+   "claude": true,
+   "red": 194,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XGF9001",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 786,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "000000": 2
+   },
+   "examples": [
+    "000000:L:[Card 4]",
+    "000000:L:[Image]"
+   ]
+  },
+  {
+   "code": "XGF9002",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 848,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 1,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:M:[PDF &ndash; created from information at"
+   ]
+  },
+  {
+   "code": "XGF9003",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 659,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XGF9004",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 1371,
+   "nearred": 0,
+   "black": 11,
+   "other": 0,
+   "nonred_lead": 5,
+   "nonred_mid": 6,
+   "colours": {
+    "000000": 11
+   },
+   "examples": [
+    "000000:M:[Options for missing word: quieter, loud",
+    "000000:L:[H3]",
+    "000000:L:[H3]",
+    "000000:M:[highlight text]",
+    "000000:L:[Image 3]",
+    "000000:M:[highlight text]"
+   ]
+  },
+  {
+   "code": "XGF9006",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 647,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XLP01",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 158,
+   "nearred": 0,
+   "black": 2,
+   "other": 0,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 2
+   },
+   "examples": [
+    "auto:L:[body]",
+    "auto:L:[body]"
+   ]
+  },
+  {
+   "code": "XLP02",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 187,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 2,
+   "nonred_mid": 0,
+   "colours": {
+    "3494ba": 2
+   },
+   "examples": [
+    "3494ba:L:[Insert audio animation2]",
+    "3494ba:L:[Insert audio animation 2]"
+   ]
+  },
+  {
+   "code": "XLP03",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 159,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[body]"
+   ]
+  },
+  {
+   "code": "XLP04",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 122,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XLP05",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 159,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XLP06",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 127,
+   "nearred": 0,
+   "black": 1,
+   "other": 1,
+   "nonred_lead": 0,
+   "nonred_mid": 2,
+   "colours": {
+    "3494ba": 1,
+    "auto": 1
+   },
+   "examples": [
+    "3494ba:M:[link to PDF]",
+    "auto:M:[video]"
+   ]
+  },
+  {
+   "code": "XMES101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 310,
+   "nearred": 0,
+   "black": 0,
+   "other": 10,
+   "nonred_lead": 5,
+   "nonred_mid": 5,
+   "colours": {
+    "3494ba": 10
+   },
+   "examples": [
+    "3494ba:L:[Audio animation]",
+    "3494ba:L:[insert audio]",
+    "3494ba:L:[insert audio]",
+    "3494ba:L:[insert audio]",
+    "3494ba:M:[insert audio]",
+    "3494ba:L:[insert audio]"
+   ]
+  },
+  {
+   "code": "XMES102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 96,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XMES103",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 242,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XMES201",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 281,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[body]"
+   ]
+  },
+  {
+   "code": "XMES202",
+   "tmpl": "Standard",
+   "claude": false,
+   "red": 426,
+   "nearred": 0,
+   "black": 0,
+   "other": 2,
+   "nonred_lead": 0,
+   "nonred_mid": 2,
+   "colours": {
+    "3494ba": 2
+   },
+   "examples": [
+    "3494ba:M:[insert audio on hover]",
+    "3494ba:M:[audio clips]"
+   ]
+  },
+  {
+   "code": "XMES203",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 305,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XTAS101",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 188,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[image]"
+   ]
+  },
+  {
+   "code": "XTAS102",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 437,
+   "nearred": 0,
+   "black": 1,
+   "other": 0,
+   "nonred_lead": 1,
+   "nonred_mid": 0,
+   "colours": {
+    "auto": 1
+   },
+   "examples": [
+    "auto:L:[body]"
+   ]
+  },
+  {
+   "code": "XTAS103",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 284,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XWHA01",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 18,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  },
+  {
+   "code": "XWHA02",
+   "tmpl": "Standard",
+   "claude": true,
+   "red": 90,
+   "nearred": 0,
+   "black": 0,
+   "other": 0,
+   "nonred_lead": 0,
+   "nonred_mid": 0,
+   "colours": {},
+   "examples": []
+  }
+ ],
+ "totals": {
+  "red": 96817,
+  "red_lead": 86857,
+  "red_mid": 9960,
+  "black": 300,
+  "black_lead": 204,
+  "black_mid": 96,
+  "other": 271,
+  "other_lead": 238,
+  "other_mid": 33,
+  "nearred": 598,
+  "nearred_lead": 445,
+  "nearred_mid": 153
+ },
+ "colours": {
+  "auto": 192,
+  "000000": 101,
+  "0070c0": 2,
+  "3494ba": 112,
+  "1e1f27": 1,
+  "0f0f0f": 3,
+  "c00000": 120,
+  "1155cc": 114,
+  "0000ff": 1,
+  "4a86e8": 3,
+  "0563c1": 22,
+  "ed0000": 311,
+  "374151": 3,
+  "fa0000": 165,
+  "3d3d3d": 1,
+  "212121": 4,
+  "c0504d": 3,
+  "f72b2b": 1,
+  "00b050": 1,
+  "ed1c24": 1,
+  "ffffff": 1,
+  "333333": 2,
+  "7030a0": 1,
+  "1f1f1f": 2,
+  "00ffff": 1,
+  "444444": 1
+ },
+ "nonred_tags": {
+  "carousel": 4,
+  "info trigger": 12,
+  "heading": 161,
+  "module introduction": 6,
+  "audio": 274,
+  "option": 8,
+  "external link": 18,
+  "alert": 7,
+  "body": 158,
+  "video": 37,
+  "image": 128,
+  "data marker": 51,
+  "correct": 6,
+  "audio button": 11,
+  "click drop": 41,
+  "engagement quiz button": 3,
+  "dropdown": 26,
+  "embed": 4,
+  "flip card": 5,
+  "table": 1,
+  "radio quiz": 4,
+  "drag and drop": 3,
+  "quote": 5,
+  "end page": 12,
+  "accordion": 8,
+  "button": 75,
+  "info trigger image": 1,
+  "shape n": 3,
+  "lesson": 11,
+  "answer": 4,
+  "end other": 5,
+  "mcq": 2,
+  "modal": 5,
+  "activity": 39,
+  "whakatauki": 1,
+  "important": 11,
+  "end alert": 1,
+  "end important": 3,
+  "back": 1,
+  "word select": 7,
+  "title bar": 2,
+  "speech bubble": 2,
+  "word find": 1,
+  "checklist": 1,
+  "end activity": 1
+ }
+}

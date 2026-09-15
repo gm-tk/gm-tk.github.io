@@ -1,0 +1,22 @@
+module     red  blue black  links | gold: <audio aButton aTrigger  audioImg
+ANZH301      1     2     0      0 | gold:      3       0        0         0
+BLL134       0     0     6      0 | gold:      0       6        8         0
+BLL140       4     4     0      4 | gold:      0       4       70         0
+BLL146       0     6     0      6 | gold:      5       0        0         3
+BLL150       1     5     0      5 | gold:      0       6       93         0
+BLL151       0     2     0      2 | gold:      1       0        1         0
+BLL157       6     2     0      2 | gold:      1      10        0         3
+BLL160       0     8     0      8 | gold:      0      14       78         0
+BLL162       7     1     0      1 | gold:      1       8        0         0
+BLL170       0     6     0      6 | gold:      1      11       24         0
+BLL172       0     1     4      1 | gold:      4       0        0         3
+BLL210       0    15     0     15 | gold:      0       2       81         0
+BLL212       0     3     0      3 | gold:      2      11        0         0
+BLL220       6    10     1     10 | gold:      0       6        0         1
+BLL222       0     6     0      6 | gold:      0      16        0         0
+BLL227       0     5     0      5 | gold:      0       5        0         0
+BLL230       0     5     1      5 | gold:      0      26       12         3
+BLL241       0     7     0      7 | gold:      0      21        1         2
+BLL251       0     0     3      3 | gold:      2      18        0         0
+CHFUN07      1     0     1      0 | gold:      0       0       10         0
+TOTAL    {'red': 26, 'links': 89, 'blue': 88, '<audio': 20, 'aButton': 164, 'aTrigger': 378, 'audioImg': 15, 'black': 16}

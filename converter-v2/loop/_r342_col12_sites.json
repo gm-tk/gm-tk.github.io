@@ -1,0 +1,3782 @@
+[
+ {
+  "code": "AGH1003",
+  "tmpl": "Standard",
+  "cp": "AGH1003_1_0.html",
+  "hp": "AGH1003_01.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              ol",
+   "                \u250c 19\u00d7 repeated:",
+   "                  li"
+  ]
+ },
+ {
+  "code": "ANZH104",
+  "tmpl": "Standard",
+  "cp": "ANZH104_5_0.html",
+  "hp": "ANZH104_05.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=5B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              img.img-fluid"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              \u250c 12\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "ANZH104",
+  "tmpl": "Standard",
+  "cp": "ANZH104_6_0.html",
+  "hp": "ANZH104_06.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-md-12.col-12",
+   "                p",
+   "                a",
+   "                  div.externalButton",
+   "          div.row"
+  ],
+  "cctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ]
+ },
+ {
+  "code": "ANZH304",
+  "tmpl": "Standard",
+  "cp": "ANZH304_3_0.html",
+  "hp": "ANZH304_0.3.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              div.table-responsive"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        div.activity[number=3A]"
+  ]
+ },
+ {
+  "code": "BLL113",
+  "tmpl": "Standard",
+  "cp": "BLL113_1_0.html",
+  "hp": "BLL113-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.row",
+   "              div.col-md-6.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "BLL113",
+  "tmpl": "Standard",
+  "cp": "BLL113_1_0.html",
+  "hp": "BLL113-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=1C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              h5",
+   "              p",
+   "              ul"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul"
+  ]
+ },
+ {
+  "code": "BLL114",
+  "tmpl": "Standard",
+  "cp": "BLL114_1_0.html",
+  "hp": "BLL114-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              img.img-fluid",
+   "              p"
+  ],
+  "cctx": [
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              \u250c 2\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "BLL121",
+  "tmpl": "Standard",
+  "cp": "BLL121_1_0.html",
+  "hp": "BLL121-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-md-12.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                b"
+  ]
+ },
+ {
+  "code": "BLL121",
+  "tmpl": "Standard",
+  "cp": "BLL121_1_0.html",
+  "hp": "BLL121-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "                \u250c 2\u00d7 repeated:",
+   "                  p",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "                b",
+   "              p"
+  ],
+  "cctx": [
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                b",
+   "              p"
+  ]
+ },
+ {
+  "code": "BLL121",
+  "tmpl": "Standard",
+  "cp": "BLL121_2_0.html",
+  "hp": "BLL121-03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=2E]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.row",
+   "              \u250c 3\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2E]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "  div#footer"
+  ]
+ },
+ {
+  "code": "BLL146",
+  "tmpl": "Standard",
+  "cp": "BLL146_2_0.html",
+  "hp": "BLL146-2.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row.supervisor"
+  ]
+ },
+ {
+  "code": "BLL147",
+  "tmpl": "Standard",
+  "cp": "BLL147_1_1.html",
+  "hp": "BLL147-2.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            WIDGET",
+   "    div.row.supervisor"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "BLL147",
+  "tmpl": "Standard",
+  "cp": "BLL147_1_1.html",
+  "hp": "BLL147-2.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=2C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                b"
+  ]
+ },
+ {
+  "code": "BLL153",
+  "tmpl": "Standard",
+  "cp": "BLL153_1_0.html",
+  "hp": "BLL153-1.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=1D]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated block of 2:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1D]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                a",
+   "              \u250c 7\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "BLL161",
+  "tmpl": "Standard",
+  "cp": "BLL161_1_0.html",
+  "hp": "BLL161-1.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "BLL163",
+  "tmpl": "Standard",
+  "cp": "BLL163_1_0.html",
+  "hp": "BLL163_1.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1E]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1E]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                a"
+  ]
+ },
+ {
+  "code": "BLL163",
+  "tmpl": "Standard",
+  "cp": "BLL163_1_1.html",
+  "hp": "BLL163_2.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-md-12.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ],
+  "cctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ]
+ },
+ {
+  "code": "BLL172",
+  "tmpl": "Standard",
+  "cp": "BLL172_2_0.html",
+  "hp": "BLL172-02.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2D]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2D]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "BLL220",
+  "tmpl": "Inquiry",
+  "cp": "BLL220_0_0.html",
+  "hp": "BLL220.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "                  div.col-12",
+   "                    p",
+   "            div.row",
+   "              div.col-md-12.col-12",
+   "                h3",
+   "                \u250c 2\u00d7 repeated block of 2:",
+   "                  p",
+   "                  WIDGET"
+  ],
+  "cctx": [
+   "                div.col-12",
+   "                  p",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                \u250c 2\u00d7 repeated block of 2:",
+   "                  p",
+   "                  WIDGET"
+  ]
+ },
+ {
+  "code": "BLL236",
+  "tmpl": "Standard",
+  "cp": "BLL236_1_0.html",
+  "hp": "BLL236-1.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row.justify-content-center.text-center.gy-4",
+   "            \u250c 3\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "              \u250c 3\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "BLL240",
+  "tmpl": "Inquiry",
+  "cp": "BLL240_0_0.html",
+  "hp": "BLL240-0.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              p",
+   "        \u250c 2\u00d7 repeated:",
+   "          p",
+   "        div.videoSection.ratio.ratio-16x9"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              p",
+   "      div.col-md-8.col-12.paddingR",
+   "        p",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "BLL252",
+  "tmpl": "Standard",
+  "cp": "BLL252_1_0.html",
+  "hp": "BLL252_0.1.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "BLL252",
+  "tmpl": "Standard",
+  "cp": "BLL252_2_0.html",
+  "hp": "BLL252_0.2.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "                b",
+   "              \u250c 2\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                b",
+   "              \u250c 2\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "BLL252",
+  "tmpl": "Standard",
+  "cp": "BLL252_2_0.html",
+  "hp": "BLL252_0.2.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=2B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                \u250c 3\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                span.infoTrigger"
+  ]
+ },
+ {
+  "code": "BLL252",
+  "tmpl": "Standard",
+  "cp": "BLL252_2_0.html",
+  "hp": "BLL252_0.2.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=2C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              WIDGET"
+  ]
+ },
+ {
+  "code": "BLL253",
+  "tmpl": "Standard",
+  "cp": "BLL253_1_0.html",
+  "hp": "BLL253_0_1.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              audio.audioPlayer.icon"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 4\u00d7 repeated:",
+   "                p",
+   "              audio.audioPlayer.icon"
+  ]
+ },
+ {
+  "code": "BLL253",
+  "tmpl": "Standard",
+  "cp": "BLL253_1_0.html",
+  "hp": "BLL253_0_1.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              div.videoSection.ratio.ratio-16x9",
+   "                iframe"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              div.videoSection.ratio.ratio-16x9",
+   "                iframe"
+  ]
+ },
+ {
+  "code": "BLL253",
+  "tmpl": "Standard",
+  "cp": "BLL253_2_0.html",
+  "hp": "BLL253_0_2.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "                span.infoTrigger",
+   "              p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                span.infoTrigger",
+   "              p"
+  ]
+ },
+ {
+  "code": "BLL253",
+  "tmpl": "Standard",
+  "cp": "BLL253_2_0.html",
+  "hp": "BLL253_0_2.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity[number=2B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 3\u00d7 repeated:",
+   "                p",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "BLL253",
+  "tmpl": "Standard",
+  "cp": "BLL253_2_0.html",
+  "hp": "BLL253_0_2.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.activity.super-content-button[number=2D]",
+   "          div.super-content.row",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                div.col-12",
+   "                  p",
+   "                    br"
+  ],
+  "cctx": [
+   "        div.activity.super-content-button[number=2D]",
+   "          div.super-content.row",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-12",
+   "                p",
+   "          div.row"
+  ]
+ },
+ {
+  "code": "BLL253",
+  "tmpl": "Standard",
+  "cp": "BLL253_2_0.html",
+  "hp": "BLL253_0_2.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "                  p",
+   "                    br",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-md-12.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              div.ratio.ratio-16x9",
+   "                iframe"
+  ]
+ },
+ {
+  "code": "CEDT501",
+  "tmpl": "Standard",
+  "cp": "CEDT501_5_0.html",
+  "hp": "CEDT501_5.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "CHFUN06",
+  "tmpl": "Fundamentals",
+  "cp": "CHFUN06_0_0.html",
+  "hp": "CHFUN06_0_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.col-md-11.col-12",
+   "          div.activity.interactive[number=1B]",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                p",
+   "            div.row",
+   "              div.col-md-11.col-12"
+  ],
+  "cctx": [
+   "        div.col-md-8.col-12",
+   "          div.activity.interactive[number=1B]",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                WIDGET",
+   "      div.row",
+   "        div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "CHFUN07",
+  "tmpl": "Fundamentals",
+  "cp": "CHFUN07_0_0.html",
+  "hp": "CHFUN07_0_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.col-md-11.col-12",
+   "          div.activity.interactive[number=2B]",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                p",
+   "                  b",
+   "                    i"
+  ],
+  "cctx": [
+   "        div.col-md-8.col-12",
+   "          div.activity.interactive[number=2B]",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                WIDGET",
+   "      div.row",
+   "        div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "ENFUN02",
+  "tmpl": "Fundamentals",
+  "cp": "ENFUN02_0_0.html",
+  "hp": "ENFUN02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.col-11",
+   "          div.activity.interactive[number=4A]",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                p",
+   "            div.row",
+   "              div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "        div.col-md-8.col-12",
+   "          div.activity.interactive[number=4A]",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                p",
+   "            div.row",
+   "              div.col-md-12.col-12"
+  ]
+ },
+ {
+  "code": "ENFUN03",
+  "tmpl": "Fundamentals",
+  "cp": "ENFUN03_0_0.html",
+  "hp": "ENFUN03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.col-11",
+   "          div.activity.interactive[number=1A]",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                p",
+   "                  \u250c 2\u00d7 repeated:",
+   "                    span.infoTrigger"
+  ],
+  "cctx": [
+   "        div.col-md-8.col-12",
+   "          div.activity.interactive[number=1A]",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                p",
+   "                  span.infoTrigger",
+   "                p"
+  ]
+ },
+ {
+  "code": "ENFUN03",
+  "tmpl": "Fundamentals",
+  "cp": "ENFUN03_0_0.html",
+  "hp": "ENFUN03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.col-11",
+   "          div.activity.interactive[number=1B]",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                \u250c 2\u00d7 repeated:",
+   "                  p",
+   "            div.row"
+  ],
+  "cctx": [
+   "        div.col-md-8.col-12",
+   "          div.activity.interactive[number=1B]",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                \u250c 2\u00d7 repeated:",
+   "                  p",
+   "            div.row"
+  ]
+ },
+ {
+  "code": "ENFUN03",
+  "tmpl": "Fundamentals",
+  "cp": "ENFUN03_0_0.html",
+  "hp": "ENFUN03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.col-11",
+   "          div.activity.interactive[number=2B]",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                p",
+   "            div.row",
+   "              div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "        div.col-md-8.col-12",
+   "          div.activity.interactive[number=2B]",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                p",
+   "            div.row",
+   "              div.col-md-12.col-12"
+  ]
+ },
+ {
+  "code": "ENFUN04",
+  "tmpl": "Fundamentals",
+  "cp": "ENFUN04_0_0.html",
+  "hp": "ENFUN04.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "        div.col-11",
+   "          div.activity.interactive[number=4A]",
+   "            div.row",
+   "              div.col-md-8.col-12",
+   "                h3",
+   "                p",
+   "            div.row",
+   "              div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "        div.col-md-8.col-12",
+   "          div.activity.interactive[number=4A]",
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "                p",
+   "            div.row",
+   "              div.col-md-12.col-12"
+  ]
+ },
+ {
+  "code": "ENGC102",
+  "tmpl": "Standard",
+  "cp": "ENGC102_4_0.html",
+  "hp": "ENGC102_4.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "ENGC102",
+  "tmpl": "Standard",
+  "cp": "ENGC102_5_0.html",
+  "hp": "ENGC102_5.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=5A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "ENGC102",
+  "tmpl": "Standard",
+  "cp": "ENGC102_5_0.html",
+  "hp": "ENGC102_5.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity[number=5C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "                em",
+   "              p",
+   "                em"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=5C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                i",
+   "              div.ratio.ratio-16x9"
+  ]
+ },
+ {
+  "code": "ENGC102",
+  "tmpl": "Standard",
+  "cp": "ENGC102_6_0.html",
+  "hp": "ENGC102_6.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-8",
+   "        div.activity.interactive[number=6A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=6A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row.supervisor"
+  ]
+ },
+ {
+  "code": "ENGC102",
+  "tmpl": "Standard",
+  "cp": "ENGC102_6_0.html",
+  "hp": "ENGC102_6.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-md-12.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ],
+  "cctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ]
+ },
+ {
+  "code": "ENGC102",
+  "tmpl": "Standard",
+  "cp": "ENGC102_7_0.html",
+  "hp": "ENGC102_7.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=7A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "              div.videoSection.ratio.ratio-16x9",
+   "                iframe"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=7A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              div.videoSection.ratio.ratio-16x9",
+   "                iframe"
+  ]
+ },
+ {
+  "code": "ENGC202",
+  "tmpl": "Standard",
+  "cp": "ENGC202_6_0.html",
+  "hp": "ENGC202_6.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=6A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "                i",
+   "            div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=6A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                i",
+   "              WIDGET"
+  ]
+ },
+ {
+  "code": "ENGC301",
+  "tmpl": "Standard",
+  "cp": "ENGC301_2_0.html",
+  "hp": "ENGC301_0.2.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=2C]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "            div.col-md-8.col-12",
+   "              p",
+   "                \u250c 3\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                \u250c 3\u00d7 repeated:",
+   "                  b"
+  ]
+ },
+ {
+  "code": "ENGC301",
+  "tmpl": "Standard",
+  "cp": "ENGC301_5_0.html",
+  "hp": "ENGC301_0.5.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive.alertPadding[number=5A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=5A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "ENGC401",
+  "tmpl": "Standard",
+  "cp": "ENGC401_6_0.html",
+  "hp": "ENGC401_0.6.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=6A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "                span.infoTrigger",
+   "          div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=6A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "  div#footer"
+  ]
+ },
+ {
+  "code": "ENGS401",
+  "tmpl": "Standard",
+  "cp": "ENGS401_5_0.html",
+  "hp": "ENGS401_5.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            WIDGET",
+   "    div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "HIS1002",
+  "tmpl": "Standard",
+  "cp": "HIS1002_3_0.html",
+  "hp": "HIS1002-2.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "              \u250c 2\u00d7 repeated:",
+   "                b",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              WIDGET",
+   "      div.row",
+   "        div.col-md-8.col-12",
+   "          h2"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3B]",
+   "          div.row",
+   "            div.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        h3"
+  ]
+ },
+ {
+  "code": "HIS1003",
+  "tmpl": "Standard",
+  "cp": "HIS1003_5_0.html",
+  "hp": "HIS1003_5.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "            div.col-md-4.offset-md-0.col-12.paddingL"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        div.activity[number=5A]"
+  ]
+ },
+ {
+  "code": "HIS1004",
+  "tmpl": "Standard",
+  "cp": "HIS1004_8_0.html",
+  "hp": "HIS1004_8.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.dropbox[number=8B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              ol",
+   "                li",
+   "              h4"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=8B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              ol",
+   "                li",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "HPRE203",
+  "tmpl": "Standard",
+  "cp": "HPRE203_4_0.html",
+  "hp": "HPRE203_4_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=4B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              WIDGET"
+  ]
+ },
+ {
+  "code": "HPRE203",
+  "tmpl": "Standard",
+  "cp": "HPRE203_4_0.html",
+  "hp": "HPRE203_4_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=4C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-md-12.col-12",
+   "              div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=4C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "HPRE203",
+  "tmpl": "Standard",
+  "cp": "HPRE203_6_0.html",
+  "hp": "HPRE203_6_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=6A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-md-12.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=6A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "MXEO201",
+  "tmpl": "Standard",
+  "cp": "MXEO201_2_0.html",
+  "hp": "MXEO201_01.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "            WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              h5"
+  ]
+ },
+ {
+  "code": "MXEO201",
+  "tmpl": "Standard",
+  "cp": "MXEO201_2_0.html",
+  "hp": "MXEO201_01.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.alertPadding.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-md-12.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "MXEO201",
+  "tmpl": "Standard",
+  "cp": "MXEO201_6_0.html",
+  "hp": "MXEO201_03.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=3C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "            div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=3C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              p"
+  ]
+ },
+ {
+  "code": "MXEO201",
+  "tmpl": "Standard",
+  "cp": "MXEO201_8_0.html",
+  "hp": "MXEO201_04.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=4A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=4A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              \u250c 5\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "MXEO401",
+  "tmpl": "Standard",
+  "cp": "MXEO401_1_0.html",
+  "hp": "MXEO401_1.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1C]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "MXFL102",
+  "tmpl": "Standard",
+  "cp": "MXFL102_1_0.html",
+  "hp": "MXFL102_1.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              div.videoSection.ratio.ratio-16x9",
+   "                iframe"
+  ]
+ },
+ {
+  "code": "MXFL204",
+  "tmpl": "Standard",
+  "cp": "MXFL204_3_0.html",
+  "hp": "MXFL204_3.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-md-12.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              div.videoSection.icon.ratio.ratio-16x9",
+   "                iframe"
+  ]
+ },
+ {
+  "code": "MXFL301",
+  "tmpl": "Standard",
+  "cp": "MXFL301_6_0.html",
+  "hp": "MXFL301_06.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        \u250c 2\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=6B]",
+   "          div.row",
+   "            div.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        \u250c 2\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "MXFL302",
+  "tmpl": "Standard",
+  "cp": "MXFL302_6_0.html",
+  "hp": "MXFL302_06.1.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        div.activity[number=6F]"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=6E]",
+   "          div.row",
+   "            div.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        div.activity[number=6F]"
+  ]
+ },
+ {
+  "code": "MXFL302",
+  "tmpl": "Standard",
+  "cp": "MXFL302_8_0.html",
+  "hp": "MXFL302_08.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              WIDGET",
+   "      div.col-md-4.offset-md-0.col-12",
+   "        div.alertActivity",
+   "          h4"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=8F]",
+   "          div.row",
+   "            div.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        div.activity.dropbox[number=8G]"
+  ]
+ },
+ {
+  "code": "MXFU201",
+  "tmpl": "Standard",
+  "cp": "MXFU201_1_0.html",
+  "hp": "MXFU201_1.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSAH401",
+  "tmpl": "Standard",
+  "cp": "OSAH401_2_0.html",
+  "hp": "OSAH401_2.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-10.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "OSAH401",
+  "tmpl": "Standard",
+  "cp": "OSAH401_3_0.html",
+  "hp": "OSAH401_3.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-10.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "  div#footer"
+  ]
+ },
+ {
+  "code": "OSAH401",
+  "tmpl": "Standard",
+  "cp": "OSAH401_4_0.html",
+  "hp": "OSAH401_4.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-10.col-12",
+   "        div.activity[number=4B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              a",
+   "                div.button"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=4B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              a",
+   "                div.button"
+  ]
+ },
+ {
+  "code": "OSAI201",
+  "tmpl": "Standard",
+  "cp": "OSAI201_2_0.html",
+  "hp": "OSAI201-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=2C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "          WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "OSAI201",
+  "tmpl": "Standard",
+  "cp": "OSAI201_3_0.html",
+  "hp": "OSAI201-03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-10.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.table-responsive",
+   "            table.table.table-bordered.td-hover"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSAI401",
+  "tmpl": "Standard",
+  "cp": "OSAI401_1_0.html",
+  "hp": "OSAI401-01.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              h4",
+   "            div.col-md-4.offset-md-0.col-12.paddingL"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              p"
+  ]
+ },
+ {
+  "code": "OSAI401",
+  "tmpl": "Standard",
+  "cp": "OSAI401_1_0.html",
+  "hp": "OSAI401-01.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSAI401",
+  "tmpl": "Standard",
+  "cp": "OSAI401_2_0.html",
+  "hp": "OSAI401-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "  div#footer"
+  ]
+ },
+ {
+  "code": "OSAI501",
+  "tmpl": "Standard",
+  "cp": "OSAI501_1_0.html",
+  "hp": "OSAI501-01.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "          div.row",
+   "            div.col-md-6.offset-md-3.col-12",
+   "              img.img-fluid"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSAI501",
+  "tmpl": "Standard",
+  "cp": "OSAI501_2_0.html",
+  "hp": "OSAI501-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              ul",
+   "                \u250c 3\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              ul",
+   "                \u250c 3\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "OSAI501",
+  "tmpl": "Standard",
+  "cp": "OSAI501_3_0.html",
+  "hp": "OSAI501-03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "                \u250c 2\u00d7 repeated:",
+   "                  b"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSAI501",
+  "tmpl": "Standard",
+  "cp": "OSAI501_3_0.html",
+  "hp": "OSAI501-03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=3B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              WIDGET"
+  ]
+ },
+ {
+  "code": "OSAI501",
+  "tmpl": "Standard",
+  "cp": "OSAI501_4_0.html",
+  "hp": "OSAI501-04.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "                \u250c 2\u00d7 repeated:",
+   "                  b"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "  div#footer"
+  ]
+ },
+ {
+  "code": "OSAI501",
+  "tmpl": "Standard",
+  "cp": "OSAI501_5_0.html",
+  "hp": "OSAI501-05.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=5B]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "              a",
+   "                div.button"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=5C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              a",
+   "                div.button"
+  ]
+ },
+ {
+  "code": "OSBY101",
+  "tmpl": "Standard",
+  "cp": "OSBY101_3_0.html",
+  "hp": "OSBY101-03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              WIDGET"
+  ]
+ },
+ {
+  "code": "OSBY201",
+  "tmpl": "Standard",
+  "cp": "OSBY201_1_0.html",
+  "hp": "OSBY201-01.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-10.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          WIDGET",
+   "    div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "OSBY201",
+  "tmpl": "Standard",
+  "cp": "OSBY201_2_0.html",
+  "hp": "OSBY201-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSBY501",
+  "tmpl": "Standard",
+  "cp": "OSBY501_2_0.html",
+  "hp": "OSBY501-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              h4",
+   "              \u250c 3\u00d7 repeated:",
+   "                p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              WIDGET"
+  ]
+ },
+ {
+  "code": "OSBY501",
+  "tmpl": "Standard",
+  "cp": "OSBY501_2_0.html",
+  "hp": "OSBY501-02.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=2C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=2B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSBY501",
+  "tmpl": "Standard",
+  "cp": "OSBY501_4_0.html",
+  "hp": "OSBY501-04.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSGM101",
+  "tmpl": "Standard",
+  "cp": "OSGM101_1_0.html",
+  "hp": "OSGM101_1.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSGM201",
+  "tmpl": "Standard",
+  "cp": "OSGM201_1_0.html",
+  "hp": "OSGM201_1.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "          div.row",
+   "            div.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              WIDGET",
+   "  div#footer",
+   "    ul.footer-nav"
+  ]
+ },
+ {
+  "code": "OSGM201",
+  "tmpl": "Standard",
+  "cp": "OSGM201_2_0.html",
+  "hp": "OSGM201_2.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-md-12.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ],
+  "cctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ]
+ },
+ {
+  "code": "OSOH201",
+  "tmpl": "Standard",
+  "cp": "OSOH201_1_0.html",
+  "hp": "OSOH201_1.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-md-12.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ],
+  "cctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-12",
+   "                p",
+   "          div.row",
+   "            div.col-12",
+   "              h3"
+  ]
+ },
+ {
+  "code": "OSSC401",
+  "tmpl": "Standard",
+  "cp": "OSSC401_3_0.html",
+  "hp": "OSSC401_3_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSSC401",
+  "tmpl": "Standard",
+  "cp": "OSSC401_4_0.html",
+  "hp": "OSSC401_4_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "              div.clickDropContent"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSSC501",
+  "tmpl": "Standard",
+  "cp": "OSSC501_1_0.html",
+  "hp": "OSSC501_1_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "OSSC501",
+  "tmpl": "Standard",
+  "cp": "OSSC501_2_0.html",
+  "hp": "OSSC501_2_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "OSSC501",
+  "tmpl": "Standard",
+  "cp": "OSSC501_3_0.html",
+  "hp": "OSSC501_3_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "  div#footer"
+  ]
+ },
+ {
+  "code": "OSSC501",
+  "tmpl": "Standard",
+  "cp": "OSSC501_4_0.html",
+  "hp": "OSSC501_4_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 3\u00d7 repeated:",
+   "                p",
+   "          div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 3\u00d7 repeated:",
+   "                p",
+   "              WIDGET"
+  ]
+ },
+ {
+  "code": "OSSC501",
+  "tmpl": "Standard",
+  "cp": "OSSC501_5_0.html",
+  "hp": "OSSC501_5_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=5A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "PNR102",
+  "tmpl": "Bilingual",
+  "cp": "PNR102_1_0.html",
+  "hp": "PNR102_1_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1.1]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                h2",
+   "              \u250c 6\u00d7 repeated:",
+   "                p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1.1]",
+   "          div.row",
+   "            div.col-12",
+   "              \u250c 4\u00d7 repeated:",
+   "                h2",
+   "              \u250c 6\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "PNR102",
+  "tmpl": "Bilingual",
+  "cp": "PNR102_1_0.html",
+  "hp": "PNR102_1_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1.2]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                h2",
+   "              \u250c 2\u00d7 repeated:",
+   "                p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1.2]",
+   "          div.row",
+   "            div.col-12",
+   "              \u250c 4\u00d7 repeated:",
+   "                h2",
+   "              \u250c 4\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "PNR104",
+  "tmpl": "Bilingual",
+  "cp": "PNR104_2_0.html",
+  "hp": "PNR104_2_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2.2]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                h2",
+   "              \u250c 6\u00d7 repeated:",
+   "                p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2.2]",
+   "          div.row",
+   "            div.col-12",
+   "              \u250c 4\u00d7 repeated:",
+   "                h2",
+   "              \u250c 8\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "PNR104",
+  "tmpl": "Bilingual",
+  "cp": "PNR104_2_0.html",
+  "hp": "PNR104_2_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2.3]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                h2",
+   "              \u250c 2\u00d7 repeated:",
+   "                p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2.3]",
+   "          div.row",
+   "            div.col-12",
+   "              \u250c 4\u00d7 repeated:",
+   "                h2",
+   "              \u250c 2\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "TRR109",
+  "tmpl": "Bilingual",
+  "cp": "TRR109_4_0.html",
+  "hp": "TRR109_3.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3.3]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4.4]",
+   "          div.row",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                h3",
+   "              \u250c 3\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "XDLS502",
+  "tmpl": "Standard",
+  "cp": "XDLS502_4_0.html",
+  "hp": "XDLS502.03.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              p",
+   "              ul",
+   "                \u250c 3\u00d7 repeated:",
+   "                  li"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              p",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        \u250c 3\u00d7 repeated block of 2:"
+  ]
+ },
+ {
+  "code": "XDLS502",
+  "tmpl": "Standard",
+  "cp": "XDLS502_4_0.html",
+  "hp": "XDLS502.03.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-md-12.col-12",
+   "                \u250c 2\u00d7 repeated:",
+   "                  p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "            div.row",
+   "              div.col-12",
+   "                h3",
+   "              div.col-12",
+   "                p",
+   "                  b",
+   "          div.row",
+   "            div.col-12"
+  ]
+ },
+ {
+  "code": "XDLS904",
+  "tmpl": "Standard",
+  "cp": "XDLS904_1_0.html",
+  "hp": "XDLS904_01.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS904",
+  "tmpl": "Standard",
+  "cp": "XDLS904_2_0.html",
+  "hp": "XDLS904_02.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS904",
+  "tmpl": "Standard",
+  "cp": "XDLS904_3_0.html",
+  "hp": "XDLS904_03.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS904",
+  "tmpl": "Standard",
+  "cp": "XDLS904_4_0.html",
+  "hp": "XDLS904_04.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS904",
+  "tmpl": "Standard",
+  "cp": "XDLS904_5_0.html",
+  "hp": "XDLS904_05.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS904",
+  "tmpl": "Standard",
+  "cp": "XDLS904_7_0.html",
+  "hp": "XDLS904_07.0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS905",
+  "tmpl": "Standard",
+  "cp": "XDLS905_2_0.html",
+  "hp": "XDLS905.02.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS905",
+  "tmpl": "Standard",
+  "cp": "XDLS905_3_0.html",
+  "hp": "XDLS905.03.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS905",
+  "tmpl": "Standard",
+  "cp": "XDLS905_4_0.html",
+  "hp": "XDLS905.04.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS905",
+  "tmpl": "Standard",
+  "cp": "XDLS905_5_0.html",
+  "hp": "XDLS905.05.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS905",
+  "tmpl": "Standard",
+  "cp": "XDLS905_6_0.html",
+  "hp": "XDLS905.06.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-8.col-12.super-content-button.paddingL",
+   "        div.row.super-content",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12.super-content-button",
+   "        div.super-content.row",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p"
+  ]
+ },
+ {
+  "code": "XDLS906",
+  "tmpl": "Standard",
+  "cp": "XDLS906_2_0.html",
+  "hp": "XDLS906_02_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS906",
+  "tmpl": "Standard",
+  "cp": "XDLS906_3_0.html",
+  "hp": "XDLS906_03_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS906",
+  "tmpl": "Standard",
+  "cp": "XDLS906_5_0.html",
+  "hp": "XDLS906_05_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS906",
+  "tmpl": "Standard",
+  "cp": "XDLS906_6_0.html",
+  "hp": "XDLS906_06_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XDLS906",
+  "tmpl": "Standard",
+  "cp": "XDLS906_7_0.html",
+  "hp": "XDLS906_07_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-md-12.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                ul"
+  ],
+  "cctx": [
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "            div.col-12",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              ul",
+   "                li"
+  ]
+ },
+ {
+  "code": "XFUN02",
+  "tmpl": "Fundamentals",
+  "cp": "XFUN02_4_0.html",
+  "hp": "XFUN02.03.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "XGF9001",
+  "tmpl": "Standard",
+  "cp": "XGF9001_4_0.html",
+  "hp": "XGF9001-03.1.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-10.col-12",
+   "        div.activity.interactive[number=3D]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            WIDGET",
+   "            p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=4E]",
+   "          div.row",
+   "            div.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        p"
+  ]
+ },
+ {
+  "code": "XLP06",
+  "tmpl": "Standard",
+  "cp": "XLP06_1_0.html",
+  "hp": "XLP06-01.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "            div.col-md-8.col-12.paddingR",
+   "              p",
+   "                \u250c 3\u00d7 repeated:"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                a",
+   "              \u250c 2\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "XLP06",
+  "tmpl": "Standard",
+  "cp": "XLP06_1_0.html",
+  "hp": "XLP06-01.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity[number=1C]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "            div.col-md-12.col-12",
+   "              WIDGET"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1C]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_1_0.html",
+  "hp": "XMES201_1_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-8",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_1_0.html",
+  "hp": "XMES201_1_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              WIDGET",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=1C]",
+   "          div.row",
+   "            div.col-12",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12",
+   "        h4"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_1_0.html",
+  "hp": "XMES201_1_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-8",
+   "        div.activity.alertPadding.dropbox[number=1E]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              a"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_2_0.html",
+  "hp": "XMES201_2_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-8",
+   "        div.activity.interactive.dropbox.alertPadding[number=2D]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "              div.row",
+   "                div.col-md-6.offset-md-0.col-12.paddingR.align-self-center"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.dropbox.interactive[number=2D]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "              a"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_2_0.html",
+  "hp": "XMES201_2_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive.dropbox[number=2D]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                b"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.dropbox.interactive[number=2E]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "              \u250c 3\u00d7 repeated:"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_2_0.html",
+  "hp": "XMES201_2_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-8",
+   "        div.activity.interactive.dropbox[number=2E]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-12.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.dropbox[number=2F]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "              p"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_3_0.html",
+  "hp": "XMES201_3_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              WIDGET",
+   "    div.row",
+   "      div.col-md-8.col-12"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_4_0.html",
+  "hp": "XMES201_4_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=4A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                b"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=4A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                b",
+   "              ul"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_4_0.html",
+  "hp": "XMES201_4_0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-12",
+   "        div.activity.interactive[number=4B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                b"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=4B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "                b",
+   "              ul"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_5_0.html",
+  "hp": "XMES201_5_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-8",
+   "        div.activity.alertPadding.dropbox[number=5A]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              a"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.dropbox[number=5A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              a",
+   "                div.button.externalButton"
+  ]
+ },
+ {
+  "code": "XMES201",
+  "tmpl": "Standard",
+  "cp": "XMES201_5_0.html",
+  "hp": "XMES201_5_0.html",
+  "gold": "div.col-md-12.col-12",
+  "gctx": [
+   "      div.col-8",
+   "        div.activity.alertPadding.dropbox[number=5B]",
+   "          div.row",
+   "            div.col-md-12.col-12",
+   "              h3",
+   "              \u250c 3\u00d7 repeated:",
+   "                p",
+   "              div.videoSection.ratio.ratio-16x9"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity[number=5B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "      div.col-md-4.offset-md-0.col-12"
+  ]
+ },
+ {
+  "code": "XTAS101",
+  "tmpl": "Standard",
+  "cp": "XTAS101_1_0.html",
+  "hp": "XTAS101_1.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive.dropbox[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "              p"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              p",
+   "                b"
+  ]
+ },
+ {
+  "code": "XTAS101",
+  "tmpl": "Standard",
+  "cp": "XTAS101_2_0.html",
+  "hp": "XTAS101_2.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive.dropbox[number=2E]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-md-8.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=2D]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated block of 2:",
+   "                p",
+   "                p"
+  ]
+ },
+ {
+  "code": "XTAS103",
+  "tmpl": "Standard",
+  "cp": "XTAS103_1_0.html",
+  "hp": "XTAS103.01.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              p",
+   "          div.row",
+   "            div.col-12"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=1A]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              p",
+   "              WIDGET",
+   "    div.row"
+  ]
+ },
+ {
+  "code": "XTAS103",
+  "tmpl": "Standard",
+  "cp": "XTAS103_3_0.html",
+  "hp": "XTAS103.03.0.html",
+  "gold": "div.col-md-8.col-12",
+  "gctx": [
+   "      div.col-md-12.col-12",
+   "        div.activity.interactive[number=3B]",
+   "          div.row",
+   "            div.col-md-8.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "          div.row"
+  ],
+  "cctx": [
+   "      div.col-md-8.col-12",
+   "        div.activity.interactive[number=3B]",
+   "          div.row",
+   "            div.col-12",
+   "              h3",
+   "              \u250c 2\u00d7 repeated:",
+   "                p",
+   "              WIDGET"
+  ]
+ }
+]

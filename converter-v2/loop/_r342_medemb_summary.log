@@ -1,0 +1,44 @@
+OFF free-body media elements with embedded lead text: 359 modules 159 | by tag [('video', 136), ('embed', 129), ('audio', 90), ('audio button', 4)] | with url 220 | with blackAfter 169
+ON free-body media elements with embedded lead text: 399 modules 166 | by tag [('video', 137), ('embed', 129), ('audio', 121), ('audio button', 12)] | with url 260 | with blackAfter 169
+ON-only (the r342 hyperlinked class): 40 modules 23 [('audio', 31), ('audio button', 8), ('video', 1)]
+   BLL157 1.0 audio | [audio] floss, less, buzz, hiss, huff, fill, doll, tell, sell, fluff,  | url: https://drive.google.com/drive
+   HIS1002 13.0 video | [Link: https://www.youtube.com/watch?v=kRFAsOcK_TI ] | url: https://www.youtube.com/watch?
+   XDLS905 0.0 audio | [Audio Animation 1: Note this will be repeated across five units XDLS  | url: https://mytekuraschool.sharepo
+   XDLS905 0.0 audio | [Audio Animation 2: If it can sit beside the circles which take ākonga | url: https://mytekuraschool.sharepo
+   BLL114 2.0 audio | [audio] snap, pips, pant, ants, spin, tips, sits, spit | url: https://drive.google.com/drive
+   BLL140 0.0 audio button | [audio button] / j / | url: https://drive.google.com/drive
+   BLL140 0.0 audio | [audio] snail, paint, trail, stain, faint, train | url: https://drive.google.com/drive
+   BLL150 0.0 audio button | [audio button] / z / | url: https://drive.google.com/drive
+   BLL150 0.0 audio button | [audio button] / w / | url: https://drive.google.com/drive
+   BLL150 0.0 audio button | [audio button] / v / | url: https://drive.google.com/drive
+   BLL150 0.0 audio | [audio] room, moon, zoom, roof, food    (please note the double up of  | url: https://drive.google.com/drive
+   BLL160 0.0 audio button | [audio button] /y / | url: https://drive.google.com/drive
+   BLL160 0.0 audio button | [audio button] / x / | url: https://drive.google.com/drive
+   BLL160 0.0 audio | [audio]   bath, thin, path,  math,  (please note the double up of lett | url: https://drive.google.com/drive
+   BLL170 0.0 audio button | [audio button] / q / | url: https://drive.google.com/drive
+   BLL210 0.0 audio | [audio 2] happy, funny, puppy, jelly, bunny, carry | url: https://drive.google.com/drive
+   BLL210 0.0 audio button | [audio button] Short vowels say their sound – /a/ /e/ /i/ /o/ /u/ | url: https://drive.google.com/drive
+   BLL220 0.0 audio | [audio 1] boy, toy, soy, coy, | url: https://drive.google.com/drive
+   BLL220 0.0 audio | [audio] may, say, bay, pay, day, hay | url: https://drive.google.com/drive
+   BLL220 0.0 audio | [audio] night, fight, light, tight sight, might, right | url: https://drive.google.com/drive
+   BLL250 2.4 audio | [audio] caught, naught, taught, laughs | url: https://drive.google.com/file/
+   BLL250 2.4 audio | [audio] laughter, draught, naughty, daughter | url: https://drive.google.com/file/
+   BLL250 2.5 audio | [audio] cough, rough, tough, though, dough | url: https://drive.google.com/file/
+   BLL250 2.5 audio | [audio] through, plough, fought, bought, thought, enough | url: https://drive.google.com/file/
+   BLL115 1.0 audio | [audio] Let’s start by making the word ‘pan’.  Now we are going to mov | url: https://drive.google.com/drive
+--- OFF sample (pre-existing dropped leads):
+   ART1002 0.0 video | [Insert link 2: Video Montage of a series of videos on creating art] | bA:  | url: 
+   BLL113 1.0 audio | [audio] can we attach the audio so when the ākonga click or hover over | bA:  | url: 
+   BLL113 1.0 video | [video 1] The letter t - | bA: https://tekura.desir | url: https://tekura.desire2lea
+   BLL113 1.0 video | [video 2] the letter h - | bA: https://tekura.desir | url: https://tekura.desire2lea
+   BLL113 1.0 video | [video 3] the letter e - | bA: https://tekura.desir | url: https://tekura.desire2lea
+   BLL113 1.0 video | [video 1] The letter ‘o’ | bA:  | url: 
+   BLL113 1.0 video | [video 2] The letter ‘n’ | bA:  | url: 
+   BLL113 1.0 audio | [audio] Let’s start by making the word ‘sat’. | bA:  | url: 
+   BLL113 2.0 embed | [embed story] The story ‘Sant the Ant’ can be found - | bA: https://speldsa.org. | url: https://speldsa.org.au/pa
+   BLL117 2.0 embed | [embed story] The story ‘It’ can be found - | bA: https://speldsa.org. | url: https://speldsa.org.au/pa
+   BLL123 2.0 embed | [embed story] The story ‘Hats’ can be found - | bA: https://cdn.shopify. | url: https://cdn.shopify.com/s
+   BLL127 2.0 embed | [embed story] The story ‘Simon Says’ can be found - https://speldsa.or | bA:  | url: https://speldsa.org.au/pa
+   BLL133 1.0 audio | [audio] band, crab, drip, lamp, bugs, frog, hand, sock, pigs, snap, te | bA:  | url: 
+   BLL133 2.0 audio | [audio] miss, less, gloss, hiss, huff, puff, cuff, fluff, fill, doll,  | bA:  | url: 
+   BLL133 2.0 embed | [embed story] The story ‘Is it a…?’ can be found - | bA: https://speldsa.org. | url: https://speldsa.org.au/pa

@@ -1,0 +1,692 @@
+AGH1001: identical 6 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1003: identical 9 / changed 0
+AGH1004: identical 7 / changed 0
+AGH1005: identical 9 / changed 0
+AGH1006: identical 10 / changed 0
+AGH1007: identical 10 / changed 0
+AGH1008: identical 10 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH105: identical 8 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH303: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ANZH404: identical 7 / changed 0
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+ARFUN03: identical 1 / changed 0
+ARFUN04: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+  ~ BLL114_1_0.html: -2 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: udio will need to be snipped for each
+     - <p>[audio of instructions] - A</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Is it possible to have a self check c
+  ~ BLL114_2_0.html: -10 +21
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL114-02-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 2B — see BLL1
+     - <p>When you have made a correct word, can you tell your supervisor a sentence that has that word in it? For ex
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Is it possible to snip each word in t
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <div class="activity interactive" number="2C">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL114-02-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity (inline) — se
+     + <div style="font-size: 0.95em">
+     + <p>When you have made a correct word, can you tell your supervisor a sentence that has that word in it? For ex
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+     + … 1 more added
+BLL114: identical 1 / changed 2
+  ~ BLL115_1_0.html: -3 +3
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Let’s start by making the word ‘pan’.
+     - <td>[audio]</td>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Great work. Now by moving one letter 
+     + <td> [audio] </td>
+  ~ BLL115_2_0.html: -3 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: can we attach the audio so when the ā
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: on how to write the letter]</p>
+     + <audio preload="none" src="audio/d.mp4" class="audioPlayer icon" title=""></audio>
+BLL115: identical 1 / changed 2
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+  ~ BLL126_1_0.html: -2 +2
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Let’s start by making the word ‘pack’
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Great work. Now by moving one letter 
+BLL126: identical 2 / changed 1
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+  ~ BLL131_1_0.html: -2 +2
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Let’s start by making the word ‘pet’.
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Great work. Now by moving one letter 
+BLL131: identical 2 / changed 1
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+  ~ BLL135_1_0.html: -1 +1
+     - <p>[audio] BLL135 Heart Words</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL135: identical 2 / changed 1
+BLL136: identical 2 / changed 0
+  ~ BLL137_1_0.html: -1 +2
+     - <p>[audio] insect, laptop, basket, picnic, napkin, racket, helmet.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>insect, laptop, basket, picnic, napkin, racket, helmet.</p>
+  ~ BLL137_1_1.html: -1 +0
+     - <p>[audio]</p>
+BLL137: identical 1 / changed 2
+  ~ BLL140_0_0.html: -11 +24
+     - <p><a href="https://www.istockphoto.com/photo/flying-fighter-plane-on-white-background-gm471873473-27019676?se
+     - <p><a href="https://www.istockphoto.com/vector/incomplete-jigsaw-puzzle-gm1442727551-481959515?searchscope=ima
+     - <p><a href="https://www.istockphoto.com/photo/japanese-sea-nettle-chrysaora-pacifica-jellyfish-against-white-b
+     - <p><a href="https://www.istockphoto.com/vector/strawberry-jam-vector-isolated-illustration-gm1045492426-279786
+     - <p><a href="https://www.istockphoto.com/photo/warm-jacket-gm1317485585-404904154?searchscope=image%2Cfilm" tar
+     - <p><a href="https://www.istockphoto.com/photo/empty-glass-jar-on-a-white-gm509924370-86037003?searchscope=imag
+     - <p>[audio button] / j /</p>
+     - <p>Short vowels say their sound. [audio button]</p>
+     - <p>Long vowels say their name. <a href="https://drive.google.com/drive/u/0/folders/1lwQCcWPxwJO8PbBmrE2NhJd6nF
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: snail, paint, trail, stain, faint, tr
+     - <p><b>[audio]</b></p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-471873473" alt="Flying Fig
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-471873473.jpg" alt="Flying Fighter Plane on Whit
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1442727551" alt="Incomplet
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1442727551.jpg" alt="Incomplete Jigsaw Puzzle" /
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-943988896" alt="Japanese S
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-943988896.jpg" alt="Japanese Sea Nettle Chrysaor
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1045492426" alt="Strawberr
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1045492426.jpg" alt="Strawberry Jam Vector Isola
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1317485585" alt="Warm Jack
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1317485585.jpg" alt="Warm Jacket" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-509924370" alt="Empty Glas
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-509924370.jpg" alt="Empty Glass Jar on a White" 
+     + <div class="button audioButton">/ j /</div>
+     + <p>Short vowels say their sound.</p>
+     + <div class="button audioButton">Go to your journal</div>
+     + <p>Long vowels say their name.</p>
+     + <div class="button audioButton">Go to your journal</div>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + … 4 more added
+BLL140: identical 0 / changed 1
+  ~ BLL141_1_0.html: -22 +7
+     - <td>Ruru [audio]</td>
+     - <td>Huhu [audio]</td>
+     - <td>Tino pai [audio]</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL141-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: free, boat, seed, goal, week, road</p
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity 1C — see BLL1
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL141-01-04" style="border: 8px sol
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL141-01-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <td>Ruru [audio] </td>
+     + <td>Huhu [audio] </td>
+     + <td>Tino pai [audio] </td>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: free, boat, seed, goal, week, road</p
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL141-01-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL141-01-04" style="border: 8px sol
+BLL141: identical 2 / changed 1
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+  ~ BLL146_1_0.html: -6 +10
+     - <p>[audio 1] Kim had a roast pork bun.</p>
+     - <p>[audio 2] The rain ran into the drain.</p>
+     - <p>[audio 3] Sam had to lock the padlock.</p>
+     - <p>[audio 4] They got pies, fries and toast as a snack.</p>
+     - <p>[audio 5] Jan got a red and green dress.</p>
+     - <p>[audio]</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Kim had a roast pork bun.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>The rain ran into the drain.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Sam had to lock the padlock.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>They got pies, fries and toast as a snack.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Jan got a red and green dress.</p>
+BLL146: identical 2 / changed 1
+BLL147: identical 3 / changed 0
+  ~ BLL150_0_0.html: -24 +50
+     - <p><a href="https://www.istockphoto.com/vector/white-texture-number-zero-gm529099057-53855218?searchscope=imag
+     - <p><a href="https://www.istockphoto.com/photo/fresh-whole-and-sliced-zucchini-isolated-on-white-background-fro
+     - <p><a href="https://www.istockphoto.com/vector/zipper-isolated-on-white-background-gm466054400-59875512?search
+     - <p><a href="https://www.istockphoto.com/photo/a-zebra-shown-on-a-white-background-gm93212633-4797385?searchsco
+     - <p><a href="https://www.istockphoto.com/vector/zig-zag-shape-line-pattern-shape-element-black-zig-zag-gm133209
+     - <p><a href="https://www.istockphoto.com/photo/photography-camera-lens-concept-gm843408508-137841255?searchscop
+     - <p>[audio button] / z /</p>
+     - <p><a href="https://www.istockphoto.com/photo/whale-isolated-gm1157425909-315819852" target="_blank">https://w
+     - <p><a href="https://www.istockphoto.com/photo/sunsplashed-window-gm92450205-873482" target="_blank">https://ww
+     - <p><a href="https://www.istockphoto.com/photo/close-up-portrait-of-nice-cute-lovely-attractive-positive-cheerf
+     - <p><a href="https://www.istockphoto.com/photo/purse-with-money-gm90696338-1268338" target="_blank">https://www
+     - <p><a href="https://www.istockphoto.com/photo/flying-wasp-gm183843858-16538821" target="_blank">https://www.is
+     - <p><a href="https://www.istockphoto.com/photo/silver-whistle-gm544977460-98074341" target="_blank">https://www
+     - <p>[audio button] / w /</p>
+     - <p><a href="https://www.istockphoto.com/photo/violin-gm1442722900-481956550" target="_blank">https://www.istoc
+     - <p><a href="https://www.istockphoto.com/photo/fresh-fruits-and-vegetables-gm589415708-101211749" target="_blan
+     - <p><a href="https://www.istockphoto.com/photo/fuego-volcano-eruption-gm858018608-141555927" target="_blank">ht
+     - <p><a href="https://www.istockphoto.com/photo/porcelain-gm691762484-127601367" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/ice-cream-gm948032164-258841174" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/isolated-white-van-transporter-ready-for-branding-gm1491677620-5
+     - <p>[audio button] / v /</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Look, wood, foot, book, hood, (please
+     - <p><b>[audio]</b></p>
+     - <p><b>[audio]</b></p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-529099057" alt="White Text
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-529099057.jpg" alt="White Texture Number Zero" /
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1149201983" alt="Fresh Who
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1149201983.jpg" alt="Fresh Whole and Sliced Zucc
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-466054400" alt="Zipper Iso
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-466054400.jpg" alt="Zipper Isolated on White Bac
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-93212633" alt="A Zebra Sho
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-93212633.jpg" alt="A Zebra Shown on a White Back
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1332098559" alt="Zig Zag S
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1332098559.jpg" alt="Zig Zag Shape Line Pattern 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-843408508" alt="Photograph
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-843408508.jpg" alt="Photography Camera Lens Conc
+     + <div class="button audioButton">/ z /</div>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1157425909" alt="Whale Iso
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1157425909.jpg" alt="Whale Isolated" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-92450205" alt="Sunsplashed
+     + … 30 more added
+BLL150: identical 0 / changed 1
+  ~ BLL151_1_0.html: -2 +1
+     - <p>[Audio] l</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ooking, stands, waiting, jumps, stand
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+  ~ BLL151_2_0.html: -1 +2
+     - <p><a href="https://drive.google.com/drive/folders/1nTSU8nhzlzXMoRxn1fyW-FF7PUd73C7F" target="_blank">[audio]<
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>said</p>
+BLL151: identical 1 / changed 2
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+  ~ BLL154_1_0.html: -1 +1
+     - <td>[audio] stood</td>
+     + <td> [audio] stood</td>
+BLL154: identical 2 / changed 1
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+  ~ BLL157_1_0.html: -2 +1
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: floss, less, buzz, hiss, huff, fill, 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+  ~ BLL157_1_1.html: -1 +1
+     - <p><a href="https://drive.google.com/drive/folders/1nTSU8nhzlzXMoRxn1fyW-FF7PUd73C7F" target="_blank">[audio]<
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL157: identical 1 / changed 2
+  ~ BLL160_0_0.html: -68 +50
+     - <p><a href="https://www.istockphoto.com/photo/red-yams-gm1726513477-541347429" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/blot-of-yellow-water-color-on-white-background-gm154448997-20055
+     - <p><a href="https://www.istockphoto.com/photo/empty-backyard-with-green-grass-and-wood-fence-gm1461669465-4955
+     - <p><a href="https://www.istockphoto.com/photo/boy-is-stretching-and-yawning-gm525737237-52154062" target="_bla
+     - <p><a href="https://www.istockphoto.com/photo/red-yoyo-gm1263471487-369831562" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/raw-egg-yolk-gm517542714-89544969" target="_blank">https://www.i
+     - <p>[audio button] /y /</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel — Activity 1A — see BLL160_
+     - <p><a href="https://www.istockphoto.com/photo/open-box-gm158164669-22374917" target="_blank">https://www.istoc
+     - <p><a href="https://www.istockphoto.com/vector/one-whisk-and-one-mixing-bowl-gm1329299626-413079387" target="_
+     - <p><a href="https://www.istockphoto.com/vector/axe-game-design-ui-element-flat-style-vector-illustration-gm197
+     - <p><a href="https://www.istockphoto.com/photo/plastic-number-six-gm1497550210-519885194" target="_blank">https
+     - <p>[audio button] / x /</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="BLL160-00-10" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: shot, ship, rash, shop, wish, shed, f
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dragAndDrop — Activity 3D — see BLL
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="BLL160-00-11" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="BLL160-00-12" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="BLL160-00-13" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="BLL160-00-14" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: such, rich, chat, chin, inch, chum, m
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: dragAndDrop — Activity 4D — see BLL
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="BLL160-00-15" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="BLL160-00-16" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="BLL160-00-17" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="BLL160-00-18" style="border: 8px so
+     - … 28 more removed
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1726513477" alt="Red Yams"
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1726513477.jpg" alt="Red Yams" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-154448997" alt="Blot of Ye
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-154448997.jpg" alt="Blot of Yellow Water Color o
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-154448997" alt="Blot of Ye
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-154448997.jpg" alt="Blot of Yellow Water Color o
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-525737237" alt="Boy Is Str
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-525737237.jpg" alt="Boy Is Stretching and Yawnin
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1263471487" alt="Red Yoyo"
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1263471487.jpg" alt="Red Yoyo" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-517542714" alt="Raw Egg Yo
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-517542714.jpg" alt="Raw Egg Yolk" /> -->
+     + <div class="button audioButton">/y /</div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel — Activity (inline) — see B
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-158164669" alt="Open Box" 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-158164669.jpg" alt="Open Box" /> -->
+     + … 30 more added
+BLL160: identical 0 / changed 1
+  ~ BLL161_1_0.html: -1 +1
+     - <th>[Audio] stack </th>
+     + <th> [Audio] stack </th>
+BLL161: identical 2 / changed 1
+  ~ BLL162_1_0.html: -2 +1
+     - <p>[Audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (the name in the audio folder is BLL1
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+  ~ BLL162_1_1.html: -2 +1
+     - <p><a href="https://drive.google.com/drive/folders/1wxp9lx45pBuLZq8wRQzoiwYw7VmL4tMV" target="_blank">[audio 1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: lemons, apples, onions, bread, eggs</
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL162: identical 1 / changed 2
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+  ~ BLL166_1_1.html: -2 +1
+     - <p><a href="https://drive.google.com/drive/folders/1wxp9lx45pBuLZq8wRQzoiwYw7VmL4tMV" target="_blank">[audio]<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: who, down, little</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL166: identical 2 / changed 1
+  ~ BLL167_1_1.html: -1 +1
+     - <th> Can we include the text (name of the bird) and an audio of the name as well so they have the option of bo
+     + <th> Can we include the text (name of the bird) and an audio of the name as well so they have the option of bo
+BLL167: identical 2 / changed 1
+  ~ BLL170_0_0.html: -92 +32
+     - <p>[audio button] / q /</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL170-00-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: about, sound, flour, proud, spout, ro
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dragAndDrop — Activity 2D — see BLL1
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL170-00-06" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL170-00-07" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="BLL170-00-08" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="BLL170-00-09" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: spoil, joint, coins, point, moist, av
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dragAndDrop — Activity 3D — see BLL
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="BLL170-00-10" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="BLL170-00-11" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="BLL170-00-12" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="BLL170-00-13" style="border: 8px so
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: blue, glue, true, duet, clue, fuel<br
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: dragAndDrop — Activity 4D — see BLL
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="BLL170-00-14" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="BLL170-00-15" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="BLL170-00-16" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="BLL170-00-17" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="BLL170-00-18" style="border: 8px so
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: mixer, tiger, boxer, after, germs, ne
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - … 52 more removed
+     + <div class="button audioButton">/ q /</div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL170-00-05" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL170-00-06" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="BLL170-00-07" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="BLL170-00-08" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="BLL170-00-09" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="BLL170-00-10" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="BLL170-00-11" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="BLL170-00-12" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 12 more added
+BLL170: identical 0 / changed 1
+  ~ BLL171_1_0.html: -18 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL171-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: boil, rain, coin, pain, bait, foil, n
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity 1D — see BLL1
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL171-01-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: boil, rain, coin, pain, bait, foil, n
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL171-01-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+BLL171: identical 2 / changed 1
+  ~ BLL172_1_0.html: -2 +1
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: onto, they, want - can we have the au
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL172: identical 2 / changed 1
+BLL173: identical 3 / changed 0
+  ~ BLL174_1_0.html: -2 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: please snip accordingly.<br />Order 1
+     - <p>[audio 1]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Order 1: sweeps, rescue, tinkling, cl
+BLL174: identical 2 / changed 1
+BLL175: identical 4 / changed 0
+  ~ BLL176_1_1.html: -2 +1
+     - <p>[audio 2]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: which, going, your - can we have the 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL176: identical 2 / changed 1
+  ~ BLL177_1_0.html: -2 +0
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: grain, apart, stair, drain, sharp, sn
+     - <p><b>[audio]</b></p>
+BLL177: identical 2 / changed 1
+  ~ BLL210_0_0.html: -136 +51
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL210-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: cry, dry, fly, sty, fry, spy<br />Jus
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity 1C — see BLL2
+     - <p><b>[audio 1]</b></p>
+     - <p><b>[audio 2]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: happy, funny, puppy, jelly, bunny, ca
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL210-00-03" style="border: 8px sol
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL210-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL210-00-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p>Short vowels say their sound. [audio button]</p>
+     - <p>Long vowels say their name. [audio button]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL210-00-06" style="border: 8px sol
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL210-00-07" style="border: 8px sol
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="BLL210-00-08" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="BLL210-00-09" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="BLL210-00-10" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="BLL210-00-11" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="BLL210-00-12" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p><b>[audio]</b> g</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="BLL210-00-13" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="BLL210-00-14" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="BLL210-00-15" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="BLL210-00-16" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 96 more removed
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL210-00-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL210-00-03" style="border: 8px sol
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL210-00-04" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p>Short vowels say their sound.</p>
+     + <div class="button audioButton">Short vowels say their sound – /a/ /e/ /i/ /o/ /u/</div>
+     + <p>Long vowels say their name.</p>
+     + <div class="button audioButton">Go to your journal</div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Long vowels say their name – /ā/ /ē/ 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL210-00-05" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL210-00-06" style="border: 8px sol
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="BLL210-00-07" style="border: 8px so
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="BLL210-00-08" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="BLL210-00-09" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 31 more added
+BLL210: identical 0 / changed 1
+  ~ BLL211_1_0.html: -2 +0
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: shake, these, shave, chain, shape, ch
+     - <p><b>[audio]</b></p>
+BLL211: identical 2 / changed 1
+  ~ BLL212_1_0.html: -3 +2
+     - <p><b><a href="https://mytekuraschool-my.sharepoint.com/:w:/g/personal/shelley_haua_tekura_school_nz/Eak4OktPO
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: look, book, shook (only 3 tiles neede
+     - <p><b>[audio 3]</b></p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+  ~ BLL212_2_0.html: -2 +3
+     - <div class="activity interactive" number="2A">
+     - <p>[audio 4]</p>
+     + <div class="activity" number="2A">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: You can also find a pdf of the book o
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL212: identical 1 / changed 2
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+  ~ BLL215_2_0.html: -2 +0
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+BLL215: identical 2 / changed 1
+BLL216: identical 3 / changed 0
+  ~ BLL217_1_0.html: -1 +6
+     - <p><b>[audio]</b> crane, above, glove, slate, bride, drive, blame, stove</p>
+     + <p>crane, above, glove, slate, bride, drive, blame, stove</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + </div>
+     + </div>
+BLL217: identical 2 / changed 1
+  ~ BLL220_0_0.html: -17 +20
+     - <p>[audio]</p>
+     - <p>[audios]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: boy, toy, soy, coy,</p>
+     - <p>[audio 1]</p>
+     - <p>[audios] coins, foil, oil, boil, boy, joy, destroy, toy</p>
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: rail, pain, tail, sail, rain, mail, n
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dragAndDrop + dragAndDrop + dragAnd
+     - <p>[audio] snake, flake, games, grape, state, plane</p>
+     - <p>[audio]</p>
+     - <p>[audio] beach, peach, peaks, jeans, teach, beats</p>
+     - <p>[audio] peels, sweep, creep, trees, creek, steep</p>
+     - <p>[audio] jockey, monkey, hockey, kidney</p>
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: night, fight, light, tight sight, mig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: dragAndDrop + dragAndDrop — Activit
+     - <p>[audio]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make something like this pleas
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [audios]</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [audios]</p>
+     + <p>coins, foil, oil, boil, boy, joy, destroy, toy</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dragAndDrop + dragAndDrop + dragAnd
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>snake, flake, games, grape, state, plane</p>
+     + <p>beach, peach, peaks, jeans, teach, beats</p>
+     + <p>peels, sweep, creep, trees, creek, steep</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>jockey, monkey, hockey, kidney</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: dragAndDrop + dragAndDrop — Activit
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL220: identical 0 / changed 1
+  ~ BLL221_2_0.html: -2 +2
+     - <td>Ruru [audio]</td>
+     - <td>Haere rā [audio]</td>
+     + <td>Ruru [audio] </td>
+     + <td>Haere rā [audio] </td>
+BLL221: identical 2 / changed 1
+  ~ BLL222_1_0.html: -5 +10
+     - <p>[audio 1] helicopter. hel - i - cop - ter. The helicopter landed in the paddock. Helicopter.</p>
+     - <p>[audio 2] understand. un - der - stand . I do not understand. Understand.</p>
+     - <p>[audio 3] medicine. med - i - cine. The boy took some medicine for his cough. Medicine.</p>
+     - <p>[audio 4] decorate. Dec - or - ate. Mum decided to decorate my room. Decorate.</p>
+     - <p>[audio 5] irritating. Ir - ri - ta - ting. Sometimes my little brother is irritating. Irritating</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>helicopter. hel - i - cop - ter. The helicopter landed in the paddock. Helicopter.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>understand. un - der - stand . I do not understand. Understand.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>medicine. med - i - cine. The boy took some medicine for his cough. Medicine.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>decorate. Dec - or - ate. Mum decided to decorate my room. Decorate.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>irritating. Ir - ri - ta - ting. Sometimes my little brother is irritating. Irritating</p>
+  ~ BLL222_2_0.html: -1 +0
+     - <p>[audio]</p>
+BLL222: identical 1 / changed 2
+  ~ BLL223_1_0.html: -2 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make this activity like BLL154
+     - <p>[audios]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make this activity like BLL154
+  ~ BLL223_2_0.html: -1 +1
+     - <th>[audios] I spy with my little eye something beginning with /b/ </th>
+     + <th> [audios] I spy with my little eye something beginning with /b/ </th>
+BLL223: identical 1 / changed 2
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+  ~ BLL227_1_0.html: -5 +10
+     - <p>[audio 1] October Oc-to-ber October is the 10th month of the year. October</p>
+     - <p>[audio 2] afternoon. af-ter-noon . I enjoyed my afternoon tea. afternoon.</p>
+     - <p>[audio 3] computer. com-pu-ter. I did my work on my computer. com-pu-ter.</p>
+     - <p>[audio 4] lemonade. lem-on-ade. I like drinking lemonade. lemonade.</p>
+     - <p>[audio 5] decide. de-cide. I can’t decide what to have for lunch. decide.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>October Oc-to-ber October is the 10th month of the year. October</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>afternoon. af-ter-noon . I enjoyed my afternoon tea. afternoon.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>computer. com-pu-ter. I did my work on my computer. com-pu-ter.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>lemonade. lem-on-ade. I like drinking lemonade. lemonade.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>decide. de-cide. I can’t decide what to have for lunch. decide.</p>
+BLL227: identical 2 / changed 1
+  ~ BLL230_0_0.html: -8 +11
+     - <p>[audio]</p>
+     - <p><a href="https://www.istockphoto.com/vector/rainbow-illustration-classic-design-gm510844740-86409811" targe
+     - <p>[audio]</p>
+     - <p><a href="https://www.istockphoto.com/photo/cute-cow-isolated-on-white-black-mottled-gentle-surprised-look-p
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: girl, shirt, third, bird, dirt, birth
+     - <p>[audio]</p>
+     - <p><a href="https://drive.google.com/drive/u/0/folders/1Ynp8FNQnOhdb41VvRLE3sDYx2_d_Q_Dd" target="_blank">[aud
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make something like this pleas
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Audios are under each image link.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-510844740" alt="Rainbow Il
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-510844740.jpg" alt="Rainbow Illustration Classic
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1349945418" alt="Cute Cow 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1349945418.jpg" alt="Cute Cow Isolated on White 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: We will need 3 sound boxes for the āk
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL230: identical 0 / changed 1
+BLL231: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+
+TOTAL: identical 341 / changed 44 / missing 0 over 104 modules
+CHANGED: BLL114/BLL114_1_0.html BLL114/BLL114_2_0.html BLL115/BLL115_1_0.html BLL115/BLL115_2_0.html BLL126/BLL126_1_0.html BLL131/BLL131_1_0.html BLL135/BLL135_1_0.html BLL137/BLL137_1_0.html BLL137/BLL137_1_1.html BLL140/BLL140_0_0.html BLL141/BLL141_1_0.html BLL146/BLL146_1_0.html BLL150/BLL150_0_0.html BLL151/BLL151_1_0.html BLL151/BLL151_2_0.html BLL154/BLL154_1_0.html BLL157/BLL157_1_0.html BLL157/BLL157_1_1.html BLL160/BLL160_0_0.html BLL161/BLL161_1_0.html BLL162/BLL162_1_0.html BLL162/BLL162_1_1.html BLL166/BLL166_1_1.html BLL167/BLL167_1_1.html BLL170/BLL170_0_0.html BLL171/BLL171_1_0.html BLL172/BLL172_1_0.html BLL174/BLL174_1_0.html BLL176/BLL176_1_1.html BLL177/BLL177_1_0.html BLL210/BLL210_0_0.html BLL211/BLL211_1_0.html BLL212/BLL212_1_0.html BLL212/BLL212_2_0.html BLL215/BLL215_2_0.html BLL217/BLL217_1_0.html BLL220/BLL220_0_0.html BLL221/BLL221_2_0.html BLL222/BLL222_1_0.html BLL222/BLL222_2_0.html BLL223/BLL223_1_0.html BLL223/BLL223_2_0.html BLL227/BLL227_1_0.html BLL230/BLL230_0_0.html

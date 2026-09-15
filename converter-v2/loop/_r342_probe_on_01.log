@@ -1,0 +1,519 @@
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+  ~ BLL240_1_1.html: -20 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL240-02-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: while, whale, whirl, whole, whine<br 
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: wordDrag — Activity (inline) — see B
+     - <div style="font-size: 0.95em">
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL240-02-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL240-02-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL240-02-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL240-02-04" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ BLL240_1_2.html: -18 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL240-03-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: catch, fetch, match, patch, watch, di
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: wordDrag — Activity 2D — see BLL240_
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="BLL240-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="BLL240-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ BLL240_1_3.html: -20 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="BLL240-04-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: fudge, badge, hedge, lodge, judge, ri
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: wordDrag — Activity 3D — see BLL240
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="BLL240-04-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="BLL240-04-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="BLL240-04-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="BLL240-04-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ BLL240_1_4.html: -21 +6
+     - <th>[Audio]</th>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="BLL240-05-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: stair, chairs, flair, dairy, pairs, h
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: wordDrag — Activity 4D — see BLL240
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="BLL240-05-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="BLL240-05-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="BLL240-05-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="BLL240-05-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ BLL240_1_5.html: -19 +4
+     - <th>[Audio]</th>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="BLL240-06-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: years, beard, spear, swear, bears, se
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: wordDrag — Activity 5E — see BLL240
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="BLL240-06-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="BLL240-06-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ BLL240_1_6.html: -19 +4
+     - <th>[Audio]</th>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="BLL240-07-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: where, there, here<br />Please use th
+     - <div class="cv2-interactive" data-cv2-index="29" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: wordDrag — Activity 6D — see BLL240
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="BLL240-07-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please use the reading font.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="BLL240-07-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ BLL240_1_7.html: -20 +4
+     - <th>[Audio]</th>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="BLL240-08-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: cheer, deer, beer, peer<br />Please n
+     - <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: wordDrag — Activity 7D — see BLL240
+     - <p>[audio]</p>
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="BLL240-08-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="BLL240-08-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+BLL240: identical 2 / changed 7
+  ~ BLL241_1_0.html: -4 +10
+     - <p><a href="https://drive.google.com/file/d/1sscBPka2OWKprQUynG02vHYnIAaEGJpv/view?usp=drive_link" target="_bl
+     - <p>[Audio] badge, fudge, when, what, hatch, catch, ledge</p>
+     - <p>[Audio] whale, white, bridge, smudge, crutch, blotch, fridge</p>
+     - <p>[audio] fudge, hatch, what, when, catch, whale, white, bridge, smudge, fridge</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>badge, fudge, when, what, hatch, catch, ledge</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>whale, white, bridge, smudge, crutch, blotch, fridge</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>fudge, hatch, what, when, catch, whale, white, bridge, smudge, fridge</p>
+     + </div>
+     + </div>
+  ~ BLL241_2_0.html: -3 +5
+     - <th>awa [Audio]</th>
+     - <td>ka pai [Audio]</td>
+     - <p>Let’s read the story <i>‘Tūī [audio] Has a Plan’.</i></p>
+     + <th>awa [Audio] </th>
+     + <td>ka pai [Audio] </td>
+     + <p>Let’s read the story <i>‘Tūī</i></p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p><i>Has a Plan’.</i></p>
+BLL241: identical 1 / changed 2
+  ~ BLL242_1_0.html: -4 +9
+     - <p>[audio] where, which, watch, catch, match, bridge, badge, fair, hair, chair, deer, cheer</p>
+     - <p>[audio] watch, where, fair, bridge, catch, dear, chair, which, badge, hair, cheer, match</p>
+     - <p>[audio] chair, bridge, deer, watch, hair, which, fair, catch, cheer, where, match, badge</p>
+     - <p>[audio] badge, where, chair, catch, fair, which, bridge, cheer, hair, match, deer, watch</p>
+     + <p>where, which, watch, catch, match, bridge, badge, fair, hair, chair, deer, cheer</p>
+     + <p>watch, where, fair, bridge, catch, dear, chair, which, badge, hair, cheer, match</p>
+     + <p>chair, bridge, deer, watch, hair, which, fair, catch, cheer, where, match, badge</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>badge, where, chair, catch, fair, which, bridge, cheer, hair, match, deer, watch</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL242: identical 2 / changed 1
+BLL244: identical 3 / changed 0
+  ~ BLL245_2_0.html: -10 +10
+     - <th>[audio]</th>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     + <th> [audio] </th>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+BLL245: identical 2 / changed 1
+BLL246: identical 3 / changed 0
+  ~ BLL251_0_0.html: -1 +1
+     - <p>[Audio]</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+  ~ BLL251_1_0.html: -4 +3
+     - <p><a href="https://drive.google.com/file/d/12RGw8vt4s6ilrvWzYr2T-LGhwFd522k2/view?usp=drive_link" target="_bl
+     - <div class="clickDropContent"><p>You may have noticed an unusual word in the title of this story. The word gno
+     - <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/guide-dogs-purple/5637185122.p" target="_
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Text 4 – The text ‘Guide Dogs’ 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <div class="clickDropContent"><p>You may have noticed an unusual word in the title of this story. The word gno
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Text 4 – The text ‘Guide Dogs’ 
+BLL251: identical 1 / changed 2
+  ~ BLL252_1_0.html: -4 +13
+     - <p>Order 1 [audio] scented, shouldn’t, cough, scenery, fought, haven’t, naughty, won’t, through, taught, eight
+     - <p>Order 2 [audio] scented, scenery, cough, naughty, fought, taught, eighty, crescent, through, haven’t, won’t
+     - <p>Order 3 [audio] cough, fought, taught, through, scented, scenery, crescent, eighty, naughty, shouldn’t, won
+     - <p>Order 4 [audio] through, cough, scented, fought, taught, eighty, crescent, scenery, naughty, won’t, haven’t
+     + <p>Order 1</p>
+     + <p>scented, shouldn’t, cough, scenery, fought, haven’t, naughty, won’t, through, taught, eighty, crescent</p>
+     + <p>Order 2</p>
+     + <p>scented, scenery, cough, naughty, fought, taught, eighty, crescent, through, haven’t, won’t, shouldn’t</p>
+     + <p>Order 3</p>
+     + <p>cough, fought, taught, through, scented, scenery, crescent, eighty, naughty, shouldn’t, won’t haven’t</p>
+     + <p>Order 4</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>through, cough, scented, fought, taught, eighty, crescent, scenery, naughty, won’t, haven’t, shouldn’t</p>
+     + </div>
+     + </div>
+  ~ BLL252_2_0.html: -1 +1
+     - <div class="button clickDrop">Onomatopoeia [audio]</div>
+     + <div class="button clickDrop">Onomatopoeia</div>
+BLL252: identical 1 / changed 2
+  ~ BLL253_2_0.html: -52 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="BLL253-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please place these side by side.<br /
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: clickDrop + clickDrop + clickDrop +
+     - <div style="font-size: 0.95em">
+     - <p><a href="https://media.istockphoto.com/id/2234433176/photo/porta-2007-is-a-public-art-sculpture-in-wodonga-
+     - <p>Art and structures</p>
+     - <p>A <b>sculpture</b> is a large artwork made to look like something real. Sculptures are often placed outside
+     - <p>For example, “The monument in the town centre marked the soldiers who fought in the war.”</p>
+     - <p><a href="https://www.shutterstock.com/image-photo/mumbai-maharashtra-india-jan-18-600w-2757176565.jpg" targ
+     - <p><a href="https://www.shutterstock.com/image-photo/garden-decoration-using-clay-owl-600w-2702089983.jpg" tar
+     - <p><a href="https://www.shutterstock.com/image-photo/sculpture-turtle-majori-jurmala-latvia-600w-2554769617.jp
+     - <p><a href="https://media.istockphoto.com/id/532849924/photo/cheerful-young-couple-take-a-selfie-portrait-by-t
+     - <p>People and places</p>
+     - <p>A <b>community</b> is a group of people who live in the same place. Each community has its own identity, wh
+     - <p>For example, “The tourists flocked to see the sand sculptures at the beach.”</p>
+     - <p><a href="https://media.istockphoto.com/id/539347484/photo/arrowtown-autumn-festival-in-new-zealand.jpg?s=20
+     - <p><a href="https://media.istockphoto.com/id/594060054/photo/happy-local-family-taking-selfie-photo-together-i
+     - <p><a href="https://media.istockphoto.com/id/956255522/photo/tourists-enjoy-a-high-speed-boat-ride-on-queensto
+     - <p><a href="https://media.istockphoto.com/id/1012964602/photo/new-zealand-currency-cash.jpg?s=2048x2048" targe
+     - <p>Money and jobs</p>
+     - <p>The <b>economy</b> is the way people earn and spend money in a place. When tourists visit, they often spend
+     - <p>For example, “The farmer exported his goods overseas.”</p>
+     - <p><a href="https://media.istockphoto.com/id/2220982108/photo/young-woman-choosing-flip-flops-at-a-beach-shop-
+     - <p><a href="https://media.istockphoto.com/id/2052775104/photo/elevated-view-container-ship-loading-unloading-p
+     - <p><a href="https://www.shutterstock.com/image-photo/aerial-panorama-cargo-ship-carrying-600w-2699444759.jpg" 
+     - <p><a href="https://www.shutterstock.com/image-photo/male-farmer-carefully-harvests-celery-600w-2745911073.jpg
+     - <p>Farming and food</p>
+     - <p><b>Produce</b> is food that is grown on farms, such as fruit and vegetables. Some produce is grown in an <b
+     - <p>For example, “The workers picked the fruit in the orchard.”</p>
+     - <p><a href="https://www.shutterstock.com/image-photo/vendor-farmers-market-sells-fresh-600w-2762330367.jpg" ta
+     - <p><a href="https://www.shutterstock.com/image-photo/fresh-seafood-on-ice-buffet-600w-2568914571.jpg" target="
+     - <p><a href="https://www.shutterstock.com/image-photo/sunlit-apple-orchard-rows-ripe-600w-2628565779.jpg" targe
+     - <p><a href="https://www.shutterstock.com/image-photo/kea-spotted-on-fiordland-national-600w-2498979567.jpg" ta
+     - <p>Nature and environment</p>
+     - <p><b>Population</b> means the number of people or animals living in a place. Some animals have a very small p
+     - … 12 more removed
+     + <div class="row">
+     + <div class="button clickDrop">Art and structures</div>
+     + <div class="button clickDrop">People and places</div>
+     + <div class="button clickDrop">Money and jobs</div>
+     + <div class="button clickDrop">Farming and food</div>
+     + <div class="button clickDrop">Nature and environment</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=porta-2007-is-a-pu
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=cheerful-young-cou
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=new-zealand-curren
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=male-farmer-carefu
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=kea-spotted-on-fio
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please place these side by side
+     + <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=boy-on-mountain-hike-sit
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+BLL253: identical 2 / changed 1
+  ~ BLL254_0_0.html: -1 +1
+     - <p><a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/IQBdugJ7nrKXSKYqZVhJh_7IAaTCNpvH0PE-O
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [data marker] outside an i
+  ~ BLL254_1_0.html: -1 +1
+     - <th><b>[Audio]</b></th>
+     + <th> [Audio] </th>
+  ~ BLL254_2_0.html: -1 +1
+     - <th><b>[Audio]</b></th>
+     + <th> [Audio] </th>
+BLL254: identical 0 / changed 3
+  ~ BLL262_1_0.html: -20 +15
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL262-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Designer note] Preferred presentatio
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: carousel — Activity (inline) — see B
+     - <p>[Audio]</p>
+     - <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/staying-afloat/5637163409.p" target="_bla
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL262-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/staying-afloat/5637163409.p" target="_bla
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL262-01-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="row carousel">
+     + <div class="col-md-12 col-12 viewer">
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=5637163409-p" alt="" /><!-- <img class="img-flui
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=5637163409-p" alt="" /><!-- <img class="img-flui
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=5637163409-p" alt="" /><!-- <img class="img-flui
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Designer note] Preferred prese
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL262-01-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL262-01-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + </div>
+BLL262: identical 2 / changed 1
+  ~ BLL263_1_0.html: -23 +22
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="BLL263-01-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Page-turn presentation of Whitebait S
+     - <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel — Activity 1A — see BLL263_
+     - <p>[Embed audio book]</p>
+     - <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/whitebait-season-purple/5637185089.p" tar
+     - <p>or in the folder here</p>
+     - <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/whitebait-season-purple/5637185089.p" tar
+     - <p>or</p>
+     - <p><i>Whitebait Season</i> (School Journal text) can be found here (PDF in folder)</p>
+     - <p>-</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL263-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL263-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="row carousel">
+     + <div class="col-md-12 col-12 viewer">
+     + <div class="item">
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/IQBbg6dqE-vnTZ1spwclAe3DAWkzUFFokDTQ
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=5637185089-p" alt="" /><!-- <img class="img-flui
+     + <div class="carousel-caption">
+     + <p>or in the folder here</p>
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=5637185089-p" alt="" /><!-- <img class="img-flui
+     + <div class="carousel-caption">
+     + <p>or</p>
+     + <p><i>Whitebait Season</i> (School Journal text) can be found here (PDF in folder)</p>
+     + <p>-</p>
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Page-turn presentation of White
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL263-01-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL263-01-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 2 more added
+BLL263: identical 2 / changed 1
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 500 / changed 21 / missing 0 over 104 modules
+CHANGED: BLL240/BLL240_1_1.html BLL240/BLL240_1_2.html BLL240/BLL240_1_3.html BLL240/BLL240_1_4.html BLL240/BLL240_1_5.html BLL240/BLL240_1_6.html BLL240/BLL240_1_7.html BLL241/BLL241_1_0.html BLL241/BLL241_2_0.html BLL242/BLL242_1_0.html BLL245/BLL245_2_0.html BLL251/BLL251_0_0.html BLL251/BLL251_1_0.html BLL252/BLL252_1_0.html BLL252/BLL252_2_0.html BLL253/BLL253_2_0.html BLL254/BLL254_0_0.html BLL254/BLL254_1_0.html BLL254/BLL254_2_0.html BLL262/BLL262_1_0.html BLL263/BLL263_1_0.html
