@@ -967,6 +967,16 @@
 		},
 		"engagement quiz button": {
 			"form": "<div class=\"button engagementTrigger\">{label}</div>",
+			"kb_form": {
+				"enabled": false,
+				"_status": "BUILT AND PROBE-PROVEN, SHIPPED OFF (Chris stopped the loop 2026-09-15 ≈20:00 before its gate suite finished): OFF = disk 2102/2102, ON = exactly 28 pages / 28 modules, _fastloop_diff PASS on the 28. The next session flips enabled:true, regenerates the 28 modules in _r335_affected.txt, runs the gates and finalises.",
+				"env": "ENGQUIZ_OFF",
+				"form": "<a href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
+				"href": "#",
+				"label": "Go to quiz",
+				"todo_note": "Wire this engagement quiz's D2L quicklink (the href is intentionally blank). Writer's quiz source: {url}{text}",
+				"_doc": "ROUND 335 (the autonomous loop, session 5 Round 6) — THE ENGAGEMENT QUIZ BUTTON IS THE KB'S EXTERNAL QUIZ LINK BUTTON. The writer's [Engagement quiz button] <sharepoint quiz doc URL> (the OS family + ARFUN01/02 + HPFUN401: 28 pages / 28 modules) shipped the legacy `form` above — a bare div with a class the gold carries on 0 of 2,385 pages, no anchor, and a label that fell to the journal default (`Go to your journal` on 13) or the quiz document's FILENAME. KB 01F `engagement_quiz_button` → \"External quiz link button\" (the `button` form `<a href target=_blank><div class=button>`); constraint 65 / CL-0038 (round 232) fixed the quiz button's label `Go to quiz` and its blank publish-time href. The gold at the paired sites: `<a href=\"/d2l/…quickLink…type=quiz…\" target=\"_blank\"><div class=\"button\">Go to quiz</div></a>` 30/30 (the D2L rcode is publish-time wiring — the r232 / CL-0044 class). MECHANISM: at the button seam, right after the r329 trigger-marker test, an `engagement quiz button` item ships `form` with `href` + `label` and ONE Designer/Developer To Do note (cv2-note, gate-neutral) carrying the writer's link and any other words of the tail. Env ENGQUIZ_OFF reverts to the legacy div."
+			},
 			"trigger_marker": {
 				"_doc": "ROUND 329 (the autonomous loop, session 4 Round 4, 2026-09-15). The writer's `[trigger engagement]` / `[engagement trigger]` / `[to trigger engagement]` is a CONDITION MARKER, not a button: the KB reads it as the dropbox-trigger signal on the activity (constraint 43, 05B, 01F) and the finished modules carry no engagement markup at all (0 of 2,385 gold pages), while the Tag_Lexicon folds those aliases into `engagement quiz button` (the KB's `engagement_quiz_button` = the real external quiz link button, `[engagement quiz button]`) and the generic seam shipped a PHANTOM `<div class=\"button engagementTrigger\">Go to your journal</div>` — the label-less tag falling to journal_label_default — 99 times on 88 pages / 70 modules. An `engagement quiz button` item whose bracket text ENDS in one of `aliases` and carries no black text now emits nothing (the round-292 / round-322 reading of the same marker); a bracket carrying other words (`[insert text box for student response – engagement trigger]`) surfaces them as ONE diagnostic red flag (cv2-note) so nothing the writer wrote is lost. `[engagement quiz button]` itself is untouched. Env ENGMARKER_OFF reverts byte-for-byte.",
 				"enabled": true,

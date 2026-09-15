@@ -22,7 +22,27 @@ from Chris' and never re-ask them … commit after every round, never push." Hea
 (nothing uncommitted — nothing to reconcile), no stale index.lock. **Plateau counter:** the session-4 stop was the plateau rule's "needs a human
 decision"; Chris's explicit "continue" IS that decision (the same reading sessions 2 and 4 used), so the three-round window restarts at this
 session's first shipped round. stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5 stay open (not re-asked); the loop
-works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp; commit 612da6d) · r332 (the empty footers, scoped 130 modules, +0.269pp; commit 8a347d4) · r333 (the right-hand alert side column + the summary token, scoped 53 modules, +0.066pp; commit c6660da) · r334 (the activity title heading h3, scoped 73 modules, +0.167pp) · SHIPPED ≈19:20.**
+works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts; commit 0e068c6) · r331 (Bilingual in-box heading level, scoped, +0.022pp; commit 612da6d) · r332 (the empty footers, scoped 130 modules, +0.269pp; commit 8a347d4) · r333 (the right-hand alert side column + the summary token, scoped 53 modules, +0.066pp; commit c6660da) · r334 (the activity title heading h3, scoped 73 modules, +0.167pp; commit b89f20c) · the FULL-SHIP BACKSTOP (IDENTICAL, 19:43) · r335 (the engagement quiz button, BUILT + probe-proven, SHIPPED OFF at Chris's stop ≈20:03). STOPPED ≈20:05 on Chris's instruction.**
+
+## >>> STOPPED 2026-09-15 ≈20:05 NZST (session 5) on CHRIS'S INSTRUCTION — "stop the loop at the next safe point" — after 5 shipped rounds + the full-ship backstop; Round 6 (engine r335) built and probe-proven, SHIPPED OFF <<<
+
+**Where the loop is:** Session 5 · Round 6 (engine r335, the `[Engagement quiz button]` KB form). Its step when Chris stopped it: PROVE — the
+28-module scoped regeneration was done (0 truly stale, manifest diff = exactly the 28), `_fastloop_diff.py` had PASSED on the 28 (skeleton
++0.02pp, every other gate HELD), and the full gate suite was mid-run (~12 min from done — over Chris's 5-minute rule), so per the instruction
+the round's data flag was switched OFF (`buttons["engagement quiz button"].kb_form.enabled: false`, `_status` note in the data) and the 28
+modules were regenerated OFF: **`_content_manifest.py diff` = IDENTICAL, 0 pages differ — the corpus is byte-for-byte the full-ship state**
+(the mtime-only `_stalecheck.sh` warning after that edit is the documented r148/r175 false alarm; content-hash proven). The engine branch +
+data block are COMMITTED, OFF; no finalise was written for r335 (no changelog round entry, no AppVersion bump, no §9/§11/§14 baseline
+change, no KB D-row, no ship-ledger record) — those are the next session's first steps once the flag is flipped ON.
+**Shipped this session:** r330 (0e068c6) · r331 (612da6d) · r332 (8a347d4) · r333 (c6660da) · r334 (b89f20c) · the FULL-SHIP BACKSTOP after
+r334 (all 416 dirs regenerated, 0 stale, manifest IDENTICAL — eight scoped ships proven complete; ledger record-full, counter 0; fast-loop
+baseline re-snapshotted from the fresh corpus). **Declined this session:** the widened activity wrapper (KB c17/c56), `iframe.embed-responsive-item`,
+`body.mathJax` as a class (not derivable per module), the whole-bold short paragraph → h5, the in-box sub-heading level, the `alertImage` sidebar
+(r331), the KB `table-bordered` (conflict → Chris). **Blocked (need Chris):** stickyNav (unchanged), the KB table form 05D vs 06 §6, the CED
+revision-brief modules (content-start), **Word equations dropped — MathML (gold, V1.5 finding) vs LaTeX (KB 05A)**; decisions 1 / 4 / 5 open.
+**Uncommitted at the stop:** nothing (see the final commit). Scorecard: skeleton 50.496 → **51.060** (+0.564pp this session; 55.1% → 55.7% of
+achievable, ceiling 91.6%); ≥50 1030 → 1066; ≥75 196 → 200; ≥90 15; cs exact 11360 → 11375 / EXTRA 186 → 171 / missing 591 → 593 (named); body
+191; clean 2056/2102; leak 288/46; tags 9557/9557; 13 selftests GREEN.
 
 ## >>> STOPPED 2026-09-15 ≈15:45 NZST (session 4) on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r327 0.000pp, r328 0.000pp, r329 +0.004pp <<<
 **Session 4 shipped four rounds (r326 → r329; commits 955c0c8 · bdb33a1 · 2d478e4 · 6e25190) in ≈2h15m of the 10-hour budget (13:27 → 15:42).** Everything is committed; nothing is uncommitted; nothing was pushed.
@@ -83,6 +103,25 @@ works the derivable queue that needs no decision. Tools run in WSL (native node 
   page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
 - **RESUMED 2026-09-15 07:48 NZST on Chris's instruction: "Yes to 2 and 3 — start with the TRR title source."** Round 8 = decision 2 SHIPPED
   (engine r321, commit 968bf14). Decision 3 (c65 / CL-0082, engine r322) = the next kickoff (above). Decisions 1, 4, 5 stay open.
+
+## Decisions from Chris (session 5 — 2026-09-15; every instruction he gave, in order; the durable record)
+- **2026-09-15 ≈16:05 — the session-5 kickoff.** Question: continue the loop? Answer (verbatim in the header above): continue in this folder;
+  health check first; read the loop file + LOOP_STATE; reconcile git with the state file, never `git checkout`/`git restore` uncommitted
+  engine/data files; honour every prior "Decisions from Chris" entry and never re-ask; **the message carries `REGENERATE CORPUS` for every
+  round, scoped by CLAUDE.md §0a/§0b**; budget **12 rounds or 10 hours** (hard stop 02:05 NZST 16 Sep); §6 context diet (never read CLAUDE.md or
+  BUILD_CHANGELOG.md whole; re-read the loop file + LOOP_STATE after every compaction); update LOOP_STATE before and after every round; commit
+  after every round, never push; on stopping give the §5 report + push block and end LOOP_STATE with "Next session starts with:".
+  Authorises: the five scoped regenerations (r330–r334), the full-ship backstop regeneration after r334, and every per-round commit.
+- **2026-09-15 ≈20:00 — "STOP THE LOOP at the next safe point."** Question: (implicit) how to close mid-round. Answer: do not start any new
+  round or class; finish the current step only if it can be finished AND proven in under 5 minutes, otherwise switch the round's toggle OFF so
+  the corpus is back to its last proven state; then (1) record every decision given this session under a "Decisions from Chris" heading
+  (date, question, answer, what it authorises), (2) update LOOP_STATE with exactly where the loop is and end with "Next session starts
+  with:", (3) commit everything finished in pageforge-site with a clear message, (4) the §5 report + push block, (5) one-sentence
+  safe-to-close confirmation. Authorises: r335 shipped OFF (data flag false, 28 modules regenerated OFF, manifest IDENTICAL) with its code
+  committed but un-finalised; the final commit; no push.
+- **Still open from earlier sessions (NOT re-asked, per the kickoff):** stickyNav (blocked), decision 5 (interactive builds), decision 4
+  (Standard title-pair order), decision 1 (c47); new this session: the KB table form (05D vs 06 §6), the CED revision-brief modules, the
+  equation form (MathML vs LaTeX) — all listed under Blocked classes.
 
 ## Decisions from Chris (session 2 — every instruction he gave, in order; the durable record)
 
@@ -145,7 +184,9 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 5 Round 2 (engine r331 — a bilingual section box's headings render at the KB's activity level h3, KB 07B): SHIPPED 2026-09-15 ≈17:10 (session 5). AppVersion 260619.02, CLAUDE.md §9/§11/§14, scoped ship #5 since the r326 full. Skeleton +0.022pp.
 - Session 5 Round 3 (engine r332 — the empty footer → the KB's page-position form, KB 01B; + the BLL1 registry footer class): SHIPPED 2026-09-15 ≈17:40 (session 5). AppVersion 260619.03, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #6 since the r326 full. Skeleton +0.269pp, ≥50 +10, ≥75 +4.
 - Session 5 Round 4 (engine r333 — a right-hand alert is a side column; rhs / summary are not classes, KB 05B): SHIPPED 2026-09-15 ≈18:20 (session 5, commit c6660da). AppVersion 260619.04, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #7 since the r326 full (backstop due at 8). Skeleton +0.066pp, ≥50 +5; compare_structure exact +15 / EXTRA −15 / missing +2 named.
-- Session 5 Round 5 (engine r334 — the activity box's title heading is h3, KB 01F): SHIPPED 2026-09-15 ≈19:20 (session 5). AppVersion 260619.05, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #8 since the r326 full — the full-ship backstop is DUE. Skeleton +0.167pp, ≥50 +17; every other gate EXACT.
+- Session 5 Round 5 (engine r334 — the activity box's title heading is h3, KB 01F): SHIPPED 2026-09-15 ≈19:17 (session 5, commit b89f20c). AppVersion 260619.05, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #8 since the r326 full — the full-ship backstop is DUE. Skeleton +0.167pp, ≥50 +17; every other gate EXACT.
+- FULL-SHIP BACKSTOP after r334 (no code change): all 416 gated dirs regenerated 2026-09-15 19:26–19:43 (36 batches, all rc 0), `_stalecheck.sh` 0 stale, `_content_manifest.py diff` IDENTICAL (0 pages) — eight scoped ships proven complete; `_fastloop_snapshot.py` re-baselined from the fresh corpus (values unchanged), manifest snapshot, `_ship_ledger.py record-full --build 260619.05` (counter 0).
+- Session 5 Round 6 (engine r335 — the `[Engagement quiz button]` KB form, 01F + c65): BUILT + PROBE-PROVEN, **SHIPPED OFF** at Chris's stop ≈20:03 (data `kb_form.enabled: false`, 28 modules regenerated OFF, manifest IDENTICAL). To finish: flip `enabled: true`, regenerate `_r335_affected.txt` (28), gates, finalise (AppVersion 260619.06, changelog, §9/§11/§14, KB D-row, ledger scoped #1).
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -568,6 +609,31 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   a Bash-tool heredoc halves backslashes AND turns `\r` into a raw CR — write any patch with escapes via the Write tool; a Windows-written code
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
+
+## Session 5 · Round 6 PICK (engine r335) — written before any code, 2026-09-15 19:35 NZST — WITH THE FULL-SHIP BACKSTOP
+- **Backstop first:** the ship ledger reached 8 scoped ships after r334, so this round opens with the full `ship.sh` regeneration of all 416
+  gated dirs (no code change in between): `_stalecheck.sh` 0 stale, `_content_manifest.py diff` must be IDENTICAL (the proof that eight
+  scoped ships left nothing under-scoped), then the fast-loop snapshot + manifest + `record-full`. The class below ships on top of it as a
+  scoped regeneration (a full-ship round resets the counter to 0, then this round's scoped ship is #1).
+- **Class:** the writer's **`[Engagement quiz button]`** (OS family + ARFUN01/02 + HPFUN401: `[Engagement quiz button] <sharepoint quiz doc URL>`)
+  ships as `<div class="button engagementTrigger">…</div>` — a bare div, no anchor, and the label falls to the JOURNAL default (`Go to your
+  journal` on 13 of 28; the quiz DOCUMENT'S FILENAME on the rest — `Online Safety Scams OSSC301 Quiz - Copy`, `Writers Template -OSAH501 …docx`;
+  one carries a stray writer note). **28 pages / 28 modules, 28 buttons.** KB 01F `engagement_quiz_button` → "External quiz link button" (the
+  `button` form `<a href target="_blank"><div class="button">`); constraint 65 / CL-0038 (r232) fixed the quiz button's label `Go to quiz` and
+  its blank publish-time href. The gold: `engagementTrigger` **0** of 2,385 pages; at these sites `<a href="/d2l/…quickLink…type=quiz…"
+  target="_blank"><div class="button">Go to quiz</div></a>` — **25 in the OS golds, ARFUN01 4, HPFUN401 1** (the D2L rcode is publish-time
+  wiring, the r232 / CL-0044 class).
+- **Triangulated:** OSAI301 lesson 3 — WT `[Engagement quiz button] https://mytekuraschool.sharepoint.com/…`; gold `<a href="/d2l/common/
+  dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&type=quiz&rcode=TCS_Dev-74927" target="_blank"><div class="button">Go to quiz</div></a>`;
+  Claude `<div class="button engagementTrigger">Go to your journal</div>` (the sharepoint link lost). OSGM301 the same.
+- **Authority (§1b):** level 1 (KB 01F button form + constraint 65's label) + the gold 30/30 at the paired sites.
+- **Fix (planned), data `buttons["engagement quiz button"].kb_form` {enabled, env `ENGQUIZ_OFF`, form `<a href="{href}" target="_blank"><div
+  class="button">{label}</div></a>`, href "#", label "Go to quiz", todo_note "Wire this engagement quiz's D2L quicklink (the href is
+  intentionally blank). Writer's quiz source: {url}{text}"}:** at the button seam, right after the r329 marker test, an `engagement quiz
+  button` item ships the KB form with the canonical label and ONE Designer/Developer To Do note (cv2-note, gate-neutral) carrying the
+  writer's link + any other words; the legacy `engagementTrigger` div is the OFF form. Regeneration: scoped to the 28 modules the probe names.
+- **Gate expectation:** skeleton ≥ hold (+28 `a` lines and 28 `div.button` class lines matching the gold; est. +0.01pp — under 0.02 but the
+  round is not a plateau step on its own: r333 +0.066 · r334 +0.167); every other gate EXACT. **Plateau window: r333 +0.066 · r334 +0.167.**
 
 ## Session 5 · Round 5 (engine r334) — what shipped (the activity box's title heading is h3)
 - **Fix:** `activity_wrapper.title_heading_level` {enabled, env ACTTITLEH3_OFF, level 3, exclude_body_class_match reoTranslate, skip_panel_class
@@ -1020,6 +1086,20 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - **The KB's default table class `table table-bordered` (05D) — NOT PICKED 2026-09-15 (session 5, Round 2 PICK; measured inline).** Claude ships bare `table.table` on 1,063 tables / 518 pages. The gold is a genuine TIE in Standard (bordered 0.51 of 1,432 tables; 104 modules all-bordered / 51 none / 78 mixed), ≥ 0.60 in Inquiry 0.72 / Fundamentals 0.69 / Bilingual 0.86; `tableFixed` does NOT follow the KB's 2-column guidance (2-col tables 0.19; it tracks 4+ columns). The KB's own two documents disagree (05D `table table-bordered` default vs 06 §6 Refresh baseline `table noHover tableFixed`). A `table-bordered` default would be a KB-over-gold override costing ≈ −133 matched table lines in Standard for +74 in Inquiry / Fundamentals — needs Chris to settle 05D vs 06 (see Blocked classes). Not attempted.
 
 ## Blocked classes
+- **WORD EQUATIONS ARE DROPPED — the form needs Chris, 2026-09-15 (session 5, Round 6 PICK; measured over the live docx files).** The V2 extractor
+  has NO OMML path (`DocxExtractor.js` never reads `m:oMath` / `m:oMathPara`, which sit BESIDE the `w:r` runs in a `w:p`), so every Word equation
+  is silently absent from the page: **12 WTs carry 329 equations** (MXDI102 154, MXDI301 69, PES1008 24, MXEX301 18, PES1007 17, MXFU302 15,
+  MXFU401 12, MXDB301 6, MXDI201 6, CEDK401 6, MXDB202 1, SCCH301 1) and Claude ships **0** math markup on any page; the gold ships **2,052
+  `<math>` (MathML) elements on 94 pages** (1822 bare `<math xmlns=…>`, 105 `display="inline"`, 66 `display="block"`). **THE CONFLICT:** KB 05A
+  "MathJax / Equations" says the HTML carries **LaTeX** (`\( \)` inline, `\[ \]` block); the gold carries **MathML**; Chris's own PageForge V1.5
+  `CLAUDE.md` records the settled production fact (2026-08-26, six live runs) that in MTK **MathML renders and LaTeX does not** and that "the
+  downstream Convertor project turns it into `<math>` before the HTML ships" — two of Chris's instructions disagree on the form, so the loop
+  does not pick one unattended. The V1.5 repo already holds tested converters for BOTH forms (`pageforge-site/js/omml-to-latex.js`,
+  `omml-to-mathml.js` — the MathML one emits the gold's bare `<math xmlns>` form, measured against this corpus, and needs only a small
+  plain-object XML tree under V2's regex extractor). Sizing: ~10 reachable modules / ~80 pages, 329 equations; body class `mathJax` rides
+  along (the gold carries it per module — 115 pages / 20 modules — 0.92 precision where the page has math). Decision needed: (a) MathML (the
+  gold + the V1.5 finding; name the KB delta), (b) LaTeX (the KB's letter; gate-neutral, does not render in MTK per V1.5), (c) both (MathML
+  with the LaTeX source in a comment). Either way the extraction half is the same round.
 - **The CED REVISION-BRIEF modules (CEDR201/301/302, CEDT201–204, CEDW303 — 8 Inquiry modules, 8 pages scoring 8–20%) — a content-start
   finding, needs Chris, 2026-09-15 (session 5, Round 5 PICK).** Their `Writers Template + Media List.docx` is an EDIT BRIEF (`[Keep rest of
   content]`, `[Edit page: …]`, `[Remove video]`, ALL-CAPS Wonder/Explore/Connect/Act/Reflect phase lines) followed by the UNFILLED blank template;
@@ -1069,5 +1149,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s5-r3 (engine r332) · the empty footer → the KB's page-position form (KB 01B: a no-evidence registry footer value falls back to overview next+home / lesson all three / final prev+home; fundamentals-nav home) + the BLL1 registry footer class (inquiry-nav, gold 0.85) · SHIPPED 2026-09-15 · scoped regeneration, 239 pages / 130 modules · scaffold 50.558→50.827 (+0.269; 185 up / 22 down, dips named), ≥50 +10, ≥75 +4, every other gate EXACT · empty footers 141→0 · 55.5% of achievable · commit (see git log)
 - s5-r4 (engine r333) · a right-hand alert is a side column; rhs / summary are not classes (KB 05B: `[alert box rhs]`-family boxes pair as the right sibling of the content column they follow — the KB activity sidebar alertActivity after an activity box, alert top after prose; `[alert box lesson summary]` → the plain alert) · SHIPPED 2026-09-15 · scoped regeneration, 143 pages / 53 modules · scaffold 50.827→50.893 (+0.066; 73 up / 14 down, dips named), ≥50 +5, compare_structure exact +15 / EXTRA −15 / missing +2 NAMED, every other gate EXACT · alert rhs 150→0, alert summary 98→0, 92 side columns · 55.6% of achievable · commit (see git log)
 - s5-r5 (engine r334) · the activity box's title heading is h3 (KB 01F `activity_heading`; a writer's in-box `[H3]`/`[H4]` carried the body shift and the re-leveller skips activity subtrees — a post-pass pins the box's first-child heading to h3; PNR excluded) · SHIPPED 2026-09-15 · scoped regeneration, 226 pages / 73 modules · scaffold 50.893→51.060 (+0.167; 150 up / 20 down, dips named), ≥50 +17, every other gate EXACT · activity titles at h4/h5 590→0 · 55.7% of achievable · scoped ship #8 — full backstop DUE · commit (see git log)
+- s5-full · the FULL-SHIP BACKSTOP after r334 · 416 dirs regenerated, 0 stale, manifest IDENTICAL (0 pages) · baselines re-snapshotted unchanged · ledger record-full (counter 0) · 2026-09-15 19:43
+- s5-r6 (engine r335) · the `[Engagement quiz button]` is the KB's external quiz link button (01F; c65 label `Go to quiz`, blank publish-time href, ONE To Do note with the writer's link) · BUILT + PROBE-PROVEN (OFF = disk 2102/2102; ON = 28 pages / 28 modules; fastloop on the 28: skeleton +0.02pp, all else HELD) · **SHIPPED OFF at Chris's stop** (data flag false; 28 modules regenerated OFF; manifest IDENTICAL) · finalise pending · commit (see git log)
 
-**Next session starts with:** Chris's decisions (stickyNav / decision 5 interactives / decision 4 title-pair order / decision 1 c47) — see the session-4 STOP banner at the top; without one, the Bilingual `number="N.M"` section-id boxes (KB 07B, 25 pages, est. +0.01pp) are the next PICK and the plateau rule will stop the loop again after it.
+**Next session starts with:** (1) finish Round 6 / engine r335 — flip `buttons["engagement quiz button"].kb_form.enabled` to true, regenerate the 28 modules in `outputs/_r335_affected.txt`, run the gates (expect skeleton +0.02pp, every other gate EXACT), finalise (AppVersion 260619.06, changelog, CLAUDE.md §9/§11/§14, KB status D-row, ledger scoped #1 since the r334 full ship), commit; (2) then Chris's decisions — (a) the EQUATION FORM (Word equations are dropped entirely: 329 OMML equations / 12 WTs; MathML per the gold + the V1.5 production finding vs LaTeX per KB 05A — see Blocked classes; the V1.5 converters `pageforge-site/js/omml-to-mathml.js` / `omml-to-latex.js` are the ready parts), (b) stickyNav, (c) decision 5 interactives, (d) decision 4 title-pair order, (e) decision 1 c47, (f) the KB table form 05D vs 06 §6, (g) the CED revision-brief modules; (3) without a decision, the derivable ≥ 20-page structural queue is EXHAUSTED for gate-moving work — the substitution instrument (`outputs/_measure_r334_subst.py`) and the gap ranking (`_measure_r334_skelgaps.py`) are the two rankers to re-run; the remaining measured candidates are all under the plateau threshold (the box-less `[MTKquiz]` shells ~17 pages, the c79 module-title fallbacks ~24, the 172 empty hand-off boxes, the body `inquiry` token on 23 crumb-less pages, `body.mathJax` 71 pages — not derivable per module).

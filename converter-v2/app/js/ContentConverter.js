@@ -6208,6 +6208,26 @@ class ContentConverter {
 					return out;
 				}
 			}
+			// ROUND 335 — THE ENGAGEMENT QUIZ BUTTON IS THE KB'S EXTERNAL QUIZ LINK BUTTON (01F
+			// `engagement_quiz_button`; constraint 65 / CL-0038's label + blank publish-time href).
+			// The writer's "[Engagement quiz button] <sharepoint quiz doc URL>" used to ship the
+			// legacy `<div class="button engagementTrigger">` with a label that fell to the journal
+			// default or the quiz document's filename (28 pages / 28 modules); the gold ships the
+			// anchored "Go to quiz" button at every paired site (30/30) with a D2L quicklink the
+			// developer wires at publish. The writer's link and any other words of the tail ride in
+			// ONE Designer/Developer To Do note (cv2-note, gate-neutral) so nothing is lost.
+			// Data: buttons["engagement quiz button"].kb_form   Env toggle: ENGQUIZ_OFF
+			const eq = key === "engagement quiz button" ? btn?.kb_form : null;
+			if (eq && eq.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[eq.env ?? "ENGQUIZ_OFF"])) {
+				const eqUrl = it.block?.links?.[0]?.target ?? (it.blackAfter.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
+				const eqRest = String(it.blackAfter ?? "").replace(/https?:\/\/[^\s\]]+/g, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
+				out.push(Utils.FillTemplate(eq.form, { href: Utils.EscapeHtml(eq.href ?? "#"), label: Utils.EscapeHtml(eq.label ?? "Go to quiz") }));
+				if (eq.todo_note) out.push(NotesAndComments.redFlag(Utils.FillTemplate(eq.todo_note,
+					{ url: eqUrl || "(no link supplied)", text: eqRest ? ` — ${eqRest}` : "" }), run, "todo"));
+				run.AddNote("info", "ContentConverter", `[engagement quiz button] → the KB's anchored "Go to quiz" button + To Do note (kb_form).`);
+				return out;
+			}
 			let url = it.block?.links?.[0]?.target
 				?? (it.blackAfter.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
 			// EXTERNAL LINK BUTTON handling: writers often drop this marker INLINE in the
