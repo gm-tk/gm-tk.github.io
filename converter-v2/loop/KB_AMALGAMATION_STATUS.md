@@ -231,6 +231,7 @@ Front-facing = changes the generated HTML/CSS (constraint 87). Each front-facing
 | 9 | c55 button labels ending in a full stop | 420 buttons | gate-neutral (text) | the label's own trailing punctuation | |
 | 10 | 14.11 stickyNav include | 33 KB-scoped modules; a ≥ 80% gold convention in 30 series | gate-neutral (head) | family / series convention | |
 | 11 | c67 `overflowYScroll` on long panels | 27 gold pages | skeleton-visible (class) | panel length | small |
+| ~~—~~ | 05D universal button form — every call-to-action `[button]` is `<a href target=_blank><div class=button>` (+ constraint 65's blank quiz href) | **SHIPPED round 326** (713 pages / 286 modules, full regeneration; Claude bare buttons 1,800 → 338, 285 lost hyperlinks recovered) | skeleton-visible (`<a>` node; +0.057pp, ≥50 −1 named) | — | not a numbered constraint — the component doc's one button form; the reveal-type labels (`Check answers` / `Reset`) stay the gold's JS `button clickDrop` (its own round); constraint 55's label half (`Quiz` / `Portfolio` / `Dropbox` bare labels, 50 pages) is a queue candidate |
 | — | c92 language fonts (7 pages), c85 three-part title (5 modules), c84 AI PDFs (0), 14.3/14.8/14.12 central assets (0 Claude pages) | < 20 | — | — | recorded, not queued |
 
 ---

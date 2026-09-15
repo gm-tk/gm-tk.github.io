@@ -5669,6 +5669,44 @@ class ContentConverter {
 		return s.replace(new RegExp(cfg.strip_pattern ?? "\\.$"), "").trim();
 	}
 
+	/**
+	 * ROUND 326 — a call-to-action button is an ANCHOR. The KB's universal button form
+	 * (`<a href="URL" target="_blank"><div class="button">…</div></a>`, constraint 65's
+	 * `href="#"` quiz button) and the gold (an <a> around 99.7% of non-JS div.button /
+	 * div.buttonD, every template family and subject prefix >= 0.97) wrap the button even
+	 * where the developer has not wired the target (`href=""` on 244 gold buttons); the
+	 * generic [button] emit shipped the BARE div whenever no URL was absorbed (1,800 buttons
+	 * on 762 pages). At the plain-[button] seam only (key === "button" — the engagement /
+	 * supervisor / audio forms and the widget builders' own JS buttons never enter), a form
+	 * that does not itself open with an anchor is wrapped in `form`, followed by ONE
+	 * Designer/Developer To Do note (cv2-note, gate-neutral — the round-308 upload-box
+	 * pattern) naming what to wire. A [button] that DOES carry a URL (the writer's Word
+	 * hyperlink on the label, parsed `[LINK: …]`, or a URL typed in the tag) was shipping the
+	 * same bare form — only the round-88 following-paragraph absorb ever switched to
+	 * button_linked — so the hyperlink was silently LOST; it now rides on the anchor and no
+	 * note is added. Data buttons.anchor_wrap; env BTNANCHOR_OFF.
+	 * Returns [html] unchanged when the rule does not apply, else [anchoredHtml(, note)].
+	 */
+	static #buttonAnchorWrap(html, form, label, url, key, run, tpl) {
+		const cfg = tpl?.buttons?.anchor_wrap;
+		if (!cfg || cfg.enabled === false || key !== "button") return [html];
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BTNANCHOR_OFF"]) return [html];
+		if (/^\s*<a\b/i.test(String(form ?? ""))) return [html];      // already an anchor form
+		const lbl = String(label ?? "");
+		// a REVEAL-type label ("Check answers" / "Reset" / "Reveal answer") is the gold's JS
+		// `button clickDrop`, never a link — left exactly as it was (its build is its own round)
+		if (cfg.exclude_label_match && new RegExp(cfg.exclude_label_match, "i").test(lbl)) return [html];
+		const hit = (cfg.targets ?? []).find((t) => t.label_match && new RegExp(t.label_match, "i").test(lbl)) ?? cfg.default ?? {};
+		const href = url ? Utils.EscapeHtml(String(url)) : Utils.EscapeHtml(String(hit.href ?? ""));
+		const out = [Utils.FillTemplate(cfg.form ?? "<a href=\"{href}\" target=\"_blank\">{button}</a>", { button: html, href })];
+		if (cfg.todo_note && !url) {
+			out.push(NotesAndComments.redFlag(
+				Utils.FillTemplate(cfg.todo_note, { what: hit.what ?? "link target", why: hit.why ?? "no URL was given in the Writers Template" }),
+				run, "todo"));
+		}
+		return out;
+	}
+
 	static #mtkQuizOmitCfg() {
 		const mq = DataService.Data.EmitTemplates.interactive_builders?.mtk_quiz;
 		if (!mq || mq.enabled === false) return null;
@@ -6253,9 +6291,11 @@ class ContentConverter {
 			}
 			// ROUND 323 (KB row 55): the writer's sentence full stop is not part of the label
 			label = this.#buttonLabelTrim(label, tpl);
-			out.push(Utils.FillTemplate(form, {
+			// ROUND 326: a plain [button] with no URL still ships inside the KB's anchor
+			// (`<a href="" target="_blank">`) + one To Do note — never a bare div.
+			out.push(...this.#buttonAnchorWrap(Utils.FillTemplate(form, {
 				label: Utils.EscapeHtml(label), url: Utils.EscapeHtml(url),
-			}));
+			}), form, label, url, key, run, tpl));
 			if (trailing) out.push(...ListsAndRuns.renderBlackText(trailing, run));
 			return out;
 		}

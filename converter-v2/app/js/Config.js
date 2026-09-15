@@ -1615,7 +1615,12 @@ class Config {
 	// digit wins over the scanner's module-wide collision letter, the r217 synthetic box asserts
 	// there. 17 pages / 17 modules, scoped. Env PHASENUM_OFF; data activity_wrapper.phase_numbering.
 	// THE LOOP STOPPED after this round on the plateau rule (r323 0.000 / r324 +0.005 / r325 +0.019pp).
-	static AppVersion = "260618.96";
+	// ROUND 326 (2026-09-15, build 260618.97): a call-to-action button is an ANCHOR (the KB's
+	// universal button form): a plain [button] with no URL ships inside <a href="" target="_blank">
+	// + one To Do note, a [button] whose label carries the writer's hyperlink keeps it (285 links
+	// were being lost), reveal-type labels (Check answers / Reset) stay the gold's JS button.
+	// 713 pages / 286 modules, FULL regeneration. Env BTNANCHOR_OFF; data buttons.anchor_wrap.
+	static AppVersion = "260618.97";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -8,6 +8,14 @@
 Health check: `verify_after_transfer.sh` PASS, git clean at 1914ab5 (nothing uncommitted — nothing to reconcile), no stale index.lock.
 **Round 9 (engine r322) SHIPPED 2026-09-15 ≈11:35 NZST — c65 / CL-0082 (Chris's decision 3); commit 509c216. Round 10 (engine r323) SHIPPED 2026-09-15 ≈12:15 NZST — KB row 55's text defect, the trailing full stop on button labels (212 pages / 82 modules, FULL regeneration); commit (see git log). Round 11 (engine r324) SHIPPED 2026-09-15 ≈12:35 NZST — KB c79's `Lesson N` LABEL titles (79 pages / 24 modules, scoped; commit 1afd467). Round 12 (engine r325) SHIPPED 2026-09-15 ≈13:10 NZST — phase-scoped activity numbering on the Fundamentals pages (17 pages / 17 modules, scoped; commit — see git log).
 
+**Session 4 started:** 2026-09-15 13:27 NZST (Claude Code, same machine; hard stop 23:27). Budget: 12 rounds or 10 hours. Chris's kickoff:
+"Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … Honour every entry under 'Decisions
+from Chris' and never re-ask them … commit after every round, never push." Health check: `verify_after_transfer.sh` PASS, git clean at b8bfdf0
+(nothing uncommitted — nothing to reconcile), no stale index.lock, KB repo unchanged at ee2853c. **Plateau counter:** the session-3 stop was the
+plateau rule's "needs a human decision"; Chris's explicit "continue" IS that decision, so the three-round window restarts at this session's first
+shipped round (the same reading session 2 used after the r320 stop). stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5
+stay open (not re-asked); the loop works the derivable queue that needs no decision.
+
 ## >>> STOPPED 2026-09-15 ≈13:10 NZST on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r323 0.000pp, r324 +0.005pp, r325 +0.019pp <<<
 **Session 3 shipped four rounds (r322 → r325; 4 commits) in ≈3h30m of the 10-hour budget.** Everything is committed; nothing is uncommitted; nothing was pushed.
 **Next session starts with:** Chris's decisions — (a) stickyNav (BLOCKED: the KB 14 families say ADD the `<head>` include, the project instruction says NEVER; recommendation = KB families only), (b) decision 5 — the interactive builds (the corpus's largest class: 824 un-built drag-and-drops, 237 widgets with no builder, invisible to the gates by design), (c) decision 4 — the Standard-template title-pair order, (d) decision 1 — c47. With none of those, the derivable ≥ 20-page queue is exhausted for gate-moving work; the remaining measured candidates are the box-less `[MTKquiz]` shells (now numberable — 32 shells, ~17 pages), the Bilingual `number="N.M"` section-id boxes (KB 07B; 72 boxes / 25 pages, est. +0.01pp), the c79 trailing-punctuation titles (8), and the 172 empty hand-off boxes (15 shapes, none ≥ 20). stickyNav (KB queue rank 10) is BLOCKED — needs Chris (see Blocked classes). Plateau guard: r322 moved +0.043pp.**
@@ -115,6 +123,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Round 10 (engine r323 — a button label never ends in a full stop, KB row 55's text defect): SHIPPED 2026-09-15 (session 3). AppVersion 260618.94, CLAUDE.md §9/§11/§14, KB status row 55 → defect CLEARED, FULL regeneration (the first since r318; scoped-ship counter reset). stickyNav BLOCKED — needs Chris.
 - Round 11 (engine r324 — a `Lesson N` label is not a lesson title, KB c79): SHIPPED 2026-09-15 ≈12:35 (session 3). AppVersion 260618.95, CLAUDE.md §9/§11/§14, KB status row 79 → the label mechanism CAPTURED-LIVE, scoped ship #1 since the r323 full. c67 overflowYScroll DECLINED on measurement.
 - Round 12 (engine r325 — phase-scoped activity numbering on the Fundamentals pages, the r217/r266 follow-up): SHIPPED 2026-09-15 ≈13:10 (session 3). AppVersion 260618.96, CLAUDE.md §9/§11/§14, scoped ship #2 since the r323 full. **THE LOOP STOPPED after it (plateau rule).**
+- Session 4 Round 1 (engine r326 — a call-to-action button is an anchor, the KB's universal button form): SHIPPED 2026-09-15 ≈15:05 (session 4). AppVersion 260618.97, CLAUDE.md §9/§11/§14, KB status D-row added, FULL regeneration (scoped-ship counter reset).
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -538,6 +547,51 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 4 · Round 1 (engine r326) — what shipped (the KB's universal button form)
+- **Fix:** `buttons.anchor_wrap` {enabled, env BTNANCHOR_OFF, form `<a href="{href}" target="_blank">{button}</a>`, todo_note, exclude_label_match,
+  targets [dropbox / portfolio / quiz(href #) / journal|workbook / download], default} — `ContentConverter.#buttonAnchorWrap` at the generic
+  `[button]` emit (key === 'button' only). A URL-carrying button keeps its link (285 `[LINK: …]` hyperlinks were being lost); a URL-less one ships
+  the blank anchor + ONE To Do note (the r308 pattern). Reveal-type labels excluded (gold = JS `button clickDrop`; 0 false hits on 3,311 gold
+  anchored labels). Repair inside the round: the first full regeneration wrapped 219 reveal buttons / 38 modules → exclusion added → second full
+  regeneration.
+- **Regeneration:** FULL (416 modules / 70 batches, twice); 0 stale (mtime); 713 pages / 286 modules changed, 0 added / removed; OFF in memory =
+  disk 2,102 / 2,102 before. Claude bare buttons 1,800 → 338 (upload 480 → 0, quiz 25 → 0, download 17 → 0, journal 460 → 91 = engagementTrigger,
+  other 818 → 247 = reveal 219 + builder 28); anchored 475 → 1,937.
+- **Gates:** skeleton 50.435 → 50.492 (+0.057pp; 675 moved, 210 up / 465 down; IDENTICAL net of the 713 changed pages — 53.624 = 53.624 over
+  1,276), ≥50 1031 → 1030 (NAMED: the scorer's repeat-collapsing — `_r326_scorer_diag.py`: gate pp-sum −4.26 vs uncollapsed +104.40 on the 248
+  biggest movers; six of the ten down-crossers sat at exactly 50.00; `_gatecheck.py` says REGRESSED on that line, judged under the §1b override
+  accounting as r317), ≥75 193 → 196, ≥90 15; body 192 → 191 IMPROVED; every other gate EXACT; 13 selftests GREEN. **55.1% of achievable.**
+- **Plateau window:** restarts at this round: r326 +0.057pp (≥ 0.02).
+
+## Session 4 · Round 1 PICK (engine r326) — written before any code, 2026-09-15 13:55 NZST
+- **Class:** a writer's call-to-action `[button]` ships as a BARE `<div class="button">{label}</div>` whenever no URL was found; the KB's
+  universal button form (05D_COMP14_BUTTONS_TABLES_COLUMNS lines 11 / 58-59 / 83: `<a href="URL" target="_blank"><div class="button">…</div></a>`,
+  constraint 65's `href="#"` quiz button) and the gold (an `<a>` around every non-JS `div.button`/`div.buttonD`) both put the button INSIDE an
+  anchor — even when the developer has not wired the target (`href=""` / `href="#"` on 244 gold buttons). Gate-visible: the skeleton sees `<a>` nodes.
+- **Authority (§1b):** 1 = the KB's universal button form; 3 = the gold convention (below). Claude's own r308 upload box already ships the
+  anchored `<a href="" target="_blank">` form + one To Do note — this round generalises that seam.
+- **MEASURED (`outputs/_measure_r326_buttonanchor.py` → `_r326_buttonanchor.json`, every paired page; JS buttons clickDrop / TKmodalButton /
+  rSBtn / externalButton excluded):** gold wrapped share by template Bilingual 1.000 (n=65) / Fundamentals 1.000 (159) / Inquiry 0.977 (558) /
+  Standard 0.997 (2553); by category upload 0.998 (1245) / journal 1.000 (1179) / quiz 0.995 (193) / download 1.000 (110) / other 0.970 (608);
+  by subject prefix: 62 prefixes, NONE below 0.60. Gold href kinds: d2l quicklinks 1372, real URLs 529, blank/# 244, bare 21. **Claude ships
+  1,800 bare buttons on 762 pages / 306 modules** (upload 480, journal 460, quiz 25, download 17, other 818 — the 'other' figure includes the
+  widget builders' own JS buttons 'Check answers' / 'Reset' etc., which are NOT at this seam and are not touched).
+- **Scope of the fix:** the generic `[button]`-family emit in `ContentConverter.#element` (the r323 seam) — the three bare forms `buttons.button`,
+  `buttons.button_dropbox` (buttonD) and `buttons.button_download` when no URL was absorbed: wrap in `<a href="" target="_blank">…</a>` and add
+  ONE Designer/Developer To Do note (cv2-note, gate-neutral — the r308 pattern) naming what to wire (dropbox quicklink / portfolio / journal
+  document / quiz quicklink / the link target). The engagementTrigger / supervisor / audioButton forms (gold carries none of those classes — their
+  target shape is unmeasured) are NOT in scope; recorded as a follow-up.
+- **Also seen, recorded for a later PICK:** (a) a `[Button] label [LINK: url]` whose Word hyperlink is LOST (SSOG101 6 'How Can I Help Activity' —
+  gold anchors the docs.google URL; 162 WT button lines / 56 modules carry a `[LINK:`); (b) KB constraint 55's label part — Claude ships bare
+  labels 'Portfolio' 25 / 'Dropbox' 12 / 'Quiz' 33 where the KB says 'Go to portfolio' / 'Go to dropbox' / 'Go to quiz' (gate-neutral text);
+  (c) the gold has more upload buttons than Claude on ~230 pages / 142 modules (`_r326_dbxmissing_modules.json`) — 33 modules WT-silent (class C),
+  the rest inside un-built interactives or non-lexicon marker forms (`[dev- a dropbox with icons like here?]`, `[CS please create appropriate
+  Dropbox]`); (d) the "dropbox terminates its activity" follow-up is CLOSED on measurement (`_measure_r326_dbxterminate.py`: Claude 0 boxes
+  with content after the button; gold 710/718 last-child).
+- **Regeneration:** the `[button]` tag family = the corpus (r323 precedent) → FULL regeneration.
+- **Gate expectation:** skeleton ≥ hold (an `<a>` node appears where the gold has one); every other gate EXACT; the button-family verifiers
+  (mtkquiz, dropdown, clickdrop) defect 0; the r323 `_measure_r323_buttonstop.py` after-state unchanged.
+
 ## Follow-up candidates surfaced by Round 1 (NOT queued — each needs a PICK + corpus-wide measure per §3)
 - **The dropbox bundle terminates its activity.** Gold: the upload button is the box's LAST content child in 629/720 non-BLL (87%) and 463/475 BLL (97%).
   After an r314 hold the box stays open to the next auto-close boundary (XTAS101 1G swallows `[body] Listen and read…` + a carousel before the
@@ -599,3 +653,4 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - r10 (engine r323) · KB row 55, a button label never ends in a full stop (`Upload to dropbox.` → `Upload to dropbox`) · SHIPPED 2026-09-15 · FULL regeneration (the [button] family = the corpus), 212 pages / 82 modules · scaffold 50.411→50.411 (+0.000pp), cs exact 11360, every other gate EXACT · 55.0% of achievable · stickyNav BLOCKED (needs Chris) · commit (see git log)
 - r11 (engine r324) · KB constraint 79, a `Lesson N` label is not a lesson title (the first real heading names the page; `continued` sub-pages inherit) · SHIPPED 2026-09-15 · scoped regeneration, 79 pages / 24 modules · scaffold 50.411→50.416 (+0.005; 11 up / 3 down named), ≥50 +1, every other gate EXACT · titles exact 528→550 · c67 DECLINED · 55.0% of achievable · commit (see git log)
 - r12 (engine r325) · phase-scoped activity numbering on the Fundamentals pages (the r217/r266 follow-up: the phase ordinal as the activity-number prefix, the writer's bare digit over the scanner's collision letter) · SHIPPED 2026-09-15 · scoped regeneration, 17 pages / 17 modules · scaffold 50.416→50.435 (+0.019; 12 up / 5 down named), every other gate EXACT · number matches 66→178 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r323 0.000, r324 +0.005, r325 +0.019)**
+- s4-r1 (engine r326) · a call-to-action button is an anchor (the KB's universal button form: a plain `[button]` ships inside `<a href target=_blank>` — the writer's hyperlink kept, else a blank href + one To Do note; reveal-type labels stay the gold's JS button) · SHIPPED 2026-09-15 · FULL regeneration, 713 pages / 286 modules · scaffold 50.435→50.492 (+0.057; 675 moved, 210 up; dips NAMED = scorer repeat-collapsing, identical net of the changed pages), ≥50 −1 named, ≥75 +3, body 192→191 · every other gate EXACT · bare buttons 1,800→338, 285 lost links recovered · 55.1% of achievable · commit (see git log)
