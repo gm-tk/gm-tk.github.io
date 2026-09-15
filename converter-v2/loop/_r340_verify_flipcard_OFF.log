@@ -1,0 +1,15 @@
+ANZH303: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENFUN01: built 18 card-texts [exact 5, copy-edit 12, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.29): https://pixabay.com/photos/reading-bed-flashlight-book-read-5069826/ <br>Why is Harry reading?
+HIS1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDI202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+
+TOTAL 18: exact 5, copy-edit 12, gold-subst 0, defect 1, divergence 0.
+RESULT: divergence 0 ✓ (protected). exact/copy-edit/defect are a tracked baseline — diff vs gate_baseline.json.flipcard, hold-or-improve.

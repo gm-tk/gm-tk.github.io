@@ -1,0 +1,66 @@
+=== OFF ===
+HIS1008: identical 12 / changed 0
+HIS1005: identical 12 / changed 0
+ENFUN01: identical 1 / changed 0
+
+TOTAL: identical 25 / changed 0 / missing 0 over 3 modules
+=== ON ===
+  ~ HIS1008_1_0.html: -2 +3
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <a href="https://www.youtube.com/watch?v=l9yY9H3Y49M" target="_blank"><div class="externalButton">Go to video<
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/l9yY9H3Y49M" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ HIS1008_5_0.html: -1 +3
+     - <a href="https://www.youtube.com/watch?v=TLberHUJgHY" target="_blank"><div class="externalButton">Go to video<
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/TLberHUJgHY" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ HIS1008_6_0.html: -2 +3
+     - <a href="https://www.youtube.com/watch?v=DRwnXUbJdfg" target="_blank"><div class="externalButton">Go to video<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/DRwnXUbJdfg" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ HIS1008_7_0.html: -8 +12
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <a href="https://www.youtube.com/watch?v=V2u7yHD_d-o" target="_blank"><div class="externalButton">Go to video<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <a href="https://www.youtube.com/watch?v=cRuDnigDKnI" target="_blank"><div class="externalButton">Go to video<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <a href="https://www.youtube.com/watch?v=uVo29ejD7jA" target="_blank"><div class="externalButton">Go to video<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <a href="https://www.youtube.com/watch?v=c1_E5aUNzd0" target="_blank"><div class="externalButton">Go to video<
+     + <iframe src="https://www.youtube-nocookie.com/embed/V2u7yHD_d-o" loading="lazy" title="YouTube video player" f
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/cRuDnigDKnI" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/uVo29ejD7jA" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/c1_E5aUNzd0" loading="lazy" title="YouTube video player" f
+     + </div>
+     + </div>
+HIS1008: identical 8 / changed 4
+  ~ HIS1005_2_0.html: -1 +3
+     - <a href="https://www.youtube.com/watch?v=NJ9LJfM4PjM" target="_blank"><div class="externalButton">Go to video<
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/NJ9LJfM4PjM" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ HIS1005_9_0.html: -1 +3
+     - <a href="https://www.youtube.com/watch?v=WwB6bPgPol4" target="_blank"><div class="externalButton">Go to video<
+     + <iframe src="https://www.youtube-nocookie.com/embed/WwB6bPgPol4" loading="lazy" title="YouTube video player" f
+     + <div class="videoSection icon ratio ratio-16x9">
+     + </div>
+HIS1005: identical 10 / changed 2
+  ~ ENFUN01_0_0.html: -1 +3
+     - <a href="https://www.youtube.com/watch?v=us6ZcvCcYoo" target="_blank"><div class="externalButton">Go to video<
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/us6ZcvCcYoo" loading="lazy" title="YouTube video player" f
+     + </div>
+ENFUN01: identical 0 / changed 1
+
+TOTAL: identical 18 / changed 7 / missing 0 over 3 modules
+CHANGED: HIS1008/HIS1008_1_0.html HIS1008/HIS1008_5_0.html HIS1008/HIS1008_6_0.html HIS1008/HIS1008_7_0.html HIS1005/HIS1005_2_0.html HIS1005/HIS1005_9_0.html ENFUN01/ENFUN01_0_0.html

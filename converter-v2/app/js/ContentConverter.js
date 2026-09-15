@@ -6611,6 +6611,14 @@ class ContentConverter {
 			if (probe && /youtu\.?be|youtube|vimeo/i.test(probe)) {
 				return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run));
 			}
+			// ROUND 340 (seam B on the [embed] route): an url-less "[embed video with image and
+			// play button]"-style bracket that resolves here, followed by a url-only [link]
+			// item carrying a VIDEO url, is that video — route it through MediaBuilder.media,
+			// which takes the link item's url and consumes it (a peek here; media() consumes).
+			// Data elements.external_link_video_embed; env LINKVID_OFF.
+			if (!probe && MediaBuilder.FollowingVideoLinkTag(bodyItems, i, tpl)) {
+				return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run));
+			}
 			const url = probe
 				|| (MediaBuilder.gatherFollowing(it, bodyItems, i).match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
 			if (!url) {
@@ -7264,6 +7272,24 @@ class ContentConverter {
 				&& !(typeof process !== "undefined" && process.env && process.env.EXTBTNLABEL_OFF);
 			const lbWords = labelText ? labelText.split(/\s+/).length : 0;
 			const lbShort = labelText && lbWords <= (lbRule?.label_max_words ?? 10) && !/[.!?:]$/.test(labelText);
+			// ROUND 340 — A STANDALONE [link]-family paragraph whose text is NOTHING BUT A
+			// VIDEO url is the EMBEDDED video (the r339 sibling on this emitter): the writer
+			// types "[Link] https://www.youtube.com/watch?v=…" on its own line and the gold
+			// embeds it (videoSection) 0.90 of the time; the titled form ("[Link] Title"
+			// with real words) keeps the anchor / button below. Seam A of
+			// elements.external_link_video_embed; env LINKVID_OFF. The url-only test is the
+			// r76 `!labelText` AND MediaBuilder.LinkVideoUrlOnly — the whole paragraph block
+			// has no visible words (a trailing tag after a prose sentence has an empty
+			// blackAfter but is the gold's inline ANCHOR — HPRE203 / TEFUN07 / XDLS908, found
+			// by the 416-module probe); MediaBuilder.media over the item alone reads the url
+			// from its block link / own line and drops that line (the r80 title-drop), so
+			// nothing but the embed ships.
+			if (MediaBuilder.LinkVideoEmbedOn(tpl) && isExtLink && !labelText
+				&& MediaBuilder.LinkVideoUrlOnly(it)
+				&& MediaBuilder.LinkVideoHost(tpl).test(url)) {
+				out.push(...MediaBuilder.media(it, [it], 0, "video", run));
+				return out;
+			}
 			if (sbOn && isExtLink && !labelText) {
 				const eb = tpl.buttons["external link button"];
 				const label = /youtu\.?be|youtube|vimeo|\bvideo\b/i.test(url)

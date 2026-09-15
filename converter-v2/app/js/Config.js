@@ -1673,7 +1673,12 @@ class Config {
 	// consensus 0.90; the nearest KB rule 01E [video] -> videoSection) — ContentConverter.#videoDestination at the plain-[button]
 	// seam (own url / next [video] tag / next url-only tag / next bare url line) + the r88 absorb guard; scoped 14 modules;
 	// env VIDBTN_OFF.
-	static AppVersion = "260619.10";
+	// ROUND 340 (2026-09-16, build 260619.11): a standalone [link]-family paragraph whose text is nothing but a VIDEO url is
+	// the embedded video (the gold's consensus 0.90 of the url-only sites; nearest KB rule 01E; r339's sibling on the
+	// [external link] emitter) — seam A in ContentConverter.#inline + seam B in MediaBuilder.media's following-link source
+	// (a url-less [video]/[embed] takes the following url-only [link] line); whole-paragraph url-only fence; scoped 9 modules;
+	// env LINKVID_OFF.
+	static AppVersion = "260619.11";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

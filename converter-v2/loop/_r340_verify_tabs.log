@@ -1,0 +1,15 @@
+ANZH303: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+ENFUN01: built 3 tab-texts [exact 3, copy-edit 0, defect 0] OK ✓
+HIS1005: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+HIS1006: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXDI202: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXFL203: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+MXFU202: 4 tab-texts on pages whose gold has NO tabs → A1 gold-substitution DIVERGENCE
+MXFU202: built 0 tab-texts [exact 0, copy-edit 0, defect 0] no builds
+
+TOTAL 7: exact 3, copy-edit 0, defect 0, divergence 4.
+RESULT: every built tab matches a human tab (exact or copy-edit), modulo developer divergences ✓

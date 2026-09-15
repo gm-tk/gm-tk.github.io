@@ -1,0 +1,39 @@
+external-link-family blocks carrying a VIDEO url: 71 in 22 modules
+ALL                                          n= 71 mods= 22 | gold {"EMBED":46,"ANCHOR":13,"ABSENT":9,"BUTTON":3} embed/found 0.74 | claude {"BUTTON":33,"ANCHOR":13,"OTHER":2,"EMBED":23}
+  link tag (INLINE family)                   n= 71 mods= 22 | gold {"EMBED":46,"ANCHOR":13,"ABSENT":9,"BUTTON":3} embed/found 0.74 | claude {"BUTTON":33,"ANCHOR":13,"OTHER":2,"EMBED":23}
+  link-button tag (ELEMENT family)           n=  0 mods=  0 | gold {} embed/found - | claude {}
+
+by standalone-ness (visible words minus url):
+  standalone (<= 8 words)                    n= 55 mods= 16 | gold {"EMBED":34,"ABSENT":9,"ANCHOR":10,"BUTTON":2} embed/found 0.74 | claude {"BUTTON":29,"EMBED":20,"ANCHOR":5,"OTHER":1}
+  prose (> 8 words)                          n= 16 mods=  8 | gold {"ANCHOR":3,"EMBED":12,"BUTTON":1} embed/found 0.75 | claude {"BUTTON":4,"ANCHOR":8,"OTHER":1,"EMBED":3}
+
+standalone, by what PRECEDES the link:
+  prev = media tag with NO own url           n= 25 mods=  5 | gold {"EMBED":17,"ABSENT":7,"ANCHOR":1} embed/found 0.94 | claude {"ANCHOR":3,"EMBED":4,"BUTTON":18}
+  prev names watch/play/video/clip           n= 23 mods= 11 | gold {"EMBED":11,"ANCHOR":9,"BUTTON":2,"ABSENT":1} embed/found 0.50 | claude {"BUTTON":8,"EMBED":15}
+  prev neither                               n=  7 mods=  7 | gold {"EMBED":6,"ABSENT":1} embed/found 1.00 | claude {"BUTTON":3,"EMBED":1,"ANCHOR":2,"OTHER":1}
+
+standalone, by template:
+  Standard                                   n= 54 mods= 15 | gold {"EMBED":33,"ABSENT":9,"ANCHOR":10,"BUTTON":2} embed/found 0.73 | claude {"BUTTON":28,"EMBED":20,"ANCHOR":5,"OTHER":1}
+  Fundamentals                               n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"BUTTON":1}
+
+standalone, by subject (n >= 4):
+  NCEA1                                      n= 31 mods=  6 | gold {"EMBED":20,"BUTTON":2,"ABSENT":8,"ANCHOR":1} embed/found 0.87 | claude {"ANCHOR":4,"BUTTON":21,"EMBED":6}
+  1-10 English                               n= 14 mods=  2 | gold {"EMBED":5,"ABSENT":1,"ANCHOR":8} embed/found 0.38 | claude {"BUTTON":1,"EMBED":13}
+  1-10 Mathematics                           n=  6 mods=  4 | gold {"EMBED":5,"ANCHOR":1} embed/found 0.83 | claude {"BUTTON":5,"EMBED":1}
+
+standalone, by visible-word count:
+  words 0                                    n= 37 mods= 13 | gold {"EMBED":26,"BUTTON":2,"ABSENT":8,"ANCHOR":1} embed/found 0.90 | claude {"BUTTON":25,"ANCHOR":4,"EMBED":7,"OTHER":1}
+  words 1                                    n=  1 mods=  1 | gold {"ABSENT":1} embed/found - | claude {"EMBED":1}
+  words >=4                                  n= 17 mods=  6 | gold {"EMBED":8,"ANCHOR":9} embed/found 0.47 | claude {"BUTTON":4,"EMBED":12,"ANCHOR":1}
+
+tag spellings (top 10):
+  "link"                                     n= 44 mods= 12 | gold {"EMBED":34,"BUTTON":2,"ABSENT":6,"ANCHOR":2} embed/found 0.89 | claude {"BUTTON":28,"ANCHOR":12,"OTHER":1,"EMBED":3}
+  "link for video"                           n= 13 mods=  1 | gold {"ABSENT":1,"ANCHOR":8,"EMBED":4} embed/found 0.33 | claude {"EMBED":13}
+  "link N"                                   n=  4 mods=  2 | gold {"ABSENT":2,"EMBED":2} embed/found 1.00 | claude {"EMBED":4}
+  "link item #N"                             n=  2 mods=  1 | gold {"EMBED":1,"ANCHOR":1} embed/found 0.50 | claude {"BUTTON":2}
+  "link to video"                            n=  2 mods=  2 | gold {"EMBED":2} embed/found 1.00 | claude {"EMBED":1,"OTHER":1}
+  "link N, to"                               n=  1 mods=  1 | gold {"ANCHOR":1} embed/found 0.00 | claude {"BUTTON":1}
+  "link please clip from N N N N"            n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"BUTTON":1}
+  "link video"                               n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"BUTTON":1}
+  "external link video"                      n=  1 mods=  1 | gold {"EMBED":1} embed/found 1.00 | claude {"EMBED":1}
+  "link https //www.youtube.com/watch?v=fx k n=  1 mods=  1 | gold {"BUTTON":1} embed/found 0.00 | claude {"ANCHOR":1}

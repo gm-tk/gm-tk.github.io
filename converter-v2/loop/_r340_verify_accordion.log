@@ -1,0 +1,26 @@
+ANZH303: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 3 | no builds
+ENFUN01: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 5 | no builds
+HIS1005: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Was it Slavery?
+HIS1006: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Little Rock Paragraphs.docx
+   dev-diverged: Source A – Police Report
+   dev-diverged: Source B – Boycott Leaflet
+   dev-diverged: Source C – Interview with a Black Women
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 5 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Little Rock Paragraphs.docx
+   dev-restructured: Source A – Police report
+   dev-diverged: Source B – Boycott leaflet
+   dev-diverged: Source C – Interview with a black women
+MXDI202: built 3 panels [exact 0, copy-edit 0, dev-edit 3, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: 1
+   dev-diverged: 2
+   dev-diverged: 3
+MXFL203: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+MXFU202: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 15 | no builds
+
+TOTAL: 12 panels built across 4 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓

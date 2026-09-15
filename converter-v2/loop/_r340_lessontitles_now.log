@@ -1,0 +1,15 @@
+classes: {
+ "gold=module-title (KB rejects)": 97,
+ "case/ws/macron-only": 71,
+ "exact": 567,
+ "other (editorial / different source)": 407,
+ "pair-count (gold dual vs claude single or v.v.)": 51,
+ "claude=module-title, gold=own": 44,
+ "punct-only": 8,
+ "pair order (decision 4)": 2
+}
+gold own-title source tag (for claude=module-title): {'plain-line': 10, 'not-in-WT': 10, 'H2': 13, 'H3': 1, 'LESSON': 6, 'PAGE': 4}
+-- punct-only [('AGH1003', 4.0, 'Effluent and Organic Matter', 'Effluent and Organic Matter.'), ('AGH1003', 6.0, 'Cultivation', 'Cultivation.'), ('ENGC102', 4.0, 'Photographs, illustrations and captions', 'Photographs, illustrations and captions.'), ('MXEX202', 2.0, 'Measuring with cups, millilitres and litres', 'Measuring with cups, millilitres and litres.'), ('MXFU202', 6.0, 'Column Addition', 'Column Addition:'), ('PHE1008', 3.0, 'New Zealand – sport, history and culture', 'New Zealand – sport, history and culture.'), ('XDLS906', 1.0, 'Feel the earth', 'Feel the earth.'), ('XMES203', 4.0, 'Learning about night and day and how to read the time', 'Learning about night and day and how to read the time.')]
+-- code-prefix only []
+-- 'Lesson N' prefix []
+-- claude=module-title, gold=own: [('MXFUN01', 1.0, 'Number Sense', 'Number', 'plain-line'), ('MXFUN01', 6.0, 'Number Sense', 'Number', 'plain-line'), ('BLL240', 1.0, 'Letter team ‘wh’', 'Learning the sounds – wh, tch, dge, air, ear, ere, eer', 'not-in-WT'), ('CEDT207', 5.0, 'Symbols in art', 'Me, my selfie and i', 'plain-line'), ('BLL147', 1.0, 'j, ai, oa, ie, ee, or', 'ai, j, oa, ie, ee, or', 'not-in-WT'), ('ENGC102', 3.0, 'Table of contents', 'Keeping it real', 'plain-line'), ('ENGI303', 3.0, 'Oral storytelling', 'You’ve Got This!', 'plain-line'), ('ENGJ302', 1.0, 'Definitions', 'Roars and whispers', 'H2'), ('ENGR102', 1.0, 'Ella the Silent E', 'Spelling Buddies', 'plain-line'), ('ENGS202', 5.0, 'All about you', 'We Are Authors', 'H3'), ('HES1003', 1.0, 'Decisions in life', 'Thinking it through', 'not-in-WT'), ('HIS1002', 1.0, 'French Testing and Pacific Resistance', 'Nuclear pacific 2 the resistance', 'LESSON')]

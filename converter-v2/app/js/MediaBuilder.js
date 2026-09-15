@@ -248,9 +248,22 @@ class MediaBuilder {
 				}
 			}
 		}
+		// ROUND 340 — seam B of elements.external_link_video_embed: a [video]/[embed] element
+		// with NO url of its own whose next unconsumed item is a url-only [link]-family TAG
+		// item carrying a VIDEO url ("[embed video with image and play button]" then
+		// "[link] https://www.youtube.com/watch?v=…" — HIS1006/HIS1008) takes that url and
+		// consumes the item, exactly as the r247 rule takes a following BLACK reference line.
+		// Without it the element printed a "no URL" note and the link shipped as a button;
+		// the gold embeds (0.94 of the found sites). Env LINKVID_OFF reverts.
+		let linkTagUrl;
+		if (!(it.block?.links?.[0]?.target) && !gathered.match(_re) && !followLink && kind === "video") {
+			const hit = this.FollowingVideoLinkTag(bodyItems, i, tpl);
+			if (hit) { linkTagUrl = hit.url; hit.item._consumed = true; }
+		}
 		const url = it.block?.links?.[0]?.target
 			?? gathered.match(_re)?.[0]
 			?? followLink
+			?? linkTagUrl
 			?? (_urlInTextOn ? String(it.text || "").match(_re)?.[0] : undefined)
 			?? "";
 
@@ -416,6 +429,70 @@ class MediaBuilder {
 	 * @param {number} i - this item's index within bodyItems
 	 * @returns {string} the combined following text, newline-separated
 	 */
+	/**
+	 * ROUND 340 — elements.external_link_video_embed: is the rule live? (data flag + env LINKVID_OFF)
+	 */
+	static LinkVideoEmbedOn(tpl) {
+		const cfg = tpl.elements?.external_link_video_embed;
+		return !!(cfg && cfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.env ?? "LINKVID_OFF"]));
+	};
+
+	/**
+	 * ROUND 340 — the VIDEO-url test shared by both seams: a youtube watch / shorts / embed id,
+	 * youtu.be, or a vimeo video id (a channel or user page is NOT a video). Falls back to the
+	 * r339 buttons.video_destination.host_match so the two rules can never disagree.
+	 */
+	static LinkVideoHost(tpl) {
+		const pat = tpl.elements?.external_link_video_embed?.host_match
+			?? tpl.buttons?.video_destination?.host_match
+			?? "youtube\\.com/(?:watch\\?|shorts/|embed/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d";
+		return new RegExp(pat, "i");
+	};
+
+	/**
+	 * ROUND 340 — the url-only test shared by both seams: the link item's WHOLE PARAGRAPH (its
+	 * docx block) carries no visible words once the red tag spans, the urls and the bold
+	 * markers are removed — the measurement's `words 0` (gold EMBED 0.90). `blackAfter` alone
+	 * is NOT enough: a trailing "[link] URL" after a prose sentence ("If you need help reading
+	 * the bar chart then click on this link to watch a video [link] https://…" — HPRE203,
+	 * TEFUN07, XDLS908) has an empty blackAfter but 18–31 visible words before the tag, and
+	 * the gold anchors that phrase inline (the prose form the class excludes, gold ANCHOR).
+	 */
+	static LinkVideoUrlOnly(it) {
+		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const src = it?.block?.text != null ? String(it.block.text) : String(it?.blackAfter ?? "");
+		return !src.replace(RED, " ").replace(/https?:\/\/[^\s\]\)"<>]+/g, " ").replace(/\*/g, "").trim();
+	};
+
+	/**
+	 * ROUND 340 (seam B) — the next unconsumed item after a url-less media element, when it is a
+	 * url-only [link]-family TAG item carrying a VIDEO url. Walks over already-consumed items and
+	 * blank black lines; stops at the first other item. Returns { item, url } or null. The
+	 * caller consumes the item.
+	 */
+	static FollowingVideoLinkTag(bodyItems, i, tpl) {
+		if (!this.LinkVideoEmbedOn(tpl) || tpl.elements?.external_link_video_embed?.media_follow === false) return null;
+		const host = this.LinkVideoHost(tpl);
+		const _re = /https?:\/\/[^\s\]\)"<>]+/;
+		for (let j = i + 1; j < bodyItems.length; j++) {
+			const nx = bodyItems[j];
+			if (!nx) return null;
+			if (nx._consumed || nx.consumedBy !== undefined) continue;
+			if (nx.type === "black" && !String(nx.text ?? "").trim()) continue;
+			if (nx.type !== "tag") return null;
+			const isExt = nx.parse?.primary?.tag === "external link"
+				|| (nx.parse?.tags ?? []).some((t) => t.tag === "external link");
+			if (!isExt) return null;
+			const ba = String(nx.blackAfter ?? "");
+			const url = nx.block?.links?.[0]?.target ?? (ba.match(_re)?.[0] ?? "");
+			if (!url || !host.test(url)) return null;
+			if (!this.LinkVideoUrlOnly(nx)) return null;   // a titled / prose link stays a link
+			return { item: nx, url };
+		}
+		return null;
+	};
+
 	static gatherFollowing(it, bodyItems, i) {
 		let text = it.blackAfter ?? "";
 		for (let j = i + 1; j < bodyItems.length; j++) {
