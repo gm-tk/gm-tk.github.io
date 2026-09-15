@@ -221,7 +221,14 @@ class BilingualBuilder {
 			const R = this.bilingualSplit(reoCell, run, norm);
 			const E = this.bilingualSplit(engCell, run, norm);
 			if (interleave) {
-				const strip = (arr) => arr.filter((h) => !this.actLabelRe.test(String(h).replace(/<[^>]+>/g, "").trim()));
+				// ROUND 330 (KB 07B): the writer's BARE SECTION-ID heading (`[H1] 1.1`) is the
+				// section's activity NUMBER, never a heading — the gold ships a bare-id heading on
+				// 0 of 2,385 pages. Strip it here, the same seam that drops the "Activity NX:" label.
+				const secIdRe = this.sectionIdStripRe();
+				const strip = (arr) => arr.filter((h) => {
+					const t = String(h).replace(/<[^>]+>/g, "").trim();
+					return !this.actLabelRe.test(t) && !(secIdRe && secIdRe.test(t));
+				});
 				const Rt = strip(R.text), Et = strip(E.text);
 				const n = Math.max(Rt.length, Et.length);
 				for (let k = 0; k < n; k++) {
@@ -261,6 +268,35 @@ class BilingualBuilder {
 			}
 		}
 		return null;
+	};
+
+	/**
+	 * ROUND 330 (KB 07B) — the `section_grouping.section_id_number` data block,
+	 * or null when the feature is off (data `enabled:false` or env REOSECID_OFF).
+	 * The bilingual writer's bare `[H1] N.M` section id is the section's activity
+	 * NUMBER (decimal, the KB's preferred form), never a heading.
+	 *
+	 * @returns {Object|null} the config block, or null when off
+	 */
+	static sectionIdNumberCfg() {
+		const cfg = DataService.Data.EmitTemplates.elements?.dual_language?.section_grouping?.section_id_number;
+		if (!cfg || cfg.enabled === false) return null;
+		const env = cfg.env || "REOSECID_OFF";
+		if (typeof process !== "undefined" && process.env && process.env[env]) return null;
+		return cfg;
+	};
+
+	/**
+	 * The regex that recognises a rendered heading whose WHOLE text is a bare
+	 * section id (`1.1`, `2.3:`), from `section_id_number.id_pattern`; null when
+	 * the feature is off or `strip_heading` is false.
+	 *
+	 * @returns {RegExp|null}
+	 */
+	static sectionIdStripRe() {
+		const cfg = this.sectionIdNumberCfg();
+		if (!cfg || cfg.strip_heading === false) return null;
+		return new RegExp(cfg.id_pattern || "^\\s*(\\d{1,2}\\.\\d{1,2})\\s*[:.]?\\s*$");
 	};
 
 	/**
@@ -521,6 +557,16 @@ class BilingualBuilder {
 		// reoLessonLetter above) within each lesson, discarding the writer's own
 		// irregular letters; only assigned when a box is actually going to be emitted.
 		if (openedByLesson && hasWidget) number = `${lessonNum}${this.reoLessonLetter(run, lessonNum)}`;
+		// ROUND 330 (KB 07B): a `[H1] N.M`-opened section that is boxed and carried no
+		// "Activity NX:" label takes the writer's own section id as its number= (decimal,
+		// the KB's preferred form; the gold numbers it so on 6 of the 8 writer-id modules).
+		if (isH1 && hasWidget && number === null) {
+			const sc = this.sectionIdNumberCfg();
+			if (sc && sc.number_from_section !== false) {
+				const sid = this.bilingualSectionNum(it0.block);
+				if (sid) number = sid;
+			}
+		}
 		// SELECTIVE boxing: a section that holds a real interactive widget becomes the
 		// human's div.activity box (carrying its number= attribute when the WT gave it
 		// an "Activity NX:" number); a section that's just prose/media becomes a bare

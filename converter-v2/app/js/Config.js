@@ -1633,7 +1633,12 @@ class Config {
 	// your journal</div> no longer ships (99 -> 28 on 60 pages / 42 modules, scoped). Env ENGMARKER_OFF;
 	// data buttons["engagement quiz button"].trigger_marker. THE LOOP STOPPED after this round on the
 	// plateau rule (r327 0.000 / r328 0.000 / r329 +0.004pp).
-	static AppVersion = "260619.00";
+	// ROUND 330 (2026-09-15, build 260619.01): the bilingual section id is the activity NUMBER, not a heading
+	// (KB 07B "Activity Structure": <div class="activity" number="1.1">, decimal preferred) — the phantom
+	// <h3 reo>1.1</h3><h3 eng>1.1</h3> pair no longer ships (234 -> 0) and the boxed section carries the
+	// writer's own id as number= (72 boxes; 25 pages / 7 modules, scoped). Env REOSECID_OFF; data
+	// elements.dual_language.section_grouping.section_id_number. Skeleton +0.040pp, >=50% +3.
+	static AppVersion = "260619.01";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

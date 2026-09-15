@@ -16,6 +16,14 @@ plateau rule's "needs a human decision"; Chris's explicit "continue" IS that dec
 shipped round (the same reading session 2 used after the r320 stop). stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5
 stay open (not re-asked); the loop works the derivable queue that needs no decision. **Session 4 result: r326 (button anchor, FULL, +0.057pp) · r327 (ALL-CAPS titles, 0.000) · r328 (c55 labels, 0.000) · r329 (engagement marker, +0.004) — STOPPED on the plateau rule at ≈15:45; commits 955c0c8 · bdb33a1 · 2d478e4 · 6e25190.**
 
+**Session 5 started:** 2026-09-15 16:05 NZST (Claude Code, same machine; hard stop 02:05 NZST 16 Sep). Budget: 12 rounds or 10 hours. Chris's kickoff:
+"Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … Honour every entry under 'Decisions
+from Chris' and never re-ask them … commit after every round, never push." Health check: `verify_after_transfer.sh` PASS, git clean at 7b8ffa2
+(nothing uncommitted — nothing to reconcile), no stale index.lock. **Plateau counter:** the session-4 stop was the plateau rule's "needs a human
+decision"; Chris's explicit "continue" IS that decision (the same reading sessions 2 and 4 used), so the three-round window restarts at this
+session's first shipped round. stickyNav stays BLOCKED (no recorded answer — not re-asked); decisions 1 / 4 / 5 stay open (not re-asked); the loop
+works the derivable queue that needs no decision. Tools run in WSL (native node EACCES through the symlinks re-confirmed 16:11). **Session 5 so far: r330 (Bilingual section-id numbers, scoped, +0.040pp — the plateau window restarts) · SHIPPED ≈16:45.**
+
 ## >>> STOPPED 2026-09-15 ≈15:45 NZST (session 4) on the PLATEAU rule (§4) — three consecutive shipped rounds under 0.02pp with no other protected gate moved: r327 0.000pp, r328 0.000pp, r329 +0.004pp <<<
 **Session 4 shipped four rounds (r326 → r329; commits 955c0c8 · bdb33a1 · 2d478e4 · 6e25190) in ≈2h15m of the 10-hour budget (13:27 → 15:42).** Everything is committed; nothing is uncommitted; nothing was pushed.
 - r326 (FULL regeneration) moved the skeleton +0.057pp (the KB's universal button anchor; 285 lost hyperlinks recovered) and restarted the plateau window; r327 (ALL-CAPS titles → sentence case), r328 (constraint 55's label half) and r329 (the `[trigger engagement]` marker) were KB-backed rounds that could not move the gate by 0.02pp — the derivable, KB-backed queue above the 20-page floor is now spent.
@@ -133,6 +141,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - Session 4 Round 2 (engine r327 — a multi-word ALL-CAPS title renders in sentence case, the KB's title-casing rule): SHIPPED 2026-09-15 ≈15:15 (session 4). AppVersion 260618.98, CLAUDE.md §9/§11/§14, KB status row 1 → ALL-CAPS normalisation CAPTURED-LIVE, scoped ship #1 since the r326 full. Gate-neutral.
 - Session 4 Round 3 (engine r328 — a submission button keeps its full 'Go to' label, KB constraint 55's label half): SHIPPED 2026-09-15 ≈15:25 (session 4). AppVersion 260618.99, CLAUDE.md §9/§11/§14, KB status row 55 → the label half CAPTURED, scoped ship #2 since the r326 full. Gate-neutral.
 - Session 4 Round 4 (engine r329 — `[trigger engagement]` is a marker, not a button, KB constraint 43): SHIPPED 2026-09-15 ≈15:45 (session 4). AppVersion 260619.00, CLAUDE.md §9/§11/§14, scoped ship #3 since the r326 full. **THE LOOP STOPPED after it (plateau rule: r327 0.000 / r328 0.000 / r329 +0.004).**
+- Session 5 Round 1 (engine r330 — the bilingual section id is the activity number, not a heading, KB 07B): SHIPPED 2026-09-15 ≈16:40 (session 5). AppVersion 260619.01, CLAUDE.md §9/§11/§14, KB status D-row added, scoped ship #4 since the r326 full. Skeleton +0.040pp — the plateau window restarts.
 - Remaining KB queue (§D): stickyNav (BLOCKED — needs Chris; 33 KB-scoped modules,
   gate-neutral), c67 overflowYScroll (27 pages), c47 (decision 1 — now unblocked on the TRR side).
 
@@ -556,6 +565,57 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   list carries CRs — `tr -d '\r'` before passing codes to node/python (`corpus.mdir` fails silently on `CODE\r`); an A/B `sed -i` on a data file
   bumps its mtime and trips `_fastloop_diff.py`'s freshness guard — regenerate the affected set again afterwards (done here, 58 modules).
 
+## Session 5 · Round 1 (engine r330) — what shipped (the bilingual section id is the activity number, not a heading)
+- **Fix:** `elements.dual_language.section_grouping.section_id_number` {enabled, env REOSECID_OFF, strip_heading, number_from_section, id_pattern}
+  in `BilingualBuilder`: the interleave strip drops a rendered heading whose whole text is a bare `N.M`; a `[H1] N.M`-opened boxed section with no
+  `Activity NX:` label takes the id as its `number=`.
+- **Regeneration:** scoped — the in-memory probe over the whole Bilingual family (19 modules / 63 pages) named 25 pages / 7 modules; OFF = disk
+  63/63; every diff line = 234 phantom headings out + 72 boxes numbered; regenerated; 0 truly stale; manifest diff = exactly the 25; ON = disk 63/63.
+- **Gates:** skeleton 50.496 → 50.536 (+0.040pp; 21 moved, 17 up / 4 down — dips NAMED TRR111_2_0 −6.01, PNR102_2_0 −3.73, TRR109_1_0 −0.51 = the
+  scorer's repeat-collapse artefact (position-free overlap with the gold RISES on each), TRR113_3_0 −0.81 = the named letter→decimal override);
+  ≥50 1030 → 1033; every other gate line-for-line EXACT with r329; 13 selftests GREEN. **55.2% of achievable.**
+- **Verifier:** `_measure_r330_sectionid.py` after → phantoms 0 / unnumbered 0 / decimal 72. **Plateau window: r330 +0.040 (restarted).**
+
+## Session 5 · Round 1 PICK (engine r330) — written before any code, 2026-09-15 16:40 NZST
+- **Class:** the Bilingual writer's BARE SECTION-ID heading (`[H1] 1.1 | [H1] 1.1` — a numbered section label with no words) is the section's
+  activity NUMBER, never a heading. KB 07B "Activity Structure": `<div class="activity" number="1.1">`, decimal form PREFERRED (A→.1, B→.2 …;
+  "TRR108 retains the writer's letter format … Preferred approach: use decimal format (1.1, 1.2, 1.3) for consistency with TRR104/TRR105").
+  Claude renders the id as a phantom heading pair (`<h3 reo>1.1</h3><h3 eng>1.1</h3>` in an un-boxed section, `<h2 reo>1.2</h2>…` inside a
+  box) and leaves the section's `div.activity interactive` box UNNUMBERED. Skeleton-visible twice: the phantom heading lines (the gold has a
+  bare-id heading on 0 of 2,385 pages) and the `number` attribute (`_structural_skeleton.KEEP_ATTR`).
+- **MEASURED (`outputs/_measure_r330_sectionid.py` → `_r330_sectionid.json`; all 454 gold dirs, the Writers Template .docx read directly —
+  13 TRR modules ship no parsed WT):** the tagged `[H1] N.M` form lives ONLY in the Bilingual folder — 8 modules / 298 tagged cells (PNR101 12,
+  PNR102 14, PNR104 14, TRR109 60, TRR110 48, TRR111 48, TRR112 50, TRR113 52); 0 in Standard / Fundamentals / Inquiry (an untagged bare `N.M`
+  cell in a Standard WT is a maths decimal — MXFU202 `505.5` — and is NOT the signal). Gold on those 8: decimal `number="N.M"` on 6 (PNR101/102/
+  104, TRR109/110/111 — 82 boxes; writer id = gold number 22/24 on TRR111, 15/24 TRR110, 7/7 PNR104, 6/7 PNR102) and the human's LETTER
+  form `number="1A"` on 2 (TRR112 39, TRR113 26 — the developer re-lettered the writer's `1.1 → 1A`); gold bare-id headings 0. **Share of the
+  writer-id modules following "id → decimal number, no heading": 6/8 = 0.75 ≥ 0.60, and the KB names decimal as the preferred form → the 2
+  letter modules become a NAMED KB-over-gold override (their `number` will read `1.1` where the gold reads `1A` — today Claude has NO number
+  there, so the skeleton line stays mismatched either way: neutral, not a dip).** Claude today: **234 phantom section-id headings on 25
+  pages / 7 modules** (TRR110 has no Claude dir), **72 unnumbered activity boxes** in the family (PNR 14, TRR 58), 0 decimal numbers.
+  Family split: Bilingual only (PNR ×3, TRR ×4 with output); every other template folder 0 — the rule is scoped to the bilingual section
+  path by construction (`BilingualBuilder.bilingualSection`, the round-135 keystone that already opens a section on `[H1] N.M`).
+- **Authority (§1b):** 1 = the KB (07B, decimal `number`); 2/3 = the gold on 6 of 8 modules (TRR110/111, PNR — decimal, no heading); the
+  human outliers TRR112/113 (letters) are overridden by the KB's stated preference, named. Class B-i (a positional/content convention with a
+  tag-link: the `[H1] N.M` tag).
+- **Triangulated:** TRR111 lesson 1 (WT `| [H1] 1.1 | [H1] 1.1 |` → `| [H2] Oropuare pūrua: ia | … |` → … `[Activity: Embedded] Wordselect` →
+  gold `<h3 reo>Oropuare pūrua: ia</h3>…<div class="activity interactive" number="1.1">` and NO `1.1` heading → Claude `<h3 reo>1.1</h3><h3
+  eng>1.1</h3>` + `<div class="activity interactive">`); PNR104 lesson 1 (WT `[H1] 1.1` → gold `<div class="activity interactive"
+  number="1.1">` → Claude the box unnumbered with `<h2 reo>1.1</h2><h2 eng>1.1</h2>` inside); TRR112 lesson 1 (WT `[H1] 1.1` → gold
+  `number="1A"` (the human's letters) → Claude phantom `1.1` + unnumbered — after: `number="1.1"`, the KB form, named).
+- **Fix (planned):** data `elements.dual_language.section_grouping.section_id_number` {enabled, env REOSECID_OFF, strip_heading true,
+  number_from_section true}: (1) `bilingualRows`' interleave strip also drops a heading whose whole text is a bare `N.M` section id (the same
+  seam that already drops the `Activity NX:` label line); (2) `bilingualSection`, when the section was opened by `[H1] N.M`, has a widget
+  (boxed) and found no `Activity NX:` label, numbers the box with the section id as written (decimal). The `Activity NX:` label keeps its
+  priority (disjoint in practice: 0 label modules carry `[H1] N.M`); an un-boxed prose section simply loses its phantom (the gold leaves it
+  un-boxed and un-numbered). Scoped regeneration: the family = every module the bilingual section path touches (the Bilingual folder, 19
+  modules with a Claude dir) — the in-memory probe names the changed set; OFF = disk.
+- **Gate expectation:** skeleton ≥ hold (phantom heading lines removed on 25 pages; `[number=N.M]` matches gained on TRR109/111 + PNR);
+  every other gate EXACT or improved. Est. +0.01pp (the previous session's estimate). **Plateau window restarts at this round.**
+- **Not this round (named for a later PICK):** the section TITLE placement (Claude puts the `[H2]` section title inside the box, the TRR111
+  gold outside / the TRR112 gold inside — measure per module group); the `Activity NX:` letter labels → decimal (KB 07B over the 5 label
+  modules' gold letters — a KB-over-gold override needing its own measure); TRR109's own duplicate `1.1` (a human error, not chased).
+
 ## Session 4 · Round 4 (engine r329) — what shipped (`[trigger engagement]` is a marker, not a button)
 - **Fix:** `buttons["engagement quiz button"].trigger_marker` {enabled, env ENGMARKER_OFF, aliases [trigger engagement, engagement trigger],
   words_flag} at the generic `[button]` seam before the label / URL derivation: a label-less marker (bracket equals or ends in an alias, no
@@ -776,5 +836,6 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
 - s4-r2 (engine r327) · a multi-word ALL-CAPS header title renders in sentence case (the KB's title-casing rule: macrons kept, code tokens kept, single token untouched, one red flag quoting the original) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 15 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · all-caps titles 47→0, titles exact 550→567 · 55.1% of achievable · commit (see git log)
 - s4-r3 (engine r328) · a submission button keeps its full 'Go to' label (KB constraint 55's label half: bare `Quiz` / `Portfolio` / `Dropbox` → `Go to quiz` / `Go to portfolio` / `Go to dropbox`, `Upload to Dropbox` in BLL / LS / HPE) · SHIPPED 2026-09-15 · scoped regeneration, 47 pages / 40 modules · gate-neutral, every gate EXACT (scaffold 50.492, 0 moved) · bare-noun labels 84→0 · 55.1% of achievable · commit (see git log)
 - s4-r4 (engine r329) · `[trigger engagement]` is a marker, not a button (KB constraint 43: the dropbox-trigger condition; the phantom `button engagementTrigger` journal button no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 60 pages / 42 modules · scaffold 50.492→50.496 (+0.004; 57 up / 3 down, dips named), every other gate EXACT · phantoms 99→28 · 55.1% of achievable · commit (see git log) · **LOOP STOPPED — plateau (r327 0.000, r328 0.000, r329 +0.004)**
+- s5-r1 (engine r330) · the bilingual section id is the activity number, not a heading (KB 07B: the writer's bare `[H1] N.M` → `number="N.M"` on the boxed section, decimal preferred; the phantom `<h3>1.1</h3>` pair no longer ships) · SHIPPED 2026-09-15 · scoped regeneration, 25 pages / 7 modules · scaffold 50.496→50.536 (+0.040; 17 up / 4 down, dips named), ≥50 +3, every other gate EXACT · phantoms 234→0, unnumbered boxes 72→0 · 55.2% of achievable · commit (see git log)
 
 **Next session starts with:** Chris's decisions (stickyNav / decision 5 interactives / decision 4 title-pair order / decision 1 c47) — see the session-4 STOP banner at the top; without one, the Bilingual `number="N.M"` section-id boxes (KB 07B, 25 pages, est. +0.01pp) are the next PICK and the plateau rule will stop the loop again after it.
