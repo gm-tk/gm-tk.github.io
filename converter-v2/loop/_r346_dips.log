@@ -1,0 +1,20 @@
+MXDI301_1_0.html     gold MXDI301_02.0.html      claude<math>  68  gold<math>  32  ours-in-gold(text)  42  gold display {}
+MXDI301_5_0.html     gold MXDI301_06.0.html      claude<math>   1  gold<math>   1  ours-in-gold(text)   0  gold display {}
+PES1007_2_0.html     gold PES1007_2.0.html       claude<math>   4  gold<math>  25  ours-in-gold(text)   4  gold display {}
+PES1007_3_0.html     gold PES1007_3.0.html       claude<math>  11  gold<math>  22  ours-in-gold(text)  11  gold display {'inline': 16}
+PES1007_8_0.html     gold PES1007_7.0.html       claude<math>   1  gold<math>   1  ours-in-gold(text)   1  gold display {}
+MXFU302_6_0.html     gold MXFU302_6.0.html       claude<math>   2  gold<math>   0  ours-in-gold(text)   0  gold display {}
+MXFU302_9_0.html     gold MXFU302_9.0.html       claude<math>  13  gold<math>   0  ours-in-gold(text)   0  gold display {}
+MXDI201_8_0.html     gold MXDI201_8.0.html       claude<math>   6  gold<math>   0  ours-in-gold(text)   0  gold display {}
+SCCH301_7_0.html     gold SCCH301_7_0.html       claude<math>   1  gold<math>   0  ours-in-gold(text)   0  gold display {}
+MXDI102_1_0.html     gold MXDI102_1.0.html       claude<math>  12  gold<math>   7  ours-in-gold(text)  12  gold display {'block': 4, 'inline': 3}
+MXDI102_2_0.html     gold MXDI102_4.0.html       claude<math>  36  gold<math>   7  ours-in-gold(text)  30  gold display {'inline': 7}
+MXDI102_3_0.html     gold MXDI102_6.0.html       claude<math>  34  gold<math>   4  ours-in-gold(text)  21  gold display {'inline': 4}
+MXDI102_4_0.html     gold MXDI102_8.0.html       claude<math>  72  gold<math>   4  ours-in-gold(text)  46  gold display {'inline': 4}
+MXDB301_3_0.html     gold MXDB301_2.0.html       claude<math>   2  gold<math>   0  ours-in-gold(text)   0  gold display {}
+MXDB202_3_0.html     gold MXDB202_3.0.html       claude<math>   1  gold<math>   0  ours-in-gold(text)   0  gold display {}
+MXFU401_2_0.html     gold MXFU401_2.0.html       claude<math>  12  gold<math>  21  ours-in-gold(text)   0  gold display {}
+PES1008_3_0.html     gold PES1008_2.0.html       claude<math>  12  gold<math>  27  ours-in-gold(text)   0  gold display {}
+PES1008_15_0.html    gold PES1008_8.0.html       claude<math>   7  gold<math>  60  ours-in-gold(text)   0  gold display {}
+MXEX301_2_0.html     gold MXEX301_02.0.html      claude<math>   9  gold<math>   3  ours-in-gold(text)   0  gold display {'inline': 3}
+MXEX301_4_0.html     gold MXEX301_04.0.html      claude<math>   9  gold<math>   6  ours-in-gold(text)   4  gold display {'inline': 6}

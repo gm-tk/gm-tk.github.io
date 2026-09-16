@@ -1,0 +1,92 @@
+{
+ "modules_with_omml": 12,
+ "omath_total": 329,
+ "block(oMathPara)": 0,
+ "inline(beside runs)": 329,
+ "by_template": {
+  "Inquiry": {
+   "modules": 1,
+   "omath": 6
+  },
+  "Standard": {
+   "modules": 11,
+   "omath": 323
+  }
+ },
+ "omml_vocabulary": {
+  "r": 736,
+  "t": 736,
+  "ctrlPr": 350,
+  "oMath": 329,
+  "f": 264,
+  "fPr": 264,
+  "num": 264,
+  "den": 264,
+  "e": 86,
+  "sSup": 70,
+  "sSupPr": 70,
+  "sup": 70,
+  "sSub": 10,
+  "sSubPr": 10,
+  "sub": 10,
+  "d": 5,
+  "dPr": 5,
+  "begChr": 5,
+  "endChr": 5,
+  "rad": 1,
+  "radPr": 1,
+  "degHide": 1
+ },
+ "gold_math_total": 2052,
+ "gold_display_split": {
+  "bare": 1873,
+  "block": 70,
+  "inline": 105,
+  "inline-block": 4
+ },
+ "claude_math_total": 0,
+ "omml_modules": [
+  "MXDI102",
+  "MXDI301",
+  "PES1008",
+  "MXEX301",
+  "PES1007",
+  "MXFU302",
+  "MXFU401",
+  "CEDK401",
+  "MXDB301",
+  "MXDI201",
+  "MXDB202",
+  "SCCH301"
+ ]
+}
+  Standard     MXDI102   omath  154 (block   0 / inline 154)  gold <math>  121 on 8 pages {'block': 48, 'inline': 69, 'inline-block': 4}  mathJax pages 8  claude <math> 0
+  Standard     MXDI301   omath   69 (block   0 / inline  69)  gold <math>   37 on 3 pages {'bare': 37}  mathJax pages 0  claude <math> 0
+  Standard     PES1008   omath   24 (block   0 / inline  24)  gold <math>  155 on 7 pages {'bare': 147, 'inline': 8}  mathJax pages 10  claude <math> 0
+  Standard     MXEX301   omath   18 (block   0 / inline  18)  gold <math>    9 on 2 pages {'inline': 9}  mathJax pages 0  claude <math> 0
+  Standard     PES1007   omath   17 (block   0 / inline  17)  gold <math>  107 on 6 pages {'bare': 91, 'inline': 16}  mathJax pages 9  claude <math> 0
+  Standard     MXFU302   omath   15 (block   0 / inline  15)  gold <math>    7 on 3 pages {'bare': 7}  mathJax pages 0  claude <math> 0
+  Standard     MXFU401   omath   12 (block   0 / inline  12)  gold <math>   36 on 3 pages {'bare': 36}  mathJax pages 1  claude <math> 0
+  Inquiry      CEDK401   omath    6 (block   0 / inline   6)  gold <math>    0 on 0 pages {}  mathJax pages 1  claude <math> 0
+  Standard     MXDB301   omath    6 (block   0 / inline   6)  gold <math>   17 on 5 pages {'block': 2, 'bare': 15}  mathJax pages 5  claude <math> 0
+  Standard     MXDI201   omath    6 (block   0 / inline   6)  gold <math>    0 on 0 pages {}  mathJax pages 0  claude <math> 0
+  Standard     MXDB202   omath    1 (block   0 / inline   1)  gold <math>    0 on 0 pages {}  mathJax pages 0  claude <math> 0
+  Standard     SCCH301   omath    1 (block   0 / inline   1)  gold <math>    0 on 0 pages {}  mathJax pages 0  claude <math> 0
+  Fundamentals MXFUN01   omath    0 (block   0 / inline   0)  gold <math>   57 on 1 pages {'bare': 57}  mathJax pages 0  claude <math> 0
+  Inquiry      CEDK501   omath    0 (block   0 / inline   0)  gold <math>    6 on 2 pages {'bare': 6}  mathJax pages 1  claude <math> 0
+  Standard     CEDO501   omath    0 (block   0 / inline   0)  gold <math>    2 on 1 pages {'block': 2}  mathJax pages 0  claude <math> 0
+  Standard     ENGR302   omath    0 (block   0 / inline   0)  gold <math>   49 on 1 pages {'bare': 49}  mathJax pages 0  claude <math> 0
+  Standard     ENGS401   omath    0 (block   0 / inline   0)  gold <math>    2 on 1 pages {'bare': 2}  mathJax pages 0  claude <math> 0
+  Standard     MXDB302   omath    0 (block   0 / inline   0)  gold <math>   40 on 4 pages {'bare': 40}  mathJax pages 1  claude <math> 0
+  Standard     MXEO301   omath    0 (block   0 / inline   0)  gold <math>  147 on 3 pages {'bare': 147}  mathJax pages 1  claude <math> 0
+  Standard     MXEO401   omath    0 (block   0 / inline   0)  gold <math>    2 on 1 pages {'bare': 2}  mathJax pages 1  claude <math> 0
+  Standard     MXEX401   omath    0 (block   0 / inline   0)  gold <math>   34 on 5 pages {'bare': 21, 'block': 13}  mathJax pages 5  claude <math> 0
+  Standard     MXFL104   omath    0 (block   0 / inline   0)  gold <math>    8 on 1 pages {'bare': 8}  mathJax pages 0  claude <math> 0
+  Standard     MXFL301   omath    0 (block   0 / inline   0)  gold <math>   39 on 1 pages {'bare': 39}  mathJax pages 10  claude <math> 0
+  Standard     MXFL302   omath    0 (block   0 / inline   0)  gold <math>  874 on 15 pages {'bare': 874}  mathJax pages 17  claude <math> 0
+  Standard     MXFL401   omath    0 (block   0 / inline   0)  gold <math>   29 on 3 pages {'bare': 26, 'block': 3}  mathJax pages 8  claude <math> 0
+  Standard     MXFU201   omath    0 (block   0 / inline   0)  gold <math>    3 on 1 pages {'inline': 3}  mathJax pages 1  claude <math> 0
+  Standard     MXFU301   omath    0 (block   0 / inline   0)  gold <math>  160 on 7 pages {'bare': 160}  mathJax pages 10  claude <math> 0
+  Standard     MXFU402   omath    0 (block   0 / inline   0)  gold <math>   66 on 6 pages {'bare': 66}  mathJax pages 5  claude <math> 0
+  Standard     PES1003   omath    0 (block   0 / inline   0)  gold <math>    1 on 1 pages {'bare': 1}  mathJax pages 1  claude <math> 0
+  Standard     PES1004   omath    0 (block   0 / inline   0)  gold <math>   44 on 3 pages {'bare': 42, 'block': 2}  mathJax pages 9  claude <math> 0

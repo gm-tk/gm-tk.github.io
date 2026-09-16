@@ -431,9 +431,20 @@ class PageAssembler {
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
 								run, "diagnostic")));
 						const ai = tidied.indexOf("<div class=\"acks");
-						return ai < 0
+						const passed = ai < 0
 							? ListsAndRuns.LinkTextDisplay(deEmoji(tidied))
 							: ListsAndRuns.LinkTextDisplay(deEmoji(tidied.slice(0, ai))) + tidied.slice(ai);
+						// ROUND 346 (Chris's D10-7): the equation sentinels become their MathML LAST, after every
+						// text pass (none of them may touch the markup), and a page that now carries a <math>
+						// gains the mathJax body class (the gold's per-page form). Data Input_Doc_Rules.math.
+						const _mathCfg = DataService.Data.InputDocRules?.math;
+						let withMath = DocxExtractor.MathReplace(passed);
+						if (_mathCfg && _mathCfg.enabled !== false && withMath !== passed && /<math\b/.test(withMath)) {
+							const tok = _mathCfg.body_class_token || "mathJax";
+							withMath = withMath.replace(/<body class="([^"]*)"/, (m, cls) =>
+								new RegExp("(^|\\s)" + tok + "(\\s|$)").test(cls) ? m : "<body class=\"" + cls + " " + tok + "\"");
+						}
+						return withMath;
 					})()),
 				kind: "page",
 			});
@@ -447,7 +458,7 @@ class PageAssembler {
 		});
 		run.outputs.push({
 			filename: Utils.FillTemplate(naming.manifest_file, { code }),
-			content: ManifestBuilder.Build(run),
+			content: DocxExtractor.MathReplace(ManifestBuilder.Build(run)),   // ROUND 346: equation sentinels → MathML in the hand-off too
 			kind: "manifest",
 		});
 

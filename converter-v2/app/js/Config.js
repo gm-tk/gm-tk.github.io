@@ -1697,7 +1697,10 @@ class Config {
 	// ROUND 345 (2026-09-16, build 260619.16): a bilingual lesson-title pair is ENGLISH FIRST outside the MTK reoTranslate
 	// modules (Chris's D10-2) — a macron, else the r321 Māori-alphabet test, decides which half is Te Reo; scoped
 	// regeneration of 7 modules / 7 pages; gate-neutral (a header h1 swap is invisible to the skeleton).
-	static AppVersion = "260619.16";
+	// ROUND 346 (2026-09-16, build 260619.17): Word equations ship as MathML (Chris's D10-7) — the V1.5 OMML converter
+	// ported into DocxExtractor (OmmlMathml), each <m:oMath> a sentinel run swapped for its <math> in the final
+	// post-pass + the mathJax body class; a new protected verifier _verify_math.cjs; scoped regeneration of 11 modules.
+	static AppVersion = "260619.17";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

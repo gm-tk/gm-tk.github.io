@@ -1,0 +1,16 @@
+LIVENESS ok — bare KEEP_ATTR attribute scores; valued attr still renders
+DETECTION ok — a raising pair is COUNTED (loud), not silently dropped
+SELFTEST PASS
+SELFTEST _verify_flipcard.cjs: GREEN
+SELFTEST _verify_speechbubble.cjs: GREEN
+SELFTEST _verify_accordion.cjs: GREEN
+SELFTEST _verify_tabs.cjs: GREEN
+SELFTEST _verify_clickdrop.cjs: GREEN
+SELFTEST _verify_carousel.cjs: GREEN
+SELFTEST _verify_hintslider.cjs: GREEN
+SELFTEST _verify_modal.cjs: GREEN
+SELFTEST _verify_dropdown.cjs: GREEN
+SELFTEST GREEN
+SELFTEST _verify_mtkquiz.cjs: GREEN
+SELFTEST _verify_intextract.cjs: GREEN
+SELFTEST _verify_math.cjs: GREEN

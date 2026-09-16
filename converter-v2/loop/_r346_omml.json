@@ -1,0 +1,794 @@
+{
+ "summary": {
+  "modules_with_omml": 12,
+  "omath_total": 329,
+  "block(oMathPara)": 0,
+  "inline(beside runs)": 329,
+  "by_template": {
+   "Inquiry": {
+    "modules": 1,
+    "omath": 6
+   },
+   "Standard": {
+    "modules": 11,
+    "omath": 323
+   }
+  },
+  "omml_vocabulary": {
+   "r": 736,
+   "t": 736,
+   "ctrlPr": 350,
+   "oMath": 329,
+   "f": 264,
+   "fPr": 264,
+   "num": 264,
+   "den": 264,
+   "e": 86,
+   "sSup": 70,
+   "sSupPr": 70,
+   "sup": 70,
+   "sSub": 10,
+   "sSubPr": 10,
+   "sub": 10,
+   "d": 5,
+   "dPr": 5,
+   "begChr": 5,
+   "endChr": 5,
+   "rad": 1,
+   "radPr": 1,
+   "degHide": 1
+  },
+  "gold_math_total": 2052,
+  "gold_display_split": {
+   "bare": 1873,
+   "block": 70,
+   "inline": 105,
+   "inline-block": 4
+  },
+  "claude_math_total": 0,
+  "omml_modules": [
+   "MXDI102",
+   "MXDI301",
+   "PES1008",
+   "MXEX301",
+   "PES1007",
+   "MXFU302",
+   "MXFU401",
+   "CEDK401",
+   "MXDB301",
+   "MXDI201",
+   "MXDB202",
+   "SCCH301"
+  ]
+ },
+ "rows": [
+  {
+   "code": "MXFUN01",
+   "tmpl": "Fundamentals",
+   "wt_docx": [
+    "MXFUN01 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 57,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "bare": 57
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "CEDK401",
+   "tmpl": "Inquiry",
+   "wt_docx": [
+    "CEDK401 Writers Template + Media List.docx"
+   ],
+   "omath": 6,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 6,
+   "vocab": {
+    "oMath": 6,
+    "r": 6,
+    "t": 6
+   },
+   "gold_math": 0,
+   "gold_math_pages": 0,
+   "gold_display": {},
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "CEDK501",
+   "tmpl": "Inquiry",
+   "wt_docx": [
+    "CEDK501 Writers Template.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 6,
+   "gold_math_pages": 2,
+   "gold_display": {
+    "bare": 6
+   },
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "CEDO501",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "CEDO501 Writers Template.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 2,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "block": 2
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "ENGR302",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "ENGR302 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 49,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "bare": 49
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "ENGS401",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "ENGS401 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 2,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "bare": 2
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXDB202",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXDB202 Writers Template + Media List.docx"
+   ],
+   "omath": 1,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 1,
+   "vocab": {
+    "oMath": 1,
+    "r": 1,
+    "t": 1
+   },
+   "gold_math": 0,
+   "gold_math_pages": 0,
+   "gold_display": {},
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXDB301",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXDB301 Writers Template + Media List.docx"
+   ],
+   "omath": 6,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 6,
+   "vocab": {
+    "oMath": 6,
+    "f": 4,
+    "fPr": 4,
+    "ctrlPr": 6,
+    "num": 4,
+    "r": 13,
+    "t": 13,
+    "den": 4,
+    "sSup": 2,
+    "sSupPr": 2,
+    "e": 2,
+    "sup": 2
+   },
+   "gold_math": 17,
+   "gold_math_pages": 5,
+   "gold_display": {
+    "block": 2,
+    "bare": 15
+   },
+   "gold_mathjax_pages": 5,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXDB302",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXDB302 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 40,
+   "gold_math_pages": 4,
+   "gold_display": {
+    "bare": 40
+   },
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXDI102",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXDI102 Writers Template + Media List.docx"
+   ],
+   "omath": 154,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 154,
+   "vocab": {
+    "oMath": 154,
+    "f": 154,
+    "fPr": 154,
+    "ctrlPr": 154,
+    "num": 154,
+    "r": 306,
+    "t": 306,
+    "den": 154
+   },
+   "gold_math": 121,
+   "gold_math_pages": 8,
+   "gold_display": {
+    "block": 48,
+    "inline": 69,
+    "inline-block": 4
+   },
+   "gold_mathjax_pages": 8,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXDI201",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXDI201 Writers Template + Media List.docx"
+   ],
+   "omath": 6,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 6,
+   "vocab": {
+    "oMath": 6,
+    "r": 6,
+    "t": 6
+   },
+   "gold_math": 0,
+   "gold_math_pages": 0,
+   "gold_display": {},
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXDI301",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXDI301 Writers Template + Media List.docx"
+   ],
+   "omath": 69,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 69,
+   "vocab": {
+    "oMath": 69,
+    "r": 148,
+    "t": 148,
+    "sSup": 52,
+    "sSupPr": 52,
+    "ctrlPr": 98,
+    "e": 52,
+    "sup": 52,
+    "f": 46,
+    "fPr": 46,
+    "num": 46,
+    "den": 46
+   },
+   "gold_math": 37,
+   "gold_math_pages": 3,
+   "gold_display": {
+    "bare": 37
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXEO301",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXEO301 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 147,
+   "gold_math_pages": 3,
+   "gold_display": {
+    "bare": 147
+   },
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXEO401",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXEO401 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 2,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "bare": 2
+   },
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXEX301",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXEX301 Writers Template + Media List.docx"
+   ],
+   "omath": 18,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 18,
+   "vocab": {
+    "oMath": 18,
+    "f": 7,
+    "fPr": 7,
+    "ctrlPr": 8,
+    "num": 7,
+    "r": 28,
+    "t": 28,
+    "den": 7,
+    "sSup": 1,
+    "sSupPr": 1,
+    "e": 1,
+    "sup": 1
+   },
+   "gold_math": 9,
+   "gold_math_pages": 2,
+   "gold_display": {
+    "inline": 9
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXEX401",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXEX401 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 34,
+   "gold_math_pages": 5,
+   "gold_display": {
+    "bare": 21,
+    "block": 13
+   },
+   "gold_mathjax_pages": 5,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXFL104",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFL104 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 8,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "bare": 8
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXFL301",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFL301 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 39,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "bare": 39
+   },
+   "gold_mathjax_pages": 10,
+   "claude_math": 0,
+   "claude_mathjax_pages": 10
+  },
+  {
+   "code": "MXFL302",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFL302 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 874,
+   "gold_math_pages": 15,
+   "gold_display": {
+    "bare": 874
+   },
+   "gold_mathjax_pages": 17,
+   "claude_math": 0,
+   "claude_mathjax_pages": 10
+  },
+  {
+   "code": "MXFL401",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFL401 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 29,
+   "gold_math_pages": 3,
+   "gold_display": {
+    "bare": 26,
+    "block": 3
+   },
+   "gold_mathjax_pages": 8,
+   "claude_math": 0,
+   "claude_mathjax_pages": 8
+  },
+  {
+   "code": "MXFU201",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFU201 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 3,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "inline": 3
+   },
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXFU301",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFU301 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 160,
+   "gold_math_pages": 7,
+   "gold_display": {
+    "bare": 160
+   },
+   "gold_mathjax_pages": 10,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXFU302",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFU302 Writers Template + Media List.docx"
+   ],
+   "omath": 15,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 15,
+   "vocab": {
+    "oMath": 15,
+    "f": 15,
+    "fPr": 15,
+    "ctrlPr": 15,
+    "num": 15,
+    "r": 39,
+    "t": 39,
+    "den": 15
+   },
+   "gold_math": 7,
+   "gold_math_pages": 3,
+   "gold_display": {
+    "bare": 7
+   },
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXFU401",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFU401 Writers Template + Media List.docx"
+   ],
+   "omath": 12,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 12,
+   "vocab": {
+    "oMath": 12,
+    "r": 31,
+    "t": 31,
+    "f": 8,
+    "fPr": 8,
+    "ctrlPr": 11,
+    "num": 8,
+    "den": 8,
+    "sSup": 1,
+    "sSupPr": 1,
+    "e": 3,
+    "sup": 1,
+    "d": 2,
+    "dPr": 2,
+    "begChr": 2,
+    "endChr": 2
+   },
+   "gold_math": 36,
+   "gold_math_pages": 3,
+   "gold_display": {
+    "bare": 36
+   },
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "MXFU402",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "MXFU402 Writers Template.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 66,
+   "gold_math_pages": 6,
+   "gold_display": {
+    "bare": 66
+   },
+   "gold_mathjax_pages": 5,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "PES1003",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "PES1003 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 1,
+   "gold_math_pages": 1,
+   "gold_display": {
+    "bare": 1
+   },
+   "gold_mathjax_pages": 1,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "PES1004",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "PES1004 Writers Template + Media List.docx"
+   ],
+   "omath": 0,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 0,
+   "vocab": {},
+   "gold_math": 44,
+   "gold_math_pages": 3,
+   "gold_display": {
+    "bare": 42,
+    "block": 2
+   },
+   "gold_mathjax_pages": 9,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "PES1007",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "PES1007 Writers Template + Media List.docx"
+   ],
+   "omath": 17,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 17,
+   "vocab": {
+    "oMath": 17,
+    "sSub": 10,
+    "sSubPr": 10,
+    "ctrlPr": 37,
+    "e": 25,
+    "r": 93,
+    "t": 93,
+    "sub": 10,
+    "f": 12,
+    "fPr": 12,
+    "num": 12,
+    "den": 12,
+    "sSup": 14,
+    "sSupPr": 14,
+    "sup": 14,
+    "rad": 1,
+    "radPr": 1,
+    "degHide": 1
+   },
+   "gold_math": 107,
+   "gold_math_pages": 6,
+   "gold_display": {
+    "bare": 91,
+    "inline": 16
+   },
+   "gold_mathjax_pages": 9,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "PES1008",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "PES1008 Writers Template + Media List.docx"
+   ],
+   "omath": 24,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 24,
+   "vocab": {
+    "oMath": 24,
+    "r": 61,
+    "t": 61,
+    "f": 17,
+    "fPr": 17,
+    "ctrlPr": 20,
+    "num": 17,
+    "den": 17,
+    "d": 3,
+    "dPr": 3,
+    "begChr": 3,
+    "endChr": 3,
+    "e": 3
+   },
+   "gold_math": 155,
+   "gold_math_pages": 7,
+   "gold_display": {
+    "bare": 147,
+    "inline": 8
+   },
+   "gold_mathjax_pages": 10,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  },
+  {
+   "code": "SCCH301",
+   "tmpl": "Standard",
+   "wt_docx": [
+    "SCCH301 Writers Template.docx"
+   ],
+   "omath": 1,
+   "omathpara": 0,
+   "block": 0,
+   "inline": 1,
+   "vocab": {
+    "oMath": 1,
+    "r": 4,
+    "t": 4,
+    "f": 1,
+    "fPr": 1,
+    "ctrlPr": 1,
+    "num": 1,
+    "den": 1
+   },
+   "gold_math": 0,
+   "gold_math_pages": 0,
+   "gold_display": {},
+   "gold_mathjax_pages": 0,
+   "claude_math": 0,
+   "claude_mathjax_pages": 0
+  }
+ ]
+}
