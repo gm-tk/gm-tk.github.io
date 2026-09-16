@@ -1,0 +1,2264 @@
+  ~ OSSC501_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ OSSC501_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ OSSC501_3_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ OSSC501_4_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ OSSC501_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+OSSC501: identical 1 / changed 5
+  ~ OSSM301_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ OSSM301_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ OSSM301_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+OSSM301: identical 2 / changed 3
+  ~ OSSM401_1_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ OSSM401_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ OSSM401_3_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ OSSM401_4_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+OSSM401: identical 1 / changed 4
+  ~ PES1001_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PES1001_2_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ PES1001_3_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ PES1001_9_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PES1001: identical 6 / changed 4
+  ~ PES1002_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PES1002_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PES1002_6_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PES1002: identical 8 / changed 3
+PES1003: identical 11 / changed 0
+  ~ PES1004_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PES1004_6_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ PES1004_7_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ PES1004_8_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PES1004_9_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+PES1004: identical 6 / changed 5
+PES1005: identical 12 / changed 0
+  ~ PES1007_1_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ PES1007_4_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PES1007: identical 10 / changed 2
+  ~ PES1008_5_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ PES1008_17_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PES1008: identical 17 / changed 2
+  ~ PHE1001_3_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+PHE1001: identical 4 / changed 1
+  ~ PHE1002_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PHE1002: identical 3 / changed 1
+  ~ PHE1003_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+PHE1003: identical 10 / changed 1
+  ~ PHE1004_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PHE1004_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PHE1004: identical 2 / changed 2
+  ~ PHE1005_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PHE1005_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PHE1005: identical 4 / changed 2
+  ~ PHE1006_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PHE1006_4_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PHE1006: identical 4 / changed 2
+  ~ PHE1007_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PHE1007: identical 9 / changed 1
+  ~ PHE1008_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PHE1008_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PHE1008: identical 4 / changed 2
+  ~ PNR101_1_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+PNR101: identical 1 / changed 1
+  ~ PNR102_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ PNR102_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+PNR102: identical 1 / changed 2
+  ~ PNR104_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ PNR104_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+PNR104: identical 1 / changed 2
+  ~ SCCH301_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SCCH301_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+SCCH301: identical 7 / changed 2
+  ~ SCFUN01_0_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+SCFUN01: identical 0 / changed 1
+  ~ SCPH301_4_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ SCPH301_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+SCPH301: identical 7 / changed 2
+  ~ SSCI205_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ SSCI205_3_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSCI205_5_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSCI205_6_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSCI205_8_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+SSCI205: identical 5 / changed 5
+  ~ SSFUN01_0_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+SSFUN01: identical 0 / changed 1
+SSFUN02: identical 1 / changed 0
+  ~ SSFUN03_0_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+SSFUN03: identical 0 / changed 1
+  ~ SSFUN05_0_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+SSFUN05: identical 0 / changed 1
+SSFUN06: identical 1 / changed 0
+  ~ SSFUN07_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSFUN07_4_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+SSFUN07: identical 3 / changed 2
+SSFUN08: identical 1 / changed 0
+  ~ SSOG101_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+SSOG101: identical 7 / changed 1
+  ~ SSOG103_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSOG103_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ SSOG103_4_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSOG103_5_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+SSOG103: identical 3 / changed 4
+  ~ SSOG301_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSOG301_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSOG301_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ SSOG301_4_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSOG301_6_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ SSOG301_7_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ SSOG301_8_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+SSOG301: identical 1 / changed 7
+  ~ TEDC401_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC401_1_0.html: -15 +15
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC401_2_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC401_3_0.html: -13 +13
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC401_4_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC401_5_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC401_6_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TEDC401: identical 1 / changed 7
+  ~ TEDC402_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_2_0.html: -12 +12
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_3_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_4_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_5_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_6_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_7_0.html: -10 +10
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_8_0.html: -9 +9
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_9_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TEDC402_8_1.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+TEDC402: identical 1 / changed 10
+  ~ TEFUN01_0_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+TEFUN01: identical 0 / changed 1
+TEFUN02: identical 1 / changed 0
+  ~ TEFUN03_0_0.html: -11 +11
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TEFUN03: identical 0 / changed 1
+  ~ TEFUN04_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TEFUN04: identical 0 / changed 1
+  ~ TEFUN05_0_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+TEFUN05: identical 0 / changed 1
+  ~ TEFUN06_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TEFUN06: identical 0 / changed 1
+  ~ TEFUN07_0_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TEFUN07: identical 0 / changed 1
+  ~ TEFUN08_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TEFUN08: identical 0 / changed 1
+  ~ TRR102_1_0.html: -16 +16
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR102_2_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR102_3_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR102_4_0.html: -10 +10
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR102_5_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR102: identical 1 / changed 5
+  ~ TRR103_1_0.html: -11 +11
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR103_2_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR103_3_0.html: -9 +9
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR103: identical 1 / changed 3
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+  ~ TRR106_2_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR106: identical 1 / changed 1
+  ~ TRR107_0_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ TRR107_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ TRR107_3_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR107: identical 0 / changed 3
+  ~ TRR108_1_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR108: identical 2 / changed 1
+  ~ TRR109_1_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR109_2_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR109_3_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR109_4_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR109_5_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR109: identical 1 / changed 5
+  ~ TRR111_1_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR111_2_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR111_3_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR111_4_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR111_5_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR111: identical 1 / changed 5
+  ~ TRR112_0_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR112_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR112_3_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR112_4_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR112_5_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR112: identical 0 / changed 5
+  ~ TRR113_0_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR113_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR113_3_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR113_4_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR113_5_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR113: identical 0 / changed 5
+  ~ TRR114_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ TRR114_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR114_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+TRR114: identical 1 / changed 3
+TRR115: prep refused (no-wt)
+  ~ TRR203_0_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR203_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR203: identical 2 / changed 2
+  ~ TRR301_0_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR301_1_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR301_2_0.html: -16 +16
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ TRR301_3_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TRR301: identical 0 / changed 4
+  ~ TRR304_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+TRR304: identical 2 / changed 1
+  ~ TWHA901_0_0.html: -11 +11
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHA901: identical 0 / changed 1
+  ~ TWHA902_0_0.html: -18 +18
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHA902: identical 0 / changed 1
+  ~ TWHA903_0_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHA903: identical 0 / changed 1
+  ~ TWHA904_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHA904: identical 0 / changed 1
+  ~ TWHA905_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHA905: identical 0 / changed 1
+  ~ TWHA906_0_0.html: -17 +17
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHA906: identical 0 / changed 1
+  ~ TWHK901_0_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHK901: identical 0 / changed 1
+  ~ TWHK903_0_0.html: -10 +10
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+TWHK903: identical 0 / changed 1
+  ~ XDLS501_7_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XDLS501: identical 7 / changed 1
+XDLS502: identical 5 / changed 0
+  ~ XDLS901_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XDLS901_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XDLS901: identical 3 / changed 2
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+  ~ XDLS908_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XDLS908_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XDLS908_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XDLS908_5_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XDLS908_7_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XDLS908: identical 4 / changed 5
+  ~ XDLS909_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XDLS909: identical 4 / changed 1
+XDLS911: identical 2 / changed 0
+  ~ XDLS912_0_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XDLS912_1_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XDLS912_2_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XDLS912_3_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XDLS912_4_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XDLS912_5_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XDLS912: identical 0 / changed 6
+XFUN01: identical 1 / changed 0
+  ~ XFUN02_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XFUN02_3_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XFUN02_4_0.html: -11 +11
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XFUN02_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XFUN02_6_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XFUN02: identical 2 / changed 5
+  ~ XGF9001_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9001_3_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9001_4_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9001_5_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9001_6_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XGF9001: identical 2 / changed 5
+  ~ XGF9002_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9002_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9002_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9002_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9002_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9002_6_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9002_7_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9002_8_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XGF9002: identical 2 / changed 8
+  ~ XGF9003_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9003_1_1.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9003_1_2.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9003_1_3.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9003_1_4.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XGF9003: identical 1 / changed 5
+  ~ XGF9004_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_4_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_5_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_6_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9004_7_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_8_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_9_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_10_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9004_11_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_13_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_14_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9004_17_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XGF9004: identical 6 / changed 12
+  ~ XGF9006_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XGF9006_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9006_3_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9006_4_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XGF9006_6_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XGF9006: identical 3 / changed 5
+  ~ XLP01_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XLP01_2_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP01_3_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XLP01_4_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XLP01: identical 1 / changed 4
+  ~ XLP02_1_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP02_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP02_4_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP02_6_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XLP02: identical 3 / changed 4
+  ~ XLP03_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP03_2_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP03_3_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP03_4_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XLP03_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XLP03: identical 1 / changed 5
+  ~ XLP04_1_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XLP04_2_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XLP04: identical 3 / changed 2
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+  ~ XMES101_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES101_2_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES101_4_0.html: -10 +10
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES101_5_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES101_6_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES101_7_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES101_8_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XMES101: identical 2 / changed 7
+  ~ XMES102_0_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XMES102_1_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES102_2_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES102_3_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES102_4_0.html: -9 +9
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES102_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XMES102: identical 0 / changed 6
+  ~ XMES103_0_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XMES103_1_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES103_2_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES103_3_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES103_4_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES103_5_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XMES103: identical 0 / changed 6
+  ~ XMES201_1_0.html: -13 +13
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES201_2_0.html: -6 +6
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES201_3_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES201_4_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XMES201: identical 2 / changed 4
+  ~ XMES203_1_0.html: -5 +5
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES203_2_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES203_3_0.html: -9 +9
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES203_4_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XMES203_5_0.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+XMES203: identical 1 / changed 5
+  ~ XTAS101_1_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS101_2_0.html: -9 +9
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS101_3_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XTAS101: identical 2 / changed 3
+  ~ XTAS102_1_0.html: -8 +8
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS102_2_0.html: -10 +10
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS102_3_0.html: -9 +9
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS102_4_0.html: -7 +7
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS102_5_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XTAS102: identical 1 / changed 5
+  ~ XTAS103_1_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS103_2_0.html: -3 +3
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS103_2_1.html: -1 +1
+     - <table class="table">
+     + <table class="table table-bordered">
+  ~ XTAS103_3_0.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS103_3_1.html: -4 +4
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XTAS103_4_0.html: -10 +10
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XTAS103: identical 1 / changed 6
+  ~ XWHA01_0_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+  ~ XWHA01_1_0.html: -2 +2
+     - <table class="table">
+     - <table class="table">
+     + <table class="table table-bordered">
+     + <table class="table table-bordered">
+XWHA01: identical 0 / changed 2
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 282 / changed 261 / missing 0 over 104 modules
+CHANGED: OSSC501/OSSC501_1_0.html OSSC501/OSSC501_2_0.html OSSC501/OSSC501_3_0.html OSSC501/OSSC501_4_0.html OSSC501/OSSC501_5_0.html OSSM301/OSSM301_1_0.html OSSM301/OSSM301_2_0.html OSSM301/OSSM301_3_0.html OSSM401/OSSM401_1_0.html OSSM401/OSSM401_2_0.html OSSM401/OSSM401_3_0.html OSSM401/OSSM401_4_0.html PES1001/PES1001_1_0.html PES1001/PES1001_2_0.html PES1001/PES1001_3_0.html PES1001/PES1001_9_0.html PES1002/PES1002_2_0.html PES1002/PES1002_5_0.html PES1002/PES1002_6_0.html PES1004/PES1004_1_0.html PES1004/PES1004_6_0.html PES1004/PES1004_7_0.html PES1004/PES1004_8_0.html PES1004/PES1004_9_0.html PES1007/PES1007_1_0.html PES1007/PES1007_4_0.html PES1008/PES1008_5_0.html PES1008/PES1008_17_0.html PHE1001/PHE1001_3_0.html PHE1002/PHE1002_1_0.html PHE1003/PHE1003_2_0.html PHE1004/PHE1004_1_0.html PHE1004/PHE1004_2_0.html PHE1005/PHE1005_1_0.html PHE1005/PHE1005_3_0.html PHE1006/PHE1006_1_0.html PHE1006/PHE1006_4_0.html PHE1007/PHE1007_2_0.html PHE1008/PHE1008_1_0.html PHE1008/PHE1008_2_0.html PNR101/PNR101_1_0.html PNR102/PNR102_1_0.html PNR102/PNR102_2_0.html PNR104/PNR104_1_0.html PNR104/PNR104_2_0.html SCCH301/SCCH301_1_0.html SCCH301/SCCH301_3_0.html SCFUN01/SCFUN01_0_0.html SCPH301/SCPH301_4_0.html SCPH301/SCPH301_5_0.html SSCI205/SSCI205_2_0.html SSCI205/SSCI205_3_0.html SSCI205/SSCI205_5_0.html SSCI205/SSCI205_6_0.html SSCI205/SSCI205_8_0.html SSFUN01/SSFUN01_0_0.html SSFUN03/SSFUN03_0_0.html SSFUN05/SSFUN05_0_0.html SSFUN07/SSFUN07_1_0.html SSFUN07/SSFUN07_4_0.html SSOG101/SSOG101_1_0.html SSOG103/SSOG103_1_0.html SSOG103/SSOG103_2_0.html SSOG103/SSOG103_4_0.html SSOG103/SSOG103_5_0.html SSOG301/SSOG301_1_0.html SSOG301/SSOG301_2_0.html SSOG301/SSOG301_3_0.html SSOG301/SSOG301_4_0.html SSOG301/SSOG301_6_0.html SSOG301/SSOG301_7_0.html SSOG301/SSOG301_8_0.html TEDC401/TEDC401_0_0.html TEDC401/TEDC401_1_0.html TEDC401/TEDC401_2_0.html TEDC401/TEDC401_3_0.html TEDC401/TEDC401_4_0.html TEDC401/TEDC401_5_0.html TEDC401/TEDC401_6_0.html TEDC402/TEDC402_1_0.html TEDC402/TEDC402_2_0.html TEDC402/TEDC402_3_0.html TEDC402/TEDC402_4_0.html TEDC402/TEDC402_5_0.html TEDC402/TEDC402_6_0.html TEDC402/TEDC402_7_0.html TEDC402/TEDC402_8_0.html TEDC402/TEDC402_9_0.html TEDC402/TEDC402_8_1.html TEFUN01/TEFUN01_0_0.html TEFUN03/TEFUN03_0_0.html TEFUN04/TEFUN04_0_0.html TEFUN05/TEFUN05_0_0.html TEFUN06/TEFUN06_0_0.html TEFUN07/TEFUN07_0_0.html TEFUN08/TEFUN08_0_0.html TRR102/TRR102_1_0.html TRR102/TRR102_2_0.html TRR102/TRR102_3_0.html TRR102/TRR102_4_0.html TRR102/TRR102_5_0.html TRR103/TRR103_1_0.html TRR103/TRR103_2_0.html TRR103/TRR103_3_0.html TRR106/TRR106_2_0.html TRR107/TRR107_0_0.html TRR107/TRR107_2_0.html TRR107/TRR107_3_0.html TRR108/TRR108_1_0.html TRR109/TRR109_1_0.html TRR109/TRR109_2_0.html TRR109/TRR109_3_0.html TRR109/TRR109_4_0.html TRR109/TRR109_5_0.html TRR111/TRR111_1_0.html TRR111/TRR111_2_0.html TRR111/TRR111_3_0.html TRR111/TRR111_4_0.html TRR111/TRR111_5_0.html TRR112/TRR112_0_0.html TRR112/TRR112_2_0.html TRR112/TRR112_3_0.html TRR112/TRR112_4_0.html TRR112/TRR112_5_0.html TRR113/TRR113_0_0.html TRR113/TRR113_2_0.html TRR113/TRR113_3_0.html TRR113/TRR113_4_0.html TRR113/TRR113_5_0.html TRR114/TRR114_1_0.html TRR114/TRR114_2_0.html TRR114/TRR114_3_0.html TRR203/TRR203_0_0.html TRR203/TRR203_1_0.html TRR301/TRR301_0_0.html TRR301/TRR301_1_0.html TRR301/TRR301_2_0.html TRR301/TRR301_3_0.html TRR304/TRR304_2_0.html TWHA901/TWHA901_0_0.html TWHA902/TWHA902_0_0.html TWHA903/TWHA903_0_0.html TWHA904/TWHA904_0_0.html TWHA905/TWHA905_0_0.html TWHA906/TWHA906_0_0.html TWHK901/TWHK901_0_0.html TWHK903/TWHK903_0_0.html XDLS501/XDLS501_7_0.html XDLS901/XDLS901_1_0.html XDLS901/XDLS901_3_0.html XDLS908/XDLS908_1_0.html XDLS908/XDLS908_2_0.html XDLS908/XDLS908_3_0.html XDLS908/XDLS908_5_0.html XDLS908/XDLS908_7_0.html XDLS909/XDLS909_2_0.html XDLS912/XDLS912_0_0.html XDLS912/XDLS912_1_0.html XDLS912/XDLS912_2_0.html XDLS912/XDLS912_3_0.html XDLS912/XDLS912_4_0.html XDLS912/XDLS912_5_0.html XFUN02/XFUN02_2_0.html XFUN02/XFUN02_3_0.html XFUN02/XFUN02_4_0.html XFUN02/XFUN02_5_0.html XFUN02/XFUN02_6_0.html XGF9001/XGF9001_2_0.html XGF9001/XGF9001_3_0.html XGF9001/XGF9001_4_0.html XGF9001/XGF9001_5_0.html XGF9001/XGF9001_6_0.html XGF9002/XGF9002_0_0.html XGF9002/XGF9002_1_0.html XGF9002/XGF9002_2_0.html XGF9002/XGF9002_3_0.html XGF9002/XGF9002_5_0.html XGF9002/XGF9002_6_0.html XGF9002/XGF9002_7_0.html XGF9002/XGF9002_8_0.html XGF9003/XGF9003_1_0.html XGF9003/XGF9003_1_1.html XGF9003/XGF9003_1_2.html XGF9003/XGF9003_1_3.html XGF9003/XGF9003_1_4.html XGF9004/XGF9004_2_0.html XGF9004/XGF9004_4_0.html XGF9004/XGF9004_5_0.html XGF9004/XGF9004_6_0.html XGF9004/XGF9004_7_0.html XGF9004/XGF9004_8_0.html XGF9004/XGF9004_9_0.html XGF9004/XGF9004_10_0.html XGF9004/XGF9004_11_0.html XGF9004/XGF9004_13_0.html XGF9004/XGF9004_14_0.html XGF9004/XGF9004_17_0.html XGF9006/XGF9006_1_0.html XGF9006/XGF9006_2_0.html XGF9006/XGF9006_3_0.html XGF9006/XGF9006_4_0.html XGF9006/XGF9006_6_0.html XLP01/XLP01_1_0.html XLP01/XLP01_2_0.html XLP01/XLP01_3_0.html XLP01/XLP01_4_0.html XLP02/XLP02_1_0.html XLP02/XLP02_2_0.html XLP02/XLP02_4_0.html XLP02/XLP02_6_0.html XLP03/XLP03_1_0.html XLP03/XLP03_2_0.html XLP03/XLP03_3_0.html XLP03/XLP03_4_0.html XLP03/XLP03_5_0.html XLP04/XLP04_1_0.html XLP04/XLP04_2_0.html XMES101/XMES101_1_0.html XMES101/XMES101_2_0.html XMES101/XMES101_4_0.html XMES101/XMES101_5_0.html XMES101/XMES101_6_0.html XMES101/XMES101_7_0.html XMES101/XMES101_8_0.html XMES102/XMES102_0_0.html XMES102/XMES102_1_0.html XMES102/XMES102_2_0.html XMES102/XMES102_3_0.html XMES102/XMES102_4_0.html XMES102/XMES102_5_0.html XMES103/XMES103_0_0.html XMES103/XMES103_1_0.html XMES103/XMES103_2_0.html XMES103/XMES103_3_0.html XMES103/XMES103_4_0.html XMES103/XMES103_5_0.html XMES201/XMES201_1_0.html XMES201/XMES201_2_0.html XMES201/XMES201_3_0.html XMES201/XMES201_4_0.html XMES203/XMES203_1_0.html XMES203/XMES203_2_0.html XMES203/XMES203_3_0.html XMES203/XMES203_4_0.html XMES203/XMES203_5_0.html XTAS101/XTAS101_1_0.html XTAS101/XTAS101_2_0.html XTAS101/XTAS101_3_0.html XTAS102/XTAS102_1_0.html XTAS102/XTAS102_2_0.html XTAS102/XTAS102_3_0.html XTAS102/XTAS102_4_0.html XTAS102/XTAS102_5_0.html XTAS103/XTAS103_1_0.html XTAS103/XTAS103_2_0.html XTAS103/XTAS103_2_1.html XTAS103/XTAS103_3_0.html XTAS103/XTAS103_3_1.html XTAS103/XTAS103_4_0.html XWHA01/XWHA01_0_0.html XWHA01/XWHA01_1_0.html

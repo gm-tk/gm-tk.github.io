@@ -229,6 +229,7 @@ class OmmlMathml {
 
 	/** Split a run's text into number / operator / word / space tokens (a number keeps its decimal point and thousands commas). */
 	_tokenise(text) {
+		text = OmmlMathml._foldMathAlpha(text);   // ROUND 347: U+1D465 (math italic x) -> x before any per-unit walk
 		const out = []; let i = 0;
 		while (i < text.length) {
 			const ch = text.charAt(i);
@@ -265,7 +266,7 @@ class OmmlMathml {
 			if (tok.kind === "space") { if (buffer !== "") buffer += " "; }
 			else if (tok.kind === "word") {
 				if (isProse[i]) buffer += tok.text;
-				else { flush(); for (let c = 0; c < tok.text.length; c++) out += "<mi>" + this._escapeText(tok.text.charAt(c)) + "</mi>"; }
+				else { flush(); for (const c of tok.text) out += "<mi>" + this._escapeText(c) + "</mi>"; }   // ROUND 347: by code point, never by UTF-16 unit
 			} else if (tok.kind === "number") { flush(); out += "<mn>" + this._escapeText(tok.text) + "</mn>"; }
 			else { flush(); out += "<mo>" + this._escapeText(tok.text) + "</mo>"; }
 		}
@@ -316,6 +317,22 @@ class OmmlMathml {
 		return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/ /g, "&#xA0;");
 	}
 	static _isDigit(ch) { return ch >= "0" && ch <= "9"; }
+	/** ROUND 347: Mathematical Alphanumeric Symbols (U+1D400-U+1D7FF - Word's italic x, bold b, bold 3 ...) fold to the plain letter /
+	 *  Greek letter / digit the human pages carry (<mi>x</mi>); MathML italicises a one-letter <mi> itself. Latin: 13 styles x 52
+	 *  (A-Z, a-z); Greek: 5 styles x 58 (Alpha-Omega with U+03F4 at 17, nabla, alpha-omega with final sigma at 17, then the seven
+	 *  symbol variants); digits: 5 styles x 10. Walks by code point - the V1.5 port walked UTF-16 units and split every pair. */
+	static _foldMathAlpha(text) {
+		if (!/\uD835/.test(text)) return text;   // the whole block sits on the D835 high surrogate
+		let out = "";
+		for (const ch of text) {
+			const cp = ch.codePointAt(0);
+			if (cp >= 0x1D400 && cp <= 0x1D6A3) { const k = (cp - 0x1D400) % 52; out += String.fromCharCode(k < 26 ? 65 + k : 97 + k - 26); }
+			else if (cp >= 0x1D6A8 && cp <= 0x1D7CB) { const k = (cp - 0x1D6A8) % 58; out += k === 17 ? "ϴ" : k < 25 ? String.fromCharCode(0x391 + k) : k === 25 ? "∇" : k < 51 ? String.fromCharCode(0x3B1 + k - 26) : "∂ϵϑϰϕϱϖ"[k - 51]; }
+			else if (cp >= 0x1D7CE && cp <= 0x1D7FF) out += String.fromCharCode(48 + (cp - 0x1D7CE) % 10);
+			else out += ch;
+		}
+		return out;
+	}
 	/** Whitespace as Word writes it inside an equation (U+2008 / U+2009 / U+00A0 included via \s); U+200B is the only gap. */
 	static _isSpace(ch) { return /\s/.test(ch) || ch === "​"; }
 }

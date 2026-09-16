@@ -1087,7 +1087,7 @@ const indentPer = cfg.indent_spaces_per_level ?? 2;
 
 **Main methods:** **`contentTable(block, run, insidePlaceholder, norm)`** (top — the emitter; it first offers the table to the grid detector, then falls back to a normal `<table>`) → `renderCellInline` → `layoutTableGrid` (middle — the grid conversion, deliberately limited to single-row tables so a real data table is never destroyed) → `cellParts` / `renderCellParts` / `cellImage` (bottom).
 
-**How to update.** Table markup → `Emit_Templates.json → elements.table`; the grid rule's gate → `body_region.layout_table_grid`. The decision point at the top of `contentTable`:
+**How to update.** Table markup → `Emit_Templates.json → elements.table`; the grid rule's gate → `body_region.layout_table_grid`. **The class form (round 347, Chris's D10-5):** `elements.table.kb_class_form` — `default_class` (`table table-bordered`, the KB 05D default) replaces the opener's bare `table` for every kept table; `comparison` {enabled, class, lexicon} would give a two-column table with a contrast-lexicon header pair `table tableFixed` and ships OFF (the corpus confirms no lexicon); env `TBLBORDER_OFF` restores the bare class. The decision point at the top of `contentTable`:
 
 ```js
 static contentTable(block, run, insidePlaceholder = false, norm) {

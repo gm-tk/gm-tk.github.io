@@ -57,6 +57,7 @@ async function convertModule(mod) {
 
 function wellFormed(mathHtml) {
 	if (!/^<math xmlns="http:\/\/www\.w3\.org\/1998\/Math\/MathML"/.test(mathHtml)) return false;
+	if (/\uFFFD|\p{Cs}/u.test(mathHtml)) return false;   // ROUND 347: a replacement char or a lone surrogate = a lost letter
 	const stack = [];
 	for (const m of mathHtml.matchAll(/<(\/?)([a-z]+)\b[^>]*?(\/?)>/g)) {
 		if (m[3] === "/") continue;

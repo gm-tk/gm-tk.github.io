@@ -1700,7 +1700,10 @@ class Config {
 	// ROUND 346 (2026-09-16, build 260619.17): Word equations ship as MathML (Chris's D10-7) — the V1.5 OMML converter
 	// ported into DocxExtractor (OmmlMathml), each <m:oMath> a sentinel run swapped for its <math> in the final
 	// post-pass + the mathJax body class; a new protected verifier _verify_math.cjs; scoped regeneration of 11 modules.
-	static AppVersion = "260619.17";
+	// ROUND 347 (2026-09-16, build 260619.18): every content table ships the KB 05D class form table table-bordered
+	// (Chris's D10-5; the tableFixed half measured and declined, a data-ready hook shipped OFF); FULL regeneration of all
+	// 416 gated dirs; carried fix — Word's math-italic letters (U+1D400 block) fold to the plain letter instead of two U+FFFD.
+	static AppVersion = "260619.18";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

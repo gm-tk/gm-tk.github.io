@@ -231,6 +231,18 @@
 			"row_close": "</tr>",
 			"header_cell": "<th>{content}</th>",
 			"cell": "<td>{content}</td>",
+			"kb_class_form": {
+				"enabled": true,
+				"env": "TBLBORDER_OFF",
+				"default_class": "table table-bordered",
+				"comparison": {
+					"enabled": false,
+					"class": "table tableFixed",
+					"lexicon": [["can", "cannot"], ["can", "can't"], ["pros", "cons"], ["advantages", "disadvantages"], ["advantage", "disadvantage"], ["before", "after"], ["do", "don't"], ["dos", "don'ts"], ["true", "false"], ["similarities", "differences"], ["fact", "opinion"], ["facts", "opinions"], ["strengths", "weaknesses"], ["positive", "negative"], ["positives", "negatives"], ["cause", "effect"], ["causes", "effects"], ["then", "now"], ["past", "present"], ["benefits", "risks"], ["benefits", "costs"], ["for", "against"], ["agree", "disagree"], ["wants", "needs"], ["living", "non-living"], ["renewable", "non-renewable"], ["input", "output"], ["problem", "solution"], ["question", "answer"], ["english", "te reo"], ["english", "maori"]],
+					"note": "ROUND 347: shipped OFF. The gold's two-column contrast-header tables (13 across the corpus) split four ways — plain table 4 / table-bordered 3 / bordered+tableFixed 5 / tableFixed 1 — and the gold's two-column tables overall are plain `table` 229 vs any tableFixed 85, so the KB's comparison-table rule has no lexicon the corpus confirms; the hook stays data-ready for a KB session that settles one."
+				},
+				"rule": "ROUND 347 (Chris's D10-5, KB 05D level 1): every content table ships <table class=\"table table-bordered\"> inside the table-responsive wrapper (the gold: bordered 1011 / 1819 tables — Standard a 0.51 tie, Inquiry 0.72, Fundamentals 0.69, Bilingual 0.86 — a NAMED override on the Standard plain-table pages). 05D's optional noHover / center-text are not emitted. Env TBLBORDER_OFF restores the bare table class."
+			},
 			"note": "Standalone content tables only — a table inside an interactive block is captured data, not rendered here. The <table> is wrapped in <div class=\"table-responsive\"> to match the human convention (measured 2026-06-15: e.g. AGH1008 4/4, BLL233 17/17, MXDB202 13/13 tables wrapped) — Bootstrap's horizontal-scroll wrapper for narrow screens."
 		},
 		"inline_format": {

@@ -86,7 +86,26 @@ class TablesAndGrids {
 		const grid = this.layoutTableGrid(rows, run, insidePlaceholder, norm, links);
 		if (grid) return grid;
 
-		const html = [t.open];
+		// ROUND 347 (Chris's D10-5, KB 05D): every content table ships the KB class form —
+		// `table table-bordered` by default; a two-column COMPARISON table (every row exactly
+		// two cells AND a header pair from the contrast lexicon) ships `table tableFixed` when
+		// kb_class_form.comparison is enabled (shipped OFF: the gold's contrast tables split
+		// four ways, measured r347). The wrapper and the th header rule are unchanged.
+		// Data flag: elements.table.kb_class_form. Env toggle: TBLBORDER_OFF (bare `table`).
+		const cf = t.kb_class_form;
+		const cfOn = !!cf && cf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[cf.env ?? "TBLBORDER_OFF"]);
+		let open = t.open;
+		if (cfOn) {
+			let cls = cf.default_class || "table table-bordered";
+			const cmp = cf.comparison;
+			if (cmp && cmp.enabled === true && Array.isArray(cmp.lexicon) && rows.length && rows.every((cells) => cells.length === 2)) {
+				const fold = (c) => Utils.Fold(String(c ?? "").replace(/<[^>]+>/g, "").replace(/\[[^\]]*\]/g, "").replace(/\*/g, "")).replace(/[^\p{L}' ]+/gu, " ").trim();
+				const [a, b] = rows[0].map(fold);
+				if (cmp.lexicon.some(([x, y]) => (a.startsWith(x) && b.startsWith(y)) || (a.startsWith(y) && b.startsWith(x)))) cls = cmp.class || "table tableFixed";
+			}
+			open = open.replace(/<table class="table">/, `<table class="${cls}">`);
+		}
+		const html = [open];
 		rows.forEach((cells, r) => {
 			const cellTpl = r === 0 ? t.header_cell : t.cell;
 			html.push(t.row_open
