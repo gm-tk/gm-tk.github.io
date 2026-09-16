@@ -1703,7 +1703,10 @@ class Config {
 	// ROUND 347 (2026-09-16, build 260619.18): every content table ships the KB 05D class form table table-bordered
 	// (Chris's D10-5; the tableFixed half measured and declined, a data-ready hook shipped OFF); FULL regeneration of all
 	// 416 gated dirs; carried fix — Word's math-italic letters (U+1D400 block) fold to the plain letter instead of two U+FFFD.
-	static AppVersion = "260619.18";
+	// ROUND 348 (2026-09-16, build 260619.19): a TOOLING round, no engine change — _verify_speechbubble.cjs and
+	// _verify_math.cjs read their per-module baseline from gate_baseline.json (✓ at baseline, ✗ only above it; LOOP §3
+	// step 6); batch_convert.cjs's oembed-cache save is atomic + merged + skipped when clean (the 4-worker race closed).
+	static AppVersion = "260619.19";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

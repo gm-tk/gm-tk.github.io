@@ -1,0 +1,6 @@
+PASS: torn cache → empty map + one warning (oembed cache unreadable (Unterminated string in JSON at position 32 (line 1 column 33)) — starting empty)
+PASS: saveCache with nothing dirty writes nothing
+PASS: saveCache merges the file's entries with memory (v1,v3,v2)
+PASS: no .tmp left behind (renamed over the target)
+PASS: cacheDirty resets to 0 after a save
+RESULT: the oembed-cache block is torn-tolerant, no-op when clean, atomic + merged when dirty ✓

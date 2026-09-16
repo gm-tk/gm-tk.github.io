@@ -26,6 +26,10 @@ eng.loadEngine();
 const norm = new TagNormaliser(Data.TagLexicon, Data.TagExceptions, Data.InstructionCues);
 const TOKEN = Data.InputDocRules?.math?.body_class_token || "mathJax";
 const SENT = /[\uE010\uE011]/;
+// ROUND 348 (the 16 Sept 2026 loop review, LOOP §3 step 6): ✓ AT the recorded PER-MODULE baseline
+// (gate_baseline.json.math.per_module — PES1007 1 = its pre-existing page-tail loss, identical with MATHML_OFF) and ✗
+// ONLY above it. The per-module `defect N` lines and the TOTAL line are unchanged (the selftest's DETECTION signal).
+const BASE = (() => { try { return JSON.parse(fs.readFileSync(path.join(__dirname, "gate_baseline.json"), "utf8")).math?.per_module || {}; } catch { return {}; } })();
 
 async function convertModule(mod) {
 	const base = corpus.mdir(MODS, mod);
@@ -68,7 +72,7 @@ function wellFormed(mathHtml) {
 }
 
 (async () => {
-	let totEq = 0, totMath = 0, totDefect = 0, mods = 0;
+	let totEq = 0, totMath = 0, totDefect = 0, mods = 0, totAbove = 0, improved = false;
 	for (const mod of process.argv.slice(2)) {
 		let r;
 		try { r = await convertModule(mod); } catch (e) { console.log(`${mod}: ERROR ${e.message}`); continue; }
@@ -91,10 +95,16 @@ function wellFormed(mathHtml) {
 		if (SENT.test(r.txt)) leaks++;
 		const mismatch = Math.abs(r.omath - math);
 		const defect = mismatch + noJax + leaks + bad;
+		const base = +(BASE[mod] || 0);   // ROUND 348: this module's recorded baseline (0 when unrecorded)
+		if (defect > base) totAbove += defect - base;
+		if (defect && defect < base) improved = true;
 		totEq += r.omath; totMath += math; totDefect += defect;
-		console.log(`${mod}: equations ${r.omath} (registered ${r.registered}) / <math> ${math} on ${mathPages} page(s); ${TOKEN} missing ${noJax}; sentinel leaks ${leaks}; malformed ${bad}; defect ${defect}${defect ? " ✗" : " ✓"}`);
+		console.log(`${mod}: equations ${r.omath} (registered ${r.registered}) / <math> ${math} on ${mathPages} page(s); ${TOKEN} missing ${noJax}; sentinel leaks ${leaks}; malformed ${bad}; defect ${defect}${defect > base ? ` ✗ (above the recorded baseline ${base})` : defect ? ` ✓ (at the recorded baseline ${base}${defect < base ? " — IMPROVED, refresh gate_baseline.json" : ""})` : " ✓"}`);
 	}
 	console.log(`TOTAL: ${totEq} equation(s) across ${mods} module(s); <math> ${totMath}; defect ${totDefect}.`);
-	console.log(totDefect ? "RESULT: real defects present ✗ — fix before proceeding." : "RESULT: every Word equation ships as MathML ✓");
-	process.exit(totDefect ? 1 : 0);
+	// ROUND 348: ✓ at the recorded baseline, ✗ only above it (LOOP §3 step 6).
+	console.log(totAbove ? "RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.math.per_module)."
+		: totDefect ? `RESULT: every Word equation ships as MathML or is at its recorded baseline ✓ (${totDefect} recorded in gate_baseline.json.math${improved ? " — IMPROVED below baseline: refresh it" : ""})`
+		: "RESULT: every Word equation ships as MathML ✓");
+	process.exit(totAbove ? 1 : 0);
 })();

@@ -1,0 +1,55 @@
+=== speechBubble AFTER (gate set) ===
+OSAI501: built 11 [exact 8, copy-edit 2, dev-edit 1, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSAI401: built 22 [exact 7, copy-edit 1, dev-edit 0, gold-subst 11, defect 3] OK ✓ (at the recorded baseline 3)
+   DEFECT (overlap 0.44): Prompt 1: Create a list of tasks AI can and can't do. Make the answers read in the first person from the AI point of vie
+   DEFECT (overlap 0.19): Prompt 4: Create an analogy on the limits of AI. AI response: Analogy: AI is like a super-fast calculator with a huge li
+   DEFECT (overlap 0.18): Do a quiz.
+OSAH501: built 8 [exact 2, copy-edit 5, dev-edit 0, gold-subst 0, defect 1] OK ✓ (at the recorded baseline 1) | image-id miss 7
+   DEFECT (overlap 0.57): If you come across harmful behaviour online do not deal with it alone. Talk to someone you can trust and who knows how t
+   image-id not in human file: iStock-1170338101
+   image-id not in human file: iStock-1199375092
+   image-id not in human file: iStock-987355284
+   image-id not in human file: iStock-987354734
+   image-id not in human file: iStock-1190660690
+   image-id not in human file: iStock-1148188506
+   image-id not in human file: iStock-987354734
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR101, EN000) — using ENGR101 from filename "ENGR101 Writers Template + Media List.docx".
+ENGR101: built 8 [exact 5, copy-edit 3, dev-edit 0, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSGM501: built 13 [exact 9, copy-edit 0, dev-edit 4, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+
+TOTAL built 62: exact 31, copy-edit 11, dev-edit 5, gold-subst 11, defect 4; image-id misses 7.
+RESULT: every built bubble is human-matched, writer-faithful (gold-subst) or at its recorded baseline ✓ (4 recorded in gate_baseline.json.speechbubble)
+rc=0
+=== math AFTER (gate set) ===
+MXDI102: equations 154 (registered 154) / <math> 154 on 4 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDI301: equations 69 (registered 69) / <math> 69 on 2 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+PES1008: equations 24 (registered 24) / <math> 24 on 3 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXEX301: equations 18 (registered 18) / <math> 18 on 2 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+PES1007: equations 17 (registered 17) / <math> 16 on 3 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 1 ✓ (at the recorded baseline 1)
+MXFU302: equations 15 (registered 15) / <math> 15 on 2 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXFU401: equations 12 (registered 12) / <math> 12 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDB301: equations 6 (registered 6) / <math> 6 on 2 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDI201: equations 6 (registered 6) / <math> 6 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDB202: equations 1 (registered 1) / <math> 1 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+SCCH301: equations 1 (registered 1) / <math> 1 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+TOTAL: 323 equation(s) across 11 module(s); <math> 322; defect 1.
+RESULT: every Word equation ships as MathML or is at its recorded baseline ✓ (1 recorded in gate_baseline.json.math)
+rc=0
+=== speechBubble SELFTEST ===
+SELFTEST _verify_speechbubble.cjs LIVENESS: built TOTAL 8 on OSAH501 PASS
+SELFTEST _verify_speechbubble.cjs DETECTION: defect signal 2 -> 4 with an INJECTED malformed build — PASS
+SELFTEST _verify_speechbubble.cjs: GREEN
+rc=0
+=== math SELFTEST ===
+SELFTEST _verify_math.cjs LIVENESS: built TOTAL 69 on MXDI301 PASS
+SELFTEST _verify_math.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_math.cjs: GREEN
+rc=0
+=== speechBubble INJECT above baseline (OSAH501 base 1 -> 2) ===
+TOTAL built 9: exact 2, copy-edit 5, dev-edit 0, gold-subst 0, defect 2; image-id misses 7.
+RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.speechbubble.per_module).
+rc=1
+=== math INJECT above baseline (PES1007 base 1 -> 2) ===
+TOTAL: 17 equation(s) across 1 module(s); <math> 15; defect 2.
+RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.math.per_module).
+rc=1
