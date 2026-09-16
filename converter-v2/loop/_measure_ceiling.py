@@ -656,7 +656,7 @@ def main():
             i += 1; continue
         codes.append(a); i += 1
     if not codes:
-        codes = _corpus.mods(HUMAN)
+        codes = _corpus.gate_mods(HUMAN)   # r343: minus compare_exclusions.txt (D10-6)
         json_out = json_out or DEFAULT_JSON
         md_out = md_out or DEFAULT_MD
     t0 = time.time()

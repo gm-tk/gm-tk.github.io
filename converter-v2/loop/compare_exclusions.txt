@@ -1,0 +1,17 @@
+# compare_exclusions.txt — modules that stay in the corpus but are EXCLUDED from every scored gate population
+# (round 343 — Chris's decision D10-6, 2026-09-16, Option C: "exclude revision briefs from the comparison set").
+# One code per line; anything after '#' is a comment. Read by reference/tests/_corpus.py gate_mods() — the ONE list every
+# gate honours (skeleton, structural defect audit, compare_structure, body_compare, discrepancy audit, strict/scaffold audits,
+# anchor_compare's gate list). mods() itself stays INCLUSIVE: batch plans, the content manifest, the registries and the
+# feature index still cover these modules, their Claude dirs are regenerated with their families, and they keep their
+# _interactives.txt — a developer still gets whatever PageForge can make.
+# Reason (recorded per D10-6): the Writers Template is an EDIT BRIEF for content held in the previous module version — not a
+# conversion source — so no converter rule can reach the human's page and the score only measures that fact.
+CEDR201   # CED revision brief
+CEDR301   # CED revision brief
+CEDR302   # CED revision brief
+CEDT201   # CED revision brief
+CEDT202   # CED revision brief
+CEDT203   # CED revision brief
+CEDT204   # CED revision brief
+CEDW303   # CED revision brief (no Claude dir today)

@@ -1687,7 +1687,10 @@ class Config {
 	// (DocxExtractor, Input_Doc_Rules.red_runs.hyperlinked_tag_runs, env HYPERTAG_OFF); its own words are the caption
 	// (MediaBuilder, env MEDIALEAD_OFF); a tag member's bracket-line text / link keeps the hand-off box alive (env
 	// MEMBERTEXT_OFF); a bare [audio button] never invents a journal label (env BTNLABELDEF_OFF). FULL regeneration.
-	static AppVersion = "260619.13";
+	// ROUND 343 (2026-09-16, build 260619.14): a GATE-CONFIGURATION round, no engine change — the eight CED revision-brief
+	// modules leave the scored population (Chris's D10-6; reference/tests/compare_exclusions.txt + _corpus.gate_mods());
+	// every baseline re-established on 1955 pairs; the corpus on disk is r342's byte-for-byte.
+	static AppVersion = "260619.14";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

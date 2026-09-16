@@ -1,0 +1,25 @@
+  … 25/446 modules, 78 pages, 3s
+  … 50/446 modules, 103 pages, 6s
+  … 75/446 modules, 141 pages, 10s
+  … 100/446 modules, 196 pages, 13s
+  … 125/446 modules, 241 pages, 17s
+  … 150/446 modules, 431 pages, 22s
+  … 175/446 modules, 514 pages, 26s
+  … 200/446 modules, 592 pages, 29s
+  … 225/446 modules, 667 pages, 32s
+  … 250/446 modules, 748 pages, 35s
+  … 275/446 modules, 948 pages, 41s
+  … 300/446 modules, 1131 pages, 46s
+  … 325/446 modules, 1366 pages, 54s
+  … 350/446 modules, 1607 pages, 61s
+  … 375/446 modules, 1776 pages, 67s
+  … 400/446 modules, 1952 pages, 72s
+  … 425/446 modules, 2158 pages, 79s
+CEILING (round 0) — 430 modules, 2293 gold pages, 1896 paired (84s); 153 modules read from 2+ parsed files
+  no WT (skipped): TRR115, ENGJ403; no WT-like parsed file (skipped): TRR102, TRR103, TRR104, TRR105, TRR107, TRR108, TRR109, TRR111, TRR112, TRR113, TRR203, TRR301, TRR304
+  PAIRED scaffold-scope no-source share: mean raw 10.8% → NET 8.1%; pooled raw 10.3% → NET 8.5%
+  CEILING scaffold 91.9% (loose 94.5%) / full 87.3% (loose 89.7%); boilerplate strings 139
+  BASELINE _r343_sk_final.json: SCAFFOLD 51.265% = 55.8% of achievable (band 54.3%–55.8%); RAW 35.394% = 40.6% of achievable; per-page mean 56.4%
+  outlier pages (net ≥ 50%, ≥ 8 blocks): 36
+  wrote _ceiling_r343.json
+  wrote _ceiling_r343.md
