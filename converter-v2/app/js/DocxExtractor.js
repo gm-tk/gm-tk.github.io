@@ -977,8 +977,26 @@ class DocxExtractor {
 				const listRed = rules.red_runs.red_hex_values.includes(color);
 				const nearRed = !listRed && nearRedOn && !!color && this.#nearRed(color, nr)
 					&& (!nr.require_bracket || nearOpen > 0 || /[\[\]]/.test(text));
-				const red = listRed || nearRed;
-				if (nearRed) nearOpen = Math.max(0, nearOpen + (text.match(/\[/g) || []).length - (text.match(/\]/g) || []).length);
+				// THE HYPERLINKED MEDIA TAG (ROUND 342 — the autonomous loop, session 9). The BLL
+				// phonics writers type "[audio 1]" AS A HYPERLINK to the sound file (the run is the
+				// hyperlink blue or black), so it never counted as red and shipped as literal text.
+				// A run inside a w:hyperlink whose bracket OPENS with a data-listed media head word
+				// counts as red. Fenced to the head list because the same writers hyperlink every
+				// WORD of a phonics word list ("[scissors]" -> its sound) — content, never a tag.
+				// Data: Input_Doc_Rules.red_runs.hyperlinked_tag_runs   Env toggle: HYPERTAG_OFF
+				const ht = rules.red_runs.hyperlinked_tag_runs;
+				const hyperTagOn = ht && ht.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.HYPERTAG_OFF);
+				// Session 11: the link TARGET must be a media-file carrier (data link_target_match —
+				// the drive / sharepoint / istock / youtube hosts or a media file extension); a
+				// curriculum resource PAGE (BLL262's tahurangi School-Journal link) is a reference
+				// to the resource, never the media file, and stays the black link line.
+				const hyperTarget = !currentLink || !ht?.link_target_match
+					|| new RegExp(ht.link_target_match, "i").test(String(currentLink));
+				const hyperRed = !listRed && !nearRed && hyperTagOn && !!currentLink && hyperTarget
+					&& (nearOpen > 0 || this.#hyperlinkedTagHead(text, ht.head_words || [], ht.exclude_words || []));
+				const red = listRed || nearRed || hyperRed;
+				if (nearRed || hyperRed) nearOpen = Math.max(0, nearOpen + (text.match(/\[/g) || []).length - (text.match(/\]/g) || []).length);
 				else if (!listRed && text.trim()) nearOpen = 0;
 				// <w:b/> means bold on; <w:b w:val="0"/> means explicitly off
 				const bold = /<w:b\/>|<w:b w:val="(?:1|true)"\/>/.test(run);
@@ -1005,7 +1023,7 @@ class DocxExtractor {
 				}
 
 				if (currentLink) links.push({ text, target: currentLink });
-				pieces.push({ text, red, bold, italic, mark });
+				pieces.push({ text, red, bold, italic, mark, hyper: hyperRed });
 			}
 		}
 
@@ -1165,6 +1183,11 @@ class DocxExtractor {
 
 		const blk = { kind: "para", text: out, links, wtPage: page.current, list, listLevel };
 		if (marks.length) blk.marks = marks;
+		// ROUND 342 (session 11) — a paragraph whose tag span came from a HYPERLINKED run is
+		// marked on a side-channel (never in the text, so red-span granularity and every
+		// downstream byte are identical by construction): MediaBuilder.media reads it to
+		// render the words the writer typed inside the same hyperlink as the tag.
+		if (pieces.some((p) => p.hyper)) blk.hyperTag = true;
 		return blk;
 	};
 
@@ -1234,6 +1257,22 @@ class DocxExtractor {
 	 * red_hex_values does not name)? Pure arithmetic on the six hex digits against
 	 * the data band; a non-hex value is never near-red.
 	 */
+	/**
+	 * ROUND 342 — does a run's text open a bracket whose FIRST WORD is one of the data-listed
+	 * media heads ("[audio 1]", "[Audio button]", "[Video link]")? Case-folded; a multi-word
+	 * head ("audio button") is matched as a prefix of the bracket's words. A bracket whose
+	 * remaining words carry an EXCLUDED word ("[Audio Animation 1: …]" — a CS-animation
+	 * brief, not a sound file; session 11) is never a media tag.
+	 */
+	static #hyperlinkedTagHead(text, heads, excludes = []) {
+		const m = String(text).match(/\[\s*([^\]]{1,60})/);
+		if (!m) return false;
+		const inner = m[1].toLowerCase().replace(/[^a-z ]+/g, " ").replace(/\s+/g, " ").trim();
+		if (!inner) return false;
+		if (excludes.length && inner.split(" ").some((w) => excludes.includes(w))) return false;
+		return heads.some((h) => inner === h || inner.startsWith(h + " "));
+	}
+
 	static #nearRed(hex, nr) {
 		if (!/^[0-9a-f]{6}$/.test(hex)) return false;
 		const r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16);

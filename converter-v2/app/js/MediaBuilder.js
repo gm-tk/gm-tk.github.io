@@ -209,10 +209,11 @@ class MediaBuilder {
 	 * @param {number} i - this item's index within bodyItems
 	 * @param {"video"|"audio"} kind - which kind of media element this is
 	 * @param {ConversionRun} run - the current conversion run
+	 * @param {TagNormaliser} [norm] - the run's normaliser (round 342: renders the hyperlinked lead)
 	 * @returns {string[]} the rendered HTML fragments — the embed/player
 	 *          markup, plus any caption text found after it
 	 */
-	static media(it, bodyItems, i, kind, run) {
+	static media(it, bodyItems, i, kind, run, norm) {
 		const tpl = DataService.Data.EmitTemplates;
 		const acks = DataService.Data.AcksFormats.extraction_regexes;
 		const out = [];
@@ -310,6 +311,24 @@ class MediaBuilder {
 		const own = it.blackAfter ?? "";
 		const following = gathered.length > own.length ? gathered.slice(own.length) : "";
 		let keepRaw = (dropTitleOn && kind === "video" && builtVideoEmbed) ? following : gathered;
+		// ROUND 342 (session 11) — THE HYPERLINKED LEAD. When the writer hyperlinked the WHOLE
+		// line "[audio] snail, paint, trail, stain, faint, train" to its sound file, the r342
+		// extractor rule counts the run as red so the tag is seen — but the words after the
+		// bracket are CONTENT, exactly what a black run after a red "[audio 1]" is (BLL146),
+		// and the element's own span text was never rendered here. On a block the extractor
+		// marked hyperTag, the embedded lead (RenderText of the span) is folded in FRONT of
+		// the own/black-after text and the rules above apply unchanged: a built video has
+		// already dropped its own text as the title (r80), audio / un-built keep the caption.
+		// Scoped to the hyperlinked class: the gold keeps a RED-span lead's words on only
+		// 0.24 of the 359 pre-existing sites (outputs/_r342_medlead_gold.py), so those stay
+		// dropped. Data: elements.media_hyperlinked_lead   Env toggle: MEDIALEAD_OFF
+		const hlOn = (tpl.elements?.media_hyperlinked_lead?.enabled !== false)
+			&& !(typeof process !== "undefined" && process.env && process.env.MEDIALEAD_OFF);
+		if (hlOn && it.block?.hyperTag && !(dropTitleOn && kind === "video" && builtVideoEmbed)) {
+			let lead = "";
+			try { lead = norm ? (norm.RenderText(String(it.text ?? "")) ?? "") : ""; } catch { lead = ""; }
+			if (lead && lead.trim()) keepRaw = keepRaw.trim() ? `${lead.trim()}\n${keepRaw}` : lead.trim();
+		}
 		// r247: when the embed's URL came from a FOLLOWING title-anchored reference line,
 		// that line IS the video's title — drop exactly it (same r80/r240-D3 rule; any other
 		// genuinely-following prose is kept untouched).

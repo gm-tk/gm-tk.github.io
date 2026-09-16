@@ -6266,7 +6266,7 @@ class ContentConverter {
 					return out;
 				}
 			}
-			return out.concat(MediaBuilder.media(it, bodyItems, i, tag, run));
+			return out.concat(MediaBuilder.media(it, bodyItems, i, tag, run, this.#norm));
 		}
 
 		// ---- standalone content table marker --------------------------------
@@ -6375,10 +6375,10 @@ class ContentConverter {
 						// the URL-only "[link]"-style item after the button IS the video: render it as
 						// the standard [video] element and consume it
 						const nxt = bodyItems[i + 1];
-						out.push(...MediaBuilder.media(nxt, bodyItems.slice(0, i + 2), i + 1, "video", run));
+						out.push(...MediaBuilder.media(nxt, bodyItems.slice(0, i + 2), i + 1, "video", run, this.#norm));
 						nxt._consumed = true;
 					} else {
-						out.push(...MediaBuilder.media(it, bodyItems.slice(0, vdest === "next-url" ? i + 2 : i + 1), i, "video", run));
+						out.push(...MediaBuilder.media(it, bodyItems.slice(0, vdest === "next-url" ? i + 2 : i + 1), i, "video", run, this.#norm));
 					}
 					run.AddNote("info", "ContentConverter", `[button] with a video URL → the video embed (video_destination, ${vdest}).`);
 					return out;
@@ -6429,7 +6429,15 @@ class ContentConverter {
 			let labelDefaulted = false;
 			if (!label) {
 				label = (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim();
-				if (!label) { label = tpl.buttons.journal_label_default; labelDefaulted = true; }
+				// ROUND 342 (session 11) — a button KEY may carry its own label_default: a bare
+				// "[audio button]" is not a journal link, and the gold's audioButton carries NO
+				// text at all (1,014 of 1,014 gold audioButton divs are text-less), so it defaults
+				// to "" instead of inventing "Go to your journal" (7 corpus sites did; the r342
+				// hyperlinked-tag rule would have added 8 more). Data buttons.<key>.label_default.
+				// Env toggle BTNLABELDEF_OFF reverts every key to the journal default.
+				const keyDefaultOn = typeof btn?.label_default === "string"
+					&& !(typeof process !== "undefined" && process.env && process.env.BTNLABELDEF_OFF);
+				if (!label) { label = keyDefaultOn ? btn.label_default : tpl.buttons.journal_label_default; labelDefaulted = true; }
 			}
 			// DOWNLOAD-JOURNAL TEMPLATED SCAFFOLD (ROUND 239 — Dev-Feedback R2, B5;
 			// SCCH302-02 activity 2B). The writer's "[button to download journal with
@@ -6643,7 +6651,7 @@ class ContentConverter {
 			// ENGS302-01 verified), NOT a bare iframe — route it through MediaBuilder.media so it builds the same
 			// videoSection as "[Embed video]" (which already resolves to the video tag).
 			if (probe && /youtu\.?be|youtube|vimeo/i.test(probe)) {
-				return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run));
+				return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run, this.#norm));
 			}
 			// ROUND 340 (seam B on the [embed] route): an url-less "[embed video with image and
 			// play button]"-style bracket that resolves here, followed by a url-only [link]
@@ -6651,7 +6659,7 @@ class ContentConverter {
 			// which takes the link item's url and consumes it (a peek here; media() consumes).
 			// Data elements.external_link_video_embed; env LINKVID_OFF.
 			if (!probe && MediaBuilder.FollowingVideoLinkTag(bodyItems, i, tpl)) {
-				return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run));
+				return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run, this.#norm));
 			}
 			const url = probe
 				|| (MediaBuilder.gatherFollowing(it, bodyItems, i).match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
@@ -7321,7 +7329,7 @@ class ContentConverter {
 			if (MediaBuilder.LinkVideoEmbedOn(tpl) && isExtLink && !labelText
 				&& MediaBuilder.LinkVideoUrlOnly(it)
 				&& MediaBuilder.LinkVideoHost(tpl).test(url)) {
-				out.push(...MediaBuilder.media(it, [it], 0, "video", run));
+				out.push(...MediaBuilder.media(it, [it], 0, "video", run, this.#norm));
 				return out;
 			}
 			if (sbOn && isExtLink && !labelText) {
@@ -7418,7 +7426,39 @@ class ContentConverter {
 		// is still surfaced (and the manifest still lists it) without littering the
 		// page with empty interactive shells. (The full placeholder is reserved for
 		// bundles that actually carry un-built content.)
-		const hasText = (it) => String(it.type === "black" ? it.text : (it.blackAfter ?? "")).trim().length > 0;
+		// ROUND 342 — a TAG member whose words ride its OWN bracket line ("[audio] while,
+		// whale, whirl, whole, whine" — an ELEMENT with embedded text and an empty tail) is
+		// member CONTENT: the guards below count it and the dump renders it. Before this the
+		// two guards read blackAfter alone, so a bundle whose only member was such an element
+		// rendered as notes-only (or the "no content captured" flag) and the writer's words
+		// vanished from the page (BLL240 1.1 wordDrag, BLL150/BLL166 dragAndDrop audio lists,
+		// ENGC101 4.0's five [image] faces). Data interactive_placeholder.embedded_member_text
+		// (directives listed there; an instruction-class member never counts — it already
+		// surfaces as the note before the box); env MEMBERTEXT_OFF.
+		const embCfg = DataService.Data.EmitTemplates.interactive_placeholder?.embedded_member_text;
+		const embOn = embCfg && embCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.MEMBERTEXT_OFF);
+		const embeddedText = (it) => {
+			if (!embOn || !it || it.type !== "tag" || String(it.blackAfter ?? "").trim()) return "";
+			const p = it.parse; const prim = p?.primary;
+			if (!prim || p.class !== "tag" || p.instructionFragment) return "";
+			if (!(embCfg.directives ?? ["ELEMENT", "INLINE"]).includes(prim.directive)) return "";
+			let words = ""; try { words = this.#norm.RenderText(it.text) || ""; } catch { words = ""; }
+			const raw = String(it.text ?? "").replace(/\s+/g, " ").trim();
+			if (words.trim()) return raw;
+			// ROUND 342 (session 11) — a HYPERLINKED media tag with no words ("[audio]" linked
+			// to its sound file, the BLL phonics dragAndDrop members) carries its content in
+			// the link target: before the hyperlinked-tag rule that member was a BLACK link
+			// line that kept the hand-off box alive; as a tag it must still count, or the
+			// box (and the developer's .txt entry with the writer's request) vanishes
+			// (BLL141/171/253/262/263 lesson 1). The dump line is the bracket + its target.
+			// Data embedded_member_text.linked_tag_counts (default on).
+			const link = it.block?.hyperTag && it.block?.links?.[0]?.target;
+			if (embCfg.linked_tag_counts !== false && link) return `${raw} ${link}`;
+			return "";
+		};
+		const hasText = (it) => String(it.type === "black" ? it.text : (it.blackAfter ?? "")).trim().length > 0
+			|| embeddedText(it).length > 0;
 		const hasContent = !!(bundle.headingText?.trim())
 			|| bundle.instructions.length > 0
 			|| (bundle.tables?.length > 0)
@@ -7570,7 +7610,7 @@ class ContentConverter {
 		// OUTSIDE the box, so the box holds members only
 		for (const m of [...bundle.openerItems, ...bundle.memberItems]) {
 			if (m.type === "table") { flushText(); parts.push(TablesAndGrids.contentTable(m.block, run, true, this.#norm)); continue; }
-			const text = m.type === "black" ? m.text : (m.blackAfter ?? "");
+			const text = m.type === "black" ? m.text : (String(m.blackAfter ?? "").trim() ? m.blackAfter : embeddedText(m));   // ROUND 342 — the bracket-line words of an element member
 			// don't repeat the line already shown as the bundle heading
 			if (text.trim() && text.trim() !== bundle.headingText.trim()) textRun.push(text);
 		}

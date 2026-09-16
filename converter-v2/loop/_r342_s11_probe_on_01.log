@@ -1,0 +1,437 @@
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+  ~ BLL237_1_0.html: -0 +1
+     + <p>Sauce [image]</p>
+BLL237: identical 2 / changed 1
+  ~ BLL240_1_1.html: -2 +2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: while, whale, whirl, whole, whine<br 
+     - <p>[audio]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <p>[audio] while, whale, whirl, whole, whine</p>
+  ~ BLL240_1_2.html: -2 +2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: catch, fetch, match, patch, watch, di
+     - <p>[audio]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <p>[audio] catch, fetch, match, patch, watch, ditch</p>
+  ~ BLL240_1_3.html: -2 +2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: fudge, badge, hedge, lodge, judge, ri
+     - <p>[audio]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <p>[audio] fudge, badge, hedge, lodge, judge, ridge, wedge</p>
+  ~ BLL240_1_4.html: -3 +3
+     - <th>[Audio]</th>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: stair, chairs, flair, dairy, pairs, h
+     - <p>[audio]</p>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <p>[audio] stair, chairs, flair, dairy, pairs, hairy</p>
+  ~ BLL240_1_5.html: -3 +3
+     - <th>[Audio]</th>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: years, beard, spear, swear, bears, se
+     - <p>[audio]</p>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <p>[audio] years, beard, spear, swear, bears, search</p>
+  ~ BLL240_1_6.html: -3 +3
+     - <th>[Audio]</th>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: where, there, here<br />Please use th
+     - <p>[audio]</p>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please use the reading font.</p>
+     + <p>[audio] where, there, here</p>
+  ~ BLL240_1_7.html: -4 +4
+     - <th>[Audio]</th>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: cheer, deer, beer, peer<br />Please n
+     - <p>[audio]</p>
+     - <p>[audio]</p>
+     + <th> [Audio] </th>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please note the repeats of letters, p
+     + <p>[audio] cheer, deer, beer, peer</p>
+     + <p>[audio] sneer, steer</p>
+BLL240: identical 2 / changed 7
+  ~ BLL241_1_0.html: -4 +10
+     - <p><a href="https://drive.google.com/file/d/1sscBPka2OWKprQUynG02vHYnIAaEGJpv/view?usp=drive_link" target="_bl
+     - <p>[Audio] badge, fudge, when, what, hatch, catch, ledge</p>
+     - <p>[Audio] whale, white, bridge, smudge, crutch, blotch, fridge</p>
+     - <p>[audio] fudge, hatch, what, when, catch, whale, white, bridge, smudge, fridge</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>badge, fudge, when, what, hatch, catch, ledge</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>whale, white, bridge, smudge, crutch, blotch, fridge</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>fudge, hatch, what, when, catch, whale, white, bridge, smudge, fridge</p>
+     + </div>
+     + </div>
+  ~ BLL241_2_0.html: -3 +5
+     - <th>awa [Audio]</th>
+     - <td>ka pai [Audio]</td>
+     - <p>Let’s read the story <i>‘Tūī [audio] Has a Plan’.</i></p>
+     + <th>awa [Audio] </th>
+     + <td>ka pai [Audio] </td>
+     + <p>Let’s read the story <i>‘Tūī</i></p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p><i>Has a Plan’.</i></p>
+BLL241: identical 1 / changed 2
+  ~ BLL242_1_0.html: -4 +9
+     - <p>[audio] where, which, watch, catch, match, bridge, badge, fair, hair, chair, deer, cheer</p>
+     - <p>[audio] watch, where, fair, bridge, catch, dear, chair, which, badge, hair, cheer, match</p>
+     - <p>[audio] chair, bridge, deer, watch, hair, which, fair, catch, cheer, where, match, badge</p>
+     - <p>[audio] badge, where, chair, catch, fair, which, bridge, cheer, hair, match, deer, watch</p>
+     + <p>where, which, watch, catch, match, bridge, badge, fair, hair, chair, deer, cheer</p>
+     + <p>watch, where, fair, bridge, catch, dear, chair, which, badge, hair, cheer, match</p>
+     + <p>chair, bridge, deer, watch, hair, which, fair, catch, cheer, where, match, badge</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>badge, where, chair, catch, fair, which, bridge, cheer, hair, match, deer, watch</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL242: identical 2 / changed 1
+BLL244: identical 3 / changed 0
+  ~ BLL245_2_0.html: -10 +10
+     - <th>[audio]</th>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     - <td>[audio]</td>
+     + <th> [audio] </th>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+     + <td> [audio] </td>
+BLL245: identical 2 / changed 1
+BLL246: identical 3 / changed 0
+  ~ BLL251_0_0.html: -1 +1
+     - <p>[Audio]</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+  ~ BLL251_1_0.html: -4 +3
+     - <p><a href="https://drive.google.com/file/d/12RGw8vt4s6ilrvWzYr2T-LGhwFd522k2/view?usp=drive_link" target="_bl
+     - <div class="clickDropContent"><p>You may have noticed an unusual word in the title of this story. The word gno
+     - <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/guide-dogs-purple/5637185122.p" target="_
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Text 4 – The text ‘Guide Dogs’ 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <div class="clickDropContent"><p>You may have noticed an unusual word in the title of this story. The word gno
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Text 4 – The text ‘Guide Dogs’ 
+BLL251: identical 1 / changed 2
+  ~ BLL252_1_0.html: -4 +13
+     - <p>Order 1 [audio] scented, shouldn’t, cough, scenery, fought, haven’t, naughty, won’t, through, taught, eight
+     - <p>Order 2 [audio] scented, scenery, cough, naughty, fought, taught, eighty, crescent, through, haven’t, won’t
+     - <p>Order 3 [audio] cough, fought, taught, through, scented, scenery, crescent, eighty, naughty, shouldn’t, won
+     - <p>Order 4 [audio] through, cough, scented, fought, taught, eighty, crescent, scenery, naughty, won’t, haven’t
+     + <p>Order 1</p>
+     + <p>scented, shouldn’t, cough, scenery, fought, haven’t, naughty, won’t, through, taught, eighty, crescent</p>
+     + <p>Order 2</p>
+     + <p>scented, scenery, cough, naughty, fought, taught, eighty, crescent, through, haven’t, won’t, shouldn’t</p>
+     + <p>Order 3</p>
+     + <p>cough, fought, taught, through, scented, scenery, crescent, eighty, naughty, shouldn’t, won’t haven’t</p>
+     + <p>Order 4</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>through, cough, scented, fought, taught, eighty, crescent, scenery, naughty, won’t, haven’t, shouldn’t</p>
+     + </div>
+     + </div>
+  ~ BLL252_2_0.html: -1 +1
+     - <div class="button clickDrop">Onomatopoeia [audio]</div>
+     + <div class="button clickDrop">Onomatopoeia</div>
+BLL252: identical 1 / changed 2
+  ~ BLL253_2_0.html: -52 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="BLL253-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please place these side by side.<br /
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: clickDrop + clickDrop + clickDrop +
+     - <div style="font-size: 0.95em">
+     - <p><a href="https://media.istockphoto.com/id/2234433176/photo/porta-2007-is-a-public-art-sculpture-in-wodonga-
+     - <p>Art and structures</p>
+     - <p>A <b>sculpture</b> is a large artwork made to look like something real. Sculptures are often placed outside
+     - <p>For example, “The monument in the town centre marked the soldiers who fought in the war.”</p>
+     - <p><a href="https://www.shutterstock.com/image-photo/mumbai-maharashtra-india-jan-18-600w-2757176565.jpg" targ
+     - <p><a href="https://www.shutterstock.com/image-photo/garden-decoration-using-clay-owl-600w-2702089983.jpg" tar
+     - <p><a href="https://www.shutterstock.com/image-photo/sculpture-turtle-majori-jurmala-latvia-600w-2554769617.jp
+     - <p><a href="https://media.istockphoto.com/id/532849924/photo/cheerful-young-couple-take-a-selfie-portrait-by-t
+     - <p>People and places</p>
+     - <p>A <b>community</b> is a group of people who live in the same place. Each community has its own identity, wh
+     - <p>For example, “The tourists flocked to see the sand sculptures at the beach.”</p>
+     - <p><a href="https://media.istockphoto.com/id/539347484/photo/arrowtown-autumn-festival-in-new-zealand.jpg?s=20
+     - <p><a href="https://media.istockphoto.com/id/594060054/photo/happy-local-family-taking-selfie-photo-together-i
+     - <p><a href="https://media.istockphoto.com/id/956255522/photo/tourists-enjoy-a-high-speed-boat-ride-on-queensto
+     - <p><a href="https://media.istockphoto.com/id/1012964602/photo/new-zealand-currency-cash.jpg?s=2048x2048" targe
+     - <p>Money and jobs</p>
+     - <p>The <b>economy</b> is the way people earn and spend money in a place. When tourists visit, they often spend
+     - <p>For example, “The farmer exported his goods overseas.”</p>
+     - <p><a href="https://media.istockphoto.com/id/2220982108/photo/young-woman-choosing-flip-flops-at-a-beach-shop-
+     - <p><a href="https://media.istockphoto.com/id/2052775104/photo/elevated-view-container-ship-loading-unloading-p
+     - <p><a href="https://www.shutterstock.com/image-photo/aerial-panorama-cargo-ship-carrying-600w-2699444759.jpg" 
+     - <p><a href="https://www.shutterstock.com/image-photo/male-farmer-carefully-harvests-celery-600w-2745911073.jpg
+     - <p>Farming and food</p>
+     - <p><b>Produce</b> is food that is grown on farms, such as fruit and vegetables. Some produce is grown in an <b
+     - <p>For example, “The workers picked the fruit in the orchard.”</p>
+     - <p><a href="https://www.shutterstock.com/image-photo/vendor-farmers-market-sells-fresh-600w-2762330367.jpg" ta
+     - <p><a href="https://www.shutterstock.com/image-photo/fresh-seafood-on-ice-buffet-600w-2568914571.jpg" target="
+     - <p><a href="https://www.shutterstock.com/image-photo/sunlit-apple-orchard-rows-ripe-600w-2628565779.jpg" targe
+     - <p><a href="https://www.shutterstock.com/image-photo/kea-spotted-on-fiordland-national-600w-2498979567.jpg" ta
+     - <p>Nature and environment</p>
+     - <p><b>Population</b> means the number of people or animals living in a place. Some animals have a very small p
+     - … 12 more removed
+     + <div class="row">
+     + <div class="button clickDrop">Art and structures</div>
+     + <div class="button clickDrop">People and places</div>
+     + <div class="button clickDrop">Money and jobs</div>
+     + <div class="button clickDrop">Farming and food</div>
+     + <div class="button clickDrop">Nature and environment</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=porta-2007-is-a-pu
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=cheerful-young-cou
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=new-zealand-curren
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=male-farmer-carefu
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=kea-spotted-on-fio
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please place these side by side
+     + <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=boy-on-mountain-hike-sit
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+BLL253: identical 2 / changed 1
+  ~ BLL254_0_0.html: -1 +1
+     - <p><a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/IQBdugJ7nrKXSKYqZVhJh_7IAaTCNpvH0PE-O
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [data marker] outside an i
+  ~ BLL254_1_0.html: -1 +1
+     - <th><b>[Audio]</b></th>
+     + <th> [Audio] </th>
+  ~ BLL254_2_0.html: -1 +1
+     - <th><b>[Audio]</b></th>
+     + <th> [Audio] </th>
+BLL254: identical 0 / changed 3
+  ~ BLL262_1_0.html: -0 +2
+     + <p>[Embed] Staying afloat, Junior Journal 54</p>
+     + <p>[Image] from page 7, Staying Afloat, Junior Journal 54 . A copy of the link can be found here</p>
+  ~ BLL262_3_0.html: -0 +1
+     + <p>[image] insert the front cover of the text, White Bait season (without any text). A copy of the PDF can be 
+BLL262: identical 1 / changed 2
+  ~ BLL263_3_0.html: -0 +1
+     + <p>[image] insert the front cover of the text, Helpful (without any text or title). A link to the website can 
+BLL263: identical 2 / changed 1
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+  ~ CEDK102_0_0.html: -0 +1
+     + <p>[Image] Please could these shapes be created a variety of colours and sizes (possibly3 different sizes each
+CEDK102: identical 0 / changed 1
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+  ~ CEDO105_4_0.html: -0 +1
+     + <p>Images 1-5 are the correct answers. Images 1-8 should all be available to ākonga for selection, but 6-8 are
+CEDO105: identical 5 / changed 1
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+  ~ CEDO501_6_0.html: -0 +4
+     + <p>[Image 1] Wikimedia Commons. Google Chrome logo. <a href="https://commons.wikimedia.org/wiki/Google_Chrome"
+     + <p>[Image 2 ] Wikimedia Commons. Bing logo. <a href="https://commons.wikimedia.org/wiki/File:Bing_logo.svg" ta
+     + <p>[Image 3] Wikimedia Commons. Safari browser logo. <a href="https://commons.wikimedia.org/wiki/File:Safari_b
+     + <p>[Image 4] Wikimedia Commons. Yahoo logo. <a href="https://commons.wikimedia.org/wiki/File:Yahoo!_(2019).svg
+CEDO501: identical 15 / changed 1
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+  ~ CEDR204_0_0.html: -0 +1
+     + <p>Can you work your creative magic on this to make it look cool! [Table]</p>
+CEDR204: identical 0 / changed 1
+CEDR301: identical 1 / changed 0
+  ~ CEDR302_0_0.html: -0 +2
+     + <p>[H2] What do I know?</p>
+     + <p>[URL: to guide online]</p>
+CEDR302: identical 0 / changed 1
+  ~ CEDR501_3_0.html: -0 +1
+     + <p>[Video: YouTube: 3.13 – 2.00: 3 note-taking methods]: <a href="https://www.youtube.com/watch?v=uy6Eu5l0yOk"
+CEDR501: identical 10 / changed 1
+CEDT101: identical 1 / changed 0
+  ~ CEDT104_0_0.html: -1 +1
+     - <div class="button audioButton">Go to your journal</div>
+     + <div class="button audioButton"></div>
+CEDT104: identical 0 / changed 1
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+  ~ CEDT501_2_0.html: -0 +1
+     + <p>[Image] iStock; Mobile phone users.</p>
+  ~ CEDT501_8_0.html: -0 +1
+     + <p>[Image] iStock: Local Samoan enjoying their day with music and handcraft. stock photo (<a href="https://www
+CEDT501: identical 13 / changed 2
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+  ~ ENFUN01_0_0.html: -1 +1
+     - <div class="button audioButton">Go to your journal</div>
+     + <div class="button audioButton"></div>
+ENFUN01: identical 0 / changed 1
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+  ~ ENFUN08_0_0.html: -0 +1
+     + <p>Select the best word to end these sentences to fit the rhythm.</p>
+ENFUN08: identical 0 / changed 1
+ENFUN09: identical 1 / changed 0
+  ~ ENG1004_0_0.html: -0 +2
+     + <p>Activity – long answer MTK quiz, Kaiako marked</p>
+     + <p>[Button – ENG1004Y1] Please make this button different looking, red?</p>
+  ~ ENG1004_1_0.html: -0 +2
+     + <p>Activity – long answer MTK quiz, Kaiako marked</p>
+     + <p>[Button – ENG1004Y1] Please make this button different looking, red?</p>
+  ~ ENG1004_2_0.html: -0 +2
+     + <p>Activity – long answer MTK quiz, Kaiako marked</p>
+     + <p>[Button – ENG1004Y1] Please make this button different looking, red?</p>
+ENG1004: identical 5 / changed 3
+  ~ ENG1005_0_0.html: -0 +2
+     + <p>Activity – long answer MTK quiz, Kaiako marked</p>
+     + <p>[Button – ENG1005Y1] Please make this button different looking, red?</p>
+  ~ ENG1005_1_0.html: -0 +1
+     + <p>Activity – long answer MTK quiz, Kaiako marked</p>
+ENG1005: identical 4 / changed 2
+ENG1007: identical 1 / changed 0
+  ~ ENGC101_4_0.html: -1 +20
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop words: angry / excited 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGC101-04-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop words: angry / excited 
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dragAndDrop — Activity 4B — see ENG
+     + <div style="font-size: 0.95em">
+     + <p>[Source image: angry person]</p>
+     + <p>[Source image: excited person]</p>
+     + <p>[Source image: bored person]</p>
+     + <p>[Source image: confused person]</p>
+     + <p>[Source image: scared person]</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+ENGC101: identical 5 / changed 1
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+  ~ ENGI101_1_1.html: -0 +1
+     + <p>[button] Go to journal.</p>
+ENGI101: identical 3 / changed 1
+  ~ ENGI102_8_0.html: -0 +1
+     + <p>[Image] A cartoon congratulations style badge</p>
+ENGI102: identical 6 / changed 1
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+  ~ ENGI405_1_0.html: -0 +1
+     + <p>edit image by adding HAS A MOP as in snip]</p>
+  ~ ENGI405_3_0.html: -0 +1
+     + <p>under PEER paragraph]</p>
+  ~ ENGI405_5_0.html: -0 +1
+     + <p>[Button] Go to journal</p>
+ENGI405: identical 5 / changed 3
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+  ~ ENGJ201_2_0.html: -0 +1
+     + <p>[table] (images taken from reorder interactive 10 Online @ Te Kura)</p>
+ENGJ201: identical 6 / changed 1
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+  ~ ENGJ402_0_0.html: -0 +1
+     + <p>[image] close up of basket with one person holding one handle and another person holding the other handle.<
+  ~ ENGJ402_1_0.html: -0 +10
+     + <p>[image right] Image of ancient Greek and Roman poets</p>
+     + <p>[image embedded to the left with text to the right] Shakespeare</p>
+     + <p>[Embed video] edit to start playing from 1:05 minutes- <a href="https://www.youtube.com/watch?v=t_X1dbO-quI
+     + <p>[imbed video] edit to start playing at :53 minutes. Edit to finish playing at 2:09 minutes – <a href="https
+     + <p>[image embedded to the right with text to the left] Image William Wordsworth and/or John Keats</p>
+     + <p>[imbed video] <a href="https://www.youtube.com/watch?v=S1KH60CenMM" target="_blank">https://www.youtube.com
+     + <p>[image embedded to the left with text to the right] Maya Angelou</p>
+     + <p>[image embedded to the right with text to the left] Katherine Mansfield</p>
+     + <p>[embed video] <a href="https://www.youtube.com/watch?v=JBiSXcop28M" target="_blank">https://www.youtube.com
+     + <p>[image embedded to the left with text to the right] Hera Lindsay Bird and/or Courtney Sina Meredith</p>
+  ~ ENGJ402_3_0.html: -0 +4
+     + <p>[imbed video] Edit to finish at 1:02 minutes <a href="https://www.youtube.com/watch?v=Wzbro1tDuuA" target="
+     + <p>[imbed video] Edit to start at 0:14 seconds <a href="https://www.youtube.com/watch?v=YLkcR9UR9us" target="_
+     + <p>[1] [image of American poet Claude McKay and H5] White House by American poet Claude McKay</p>
+     + <p>[2] [image of American poet Claude McKay and H5] White House by American poet Claude McKay</p>
+ENGJ402: identical 6 / changed 3
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+  ~ ENGR102_2_0.html: -0 +1
+     + <p>[Image]CS please make speech bubble connected to the character</p>
+  ~ ENGR102_3_0.html: -0 +1
+     + <p>[Image]CS please make speech bubble connected to the character</p>
+  ~ ENGR102_4_0.html: -0 +1
+     + <p>[Image]CS please make speech bubble connected to the character</p>
+  ~ ENGR102_5_0.html: -0 +2
+     + <p>Can you sort these letters into vowels and consonants?</p>
+     + <p>[Image]CS please make speech bubble connected to the character</p>
+  ~ ENGR102_6_0.html: -0 +1
+     + <p>[Image]CS please make speech bubble connected to the character</p>
+ENGR102: identical 2 / changed 5
+  ~ ENGR201_3_0.html: -1 +1
+     - <div class="button audioButton">Go to your journal</div>
+     + <div class="button audioButton"></div>
+  ~ ENGR201_4_0.html: -1 +1
+     - <div class="button audioButton">Go to your journal</div>
+     + <div class="button audioButton"></div>
+  ~ ENGR201_5_0.html: -1 +1
+     - <div class="button audioButton">Go to your journal</div>
+     + <div class="button audioButton"></div>
+ENGR201: identical 4 / changed 3
+  ~ ENGR202_1_0.html: -0 +1
+     + <p>If not possible: Could use Polypad and take a screenshot of the final image Polypad – Virtual Manipulatives
+ENGR202: identical 7 / changed 1
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+  ~ ENGS202_3_0.html: -0 +1
+     + <p>[Audio Player] Add audio button also found at this site</p>
+ENGS202: identical 6 / changed 1
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+  ~ ENGS401_1_0.html: -0 +1
+     + <p>[table] (just screen snips for these images)</p>
+ENGS401: identical 6 / changed 1
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 461 / changed 60 / missing 0 over 104 modules
+CHANGED: BLL237/BLL237_1_0.html BLL240/BLL240_1_1.html BLL240/BLL240_1_2.html BLL240/BLL240_1_3.html BLL240/BLL240_1_4.html BLL240/BLL240_1_5.html BLL240/BLL240_1_6.html BLL240/BLL240_1_7.html BLL241/BLL241_1_0.html BLL241/BLL241_2_0.html BLL242/BLL242_1_0.html BLL245/BLL245_2_0.html BLL251/BLL251_0_0.html BLL251/BLL251_1_0.html BLL252/BLL252_1_0.html BLL252/BLL252_2_0.html BLL253/BLL253_2_0.html BLL254/BLL254_0_0.html BLL254/BLL254_1_0.html BLL254/BLL254_2_0.html BLL262/BLL262_1_0.html BLL262/BLL262_3_0.html BLL263/BLL263_3_0.html CEDK102/CEDK102_0_0.html CEDO105/CEDO105_4_0.html CEDO501/CEDO501_6_0.html CEDR204/CEDR204_0_0.html CEDR302/CEDR302_0_0.html CEDR501/CEDR501_3_0.html CEDT104/CEDT104_0_0.html CEDT501/CEDT501_2_0.html CEDT501/CEDT501_8_0.html ENFUN01/ENFUN01_0_0.html ENFUN08/ENFUN08_0_0.html ENG1004/ENG1004_0_0.html ENG1004/ENG1004_1_0.html ENG1004/ENG1004_2_0.html ENG1005/ENG1005_0_0.html ENG1005/ENG1005_1_0.html ENGC101/ENGC101_4_0.html ENGI101/ENGI101_1_1.html ENGI102/ENGI102_8_0.html ENGI405/ENGI405_1_0.html ENGI405/ENGI405_3_0.html ENGI405/ENGI405_5_0.html ENGJ201/ENGJ201_2_0.html ENGJ402/ENGJ402_0_0.html ENGJ402/ENGJ402_1_0.html ENGJ402/ENGJ402_3_0.html ENGR102/ENGR102_2_0.html ENGR102/ENGR102_3_0.html ENGR102/ENGR102_4_0.html ENGR102/ENGR102_5_0.html ENGR102/ENGR102_6_0.html ENGR201/ENGR201_3_0.html ENGR201/ENGR201_4_0.html ENGR201/ENGR201_5_0.html ENGR202/ENGR202_1_0.html ENGS202/ENGS202_3_0.html ENGS401/ENGS401_1_0.html

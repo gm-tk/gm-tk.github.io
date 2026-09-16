@@ -1,0 +1,799 @@
+  ~ AGH1001_5_0.html: -0 +1
+     + <p>[Images] Carousel with description underneath.</p>
+AGH1001: identical 5 / changed 1
+AGH1002: identical 7 / changed 0
+AGH1003: identical 9 / changed 0
+  ~ AGH1004_2_0.html: -0 +1
+     + <p>[Button] Complete activity 2A in your learning journal</p>
+  ~ AGH1004_3_0.html: -0 +1
+     + <p>[Button] Complete activity 3A in your learning journal.</p>
+  ~ AGH1004_4_0.html: -0 +1
+     + <p>[Button] Complete activity 4A in your learning journal.</p>
+AGH1004: identical 4 / changed 3
+  ~ AGH1005_1_0.html: -0 +1
+     + <p>[Button] Complete activity 1A in your learning journal.</p>
+  ~ AGH1005_7_0.html: -0 +1
+     + <p>[Button] Complete activity 7A in your learning journal</p>
+  ~ AGH1005_8_0.html: -0 +1
+     + <p>[Button] Complete activity 8A in your learning journal.</p>
+AGH1005: identical 6 / changed 3
+  ~ AGH1006_2_0.html: -0 +1
+     + <p>[Button] Complete activity 2B in your learning journal.</p>
+  ~ AGH1006_8_0.html: -0 +1
+     + <p>[H3] Pests</p>
+AGH1006: identical 8 / changed 2
+AGH1007: identical 10 / changed 0
+AGH1008: identical 10 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH105: identical 8 / changed 0
+  ~ ANZH203_3_0.html: -0 +1
+     + <p>[Add button] Go to journal</p>
+  ~ ANZH203_4_0.html: -0 +1
+     + <p>[Add buttons] Check answer button and reset button</p>
+ANZH203: identical 5 / changed 2
+ANZH205: identical 7 / changed 0
+  ~ ANZH301_3_0.html: -0 +2
+     + <p>[Add buttons] Check answer and reset.</p>
+     + <p>[Add button] Go to journal.</p>
+  ~ ANZH301_5_0.html: -0 +1
+     + <p>[Add button] Go to journal.</p>
+  ~ ANZH301_6_0.html: -0 +1
+     + <p>[Add button] Go to journal.</p>
+  ~ ANZH301_9_0.html: -0 +1
+     + <p>[Add button] Go to journal.</p>
+  ~ ANZH301_10_0.html: -0 +1
+     + <p>[Add button] Go to journal.</p>
+ANZH301: identical 6 / changed 5
+ANZH303: identical 7 / changed 0
+  ~ ANZH304_3_0.html: -0 +1
+     + <p>[Add buttons] Check answer and reset button.</p>
+  ~ ANZH304_6_0.html: -0 +1
+     + <p>[Button: Written Source]</p>
+ANZH304: identical 5 / changed 2
+ANZH401: identical 14 / changed 0
+ANZH404: identical 7 / changed 0
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+  ~ ARFUN03_0_0.html: -0 +1
+     + <p>[H3] Give it a try: Beat and Rhythm</p>
+ARFUN03: identical 0 / changed 1
+  ~ ARFUN04_0_0.html: -0 +1
+     + <p>[H3] Give it a try</p>
+ARFUN04: identical 0 / changed 1
+  ~ ARFUN05_0_0.html: -0 +2
+     + <p>[H3: Tension]</p>
+     + <p>[Hover on drama techniques: Voice, body, movement, space.]</p>
+ARFUN05: identical 0 / changed 1
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+  ~ BLL113_1_0.html: -0 +2
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <p>[Embed Book 2] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL113: identical 2 / changed 1
+  ~ BLL114_1_0.html: -2 +2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: udio will need to be snipped for each
+     - <p>[audio of instructions] - A</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Is it possible to have a self check c
+     + <p>[audio of instructions] - Audio will need to be snipped for each instruction to allow ākonga to find the co
+  ~ BLL114_2_0.html: -10 +22
+     - <p>[audio]</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL114-02-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 2B — see BLL1
+     - <p>When you have made a correct word, can you tell your supervisor a sentence that has that word in it? For ex
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Is it possible to snip each word in t
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>snap, pips, pant, ants, spin, tips, sits, spit</p>
+     + <div class="activity interactive" number="2C">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL114-02-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity (inline) — se
+     + <div style="font-size: 0.95em">
+     + <p>When you have made a correct word, can you tell your supervisor a sentence that has that word in it? For ex
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + … 2 more added
+BLL114: identical 1 / changed 2
+  ~ BLL115_1_0.html: -3 +4
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Let’s start by making the word ‘pan’.
+     - <td>[audio]</td>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Let’s start by making the word ‘pan’. Now we are going to move one letter only. Moving one letter only, cha
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Great work. Now by moving one letter 
+     + <td> [audio] </td>
+  ~ BLL115_2_0.html: -3 +2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: can we attach the audio so when the ā
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: on how to write the letter]</p>
+     + <p>[audio] can we attach the audio so when the ākonga click or hover over them they say the word.</p>
+     + <audio preload="none" src="audio/d.mp4" class="audioPlayer icon" title=""></audio>
+BLL115: identical 1 / changed 2
+  ~ BLL116_1_0.html: -0 +1
+     + <p>[Embed Book 3] The story ‘Nat and Pat’ can be found -</p>
+BLL116: identical 2 / changed 1
+BLL117: identical 3 / changed 0
+  ~ BLL120_0_0.html: -0 +6
+     + <p>[Insert audio 1] Have a speaker underneath each word so that ākonga can listen to how the word is said. Cut
+     + <p>[Insert audio 12] This clip is of all of the words. Please snip so that each only the relevant word is play
+     + <p>[audio when clicked on the image}] – My name is ‘e’ and my sound is /e/ [insert audio 13]</p>
+     + <p>[audio when clicked on the image}] – My name is ‘e’ and my sound is /e/ [insert audio 13]</p>
+     + <p>[audio when clicked on the image] – My name is ‘h’ and my sound is /h/ [insert audio 17]</p>
+     + <p>[audio when clicked on the image] – My name is ‘r’ and my sound is /r/ [insert audio 19]</p>
+BLL120: identical 0 / changed 1
+BLL121: identical 3 / changed 0
+  ~ BLL122_1_0.html: -0 +1
+     + <p>[audio] task, hand, spin, camp</p>
+BLL122: identical 2 / changed 1
+  ~ BLL123_1_0.html: -0 +2
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <p>Answer: [This is the picture that ākonga will be able to make if they follow the instructions. Reveal at th
+BLL123: identical 2 / changed 1
+  ~ BLL124_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL124: identical 2 / changed 1
+BLL125: identical 3 / changed 0
+  ~ BLL126_1_0.html: -2 +4
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Let’s start by making the word ‘pack’
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Let’s start by making the word ‘pack’. Now we are going to move one letter only. Moving one letter only, ch
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Great work. Now by moving one letter 
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL126: identical 2 / changed 1
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+  ~ BLL131_1_0.html: -2 +3
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Let’s start by making the word ‘pet’.
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Let’s start by making the word ‘pet’. Now we are going to move only one letter. Moving one letter only, cha
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Great work. Now by moving one letter 
+BLL131: identical 2 / changed 1
+BLL132: identical 3 / changed 0
+  ~ BLL133_1_0.html: -0 +4
+     + <p>[audio button 1] audio 1 - frog, drip, snap, was, snack, man, plum, and.</p>
+     + <p>[audio button 2] audio 2 - plum, drip, snap, frog, snack, man, and, was.</p>
+     + <p>[audio button 3] audio 3 - snack, man, was, frog, snap, drip, and, plum.</p>
+     + <p>[audio button 4] audio 4 - and, drip, snap, was, man, plum, frog, snack.</p>
+BLL133: identical 2 / changed 1
+BLL134: identical 3 / changed 0
+  ~ BLL135_1_0.html: -1 +6
+     - <p>[audio] BLL135 Heart Words</p>
+     + <p>[audio button 1] - grub, runs, snap, was, stack, miss, legs, and.</p>
+     + <p>[audio button 2] - legs, runs, snap, grub, stack, miss, and, was.</p>
+     + <p>[audio button 3] - stack, miss, was, grub, snap, runs, and, legs.</p>
+     + <p>[audio button 4] - and, drip, runs, was, miss, legs, grub, stack.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>BLL135 Heart Words</p>
+BLL135: identical 2 / changed 1
+BLL136: identical 2 / changed 0
+  ~ BLL137_1_0.html: -1 +2
+     - <p>[audio] insect, laptop, basket, picnic, napkin, racket, helmet.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>insect, laptop, basket, picnic, napkin, racket, helmet.</p>
+  ~ BLL137_1_1.html: -1 +1
+     - <p>[audio]</p>
+     + <p>[audio] saw, last</p>
+BLL137: identical 1 / changed 2
+  ~ BLL140_0_0.html: -11 +25
+     - <p><a href="https://www.istockphoto.com/photo/flying-fighter-plane-on-white-background-gm471873473-27019676?se
+     - <p><a href="https://www.istockphoto.com/vector/incomplete-jigsaw-puzzle-gm1442727551-481959515?searchscope=ima
+     - <p><a href="https://www.istockphoto.com/photo/japanese-sea-nettle-chrysaora-pacifica-jellyfish-against-white-b
+     - <p><a href="https://www.istockphoto.com/vector/strawberry-jam-vector-isolated-illustration-gm1045492426-279786
+     - <p><a href="https://www.istockphoto.com/photo/warm-jacket-gm1317485585-404904154?searchscope=image%2Cfilm" tar
+     - <p><a href="https://www.istockphoto.com/photo/empty-glass-jar-on-a-white-gm509924370-86037003?searchscope=imag
+     - <p>[audio button] / j /</p>
+     - <p>Short vowels say their sound. [audio button]</p>
+     - <p>Long vowels say their name. <a href="https://drive.google.com/drive/u/0/folders/1lwQCcWPxwJO8PbBmrE2NhJd6nF
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: snail, paint, trail, stain, faint, tr
+     - <p><b>[audio]</b></p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-471873473" alt="Flying Fig
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-471873473.jpg" alt="Flying Fighter Plane on Whit
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1442727551" alt="Incomplet
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1442727551.jpg" alt="Incomplete Jigsaw Puzzle" /
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-943988896" alt="Japanese S
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-943988896.jpg" alt="Japanese Sea Nettle Chrysaor
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1045492426" alt="Strawberr
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1045492426.jpg" alt="Strawberry Jam Vector Isola
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1317485585" alt="Warm Jack
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1317485585.jpg" alt="Warm Jacket" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-509924370" alt="Empty Glas
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-509924370.jpg" alt="Empty Glass Jar on a White" 
+     + <div class="button audioButton">/ j /</div>
+     + <p>Short vowels say their sound.</p>
+     + <div class="button audioButton"></div>
+     + <p>Long vowels say their name.</p>
+     + <div class="button audioButton"></div>
+     + <p>snail, paint, trail, stain, faint, train</p>
+     + … 5 more added
+BLL140: identical 0 / changed 1
+  ~ BLL141_1_0.html: -4 +4
+     - <td>Ruru [audio]</td>
+     - <td>Huhu [audio]</td>
+     - <td>Tino pai [audio]</td>
+     - <p><b>[audio]</b></p>
+     + <td>Ruru [audio] </td>
+     + <td>Huhu [audio] </td>
+     + <td>Tino pai [audio] </td>
+     + <p>[audio] <a href="https://drive.google.com/drive/folders/1lwQCcWPxwJO8PbBmrE2NhJd6nFh1SN_C" target="_blank">
+BLL141: identical 2 / changed 1
+  ~ BLL142_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL142: identical 2 / changed 1
+  ~ BLL143_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL143_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL143: identical 1 / changed 2
+  ~ BLL144_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL144_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL144: identical 1 / changed 2
+  ~ BLL145_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL145: identical 2 / changed 1
+  ~ BLL146_1_0.html: -6 +11
+     - <p>[audio 1] Kim had a roast pork bun.</p>
+     - <p>[audio 2] The rain ran into the drain.</p>
+     - <p>[audio 3] Sam had to lock the padlock.</p>
+     - <p>[audio 4] They got pies, fries and toast as a snack.</p>
+     - <p>[audio 5] Jan got a red and green dress.</p>
+     - <p>[audio]</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Kim had a roast pork bun.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>The rain ran into the drain.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Sam had to lock the padlock.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>They got pies, fries and toast as a snack.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Jan got a red and green dress.</p>
+     + <p>[audio] <a href="https://drive.google.com/drive/folders/1lwQCcWPxwJO8PbBmrE2NhJd6nFh1SN_C" target="_blank">
+BLL146: identical 2 / changed 1
+  ~ BLL147_1_0.html: -0 +5
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <p>[audio button 1] audio 1 - list, pocket, forgot, drop, jacket, coffee, cross, lost, grab, green, help</p>
+     + <p>[audio button 2] audio 1 - help, grab, green, jacket, lost, drop, coffee, cross, forgot, pocket, list</p>
+     + <p>[audio button 3] audio 1 - coffee, lost, drop, help, pocket, cross, grab, jacket, green, forgot, list</p>
+     + <p>[audio button 4] audio 1 -cross, help, forgot, grab, green, coffee, drop, jacket, list, lost, pocket</p>
+  ~ BLL147_1_1.html: -0 +2
+     + <p>Example Answer: [This is the picture that ākonga will be able to make if they follow the instructions. Reve
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL147: identical 1 / changed 2
+  ~ BLL150_0_0.html: -34 +77
+     - <p><a href="https://www.istockphoto.com/vector/white-texture-number-zero-gm529099057-53855218?searchscope=imag
+     - <p><a href="https://www.istockphoto.com/photo/fresh-whole-and-sliced-zucchini-isolated-on-white-background-fro
+     - <p><a href="https://www.istockphoto.com/vector/zipper-isolated-on-white-background-gm466054400-59875512?search
+     - <p><a href="https://www.istockphoto.com/photo/a-zebra-shown-on-a-white-background-gm93212633-4797385?searchsco
+     - <p><a href="https://www.istockphoto.com/vector/zig-zag-shape-line-pattern-shape-element-black-zig-zag-gm133209
+     - <p><a href="https://www.istockphoto.com/photo/photography-camera-lens-concept-gm843408508-137841255?searchscop
+     - <p>[audio button] / z /</p>
+     - <p><a href="https://www.istockphoto.com/photo/whale-isolated-gm1157425909-315819852" target="_blank">https://w
+     - <p><a href="https://www.istockphoto.com/photo/sunsplashed-window-gm92450205-873482" target="_blank">https://ww
+     - <p><a href="https://www.istockphoto.com/photo/close-up-portrait-of-nice-cute-lovely-attractive-positive-cheerf
+     - <p><a href="https://www.istockphoto.com/photo/purse-with-money-gm90696338-1268338" target="_blank">https://www
+     - <p><a href="https://www.istockphoto.com/photo/flying-wasp-gm183843858-16538821" target="_blank">https://www.is
+     - <p><a href="https://www.istockphoto.com/photo/silver-whistle-gm544977460-98074341" target="_blank">https://www
+     - <p>[audio button] / w /</p>
+     - <p><a href="https://www.istockphoto.com/photo/violin-gm1442722900-481956550" target="_blank">https://www.istoc
+     - <p><a href="https://www.istockphoto.com/photo/fresh-fruits-and-vegetables-gm589415708-101211749" target="_blan
+     - <p><a href="https://www.istockphoto.com/photo/fuego-volcano-eruption-gm858018608-141555927" target="_blank">ht
+     - <p><a href="https://www.istockphoto.com/photo/porcelain-gm691762484-127601367" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/ice-cream-gm948032164-258841174" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/isolated-white-van-transporter-ready-for-branding-gm1491677620-5
+     - <p>[audio button] / v /</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="BLL150-00-11" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="BLL150-00-12" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="BLL150-00-13" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="BLL150-00-14" style="border: 8px so
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Look, wood, foot, book, hood, (please
+     - <p><b>[audio]</b></p>
+     - <p><b>[audio]</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="BLL150-00-15" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-529099057" alt="White Text
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-529099057.jpg" alt="White Texture Number Zero" /
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1149201983" alt="Fresh Who
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1149201983.jpg" alt="Fresh Whole and Sliced Zucc
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-466054400" alt="Zipper Iso
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-466054400.jpg" alt="Zipper Isolated on White Bac
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-93212633" alt="A Zebra Sho
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-93212633.jpg" alt="A Zebra Shown on a White Back
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1332098559" alt="Zig Zag S
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1332098559.jpg" alt="Zig Zag Shape Line Pattern 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-843408508" alt="Photograph
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-843408508.jpg" alt="Photography Camera Lens Conc
+     + <div class="button audioButton">/ z /</div>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1157425909" alt="Whale Iso
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1157425909.jpg" alt="Whale Isolated" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-92450205" alt="Sunsplashed
+     + … 57 more added
+BLL150: identical 0 / changed 1
+  ~ BLL151_1_0.html: -2 +2
+     - <p>[Audio] l</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ooking, stands, waiting, jumps, stand
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>looking, stands, waiting, jumps, standing, singing, sleeps, cooking.</p>
+  ~ BLL151_2_0.html: -1 +2
+     - <p><a href="https://drive.google.com/drive/folders/1nTSU8nhzlzXMoRxn1fyW-FF7PUd73C7F" target="_blank">[audio]<
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>said</p>
+BLL151: identical 1 / changed 2
+  ~ BLL152_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL152_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL152: identical 1 / changed 2
+  ~ BLL153_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL153_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL153: identical 1 / changed 2
+  ~ BLL154_1_0.html: -1 +2
+     - <td>[audio] stood</td>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <td> [audio] stood</td>
+  ~ BLL154_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL154: identical 1 / changed 2
+  ~ BLL155_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL155_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL155: identical 1 / changed 2
+  ~ BLL156_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL156_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL156: identical 1 / changed 2
+  ~ BLL157_1_0.html: -2 +2
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: floss, less, buzz, hiss, huff, fill, 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>floss, less, buzz, hiss, huff, fill, doll, tell, sell, fluff, frizz, puff,</p>
+  ~ BLL157_1_1.html: -1 +2
+     - <p><a href="https://drive.google.com/drive/folders/1nTSU8nhzlzXMoRxn1fyW-FF7PUd73C7F" target="_blank">[audio]<
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL157: identical 1 / changed 2
+  ~ BLL160_0_0.html: -24 +40
+     - <p><a href="https://www.istockphoto.com/photo/red-yams-gm1726513477-541347429" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/blot-of-yellow-water-color-on-white-background-gm154448997-20055
+     - <p><a href="https://www.istockphoto.com/photo/empty-backyard-with-green-grass-and-wood-fence-gm1461669465-4955
+     - <p><a href="https://www.istockphoto.com/photo/boy-is-stretching-and-yawning-gm525737237-52154062" target="_bla
+     - <p><a href="https://www.istockphoto.com/photo/red-yoyo-gm1263471487-369831562" target="_blank">https://www.ist
+     - <p><a href="https://www.istockphoto.com/photo/raw-egg-yolk-gm517542714-89544969" target="_blank">https://www.i
+     - <p>[audio button] /y /</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel — Activity 1A — see BLL160_
+     - <p><a href="https://www.istockphoto.com/photo/open-box-gm158164669-22374917" target="_blank">https://www.istoc
+     - <p><a href="https://www.istockphoto.com/vector/one-whisk-and-one-mixing-bowl-gm1329299626-413079387" target="_
+     - <p><a href="https://www.istockphoto.com/vector/axe-game-design-ui-element-flat-style-vector-illustration-gm197
+     - <p><a href="https://www.istockphoto.com/photo/plastic-number-six-gm1497550210-519885194" target="_blank">https
+     - <p>[audio button] / x /</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: shot, ship, rash, shop, wish, shed, f
+     - <p><b>[audio]</b></p>
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: such, rich, chat, chin, inch, chum, m
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: this, that, them, than (please note t
+     - <p><b>[audio]</b></p>
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1726513477" alt="Red Yams"
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1726513477.jpg" alt="Red Yams" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-154448997" alt="Blot of Ye
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-154448997.jpg" alt="Blot of Yellow Water Color o
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-154448997" alt="Blot of Ye
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-154448997.jpg" alt="Blot of Yellow Water Color o
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-525737237" alt="Boy Is Str
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-525737237.jpg" alt="Boy Is Stretching and Yawnin
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1263471487" alt="Red Yoyo"
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1263471487.jpg" alt="Red Yoyo" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-517542714" alt="Raw Egg Yo
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-517542714.jpg" alt="Raw Egg Yolk" /> -->
+     + <div class="button audioButton">/y /</div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel — Activity (inline) — see B
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-158164669" alt="Open Box" 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-158164669.jpg" alt="Open Box" /> -->
+     + … 20 more added
+BLL160: identical 0 / changed 1
+  ~ BLL161_1_0.html: -1 +1
+     - <th>[Audio] stack </th>
+     + <th> [Audio] stack </th>
+  ~ BLL161_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL161: identical 1 / changed 2
+  ~ BLL162_1_0.html: -2 +3
+     - <p>[Audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (the name in the audio folder is BLL1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>(the name in the audio folder is BLL162 middle sounds)</p>
+  ~ BLL162_1_1.html: -2 +3
+     - <p><a href="https://drive.google.com/drive/folders/1wxp9lx45pBuLZq8wRQzoiwYw7VmL4tMV" target="_blank">[audio 1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: lemons, apples, onions, bread, eggs</
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <p>lemons, apples, onions, bread, eggs</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL162: identical 1 / changed 2
+  ~ BLL163_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL163_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL163: identical 1 / changed 2
+  ~ BLL164_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL164_1_1.html: -0 +6
+     + <p>POP [source image of a someone popping a balloon]</p>
+     + <p>Bang [source image of a door slamming]</p>
+     + <p>Drip [source image of a tap dripping]</p>
+     + <p>Buzz [source image of a bumble bee]</p>
+     + <p>Hiss [source image of a snake]</p>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL164: identical 1 / changed 2
+  ~ BLL165_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL165_1_1.html: -0 +2
+     + <p>Example Answer: [This is the picture that ākonga will be able to make if they follow the instructions. Reve
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL165: identical 1 / changed 2
+  ~ BLL166_1_0.html: -1 +17
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL166-01-04" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 1C — see BLL1
+     + <div style="font-size: 0.95em">
+     + <p>[audio] spoon, moons, trash, lunch, shiny, green, rainy, sleep, munch, drain</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLL166_1_1.html: -2 +3
+     - <p><a href="https://drive.google.com/drive/folders/1wxp9lx45pBuLZq8wRQzoiwYw7VmL4tMV" target="_blank">[audio]<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: who, down, little</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>who, down, little</p>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL166: identical 1 / changed 2
+  ~ BLL167_1_1.html: -1 +2
+     - <th> Can we include the text (name of the bird) and an audio of the name as well so they have the option of bo
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <th> Can we include the text (name of the bird) and an audio of the name as well so they have the option of bo
+BLL167: identical 2 / changed 1
+  ~ BLL170_0_0.html: -10 +10
+     - <p>[audio button] / q /</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: about, sound, flour, proud, spout, ro
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: spoil, joint, coins, point, moist, av
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: blue, glue, true, duet, clue, fuel<br
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: mixer, tiger, boxer, after, germs, ne
+     - <p><b>[audio]</b></p>
+     - <p><b>[audio]</b> a</p>
+     + <div class="button audioButton">/ q /</div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio] about, sound, flour, proud, spout, round, cloud</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio] spoil, joint, coins, point, moist, avoid, boils</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio] blue, glue, true, duet, clue, fuel</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio] mixer, tiger, boxer, after, germs, never, paper, river, timer</p>
+     + <p>a</p>
+BLL170: identical 0 / changed 1
+  ~ BLL171_1_0.html: -1 +1
+     - <p><b>[audio]</b></p>
+     + <p>[audio] <a href="https://drive.google.com/drive/folders/1AwyGCiFBQshTmJ8DrfXFpD_hMDnha8RJ" target="_blank">
+BLL171: identical 2 / changed 1
+  ~ BLL172_1_0.html: -2 +2
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: onto, they, want - can we have the au
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>onto, they, want - can we have the audio attached to each word please.</p>
+BLL172: identical 2 / changed 1
+  ~ BLL173_1_0.html: -0 +2
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <p>Example Answer: [This is the picture that ākonga will be able to make if they follow the instructions. Reve
+  ~ BLL173_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL173: identical 1 / changed 2
+  ~ BLL174_1_0.html: -2 +3
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: please snip accordingly.<br />Order 1
+     - <p>[audio 1]</p>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Order 1: sweeps, rescue, tinkling, cl
+     + <p>[audio 1] please snip accordingly.</p>
+  ~ BLL174_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL174: identical 1 / changed 2
+  ~ BLL175_1_0.html: -0 +2
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <p>please make this activity like activity 1a from this module</p>
+  ~ BLL175_1_1.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL175: identical 2 / changed 2
+  ~ BLL176_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL176_1_1.html: -2 +3
+     - <p>[audio 2]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: which, going, your - can we have the 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>which, going, your - can we have the audio attached to each word please. Can you change these words to whic
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL176: identical 1 / changed 2
+  ~ BLL177_1_0.html: -2 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: grain, apart, stair, drain, sharp, sn
+     - <p><b>[audio]</b></p>
+     + <p>[audio] grain, apart, stair, drain, sharp, snail, start, carts</p>
+BLL177: identical 2 / changed 1
+  ~ BLL210_0_0.html: -27 +24
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: cry, dry, fly, sty, fry, spy<br />Jus
+     - <p><b>[audio 1]</b></p>
+     - <p><b>[audio 2]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: happy, funny, puppy, jelly, bunny, ca
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     - <p>Short vowels say their sound. [audio button]</p>
+     - <p>Long vowels say their name. [audio button]</p>
+     - <p><b>[audio]</b> g</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: scene, theme, Steve, these<br />Just 
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: bike, lime, mine, rice, kite, mice, n
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: joke, zone, coke, bone, home, nose, c
+     - <p><b>[audio]</b></p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: cube, rude, tune, huge, cute, dude, m
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio 1] cry, dry, fly, sty, fry, spy</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>happy, funny, puppy, jelly, bunny, carry</p>
+     + <p>[audio] Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <p>Short vowels say their sound.</p>
+     + <div class="button audioButton">Short vowels say their sound – /a/ /e/ /i/ /o/ /u/</div>
+     + <p>Long vowels say their name.</p>
+     + <div class="button audioButton"></div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Long vowels say their name – /ā/ /ē/ 
+     + <p>g</p>
+     + <p>[audio] Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio] scene, theme, Steve, these</p>
+     + <p>[audio] Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio] bike, lime, mine, rice, kite, mice, nine, size, five, ride</p>
+     + <p>[audio] Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Just note the repeats of letters plea
+     + <p>[audio] joke, zone, coke, bone, home, nose, cone, rode</p>
+     + … 4 more added
+BLL210: identical 0 / changed 1
+  ~ BLL211_1_0.html: -2 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: shake, these, shave, chain, shape, ch
+     - <p><b>[audio]</b></p>
+     + <p>[audio] shake, these, shave, chain, shape, chair, theme</p>
+BLL211: identical 2 / changed 1
+  ~ BLL212_1_0.html: -3 +4
+     - <p><b><a href="https://mytekuraschool-my.sharepoint.com/:w:/g/personal/shelley_haua_tekura_school_nz/Eak4OktPO
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: look, book, shook (only 3 tiles neede
+     - <p><b>[audio 3]</b></p>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>look, book, shook (only 3 tiles needed) wave, wade shade, shape (4 tiles needed) ship, dip, dish (only 3 ti
+  ~ BLL212_2_0.html: -2 +4
+     - <div class="activity interactive" number="2A">
+     - <p>[audio 4]</p>
+     + <div class="activity" number="2A">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: You can also find a pdf of the book o
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>snip accordingly into two different recordings - 1 to go with slide 4, and the other to go with slide 5.</p
+BLL212: identical 1 / changed 2
+  ~ BLL213_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL213: identical 2 / changed 1
+  ~ BLL214_1_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL214: identical 2 / changed 1
+  ~ BLL215_2_0.html: -2 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create flip cards that open fo
+     - <p>[audio]</p>
+     + <p>[audio] Can we create flip cards that open for 3 seconds and then flip back again?</p>
+BLL215: identical 2 / changed 1
+BLL216: identical 3 / changed 0
+  ~ BLL217_1_0.html: -1 +6
+     - <p><b>[audio]</b> crane, above, glove, slate, bride, drive, blame, stove</p>
+     + <p>crane, above, glove, slate, bride, drive, blame, stove</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + </div>
+     + </div>
+BLL217: identical 2 / changed 1
+  ~ BLL220_0_0.html: -17 +25
+     - <p>[audio]</p>
+     - <p>[audios]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: boy, toy, soy, coy,</p>
+     - <p>[audio 1]</p>
+     - <p>[audios] coins, foil, oil, boil, boy, joy, destroy, toy</p>
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: rail, pain, tail, sail, rain, mail, n
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dragAndDrop + dragAndDrop + dragAnd
+     - <p>[audio] snake, flake, games, grape, state, plane</p>
+     - <p>[audio]</p>
+     - <p>[audio] beach, peach, peaks, jeans, teach, beats</p>
+     - <p>[audio] peels, sweep, creep, trees, creek, steep</p>
+     - <p>[audio] jockey, monkey, hockey, kidney</p>
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: night, fight, light, tight sight, mig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: dragAndDrop + dragAndDrop — Activit
+     - <p>[audio]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make something like this pleas
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [audios]</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>boy, toy, soy, coy,</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [audios]</p>
+     + <p>coins, foil, oil, boil, boy, joy, destroy, toy</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>may, say, bay, pay, day, hay</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dragAndDrop + dragAndDrop + dragAnd
+     + <p>[audio] rail, pain, tail, sail, rain, mail, nail</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>snake, flake, games, grape, state, plane</p>
+     + <p>beach, peach, peaks, jeans, teach, beats</p>
+     + <p>peels, sweep, creep, trees, creek, steep</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>jockey, monkey, hockey, kidney</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>night, fight, light, tight sight, might, right</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: dragAndDrop + dragAndDrop — Activit
+     + … 5 more added
+BLL220: identical 0 / changed 1
+  ~ BLL221_2_0.html: -2 +2
+     - <td>Ruru [audio]</td>
+     - <td>Haere rā [audio]</td>
+     + <td>Ruru [audio] </td>
+     + <td>Haere rā [audio] </td>
+BLL221: identical 2 / changed 1
+  ~ BLL222_1_0.html: -5 +11
+     - <p>[audio 1] helicopter. hel - i - cop - ter. The helicopter landed in the paddock. Helicopter.</p>
+     - <p>[audio 2] understand. un - der - stand . I do not understand. Understand.</p>
+     - <p>[audio 3] medicine. med - i - cine. The boy took some medicine for his cough. Medicine.</p>
+     - <p>[audio 4] decorate. Dec - or - ate. Mum decided to decorate my room. Decorate.</p>
+     - <p>[audio 5] irritating. Ir - ri - ta - ting. Sometimes my little brother is irritating. Irritating</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>helicopter. hel - i - cop - ter. The helicopter landed in the paddock. Helicopter.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>understand. un - der - stand . I do not understand. Understand.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>medicine. med - i - cine. The boy took some medicine for his cough. Medicine.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>decorate. Dec - or - ate. Mum decided to decorate my room. Decorate.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>irritating. Ir - ri - ta - ting. Sometimes my little brother is irritating. Irritating</p>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL222_2_0.html: -1 +2
+     - <p>[audio]</p>
+     + <p>[audio] <a href="https://drive.google.com/drive/folders/1ogu4MAX5tsf3ZQh1Y4JkyBp2nxSPJNJR" target="_blank">
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL222: identical 1 / changed 2
+  ~ BLL223_1_0.html: -2 +2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make this activity like BLL154
+     - <p>[audios]</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make this activity like BLL154
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+  ~ BLL223_2_0.html: -1 +2
+     - <th>[audios] I spy with my little eye something beginning with /b/ </th>
+     + <th> [audios] I spy with my little eye something beginning with /b/ </th>
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL223: identical 1 / changed 2
+  ~ BLL224_2_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL224: identical 2 / changed 1
+  ~ BLL225_2_0.html: -0 +1
+     + <p>[embed book 1] Are we able to embed just the story into the module, not the other ‘stuff’. Also is it possi
+BLL225: identical 2 / changed 1
+BLL226: identical 3 / changed 0
+  ~ BLL227_1_0.html: -5 +10
+     - <p>[audio 1] October Oc-to-ber October is the 10th month of the year. October</p>
+     - <p>[audio 2] afternoon. af-ter-noon . I enjoyed my afternoon tea. afternoon.</p>
+     - <p>[audio 3] computer. com-pu-ter. I did my work on my computer. com-pu-ter.</p>
+     - <p>[audio 4] lemonade. lem-on-ade. I like drinking lemonade. lemonade.</p>
+     - <p>[audio 5] decide. de-cide. I can’t decide what to have for lunch. decide.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>October Oc-to-ber October is the 10th month of the year. October</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>afternoon. af-ter-noon . I enjoyed my afternoon tea. afternoon.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>computer. com-pu-ter. I did my work on my computer. com-pu-ter.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>lemonade. lem-on-ade. I like drinking lemonade. lemonade.</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>decide. de-cide. I can’t decide what to have for lunch. decide.</p>
+BLL227: identical 2 / changed 1
+  ~ BLL230_0_0.html: -8 +12
+     - <p>[audio]</p>
+     - <p><a href="https://www.istockphoto.com/vector/rainbow-illustration-classic-design-gm510844740-86409811" targe
+     - <p>[audio]</p>
+     - <p><a href="https://www.istockphoto.com/photo/cute-cow-isolated-on-white-black-mottled-gentle-surprised-look-p
+     - <p>[audio]</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: girl, shirt, third, bird, dirt, birth
+     - <p>[audio]</p>
+     - <p><a href="https://drive.google.com/drive/u/0/folders/1Ynp8FNQnOhdb41VvRLE3sDYx2_d_Q_Dd" target="_blank">[aud
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make something like this pleas
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Audios are under each image link.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-510844740" alt="Rainbow Il
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-510844740.jpg" alt="Rainbow Illustration Classic
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1349945418" alt="Cute Cow 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1349945418.jpg" alt="Cute Cow Isolated on White 
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: We will need 3 sound boxes for the āk
+     + <p>[audio] girl, shirt, third, bird, dirt, birth</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL230: identical 0 / changed 1
+BLL231: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+
+TOTAL: identical 278 / changed 107 / missing 0 over 104 modules
+CHANGED: AGH1001/AGH1001_5_0.html AGH1004/AGH1004_2_0.html AGH1004/AGH1004_3_0.html AGH1004/AGH1004_4_0.html AGH1005/AGH1005_1_0.html AGH1005/AGH1005_7_0.html AGH1005/AGH1005_8_0.html AGH1006/AGH1006_2_0.html AGH1006/AGH1006_8_0.html ANZH203/ANZH203_3_0.html ANZH203/ANZH203_4_0.html ANZH301/ANZH301_3_0.html ANZH301/ANZH301_5_0.html ANZH301/ANZH301_6_0.html ANZH301/ANZH301_9_0.html ANZH301/ANZH301_10_0.html ANZH304/ANZH304_3_0.html ANZH304/ANZH304_6_0.html ARFUN03/ARFUN03_0_0.html ARFUN04/ARFUN04_0_0.html ARFUN05/ARFUN05_0_0.html BLL113/BLL113_1_0.html BLL114/BLL114_1_0.html BLL114/BLL114_2_0.html BLL115/BLL115_1_0.html BLL115/BLL115_2_0.html BLL116/BLL116_1_0.html BLL120/BLL120_0_0.html BLL122/BLL122_1_0.html BLL123/BLL123_1_0.html BLL124/BLL124_1_0.html BLL126/BLL126_1_0.html BLL131/BLL131_1_0.html BLL133/BLL133_1_0.html BLL135/BLL135_1_0.html BLL137/BLL137_1_0.html BLL137/BLL137_1_1.html BLL140/BLL140_0_0.html BLL141/BLL141_1_0.html BLL142/BLL142_1_0.html BLL143/BLL143_1_0.html BLL143/BLL143_1_1.html BLL144/BLL144_1_0.html BLL144/BLL144_1_1.html BLL145/BLL145_1_1.html BLL146/BLL146_1_0.html BLL147/BLL147_1_0.html BLL147/BLL147_1_1.html BLL150/BLL150_0_0.html BLL151/BLL151_1_0.html BLL151/BLL151_2_0.html BLL152/BLL152_1_0.html BLL152/BLL152_1_1.html BLL153/BLL153_1_0.html BLL153/BLL153_1_1.html BLL154/BLL154_1_0.html BLL154/BLL154_1_1.html BLL155/BLL155_1_0.html BLL155/BLL155_1_1.html BLL156/BLL156_1_0.html BLL156/BLL156_1_1.html BLL157/BLL157_1_0.html BLL157/BLL157_1_1.html BLL160/BLL160_0_0.html BLL161/BLL161_1_0.html BLL161/BLL161_1_1.html BLL162/BLL162_1_0.html BLL162/BLL162_1_1.html BLL163/BLL163_1_0.html BLL163/BLL163_1_1.html BLL164/BLL164_1_0.html BLL164/BLL164_1_1.html BLL165/BLL165_1_0.html BLL165/BLL165_1_1.html BLL166/BLL166_1_0.html BLL166/BLL166_1_1.html BLL167/BLL167_1_1.html BLL170/BLL170_0_0.html BLL171/BLL171_1_0.html BLL172/BLL172_1_0.html BLL173/BLL173_1_0.html BLL173/BLL173_1_1.html BLL174/BLL174_1_0.html BLL174/BLL174_1_1.html BLL175/BLL175_1_0.html BLL175/BLL175_1_1.html BLL176/BLL176_1_0.html BLL176/BLL176_1_1.html BLL177/BLL177_1_0.html BLL210/BLL210_0_0.html BLL211/BLL211_1_0.html BLL212/BLL212_1_0.html BLL212/BLL212_2_0.html BLL213/BLL213_1_0.html BLL214/BLL214_1_0.html BLL215/BLL215_2_0.html BLL217/BLL217_1_0.html BLL220/BLL220_0_0.html BLL221/BLL221_2_0.html BLL222/BLL222_1_0.html BLL222/BLL222_2_0.html BLL223/BLL223_1_0.html BLL223/BLL223_2_0.html BLL224/BLL224_2_0.html BLL225/BLL225_2_0.html BLL227/BLL227_1_0.html BLL230/BLL230_0_0.html

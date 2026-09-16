@@ -1,0 +1,98 @@
+== ON-ONLY (the r342 hyperlinked class): 40 sites — gold KEEPS the lead words 10 (0.25) / drops 30
+   audio          keep    2 / drop   29  share 0.06
+   audio button   keep    8 / drop    0  share 1.00
+   video          keep    0 / drop    1  share 0.00
+   [Inquiry] keep 8 / drop 13  share 0.38
+   [Standard] keep 2 / drop 17  share 0.11
+   kept e.g.:
+     BLL140 0.0 audio button | / j /
+     BLL150 0.0 audio button | / z /
+     BLL150 0.0 audio button | / w /
+     BLL150 0.0 audio button | / v /
+     BLL160 0.0 audio button | /y /
+     BLL160 0.0 audio button | / x /
+     BLL170 0.0 audio button | / q /
+     BLL210 0.0 audio button | Short vowels say their sound – /a/ /e/ /i/ /o/ /u/
+   dropped e.g.:
+     BLL157 1.0 audio | floss, less, buzz, hiss, huff, fill, doll, tell, sell, fluff
+     HIS1002 13.0 video | https://www.youtube.com/watch?v=kRFAsOcK_TI
+     XDLS905 0.0 audio | Note this will be repeated across five units XDLS 902-6
+     XDLS905 0.0 audio | If it can sit beside the circles which take ākonga to the di
+     BLL114 2.0 audio | snap, pips, pant, ants, spin, tips, sits, spit
+     BLL140 0.0 audio | snail, paint, trail, stain, faint, train
+     BLL150 0.0 audio | room, moon, zoom, roof, food (please note the double up of l
+     BLL160 0.0 audio | bath, thin, path, math, (please note the double up of letter
+== PRE-EXISTING (OFF state, MediaBuilder.media drops the lead today): 359 sites — gold KEEPS the lead words 87 (0.24) / drops 272
+   video          keep   40 / drop   96  share 0.29
+   embed          keep   33 / drop   96  share 0.26
+   audio          keep   14 / drop   76  share 0.16
+   audio button   keep    0 / drop    4  share 0.00
+   [Fundamentals] keep 3 / drop 12  share 0.20
+   [Inquiry] keep 13 / drop 35  share 0.27
+   [Standard] keep 71 / drop 225  share 0.24
+   kept e.g.:
+     BLL113 1.0 audio | Let’s start by making the word ‘sat’.
+     BLL113 2.0 embed | The story ‘Sant the Ant’ can be found -
+     BLL133 2.0 embed | The story ‘Is it a…?’ can be found -
+     BLL137 1.0 embed | Bug in a Mug can be found -
+     BLL177 2.0 embed | The story ‘Shopping for Mum’ can be found -
+     BLL213 2.0 embed | The story ‘Sant and Spotty at the Creek’ can be found -
+     BLL233 2.0 embed | The story ‘Tinā at school’ can be found -
+     BLL237 2.0 embed | The story ‘How to grow cherry tomatoes’ can be found -
+   dropped e.g.:
+     ART1002 0.0 video | Video Montage of a series of videos on creating art
+     BLL113 1.0 audio | can we attach the audio so when the ākonga click or hover ov
+     BLL113 1.0 video | The letter t -
+     BLL113 1.0 video | the letter h -
+     BLL113 1.0 video | the letter e -
+     BLL113 1.0 video | The letter ‘o’
+     BLL113 1.0 video | The letter ‘n’
+     BLL117 2.0 embed | The story ‘It’ can be found -
+== PRE-EXISTING video/embed WITH a url (the r80 title-drop applies to a built embed): 200 sites — gold KEEPS the lead words 64 (0.32) / drops 136
+   video          keep   33 / drop   77  share 0.30
+   embed          keep   31 / drop   59  share 0.34
+   [Fundamentals] keep 3 / drop 9  share 0.25
+   [Inquiry] keep 4 / drop 9  share 0.31
+   [Standard] keep 57 / drop 118  share 0.33
+   kept e.g.:
+     BLL113 2.0 embed | The story ‘Sant the Ant’ can be found -
+     BLL133 2.0 embed | The story ‘Is it a…?’ can be found -
+     BLL137 1.0 embed | Bug in a Mug can be found -
+     BLL177 2.0 embed | The story ‘Shopping for Mum’ can be found -
+     BLL213 2.0 embed | The story ‘Sant and Spotty at the Creek’ can be found -
+     BLL233 2.0 embed | The story ‘Tinā at school’ can be found -
+     BLL237 2.0 embed | The story ‘How to grow cherry tomatoes’ can be found -
+     BLL247 2.0 embed | The story ‘A Colourful World’ can be found and PDF downloade
+   dropped e.g.:
+     BLL113 1.0 video | The letter t -
+     BLL113 1.0 video | the letter h -
+     BLL113 1.0 video | the letter e -
+     BLL117 2.0 embed | The story ‘It’ can be found -
+     BLL123 2.0 embed | The story ‘Hats’ can be found -
+     BLL127 2.0 embed | The story ‘Simon Says’ can be found - https://speldsa.org.au
+     BLL137 1.1 embed | The story ‘Stuck in the Mud’ can be found -
+     BLL217 1.0 embed | The story ‘The missing remote’ can be found -
+== PRE-EXISTING video/embed WITHOUT a url (un-built — red flag + caption today): 65 sites — gold KEEPS the lead words 9 (0.14) / drops 56
+   embed          keep    2 / drop   37  share 0.05
+   video          keep    7 / drop   19  share 0.27
+   [Fundamentals] keep 0 / drop 2  share 0.00
+   [Inquiry] keep 3 / drop 1  share 0.75
+   [Standard] keep 6 / drop 53  share 0.10
+   kept e.g.:
+     XMES102 5.0 video | video – Me on the Map
+     HIS1007 3.0 video | 58
+     XLP01 2.0 video | centre
+     BLL171 2.0 embed | Are we able to embed just the story into the module, not the
+     CEDO202 0.0 video | Crash course kids 11.1
+     ENGS302 6.0 embed | Ma
+     HIS1005 9.0 video | 58
+     TWHK901 0.0 video | Video: Sustainable Development Goals
+   dropped e.g.:
+     ART1002 0.0 video | Video Montage of a series of videos on creating art
+     BLL113 1.0 video | The letter ‘o’
+     BLL113 1.0 video | The letter ‘n’
+     BLL177 2.0 embed | Are we able to embed just the story into the module, not the
+     BLL213 2.0 embed | Are we able to embed just the story into the module, not the
+     BLL227 2.0 embed | Are we able to embed just the story into the module, not the
+     BLL233 2.0 embed | Are we able to embed just the story into the module, not the
+     BLL237 2.0 embed | Are we able to embed just the story into the module, not the

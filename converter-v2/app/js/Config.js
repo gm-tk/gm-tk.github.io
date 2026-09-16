@@ -1682,7 +1682,12 @@ class Config {
 	// band (ed0000 / fa0000 / c00000 …) counts as red when it carries a bracket or continues an open one (DocxExtractor,
 	// Input_Doc_Rules.red_runs.near_red_tag_runs, env NEARRED_OFF); the r299 definition weave learns the parenthesised-tail
 	// form + a same-paragraph lookback (env DEFPAREN_OFF). Leak gate 288/46 -> 26/23; FULL regeneration (the backstop).
-	static AppVersion = "260619.12";
+	// ROUND 342 (2026-09-16, build 260619.13): a writer's MEDIA tag typed as a HYPERLINK is still a tag — a run inside a
+	// w:hyperlink whose bracket head is a data-listed media word (and whose target is a media-file carrier) counts as red
+	// (DocxExtractor, Input_Doc_Rules.red_runs.hyperlinked_tag_runs, env HYPERTAG_OFF); its own words are the caption
+	// (MediaBuilder, env MEDIALEAD_OFF); a tag member's bracket-line text / link keeps the hand-off box alive (env
+	// MEMBERTEXT_OFF); a bare [audio button] never invents a journal label (env BTNLABELDEF_OFF). FULL regeneration.
+	static AppVersion = "260619.13";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

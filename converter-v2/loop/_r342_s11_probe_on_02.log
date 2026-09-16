@@ -1,0 +1,329 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+  ~ EXPFUN04_0_0.html: -1 +16
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Insert media item 15] Cut at 0:46<br
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="EXPFUN04-00-01" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Insert media item 15] Cut at 0:46<br
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: carousel (up to vidlets) — Activity
+     + <div style="font-size: 0.95em">
+     + <p>[Insert media item 15] Cut at 0:46</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+EXPFUN04: identical 0 / changed 1
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+  ~ HES1005_6_0.html: -0 +1
+     + <p>[Insert media item 34] This image could be snipped to fit 😊</p>
+HES1005: identical 8 / changed 1
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+  ~ HIS1001_4_0.html: -0 +3
+     + <p>Please add these two images on one slide side-by-side.]</p>
+     + <p>[Link: <a href="https://thebulletin.org/2020/08/counting-the-dead-at-hiroshima-and-nagasaki/]" target="_bla
+     + <p>[Image link: <a href="https://thebulletin.org/2020/08/counting-the-dead-at-hiroshima-and-nagasaki/]" target
+  ~ HIS1001_8_0.html: -2 +3
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>[Image link: <a href="https://en.wikipedia.org/wiki/Flag_of_the_Marshall_Islands]" target="_blank">https://
+     + <!-- <img class="img-fluid" loading="lazy" src="images/https-wixstatic-com-media-503583-9c57c74.jpg" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/https-wixstatic-com-media-503583-b8143c2.jpg" alt="" />
+  ~ HIS1001_9_0.html: -0 +1
+     + <p>[Image link: <a href="https://en.wikipedia.org/wiki/A%E1%B9%89angu]" target="_blank">https://en.wikipedia.o
+  ~ HIS1001_10_0.html: -1 +16
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: A positive outcome from the PTBT was 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HIS1001-07-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: A positive outcome from the PTBT was 
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: modal (or box, not) — Activity (inli
+     + <div style="font-size: 0.95em">
+     + <p>[Image link: <a href="https://en.wikipedia.org/wiki/Partial_Nuclear_Test_Ban_Treaty" target="_blank">https:
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+HIS1001: identical 4 / changed 4
+  ~ HIS1002_3_0.html: -1 +2
+     - <p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Kiwi_%28PSF%29.png/640px-Kiwi_%28PSF%29.
+     + <p>[Can you please make 3 images for the animals: kiwi, kangaroo, rooster, and one of a va’a. Something like c
+     + <p>[Kiwi Image link: [Image link: <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Kiwi_%28P
+  ~ HIS1002_5_0.html: -0 +1
+     + <p>Link: link to the simple map idea I made in word – with a very faded/transparent map of Te Moana-nui-a-Kiwa
+  ~ HIS1002_7_0.html: -0 +5
+     + <p>[Link: <a href="https://paperspast.natlib.govt.nz/newspapers/CHP19790307.2.89?items_per_page=10" target="_b
+     + <p>[Image Link: <a href="https://uploads-ssl.webflow.com/5b43f3f705b1ce380ccbdaed/5b90a58ece7e7334a86ada68_18_
+     + <p>[Link: <a href="https://paperspast.natlib.govt.nz/newspapers/CHP19790120.2.7?items_per_page=10" target="_bl
+     + <p>[Link: <a href="https://paperspast.natlib.govt.nz/newspapers/CHP19790120.2.112.7?items_per_page=10" target=
+     + <p>[Image Link: <a href="https://uploads-ssl.webflow.com/5b43f3f705b1ce380ccbdaed/5b90a545031ad22d77f3d553_eye
+  ~ HIS1002_11_0.html: -0 +3
+     + <p>[Source link: <a href="https://paperspast.natlib.govt.nz/periodicals/TUTANG19851001.2.14?query=rainbow+warr
+     + <p>[Source link: <a href="https://paperspast.natlib.govt.nz/periodicals/RIU19850201.2.35.1?items_per_page=50" 
+     + <p>[Source link: <a href="https://paperspast.natlib.govt.nz/periodicals/RIU19850201.2.35.1?items_per_page=50" 
+  ~ HIS1002_13_0.html: -1 +3
+     - <a href="https://www.youtube.com/watch?v=kRFAsOcK_TI" target="_blank"><div class="externalButton">Go to video<
+     + <iframe src="https://www.youtube-nocookie.com/embed/kRFAsOcK_TI" loading="lazy" title="YouTube video player" f
+     + <div class="videoSection icon ratio ratio-16x9">
+     + </div>
+  ~ HIS1002_15_0.html: -0 +4
+     + <p>[Image link: <a href="https://pacificans.com/the-woman-who-made-palau-the-only-nuclear-free-country-in-the-
+     + <p>[Link: <a href="https://www.spc.int/mirair-gabriela-ngirmang" target="_blank">https://www.spc.int/mirair-ga
+     + <p>[Link: <a href="https://www.disarmsecure.org/digital-resources/stories-of-peace-reverend-george-armstrong-a
+     + <p>[Image link: Please find an image of Owen Wilkes if possible]</p>
+  ~ HIS1002_19_0.html: -3 +3
+     - <a href="" target="_blank"><div class="button">External link</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="https://youtu.be/SQem2uu2e0U" target="_blank"><div class="button externalButton">]</div></a>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/SQem2uu2e0U" loading="lazy" title="YouTube video player" f
+     + </div>
+HIS1002: identical 14 / changed 7
+  ~ HIS1003_1_0.html: -0 +2
+     + <p>[Add button] Check answers</p>
+     + <p>[Add button] Reset</p>
+  ~ HIS1003_2_0.html: -0 +2
+     + <p>[Add button] Check answer</p>
+     + <p>[Add button] Reset</p>
+  ~ HIS1003_3_0.html: -0 +4
+     + <p>[Add button] Check answer</p>
+     + <p>[Add button] Reset</p>
+     + <p>[Add button] Go to journal</p>
+     + <p>[Add button] Upload to dropbox</p>
+  ~ HIS1003_4_0.html: -0 +1
+     + <p>[Add button] Quiz</p>
+  ~ HIS1003_5_0.html: -0 +2
+     + <p>[Add button] Check answer</p>
+     + <p>[Add button] Reset</p>
+  ~ HIS1003_6_0.html: -0 +6
+     + <p>[Add button] Check answers</p>
+     + <p>[Add button] Reset</p>
+     + <p>[Add button] Go to Journal</p>
+     + <p>[Add button] Go to journal</p>
+     + <p>[Add button] Go to journal</p>
+     + <p>[Add button] Upload to dropbox</p>
+  ~ HIS1003_8_0.html: -0 +1
+     + <p>[Add button] Go to journal</p>
+HIS1003: identical 4 / changed 7
+  ~ HIS1004_2_0.html: -0 +5
+     + <p>[Add button] Quiz button</p>
+     + <p>[Text for other side of image on flip-card #5] 1960 – Sharpeville massacre: Police shooting at peaceful dem
+     + <p>[Text for other side of image on flip-card #6] 1966 — Prime Minister Hendrik Verwoerd assassinated.</p>
+     + <p>[Text for other side of flip-card #7] 1989 – F.W. de Klerk replaces PW Botha as president, meets Mandela. P
+     + <p>[Text for other side of flip-card #8] 1994 – ANC wins first democratic elections. Mandela becomes president
+  ~ HIS1004_5_0.html: -0 +5
+     + <p>[Add button] Video 1 button</p>
+     + <p>[Add button] Video 2 button</p>
+     + <p>[Add button] Check answers</p>
+     + <p>[Add button] Reset</p>
+     + <p>[Add button] Upload to dropbox</p>
+  ~ HIS1004_6_0.html: -0 +2
+     + <p>[Add button] Check answer button</p>
+     + <p>[Add button] Reset.</p>
+  ~ HIS1004_7_0.html: -0 +6
+     + <p>[Caption text] The 1973 cartoon shows Prime Minister Norman Kirk as the referee in a rugby match. He has ju
+     + <p>[Add button] Go to journal</p>
+     + <p>[Add button] Upload to dropbox</p>
+     + <p>[Add button] Go to journal</p>
+     + <p>[Add button] Go to Journal</p>
+     + <p>[Add button] Upload to dropbox</p>
+  ~ HIS1004_8_0.html: -0 +2
+     + <p>[Add button] Go to journal</p>
+     + <p>[Add button] Upload to drop-box</p>
+  ~ HIS1004_9_0.html: -0 +3
+     + <p>[Add button] Go to journal.</p>
+     + <p>[Add button] Go to journal</p>
+     + <p>[Add button] Upload to dropbox</p>
+  ~ HIS1004_10_0.html: -0 +2
+     + <p>[Link] [Interactive] This link is in section A of this doc, source 6.</p>
+     + <p>[Add button] Go to journal</p>
+HIS1004: identical 4 / changed 7
+  ~ HIS1005_5_0.html: -2 +2
+     - <div class="button audioButton">Go to your journal</div>
+     - <div class="button audioButton">Go to your journal</div>
+     + <div class="button audioButton"></div>
+     + <div class="button audioButton"></div>
+HIS1005: identical 14 / changed 1
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+  ~ HIS1008_2_1.html: -0 +2
+     + <p>[add button] Check answers.</p>
+     + <p>[add button] Go to journal</p>
+  ~ HIS1008_6_0.html: -0 +3
+     + <p>[add button] Go to journal</p>
+     + <p>[add button] Check answers.</p>
+     + <p>[add button] Go to journal</p>
+  ~ HIS1008_7_0.html: -0 +2
+     + <p>[add button] Check answer</p>
+     + <p>[add button] Reset</p>
+HIS1008: identical 9 / changed 3
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+  ~ HPRE203_1_0.html: -0 +1
+     + <p>[MTK Quiz] Teacher marked</p>
+HPRE203: identical 7 / changed 1
+MXDB102: identical 12 / changed 0
+  ~ MXDB201_3_0.html: -0 +1
+     + <p>[Button] Go to journal.</p>
+  ~ MXDB201_4_0.html: -0 +1
+     + <p>[Button] Go to journal.</p>
+MXDB201: identical 5 / changed 2
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+  ~ MXDI201_1_0.html: -0 +3
+     + <p>[button] Check your answers [button] Reset</p>
+     + <p>[button] Check your answers [button] Reset</p>
+     + <p>[button] Check your answers [button] Reset</p>
+  ~ MXDI201_2_0.html: -0 +4
+     + <p>[button] Check your answers</p>
+     + <p>[button] Reset</p>
+     + <p>[button] Check your answers [button] Reset</p>
+     + <p>[button] Check your answers [button] Reset</p>
+  ~ MXDI201_3_0.html: -0 +1
+     + <p>[button] Check your answers [button] Reset</p>
+  ~ MXDI201_4_0.html: -0 +3
+     + <p>[button] Check your answers [button] Reset</p>
+     + <p>[button] Check your answers</p>
+     + <p>[button] Reset</p>
+  ~ MXDI201_5_0.html: -0 +4
+     + <p>[button] Check your answers</p>
+     + <p>[button] Reset</p>
+     + <p>Answers: 1211, 1365, 1456, 2156, 2191, 5369, 5786, 6819, 8888, 9105 [button] Check your answers [button] Re
+     + <p>[button] Check your answers [button] Reset</p>
+  ~ MXDI201_6_0.html: -0 +4
+     + <p>[button] Reset</p>
+     + <p>[button] Check your answers [button] Reset</p>
+     + <p>[button] Check your answers</p>
+     + <p>[button] Reset</p>
+  ~ MXDI201_7_0.html: -0 +1
+     + <p>[button] Reset</p>
+MXDI201: identical 4 / changed 7
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+  ~ MXEO201_4_0.html: -1 +15
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [flipCard] marker — no content c
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="MXEO201-04-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: flipCard — Activity 2B — see MXEO201
+     + <div style="font-size: 0.95em">
+     + <p>[H3] What are Tessellations?</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+MXEO201: identical 9 / changed 1
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+  ~ MXEO401_0_0.html: -0 +1
+     + <p>[Audio player] CS: please find an attached audio script also handed in with this WT for the following font 
+  ~ MXEO401_1_0.html: -0 +1
+     + <p>[Image] CS: Please create a chart like this one (I made it from giving prompts to chatGPT and then modifyin
+MXEO401: identical 5 / changed 2
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+  ~ MXEX401_1_0.html: -0 +1
+     + <p>[image 13] CS: this image is a screen shot of the video 1 above at 2:22 if it can’t be used, can you make s
+MXEX401: identical 6 / changed 1
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+  ~ MXFU202_9_0.html: -0 +2
+     + <p>[button] Check answers.</p>
+     + <p>[button] Reset</p>
+MXFU202: identical 10 / changed 1
+MXFU301: identical 12 / changed 0
+  ~ MXFU302_7_0.html: -0 +1
+     + <p>[Image] <a href="https://tekura.desire2learn.com/d2l/le/content/11925/viewContent/115108/View" target="_bla
+MXFU302: identical 9 / changed 1
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+  ~ MXFUN01_6_3.html: -0 +1
+     + <p>[Button] Check answers</p>
+MXFUN01: identical 18 / changed 1
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+  ~ OSBY101_1_0.html: -0 +1
+     + <p>Add a [show answer image] e.g.</p>
+OSBY101: identical 3 / changed 1
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+  ~ OSGM301_1_0.html: -0 +1
+     + <p>[Show answer] CS can this please appear when akonga confirm all the sliders</p>
+OSGM301: identical 3 / changed 1
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+
+TOTAL: identical 611 / changed 50 / missing 0 over 104 modules
+CHANGED: EXPFUN04/EXPFUN04_0_0.html HES1005/HES1005_6_0.html HIS1001/HIS1001_4_0.html HIS1001/HIS1001_8_0.html HIS1001/HIS1001_9_0.html HIS1001/HIS1001_10_0.html HIS1002/HIS1002_3_0.html HIS1002/HIS1002_5_0.html HIS1002/HIS1002_7_0.html HIS1002/HIS1002_11_0.html HIS1002/HIS1002_13_0.html HIS1002/HIS1002_15_0.html HIS1002/HIS1002_19_0.html HIS1003/HIS1003_1_0.html HIS1003/HIS1003_2_0.html HIS1003/HIS1003_3_0.html HIS1003/HIS1003_4_0.html HIS1003/HIS1003_5_0.html HIS1003/HIS1003_6_0.html HIS1003/HIS1003_8_0.html HIS1004/HIS1004_2_0.html HIS1004/HIS1004_5_0.html HIS1004/HIS1004_6_0.html HIS1004/HIS1004_7_0.html HIS1004/HIS1004_8_0.html HIS1004/HIS1004_9_0.html HIS1004/HIS1004_10_0.html HIS1005/HIS1005_5_0.html HIS1008/HIS1008_2_1.html HIS1008/HIS1008_6_0.html HIS1008/HIS1008_7_0.html HPRE203/HPRE203_1_0.html MXDB201/MXDB201_3_0.html MXDB201/MXDB201_4_0.html MXDI201/MXDI201_1_0.html MXDI201/MXDI201_2_0.html MXDI201/MXDI201_3_0.html MXDI201/MXDI201_4_0.html MXDI201/MXDI201_5_0.html MXDI201/MXDI201_6_0.html MXDI201/MXDI201_7_0.html MXEO201/MXEO201_4_0.html MXEO401/MXEO401_0_0.html MXEO401/MXEO401_1_0.html MXEX401/MXEX401_1_0.html MXFU202/MXFU202_9_0.html MXFU302/MXFU302_7_0.html MXFUN01/MXFUN01_6_3.html OSBY101/OSBY101_1_0.html OSGM301/OSGM301_1_0.html

@@ -1,0 +1,202 @@
+AGH1001: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+AGH1004: built 4 carousel(s), 0 video slides  ✓ all slide ids match the human
+AGH1005: built 6 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1006, HTO1101) — using AGH1006 from filename "AGH1006 Writers Template + Media List.docx".
+AGH1006: built 5 carousel(s), 0 video slides  ✓ all slide ids match the human
+ANZH203: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (ANZH301, HSO1012) — using ANZH301 from filename "ANZH301 Writers Template + Media List.docx".
+ANZH301: built 0 carousels (all fell back)
+ANZH304: built 0 carousels (all fell back)
+ARFUN03: built 0 carousels (all fell back)
+🟢 [ModuleResolver] ARFUN04 is a recorded page_model exception — using multi-file.
+ARFUN04: built 3 carousel(s), 1 video slides  ✓ all slide ids match the human
+ARFUN05: built 0 carousels (all fell back)
+BLL113: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+BLL114: built 0 carousels (all fell back)
+BLL115: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL116: built 2 carousel(s), 6 video slides  ✗ 3 slide id(s) NOT in the human carousels
+🟢 [ModuleResolver] BLL120 is a recorded page_model exception — using single-file.
+BLL120: built 8 carousel(s), 31 video slides  ✗ 8 slide id(s) NOT in the human carousels
+BLL122: built 0 carousels (all fell back)
+BLL123: built 0 carousels (all fell back)
+BLL124: built 0 carousels (all fell back)
+BLL126: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+BLL131: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL133: built 1 carousel(s), 3 video slides  ✗ 1 slide id(s) NOT in the human carousels
+BLL135: built 0 carousels (all fell back)
+BLL137: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] BLL140 is a recorded page_model exception — using single-file.
+BLL140: built 7 carousel(s), 19 video slides  ✓ all slide ids match the human
+BLL141: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL142: built 0 carousels (all fell back)
+BLL143: built 0 carousels (all fell back)
+BLL144: built 1 carousel(s), 3 video slides  ✗ 1 slide id(s) NOT in the human carousels
+BLL145: built 0 carousels (all fell back)
+BLL146: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL147: built 0 carousels (all fell back)
+🟢 [ModuleResolver] BLL150 is a recorded page_model exception — using single-file.
+BLL150: built 5 carousel(s), 17 video slides  ✗ 1 slide id(s) NOT in the human carousels
+BLL151: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL152: built 0 carousels (all fell back)
+BLL153: built 0 carousels (all fell back)
+BLL154: built 0 carousels (all fell back)
+BLL155: built 1 carousel(s), 4 video slides  ✗ 4 slide id(s) NOT in the human carousels
+BLL156: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL157: built 3 carousel(s), 7 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] BLL160 is a recorded page_model exception — using single-file.
+BLL160: built 5 carousel(s), 18 video slides  ✓ all slide ids match the human
+BLL161: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+BLL162: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL163: built 0 carousels (all fell back)
+BLL164: built 0 carousels (all fell back)
+BLL165: built 0 carousels (all fell back)
+BLL166: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+BLL167: built 2 carousel(s), 8 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] BLL170 is a recorded page_model exception — using single-file.
+BLL170: built 6 carousel(s), 24 video slides  ✓ all slide ids match the human
+BLL171: built 0 carousels (all fell back)
+BLL172: built 0 carousels (all fell back)
+BLL173: built 0 carousels (all fell back)
+BLL174: built 0 carousels (all fell back)
+BLL175: built 0 carousels (all fell back)
+BLL176: built 0 carousels (all fell back)
+BLL177: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] BLL210 is a recorded page_model exception — using single-file.
+BLL210: built 8 carousel(s), 23 video slides  ✓ all slide ids match the human
+BLL211: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL212, BLL182) — using BLL212 from filename "BLL212 Writers Template + Media List.docx".
+BLL212: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL213, BLL183) — using BLL213 from filename "BLL213 Writers Template + Media List.docx".
+BLL213: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL214, BLL184) — using BLL214 from filename "BLL214 Writers Template + Media List.docx".
+BLL214: built 0 carousels (all fell back)
+BLL215: built 1 carousel(s), 5 video slides  ✓ all slide ids match the human
+BLL217: built 0 carousels (all fell back)
+🟢 [ModuleResolver] BLL220 is a recorded page_model exception — using single-file.
+BLL220: built 8 carousel(s), 22 video slides  ✓ all slide ids match the human
+BLL221: built 0 carousels (all fell back)
+BLL222: built 2 carousel(s), 6 video slides  ✓ all slide ids match the human
+BLL223: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+BLL224: built 2 carousel(s), 8 video slides  ✓ all slide ids match the human
+BLL225: built 0 carousels (all fell back)
+BLL227: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL230, BLL220) — using BLL230 from filename "BLL230 Writers Template.docx".
+🟢 [ModuleResolver] BLL230 is a recorded page_model exception — using single-file.
+BLL230: built 8 carousel(s), 29 video slides  ✓ all slide ids match the human
+BLL237: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+BLL240: built 5 carousel(s), 15 video slides  ✓ all slide ids match the human
+BLL241: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+BLL242: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+BLL245: built 0 carousels (all fell back)
+BLL251: built 0 carousels (all fell back)
+BLL252: built 1 carousel(s), 1 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] BLL253 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL253: built 0 carousels (all fell back)
+BLL254: built 0 carousels (all fell back)
+🟢 [ModuleResolver] BLL262 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL262: built 2 carousel(s), 3 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] BLL263 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL263: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+CEDK102: built 0 carousels (all fell back)
+CEDO105: built 6 carousel(s), 0 video slides  ✓ all slide ids match the human
+CEDO501: built 0 carousels (all fell back)
+CEDR204: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+CEDR302: built 0 carousels (all fell back)
+CEDR501: built 5 carousel(s), 1 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT104: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+CEDT501: built 3 carousel(s), 0 video slides  ✓ all slide ids match the human
+ENFUN01: built 1 carousel(s), 1 video slides  ✓ all slide ids match the human
+ENFUN08: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1004, ENG1001) — using ENG1004 from filename "ENG1004 Writers Template + Media List.docx".
+ENG1004: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1005, EN1001) — using ENG1005 from filename "ENG1005 Writers Template + Media List.docx".
+ENG1005: built 0 carousels (all fell back)
+ENGC101: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI101, ENGL101) — using ENGI101 from filename "ENGI101 Writers Template + Media List.docx".
+ENGI101: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+ENGI102: built 1 carousel(s), 5 video slides  ✓ all slide ids match the human
+ENGI405: built 0 carousels (all fell back)
+ENGJ201: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+ENGJ402: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+ENGR102: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR201, EN000) — using ENGR201 from filename "ENGR201 Writers Template + Media List.docx".
+ENGR201: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+ENGR202: built 3 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS202, EN000) — using ENGS202 from filename "ENGS202 Writers Template + Media List.docx".
+ENGS202: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS401, EN000) — using ENGS401 from filename "ENGS401 Writers Template + Media List.docx".
+ENGS401: built 2 carousel(s), 6 video slides  ✓ all slide ids match the human
+EXPFUN04: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+HES1005: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 carousels (all fell back)
+HIS1003: built 0 carousels (all fell back)
+HIS1004: built 0 carousels (all fell back)
+HIS1005: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 0 carousels (all fell back)
+🟠 [ModuleResolver] HPRE203: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+HPRE203: built 4 carousel(s), 0 video slides  ✓ all slide ids match the human
+MXDB201: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+MXDI201: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+MXEO201: built 2 carousel(s), 5 video slides  ✓ all slide ids match the human
+MXEO401: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX401, MXO421) — using MXEX401 from filename "MXEX401 Writers Template + Media List.docx".
+MXEX401: built 0 carousels (all fell back)
+MXFU202: built 0 carousels (all fell back)
+MXFU302: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] MXFUN01 is a recorded page_model exception — using multi-file.
+MXFUN01: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+OSBY101: built 0 carousels (all fell back)
+OSGM301: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+PHE1005: built 0 carousels (all fell back)
+🟢 [ModuleResolver] SSCI205 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI205: built 0 carousels (all fell back)
+SSFUN05: built 0 carousels (all fell back)
+SSFUN06: built 0 carousels (all fell back)
+🟢 [ModuleResolver] SSFUN07 is a recorded page_model exception — using multi-file.
+SSFUN07: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+SSFUN08: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (SSOG101, ISTO216) — using SSOG101 from filename "SSOG101 Writers Template + Media List.docx".
+SSOG101: built 0 carousels (all fell back)
+SSOG103: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] TEDC401: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+TEDC401: built 3 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] TEDC402: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Page-layout table dissolved into 12 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 14 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+TEDC402: built 3 carousel(s), 4 video slides  ✓ all slide ids match the human
+TEFUN06: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+TEFUN07: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] TRR304 is not in the registry members — inherited from its level TRR1 (sibling rule).
+TRR304: built 0 carousels (all fell back)
+XDLS502: built 1 carousel(s), 6 video slides  ✓ all slide ids match the human
+XDLS901: built 3 carousel(s), 3 video slides  ✓ all slide ids match the human
+XDLS902: built 0 carousels (all fell back)
+XDLS903: built 0 carousels (all fell back)
+XDLS904: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+XDLS905: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (XDLS909, XDLS5909) — using XDLS909 from filename "XDLS909 Writers Template.docx".
+XDLS909: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP04, XFUN03) — using XLP04 from filename "XLP04 Writers Template.docx".
+XLP04: built 4 carousel(s), 6 video slides  ✓ all slide ids match the human
+XLP06: built 2 carousel(s), 4 video slides  ✓ all slide ids match the human
+XMES201: built 8 carousel(s), 0 video slides  ✓ all slide ids match the human
+XWHA02: built 1 carousel(s), 1 video slides  ✓ all slide ids match the human
+
+TOTAL: 195 carousels built across 83 modules, 368 video slides; 18 mismatched slide ids.
+RESULT: mismatches present ✗

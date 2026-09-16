@@ -361,6 +361,11 @@
 			"enabled": true,
 			"note": "ROUND NN (Chris, ENGS302-00): a writer's CAPTION marker that embeds a media word — '[Insert caption with video]', '[caption with image]', '[Caption text for image]' — resolves to the embedded media tag (video/image) via the longest-suffix embedded match, so ContentConverter built/red-flagged a media element from a caption (ENGS302-00 'RED FLAG: [video] with no URL found' on '[Insert caption with video] Watch this clever Lord of the Rings…'). When a media-resolved tag's RAW text contains the word 'caption', it is a CAPTION: render its following text as ordinary body, never an embed/red-flag. The bare [Caption]/[Insert caption] (data-marker SUBTAG, image-caption widget) never reaches a media branch, so it is untouched. Measured: 34 caption tags / 6 modules; the 'caption + media word' mis-resolving subset is the target. Env CAPTIONMEDIA_OFF reverts to building the (red-flagged) media element."
 		},
+		"media_hyperlinked_lead": {
+			"enabled": true,
+			"env": "MEDIALEAD_OFF",
+			"_note": "ROUND 342 (the autonomous loop, session 11 — gap 2 of the hyperlinked media tag). A hyperlink is not a red instruction span: when the BLL phonics writer hyperlinks the WHOLE line '[audio] snail, paint, trail, stain, faint, train' to its sound file, only the bracket is the tag and the words after it are the writer's CONTENT — exactly what a black run after a red '[audio 1]' is (BLL146, rendered as the caption <p> today). So on a block the extractor marked hyperTag (Input_Doc_Rules red_runs.hyperlinked_tag_runs), MediaBuilder.media folds the element's embedded lead (RenderText of its own span) in FRONT of its black-after text and the ordinary rules apply unchanged: a built video drops it as its title (r80), audio / an un-built element keep it as the caption. Measured (outputs/_r342_medlead_gold.py): the human's page keeps the lead's words as visible text on 0.25 of the 40 hyperlinked sites and 0.24 of the 359 pre-existing RED-span sites — for the phonics lists the gold builds per-word audioButton / word widgets (an un-derivable developer form, the r300 finding) — so the fold is scoped to the hyperlinked class ONLY, where the alternative is losing the words the OFF page carried; the pre-existing red-span leads stay dropped (the gold agrees at 0.76). Env MEDIALEAD_OFF reverts (the words vanish from the ON page). Sibling in the same round: buttons[\"audio button\"].label_default (env BTNLABELDEF_OFF)."
+		},
 		"media_url_in_text": {
 			"enabled": true,
 			"note": "ROUND NN (Chris, ENGS302-01): a [video]/[embed]/[imbed] tag whose URL the writer typed INSIDE the same red instruction span as the tag ('[Embed film] edit to start at 3 seconds https://youtu…' — the URL is part of it.text, not the black blackAfter nor a hyperlink nor a following black item) was not found by #gatherFollowing (which only scans blackAfter + following BLACK items) → 'RED FLAG: [embed] with no URL found'. The URL search now ALSO scans the element's own raw it.text as a last resort, so an in-span URL is recovered and the embed builds. Measured 20 occ / 4 modules (ENGS302, ENGJ402, XDLS502/901) currently red-flagged despite a URL being present in-span; the human builds the embed in every case. Env MEDIAURLTEXT_OFF reverts to the blackAfter/following-only search.",
@@ -1024,7 +1029,9 @@
 			"form": "<div class=\"button supervisor\">{label}</div>"
 		},
 		"audio button": {
-			"form": "<div class=\"button audioButton\">{label}</div>"
+			"form": "<div class=\"button audioButton\">{label}</div>",
+			"label_default": "",
+			"_label_default_note": "ROUND 342 (session 11): a bare [audio button] with no writer label ships an EMPTY label, never the journal default — the gold's audioButton is text-less on 1,014 of 1,014 sites (`<div class=\"audioButton\" audioName=…></div>`; the audioName is the r300 non-derivable). 7 corpus sites shipped 'Go to your journal' on an audio button before this; the hyperlinked-tag rule exposed 8 more (BLL140/150/160/170). Remove the key to fall back to buttons.journal_label_default."
 		},
 		"dropbox_orange_house_style": {
 			"enabled": true,
@@ -1061,6 +1068,12 @@
 		"text_box": "<textarea class=\"form-control\" rows=\"4\" placeholder=\"{placeholder}\"></textarea>"
 	},
 	"interactive_placeholder": {
+		"embedded_member_text": {
+			"enabled": true,
+			"env": "MEMBERTEXT_OFF",
+			"directives": ["ELEMENT", "INLINE"],
+			"_note": "ROUND 342 — a tag member whose words ride its OWN bracket line ('[audio] while, whale, whirl, whole, whine', '[image] angry person', '[button] Go to journal') is CONTENT for the un-built hand-off box: the empty-bundle / empty-box guards count it and the member dump renders the raw bracket line. Only members whose primary directive is listed here (content ELEMENTs and INLINE links — never an INTERACTIVE invocation, whose bracket text is its own spec and lives in the .txt) and whose span is a TAG (an instruction-class member already surfaces as the note before the box). Measured over the r341 corpus: 255 un-built bundles / 124 modules carry such a member (button 112, image 94, embed 56, audio button 12, external link 12, body 10, audio 9, video 9 …); 7 boxes were suppressed outright with the words lost from the page (BLL150 / BLL166 audio word lists, ENGC101 4.0 five [image] faces, MXEO201 4.0 [h3], XWHA02, EXPFUN04, HIS1001). Env MEMBERTEXT_OFF reverts both guards and the dump."
+		},
 		"instructions_before": true,
 		"_instructions_before_note": "Round 72 PART B (Chris) — a writer instruction EMBEDDED inside an un-built interactive moves to JUST BEFORE the dashed box rather than rendering nested in the middle of it (the OSAI201-01 1B sketcher CS notes). Set false (or env NOTEBEFORE_OFF) to revert to the round-43 inside-the-box placement. Notes already AFTER an element are left where they are.",
 		"block_open": "<div class=\"cv2-interactive\" data-cv2-index=\"{index}\" style=\"border: 3px dashed #d9480f; background: #fff4e6; padding: 16px; margin: 16px 0\">",
