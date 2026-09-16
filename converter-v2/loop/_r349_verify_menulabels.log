@@ -1,0 +1,16 @@
+AGH1002: labels 13; not-h5 1; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 1 ✗ (above the recorded baseline 0)
+ENGC401: labels 16; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+MXFL201: labels 20; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+OSSC401: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+ANZH101: labels 0; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+BLL110: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+XFUN02: labels 12; not-h5 2; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 2 ✗ (above the recorded baseline 0)
+CEDT501: labels 12; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDO502: labels 14; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TOTAL: 91 label(s) across 9 module(s); defect 3.
+RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.menulabels.per_module).
+rc=1
+SELFTEST _verify_menulabels.cjs LIVENESS: built TOTAL 16 on ENGC401 PASS
+SELFTEST _verify_menulabels.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_menulabels.cjs: GREEN
+rc=0

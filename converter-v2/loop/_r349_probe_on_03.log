@@ -1,0 +1,664 @@
+  ~ OSSC501_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSSC501: identical 5 / changed 1
+  ~ OSSM301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSSM301: identical 4 / changed 1
+  ~ OSSM401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSSM401: identical 4 / changed 1
+PES1001: identical 10 / changed 0
+  ~ PES1002_4_0.html: -1 +1
+     - <h5>We are learning about:.</h5>
+     + <h5>We are learning about:</h5>
+PES1002: identical 10 / changed 1
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+  ~ PES1005_2_0.html: -2 +2
+     - <h5>We are learning:.</h5>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1005_9_0.html: -1 +1
+     - <p>You will show your understanding byI</p>
+     + <h5>You will show your understanding byI:</h5>
+PES1005: identical 10 / changed 2
+  ~ PES1007_1_0.html: -5 +5
+     - <p>We are learning about/to ...</p>
+     - <li>Energy and its many forms.</li>
+     - <li>The transfer of energy.</li>
+     - <li>The conservation of energy.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to energy and its many forms.</li>
+     + <li>to the transfer of energy.</li>
+     + <li>to the conservation of energy.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1007_2_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Calculate the amount of kinetic energy moving objects have.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to calculate the amount of kinetic energy moving objects have.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1007_3_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Calculate the velocity or mass of a moving object using its kinetic energy.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to calculate the velocity or mass of a moving object using its kinetic energy.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1007_4_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Use the correct words to describe force and work.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to use the correct words to describe force and work.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1007_5_0.html: -2 +2
+     - <h5>We are learning to ...</h5>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1007_8_0.html: -2 +2
+     - <h5>We are learning about ...</h5>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1007_9_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Explain the three different types of heat transfer.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to explain the three different types of heat transfer.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1007_10_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Recognise the types of heat transfers in everyday situations.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to recognise the types of heat transfers in everyday situations.</li>
+     + <h5>You will show your understanding by:</h5>
+PES1007: identical 4 / changed 8
+  ~ PES1008_1_0.html: -2 +2
+     - <h5>We are learning about</h5>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_2_0.html: -2 +2
+     - <h5>We are learning about</h5>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_4_0.html: -2 +2
+     - <h5>We are learning about</h5>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_6_0.html: -2 +2
+     - <h5>We are learning about</h5>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_8_0.html: -1 +1
+     - <h5>You will show your understanding by …</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_10_0.html: -1 +1
+     - <h5>You will show your understanding by …</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_12_0.html: -1 +1
+     - <h5>You will show your understanding by …</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_14_0.html: -1 +1
+     - <h5>You will show your understanding by …</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ PES1008_16_0.html: -1 +1
+     - <h5>You will show your understanding by …</h5>
+     + <h5>You will show your understanding by:</h5>
+PES1008: identical 10 / changed 9
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+  ~ PHE1007_0_0.html: -1 +1
+     - <p>We are learning about:</p>
+     + <h5>We are learning about:</h5>
+PHE1007: identical 9 / changed 1
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+  ~ SCCH301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+SCCH301: identical 8 / changed 1
+SCFUN01: identical 1 / changed 0
+  ~ SCPH301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ SCPH301_1_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ SCPH301_2_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ SCPH301_3_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ SCPH301_4_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ SCPH301_5_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ SCPH301_6_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ SCPH301_7_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ SCPH301_8_0.html: -2 +1
+     - <h4><span>Learning Intentions</span></h4>
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+SCPH301: identical 0 / changed 9
+  ~ SSCI205_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+SSCI205: identical 9 / changed 1
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+  ~ SSOG101_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+SSOG101: identical 7 / changed 1
+  ~ SSOG103_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+SSOG103: identical 6 / changed 1
+  ~ SSOG301_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>I can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>I can:</h5>
+SSOG301: identical 7 / changed 1
+  ~ TEDC401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+TEDC401: identical 7 / changed 1
+  ~ TEDC402_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+TEDC402: identical 10 / changed 1
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+  ~ TWHA902_0_0.html: -1 +1
+     - <h5><b>I can:</b></h5>
+     + <h5>I can:</h5>
+TWHA902: identical 0 / changed 1
+  ~ TWHA903_0_0.html: -9 +9
+     - <h5><b>We are learning to:</b></h5>
+     - <li><b>think like social scientists by:</b>
+     - <li>evaluating evidence and considering diverse perspectives</li>
+     - <li><b>think like scientists by:</b>
+     - <li>analysing data to identify patterns, trends, and relationships</li>
+     - <li><b>think like mathematicians by:</b>
+     - <li>analysing and representing data in a range of ways</li>
+     - <li><b>think like an innovator by:</b>
+     - <li>designing and testing solutions to refine systems and processes.</li>
+     + <h5>We are learning:</h5>
+     + <li><b>to think like social scientists by:</b>
+     + <li>to evaluating evidence and considering diverse perspectives</li>
+     + <li><b>to think like scientists by:</b>
+     + <li>to analysing data to identify patterns, trends, and relationships</li>
+     + <li><b>to think like mathematicians by:</b>
+     + <li>to analysing and representing data in a range of ways</li>
+     + <li><b>to think like an innovator by:</b>
+     + <li>to designing and testing solutions to refine systems and processes.</li>
+TWHA903: identical 0 / changed 1
+  ~ TWHA904_0_0.html: -3 +3
+     - <h5><b>We are learning to:</b></h5>
+     - <li>Asking questions about societal structures, behaviours and events in relation to movement.</li>
+     - <li>Evaluating evidence and considering diverse perspectives around the way we move.</li>
+     + <h5>We are learning:</h5>
+     + <li>to asking questions about societal structures, behaviours and events in relation to movement.</li>
+     + <li>to evaluating evidence and considering diverse perspectives around the way we move.</li>
+TWHA904: identical 0 / changed 1
+  ~ TWHA905_0_0.html: -1 +1
+     - <h5>I can</h5>
+     + <h5>I can:</h5>
+TWHA905: identical 0 / changed 1
+  ~ TWHA906_0_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+TWHA906: identical 0 / changed 1
+TWHK901: identical 1 / changed 0
+  ~ TWHK903_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+TWHK903: identical 0 / changed 1
+XDLS501: identical 8 / changed 0
+  ~ XDLS502_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS502: identical 4 / changed 1
+  ~ XDLS901_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS901: identical 4 / changed 1
+XDLS902: identical 8 / changed 0
+  ~ XDLS903_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS903: identical 7 / changed 1
+  ~ XDLS904_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS904: identical 7 / changed 1
+  ~ XDLS905_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS905: identical 7 / changed 1
+  ~ XDLS906_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS906: identical 7 / changed 1
+  ~ XDLS908_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS908: identical 8 / changed 1
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+  ~ XDLS912_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XDLS912: identical 5 / changed 1
+  ~ XFUN01_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XFUN01: identical 0 / changed 1
+  ~ XFUN02_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XFUN02_2_0.html: -3 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>We are learning:</b></p>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XFUN02_3_0.html: -3 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>We are learning:</b></p>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XFUN02_4_0.html: -3 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>We are learning:</b></p>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XFUN02_5_0.html: -3 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>We are learning:</b></p>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XFUN02_6_0.html: -3 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>We are learning:</b></p>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XFUN02: identical 1 / changed 6
+  ~ XGF9001_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XGF9001: identical 6 / changed 1
+  ~ XGF9002_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XGF9002: identical 9 / changed 1
+  ~ XGF9003_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XGF9003: identical 5 / changed 1
+  ~ XGF9004_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XGF9004: identical 17 / changed 1
+  ~ XGF9006_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XGF9006: identical 7 / changed 1
+  ~ XLP01_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XLP01_1_0.html: -1 +1
+     - <h5><b>I can:</b></h5>
+     + <h5>I can:</h5>
+XLP01: identical 3 / changed 2
+  ~ XLP02_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XLP02: identical 6 / changed 1
+  ~ XLP03_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can</b>:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XLP03_1_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XLP03_3_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XLP03_4_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XLP03_5_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XLP03: identical 1 / changed 5
+  ~ XLP04_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XLP04: identical 4 / changed 1
+  ~ XLP05_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XLP05: identical 5 / changed 1
+XLP06: identical 3 / changed 0
+  ~ XMES101_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XMES101: identical 8 / changed 1
+  ~ XMES102_0_0.html: -1 +1
+     - <p>I can:</p>
+     + <h5>I can:</h5>
+  ~ XMES102_4_0.html: -6 +6
+     - <h5>We are learning to:</h5>
+     - <li>name places in your whare that are tapu/sacred, (e.g. sleep, eat, toilet, relax) using words or symbols</l
+     - <li>recognise/match some words to pictures that describe where I live such as bedroom, kitchen, window, roof, 
+     - <li>talk/share about places you like/don&#39;t like within your living areas and give reasons</li>
+     - <li>describe where you live using words for colour, shape, material and texture.</li>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to name places in your whare that are tapu/sacred, (e.g. sleep, eat, toilet, relax) using words or symbols
+     + <li>to recognise/match some words to pictures that describe where I live such as bedroom, kitchen, window, roo
+     + <li>to talk/share about places you like/don&#39;t like within your living areas and give reasons</li>
+     + <li>to describe where you live using words for colour, shape, material and texture.</li>
+     + <h5>You will show your understanding by:</h5>
+XMES102: identical 4 / changed 2
+  ~ XMES103_0_0.html: -8 +8
+     - <p><b>We are learning to:</b></p>
+     - <li>connect with my people using questions, expressions, and sensory communication</li>
+     - <li>enjoy stories and songs about my family, whakapapa, and traditions</li>
+     - <li>explore my whakapapa by reading, writing, and listening about my whānau using words and pictures</li>
+     - <li>learn about our traditions through different ways of communicating</li>
+     - <li>share our customs using words or symbols to describe whānau events</li>
+     - <li>use maths to group and describe whānau and caregivers.</li>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <li>to connect with my people using questions, expressions, and sensory communication</li>
+     + <li>to enjoy stories and songs about my family, whakapapa, and traditions</li>
+     + <li>to explore my whakapapa by reading, writing, and listening about my whānau using words and pictures</li>
+     + <li>to learn about our traditions through different ways of communicating</li>
+     + <li>to share our customs using words or symbols to describe whānau events</li>
+     + <li>to use maths to group and describe whānau and caregivers.</li>
+     + <h5>I can:</h5>
+  ~ XMES103_1_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>engage with my people through questions, expressions, and sensory communication</li>
+     - <li>learn about my whānau and whakapapa through reading, writing, and pictures.</li>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <li>to engage with my people through questions, expressions, and sensory communication</li>
+     + <li>to learn about my whānau and whakapapa through reading, writing, and pictures.</li>
+     + <h5>I can:</h5>
+XMES103: identical 4 / changed 2
+  ~ XMES201_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES201_1_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES201_2_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES201_3_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES201_4_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES201_5_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XMES201: identical 0 / changed 6
+  ~ XMES203_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES203_1_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES203_2_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES203_3_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES203_4_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XMES203_5_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XMES203: identical 0 / changed 6
+  ~ XTAS101_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XTAS101: identical 4 / changed 1
+  ~ XTAS102_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS102_1_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS102_2_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS102_3_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS102_4_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS102_5_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XTAS102: identical 0 / changed 6
+  ~ XTAS103_0_0.html: -2 +2
+     - <p><b>We are learning:</b></p>
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS103_1_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS103_2_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS103_3_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ XTAS103_4_0.html: -2 +2
+     - <h5><b>We are learning:</b></h5>
+     - <h5><b>I can:</b></h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+XTAS103: identical 2 / changed 5
+XWHA01: identical 2 / changed 0
+  ~ XWHA02_0_0.html: -1 +1
+     - <p>Ākonga will be given choice to</p>
+     + <h5>Ākonga will be given choice to:</h5>
+XWHA02: identical 5 / changed 1
+
+TOTAL: identical 437 / changed 106 / missing 0 over 104 modules
+CHANGED: OSSC501/OSSC501_0_0.html OSSM301/OSSM301_0_0.html OSSM401/OSSM401_0_0.html PES1002/PES1002_4_0.html PES1005/PES1005_2_0.html PES1005/PES1005_9_0.html PES1007/PES1007_1_0.html PES1007/PES1007_2_0.html PES1007/PES1007_3_0.html PES1007/PES1007_4_0.html PES1007/PES1007_5_0.html PES1007/PES1007_8_0.html PES1007/PES1007_9_0.html PES1007/PES1007_10_0.html PES1008/PES1008_1_0.html PES1008/PES1008_2_0.html PES1008/PES1008_4_0.html PES1008/PES1008_6_0.html PES1008/PES1008_8_0.html PES1008/PES1008_10_0.html PES1008/PES1008_12_0.html PES1008/PES1008_14_0.html PES1008/PES1008_16_0.html PHE1007/PHE1007_0_0.html SCCH301/SCCH301_0_0.html SCPH301/SCPH301_0_0.html SCPH301/SCPH301_1_0.html SCPH301/SCPH301_2_0.html SCPH301/SCPH301_3_0.html SCPH301/SCPH301_4_0.html SCPH301/SCPH301_5_0.html SCPH301/SCPH301_6_0.html SCPH301/SCPH301_7_0.html SCPH301/SCPH301_8_0.html SSCI205/SSCI205_0_0.html SSOG101/SSOG101_0_0.html SSOG103/SSOG103_0_0.html SSOG301/SSOG301_0_0.html TEDC401/TEDC401_0_0.html TEDC402/TEDC402_0_0.html TWHA902/TWHA902_0_0.html TWHA903/TWHA903_0_0.html TWHA904/TWHA904_0_0.html TWHA905/TWHA905_0_0.html TWHA906/TWHA906_0_0.html TWHK903/TWHK903_0_0.html XDLS502/XDLS502_0_0.html XDLS901/XDLS901_0_0.html XDLS903/XDLS903_0_0.html XDLS904/XDLS904_0_0.html XDLS905/XDLS905_0_0.html XDLS906/XDLS906_0_0.html XDLS908/XDLS908_0_0.html XDLS912/XDLS912_0_0.html XFUN01/XFUN01_0_0.html XFUN02/XFUN02_0_0.html XFUN02/XFUN02_2_0.html XFUN02/XFUN02_3_0.html XFUN02/XFUN02_4_0.html XFUN02/XFUN02_5_0.html XFUN02/XFUN02_6_0.html XGF9001/XGF9001_0_0.html XGF9002/XGF9002_0_0.html XGF9003/XGF9003_0_0.html XGF9004/XGF9004_0_0.html XGF9006/XGF9006_0_0.html XLP01/XLP01_0_0.html XLP01/XLP01_1_0.html XLP02/XLP02_0_0.html XLP03/XLP03_0_0.html XLP03/XLP03_1_0.html XLP03/XLP03_3_0.html XLP03/XLP03_4_0.html XLP03/XLP03_5_0.html XLP04/XLP04_0_0.html XLP05/XLP05_0_0.html XMES101/XMES101_0_0.html XMES102/XMES102_0_0.html XMES102/XMES102_4_0.html XMES103/XMES103_0_0.html XMES103/XMES103_1_0.html XMES201/XMES201_0_0.html XMES201/XMES201_1_0.html XMES201/XMES201_2_0.html XMES201/XMES201_3_0.html XMES201/XMES201_4_0.html XMES201/XMES201_5_0.html XMES203/XMES203_0_0.html XMES203/XMES203_1_0.html XMES203/XMES203_2_0.html XMES203/XMES203_3_0.html XMES203/XMES203_4_0.html XMES203/XMES203_5_0.html XTAS101/XTAS101_0_0.html XTAS102/XTAS102_0_0.html XTAS102/XTAS102_1_0.html XTAS102/XTAS102_2_0.html XTAS102/XTAS102_3_0.html XTAS102/XTAS102_4_0.html XTAS102/XTAS102_5_0.html XTAS103/XTAS103_0_0.html XTAS103/XTAS103_1_0.html XTAS103/XTAS103_2_0.html XTAS103/XTAS103_3_0.html XTAS103/XTAS103_4_0.html XWHA02/XWHA02_0_0.html

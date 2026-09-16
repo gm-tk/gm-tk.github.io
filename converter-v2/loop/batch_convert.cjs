@@ -162,7 +162,16 @@ async function convertModule(mod) {
 	}
 
 	fs.mkdirSync(OUT, { recursive: true });
-	const results = fs.existsSync(RESULTS) ? j(RESULTS) : {};
+	// ROUND 349: batch_results.json is the SECOND file the parallel workers race on (the r348 fix covered the oembed cache):
+	// a torn-tolerant read (it is a diagnostic ledger — warn and start empty) and, below, an atomic MERGED write.
+	const readResults = () => { if (!fs.existsSync(RESULTS)) return {}; try { return j(RESULTS); } catch (e) { console.error(`batch_results.json unreadable (${e.message}) — starting empty`); return {}; } };
+	const results = readResults();
+	const saveResults = () => {
+		const merged = { ...readResults(), ...results };   // another worker's rows are kept; this worker's rows win
+		const tmp = `${RESULTS}.${process.pid}.tmp`;
+		fs.writeFileSync(tmp, JSON.stringify(merged, null, 1));
+		fs.renameSync(tmp, RESULTS);
+	};
 
 	log(`BATCH START — ${modules.length} modules`);
 	let done = 0;
@@ -195,7 +204,7 @@ async function convertModule(mod) {
 		}
 		fs.writeFileSync(marker, JSON.stringify(entry, null, 1));
 		results[mod] = entry;
-		fs.writeFileSync(RESULTS, JSON.stringify(results, null, 1));
+		saveResults();
 		done++;
 		log(`${done}/${modules.length} ${mod} ${entry.error ? `ERROR: ${entry.error}` : `ok (${entry.pageCount} pages, ${entry.interactiveCount} interactives, ${entry.redFlagCount} flags, ${entry.ackTodoCount} ackTodos)`}`);
 	}

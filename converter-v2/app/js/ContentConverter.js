@@ -3327,6 +3327,19 @@ class ContentConverter {
 			}
 		}
 
+		// ROUND 349 (Chris's D10-9 — KB constraint 23 / 01B): every learning / success LABEL in the module menu is an
+		// <h5> in the KB's form, a section title directly above a label is dropped on a lesson page, the overview tab's
+		// labels are <h5> too, and the writer's "We are learning to:" family becomes "We are learning:" with its items in
+		// "to …" form (constraint 24). Runs AFTER the lesson-repeat copy above so a repeated overview menu gets the
+		// lesson treatment on a lesson page. Data flag: menu.lesson_label_form. Env toggle: MENULABEL_OFF.
+		for (const k of ["tab1", "tab2", "content", "left", "right", "wtPanes", "reoPanes"]) {
+			if (typeof menu[k] === "string" && menu[k]) menu[k] = this.#menuLabelForm(menu[k], !!page.isOverview);
+		}
+		// the two-column / fundamentals / tabbed-overview panes are ARRAYS of { cls, html } columns
+		for (const k of ["tab1Cols", "tab2Cols", "funLiCols", "cols"]) {
+			if (Array.isArray(menu[k])) for (const c of menu[k]) if (c && typeof c.html === "string" && c.html) c.html = this.#menuLabelForm(c.html, !!page.isOverview);
+		}
+
 		// THE 6-LEVEL PRECEDENCE CASCADE — live engine application. This lets a module's
 		// overview menu inherit structural width decisions from the nearest previously-developed
 		// SIBLING module (walking a 6-level fallback chain: doc-14 override, then series, phase,
@@ -3397,6 +3410,104 @@ class ContentConverter {
 		// #footer). Scoped specifically to CED so the BLL family's footers stay byte-unchanged.
 		return { bodyHtml: finalBody, menu, titleBar, inquiryActive,
 			cedInquiry: cedInquiryMode && finalBody !== bodyHtml };
+	};
+
+	/**
+	 * ROUND 349 — THE LESSON-MENU LABEL FORM (Chris's decision D10-9, 2026-09-16; KB constraint 23 (Universal) +
+	 * 01B "Lesson Pages — Simplified Module Menu" + the overview-tab label row). A post-pass on ONE menu pane's HTML
+	 * string (MenuBuilder.buildMenu returns an object of pane strings). Inside the pane:
+	 *   - a LABEL = a <p> / <h3> / <h4> / <h6> (not inside a widget subtree) whose folded text starts with a learning or
+	 *     success lead-in (data role_lexicon), is at most label_max_words long, and either ends with a colon / an ellipsis
+	 *     or is followed by a list → <h{level}> in the KB's form (trailing "..." / "…" / nothing → ":");
+	 *   - the writer's "We are learning to:" family (learning_to_pattern, tested on the FOLDED text where "about/to" reads "about to" — "to:", "to...", "about/to …") → learning_label
+	 *     "We are learning:" AND each <li> of the list that follows gains item_prefix "to " (unless it already starts with it)
+	 *     with its first letter lowercased, so constraint 24's "verb form matching heading context" still holds — the gold's
+	 *     own mechanical re-wording (CEDO502 / ENGC401 …); "We are learning about:" is kept (a verb rewrite would be editorial);
+	 *   - on a LESSON page a section TITLE (title_lexicon — "Learning intentions", "How will I know…", "Success criteria")
+	 *     that sits IMMEDIATELY ABOVE a label is dropped (01B 223 — the h5 IS the label). A title followed by its own list
+	 *     is that list's label (kept); a two-column banner followed by a curriculum heading is kept; on the OVERVIEW page
+	 *     every title stays (01B's <h4><span> overview titles);
+	 *   - the OVERVIEW tab's "We are learning:" / "I can:" labels are <h5> too (01B 196–197) — the r81 / r142 eng- and
+	 *     banner-family <p> form is retired for the labels only;
+	 *   - a SENTENCE (a lead-in longer than label_max_words, or with no colon / ellipsis and no list after it — the
+	 *     constraint-70 OSSC "Ākonga will learn …" lead-in, "You will be able to …") is never a label and stays <p>;
+	 *   - the SUCCESS label keeps the writer's wording (colon form only) unless year_table names the module's year band
+	 *     (01B 240–244: "I can:" years 7–10 / "You will show your understanding by:" years 1–6) — the data does not hold a
+	 *     year today, so the table ships empty (the hook a data / KB session fills).
+	 * The menu is #header-scoped (invisible to compare_structure / body_compare); the node changes are skeleton-visible and
+	 * NAMED (KB over gold). Verifier: reference/tests/_verify_menulabels.cjs (protected).
+	 * Data flag: menu.lesson_label_form   Env toggle: MENULABEL_OFF
+	 */
+	static #menuLabelForm(html, isOverview = false) {
+		const cfg = DataService.Data.EmitTemplates.menu?.lesson_label_form;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "MENULABEL_OFF"]) return html;
+		const level = cfg.level ?? 5;
+		const maxWords = cfg.label_max_words ?? 8;
+		const learn = new RegExp(cfg.role_lexicon?.learning ?? "^(we are learning|learning intentions?|i am learning to)\\b", "i");
+		const succ = new RegExp(cfg.role_lexicon?.success ?? "^(i can|you will show your understanding|success criteria|how will i know)\\b", "i");
+		const toPat = new RegExp(cfg.learning_to_pattern ?? "^we are learning (?:about )?to$", "i");
+		const titles = new Set((cfg.title_lexicon ?? []).map((t) => String(t).toLowerCase()));
+		const fold = (t) => t.replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/&[a-z]+;/gi, " ")
+			.toLowerCase().replace(/[‘’`´]/g, "'").replace(/[^a-z0-9'āēīōū ]+/gi, " ").replace(/\s+/g, " ").trim();
+		const text = (inner) => inner.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();   // the label's own words, tags dropped
+		const skip = new Set(DataService.Data.EmitTemplates.body_region?.heading_relevel?.skip_classes ?? []);
+		const widget = this.#widgetRanges(html, skip);
+		const inWidget = (pos) => widget.some(([a, b]) => pos >= a && pos < b);
+		// tokenise the pane: heading / paragraph blocks and (flat) lists, in document order
+		const els = [];
+		const re = /<(p|h[1-6])\b([^>]*)>([\s\S]*?)<\/\1>|<(ul|ol)\b[^>]*>[\s\S]*?<\/\4>/gi;
+		let m;
+		while ((m = re.exec(html)) !== null) {
+			if (m[4]) { els.push({ kind: "list", start: m.index, end: m.index + m[0].length, raw: m[0] }); continue; }
+			const inner = m[3], attrs = m[2] || "", f = fold(inner), words = f ? f.split(" ").length : 0;
+			const role = succ.test(f) ? "success" : (learn.test(f) ? "learning" : null);
+			const tail = text(inner);
+			const punct = /:\s*$/.test(tail) ? "colon" : (/(\.\.\.|…)\s*$/.test(tail) ? "ellipsis" : "");
+			els.push({ kind: "blk", tag: m[1].toLowerCase(), attrs, start: m.index, end: m.index + m[0].length, raw: m[0], inner, f, words, role, punct,
+				title: titles.has(f) || titles.has(f.replace(/\s*:$/, "")), inWidget: inWidget(m.index) });
+		}
+		const isLabel = (e, i) => {
+			if (!e || e.kind !== "blk" || e.inWidget || !e.role || e.title) return false;
+			if (e.words > maxWords) return false;   // a sentence (the c70 lead-in) is never a label
+			const nxt = els[i + 1];
+			return e.punct !== "" || (nxt && nxt.kind === "list");
+		};
+		const out = []; let pos = 0, prefixNext = null;
+		for (let i = 0; i < els.length; i++) {
+			const e = els[i];
+			out.push(html.slice(pos, e.start)); pos = e.end;
+			if (e.kind === "list") {
+				if (prefixNext) {
+					// constraint 24: the items of a normalised "We are learning:" list read "to …", first letter lowercased
+					const pre = prefixNext; prefixNext = null;
+					out.push(e.raw.replace(/(<li\b[^>]*>)((?:\s*<[^>]+>)*\s*)([\s\S]*?)(<\/li>)/gi, (all, open, lead, body, close) => {
+						if (new RegExp("^\\s*" + pre.trim() + "\\b", "i").test(body.replace(/<[^>]+>/g, ""))) return all;
+						const fixed = body.replace(/^(\s*)(\S)/, (mm, sp, ch) => sp + pre + ch.toLowerCase());
+						return open + lead + fixed + close;
+					}));
+				} else out.push(e.raw);
+				continue;
+			}
+			// (d) a lesson-page section title directly above a label is dropped (01B 223)
+			if (e.title && !isOverview && cfg.drop_titles !== false && !e.inWidget && isLabel(els[i + 1], i + 1)) {
+				// swallow the whitespace that separated the title from the label
+				const after = html.slice(e.end, els[i + 1].start);
+				if (/^\s*$/.test(after)) { pos = els[i + 1].start; }
+				continue;
+			}
+			if (!isLabel(e, i) || (isOverview && cfg.overview_labels === false)) { out.push(e.raw); continue; }
+			// (a) + (b) + (c): the label in the KB's form
+			let label = text(e.inner).replace(/\s*(\.\.\.|…|\.|:)+\s*$/g, "").trim();
+			const core = fold(label);
+			if (cfg.learning_to_normalise !== false && e.role === "learning" && toPat.test(core)) {
+				label = String(cfg.learning_label ?? "We are learning:").replace(/:$/, ""); prefixNext = String(cfg.item_prefix ?? "to ");
+			}
+			if (cfg.colon_form !== false) label += ":";
+			out.push(`<h${level}${e.attrs}>${label}</h${level}>`);   // the element's own attributes are kept (the MTK menus' <h5 eng> / <h5 reo>)
+		}
+		out.push(html.slice(pos));
+		return out.join("");
 	};
 
 	/**

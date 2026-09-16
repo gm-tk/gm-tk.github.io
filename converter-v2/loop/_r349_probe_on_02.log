@@ -1,0 +1,1406 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+  ~ EXPFUN06_0_0.html: -2 +2
+     - <p>We are learning about</p>
+     - <p>I can:</p>
+     + <h5>We are learning about:</h5>
+     + <h5>I can:</h5>
+EXPFUN06: identical 0 / changed 1
+EXPFUN07: identical 1 / changed 0
+  ~ HES1003_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+HES1003: identical 8 / changed 1
+  ~ HES1004_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+HES1004: identical 4 / changed 1
+HES1005: identical 9 / changed 0
+  ~ HES1006_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+HES1006: identical 7 / changed 1
+  ~ HES1007_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HES1007: identical 9 / changed 1
+  ~ HIS1001_4_0.html: -4 +4
+     - <h5>We are learning to...</h5>
+     - <li>find evidence in a historical source</li>
+     - <li>explain the significance of the bombing of Hiroshima</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to find evidence in a historical source</li>
+     + <li>to explain the significance of the bombing of Hiroshima</li>
+     + <h5>You will show your understanding by:</h5>
+HIS1001: identical 7 / changed 1
+  ~ HIS1002_2_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>consider actions, responses, motivations, experiences, beliefs and values in identifying perspectives</li>
+     - <li>make inferences based on evidence.</li>
+     + <h5>We are learning:</h5>
+     + <li>to consider actions, responses, motivations, experiences, beliefs and values in identifying perspectives</
+     + <li>to make inferences based on evidence.</li>
+  ~ HIS1002_3_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>identify and describe the influences on the perspective of a person or group.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe the influences on the perspective of a person or group.</li>
+  ~ HIS1002_5_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>make links between perspectives on an event and the wider historical context</li>
+     - <li>use evidence in writing.</li>
+     + <h5>We are learning:</h5>
+     + <li>to make links between perspectives on an event and the wider historical context</li>
+     + <li>to use evidence in writing.</li>
+  ~ HIS1002_7_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>identify primary and secondary sources</li>
+     - <li>understand the value of different sources.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify primary and secondary sources</li>
+     + <li>to understand the value of different sources.</li>
+  ~ HIS1002_9_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>answer a focus question with evidence</li>
+     - <li>evaluate the usefulness and relevance of a source.</li>
+     + <h5>We are learning:</h5>
+     + <li>to answer a focus question with evidence</li>
+     + <li>to evaluate the usefulness and relevance of a source.</li>
+  ~ HIS1002_11_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>answer a focus question with evidence</li>
+     - <li>identify and explain the strengths and weaknesses, usefulness and relevance of sources.</li>
+     + <h5>We are learning:</h5>
+     + <li>to answer a focus question with evidence</li>
+     + <li>to identify and explain the strengths and weaknesses, usefulness and relevance of sources.</li>
+  ~ HIS1002_13_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>use the concepts of whakapapa, effect and identity in understanding histories</li>
+     - <li>recognise the impact of the nuclear-free movement on people and place.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use the concepts of whakapapa, effect and identity in understanding histories</li>
+     + <li>to recognise the impact of the nuclear-free movement on people and place.</li>
+  ~ HIS1002_15_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>use historical concepts to explore a context</li>
+     - <li>examine the concept of mana in relation to the leadership of resistance movements.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use historical concepts to explore a context</li>
+     + <li>to examine the concept of mana in relation to the leadership of resistance movements.</li>
+  ~ HIS1002_17_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>write an explanation with evidence</li>
+     - <li>apply multiple concepts to a variety of contexts.</li>
+     + <h5>We are learning:</h5>
+     + <li>to write an explanation with evidence</li>
+     + <li>to apply multiple concepts to a variety of contexts.</li>
+  ~ HIS1002_19_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>make links between concepts across more than one context.</li>
+     + <h5>We are learning:</h5>
+     + <li>to make links between concepts across more than one context.</li>
+HIS1002: identical 11 / changed 10
+  ~ HIS1003_0_0.html: -1 +1
+     - <p><b>We are learning to understand that:</b></p>
+     + <h5>We are learning to understand that:</h5>
+HIS1003: identical 10 / changed 1
+HIS1004: identical 11 / changed 0
+  ~ HIS1005_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ HIS1005_1_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand and explain sovereignty in the context of Aotearoa New Zealand</li>
+     - <li>analyse the usefulness and reliability of primary sources.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand and explain sovereignty in the context of Aotearoa New Zealand</li>
+     + <li>to analyse the usefulness and reliability of primary sources.</li>
+  ~ HIS1005_2_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand and explain sovereignty in the context of Aotearoa New Zealand</li>
+     - <li>analyse the usefulness and reliability of primary sources.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand and explain sovereignty in the context of Aotearoa New Zealand</li>
+     + <li>to analyse the usefulness and reliability of primary sources.</li>
+  ~ HIS1005_5_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>identify forms of resistance to colonisation</li>
+     - <li>evaluate historical sources.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify forms of resistance to colonisation</li>
+     + <li>to evaluate historical sources.</li>
+  ~ HIS1005_6_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>engage respectfully with difficult histories</li>
+     - <li>understand how discrimination has been a part of our histories.</li>
+     + <h5>We are learning:</h5>
+     + <li>to engage respectfully with difficult histories</li>
+     + <li>to understand how discrimination has been a part of our histories.</li>
+  ~ HIS1005_7_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand slavery and its role in history</li>
+     - <li>understand the historical context of the Trans-Atlantic slave trade.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand slavery and its role in history</li>
+     + <li>to understand the historical context of the Trans-Atlantic slave trade.</li>
+  ~ HIS1005_8_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand slavery and its role in history</li>
+     - <li>understand the historical context of the slavery in the Pacific.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand slavery and its role in history</li>
+     + <li>to understand the historical context of the slavery in the Pacific.</li>
+  ~ HIS1005_9_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand that discrimination based on race was present at the founding of the United States of America</
+     - <li>understand the ways in which discrimination was embedded in government structures and systems.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand that discrimination based on race was present at the founding of the United States of Americ
+     + <li>to understand the ways in which discrimination was embedded in government structures and systems.</li>
+  ~ HIS1005_10_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>explore historical relationships and explain the connections between the past and the present</li>
+     - <li>use poems, songs and maps as sources of information.</li>
+     + <h5>We are learning:</h5>
+     + <li>to explore historical relationships and explain the connections between the past and the present</li>
+     + <li>to use poems, songs and maps as sources of information.</li>
+HIS1005: identical 6 / changed 9
+  ~ HIS1006_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ HIS1006_1_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>evaluate historical sources</li>
+     - <li>explain the strengths, limitations, reliability and usefulness of historical sources</li>
+     - <li>think about perspectives and causality in history.</li>
+     + <h5>We are learning:</h5>
+     + <li>to evaluate historical sources</li>
+     + <li>to explain the strengths, limitations, reliability and usefulness of historical sources</li>
+     + <li>to think about perspectives and causality in history.</li>
+  ~ HIS1006_2_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>evaluate the limitations of historical sources</li>
+     - <li>evaluate the reliability of historical sources</li>
+     - <li>explain differing perspectives on the past.</li>
+     + <h5>We are learning:</h5>
+     + <li>to evaluate the limitations of historical sources</li>
+     + <li>to evaluate the reliability of historical sources</li>
+     + <li>to explain differing perspectives on the past.</li>
+  ~ HIS1006_3_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>read sources for understanding and information</li>
+     - <li>compare ideas across multiple sources</li>
+     - <li>evaluate the strengths and limitations of source.</li>
+     + <h5>We are learning:</h5>
+     + <li>to read sources for understanding and information</li>
+     + <li>to compare ideas across multiple sources</li>
+     + <li>to evaluate the strengths and limitations of source.</li>
+  ~ HIS1006_5_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>identify and explain historical perspectives</li>
+     - <li>analyse the significance of an event using evidence.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify and explain historical perspectives</li>
+     + <li>to analyse the significance of an event using evidence.</li>
+  ~ HIS1006_6_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>extract information from sources</li>
+     - <li>identify the barriers to voting for African Americans.</li>
+     + <h5>We are learning:</h5>
+     + <li>to extract information from sources</li>
+     + <li>to identify the barriers to voting for African Americans.</li>
+  ~ HIS1006_7_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>identify causation, that is, the causes and effects of events</li>
+     - <li>identify perspectives in a historical source.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify causation, that is, the causes and effects of events</li>
+     + <li>to identify perspectives in a historical source.</li>
+  ~ HIS1006_8_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand that historical narratives are constructed and contested</li>
+     - <li>construct a paragraph with historical evidence.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand that historical narratives are constructed and contested</li>
+     + <li>to construct a paragraph with historical evidence.</li>
+HIS1006: identical 7 / changed 8
+  ~ HIS1007_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ HIS1007_1_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand slavery and its role in history</li>
+     - <li>understand the historical context of the Trans-Atlantic slave trade.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand slavery and its role in history</li>
+     + <li>to understand the historical context of the Trans-Atlantic slave trade.</li>
+  ~ HIS1007_2_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand slavery and its role in history</li>
+     - <li>understand the historical context of the slavery in the Pacific.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand slavery and its role in history</li>
+     + <li>to understand the historical context of the slavery in the Pacific.</li>
+  ~ HIS1007_3_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>understand that discrimination based on race was present at the founding of the United States of America</
+     - <li>understand the ways in which discrimination was embedded in government structures and systems.</li>
+     + <h5>We are learning:</h5>
+     + <li>to understand that discrimination based on race was present at the founding of the United States of Americ
+     + <li>to understand the ways in which discrimination was embedded in government structures and systems.</li>
+  ~ HIS1007_4_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>explore historical relationships and explain the connections between the past and the present</li>
+     - <li>use poems, songs and maps as sources of information.</li>
+     + <h5>We are learning:</h5>
+     + <li>to explore historical relationships and explain the connections between the past and the present</li>
+     + <li>to use poems, songs and maps as sources of information.</li>
+HIS1007: identical 2 / changed 5
+  ~ HIS1008_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+  ~ HIS1008_1_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>evaluate historical sources</li>
+     - <li>explain the strengths, limitations, reliability and usefulness of historical sources</li>
+     - <li>think about perspectives and causality in history.</li>
+     + <h5>We are learning:</h5>
+     + <li>to evaluate historical sources</li>
+     + <li>to explain the strengths, limitations, reliability and usefulness of historical sources</li>
+     + <li>to think about perspectives and causality in history.</li>
+  ~ HIS1008_2_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>evaluate the limitations of historical sources</li>
+     - <li>evaluate the reliability of historical sources</li>
+     - <li>explain differing perspectives on the past.</li>
+     + <h5>We are learning:</h5>
+     + <li>to evaluate the limitations of historical sources</li>
+     + <li>to evaluate the reliability of historical sources</li>
+     + <li>to explain differing perspectives on the past.</li>
+  ~ HIS1008_3_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>read sources for understanding and information</li>
+     - <li>compare ideas across multiple sources</li>
+     - <li>evaluate the strengths and limitations of source.</li>
+     + <h5>We are learning:</h5>
+     + <li>to read sources for understanding and information</li>
+     + <li>to compare ideas across multiple sources</li>
+     + <li>to evaluate the strengths and limitations of source.</li>
+  ~ HIS1008_5_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>identify and explain historical perspectives</li>
+     - <li>analyse the significance of an event using evidence.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify and explain historical perspectives</li>
+     + <li>to analyse the significance of an event using evidence.</li>
+  ~ HIS1008_6_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>extract information from sources</li>
+     - <li>identify the barriers to voting for African Americans.</li>
+     + <h5>We are learning:</h5>
+     + <li>to extract information from sources</li>
+     + <li>to identify the barriers to voting for African Americans.</li>
+  ~ HIS1008_7_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>identify causation, that is, the causes and effects of events</li>
+     - <li>identify perspectives in a historical source.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify causation, that is, the causes and effects of events</li>
+     + <li>to identify perspectives in a historical source.</li>
+HIS1008: identical 5 / changed 7
+  ~ HPFUN101_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN101: identical 0 / changed 1
+  ~ HPFUN102_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN102: identical 0 / changed 1
+  ~ HPFUN103_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN103: identical 0 / changed 1
+  ~ HPFUN201_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN201: identical 0 / changed 1
+  ~ HPFUN202_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN202: identical 0 / changed 1
+  ~ HPFUN203_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN203: identical 0 / changed 1
+  ~ HPFUN301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN301: identical 0 / changed 1
+  ~ HPFUN302_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN302: identical 0 / changed 1
+  ~ HPFUN303_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN303: identical 0 / changed 1
+  ~ HPFUN401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN401: identical 0 / changed 1
+  ~ HPFUN402_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN402: identical 0 / changed 1
+  ~ HPFUN403_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN403: identical 0 / changed 1
+  ~ HPFUN901_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN901: identical 0 / changed 1
+  ~ HPFUN902_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN902: identical 0 / changed 1
+  ~ HPFUN903_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPFUN903: identical 0 / changed 1
+  ~ HPRE203_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+HPRE203: identical 7 / changed 1
+  ~ MXDB102_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+MXDB102: identical 11 / changed 1
+  ~ MXDB201_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+MXDB201: identical 6 / changed 1
+  ~ MXDB202_0_0.html: -2 +2
+     - <p>Ākonga can:</p>
+     - <p>Ākonga will:</p>
+     + <h5>Ākonga can:</h5>
+     + <h5>Ākonga will:</h5>
+  ~ MXDB202_1_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p>Ākonga can:</p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p>Ākonga will:</p>
+     + <h5>Ākonga can:</h5>
+     + <h5>Ākonga will:</h5>
+  ~ MXDB202_2_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p>Ākonga can:</p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p>Ākonga will:</p>
+     + <h5>Ākonga can:</h5>
+     + <h5>Ākonga will:</h5>
+  ~ MXDB202_3_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p>Ākonga can:</p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p>Ākonga will:</p>
+     + <h5>Ākonga can:</h5>
+     + <h5>Ākonga will:</h5>
+  ~ MXDB202_4_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p>Ākonga can:</p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p>Ākonga will:</p>
+     + <h5>Ākonga can:</h5>
+     + <h5>Ākonga will:</h5>
+  ~ MXDB202_5_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p>Ākonga can:</p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p>Ākonga will:</p>
+     + <h5>Ākonga can:</h5>
+     + <h5>Ākonga will:</h5>
+MXDB202: identical 0 / changed 6
+  ~ MXDB301_0_0.html: -2 +2
+     - <p><b>Ākonga will:</b></p>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXDB301_1_0.html: -3 +3
+     - <h5>We are learning to:.</h5>
+     - <li>read and collect data, analyse it and communicate findings in context</li>
+     - <li>pose investigative questions that can be answered with secondary data.</li>
+     + <h5>We are learning:</h5>
+     + <li>to read and collect data, analyse it and communicate findings in context</li>
+     + <li>to pose investigative questions that can be answered with secondary data.</li>
+  ~ MXDB301_3_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>visualise, estimate and then measure length and area using appropriate metric units using food and retail 
+     + <h5>We are learning:</h5>
+     + <li>to visualise, estimate and then measure length and area using appropriate metric units using food and reta
+  ~ MXDB301_4_0_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>find the area of the shape faces of food and retail packaging composed of rectangles and triangles.</li>
+     + <h5>We are learning:</h5>
+     + <li>to find the area of the shape faces of food and retail packaging composed of rectangles and triangles.</li
+  ~ MXDB301_7_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>use plan-view drawings to visualise and construct three-dimensional shapes of food and retail packaging.</
+     + <h5>We are learning:</h5>
+     + <li>to use plan-view drawings to visualise and construct three-dimensional shapes of food and retail packaging
+MXDB301: identical 3 / changed 5
+  ~ MXDB302_0_0.html: -6 +6
+     - <p>We are learning to:</p>
+     - <li>calculate the perimeter, area and volume of a range of shapes</li>
+     - <li>draw representations of three-dimensional shapes from different perspectives</li>
+     - <li>use tables, rules and graphs to solve problems that involve sequential patterns</li>
+     - <li>add, subtract, multiply and divide decimals to solve real-world problems.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to calculate the perimeter, area and volume of a range of shapes</li>
+     + <li>to draw representations of three-dimensional shapes from different perspectives</li>
+     + <li>to use tables, rules and graphs to solve problems that involve sequential patterns</li>
+     + <li>to add, subtract, multiply and divide decimals to solve real-world problems.</li>
+     + <h5>I can:</h5>
+  ~ MXDB302_1_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>convert between metric units of length.</li>
+     + <h5>We are learning:</h5>
+     + <li>to convert between metric units of length.</li>
+  ~ MXDB302_2_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>find the perimeter and area of a range of simple and compound shapes.</li>
+     + <h5>We are learning:</h5>
+     + <li>to find the perimeter and area of a range of simple and compound shapes.</li>
+  ~ MXDB302_3_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>draw representations of three-dimensional shapes from different perspectives</li>
+     - <li>draw representations of three-dimensional shapes as two-dimensional images using a bird’s eye view.</li>
+     + <h5>We are learning:</h5>
+     + <li>to draw representations of three-dimensional shapes from different perspectives</li>
+     + <li>to draw representations of three-dimensional shapes as two-dimensional images using a bird’s eye view.</li
+  ~ MXDB302_4_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>use tables, rules and graphs to solve problems that involve sequential patterns</li>
+     - <li>scan a passage to find specific information.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use tables, rules and graphs to solve problems that involve sequential patterns</li>
+     + <li>to scan a passage to find specific information.</li>
+  ~ MXDB302_5_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>calculate volume.</li>
+     + <h5>We are learning:</h5>
+     + <li>to calculate volume.</li>
+  ~ MXDB302_6_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>identify the place values of decimals</li>
+     - <li>read and write decimals correctly</li>
+     - <li>round decimals.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify the place values of decimals</li>
+     + <li>to read and write decimals correctly</li>
+     + <li>to round decimals.</li>
+  ~ MXDB302_7_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>add and subtract decimals.</li>
+     + <h5>We are learning:</h5>
+     + <li>to add and subtract decimals.</li>
+  ~ MXDB302_8_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>multiply and divide decimals.</li>
+     + <h5>We are learning:</h5>
+     + <li>to multiply and divide decimals.</li>
+  ~ MXDB302_9_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>calculate the percentage discounts of dollar amounts.</li>
+     + <h5>We are learning:</h5>
+     + <li>to calculate the percentage discounts of dollar amounts.</li>
+MXDB302: identical 0 / changed 10
+  ~ MXDI101_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+MXDI101: identical 10 / changed 1
+  ~ MXDI102_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+MXDI102: identical 4 / changed 1
+  ~ MXDI103_0_0.html: -1 +1
+     - <p>Ākonga will</p>
+     + <h5>Ākonga will:</h5>
+MXDI103: identical 9 / changed 1
+  ~ MXDI201_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>I can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>I can:</h5>
+MXDI201: identical 10 / changed 1
+  ~ MXDI202_0_0.html: -10 +10
+     - <p>We are learning to:</p>
+     - <li>recognise, read, write numbers up to 1,000,000.</li>
+     - <li>find the difference between 2 different measurements.</li>
+     - <li>round numbers to the nearest 1, 10 or 100.</li>
+     - <li>find the information I need on a table.</li>
+     - <li>read and draw XY graphs.</li>
+     - <li>make a sensible estimation.</li>
+     - <li>convert between units of time.</li>
+     - <li>recognise a right angle and what 180 and 360 degrees looks like.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to recognise, read, write numbers up to 1,000,000.</li>
+     + <li>to find the difference between 2 different measurements.</li>
+     + <li>to round numbers to the nearest 1, 10 or 100.</li>
+     + <li>to find the information I need on a table.</li>
+     + <li>to read and draw XY graphs.</li>
+     + <li>to make a sensible estimation.</li>
+     + <li>to convert between units of time.</li>
+     + <li>to recognise a right angle and what 180 and 360 degrees looks like.</li>
+     + <h5>I can:</h5>
+MXDI202: identical 11 / changed 1
+  ~ MXDI301_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>I can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>I can:</h5>
+  ~ MXDI301_1_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>represent whole numbers and decimal numbers using powers of 10.</li>
+     + <h5>We are learning:</h5>
+     + <li>to represent whole numbers and decimal numbers using powers of 10.</li>
+  ~ MXDI301_3_0.html: -2 +2
+     - <p>We are learning about/to:</p>
+     - <li>Use variables to represent a rule about a linear pattern, and use the rule to make predictions</li>
+     + <h5>We are learning:</h5>
+     + <li>to use variables to represent a rule about a linear pattern, and use the rule to make predictions</li>
+  ~ MXDI301_5_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>represent and connect linear functions using tables, equations, and XY graphs</li>
+     - <li>make statements and make predictions based on data presented.</li>
+     + <h5>We are learning:</h5>
+     + <li>to represent and connect linear functions using tables, equations, and XY graphs</li>
+     + <li>to make statements and make predictions based on data presented.</li>
+MXDI301: identical 1 / changed 4
+  ~ MXEO102_1_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>identify patterns and the rules they follow.</li>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify patterns and the rules they follow.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXEO102_2_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>compose and decompose basic shapes to create new shapes.</li>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to compose and decompose basic shapes to create new shapes.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXEO102_3_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>compare perimeter and area of a shape using square grids.</li>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to compare perimeter and area of a shape using square grids.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXEO102_4_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>identify an example of a (or make my own) kōwhaiwhai design and the story about it.</li>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify an example of a (or make my own) kōwhaiwhai design and the story about it.</li>
+     + <h5>You will show your understanding by:</h5>
+MXEO102: identical 1 / changed 4
+  ~ MXEO201_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXEO201_2_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>calculate the area and perimeter of regular shapes</li>
+     - <li>convert between mm, cm, and m.</li>
+     + <h5>We are learning:</h5>
+     + <li>to calculate the area and perimeter of regular shapes</li>
+     + <li>to convert between mm, cm, and m.</li>
+  ~ MXEO201_4_0.html: -3 +3
+     - <p>We are learning about/to:</p>
+     - <li>recognise and identify the properties of regular polygons</li>
+     - <li>explore and create tessellations using regular and irregular polygons.</li>
+     + <h5>We are learning:</h5>
+     + <li>to recognise and identify the properties of regular polygons</li>
+     + <li>to explore and create tessellations using regular and irregular polygons.</li>
+  ~ MXEO201_6_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>apply multiplication strategies to solve problems involving equal groups, arrays, and repeated addition</l
+     - <li>change the order of factors to make a multiplication problem easier.</li>
+     + <h5>We are learning:</h5>
+     + <li>to apply multiplication strategies to solve problems involving equal groups, arrays, and repeated addition
+     + <li>to change the order of factors to make a multiplication problem easier.</li>
+  ~ MXEO201_8_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>describe and create reflections, rotations, and translations of objects.</li>
+     + <h5>We are learning:</h5>
+     + <li>to describe and create reflections, rotations, and translations of objects.</li>
+MXEO201: identical 5 / changed 5
+  ~ MXEO202_0_0.html: -5 +5
+     - <h5><b>We are learning to:</b></h5>
+     - <li>identify, classify, and describe the properties of polygons (including triangles and quadrilaterals) using
+     - <li>visualise, predict, and identify which shape is a reflection, rotation, or translation of a given 2D shape
+     - <li>use grid references to identify regions and to plot positions on a grid map, interpret and describe pathwa
+     - <p><b>I can:</b></p>
+     + <h5>We are learning:</h5>
+     + <li>to identify, classify, and describe the properties of polygons (including triangles and quadrilaterals) us
+     + <li>to visualise, predict, and identify which shape is a reflection, rotation, or translation of a given 2D sh
+     + <li>to use grid references to identify regions and to plot positions on a grid map, interpret and describe pat
+     + <h5>I can:</h5>
+MXEO202: identical 8 / changed 1
+  ~ MXEO301_0_0.html: -6 +6
+     - <h5>We are learning to:</h5>
+     - <li>use number structures to strengthen number knowledge</li>
+     - <li>add and subtract positive and negative whole numbers</li>
+     - <li>use variables to represent unknown numbers or changing quantities</li>
+     - <li>interpret and communicate the location of positions and pathways using coordinates, angles, measures and c
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to use number structures to strengthen number knowledge</li>
+     + <li>to add and subtract positive and negative whole numbers</li>
+     + <li>to use variables to represent unknown numbers or changing quantities</li>
+     + <li>to interpret and communicate the location of positions and pathways using coordinates, angles, measures an
+     + <h5>I can:</h5>
+  ~ MXEO301_1_0.html: -5 +4
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>identify the special properties of prime and composite numbers</li>
+     - <li>find the prime factors of a number</li>
+     - <li>apply divisibility rules.</li>
+     + <h5>We are learning:</h5>
+     + <li>to identify the special properties of prime and composite numbers</li>
+     + <li>to find the prime factors of a number</li>
+     + <li>to apply divisibility rules.</li>
+  ~ MXEO301_1_1_0.html: -4 +3
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>find the highest common factor (HCF) and least common multiple (LCM) of two numbers.</li>
+     - <li>use exponential notation.</li>
+     + <h5>We are learning:</h5>
+     + <li>to find the highest common factor (HCF) and least common multiple (LCM) of two numbers.</li>
+     + <li>to use exponential notation.</li>
+  ~ MXEO301_2_0.html: -3 +2
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>apply the order of operations rule when calculating or forming expressions.</li>
+     + <h5>We are learning:</h5>
+     + <li>to apply the order of operations rule when calculating or forming expressions.</li>
+  ~ MXEO301_3_0.html: -4 +3
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>order and compare negative integers</li>
+     - <li>place negative numbers on the number line.</li>
+     + <h5>We are learning:</h5>
+     + <li>to order and compare negative integers</li>
+     + <li>to place negative numbers on the number line.</li>
+  ~ MXEO301_4_0.html: -3 +2
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>add and subtract negative integers.</li>
+     + <h5>We are learning:</h5>
+     + <li>to add and subtract negative integers.</li>
+  ~ MXEO301_5_0.html: -4 +3
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>use variables to represent unknown numbers or changing quantities</li>
+     - <li>simplify algebraic expressions.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use variables to represent unknown numbers or changing quantities</li>
+     + <li>to simplify algebraic expressions.</li>
+  ~ MXEO301_5_1_0.html: -5 +4
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>solve equations involving a specific unknown value</li>
+     - <li>write simple word problems involving an unknown value</li>
+     - <li>form one step linear equations from a word problem.</li>
+     + <h5>We are learning:</h5>
+     + <li>to solve equations involving a specific unknown value</li>
+     + <li>to write simple word problems involving an unknown value</li>
+     + <li>to form one step linear equations from a word problem.</li>
+  ~ MXEO301_6_0.html: -4 +3
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>use inequality symbols to represent inequalities</li>
+     - <li>solve inequalities.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use inequality symbols to represent inequalities</li>
+     + <li>to solve inequalities.</li>
+  ~ MXEO301_7_0.html: -3 +2
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     - <li>use compass points and coordinates to interpret the location of positions and communicate pathways.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use compass points and coordinates to interpret the location of positions and communicate pathways.</li
+  ~ MXEO301_8_0.html: -2 +1
+     - <h5>Learning intentions</h5>
+     - <h5>We are learning to:</h5>
+     + <h5>We are learning:</h5>
+MXEO301: identical 0 / changed 11
+  ~ MXEO401_0_0.html: -2 +2
+     - <p>We are learning about:</p>
+     - <p>I can:</p>
+     + <h5>We are learning about:</h5>
+     + <h5>I can:</h5>
+MXEO401: identical 6 / changed 1
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+  ~ MXEX301_1_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>divide whole numbers efficiently and reliably</li>
+     - <li>estimate area, volume, capacity, mass and temperature, using appropriate metric units</li>
+     - <li>convert between measurement units.</li>
+     + <h5>We are learning:</h5>
+     + <li>to divide whole numbers efficiently and reliably</li>
+     + <li>to estimate area, volume, capacity, mass and temperature, using appropriate metric units</li>
+     + <li>to convert between measurement units.</li>
+  ~ MXEX301_5_0_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>classify shapes based on their geometric properties</li>
+     - <li>identify angle properties of intersecting lines</li>
+     - <li>make combinations of transformations that use the invariant properties of shapes.</li>
+     + <h5>We are learning:</h5>
+     + <li>to classify shapes based on their geometric properties</li>
+     + <li>to identify angle properties of intersecting lines</li>
+     + <li>to make combinations of transformations that use the invariant properties of shapes.</li>
+MXEX301: identical 6 / changed 2
+  ~ MXEX302_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+MXEX302: identical 7 / changed 1
+  ~ MXEX401_0_0.html: -11 +11
+     - <h5>We are learning to:</h5>
+     - <li>see where triangles are used in everyday life</li>
+     - <li>recognise properties of triangles</li>
+     - <li>understand order of symmetry</li>
+     - <li>know how to find the perimeter and area of any triangle</li>
+     - <li>recognise 3D shapes can fold out into 2D nets</li>
+     - <li>understand resizing (a triangle) changes its perimeter and area</li>
+     - <li>understand the principle of similar triangles</li>
+     - <li>find a side length of a triangle by selecting the correct method</li>
+     - <li>recognise transformations.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to see where triangles are used in everyday life</li>
+     + <li>to recognise properties of triangles</li>
+     + <li>to understand order of symmetry</li>
+     + <li>to know how to find the perimeter and area of any triangle</li>
+     + <li>to recognise 3D shapes can fold out into 2D nets</li>
+     + <li>to understand resizing (a triangle) changes its perimeter and area</li>
+     + <li>to understand the principle of similar triangles</li>
+     + <li>to find a side length of a triangle by selecting the correct method</li>
+     + <li>to recognise transformations.</li>
+     + <h5>I can:</h5>
+MXEX401: identical 6 / changed 1
+  ~ MXFL101_0_0.html: -1 +1
+     - <p>We are learning about:</p>
+     + <h5>We are learning about:</h5>
+MXFL101: identical 11 / changed 1
+MXFL102: identical 9 / changed 0
+  ~ MXFL103_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+MXFL103: identical 7 / changed 1
+MXFL104: identical 6 / changed 0
+  ~ MXFL201_0_0.html: -2 +2
+     - <p><b>Ākonga will:</b></p>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_1_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_2_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_3_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_4_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_5_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_6_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_7_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_8_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFL201_9_0.html: -4 +2
+     - <h5>Learning Intentions</h5>
+     - <p><b>Ākonga will:</b></p>
+     - <h5>How will I know if I’ve learned it?</h5>
+     - <p><b>Ākonga can:</b></p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+MXFL201: identical 0 / changed 10
+  ~ MXFL202_0_0.html: -1 +1
+     - <p>I can:</p>
+     + <h5>I can:</h5>
+MXFL202: identical 5 / changed 1
+MXFL203: identical 12 / changed 0
+  ~ MXFL204_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+MXFL204: identical 11 / changed 1
+  ~ MXFL301_0_0.html: -7 +7
+     - <p>We are learning to:</p>
+     - <li>convert between time measurement units</li>
+     - <li>read, interpret, and use timetables and charts.</li>
+     - <p>I can:</p>
+     - <li>use scale, compass points, and the coordinate system to interpret and describe positions and pathways</li>
+     - <li>add, subtract and multiply decimals</li>
+     - <li>convert between fractions, decimals, and percentages</li>
+     + <h5>We are learning:</h5>
+     + <li>to use scale, compass points, and the coordinate system to interpret and describe positions and pathways</
+     + <li>to add, subtract and multiply decimals</li>
+     + <li>to convert between fractions, decimals, and percentages</li>
+     + <li>to convert between time measurement units</li>
+     + <li>to read, interpret, and use timetables and charts.</li>
+     + <h5>I can:</h5>
+  ~ MXFL301_1_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>use compass points, coordinates and bearings to interpret and describe positions.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use compass points, coordinates and bearings to interpret and describe positions.</li>
+  ~ MXFL301_2_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>use map scales to calculate distance.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use map scales to calculate distance.</li>
+  ~ MXFL301_3_0.html: -5 +5
+     - <h5>We are learning to:</h5>
+     - <li>calculate the relative frequency of data</li>
+     - <li>use relative frequency to make predictions</li>
+     - <li>find a percentage of an amount</li>
+     - <li>find the total of an amount given a percentage</li>
+     + <h5>We are learning:</h5>
+     + <li>to calculate the relative frequency of data</li>
+     + <li>to use relative frequency to make predictions</li>
+     + <li>to find a percentage of an amount</li>
+     + <li>to find the total of an amount given a percentage</li>
+  ~ MXFL301_4_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>use rates to calculate costs</li>
+     - <li>round and estimate values</li>
+     - <li>multiply accurately.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use rates to calculate costs</li>
+     + <li>to round and estimate values</li>
+     + <li>to multiply accurately.</li>
+  ~ MXFL301_5_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>multiply decimals.</li>
+     + <h5>We are learning:</h5>
+     + <li>to multiply decimals.</li>
+  ~ MXFL301_6_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>add and subtract decimals</li>
+     - <li>scan for key information.</li>
+     + <h5>We are learning:</h5>
+     + <li>to add and subtract decimals</li>
+     + <li>to scan for key information.</li>
+  ~ MXFL301_7_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>convert between time units</li>
+     - <li>convert between analogue time and the 24-hour clock</li>
+     - <li>solve duration problems that involve fractions of time</li>
+     + <h5>We are learning:</h5>
+     + <li>to convert between time units</li>
+     + <li>to convert between analogue time and the 24-hour clock</li>
+     + <li>to solve duration problems that involve fractions of time</li>
+  ~ MXFL301_8_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>convert between different time zones</li>
+     - <li>read, interpret and use timetables</li>
+     - <li>solve duration problems that involve fractions of time.</li>
+     + <h5>We are learning:</h5>
+     + <li>to convert between different time zones</li>
+     + <li>to read, interpret and use timetables</li>
+     + <li>to solve duration problems that involve fractions of time.</li>
+  ~ MXFL301_9_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>make decisions based on budget and estimated costs.</li>
+     + <h5>We are learning:</h5>
+     + <li>to make decisions based on budget and estimated costs.</li>
+MXFL301: identical 0 / changed 10
+  ~ MXFL302_0_0.html: -4 +4
+     - <p>We are learning to …</p>
+     - <li>apply the order of operations rule</li>
+     - <li>investigate elapsed time.</li>
+     - <p>I can …</p>
+     + <h5>We are learning:</h5>
+     + <li>to apply the order of operations rule</li>
+     + <li>to investigate elapsed time.</li>
+     + <h5>I can:</h5>
+  ~ MXFL302_1_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>apply capital letters in the correct places</li>
+     - <li>use the GEMA rule when dealing with complex equations.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to apply capital letters in the correct places</li>
+     + <li>to use the GEMA rule when dealing with complex equations.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_2_0.html: -5 +5
+     - <h5>We are learning to ...</h5>
+     - <li>determine if a pattern is linear</li>
+     - <li>write rules using variables and algebraic notation</li>
+     - <li>use rules to make predictions.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to determine if a pattern is linear</li>
+     + <li>to write rules using variables and algebraic notation</li>
+     + <li>to use rules to make predictions.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_3_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>create data visualisations for all possible outcomes</li>
+     - <li>find probability estimates for different outcomes.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to create data visualisations for all possible outcomes</li>
+     + <li>to find probability estimates for different outcomes.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_4_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>add and subtract fractions with the same denominators</li>
+     - <li>create and simplify equivalent fractions.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to add and subtract fractions with the same denominators</li>
+     + <li>to create and simplify equivalent fractions.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_5_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>add and subtract fractions with different denominators.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to add and subtract fractions with different denominators.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_5_1_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>convert between improper fractions and mixed numbers</li>
+     - <li>add and subtract mixed numbers.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to convert between improper fractions and mixed numbers</li>
+     + <li>to add and subtract mixed numbers.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_6_0.html: -6 +6
+     - <h5>We are learning to ...</h5>
+     - <li>multiply fractions by fractions</li>
+     - <li>multiply fractions by whole numbers</li>
+     - <li>multiply mixed numbers</li>
+     - <li>convert between measurement units.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to multiply fractions by fractions</li>
+     + <li>to multiply fractions by whole numbers</li>
+     + <li>to multiply mixed numbers</li>
+     + <li>to convert between measurement units.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_7_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>investigate the elapsed time</li>
+     - <li>calculate simple rates and ratios.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to investigate the elapsed time</li>
+     + <li>to calculate simple rates and ratios.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ MXFL302_8_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>divide whole numbers</li>
+     - <li>divide fractions and mixed numbers.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to divide whole numbers</li>
+     + <li>to divide fractions and mixed numbers.</li>
+     + <h5>You will show your understanding by:</h5>
+MXFL302: identical 0 / changed 10
+  ~ MXFL401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+MXFL401: identical 7 / changed 1
+  ~ MXFU201_0_0.html: -10 +10
+     - <p>We are learning to:</p>
+     - <li>convert between 12 hour and 24-hour units of time</li>
+     - <li>connect units of time to fractions</li>
+     - <li>compare my findings with those of others when undertaking probability experiments</li>
+     - <li>create and describe data visualisations for the distribution of observed outcomes from a probability exper
+     - <li>plan, conduct, and record data for a probability experiment</li>
+     - <li>check that statements about data made by others makes sense</li>
+     - <li>use diagrams and tables to connect the chance of an outcome occurring</li>
+     - <li>use fractions, decimals and percentages to connect the chance of an outcome happening.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to convert between 12 hour and 24-hour units of time</li>
+     + <li>to connect units of time to fractions</li>
+     + <li>to compare my findings with those of others when undertaking probability experiments</li>
+     + <li>to create and describe data visualisations for the distribution of observed outcomes from a probability ex
+     + <li>to plan, conduct, and record data for a probability experiment</li>
+     + <li>to check that statements about data made by others makes sense</li>
+     + <li>to use diagrams and tables to connect the chance of an outcome occurring</li>
+     + <li>to use fractions, decimals and percentages to connect the chance of an outcome happening.</li>
+     + <h5>I can:</h5>
+MXFU201: identical 9 / changed 1
+  ~ MXFU202_0_0.html: -12 +12
+     - <p>We are learning to:</p>
+     - <li>use a number line and round numbers to the nearest tenth and hundredth</li>
+     - <li>make sensible estimations and check your estimations by using appropriate calculations</li>
+     - <li>use vertical methods, multiply multi digit whole numbers (e.g. 54 x 112)</li>
+     - <li>use columns to add and subtract numbers consisting of 3 or more digits</li>
+     - <li>divide whole numbers by 1 digit divisor with a remainder (e.g. 198 ÷ 7; 4154 ÷ 8)</li>
+     - <li>use inverse operations to solve multiplication and division problems</li>
+     - <li>use multiplication grids, number lines and families of facts to develop your speed and accuracy to recall 
+     - <li>solve true or false number sentences involving multiplication and division using the equals sign</li>
+     - <li>interpret and create grid references and simple scales on maps</li>
+     - <li>use directional language, including the four main compass points, turn (in degrees), and distance (in m, k
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to use a number line and round numbers to the nearest tenth and hundredth</li>
+     + <li>to make sensible estimations and check your estimations by using appropriate calculations</li>
+     + <li>to use vertical methods, multiply multi digit whole numbers (e.g. 54 x 112)</li>
+     + <li>to use columns to add and subtract numbers consisting of 3 or more digits</li>
+     + <li>to divide whole numbers by 1 digit divisor with a remainder (e.g. 198 ÷ 7; 4154 ÷ 8)</li>
+     + <li>to use inverse operations to solve multiplication and division problems</li>
+     + <li>to use multiplication grids, number lines and families of facts to develop your speed and accuracy to reca
+     + <li>to solve true or false number sentences involving multiplication and division using the equals sign</li>
+     + <li>to interpret and create grid references and simple scales on maps</li>
+     + <li>to use directional language, including the four main compass points, turn (in degrees), and distance (in m
+     + <h5>I can:</h5>
+MXFU202: identical 10 / changed 1
+  ~ MXFU301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+MXFU301: identical 11 / changed 1
+  ~ MXFU302_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+  ~ MXFU302_1_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>analyse data and communicate findings in context.</li>
+     + <h5>We are learning:</h5>
+     + <li>to analyse data and communicate findings in context.</li>
+  ~ MXFU302_2_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>use data visualisations to describe outcomes from probability experiments and compare these to possible ou
+     + <h5>We are learning:</h5>
+     + <li>to use data visualisations to describe outcomes from probability experiments and compare these to possible
+  ~ MXFU302_3_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>use data visualisations to predict possible outcomes and combinations.</li>
+     + <h5>We are learning:</h5>
+     + <li>to use data visualisations to predict possible outcomes and combinations.</li>
+  ~ MXFU302_4_0_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>represent a rule for a linear pattern, and use rules to make predictions</li>
+     - <li>make connections between tables, equations, and XY graphs for linear functions.</li>
+     + <h5>We are learning:</h5>
+     + <li>to represent a rule for a linear pattern, and use rules to make predictions</li>
+     + <li>to make connections between tables, equations, and XY graphs for linear functions.</li>
+MXFU302: identical 5 / changed 5
+  ~ MXFU401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+MXFU401: identical 6 / changed 1
+  ~ MXFU402_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ MXFU402_1_0.html: -2 +2
+     - <h5>We are learning ...</h5>
+     - <h5>I can …</h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ MXFU402_2_0.html: -2 +2
+     - <h5>We are learning ...</h5>
+     - <h5>I can ...</h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ MXFU402_3_0.html: -2 +2
+     - <h5>We are learning ...</h5>
+     - <h5>I can ...</h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ MXFU402_4_0.html: -2 +2
+     - <h5>We are learning ...</h5>
+     - <h5>I can ...</h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ MXFU402_5_0.html: -2 +2
+     - <h5>We are learning ...</h5>
+     - <h5>I can ...</h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ MXFU402_6_0.html: -2 +2
+     - <h5>We are learning ...</h5>
+     - <h5>I can ...</h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+  ~ MXFU402_7_0.html: -2 +2
+     - <h5>We are learning ...</h5>
+     - <h5>I can ...</h5>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+MXFU402: identical 0 / changed 8
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+  ~ OSAH301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAH301: identical 3 / changed 1
+  ~ OSAH401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAH401: identical 4 / changed 1
+  ~ OSAH501_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAH501: identical 5 / changed 1
+  ~ OSAI101_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAI101: identical 2 / changed 1
+  ~ OSAI201_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAI201: identical 3 / changed 1
+  ~ OSAI301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAI301: identical 3 / changed 1
+  ~ OSAI401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAI401: identical 4 / changed 1
+  ~ OSAI501_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSAI501: identical 5 / changed 1
+  ~ OSBY101_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSBY101: identical 3 / changed 1
+  ~ OSBY201_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSBY201: identical 3 / changed 1
+  ~ OSBY301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSBY301: identical 3 / changed 1
+  ~ OSBY401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSBY401: identical 4 / changed 1
+  ~ OSBY501_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSBY501: identical 5 / changed 1
+  ~ OSGM101_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSGM101: identical 2 / changed 1
+  ~ OSGM201_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSGM201: identical 3 / changed 1
+  ~ OSGM301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSGM301: identical 3 / changed 1
+  ~ OSGM401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSGM401: identical 4 / changed 1
+  ~ OSGM501_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSGM501: identical 5 / changed 1
+  ~ OSOH101_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSOH101: identical 3 / changed 1
+  ~ OSOH201_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSOH201: identical 3 / changed 1
+  ~ OSOH301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSOH301: identical 3 / changed 1
+  ~ OSOH401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSOH401: identical 4 / changed 1
+  ~ OSOH501_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSOH501: identical 5 / changed 1
+  ~ OSSC301_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSSC301: identical 3 / changed 1
+  ~ OSSC401_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+OSSC401: identical 4 / changed 1
+
+TOTAL: identical 464 / changed 197 / missing 0 over 104 modules
+CHANGED: EXPFUN06/EXPFUN06_0_0.html HES1003/HES1003_0_0.html HES1004/HES1004_0_0.html HES1006/HES1006_0_0.html HES1007/HES1007_0_0.html HIS1001/HIS1001_4_0.html HIS1002/HIS1002_2_0.html HIS1002/HIS1002_3_0.html HIS1002/HIS1002_5_0.html HIS1002/HIS1002_7_0.html HIS1002/HIS1002_9_0.html HIS1002/HIS1002_11_0.html HIS1002/HIS1002_13_0.html HIS1002/HIS1002_15_0.html HIS1002/HIS1002_17_0.html HIS1002/HIS1002_19_0.html HIS1003/HIS1003_0_0.html HIS1005/HIS1005_0_0.html HIS1005/HIS1005_1_0.html HIS1005/HIS1005_2_0.html HIS1005/HIS1005_5_0.html HIS1005/HIS1005_6_0.html HIS1005/HIS1005_7_0.html HIS1005/HIS1005_8_0.html HIS1005/HIS1005_9_0.html HIS1005/HIS1005_10_0.html HIS1006/HIS1006_0_0.html HIS1006/HIS1006_1_0.html HIS1006/HIS1006_2_0.html HIS1006/HIS1006_3_0.html HIS1006/HIS1006_5_0.html HIS1006/HIS1006_6_0.html HIS1006/HIS1006_7_0.html HIS1006/HIS1006_8_0.html HIS1007/HIS1007_0_0.html HIS1007/HIS1007_1_0.html HIS1007/HIS1007_2_0.html HIS1007/HIS1007_3_0.html HIS1007/HIS1007_4_0.html HIS1008/HIS1008_0_0.html HIS1008/HIS1008_1_0.html HIS1008/HIS1008_2_0.html HIS1008/HIS1008_3_0.html HIS1008/HIS1008_5_0.html HIS1008/HIS1008_6_0.html HIS1008/HIS1008_7_0.html HPFUN101/HPFUN101_0_0.html HPFUN102/HPFUN102_0_0.html HPFUN103/HPFUN103_0_0.html HPFUN201/HPFUN201_0_0.html HPFUN202/HPFUN202_0_0.html HPFUN203/HPFUN203_0_0.html HPFUN301/HPFUN301_0_0.html HPFUN302/HPFUN302_0_0.html HPFUN303/HPFUN303_0_0.html HPFUN401/HPFUN401_0_0.html HPFUN402/HPFUN402_0_0.html HPFUN403/HPFUN403_0_0.html HPFUN901/HPFUN901_0_0.html HPFUN902/HPFUN902_0_0.html HPFUN903/HPFUN903_0_0.html HPRE203/HPRE203_0_0.html MXDB102/MXDB102_0_0.html MXDB201/MXDB201_0_0.html MXDB202/MXDB202_0_0.html MXDB202/MXDB202_1_0.html MXDB202/MXDB202_2_0.html MXDB202/MXDB202_3_0.html MXDB202/MXDB202_4_0.html MXDB202/MXDB202_5_0.html MXDB301/MXDB301_0_0.html MXDB301/MXDB301_1_0.html MXDB301/MXDB301_3_0.html MXDB301/MXDB301_4_0_0.html MXDB301/MXDB301_7_0.html MXDB302/MXDB302_0_0.html MXDB302/MXDB302_1_0.html MXDB302/MXDB302_2_0.html MXDB302/MXDB302_3_0.html MXDB302/MXDB302_4_0.html MXDB302/MXDB302_5_0.html MXDB302/MXDB302_6_0.html MXDB302/MXDB302_7_0.html MXDB302/MXDB302_8_0.html MXDB302/MXDB302_9_0.html MXDI101/MXDI101_0_0.html MXDI102/MXDI102_0_0.html MXDI103/MXDI103_0_0.html MXDI201/MXDI201_0_0.html MXDI202/MXDI202_0_0.html MXDI301/MXDI301_0_0.html MXDI301/MXDI301_1_0.html MXDI301/MXDI301_3_0.html MXDI301/MXDI301_5_0.html MXEO102/MXEO102_1_0.html MXEO102/MXEO102_2_0.html MXEO102/MXEO102_3_0.html MXEO102/MXEO102_4_0.html MXEO201/MXEO201_0_0.html MXEO201/MXEO201_2_0.html MXEO201/MXEO201_4_0.html MXEO201/MXEO201_6_0.html MXEO201/MXEO201_8_0.html MXEO202/MXEO202_0_0.html MXEO301/MXEO301_0_0.html MXEO301/MXEO301_1_0.html MXEO301/MXEO301_1_1_0.html MXEO301/MXEO301_2_0.html MXEO301/MXEO301_3_0.html MXEO301/MXEO301_4_0.html MXEO301/MXEO301_5_0.html MXEO301/MXEO301_5_1_0.html MXEO301/MXEO301_6_0.html MXEO301/MXEO301_7_0.html MXEO301/MXEO301_8_0.html MXEO401/MXEO401_0_0.html MXEX301/MXEX301_1_0.html MXEX301/MXEX301_5_0_0.html MXEX302/MXEX302_0_0.html MXEX401/MXEX401_0_0.html MXFL101/MXFL101_0_0.html MXFL103/MXFL103_0_0.html MXFL201/MXFL201_0_0.html MXFL201/MXFL201_1_0.html MXFL201/MXFL201_2_0.html MXFL201/MXFL201_3_0.html MXFL201/MXFL201_4_0.html MXFL201/MXFL201_5_0.html MXFL201/MXFL201_6_0.html MXFL201/MXFL201_7_0.html MXFL201/MXFL201_8_0.html MXFL201/MXFL201_9_0.html MXFL202/MXFL202_0_0.html MXFL204/MXFL204_0_0.html MXFL301/MXFL301_0_0.html MXFL301/MXFL301_1_0.html MXFL301/MXFL301_2_0.html MXFL301/MXFL301_3_0.html MXFL301/MXFL301_4_0.html MXFL301/MXFL301_5_0.html MXFL301/MXFL301_6_0.html MXFL301/MXFL301_7_0.html MXFL301/MXFL301_8_0.html MXFL301/MXFL301_9_0.html MXFL302/MXFL302_0_0.html MXFL302/MXFL302_1_0.html MXFL302/MXFL302_2_0.html MXFL302/MXFL302_3_0.html MXFL302/MXFL302_4_0.html MXFL302/MXFL302_5_0.html MXFL302/MXFL302_5_1_0.html MXFL302/MXFL302_6_0.html MXFL302/MXFL302_7_0.html MXFL302/MXFL302_8_0.html MXFL401/MXFL401_0_0.html MXFU201/MXFU201_0_0.html MXFU202/MXFU202_0_0.html MXFU301/MXFU301_0_0.html MXFU302/MXFU302_0_0.html MXFU302/MXFU302_1_0.html MXFU302/MXFU302_2_0.html MXFU302/MXFU302_3_0.html MXFU302/MXFU302_4_0_0.html MXFU401/MXFU401_0_0.html MXFU402/MXFU402_0_0.html MXFU402/MXFU402_1_0.html MXFU402/MXFU402_2_0.html MXFU402/MXFU402_3_0.html MXFU402/MXFU402_4_0.html MXFU402/MXFU402_5_0.html MXFU402/MXFU402_6_0.html MXFU402/MXFU402_7_0.html OSAH301/OSAH301_0_0.html OSAH401/OSAH401_0_0.html OSAH501/OSAH501_0_0.html OSAI101/OSAI101_0_0.html OSAI201/OSAI201_0_0.html OSAI301/OSAI301_0_0.html OSAI401/OSAI401_0_0.html OSAI501/OSAI501_0_0.html OSBY101/OSBY101_0_0.html OSBY201/OSBY201_0_0.html OSBY301/OSBY301_0_0.html OSBY401/OSBY401_0_0.html OSBY501/OSBY501_0_0.html OSGM101/OSGM101_0_0.html OSGM201/OSGM201_0_0.html OSGM301/OSGM301_0_0.html OSGM401/OSGM401_0_0.html OSGM501/OSGM501_0_0.html OSOH101/OSOH101_0_0.html OSOH201/OSOH201_0_0.html OSOH301/OSOH301_0_0.html OSOH401/OSOH401_0_0.html OSOH501/OSOH501_0_0.html OSSC301/OSSC301_0_0.html OSSC401/OSSC401_0_0.html

@@ -41,4 +41,10 @@ run "modal verifier"         node --require ./_deflate_raw_polyfill.cjs _verify_
 # non-quiz container bundle — HPRE203 1C, MXFU402 5C) is reported as residue, not a defect.
 run "mtkQuiz shell verifier" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_mtkquiz.cjs TEFUN06 TEFUN03 ARFUN04 SCCH301 BLLR201 HPRE203
 run "math verifier (equations → MathML)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_math.cjs MXDI102 MXDI301 PES1008 MXEX301 PES1007 MXFU302 MXFU401 MXDB301 MXDI201 MXDB202 SCCH301
+# lesson-menu label verifier (round 349 — Chris's D10-9, KB constraint 23 / 01B): every learning / success label in
+# #module-menu-content is the KB's <h5> colon form, no section title above a label on a lesson page, no <p> between a
+# label and its list. The set covers every authoring shape: the combined "about/to" label (AGH1002), the "to" family
+# (ENGC401), titles + bold Māori labels + the lesson-repeat (MXFL201), the c70 OSSC sentence (OSSC401), the two-column
+# banner (ANZH101), the banner-family overview (BLL110), Fundamentals (XFUN02), Inquiry (CEDT501). Protected: defect 0.
+run "menu-label verifier (c23 / 01B)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_menulabels.cjs AGH1002 ENGC401 MXFL201 OSSC401 ANZH101 BLL110 XFUN02 CEDT501 CEDO502
 echo "=== gate suite complete ==="

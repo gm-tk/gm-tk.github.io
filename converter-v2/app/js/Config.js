@@ -1706,7 +1706,11 @@ class Config {
 	// ROUND 348 (2026-09-16, build 260619.19): a TOOLING round, no engine change — _verify_speechbubble.cjs and
 	// _verify_math.cjs read their per-module baseline from gate_baseline.json (✓ at baseline, ✗ only above it; LOOP §3
 	// step 6); batch_convert.cjs's oembed-cache save is atomic + merged + skipped when clean (the 4-worker race closed).
-	static AppVersion = "260619.19";
+	// ROUND 349 (2026-09-16, build 260619.20): every learning / success label in the module menu is the KB's <h5> colon
+	// form (Chris's D10-9 — KB constraint 23 / 01B): ContentConverter.#menuLabelForm behind Emit_Templates.menu.lesson_label_form,
+	// env MENULABEL_OFF; the "We are learning to:" family → "We are learning:" + "to …" items; lesson-page titles above a
+	// label dropped; the overview tab's labels <h5> too; a new protected verifier _verify_menulabels.cjs; FULL regeneration.
+	static AppVersion = "260619.20";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

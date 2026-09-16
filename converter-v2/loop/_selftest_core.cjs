@@ -75,6 +75,9 @@ const SPEC = {
 	// math (round 346): the INJECT probe strips one built <math> from the first math page — the docx-vs-page
 	// count mismatch must register as a defect; MXDI301 (69 equations) is the fixture.
 	"_verify_math.cjs": { codes: ["MXDI301"], total: /TOTAL: (\d+) equation/, signal: /defect (\d+)/, inject: true },
+	// menulabels (round 349): the INJECT probe turns the first <h5> label of the first menu page back into a <p> — the
+	// not-h5 rule must register a defect; ENGC401 (the "We are learning to:" family, 8 pages) is the fixture.
+	"_verify_menulabels.cjs": { codes: ["ENGC401"], total: /TOTAL: (\d+) label/, signal: /defect (\d+)/, inject: true },
 	"_verify_hintslider.cjs": { codes: ["OSBY201"], total: /built (\d+) rows/, signal: "built-only", mangle: "full" },
 	// image_carousel fixture must have a CLEAN baseline (OSGM501: 5 slides exact, defect 0) —
 	// CEDO105 is saturated (12/12 baseline defects), a saturated signal cannot increase.

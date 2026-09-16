@@ -1,0 +1,1126 @@
+  ~ AGH1001_1_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Identify and describe New Zealand Agricultural and Horticultural primary production and production systems
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe New Zealand Agricultural and Horticultural primary production and production syst
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1001_2_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Explain the significance of Agricultural and Horticultural production in Aotearoa New Zealand.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to explain the significance of Agricultural and Horticultural production in Aotearoa New Zealand.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1001_3_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Identify and describe the relationship that Māori have with the land and how Te Ao Māori influences perspe
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe the relationship that Māori have with the land and how Te Ao Māori influences per
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1001_4_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Describe the role our unique climate and seasons have on Agricultural and Horticultural production.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe the role our unique climate and seasons have on Agricultural and Horticultural production.</li
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1001_5_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Recognise management practices and the role they play in the production of primary products.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to recognise management practices and the role they play in the production of primary products.</li>
+     + <h5>You will show your understanding by:</h5>
+AGH1001: identical 1 / changed 5
+  ~ AGH1002_0_0.html: -7 +7
+     - <p>We are learning to:</p>
+     - <li>describe what soil is and how it forms</li>
+     - <li>explain the importance of soil to agricultural and horticultural production in the past, present, and futu
+     - <li>describe and identify the different features of soil types and how they are classified</li>
+     - <li>describe physical, chemical, and biological properties of soil and explain how these properties impact pla
+     - <li>carry out experiments to produce results and draw conclusions</li>
+     - <li>describe plant growing processes and how they are impacted by soil type.</li>
+     + <h5>We are learning:</h5>
+     + <li>to describe what soil is and how it forms</li>
+     + <li>to explain the importance of soil to agricultural and horticultural production in the past, present, and f
+     + <li>to describe and identify the different features of soil types and how they are classified</li>
+     + <li>to describe physical, chemical, and biological properties of soil and explain how these properties impact 
+     + <li>to carry out experiments to produce results and draw conclusions</li>
+     + <li>to describe plant growing processes and how they are impacted by soil type.</li>
+  ~ AGH1002_1_0.html: -4 +4
+     - <p>We are learning about/to ...</p>
+     - <li>describe what soil is and how it forms</li>
+     - <li>explain the importance of soil to agricultural and horticultural production in the past, present, and futu
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe what soil is and how it forms</li>
+     + <li>to explain the importance of soil to agricultural and horticultural production in the past, present, and f
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1002_2_0.html: -4 +4
+     - <p>We are learning about/to …</p>
+     - <li>describe and identify the different features of soil types and how they are classified</li>
+     - <li>carry out experiments to produce results and draw conclusions.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe and identify the different features of soil types and how they are classified</li>
+     + <li>to carry out experiments to produce results and draw conclusions.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1002_3_0.html: -4 +4
+     - <p>We are learning about/to …</p>
+     - <li>describe plant growing processes and how they are impacted by soil type</li>
+     - <li>carry out experiments to produce results and draw conclusions.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe plant growing processes and how they are impacted by soil type</li>
+     + <li>to carry out experiments to produce results and draw conclusions.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1002_4_0.html: -4 +4
+     - <p>We are learning about/to …</p>
+     - <li>describe physical, chemical, and biological properties of soil and explain how these properties impact pla
+     - <li>carry out experiments to produce results and draw conclusions.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe physical, chemical, and biological properties of soil and explain how these properties impact 
+     + <li>to carry out experiments to produce results and draw conclusions.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1002_5_0.html: -4 +4
+     - <p>We are learning about/to …</p>
+     - <li>describe physical, chemical, and biological properties of soil and explain how these properties impact pla
+     - <li>carry out experiments to produce results and draw conclusions.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe physical, chemical, and biological properties of soil and explain how these properties impact 
+     + <li>to carry out experiments to produce results and draw conclusions.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1002_6_0.html: -4 +4
+     - <p>We are learning about/to …</p>
+     - <li>describe physical, chemical, and biological properties of soil and explain how these properties impact pla
+     - <li>carry out experiments to produce results and draw conclusions.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe physical, chemical, and biological properties of soil and explain how these properties impact 
+     + <li>to carry out experiments to produce results and draw conclusions.</li>
+     + <h5>You will show your understanding by:</h5>
+AGH1002: identical 0 / changed 7
+  ~ AGH1003_0_0.html: -5 +5
+     - <p>We are learning to:</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+  ~ AGH1003_1_0.html: -4 +4
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1003_2_0.html: -6 +6
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1003_3_0.html: -6 +6
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1003_4_0.html: -6 +6
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1003_5_0.html: -6 +6
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1003_6_0.html: -6 +6
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1003_7_0.html: -6 +6
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1003_8_0.html: -6 +6
+     - <p>We are learning about/to...</p>
+     - <li>Describe how soil management practices are carried out on a range of primary production systems.</li>
+     - <li>Explain how soil management practices impact soil properties.</li>
+     - <li>Explain how soil management practices impact plant growing processes and plant growth.</li>
+     - <li>Link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how soil management practices are carried out on a range of primary production systems.</li>
+     + <li>to explain how soil management practices impact soil properties.</li>
+     + <li>to explain how soil management practices impact plant growing processes and plant growth.</li>
+     + <li>to link soil management practices to principles of matauranga Māori including Tu Hononga and Tiakitanga.</
+     + <h5>You will show your understanding by:</h5>
+AGH1003: identical 0 / changed 9
+  ~ AGH1004_1_0.html: -5 +5
+     - <h5>We are learning to ...</h5>
+     - <li>Investigate the relevance of agricultural and horticultural production to people and place.</li>
+     - <li>Demonstrate that place and purpose of production is influenced by interrelated environmental, social, cult
+     - <li>Explore settlement patterns of Māori and how geographic locations of primary products have informed curren
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to investigate the relevance of agricultural and horticultural production to people and place.</li>
+     + <li>to demonstrate that place and purpose of production is influenced by interrelated environmental, social, c
+     + <li>to explore settlement patterns of Māori and how geographic locations of primary products have informed cur
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1004_2_0.html: -1 +1
+     - <h5>You will show your understanding by …</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1004_3_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Locate and demonstrate knowledge of different <b>climate zones</b> within New Zealand and their impact on 
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to locate and demonstrate knowledge of different <b>climate zones</b> within New Zealand and their impact 
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1004_4_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Investigate and describe how soil types within a region contribute to the types of primary products grown 
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to investigate and describe how soil types within a region contribute to the types of primary products gro
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1004_5_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>Investigate water availability within regional areas and how this impacts primary production and the water
+     - <li>Investigate how some regions have <b>sustainability initiatives</b> to protect native ecosystems, waterway
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to investigate water availability within regional areas and how this impacts primary production and the wa
+     + <li>to investigate how some regions have <b>sustainability initiatives</b> to protect native ecosystems, water
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1004_6_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>Identify and describe how farmers maximise production based on regional and geographic market factors infl
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe how farmers maximise production based on regional and geographic market factors i
+     + <h5>You will show your understanding by:</h5>
+AGH1004: identical 1 / changed 6
+  ~ AGH1005_1_0.html: -5 +5
+     - <h5>We are learning to ...</h5>
+     - <li>Explore the interrelationships between plants and primary production systems.</li>
+     - <li>Understand the importance of mauri (lifeforce) within all living things and how to preserve this for futur
+     - <li>Apply matauranga Māori values of <b>kaitiakitanga</b> and <b>manaakitanga</b> to plant growth and sustaini
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to explore the interrelationships between plants and primary production systems.</li>
+     + <li>to understand the importance of mauri (lifeforce) within all living things and how to preserve this for fu
+     + <li>to apply matauranga Māori values of <b>kaitiakitanga</b> and <b>manaakitanga</b> to plant growth and susta
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1005_2_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>Investigate <b>plant anatomy</b> and how this affects primary production.</li>
+     - <li>Demonstrate knowledge of seed germination in vegetable plants.</li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate <b>plant anatomy</b> and how this affects primary production.</li>
+     + <li>to demonstrate knowledge of seed germination in vegetable plants.</li>
+  ~ AGH1005_3_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>Investigate and describe the plant process of photosynthesis.</li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate and describe the plant process of photosynthesis.</li>
+  ~ AGH1005_4_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>Investigate and describe the plant process of respiration.</li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate and describe the plant process of respiration.</li>
+  ~ AGH1005_5_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>Investigate and describe the plant process of transpiration.</li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate and describe the plant process of transpiration.</li>
+  ~ AGH1005_6_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>Explore how plants uptake nutrients from the soil and identify nutrient deficiencies.</li>
+     + <h5>We are learning:</h5>
+     + <li>to explore how plants uptake nutrients from the soil and identify nutrient deficiencies.</li>
+  ~ AGH1005_7_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>Develop knowledge of common plant diseases and pests and the impact this has on primary production.</li>
+     + <h5>We are learning:</h5>
+     + <li>to develop knowledge of common plant diseases and pests and the impact this has on primary production.</li
+  ~ AGH1005_8_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>Investigate and describe the <b>plant process of reproduction (flowering and fruiting).</b></li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate and describe the <b>plant process of reproduction (flowering and fruiting).</b></li>
+AGH1005: identical 1 / changed 8
+  ~ AGH1006_1_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>understand and identify Matauranga Māori values of kaitiakitanga and manaakitanga related to plant managem
+     + <h5>We are learning:</h5>
+     + <li>to understand and identify Matauranga Māori values of kaitiakitanga and manaakitanga related to plant mana
+  ~ AGH1006_2_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>investigate and identify plant propagation practices and how these can maximise plant growth processes.</l
+     + <h5>We are learning:</h5>
+     + <li>to investigate and identify plant propagation practices and how these can maximise plant growth processes.
+  ~ AGH1006_3_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>investigate and identify plant <b>cultivation practices</b> and how these can maximise plant growth proces
+     + <h5>We are learning:</h5>
+     + <li>to investigate and identify plant <b>cultivation practices</b> and how these can maximise plant growth pro
+  ~ AGH1006_4_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>investigate and identify plant shelter practices and how these can maximise plant growth processes.</li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate and identify plant shelter practices and how these can maximise plant growth processes.</li
+  ~ AGH1006_5_0.html: -3 +3
+     - <h5>We are learning to:</h5>
+     - <li>investigate and identify plant <b>training practices</b> and how these can maximise plant growth processes
+     - <li>investigate and identify plant <b>pruning practices</b> and how these can maximise plant growth processes.
+     + <h5>We are learning:</h5>
+     + <li>to investigate and identify plant <b>training practices</b> and how these can maximise plant growth proces
+     + <li>to investigate and identify plant <b>pruning practices</b> and how these can maximise plant growth process
+  ~ AGH1006_6_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>investigate and identify how <b>weeds can be controlled</b> to maximise plant growth processes.</li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate and identify how <b>weeds can be controlled</b> to maximise plant growth processes.</li>
+  ~ AGH1006_7_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>investigate the impact of <b>fertilisers and other nutrients</b> to maximise plant growth processes.</li>
+     + <h5>We are learning:</h5>
+     + <li>to investigate the impact of <b>fertilisers and other nutrients</b> to maximise plant growth processes.</l
+  ~ AGH1006_8_0.html: -2 +2
+     - <h5>We are learning to:</h5>
+     - <li>investigate and identify <b>pest and disease management practices</b> and how these can maximise plant gro
+     + <h5>We are learning:</h5>
+     + <li>to investigate and identify <b>pest and disease management practices</b> and how these can maximise plant 
+AGH1006: identical 2 / changed 8
+  ~ AGH1007_3_0.html: -2 +2
+     - <h5>We are learning about</h5>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1007_4_0.html: -2 +2
+     - <h5>We are learning about</h5>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1007_5_0.html: -2 +2
+     - <h5>We are learning about…</h5>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1007_6_0.html: -1 +1
+     - <h5>You will show your understanding by…</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1007_7_0.html: -2 +2
+     - <h5>We are learning about..</h5>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1007_8_0.html: -2 +2
+     - <h5>We are learning about..</h5>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1007_9_0.html: -2 +2
+     - <h5>We are learning about..</h5>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning about:</h5>
+     + <h5>You will show your understanding by:</h5>
+AGH1007: identical 3 / changed 7
+  ~ AGH1008_0_0.html: -5 +5
+     - <p>We are learning to:</p>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock</li>
+     - <li>link the concept of manaakitanga to the management practices carried out by farmers</li>
+     - <li>justify why management practices show manaakitanga and benefit both the farmer and the animal.</li>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock</li>
+     + <li>to link the concept of manaakitanga to the management practices carried out by farmers</li>
+     + <li>to justify why management practices show manaakitanga and benefit both the farmer and the animal.</li>
+  ~ AGH1008_1_0.html: -3 +3
+     - <h5>We are learning to ...</h5>
+     - <li>link the concept of manaakitanga to the management practices carried out by farmers.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to link the concept of manaakitanga to the management practices carried out by farmers.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1008_2_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1008_3_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1008_4_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1008_5_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1008_6_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1008_7_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1008_8_0.html: -4 +4
+     - <h5>We are learning to ...</h5>
+     - <li>describe how management practices are carried out by farmers/growers</li>
+     - <li>explain how on farm management practices impact a range of life processes of livestock.</li>
+     - <h5>You will show your understanding by …</h5>
+     + <h5>We are learning:</h5>
+     + <li>to describe how management practices are carried out by farmers/growers</li>
+     + <li>to explain how on farm management practices impact a range of life processes of livestock.</li>
+     + <h5>You will show your understanding by:</h5>
+AGH1008: identical 1 / changed 9
+  ~ AGH1009_1_0.html: -4 +4
+     - <h5>We are learning to:</h5>
+     - <li>explain how <b>Māori values of kaitiakitanga and manaakitanga</b> are integral to <b>sustainable practices
+     - <li>identify different perspectives people of Aotearoa hold regarding the environment.</li>
+     - <h5>You will show your understanding by…</h5>
+     + <h5>We are learning:</h5>
+     + <li>to explain how <b>Māori values of kaitiakitanga and manaakitanga</b> are integral to <b>sustainable practi
+     + <li>to identify different perspectives people of Aotearoa hold regarding the environment.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_2_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>identify and describe key parts of the nitrogen cycle and carbon cycle.</li>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe key parts of the nitrogen cycle and carbon cycle.</li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_3_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>identify and describe the impact historic primary production practices have had on the <b>soil, and soil m
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe the impact historic primary production practices have had on the <b>soil, and soi
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_4_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>identify and describe the impact historic primary production practices have had on <b>water quality, and w
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe the impact historic primary production practices have had on <b>water quality, an
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_5_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>identify and describe the impact historic primary production practices have had on the <b>air.</b></li>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to identify and describe the impact historic primary production practices have had on the <b>air.</b></li>
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_6_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li><b>i</b>dentify and describe ways farmers have adopted sustainable practices to <b>mitigate and manage</b>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li><b>to i</b>dentify and describe ways farmers have adopted sustainable practices to <b>mitigate and manage<
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_7_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li><b>i</b>dentify and describe ways farmers have adopted sustainable practices to <b>mitigate and manage</b>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li><b>to i</b>dentify and describe ways farmers have adopted sustainable practices to <b>mitigate and manage<
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_8_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li><b>i</b>dentify and describe ways farmers have adopted sustainable practices to <b>mitigate and manage</b>
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li><b>to i</b>dentify and describe ways farmers have adopted sustainable practices to <b>mitigate and manage<
+     + <h5>You will show your understanding by:</h5>
+  ~ AGH1009_9_0.html: -3 +3
+     - <h5>We are learning to</h5>
+     - <li>evaluate the <b>effectiveness of management practices</b> in allowing long term sustainability on-farms.</
+     - <h5>You will show your understanding by</h5>
+     + <h5>We are learning:</h5>
+     + <li>to evaluate the <b>effectiveness of management practices</b> in allowing long term sustainability on-farms
+     + <h5>You will show your understanding by:</h5>
+AGH1009: identical 1 / changed 9
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+  ~ ANZH105_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+ANZH105: identical 7 / changed 1
+  ~ ANZH203_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>I can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>I can:</h5>
+ANZH203: identical 6 / changed 1
+  ~ ANZH205_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+ANZH205: identical 6 / changed 1
+  ~ ANZH301_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+ANZH301: identical 10 / changed 1
+  ~ ANZH303_0_0.html: -10 +10
+     - <p>We are learning to:</p>
+     - <li>build understanding of the concept of mana and mana motuhake in Te Ao Māori</li>
+     - <li>describe ways mana was expressed in relationships between hapū/iwi and newcomers when Māori were the major
+     - <li>describe how iwi co-opted new ideas and technologies in the pursuit of mana and the impacts if this (e.g. 
+     - <li>explain the significance of Ko Te Wakaminenga o Nga Hapu (the first flag of the United Tribes)</li>
+     - <li>explain who was involved and what the purpose was of He Whakaputanga o te Rangatiratanga o Nu Tireni (The 
+     - <li>understand different perspectives on the significance of He Whakaputanga o te Rangatiratanga o Nu Tireni (
+     - <li>use evidence from different sources (primary and secondary) to make informed ethical judgments about these
+     - <li>summarise cause-and-effect relationships (with specific recognition of mana motuhake) for this part of our
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to build understanding of the concept of mana and mana motuhake in Te Ao Māori</li>
+     + <li>to describe ways mana was expressed in relationships between hapū/iwi and newcomers when Māori were the ma
+     + <li>to describe how iwi co-opted new ideas and technologies in the pursuit of mana and the impacts if this (e.
+     + <li>to explain the significance of Ko Te Wakaminenga o Nga Hapu (the first flag of the United Tribes)</li>
+     + <li>to explain who was involved and what the purpose was of He Whakaputanga o te Rangatiratanga o Nu Tireni (T
+     + <li>to understand different perspectives on the significance of He Whakaputanga o te Rangatiratanga o Nu Tiren
+     + <li>to use evidence from different sources (primary and secondary) to make informed ethical judgments about th
+     + <li>to summarise cause-and-effect relationships (with specific recognition of mana motuhake) for this part of 
+     + <h5>I can:</h5>
+ANZH303: identical 6 / changed 1
+  ~ ANZH304_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+ANZH304: identical 6 / changed 1
+ANZH401: identical 14 / changed 0
+  ~ ANZH404_0_0.html: -8 +8
+     - <p>We are learning to:</p>
+     - <li>explain ways in which different Māori leaders and groups have attempted to remedy injustices and affirm ma
+     - <li>understand that historical events can be interpreted differently based on varying perspectives</li>
+     - <li>use frameworks for analysing historical perspectives and motivations</li>
+     - <li>learn to communicate historical information effectively and present reasoned arguments</li>
+     - <li>synthesise information from various sources to construct a coherent narrative</li>
+     - <li>make connections between past and present events in our present-day society in Aotearoa New Zealand.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to explain ways in which different Māori leaders and groups have attempted to remedy injustices and affirm
+     + <li>to understand that historical events can be interpreted differently based on varying perspectives</li>
+     + <li>to use frameworks for analysing historical perspectives and motivations</li>
+     + <li>to learn to communicate historical information effectively and present reasoned arguments</li>
+     + <li>to synthesise information from various sources to construct a coherent narrative</li>
+     + <li>to make connections between past and present events in our present-day society in Aotearoa New Zealand.</l
+     + <h5>I can:</h5>
+ANZH404: identical 6 / changed 1
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+ARFUN03: identical 1 / changed 0
+ARFUN04: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+  ~ BLL110_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL110: identical 0 / changed 1
+  ~ BLL111_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL111: identical 2 / changed 1
+  ~ BLL112_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL112: identical 2 / changed 1
+  ~ BLL113_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL113: identical 2 / changed 1
+  ~ BLL114_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL114: identical 2 / changed 1
+  ~ BLL115_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL115: identical 2 / changed 1
+  ~ BLL116_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL116: identical 2 / changed 1
+  ~ BLL117_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL117: identical 2 / changed 1
+  ~ BLL120_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>I can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>I can:</h5>
+BLL120: identical 0 / changed 1
+  ~ BLL121_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL121: identical 2 / changed 1
+  ~ BLL122_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>read, write and spell words that contain the letters c, k, ck, e, h, r, m, d.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to read, write and spell words that contain the letters c, k, ck, e, h, r, m, d.</li>
+     + <h5>I can:</h5>
+BLL122: identical 2 / changed 1
+  ~ BLL123_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>read, write and spell words that contain the letters - c, k, ck, e, h, r, m, d</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to read, write and spell words that contain the letters - c, k, ck, e, h, r, m, d</li>
+     + <h5>I can:</h5>
+BLL123: identical 2 / changed 1
+BLL124: identical 3 / changed 0
+  ~ BLL125_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL125: identical 2 / changed 1
+  ~ BLL126_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL126: identical 2 / changed 1
+  ~ BLL127_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL127: identical 2 / changed 1
+  ~ BLL130_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>I can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>I can:</h5>
+BLL130: identical 0 / changed 1
+  ~ BLL131_0_0.html: -2 +2
+     - <p>Ākonga will:</p>
+     - <p>Ākonga can:</p>
+     + <h5>Ākonga will:</h5>
+     + <h5>Ākonga can:</h5>
+BLL131: identical 2 / changed 1
+  ~ BLL132_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL132: identical 2 / changed 1
+  ~ BLL133_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL133: identical 2 / changed 1
+  ~ BLL134_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL134: identical 2 / changed 1
+  ~ BLL135_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL135: identical 2 / changed 1
+  ~ BLL136_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL136: identical 1 / changed 1
+  ~ BLL137_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL137: identical 2 / changed 1
+  ~ BLL140_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL140: identical 0 / changed 1
+  ~ BLL141_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL141: identical 2 / changed 1
+  ~ BLL142_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL142: identical 2 / changed 1
+  ~ BLL143_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL143: identical 2 / changed 1
+  ~ BLL144_0_0.html: -7 +7
+     - <p>We are learning to:</p>
+     - <li>read and write heart words,</li>
+     - <li>write long vowel words.</li>
+     - <li>recognise and use speech marks,</li>
+     - <li>read with expression and fluency,</li>
+     - <li>match pairs of related words.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to read and write heart words,</li>
+     + <li>to write long vowel words.</li>
+     + <li>to recognise and use speech marks,</li>
+     + <li>to read with expression and fluency,</li>
+     + <li>to match pairs of related words.</li>
+     + <h5>I can:</h5>
+BLL144: identical 2 / changed 1
+  ~ BLL145_0_0.html: -6 +6
+     - <p>We are learning to:</p>
+     - <li>divide syllables,</li>
+     - <li>create new words,</li>
+     - <li>enhance our fluency while reading</li>
+     - <li>use our knowledge of letter sounds to write a story.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to divide syllables,</li>
+     + <li>to create new words,</li>
+     + <li>to enhance our fluency while reading</li>
+     + <li>to use our knowledge of letter sounds to write a story.</li>
+     + <h5>I can:</h5>
+BLL145: identical 2 / changed 1
+  ~ BLL146_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL146: identical 2 / changed 1
+  ~ BLL147_0_0.html: -6 +6
+     - <p>We are learning to:</p>
+     - <li>identify sounds in words,</li>
+     - <li>categorise items,</li>
+     - <li>enhance our reading fluency,</li>
+     - <li>use our knowledge of letter sounds in creative activities.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to identify sounds in words,</li>
+     + <li>to categorise items,</li>
+     + <li>to enhance our reading fluency,</li>
+     + <li>to use our knowledge of letter sounds in creative activities.</li>
+     + <h5>I can:</h5>
+BLL147: identical 2 / changed 1
+  ~ BLL150_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL150: identical 0 / changed 1
+  ~ BLL151_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL151: identical 2 / changed 1
+  ~ BLL152_0_0.html: -8 +8
+     - <p>We are learning to:</p>
+     - <li>understand suffixes,</li>
+     - <li>speed read with blended words,</li>
+     - <li>write dictated sentences,</li>
+     - <li>match words with pictures,</li>
+     - <li>build sentences using vocabulary from our reading,</li>
+     - <li>read a decodable text.</li>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to understand suffixes,</li>
+     + <li>to speed read with blended words,</li>
+     + <li>to write dictated sentences,</li>
+     + <li>to match words with pictures,</li>
+     + <li>to build sentences using vocabulary from our reading,</li>
+     + <li>to read a decodable text.</li>
+     + <h5>I can:</h5>
+BLL152: identical 2 / changed 1
+  ~ BLL153_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL153: identical 2 / changed 1
+  ~ BLL154_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL154: identical 2 / changed 1
+  ~ BLL155_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>revise long and short vowel sounds, master &#39;k&#39; and &#39;ck&#39; endings, decode and encode words, 
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to revise long and short vowel sounds, master &#39;k&#39; and &#39;ck&#39; endings, decode and encode word
+     + <h5>I can:</h5>
+BLL155: identical 2 / changed 1
+  ~ BLL156_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>order a text, explore morphology, identify synonyms, practice speed reading, recognise heart words, write 
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to order a text, explore morphology, identify synonyms, practice speed reading, recognise heart words, wri
+     + <h5>I can:</h5>
+BLL156: identical 2 / changed 1
+  ~ BLL157_0_0.html: -2 +2
+     - <p>We are learning</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL157: identical 2 / changed 1
+  ~ BLL160_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL160: identical 0 / changed 1
+  ~ BLL161_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL161: identical 2 / changed 1
+  ~ BLL162_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL162: identical 2 / changed 1
+  ~ BLL163_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>make new words, identify missing sounds, decode and encode words, build sentences, explore irregular words
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to make new words, identify missing sounds, decode and encode words, build sentences, explore irregular wo
+     + <h5>I can:</h5>
+BLL163: identical 2 / changed 1
+  ~ BLL164_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>We are learning to use speech marks correctly, decode and encode sentences, expand our vocabulary, explore
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to we are learning to use speech marks correctly, decode and encode sentences, expand our vocabulary, expl
+     + <h5>I can:</h5>
+BLL164: identical 2 / changed 1
+  ~ BLL165_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>re-read texts, make predictions, recognise heart words, and understand synonyms. We will practice decoding
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to re-read texts, make predictions, recognise heart words, and understand synonyms. We will practice decod
+     + <h5>I can:</h5>
+BLL165: identical 2 / changed 1
+  ~ BLL166_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL166: identical 2 / changed 1
+  ~ BLL167_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL167: identical 2 / changed 1
+  ~ BLL170_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL170: identical 0 / changed 1
+  ~ BLL171_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL171: identical 2 / changed 1
+  ~ BLL172_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL172: identical 2 / changed 1
+  ~ BLL173_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>re-read texts, decode and encode sentences, recognise and spell high-frequency words, practice speed readi
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to re-read texts, decode and encode sentences, recognise and spell high-frequency words, practice speed re
+     + <h5>I can:</h5>
+BLL173: identical 2 / changed 1
+  ~ BLL174_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>identify correct spellings, review familiar vocabulary, practice reading fluency, explore word families, a
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to identify correct spellings, review familiar vocabulary, practice reading fluency, explore word families
+     + <h5>I can:</h5>
+BLL174: identical 2 / changed 1
+  ~ BLL175_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>Identify correct spellings, review familiar vocabulary, practice reading fluency, explore word families, a
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to identify correct spellings, review familiar vocabulary, practice reading fluency, explore word families
+     + <h5>I can:</h5>
+BLL175: identical 3 / changed 1
+  ~ BLL176_0_0.html: -3 +3
+     - <p>We are learning to:</p>
+     - <li>revise vocabulary through a memory game, practice reading fluency, explore suffixes for past tense, build 
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <li>to revise vocabulary through a memory game, practice reading fluency, explore suffixes for past tense, bui
+     + <h5>I can:</h5>
+BLL176: identical 2 / changed 1
+  ~ BLL177_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL177: identical 2 / changed 1
+  ~ BLL210_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL210: identical 0 / changed 1
+  ~ BLL211_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL211: identical 2 / changed 1
+  ~ BLL212_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL212: identical 2 / changed 1
+  ~ BLL213_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL213: identical 2 / changed 1
+  ~ BLL214_0_0.html: -1 +1
+     - <p>We are learning:</p>
+     + <h5>We are learning:</h5>
+BLL214: identical 2 / changed 1
+  ~ BLL215_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL215: identical 2 / changed 1
+  ~ BLL216_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL216: identical 2 / changed 1
+  ~ BLL217_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL217: identical 2 / changed 1
+  ~ BLL220_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL220: identical 0 / changed 1
+  ~ BLL221_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL221: identical 2 / changed 1
+  ~ BLL222_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL222: identical 2 / changed 1
+  ~ BLL223_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL223: identical 2 / changed 1
+  ~ BLL224_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL224: identical 2 / changed 1
+  ~ BLL225_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL225: identical 2 / changed 1
+  ~ BLL226_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL226: identical 2 / changed 1
+  ~ BLL227_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL227: identical 2 / changed 1
+  ~ BLL230_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL230: identical 0 / changed 1
+  ~ BLL231_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL231: identical 2 / changed 1
+  ~ BLL232_0_0.html: -2 +2
+     - <p>We are learning:</p>
+     - <p>I can:</p>
+     + <h5>We are learning:</h5>
+     + <h5>I can:</h5>
+BLL232: identical 2 / changed 1
+
+TOTAL: identical 236 / changed 149 / missing 0 over 104 modules
+CHANGED: AGH1001/AGH1001_1_0.html AGH1001/AGH1001_2_0.html AGH1001/AGH1001_3_0.html AGH1001/AGH1001_4_0.html AGH1001/AGH1001_5_0.html AGH1002/AGH1002_0_0.html AGH1002/AGH1002_1_0.html AGH1002/AGH1002_2_0.html AGH1002/AGH1002_3_0.html AGH1002/AGH1002_4_0.html AGH1002/AGH1002_5_0.html AGH1002/AGH1002_6_0.html AGH1003/AGH1003_0_0.html AGH1003/AGH1003_1_0.html AGH1003/AGH1003_2_0.html AGH1003/AGH1003_3_0.html AGH1003/AGH1003_4_0.html AGH1003/AGH1003_5_0.html AGH1003/AGH1003_6_0.html AGH1003/AGH1003_7_0.html AGH1003/AGH1003_8_0.html AGH1004/AGH1004_1_0.html AGH1004/AGH1004_2_0.html AGH1004/AGH1004_3_0.html AGH1004/AGH1004_4_0.html AGH1004/AGH1004_5_0.html AGH1004/AGH1004_6_0.html AGH1005/AGH1005_1_0.html AGH1005/AGH1005_2_0.html AGH1005/AGH1005_3_0.html AGH1005/AGH1005_4_0.html AGH1005/AGH1005_5_0.html AGH1005/AGH1005_6_0.html AGH1005/AGH1005_7_0.html AGH1005/AGH1005_8_0.html AGH1006/AGH1006_1_0.html AGH1006/AGH1006_2_0.html AGH1006/AGH1006_3_0.html AGH1006/AGH1006_4_0.html AGH1006/AGH1006_5_0.html AGH1006/AGH1006_6_0.html AGH1006/AGH1006_7_0.html AGH1006/AGH1006_8_0.html AGH1007/AGH1007_3_0.html AGH1007/AGH1007_4_0.html AGH1007/AGH1007_5_0.html AGH1007/AGH1007_6_0.html AGH1007/AGH1007_7_0.html AGH1007/AGH1007_8_0.html AGH1007/AGH1007_9_0.html AGH1008/AGH1008_0_0.html AGH1008/AGH1008_1_0.html AGH1008/AGH1008_2_0.html AGH1008/AGH1008_3_0.html AGH1008/AGH1008_4_0.html AGH1008/AGH1008_5_0.html AGH1008/AGH1008_6_0.html AGH1008/AGH1008_7_0.html AGH1008/AGH1008_8_0.html AGH1009/AGH1009_1_0.html AGH1009/AGH1009_2_0.html AGH1009/AGH1009_3_0.html AGH1009/AGH1009_4_0.html AGH1009/AGH1009_5_0.html AGH1009/AGH1009_6_0.html AGH1009/AGH1009_7_0.html AGH1009/AGH1009_8_0.html AGH1009/AGH1009_9_0.html ANZH105/ANZH105_0_0.html ANZH203/ANZH203_0_0.html ANZH205/ANZH205_0_0.html ANZH301/ANZH301_0_0.html ANZH303/ANZH303_0_0.html ANZH304/ANZH304_0_0.html ANZH404/ANZH404_0_0.html BLL110/BLL110_0_0.html BLL111/BLL111_0_0.html BLL112/BLL112_0_0.html BLL113/BLL113_0_0.html BLL114/BLL114_0_0.html BLL115/BLL115_0_0.html BLL116/BLL116_0_0.html BLL117/BLL117_0_0.html BLL120/BLL120_0_0.html BLL121/BLL121_0_0.html BLL122/BLL122_0_0.html BLL123/BLL123_0_0.html BLL125/BLL125_0_0.html BLL126/BLL126_0_0.html BLL127/BLL127_0_0.html BLL130/BLL130_0_0.html BLL131/BLL131_0_0.html BLL132/BLL132_0_0.html BLL133/BLL133_0_0.html BLL134/BLL134_0_0.html BLL135/BLL135_0_0.html BLL136/BLL136_0_0.html BLL137/BLL137_0_0.html BLL140/BLL140_0_0.html BLL141/BLL141_0_0.html BLL142/BLL142_0_0.html BLL143/BLL143_0_0.html BLL144/BLL144_0_0.html BLL145/BLL145_0_0.html BLL146/BLL146_0_0.html BLL147/BLL147_0_0.html BLL150/BLL150_0_0.html BLL151/BLL151_0_0.html BLL152/BLL152_0_0.html BLL153/BLL153_0_0.html BLL154/BLL154_0_0.html BLL155/BLL155_0_0.html BLL156/BLL156_0_0.html BLL157/BLL157_0_0.html BLL160/BLL160_0_0.html BLL161/BLL161_0_0.html BLL162/BLL162_0_0.html BLL163/BLL163_0_0.html BLL164/BLL164_0_0.html BLL165/BLL165_0_0.html BLL166/BLL166_0_0.html BLL167/BLL167_0_0.html BLL170/BLL170_0_0.html BLL171/BLL171_0_0.html BLL172/BLL172_0_0.html BLL173/BLL173_0_0.html BLL174/BLL174_0_0.html BLL175/BLL175_0_0.html BLL176/BLL176_0_0.html BLL177/BLL177_0_0.html BLL210/BLL210_0_0.html BLL211/BLL211_0_0.html BLL212/BLL212_0_0.html BLL213/BLL213_0_0.html BLL214/BLL214_0_0.html BLL215/BLL215_0_0.html BLL216/BLL216_0_0.html BLL217/BLL217_0_0.html BLL220/BLL220_0_0.html BLL221/BLL221_0_0.html BLL222/BLL222_0_0.html BLL223/BLL223_0_0.html BLL224/BLL224_0_0.html BLL225/BLL225_0_0.html BLL226/BLL226_0_0.html BLL227/BLL227_0_0.html BLL230/BLL230_0_0.html BLL231/BLL231_0_0.html BLL232/BLL232_0_0.html

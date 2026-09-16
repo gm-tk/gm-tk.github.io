@@ -4576,6 +4576,28 @@
 					}
 				}
 			}
+		},
+		"lesson_label_form": {
+			"enabled": true,
+			"env": "MENULABEL_OFF",
+			"overrides_gold": true,
+			"note": "ROUND 349 (Chris's decision D10-9, 2026-09-16 — KB constraint 23 (Universal) + 01B 'Lesson Pages — Simplified Module Menu' lines 221–246 + the overview-tab label row 196–197; KB level 1 over the gold's per-series split, a NAMED override). Inside #module-menu-content on EVERY page: (a) every learning / success LABEL — a p / h3 / h4 / h6 whose folded text starts with a role lead-in (role_lexicon), is at most label_max_words long, and either ends with a colon / ellipsis or is followed by a list — ships as <h{level}> (the r117 exact-phrase list + its 'secondary lead-in stays <p>' discriminator are superseded for menus; the r81 / r142 eng- and banner-family skip_named_promotion no longer keeps a label <p>); (b) the label's FORM is the KB's: trailing '...' / '…' / nothing → ':' (the gold: 'We are learning to:' 160 vs '...' 18; 'You will show your understanding by:' 220 vs the ellipsis forms 23); (c) learning_to_normalise — the writer's 'We are learning to:' / 'We are learning about/to …' family becomes the KB's learning_label 'We are learning:' and, so constraint 24's 'verb form matching heading context' still holds, each item of the list that follows gains item_prefix 'to ' (unless it already starts with it) with its first letter lowercased — exactly what the gold does where it re-words (30 of 39 checked pages: CEDO502, ENGC401 …); 'We are learning about:' is KEPT (its items would need a verb rewrite — editorial); (d) drop_titles — on a LESSON page a section TITLE (title_lexicon: 'Learning intentions', 'How will I know if I've learned it?', 'Success criteria' …) that sits IMMEDIATELY ABOVE a label is dropped (01B line 223: the h5 IS the label; 117 such titles on 116 pages); a title that is the label of its own list (followed by <ul>) or a two-column banner (followed by a curriculum heading) is KEPT; on the OVERVIEW page every title stays (01B's <h4><span> overview titles); (e) overview_labels — the overview tab's 'We are learning:' / 'I can:' labels are <h5> too (01B 196–197 / constraint 67) — the r81 two_col eng-family overview <p> form is retired (a NAMED override on the ~480 overview labels whose gold keeps <p>); (f) a SENTENCE (a role lead-in longer than label_max_words, or with no colon / ellipsis and no list after it — the constraint-70 OSSC 'Ākonga will learn …' lead-in, 'You will be able to …') is never a label and stays <p>; (g) the SUCCESS label's wording is the writer's (colon form only): 01B's year table ('I can:' years 7–10 / 'You will show your understanding by:' years 1–6) needs a year the data does not hold (session-12 pre-measurement: the code's level digit is not a year; the gold is per-MODULE consistent) — year_table {CODE: '7-10' | '1-6'} is the hook, empty until a data / KB session fills it. Menu is #header-scoped → invisible to compare_structure / body_compare; the p→h5 node change and the dropped titles are skeleton-visible (expected ≈ −0.1pp, named). Verifier: reference/tests/_verify_menulabels.cjs (protected, defect 0). Env MENULABEL_OFF reverts the whole pass.",
+			"level": 5,
+			"role_lexicon": {
+				"learning": "^(we are learning|we're learning|we learning|what are we learning|learning intentions?|ākonga will|akonga will|ākonga can|akonga can|students will|i am learning to|walt|what am i learning|what will i learn)\\b",
+				"success": "^(i can|you will (?:show|demonstrate) your understanding|success criteria|how will i know|wilf|you will be able to)\\b"
+			},
+			"title_lexicon": ["learning intentions", "learning intention", "success criteria", "how will i know if i've learned it", "how will i know i have learned it", "how will i know", "what are we learning", "what are we learning today", "lesson objectives", "lesson objective", "lesson goals", "lesson goal", "ngā whāinga ako", "nga whainga ako", "whāinga ako", "whainga ako", "paearu angitu"],
+			"label_max_words": 8,
+			"drop_titles": true,
+			"overview_labels": true,
+			"colon_form": true,
+			"learning_to_normalise": true,
+			"learning_to_pattern": "^we are learning (?:about )?to$",
+			"learning_label": "We are learning:",
+			"item_prefix": "to ",
+			"year_table": {},
+			"_year_table_note": "01B lines 240–244: the SUCCESS label is 'I can:' for years 7–10 and 'You will show your understanding by:' for years 1–6. Fill {CODE: '7-10'} / {CODE: '1-6'} per module (the gold is per-module consistent — 6 of ~130 modules mix); an entry re-words that module's success label; no entry = the writer's own label, colon form."
 		}
 	},
 	"footer": {

@@ -1,0 +1,15 @@
+changed pages 715 modules 319
+     5  Fundamentals lesson
+    30  Fundamentals overview
+     4  Inquiry lesson
+    33  Inquiry overview
+   401  Standard lesson
+   242  Standard overview
+    557  overview: label <p> -> <h5>
+    452  lesson: list item 'to ' + lowercase
+    438  lesson: <h5> label form only (colon / 'We are learning:')
+    248  overview: list item 'to ' + lowercase
+    159  lesson: label <p> -> <h5>
+     94  lesson: section title dropped (<h5>)
+     20  overview: <h5> label form only (colon / 'We are learning:')
+      8  lesson: section title dropped (<h4>)

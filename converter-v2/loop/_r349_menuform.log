@@ -1,0 +1,119 @@
+paired LESSON pages with a menu on both sides: 1056; OVERVIEW pages: 381
+
+A. LESSON-menu labels (role learning/success; the OSSC sentences excluded) — Claude's tag:
+  ALL                                                n=1318 pages= 680 mods=124 | {'h5': 1129, 'p': 189}
+  Claude <h5>                                        n=1129 pages= 635 mods=118 | {'h5': 705, 'p': 235, 'absent': 132, 'h3': 30, 'h4': 27}
+  RESIDUE (Claude not <h5>)                          n= 189 pages= 146 mods= 34 | {'p': 72, 'h5': 59, 'absent': 30, 'h3': 24, 'li': 4}
+  residue by template:
+    Standard                                         n= 180 pages= 137 mods= 32 | {'p': 63, 'h5': 59, 'absent': 30, 'h3': 24, 'li': 4}
+    Bilingual                                        n=   0 pages=   0 mods=  0 | {}
+    Fundamentals                                     n=   5 pages=   5 mods=  1 | {'p': 5}
+    Inquiry                                          n=   4 pages=   4 mods=  1 | {'p': 4}
+  residue by subject (n>=3):
+    1-10 English                                     n=  86 pages=  65 mods= 15 | {'h5': 27, 'h3': 24, 'p': 22, 'absent': 10, 'li': 3}
+    1-10 Mathematics                                 n=  44 pages=  23 mods=  5 | {'p': 25, 'absent': 18, 'h5': 1}
+    ConnectED                                        n=  25 pages=  25 mods=  6 | {'p': 20, 'h5': 5}
+    NCEA1                                            n=  19 pages=  18 mods=  4 | {'h5': 18, 'li': 1}
+    None                                             n=   8 pages=   8 mods=  1 | {'h5': 8}
+    Leaving to Learn                                 n=   5 pages=   5 mods=  1 | {'p': 5}
+  residue by Claude tag / role:
+    learning                                         n= 154 pages= 141 mods= 32 | {'p': 154}
+    success                                          n=  35 pages=  35 mods=  8 | {'p': 35}
+
+  section TITLES Claude ships on lesson pages: 152 on 116 pages / 21 modules
+      77  h5:Learning intentions
+      28  h4:Learning Intentions
+      21  h5:Learning Intentions
+      16  h5:How will I know if I’ve lear
+       5  h5:Success criteria:
+       2  h5:Learning Intentions:
+       2  h5:Learning intentions:
+       1  h5:Success criteria
+    gold keeps the same title: 124 of 152
+
+B. WORDING — the gold's string for Claude's label (lesson pages, gold label found):
+  gold re-words the label: 181 of 1156
+    we are learning            -> {'we are learning': 274, 'we are learning to': 11}
+    i can                      -> {'i can': 259}
+    you will show your under   -> {'you will show your understanding by': 245, 'you will show your understanding by comp': 2, 'you will show your understanding by iden': 2, 'you will show your understanding by choo': 1}
+    we are learning to         -> {'we are learning to': 147, 'we are learning': 58, 'we are learning about': 6, 'we are learning to appreciate stories fr': 1}
+    we are learning about      -> {'we are learning': 40, 'we are learning about': 36, 'we are learning to': 7, 'we are learning about how music sound ef': 1}
+    we are learning about to   -> {'we are learning to': 17, 'we are learning': 8, 'we are learning about to': 3, 'we are learning about': 1}
+    ākonga will                -> {'ākonga will': 8}
+    ākonga can                 -> {'ākonga can': 8}
+    we are learning to ident   -> {'we are learning': 3}
+    we are learning to visua   -> {'we are learning': 3}
+  the gold's EXACT strings (case / colon), top 12:
+     389  'We are learning:'
+     259  'I can:'
+     220  'You will show your understanding by:'
+     160  'We are learning to:'
+      38  'We are learning about:'
+      18  'We are learning to ...'
+      10  'You will show your understanding by ...'
+       9  'You will show your understanding by…'
+       8  'Ākonga will:'
+       8  'Ākonga can:'
+       5  'We are learning about ...'
+       4  'You will show your understanding by …'
+  Claude's EXACT strings, top 12:
+     281  'We are learning:'
+     268  'I can:'
+     240  'You will show your understanding by:'
+     158  'We are learning to:'
+      68  'We are learning about:'
+      65  'You will show your understanding by …'
+      39  'We are learning to ...'
+      27  'You will show your understanding by…'
+      19  'We are learning to'
+      18  'You will show your understanding by'
+      13  'Ākonga can:'
+      13  'Ākonga will:'
+
+C. OVERVIEW tab labels (We are learning / I can …) — Claude's tag vs the gold's:
+  ALL                                                n=1301 pages= 350 mods=347 | {'h5': 575, 'p': 552, 'h4': 172, 'h3': 2}
+  Claude <p>                                         n= 552 pages= 288 mods=288 | {'p': 480, 'absent': 52, 'h5': 13, 'li': 5, 'h4': 2}
+  Claude <h5>                                        n= 575 pages= 280 mods=277 | {'h5': 344, 'absent': 135, 'p': 34, 'h4': 32, 'h3': 29, 'li': 1}
+  Claude <p> overview labels by subject:
+    1-10 Blended Literacy                            n= 179 pages=  90 mods= 90 | {'p': 154, 'absent': 16, 'h5': 6, 'li': 3}
+    1-10 English                                     n=  67 pages=  44 mods= 44 | {'p': 59, 'absent': 6, 'h5': 2}
+    1-10 Mathematics                                 n=  56 pages=  31 mods= 31 | {'p': 36, 'absent': 17, 'h5': 3}
+    Online Safety (OS9000)                           n=  56 pages=  28 mods= 28 | {'p': 56}
+    Leaving to Learn                                 n=  54 pages=  28 mods= 28 | {'p': 54}
+    None                                             n=  40 pages=  10 mods= 10 | {'p': 36, 'absent': 2, 'h5': 2}
+    1-10 Health and PE                               n=  30 pages=  15 mods= 15 | {'p': 28, 'h4': 2}
+    ConnectED                                        n=  28 pages=  16 mods= 16 | {'p': 23, 'absent': 3, 'li': 2}
+    ANZH                                             n=  14 pages=   7 mods=  7 | {'p': 12, 'absent': 2}
+    NCEA1                                            n=  13 pages=  11 mods= 11 | {'p': 11, 'absent': 2}
+    1-10 Social Science                              n=   8 pages=   4 mods=  4 | {'p': 4, 'absent': 4}
+    Te ara Whakapuawa -Wellbeing                     n=   3 pages=   2 mods=  2 | {'p': 3}
+
+D. 'Ākonga will…' / 'you will be able to…' in Claude's lesson menus — LABEL (≤7 words) vs SENTENCE, by series prefix:
+      28  XDLS sentence <p>
+      22  BLL1 label <p>
+      20  MXFL label <p>
+      18  MXDB label <p>
+      14  OSAH sentence <p>
+      11  OSBY sentence <p>
+       8  OSGM sentence <p>
+       8  OSOH sentence <p>
+       8  OSSM sentence <p>
+       7  ANZH label <p>
+       7  MXDI label <p>
+       5  OSAI sentence <p>
+       3  ART1 sentence <p>
+       3  MXFU sentence <p>
+       3  OSSC sentence <p>
+       3  SSOG label <p>
+    e.g. ANZH105 ANZH105_0_0.html <p> label: Ākonga will:
+    e.g. ANZH105 ANZH105_0_0.html <p> label: Ākonga can:
+    e.g. ANZH203 ANZH203_0_0.html <p> label: Ākonga will:
+    e.g. ANZH205 ANZH205_0_0.html <p> label: Ākonga will:
+    e.g. ANZH205 ANZH205_0_0.html <p> label: Ākonga can:
+    e.g. ANZH301 ANZH301_0_0.html <p> label: Ākonga will:
+    e.g. ANZH301 ANZH301_0_0.html <p> label: Ākonga can:
+    e.g. ART1002 ART1002_0_0.html <p> sentence: Ākonga will embark on a journey that will involve curiosity, risk taking, and critical thi
+    e.g. ART1006 ART1006_0_0.html <p> sentence: Ākonga will understand that using creative thinking processes will demonstrate understandi
+    e.g. ART1006 ART1006_0_0.html <p> sentence: Ākonga will show success when they have completed four tasks based on an inquiry model:
+    e.g. BLL110 BLL110_0_0.html <p> label: Ākonga will:
+    e.g. BLL110 BLL110_0_0.html <p> label: Ākonga can:

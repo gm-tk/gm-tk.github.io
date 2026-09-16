@@ -1,0 +1,50 @@
+changed pages (probe): 715
+pairs 1955 -> 1955; moved 322 (up 114 / down 208); movers OUTSIDE the changed set: 0
+mean delta from movers = -0.3129pp (check: -0.3177)
+by template / page type: up / down / pp-sum (contribution to the mean = pp-sum / 1955):
+  Fundamentals lesson    up    3 down    2  pp-sum    +11.92  → mean +0.0061pp
+  Fundamentals overview  up    0 down   22  pp-sum    -20.34  → mean -0.0104pp
+  Inquiry      lesson    up    3 down    1  pp-sum     +9.09  → mean +0.0046pp
+  Inquiry      overview  up    3 down   21  pp-sum    -20.89  → mean -0.0107pp
+  Standard     lesson    up  102 down   47  pp-sum   +101.23  → mean +0.0518pp
+  Standard     overview  up    3 down  115  pp-sum   -692.70  → mean -0.3543pp
+by series prefix (pp-sum, worst first):
+  BLL      up   1 down  87 pp-sum  -474.68
+  ENGI     up   7 down  15 pp-sum   -52.16
+  ENGC     up   1 down   6 pp-sum   -38.63
+  ANZH     up   0 down   3 pp-sum   -33.26
+  XLP      up   5 down   5 pp-sum   -26.84
+  SCPH     up   0 down   8 pp-sum   -23.03
+  XGF      up   0 down   4 pp-sum   -18.88
+  HPFUN    up   0 down  14 pp-sum   -13.46
+  OSBY     up   0 down   1 pp-sum   -13.34
+  SSOG     up   0 down   1 pp-sum    -8.96
+  MXDB     up   5 down   2 pp-sum    -5.10
+  ENFUN    up   0 down   7 pp-sum    -4.90
+  ENGS     up   4 down   7 pp-sum    -3.63
+  SSCI     up   0 down   1 pp-sum    -2.26
+largest dips:
+  ENGI401_0_0.html          93.48 ->  79.17 (-14.31)
+  ANZH203_0_0.html          72.53 ->  58.95 (-13.58)
+  OSBY301_0_0.html          70.13 ->  56.79 (-13.34)
+  XLP05_0_0.html            41.67 ->  28.57 (-13.10)
+  ANZH205_0_0.html          72.73 ->  60.19 (-12.53)
+  ENGC102_0_0.html          86.08 ->  75.95 (-10.13)
+  ENGC401_0_0.html          57.41 ->  48.15 (-9.26)
+  SSOG103_0_0.html          57.66 ->  48.70 (-8.96)
+  BLL142_0_0.html           77.31 ->  68.91 (-8.40)
+  ENGI303_0_0.html          70.10 ->  61.86 (-8.25)
+  BLL122_0_0.html           72.73 ->  64.65 (-8.08)
+  ENGS201_0_0.html          66.02 ->  58.25 (-7.77)
+largest gains:
+  ENGR301_7_0.html          59.42 ->  68.15 (+8.73)
+  ENGS401_6_0.html          48.74 ->  57.39 (+8.65)
+  ENGI401_10_0.html         64.38 ->  72.73 (+8.34)
+  XFUN02_6_0.html           50.00 ->  57.14 (+7.14)
+  ENGJ302_9_0.html          45.24 ->  51.85 (+6.61)
+  AGH1002_5_0.html          63.04 ->  69.61 (+6.57)
+  AGH1003_1_0.html          52.22 ->  58.76 (+6.53)
+  ENGS401_1_0.html          45.00 ->  51.28 (+6.28)
+>= 50: crossed DOWN 9 / UP 7 
+>= 75: crossed DOWN 39 / UP 0 ['ANZH105_0_0.html', 'ENGI203_0_0.html', 'BLL245_0_0.html', 'BLL164_0_0.html', 'BLL175_0_0.html', 'BLL176_0_0.html', 'ENGJ101_0_0.html', 'ENGC202_0_0.html', 'BLL177_0_0.html', 'BLL171_0_0.html']
+>= 90: crossed DOWN 1 / UP 0 
