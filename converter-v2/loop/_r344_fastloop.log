@@ -1,0 +1,21 @@
+re-scoring 21 affected module(s): CEDO105 CEDT207 ENG1005 ENGI102 ENGI202 ENGR202 HES1006 HIS1001 HIS1006 MXEO202 MXFU201 MXFU302 PES1002 PES1005 PES1008 SCCH301 SCPH301 SSOG101 SSOG301 XDLS906 XLP02
+baseline taken: 2026-09-16T05:02:24Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  51.26      51.28     +0.02  IMPROVED
+  skeleton pages >=50%                       1073       1073         0  HELD
+  skeleton pages >=75%                        198        198         0  HELD
+  compare_structure exact chain             11469      11461        -8  REGRESSED
+  compare_structure EXTRA container           175        175         0  HELD
+  compare_structure missing container         607        607         0  HELD
+  body_compare ANY breakdown                  180        180         0  HELD
+  defect structurally-clean %               98.91      98.91      0.00  HELD
+  literal-[tag] leak (occ)                     26         26         0  HELD
+  literal-[tag] leak (pages)                   23         23         0  HELD
+
+  context (no pass/fail): sk_pages: 1955->1955  cs_matched: 13516->13508  body_pages: 2103->2103  df_total: 2103->2103  df_clean: 2080->2080
+
+RESULT: FAIL — REGRESSED: compare_structure exact chain
+        (inner-loop only — investigate before the ship checkpoint; toggle the fix OFF and re-run to isolate.)

@@ -1,0 +1,92 @@
+{
+ "summary": {
+  "population": "gate_mods",
+  "modules": 409,
+  "pages_scanned": 1956,
+  "target_pages": 1,
+  "target_modules": 1,
+  "target_gold_absent(gain)": 0,
+  "target_gold_kept(named override)": 1,
+  "by_kind_gold": {
+   "excluded-07B | exact | same": 2,
+   "target | exact | same": 1
+  },
+  "by_template": {
+   "Inquiry": {
+    "exact/same": 1
+   }
+  },
+  "by_subject": {
+   "XDLS": {
+    "same": 1
+   }
+  },
+  "later_repeats_not_target(by tmpl)": {
+   "Bilingual": 4,
+   "Fundamentals": 1,
+   "Inquiry": 1,
+   "Standard": 45
+  },
+  "inbox_first_heading_equal_title_KEEP(by tmpl)": {
+   "Bilingual": 2,
+   "Inquiry": 1,
+   "Standard": 7
+  },
+  "sibling_titles_with_markers": 0,
+  "sibling_modules": 0
+ },
+ "rows": [
+  {
+   "code": "TRR111",
+   "tmpl": "Bilingual",
+   "subj": "TRR",
+   "page": "TRR111_3_0.html",
+   "gold": "TRR111_3.0.html",
+   "overview": false,
+   "bilingual": true,
+   "excluded": "07B",
+   "level": 3,
+   "heading": "Te oropuare pūrua: iu",
+   "title": "Te oropuare pūrua: iu",
+   "gold_title": "Te oropuare pūrua: iu",
+   "kind": "exact",
+   "gold_has": "same",
+   "gold_first_is_dup": true
+  },
+  {
+   "code": "TRR111",
+   "tmpl": "Bilingual",
+   "subj": "TRR",
+   "page": "TRR111_4_0.html",
+   "gold": "TRR111_4.0.html",
+   "overview": false,
+   "bilingual": true,
+   "excluded": "07B",
+   "level": 3,
+   "heading": "Te oropuare pūrua: ie",
+   "title": "Te oropuare pūrua: ie",
+   "gold_title": "Te oropuare pūrua: ie",
+   "kind": "exact",
+   "gold_has": "same",
+   "gold_first_is_dup": true
+  },
+  {
+   "code": "XDLS903",
+   "tmpl": "Inquiry",
+   "subj": "XDLS",
+   "page": "XDLS903_1_0.html",
+   "gold": "XDLS903.01.html",
+   "overview": false,
+   "bilingual": false,
+   "excluded": "",
+   "level": 4,
+   "heading": "Poi",
+   "title": "Poi",
+   "gold_title": "Poi",
+   "kind": "exact",
+   "gold_has": "same",
+   "gold_first_is_dup": false
+  }
+ ],
+ "sibling": []
+}

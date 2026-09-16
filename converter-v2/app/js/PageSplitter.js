@@ -865,6 +865,19 @@ class PageSplitter {
 		// Lesson 2: …"); bare [LESSON] tags then leave number/title empty.
 		for (const p of pages) {
 			if (p.isOverview) continue;
+			// ROUND 344 (D10-1 sibling — KB c79 hygiene): a header title never carries a writer's
+			// markdown marker. Strip every `*` from the [LESSON] payload BEFORE the label /
+			// bare-number tests below (so `**3**` reads as the bare number it is and takes the
+			// lesson's own name from its first heading) and collapse whitespace; a title left with
+			// no letter or digit is emptied so the module-title fallback applies. Fires only on a
+			// title that carries a `*`. Data body_region.lesson_title_dedup.title_markers;
+			// env TITLEMARK_OFF.
+			const _tmCfg = DataService?.Data?.EmitTemplates?.body_region?.lesson_title_dedup?.title_markers;
+			if (_tmCfg && _tmCfg.enabled !== false && p.pageTitle && /\*/.test(String(p.pageTitle))
+				&& !(typeof process !== "undefined" && process.env && process.env[_tmCfg.env ?? "TITLEMARK_OFF"])) {
+				const _t = String(p.pageTitle).replace(/\*/g, "").replace(/\s+/g, " ").trim();
+				p.pageTitle = /[\p{L}\p{N}]/u.test(_t) ? _t : "";
+			}
 			// HARVESTING A LESSON'S TITLE FROM ITS FIRST HEADING — but only a
 			// GENUINE title, not just any heading that happens to appear
 			// first. A heading that appears BEFORE the page's first

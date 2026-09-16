@@ -913,7 +913,7 @@ if (primary?.directive === "PAGE_BOUNDARY") {
             ...
 ```
 
-- **Title harvesting rules** live in the post-pass loop near the end of `Split`, gated by `Emit_Templates.json → body_region.lesson_title_dedup`.
+- **Title harvesting rules** live in the post-pass loop near the end of `Split`, gated by `Emit_Templates.json → body_region.lesson_title_dedup`. **Since round 344** the post-pass first strips every `*` / `**` marker a writer left in the `[LESSON]` payload (`title_markers`, env `TITLEMARK_OFF`) — so `**3**` reads as the bare number it is and takes the lesson's own name from its first heading — and the body de-dup in `ContentConverter` applies KB constraint 47 in full (`c47`, env `DEDUPC47_OFF`): the first RENDERED free-body heading equal to the title once case, punctuation and a `Lesson N` label are ignored is dropped; a heading consumed as the title repeat no longer hides the real opening heading, a heading inside an activity box is never a candidate, and the Bilingual template is left to KB 07B.
 - **The MTK drop-down-menu template (round 212):** on a bilingual module whose stream carried a standalone `[Content for DROP DOWN MENU]` opener, a `[MODULE CONTENT: PAGE n]` boundary does *not* start a new page — that content **is** the overview's body (the marker's own table is flagged `_reoModuleContent` so the bilingual unfold accepts it without an English|Māori header row). Pattern + gating: `Emit_Templates.json → elements.dual_language.dropdown_menu`; env `REODROPMENU_OFF`.
 
 **Gotcha.** A page title is only harvested from a heading that appears *before* the first `[Activity]` — a heading after that is section content, and using it produced wrong titles (a module once titled a page "Fog" from a widget's panel label).

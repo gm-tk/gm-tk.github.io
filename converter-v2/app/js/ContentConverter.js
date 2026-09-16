@@ -51,6 +51,8 @@ class ContentConverter {
 	// (header h1 + body h3) on 683/887 Claude lesson pages.
 	static #pageLessonTitle = "";
 	static #firstBodyHeadingSeen = false;
+	// ROUND 344: the c47 refinements apply to LESSON pages only (the overview keeps the r80 exact de-dup)
+	static #pageIsLesson = false;
 	// The current lesson page's number (set from PageSplitter's page.lessonNumber) plus a
 	// per-lesson activity-letter counter, used together to build "{lessonNumber}{letter}"
 	// activity numbers such as "3A", "3B" (see data activity_wrapper.lesson_letter_number).
@@ -394,6 +396,7 @@ class ContentConverter {
 			? (_ovDedupOn ? this.#pageEnglishTitle : "")
 			: (page.pageTitle || "");
 		this.#firstBodyHeadingSeen = false;
+		this.#pageIsLesson = !page.isOverview;
 		// LESSON-LETTER ACTIVITY NUMBERING CONTEXT: lessonNumber stays null on the overview
 		// page (there is no "{lessonNumber}{letter}" activity renumbering there). The
 		// per-lesson letter counter is reset whenever the module changes; WITHIN one module it
@@ -6150,8 +6153,27 @@ class ContentConverter {
 			// CONSUMED — the human shows the lesson title once, in the header (723
 			// human lesson pages don't repeat it in the body vs 35 that do). Only
 			// the first body heading is a candidate, so a deeper repeat is untouched.
-			if (!this.#firstBodyHeadingSeen && tag !== "activity heading") {
-				this.#firstBodyHeadingSeen = true;
+			// ROUND 344 (the autonomous loop's session 12 — Chris's D10-1, KB constraint 47 in full):
+			// three refinements of the de-dup TEST on a LESSON page, data
+			// body_region.lesson_title_dedup.c47, env DEDUPC47_OFF. (1) first_rendered_heading — a
+			// heading CONSUMED by the de-dup does not spend the first-heading slot (MXEO202_3_0:
+			// `[H2] *Lesson 3 Triangles*` consumed, then `[H3] Triangles` — the real opening heading —
+			// was never tested); the slot is spent below, only when a heading RENDERS. (2)
+			// ignore_punctuation — the compare keeps letters and digits only (HIS1001's curly quotes,
+			// ENGR202's italicised `*:*`, PES1002's `**` markers + trailing note). (3)
+			// skip_inside_activity — a heading inside an open activity box is the activity's own
+			// title (ENGI101 "Being Frank"): never the candidate, never spends the slot. The
+			// Bilingual template (exclude_body_class reoTranslate) is excluded — KB 07B governs the
+			// MTK section heading. The overview page keeps the r80 exact de-dup (c47: strip-only).
+			const _c47 = tpl.body_region?.lesson_title_dedup?.c47;
+			const _c47On = !!_c47 && _c47.enabled !== false && this.#pageIsLesson
+				&& !(typeof process !== "undefined" && process.env && process.env[_c47.env ?? "DEDUPC47_OFF"])
+				&& !(_c47.exclude_body_class && new RegExp(_c47.exclude_body_class, "i").test(String(run.resolvedRules?.body_class || "")));
+			const _c47Slot = _c47On && _c47.first_rendered_heading !== false;
+			const _c47InAct = _c47On && _c47.skip_inside_activity !== false
+				&& Array.isArray(stack) && stack.some((s) => s && s.mode === "activity");
+			if (!this.#firstBodyHeadingSeen && tag !== "activity heading" && !_c47InAct) {
+				if (!_c47Slot) this.#firstBodyHeadingSeen = true;
 				// The body's lesson heading often arrives wrapped WHOLE in *italic* markers —
 				// for example "[H2] *Lesson 3: Be kind online*" (found on module OSBY201-03) —
 				// which means the leading "Lesson N:" strip earlier in this method (which is
@@ -6182,12 +6204,18 @@ class ContentConverter {
 					if (_llRe) { const m = _llRe.exec(String(s).replace(/\*/g, "").trim()); if (m && String(m[3] ?? "").trim()) return String(m[3]).trim(); }
 					return String(s).replace(/^lesson\s+#?\d+(?:\.\d+)?[a-z]?\s*[:.\-–—]?\s*/i, "") || String(s);
 				};
-				if (this.#pageLessonTitle
-					&& Utils.Fold(_stripLessonPfx(text)).replace(/\s+/g, "") === Utils.Fold(_stripLessonPfx(this.#pageLessonTitle)).replace(/\s+/g, "")) {
+				// ROUND 344: the compare key — Utils.Fold + whitespace removed (r75), or letters and
+				// digits only under c47 ignore_punctuation
+				const _ddKey = (s) => {
+					const f = Utils.Fold(_stripLessonPfx(s));
+					return (_c47On && _c47.ignore_punctuation !== false) ? f.replace(/[^\p{L}\p{N}]+/gu, "") : f.replace(/\s+/g, "");
+				};
+				if (this.#pageLessonTitle && _ddKey(text) === _ddKey(this.#pageLessonTitle)) {
 					// keep any genuinely-following body text (Part-3 "BOTH" case)
 					if (embedded && it.blackAfter.trim()) out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
 					return out;   // the heading itself is in the header already
 				}
+				if (_c47Slot) this.#firstBodyHeadingSeen = true;   // ROUND 344: rendered → the slot is spent
 			}
 			// Keep a PARTIAL inline bold (a single bolded KEYWORD within the heading, as in
 			// module OSBY201's "**you bully**") but FLATTEN a WHOLE-heading bold (a writer's

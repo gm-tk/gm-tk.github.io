@@ -1690,7 +1690,11 @@ class Config {
 	// ROUND 343 (2026-09-16, build 260619.14): a GATE-CONFIGURATION round, no engine change — the eight CED revision-brief
 	// modules leave the scored population (Chris's D10-6; reference/tests/compare_exclusions.txt + _corpus.gate_mods());
 	// every baseline re-established on 1955 pairs; the corpus on disk is r342's byte-for-byte.
-	static AppVersion = "260619.14";
+	// ROUND 344 (2026-09-16, build 260619.15): the opening duplicate body heading is dropped in full — KB constraint 47
+	// (Chris's D10-1): the first RENDERED free-body heading equal to the title once case, punctuation and a Lesson N label
+	// are ignored (a consumed heading no longer spends the slot; activity-box titles never candidates; Bilingual excluded by
+	// 07B) + the header title's stray markdown markers stripped; scoped regeneration of 21 modules / 48 pages.
+	static AppVersion = "260619.15";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
