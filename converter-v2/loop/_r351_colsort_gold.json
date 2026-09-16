@@ -1,0 +1,712 @@
+[
+{
+"code": "CEDK101",
+"fam": "Inquiry",
+"page": "0.0",
+"index": 2,
+"rows": 2,
+"w": 3,
+"hdr": [
+"heat",
+"light",
+"both"
+],
+"nitems": 0,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 0,
+"file": "CEDK101_0.html",
+"open": "<div class=\"dragAndDrop noBG\" layout=\"column\"> <!-- noBG -->"
+}
+},
+{
+"code": "CEDK101",
+"fam": "Inquiry",
+"page": "0.0",
+"index": 10,
+"rows": 3,
+"w": 6,
+"hdr": [
+"oldest newest"
+],
+"nitems": 11,
+"gold": {
+"layout": "column",
+"hdr_hits": 1,
+"item_hits": 9,
+"file": "CEDK101_0.html",
+"open": "<div class=\"dragAndDrop noBG\" layout=\"column\">\n\t\t\t\t\t\t\t\t    <"
+}
+},
+{
+"code": "ENFUN04",
+"fam": "Fundamentals",
+"page": "0.0",
+"index": 18,
+"rows": 5,
+"w": 3,
+"hdr": [
+"my parents asked me________ movie i watc",
+"which",
+"witch"
+],
+"nitems": 12,
+"gold": {
+"layout": "standard",
+"hdr_hits": 1,
+"item_hits": 4,
+"file": "ENFUN04.html",
+"open": "<div class=\"dragAndDrop autoCheck noBG\" layout=\"standard\"> <"
+}
+},
+{
+"code": "ENFUN09",
+"fam": "Fundamentals",
+"page": "0.0",
+"index": 17,
+"rows": 4,
+"w": 4,
+"hdr": [
+"main idea what does the writer want the ",
+"audience who is the writing for",
+"purpose is it to entertain persuade or i",
+"text type what kind of text is it"
+],
+"nitems": 12,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 12,
+"file": "ENFUN09.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\n                  "
+}
+},
+{
+"code": "ENGI203",
+"fam": "Standard",
+"page": "10.0",
+"index": 21,
+"rows": 4,
+"w": 3,
+"hdr": [
+"past",
+"present",
+"future"
+],
+"nitems": 9,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 9,
+"file": "ENGI203_10.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\n                  "
+}
+},
+{
+"code": "ENGR201",
+"fam": "Standard",
+"page": "2.0",
+"index": 5,
+"rows": 2,
+"w": 3,
+"hdr": [
+"leaders",
+"followers",
+"bystanders"
+],
+"nitems": 6,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 6,
+"file": "ENGR201_2.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">                   "
+}
+},
+{
+"code": "SCPH301",
+"fam": "Standard",
+"page": "4.0",
+"index": 11,
+"rows": 3,
+"w": 3,
+"hdr": [
+"conduction",
+"convection",
+"radiation"
+],
+"nitems": 0,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 0,
+"file": "SCPH301_4_0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\n                  "
+}
+},
+{
+"code": "CEDO501",
+"fam": "Standard",
+"page": "3.0",
+"index": 13,
+"rows": 2,
+"w": 4,
+"hdr": [
+"world wide web",
+"internet",
+"pages",
+"search engine"
+],
+"nitems": 4,
+"gold": {
+"layout": "FIB",
+"hdr_hits": 4,
+"item_hits": 4,
+"file": "CEDO501_3.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"FIB\">\n\t\t\t\t\t\t\t\t<!-- autoChec"
+}
+},
+{
+"code": "ENGI103",
+"fam": "Standard",
+"page": "2.0",
+"index": 8,
+"rows": 5,
+"w": 3,
+"hdr": [
+"i can jump high",
+"and",
+"i can run fast"
+],
+"nitems": 12,
+"gold": {
+"layout": "FIB",
+"hdr_hits": 3,
+"item_hits": 12,
+"file": "ENGI103_2.0.html",
+"open": "<div class=\"dragAndDrop autoCheck\" layout=\"FIB\">\n           "
+}
+},
+{
+"code": "ENGI401",
+"fam": "Standard",
+"page": "10.0",
+"index": 30,
+"rows": 3,
+"w": 4,
+"hdr": [
+"early life",
+"accomplishments",
+"personal life",
+"legacy"
+],
+"nitems": 8,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 8,
+"file": "ENGI401_6.2.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\"> <!-- noBG --> <!--"
+}
+},
+{
+"code": "MXDB102",
+"fam": "Standard",
+"page": "1.0",
+"index": 1,
+"rows": 2,
+"w": 4,
+"hdr": [
+"squares",
+"triangles",
+"circles",
+"rectangles"
+],
+"nitems": 0,
+"gold": null
+},
+{
+"code": "MXEX202",
+"fam": "Standard",
+"page": "5.0",
+"index": 1,
+"rows": 2,
+"w": 3,
+"hdr": [
+"1 gram",
+"500 grams",
+"1 kilogram"
+],
+"nitems": 9,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 9,
+"file": "MXEX202_6.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<div"
+}
+},
+{
+"code": "BLL147",
+"fam": "Standard",
+"page": "1.0",
+"index": 4,
+"rows": 2,
+"w": 3,
+"hdr": [
+"fruits",
+"vegetables",
+"other items"
+],
+"nitems": 10,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 10,
+"file": "BLL147-1.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\n                  "
+}
+},
+{
+"code": "BLL220",
+"fam": "Inquiry",
+"page": "0.0",
+"index": 15,
+"rows": 5,
+"w": 3,
+"hdr": [
+"ai",
+"ay",
+"a_e"
+],
+"nitems": 12,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 12,
+"file": "BLL220.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\"> <!-- noBG --> <!--"
+}
+},
+{
+"code": "BLL220",
+"fam": "Inquiry",
+"page": "0.0",
+"index": 21,
+"rows": 5,
+"w": 3,
+"hdr": [
+"ea",
+"ee",
+"ey"
+],
+"nitems": 12,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 12,
+"file": "BLL220.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\n                \t\t"
+}
+},
+{
+"code": "BLL230",
+"fam": "Inquiry",
+"page": "0.0",
+"index": 3,
+"rows": 5,
+"w": 3,
+"hdr": [
+"o_o",
+"oa",
+"oe"
+],
+"nitems": 12,
+"gold": {
+"layout": "standard",
+"hdr_hits": 2,
+"item_hits": 12,
+"file": "BLL230.html",
+"open": "<div class=\"dragAndDrop\" layout=\"standard\">\n\t\t\t\t\t\t\t\t\t\t<div c"
+}
+},
+{
+"code": "BLL230",
+"fam": "Inquiry",
+"page": "0.0",
+"index": 18,
+"rows": 5,
+"w": 4,
+"hdr": [
+"oo",
+"ew",
+"ui",
+"ue"
+],
+"nitems": 16,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 16,
+"file": "BLL230.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\n\t\t\t\t\t\t\t\t\t\t<div cla"
+}
+},
+{
+"code": "BLL230",
+"fam": "Inquiry",
+"page": "0.0",
+"index": 24,
+"rows": 5,
+"w": 3,
+"hdr": [
+"au",
+"aw",
+"al"
+],
+"nitems": 12,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 12,
+"file": "BLL230.html",
+"open": "<div class=\"dragAndDrop noBG\" layout=\"column\">\n\t\t\t\t\t\t\t\t\t<div"
+}
+},
+{
+"code": "CEDR401",
+"fam": "Inquiry",
+"page": "1.0",
+"index": 14,
+"rows": 4,
+"w": 4,
+"hdr": [
+"who uses the data",
+"category to count or describe",
+"category to count or describe",
+"decision using the data"
+],
+"nitems": 12,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 12,
+"file": "CEDR401 Leadership and Information.html",
+"open": "<div class=\"dragAndDrop autoCheck\" layout=\"column\">\n\t\t\t\t\t\t\t\t"
+}
+},
+{
+"code": "ENGI302",
+"fam": "Standard",
+"page": "3.0",
+"index": 4,
+"rows": 5,
+"w": 3,
+"hdr": [
+"source",
+"twisted tale",
+"traditional tale"
+],
+"nitems": 15,
+"gold": {
+"layout": "standard",
+"hdr_hits": 2,
+"item_hits": 9,
+"file": "ENGI302_3.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"standard\">\n                "
+}
+},
+{
+"code": "ENGI302",
+"fam": "Standard",
+"page": "4.0",
+"index": 7,
+"rows": 4,
+"w": 3,
+"hdr": [
+"1st person",
+"2nd person",
+"3rd person"
+],
+"nitems": 9,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 8,
+"file": "ENGI302_4.0.html",
+"open": "<div class=\"dragAndDrop autoCheck\" layout=\"column\">\n\t\t\t\t\t\t\t\t"
+}
+},
+{
+"code": "ENGI405",
+"fam": "Standard",
+"page": "5.0",
+"index": 21,
+"rows": 2,
+"w": 4,
+"hdr": [
+"characters",
+"setting",
+"conflict",
+"language"
+],
+"nitems": 10,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 10,
+"file": "ENGI405_5.1.html",
+"open": "<div class=\"dragAndDrop autoCheck\" layout=\"column\">\n        "
+}
+},
+{
+"code": "ENGJ202",
+"fam": "Standard",
+"page": "3.0",
+"index": 4,
+"rows": 4,
+"w": 4,
+"hdr": [
+"one syllable",
+"two syllables",
+"three syllables",
+"four syllables"
+],
+"nitems": 12,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 12,
+"file": "ENGJ202_03.0.html",
+"open": "<div class=\"dragAndDrop noBG autoCheck\" layout=\"column\"> <!-"
+}
+},
+{
+"code": "ENGR301",
+"fam": "Standard",
+"page": "1.0",
+"index": 1,
+"rows": 3,
+"w": 3,
+"hdr": [
+"agree",
+"neutral not sure",
+"disagree"
+],
+"nitems": 2,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 2,
+"file": "ENGR301_1.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"column\">\n                  "
+}
+},
+{
+"code": "HIS1006",
+"fam": "Standard",
+"page": "7.0",
+"index": 13,
+"rows": 3,
+"w": 4,
+"hdr": [
+"discrimination by landlords and employer",
+"inequality of schools health care and ho",
+"white flight from the inner city to the ",
+"unprecedented destruction injury and dea"
+],
+"nitems": 8,
+"gold": null
+},
+{
+"code": "MXFU402",
+"fam": "Standard",
+"page": "1.0",
+"index": 5,
+"rows": 4,
+"w": 4,
+"hdr": [
+"in a deck of cards i will pull out a dia",
+"i will flip a coin and it will land on t",
+"my opponent will use scissors in a game ",
+"i will roll an even number on a 6 sided "
+],
+"nitems": 6,
+"gold": {
+"layout": "standard",
+"hdr_hits": 4,
+"item_hits": 6,
+"file": "MXFU402_1.0.html",
+"open": "<div class=\"dragAndDrop\" layout=\"standard\">\n                "
+}
+},
+{
+"code": "SSOG301",
+"fam": "Standard",
+"page": "4.0",
+"index": 5,
+"rows": 4,
+"w": 3,
+"hdr": [
+"legislative",
+"executive",
+"judicial"
+],
+"nitems": 9,
+"gold": null
+},
+{
+"code": "SSOG301",
+"fam": "Standard",
+"page": "4.0",
+"index": 6,
+"rows": 3,
+"w": 3,
+"hdr": [
+"legislative",
+"executive",
+"judicial"
+],
+"nitems": 6,
+"gold": null
+},
+{
+"code": "XTAS101",
+"fam": "Standard",
+"page": "3.0",
+"index": 24,
+"rows": 11,
+"w": 4,
+"hdr": [
+"number of times in 10 seconds",
+"special interest action 1",
+"special interest action 2",
+"special interest action 3"
+],
+"nitems": 10,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 10,
+"file": "XTAS101_3.0.html",
+"open": "<div class=\"dragAndDrop noBG\" layout=\"column\">\n             "
+}
+},
+{
+"code": "BLL253",
+"fam": "Standard",
+"page": "1.0",
+"index": 4,
+"rows": 2,
+"w": 3,
+"hdr": [
+"add ous to these base words",
+"add y to these base words",
+"add able to these base words"
+],
+"nitems": 12,
+"gold": {
+"layout": "FIB",
+"hdr_hits": 3,
+"item_hits": 4,
+"file": "BLL253_0_1.html",
+"open": "<div class=\"dragAndDrop sassoonI-text\" layout=\"FIB\">\n       "
+}
+},
+{
+"code": "CEDR501",
+"fam": "Standard",
+"page": "4.0",
+"index": 19,
+"rows": 6,
+"w": 3,
+"hdr": [
+"action",
+"positive",
+"negative"
+],
+"nitems": 5,
+"gold": null
+},
+{
+"code": "ENFUN08",
+"fam": "Fundamentals",
+"page": "0.0",
+"index": 2,
+"rows": 6,
+"w": 3,
+"hdr": [
+"noun",
+"verb",
+"adjective"
+],
+"nitems": 15,
+"gold": {
+"layout": "column",
+"hdr_hits": 3,
+"item_hits": 15,
+"file": "ENFUN08.html",
+"open": "<div class=\"dragAndDrop noBG autoCheck\" layout=\"column\"> <!-"
+}
+},
+{
+"code": "ENGC401",
+"fam": "Standard",
+"page": "6.0",
+"index": 14,
+"rows": 5,
+"w": 4,
+"hdr": [
+"character",
+"dialogue example",
+"trait",
+"relationship dynamic between brother and"
+],
+"nitems": 16,
+"gold": {
+"layout": "column",
+"hdr_hits": 4,
+"item_hits": 16,
+"file": "ENGC401_0.6.html",
+"open": "<div class=\"dragAndDrop autoCheck\" layout=\"column\">\n\t\t\t\t\t\t\t\t"
+}
+},
+{
+"code": "SSOG101",
+"fam": "Standard",
+"page": "1.0",
+"index": 2,
+"rows": 3,
+"w": 4,
+"hdr": [
+"image of firefighters",
+"image of police",
+"image of paramedics",
+"police"
+],
+"nitems": 2,
+"gold": {
+"layout": "standard",
+"hdr_hits": 1,
+"item_hits": 2,
+"file": "SSOG101_1.0.html",
+"open": "<div class=\"dragAndDrop images\" layout=\"standard\">\n         "
+}
+},
+{
+"code": "XMES201",
+"fam": "Standard",
+"page": "3.0",
+"index": 29,
+"rows": 7,
+"w": 3,
+"hdr": [
+"sentence starter",
+"words",
+"images"
+],
+"nitems": 18,
+"gold": null
+}
+]

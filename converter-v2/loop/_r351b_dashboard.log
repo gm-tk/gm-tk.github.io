@@ -1,0 +1,5 @@
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/COVERAGE_DASHBOARD.md
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_coverage_dashboard.json
+
+coverage 51.5% · scaffold 50.96% · clean 98.9% · 21 classes ranked
+WARN: feature index predates the newest engine change (2026-09-17) — its rows may lag.

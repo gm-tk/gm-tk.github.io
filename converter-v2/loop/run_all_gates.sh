@@ -52,5 +52,5 @@ run "menu-label verifier (c23 / 01B)" env STUB_OEMBED=1 node --require ./_deflat
 # drop and vice-versa, the activityButton row, no raw [tag], NO loading="lazy" (c83), an images widget's drags each one <img>. The
 # set covers both forms: the image-pair table (BLL146 gold-exact, BLL112 with its asset note, ENFUN04, CHFUN05, BLL266, MXFUN03 x2,
 # BLL244 sentences) and the r69 text form (ENGJ102, ARFUN03, ENFUN01). Protected: defect 0.
-run "dragAndDrop verifier (03B)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_dragdrop.cjs BLL146 BLL112 ENFUN04 CHFUN05 BLL266 MXFUN03 BLL244 ENGJ102 ARFUN03 ENFUN01
+run "dragAndDrop verifier (03B)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_dragdrop.cjs BLL146 BLL112 ENFUN04 CHFUN05 BLL266 MXFUN03 BLL244 ENGJ102 ARFUN03 ENFUN01 ENGI203 BLL220 ENFUN08 ENGR201
 echo "=== gate suite complete ==="

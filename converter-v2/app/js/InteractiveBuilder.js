@@ -159,8 +159,14 @@ class InteractiveBuilder {
 					html = this.#selfCheck({ bundle, tpl, renderInline });
 					break;
 				case "dragAndDrop": // the narrow N:N text-matching case only (layout=standard)
-					// ROUND 350 — the image-pair form runs ONLY where the r69 text form declined (the r276 order).
-					html = this.#dragAndDrop({ bundle, tpl, renderInline }) ?? this.#dragAndDropImages({ bundle, tpl, renderInline, run });
+					// ROUND 350 — the image-pair form runs ONLY where the r69 text form declined (the r276 order);
+					// ROUND 351 — the category-sort (column) form runs ONLY where both declined.
+					html = this.#dragAndDrop({ bundle, tpl, renderInline })
+						?? this.#dragAndDropImages({ bundle, tpl, renderInline, run })
+						?? this.#dragAndDropColumn({ bundle, tpl, renderInline });
+					// ROUND 351 — a built widget REPLACES the whole captured bundle: the members rule keeps
+					// the bundle's OTHER members (prose around the table) or declines the build.
+					if (html !== null) html = this.#ddWithMembers({ bundle, tpl, html, renderBlock });
 					break;
 				case "modal":       // image-pair form → TKmodal set; single document/PDF URL → a button;
 					// else (round 280) the general trigger+TKmodal set fallback. renderNested/
@@ -427,6 +433,176 @@ class InteractiveBuilder {
 			for (const n of notes) if (!seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
 		}
 		return out.join("\n");
+	}
+
+	/**
+	 * ROUND 351 — dragAndDrop CATEGORY-SORT form → the KB 03B "Column Layout" (Chris's D10-3, shape 2 of the dragAndDrop
+	 * kickoff; the autonomous loop's session-15 Round 1). The writer's table is 3+ columns whose FIRST row is a row of plain
+	 * category labels (`Past | Present | Future`, `ai | ay | a_e`, `Noun | Verb | Adjective`, `Leaders | Followers |
+	 * Bystanders`) and whose data cells are the items that belong under each column — one item per cell, or several in a
+	 * ` / ` or bullet list (`Green apples / Red apples`), ragged rows allowed. The KB form: a `row dropContainer` with one
+	 * `ddColumn` per category (`<p>heading</p>` + one `drop option=c` per item in that column; c = the 1-based column
+	 * index = the answer key), a `row dragContainer` whose FIRST `ddColumn` holds every `drag option=c` in column order
+	 * (the KB example's order; the gold 125 of 162), padded with EMPTY `ddColumn`s to the drop-column count (03B: "Empty
+	 * ddColumn pads to match drop column count"; the gold 132 of 162), then the r350 button row. No `blanks`, no
+	 * `autoCheck` / `noBG` / `hoverBoxes` (the developer's editorial modifiers — no writer signal). Tried ONLY where the r69
+	 * text form and the r350 image form both returned null (the r276 order — every existing build is unchanged by
+	 * construction). Measured 2026-09-17 (`_r351_colsort_gold.log`): 35 candidates / 30 pages / 29 modules; the gold's own
+	 * form column 21 / standard 5 / FIB 3 / none 6 — column is the family's convention (0.81 of the matched gold), the
+	 * five standard / three FIB pages are recorded, never chased.
+	 * NEVER HALF-BUILDS (null → the hand-off box as today): a second table, an extraType, a harvested media item, width <
+	 * min_columns, fewer than min_rows rows, a header cell that is empty / red / a URL / a [tag] / matches
+	 * header_reject_pattern (a `___` blank run = a FIB shape; an "image" word = the image column-sort) / longer than
+	 * header_max_words (MXFU402's question headers = a match, not a sort), any data cell that is red / a URL / a [tag]
+	 * (audio-word rows, `[correct]` marks, `[static]` columns — other shapes), items in fewer than 2 columns (a pooled cell
+	 * = no answer key), fewer than min_items items, a repeated item (an ambiguous key). The bundle's OTHER members (prose
+	 * around the table, a [button] the writer asked for, a cloze passage …) are the shared members rule's business —
+	 * #ddWithMembers, applied to every built dragAndDrop form.
+	 * Data interactive_builders.dragAndDrop.column; env DDCOLUMN_OFF (DRAGDROP_OFF still reverts the whole type).
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (opener/member items — see file header)
+	 * @param {object} args.tpl - this widget's editable markup templates (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links); identity if omitted
+	 * @returns {string|null} the built dragAndDrop HTML, or null to keep the hand-off box
+	 */
+	static #dragAndDropColumn({ bundle, tpl, renderInline }) {
+		const cfg = tpl?.column;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DRAGDROP_OFF) return null;
+		if (typeof process !== "undefined" && process.env && cfg.env && process.env[cfg.env]) return null;
+		if (bundle?.extraTypes && bundle.extraTypes.length) return null;
+		if ((bundle?.media ?? []).length) return null;
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return null;
+		const srcRows = (tables[0].rows ?? []).filter((r) => Array.isArray(r));
+		if (srcRows.length < (cfg.min_rows ?? 2)) return null;
+		const width = Math.max(0, ...srcRows.map((r) => r.length));
+		if (width < (cfg.min_columns ?? 3)) return null;
+		const inline = renderInline ?? ((s) => s);
+		const tagRe = /\[[^\]]*\]/, urlRe = /https?:\/\//;
+		const reject = new RegExp(cfg.header_reject_pattern ?? "_{3,}|\\bimages?\\b", "i");
+		// the header row: every cell a plain category label
+		const header = srcRows[0];
+		if (header.length !== width) return null;
+		const headings = [];
+		for (const c of header) {
+			if (this.#hasRedText(c)) return null;
+			const t = this.#cellText(c).trim();
+			if (!t || urlRe.test(t) || tagRe.test(t) || reject.test(t)) return null;
+			if (t.split(/\s+/).length > (cfg.header_max_words ?? 8)) return null;
+			headings.push(t);
+		}
+		// the data rows: every non-empty cell is one item or a ` / ` / bullet list of items belonging to its column
+		const split = new RegExp(cfg.item_split_pattern ?? "\\s/\\s|\\u2022");
+		const cols = headings.map(() => []);
+		for (const r of srcRows.slice(1)) {
+			if (r.length > width) return null;
+			for (let c = 0; c < r.length; c++) {
+				if (this.#hasRedText(r[c])) return null;
+				const t = this.#cellText(r[c]).trim();
+				if (!t) continue;
+				if (urlRe.test(t) || tagRe.test(t)) return null;
+				for (const part of t.split(split)) { const it = part.trim(); if (it) cols[c].push(it); }
+			}
+		}
+		const all = cols.flat();
+		if (all.length < (cfg.min_items ?? 3)) return null;
+		if (cols.filter((c) => c.length).length < 2) return null;                       // a pooled cell = no answer key
+		if (new Set(all.map((x) => x.toLowerCase())).size !== all.length) return null;    // a repeated item = an ambiguous key
+		const out = [cfg.open];
+		for (let c = 0; c < cols.length; c++) {
+			out.push(Utils.FillTemplate(cfg.col_open, { heading: inline(headings[c]) }));
+			for (let i = 0; i < cols[c].length; i++) out.push(Utils.FillTemplate(cfg.drop, { n: c + 1 }));
+			out.push(cfg.col_close);
+		}
+		out.push(cfg.mid);
+		for (let c = 0; c < cols.length; c++) for (const it of cols[c]) out.push(Utils.FillTemplate(cfg.drag, { n: c + 1, item: inline(it) }));
+		out.push(cfg.drag_col_close);
+		for (let c = 1; c < cols.length; c++) out.push(cfg.pad);
+		out.push(cfg.close_inner);
+		const br = tpl?.button_row;
+		const btnOff = typeof process !== "undefined" && process.env && br?.env && process.env[br.env];
+		if (br && br.enabled !== false && !btnOff) out.push(br.html);
+		out.push(cfg.close);
+		return out.join("\n");
+	}
+
+	/**
+	 * ROUND 351 — THE MEMBERS RULE for every built dragAndDrop (the r69 text form, the r350 image form, the r351 column
+	 * form). A built widget REPLACES the whole captured bundle, and the three forms only ever read the TABLE — so any other
+	 * member the scanner swallowed (the writer's sentence before the table, the "Go to journal" line after it, a [button],
+	 * a [body] paragraph, a cloze passage) silently VANISHED from the page. Measured 2026-09-17 on the r350 corpus
+	 * (`_r351_ddmembers.json`): 21 of the 77 shipped builds carried such members — 7 with black prose the gold keeps as
+	 * ordinary paragraphs (AGH1001 2.0 "Can you match the correct…", AGH1005 6.0 "It's not always easy to…", TEFUN06,
+	 * TWHK902, ENGC301, CEDR203, OSGM101), 14 with tags ([Button] ×2 on ENGJ402 / MXFUN03, SSOG301's three
+	 * `[insert button]` Undo / Check Answer / Reset, `[body]`, `[Answer guide]`, `[Insert audio 2]`) — and the first r351
+	 * probe lost visible text on 4 of its 14 built pages the same way. The rule, walked over bundle.memberItems in order:
+	 *   - the TABLE is where the widget goes;
+	 *   - a BLACK paragraph renders in place through renderBlock (the free-body paragraph emitter — the accordion's
+	 *     rich-panel precedent), before or after the widget as the writer placed it;
+	 *   - a `[body]` tag with words on its line is a paragraph (body_tag_as_prose) — rendered the same way;
+	 *   - an INSTRUCTION-class tag is already surfaced as the red Writers Note after the widget — skipped;
+	 *   - a `[button]` tag whose label is one of the KB 03B button row's own (button_row_labels: undo / check answer(s) /
+	 *     reset) is SATISFIED by the button row the build emits — consumed;
+	 *   - the words riding the invocation tag's OWN line ("[activity - drag and drop] Match the Māori with the English…" —
+	 *     PHE1005 2.0, the gold's <h3>; TEFUN04 "Can you match the technology…"; SSOG301 "Activity 4A Global political
+	 *     parties") are the writer's instruction or title and were lost with the rest — rendered as a paragraph BEFORE the
+	 *     widget (tag_words_as_prose; the safe content-preserving form — which of them is the activity's h3 is the r334
+	 *     activity-title mechanism's business, not the widget's);
+	 *   - a `[body]` tag or tag-line words that open with a developer cue (CS: / Dev: / Note: / NB — note_cue_pattern) are
+	 *     a note, not learner prose → decline (OSGM101 "[body] CS: scramble the saying");
+	 *   - anything else — a [button] with another label ("Go to journal", "Complete activity"), [answer], [audio],
+	 *     [image], an [activity] tag, a nested widget — cannot be rendered from inside the widget seam → DECLINE the whole
+	 *     build (never half-build): the hand-off box shows every member, nothing is lost.
+	 * Data interactive_builders.dragAndDrop.members {enabled, env DDMEMBERS_OFF, render_black, body_tag_as_prose,
+	 * button_row_labels}; OFF → the pre-r351 silent replacement, byte-for-byte.
+	 *
+	 * @returns {string|null} the widget with its prose around it, or null to keep the hand-off box
+	 */
+	static #ddWithMembers({ bundle, tpl, html, renderBlock }) {
+		const cfg = tpl?.members;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && cfg.env && process.env[cfg.env]) return html;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return html;
+		const block = renderBlock ?? ((t) => `<p>${t}</p>`);
+		const btnRe = new RegExp(cfg.button_row_labels ?? "^(?:undo|check(?:\\s+answers?)?|reset)\\.?$", "i");
+		const bodyRe = new RegExp(cfg.body_tag_pattern ?? "^\\[\\s*body(?:\\s+text)?\\s*\\]$", "i");
+		const noteRe = new RegExp(cfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\u2013\u2014]", "i");
+		const before = [], after = []; let seenTable = false;
+		for (let k = 0; k < members.length; k++) {
+			const m = members[k];
+			if (!m) continue;
+			if (m.type === "table") { if (seenTable) return null; seenTable = true; continue; }
+			const side = seenTable ? after : before;
+			if (m.type === "black") {
+				const t = String(m.text ?? "").trim();
+				if (!t) continue;
+				if (cfg.render_black === false) return null;
+				const r = block(m.text); if (!r) return null; side.push(r); continue;
+			}
+			if (m.type !== "tag") return null;                                            // a nested widget, anything unknown
+			const parse = m.parse, prim = parse?.primary;
+			const words = String(m.blackAfter ?? "").trim();
+			if (k === 0) {                                                                // the invocation tag's own line
+				const w = this.#cellText(words).trim();
+				if (!w) continue;
+				if (cfg.tag_words_as_prose === false || noteRe.test(w)) return null;
+				const r = block(words); if (!r) return null; side.push(r); continue;
+			}
+			if (parse && (parse.class === "instruction" || parse.instructionFragment)) continue;   // already the Writers Note
+			const tag = String(prim?.tag ?? m.tag ?? "").toLowerCase();
+			if (tag === "button" && btnRe.test(this.#cellText(words).trim())) continue;     // the KB button row covers it
+			if (tag === "body" || bodyRe.test(String(m.text ?? "").trim())) {
+				const w = this.#cellText(words).trim();
+				if (!w) continue;                                                         // an empty [body] marker carries nothing
+				if (cfg.body_tag_as_prose === false || noteRe.test(w)) return null;
+				const r = block(m.blackAfter); if (!r) return null; side.push(r); continue;
+			}
+			return null;
+		}
+		return [...before, html, ...after].join("\n");
 	}
 
 	/**

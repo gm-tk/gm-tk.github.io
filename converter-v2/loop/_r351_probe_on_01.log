@@ -1,0 +1,566 @@
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+  ~ BLL253_1_0.html: -28 +48
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL253-01-03" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 1D — see BLL2
+     - <th><b>Add -ous to these base words</b></th>
+     - <th><b>Add -y to these base words</b></th>
+     - <th><b>Add -able to these base words</b></th>
+     - <td>poisonous / humourous / dangerous / mountainous</td>
+     - <td>cloudy / windy / dusty / messy</td>
+     - <td>breakable / readable / washable / playable</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL253-01-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL253-01-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p><b>Add -ous to these base words</b></p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p><b>Add -y to these base words</b></p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p><b>Add -able to these base words</b></p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + … 28 more added
+BLL253: identical 2 / changed 1
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+  ~ CHFUN05_0_0.html: -0 +2
+     + <p>1A Check your understanding</p>
+     + <p>Drag the words to form a correct sentence using <b>很 (hěn).</b></p>
+CHFUN05: identical 0 / changed 1
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+  ~ ENFUN08_0_0.html: -74 +80
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="ENFUN08-00-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity 1 — see ENFUN
+     - <th>Noun</th>
+     - <th>Verb</th>
+     - <th>Adjective</th>
+     - <td>Cat</td>
+     - <td>Play</td>
+     - <td>Sad</td>
+     - <td>Ball</td>
+     - <td>Run</td>
+     - <td>Fast</td>
+     - <td>Book</td>
+     - <td>Sing</td>
+     - <td>Hot</td>
+     - <td>Apple</td>
+     - <td>Eat</td>
+     - <td>Happy</td>
+     - <td>Toy</td>
+     - <td>Sit</td>
+     - <td>Old</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ENFUN08-00-03" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENFUN08-00-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ENFUN08-00-05" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENFUN08-00-06" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ENFUN08-00-07" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENFUN08-00-08" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENFUN08-00-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENFUN08-00-10" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENFUN08-00-11" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ENFUN08-00-12" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 34 more removed
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>Noun</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>Verb</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p>Adjective</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + … 60 more added
+ENFUN08: identical 0 / changed 1
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+  ~ ENGC301_2_0.html: -0 +1
+     + <p>boxes</p>
+ENGC301: identical 7 / changed 1
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+  ~ ENGI203_10_0.html: -35 +39
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ENGI203-10-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: dragAndDrop — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Past</th>
+     - <th>Present</th>
+     - <th>Future</th>
+     - </tr>
+     - <tr>
+     - <td>I painted a picture of a flower.</td>
+     - <td>He plays guitar in a band.</td>
+     - <td>He will visit a new country next year.</td>
+     - </tr>
+     - <tr>
+     - <td>Yesterday, I went for a walk with my friends.</td>
+     - <td>I eat lunch at noon.</td>
+     - <td>I will listen to her new song when it is released.</td>
+     - </tr>
+     - <tr>
+     - <td>We caught the bus home last night.</td>
+     - <td>They swim in the ocean.</td>
+     - <td>I am going to read my book after dinner.</td>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>Past</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>Present</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + </div>
+     + <div class="ddColumn">
+     + <p>Future</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + </div>
+     + <div class="row dragContainer">
+     + … 19 more added
+ENGI203: identical 10 / changed 1
+ENGI301: identical 6 / changed 0
+  ~ ENGI302_4_0.html: -39 +43
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ENGI302-04-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dragAndDrop — Activity 1A — see ENGI
+     - <th>1st person</th>
+     - <th>2nd person</th>
+     - <th>3rd person</th>
+     - <td>I found a mysterious lamp in the cave.</td>
+     - <td>You ventured into the sacred Tāne Mahuta forest.</td>
+     - <td>She let down her long hair for the prince to climb up to the tower.</td>
+     - <td>I saw the sacred carving that told the story of our ancestors.</td>
+     - <td>You met a wise old wizard who offered to help you on your journey.</td>
+     - <td>Maui used his grandmother&#39;s jawbone to fish up the North Island of New Zealand.</td>
+     - <td>I climbed up the beanstalk and saw a giant at the top.</td>
+     - <td>You followed the breadcrumbs to find your way out of the forest.</td>
+     - <td>The three little pigs built their houses out of straw, sticks, and bricks.</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ENGI302-04-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGI302-04-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>1st person</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>2nd person</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p>3rd person</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="row dragContainer">
+     + <div class="ddColumn">
+     + <div class="drag" option="1"><p>I found a mysterious lamp in the cave.</p></div>
+     + … 23 more added
+ENGI302: identical 6 / changed 1
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+  ~ ENGI401_10_0.html: -35 +43
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="ENGI401-10-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: dragAndDrop — Activity 10A — see EN
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Early life</th>
+     - <th>Accomplishments</th>
+     - <th>Personal life</th>
+     - <th>Legacy</th>
+     - </tr>
+     - <tr>
+     - <td>Born in 1895.</td>
+     - <td>Led the 1975 Māori Land March.</td>
+     - <td>Deeply connected to her heritage.</td>
+     - <td>Continues to inspire activists and leaders.</td>
+     - </tr>
+     - <tr>
+     - <td>Raised in a Māori community.</td>
+     - <td>Honoured as Dame Commander of the Order of the British Empire.</td>
+     - <td>Married twice.</td>
+     - <td>Celebrated as a leader who championed Māori land rights and unity.</td>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="ENGI401-10-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>Early life</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>Accomplishments</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p>Personal life</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + </div>
+     + <div class="ddColumn">
+     + <p>Legacy</p>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="4"></div>
+     + </div>
+     + … 23 more added
+ENGI401: identical 11 / changed 1
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+  ~ ENGJ202_3_0.html: -43 +53
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENGJ202-03-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 3A — see ENGJ
+     - <th>One Syllable</th>
+     - <th>Two Syllables</th>
+     - <th>Three Syllables</th>
+     - <th>Four Syllables</th>
+     - <td>Cat</td>
+     - <td>Robot</td>
+     - <td>Tomato</td>
+     - <td>Watermelon</td>
+     - <td>Wind</td>
+     - <td>Pencil</td>
+     - <td>Computer</td>
+     - <td>Caterpillar</td>
+     - <tr>
+     - <td>Tree</td>
+     - <td>Basket</td>
+     - <td>Adventure</td>
+     - <td>Mysterious</td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ENGJ202-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGJ202-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - … 3 more removed
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>One Syllable</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>Two Syllables</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p>Three Syllables</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="ddColumn">
+     + <p>Four Syllables</p>
+     + <div class="drop" option="4"></div>
+     + … 33 more added
+ENGJ202: identical 5 / changed 1
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+  ~ ENGR201_2_0.html: -27 +45
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ENGR201-02-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dragAndDrop — Activity 2B — see ENGR
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Leaders</th>
+     - <th>Followers</th>
+     - <th>Bystanders</th>
+     - </tr>
+     - <tr>
+     - <td>Kyle (student, waste management officer). / Mitchell (student, waste management officer). / Kim Gee (susta
+     - <td>Other participating students. / Year 4 student Cole (mentioned sharing tips). / Students who suggest tips 
+     - <td>Students who do not participate in the waste reduction initiative. / Community members not involved in the
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGR201-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>Leaders</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>Followers</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p>Bystanders</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + </div>
+     + … 25 more added
+ENGR201: identical 6 / changed 1
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+  ~ ENGS201_4_0.html: -0 +1
+     + <p>Match the superhero with their origin story.</p>
+ENGS201: identical 8 / changed 1
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+  ~ ENGS302_3_0.html: -30 +36
+     - <div class="dragAndDrop" layout="standard">
+     - <div class="row">
+     - <div class="col-6 questionContainer">
+     - <div class="question"><p><b>Family</b>:</p></div>
+     - <div class="question"><p><b>Friendship:</b></p></div>
+     - <div class="question"><p><b>Hope</b>:</p></div>
+     - <div class="question"><p><b>Connecting</b>:</p></div>
+     - <div class="question"><p><b>Perseverance:</b></p></div>
+     - <div class="col-6 ddContainer">
+     - <div class="dropContainer">
+     - <div class="drop" option="1"></div>
+     - <div class="drop" option="2"></div>
+     - <div class="drop" option="3"></div>
+     - <div class="drop" option="4"></div>
+     - <div class="drop" option="5"></div>
+     - <div class="dragContainer">
+     - <div class="drag" option="1"><p>Starsky wants to know his father</p></div>
+     - <div class="drag" option="2"><p>Starsky and Kenny support each other.</p></div>
+     - <div class="drag" option="3"><p>Starsky is certain his father will call so takes the day off school.</p></div>
+     - <div class="drag" option="4"><p>The importance of talking with others, in person, in a letter or on the phone 
+     - <div class="drag" option="5"><p>Waiting calmly for something important.</p></div>
+     - <div class="row">
+     - <div class="activityButton reset">Reset</div>
+     - <div class="activityButton undo hidden">Undo</div>
+     - <div class="activityButton checkAnswer hidden">Check answers</div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGS302-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ENGS302-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dragAndDrop (please make a where the
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Family</b>:</th>
+     + <th>Starsky wants to know his father</th>
+     + </tr>
+     + <tr>
+     + <td><b>Friendship:</b></td>
+     + <td>Starsky and Kenny support each other.</td>
+     + </tr>
+     + <tr>
+     + <td><b>Hope</b>:</td>
+     + … 16 more added
+ENGS302: identical 6 / changed 1
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 510 / changed 11 / missing 0 over 104 modules
+CHANGED: BLL253/BLL253_1_0.html CHFUN05/CHFUN05_0_0.html ENFUN08/ENFUN08_0_0.html ENGC301/ENGC301_2_0.html ENGI203/ENGI203_10_0.html ENGI302/ENGI302_4_0.html ENGI401/ENGI401_10_0.html ENGJ202/ENGJ202_3_0.html ENGR201/ENGR201_2_0.html ENGS201/ENGS201_4_0.html ENGS302/ENGS302_3_0.html

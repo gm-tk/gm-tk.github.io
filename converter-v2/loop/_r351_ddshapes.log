@@ -1,0 +1,92 @@
+declined dragAndDrop bundles: 824 (built 58)
+bundles pages mods  shape
+    229   178  123  T0 prose (no table)
+                   fam={'Standard': 153, 'Fundamentals': 29, 'Inquiry': 47} series={'BLL': 60, 'MXEO': 16, 'AGH': 12, 'MXFL': 11, 'ARFUN': 9, 'MXFUN': 8}
+                   e.g. AGH1009 p6.0 #14 0x0; ANZH205 p1.0 #1 0x0; ARFUN04 p0.0 #4 0x0; ARFUN04 p0.0 #9 0x0
+     94    87   59  T2 two+ tables
+                   fam={'Standard': 86, 'Inquiry': 5, 'Fundamentals': 3} series={'BLL': 14, 'XMES': 14, 'XTAS': 14, 'MXFL': 6, 'CEDT': 4, 'CEDO': 4}
+                   e.g. BLL116 p2.0 #6 1x5; BLL123 p2.0 #9 1x6; BLL133 p2.0 #6 4x3; CEDT101 p0.0 #3 5x2
+     67    62   52  C3 no clean header (red hdr)
+                   fam={'Standard': 56, 'Fundamentals': 7, 'Bilingual': 4} series={'BLL': 14, 'XMES': 6, 'XGF': 5, 'TEDC': 4, 'TRR': 4, 'ENFUN': 3}
+                   e.g. BLL151 p2.0 #7 7x1; BLL243 p1.1 #7 9x3; BLL254 p1.0 #4 11x3; BLL254 p2.0 #6 13x3
+     57    54   50  I3 images in a 3+ col table
+                   fam={'Inquiry': 8, 'Standard': 41, 'Fundamentals': 8} series={'BLL': 16, 'ENGC': 4, 'ENGI': 4, 'ENFUN': 4, 'ENGJ': 3, 'OSBY': 3}
+                   e.g. BLL160 p0.0 #4 5x3; BLL237 p1.0 #6 9x3; BLL274 p1.0 #5 4x3; CEDO102 p0.0 #2 5x5
+     56    55   49  I2 image|word with red data
+                   fam={'Standard': 45, 'Fundamentals': 9, 'Inquiry': 2} series={'BLL': 17, 'ENGI': 6, 'ENFUN': 4, 'OSGM': 3, 'ENGS': 3, 'OSAI': 3}
+                   e.g. BLL112 p1.0 #2 7x2; BLL216 p2.0 #6 7x2; BLL226 p1.0 #1 7x2; BLL232 p1.0 #2 6x2
+     50    49   34  S2 label|answer, other red in data
+                   fam={'Standard': 39, 'Inquiry': 5, 'Fundamentals': 6} series={'BLL': 10, 'MXFL': 6, 'ENFUN': 3, 'XGF': 3, 'SSCI': 3, 'MXFUN': 3}
+                   e.g. BLL174 p1.1 #7 6x2; BLL250 p2.2 #9 7x2; BLL250 p2.4 #20 4x2; BLL270 p4.0 #10 8x2
+     46    46   44  M harvested media
+                   fam={'Standard': 38, 'Inquiry': 4, 'Fundamentals': 4} series={'BLL': 8, 'ENGI': 4, 'CEDR': 2, 'ENGS': 2, 'XMES': 2, 'CEDO': 2}
+                   e.g. BLL151 p1.0 #3 4x3; BLL274 p2.0 #9 10x3; CEDR203 p0.0 #17 11x2; ENGI203 p1.0 #1 1x2
+     34    34   31  S2 label|answer, RED header row only
+                   fam={'Standard': 24, 'Inquiry': 2, 'Fundamentals': 8} series={'BLL': 7, 'MXFUN': 3, 'OSAI': 3, 'XGF': 3, 'CHFUN': 2, 'OSSM': 2}
+                   e.g. BLL167 p1.1 #4 10x2; BLL270 p2.0 #4 6x2; CEDR203 p0.0 #8 9x2; CHFUN06 p0.0 #14 4x2
+     31    27   18  X extraTypes
+                   fam={'Standard': 31} series={'XGF': 11, 'MXFL': 6, 'HPRE': 2, 'ENGR': 2, 'MXEO': 2, 'SSCI': 2}
+                   e.g. HPRE301 p4.0 #22 5x2; MXDB302 p1.0 #9 10x2; MXFL301 p4.0 #32 5x4; MXFL301 p7.0 #51 6x4
+     30    26   25  G3 full grid, header + every cell filled
+                   fam={'Fundamentals': 3, 'Standard': 21, 'Inquiry': 6} series={'BLL': 10, 'ENGI': 7, 'ENFUN': 3, 'SSOG': 2, 'ENGR': 1, 'CEDO': 1}
+                   e.g. ENFUN04 p0.0 #18 5x3; ENFUN09 p0.0 #17 4x4; ENGI101 p1.0 #3 2x1; ENGI203 p10.0 #21 4x3
+     28    25    9  P phonics audio|image|answer (r342 type)
+                   fam={'Inquiry': 24, 'Standard': 3, 'Fundamentals': 1} series={'BLL': 24, 'SSOG': 1, 'ENFUN': 1, 'OSBY': 1, 'XDLS': 1}
+                   e.g. BLL250 p2.1 #3 9x3; BLL250 p2.2 #10 9x3; BLL250 p2.3 #15 8x3; BLL250 p2.4 #21 7x3
+     20    20   14  S2 label|answer, empty cells
+                   fam={'Inquiry': 3, 'Standard': 16, 'Fundamentals': 1} series={'MXFL': 5, 'HIS': 4, 'ENGI': 3, 'AGH': 2, 'CEDK': 1, 'MXFU': 1}
+                   e.g. CEDK101 p0.0 #5 2x2; ENGI203 p7.0 #15 3x2; ENGI203 p8.0 #18 3x2; HIS1008 p2.1 #4 6x2
+     16    14   13  I2 image|word (r350 shape 1 residue: hdr-url)
+                   fam={'Standard': 9, 'Inquiry': 6, 'Fundamentals': 1} series={'BLL': 11, 'XGF': 2, 'OSAI': 1, 'ENGI': 1, 'ENFUN': 1}
+                   e.g. OSAI501 p1.0 #2 6x2; BLL130 p0.0 #10 6x2; BLL130 p0.0 #20 7x2; BLL130 p0.0 #25 6x2
+     14    14   13  C3 header cats + other red in data
+                   fam={'Inquiry': 3, 'Standard': 11} series={'MXDB': 3, 'BLL': 2, 'MXDI': 2, 'MXFU': 2, 'PHE': 1, 'ENGC': 1}
+                   e.g. BLL250 p2.3 #14 5x3; MXDB302 p2.0 #10 5x4; MXDB302 p6.0 #39 6x3; PHE1005 p1.0 #2 5x3
+      9     9    9  I2 image|image pairs
+                   fam={'Inquiry': 6, 'Standard': 3} series={'BLL': 7, 'CEDO': 1, 'ENGC': 1}
+                   e.g. BLL140 p0.0 #6 6x2; BLL160 p0.0 #22 5x2; CEDO102 p0.0 #5 6x2; BLL161 p1.0 #2 6x2
+      9     8    6  C3 no clean header (empty hdr cell)
+                   fam={'Standard': 8, 'Inquiry': 1} series={'MXFL': 4, 'AGH': 2, 'ENGC': 1, 'ENGI': 1, 'TWHA': 1}
+                   e.g. ENGC202 p2.0 #5 8x3; MXFL103 p1.2 #5 6x3; MXFL103 p1.2 #6 6x3; MXFL103 p1.3 #7 6x3
+      7     6    5  W1 one-row word tiles (w=2)
+                   fam={'Standard': 7} series={'MXDI': 3, 'ENGI': 2, 'ENGS': 1, 'TEDC': 1}
+                   e.g. ENGI203 p9.0 #19 1x2; ENGS102 p2.0 #10 1x2; TEDC402 p3.0 #28 1x2; ENGI405 p5.0 #27 1x2
+      5     4    4  A4 header cats + items under columns (ragged)
+                   fam={'Inquiry': 2, 'Standard': 3} series={'CEDK': 2, 'SCPH': 1, 'MXDB': 1, 'MXFU': 1}
+                   e.g. CEDK101 p0.0 #2 2x3; CEDK101 p0.0 #10 3x6; SCPH301 p4.0 #11 3x3; MXDB102 p1.0 #1 2x4
+      4     3    2  W1 one-row word tiles (w=5)
+                   fam={'Standard': 4} series={'ENGC': 2, 'MXDI': 2}
+                   e.g. ENGC102 p7.0 #18 1x5; ENGC102 p7.0 #19 1x5; MXDI103 p3.0 #11 1x5; MXDI103 p6.0 #21 1x5
+      4     4    4  A3 header cats + items pooled in ONE column
+                   fam={'Standard': 4} series={'ENGR': 1, 'XTAS': 1, 'CEDR': 1, 'SSOG': 1}
+                   e.g. ENGR301 p1.0 #1 3x3; XTAS101 p3.0 #24 11x4; CEDR501 p4.0 #19 6x3; SSOG101 p1.0 #2 3x4
+      3     3    3  I2 image|word (r350 shape 1 residue: ragged/mixed)
+                   fam={'Standard': 3} series={'BLL': 3}
+                   e.g. BLL244 p1.0 #2 11x2; BLL122 p1.0 #3 7x2; BLL221 p1.0 #1 6x2
+      2     2    2  W1 one-row word tiles (w=1)
+                   fam={'Standard': 1, 'Inquiry': 1} series={'XGF': 1, 'CEDK': 1}
+                   e.g. XGF9003 p1.2 #29 1x1; CEDK102 p0.0 #12 1x1
+      2     2    2  W1 one-row word tiles (w=8)
+                   fam={'Inquiry': 1, 'Standard': 1} series={'CEDR': 1, 'ENGI': 1}
+                   e.g. CEDR204 p0.0 #8 1x8; ENGI303 p2.0 #5 1x8
+      1     1    1  S2 label|answer, repeated answers (categorisation)
+                   fam={'Standard': 1} series={'BLL': 1}
+                   e.g. BLL222 p2.0 #7 9x2
+      1     1    1  K3 header cats + ONE row of [correct answers] / a / b lists
+                   fam={'Inquiry': 1} series={'BLL': 1}
+                   e.g. BLL250 p2.1 #1 2x3
+      1     1    1  S2 label|answer, [correct answer] marks in data
+                   fam={'Standard': 1} series={'BLL': 1}
+                   e.g. BLL261 p1.0 #2 4x2
+      1     1    1  W1 one-row word tiles (w=4)
+                   fam={'Standard': 1} series={'CEDO': 1}
+                   e.g. CEDO501 p2.1 #11 1x4
+      1     1    1  S2 label|answer CLEAN (why declined?)
+                   fam={'Standard': 1} series={'PHE': 1}
+                   e.g. PHE1008 p2.0 #1 10x2
+      1     1    1  W1 one-row word tiles (w=3)
+                   fam={'Standard': 1} series={'HES': 1}
+                   e.g. HES1006 p2.0 #1 1x3
+      1     1    1  W1 one-row word tiles (w=6)
+                   fam={'Standard': 1} series={'MXFL': 1}
+                   e.g. MXFL101 p1.0 #1 1x6

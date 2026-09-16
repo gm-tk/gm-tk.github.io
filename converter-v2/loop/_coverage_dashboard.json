@@ -1,22 +1,20 @@
 {
- "generated": "2026-09-16 22:17",
+ "generated": "2026-09-17 09:46",
  "warnings": [
-  "skeleton state predates the newest engine change (2026-09-16) \u2014 its rows may lag.",
-  "body_compare predates the newest engine change (2026-09-16) \u2014 its rows may lag.",
-  "feature index predates the newest engine change (2026-09-16) \u2014 its rows may lag."
+  "feature index predates the newest engine change (2026-09-17) \u2014 its rows may lag."
  ],
  "headline": {
   "bundles": 4953,
-  "built": 2521,
+  "built": 2550,
   "pages": 2103,
   "clean": 2080,
   "modules": 443,
   "body_any": 180,
   "paired": 1955,
-  "scaffold_mean": 50.96545354687903,
+  "scaffold_mean": 50.96412130856603,
   "ge50": 1072,
   "ge75": 159,
-  "skeleton_state": "_r349_sk_final.json"
+  "skeleton_state": "_r351_sk_final.json"
  },
  "types": {
   "carousel": {
@@ -169,11 +167,12 @@
    ]
   },
   "dragAndDrop": {
-   "built": 58,
+   "built": 87,
    "total": 882,
-   "declined_shapes": 681,
+   "declined_shapes": 663,
    "modules": 296,
    "declined_modules": [
+    "AGH1001",
     "AGH1004",
     "AGH1005",
     "AGH1006",
@@ -198,7 +197,6 @@
     "BLL122",
     "BLL123",
     "BLL124",
-    "BLL125",
     "BLL126",
     "BLL127",
     "BLL130",
@@ -213,8 +211,6 @@
     "BLL143",
     "BLL144",
     "BLL145",
-    "BLL146",
-    "BLL147",
     "BLL150",
     "BLL151",
     "BLL152",
@@ -249,7 +245,6 @@
     "BLL230",
     "BLL231",
     "BLL232",
-    "BLL233",
     "BLL235",
     "BLL236",
     "BLL237",
@@ -257,7 +252,6 @@
     "BLL241",
     "BLL242",
     "BLL243",
-    "BLL244",
     "BLL245",
     "BLL247",
     "BLL250",
@@ -1203,16 +1197,16 @@
   {
    "type": "dragAndDrop",
    "token": "(a captured TABLE)",
-   "declined": 595,
-   "built": 58,
-   "build_rate": 0.089
+   "declined": 566,
+   "built": 87,
+   "build_rate": 0.133
   },
   {
    "type": "dragAndDrop",
    "token": "button+txt",
-   "declined": 81,
-   "built": 5,
-   "build_rate": 0.058
+   "declined": 78,
+   "built": 8,
+   "build_rate": 0.093
   },
   {
    "type": "carousel",
@@ -1247,14 +1241,14 @@
   {
    "class": "un-built dragAndDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 882 dragAndDrop widgets; 824 ship as a hand-off box instead of a built widget.",
-   "modules": 291,
-   "pages": 583,
-   "occurrences": 824,
-   "shapes": 681,
+   "plain": "Writers tagged 882 dragAndDrop widgets; 795 ship as a hand-off box instead of a built widget.",
+   "modules": 287,
+   "pages": 573,
+   "occurrences": 795,
+   "shapes": 663,
    "regen_modules": 309,
    "regen_saving_pct": 32,
-   "note": "builder covers 58/882 (6%)",
+   "note": "builder covers 87/882 (9%)",
    "rank": 1
   },
   {
@@ -1662,16 +1656,16 @@
    "likely_cause": "widget over-capture"
   },
   {
-   "module": "CHFUN05",
-   "page": "CHFUN05_0_0.html",
-   "scaffold": 9.1,
-   "likely_cause": "145 content blocks missing; widget over-capture"
-  },
-  {
    "module": "TEDC402",
    "page": "TEDC402_8_0.html",
    "scaffold": 9.3,
    "likely_cause": "widget over-capture; 1 empty widget boxes"
+  },
+  {
+   "module": "TEFUN03",
+   "page": "TEFUN03_0_0.html",
+   "scaffold": 9.8,
+   "likely_cause": "widget over-capture"
   }
  ]
 }

@@ -1,19 +1,17 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-16 22:17 · corpus 443 modules / 2103 pages_
+_Generated 2026-09-17 09:46 · corpus 443 modules / 2103 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
 ## ⚠ Freshness
 
-- skeleton state predates the newest engine change (2026-09-16) — its rows may lag.
-- body_compare predates the newest engine change (2026-09-16) — its rows may lag.
-- feature index predates the newest engine change (2026-09-16) — its rows may lag.
+- feature index predates the newest engine change (2026-09-17) — its rows may lag.
 
 ## 1. The two numbers that matter
 
-**Interactive coverage — 50.9%** (2521 of 4953 writer-tagged widgets actually build).
-The other 2432 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
+**Interactive coverage — 51.5%** (2550 of 4953 writer-tagged widgets actually build).
+The other 2403 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
 
 **Page scaffold match — 51.0% mean** (1072 of 1955 pages at 50%+, 159 at 75%+).
 The protected primary gate. It measures page structure with widget internals collapsed, so it moves very little while coverage is the real gap.
@@ -28,7 +26,7 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 
 | # | Class | Modules | Pages | Unlock | Shapes | Regen | What it is |
 |---|---|--:|--:|--:|--:|--:|---|
-| 1 | un-built dragAndDrop | 291 | 583 | 824 | 681 | 309 (32% skipped) | Writers tagged 882 dragAndDrop widgets; 824 ship as a hand-off box instead of a built widget. |
+| 1 | un-built dragAndDrop | 287 | 573 | 795 | 663 | 309 (32% skipped) | Writers tagged 882 dragAndDrop widgets; 795 ship as a hand-off box instead of a built widget. |
 | 2 | content lost vs the human (advisory) | 185 | 418 | 418 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
 | 3 | un-built carousel | 141 | 187 | 240 | 181 | 342 (25% skipped) | Writers tagged 903 carousel widgets; 240 ship as a hand-off box instead of a built widget. |
 | 4 | page scaffold under 25% | 129 | 165 | 165 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
@@ -54,7 +52,7 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 
 | Type | Built | Total | Coverage | Declined | Distinct shapes | Modules |
 |---|--:|--:|--:|--:|--:|--:|
-| dragAndDrop | 58 | 882 | 6.6% | 824 | 681 | 291 |
+| dragAndDrop | 87 | 882 | 9.9% | 795 | 663 | 287 |
 | clickDrop | 193 | 516 | 37.4% | 323 | 230 | 107 |
 | accordion | 455 | 705 | 64.5% | 250 | 214 | 109 |
 | carousel | 663 | 903 | 73.4% | 240 | 181 | 141 |
@@ -78,8 +76,8 @@ A blocker is something a builder almost never accepts. Every shape carrying it f
 
 | Inside | The builder refuses | Declines | Builds | Build rate |
 |---|---|--:|--:|--:|
-| dragAndDrop | `(a captured TABLE)` | 595 | 58 | 9% |
-| dragAndDrop | `button+txt` | 81 | 5 | 6% |
+| dragAndDrop | `(a captured TABLE)` | 566 | 87 | 13% |
+| dragAndDrop | `button+txt` | 78 | 8 | 9% |
 | carousel | `embed` | 59 | 1 | 2% |
 | clickDrop | `button+txt` | 44 | 7 | 14% |
 | clickDrop | `video:yt` | 36 | 6 | 14% |
@@ -116,8 +114,8 @@ Lowest structural match in the library, with the likeliest cause attached. These
 | SSFUN07 | SSFUN07_3_0.html | 7.8% | widget over-capture |
 | TWHA905 | TWHA905_0_0.html | 8.3% | widget over-capture |
 | XDLS911 | XDLS911_1_0.html | 9.0% | widget over-capture |
-| CHFUN05 | CHFUN05_0_0.html | 9.1% | 145 content blocks missing; widget over-capture |
 | TEDC402 | TEDC402_8_0.html | 9.3% | widget over-capture; 1 empty widget boxes |
+| TEFUN03 | TEFUN03_0_0.html | 9.8% | widget over-capture |
 
 ## 6. How to use this
 

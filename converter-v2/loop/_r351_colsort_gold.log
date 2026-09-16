@@ -1,0 +1,62 @@
+candidates 35 bundles 30 pages 29 modules
+gold layout: {'column': 21, 'standard': 5, 'FIB': 3, 'none': 6}
+   Inquiry {'column': 7, 'standard': 1}
+   Fundamentals {'standard': 1, 'column': 2}
+   Standard {'column': 12, 'FIB': 3, 'none': 6, 'standard': 3}
+CEDK101  Inqu p0.0  #2   2x3 items= 0 gold=column    hits=3/0 <div class="dragAndDrop noBG" layout="column"> <!-- noB hdr=['heat', 'light', 'both']
+CEDK101  Inqu p0.0  #10  3x6 items=11 gold=column    hits=1/9 <div class="dragAndDrop noBG" layout="column">
+								 hdr=['oldest newest']
+ENFUN04  Fund p0.0  #18  5x3 items=12 gold=standard  hits=1/4 <div class="dragAndDrop autoCheck noBG" layout="standar hdr=['my parents asked me________ movie i watc', 'which', 'witch']
+ENFUN09  Fund p0.0  #17  4x4 items=12 gold=column    hits=4/12 <div class="dragAndDrop" layout="column">
+              hdr=['main idea what does the writer want the ', 'audience who is the writing for', 'purpose is it to entertain persuade or i', 'text type what kind of text is it']
+ENGI203  Stan p10.0 #21  4x3 items= 9 gold=column    hits=3/9 <div class="dragAndDrop" layout="column">
+              hdr=['past', 'present', 'future']
+ENGR201  Stan p2.0  #5   2x3 items= 6 gold=column    hits=3/6 <div class="dragAndDrop" layout="column">               hdr=['leaders', 'followers', 'bystanders']
+SCPH301  Stan p4.0  #11  3x3 items= 0 gold=column    hits=3/0 <div class="dragAndDrop" layout="column">
+              hdr=['conduction', 'convection', 'radiation']
+CEDO501  Stan p3.0  #13  2x4 items= 4 gold=FIB       hits=4/4 <div class="dragAndDrop" layout="FIB">
+								<!-- aut hdr=['world wide web', 'internet', 'pages', 'search engine']
+ENGI103  Stan p2.0  #8   5x3 items=12 gold=FIB       hits=3/12 <div class="dragAndDrop autoCheck" layout="FIB">
+       hdr=['i can jump high', 'and', 'i can run fast']
+ENGI401  Stan p10.0 #30  3x4 items= 8 gold=column    hits=4/8 <div class="dragAndDrop" layout="column"> <!-- noBG --> hdr=['early life', 'accomplishments', 'personal life', 'legacy']
+MXDB102  Stan p1.0  #1   2x4 items= 0 gold=-         hits=0/0  hdr=['squares', 'triangles', 'circles', 'rectangles']
+MXEX202  Stan p5.0  #1   2x3 items= 9 gold=column    hits=3/9 <div class="dragAndDrop" layout="column">						
+							 hdr=['1 gram', '500 grams', '1 kilogram']
+BLL147   Stan p1.0  #4   2x3 items=10 gold=column    hits=3/10 <div class="dragAndDrop" layout="column">
+              hdr=['fruits', 'vegetables', 'other items']
+BLL220   Inqu p0.0  #15  5x3 items=12 gold=column    hits=3/12 <div class="dragAndDrop" layout="column"> <!-- noBG --> hdr=['ai', 'ay', 'a_e']
+BLL220   Inqu p0.0  #21  5x3 items=12 gold=column    hits=3/12 <div class="dragAndDrop" layout="column">
+              hdr=['ea', 'ee', 'ey']
+BLL230   Inqu p0.0  #3   5x3 items=12 gold=standard  hits=2/12 <div class="dragAndDrop" layout="standard">
+										< hdr=['o_o', 'oa', 'oe']
+BLL230   Inqu p0.0  #18  5x4 items=16 gold=column    hits=4/16 <div class="dragAndDrop" layout="column">
+										<di hdr=['oo', 'ew', 'ui', 'ue']
+BLL230   Inqu p0.0  #24  5x3 items=12 gold=column    hits=3/12 <div class="dragAndDrop noBG" layout="column">
+								 hdr=['au', 'aw', 'al']
+CEDR401  Inqu p1.0  #14  4x4 items=12 gold=column    hits=4/12 <div class="dragAndDrop autoCheck" layout="column">
+			 hdr=['who uses the data', 'category to count or describe', 'category to count or describe', 'decision using the data']
+ENGI302  Stan p3.0  #4   5x3 items=15 gold=standard  hits=2/9 <div class="dragAndDrop" layout="standard">
+            hdr=['source', 'twisted tale', 'traditional tale']
+ENGI302  Stan p4.0  #7   4x3 items= 9 gold=column    hits=3/8 <div class="dragAndDrop autoCheck" layout="column">
+			 hdr=['1st person', '2nd person', '3rd person']
+ENGI405  Stan p5.0  #21  2x4 items=10 gold=column    hits=4/10 <div class="dragAndDrop autoCheck" layout="column">
+    hdr=['characters', 'setting', 'conflict', 'language']
+ENGJ202  Stan p3.0  #4   4x4 items=12 gold=column    hits=4/12 <div class="dragAndDrop noBG autoCheck" layout="column" hdr=['one syllable', 'two syllables', 'three syllables', 'four syllables']
+ENGR301  Stan p1.0  #1   3x3 items= 2 gold=column    hits=3/2 <div class="dragAndDrop" layout="column">
+              hdr=['agree', 'neutral not sure', 'disagree']
+HIS1006  Stan p7.0  #13  3x4 items= 8 gold=-         hits=0/0  hdr=['discrimination by landlords and employer', 'inequality of schools health care and ho', 'white flight from the inner city to the ', 'unprecedented destruction injury and dea']
+MXFU402  Stan p1.0  #5   4x4 items= 6 gold=standard  hits=4/6 <div class="dragAndDrop" layout="standard">
+            hdr=['in a deck of cards i will pull out a dia', 'i will flip a coin and it will land on t', 'my opponent will use scissors in a game ', 'i will roll an even number on a 6 sided ']
+SSOG301  Stan p4.0  #5   4x3 items= 9 gold=-         hits=0/0  hdr=['legislative', 'executive', 'judicial']
+SSOG301  Stan p4.0  #6   3x3 items= 6 gold=-         hits=0/0  hdr=['legislative', 'executive', 'judicial']
+XTAS101  Stan p3.0  #24  11x4 items=10 gold=column    hits=4/10 <div class="dragAndDrop noBG" layout="column">
+         hdr=['number of times in 10 seconds', 'special interest action 1', 'special interest action 2', 'special interest action 3']
+BLL253   Stan p1.0  #4   2x3 items=12 gold=FIB       hits=3/4 <div class="dragAndDrop sassoonI-text" layout="FIB">
+   hdr=['add ous to these base words', 'add y to these base words', 'add able to these base words']
+CEDR501  Stan p4.0  #19  6x3 items= 5 gold=-         hits=0/0  hdr=['action', 'positive', 'negative']
+ENFUN08  Fund p0.0  #2   6x3 items=15 gold=column    hits=3/15 <div class="dragAndDrop noBG autoCheck" layout="column" hdr=['noun', 'verb', 'adjective']
+ENGC401  Stan p6.0  #14  5x4 items=16 gold=column    hits=4/16 <div class="dragAndDrop autoCheck" layout="column">
+			 hdr=['character', 'dialogue example', 'trait', 'relationship dynamic between brother and']
+SSOG101  Stan p1.0  #2   3x4 items= 2 gold=standard  hits=1/2 <div class="dragAndDrop images" layout="standard">
+     hdr=['image of firefighters', 'image of police', 'image of paramedics', 'police']
+XMES201  Stan p3.0  #29  7x3 items=18 gold=-         hits=0/0  hdr=['sentence starter', 'words', 'images']
