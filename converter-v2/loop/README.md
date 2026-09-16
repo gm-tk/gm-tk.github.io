@@ -18,6 +18,8 @@ them from here.
 | `_r0b_kbfacts.json` | `CONVERTER_V2/outputs/` | Round 0b — its output |
 | `KB_AMALGAMATION_STATUS.md` | `FINAL_MODULE_DATA/` (folder root) | Round 0b — one row per front-facing KB decision with its PageForge status |
 | `LOOP_STATE.md` | `FINAL_MODULE_DATA/` (folder root) | the loop's position, declined/blocked classes, round log |
+| `LOOP__Autonomous_Rounds.md` | `FINAL_MODULE_DATA/` (folder root) | the loop's STANDING RULES (mirrored from 16 Sept 2026 — it had never been in git; amended by each `/loop-review` with Chris's approval) |
+| `LOOP_REVIEW__2026-09-16.md` | `FINAL_MODULE_DATA/` (folder root) | the first `/loop-review` — health check, six assessments with numbers, twelve approved proposals, the items owed by Chris |
 | `DECISIONS__Pending_2026-09-16.md` | `FINAL_MODULE_DATA/` (folder root) | session 10 (`/loop-decisions`) — the plain-English report of the nine pending decisions with the WT / gold / PageForge evidence, and Chris's answers (recorded in `LOOP_STATE.md` as D10-1 … D10-9) |
 | `_measure_r314_dbxplace.py` / `_r314_dbxplace.json` / `_r314_affected.txt` | `CONVERTER_V2/outputs/` | Round 1 (engine r314) — the dropbox-placement probe and its results (121 affected modules) |
 | `_r314_splice_UNAPPLIED.py` / `_r314_splice_APPLIED.py` | `CONVERTER_V2/outputs/` | Round 1 — the anchored engine/data edit; the session-1 draft (owner-close anchor one tab too deep) and the applied version |
