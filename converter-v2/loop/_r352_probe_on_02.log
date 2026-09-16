@@ -1,0 +1,579 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+  ~ EXPFUN06_0_0.html: -1 +29
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [dev team to create image that 
+     + <h5>Learning goals and learning intentions</h5>
+     + <p>Your learning intentions and success criteria outline <b>what</b> you will focus on during your project. Le
+     + <p>To be able to set learning goals we first ask ourselves:</p>
+     + <p><b>What do I want to learn about?</b></p>
+     + <p>This could be:</p>
+     + <li>a skill</li>
+     + <li>knowledge about the world around us or</li>
+     + <li>learning about ourselves.</li>
+     + <p>Here are some examples:</p>
+     + <p>A project learning goal could be:</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [dev team to create image that highli
+     + <p>&quot;I want to create a digital photography portfolio showcasing different photography techniques to impro
+     + <p>Skills I want to develop.</p>
+     + <p>Knowledge I want to develop.</p>
+     + <p>Creating a set of learning intentions for our project encourages us to think about the knowledge and skills
+     + <li>become skillful learners</li>
+     + <li>create projects we are interested in that have an impact on our hapori (community).</li>
+     + <p>We can serve others better when we have grown our skill sets and knowledge about topics we are interested i
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert RHS]</p>
+     + <p><a href="https://www.istockphoto.com/photo/wedding-photography-or-videography-with-family-portrait-at-outdo
+     + … 9 more added
+EXPFUN06: identical 0 / changed 1
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+  ~ HPFUN201_0_0.html: -68 +62
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Do you feel happy after moving your body?</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>My breathing got faster</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>My body feels tired</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>I feel calm</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>I feel thirsty</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>I feel energised</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>How proud are you of your effort?</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Would you like to do this activity again?</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - … 28 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HPFUN201-00-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Insert sliders] Slider options: Not 
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: carousel (insert of videos) — Activi
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://www.youtube.com/watch?v=StetyUnY8jY" target="_blank">https://www.youtube.com/watch?v=Stety
+     + <p><a href="https://www.youtube.com/watch?v=CwpManq2I-U" target="_blank">https://www.youtube.com/watch?v=CwpMa
+     + <p><a href="https://www.youtube.com/watch?v=21XegpLrRjM" target="_blank">https://www.youtube.com/watch?v=21Xeg
+     + <p><a href="https://www.youtube.com/watch?v=-1-s8GBpFeQ" target="_blank">https://www.youtube.com/watch?v=-1-s8
+     + <p><a href="https://www.youtube.com/watch?v=6Fz27G6WwWw" target="_blank">https://www.youtube.com/watch?v=6Fz27
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Do you feel happy after moving your body?</th>
+     + </tr>
+     + <tr>
+     + … 42 more added
+HPFUN201: identical 0 / changed 1
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+  ~ HPFUN302_0_0.html: -0 +6
+     + <h4>Games around the world</h4>
+     + <p>Drag the following cultural game to the country that it is often played in.</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+HPFUN302: identical 0 / changed 1
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+  ~ HPFUN903_0_0.html: -0 +8
+     + <h4>Seat belt safety</h4>
+     + <p>When you’re in a car, staying safe is super important! Always wear your seat belt or sit in the right car s
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+HPFUN903: identical 0 / changed 1
+  ~ HPRE203_5_0.html: -0 +8
+     + <h5>Analysing my pictures</h5>
+     + <p>It is easy to make assumptions about stereotypes, look at the pictures that you have just drawn. For each c
+     + <ul>
+     + <li>a girl</li>
+     + <li>a boy</li>
+     + <li>unknown.</li>
+     + </ul>
+     + <p>Then click on the answers button to discover what the statistics were for each gender in 2023.</p>
+HPRE203: identical 7 / changed 1
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+  ~ MXDB302_9_0.html: -69 +84
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Percentage</p>
+     - <p>Simplified Fraction</p>
+     - <p>Decimal</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>10%</p>
+     - <p>1/10</p>
+     - <p>0.1</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>15%</p>
+     - <p>15/100</p>
+     - <p>0.15</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>20%</p>
+     - <p>1/5</p>
+     - <p>0.2</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>25%</p>
+     - <p>1/4</p>
+     - <p>0.25</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>30%</p>
+     - <p>3/10</p>
+     - <p>0.3</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>40%</p>
+     - <p>2/5</p>
+     - <p>0.4</p>
+     - </div>
+     - … 29 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="62" data-cv2-ref="MXDB302-09-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (1:00–3:56 only)</p>
+     + <div class="cv2-interactive" data-cv2-index="62" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #62: carousel — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://youtu.be/JeVSmq1Nrpw?si=xQSqCNgekFLYGGME" target="_blank">https://youtu.be/JeVSmq1Nrpw?si=
+     + <p>Percentages</p>
+     + <p>A percent is a special fraction that <b>always</b> has 100 as the bottom number.</p>
+     + <p>We can turn any percentage into a fraction by putting it over 100 and getting rid of the % sign.</p>
+     + <p>For example, 46% is the same as 46/100.</p>
+     + <p>100% is the same as 100/100, which is equal to 1 whole.</p>
+     + <p>When the top number is bigger than 100, we are going to have a fraction that is bigger than 1. It is called
+     + <p>Finding a Percentage of an Amount</p>
+     + <p>When an item is discounted in a sale, there are two possible things we would want to find out:</p>
+     + <ol>
+     + <li>How much will I save?</li>
+     + … 64 more added
+MXDB302: identical 9 / changed 1
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+  ~ MXDI103_3_0.html: -39 +49
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <h4>1 ten and 6 ones</h4>
+     - <div class="carousel-caption">
+     - <p>10 + 6 = 16</p>
+     - <div class="item">
+     - <h4>____ ten and _____ ones</h4>
+     - <div class="carousel-caption">
+     - <p>____ + ___ = ____</p>
+     - <div class="item">
+     - <h4>____ ten and _____ ones</h4>
+     - <div class="carousel-caption">
+     - <p>____ + ___ = ____</p>
+     - <div class="item">
+     - <h4>____ ten and _____ ones</h4>
+     - <div class="carousel-caption">
+     - <p>____ + ___ = ____</p>
+     - <div class="item">
+     - <h4>____ ten and _____ ones</h4>
+     - <div class="carousel-caption">
+     - <p>____ + ___ = ____</p>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make some tens frames up
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXDI103-03-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXDI103-03-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="MXDI103-03-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="MXDI103-03-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXDI103-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we make some tens frames up to lo
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: carousel — Activity 3A — see MXDI103
+     + <p>When we are working with numbers over 10 we can still use tens frames to help us. For example, the image be
+     + <p>Watch this video to learn more about the tens place and then complete the activity.</p>
+     + <p>‪@Numberblocks‬- Ten&#39;s place! 🏋️| Learn to Count (<a href="https://www.youtube.com/watch?v=fFVMt90fglg
+     + <p>Complete the table below by typing in the correct number of dots to complete the equation shown in the tens
+     + <th> 1 ten and 6 ones / 10 + 6 = 16 </th>
+     + <td>____ ten and _____ ones / ____ + ___ = ____</td>
+     + <td>____ ten and _____ ones / ____ + ___ = ____</td>
+     + <td>____ ten and _____ ones / ____ + ___ = ____</td>
+     + <td>____ ten and _____ ones / ____ + ___ = ____</td>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXDI103-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXDI103-03-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <tr>
+     + <td></td>
+     + … 29 more added
+MXDI103: identical 9 / changed 1
+MXDI201: identical 11 / changed 0
+  ~ MXDI202_3_0.html: -33 +40
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1417904419" alt="" /><!-- <img class="img
+     - <div class="carousel-caption">
+     - <p>angle added for each picture</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>1.</p>
+     - <p>2.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>3.</p>
+     - <p>4.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>5.</p>
+     - <p>6.</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Answers: 1. 20 degrees, 2. 50 degrees, 3. 55 degrees 4. 100 degrees, 5. 130 degrees, 6. 165 degrees</p>
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: angle added for each picture<br
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXDI202-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXDI202-03-04" style="border: 8px so
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="MXDI202-03-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: carousel (embedded) — Activity (inli
+     + <div style="font-size: 0.95em">
+     + <p>KS2 How to Use a Protractor | Measuring an Angle PowerPoint (twinkl.co.nz)You may like to download this pdf
+     + <p>👉 How to Use a Protractor Display Poster (teacher made) (twinkl.co.nz)</p>
+     + <p>3F Reading a protractor</p>
+     + <p>Look at the following pictures, each showing an angle being measured by a protractor. Carefully read the me
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] <a href="https://media.istockphoto.com/id/1417904419/vector/protractor-ruler-isolated-on-the-whit
+     + </tr>
+     + <tr>
+     + <td>1.</td>
+     + <td>2.</td>
+     + … 20 more added
+MXDI202: identical 11 / changed 1
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+  ~ OSAI101_1_0.html: -0 +4
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+OSAI101: identical 2 / changed 1
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+  ~ OSBY301_2_0.html: -0 +1
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/15558/viewContent/201135/View?ou=15558" target="_bl
+  ~ OSBY301_3_0.html: -0 +9
+     + <p><b>What we say online matters just as much as what we say in person.</b> Kind and respectful messages help 
+     + <p>Before you post or comment, ask yourself:</p>
+     + <ul>
+     + <li><i>Would I say this to their face?</i></li>
+     + </ul>
+     + <ul>
+     + <li><i>Would I be okay if someone said it to me?</i></li>
+     + </ul>
+     + <p>A little kindness online can make a big difference.</p>
+OSBY301: identical 2 / changed 2
+  ~ OSBY401_2_0.html: -0 +1
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/15558/viewContent/201135/View?ou=15558" target="_bl
+OSBY401: identical 4 / changed 1
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+  ~ OSGM301_1_0.html: -76 +48
+     - <div class="item">
+     - <p>What are the different ways people play games?</p>
+     - <div class="item">
+     - <p>Images</p>
+     - <p>Text</p>
+     - <div class="item">
+     - <iframe src="https://www.istockphoto.com/photo/man-win-mobile-games-gm1204995759-346937676?searchscope=image%2
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/teenage-girl-playing-multiplayer-online-games-using-desktop-pc-
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/boy-and-his-dad-gaming-and-having-fun-at-home-gm1430616791-4734
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/grandfather-and-grandson-playing-with-vr-glasses-at-home-gm1392
+     - </div>
+     - <div class="carousel-caption">
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/winning-with-a-smile-gm1412059663-461662036?searchscope=image%2
+     - </div>
+     - <div class="carousel-caption">
+     - </div>
+     - </div>
+     - <div class="item">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-973342658" alt="" /><!-- <img class="img-
+     - <div class="carousel-caption">
+     - <p>**</p>
+     - </div>
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-973342542" alt="" /><!-- <img class="img-
+     - <div class="carousel-caption">
+     - <p>**</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Benefits</p>
+     - … 36 more removed
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1204995759" alt="" /><!-- <img class="img
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1315578884" alt="" /><!-- <img class="img
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1430616791" alt="" /><!-- <img class="img
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1392572166" alt="" /><!-- <img class="img
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1412059663" alt="" /><!-- <img class="img
+     + <h3>Risks and benefits of playing video games</h3>
+     + <p>As gaming has increased in popularity, so too has the research into how gaming can affect people. Gaming ca
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-973342658" alt="Fun Ca
+     + <th><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-973342542" alt="Fun Ca
+     + </tr>
+     + <tr>
+     + <td><b>Benefits</b></td>
+     + … 28 more added
+OSGM301: identical 3 / changed 1
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+  ~ OSOH301_2_0.html: -15 +35
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/super-cow-3d-illustration-gm649635778-118015395" loading="lazy"
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Take care of your learning buddy!</b><i>Your devices – whether it’s a laptop, tablet, or phone – is your
+     - <p><i>Keeping your device safe, clean, and charged means it’ll be ready whenever you are. A well cared for dev
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="OSOH301-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="OSOH301-02-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="OSOH301-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: carousel — Activity (inline) — see O
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://www.istockphoto.com/photo/wifi-and-5g-data-network-connectivity-over-neighborhood-suburb-i
+     + <p>Access to the internet allows for you to connect your device to Te Kura.</p>
+     + <p><a href="https://www.istockphoto.com/photo/businesswoman-analyzing-graph-on-computer-gm584230616-100022345"
+     + <p>Laptops, desktop PCs and tablets are needed to interact with Te Kura and online learning.</p>
+     + <p><a href="https://www.istockphoto.com/photo/web-browser-apps-google-chrome-apple-safari-microsoft-edge-gm220
+     + <p>An online browser such as Google Chrome or Microsoft Edge allow you to use the many different online tools 
+     + <p><a href="https://www.istockphoto.com/photo/woman-typing-password-on-laptop-for-website-security-in-home-off
+     + <p>Te Kura requires students to use many different online accounts to access different online services such as
+     + <p><a href="https://www.istockphoto.com/photo/homeschooling-sending-email-gm1215474885-354028080" target="_bla
+     + <p>A mobile phone is useful for quick access to email, taking pictures or videos, and scanning documents to sh
+     + <p><a href="https://www.istockphoto.com/photo/teenage-boy-studying-at-home-on-laptop-preparing-for-exams-doing
+     + <p>Headphones are great for focussing in online classes. Webcams and microphones allow you to interact with yo
+     + … 15 more added
+OSOH301: identical 3 / changed 1
+  ~ OSOH401_1_0.html: -0 +7
+     + <h5>Taha whānau – Social wellbeing</h5>
+     + <p>To get the most out of your online learning it is important to connect and engage with people who can suppo
+     + <p>Most online classes and meetings have their own online etiquette or <span class="infoTrigger" info="the cod
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ OSOH401_3_0.html: -0 +16
+     + <h3>Choose to be kind</h3>
+     + <p>As a Te Kura ākonga, you are spending a lot of time online. You may be interacting with others online in ch
+     + <p>Choosing to respond kindly and respectfully can ensure everyone feels safe and can enjoy learning together.
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/_OpYb6264Ns" loading="lazy" title="YouTube video player" f
+     + <h3>Kindness in action</h3>
+     + <p>Have a look at the following scenarios and either chat with your supervisor for the discussion points or re
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+OSOH401: identical 3 / changed 2
+OSOH501: identical 6 / changed 0
+  ~ OSSC301_1_0.html: -16 +32
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Definition of an online scam</p>
+     - <p>A trap set up online to fool people into giving up personal information with the intent to steal from them.
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Digital contact tools</p>
+     - <p>Text message, social media, website/gaming pop-ups, email or phone call.</p>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: please use this on page 1 of th
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="OSSC301-01-01" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="OSSC301-01-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="OSSC301-01-01" style="border: 8px so
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: please use this on page 1 of the slid
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: carousel — Activity (inline) — see O
+     + <p>Tips for spotting fake news</p>
+     + <p><a href="https://resource.netsafe.org.nz/TR_How-to-spot-fake-news-1-(2).pdf" target="_blank">https://resour
+     + <p><a href="https://resource.netsafe.org.nz/TR_Tips-for-spotting-fake-news-(2).pdf" target="_blank">https://re
+     + <p>Types of scams</p>
+     + <p>Online scams have become more common since banking and shopping went mostly online. Below is a definition o
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Definition of an online scam</th>
+     + <th>A trap set up online to fool people into giving up personal information with the intent to steal from them
+     + </tr>
+     + <tr>
+     + <td>Digital contact tools</td>
+     + <td>Text message, social media, website/gaming pop-ups, email or phone call.</td>
+     + </tr>
+     + </table>
+     + … 12 more added
+OSSC301: identical 3 / changed 1
+OSSC401: identical 5 / changed 0
+
+TOTAL: identical 644 / changed 17 / missing 0 over 104 modules
+CHANGED: EXPFUN06/EXPFUN06_0_0.html HPFUN201/HPFUN201_0_0.html HPFUN302/HPFUN302_0_0.html HPFUN903/HPFUN903_0_0.html HPRE203/HPRE203_5_0.html MXDB302/MXDB302_9_0.html MXDI103/MXDI103_3_0.html MXDI202/MXDI202_3_0.html OSAI101/OSAI101_1_0.html OSBY301/OSBY301_2_0.html OSBY301/OSBY301_3_0.html OSBY401/OSBY401_2_0.html OSGM301/OSGM301_1_0.html OSOH301/OSOH301_2_0.html OSOH401/OSOH401_1_0.html OSOH401/OSOH401_3_0.html OSSC301/OSSC301_1_0.html

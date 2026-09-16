@@ -1,0 +1,1127 @@
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+  ~ BLLR201_1_1.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: My apologies for the scans – so
+     + <p>Now that we understand how each action can help us, you can test out these tips on a few books. Click on ea
+     + </div>
+BLLR201: identical 7 / changed 1
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+  ~ CEDO105_1_0.html: -0 +16
+     + <p>As you move your body, think about these things. You can discuss them with your supervisor too.</p>
+     + <li>What parts of your body did you use?</li>
+     + <li>What shapes did you make?</li>
+     + <ul>
+     + <li>Why do you think different animals move differently?</li>
+     + </ul>
+     + <h4>Time to dance</h4>
+     + <p>Play the video below and show off your dance moves. You can use some of the shapes you made earlier and add
+     + <ul>
+     + </ul>
+     + <ul>
+     + </ul>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ CEDO105_2_0.html: -37 +42
+     - <div class="activity interactive super-content-button" number="2A">
+     - <div class="super-content row">
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Supervisor note</h3>
+     - <div class="col-12">
+     - <p>You might want to read more on following tikanga during this activity here</p>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/stream-in-mount-river-bank-mossy-stones-flowing-water-gm1464629
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/crack-in-grey-concrete-surface-gm172950698-6146831?searchscope=
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/a-mess-in-the-childrens-room-gm985058402-267277317?searchscope=
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/emerging-from-the-playhouse-gm177252933-19619142?searchscope=im
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/university-group-study-room-gm639248044-115102801?searchscope=i
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/activist-sorting-paper-waste-gm843249732-138182497?searchscope=
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/modern-playgound-with-slides-bridge-climbing-stairs-and-canopy-
+     - </div>
+     - </div>
+     + <div class="activity interactive" number="2A">
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1464629766" alt="" /><!-- <img class="img
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-172950698" alt="" /><!-- <img class="img-
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-985058402" alt="" /><!-- <img class="img-
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-177252933" alt="" /><!-- <img class="img-
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-639248044" alt="" /><!-- <img class="img-
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-843249732" alt="" /><!-- <img class="img-
+     + <div class="item image">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1363188224" alt="" /><!-- <img class="img
+     + <div class="row">
+     + <h3>Before your start we need to think about the materials you will use:</h3>
+     + <ul>
+     + <li>Is it safe to use? Are you using materials in a way that keeps you, others, and the materials safe?</li>
+     + <li>Is it fair? If you are making an obstacle with others, does everyone have enough resources?</li>
+     + … 22 more added
+CEDO105: identical 4 / changed 2
+  ~ CEDO202_0_0.html: -30 +85
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Jump off two feet and land on two.</p>
+     - <p>Jump off two feet and land on one.</p>
+     - <p>Hop to change direction.</p>
+     - <p>Skip forward twice.</p>
+     - <p>End with a leap.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Jump from one foot to the other.</p>
+     - <p>Hop twice.</p>
+     - <p>Leap forward.</p>
+     - <p>Turn around on the spot.</p>
+     - <p>End with a jump.</p>
+     - <div class="item">
+     - <h4>Leap forward.</h4>
+     - <div class="carousel-caption">
+     - <p>Hop to the side.</p>
+     - <p>Jump on the spot.</p>
+     - <p>Jump backwards.</p>
+     - <p>Skip to the side.</p>
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Hover on movement sequences: A
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="CEDO202-00-05" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div crumb="7"><p>Activity 8B</p></div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="CEDO202-00-05" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Hover on movement sequences: A movem
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: carousel (insert the videos in a) — 
+     + <p><a href="https://www.youtube.com/watch?v=T6pjGwkK2po" target="_blank">https://www.youtube.com/watch?v=T6pjG
+     + <p><a href="https://www.youtube.com/watch?v=x5mHzwEOpp4" target="_blank">https://www.youtube.com/watch?v=x5mHz
+     + <p><a href="https://www.youtube.com/watch?v=B8vRvN69esE" target="_blank">https://www.youtube.com/watch?v=B8vRv
+     + <p><a href="https://www.youtube.com/watch?v=uFNWEKHHBFQ" target="_blank">https://www.youtube.com/watch?v=uFNWE
+     + <p>Exploring Spring through movement</p>
+     + <p>We are going to show spring using our body by making a short series of movements that show the idea of grow
+     + <ol>
+     + <li>Start by making a very small shape. Start on a low level and make yourself as small as possible.</li>
+     + <li>Slowly make your way up like a plant starting to grow.</li>
+     + <li>Keep moving until you are reaching up tall and stretching. Make yourself into the biggest shape possible.<
+     + <li>Try this three times and see if you can make your movement slightly different every time.</li>
+     + <li>Choose your favourite version!</li>
+     + <li>Film yourself so that you can remember it.</li>
+     + </ol>
+     + … 65 more added
+CEDO202: identical 0 / changed 1
+  ~ CEDO301_4_0.html: -0 +1
+     + <p>Observation in action</p>
+CEDO301: identical 5 / changed 1
+CEDO501: identical 16 / changed 0
+  ~ CEDO502_1_1.html: -63 +74
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/worried-man-checking-bills-and-looking-at-financial-analysis-of
+     - <div class="carousel-caption">
+     - <p>Image: iStock: Worried man checking bills and looking at financial analysis of expenses at home. Miss payme
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/money-laundering-in-new-zealand-dollars-gm2253869116-667217840"
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Image: iStock: money laundering in New Zealand: Borrow more money to cover old debts</p>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/new-zealand-money-finance-price-cut-scissors-gm2249905425-66364
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Image: iStock: New Zealand money finance: Start getting penalty fees or overdue notices</p>
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/worried-teenager-checking-bills-at-home-gm2222589510-638853549"
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Image: iStock: teenager checking bills: Feel stressed or worried about money</p>
+     - </div>
+     - <div class="item">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1447286330" alt="" /><!-- <img class="img
+     - <div class="carousel-caption">
+     - <p>Kōrero 3: Tawa’s story / iStock: Young man looking at mobile phone. / I earn $400 each week. After paying f
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>$400</p>
+     - <p>- $390</p>
+     - <p>= $10</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>income</p>
+     - … 23 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="CEDO502-02-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Image: iStock: debt chain ball:</p>
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: carousel (with an arrow for each bul
+     + <div style="font-size: 0.95em">
+     + <ul>
+     + <li>You can pay on time and avoid extra fees.</li>
+     + <li>You build a good credit record, which helps you borrow in the future.</li>
+     + <li>You feel less stressed because you know what you can afford.</li>
+     + <li>You learn to plan and make smart choices about money.</li>
+     + </ul>
+     + <p>What is unmanageable debt?</p>
+     + <p><a href="https://www.istockphoto.com/photo/debt-chain-ball-gm183847476-16355221" target="_blank">https://ww
+     + <p>Unmanageable debt means you’ve borrowed more than you can afford to pay back. Your repayments are too high,
+     + <p>You might:</p>
+     + <div class="table-responsive">
+     + … 54 more added
+CEDO502: identical 9 / changed 1
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+  ~ CEDR501_2_0.html: -29 +33
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Needs</b></p>
+     - <p><b>Expectations</b></p>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/fresh-human-footprints-on-dry-sand-in-sunny-summer-day-go-forwa
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Image: iStock: fresh human footprints on dry sand: / <b>Clear information</b> about the purpose, time, and 
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/beach-wave-and-footprints-at-sunset-time-gm587195454-100786859"
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Image: iStock: beach wave and footprints at sunset: / To be treated with <b>professionalism and courtesy</b
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/engineering-students-collaborate-on-robotics-project-gm20772226
+     - </div>
+     - <div class="carousel-caption">
+     - <p><b>Kōrero 2: Maia’s interview for a trades academy place</b> Image: iStock: engineering students collaborat
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Image: iStock: fresh human foot
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="CEDR501-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: carousel — Activity (inline) — see C
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [Needs Slide 1] <b>Needs</b></th>
+     + <th> [Expectations Slide 1] <b>Expectations</b></th>
+     + </tr>
+     + <tr>
+     + <td> Image: iStock: fresh human footprints on dry sand: <a href="https://www.istockphoto.com/photo/fresh-human
+     + <td> Image: iStock: beach wave and footprints at sunset: <a href="https://www.istockphoto.com/photo/beach-wave
+     + </tr>
+     + </table>
+     + </div>
+     + … 13 more added
+CEDR501: identical 10 / changed 1
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+  ~ CEDT501_2_0.html: -31 +40
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Their mental health could be affected.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>They might stay away from school or work.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>They may feel overwhelmed or unable to escape the situation.</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>They might want to isolate themselves.</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>In te ao Māori, manaakitanga is the practice of showing generosity, care and respect for others. We when ma
+     - <p>What does it look like to show manaakitanga online?</p>
+     - <p>How can we use manaakitanga in response to online bullying?</p>
+     - <p>How might being bullied online impact a person’s mana?</p>
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Hover - person who starts or t
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="CEDT501-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="CEDT501-03-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Hover - person who starts or takes p
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: carousel (rolling - / box) — Activit
+     + <th>Their mental health could be affected.</th>
+     + <th>They might stay away from school or work.</th>
+     + <th>They may feel overwhelmed or unable to escape the situation.</th>
+     + <th>They might want to isolate themselves.</th>
+     + <p>Bullying doesn’t just hurt the victim. It can also impact their friends, whānau, classmates, and even the</
+     + <p>.</p>
+     + <p>The whole community – at school, online, or in other places – can feel the impact.</p>
+     + <th>In te ao Māori, manaakitanga [Hover: care and hospitality] is the practice of showing generosity, care and
+     + <h3>Who else is impacted?</h3>
+     + <p>Click on each bar to learn more about how other people are impacted.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="CEDT501-03-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + … 20 more added
+  ~ CEDT501_3_1.html: -124 +103
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>What are some of the ways we can practice being assertive each day? How can being aggressive, passive or in
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Tick</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Sending a personal photo of a friend that would embarrass them.</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Calling Youthline to talk about the impact or to ask for advice.</p>
+     - <p>✔️</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Putting your phone away for the evening.</p>
+     - <p>✔️</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Letting whānau know how you are feeling.</p>
+     - <p>✔️</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Replying in a vague way.</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - … 84 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="CEDT501-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: carousel (/ box) — Activity (inline
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>What are some of the ways we can practice being assertive each day? How can being aggressive, passive or i
+     + </tr>
+     + </table>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 83 more added
+  ~ CEDT501_5_1.html: -2 +6
+     - <p>Overcoming barriers</p>
+     - <p>Click on each image to read through a scenario where someone found it difficult to be assertive. In each ex
+     + <h3>Overcoming barriers</h3>
+     + <p>Click on each image to read through a scenario where someone found it difficult to be assertive. In each ex
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ CEDT501_8_0.html: -28 +38
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover - prayers, incantations, or ch
+     - <p>Tikanga as a guide</p>
+     - <p>Tikanga refers to customs, rituals and ways of behaving in te ao Māori. It&#39;s about doing things the cor
+     - <p>Tikanga can be different depending on where you are and which iwi, hapū, or whānau you’re with. Each place 
+     - <p>Key tikanga of a wānanga may include:</p>
+     - <ul>
+     - <li>opening and closing with karakia</li>
+     - </ul>
+     - <p>and/or waiata</p>
+     - <ul>
+     - <li>having shared understanding of the kaupapa</li>
+     - <li>showing manaakitanga</li>
+     - </ul>
+     - <p>to guests if you are hosting</p>
+     - <ul>
+     - <li>waiting your turn to kōrero</li>
+     - <li>listening to and acknowledging others.</li>
+     - </ul>
+     - <p>How might using tikanga help people feel more confident to speak up in a group?</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [typeable box] </th>
+     - </tr>
+     - </table>
+     - </div>
+     - <p>Talanoa</p>
+     - <p>[Image] iStock: Local Samoan enjoying their day with music and handcraft. stock photo (<a href="https://www
+     + <h5>Tikanga as a guide</h5>
+     + <p>Tikanga refers to customs, rituals and ways of behaving in te ao Māori. It&#39;s about doing things the cor
+     + <p>Tikanga can be different depending on where you are and which iwi, hapū, or whānau you’re with. Each place 
+     + <p>Key tikanga of a wānanga may include:</p>
+     + <li>opening and closing with karakia</li>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover - prayers, incantations, or ch
+     + <p>and/or <span class="infoTrigger" info="songs that help tell stories, share feelings, or show support.">waia
+     + <ul>
+     + <li>having shared understanding of the <span class="infoTrigger" info="• showing manaakitanga">kaupapa</span><
+     + </ul>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover – care and hospitality]</p>
+     + <p>to guests if you are hosting</p>
+     + <ul>
+     + <li>waiting your turn to <span class="infoTrigger" info="• listening to and acknowledging others.">kōrero</spa
+     + </ul>
+     + <p>How might using tikanga help people feel more confident to speak up in a group?</p>
+     + <div class="cv2-interactive bilingual-unbuilt">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + … 18 more added
+CEDT501: identical 11 / changed 4
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+  ~ CEDW501_2_0.html: -12 +18
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Te Whare Tapa Whā</b> is the most widely used Māori model of wellbeing in Aotearoa. The metaphor of a ho
+     - <p><b>Te Wheke</b> uses the more detailed metaphor of an octopus, with many tentacles representing different, 
+     - <p>If one tentacle is weak or damaged, it can affect the whole creature. This symbolises how one area of wellb
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>The wall and tentacle metaphors in both Te Whare Tapa Whā and Te Wheke remind us that every part of our hau
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Te Whare Tapa Whā and Te Wheke</h3>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/venn.jpg" alt="" /> -->
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Te Whare Tapa Whā</b> is the most widely used Māori model of wellbeing in Aotearoa. The metaphor of a h
+     + <th><b>Te Wheke</b> uses the more detailed metaphor of an octopus, with many tentacles representing different,
+     + </tr>
+     + <tr>
+     + <td>The wall and tentacle metaphors in both Te Whare Tapa Whā and Te Wheke remind us that every part of our ha
+     + </tr>
+     + </table>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+  ~ CEDW501_5_0.html: -46 +44
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/be-of-those-who-lend-a-hand-where-they-can-gm894377512-24727603
+     - <div class="carousel-caption">
+     - <p>Carousel 1 Image: iStock: Be of those who lend a hand: <b>Grief and loss</b> – death of a loved one, friend
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/blurry-shadow-of-two-person-and-a-kid-gm859410782-141980109" lo
+     - <div class="carousel-caption">
+     - <p>Carousel 2 Image: iStock: Blurry shadow of two person: / <b>Family separation or divorce</b> – changes in f
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/graffiti-shadow-on-a-brickwall-showing-human-hands-up-against-t
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Carousel 3 Image: iStock: graffiti shadow on a brick wall: / <b>Whānau conflict, violence or substance abus
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/banana-in-a-fridge-gm1316555834-404257648" loading="lazy" title
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Carousel 4 Image: iStock: banana in a fridge: / <b>Poverty or financial stress</b> – lack of food, stable h
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/graffiti-shadow-on-a-brickwall-showing-a-refugee-girl-walking-w
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Carousel 5 Image: iStock: graffiti shadow on a brick wall: / <b>Moving or displacement</b> – shifting homes
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/road-damaged-by-earthquake-gm136283725-18722411" loading="lazy"
+     - </div>
+     - <div class="carousel-caption">
+     - <p>Carousel 6 / Image: iStock: road damaged by earthquake: / <b>Natural disasters or community crises</b> – e.
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Image: iStock: woman hand with 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="CEDW501-07-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - … 6 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="CEDW501-07-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: carousel — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> Carousel 1
+     + Image: iStock: Be of those who lend a hand: <a href="https://www.istockphoto.com/photo/be-of-those-who-lend-a-
+     + <b>Grief and loss</b> – death of a loved one, friend, or pet.</th>
+     + <th> Carousel 2
+     + Image: iStock: Blurry shadow of two person: <a href="https://www.istockphoto.com/photo/blurry-shadow-of-two-pe
+     + <th> Carousel 3
+     + Image: iStock: graffiti shadow on a brick wall: <a href="https://www.istockphoto.com/photo/graffiti-shadow-on-
+     + </tr>
+     + <tr>
+     + … 24 more added
+CEDW501: identical 11 / changed 2
+CHFUN01: identical 1 / changed 0
+  ~ CHFUN04_0_0.html: -0 +3
+     + <p>Watch these videos for more on respect and use of language.</p>
+     + <p>Watch these videos for more on the meaning of colours in Chinese.</p>
+     + <p>Watch the videos to learn more about these Chinese festivals.</p>
+CHFUN04: identical 0 / changed 1
+  ~ CHFUN05_0_0.html: -109 +135
+     - <iframe src="https://www.youtube-nocookie.com/embed/nKRYIax12EE?rel=0&amp;showinfo=0" frameborder="0" allowful
+     - <iframe src="https://www.youtube-nocookie.com/embed/E5gCkAkJZ8c?rel=0&amp;showinfo=0" frameborder="0" allowful
+     - <p>Chinese grammar sentence pattern</p>
+     - <p>How Chinese sentences are built</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="CHFUN05-00-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="CHFUN05-00-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="CHFUN05-00-07" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="CHFUN05-00-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="CHFUN05-00-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="CHFUN05-00-10" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="CHFUN05-00-11" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="CHFUN05-00-12" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="CHFUN05-00-13" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="CHFUN05-00-14" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="item">
+     - <div class="item">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="41" data-cv2-ref="CHFUN05-00-15" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="CHFUN05-00-16" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="45" data-cv2-ref="CHFUN05-00-17" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="49" data-cv2-ref="CHFUN05-00-18" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="CHFUN05-00-19" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="53" data-cv2-ref="CHFUN05-00-20" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="56" data-cv2-ref="CHFUN05-00-21" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="58" data-cv2-ref="CHFUN05-00-22" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 69 more removed
+     + <p>Watch the video for more on pinyin.</p>
+     + <p>Watch the video for more on pronouns.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="CHFUN05-00-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: carousel — Activity (inline) — see 
+     + <p>Watch the video for more examples on SOV structure.</p>
+     + <th> [video][media item 12] <a href="https://www.youtube.com/shorts/nKRYIax12EE" target="_blank">https://www.y
+     + <th> [video][media item 13] <a href="https://www.youtube.com/shorts/E5gCkAkJZ8c" target="_blank">https://www.y
+     + <td> [caption] Chinese grammar sentence pattern</td>
+     + <td>How Chinese sentences are built</td>
+     + <p>5A Check your understanding</p>
+     + <p><b>Identify S, V, O.</b> Select words that belong to these categories: <b>Subject</b>, <b>Verb</b>, or <b>O
+     + <ul>
+     + <li><b>我 学 中文。</b> <b>wǒ xué zhōngwén.</b> <i>I study Chinese.</i></li>
+     + <li><b>她 喜欢 音乐。</b> <b>tā xǐhuān yīnyuè.</b> <i>She likes music.</i></li>
+     + <li><b>你 喝 水。</b> <b>nǐ hē shuǐ.</b> <i>You drink water.</i></li>
+     + </ul>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="CHFUN05-00-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 115 more added
+CHFUN05: identical 0 / changed 1
+  ~ CHFUN06_0_0.html: -0 +5
+     + <p>Watch the video to see more about how to read and write Chinese characters.</p>
+     + <p>Watch the video to see more about stroke order.</p>
+     + <p>Watch the video to see more about Chinese word formation.</p>
+     + <p>Watch the video to see more about Chinese pictograms and radicals.</p>
+     + <p>Watch the videos to learn more about Chinese component structure</p>
+CHFUN06: identical 0 / changed 1
+  ~ CHFUN07_0_0.html: -0 +1
+     + <p>Watch the videos to see more examples of time position in the sentence.</p>
+CHFUN07: identical 0 / changed 1
+  ~ ENFUN01_0_0.html: -75 +75
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1KITR9z56Q8H3hfH9Gzn28_GLJPE6Zfz3/view?usp=sharing" loading="lazy
+     - <div class="carousel-caption">
+     - <p>/ Original source of text</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Text (underneath)</p>
+     - <p>The intended audience for this piece is anyone with a fondness for school fairs. The writing style is easy 
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/TnGl01FkMMo" loading="lazy" title="YouTube video player" f
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Text (underneath)</p>
+     - <p>The intended audience for this movie is people that enjoy this iconic video game and beloved characters. Th
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Image</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1qtuKrGPFMTuARIRAfK_HBwX9kZlr-XmT/view?usp=drive_link" loading="l
+     - <div class="carousel-caption">
+     - <p>/ Original source of text</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Text (underneath)</p>
+     - <p>The intended audience for this text is pet owners. Personal reflections create a relatable tone, and the au
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Image</p>
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1HbpY6ZTplNb8CKWDHmc_ldwJUoYm3U1W/view?usp=drive_link" loading="l
+     - </div>
+     - <div class="carousel-caption">
+     - <p>/ Original source of text</p>
+     - </div>
+     - <div class="item">
+     - … 35 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ENFUN01-00-11" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image]</p>
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: carousel (external nav) — Activity 
+     + <th> [Image] </th>
+     + <th><a href="https://drive.google.com/file/d/1KITR9z56Q8H3hfH9Gzn28_GLJPE6Zfz3/view?usp=sharing" target="_blan
+     + <td> Text (underneath) </td>
+     + <td>The intended audience for this piece is anyone with a fondness for school fairs. The writing style is easy
+     + <th> [Video] </th>
+     + <th><a href="https://www.youtube.com/watch?v=TnGl01FkMMo" target="_blank">https://www.youtube.com/watch?v=TnGl
+     + <td> Text (underneath) </td>
+     + <td>The intended audience for this movie is people that enjoy this iconic video game and beloved characters. T
+     + <th> Image </th>
+     + <th><a href="https://drive.google.com/file/d/1qtuKrGPFMTuARIRAfK_HBwX9kZlr-XmT/view?usp=drive_link" target="_b
+     + <td> Text (underneath) </td>
+     + <td>The intended audience for this text is pet owners. Personal reflections create a relatable tone, and the a
+     + <th> Image </th>
+     + <th><a href="https://drive.google.com/file/d/1HbpY6ZTplNb8CKWDHmc_ldwJUoYm3U1W/view?usp=drive_link" target="_b
+     + <td> Text (underneath) </td>
+     + … 55 more added
+ENFUN01: identical 0 / changed 1
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+  ~ ENFUN08_0_0.html: -0 +2
+     + <p>We use personification to make stories more interesting and to help readers connect with non-human things b
+     + <p>What human qualities do you think of when you look at these images? Click on each to see some examples.</p>
+ENFUN08: identical 0 / changed 1
+  ~ ENFUN09_0_0.html: -27 +62
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (0:17-3:35)</p>
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/7kIxTIKjZRw" loading="lazy" title="YouTube video player" f
+     - <div class="carousel-caption">
+     - <p>(to 1:01)</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>The first draft is often referred to as a rough draft. Keep the purpose and audience in mind. Just get your
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (to 1:01)</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENFUN09-00-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ENFUN09-00-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ENFUN09-00-10" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ENFUN09-00-11" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ENFUN09-00-12" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ENFUN09-00-13" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <p><a href="https://drive.google.com/file/d/1VEwu7jJQCRzShoq49HCYFtnwlDa0rDIV/view?usp=sharing" target="_blank
+     + <p>Once a writer has planned their ideas, they begin their first draft. This is where those ideas become sente
+     + <p>Watch this video to see how a plan can come to life in a draft.</p>
+     + <iframe src="https://www.youtube-nocookie.com/embed/5Y_fxQ_52pk" loading="lazy" title="YouTube video player" f
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (0:17-3:35)</p>
+     + <p>Drafting tips:</p>
+     + <li>Don’t worry about making everything perfect, you can fix any mistakes later.</li>
+     + <li>Use your plan to guide what you write.</li>
+     + <li>Remember this is just the first step of writing.</li>
+     + <p>While drafting gets our ideas down on paper, revising improves those ideas and gets them looking polished a
+     + <iframe src="https://www.youtube-nocookie.com/embed/JzoK4FoVyuY" loading="lazy" title="YouTube video player" f
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENFUN09-00-08" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: carousel (made in canva and same as
+     + <p><a href="https://drive.google.com/file/d/1VEwu7jJQCRzShoq49HCYFtnwlDa0rDIV/view?usp=sharing" target="_blank
+     + <p>Stage 2: Drafting</p>
+     + <p>Drafting is where your ideas begin to take shape on the page. Your writing doesn’t have to be perfect at th
+     + <th> [video] <a href="https://www.youtube.com/watch?v=7kIxTIKjZRw" target="_blank">https://www.youtube.com/wat
+     + … 42 more added
+ENFUN09: identical 0 / changed 1
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+  ~ ENGC202_1_0.html: -0 +6
+     + <h3>Where do we find instructions?</h3>
+     + <p>Instructions are more than just when someone tells us to do something. Anytime we see steps or directions t
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+ENGC202: identical 8 / changed 1
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+  ~ ENGI102_2_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: VIDEOS of stories. Please put a
+     + <p>Which story did you enjoy the most?</p><p class="cv2-note" style="color: red; font-weight: bold;">Writers N
+     + </div>
+ENGI102: identical 6 / changed 1
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+  ~ ENGI301_2_0.html: -21 +45
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Link</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/155VTPdnvG7nHZjX4STApJ_1Rpv-0lpVp/view?usp=sharing" loading="lazy
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1663NnZSTTXJWJ-1ugWwkfQayg4tjaw5_/view?usp=drive_link" loading="l
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Hover Caption</p>
+     - <p>Conrad Smith has participated in 94 test caps wearing the All Blacks jersey. He has a success rate of 89.4%
+     - <p>Sean Fitzpatrick has participated in 92 test caps wearing the All Blacks jersey. He has a success rate of 8
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (images to use)</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENGI301-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ENGI301-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (images to use)</p>
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: carousel — Activity (inline) — see E
+     + <p><a href="https://drive.google.com/drive/folders/1-rOM8uuIWfVG5AWUm7IvU8k9-9RBWFlD" target="_blank">https://
+     + <p><a href="https://weetbix.co.nz/statattack/#cards" target="_blank">https://weetbix.co.nz/statattack/#cards</
+     + <p>Making a Statistical Judgement</p>
+     + <p>Statistical judgement involves using numbers and information to determine the performance of players in a g
+     + <p>Example</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Image</th>
+     + <th></th>
+     + <th></th>
+     + </tr>
+     + <tr>
+     + <td> Link </td>
+     + <td><a href="https://drive.google.com/file/d/155VTPdnvG7nHZjX4STApJ_1Rpv-0lpVp/view?usp=sharing" target="_blan
+     + … 25 more added
+ENGI301: identical 5 / changed 1
+  ~ ENGI302_5_0.html: -0 +1
+     + <p>Hover over the highlighted text to see how a simile or metaphor could be used in a traditional tale.</p>
+ENGI302: identical 6 / changed 1
+  ~ ENGI303_3_0.html: -36 +32
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>1</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1xbRlyhkDWkMytc5jUoOg30hTRzu2s4zW/view?usp=drive_link" loading="l
+     - <div class="carousel-caption">
+     - <p>(layout like) / <b>Telling sSentence</b> / Jack was afraid. / <b>Showing sentence</b> / As the footsteps dr
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>2</p>
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1hdN871WO_HgvOLtUWCyplnkvP6tbbgiL/view?usp=drive_link" loading="l
+     - </div>
+     - <div class="carousel-caption">
+     - <p>(layout like) / <b>Telling sentence</b> / It was very dark inside / <b>Showing sentence</b> / I held my han
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>3</p>
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1qgZ1o9flmK_szYcqVxK1e_HSoHMLwdqA/view?usp=drive_link" loading="l
+     - </div>
+     - <div class="carousel-caption">
+     - <p>(layout like) / <b>Telling sentence</b> / I was really mad. / <b>Showing sentence</b> / I stormed to the do
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (0:10-1:48)</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENGI303-03-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENGI303-03-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (0:10-1:48)</p>
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: carousel — Activity (inline) — see 
+     + <th> 1 </th>
+     + <th> (layout like) <a href="https://drive.google.com/file/d/1xbRlyhkDWkMytc5jUoOg30hTRzu2s4zW/view?usp=drive_l
+     + <td> 2 </td>
+     + <td> (layout like) <a href="https://drive.google.com/file/d/1hdN871WO_HgvOLtUWCyplnkvP6tbbgiL/view?usp=drive_l
+     + <td> 3 </td>
+     + <td> (layout like) <a href="https://drive.google.com/file/d/1qgZ1o9flmK_szYcqVxK1e_HSoHMLwdqA/view?usp=drive_l
+     + <p>Watch this video to learn more about using <b>show, don’t tell</b> in your storytelling.</p>
+     + <p><a href="https://www.youtube.com/watch?v=N4RthqSOcR0" target="_blank">https://www.youtube.com/watch?v=N4Rth
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENGI303-03-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + … 12 more added
+ENGI303: identical 6 / changed 1
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+  ~ ENGJ201_5_0.html: -36 +40
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1p5FMP-G3n1LpL8QXLHXDNMVZuE4mxUDr/view?usp=drive_link" loading="l
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1yvRDRuKUNsPln1L2bh5UlS3Cac5GbdeG/view?usp=drive_link" loading="l
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/122uWyPeHa3runq-Qsu4Ck3l-n8yWdXOR/view?usp=drive_link" loading="l
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://drive.google.com/file/d/1pKpyA_Z_MyyOU_B1yYhjQocS4cRqfytj/view?usp=drive_link" loading="l
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.shutterstock.com/image-photo/kakapo-nocturnal-flightless-parrot-strangeness-doesnt-22
+     - </div>
+     - <div class="carousel-caption">
+     - <p>“The kākāpō’s a great bird.” Chris stared at the large parrot on the screen. Its green feathers were like f
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.shutterstock.com/image-photo/photo-blobfish-worlds-ugliest-fish-2205677135" loading="
+     - </div>
+     - <div class="carousel-caption">
+     - <p>“There on the screen was a fish. But not just any fish. It was like a blob of pale, pink jelly that someone
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGJ201-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: carousel — Activity 5A — see ENGJ20
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th></th>
+     + <th></th>
+     + <th></th>
+     + </tr>
+     + <tr>
+     + <td><a href="https://drive.google.com/file/d/1p5FMP-G3n1LpL8QXLHXDNMVZuE4mxUDr/view?usp=drive_link" target="_b
+     + <td><a href="https://drive.google.com/file/d/1yvRDRuKUNsPln1L2bh5UlS3Cac5GbdeG/view?usp=drive_link" target="_b
+     + … 20 more added
+ENGJ201: identical 6 / changed 1
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+  ~ ENGR101_7_0.html: -61 +67
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <h4><b>Option 1</b></h4>
+     - <div class="carousel-caption">
+     - <p>Write a news report</p>
+     - <p>/ <b>1.</b> Talk to your supervisor about what you would like to write about.</p>
+     - <p><b>2.</b> On paper, write a headline for your news story. Make sure it is short and tells the reader what y
+     - <p><b>3.</b> Write your news story – make sure you include:</p>
+     - <p>/ <b>Who</b> was in the news?</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>What</b> happened?</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Where</b> did it happen?</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>When</b> did it happen?</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Why</b> did it happen?</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <h4>Film a news report</h4>
+     - <div class="carousel-caption">
+     - <p>/ <b>1.</b> Talk to your supervisor about what news you would like to share.</p>
+     - <p><b>2.</b> Plan your news report, including:</p>
+     - <p>/ <b>Who</b> was in the news?</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>What</b> happened?</p>
+     - </div>
+     - … 21 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ENGR101-07-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [checkboxes]</p>
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: carousel — Activity 7A — see ENGR10
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Option 1</b> / [H4] Write a news report / [body] / <b>1.</b> Talk to your supervisor about what you wou
+     + <th></th>
+     + </tr>
+     + <tr>
+     + <td><b>What</b> happened?</td>
+     + <td></td>
+     + </tr>
+     + <tr>
+     + … 47 more added
+ENGR101: identical 7 / changed 1
+ENGR102: identical 7 / changed 0
+  ~ ENGR201_4_0.html: -14 +27
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Bronwen did a great job didn’t she! That’s why she is one of the best at the Te Kura Daily. One thing that 
+     - <p>What did you eat for breakfast this morning? Did you have some cereal or toast? Maybe you had eggs? Well, h
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://pixabay.com/illustrations/question-mark-a-notice-duplicate-2110767/" loading="lazy" title
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (each page to show in the carou
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENGR201-04-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGR201-04-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (each page to show in the carousel, p
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: carousel — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://drive.google.com/file/d/1E8YtYk6zlzBfVZlgufFDcjnw8ShDIiNE/view?usp=drive_link" target="_bl
+     + <p><a href="https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-
+     + <p>Rhetorical questions</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [body] Bronwen did a great job didn’t she! That’s why she is one of the best at the Te Kura Daily. One th
+     + <th> [image] <a href="https://pixabay.com/illustrations/question-mark-a-notice-duplicate-2110767/" target="_bl
+     + </tr>
+     + </table>
+     + <p>When you ask your reader a question like this, it is called a rhetorical question. It is a good way to make
+     + … 7 more added
+ENGR201: identical 6 / changed 1
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+  ~ ENGS401_5_0.html: -13 +31
+     - <h3>The judging</h3>
+     - <h4>Judge 1 – Julianne</h4>
+     - <h4>Finding the mean</h4>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: carousel + multiChoiceQuiz + modal 
+     - <p>Born to dance final battle</p>
+     - <p>Tu (from our visual text in Lesson 4) always dreamed of becoming a professional dancer and saw the World Hi
+     - <p>We saw the final battle in Lesson 4. If you would like to re-watch this, click here.</p>
+     - <p><a href="https://www.youtube.com/watch?v=U9e4r-WHsdc" target="_blank">https://www.youtube.com/watch?v=U9e4r
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ENGS401-05-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: unclassified — Activity 5B — see EN
+     - <h4>Judge’s scorecard</h4>
+     + <h4>The judging</h4>
+     + <h5>Judge 1 – Julianne</h5>
+     + <h5>Finding the mean</h5>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: carousel + multiChoiceQuiz (ideally
+     + <h3>Born to dance final battle</h3>
+     + <p>Tu (from our visual text in Lesson 4) always dreamed of becoming a professional dancer and saw the World Hi
+     + <p>We saw the final battle in Lesson 4. If you would like to re-watch this, click here.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ENGS401-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: modal — Activity (inline) — see ENG
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://www.youtube.com/watch?v=U9e4r-WHsdc" target="_blank">https://www.youtube.com/watch?v=U9e4r
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ENGS401-05-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: unclassified — Activity 5B — see EN
+     + … 11 more added
+  ~ ENGS401_6_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="ENGS401-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: unclassified — Activity 6A — see EN
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="ENGS401-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: unclassified — Activity 6A — see EN
+ENGS401: identical 5 / changed 2
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 491 / changed 30 / missing 0 over 104 modules
+CHANGED: BLLR201/BLLR201_1_1.html CEDO105/CEDO105_1_0.html CEDO105/CEDO105_2_0.html CEDO202/CEDO202_0_0.html CEDO301/CEDO301_4_0.html CEDO502/CEDO502_1_1.html CEDR501/CEDR501_2_0.html CEDT501/CEDT501_2_0.html CEDT501/CEDT501_3_1.html CEDT501/CEDT501_5_1.html CEDT501/CEDT501_8_0.html CEDW501/CEDW501_2_0.html CEDW501/CEDW501_5_0.html CHFUN04/CHFUN04_0_0.html CHFUN05/CHFUN05_0_0.html CHFUN06/CHFUN06_0_0.html CHFUN07/CHFUN07_0_0.html ENFUN01/ENFUN01_0_0.html ENFUN08/ENFUN08_0_0.html ENFUN09/ENFUN09_0_0.html ENGC202/ENGC202_1_0.html ENGI102/ENGI102_2_0.html ENGI301/ENGI301_2_0.html ENGI302/ENGI302_5_0.html ENGI303/ENGI303_3_0.html ENGJ201/ENGJ201_5_0.html ENGR101/ENGR101_7_0.html ENGR201/ENGR201_4_0.html ENGS401/ENGS401_5_0.html ENGS401/ENGS401_6_0.html

@@ -1,0 +1,657 @@
+AGH1001: identical 6 / changed 0
+  ~ AGH1002_1_0.html: -1 +8
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Alluvial soil which is formed t
+     + <p>When the Māori people arrived in New Zealand during the late 13th century they discovered a land that was v
+     + <h3>Soils as a finite resource</h3>
+     + <p>Soils also take a long time to form. There are two key processes, weathering and the addition of organic ma
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+  ~ AGH1002_5_0.html: -1 +18
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: hover definition: when nutrient
+     + <p>Two chemical properties are impacted by the amount of nutrients in soil:</p>
+     + <li><b>Nutrient Retention</b>: how well the soil holds on to nutrients</li>
+     + <ol>
+     + <li><b>Nutrient Status</b>: what nutrients are present in the soil.</li>
+     + </ol>
+     + <p>Soils that have fast drainage usually have low nutrient retention. This is because nutrients are dissolved,
+     + <p>Nutrient status is impacted by a variety of factors. As plants take up nutrients and use them for growth th
+     + <h3>Types of nutrients.</h3>
+     + <p>There are two types of nutrients in soil.</p>
+     + <p>Macronutrients are needed in large amounts and are essential for plant growth.</p>
+     + <p>Micronutrients, or trace elements, are needed in small amounts to maintain plant health.</p>
+     + <ol>
+     + </ol>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+AGH1002: identical 5 / changed 2
+  ~ AGH1003_1_0.html: -11 +25
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Before Europeans arrived, Māori hunted the moa bird to extinction and burnt large areas of forest.</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>European settlers have also had an impact on the New Zealand environment including through increased levels
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Note to designer: Can we have a
+     + <p>For agricultural production systems, the benefit on production is slightly more complicated. The link, or c
+     + <p>Management Practices improve the soil quality ie: increasing nutrients, adding organic matter, increasing w
+     + <p>This increases pasture (grass) or crop growth (e.g. turnips, kale, plantain, maize)</p>
+     + <p>Increased pasture and crop growth mean more feed is avalibale for livestock and it is off a better qiality.
+     + <h3>Soil and Kaitiakitanga</h3>
+     + <p>Kaitiakitanga means guardianship and protection and is a way of managing the environment, including soil, b
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>A kaitaiki is a guardian and could be a person or group (such as an iwi or hapu) who are responsible for ca
+     + <p>Maori world view is based on the idea that there is a deep connection between humans and the natural world.
+     + <p>Humans have always had an impact on the environment which they live in.</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th>Before Europeans arrived, Māori hunted the moa bird to extinction and burnt large areas of forest.</th>
+     + </tr>
+     + <tr>
+     + <td></td>
+     + <td>European settlers have also had an impact on the New Zealand environment including through increased level
+     + … 5 more added
+  ~ AGH1003_2_0.html: -133 +126
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="AGH1003-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Activtiy: Embedded]</p>
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: carousel — Activity (inline) — see A
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th>Carrying out soil tests to ensure that only nutrients needed by the plants are added through fertiliser.</
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td>Using technology such as soil probes to apply irrigation at times when the soil requires it. This will all
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td>Irrigating a little bit often in sandy soils.</td>
+     - </tr>
+     - </table>
+     - </div>
+     - <p>Irrigation and biological properties of soil</p>
+     - <p>One of the main reasons water is needed in soil is to allow for the survival of microoganisms like earthwor
+     - <p>This is why earthworms come to the surface after heavy rain – to escape from the water that is between the 
+     - <p>You may remember from the previous module but earthworms play a vital role in soils as they break down orga
+     - <p>Think about organic matter like a pinata with lollies on the inside (the lollies are the nutrients). You ca
+     - <p>Adding water through irrigation to very dry soils will improve the number of <b>microorganisms</b> in the s
+     - <p>Irrigation will have no, or minimal impact, on the level of organic matter or pests and diseases in the soi
+     - <p>Revisit this list from earlier in the lesson. Select the soil properties which are altered by irrigation.</
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Temperature</th>
+     - <th></th>
+     - </tr>
+     - <tr>
+     - … 93 more removed
+     + <div class="row carousel">
+     + <div class="col-md-12 col-12 viewer">
+     + <div class="item">
+     + <div class="carousel-caption">
+     + <p>Carrying out soil tests to ensure that only nutrients needed by the plants are added through fertiliser.</p
+     + <div class="item">
+     + <div class="carousel-caption">
+     + <p>Using technology such as soil probes to apply irrigation at times when the soil requires it. This will allo
+     + </div>
+     + <div class="item">
+     + <div class="carousel-caption">
+     + <p>Irrigating a little bit often in sandy soils.</p>
+     + </div>
+     + </div>
+     + <h4>Irrigation and biological properties of soil</h4>
+     + <p>One of the main reasons water is needed in soil is to allow for the survival of microoganisms like earthwor
+     + <p>This is why earthworms come to the surface after heavy rain – to escape from the water that is between the 
+     + <p>You may remember from the previous module but earthworms play a vital role in soils as they break down orga
+     + <p>Think about organic matter like a pinata with lollies on the inside (the lollies are the nutrients). You ca
+     + <p>Adding water through irrigation to very dry soils will improve the number of <b>microorganisms</b> in the s
+     + … 106 more added
+  ~ AGH1003_3_0.html: -24 +43
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Harvesting plants. When the plants absorb the nutrients for growth these are transferred out of the soil an
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Leaching which occurs when the plant roots can no longer reach the nutrients in the soil. Over application 
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>When the pH of the soil becomes to acidic and the nutrients which are present in the soil are unable to be 
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Yellowing leaves due to low nitrogen levels in soil.</p>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="AGH1003-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="AGH1003-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="AGH1003-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: carousel — Activity (inline) — see A
+     + <th></th>
+     + <th>Harvesting plants. When the plants absorb the nutrients for growth these are transferred out of the soil a
+     + <tr>
+     + <td></td>
+     + <td>Leaching which occurs when the plant roots can no longer reach the nutrients in the soil. Over application
+     + </tr>
+     + <tr>
+     + <td></td>
+     + <td>When the pH of the soil becomes to acidic and the nutrients which are present in the soil are unable to be
+     + </tr>
+     + <p>When soils become low in nutrients it can have a negative impact on the growth rate of plants and the quali
+     + <p>For example, nitrogen is responsible for leaf health and aids in the production of chlorophyll. When the so
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + … 23 more added
+AGH1003: identical 6 / changed 3
+  ~ AGH1004_3_0.html: -0 +6
+     + <h3>What is GDD?</h3>
+     + <p>GDD stands for Growing Degree Days and is a term used to measure how warm or cool the weather is over a cer
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ AGH1004_4_0.html: -62 +31
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Sandy</p>
+     - <p>Silt</p>
+     - <p>Clay</p>
+     - <p>Loam</p>
+     - <div class="item">
+     - <h4>Northland</h4>
+     - <div class="carousel-caption">
+     - <p>Waikato</p>
+     - <p>Bay of Plenty</p>
+     - <p>Taranaki</p>
+     - <p>Wellington</p>
+     - <p>Nelson</p>
+     - <p>Marlborough</p>
+     - <p>West Coast</p>
+     - <p>Canterbury</p>
+     - <p>Otago</p>
+     - <p>Southland</p>
+     - </div>
+     - <h4>Auckland</h4>
+     - <div class="carousel-caption">
+     - <p>Waikato</p>
+     - <p>Bay of Plenty</p>
+     - <p>Gisbourne</p>
+     - <p>Manawatu-Wanganui</p>
+     - <p>West Coast</p>
+     - <p>Canterbury</p>
+     - <p>Southland</p>
+     - </div>
+     - <h4>Auckland</h4>
+     - <div class="carousel-caption">
+     - <p>Waikato</p>
+     - <p>Gisbourne</p>
+     - <p>Taranaki</p>
+     - <p>Manawatu-Wanganui</p>
+     - <p>Canterbury</p>
+     - <p>Otago</p>
+     - <p>Southland</p>
+     - </div>
+     - … 22 more removed
+     + <p>Flat land tends to contain deeper soil. Steep land has very thin layers of soil on it. This is due to wind 
+     + <h3>Soil in Each Region</h3>
+     + <p>Every region, from Northland to Southland has specific types of soil that enable certain crops to be grown.
+     + <p>Here is a colour coded list of the types of soils found in each region:</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Sandy</th>
+     + <th>Silt</th>
+     + <th>Clay</th>
+     + <th>Loam</th>
+     + </tr>
+     + <tr>
+     + <td>Northland / Waikato / Bay of Plenty / Taranaki / Wellington / Nelson / Marlborough / West Coast / Canterbu
+     + <td>Auckland / Waikato / Bay of Plenty / Gisbourne / Manawatu-Wanganui / West Coast / Canterbury / Southland</
+     + <td>Auckland / Waikato / Gisbourne / Taranaki / Manawatu-Wanganui / Canterbury / Otago / Southland</td>
+     + <td>Auckland / Waikato / Bay of Plenty / Gisbourne / Hawke’s Bay / West Coast / Canterbury / Otago / Southland
+     + </tr>
+     + <tr>
+     + <td>Note: Sandy soils are often associated with coastal regions, riverbanks, and areas influenced by sediment 
+     + … 11 more added
+  ~ AGH1004_6_0.html: -0 +9
+     + <p>Let’s look more closely at an example of how consumer demand has changed the way land is used over time. In
+     + <p>Watch this video to see how wool use has declined over time.</p>
+     + <h3>Land Use Changes Over Time</h3>
+     + <p>Here is a graph showing how land use is changing over time. This graph tracks land use from 1990–2016 in th
+     + <p>Use the graph to order the agricultural products as increased, no change or decreased use of land from 1990
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+AGH1004: identical 4 / changed 3
+  ~ AGH1005_2_0.html: -1 +19
+     - <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Amanda Griffiths: Check the numbering 
+     + <h3>Parts of a Plant</h3>
+     + <p>Let’s take a closer look at the parts of a plant.</p>
+     + <p>Plants have 4 basic organs or systems:</p>
+     + <li>Root system – absorbs nutrients and water and supports the plant.</li>
+     + <li>Shoot system – carries nutrients to the leaves.</li>
+     + <li>Reproductive system – flowers enable fruits and seeds to form and be dispersed.</li>
+     + <li>Vascular system – the tissues and cells that transport nutrients around the plant.</li>
+     + <p>Plant parts all work together to help the plant grow and reproduce. There are 2 types of plant structures:<
+     + <li><b>External</b> plant structures: parts that are on the outside of the plant, such as the leaves, stem, fl
+     + <li><b>Internal</b> plant structures: these are the cell-like tissue structures that help the plant to grow an
+     + <h4>Here is a description of the main <b>external</b> plant structures:</h4>
+     + <ol>
+     + </ol>
+     + <ol>
+     + </ol>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ AGH1005_3_0.html: -1 +19
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1, 2, 3, 5.</p>
+     + <p>Why do you think these factors are important?</p>
+     + <p>Here are several reasons that may be important for horticultural production. Tick the reasons that you thin
+     + <p><b>Reason:</b> Tick ✔</p>
+     + <li>Supporting higher crop yield within agriculture and horticulture.□</li>
+     + <ol>
+     + <li>Ensuring plant species remain resilient and sustainable for future crops.□</li>
+     + </ol>
+     + <ol>
+     + <li>Creating greater productivity over seasons of cropping.□</li>
+     + </ol>
+     + <ol>
+     + <li>It makes the environment toxic to plants. □</li>
+     + </ol>
+     + <ol>
+     + <li>It helps to regulate carbon dioxide levels in the Earth’s atmosphere.□</li>
+     + </ol><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1, 2, 3, 5.</p>
+     + </div>
+     + <ol>
+     + </ol>
+  ~ AGH1005_4_0.html: -0 +2
+     + <p>The impact of these factors on horticultural production can mean the difference between crop success and fa
+     + <p>This video of stomata “breathing” is fascinating to watch. Next time you walk past a plant, consider the ti
+  ~ AGH1005_5_0.html: -33 +52
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Temperature:</b> Elevated temperatures increase the kinetic energy of water molecules, leading to faster
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Light Intensity:</b> Intense sunlight stimulates the opening of stomata for photosynthesis, leading to i
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Humidity:</b> Dry air can absorb more water vapour, this enhances the movement of water from the plant t
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Wind:</b> Wind can remove water vapour near the leaf surface, maintaining a lower concentration of water
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Leaf Structure:</b> Some plants have adaptations in leaf structure, such as thick waxy cuticles or small
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Hydrated Soil:</b> Good soil moisture ensures a continuous water supply for transpiration. Plants in wel
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: humidity, temperature,
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="AGH1005-05-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="AGH1005-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: humidity, temperature, stron
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: carousel (+ captions) — Activity (i
+     + <th><b>Temperature:</b> Elevated temperatures increase the kinetic energy of water molecules, leading to faste
+     + <td><b>Light Intensity:</b> Intense sunlight stimulates the opening of stomata for photosynthesis, leading to 
+     + <td><b>Humidity:</b> Dry air can absorb more water vapour, this enhances the movement of water from the plant 
+     + <td><b>Wind:</b> Wind can remove water vapour near the leaf surface, maintaining a lower concentration of wate
+     + <td><b>Leaf Structure:</b> Some plants have adaptations in leaf structure, such as thick waxy cuticles or smal
+     + <td><b>Hydrated Soil:</b> Good soil moisture ensures a continuous water supply for transpiration. Plants in we
+     + <p>Factors that affect the rate of transpiration are:Tick ✔</p>
+     + <ol>
+     + <li>Humidity □</li>
+     + <li>Soil □</li>
+     + <li>Temperature □</li>
+     + <li>Strong winds □</li>
+     + <li>Sunlight □</li>
+     + </ol>
+     + <p>The better the rates of transpiration for plants the more likely growth rates, budding, flowering, fruiting
+     + … 32 more added
+  ~ AGH1005_6_0.html: -0 +1
+     + <p>This can be more fully understood in the following video that highlights the process of nutrient cycling.</
+  ~ AGH1005_7_0.html: -0 +7
+     + <h3>Plant Defences</h3>
+     + <p>Plants often use a combination of physical and chemical defenses. The type and extent of these defenses can
+     + <p>Using the information from the video, drag and drop the plant defences below into their correct category:</
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+AGH1005: identical 3 / changed 6
+  ~ AGH1006_1_0.html: -0 +1
+     + <p>By integrating these practices, food growers can demonstrate manaakitanga and kaitiakitanga by prioritising
+  ~ AGH1006_2_0.html: -1 +9
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: hover definition: a detached sh
+     + <p>There are others but these are the main ways growers propagate plants for the next crop to be grown. This l
+     + <h3>Maramataka and Propagation</h3>
+     + <p>The Maramataka calendar is a series of lunar (moon) stages from new or no moon to full moon. For Māori it i
+     + <p>This video will provide an explanation of how this works.</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+  ~ AGH1006_5_0.html: -0 +109
+     + <p>The main reasons why growers utilise these methods include:</p>
+     + <ul>
+     + <li>improved fruit size and quality, and developing a framework so the plant gets the maximum amount of light 
+     + </ul>
+     + <ul>
+     + <li>makes plants easier to manage and maintains the size and shape of the plant</li>
+     + </ul>
+     + <ul>
+     + <li>improved flower appearance and size and protects plants from damage.</li>
+     + </ul>
+     + <h3>Plant Support and Staking</h3>
+     + <ul>
+     + <li>Plants like grapes, kiwifruit, climbing roses, or certain fruit trees can be trained to grow along arbours
+     + <li>protects them from the weather</li>
+     + <li>to encourage even ripening of fruit for example, tomatoes</li>
+     + <li>to improve the shape so the plants are easier to manage</li>
+     + <li>helps them grow into the space where they&#39;re needed</li>
+     + <li>holds leaves up to the light to increase the amount of photosynthesis taking place</li>
+     + <li>gives bees and other insects better access to flowers during pollination.</li>
+     + </ul>
+     + … 89 more added
+  ~ AGH1006_6_0.html: -0 +13
+     + <h3>Weed Identification</h3>
+     + <p>There are over 650 species of weeds that are unwanted according to The Department of Conservation (DOC) in 
+     + <li>it allows for targeted and effective weed control measures</li>
+     + <li>enables timely intervention to prevent them from competing with crops for resources</li>
+     + <li>helps in monitoring and managing herbicide resistance</li>
+     + <li>reduces competition between weeds and crops, resulting in improved crop quality.</li>
+     + <p>Here are some common crop weeds:</p>
+     + <ul>
+     + </ul>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+AGH1006: identical 6 / changed 4
+  ~ AGH1007_2_0.html: -0 +1
+     + <p><b>Ruminant</b> animals have four chambers to their stomach and as their main form of digestion is microbia
+  ~ AGH1007_3_0.html: -1 +13
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Summary]</p>
+     + <ul>
+     + <li>Monogastrics have one stomach and mainly digest food through chemical digestion</li>
+     + </ul>
+     + <ul>
+     + <li>Each organ in the digestive system as a key role in the digestion, or absorption of food</li>
+     + </ul>
+     + <ul>
+     + <li>It is important animals increase the surface area of their feed as much as possible as it menas feed diges
+     + </ul>
+     + <ul>
+     + <li>Chickens and horses are monogastrics but have variations in their monogastric digestive system.</li>
+     + </ul><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Summary]</p>
+     + </div>
+  ~ AGH1007_4_0.html: -0 +1
+     + <p>The rest of the digestion in ruminants is very similar to monogastrics. Chemical digestion continues in the
+AGH1007: identical 7 / changed 3
+  ~ AGH1008_1_0.html: -0 +6
+     + <h4>Manaakitanga and supplying food</h4>
+     + <p>Manaakitanga can also be applied in the care that farmers show towards the people of Aotearoa New Zealand, 
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+AGH1008: identical 9 / changed 1
+  ~ AGH1009_3_0.html: -1 +21
+     - <h3>Overstocking</h3>
+     + <h3>What causes poor soil quality?</h3>
+     + <p>Over time, some agricultural and horticultural practices have had a negative impact on soil quality. Unders
+     + <p>This next section will explore some of the ways primary production in New Zealand has a negative impact on 
+     + <h4>] Clearing of hill country</h4>
+     + <p>When the first people arrived in New Zealand, the land was covered in native forest and bush. As the need f
+     + <p>The consequences of this were not seen for many years.</p>
+     + <p>When an area of soil is covered in bush it is protected from wind and rain, which helps prevent erosion.</p
+     + <p>Click on the parts of the image to find out how they protect the soil.</p>
+     + <h4>Overstocking</h4>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Agrichemicals are often <b>toxic</b> (poisonous) to living organisms, including humans. They can remain in 
+     + <p>Over time, the levels of some pesticide and herbicide residues can build up in the soil. Residues in the so
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + … 1 more added
+  ~ AGH1009_4_0.html: -1 +3
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: hover definition: Underground l
+     + <p>Understanding why New Zealanders value water is important as it helps recognize our role in protecting fres
+     + <p>But what does good quality and poor-quality water look like? How does it differ?</p><p class="cv2-note" sty
+     + </div>
+  ~ AGH1009_5_0.html: -5 +32
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>This chart shows the greenhouse gas emission in Aotearoa New Zealand. As you can see, carbon dioxide and me
+     - </div>
+     - </div>
+     + <h3>The greenhouse effect</h3>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/VYMjSule0Bw" loading="lazy" title="YouTube video player" f
+     + <p>Agricultural and horticultural production can contribute to the greenhouse effect through the release of th
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + </tr>
+     + <tr>
+     + <td>This chart shows the greenhouse gas emission in Aotearoa New Zealand. As you can see, carbon dioxide and m
+     + </tr>
+     + </table>
+     + <p>There are three main types of greenhouses gases released by agricultural and horticultural production in Ne
+     + <ul>
+     + <li>Methane.</li>
+     + <li>Nitrous Oxide.</li>
+     + <li>Carbon dioxide.</li>
+     + </ul>
+     + <p>All these gases can have a negative impact on the air by enhancing the greenhouse effect and contributing t
+     + … 12 more added
+  ~ AGH1009_6_0.html: -1 +21
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1. F 2. T 3. T 4. F 5.
+     + <h4>Knowledge c heck:Which of these statements is true?True/False</h4>
+     + <ol>
+     + <li>Cover crops loosen the soil structure.□</li>
+     + <li>Cover crops fix nitrogen into the soil.□</li>
+     + <li>Legumes reduce leaching into the soil.□</li>
+     + <li>Cover crops reduce filtration and aeration.□</li>
+     + <li>When left to decompose, cover crops provide a mulch layer to prevent weeds.□</li>
+     + </ol>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1. F 2. T 3. T 4. F 5. T</p>
+     + <h3>Composting</h3>
+     + <p>Composting is the controlled decomposition of organic matter into nutrient-rich humus. In agriculture, the 
+     + <p>This video explains how one farm is using composting and mulching to nurture their soil ecosystem through t
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + … 1 more added
+  ~ AGH1009_7_0.html: -0 +59
+     + <p>The results of these positive environmental strategies include positive management practices such as:</p>
+     + <ul>
+     + <li>grazing management</li>
+     + </ul>
+     + <ul>
+     + <li>fencing waterways and riparian planting</li>
+     + </ul>
+     + <ul>
+     + <li>precision agriculture with technological tools.</li>
+     + </ul>
+     + <p>These methods are just some of the management practices being used to improve the quality of our water.</p>
+     + <h3>Grazing management</h3>
+     + <p>Grazing management can help reduce the number of pollutants which enter waterways and cause pollution. Over
+     + <p>In winter, when livestock are fed through break fencing (pictured below), this can make run-off into waterw
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>One grazing strategy farmers can use to improve water quality and reduce run off is break-fencing towards w
+     + <p>When farmers graze toward the waterway there is a buffer strip of the pasture or crop between the livestock
+     + <ul>
+     + <li>Reduced levels of nitrogen and phosphorus. This would decrease eutrophication and excessive plant growth a
+     + … 39 more added
+  ~ AGH1009_9_0.html: -0 +12
+     + <h3>Examples of effective management practices in action:</h3>
+     + <h4>Integrated pest management and apples</h4>
+     + <p>Research in recent years has looked at managing insect populations in apples and other pip fruit to reduce 
+     + <p>This video highlights the impact of the apple futures project in reducing the amount of chemical residues i
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+AGH1009: identical 4 / changed 6
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH105: identical 8 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH303: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ANZH404: identical 7 / changed 0
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+ARFUN03: identical 1 / changed 0
+ARFUN04: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+BLL140: identical 1 / changed 0
+BLL141: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+BLL150: identical 1 / changed 0
+BLL151: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL160: identical 1 / changed 0
+BLL161: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL170: identical 1 / changed 0
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL176: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL210: identical 1 / changed 0
+BLL211: identical 3 / changed 0
+BLL212: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL220: identical 1 / changed 0
+BLL221: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL230: identical 1 / changed 0
+BLL231: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+
+TOTAL: identical 357 / changed 28 / missing 0 over 104 modules
+CHANGED: AGH1002/AGH1002_1_0.html AGH1002/AGH1002_5_0.html AGH1003/AGH1003_1_0.html AGH1003/AGH1003_2_0.html AGH1003/AGH1003_3_0.html AGH1004/AGH1004_3_0.html AGH1004/AGH1004_4_0.html AGH1004/AGH1004_6_0.html AGH1005/AGH1005_2_0.html AGH1005/AGH1005_3_0.html AGH1005/AGH1005_4_0.html AGH1005/AGH1005_5_0.html AGH1005/AGH1005_6_0.html AGH1005/AGH1005_7_0.html AGH1006/AGH1006_1_0.html AGH1006/AGH1006_2_0.html AGH1006/AGH1006_5_0.html AGH1006/AGH1006_6_0.html AGH1007/AGH1007_2_0.html AGH1007/AGH1007_3_0.html AGH1007/AGH1007_4_0.html AGH1008/AGH1008_1_0.html AGH1009/AGH1009_3_0.html AGH1009/AGH1009_4_0.html AGH1009/AGH1009_5_0.html AGH1009/AGH1009_6_0.html AGH1009/AGH1009_7_0.html AGH1009/AGH1009_9_0.html

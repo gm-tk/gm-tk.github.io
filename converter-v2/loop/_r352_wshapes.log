@@ -1,0 +1,64 @@
+
+===== accordion: bundles 705 built 455 declined 250 (on-corpus 218 b / 162 p / 99 m)
+   7 b   7 p   7 m  T:accordion TBL4x2                                                 XTAS103 p1.0 #4, MXFL202 p4.0 #13
+   6 b   6 p   3 m  T:accordion B*6                                                    MXEX302 p2.0 #3, MXEX302 p3.0 #8
+   5 b   3 p   3 m  T:accordion TBL1x2                                                 XTAS103 p4.0 #28, ENFUN04 p0.0 #4
+   5 b   1 p   1 m  T:accordion TBL1x1                                                 CEDW501 p2.1 #11, CEDW501 p2.1 #15
+   4 b   4 p   4 m  T:accordion TBL5x2                                                 ENFUN03 p0.0 #1, XMES101 p6.0 #24
+   4 b   2 p   2 m  T:accordion T:None                                                 XDLS501 p2.0 #4, XDLS501 p2.0 #6
+   4 b   3 p   3 m  T:accordion TBL2x2                                                 XMES203 p5.0 #46, ENGS202 p2.0 #7
+   4 b   1 p   1 m  T:accordion T:h3 TBL1x2 T:accordion                                CEDR501 p6.0 #31, CEDR501 p6.0 #32
+   3 b   3 p   3 m  T:accordion B*5                                                    BLL122 p2.0 #7, BLL175 p1.1 #11
+   3 b   3 p   3 m  T:accordion TBL2x1                                                 CEDK102 p0.0 #5, AGH1006 p2.0 #4
+   3 b   2 p   2 m  T:accordion T:h4                                                   HIS1005 p5.0 #14, HIS1005 p5.0 #15
+   3 b   3 p   1 m  T:accordion T:h4 T:mtk quiz T:body B*3                             ENG1004 p0.0 #2, ENG1004 p1.0 #7
+   3 b   3 p   1 m  T:accordion T:h4 T:body T:None T:h3 T:body*2 B*12 nested T:accordion ENG1004 p0.0 #5, ENG1004 p1.0 #10
+   2 b   2 p   2 m  T:accordion T:video T:accordion                                    EXIP901 p5.0 #12, ENGC101 p2.0 #5
+
+===== flipCard: bundles 484 built 269 declined 215 (on-corpus 174 b / 141 p / 104 m)
+   9 b   9 p   4 m  T:flip card TBL3x3                                                 BLL226 p1.0 #3, XTAS103 p4.0 #30
+   8 b   8 p   8 m  T:flip card TBL4x4                                                 MXEO301 p3.0 #23, MXFU301 p1.0 #2
+   6 b   6 p   6 m  T:flip card                                                        CHFUN05 p0.0 #19, SSFUN03 p0.0 #10
+   6 b   2 p   2 m  T:flip card T:h3                                                   MXEO201 p4.0 #5, XGF9002 p0.0 #3
+   5 b   4 p   4 m  T:flip card TBL4x3                                                 TEDC402 p6.0 #77, TWHA906 p0.0 #10
+   4 b   4 p   4 m  T:flip card TBL2x3                                                 HPRE203 p1.0 #2, ENGJ403 p3.0 #12
+   3 b   2 p   2 m  T:flip card TBL2x4*2                                               ENFUN08 p0.0 #1, TEFUN03 p0.0 #2
+   3 b   3 p   3 m  T:flip card TBL1x3                                                 XMES101 p7.0 #28, CEDR501 p5.0 #28
+   3 b   2 p   2 m  T:flip card T:image                                                SSFUN07 p3.0 #9, XGF9003 p1.1 #17
+   3 b   1 p   1 m  T:flip card T:h3 T:image                                           OSAI401 p3.0 #20, OSAI401 p3.0 #21
+   2 b   2 p   2 m  T:flip card TBL13x4                                                BLL237 p1.0 #1, BLL236 p1.0 #1
+   2 b   2 p   2 m  T:flip card*9                                                      BLL245 p1.0 #2, BLL251 p1.0 #1
+   2 b   2 p   1 m  T:flip card T:video T:flip card T:video T:flip card                HES1005 p1.0 #2, HES1005 p3.0 #4
+   2 b   2 p   2 m  T:flip card TBL4x5                                                 OSBY401 p1.0 #3, OSBY301 p1.0 #4
+
+===== modal: bundles 359 built 202 declined 157 (on-corpus 146 b / 90 p / 56 m)
+  11 b   7 p   6 m  T:modal                                                            ENGJ402 p1.0 #4, ENGJ402 p3.0 #10
+  10 b   5 p   5 m  T:modal*4 B T:modal*2 T:video BU T:modal*6 T:video BU T:button     BLL150 p0.0 #12, BLL150 p0.0 #17
+   7 b   5 p   1 m  T:modal B T:modal B T:modal B T:modal B T:modal                    XGF9004 p9.0 #35, XGF9004 p9.0 #37
+   5 b   5 p   3 m  TBL1x2                                                             ENFUN03 p0.0 #6, ENGI401 p8.0 #22
+   5 b   4 p   1 m  B T:modal B T:modal B T:modal B T:modal B                          XGF9004 p10.0 #40, XGF9004 p12.0 #47
+   5 b   1 p   1 m  B T:modal B T:modal B T:modal                                      XGF9002 p4.0 #20, XGF9002 p4.0 #21
+   4 b   1 p   1 m  T:modal TBL1x3 T:modal T:image T:modal T:body T:None B T:h5        EXPFUN05 p0.0 #12, EXPFUN05 p0.0 #17
+   3 b   3 p   3 m  T:modal TBL1x2                                                     ENGS301 p2.0 #3, ENGS401 p1.0 #3
+   3 b   3 p   3 m  T:modal*4 B T:modal*2 T:video BU T:modal*2 T:video BU T:modal*4    BLL170 p0.0 #3, BLL210 p0.0 #6
+   2 b   2 p   2 m  TBL2x2                                                             ENGI401 p6.0 #15, ENGS301 p2.0 #5
+   2 b   2 p   2 m  T:modal T:drag and drop TBL6x2                                     OSSC301 p3.0 #9, OSSC401 p4.0 #19
+   2 b   2 p   2 m  T:modal T:None                                                     ENGI103 p3.0 #10, OSOH101 p2.0 #20
+   2 b   1 p   1 m  T:modal T:audio T:body B*4                                         HES1006 p7.0 #10, HES1006 p7.0 #13
+   2 b   2 p   1 m  T:modal T:h3 T:body T:modal T:h3 T:body T:modal T:h3 T:body        MXDI101 p1.2 #2, MXDI101 p1.4 #6
+
+===== tabs: bundles 122 built 46 declined 76 (on-corpus 70 b / 61 p / 39 m)
+   2 b   2 p   2 m  T:tabs TBL1x2                                                      CEDO501 p3.1 #17, XMES103 p3.0 #24
+   2 b   2 p   2 m  T:tabs T:tab n*5                                                   CEDO301 p0.0 #1, CEDW101 p0.0 #1
+   2 b   1 p   1 m  T:tabs TBL3x2                                                      ENFUN01 p0.0 #25, ENFUN01 p0.0 #26
+   2 b   2 p   2 m  T:tabs                                                             PES1008 p7.0 #6, PHE1003 p7.0 #13
+   1 b   1 p   1 m  T:tabs T:image T:body B*4 BU B T:tabs T:image T:None               ANZH404 p2.0 #2
+   1 b   1 p   1 m  T:tabs T:image*2 T:video T:None                                    ANZH404 p3.0 #5
+   1 b   1 p   1 m  T:tabs T:tab n TBL1x4 T:tab n TBL1x4 T:tab n TBL1x4                CEDO501 p8.0 #30
+   1 b   1 p   1 m  T:tabs T:tab n*5 T:h2                                              CEDW201 p0.0 #1
+   1 b   1 p   1 m  T:tabs T:tab n T:image T:body                                      HES1005 p6.0 #9
+   1 b   1 p   1 m  T:tabs T:external link T:image                                     HIS1002 p5.0 #5
+   1 b   1 p   1 m  T:tabs B T:None B T:None B T:None B T:drag and drop                HIS1002 p13.0 #15
+   1 b   1 p   1 m  T:tabs TBL3x4*2                                                    OSOH201 p1.0 #1
+   1 b   1 p   1 m  T:tabs TBL2x3                                                      PES1004 p7.0 #5
+   1 b   1 p   1 m  T:tabs T:tab n T:h2 T:body B*8 T:None TBL4x3 T:tab n               PES1004 p9.0 #7

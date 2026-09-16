@@ -1712,7 +1712,8 @@ class Config {
 	// label dropped; the overview tab's labels <h5> too; a new protected verifier _verify_menulabels.cjs; FULL regeneration.
 	// ROUND 350 (260619.21): the dragAndDrop build kickoff, shape 1 — the image-pair table builds the KB 03B images form; the 03B button row on every built dragAndDrop (Chris's D10-3).
 	// ROUND 351 (260619.22): the dragAndDrop MEMBERS rule (a built widget never discards the bundle's other members) + the kickoff's shape 2 — the clean category-sort table builds the KB 03B column layout.
-	static AppVersion = "260619.22";
+	// ROUND 352 (260619.23): a built carousel never discards the writer's words — a section heading after the slide table ends the carousel; the table-slides path keeps its leading / trailing paragraphs or declines.
+	static AppVersion = "260619.23";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

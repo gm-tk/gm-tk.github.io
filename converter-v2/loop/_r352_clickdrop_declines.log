@@ -1,0 +1,53 @@
+clickDrop bundles 810 built 244 declined 566 declined on-corpus 533
+
+== by deciding guard (decideBranch:decideLine decideWhy)
+ 219 b  137 p  87 m  clickDropItems:9694 if (!items)
+ 111 b   58 p  31 m  clickDropItems:7745 if (!items)
+  93 b   19 p   7 m  clickDropItems:7753 if (!built)
+  58 b   24 p  18 m  clickDropItems:9706 if (!built)
+  38 b   27 p  21 m  clickDropItems:9690 if (!parts)
+  35 b   18 p  12 m  clickDropItems:7741 if (!parts)
+   5 b    5 p   4 m  clickDropItems:9708 if (this.#accLeakGuard(html, cfg))
+   3 b    3 p   3 m  clickDropItems:9696 if (items.list.length < floor)
+   2 b    2 p   2 m  clickDropItems:7747 if (items.list.length < floor)
+   2 b    2 p   2 m  clickDropItems:7755 if (this.#accLeakGuard(html, cfg))
+
+== by shape
+ 166 b   39 p  23 m  no-table: prose/other (black x0, ownTags 1, heads 0)
+  44 b    9 p   4 m  no-table: own tag with labels x2
+  28 b   19 p  11 m  no-table: bare own tag x2
+  21 b    2 p   2 m  no-table: prose/other (black x1, ownTags 1, heads 1)
+  19 b    4 p   4 m  no-table: prose/other (black x1, ownTags 1, heads 0)
+  18 b   11 p   7 m  no-table: own tag with labels x5
+  18 b    7 p   6 m  no-table: own tag with labels x6
+  16 b   11 p  10 m  MULTI-TABLE x2
+  14 b    5 p   4 m  table 1x1
+  13 b    9 p   9 m  table 4x2
+  12 b    9 p   9 m  table 2x3
+  12 b    4 p   4 m  no-table: prose/other (black x0, ownTags 1, heads 1)
+  11 b    2 p   2 m  no-table: prose/other (black x2, ownTags 1, heads 1)
+  10 b    5 p   5 m  table 2x2
+  10 b    5 p   5 m  table 3x3
+   8 b    7 p   5 m  table 2x5
+   7 b    4 p   4 m  no-table: own tag with labels x3
+   7 b    4 p   4 m  no-table: bare own tag x3
+
+== by feature set
+ 117 b   22 p  10 m  has-modifier media:none no-table variant:clickDrop
+  53 b   37 p  28 m  media:none member:table variant:clickDrop
+  40 b   12 p   9 m  media:none no-table variant:clickDrop
+  31 b   16 p   9 m  has-modifier media:none member:table variant:clickDrop
+  19 b    6 p   6 m  has-modifier media:none member:black no-table variant:clickDrop
+  19 b   15 p   7 m  extraTypes:clickDrop has-modifier media:none no-table variant:clickDrop
+  19 b    6 p   6 m  media:none member:black no-table variant:clickDrop
+  14 b    1 p   1 m  has-modifier media:video member:black no-table variant:clickDrop
+  12 b    4 p   3 m  extraTypes:clickDrop media:video member:black no-table variant:clickDrop
+  11 b    7 p   6 m  media:istock member:table
+   9 b    8 p   6 m  media:none member:table
+   8 b    1 p   1 m  has-modifier media:video no-table variant:clickDrop
+   8 b    1 p   1 m  media:video member:black no-table variant:clickDrop
+   6 b    1 p   1 m  media:video member:black member:instruction-span no-table variant:clickDrop
+   6 b    1 p   1 m  has-modifier media:video member:black member:instruction-span no-table variant:clickDrop
+   6 b    3 p   1 m  extraTypes:clickDrop media:istock no-table variant:clickDrop
+   5 b    3 p   2 m  media:none member:instruction-span no-table variant:clickDrop
+   4 b    2 p   2 m  extraTypes:clickDrop+reorder media:none member:black member:instruction-span no-table variant:clickDrop

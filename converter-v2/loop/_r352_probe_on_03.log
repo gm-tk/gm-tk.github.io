@@ -1,0 +1,1540 @@
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+  ~ OSSM401_2_0.html: -0 +6
+     + <p>One of the most concerning impacts of social media is its effect on teen mental health. These include incre
+     + <h4>Body image</h4>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+OSSM401: identical 4 / changed 1
+  ~ PES1001_2_0.html: -0 +1
+     + <p><b>Earthquakes:</b> Sometimes, the edges of the tectonic plates get stuck due to friction. When the plates 
+PES1001: identical 9 / changed 1
+  ~ PES1002_1_0.html: -0 +1
+     + <p><b>How humans have affected the environment in NZ</b></p>
+  ~ PES1002_4_0.html: -0 +1
+     + <p>Ki uta, ki tai, from the mountains to the sea: The effects of climate change in Aotearoa:</p>
+PES1002: identical 9 / changed 2
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+  ~ PES1005_10_0.html: -21 +26
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=springtide" alt="" /><!-- <img class="img-fluid"
+     - <div class="carousel-caption">
+     - <p>spring tide screen capture snip from</p>
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=springtide" alt="" /><!-- <img class="img-fluid"
+     - <div class="carousel-caption">
+     - <p>neap tide screen capture snip from</p>
+     - </div>
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=springtide" alt="" /><!-- <img class="img-fluid"
+     - <div class="carousel-caption">
+     - <p>spring tide screen capture snip from</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p><b>Spring tides</b> occur when the gravitational forces of the Sun and the Moon are aligned. If the Sun, Ea
+     - <p><b>Neap tides</b> occur when the gravitational forces of the Sun and the Moon are at right angles to each o
+     - <p><b>King tides</b> are the highest tides that occur when the gravitational forces of the Sun and Moon are co
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="PES1005-10-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: carousel — Activity (inline) — see P
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] spring tide screen capture snip from <a href="https://oceanservice.noaa.gov/facts/springtide.html
+     + <th>
+     + [image] neap tide screen capture snip from <a href="https://oceanservice.noaa.gov/facts/springtide.html" targe
+     + <th> [image] spring tide screen capture snip from <a href="https://oceanservice.noaa.gov/facts/springtide.html
+     + </tr>
+     + <tr>
+     + <td><b>Spring tides</b> occur when the gravitational forces of the Sun and the Moon are aligned. If the Sun, E
+     + <td><b>Neap tides</b> occur when the gravitational forces of the Sun and the Moon are at right angles to each 
+     + <td><b>King tides</b> are the highest tides that occur when the gravitational forces of the Sun and Moon are c
+     + … 6 more added
+PES1005: identical 11 / changed 1
+  ~ PES1007_2_0.html: -72 +100
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>2nd step: write down the formula</p>
+     - <p><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow><mi>E</mi></mrow><mrow><mi>k</mi></mrow></msub
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>3rd step: replace the letters with their values</p>
+     - <p>Ek = ½ x 62 x 82</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>4th step: calculate</p>
+     - <p>Ek = 1984</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>5th step: write your answer in a sentence</p>
+     - <p>The kinetic energy of the sprinter is 1984 J</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>2nd step: write down the formula</p>
+     - <p><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow><mi>E</mi></mrow><mrow><mi>k</mi></mrow></msub
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>3rd step: replace the letters with their values</p>
+     - <p>Ek = ½ x 77 x 152</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>4th step: calculate</p>
+     - <p>Ek = 8662.5</p>
+     - … 32 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="PES1007-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: carousel (examples as a , adding a w
+     + <div style="font-size: 0.95em">
+     + <p>Example 1: A person with a mass of 62 kg runs at a speed of 8 ms-1 (about 30 km/h). What is their kinetic e
+     + <p>1st step: write down the values from the question m = 62 kg v = 8ms-1 Ek =?</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>2nd step: write down the formula</th>
+     + <th><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow><mi>E</mi></mrow><mrow><mi>k</mi></mrow></msu
+     + </tr>
+     + <tr>
+     + <td>3rd step: replace the letters with their values</td>
+     + <td>Ek = ½ x 62 x 82</td>
+     + </tr>
+     + … 80 more added
+PES1007: identical 11 / changed 1
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_2_0.html: -93 +50
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Image &amp; Link</p>
+     - <p><b>What you might notice about the design features:</b></p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Slide 1 nav button text “Wikipedia”</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.wikipedia.org/**" loading="lazy" title="Video player" frameborder="0" allowfullscreen
+     - <div class="carousel-caption">
+     - <p><b> / </b></p>
+     - <p><b>Layout:</b> very text-heavy and structured. Can feel dense or overwhelming at first.</p>
+     - <p><b>Hierarchy:</b> clear headings and sections make it easy to follow information step-by-step.</p>
+     - <p><b>Typography:</b> highly readable serif fonts designed for long reading.</p>
+     - <p><b>Colour and contrast:</b> minimal colour use – mostly black text on white background (very clear, but not
+     - <p><b>Accessibility:</b></p>
+     - <ul>
+     - <li>strong for readability and screen readers</li>
+     - <li>challenging for ākonga who struggle with large amounts of text.</li>
+     - </ul>
+     - <p><b>Decision:</b> a “practical but not engaging” example.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Slide 2 nav button text “Google Classroom”</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://classroom.google.com/" loading="lazy" title="Video player" frameborder="0" allowfullscree
+     - <div class="carousel-caption">
+     - <p>/</p>
+     - <p><b>Layout:</b> very organised and predictable. Sections like “Stream,” “Classwork,” and “People” are clearl
+     - <p><b>Hierarchy:</b> strong use of headings and cards. Important items (assignments, due dates) stand out.</p>
+     - <p><b>Typography:</b> simple, readable fonts with good spacing. Easy for long reading sessions.</p>
+     - <p><b>Colour and contrast:</b> uses colour sparingly (e.g., class colours) while keeping text high contrast.</
+     - <p><b>Accessibility:</b> generally good, but some ākonga may find the “Stream” cluttered if many posts appear.
+     - <p><b>Decision:</b> a strong “good design” example.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Slide 3 nav button text “Youtube”</p>
+     - <p><b>Layout:</b> grid of thumbnails – visually clear, but very busy.</p>
+     - … 53 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="TEDC401-02-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: https://www.youtube.com/ / https://ww
+     + <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: carousel (external nav or a series 
+     + <p><b>Interfaces: be a ‘design principles’ detective</b></p>
+     + <p>Explore real interfaces and notice design choices.</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th> Image &amp; Link </th>
+     + <th><b>What you might notice about the design features:</b></th>
+     + </tr>
+     + <tr>
+     + <td> Slide 1 nav button text “Wikipedia” </td>
+     + <td><b><a href="https://www.wikipedia.org/" target="_blank">https://www.wikipedia.org/</a></b> / <b><a href="h
+     + <td><b>Layout:</b> very text-heavy and structured. Can feel dense or overwhelming at first. / <b>Hierarchy:</b
+     + </tr>
+     + <tr>
+     + … 30 more added
+TEDC401: identical 7 / changed 1
+  ~ TEDC402_4_0.html: -58 +41
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/fkGCLIQx1MI" loading="lazy" title="YouTube video player" f
+     - <div class="carousel-caption">
+     - <p><b>Computer basics: Understanding operating systems</b> / This video is a short and sweet intro to OS. / (f
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/Y7sCQxnr31Q" loading="lazy" title="YouTube video player" f
+     - <div class="carousel-caption">
+     - <p><b>Operating system (OS) explained in 3 minutes</b> / This video dives a little deeper into OS. / (full vid
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/pVzRTmdd9j0" loading="lazy" title="YouTube video player" f
+     - <div class="carousel-caption">
+     - <p><b>What is an OS as fast as possible</b> / This video provides a concise overview of the core functions of 
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/ijWgUWPt31o" loading="lazy" title="YouTube video player" f
+     - <div class="carousel-caption">
+     - <p><b>Every Operating System Explained in 5 Minutes</b> / Learn about every major operating system in just 5 m
+     - <div class="item">
+     - <h4>Caption:</h4>
+     - <div class="carousel-caption">
+     - <p>You can&#39;t communicate directly with your computer, but that&#39;s where your operating system comes in.
+     - <h4>Caption:</h4>
+     - <div class="carousel-caption">
+     - <p>Think of your OS as the bodyguard for your device – managing your apps, boosting security, and letting you 
+     - <p>“The OS ensures the link between the machine&#39;s hardware resources and the applications running on it.”<
+     - <h4>Caption:</h4>
+     - <div class="carousel-caption">
+     - <p>The core purpose of an OS is as the essential intermediary between your software and the computer&#39;s phy
+     - <h4>Caption:</h4>
+     - <div class="carousel-caption">
+     - <p>This video breaks down 8 OS quickly and simply. It is an educational guide designed to demystify the comple
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (full video 1.30)<br />(full vi
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="TEDC402-04-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="TEDC402-04-05" style="border: 8px s
+     - … 18 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="TEDC402-04-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: carousel — Activity (inline) — see 
+     + <th><b>Computer basics: Understanding operating systems</b> / This video is a short and sweet intro to OS. / <
+     + <th><b>Operating system (OS) explained in 3 minutes</b> / This video dives a little deeper into OS. / <a href=
+     + <th><b>What is an OS as fast as possible</b> / This video provides a concise overview of the core functions of
+     + <th><b>Every Operating System Explained in 5 Minutes</b> / Learn about every major operating system in just 5 
+     + <td> Caption: / You can&#39;t communicate directly with your computer, but that&#39;s where your operating sys
+     + <td> Caption: / Think of your OS as the bodyguard for your device – managing your apps, boosting security, and
+     + <td> Caption: / The core purpose of an OS is as the essential intermediary between your software and the compu
+     + <td> Caption: / This video breaks down 8 OS quickly and simply. It is an educational guide designed to demysti
+     + <p>avatar Tina</p>
+     + <p>Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adult, Adults Only, Beautiful W
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="TEDC402-04-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="TEDC402-04-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + … 21 more added
+TEDC402: identical 10 / changed 1
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+  ~ TWHA902_0_0.html: -38 +63
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Activity 6A: Phase 2 &amp; 3</p>
+     - <p>Activity 6B: Phase 4 &amp; 5</p>
+     - <div class="item">
+     - <h4>Now it is your turn!</h4>
+     - <div class="carousel-caption">
+     - <ol>
+     - <li>Ask someone for feedback on a piece of schoolwork you have been doing. Remember to listen carefully, stay 
+     - <li>Give some feedback using the sandwich technique. For example, your feedback could be for another student o
+     - </ol>
+     - <h4>Now it is your turn!</h4>
+     - <div class="carousel-caption">
+     - <ol>
+     - <li>Ask someone for feedback on a piece of schoolwork you have been doing. Remember to listen carefully, stay 
+     - <li>Give some feedback using the sandwich technique. For example, your feedback could be for another student o
+     - </ol>
+     - <div class="item">
+     - <h4>Checklist</h4>
+     - <div class="carousel-caption">
+     - <p>Which of the following skills did you use while completing your activity?</p>
+     - <ul>
+     - <li>Gave your comments based on what you like and dislike</li>
+     - <li>Aimed to be specific about your feedback.</li>
+     - <li>Started with the positives when giving your feedback.</li>
+     - </ul>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Carousel] [Dev don’t include n
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="TWHA902-00-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="TWHA902-00-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="TWHA902-00-08" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Carousel] [Dev don’t include numbers
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: carousel — Activity (inline) — see T
+     + <ol>
+     + <li><a href="https://www.istockphoto.com/photo/preteen-boy-sits-quietly-while-listening-to-mother-gm1250538309
+     + <li><b><a href="https://www.istockphoto.com/photo/young-woman-relaxes-on-lake-pier-stands-arms-outstretched-gm
+     + <li><b><a href="https://www.istockphoto.com/photo/teenage-girl-meets-with-teacher-or-guidance-counselor-in-sch
+     + <li><b><a href="https://www.istockphoto.com/photo/mother-saying-goodbye-to-daughter-at-school-gm1353484062-428
+     + <li><b><a href="https://www.istockphoto.com/photo/serious-student-thinking-e-learning-in-a-bar-terrace-gm21579
+     + <li><b><a href="https://www.istockphoto.com/photo/student-girl-writing-on-whiteboard-in-classroom-gm1278976982
+     + </ol>
+     + <p>How to <b>give</b> feedback</p>
+     + <p>The sandwich technique is a way to give feedback that makes it easier for the person to hear and accept. It
+     + <ol>
+     + <li><b>Start with a positive comment</b>: Begin by saying something nice about what the person did. This helps
+     + <ol>
+     + <li>Example: “You did a great job on your science project. The presentation was clear and interesting.”</li>
+     + </ol></li>
+     + … 43 more added
+TWHA902: identical 0 / changed 1
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+  ~ TWHA905_0_0.html: -0 +1
+     + <p>From these videos we can see that a special set of questions are asked by social scientists that help them 
+TWHA905: identical 0 / changed 1
+TWHA906: identical 1 / changed 0
+  ~ TWHK901_0_0.html: -0 +6
+     + <h5>What is biomass?</h5>
+     + <p>Our ability to process organic waste into renewable forms of energy is called biomass. We produce millions 
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+TWHK901: identical 0 / changed 1
+  ~ TWHK903_0_0.html: -114 +126
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>social media icons</p>
+     - <ul>
+     - <li><b>social networks</b> (for example, Facebook, Instagram), where users share photos, status updates, and s
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>messaging apps</p>
+     - <ul>
+     - <li><b>messaging apps</b> (for example, WhatsApp, Telegram, Messenger, Snapchat), where people send texts, pic
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>video apps</p>
+     - <ul>
+     - <li><b>video platforms</b> (for example, YouTube, TikTok), where users can upload, watch, and comment on video
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Activity 6A: Phase 2 &amp; 3</p>
+     - <p>Activity 6B: Phase 4 &amp; 5</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>/ • Make a list of your favourite social media apps you like to visit.</p>
+     - <ul>
+     - <li>Make another list of your favourite activities you do away from your apps and devices on a weekend day.</l
+     - <li>Spend the day comparing how long you spend on each of these.</li>
+     - <li>Make them into a chart to show where you spend most of your time.</li>
+     - </ul>
+     - <p>Your chart might look like this:</p>
+     - <p>/ What does this information tell you about how much time you spend on social media?</p>
+     - <p>Portfolio</p>
+     - <p>Go into your favourite tablet, iPad, smart phone or other device and find out your statistics on social med
+     - <p>Compare the data for each day and track how long you spend on each app during the week. Stick to your top 3
+     - <p>/ What does this information tell you about how much time you spend on social media?</p>
+     - <p>Where could you cut down your social media use?</p>
+     - … 74 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="TWHK903-00-05" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team to create infographic with 
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: carousel (+ captions) — Activity (in
+     + <th>social media icons</th>
+     + <th>• <b>social networks</b> (for example, Facebook, Instagram), where users share photos, status updates, and
+     + <td>messaging apps</td>
+     + <td>• <b>messaging apps</b> (for example, WhatsApp, Telegram, Messenger, Snapchat), where people send texts, p
+     + <tr>
+     + <td>video apps</td>
+     + <td>• <b>video platforms</b> (for example, YouTube, TikTok), where users can upload, watch, and comment on vid
+     + </tr>
+     + <p>Social media is a great tool for helping us stay connected. It is important to use it in a balanced way. Wh
+     + <p>This video explains how social media can take over our lives and cause us to compare ourselves to others.</
+     + <p><a href="https://www.youtube.com/watch?v=10LEWqdscvI" target="_blank">https://www.youtube.com/watch?v=10LEW
+     + <p>The number of social media platforms and apps has risen in the past 10 years in New Zealand. Here are some 
+     + <p><a href="https://www.topreviews.co.nz/social-media-statistics-new-zealand/" target="_blank">https://www.top
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 106 more added
+TWHK903: identical 0 / changed 1
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+  ~ XDLS912_2_0.html: -50 +54
+     - <p>dangerous work site</p>
+     - <li>Staying away from danger.</li>
+     - <p>carer giving help</p>
+     - <li>Knowing who to ask for help.</li>
+     - <p>saying no</p>
+     - <li>Saying &quot;no&quot; if something feels wrong.</li>
+     - <p>person blocking out another person</p>
+     - <ul>
+     - <li>Being careful with who we talk to and where we go.</li>
+     - </ul>
+     - <p>counsellor listening</p>
+     - <ul>
+     - <li>Telling a trusted person if you feel scared or unsure.</li>
+     - </ul>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image] dangerous work site<br 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="XDLS912-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <ul>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <ul>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image] busy inner-city road<br
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="XDLS912-02-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="XDLS912-02-03" style="border: 8px s
+     - … 10 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="XDLS912-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image] dangerous work site<br />[Ima
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: carousel (insert) — Activity (inline
+     + <th> [Image] dangerous work site</th>
+     + <th>• Staying away from danger.</th>
+     + <td> [Image] carer giving help</td>
+     + <td>• Knowing who to ask for help.</td>
+     + <td> [Image] saying no</td>
+     + <td>• Saying &quot;no&quot; if something feels wrong.</td>
+     + <td> [Image] person blocking out another person</td>
+     + <td>• Being careful with who we talk to and where we go.</td>
+     + <td> [Image] counsellor listening</td>
+     + <td>• Telling a trusted person if you feel scared or unsure.</td>
+     + <p>Keeping ourselves safe helps us feel happy, safe, and looked after every day. This video will help us under
+     + <p>I choose safety</p>
+     + <p>To be safe we need to:</p>
+     + <ul>
+     + <li>protect ourselves from being hurt</li>
+     + … 34 more added
+  ~ XDLS912_5_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image] supermarket entrance<br
+     + </div>
+     + <p>How did you go? Upload some photos or videos of your grocery visit here.</p><p class="cv2-note" style="colo
+XDLS912: identical 4 / changed 2
+XFUN01: identical 1 / changed 0
+  ~ XFUN02_2_0.html: -1 +13
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team to recreate using adu
+     + <p>These signals let us know it’s time to rest and to start getting ready for bed. When we notice these signal
+     + <ul>
+     + <li><b>Stop</b> – learn to stop what you are doing even if you want to keep going or are in the middle of an a
+     + </ul>
+     + <ul>
+     + <li><b>Settle</b> – put down what you are doing or put away your things, and settle into your bedtime routine.
+     + </ul>
+     + <ul>
+     + <li><b>Sleep!</b> – go to sleep around the same time rather than staying awake with late night activities that
+     + </ul>
+     + <p>Here is a poster you can use to help you.</p>
+     + <p>Let’s explore what these signals look like and practice noticing them in a fun, hands-on way.</p><p class="
+     + </div>
+  ~ XFUN02_5_0.html: -1 +9
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] man using alarm on phon
+     + <p>In this lesson, we will practise setting up alarms and reminders, talk about the best times to use them, an
+     + <h3>Setting alarms and reminders</h3>
+     + <p>You can set an alarm or reminder for any activity. You can choose to do this for activities you would like 
+     + <p>Setting up an alarm or reminder might take time. It can take up to three weeks for a new habit or routine t
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ XFUN02_6_0.html: -0 +14
+     + <p>It’s important to remember that what we do during the day also affects our ability to fall asleep and stay 
+     + <p>We mentioned these things in lesson 1:</p>
+     + <ul>
+     + <li>eat the right foods and drinks – caffeine-free after 12pm</li>
+     + </ul>
+     + <ul>
+     + <li>get exercise during the day</li>
+     + </ul>
+     + <ul>
+     + <li>wake up at the same time every day</li>
+     + </ul>
+     + <ul>
+     + <li>log off screens and devices an hour before bed.</li>
+     + </ul>
+XFUN02: identical 4 / changed 3
+  ~ XGF9001_4_0.html: -0 +7
+     + <h4>Your turn</h4>
+     + <p>Sometimes the hardest moments are the ones that help us grow the most. In this activity, you will think abo
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4 class="goJournal">Go to your journal</h4>
+     + </div>
+     + </div>
+XGF9001: identical 6 / changed 1
+XGF9002: identical 10 / changed 0
+  ~ XGF9003_0_0.html: -3 +45
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="XGF9003-00-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: tabs (insert quizzes in - self-marki
+     + <h3>Key questions</h3>
+     + <li>What do you already know about how the brain works?</li>
+     + <li>What is executive function?</li>
+     + <li>What tools does your brain use to help you stay on task, stay calm, and get things done?</li>
+     + <li>How can learning about your brain help you become a better and more confident learner and problem-solver?<
+     + <p>Executive function is a set of brain skills that help you</p>
+     + <p><b>plan, focus, remember, make decisions, and manage your emotions and behaviour.</b> These include attenti
+     + <p>Choose one of the videos below to learn more. They range from a short, simple explanation to a more complex
+     + <div class="row carousel">
+     + <div class="col-md-12 col-12 viewer">
+     + <div class="item">
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/GjN2xNoxMRE" loading="lazy" title="YouTube video player" f
+     + <div class="item">
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/TSJAI2iNHcs" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <div class="item">
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/ex0M-vPHPr4" loading="lazy" title="YouTube video player" f
+     + … 25 more added
+  ~ XGF9003_1_0.html: -15 +15
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="XGF9003-01-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: multiChoiceQuiz (insert - triggers e
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="XGF9003-01-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dragAndDrop + dragAndDrop (insert - 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="XGF9003-01-03" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: modal — Activity (inline) — see XGF9
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="XGF9003-01-04" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="XGF9003-01-05" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="XGF9003-01-06" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="XGF9003-01-07" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: accordion (x) — Activity (inline) —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="XGF9003-01-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: multiChoiceQuiz (insert - triggers e
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="XGF9003-01-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dragAndDrop + dragAndDrop (insert - 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="XGF9003-01-03" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="XGF9003-01-04" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="XGF9003-01-05" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="XGF9003-01-06" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: modal — Activity (inline) — see XGF
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="XGF9003-01-07" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: accordion (x) — Activity (inline) —
+  ~ XGF9003_1_1.html: -7 +7
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="XGF9003-02-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: flipCard — Activity (inline) — see 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="XGF9003-02-02" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="XGF9003-02-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: modal — Activity (inline) — see XGF
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="XGF9003-02-01" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="XGF9003-02-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: flipCard — Activity (inline) — see 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="XGF9003-02-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: modal — Activity (inline) — see XGF
+  ~ XGF9003_1_2.html: -8 +8
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="XGF9003-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dragAndDrop + dragAndDrop (insert) 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="XGF9003-03-02" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: dragAndDrop + dragAndDrop (insert) 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="XGF9003-03-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="29" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: dragAndDrop — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="XGF9003-03-01" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: dragAndDrop + dragAndDrop (insert) 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="XGF9003-03-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: dragAndDrop + dragAndDrop (insert) 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="XGF9003-03-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: dragAndDrop — Activity (inline) — s
+  ~ XGF9003_1_3.html: -11 +11
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="XGF9003-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: unclassified — Activity 5A — see XG
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="XGF9003-04-02" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: dragAndDrop (insert) — Activity 5D 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="XGF9003-04-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: dropDown — Activity (inline) — see 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="XGF9003-04-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: dropDown (upload to) — Activity 5F 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="XGF9003-04-01" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: unclassified — Activity 5A — see XG
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="XGF9003-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: dragAndDrop (insert) — Activity 5D 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="XGF9003-04-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: dropDown — Activity (inline) — see 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="XGF9003-04-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: dropDown (upload to) — Activity 5F 
+XGF9003: identical 1 / changed 5
+  ~ XGF9004_17_0.html: -0 +7
+     + <p>Below, you will see some flip cards. Each card has a theme – Courage, Success, Natural, A Friend, and Real.
+     + <h4>How to use the cards</h4>
+     + <p>Click on the accordion to explore different ways to use the cards.</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+XGF9004: identical 17 / changed 1
+XGF9006: identical 8 / changed 0
+  ~ XLP01_1_0.html: -39 +68
+     - <p>DS adult playing ball</p>
+     - <ul>
+     - <li>Playing</li>
+     - </ul>
+     - <p>adults eating together</p>
+     - <ul>
+     - <li>Eating</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>special needs adult dressing</p>
+     - <ul>
+     - <li>Getting dressed</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>deaf adult learning</p>
+     - <ul>
+     - <li>Learning</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>mother and daughter reading</p>
+     - <ul>
+     - <li>Sharing stories together</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] DS adult playing ball<b
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="XLP01-01-01" style="border: 8px soli
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] DS adult playing ball<br />[i
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: carousel (= captions) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] DS adult playing ball</th>
+     + <th>• Playing</th>
+     + </tr>
+     + <tr>
+     + <td> [image] adults eating together</td>
+     + <td>• Eating</td>
+     + </tr>
+     + <tr>
+     + … 48 more added
+  ~ XLP01_2_0.html: -24 +68
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="XLP01-02-01" style="border: 8px soli
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: flipCard (with acronym word on the -
+     - <p>Here is the story: Pete the Cat</p>
+     - <p>Match these CAR strategies using the drag and drop boxes to the picture.</p>
+     - <p>C – Oh wow! I love his white shoes!</p>
+     - <p>A – Can you count how many shoes?</p>
+     - <p>R- Let’s count them– 1,2,3,4.</p>
+     - <p>Here is the story: The twin stars of Matariki: Waiti and Waita</p>
+     - <p>Match these CAR strategies using the drag and drop boxes to the picture.</p>
+     - <p>C – They are holding stones</p>
+     - <p>A – Can you see the grey one?</p>
+     - <p>R – Let’s point to the stones together.</p>
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: clickDrop — Activity (inline) — see
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team to create Radio butto
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="XLP01-02-01" style="border: 8px soli
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: flipCard (with acronym word on the -
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: carousel (with labels) — Activity (
+     + <th></th>
+     + <th>Here is the story: [insert video] Pete the Cat / Match these CAR strategies using the drag and drop boxes 
+     + <td></td>
+     + <td>Here is the story: [insert video] The twin stars of Matariki: Waiti and Waita / Match these CAR strategies
+     + <p>Now it’s your turn. Choose a book or online story and practise an example of using the whole <b>CAR</b> str
+     + <p>with a shared story of your choice.</p>
+     + <h3>Print referencing</h3>
+     + <p>We use shared reading to grow our awareness of how print or text comes together to make a story.</p>
+     + <p>We call this <b>print awareness.</b></p>
+     + <p>There are many important pre-reading skills, such as letter recognition, word awareness, and understanding 
+     + <p>Let’s break this down.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="XLP01-02-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + … 48 more added
+  ~ XLP01_3_0.html: -7 +41
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="XLP01-03-01" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dropDown — Activity (inline) — see 
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] danger poison sign<br /
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="XLP01-03-02" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: clickDrop — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="XLP01-03-01" style="border: 8px sol
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: dropDown — Activity (inline) — see 
+     + <p>Photobooks can be useful for teaching new skills – such as how to dress, or how to take the bus. They are g
+     + <h4>Digital books online</h4>
+     + <p>There are many good online digital book sites that can be accessed for free. These are ideal for readers if
+     + <a href="https://monarchreader.com/" target="_blank"><div class="externalButton">Go to website</div></a>
+     + <p><a href="https://storybird.com/read-picture-book" target="_blank">https://storybird.com/read-picture-book</
+     + <h4>Non-fiction books</h4>
+     + <p>Many emergent readers prefer non-fiction books because these books provide clear, factual information and s
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-176485547" alt="Storybook 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-176485547.jpg" alt="Storybook with an Image of N
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="XLP01-03-02" style="border: 8px sol
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: clickDrop — Activity (inline) — see
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Reading corners and cosy corners</h4>
+     + <p>Providing a cosy corner for reading helps create an inviting space that encourages us to read. It can help 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1855412461" alt="Woman Wra
+     + … 21 more added
+  ~ XLP01_4_0.html: -4 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="XLP01-04-01" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: modal (insert boxes) — Activity (in
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] two people sitting oppo
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="XLP01-04-01" style="border: 8px sol
+     + <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: modal (insert boxes) — Activity (in
+     + <p>Making word sounds and letter sounds into games will make the learning of letter sounds and word sounds mor
+     + </div>
+XLP01: identical 1 / changed 4
+  ~ XLP02_0_0.html: -1 +3
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] special needs family ev
+     + <p>There are many opportunities during the day to record our thoughts and feelings about what we experience. T
+     + <p>This module will focus on some key strategies for learning to write.</p><p class="cv2-note" style="color: r
+     + </div>
+XLP02: identical 6 / changed 1
+  ~ XLP03_0_0.html: -1 +4
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] special needs family ev
+     + <p>There are many opportunities during the day to count what we see, hear and touch. This module will focus on
+     + <p><b>We encourage you to try each activity.</b></p>
+     + <p><b>There will be downloadable PDFs to help support your understanding.</b></p><p class="cv2-note" style="co
+     + </div>
+  ~ XLP03_5_0.html: -0 +1
+     + <p>Remember our <b>pre-counting strengths</b>. Model the word “same” with NZ sign language when matching these
+XLP03: identical 4 / changed 2
+  ~ XLP04_1_0.html: -1 +9
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] distressed person<br />
+     + <p>This can affect our <b>behaviour, s</b>ometimes in extreme ways.</p>
+     + <p>When we understand which things disrupt us, then we can change our surroundings to prevent this from happen
+     + <h3>Sensory profile</h3>
+     + <p>Use this list to build a <b>sensory profile</b> and find out what your learner’s sensory needs are.</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+XLP04: identical 4 / changed 1
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+  ~ XMES101_3_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Use your mirror image and colou
+     + <p>Upload photos of your results to the dropbox.</p><p class="cv2-note" style="color: red; font-weight: bold;"
+     + </div>
+XMES101: identical 8 / changed 1
+XMES102: identical 6 / changed 0
+  ~ XMES103_1_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] person holding a ball w
+     + <p>Upload any videos or photos you have of the naming activities you did for your kaiako.</p><p class="cv2-not
+     + </div>
+  ~ XMES103_3_0.html: -72 +67
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>easter egg</p>
+     - <p>Christmas turkey</p>
+     - <p>Diwali sweets</p>
+     - <p>Chinese new year</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Easter eggs</p>
+     - <p>Christmas turkey</p>
+     - <p>Diwali sweets</p>
+     - <p>Chinese dumplings</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Images</p>
+     - <p>Instructions</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Coconut flour</p>
+     - <p><b>You will need:</b></p>
+     - <div class="carousel-caption">
+     - <ul>
+     - <li>1 cup shredded coconut or coconut flour.</li>
+     - <li>2 cups of tapioca or cassava.</li>
+     - <li>¼ cup of dark brown sugar or coconut sugar.</li>
+     - <li>Pinch of salt.</li>
+     - <li>Banana leaves for wrapping or tin foil.</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>mixed ingredients</p>
+     - <p><b>• Mix all ingredients together.</b></p>
+     - <div class="carousel-caption">
+     - <ul>
+     - <li>Wrap mixed ingredients in banana leaves or foil.</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - … 32 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="XMES103-03-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Dev team can you make this into a rot
+     + <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: carousel (+ captions) — Activity 3B
+     + <th> [image] easter egg</th>
+     + <th> [image] Christmas turkey</th>
+     + <th> [image] Diwali sweets</th>
+     + <th> [image] Chinese new year</th>
+     + <td>Easter eggs</td>
+     + <td>Christmas turkey</td>
+     + <td>Diwali sweets</td>
+     + <td>Chinese dumplings</td>
+     + <p>Can you piece together the puzzle for this special food? What is the special event?</p>
+     + <p>birthday cake</p>
+     + <p>Sometimes we have special jobs to do when there is a celebration, such as cooking, placing decorations and 
+     + <th>Images</th>
+     + <th>Instructions</th>
+     + <td> [image] Coconut flour</td>
+     + <td>You will need: / • 1 cup shredded coconut or coconut flour. / • 2 cups of tapioca or cassava. / • ¼ cup of
+     + … 47 more added
+XMES103: identical 4 / changed 2
+  ~ XMES201_0_0.html: -31 +53
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>angel fish</p>
+     - <p>A fish.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Birma cat</p>
+     - <p>A cat.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>dog</p>
+     - <p>A dog.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>chestnut horse</p>
+     - <p>A horse.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>two birds</p>
+     - <p>A bird.</p>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [dev team please crop out the p
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="XMES201-00-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [dev team please crop out the picture
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel (+ captions) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> Image </th>
+     + <th> Captions </th>
+     + </tr>
+     + <tr>
+     + <td> [Image] angel fish</td>
+     + <td>A fish.</td>
+     + </tr>
+     + <tr>
+     + … 33 more added
+  ~ XMES201_1_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image] Fur/hair<br />[Image] c
+     + <p>Tell us what features your pet has by choosing the features they have and making a sentence in this next ac
+     + </div>
+  ~ XMES201_3_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] kittens nursing<br />[i
+     + <p>Match these baby pets to their correct food</p><p class="cv2-note" style="color: red; font-weight: bold;">W
+     + </div>
+  ~ XMES201_4_0.html: -31 +58
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>dog sitting on the floor</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>rabbit leaping</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Pet type: dog/bird/etc</p>
+     - <p>Legs (cm)</p>
+     - <p>Ears (cm)</p>
+     - <p>Tail (cm)</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>1.</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>2.</p>
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert slider chart histogram 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="XMES201-04-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="XMES201-04-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert slider chart histogram versio
+     + <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: carousel (insert) — Activity 4B — s
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>dog sitting on the floor</th>
+     + <th>rabbit leaping</th>
+     + </tr>
+     + </table>
+     + <p><b>What to do:</b></p>
+     + <ol>
+     + <li>Use the images or your own pet(s) to measure these body parts and record their measurements in centimetres
+     + <li>Record their measurements in the chart below.</li>
+     + … 38 more added
+XMES201: identical 2 / changed 4
+  ~ XMES203_3_0.html: -1 +9
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] fan in room<br />[image
+     + <p>The next two activities will help your sleeping space. You can choose one or both to do.</p>
+     + <p><b>You can:</b></p>
+     + <ol>
+     + <li>make your own wheat sack, or</li>
+     + </ol>
+     + <ol>
+     + <li>make your own sleep massage oil that will help you sleep.</li>
+     + </ol><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] fan in room<br />[image]
+     + </div>
+  ~ XMES203_4_0.html: -1 +3
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] 5 o&#39;clock<br />[ima
+     + <p>What would you be doing at each of these times during the day? Discuss this with your hoa ako.</p>
+     + <p>Telling the time helps us in many ways. We can read a timetable to catch a bus or plan when to meet our fri
+     + </div>
+  ~ XMES203_5_0.html: -0 +1
+     + <p>Ka pai! You have now finished this module on sleep. We hope you keep looking after your sleep time and cont
+XMES203: identical 3 / changed 3
+  ~ XTAS101_0_0.html: -1 +4
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] teen building robotic c
+     + <p>There are many different types of special interests, and they are a big part of our lives!</p>
+     + <p>During this module you will have lots of chances to upload what you know and like about your special intere
+     + <p>We want you to try as many of the activities as you can. We also want to hear about your learning. Sometime
+     + </div>
+  ~ XTAS101_2_0.html: -14 +24
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Incredibox demo</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Demo mix</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="XTAS101-02-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="XTAS101-02-02" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="XTAS101-02-03" style="border: 8px s
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="XTAS101-02-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: carousel — Activity 2A — see XTAS10
+     + <th> [insert link] Incredibox demo</th>
+     + <th> [insert link] Demo mix</th>
+     + <p>We hope this inspires you to have a go. Have a go for yourself now.</p>
+     + <p><a href="https://www.incredibox.com" target="_blank">https://www.incredibox.com</a></p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="XTAS101-02-02" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="XTAS101-02-03" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="XTAS101-02-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + </tr>
+     + … 4 more added
+  ~ XTAS101_4_0.html: -39 +46
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>computers special interest</p>
+     - <p>Computers</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>photography</p>
+     - <p>Photography</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>outdoor interests</p>
+     - <p>Outdoor interests – hunting, fishing, swimming</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>the ocean</p>
+     - <p>Ocean</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>dance</p>
+     - <p>Dance</p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>crochet</p>
+     - <p>Crochet</p>
+     - </div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] computers special inter
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="XTAS101-04-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="XTAS101-04-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] computers special interest<br
+     + <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: carousel (insert) — Activity (inlin
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] computers special interest</th>
+     + <th>Computers</th>
+     + </tr>
+     + <tr>
+     + <td> [image] photography</td>
+     + <td>Photography</td>
+     + </tr>
+     + <tr>
+     + … 26 more added
+XTAS101: identical 2 / changed 3
+  ~ XTAS102_0_0.html: -55 +60
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>man with swimming coach at the pool</p>
+     - <p>The swimming pool.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>person in wheelchair at church</p>
+     - <p>Church.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>bike and skate park</p>
+     - <p>The bike park.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>man in wheelchair at the library</p>
+     - <p>The library.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>teen in dance class</p>
+     - <p>Dance classes.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>music group</p>
+     - <p>Music classes.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Teen with DS and horse</p>
+     - <p>Riding lessons.</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>autistic teen at art</p>
+     - <p>Art classes.</p>
+     - … 15 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="XTAS102-00-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] man with swimming coach at th
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel (insert) — Activity (inline
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] man with swimming coach at the pool</th>
+     + <th>The swimming pool.</th>
+     + </tr>
+     + <tr>
+     + <td> [image] person in wheelchair at church</td>
+     + <td>Church.</td>
+     + </tr>
+     + <tr>
+     + … 40 more added
+  ~ XTAS102_1_0.html: -29 +40
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>reserved parking</p>
+     - <p>Reserved parking sign</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>no smoking</p>
+     - <p>No smoking sign</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>stop sign</p>
+     - <p>Stop sign</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>first aid</p>
+     - <p>First aid sign</p>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] reserved parking<br />[
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="XTAS102-01-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="XTAS102-01-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="XTAS102-01-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] reserved parking<br />[image]
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: carousel (insert) — Activity (inline
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] reserved parking</th>
+     + <th>Reserved parking sign</th>
+     + </tr>
+     + <tr>
+     + <td> [image] no smoking</td>
+     + <td>No smoking sign</td>
+     + </tr>
+     + <tr>
+     + … 20 more added
+  ~ XTAS102_3_0.html: -165 +160
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] man fixing air con<br /
+     - <p>putting away clothes</p>
+     - <p>Putting things away in their right place.</p>
+     - <p>locking door</p>
+     - <p>Making a space safe to be in.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>man cooking food</p>
+     - <p>Making food or drink.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>hand washing</p>
+     - <p>Cleaning themselves.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>spray bottle kitchen</p>
+     - <p>Cleaning up.</p>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>calendar</p>
+     - <p>Following a set of steps to organise themselves or others.</p>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team start video at 7:03, 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="XTAS102-03-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="XTAS102-03-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="XTAS102-03-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="38" data-cv2-ref="XTAS102-03-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - … 125 more removed
+     + <p>There might be other activities they do to keep themselves and others safe and <span class="infoTrigger" in
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="XTAS102-03-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team start video at 7:03, cut at
+     + <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: carousel (insert - +captions) — Act
+     + <th> [image] putting away clothes</th>
+     + <th>Putting things away in their right place.</th>
+     + <td> [image] locking door</td>
+     + <td>Making a space safe to be in.</td>
+     + <td> [image] man cooking food</td>
+     + <td>Making food or drink.</td>
+     + <td> [image] hand washing</td>
+     + <td>Cleaning themselves.</td>
+     + <tr>
+     + <td> [image] spray bottle kitchen</td>
+     + <td>Cleaning up.</td>
+     + </tr>
+     + <tr>
+     + <td> [image] calendar</td>
+     + … 140 more added
+  ~ XTAS102_4_0.html: -35 +44
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>arrow</p>
+     - <ul>
+     - <li><b>Forward</b> – go straight ahead.</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>arrow</p>
+     - <ul>
+     - <li><b>Back</b> – go behind you.</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>arrow</p>
+     - <ul>
+     - <li><b>Left</b> – this side (point or touch left hand).</li>
+     - </ul>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>arrow</p>
+     - <ul>
+     - <li><b>Right</b> – that side (point or touch right hand).</li>
+     - </ul>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team can you provide a bet
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="XTAS102-04-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="49" data-cv2-ref="XTAS102-04-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team can you provide a better il
+     + <div class="cv2-interactive" data-cv2-index="49" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #49: carousel (insert of dev team cartoo
+     + <div style="font-size: 0.95em">
+     + <p>arrow</p>
+     + <p>You can say:</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>arrow</th>
+     + <th>• <b>Forward</b> – go straight ahead.</th>
+     + </tr>
+     + <tr>
+     + <td>arrow</td>
+     + <td>• <b>Back</b> – go behind you.</td>
+     + … 24 more added
+XTAS102: identical 2 / changed 4
+  ~ XTAS103_0_0.html: -73 +81
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>teen in dance class</p>
+     - <ul>
+     - <li>Dancing</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>jumping</p>
+     - <ul>
+     - <li>Jumping</li>
+     - </ul>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>crawling</p>
+     - <ul>
+     - <li>Crawling</li>
+     - </ul>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>skipping</p>
+     - <ul>
+     - <li>Skipping</li>
+     - </ul>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>rolling on wheels and running</p>
+     - <ul>
+     - <li>Rolling on wheels or running</li>
+     - </ul>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>stomping</p>
+     - <ul>
+     - … 33 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="XTAS103-00-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] teen in dance class<br />[ima
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel (insert) — Activity (inline
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] teen in dance class</th>
+     + <th>• Dancing</th>
+     + </tr>
+     + <tr>
+     + <td> [image] jumping</td>
+     + <td>• Jumping</td>
+     + </tr>
+     + <tr>
+     + … 61 more added
+  ~ XTAS103_4_0.html: -26 +36
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>– Crying men – Black Grace</p>
+     - <ul>
+     - <li>Crying men is about a man feeling like life is “breaking” him.</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>– False confidence</p>
+     - <ul>
+     - <li>False confidence is about how we can pretend to be confident, but it’s ok to just be ourselves.</li>
+     - </ul>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Happy</p>
+     - </div>
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Sad</p>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="35" data-cv2-ref="XTAS103-06-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="35" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #35: carousel (insert - + captions) — Ac
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [insert Video 1] – Crying men – Black Grace</th>
+     + <th>• Crying men is about a man feeling like life is “breaking” him.</th>
+     + </tr>
+     + <tr>
+     + <td> [insert Video 2] – False confidence</td>
+     + <td>• False confidence is about how we can pretend to be confident, but it’s ok to just be ourselves.</td>
+     + </tr>
+     + </table>
+     + </div>
+     + … 16 more added
+XTAS103: identical 5 / changed 2
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 492 / changed 51 / missing 0 over 104 modules
+CHANGED: OSSM401/OSSM401_2_0.html PES1001/PES1001_2_0.html PES1002/PES1002_1_0.html PES1002/PES1002_4_0.html PES1005/PES1005_10_0.html PES1007/PES1007_2_0.html TEDC401/TEDC401_2_0.html TEDC402/TEDC402_4_0.html TWHA902/TWHA902_0_0.html TWHA905/TWHA905_0_0.html TWHK901/TWHK901_0_0.html TWHK903/TWHK903_0_0.html XDLS912/XDLS912_2_0.html XDLS912/XDLS912_5_0.html XFUN02/XFUN02_2_0.html XFUN02/XFUN02_5_0.html XFUN02/XFUN02_6_0.html XGF9001/XGF9001_4_0.html XGF9003/XGF9003_0_0.html XGF9003/XGF9003_1_0.html XGF9003/XGF9003_1_1.html XGF9003/XGF9003_1_2.html XGF9003/XGF9003_1_3.html XGF9004/XGF9004_17_0.html XLP01/XLP01_1_0.html XLP01/XLP01_2_0.html XLP01/XLP01_3_0.html XLP01/XLP01_4_0.html XLP02/XLP02_0_0.html XLP03/XLP03_0_0.html XLP03/XLP03_5_0.html XLP04/XLP04_1_0.html XMES101/XMES101_3_0.html XMES103/XMES103_1_0.html XMES103/XMES103_3_0.html XMES201/XMES201_0_0.html XMES201/XMES201_1_0.html XMES201/XMES201_3_0.html XMES201/XMES201_4_0.html XMES203/XMES203_3_0.html XMES203/XMES203_4_0.html XMES203/XMES203_5_0.html XTAS101/XTAS101_0_0.html XTAS101/XTAS101_2_0.html XTAS101/XTAS101_4_0.html XTAS102/XTAS102_0_0.html XTAS102/XTAS102_1_0.html XTAS102/XTAS102_3_0.html XTAS102/XTAS102_4_0.html XTAS103/XTAS103_0_0.html XTAS103/XTAS103_4_0.html

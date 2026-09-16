@@ -1,0 +1,151 @@
+
+===== accordion: declined on-corpus 318 bundles / 173 pages / 104 modules
+  -- by guard
+   167 b  123 p  85 m  accordionPanels:1663 if (!panels || panels.length < (cfg.min_panels ?? 1))
+    53 b   37 p  28 m  accordionPanels:1257 if (!panels || panels.length < (cfg.min_panels ?? 1))
+    48 b   40 p  29 m  accordionPanels:1652 if (!parts)
+    45 b   33 p  23 m  accordionPanels:1253 if (!parts)
+     3 b    3 p   3 m  accordionPanels:1675 if (this.#accLeakGuard(html, cfg))
+     2 b    2 p   2 m  accordionPanels:1264 if (this.#accLeakGuard(html, cfg))
+  -- by shape
+    23 b   15 p  14 m  no-table: prose/other (black x0, ownTags 1, heads 0)
+    20 b   11 p   9 m  no-table: own tag with labels x2
+    17 b   12 p  10 m  no-table: bare own tag x2
+    16 b   12 p  12 m  table 4x2
+    14 b    4 p   4 m  table 1x2
+    13 b    9 p   7 m  no-table: prose/other (black x5, ownTags 1, heads 0)
+    13 b   11 p  11 m  no-table: own tag with labels x3
+  -- by features
+    48 b   23 p  21 m  media:none member:table variant:accordion
+    29 b   17 p  13 m  media:none member:black no-table variant:accordion
+    17 b    9 p   5 m  has-modifier media:none member:table variant:accordion
+    14 b   12 p   5 m  has-modifier media:none member:black no-table variant:accordion
+     9 b    7 p   7 m  media:none no-table variant:accordion
+     8 b    3 p   3 m  extraTypes:accordion media:none member:table variant:accordion
+     7 b    5 p   5 m  extraTypes:accordion media:none member:black no-table variant:accordion
+
+===== carousel: declined on-corpus 310 bundles / 176 pages / 129 modules
+  -- by guard
+   149 b  126 p 102 m  carouselTableSlides:8616 if (!tables.length)
+    59 b   44 p  37 m  carouselTableSlides:6684 if (!tables.length)
+    40 b   27 p  26 m  carousel:7926 if (!sameOnly)
+    22 b   19 p  15 m  carouselTableSlides:8659 if (slides.length < (cfg.min_slides ?? tpl.min_slides ?? 2))
+    18 b   11 p  10 m  carousel:6124 if (!sameOnly)
+     9 b    4 p   3 m  carouselTableSlides:8623 if (cfg.exclude_reo !== false && MenuBuilder.isReoModule(run))
+     6 b    6 p   6 m  carouselTableSlides:6727 if (slides.length < (cfg.min_slides ?? tpl.min_slides ?? 2))
+  -- by shape
+    91 b   50 p  50 m  no-table: prose/other (black x0, ownTags 1, heads 0)
+    36 b   28 p  25 m  no-table: prose/other (black x1, ownTags 1, heads 0)
+    24 b   18 p  18 m  no-table: prose/other (black x2, ownTags 1, heads 0)
+    20 b   10 p  10 m  no-table: prose/other (black x6, ownTags 1, heads 0)
+    13 b   10 p   9 m  no-table: prose/other (black x5, ownTags 1, heads 0)
+    13 b    5 p   4 m  MULTI-TABLE x3
+    11 b    8 p   4 m  table 1x1
+  -- by features
+    46 b   37 p  34 m  media:other-url member:black member:instruction-span no-table variant:carousel
+    24 b   16 p  16 m  media:other-url member:instruction-span no-table variant:carousel
+    21 b    3 p   3 m  has-modifier media:none no-table variant:carousel
+    13 b    9 p   9 m  extraTypes:dropDown media:other-url member:black member:instruction-span no-table variant:carousel
+    13 b    9 p   9 m  has-modifier media:istock member:noise-span no-table variant:rotateBanner
+    12 b    4 p   3 m  media:none member:table tables:multi variant:carousel
+     9 b    8 p   5 m  media:other-url no-table variant:carousel
+
+===== flipCard: declined on-corpus 237 bundles / 144 pages / 105 modules
+  -- by guard
+    87 b   80 p  63 m  flipCardCards:4392 if (!cards || !cards.length)
+    70 b   56 p  48 m  flipCardCards:4397 if (!c.front || !c.back)
+    36 b   33 p  25 m  flipCardCards:3304 if (!cards || !cards.length)
+    17 b   16 p  14 m  flipCardCards:3308 if (!c.front || !c.back)
+    12 b   11 p  10 m  flipCardCards:4387 if (tables.length > 1)
+     9 b    8 p   7 m  flipCardCards:3299 if (tables.length > 1)
+     5 b    5 p   5 m  flipCardCards:4402 if (this.#accLeakGuard(c.front, cfg) || this.#accLeakGuard(c.back, cfg
+  -- by shape
+    26 b   18 p  16 m  no-table: prose/other (black x0, ownTags 1, heads 0)
+    16 b    8 p   8 m  MULTI-TABLE x2
+    14 b   10 p  10 m  table 4x4
+    12 b   10 p   5 m  table 3x3
+    11 b    8 p   8 m  no-table: bare own tag x2
+    10 b    3 p   3 m  no-table: prose/other (black x0, ownTags 1, heads 1)
+     7 b    4 p   4 m  no-table: own tag with labels x8
+  -- by features
+    55 b   43 p  32 m  media:none member:table variant:flipCard
+    18 b   14 p  14 m  has-modifier media:none member:table variant:flipCard
+    14 b    8 p   8 m  media:none no-table variant:flipCard
+     9 b    6 p   6 m  has-modifier media:none member:black no-table variant:flipCard
+     7 b    3 p   3 m  media:none member:table tables:multi variant:flipCard
+     6 b    4 p   4 m  has-modifier media:istock media:video member:black no-table variant:flipCard
+     6 b    4 p   4 m  extraTypes:flipCard media:istock no-table variant:flipCard
+
+===== modal: declined on-corpus 205 bundles / 95 pages / 59 modules
+  -- by guard
+   127 b   72 p  45 m  modalSets:5381 if (!sets || sets.length < (cfg.min_modals ?? 1))
+    51 b   19 p  14 m  modalSets:4018 if (!sets || sets.length < (cfg.min_modals ?? 1))
+    18 b   17 p  14 m  modalSets:5377 if (!parts)
+     8 b    5 p   5 m  modalSets:4014 if (!parts)
+     1 b    1 p   1 m  modalSets:5387 if (this.#accLeakGuard(html, cfg))
+  -- by shape
+    30 b    8 p   6 m  no-table: own tag with labels x5
+    28 b   18 p  15 m  no-table: prose/other (black x0, ownTags 1, heads 0)
+    18 b    6 p   5 m  no-table: bare own tag x6
+    15 b    4 p   2 m  no-table: bare own tag x3
+    13 b    8 p   6 m  table 1x2
+    10 b    1 p   1 m  table 1x3
+     9 b    6 p   3 m  no-table: own tag with labels x6
+  -- by features
+    33 b    7 p   7 m  extraTypes:modal media:video member:black no-table variant:modal
+    26 b   12 p   3 m  extraTypes:modal media:none member:black no-table variant:modal
+    11 b    4 p   3 m  extraTypes:modal has-modifier media:none member:black no-table variant:modal
+    11 b    7 p   4 m  media:other-url member:table
+    10 b    1 p   1 m  extraTypes:modal has-modifier media:none member:black member:instruction-span member:table variant:modal
+     9 b    5 p   4 m  has-modifier media:none no-table variant:modal
+     8 b    5 p   4 m  media:none no-table variant:modal
+
+===== tabs: declined on-corpus 96 bundles / 62 pages / 40 modules
+  -- by guard
+    56 b   52 p  36 m  tabsPanes:6324 if (!panes || panes.length < (cfg.min_panes ?? 2))
+    19 b   17 p  11 m  tabsPanes:4732 if (!panes || panes.length < (cfg.min_panes ?? 2))
+    12 b   10 p   8 m  tabsPanes:6320 if (!parts)
+     7 b    6 p   4 m  tabsPanes:4728 if (!parts)
+     2 b    2 p   2 m  tabsPanes:6333 if (head.split(/\s+/).length > (cfg.label_max_words ?? 6))
+  -- by shape
+    10 b    5 p   4 m  MULTI-TABLE x2
+     9 b    8 p   7 m  no-table: bare own tag x2
+     6 b    4 p   4 m  no-table: prose/other (black x0, ownTags 1, heads 0)
+     4 b    3 p   3 m  no-table: prose/other (black x0, ownTags 1, heads 1)
+     4 b    4 p   4 m  no-table: own tag with labels x5
+     4 b    2 p   2 m  table 5x4
+     4 b    3 p   2 m  table 2x4
+  -- by features
+     9 b    6 p   5 m  media:none member:table variant:tabs
+     5 b    5 p   5 m  has-modifier media:none no-table variant:tabs
+     5 b    3 p   3 m  media:none member:table tables:multi variant:tabs
+     4 b    4 p   3 m  media:none member:black no-table variant:tabs
+     4 b    3 p   3 m  media:none no-table variant:tabs
+     4 b    3 p   3 m  has-modifier media:none member:black no-table variant:tabs
+     4 b    3 p   3 m  has-modifier media:none member:table variant:tabs
+
+===== selfCheck: declined on-corpus 204 bundles / 95 pages / 64 modules
+  -- by guard
+    97 b   57 p  47 m  selfCheck:258 if ((bundle?.tables ?? []).length)
+    29 b   18 p  15 m  selfCheck:240 if ((bundle?.tables ?? []).length)
+    26 b   24 p  19 m  selfCheck:273 if (!/^\d+[.)]\s*\S/.test(t))
+    23 b   19 p  16 m  selfCheck:259 if ((bundle?.media ?? []).length)
+    12 b   12 p   8 m  selfCheck:255 if (!/^\d+[.)]\s*\S/.test(t))
+     9 b    8 p   6 m  selfCheck:241 if ((bundle?.media ?? []).length)
+     5 b    5 p   3 m  selfCheck:277 if (questions.length < (tpl.min_rows ?? 2))
+  -- by shape
+    36 b    9 p   9 m  MULTI-TABLE x2
+    24 b   16 p  13 m  no-table: prose/other (black x0, ownTags 0, heads 0)
+    14 b   11 p  11 m  table 6x3
+    12 b    5 p   5 m  table 8x2
+    11 b    8 p   8 m  no-table: prose/other (black x5, ownTags 0, heads 0)
+    10 b    7 p   7 m  no-table: prose/other (black x1, ownTags 0, heads 0)
+     9 b    4 p   4 m  table 6x2
+  -- by features
+    50 b   36 p  31 m  media:none member:table variant:selfCheck
+    34 b    7 p   7 m  extraTypes:selfCheck media:other-url member:black member:table tables:multi variant:selfCheck
+    17 b    5 p   5 m  media:istock member:black member:table variant:selfCheck
+    14 b   10 p   9 m  media:other-url member:black member:instruction-span no-table variant:selfCheck
+    14 b    9 p   9 m  media:none no-table variant:selfCheck
+    11 b    7 p   6 m  media:none member:instruction-span member:table variant:selfCheck
+    10 b    8 p   8 m  media:none member:black member:instruction-span no-table variant:selfCheck

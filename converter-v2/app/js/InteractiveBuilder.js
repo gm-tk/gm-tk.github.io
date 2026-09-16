@@ -8670,13 +8670,66 @@ class InteractiveBuilder {
 		const prefix = String(run?.moduleCode ?? "").match(/^[A-Z]+/)?.[0] ?? "";
 		const boldTitle = !(env.CARCAP_OFF) && capCfg && capCfg.enabled !== false
 			&& (capCfg.subjects ?? []).includes(prefix);
-		const html = this.#carRenderSlides(slides, {
+		let html = this.#carRenderSlides(slides, {
 			tpl,
 			cfg: { ...rich, ...cfg, ...(boldTitle ? { heading: cfg.heading_bold ?? "<p><b>{text}</b></p>" } : {}) },
 			inline, run, renderBlock, videoTpl,
 		});
 		if (html === null) return null;
 		if (this.#carHasBracketTag(html, cfg)) return null;           // the leak guard (r167 at this seam)
+		// ROUND 352 — the members the slides did not consume. This path built from the TABLES alone and
+		// dropped every other member of the bundle: the writer's paragraph before the table, the
+		// caption / [body] after it — and, until the scanner's heading-after-table rule (this round),
+		// the whole next section. Measured on the r351 corpus (`_r352_widgetloss_confirm.log`): 206
+		// built carousels on 171 pages lost writer text the gold keeps. Now, in document order: a black
+		// paragraph or a [body] with words BEFORE the first table renders through the free-body block
+		// emitter before the carousel, one AFTER the last table renders after it (the OSGM501-01
+		// trailing-caption precedent of #carouselTrailingBody, with lists intact); blank lines and
+		// instruction-class tags (already the Writers Note) are skipped; ANYTHING ELSE — a heading, an
+		// image / video / other tag, a second table beyond the slides — cannot be rendered from inside
+		// the widget seam → null, the hand-off box keeps every member (never half-build).
+		// Data carousel.table_slides.members {enabled, env CARMEMBERS_OFF}; OFF = the r279 silent drop.
+		const mcfg = cfg.members;
+		if (mcfg && mcfg.enabled !== false && !(mcfg.env && env[mcfg.env])) {
+			const members = bundle.memberItems ?? [];
+			let firstT = -1, lastT = -1;
+			members.forEach((m, i) => { if (m && m.type === "table") { if (firstT < 0) firstT = i; lastT = i; } });
+			const before = [], after = [];
+			const noteRe = new RegExp(mcfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\u2013\u2014]", "i");
+			for (let i = 0; i < members.length; i++) {
+				if (i >= firstT && i <= lastT) {                       // the slide span: tables and what sits between them
+					const m = members[i];
+					if (!m || m.type === "table") continue;
+					if (m.type === "black" && !String(m.text ?? "").trim()) continue;
+					if (m.type === "tag" && m.parse && (m.parse.class === "instruction" || m.parse.instructionFragment)) continue;
+					if (m.type === "tag" && !this.#cellText(m.blackAfter ?? "").trim()) continue;   // a bare marker between tables
+					return null;                                        // words between the slide tables → not this shape
+				}
+				const m = members[i]; if (!m) continue;
+				const side = i < firstT ? before : after;
+				if (m.type === "black") {
+					if (!String(m.text ?? "").trim()) continue;
+					if (noteRe.test(this.#cellText(m.text).trim())) return null;
+					const r = renderBlock(m.text); if (!r) return null; side.push(r); continue;
+				}
+				if (m.type !== "tag") return null;
+				const parse = m.parse, prim = parse?.primary;
+				if (parse && (parse.class === "instruction" || parse.instructionFragment)) continue;
+				const words = this.#cellText(m.blackAfter ?? "").trim();
+				if (i === 0 && prim?.directive === "INTERACTIVE") {     // the invocation tag's own line
+					if (!words) continue;
+					if (noteRe.test(words)) return null;
+					const r = renderBlock(m.blackAfter); if (!r) return null; side.push(r); continue;
+				}
+				if (String(prim?.tag ?? "").toLowerCase() === "body") {
+					if (!words) continue;
+					if (noteRe.test(words)) return null;
+					const r = renderBlock(m.blackAfter); if (!r) return null; side.push(r); continue;
+				}
+				return null;                                            // a heading / image / video / any other tag
+			}
+			if (before.length || after.length) html = [...before.flat(), html, ...after.flat()].join("\n");   // renderBlock returns string[]
+		}
 		bundle.r279CarouselTable = true;                             // detector/affected-set marker
 		return html;
 	}

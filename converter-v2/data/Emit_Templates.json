@@ -2055,6 +2055,12 @@
 		"carousel": {
 			"table_slides": {
 				"enabled": true,
+				"members": {
+					"enabled": true,
+					"env": "CARMEMBERS_OFF",
+					"note_cue_pattern": "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\\u2013\\u2014]",
+					"note": "ROUND 352 (the autonomous loop's session-15 Round 2). The table-slides carousel built from the TABLES alone and dropped every other member of the bundle — the writer's paragraph before the table, the caption / [body] after it, and (until the scanner's heading-after-table rule of the same round) the whole next section: 206 built carousels / 171 pages / 109 modules lost writer text the gold keeps (_r352_widgetloss_confirm.log). Now a black paragraph or a [body] with words before the first table renders through the free-body block emitter BEFORE the carousel and one after the last table AFTER it (the OSGM501-01 trailing-caption precedent, lists intact); blank lines and instruction-class tags are skipped; a paragraph opening with a developer cue (note_cue_pattern) declines; ANY other member — a heading, an image / video / other tag, words between the slide tables, a table beyond the slides — cannot be rendered from inside the widget seam, so the build DECLINES and the hand-off box keeps every member (never half-build). CARMEMBERS_OFF=1 = the r279 silent drop byte-for-byte."
+				},
 				"min_slides": 2,
 				"max_slides": 20,
 				"require_content": true,

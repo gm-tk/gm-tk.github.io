@@ -1,0 +1,41 @@
+selfCheck bundles 153 built 0 declined on-corpus 152 95 pages
+  15 b   3 p   3 m  T:typing quiz TBL2x6 T:audio B T:typing quiz TBL2x6 T:audio B      BLL110 p0.0 #3, BLL110 p0.0 #8
+  11 b   5 p   5 m  T:typing quiz TBL2x6 T:audio B T:typing quiz TBL2x6 B              BLL140 p0.0 #2, BLL160 p0.0 #3
+  10 b  10 p  10 m  T:typing quiz TBL6x3                                               BLL172 p2.0 #4, BLL223 p1.0 #1
+   8 b   4 p   4 m  T:typing quiz BU TBL8x2                                            BLL140 p0.0 #8, BLL140 p0.0 #13
+   6 b   6 p   4 m  T:typing quiz                                                      BLL214 p1.0 #4, BLL174 p1.1 #9
+   6 b   5 p   5 m  T:typing quiz B T:None B T:None B T:None B T:None                  MXDI103 p9.0 #33, MXDI103 p9.0 #34
+   5 b   2 p   2 m  T:typing quiz BU TBL6x2                                            BLL140 p0.0 #18, BLL170 p0.0 #11
+   5 b   4 p   4 m  T:typing quiz TBL4x2                                               BLL112 p2.0 #6, BLL122 p2.0 #6
+   4 b   4 p   4 m  T:typing quiz T:None B T:None                                      BLL176 p1.0 #5, BLL214 p1.0 #3
+   4 b   4 p   4 m  T:typing quiz T:answer T:body                                      BLL245 p1.0 #3, BLL251 p1.0 #2
+   3 b   3 p   3 m  T:typing quiz TBL9x3                                               BLL242 p1.1 #6, BLL252 p1.0 #1
+   2 b   2 p   2 m  T:typing quiz TBL2x2                                               BLL124 p1.0 #6, BLL155 p1.1 #8
+   2 b   2 p   2 m  T:typing quiz TBL6x2                                               BLL124 p2.0 #11, MXDI103 p6.0 #20
+   2 b   2 p   2 m  T:typing quiz B T:None B T:None B T:None                           BLL164 p1.0 #1, ENGJ102 p3.0 #10
+   2 b   2 p   2 m  T:typing quiz B T:image B T:image B T:image B T:image              BLL164 p1.0 #6, BLL176 p1.0 #1
+   2 b   2 p   2 m  T:typing quiz T:None B T:None B T:None B T:None B                  BLL164 p1.1 #8, BLL155 p1.1 #11
+single 2-col table selfChecks: 32 bundles 20 pages 16 modules
+### BLL124 1.0 6 [[2, 2]] members ['tag:typing quiz', 'table:None']
+   | **Question Mark Column (?)** (Asking a question) | **Exclamation Mark Column (!)** (Showing excitement/emp
+   | R:Did Ken sip the drink / Did the kid rest / Did the men  | R:Ken had a cap / Kick it / He did skid at the end / Ken 
+### BLL124 2.0 11 [[6, 2]] members ['tag:typing quiz', 'table:None']
+   | R:track | https://www.istockphoto.com/photo/the-rails-go-off-into{U}
+   | R:cap | https://www.istockphoto.com/vector/vector-black-male-ca{U}
+   | R:helmet | https://www.istockphoto.com/vector/helmet-collection-ca{U}
+### BLL140 0.0 8 [[8, 2]] members ['tag:typing quiz', 'black:None', 'table:None']
+   | https://www.istockphoto.com/photo/ginger-tabby-cat-tail{U} | https://www.istockphoto.com/photo/snail-isolated-on-whi{U}
+   | R:Middle dot is the correct answer | R:3rd dot is the correct answer
+   | https://www.istockphoto.com/photo/medical-illustrate-gm{U} | https://www.istockphoto.com/photo/sailboats-with-red-ge{U}
+### BLL140 0.0 13 [[8, 2]] members ['tag:typing quiz', 'black:None', 'table:None']
+   | https://www.istockphoto.com/photo/on-the-road-to-mount-{U} | https://www.istockphoto.com/photo/freshly-toasted-bread{U}
+   | R:Middle dot is the correct answer | R:2nd dot is the correct answer
+   | https://www.istockphoto.com/photo/roast-leg-of-lamb-gm4{U} | https://www.istockphoto.com/photo/womans-coat-isolated-{U}
+### BLL140 0.0 18 [[6, 2]] members ['tag:typing quiz', 'black:None', 'table:None']
+   | https://www.istockphoto.com/photo/apple-pie-gm174899902{U} | https://www.istockphoto.com/photo/crybaby-gm117150127-1{U}
+   | R:Last dot is the correct answer | R:3rd dot is the correct answer
+   | https://www.istockphoto.com/photo/basket-of-famous-fast{U} | https://www.istockphoto.com/vector/traditional-magpie-c{U}
+### BLL140 0.0 23 [[8, 2]] members ['tag:typing quiz', 'black:None', 'table:None']
+   | R:h ttps://www.istockphoto.com/photo/flying-bee-gm4875222 | https://www.istockphoto.com/photo/13-point-stag-gm96307{U}
+   | R:Last dot is the correct answer | R:middle dot is the correct answer
+   | https://www.istockphoto.com/photo/apple-tree-without-fl{U} | https://www.istockphoto.com/vector/watercolor-stain-tex{U}

@@ -1975,10 +1975,21 @@ class InteractiveScanner {
 			if (p?.directive !== "INTERACTIVE" && bundle.tables.length > 0) {
 				const entry = DataService.Data.BoundaryBank.interactives[bundle.type];
 				const exempt = (_mrB.body_terminates_after_table_exempt_types ?? []).includes(bundle.type);
+				// ROUND 352 — the HEADING rule has its own exemption list. The slideshow types were exempt from
+				// BOTH rules through the shared body list ("their trailing [body] is a slide caption"), but a
+				// SECTION HEADING after a carousel's slide table is never a slide: the r279 table-slides
+				// carousel swallowed the writer's next section — heading, paragraphs, lists, images, the
+				// rest of the page (AGH1005 2.0 "Parts of a plant", AGH1009 5.0's four h3 sections) — and
+				// the builder dropped every word of it (206 built carousels / 171 pages / 109 modules;
+				// the gold keeps the text as free body on 167). Absent key → the shared list, byte-identical.
+				// Data member_rule.heading_terminates_after_table_exempt_types; env CARHEADEND_OFF.
+				const hList = _mrB.heading_terminates_after_table_exempt_types;
+				const hExempt = (Array.isArray(hList) && !(typeof process !== "undefined" && process.env && process.env.CARHEADEND_OFF))
+					? hList.includes(bundle.type) : exempt;
 				const headingLevels = _mrB.heading_terminates_after_table_levels ?? ["h2", "h3", "h4", "h5"];
-				const isBreak = (_mrB.body_terminates_after_table && p?.tag === "body")
-					|| (_mrB.heading_terminates_after_table && headingLevels.includes(p?.tag));
-				if (entry?.uses_data_table && !exempt && isBreak) break;   // section break resumes after the data table
+				const isBreak = (_mrB.body_terminates_after_table && p?.tag === "body" && !exempt)
+					|| (_mrB.heading_terminates_after_table && headingLevels.includes(p?.tag) && !hExempt);
+				if (entry?.uses_data_table && isBreak) break;   // section break resumes after the data table
 			}
 
 			// LONE SECTION-BREAK HEADING.

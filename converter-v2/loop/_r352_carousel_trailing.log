@@ -1,0 +1,42 @@
+lossy built carousels matched 231
+no table (rich/prose carousel builds): 80 [('t:carousel t:video t:video t:video', 7), ('t:carousel t:video t:video', 6), ('t:carousel t:video t:video t:video t:video', 4), ('t:carousel t:image t:image', 3), ('t:carousel t:video t:body t:video t:body t:video t:body t:video', 3), ('t:carousel t:video b t:video b t:video b', 3)]
+
+LEADING members (before the first table):
+   128 lead:none
+     6 lead:T:body
+     2 lead:black
+     1 lead:T:None T:h2 T:image T:tab n black
+     1 lead:T:None T:h3
+     1 lead:T:body T:h3 T:image T:slide n
+     1 lead:T:h4
+     1 lead:T:None black
+     1 lead:T:None
+     1 lead:T:body T:embed T:h3
+
+TRAILING member kinds (after the last table):
+    44 trail:none   e.g. CHFUN06 p0.0 #1, CHFUN06 p0.0 #3
+    19 trail:T:body   e.g. BLL127 p2.0 #8, BLL137 p1.1 #6
+    14 trail:T:body black   e.g. AGH1009 p3.0 #5, AGH1009 p4.0 #6
+    10 trail:black   e.g. AGH1005 p4.0 #9, AGH1005 p6.0 #12
+     8 trail:T:body T:h3 black   e.g. AGH1005 p7.0 #15, AGH1002 p1.0 #1
+     5 trail:T:body T:h3   e.g. XGF9004 p17.0 #76, HPFUN302 p0.0 #8
+     3 trail:T:h3 black   e.g. AGH1006 p5.0 #16, AGH1006 p6.0 #20
+     2 trail:T:None black   e.g. AGH1005 p3.0 #8, AGH1007 p3.0 #7
+     2 trail:T:body T:image black   e.g. AGH1009 p5.0 #9, XTAS102 p0.0 #1
+     2 trail:T:None T:body T:h3 T:h4 black   e.g. AGH1009 p6.0 #12, AGH1006 p5.0 #19
+     2 trail:T:body T:h3 T:image T:video black   e.g. AGH1009 p7.0 #16, XTAS103 p0.0 #1
+     2 trail:T:None T:body T:image black   e.g. XMES201 p0.0 #1, XTAS102 p4.0 #49
+     2 trail:T:body T:video black   e.g. XTAS102 p1.0 #7, XDLS912 p2.0 #8
+     2 trail:T:None T:h4 black   e.g. EXPFUN06 p0.0 #6, XLP01 p2.0 #12
+
+FIRST trailing member:
+    54 first-trailing:T:body
+    44 first-trailing:none
+    19 first-trailing:black
+    12 first-trailing:T:h3
+     8 first-trailing:T:h4
+     4 first-trailing:T:None
+     3 first-trailing:T:h2
+     2 first-trailing:T:image
+     1 first-trailing:T:shape n
+     1 first-trailing:T:video

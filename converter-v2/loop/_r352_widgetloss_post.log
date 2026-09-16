@@ -1,0 +1,14 @@
+== PRE (r351 corpus): built 2553, lossy 437
+   carousel       built   605 lossy  231 pages  188
+   flipCard       built   251 lossy   68 pages   54
+   modal          built   189 lossy   45 pages   36
+   accordion      built   401 lossy   35 pages   34
+   clickDrop      built   163 lossy   21 pages   19
+   dropDown       built   253 lossy   16 pages   16
+== POST (r352 engine): built 2511, lossy 316
+   carousel       built   563 lossy  110 pages   93
+   flipCard       built   251 lossy   68 pages   54
+   modal          built   189 lossy   45 pages   36
+   accordion      built   401 lossy   35 pages   34
+   clickDrop      built   163 lossy   21 pages   19
+   dropDown       built   253 lossy   16 pages   16

@@ -215,6 +215,10 @@
 				"rotateBanner"
 			],
 			"heading_terminates_after_table": true,
+			"heading_terminates_after_table_exempt_types": [
+				"rotateBanner"
+			],
+			"heading_terminates_after_table_exempt_types_note": "ROUND 352 (the autonomous loop's session-15 Round 2). The HEADING rule's OWN exemption list (before this round it shared body_terminates_after_table_exempt_types, so a carousel was exempt from both). A SECTION HEADING ([H2]-[H5]) after a CAROUSEL's captured slide table is the writer's next section, never a slide — the r279 table-slides carousel was swallowing the whole rest of the page (AGH1005 2.0 'Parts of a plant', AGH1009 5.0's four h3 sections, XTAS102 3.0's seven h4 carousels) and dropping every word of it: 206 built carousels / 171 pages / 109 modules, the gold keeps the text as free body on 167. The carousel now ENDS at that heading; rotateBanner keeps the old exemption (unmeasured). A trailing [body] after the table stays a carousel member (a caption — the body list is unchanged) and the table-slides builder renders it after the widget (Emit_Templates carousel.table_slides.members). Key ABSENT → the shared body list, byte-identical. Read by InteractiveScanner.#swallowMembers; env CARHEADEND_OFF.",
 			"heading_terminates_after_table_note": "Companion to body_terminates_after_table: an [H2]-[H5] section HEADING that appears AFTER a TABLE-DATA widget (uses_data_table: true) has captured its table is a NEW SECTION — the table is the widget's content, so the heading and everything after it belong OUTSIDE the widget. This OVERRIDES the widget's heading_is_terminator:false (which exists only so the widget's OWN internal headings — story heading / slide n, which sit in/before the data — are not treated as terminators; a heading AFTER the data table is not internal). The human renders it as a free <hN> section (OSAI501-01: a [memory game] data table -> [H3] 'Generative AI and LLM' -> a speechBubble + a video; before this, the memoryGame swallowed the heading, bubble and video). Same SLIDESHOW exemption as body_terminates_after_table. Read by InteractiveScanner.#swallowMembers.",
 			"heading_terminates_after_table_levels": [
 				"h2",
