@@ -1,0 +1,45 @@
+
+===== flipCard: lossy builds 68 / pages 54 / modules 43
+  41 table; lead: - | trail: -                                      CHFUN05 p0.0 #4: click on the card to see examples of noun or prono || CHFUN05 p0.0 #9: flip the card to see the examples in english
+  10 table; lead: - | trail: black                                  CEDO301 p6.0 #7: traditional aboriginal healing || TWHK903 p0.0 #7: remember it s not your fault sometimes you might c
+   4 table; lead: black | trail: -                                  CHFUN05 p0.0 #63: showing an action happening right now using 在 zài || CEDW501 p3.0 #23: audio script template 1
+   2 table; lead: - | trail: T:button black                         AGH1009 p1.0 #1: so with our current global demands for food the dw || MXEX201 p4.1 #5: as the stars always rise and set at the same place
+   1 table; lead: T:body | trail: -                                 CHFUN05 p0.0 #30: 很 hěn adjective examples
+   1 table; lead: T:None T:body | trail: -                          SSOG101 p1.0 #1: activity 1a should i call 111
+   1 table; lead: - | trail: T:None T:button T:image black          TEDC402 p2.0 #13: version 1 a bar chart starting at zero looks balan
+   1 table; lead: - | trail: T:None T:image                         TEDC402 p4.0 #42: what is an operating system os operating system ba
+   1 table; lead: - | trail: T:image black                          TEFUN08 p0.0 #2: asking for something is making an input to a perso
+   1 table; lead: - | trail: T:accordion T:image                    XGF9002 p1.0 #8: note about hidden gifted and masked giftedness
+
+===== modal: lossy builds 45 / pages 36 / modules 23
+   7 no-table: T:button T:image T:modal black                       MXFL101 p1.0 #2: go to journal || MXFL101 p2.0 #5: go to journal
+   3 no-table: T:body                                               OSOH101 p2.0 #8: click the hints to remind yourself of what you agr || OSOH101 p2.0 #19: the saying time flies when you re having fun is tr
+   3 no-table: T:button T:image T:modal T:video black               MXFL101 p3.3 #15: go to journal || MXFL101 p3.5 #21: matariki nine star song
+   2 no-table:                                                      OSOH401 p3.0 #23: ākonga 13 15 years old online user agreement docx  || OSOH201 p3.0 #25: ākonga online user agreement at te kura ākonga 5 1
+   2 no-table: T:None T:body T:modal T:video black                  BLL120 p0.0 #8: l4 earn letter k with alphablocks magic words cbee || BLL120 p0.0 #19: learn letter e with alphablocks magic words cbeebi
+   2 no-table: T:None T:modal T:tab n T:video black                 BLL120 p0.0 #24: learn letter h with alphablocks magic words cbeebi || BLL120 p0.0 #35: learn letter m with alphablocks magic words cbeebi
+   2 no-table: T:None T:body T:button T:modal T:video black         BLL130 p0.0 #30: my b boo k by jane belk moncure || BLL140 p0.0 #31: find things in your home or neighbourhood that hav
+   2 no-table: T:None T:button T:modal T:video black                BLL150 p0.0 #22: find things in your home or neighbourhood that hav || ENGJ101 p2.0 #6: create your own puppet show featuring a taniwha wa
+   2 no-table: T:None T:body T:button T:engagement quiz button T:modal BLL160 p0.0 #25: find things in your home or neighbourhood that hav || BLL170 p0.0 #30: find things in your home or neighbourhood that hav
+   1 no-table: T:None T:body                                        ENGI103 p2.0 #4: this story shows how proud the boys are of their c
+
+===== accordion: lossy builds 35 / pages 34 / modules 23
+   3 table; lead: - | trail: -                                      MXDB302 p2.0 #14: to find the perimeter of this shape we must know t || ENFUN04 p0.0 #10: the two main types of nouns are common nouns he na
+   3 no-table: T:None T:accordion T:body T:h2 T:video               XDLS903 p7.0 #45: food sovereignty doesn t come from pak n save || XDLS904 p2.0 #11: the vital role of harvesting kai for hautapu
+   2 no-table: T:None T:accordion T:body T:h2 T:video black         XDLS906 p1.0 #1: may also discuss specific safety precautions you m || XDLS905 p6.0 #38: ted x youth adrian mann
+   2 no-table: T:accordion T:body T:h2 T:h4 T:video                 XDLS906 p3.0 #17: how nature affects your brain || XDLS903 p3.0 #16: wairua sung by miamoa
+   2 no-table: T:accordion T:body T:h2 T:video                      XDLS905 p4.0 #22: for our own safety and the safety of those around  || XDLS905 p5.0 #31: best friends with downs syndrome experience flatti
+   1 no-table: T:accordion T:body T:h3 T:image T:info trigger black AGH1009 p8.0 #20: reduces the collective enteric fermentation
+   1 table; lead: T:body T:title bar black | trail: -               CHFUN05 p0.0 #55: up to 1 43 explanation and comparison between会 huì
+   1 no-table: T:accordion black                                    MXEX301 p2.0 #4: division 24 8 6 4 or 24 9 4 6
+   1 no-table: T:None T:accordion T:body T:h4 T:image T:video       XDLS906 p2.0 #9: gordon ramsay shows you the proper way to wash you
+   1 no-table: T:None T:accordion T:body T:h4 T:video               XDLS906 p6.0 #41: learning partner develop a safe plan and practice 
+
+===== clickDrop: lossy builds 21 / pages 19 / modules 17
+  15 table; lead: - | trail: -                                      MXFUN01 p7.0 #43: source image place value and rounding || MXFUN01 p12.0 #44: ordering numbers learn to use place value to order
+   1 table; lead: T:body black | trail: T:click drop black          CHFUN05 p0.0 #25: to express what you want to do using 要 yào
+   1 table; lead: T:body T:h3 | trail: -                            BLL253 p1.0 #1: laugh plough climb
+   1 table; lead: T:body T:image | trail: -                         ENGR202 p1.0 #4: huge giant large massive enormous colossal giganti
+   1 table; lead: T:body T:h3 black | trail: black                  CEDO502 p2.0 #7: bank a business that keeps people s money and lend
+   1 no-table: T:None T:body T:click drop                           HES1005 p3.0 #5: set up a community pantry outside your house where
+   1 table; lead: - | trail: black                                  OSOH201 p1.0 #11: don t share personal information keep personal inf

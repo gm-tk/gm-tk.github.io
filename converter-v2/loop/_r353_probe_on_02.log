@@ -1,0 +1,248 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+  ~ HIS1005_3_0.html: -0 +1
+     + <p>Once you have completed this task, upload your journal to the dropbox. Your kaiako will review your work an
+HIS1005: identical 14 / changed 1
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+  ~ HPFUN203_0_0.html: -0 +1
+     + <p>Image with text underneath.</p>
+HPFUN203: identical 0 / changed 1
+  ~ HPFUN301_0_0.html: -0 +1
+     + <p>– Sitting] indoors.</p>
+HPFUN301: identical 0 / changed 1
+  ~ HPFUN302_0_0.html: -0 +1
+     + <p>8x images DEV please create a slide show. On each slide there will be the country name, the game name, a de
+HPFUN302: identical 0 / changed 1
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+  ~ HPFUN901_0_0.html: -0 +1
+     + <p>click drop x 3</p>
+HPFUN901: identical 0 / changed 1
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+  ~ HPRE203_5_0.html: -1 +5
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Facing: [image] boy in wheel ch
+     + <p>x 4 slides</p>
+     + <p>boy in wheel chair.png / Jamie Jamie is a wheelchair user who loves sports. His neighbour asked him, “I kno
+     + <p>girl and dad.png / Leilani and her dad Leilani’s dad volunteered to be the coach for her netball team. / Ar
+     + <p>Leilani replied “Of course he does! He knows how to play a lot of sports.”</p><p class="cv2-note" style="co
+     + </div>
+  ~ HPRE203_7_0.html: -0 +1
+     + <p>x 6 slides</p>
+HPRE203: identical 6 / changed 2
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+  ~ MXDB302_8_0.html: -0 +1
+     + <p>Text for card facing outwards Text for flipped side</p>
+MXDB302: identical 9 / changed 1
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+  ~ MXEO401_1_0.html: -0 +1
+     + <p>CS: please put these screenshots in a carousel with arrows to click across each step:</p>
+MXEO401: identical 6 / changed 1
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+  ~ MXEX301_2_0.html: -0 +1
+     + <p>Sharing equally.</p>
+MXEX301: identical 7 / changed 1
+  ~ MXEX302_6_0.html: -0 +1
+     + <p>Are we able to use these posters and create a slideshow with them? Could we just use the following ones: pi
+MXEX302: identical 7 / changed 1
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+  ~ MXFL104_1_0.html: -0 +1
+     + <p>Include images and captions:</p>
+MXFL104: identical 5 / changed 1
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+  ~ MXFL203_2_0.html: -0 +1
+     + <p>show 5 slides day, week, month, year, and leap year. On each slide include information provided in table be
+MXFL203: identical 11 / changed 1
+  ~ MXFL204_9_0.html: -0 +1
+     + <p>Lions sleep for 20 hours a day.</p>
+MXFL204: identical 11 / changed 1
+  ~ MXFL301_1_0.html: -0 +1
+     + <p>with image on one side and text on other:</p>
+MXFL301: identical 9 / changed 1
+  ~ MXFL302_5_1_0.html: -0 +6
+     + <p>Find the correct answer</p>
+     + <p>Calculate the following equations to find the correct answer.</p>
+     + <p>2 ½ + 3 ¾ ( , 6 ¾, 5 ¼) 7 5/6 - 4 ½ (3 ½, , 3 1/6)</p>
+     + <p>3 ¾ + 1 2/3 (5 ½, , 4, 5/12) 5 1/3 - 1 5/6 (3 1/3, 4 1/3, )</p>
+     + <p>4 5/6 + 3 1/3 (8 1/12, , 8 1/3) 6 ¾ - 4 ½ (2 1/8, , 2 ½ )</p>
+     + <p>3 ¼ + 2 2/3 (5 5/12, 6 1/12, ) 7 ½ - 5 ¾ (1 ¼, 1 ½, )</p>
+MXFL302: identical 9 / changed 1
+  ~ MXFL401_4_0.html: -0 +2
+     + <p>Developer note: Please make this next modal stand out quite catchy like an advertisement to spark interest.
+     + <p>That’s right! – you get $521.43 FREE every year from the government, if you contribute $1,042.86 before Jun
+  ~ MXFL401_5_0.html: -0 +1
+     + <p>headings: Rates; Insurance; Power; Mortgage interest. (Please create little icons that mean Rates, insuranc
+MXFL401: identical 6 / changed 2
+  ~ MXFU201_4_0.html: -0 +1
+     + <p>1st bubble (boy in blue coat/green pants)</p>
+  ~ MXFU201_8_0.html: -0 +2
+     + <p>Tossing a Coin</p>
+     + <p>1st same characters as previously used.</p>
+MXFU201: identical 8 / changed 2
+MXFU202: identical 11 / changed 0
+  ~ MXFU301_3_0.html: -0 +2
+     + <p>Finding the probability</p>
+     + <p>Select the correct answer from the options given.</p>
+  ~ MXFU301_5_0.html: -0 +1
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/15558/viewContent/166509/View" target="_blank">http
+MXFU301: identical 10 / changed 2
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+  ~ MXFU402_1_0.html: -0 +1
+     + <p>(Please keep open when clicked)</p>
+MXFU402: identical 7 / changed 1
+MXFUN01: identical 19 / changed 0
+  ~ MXFUN02_0_0.html: -0 +3
+     + <li>3 - -2 = = 5</li>
+     + <ol>
+     + </ol>
+MXFUN02: identical 0 / changed 1
+MXFUN03: identical 1 / changed 0
+  ~ OSAH301_1_0.html: -0 +1
+     + <p>Kete 1</p>
+  ~ OSAH301_2_0.html: -0 +1
+     + <p>Kete 2</p>
+OSAH301: identical 2 / changed 2
+  ~ OSAH401_3_0.html: -0 +1
+     + <p>Correct answers in green</p>
+OSAH401: identical 4 / changed 1
+OSAH501: identical 6 / changed 0
+  ~ OSAI101_2_0.html: -1 +4
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image]<br />Image</p>
+     + <p>If you get stuck, AI can give synonyms or new describing words. AI can suggest ways to make a sentence easi
+     + <p>Is it a good or bad prompt?</p>
+     + <p>Read the prompt and decide if it is a good or bad prompt. Then click to see if you were right.</p>
+     + </div>
+OSAI101: identical 2 / changed 1
+OSAI201: identical 4 / changed 0
+  ~ OSAI301_2_0.html: -0 +1
+     + <p>3 across may look better</p>
+OSAI301: identical 3 / changed 1
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+  ~ OSBY301_2_0.html: -0 +2
+     + <p>keep speech bubble static – 4 separate speech bubbles/people.</p>
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/15558/viewContent/201135/View?ou=15558" target="_bl
+  ~ OSBY301_3_0.html: -0 +1
+     + <p>Show Text on image</p>
+OSBY301: identical 2 / changed 2
+  ~ OSBY401_2_0.html: -0 +2
+     + <p>keep speech bubble static – 6 separate speech bubbles/people.</p>
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/15558/viewContent/201135/View?ou=15558" target="_bl
+OSBY401: identical 4 / changed 1
+  ~ OSBY501_2_0.html: -0 +1
+     + <p>CS – can you include a of ‘do and do not’ for each slide underneath with 1 image: Each scenario is one slid
+  ~ OSBY501_5_0.html: -0 +1
+     + <p>CS – Please put all 5 cards in a horizontal row</p>
+OSBY501: identical 4 / changed 2
+  ~ OSGM101_2_0.html: -0 +2
+     + <p>Click on each card to see examples of each area we need to look after to feel good and healthy inside and o
+     + <p>CS – image is static, and each table column below (2 pages) moves</p>
+OSGM101: identical 2 / changed 1
+  ~ OSGM201_1_0.html: -0 +4
+     + <p>Types of devices used for gaming</p>
+     + <p>Handheld gaming devices / <a href="https://www.istockphoto.com/vector/glowing-neon-line-portable-video-game
+     + <p>Smart TVs and streaming devices / <a href="https://www.istockphoto.com/vector/video-game-on-tv-glowing-neon
+     + <p>Gaming helps your brain grow stronger / <a href="https://www.istockphoto.com/photo/children-playing-games-o
+OSGM201: identical 3 / changed 1
+  ~ OSGM301_1_0.html: -0 +1
+     + <p>What are the different ways people play games?</p>
+  ~ OSGM301_2_0.html: -0 +1
+     + <p>3 across may look better</p>
+OSGM301: identical 2 / changed 2
+  ~ OSGM401_1_0.html: -0 +1
+     + <p>CS please have backgrounds of green for positive side and red for negative side for each card. Have card ar
+  ~ OSGM401_2_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: hover: Custom designs that chan
+     + <p>/ Be wary of other people online. / <a href="https://www.istockphoto.com/vector/man-head-and-shoulders-silh
+     + </div>
+  ~ OSGM401_3_0.html: -0 +1
+     + <p>CS – Please put flip cards 3 across if this looks better</p>
+OSGM401: identical 2 / changed 3
+  ~ OSGM501_1_0.html: -0 +1
+     + <p>How are New Zealanders Gaming?</p>
+OSGM501: identical 5 / changed 1
+  ~ OSOH101_2_0.html: -0 +1
+     + <p>Click the hints to remind yourself of what you agree to as a responsible digital citizen at Te Kura.</p>
+  ~ OSOH101_3_0.html: -0 +1
+     + <p>can the speech bubbles be static like in a comic strip?</p>
+OSOH101: identical 2 / changed 2
+  ~ OSOH201_1_0.html: -0 +1
+     + <p>Can the letters be arranged in order R-E-A-D-Y S-A-F-E with each letter being the face of the click drop. C
+OSOH201: identical 3 / changed 1
+  ~ OSOH301_2_0.html: -0 +1
+     + <p>3 across may look better</p>
+OSOH301: identical 3 / changed 1
+  ~ OSOH401_1_0.html: -0 +1
+     + <p>Click the hints to see those tips again:</p>
+  ~ OSOH401_2_0.html: -0 +2
+     + <p>Correct answers in green</p>
+     + <p>A. What is your favourite colour? / B. What is the name of your first kapa haka group? / C. What school do 
+OSOH401: identical 3 / changed 2
+  ~ OSOH501_1_0.html: -0 +1
+     + <p>CS – Please have tabs read “READYSAFE” across, click each letter to open tab</p>
+  ~ OSOH501_4_0.html: -0 +1
+     + <p>CS - can be 4 across</p>
+OSOH501: identical 4 / changed 2
+OSSC301: identical 4 / changed 0
+  ~ OSSC401_1_0.html: -0 +1
+     + <p>Scam awareness. Guess who?</p>
+  ~ OSSC401_2_0.html: -1 +9
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: can the drink labels say ‘Smart
+     + <p>can the examples be made to look like news headlines with images</p>
+     + <p><b>Clickbait</b> Sensationalised content designed to generate attention and encourage readers to click on a
+     + <p><b>Misleading headings</b> Headlines that don’t accurately reflect the actual content. / <b>Example:</b> / 
+     + <p><b>Satire:</b> Content created for entertainment or parody. / <b>Example:</b> / <i>NZ to ban all homework a
+     + <p><b>Bad journalism:</b> News items that are poorly researched or without being fact checked. / <b>Example:</
+     + <p><b>Incorrect facts:</b> Incorrect details such as altered timelines, incorrect place names or unreliable so
+     + <p><b>Commercial agenda:</b> Content designed to sell products. / <b>Example:</b> / <i>Top 10 must-have sneake
+     + <p><b>Unconscious bias:</b> Tendency to believe information that supports our views. / <b>Example:</b> Sharing
+     + </div>
+OSSC401: identical 3 / changed 2
+
+TOTAL: identical 609 / changed 52 / missing 0 over 104 modules
+CHANGED: HIS1005/HIS1005_3_0.html HPFUN203/HPFUN203_0_0.html HPFUN301/HPFUN301_0_0.html HPFUN302/HPFUN302_0_0.html HPFUN901/HPFUN901_0_0.html HPRE203/HPRE203_5_0.html HPRE203/HPRE203_7_0.html MXDB302/MXDB302_8_0.html MXEO401/MXEO401_1_0.html MXEX301/MXEX301_2_0.html MXEX302/MXEX302_6_0.html MXFL104/MXFL104_1_0.html MXFL203/MXFL203_2_0.html MXFL204/MXFL204_9_0.html MXFL301/MXFL301_1_0.html MXFL302/MXFL302_5_1_0.html MXFL401/MXFL401_4_0.html MXFL401/MXFL401_5_0.html MXFU201/MXFU201_4_0.html MXFU201/MXFU201_8_0.html MXFU301/MXFU301_3_0.html MXFU301/MXFU301_5_0.html MXFU402/MXFU402_1_0.html MXFUN02/MXFUN02_0_0.html OSAH301/OSAH301_1_0.html OSAH301/OSAH301_2_0.html OSAH401/OSAH401_3_0.html OSAI101/OSAI101_2_0.html OSAI301/OSAI301_2_0.html OSBY301/OSBY301_2_0.html OSBY301/OSBY301_3_0.html OSBY401/OSBY401_2_0.html OSBY501/OSBY501_2_0.html OSBY501/OSBY501_5_0.html OSGM101/OSGM101_2_0.html OSGM201/OSGM201_1_0.html OSGM301/OSGM301_1_0.html OSGM301/OSGM301_2_0.html OSGM401/OSGM401_1_0.html OSGM401/OSGM401_2_0.html OSGM401/OSGM401_3_0.html OSGM501/OSGM501_1_0.html OSOH101/OSOH101_2_0.html OSOH101/OSOH101_3_0.html OSOH201/OSOH201_1_0.html OSOH301/OSOH301_2_0.html OSOH401/OSOH401_1_0.html OSOH401/OSOH401_2_0.html OSOH501/OSOH501_1_0.html OSOH501/OSOH501_4_0.html OSSC401/OSSC401_1_0.html OSSC401/OSSC401_2_0.html

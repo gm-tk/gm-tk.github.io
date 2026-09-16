@@ -182,6 +182,10 @@ class InteractiveBuilder {
 			}
 
 			// A builder may still decline (null) if the captured data did not fit.
+			// ROUND 353 — the generic MEMBERS rule: a built widget replaces the whole captured bundle,
+			// so every member the build did not consume either renders around the widget (prose)
+			// or declines the build (never half-build). See #withMembers.
+			if (html) html = this.#withMembers({ bundle, type, html, renderBlock, templates });
 			if (html) {
 				run?.AddNote?.("info", "InteractiveBuilder",
 					`Built ${type} #${bundle.index} from captured data (no placeholder needed).`);
@@ -193,6 +197,185 @@ class InteractiveBuilder {
 				`Could not build ${type} #${bundle.index} (${err.message}); left as a placeholder for manual build.`);
 			return null;
 		}
+	}
+
+	// =======================================================================
+	// ROUND 353 — THE GENERIC MEMBERS RULE (every built widget)
+	// =======================================================================
+
+	/**
+	 * ROUND 353 (the autonomous loop's session-15 Round 3) — NO built widget discards the writer's words.
+	 *
+	 * WHY. A built widget REPLACES the whole captured bundle, and every builder reads only the members it
+	 * understands — a table, the [tag] + [body] pairs — so anything else the scanner swallowed vanished from
+	 * the page without a trace. r351 found it on the dragAndDrop forms (21 of 77 builds), r352 on the carousel
+	 * (206 builds / 171 pages — the whole next section), and the widget text-loss census that followed
+	 * (`outputs/_measure_r352_widgetloss.cjs`) found the same silent loss on every other type: flipCard 68
+	 * builds / 54 pages (the card table's first row is the writer's instruction sentence, dropped as a
+	 * "label row"; a trailing paragraph), modal 45 / 36 (the caption under a [modal] + [image] / [video], the
+	 * "Go to journal" line), accordion 35 / 34, clickDrop 21 / 19, dropDown 16 / 16 — and the gold keeps the
+	 * lost text as ordinary <p> paragraphs on most of them (`_r353_losses_by_type.log`).
+	 *
+	 * THE RULE, applied at the ONE seam every builder passes through (dragAndDrop excluded — its own r351 rule):
+	 *   1. `consumed` = the normalised visible text of the built html, its alt / title attributes, and the
+	 *      bundle's instruction notes (already the red Writers Note after the widget).
+	 *   2. A member is CONSUMED when its words are in `consumed`: a member of at most short_words words by its
+	 *      whole normalised text, a longer one when at least consumed_ratio of its shingle-word shingles are
+	 *      present; a table when it holds no SENTENCE row (a cell of sentence_row_words+ words) or any sentence
+	 *      row is consumed; a media line / tag (an image, video, audio, embed URL) when its URL or video id is
+	 *      in the raw html; an instruction-class tag, a blank line, a bare marker with no words → skipped.
+	 *   3. An UN-CONSUMED member that is prose — a black paragraph, a [body] / a bracket-less line with words, the
+	 *      words on the invocation tag's own line, an un-consumed SENTENCE row of an otherwise consumed table —
+	 *      renders through the free-body block emitter BEFORE the widget when it precedes the first consumed
+	 *      member and AFTER it when it follows the last (the gold's <p>). Prose BETWEEN consumed members, a
+	 *      developer-cue line (CS: / Dev: / Note:), a heading tag, a media member whose URL is not in the build,
+	 *      any other tag, a table the build ignored → the whole build DECLINES (null) and the hand-off box keeps
+	 *      every member. A bundle whose build consumed NOTHING recognisable is left alone (the rule cannot place
+	 *      anything).
+	 * The widget's own markup is never edited: a build either keeps its html byte-for-byte (with prose around
+	 * it) or reverts to the box — so every widget verifier reads the same widgets or fewer.
+	 * Data interactive_builders._members_rule {enabled, env WIDGETMEMBERS_OFF, exclude_types, min_words,
+	 * short_words, shingle, consumed_ratio, sentence_row_words, note_cue_pattern, heading_tags}.
+	 *
+	 * @returns {string|null} the widget with its prose around it, unchanged, or null to keep the hand-off box
+	 */
+	static #withMembers({ bundle, type, html, renderBlock, templates }) {
+		const cfg = templates?._members_rule;
+		if (!cfg || cfg.enabled === false) return html;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (cfg.env && env[cfg.env]) return html;
+		if ((cfg.exclude_types ?? ["dragAndDrop"]).includes(type)) return html;
+		if (typeof renderBlock !== "function") return html;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return html;
+		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const norm = (t) => String(t ?? "").replace(/&[a-z#0-9]+;/gi, " ").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
+		const words = (t) => norm(String(t ?? "").replace(RED, " ").replace(/\[[^\]]*\]/g, " ").replace(/https?:\/\/\S+/g, " "));
+		const urlsOf = (t) => [...String(t ?? "").matchAll(/https?:\/\/[^\s"'<>)\]]+/g)].map((m) => m[0]);
+		const vidId = (u) => /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/.exec(u)?.[1] ?? null;
+		// an image URL reaches the page as its FILENAME (iStock-{id}.jpg / the r278 URL-slug placeholder), never as the URL
+		const imgKeys = (u) => {
+			const out = [];
+			const gm = /gm(\d{6,})/.exec(u) ?? /\/id\/(\d{6,})/.exec(u) ?? /istock[^\d]*(\d{6,})/i.exec(u);
+			if (gm) out.push("iStock-" + gm[1]);
+			const seg = String(u).replace(/[?#].*$/, "").split("/").filter(Boolean).pop() ?? "";
+			const slug = seg.replace(/\.[a-z0-9]{2,5}$/i, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+			if (slug.length >= 6) out.push(slug.slice(0, 24));
+			return out;
+		};
+		const stripped = String(html).replace(/<!--[\s\S]*?-->/g, " ");
+		const attrs = [...stripped.matchAll(/\b(?:alt|title|aria-label)="([^"]*)"/g)].map((m) => m[1]).join(" ");
+		const consumed = norm(stripped.replace(/<[^>]+>/g, " ") + " " + attrs + " " + (bundle.instructions ?? []).join(" "));
+		const rawHtml = String(html);
+		const minWords = cfg.min_words ?? 3, shortWords = cfg.short_words ?? 6, K = cfg.shingle ?? 4, ratio = cfg.consumed_ratio ?? 0.5;
+		const sentenceRow = cfg.sentence_row_words ?? 5;
+		const noteRe = new RegExp(cfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\u2013\u2014]", "i");
+		const headings = new Set(cfg.heading_tags ?? ["h2", "h3", "h4", "h5"]);
+		const mediaTags = new Set(cfg.media_tags ?? ["image", "video", "audio", "embed", "data marker"]);
+		const gj = DataService.Data.EmitTemplates?.buttons?.go_journal;
+		const gjLabel = gj ? new RegExp(gj.label_match, "i") : null, gjRaw = gj ? new RegExp(gj.raw_match, "i") : null;
+		const textConsumed = (t) => {
+			const w = t.split(" ").filter(Boolean);
+			if (w.length < minWords) return true;                                   // too short to matter
+			if (w.length <= shortWords) return consumed.includes(t);
+			let hit = 0, n = 0;
+			for (let i = 0; i + K <= w.length; i++) { n++; if (consumed.includes(w.slice(i, i + K).join(" "))) hit++; }
+			return n ? hit / n >= ratio : consumed.includes(t);
+		};
+		const mediaConsumed = (t) => {
+			const us = urlsOf(t); if (!us.length) return null;                      // no url → not a media line
+			const low = rawHtml.toLowerCase();
+			return us.every((u) => { const id = vidId(u); return rawHtml.includes(u) || (id && rawHtml.includes(id)) || imgKeys(u).some((k) => low.includes(k.toLowerCase())); });
+		};
+		// classify every member: {kind: "consumed" | "skip" | "prose" | "decline", text}
+		const cls = [];
+		for (let k = 0; k < members.length; k++) {
+			const m = members[k];
+			if (!m) { cls.push({ kind: "skip" }); continue; }
+			if (m.type === "table") {
+				const rows = (m.block?.rows ?? []).filter((r) => Array.isArray(r));
+				const sent = rows.map((r) => r.map((c) => words(c)).filter((t) => t.split(" ").filter(Boolean).length >= sentenceRow));
+				const sentRows = sent.map((cells, i) => ({ i, cells })).filter((x) => x.cells.length);
+				if (!sentRows.length) { cls.push({ kind: "consumed" }); continue; }
+				const used = sentRows.map((x) => x.cells.every(textConsumed));
+				if (!used.some(Boolean)) { cls.push({ kind: "decline", why: "a table the build ignored" }); continue; }
+				// an un-consumed sentence row at the top / bottom of a consumed table is the writer's prose
+				const lead = [], tail = [];
+				let top = true;
+				for (let j = 0; j < sentRows.length; j++) {
+					if (used[j]) { top = false; continue; }
+					const txt = rows[sentRows[j].i].map((c) => String(c ?? "").replace(RED, " ").trim()).filter(Boolean).join(" ");
+					if (top) lead.push(txt);
+					else if (sentRows.slice(j + 1).every((_, q) => !used[j + 1 + q])) { tail.push(txt); }
+					else { cls.push({ kind: "decline", why: "an ignored row between consumed rows" }); break; }
+				}
+				if (cls.length === k + 1) continue;                                 // declined inside the loop
+				cls.push({ kind: "consumed", lead, tail }); continue;
+			}
+			if (m.type === "black") {
+				const raw = String(m.text ?? "");
+				if (!raw.replace(RED, "").trim()) { cls.push({ kind: "skip" }); continue; }
+				const mc = mediaConsumed(raw);
+				const t = words(raw);
+				if (mc !== null && t.split(" ").filter(Boolean).length < minWords) { cls.push(mc ? { kind: "consumed" } : { kind: "decline", why: "a media url the build did not use" }); continue; }
+				if (mc === false) { cls.push({ kind: "decline", why: "a media url the build did not use" }); continue; }
+				if (textConsumed(t)) { cls.push({ kind: "consumed" }); continue; }
+				if (noteRe.test(t)) { cls.push({ kind: "decline", why: "a developer note" }); continue; }
+				cls.push({ kind: "prose", text: raw }); continue;
+			}
+			if (m.type === "tag") {
+				const parse = m.parse, prim = parse?.primary;
+				if (parse && (parse.class === "instruction" || parse.instructionFragment)) { cls.push({ kind: "skip" }); continue; }
+				const tag = String(prim?.tag ?? m.tag ?? "").toLowerCase();
+				const line = String(m.text ?? ""), after = String(m.blackAfter ?? "");
+				const t = (words(line) + " " + words(after)).trim();
+				const mc = mediaConsumed(line + " " + after + " " + (m.block?.links ?? []).map((l) => l?.target ?? "").join(" "));
+				if (mc === false) { cls.push({ kind: "decline", why: `a ${tag || "tag"} url the build did not use` }); continue; }
+				// a MEDIA tag's words are its reference title ("[video] Storytime with Brydie…", "[image] hairy guinea
+				// pig") — an asset request the builders surface as the Writers Note, never learner prose; the
+				// asset itself is judged by its URL above (a URL on the following black line is judged there)
+				if (mediaTags.has(tag)) { cls.push({ kind: "consumed" }); continue; }
+				// a go-to-journal [button] member is emitted by the caller (#goJournalTail's member branch)
+				if (tag === "button" && gjLabel && ((after.replace(/\*/g, "").trim() && gjLabel.test(after.replace(/\*/g, "").trim())) || gjRaw.test(line.trim()))) { cls.push({ kind: "consumed" }); continue; }
+				if (!t || t.split(" ").filter(Boolean).length < minWords) { cls.push({ kind: "consumed" }); continue; }   // a bare marker / a short label
+				if (textConsumed(t)) { cls.push({ kind: "consumed" }); continue; }
+				if (noteRe.test(t)) { cls.push({ kind: "decline", why: "a developer note" }); continue; }
+				if (headings.has(tag)) { cls.push({ kind: "decline", why: "a heading the build did not use" }); continue; }
+				const prose = tag === "body" || !prim || parse?.class === "noise" || (k === 0 && prim?.directive === "INTERACTIVE");
+				if (!prose) { cls.push({ kind: "decline", why: `a [${tag}] the build did not use` }); continue; }
+				cls.push({ kind: "prose", text: after.replace(RED, "").trim() ? after : line.replace(/\[[^\]]*\]/g, " ") }); continue;
+			}
+			cls.push({ kind: "decline", why: "a nested widget the build did not use" });
+		}
+		// decline_on_unrenderable (default true): an un-renderable un-consumed member reverts the build to the box.
+		// In PROSE-ONLY mode (false) the build stands and only the prose is restored — the silent loss of the
+		// un-renderable members remains, RECORDED (the r353 measurement: the strict mode reverted 475 widgets on 150
+		// pages, too many of them for reasons the seam cannot verify — a media URL the builder legitimately
+		// transformed, a title it dropped by its own rule — so the strict mode stays available behind the flag).
+		if (cls.some((c) => c.kind === "decline")) { if (cfg.decline_on_unrenderable !== false) return null; }
+		const consumedIdx = cls.map((c, i) => (c.kind === "consumed" ? i : -1)).filter((i) => i >= 0);
+		if (!consumedIdx.length) return html;                                          // nothing recognisable consumed — leave it
+		const firstC = consumedIdx[0], lastC = consumedIdx[consumedIdx.length - 1];
+		const before = [], after = [];
+		for (let i = 0; i < cls.length; i++) {
+			const c = cls[i];
+			if (c.kind === "consumed") { for (const t of (c.lead ?? [])) (i === firstC ? before : after).push(t); for (const t of (c.tail ?? [])) (i === lastC ? after : before).push(t); continue; }
+			if (c.kind !== "prose") continue;
+			if (i < firstC) before.push(c.text);
+			else if (i > lastC) after.push(c.text);
+			else if (cfg.decline_on_unrenderable === false) continue;                       // prose-only mode: left as it was
+			else {
+				// prose BETWEEN consumed members cannot be placed. A SHORT line (≤ between_short_words — "2. Watch the
+				// video." beside a modal's own video) is a bounded loss the widget can carry; anything longer → decline.
+				const w = words(c.text).split(" ").filter(Boolean).length;
+				if (!(cfg.between_short_skip !== false && w <= (cfg.between_short_words ?? shortWords))) return null;
+			}
+		}
+		if (!before.length && !after.length) return html;
+		const render = (t) => { const r = renderBlock(t); return Array.isArray(r) ? r : (r ? [r] : []); };
+		const b = before.flatMap(render), a = after.flatMap(render);
+		if (!b.length && !a.length) return html;
+		return [...b, html, ...a].join("\n");
 	}
 
 	// =======================================================================

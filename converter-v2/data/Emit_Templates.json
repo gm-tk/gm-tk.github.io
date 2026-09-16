@@ -1189,6 +1189,23 @@
 		"============================================================================"
 	],
 	"interactive_builders": {
+		"_members_rule": {
+			"enabled": false,
+			"env": "WIDGETMEMBERS_OFF",
+			"exclude_types": ["dragAndDrop"],
+			"min_words": 3,
+			"short_words": 6,
+			"shingle": 4,
+			"consumed_ratio": 0.5,
+			"sentence_row_words": 5,
+			"heading_tags": ["h2", "h3", "h4", "h5"],
+			"media_tags": ["image", "video", "audio", "embed", "data marker"],
+			"decline_on_unrenderable": false,
+			"between_short_skip": true,
+			"between_short_words": 6,
+			"note_cue_pattern": "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\\u2013\\u2014]",
+			"note": "ROUND 353 (the autonomous loop's session-15 Round 3). THE GENERIC MEMBERS RULE at the one seam every builder passes through (InteractiveBuilder.Build → #withMembers; dragAndDrop excluded — its own r351 rule): a built widget REPLACES the whole captured bundle and each builder reads only the members it understands, so anything else the scanner swallowed vanished from the page without a trace — the widget text-loss census (_measure_r352_widgetloss.cjs) found it on flipCard 68 builds / 54 pages (the card table's first row = the writer's instruction sentence, dropped as a label row; a trailing paragraph), modal 45 / 36 (the caption under [modal] + [image] / [video], the Go to journal line), accordion 35 / 34, clickDrop 21 / 19, dropDown 16 / 16, and the gold keeps the lost text as ordinary <p> on most of them. The rule: consumed = the built html's visible text + alt/title + the instruction notes; a member is consumed when its words are there (a short member whole, a longer one by >= consumed_ratio of its shingle-word shingles; a table by its sentence rows; a media line by its URL / video id; a media tag's own words are its reference title — never prose — and a go-to-journal [button] member is the caller's #goJournalTail business); an UN-CONSUMED prose member (a black paragraph, a [body] / bracket-less line, the invocation tag's own words, an ignored sentence row at a consumed table's top / bottom) renders through the free-body block emitter BEFORE the widget when it precedes the first consumed member and AFTER it when it follows the last; prose BETWEEN consumed members longer than between_short_words (a short line beside a modal's own video — '2. Watch the video.' — is a bounded, recorded loss the widget carries), a developer-cue line, a heading, a media member whose URL is not in the build, any other tag, a table the build ignored → the build DECLINES and the hand-off box keeps every member (never half-build). The widget's own markup is never edited. WIDGETMEMBERS_OFF=1 = the r352 corpus byte-for-byte. SHIPPED OFF (enabled: false) at r353, 2026-09-17: the 416-module probe measured the STRICT mode (decline_on_unrenderable true) reverting 475 built widgets on 150 pages — flipCard 149, clickDrop 96, accordion 67, modal 65, dropDown 45, carousel 41, tabs 12 — for reasons the seam cannot verify one by one (a media URL a builder legitimately transformed, a title a builder drops by its own rule, a same-type sub-tag's words), and the PROSE-ONLY mode (decline_on_unrenderable false; 160 pages, 228 <p> added, 0 reverts) DUPLICATING text on 18 pages where the consumed test misses a builder's rewrite (HPRE203 5.0: the flipCard's image-filename + back-text rows rendered again as paragraphs; CEDO301 6.0; ENFUN01 0.0) and surfacing writer notes as prose ('x 4 slides'). A text-presence test at the seam cannot know what a builder consumed; the rule needs each builder to REPORT the members it used (bundle._consumedMembers — a per-builder seam, 2–3 engine rounds), or the losses are closed builder by builder (the flipCard first-row instruction sentence 41 sites, the modal caption, the XDLS accordion body). The code stays for that day; the flag is OFF."
+		},
 		"hint": {
 			"enabled": true,
 			"title_tags": ["title bar"],
