@@ -1,0 +1,82 @@
+dragAndDrop bundles: 882 built 58 declined 824
+declined with a table of width >= 3: 323 modules 171 pages 270
+
+shape sub-families (width >= 3, declined):
+   104 bundles /   96 pages /  70 modules  C no clean header (red)
+    93 bundles /   85 pages /  60 modules  has-url/media
+    39 bundles /   35 pages /  29 modules  header only
+    32 bundles /   27 pages /  26 modules  B full grid: header + every cell filled
+    21 bundles /   21 pages /  18 modules  C no clean header
+    12 bundles /   12 pages /  10 modules  B full grid: header + every cell filled (red)
+    11 bundles /   11 pages /  10 modules  A4 sorted-ragged: header cats + items under columns (some rows partial)
+     6 bundles /    6 pages /   6 modules  A4 sorted-ragged: header cats + items under columns (some rows partial) (red)
+     4 bundles /    4 pages /   4 modules  A3 pool: header cats + items in ONE column (no answer → option=any)
+     1 bundles /    1 pages /   1 modules  A2 pool: header cats + ONE ' / ' cell (no answer → option=any)
+
+2-column declined: 229 of which repeated answers (categorisation): 5 modules 5
+
+gold (the 138 modules' pages): {'column widgets': 387, 'option=any drops': 24, 'option=N drops': 4691, 'standard widgets': 440, 'FIB': 93, 'scatter': 85, 'area': 67}
+
+examples per sub-family:
+  [header only] BLL116 p2.0 #6 1x5: hdr=['is', 'Sant', 'the', 'tins.', 'at'] row1=None
+  [B full grid: header + every cell filled] BLL133 p2.0 #6 4x3: hdr=['fluff', 'doll', 'less'] row1=['fill', 'cuff', 'gloss']
+  [C no clean header (red)] BLL151 p1.0 #3 4x3: hdr=['', '', ''] row1=['Words that end in d or t ', 'Adding ‘ed’ to words that', 'Adding ‘ed’ to words that']
+  [has-url/media] BLL160 p0.0 #4 5x3: hdr=['/ y /', '/ ī /', '/ ē /'] row1=['https://www.istockphoto.c', 'https://www.istockphoto.c', 'ttps://www.istockphoto.co']
+  [B full grid: header + every cell filled (red)] BLL250 p2.1 #1 2x3: hdr=['**Silent ‘k’**', '**Silent ‘w’**', '**Silent ‘h’**'] row1=['[correct answers] / knife', '[correct answers] / wrong', '[correct answers] / whisk']
+  [A4 sorted-ragged: header cats + items under columns (some rows partial)] CEDK101 p0.0 #2 2x3: hdr=['Heat', 'Light', 'Both'] row1=['', '', '']
+  [C no clean header] CEDK101 p0.0 #10 3x6: hdr=['Oldest Newest'] row1=['', '', '', '', '', '']
+  [A4 sorted-ragged: header cats + items under columns (some rows partial) (red)] MXDB302 p2.0 #10 5x4: hdr=['Millimetres (mm)', 'Centimetres (cm)', 'Metres (m)', 'Kilometres (km)'] row1=['Jigsaw puzzle piece', 'Post-it note', 'Residential property', 'City boundaries']
+  [A3 pool: header cats + items in ONE column (no answer → option=any)] XMES202 p3.0 #41 4x5: hdr=['Yesterday/Today/To', 'the weather', 'is/was/will be', 'Sunny/cloudy/rainy', 'Icons'] row1=['', 'the weather', '', '', '']
+  [A2 pool: header cats + ONE ' / ' cell (no answer → option=any)] ENGR301 p1.0 #1 3x3: hdr=['Agree', 'Neutral/Not sure', 'Disagree'] row1=['', '', '']
+
+=== the [correct answers] sub-family (declined D&D bundles whose table carries a red 'correct answers' run) ===
+bundles 40 pages 35 modules 26
+by width x header: [((2, 'hdr-?'), 17), ((3, 'hdr-?'), 16), ((3, 'hdr-clean'), 2), ((1, 'hdr-?'), 2), ((2, 'hdr-clean'), 1), ((5, 'hdr-?'), 1), ((6, 'hdr-?'), 1)]
+    16 ('rows-with-CA=1', 'CA-cells/row=1', 'width=2')
+    16 ('rows-with-CA=1', 'CA-cells/row=1', 'width=3')
+     1 ('rows-with-CA=1', 'CA-cells/row=3', 'width=3')
+     1 ('rows-with-CA=3', 'CA-cells/row=2', 'width=2')
+     1 ('rows-with-CA=6', 'CA-cells/row=1', 'width=3')
+     1 ('rows-with-CA=1', 'CA-cells/row=1', 'width=1')
+     1 ('rows-with-CA=1', 'CA-cells/row=2', 'width=5')
+     1 ('rows-with-CA=1', 'CA-cells/row=1', 'width=6')
+     1 ('rows-with-CA=2', 'CA-cells/row=1', 'width=2')
+     1 ('rows-with-CA=6', 'CA-cells/row=1', 'width=1')
+series: [('BLL', 26), ('ENFUN', 3), ('MXDB', 3), ('OSAI', 2), ('ENGS', 2), ('HPRE', 2), ('ENGJ', 1), ('ENGI', 1)]
+examples:
+  BLL112 p1.0 #2 7x2 hdr=['', 'Correct answer -']
+       ['https://www.istockphoto.com/photo/africa', 'sit']
+       ['https://www.istockphoto.com/vector/water', 'tap']
+  BLL167 p1.1 #4 10x2 hdr=['What am I audios', 'Correct answers']
+       ['I’m a sound often made by an owl. What a', 'hoot']
+       ['I’m a type of insect larva, often found ', 'grubs']
+  BLL250 p2.1 #1 2x3 hdr=['**Silent ‘k’**', '**Silent ‘w’**', '**Silent ‘h’**']
+       ['[correct answers] / knife / know / knee   RED:[correct answers]', '[correct answers] / wrong / wrinkles / w  RED:[correct answers]', '[correct answers] / whiskers / wheel / w  RED:[correct answers]']
+  BLL250 p2.1 #3 9x3 hdr=['[Audio]', '[Image]', 'Correct answer']
+       ['[lamb]', 'https://media.istockphoto.com/id/1707173', 'Lamb  RED:Lamb']
+       ['[comb]', 'https://media.istockphoto.com/id/1621470', 'Comb  RED:Comb']
+  BLL250 p2.2 #10 9x3 hdr=['[Audio]', 'Image', 'Correct answer']
+       ['[scissors]', 'https://media.istockphoto.com/id/8807532', 'Scissors  RED:Scissors']
+       ['[scythe]', 'https://media.istockphoto.com/id/2213170', 'Scythe  RED:Scythe']
+  BLL261 p1.0 #2 4x2 hdr=['**Ends with –ing', '**Does not end w']
+       ['String [correct answer]  RED:[correct answer]', 'Three [correct answer]  RED:[correct answer]']
+       ['Spring [correct answer]  RED:[correct answer]', 'Three [correct answer]  RED:[correct answer]']
+
+1-row tables (word tiles / sentence building): 39 modules 29 [('BLL', 12), ('XTAS', 5), ('CEDO', 4), ('XMES', 3), ('MXFL', 3)]
+
+=== the IMAGE / media dragAndDrop family (declined bundles with media members or an image url in the table) ===
+bundles 316 pages 252 modules 174
+    66  tables=0
+    18  tables=2
+    11  2-col, url in col [0], 7 rows
+    11  2-col, url in col [0], 6 rows
+     9  3-col, url in col [1], audio col, 7 rows
+     9  2-col, url in col [0], 5 rows
+     8  2-col, url in col [0, 1], 5 rows
+     7  2-col, url in col [0, 1], 6 rows
+     7  3-col, url in col [1], audio col, 8 rows
+     7  3-col, url in col [0, 1, 2], 4 rows
+     5  3-col, url in col [1], audio col, 9 rows
+     5  3-col, url in col [1], 5 rows
+series: [('BLL', 116), ('ENGI', 20), ('XGF', 13), ('ENFUN', 12), ('ENGC', 9), ('XMES', 9), ('HIS', 8), ('CEDO', 7)]
+gold widgets in these modules (class modifiers, layout): [(('audioButton widgets', ''), 711), (('-', 'standard'), 149), (('noBG', 'column'), 94), (('-', 'column'), 87), (('-', 'FIB'), 67), (('-', 'scatter'), 57), (('autoCheck', 'standard'), 48), (('wordDrag', ''), 47), (('noBG autoCheck', 'column'), 45), (('row', 'area'), 38), (('images', 'standard'), 22), (('row', 'column'), 22)]

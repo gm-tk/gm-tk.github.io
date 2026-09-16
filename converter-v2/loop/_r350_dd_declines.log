@@ -1,0 +1,81 @@
+dragAndDrop declined: 1089 modules 292 | built: 84 modules 45
+
+by deciding guard:
+    226  dragAndDrop:301 — if (width !== 2)
+    214  dragAndDrop:298 — if (tables.length !== 1)
+    142  dragAndDrop:307 — if (this.#hasRedText(r[0]) || this.#hasRedText(r[1]))
+    109  dragAndDrop:296 — if ((bundle?.media ?? []).length)
+     77  dragAndDrop:295 — if (bundle?.extraTypes && bundle.extraTypes.length)
+     73  dragAndDrop:287 — if (tables.length !== 1)
+     67  dragAndDrop:290 — if (width !== 2)
+     40  dragAndDrop:296 — if (this.#hasRedText(r[0]) || this.#hasRedText(r[1]))
+     39  dragAndDrop:285 — if ((bundle?.media ?? []).length)
+     26  dragAndDrop:310 — if (!label || !answer)
+     26  dragAndDrop:284 — if (bundle?.extraTypes && bundle.extraTypes.length)
+     22  dragAndDrop:311 — if (/https?:\/\
+
+by shape (the builder's own shape label), top 20:
+    146  no-table: prose/other (black x0, ownTags 0, heads 0)
+    102  MULTI-TABLE x2
+     56  table 6x2
+     48  table 5x2
+     46  table 7x2
+     43  table 5x3
+     38  table 4x2
+     32  no-table: prose/other (black x1, ownTags 0, heads 0)
+     30  table 2x3
+     27  table 7x3
+     27  table 4x3
+     24  table 2x2
+     23  table 6x3
+     22  table 9x2
+     19  table 8x2
+     18  MULTI-TABLE x3
+     17  table 4x4
+     16  no-table: prose/other (black x7, ownTags 0, heads 0)
+     16  table 8x3
+     15  table 10x2
+
+by feat signature, top 15:
+    351  ['variant:dragAndDrop', 'media:none', 'member:table']
+     76  ['has-modifier', 'variant:dragAndDrop', 'media:none', 'member:table']
+     55  ['no-table', 'variant:dragAndDrop', 'media:none']
+     32  ['tables:multi', 'variant:dragAndDrop', 'media:none', 'member:table']
+     29  ['no-table', 'has-modifier', 'variant:dragAndDrop', 'media:none']
+     26  ['tables:multi', 'has-modifier', 'variant:dragAndDrop', 'media:none', 'member:table']
+     25  ['variant:dragAndDrop', 'media:none', 'member:instruction-span', 'member:table']
+     19  ['has-modifier', 'variant:dragAndDrop', 'media:none', 'member:black', 'member:table']
+     19  ['variant:dragAndDrop', 'media:none', 'member:black', 'member:table']
+     18  ['no-table', 'variant:dragAndDrop', 'media:none', 'member:black']
+     17  ['no-table', 'has-modifier', 'variant:dragAndDrop', 'media:none', 'member:black']
+     17  ['media:none', 'member:table']
+     15  ['no-table', 'variant:dragAndDrop', 'media:other-url', 'member:instruction-span']
+     14  ['no-table', 'variant:dragAndDrop', 'media:none', 'member:instruction-span']
+     10  ['variant:dragAndDrop', 'media:none', 'member:table', 'member:black']
+
+built D&D shapes (what the builder handles today):
+     26  table 5x2
+     14  table 4x2
+     14  table 6x2
+     12  table 8x2
+      4  table 10x2
+      4  table 2x2
+      3  table 11x2
+      3  table 7x2
+
+guard x shape (top 15):
+     81  no-table: prose/other (black x0, ownTags 0, heads 0) | dragAndDrop:298 — if (tables.length !== 1)
+     49  MULTI-TABLE x2         | dragAndDrop:298 — if (tables.length !== 1)
+     30  no-table: prose/other (black x0, ownTags 0, heads 0) | dragAndDrop:296 — if ((bundle?.media ?? []).length)
+     27  table 7x2              | dragAndDrop:307 — if (this.#hasRedText(r[0]) || this.#hasRedText(r[1]))
+     27  table 5x3              | dragAndDrop:301 — if (width !== 2)
+     25  table 6x2              | dragAndDrop:307 — if (this.#hasRedText(r[0]) || this.#hasRedText(r[1]))
+     23  no-table: prose/other (black x0, ownTags 0, heads 0) | dragAndDrop:287 — if (tables.length !== 1)
+     21  table 7x3              | dragAndDrop:301 — if (width !== 2)
+     21  table 5x2              | dragAndDrop:307 — if (this.#hasRedText(r[0]) || this.#hasRedText(r[1]))
+     21  MULTI-TABLE x2         | dragAndDrop:287 — if (tables.length !== 1)
+     20  table 4x3              | dragAndDrop:301 — if (width !== 2)
+     18  table 2x3              | dragAndDrop:301 — if (width !== 2)
+     18  table 4x2              | dragAndDrop:307 — if (this.#hasRedText(r[0]) || this.#hasRedText(r[1]))
+     14  MULTI-TABLE x2         | dragAndDrop:295 — if (bundle?.extraTypes && bundle.extraTypes.length)
+     13  table 9x2              | dragAndDrop:307 — if (this.#hasRedText(r[0]) || this.#hasRedText(r[1]))
