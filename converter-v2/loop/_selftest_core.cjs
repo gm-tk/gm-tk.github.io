@@ -78,6 +78,10 @@ const SPEC = {
 	// menulabels (round 349): the INJECT probe turns the first <h5> label of the first menu page back into a <p> — the
 	// not-h5 rule must register a defect; ENGC401 (the "We are learning to:" family, 8 pages) is the fixture.
 	"_verify_menulabels.cjs": { codes: ["ENGC401"], total: /TOTAL: (\d+) label/, signal: /defect (\d+)/, inject: true },
+	// dragdrop (round 350 — Chris's D10-3, the dragAndDrop build kickoff): the INJECT probe gives the first built standard widget's
+	// first drag option="99" (no matching drop) and a loading="lazy" image — both 03B-form rules must register; BLL146 (the
+	// gold-exact images form) + ENGJ102 (a text form) are the fixtures.
+	"_verify_dragdrop.cjs": { codes: ["BLL146", "ENGJ102"], total: /TOTAL: (\d+) widget/, signal: /defect (\d+)/, inject: true },
 	"_verify_hintslider.cjs": { codes: ["OSBY201"], total: /built (\d+) rows/, signal: "built-only", mangle: "full" },
 	// image_carousel fixture must have a CLEAN baseline (OSGM501: 5 slides exact, defect 0) —
 	// CEDO105 is saturated (12/12 baseline defects), a saturated signal cannot increase.

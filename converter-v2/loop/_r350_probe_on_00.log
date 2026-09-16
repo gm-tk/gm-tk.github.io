@@ -1,0 +1,783 @@
+  ~ AGH1001_2_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+AGH1001: identical 5 / changed 1
+AGH1002: identical 7 / changed 0
+AGH1003: identical 9 / changed 0
+AGH1004: identical 7 / changed 0
+  ~ AGH1005_6_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+AGH1005: identical 8 / changed 1
+AGH1006: identical 10 / changed 0
+AGH1007: identical 10 / changed 0
+AGH1008: identical 10 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH105: identical 8 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH303: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ANZH404: identical 7 / changed 0
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+  ~ ARFUN03_0_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ARFUN03: identical 0 / changed 1
+ARFUN04: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+  ~ BLL112_1_0.html: -46 +34
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL112-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity 1C — see BLL1
+     - <p>Drag the word so it matches the picture.</p>
+     - <th></th>
+     - <th> Correct answer - can we jumble them up though please. </th>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/african-american-girl-sitting-in-park-gm165084620-17203556?sear
+     - <td>sit</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/vector/water-faucet-icon-line-art-gm1702790812-538893757?searchscope=
+     - <td>tap</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/marching-ants-xxxl-image-gm497387773-41962984?searchscope=image
+     - <td>ants</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/vector/frying-pan-icon-vector-design-on-white-background-gm1500807360
+     - <td>pan</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/vector/hand-drawing-food-can-vector-illustration-gm826717340-13440235
+     - <td>tin</td>
+     - </tr>
+     - <tr>
+     - <td> Arrow added to image / <a href="https://www.istockphoto.com/vector/watermelon-icon-gm1780327064-546762198
+     - <td>pip</td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL112-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - … 6 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>sit</p></div>
+     + <div class="question"><p>tap</p></div>
+     + <div class="question"><p>ants</p></div>
+     + <div class="question"><p>pan</p></div>
+     + <div class="question"><p>tin</p></div>
+     + <div class="question"><p>pip</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-16508
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-17027
+     + … 14 more added
+BLL112: identical 2 / changed 1
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+  ~ BLL122_1_0.html: -46 +34
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL122-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity 1D — see BLL1
+     - <p>Drag the word so it matches the picture. Click on the picture for each word to hear what it means and to he
+     - <th></th>
+     - <th> Correct answer - can we jumble them up though please. </th>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/nature-in-danger-gm1061829496-283866361?searchscope=image%2Cfil
+     - <td>tip</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/big-hole-gm471081443-6378086?searchscope=image%2Cfilm" target="
+     - <td>pit</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/marching-ants-xxxl-image-gm497387773-41962984?searchscope=image
+     - <td>ants</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/vector/water-faucet-cute-water-kitchen-vector-illustration-icon-black
+     - <td>tap</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/rainwater-storage-tank-gm1761278424-544847012?searchscope=image
+     - <td>tank</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/close-up-photo-of-mans-hands-opens-lid-of-canned-tomato-puree-g
+     - <td>tin</td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL122-01-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - … 6 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>tip</p></div>
+     + <div class="question"><p>pit</p></div>
+     + <div class="question"><p>ants</p></div>
+     + <div class="question"><p>tap</p></div>
+     + <div class="question"><p>tank</p></div>
+     + <div class="question"><p>tin</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-10618
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-47108
+     + … 14 more added
+BLL122: identical 2 / changed 1
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+  ~ BLL125_1_0.html: -37 +31
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL125-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity 1B — see BLL1
+     - <th><a href="https://www.istockphoto.com/photo/10-number-3d-silver-structure-3d-rendering-gm865075030-14371080
+     - <th>hen</th>
+     - <td><a href="https://www.istockphoto.com/photo/cheese-and-crackers-gm177748351-24119697?searchscope=image%2Cfi
+     - <td>pack</td>
+     - <td><a href="https://www.istockphoto.com/photo/queen-elizabeth-ii-stamp-gm171298942-20746632?searchscope=image
+     - <td>camp</td>
+     - <td><a href="https://www.istockphoto.com/photo/burlap-sack-gm182476443-11974202?searchscope=image%2Cfilm" targ
+     - <td>track</td>
+     - <td><a href="https://www.istockphoto.com/photo/sticks-on-white-gm1173269189-325805805?searchscope=image%2Cfilm
+     - <td>tricks</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL125-01-03" style="border: 8px sol
+     - <tr>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL125-01-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>hen</p></div>
+     + <div class="question"><p>pack</p></div>
+     + <div class="question"><p>camp</p></div>
+     + <div class="question"><p>track</p></div>
+     + <div class="question"><p>tricks</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-86507
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-17774
+     + <div class="drag" option="3"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-17129
+     + <div class="drag" option="4"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-18247
+     + … 11 more added
+BLL125: identical 2 / changed 1
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+  ~ BLL130_0_0.html: -59 +52
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="BLL130-00-07" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dragAndDrop — Activity 2G — see BLL
+     - <th>pots</th>
+     - <th><a href="https://www.istockphoto.com/photo/set-of-stainless-steel-dishware-isolated-on-white-background-gm
+     - <td>dog</td>
+     - <td><a href="https://www.istockphoto.com/photo/a-tricolor-mixed-breed-dog-listening-intently-with-a-foggy-back
+     - <td>sock</td>
+     - <td><a href="https://www.istockphoto.com/photo/colorful-striped-sock-in-red-gray-and-blue-on-white-background-
+     - <td>rots</td>
+     - <td><a href="https://www.istockphoto.com/photo/rotten-apple-gm519974059-50189754?searchscope=image%2Cfilm" tar
+     - <td>rocks</td>
+     - <td><a href="https://www.istockphoto.com/vector/watercolor-drawn-group-of-bottom-stones-on-white-background-un
+     - <td>cot</td>
+     - <td><a href="https://www.istockphoto.com/photo/white-baby-crib-on-white-background-gm165835408-17221343?search
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="BLL130-00-08" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="BLL130-00-09" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="BLL130-00-10" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="BLL130-00-11" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="BLL130-00-12" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="BLL130-00-13" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="BLL130-00-14" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="BLL130-00-15" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="BLL130-00-16" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="BLL130-00-17" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="BLL130-00-18" style="border: 8px so
+     - … 19 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>pots</p></div>
+     + <div class="question"><p>dog</p></div>
+     + <div class="question"><p>sock</p></div>
+     + <div class="question"><p>rots</p></div>
+     + <div class="question"><p>rocks</p></div>
+     + <div class="question"><p>cot</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-21488
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-20261
+     + … 32 more added
+BLL130: identical 0 / changed 1
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+BLL140: identical 1 / changed 0
+BLL141: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+  ~ BLL146_1_0.html: -38 +31
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL146-01-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 1E — see BLL1
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>sink</th>
+     - <th><a href="https://www.istockphoto.com/photo/young-woman-drinking-glass-of-water-gm614012030-106094051?searc
+     - </tr>
+     - <tr>
+     - <td>see</td>
+     - <td><a href="https://www.istockphoto.com/photo/insects-of-europe-bees-side-view-macro-of-western-honey-bee-iso
+     - </tr>
+     - <tr>
+     - <td>trip</td>
+     - <td><a href="https://www.istockphoto.com/photo/water-drop-on-white-gm155276424-18726900?searchscope=image%2Cfi
+     - </tr>
+     - <tr>
+     - <td>toad</td>
+     - <td><a href="https://www.istockphoto.com/photo/mountain-road-journey-gm1429579100-472727679?searchscope=image%
+     - </tr>
+     - <tr>
+     - <td>boast</td>
+     - <td><a href="https://www.istockphoto.com/photo/toast-butter-gm140377997-2860303?searchscope=image%2Cfilm" targ
+     - </tr>
+     - <tr>
+     - <td>tail</td>
+     - <td><a href="https://www.istockphoto.com/photo/nail-on-white-gm183295634-14650210?searchscope=image%2Cfilm" ta
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>sink</p></div>
+     + <div class="question"><p>see</p></div>
+     + <div class="question"><p>trip</p></div>
+     + <div class="question"><p>toad</p></div>
+     + <div class="question"><p>boast</p></div>
+     + <div class="question"><p>tail</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-61401
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-13964
+     + … 11 more added
+BLL146: identical 2 / changed 1
+BLL147: identical 3 / changed 0
+BLL150: identical 1 / changed 0
+BLL151: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+  ~ BLL157_1_1.html: -0 +10
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + <div class="row">
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+     + </div>
+BLL157: identical 2 / changed 1
+BLL160: identical 1 / changed 0
+  ~ BLL161_1_1.html: -46 +38
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL161-02-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dragAndDrop — Activity 2A — see BLL1
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><a href="https://www.istockphoto.com/photo/inland-taipan-snake-isolated-on-white-gm475493514-65351981" tar
+     - <th>hiss</th>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/playful-border-collie-gm505372604-83643257" target="_blank">htt
+     - <td>woof</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/easter-baby-chicken-gm185078147-18890834" target="_blank">https
+     - <td>cheep</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/frog-eating-a-fly-gm175422366-20639634" target="_blank">https:/
+     - <td>croak</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/honey-bee-on-white-backround-gm146810332-9807320" target="_blan
+     - <td>buzz</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/lion-panthera-leo-10-years-old-isolated-on-white-gm877369086-24
+     - <td>roar</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/cute-cow-isolated-on-white-black-mottled-gentle-surprised-look-
+     - <td>moo</td>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL161-02-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL161-02-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 6 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>hiss</p></div>
+     + <div class="question"><p>woof</p></div>
+     + <div class="question"><p>cheep</p></div>
+     + <div class="question"><p>croak</p></div>
+     + <div class="question"><p>buzz</p></div>
+     + <div class="question"><p>roar</p></div>
+     + <div class="question"><p>moo</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="drop" option="7"></div>
+     + <div class="dragContainer">
+     + … 18 more added
+BLL161: identical 2 / changed 1
+BLL162: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL170: identical 1 / changed 0
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL176: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+  ~ BLL210_0_0.html: -65 +63
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="BLL210-00-15" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: dragAndDrop — Activity 5A — see BLL
+     - <th><a href="https://www.istockphoto.com/photo/gray-cement-cinder-block-gm1344823178-423072528" target="_blank
+     - <th>concrete</th>
+     - <td><a href="https://www.istockphoto.com/vector/dustbin-recyclable-recycling-line-icon-gm1569064610-527791538"
+     - <td><a href="https://www.istockphoto.com/vector/women-routine_04-gm1387082132-445116759" target="_blank">https
+     - <td>athlete</td>
+     - <td><a href="https://www.istockphoto.com/vector/a-boy-on-trapeze-swing-gm951815436-259830585" target="_blank">
+     - <td>trapeze</td>
+     - <td><a href="https://www.istockphoto.com/photo/young-man-leaning-with-a-smile-on-his-face-gm155942165-17788779
+     - <td>Pete</td>
+     - <td><a href="https://www.istockphoto.com/vector/running-horses-silhouette-herd-gm1291626075-386690937" target=
+     - <td>stampede</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="BLL210-00-16" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="BLL210-00-17" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <td>delete</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="BLL210-00-18" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="BLL210-00-19" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="BLL210-00-20" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="BLL210-00-21" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="BLL210-00-22" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="BLL210-00-23" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="BLL210-00-24" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="BLL210-00-25" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="35" data-cv2-ref="BLL210-00-26" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="BLL210-00-27" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <tr>
+     - … 25 more removed
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>concrete</p></div>
+     + <div class="question"><p>delete</p></div>
+     + <div class="question"><p>athlete</p></div>
+     + <div class="question"><p>trapeze</p></div>
+     + <div class="question"><p>Pete</p></div>
+     + <div class="question"><p>stampede</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + … 43 more added
+BLL210: identical 0 / changed 1
+BLL211: identical 3 / changed 0
+BLL212: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+  ~ BLL215_1_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+BLL215: identical 2 / changed 1
+  ~ BLL216_1_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+BLL216: identical 2 / changed 1
+BLL217: identical 3 / changed 0
+  ~ BLL220_0_0.html: -47 +39
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="BLL220-00-19" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dragAndDrop — Activity 5A — see BLL
+     - <th><a href="https://www.istockphoto.com/photo/tauranga-mt-maunganui-gm1162086215-318623922" target="_blank">h
+     - <th>beach</th>
+     - <td><a href="https://www.istockphoto.com/photo/house-keys-with-house-shaped-keychain-isolated-on-white-backgro
+     - <td>keys</td>
+     - <td><a href="https://www.istockphoto.com/photo/fantasy-literature-emotional-child-girl-read-interesting-book-i
+     - <td>reading</td>
+     - <td><a href="https://www.istockphoto.com/photo/sunlight-through-the-forest-gm512350134-87129017" target="_blan
+     - <td>trees</td>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/skinny-tight-blue-jeans-on-white-background-gm171269123-2066366
+     - <td>jeans</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/vervet-monkey-chlorocebus-pygerythrus-gm93214254-6228262" targe
+     - <td>monkey</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/rail-transportation-gm1303549851-394974289" target="_blank">htt
+     - <td>train</td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="BLL220-00-20" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="BLL220-00-21" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="BLL220-00-22" style="border: 8px so
+     - … 7 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>beach</p></div>
+     + <div class="question"><p>keys</p></div>
+     + <div class="question"><p>reading</p></div>
+     + <div class="question"><p>trees</p></div>
+     + <div class="question"><p>jeans</p></div>
+     + <div class="question"><p>monkey</p></div>
+     + <div class="question"><p>train</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="drop" option="7"></div>
+     + <div class="dragContainer">
+     + … 19 more added
+BLL220: identical 0 / changed 1
+BLL221: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+  ~ BLL224_2_0.html: -42 +35
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL224-02-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity 2B — see BLL2
+     - <th><a href="https://www.istockphoto.com/photo/thorny-devil-gm183306593-1604522" target="_blank">https://www.i
+     - <th>thorny devil</th>
+     - <td><a href="https://www.istockphoto.com/photo/emu-a-large-australian-flightless-bird-gm1028426850-275687389" 
+     - <td>emu</td>
+     - <td><a href="https://www.istockphoto.com/photo/platypus-gm1214353261-353277132" target="_blank">https://www.is
+     - <td>platypus</td>
+     - <td><a href="https://www.istockphoto.com/photo/close-up-of-bearded-dragon-lizard-reptile-laying-on-road-in-out
+     - <td>lizard</td>
+     - <td><a href="https://www.istockphoto.com/photo/close-up-picture-of-a-flea-on-white-background-gm92950530-28052
+     - <td>flea</td>
+     - <tr>
+     - <td><a href="https://www.istockphoto.com/photo/guilty-dog-on-couch-gm664742638-121030799" target="_blank">http
+     - <td>dog</td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL224-02-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL224-02-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - … 2 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>thorny devil</p></div>
+     + <div class="question"><p>emu</p></div>
+     + <div class="question"><p>platypus</p></div>
+     + <div class="question"><p>lizard</p></div>
+     + <div class="question"><p>flea</p></div>
+     + <div class="question"><p>dog</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-18330
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-10284
+     + … 15 more added
+BLL224: identical 2 / changed 1
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+  ~ BLL227_2_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+BLL227: identical 2 / changed 1
+  ~ BLL230_0_0.html: -61 +53
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="BLL230-00-18" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: dragAndDrop — Activity 5A — see BLL
+     - <th><a href="https://www.istockphoto.com/photo/young-girl-blowing-dandelions-gm586923288-100746929" target="_b
+     - <th>blowing</th>
+     - <td><a href="https://www.istockphoto.com/photo/tiny-newborn-infant-baby-feet-and-toes-on-white-background-soft
+     - <td>toes</td>
+     - <td><a href="https://www.istockphoto.com/photo/mud-run-friends-gm1049213642-280604621" target="_blank">https:/
+     - <td>dirty</td>
+     - <td><a href="https://www.istockphoto.com/photo/portrait-of-smiling-african-woman-nurse-gm2187596982-606169318"
+     - <td>nurse</td>
+     - <td><a href="https://www.istockphoto.com/photo/medium-pile-of-assorted-fresh-and-bright-fruit-gm182825717-1337
+     - <td>fruit</td>
+     - <td><a href="https://www.istockphoto.com/photo/girl-showing-painting-gm1357660768-431502511" target="_blank">h
+     - <td>drew</td>
+     - <td><a href="https://www.istockphoto.com/photo/old-work-boots-gm1395542024-450609588" target="_blank">https://
+     - <td>boots</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="BLL230-00-19" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="BLL230-00-20" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="BLL230-00-21" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="BLL230-00-22" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="BLL230-00-23" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="BLL230-00-24" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="BLL230-00-25" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="BLL230-00-26" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="35" data-cv2-ref="BLL230-00-27" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="BLL230-00-28" style="border: 8px so
+     - … 21 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>blowing</p></div>
+     + <div class="question"><p>toes</p></div>
+     + <div class="question"><p>dirty</p></div>
+     + <div class="question"><p>nurse</p></div>
+     + <div class="question"><p>fruit</p></div>
+     + <div class="question"><p>drew</p></div>
+     + <div class="question"><p>boots</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="drop" option="7"></div>
+     + <div class="dragContainer">
+     + … 33 more added
+BLL230: identical 0 / changed 1
+  ~ BLL231_1_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+BLL231: identical 2 / changed 1
+BLL232: identical 3 / changed 0
+
+TOTAL: identical 367 / changed 18 / missing 0 over 104 modules
+CHANGED: AGH1001/AGH1001_2_0.html AGH1005/AGH1005_6_0.html ARFUN03/ARFUN03_0_0.html BLL112/BLL112_1_0.html BLL122/BLL122_1_0.html BLL125/BLL125_1_0.html BLL130/BLL130_0_0.html BLL146/BLL146_1_0.html BLL157/BLL157_1_1.html BLL161/BLL161_1_1.html BLL210/BLL210_0_0.html BLL215/BLL215_1_0.html BLL216/BLL216_1_0.html BLL220/BLL220_0_0.html BLL224/BLL224_2_0.html BLL227/BLL227_2_0.html BLL230/BLL230_0_0.html BLL231/BLL231_1_0.html

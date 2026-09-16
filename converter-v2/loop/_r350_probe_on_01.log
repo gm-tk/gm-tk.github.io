@@ -1,0 +1,649 @@
+  ~ BLL233_1_0.html: -48 +39
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL233-01-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity 1C — see BLL2
+     - <th>I spy with my little eye… something that begins with the /sh/ sound.</th>
+     - <th><a href="https://www.istockphoto.com/photo/old-wornout-trainers-gm182689474-1382347" target="_blank">https
+     - <td>I spy with my little eye… a colour that ends in the sound /ue/.</td>
+     - <td><a href="https://www.istockphoto.com/vector/colorful-abstract-vector-background-soft-blue-watercolor-stain
+     - <td>I spy with my little eye… something that starts with a silent k.</td>
+     - <td><a href="https://www.istockphoto.com/vector/warrior-knight-mascot-gm829771910-135047063" target="_blank">h
+     - <tr>
+     - <td>I spy with my little eye… something that has four syllables.</td>
+     - <td><a href="https://www.istockphoto.com/photo/helicopter-gm470967338-62508744" target="_blank">https://www.is
+     - </tr>
+     - <tr>
+     - <td>I spy with my little eye… something that ends with /ook/.</td>
+     - <td><a href="https://www.istockphoto.com/vector/open-book-gm2005543743-560470003" target="_blank">https://www.
+     - </tr>
+     - <tr>
+     - <td>I spy with my little eye… something that rhymes with file.</td>
+     - <td><a href="https://www.istockphoto.com/vector/smile-with-white-teeth-gm821763864-133039933" target="_blank">
+     - </tr>
+     - <tr>
+     - <td>I spy with my little eye… something that ends with the sound /ch/.</td>
+     - <td><a href="https://www.istockphoto.com/photo/modern-and-white-fabric-sofa-with-pillowers-isolated-on-white-b
+     - </tr>
+     - <tr>
+     - <td>I spy with my little eye… something that has three syllables.</td>
+     - <td><a href="https://www.istockphoto.com/photo/beautiful-common-morpho-butterfly-isolated-on-white-gm136454335
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL233-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - … 8 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>I spy with my little eye… something that begins with the /sh/ sound.</p></div>
+     + <div class="question"><p>I spy with my little eye… a colour that ends in the sound /ue/.</p></div>
+     + <div class="question"><p>I spy with my little eye… something that starts with a silent k.</p></div>
+     + <div class="question"><p>I spy with my little eye… something that has four syllables.</p></div>
+     + <div class="question"><p>I spy with my little eye… something that ends with /ook/.</p></div>
+     + <div class="question"><p>I spy with my little eye… something that rhymes with file.</p></div>
+     + <div class="question"><p>I spy with my little eye… something that ends with the sound /ch/.</p></div>
+     + <div class="question"><p>I spy with my little eye… something that has three syllables.</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="drop" option="7"></div>
+     + … 19 more added
+BLL233: identical 2 / changed 1
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+  ~ BLL244_1_0.html: -62 +47
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL244-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity (inline) — se
+     - <th> [images to be dragged ] </th>
+     - <th> Sentences </th>
+     - <td><a href="https://media.istockphoto.com/id/1622168394/photo/perfect-timing.jpg?s=2048x2048" target="_blank"
+     - <td>The grizzly bear is an excellent hunter.</td>
+     - <td><a href="https://media.istockphoto.com/id/2219455489/photo/warehouse-worker-carrying-lifting-very-heavy-we
+     - <td>The worker had to bear the weight of the box.</td>
+     - <td><a href="https://media.istockphoto.com/id/2214226965/photo/businessman-in-casual-fashion-checks-his-stainl
+     - <td>The man looked at his watch many times during the day.</td>
+     - <td><a href="https://media.istockphoto.com/id/2188571995/photo/young-woman-using-video-streaming-service-on-sm
+     - <td>Sarah liked to watch clips on her phone while she travelled to work.</td>
+     - <td><a href="https://media.istockphoto.com/id/1488932407/photo/typical-chain-carousel-at-the-annual-spring-fes
+     - <td>There were lots of rides and stalls at the fair.</td>
+     - <td><a href="https://media.istockphoto.com/id/171582228/photo/big-piece-of-cake-and-a-little-one-inequality-co
+     - <td>Adam did not think it was fair that his brother got a bigger piece of cake.</td>
+     - <td><a href="https://media.istockphoto.com/id/2177827696/photo/mother-igniting-candle-during-the-christmas-eve
+     - <td>It was always Mum’s job to light the candle with a match.</td>
+     - <tr>
+     - <td><a href="https://media.istockphoto.com/id/690879632/photo/happy-children-ending-sport-competition-by-hands
+     - <td>The tennis match finished with both players shaking hands.</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://media.istockphoto.com/id/92978567/photo/end-of-tears.jpg?s=612x612" target="_blank">https
+     - <td>A single tear slid down Luke’s cheek.</td>
+     - </tr>
+     - <tr>
+     - <td><a href="https://www.shutterstock.com/image-photo/young-man-home-sits-on-600w-2708303857.jpg" target="_bla
+     - <td>Sam liked being able to tear up his bills after they were paid.</td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL244-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - … 22 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>The grizzly bear is an excellent hunter.</p></div>
+     + <div class="question"><p>The worker had to bear the weight of the box.</p></div>
+     + <div class="question"><p>The man looked at his watch many times during the day.</p></div>
+     + <div class="question"><p>Sarah liked to watch clips on her phone while she travelled to work.</p></div>
+     + <div class="question"><p>There were lots of rides and stalls at the fair.</p></div>
+     + <div class="question"><p>Adam did not think it was fair that his brother got a bigger piece of cake.</p></div>
+     + <div class="question"><p>It was always Mum’s job to light the candle with a match.</p></div>
+     + <div class="question"><p>The tennis match finished with both players shaking hands.</p></div>
+     + <div class="question"><p>A single tear slid down Luke’s cheek.</p></div>
+     + <div class="question"><p>Sam liked being able to tear up his bills after they were paid.</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + … 27 more added
+BLL244: identical 2 / changed 1
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+  ~ CEDR501_6_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+CEDR501: identical 10 / changed 1
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+  ~ CHFUN05_0_0.html: -83 +72
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="CHFUN05-00-13" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: dragAndDrop (randomize the order) —
+     - <p>1A Check your understanding</p>
+     - <p>Drag the words to form a correct sentence using <b>很 (hěn).</b></p>
+     - <th> words </th>
+     - <td>• [image] [media item 39] <a href="https://www.istockphoto.com/photo/little-girl-playing-with-her-pet-leon
+     - <td>狗 <b>gǒu</b> <i>dog</i> 很<b>hěn</b> <i>very</i> 大 <b>dà</b> <i>big</i></td>
+     - <td>• [image] [media item 40] <a href="https://www.istockphoto.com/photo/portrait-of-a-teenage-boy-who-is-very
+     - <td>天气<b>tiānqì</b> <i>weather</i> 很<b>hěn</b> <i>very</i> 冷 <b>lěng</b> <i>cold</i></td>
+     - <td>• [image] [media item 41] <a href="https://www.istockphoto.com/photo/red-apple-gm183414355-15455646" targe
+     - <td>苹果<b>píngguǒ</b> <i>apple</i> 很 <b>hěn</b> <i>very</i> 红<b>hóng</b> <i>red</i></td>
+     - <td>• [image] [media item 42] <a href="https://www.istockphoto.com/photo/overwhelmed-professional-in-a-busy-en
+     - <td>我<b>wǒ</b> <i>I</i> 很 <b>hěn</b> <i>very</i> 忙 <b>máng</b> <i>busy</i></td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="CHFUN05-00-14" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="CHFUN05-00-15" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="41" data-cv2-ref="CHFUN05-00-16" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="CHFUN05-00-17" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="45" data-cv2-ref="CHFUN05-00-18" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="49" data-cv2-ref="CHFUN05-00-19" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="CHFUN05-00-20" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="53" data-cv2-ref="CHFUN05-00-21" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="56" data-cv2-ref="CHFUN05-00-22" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="58" data-cv2-ref="CHFUN05-00-23" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="59" data-cv2-ref="CHFUN05-00-24" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="61" data-cv2-ref="CHFUN05-00-25" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <th> Image </th>
+     - <tr>
+     - … 43 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>狗 <b>gǒu</b> <i>dog</i> 很<b>hěn</b> <i>very</i> 大 <b>dà</b> <i>big</i></p></div>
+     + <div class="question"><p>天气<b>tiānqì</b> <i>weather</i> 很<b>hěn</b> <i>very</i> 冷 <b>lěng</b> <i>cold</i></p><
+     + <div class="question"><p>苹果<b>píngguǒ</b> <i>apple</i> 很 <b>hěn</b> <i>very</i> 红<b>hóng</b> <i>red</i></p></d
+     + <div class="question"><p>我<b>wǒ</b> <i>I</i> 很 <b>hěn</b> <i>very</i> 忙 <b>máng</b> <i>busy</i></p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-17299
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-13690
+     + <div class="drag" option="3"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-18341
+     + <div class="drag" option="4"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-22096
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + … 52 more added
+CHFUN05: identical 0 / changed 1
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+  ~ ENFUN01_0_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENFUN01: identical 0 / changed 1
+  ~ ENFUN02_0_0.html: -46 +38
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ENFUN02-00-10" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: dragAndDrop — Activity 1C — see ENF
+     - <th><a href="https://pixabay.com/photos/woman-freedom-mountain-cold-7161408/" target="_blank">https://pixabay.
+     - <th>Freedom</th>
+     - <td><a href="https://www.istockphoto.com/photo/young-group-of-multiracial-friends-having-fun-together-on-winte
+     - <td>Friendship</td>
+     - <td><a href="https://www.istockphoto.com/photo/beautiful-flower-growing-out-of-crack-in-asphalt-space-for-text
+     - <td>Hope and resilience</td>
+     - <td><a href="https://www.istockphoto.com/photo/rock-climber-clinging-to-a-cliff-gm527531592-92777339" target="
+     - <td>Perseverance</td>
+     - <td><a href="https://www.istockphoto.com/photo/child-is-kissing-a-cat-gm450032401-28625938" target="_blank">ht
+     - <td>Love</td>
+     - <td><a href="https://www.istockphoto.com/photo/mental-breakdown-gm2103531520-566565913" target="_blank">https:
+     - <td>Isolation</td>
+     - <td><a href="https://www.istockphoto.com/photo/her-skins-as-perfect-as-ever-gm485724884-72615531" target="_bla
+     - <td>Identity</td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ENFUN02-00-11" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - … 6 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>Freedom</p></div>
+     + <div class="question"><p>Friendship</p></div>
+     + <div class="question"><p>Hope and resilience</p></div>
+     + <div class="question"><p>Perseverance</p></div>
+     + <div class="question"><p>Love</p></div>
+     + <div class="question"><p>Isolation</p></div>
+     + <div class="question"><p>Identity</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="drop" option="7"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=woman-freedo
+     + … 18 more added
+ENFUN02: identical 0 / changed 1
+  ~ ENFUN03_0_0.html: -0 +15
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + <div class="row">
+     + </div>
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+     + </div>
+ENFUN03: identical 0 / changed 1
+  ~ ENFUN04_0_0.html: -63 +64
+     - <img class="phaseImg" src="https://placehold.co/800x450?text=iStock-1060826424" alt="Phase 1" />
+     - <img class="phaseImg" src="https://placehold.co/800x450?text=iStock-1060826424" alt="Phase 3" />
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="ENFUN04-00-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity 1 — see ENFUN
+     - <th><b>Kupu</b></th>
+     - <th></th>
+     - <td>Wriggled</td>
+     - <td> [image] <a href="https://www.istockphoto.com/vector/happy-little-girl-character-dancing-and-making-noise-
+     - <td>Dough</td>
+     - <td> [image] <a href="https://www.istockphoto.com/photo/blue-red-and-green-moulds-of-plasticine-n-a-white-surf
+     - <td>Broken</td>
+     - <td> [image] <a href="https://www.istockphoto.com/vector/broken-cup-brown-mug-element-of-kitchen-gm1301244151-
+     - <td>Wove</td>
+     - <td> [image] <a href="https://www.istockphoto.com/vector/reed-mat-with-woven-texture-of-crosshatched-straws-gm
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ENFUN04-00-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENFUN04-00-04" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ENFUN04-00-05" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENFUN04-00-06" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ENFUN04-00-07" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENFUN04-00-08" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENFUN04-00-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENFUN04-00-10" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ENFUN04-00-11" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ENFUN04-00-12" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ENFUN04-00-13" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ENFUN04-00-14" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ENFUN04-00-15" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ENFUN04-00-16" style="border: 8px s
+     - … 23 more removed
+     + <img class="phaseImg" src="https://placehold.co/600x400?text=iStock-1479024047" alt="Phase 1" />
+     + <img class="phaseImg" src="https://placehold.co/600x400?text=iStock-1479024047" alt="Phase 3" />
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>Wriggled</p></div>
+     + <div class="question"><p>Dough</p></div>
+     + <div class="question"><p>Broken</p></div>
+     + <div class="question"><p>Wove</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-14790
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-18338
+     + <div class="drag" option="3"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-13012
+     + <div class="drag" option="4"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-12800
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ENFUN04-00-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENFUN04-00-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 44 more added
+ENFUN04: identical 0 / changed 1
+  ~ ENFUN05_0_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENFUN05: identical 0 / changed 1
+  ~ ENFUN07_0_0.html: -0 +10
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + <div class="row">
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+     + </div>
+ENFUN07: identical 0 / changed 1
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+  ~ ENGC102_2_0.html: -0 +10
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + <div class="row">
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+     + </div>
+ENGC102: identical 7 / changed 1
+ENGC201: identical 7 / changed 0
+  ~ ENGC202_1_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGC202: identical 8 / changed 1
+  ~ ENGC301_2_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGC301: identical 7 / changed 1
+ENGC302: identical 8 / changed 0
+  ~ ENGC401_5_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGC401: identical 7 / changed 1
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+  ~ ENGI103_2_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+  ~ ENGI103_6_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGI103: identical 5 / changed 2
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+  ~ ENGI203_4_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+  ~ ENGI203_6_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGI203: identical 9 / changed 2
+  ~ ENGI301_1_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGI301: identical 5 / changed 1
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+  ~ ENGI401_6_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+  ~ ENGI401_7_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGI401: identical 10 / changed 2
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+  ~ ENGJ102_4_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGJ102: identical 5 / changed 1
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+  ~ ENGJ301_1_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGJ301: identical 7 / changed 1
+ENGJ302: identical 10 / changed 0
+  ~ ENGJ402_1_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+  ~ ENGJ402_3_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGJ402: identical 7 / changed 2
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+  ~ ENGR301_6_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGR301: identical 8 / changed 1
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+  ~ ENGS102_5_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGS102: identical 6 / changed 1
+  ~ ENGS201_3_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+  ~ ENGS201_4_0.html: -42 +32
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENGS201-04-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dragAndDrop (scramble the order whe
+     - <p>Match the superhero with their origin story.</p>
+     - <th>Origin Story fixed </th>
+     - <th>Superhero drag image </th>
+     - <td>Peter Parker was on a school trip. He wandered away from the group and was bitten by a radioactive spider.
+     - <td> [image] <a href="https://en.wikipedia.org/wiki/Spider-Man#/media/File:Web_of_Spider-Man_Vol_1_" target="_
+     - <td>Bruce Wayne is raised by his butler, Alfred. He wants to punish those who caused his parents’ death. He tr
+     - <td> [image] <a href="https://pixabay.com/illustrations/batman-hero-character-super-hero-8510022/" target="_bl
+     - <td>Bruce Banner is a scientist. He is exposed to gamma radiation when saving a child from a radioactive explo
+     - <td> [image] <a href="https://pixabay.com/illustrations/hulk-marvel-character-superhero-8744607/" target="_bla
+     - <td>Wonder Woman was made from clay. She was given life by the gods and superpowers. She was raised as an Amaz
+     - <td> [image] <a href="https://pixabay.com/illustrations/warrior-pahlawan-super-wonderwoman-5920853/" target="_
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENGS201-04-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ENGS201-04-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ENGS201-04-04" style="border: 8px s
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ENGS201-04-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - … 2 more removed
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>Peter Parker was on a school trip. He wandered away from the group and was bitten by 
+     + <div class="question"><p>Bruce Wayne is raised by his butler, Alfred. He wants to punish those who caused his 
+     + <div class="question"><p>Bruce Banner is a scientist. He is exposed to gamma radiation when saving a child fro
+     + <div class="question"><p>Wonder Woman was made from clay. She was given life by the gods and superpowers. She 
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="dragContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=spider-man" 
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=batman-hero-
+     + <div class="drag" option="3"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=hulk-marvel-
+     + <div class="drag" option="4"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=warrior-pahl
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + … 12 more added
+ENGS201: identical 7 / changed 2
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+  ~ ENGS302_3_0.html: -0 +5
+     + <div class="row">
+     + <div class="activityButton reset">Reset</div>
+     + <div class="activityButton undo hidden">Undo</div>
+     + <div class="activityButton checkAnswer hidden">Check answers</div>
+     + </div>
+ENGS302: identical 6 / changed 1
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 491 / changed 30 / missing 0 over 104 modules
+CHANGED: BLL233/BLL233_1_0.html BLL244/BLL244_1_0.html CEDR501/CEDR501_6_0.html CHFUN05/CHFUN05_0_0.html ENFUN01/ENFUN01_0_0.html ENFUN02/ENFUN02_0_0.html ENFUN03/ENFUN03_0_0.html ENFUN04/ENFUN04_0_0.html ENFUN05/ENFUN05_0_0.html ENFUN07/ENFUN07_0_0.html ENGC102/ENGC102_2_0.html ENGC202/ENGC202_1_0.html ENGC301/ENGC301_2_0.html ENGC401/ENGC401_5_0.html ENGI103/ENGI103_2_0.html ENGI103/ENGI103_6_0.html ENGI203/ENGI203_4_0.html ENGI203/ENGI203_6_0.html ENGI301/ENGI301_1_0.html ENGI401/ENGI401_6_0.html ENGI401/ENGI401_7_0.html ENGJ102/ENGJ102_4_0.html ENGJ301/ENGJ301_1_0.html ENGJ402/ENGJ402_1_0.html ENGJ402/ENGJ402_3_0.html ENGR301/ENGR301_6_0.html ENGS102/ENGS102_5_0.html ENGS201/ENGS201_3_0.html ENGS201/ENGS201_4_0.html ENGS302/ENGS302_3_0.html

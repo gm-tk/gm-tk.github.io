@@ -1,0 +1,8 @@
+kinds {'btn+1': 37, 'img+1 btn+1': 14, 'btn+2': 4, 'img+1 btn+2': 1, 'btn+3': 2, 'img+1 btn+3': 1, 'img+2 btn+2': 1}
+image sites 18 on 17 pages; hand-off boxes removed 36 ; notes added 2
+button rows added 72 (new images sites 18 + pre-existing text builds 54 )
+lazy inside D&D 0
+other []
+pages by template {'Standard': 45, 'Fundamentals': 11, 'Inquiry': 4} image sites by template {'Standard': 9, 'Inquiry': 4, 'Fundamentals': 5}
+image modules ['BLL112', 'BLL122', 'BLL125', 'BLL130', 'BLL146', 'BLL161', 'BLL210', 'BLL220', 'BLL224', 'BLL230', 'BLL233', 'BLL244', 'CHFUN05', 'ENFUN02', 'ENFUN04', 'ENGS201', 'MXFUN03']
+image pages ['BLL112/BLL112_1_0.html', 'BLL122/BLL122_1_0.html', 'BLL125/BLL125_1_0.html', 'BLL130/BLL130_0_0.html', 'BLL146/BLL146_1_0.html', 'BLL161/BLL161_1_1.html', 'BLL210/BLL210_0_0.html', 'BLL220/BLL220_0_0.html', 'BLL224/BLL224_2_0.html', 'BLL230/BLL230_0_0.html', 'BLL233/BLL233_1_0.html', 'BLL244/BLL244_1_0.html', 'CHFUN05/CHFUN05_0_0.html', 'ENFUN02/ENFUN02_0_0.html', 'ENFUN04/ENFUN04_0_0.html', 'ENGS201/ENGS201_4_0.html', 'MXFUN03/MXFUN03_0_0.html']

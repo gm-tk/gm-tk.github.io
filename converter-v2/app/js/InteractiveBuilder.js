@@ -159,7 +159,8 @@ class InteractiveBuilder {
 					html = this.#selfCheck({ bundle, tpl, renderInline });
 					break;
 				case "dragAndDrop": // the narrow N:N text-matching case only (layout=standard)
-					html = this.#dragAndDrop({ bundle, tpl, renderInline });
+					// ROUND 350 — the image-pair form runs ONLY where the r69 text form declined (the r276 order).
+					html = this.#dragAndDrop({ bundle, tpl, renderInline }) ?? this.#dragAndDropImages({ bundle, tpl, renderInline, run });
 					break;
 				case "modal":       // image-pair form → TKmodal set; single document/PDF URL → a button;
 					// else (round 280) the general trigger+TKmodal set fallback. renderNested/
@@ -319,8 +320,148 @@ class InteractiveBuilder {
 		for (let i = 0; i < rows.length; i++) out.push(Utils.FillTemplate(tpl.drop, { n: i + 1 }));
 		out.push(tpl.drag_open);
 		for (let i = 0; i < answers.length; i++) out.push(Utils.FillTemplate(tpl.drag, { n: i + 1, answer: inline(answers[i]) }));
-		out.push(tpl.close);
+		out.push(...this.#ddClose(tpl));   // ROUND 350 — the KB button row (button_row; DDBUTTONS_OFF = the r69 close)
 		return out.join("\n");
+	}
+
+	/**
+	 * ROUND 350 (Chris's D10-3 — the dragAndDrop build kickoff, shape 1; the autonomous loop's session-14 Round 1).
+	 * The KB 03B button row on EVERY built standard dragAndDrop — "Reset / Undo hidden / Check answers hidden", 03B's
+	 * own form (the gold ships it on 473 of its 517 standard D&Ds = 0.92; levels 1 and 3 agree). The r69 text form never
+	 * emitted it. Data interactive_builders.dragAndDrop.button_row {enabled, env DDBUTTONS_OFF, close_inner, html,
+	 * close_outer}; OFF → the r69 `close` string byte-for-byte.
+	 */
+	static #ddClose(tpl) {
+		const br = tpl?.button_row;
+		const off = typeof process !== "undefined" && process.env && br?.env && process.env[br.env];
+		if (!br || br.enabled === false || off) return [tpl.close];
+		return [br.close_inner, br.html, br.close_outer ?? "</div>"];
+	}
+
+	/**
+	 * ROUND 350 — dragAndDrop IMAGE-PAIR form → the KB 03B "Standard Layout — With images" (Chris's D10-3, shape 1 of the
+	 * dragAndDrop kickoff). The writer's table pairs an IMAGE with a WORD / sentence on every row — `image | word` (BLL112 /
+	 * BLL122 / BLL161 …) or `word | image` (BLL146 / BLL130 / CEDO105) — and the KB's form is fixed whichever way round the
+	 * writer typed it: the TEXT is the fixed question side (`col-7 questionContainer`, one `.question` per row) and the
+	 * IMAGES are the draggable items (`col-5 ddContainer`, a `.drop` + a `.drag` per row, option = the 1-based row index =
+	 * the answer key), because "images in the questionContainer stretch vertically and make the interactive unusably
+	 * tall" (03B). Tried ONLY where the r69 text form returned null (the r276 order — the working half is unchanged by
+	 * construction). Image filename: an iStock id → `iStock-{id}.jpg`, any other host → the r278 URL-slug placeholder
+	 * (#accImageFilename); rendered in the run's image mode through the r240 FinishImg rider with the URL passed (alt =
+	 * the verified acks title, else the URL-slug title — the gold's BLL146 alt IS the iStock title); no loading="lazy"
+	 * survives — the templates carry none and the r318 lazy_free_hosts post-pass strips any the rider adds (c83).
+	 * NEVER HALF-BUILDS (null → the hand-off box as today): a second table, an extraType, a media item harvested out of
+	 * the table, a ragged row, a row without exactly one image cell + one text cell, the image column changing sides,
+	 * a red run in the TEXT cell (an answer word inside a sentence = a FIB shape; `[correct]`; a red-bracketed audio-word;
+	 * `[Body]` — different shapes), an empty or duplicate label, a URL in the text cell, prose riding along with the
+	 * image, fewer than min_rows rows. A first row with no URL in either cell is a HEADER / column-label row ("Image |
+	 * Sentence", "**Kupu** |", "| Correct answer - can we jumble them up though please") — dropped; its red instruction
+	 * rides along as the standard red Writers Note after the widget (bundle.instructions, the r214 class). A red run in
+	 * the IMAGE cell that is the writer's own [image] tag is the tag; any other red there ("Arrow added to image",
+	 * "Please crop a little") is a developer asset note — surfaced the same way, the build proceeds.
+	 * Data interactive_builders.dragAndDrop.images; env DDIMAGES_OFF (DRAGDROP_OFF still reverts the whole type).
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (opener/member items — see file header)
+	 * @param {object} args.tpl - this widget's editable markup templates (Emit_Templates.json)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links); identity if omitted
+	 * @param {object} [args.run] - run context (run.imageMode is "P" or "D")
+	 * @returns {string|null} the built dragAndDrop HTML, or null to keep the hand-off box
+	 */
+	static #dragAndDropImages({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl?.images;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DRAGDROP_OFF) return null;
+		if (typeof process !== "undefined" && process.env && cfg.env && process.env[cfg.env]) return null;
+		if (bundle?.extraTypes && bundle.extraTypes.length) return null;
+		if ((bundle?.media ?? []).length) return null;                        // an image harvested OUT of the table → not the pair table
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return null;
+		const srcRows = tables[0].rows ?? [];
+		if (!srcRows.length || !srcRows.every((r) => Array.isArray(r) && r.length === 2)) return null;   // a ragged table → not this shape
+		let rows = srcRows;
+		const notes = [];
+		const tagRe = new RegExp(cfg.image_tag_pattern ?? "^\\[?\\s*(?:insert\\s+)?(?:image|photo)[^\\]]*\\]?$", "i");
+		// the header / column-label row: a FIRST row carrying no URL in either cell
+		if (cfg.header_row_skip !== false && !this.#cellMediaUrl(rows[0][0]) && !this.#cellMediaUrl(rows[0][1])) {
+			for (const c of rows[0]) if (this.#hasRedText(c)) { const t = this.#cellText(c); if (this.#ddIsNote(t, cfg)) notes.push(t); }
+			rows = rows.slice(1);
+		}
+		if (rows.length < (tpl.min_rows ?? 2)) return null;
+		const inline = renderInline ?? ((s) => s);
+		let imgIdx = null;
+		const items = [];
+		for (const r of rows) {
+			const u0 = this.#cellMediaUrl(r[0]), u1 = this.#cellMediaUrl(r[1]);
+			let idx;
+			if (u0 && !u1) idx = 0; else if (u1 && !u0) idx = 1; else return null;   // both / neither → not image | text
+			if (imgIdx === null) imgIdx = idx; else if (imgIdx !== idx) return null;   // the image column must not change sides
+			const imgCell = String(r[idx] ?? ""), txtCell = String(r[1 - idx] ?? "");
+			if (this.#hasRedText(txtCell)) return null;                              // a red run in the TEXT cell = a different shape
+			const label = this.#cellText(txtCell).trim();
+			if (!label || /https?:\/\//.test(label)) return null;
+			const url = idx === 0 ? u0 : u1;
+			// the image cell: its own [image] tag may be red; any OTHER red run is a developer asset note (rides along)
+			const reds = [...imgCell.matchAll(/\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]/g)]
+				.map((m) => m[1].replace(/\u{1f534}/gu, "").trim()).filter(Boolean);
+			for (const x of reds) if (!tagRe.test(x) && this.#ddIsNote(x, cfg)) notes.push(x);
+			const residual = imgCell.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "")   // the red runs are notes / the tag, not residue
+				.replace(/\[[^\]]*\]/g, "").replace(/https?:\/\/\S+/g, "")
+				.replace(/[/|\u2013\u2014\-\[\]\u2022\u00b7]/g, " ").trim();   // a stray bracket (r174's class — BLL266) / a list bullet are not residue
+			if (residual) return null;                                               // prose rode along with the image → too rich
+			const filename = this.#accImageFilename(url, cfg, cfg);
+			if (!filename) return null;
+			items.push({ label, url, filename });
+		}
+		if (new Set(items.map((i) => i.label.toLowerCase())).size !== items.length) return null;   // a repeated label = an ambiguous match
+		const out = [cfg.open];
+		for (const it of items) out.push(Utils.FillTemplate(tpl.question, { label: inline(it.label) }));
+		out.push(cfg.mid);
+		for (let i = 0; i < items.length; i++) out.push(Utils.FillTemplate(tpl.drop, { n: i + 1 }));
+		out.push(tpl.drag_open);
+		for (let i = 0; i < items.length; i++) out.push(Utils.FillTemplate(cfg.drag, { n: i + 1, image: this.#ddImage(items[i], cfg, run) }));
+		out.push(...this.#ddClose(tpl));
+		if (notes.length) {
+			const seen = new Set(bundle.instructions ?? []);
+			bundle.instructions = [...(bundle.instructions ?? [])];
+			for (const n of notes) if (!seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
+		}
+		return out.join("\n");
+	}
+
+	/**
+	 * ROUND 350 — is a red run in the image-pair table a developer NOTE (ride along as a Writers Note) or MARKUP (drop
+	 * silently)? Markup = a run made entirely of bracketed tokens ("[correct answers]", "[image] [media item 39]" — the r282
+	 * rule) or a short bare column LABEL ("Image", "words" — the r63 all-red label-row class, at most label_max_words words);
+	 * anything longer with real words ("Correct answer - can we jumble them up though please.", "Arrow added to image") is a note.
+	 */
+	static #ddIsNote(text, cfg) {
+		const t = String(text ?? "").trim();
+		if (!t) return false;
+		const bare = t.replace(/\[[^\]]*\]/g, " ").replace(/[\[\]]/g, " ").trim();
+		if (!/[\p{L}\p{N}]/u.test(bare)) return false;                       // bracket tokens only → markup
+		const words = bare.split(/\s+/).filter(Boolean).length;
+		if (words <= (cfg.label_max_words ?? 3) && !/[.:;!?,]/.test(bare)) return false;   // a bare column label
+		return true;
+	}
+
+	/**
+	 * ROUND 350 — a drag item's image in the run's image mode: the #assetImage form with the URL passed through, so the
+	 * r240 FinishImg rider takes the alt from the verified acks map else the URL slug (the gold's form), and with the
+	 * images form's own templates (margB0, no loading="lazy" — 03B / c83).
+	 */
+	static #ddImage(item, cfg, run) {
+		const wcfg = DataService.Data.EmitTemplates.elements?.image_attrs;
+		const rider = wcfg && wcfg.widget_internal !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.WIDGETIMG_OFF);
+		const istockId = String(item.filename).match(/iStock-(\d+)/i)?.[1] ?? null;
+		const fin = rider ? ((h) => MediaBuilder.FinishImg(h, item.url, istockId, run)) : ((h) => h);
+		if (run?.imageMode === "P") {
+			const label = String(item.filename).replace(/\.[a-z0-9]+$/i, "");
+			return fin(Utils.FillTemplate(cfg.image_mode_P, { label }))
+				+ fin(Utils.FillTemplate(cfg.image_mode_P_comment, { filename: item.filename }));
+		}
+		return fin(Utils.FillTemplate(cfg.image_mode_D, { filename: item.filename }));
 	}
 
 	/**

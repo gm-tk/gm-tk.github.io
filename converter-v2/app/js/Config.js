@@ -1710,7 +1710,8 @@ class Config {
 	// form (Chris's D10-9 — KB constraint 23 / 01B): ContentConverter.#menuLabelForm behind Emit_Templates.menu.lesson_label_form,
 	// env MENULABEL_OFF; the "We are learning to:" family → "We are learning:" + "to …" items; lesson-page titles above a
 	// label dropped; the overview tab's labels <h5> too; a new protected verifier _verify_menulabels.cjs; FULL regeneration.
-	static AppVersion = "260619.20";
+	// ROUND 350 (260619.21): the dragAndDrop build kickoff, shape 1 — the image-pair table builds the KB 03B images form; the 03B button row on every built dragAndDrop (Chris's D10-3).
+	static AppVersion = "260619.21";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

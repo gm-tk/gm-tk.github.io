@@ -47,4 +47,10 @@ run "math verifier (equations → MathML)" env STUB_OEMBED=1 node --require ./_d
 # (ENGC401), titles + bold Māori labels + the lesson-repeat (MXFL201), the c70 OSSC sentence (OSSC401), the two-column
 # banner (ANZH101), the banner-family overview (BLL110), Fundamentals (XFUN02), Inquiry (CEDT501). Protected: defect 0.
 run "menu-label verifier (c23 / 01B)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_menulabels.cjs AGH1002 ENGC401 MXFL201 OSSC401 ANZH101 BLL110 XFUN02 CEDT501 CEDO502
+# dragAndDrop verifier (round 350 — Chris's D10-3, the dragAndDrop build kickoff; KB 03B): every BUILT dragAndDrop is the 03B standard
+# form — a questionContainer / ddContainer pair, drop + drag containers, questions = drops = drags, every drag option matched by a
+# drop and vice-versa, the activityButton row, no raw [tag], NO loading="lazy" (c83), an images widget's drags each one <img>. The
+# set covers both forms: the image-pair table (BLL146 gold-exact, BLL112 with its asset note, ENFUN04, CHFUN05, BLL266, MXFUN03 x2,
+# BLL244 sentences) and the r69 text form (ENGJ102, ARFUN03, ENFUN01). Protected: defect 0.
+run "dragAndDrop verifier (03B)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_dragdrop.cjs BLL146 BLL112 ENFUN04 CHFUN05 BLL266 MXFUN03 BLL244 ENGJ102 ARFUN03 ENFUN01
 echo "=== gate suite complete ==="

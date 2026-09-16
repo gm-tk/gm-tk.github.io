@@ -1,0 +1,15 @@
+[00:10:45] selftests
+  rc=0
+[00:12:10] fast-loop baseline re-snapshot
+  rc=0
+[00:14:59] content manifest snapshot
+  rc=0
+[00:15:08] ship ledger — FULL
+  rc=0
+[ledger] recorded FULL ship (round 350); scoped-since counter reset to 0.
+[00:15:08] feature index
+  rc=0
+  ok   SAFETY: feature "flipCard" resolves to 222 modules (non-empty)
+  ok   SAFETY: feature "clickDrop" resolves to 158 modules (non-empty)
+SELFTEST build_feature_index: GREEN
+[00:15:36] POSTSHIP_DONE
