@@ -30,6 +30,39 @@ works the derivable queue that needs no decision. Tools run in WSL (native node 
 
 **Session 9 started:** 2026-09-16 09:21 NZST (Claude Code, same machine; hard stop 19:21 NZST). Budget: 12 rounds or 10 hours. Chris's kickoff: the standing §7 message, unchanged ("Continue the PageForge autonomous loop … REGENERATE CORPUS for every round … Budget 12 rounds or 10 hours … RUN UNINTERRUPTED (§5c) … Honour every entry under 'Decisions from Chris' and never re-ask them … commit after every round, never push"). Health check: `verify_after_transfer.sh` PASS (symlinks 5/5, engine 62/62 and gate tooling 81/81 byte-identical, census PASS, both git histories intact), git clean at e9e2826 (nothing uncommitted — nothing to reconcile), no stale index.lock, WSL toolchain OK (node v22.23.2 / python 3.14.4). **State inherited:** the loop stopped on §4 EXHAUSTION in session 8 and the message carries NO answer to any recorded decision — so no blocked class is unblocked. **Session 9 first step:** a fresh §3 PICK pass (the dashboard queue + KB §D + the substitution instrument re-run) to confirm exhaustion on today's corpus rather than inherit it; a round only if a derivable class ≥ 20 pages surfaces; otherwise the §4 EXHAUSTION stop again with the §5 report. stickyNav / equations / c23 / alertPadding / table form / CED briefs / decisions 1 / 4 / 5 stay BLOCKED (no recorded answer — not re-asked). Ship ledger at the start: scoped #6 since the r334 full backstop (2 of headroom). **Session 9 result: r341 (near-red tag runs, FULL regeneration, +0.021pp; commit bb56efc) · r342 (hyperlinked media tags) built + part-proven, STOPPED by Chris at ≈11:05 NZST with both flags OFF, uncommitted-but-described.**
 
+**Session 10 (2026-09-16 ≈14:00–15:30 NZST, `/loop-decisions` — NOT a loop run):** the nine pending decisions explained in plain English (`DECISIONS__Pending_2026-09-16.md`, folder root) and ALL NINE answered by Chris in one message → recorded as **D10-1 … D10-9** under "Decisions from Chris (session 10)"; no round, no regeneration, no engine / data / KB file touched; LOOP_STATE + KB status committed ("Decisions from Chris 2026-09-16"), not pushed.
+
+## >>> DECISIONS RECORDED 2026-09-16 ≈15:20 NZST (session 10 — `/loop-decisions`, NOT a loop run): Chris answered ALL NINE pending decisions — every Blocked class is now DECIDED; the loop is UNBLOCKED with a nine-item authorised queue; nothing regenerated, no engine/data file touched; r342 stays as session 9 left it (four files uncommitted, both flags OFF) <<<
+- The nine answers are recorded verbatim under "Decisions from Chris (session 10 …)" below as **D10-1 … D10-9**; the Blocked / Declined entries they
+  settle point at them; `KB_AMALGAMATION_STATUS.md` rows updated; the report he answered is `DECISIONS__Pending_2026-09-16.md` (folder root).
+  Two are CLOSED with no round (D10-4 stickyNav — keep the ban; D10-8 alertPadding — leave plain); seven authorise rounds.
+- **KB edits authorised but NOT made here** (an Admin-Mode KB round in `00-Other-TK-Resources/htmlconvertor-kb`, one CL row each, `check_kb.py`,
+  timestamps — the KB repo is untouched at ee2853c): 14A/14B/14D stickyNav → "never emitted" (D10-4); 05A equations → MathML (D10-7); 06 §6 tables →
+  reconciled to 05D (D10-5); 00G c79 / 01A → "Standard: English first; MTK: Māori first" (D10-2); 01F line 27 / 05B `alertPadding` = example, not
+  default (D10-8, a note). The loop does NOT wait for these — §5b: a recorded decision outranks the KB's stale wording.
+
+**Next session starts with:** the standing §7 kickoff (it carries `REGENERATE CORPUS`); health check; reconcile git — the four r342 files are the round
+in progress (never checkout / restore); then this ORDER (each item one §3 round unless stated; §4 stop rules apply; the plateau window restarts at the
+first shipped round because these are Chris's explicit decisions):
+  0. **r342 (the hyperlinked media tag)** — flip both flags ON, settle gap 2 by measurement per its own note, prove, ship — OR, if it fails the §3
+     three-repair limit, toggle OFF, prove identity, record BLOCKED and move on. One round, no more.
+  1. **D10-6 — exclude the 8 CED revision-brief modules from the comparison set** (an exclusion list in `_corpus.py` `mods()` read from
+     `reference/tests/compare_exclusions.txt`; no regeneration) and RE-BASELINE every gate on the new population (`gate_baseline.json`, CLAUDE.md §14,
+     fast-loop baseline, ceiling, `CORPUS_CENSUS.txt`) — the ≈ +0.3pp is a population change, named as such, never claimed. FIRST, so nothing later is polluted.
+  2. **D10-1 — c47 in full** (drop the opening duplicate body heading; activity-box titles kept; + the title's stray `*` / `**` markers as a measured
+     sibling). Scoped regeneration, named override on the ≈ 6 gold-kept pages.
+  3. **D10-2 — English-first lesson-title pairs in Standard modules** (the r316 mechanism, `reo_detect "macron"`). 4 pages; scoped.
+  4. **D10-7 — Word equations → MathML** (OMML extraction + `omml-to-mathml` port + `mathJax` body class; an equation-count verifier). 12 modules, scoped.
+  5. **D10-5 — 05D tables: `table table-bordered` default, `table tableFixed` for two-column comparison tables** (contrast-lexicon test, measured first).
+     FULL regeneration — may be shared with 6 if each is A/B-proven OFF/ON on a sample first (the r334 backstop precedent).
+  6. **D10-9 — c23 lesson-menu labels everywhere** (`<h5>`, normalised wording by year level, no section title above, overview tab too; the c70 OSSC
+     lead-in `<p>` stays; a `_verify_menulabels` gate). FULL regeneration, named override ≈ −0.1pp.
+  7. **D10-3 — widget-build kickoffs, one type at a time, largest first:** dragAndDrop → clickDrop → accordion → carousel → flipCard → selfCheck → modal →
+     tabs → slider → infoTrigger → shapeHover → hint → hintSlider. Each round = the type's largest un-built shape family ≥ 20 sites (the r286 decline
+     instrument), judged on the widget's own verifier (A1), never half-built, family regeneration per type; the plateau "moved" test for a build round is
+     the dashboard's *Still a box* count (recorded in D10-3 — Chris may veto).
+  Then the ordinary §3 PICK over whatever remains. Expect ≈ 3 full regenerations across items 5–7; budget accordingly (12 rounds / 10 hours per session).
+
 ## >>> STOPPED 2026-09-16 ≈11:10 NZST (session 9) on CHRIS'S INSTRUCTION — "stop the loop at the next logical point" — after ONE shipped round (r341, the near-red tag rule, the FULL-regeneration backstop, commit bb56efc); Round 2 (engine r342 — the HYPERLINKED media tag) is built and part-proven, could NOT be finished and proven inside 10 minutes, so BOTH of its data flags are switched OFF (the engine reproduces the disk corpus byte-for-byte, 89/89 pages on 12 modules), its four files stay UNCOMMITTED-but-described below <<<
 - Session 9 shipped r341 (76 pages / 10 added / 2 removed across 23 modules; skeleton +0.021pp, ≥50 +7, cs exact +103, clean 97.81 → 98.91%, leak
   288/46 → 26/23; corpus now 2110 pages). Round 2 (r342) reached PROVE: the OFF leg = disk 2110/2110; the ON leg changed 76 pages / 52 modules and
@@ -146,6 +179,133 @@ achievable, ceiling 91.6%); ≥50 1030 → 1066; ≥75 196 → 200; ≥90 15; cs
   page-for-page to `_r315_sk_final.json` (1954 pairs) — compare against r315 from here on.
 - **RESUMED 2026-09-15 07:48 NZST on Chris's instruction: "Yes to 2 and 3 — start with the TRR title source."** Round 8 = decision 2 SHIPPED
   (engine r321, commit 968bf14). Decision 3 (c65 / CL-0082, engine r322) = the next kickoff (above). Decisions 1, 4, 5 stay open.
+
+## Decisions from Chris (session 10 — 2026-09-16 ≈15:20 NZST; the `/loop-decisions` session — NOT a loop run; ALL NINE pending decisions answered in one message, recorded verbatim; the report he answered is `DECISIONS__Pending_2026-09-16.md` at the folder root)
+
+**His standing instruction with the answers (verbatim):** "Here are my answers to act on (dedicate this session to actioning these and then perform any
+necessary actions in order for a standard development loop to occur in a new Claude Code session after these 9 pending items have all been rectified)".
+Applied in this session: the nine answers are recorded below; every Blocked / Declined entry they settle now points at its decision; "Next session starts
+with:" (the banner at the top) is the ordered queue the next `/loop-start` works; `KB_AMALGAMATION_STATUS.md` rows updated; both files mirrored into
+`converter-v2/loop/` and committed in pageforge-site ("Decisions from Chris 2026-09-16"), never pushed. **No converter code, data or corpus changed** — this
+session carried no `REGENERATE CORPUS` code; the rounds themselves run in the next loop session under the standing §7 kickoff. The r342 working tree (four
+uncommitted files, both flags OFF) is untouched. **Still open for Chris: NOTHING** — every recorded Blocked class now has a decision.
+
+- **D10-1 — 2026-09-16 — the duplicate opening body heading (KB constraint 47; the plateau report's decision 1).** Question: apply c47 in full (A), only
+  the `Lesson N:` form (B), or leave the title printed twice (C)? Answer (verbatim): "The human is correct, for instance: [the SSOG101 lesson-3 example —
+  gold `<h1><span> Police Officers</span></h1>` then `<div id="body"> … <p>The police are like community helpers …` with no heading in the body; PageForge
+  `<h1><span>* Police Officers</span></h1>` … `<h3>Lesson 3: Police Officers</h3>`] In the human-built version, the lesson number is isolated to the
+  top-right corner and the lesson title is kept as the h1. This is correct and should be adhered to." = **Option A.** Authorises: ONE round — on every
+  lesson page of every template, DROP the opening body heading whose text equals the header title once case, punctuation and a `Lesson N` prefix
+  (`Lesson 3:`, `Lesson #3`, `Lesson One`, `Lesson 5 continued`) are ignored (the c47 test); the lesson NUMBER stays in the `#module-code` `<h1>`
+  (the top-right corner) and the lesson's OWN title stays the `<h1><span>` (c79 — never emptied, never the module title); a heading INSIDE an activity
+  box (ENGI101 "Being Frank" = the activity's own title) or one that introduces a different sub-topic is KEPT; on the overview page strip-only (the r320
+  note). Scope: the `_r320_dupheading.json` population re-measured on today's corpus (77 pages / 54 modules at r320; the 41 TRR false matches are gone
+  since r321). Target form: the gold's SSOG101_3.0 / MXFU302_1.0 shape. Authority: KB level 1 (c47, Universal) over the gold's 57% on the exact form —
+  a NAMED override on the ≈ 6 pages where the human kept the repeat (ENGJ101_1, ENGR201_1, MXDB302_6, MXEO202_3, MXFU201_2, OSGM201_1 …); the 12
+  `Lesson N` pages are under the 20-page floor and ship on this authorisation. **Sibling to measure in the same round:** the header title's stray
+  markdown markers (`<h1><span>* Police Officers</span></h1>`, `<h1><span>**Statistics and Sports**</span></h1>` — the writer's italic / bold asterisks
+  leaking into the title; c79 hygiene, the r327 title-casing seam) — ship if derivable, else record. Scoped regeneration (the heading family).
+- **D10-2 — 2026-09-16 — the bilingual lesson-title pair ORDER in Standard-template modules (the plateau report's decision 4).** Question: keep the
+  writer's order (A), English first (B), Māori first everywhere (C)? Answer (verbatim): "Go with option B — English first in Standard modules."
+  Authorises: ONE small round — in a Standard-template module, a LESSON title that is a `|`-separated bilingual pair ships the ENGLISH half first and the
+  Te Reo half second (the r316 `header.lesson_bilingual_pair` mechanism: `reo_detect "macron"` decides which half is Te Reo; where neither half carries a
+  macron the writer's order stands and the page is recorded); the MTK rule (`reo_first_when_body_class "reoTranslate"`, 07D rule 7 — Māori first) is
+  UNTOUCHED for Bilingual modules. Scope: the r316 pipe-title set in Standard (13 pages, 8 modules): ANZH101_2_0 and MXDB202_3_0 gain the gold's order;
+  ANZH105_1_0 and HIS1006_10_0 become NAMED overrides (the human kept the writer's Te-Reo-first order there); the MXFL101 / TEDC402 / XGF9002 pages
+  where the gold carries a different pair altogether are unaffected in pairing terms. NOT in this decision: the overview page's `[TITLE BAR]` module-title
+  pair (measure separately if its order ever differs) and Languages three-part titles (c85 — writer's order). Authority: Chris's house rule (the KB is
+  silent for Standard) — a KB delta: 00G c79 / 01A to gain the sentence "a bilingual lesson-title pair is English first in Standard modules, Māori first
+  in MTK (07D rule 7)" (a KB session, own CL row). Data flag + env toggle; scoped regeneration of the pipe-title family.
+- **D10-3 — 2026-09-16 — building the un-built interactives (the plateau report's decision 5).** Question: widget-build rounds inside the loop (A),
+  leave builds to the Interactives Build Mode / developer path (B), only the three builder-less types (C)? Answer (verbatim): "Option A — authorise
+  widget-build rounds inside the loop, one type per kickoff,". Authorises: widget-BUILD rounds in this loop, ONE widget type per kickoff, largest un-built
+  population first — **dragAndDrop** (822 un-built / 291 modules / 682 shapes) → **clickDrop** (324 / 108) → **accordion** (255 / 112) → **carousel**
+  (239 / 140) → **flipCard** (215 / 121) → **selfCheck** (153 / 65 — NO builder today) → **modal** (153 / 59) → **tabs** (75 / 45) → **slider** (47 / 30 —
+  NO builder) → **infoTrigger** (37 / 22 — NO builder) → **shapeHover** (27) → **hint** (17) → **hintSlider** (12) → glossary (1) (the
+  `COVERAGE_DASHBOARD.md` census, refreshed 2026-09-16 — re-run it at each kickoff). A kickoff is a SEQUENCE of rounds on one type: each round takes the
+  type's largest un-built authoring SHAPE family ≥ 20 sites (measured with the r286 decline instrument — `_measure_r286_declines.cjs` — the builder's
+  own give-up reason names the shape), extends the type's builder to it behind a data flag + env toggle (the r246 / r276–r289 interactive-coverage chain
+  pattern: build the WRITER's tag; A1 — judged on the widget's own verifier at divergence / defect 0, never on the human's substitution; **never
+  half-build** — a shape that cannot be built to the KB's 03B–03F form stays the hand-off box with its worklist entry), family regeneration of the type
+  (§0b — the whole tag family, working half included; dragAndDrop ≈ 291 modules ≈ near-full), gates hold; the kickoff ends when no shape family ≥ 20
+  sites remains, then the next type. **§4 reading for build rounds (recorded here, Chris to veto if wrong):** a build is invisible to the skeleton score
+  by design, so the plateau rule's "moved" test for a build round is the type's *Still a box* count on the dashboard (a round that converts ≥ 20 sites
+  from box to built is progress); the budget / exhaustion rules apply unchanged. Authority: Chris (this decision + the A1 standing ruling "the writer's
+  tag is the target"); overrides nothing in the KB (03B–03F + 15 describe the forms). Consequences: the activity `interactive` modifier (r339 Declined)
+  and the widened wrapper (c17/c56, r334 Declined) follow each BUILD (the token follows the widget — still never inferred from the box side); the
+  gold's own widget substitutions around a built element (r339 / r340 A1 pages) stay A1. Sequence: AFTER the structure rounds D10-6 → D10-1 → D10-2 →
+  D10-7 → D10-5 → D10-9 (they change the pages the builds land on and D10-5 / D10-9 need the full regeneration anyway).
+- **D10-4 — 2026-09-16 — the `stickyNav` `<head>` include (KB queue rank 10; 14A / 14B / 14D vs the project instruction).** Question: KB families only
+  (A), every ≥ 60% series (B), keep the ban (C)? Answer (verbatim): "Option C — keep the ban everywhere. No change; the KB's three family rules stay
+  un-honoured and the KB should then be edited to say so." Authorises: NO round — the class is **CLOSED** (decided, not blocked, not declined).
+  `Emit_Templates.skeleton.never_emit` (`stickyNav.js`) stays; `00_PROJECT_CONTEXT_AND_PHILOSOPHY.md` line 85 ("a templating error that was copied
+  across modules; never emit it") is the governing rule for every series including CED Phase 5 / HES / PHE / HPFUN. **KB edits authorised** (an
+  Admin-Mode KB round in the KB repo — its own CL row, `check_kb.py`, timestamps — NOT done in this session, which touches no KB file):
+  `14A_SGP_PURPOSE_FAMILIES_1_5.md` line 54 (Languages "Sticky nav on every page"), line ~121 (CED Phase 5 "Sticky-nav dictionary links"),
+  `14B_SGP_FAMILIES_6_11.md` line 93 (HPE "Sticky / floating nav"), `14D_SGP_CROSSCUTTING_AND_TECHNOLOGY.md` line 11 (the cross-cutting summary) →
+  each to state that the `stickyNav.js` include is NEVER emitted by the Convertor or by PageForge (a templating error; where a family needs a floating
+  nav it is the developer's post-build set-up) and the "set up the `stickyNav.js` file" To Do note is withdrawn. KB status queue row 10 → CLOSED.
+- **D10-5 — 2026-09-16 — the table form (KB 05D vs 06 §6, a KB-internal conflict).** Question: bordered everywhere per 05D (A), bordered only where
+  the family agrees (B), leave plain (C); which KB page is right? Answer (verbatim): "Option A — 05D's table table-bordered everywhere (plus tableFixed
+  for true two-column comparison tables). Every table gets cell borders. A named override in Standard (the tie), a gain in the other three templates.
+  Gate-moving (tiny net), full regeneration in practice (tables are everywhere)." = **05D is the rule; 06 §6 is superseded.** Authorises: ONE round,
+  FULL regeneration — every writer table ships `<div class="table-responsive"><table class="table table-bordered">` (05D's default) EXCEPT a two-column
+  COMPARISON table, which ships `<table class="table tableFixed">` (no `table-bordered`, 05D lines 239–246); the comparison test is DATA-DRIVEN and
+  measured before coding — exactly two columns AND a header pair from a contrast lexicon (can / cannot, pros / cons, advantages / disadvantages, before /
+  after, do / don't, true / false, similarities / differences, fact / opinion, …; a two-column table whose headers are not a contrast pair stays
+  bordered); the existing `th` header rule and the `table-responsive` wrapper are unchanged; 05D's optional `noHover` / `center-text` are NOT emitted (no
+  writer signal; gold 0.09). Scope: 1,063 tables / 518 pages at r331 — re-measure. Authority: KB 05D level 1 over the gold's Standard tie (0.51) — a
+  NAMED override on every Standard page whose gold table is plain (≈ 133 matched lines lost), gains in Inquiry 0.72 / Fundamentals 0.69 / Bilingual 0.86
+  (+74); net ≈ −0.01pp, named. **KB delta:** `06_TEMPLATE_RECOGNITION.md` lines 405–411 (`table noHover tableFixed`) to be reconciled to 05D (a KB
+  session, own CL row). Verifier: every table's class set ∈ {`table table-bordered`, `table tableFixed`} (defect 0).
+- **D10-6 — 2026-09-16 — the eight CED revision-brief modules (CEDR201 / CEDR301 / CEDR302 / CEDT201 / CEDT202 / CEDT203 / CEDT204 / CEDW303).**
+  Question: scaffold from the brief (A), leave them (B), exclude them from the score (C)? Answer (verbatim): "Option C — exclude revision briefs from the
+  comparison set. The eight stay in the corpus (so a developer still gets whatever PageForge can make) but stop counting in the score. No page changes; a
+  one-line change to the gate configuration." Authorises: the eight modules are REMOVED from the skeleton / compare-set population (ONE list, honoured by
+  every gate — the natural seam is `reference/tests/_corpus.py` `mods()`, the shared module-list helper 18 gate scripts import, reading a new
+  `reference/tests/compare_exclusions.txt` with the eight codes and the reason; no gate has an exclusion hook today; the reason recorded: "Writers Template is an edit brief for content held in the previous module version — not a
+  conversion source"); their Claude dirs STAY, are regenerated with their families as today, and keep their `_interactives.txt`; every baseline
+  (`gate_baseline.json`, `CLAUDE.md` §14, the fast-loop baseline, the ceiling report's page count, `CORPUS_CENSUS.txt`) is RE-ESTABLISHED on the new
+  population BEFORE any later class ships, so no round's delta is polluted by the population change (expected: the skeleton mean rises ≈ +0.3pp purely
+  from the exclusion — recorded as a POPULATION change, never claimed as a gain). **Do this FIRST in the next session.** Option A (a phase scaffold
+  with the edit notes) is NOT authorised. Authority: Chris; overrides nothing. No regeneration.
+- **D10-7 — 2026-09-16 — Word equations (dropped by the V2 extractor; the output form).** Question: MathML (A), LaTeX (B), MathML + LaTeX in a comment
+  (C)? Answer (verbatim): "Option A — MathML (the gold's form, the one that renders in MTK). ~80 pages gain their equations; the KB's 05A page gets a
+  recorded correction (the "KB delta"). Gate-moving up (the gold has 2,052 of these); scoped regeneration of the 12 modules." Authorises: ONE round —
+  (1) the extraction half: `DocxExtractor.js` reads `m:oMath` / `m:oMathPara` where they sit BESIDE the `w:r` runs of a `w:p` (an unknown OMML element is
+  preserved as its text, never silently dropped — the V1.5 `ommlConverter.stats.unknownElements` discipline; counter `mathEquations`); (2) the output
+  half: **MathML** — the gold's `<math xmlns="http://www.w3.org/1998/Math/MathML">` form; an equation inside a text run is inline, an equation paragraph
+  on its own is block (measure the gold's 1,822 bare / 105 `display="inline"` / 66 `display="block"` split and follow its majority convention per
+  position); ported from V1.5 `pageforge-site/js/omml-to-mathml.js` (tested against this corpus) through a small plain-object XML tree under V2's regex
+  extractor; (3) `body class="container-fluid mathJax"` on every page that carries a `<math>` (the gold's per-page form, 0.92 precision). Scope: the 12
+  WTs / 329 equations (MXDI102 154, MXDI301 69, PES1008 24, MXEX301 18, PES1007 17, MXFU302 15, MXFU401 12, MXDB301 6, MXDI201 6, CEDK401 6, MXDB202 1,
+  SCCH301 1) → ~80 pages; scoped regeneration of those 12 (+ any module the OMML probe finds). Authority: the gold (level 3, 100% MathML) + Chris's V1.5
+  finding (2026-08-26, MathML renders / LaTeX does not in MTK) over KB 05A's LaTeX letter — **KB delta:** 05A "MathJax / Equations" (lines 217–223) →
+  MathML is the shipped form (a KB session, own CL row). Verifier: per module, docx OMML count == page `<math>` count (defect 0), plus the 12 selftests.
+- **D10-8 — 2026-09-16 — the `alertPadding` activity class (KB 01F table vs the gold's 0.81 plain majority).** Question: apply (A), leave plain (B), make
+  it a KB rule first (C)? Answer (verbatim): "Option B — leave the plain form (the gold's 81% and 05B's "own class set"). No change." Authorises: NO round
+  — **CLOSED**. PageForge keeps plain `activity` on text / workbook boxes (+ the `dropbox` / `interactive` modifiers as today). KB note for the KB
+  session's judgement (no edit required by this decision): 01F line 27's `activity alertPadding` row and 05B line 39's example are an EXAMPLE, not the
+  default — 05B line 50's "follow the activity's own class set" governs.
+- **D10-9 — 2026-09-16 — the lesson-menu label form (KB constraint 23 / 01B; session-8 Round 2 PICK).** Question: the KB's `<h5>` form everywhere
+  including the overview tab (A), lesson menus only (B), leave (C)? Answer (verbatim): "Option A — apply constraint 23 everywhere: every lesson-menu label
+  becomes <h5> with the KB's normalised wording, the section titles above them go, and the overview tab's labels become <h5> too. ~80 lesson pages + ~296
+  overview pages change. A named KB-over-gold override, skeleton ≈ −0.1pp; close to a full regeneration (the menu is on every page)." Authorises: ONE
+  round, FULL regeneration (it may SHARE the D10-5 full regeneration if each is first proven by its own OFF-toggle A/B on a sample — the r334 backstop
+  precedent) — inside `#module-menu-content` on every LESSON page of every template: (a) every learning / success LABEL is `<h5>` — the r117 exact-fold
+  phrase list is replaced by a ROLE classifier (the line that introduces the list: "We are learning…", "Ākonga will / can…", "Learning intentions",
+  "I can…", "You will show your understanding…", "Success criteria", "Students will…" — measured over the WT corpus first); (b) the wording is
+  NORMALISED per 01B lines 240–244: learning label `We are learning:`; success label `I can:` for years 7–10 and `You will show your understanding by:`
+  for years 1–6 (the year level from `Module_Structure_Index.json` `module_meta` / the code's level digit — a data table; the writer's own label kept
+  where the level is unknown); (c) NO section title above the labels on a lesson page (`<h5>Learning intentions</h5>`, `<h3><span>Learning
+  Intentions</span></h3>`, "How will I know if I've learned it?" are dropped — 01B line 223); (d) the r81 eng-family `<p>` skip is RETIRED for lesson
+  menus; (e) the constraint-70 OSSC "Ākonga will …" lead-in SENTENCE stays a `<p>` ABOVE the first `<h5>` (it is not a label — 01B lines 225–236);
+  (f) the OVERVIEW tab's "We are learning:" / "I can:" labels become `<h5>` too (01B lines 196–197) — the r81 two_col eng-family overview `<p>` form is
+  retired; the overview's `<h4><span>` Learning Intentions / How will I know titles STAY (01B's overview form, distinct from the lesson-page rule).
+  Scope: 206 residue labels / 176 lesson pages / 42 modules + ~296 overview pages (`_r341_menulabels.log`); expected skeleton ≈ −0.1pp as a NAMED
+  override (the 80 lesson pages whose gold keeps `<p>` — English 22 / ConnectED 20 / Maths 17 / OS 16 / L2L 5 — plus the overview pages whose gold is
+  `<p>`). Authority: KB c23 + 01B (level 1) over the gold's per-series split and the 0.80 overview convention. Verifier: `_verify_menulabels` — every
+  lesson-menu label `<h5>`, its wording in the normalised set, no section title above it (defect 0).
 
 ## Decisions from Chris (session 9 — 2026-09-16; every instruction he gave, in order; the durable record)
 - **2026-09-16 09:21 — the session-9 kickoff (the standing §7 message, verbatim in the header above).** Question: continue the loop? Answer: continue in this
@@ -1695,7 +1855,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   stickyNav (series convention), c67 overflowYScroll (27 pages).
 
 ## Declined classes
-- **The activity `interactive` modifier (KB 01F `activity` + ID (interactive) → `<div class="activity interactive" number="ID">`; 03A)
+- **[D10-3, 2026-09-16: the widget BUILDS are now authorised — the modifier follows each build; the decline from the BOX side stands.]** **The activity `interactive` modifier (KB 01F `activity` + ID (interactive) → `<div class="activity interactive" number="ID">`; 03A)
   — DECLINED 2026-09-16 (session 7, Round 2 PICK; `outputs/_measure_r339_actinteractive.py` → `_r339_actinteractive.json` / `.log`,
   every gold activity box paired with Claude's box of the SAME number on the paired page).** 4,213 paired boxes: agree-yes 1,208 · agree-no
   1,964 · GAP gold-yes/Claude-no 758 (455 pages / 238 modules) · OVER gold-no/Claude-yes 283 (Claude's own hand-off boxes). The gold marks a box `interactive` because it
@@ -1720,7 +1880,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   Claude h3→h3 657" was a POSITION-wise artefact: the gold's first sub-heading is usually a heading Claude never ships (the gold's
   own `Go to your journal` h4 sits at a different slot), so position pairing compared different elements. Nothing to build.
 
-- **The widened activity wrapper (KB c17 / c56 — `col-md-12 col-12` for wide interactives, `col-12` for a D&D column with many images) —
+- **[D10-3, 2026-09-16: the D&D builds are now authorised — re-measure the wrapper per built layout; the decline from the box side stands.]** **The widened activity wrapper (KB c17 / c56 — `col-md-12 col-12` for wide interactives, `col-12` for a D&D column with many images) —
   DECLINED 2026-09-15 (session 5, Round 5 PICK; measured inline over every gold activity box by the widget type inside it).** The gold keeps
   `col-md-8 col-12` as the MAJORITY for every type — text-only 0.85, videoSection 0.88, D&D standard 0.72, typing 0.78, dropQuiz 0.82, D&D
   column **0.51** (col-12 0.26 / col-md-12 0.23), memoryGame 0.53, flipCard 0.54 — so no widened form solidifies (≥ 0.60), and the D&D
@@ -1736,7 +1896,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   (4,932 panels): the class rides 25 accContent + 6 tab-pane + 8 other panels on 27 pages (HIS1004 ×9), and its share is ≤ 0.05 in EVERY
   length bucket (accContent 1–2k chars 9/164, 2–4k 8/158, 4–8k 4/186, 8k+ 2/178; tab-pane 2–4k 4/97) — panel length does not predict it, no
   other discriminator exists. Below the r182 solidify floor in every group.
-- **c47 / CL-0095 — the duplicate body heading on a lesson page (Round 7 candidate, measured 2026-09-15 03:30, `outputs/_measure_r320_dupheading.py`
+- **→ DECIDED 2026-09-16 — D10-1 (Chris: Option A — c47 in full, the human's SSOG101 form; queued item 2, scoped). The decline below is superseded by the decision.** Pre-decision record: **c47 / CL-0095 — the duplicate body heading on a lesson page (Round 7 candidate, measured 2026-09-15 03:30, `outputs/_measure_r320_dupheading.py`
   → `_r320_dupheading.json`).** 88 cases / 77 pages where a Claude body heading equals the header title (exact, or after a `Lesson N` / label
   prefix). (a) The `Lesson N`-PREFIXED opening duplicate: gold drops 11/11 first-heading cases (12 with one later) — a 100% convention, both
   authorities agree — but only **12 pages**, under the loop's 20-page floor. (b) The EXACT duplicate: 70 cases, but 41 of them only match because
@@ -1748,10 +1908,10 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   universal wording should be applied regardless of the gold (then: strip + drop the opening duplicate on lesson pages, strip-only on the overview).
 
 - **The activity image SIDEBAR (`col-md-4 offset-md-0 > div.alertImage`, KB 05B / 02B) — DECLINED 2026-09-15 (session 5, Round 2 PICK; `outputs/_measure_r331_alertimage.py` + `_r331_alertimage_pos.py` → `_r331_alertimage.json`).** The gold ships 388 sidebars on the paired pages (Standard 281 / Inquiry 61 / Fundamentals 36 / Bilingual 10), Claude 0 — but **216 of the 388 (56%) use an image that is absent from the writer's document** (the designer's own beautification asset — class C), 36 sit in cv2 hand-off dumps (widget builds), 49 have no same-numbered Claude box; of the derivable remainder the only WT signal — the writer's image inside the activity — predicts a sidebar at **0.13** (48 of 361 Claude boxes holding an image; "last member before the button" 0.17; "image-only row right after the box" 5:11) — below the r182 solidify floor in every template. The KB defines the sidebar's FORM (05B), not a writer-side trigger. Never re-attempt without a new discriminator.
-- **The KB's default table class `table table-bordered` (05D) — NOT PICKED 2026-09-15 (session 5, Round 2 PICK; measured inline).** Claude ships bare `table.table` on 1,063 tables / 518 pages. The gold is a genuine TIE in Standard (bordered 0.51 of 1,432 tables; 104 modules all-bordered / 51 none / 78 mixed), ≥ 0.60 in Inquiry 0.72 / Fundamentals 0.69 / Bilingual 0.86; `tableFixed` does NOT follow the KB's 2-column guidance (2-col tables 0.19; it tracks 4+ columns). The KB's own two documents disagree (05D `table table-bordered` default vs 06 §6 Refresh baseline `table noHover tableFixed`). A `table-bordered` default would be a KB-over-gold override costing ≈ −133 matched table lines in Standard for +74 in Inquiry / Fundamentals — needs Chris to settle 05D vs 06 (see Blocked classes). Not attempted.
+- **→ DECIDED 2026-09-16 — D10-5 (Chris: Option A — apply 05D everywhere; queued item 5).** Pre-decision record: **The KB's default table class `table table-bordered` (05D) — NOT PICKED 2026-09-15 (session 5, Round 2 PICK; measured inline).** Claude ships bare `table.table` on 1,063 tables / 518 pages. The gold is a genuine TIE in Standard (bordered 0.51 of 1,432 tables; 104 modules all-bordered / 51 none / 78 mixed), ≥ 0.60 in Inquiry 0.72 / Fundamentals 0.69 / Bilingual 0.86; `tableFixed` does NOT follow the KB's 2-column guidance (2-col tables 0.19; it tracks 4+ columns). The KB's own two documents disagree (05D `table table-bordered` default vs 06 §6 Refresh baseline `table noHover tableFixed`). A `table-bordered` default would be a KB-over-gold override costing ≈ −133 matched table lines in Standard for +74 in Inquiry / Fundamentals — needs Chris to settle 05D vs 06 (see Blocked classes). Not attempted.
 
-## Blocked classes
-- **KB constraint 23 / 01B — the lesson-menu LABEL form (`<h5>` for every "We are learning… / I can: / You will show your understanding by:"
+## Blocked classes — ALL SIX DECIDED 2026-09-16 (Decisions from Chris, session 10: D10-1…D10-9); the entries below are kept verbatim as the evidence record each decision was made on
+- **→ DECIDED 2026-09-16 — D10-9 (Chris: Option A — the KB's `<h5>` form everywhere, overview tab included; queued item 6, FULL regeneration).** Pre-decision record: **KB constraint 23 / 01B — the lesson-menu LABEL form (`<h5>` for every "We are learning… / I can: / You will show your understanding by:"
   label, the writer's wording normalised) vs the gold's per-series forms — needs Chris, 2026-09-16 (session 8, Round 2 PICK;
   `outputs/_measure_r341_menulabels.py` → `_r341_menulabels.{json,log}`, measured INSIDE `#module-menu-content` on every paired lesson page).**
   Claude already ships `<h5>` on 1,257 labels (gold h5 0.71); the RESIDUE is 206 `<p>` labels / 176 pages / 42 modules where the r117
@@ -1764,7 +1924,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   the r117 list + the r81 skip (the gold's per-series forms), adding only the NCEA1-solidified "We are learning about/to…" variant (17 pages —
   under the floor, so recorded here rather than shipped). Recommendation: (c) now; (a) only if Chris confirms the KB's label form is meant to
   overturn the eng-family overview convention the gold carries at 0.80 — that is a design-team call, not a converter inference.
-- **The `alertPadding` activity class — KB 01F table vs the gold's majority — needs Chris, 2026-09-15 (session 6, Round 2 PICK; measured
+- **→ DECIDED 2026-09-16 — D10-8 (Chris: Option B — leave the plain form; CLOSED, no round).** Pre-decision record: **The `alertPadding` activity class — KB 01F table vs the gold's majority — needs Chris, 2026-09-15 (session 6, Round 2 PICK; measured
   inline over every gold Standard activity box).** KB 01F's tag table maps `activity` + ID (text/workbook) → `<div class="activity
   alertPadding">` and 05B's example labels `activity alertPadding` "Standard text activity" — but 05B also says "follow the activity's own
   class set and simply append `dropbox`", and the gold ships plain `activity` **1773** vs `activity alertPadding` **411** (0.19) on the
@@ -1776,7 +1936,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   0.81 majority + 05B's "own class set"), (c) make it a KB constraint first and then apply. Recommendation: (b) until the KB says it is
   a rule, not an example — `alertPadding` is a padding choice the developer makes, with no writer-side signal.
 
-- **WORD EQUATIONS ARE DROPPED — the form needs Chris, 2026-09-15 (session 5, Round 6 PICK; measured over the live docx files).** The V2 extractor
+- **→ DECIDED 2026-09-16 — D10-7 (Chris: Option A — MathML; KB 05A delta recorded; queued item 4, scoped to the 12 modules).** Pre-decision record: **WORD EQUATIONS ARE DROPPED — the form needs Chris, 2026-09-15 (session 5, Round 6 PICK; measured over the live docx files).** The V2 extractor
   has NO OMML path (`DocxExtractor.js` never reads `m:oMath` / `m:oMathPara`, which sit BESIDE the `w:r` runs in a `w:p`), so every Word equation
   is silently absent from the page: **12 WTs carry 329 equations** (MXDI102 154, MXDI301 69, PES1008 24, MXEX301 18, PES1007 17, MXFU302 15,
   MXFU401 12, MXDB301 6, MXDI201 6, CEDK401 6, MXDB202 1, SCCH301 1) and Claude ships **0** math markup on any page; the gold ships **2,052
@@ -1790,7 +1950,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   along (the gold carries it per module — 115 pages / 20 modules — 0.92 precision where the page has math). Decision needed: (a) MathML (the
   gold + the V1.5 finding; name the KB delta), (b) LaTeX (the KB's letter; gate-neutral, does not render in MTK per V1.5), (c) both (MathML
   with the LaTeX source in a comment). Either way the extraction half is the same round.
-- **The CED REVISION-BRIEF modules (CEDR201/301/302, CEDT201–204, CEDW303 — 8 Inquiry modules, 8 pages scoring 8–20%) — a content-start
+- **→ DECIDED 2026-09-16 — D10-6 (Chris: Option C — exclude the eight from the comparison set, re-baseline; queued item 1, no regeneration).** Pre-decision record: **The CED REVISION-BRIEF modules (CEDR201/301/302, CEDT201–204, CEDW303 — 8 Inquiry modules, 8 pages scoring 8–20%) — a content-start
   finding, needs Chris, 2026-09-15 (session 5, Round 5 PICK).** Their `Writers Template + Media List.docx` is an EDIT BRIEF (`[Keep rest of
   content]`, `[Edit page: …]`, `[Remove video]`, ALL-CAPS Wonder/Explore/Connect/Act/Reflect phase lines) followed by the UNFILLED blank template;
   the live extractor's content start lands on the blank template's `[TITLE BAR]` and ships its placeholders (`Lesson # and title`, `Learning
@@ -1800,7 +1960,7 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   (b) leave them (the gate counts them at ~10%), (c) exclude revision briefs from the comparison set. The other 28 crumb-less Inquiry modules
   are six delimiter dialects (`[tab N]` 11 modules — most with no Claude dir; `[LESSON N]`-as-panels 5; `[page N]` 2; EXPFUN `[section N]` 4;
   TWH* new-tab/tab 5) — each a PanelsBuilder dialect round of its own (the r106/r189/r191/r192 pattern), sized 1–14 pages each.
-- **stickyNav `<head>` include (KB queue rank 10; 14A/14B/14D) — BLOCKED 2026-09-15, needs Chris.** Measured (`outputs/_measure_r323_stickynav.py` →
+- **→ DECIDED 2026-09-16 — D10-4 (Chris: Option C — keep the ban everywhere; CLOSED, no round; KB 14A/14B/14D to be edited to say never emitted).** Pre-decision record: **stickyNav `<head>` include (KB queue rank 10; 14A/14B/14D) — BLOCKED 2026-09-15, needs Chris.** Measured (`outputs/_measure_r323_stickynav.py` →
   `_r323_stickynav.json`): the gold carries `<script src="js/stickyNav.js" type="text/javascript" class="stickyNav"></script>` right after `<title>` on
   **1,504 of 2,385 pages (63%)**, per MODULE all-or-nothing (253 modules every page, 171 none, 30 mixed), ≥ 0.60 in 30 series (MX 0.92, ENGI/ENGR/HIS/
   AGH/MXDI/MXEO 1.00, ANZH 0.92, CED 0.96, HES 1.00, PHE 0.98 …) and 0 in others (TRR/PNR Bilingual 0/92, BLL 0.31, ARFUN 0, SC 0.05, HPRE 0/21);
@@ -1813,9 +1973,10 @@ Not a session-2 decision but still governing: session 1's "STOP THE LOOP NOW" (2
   "templating error copied across modules" the philosophy names). Decision needed: (a) KB families only, (b) every ≥ 0.60 series, (c) keep the ban.
 
 
-- **KB table form — 05D vs 06 §6 (a KB-internal conflict) — needs Chris, 2026-09-15 (session 5).** 05D (the component doc) says the general default is `<div class="table-responsive"><table class="table table-bordered">` with `tableFixed` for two-column comparison tables; 06 §6 (the Refresh element reference) shows `<table class="table noHover tableFixed">`. The gold: Standard `table-bordered` 0.51 (a tie), Inquiry 0.72, Fundamentals 0.69, Bilingual 0.86; `noHover` 0.09; `tableFixed` 0.30 and tied to column count (4+ cols 0.51, 2 cols 0.19), not to the KB's comparison-table guidance. Claude ships bare `table.table` (KB-correct wrapper `table-responsive` + `th` headers already). Decision needed: (a) apply 05D's `table table-bordered` default corpus-wide (a named override, skeleton ≈ −0.01pp in Standard / + in Inquiry & Fundamentals), (b) apply it only where the gold family agrees ≥ 0.60 (Inquiry / Fundamentals / Bilingual — a `Template_Modes.json`-style flag), (c) leave `table` bare. Recommendation: (b) — the KB rule where the gold confirms it, the tie left alone until the KB reconciles 05D with 06.
+- **→ DECIDED 2026-09-16 — D10-5 (Chris: Option A — 05D's `table table-bordered` everywhere + `tableFixed` for two-column comparison tables; 06 §6 superseded; queued item 5, FULL regeneration).** Pre-decision record: **KB table form — 05D vs 06 §6 (a KB-internal conflict) — needs Chris, 2026-09-15 (session 5).** 05D (the component doc) says the general default is `<div class="table-responsive"><table class="table table-bordered">` with `tableFixed` for two-column comparison tables; 06 §6 (the Refresh element reference) shows `<table class="table noHover tableFixed">`. The gold: Standard `table-bordered` 0.51 (a tie), Inquiry 0.72, Fundamentals 0.69, Bilingual 0.86; `noHover` 0.09; `tableFixed` 0.30 and tied to column count (4+ cols 0.51, 2 cols 0.19), not to the KB's comparison-table guidance. Claude ships bare `table.table` (KB-correct wrapper `table-responsive` + `th` headers already). Decision needed: (a) apply 05D's `table table-bordered` default corpus-wide (a named override, skeleton ≈ −0.01pp in Standard / + in Inquiry & Fundamentals), (b) apply it only where the gold family agrees ≥ 0.60 (Inquiry / Fundamentals / Bilingual — a `Template_Modes.json`-style flag), (c) leave `table` bare. Recommendation: (b) — the KB rule where the gold confirms it, the tie left alone until the KB reconciles 05D with 06.
 
 ## Round log
+- s10 · `/loop-decisions` (no engine round) · Chris answered ALL NINE pending decisions — recorded as D10-1…D10-9; the queue in the top banner · pages moved 0 · commit "Decisions from Chris 2026-09-16" · 2026-09-16 ≈15:30
 - r0 · the ceiling instrument · shipped (tool + measurement, no converter change) · ceiling 91.6%, SCAFFOLD 49.941% = 54.5% of achievable · pages moved 0 · commit ca59d13
 - r0b · KB amalgamation status (95 CLs, 92 constraints, 12 families; 11 queued rows) · shipped (document, no converter change) · pages moved 0 · commit 784305b
 - r1 (engine r314) · KB constraint 43, the trailing upload box inside its activity (+ `dropbox` modifier) · SHIPPED 2026-09-15 · scaffold 49.941→50.031 (+0.090) · ≥50 +5 / ≥75 +1 · pages moved 60 (65 pages / 43 modules rebuilt) · 54.5%→54.6% of achievable · commit (see git log)
