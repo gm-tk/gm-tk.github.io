@@ -1,0 +1,3318 @@
+{
+ "pages": 1056,
+ "gold_success_wording_by_series_digit": {
+  "AGH10 | 1": {
+   "you will show your understanding by": 65
+  },
+  "ANZH20 | 2": {
+   "i can": 5
+  },
+  "ANZH30 | 3": {
+   "i can": 12,
+   "you will show your understanding by": 10
+  },
+  "ANZH40 | 4": {
+   "i can": 6
+  },
+  "BLL24 | 2": {
+   "you will show your understanding by": 6,
+   "i can": 1
+  },
+  "CEDK50 | 5": {
+   "i can": 10
+  },
+  "CEDO10 | 1": {
+   "i can": 5
+  },
+  "CEDO50 | 5": {
+   "i can": 12
+  },
+  "CEDR50 | 5": {
+   "i can": 8
+  },
+  "CEDT50 | 5": {
+   "i can": 12
+  },
+  "CEDW50 | 5": {
+   "i can": 8
+  },
+  "ENGC10 | 1": {
+   "i can": 7,
+   "you will show your understanding by": 5
+  },
+  "ENGC20 | 2": {
+   "you will show your understanding by": 14
+  },
+  "ENGC30 | 3": {
+   "i can": 13
+  },
+  "ENGC40 | 4": {
+   "i can": 7
+  },
+  "ENGI10 | 1": {
+   "you will show your understanding by": 11,
+   "i can": 5
+  },
+  "ENGI20 | 2": {
+   "you will show your understanding by": 15,
+   "i can": 4
+  },
+  "ENGI30 | 3": {
+   "i can": 17,
+   "you will show your understanding by": 6
+  },
+  "ENGI40 | 4": {
+   "i can": 18
+  },
+  "ENGJ20 | 2": {
+   "you will show your understanding by": 5
+  },
+  "ENGJ30 | 3": {
+   "i can": 15
+  },
+  "ENGJ40 | 4": {
+   "i can": 10,
+   "you will show your understanding by": 8
+  },
+  "ENGR10 | 1": {
+   "i can": 12
+  },
+  "ENGR20 | 2": {
+   "i can": 7,
+   "you will show your understanding by": 6
+  },
+  "ENGR30 | 3": {
+   "you will show your understanding by": 8,
+   "i can": 7
+  },
+  "ENGS10 | 1": {
+   "i can": 11
+  },
+  "ENGS20 | 2": {
+   "i can": 7,
+   "you will show your understanding by": 6
+  },
+  "ENGS30 | 3": {
+   "i can": 9,
+   "you will show your understanding by": 4
+  },
+  "ENGS40 | 4": {
+   "i can": 5,
+   "you will show your understanding by": 1
+  },
+  "EXBP90 | 9": {
+   "i can": 3
+  },
+  "EXIP90 | 9": {
+   "i can": 1
+  },
+  "HES10 | 1": {
+   "i can": 9
+  },
+  "HIS10 | 1": {
+   "you will show your understanding by": 50
+  },
+  "HPRE20 | 2": {
+   "you will show your understanding by": 7
+  },
+  "MXDB20 | 2": {
+   "i can": 5
+  },
+  "MXDB30 | 3": {
+   "you will show your understanding by": 9
+  },
+  "MXDI20 | 2": {
+   "i can": 10
+  },
+  "MXDI30 | 3": {
+   "you will show your understanding by": 4
+  },
+  "MXEO10 | 1": {
+   "you will show your understanding by": 3
+  },
+  "MXEO20 | 2": {
+   "i can": 8,
+   "you will show your understanding by": 4
+  },
+  "MXEO30 | 3": {
+   "i can": 8
+  },
+  "MXEX10 | 1": {
+   "you will show your understanding by": 4
+  },
+  "MXEX30 | 3": {
+   "i can": 7,
+   "you will show your understanding by": 4
+  },
+  "MXFL10 | 1": {
+   "i can": 16,
+   "you will show your understanding by": 4
+  },
+  "MXFL20 | 2": {
+   "i can": 5
+  },
+  "MXFL30 | 3": {
+   "you will show your understanding by": 9,
+   "i can": 8
+  },
+  "MXFU20 | 2": {
+   "i can": 9,
+   "you will show your understanding by": 7
+  },
+  "MXFU30 | 3": {
+   "you will show your understanding by": 17
+  },
+  "MXFU40 | 4": {
+   "i can": 7
+  },
+  "OSAH30 | 3": {
+   "i can": 3
+  },
+  "OSAH40 | 4": {
+   "i can": 4
+  },
+  "OSAI10 | 1": {
+   "i can": 2
+  },
+  "OSAI20 | 2": {
+   "i can": 3
+  },
+  "OSAI30 | 3": {
+   "i can": 3
+  },
+  "OSAI40 | 4": {
+   "i can": 4
+  },
+  "OSAI50 | 5": {
+   "i can": 5
+  },
+  "OSBY10 | 1": {
+   "i can": 3
+  },
+  "OSBY20 | 2": {
+   "i can": 3
+  },
+  "OSBY30 | 3": {
+   "i can": 3
+  },
+  "OSBY40 | 4": {
+   "i can": 4
+  },
+  "OSBY50 | 5": {
+   "i can": 5
+  },
+  "OSGM10 | 1": {
+   "you will show your understanding by": 2
+  },
+  "OSGM20 | 2": {
+   "you will show your understanding by": 3
+  },
+  "OSGM30 | 3": {
+   "i can": 3
+  },
+  "OSGM40 | 4": {
+   "i can": 4
+  },
+  "OSGM50 | 5": {
+   "i can": 5
+  },
+  "OSOH10 | 1": {
+   "i can": 3
+  },
+  "OSOH20 | 2": {
+   "i can": 3
+  },
+  "OSOH30 | 3": {
+   "i can": 3
+  },
+  "OSOH40 | 4": {
+   "i can": 4
+  },
+  "OSOH50 | 5": {
+   "i can": 5
+  },
+  "OSSC30 | 3": {
+   "i can": 3
+  },
+  "OSSM30 | 3": {
+   "i can": 4
+  },
+  "OSSM40 | 4": {
+   "i can": 4
+  },
+  "PES10 | 1": {
+   "you will show your understanding by": 45
+  },
+  "SCCH30 | 3": {
+   "i can": 8
+  },
+  "SCPH30 | 3": {
+   "i can": 8
+  },
+  "SSCI20 | 2": {
+   "how will i know": 9,
+   "i can": 9
+  },
+  "SSOG10 | 1": {
+   "i can": 10,
+   "how will i know": 4
+  },
+  "TEDC40 | 4": {
+   "i can": 14
+  },
+  "XDLS50 | 5": {
+   "i can": 7
+  },
+  "XDLS90 | 9": {
+   "other": 35,
+   "i can": 16
+  },
+  "XDLS91 | 9": {
+   "i can": 5
+  },
+  "XFUN02 | 0": {
+   "i can": 5
+  },
+  "XGF90 | 9": {
+   "i can": 7
+  },
+  "XLP01 | 0": {
+   "i can": 4
+  },
+  "XLP02 | 0": {
+   "i can": 4
+  },
+  "XLP03 | 0": {
+   "i can": 5
+  },
+  "XLP04 | 0": {
+   "i can": 4
+  },
+  "XLP05 | 0": {
+   "i can": 3
+  },
+  "XMES10 | 1": {
+   "i can": 18
+  },
+  "XMES20 | 2": {
+   "i can": 9
+  },
+  "XTAS10 | 1": {
+   "i can": 11
+  },
+  "XWHA01 | 0": {
+   "i can": 1
+  }
+ },
+ "gold_section_titles_on_lesson_pages": {
+  "pages_with_a_title": 257,
+  "of_pages": 1056,
+  "titles": {
+   "h5:learning intentions": 161,
+   "h5:how will i know if i've learned ": 126,
+   "h3:learning intentions": 63,
+   "h3:how will i know if i've learned ": 40,
+   "h4:learning intentions": 32,
+   "h4:success criteria": 19,
+   "p:how will i know if i've learned ": 19,
+   "h3:success criteria": 19,
+   "h5:success criteria": 15,
+   "h4:how will i know if i've learned ": 5
+  }
+ },
+ "claude_leadins_by_role": {
+  "success | you will show your": {
+   "n": 367,
+   "gold": {
+    "h5": 195,
+    "absent": 116,
+    "p": 28,
+    "h3": 15,
+    "h4": 13
+   }
+  },
+  "learning | we are learning": {
+   "n": 290,
+   "gold": {
+    "h5": 195,
+    "p": 86,
+    "absent": 5,
+    "h3": 4
+   }
+  },
+  "success | i can": {
+   "n": 277,
+   "gold": {
+    "h5": 151,
+    "p": 98,
+    "absent": 18,
+    "h3": 10
+   }
+  },
+  "learning | we are learning to": {
+   "n": 236,
+   "gold": {
+    "h5": 151,
+    "p": 50,
+    "h4": 14,
+    "h3": 12,
+    "absent": 7,
+    "li": 2
+   }
+  },
+  "learning | learning intentions": {
+   "n": 130,
+   "gold": {
+    "h5": 76,
+    "h3": 27,
+    "absent": 19,
+    "h4": 8
+   }
+  },
+  "learning | we are learning about": {
+   "n": 115,
+   "gold": {
+    "h5": 71,
+    "p": 29,
+    "h3": 13,
+    "absent": 2
+   }
+  },
+  "success | you will be able": {
+   "n": 22,
+   "gold": {
+    "p": 22
+   }
+  },
+  "success | how will i know": {
+   "n": 16,
+   "gold": {
+    "h3": 8,
+    "absent": 8
+   }
+  },
+  "learning | ākonga can": {
+   "n": 13,
+   "gold": {
+    "p": 8,
+    "absent": 5
+   }
+  },
+  "learning | ākonga will": {
+   "n": 13,
+   "gold": {
+    "p": 8,
+    "absent": 5
+   }
+  },
+  "learning | ākonga will learn about": {
+   "n": 9,
+   "gold": {
+    "p": 5,
+    "absent": 4
+   }
+  },
+  "learning | ākonga will learn how": {
+   "n": 7,
+   "gold": {
+    "absent": 5,
+    "p": 2
+   }
+  },
+  "success | success criteria": {
+   "n": 6,
+   "gold": {
+    "h4": 5,
+    "absent": 1
+   }
+  },
+  "learning | ākonga will be introduced": {
+   "n": 4,
+   "gold": {
+    "p": 3,
+    "absent": 1
+   }
+  },
+  "learning | ākonga will learn what": {
+   "n": 3,
+   "gold": {
+    "absent": 2,
+    "p": 1
+   }
+  },
+  "learning | ākonga will recognise what": {
+   "n": 2,
+   "gold": {
+    "absent": 1,
+    "p": 1
+   }
+  },
+  "success | i can justify the": {
+   "n": 1,
+   "gold": {
+    "li": 1
+   }
+  },
+  "learning | we are learning how": {
+   "n": 1,
+   "gold": {
+    "h5": 1
+   }
+  },
+  "learning | we learning": {
+   "n": 1,
+   "gold": {
+    "absent": 1
+   }
+  },
+  "learning | we are learning toshow": {
+   "n": 1,
+   "gold": {
+    "li": 1
+   }
+  },
+  "learning | we are learning the": {
+   "n": 1,
+   "gold": {
+    "absent": 1
+   }
+  },
+  "learning | ākonga will learn their": {
+   "n": 1,
+   "gold": {
+    "p": 1
+   }
+  },
+  "learning | ākonga will be informed": {
+   "n": 1,
+   "gold": {
+    "p": 1
+   }
+  },
+  "learning | ākonga will learn strategies": {
+   "n": 1,
+   "gold": {
+    "p": 1
+   }
+  },
+  "learning | ākonga will learn ways": {
+   "n": 1,
+   "gold": {
+    "p": 1
+   }
+  },
+  "learning | ākonga will learn the": {
+   "n": 1,
+   "gold": {
+    "absent": 1
+   }
+  },
+  "learning | ākonga will learn that": {
+   "n": 1,
+   "gold": {
+    "absent": 1
+   }
+  },
+  "learning | ākonga will recognise that": {
+   "n": 1,
+   "gold": {
+    "absent": 1
+   }
+  }
+ },
+ "per_module": {
+  "AGH1001": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "AGH1002": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "AGH1003": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "AGH1004": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "AGH1005": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 8
+   },
+   "gold_learning_tag": {
+    "h5": 7,
+    "h4": 1
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "AGH1006": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "AGH1007": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "AGH1008": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 8
+   },
+   "gold_learning_tag": {
+    "h5": 4,
+    "h4": 4
+   },
+   "gold_success_tag": {
+    "h5": 4,
+    "h4": 4
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "AGH1009": {
+   "series": "AGH10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 9
+   },
+   "gold_learning_tag": {
+    "h4": 9
+   },
+   "gold_success_tag": {
+    "h4": 9
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "ANZH101": {
+   "series": "ANZH10",
+   "subject": "ANZH",
+   "digit": "1",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h3:learning intentions": 3,
+    "h3:how will i know if i've learned ": 3
+   },
+   "pages": 3
+  },
+  "ANZH203": {
+   "series": "ANZH20",
+   "subject": "ANZH",
+   "digit": "2",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {
+    "h4:learning intentions": 5,
+    "h4:how will i know if i've learned ": 5
+   },
+   "pages": 5
+  },
+  "ANZH301": {
+   "series": "ANZH30",
+   "subject": "ANZH",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 10
+   },
+   "gold_learning_tag": {},
+   "gold_success_tag": {
+    "p": 9,
+    "h5": 1
+   },
+   "gold_titles": {},
+   "pages": 10
+  },
+  "ANZH303": {
+   "series": "ANZH30",
+   "subject": "ANZH",
+   "digit": "3",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {
+    "p": 6
+   },
+   "gold_titles": {
+    "h5:learning intentions": 6,
+    "h5:how will i know if i've learned ": 6
+   },
+   "pages": 6
+  },
+  "ANZH304": {
+   "series": "ANZH30",
+   "subject": "ANZH",
+   "digit": "3",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {
+    "p": 6
+   },
+   "gold_titles": {
+    "h5:learning intentions": 6,
+    "h5:how will i know if i've learned ": 6
+   },
+   "pages": 6
+  },
+  "ANZH401": {
+   "series": "ANZH40",
+   "subject": "ANZH",
+   "digit": "4",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 12
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h4:learning intentions": 12,
+    "h4:success criteria": 12,
+    "p:how will i know if i've learned ": 12
+   },
+   "pages": 12
+  },
+  "ANZH404": {
+   "series": "ANZH40",
+   "subject": "ANZH",
+   "digit": "4",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {
+    "p": 6
+   },
+   "gold_titles": {
+    "h3:learning intentions": 6,
+    "h3:success criteria": 6
+   },
+   "pages": 6
+  },
+  "BLL240": {
+   "series": "BLL24",
+   "subject": "1-10 Blended Literacy",
+   "digit": "2",
+   "gold_success": {
+    "i can": 1,
+    "you will show your understanding by": 6
+   },
+   "gold_learning_tag": {
+    "p": 1,
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "p": 1,
+    "h5": 6
+   },
+   "gold_titles": {
+    "h5:learning intentions": 1,
+    "h5:how will i know if i've learned ": 1
+   },
+   "pages": 7
+  },
+  "CEDK501": {
+   "series": "CEDK50",
+   "subject": "ConnectED",
+   "digit": "5",
+   "gold_success": {
+    "i can": 10
+   },
+   "gold_learning_tag": {
+    "p": 10
+   },
+   "gold_success_tag": {
+    "p": 10
+   },
+   "gold_titles": {
+    "h5:learning intentions": 10,
+    "h5:how will i know if i've learned ": 10
+   },
+   "pages": 10
+  },
+  "CEDO105": {
+   "series": "CEDO10",
+   "subject": "ConnectED",
+   "digit": "1",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "CEDO501": {
+   "series": "CEDO50",
+   "subject": "ConnectED",
+   "digit": "5",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {
+    "p": 6
+   },
+   "gold_titles": {
+    "h5:learning intentions": 6,
+    "h5:how will i know if i've learned ": 6
+   },
+   "pages": 8
+  },
+  "CEDO502": {
+   "series": "CEDO50",
+   "subject": "ConnectED",
+   "digit": "5",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "CEDR501": {
+   "series": "CEDR50",
+   "subject": "ConnectED",
+   "digit": "5",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "CEDT501": {
+   "series": "CEDT50",
+   "subject": "ConnectED",
+   "digit": "5",
+   "gold_success": {
+    "i can": 12
+   },
+   "gold_learning_tag": {
+    "p": 12
+   },
+   "gold_success_tag": {
+    "p": 12
+   },
+   "gold_titles": {
+    "h5:learning intentions": 12,
+    "h5:how will i know if i've learned ": 12
+   },
+   "pages": 12
+  },
+  "CEDW501": {
+   "series": "CEDW50",
+   "subject": "ConnectED",
+   "digit": "5",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 8
+   },
+   "gold_titles": {
+    "h5:learning intentions": 8,
+    "h5:how will i know if i've learned ": 8
+   },
+   "pages": 8
+  },
+  "ENGC101": {
+   "series": "ENGC10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "ENGC102": {
+   "series": "ENGC10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "ENGC201": {
+   "series": "ENGC20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGC202": {
+   "series": "ENGC20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "ENGC301": {
+   "series": "ENGC30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "ENGC302": {
+   "series": "ENGC30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGC401": {
+   "series": "ENGC40",
+   "subject": "1-10 English",
+   "digit": "4",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "ENGI102": {
+   "series": "ENGI10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 5
+   },
+   "gold_learning_tag": {
+    "h5": 2,
+    "p": 4
+   },
+   "gold_success_tag": {
+    "h5": 2,
+    "p": 3
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGI103": {
+   "series": "ENGI10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 6,
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6,
+    "p": 5
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGI201": {
+   "series": "ENGI20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {
+    "h3:learning intentions": 4,
+    "h3:how will i know if i've learned ": 4
+   },
+   "pages": 4
+  },
+  "ENGI202": {
+   "series": "ENGI20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 5
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {
+    "h3:learning intentions": 6,
+    "h3:how will i know if i've learned ": 6
+   },
+   "pages": 6
+  },
+  "ENGI203": {
+   "series": "ENGI20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 10
+   },
+   "gold_learning_tag": {
+    "h3": 9,
+    "h5": 1
+   },
+   "gold_success_tag": {
+    "h3": 9,
+    "h5": 1
+   },
+   "gold_titles": {},
+   "pages": 10
+  },
+  "ENGI301": {
+   "series": "ENGI30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h3": 5
+   },
+   "gold_success_tag": {
+    "h3": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "ENGI302": {
+   "series": "ENGI30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 6,
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "h3": 6
+   },
+   "gold_success_tag": {
+    "h3": 6,
+    "p": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGI303": {
+   "series": "ENGI30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "h3": 6
+   },
+   "gold_success_tag": {
+    "h3": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGI400": {
+   "series": "ENGI40",
+   "subject": "1-10 English",
+   "digit": "4",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "ENGI401": {
+   "series": "ENGI40",
+   "subject": "1-10 English",
+   "digit": "4",
+   "gold_success": {
+    "i can": 10
+   },
+   "gold_learning_tag": {
+    "h5": 10
+   },
+   "gold_success_tag": {
+    "h5": 10
+   },
+   "gold_titles": {},
+   "pages": 10
+  },
+  "ENGI405": {
+   "series": "ENGI40",
+   "subject": "1-10 English",
+   "digit": "4",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h3": 5
+   },
+   "gold_success_tag": {
+    "h3": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "ENGJ101": {
+   "series": "ENGJ10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h3:learning intentions": 4,
+    "h3:how will i know if i've learned ": 4
+   },
+   "pages": 4
+  },
+  "ENGJ201": {
+   "series": "ENGJ20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h3:learning intentions": 6,
+    "h3:how will i know if i've learned ": 6
+   },
+   "pages": 6
+  },
+  "ENGJ202": {
+   "series": "ENGJ20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 5
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {
+    "h5:learning intentions": 5,
+    "h5:how will i know if i've learned ": 5
+   },
+   "pages": 5
+  },
+  "ENGJ301": {
+   "series": "ENGJ30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "p": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {
+    "h5:learning intentions": 7,
+    "h5:how will i know if i've learned ": 7
+   },
+   "pages": 7
+  },
+  "ENGJ302": {
+   "series": "ENGJ30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 8
+   },
+   "gold_titles": {
+    "h5:learning intentions": 8,
+    "h5:how will i know if i've learned ": 8
+   },
+   "pages": 8
+  },
+  "ENGJ402": {
+   "series": "ENGJ40",
+   "subject": "1-10 English",
+   "digit": "4",
+   "gold_success": {
+    "you will show your understanding by": 8,
+    "i can": 1
+   },
+   "gold_learning_tag": {
+    "p": 5,
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 8,
+    "p": 1
+   },
+   "gold_titles": {
+    "h5:learning intentions": 8
+   },
+   "pages": 8
+  },
+  "ENGJ403": {
+   "series": "ENGJ40",
+   "subject": "1-10 English",
+   "digit": "4",
+   "gold_success": {
+    "i can": 9
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {
+    "h5:learning intentions": 9
+   },
+   "pages": 9
+  },
+  "ENGR101": {
+   "series": "ENGR10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "ENGR102": {
+   "series": "ENGR10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "ENGR201": {
+   "series": "ENGR20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGR202": {
+   "series": "ENGR20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "p": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {
+    "h5:learning intentions": 7,
+    "h5:how will i know if i've learned ": 7
+   },
+   "pages": 7
+  },
+  "ENGR301": {
+   "series": "ENGR30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "ENGR302": {
+   "series": "ENGR30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "ENGS101": {
+   "series": "ENGS10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {
+    "h5:learning intentions": 5,
+    "h5:how will i know if i've learned ": 5
+   },
+   "pages": 5
+  },
+  "ENGS102": {
+   "series": "ENGS10",
+   "subject": "1-10 English",
+   "digit": "1",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGS201": {
+   "series": "ENGS20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "p": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {
+    "h5:learning intentions": 7,
+    "h5:how will i know if i've learned ": 7
+   },
+   "pages": 7
+  },
+  "ENGS202": {
+   "series": "ENGS20",
+   "subject": "1-10 English",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "ENGS301": {
+   "series": "ENGS30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "ENGS302": {
+   "series": "ENGS30",
+   "subject": "1-10 English",
+   "digit": "3",
+   "gold_success": {
+    "i can": 2,
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {
+    "p": 5,
+    "h5": 1
+   },
+   "gold_success_tag": {
+    "h5": 2,
+    "p": 4
+   },
+   "gold_titles": {
+    "h5:learning intentions": 5,
+    "h5:how will i know if i've learned ": 2
+   },
+   "pages": 6
+  },
+  "ENGS401": {
+   "series": "ENGS40",
+   "subject": "1-10 English",
+   "digit": "4",
+   "gold_success": {
+    "i can": 5,
+    "you will show your understanding by": 1
+   },
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {
+    "p": 6
+   },
+   "gold_titles": {
+    "h5:learning intentions": 6,
+    "h5:how will i know if i've learned ": 6
+   },
+   "pages": 6
+  },
+  "EXBP901": {
+   "series": "EXBP90",
+   "subject": "EXPlore",
+   "digit": "9",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "p": 3
+   },
+   "gold_success_tag": {
+    "p": 3
+   },
+   "gold_titles": {
+    "h4:learning intentions": 3,
+    "h4:success criteria": 4
+   },
+   "pages": 4
+  },
+  "EXIP901": {
+   "series": "EXIP90",
+   "subject": "EXPlore",
+   "digit": "9",
+   "gold_success": {
+    "i can": 1
+   },
+   "gold_learning_tag": {
+    "p": 2
+   },
+   "gold_success_tag": {
+    "p": 1
+   },
+   "gold_titles": {
+    "h5:learning intentions": 1,
+    "h5:how will i know if i've learned ": 1,
+    "h4:learning intentions": 3,
+    "h4:success criteria": 3
+   },
+   "pages": 4
+  },
+  "HES1005": {
+   "series": "HES10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 7
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h5:learning intentions": 7,
+    "h5:how will i know if i've learned ": 7
+   },
+   "pages": 7
+  },
+  "HES1007": {
+   "series": "HES10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "i can": 9
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "HIS1001": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 7
+   },
+   "gold_learning_tag": {
+    "p": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "HIS1002": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 10
+   },
+   "gold_learning_tag": {
+    "h5": 10
+   },
+   "gold_success_tag": {
+    "h5": 10
+   },
+   "gold_titles": {},
+   "pages": 11
+  },
+  "HIS1003": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 1
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h5:learning intentions": 1,
+    "h5:how will i know if i've learned ": 1
+   },
+   "pages": 10
+  },
+  "HIS1004": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {},
+   "gold_learning_tag": {},
+   "gold_success_tag": {},
+   "gold_titles": {},
+   "pages": 10
+  },
+  "HIS1005": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 14
+   },
+   "gold_learning_tag": {
+    "h5": 14
+   },
+   "gold_success_tag": {
+    "h5": 14
+   },
+   "gold_titles": {},
+   "pages": 14
+  },
+  "HIS1006": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "HIS1007": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 6
+   },
+   "gold_learning_tag": {
+    "h5": 6
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "HIS1008": {
+   "series": "HIS10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 9
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "HPRE203": {
+   "series": "HPRE20",
+   "subject": null,
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "MXDB201": {
+   "series": "MXDB20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "h5": 12
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h3:learning intentions": 6,
+    "h3:how will i know if i've learned ": 6
+   },
+   "pages": 6
+  },
+  "MXDB202": {
+   "series": "MXDB20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {
+    "h3:learning intentions": 5,
+    "h3:how will i know if i've learned ": 5
+   },
+   "pages": 5
+  },
+  "MXDB301": {
+   "series": "MXDB30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "MXDB302": {
+   "series": "MXDB30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "MXDI201": {
+   "series": "MXDI20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {},
+   "gold_learning_tag": {},
+   "gold_success_tag": {},
+   "gold_titles": {},
+   "pages": 10
+  },
+  "MXDI202": {
+   "series": "MXDI20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {
+    "i can": 10
+   },
+   "gold_learning_tag": {
+    "h5": 10
+   },
+   "gold_success_tag": {
+    "h5": 10
+   },
+   "gold_titles": {},
+   "pages": 11
+  },
+  "MXDI301": {
+   "series": "MXDI30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "MXEO102": {
+   "series": "MXEO10",
+   "subject": "1-10 Mathematics",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 3
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 3
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "MXEO201": {
+   "series": "MXEO20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "MXEO202": {
+   "series": "MXEO20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "MXEO301": {
+   "series": "MXEO30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 8
+   },
+   "gold_titles": {
+    "h5:learning intentions": 8,
+    "h5:how will i know if i've learned ": 8
+   },
+   "pages": 8
+  },
+  "MXEX101": {
+   "series": "MXEX10",
+   "subject": "1-10 Mathematics",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {},
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "MXEX301": {
+   "series": "MXEX30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "MXEX302": {
+   "series": "MXEX30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "MXFL101": {
+   "series": "MXFL10",
+   "subject": "1-10 Mathematics",
+   "digit": "1",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "p": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {
+    "h5:learning intentions": 7,
+    "h5:success criteria": 7,
+    "p:how will i know if i've learned ": 7
+   },
+   "pages": 7
+  },
+  "MXFL102": {
+   "series": "MXFL10",
+   "subject": "1-10 Mathematics",
+   "digit": "1",
+   "gold_success": {
+    "i can": 9
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 9
+   },
+   "gold_titles": {
+    "h5:learning intentions": 8,
+    "h5:success criteria": 8
+   },
+   "pages": 8
+  },
+  "MXFL104": {
+   "series": "MXFL10",
+   "subject": "1-10 Mathematics",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "MXFL201": {
+   "series": "MXFL20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 16
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h3:learning intentions": 8,
+    "h3:success criteria": 8
+   },
+   "pages": 8
+  },
+  "MXFL202": {
+   "series": "MXFL20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {},
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {
+    "h3:learning intentions": 5,
+    "h3:success criteria": 5
+   },
+   "pages": 5
+  },
+  "MXFL203": {
+   "series": "MXFL20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {},
+   "gold_learning_tag": {},
+   "gold_success_tag": {},
+   "gold_titles": {},
+   "pages": 10
+  },
+  "MXFL204": {
+   "series": "MXFL20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {},
+   "gold_learning_tag": {},
+   "gold_success_tag": {},
+   "gold_titles": {},
+   "pages": 10
+  },
+  "MXFL301": {
+   "series": "MXFL30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "MXFL302": {
+   "series": "MXFL30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 9
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "MXFU201": {
+   "series": "MXFU20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "MXFU202": {
+   "series": "MXFU20",
+   "subject": "1-10 Mathematics",
+   "digit": "2",
+   "gold_success": {
+    "i can": 9
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "MXFU301": {
+   "series": "MXFU30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 9
+   },
+   "gold_learning_tag": {
+    "h5": 10
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {},
+   "pages": 10
+  },
+  "MXFU302": {
+   "series": "MXFU30",
+   "subject": "1-10 Mathematics",
+   "digit": "3",
+   "gold_success": {
+    "you will show your understanding by": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "MXFU402": {
+   "series": "MXFU40",
+   "subject": "1-10 Mathematics",
+   "digit": "4",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "MXFUN01": {
+   "series": "MXFUN01",
+   "subject": "1-10 Mathematics",
+   "digit": "0",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "h5": 12
+   },
+   "gold_success_tag": {},
+   "gold_titles": {
+    "h3:learning intentions": 6,
+    "h3:how will i know if i've learned ": 6
+   },
+   "pages": 6
+  },
+  "OSAH301": {
+   "series": "OSAH30",
+   "subject": "Online Safety (OS9000)",
+   "digit": "3",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3,
+    "p": 2
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSAH401": {
+   "series": "OSAH40",
+   "subject": "Online Safety (OS9000)",
+   "digit": "4",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4,
+    "p": 3
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "OSAH501": {
+   "series": "OSAH50",
+   "subject": "Online Safety (OS9000)",
+   "digit": "5",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {},
+   "gold_titles": {},
+   "pages": 5
+  },
+  "OSAI101": {
+   "series": "OSAI10",
+   "subject": "Online Safety (OS9000)",
+   "digit": "1",
+   "gold_success": {
+    "i can": 2
+   },
+   "gold_learning_tag": {
+    "p": 1,
+    "h5": 2
+   },
+   "gold_success_tag": {
+    "h5": 2
+   },
+   "gold_titles": {},
+   "pages": 2
+  },
+  "OSAI201": {
+   "series": "OSAI20",
+   "subject": "Online Safety (OS9000)",
+   "digit": "2",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "p": 3
+   },
+   "gold_success_tag": {
+    "p": 3
+   },
+   "gold_titles": {
+    "h5:learning intentions": 3,
+    "h5:how will i know if i've learned ": 3
+   },
+   "pages": 3
+  },
+  "OSAI301": {
+   "series": "OSAI30",
+   "subject": "Online Safety (OS9000)",
+   "digit": "3",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "p": 3
+   },
+   "gold_success_tag": {
+    "p": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSAI401": {
+   "series": "OSAI40",
+   "subject": "Online Safety (OS9000)",
+   "digit": "4",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "OSAI501": {
+   "series": "OSAI50",
+   "subject": "Online Safety (OS9000)",
+   "digit": "5",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "OSBY101": {
+   "series": "OSBY10",
+   "subject": "Online Safety (OS9000)",
+   "digit": "1",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "p": 5,
+    "h5": 1
+   },
+   "gold_success_tag": {
+    "h5": 1,
+    "p": 2
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSBY201": {
+   "series": "OSBY20",
+   "subject": "Online Safety (OS9000)",
+   "digit": "2",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "p": 3,
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSBY301": {
+   "series": "OSBY30",
+   "subject": "Online Safety (OS9000)",
+   "digit": "3",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "p": 3
+   },
+   "gold_success_tag": {
+    "p": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSBY401": {
+   "series": "OSBY40",
+   "subject": "Online Safety (OS9000)",
+   "digit": "4",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "OSBY501": {
+   "series": "OSBY50",
+   "subject": "Online Safety (OS9000)",
+   "digit": "5",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "OSGM101": {
+   "series": "OSGM10",
+   "subject": "Online Safety (OS9000)",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 2
+   },
+   "gold_learning_tag": {
+    "h5": 2
+   },
+   "gold_success_tag": {
+    "h5": 2
+   },
+   "gold_titles": {},
+   "pages": 2
+  },
+  "OSGM201": {
+   "series": "OSGM20",
+   "subject": "Online Safety (OS9000)",
+   "digit": "2",
+   "gold_success": {
+    "you will show your understanding by": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSGM301": {
+   "series": "OSGM30",
+   "subject": "Online Safety (OS9000)",
+   "digit": "3",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSGM401": {
+   "series": "OSGM40",
+   "subject": "Online Safety (OS9000)",
+   "digit": "4",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "OSGM501": {
+   "series": "OSGM50",
+   "subject": "Online Safety (OS9000)",
+   "digit": "5",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "OSOH101": {
+   "series": "OSOH10",
+   "subject": "Online Safety (OS9000)",
+   "digit": "1",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSOH201": {
+   "series": "OSOH20",
+   "subject": "Online Safety (OS9000)",
+   "digit": "2",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSOH301": {
+   "series": "OSOH30",
+   "subject": "Online Safety (OS9000)",
+   "digit": "3",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSOH401": {
+   "series": "OSOH40",
+   "subject": "Online Safety (OS9000)",
+   "digit": "4",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "OSOH501": {
+   "series": "OSOH50",
+   "subject": "Online Safety (OS9000)",
+   "digit": "5",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "OSSC301": {
+   "series": "OSSC30",
+   "subject": "Online Safety (OS9000)",
+   "digit": "3",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "OSSM301": {
+   "series": "OSSM30",
+   "subject": "Online Safety (OS9000)",
+   "digit": "3",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "OSSM401": {
+   "series": "OSSM40",
+   "subject": "Online Safety (OS9000)",
+   "digit": "4",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "h5": 4
+   },
+   "gold_success_tag": {
+    "h5": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "PES1002": {
+   "series": "PES10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "h5": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "PES1004": {
+   "series": "PES10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 9
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "PES1005": {
+   "series": "PES10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 10
+   },
+   "gold_learning_tag": {
+    "p": 1,
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 10
+   },
+   "gold_titles": {
+    "h5:learning intentions": 1,
+    "h5:how will i know if i've learned ": 1
+   },
+   "pages": 10
+  },
+  "PES1007": {
+   "series": "PES10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 9
+   },
+   "gold_learning_tag": {
+    "h5": 9
+   },
+   "gold_success_tag": {
+    "h5": 9
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "PES1008": {
+   "series": "PES10",
+   "subject": "NCEA1",
+   "digit": "1",
+   "gold_success": {
+    "you will show your understanding by": 10
+   },
+   "gold_learning_tag": {
+    "h5": 10
+   },
+   "gold_success_tag": {
+    "h5": 10
+   },
+   "gold_titles": {},
+   "pages": 10
+  },
+  "SCCH301": {
+   "series": "SCCH30",
+   "subject": "1-10 Science",
+   "digit": "3",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "SCPH301": {
+   "series": "SCPH30",
+   "subject": null,
+   "digit": "3",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "SSCI205": {
+   "series": "SSCI20",
+   "subject": "1-10 Social Science",
+   "digit": "2",
+   "gold_success": {
+    "how will i know": 9,
+    "i can": 9
+   },
+   "gold_learning_tag": {
+    "p": 9
+   },
+   "gold_success_tag": {
+    "h4": 9,
+    "p": 9
+   },
+   "gold_titles": {
+    "h4:learning intentions": 9
+   },
+   "pages": 9
+  },
+  "SSOG101": {
+   "series": "SSOG10",
+   "subject": "1-10 Social Science",
+   "digit": "1",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "h3": 6
+   },
+   "gold_success_tag": {
+    "h3": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "SSOG103": {
+   "series": "SSOG10",
+   "subject": "1-10 Social Science",
+   "digit": "1",
+   "gold_success": {
+    "how will i know": 4,
+    "i can": 4
+   },
+   "gold_learning_tag": {},
+   "gold_success_tag": {
+    "h3": 4,
+    "p": 4
+   },
+   "gold_titles": {
+    "h3:learning intentions": 4
+   },
+   "pages": 4
+  },
+  "TEDC401": {
+   "series": "TEDC40",
+   "subject": null,
+   "digit": "4",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "TEDC402": {
+   "series": "TEDC40",
+   "subject": null,
+   "digit": "4",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "h5": 8
+   },
+   "gold_success_tag": {
+    "h5": 8
+   },
+   "gold_titles": {},
+   "pages": 9
+  },
+  "XDLS501": {
+   "series": "XDLS50",
+   "subject": "Leaving to Learn",
+   "digit": "5",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {
+    "h5:learning intentions": 1,
+    "h5:how will i know if i've learned ": 1
+   },
+   "pages": 4
+  },
+  "XDLS502": {
+   "series": "XDLS50",
+   "subject": "Leaving to Learn",
+   "digit": "5",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "h5": 3
+   },
+   "gold_success_tag": {
+    "h5": 3
+   },
+   "gold_titles": {},
+   "pages": 3
+  },
+  "XDLS901": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "XDLS902": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "other": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "XDLS903": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "other": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "XDLS904": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "other": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "XDLS905": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "other": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "XDLS906": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "other": 7
+   },
+   "gold_learning_tag": {
+    "h5": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "XDLS908": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "XDLS909": {
+   "series": "XDLS90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "h5": 2,
+    "p": 2
+   },
+   "gold_success_tag": {
+    "h5": 2,
+    "p": 2
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "XDLS912": {
+   "series": "XDLS91",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "XFUN02": {
+   "series": "XFUN02",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {
+    "h5:learning intentions": 5,
+    "h5:how will i know if i've learned ": 5
+   },
+   "pages": 5
+  },
+  "XGF9006": {
+   "series": "XGF90",
+   "subject": "Leaving to Learn",
+   "digit": "9",
+   "gold_success": {
+    "i can": 7
+   },
+   "gold_learning_tag": {
+    "p": 7
+   },
+   "gold_success_tag": {
+    "p": 7
+   },
+   "gold_titles": {},
+   "pages": 7
+  },
+  "XLP01": {
+   "series": "XLP01",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "XLP02": {
+   "series": "XLP02",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "XLP03": {
+   "series": "XLP03",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "XLP04": {
+   "series": "XLP04",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "XLP05": {
+   "series": "XLP05",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {
+    "i can": 3
+   },
+   "gold_learning_tag": {
+    "p": 3
+   },
+   "gold_success_tag": {
+    "p": 3
+   },
+   "gold_titles": {
+    "h5:learning intentions": 3,
+    "h5:how will i know if i've learned ": 3
+   },
+   "pages": 3
+  },
+  "XMES101": {
+   "series": "XMES10",
+   "subject": "Leaving to Learn",
+   "digit": "1",
+   "gold_success": {
+    "i can": 8
+   },
+   "gold_learning_tag": {
+    "p": 8
+   },
+   "gold_success_tag": {
+    "p": 8
+   },
+   "gold_titles": {},
+   "pages": 8
+  },
+  "XMES102": {
+   "series": "XMES10",
+   "subject": "Leaving to Learn",
+   "digit": "1",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "XMES103": {
+   "series": "XMES10",
+   "subject": "Leaving to Learn",
+   "digit": "1",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "XMES201": {
+   "series": "XMES20",
+   "subject": "Leaving to Learn",
+   "digit": "2",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "h5": 5
+   },
+   "gold_success_tag": {
+    "h5": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "XMES203": {
+   "series": "XMES20",
+   "subject": "Leaving to Learn",
+   "digit": "2",
+   "gold_success": {
+    "i can": 4
+   },
+   "gold_learning_tag": {
+    "p": 4
+   },
+   "gold_success_tag": {
+    "p": 4
+   },
+   "gold_titles": {},
+   "pages": 4
+  },
+  "XTAS102": {
+   "series": "XTAS10",
+   "subject": "Leaving to Learn",
+   "digit": "1",
+   "gold_success": {
+    "i can": 5
+   },
+   "gold_learning_tag": {
+    "p": 5
+   },
+   "gold_success_tag": {
+    "p": 5
+   },
+   "gold_titles": {},
+   "pages": 5
+  },
+  "XTAS103": {
+   "series": "XTAS10",
+   "subject": "Leaving to Learn",
+   "digit": "1",
+   "gold_success": {
+    "i can": 6
+   },
+   "gold_learning_tag": {
+    "p": 6
+   },
+   "gold_success_tag": {
+    "p": 6
+   },
+   "gold_titles": {},
+   "pages": 6
+  },
+  "XWHA01": {
+   "series": "XWHA01",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {
+    "i can": 1
+   },
+   "gold_learning_tag": {},
+   "gold_success_tag": {
+    "p": 1
+   },
+   "gold_titles": {},
+   "pages": 1
+  },
+  "XWHA02": {
+   "series": "XWHA02",
+   "subject": "Leaving to Learn",
+   "digit": "0",
+   "gold_success": {},
+   "gold_learning_tag": {
+    "p": 15
+   },
+   "gold_success_tag": {},
+   "gold_titles": {},
+   "pages": 5
+  }
+ }
+}

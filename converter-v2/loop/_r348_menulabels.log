@@ -1,0 +1,141 @@
+paired lesson pages with a menu on both sides: 1056
+
+GOLD success-label wording by series | level digit  (the 01B year-level table: 'I can:' years 7–10, 'You will show…' years 1–6):
+  AGH10 | 1                        {'you will show your understanding by': 65}
+  ANZH20 | 2                       {'i can': 5}
+  ANZH30 | 3                       {'i can': 12, 'you will show your understanding by': 10}
+  ANZH40 | 4                       {'i can': 6}
+  BLL24 | 2                        {'you will show your understanding by': 6, 'i can': 1}
+  CEDK50 | 5                       {'i can': 10}
+  CEDO10 | 1                       {'i can': 5}
+  CEDO50 | 5                       {'i can': 12}
+  CEDR50 | 5                       {'i can': 8}
+  CEDT50 | 5                       {'i can': 12}
+  CEDW50 | 5                       {'i can': 8}
+  ENGC10 | 1                       {'i can': 7, 'you will show your understanding by': 5}
+  ENGC20 | 2                       {'you will show your understanding by': 14}
+  ENGC30 | 3                       {'i can': 13}
+  ENGC40 | 4                       {'i can': 7}
+  ENGI10 | 1                       {'you will show your understanding by': 11, 'i can': 5}
+  ENGI20 | 2                       {'you will show your understanding by': 15, 'i can': 4}
+  ENGI30 | 3                       {'i can': 17, 'you will show your understanding by': 6}
+  ENGI40 | 4                       {'i can': 18}
+  ENGJ20 | 2                       {'you will show your understanding by': 5}
+  ENGJ30 | 3                       {'i can': 15}
+  ENGJ40 | 4                       {'i can': 10, 'you will show your understanding by': 8}
+  ENGR10 | 1                       {'i can': 12}
+  ENGR20 | 2                       {'i can': 7, 'you will show your understanding by': 6}
+  ENGR30 | 3                       {'you will show your understanding by': 8, 'i can': 7}
+  ENGS10 | 1                       {'i can': 11}
+  ENGS20 | 2                       {'i can': 7, 'you will show your understanding by': 6}
+  ENGS30 | 3                       {'i can': 9, 'you will show your understanding by': 4}
+  ENGS40 | 4                       {'i can': 5, 'you will show your understanding by': 1}
+  EXBP90 | 9                       {'i can': 3}
+  EXIP90 | 9                       {'i can': 1}
+  HES10 | 1                        {'i can': 9}
+  HIS10 | 1                        {'you will show your understanding by': 50}
+  HPRE20 | 2                       {'you will show your understanding by': 7}
+  MXDB20 | 2                       {'i can': 5}
+  MXDB30 | 3                       {'you will show your understanding by': 9}
+  MXDI20 | 2                       {'i can': 10}
+  MXDI30 | 3                       {'you will show your understanding by': 4}
+  MXEO10 | 1                       {'you will show your understanding by': 3}
+  MXEO20 | 2                       {'i can': 8, 'you will show your understanding by': 4}
+  MXEO30 | 3                       {'i can': 8}
+  MXEX10 | 1                       {'you will show your understanding by': 4}
+  MXEX30 | 3                       {'i can': 7, 'you will show your understanding by': 4}
+  MXFL10 | 1                       {'i can': 16, 'you will show your understanding by': 4}
+  MXFL20 | 2                       {'i can': 5}
+  MXFL30 | 3                       {'you will show your understanding by': 9, 'i can': 8}
+  MXFU20 | 2                       {'i can': 9, 'you will show your understanding by': 7}
+  MXFU30 | 3                       {'you will show your understanding by': 17}
+  MXFU40 | 4                       {'i can': 7}
+  OSAH30 | 3                       {'i can': 3}
+  OSAH40 | 4                       {'i can': 4}
+  OSAI10 | 1                       {'i can': 2}
+  OSAI20 | 2                       {'i can': 3}
+  OSAI30 | 3                       {'i can': 3}
+  OSAI40 | 4                       {'i can': 4}
+  OSAI50 | 5                       {'i can': 5}
+  OSBY10 | 1                       {'i can': 3}
+  OSBY20 | 2                       {'i can': 3}
+  OSBY30 | 3                       {'i can': 3}
+  OSBY40 | 4                       {'i can': 4}
+  OSBY50 | 5                       {'i can': 5}
+  OSGM10 | 1                       {'you will show your understanding by': 2}
+  OSGM20 | 2                       {'you will show your understanding by': 3}
+  OSGM30 | 3                       {'i can': 3}
+  OSGM40 | 4                       {'i can': 4}
+  OSGM50 | 5                       {'i can': 5}
+  OSOH10 | 1                       {'i can': 3}
+  OSOH20 | 2                       {'i can': 3}
+  OSOH30 | 3                       {'i can': 3}
+  OSOH40 | 4                       {'i can': 4}
+  OSOH50 | 5                       {'i can': 5}
+  OSSC30 | 3                       {'i can': 3}
+  OSSM30 | 3                       {'i can': 4}
+  OSSM40 | 4                       {'i can': 4}
+  PES10 | 1                        {'you will show your understanding by': 45}
+  SCCH30 | 3                       {'i can': 8}
+  SCPH30 | 3                       {'i can': 8}
+  SSCI20 | 2                       {'how will i know': 9, 'i can': 9}
+  SSOG10 | 1                       {'i can': 10, 'how will i know': 4}
+  TEDC40 | 4                       {'i can': 14}
+  XDLS50 | 5                       {'i can': 7}
+  XDLS90 | 9                       {'other': 35, 'i can': 16}
+  XDLS91 | 9                       {'i can': 5}
+  XFUN02 | 0                       {'i can': 5}
+  XGF90 | 9                        {'i can': 7}
+  XLP01 | 0                        {'i can': 4}
+  XLP02 | 0                        {'i can': 4}
+  XLP03 | 0                        {'i can': 5}
+  XLP04 | 0                        {'i can': 4}
+  XLP05 | 0                        {'i can': 3}
+  XMES10 | 1                       {'i can': 18}
+  XMES20 | 2                       {'i can': 9}
+  XTAS10 | 1                       {'i can': 11}
+  XWHA01 | 0                       {'i can': 1}
+
+GOLD section titles kept on lesson pages (01B line 223 says none): 257 of 1056
+   161  h5:learning intentions
+   126  h5:how will i know if i've learned 
+    63  h3:learning intentions
+    40  h3:how will i know if i've learned 
+    32  h4:learning intentions
+    19  h4:success criteria
+    19  p:how will i know if i've learned 
+    19  h3:success criteria
+    15  h5:success criteria
+     5  h4:how will i know if i've learned 
+
+CLAUDE lead-ins in the menu by role (top 40) with the gold's tag for the same label:
+   367  success | you will show your                                 gold {'h5': 195, 'absent': 116, 'p': 28, 'h3': 15, 'h4': 13}
+   290  learning | we are learning                                   gold {'h5': 195, 'p': 86, 'absent': 5, 'h3': 4}
+   277  success | i can                                              gold {'h5': 151, 'p': 98, 'absent': 18, 'h3': 10}
+   236  learning | we are learning to                                gold {'h5': 151, 'p': 50, 'h4': 14, 'h3': 12, 'absent': 7, 'li': 2}
+   130  learning | learning intentions                               gold {'h5': 76, 'h3': 27, 'absent': 19, 'h4': 8}
+   115  learning | we are learning about                             gold {'h5': 71, 'p': 29, 'h3': 13, 'absent': 2}
+    22  success | you will be able                                   gold {'p': 22}
+    16  success | how will i know                                    gold {'h3': 8, 'absent': 8}
+    13  learning | ākonga can                                        gold {'p': 8, 'absent': 5}
+    13  learning | ākonga will                                       gold {'p': 8, 'absent': 5}
+     9  learning | ākonga will learn about                           gold {'p': 5, 'absent': 4}
+     7  learning | ākonga will learn how                             gold {'absent': 5, 'p': 2}
+     6  success | success criteria                                   gold {'h4': 5, 'absent': 1}
+     4  learning | ākonga will be introduced                         gold {'p': 3, 'absent': 1}
+     3  learning | ākonga will learn what                            gold {'absent': 2, 'p': 1}
+     2  learning | ākonga will recognise what                        gold {'absent': 1, 'p': 1}
+     1  success | i can justify the                                  gold {'li': 1}
+     1  learning | we are learning how                               gold {'h5': 1}
+     1  learning | we learning                                       gold {'absent': 1}
+     1  learning | we are learning toshow                            gold {'li': 1}
+     1  learning | we are learning the                               gold {'absent': 1}
+     1  learning | ākonga will learn their                           gold {'p': 1}
+     1  learning | ākonga will be informed                           gold {'p': 1}
+     1  learning | ākonga will learn strategies                      gold {'p': 1}
+     1  learning | ākonga will learn ways                            gold {'p': 1}
+     1  learning | ākonga will learn the                             gold {'absent': 1}
+     1  learning | ākonga will learn that                            gold {'absent': 1}
+     1  learning | ākonga will recognise that                        gold {'absent': 1}
+
+modules whose gold uses BOTH 'I can' and 'You will show…': 6 ['BLL240', 'ENGI103', 'ENGI302', 'ENGJ402', 'ENGS302', 'ENGS401']
