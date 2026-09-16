@@ -1694,7 +1694,10 @@ class Config {
 	// (Chris's D10-1): the first RENDERED free-body heading equal to the title once case, punctuation and a Lesson N label
 	// are ignored (a consumed heading no longer spends the slot; activity-box titles never candidates; Bilingual excluded by
 	// 07B) + the header title's stray markdown markers stripped; scoped regeneration of 21 modules / 48 pages.
-	static AppVersion = "260619.15";
+	// ROUND 345 (2026-09-16, build 260619.16): a bilingual lesson-title pair is ENGLISH FIRST outside the MTK reoTranslate
+	// modules (Chris's D10-2) — a macron, else the r321 Māori-alphabet test, decides which half is Te Reo; scoped
+	// regeneration of 7 modules / 7 pages; gate-neutral (a header h1 swap is invisible to the skeleton).
+	static AppVersion = "260619.16";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

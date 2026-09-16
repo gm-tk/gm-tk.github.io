@@ -1,0 +1,58 @@
+{
+ "population": "gate_mods",
+ "two_span_lesson_pages": 59,
+ "non_bilingual_pages": 23,
+ "swap_population(REO-FIRST)": 2,
+ "swap_modules": [
+  "ANZH101",
+  "ANZH105"
+ ],
+ "by_template_class": {
+  "Inquiry": {
+   "UNDECIDED": 1
+  },
+  "Standard": {
+   "REO-FIRST": 2,
+   "UNDECIDED": 16,
+   "ENG-FIRST-ALREADY": 4
+  }
+ },
+ "by_template_class_goldfirst": {
+  "Inquiry | UNDECIDED | a": 1,
+  "Standard | ENG-FIRST-ALREADY | a": 4,
+  "Standard | REO-FIRST | a": 1,
+  "Standard | REO-FIRST | b": 1,
+  "Standard | UNDECIDED | a": 6,
+  "Standard | UNDECIDED | b": 2,
+  "Standard | UNDECIDED | other": 8,
+  "bilingual | REO-FIRST | a": 20,
+  "bilingual | REO-FIRST | other": 13,
+  "bilingual | UNDECIDED | a": 2,
+  "bilingual | UNDECIDED | other": 1
+ },
+ "gold_agrees_now(non-bilingual)": 12,
+ "gold_agrees_after(non-bilingual)": 12
+}
+  Inquiry      CEDT207_5_0.html       UNDECIDED          gold_first=a      | Me, my selfie and i | Ahau, taku whakaahua matihiko, me au || G: Me, my selfie and I
+  Standard     ANZH101_2_0.html       REO-FIRST          gold_first=b      | Pūrākau | Stories || G: Stories
+  Standard     ANZH105_1_0.html       REO-FIRST          gold_first=a      | Nō Hea Koe? | Where Are You From? || G: Nō Hea Koe?
+  Standard     HIS1006_9_0.html       UNDECIDED          gold_first=a      | Mautohe | Protest || G: Mautohe
+  Standard     MXDB202_3_0.html       UNDECIDED          gold_first=b      | Rapa Nui | Easter Island || G: Easter Island
+  Standard     MXFL101_1_0.html       UNDECIDED          gold_first=other  | One | Tahi || G: Numbers 1–10
+  Standard     MXFL101_2_0.html       UNDECIDED          gold_first=other  | Two | Rua || G: Numbers 1–10
+  Standard     MXFL101_3_0.html       UNDECIDED          gold_first=other  | Four | Wha || G: Numbers 1–10
+  Standard     MXFL101_3_2.html       UNDECIDED          gold_first=other  | Six | Ono || G: Numbers 1–10
+  Standard     MXFL101_3_4.html       UNDECIDED          gold_first=other  | Eight | Waru || G: Numbers 1–10
+  Standard     MXFL101_3_6.html       UNDECIDED          gold_first=other  | Ten | Tekau || G: Numbers 1–10
+  Standard     TEDC402_1_0.html       UNDECIDED          gold_first=other  | Whakatau | Welcome || G: Data story: from numbers to narrativ
+  Standard     XDLS501_1_0.html       UNDECIDED          gold_first=b      | Whakawhanaungatanga | Learning to relate well with others || G: Learning to relate well with others
+  Standard     XGF9002_9_0.html       UNDECIDED          gold_first=other  | He kupu whakakapi | Closing words and module wrap-up and r || G: Closing Words and Reflection
+  Standard     XMES102_1_0.html       UNDECIDED          gold_first=a      | My Place – Where I stay | Taku Wahi || G: My Place – Where I stay
+  Standard     XMES102_2_0.html       UNDECIDED          gold_first=a      | My Place – Where I stay | Taku Wahi || G: My Place – Where I stay
+  Standard     XMES102_3_0.html       UNDECIDED          gold_first=a      | My Place – Where I stay | Taku Wahi || G: My Place – Where I stay
+  Standard     XMES102_4_0.html       UNDECIDED          gold_first=a      | My Place – Where I stay | Taku Wahi || G: My Place – Where I stay
+  Standard     XMES102_5_0.html       UNDECIDED          gold_first=a      | My Place – Where I stay | Taku Wahi || G: My Place – Where I stay
+  Standard     XMES103_2_0.html       ENG-FIRST-ALREADY  gold_first=a      | My Family – Who I live with | Taku Whānau || G: My Family – Who I live with
+  Standard     XMES103_3_0.html       ENG-FIRST-ALREADY  gold_first=a      | My Family – Who I live with | Taku Whānau || G: My Family – Who I live with
+  Standard     XMES103_4_0.html       ENG-FIRST-ALREADY  gold_first=a      | My Family – Who I live with | Taku Whānau || G: My Family – Who I live with
+  Standard     XMES103_5_0.html       ENG-FIRST-ALREADY  gold_first=a      | My Family – Who I live with | Taku Whānau || G: My Family – Who I live with

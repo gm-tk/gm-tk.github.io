@@ -1,5 +1,34 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-16 (round 345, build 260619.16) — THE BILINGUAL LESSON-TITLE PAIR IS ENGLISH FIRST OUTSIDE THE MTK MODULES (Chris's decision D10-2, Option B: "English first in Standard modules"; the r316 `header.lesson_bilingual_pair` seam; the autonomous loop's session-12 Round 2; SCOPED regeneration of 7 modules / 7 pages — scoped ship #2 since the r342 full; GATE-NEUTRAL by construction, ships on the visible human match)
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**A lesson whose own title is a `|`-separated bilingual pair ships the ENGLISH half as the first `<h1><span>` and the Te Reo half second in every module that is not an MTK reoTranslate module** — `Stories` over `Pūrākau` (ANZH101_2_0), `Easter Island` over `Rapa Nui` (MXDB202_3_0), `Learning to relate well with others` over `Whakawhanaungatanga` (XDLS501_1_0) — the gold's order on each. The MTK rule (`reo_first_when_body_class "reoTranslate"`, 07D rule 7 — Māori first) is untouched: every TRR / PNR page is byte-identical.
+
+### 2. THE MEASUREMENT (`outputs/_measure_r345_engfirst.py` — every paired non-reoTranslate lesson page with a two-span title)
+
+- 23 pages (Standard 22 / Inquiry 1; 36 more are Bilingual, information only). Which half reads as Te Reo: a MACRON decides 6 pages (ENG-FIRST-ALREADY 4 = XMES103's `Taku Whānau` second; REO-FIRST 2 = ANZH101 `Pūrākau | Stories`, ANZH105 `Nō Hea Koe? | Where Are You From?`); the other 17 carry no macron on either half (`Rapa Nui | Easter Island`, `Whakawhanaungatanga | Learning to relate…`, `Mautohe | Protest`, MXFL101's `One | Tahi` ×6, XMES102's `… | Taku Wahi` ×5 …). **D10-2 as recorded said the writer's order stands where no macron decides — which would have left MXDB202_3_0, the very page the decision named as a gain, as written.** The engine's own r321 `#looksMaori` test (a macron OR letters only from the Māori alphabet) decides 5 of those 17: `Rapa Nui`, `Whakawhanaungatanga`, `He kupu whakakapi`, `Whakatau`, `Mautohe` read as Te Reo, their partners do not; `One | Tahi` both read as Te Reo (as written), `Taku Wahi` is already second. So the detector is **macron first, the alphabet test as the fallback** (`reo_detect "macron+alphabet"`) — Chris's rule, the engine's existing test, no new vocabulary.
+- Gold order agreement 12 → 13 of 23: gains ANZH101_2_0 / MXDB202_3_0 / XDLS501_1_0; NAMED overrides ANZH105_1_0 and HIS1006_9_0 (the human kept the writer's Te-Reo-first order — the two pages D10-2 itself names); XGF9002_9_0 / TEDC402_1_0 swap toward English first but their golds carry a different title altogether; MXFL101 ×6 / XMES102 ×5 / CEDT207 unchanged.
+
+### 3. THE SEAM (data `header.lesson_bilingual_pair.english_first` {enabled, env, reo_detect}; env `ENGFIRST_OFF`)
+
+- `SkeletonBuilder.#lessonPair`, the `!reoMode` branch that returned `[a, b]` as written: when exactly one half reads as Te Reo it ships second; both / neither → the writer's order. The reoTranslate branch (macron → Te Reo first, `reo_fallback second`) is byte-unchanged.
+
+### 4. THE PROOF
+
+- In-memory probe over ALL 416 (`_r345_probe.cjs`, 4 shards): **OFF = disk 2110/2110; ON = 7 pages / 7 modules** (ANZH101_2_0 / ANZH105_1_0 / HIS1006_9_0 / MXDB202_3_0 / TEDC402_1_0 / XDLS501_1_0 / XGF9002_9_0; `_affected_r345.txt`), every other page byte-identical — the whole two-span-title family (59 pages incl. all 36 Bilingual) proven in memory. SCOPED regeneration of the 7 (3 batches rc 0); `_content_manifest.py fresh` 0 truly stale; `diff` = exactly the 7, 0 added / removed.
+- **Gates: the full suite is line-for-line identical to r344's** (`_r345_gates.log`): skeleton 51.281% / ≥50 1073 / ≥75 198 / ≥90 15 @ 1955 — **0 pages moved** (`_r345_sk_final.json`; two identical `h1 > span` nodes swapping order is invisible to the text-stripped skeleton, the r327 class); RAW 35.407%; cs 11461 / 175 / 607; clean 2080/2103; leak 26/23; body 180; every verifier identical. Fast-loop PASS, baseline committed; ledger scoped #2 since the r342 full (6 of headroom); feature index rebuilt (GREEN).
+- The round's verifier re-run: REO-FIRST (macron) 2 → 0; gold agreement 12 → 13.
+
+### 5. RECORDED
+
+- KB DELTA for a KB session: 00G c79 / 01A to gain "a bilingual lesson-title pair is English first in Standard modules, Māori first in MTK (07D rule 7)".
+- NOT in this round (D10-2's own scope): the overview `[TITLE BAR]` module-title pair; the Languages three-part titles (c85).
+- The two named overrides (ANZH105_1_0, HIS1006_9_0); the `One | Tahi` number pages (both halves read as Te Reo — as written; their golds carry `Numbers 1–10`).
+
+**Ledger:** SCOPED ship #2 since the r342 full (6 of headroom) · data `header.lesson_bilingual_pair.english_first` · env `ENGFIRST_OFF` · tools `outputs/_measure_r345_engfirst.py` (+ `_r345_engfirst.json`, `_r345_engfirst_pre.json`, `_r345_engfirst.log`, `_r345_engfirst_post.log`), `_r345_lessonpair_now.log`, `_r345_splice.py`, `_r345_probe.cjs` + `_r345_probe_{off,on}_0*.log`, `_r345_changed_pages.txt`, `_affected_r345.txt`, `_r345_regen.log`, `_r345_gates.log`, `_r345_sk_final.json` / `_r345_sk_full.log`, `_r345_sk_movers.log`, `_r345_fastloop_commit.log`, `_r345_feature_index.log`, `_r345_finalise.py` · AppVersion 260619.16.
+
 ## 2026-09-16 (round 344, build 260619.15) — THE OPENING DUPLICATE BODY HEADING IS DROPPED IN FULL — KB constraint 47 (Chris's decision D10-1, Option A: "the lesson number is isolated to the top-right corner and the lesson title is kept as the h1") + the header title's stray markdown markers (c79 hygiene); the autonomous loop's session-12 Round 1; SCOPED regeneration of the 21 affected modules (48 pages) — scoped ship #1 since the r342 full; every protected gate HELD-or-IMPROVED, the −8 on compare_structure exact = the matched pool −8, named
 
 ### 1. WHAT CHANGED, IN ONE LINE

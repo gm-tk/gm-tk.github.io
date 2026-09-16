@@ -1,0 +1,15 @@
+{
+ "lesson_pairs": 1557,
+ "pipe_pages": 0,
+ "code_prefix_pages": 4,
+ "pipe_modules": [],
+ "code_prefix_modules": [
+  "MXEO102"
+ ],
+ "pipe_by_family": {},
+ "pipe_by_template": {},
+ "code_prefix_by_family": {
+  "MXEO": 4
+ }
+}
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_r316_lessonpair.json

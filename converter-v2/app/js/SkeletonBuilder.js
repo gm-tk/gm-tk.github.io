@@ -433,9 +433,25 @@ class SkeletonBuilder {
 		if (!a || !b) return null;
 		const reoCls = cfg.reo_first_when_body_class;
 		const reoMode = !!reoCls && new RegExp(reoCls, "i").test(String(rules?.body_class || ""));
-		if (!reoMode) return [a, b];
 		const M = /[\u0101\u0113\u012b\u014d\u016b\u0100\u0112\u012a\u014c\u016a]/;   // āēīōū
 		const ma = M.test(a), mb = M.test(b);
+		if (!reoMode) {
+			// ROUND 345 (Chris's D10-2): outside the reoTranslate modules the ENGLISH half goes
+			// first — when exactly one half reads as Te Reo (a macron decides; when neither or both
+			// halves carry one, the r321 #looksMaori alphabet test decides) it ships SECOND; both /
+			// neither → the writer's order stands. Data lesson_bilingual_pair.english_first; env ENGFIRST_OFF.
+			const ef = cfg.english_first;
+			const efOn = !!ef && ef.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[ef.env ?? "ENGFIRST_OFF"]);
+			if (efOn) {
+				let reoA = ma, reoB = mb;
+				if (ma === mb && /alphabet/.test(String(ef.reo_detect ?? "macron+alphabet"))) {
+					reoA = SkeletonBuilder.#looksMaori(a); reoB = SkeletonBuilder.#looksMaori(b);
+				}
+				if (reoA && !reoB) return [b, a];
+			}
+			return [a, b];
+		}
 		if (mb && !ma) return [b, a];
 		if (ma && !mb) return [a, b];
 		return (cfg.reo_fallback ?? "second") === "second" ? [b, a] : [a, b];
