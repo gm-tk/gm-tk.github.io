@@ -196,6 +196,33 @@ class ModuleResolver {
 					`${code} is a recorded page_model exception — using ${rules.page_model}.`);
 			}
 
+			// TEMPLATE DELTAS (ROUND 357 — the autonomous loop's session-19 Round 1, the diff
+			// miner's first chrome class: the #module-code chip's presence). A registry level can
+			// hold modules of TWO template families — the BLL1 level is seven INQUIRY parents
+			// (BLL110 … BLL170, no chip in 6 of their 7 golds) plus 56 STANDARD children (a chip
+			// on every page) — and one level delta cannot say both. `template_deltas` is a fifth,
+			// optional tier at a base or a level: {"<template_type>": {field: value}}, overlaid
+			// AFTER the level delta when the module's template type is known from
+			// Module_Structure_Index.module_meta (the same index the evidence floor reads). A
+			// module the index does not know gets no template delta — the level's value stands,
+			// exactly as before this round. Pattern fields resolve as whole objects; unknown
+			// literals are skipped (#overlayRules). Data flag: StyleRegistry._meta.template_deltas
+			// .enabled. Env toggle: TMPLDELTA_OFF (the level's value stands for every module).
+			const td = REG._meta?.template_deltas;
+			const tdOn = td && td.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.TMPLDELTA_OFF);
+			if (tdOn) {
+				const tt = DataService.Data.ModuleStructureIndex?.module_meta?.[code]?.template_type;
+				if (tt) {
+					let applied = 0;
+					for (const tier of [base.template_deltas?.[tt], level?.template_deltas?.[tt]]) {
+						if (!tier) continue;
+						skippedUnknown += this.#overlayRules(rules, tier, ufOn ? uf : null);
+						applied++;
+					}
+					if (applied) path.push(`template ${tt}`);
+				}
+			}
 			// EVIDENCE FLOOR (rule 2 above). A base whose registry members
 			// include NO gold-built module on disk (Module_Structure_Index —
 			// the SCCH base lists only the phantom "SCCH301") mined its

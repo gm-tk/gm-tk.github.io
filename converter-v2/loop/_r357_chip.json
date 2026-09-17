@@ -1,0 +1,7533 @@
+[
+ {
+  "template": "Bilingual",
+  "base": "PNR",
+  "level": "PNR1",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 1,
+   "full-code": 4
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 5
+  },
+  "resolved": {
+   "\u2014": 5
+  },
+  "disagree_pages": 5,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "PNR101",
+   "PNR102",
+   "PNR104"
+  ],
+  "samples": [
+   "PNR101/PNR101_1_0.html gold=padded-number claude=absent",
+   "PNR102/PNR102_1_0.html gold=full-code claude=absent",
+   "PNR102/PNR102_2_0.html gold=full-code claude=absent",
+   "PNR104/PNR104_1_0.html gold=full-code claude=absent"
+  ]
+ },
+ {
+  "template": "Bilingual",
+  "base": "PNR",
+  "level": "PNR1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "PNR101",
+   "PNR102",
+   "PNR104"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Bilingual",
+  "base": "TRR",
+  "level": "TRR1",
+  "ptype": "lesson",
+  "pages": 34,
+  "modules": 10,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 29,
+   "full-code": 5
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 34
+  },
+  "resolved": {
+   "decimal": 34
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TRR102",
+   "TRR103",
+   "TRR106",
+   "TRR107",
+   "TRR108",
+   "TRR109",
+   "TRR111",
+   "TRR112",
+   "TRR113",
+   "TRR114"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Bilingual",
+  "base": "TRR",
+  "level": "TRR1",
+  "ptype": "overview",
+  "pages": 10,
+  "modules": 10,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 8,
+   "decimal": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 10
+  },
+  "resolved": {
+   "full-code": 10
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TRR102",
+   "TRR103",
+   "TRR106",
+   "TRR107",
+   "TRR108",
+   "TRR109",
+   "TRR111",
+   "TRR112",
+   "TRR113",
+   "TRR114"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Bilingual",
+  "base": "TRR",
+  "level": "TRR2",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TRR203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Bilingual",
+  "base": "TRR",
+  "level": "TRR2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TRR203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Bilingual",
+  "base": "TRR",
+  "level": "TRR3",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 5
+  },
+  "resolved": {
+   "decimal": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TRR301",
+   "TRR304"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Bilingual",
+  "base": "TRR",
+  "level": "TRR3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TRR301",
+   "TRR304"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "ARFUN",
+  "level": "ARFUN0",
+  "ptype": "overview",
+  "pages": 5,
+  "modules": 5,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 5
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 5
+  },
+  "resolved": {
+   "absent": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "ARFUN01",
+   "ARFUN02",
+   "ARFUN03",
+   "ARFUN04",
+   "ARFUN05"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "CHFUN",
+  "level": "CHFUN0",
+  "ptype": "overview",
+  "pages": 5,
+  "modules": 5,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 5
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CHFUN01",
+   "CHFUN04",
+   "CHFUN05",
+   "CHFUN06",
+   "CHFUN07"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "ENFUN",
+  "level": "ENFUN0",
+  "ptype": "overview",
+  "pages": 8,
+  "modules": 8,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 8
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 8
+  },
+  "resolved": {
+   "absent": 8
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "ENFUN01",
+   "ENFUN02",
+   "ENFUN03",
+   "ENFUN04",
+   "ENFUN05",
+   "ENFUN07",
+   "ENFUN08",
+   "ENFUN09"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "HPFUN",
+  "level": "HPFUN1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HPFUN101",
+   "HPFUN102",
+   "HPFUN103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "HPFUN",
+  "level": "HPFUN2",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 0.67,
+  "gold_forms": {
+   "absent": 1,
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 1,
+  "gold_convention": "present",
+  "flag": "partial",
+  "module_list": [
+   "HPFUN201",
+   "HPFUN202",
+   "HPFUN203"
+  ],
+  "samples": [
+   "HPFUN201/HPFUN201_0_0.html gold=absent claude=full-code"
+  ]
+ },
+ {
+  "template": "Fundamentals",
+  "base": "HPFUN",
+  "level": "HPFUN3",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 0.67,
+  "gold_forms": {
+   "full-code": 2,
+   "absent": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 1,
+  "gold_convention": "present",
+  "flag": "partial",
+  "module_list": [
+   "HPFUN301",
+   "HPFUN302",
+   "HPFUN303"
+  ],
+  "samples": [
+   "HPFUN302/HPFUN302_0_0.html gold=absent claude=full-code"
+  ]
+ },
+ {
+  "template": "Fundamentals",
+  "base": "HPFUN",
+  "level": "HPFUN4",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HPFUN401",
+   "HPFUN402",
+   "HPFUN403"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "HPFUN",
+  "level": "HPFUN9",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HPFUN901",
+   "HPFUN902",
+   "HPFUN903"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "MXFUN",
+  "level": "MXFUN0",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 6
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 6
+  },
+  "resolved": {
+   "padded-number": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFUN01"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "MXFUN",
+  "level": "MXFUN0",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 3
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 3
+  },
+  "resolved": {
+   "absent": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "MXFUN01",
+   "MXFUN02",
+   "MXFUN03"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "SCFUN",
+  "level": "SCFUN0",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 1,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "SCFUN01"
+  ],
+  "samples": [
+   "SCFUN01/SCFUN01_0_0.html gold=full-code claude=absent"
+  ]
+ },
+ {
+  "template": "Fundamentals",
+  "base": "SSFUN",
+  "level": "SSFUN0",
+  "ptype": "overview",
+  "pages": 6,
+  "modules": 6,
+  "gold_present_share": 0.83,
+  "gold_forms": {
+   "absent": 1,
+   "full-code": 5
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "disagree_pages": 1,
+  "gold_convention": "present",
+  "flag": "partial",
+  "module_list": [
+   "SSFUN01",
+   "SSFUN02",
+   "SSFUN03",
+   "SSFUN05",
+   "SSFUN06",
+   "SSFUN08"
+  ],
+  "samples": [
+   "SSFUN01/SSFUN01_0_0.html gold=absent claude=full-code"
+  ]
+ },
+ {
+  "template": "Fundamentals",
+  "base": "TEFUN",
+  "level": "TEFUN0",
+  "ptype": "overview",
+  "pages": 8,
+  "modules": 8,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 8
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 8
+  },
+  "resolved": {
+   "absent": 8
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "TEFUN01",
+   "TEFUN02",
+   "TEFUN03",
+   "TEFUN04",
+   "TEFUN05",
+   "TEFUN06",
+   "TEFUN07",
+   "TEFUN08"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "XFUN",
+  "level": "XFUN0",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 5
+  },
+  "resolved": {
+   "decimal": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XFUN02"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Fundamentals",
+  "base": "XFUN",
+  "level": "XFUN0",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 0.5,
+  "gold_forms": {
+   "absent": 1,
+   "full-code": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "free-text:\"XFUN02\"": 2
+  },
+  "disagree_pages": 1,
+  "gold_convention": "tie",
+  "flag": "partial",
+  "module_list": [
+   "XFUN01",
+   "XFUN02"
+  ],
+  "samples": [
+   "XFUN01/XFUN01_0_0.html gold=absent claude=full-code"
+  ]
+ },
+ {
+  "template": "Inquiry",
+  "base": "BLL",
+  "level": "BLL1",
+  "ptype": "overview",
+  "pages": 7,
+  "modules": 7,
+  "gold_present_share": 0.14,
+  "gold_forms": {
+   "absent": 6,
+   "full-code": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 7
+  },
+  "resolved": {
+   "padded-number": 7
+  },
+  "disagree_pages": 6,
+  "gold_convention": "absent",
+  "flag": "CLASS",
+  "module_list": [
+   "BLL110",
+   "BLL120",
+   "BLL130",
+   "BLL140",
+   "BLL150",
+   "BLL160",
+   "BLL170"
+  ],
+  "samples": [
+   "BLL110/BLL110_0_0.html gold=absent claude=padded-number",
+   "BLL120/BLL120_0_0.html gold=absent claude=padded-number",
+   "BLL130/BLL130_0_0.html gold=absent claude=padded-number",
+   "BLL140/BLL140_0_0.html gold=absent claude=padded-number"
+  ]
+ },
+ {
+  "template": "Inquiry",
+  "base": "BLL",
+  "level": "BLL2",
+  "ptype": "lesson",
+  "pages": 8,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1,
+   "decimal": 1,
+   "padded-number": 6
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 8
+  },
+  "resolved": {
+   "decimal": 8
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLL240"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "BLL",
+  "level": "BLL2",
+  "ptype": "overview",
+  "pages": 4,
+  "modules": 4,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3,
+   "decimal": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 4
+  },
+  "resolved": {
+   "free-text:\"Module": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLL210",
+   "BLL220",
+   "BLL230",
+   "BLL240"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDK",
+  "level": "CEDK1",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 2
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 2
+  },
+  "resolved": {
+   "\u2014": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDK101",
+   "CEDK102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDK",
+  "level": "CEDK5",
+  "ptype": "lesson",
+  "pages": 11,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 10,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 11
+  },
+  "resolved": {
+   "decimal": 11
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDK501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDK",
+  "level": "CEDK5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 1,
+  "gold_convention": "absent",
+  "flag": "CLASS",
+  "module_list": [
+   "CEDK501"
+  ],
+  "samples": [
+   "CEDK501/CEDK501_0_0.html gold=absent claude=full-code"
+  ]
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDO",
+  "level": "CEDO1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 1,
+  "gold_convention": "absent",
+  "flag": "CLASS",
+  "module_list": [
+   "CEDO102"
+  ],
+  "samples": [
+   "CEDO102/CEDO102_0_0.html gold=absent claude=full-code"
+  ]
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDO",
+  "level": "CEDO2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDO202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDR",
+  "level": "CEDR2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDR204"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDT",
+  "level": "CEDT1",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 2
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 2
+  },
+  "resolved": {
+   "\u2014": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDT101",
+   "CEDT104"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDT",
+  "level": "CEDT2",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 6
+  },
+  "resolved": {
+   "(empty)": 6
+  },
+  "disagree_pages": 6,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "CEDT207"
+  ],
+  "samples": [
+   "CEDT207/CEDT207_2_0.html gold=decimal claude=absent",
+   "CEDT207/CEDT207_3_0.html gold=decimal claude=absent",
+   "CEDT207/CEDT207_4_0.html gold=decimal claude=absent",
+   "CEDT207/CEDT207_5_0.html gold=full-code claude=absent"
+  ]
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDT",
+  "level": "CEDT2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 2
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 2
+  },
+  "resolved": {
+   "\u2014": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDT207",
+   "CEDT208"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDT",
+  "level": "CEDT3",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 5
+  },
+  "resolved": {
+   "(empty)": 5
+  },
+  "disagree_pages": 5,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "CEDT301"
+  ],
+  "samples": [
+   "CEDT301/CEDT301_2_0.html gold=decimal claude=absent",
+   "CEDT301/CEDT301_3_0.html gold=decimal claude=absent",
+   "CEDT301/CEDT301_4_0.html gold=decimal claude=absent",
+   "CEDT301/CEDT301_5_0.html gold=decimal claude=absent"
+  ]
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDT",
+  "level": "CEDT3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 1,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "CEDT301"
+  ],
+  "samples": [
+   "CEDT301/CEDT301_0_0.html gold=full-code claude=absent"
+  ]
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDT",
+  "level": "CEDT4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDT404"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDW",
+  "level": "CEDW1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDW101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "CEDW",
+  "level": "CEDW2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "CEDW201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "ENGFUN",
+  "level": "ENGFUN0",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 4
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 4
+  },
+  "resolved": {
+   "decimal": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGFUN02"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "ENGFUN",
+  "level": "ENGFUN0",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "free-text:\"ENGFUN03\"": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGFUN02"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "EXPFUN",
+  "level": "EXPFUN0",
+  "ptype": "overview",
+  "pages": 5,
+  "modules": 5,
+  "gold_present_share": 0.0,
+  "gold_forms": {
+   "absent": 5
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 5
+  },
+  "resolved": {
+   "\u2014": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "absent",
+  "flag": "",
+  "module_list": [
+   "EXPFUN02",
+   "EXPFUN03",
+   "EXPFUN04",
+   "EXPFUN05",
+   "EXPFUN06"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "TWHA",
+  "level": "TWHA9",
+  "ptype": "overview",
+  "pages": 6,
+  "modules": 6,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 6
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TWHA901",
+   "TWHA902",
+   "TWHA903",
+   "TWHA904",
+   "TWHA905",
+   "TWHA906"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "TWHK",
+  "level": "TWHK9",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TWHK901",
+   "TWHK903"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "XDLS",
+  "level": "XDLS9",
+  "ptype": "lesson",
+  "pages": 15,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 15
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 15
+  },
+  "resolved": {
+   "decimal": 15
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XDLS901",
+   "XDLS903",
+   "XDLS909"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Inquiry",
+  "base": "XDLS",
+  "level": "XDLS9",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 3
+  },
+  "gold_majority_form": "free-text",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XDLS901",
+   "XDLS903",
+   "XDLS909"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "AGH",
+  "level": "AGH1",
+  "ptype": "lesson",
+  "pages": 65,
+  "modules": 9,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 65
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 65
+  },
+  "resolved": {
+   "decimal": 65
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "AGH1001",
+   "AGH1002",
+   "AGH1003",
+   "AGH1004",
+   "AGH1005",
+   "AGH1006",
+   "AGH1007",
+   "AGH1008",
+   "AGH1009"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "AGH",
+  "level": "AGH1",
+  "ptype": "overview",
+  "pages": 9,
+  "modules": 9,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 9
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 9
+  },
+  "resolved": {
+   "full-code": 9
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "AGH1001",
+   "AGH1002",
+   "AGH1003",
+   "AGH1004",
+   "AGH1005",
+   "AGH1006",
+   "AGH1007",
+   "AGH1008",
+   "AGH1009"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH1",
+  "ptype": "lesson",
+  "pages": 17,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 3,
+   "decimal": 14
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 17
+  },
+  "resolved": {
+   "decimal": 17
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH101",
+   "ANZH104",
+   "ANZH105"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH101",
+   "ANZH104",
+   "ANZH105"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH2",
+  "ptype": "lesson",
+  "pages": 11,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 5,
+   "decimal": 6
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 11
+  },
+  "resolved": {
+   "decimal": 11
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH203",
+   "ANZH205"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH203",
+   "ANZH205"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH3",
+  "ptype": "lesson",
+  "pages": 22,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 22
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 22
+  },
+  "resolved": {
+   "decimal": 22
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH301",
+   "ANZH303",
+   "ANZH304"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH3",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH301",
+   "ANZH303",
+   "ANZH304"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH4",
+  "ptype": "lesson",
+  "pages": 18,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 12,
+   "free-text": 6
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "free-text": 18
+  },
+  "resolved": {
+   "free-text:\"Lesson 5\"": 18
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH401",
+   "ANZH404"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ANZH",
+  "level": "ANZH4",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ANZH401",
+   "ANZH404"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ART",
+  "level": "ART1",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 5
+  },
+  "resolved": {
+   "decimal": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ART1002",
+   "ART1006"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ART",
+  "level": "ART1",
+  "ptype": "overview",
+  "pages": 5,
+  "modules": 5,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3,
+   "decimal": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ART1002",
+   "ART1003",
+   "ART1004",
+   "ART1005",
+   "ART1006"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "BLL",
+  "level": "BLL1",
+  "ptype": "lesson",
+  "pages": 95,
+  "modules": 48,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 51,
+   "decimal": 44
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 95
+  },
+  "resolved": {
+   "padded-number": 95
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLL111",
+   "BLL112",
+   "BLL113",
+   "BLL114",
+   "BLL115",
+   "BLL116",
+   "BLL117",
+   "BLL121",
+   "BLL122",
+   "BLL123",
+   "BLL124",
+   "BLL125",
+   "BLL126",
+   "BLL127",
+   "BLL131",
+   "BLL132",
+   "BLL133",
+   "BLL134",
+   "BLL135",
+   "BLL136",
+   "BLL137",
+   "BLL141",
+   "BLL142",
+   "BLL143",
+   "BLL144",
+   "BLL145",
+   "BLL146",
+   "BLL147",
+   "BLL151",
+   "BLL152",
+   "BLL153",
+   "BLL154",
+   "BLL156",
+   "BLL157",
+   "BLL161",
+   "BLL162",
+   "BLL163",
+   "BLL164",
+   "BLL165",
+   "BLL166",
+   "BLL167",
+   "BLL171",
+   "BLL172",
+   "BLL173",
+   "BLL174",
+   "BLL175",
+   "BLL176",
+   "BLL177"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "BLL",
+  "level": "BLL1",
+  "ptype": "overview",
+  "pages": 48,
+  "modules": 48,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 43,
+   "full-code": 5
+  },
+  "gold_majority_form": "free-text",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 1,
+   "free-text": 47
+  },
+  "resolved": {
+   "padded-number": 48
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLL111",
+   "BLL112",
+   "BLL113",
+   "BLL114",
+   "BLL115",
+   "BLL116",
+   "BLL117",
+   "BLL121",
+   "BLL122",
+   "BLL123",
+   "BLL124",
+   "BLL125",
+   "BLL126",
+   "BLL127",
+   "BLL131",
+   "BLL132",
+   "BLL133",
+   "BLL134",
+   "BLL135",
+   "BLL136",
+   "BLL137",
+   "BLL141",
+   "BLL142",
+   "BLL143",
+   "BLL144",
+   "BLL145",
+   "BLL146",
+   "BLL147",
+   "BLL151",
+   "BLL152",
+   "BLL153",
+   "BLL154",
+   "BLL156",
+   "BLL157",
+   "BLL161",
+   "BLL162",
+   "BLL163",
+   "BLL164",
+   "BLL165",
+   "BLL166",
+   "BLL167",
+   "BLL171",
+   "BLL172",
+   "BLL173",
+   "BLL174",
+   "BLL175",
+   "BLL176",
+   "BLL177"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "BLL",
+  "level": "BLL2",
+  "ptype": "lesson",
+  "pages": 64,
+  "modules": 32,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 56,
+   "free-text": 2,
+   "padded-number": 6
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 64
+  },
+  "resolved": {
+   "decimal": 64
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLL211",
+   "BLL212",
+   "BLL213",
+   "BLL214",
+   "BLL215",
+   "BLL216",
+   "BLL217",
+   "BLL221",
+   "BLL222",
+   "BLL223",
+   "BLL224",
+   "BLL225",
+   "BLL226",
+   "BLL227",
+   "BLL231",
+   "BLL232",
+   "BLL233",
+   "BLL234",
+   "BLL235",
+   "BLL236",
+   "BLL237",
+   "BLL241",
+   "BLL242",
+   "BLL244",
+   "BLL245",
+   "BLL246",
+   "BLL251",
+   "BLL252",
+   "BLL253",
+   "BLL254",
+   "BLL262",
+   "BLL263"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "BLL",
+  "level": "BLL2",
+  "ptype": "overview",
+  "pages": 32,
+  "modules": 32,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 30,
+   "full-code": 2
+  },
+  "gold_majority_form": "free-text",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "free-text": 32
+  },
+  "resolved": {
+   "free-text:\"Module": 32
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLL211",
+   "BLL212",
+   "BLL213",
+   "BLL214",
+   "BLL215",
+   "BLL216",
+   "BLL217",
+   "BLL221",
+   "BLL222",
+   "BLL223",
+   "BLL224",
+   "BLL225",
+   "BLL226",
+   "BLL227",
+   "BLL231",
+   "BLL232",
+   "BLL233",
+   "BLL234",
+   "BLL235",
+   "BLL236",
+   "BLL237",
+   "BLL241",
+   "BLL242",
+   "BLL244",
+   "BLL245",
+   "BLL246",
+   "BLL251",
+   "BLL252",
+   "BLL253",
+   "BLL254",
+   "BLL262",
+   "BLL263"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "BLLR",
+  "level": "BLLR2",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 6
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 6
+  },
+  "resolved": {
+   "decimal": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLLR201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "BLLR",
+  "level": "BLLR2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "free-text": 1
+  },
+  "resolved": {
+   "free-text:\"Module": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "BLLR201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDO",
+  "level": "CEDO1",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 5
+  },
+  "resolved": {
+   "decimal": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDO105"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDO",
+  "level": "CEDO1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDO105"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDO",
+  "level": "CEDO3",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDO301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDO",
+  "level": "CEDO3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDO301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDO",
+  "level": "CEDO5",
+  "ptype": "lesson",
+  "pages": 23,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 23
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 23
+  },
+  "resolved": {
+   "decimal": 23
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDO501",
+   "CEDO502"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDO",
+  "level": "CEDO5",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDO501",
+   "CEDO502"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDR",
+  "level": "CEDR5",
+  "ptype": "lesson",
+  "pages": 9,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 7,
+   "decimal": 2
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 8,
+   "decimal": 1
+  },
+  "resolved": {
+   "padded-number": 9
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDR501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDR",
+  "level": "CEDR5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDR501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDT",
+  "level": "CEDT5",
+  "ptype": "lesson",
+  "pages": 14,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 14
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 14
+  },
+  "resolved": {
+   "decimal": 14
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDT501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDT",
+  "level": "CEDT5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDT501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDW",
+  "level": "CEDW5",
+  "ptype": "lesson",
+  "pages": 10,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 10
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 10
+  },
+  "resolved": {
+   "decimal": 10
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDW501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "CEDW",
+  "level": "CEDW5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "CEDW501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENG",
+  "level": "ENG1",
+  "ptype": "lesson",
+  "pages": 2,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 2
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 2
+  },
+  "resolved": {
+   "decimal": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENG1004"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENG",
+  "level": "ENG1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 1,
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENG1004",
+   "ENG1005",
+   "ENG1007"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC1",
+  "ptype": "lesson",
+  "pages": 12,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 12
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 12
+  },
+  "resolved": {
+   "decimal": 12
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC101",
+   "ENGC102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC1",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC101",
+   "ENGC102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC2",
+  "ptype": "lesson",
+  "pages": 14,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 14
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 14
+  },
+  "resolved": {
+   "decimal": 14
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC201",
+   "ENGC202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC201",
+   "ENGC202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC3",
+  "ptype": "lesson",
+  "pages": 14,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 14
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 14
+  },
+  "resolved": {
+   "decimal": 14
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC301",
+   "ENGC302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC301",
+   "ENGC302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC4",
+  "ptype": "lesson",
+  "pages": 7,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 7
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 7
+  },
+  "resolved": {
+   "decimal": 7
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGC",
+  "level": "ENGC4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGC401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI1",
+  "ptype": "lesson",
+  "pages": 15,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 9,
+   "decimal": 6
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 15
+  },
+  "resolved": {
+   "decimal": 15
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI101",
+   "ENGI102",
+   "ENGI103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI101",
+   "ENGI102",
+   "ENGI103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI2",
+  "ptype": "lesson",
+  "pages": 20,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 20
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 20
+  },
+  "resolved": {
+   "padded-number": 20
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI201",
+   "ENGI202",
+   "ENGI203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI2",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI201",
+   "ENGI202",
+   "ENGI203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI3",
+  "ptype": "lesson",
+  "pages": 17,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 17
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 17
+  },
+  "resolved": {
+   "decimal": 17
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI301",
+   "ENGI302",
+   "ENGI303"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI3",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI301",
+   "ENGI302",
+   "ENGI303"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI4",
+  "ptype": "lesson",
+  "pages": 20,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 20
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 20
+  },
+  "resolved": {
+   "decimal": 20
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI400",
+   "ENGI401",
+   "ENGI405"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGI",
+  "level": "ENGI4",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGI400",
+   "ENGI401",
+   "ENGI405"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ1",
+  "ptype": "lesson",
+  "pages": 9,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 4,
+   "padded-number": 5
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 9
+  },
+  "resolved": {
+   "padded-number": 9
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ101",
+   "ENGJ102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ1",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ101",
+   "ENGJ102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ2",
+  "ptype": "lesson",
+  "pages": 11,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 6,
+   "decimal": 5
+  },
+  "gold_majority_form": "free-text",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 11
+  },
+  "resolved": {
+   "decimal": 11
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ201",
+   "ENGJ202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ201",
+   "ENGJ202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ3",
+  "ptype": "lesson",
+  "pages": 15,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 15
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 15
+  },
+  "resolved": {
+   "decimal": 15
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ301",
+   "ENGJ302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ301",
+   "ENGJ302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ4",
+  "ptype": "lesson",
+  "pages": 17,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 17
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 17
+  },
+  "resolved": {
+   "decimal": 17
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ402",
+   "ENGJ403"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGJ",
+  "level": "ENGJ4",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGJ402",
+   "ENGJ403"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGR",
+  "level": "ENGR1",
+  "ptype": "lesson",
+  "pages": 13,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 12,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 13
+  },
+  "resolved": {
+   "decimal": 13
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGR101",
+   "ENGR102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGR",
+  "level": "ENGR1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGR101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGR",
+  "level": "ENGR2",
+  "ptype": "lesson",
+  "pages": 13,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 6,
+   "decimal": 7
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 13
+  },
+  "resolved": {
+   "decimal": 13
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGR201",
+   "ENGR202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGR",
+  "level": "ENGR2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGR201",
+   "ENGR202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGR",
+  "level": "ENGR3",
+  "ptype": "lesson",
+  "pages": 15,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 15
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 15
+  },
+  "resolved": {
+   "decimal": 15
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGR301",
+   "ENGR302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGR",
+  "level": "ENGR3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGR301",
+   "ENGR302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS1",
+  "ptype": "lesson",
+  "pages": 11,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5,
+   "padded-number": 6
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 11
+  },
+  "resolved": {
+   "padded-number": 11
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS101",
+   "ENGS102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS1",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS101",
+   "ENGS102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS2",
+  "ptype": "lesson",
+  "pages": 14,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 14
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 14
+  },
+  "resolved": {
+   "padded-number": 14
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS201",
+   "ENGS202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS201",
+   "ENGS202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS3",
+  "ptype": "lesson",
+  "pages": 13,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 7,
+   "decimal": 6
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 13
+  },
+  "resolved": {
+   "decimal": 13
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS301",
+   "ENGS302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS301",
+   "ENGS302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS4",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 5,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 6
+  },
+  "resolved": {
+   "decimal": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "ENGS",
+  "level": "ENGS4",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "ENGS401",
+   "ENGS405"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "EXBP",
+  "level": "EXBP9",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 0.25,
+  "gold_forms": {
+   "absent": 3,
+   "full-code": 1
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 4
+  },
+  "resolved": {
+   "(empty)": 4
+  },
+  "disagree_pages": 1,
+  "gold_convention": "absent",
+  "flag": "partial",
+  "module_list": [
+   "EXBP901"
+  ],
+  "samples": [
+   "EXBP901/EXBP901_2_0.html gold=full-code claude=absent"
+  ]
+ },
+ {
+  "template": "Standard",
+  "base": "EXBP",
+  "level": "EXBP9",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "EXBP901"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "EXIP",
+  "level": "EXIP9",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 0.25,
+  "gold_forms": {
+   "full-code": 1,
+   "absent": 3
+  },
+  "gold_majority_form": "absent",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 4
+  },
+  "resolved": {
+   "(empty)": 4
+  },
+  "disagree_pages": 1,
+  "gold_convention": "absent",
+  "flag": "partial",
+  "module_list": [
+   "EXIP901"
+  ],
+  "samples": [
+   "EXIP901/EXIP901_1_0.html gold=full-code claude=absent"
+  ]
+ },
+ {
+  "template": "Standard",
+  "base": "EXPFUN",
+  "level": "EXPFUN0",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 1
+  },
+  "resolved": {
+   "\u2014": 1
+  },
+  "disagree_pages": 1,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "EXPFUN07"
+  ],
+  "samples": [
+   "EXPFUN07/EXPFUN07_0_0.html gold=full-code claude=absent"
+  ]
+ },
+ {
+  "template": "Standard",
+  "base": "HES",
+  "level": "HES1",
+  "ptype": "lesson",
+  "pages": 34,
+  "modules": 5,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 33,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 34
+  },
+  "resolved": {
+   "decimal": 34
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HES1003",
+   "HES1004",
+   "HES1005",
+   "HES1006",
+   "HES1007"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "HES",
+  "level": "HES1",
+  "ptype": "overview",
+  "pages": 4,
+  "modules": 4,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 4
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 4
+  },
+  "resolved": {
+   "full-code": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HES1003",
+   "HES1004",
+   "HES1005",
+   "HES1007"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "HIS",
+  "level": "HIS1",
+  "ptype": "lesson",
+  "pages": 71,
+  "modules": 8,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 17,
+   "full-code": 2,
+   "decimal": 52
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 71
+  },
+  "resolved": {
+   "decimal": 71
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HIS1001",
+   "HIS1002",
+   "HIS1003",
+   "HIS1004",
+   "HIS1005",
+   "HIS1006",
+   "HIS1007",
+   "HIS1008"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "HIS",
+  "level": "HIS1",
+  "ptype": "overview",
+  "pages": 6,
+  "modules": 6,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 6
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HIS1001",
+   "HIS1004",
+   "HIS1005",
+   "HIS1006",
+   "HIS1007",
+   "HIS1008"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "HPRE",
+  "level": "HPRE2",
+  "ptype": "lesson",
+  "pages": 7,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 7
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 7
+  },
+  "resolved": {
+   "decimal": 7
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HPRE203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "HPRE",
+  "level": "HPRE2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "HPRE203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDB",
+  "level": "MXDB1",
+  "ptype": "lesson",
+  "pages": 11,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 11
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 11
+  },
+  "resolved": {
+   "decimal": 11
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDB102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDB",
+  "level": "MXDB1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDB102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDB",
+  "level": "MXDB2",
+  "ptype": "lesson",
+  "pages": 11,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 11
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 11
+  },
+  "resolved": {
+   "padded-number": 11
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDB201",
+   "MXDB202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDB",
+  "level": "MXDB2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 1,
+   "full-code": 1
+  },
+  "gold_majority_form": "free-text",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDB201",
+   "MXDB202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDB",
+  "level": "MXDB3",
+  "ptype": "lesson",
+  "pages": 14,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 14
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 13,
+   "free-text": 1
+  },
+  "resolved": {
+   "decimal": 14
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDB301",
+   "MXDB302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDB",
+  "level": "MXDB3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDB301",
+   "MXDB302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDI",
+  "level": "MXDI1",
+  "ptype": "lesson",
+  "pages": 20,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 17,
+   "decimal": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 20
+  },
+  "resolved": {
+   "padded-number": 20
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDI101",
+   "MXDI102",
+   "MXDI103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDI",
+  "level": "MXDI1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDI101",
+   "MXDI102",
+   "MXDI103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDI",
+  "level": "MXDI2",
+  "ptype": "lesson",
+  "pages": 21,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 21
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 21
+  },
+  "resolved": {
+   "decimal": 21
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDI201",
+   "MXDI202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDI",
+  "level": "MXDI2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDI201",
+   "MXDI202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDI",
+  "level": "MXDI3",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 4
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 4
+  },
+  "resolved": {
+   "decimal": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDI301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXDI",
+  "level": "MXDI3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXDI301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO1",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 4
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 4
+  },
+  "resolved": {
+   "decimal": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO102"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO2",
+  "ptype": "lesson",
+  "pages": 16,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 16
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 16
+  },
+  "resolved": {
+   "decimal": 16
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO201",
+   "MXEO202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO201",
+   "MXEO202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO3",
+  "ptype": "lesson",
+  "pages": 9,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 9
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 8,
+   "free-text": 1
+  },
+  "resolved": {
+   "decimal": 9
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO4",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 6
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 6
+  },
+  "resolved": {
+   "decimal": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEO",
+  "level": "MXEO4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEO401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEX",
+  "level": "MXEX1",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 4,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 5
+  },
+  "resolved": {
+   "decimal": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEX101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEX",
+  "level": "MXEX2",
+  "ptype": "lesson",
+  "pages": 10,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 10
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 10
+  },
+  "resolved": {
+   "decimal": 10
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEX201",
+   "MXEX202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEX",
+  "level": "MXEX2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEX201",
+   "MXEX202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEX",
+  "level": "MXEX3",
+  "ptype": "lesson",
+  "pages": 14,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 14
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 11,
+   "free-text": 3
+  },
+  "resolved": {
+   "decimal": 14
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEX301",
+   "MXEX302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEX",
+  "level": "MXEX3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEX301",
+   "MXEX302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEX",
+  "level": "MXEX4",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 6
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 6
+  },
+  "resolved": {
+   "decimal": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEX401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXEX",
+  "level": "MXEX4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXEX401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL1",
+  "ptype": "lesson",
+  "pages": 25,
+  "modules": 4,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 16,
+   "decimal": 9
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 25
+  },
+  "resolved": {
+   "decimal": 25
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL101",
+   "MXFL102",
+   "MXFL103",
+   "MXFL104"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL1",
+  "ptype": "overview",
+  "pages": 4,
+  "modules": 4,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 4
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 4
+  },
+  "resolved": {
+   "full-code": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL101",
+   "MXFL102",
+   "MXFL103",
+   "MXFL104"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL2",
+  "ptype": "lesson",
+  "pages": 34,
+  "modules": 4,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 33,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 34
+  },
+  "resolved": {
+   "decimal": 34
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL201",
+   "MXFL202",
+   "MXFL203",
+   "MXFL204"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL2",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL202",
+   "MXFL203",
+   "MXFL204"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL3",
+  "ptype": "lesson",
+  "pages": 18,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 18
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 17,
+   "free-text": 1
+  },
+  "resolved": {
+   "decimal": 18
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL301",
+   "MXFL302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL301",
+   "MXFL302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL4",
+  "ptype": "lesson",
+  "pages": 7,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 7
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 7
+  },
+  "resolved": {
+   "decimal": 7
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFL",
+  "level": "MXFL4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFL401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFU",
+  "level": "MXFU2",
+  "ptype": "lesson",
+  "pages": 18,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 18
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 18
+  },
+  "resolved": {
+   "decimal": 18
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFU201",
+   "MXFU202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFU",
+  "level": "MXFU2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFU201",
+   "MXFU202"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFU",
+  "level": "MXFU3",
+  "ptype": "lesson",
+  "pages": 19,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 19
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 18,
+   "free-text": 1
+  },
+  "resolved": {
+   "decimal": 19
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFU301",
+   "MXFU302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFU",
+  "level": "MXFU3",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFU301",
+   "MXFU302"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFU",
+  "level": "MXFU4",
+  "ptype": "lesson",
+  "pages": 13,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 13
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 13
+  },
+  "resolved": {
+   "decimal": 13
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFU401",
+   "MXFU402"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "MXFU",
+  "level": "MXFU4",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "MXFU401",
+   "MXFU402"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAH",
+  "level": "OSAH3",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 3
+  },
+  "resolved": {
+   "padded-number": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAH",
+  "level": "OSAH3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAH",
+  "level": "OSAH4",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 4
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 4
+  },
+  "resolved": {
+   "padded-number": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAH401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAH",
+  "level": "OSAH4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAH401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAH",
+  "level": "OSAH5",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 5
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 5
+  },
+  "resolved": {
+   "padded-number": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAH501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAH",
+  "level": "OSAH5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAH501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI1",
+  "ptype": "lesson",
+  "pages": 2,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 2
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 2
+  },
+  "resolved": {
+   "padded-number": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI2",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI3",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 3
+  },
+  "resolved": {
+   "padded-number": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI4",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 4
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 4
+  },
+  "resolved": {
+   "padded-number": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI5",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 5
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 5
+  },
+  "resolved": {
+   "padded-number": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSAI",
+  "level": "OSAI5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSAI501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY1",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 3
+  },
+  "resolved": {
+   "padded-number": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY2",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 3
+  },
+  "resolved": {
+   "padded-number": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY3",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 3
+  },
+  "resolved": {
+   "padded-number": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY4",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 4
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 4
+  },
+  "resolved": {
+   "padded-number": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY5",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 5
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 5
+  },
+  "resolved": {
+   "padded-number": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSBY",
+  "level": "OSBY5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSBY501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM1",
+  "ptype": "lesson",
+  "pages": 2,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 2
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 2
+  },
+  "resolved": {
+   "decimal": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM2",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM3",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 3
+  },
+  "resolved": {
+   "padded-number": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM4",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 4
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 4
+  },
+  "resolved": {
+   "padded-number": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM5",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 5
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 5
+  },
+  "resolved": {
+   "padded-number": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSGM",
+  "level": "OSGM5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSGM501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH1",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH1",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 1
+  },
+  "gold_majority_form": "free-text",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH101"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH2",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH201"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH3",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH4",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 4
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 4
+  },
+  "resolved": {
+   "decimal": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH5",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 5
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 5
+  },
+  "resolved": {
+   "padded-number": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSOH",
+  "level": "OSOH5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSOH501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSC",
+  "level": "OSSC3",
+  "ptype": "lesson",
+  "pages": 3,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 3
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 3
+  },
+  "resolved": {
+   "decimal": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSC301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSC",
+  "level": "OSSC3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSC301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSC",
+  "level": "OSSC4",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 4
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 4
+  },
+  "resolved": {
+   "\u2014": 4
+  },
+  "disagree_pages": 4,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "OSSC401"
+  ],
+  "samples": [
+   "OSSC401/OSSC401_1_0.html gold=padded-number claude=absent",
+   "OSSC401/OSSC401_2_0.html gold=padded-number claude=absent",
+   "OSSC401/OSSC401_3_0.html gold=padded-number claude=absent",
+   "OSSC401/OSSC401_4_0.html gold=padded-number claude=absent"
+  ]
+ },
+ {
+  "template": "Standard",
+  "base": "OSSC",
+  "level": "OSSC4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSC401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSC",
+  "level": "OSSC5",
+  "ptype": "lesson",
+  "pages": 5,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 5
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 0.0,
+  "claude_forms": {
+   "absent": 5
+  },
+  "resolved": {
+   "\u2014": 5
+  },
+  "disagree_pages": 5,
+  "gold_convention": "present",
+  "flag": "CLASS",
+  "module_list": [
+   "OSSC501"
+  ],
+  "samples": [
+   "OSSC501/OSSC501_1_0.html gold=padded-number claude=absent",
+   "OSSC501/OSSC501_2_0.html gold=padded-number claude=absent",
+   "OSSC501/OSSC501_3_0.html gold=padded-number claude=absent",
+   "OSSC501/OSSC501_4_0.html gold=padded-number claude=absent"
+  ]
+ },
+ {
+  "template": "Standard",
+  "base": "OSSC",
+  "level": "OSSC5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSC501"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSM",
+  "level": "OSSM3",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 4
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 4
+  },
+  "resolved": {
+   "padded-number": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSM301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSM",
+  "level": "OSSM3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSM301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSM",
+  "level": "OSSM4",
+  "ptype": "lesson",
+  "pages": 4,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 4
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 4
+  },
+  "resolved": {
+   "padded-number": 4
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSM401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "OSSM",
+  "level": "OSSM4",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "OSSM401"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "PES",
+  "level": "PES1",
+  "ptype": "lesson",
+  "pages": 69,
+  "modules": 7,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 68,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 69
+  },
+  "resolved": {
+   "decimal": 69
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "PES1001",
+   "PES1002",
+   "PES1003",
+   "PES1004",
+   "PES1005",
+   "PES1007",
+   "PES1008"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "PES",
+  "level": "PES1",
+  "ptype": "overview",
+  "pages": 6,
+  "modules": 6,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 6
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 6
+  },
+  "resolved": {
+   "full-code": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "PES1001",
+   "PES1002",
+   "PES1003",
+   "PES1004",
+   "PES1007",
+   "PES1008"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "PHE",
+  "level": "PHE1",
+  "ptype": "lesson",
+  "pages": 41,
+  "modules": 8,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 41
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 41
+  },
+  "resolved": {
+   "decimal": 41
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "PHE1001",
+   "PHE1002",
+   "PHE1003",
+   "PHE1004",
+   "PHE1005",
+   "PHE1006",
+   "PHE1007",
+   "PHE1008"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "PHE",
+  "level": "PHE1",
+  "ptype": "overview",
+  "pages": 8,
+  "modules": 8,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 8
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 8
+  },
+  "resolved": {
+   "full-code": 8
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "PHE1001",
+   "PHE1002",
+   "PHE1003",
+   "PHE1004",
+   "PHE1005",
+   "PHE1006",
+   "PHE1007",
+   "PHE1008"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SCCH",
+  "level": "SCCH3",
+  "ptype": "lesson",
+  "pages": 8,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 8
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 8
+  },
+  "resolved": {
+   "padded-number": 8
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SCCH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SCCH",
+  "level": "SCCH3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SCCH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SCPH",
+  "level": "SCPH3",
+  "ptype": "lesson",
+  "pages": 8,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 8
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 8
+  },
+  "resolved": {
+   "decimal": 8
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SCPH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SCPH",
+  "level": "SCPH3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SCPH301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSCI",
+  "level": "SSCI2",
+  "ptype": "lesson",
+  "pages": 9,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 9
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "free-text": 9
+  },
+  "resolved": {
+   "free-text:\"Lesson 8\"": 9
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSCI205"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSCI",
+  "level": "SSCI2",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSCI205"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSFUN",
+  "level": "SSFUN0",
+  "ptype": "lesson",
+  "pages": 2,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 1,
+   "full-code": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "free-text": 2
+  },
+  "resolved": {
+   "free-text:\"SSFUN02\"": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSFUN07"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSFUN",
+  "level": "SSFUN0",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 1
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSFUN07"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSOG",
+  "level": "SSOG1",
+  "ptype": "lesson",
+  "pages": 10,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 10
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 10
+  },
+  "resolved": {
+   "decimal": 10
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSOG101",
+   "SSOG103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSOG",
+  "level": "SSOG1",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSOG101",
+   "SSOG103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSOG",
+  "level": "SSOG3",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 6
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 6
+  },
+  "resolved": {
+   "decimal": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSOG301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "SSOG",
+  "level": "SSOG3",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "SSOG301"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "TEDC",
+  "level": "TEDC4",
+  "ptype": "lesson",
+  "pages": 15,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 15
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 15
+  },
+  "resolved": {
+   "decimal": 15
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TEDC401",
+   "TEDC402"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "TEDC",
+  "level": "TEDC4",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "TEDC401",
+   "TEDC402"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XDLS",
+  "level": "XDLS5",
+  "ptype": "lesson",
+  "pages": 7,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1,
+   "padded-number": 6
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 7
+  },
+  "resolved": {
+   "padded-number": 7
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XDLS501",
+   "XDLS502"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XDLS",
+  "level": "XDLS5",
+  "ptype": "overview",
+  "pages": 1,
+  "modules": 1,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 1
+  },
+  "resolved": {
+   "full-code": 1
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XDLS502"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XDLS",
+  "level": "XDLS9",
+  "ptype": "lesson",
+  "pages": 42,
+  "modules": 7,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 21,
+   "decimal": 20,
+   "free-text": 1
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 42
+  },
+  "resolved": {
+   "decimal": 42
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XDLS902",
+   "XDLS904",
+   "XDLS905",
+   "XDLS906",
+   "XDLS908",
+   "XDLS911",
+   "XDLS912"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XDLS",
+  "level": "XDLS9",
+  "ptype": "overview",
+  "pages": 7,
+  "modules": 7,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 1,
+   "full-code": 6
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 7
+  },
+  "resolved": {
+   "full-code": 7
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XDLS902",
+   "XDLS904",
+   "XDLS905",
+   "XDLS906",
+   "XDLS908",
+   "XDLS911",
+   "XDLS912"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XGF",
+  "level": "XGF9",
+  "ptype": "lesson",
+  "pages": 33,
+  "modules": 5,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 33
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 33
+  },
+  "resolved": {
+   "decimal": 33
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XGF9001",
+   "XGF9002",
+   "XGF9003",
+   "XGF9004",
+   "XGF9006"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XGF",
+  "level": "XGF9",
+  "ptype": "overview",
+  "pages": 5,
+  "modules": 5,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 1,
+   "full-code": 4
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 5
+  },
+  "resolved": {
+   "full-code": 5
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XGF9001",
+   "XGF9002",
+   "XGF9003",
+   "XGF9004",
+   "XGF9006"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XLP",
+  "level": "XLP0",
+  "ptype": "lesson",
+  "pages": 22,
+  "modules": 6,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 2,
+   "padded-number": 17,
+   "full-code": 3
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 21,
+   "free-text": 1
+  },
+  "resolved": {
+   "padded-number": 22
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XLP01",
+   "XLP02",
+   "XLP03",
+   "XLP04",
+   "XLP05",
+   "XLP06"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XLP",
+  "level": "XLP0",
+  "ptype": "overview",
+  "pages": 6,
+  "modules": 6,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "free-text": 3,
+   "full-code": 3
+  },
+  "gold_majority_form": "free-text",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 6
+  },
+  "resolved": {
+   "free-text:\"XPL06\"": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XLP01",
+   "XLP02",
+   "XLP03",
+   "XLP04",
+   "XLP05",
+   "XLP06"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XMES",
+  "level": "XMES1",
+  "ptype": "lesson",
+  "pages": 18,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "padded-number": 18
+  },
+  "gold_majority_form": "padded-number",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 18
+  },
+  "resolved": {
+   "padded-number": 18
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XMES101",
+   "XMES102",
+   "XMES103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XMES",
+  "level": "XMES1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XMES101",
+   "XMES102",
+   "XMES103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XMES",
+  "level": "XMES2",
+  "ptype": "lesson",
+  "pages": 9,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 9
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 9
+  },
+  "resolved": {
+   "decimal": 9
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XMES201",
+   "XMES203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XMES",
+  "level": "XMES2",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "full-code": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XMES201",
+   "XMES203"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XTAS",
+  "level": "XTAS1",
+  "ptype": "lesson",
+  "pages": 15,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "decimal": 9,
+   "padded-number": 6
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "padded-number": 15
+  },
+  "resolved": {
+   "padded-number": 15
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XTAS101",
+   "XTAS102",
+   "XTAS103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XTAS",
+  "level": "XTAS1",
+  "ptype": "overview",
+  "pages": 3,
+  "modules": 3,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 3
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 3
+  },
+  "resolved": {
+   "full-code": 3
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XTAS101",
+   "XTAS102",
+   "XTAS103"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XWHA",
+  "level": "XWHA0",
+  "ptype": "lesson",
+  "pages": 6,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 1,
+   "decimal": 5
+  },
+  "gold_majority_form": "decimal",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "decimal": 6
+  },
+  "resolved": {
+   "decimal": 6
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XWHA01",
+   "XWHA02"
+  ],
+  "samples": []
+ },
+ {
+  "template": "Standard",
+  "base": "XWHA",
+  "level": "XWHA0",
+  "ptype": "overview",
+  "pages": 2,
+  "modules": 2,
+  "gold_present_share": 1.0,
+  "gold_forms": {
+   "full-code": 2
+  },
+  "gold_majority_form": "full-code",
+  "claude_present_share": 1.0,
+  "claude_forms": {
+   "full-code": 2
+  },
+  "resolved": {
+   "free-text:\"XWHA02\"": 2
+  },
+  "disagree_pages": 0,
+  "gold_convention": "present",
+  "flag": "",
+  "module_list": [
+   "XWHA01",
+   "XWHA02"
+  ],
+  "samples": []
+ }
+]

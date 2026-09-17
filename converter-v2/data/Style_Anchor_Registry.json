@@ -36,6 +36,12 @@
 			],
 			"min_evidence": 1
 		},
+		"template_deltas": {
+			"enabled": true,
+			"env": "TMPLDELTA_OFF",
+			"source": "Module_Structure_Index.module_meta.<code>.template_type",
+			"_doc": "ROUND 357 (the autonomous loop's session-19 Round 1, 2026-09-17 — the diff miner's first chrome class, DIFF_QUEUE F15 / F14: the #module-code chip's PRESENCE). A FIFTH, optional cascade tier at a base or a level: {\"<template_type>\": {field: value}} — Standard / Inquiry / Fundamentals / Bilingual, the 01-Finalized_Modules_ folder names — overlaid AFTER the level delta (so it outranks it) when the module's template type is known from Module_Structure_Index.module_meta (the same index the evidence floor reads); a module the index does not know gets NO template delta and keeps the level's value, exactly as before this round. WHY: a mined level can hold two template families the human built differently — the BLL1 level is the seven INQUIRY parents (BLL110 … BLL170: no chip in 6 of their 7 golds) plus their 56 STANDARD children (a chip on every page); CEDO1 is CEDO102 (Inquiry, no chip) beside CEDO105 (Standard, chip); the EXPFUN base is five Inquiry modules (no chip) beside EXPFUN07 (Standard, chip). Pattern fields resolve as WHOLE objects here too; unknown literals are skipped as in every tier. Measured: outputs/_measure_r357_chip.py."
+		},
 		"module_code_to_level": {
 			"rule": "The hundreds digit of the numeric part of a module code gives the phase/level; letter prefixes override.",
 			"map": {
@@ -53,6 +59,7 @@
 			"subject_override": "Edit <subject>.subject_rules.<field>.",
 			"base_override": "Edit <subject>.bases.<base>.base_rules.<field>.",
 			"level_override": "Edit <subject>.bases.<base>.levels.<level>.delta.<field>.",
+			"template_override": "Edit <subject>.bases.<base>.template_deltas.<TemplateType>.<field> or <subject>.bases.<base>.levels.<level>.template_deltas.<TemplateType>.<field> — overlaid after the level delta for modules whose Module_Structure_Index template_type matches (round 357).",
 			"remove_override": "Delete the field at that tier to inherit from above.",
 			"pattern_value": "For pattern fields the value is an object, e.g. footer_links.value = {overview:'next+home', lesson:'prev+next+home', final:'prev+home'}."
 		},
@@ -300,6 +307,14 @@
 							"BLL176",
 							"BLL177"
 						],
+						"template_deltas": {
+							"Inquiry": {
+								"module_code": {
+									"overview": "absent",
+									"lesson": "padded-number"
+								}
+							}
+						},
 						"delta": {
 							"template_phase": "1-3",
 							"footer_class_correction_note": "2026-09-15 (round 332, the autonomous loop): the mined delta `footer_class: footer-nav` REMOVED — the BLL1 gold ships `footer-nav inquiry-nav` on 128 of 150 pages (41 of 48 modules = 0.85; BLL121/172/174–177 plain, BLL171 mixed), the same as BLL2 (123:25) and the subject rule the level now inherits. The r263 stale-registry class.",
@@ -1561,6 +1576,10 @@
 					"idoc_host": "tekura",
 					"footer_class": "footer-nav fundamentals-nav",
 					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "padded-number"
+					},
 					"menu_button_tooltip": {
 						"overview": "no",
 						"lesson": "no"
@@ -2132,7 +2151,11 @@
 						],
 						"delta": {
 							"template_phase": "9-10/NCEA",
-							"page_model": "multi-file"
+							"page_model": "multi-file",
+							"module_code": {
+								"overview": "absent",
+								"lesson": "decimal"
+							}
 						}
 					}
 				}
@@ -2149,6 +2172,14 @@
 							"CEDO103",
 							"CEDO105"
 						],
+						"template_deltas": {
+							"Inquiry": {
+								"module_code": {
+									"overview": "absent",
+									"lesson": "decimal"
+								}
+							}
+						},
 						"delta": {
 							"template_phase": "1-3",
 							"h1_count": {
@@ -2376,8 +2407,8 @@
 							"template_phase": "4-6",
 							"footer_class": "footer-nav inquiry-nav",
 							"module_code": {
-								"overview": "—",
-								"lesson": "(empty)"
+								"overview": "absent",
+								"lesson": "decimal"
 							},
 							"h1_count": {
 								"overview": "—",
@@ -2412,8 +2443,8 @@
 							"template_phase": "7-8",
 							"footer_class": "footer-nav inquiry-nav",
 							"module_code": {
-								"overview": "—",
-								"lesson": "(empty)"
+								"overview": "full-code",
+								"lesson": "decimal"
 							},
 							"h1_count": {
 								"overview": "—",
@@ -3332,8 +3363,8 @@
 				"base_rules": {
 					"footer_class": "footer-nav inquiry-nav",
 					"module_code": {
-						"overview": "—",
-						"lesson": "(empty)"
+						"overview": "absent",
+						"lesson": "decimal"
 					},
 					"menu_type": {
 						"overview": "—",
@@ -3343,6 +3374,14 @@
 						"overview": "—",
 						"lesson": "prev+next+home",
 						"final": "—"
+					}
+				},
+				"template_deltas": {
+					"Standard": {
+						"module_code": {
+							"overview": "full-code",
+							"lesson": "decimal"
+						}
 					}
 				},
 				"levels": {
@@ -5461,7 +5500,7 @@
 				"base_rules": {
 					"module_code": {
 						"overview": "full-code",
-						"lesson": "—"
+						"lesson": "padded-number"
 					},
 					"h1_count": {
 						"overview": "2",
@@ -5576,7 +5615,12 @@
 		"bases": {
 			"PNR": {
 				"base_code": "PNR",
-				"base_rules": {},
+				"base_rules": {
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "padded-number"
+					}
+				},
 				"levels": {
 					"PNR1": {
 						"members": [

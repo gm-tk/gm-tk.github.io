@@ -1,0 +1,22 @@
+r357 chip probe — 409 modules, 1955 paired pages, 258 (template, base, level, page-type) groups
+CLASS rows: 11 — modules 18, pages disagreeing 36
+
+CLASS Bilingual    PNR     PNR1     lesson   n=  5 mods= 3 gold present 1.00 {'padded-number': 1, 'full-code': 4} | claude present 0.00 {'absent': 5} | resolved {'—': 5} | disagree 5 | e.g. ['PNR101/PNR101_1_0.html gold=padded-number claude=absent', 'PNR102/PNR102_1_0.html gold=full-code claude=absent']
+CLASS Fundamentals SCFUN   SCFUN0   overview n=  1 mods= 1 gold present 1.00 {'full-code': 1} | claude present 0.00 {'absent': 1} | resolved {'—': 1} | disagree 1 | e.g. ['SCFUN01/SCFUN01_0_0.html gold=full-code claude=absent']
+CLASS Inquiry      BLL     BLL1     overview n=  7 mods= 7 gold present 0.14 {'absent': 6, 'full-code': 1} | claude present 1.00 {'padded-number': 7} | resolved {'padded-number': 7} | disagree 6 | e.g. ['BLL110/BLL110_0_0.html gold=absent claude=padded-number', 'BLL120/BLL120_0_0.html gold=absent claude=padded-number']
+CLASS Inquiry      CEDK    CEDK5    overview n=  1 mods= 1 gold present 0.00 {'absent': 1} | claude present 1.00 {'full-code': 1} | resolved {'full-code': 1} | disagree 1 | e.g. ['CEDK501/CEDK501_0_0.html gold=absent claude=full-code']
+CLASS Inquiry      CEDO    CEDO1    overview n=  1 mods= 1 gold present 0.00 {'absent': 1} | claude present 1.00 {'full-code': 1} | resolved {'full-code': 1} | disagree 1 | e.g. ['CEDO102/CEDO102_0_0.html gold=absent claude=full-code']
+CLASS Inquiry      CEDT    CEDT2    lesson   n=  6 mods= 1 gold present 1.00 {'decimal': 5, 'full-code': 1} | claude present 0.00 {'absent': 6} | resolved {'(empty)': 6} | disagree 6 | e.g. ['CEDT207/CEDT207_2_0.html gold=decimal claude=absent', 'CEDT207/CEDT207_3_0.html gold=decimal claude=absent']
+CLASS Inquiry      CEDT    CEDT3    lesson   n=  5 mods= 1 gold present 1.00 {'decimal': 5} | claude present 0.00 {'absent': 5} | resolved {'(empty)': 5} | disagree 5 | e.g. ['CEDT301/CEDT301_2_0.html gold=decimal claude=absent', 'CEDT301/CEDT301_3_0.html gold=decimal claude=absent']
+CLASS Inquiry      CEDT    CEDT3    overview n=  1 mods= 1 gold present 1.00 {'full-code': 1} | claude present 0.00 {'absent': 1} | resolved {'—': 1} | disagree 1 | e.g. ['CEDT301/CEDT301_0_0.html gold=full-code claude=absent']
+CLASS Standard     EXPFUN  EXPFUN0  overview n=  1 mods= 1 gold present 1.00 {'full-code': 1} | claude present 0.00 {'absent': 1} | resolved {'—': 1} | disagree 1 | e.g. ['EXPFUN07/EXPFUN07_0_0.html gold=full-code claude=absent']
+CLASS Standard     OSSC    OSSC4    lesson   n=  4 mods= 1 gold present 1.00 {'padded-number': 4} | claude present 0.00 {'absent': 4} | resolved {'—': 4} | disagree 4 | e.g. ['OSSC401/OSSC401_1_0.html gold=padded-number claude=absent', 'OSSC401/OSSC401_2_0.html gold=padded-number claude=absent']
+CLASS Standard     OSSC    OSSC5    lesson   n=  5 mods= 1 gold present 1.00 {'padded-number': 5} | claude present 0.00 {'absent': 5} | resolved {'—': 5} | disagree 5 | e.g. ['OSSC501/OSSC501_1_0.html gold=padded-number claude=absent', 'OSSC501/OSSC501_2_0.html gold=padded-number claude=absent']
+
+PARTIAL rows (some disagreement, under 0.50 or a gold tie): 6 — pages 6
+  part Fundamentals HPFUN   HPFUN2   overview n=  3 mods= 3 gold 0.67 (present) claude 1.00 resolved {'full-code': 3} disagree 1 e.g. ['HPFUN201/HPFUN201_0_0.html gold=absent claude=full-code']
+  part Fundamentals HPFUN   HPFUN3   overview n=  3 mods= 3 gold 0.67 (present) claude 1.00 resolved {'full-code': 3} disagree 1 e.g. ['HPFUN302/HPFUN302_0_0.html gold=absent claude=full-code']
+  part Fundamentals SSFUN   SSFUN0   overview n=  6 mods= 6 gold 0.83 (present) claude 1.00 resolved {'full-code': 6} disagree 1 e.g. ['SSFUN01/SSFUN01_0_0.html gold=absent claude=full-code']
+  part Fundamentals XFUN    XFUN0    overview n=  2 mods= 2 gold 0.50 (tie) claude 1.00 resolved {'free-text:"XFUN02"': 2} disagree 1 e.g. ['XFUN01/XFUN01_0_0.html gold=absent claude=full-code']
+  part Standard     EXBP    EXBP9    lesson   n=  4 mods= 1 gold 0.25 (absent) claude 0.00 resolved {'(empty)': 4} disagree 1 e.g. ['EXBP901/EXBP901_2_0.html gold=full-code claude=absent']
+  part Standard     EXIP    EXIP9    lesson   n=  4 mods= 1 gold 0.25 (absent) claude 0.00 resolved {'(empty)': 4} disagree 1 e.g. ['EXIP901/EXIP901_1_0.html gold=full-code claude=absent']

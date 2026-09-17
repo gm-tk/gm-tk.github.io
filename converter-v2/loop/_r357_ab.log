@@ -1,0 +1,20 @@
+[ab] TMPLDELTA_OFF=1 (fix REVERTED) — regenerating 3 module(s): BLL110 CEDO102 EXPFUN07
+[ab] TMPLDELTA_OFF unset (DEFAULT / fix active) — regenerating…
+
+A/B over 3 module(s): BLL110 CEDO102 EXPFUN07   (TMPLDELTA_OFF reverts the fix)
+  metric                               TMPLDELTA_OFF=1      default    effect
+  ---------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                    39.57        40.22     +0.65
+  skeleton pages >=50%                            1            1         —
+  skeleton pages >=75%                            0            0         —
+  compare_structure exact chain                  48           48         —
+  compare_structure EXTRA container               5            5         —
+  compare_structure missing container             1            1         —
+  body_compare ANY breakdown                      0            0         —
+  defect structurally-clean %                100.00       100.00         —
+  literal-[tag] leak (occ)                        0            0         —
+  literal-[tag] leak (pages)                      0            0         —
+
+RESULT: on these modules, the fix (vs TMPLDELTA_OFF=1) MOVES: skeleton SCAFFOLD mean %.
+        That IS the toggle's effect — now decide if it's a win, a documented net-positive, or to tighten.
+  (modules left in the DEFAULT/fix-active state; live cs/bc jsons restored. Re-run ./_fastloop_diff.py or ./ship.sh as needed.)

@@ -1,0 +1,4568 @@
+{
+ "PNR101": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "PNR102": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "PNR104": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TRR102": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR103": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR104": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR105": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR106": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR107": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR108": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR109": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR111": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR112": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR113": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR114": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR115": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR203": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR301": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "TRR304": {
+  "tmpl": "Bilingual",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "ARFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ARFUN02": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ARFUN03": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ARFUN04": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ARFUN05": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "CHFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code"
+  },
+  "h1_count": {
+   "overview": "2"
+  }
+ },
+ "CHFUN04": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code"
+  },
+  "h1_count": {
+   "overview": "2"
+  }
+ },
+ "CHFUN05": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code"
+  },
+  "h1_count": {
+   "overview": "2"
+  }
+ },
+ "CHFUN06": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code"
+  },
+  "h1_count": {
+   "overview": "2"
+  }
+ },
+ "CHFUN07": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code"
+  },
+  "h1_count": {
+   "overview": "2"
+  }
+ },
+ "ENFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENFUN02": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENFUN03": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENFUN04": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENFUN05": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENFUN07": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENFUN08": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENFUN09": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HPFUN101": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN102": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN103": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN201": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN202": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN203": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN301": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN302": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN303": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN401": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN402": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN403": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN901": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN902": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "HPFUN903": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "—"
+  }
+ },
+ "MXFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFUN02": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFUN03": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "SCFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "—",
+   "lesson": "free-text:\"SCFUN09\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "SSFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"SSFUN02\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "SSFUN02": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"SSFUN02\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "SSFUN03": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"SSFUN02\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "SSFUN05": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"SSFUN02\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "SSFUN06": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"SSFUN02\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "SSFUN08": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"SSFUN02\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "TEFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEFUN02": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEFUN03": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEFUN04": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEFUN05": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEFUN06": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEFUN07": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEFUN08": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "absent",
+   "lesson": "absent"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XFUN01": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "free-text:\"XFUN02\"",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XFUN02": {
+  "tmpl": "Fundamentals",
+  "module_code": {
+   "overview": "free-text:\"XFUN02\"",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL110": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL120": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL130": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL140": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL150": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL160": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL170": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL210": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL220": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL230": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL240": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "CEDK101": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDK102": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDK501": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "CEDO102": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "CEDO202": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDR201": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDR204": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDR301": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDR302": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT101": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT104": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT201": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT202": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT203": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT204": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT207": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT208": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT301": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDT404": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDW101": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "CEDW201": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "ENGFUN02": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "free-text:\"ENGFUN03\"",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "EXPFUN02": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "1"
+  }
+ },
+ "EXPFUN03": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "1"
+  }
+ },
+ "EXPFUN04": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "1"
+  }
+ },
+ "EXPFUN05": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "1"
+  }
+ },
+ "EXPFUN06": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "1"
+  }
+ },
+ "TWHA901": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TWHA902": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TWHA903": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TWHA904": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TWHA905": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TWHA906": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TWHK901": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "TWHK903": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "XDLS901": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS903": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS909": {
+  "tmpl": "Inquiry",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "AGH1001": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1002": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1003": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1005": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1006": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1007": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1008": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "AGH1009": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH104": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH105": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH203": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH205": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH303": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH304": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ANZH401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"Lesson 5\""
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "ANZH404": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"Lesson 5\""
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "ART1002": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ART1003": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ART1004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ART1005": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ART1006": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "BLL111": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL112": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL113": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL114": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL115": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL116": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL117": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL121": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL122": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL123": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL124": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL125": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL126": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL127": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL131": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL132": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL133": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL134": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL135": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL136": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL137": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL141": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL142": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL143": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL144": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL145": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL146": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL147": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL151": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL152": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL153": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL154": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL155": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL156": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL157": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL161": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL162": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL163": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL164": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL165": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL166": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL167": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL171": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL172": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL173": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL174": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL175": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL176": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL177": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "padded-number",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL211": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL212": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL213": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL214": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL215": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL216": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL217": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL221": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL222": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL223": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL224": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL225": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL226": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL227": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL231": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL232": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL233": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL234": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL235": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL236": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL237": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL241": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL242": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL244": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL245": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL246": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL251": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL252": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL253": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL254": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL262": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLL263": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "BLLR201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"Module",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "CEDO105": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "CEDO301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "CEDO501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "CEDO502": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "CEDR501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "CEDT501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "CEDW501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENG1004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENG1005": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENG1007": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENGC101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGC102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGC201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGC202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGC301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGC302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGC401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENGI102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENGI103": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENGI201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI203": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI303": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI400": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGI405": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ402": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGJ403": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGR101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENGR102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "ENGR201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGR202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGR301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGR302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "ENGS405": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "EXBP901": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "2"
+  }
+ },
+ "EXIP901": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "2"
+  }
+ },
+ "EXPFUN07": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "—",
+   "lesson": "(empty)"
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "1"
+  }
+ },
+ "HES1003": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HES1004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HES1005": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HES1006": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HES1007": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1001": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1002": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1003": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1005": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1006": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1007": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HIS1008": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "HPRE203": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDB102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDB201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDB202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDB301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDB302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDI101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "MXDI102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "MXDI103": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "MXDI201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDI202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXDI301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEO102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEO201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEO202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEO301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEO401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEX101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEX201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEX202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEX301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEX302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXEX401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFL101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "MXFL102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "MXFL103": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "MXFL104": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "MXFL201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFL202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFL203": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFL204": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFL301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFL302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFL401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFU201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFU202": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFU301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFU302": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFU401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "MXFU402": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSAH301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSAH401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSAH501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "OSAI101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSAI201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSAI301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSAI401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSAI501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSBY101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "OSBY201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSBY301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSBY401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "OSBY501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSGM101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSGM201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSGM301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSGM401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSGM501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSOH101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSOH201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSOH301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSOH401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSOH501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSSC301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "OSSC401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "OSSC501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "—"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "—"
+  }
+ },
+ "OSSM301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "OSSM401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PES1001": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PES1002": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PES1003": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PES1004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PES1005": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PES1007": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PES1008": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1001": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1002": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1003": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1005": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1006": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1007": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "PHE1008": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "SCCH301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "SCPH301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "SSCI205": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"Lesson 8\""
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "SSFUN07": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "free-text:\"SSFUN02\""
+  },
+  "h1_count": {
+   "overview": "—",
+   "lesson": "2"
+  }
+ },
+ "SSOG101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "SSOG103": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "SSOG301": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEDC401": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "TEDC402": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XDLS501": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XDLS502": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XDLS902": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS904": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS905": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS906": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS908": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS911": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XDLS912": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "1",
+   "lesson": "1"
+  }
+ },
+ "XGF9001": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XGF9002": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XGF9003": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XGF9004": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XGF9006": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XLP01": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XPL06\"",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XLP02": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XPL06\"",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XLP03": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XPL06\"",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XLP04": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XPL06\"",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XLP05": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XPL06\"",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XLP06": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XPL06\"",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XMES101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "XMES102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "XMES103": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "2"
+  }
+ },
+ "XMES201": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XMES203": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XTAS101": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XTAS102": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XTAS103": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "full-code",
+   "lesson": "padded-number"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XWHA01": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XWHA02\"",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ },
+ "XWHA02": {
+  "tmpl": "Standard",
+  "module_code": {
+   "overview": "free-text:\"XWHA02\"",
+   "lesson": "decimal"
+  },
+  "h1_count": {
+   "overview": "2",
+   "lesson": "1"
+  }
+ }
+}

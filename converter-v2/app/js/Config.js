@@ -1717,7 +1717,8 @@ class Config {
 	// ROUND 354 (260619.25): the words on a widget tag's own line become the Writers Note after the built widget (#tagWordsNote) — 193 built widgets had been losing them.
 	// ROUND 355 (260619.26): a measurement-tool round — _skeleton_compare.py scores with autojunk=False (128 long pages were scored with most of their structure ignored); the skeleton baselines re-established.
 	// ROUND 356 (260619.27): no built widget discards a member it never READ — the r353 members rule made exact by read-tracking (#trackMembers / #withMembersRead; consumption "read"); 30 widgets on 26 pages had been dropping writer paragraphs; FULL regeneration, 35 pages / 32 modules.
-	static AppVersion = "260619.27";
+	// ROUND 357 (260619.28): the #module-code chip's presence follows the family's own convention on both page types — six no-evidence registry values corrected + the template_deltas cascade tier (ModuleResolver.Resolve; env TMPLDELTA_OFF); the diff miner's first chrome class.
+	static AppVersion = "260619.28";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
