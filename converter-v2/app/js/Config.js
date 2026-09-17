@@ -1715,7 +1715,8 @@ class Config {
 	// ROUND 352 (260619.23): a built carousel never discards the writer's words — a section heading after the slide table ends the carousel; the table-slides path keeps its leading / trailing paragraphs or declines.
 	// ROUND 353 (260619.24): the generic members rule at the Build seam (#withMembers) — built, measured, SHIPPED OFF (data _members_rule.enabled false); the corpus is byte-identical to r352.
 	// ROUND 354 (260619.25): the words on a widget tag's own line become the Writers Note after the built widget (#tagWordsNote) — 193 built widgets had been losing them.
-	static AppVersion = "260619.25";
+	// ROUND 355 (260619.26): a measurement-tool round — _skeleton_compare.py scores with autojunk=False (128 long pages were scored with most of their structure ignored); the skeleton baselines re-established.
+	static AppVersion = "260619.26";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

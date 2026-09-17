@@ -9,13 +9,13 @@ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 L="$ROOT/pageforge-site/converter-v2/loop"; T="$ROOT/CONVERTER_V2/reference/tests"; O="$ROOT/CONVERTER_V2/outputs"; M="$ROOT/_MIGRATION"
 cd "$ROOT"
 # 1. mirror
-for f in _verify_dragdrop.cjs _selftest_core.cjs run_all_gates.sh gate_baseline.json _corpus.py batch_convert.cjs; do cp "$T/$f" "$L/$f"; done
+for f in _verify_dragdrop.cjs _selftest_core.cjs run_all_gates.sh gate_baseline.json _corpus.py batch_convert.cjs _skeleton_compare.py; do cp "$T/$f" "$L/$f"; done
 cp LOOP_STATE.md KB_AMALGAMATION_STATUS.md LOOP__Autonomous_Rounds.md "$L/"
 cp "$O/COVERAGE_DASHBOARD.md" "$L/"; [ -f "$O/_coverage_dashboard.json" ] && cp "$O/_coverage_dashboard.json" "$L/"
 n=0; for f in $(cd "$O" && ls --indicator-style=none | grep -E "^(_${R}[_a-z0-9]*|_measure_${R}_.*)" | grep -v "^_${R}_on$\|^_${R}_off_sample$"); do [ -f "$O/$f" ] && cp "$O/$f" "$L/$f" && n=$((n+1)); done
 echo "mirrored $n ${R} artefacts"
 bad=0; cnt=0
-for f in $(cd "$L" && ls --indicator-style=none _${R}* _measure_${R}* _verify_dragdrop.cjs _selftest_core.cjs run_all_gates.sh gate_baseline.json _corpus.py batch_convert.cjs LOOP_STATE.md KB_AMALGAMATION_STATUS.md LOOP__Autonomous_Rounds.md COVERAGE_DASHBOARD.md 2>/dev/null); do
+for f in $(cd "$L" && ls --indicator-style=none _${R}* _measure_${R}* _verify_dragdrop.cjs _selftest_core.cjs run_all_gates.sh gate_baseline.json _corpus.py batch_convert.cjs _skeleton_compare.py LOOP_STATE.md KB_AMALGAMATION_STATUS.md LOOP__Autonomous_Rounds.md COVERAGE_DASHBOARD.md 2>/dev/null); do
   src=""; for d in "$T" "$O" "$ROOT"; do [ -f "$d/$f" ] && src="$d/$f" && break; done
   cnt=$((cnt+1)); cmp -s "$src" "$L/$f" || { echo "MIRROR DIFF $f"; bad=1; }
 done

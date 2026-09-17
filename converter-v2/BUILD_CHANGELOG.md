@@ -1,5 +1,19 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-17 (round 355, build 260619.26) — THE SKELETON SCORER'S AUTOJUNK CLIFF: `_skeleton_compare.py` NOW SCORES WITH `autojunk=False` — 128 pages (every long single-page Fundamentals / BLL module) had been scored with most of their structure IGNORED by difflib's junk heuristic (BLL170 0.0 read 14.1 % where its true ratio is 58.2 %); the corpus mean is RE-BASELINED 50.965 → 51.979 % (+1.01pp, an INSTRUMENT correction, never a gain), ≥ 50 % 1073 → 1093, RAW 35.117 → 36.711 %; a measurement-tool round (the r315 precedent; the autonomous loop's session-15 Round 5) — no engine or data change, no regeneration, every other gate untouched, gate-neutral by design
+
+### 1. WHAT CHANGED
+
+**`difflib.SequenceMatcher`'s AUTOJUNK heuristic (on by default) marks any element that occurs in more than 1 % of a sequence of 200+ items as "junk" and never matches on it. A page skeleton IS made of such lines ("p", "WIDGET", "div.row", "div.col-md-8.col-12"), so every page whose skeleton reaches 200 lines was scored with most of its structure ignored** — the cliff r352 hit when five restored `<p>` (the gold has them) pushed CHFUN06 0.0 from 198 to 203 lines and its score from 56.1 to 25.5 %. The scorer now compares with `autojunk=False` (`SKAUTOJUNK=1` restores the pre-355 numbers for a one-off comparison — proven identical: 50.9646 %); every baseline that carries a skeleton number is re-established on the same corpus.
+
+### 2. THE MEASUREMENT (`outputs/_r355_skeleton_noautojunk.py` — the trial scorer on the r354 corpus → `_r355_sk_noautojunk.{json,log}`; the shipped scorer reproduces it per page — `_r355_sk_final.json`)
+
+- **128 pages change, 126 UP, 2 down by < 1pp:** BLL170 0.0 14.1 → 58.2, TEFUN02 0.0 13.4 → 57.1, BLL210 0.0 14.3 → 54.8, BLL140 0.0 16.2 → 56.2, TEFUN04 0.0 14.3 → 53.3, CEDO502 1.1 18.5 → 53.3 … — the long single-page Fundamentals / BLL / TE modules the dashboard's "worst pages" list has carried for months were a measurement artefact; the two dips TWHK901 0.0 6.8 → 5.8 and CEDT104 0.0 6.0 → 5.7 are the same pages scored honestly.
+- **Corpus: SCAFFOLD 50.9646 → 51.9788 % (+1.0142pp), ≥ 50 % 1073 → 1093, ≥ 75 % 160, ≥ 90 % 14 @ 1955; RAW 35.1173 → 36.7108 %.** The ceiling instrument (`_measure_ceiling.py`) does not use SequenceMatcher — the ceiling stays 91.9 %; **% of achievable = 56.6 % (was 55.5 %)** — an instrument correction, recorded as such.
+- Every other gate is untouched (no engine / data change, no regeneration): cs 11607 / 175 / 617, clean 2080/2103, leak 26/23, body 182, tags 9557/9557, every verifier EXACT; the scorer's `--selftest` GREEN.
+
+**Ledger:** no ship (no regeneration) · no data flag (a gate tool; env `SKAUTOJUNK=1` = the old instrument) · gate tools (outside git, mirrored to `loop/`) `_skeleton_compare.py`, `gate_baseline.json` · tools `outputs/_r355_skeleton_noautojunk.py`, `_r355_sk_noautojunk.{json,log}`, `_r355_sk_final.json`, `_r355_sk_full.log`, `_r355_sk_old.{json,log}`, `_r355_widgetloss*.{json,log}` / `_r355_losses_by_shape.log` / `_r355_overcapture_census.log` / `_r355_tagred.{json,log}` (the PICK measurements that found the queue exhausted at the floor), `_r355_finalise.py` · AppVersion 260619.26.
+
 ## 2026-09-17 (round 354, build 260619.25) — THE WORDS A WRITER TYPES ON A WIDGET TAG'S OWN LINE BECOME THE WRITERS NOTE AFTER THE BUILT WIDGET (they were lost on 193 built widgets of every type; the autonomous loop's session-15 Round 4; FULL regeneration of all 416 — 220 pages / 159 modules gain a red note, nothing else changes; every gate EXACT, gate-neutral by design)
 
 ### 1. WHAT CHANGED, IN ONE LINE
