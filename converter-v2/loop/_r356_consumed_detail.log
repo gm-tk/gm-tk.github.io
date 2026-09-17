@@ -1,0 +1,94 @@
+== untouched PROSE but PRESENT on the page (the false-consumption check)
+speechBubble TEDC402 p2.0 #7 [before] {[image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+flipCard TEDC402 p2.0 #13 [after] {[flip card]* T* b b [button] [image] [?]}: Young Beautiful Woman Positive Emotions Stock Illustration - Download Image Now 
+speechBubble TEDC402 p4.0 #36 [before] {[image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+speechBubble TEDC402 p4.0 #52 [before] {[?] [image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+speechBubble TEDC402 p5.0 #62 [before] {[image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+speechBubble TEDC402 p7.0 #99 [before] {[image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+speechBubble TEDC402 p7.0 #117 [before] {[image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+flipCard TEDC402 p8.0 #125 [after] {[flip card]* T* [image] [?]}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+speechBubble TEDC402 p8.0 #133 [before] {[image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+speechBubble TEDC402 p9.0 #140 [before] {[image] [?] [speech bubble]*}: Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adul
+flipCard CEDO202 p0.0 #6 [after] {[flip card]* T* b b b}: 1. Film yourself so that you can remember it!
+
+== untouched BUTTON / tag members and their lost state
+flipCard AGH1009 p1.0 #1 button lost=True [after]: Complete activity 1A in your journal
+flipCard ENGC401 p4.0 #11 button lost=False [after]: Go to journal
+flipCard TEDC402 p2.0 #13 button lost=False [after]: Go to your journal
+flipCard XGF9002 p1.0 #8 tag:accordion lost=True [after]: A note about hidden gifted and masked giftedness
+flipCard CEDO102 p0.0 #3 button lost=False [after]: Go to journal
+flipCard ENGJ101 p4.0 #10 button lost=False [after]: Go to journal
+flipCard MXEX201 p4.1 #5 button lost=False [after]: Go to journal.
+
+== untouched MEDIA-dropped
+flipCard TEDC402 p2.0 #13 media-dropped [after] {[flip card]* T* b b [button] [image] [?]}: avatar Tina
+flipCard TEDC402 p4.0 #42 media-dropped [after] {[flip card]* T* [image] [?]}: avatar Tina
+flipCard TEDC402 p8.0 #125 media-dropped [after] {[flip card]* T* [image] [?]}: avatar Tina
+flipCard TEFUN08 p0.0 #2 media-dropped [after] {[flip card]* T* b [image]}: https://www.youtube.com/watch?v=FN2RM-CHkuI
+flipCard XGF9002 p1.0 #8 media-dropped [after] {[flip card]* T* [accordion] [image]}: https://www.istockphoto.com/vector/people-hide-negative-emotions-behind-masks-wi
+flipCard ANZH205 p3.0 #15 media-dropped [between] {[flip card]* [body] [image] [?] T* [image]}: (The voyages of Te Tiriti o Waitangi – YouTube)
+flipCard ANZH205 p3.0 #15 media-dropped [after] {[flip card]* [body] [image] [?] T* [image]}: Moko talking to Koro (https://my.christchurchcitylibraries.com/kids-treaty-zone-
+flipCard ENGJ202 p4.0 #7 media-dropped [after] {[flip card]* T* [image]}: https://drive.google.com/file/d/1arIFi8yxV2pp2iwZHBFqNO-JBfIMqQ0i/view?usp=drive
+flipCard SSOG103 p2.0 #6 media-dropped [between] {[flip card]* [image] [image] [?] T*}: https://www.shutterstock.com/image-vector/airmail-envelope-frame-blue-red-stripe
+flipCard SSOG103 p2.0 #6 media-dropped [between] {[flip card]* [image] [image] [?] T*}: https://www.istockphoto.com/vector/vintage-postcard-with-white-paper-texture-tra
+flipCard SSOG103 p4.0 #13 media-dropped [between] {[flip card]* [image] T* [image]}: https://www.shutterstock.com/image-vector/simple-new-zealand-map-black-silhouett
+flipCard SSOG103 p4.0 #13 media-dropped [after] {[flip card]* [image] T* [image]}: Postietalkicon
+flipCard MXFL301 p1.0 #3 media-dropped [after] {[flip card]* T* [image] [image]}: https://www.istockphoto.com/vector/latitude-and-longitude-of-earth-globe-gm58225
+flipCard MXFL301 p1.0 #3 media-dropped [after] {[flip card]* T* [image] [image]}: https://www.shutterstock.com/image-vector/prime-meridian-longitude-0-line-geogra
+flipCard TEDC401 p4.0 #74 media-dropped [after] {[flip card]* T* [image]}: Handsome Business Man Set Stock Illustration - Download Image Now - Men, Charact
+flipCard XGF9006 p5.0 #23 media-nourl [between] {[flip card]* [image] T*}: 
+
+== every LOST prose site
+flipCard AGH1009 p1.0 #1 [after] w81 {[flip card]* T* b b [button]}: So, with our current global demands for food, the dwindling levels of arable land or land 
+flipCard AGH1009 p1.0 #1 [after] w17 {[flip card]* T* b b [button]}: This video gives a local example of kaitiakitanga and manaakitanga within the context of a
+carousel BLL117 p2.0 #7 [after] w38 {[carousel]* T* [body]}: Choose one of these foods to make, or one that you discussed above, or use one of these fo
+carousel BLL127 p2.0 #8 [after] w38 {[carousel]* T* [body]}: Choose one of these foods to make, or one that you discussed above, or use one of these fo
+carousel BLL137 p1.1 #6 [after] w38 {[carousel]* T* [body]}: Choose one of these foods to make, or one that you discussed above, or use one of these fo
+carousel BLL157 p1.1 #9 [after] w15 {[carousel]* T* [body]}: Upload a photo of what you decided to bake or cook to show your kaiako.
+flipCard CEDO301 p6.0 #7 [after] w24 {[flip card]* T* b}: Other cultures/countries that have traditional medicine systems include Japan, Arabic coun
+flipCard CHFUN05 p0.0 #30 [between] w9 {[flip card]* [body] T*}: Flip the card to see the sentence in English.
+flipCard CHFUN05 p0.0 #63 [between] w10 {[flip card]* b T*}: Click on the card to see the sentence in English.
+flipCard SSOG101 p1.0 #1 [between] w34 {[flip card]* [?] [body] [?] [?] T*}: Can you spot when you should call 111? Go through each of these scenarios with your superv
+flipCard TEDC402 p2.0 #13 [after] w10 {[flip card]* T* b b [button] [image] [?]}: Note: Your sketch can be simple – boxes, bars, arrows, labels.
+flipCard TEDC402 p2.0 #13 [after] w14 {[flip card]* T* b b [button] [image] [?]}: Choose the option that works best for you and how you like to learn.
+flipCard TEFUN08 p0.0 #2 [after] w8 {[flip card]* T* b [image]}: What would happen if people behaved like machines?
+flipCard TWHK903 p0.0 #7 [after] w25 {[flip card]* T* b}: Remember it’s not your fault. Sometimes you might come across harmful content by accident.
+accordion XDLS906 p1.0 #1 [between] w23 {[accordion]* [accordion]* [h2]* [body]* [body]* [body]* [video]* [accordion]* [h2]* [body]* b* b* b* b* b* [body]* [?] [?] [video]* [accordion]* [h2]* [body]* [body]* [body]* [?] [?]}: may also discuss specific safety precautions you may need to take to suit you and the acti
+accordion XDLS906 p1.0 #1 [after] w8 {[accordion]* [accordion]* [h2]* [body]* [body]* [body]* [video]* [accordion]* [h2]* [body]* b* b* b* b* b* [body]* [?] [?] [video]* [accordion]* [h2]* [body]* [body]* [body]* [?] [?]}: can help you with this discussion.
+flipCard AGH1006 p2.0 #5 [after] w13 {[flip card]* T* b b}: Here is a commercial example with an onion growing operation in Pukekohe, Auckland.
+flipCard AGH1006 p2.0 #5 [after] w25 {[flip card]* T* b b}: Let’s review the seed sowing process through this flow diagram. Match the words to the par
+flipCard AGH1006 p2.0 #9 [after] w88 {[flip card]* T* b}: Grafting is a skilled technique that requires practice and knowledge of plant anatomy. Suc
+flipCard ANZH205 p3.0 #15 [between] w30 {[flip card]* [body] [image] [?] T* [image]}: Can you use the videos above to help you answer these questions? Have a think about your a
+flipCard CEDW501 p3.0 #23 [between] w4 {[flip card]* b T*}: Audio-Script template 1
+flipCard ENGI405 p5.0 #23 [after] w14 {[flip card]* T* [back] b b [back] b [back] b}: • Draw/collage a key moment or idea from this chapter that came to mind.
+flipCard ENGI405 p5.0 #23 [after] w6 {[flip card]* T* [back] b b [back] b [back] b}: • Think about why it was important.
+flipCard ENGI405 p5.0 #23 [after] w15 {[flip card]* T* [back] b b [back] b [back] b}: • If you were part of this chapter, how would you be, what would you do?
+flipCard ENGI405 p5.0 #23 [after] w19 {[flip card]* T* [back] b b [back] b [back] b}: • Which trope(s) can you already see emergingBeginning to show. in this chapter? Go back
+speechBubble ENGR202 p5.0 #21 [after] w10 {[speech bubble]* [?] [?] [?]}: you what is going on in the world around you!
+flipCard PES1003 p8.0 #5 [between] w5 {[flip card]* b T*}: Clouds, LPG Frosting, Carb Icing
+flipCard XMES201 p1.0 #9 [after] w23 {[flip card]* T* b}: In this video there are some pet names spoken in te reo Māori. Have a go at saying them wi
+flipCard ARFUN04 p0.0 #66 [between] w18 {[flip card]* b T*}: **Instructions:** Test your knowledge of these terms and then flip them over to see if you
+accordion BLL246 p1.0 #1 [between] w5 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: + she visited her grandmother.
+accordion BLL246 p1.0 #1 [between] w9 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: + she prefers to play football with her brothers.
+accordion BLL246 p1.0 #1 [between] w6 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: + he could have some pudding.
+accordion BLL246 p1.0 #1 [between] w12 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: she felt it was a good day for a bike ride.
+accordion BLL246 p1.0 #1 [between] w10 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: her helmet was missing. She looked in her bedroom,
+accordion BLL246 p1.0 #1 [between] w12 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: she looked in the garage again. The helmet was not there,
+accordion BLL246 p1.0 #1 [between] w4 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: Lily felt worried.
+accordion BLL246 p1.0 #1 [between] w12 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: he asked what was wrong. Lily told him about the helmet,
+accordion BLL246 p1.0 #1 [between] w5 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: Sam helped her look.
+accordion BLL246 p1.0 #1 [after] w10 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: Lily smiled with relief. She put on her helmet,
+accordion BLL246 p1.0 #1 [after] w11 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: she climbed onto her bike. She rode down the path,
+accordion BLL246 p1.0 #1 [after] w21 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: she rode carefully until she arrived at the park. She knew there would not be any cars in 
+accordion BLL246 p1.0 #1 [after] w9 {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: she rode faster and had a fun time.
+flipCard MXEX201 p4.1 #5 [after] w3 {[flip card]* T* b [button]}: Information sourced from - https://www.learnz.org.nz/spiritofadventure181/bg-standard-f/tr
+hintSlider OSAI101 p2.0 #14 [between] w21 {[hint slider]* [?] [body] T*}: Read the prompt and decide if it is a good or bad prompt. Then click to see if you were ri
+flipCard CEDO202 p0.0 #6 [after] w25 {[flip card]* T* b b b}: 1. Choose three of your favourite action cards that you tried and put your movements and s
+flipCard CEDO202 p0.0 #6 [after] w29 {[flip card]* T* b b b}: 1. You could try the moves you made to some different songs. Do you notice how your moveme
+flipCard ENGR102 p4.0 #19 [after] w12 {[flip card]* T* b}: Watch the video to see more words that use the Bossy R!
+flipCard TWHK901 p0.0 #6 [after] w14 {[flip card]* T* b b b}: We have a responsibility to honour the principles upheld within the Treaty of Waitangi.
+flipCard TWHK901 p0.0 #6 [after] w23 {[flip card]* T* b b b}: Our management of the whenua (land), awa (rivers) and moana (sea) must become more sustain
+flipCard TWHK901 p0.0 #6 [after] w20 {[flip card]* T* b b b}: Watch the following video to learn more about how Te Ao Māori principles have been around 
+flipCard TWHK901 p0.0 #9 [after] w69 {[flip card]* T* b}: As you can see, waste occurs in every area of our society. In New Zealand every year we pr
+flipCard TWHK901 p0.0 #12 [after] w16 {[flip card]* T* b b}: These are just a few ways you can help sustain our beautiful planet for future generations
+flipCard TWHK901 p0.0 #12 [after] w3 {[flip card]* T* b b}: Remember this whakataukī:

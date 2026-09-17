@@ -97,6 +97,12 @@ class InteractiveBuilder {
 
 		try {
 			let html = null;
+			// ROUND 356 — the READ TRACKER: for the duration of the type dispatch every memberItem is a Proxy that
+			// records a read of its content (text / blackAfter / block / nestedBundle) and bundle.tables records
+			// its reads; restored in `finally` before anything else sees the bundle. A member the builder never
+			// read cannot be in the build — the exact "un-consumed" set #withMembers needs (see #trackMembers).
+			const track = this.#trackMembers({ bundle, type, templates });
+			try {
 			switch (type) {
 				// ---- easy widgets, added one at a time -------------------------
 				// ROUND 277 — `hint` and `hintSlider` are DIFFERENT elements (ONE click-to-reveal
@@ -180,12 +186,13 @@ class InteractiveBuilder {
 				default:
 					return null; // type has a template but no code case yet
 			}
+			} finally { track?.restore(); }
 
 			// A builder may still decline (null) if the captured data did not fit.
 			// ROUND 353 — the generic MEMBERS rule: a built widget replaces the whole captured bundle,
 			// so every member the build did not consume either renders around the widget (prose)
 			// or declines the build (never half-build). See #withMembers.
-			if (html) html = this.#withMembers({ bundle, type, html, renderBlock, templates });
+			if (html) html = this.#withMembers({ bundle, type, html, renderBlock, renderImage, templates, track, run });
 			// ROUND 354 — the words riding the invocation tag's OWN line that the build did not use become
 			// the red Writers Note after the widget (never lost, never guessed into learner prose).
 			if (html) this.#tagWordsNote({ bundle, html, templates });
@@ -317,13 +324,16 @@ class InteractiveBuilder {
 	 *
 	 * @returns {string|null} the widget with its prose around it, unchanged, or null to keep the hand-off box
 	 */
-	static #withMembers({ bundle, type, html, renderBlock, templates }) {
+	static #withMembers({ bundle, type, html, renderBlock, renderImage, templates, track, run }) {
 		const cfg = templates?._members_rule;
 		if (!cfg || cfg.enabled === false) return html;
 		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
 		if (cfg.env && env[cfg.env]) return html;
 		if ((cfg.exclude_types ?? ["dragAndDrop"]).includes(type)) return html;
 		if (typeof renderBlock !== "function") return html;
+		// ROUND 356 — consumption "read": the exact rule on the read tracker's record (the r353 text-presence
+		// guess below stays available as consumption "text" for a one-off comparison; never the shipped mode).
+		if (cfg.consumption === "read") return this.#withMembersRead({ bundle, type, html, renderBlock, renderImage, cfg, track, run });
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return html;
 		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
@@ -452,6 +462,220 @@ class InteractiveBuilder {
 		if (!before.length && !after.length) return html;
 		const render = (t) => { const r = renderBlock(t); return Array.isArray(r) ? r : (r ? [r] : []); };
 		const b = before.flatMap(render), a = after.flatMap(render);
+		if (!b.length && !a.length) return html;
+		return [...b, html, ...a].join("\n");
+	}
+
+	// =======================================================================
+	// ROUND 356 — THE READ TRACKER + THE EXACT MEMBERS RULE
+	// =======================================================================
+
+	/**
+	 * ROUND 356 (the autonomous loop's session-16 Round 1). The r353 members rule guessed what a builder had
+	 * consumed from the TEXT of the build and could not know (475 false reverts in strict mode, 18 duplicated
+	 * paragraphs in prose-only mode — shipped OFF). The exact signal needs no per-builder report: for the
+	 * duration of the type dispatch every memberItem is replaced by a Proxy that records a read of its CONTENT
+	 * — `text`, `blackAfter`, `block`, `nestedBundle` — and `bundle.tables` becomes a getter that records its
+	 * reads; `restore()` puts the plain items back before the caller, #withMembers, #tagWordsNote or the
+	 * hand-off box see the bundle. A member the builder never READ cannot be in the build (measured over all
+	 * 416 modules, 2026-09-17, `outputs/_measure_r356_consumed.cjs`: 30 built widgets on 26 pages drop a
+	 * never-read prose member — flipCard's table paths read `bundle.tables` alone and drop every paragraph
+	 * before / after the card table; a `[body]` after a carousel's slide table; …). A member the builder read
+	 * and then dropped by its own rule still counts as consumed — that residue is measured per builder, never
+	 * guessed here. Installed only when the rule is on, in read mode, for a type the rule covers.
+	 *
+	 * @returns {{touched: boolean[], tablesRead: function(): boolean, restore: function(): void}|null}
+	 */
+	static #trackMembers({ bundle, type, templates }) {
+		const cfg = templates?._members_rule;
+		if (!cfg || cfg.enabled === false || cfg.consumption !== "read") return null;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (cfg.env && env[cfg.env]) return null;
+		if ((cfg.exclude_types ?? ["dragAndDrop"]).includes(type)) return null;
+		const orig = bundle?.memberItems;
+		if (!Array.isArray(orig) || !orig.length) return null;
+		const CONTENT = new Set(cfg.content_keys ?? ["text", "blackAfter", "block", "nestedBundle"]);
+		const touched = new Array(orig.length).fill(false);
+		let tablesRead = false;
+		const proxies = orig.map((m, k) => (m && typeof m === "object")
+			? new Proxy(m, { get(t, p, r) { if (CONTENT.has(p)) touched[k] = true; return Reflect.get(t, p, r); } })
+			: m);
+		const origTables = bundle.tables;
+		const plainTables = (v) => Object.defineProperty(bundle, "tables", { configurable: true, enumerable: true, writable: true, value: v });
+		bundle.memberItems = proxies;
+		// a bundle property that POINTS AT a member (sameBlockImage — the r246 avatar; any array holding members)
+		// must point at the member's proxy for the dispatch, or a builder's identity test
+		// (memberItems.indexOf(bundle.sameBlockImage)) fails and flips its own logic; restored below.
+		const byItem = new Map(orig.map((m, k) => [m, proxies[k]]));
+		const swapped = [];
+		for (const key of Object.keys(bundle)) {
+			if (key === "memberItems" || key === "tables") continue;
+			const v = bundle[key];
+			if (v && typeof v === "object" && byItem.has(v)) { swapped.push([key, v]); bundle[key] = byItem.get(v); }
+			else if (Array.isArray(v) && v.some((x) => byItem.has(x))) { swapped.push([key, v]); bundle[key] = v.map((x) => byItem.get(x) ?? x); }
+		}
+		Object.defineProperty(bundle, "tables", { configurable: true, enumerable: true, get() { tablesRead = true; return origTables; }, set(v) { plainTables(v); } });
+		let restored = false;
+		return {
+			touched,
+			tablesRead: () => tablesRead,
+			restore() {
+				if (restored) return;
+				restored = true;
+				bundle.memberItems = orig;
+				for (const [key, v] of swapped) bundle[key] = v;
+				const d = Object.getOwnPropertyDescriptor(bundle, "tables");
+				if (d && typeof d.get === "function") plainTables(origTables);
+			},
+		};
+	}
+
+	/**
+	 * ROUND 356 — the members rule on the read tracker's record. A member the builder READ (or a table it read
+	 * through bundle.tables) is CONSUMED, full stop. An unread member: a blank line, an instruction-class tag,
+	 * a bare marker, the invocation tag (k = 0 — r354's note owns its words) and a media reference title
+	 * ("… Stock Illustration - Download Image Now", "… – YouTube": data reference_title_pattern) are SKIPPED;
+	 * a media line / tag whose URL or video id / image key IS in the built html is consumed (the builder took
+	 * it through bundle.media); text the built html already carries is consumed (the r353 shingle test, now a
+	 * guard); an unread `[image]` member renders through the page's own image emitter (renderImage — the tabs
+	 * precedent) before / after the widget; unread PROSE (a black paragraph, a `[body]` / bracket-less line
+	 * with min_words+ words) renders through the free-body emitter BEFORE the widget when it precedes the first
+	 * consumed member and AFTER it when it follows the last; prose between consumed members longer than the
+	 * short-line allowance, a developer-cue line, a heading, a video / audio / other tag, a table, a nested
+	 * widget → the build DECLINES and the hand-off box keeps every member (never half-build). A build that read
+	 * no member at all is left alone (nothing to place against). The widget's own markup is never edited.
+	 *
+	 * @returns {string|null} the widget with its members rendered around it, unchanged, or null for the box
+	 */
+	static #withMembersRead({ bundle, type, html, renderBlock, renderImage, cfg, track, run }) {
+		if (!track) return html;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return html;
+		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const norm = (t) => String(t ?? "").replace(/&[a-z#0-9]+;/gi, " ").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
+		const words = (t) => norm(String(t ?? "").replace(RED, " ").replace(/\[[^\]]*\]/g, " ").replace(/https?:\/\/\S+/g, " "));
+		const nWords = (t) => t.split(" ").filter(Boolean).length;
+		const urlsOf = (t) => [...String(t ?? "").matchAll(/https?:\/\/[^\s"'<>)\]]+/g)].map((m) => m[0]);
+		const vidId = (u) => /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/.exec(u)?.[1] ?? null;
+		const imgKeys = (u) => {
+			const out = [];
+			const gm = /gm(\d{6,})/.exec(u) ?? /\/id\/(\d{6,})/.exec(u) ?? /istock[^\d]*(\d{6,})/i.exec(u);
+			if (gm) out.push("iStock-" + gm[1]);
+			const seg = String(u).replace(/[?#].*$/, "").split("/").filter(Boolean).pop() ?? "";
+			const slug = seg.replace(/\.[a-z0-9]{2,5}$/i, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+			if (slug.length >= 6) out.push(slug.slice(0, 24));
+			return out;
+		};
+		const stripped = String(html).replace(/<!--[\s\S]*?-->/g, " ");
+		const attrs = [...stripped.matchAll(/\b(?:alt|title|aria-label)="([^"]*)"/g)].map((m) => m[1]).join(" ");
+		const consumed = norm(stripped.replace(/<[^>]+>/g, " ") + " " + attrs + " " + (bundle.instructions ?? []).join(" "));
+		const rawHtml = String(html), lowHtml = rawHtml.toLowerCase();
+		const minWords = cfg.min_words ?? 3, shortWords = cfg.short_words ?? 6, K = cfg.shingle ?? 4, ratio = cfg.consumed_ratio ?? 0.5;
+		const noteRe = new RegExp(cfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\u2013\u2014]", "i");
+		const refRe = new RegExp(cfg.reference_title_pattern ?? "stock\\s+(?:illustration|photo|vector|image)s?\\b|download\\s+image\\s+now|\\b(?:istock|shutterstock|getty\\s*images|unsplash|pexels)\\b|[\u2013\u2014-]\\s*youtube\\s*\\)?\\s*$", "i");
+		const headings = new Set(cfg.heading_tags ?? ["h2", "h3", "h4", "h5"]);
+		const mediaTags = new Set(cfg.media_tags ?? ["image", "video", "audio", "embed", "data marker"]);
+		const gj = DataService.Data.EmitTemplates?.buttons?.go_journal;
+		const gjLabel = gj ? new RegExp(gj.label_match, "i") : null;
+		const tables = bundle.tables ?? [];
+		const textConsumed = (t) => {
+			const w = t.split(" ").filter(Boolean);
+			if (w.length < minWords) return true;
+			if (w.length <= shortWords) return consumed.includes(t);
+			let hit = 0, n = 0;
+			for (let i = 0; i + K <= w.length; i++) { n++; if (consumed.includes(w.slice(i, i + K).join(" "))) hit++; }
+			return n ? hit / n >= ratio : consumed.includes(t);
+		};
+		const mediaConsumed = (t) => {
+			const us = urlsOf(t); if (!us.length) return null;                      // no url → not a media line
+			return us.every((u) => { const id = vidId(u); return rawHtml.includes(u) || (id && rawHtml.includes(id)) || imgKeys(u).some((k) => lowHtml.includes(k.toLowerCase())); });
+		};
+		const isRead = (m, k) => Boolean(track.touched[k]) || (m.type === "table" && track.tablesRead() && tables.includes(m.block));
+		const cls = [];
+		for (let k = 0; k < members.length; k++) {
+			const m = members[k];
+			if (!m) { cls.push({ kind: "skip" }); continue; }
+			if (isRead(m, k)) { cls.push({ kind: "consumed" }); continue; }
+			if (m.type === "table") { cls.push({ kind: "decline", why: "a table the build ignored" }); continue; }
+			if (m.type === "nested") { cls.push({ kind: "decline", why: "a nested widget the build did not use" }); continue; }
+			if (m.type === "black") {
+				const raw = String(m.text ?? "");
+				const plain = raw.replace(RED, " ").trim();
+				if (!plain) { cls.push({ kind: "skip" }); continue; }
+				const mc = mediaConsumed(plain), t = words(plain), wn = nWords(t);
+				if (mc === true && wn < minWords) { cls.push({ kind: "consumed" }); continue; }
+				// a URL with fewer than min_words other words is a media reference line; a SENTENCE carrying a link
+				// ("Information sourced from - https://…") is prose the free-body emitter renders with its link
+				if (mc === false && wn < minWords) { cls.push({ kind: "decline", why: "a media url the build did not use" }); continue; }
+				if (wn < minWords) { cls.push({ kind: "skip" }); continue; }
+				if (refRe.test(plain)) { cls.push({ kind: "skip" }); continue; }
+				if (textConsumed(t)) { cls.push({ kind: "consumed" }); continue; }
+				if (noteRe.test(t)) { cls.push({ kind: "decline", why: "a developer note" }); continue; }
+				cls.push({ kind: "prose", text: raw }); continue;
+			}
+			if (m.type === "tag") {
+				const parse = m.parse, prim = parse?.primary;
+				if (parse && (parse.class === "instruction" || parse.instructionFragment)) { cls.push({ kind: "skip" }); continue; }
+				if (k === 0 && prim?.directive === "INTERACTIVE") { cls.push({ kind: "skip" }); continue; }
+				const tag = String(prim?.tag ?? m.tag ?? "").toLowerCase();
+				const line = String(m.text ?? ""), after = String(m.blackAfter ?? "");
+				const afterPlain = after.replace(RED, " ").trim();
+				const t = (words(line) + " " + words(after)).trim(), wn = nWords(t);
+				if (mediaTags.has(tag)) {
+					const mc = mediaConsumed(line + " " + after + " " + (m.block?.links ?? []).map((l) => l?.target ?? "").join(" "));
+					if (mc === true) { cls.push({ kind: "consumed" }); continue; }
+					if (tag === "image" && cfg.image_member_render !== false && typeof renderImage === "function") { cls.push({ kind: "image", item: m }); continue; }
+					if (mc === null && !wn) { cls.push({ kind: "skip" }); continue; }                    // a bare marker
+					cls.push({ kind: "decline", why: `a [${tag}] the build did not use` }); continue;
+				}
+				// a go-to-journal [button] member is the caller's (#goJournalTail emits the h4 AFTER the widget) — the r278
+				// predicate plus the caller's own bracket-payload reading ("[Button] Go to your journal"); SKIPPED, not consumed:
+				// it never marks a position inside the build, so prose before it is still trailing prose
+				if (tag === "button" && (this.#accIsGoJournal(m) || (gjLabel && gjLabel.test(line.trim().replace(/^\[\s*buttons?\s*[:\-–—]?\s*\]?\s*/i, "").replace(/[[\]*]/g, "").trim())))) { cls.push({ kind: "skip" }); continue; }
+				if (!t || wn < minWords) { cls.push({ kind: "skip" }); continue; }                         // a bare marker / a short label
+				if (refRe.test(afterPlain || line)) { cls.push({ kind: "skip" }); continue; }
+				if (textConsumed(t)) { cls.push({ kind: "consumed" }); continue; }
+				if (noteRe.test(t)) { cls.push({ kind: "decline", why: "a developer note" }); continue; }
+				if (headings.has(tag)) { cls.push({ kind: "decline", why: "a heading the build did not use" }); continue; }
+				const prose = tag === "body" || !prim || parse?.class === "noise";
+				if (!prose) { cls.push({ kind: "decline", why: `a [${tag}] the build did not use` }); continue; }
+				cls.push({ kind: "prose", text: afterPlain ? after : line.replace(/\[[^\]]*\]/g, " ") }); continue;
+			}
+			cls.push({ kind: "decline", why: "a member the build did not use" });
+		}
+		const declined = cls.filter((c) => c.kind === "decline");
+		if (declined.length) {
+			run?.AddNote?.("info", "InteractiveBuilder", `Members rule: ${type} #${bundle.index} declined — ${declined.map((c) => c.why).join("; ")} (the hand-off box keeps every member).`);
+			return null;
+		}
+		const consumedIdx = cls.map((c, i) => (c.kind === "consumed" ? i : -1)).filter((i) => i >= 0);
+		if (!consumedIdx.length) return html;                                          // the build read nothing — nothing to place against
+		const firstC = consumedIdx[0], lastC = consumedIdx[consumedIdx.length - 1];
+		const before = [], after = [];
+		for (let i = 0; i < cls.length; i++) {
+			const c = cls[i];
+			if (c.kind !== "prose" && c.kind !== "image") continue;
+			if (i < firstC) before.push(c);
+			else if (i > lastC) after.push(c);
+			else {
+				// BETWEEN consumed members nothing can be placed: a SHORT prose line (≤ between_short_words —
+				// "2. Watch the video." beside a widget's own video) is a bounded loss the widget can carry;
+				// anything longer, or an image, → decline.
+				const w = c.kind === "prose" ? nWords(words(c.text)) : Infinity;
+				if (c.kind !== "prose" || !(cfg.between_short_skip !== false && w <= (cfg.between_short_words ?? shortWords))) {
+					run?.AddNote?.("info", "InteractiveBuilder", `Members rule: ${type} #${bundle.index} declined — ${c.kind === "prose" ? "prose" : "an image"} between consumed members (the hand-off box keeps every member).`);
+					return null;
+				}
+			}
+		}
+		if (!before.length && !after.length) return html;
+		let failed = false;
+		const render = (c) => {
+			if (c.kind === "image") { const h = renderImage(c.item); if (!h || !String(h).trim()) { failed = true; return []; } return [String(h)]; }
+			const r = renderBlock(c.text); return Array.isArray(r) ? r : (r ? [r] : []);
+		};
+		const b = before.flatMap(render), a = after.flatMap(render);
+		if (failed) { run?.AddNote?.("info", "InteractiveBuilder", `Members rule: ${type} #${bundle.index} declined — an [image] member the page emitter could not render.`); return null; }
 		if (!b.length && !a.length) return html;
 		return [...b, html, ...a].join("\n");
 	}

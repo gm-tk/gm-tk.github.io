@@ -1,0 +1,33 @@
+page                       gate before   after   delta | overlap before   after | matched lines before  after | verdict
+AGH1006_2_0.html                 52.26   51.49   -0.78 |          65.48   65.48 |                   55     55 | REAL dip
+AGH1009_1_0.html                 57.75   60.43   +2.69 |          47.78   47.78 |                   43     43 | gain
+ANZH205_3_0.html                 40.00   42.22   +2.22 |          28.81   32.20 |                   17     19 | gain
+ARFUN04_0_0.html                  0.90    0.90   -0.00 |          63.80   63.80 |                  141    141 | REAL dip
+BLL117_2_0.html                  56.44   57.32   +0.88 |          63.10   64.29 |                   53     54 | gain
+BLL127_2_0.html                  64.29   65.09   +0.80 |          62.64   63.74 |                   57     58 | gain
+BLL137_1_1.html                  64.33   63.95   -0.37 |          66.30   67.39 |                   61     62 | artefact (companion rises)
+BLL157_1_1.html                  55.17   56.00   +0.83 |          63.33   64.44 |                   57     58 | gain
+CEDO202_0_0.html                 17.13   16.47   -0.65 |          39.34   39.34 |                  168    168 | REAL dip
+CEDW501_3_0.html                 29.36   29.31   -0.05 |          60.19   60.19 |                  192    192 | REAL dip
+CHFUN05_0_0.html                 10.36   10.36   -0.01 |          48.21   48.21 |                  970    970 | REAL dip
+ENGI405_5_0.html                 25.88   25.59   -0.28 |          60.89   61.62 |                  165    167 | artefact (companion rises)
+ENGJ202_4_0.html                 59.87   59.49   -0.38 |          58.24   58.24 |                   53     53 | REAL dip
+ENGR102_4_0.html                 31.13   30.99   -0.15 |          48.74   48.74 |                   58     58 | REAL dip
+ENGR202_5_0.html                 49.10   48.81   -0.29 |          37.27   37.27 |                   41     41 | REAL dip
+MXEX201_4_1.html                 50.55   49.46   -1.09 |          56.82   56.82 |                   25     25 | REAL dip
+MXFL301_1_0.html                 44.94   44.65   -0.28 |          53.40   53.93 |                  102    103 | artefact (companion rises)
+OSAI101_2_0.html                 45.80   45.66   -0.13 |          51.46   51.46 |                  106    106 | REAL dip
+PES1003_8_0.html                 59.15   58.74   -0.41 |          61.25   61.25 |                   49     49 | REAL dip
+SSOG101_1_0.html                 54.17   55.67   +1.50 |          50.94   52.83 |                   27     28 | gain
+SSOG103_2_0.html                 58.39   58.02   -0.36 |          60.75   60.75 |                  113    113 | REAL dip
+SSOG103_4_0.html                 23.38   23.18   -0.20 |          56.86   56.86 |                   29     29 | REAL dip
+TEDC401_4_0.html                 35.38   35.29   -0.09 |          49.53   49.53 |                  105    105 | REAL dip
+TEDC402_2_0.html                 20.42   20.28   -0.14 |          44.62   44.62 |                  145    145 | REAL dip
+TEDC402_4_0.html                 31.99   31.89   -0.10 |          55.46   55.46 |                  198    198 | REAL dip
+TEDC402_8_0.html                  9.34    9.32   -0.03 |          35.93   35.93 |                  152    152 | REAL dip
+TEFUN08_0_0.html                 18.55   18.51   -0.04 |          59.24   59.45 |                  279    280 | artefact (companion rises)
+TWHK901_0_0.html                  6.81    6.75   -0.07 |          14.37   14.94 |                   50     52 | artefact (companion rises)
+TWHK903_0_0.html                 12.44   12.43   -0.01 |          43.69   43.92 |                  194    195 | artefact (companion rises)
+XGF9002_1_0.html                 44.63   46.03   +1.40 |          57.14   58.04 |                   64     65 | gain
+XGF9006_5_0.html                 39.20   39.00   -0.20 |          50.00   50.00 |                   57     57 | REAL dip
+XMES201_1_0.html                 40.00   39.90   -0.10 |          50.43   50.43 |                  118    118 | REAL dip

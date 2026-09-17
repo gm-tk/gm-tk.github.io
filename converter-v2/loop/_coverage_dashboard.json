@@ -1,26 +1,28 @@
 {
- "generated": "2026-09-17 09:46",
+ "generated": "2026-09-17 12:41",
  "warnings": [
+  "skeleton state predates the newest engine change (2026-09-17) \u2014 its rows may lag.",
+  "body_compare predates the newest engine change (2026-09-17) \u2014 its rows may lag.",
   "feature index predates the newest engine change (2026-09-17) \u2014 its rows may lag."
  ],
  "headline": {
-  "bundles": 4953,
-  "built": 2550,
+  "bundles": 4956,
+  "built": 2504,
   "pages": 2103,
   "clean": 2080,
   "modules": 443,
-  "body_any": 180,
+  "body_any": 182,
   "paired": 1955,
-  "scaffold_mean": 50.96412130856603,
-  "ge50": 1072,
-  "ge75": 159,
-  "skeleton_state": "_r351_sk_final.json"
+  "scaffold_mean": 51.978787457200916,
+  "ge50": 1093,
+  "ge75": 160,
+  "skeleton_state": "_r355_sk_final.json"
  },
  "types": {
   "carousel": {
-   "built": 663,
-   "total": 903,
-   "declined_shapes": 181,
+   "built": 617,
+   "total": 905,
+   "declined_shapes": 226,
    "modules": 316,
    "declined_modules": [
     "AGH1001",
@@ -83,6 +85,7 @@
     "BLL265",
     "BLL266",
     "BLL271",
+    "BLL275",
     "BLLR201",
     "CEDK401",
     "CEDO202",
@@ -93,15 +96,23 @@
     "CEDR203",
     "CEDR204",
     "CEDR401",
+    "CEDR501",
     "CEDT104",
     "CEDT501",
     "CEDW501",
+    "CHFUN05",
+    "ENFUN01",
     "ENFUN04",
+    "ENFUN09",
     "ENGC101",
     "ENGC202",
     "ENGI102",
+    "ENGI301",
+    "ENGI303",
     "ENGI401",
+    "ENGJ201",
     "ENGJ402",
+    "ENGR101",
     "ENGR201",
     "ENGR302",
     "ENGS101",
@@ -116,6 +127,7 @@
     "HIS1002",
     "HPFUN101",
     "HPFUN103",
+    "HPFUN201",
     "HPFUN203",
     "HPFUN302",
     "HPFUN303",
@@ -127,6 +139,9 @@
     "HPFUN903",
     "HPRE203",
     "HPRE301",
+    "MXDB302",
+    "MXDI103",
+    "MXDI202",
     "MXEO201",
     "MXEO401",
     "MXEX301",
@@ -141,17 +156,24 @@
     "MXFU402",
     "MXFUN01",
     "OSBY101",
+    "OSOH301",
     "OSSC301",
     "OSSC401",
+    "PES1005",
+    "PES1007",
     "SSCI104",
     "SSCI205",
     "SSFUN01",
     "SSFUN07",
+    "TEDC401",
+    "TEDC402",
     "TEFUN05",
     "TRR102",
     "TRR103",
     "TRR301",
+    "TWHA902",
     "TWHA905",
+    "TWHK902",
     "TWHK903",
     "TWHR905",
     "TWHR907",
@@ -162,7 +184,13 @@
     "XFUN02",
     "XGF9001",
     "XGF9002",
+    "XLP01",
     "XMES103",
+    "XMES201",
+    "XMES202",
+    "XTAS101",
+    "XTAS102",
+    "XTAS103",
     "XWHA02"
    ]
   },
@@ -577,7 +605,7 @@
   },
   "modal": {
    "built": 202,
-   "total": 359,
+   "total": 360,
    "declined_shapes": 130,
    "modules": 102,
    "declined_modules": [
@@ -1255,9 +1283,9 @@
    "class": "content lost vs the human (advisory)",
    "kind": "body",
    "plain": "The human page carries 3+ body blocks ours does not, without tripping the over-capture rule \u2014 content is going missing by some other route.",
-   "modules": 185,
-   "pages": 418,
-   "occurrences": 418,
+   "modules": 180,
+   "pages": 405,
+   "occurrences": 405,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -1268,28 +1296,15 @@
   {
    "class": "un-built carousel",
    "kind": "interactive",
-   "plain": "Writers tagged 903 carousel widgets; 240 ship as a hand-off box instead of a built widget.",
-   "modules": 141,
-   "pages": 187,
-   "occurrences": 240,
-   "shapes": 181,
+   "plain": "Writers tagged 905 carousel widgets; 288 ship as a hand-off box instead of a built widget.",
+   "modules": 167,
+   "pages": 227,
+   "occurrences": 288,
+   "shapes": 226,
    "regen_modules": 342,
    "regen_saving_pct": 25,
-   "note": "builder covers 663/903 (73%)",
+   "note": "builder covers 617/905 (68%)",
    "rank": 3
-  },
-  {
-   "class": "page scaffold under 25%",
-   "kind": "scaffold",
-   "plain": "The page's overall structure barely resembles the human's \u2014 these are the pages a tester screenshots.",
-   "modules": 129,
-   "pages": 165,
-   "occurrences": 165,
-   "shapes": null,
-   "regen_modules": null,
-   "regen_saving_pct": null,
-   "note": "read with the interactive rows \u2014 most are widget-dense pages",
-   "rank": 4
   },
   {
    "class": "un-built flipCard",
@@ -1302,7 +1317,7 @@
    "regen_modules": 222,
    "regen_saving_pct": 51,
    "note": "builder covers 269/484 (55%)",
-   "rank": 5
+   "rank": 4
   },
   {
    "class": "un-built accordion",
@@ -1315,7 +1330,7 @@
    "regen_modules": 212,
    "regen_saving_pct": 53,
    "note": "builder covers 455/705 (64%)",
-   "rank": 6
+   "rank": 5
   },
   {
    "class": "un-built clickDrop",
@@ -1328,20 +1343,33 @@
    "regen_modules": 158,
    "regen_saving_pct": 65,
    "note": "builder covers 193/516 (37%)",
-   "rank": 7
+   "rank": 6
   },
   {
    "class": "empty widget box",
    "kind": "body",
    "plain": "A hand-off box was emitted with nothing in it.",
    "modules": 99,
-   "pages": 135,
-   "occurrences": 135,
+   "pages": 136,
+   "occurrences": 136,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
    "note": "often a capture that found its marker but no members",
    "advisory": false,
+   "rank": 7
+  },
+  {
+   "class": "page scaffold under 25%",
+   "kind": "scaffold",
+   "plain": "The page's overall structure barely resembles the human's \u2014 these are the pages a tester screenshots.",
+   "modules": 77,
+   "pages": 97,
+   "occurrences": 97,
+   "shapes": null,
+   "regen_modules": null,
+   "regen_saving_pct": null,
+   "note": "read with the interactive rows \u2014 most are widget-dense pages",
    "rank": 8
   },
   {
@@ -1360,14 +1388,14 @@
   {
    "class": "un-built modal",
    "kind": "interactive",
-   "plain": "Writers tagged 359 modal widgets; 157 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 360 modal widgets; 158 ship as a hand-off box instead of a built widget.",
    "modules": 60,
-   "pages": 94,
-   "occurrences": 157,
+   "pages": 95,
+   "occurrences": 158,
    "shapes": 130,
    "regen_modules": 114,
    "regen_saving_pct": 75,
-   "note": "builder covers 202/359 (56%)",
+   "note": "builder covers 202/360 (56%)",
    "rank": 10
   },
   {
@@ -1387,9 +1415,9 @@
    "class": "widget over-capture",
    "kind": "body",
    "plain": "A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost).",
-   "modules": 35,
-   "pages": 42,
-   "occurrences": 42,
+   "modules": 36,
+   "pages": 43,
+   "occurrences": 43,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -1524,36 +1552,6 @@
    "likely_cause": "1 content blocks missing"
   },
   {
-   "module": "ARFUN04",
-   "page": "ARFUN04_0_0.html",
-   "scaffold": 0.9,
-   "likely_cause": "widget over-capture; 1 empty widget boxes"
-  },
-  {
-   "module": "MXFUN02",
-   "page": "MXFUN02_0_0.html",
-   "scaffold": 2.9,
-   "likely_cause": "widget over-capture; 1 empty widget boxes"
-  },
-  {
-   "module": "MXFUN03",
-   "page": "MXFUN03_0_0.html",
-   "scaffold": 3.4,
-   "likely_cause": "widget over-capture; 1 empty widget boxes"
-  },
-  {
-   "module": "EXPFUN03",
-   "page": "EXPFUN03_0_0.html",
-   "scaffold": 3.5,
-   "likely_cause": "structural \u2014 inspect"
-  },
-  {
-   "module": "EXPFUN05",
-   "page": "EXPFUN05_0_0.html",
-   "scaffold": 3.7,
-   "likely_cause": "widget over-capture"
-  },
-  {
    "module": "BLL144",
    "page": "BLL144_1_0.html",
    "scaffold": 3.7,
@@ -1566,76 +1564,40 @@
    "likely_cause": "structural \u2014 inspect"
   },
   {
+   "module": "MXFUN02",
+   "page": "MXFUN02_0_0.html",
+   "scaffold": 4.8,
+   "likely_cause": "widget over-capture; 1 empty widget boxes"
+  },
+  {
+   "module": "CEDT104",
+   "page": "CEDT104_0_0.html",
+   "scaffold": 5.7,
+   "likely_cause": "widget over-capture; 1 empty widget boxes"
+  },
+  {
+   "module": "TWHK901",
+   "page": "TWHK901_0_0.html",
+   "scaffold": 5.8,
+   "likely_cause": "24 content blocks missing; widget over-capture"
+  },
+  {
+   "module": "EXPFUN05",
+   "page": "EXPFUN05_0_0.html",
+   "scaffold": 6.4,
+   "likely_cause": "widget over-capture"
+  },
+  {
    "module": "EXPFUN04",
    "page": "EXPFUN04_0_0.html",
-   "scaffold": 4.6,
+   "scaffold": 6.4,
    "likely_cause": "1 empty widget boxes"
   },
   {
    "module": "EXPFUN02",
    "page": "EXPFUN02_0_0.html",
-   "scaffold": 4.9,
+   "scaffold": 7.8,
    "likely_cause": "structural \u2014 inspect"
-  },
-  {
-   "module": "BLL110",
-   "page": "BLL110_0_0.html",
-   "scaffold": 5.3,
-   "likely_cause": "widget over-capture"
-  },
-  {
-   "module": "BLL120",
-   "page": "BLL120_0_0.html",
-   "scaffold": 5.8,
-   "likely_cause": "widget over-capture"
-  },
-  {
-   "module": "CEDT104",
-   "page": "CEDT104_0_0.html",
-   "scaffold": 6.0,
-   "likely_cause": "widget over-capture; 1 empty widget boxes"
-  },
-  {
-   "module": "TEDC401",
-   "page": "TEDC401_3_0.html",
-   "scaffold": 6.1,
-   "likely_cause": "widget over-capture; 1 empty widget boxes"
-  },
-  {
-   "module": "CEDW201",
-   "page": "CEDW201_0_0.html",
-   "scaffold": 6.5,
-   "likely_cause": "1 un-built widgets"
-  },
-  {
-   "module": "TWHK901",
-   "page": "TWHK901_0_0.html",
-   "scaffold": 6.9,
-   "likely_cause": "26 content blocks missing; widget over-capture"
-  },
-  {
-   "module": "TRR304",
-   "page": "TRR304_3_0.html",
-   "scaffold": 7.5,
-   "likely_cause": "widget over-capture"
-  },
-  {
-   "module": "TWHA901",
-   "page": "TWHA901_0_0.html",
-   "scaffold": 7.6,
-   "likely_cause": "widget over-capture"
-  },
-  {
-   "module": "EXIP901",
-   "page": "EXIP901_4_0.html",
-   "scaffold": 7.7,
-   "likely_cause": "widget over-capture"
-  },
-  {
-   "module": "XGF9001",
-   "page": "XGF9001_2_0.html",
-   "scaffold": 7.7,
-   "likely_cause": "widget over-capture"
   },
   {
    "module": "SSFUN07",
@@ -1644,28 +1606,94 @@
    "likely_cause": "widget over-capture"
   },
   {
+   "module": "MXFUN03",
+   "page": "MXFUN03_0_0.html",
+   "scaffold": 8.2,
+   "likely_cause": "widget over-capture; 1 empty widget boxes"
+  },
+  {
+   "module": "ARFUN04",
+   "page": "ARFUN04_0_0.html",
+   "scaffold": 8.4,
+   "likely_cause": "widget over-capture; 1 empty widget boxes"
+  },
+  {
+   "module": "CEDW201",
+   "page": "CEDW201_0_0.html",
+   "scaffold": 8.7,
+   "likely_cause": "1 un-built widgets"
+  },
+  {
+   "module": "EXPFUN03",
+   "page": "EXPFUN03_0_0.html",
+   "scaffold": 8.8,
+   "likely_cause": "structural \u2014 inspect"
+  },
+  {
+   "module": "TRR304",
+   "page": "TRR304_3_0.html",
+   "scaffold": 9.5,
+   "likely_cause": "widget over-capture"
+  },
+  {
    "module": "TWHA905",
    "page": "TWHA905_0_0.html",
-   "scaffold": 8.3,
+   "scaffold": 10.1,
+   "likely_cause": "widget over-capture"
+  },
+  {
+   "module": "EXIP901",
+   "page": "EXIP901_4_0.html",
+   "scaffold": 10.3,
    "likely_cause": "widget over-capture"
   },
   {
    "module": "XDLS911",
    "page": "XDLS911_1_0.html",
-   "scaffold": 9.0,
+   "scaffold": 11.1,
    "likely_cause": "widget over-capture"
   },
   {
-   "module": "TEDC402",
-   "page": "TEDC402_8_0.html",
-   "scaffold": 9.3,
+   "module": "TEDC401",
+   "page": "TEDC401_3_0.html",
+   "scaffold": 11.7,
    "likely_cause": "widget over-capture; 1 empty widget boxes"
   },
   {
-   "module": "TEFUN03",
-   "page": "TEFUN03_0_0.html",
-   "scaffold": 9.8,
-   "likely_cause": "widget over-capture"
+   "module": "MXDB301",
+   "page": "MXDB301_3_0.html",
+   "scaffold": 12.3,
+   "likely_cause": "4 content blocks missing; widget over-capture"
+  },
+  {
+   "module": "ENGJ302",
+   "page": "ENGJ302_1_0.html",
+   "scaffold": 12.3,
+   "likely_cause": "15 content blocks missing"
+  },
+  {
+   "module": "CEDT207",
+   "page": "CEDT207_0_0.html",
+   "scaffold": 13.0,
+   "likely_cause": "1 content blocks missing"
+  },
+  {
+   "module": "ENGFUN02",
+   "page": "ENGFUN02_1_0.html",
+   "scaffold": 13.3,
+   "likely_cause": "structural \u2014 inspect"
+  },
+  {
+   "module": "MXDI103",
+   "page": "MXDI103_8_0.html",
+   "scaffold": 14.4,
+   "likely_cause": "1 content blocks missing; widget over-capture"
+  },
+  {
+   "module": "PES1007",
+   "page": "PES1007_7_0.html",
+   "scaffold": 14.4,
+   "likely_cause": "15 content blocks missing"
   }
  ]
 }

@@ -1716,7 +1716,8 @@ class Config {
 	// ROUND 353 (260619.24): the generic members rule at the Build seam (#withMembers) — built, measured, SHIPPED OFF (data _members_rule.enabled false); the corpus is byte-identical to r352.
 	// ROUND 354 (260619.25): the words on a widget tag's own line become the Writers Note after the built widget (#tagWordsNote) — 193 built widgets had been losing them.
 	// ROUND 355 (260619.26): a measurement-tool round — _skeleton_compare.py scores with autojunk=False (128 long pages were scored with most of their structure ignored); the skeleton baselines re-established.
-	static AppVersion = "260619.26";
+	// ROUND 356 (260619.27): no built widget discards a member it never READ — the r353 members rule made exact by read-tracking (#trackMembers / #withMembersRead; consumption "read"); 30 widgets on 26 pages had been dropping writer paragraphs; FULL regeneration, 35 pages / 32 modules.
+	static AppVersion = "260619.27";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

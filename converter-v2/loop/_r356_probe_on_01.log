@@ -1,0 +1,188 @@
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+  ~ BLL246_1_0.html: -14 +48
+     - <div class="accordion">
+     - <div class="accHead"><h4>Example 1</h4></div>
+     - <div class="accContent"><p>Aroha took the bus into town +</p><p>complete idea 1 conjunction complete idea 2</p
+     - <div class="accHead"><h4>Example 2</h4></div>
+     - <div class="accContent"><p>The girl likes to ride her bike +</p><p>complete idea 1 conjunction complete idea 2
+     - <div class="accHead"><h4>Example 3</h4></div>
+     - <div class="accContent"><p>Tama ate all the food on his plate +</p><p>complete idea 1 conjunction complete ide
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: and → 5but → 2so → 3</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL246-01-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL246-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL246-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="BLL246-01-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: and → 5but → 2so → 3</p>
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: accordion + accordion + accordion — 
+     + <p>Example 1</p>
+     + <p>Aroha took the bus into town +</p>
+     + <p>+ she visited her grandmother.</p>
+     + <p>complete idea 1 conjunction complete idea 2</p>
+     + <p>Example 2</p>
+     + <p>The girl likes to ride her bike +</p>
+     + <p>+ she prefers to play football with her brothers.</p>
+     + <p>complete idea 1 conjunction complete idea 2</p>
+     + <p>Example 3</p>
+     + <p>Tama ate all the food on his plate +</p>
+     + <p>+ he could have some pudding.</p>
+     + <p>complete idea 1 conjunction complete idea 2</p>
+     + <p>Find the compound sentences in the short text below. First, click on the conjunction that is shown beside t
+     + <p>Lily woke up early. The sun was shining</p>
+     + <p>she felt it was a good day for a bike ride.</p>
+     + … 28 more added
+BLL246: identical 2 / changed 1
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+  ~ CEDO202_0_0.html: -1 +10
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: the below table as flip cards (
+     + <li>Choose three of your favourite action cards that you tried and put your movements and shapes together to c
+     + <li>You could try the moves you made to some different songs. Do you notice how your movements change when you
+     + <ol>
+     + <li>Film yourself so that you can remember it!</li>
+     + </ol><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: the below table as flip cards (m
+     + <ol>
+     + </ol>
+     + <ol>
+     + </ol>
+     + </div>
+CEDO202: identical 0 / changed 1
+  ~ CEDO301_6_0.html: -0 +1
+     + <p>Other cultures/countries that have traditional medicine systems include Japan, Arabic countries, Tibet, Nat
+CEDO301: identical 5 / changed 1
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+  ~ CEDW501_3_0.html: -0 +1
+     + <p>Audio-Script template 1</p>
+CEDW501: identical 12 / changed 1
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+  ~ CHFUN05_0_0.html: -0 +2
+     + <p>Flip the card to see the sentence in English.</p>
+     + <p>Click on the card to see the sentence in English.</p>
+CHFUN05: identical 0 / changed 1
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+  ~ ENGI405_5_0.html: -1 +13
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [front of card title &amp; imag
+     + <li>Draw/collage a key moment or idea from this chapter that came to mind.</li>
+     + <ul>
+     + <li>Think about why it was important.</li>
+     + </ul>
+     + <ul>
+     + <li>If you were part of this chapter, how would you be, what would you do?</li>
+     + </ul>
+     + <ul>
+     + <li>Which trope(s) can you already see <span class="infoTrigger" info="Beginning to show.">emerging</span> in 
+     + </ul><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [front of card title &amp; image
+     + </div>
+     + <ul>
+     + </ul>
+ENGI405: identical 7 / changed 1
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+  ~ ENGJ202_4_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ENGJ202: identical 5 / changed 1
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+  ~ ENGR102_4_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image]</p>
+     + <p>Watch the video to see more words that use the Bossy R!</p><p class="cv2-note" style="color: red; font-weig
+     + </div>
+ENGR102: identical 6 / changed 1
+ENGR201: identical 7 / changed 0
+  ~ ENGR202_5_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Rollover]</p>
+     + <p>you what is going on in the world around you!</p><p class="cv2-note" style="color: red; font-weight: bold;"
+     + </div>
+ENGR202: identical 7 / changed 1
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 512 / changed 9 / missing 0 over 104 modules
+CHANGED: BLL246/BLL246_1_0.html CEDO202/CEDO202_0_0.html CEDO301/CEDO301_6_0.html CEDW501/CEDW501_3_0.html CHFUN05/CHFUN05_0_0.html ENGI405/ENGI405_5_0.html ENGJ202/ENGJ202_4_0.html ENGR102/ENGR102_4_0.html ENGR202/ENGR202_5_0.html

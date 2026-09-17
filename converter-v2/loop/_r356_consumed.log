@@ -1,0 +1,28 @@
+type           built lossy sites pages mods present | untouched kinds
+flipCard         251    22    32    18   18       3 | prose 35, button 6, media-dropped 15, tag:accordion 1, media-nourl 1
+    AGH1009 p1.0 #1 [after] {[flip card]* T* b b [button]}: So, with our current global demands for food, the dwindling levels of arable land or land 
+    CEDO301 p6.0 #7 [after] {[flip card]* T* b}: Other cultures/countries that have traditional medicine systems include Japan, Arabic coun
+    CHFUN05 p0.0 #30 [between] {[flip card]* [body] T*}: Flip the card to see the sentence in English.
+carousel         563     4     4     4    4       0 | prose 4
+    BLL117 p2.0 #7 [after] {[carousel]* T* [body]}: Choose one of these foods to make, or one that you discussed above, or use one of these fo
+    BLL127 p2.0 #8 [after] {[carousel]* T* [body]}: Choose one of these foods to make, or one that you discussed above, or use one of these fo
+    BLL137 p1.1 #6 [after] {[carousel]* T* [body]}: Choose one of these foods to make, or one that you discussed above, or use one of these fo
+accordion        401     2    15     2    2       0 | prose 15
+    XDLS906 p1.0 #1 [between] {[accordion]* [accordion]* [h2]* [body]* [body]* [body]* [video]* [accordion]* [h2]* [body]* b* b* b* b* b* [body]* [?] [?] [video]* [accordion]* [h2]* [body]* [body]* [body]* [?] [?]}: may also discuss specific safety precautions you may need to take to suit you and the acti
+    BLL246 p1.0 #1 [between] {[accordion]* b* [?] b* [accordion]* b* [?] b* [accordion]* b* [?] b* [body]* [word select]* [?] b* [?] b* [?] [?] [?] b* [?] [?] b* [?] [?] [?] [?]}: + she visited her grandmother.
+speechBubble     495     1     1     1    1       8 | prose 9
+    ENGR202 p5.0 #21 [after] {[speech bubble]* [?] [?] [?]}: you what is going on in the world around you!
+hintSlider        30     1     1     1    1       0 | prose 1
+    OSAI101 p2.0 #14 [between] {[hint slider]* [?] [body] T*}: Read the prompt and decide if it is a good or bad prompt. Then click to see if you were ri
+dropDown         253     0     0     0    0       0 | 
+modal            189     0     0     0    0       0 | 
+dragAndDrop       82     0     0     0    0       0 | 
+clickDrop        163     0     0     0    0       0 | 
+tabs              44     0     0     0    0       0 | 
+hint              33     0     0     0    0       0 | 
+shapeHover         2     0     0     0    0       0 | 
+multiChoiceQuiz     4     0     0     0    0       0 | 
+glossary           1     0     0     0    0       0 | 
+TOTAL lossy-prose bundles 30 on 26 pages / 26 modules
+STRICT-mode declines (an untouched non-prose member): 17 bundles — flipCard 17
+  by kind: media-dropped 15, button 6, tag:accordion 1, media-nourl 1

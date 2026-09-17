@@ -1,0 +1,271 @@
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+  ~ PES1003_8_0.html: -0 +1
+     + <p>Clouds, LPG Frosting, Carb Icing</p>
+PES1003: identical 10 / changed 1
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+  ~ SSOG101_1_0.html: -0 +1
+     + <p>Can you spot when you should call 111? Go through each of these scenarios with your supervisor. If you don’
+SSOG101: identical 7 / changed 1
+  ~ SSOG103_2_0.html: -0 +4
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1300821887" alt="Vintage P
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1300821887.jpg" alt="Vintage Postcard with White
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ SSOG103_4_0.html: -1 +5
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image]</p>
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> --><p class="cv2-note" style="colo
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + </div>
+SSOG103: identical 5 / changed 2
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_4_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2192287171" alt="Handsome 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2192287171.jpg" alt="Handsome Business Man Set" 
+TEDC401: identical 7 / changed 1
+  ~ TEDC402_2_0.html: -1 +6
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image: TEDC402 - L1E Version 1
+     + <p>Note: Your sketch can be simple – boxes, bars, arrows, labels.</p>
+     + <p>Choose the option that works best for you and how you like to learn.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2176208152" alt="Young Bea
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2176208152.jpg" alt="Young Beautiful Woman Posit
+     + <p>avatar Tina</p><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image: TEDC402 - L
+     + </div>
+  ~ TEDC402_4_0.html: -1 +4
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: hands up surprised face<br />[I
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2235638824" alt="Young Bea
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2235638824.jpg" alt="Young Beautiful Student Wom
+     + <p>avatar Tina</p><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: hands up surprised 
+     + </div>
+  ~ TEDC402_8_0.html: -0 +3
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2235638824" alt="Young Bea
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2235638824.jpg" alt="Young Beautiful Student Wom
+     + <p>avatar Tina</p>
+TEDC402: identical 8 / changed 3
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+  ~ TEFUN08_0_0.html: -1 +4
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image 8]<br />[Image 9]<br />[
+     + <p>What would happen if people behaved like machines?</p>
+     + <!-- <img class="img-fluid" loading="lazy" src="images/start-at-seconds-go-to.jpg" alt="" /> --><p class="cv2-
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + </div>
+TEFUN08: identical 0 / changed 1
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+  ~ TWHK901_0_0.html: -0 +6
+     + <p>We have a responsibility to honour the principles upheld within the Treaty of Waitangi.</p>
+     + <p>Our management of the whenua (land), awa (rivers) and moana (sea) must become more sustainable and inclusiv
+     + <p>Watch the following video to learn more about how Te Ao Māori principles have been around for a long time.<
+     + <p>As you can see, waste occurs in every area of our society. In New Zealand every year we produce 3.4 million
+     + <p>These are just a few ways you can help sustain our beautiful planet for future generations.</p>
+     + <p>Remember this whakataukī:</p>
+TWHK901: identical 0 / changed 1
+  ~ TWHK903_0_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: on the front + description on t
+     + <p>Remember it’s not your fault. Sometimes you might come across harmful content by accident. You’re doing the
+     + </div>
+TWHK903: identical 0 / changed 1
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+  ~ XDLS906_1_0.html: -18 +38
+     - <div class="accordion">
+     - <div class="accHead"><h4>Introduction</h4></div>
+     - <div class="accContent"><h2>Feel the earth</h2><p>Do you feel better after patting a cat? Do you feel better w
+     - <iframe src="https://www.youtube-nocookie.com/embed/enuK_9XlCmQ" loading="lazy" title="YouTube video player" f
+     - <div class="accHead"><h4>Safety</h4></div>
+     - <div class="accContent"><h2>Be safe outdoors</h2><p>When going into natural spaces you need to follow some saf
+     - <li>plan your trip</li>
+     - <li>tell someone where you are going</li>
+     - <li>be aware of the weather</li>
+     - <li>know your limits</li>
+     - <li>take sufficient supplies.</li>
+     - </ul><p>You and your hoa ako</p><div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/-tRbpTyVNJs" loading="lazy" title="YouTube video player" f
+     - <div class="accHead"><h4>Routine</h4></div>
+     - <div class="accContent"><h2>Add time in nature to your routine</h2><p>Did you know you can connect with nature
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="XDLS906-01-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]<br />[hover]</p>
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: accordion + accordion + accordion + 
+     + <div style="font-size: 0.95em">
+     + <p>Introduction</p>
+     + <p>Feel the earth</p>
+     + <p>Do you feel better after patting a cat? Do you feel better when on the beach or watching a bird? Nature is 
+     + <p>There are many ways to bring nature into your world. Maybe you like walking under trees, swimming, farming,
+     + <p>Osborne (Ngāti Awa, Ngāi Tūhoe, Ngāti Porou, Te Aitanga-a-Materoa) loves his “quiet valley”. Watch the vide
+     + <p>Life as a country boy in Waimana | The Regions (<a href="https://www.youtube.com/watch?v=enuK_9XlCmQ)" targ
+     + <p>Safety</p>
+     + <p>Be safe outdoors</p>
+     + <p>When going into natural spaces you need to follow some safety rules. This video will teach you to:</p>
+     + <ul>
+     + <li>plan your trip</li>
+     + … 18 more added
+XDLS906: identical 7 / changed 1
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+  ~ XGF9002_1_0.html: -63 +35
+     - <div class="row flipCardsContainer">
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 1</h4><p>Gifted learners are good at everything.</p></div>
+     - <div class="back"><p>Giftedness is usually <b>domain-specific,</b> not universal. A learner might show excepti
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 2</h4><p>Gifted learners will succeed on their own.</p></div>
+     - <div class="back"><p>Gifted learners still need <b>support, challenge, and guidance</b> to thrive. Without app
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 3</h4><p>Gifted learners always get high grades.</p></div>
+     - <div class="back"><p>High ability does not always show up in school achievement or marks. Some gifted learners
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 4</h4><p>Giftedness is only about being academically smart.</p></div>
+     - <div class="back"><p>Giftedness can appear in many forms, including <b>creative thinking, leadership, problem-
+     - </div>
+     - </div>
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 5</h4><p>Gifted learners are emotionally mature.</p></div>
+     - <div class="back"><p>Gifted learners often develop <b>asynchronously</b> or unevenly, showing advanced thinkin
+     - </div>
+     - </div>
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 6</h4><p>Gifted learners do not need extra help.</p></div>
+     - <div class="back"><p>Gifted learners may need support for <b>social skills, emotional wellbeing, executive fun
+     - </div>
+     - </div>
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 7</h4><p>Giftedness looks the same in every child.</p></div>
+     - <div class="back"><p>Giftedness is shaped by <b>culture, language, experiences, and opportunities.</b> In Aote
+     - </div>
+     - </div>
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><h4>Myth 8</h4><p>If a child is gifted, it will be obvious.</p></div>
+     - … 23 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="XGF9002-01-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: flipCard + accordion (insert) — Acti
+     + <th> [Front] / [H3] Myth 1 / Gifted learners are good at everything. / [Back] / Giftedness is usually <b>domai
+     + <th> [Front] / [H3] Myth 2 / Gifted learners will succeed on their own. / [Back] / Gifted learners still need 
+     + <th> [Front] / [H3] Myth 3 / Gifted learners always get high grades. / [Back] / High ability does not always s
+     + <th> [Front] / [H3] Myth 4 / Giftedness is only about being academically smart. / [Back] / Giftedness can appe
+     + <th> [Front] / [H3] Myth 5 / Gifted learners are emotionally mature. / [Back] / Gifted learners often develop 
+     + <td> [Front] / [H3] Myth 6 / Gifted learners do not need extra help. / [Back] / Gifted learners may need suppo
+     + <td> [Front] / [H3] Myth 7 / Giftedness looks the same in every child. / [Back] / Giftedness is shaped by <b>c
+     + <td> [Front] / [H3] Myth 8 / If a child is gifted, it will be obvious. / [Back] / Many gifted learners <b>mask
+     + <td> [Front] / [H3] Myth 9 / Gifted learners are always confident / [Back] / Some gifted learners struggle wit
+     + <td> [Front] / [H3] Myth 10 / Giftedness means life is easier. / [Back] / Giftedness can bring <b>intensity, s
+     + <p>A note about hidden gifted and masked giftedness</p>
+     + <p><a href="https://www.istockphoto.com/vector/people-hide-negative-emotions-behind-masks-with-smile-to-hide-m
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="XGF9002-01-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="XGF9002-01-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 15 more added
+XGF9002: identical 9 / changed 1
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+  ~ XGF9006_5_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/are-thumbnails-if-not-too-big.jpg" alt="" /> -->
+XGF9006: identical 7 / changed 1
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+  ~ XMES201_1_0.html: -1 +2
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: with English words and Te Reo o
+     + <p>In this video there are some pet names spoken in te reo Māori. Have a go at saying them with your hoa ako.<
+     + </div>
+XMES201: identical 5 / changed 1
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 528 / changed 15 / missing 0 over 104 modules
+CHANGED: PES1003/PES1003_8_0.html SSOG101/SSOG101_1_0.html SSOG103/SSOG103_2_0.html SSOG103/SSOG103_4_0.html TEDC401/TEDC401_4_0.html TEDC402/TEDC402_2_0.html TEDC402/TEDC402_4_0.html TEDC402/TEDC402_8_0.html TEFUN08/TEFUN08_0_0.html TWHK901/TWHK901_0_0.html TWHK903/TWHK903_0_0.html XDLS906/XDLS906_1_0.html XGF9002/XGF9002_1_0.html XGF9006/XGF9006_5_0.html XMES201/XMES201_1_0.html

@@ -1,0 +1,18 @@
+type           built lossy sites pages mods present | untouched kinds
+carousel         563     0     0     0    0       0 | 
+accordion        399     0     0     0    0       0 | 
+flipCard         249     0     0     0    0       0 | 
+dropDown         253     0     0     0    0       0 | 
+modal            189     0     0     0    0       0 | 
+dragAndDrop       82     0     0     0    0       0 | 
+clickDrop        163     0     0     0    0       0 | 
+tabs              44     0     0     0    0       0 | 
+speechBubble     495     0     0     0    0       0 | 
+hintSlider        30     0     0     0    0       0 | 
+hint              33     0     0     0    0       0 | 
+shapeHover         2     0     0     0    0       0 | 
+multiChoiceQuiz     4     0     0     0    0       0 | 
+glossary           1     0     0     0    0       0 | 
+TOTAL lossy-prose bundles 0 on 0 pages / 0 modules
+STRICT-mode declines (an untouched non-prose member): 0 bundles — 
+  by kind: 

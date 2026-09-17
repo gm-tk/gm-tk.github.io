@@ -1,0 +1,30 @@
+== flipCard
+TOTAL 579: exact 328, copy-edit 49, gold-subst 50, defect 78, divergence 74.
+RESULT: divergence 74 ✗ — a built card has no human flipCard counterpart; investigate before ship.
+== accordion
+TOTAL: 159 panels built across 17 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓
+== carousel
+TOTAL: 68 carousels built across 25 modules, 55 video slides; 2 mismatched slide ids.
+RESULT: mismatches present ✗
+== speechBubble
+== speechBubble (ENGR202 TEDC401 TEDC402 — the changed bubble modules)
+ENGR202: built 24 [exact 9, copy-edit 4, dev-edit 0, gold-subst 3, defect 8] DEFECT ✗ (above the recorded baseline 0)
+TEDC401: built 61 [exact 37, copy-edit 11, dev-edit 3, gold-subst 2, defect 8] DEFECT ✗ (above the recorded baseline 0) | image-id miss 1
+TEDC402: built 73 [exact 54, copy-edit 10, dev-edit 2, gold-subst 0, defect 7] DEFECT ✗ (above the recorded baseline 0) | image-id miss 2
+TOTAL built 158: exact 100, copy-edit 25, dev-edit 5, gold-subst 5, defect 23; image-id misses 3.
+RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.speechbubble.per_module).
+== hintslider (OSAI101)
+OSAI101: built 6 rows | human 6 rows | exact 5 | copy-edit 1 | unmatched 0 | IDENTICAL ✓
+== OFF flipCard
+TOTAL 605: exact 346, copy-edit 51, gold-subst 50, defect 78, divergence 80.
+RESULT: divergence 80 ✗ — a built card has no human flipCard counterpart; investigate before ship.
+== OFF carousel
+TOTAL: 68 carousels built across 25 modules, 55 video slides; 2 mismatched slide ids.
+RESULT: mismatches present ✗
+== OFF speechBubble
+ENGR202: built 24 [exact 9, copy-edit 4, dev-edit 0, gold-subst 3, defect 8] DEFECT ✗ (above the recorded baseline 0)
+TEDC401: built 61 [exact 37, copy-edit 11, dev-edit 3, gold-subst 2, defect 8] DEFECT ✗ (above the recorded baseline 0) | image-id miss 1
+TEDC402: built 73 [exact 54, copy-edit 10, dev-edit 2, gold-subst 0, defect 7] DEFECT ✗ (above the recorded baseline 0) | image-id miss 2
+TOTAL built 158: exact 100, copy-edit 25, dev-edit 5, gold-subst 5, defect 23; image-id misses 3.
+RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.speechbubble.per_module).
