@@ -260,6 +260,11 @@
 	"media_table": {
 		"identify_rule": "A docx table is THE media table when its first row matches at least min_header_matches of the column families below (folded, punctuation-insensitive). In a combined WT+media-list docx the media table is located anywhere in the document and is excluded from content conversion.",
 		"min_header_matches": 4,
+		"strip_markers": {
+			"enabled": true,
+			"env": "MLMARKERS_OFF",
+			"_note": "ROUND 372 (the autonomous loop's session 23, Round 3, 2026-09-18). The media-table cell cleaner also strips the extractor's **bold** / *italic* asterisk markers before the header fold and the row parse (never an underscore — a URL character: the first probe collapsed Pita_Sharples in a Wikimedia link). Measured through the live extractor over all 416 modules (outputs/_s23_boldheader.cjs): exactly four modules — BLL120 (185 rows; every data cell bold too), BLL121, BLL122, BLL123 — typed the header cells bold, so the exact alias match never fired and the module parsed NO media list at all (their [Item N] references, iStock filenames and acks entries stayed unresolved; the table rendered as a kept <table> on the last lesson page). A marker the extractor added is never a header word or a URL character; the gold's acks never carry one. Env MLMARKERS_OFF = the pre-round cleaner, byte-identical."
+		},
 		"columns": {
 			"item_no": {
 				"aliases": [

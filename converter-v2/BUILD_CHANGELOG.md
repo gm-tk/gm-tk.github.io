@@ -1,5 +1,37 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 372, build 260619.43) — THE MEDIA TABLE WHOSE CELLS CARRY THE EXTRACTOR'S BOLD MARKERS IS NOW PARSED — the autonomous loop's session 23, Round 3
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+`MediaListParser.#cleanCell` strips the extractor's `**bold**` / `*italic*` asterisk markers before the header fold and the row parse (data `Input_Doc_Rules.media_table.strip_markers`, env `MLMARKERS_OFF` — the pre-round cleaner, byte-identical: the probe OFF = disk 2109 / 2109). A writer who typed the media table's header cells bold (`**Item No.** | **Pg No.** | …`) had NO media list parsed at all — the exact alias match on the folded header never fired — so the module's `[Item N]` references, iStock filenames and acknowledgement entries stayed unresolved and the table itself rendered as a kept `<table>` on the last lesson page.
+
+### 2. WHY IT WAS PICKED — the r370 residue, measured
+
+Round 370's residue scan found BLL122 / BLL123 keeping their media-list preamble through the heading-only branch because `FindMediaTable` never saw their table. Measured through the LIVE extractor over all 416 modules (`outputs/_s23_boldheader.cjs` → `_s23_boldheader.{log,json}` — the parsed `_parsed.txt` dumps serialise a table differently, a `grep` on them found 0): a marker-tolerant header fold finds a media table the strict fold misses on **exactly four modules — BLL120 (185 rows; every data cell bold too, `**https://www.istockphoto.com/…**`), BLL121 (27), BLL122 (14), BLL123 (10)**, all combined `Writers Template + Media List.docx`; four modules carry no media table in any docx (ENG1007, HIS1001, HIS1007, TRR115 — nothing to find). Below the §1d page floor by the four modules' own pages, but a proven parser DEFECT with a measured population and a one-line data-flagged fix — shipped on the r320 / r337 small-ship precedent. Triangulated BLL122 / BLL120 / BLL123 (WT → gold's resolved media + acks, no table → Claude's kept table, no acks).
+
+### 3. THE FIX, AND THE ONE THING THE PROBE CAUGHT
+
+- `#cleanCell` (the one cell cleaner the header fold and the row parser share) also strips `\*+`. The first cut stripped `[*_]+` and the probe showed **an underscore is a URL character**: `Pita_Sharples` and `Rainbow_Warrior` collapsed inside two Wikimedia acknowledgement links (HIS1002). Narrowed to the asterisk markers; the re-probe shows 0 underscore damage.
+- Reach beyond the four: any module whose media-list DESCRIPTION carries a `*` marker (an italic title) loses it in its acknowledgement line — **54 modules / 56 pages, 209 acks lines**, every one `Photo: **Title**, id, iStock …` → `Photo: Title, …` (and one `href="*Extract from …"` losing the stray `*`); the gold's acks never carry a marker.
+
+### 4. PROOF
+
+- In-memory probe over all 416 (`_r372_probe.cjs`, 4 shards): **OFF = disk 2109 / 2109**; ON = **60 pages / 58 modules** (the four bold-header modules' pages + the 54 acks-text modules), 0 added / removed.
+- Scored with the gate's own `match()` (`_r372_pagescore.py`): **60 paired changed pages — 3 up / 0 down / 57 same, pp-sum +8.1** (the 57 = acknowledgement text only).
+- SCOPED regeneration of the 58 (`_r372_fullship_run.sh`, 6 batches, all rc 0; the probe proving the other 358 byte-identical): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **60 changed / 0 added / 0 removed**; every regenerated page **byte-identical to the probe's ON page (270 / 270)**. BLL122_2_0 loses its 116-line kept media table; the four overviews gain their acknowledgement block entries (BLL121 +43 lines).
+
+### 5. PROTECTED GATES (`_r372_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **52.893 → 52.897 % (+0.004pp)**, median 53.5, ≥50 1131 / ≥75 176 / ≥90 15 EXACT; **3 movers, all up** (BLL120_0_0 +3.7, BLL122_2_0 +2.8, BLL123_2_0 +1.6 — `_r372_movers.log`, state `_r372_sk_final.json`); RAW 37.313 → 37.312 % (−0.001pp NAMED: the kept table's `table / tr / td` nodes leaving the four last-lesson pages are raw-visible, the acks lines are text).
+- compare_structure exact **11628** / EXTRA 175 / MISSING 617 / row-wrap 23 EXACT; its acks DIAGNOSTIC improves — human entries found in Claude pooled 6546 → 6585, Claude entries 10777 → 10841 (the four modules' entries now exist; ❗ unverified-iStock lines 8631 → 8799 on them, the r236 chrome).
+- structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **43 / 4 / 157 / 203** EXACT; tags 9557 / 9557 REAL 0; flipCard 61 / divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz 17 shells defect 0; math 323 / 323; menu labels 91 / 0; dragAndDrop 21 widgets defect 0 — all EXACT.
+
+### 6. ALSO RECORDED
+
+- Ledger: scoped ship #3 since the r366 full. AppVersion 260619.43; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r372.bak` kept).
+- BLL120's table has its columns shifted by the writer (the `Item No.` cells empty, the number in `Item Type`) — the parse now runs, the `[Item N]` references still cannot resolve there (the r300 blank-Item-No class); recorded.
+
 ## 2026-09-18 (round 371, build 260619.42) — A WRITER'S EXPLICIT `[H3]` KEEPS ITS DIGIT: h3 outside the alert family — the autonomous loop's session 23, Round 2
 
 ### 1. WHAT CHANGED, IN ONE LINE

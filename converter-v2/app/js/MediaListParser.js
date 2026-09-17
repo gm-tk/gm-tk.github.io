@@ -36,11 +36,19 @@ class MediaListParser {
 	 * ever recognised. Standalone Media List files have plain black headers.
 	 */
 	static #cleanCell(text) {
-		return (text ?? "")
+		// ROUND 372 (the autonomous loop's session 23 Round 3): the extractor's **bold** / *italic*
+		// markers are not cell content — a writer who typed the header cells bold
+		// (`**Item No.**`, BLL120–BLL123; BLL120 every data cell too) had NO media list parsed at
+		// all, because the header fold never matched an alias. Data media_table.strip_markers;
+		// env MLMARKERS_OFF (the pre-round cleaner, byte-identical).
+		const sm = DataService.Data.InputDocRules.media_table?.strip_markers;
+		const strip = !!sm && sm.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[sm.env ?? "MLMARKERS_OFF"]);
+		let t = (text ?? "")
 			.replace(/\u{1f534}/gu, "")
-			.replace(/\[\/?RED TEXT\]/g, "")
-			.replace(/\s+/g, " ")
-			.trim();
+			.replace(/\[\/?RED TEXT\]/g, "");
+		if (strip) t = t.replace(/\*+/g, "");   // the * markers only — an underscore is a URL character (Pita_Sharples)
+		return t.replace(/\s+/g, " ").trim();
 	};
 
 	/**
