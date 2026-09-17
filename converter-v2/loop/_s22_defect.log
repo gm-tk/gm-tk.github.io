@@ -1,0 +1,53 @@
+STRUCTURAL DEFECT AUDIT — 2103 Claude pages
+STRUCTURALLY CLEAN pages (zero structural defects): 2080/2103 = 98.9%
+pages WITH >=1 structural defect: 23
+
+== defect CLASS ranking (total occurrences | pages affected) ==
+  A_literal_tag_leak                         26 occ |   23 pages
+
+== modules with the most structural defects (top 25) ==
+  XGF9004      2  {'A_literal_tag_leak': 2}
+  MXFU302      2  {'A_literal_tag_leak': 2}
+  HIS1005      2  {'A_literal_tag_leak': 2}
+  ENGI102      2  {'A_literal_tag_leak': 2}
+  ENFUN09      2  {'A_literal_tag_leak': 2}
+  TRR304       1  {'A_literal_tag_leak': 1}
+  TRR106       1  {'A_literal_tag_leak': 1}
+  TRR102       1  {'A_literal_tag_leak': 1}
+  TEFUN07      1  {'A_literal_tag_leak': 1}
+  SSFUN05      1  {'A_literal_tag_leak': 1}
+  MXFUN01      1  {'A_literal_tag_leak': 1}
+  MXEO301      1  {'A_literal_tag_leak': 1}
+  MXDI201      1  {'A_literal_tag_leak': 1}
+  HIS1006      1  {'A_literal_tag_leak': 1}
+  HIS1002      1  {'A_literal_tag_leak': 1}
+  HIS1001      1  {'A_literal_tag_leak': 1}
+  ENGS302      1  {'A_literal_tag_leak': 1}
+  CEDT104      1  {'A_literal_tag_leak': 1}
+  ART1003      1  {'A_literal_tag_leak': 1}
+  ANZH401      1  {'A_literal_tag_leak': 1}
+  AGH1006      1  {'A_literal_tag_leak': 1}
+
+== worst individual pages (top 20) ==
+  XGF9004_7_0.html             2  {'A_literal_tag_leak': 2}
+  ENGI102_0_0.html             2  {'A_literal_tag_leak': 2}
+  ENFUN09_0_0.html             2  {'A_literal_tag_leak': 2}
+  TRR304_2_0.html              1  {'A_literal_tag_leak': 1}
+  TRR106_2_0.html              1  {'A_literal_tag_leak': 1}
+  TRR102_1_0.html              1  {'A_literal_tag_leak': 1}
+  TEFUN07_0_0.html             1  {'A_literal_tag_leak': 1}
+  SSFUN05_0_0.html             1  {'A_literal_tag_leak': 1}
+  MXFUN01_6_5.html             1  {'A_literal_tag_leak': 1}
+  MXFU302_6_0.html             1  {'A_literal_tag_leak': 1}
+  MXFU302_4_0_0.html           1  {'A_literal_tag_leak': 1}
+  MXEO301_1_0.html             1  {'A_literal_tag_leak': 1}
+  MXDI201_8_0.html             1  {'A_literal_tag_leak': 1}
+  HIS1006_2_1.html             1  {'A_literal_tag_leak': 1}
+  HIS1005_9_1.html             1  {'A_literal_tag_leak': 1}
+  HIS1005_6_0.html             1  {'A_literal_tag_leak': 1}
+  HIS1002_13_0.html            1  {'A_literal_tag_leak': 1}
+  HIS1001_5_0.html             1  {'A_literal_tag_leak': 1}
+  ENGS302_0_0.html             1  {'A_literal_tag_leak': 1}
+  CEDT104_0_0.html             1  {'A_literal_tag_leak': 1}
+
+wrote ../../outputs/_s22_defect.json

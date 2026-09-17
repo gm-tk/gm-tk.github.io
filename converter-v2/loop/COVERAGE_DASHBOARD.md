@@ -1,23 +1,26 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-17 14:34 · corpus 443 modules / 2103 pages_
+_Generated 2026-09-18 07:48 · corpus 443 modules / 2103 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
 ## ⚠ Freshness
 
-- skeleton state predates the newest engine change (2026-09-17) — its rows may lag.
-- body_compare predates the newest engine change (2026-09-17) — its rows may lag.
+- **Census is stale** — the interactive census predates the newest engine/data change (2026-09-17 vs 2026-09-18) — coverage is UNDER-reported until it is rebuilt.
+- skeleton state predates the newest engine change (2026-09-18) — its rows may lag.
+- body_compare predates the newest engine change (2026-09-18) — its rows may lag.
+- defect audit predates the newest engine change (2026-09-17) — its rows may lag.
+- feature index predates the newest engine change (2026-09-18) — its rows may lag.
 
 ## 1. The two numbers that matter
 
 **Interactive coverage — 50.4%** (2498 of 4956 writer-tagged widgets actually build).
 The other 2458 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
 
-**Page scaffold match — 52.0% mean** (1092 of 1955 pages at 50%+, 160 at 75%+).
+**Page scaffold match — 52.7% mean** (1123 of 1956 pages at 50%+, 173 at 75%+).
 The protected primary gate. It measures page structure with widget internals collapsed, so it moves very little while coverage is the real gap.
 
-**Structurally clean — 98.9%** (23 pages carry a visible defect)  ·  **body breakdown — 182 pages** (the protected body gate).
+**Structurally clean — 98.9%** (23 pages carry a visible defect)  ·  **body breakdown — 202 pages** (the protected body gate).
 
 ## 2. The ranked queue
 
@@ -28,17 +31,17 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 | # | Class | Modules | Pages | Unlock | Shapes | Regen | What it is |
 |---|---|--:|--:|--:|--:|--:|---|
 | 1 | un-built dragAndDrop | 287 | 573 | 795 | 663 | 309 (32% skipped) | Writers tagged 882 dragAndDrop widgets; 795 ship as a hand-off box instead of a built widget. |
-| 2 | content lost vs the human (advisory) | 180 | 403 | 403 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
+| 2 | content lost vs the human (advisory) | 185 | 424 | 424 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
 | 3 | un-built carousel | 167 | 227 | 288 | 226 | 342 (25% skipped) | Writers tagged 905 carousel widgets; 288 ship as a hand-off box instead of a built widget. |
 | 4 | un-built flipCard | 122 | 170 | 218 | 182 | 222 (51% skipped) | Writers tagged 484 flipCard widgets; 218 ship as a hand-off box instead of a built widget. |
 | 5 | un-built accordion | 110 | 180 | 252 | 216 | 212 (53% skipped) | Writers tagged 705 accordion widgets; 252 ship as a hand-off box instead of a built widget. |
-| 6 | un-built clickDrop | 107 | 173 | 323 | 230 | 158 (65% skipped) | Writers tagged 516 clickDrop widgets; 323 ship as a hand-off box instead of a built widget. |
-| 7 | empty widget box | 99 | 136 | 136 | — | — | A hand-off box was emitted with nothing in it. |
-| 8 | page scaffold under 25% | 77 | 97 | 97 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
+| 6 | empty widget box | 110 | 157 | 157 | — | — | A hand-off box was emitted with nothing in it. |
+| 7 | un-built clickDrop | 107 | 173 | 323 | 230 | 158 (65% skipped) | Writers tagged 516 clickDrop widgets; 323 ship as a hand-off box instead of a built widget. |
+| 8 | page scaffold under 25% | 74 | 93 | 93 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
 | 9 | un-built selfCheck | 65 | 96 | 153 | 98 | 188 (59% skipped) | Writers tagged 153 selfCheck widgets; 153 ship as a hand-off box instead of a built widget. |
 | 10 | un-built modal | 60 | 95 | 158 | 130 | 114 (75% skipped) | Writers tagged 360 modal widgets; 158 ship as a hand-off box instead of a built widget. |
 | 11 | un-built tabs | 45 | 67 | 76 | 71 | 84 (81% skipped) | Writers tagged 122 tabs widgets; 76 ship as a hand-off box instead of a built widget. |
-| 12 | widget over-capture | 36 | 43 | 43 | — | — | A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost). |
+| 12 | widget over-capture | 35 | 42 | 42 | — | — | A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost). |
 | 13 | un-built speechBubble | 33 | 43 | 53 | 40 | 112 (75% skipped) | Writers tagged 604 speechBubble widgets; 53 ship as a hand-off box instead of a built widget. |
 | 14 | un-built slider | 30 | 41 | 47 | 38 | 36 (92% skipped) | Writers tagged 47 slider widgets; 47 ship as a hand-off box instead of a built widget. |
 | 15 | un-built infoTrigger | 22 | 31 | 37 | 31 | 224 (51% skipped) | Writers tagged 37 infoTrigger widgets; 37 ship as a hand-off box instead of a built widget. |
@@ -93,30 +96,30 @@ Lowest structural match in the library, with the likeliest cause attached. These
 | Module | Page | Scaffold | Likely cause |
 |---|---|--:|---|
 | MXFUN01 | MXFUN01_0_0.html | 0.7% | 1 content blocks missing |
-| BLL144 | BLL144_1_0.html | 3.7% | widget over-capture |
 | BLL240 | BLL240_1_0.html | 4.5% | structural — inspect |
+| BLL144 | BLL144_1_0.html | 4.6% | widget over-capture |
 | MXFUN02 | MXFUN02_0_0.html | 4.8% | widget over-capture; 1 empty widget boxes |
-| CEDT104 | CEDT104_0_0.html | 5.7% | widget over-capture; 1 empty widget boxes |
-| TWHK901 | TWHK901_0_0.html | 5.7% | 18 content blocks missing; widget over-capture |
-| EXPFUN05 | EXPFUN05_0_0.html | 6.4% | widget over-capture |
-| EXPFUN04 | EXPFUN04_0_0.html | 6.4% | 1 empty widget boxes |
-| EXPFUN02 | EXPFUN02_0_0.html | 7.8% | structural — inspect |
+| CEDT104 | CEDT104_0_0.html | 6.2% | widget over-capture; 1 empty widget boxes |
+| CEDT301 | CEDT301_6_0.html | 7.4% | widget over-capture |
 | SSFUN07 | SSFUN07_3_0.html | 7.8% | widget over-capture |
 | MXFUN03 | MXFUN03_0_0.html | 8.2% | widget over-capture; 1 empty widget boxes |
 | ARFUN04 | ARFUN04_0_0.html | 8.4% | widget over-capture; 1 empty widget boxes |
-| CEDW201 | CEDW201_0_0.html | 8.7% | 1 un-built widgets |
-| EXPFUN03 | EXPFUN03_0_0.html | 8.8% | structural — inspect |
+| TWHK901 | TWHK901_0_0.html | 9.3% | 23 content blocks missing; widget over-capture |
 | TRR304 | TRR304_3_0.html | 9.5% | widget over-capture |
-| TWHA905 | TWHA905_0_0.html | 10.1% | widget over-capture |
+| EXPFUN05 | EXPFUN05_0_0.html | 9.6% | widget over-capture |
 | EXIP901 | EXIP901_4_0.html | 10.3% | widget over-capture |
+| TWHA905 | TWHA905_0_0.html | 10.3% | widget over-capture |
 | XDLS911 | XDLS911_1_0.html | 11.1% | widget over-capture |
+| MXFUN01 | MXFUN01_6_2.html | 11.3% | widget over-capture |
 | TEDC401 | TEDC401_3_0.html | 11.7% | widget over-capture; 1 empty widget boxes |
-| MXDB301 | MXDB301_3_0.html | 12.3% | 4 content blocks missing; widget over-capture |
+| MXDB301 | MXDB301_3_0.html | 12.1% | 4 content blocks missing; widget over-capture |
 | ENGJ302 | ENGJ302_1_0.html | 12.3% | 15 content blocks missing |
-| CEDT207 | CEDT207_0_0.html | 13.0% | 1 content blocks missing |
 | ENGFUN02 | ENGFUN02_1_0.html | 13.3% | structural — inspect |
-| MXDI103 | MXDI103_8_0.html | 14.4% | 1 content blocks missing; widget over-capture |
+| CEDW201 | CEDW201_0_0.html | 14.1% | 11 content blocks missing |
+| MXDI103 | MXDI103_8_0.html | 14.2% | 1 content blocks missing; widget over-capture |
+| CEDT207 | CEDT207_0_0.html | 14.2% | 3 content blocks missing |
 | PES1007 | PES1007_7_0.html | 14.4% | 15 content blocks missing |
+| TEFUN03 | TEFUN03_0_0.html | 14.7% | widget over-capture |
 
 ## 6. How to use this
 

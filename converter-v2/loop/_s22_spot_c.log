@@ -1,0 +1,258 @@
+====================================================================================================
+AGH1003  gold=AGH1003_04.0.html  claude=AGH1003_4_0.html  gold_lines=142 claude_lines=118
+   = body.container-fluid  <root> 
+   = ... 30 equal ...
+   = p  <body> The next sections will explore the methods of adding organic matter to
+  -G h3  <body> Adding Organic Matter
+  -G p  <body> Soil organic matter consists of all the dead plant and animal residues
+  -G p  <body> Adding organic matter improves soil structure and helps soil store nut
+  -G WIDGET  <body> 
+  -G h3  <body> Methods to increase organic matter
+  -G p  <body> There are various practices that can be carried out to improve the org
+  -G WIDGET  <body> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G div.activity.interactive[number=4A]  <activity> 
+   = div.row  <activity> 
+   = ... 1 equal ...
+   = h3  <activity> Organic matter match up
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.activity.interactive[number=4A]  <activity> 
+  +C div.row  <activity> 
+  +C div.col-12  <activity> 
+   = p  <activity> Match the type of adding organic matter with the description and image
+  -G div.row  <activity> 
+  -G div.col-md-12.col-12  <activity> 
+   = WIDGET  <activity> 
+   = ... 4 equal ...
+   = p  <body> The mind map below shows the benefits of adding organic matter to soil
+  -G h4  <body> Benefits of adding organic matter
+  +C img.img-fluid  <body> 
+  +C p  <body> Benefits of adding organic matter
+  +C p  <body> Improves water holding capacity of soil and decreases drainage
+  +C p  <body> Increase soil temperatures
+  +C p  <body> Increases microbe populations
+  +C p  <body> Increases nutrient status
+  +C p  <body> Increases nutrient retention
+  +C div.table-responsive  <body> 
+  +C table.table.table-bordered  <body> 
+  +C tr  <body> 
+  +C th  <body> Improves water holding capacity of soil and decreases drainage
+  +C th  <body> Organic matter acts like a sponge so will absorb water. This is especi
+  +C tr  <body> 
+  +C td  <body> Increases nutrient retention
+  +C td  <body> Soils that have better water holding capacity and slower drainage will
+  +C tr  <body> 
+  +C td  <body> Increases nutrient status
+  +C td  <body> Organic matter holds nutrients which are released once the organic mat
+  +C tr  <body> 
+  +C td  <body> Increases microorganism numbers
+  +C td  <body> Organic matter provides food for microorganisms. Soils with low levels
+  +C tr  <body> 
+  +C td  <body> Increases soil temperature
+  +C td  <body> Organic matter is naturally dark in colour. Dark soils will hold more 
+   = div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G div.shapeHover  <body> 
+  -G div.outerContent  <body> 
+  -G div.shape  <body> 
+  -G p.center-text  <body> Improves water holding capacity of soil and decreases drainage
+  -G div.shape  <body> 
+  -G p.center-text  <body> Increases nutrient retention
+  -G div.shape  <body> 
+  -G p.center-text  <body> Increases nutrient status
+  -G div.shape  <body> 
+  -G p.center-text  <body> Increases microorganism numbers
+  -G div.shape  <body> 
+  -G p.center-text  <body> Increases soil temperature
+  -G div.hoverContent  <body> 
+  -G div.shapeContent  <body> 
+  -G p  <body> Organic matter acts like a sponge so will absorb water. This is especi
+  -G div.shapeContent  <body> 
+  -G p  <body> Soils that have better water holding capacity and slower drainage will
+  -G div.shapeContent  <body> 
+  -G p  <body> Organic matter holds nutrients which are released once the organic mat
+  -G div.shapeContent  <body> 
+  -G p  <body> Organic matter provides food for microorganisms. Soils with low levels
+  -G br  <body> 
+  -G br  <body> 
+  -G div.shapeContent  <body> 
+  -G p  <body> Organic matter is naturally dark in colour. Dark soils will hold more 
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.activity[number=4B]  <activity> 
+  +C div.activity[number=4X]  <activity> 
+   = div.row  <activity> 
+   = ... 2 equal ...
+   = p  <activity> Go to your journal and complete Activity 4B.
+  -G a  <activity> Go to journal
+  -G div.button  <activity> Go to journal
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G h3  <body> Adding effluent
+  -G p  <body> Effluent is animal that has usually been mixed with water and is sprea
+   = span.infoTrigger  <body> manure
+   = p  <body> There are a range of different methods for adding effluent onto paddoc
+  -G WIDGET  <body> 
+  +C div.table-responsive  <activity> 
+  +C table.table.table-bordered  <activity> 
+  +C tr  <activity> 
+  +C th  <activity> 
+  +C th  <activity> Effluent Spreader / Effluent spreaders are similar to irrigation syste
+  +C tr  <activity> 
+  +C td  <activity> 
+  +C td  <activity> Slurry tankers/Umbilical Systems / Slurry tankers are usually attached
+   = p  <body> Effluent will have many of the same advantages on soil properties as o
+   = ... 5 equal ...
+   = div.row  <body> 
+  -G div.col-md-12.col-12  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = div.activity.interactive[number=4C]  <activity> 
+   = div.row  <activity> 
+  -G div.col-md-8.col-12  <activity> 
+  -G h3  <activity> Positive vs Negative Impacts
+  +C div.col-12  <activity> 
+   = p  <activity> Sort the following impacts of effluent into positive and negative impa
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+   = WIDGET  <activity> 
+   = ... 1 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G div.activity[number=4D]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  -G h3  <activity> Organic matter or effluent?
+  -G p  <activity> Go to your journal and complete Activity 4D.
+   = a  <activity> Go to journal
+   = div.button  <activity> Go to journal
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.alert  <body> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G h4  <body> Summary
+   = ul  <body> 
+   = ... 11 equal ...
+   = a.home-nav  <footer> 
+====================================================================================================
+AGH1002  gold=AGH1002.03.html  claude=AGH1002_3_0.html  gold_lines=130 claude_lines=111
+   = body.container-fluid  <root> 
+   = ... 21 equal ...
+   = p  <body> To understand how soil properties have an impact on plant growth you n
+  -G div.col-12  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = h3  <body> Photosynthesis
+  -G div.col-md-8.col-12  <body> 
+  -G p  <body> Photosynthesis is the process plants use to create their own food. Pla
+   = div.videoSection.ratio.ratio-16x9  <body> 
+   = ... 1 equal ...
+   = p  <body> The diagram below shows the photosynthesis process. Click on the diffe
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G h4.center-text  <body> Photosynthesis
+  -G div.col-md-8.col-12  <body> 
+  -G WIDGET  <body> 
+  -G div.col-md-4.col-12  <body> 
+  -G div.clickDropContent  <body> 
+   = p  <body> Absorbed from the air through small cells on the underside of the leav
+  -G div.clickDropContent  <body> 
+  -G p  <body> Absorbed through the plant roots from the soil and transported to the 
+  -G div.clickDropContent  <body> 
+  -G p  <body> Comes from the sun and is the source of energy for the chemical reacti
+  -G div.clickDropContent  <body> 
+  -G p  <body> The green pigment in plants is where the photosynthesis reaction takes
+  -G div.clickDropContent  <body> 
+  -G p  <body> One of the products of photosynthesis and the food source of plants. G
+  -G div.clickDropContent  <body> 
+  -G p  <body> The second product of photosynthesis. Oxygen is released through the s
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  +C img.img-fluid  <body> 
+  +C div.table-responsive  <body> 
+  +C table.table.table-bordered  <body> 
+  +C tr  <body> 
+  +C th  <body> Carbon dioxide
+  +C th  <body> Absorbed from the air through small cells on the underside of the leav
+  +C tr  <body> 
+  +C td  <body> Water
+  +C td  <body> Absorbed through the plant roots from the soil and transported to the 
+  +C tr  <body> 
+  +C td  <body> Sunlight
+  +C td  <body> Comes from the sun and is the source of energy for the chemical reacti
+  +C tr  <body> 
+  +C td  <body> Chlorophyll
+  +C td  <body> The green pigment in plants is where the photosynthesis reaction takes
+  +C tr  <body> 
+  +C td  <body> Glucose
+  +C td  <body> One of the products of photosynthesis and the food source of plants. G
+  +C tr  <body> 
+  +C td  <body> Oxygen
+  +C td  <body> The second product of photosynthesis. Oxygen is released through the s
+   = p  <body> The following factors can impact the rate of photosynthesis:
+   = ... 7 equal ...
+   = p  <activity> Go to your learning journal and complete activity 3A.
+  -G a  <activity> Go to journal
+  -G div.button  <activity> Go to journal
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G h3  <body> Respiration
+  -G div.col-md-8.col-12  <body> 
+   = p  <body> Plants don’t breathe like humans do, but they do respire. Respiration 
+   = ... 1 equal ...
+   = p  <body> Well, respiration is pretty much the opposite. Glucose and oxygen (whi
+  -G p  <body> The chemical equation is below:
+  -G h3.center-text  <body> Chemical equation
+  -G h4.center-text  <body> C = carbon, H = Hydrogen, O = Oxygen
+   = img.img-fluid  <body> 
+   = ... 4 equal ...
+   = p  <body> The following factors affect the rate of photosynthesis:
+  -G h4  <body> Air level in soil
+  -G p  <body> The more air in the soil the more respiration that happens as oxygen i
+  -G span.infoTrigger  <body> waterlogged
+  -G h4  <body> Glucose
+  -G p  <body> Photosynthesis and respiration are linked together. When photosynthesi
+  -G div.videoSection.ratio.ratio-16x9  <body> 
+  -G iframe  <body> 
+  -G h4  <body> Temperature
+  -G p  <body> Like photosynthesis, respiration is a chemical reaction and the warmer
+  +C WIDGET  <activity> 
+  +C div.activity.interactive[number=3B]  <activity> 
+   = div.row  <body> 
+   = div.col-12  <body> 
+  +C div.row  <activity> 
+  +C div.col-md-8.col-12  <activity> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = h3  <body> Nutrient Uptake
+  -G div.col-md-8.col-12  <body> 
+   = p  <body> Nutrient uptake is how the plants absorb nutrients. Plants need nutrie
+   = ... 4 equal ...
+   = p  <body> Nutrients are absorbed from the soil through the roots of the plants. 
+  -G div.alert  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.alert.solid  <body> 
+   = div.row  <body> 
+   = div.col-12  <body> 
+  -G h4  <body> Important
+   = p  <body> Nutrients must be dissolved in the soil by water before they can be ab
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = p  <body> Other than water levels in soil, the concentration of nutrients in the
+   = ... 5 equal ...
+   = div.col-12  <activity> 
+  -G h3  <activity> Plant growing processes summary
+  -G p  <activity> Complete activity 3B in your learning journal.
+  -G a  <activity> Go to journal
+  -G div.button  <activity> Go to journal
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.alert  <body> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G h4  <body> Summary
+   = ul  <body> 
+   = ... 10 equal ...
+   = a.home-nav  <footer> 

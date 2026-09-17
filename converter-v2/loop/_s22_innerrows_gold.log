@@ -1,0 +1,103 @@
+
+===== GOLD =====
+boxes 7916 = widget-carrying 4652 + text-only 3264
+anatomy (widget-carrying):
+   3527   75.8%  same_col
+    534   11.5%  two_rows
+    381    8.2%  bare
+    196    4.2%  sibling_col
+     14    0.3%  widget_only
+SEPARATED (two_rows+sibling_col) share of prose-carrying: 17.1%
+prose col (separated forms): [('col-12', 320), ('col-md-8 col-12', 280), ('col-md-12 col-12', 56), ('col-8', 25), ('col-md-12', 23), ('', 15)]
+widget col (separated forms): [('col-12', 372), ('col-md-12 col-12', 320), ('col-md-8 col-12', 23), ('col-md-4 col-12', 6), ('col-md-6 col-12', 3), ('col-md-11 col-12', 1)]
+widget col (widget_only): [('col-12', 11), ('', 3)]
+prose col (text-only boxes): [('col-12', 2768), ('', 381), ('col-md-8 col-12', 44), ('col-md-12 col-12', 24), ('col-8', 24), ('col-md-12', 12)]
+
+subject|template  sep : same_col  (decided groups, n>=5)
+  BLL|Standard            151 : 497   share_sep=23.3%
+  BLL|Inquiry              29 : 302   share_sep=8.8%
+  MXFL|Standard            91 : 146   share_sep=38.4%
+  MXDI|Standard            17 : 178   share_sep=8.7%
+  TRR|Bilingual            17 : 130   share_sep=11.6%
+  MXFU|Standard            21 : 121   share_sep=14.8%
+  ENGI|Standard             6 : 112   share_sep=5.1%
+  XGF|Standard              9 : 106   share_sep=7.8%
+  HIS|Standard             20 : 88    share_sep=18.5%
+  XMES|Standard            17 : 86    share_sep=16.5%
+  MXFUN|Fundamentals        2 : 96    share_sep=2.0%
+  ENFUN|Fundamentals       77 : 19    share_sep=80.2%
+  MXDB|Standard             0 : 94    share_sep=0.0%
+  ARFUN|Fundamentals        0 : 88    share_sep=0.0%
+  AGH|Standard             17 : 70    share_sep=19.5%
+  ENGS|Standard             9 : 78    share_sep=10.3%
+  ENGC|Standard            29 : 55    share_sep=34.5%
+  MXEO|Standard            19 : 64    share_sep=22.9%
+  TEDC|Standard             2 : 70    share_sep=2.8%
+  TWHA|Inquiry              0 : 71    share_sep=0.0%
+  ENGJ|Standard             5 : 62    share_sep=7.5%
+  ENGR|Standard            17 : 46    share_sep=27.0%
+  MXEX|Standard            10 : 52    share_sep=16.1%
+  HPFUN|Fundamentals        4 : 56    share_sep=6.7%
+  CHFUN|Fundamentals        2 : 53    share_sep=3.6%
+  XTAS|Standard             5 : 50    share_sep=9.1%
+  CEDT|Inquiry              9 : 43    share_sep=17.3%
+  ANZH|Standard            13 : 37    share_sep=26.0%
+  PES|Standard             19 : 27    share_sep=41.3%
+  SSFUN|Fundamentals        3 : 40    share_sep=7.0%
+  CEDO|Standard             3 : 40    share_sep=7.0%
+  PHE|Standard              6 : 35    share_sep=14.6%
+  CEDR|Inquiry              1 : 36    share_sep=2.7%
+  OSOH|Standard             2 : 33    share_sep=5.7%
+  ART|Standard              5 : 29    share_sep=14.7%
+  XDLS|Standard             3 : 29    share_sep=9.4%
+  CEDK|Inquiry              5 : 26    share_sep=16.1%
+  HES|Standard              2 : 24    share_sep=7.7%
+  OSAI|Standard             9 : 14    share_sep=39.1%
+  OSBY|Standard             9 : 14    share_sep=39.1%
+  CEDO|Inquiry              4 : 18    share_sep=18.2%
+  OSGM|Standard             8 : 14    share_sep=36.4%
+  XLP|Standard              3 : 19    share_sep=13.6%
+  HPRE|Standard             3 : 18    share_sep=14.3%
+  TEFUN|Fundamentals        3 : 16    share_sep=15.8%
+  SCCH|Standard             0 : 18    share_sep=0.0%
+  SSOG|Standard             2 : 15    share_sep=11.8%
+  TWHK|Inquiry              1 : 15    share_sep=6.2%
+  OSSM|Standard             0 : 16    share_sep=0.0%
+  SCPH|Standard             0 : 16    share_sep=0.0%
+  SSCI|Standard             3 : 12    share_sep=20.0%
+  SSEA|Standard             0 : 15    share_sep=0.0%
+  CEDW|Inquiry              2 : 12    share_sep=14.3%
+  CEDT|Standard             4 : 10    share_sep=28.6%
+  CEDW|Standard             4 : 10    share_sep=28.6%
+  OSSC|Standard             7 : 7     share_sep=50.0%
+  BLLR|Standard             0 : 12    share_sep=0.0%
+  PNR|Bilingual             7 : 3     share_sep=70.0%
+  CEDR|Standard             0 : 10    share_sep=0.0%
+  OSAH|Standard             3 : 7     share_sep=30.0%
+  EXIP|Standard             1 : 7     share_sep=12.5%
+  SSFUN|Standard            0 : 8     share_sep=0.0%
+  SCFUN|Fundamentals        0 : 6     share_sep=0.0%
+  XFUN|Fundamentals         3 : 3     share_sep=50.0%
+  TWHT|Inquiry              0 : 6     share_sep=0.0%
+  EXBP|Standard             1 : 5     share_sep=16.7%
+  ENGFUN|Inquiry            5 : 0     share_sep=100.0%
+
+within separated: two_rows 534 vs sibling_col 196
+  BLL|Standard           two_rows  102 | sibling_col   49
+  MXFL|Standard          two_rows   76 | sibling_col   15
+  ENFUN|Fundamentals     two_rows   76 | sibling_col    1
+  BLL|Inquiry            two_rows   26 | sibling_col    3
+  ENGC|Standard          two_rows   19 | sibling_col   10
+  MXFU|Standard          two_rows    2 | sibling_col   19
+  HIS|Standard           two_rows   15 | sibling_col    5
+  MXEO|Standard          two_rows   15 | sibling_col    4
+  PES|Standard           two_rows    5 | sibling_col   14
+  TRR|Bilingual          two_rows   17 | sibling_col    0
+  AGH|Standard           two_rows    9 | sibling_col    8
+  ENGR|Standard          two_rows   17 | sibling_col    0
+  MXDI|Standard          two_rows   12 | sibling_col    5
+  XMES|Standard          two_rows   11 | sibling_col    6
+
+boxes with prose AFTER the first widget: 1493 (32.1%)
+box outer col (widget-carrying): [('col-md-8 col-12', 3331), ('col-md-12 col-12', 469), ('col-12', 389), ('col-md-10 col-12', 237), ('col-12 col-md-8', 62)]
+super-content widget-carrying boxes: 156

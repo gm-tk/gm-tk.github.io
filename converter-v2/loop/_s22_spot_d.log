@@ -1,0 +1,459 @@
+====================================================================================================
+TRR113  gold=TRR113_2.0.html  claude=TRR113_4_0.html  gold_lines=122 claude_lines=127
+   = body.container-fluid.reoTranslate  <root> 
+   = ... 9 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G h2  <body> Hei Mahi 2
+  -G h2  <body> Lesson 2
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=2A]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  +C h3  <body> Oropuare pūrua: uo
+   = h3  <activity> Oro tōpū: ue
+   = ... 5 equal ...
+   = p  <activity> Listen to our sounds separately.
+  -G div.row  <activity> 
+  -G div.col-md-6.offset-md-0.col-12  <activity> 
+  -G div.audioImage  <activity> 
+  -G div#u short.audioImageOption  <activity> 
+  -G img.img-fluid  <activity> 
+  -G div.col-md-6.offset-md-0.col-12  <activity> 
+  -G div.audioImage  <activity> 
+  -G div#e short.audioImageOption  <activity> 
+  -G img.img-fluid  <activity> 
+   = p  <activity> Ka hono ana māua ka rongo tonu koe i ō māua oro motuhake takitahi. Wha
+   = p  <activity> When we join you can still hear our individual sounds. Listen and say 
+  -G div.audioImage  <activity> 
+  -G div#Ue.audioImageOption  <activity> 
+  +C audio.audioPlayer.icon  <body> 
+   = img.img-fluid  <activity> 
+  +C audio.audioPlayer.icon  <body> 
+  +C img.img-fluid  <body> 
+  +C audio.audioPlayer.icon  <body> 
+  +C audio.audioPlayer.icon  <body> 
+  +C img.img-fluid  <body> 
+  +C audio.audioPlayer.icon  <body> 
+  +C WIDGET  <body> 
+  +C h4  <body> Rapua ngā ‘uo’
+  +C h4  <body> Find all the ‘uo’
+   = p  <activity> Ka rongo koe i tō waha e neke ana i a koe e whakahua ana i tō māua oro
+  +C b  <body> uo
+   = p  <activity> Can you feel your mouth move as it makes our oro tōpū tawhiti?
+  -G WIDGET  <activity> 
+  +C b  <body> uo
+   = div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=2B]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  -G h3  <activity> Te oro: ue
+  -G h3  <activity> The sound: ue
+  -G p  <activity> Whakarongo anō ki te tangi ō tō māua oro tōpū.
+  -G p  <activity> Listen to sound of our oro tōpū again.
+  -G div.audioImage  <activity> 
+  -G div#Ue.audioImageOption  <activity> 
+  -G img.img-fluid  <activity> 
+  -G p  <activity> Ahakoa kei te timatatanga, kei waenganui, kei te mutunga rānei o te ku
+  -G p  <activity> Our sound stays the same no matter where it is in a word, at the start
+  -G p  <activity> Ata whakarongo ki ēnei kupu. Pāwhiria te wāhi o te oro tōpū ue, kei te
+  -G p  <activity> Listen carefully to these words. Click to show if the oro tōpū ue is a
+  -G WIDGET  <activity> 
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=2C]  <activity> 
+  +C div.activity.interactive[number=4.2]  <activity> 
+   = div.row  <activity> 
+   = ... 6 equal ...
+   = p  <activity> Get you pens and paper ready and join Whaea Arohanui for a fun art les
+  +C h3  <activity> uo
+  +C h3  <activity> uo
+   = p  <activity> Designer note: Link not there for video
+  +C p  <activity> There aren’t a lot of words that rhyme with this oropuare pūrua, but y
+  +C audio.audioPlayer.icon  <activity> 
+  +C audio.audioPlayer.icon  <activity> 
+  +C WIDGET  <activity> 
+  +C WIDGET  <activity> 
+   = div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=2D]  <activity> 
+  +C div.activity.interactive[number=4.3]  <activity> 
+   = div.row  <activity> 
+   = ... 4 equal ...
+   = p  <activity> There are not many words in te reo Māori that use the oro tōpū ue.
+  +C b  <activity> uo
+  +C h3  <activity> puoro
+  +C h3  <activity> puoro
+   = p  <activity> Me ako tātou i ētahi kupu mai i te ngohe i whakamahia i mua. Whakarong
+   = p  <activity> Let’s learn some of the words from our last activity. Listen then repe
+  +C p  <activity> Ka whakataki ngā rerenga kōrero kei raro nei i ētahi ingoa e mōhiotia 
+  +C p  <activity> The sentences below introduce the names of some common instruments.
+  +C audio.audioPlayer.icon  <activity> 
+  +C audio.audioPlayer.icon  <activity> 
+   = WIDGET  <activity> 
+   = ... 2 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G div.activity.alertPadding[number=2E]  <activity> 
+  +C h3  <body> He whakangahau
+  +C h3  <body> Let’s have fun
+  +C p  <body> He tino ngahau te whakatangi puoro, ina koa mēnā nāu anō i hanga.
+  +C p  <body> Playing puoro can be lots of fun, especially if you have made them you
+  +C p  <body> Kei te hiahia a Whaea Arohanui ki te whakaatu atu ki a koe me pēhea te
+  +C p  <body> Matakitaki mai.
+  +C p  <body> Matakitaki mai.
+  +C div.videoSection.ratio.ratio-16x9  <body> 
+  +C iframe  <body> 
+   = div.row  <activity> 
+  -G div.col-12  <activity> 
+  +C div.col-md-8.col-12  <body> 
+   = h3  <activity> Kua oti
+   = ... 4 equal ...
+   = b  <activity> ue
+  +C p  <body> Tērā pea ka hiahia koe ki te:
+  +C p  <body> You might like to
+   = ul  <activity> 
+   = li  <activity> parakatihi ki te tuhi i te oro tōpū ue
+  +C b  <body> uo
+  +C li  <body> waihanga i te mā ngā mea kei tō kāinga
+  +C b  <body> uo
+   = li  <activity> waihanga i te ue mā ngā mea kei te kāinga
+   = ... 2 equal ...
+   = li  <activity> practice writing the oro tōpū ue
+  +C b  <body> uo
+  +C li  <body> make out of things you have at home
+  +C b  <body> uo
+   = li  <activity> make ue out of things you have at home
+   = ... 6 equal ...
+   = p  <activity> When you are ready, move on to the next lesson.
+  -G a  <activity> Nga Kiwi Kaiārahi
+  -G div.button  <activity> Nga Kiwi Kaiārahi
+  -G div.col-md-4.offset-md-0.col-12  <body> 
+  -G div.alertActivity  <body> 
+  +C p  <body> Ngā Kiwi Pages
+  +C p  <body> Ngā Kiwi Pages
+   = img.img-fluid  <body> 
+   = ... 7 equal ...
+   = a.home-nav  <footer> 
+====================================================================================================
+CEDW501  gold=CEDW501_8.0.html  claude=CEDW501_8_0.html  gold_lines=34 claude_lines=27
+  -G html.notranslate  <root> 
+  -G head  <root> 
+  -G meta  <root> 
+  -G meta  <root> 
+  -G meta  <root> 
+  -G title  <root> CEDW501 8.0
+  +C body.container-fluid  <root> 
+   = div#header  <header> 
+   = ... 3 equal ...
+   = span  <title> Produce, Implement, and Reflect (US496)
+  +C div#module-head-buttons  <module-menu> 
+  +C div#module-menu-button.circle-button.btn1  <module-menu> 
+  +C div#module-menu-content.moduleMenu  <module-menu> 
+  +C div.row  <module-menu> 
+  +C div.col-md-8.col-12  <module-menu> 
+   = div#body  <body> 
+   = ... 1 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G h2  <body> Showcasing your knowledge
+   = p  <body> When you have completed this module your Te Kura kaiako will release t
+   = ... 1 equal ...
+   = p  <body> This assessment gives you the opportunity to demonstrate how you can i
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.activity.dropbox[number=8A]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  -G h3  <activity> Improving personal wellbeing
+   = p  <activity> If you are ready to start this assessment task, contact your Te Kura k
+   = ... 8 equal ...
+   = a.home-nav  <footer> 
+====================================================================================================
+XDLS501  gold=XDLS501.01.html  claude=XDLS501_2_0.html  gold_lines=104 claude_lines=169
+   = body.container-fluid  <root> 
+   = ... 9 equal ...
+   = div.col-md-8.col-12  <module-menu> 
+  -G p  <module-menu> We are learning:
+  -G b  <module-menu> We are learning:
+  -G ul  <module-menu> 
+  -G li  <module-menu> that the space between us and others depends on who they are
+  -G li  <module-menu> that the space between us and others depends on where we are
+  -G li  <module-menu> that intimate information and intimate space is for special people in 
+  -G p  <module-menu> I can:
+  -G b  <module-menu> I can:
+  -G ul  <module-menu> 
+  -G li  <module-menu> share different information with different people depending on how clo
+  -G li  <module-menu> be safe in different relationships by knowing when to share personal i
+   = div#body  <body> 
+  -G div.row.supervisor  <body> 
+  -G div.col-md-8.col-12.super-content-button  <body> 
+  -G div.row.super-content  <body> 
+   = div.row  <body> 
+  -G div.col-12  <body> 
+  -G h3  <body> Supervisor
+  -G div.col-md-12.col-12  <body> 
+  -G p  <body> If you require support around emotional regulation in order to be able
+  -G p  <body> Welcome to lesson one. In this lesson we are learning about how intima
+  -G WIDGET  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = p  <body> This changes from culture to culture and situation to situation.
+   = ... 1 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G div.videoSection.icon.ratio.ratio-16x9  <body> 
+  -G iframe.embed-responsive-item  <body> 
+  -G div.videoSection.icon.ratio.ratio-16x9  <body> 
+  -G iframe.embed-responsive-item  <body> 
+  -G h3  <body> Public distance
+  -G div.col-md-4.offset-md-0.col-12  <body> 
+  -G div.alert.top  <body> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G ul  <body> 
+  -G li  <body> How did people handle it when they felt uncomfortable?
+  -G li  <body> Did you notice they used some great methods to increase the space betw
+  -G li  <body> This video was filmed in England. Do you think the same thing would ha
+  +C a  <body> Download the lesson as a PDF
+  +C div.button  <body> Download the lesson as a PDF
+  +C a  <body> Submit your activities here as you work through them
+  +C div.button  <body> Submit your activities here as you work through them
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+  +C p  <body> Introduction
+  +C audio.audioPlayer.icon  <body> 
+  +C WIDGET  <body> 
+  +C audio.audioPlayer.icon  <body> 
+   = div.row  <body> 
+   = ... 1 equal ...
+   = h4  <body> What public distance looks and feels like
+  -G WIDGET  <body> 
+  -G WIDGET  <body> 
+   = p  <body> Look through this slideshow to see some examples of public distance.
+  -G WIDGET  <body> 
+  +C p  <body> Your first activity is to describe the distance people stand or sit fr
+   = div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G div.activity[number=1A]  <activity> 
+  +C div.alert.solid  <body> 
+   = div.row  <activity> 
+   = div.col-12  <activity> 
+  -G h3  <activity> Respecting public distance
+  -G WIDGET  <activity> 
+   = p  <activity> With your hoa ako (learning partner), talk about how close people usua
+  -G ul  <activity> 
+  -G li  <activity> Would you share your home address or personal feelings about your whān
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+  +C audio.audioPlayer.icon  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h4  <body> Activity 1B: What public distance looks and feels like
+  +C p  <body> When do you use social distance?
+  +C p  <body> Tell or show your Kaiako about social distancing in your life. You cou
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.alert.solid  <body> 
+  +C div.row  <body> 
+  +C div.col-12  <body> 
+  +C p  <body> Upload your work.
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+  +C audio.audioPlayer.icon  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h4  <body> Activity 1C: When personal distance is the right choice for you.
+  +C p  <body> Discuss, draw or describe your happy place in terms of people or pets 
+  +C p  <body> When is it good to share personal space or personal information? When 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.alert.solid  <body> 
+  +C div.row  <body> 
+  +C div.col-12  <body> 
+  +C p  <body> Upload your work.
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+  +C audio.audioPlayer.icon  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h4  <body> Activity 1D: Intimacy and choice.
+  +C p  <body> Discuss with your supervisor how you can let others know when you are 
+  +C p  <body> How do you say no? How do you know others have agreed to you coming in
+  +C p  <body> If you have a pet think about who they like to snuggle up to and who t
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.alert.solid  <body> 
+  +C div.row  <body> 
+  +C div.col-12  <body> 
+  +C p  <body> Upload your work.
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+  +C p  <body> Thank you for spending the time to think about how you use space to ma
+   = p  <activity> You can use ceremonies, pictures, movies, art, or acting to help you u
+   = ... 2 equal ...
+   = h3  <body> Social distance
+  +C a  <body> Download the lesson as a PDF
+  +C div.button  <body> Download the lesson as a PDF
+  +C a  <body> Upload your work
+  +C div.button  <body> Upload your work
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+  +C WIDGET  <body> 
+  +C audio.audioPlayer.icon  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h4  <body> Activity 2A
+   = p  <body> Social distance is when you are far enough apart to avoid being touche
+   = ... 1 equal ...
+   = p  <body> Watch how people create distance between each other at this gallery op
+  -G div.videoSection.icon.ratio.ratio-16x9  <body> 
+  -G iframe.embed-responsive-item  <body> 
+  -G p  <body> Watch this video about whakatau. Notice that the people attending the 
+  -G div.videoSection.icon.ratio.ratio-16x9  <body> 
+  -G iframe.embed-responsive-item  <body> 
+   = p  <body> You can mindfully notice the distance between you and others to give y
+   = p  <body> Social distancing can also be practised in the virtual world. For exam
+  -G div.videoSection.icon.ratio.ratio-16x9  <body> 
+  -G iframe.embed-responsive-item  <body> 
+  -G WIDGET  <body> 
+  -G p  <body> As you think, look at the images in the slideshow below. You might thi
+  -G WIDGET  <body> 
+   = div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G div.activity[number=1B]  <activity> 
+  +C div.alert.solid  <body> 
+   = div.row  <activity> 
+   = div.col-12  <activity> 
+  -G h3  <activity> Respecting social distance
+  +C p  <body> Upload your work.
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+   = WIDGET  <activity> 
+  +C audio.audioPlayer.icon  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h4  <body> Activity 2B
+   = p  <activity> With your hoa ako think about the distance people stand or sit from st
+  -G ul  <activity> 
+  -G li  <activity> Would you share your address or your personal feelings about loved one
+  +C p  <body> Take a photo of your friendly pose to show to your
+  +C span.infoTrigger  <body> Kaiako
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.alert.solid  <body> 
+  +C div.row  <body> 
+  +C div.col-12  <body> 
+  +C p  <body> Upload your work.
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+  +C WIDGET  <body> 
+  +C audio.audioPlayer.icon  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h4  <body> Activity 2C
+  +C p  <body> Now it is your turn to find your own whakamana enhancing pose:
+  +C p  <body> Everyone, strike your whakamana pose!
+  +C p  <body> Stand with feet apart, head held high, arms outstretched.
+  +C p  <body> Breathe deeply, take up space
+  +C p  <body> How do you feel?
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.alert.solid  <body> 
+  +C div.row  <body> 
+  +C div.col-12  <body> 
+  +C p  <body> Upload your work.
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C a  <body> Upload to dropbox
+  +C div.button  <body> Upload to dropbox
+   = p  <activity> You could use ceremonies, images, movies, art or acting to help you le
+   = ... 7 equal ...
+   = a.home-nav  <footer> 
+====================================================================================================
+PHE1007  gold=PHE1007_6.0.html  claude=PHE1007_6_0.html  gold_lines=71 claude_lines=38
+   = body.container-fluid  <root> 
+   = ... 7 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G p  <body> Muscles need energy to contract. Glucose and oxygen produce the energy
+  +C img.img-fluid  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h3  <body> Identify the energy system
+   = p  <body> There are three energy systems that provide the energy we need for phy
+   = ... 1 equal ...
+   = li  <body> Anaerobic ATP-CP system
+  +C ol  <body> 
+   = li  <body> Anaerobic Glycolytic System
+  +C ol  <body> 
+   = li  <body> Aerobic system
+  -G p  <body> Below is a summary of the energy systems, and how they are utilised in
+  -G div.row  <body> 
+  -G div.col-md-3  <body> 
+  -G img.img-fluid  <body> 
+  -G div.col-md-5.paddingL  <body> 
+  -G p  <body> Anaerobic phosphagen system (ATP-CP)
+  -G b  <body> Anaerobic phosphagen system (ATP-CP)
+  -G p  <body> Uses energy stored in the muscles. Predominant energy system for , E.g
+  -G b  <body> SHORT DURATION
+  -G b  <body> HIGH INTENSITY
+  -G b  <body> exercise (up to 10 seconds)
+  -G div.col-12  <body> 
+  -G img.img-fluid  <body> 
+  -G div.row  <body> 
+  -G div.col-md-3  <body> 
+  -G img.img-fluid  <body> 
+  -G div.col-md-5.paddingL  <body> 
+  -G p  <body> Anaerobic Glycolytic System
+  -G b  <body> Anaerobic Glycolytic System
+  -G p  <body> Predominant energy system for Hydrogen ions are produced as a byproduc
+  -G b  <body> SHORT/MED DURATION, MED/HIGH INTENSITY exercise (lasting from 10 secon
+  -G div.col-12  <body> 
+  -G img.img-fluid  <body> 
+  -G div.row  <body> 
+  -G br  <body> 
+  -G div.col-md-3  <body> 
+  -G img.img-fluid  <body> 
+  -G div.col-md-5.paddingL  <body> 
+  -G p  <body> Aerobic system
+  -G b  <body> Aerobic system
+  -G p  <body> Uses oxygen to burn carbohydrate, protein and fats Predominant energy 
+  -G b  <body> LONG DURATION, LOW INTENSITY exercise (5 min plus)
+  -G div.col-md-12  <body> 
+  -G img.img-fluid.margB0  <body> 
+  -G img.img-fluid  <body> 
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G p  <body> The type, intensity and duration of the activity determines which ener
+  -G div.videoSection.ratio.ratio-16x9  <body> 
+  -G iframe  <body> 
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=6A]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  -G h3  <activity> Identify the energy system
+  -G p  <activity> Correctly select the main energy system the activities below will use.
+  -G WIDGET  <activity> 
+  +C ol  <body> 
+  +C li  <body> Performing a hip hop routine.
+  +C ol  <body> 
+  +C li  <body> Throwing a discus.
+  +C ol  <body> 
+  +C li  <body> Serving in tennis.
+  +C ol  <body> 
+  +C li  <body> Performing a vault in gymnastics.
+  +C ol  <body> 
+  +C li  <body> Completing an F45 class at the gym.
+   = div#footer  <footer> 
+   = ... 6 equal ...
+   = a.home-nav  <footer> 

@@ -1,0 +1,95 @@
+
+===== CLAUDE =====
+boxes 6137 = widget-carrying 3615 + text-only 2522
+anatomy (widget-carrying):
+   2841   78.6%  same_col
+    596   16.5%  widget_only
+    173    4.8%  two_rows
+      5    0.1%  bare
+SEPARATED (two_rows+sibling_col) share of prose-carrying: 5.7%
+prose col (separated forms): [('col-12', 173)]
+widget col (separated forms): [('col-md-12 col-12', 92), ('col-12', 72), ('col-md-8 col-12', 9)]
+widget col (widget_only): [('col-12', 596)]
+prose col (text-only boxes): [('col-12', 2322), ('', 200)]
+
+subject|template  sep : same_col  (decided groups, n>=5)
+  BLL|Standard             49 : 536   share_sep=8.4%
+  BLL|Inquiry               8 : 305   share_sep=2.6%
+  MXFL|Standard             0 : 135   share_sep=0.0%
+  MXDI|Standard             2 : 115   share_sep=1.7%
+  MXFU|Standard             0 : 117   share_sep=0.0%
+  ENGI|Standard             2 : 96    share_sep=2.0%
+  ENFUN|Fundamentals       92 : 3     share_sep=96.8%
+  XGF|Standard              3 : 89    share_sep=3.3%
+  XMES|Standard             1 : 86    share_sep=1.1%
+  ENGC|Standard             1 : 75    share_sep=1.3%
+  TRR|Bilingual             0 : 74    share_sep=0.0%
+  HIS|Standard              2 : 72    share_sep=2.7%
+  ENGS|Standard             1 : 66    share_sep=1.5%
+  ENGR|Standard             2 : 64    share_sep=3.0%
+  MXDB|Standard             0 : 66    share_sep=0.0%
+  ENGJ|Standard             0 : 59    share_sep=0.0%
+  MXEO|Standard             0 : 54    share_sep=0.0%
+  CHFUN|Fundamentals        0 : 53    share_sep=0.0%
+  AGH|Standard              0 : 53    share_sep=0.0%
+  XTAS|Standard             1 : 45    share_sep=2.2%
+  XDLS|Standard             4 : 37    share_sep=9.8%
+  MXFUN|Fundamentals        1 : 38    share_sep=2.6%
+  OSAI|Standard             1 : 30    share_sep=3.2%
+  OSOH|Standard             0 : 30    share_sep=0.0%
+  OSBY|Standard             1 : 28    share_sep=3.4%
+  ARFUN|Fundamentals        0 : 28    share_sep=0.0%
+  SSFUN|Fundamentals        0 : 27    share_sep=0.0%
+  ANZH|Standard             0 : 26    share_sep=0.0%
+  CEDO|Standard             0 : 26    share_sep=0.0%
+  HES|Standard              0 : 25    share_sep=0.0%
+  OSGM|Standard             1 : 20    share_sep=4.8%
+  CEDK|Inquiry              1 : 19    share_sep=5.0%
+  CEDT|Inquiry              0 : 19    share_sep=0.0%
+  CEDW|Standard             0 : 18    share_sep=0.0%
+  SCCH|Standard             0 : 16    share_sep=0.0%
+  HPFUN|Fundamentals        0 : 15    share_sep=0.0%
+  HPRE|Standard             0 : 15    share_sep=0.0%
+  SCPH|Standard             0 : 15    share_sep=0.0%
+  PNR|Bilingual             0 : 14    share_sep=0.0%
+  OSSC|Standard             0 : 14    share_sep=0.0%
+  SSCI|Standard             0 : 14    share_sep=0.0%
+  SSOG|Standard             0 : 13    share_sep=0.0%
+  XLP|Standard              0 : 13    share_sep=0.0%
+  BLLR|Standard             0 : 12    share_sep=0.0%
+  CEDR|Standard             0 : 12    share_sep=0.0%
+  OSSM|Standard             0 : 12    share_sep=0.0%
+  PHE|Standard              0 : 12    share_sep=0.0%
+  TEFUN|Fundamentals        0 : 11    share_sep=0.0%
+  XFUN|Fundamentals         0 : 11    share_sep=0.0%
+  OSAH|Standard             0 : 11    share_sep=0.0%
+  TEDC|Standard             0 : 11    share_sep=0.0%
+  TWHA|Inquiry              0 : 10    share_sep=0.0%
+  XDLS|Inquiry              0 : 10    share_sep=0.0%
+  MXEX|Standard             0 : 10    share_sep=0.0%
+  PES|Standard              0 : 10    share_sep=0.0%
+  CEDW|Inquiry              0 : 9     share_sep=0.0%
+  CEDT|Standard             0 : 9     share_sep=0.0%
+  CEDO|Inquiry              0 : 8     share_sep=0.0%
+  CEDR|Inquiry              0 : 8     share_sep=0.0%
+  TWHK|Inquiry              0 : 6     share_sep=0.0%
+
+within separated: two_rows 173 vs sibling_col 0
+  ENFUN|Fundamentals     two_rows   92 | sibling_col    0
+  BLL|Standard           two_rows   49 | sibling_col    0
+  BLL|Inquiry            two_rows    8 | sibling_col    0
+  XDLS|Standard          two_rows    4 | sibling_col    0
+  XGF|Standard           two_rows    3 | sibling_col    0
+  ENGI|Standard          two_rows    2 | sibling_col    0
+  ENGR|Standard          two_rows    2 | sibling_col    0
+  HIS|Standard           two_rows    2 | sibling_col    0
+  MXDI|Standard          two_rows    2 | sibling_col    0
+  MXFUN|Fundamentals     two_rows    1 | sibling_col    0
+  CEDK|Inquiry           two_rows    1 | sibling_col    0
+  ENGC|Standard          two_rows    1 | sibling_col    0
+  ENGS|Standard          two_rows    1 | sibling_col    0
+  OSAI|Standard          two_rows    1 | sibling_col    0
+
+boxes with prose AFTER the first widget: 511 (14.1%)
+box outer col (widget-carrying): [('col-md-8 col-12', 3525), ('col-12', 90)]
+super-content widget-carrying boxes: 76

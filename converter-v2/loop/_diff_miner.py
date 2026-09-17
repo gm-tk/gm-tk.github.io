@@ -165,16 +165,17 @@ def node_text(n):
     return ""
 
 
-_NUMVAL = re.compile(r"\[number=[^\]]*\]")
+_ATTRVAL = re.compile(r"\[(number|layout|answer|colou?r|role|data-type)=[^\]]*\]")
 
 
 def role(n):
     """The element's label plus a lone inline wrapper's label — `h4>span`, `p>b`.
-    Session 22: the `number=` VALUE is folded to `[number=*]` in the class ROLE (the diff itself still
-    compares the full signature, so a differing number is still a differing line) — keyed by value, the
+    Session 22: a kept attribute's VALUE (`number=`, `layout=`, `answer=`, `colour=`, `role=`, `data-type=`
+    — the skeleton's KEEP_ATTR set) is folded to `[attr=*]` in the class ROLE (the diff itself still
+    compares the full signature, so a differing value is still a differing line) — keyed by value, the
     activity-number class fragmented into one row per number and never reached the floor; folded, it is
     one row (`div.activity…[number=*]` SUBSTITUTED), measured and DECLINED in session 22 (r369)."""
-    r = _NUMVAL.sub("[number=*]", label(n))
+    r = _ATTRVAL.sub(lambda m: "[" + m.group(1) + "=*]", label(n))
     kids = [k for k in n.kids if not (_cls(k) & NOTE_CLS)]
     if len(kids) == 1 and kids[0].tag in INLINE:
         r += ">" + label(kids[0])

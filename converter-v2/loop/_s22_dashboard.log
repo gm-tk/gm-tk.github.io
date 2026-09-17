@@ -1,0 +1,9 @@
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/COVERAGE_DASHBOARD.md
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_coverage_dashboard.json
+
+coverage 50.4% · scaffold 52.70% · clean 98.9% · 21 classes ranked
+WARN: Census is stale — the interactive census predates the newest engine/data change (2026-09-17 vs 2026-09-18) — coverage is UNDER-reported until it is rebuilt.
+WARN: skeleton state predates the newest engine change (2026-09-18) — its rows may lag.
+WARN: body_compare predates the newest engine change (2026-09-18) — its rows may lag.
+WARN: defect audit predates the newest engine change (2026-09-17) — its rows may lag.
+WARN: feature index predates the newest engine change (2026-09-18) — its rows may lag.
