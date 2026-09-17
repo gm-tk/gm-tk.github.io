@@ -1,0 +1,359 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+  ~ EXPFUN02_0_0.html: -1262 +1280
+     - <body class="container-fluid">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Side Navigation with 6 sections: Lea
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h5>Introduction</h5>
+     - <p>Now that you have an awesome idea for a project, it is time to design some learning goals. This will help y
+     - <p>The ways of thinking and being are:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/insert-showing-the-ways-of-thinking-and.jpg" alt="" /> 
+     - <div class="accHead"><h4>Learning goals and learning intentions</h4></div>
+     - <div class="accContent"><p>In the project module you have learnt about what learning goals and learning intent
+     - <div class="accordion">
+     - <div class="accHead"><h4>Success criteria</h4></div>
+     - <div class="accContent"><p>Your success criteria for your project are designed by you. They show the steps to 
+     - <p>Click on tabs to find out more about the different ways of thinking and being, and to see examples of goals
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - <p>Learner</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Be a learner</h3>
+     - <p>This goal is about getting better at behaving in ways that help us learn, both when we are working on our o
+     - <div class="accordion">
+     - <div class="accHead"><h4>Questions you might ask to develop your project include:</h4></div>
+     - <div class="accContent"><ul>
+     - <li>What are my interests and strengths?</li>
+     - <li>What am I curious about?</li>
+     - <li>When should I ask for help?</li>
+     - <li>How can I solve problems?</li>
+     - <li>How can I work well with others?</li>
+     - <li>How can I be organised?</li>
+     - <li>How can I reflect on my learning?</li>
+     - <li>How can I show care for my community and environment?</li>
+     - </ul><h2>Watch</h2></div>
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item video">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/KwsmicqjyFg" loading="lazy" title="YouTube video player" f
+     - <div class="item video">
+     - <div class="videoSection ratio ratio-16x9">
+     - … 1222 more removed
+     + <body class="inquiry container-fluid">
+     + <div class="crumbs">
+     + <div crumb="1" class="showing"><p>Intro</p></div>
+     + <div crumb="2"><p>Learner</p></div>
+     + <div crumb="3"><p>Communicator</p></div>
+     + <div crumb="4"><p>Scientist</p></div>
+     + <div crumb="5"><p>Social Scientist</p></div>
+     + <div crumb="6"><p>Mathematician</p></div>
+     + <div crumb="7"><p>Innovator</p></div>
+     + <div class="inquiryPanel showing" rel="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>Introduction</h5>
+     + <p>Now that you have an awesome idea for a project, it is time to design some learning goals. This will help y
+     + <p>The ways of thinking and being are:</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/insert-showing-the-ways-of-thinking-and.jpg" alt="" /> 
+     + <div class="accordion">
+     + <div class="accHead"><h4>Learning goals and learning intentions</h4></div>
+     + <div class="accContent"><p>In the project module you have learnt about what learning goals and learning intent
+     + … 1260 more added
+EXPFUN02: identical 0 / changed 1
+  ~ EXPFUN03_0_0.html: -1451 +1469
+     - <body class="container-fluid">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p>Intro</p>
+     - <p>This FUNdamental is to help you design your project so that you can achieve what you set out to do. We outl
+     - <p>The ways of thinking and being are:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/is-it-possible-to-create-a-cloud-or-that.jpg" alt="" />
+     - <p>Be a Learner</p>
+     - <p>Be a Communicator</p>
+     - <p>Be a Thinker</p>
+     - <p>Think like a Scientist</p>
+     - <p>Think like a Social Scientist</p>
+     - <p>Think like a Mathematician</p>
+     - <p>Think like an Innovator</p>
+     - <p>TAB NAV 1: Learner</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Be a learner</h3>
+     - <p>This goal is about developing important qualities for learning, such as curiosity, resilience, creativity a
+     - <p>Questions you might ask to develop your project include:</p>
+     - <ul>
+     - <li>What are my interests, strengths and needs?</li>
+     - <li>How can I make choices about my learning?</li>
+     - <li>How can I look out for my own health and wellbeing?</li>
+     - <li>How can I show care for my community and environment?</li>
+     - <li>How can I be responsible for my learning?</li>
+     - <li>How can I persevere?</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [On hover:</p>
+     - <p>keep going</p>
+     - <ul>
+     - <li>How can I be resilient?</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [On hover:</p>
+     - <p>rebound, quick to recover</p>
+     - <ul>
+     - <li>How can I better organise my work?</li>
+     - <li>How can I better manage my time?</li>
+     - <li>How can I work cooperatively with others?</li>
+     - <li>How can I be reflective about my learning?</li>
+     - … 1411 more removed
+     + <body class="inquiry container-fluid">
+     + <div class="crumbs">
+     + <div crumb="1" class="showing"><p>Intro</p></div>
+     + <div crumb="2"><p>Learner</p></div>
+     + <div crumb="3"><p>Communicator</p></div>
+     + <div crumb="4"><p>Scientist</p></div>
+     + <div crumb="5"><p>Social Scientist</p></div>
+     + <div crumb="6"><p>Mathematician</p></div>
+     + <div crumb="7"><p>Innovator</p></div>
+     + <div class="inquiryPanel showing" rel="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>This FUNdamental is to help you design your project so that you can achieve what you set out to do. We outl
+     + <p>The ways of thinking and being are:</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/is-it-possible-to-create-a-cloud-or-that.jpg" alt="" />
+     + <p>Be a Learner</p>
+     + <p>Be a Communicator</p>
+     + <p>Be a Thinker</p>
+     + <p>Think like a Scientist</p>
+     + … 1449 more added
+EXPFUN03: identical 0 / changed 1
+  ~ EXPFUN04_0_0.html: -800 +818
+     - <body class="container-fluid">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: TAB NAV 1:</p>
+     - <p>Introduction</p>
+     - <p>This FUNdamental is to help you design your project so that you can achieve what you set out to do. We outl
+     - <p>The ways of thinking and being are:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/is-it-possible-to-create-a-cloud-or-that.jpg" alt="" />
+     - <p>Be a learner</p>
+     - <p>Be a communicator</p>
+     - <p>Be a thinker</p>
+     - <p>Think like a scientist</p>
+     - <p>Think like a social scientist</p>
+     - <p>Think like a mathematician</p>
+     - <p>Think like an innovator</p>
+     - <p>TAB NAV 2: Learner</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Be a learner</h3>
+     - <p>Being a learner means you can actively explore your potential and prepare for the future by engaging with a
+     - <p>Questions you might ask to develop your project include:</p>
+     - <ul>
+     - <li>What do I bring to this process?</li>
+     - <li>How can I be creative?</li>
+     - <li>How can I persevere with this?</li>
+     - <li>How can I collaborate with others on this project?</li>
+     - <li>How can I make a positive contribution to my community?</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Watch</h4>
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item video">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/_64FAxU99d0" loading="lazy" title="YouTube video player" f
+     - <div class="item video">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/0cZ8Af8HIVs" loading="lazy" title="YouTube video player" f
+     - <div class="item video">
+     - … 760 more removed
+     + <body class="inquiry container-fluid">
+     + <div class="crumbs">
+     + <div crumb="1" class="showing"><p>Intro</p></div>
+     + <div crumb="2"><p>Learner</p></div>
+     + <div crumb="3"><p>Communicator</p></div>
+     + <div crumb="4"><p>Scientist</p></div>
+     + <div crumb="5"><p>Social Scientist</p></div>
+     + <div crumb="6"><p>Mathematician</p></div>
+     + <div crumb="7"><p>Innovator</p></div>
+     + <div class="inquiryPanel showing" rel="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>This FUNdamental is to help you design your project so that you can achieve what you set out to do. We outl
+     + <p>The ways of thinking and being are:</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/is-it-possible-to-create-a-cloud-or-that.jpg" alt="" />
+     + <p>Be a learner</p>
+     + <p>Be a communicator</p>
+     + <p>Be a thinker</p>
+     + <p>Think like a scientist</p>
+     + … 798 more added
+EXPFUN04: identical 0 / changed 1
+  ~ EXPFUN05_0_0.html: -1222 +1239
+     - <body class="container-fluid">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: TAB NAV 1:</p>
+     - <p>Introduction</p>
+     - <p>This FUNdamental is to help you design your project so that you can achieve what you have set out to do. In
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/please-align-this-with-the-other-fundame.jpg" alt="" />
+     - <p>Be a Learner</p>
+     - <p>Be a Communicator</p>
+     - <p>Be a Thinker</p>
+     - <p>Think like a Scientist</p>
+     - <p>Think like a Social Scientist</p>
+     - <p>Think like a Mathematician</p>
+     - <p>Think like an Innovator</p>
+     - <p>TAB NAV 2: Learner</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Be a Learner</h4>
+     - <p>Being a learner involves nurturing essential qualities such as curiosity, resilience, innovation, creativit
+     - <p>Questions you might ask to develop your project include:</p>
+     - <ul>
+     - <li>How can I take responsibility for my learning outcomes and goals?</li>
+     - <li>How can I be creative?</li>
+     - <li>How can I communicate honestly about my learning progress and challenges?</li>
+     - <li>What do I need to start doing? Stop doing?</li>
+     - <li>How can I collaborate with others on this project?</li>
+     - <li>How can I make a positive contribution to my community?</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Watch</h4>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Insert media item 1]<br />[Insert me
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Let’s check out some examples</h4>
+     - <p>Here are some examples of projects that other ākonga have done. These examples will help you to take the ne
+     - <div class="button TKmodalButton">Māra kai – food garden</div>
+     - <div class="TKmodal" size="M">
+     - <p><b>Tipene</b> is 17 and an avid gardener and often helps on the marae with the māra kai</p><p>Based on the 
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover: food garden]<br />[imag
+     - … 1182 more removed
+     + <body class="inquiry container-fluid">
+     + <div class="crumbs">
+     + <div crumb="1" class="showing"><p>Intro</p></div>
+     + <div crumb="2"><p>Learner</p></div>
+     + <div crumb="3"><p>Communicator</p></div>
+     + <div crumb="4"><p>Scientist</p></div>
+     + <div crumb="5"><p>Social Scientist</p></div>
+     + <div crumb="6"><p>Mathematician</p></div>
+     + <div crumb="7"><p>Innovator</p></div>
+     + <div class="inquiryPanel showing" rel="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>This FUNdamental is to help you design your project so that you can achieve what you have set out to do. In
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/please-align-this-with-the-other-fundame.jpg" alt="" />
+     + <p>Be a Learner</p>
+     + <p>Be a Communicator</p>
+     + <p>Be a Thinker</p>
+     + <p>Think like a Scientist</p>
+     + <p>Think like a Social Scientist</p>
+     + … 1219 more added
+EXPFUN05: identical 0 / changed 1
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+
+TOTAL: identical 657 / changed 4 / missing 0 over 104 modules
+CHANGED: EXPFUN02/EXPFUN02_0_0.html EXPFUN03/EXPFUN03_0_0.html EXPFUN04/EXPFUN04_0_0.html EXPFUN05/EXPFUN05_0_0.html

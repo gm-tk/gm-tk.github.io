@@ -4992,6 +4992,21 @@
 				"intro_label": "Introduction"
 			},
 			"recover_consumed_openers": true,
+			"section_nav": {
+				"_doc": "ROUND 361 (the autonomous loop's session 19, Round 5 — the DIFF MINER's crumbs fact F23; KB 06 §3.4). THE EXPlore \"NAVIGATION WITH N SECTIONS\" INQUIRY DIALECT (EXPFUN02–05, the only WTs carrying the phrase). The writer declares the crumb trail in ONE instruction — `[Side Navigation with 6 sections: Learner, Communicator, Scientist, Social Scientist, Mathematician and Innovator]` or `[Tab Navigation with …]` — and opens each section with `[section N] Label` (EXPFUN02), a `TAB NAV N: Label` line (03 / 04 / 05; the first, `TAB NAV: Intro` / `TAB NAV 1: Introduction`, opens the intro panel) or a top-level [H1] / [H2] heading naming the label (EXPFUN02's last four: 'Think like a scientist' …). PanelsBuilder.detectInquirySections finds the instruction, parses the labels (split on commas / 'and'), matches every label IN ORDER to the next opener after it and fires only when all are found; the instruction and the tag / line openers are consumed, a heading opener stays as the panel's first heading; with no explicit intro opener the instruction itself opens the intro panel. inquiryPanels sectionMode: the content BEFORE the first sentinel stays outside the scaffold (the overview's learning-intention rows), then N+1 unified crumbs (intro_label + the list, the first showing) and N+1 inquiryPanels (the first showing) via the page_split templates. Guards: single-file pages, never alongside the BLL / heading-label / CED modes. Measured: the gold builds 7 crumbs + 7 panels on all four; Claude shipped a flat body at 7–9 % SCAFFOLD. Env SECTIONNAV_OFF = byte-identical.",
+				"enabled": true,
+				"env": "SECTIONNAV_OFF",
+				"intro_label": "Intro",
+				"intro_words": [
+					"intro",
+					"introduction"
+				],
+				"min_sections": 3,
+				"heading_openers": [
+					"h1",
+					"h2"
+				]
+			},
 			"page_opener_fire": {
 				"enabled": true,
 				"min_labeled": 3,

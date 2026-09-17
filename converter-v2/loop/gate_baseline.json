@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.31",
-    "round": 360,
+    "build": "260619.32",
+    "round": 361,
     "date": "2026-09-17",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -54,15 +54,16 @@
     "_note_r357": "Round 357: the chip presence class — skeleton +0.031pp (named dips), every other gate EXACT; SCOPED regeneration of the 89-module family, 18 modules / 36 pages; scoped ship #1 since the r356 full.",
     "_note_r358": "Round 358: the TITLE class — skeleton +0.039pp (named dips), every other gate EXACT; FULL regeneration of all 416, 37 modules / 74 pages; ledger FULL (counter 0).",
     "_note_r359": "Round 359: the Inquiry overview menu family — skeleton +0.021pp (named dips), ≥50 +1, ≥75 +1, every other gate EXACT; FULL regeneration of all 416, 29 modules / 29 pages; ledger FULL (counter 0).",
-    "_note_r360": "Round 360: the footer link sets — skeleton +0.004pp (named dips), every other gate EXACT; FULL regeneration of all 416, 52 modules / 52 pages; ledger FULL (counter 0); plateau window 1 of 3."
+    "_note_r360": "Round 360: the footer link sets — skeleton +0.004pp (named dips), every other gate EXACT; FULL regeneration of all 416, 52 modules / 52 pages; ledger FULL (counter 0); plateau window 1 of 3.",
+    "_note_r361": "Round 361: the EXPlore section-navigation inquiry dialect — skeleton +0.016pp (no dips), compare_structure exact +28, every other gate EXACT; FULL regeneration of all 416, 4 modules / 4 pages; ledger FULL (counter 0)."
   },
   "skeleton": {
-    "mean_scaffold_pct": 52.076,
+    "mean_scaffold_pct": 52.093,
     "median_scaffold_pct": null,
     "pages_ge_50": 1096,
     "pages_ge_75": 161,
     "pages_ge_90": 14,
-    "raw_mean_pct": 36.766,
+    "raw_mean_pct": 36.78,
     "pairs": 1955,
     "pairs_skipped": 0,
     "_note_r350": "Round 350: the dragAndDrop build kickoff shape 1 + the 03B button row — SCAFFOLD identical page-for-page to r349 (a build is inside the collapsed widget marker); RAW 35.049 → 35.115. State outputs/_r350_sk_final.json.",
@@ -73,15 +74,17 @@
     "_note_r357": "Round 357: the #module-code chip's presence (six registry corrections + the template_deltas tier) — SCAFFOLD 51.9819 → 52.0125 (+0.031pp; 37 movers, 35 up; dips NAMED: BLL170_0_0 the BLL1 family exception, CEDK501_0_0 an 18 % page re-aligned), ≥50 1092 → 1094, ≥75 160 / ≥90 14 EXACT, RAW 36.705 → 36.728. Hold-or-improve from here.",
     "_note_r358": "Round 358: the Māori-alphabet title test — SCAFFOLD 52.0125 → 52.0516 (+0.039pp; 16 movers, 14 up; dips NAMED: XGF9004_1_0 and HIS1002_7_0 — the writer's pair split per the KB where the gold retitled the page), ≥50 1094 → 1095, ≥75 160 / ≥90 14 EXACT, RAW 36.728 → 36.748. Hold-or-improve from here.",
     "_note_r359": "Round 359: the Inquiry overview menu family — SCAFFOLD 52.0516 → 52.0723 (+0.021pp; 22 movers, 20 up; dips NAMED: EXPFUN06_0_0 — the Understand: block moved into the Overview tab pane where the gold's is, a 27 % page re-aligned; CEDK101_0_0 — the gold's banner row above the two columns), ≥50 1095 → 1096, ≥75 160 → 161, ≥90 14 EXACT, RAW 36.748 → 36.763. Hold-or-improve from here.",
-    "_note_r360": "Round 360: the footer link sets (registry corrections) — SCAFFOLD 52.0723 → 52.0761 (+0.004pp; 49 movers, 40 up; dips NAMED: BLL240_0_0 the one BLL parent whose gold overview is next + home, CEDK101_0_0 no gold footer, seven order / re-alignment dips ≤ 0.33pp), ≥50 1096 / ≥75 161 / ≥90 14 EXACT, RAW 36.763 → 36.766. Hold-or-improve from here."
+    "_note_r360": "Round 360: the footer link sets (registry corrections) — SCAFFOLD 52.0723 → 52.0761 (+0.004pp; 49 movers, 40 up; dips NAMED: BLL240_0_0 the one BLL parent whose gold overview is next + home, CEDK101_0_0 no gold footer, seven order / re-alignment dips ≤ 0.33pp), ≥50 1096 / ≥75 161 / ≥90 14 EXACT, RAW 36.763 → 36.766. Hold-or-improve from here.",
+    "_note_r361": "Round 361: the EXPlore section-navigation inquiry dialect (crumbs + inquiryPanel scaffold on EXPFUN02–05) — SCAFFOLD 52.0761 → 52.0925 (+0.016pp; 4 movers, all up, no dips), ≥50 1096 / ≥75 161 / ≥90 14 EXACT, RAW 36.766 → 36.780. Hold-or-improve from here."
   },
   "compare_structure": {
-    "exact_chain": 11617,
+    "exact_chain": 11645,
     "claude_extra_container": 175,
     "claude_missing_container": 617,
     "row_wrap_missing": 23,
     "_note_r352": "Round 352: exact 11464 → 11607 (+143, the restored sections); missing 607 → 617 NAMED — the 44 pages whose carousel reverts to the honest hand-off box (a trailing [video]/[image], words between slide tables, a leading heading) no longer show the gold's row.carousel container. Hold-or-improve from here.",
-    "_note_r356": "Round 356: exact 11607 → 11617 (+10, the restored paragraphs the gold has); EXTRA 175 / missing 617 EXACT."
+    "_note_r356": "Round 356: exact 11607 → 11617 (+10, the restored paragraphs the gold has); EXTRA 175 / missing 617 EXACT.",
+    "_note_r361": "Round 361: exact wrapper chain 11617 → 11645 (the EXPFUN02–05 crumbs / panel wrappers now match)."
   },
   "body_compare": {
     "any_breakdown": 182,

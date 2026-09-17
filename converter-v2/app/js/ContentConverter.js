@@ -910,6 +910,44 @@ class ContentConverter {
 		// Data flag: body_region.inquiry_tabs.page_split   Env toggle: CEDPAGE_OFF
 		const cedInq = PanelsBuilder.detectInquiryCed(page, tpl);
 		const cedInquiryMode = cedInq.on;
+		// ROUND 361 — the EXPlore "Navigation with N sections" inquiry dialect (EXPFUN02–05):
+		// PanelsBuilder.detectInquirySections flags the instruction and its section openers; the body
+		// loop below pushes a panel sentinel at each flagged opener (and renders the consumed ones as
+		// nothing), and inquiryPanels' sectionMode wraps the result. Single-file pages only (the r112
+		// scope) and never alongside the BLL / heading-label / CED modes above — each of those needs
+		// its own opener grammar, which this dialect does not carry.
+		// Data flag: inquiry_tabs.section_nav   Env toggle: SECTIONNAV_OFF
+		// The detector reads the BODY partition as the loop below will walk it (bodyItems — black runs
+		// already merged), not page.items, so that its flags land on the very objects the loop visits.
+		const secInq = (!inquiryMode && !cedInquiryMode && _singleFile)
+			? PanelsBuilder.detectInquirySections({ items: bodyItems }, tpl) : { on: false, labels: [] };
+		const secInquiryMode = secInq.on;
+		// An opener typed in BLACK (`TAB NAV 1: Learner` on EXPFUN03 / EXPFUN05) sits INSIDE a merged black
+		// run by now (the black-run merge joins consecutive black lines into one item, and an [image] then
+		// gathers the whole run as its following text), so the loop would never visit it on its own. The
+		// same cut the phase-text pre-pass makes above: split that item at the opener LINE into
+		// black(before) + a NON-black {type:"inqsection"} marker + black(after). The marker stops every
+		// gatherer (they walk `type === "black"` neighbours only), and the loop's flag check pushes the
+		// panel sentinel at it and renders nothing. Walks backwards so a splice never shifts an unvisited index.
+		if (secInquiryMode) {
+			for (let k = bodyItems.length - 1; k >= 0; k--) {
+				const bi = bodyItems[k];
+				if (bi.type !== "black" || !bi._inqSectionLines) continue;
+				const marks = new Map(bi._inqSectionLines.map((m) => [m.line, m.k]));
+				const lines = String(bi.text || "").split(/\n/);
+				const repl = []; let buf = [];
+				const flush = () => { if (buf.join("\n").trim()) repl.push({ type: "black", text: buf.join("\n"), block: bi.block }); buf = []; };
+				lines.forEach((l, li) => {
+					if (!marks.has(li)) { buf.push(l); return; }
+					flush();
+					const mk = { type: "inqsection", _inqSectionConsume: true };
+					if (marks.get(li) !== null && marks.get(li) !== undefined) mk._inqSection = marks.get(li);
+					repl.push(mk);
+				});
+				flush();
+				bodyItems.splice(k, 1, ...repl);
+			}
+		}
 		// SIDE-ALERT PAIRING: in the human-built output, a RIGHT-positioned alert box sits
 		// side-by-side with the content that follows it, sharing one row (an 8-column content
 		// block next to a 4-column alert block), rather than sitting in its own separate row
@@ -1544,6 +1582,28 @@ class ContentConverter {
 			// already been captured for the crumb-trail navigation instead. (On module CEDT404
 			// this list sits in the body partition of the page; on CEDK101 it sits in the menu.)
 			if (it._inquiryCrumb) continue;
+
+			// ROUND 361 — the EXPlore "Navigation with N sections" dialect (PanelsBuilder.detectInquirySections):
+			// a flagged section opener closes any still-open activity, breaks the row and pushes the panel
+			// sentinel (the r102 `[page N]` split, verbatim); a CONSUMED opener — the instruction, a
+			// `[section N]` tag, a `TAB NAV N:` line — then renders nothing, while a heading opener falls
+			// through and renders as its panel's first heading.
+			// Env toggle: SECTIONNAV_OFF (the detector never flags, so nothing here can fire)
+			if (secInquiryMode && (it._inqSection !== undefined || it._inqSectionConsume)) {
+				if (it._inqSection !== undefined) {
+					while (stack.length && stack[stack.length - 1].tag === "activity") {
+						emit(stack.pop().close);
+						if (!stack.length) breakRow();
+					}
+					if (!stack.length) {
+						breakRow();
+						parts.push(INQ_SENTINEL);
+						pageLabelHold = "";
+						headingHold = false;
+					}
+				}
+				if (it._inqSectionConsume) continue;
+			}
 
 			// [MTKquiz] instruction run / silence (ROUND 322 — see the mtk closures above):
 			// placed BEFORE the comment surfacing so an omitted question leaves no trace.
@@ -3403,8 +3463,9 @@ class ContentConverter {
 		// class and footer.
 		const finalBody = PanelsBuilder.inquiryPanels(bodyHtml,
 			{ on: inquiryMode, sentinel: INQ_SENTINEL, labels: inquiryLabels,
-				cedMode: cedInquiryMode, cedLabels: cedInq.labels, headingLabel: _headingLabelOn });
-		const inquiryActive = (inquiryMode || cedInquiryMode) && finalBody !== bodyHtml;
+				cedMode: cedInquiryMode, cedLabels: cedInq.labels, headingLabel: _headingLabelOn,
+				sectionMode: secInquiryMode, sectionLabels: secInq.labels });
+		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode) && finalBody !== bodyHtml;
 		// CED firing flags the fixed inquiry footer-nav shell (a single-file CED page has no
 		// registry footer links of its own, so SkeletonBuilder would otherwise emit an empty
 		// #footer). Scoped specifically to CED so the BLL family's footers stay byte-unchanged.

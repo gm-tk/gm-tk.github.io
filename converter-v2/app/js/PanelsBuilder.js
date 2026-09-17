@@ -636,13 +636,35 @@ class PanelsBuilder {
 	 *
 	 * Data: body_region.inquiry_tabs.
 	 */
-	static inquiryPanels(body, { on, sentinel, labels, cedMode, cedLabels, headingLabel } = {}) {
+	static inquiryPanels(body, { on, sentinel, labels, cedMode, cedLabels, headingLabel, sectionMode, sectionLabels } = {}) {
 		const cfg = DataService.Data.EmitTemplates.body_region.inquiry_tabs;
 		const sent = sentinel || (cfg && cfg.sentinel) || "<!--CV2_INQPANEL-->";
-		if (!(on || cedMode) || !cfg || cfg.enabled === false || !body.includes(sent)) return body.split(sent).join("");
+		if (!(on || cedMode || sectionMode) || !cfg || cfg.enabled === false || !body.includes(sent)) return body.split(sent).join("");
 		const segs = body.split(sent);
 		const intro = segs[0].trim();
 		const panelSegs = segs.slice(1).map((s) => s.trim());
+		// ROUND 361 — SECTION-NAV mode (the EXPlore "Navigation with N sections" dialect; see
+		// PanelsBuilder.detectInquirySections): segment 0 — everything BEFORE the first sentinel (the
+		// overview's learning-intention rows) — stays OUTSIDE the scaffold; then N+1 UNIFIED crumbs
+		// (intro_label + the instruction's labels, the first `showing`) and N+1 panels (the first
+		// `showing`), built with the page_split templates. The detector fires only when every label
+		// found an opener, so the label and panel counts agree; a stray extra panel gets an empty crumb.
+		// Data: inquiry_tabs.section_nav   Env toggle: SECTIONNAV_OFF (the detector never fires)
+		if (sectionMode) {
+			const ps = cfg.page_split || {};
+			const labs = sectionLabels || [];
+			const n = panelSegs.length;
+			if (!n) return body.split(sent).join("");
+			const crumbs = [cfg.crumbs_open];
+			for (let i = 0; i < n; i++)
+				crumbs.push(Utils.FillTemplate(ps.crumb_item || cfg.crumb_item, {
+					n: String(i + 1), label: labs[i] || "", showing: i === 0 ? " class=\"showing\"" : "" }));
+			crumbs.push(cfg.crumbs_close);
+			const panels = [];
+			for (let i = 0; i < n; i++)
+				panels.push(Utils.FillTemplate(ps.panel_open || cfg.panel_open, { n: String(i + 1), showing: i === 0 ? " showing" : "" }) + "\n" + panelSegs[i] + "\n" + cfg.panel_close);
+			return (intro ? intro + "\n" : "") + crumbs.join("\n") + "\n" + panels.join("\n");
+		}
 		// HEADING-LABEL mode (the "TWHA"/"TWHK" subject family): builds N UNIFIED
 		// panels (rel="1".."N", the first one marked "showing"); crumb 1 is always
 		// the fixed label "Introduction", and crumbs 2..N are each taken from that
@@ -808,6 +830,104 @@ class PanelsBuilder {
 			if (consumedOn && r.it.consumedBy !== undefined) suppressBundles.add(r.it.consumedBy);
 		}
 		return { on: true, labels, suppressBundles };
+	};
+
+	/**
+	 * ROUND 361 (the autonomous loop's session 19, Round 5 — the DIFF MINER's crumbs fact F23; KB 06 §3.4).
+	 * THE EXPlore "NAVIGATION WITH N SECTIONS" INQUIRY DIALECT (EXPFUN02–05). The writer declares the whole
+	 * crumb trail in ONE instruction — `[Side Navigation with 6 sections: Learner, Communicator, Scientist,
+	 * Social Scientist, Mathematician and Innovator]` (or `[Tab Navigation with …]`) — and then opens each
+	 * section with `[section N] Label` (a `shape n` SUBTAG once normalised, the label in blackAfter), with a
+	 * `TAB NAV N: Label` line (a red instruction run or a plain black run; the first one — `TAB NAV: Intro`,
+	 * `TAB NAV 1: Introduction` — opens the INTRO panel) or, on EXPFUN02, simply with a top-level [H1] / [H2]
+	 * heading that names the label ("Think like a scientist"). The human builds N+1 unified crumbs («Intro» +
+	 * the list, the first `showing`) and N+1 `div.inquiryPanel`s (the first `showing`) inside div#body.
+	 *
+	 * Scans the WHOLE item stream: finds the instruction, parses the labels (split on commas and "and"), then
+	 * walks the items after it matching each expected label IN ORDER to the next opener; fires only when every
+	 * label found one (a conservative all-or-nothing test — no partial scaffold). Flags for the body loop in
+	 * ContentConverter: `_inqSection` = the panel ordinal (0 = intro) on every opener (a sentinel is pushed
+	 * there), `_inqSectionConsume` on the instruction and on the tag / line openers (they render nothing); a
+	 * heading opener keeps rendering as the panel's first heading. With no explicit intro opener before the
+	 * first section opener, the instruction item itself opens the intro panel. Returns the crumb labels
+	 * (intro_label first) for inquiryPanels' sectionMode.
+	 *
+	 * Data: body_region.inquiry_tabs.section_nav   Env toggle: SECTIONNAV_OFF
+	 */
+	static detectInquirySections(page, tpl) {
+		const off = { on: false, labels: [] };
+		const cfg = tpl?.body_region?.inquiry_tabs?.section_nav;
+		if (!cfg || cfg.enabled === false) return off;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SECTIONNAV_OFF"]) return off;
+		const items = page.items || [];
+		const txt = (it) => `${it.text || ""} ${it.blackAfter || ""}`.replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		const norm = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9āēīōū]+/g, " ").trim();
+		const RX_INSTR = /\b(?:side|tab)\s*navigation\s*with\s*(\d+)\s*sections?\s*:\s*([^\]]+)/i;
+		let instrIx = -1, labels = [];
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (it.type !== "tag" && it.type !== "black") continue;
+			const m = RX_INSTR.exec(txt(it));
+			if (!m) continue;
+			labels = m[2].split(/\s*,\s*|\s+and\s+/i).map((x) => x.replace(/[\].\s]+$/g, "").trim()).filter(Boolean);
+			instrIx = i;
+			break;
+		}
+		if (instrIx < 0 || labels.length < (cfg.min_sections ?? 3)) return off;
+		const introWords = new Set((cfg.intro_words || ["intro", "introduction"]).map(norm));
+		const hTags = new Set((cfg.heading_openers || ["h1", "h2"]).map((t) => String(t).toLowerCase()));
+		const RX_SECTION = /^\s*\[\s*section\s*\d*\s*\]/i;
+		const RX_TABNAV = /^\s*(?:\u2705\s*)?tab\s*nav\s*(\d*)\s*:\s*(.*)$/i;
+		const openers = [];   // { it, k, consume }
+		let next = 0, introIx = -1;
+		for (let i = instrIx + 1; i < items.length && next < labels.length; i++) {
+			const it = items[i];
+			if (it.type !== "tag" && it.type !== "black") continue;
+			if (it.consumedBy !== undefined) continue;
+			if (it.type === "black") {
+				// A black run reaches the body loop MERGED — consecutive black lines joined into one item
+				// ("Be a Learner\nBe a Communicator\n…\nTAB NAV 1: Learner" on EXPFUN03) — so an opener typed in
+				// black is matched LINE by line and recorded with its line index; ContentConverter's pre-pass
+				// then cuts the item at that line into black(before) + a non-black marker + black(after).
+				const lines = String(it.text || "").split(/\n/);
+				for (let li = 0; li < lines.length && next < labels.length; li++) {
+					const m = RX_TABNAV.exec(lines[li].replace(/\*/g, "").trim());
+					if (!m) continue;
+					if (!openers.length && introWords.has(norm(m[2]))) { introIx = i; openers.push({ it, k: 0, consume: true, line: li }); continue; }
+					openers.push({ it, k: next + 1, consume: true, line: li }); next++;
+				}
+				continue;
+			}
+			const t = txt(it);
+			if (RX_SECTION.test(String(it.text || ""))) {
+				openers.push({ it, k: next + 1, consume: true }); next++; continue;
+			}
+			const m = RX_TABNAV.exec(t);
+			if (m) {
+				if (!openers.length && introWords.has(norm(m[2]))) { introIx = i; openers.push({ it, k: 0, consume: true }); continue; }
+				openers.push({ it, k: next + 1, consume: true }); next++; continue;
+			}
+			const ptag = String(it.parse?.primary?.tag || "").toLowerCase();
+			const want = norm(labels[next]);
+			if (it.type === "tag" && hTags.has(ptag) && want && norm(t).includes(want)) {
+				openers.push({ it, k: next + 1, consume: false }); next++; continue;
+			}
+		}
+		if (next < labels.length) return off;
+		const instr = items[instrIx];
+		instr._inqSectionInstr = true;
+		instr._inqSectionConsume = true;
+		if (introIx < 0) instr._inqSection = 0;   // no explicit intro opener: the instruction opens the intro panel
+		for (const o of openers) {
+			if (o.line !== undefined) {   // a black-run opener: flagged by LINE for the pre-pass cut
+				if (!o.it._inqSectionLines) o.it._inqSectionLines = [];
+				o.it._inqSectionLines.push({ line: o.line, k: o.k });
+				continue;
+			}
+			o.it._inqSection = o.k;
+			if (o.consume) o.it._inqSectionConsume = true;
+		}
+		return { on: true, labels: [cfg.intro_label || "Intro", ...labels] };
 	};
 }
 
