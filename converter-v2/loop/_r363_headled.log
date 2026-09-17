@@ -1,0 +1,73 @@
+heading-led openers: 894 / modules 98
+by tag: [('h3', 407), ('activity heading', 275), ('activity heading h3', 136), ('h2', 36), ('heading', 30), ('h4', 5), ('activity heading h2', 4), ('h5', 1)]
+
+GOLD state: [('h3-title-first', 536), ('no-box', 173), ('title-absent(h3)', 156), ('title-inside-h3', 8), ('h3-title-later(div.super-content)', 6), ('title-absent(div.super-content)', 4), ('title-inside-h2', 4), ('title-inside-div.super-content', 2), ('title-inside-h4', 2), ('title-absent(div.activity-icon)', 2), ('h3-title-later(div.activity-icon)', 1)]
+CLAUDE state: [('h3-title-first', 575), ('no-box', 91), ('title-inside-div.cv2-interactive', 80), ('title-absent(h3)', 55), ('title-absent(div.cv2-interactive)', 39), ('title-absent(p)', 38), ('title-inside-div.super-content', 10), ('title-absent(div.super-content)', 3), ('title-absent(div.dragAndDrop)', 2), ('title-absent(none)', 1)]
+
+GOLD × CLAUDE:
+   409  gold=h3-title-first               claude=h3-title-first
+    93  gold=title-absent(h3)             claude=h3-title-first
+    91  gold=no-box                       claude=no-box
+    64  gold=h3-title-first               claude=title-inside-div.cv2-interactive
+    54  gold=no-box                       claude=h3-title-first
+    30  gold=title-absent(h3)             claude=title-absent(h3)
+    22  gold=h3-title-first               claude=title-absent(p)
+    21  gold=h3-title-first               claude=title-absent(div.cv2-interactive)
+    14  gold=title-absent(h3)             claude=title-absent(div.cv2-interactive)
+    14  gold=h3-title-first               claude=title-absent(h3)
+    11  gold=no-box                       claude=title-absent(h3)
+     8  gold=title-absent(h3)             claude=title-absent(p)
+     8  gold=no-box                       claude=title-absent(p)
+     6  gold=title-absent(h3)             claude=title-inside-div.cv2-interactive
+     5  gold=h3-title-first               claude=title-inside-div.super-content
+     5  gold=title-inside-h3              claude=h3-title-first
+     4  gold=title-inside-h2              claude=h3-title-first
+     4  gold=no-box                       claude=title-inside-div.cv2-interactive
+     3  gold=title-inside-h3              claude=title-inside-div.cv2-interactive
+     3  gold=title-absent(div.super-content) claude=h3-title-first
+     3  gold=h3-title-later(div.super-content) claude=title-inside-div.cv2-interactive
+     3  gold=title-absent(h3)             claude=title-inside-div.super-content
+     3  gold=no-box                       claude=title-absent(div.cv2-interactive)
+     2  gold=title-absent(h3)             claude=title-absent(div.super-content)
+     2  gold=title-inside-h4              claude=h3-title-first
+     2  gold=title-absent(div.activity-icon) claude=h3-title-first
+     2  gold=no-box                       claude=title-absent(div.dragAndDrop)
+     1  gold=h3-title-first               claude=title-absent(none)
+     1  gold=title-inside-div.super-content claude=title-inside-div.super-content
+     1  gold=title-inside-div.super-content claude=h3-title-first
+     1  gold=h3-title-later(div.super-content) claude=title-inside-div.super-content
+     1  gold=title-absent(div.super-content) claude=title-absent(div.super-content)
+     1  gold=h3-title-later(div.super-content) claude=title-absent(div.cv2-interactive)
+     1  gold=h3-title-later(div.super-content) claude=h3-title-first
+     1  gold=h3-title-later(div.activity-icon) claude=h3-title-first
+
+paired boxes 721: gold h3-title-first share = 0.74
+
+by template: n / gold h3-first / claude h3-first / MISS (gold h3-first, Claude title-inside capture) pages/modules
+  Standard: n=592 gold=0.77 claude=0.73 miss=66 boxes / 51 pages / 21 modules
+  Fundamentals: n=103 gold=0.59 claude=0.60 miss=3 boxes / 2 pages / 2 modules
+  Inquiry: n=26 gold=0.65 claude=0.92 miss=0 boxes / 0 pages / 0 modules
+
+by subject: n / gold h3-first / claude h3-first / MISS (gold h3-first, Claude title-inside capture) pages/modules
+  1-10 English: n=278 gold=0.82 claude=0.69 miss=53 boxes / 45 pages / 19 modules
+  1-10 Mathematics: n=191 gold=0.62 claude=0.61 miss=14 boxes / 6 pages / 2 modules
+  NCEA1: n=93 gold=0.72 claude=0.80 miss=0 boxes / 0 pages / 0 modules
+  Online Safety (OS9000): n=47 gold=0.72 claude=0.81 miss=2 boxes / 2 pages / 2 modules
+  1-10 Social Science: n=36 gold=0.92 claude=0.94 miss=0 boxes / 0 pages / 0 modules
+  ConnectED: n=34 gold=0.71 claude=0.88 miss=0 boxes / 0 pages / 0 modules
+  ANZH: n=15 gold=0.87 claude=0.80 miss=0 boxes / 0 pages / 0 modules
+  1-10 Technology: n=14 gold=0.57 claude=0.93 miss=0 boxes / 0 pages / 0 modules
+  Leaving to Learn: n=8 gold=0.75 claude=1.00 miss=0 boxes / 0 pages / 0 modules
+  1-10 Health and PE: n=4 gold=1.00 claude=0.50 miss=0 boxes / 0 pages / 0 modules
+  None: n=1 gold=1.00 claude=0.00 miss=0 boxes / 0 pages / 0 modules
+
+by tag: n / gold h3-first / claude h3-first / MISS (gold h3-first, Claude title-inside capture) pages/modules
+  h3: n=347 gold=0.64 claude=0.72 miss=3 boxes / 2 pages / 2 modules
+  activity heading: n=184 gold=0.83 claude=0.72 miss=33 boxes / 28 pages / 12 modules
+  activity heading h3: n=121 gold=0.92 claude=0.77 miss=20 boxes / 17 pages / 7 modules
+  h2: n=32 gold=0.62 claude=0.72 miss=0 boxes / 0 pages / 0 modules
+  heading: n=30 gold=0.90 claude=0.53 miss=13 boxes / 6 pages / 2 modules
+  activity heading h2: n=4 gold=0.25 claude=1.00 miss=0 boxes / 0 pages / 0 modules
+  h4: n=3 gold=0.33 claude=0.67 miss=0 boxes / 0 pages / 0 modules
+
+THE CLASS: 69 boxes / 23 modules; by module: ENFUN03:1, ENGC201:1, ENGC202:4, ENGC301:6, ENGC302:2, ENGC401:2, ENGI103:2, ENGI201:1, ENGI303:3, ENGI401:1, ENGJ201:3, ENGR101:1, ENGR201:8, ENGR301:2, ENGS102:1, ENGS201:4, ENGS202:4, ENGS301:3, ENGS401:4, MXFU402:12, MXFUN01:2, OSAI101:1, OSAI301:1

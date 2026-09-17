@@ -1,0 +1,302 @@
+TRR102: identical 6 / changed 0
+TRR106: identical 2 / changed 0
+TRR111: identical 6 / changed 0
+TRR115: prep refused (no-wt)
+ARFUN01: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+  ~ ENFUN03_0_0.html: -6 +13
+     - <p>Make your own sentences</p>
+     - <p>Make up some simple and compound sentences about each of the pictures below.</p>
+     - <p>Write them in your writing book or piece of paper.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [radioquiz]</p>
+     - <p>What’s the pace?</p>
+     - <p>Read each of the sentences. Tick whether the writing creates a fast or slow pace.</p>
+     + <h3>Make your own sentences</h3>
+     + <p>Make up some simple and compound sentences about each of the pictures below.</p>
+     + <p>Write them in your writing book or piece of paper.</p>
+     + <h3>What’s the pace?</h3>
+     + <p>Read each of the sentences. Tick whether the writing creates a fast or slow pace.</p>
+     + <div class="col-md-12 col-12">
+     + <div class="row">
+     + </div>
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + </div>
+     + </div>
+     + </div>
+ENFUN03: identical 0 / changed 1
+  ~ ENFUN08_0_0.html: -52 +56
+     - <p>What sound?</p>
+     - <p>Look at each of these images. Tell your supervisor the sound words you think of when you look at them.</p>
+     - <p>The meaning behind the phrase</p>
+     - <p>Read each of the phrases below. Share with your supervisor what you think they may mean.</p>
+     - <ul>
+     - <li>Raining cats and dogs</li>
+     - <li>Hold your horses</li>
+     - <li>Cool as a cucumber</li>
+     - <li>Under the weather</li>
+     - <li>In the same boat</li>
+     - <li>Butterflies in your stomach</li>
+     - </ul>
+     - <p>Click here to reveal the answers.</p>
+     - <p>Answers</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [draganddropstandard]</p>
+     - <p>Making metaphors</p>
+     - <p>Drag and drop the best words to complete the metaphors.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ENFUN08-00-11" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [wordhighlighter]</p>
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity 1A — see EN
+     - <p>Find the human quality</p>
+     - <p>Highlight the words in the following sentences that give a human quality.</p>
+     - <p>The old car groaned as it climbed up the steep hill.</p>
+     - <p>The thunder growled angrily in the distance.</p>
+     - <p>Shadows crept silently across the walls.</p>
+     - <p>Fear gripped him tightly, refusing to let go.</p>
+     - <p>The waves hugged the shore.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ENFUN08-00-12" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ENFUN08-00-13" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ENFUN08-00-14" style="border: 8px s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="ENFUN08-00-15" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ENFUN08-00-16" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p>Which word creates rhythm?</p>
+     - <p>Select the best word to end these sentences to fit the rhythm.</p>
+     - … 12 more removed
+     + <h3>What sound?</h3>
+     + <p>Look at each of these images. Tell your supervisor the sound words you think of when you look at them.</p>
+     + <h3>The meaning behind the phrase</h3>
+     + <p>Read each of the phrases below. Share with your supervisor what you think they may mean.</p>
+     + <ul>
+     + <li>Raining cats and dogs</li>
+     + <li>Hold your horses</li>
+     + <li>Cool as a cucumber</li>
+     + <li>Under the weather</li>
+     + <li>In the same boat</li>
+     + <li>Butterflies in your stomach</li>
+     + </ul>
+     + <p>Click here to reveal the answers.</p>
+     + <p>Answers</p>
+     + <h3>Making metaphors</h3>
+     + <p>Drag and drop the best words to complete the metaphors.</p>
+     + <h3>Find the human quality</h3>
+     + <p>Highlight the words in the following sentences that give a human quality.</p>
+     + <p>The old car groaned as it climbed up the steep hill.</p>
+     + <p>The thunder growled angrily in the distance.</p>
+     + … 36 more added
+ENFUN08: identical 0 / changed 1
+HPFUN103: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+SCFUN01: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+BLL140: identical 1 / changed 0
+BLL210: identical 1 / changed 0
+CEDK101: identical 1 / changed 0
+CEDO202: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT208: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+XDLS903: identical 8 / changed 0
+AGH1003: identical 9 / changed 0
+AGH1007: identical 10 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH404: identical 7 / changed 0
+ART1005: identical 1 / changed 0
+BLL113: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL131: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL171: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL212: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL241: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+CEDO105: identical 6 / changed 0
+CEDR501: identical 11 / changed 0
+ENG1005: identical 6 / changed 0
+  ~ ENGC201_6_0.html: -2 +2
+     - <p>Which sound?</p>
+     - <p>Match the best sound with the image provided.</p>
+     + <h3>Which sound?</h3>
+     + <p>Match the best sound with the image provided.</p>
+ENGC201: identical 6 / changed 1
+  ~ ENGC401_2_0.html: -27 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGC401-02-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity 2B — see ENG
+     - <p>Optional Task- Capturing Camera Shots</p>
+     - <p>Select a subject and take photos using the camera shots this this lesson. Upload your images into your drop
+     - <ul>
+     - <li>Close up</li>
+     - <li>Medium shot</li>
+     - <li>Wide shot</li>
+     - <li>Establishing shot</li>
+     - <li>Over the shoulder</li>
+     - <li>Extreme close up</li>
+     - </ul>
+     - <p>Upload to dropbox</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ENGC401-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Optional Task- Capturing Camera Shots</h3>
+     + <p>Select a subject and take photos using the camera shots this this lesson. Upload your images into your drop
+     + <ul>
+     + <li>Close up</li>
+     + <li>Medium shot</li>
+     + <li>Wide shot</li>
+     + <li>Establishing shot</li>
+     + <li>Over the shoulder</li>
+     + <li>Extreme close up</li>
+     + </ul>
+     + <p>Upload to dropbox</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ENGC401-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ ENGC401_3_0.html: -2 +2
+     - <p>Angle Analysis</p>
+     - <p>In your learning journal, write down what type of camera angle you see in the examples. Explain why you thi
+     + <h3>Angle Analysis</h3>
+     + <p>In your learning journal, write down what type of camera angle you see in the examples. Explain why you thi
+ENGC401: identical 6 / changed 2
+ENGI201: identical 5 / changed 0
+  ~ ENGI302_4_0.html: -2 +2
+     - <p>Characters in Cinderella</p>
+     - <p>Consider the traditional tale of Cinderella. List all the characters that may be able to tell this story fr
+     + <h3>Characters in Cinderella</h3>
+     + <p>Consider the traditional tale of Cinderella. List all the characters that may be able to tell this story fr
+  ~ ENGI302_5_0.html: -2 +2
+     - <p>Crafting Your Own</p>
+     - <p>For each of the images provided, write one simile and one metaphor in your learning journal.</p>
+     + <h3>Crafting Your Own</h3>
+     + <p>For each of the images provided, write one simile and one metaphor in your learning journal.</p>
+ENGI302: identical 5 / changed 2
+ENGI405: identical 8 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR202: identical 8 / changed 0
+  ~ ENGS102_1_0.html: -2 +2
+     - <p>Main characters</p>
+     - <p>Look closely at the characters in this story. Match each character with the words that describe them.</p>
+     + <h3>Main characters</h3>
+     + <p>Look closely at the characters in this story. Match each character with the words that describe them.</p>
+  ~ ENGS102_3_0.html: -5 +4
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Here is an example of what this can h
+     - <p><a href="https://tekuradev.desire2learn.com/d2l/le/content/7801/viewContent/90179/View" target="_blank">htt
+     - <p>Make a Kiwiana scene</p>
+     - <p>Click and drag the Kiwiana items and characters into the scene below to create your own Kiwiana picture.</p
+     - <p><a href="https://docs.google.com/presentation/d/1KkgaT7qfrsNELD8_0BJTKjYopRkrAmR_DsBqDmce6qY/edit?usp=shari
+     + <h3><a href="https://tekuradev.desire2learn.com/d2l/le/content/7801/viewContent/90179/View" target="_blank">ht
+     + <p>Make a Kiwiana scene</p>
+     + <p>Click and drag the Kiwiana items and characters into the scene below to create your own Kiwiana picture.</p
+     + <p><a href="https://docs.google.com/presentation/d/1KkgaT7qfrsNELD8_0BJTKjYopRkrAmR_DsBqDmce6qY/edit?usp=shari
+  ~ ENGS102_4_0.html: -2 +2
+     - <p>Little Blue Duck’s day</p>
+     - <p>The Little Blue Duck worked hard too, but her day is missing the times. Look at the clocks below. Can you r
+     + <h3>Little Blue Duck’s day</h3>
+     + <p>The Little Blue Duck worked hard too, but her day is missing the times. Look at the clocks below. Can you r
+  ~ ENGS102_5_0.html: -1 +1
+     - <p>Create a character</p>
+     + <h3>Create a character</h3>
+  ~ ENGS102_6_0.html: -8 +8
+     - <p>Planning</p>
+     - <p>Before writing a story, you need to think of ideas. When we say ‘brainstorm for ideas’ this means to</p>
+     - <p>think about as many things as you can about a topic and write, draw or say them. You can write them</p>
+     - <p>down, record them or draw them! This helps you to plan your story.</p>
+     - <p>Watch the video to learn more about using brainstorming in story writing.</p>
+     - <p><a href="https://www.youtube.com/watch?v=dOCp1OlYnGs" target="_blank">https://www.youtube.com/watch?v=dOCp1
+     - <p>Reading your draft</p>
+     - <p>Publishing</p>
+     + <h3>Planning</h3>
+     + <p>Before writing a story, you need to think of ideas. When we say ‘brainstorm for ideas’ this means to</p>
+     + <p>think about as many things as you can about a topic and write, draw or say them. You can write them</p>
+     + <p>down, record them or draw them! This helps you to plan your story.</p>
+     + <p>Watch the video to learn more about using brainstorming in story writing.</p>
+     + <p><a href="https://www.youtube.com/watch?v=dOCp1OlYnGs" target="_blank">https://www.youtube.com/watch?v=dOCp1
+     + <h3>Reading your draft</h3>
+     + <h3>Publishing</h3>
+ENGS102: identical 2 / changed 5
+ENGS302: identical 7 / changed 0
+EXIP901: identical 6 / changed 0
+HES1005: identical 9 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1006: identical 15 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXEO201: identical 10 / changed 0
+MXEX101: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU302: identical 10 / changed 0
+OSAH401: identical 5 / changed 0
+  ~ OSAI301_2_0.html: -2 +2
+     - <p>Applying AI risks and benefits</p>
+     - <p>Below is a list of scenarios that AI tools can and are being used for. Using the information you have learn
+     + <h3>Applying AI risks and benefits</h3>
+     + <p>Below is a list of scenarios that AI tools can and are being used for. Using the information you have learn
+OSAI301: identical 3 / changed 1
+OSBY201: identical 4 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM501: identical 6 / changed 0
+  ~ OSOH401_3_0.html: -2 +2
+     - <p>A Te Kura digital citizen</p>
+     - <p>Te Kura thinks a good digital citizen is someone who strives to do the following. Drag and drop the scenari
+     + <h3>A Te Kura digital citizen</h3>
+     + <p>Te Kura thinks a good digital citizen is someone who strives to do the following. Drag and drop the scenari
+OSOH401: identical 4 / changed 1
+OSSC501: identical 6 / changed 0
+PES1002: identical 11 / changed 0
+PES1007: identical 12 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1007: identical 10 / changed 0
+SSCI205: identical 10 / changed 0
+SSOG301: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS906: identical 8 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9006: identical 8 / changed 0
+XLP04: identical 5 / changed 0
+XMES102: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 535 / changed 14 / missing 0 over 104 modules
+CHANGED: ENFUN03/ENFUN03_0_0.html ENFUN08/ENFUN08_0_0.html ENGC201/ENGC201_6_0.html ENGC401/ENGC401_2_0.html ENGC401/ENGC401_3_0.html ENGI302/ENGI302_4_0.html ENGI302/ENGI302_5_0.html ENGS102/ENGS102_1_0.html ENGS102/ENGS102_3_0.html ENGS102/ENGS102_4_0.html ENGS102/ENGS102_5_0.html ENGS102/ENGS102_6_0.html OSAI301/OSAI301_2_0.html OSOH401/OSOH401_3_0.html

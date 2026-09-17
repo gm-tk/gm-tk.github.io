@@ -1,0 +1,356 @@
+PNR101: identical 2 / changed 0
+TRR103: identical 4 / changed 0
+TRR107: identical 3 / changed 0
+TRR112: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+ARFUN02: identical 1 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+  ~ ENFUN04_0_0.html: -2 +6
+     - <p>Match the homophones</p>
+     - <p>Match the homophones to the correct picture.</p>
+     + <h3>Match the homophones</h3>
+     + <p>Match the homophones to the correct picture.</p>
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + </div>
+     + </div>
+ENFUN04: identical 0 / changed 1
+  ~ ENFUN09_0_0.html: -6 +22
+     - <p>Writing a draft</p>
+     - <p>Adding details</p>
+     - <p>Now that you have your first piece of writing, the next step is to think about how we can add more to make 
+     - <p>Look at the sentence below. Drag and drop the words or phrases to make the sentence more interesting by add
+     - <p>Reading your draft</p>
+     - <p>Publishing</p>
+     + <h3>Writing a draft</h3>
+     + <h3>Adding details</h3>
+     + <p>Now that you have your first piece of writing, the next step is to think about how we can add more to make 
+     + <p>Look at the sentence below. Drag and drop the words or phrases to make the sentence more interesting by add
+     + <h3>Reading your draft</h3>
+     + <h3>Publishing</h3>
+     + <div class="col-md-12 col-12">
+     + <div class="col-md-12 col-12">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+     + <div class="row">
+     + </div>
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + … 2 more added
+ENFUN09: identical 0 / changed 1
+HPFUN201: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+MXFUN01: identical 19 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+BLL110: identical 1 / changed 0
+BLL150: identical 1 / changed 0
+BLL220: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDR201: identical 1 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+ENGFUN02: identical 5 / changed 0
+EXPFUN05: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+XDLS909: identical 5 / changed 0
+AGH1004: identical 7 / changed 0
+AGH1008: identical 10 / changed 0
+ANZH105: identical 8 / changed 0
+ANZH303: identical 7 / changed 0
+ART1002: identical 8 / changed 0
+ART1006: identical 6 / changed 0
+BLL114: identical 3 / changed 0
+BLL121: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL143: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL161: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL176: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL231: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+CEDO301: identical 6 / changed 0
+CEDT501: identical 15 / changed 0
+ENG1007: identical 1 / changed 0
+  ~ ENGC202_1_0.html: -7 +7
+     - <p>Listen and draw</p>
+     - <p>What to do:</p>
+     - <ol>
+     - <li>Listen to the instructions, one at a time.</li>
+     - <li>On a piece of paper, draw what you hear the speaker asking you to do.</li>
+     - <li>When the instructions are put together you will have a completed picture.</li>
+     - </ol>
+     + <h3>Listen and draw</h3>
+     + <p>What to do:</p>
+     + <li>Listen to the instructions, one at a time.</li>
+     + <li>On a piece of paper, draw what you hear the speaker asking you to do.</li>
+     + <li>When the instructions are put together you will have a completed picture.</li>
+     + <ol>
+     + </ol>
+  ~ ENGC202_3_0.html: -2 +2
+     - <p>Adding imperative verbs</p>
+     - <p>Drag and drop the correct imperative verbs into the steps.</p>
+     + <h3>Adding imperative verbs</h3>
+     + <p>Drag and drop the correct imperative verbs into the steps.</p>
+  ~ ENGC202_4_0.html: -4 +3
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [modals] can it be an image (top cell
+     - <p>Who did it best?</p>
+     - <p>We have helped all three contestants to improve their entries into the Mini Makers competition. Who do you 
+     - <p>You can see each of their final entries here.</p>
+     + <h3>Who did it best?</h3>
+     + <p>We have helped all three contestants to improve their entries into the Mini Makers competition. Who do you 
+     + <p>You can see each of their final entries here.</p>
+  ~ ENGC202_8_0.html: -1 +1
+     - <p>Reflection</p>
+     + <h3>Reflection</h3>
+ENGC202: identical 5 / changed 4
+ENGI101: identical 4 / changed 0
+ENGI202: identical 7 / changed 0
+  ~ ENGI303_2_0.html: -1 +1
+     - <p>Princess Iwa’s challenges</p>
+     + <h3>Princess Iwa’s challenges</h3>
+  ~ ENGI303_3_0.html: -2 +2
+     - <p>Using show, don’t tell</p>
+     - <p>Write some show, don’t tell sentences in your journal. Transform the following plain sentences into somethi
+     + <h3>Using show, don’t tell</h3>
+     + <p>Write some show, don’t tell sentences in your journal. Transform the following plain sentences into somethi
+  ~ ENGI303_5_0.html: -2 +2
+     - <p>Calculating increases</p>
+     - <p>In your journal, use the table to calculate the increase in centimetres for each jump. Then, fill in the mi
+     + <h3>Calculating increases</h3>
+     + <p>In your journal, use the table to calculate the increase in centimetres for each jump. Then, fill in the mi
+  ~ ENGI303_6_0.html: -47 +21
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="ENGI303-06-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity 6A — see EN
+     - <p>Planning your recount</p>
+     - <p>In your journal complete the planning table.</p>
+     - <ol>
+     - <li>Write the topic of your recount.</li>
+     - <li>Briefly write what happened in the beginning, middle and end of this event (one sentence each).</li>
+     - </ol>
+     - <p><a href="https://docs.google.com/document/d/1-v2Wq29ZZSfdLJlosYu9Wwwy6c_N0VGiZ8NlAzrT_Lw/edit?usp=sharing" 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ENGI303-06-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ENGI303-06-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: unclassified — Activity 6C — see EN
+     - <div style="font-size: 0.95em">
+     - <p>Drafting your recount</p>
+     - <p>Use your planner to draft your recount. This should be at least three paragraphs long and show a clear begi
+     - <p>Checklist:</p>
+     - <ul>
+     - <li>Include a challenge you or someone else faced.</li>
+     - <li>Clear beginning, middle and ending.</li>
+     - <li>Use past tense for all verbs.</li>
+     - <li>Use description (show, don’t tell).</li>
+     - </ul>
+     - … 7 more removed
+     + <h3>Planning your recount</h3>
+     + <p>In your journal complete the planning table.</p>
+     + <ol>
+     + <li>Write the topic of your recount.</li>
+     + <li>Briefly write what happened in the beginning, middle and end of this event (one sentence each).</li>
+     + </ol>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ENGI303-06-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <h3>Drafting your recount</h3>
+     + <p>Use your planner to draft your recount. This should be at least three paragraphs long and show a clear begi
+     + <p>Checklist:</p>
+     + <li>Include a challenge you or someone else faced.</li>
+     + <li>Clear beginning, middle and ending.</li>
+     + <li>Use past tense for all verbs.</li>
+     + <li>Use description (show, don’t tell).</li>
+     + <p><a href="https://docs.google.com/document/d/1-v2Wq29ZZSfdLJlosYu9Wwwy6c_N0VGiZ8NlAzrT_Lw/edit?usp=sharing" 
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <ul>
+     + </ul>
+     + … 1 more added
+ENGI303: identical 3 / changed 4
+ENGJ101: identical 5 / changed 0
+ENGJ301: identical 8 / changed 0
+  ~ ENGR101_2_0.html: -1 +1
+     - <p>What happened?</p>
+     + <h3>What happened?</h3>
+  ~ ENGR101_5_0.html: -7 +7
+     - <p>Helping the SPCA count their pets</p>
+     - <p>The SPCA is adopting out their pets. Let’s help them figure out how many animals are left after some get ad
+     - <p>Answer the following questions. You can use the drag and drop animals to help you work out the answers.</p>
+     - <li>There are 8 kittens at the SPCA. Three are adopted. How many kittens are left?</li>
+     - <p><a href="https://www.istockphoto.com/vector/appearance-of-my-home-simple-two-color-set-gm1483035963-5097573
+     - <ol>
+     - </ol>
+     + <h3>Helping the SPCA count their pets</h3>
+     + <p>The SPCA is adopting out their pets. Let’s help them figure out how many animals are left after some get ad
+     + <p>Answer the following questions. You can use the drag and drop animals to help you work out the answers.</p>
+     + <ol>
+     + <li>There are 8 kittens at the SPCA. Three are adopted. How many kittens are left?</li>
+     + </ol>
+     + <p><a href="https://www.istockphoto.com/vector/appearance-of-my-home-simple-two-color-set-gm1483035963-5097573
+  ~ ENGR101_6_0.html: -1 +1
+     - <p>Your headline</p>
+     + <h3>Your headline</h3>
+ENGR101: identical 5 / changed 3
+  ~ ENGR301_4_0.html: -1 +1
+     - <p>Nikau’s numbers</p>
+     + <h3>Nikau’s numbers</h3>
+  ~ ENGR301_5_0.html: -1 +1
+     - <p>Nikau’s Introduction</p>
+     + <h3>Nikau’s Introduction</h3>
+  ~ ENGR301_8_0.html: -9 +9
+     - <p>Editing for success</p>
+     - <p>One of the most important steps in completing your writing is to edit. Throughout these lessons, you have c
+     - <p>Before submitting your work, take the time to edit it carefully.</p>
+     - <p>Paste your final persuasive essay together in your learning journal:</p>
+     - <ul>
+     - <li>Introduction</li>
+     - <li>Three body paragraphs</li>
+     - <li>Conclusion</li>
+     - </ul>
+     + <h3>Editing for success</h3>
+     + <p>One of the most important steps in completing your writing is to edit. Throughout these lessons, you have c
+     + <p>Before submitting your work, take the time to edit it carefully.</p>
+     + <p>Paste your final persuasive essay together in your learning journal:</p>
+     + <ul>
+     + <li>Introduction</li>
+     + <li>Three body paragraphs</li>
+     + <li>Conclusion</li>
+     + </ul>
+ENGR301: identical 6 / changed 3
+  ~ ENGS201_1_0.html: -1 +1
+     - <p>Embellish your story!</p>
+     + <h3>Embellish your story!</h3>
+  ~ ENGS201_4_0.html: -4 +4
+     - <p>Apostrophes practice</p>
+     - <p>Tick whether the apostrophe has been used correctly in each of these sentences.</p>
+     - <p>What if?</p>
+     - <p>Complete one of the following options in your learning journal.</p>
+     + <h3>Apostrophes practice</h3>
+     + <p>Tick whether the apostrophe has been used correctly in each of these sentences.</p>
+     + <h3>What if?</h3>
+     + <p>Complete one of the following options in your learning journal.</p>
+  ~ ENGS201_7_0.html: -1 +1
+     - <p>Revising and editing</p>
+     + <h3>Revising and editing</h3>
+  ~ ENGS201_8_0.html: -1 +1
+     - <p>Revising and editing</p>
+     + <h3>Revising and editing</h3>
+ENGS201: identical 5 / changed 4
+  ~ ENGS401_1_0.html: -3 +2
+     - <p>Your thoughts</p>
+     - <p>Select ONE of the dance videos from Activity 1.</p>
+     - <p>[table] (just screen snips for these images)</p>
+     + <h3>Your thoughts</h3>
+     + <p>Select ONE of the dance videos from Activity 1.</p>
+  ~ ENGS401_2_0.html: -2 +2
+     - <p>Analysing Busta’s response</p>
+     - <p>Read Busta’s response to <i>Battle</i> again and answer the following questions.</p>
+     + <h3>Analysing Busta’s response</h3>
+     + <p>Read Busta’s response to <i>Battle</i> again and answer the following questions.</p>
+  ~ ENGS401_5_0.html: -17 +4
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ENGS401-05-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: unclassified — Activity 5B — see EN
+     - <div style="font-size: 0.95em">
+     - <p>Calculations</p>
+     - <p>In your journal:</p>
+     - <p>Complete the table by totaling one judge’s scorecard, including their mean score.</p>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Calculations</h3>
+     + <p>In your journal:</p>
+     + <p>Complete the table by totaling one judge’s scorecard, including their mean score.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+  ~ ENGS401_6_0.html: -1 +1
+     - <p>Final responses</p>
+     + <h3>Final responses</h3>
+ENGS401: identical 3 / changed 4
+EXPFUN07: identical 1 / changed 0
+HES1006: identical 8 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1007: identical 7 / changed 0
+MXDB201: identical 7 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXEO202: identical 9 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL204: identical 12 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+  ~ OSAH501_3_0.html: -2 +2
+     - <p>Which law?</p>
+     - <p>Read each example and select the Aotearoa New Zealand law (or laws) that <b>may</b> apply. While not every 
+     + <h3>Which law?</h3>
+     + <p>Read each example and select the Aotearoa New Zealand law (or laws) that <b>may</b> apply. While not every 
+OSAH501: identical 5 / changed 1
+OSAI401: identical 5 / changed 0
+OSBY301: identical 4 / changed 0
+OSGM201: identical 4 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+PES1003: identical 11 / changed 0
+PES1008: identical 19 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1008: identical 6 / changed 0
+SSFUN07: identical 5 / changed 0
+TEDC401: identical 8 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XGF9002: identical 10 / changed 0
+XLP01: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XTAS102: identical 6 / changed 0
+
+TOTAL: identical 502 / changed 25 / missing 0 over 104 modules
+CHANGED: ENFUN04/ENFUN04_0_0.html ENFUN09/ENFUN09_0_0.html ENGC202/ENGC202_1_0.html ENGC202/ENGC202_3_0.html ENGC202/ENGC202_4_0.html ENGC202/ENGC202_8_0.html ENGI303/ENGI303_2_0.html ENGI303/ENGI303_3_0.html ENGI303/ENGI303_5_0.html ENGI303/ENGI303_6_0.html ENGR101/ENGR101_2_0.html ENGR101/ENGR101_5_0.html ENGR101/ENGR101_6_0.html ENGR301/ENGR301_4_0.html ENGR301/ENGR301_5_0.html ENGR301/ENGR301_8_0.html ENGS201/ENGS201_1_0.html ENGS201/ENGS201_4_0.html ENGS201/ENGS201_7_0.html ENGS201/ENGS201_8_0.html ENGS401/ENGS401_1_0.html ENGS401/ENGS401_2_0.html ENGS401/ENGS401_5_0.html ENGS401/ENGS401_6_0.html OSAH501/OSAH501_3_0.html

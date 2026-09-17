@@ -1,0 +1,320 @@
+PNR104: identical 3 / changed 0
+TRR105: prep refused (no-wt)
+TRR109: identical 6 / changed 0
+TRR114: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+ARFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+  ~ ENFUN02_0_0.html: -7 +11
+     - <p>What do you think about?</p>
+     - <p>Look at this picture.</p>
+     - <ul>
+     - <li>What do you think about when you see this picture?</li>
+     - <li>What could you do if you were in this picture?</li>
+     - </ul>
+     - <p>Click the sliders to see some ideas that you might have.</p>
+     + <h3>What do you think about?</h3>
+     + <p>Look at this picture.</p>
+     + <li>What do you think about when you see this picture?</li>
+     + <li>What could you do if you were in this picture?</li>
+     + <p>Click the sliders to see some ideas that you might have.</p>
+     + <div class="col-md-12 col-12">
+     + <div class="row">
+     + <ul>
+     + </ul>
+     + </div>
+     + </div>
+ENFUN02: identical 0 / changed 1
+  ~ ENFUN07_0_0.html: -19 +30
+     - <p>Make your own paragraph</p>
+     - <p>Here is an example of a simple paragraph.</p>
+     - <p>Make your own paragraph</p>
+     - <p>You now know how to write a paragraph with a topic sentence.</p>
+     - <p>Choose one of the pictures below or a topic of your choice. Write a paragraph in your writing book or on a 
+     - <ul>
+     - <li>Share your paragraph with your supervisor or kaiako.</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (please modal this video)</p>
+     - <p>Have a go!</p>
+     - <p>Select a topic you would like to write a paragraph about or use one of the images below as inspiration. Wri
+     - <ul>
+     - <li>topic sentence</li>
+     - <li>supporting details</li>
+     - <li>closing sentence.</li>
+     - </ul>
+     - <p>Here’s a helpful video if you would like more support before you start.</p>
+     - <p>Writing a paragraph</p>
+     - <p><a href="https://www.youtube.com/watch?v=keBFpEdiVVU" target="_blank">https://www.youtube.com/watch?v=keBFp
+     + <h3>Make your own paragraph</h3>
+     + <p>Here is an example of a simple paragraph.</p>
+     + <h3>Make your own paragraph</h3>
+     + <p>You now know how to write a paragraph with a topic sentence.</p>
+     + <p>Choose one of the pictures below or a topic of your choice. Write a paragraph in your writing book or on a 
+     + <ul>
+     + <li>Share your paragraph with your supervisor or kaiako.</li>
+     + </ul>
+     + <div class="col-md-12 col-12">
+     + <h3>Have a go!</h3>
+     + <p>Select a topic you would like to write a paragraph about or use one of the images below as inspiration. Wri
+     + <ul>
+     + <li>topic sentence</li>
+     + <li>supporting details</li>
+     + <li>closing sentence.</li>
+     + </ul>
+     + <p>Here’s a helpful video if you would like more support before you start.</p>
+     + <p>Writing a paragraph</p>
+     + <p><a href="https://www.youtube.com/watch?v=keBFpEdiVVU" target="_blank">https://www.youtube.com/watch?v=keBFp
+     + <div class="row">
+     + … 10 more added
+ENFUN07: identical 0 / changed 1
+HPFUN102: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+XFUN01: identical 1 / changed 0
+BLL130: identical 1 / changed 0
+BLL170: identical 1 / changed 0
+BLL240: identical 9 / changed 0
+CEDO102: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDW101: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+XDLS901: identical 5 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1006: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ART1004: identical 1 / changed 0
+BLL112: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL141: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL211: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDO502: identical 10 / changed 0
+ENG1004: identical 8 / changed 0
+ENGC102: identical 8 / changed 0
+  ~ ENGC302_1_0.html: -1 +1
+     - <p>Connecting with Kahu</p>
+     + <h3>Connecting with Kahu</h3>
+  ~ ENGC302_2_0.html: -2 +2
+     - <p>Open or Closed?</p>
+     - <p>Read each of the questions below and identify whether they are open or closed.</p>
+     + <h3>Open or Closed?</h3>
+     + <p>Read each of the questions below and identify whether they are open or closed.</p>
+ENGC302: identical 6 / changed 2
+  ~ ENGI103_1_0.html: -2 +2
+     - <p>Pre reading</p>
+     - <p>Before reading a story, it is a good idea to look at the front cover and guess what the story might be abou
+     + <h3>Pre reading</h3>
+     + <p>Before reading a story, it is a good idea to look at the front cover and guess what the story might be abou
+  ~ ENGI103_2_0.html: -1 +1
+     - <p>Asking questions</p>
+     + <h3>Asking questions</h3>
+  ~ ENGI103_3_0.html: -1 +1
+     - <p>Your proud moment</p>
+     + <h3>Your proud moment</h3>
+  ~ ENGI103_5_0.html: -3 +2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (keep the longer text static, just mo
+     - <p>Matching definitions</p>
+     - <p>Match the term to the correct definition.</p>
+     + <h3>Matching definitions</h3>
+     + <p>Match the term to the correct definition.</p>
+  ~ ENGI103_6_0.html: -6 +6
+     - <p>My tradition</p>
+     - <p>What ideas about your family tradition could you group together?</p>
+     - <p>Use the topic you have chosen with your supervisor in this lesson.</p>
+     - <p><b>Write down your ideas:</b> Write or draw some things that go with your topic.</p>
+     - <p><b>Group your ideas:</b> Now, think about how you can group your ideas. For example:</p>
+     - <p>Reflection</p>
+     + <h3>My tradition</h3>
+     + <p>What ideas about your family tradition could you group together?</p>
+     + <p>Use the topic you have chosen with your supervisor in this lesson.</p>
+     + <p><b>Write down your ideas:</b> Write or draw some things that go with your topic.</p>
+     + <p><b>Group your ideas:</b> Now, think about how you can group your ideas. For example:</p>
+     + <h3>Reflection</h3>
+ENGI103: identical 2 / changed 5
+ENGI301: identical 6 / changed 0
+  ~ ENGI401_4_0.html: -1 +1
+     - <p>Your fact file</p>
+     + <h3>Your fact file</h3>
+ENGI401: identical 11 / changed 1
+  ~ ENGJ201_2_0.html: -8 +6
+     - <p>Physical traits</p>
+     - <p>Look at this table and order the physical traits.</p>
+     - <p>[table] (images taken from reorder interactive 10 Online @ Te Kura)</p>
+     - <p><a href="https://tekura.desire2learn.com/d2l/le/content/15666/viewContent/190756/View" target="_blank">http
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (if possible, we would like the two c
+     - <p>Traits continued</p>
+     - <p>Physical features are only part of the picture. To gain a full idea, we need to add in things like backgrou
+     - <p>Click the sliders to uncover information about each mystery character. Can you picture who they are before 
+     + <h3>Physical traits</h3>
+     + <p>Look at this table and order the physical traits.</p>
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/15666/viewContent/190756/View" target="_blank">http
+     + <h3>Traits continued</h3>
+     + <p>Physical features are only part of the picture. To gain a full idea, we need to add in things like backgrou
+     + <p>Click the sliders to uncover information about each mystery character. Can you picture who they are before 
+  ~ ENGJ201_4_0.html: -2 +2
+     - <p>Synonym scales</p>
+     - <p>Some synonyms are more exciting than others. Click the buttons to see examples of more powerful word choice
+     + <h3>Synonym scales</h3>
+     + <p>Some synonyms are more exciting than others. Click the buttons to see examples of more powerful word choice
+ENGJ201: identical 5 / changed 2
+ENGJ402: identical 9 / changed 0
+  ~ ENGR201_1_0.html: -1 +1
+     - <p>Is it news?</p>
+     + <h3>Is it news?</h3>
+  ~ ENGR201_3_0.html: -6 +6
+     - <p>Your ideas</p>
+     - <p>Before we move to the next training lesson, I want to check your understanding.</p>
+     - <ol>
+     - <li>Select one of the topics below <i>or</i> choose your own.</li>
+     - <li>Write <b>one fact</b> and <b>one opinion</b> about the topic.</li>
+     - </ol>
+     + <h3>Your ideas</h3>
+     + <p>Before we move to the next training lesson, I want to check your understanding.</p>
+     + <ol>
+     + <li>Select one of the topics below <i>or</i> choose your own.</li>
+     + <li>Write <b>one fact</b> and <b>one opinion</b> about the topic.</li>
+     + </ol>
+  ~ ENGR201_4_0.html: -7 +7
+     - <p>Identifying topic sentences</p>
+     - <p>Here are two more paragraphs from the article.</p>
+     - <p>In your journal:</p>
+     - <ul>
+     - <li>Highlight the topic sentences.</li>
+     - <li>Write what the main idea of the paragraph is.</li>
+     - </ul>
+     + <h3>Identifying topic sentences</h3>
+     + <p>Here are two more paragraphs from the article.</p>
+     + <p>In your journal:</p>
+     + <ul>
+     + <li>Highlight the topic sentences.</li>
+     + <li>Write what the main idea of the paragraph is.</li>
+     + </ul>
+  ~ ENGR201_5_0.html: -10 +9
+     - <p>Adding speech marks</p>
+     - <p>Let’s test your punctuation skills.</p>
+     - <p>Punctuate the following sentences correctly in your learning journal.</p>
+     - <ul>
+     - <li>the dog a golden retriever loves to play fetch</li>
+     - <li>the team won the game last night</li>
+     - <li>sarah asked can we go to the park today</li>
+     - <li>the kiwi a flightless bird is unique to New Zealand</li>
+     - </ul>
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <h3>Adding speech marks</h3>
+     + <p>Let’s test your punctuation skills.</p>
+     + <p>Punctuate the following sentences correctly in your learning journal.</p>
+     + <ul>
+     + <li>the dog a golden retriever loves to play fetch</li>
+     + <li>the team won the game last night</li>
+     + <li>sarah asked can we go to the park today</li>
+     + <li>the kiwi a flightless bird is unique to New Zealand</li>
+     + </ul>
+  ~ ENGR201_6_0.html: -8 +8
+     - <p>Choosing your topic</p>
+     - <p>Time to choose your topic. To be able to write an interesting and informative article, you need to write ab
+     - <p>Select a current event or other topic that interests you. It could be something happening in your community
+     - <p>You may like to speak with your supervisor for some ideas.</p>
+     - <p>Once you have thought of your topic, remember to do the 3-point test. Tick if your topic fits any of these 
+     - <p>Writing your article</p>
+     - <p>Editing</p>
+     - <p>Reflection</p>
+     + <h3>Choosing your topic</h3>
+     + <p>Time to choose your topic. To be able to write an interesting and informative article, you need to write ab
+     + <p>Select a current event or other topic that interests you. It could be something happening in your community
+     + <p>You may like to speak with your supervisor for some ideas.</p>
+     + <p>Once you have thought of your topic, remember to do the 3-point test. Tick if your topic fits any of these 
+     + <h3>Writing your article</h3>
+     + <h3>Editing</h3>
+     + <h3>Reflection</h3>
+ENGR201: identical 2 / changed 5
+ENGS101: identical 6 / changed 0
+  ~ ENGS301_1_0.html: -2 +2
+     - <p>Kowhai and the Giants</p>
+     - <p>In this module, we will unpack the sophisticated picture book <i>Kōwhai and the Giants</i> by Kate Parker. 
+     + <h3>Kowhai and the Giants</h3>
+     + <p>In this module, we will unpack the sophisticated picture book <i>Kōwhai and the Giants</i> by Kate Parker. 
+  ~ ENGS301_5_0.html: -3 +3
+     - <p>Change the colour, change the meaning</p>
+     - <p><i>Kōwhai and the Giants</i> is originally presented with earthy tones, but what if the colours were change
+     - <p>In your journal, complete the table showing how the colours create meaning.</p>
+     + <h3>Change the colour, change the meaning</h3>
+     + <p><i>Kōwhai and the Giants</i> is originally presented with earthy tones, but what if the colours were change
+     + <p>In your journal, complete the table showing how the colours create meaning.</p>
+  ~ ENGS301_6_0.html: -3 +3
+     - <p>The takeaway</p>
+     - <p>Show your understanding of Emma’s review by dragging and dropping the correct features she mentions into th
+     - <p>Sharing your opinion</p>
+     + <h3>The takeaway</h3>
+     + <p>Show your understanding of Emma’s review by dragging and dropping the correct features she mentions into th
+     + <h3>Sharing your opinion</h3>
+ENGS301: identical 5 / changed 3
+EXBP901: identical 6 / changed 0
+HES1004: identical 5 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1005: identical 15 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB301: identical 8 / changed 0
+MXDI103: identical 10 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL302: identical 10 / changed 0
+MXFU301: identical 12 / changed 0
+OSAH301: identical 4 / changed 0
+OSAI201: identical 4 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM401: identical 5 / changed 0
+  ~ OSOH301_3_0.html: -2 +2
+     - <p>A Te Kura digital citizen</p>
+     - <p>Te Kura thinks a good digital citizen is someone who strives to do the following. Drag and drop the scenari
+     + <h3>A Te Kura digital citizen</h3>
+     + <p>Te Kura thinks a good digital citizen is someone who strives to do the following. Drag and drop the scenari
+OSOH301: identical 3 / changed 1
+OSSC401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1005: identical 12 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1006: identical 6 / changed 0
+SCPH301: identical 9 / changed 0
+SSOG103: identical 7 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS912: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XLP03: identical 6 / changed 0
+XMES101: identical 9 / changed 0
+XMES203: identical 6 / changed 0
+XWHA01: identical 2 / changed 0
+
+TOTAL: identical 506 / changed 21 / missing 0 over 104 modules
+CHANGED: ENFUN02/ENFUN02_0_0.html ENFUN07/ENFUN07_0_0.html ENGC302/ENGC302_1_0.html ENGC302/ENGC302_2_0.html ENGI103/ENGI103_1_0.html ENGI103/ENGI103_2_0.html ENGI103/ENGI103_3_0.html ENGI103/ENGI103_5_0.html ENGI103/ENGI103_6_0.html ENGI401/ENGI401_4_0.html ENGJ201/ENGJ201_2_0.html ENGJ201/ENGJ201_4_0.html ENGR201/ENGR201_1_0.html ENGR201/ENGR201_3_0.html ENGR201/ENGR201_4_0.html ENGR201/ENGR201_5_0.html ENGR201/ENGR201_6_0.html ENGS301/ENGS301_1_0.html ENGS301/ENGS301_5_0.html ENGS301/ENGS301_6_0.html OSOH301/OSOH301_3_0.html

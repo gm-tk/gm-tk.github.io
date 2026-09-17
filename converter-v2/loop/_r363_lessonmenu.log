@@ -1,0 +1,101 @@
+lesson pairs 1556 / modules 313
+
+(gold_menu, claude_menu, WT signal) -> pages
+  gold=True  claude=True  wt=LO    : 656
+  gold=True  claude=True  wt=noLO  : 241
+  gold=False claude=False wt=noLO  : 224
+  gold=True  claude=True  wt=noWT  : 166
+  gold=False claude=False wt=noWT  : 160
+  gold=False claude=False wt=LO    : 31
+  gold=True  claude=False wt=noLO  : 21
+  gold=True  claude=False wt=LO    : 17
+  gold=False claude=True  wt=LO    : 14
+  gold=True  claude=False wt=noWT  : 12
+  gold=False claude=True  wt=noLO  : 8
+  gold=False claude=True  wt=noWT  : 6
+
+GOLD menu vs WT signal (the rule's population):
+  wt=LO   : pages 718, gold has menu 673 (0.94)
+  wt=noLO : pages 494, gold has menu 262 (0.53)
+  wt=noWT : pages 344, gold has menu 178 (0.52)
+
+CLAUDE menu vs WT signal:
+  wt=LO   : pages 718, claude has menu 670 (0.93)
+  wt=noLO : pages 494, claude has menu 249 (0.50)
+  wt=noWT : pages 344, claude has menu 172 (0.50)
+
+LO pages by group: n / gold menu share / claude menu share / gold-yes-claude-no (modules) / claude-yes-gold-no
+  template=Standard: n=699 gold=0.94 claude=0.93 miss=16p/5m extra=13p/8m
+  template=Inquiry: n=15 gold=0.93 claude=0.93 miss=1p/1m extra=1p/1m
+  template=Fundamentals: n=4 gold=1.00 claude=1.00 miss=0p/0m extra=0p/0m
+  subject=1-10 English: n=193 gold=0.99 claude=1.00 miss=0p/0m extra=1p/1m
+  subject=NCEA1: n=159 gold=0.96 claude=0.96 miss=1p/1m extra=1p/1m
+  subject=Online Safety (OS9000): n=98 gold=1.00 claude=0.91 miss=9p/2m extra=0p/0m
+  subject=Leaving to Learn: n=90 gold=0.96 claude=0.96 miss=0p/0m extra=0p/0m
+  subject=1-10 Mathematics: n=79 gold=0.97 claude=1.00 miss=0p/0m extra=2p/2m
+  subject=ConnectED: n=38 gold=0.74 claude=0.97 miss=1p/1m extra=10p/5m
+  subject=1-10 Blended Literacy: n=22 gold=0.05 claude=0.00 miss=1p/1m extra=0p/0m
+  subject=ANZH: n=18 gold=1.00 claude=1.00 miss=0p/0m extra=0p/0m
+  subject=?: n=13 gold=1.00 claude=0.62 miss=5p/1m extra=0p/0m
+  subject=1-10 Science: n=8 gold=1.00 claude=1.00 miss=0p/0m extra=0p/0m
+
+noLO pages by group: n / gold menu share / claude menu share
+  template=Standard: n=460 gold=0.51 claude=0.48
+  template=Inquiry: n=27 gold=0.74 claude=0.74
+  template=Fundamentals: n=6 gold=1.00 claude=1.00
+  template=Bilingual: n=1 gold=0.00 claude=0.00
+
+THE MISS CLASS (gold menu, Claude none, WT LO) by module -> registry lesson value:
+  BLL116: 1 pages (lessons [1]) reg.lesson=none tmpl=Standard subj=1-10 Blended Literacy sig=Counter({(False, False, True): 1})
+  BLLR201: 5 pages (lessons [1, 3, 4, 5, 6]) reg.lesson=none-entry tmpl=Standard subj=? sig=Counter({(True, False, True): 5})
+  CEDT207: 1 pages (lessons [4]) reg.lesson=none tmpl=Inquiry subj=ConnectED sig=Counter({(True, False, False): 1})
+  HES1006: 1 pages (lessons [1]) reg.lesson=none tmpl=Standard subj=NCEA1 sig=Counter({(True, False, True): 1})
+  OSSC401: 4 pages (lessons [1, 2, 3, 4]) reg.lesson=none-entry tmpl=Standard subj=Online Safety (OS9000) sig=Counter({(True, False, True): 4})
+  OSSC501: 5 pages (lessons [1, 2, 3, 4, 5]) reg.lesson=none-entry tmpl=Standard subj=Online Safety (OS9000) sig=Counter({(True, False, True): 5})
+  TOTAL 17 pages / 6 modules
+
+THE EXTRA CLASS (Claude menu, gold none, WT LO) by module:
+  CEDK501: 1 pages (lessons [6]) reg.lesson=simplified tmpl=Inquiry
+  CEDO501: 4 pages (lessons [2, 5, 7]) reg.lesson=simplified tmpl=Standard
+  CEDO502: 2 pages (lessons [1, 6]) reg.lesson=none-entry tmpl=Standard
+  CEDR501: 1 pages (lessons [7]) reg.lesson=simplified tmpl=Standard
+  CEDW501: 2 pages (lessons [4, 8]) reg.lesson=simplified tmpl=Standard
+  ENGC302: 1 pages (lessons [7]) reg.lesson=simplified tmpl=Standard
+  MXEO301: 1 pages (lessons [8]) reg.lesson=simplified tmpl=Standard
+  MXFU201: 1 pages (lessons [6]) reg.lesson=simplified tmpl=Standard
+  PES1008: 1 pages (lessons [18]) reg.lesson=simplified tmpl=Standard
+  TOTAL 14 pages / 9 modules
+
+GOLD menu WITHOUT any WT signal (not derivable) by module:
+  BLL114: 2 pages sig=Counter({'noLO': 2}) reg.lesson=none
+  BLL116: 1 pages sig=Counter({'noLO': 1}) reg.lesson=none
+  BLL153: 2 pages sig=Counter({'noLO': 2}) reg.lesson=none
+  BLL236: 2 pages sig=Counter({'noLO': 2}) reg.lesson=none
+  BLLR201: 1 pages sig=Counter({'noLO': 1}) reg.lesson=none-entry
+  CEDT207: 1 pages sig=Counter({'noWT': 1}) reg.lesson=none
+  CEDT301: 1 pages sig=Counter({'noLO': 1}) reg.lesson=none
+  MXFL401: 2 pages sig=Counter({'noLO': 2}) reg.lesson=none
+  PNR101: 1 pages sig=Counter({'noWT': 1}) reg.lesson=none
+  PNR102: 2 pages sig=Counter({'noWT': 2}) reg.lesson=none
+  PNR104: 2 pages sig=Counter({'noWT': 2}) reg.lesson=none
+  TRR109: 5 pages sig=Counter({'noWT': 5}) reg.lesson=none
+  XGF9002: 8 pages sig=Counter({'noLO': 8}) reg.lesson=none-entry
+  XGF9004: 1 pages sig=Counter({'noWT': 1}) reg.lesson=none
+  XLP06: 2 pages sig=Counter({'noLO': 2}) reg.lesson=none
+  TOTAL 33 pages / 15 modules
+
+registry lesson value vs gold menu on LO pages:
+  reg=none         gold_menu=False: 31
+  reg=none         gold_menu=True : 3
+  reg=none-entry   gold_menu=False: 2
+  reg=none-entry   gold_menu=True : 30
+  reg=simplified   gold_menu=False: 12
+  reg=simplified   gold_menu=True : 629
+  reg=tabs         gold_menu=True : 11
+
+registry lesson value vs CLAUDE menu on LO pages:
+  reg=none         claude_menu=False: 34
+  reg=none-entry   claude_menu=False: 14
+  reg=none-entry   claude_menu=True : 18
+  reg=simplified   claude_menu=True : 641
+  reg=tabs         claude_menu=True : 11

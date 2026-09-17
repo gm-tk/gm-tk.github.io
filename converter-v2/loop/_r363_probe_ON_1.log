@@ -1,0 +1,449 @@
+PNR102: identical 3 / changed 0
+TRR104: prep refused (no-wt)
+TRR108: identical 3 / changed 0
+TRR113: identical 5 / changed 0
+TRR301: identical 4 / changed 0
+ARFUN03: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+  ~ ENFUN01_0_0.html: -6 +9
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Emojis sourced from</p>
+     - <p>Retelling a Story</p>
+     - <p>Listen to ‘A Dinosaur made me Sneeze’ then retell the story to your supervisor, family member or friend (th
+     - <p><a href="https://www.youtube.com/watch?v=znXCvTFJWsA" target="_blank">https://www.youtube.com/watch?v=znXCv
+     - <p>Ask your audience (person who listened to you tell the story) how they felt. Click the correct emoji that m
+     - <p><a href="https://getemoji.com/" target="_blank">https://getemoji.com/</a></p>
+     + <h3>Retelling a Story</h3>
+     + <p>Listen to ‘A Dinosaur made me Sneeze’ then retell the story to your supervisor, family member or friend (th
+     + <p><a href="https://www.youtube.com/watch?v=znXCvTFJWsA" target="_blank">https://www.youtube.com/watch?v=znXCv
+     + <p>Ask your audience (person who listened to you tell the story) how they felt. Click the correct emoji that m
+     + <p><a href="https://getemoji.com/" target="_blank">https://getemoji.com/</a></p>
+     + <div class="col-md-12 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+ENFUN01: identical 0 / changed 1
+  ~ ENFUN05_0_0.html: -31 +35
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [radioquiz]</p>
+     - <p>Are the commas correct?</p>
+     - <p>Tick whether the commas have been used correctly in each of these sentences.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [radioquiz]</p>
+     - <p>Read each of the sentences and tick whether the apostrophe has been used correctly or not.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [radioquiz]</p>
+     - <p>Are the capitals correct?</p>
+     - <p>Tick whether these book titles have been correctly capitalised.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ENFUN05-00-14" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified — Activity 1B — see EN
+     - <p>Effect of punctuation</p>
+     - <p>The sentence below is from Janet Frame’s autobiography <i>To the Is-land</i>. Notice how although the sente
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ENFUN05-00-15" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ENFUN05-00-16" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ENFUN05-00-17" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <p>Punctuation practice</p>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Are the commas correct?</h3>
+     + <p>Tick whether the commas have been used correctly in each of these sentences.</p>
+     + <h3>Read each of the sentences and tick whether the apostrophe has been used correctly or not.</h3>
+     + <h3>Are the capitals correct?</h3>
+     + <p>Tick whether these book titles have been correctly capitalised.</p>
+     + <div class="col-md-12 col-12">
+     + <div class="col-md-12 col-12">
+     + <h3>Effect of punctuation</h3>
+     + <p>The sentence below is from Janet Frame’s autobiography <i>To the Is-land</i>. Notice how although the sente
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ENFUN05-00-14" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + </div>
+     + <div class="row">
+     + </div>
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ENFUN05-00-15" style="border: 8px s
+     + … 15 more added
+ENFUN05: identical 0 / changed 1
+HPFUN101: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+MXFUN02: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN08: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+BLL120: identical 1 / changed 0
+BLL160: identical 1 / changed 0
+BLL230: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDR204: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT404: identical 1 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+AGH1001: identical 6 / changed 0
+AGH1005: identical 9 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ART1003: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL137: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL151: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL221: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+CEDO501: identical 16 / changed 0
+CEDW501: identical 13 / changed 0
+ENGC101: identical 6 / changed 0
+  ~ ENGC301_2_0.html: -33 +19
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ENGC301-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [externallink]</p>
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity 2A — see ENG
+     - <p>Concept to Consumer</p>
+     - <p>The process of creating the right advertisement doesn’t just happen overnight. Companies need to be creativ
+     - <p>Read the following article about how Trustpower came up with one of their successful static image campaigns
+     - <p><a href="https://campaignbrief.co.nz/2022/11/15/trustpower-sticks-to-knitting-in-its-new-billboard-campaign
+     - <p>After reading the article, answer the comprehension questions in your journal.</p>
+     - <ol>
+     - <li>What is unique about the construction of the billboard?</li>
+     - <li>What service is Trustpower usually known for? How long has Trustpower been supplying broadband to New Zeal
+     - <li>What phrase have they often heard in consumer research? Explain what you think the phrase means.</li>
+     - <li>What percentage of new customers join Trustpower for a multi-service bundle?</li>
+     - <li>Explain what you think the benefits for the customer are in using Trustpower for a multi-service bundle.</
+     - <li>The article states that the production of the billboard was ‘handled in house’. What does this mean?</li>
+     - </ol>
+     - <p>Download journal. <a href="https://docs.google.com/document/d/1IcHoGlb9mhYqiKNdqDllyw5EHFN-fYnkFOxfHRulynU/
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENGC301-02-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGC301-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Concept to Consumer</h3>
+     + <p>The process of creating the right advertisement doesn’t just happen overnight. Companies need to be creativ
+     + <p>Read the following article about how Trustpower came up with one of their successful static image campaigns
+     + <p><a href="https://campaignbrief.co.nz/2022/11/15/trustpower-sticks-to-knitting-in-its-new-billboard-campaign
+     + <p>After reading the article, answer the comprehension questions in your journal.</p>
+     + <ol>
+     + <li>What is unique about the construction of the billboard?</li>
+     + <li>What service is Trustpower usually known for? How long has Trustpower been supplying broadband to New Zeal
+     + <li>What phrase have they often heard in consumer research? Explain what you think the phrase means.</li>
+     + <li>What percentage of new customers join Trustpower for a multi-service bundle?</li>
+     + <li>Explain what you think the benefits for the customer are in using Trustpower for a multi-service bundle.</
+     + <li>The article states that the production of the billboard was ‘handled in house’. What does this mean?</li>
+     + </ol>
+     + <p>Download journal. <a href="https://docs.google.com/document/d/1IcHoGlb9mhYqiKNdqDllyw5EHFN-fYnkFOxfHRulynU/
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENGC301-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGC301-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ ENGC301_3_0.html: -4 +4
+     - <p>Blast from the Past</p>
+     - <p>Listen to the following examples of radio advertising used by Weet-Bix. One is from 1962 and the other is f
+     - <p><a href="https://drive.google.com/file/d/1ItK1_wQuXHJvbT7p4NadGvlB1l1A3GOs/view?usp=sharing" target="_blank
+     - <p>As we did in the previous lesson about static advertising, compare these radio ads. Click and drag the stat
+     + <h3>Blast from the Past</h3>
+     + <p>Listen to the following examples of radio advertising used by Weet-Bix. One is from 1962 and the other is f
+     + <p><a href="https://drive.google.com/file/d/1ItK1_wQuXHJvbT7p4NadGvlB1l1A3GOs/view?usp=sharing" target="_blank
+     + <p>As we did in the previous lesson about static advertising, compare these radio ads. Click and drag the stat
+  ~ ENGC301_4_0.html: -3 +3
+     - <p>Nostalgia Vs Now</p>
+     - <p>Video advertising has changed dramatically over the years. As technology advances, brands can add interest 
+     - <p><a href="https://drive.google.com/file/d/1E5QHx-f6tvFFijvdKUWEvLZCZenXTsDx/view?usp=drive_link" target="_bl
+     + <h3>Nostalgia Vs Now</h3>
+     + <p>Video advertising has changed dramatically over the years. As technology advances, brands can add interest 
+     + <p><a href="https://drive.google.com/file/d/1E5QHx-f6tvFFijvdKUWEvLZCZenXTsDx/view?usp=drive_link" target="_bl
+  ~ ENGC301_5_0.html: -2 +2
+     - <p>Supporting Statements</p>
+     - <p>Consider the following two static images. Which do you think is offering the best deal for the consumer?</p
+     + <h3>Supporting Statements</h3>
+     + <p>Consider the following two static images. Which do you think is offering the best deal for the consumer?</p
+  ~ ENGC301_6_0.html: -7 +6
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [MemoryGame]</p>
+     - <p>Connecting Brands with their Catchphrases</p>
+     - <p>Match the well-known slogan with the brand or company.</p>
+     - <p>Analysing a Slogan</p>
+     - <p>The New Zealand company 2Degrees uses the slogan ‘<b>fighting for fair</b>’, which can be seen in the follo
+     - <p><a href="https://www.youtube.com/watch?v=5fNkI5JbdKM" target="_blank">https://www.youtube.com/watch?v=5fNkI
+     - <p>This slogan can be analysed in a table such as this</p>
+     + <h3>Connecting Brands with their Catchphrases</h3>
+     + <p>Match the well-known slogan with the brand or company.</p>
+     + <h3>Analysing a Slogan</h3>
+     + <p>The New Zealand company 2Degrees uses the slogan ‘<b>fighting for fair</b>’, which can be seen in the follo
+     + <p><a href="https://www.youtube.com/watch?v=5fNkI5JbdKM" target="_blank">https://www.youtube.com/watch?v=5fNkI
+     + <p>This slogan can be analysed in a table such as this</p>
+ENGC301: identical 3 / changed 5
+ENGI102: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI400: identical 4 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR302: identical 8 / changed 0
+  ~ ENGS202_1_0.html: -5 +5
+     - <p>My landmarks</p>
+     - <p>Where you come from can make a great starting point for your story writing. Do you have any landmarks to ex
+     - <p>Think about <b>five places that are special to you</b>. Write them in your journal and say why each one is 
+     - <p>For example:</p>
+     - <p>Overseas landmarks</p>
+     + <h3>My landmarks</h3>
+     + <p>Where you come from can make a great starting point for your story writing. Do you have any landmarks to ex
+     + <p>Think about <b>five places that are special to you</b>. Write them in your journal and say why each one is 
+     + <p>For example:</p>
+     + <h3>Overseas landmarks</h3>
+  ~ ENGS202_2_0.html: -3 +3
+     - <p>Formation creation</p>
+     - <p>Choose <b>three special places</b> where you live. For each place, select a noun and a verb to put into the
+     - <p>Example:</p>
+     + <h3>Formation creation</h3>
+     + <p>Choose <b>three special places</b> where you live. For each place, select a noun and a verb to put into the
+     + <p>Example:</p>
+  ~ ENGS202_3_0.html: -32 +16
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGS202-03-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please add text as a carousel of page
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: unclassified — Activity 3A — see EN
+     - <div style="font-size: 0.95em">
+     - <p>Chris’ story</p>
+     - <p>Auckland is New Zealand’s largest city and has many landmarks Chris can use as inspiration for a story.</p>
+     - <p>Read his story <b>Jump</b><b>!</b> and see if you can work out which landmark he used as a starting point f
+     - <p><a href="https://drive.google.com/file/d/1ClmH8O5FDGXgiLyKBlpNpfb5DLxHm1zV/view?usp=drive_link" target="_bl
+     - <p><a href="https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-
+     - <p>[Audio Player] Add audio button also found at this site</p>
+     - <p>Answer the following questions about the story in your journal.</p>
+     - <ol>
+     - <li>What tall landmark in Auckland was the inspiration for this story?</li>
+     - <li>How did Matiu feel as they were going up in the lift?</li>
+     - <li>How high is the West Tower according to Uncle Hōne?</li>
+     - <li>What made Matiu smile when Uncle Hōne said the jump was off?</li>
+     - <li>How did Matiu show he wasn&#39;t afraid in the end?</li>
+     - </ol>
+     - </div>
+     - </div>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENGS202-03-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Chris’ story</h3>
+     + <p>Auckland is New Zealand’s largest city and has many landmarks Chris can use as inspiration for a story.</p>
+     + <p>Read his story <b>Jump</b><b>!</b> and see if you can work out which landmark he used as a starting point f
+     + <p><a href="https://drive.google.com/file/d/1ClmH8O5FDGXgiLyKBlpNpfb5DLxHm1zV/view?usp=drive_link" target="_bl
+     + <p><a href="https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-
+     + <p>Answer the following questions about the story in your journal.</p>
+     + <ol>
+     + <li>What tall landmark in Auckland was the inspiration for this story?</li>
+     + <li>How did Matiu feel as they were going up in the lift?</li>
+     + <li>How high is the West Tower according to Uncle Hōne?</li>
+     + <li>What made Matiu smile when Uncle Hōne said the jump was off?</li>
+     + <li>How did Matiu show he wasn&#39;t afraid in the end?</li>
+     + </ol>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENGS202-03-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+  ~ ENGS202_6_0.html: -5 +5
+     - <p>Planning your story</p>
+     - <p>Part of being a good writer is planning before you begin. Think about your chosen landmark, and a story ide
+     - <p>Your creation</p>
+     - <p>You have now planned your story based on your chosen landmark.</p>
+     - <p><b>Choose one task to do:</b></p>
+     + <h3>Planning your story</h3>
+     + <p>Part of being a good writer is planning before you begin. Think about your chosen landmark, and a story ide
+     + <h3>Your creation</h3>
+     + <p>You have now planned your story based on your chosen landmark.</p>
+     + <p><b>Choose one task to do:</b></p>
+ENGS202: identical 3 / changed 4
+ENGS405: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1007: identical 10 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1008: identical 12 / changed 0
+MXDB202: identical 6 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO301: identical 11 / changed 0
+MXEX202: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL301: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+  ~ MXFU402_2_0.html: -2 +2
+     - <p>Roll and record – experimental probability</p>
+     - <p>Finding theoretical probability</p>
+     + <h3>Roll and record – experimental probability</h3>
+     + <h3>Finding theoretical probability</h3>
+  ~ MXFU402_3_0.html: -73 +67
+     - <p>Using a table</p>
+     - <p>What’s the chance that both players playing <i>Hei Tama, Tū Tama</i> randomly pick the same move?</p>
+     - <p>We can use a table to find all the possible combinations of moves between two players. This helps us work o
+     - <p>Complete the table below; the first part of the table has been done for you.</p>
+     - <th></th>
+     - <th></th>
+     - <th><b>Player One</b></th>
+     - <th> [alert] / • First number = Player One’s move / • Second number = Player Two’s move</th>
+     - <td>Action</td>
+     - <td>1</td>
+     - <td>2</td>
+     - <td>3</td>
+     - <td>4</td>
+     - <td></td>
+     - <tr>
+     - <td><b>Player Two</b> (write vertically and centred) </td>
+     - <td>1</td>
+     - <td>1,1</td>
+     - <td>2, 1</td>
+     - <td>3, 1</td>
+     - <td>4, 1</td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td>2</td>
+     - <td>1, 2</td>
+     - <td> 2, 2 </td>
+     - <td> 3, 2 </td>
+     - <td> 4, 2 </td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td>3</td>
+     - <td>1, 3</td>
+     - <td> 2, 3 </td>
+     - <td> 3, 3 </td>
+     - <td> 4, 3 </td>
+     - <td></td>
+     - … 33 more removed
+     + <h3>Using a table</h3>
+     + <p>What’s the chance that both players playing <i>Hei Tama, Tū Tama</i> randomly pick the same move?</p>
+     + <p>We can use a table to find all the possible combinations of moves between two players. This helps us work o
+     + <p>Complete the table below; the first part of the table has been done for you.</p>
+     + <th><b>Player One</b></th>
+     + <th> [alert] / • First number = Player One’s move / • Second number = Player Two’s move</th>
+     + <td>1</td>
+     + <td>2</td>
+     + <td>3</td>
+     + <td>4</td>
+     + <td><b>Player Two</b> (write vertically and centred) </td>
+     + <td>1</td>
+     + <td>1,1</td>
+     + <td>2, 1</td>
+     + <td>3, 1</td>
+     + <td>4, 1</td>
+     + <td>2</td>
+     + <td>1, 2</td>
+     + <td> 2, 2 </td>
+     + <td> 3, 2 </td>
+     + … 47 more added
+  ~ MXFU402_4_0.html: -3 +3
+     - <p>Finding probability</p>
+     - <p>Match each event with its correct probability using drag-and-drop.</p>
+     - <p>Drawing a tree diagram</p>
+     + <h3>Finding probability</h3>
+     + <p>Match each event with its correct probability using drag-and-drop.</p>
+     + <h3>Drawing a tree diagram</h3>
+  ~ MXFU402_5_0.html: -4 +3
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [radioquiz]</p>
+     - <p>Is it independent?</p>
+     - <p>Tick whether each of the following examples are independent or dependent events.</p>
+     - <p>Calculating probability</p>
+     + <h3>Is it independent?</h3>
+     + <p>Tick whether each of the following examples are independent or dependent events.</p>
+     + <h3>Calculating probability</h3>
+  ~ MXFU402_6_0.html: -18 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="MXFU402-06-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: unclassified — Activity 6A — see MX
+     - <p>Displaying the data</p>
+     - <p>To analyse our data more clearly, let’s turn the table into graphs.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="MXFU402-06-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Displaying the data</h3>
+     + <p>To analyse our data more clearly, let’s turn the table into graphs.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="MXFU402-06-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+MXFU402: identical 3 / changed 5
+OSAI101: identical 3 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY401: identical 5 / changed 0
+OSGM301: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSSC301: identical 4 / changed 0
+OSSM401: identical 5 / changed 0
+PES1004: identical 11 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1005: identical 6 / changed 0
+SCCH301: identical 9 / changed 0
+SSOG101: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS911: identical 2 / changed 0
+XGF9003: identical 6 / changed 0
+XLP02: identical 7 / changed 0
+XLP06: identical 3 / changed 0
+XMES201: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+
+TOTAL: identical 491 / changed 16 / missing 0 over 104 modules
+CHANGED: ENFUN01/ENFUN01_0_0.html ENFUN05/ENFUN05_0_0.html ENGC301/ENGC301_2_0.html ENGC301/ENGC301_3_0.html ENGC301/ENGC301_4_0.html ENGC301/ENGC301_5_0.html ENGC301/ENGC301_6_0.html ENGS202/ENGS202_1_0.html ENGS202/ENGS202_2_0.html ENGS202/ENGS202_3_0.html ENGS202/ENGS202_6_0.html MXFU402/MXFU402_2_0.html MXFU402/MXFU402_3_0.html MXFU402/MXFU402_4_0.html MXFU402/MXFU402_5_0.html MXFU402/MXFU402_6_0.html

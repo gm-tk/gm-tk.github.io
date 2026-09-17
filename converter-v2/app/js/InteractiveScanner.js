@@ -181,7 +181,21 @@ class InteractiveScanner {
 						// into the hand-off box, which measured WORSE on both the skeleton and the
 						// compare_structure gates. The owner form is for the tail-titled / plain-text-
 						// titled opener whose whole activity used to vanish into the capture.
-						const _ualLeadHeads = items.slice(i + 1, j).some(_ualHeading);
+						// ROUND 363 — THE HEADING-TAG-LED LEAD TAKES THE OWNER FORM (the autonomous
+						// loop's session 20, Round 7; the r362 residue decomposed). The guard's premise
+						// holds only for the tags #swallowMembers actually terminates on (h2–h5): an
+						// `[Activity Heading]`, `[Activity heading H3]` or `[Heading]` lead is NOT a
+						// terminator, so the member form swallowed title, prose and table whole — the
+						// pre-r362 outcome, for exactly the KB 01F activity_heading tag (ENFUN02 1A,
+						// ENGC201 6A, MXFU402 2C; gold <h3>Title</h3> first at 0.83–0.92). With the
+						// sub-rule on, only a member_form_tags heading keeps the member form.
+						// Data: unclassified_activity_lead.heading_led_owner   Env: UNCLASSHEAD_OFF
+						const _hloCfg = _ualCfg.heading_led_owner;
+						const _hloOn = !!_hloCfg && _hloCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_hloCfg.env || "UNCLASSHEAD_OFF"]);
+						const _hloMemberTags = new Set((_hloCfg?.member_form_tags ?? ["h2", "h3", "h4", "h5"]).map((t) => String(t).toLowerCase()));
+						const _ualLeadHeads = items.slice(i + 1, j).some((x) => _ualHeading(x)
+							&& (!_hloOn || _hloMemberTags.has(String(x.parse?.primary?.tag || "").toLowerCase())));
 						if (_ualLeadHeads) {
 							this.#collectMember(bundle, it, run);
 							bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
