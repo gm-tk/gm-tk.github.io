@@ -186,6 +186,9 @@ class InteractiveBuilder {
 			// so every member the build did not consume either renders around the widget (prose)
 			// or declines the build (never half-build). See #withMembers.
 			if (html) html = this.#withMembers({ bundle, type, html, renderBlock, templates });
+			// ROUND 354 — the words riding the invocation tag's OWN line that the build did not use become
+			// the red Writers Note after the widget (never lost, never guessed into learner prose).
+			if (html) this.#tagWordsNote({ bundle, html, templates });
 			if (html) {
 				run?.AddNote?.("info", "InteractiveBuilder",
 					`Built ${type} #${bundle.index} from captured data (no placeholder needed).`);
@@ -196,6 +199,81 @@ class InteractiveBuilder {
 			run?.AddNote?.("warn", "InteractiveBuilder",
 				`Could not build ${type} #${bundle.index} (${err.message}); left as a placeholder for manual build.`);
 			return null;
+		}
+	}
+
+	// =======================================================================
+	// ROUND 354 — THE INVOCATION TAG'S OWN WORDS → THE WRITERS NOTE
+	// =======================================================================
+
+	/**
+	 * ROUND 354 (the autonomous loop's session-15 Round 4). The words a writer types on the widget tag's OWN line —
+	 * "[flip card] Please present each word on a flip card so that one word is on each side", "[drag and drop] answers
+	 * are placed in the correct columns, please place outside the box", "[carousel] Click on the slide to see examples
+	 * of noun 和 hé noun", "[speech bubble] example of how to display this" — were LOST on every built widget of every
+	 * type: the builders read the tag as the invocation and never the words beside it (measured 2026-09-17,
+	 * `outputs/_measure_r354_tagwords.cjs` over all 416: flipCard 51 builds, carousel 37, dragAndDrop 33, speechBubble
+	 * 33, modal 15, clickDrop 7, tabs 6, accordion 5, hintSlider 5 — 193 built widgets on ≈ 150 pages). They are
+	 * MOSTLY developer instructions (the gold keeps only 14 of the 51 flipCard lines as learner text), so they are
+	 * neither learner prose to guess into the page nor a reason to decline the build: they are exactly the r214
+	 * instruction-member class — the red Writers Note after the widget, where the developer decides. The words are
+	 * added to bundle.instructions (the caller emits every instruction as a red <p class="cv2-note"> after the built
+	 * widget — #interactivePlaceholder / #bundleInstructions) when the build's own visible text does not already
+	 * carry them (a heading the builder made of them, the r351 dragAndDrop paragraph) and no note already says them.
+	 * Red runs on the line are already notes (the r214 class) and are not doubled. Data
+	 * interactive_builders._tag_words_note {enabled, env TAGWORDSNOTE_OFF, min_words}; OFF = the words stay lost.
+	 */
+	static #tagWordsNote({ bundle, html, templates }) {
+		const cfg = templates?._tag_words_note;
+		if (!cfg || cfg.enabled === false) return;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (cfg.env && env[cfg.env]) return;
+		const m0 = (bundle?.memberItems ?? [])[0];
+		if (!m0 || m0.type !== "tag" || m0.parse?.primary?.directive !== "INTERACTIVE") return;
+		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const norm = (t) => String(t ?? "").replace(/&[a-z#0-9]+;/gi, " ").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
+		// the writer's words on the tag line live in two places: OUTSIDE the bracket ("[flip card] Click on the card
+		// to see…") and INSIDE it when the whole bracket is the instruction ("[please arrange each individual's
+		// paragraph on an accordion tab labelled with their name]"). The tag's own name is never a note: an alias the
+		// normaliser matched is dropped where it sits at the edge of the bracket text, a broken bracket ("Carousel of
+		// images]", "[interactive: carousel + captions") is read the same way, and "interactive:" / "insert" prefixes go.
+		const aliases = (m0.parse?.tags ?? []).map((tg) => String(tg.alias ?? "").trim()).filter((a) => a.length >= 3);
+		const trimAlias = (t) => {
+			let x = String(t ?? "").replace(/^\s*(?:interactive|insert)\s*[:\-\u2013]?\s*/i, "").trim();
+			let again = true;
+			while (again) {
+				again = false;
+				for (const a of aliases) {
+					const re1 = new RegExp("^" + a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b[\\s:\\-\u2013+,]*", "i");
+					const re2 = new RegExp("[\\s:\\-\u2013+,]*\\b" + a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$", "i");
+					const y = x.replace(re1, "").replace(re2, "").trim();
+					if (y !== x) { x = y; again = true; }
+				}
+			}
+			return x;
+		};
+		const cleanTag = (t) => {
+			const raw = String(t ?? "").replace(RED, " ");
+			const inner = [...raw.matchAll(/\[([^\[\]]*)\]?/g)].map((m) => trimAlias(m[1]));
+			const outside = trimAlias(raw.replace(/\[[^\[\]]*\]?/g, " ").replace(/[\[\]]/g, " "));
+			return [outside, ...inner].map((x) => x.replace(/\s+/g, " ").trim()).filter(Boolean).join(" ");
+		};
+		const clean = (t) => String(t ?? "").replace(RED, " ").replace(/\[[^\]]*\]/g, " ").replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
+		const parts = [cleanTag(m0.text), clean(m0.blackAfter)].filter((t) => norm(t).split(" ").filter(Boolean).length >= (cfg.min_words ?? 3));
+		if (!parts.length) return;
+		const stripped = String(html).replace(/<!--[\s\S]*?-->/g, " ");
+		const consumed = norm(stripped.replace(/<[^>]+>/g, " ") + " " + [...stripped.matchAll(/\b(?:alt|title)="([^"]*)"/g)].map((m) => m[1]).join(" "));
+		const notes = (bundle.instructions ?? []).map(norm);
+		for (const t of parts) {
+			const n = norm(t);
+			const w = n.split(" ").filter(Boolean);
+			const K = 4; let hit = 0, tot = 0;
+			for (let i = 0; i + K <= w.length; i++) { tot++; if (consumed.includes(w.slice(i, i + K).join(" "))) hit++; }
+			const present = tot ? hit / tot >= 0.5 : consumed.includes(n);
+			if (present) continue;                                                    // the build carries the words
+			if (notes.some((x) => x.includes(n) || n.includes(x))) continue;          // already a note
+			bundle.instructions = [...(bundle.instructions ?? []), t];
+			notes.push(n);
 		}
 	}
 

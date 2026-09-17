@@ -1189,6 +1189,12 @@
 		"============================================================================"
 	],
 	"interactive_builders": {
+		"_tag_words_note": {
+			"enabled": true,
+			"env": "TAGWORDSNOTE_OFF",
+			"min_words": 5,
+			"note": "ROUND 354 (the autonomous loop's session-15 Round 4). The words a writer types on a widget tag's OWN line ('[flip card] Please present each word on a flip card so that…', '[drag and drop] answers are placed in the correct columns, please place outside the box', '[carousel] Click on the slide to see examples of…') were LOST on every built widget of every type — the builders read the tag as the invocation and never the words beside it (_measure_r354_tagwords.cjs, all 416: flipCard 51, carousel 37, dragAndDrop 33, speechBubble 33, modal 15, clickDrop 7, tabs 6, accordion 5, hintSlider 5 = 193 built widgets). They are mostly developer instructions (the gold keeps 14 of the 51 flipCard lines as learner text), so they are neither guessed into learner prose nor a reason to decline the build: they become the red Writers Note after the widget (the r214 instruction-member class — bundle.instructions, emitted by #interactivePlaceholder), unless the build's own visible text already carries them or a note already says them (min_words 5: the 3–4-word residues a broken bracket leaves — 'of with captions', 'insert icon for' — are the tag's own vocabulary, not a note); red runs are already notes and are not doubled. InteractiveBuilder.#tagWordsNote, after every build. TAGWORDSNOTE_OFF=1 = the words stay lost (the r353 corpus byte-for-byte)."
+		},
 		"_members_rule": {
 			"enabled": false,
 			"env": "WIDGETMEMBERS_OFF",
