@@ -1,0 +1,339 @@
+pairs scored: 1962
+
+===== Bilingual — gold lines MISSING in Claude (occ | pages | modules) =====
+     884 |    57 |   15 | ┌ 2× repeated:
+     669 |    57 |   15 | p
+     543 |    53 |   15 | div.row
+     240 |    43 |   15 | img.img-fluid
+     236 |    44 |   14 | b
+     213 |    52 |   15 | div.col-md-8.col-12
+     212 |    47 |   15 | h3
+     181 |    44 |   13 | div.col-12
+     167 |    47 |   15 | WIDGET
+     127 |    40 |   13 | ┌ 4× repeated:
+     118 |    45 |   16 | li
+     115 |    18 |    6 | div.audioImage
+      78 |    18 |    9 | h4
+      73 |    31 |   13 | div.col-md-12.col-12
+      68 |    36 |   12 | ul
+      65 |    15 |    5 | span.sassoonI-text
+      63 |    21 |    8 | i
+      60 |    33 |   12 | ┌ 3× repeated:
+      48 |    27 |    9 | div.col-md-4.offset-md-0.col-12
+      45 |    34 |   14 | a
+      39 |    31 |   12 | div.button
+      37 |    24 |   12 | h2
+      34 |    23 |   13 | ┌ 6× repeated:
+      32 |    15 |    9 | br
+      31 |    22 |   13 | ┌ 5× repeated:
+      31 |    17 |    7 | div.alert
+      30 |    29 |   15 | iframe
+      28 |    23 |    9 | div.alertActivity
+      28 |    23 |    8 | span
+      27 |     7 |    3 | span.audioTrigger
+      25 |    24 |   10 | div.videoSection.ratio.ratio-16x9
+      25 |     5 |    3 | div.col.paddingR
+      24 |    12 |   10 | ol
+      23 |    22 |    8 | h1
+      21 |     8 |    6 | div.col-md-4.col-12
+      20 |     5 |    1 | img.img-fluid.audioText
+      19 |    10 |    3 | div.col-md-6.offset-md-0.col-12
+      15 |    12 |    6 | div.alertImage
+      13 |    13 |   13 | div.whakatauki
+      13 |     9 |    6 | div.col-md-6.offset-md-3.col-12
+
+===== Bilingual — Claude lines EXTRA vs gold (occ | pages | modules) =====
+     745 |    55 |   16 | p
+     576 |    55 |   16 | ┌ 2× repeated:
+     340 |    49 |   15 | b
+     202 |    48 |   16 | div.row
+     165 |    46 |   16 | img.img-fluid
+     157 |    49 |   16 | div.col-md-8.col-12
+     156 |    54 |   16 | WIDGET
+     152 |    53 |   16 | h3
+     148 |    32 |   14 | audio.audioPlayer.icon
+     146 |    46 |   16 | ┌ 4× repeated:
+     101 |    32 |   12 | li
+      88 |    33 |   14 | ┌ 3× repeated:
+      56 |    26 |   12 | ┌ 6× repeated:
+      55 |    21 |   12 | h4
+      51 |    26 |    9 | ul
+      49 |    27 |   13 | div.col-12
+      36 |     5 |    4 | ol
+      34 |    24 |   10 | ┌ 2× repeated block of 2:
+      29 |    18 |    9 | ┌ 10× repeated:
+      28 |    25 |   14 | div.videoSection.ratio.ratio-16x9
+      25 |    22 |   14 | iframe
+      25 |    19 |   14 | ┌ 5× repeated:
+      25 |    16 |    7 | ┌ 8× repeated:
+      21 |     5 |    5 | h5
+      19 |    10 |    5 | a
+      16 |    11 |    7 | div.alert.solid
+      15 |    15 |    4 | h1
+      15 |    15 |    4 | span
+      14 |    13 |    7 | ┌ 5× repeated block of 2:
+      12 |    10 |    8 | ┌ 12× repeated:
+      12 |    11 |    8 | ┌ 7× repeated:
+      10 |     5 |    4 | i
+       9 |     9 |    9 | div.acks.acksTemplate
+       9 |     7 |    3 | div.col-md-4.offset-md-0.col-12
+       9 |     7 |    3 | div.alertActivity
+       8 |     4 |    4 | ┌ 14× repeated:
+       7 |     7 |    5 | ┌ 3× repeated block of 2:
+       6 |     3 |    3 | h2
+       6 |     6 |    4 | ┌ 7× repeated block of 2:
+       6 |     2 |    2 | tr
+
+===== Fundamentals — gold lines MISSING in Claude (occ | pages | modules) =====
+    2434 |    64 |   53 | p
+    2314 |    64 |   53 | div.row
+    1265 |    63 |   53 | div.col-md-8.col-12
+    1015 |    62 |   52 | h3
+     754 |    62 |   52 | WIDGET
+     709 |    63 |   53 | ┌ 2× repeated:
+     541 |    53 |   49 | div.col-12
+     450 |    46 |   42 | b
+     440 |    53 |   46 | img.img-fluid
+     358 |    59 |   52 | li
+     321 |    45 |   37 | br
+     298 |    46 |   43 | h4
+     290 |    59 |   51 | ┌ 3× repeated:
+     269 |     5 |    5 | span.ch-text
+     240 |    49 |   46 | ul
+     207 |     5 |    5 | span.pinyin
+     199 |    44 |   42 | a
+     180 |    41 |   39 | h2
+     178 |    43 |   37 | div.videoSection.icon.ratio.ratio-16x9
+     171 |    35 |   30 | div.col-md-12.col-12
+     153 |    46 |   39 | ┌ 4× repeated:
+     136 |    28 |   22 | iframe.embed-responsive-item
+     124 |    34 |   28 | h5
+     119 |    36 |   32 | span.infoTrigger
+     117 |    45 |   45 | div.fundamentalsPanel
+     113 |    31 |   30 | iframe
+     111 |    23 |   17 | ┌ 2× repeated block of 2:
+     105 |    24 |   24 | i
+     102 |    36 |   30 | div.alert
+      92 |    16 |   12 | td
+      80 |    31 |   31 | div.button
+      78 |    22 |   22 | div.col-md-3.offset-md-0.col-12
+      73 |    21 |   18 | div.clickDropContent
+      63 |    31 |   31 | div.row.flipCardsContainer
+      62 |    26 |   26 | div.col-md-11.col-12
+      62 |    16 |   14 | div.externalButton
+      56 |    18 |   18 | div.col-md-3.offset-md-0.col-12.paddingL
+      56 |    18 |   12 | div.col-8
+      53 |    17 |   13 | tr
+      50 |    34 |   28 | span
+
+===== Fundamentals — Claude lines EXTRA vs gold (occ | pages | modules) =====
+    2415 |    60 |   53 | div.row
+    2266 |    61 |   53 | p
+    1800 |    63 |   53 | div.col-md-8.col-12
+     655 |    58 |   52 | ┌ 2× repeated:
+     635 |    62 |   52 | WIDGET
+     595 |    37 |   37 | b
+     576 |    52 |   45 | div.col-12
+     554 |    55 |   50 | h3
+     504 |    40 |   40 | h5
+     503 |    57 |   53 | li
+     443 |    57 |   52 | img.img-fluid
+     419 |    54 |   51 | h4
+     331 |    57 |   50 | ┌ 3× repeated:
+     318 |    53 |   53 | a
+     282 |    45 |   43 | ul
+     206 |    37 |   32 | iframe
+     150 |    25 |   24 | tr
+     144 |    29 |   29 | ol
+     143 |    28 |   28 | i
+     142 |    41 |   40 | ┌ 4× repeated:
+     138 |    22 |   21 | td
+     129 |    18 |   18 | div.videoSection.icon.ratio.ratio-16x9
+     124 |    42 |   42 | div.fundamentalsPanel
+     118 |    40 |   39 | div.button
+     118 |    28 |   26 | div.activity
+      97 |    32 |   30 | ┌ 5× repeated:
+      87 |    12 |   12 | div.col-md-6.col-12
+      84 |    30 |   28 | div.alert
+      84 |    24 |   23 | th
+      82 |    34 |   32 | ┌ 2× repeated block of 2:
+      69 |    26 |   25 | table.table.table-bordered
+      65 |     9 |    9 | div.col-md-12.col-12
+      63 |    23 |   22 | div.table-responsive
+      60 |    20 |   15 | div.videoSection.ratio.ratio-16x9
+      55 |    21 |   21 | span.infoTrigger
+      50 |    50 |   50 | div.acks.acksTemplate
+      49 |    26 |   26 | ┌ 6× repeated:
+      35 |    18 |   18 | div.col-md-4.col-12.paddingLR
+      34 |    34 |   32 | a#next-lesson
+      30 |    26 |   26 | span
+
+===== Inquiry — gold lines MISSING in Claude (occ | pages | modules) =====
+    3236 |    97 |   49 | p
+    2785 |    96 |   49 | div.row
+    1283 |    73 |   49 | div.col-md-8.col-12
+    1187 |    90 |   49 | h3
+    1186 |    79 |   48 | div.col-12
+    1091 |    94 |   49 | ┌ 2× repeated:
+     929 |    87 |   49 | WIDGET
+     714 |    82 |   48 | li
+     547 |    75 |   49 | img.img-fluid
+     498 |    84 |   49 | ┌ 3× repeated:
+     473 |    79 |   46 | a
+     425 |    70 |   42 | ul
+     380 |    49 |   32 | div.clickDropContent
+     374 |    53 |   42 | h4
+     289 |    68 |   42 | iframe
+     273 |    55 |   41 | ┌ 4× repeated:
+     264 |    63 |   40 | b
+     243 |    51 |   32 | div.videoSection.icon.ratio.ratio-16x9
+     237 |    45 |   40 | h2
+     221 |    42 |   42 | div.inquiryPanel
+     221 |    55 |   32 | div.button
+     213 |    43 |   33 | br
+     212 |    54 |   33 | h5
+     191 |    47 |   36 | div.col-md-12.col-12
+     186 |    29 |   24 | tr
+     179 |    31 |   24 | td
+     157 |    37 |   33 | ol
+     154 |    40 |   22 | div.videoSection.ratio.ratio-16x9
+     131 |    36 |   33 | i
+     122 |     9 |    9 | div.buttonD
+     119 |    11 |   11 | div.col-4
+     119 |    29 |   17 | iframe.embed-responsive-item
+     116 |    46 |   30 | div.alert
+     114 |    47 |   38 | span
+     109 |    50 |   37 | ┌ 5× repeated:
+     104 |    38 |   33 | ┌ 2× repeated block of 2:
+     103 |    27 |   23 | div.table-responsive
+      88 |    22 |   18 | div.row.supervisor
+      87 |    12 |    9 | div.col-8
+      85 |    18 |    8 | div.row.clickDropContent.noBorder
+
+===== Inquiry — Claude lines EXTRA vs gold (occ | pages | modules) =====
+    2448 |    93 |   49 | div.row
+    2351 |    96 |   49 | p
+    1714 |    94 |   49 | div.col-md-8.col-12
+     847 |    63 |   34 | div.col-12
+     741 |    79 |   48 | h3
+     708 |    85 |   49 | ┌ 2× repeated:
+     618 |    80 |   48 | li
+     535 |    71 |   43 | WIDGET
+     451 |    74 |   43 | a
+     440 |    62 |   43 | b
+     414 |    60 |   44 | ul
+     386 |    55 |   46 | h5
+     343 |    29 |   21 | td
+     310 |    34 |   23 | tr
+     287 |    65 |   44 | ┌ 3× repeated:
+     282 |    51 |   40 | h4
+     278 |    48 |   36 | ┌ 4× repeated:
+     206 |    51 |   31 | iframe
+     177 |    45 |   30 | img.img-fluid
+     170 |    42 |   24 | div.button
+     158 |    46 |   27 | div.videoSection.ratio.ratio-16x9
+     146 |    34 |   23 | th
+     134 |    35 |   23 | table.table.table-bordered
+     129 |    33 |   23 | div.table-responsive
+     128 |    11 |    9 | div.TKmodal
+     122 |    41 |   26 | i
+     120 |    20 |   17 | ol
+     118 |    23 |   23 | div.inquiryPanel
+     105 |     6 |    6 | img.img-fluid.TKmodalButton
+      81 |    17 |   16 | audio.audioPlayer.icon
+      80 |    37 |   30 | ┌ 5× repeated:
+      67 |    24 |   19 | div.alert
+      60 |    35 |   27 | ┌ 6× repeated:
+      57 |    21 |   17 | ┌ 2× repeated block of 2:
+      50 |    13 |   10 | h4.goJournal
+      48 |    11 |   10 | div.activity
+      47 |    47 |   47 | div.acks.acksTemplate
+      44 |    19 |   15 | div.super-content.row
+      43 |    43 |   32 | a#next-lesson
+      41 |    15 |   15 | div.alert.solid
+
+===== Standard — gold lines MISSING in Claude (occ | pages | modules) =====
+   11942 |  1647 |  294 | p
+    8105 |  1441 |  292 | div.row
+    4635 |  1324 |  288 | h3
+    4493 |  1356 |  283 | ┌ 2× repeated:
+    4061 |  1218 |  281 | div.col-md-8.col-12
+    3848 |  1269 |  292 | WIDGET
+    3669 |  1176 |  281 | li
+    3264 |  1154 |  285 | div.col-12
+    2798 |  1081 |  284 | img.img-fluid
+    2199 |   918 |  241 | ul
+    2054 |   998 |  275 | ┌ 3× repeated:
+    2048 |  1077 |  277 | a
+    2043 |   739 |  219 | b
+    1628 |   597 |  207 | br
+    1529 |   720 |  218 | h4
+    1248 |   758 |  191 | div.button
+    1218 |   621 |  219 | h5
+    1069 |   650 |  255 | ┌ 4× repeated:
+    1065 |   602 |  208 | div.col-md-12.col-12
+    1049 |   314 |  156 | td
+     805 |   352 |  146 | span
+     775 |   516 |  150 | div.videoSection.icon.ratio.ratio-16x9
+     770 |   331 |  168 | div.clickDropContent
+     756 |   313 |  162 | tr
+     731 |   453 |  118 | iframe.embed-responsive-item
+     601 |   305 |  140 | i
+     596 |   415 |  149 | div.alert
+     577 |   403 |  179 | iframe
+     566 |   392 |  186 | ┌ 5× repeated:
+     551 |   364 |  146 | div.col-md-4.offset-md-0.col-12
+     542 |   329 |  144 | span.infoTrigger
+     540 |   430 |  183 | ┌ 2× repeated block of 2:
+     513 |   301 |  135 | ol
+     428 |   248 |   73 | h2
+     415 |   300 |  108 | div.col-md-8.col-12.paddingR
+     387 |   271 |  150 | div.table-responsive
+     385 |   254 |  112 | div.videoSection.ratio.ratio-16x9
+     341 |   252 |   88 | div.col-md-4.offset-md-0.col-12.paddingL
+     322 |   184 |   45 | h4.goJournal
+     312 |   225 |  101 | div.alertImage
+
+===== Standard — Claude lines EXTRA vs gold (occ | pages | modules) =====
+    9788 |  1563 |  294 | p
+    8239 |  1494 |  294 | div.row
+    6921 |  1565 |  294 | div.col-md-8.col-12
+    3831 |  1263 |  292 | ┌ 2× repeated:
+    2942 |  1025 |  278 | li
+    2778 |  1257 |  293 | WIDGET
+    2560 |   878 |  270 | b
+    2524 |   878 |  266 | div.col-12
+    2184 |   953 |  268 | h3
+    2032 |   976 |  278 | a
+    1626 |   742 |  222 | img.img-fluid
+    1614 |   736 |  247 | ul
+    1537 |   802 |  261 | ┌ 3× repeated:
+    1497 |   531 |  201 | h4
+    1243 |   537 |  228 | h5
+    1242 |   405 |  156 | tr
+    1053 |   609 |  188 | iframe
+    1018 |   486 |  208 | i
+     877 |   553 |  218 | ┌ 4× repeated:
+     866 |   496 |  167 | div.button
+     800 |   405 |  153 | th
+     798 |   324 |  142 | td
+     708 |   426 |  133 | div.videoSection.ratio.ratio-16x9
+     693 |   416 |  160 | table.table.table-bordered
+     651 |   383 |   96 | h4.goJournal
+     628 |   379 |  152 | div.table-responsive
+     626 |   306 |  131 | ol
+     535 |   369 |  180 | ┌ 5× repeated:
+     469 |   260 |   79 | div.activity
+     383 |   251 |  108 | div.alert
+     360 |   319 |  141 | ┌ 2× repeated block of 2:
+     340 |   284 |  153 | ┌ 6× repeated:
+     294 |   237 |  139 | span
+     292 |   116 |   50 | div.col-md-6.col-12
+     290 |   190 |   69 | div.alert.solid
+     266 |   266 |  266 | div.acks.acksTemplate
+     244 |   244 |  140 | a#next-lesson
+     231 |   174 |   94 | audio.audioPlayer.icon
+     225 |   159 |   91 | span.infoTrigger
+     219 |   152 |   77 | div.externalButton
+
+wrote _r331_skelgaps.json

@@ -1,0 +1,149 @@
+Claude content elements 41431 matched 13686 (33.0%)
+
+unmatched by reason (template | reason | n | pages):
+  Standard     NOT-IN-GOLD             11214  1370
+  Standard     OTHER-PAGE               3260   381
+  Standard     media/table-unmatched    2928   999
+  Fundamentals NOT-IN-GOLD              2146    62
+  Inquiry      NOT-IN-GOLD              1612    87
+  Bilingual    NOT-IN-GOLD              1423    53
+  Standard     NEAR-contained            870   362
+  Fundamentals media/table-unmatched     830    59
+  Standard     OTHER-PAGE-contained      464   175
+  Standard     NEAR-contains             401   253
+  Bilingual    media/table-unmatched     312    41
+  Fundamentals OTHER-PAGE                258     8
+  Fundamentals NEAR-contained            257    44
+  Inquiry      media/table-unmatched     238    62
+  Standard     SWAP-tag                  215   159
+  Bilingual    OTHER-PAGE                187    15
+  Inquiry      NEAR-contains             168    24
+  Fundamentals NEAR-contains             146    36
+  Inquiry      NEAR-contained            128    25
+  Bilingual    OTHER-PAGE-contained      127     7
+  Inquiry      OTHER-PAGE                121    33
+  Fundamentals SWAP-tag                  115    32
+  Bilingual    NEAR-contained             93    18
+  Inquiry      SWAP-tag                   65    16
+  Fundamentals OTHER-PAGE-contained       62     7
+  Inquiry      OTHER-PAGE-contained       46     7
+  Bilingual    SWAP-tag                   35     7
+  Bilingual    NEAR-contains              20    10
+  Standard     claude-note                 3     2
+  Bilingual    claude-note                 1     1
+
+SWAP pairs (Claude tag → gold tag, same text; n | pages):
+  Standard     p     → h        148   106   [('AGH1001', 'AGH1001_1_0.html', 'dairy farming'), ('AGH1001', 'AGH1001_1_0.html', 'milk')]
+  Fundamentals p     → h         99    28   [('ARFUN02', 'ARFUN02_0_0.html', 'counterpoint'), ('ARFUN04', 'ARFUN04_0_0.html', 'introduction')]
+  Inquiry      p     → h         40    14   [('BLL230', 'BLL230_0_0.html', 'vowel team oe'), ('BLL240', 'BLL240_1_7.html', 'letter team eer')]
+  Bilingual    p     → h         33     7   [('PNR102', 'PNR102_0_0.html', 'nau mai haere mai ki te ao o ngā tau'), ('PNR102', 'PNR102_0_0.html', 'welcome to the world of numbers')]
+  Standard     h     → p         29    28   [('AGH1004', 'AGH1004_3_0.html', 'class 1  very highquality land typically used for intensive farming ho'), ('AGH1004', 'AGH1004_3_0.html', 'class 6  nonagricultural land land that is unsuitable for agriculture ')]
+  Standard     ol    → ul        22    15   [('AGH1001', 'AGH1001_0_0.html', 'what agriculture and horticulture production looks like in new zealand'), ('AGH1002', 'AGH1002_2_0.html', 'the proportion of air in a soil the amount of water a soil will hold t')]
+  Inquiry      h     → p         18     8   [('CEDK102', 'CEDK102_0_0.html', 'capture and edit'), ('CEDR204', 'CEDR204_0_0.html', 'introduction')]
+  Standard     ul    → p          6     5   [('ANZH101', 'ANZH101_0_0.html', 'in this module you will be learning about the stories of how tangata w'), ('ENGI201', 'ENGI201_0_0.html', 'this module is about exploring stories from different cultures where c')]
+  Fundamentals h     → p          6     4   [('HPFUN101', 'HPFUN101_0_0.html', 'reflection'), ('HPFUN101', 'HPFUN101_0_0.html', 'reflection')]
+  Standard     p     → ul         5     5   [('CEDR501', 'CEDR501_7_0.html', 'applying for a parttime or fulltime job for example at a caf supermark'), ('HIS1008', 'HIS1008_1_0.html', 'naacp  national association for the advancement of coloured people fou')]
+  Fundamentals ul    → p          3     2   [('ARFUN02', 'ARFUN02_0_0.html', 'loud like a lions roar'), ('ARFUN02', 'ARFUN02_0_0.html', 'soft like a whisper')]
+  Inquiry      ul    → p          3     1   [('EXPFUN02', 'EXPFUN02_0_0.html', 'my goal is to find out more about bees and why they are important for '), ('EXPFUN02', 'EXPFUN02_0_0.html', 'my goal is to learn more about pūrākau involving birds and their signi')]
+  Fundamentals ol    → ul         3     1   [('TEFUN03', 'TEFUN03_0_0.html', 'where are we headed with this what do we really want to get out of thi'), ('TEFUN03', 'TEFUN03_0_0.html', 'what went well what could i do differently')]
+  Standard     ol    → p          2     2   [('AGH1005', 'AGH1005_0_0.html', 'this module unlocking plant magic is about plant life processes what t'), ('ENGJ402', 'ENGJ402_2_0.html', 'grab a piece of paper to work on and a pen you can work on your device')]
+  Inquiry      ul    → ol         2     2   [('CEDT104', 'CEDT104_0_0.html', 'the sticks help us keep the beat tī rākau games have been played by mā'), ('TWHK903', 'TWHK903_0_0.html', 'using weak passwords reusing passwords oversharing personal informatio')]
+  Fundamentals ul    → ol         2     2   [('CHFUN05', 'CHFUN05_0_0.html', 'possession  to have existence  there is  there are'), ('TEFUN08', 'TEFUN08_0_0.html', 'an iteration can be a version we make as we recraft and improve our de')]
+  Fundamentals p     → ul         2     2   [('ENFUN07', 'ENFUN07_0_0.html', 'if your paragraph is too long your reader will easily get lost and beg'), ('SSFUN01', 'SSFUN01_0_0.html', 'what questions do you have about what you have watched what do you wan')]
+  Standard     ul    → ol         2     2   [('HIS1008', 'HIS1008_2_1.html', 'relationships whakapapa role tuakiri results impact resonance recollec'), ('OSGM401', 'OSGM401_2_0.html', 'call tollfree on 0508 netsafe 0508 638 723 within aotearoa new zealand')]
+  Bilingual    p     → ul         2     1   [('TRR103', 'TRR103_3_0.html', 'eketāhuna ekuatoa'), ('TRR103', 'TRR103_3_0.html', 'eketāhuna ekuatoa')]
+  Inquiry      ol    → p          1     1   [('CEDR204', 'CEDR204_0_0.html', 'animal names use animals with different syllable counts like cat one s')]
+
+examples:
+  ('Standard', 'NOT-IN-GOLD')
+     ('AGH1001', 'AGH1001_0_0.html', 'p', 'in this module you will learn about')
+     ('AGH1001', 'AGH1001_1_0.html', 'p', 'butter')
+     ('AGH1001', 'AGH1001_1_0.html', 'p', 'cheese')
+     ('AGH1001', 'AGH1001_1_0.html', 'p', 'milk powder')
+     ('AGH1001', 'AGH1001_1_0.html', 'p', 'not all production systems will produce multiple primary products for example kiwifruit or')
+     ('AGH1001', 'AGH1001_2_0.html', 'p', 'agriculture and horticulture are immensely important to new zealand as a nation our econom')
+     ('AGH1001', 'AGH1001_2_0.html', 'p', 'preeuropean settlement')
+     ('AGH1001', 'AGH1001_2_0.html', 'p', 'late 18th century  mid 19th century')
+  ('Standard', 'NEAR-contained')
+     ('AGH1001', 'AGH1001_2_0.html', 'h3', 'here are some wellknown jobs that people can do when farming and growing things')
+     ('AGH1001', 'AGH1001_2_0.html', 'p', 'there are many more farming and growing careers but this will give you a brief overview of')
+     ('AGH1001', 'AGH1001_3_0.html', 'p', 'ranginui  sky father')
+     ('AGH1001', 'AGH1001_3_0.html', 'p', 'te wehenga  separation')
+     ('AGH1001', 'AGH1001_3_0.html', 'p', 'te po  darkness')
+     ('AGH1001', 'AGH1001_3_0.html', 'p', 'kaitiakitanga  guardianship')
+  ('Standard', 'NEAR-contains')
+     ('AGH1001', 'AGH1001_3_0.html', 'p', 'whatungarongaro te tangata toitū te whenua people disappear from sight but the land remain')
+     ('AGH1001', 'AGH1001_3_0.html', 'p', 'have a go take some time to play the game below make sure you are thinking about what lear')
+     ('AGH1001', 'AGH1001_4_0.html', 'ol', 'what are the similarities and differences between the maramataka calendar and seasonal far')
+     ('AGH1003', 'AGH1003_3_0.html', 'p', 'remember regardless of the production type unless it is a liquid fertiliser all fertiliser')
+     ('AGH1003', 'AGH1003_5_0.html', 'p', 'in acidic soils nutrients are locked up and plants are unable to access them if farmers or')
+     ('AGH1004', 'AGH1004_0_0.html', 'p', 'in this module you will learn about')
+  ('Fundamentals', 'NOT-IN-GOLD')
+     ('ARFUN01', 'ARFUN01_0_0.html', 'p', 'httpswwwistockphotocomphotofunkybassplayergm1185857817334353204')
+     ('ARFUN01', 'ARFUN01_0_0.html', 'p', 'culture')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h4', 'phase two emoji for thumb nail')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h4', 'phase three emoji for thumb nail')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h4', 'phase four emoji for thumb nail')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h3', 'phase one')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'p', 'piano vector')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'p', 'heart beat')
+  ('Fundamentals', 'NEAR-contained')
+     ('ARFUN01', 'ARFUN01_0_0.html', 'p', 'the arts are a way of showing our identities')
+     ('ARFUN01', 'ARFUN01_0_0.html', 'p', 'is the way of life passed down from generation to generation it is like a big puzzle made ')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h4', 'rhythm ūngēri ')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'p', 'rhythm matching game')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'p', 'watch the video')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'ul', 'while watching try to clap along on the blue circles in beat to the music')
+  ('Fundamentals', 'NEAR-contains')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'p', 'what it is imagine music has a heart just like you the beat is the steady pulse that keeps')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h4', 'how to understand it imagine youre marching like a soldier each step is a beat if you clap')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'p', 'what it is rhythm is how we take the beat and make patterns with it like the different ste')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h5', 'how to understand it think about how you clap or walk in patterns sometimes you walk fast ')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'p', 'what it is tempo is the speed of the music  how fast or slow the beat is imagine walking q')
+     ('ARFUN02', 'ARFUN02_0_0.html', 'h5', 'how to understand it when you listen to music if it feels like its moving quickly like a r')
+  ('Inquiry', 'NOT-IN-GOLD')
+     ('BLL110', 'BLL110_0_0.html', 'h3', 'supervisor note')
+     ('BLL110', 'BLL110_0_0.html', 'p', 'in this adventure we will')
+     ('BLL110', 'BLL110_0_0.html', 'ol', 'learn letter names and sounds  we will meet each letter and learn the sound it makes we wi')
+     ('BLL110', 'BLL110_0_0.html', 'h3', 'supervisor note')
+     ('BLL110', 'BLL110_0_0.html', 'p', 'some students need more practice than others when learning the letters and sounds work thr')
+     ('BLL110', 'BLL110_0_0.html', 'p', 'repeat this after me')
+     ('BLL110', 'BLL110_0_0.html', 'p', 'my name is s my sound is s')
+     ('BLL110', 'BLL110_0_0.html', 'p', 'audio')
+  ('Inquiry', 'NEAR-contains')
+     ('BLL120', 'BLL120_0_0.html', 'p', 'the letter ck')
+     ('BLL120', 'BLL120_0_0.html', 'ul', 'the letter c can make two different sounds in this module we will only focus on the k soun')
+     ('BLL120', 'BLL120_0_0.html', 'p', 'in the last lesson we introduced the letter c to the ākonga and taught them how it makes t')
+     ('BLL130', 'BLL130_0_0.html', 'p', 'the letter o is a vowel and we are learning about the short vowel sound repeat this after ')
+     ('BLL130', 'BLL130_0_0.html', 'p', 'the letter u is a vowel and we are learning about the short vowel sound repeat this after ')
+     ('BLL160', 'BLL160_0_0.html', 'p', 'the letter y is a very special letter it can work as a consonant and it can also work in p')
+  ('Inquiry', 'NEAR-contained')
+     ('CEDK102', 'CEDK102_0_0.html', 'p', 'there are many types of photos and each one captures something different')
+     ('CEDK102', 'CEDK102_0_0.html', 'p', 'click on each image to learn more about the different types of photos')
+     ('CEDO102', 'CEDO102_0_0.html', 'p', 'bioluminescent is a big word so lets look at that first')
+     ('CEDO102', 'CEDO102_0_0.html', 'p', 'bio  means relating to a living thing')
+     ('CEDO102', 'CEDO102_0_0.html', 'p', 'luminescent  comes from the latin word light')
+     ('CEDO202', 'CEDO202_0_0.html', 'p', 'māori planned their farming fishing and hunting based on the cycles of the moon each month')
+  ('Bilingual', 'NOT-IN-GOLD')
+     ('PNR101', 'PNR101_0_0.html', 'h3', 'whakataukī  whakatauākī')
+     ('PNR101', 'PNR101_0_0.html', 'h3', 'proverb')
+     ('PNR101', 'PNR101_0_0.html', 'p', 'go and discover your wings and soar like a bird')
+     ('PNR101', 'PNR101_0_0.html', 'p', 'kōwae ako whakataki')
+     ('PNR101', 'PNR101_0_0.html', 'p', 'module introduction')
+     ('PNR101', 'PNR101_0_0.html', 'h3', 'ingoa kōwae te tau 1')
+     ('PNR101', 'PNR101_0_0.html', 'h3', 'module name number 1')
+     ('PNR101', 'PNR101_0_0.html', 'p', 'ka kite tātau i ngā tau i ngā wāhi taiāwhio katoa i a tātau ki runga taputapu pērā i ngā w')
+  ('Bilingual', 'NEAR-contains')
+     ('PNR101', 'PNR101_0_0.html', 'h4', 'rerenga kōrero whakataki nau mai haere mai ki te ao o ngā tau')
+     ('PNR101', 'PNR101_0_0.html', 'h4', 'intro sentence welcome to the world of numbers')
+     ('PNR104', 'PNR104_0_0.html', 'h4', 'rerenga kōrero whakataki tahi rua toru whā')
+     ('PNR104', 'PNR104_0_0.html', 'h4', 'intro sentence one two three four')
+     ('TRR102', 'TRR102_2_0.html', 'p', 'anei ētahi kupu ka tīmata ki ahau areare taringa mai  ka rangona te oro poto  a  i te tīma')
+     ('TRR102', 'TRR102_2_0.html', 'p', 'here are some words that begin with me listen carefully can you hear my short  a  sound at')
+  ('Bilingual', 'NEAR-contained')
+     ('PNR102', 'PNR102_0_0.html', 'p', 'kua rite koe ki te tipu hei toa tau')
+     ('PNR102', 'PNR102_0_0.html', 'p', 'are you ready to become a number expert')
+     ('PNR102', 'PNR102_0_0.html', 'p', 'lets get started')
+     ('TRR102', 'TRR102_1_0.html', 'p', 'tā hemi hēnare')
+     ('TRR102', 'TRR102_1_0.html', 'p', 'sir james hēnare')
+     ('TRR102', 'TRR102_1_0.html', 'p', 'every vowel has its own special shape ')

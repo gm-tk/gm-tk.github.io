@@ -1,0 +1,58 @@
+paired pages 1956 gold mathJax pages 99 claude mathJax pages 48
+gold mathJax & gold <math>: 58 | gold mathJax & no gold <math>: 41
+gold <math> pages: 80 of which gold mathJax: 58
+claude <math> pages: 20 claude mathJax: 48
+GAP gold mathJax / claude not: 63 pages / 17 modules; OVER claude mathJax / gold not: 12
+
+module | tmpl | pages | gold mathJax pages | gold <math> pages | claude mathJax | claude <math> | GAP pages
+CEDK501  Inquiry       12   1   2   0   0   1
+ENGC301  Standard       8   1   0   0   0   1
+MXDB202  Standard       6   0   0   1   1   0
+MXDB301  Standard       6   3   3   1   1   3
+MXDB302  Standard      10   1   4   0   0   1
+MXDI102  Standard       5   4   4   4   4   0
+MXDI103  Standard      10   9   0   0   0   9
+MXDI201  Standard      11   0   0   1   1   0
+MXDI301  Standard       5   0   2   2   2   0
+MXEO301  Standard      10   1   3   0   0   1
+MXEO401  Standard       7   1   1   0   0   1
+MXEX301  Standard       8   0   2   2   2   0
+MXEX401  Standard       7   5   5   0   0   5
+MXFL301  Standard      10   9   1  10   0   0
+MXFL302  Standard      10  10   8  10   0   0
+MXFL401  Standard       8   8   3   8   0   0
+MXFU201  Standard      10   1   1   0   0   1
+MXFU202  Standard      10   1   0   0   0   1
+MXFU301  Standard      11  10   7   0   0  10
+MXFU302  Standard      10   0   3   2   2   0
+MXFU401  Standard       7   1   3   1   1   1
+MXFU402  Standard       8   5   6   0   0   5
+PES1003  Standard      11   1   1   0   0   1
+PES1004  Standard      11   9   3   0   0   9
+PES1007  Standard      10   8   6   3   3   5
+PES1008  Standard      12  10   7   2   2   8
+SCCH301  Standard       9   0   0   1   1   0
+
+gold mathJax on ALL pages: 2 ['MXFL302', 'MXFL401']
+gold mathJax on SOME pages: 19 ['CEDK501', 'ENGC301', 'MXDB301', 'MXDB302', 'MXDI102', 'MXDI103', 'MXEO301', 'MXEO401', 'MXEX401', 'MXFL301', 'MXFU201', 'MXFU202', 'MXFU301', 'MXFU401', 'MXFU402', 'PES1003', 'PES1004', 'PES1007', 'PES1008']
+MXFL302 gold <math> pages 8 claude <math> pages 0
+MXFL401 gold <math> pages 3 claude <math> pages 0
+CEDK501 gold <math> pages 2 claude <math> pages 0
+ENGC301 gold <math> pages 0 claude <math> pages 0
+MXDB301 gold <math> pages 3 claude <math> pages 1
+MXDB302 gold <math> pages 4 claude <math> pages 0
+MXDI102 gold <math> pages 4 claude <math> pages 4
+MXDI103 gold <math> pages 0 claude <math> pages 0
+MXEO301 gold <math> pages 3 claude <math> pages 0
+MXEO401 gold <math> pages 1 claude <math> pages 0
+MXEX401 gold <math> pages 5 claude <math> pages 0
+MXFL301 gold <math> pages 1 claude <math> pages 0
+MXFU201 gold <math> pages 1 claude <math> pages 0
+MXFU202 gold <math> pages 0 claude <math> pages 0
+MXFU301 gold <math> pages 7 claude <math> pages 0
+MXFU401 gold <math> pages 3 claude <math> pages 1
+MXFU402 gold <math> pages 6 claude <math> pages 0
+PES1003 gold <math> pages 1 claude <math> pages 0
+PES1004 gold <math> pages 3 claude <math> pages 0
+PES1007 gold <math> pages 6 claude <math> pages 3
+PES1008 gold <math> pages 7 claude <math> pages 2

@@ -1,0 +1,144 @@
+gold alertActivity sidebars on paired pages, by WT source:
+  Bilingual    EMPTY      boxes   14 pages   13 modules    6
+  Bilingual    IN-WT      boxes    2 pages    2 modules    2
+  Bilingual    NO-SOURCE  boxes   14 pages   13 modules    6
+  Fundamentals EMPTY      boxes    5 pages    5 modules    4
+  Fundamentals IN-WT      boxes   16 pages   10 modules    8
+  Fundamentals NO-SOURCE  boxes   11 pages   10 modules    9
+  Inquiry      EMPTY      boxes   32 pages    9 modules    9
+  Inquiry      IN-WT      boxes   46 pages   20 modules   18
+  Inquiry      NO-SOURCE  boxes    6 pages    5 modules    5
+  Standard     EMPTY      boxes   78 pages   69 modules   59
+  Standard     IN-WT      boxes  197 pages  165 modules   97
+  Standard     NO-SOURCE  boxes   79 pages   73 modules   52
+
+IN-WT boxes by the nearest preceding bracket tag (template | tag | boxes):
+  Standard       34 ?
+  Standard       27 side alert
+  Inquiry        18 important side note
+  Standard       16 alert
+  Standard       13 important
+  Inquiry         8 side alert
+  Standard        8 body
+  Standard        7 alert rhs
+  Standard        7 alert box
+  Inquiry         7 important side alert
+  Standard        6 hN
+  Standard        6 body text
+  Standard        6 alert solid
+  Standard        5 alert box rhc
+  Standard        5 supervisor notes
+  Standard        5 alert side box
+  Standard        4 rhs alert
+  Standard        4 coloured box
+  Standard        3 important box
+  Inquiry         3 body
+  Standard        3 coloured box - green
+  Standard        2 image: imageN.png
+  Standard        2 alert box rhs
+  Inquiry         2 alert box – right hand side
+  Standard        2 alert box right hand side
+  Inquiry         2 important info box rhs
+  Inquiry         2 alert box
+  Standard        2 button
+  Fundamentals    2 alert
+  Standard        2 dropbox
+  Fundamentals    2 supervisor button top rhs
+  Fundamentals    2 supervisor button rhs
+  Bilingual       2 body
+  Fundamentals    2 alert rhs
+  Fundamentals    2 alert - rhs
+  Fundamentals    2 alert box
+  Standard        1 secondary text
+  Standard        1 alert box rhs with text
+  Standard        1 alert – break out box
+  Standard        1 insert text box with text
+
+headings (top):
+  Standard      243 
+  Inquiry        74 
+  Bilingual      29 
+  Fundamentals   21 
+  Standard       10 remember
+  Standard        9 note
+  Standard        9 success criteria
+  Standard        7 important note
+  Standard        4 for example
+  Standard        3 hint
+  Inquiry         3 example
+  Standard        3 important tips
+  Standard        3 key questions
+  Standard        2 need some extra help
+  Standard        2 need help
+  Standard        2 modern day slavery
+  Standard        2 content warning
+  Standard        2 think like a data sc
+  Standard        2 key question
+  Standard        1 te reo k rero
+  Standard        1 need help with under
+  Standard        1 interviews
+  Standard        1 former governor gene
+  Standard        1 share
+  Standard        1 check this out
+
+examples:
+  ('Standard', '?')
+     ('AGH1003', 'AGH1003_1_0.html', 'remember', 'a management practice is anything done by a farmer or grower')
+     ('AGH1009', 'AGH1009_3_0.html', 'hint', 'think about the products produced the cost of growing these ')
+     ('ANZH301', 'ANZH301_3_0.html', 'note', 'please read this source in the context of the early 1960s it')
+     ('ANZH301', 'ANZH301_9_0.html', '', 'https www aljazeera com features 2020 2 17 my culture on my ')
+  ('Standard', 'side alert')
+     ('BLL113', 'BLL113_2_0.html', '', 'don t forget to start your sentence with a capital letter an')
+     ('BLL114', 'BLL114_2_0.html', '', 'remember to start your sentence with a capital letter and en')
+     ('BLL117', 'BLL117_1_0.html', '', 'remember to start your sentence with a capital letter and en')
+     ('BLL123', 'BLL123_2_0.html', '', 'don t forget to start your sentence with a capital letter an')
+  ('Inquiry', 'important side note')
+     ('BLL110', 'BLL110_0_0.html', '', 'when a letter is written as s we want you to say its name wh')
+     ('BLL110', 'BLL110_0_0.html', '', 'when a letter is written as a we want you to say its name wh')
+     ('BLL110', 'BLL110_0_0.html', '', 'when a letter is written as t we want you to say its name wh')
+     ('BLL110', 'BLL110_0_0.html', '', 'when a letter is written as p we want you to say its name wh')
+  ('Standard', 'alert')
+     ('BLL234', 'BLL234_2_0.html', '', 'new zealand sign language is an official language of aotearo')
+     ('BLL234', 'BLL234_2_0.html', '', 'remember speech marks are only used around the words that ar')
+     ('CEDO105', 'CEDO105_1_0.html', 'note', 'you might have taken lots of pictures select the best five t')
+     ('ENGC101', 'ENGC101_3_0.html', '', 'it is important to know that some cultures do things differe')
+  ('Standard', 'important')
+     ('ENG1004', 'ENG1004_0_0.html', '', 'when your kaiako has approved checkpoint 1 move to checkpoin')
+     ('ENG1004', 'ENG1004_0_0.html', '', 'when your kaiako has approved checkpoint 2 move to checkpoin')
+     ('ENG1004', 'ENG1004_0_0.html', '', 'when your kaiako has approved checkpoint 3 move to final ass')
+     ('ENG1004', 'ENG1004_1_0.html', '', 'when your kaiako has approved checkpoint 1 move to checkpoin')
+  ('Inquiry', 'side alert')
+     ('BLL140', 'BLL140_0_0.html', '', 'if a letter is written as a it means we want you to say the ')
+     ('BLL160', 'BLL160_0_0.html', '', 'voiced and voiceless means that your vocal cords either vibr')
+     ('BLL210', 'BLL210_0_0.html', '', 'if a letter is written as e it means we want you to say the ')
+     ('BLL210', 'BLL210_0_0.html', '', 'remember that if a word has more than one syllable each syll')
+  ('Standard', 'body')
+     ('ENGJ102', 'ENGJ102_2_0.html', '', 'sometimes it helps to read each line aloud and then ask your')
+     ('ENGJ102', 'ENGJ102_5_0.html', '', 'remember a shape poem can be written inside the shape of you')
+     ('ENGR202', 'ENGR202_3_0.html', 'tips for your advertisement', 'shapes use different shapes to catch the reader s eye size t')
+     ('ENGS102', 'ENGS102_6_0.html', 'important note', 'if you would like to voice type your story in your journal p')
+  ('Standard', 'alert rhs')
+     ('ANZH101', 'ANZH101_2_0.html', '', 'visit a library with your supervisor to find a book about th')
+     ('ANZH105', 'ANZH105_2_0.html', 'interviews', 'to find out more about interviews you might like to discuss ')
+     ('ENGC101', 'ENGC101_5_0.html', '', 'on the landing page in my te kura you can see your kaiako s ')
+     ('XGF9001', 'XGF9001_2_0.html', 'key questions', 'what qualities strengths and interests make me unique as a g')
+  ('Standard', 'alert box')
+     ('ANZH401', 'ANZH401_2_0.html', 'success criteria', 'i can categorise some reasons why people moved to aotearoa n')
+     ('ANZH401', 'ANZH401_3_0.html', 'success criteria', 'i can explain examples of different perspectives about wakef')
+     ('ANZH401', 'ANZH401_4_0.html', 'success criteria', 'i can use the national library of new zealand as a source to')
+     ('ANZH401', 'ANZH401_5_0.html', 'success criteria', 'i can describe one perspective that conflicts with another i')
+  ('Inquiry', 'important side alert')
+     ('BLL140', 'BLL140_0_0.html', '', 'when a letter is written as j we want you to say its name wh')
+     ('BLL150', 'BLL150_0_0.html', '', 'when a letter is written as z we want you to say its name wh')
+     ('BLL150', 'BLL150_0_0.html', '', 'when a letter is written as w we want you to say its name wh')
+     ('BLL150', 'BLL150_0_0.html', '', 'when a letter is written as v we want you to say its name wh')
+  ('Standard', 'hN')
+     ('AGH1009', 'AGH1009_9_0.html', 'hint', 'think of consumer demand and environmental impact')
+     ('HIS1002', 'HIS1002_2_0.html', 'your learning journal', 'it is time to download your new learning journal that you wi')
+     ('HIS1003', 'HIS1003_2_0.html', '', 'if you have not yet completed the lessons on ethics and empa')
+     ('HIS1005', 'HIS1005_9_0.html', 'modern day slavery', 'if you want to learn more about how slavery exists in our ti')
+  ('Standard', 'body text')
+     ('ENGS302', 'ENGS302_6_0.html', 'maths moment understanding tim', 'let s take a quick break from our film studies to explore so')
+     ('HIS1002', 'HIS1002_11_0.html', '', 'if you want to trace the story of the rainbow warrior furthe')
+     ('MXDI201', 'MXDI201_1_0.html', '', 'if you are feeling that you need some more practice with und')
+     ('MXDI202', 'MXDI202_1_0.html', '', 'remember the order of months is january february march april')

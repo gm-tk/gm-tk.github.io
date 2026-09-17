@@ -1,0 +1,103 @@
+gold <math> elements on paired pages by source (template | class | elements | pages | modules):
+  Fundamentals NO-SOURCE        24    1    1
+  Fundamentals PLAIN-IN-WT      33    1    1
+  Inquiry      NO-SOURCE         2    2    1
+  Inquiry      PLAIN-IN-WT       3    1    1
+  Inquiry      PLAIN-IN-WT~      1    1    1
+  Standard     CLAUDE-HAS       73   10    5
+  Standard     NO-SOURCE       807   61   22
+  Standard     PLAIN-IN-WT     477   49   16
+  Standard     PLAIN-IN-WT~     56   15    7
+
+per module:
+  CEDK501  {'PLAIN-IN-WT~': 1, 'PLAIN-IN-WT': 3, 'NO-SOURCE': 2}
+  CEDO501  {'NO-SOURCE': 2}
+  ENGR302  {'NO-SOURCE': 13, 'PLAIN-IN-WT': 4}
+  ENGS401  {'NO-SOURCE': 2}
+  MXDB301  {'NO-SOURCE': 6, 'PLAIN-IN-WT': 9}
+  MXDB302  {'PLAIN-IN-WT': 28, 'NO-SOURCE': 10, 'PLAIN-IN-WT~': 2}
+  MXDI102  {'CLAUDE-HAS': 21, 'NO-SOURCE': 1}
+  MXDI301  {'CLAUDE-HAS': 21, 'NO-SOURCE': 12}
+  MXEO301  {'NO-SOURCE': 131, 'PLAIN-IN-WT': 5}
+  MXEO401  {'PLAIN-IN-WT': 2}
+  MXEX301  {'NO-SOURCE': 5, 'CLAUDE-HAS': 4}
+  MXEX401  {'NO-SOURCE': 34}
+  MXFL104  {'PLAIN-IN-WT': 8}
+  MXFL301  {'NO-SOURCE': 27, 'PLAIN-IN-WT': 12}
+  MXFL302  {'PLAIN-IN-WT': 174, 'NO-SOURCE': 246, 'PLAIN-IN-WT~': 30}
+  MXFL401  {'PLAIN-IN-WT': 1, 'NO-SOURCE': 27}
+  MXFU201  {'NO-SOURCE': 3}
+  MXFU301  {'PLAIN-IN-WT': 88, 'NO-SOURCE': 64, 'PLAIN-IN-WT~': 8}
+  MXFU302  {'NO-SOURCE': 6, 'PLAIN-IN-WT': 1}
+  MXFU401  {'NO-SOURCE': 21, 'PLAIN-IN-WT': 6, 'CLAUDE-HAS': 6, 'PLAIN-IN-WT~': 3}
+  MXFU402  {'NO-SOURCE': 14, 'PLAIN-IN-WT': 51}
+  MXFUN01  {'PLAIN-IN-WT': 33, 'NO-SOURCE': 24}
+  PES1003  {'NO-SOURCE': 1}
+  PES1004  {'PLAIN-IN-WT~': 6, 'PLAIN-IN-WT': 17, 'NO-SOURCE': 21}
+  PES1007  {'CLAUDE-HAS': 21, 'PLAIN-IN-WT': 14, 'NO-SOURCE': 66, 'PLAIN-IN-WT~': 6}
+  PES1008  {'PLAIN-IN-WT': 57, 'NO-SOURCE': 95, 'PLAIN-IN-WT~': 1}
+
+examples:
+  ('Inquiry', 'PLAIN-IN-WT~')
+     ('CEDK501', 'CEDK501_2_0.html', '$149×12=$1,788')
+  ('Inquiry', 'PLAIN-IN-WT')
+     ('CEDK501', 'CEDK501_2_0.html', '$1,788÷52=$34.38')
+     ('CEDK501', 'CEDK501_2_0.html', '$1525÷52=$29.33')
+     ('CEDK501', 'CEDK501_2_0.html', '$395+$34.38+$29.33=$458.71')
+  ('Inquiry', 'NO-SOURCE')
+     ('CEDK501', 'CEDK501_2_0.html', '$465-458.70=$6.29')
+     ('CEDK501', 'CEDK501_5_0.html', '$25+$12=$37')
+  ('Standard', 'NO-SOURCE')
+     ('CEDO501', 'CEDO501_2_1.html', 'Percentage100×TotalAmount=PercentageofAmount')
+     ('CEDO501', 'CEDO501_2_1.html', '3100×$1,000=$30')
+     ('ENGR302', 'ENGR302_4_0.html', '45×4→20710×3→21611×7→4225×7→141045÷5→237×4→28Reset')
+     ('ENGR302', 'ENGR302_4_0.html', '360÷10=36,480÷10=48')
+     ('ENGR302', 'ENGR302_4_0.html', '3648')
+     ('ENGR302', 'ENGR302_4_0.html', '36÷12=3,48÷12=4')
+     ('ENGR302', 'ENGR302_4_0.html', '1830')
+     ('ENGR302', 'ENGR302_4_0.html', '1830')
+  ('Standard', 'PLAIN-IN-WT')
+     ('ENGR302', 'ENGR302_4_0.html', '34')
+     ('ENGR302', 'ENGR302_4_0.html', '34')
+     ('ENGR302', 'ENGR302_4_0.html', '35')
+     ('ENGR302', 'ENGR302_4_0.html', '45')
+     ('MXDB301', 'MXDB301_4_0_0.html', '12')
+     ('MXDB301', 'MXDB301_4_0_0.html', '12')
+     ('MXDB301', 'MXDB301_4_0_0.html', '12')
+     ('MXDB301', 'MXDB301_4_0_0.html', '242')
+  ('Standard', 'PLAIN-IN-WT~')
+     ('MXDB302', 'MXDB302_9_0.html', '310')
+     ('MXDB302', 'MXDB302_9_0.html', '310')
+     ('MXFL302', 'MXFL302_2_0.html', 's=t×6')
+     ('MXFL302', 'MXFL302_2_0.html', '3×y')
+     ('MXFL302', 'MXFL302_2_0.html', '3y')
+     ('MXFL302', 'MXFL302_2_0.html', '10×b')
+     ('MXFL302', 'MXFL302_2_0.html', 'n=4x')
+     ('MXFL302', 'MXFL302_2_0.html', 'x=4y')
+  ('Standard', 'CLAUDE-HAS')
+     ('MXDI102', 'MXDI102_1_0.html', '12')
+     ('MXDI102', 'MXDI102_1_0.html', '12')
+     ('MXDI102', 'MXDI102_1_0.html', '12')
+     ('MXDI102', 'MXDI102_1_0.html', '12')
+     ('MXDI102', 'MXDI102_1_0.html', '12')
+     ('MXDI102', 'MXDI102_1_0.html', '12')
+     ('MXDI102', 'MXDI102_2_0.html', '14')
+     ('MXDI102', 'MXDI102_2_0.html', '24')
+  ('Fundamentals', 'PLAIN-IN-WT')
+     ('MXFUN01', 'MXFUN01_0_0.html', '410')
+     ('MXFUN01', 'MXFUN01_0_0.html', '410')
+     ('MXFUN01', 'MXFUN01_0_0.html', '210')
+     ('MXFUN01', 'MXFUN01_0_0.html', '910')
+     ('MXFUN01', 'MXFUN01_0_0.html', '810')
+     ('MXFUN01', 'MXFUN01_0_0.html', '12')
+     ('MXFUN01', 'MXFUN01_0_0.html', '24')
+     ('MXFUN01', 'MXFUN01_0_0.html', '816')
+  ('Fundamentals', 'NO-SOURCE')
+     ('MXFUN01', 'MXFUN01_0_0.html', '')
+     ('MXFUN01', 'MXFUN01_0_0.html', '')
+     ('MXFUN01', 'MXFUN01_0_0.html', '')
+     ('MXFUN01', 'MXFUN01_0_0.html', '48100')
+     ('MXFUN01', 'MXFUN01_0_0.html', '98100')
+     ('MXFUN01', 'MXFUN01_0_0.html', '421000')
+     ('MXFUN01', 'MXFUN01_0_0.html', '9100')
+     ('MXFUN01', 'MXFUN01_0_0.html', '61000')

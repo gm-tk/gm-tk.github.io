@@ -1,0 +1,71 @@
+MCQ bundles 294 built 4 un-built 290
+
+un-built by shape:
+   prose  183 sites /  136 pages /  100 modules
+   table  107 sites /   94 pages /   53 modules
+
+un-built by ANNOUNCEMENT (any):   24 sites /   24 pages /   16 modules
+   announced hl         5 sites /    5 pages /    5 modules
+   announced green      0 sites /    0 pages /    0 modules
+   announced red       18 sites /   18 pages /   11 modules
+   announced bold       1 sites /    1 pages /    1 modules
+   announced tick       2 sites /    2 pages /    2 modules
+   announced italic     0 sites /    0 pages /    0 modules
+un-built with NO announcement:  266 sites /  196 pages /  120 modules
+
+un-built by mark evidence:
+   hl           33 sites /   23 pages /   22 modules
+   green         3 sites /    3 pages /    3 modules
+   red-line      0 sites /    0 pages /    0 modules
+   red-black     0 sites /    0 pages /    0 modules
+   bold         48 sites /   35 pages /   27 modules
+   [correct]    11 sites /    8 pages /    6 modules
+   tbl-hl       29 sites /   26 pages /   14 modules
+   tbl-green     3 sites /    3 pages /    3 modules
+   tbl-red      61 sites /   55 pages /   34 modules
+   cell-hl      29 sites /   26 pages /   14 modules
+
+announced AND matching marks present, by shape (the derivable candidates):
+   hl     prose    1 sites /    1 pages /    1 modules  modules: ['ENGJ302']
+   hl     table    2 sites /    2 pages /    2 modules  modules: ['ARFUN04', 'ENFUN09']
+   red    table    6 sites /    6 pages /    4 modules  modules: ['ENGI101', 'MXFUN01', 'XGF9002', 'XGF9004']
+   bold   prose    1 sites /    1 pages /    1 modules  modules: ['ENFUN01']
+
+un-announced but [correct]-marked yet un-built (the current builder's own declines):    9 sites /    6 pages /    5 modules
+extraTypes un-built:   35 sites /   32 pages /   18 modules
+
+all announced+marked candidates:   10 sites /   10 pages /    8 modules
+  per template: Counter({'Fundamentals': 6, 'Standard': 4})
+  per announcement kind: [(('red',), 6), (('hl',), 2), (('hl', 'bold'), 1), (('hl', 'tick'), 1)]
+
+examples (announced + marked, un-built):
+  ENFUN09 0.0 # 8 ['hl'] {'cell-hl': 6, 'tbl-hl': 6} table
+     opener: []
+     members: [('tag', '[multichoice - students to select the better of th', []), ('table', '', [])]
+  ENFUN01 0.0 # 24 ['hl', 'bold'] {'bold': 1} prose
+     opener: []
+     members: [('tag', '[Activity 1: Multichoice Answer Quiz]', []), ('black', 'Here are some examples of ways people present thei', []), ('black', 'Which is the **most likely**', []), ('tag', '[Creative services: please highlight these bolded ', []), ('black', 'Select your answer from the choices, below:', []), ('tag', '[multichoice answer quiz]', [])]
+  MXFUN01 6.3 # 30 ['red'] {'cell-red': 10, 'tbl-red': 10} table
+     opener: []
+     members: [('tag', '[Mutlichoice quiz]', []), ('tag', 'Trigger MTK engagement. Correct answers are in red', []), ('table', '', []), ('tag', '[Button] Check answers', [])]
+  MXFUN01 6.4 # 33 ['red'] {'cell-red': 12, 'tbl-red': 12} table
+     opener: []
+     members: [('tag', '[Multi-choice quiz] Trigger MTK engagement, correc', []), ('table', '', []), ('tag', '[Check answers]', [])]
+  MXFUN01 6.5 # 42 ['red'] {'cell-red': 10, 'tbl-red': 10} table
+     opener: []
+     members: [('tag', '[Multichoice quiz] Trigger MTK engagement. I have ', []), ('table', '', []), ('tag', '[Button]', [])]
+  XGF9002 8.0 # 40 ['red'] {'cell-red': 2, 'tbl-red': 2} table
+     opener: []
+     members: [('tag', '[Insert self-check multichoice with pop-out feedba', []), ('table', '', []), ('tag', '[Needs to sort – correct answer in red]', []), ('black', 'My child feels isolated at school.', []), ('tag', '[Peer groups or clubs]', []), ('black', 'I want culturally safe spaces for my whānau.', [])]
+  ARFUN04 0.0 # 64 ['hl'] {'cell-hl': 3, 'hl': 1, 'tbl-hl': 3} table
+     opener: []
+     members: [('tag', '[create a tick box quiz] [answers are highlighted]', []), ('black', 'Tick the correct answer:', []), ('table', '', []), ('table', '', []), ('black', '4. What type of contrast involves rough and smooth', []), ('black', 'a. Colour contrast b. Shape contrast c. Texture co', [{'k': 'hl', 't': 'c. Texture contrast'}])]
+  ENGI101 1.1 # 6 ['red'] {'cell-red': 6, 'tbl-red': 6} table
+     opener: []
+     members: [('tag', '[multi choice drop down boxes] Correct answers are', []), ('table', '', []), ('tag', '[Button]', [])]
+  XGF9004 7.0 # 18 ['red'] {'cell-red': 4, 'tbl-red': 4} table
+     opener: []
+     members: [('tag', '[Insert interactive quiz. Correct answer in red.]', []), ('table', '', []), ('table', '', []), ('table', '', []), ('table', '', [])]
+  ENGJ302 5.0 # 24 ['hl', 'tick'] {'hl': 14} prose
+     opener: []
+     members: [('tag', '[Activity 4D – multi-choice quiz] (correct answer ', []), ('tag', '[Go to Quiz]', []), ('tag', 'Quiz:', []), ('black', '*Backyard Guards*', []), ('tag', '[embed]', []), ('black', '1. What does "full from a night-time meal of grubs', [])]

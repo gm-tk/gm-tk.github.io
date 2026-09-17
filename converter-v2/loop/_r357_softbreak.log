@@ -1,0 +1,78 @@
+soft-break boundaries (≥2 words each side): 1618 modules 134
+
+by template:
+group                      n    br split glued  miss lonly  br-share(of found)
+Standard                1222   177   411    53   392   189  0.28
+Fundamentals             377    26    73     6   124   148  0.25
+Inquiry                   19     1    10     0     2     6  0.09
+
+by subject (top):
+group                      n    br split glued  miss lonly  br-share(of found)
+SSOG                     207    12    45     7   132    11  0.19
+ARFU                     190    15    28     0    52    95  0.35
+TEDC                     146     0    96     8    17    25  0.00
+MXDI                     119     9    30     0    49    31  0.23
+SSFU                      94     3    28     3    33    27  0.09
+SSCI                      78     0    61    10     5     2  0.00
+MXFU                      64     7    28     5    13    11  0.17
+HPFU                      52     3     9     2    25    13  0.21
+ENGJ                      50    45     0     0     5     0  1.00
+MXFL                      50     2    21     0    18     9  0.09
+TEFU                      43     5    10     1    16    11  0.31
+BLL                       42     3    19     1     8    11  0.13
+OSAI                      42     8    12     0     8    14  0.40
+HIS                       38    27    10     0     0     1  0.73
+CEDR                      36     0    12     0    14    10  0.00
+PES                       35     0     2     2    13    18  0.00
+ENGR                      35    13     4     0     8    10  0.76
+ENGS                      32    19     1     2     2     8  0.86
+SCCH                      29     0     0     0    25     4  0.00
+CEDO                      28     0    16     0     2    10  0.00
+XLP                       21     5     6     6     2     2  0.29
+XDLS                      19     6     7     0     6     0  0.46
+ANZH                      19     1     6     0     5     7  0.14
+ENGI                      18     9     3     0     4     2  0.75
+XGF                       16     0     3     1    12     0  0.00
+OSSC                      14     3    11     0     0     0  0.21
+CEDW                      14     0     1     6     7     0  0.00
+OSSM                      10     5     0     0     5     0  1.00
+CEDT                       9     0     0     0     9     0  0.00
+CEDK                       9     0     5     0     0     4  0.00
+OSGM                       8     0     8     0     0     0  0.00
+XTAS                       8     3     0     0     5     0  1.00
+HPRE                       6     0     4     1     0     1  0.00
+HES                        5     0     1     1     3     0  0.00
+AGH                        4     0     2     0     2     0  0.00
+PHE                        4     0     0     0     4     0  0.00
+TWHA                       4     0     2     0     0     2  0.00
+OSOH                       4     0     1     3     0     0  0.00
+ART                        3     0     0     0     1     2  0.00
+ENG                        3     0     0     0     3     0  0.00
+BLLR                       2     1     0     0     1     0  1.00
+EXBP                       1     0     0     0     1     0  0.00
+MXEX                       1     0     0     0     1     0  0.00
+OSAH                       1     0     0     0     1     0  0.00
+EXIP                       1     0     0     0     0     1  0.00
+ENFU                       1     0     0     0     0     1  0.00
+XMES                       1     0     1     0     0     0  0.00
+EXPF                       1     0     1     0     0     0  0.00
+OSBY                       1     0     0     0     1     0  0.00
+
+by list-ness / red / bold-lead:
+group                      n    br split glued  miss lonly  br-share(of found)
+('para', 'red', 'plain')   673    44   234    24   235   136  0.15
+('para', 'blk', 'plain')   406    97   119    10    91    89  0.43
+('para', 'red', 'bold')   225     2    75    10    97    41  0.02
+('para', 'blk', 'bold')   114    27    41     7    16    23  0.36
+('list', 'blk', 'bold')    70    16     5     7    29    13  0.57
+('list', 'blk', 'plain')    63    13    14     0    21    15  0.48
+('list', 'red', 'plain')    42     0     6     1    22    13  0.00
+('list', 'red', 'bold')    25     5     0     0     7    13  1.00
+
+by lines-in-paragraph:
+group                      n    br split glued  miss lonly  br-share(of found)
+2                        639    65   207    32   222   113  0.21
+6                        351    54   129    10    83    75  0.28
+3                        276    34    83    17    90    52  0.25
+4                        236    31    46     0    84    75  0.40
+5                        116    20    29     0    39    28  0.41

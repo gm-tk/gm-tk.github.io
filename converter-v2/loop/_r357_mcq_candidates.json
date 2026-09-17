@@ -1,0 +1,133 @@
+[
+{
+"code": "ENFUN09",
+"page": "0.0",
+"index": 8,
+"ann": [
+"hl"
+],
+"marks": {
+"cell-hl": 6,
+"tbl-hl": 6
+},
+"shape": "table"
+},
+{
+"code": "ENFUN01",
+"page": "0.0",
+"index": 24,
+"ann": [
+"hl",
+"bold"
+],
+"marks": {
+"bold": 1
+},
+"shape": "prose"
+},
+{
+"code": "MXFUN01",
+"page": "6.3",
+"index": 30,
+"ann": [
+"red"
+],
+"marks": {
+"cell-red": 10,
+"tbl-red": 10
+},
+"shape": "table"
+},
+{
+"code": "MXFUN01",
+"page": "6.4",
+"index": 33,
+"ann": [
+"red"
+],
+"marks": {
+"cell-red": 12,
+"tbl-red": 12
+},
+"shape": "table"
+},
+{
+"code": "MXFUN01",
+"page": "6.5",
+"index": 42,
+"ann": [
+"red"
+],
+"marks": {
+"cell-red": 10,
+"tbl-red": 10
+},
+"shape": "table"
+},
+{
+"code": "XGF9002",
+"page": "8.0",
+"index": 40,
+"ann": [
+"red"
+],
+"marks": {
+"cell-red": 2,
+"tbl-red": 2
+},
+"shape": "table"
+},
+{
+"code": "ARFUN04",
+"page": "0.0",
+"index": 64,
+"ann": [
+"hl"
+],
+"marks": {
+"cell-hl": 3,
+"hl": 1,
+"tbl-hl": 3
+},
+"shape": "table"
+},
+{
+"code": "ENGI101",
+"page": "1.1",
+"index": 6,
+"ann": [
+"red"
+],
+"marks": {
+"cell-red": 6,
+"tbl-red": 6
+},
+"shape": "table"
+},
+{
+"code": "XGF9004",
+"page": "7.0",
+"index": 18,
+"ann": [
+"red"
+],
+"marks": {
+"cell-red": 4,
+"tbl-red": 4
+},
+"shape": "table"
+},
+{
+"code": "ENGJ302",
+"page": "5.0",
+"index": 24,
+"ann": [
+"hl",
+"tick"
+],
+"marks": {
+"hl": 14
+},
+"shape": "prose"
+}
+]

@@ -1,0 +1,19 @@
+  decline:table                                      98 sites /   85 pages /   50 modules  [('Standard', 70), ('Fundamentals', 23), ('Inquiry', 3), ('Bilingual', 2)]
+  no-marks                                           50 sites /   46 pages /   42 modules  [('Standard', 26), ('Fundamentals', 21), ('Inquiry', 3)]
+  no-questions                                       40 sites /   32 pages /   27 modules  [('Standard', 25), ('Fundamentals', 15)]
+  A-partial:some-marks                               36 sites /   32 pages /   28 modules  [('Standard', 23), ('Fundamentals', 13)]
+  extraTypes-foreign                                 21 sites /   19 pages /    9 modules  [('Standard', 20), ('Fundamentals', 1)]
+  decline:foreign:correct                            14 sites /   13 pages /    9 modules  [('Standard', 9), ('Fundamentals', 5)]
+  A:prose-marked-complete[red]                       12 sites /   12 pages /   12 modules  [('Standard', 10), ('Fundamentals', 2)]
+  A:prose-marked-complete[hl]                        10 sites /    7 pages /    7 modules  [('Fundamentals', 6), ('Standard', 4)]
+  decline:foreign:engagement quiz button              3 sites /    1 pages /    1 modules  [('Fundamentals', 3)]
+  decline:foreign:data marker                         3 sites /    2 pages /    2 modules  [('Fundamentals', 3)]
+  A:prose-marked-complete[red]+sameExtra              1 sites /    1 pages /    1 modules  [('Fundamentals', 1)]
+  decline:foreign:word select                         1 sites /    1 pages /    1 modules  [('Standard', 1)]
+  A:prose-marked-complete[green]                      1 sites /    1 pages /    1 modules  [('Standard', 1)]
+
+SHAPE A total:   24 sites /   19 pages /   19 modules
+SHAPE B total:    0 sites /    0 pages /    0 modules
+A+B:   24 sites /   19 pages /   19 modules
+A modules: [('ARFUN04', 2), ('BLL147', 1), ('BLL152', 1), ('BLL165', 1), ('BLL173', 1), ('BLL241', 1), ('BLL242', 1), ('CEDR501', 1), ('ENFUN01', 1), ('ENFUN09', 1), ('ENGI103', 1), ('ENGR201', 1), ('ENGR202', 1), ('MXEX302', 1), ('MXFL203', 2), ('OSBY101', 1), ('TEFUN01', 2), ('TEFUN04', 3), ('XGF9003', 1)]
+B modules: []

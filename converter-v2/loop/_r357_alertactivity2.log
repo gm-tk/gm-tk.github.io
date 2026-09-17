@@ -1,0 +1,115 @@
+gold alertActivity (IN-WT) → Claude's rendering of the same text (template | writer tag | Claude context | boxes | pages | modules)
+  Standard     side alert                   alertActivity                          27   26   26
+  Inquiry      important side note          alert solid                            18    3    3
+  Standard     ?                            activity                               17   15    7
+  Standard     alert                        alert                                  14   13   12
+  Standard     important                    alert solid                            12    6    4
+  Inquiry      side alert                   alertActivity                           9    5    5
+  Standard     alert box                    alert                                   7    7    2
+  Inquiry      important side alert         alertActivity                           7    4    4
+  Standard     ?                            alert                                   6    6    4
+  Standard     body text                    free-body                               6    5    3
+  Standard     alert solid                  alert solid                             6    5    3
+  Standard     alert box rhc                alertActivity                           5    5    4
+  Standard     alert side box               alert                                   5    5    1
+  Standard     hN                           free-body                               4    4    4
+  Standard     ?                            free-body                               4    2    2
+  Standard     alert rhs                    free-body                               4    4    1
+  Standard     rhs alert                    alertActivity                           3    3    3
+  Standard     alert rhs                    alertActivity                           3    3    3
+  Standard     supervisor notes             activity                                3    2    1
+  Standard     body                         activity                                3    3    2
+  Standard     alert box right hand side    alert                                   2    2    2
+  Inquiry      alert box                    alert                                   2    2    2
+  Standard     body                         activity interactive                    2    2    2
+  Standard     rhs alert                    alert top                               2    2    2
+  Standard     hN                           alert                                   2    2    2
+  Standard     ?                            activity interactive                    2    2    2
+  Standard     important box                alert solid                             2    2    2
+  Fundamentals alert                        alert                                   2    2    2
+  Standard     coloured box - green         activity interactive                    2    1    1
+  Standard     ?                            NOT-ON-PAGE                             2    2    2
+  Standard     coloured box                 NOT-ON-PAGE                             2    1    1
+  Standard     alert                        free-body                               2    1    1
+  Fundamentals alert - rhs                  alert top                               2    1    1
+  Fundamentals alert box                    alert                                   2    2    2
+  Inquiry      alert                        alert                                   2    2    2
+  Standard     secondary text               activity interactive                    1    1    1
+  Standard     image: imageN.png            activity interactive                    1    1    1
+  Standard     alert box rhs with text      activity                                1    1    1
+  Standard     alert box rhs                alertActivity                           1    1    1
+  Standard     alert – break out box        alert                                   1    1    1
+  Standard     insert text box with text    free-body                               1    1    1
+  Inquiry      important side note          NOT-ON-PAGE                             1    1    1
+  Standard     embed story                  free-body                               1    1    1
+  Standard     important box                NOT-ON-PAGE                             1    1    1
+  Inquiry      important                    alert solid                             1    1    1
+
+by Claude context only:
+  Standard     alert                                  43 boxes   40 pages
+  Standard     alertActivity                          42 boxes   41 pages
+  Standard     free-body                              39 boxes   30 pages
+  Standard     activity                               26 boxes   23 pages
+  Standard     alert solid                            23 boxes   15 pages
+  Inquiry      alert solid                            21 boxes    6 pages
+  Inquiry      alertActivity                          17 boxes    8 pages
+  Standard     NOT-ON-PAGE                            12 boxes   10 pages
+  Standard     activity interactive                    9 boxes    8 pages
+  Inquiry      alert                                   5 boxes    5 pages
+  Fundamentals alert                                   5 boxes    5 pages
+  Fundamentals free-body                               5 boxes    4 pages
+  Standard     alert top                               4 boxes    4 pages
+  Inquiry      NOT-ON-PAGE                             3 boxes    2 pages
+  Standard     activity dropbox                        3 boxes    3 pages
+  Fundamentals alert top                               3 boxes    1 pages
+  Inquiry      free-body                               2 boxes    2 pages
+  Fundamentals NOT-ON-PAGE                             2 boxes    1 pages
+  Inquiry      activity                                1 boxes    1 pages
+  Standard     activity super-content-button           1 boxes    1 pages
+  Standard     activity dropbox interactive            1 boxes    1 pages
+  Fundamentals activity interactive super-content-button    1 boxes    1 pages
+  Bilingual    activity interactive                    1 boxes    1 pages
+  Fundamentals alertActivity                           1 boxes    1 pages
+  Bilingual    free-body                               1 boxes    1 pages
+
+examples:
+  ('Standard', 'side alert', 'alertActivity') 27
+     ('BLL113', 'BLL113_2_0.html', '🔴[RED TEXT] [side alert]  [/RED TEXT]🔴Don’t forget to start your sentence with a capital l')
+     ('BLL114', 'BLL114_2_0.html', '🔴[RED TEXT] [side alert]  [/RED TEXT]🔴Remember to start your sentence with a capital lette')
+     ('BLL117', 'BLL117_1_0.html', '🔴[RED TEXT] [side alert]  [/RED TEXT]🔴Remember to start your sentence with a capital lette')
+  ('Inquiry', 'important side note', 'alert solid') 18
+     ('BLL110', 'BLL110_0_0.html', '🔴[RED TEXT] [Important side note]  [/RED TEXT]🔴When a letter is written as ‘s’ we want you')
+     ('BLL110', 'BLL110_0_0.html', '🔴[RED TEXT] [Important side note]  [/RED TEXT]🔴When a letter is written as ‘s’ we want you')
+     ('BLL110', 'BLL110_0_0.html', '🔴[RED TEXT] [Important side note]  [/RED TEXT]🔴When a letter is written as ‘s’ we want you')
+  ('Standard', '?', 'activity') 17
+     ('AGH1003', 'AGH1003_1_0.html', '*Remember: a management practice is anything done by a farmer or grower to produce an end ')
+     ('AGH1009', 'AGH1009_3_0.html', '__**Hint:**__ Think about the products produced, the cost of growing these products and th')
+     ('ANZH301', 'ANZH301_3_0.html', '*Note: Please read this source in the context of the early 1960s. It is highly unlikely vi')
+  ('Standard', 'alert', 'alert') 14
+     ('BLL234', 'BLL234_2_0.html', '🔴[RED TEXT] [alert]  [/RED TEXT]🔴New Zealand Sign language is an official language of Aote')
+     ('BLL234', 'BLL234_2_0.html', '🔴[RED TEXT] [Alert]  [/RED TEXT]🔴Remember, speech marks are only used around the words tha')
+     ('CEDO105', 'CEDO105_1_0.html', '🔴[RED TEXT] [Alert]  [/RED TEXT]🔴You might have taken lots of pictures. Select the best fi')
+  ('Standard', 'important', 'alert solid') 12
+     ('ENG1004', 'ENG1004_0_0.html', '🔴[RED TEXT] [important]  [/RED TEXT]🔴When your kaiako has approved Checkpoint 1, move to C')
+     ('ENG1004', 'ENG1004_0_0.html', '🔴[RED TEXT] [important]  [/RED TEXT]🔴When your kaiako has approved Checkpoint 1, move to C')
+     ('ENG1004', 'ENG1004_0_0.html', '🔴[RED TEXT] [important]  [/RED TEXT]🔴When your kaiako has approved Checkpoint 1, move to C')
+  ('Inquiry', 'side alert', 'alertActivity') 9
+     ('BLL140', 'BLL140_0_0.html', '🔴[RED TEXT] [Side alert] [/RED TEXT]🔴 If a letter is written as /a/ it means we want you t')
+     ('BLL160', 'BLL160_0_0.html', '🔴[RED TEXT] [side alert]  [/RED TEXT]🔴Voiced and voiceless means that your vocal cords eit')
+     ('BLL210', 'BLL210_0_0.html', '🔴[RED TEXT] [Side alert] [/RED TEXT]🔴 If a letter is written as / e / it means we want you')
+  ('Standard', 'alert box', 'alert') 7
+     ('ANZH401', 'ANZH401_2_0.html', '🔴[RED TEXT] [Alert box] Success criteria:  [/RED TEXT]🔴I can categorise some reasons why p')
+     ('ANZH401', 'ANZH401_3_0.html', '🔴[RED TEXT] [Alert box] Success criteria: [/RED TEXT]🔴 I can explain examples of different')
+     ('ANZH401', 'ANZH401_4_0.html', '🔴[RED TEXT] [Alert box] Success Criteria: [/RED TEXT]🔴 I can use the National Library of N')
+  ('Inquiry', 'important side alert', 'alertActivity') 7
+     ('BLL140', 'BLL140_0_0.html', 'When a letter is written as ‘j’ we want you to say its name. When it is written as / j / i')
+     ('BLL150', 'BLL150_0_0.html', 'When a letter is written as ‘z’ we want you to say its name. When it is written as / z / i')
+     ('BLL150', 'BLL150_0_0.html', 'When a letter is written as ‘z’ we want you to say its name. When it is written as / z / i')
+  ('Standard', '?', 'alert') 6
+     ('ANZH401', 'ANZH401_1_0.html', '• I can process information to describe the perspectives of different individuals and grou')
+     ('ANZH401', 'ANZH401_8_0.html', '• I can process information to describe the perspectives of different individuals and grou')
+     ('ANZH401', 'ANZH401_9_0.html', '• I can process information to describe the perspectives of different individuals and grou')
+  ('Standard', 'body text', 'free-body') 6
+     ('HIS1002', 'HIS1002_11_0.html', 'If you want to trace the story of the *Rainbow* *Warrior* further, Television New Zealand ')
+     ('MXDI201', 'MXDI201_1_0.html', '🔴[RED TEXT] [body text]  [/RED TEXT]🔴If you are feeling that you need some more practice w')
+     ('MXDI202', 'MXDI202_1_0.html', 'Remember the order of months is:')

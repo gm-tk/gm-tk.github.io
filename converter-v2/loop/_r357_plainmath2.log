@@ -1,0 +1,116 @@
+writer plain-text arithmetic expressions → gold form (template | subject | class | n):
+  Standard     MXF  total 1643  math  270 (0.16)  plain  484  not-in-gold  889
+  Standard     MXD  total  905  math   21 (0.02)  plain  544  not-in-gold  340
+  Standard     MXE  total  374  math    1 (0.00)  plain  254  not-in-gold  119
+  Standard     ENG  total  251  math    0 (0.00)  plain   70  not-in-gold  181
+  Fundamentals MXF  total  215  math   11 (0.05)  plain   63  not-in-gold  141
+  Standard     BLL  total  160  math    0 (0.00)  plain   10  not-in-gold  150
+  Standard     ANZ  total  153  math    0 (0.00)  plain   38  not-in-gold  115
+  Standard     HIS  total  126  math    0 (0.00)  plain   45  not-in-gold   81
+  Standard     CED  total   88  math    0 (0.00)  plain   17  not-in-gold   71
+  Standard     PES  total   71  math   10 (0.14)  plain   18  not-in-gold   43
+  Inquiry      CED  total   58  math    6 (0.10)  plain    5  not-in-gold   47
+  Standard     XDL  total   58  math    0 (0.00)  plain   12  not-in-gold   46
+  Standard     AGH  total   54  math    0 (0.00)  plain   13  not-in-gold   41
+  Standard     XGF  total   54  math    0 (0.00)  plain    4  not-in-gold   50
+  Fundamentals ARF  total   48  math    0 (0.00)  plain    0  not-in-gold   48
+  Inquiry      TWH  total   47  math    0 (0.00)  plain    6  not-in-gold   41
+  Standard     ART  total   42  math    0 (0.00)  plain    2  not-in-gold   40
+  Fundamentals SSF  total   41  math    0 (0.00)  plain   21  not-in-gold   20
+  Fundamentals HPF  total   40  math    0 (0.00)  plain    3  not-in-gold   37
+  Fundamentals TEF  total   36  math    0 (0.00)  plain    2  not-in-gold   34
+  Fundamentals ENF  total   30  math    0 (0.00)  plain    6  not-in-gold   24
+  Inquiry      BLL  total   29  math    0 (0.00)  plain   10  not-in-gold   19
+  Standard     PHE  total   27  math    0 (0.00)  plain    5  not-in-gold   22
+  Standard     SSO  total   27  math    0 (0.00)  plain    0  not-in-gold   27
+  Bilingual    PNR  total   24  math    0 (0.00)  plain    3  not-in-gold   21
+  Standard     HES  total   23  math    0 (0.00)  plain    3  not-in-gold   20
+  Standard     XME  total   23  math    0 (0.00)  plain    7  not-in-gold   16
+  Standard     OSO  total   21  math    0 (0.00)  plain   10  not-in-gold   11
+  Standard     XLP  total   19  math    0 (0.00)  plain   11  not-in-gold    8
+  Standard     XTA  total   14  math    0 (0.00)  plain    6  not-in-gold    8
+  Standard     OSA  total   10  math    0 (0.00)  plain    1  not-in-gold    9
+  Inquiry      XDL  total   10  math    0 (0.00)  plain    5  not-in-gold    5
+  Inquiry      EXP  total    9  math    0 (0.00)  plain    3  not-in-gold    6
+  Standard     OSS  total    9  math    0 (0.00)  plain    8  not-in-gold    1
+  Standard     OSB  total    7  math    0 (0.00)  plain    0  not-in-gold    7
+  Standard     OSG  total    6  math    0 (0.00)  plain    2  not-in-gold    4
+  Bilingual    TRR  total    4  math    0 (0.00)  plain    2  not-in-gold    2
+  Standard     EXP  total    3  math    0 (0.00)  plain    0  not-in-gold    3
+  Fundamentals XFU  total    3  math    0 (0.00)  plain    1  not-in-gold    2
+  Standard     XWH  total    3  math    0 (0.00)  plain    0  not-in-gold    3
+  Inquiry      ENG  total    2  math    0 (0.00)  plain    2  not-in-gold    0
+  Standard     EXB  total    2  math    0 (0.00)  plain    0  not-in-gold    2
+  Fundamentals SCF  total    2  math    0 (0.00)  plain    0  not-in-gold    2
+  Standard     EXI  total    1  math    0 (0.00)  plain    1  not-in-gold    0
+  Standard     SSF  total    1  math    0 (0.00)  plain    0  not-in-gold    1
+
+per module (modules with ≥ 5 expressions):
+  MXFL302  total  532 math  142 (0.27) plain   14 not-in-gold  376
+  MXDI201  total  402 math    0 (0.00) plain  273 not-in-gold  129
+  MXEO301  total  254 math    0 (0.00) plain  182 not-in-gold   72
+  MXDB302  total  246 math   20 (0.08) plain  166 not-in-gold   60
+  MXFL301  total  187 math   21 (0.11) plain   97 not-in-gold   69
+  MXFU301  total  180 math   79 (0.44) plain   36 not-in-gold   65
+  MXFU202  total  175 math    0 (0.00) plain   73 not-in-gold  102
+  MXFL203  total  122 math    0 (0.00) plain   33 not-in-gold   89
+  MXFU201  total  118 math    0 (0.00) plain   81 not-in-gold   37
+  MXFUN01  total  113 math   11 (0.10) plain   63 not-in-gold   39
+  MXFU401  total   87 math    1 (0.01) plain   79 not-in-gold    7
+  MXFUN02  total   75 math    0 (0.00) plain    0 not-in-gold   75
+  MXDI101  total   56 math    0 (0.00) plain   11 not-in-gold   45
+  MXFL401  total   51 math    8 (0.16) plain   19 not-in-gold   24
+  MXEO201  total   50 math    0 (0.00) plain   46 not-in-gold    4
+  MXDI202  total   48 math    0 (0.00) plain   10 not-in-gold   38
+  CEDO501  total   42 math    0 (0.00) plain   11 not-in-gold   31
+  MXDB202  total   42 math    0 (0.00) plain   38 not-in-gold    4
+  ARFUN04  total   38 math    0 (0.00) plain    0 not-in-gold   38
+  MXFU402  total   37 math   19 (0.51) plain    4 not-in-gold   14
+  MXDI103  total   36 math    0 (0.00) plain   22 not-in-gold   14
+  MXFL104  total   32 math    0 (0.00) plain   15 not-in-gold   17
+  MXDI301  total   29 math    1 (0.03) plain    5 not-in-gold   23
+  MXFL101  total   28 math    0 (0.00) plain    0 not-in-gold   28
+  MXFL201  total   28 math    0 (0.00) plain   10 not-in-gold   18
+  MXFU302  total   27 math    0 (0.00) plain   17 not-in-gold   10
+  MXFUN03  total   27 math    0 (0.00) plain    0 not-in-gold   27
+  ANZH205  total   26 math    0 (0.00) plain    1 not-in-gold   25
+  HIS1004  total   26 math    0 (0.00) plain    5 not-in-gold   21
+  PES1008  total   26 math    2 (0.08) plain   10 not-in-gold   14
+  ENGJ301  total   25 math    0 (0.00) plain    0 not-in-gold   25
+  XGF9004  total   24 math    0 (0.00) plain    0 not-in-gold   24
+  ENGJ302  total   23 math    0 (0.00) plain    6 not-in-gold   17
+  ENGR102  total   23 math    0 (0.00) plain   12 not-in-gold   11
+  ANZH401  total   22 math    0 (0.00) plain    4 not-in-gold   18
+  HIS1006  total   22 math    0 (0.00) plain    6 not-in-gold   16
+  HIS1003  total   21 math    0 (0.00) plain    9 not-in-gold   12
+  ANZH303  total   20 math    0 (0.00) plain    0 not-in-gold   20
+  ANZH304  total   20 math    0 (0.00) plain    6 not-in-gold   14
+  CEDK501  total   20 math    6 (0.30) plain    1 not-in-gold   13
+  HIS1002  total   20 math    0 (0.00) plain   10 not-in-gold   10
+  SSOG103  total   19 math    0 (0.00) plain    0 not-in-gold   19
+  ANZH301  total   18 math    0 (0.00) plain    1 not-in-gold   17
+  ART1005  total   18 math    0 (0.00) plain    2 not-in-gold   16
+  CEDW501  total   18 math    0 (0.00) plain    5 not-in-gold   13
+  XDLS501  total   18 math    0 (0.00) plain    1 not-in-gold   17
+  HIS1005  total   17 math    0 (0.00) plain    9 not-in-gold    8
+  XDLS902  total   17 math    0 (0.00) plain    5 not-in-gold   12
+  XGF9001  total   17 math    0 (0.00) plain    3 not-in-gold   14
+  MXDB201  total   16 math    0 (0.00) plain    7 not-in-gold    9
+  MXDB301  total   16 math    0 (0.00) plain    7 not-in-gold    9
+  MXEX301  total   16 math    0 (0.00) plain    7 not-in-gold    9
+  ANZH203  total   15 math    0 (0.00) plain    9 not-in-gold    6
+  ENGS101  total   15 math    0 (0.00) plain    0 not-in-gold   15
+  MXFL204  total   15 math    0 (0.00) plain    0 not-in-gold   15
+  PES1004  total   15 math    4 (0.27) plain    1 not-in-gold   10
+  AGH1007  total   14 math    0 (0.00) plain    8 not-in-gold    6
+  MXFL202  total   14 math    0 (0.00) plain    6 not-in-gold    8
+  SSFUN05  total   14 math    0 (0.00) plain    3 not-in-gold   11
+  ENGR302  total   13 math    0 (0.00) plain    0 not-in-gold   13
+  MXEX401  total   13 math    0 (0.00) plain    2 not-in-gold   11
+  TWHA902  total   13 math    0 (0.00) plain    0 not-in-gold   13
+  ENGC201  total   12 math    0 (0.00) plain    0 not-in-gold   12
+  TEFUN03  total   12 math    0 (0.00) plain    1 not-in-gold   11
+  TWHK903  total   12 math    0 (0.00) plain    5 not-in-gold    7
+  AGH1005  total   11 math    0 (0.00) plain    2 not-in-gold    9
+  ANZH105  total   11 math    0 (0.00) plain    5 not-in-gold    6
+  ART1002  to
