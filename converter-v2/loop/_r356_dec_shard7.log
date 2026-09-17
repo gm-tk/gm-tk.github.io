@@ -1,0 +1,1151 @@
+🟢 [ConventionResolver] HTML conventions from group NCEA1|NCEA: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Content after the final [end page] (19 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu section "Hononga | Connections" promoted to its own "Connections" nav tab (menu.extra_tabs registry).
+🟢 [MenuBuilder] Menu section "Aromatawai | Assessment for Learning" promoted to its own "Standards" nav tab (menu.extra_tabs registry).
+🟢 [InteractiveBuilder] Built carousel #1 from captured data (no placeholder needed).
+🟠 [ContentConverter] Page 1.0: [activity] was never closed — closed at page end.
+🟠 [ContentConverter] Page 2.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next important.
+🟠 [ContentConverter] Page 4.0: [activity] was never closed — closed at page end.
+🟢 [ActivitiesBuilder] 1 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 5.0: [activity] was never closed — closed at page end.
+🟢 [ActivitiesBuilder] 1 activity title heading(s) set to h3 (title_heading_level).
+🟠 [ContentConverter] Page 6.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 7.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next h3.
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 8.0: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Xg1AYHA8QWg&ab_channel=MinistryofEducationNZ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=GLbIXg3umRM&ab_channel=OnFarmStory
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=VP8gI5gTep0&ab_channel=OnFarmStory
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=NsSVRPiURlQ&ab_channel=Beef%2BLambNewZealand
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=fUOchoqUudA&ab_channel=EnvironmentCanterbury
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=5ztCkzDfLWc&ab_channel=DairyNZ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=PKm0XuU2zDQ&ab_channel=MaggieHope
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=haRXNvVZids&ab_channel=MaggieHope
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=PyP_5EgQBmE&ab_channel=2MinuteClassroom
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=oKfiZRucMqg&ab_channel=DairyNZ
+🟠 [AcksBuilder] Unknown media item type "Videos" (item ) — used "Videos" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=CZRriYayrs4&ab_channel=CRVNZ
+🟠 [AcksBuilder] Unknown media item type "Videos" (item ) — used "Videos" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=ex-X5aamcqE&ab_channel=RuralDelivery
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=KZN2781vIos&ab_channel=PGGWrightson
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=6KDP_7BoPzo&ab_channel=Beef%2BLambNewZealand
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=1nrlF1Wq9j0&ab_channel=OSPRI
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=jIpG9JebFro&t=57s&ab_channel=RuralDelivery
+🟢 [AcksBuilder] Media item  ("Link") is a lesson link — no acknowledgement (scope rule).
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=W3_j9GXfNA8&ab_channel=OSPRI
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 9.0 — placed in 5.0; verify.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group 1-10 Arts|combo: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] Document opens without a literal [TITLE BAR] — overview page opened at the first content tag (Fundamentals-style template).
+🟢 [ContentConverter] [alert] spans to an explicit end tag (writer-authored box).
+🟠 [AcksBuilder] YouTube metadata unavailable for item 15 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Ig7Q9qNmmZE
+🟠 [AcksBuilder] Unknown media item type "Link to sound bite" (item 33) — used "Link to sound bite" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 35 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=l-3mfDMuz38
+🟠 [AcksBuilder] YouTube metadata unavailable for item 37 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=cs3twor2Z8I
+🟠 [AcksBuilder] YouTube metadata unavailable for item 38 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=bCuj1qR2ycY
+🟠 [AcksBuilder] YouTube metadata unavailable for item 39 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=FPMBV3rd_hI
+🟠 [AcksBuilder] Unknown media item type "images" (item 40) — used "Images" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 41 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=YfNmlY1-t5k
+🟠 [AcksBuilder] YouTube metadata unavailable for item 42 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=MlXi8LfKv-0
+🟠 [AcksBuilder] YouTube metadata unavailable for item 44 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=uwmww8-DTy0
+🟠 [AcksBuilder] 39 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟠 [ModuleResolver] No media list found — acknowledgements will hold the standing items plus per-lesson designer-media check lines only.
+🟢 [ConventionResolver] HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] [end page] on the overview disregarded — an introduction-cluster marker follows ([Title]/[Introduction]/[supervisor note]; AR-1 generalised).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu heading "Know" had no content beneath it — omitted (empty preconfigured scaffolding).
+🟢 [MenuBuilder] Menu heading "Do" had no content beneath it — omitted (empty preconfigured scaffolding).
+🟢 [InteractiveScanner] dragAndDrop: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveScanner] Activity 2A: additional widget [modal] absorbed (modal + modal).
+🟢 [InteractiveBuilder] Built modal #5 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 2.0: [activity] was never closed — closed at page end.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] [end page] on the overview disregarded — an introduction-cluster marker follows ([Title]/[Introduction]/[supervisor note]; AR-1 generalised).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 1.0.
+🟢 [ContentConverter] Page 0.0: supervisor note swapped after its section heading (BLL pairing pre-pass).
+🟢 [ContentConverter] Page 0.0: supervisor note paired with its section paragraph (BLL family convention).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 1.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 1.1: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.1: [activity] auto-closed before the next supervisor note.
+🟢 [InteractiveBuilder] Built dropDown #5 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.1: [end other] had no open container — ignored.
+🟠 [AcksBuilder] Unknown media item type "text" (item 1) — used "Text" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "text" (item 8) — used "Text" as the prefix; add it to Acks_Formats type_prefix_map.
+🟢 [AcksBuilder] Media item 3 placed in lesson 1.1 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item 4 placed in lesson 1.1 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item 7 placed in lesson 1.1 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] 5 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] [end page] on the overview disregarded — an introduction-cluster marker follows ([Title]/[Introduction]/[supervisor note]; AR-1 generalised).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 1.0.
+🟢 [ContentConverter] Page 0.0: supervisor note swapped after its section heading (BLL pairing pre-pass).
+🟢 [ContentConverter] Page 0.0: supervisor note paired with its section paragraph (BLL family convention).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveBuilder] Built carousel #4 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 1.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 1.1: [activity] auto-closed before the next side alert.
+🟠 [ContentConverter] Page 1.1: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] Unknown media item type "Embedded link" (item ) — used "Embedded link" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Dsd0eFgU0m8
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=R4J0r2edHT4
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=j32SurxnE4s
+🟠 [AcksBuilder] Unknown media item type "Embedded link" (item ) — used "Embedded link" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] 24 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL212, BLL182) — using BLL212 from filename "BLL212 Writers Template + Media List.docx".
+🟢 [ConventionResolver] HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [ContentConverter] Page 0.0: supervisor note swapped after its section heading (BLL pairing pre-pass).
+🟢 [ContentConverter] Page 0.0: supervisor note paired with its section paragraph (BLL family convention).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveBuilder] Built dropDown #2 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built dropDown #6 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built accordion #9 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 2.0: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] Unknown media item type "Embedded text" (item 1) — used "Embedded text" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Embedded text" (item 2) — used "Embedded text" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Embedded text" (item 3) — used "Embedded text" as the prefix; add it to Acks_Formats type_prefix_map.
+🟢 [ConventionResolver] HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [ContentConverter] Page 0.0: supervisor note swapped after its section heading (BLL pairing pre-pass).
+🟢 [ContentConverter] Page 0.0: supervisor note paired with its section paragraph (BLL family convention).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveBuilder] Built tabs #1 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next side alert.
+🟢 [InteractiveBuilder] Built carousel #4 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #6 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built carousel #8 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: activity box kept open for its trailing upload box (round 314).
+🟢 [InteractiveBuilder] Built dropDown #9 from captured data (no placeholder needed).
+🟠 [AcksBuilder] Unknown media item type "embedded story" (item ) — used "Embedded story" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "embedded story" (item ) — used "Embedded story" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "embedded story" (item ) — used "Embedded story" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=u6pkcdEylTE&t=53s
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=KykgUnw7C1M
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=6-YFmLctwDY
+🟠 [AcksBuilder] Unknown media item type "embedded story" (item ) — used "Embedded story" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=dym45ZJF0G0
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=ngT-T0qWoDI
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=BL9U9I8s43k
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=OeVXnFA70Ls
+🟠 [AcksBuilder] 18 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveBuilder] Built carousel #2 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [end carousel] had no open container — ignored.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next alert.
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveBuilder] Built clickDrop #7 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #8 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/x3Yjm745i0s?si=YMwLrGukP32hWKe6
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/x3Yjm745i0s?si=RURc2NikqJ9VgGXr
+🟠 [AcksBuilder] Unknown media item type "Website" (item ) — used "Website" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Website" (item ) — used "Website" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Website" (item ) — used "Website" as the prefix; add it to Acks_Formats type_prefix_map.
+🟢 [ModuleResolver] BLL273 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ConventionResolver] HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built clickDrop #1 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built clickDrop #2 from captured data (no placeholder needed).
+🟠 [ContentConverter] Page 1.0: [activity] was never closed — closed at page end.
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] Activity 2C: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] Activity 2C: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] Activity 2E: additional widget [info trigger] absorbed (unclassified + infoTrigger).
+🟢 [InteractiveBuilder] Built accordion #7 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built dropDown #8 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built clickDrop #9 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [PageAssembler] [TITLE BAR] held only "Te Reo Māori" (no English) — using the front-matter Course "Blended Literacy Learning" as the English title; Te Reo kept as the second title.
+🟠 [AcksBuilder] Unknown media item type "AI Image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI Image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI Image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI Image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI Image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI Image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI Image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI image" (item ) — used "Ai image" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "AI CopilotImage" (item ) — used "Ai copilotimage" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Website" (item ) — used "Website" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] 1 iStock title could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from group ConnectED|NCEA: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 6.0 ("SEARCH SMARTER – REFLECTING ON YOUR RESEARCH (US7121)").
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu section "Aromatawai | Assessment for Learning" promoted to its own "Standards" nav tab (menu.extra_tabs registry).
+🟢 [InteractiveBuilder] Built flipCard #2 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.1: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built clickDrop #7 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [InteractiveBuilder] Built clickDrop #9 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [InteractiveBuilder] Built clickDrop #10 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: [end other] had no open container — ignored.
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tabs] had no open container — ignored.
+🟢 [InteractiveBuilder] Built flipCard #12 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [InteractiveBuilder] Built accordion #14 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [InteractiveBuilder] Built accordion #15 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [InteractiveBuilder] Built accordion #16 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tabs] had no open container — ignored.
+🟢 [InteractiveScanner] Activity 4A: additional widget [typing quiz] absorbed (unclassified + typing).
+🟢 [InteractiveBuilder] Built speechBubble #20 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] Activity 5B: additional widget [typing quiz] absorbed (typing + typing).
+🟢 [InteractiveScanner] Activity 5B: additional widget [typing quiz] absorbed (typing + typing).
+🟢 [InteractiveBuilder] Built flipCard #24 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 5.0: [end carousel] had no open container — ignored.
+🟢 [ContentConverter] Page 6.0: [end other] had no open container — ignored.
+🟢 [InteractiveBuilder] Built carousel #29 from captured data (no placeholder needed).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [PageAssembler] [TITLE BAR] held only "Āu whiringa" (no English) — using the front-matter Course "Āu Whiringa – Making More Decisions" as the English title; Te Reo kept as the second title.
+🟠 [AcksBuilder] Unknown media item type "Link to assessment" (item 1) — used "Link to assessment" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Link to assessment" (item 2) — used "Link to assessment" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Link to online Collins Dictionary" (item 3) — used "Link to online collins dictionary" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Link to Te Aka Māori Dictionary" (item 4) — used "Link to te aka māori dictionary" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Media item 1 could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] Media item 2 could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] 1 iStock title could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ModuleResolver] CEDT207 is a recorded page_model exception — using multi-file.
+🟢 [ConventionResolver] HTML conventions from group ConnectED|4-6: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 5.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 6.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 7.0.
+🟢 [PageSplitter] Content after the final [end page] (18 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu heading "Assessment for learning" had no content beneath it — omitted (empty preconfigured scaffolding).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next h3.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next h3.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next h3.
+🟠 [ContentConverter] Page 2.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next h3.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next h3.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next h3.
+🟢 [ActivitiesBuilder] 1 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next alert.
+🟢 [InteractiveScanner] Activity 4B: additional widget [click drop] absorbed (flipCard + clickDrop).
+🟠 [AcksBuilder] Unknown media item type "Text" (item ) — used "Text" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Text" (item ) — used "Text" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=gXcies7mL9M&t=52s
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=q6p1jiq8buA
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=DY3XR2SU2W0
+🟠 [AcksBuilder] Unknown media item type "website" (item 16.) — used "Website" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "website" (item 18.) — used "Website" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 19. (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=FxoQ1nKykyk
+🟠 [AcksBuilder] YouTube metadata unavailable for item 20. (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Hyz-RsEfZv0
+🟠 [AcksBuilder] YouTube metadata unavailable for item 21. (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=an7tzd1jH84
+🟠 [AcksBuilder] YouTube metadata unavailable for item 24. (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=oIbrz-tS098
+🟠 [AcksBuilder] Media item  sits between lessons 2.0 and 3.0 — placed in 2.0; verify.
+🟢 [AcksBuilder] Media item  placed in lesson 3.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 3.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 3.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 3.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] Media item  could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] Media item  could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] Media item  could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] Media item  could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] Media item  could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] 18 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟠 [SkeletonBuilder] module_code value "—" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] footer_links "overview" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's overview-page form "next+home" applied (footer.kb_position_defaults).
+🟠 [SkeletonBuilder] module_code value "(empty)" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] Page 1.0: h1_count wants 2 title(s) but the source provided 1 — emitted what exists.
+🟠 [SkeletonBuilder] module_code value "(empty)" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] Page 2.0: h1_count wants 2 title(s) but the source provided 1 — emitted what exists.
+🟠 [SkeletonBuilder] module_code value "(empty)" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] Page 3.0: h1_count wants 2 title(s) but the source provided 1 — emitted what exists.
+🟠 [SkeletonBuilder] module_code value "(empty)" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] Page 4.0: h1_count wants 2 title(s) but the source provided 1 — emitted what exists.
+🟠 [SkeletonBuilder] module_code value "(empty)" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟠 [SkeletonBuilder] module_code value "(empty)" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] Page 6.0: h1_count wants 2 title(s) but the source provided 1 — emitted what exists.
+🟠 [SkeletonBuilder] module_code value "(empty)" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] Page 7.0: h1_count wants 2 title(s) but the source provided 1 — emitted what exists.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group 1-10 English|combo: overview menu default, lesson menu two_col_li.
+🟢 [PageSplitter] Document opens without a literal [TITLE BAR] — overview page opened at the first content tag (Fundamentals-style template).
+🟢 [PageSplitter] Second [TITLE BAR] kept in-page — registry page_model is single-file.
+🟢 [PageSplitter] Second [TITLE BAR] kept in-page — registry page_model is single-file.
+🟢 [PageSplitter] Second [TITLE BAR] kept in-page — registry page_model is single-file.
+🟢 [InteractiveBuilder] Built dragAndDrop #7 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built flipCard #8 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built dragAndDrop #11 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built flipCard #13 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #16 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built dragAndDrop #19 from captured data (no placeholder needed).
+🟢 [MenuBuilder] Fundamentals [Overview] WALT/I-can block routed to the module menu as the two-col LI/SC form (menu.fundamentals_overview_li).
+🟠 [AcksBuilder] Unknown media item type "**Video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Qh7hCqyfaPs
+🟠 [AcksBuilder] Unknown media item type "**Video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**jpg**" (item ) — used "**jpg**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**jpg**" (item ) — used "**jpg**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**Pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**Pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**Pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**Pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**Pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**jpg**" (item ) — used "**jpg**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**Pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**pdf**" (item ) — used "**pdf**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**jpg**" (item ) — used "**jpg**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/N3xkzyRAgyg
+🟠 [AcksBuilder] Unknown media item type "**video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/5uxCOFY5xMw
+🟠 [AcksBuilder] Unknown media item type "**video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**jpg**" (item ) — used "**jpg**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=smgyeUomfyA&t=23s
+🟠 [AcksBuilder] Unknown media item type "**video**" (item ) — used "**video**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**Text excerpt**" (item ) — used "**text excerpt**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "**photo**" (item ) — used "**photo**" as the prefix; add it to Acks_Formats type_prefix_map.
+🟢 [AcksBuilder] Media item  placed in lesson 0.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] 6 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from series ENGFUN (deviation over NCEA1|NCEA): overview menu two_col_li, lesson menu flat.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 1.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 2.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 3.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 4.0.
+🟢 [PageSplitter] Content after the final [end page] (18 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveBuilder] Built accordion #1 from captured data (no placeholder needed).
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=yeO93DEZWvQ
+🟢 [AcksBuilder] Media item  placed in lesson 0.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 1.0 by neighbour interpolation — verify its group.
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGJ202, EN000) — using ENGJ202 from filename "ENGJ202 Writers Template + Media List.docx".
+🟢 [ConventionResolver] HTML conventions from series ENGJ (deviation over 1-10 English|4-6): overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Content after the final [end page] (18 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟠 [ContentConverter] Page 2.0: [activity] was never closed — closed at page end.
+🟢 [InteractiveBuilder] Built carousel #3 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built dragAndDrop #4 from captured data (no placeholder needed).
+🟠 [ContentConverter] Page 3.0: [activity] was never closed — closed at page end.
+🟢 [InteractiveBuilder] Built flipCard #7 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 4.0: [activity] was never closed — closed at page end.
+🟢 [InteractiveBuilder] Built dropDown #10 from captured data (no placeholder needed).
+🟠 [ContentConverter] Page 5.0: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 1 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=8ieCLzImvNk
+🟠 [AcksBuilder] YouTube metadata unavailable for item 2 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Q0bCemXivVc
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 3) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 4) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 5) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 6 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=zdo-QYvR8Uk
+🟠 [AcksBuilder] YouTube metadata unavailable for item 7 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=CdfhAOwGwps
+🟠 [AcksBuilder] YouTube metadata unavailable for item 8 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=jWhAoZZh8fc
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 14) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 15) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 16) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 17) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 18) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 19) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 20 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=SCi93Gdc_QI
+🟠 [AcksBuilder] Unknown media item type "jpg" (item 24) — used "Jpg" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 26 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=oAcjUKwPfvs
+🟢 [AcksBuilder] Media item 27 ("External link") is a lesson link — no acknowledgement (scope rule).
+🟠 [AcksBuilder] Media item 14 sits between lessons 3.0 and 4.0 — placed in 3.0; verify.
+🟠 [AcksBuilder] 3 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from group 1-10 English|7-8: overview menu two_col_li, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 4.0.
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [alert] spans to an explicit end tag (writer-authored box).
+🟢 [ContentConverter] Page 3.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [alert] spans to an explicit end tag (writer-authored box).
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 4.0: [end other] had no open container — ignored.
+🟢 [ContentConverter] [alert] spans to an explicit end tag (writer-authored box).
+🟢 [ContentConverter] [alert] spans to an explicit end tag (writer-authored box).
+🟢 [ContentConverter] Page 6.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 6.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [alert] spans to an explicit end tag (writer-authored box).
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next heading.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=qOw44VFNk8Y
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=-Ckva8gA-AA
+🟠 [AcksBuilder] Unknown media item type "Image taken from film" (item ) — used "Image taken from film" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Image taken from film" (item ) — used "Image taken from film" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "“" (item ) — used "“" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "“" (item ) — used "“" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=aFmbIO_JTH0
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "“" (item ) — used "“" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "”" (item ) — used "”" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "”" (item ) — used "”" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "”" (item ) — used "”" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "”" (item ) — used "”" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "”" (item ) — used "”" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "”" (item ) — used "”" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=aFmbIO_JTH0
+🟠 [AcksBuilder] Unknown media item type "Image for activity" (item ) — used "Image for activity" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Image for front of flip card" (item ) — used "Image for front of flip card" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Image for front of flip card" (item ) — used "Image for front of flip card" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "images" (item ) — used "Images" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "[Embed video]" (item ) — used "[embed video]" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=HuewaFZKZzI
+🟠 [AcksBuilder] Unknown media item type "[Embed video]" (item ) — used "[embed video]" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Images" (item ) — used "Images" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=aFmbIO_JTH0
+🟠 [AcksBuilder] Unknown media item type "Images" (item ) — used "Images" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Images" (item ) — used "Images" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Embed video" (item ) — used "Embed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: Edit to start at 37 seconds please https://www.youtube.com/watch?v=aSYLQWLlKdU
+🟠 [AcksBuilder] Unknown media item type "Embed video" (item ) — used "Embed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Image for activity" (item ) — used "Image for activity" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Embed video" (item ) — used "Embed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=aSYLQWLlKdU&t=558s
+🟠 [AcksBuilder] Unknown media item type "Embed video" (item ) — used "Embed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Embed video" (item ) — used "Embed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: Edit to start at 2:10 minutes and to finish at 3:34 minutes https://www.youtube.com/watch?v=zcrjoB0hrqk&t=41s
+🟠 [AcksBuilder] Unknown media item type "Embed video" (item ) — used "Embed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: Edit to start at 4:22 minutes and end at 5:51 https://www.youtube.com/watch?v=D6236oKnj1Y&list=PL4DkWbwoXqmgmWKd0XZPzLbPAUx8y6HEI
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: Edit to start at .4 and end at 1.12 minutes. Is there bad language in the music playing on the car radio? If so, we may need to have the volume down if possible. https://www.youtube.com/watch?v=MYV6lUqHc7c
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: Edit to finish at 1:12 minutes https://www.youtube.com/watch?v=ryAWGpIkA98&t=93s
+🟠 [AcksBuilder] Unknown media item type "Imbed video" (item ) — used "Imbed video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+🟠 [ModuleResolver] No media list found — acknowledgements will hold the standing items plus per-lesson designer-media check lines only.
+🟢 [ConventionResolver] HTML conventions from group NCEA1|NCEA: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] Document opens without a literal [TITLE BAR] — overview page opened at the first content tag (Fundamentals-style template).
+🟢 [PageSplitter] Adjacent page boundaries merged — no empty page emitted (AR-2).
+🟢 [PageSplitter] Adjacent page boundaries merged — no empty page emitted (AR-2).
+🟢 [PageSplitter] "[can you please make a map of te moananui-a-kiwa with the si" mentions lesson inside a writer instruction — not a page boundary (lesson_boundary_guard).
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next h3.
+🟢 [ContentConverter] [button] naming a video → the following [video] embeds it (video_destination).
+🟢 [ContentConverter] Page 10.0: [end shape n] had no open container — ignored.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group 1-10 Health and PE|combo: overview menu default, lesson menu two_col_li.
+🟢 [PageSplitter] Document opens without a literal [TITLE BAR] — overview page opened at the first content tag (Fundamentals-style template).
+🟢 [ContentConverter] Page 0.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 0.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built carousel #3 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 0.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 0.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] [button] with a video URL → the video embed (video_destination, own).
+🟢 [ContentConverter] Page 0.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 0.0: [end mcq] had no open container — ignored.
+🟢 [MenuBuilder] Fundamentals [Overview] WALT/I-can block routed to the module menu as the two-col LI/SC form (menu.fundamentals_overview_li).
+🟢 [ActivitiesBuilder] 1 activity title heading(s) set to h3 (title_heading_level).
+🟠 [AcksBuilder] Unknown media item type "Audio only" (item 19) — used "Audio only" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 19 (stubbed) — possible dead link worth checking: https://youtu.be/fbsbgMkKiHE
+🟠 [AcksBuilder] Unknown media item type "Audio only" (item 19) — used "Audio only" as the prefix; add it to Acks_Formats type_prefix_map.
+🟢 [AcksBuilder] Media item 4. placed in lesson 0.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item 5. placed in lesson 0.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item 22 placed in lesson 0.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item 23 placed in lesson 0.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] 12 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from group 1-10 Mathematics|1-3: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Content after the final [end page] (3 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveScanner] Activity 1D: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 1.0: [activity] was never closed — closed at page end.
+🟢 [InteractiveBuilder] Built carousel #4 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #7 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next important.
+🟢 [InteractiveScanner] Activity 4C: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [InteractiveScanner] Activity 4C: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [InteractiveBuilder] Built carousel #13 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 4.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built carousel #19 from captured data (no placeholder needed).
+🟢 [InteractiveScanner] Activity 6C: additional widget [typing quiz] absorbed (unclassified + selfCheck).
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 6.0: [activity] was never closed — closed at page end.
+🟢 [InteractiveScanner] Activity 7B: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [InteractiveBuilder] Built carousel #25 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveScanner] Activity 8D: additional widget [typing quiz] absorbed (unclassified + selfCheck).
+🟢 [InteractiveScanner] Activity 8D: additional widget [typing quiz] absorbed (unclassified + selfCheck).
+🟢 [InteractiveScanner] Activity 8D: additional widget [typing quiz] absorbed (unclassified + selfCheck).
+🟢 [InteractiveScanner] Activity 8D: additional widget [typing quiz] absorbed (unclassified + selfCheck).
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next important.
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next side alert.
+🟢 [InteractiveBuilder] Built flipCard #31 from captured data (no placeholder needed).
+🟠 [ContentConverter] Page 8.0: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=geYV-sJCVgQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=FkcUV354Tqw
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=WjoHkhEeYV0&list=PL0k-1Rf8AubvOzq7dsxe2wzOnShQPuPu_&index=2
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=WMU10rnv3NU
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=LKvySTJzIfo
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=fFVMt90fglg
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=1F3AycEDksY
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=l9-liPFndl8
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=P27fDK56yn0
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=GvTcpfSnOMQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=-iwgJmW1uvg
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=pL0EZ-JoScg
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=CRQdhS1TJdo
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=eC1dPiC9PyM
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Ik4mhRKQBds
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=5slEm_-0tSE
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=PyzVG3xkONs
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=nskVUMdbF6E&t=230s
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=omkDLmfvetk
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=qeAVXeETETI
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=pFj-MaBigOI
+🟢 [AcksBuilder] Media item  placed in lesson 5.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 5.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 5.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] 23 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from series MXFL (deviation over 1-10 Mathematics|1-3): overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Content after the final [end page] (29 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 1.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next important.
+🟢 [InteractiveBuilder] Built carousel #3 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next important.
+🟢 [ContentConverter] [important] wraps the following table/widget as its content (no [end important]) — closes at the next heading/section/page.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 6.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 7.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 8.0: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=FCl9E-uRl7A
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=_EuNb2k2fKs
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=tEmg914-9xY
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=J5ghDUtLVK4
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=DtMf2VaRnXs
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=08ndF0zP-68
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=ZDV0HxOZ_GI
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=TaFQslk37xg
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=xdR7s8mwyp8
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=9p_Ca_Yb0zQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=qTN_MtV5TFw
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=mXMofxtDPUQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=lPeAo1hz8GA
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=yxBygoafUPA
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=cGMl7597-wA&t=8s
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=HwnMCIOdJwk
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=r2vd685NrZQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Ea0XtcckLJY
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Aw7vIwqhDTc
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟢 [AcksBuilder] Media item  placed in lesson 2.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] Media item  sits between lessons 3.0 and 4.0 — placed in 3.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 3.0 and 4.0 — placed in 3.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 3.0 and 4.0 — placed in 3.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 4.0 and 5.0 — placed in 4.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 4.0 and 5.0 — placed in 4.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 4.0 and 5.0 — placed in 4.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 4.0 and 5.0 — placed in 4.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] Media item  sits between lessons 5.0 and 6.0 — placed in 5.0; verify.
+🟠 [AcksBuilder] 21 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ModuleResolver] MXFUN01 is a recorded page_model exception — using multi-file.
+🟢 [ConventionResolver] HTML conventions from group 1-10 Mathematics|combo: overview menu two_col_li, lesson menu two_col_li.
+🟢 [PageSplitter] Document opens without a literal [TITLE BAR] — overview page opened at the first content tag (Fundamentals-style template).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 6.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 7.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 8.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 9.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 10.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 11.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 12.0.
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 13.0.
+🟢 [PageSplitter] Content after the final [end page] (13 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 5 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 3.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end other] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 3.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 1 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 4.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 4.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 4 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next supervisor note.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 3 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 6.2: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.2: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.2: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.2: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.2: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.2: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.2: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.2: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 6.2: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 6.2: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 6.2: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.2: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.2: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.2: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.2: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 7 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 6.3: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.3: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [important] right-hand box → an alert top side column paired with the preceding content row (positional_side_alert).
+🟢 [ContentConverter] Page 6.3: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.3: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.3: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.3: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.3: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.3: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 4 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] [important] right-hand box → an alert top side column paired with the preceding content row (positional_side_alert).
+🟢 [ContentConverter] Page 6.4: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.4: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.4: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.4: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.4: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [alert] right-hand box → an alert top side column paired with the preceding content row (positional_side_alert).
+🟢 [ContentConverter] Page 6.4: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.4: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 3 activity title heading(s) set to h3 (title_heading_level).
+🟢 [ContentConverter] Page 6.5: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.5: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [important] right-hand box → an alert top side column paired with the preceding content row (positional_side_alert).
+🟢 [ContentConverter] Page 6.5: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [important] right-hand box → an alert top side column paired with the preceding content row (positional_side_alert).
+🟢 [ContentConverter] Page 6.5: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.5: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.5: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.5: [end activity] had no open container — ignored.
+🟢 [ContentConverter] [important] right-hand box → an alert top side column paired with the preceding content row (positional_side_alert).
+🟢 [InteractiveBuilder] Built modal #41 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 6.5: [end modal] had no open container — ignored.
+🟢 [ContentConverter] Page 6.5: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.5: [end activity] had no open container — ignored.
+🟢 [ActivitiesBuilder] 1 activity title heading(s) set to h3 (title_heading_level).
+🟢 [InteractiveBuilder] Built clickDrop #43 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built clickDrop #44 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #45 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 13.0: [end shape n] had no open container — ignored.
+🟢 [InteractiveBuilder] Built carousel #46 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 13.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 13.0: [activity] auto-closed before the next activity.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=ib5Gf3GIzAg
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=VPdE5aOH52g
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=b9wa7fS-I_s
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=uPX08O5TDjE
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=dPksJHBZs4Q
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=6YGqtK6BN_Y
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=58xRM3c-aFk
+🟠 [AcksBuilder] 19 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group Online Safety (OS9000)|1-3: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveScanner] Activity 1A: additional widget [drag and drop] absorbed (radioQuiz + dragAndDrop).
+🟢 [InteractiveBuilder] Built speechBubble #1 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #4 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #5 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built flipCard #7 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #10 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built dragAndDrop #11 from captured data (no placeholder needed).
+🟢 [ContentConverter] [engagement quiz button] → the KB's anchored "Go to quiz" button + To Do note (kb_form).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next alert.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=2cBZrr2ZUsg
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=VlhlGk_9X4A
+🟢 [AcksBuilder] Media item  ("External link") is a lesson link — no acknowledgement (scope rule).
+🟠 [AcksBuilder] Unknown media item type "slide" (item ) — used "Slide" as the prefix; add it to Acks_Formats type_prefix_map.
+🟢 [AcksBuilder] Media item  ("External link") is a lesson link — no acknowledgement (scope rule).
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=RnPJVqMy_00
+🟠 [AcksBuilder] Unknown media item type "Word doc" (item ) — used "Word doc" as the prefix; add it to Acks_Formats type_prefix_map.
+🟢 [AcksBuilder] Media item  ("External link") is a lesson link — no acknowledgement (scope rule).
+🟠 [AcksBuilder] 19 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from group NCEA1|NCEA: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 2.0 ("The Geosphere").
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 3.0 ("The rock cycle").
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 4.0 ("The Hydrosphere").
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 5.0 ("The Water cycle").
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 7.0 ("The Biosphere").
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 8.0 ("The carbon cycle").
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 9.0 ("Natural changes in the Earth system").
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 10.0.
+🟢 [PageSplitter] Content after the final [end page] (18 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu section "Aromatawai | Assessment for Learning" promoted to its own "Standards" nav tab (menu.extra_tabs registry).
+🟢 [InteractiveBuilder] Built carousel #2 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next h2.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next h1.
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next h2.
+🟠 [ContentConverter] Page 5.0: [activity] was never closed — closed at page end.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next h2.
+🟠 [ContentConverter] Page 7.0: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=T20RT0GgOB4
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=HCDVN7DCzYE
+🟠 [AcksBuilder] Unknown media item type "Artwork" (item ) — used "Artwork" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=g1Kpekzypg0
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=FgpGZpVedQs
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=p_4anRuGMe0
+🟠 [AcksBuilder] Unknown media item type "Satellite photo" (item ) — used "Satellite photo" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Map/diagram" (item ) — used "Map/diagram" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=1xfMcsErM_s
+🟠 [AcksBuilder] Unknown media item type "Chart" (item ) — used "Chart" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=EGK1KkLjdQY
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=V-rtKs9J8aI
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=tL1KfsM2Vc0
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=ghC-Ut0fW4o
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=feAunOVhBu4
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=0q0ApYZrMTk
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Va4Ct0l4jic
+🟠 [AcksBuilder] Unknown media item type "website" (item ) — used "Website" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=cuhZmfPIEso
+🟠 [AcksBuilder] Unknown media item type "Interactive" (item ) — used "Interactive" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=xrYiH0vTXHQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=QH-KYmRAzOA
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=2slKkJbBriI
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=nZZAxHB_8mw
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=VYMjSule0Bw
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=0xchPUSBSG0
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=y07_O5fynGc
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=0-DtXqr-gPQ
+🟠 [AcksBuilder] Unknown media item type "Photo/diagram" (item ) — used "Photo/diagram" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Screenshot from video" (item ) — used "Screenshot from video" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Interactive" (item ) — used "Interactive" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Q4cLxYB_r_g
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=oCEZFMtW5Pw
+🟢 [AcksBuilder] Media item  placed in lesson 4.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 5.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] Media item  sits between lessons 7.0 and 8.0 — placed in 7.0; verify.
+🟢 [DocxExtractor] Content opened at the [Content for DROP DOWN MENU] marker — the MTK drop-down-menu bilingual template (its overview lives before the first [LESSON N CONTENT]).
+🟢 [ConventionResolver] HTML conventions from group Te Marautanga o Aotearoa TMoA|1-3: overview menu tabs, lesson menu default.
+🟢 [PageSplitter] Document opens without a literal [TITLE BAR] — overview page opened at the first content tag (Fundamentals-style template).
+🟢 [PageSplitter] [MODULE CONTENT: PAGE n] marker — its content stays on the overview page (MTK drop-down-menu template).
+🟢 [PageSplitter] Content after the final [end page] (1 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [PageAssembler] No [TITLE BAR] title — using the front-matter "Module Name" metadata "Nga tau: 2 | Numbers: 2" as the module title (MTK drop-down-menu template).
+🟢 [AcksBuilder] Media item  placed in lesson 1.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item  placed in lesson 1.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] Media item  sits between lessons 1.0 and 2.0 — placed in 1.0; verify.
+🟢 [AcksBuilder] Media item  placed in lesson 2.0 by neighbour interpolation — verify its group.
+🟠 [AcksBuilder] Media item  could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] 2 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟠 [SkeletonBuilder] module_code value "—" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] footer_links "lesson" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's lesson-page form "prev+next+home" applied (footer.kb_position_defaults).
+🟠 [SkeletonBuilder] module_code value "—" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group 1-10 Social Science|1-3: overview menu two_col_li, lesson menu two_col_li.
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built speechBubble #1 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built hint #4 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #5 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built flipCard #6 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built hint #8 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #9 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #10 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next heading.
+🟢 [ContentConverter] Page 3.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built hint #11 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #12 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built flipCard #13 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built carousel #16 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built hint #18 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #19 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built dropDown #25 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #27 from captured data (no placeholder needed).
+🟠 [ContentConverter] Page 6.0: [activity] was never closed — closed at page end.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Gy3KU5Vp_M4
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=jOOcx3Wg9RY
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=37YETDACQG0&list=RD37YETDACQG0&start_radio=1
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/shorts/Nr6g183CHmg
+🟠 [AcksBuilder] Unknown media item type "PDF link" (item ) — used "Pdf link" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=iuJE36d2eS0
+🟠 [AcksBuilder] Unknown media item type "Link to PDF" (item ) — used "Link to pdf" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/wdqJduHJN18?si=FaI7UnC1jVwfGQlT
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=mhCgcZ0efAA&list=RDmhCgcZ0efAA&start_radio=1
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=anPIzlVC_Ls&list=RDanPIzlVC_Ls&start_radio=1
+🟠 [AcksBuilder] 64 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+🟢 [ConventionResolver] HTML conventions from group Te ara Whakapuawa -Wellbeing|combo: overview menu default, lesson menu two_col_li.
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 0.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 0.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 0.0: [end tab n] had no open container — ignored.
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu heading "He aha tāku hei tīmata? | What do I need to get started?" had no content beneath it — omitted (empty preconfigured scaffolding).
+🟢 [MenuBuilder] Menu heading "Aromatawai | Assessment for Learning" had no content beneath it — omitted (empty preconfigured scaffolding).
+🟠 [AcksBuilder] Unknown media item type "Images" (item ) — used "Images" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/DSIdaTSG2Gg
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/xvHearuBEFM
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/HRs8-DgQCdw
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=75okexRzWMk
+🟠 [AcksBuilder] 15 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟢 [ConventionResolver] HTML conventions from series XDLS (deviation over Leaving to Learn|combo): overview menu flat, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] [end page] on the overview disregarded — the [LESSON Choice page] tile navigation stays on page 0.0 (choice_page_tiles.merge_into_overview).
+🟢 [PageSplitter] [Sticky Nav Layout …] marker — a navigation set-up instruction, not a page break; its link table becomes a To Do note.
+🟢 [PageSplitter] Content after the final [end page] (1 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [ContentConverter] [LESSON Choice page] label "Hauora Tinana (Wellbeing of the Body)" is a navigation-page label — dropped (the human-built pages never show it); the tile grid renders at the end of this page.
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu section "Hononga | Connections" promoted to its own "Connections" nav tab (menu.extra_tabs registry).
+🟢 [MenuBuilder] Menu section "Aromatawai | Assessment for Learning" promoted to its own "Standards" nav tab (menu.extra_tabs registry).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #1 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #2 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #3 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #4 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 1.0: [end supervisor button] had no open container — ignored.
+🟢 [ContentConverter] Page 1.0: click-and-drop tile row built (6 tiles, panels paired positionally).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 1.0: [activity] was never closed — closed at page end.
+🟢 [ActivitiesBuilder] 6 activity title heading(s) set to h3 (title_heading_level).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #11 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: [end supervisor button] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: click-and-drop tile row built (6 tiles, panels paired positionally).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 2.0: [activity] was never closed — closed at page end.
+🟢 [ActivitiesBuilder] 6 activity title heading(s) set to h3 (title_heading_level).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #18 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end supervisor button] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: click-and-drop tile row built (6 tiles, panels paired positionally).
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 3.0: [activity] was never closed — closed at page end.
+🟢 [ActivitiesBuilder] 6 activity title heading(s) set to h3 (title_heading_level).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #25 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 4.0: [end supervisor button] had no open container — ignored.
+🟢 [ContentConverter] Page 4.0: click-and-drop tile row built (6 tiles, panels paired positionally).
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 4.0: [activity] auto-closed before the next alert.
+🟢 [ActivitiesBuilder] 6 activity title heading(s) set to h3 (title_heading_level).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [ContentConverter] Page 5.0: 2 inline definitions woven onto the anchor word (orphan definition weave).
+🟢 [InteractiveBuilder] Built accordion #32 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 5.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: [end supervisor button] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: open [activity] closed by the next activity's widget bundle.
+🟢 [InteractiveBuilder] Built carousel #38 from captured data (no placeholder needed).
+🟠 [ContentConverter] Page 5.0: [activity] was never closed — closed at page end.
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #40 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 6.0: [end supervisor button] had no open container — ignored.
+🟢 [ContentConverter] Page 6.0: click-and-drop tile row built (6 tiles, panels paired positionally).
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 6.0: [activity] was never closed — closed at page end.
+🟢 [ActivitiesBuilder] 6 activity title heading(s) set to h3 (title_heading_level).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #47 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 7.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 7.0: [end supervisor button] had no open container — ignored.
+🟢 [ContentConverter] Page 7.0: click-and-drop tile row built (6 tiles, panels paired positionally).
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 7.0: [activity] auto-closed before the next activity.
+🟠 [ContentConverter] Page 7.0: [activity] was never closed — closed at page end.
+🟢 [ActivitiesBuilder] 6 activity title heading(s) set to h3 (title_heading_level).
+🟢 [PageAssembler] [TITLE BAR] held only "Hauora Whānau" (no English) — using the front-matter Course "Nourish" as the English title; Te Reo kept as the second title.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 1 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=GKDmsPBOUlM
+🟠 [AcksBuilder] YouTube metadata unavailable for item 2 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=6In-lfiK30s
+🟠 [AcksBuilder] YouTube metadata unavailable for item 4 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=c1_MrASvw24
+🟠 [AcksBuilder] YouTube metadata unavailable for item 5 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=8pG67V4LhcQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item 6 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=GuoPlWwsg-E
+🟠 [AcksBuilder] YouTube metadata unavailable for item 7 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=EYDDtTJ6TtQ&list=PLF99-lxSbrkY3PuqaXaS-jAVP1qYfYEEy&index=12
+🟠 [AcksBuilder] YouTube metadata unavailable for item 8 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=CYUuEDY9Ghs
+🟠 [AcksBuilder] YouTube metadata unavailable for item 9 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=lnalI7eVQsQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item 10 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=_q-iWm9kD3A
+🟠 [AcksBuilder] YouTube metadata unavailable for item 11 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=zxe_W4s5fVs
+🟠 [AcksBuilder] YouTube metadata unavailable for item 12 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=9rpo__QRpZw
+🟠 [AcksBuilder] YouTube metadata unavailable for item 13 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=XMcab1MFaLc
+🟠 [AcksBuilder] YouTube metadata unavailable for item 14 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=EUfCmluK94o
+🟠 [AcksBuilder] Unknown media item type "Infographic" (item 15) — used "Infographic" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 16 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=8DdSDqf2fTg
+🟠 [AcksBuilder] YouTube metadata unavailable for item 17 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=OtwOz1GVkDg
+🟠 [AcksBuilder] YouTube metadata unavailable for item 18 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Z_z1mOOnhuw
+🟠 [AcksBuilder] YouTube metadata unavailable for item 19 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=dEi02mPdTLQ
+🟠 [AcksBuilder] Unknown media item type "Infographic" (item 20) — used "Infographic" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item 22 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=1jBgT7lAbQ8
+🟠 [AcksBuilder] YouTube metadata unavailable for item 23 (stubbed) — possible dead link worth checking: https://youtu.be/1wPFoSd9K5I?si=woFaR7X4bgvVGsN9
+🟠 [AcksBuilder] YouTube metadata unavailable for item 23 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Vml-CZse7rI
+🟠 [AcksBuilder] YouTube metadata unavailable for item 24 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=corUfcxuiIM
+🟠 [AcksBuilder] YouTube metadata unavailable for item 26 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=cucBBXUrhDw
+🟠 [AcksBuilder] YouTube metadata unavailable for item 27 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=2loOqzrcyLU
+🟠 [AcksBuilder] YouTube metadata unavailable for item 28 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=JAR5nWwh4jk
+🟠 [AcksBuilder] YouTube metadata unavailable for item 29 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=A0qvv1060kI
+🟠 [AcksBuilder] YouTube metadata unavailable for item 30 (stubbed) — possible dead link worth checking: https://www.youtube.com/shorts/r7YZ4_c0SBA
+🟠 [AcksBuilder] YouTube metadata unavailable for item 31 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=FzAX_PTTnOk
+🟠 [AcksBuilder] YouTube metadata unavailable for item 32 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=DCf4XNEBq6k
+🟠 [AcksBuilder] YouTube metadata unavailable for item 33 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=8xSj3eyq-rE
+🟠 [AcksBuilder] YouTube metadata unavailable for item 34 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Ws2sRjWc7hM
+🟠 [AcksBuilder] YouTube metadata unavailable for item 35 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=33IbgKFFPLs
+🟠 [AcksBuilder] YouTube metadata unavailable for item 36 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=DCf4XNEBq6k
+🟠 [AcksBuilder] YouTube metadata unavailable for item 37 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=JaEUtDvByGk
+🟠 [AcksBuilder] YouTube metadata unavailable for item 38 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=bu7DjBaKCts
+🟠 [AcksBuilder] YouTube metadata unavailable for item 39 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=4eeihi4hU1c&t=1s
+🟠 [AcksBuilder] YouTube metadata unavailable for item 41 (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=hOPc0SFKBiw
+🟠 [AcksBuilder] Media item  could not be mapped to a lesson — placed in the first group (0.0); verify.
+🟠 [AcksBuilder] 8 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP03, XFUN03) — using XLP03 from filename "XLP03 Writers Template.docx".
+🟢 [ConventionResolver] HTML conventions from group Leaving to Learn|combo: overview menu flat, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 2.0.
+🟠 [PageSplitter] Duplicate lesson label 2.0 (writers reused the number) — relabelled to 3.0; check the source numbering.
+🟠 [PageSplitter] Duplicate lesson label 3.0 (writers reused the number) — relabelled to 4.0; check the source numbering.
+🟠 [PageSplitter] Duplicate lesson label 4.0 (writers reused the number) — relabelled to 5.0; check the source numbering.
+🟢 [InteractiveBuilder] Built flipCard #1 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #2 from captured data (no placeholder needed).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview: A support resource for learning partners working with learners who are learning to count." is the section label — consumed (the menu scaffolding names it).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #5 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built flipCard #6 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #7 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #8 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built clickDrop #9 from captured data (no placeholder needed).
+🟢 [ContentConverter] [alert] wraps the following table/widget as its content (no [end alert]) — closes at the next heading/section/page.
+🟢 [InteractiveBuilder] Built flipCard #11 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: layout-note [activity] opener merged into the adjacent numbered activity (no empty box).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next alert.
+🟢 [InteractiveScanner] Activity 2A: additional widget [flip card] absorbed (unclassified + flipCard).
+🟢 [InteractiveScanner] Activity 2A: additional widget [click drop] absorbed (unclassified + clickDrop).
+🟢 [InteractiveScanner] Activity 2A: additional widget [click drop] absorbed (unclassified + clickDrop).
+🟢 [InteractiveScanner] Activity 3B: additional widget [click drop] absorbed (unclassified + clickDrop).
+🟢 [InteractiveScanner] Activity 3B: additional widget [click drop] absorbed (unclassified + clickDrop).
+🟢 [ContentConverter] [alert] wraps the following table/widget as its content (no [end alert]) — closes at the next heading/section/page.
+🟢 [InteractiveBuilder] Built flipCard #16 from captured data (no placeholder needed).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built carousel #19 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built clickDrop #22 from captured data (no placeholder needed).
+🟢 [AcksBuilder] Media item  ("Link") is a lesson link — no acknowledgement (scope rule).
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=AODVbI2gG4Q
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=Xo0Brf_N0nw
+🟠 [AcksBuilder] Unknown media item type "Link/button" (item ) — used "Link/button" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "Link/button" (item ) — used "Link/button" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=mKSNQuQrsm0
+🟠 [AcksBuilder] Unknown media item type "PPT" (item ) — used "Ppt" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://youtu.be/GdwHRCdnAVE
+🟠 [AcksBuilder] Unknown media item type "icons" (item ) — used "Icons" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "icons" (item ) — used "Icons" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] Unknown media item type "icons" (item ) — used "Icons" as the prefix; add it to Acks_Formats type_prefix_map.
+🟠 [AcksBuilder] 50 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+shard 7 -> 28 modules, 337 records

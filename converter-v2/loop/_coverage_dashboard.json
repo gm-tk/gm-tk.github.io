@@ -1,22 +1,21 @@
 {
- "generated": "2026-09-17 12:41",
+ "generated": "2026-09-17 14:34",
  "warnings": [
   "skeleton state predates the newest engine change (2026-09-17) \u2014 its rows may lag.",
-  "body_compare predates the newest engine change (2026-09-17) \u2014 its rows may lag.",
-  "feature index predates the newest engine change (2026-09-17) \u2014 its rows may lag."
+  "body_compare predates the newest engine change (2026-09-17) \u2014 its rows may lag."
  ],
  "headline": {
   "bundles": 4956,
-  "built": 2504,
+  "built": 2498,
   "pages": 2103,
   "clean": 2080,
   "modules": 443,
   "body_any": 182,
   "paired": 1955,
-  "scaffold_mean": 51.978787457200916,
-  "ge50": 1093,
+  "scaffold_mean": 51.98190108072751,
+  "ge50": 1092,
   "ge75": 160,
-  "skeleton_state": "_r355_sk_final.json"
+  "skeleton_state": "_r356_sk_final.json"
  },
  "types": {
   "carousel": {
@@ -672,9 +671,9 @@
    ]
   },
   "accordion": {
-   "built": 455,
+   "built": 453,
    "total": 705,
-   "declined_shapes": 214,
+   "declined_shapes": 216,
    "modules": 197,
    "declined_modules": [
     "AGH1006",
@@ -771,6 +770,7 @@
     "XDLS901",
     "XDLS902",
     "XDLS905",
+    "XDLS906",
     "XDLS909",
     "XDLS911",
     "XGF9001",
@@ -819,12 +819,13 @@
    ]
   },
   "flipCard": {
-   "built": 269,
+   "built": 266,
    "total": 484,
-   "declined_shapes": 179,
+   "declined_shapes": 182,
    "modules": 205,
    "declined_modules": [
     "AGH1006",
+    "AGH1009",
     "ANZH203",
     "ANZH303",
     "ARFUN01",
@@ -1039,9 +1040,9 @@
    ]
   },
   "hintSlider": {
-   "built": 32,
+   "built": 31,
    "total": 44,
-   "declined_shapes": 12,
+   "declined_shapes": 13,
    "modules": 31,
    "declined_modules": [
     "BLL211",
@@ -1054,6 +1055,7 @@
     "MXEX401",
     "OSBY201",
     "OSGM101",
+    "OSSM501",
     "SSCI104"
    ]
   },
@@ -1284,8 +1286,8 @@
    "kind": "body",
    "plain": "The human page carries 3+ body blocks ours does not, without tripping the over-capture rule \u2014 content is going missing by some other route.",
    "modules": 180,
-   "pages": 405,
-   "occurrences": 405,
+   "pages": 403,
+   "occurrences": 403,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -1309,27 +1311,27 @@
   {
    "class": "un-built flipCard",
    "kind": "interactive",
-   "plain": "Writers tagged 484 flipCard widgets; 215 ship as a hand-off box instead of a built widget.",
-   "modules": 121,
-   "pages": 168,
-   "occurrences": 215,
-   "shapes": 179,
+   "plain": "Writers tagged 484 flipCard widgets; 218 ship as a hand-off box instead of a built widget.",
+   "modules": 122,
+   "pages": 170,
+   "occurrences": 218,
+   "shapes": 182,
    "regen_modules": 222,
    "regen_saving_pct": 51,
-   "note": "builder covers 269/484 (55%)",
+   "note": "builder covers 266/484 (54%)",
    "rank": 4
   },
   {
    "class": "un-built accordion",
    "kind": "interactive",
-   "plain": "Writers tagged 705 accordion widgets; 250 ship as a hand-off box instead of a built widget.",
-   "modules": 109,
-   "pages": 178,
-   "occurrences": 250,
-   "shapes": 214,
+   "plain": "Writers tagged 705 accordion widgets; 252 ship as a hand-off box instead of a built widget.",
+   "modules": 110,
+   "pages": 180,
+   "occurrences": 252,
+   "shapes": 216,
    "regen_modules": 212,
    "regen_saving_pct": 53,
-   "note": "builder covers 455/705 (64%)",
+   "note": "builder covers 453/705 (64%)",
    "rank": 5
   },
   {
@@ -1493,14 +1495,14 @@
   {
    "class": "un-built hintSlider",
    "kind": "interactive",
-   "plain": "Writers tagged 44 hintSlider widgets; 12 ship as a hand-off box instead of a built widget.",
-   "modules": 11,
-   "pages": 12,
-   "occurrences": 12,
-   "shapes": 12,
+   "plain": "Writers tagged 44 hintSlider widgets; 13 ship as a hand-off box instead of a built widget.",
+   "modules": 12,
+   "pages": 13,
+   "occurrences": 13,
+   "shapes": 13,
    "regen_modules": 41,
    "regen_saving_pct": 91,
-   "note": "builder covers 32/44 (72%)",
+   "note": "builder covers 31/44 (70%)",
    "rank": 18
   },
   {
@@ -1578,8 +1580,8 @@
   {
    "module": "TWHK901",
    "page": "TWHK901_0_0.html",
-   "scaffold": 5.8,
-   "likely_cause": "24 content blocks missing; widget over-capture"
+   "scaffold": 5.7,
+   "likely_cause": "18 content blocks missing; widget over-capture"
   },
   {
    "module": "EXPFUN05",

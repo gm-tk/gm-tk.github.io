@@ -1,0 +1,23 @@
+type          shape              runs keeps | pages gold-keeps-pages
+carousel      tag:video           101    75 |    36    27
+flipCard      table mid-row        67    49 |    19    12
+flipCard      table first-row      37    20 |    21    12
+modal         black                36    31 |    12    12
+clickDrop     table mid-row        28    16 |    12    11
+modal         tag:modal            23    22 |    12    11
+modal         tag:button           10    10 |    10    10
+dropDown      black                32    19 |    11     9
+flipCard      table last-row       22    14 |    15     8
+modal         tag:body             11    10 |     9     8
+carousel      tag:image            50    21 |    18     7
+carousel      table first-row      17    14 |    10     7
+clickDrop     table first-row      28     9 |    15     7
+carousel      table last-row       14    12 |     7     7
+clickDrop     table last-row       16    10 |    11     7
+carousel      black                14     7 |     9     6
+carousel      table mid-row         9     6 |     7     5
+accordion     tag:video            13     5 |    12     5
+dropDown      table first-row       6     4 |     5     4
+modal         tag:video            25    13 |     7     4
+accordion     black                10     8 |     5     3
+accordion     tag:button            5     1 |     5     1
