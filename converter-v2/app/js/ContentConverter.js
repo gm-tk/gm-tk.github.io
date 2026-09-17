@@ -1851,7 +1851,14 @@ class ContentConverter {
 							// construction — the box only exists because of the widget it wraps
 							|| (actOwner === saOwner && saCfg?.force_interactive !== false)
 							// … and so is a round-266 level-pages id-led box
-							|| (actOwner === lvOwner && lvCfgBox?.force_interactive !== false);
+							|| (actOwner === lvOwner && lvCfgBox?.force_interactive !== false)
+							// … and so is a ROUND 364 id-heading-opened box that OWNS a widget bundle (the
+							// autonomous loop's session 21): it replaces the r217 synthetic box for the same
+							// widget, and the gold ships those boxes `activity interactive` (MXFU202 9A–9E);
+							// the widget-less heading box (9F, gold `activity alertPadding`) never comes
+							// through this path and stays plain. Data: id_heading_opener.force_interactive
+							|| (!!actOwner?._idHeading
+								&& DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener?.force_interactive !== false);
 						// A BUNDLE-OWNED activity (module BLL124, activities 2C/2D — the "interactive
 						// captured right after the opener" case) used to have NO lookahead for a
 						// supervisor note at all (its supervisorNote argument was hardcoded to null),
@@ -1961,6 +1968,30 @@ class ContentConverter {
 								addLead(lead.text); continue;
 							}
 							const lp = lead.parse.primary;
+							// ROUND 364 — A MEDIA ITEM IN THE ACTIVITY'S LEAD RENDERS AS MEDIA (the autonomous
+							// loop's session 20, Round 8). The lead used to render a `[video]` / `[image]` /
+							// `[audio]` item's tail as a `<p>` (the link text), so the video the writer put
+							// between the activity's title and its widget shipped as a bare link inside the
+							// box while the gold ships the `videoSection` embed there (MXDI201 1A). Such an
+							// item now goes down the SAME #element path the body loop uses. Data:
+							// BoundaryBank._meta.opener_rule.id_heading_opener.lead_media_tags   Env: IDHEAD_OFF
+							// Session 21 measured this half as its own class (outputs/_measure_r364_leadmedia.py):
+							// the gold carries the media in the same-numbered box on 0.85 — Standard 0.92,
+							// Fundamentals 0.84, Inquiry 0.50 (a tie: the BLL golds drop the stock image) — so
+							// it is SCOPED by template (lead_media_exclude_templates, module_meta.template_type)
+							// and has its own env (lead_media_env, LEADMEDIA_OFF) inside the round's IDHEAD_OFF.
+							const _lmCfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener;
+							const _lmTT = DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type;
+							const _lmOn = !!_lmCfg && _lmCfg.enabled !== false && Array.isArray(_lmCfg.lead_media_tags)
+								&& !(typeof process !== "undefined" && process.env
+									&& (process.env[_lmCfg.env || "IDHEAD_OFF"] || process.env[_lmCfg.lead_media_env || "LEADMEDIA_OFF"]))
+								&& !(_lmCfg.lead_media_exclude_templates ?? []).some((t) => String(t) === String(_lmTT ?? ""));
+							if (_lmOn && lp && _lmCfg.lead_media_tags.includes(lp.tag) && bodyItems.indexOf(lead) >= 0) {
+								flushLead();
+								emit(...this.#element(lead, bodyItems, bodyItems.indexOf(lead), stack, run).filter(Boolean));
+								actProse = true;
+								continue;
+							}
 							if (lp && ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading"].includes(lp.tag)) {
 								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();
 								addLead(this.#norm.RenderText(lead.text) || lead.blackAfter || "");
@@ -2350,6 +2381,37 @@ class ContentConverter {
 					markContent();
 					run.AddNote("info", "ContentConverter",
 						`Page ${page.lessonLabel}: bare [activity] re-emphasis merged into the open numbered activity (no new box).`);
+					continue;
+				}
+			}
+
+			// ROUND 364 — AN UNNUMBERED `[Interactive Activity] …` OPENER INSIDE AN ID-HEADING
+			// BOX NESTS THERE (the autonomous loop's session 20, Round 8). In the MXDI / MXFU
+			// dialect the id heading (`[H3] 6A Olympic Equestrian`, re-tagged as the
+			// `[Activity 6A]` opener by InteractiveScanner.#idHeadingOpeners) opens the box and
+			// the widget is then named by an UNNUMBERED `[Interactive Activity] Highlight the
+			// numbers` line whose content carries no data table (so no bundle claimed it).
+			// autoClose would close the 6A box in front of it and open a second, numberless
+			// box: TWO boxes where the gold ships ONE (6A: h3 + p + the wordSelect widget). The
+			// bare-[Activity] re-emphasis rule above deliberately EXCLUDES a labelled opener
+			// (PHE1005 "[activity] memory card game" is its own box in the gold), so this is
+			// scoped to a box an id heading opened (the frame's idHeading flag — the family's
+			// own convention, measured at 0.88): the opener's label becomes a Writers Note
+			// inside the open box (the writer's widget name, never a paragraph the gold does
+			// not ship) and the box stays open for the widget's content.
+			// Data: BoundaryBank._meta.opener_rule.id_heading_opener.unnumbered_nests_in_numbered   Env: IDHEAD_OFF
+			{
+				const _ihCfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener;
+				const _ihOn = !!_ihCfg && _ihCfg.enabled !== false && _ihCfg.unnumbered_nests_in_numbered !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_ihCfg.env || "IDHEAD_OFF"]);
+				const _top = stack.length ? stack[stack.length - 1] : null;
+				if (_ihOn && primary.tag === "activity" && primary.directive === "CONTAINER_OPEN"
+					&& !it.parse.numbers[0] && it.consumedBy === undefined
+					&& _top && _top.tag === "activity" && _top.idHeading) {
+					const label = String(it.blackAfter ?? "").trim() || String(it.parse.free ?? "").trim();
+					if (label) emit(NotesAndComments.redFlag(label, run, "cs"));
+					run.AddNote("info", "ContentConverter",
+						`Page ${page.lessonLabel}: unnumbered [${it.text}] opener nested in the open id-heading activity ${_top.id ?? ""} (no new box).`);
 					continue;
 				}
 			}

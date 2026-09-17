@@ -1,0 +1,863 @@
+{
+	"_meta": {
+		"title": "Interactive Activity Boundary & Child-Tag Bank",
+		"purpose": "For the eventual converter: given an interactive tag in a parsed Writer's Template, this bank says (a) which surrounding tags/content belong to that interactive, (b) where the interactive block ends, and (c) which tags can NEVER be part of an interactive and therefore guarantee it has finished. Built so Phase-1 conversion can render every non-interactive tag to HTML while bundling all interactive-related content together (un-built) and resuming clean conversion at the next non-interactive tag.",
+		"generated": "2026-06-11",
+		"stage1_note": "CONVERTER_V2 generative form. The earlier exhaustive per-interactive opener and child-tag lists were verified to collapse, via Tag_Lexicon.json, onto the three global rules below plus a small per-interactive signature. The full empirical lists remain in the source archive bank; re-derivation: every observed opener resolved to opener_rule.opener_tags, and every observed member resolved to a non-terminator canonical tag (member_rule), with zero unexplained remainder beyond free-text content labels.",
+		"block_model": "An interactive ACTIVITY BLOCK = [optional opener tags] + [the interactive tag] + [member tags/content/instructions] ... up to (not including) the first TERMINATOR.",
+		"widget_type_taxonomy": {
+			"_note": "MAIN vs VARIANT differentiation (Chris). A VARIANT widget_type is the SAME main widget as its parent — only a styling/structural variation — so InteractiveScanner.#widgetTypeFor folds it to the parent (the type then flows to the parent's BUILDER, manifest tier, and boundary entry instead of an un-built duplicate). Only variants WITHOUT their own builder that the parent can serve are folded: rotateBanner->carousel (carousel builds it), wordHighlighter->wordSelect (both are the same inline word component). hintSlider is NOT folded (it has its own builder and is the common form, not a variation of accordion in this engine); selfCheck is NOT folded (a distinct freeform widget; its CONDITION sense is handled by condition_primary_demote in Tag_Lexicon). Env VARFOLD_OFF reverts the fold.",
+			"variant_of": {
+				"rotateBanner": "carousel",
+				"wordHighlighter": "wordSelect"
+			}
+		},
+		"opener_rule": {
+			"id_heading_opener": {
+				"_doc": "ROUND 364 (the autonomous loop's session 20, Round 8 — the r362 residue's OTHER half decomposed: the gold's activity title sits BEFORE Claude's box or Claude has no box at all). THE ID-CARRYING HEADING IS THE ACTIVITY OPENER. The Mathematics MXDI / MXFU family (and SSFUN01, CEDT104, ART1003 / 1005, CEDO202, EXPFUN04 / 05, MXFL201 …) never types `[Activity 1A] Title`: it types a HEADING whose text starts with the activity id — `[H3] 1A Spot the place value`, `[h3] 1B Ordering the months`, `[H2] 2A Connecting with Others` — followed by the activity's prose and widget. MEASURED (outputs/_measure_r364_idheading.py → _r364_idheading.{json,log}): 432 such headings / 33 modules; the gold builds `<div class=\"activity …\" number=\"1A\">` opening with `<h3>Title</h3>` (the id stripped) on 0.88 of them (MXFU201 1.00, MXDI201 0.99, MXFU202 0.93, MXDI202 0.76, SSFUN01 / CEDT104 / ART1003 1.00); Claude had a box for 0.37 (the r217 standalone box, numbered by sequence, opening at the widget with the heading rendered free above it as h4 / p) and opened NONE at the heading. With this rule on, InteractiveScanner.ScanPage re-tags such a heading item IN PLACE as the activity opener it is — `[Activity 1A]` with the id-stripped title as its tail (the normaliser's own parse, so the owner lookback, the unclassified-activity path, the activity numbering and ActivitiesBuilder's box all behave exactly as for a typed `[Activity 1A] Title`). Guards: heading_tags only; the id must be `\\d{1,2}[A-Z]` (an upper-case letter — the writer's `1a ___ is less than` answer rows never match); a title of at least min_title_chars must follow; skipped when an `[Activity]` opener with the SAME id sits within same_id_window items before or after it (both forms in one WT), on bilingual (reoMode) pages (their number lives in a table row — the r-old reo_bundle_activity rule) and when the heading is already consumed. The counter-examples recorded as the group's outliers (r178): SSOG301 (gold boxes 0.12 — its `[H3] 1B` headings are section titles) and EXPFUN03's repeated `[H2] 1A Designing your own Learning Goals` (0 / 6). OFF (env IDHEAD_OFF) = byte-identical.",
+				"enabled": true,
+				"env": "IDHEAD_OFF",
+				"heading_tags": ["h2", "h3", "h4", "h5"],
+				"id_pattern": "^\\**\\s*(\\d{1,2}[A-Z])\\b[\\s.:–—-]*\\**\\s*(\\S.*)$",
+				"min_title_chars": 2,
+				"same_id_window": 3,
+				"unnumbered_nests_in_numbered": true,
+				"_doc_nesting": "The family then types the widget as an UNNUMBERED `[interactive activity] drop down …` span (an `activity` CONTAINER_OPEN with no number) after the id heading's prose and video. That span used to become its own unclassified bundle, and the converter's 'a new activity closes the open one' rule closed the 1A box in front of it and opened a second, sequence-numbered box — TWO boxes where the gold ships ONE. With unnumbered_nests_in_numbered the unclassified path looks back (black runs, ELEMENT / opener tags) for a NUMBERED opener and, finding one, makes it the bundle's owner (the r362 owner form) — one box: h3 + prose + video + the capture.",
+				"lead_media_tags": ["image", "video", "audio"],
+				"_doc_lead_media": "An owned bundle's lead used to render a media item's tail as a `<p>` (the link text) — the video between the activity's title and its widget shipped as a bare link inside the box while the gold ships the videoSection embed there (MXDI201 1A). A lead item whose primary tag is in lead_media_tags now goes down the body loop's own #element path."
+			},
+			"rule": "A span immediately preceding an interactive tag belongs to its block when its primary tag resolves (via Tag_Lexicon.json) to one of opener_tags — it is the activity wrapper/title for that interactive.",
+			"owner_id_from_tail": true,
+			"opener_tags": [
+				"activity",
+				"activity heading",
+				"heading",
+				"h2",
+				"h3",
+				"h4",
+				"h5",
+				"body",
+				"button",
+				"image",
+				"story heading",
+				"list"
+			],
+			"unclassified_activity_lead": {
+				"_doc": "ROUND 362 (the autonomous loop's session 19, Round 6 — the DIFF MINER's activity classes #542 / #535 / #533; KB 01F activity_heading). THE UNCLASSIFIED ACTIVITY KEEPS ITS TITLE HEADING AND LEAD PROSE FREE. An `[Activity N] Title` whose only widget signal is a data table (the BLL phonics pattern) is captured as an UNCLASSIFIED bundle; before this round the opener item itself was the bundle's first member, so the whole activity — title and instruction paragraph included — became the placeholder box, while the gold opens the box with `<h3>Title</h3>` + the instruction `<p>` and the widget follows (measured `outputs/_measure_r362_actlead.py`: 958 boxes / 247 modules / 535 pages open with h3 in the gold and with a capture in Claude's; 2605 boxes agree). Now the unclassified path records the opener as `bundle.activityOwner` and the items between it and the first TABLE (black runs, ELEMENT tags — [body] / headings / media —, instruction spans) as `bundle.activityLeadItems`, and swallows members from that table — exactly the normal path's activity-owner form, which ContentConverter already renders as the box's h3 title + lead prose + the placeholder box. Env UNCLASSLEAD_OFF = the opener collected as a member as before (byte-identical).",
+				"enabled": true,
+				"env": "UNCLASSLEAD_OFF",
+				"heading_led_owner": {
+					"_doc": "ROUND 363 (the autonomous loop's session 20, Round 7 — the r362 residue decomposed: 227 gold activity titles sitting INSIDE Claude's capture, 112 of them on a TAG line, 64 of those `[Activity Heading] T` / `[Activity heading H3] T` / `[Heading] T`). THE HEADING-TAG-LED LEAD TAKES THE OWNER FORM. r362 kept the OLD member form for any lead that OPENS with a heading tag, on the premise that the heading 'already terminated the old walk so the table rendered FREE' — true for the tags #swallowMembers terminates on (h2–h5: MXFUN01 / MXFL203 / AGH1008's `[h4]` shape, measured better as the member form) and FALSE for `activity heading`, `heading`, `h1`, `h6`, which the walk swallows whole — title, prose and table into the placeholder, the pre-r362 outcome, for exactly the KB 01F `activity_heading` tag. With this sub-rule the member form is kept ONLY when the lead's opening heading tag is in member_form_tags; every other heading-tag-led lead takes the owner form (opener = activityOwner, the heading + prose = activityLeadItems, members from the first table); ContentConverter's lead rendering already promotes a heading-tag lead item to the box's <h3>. MEASURED (outputs/_measure_r363_headled.py): of 721 bare-opener + heading-tag boxes the gold opens with <h3>Title</h3> at 0.74 — `activity heading` 0.83, `activity heading h3` 0.92, `heading` 0.90; the miss 69 boxes / 53 pages / 23 modules (+ the r325-renumbered ENFUN boxes). OFF (env UNCLASSHEAD_OFF) = r362's guard, byte-identical.",
+					"enabled": true,
+					"env": "UNCLASSHEAD_OFF",
+					"member_form_tags": ["h2", "h3", "h4", "h5"]
+				}
+			},
+			"_opener_tags_note": "Tags the activity-ownership LOOK-BACK (InteractiveScanner) crosses when walking from a widget back to its owning [Activity N]: the activity's own lead content (title/heading/body/button/image/list) sits between the [Activity] tag and the widget and must not stop the walk. 'list' added round 33 — OSAI501-02's Activity 2A puts an [unsorted list] (the 'Benefit/Risk/Managing the risk' instructions) before its reorder; without 'list' the look-back stopped at the list, the reorder was not owned by 2A, and the activity rendered as an EMPTY box with its title/list spilled outside. A list in an activity lead is activity content, so crossing it is correct (same basis as [body] being an opener)."
+		},
+		"member_rule": {
+			"rule": "Once an interactive block is open, EVERY following item is swallowed as a member — tags of directive SUBTAG, content elements (body/image/video/button/audio/...), free text, writer instructions (flag red, still bundled), and TABLE blocks — UNTIL the first terminator. No member list is needed: membership is 'not a terminator'.",
+			"terminators_absolute": [
+				"(new interactive)",
+				"(new [Activity N])",
+				"alert",
+				"important",
+				"whakatauki",
+				"quote",
+				"end activity",
+				"end of activity",
+				"end page",
+				"end accordion",
+				"end alert",
+				"end important",
+				"lesson",
+				"page",
+				"title bar",
+				"module introduction",
+				"lesson overview",
+				"lesson content",
+				"h1"
+			],
+			"callout_tags_terminate": true,
+			"callout_tags_terminate_note": "ROUND 122 (Chris, BLL210 side-alert follow-up) — GENERAL widget-boundary rule: every registered STANDALONE CALLOUT tag (the keys of Emit_Templates.callouts.by_tag — alert/important/wananga/whakatauki/quote/supervisor note/side alert/...) is ALSO an absolute widget-capture terminator. A callout box that sits immediately BESIDE or AFTER a widget is the writer's OWN standalone element, never a widget member — so the widget's #swallowMembers stops at it and it renders as its own element (the human convention). DATA-DRIVEN + REUSABLE exactly like the by_tag def itself: a FUTURE tag added to callouts.by_tag is AUTOMATICALLY a boundary too (no separate list to maintain) — this is the general form of Chris's 'consider other tags' directive. terminators_absolute already hard-coded alert/important/whakatauki/quote; this folds in the rest (wananga/supervisor note/side alert) and any future callout. WHY it was needed: round 121 gave [Side alert] its own canonical 'side alert' (so it stops matching the bare 'alert' substring) — but 'side alert' was not in terminators_absolute, so a side alert abutting an activity widget got SWALLOWED into the widget's placeholder (9 of 64). Read by InteractiveScanner.ScanPage (the `absolute` set). Env CALLOUTTERM_OFF reverts to the literal terminators_absolute list (the round-121 swallow returns).",
+			"terminators_conditional": [
+				"h2",
+				"h3",
+				"h4",
+				"h5"
+			],
+			"conditional_rule": "[H2]-[H5] terminate only when the open interactive's heading_is_terminator is true; [H1] always terminates.",
+			"terminators_absolute_text": [
+				"^phase\\s+\\d+$"
+			],
+			"terminators_absolute_text_note": "ROUND 106 (Chris, TEFUN02) — a standalone BLACK line matching one of these patterns is a HARD terminator (the same class as terminators_absolute, but for plain TEXT not a tag). The TEFUN fundamentals family delimits each phase with a plain-text 'Phase N' line; without this, a quiz/widget at the end of a phase (whose [end quiz] -> 'end mcq' is NOT an absolute terminator) over-captures the next phase's 'Phase N' delimiter + its content, so the phase never opens. Only 9 modules carry such a line corpus-wide (TEFUN01-08 + MXFUN01 — measured outputs/_measure_phase_delimiter.py), all fundamentals, so this can never cut a real widget member in a standard module. Read by InteractiveScanner.#swallowMembers; env FUNDPHASE_OFF reverts (the line is swallowed again).",
+			"never_member_note": "Any tag in absolute_terminator_tags can be relied on as a hard boundary: when the parser sees it after an interactive has opened, the interactive's content is complete and normal tag-by-tag conversion resumes from that tag.",
+			"same_activity_multi_widget": true,
+			"nested_interactive_absorb": {
+				"accordion": [
+					"shapeHover"
+				]
+			},
+			"nested_interactive_absorb_note": "ROUND 95 (Chris, OSAI501-03). A DIFFERENT-type interactive opener that the writer authored INSIDE a host widget's content (e.g. a [shape hover] typed inside an [Accordion 5] panel, OSAI501-03 'When AI is not appropriate') is ABSORBED as a nested sub-bundle of the host instead of TERMINATING it (the default at the foot of #swallowMembers). The host keeps walking AFTER the nested widget's members, so a later same-type continuation ([Accordion 5] 'Managing risks', the writer's duplicate-numbered panel 6) rejoins the host as one bundle — matching the human's single <div class=accordion> with the shapeHover nested in panel 5's accContent. The nested widget is recursively swallowed into its own sub-bundle (registered for its own cv2-index + manifest entry) and rendered as an honest nested placeholder by the accordion builder; the host's range still consumes the nested items (no double-render). MAP host->[absorbable nested types] keeps the blast radius tight: only accordion->shapeHover today (~5 human pages nest this; measured outputs/_measure_accordion_rich.py). env NESTABSORB_OFF reverts to the round-94 fragmenting behaviour (nested widget terminates the host, gets its own top-level placeholder).",
+			"numbered_series_absorb": {
+				"enabled": true,
+				"hosts": [
+					"accordion"
+				],
+				"numbered_pattern": "\\[\\s*{type}\\s+\\d+",
+				"min_panels": 2,
+				"tail": true
+			},
+			"numbered_series_absorb_note": "ROUND 214 (Chris, OSOH501-01). NUMBERED-SERIES CONTAINMENT — the general rule Chris articulated: when a writer numbers a widget's panels ([Accordion 1] … [Accordion 4]), everything between [Accordion N] and [Accordion N+1] belongs to panel N, INCLUDING a different-type interactive typed inside the panel (a [modal] image set, a [tabs] letter-nav, a [Click drop] values table). The scanner previously let ANY different-type invocation terminate the host, splitting one authored accordion into 4+ fragments (OSOH501-01: panel 1's modals, panel 3's READYSAFE tabs and panel 4 all broke out as separate top-level placeholders). NOW: while the HOST is a data-listed numbered-series type, a different-type INTERACTIVE invocation absorbs as a NESTED sub-bundle (the r95 nested_interactive_absorb mechanism, shared implementation #absorbNestedSubBundle) — (a) ALWAYS when a LATER numbered same-type tag lies ahead before a hard stop (h1/activity/absolute/page-boundary/container-close) = Chris's between-panels forward guarantee, and (b) after the LAST numbered panel (tail:true) only when the series is real (>= min_panels numbered tags already captured); the tail window stays bounded by every existing terminator (lone section heading, callout, [Activity], [H1], page end). MEASURED: outputs/_measure_accnest.py — 28 modules author widgets between numbered [Accordion N] panels, gold groups the panels into FEWER accordion divs; outputs/_measure_accnest_gold.py — 83 modules' golds nest widget markup INSIDE accContent (videoSection 74m, speechBubble 12m, carousel 13m, flipCard 6m, clickDrop 6m, dropDown, hintSlider, tabs, shapeHover). The nested sub-bundle renders in place — BUILT when its own builder succeeds (e.g. the READYSAFE tabs), else an honest nested placeholder. env ACCNEST_OFF reverts (nested widget terminates the host again).",
+			"leading_pattern_absorb": {
+				"enabled": true,
+				"inline_only": true,
+				"widget_first_alternation": "^W(LW)+$",
+				"label_signatures": [
+					{
+						"name": "url",
+						"re": "^https?://"
+					},
+					{
+						"name": "bullet",
+						"re": "^[\\u2022\\u2013\\u2014-]\\s"
+					},
+					{
+						"name": "num",
+						"re": "^\"?\\(?\\d+\\s*[.)]"
+					},
+					{
+						"name": "alpha",
+						"re": "^\"?[a-z]\\s*[.)]"
+					},
+					{
+						"name": "colon",
+						"re": ":\\s*$"
+					}
+				],
+				"label_like": [
+					"num",
+					"alpha",
+					"colon",
+					"bullet"
+				],
+				"max_above_words_over_labels": 2,
+				"min_above_words_cap": 12
+			},
+			"leading_pattern_absorb_note": "ROUND 176 (Chris, ENGC101-02). THE BACKWARD LEAD-PAIR ABSORB — the general 'detect a repeating pattern, then walk UP to recover the missed first pairing' Chris asked for. A bundle is scanned FORWARD from the first interactive tag, so when the writer's element is a REPEATING (lead-in label, widget) series the FIRST label — which sits ABOVE the first tag — is orphaned (ENGC101-02: 'We can use words to describe what we see:' left as a stray body <p>, its 'feel:'/'think:' siblings correctly inside the box; XGF9004 True/False modals: statement '1.' left outside, '2.'..'12.' inside). AFTER #swallowMembers, this pass collapses the members to a per-source-block token string (W=interactive tag, L=standalone black label, O=table), and ONLY when it is a STRICT clean widget-first alternation (widget_first_alternation ^W(LW)+$, >=2 widgets, one label per interior widget, no L-runs, no tables) does it consider absorbing. It then extrapolates the unit BACKWARD: it walks up from the tag over UNCONSUMED black items whose label SIGNATURE (label_signatures, first match wins) equals the DOMINANT interior-label signature (Chris's 'similarly structured') and are label_like (num/alpha/colon/bullet — never free prose or a URL), capped at exactly the MISSING count (widgets - interior labels = 1 for this envelope) and at a word count near the interior labels (never a body paragraph). Matched labels are prepended to memberItems + startIndex moved back (the ownership loop then consumes them). MEASURED corpus-wide (outputs/_measure_intleadpair.cjs, all 390 WTs): 559 label-precedes bundles, but the strict+similarity guard fires on exactly 7 bundles / 2 modules (ENGC101 speechBubble colon, XGF9004 x6 modal numbered) — MXEX302's carousel (interior 'label' a URL, above free prose) and every already-consumed 'above' correctly DECLINE. inline_only:true (an activity-owned bundle's startIndex is the [Activity] tag, whose predecessor is section content, not a widget label — a sized follow-up). Env INTLEADPAIR_OFF (or enabled:false) reverts to the forward-only capture. Looser envelopes (trailing-label WLWLWL, table-interleaved) are deferred follow-ups.",
+			"same_block_image_absorb": {
+				"enabled": true,
+				"owner_start_fix": true,
+				"types": [
+					"speechBubble"
+				],
+				"image_tag": "image",
+				"other_item_classes": [
+					"instruction",
+					"noise"
+				],
+				"istock_id_pattern": "gm-?\\d{6,10}",
+				"video_pattern": "youtu\\.?be|youtube\\.com|vimeo",
+				"max_absorb": 6
+			},
+			"same_block_image_absorb_note": "ROUND 246 (Chris, ticket 1 of the basic-interactive builders round). THE BACKWARD SAME-BLOCK AVATAR ABSORB. The writer types the avatar and its bubble as ONE paragraph — '[Image] avatar Tina  smiling  <iStock title> [LINK: https://…gm2235638824-…]  [speech bubble] RHS  See how the table gives the details…' — but the extractor splits that paragraph into separate red-span ITEMS and the forward member walk begins AT the [speech bubble] invocation, so the [image] is orphaned just above the bundle. It therefore rendered as a loose standalone image (plus an 'avatar Tina' caption) with the bubble text stranded in a hand-off box below, where the finished page ships ONE row speechBubble holding both. This pass walks UP from the invocation over the CONTIGUOUS run of unconsumed items sharing the invocation's own source `block` (the round-105 'continuous sentence vs a paragraph later' discriminator — an [image] in a different paragraph is the writer's separate element and can never be pulled in), and absorbs the run when it holds EXACTLY ONE [image] tag and otherwise only the image's own descriptive instruction/noise spans; the bundle must additionally have no table, no extra widget types, and exactly one nameable iStock id in its harvested media with no video URL. The absorbed image is handed to InteractiveBuilder's speechBubble no_table_image branch as bundle.sameBlockImage; absorbed instruction spans go to bundle.instructions so they still surface as red Writers Notes (never silently strip a documented instruction — they simply render after the widget instead of before it). MEASURED over all 445 corpus module dirs (outputs/_measure_r246_sbblock.cjs): of the 343 declined no-table speechBubble bundles the guard matches EXACTLY 55 (TEDC401 33, TEDC402 21, SSCI104 1) and the human gold builds an avatar+bubble row at 55 of 55 (outputs/_measure_r246_gold.py). The sibling decline classes are deliberately LEFT as hand-off boxes: 229 bundles with no media at all (gold builds a bubble at only 72%, and half of those add a character asset that is in no Writers Template), 22 with non-iStock media, 21 with an iStock URL but no same-block [image]. env SBNOTBL_OFF reverts the whole ticket (this absorb + the builder branch).",
+			"inline_markers": [
+				"wordSelect",
+				"wordHighlighter"
+			],
+			"standalone_inline_markers": [
+				"infoTrigger"
+			],
+			"table_qualifier_tags": [
+				"table"
+			],
+			"_opener_tags_heading_note": "ROUND 50: the activity-ownership look-back crosses an activity's LEAD content (title/sub-headings/body/image/list between [Activity N] and the widget) to find the owning [Activity]. opener_tags listed the GENERIC 'heading', but the normaliser emits the LEVELLED tags h2-h5, so the look-back stopped at a lead heading (OSAI401-01 Activity 1A's [H4] 'AI Abilities') and never reached [Activity 1A] — so the wordSelect was NOT owned by 1A: the activity got no .interactive class AND was not bounded by the widget (it over-extended past 'People can do…'). Adding h2-h5 lets the look-back cross lead headings. Safe: the look-back stops AT the [activity] tag, so a section break before the activity is never crossed.",
+			"conversation_absorbs_clickdrop": true,
+			"_conversation_absorbs_clickdrop_note": "ROUND 49: a CONVERSATION speechBubble (its invocation carries the 'Conversation layout' cue) absorbs an immediately-following clickDrop as its inline response reveal — the writer's 'Click to see its response:' + [Click drop] (front/drop) is the last AI turn (OSAI401-01 Prompt 4). The conversation builder renders it as the last bubble's CLICK reveal (button + clickDropContent), per the WT's literal [Click drop] — NOT the human's non-derivable hover. The clickDrop's [front]/[drop] members are then collected; a following [body] still terminates (round-48 face/reveal-member rule). Read by InteractiveScanner.#swallowMembers.",
+			"_table_qualifier_note": "TABLE-QUALIFIED widget (round 48): when an inline-marker tag ALSO carries one of these qualifier tags ([Table wordSelect]), it is a STANDALONE table-data interactive (the human builds a clickable table) — NOT an inline highlight. The InteractiveScanner skips the inline-marker dissolution and starts a normal bundle that captures the following table, so the widget is WRAPPED in a placeholder instead of leaking as a raw <table> (OSAI401-01 Activity 1A '[Table wordSelect] What can AI do'). Read by InteractiveScanner.",
+			"_inline_markers_note": "INLINE-MARKER FIX (2026-06-15, body-breakdown #2 + #3): these widget types are NOT standalone block widgets — they annotate text INLINE. Two roles, two lists:\n  • inline_markers ([highlight text]/[word select] → wordSelect/wordHighlighter): the human highlights text via the wordHighlighter class ON the surrounding container (e.g. a flip-card's back face). These get BOTH roles — (a) ABSORBED as a plain member when another widget is open (so XGF9001's back 'Being [highlight text] gifted means…' stays ONE back), and (b) standalone, the marker is dropped and the text renders as free body.\n  • standalone_inline_markers ([rollover/hover/mouseover definition] → infoTrigger): the human wraps the PRECEDING word in an inline <span class=\"infoTrigger\" info=\"…\"> tooltip (measured 1,669 inline spans vs 232 block divs). These get ONLY role (b) — a STANDALONE one (in body text) is dropped so it cannot swallow the rest of the page (SSFUN07-00/PHE1008-00 over-capture). They are NOT absorbed inside an open widget (role a): inside a widget they TERMINATE as normal, because absorbing them corrupted ENGS101's compound-word flip-cards (the [Rollover definition] CS-notes in the card region were pulled into the build). The infoTrigger hover payload is deferred with the interactive build (Phase 1 renders the annotated word as readable plain text).",
+			"trailing_media_extract": [
+				"video",
+				"audio"
+			],
+			"_trailing_media_note": "TRAILING-MEDIA FIX (2026-06-14): a tag listed here, when it is the LAST member of an interactive block, is trimmed back out of the block so it renders as its OWN standalone element. Writers often place an explainer [video] AFTER a widget's content (e.g. OSBY301's video after the last accordion panel); the boundary scan swallows it, but the human renders it separately. Add/remove tags here to tune. (image is deliberately NOT listed: an image at the end of a block is usually the last panel's own image, not a separate element.)",
+			"same_activity_note": "2026-06-13: when a NEW interactive tag appears while a bundle that belongs to an [Activity N] is open — and no new [Activity] wrapper has appeared — the human developers build it as part of the SAME activity block (verified BLL155 1A: carousel + [self check] = one activity). The engine therefore absorbs it into the open bundle as an additional widget type instead of splitting (extraTypes on the bundle/manifest). Openerless INLINE bundles still split as before.",
+			"same_activity_display_terminates": false,
+			"display_terminator_types": [
+				"speechBubble",
+				"flipCard",
+				"tabs"
+			],
+			"same_activity_display_terminates_note": "INVESTIGATED 2026-06-19 (Chris, ENGS401-01) — CODED BUT DORMANT (flag DEFAULT false; flip true to activate). REFINES same_activity_multi_widget by the FOLLOWER's ROLE. When a bundle that belongs to an [Activity N] is open and a NEW interactive of a DIFFERENT type appears with no new [Activity] tag between them, same_activity_multi_widget absorbs it (one activity). That is correct for a TASK follower (typing/dropQuiz/reorder/multiChoiceQuiz — measured 96-100% kept INSIDE the activity) and for a SAME-type continuation, but the human CLOSES the activity and renders a DISPLAY/narration follower OUTSIDE as a new presentational section. Measured corpus-wide (outputs/_measure_activity_widget_boundary.py, human OUTPUT convention, round-45 basis): a DIFFERENT-type display follower is rendered OUTSIDE the activity — flipCard 92.3%, tabs 81.8%, speechBubble 70.5% (the exact ENGS401-01 case: carousel/radio INSIDE .activity, the following [speechbubble] OUTSIDE; 76 such activity->outside-speechBubble cases across ~15 modules). WHEN ENABLED: if the follower's resolved type is in display_terminator_types AND != bundle.type, InteractiveScanner.#swallowMembers TERMINATES the open bundle instead of absorbing; the follower starts its OWN bundle whose activity look-back (it stops at the first consumedBy item) resolves it as free-body — OR, if a new [Activity] tag intervenes, that tag's absolute terminator already opens a NEW activity container for it (Chris's 'activity tag between' case, unchanged). TWO insertion points: (a) the (new interactive) free-tag absorb, (b) a following TABLE whose cell carries a DIRECT display-terminator invocation ([speechbubble] in ENGS401 is table-authored). Env ACTSPLIT_OFF also reverts when enabled. MEASURED GATE TRADE (full regen, flag on): IMPROVES compare_structure exact-chain 4257->4261 (+4) + body_compare over-capture 40->36 / runaway 6->2 (ANY held 128) + builds the ENGS401 speechBubble EXACTLY outside the activity (speechBubble verifier exact 4/4); but DIPS skeleton >=50% 377->376 (-1) + structural-clean 825->824 (-1) + literal-[tag] leak 545->547 (+2), because the freed tables (flipcard/highlighter, EXBP901/EXIP901 [tab n]) render RAW — a separate leak-CAPTURE class. DEFERRED by Chris pending that leak-class fix (split only once the freed content is captured/built, not raw). Full write-up: reference/Activity_Boundary_DisplayFollower_Investigation.md.",
+			"body_terminates_after_face": true,
+			"body_terminates_after_face_note": "A [Body] ELEMENT after the widget has captured a FACE/REVEAL member ([front]/[back]/[drop]/[answer] — face_member_tags) TERMINATES the widget: the writer is resuming free body (the human keeps it OUTSIDE the widget). Round 48 keys this off the CAPTURED member (not the signature), so it covers the clickDrop FRONT/DROP reveal form (OSAI401-01) as well as flipCard/speechBubble faces. A [Body]-BASED form with no face/reveal member (SSFUN07's [body] backs; the clickDrop label+[body] form) never captures one, so its [body] members stay content. XGF9001: 2 flipcards then [Body] body text. Read by InteractiveScanner.#swallowMembers.",
+			"face_member_tags": [
+				"front",
+				"back",
+				"drop",
+				"answer"
+			],
+			"face_excludes_invocation": true,
+			"face_excludes_invocation_note": "ROUND 68 (Chris, OSBY201-01). For a DATA-TABLE widget (uses_data_table:true), body_terminates_after_face must count a face tag only on a genuine captured face MEMBER (a [front]/[back]/[drop]/[answer], which parses as a SUBTAG), NOT on the widget's OWN invocation whose MODIFIER words can coincide with a face word: [reorder – show answer] parses to tags [reorder, answer]; [Multichoice – correct answers are in red] -> [mcq, answer]; [click and drop on answers] -> [click drop, answer]. Counting the invocation made the FIRST following [body] falsely terminate the bundle, so the data-table widget captured NOTHING and its data table leaked outside the activity (OSBY201-01 1B reorder: 'no content captured' + a leaked <table>). The invocation is INTERACTIVE; genuine face members are SUBTAG — so InteractiveScanner.#swallowMembers skips INTERACTIVE-directive members in the sawFace test. SCOPED to uses_data_table widgets: for those a following table is unambiguously the widget's data (post-table body-termination is body_terminates_after_table), so suppressing the false face-terminator cannot over-capture free body; the true FACE/REVEAL widgets (flipCard/clickDrop/speechBubble) keep the exact round-25/48 behaviour, and non-table pop-ups (modal 'Pop up with answer') are left for a separate round. Env FACEINVOKE_OFF reverts to counting the invocation.",
+			"face_empty_keeps_body": true,
+			"face_empty_keeps_body_note": "ROUND 96 (Chris, OSAI501-04). An EMPTY face ([back]/[front] with no inline content) takes its content from the FOLLOWING [body] ELEMENT(s) — the [Front]/[H5] title [image]/[back]/[body] card form. That [body] is the face content, NOT a free-body section break (round 48), so body_terminates_after_face is suppressed while the most-recent face is still empty. The round-48 inline-content-face form (XGF9001 2-flipcards) still terminates. env FACEBODY_OFF.",
+			"face_table_capture": {
+				"enabled": true,
+				"require": [
+					"back"
+				],
+				"widget_type": "flipCard",
+				"_note": "ROUND 59 — a FREE-BODY table (no invocation in any cell, consumedBy===undefined) whose cells carry a [back] face tag (the back-of-card signal; the fronts may be [Front] text OR [Image]) is ORPHAN flip-card data: the human builds a flipCard but Claude leaked the raw <table> (XGF9001-05 [Front]+[Back]; XGF9006-07 [Image]-front + [Back]; 24 leaks / 2 modules, measured outputs/_measure_facetable.py). #interactiveInTable returns flipCard so the table is captured as a bundle — the builder declines the un-paired table form, so it renders as an honest placeholder with the [Front]/[Back]/[Image] data INSIDE it (a developer reference, not a learner-facing leak), and the page gets a WIDGET marker toward the human. The consumedBy guard at the call site means it NEVER touches a table already captured by a [flipCard]/[Embedded] invocation bundle (CEDO501/CEDW501/etc. are unaffected). Env FACETABLE_OFF reverts.",
+				"scope_note": "Measured corpus-wide (placeholder-stripped, notes dropped): the ONLY free-body tables carrying a [back] face tag are XGF9001-05 and XGF9006-07; every other module's face tables are already inside placeholders. [back] is flipCard-specific (front/back), so the [back] signal cannot mis-fire on a clickDrop ([front]/[drop]) or a data table."
+			},
+			"flipcard_data_table_absorb": {
+				"enabled": true,
+				"trigger_tag": "embedded",
+				"member_tags": [
+					"item"
+				],
+				"_note": "ROUND 60 — the [Embedded][Flipcard] form is a DECLARATION table ('Activity Type / [Embedded] / [Flipcard]') captured here (the [Flipcard] invocation lives in a cell, so #interactiveInTable opens a flipCard table-bundle), immediately followed by a SEPARATE flip-DATA table whose cells carry [Item N] rows ('Card no. / Image (front) / Text (back side)'). The decl table captured but the data table (no invocation of its own) escaped the bundle and leaked its [Item N]/[Image] literals (PNR101/102/104, 69 leaks). When a flipCard table-bundle is created from a table whose text carries [Embedded] (trigger_tag), absorb the immediately-following member-tagged ([Item N], member_tags) data table(s) into the SAME bundle, so the page shows ONE flipCard placeholder with all its data INSIDE it (a developer reference, not a learner-facing leak). A following table that has its OWN invocation or a [back] face tag (its own face_table_capture bundle) is LEFT for that bundle — the absorb stops. Env FLIPDATA_OFF reverts.",
+				"scope_note": "Measured: free-body [Item N] data tables are PNR101/102/104 only; the trigger requires the preceding decl table to carry [Embedded], so the absorb cannot run on a non-[Embedded] flipCard (e.g. the XGF [back] tables, which have no [Embedded] and no following [Item N] table)."
+			},
+			"body_terminates_after_invocation_text_types": [
+				"speechBubble"
+			],
+			"body_terminates_after_invocation_text_note": "SELF-CAPTIONED widgets: the listed types carry their content on their OWN invocation tag's trailing text (a [speech bubble] <text> bubble), NOT in a [front]/[back] face or a data table. So a [Body] ELEMENT after the invocation (which already holds the bubble text) is the writer RESUMING FREE BODY — terminate the widget; the [body] and everything after it (more body, a video, a following bubble) render as normal page content OUTSIDE the widget. This is the inline-authored companion to body_terminates_after_face / body_terminates_after_table (rounds 25/31/32): same section-break family, for a widget whose 'face' is its invocation text. A PER-TYPE list (not a blanket rule) so it never fires for table/face-authored widgets (e.g. flipCard) whose invocation text can legitimately precede a [body] before the table is captured. The guard requires the invocation to ALREADY carry non-blank text, so an empty [speech bubble] whose text is in a following [body] is not mis-cut. XGF9001-00: a [speech bubble] 'Giftedness isn't just…' + [image] then swallowed 'This module will help you:' + bullets + a video + a 2nd bubble; now it ends at that [body]. Measured corpus-wide: 56 such over-captures across 19 modules, 0 empty-invocation-then-[body] counter-cases. Read by InteractiveScanner.#swallowMembers.",
+			"trailing_media_extract_exempt_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"trailing_media_extract_exempt_note": "SLIDESHOW widgets (carousel, rotateBanner) are EXEMPT from trailing_media_extract: a trailing [video]/[audio] is the LAST SLIDE, not post-widget media. Without this, a video carousel loses its last slide (it renders standalone after the widget, then the auto-builder would duplicate it). Read by InteractiveScanner.#trimTrailingMedia.",
+			"trailing_media_keep_types": [
+				"modal"
+			],
+			"trailing_media_keep_note": "ROUND 311 (the one-marker gathering chain) — the MODAL keeps its trailing media. A [video] directly after '[modal] <label>' IS the pop-out's CONTENT by the widget's own semantics: the r292 D4 dialect ('[Modal] Factor trees' then the video that pops out) exists for exactly that shape, and the golds render label+video as ONE unit (ENFUN09's h5+video, MXDB302's h4+video, MXFU301-9.0's own TKmodal). The pop was emptying the bundle: '[modal] Author Neil Gaiman speaks on his drafting process' + [video] captured BOTH members, then #trimTrailingMedia popped the video and the bundle shipped as a one-marker hand-off box with its content stranded outside (ENFUN09, MXDB302 x2 — pinned live by outputs/_measure_r311_walkstop.cjs). A separate key + toggle so the OSBY301 post-accordion semantics of trailing_media_extract are byte-untouched for every other type. Env MODTRAILMEDIA_OFF.",
+			"body_terminates_after_table": true,
+			"body_terminates_after_table_note": "A [Body] ELEMENT that appears AFTER a TABLE-DATA widget (uses_data_table: true) has already captured its table is the writer RESUMING FREE BODY — the table is the widget's content; the [body] is a section break, and anything after it (free body, a following speechBubble/widget) is NOT part of the widget. The human renders all of it OUTSIDE the widget (OSBY201-02: a [typing] scenario table -> free body -> a separate Billy-Bulldog speechBubble; before this, the typing swallowed both). Terminate the widget at that [body]. Mirrors body_terminates_after_face (round 25) for table-data widgets. SLIDESHOW widgets are EXEMPT (their trailing body is a slide caption handled by the image-carousel builder). Read by InteractiveScanner.#swallowMembers.",
+			"body_terminates_after_table_exempt_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"heading_terminates_after_table": true,
+			"heading_terminates_after_table_exempt_types": [
+				"rotateBanner"
+			],
+			"heading_terminates_after_table_exempt_types_note": "ROUND 352 (the autonomous loop's session-15 Round 2). The HEADING rule's OWN exemption list (before this round it shared body_terminates_after_table_exempt_types, so a carousel was exempt from both). A SECTION HEADING ([H2]-[H5]) after a CAROUSEL's captured slide table is the writer's next section, never a slide — the r279 table-slides carousel was swallowing the whole rest of the page (AGH1005 2.0 'Parts of a plant', AGH1009 5.0's four h3 sections, XTAS102 3.0's seven h4 carousels) and dropping every word of it: 206 built carousels / 171 pages / 109 modules, the gold keeps the text as free body on 167. The carousel now ENDS at that heading; rotateBanner keeps the old exemption (unmeasured). A trailing [body] after the table stays a carousel member (a caption — the body list is unchanged) and the table-slides builder renders it after the widget (Emit_Templates carousel.table_slides.members). Key ABSENT → the shared body list, byte-identical. Read by InteractiveScanner.#swallowMembers; env CARHEADEND_OFF.",
+			"heading_terminates_after_table_note": "Companion to body_terminates_after_table: an [H2]-[H5] section HEADING that appears AFTER a TABLE-DATA widget (uses_data_table: true) has captured its table is a NEW SECTION — the table is the widget's content, so the heading and everything after it belong OUTSIDE the widget. This OVERRIDES the widget's heading_is_terminator:false (which exists only so the widget's OWN internal headings — story heading / slide n, which sit in/before the data — are not treated as terminators; a heading AFTER the data table is not internal). The human renders it as a free <hN> section (OSAI501-01: a [memory game] data table -> [H3] 'Generative AI and LLM' -> a speechBubble + a video; before this, the memoryGame swallowed the heading, bubble and video). Same SLIDESHOW exemption as body_terminates_after_table. Read by InteractiveScanner.#swallowMembers.",
+			"heading_terminates_after_table_levels": [
+				"h2",
+				"h3",
+				"h4",
+				"h5"
+			],
+			"lone_heading_section_break": true,
+			"lone_heading_section_break_note": "ROUND 77 (OSBY201-03 shapeHover 'The ‘banter’ trap'). A heading_is_terminator:false widget (flipCard/accordion/clickDrop/tabs/slider/memoryGame/crossword/shapeHover) legitimately HOLDS internal headings, but the corpus (197-set: 248 LEAD / 257 CLUSTER / 73 LONE) shows those are only: (a) the widget's LEAD title (a heading BEFORE any captured content member), (b) a CLUSTER of >=2 sibling panel/front headings (accordion 'Drafting/Revising/Editing/Publishing'; clickDrop vocab labels), or (c) a card FRONT immediately followed by its [image] (flipCard, OSAI501). A SINGLE heading that lands AFTER the widget captured >=1 genuine content member, has NO sibling [H2]-[H5] before the bundle's next ABSOLUTE terminator (lone, not a cluster), AND is FOLLOWED BY ordinary section content (a [body]/[video]/[audio]/table/list — NOT an [image] front, NOT widget sub-content) is the writer STARTING A NEW SECTION the widget must not own. The human renders it OUTSIDE the widget (verified: OSBY201/OSGM401 shapeHover, CEDW501/XGF9001/MXFL301 accordion, ENGJ301/EXPFUN06/MXDB302 flipCard). DISTINCT from heading_terminates_after_table (that fires AFTER a captured TABLE; this fires when the captured content is floating black members / images with NO table yet, e.g. shapeHover's text-box labels). The LEAD + CLUSTER + follow=image exclusions keep every legitimate internal heading. Read by InteractiveScanner.#swallowMembers; env LONEHEAD_OFF reverts.",
+			"lone_heading_follow_section_tags": [
+				"body",
+				"video",
+				"audio",
+				"list"
+			],
+			"lone_heading_panel_label_exclude": true,
+			"lone_heading_panel_label_exclude_note": "ROUND 141 (Chris, BLL241-02 clickDrop). PANEL-LABEL exclusion for the round-77 lone_heading_section_break rule. A NUMBERED multi-panel widget authors each panel as [clickdrop N image] > [clickdrop N text] > [H#] label > [body] > [image]*3 (BLL241 Fog/Loops/Glide vocabulary panels). EVERY panel heading is followed by its own [body], and the LAST panel's heading is 'lone' (no sibling [H#] after it before the next [Activity]), so round-77 falsely terminated the widget at the last panel — fragmenting the clickDrop into an activity box + a second numberless interactive box + a plain-body leak (the Loops panel). A heading whose NEAREST preceding captured member (skipping the widget's own empty [clickdrop N text] opener + retained INSTRUCTION notes, with NO free body text / media / table between) is a SAME-TYPE interactive PANEL OPENER is that panel's LABEL, never a section break. This is the direct analogue of round-77 exclusion (c) 'a card FRONT immediately followed by its [image]'. The shapeHover 'banter' [H3] (the round-77 origin) is preceded by shape CONTENT (an [image]/[body]), not a same-type opener, so it still correctly terminates — canary-verified OSBY201-03/XGF9001/ENGJ301. Read by InteractiveScanner.#swallowMembers; env LONECLUSTER_OFF reverts (the last panel fragments again).",
+			"body_section_break_after_shape": true,
+			"body_section_break_after_shape_types": [
+				"shapeHover"
+			],
+			"body_section_break_after_shape_note": "ROUND 94 (Chris, OSAI501-02). A shapeHover authors REPEATING [shape n] > [body] > [image] groups. A [body] that begins AFTER the current shape group is already COMPLETE (an [image]/media member captured since the most recent [shape n] tag), with NO new [shape n] opening it, is the writer RESUMING free body — the human renders it OUTSIDE the widget ('While it's not perfect and can make mistakes…' is a plain <p> before the [H3] AI risks section, OSAI501-02). Every legitimate shape-description [body] is immediately preceded by its [shape n] (no [image] captured in the group yet) so never trips. Same section-break family as body_terminates_after_face/_after_table/_after_invocation_text + the round-77 lone_heading_section_break (which already terminates the FOLLOWING [H3] AI risks). Measured: 8 modules / 14 shapeHover widgets corpus-wide (OSAH501/OSAI401/OSAI501/OSGM401/OSGM501/OSOH501). Read by InteractiveScanner.#swallowMembers (walk back to the current shape's [shape n] opener: an [image]/media seen since it → orphan [body] → terminate); env SHAPEBODY_OFF reverts.",
+			"slideshow_heading_internal": [
+				"carousel",
+				"rotateBanner"
+			],
+			"slideshow_heading_internal_note": "ROUND 96 (Chris, OSAI501-04). A carousel/slideshow's slide TITLES are [H#] headings INSIDE the widget ([Slide N] then [H5] 'Data ingestion'). The bank flags carousel heading_is_terminator:true, so the FIRST slide [H5] terminated capture → the carousel built nothing ('RED FLAG: Un-built [carousel] marker — no content captured') and every slide leaked as an orphan [slide n] sub-tag. For these slideshow types InteractiveScanner forces headingTerminates=false so slide titles are captured; the round-77 lone_heading_section_break still bounds a REAL post-carousel section heading (a CLUSTER of slide titles never trips lone_heading). env CARSLIDE_OFF reverts (heading terminates again).",
+			"slideshow_heading_lone_break": true,
+			"slideshow_heading_lone_break_note": "ROUND 214 (Chris, OSOH501-01/-02). The r96 slideshow exemption above was BLANKET — every heading in a carousel was internal — so the SECTION heading following the whole carousel ([H3] 'How to use hauora…' after the 4th slide) was swallowed as a bogus 5th slide, and the empty trailing slide bailed the builder (the carousel stayed an orange placeholder). With this flag the exemption is PRECISE: a heading whose nearest preceding substantive member is a [Slide N]/[slide] MARKER is that slide's title (always internal — the r96 OSAI501-04 protection); any OTHER heading in a slideshow runs the standard r77 lone+follow test, whose follow=image exclusion keeps a heading-OPENED slide's title inside (its [image] follows) while a trailing section heading (followed by [body] text) correctly terminates the carousel. env CARTRAIL_OFF reverts to the blanket exemption.",
+			"body_section_break_after_slide": true,
+			"body_section_break_after_slide_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"body_section_break_after_slide_note": "ROUND 96 (Chris, OSAI501-04). A carousel slide is [slide n] > [H#] > [body](main, pre-image) > [image] > [body](Example, post-image) — exactly ONE caption after the image. A FURTHER [body] (image seen since the last [slide n] AND a [body] ALREADY captured after that image — i.e. the 2ND post-image body) is the writer RESUMING free body after the last slide; the human renders it as a <p> AFTER the carousel ('AI is only as good as the data it learns from…', OSAI501-04, then [Activity 4a]). Same family as body_section_break_after_shape but slideshow allows one post-image caption, so the discriminator is the 2nd post-image body. Read by InteractiveScanner.#swallowMembers; env CARSLIDE_OFF reverts.",
+			"media_series_break": true,
+			"media_series_break_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"media_series_min_run": 2,
+			"media_series_break_note": "ROUND 247 (Chris, ENGS404-00 — the new-era WT media-series carousel). A carousel authored as a back-to-back RUN of [image]/[video] members directly after the invocation ('[insert image carousel] [image 1]..[image 4]') is delimited by the writer's own list: the first following non-media ELEMENT tag ([body]/heading/[button]/data marker…) resumes the SECTION, so the member walk terminates there instead of absorbing the rest of the page into the placeholder. Fires ONLY while the capture is still a PURE media run (no [slide N] marker; every substantive member so far = invocation / media / a video's own link-title black line / writer instructions; run >= media_series_min_run). Interleaved slide dialects (image>body>image captions) fail the pure-run test and keep the old behaviour BY CONSTRUCTION. MEASURED (outputs/_detect_r247.cjs, ALL corpus dirs): general media-run scope = 260 bundles / 118 modules; NO currently-building bundle carries a [body]/[list] after its run (the zero-risk terminator), and the 11 heading-tailed 'builds' (EXPFUN02 x5, ENGJ403, XLP04/06, HPRE301, XGF9001) were themselves over-captures shipping the NEXT page section as bogus trailing slides — this rule corrects them toward the writer's structure (named build-shape change, r247 changelog). Read by InteractiveScanner.#swallowMembers; env CARSERIES_OFF reverts.",
+			"instruction_dominant_member": true,
+			"instruction_dominant_min_words": 8,
+			"instruction_dominant_member_note": "ROUND 92 (Chris, ENGS302-01). A writer INSTRUCTION that name-drops tag-words mid-sentence — '[This is the correct order of plot points. Please randomise order and include a check and reset BUTTON at the end of this ACTIVITY]' — resolves (TagNormaliser) to class:'tag' with embedded tag matches [activity|correct|button], primary=button. Inside an OPEN interactive bundle this both (a) TERMINATED the member walk at the embedded 'activity' tag (#swallowMembers line ~720), orphaning the dragAndDrop's FOLLOWING data table (it leaked as plain <p> body), and (b) the leftover span rendered as a phantom '[button]' -> the journal-label default button ('Go to your journal') stranded between the placeholder and the data. FIX: before the terminator checks, when the next item IS instruction-dominant (TagNormaliser.IsInstructionDominant: class==tag + ALL resolved tags how=='embedded' + an instruction cue present + >= min_words), swallow it as a plain instruction MEMBER (it is consumed -> no phantom button; the walk continues -> the data table is captured into the bundle). BRIDGE-TO-DATA ONLY (the over-capture guard): the swallow fires SOLELY when the bundle is a uses_data_table widget AND the instruction sits IMMEDIATELY BEFORE its DATA TABLE — so it bridges the widget to its table (ENGS302 1A) but can NEVER extend a bundle across an instruction into FREE PROSE the human keeps (measured: the un-guarded form added +3 body_compare over-capture pages; the guard removes them while keeping the table captures + scaffold gains). SCOPED to the member walk (an open bundle) — the GLOBAL classification is unchanged, so the ~115 standalone briefs corpus-wide (image/audio/embed/activity drafts) are untouched this round (a sized follow-up). The cue+all-embedded+length test never matches a clean leading element tag ('[Download learning journal button]' has no cue; '[H3] x' is a leading exact tag). Read by InteractiveScanner.#swallowMembers; env INSTRDOM_OFF reverts (walk terminates at the instruction, table leaks, phantom button returns).",
+			"heading_splits_same_type_groups": [
+				"flipCard"
+			],
+			"heading_splits_same_type_groups_note": "ROUND 96 (Chris, OSAI501-04). A SECTION heading BETWEEN two same-type widget groups (the [H4] Unethical between the Ethical/Unethical flipCardsContainers) SPLITS them. A heading whose immediately-following member is a SAME-type interactive opener (a [flip card]) is a between-group section heading (a card-front heading is followed by its [image]). InteractiveScanner.#swallowMembers terminates so the heading is free + the next group is its own bundle. env FLIPGROUP_OFF.",
+			"table_display_terminates_types": [
+				"flipCard"
+			],
+			"table_display_terminates_types_note": "ROUND 96 (Chris, OSAI501-04). A MEMBER-based flipCard terminates at a FOLLOWING table that is a DIFFERENT-type display widget (the unicorn [speech bubble] table after the Unethical cards) via the table direct invocation, rather than absorbing it (an absorbed table makes #flipCardMembers bail). A plain card-DATA table (round-59/60 XGF/PNR [back] tables, not a display widget) is still absorbed. env FLIPTBL_OFF.",
+			"table_display_terminates_types_slideshow": [
+				"carousel",
+				"rotateBanner"
+			],
+			"table_display_terminates_types_slideshow_note": "ROUND 116 (Chris, OSAH501-03). A member-based CAROUSEL/slideshow LIKEWISE terminates before a FOLLOWING table whose DIRECT invocation is a DIFFERENT-type display widget (the Lawdog [speech bubble] table after the 4 incident slides), instead of ABSORBING it. An absorbed display-table makes #carousel bail to a placeholder AND denies the speech bubble its own bundle (the carousel ran past its last slide into the next widget). Same mechanism as table_display_terminates_types (round 96); scoped to the slideshow types, which never use a data table, so a carousel is unaffected elsewhere and the main loop's #interactiveInTable opens the table as its own free-body bundle. The writer tagged TWO widgets ([carousel] + [speech bubble]) and the human builds two -- the writer tag corresponds to the human element (anchor_compare's tag<->element correspondence), so both build. Engine-measured firing set (outputs/_measure_carousel_termtable.cjs, 28 candidates swept): OSAH501-03, OSAI201-03, OSAI101-01, OSAI301-01, OSAI401-04, ENGS401-01 -- every one a currently un-built carousel placeholder the human builds + separates. env CARTBL_OFF.",
+			"bare_invocation_dissolve_empty": {
+				"enabled": true,
+				"types": [
+					"interactive"
+				],
+				"min_member_chars": 40
+			},
+			"bare_invocation_dissolve_empty_note": "ROUND 217 (Chris, boundary audit). The bare generic '[Interactive]' invocation (Tag_Lexicon _meta.qualifier_alias_demote.standalone_becomes -> canonical 'interactive') opens a widget bundle so the following instruction + data table are captured and activity_wrapper.standalone_widget_box wraps them (AGH1001-01). But a bundle that captured NO table and under min_member_chars of member text (a media member does NOT exempt: the image reverts to its normal standalone Mode P/D render) is too thin to hand off as a widget box — it DISSOLVES at scan finalization (before ownership marking): the items stay unconsumed and render down the ordinary unhandled-tag/note path, the pre-217 form (gate-neutral cv2 note). min_member_chars mirrors body_compare's 40-char EMPTY-container threshold: without the dissolve the alias re-tag pushed EMPTY +6..7 pages. Rides env INTALIAS_OFF.",
+			"_r306_owner_id_note": "ROUND 306 — opener_rule.owner_id_from_tail (set below in opener_rule) + member_rule.same_block_image_absorb.owner_start_fix (set in that block): two repairs the layout-table dissolution exposed. owner_start_fix — the same-block avatar absorb used to OVERWRITE the activity-owner lookback's startIndex, leaving the [Activity]/[H3]/[Body] lead items unconsumed so the whole activity rendered TWICE (once by the plain loop, once inside the bundle-owned box), and the avatar's caption text leaked as '<p>avatar Tina</p>' inside the box; startIndex now only ever moves BACKWARD and an absorbed lead item leaves the lead list. Env SBOWNERFIX_OFF. owner_id_from_tail — the writer's activity number may ride in the opener's BLACK tail ('[Activity] **1A**'); 'number' is a skeleton KEEP_ATTR (r223), so the writer's own id is recovered (never invented). Env SBOWNERID_OFF.",
+			"foreign_table_terminates": {
+				"enabled": true,
+				"types": [
+					"speechBubble"
+				],
+				"_note": "ROUND 306 (Chris — free the speech bubble from the page-layout table). A free [speech bubble] whose member walk swallows a table that is NOT bubble material — the writer's next SECTION laid out as a table ('[H3] Wireframes | [embed video]', TEDC401-3.0; the slider/click-drop activity tables, TEDC402-2.0) — declined the whole widget and trapped the section in the hand-off box with it. The walk now ENDS BEFORE such a table (left UNCONSUMED, unlike the r266/r271 capture-then-break rules): a table carrying its own invocation self-captures as its own widget via #interactiveInTable, and the rest takes the normal table path. 'Foreign' is the BUILDER'S OWN verdict — InteractiveBuilder.SbTableForeign (promoted public, the r246 shared-predicate discipline) runs the rich composer's table reading under its most permissive opener assumption; a table it declines even then belongs to a bundle already in TODAY'S DECLINE SET, so the rule is additive by construction (the r278 argument; the round-306 byte-hash run over every bubble-carrying module is the proof). Fenced on captured content (the r278 fence — a bubble invocation's own black text counts, the r296 content_on_invocation semantics), so an empty-bubble bundle keeps its exact current shape. Env SBFOREIGNTBL_OFF."
+			},
+			"media_table_terminates": {
+				"enabled": true,
+				"types": [
+					"carousel"
+				],
+				"min_cells": 2,
+				"cell_tag_pattern": "\\[\\s*(image|video)\\s*\\]",
+				"_note": "ROUND 266 (CHFUN01, Chris's screenshot annotations). The CHFUN family authors a slideshow as ONE table whose every cell is a media cell ([image]/[video] red tag + URL, optional [caption]); the table IS the whole widget, so the member walk ENDS right after capturing it — the following [dropquiz] quiz section becomes its OWN bundle instead of being swallowed into the carousel's hand-off box. Cell test is all-or-nothing (a caption-only / text / tag-less-URL cell fails), so the rotate-banner and image|caption-table families never match. Measured corpus-wide: the media-cell table form is EXACTLY CHFUN01/04/05/06/07 (38 table lines). Env toggle: CARMEDTBL_OFF (also reverts the matching carousel media_table BUILD in Emit_Templates)."
+			},
+			"hint_title_member": {
+				"enabled": true,
+				"types": [
+					"hint",
+					"hintSlider"
+				],
+				"folded": "[title]",
+				"max_words": 12,
+				"_note": "ROUND 277 (Chris — the interactive-coverage chain). [Title] resolves to primary tag `title bar` / SECTION_MARKER, and `title bar` is in terminators_absolute — so a writer who puts a hint's title in its OWN paragraph got a bundle with NO members at all, while a writer who put it on the ADJACENT line kept it (the two tags merge into one red span there). The 'bare invocation' hints were therefore a CAPTURE FAILURE, not empty widgets. Inside a HINT-family bundle that has captured nothing yet, a [title]-folded marker with a short non-empty blackAfter is swallowed as the hint's TITLE instead of ending the walk. SCOPING (all four required): the bundle type is in `types`, memberItems is still EMPTY, the folded form is exactly `[title]` (a real page bar folds to `[title bar]`), and the blackAfter is non-empty and <= max_words. MEASURED over all 454 corpus WTs by outputs/_measure_r277_titlestop.cjs: an interactive opener is immediately followed by a title-bar SECTION_MARKER at 34 sites, of which the HINT-family [title] form is EXACTLY 10 / 2 modules (TEDC402, SSEA203; blackAfter '**Need help ?**', 3 words every time). The other 24 belong to accordion / clickDrop / flipCard (CHFUN05 [title 1] x19, BLL266, OSBY401, SSFUN07) and are untouchable BY CONSTRUCTION through the `types` gate — recorded as a follow-up for those widgets' own rounds. Env toggle: HINTTITLE_OFF."
+			},
+			"title_panel_member": {
+				"enabled": true,
+				"types": [
+					"accordion"
+				],
+				"pattern": "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$",
+				"body_break": true,
+				"lookahead": 25,
+				"_note": "ROUND 312 (Chris — the one-marker gathering chain, ticket 2 of 3: the CHFUN05 immediate-stop class). The writer delimits every accordion panel with a NUMBERED '[title 1]', '[title 2]', … (three misspelled '[tilte N]'), the panel's heading riding as the tag's black tail. '[title N]' resolves to primary `title bar` / SECTION_MARKER — an ABSOLUTE terminator — so 19 of CHFUN05's 20 accordions captured NOTHING (each walk died at its own first panel marker), while the ONE misspelled section captured everything, because '[tilte N]' resolves to NO tag and nothing terminates: the correct spelling was the blocker, the misspelling was the survivor — the WHY_UNBUILT brief had it the other way round. Inside an accordion-family bundle a marker matching `pattern` is a MEMBER (the panel delimiter), and once one is captured the [body] semantics follow the SERIES (body_break): a [body] directly after a title, or with another numbered title within `lookahead` unconsumed items ahead, is IN-PANEL content (the gold nests each panel's 'Watch the video…' + video table INSIDE accContent); a [body] after the LAST panel already has content ends the walk, so the trailing video ships OUTSIDE the widget, exactly where the gold puts it. MEASURED over all 454 corpus WTs (outputs/_measure_r312_titles.cjs): the numbered form is EXACTLY ONE MODULE — CHFUN05, 48 occurrences (45 'title' + 3 'tilte') — so the fire population is CHFUN05 BY CONSTRUCTION; the UNNUMBERED [Title] stops (BLL266/OSBY401/SSFUN07, round 277's measurement) never match and keep terminating exactly as today. The 'tilte' alternation is DATA-LISTED spelling, not a fuzzy matcher — the token exists nowhere else in the corpus, and a wider misspelling vocabulary was considered and NOT built (nothing to measure it against). Builder half: Emit_Templates interactive_builders.accordion.panel_delimiters.title_members (env ACCTITLEPANEL_OFF). Env toggle: ACCTITLEMEM_OFF."
+			},
+			"media_caption_table_terminates": {
+				"enabled": true,
+				"_note": "ROUND 271 (Chris, OSSC401-1.0). The SIBLING of round 266's media_table_terminates for the MEDIA|CAPTION dialect: when a carousel captures a table whose every data row pairs ONE media cell ([video]/[image] tag + URL) with prose cell(s), THAT TABLE IS THE WHOLE WIDGET, so the member walk ENDS right after capturing it. Without this the carousel ran on and swallowed the next section — OSSC401's '[H4] Types of AI scams' heading, its body and its own [video] were all pulled into the carousel's hand-off box, while the gold ends the carousel at the table and renders that section as ordinary body. Video-scoped (require_video) exactly like the builder, so the image|caption table families keep their existing capture byte-for-byte. Env toggle: CARCAPTBL_OFF.",
+				"types": [
+					"carousel"
+				],
+				"require_video": true,
+				"min_rows": 2,
+				"media_tag_pattern": "\\[\\s*(image|video)\\s*\\]"
+			},
+			"carousel_table_terminates_before_next": {
+				"enabled": true,
+				"exclude_reo": true,
+				"types": [
+					"carousel"
+				],
+				"lookahead": 12,
+				"_note": "ROUND 279 (Chris — the interactive-coverage chain, round 4 of 8). The THIRD member of the media_series_break (r247) / media_table_terminates (r266) / media_caption_table_terminates (r271) family, and the only one that is shape-BLIND: once a carousel bundle has captured ANY table, a further invocation of the SAME widget ahead ends the member walk right after that table. THE GOLD PROVES THE SPLIT: XTAS101-0.0's writer lays out three slideshows in a row ('[insert carousel with pictures and captions]' + a 7x2 table, '[insert video carousel]' + a 1x2 table, '[insert carousel images + captions]' + a 5x2 table) and the gold ships THREE separate carousels of 6, 2 and 5 slides — one per table, with the [H3]/[body] prose between them rendered as ordinary body. The old walk absorbed all three into ONE bundle whose extraTypes then bailed the builder at its very first line, so the page shipped a single hand-off box. MEASURED (outputs/_measure_r279_carousel.cjs, the shipped builder's own verdict over all 454 modules): 104 declines / 66 modules bail on extraTypes, 52 of them a same-type carousel+carousel merge, and 63 declines carry more than one table. DELIBERATELY NOT a blanket 'any table ends a carousel': a bundle whose SECOND table has no invocation of its own keeps both tables (the round-279 #carouselTableSlides builder makes slides from both in document order), because releasing an untagged table to the body path could leak its raw [image]/[video] tags — the r167 leak rule at this seam. FENCED by the shared #panelDelimiterAhead, so the scan stops at a different widget's invocation or a section/page marker and a later unrelated carousel is invisible to it. Env toggle: CARSPLIT_OFF.",
+				"_measured": "BUILT carousels carrying more than one table: 0. BUILT carousels carrying extraTypes: 0 (they bail before the builder). The 6 built bundles with any member after their table (BLL117/127/137/157 rotateBanner, CEDO105, OSGM501) carry no further carousel invocation, so the lookahead cannot fire on them."
+			},
+			"head_bracket_payload": {
+				"enabled": true,
+				"_note": "ROUND 303. A member's text has always been read from its blackAfter alone, which is right for a bare '[H4]' with the heading on the line beneath. But writers also type the heading INSIDE the red span, and when the black line beneath is EMPTY the payload is unambiguously the heading: EXBP901-3.0's '[H3] Be a Learner' / '[H3] Be a Communicator' / '[H3] Be a Thinker' and XDLS902-5.0's '[H2] The sexual health check-up'. Before this, the widget walk dropped them and EXBP901's accordion had no panel headings at all, so it could not build. The ordinary body path has always rendered the embedded payload as the heading, so this brings the shared member walk into line with it rather than inventing a convention. STRICTLY the empty-tail case: when a member carries BOTH a payload and a black line the two are indistinguishable by shape and the human treats them in OPPOSITE ways — ANZH105-6.0's '[H4] New Zealand Maori' + 'Kapa haka' is JOINED into one gold heading, while SSCI205-8.0's '[H5] overlayed image' + 'Government' has its payload DROPPED (the gold ships the word 'overlayed' nowhere at all, and the heading is 'Government'). Nothing in the writer's document separates a heading fragment from a design instruction, so the both-present form keeps its existing reading rather than being decided by a pattern fitted to one string — the round-301 rule against curve-fitting. Also narrow by construction: the span must hold exactly ONE bracket, so a multi-bracket marker such as '[Slide 2] [H4]' is untouched. Env HEADPAYLOAD_OFF.",
+				"_measured": "Blast radius over all 454 modules with the bare-series toggles OFF, so this rule is measured ALONE: EXACTLY 3 pages / 2 modules — EXBP901-3.0 (its accordion now BUILDS, panels 'Be a Learner'/'Be a Communicator'/'Be a Thinker') and XDLS902-5.0 (regains the heading 'The sexual health check-up'). SSCI205-8.0, the one page the first and wider cut of this rule broke, is byte-identical."
+			},
+			"bare_series_opener": {
+				"enabled": true,
+				"min_members": 2,
+				"min_gap": 2,
+				"require_consecutive": true,
+				"clean_hows": [
+					"exact",
+					"denumbered",
+					"denumbered_head"
+				],
+				"families": {
+					"tab n": {
+						"widget": "tabs",
+						"opener_tag": "tabs",
+						"env": "TABOPENER_OFF",
+						"require_label": true,
+						"label_max_words": 6
+					},
+					"slide n": {
+						"widget": "carousel",
+						"opener_tag": "carousel",
+						"env": "SLIDEOPENER_OFF",
+						"require_label": false
+					}
+				},
+				"_note": "ROUND 303 (Chris — the orphan-remaining chain, round 2 of 4, against WHY_UNBUILT__orphan_remaining.md families 1 and 5). A writer numbers [Tab 1] Subtraction in parts / [Tab 2] Add instead of subtract / [Tab 3] Algorithm and never types [tabs], so the scanner — which opens a widget only on a primary tag whose lexicon directive is INTERACTIVE — never starts one, and every numbered part arrives alone under a red orphan flag. This rule treats the FIRST marker of a qualifying rising series as the widget's opener, leaving the marker itself in memberItems so round 293's #tabsPanes (delimiter_tags ['tab n','tab']) and round 295's carousel builder read it exactly as they read a normal bundle. NOTHING ELSE CHANGES: no builder, no template, no member vocabulary. THE FOUR FENCES ARE MEASURED, and the second one is the round's whole safety argument. (1) CLEAN NUMBERED FORM ONLY: the marker's parse 'how' must be one of clean_hows AND it must carry a numeric number, so the 89 [New tab] fundamentals panel delimiters, the 35 [Tab Nav] choice-page markers (r226), [Tab layout], [Template tab here] and every other embedded prose form are excluded BY CONSTRUCTION. (2) MIN_GAP: every consecutive pair in the series must be at least min_gap items apart, i.e. there must be CONTENT between the panes. This is what separates a tab strip from the BLL/CED INQUIRY CRUMB LIST, where the writer declares [Tab 1]..[Tab 6] as six CONTIGUOUS items naming the pages of the module and the r100/r111 panel builders already turn them into inquiry panels correctly. MEASURED over the whole corpus: every one of the 20 inquiry-crumb pages (BLL110-270, CEDK101/102, CEDO201, CEDR101/204/401, CEDT404, MXFUN01) has gaps of exactly 1, and every one of the 6 pages whose gold builds a real tab strip has gaps of 3 or more. Without this fence the rule would destroy 20 pages of correct output. (3) AN OPENER ALREADY ON THE PAGE: if any INTERACTIVE invocation of the partner widget exists anywhere on the page, this is a capture or builder question, not a gathering one, and the rule declines. (4) A LABEL IS NEVER INVENTED (tabs only): every marker in the series must carry its own trailing text, within label_max_words. That excludes TWHA901/902/903/906, TWHK903, XGF9003-1.1, HPFUN901, ENGJ102, ENGJ302 (0 or partial labels) and MXDI201-9.0, whose 'labels' are whole paragraphs and whose human developer INVENTED four short names. A SLIDE needs no label — round 295 measured 742 of the gold's 7,700 slides (9.6%) carrying no media at all and captions optional, so a slide's content is simply whatever follows its marker. Env: bare_series_opener.enabled plus the per-family env keys (TABOPENER_OFF / SLIDEOPENER_OFF), so the two families reverse independently (the r295 env_by_type pattern).",
+				"_measured": "Fires on EXACTLY 12 pages / 7 modules corpus-wide, every one with a Claude dir — tabs MXDB202-2.0/5.0, MXEO301-3.0, MXFL301-3.0, MXFU301-1.0/2.0, MXFU202-2.0; slides ANZH105-4.0/5.0/6.0/7.0, MXFU302-6.0 — against the catalogue's claim of 212 flags over 40 pages, which counted every page with no tab strip on it as a gathering failure. It is not: of the 46 pages carrying a qualifying series, 20 already build INQUIRY panels and 6 FUNDAMENTALS panels from those very markers (correct output today, and the min_gap fence is what protects it), 6 have no converted page at all, and the rest fail a fence for a measured reason. GOLD AGREEMENT, page for page: the human builds a TAB STRIP on 6 of the 7 comparable tabs pages AND ITS NAV LABELS ARE THE WRITER'S OWN TAILS VERBATIM (MXDB202-2.0 'Subtraction in parts'/'Add instead of subtract'/'Algorithm' 3 of 3; MXEO301 3 of 3; MXFU301-1.0 3 of 3; MXFU301-2.0 3 of 3; MXFL301 3 of 3; MXDB202-5.0 2 of 3, the third differing only by the human's 'Center'/'Centre' spelling) — nothing is invented. The human builds a CAROUSEL on 3 of the 4 comparable slide pages. TWO NAMED A1 DIVERGENCES, shipped under Chris's round-246 rule that the writer's own tag is the target: MXFU202-2.0 and ANZH105-7.0, whose humans built an accordion from the same markers. FOUR pages open a bundle the builder then DECLINES (ANZH105-4.0/5.0/7.0, MXFU202-3.0): those are round 279's reading-book family, whose slides are pages of an external PDF, and their content moves from loose body text into the widget's honest hand-off box while the raw brackets stop leaking — Chris accepted this explicitly. SCFUN01-0.0 is a DECLINE, not a fire: its writer closes each pane with '[end tab]', which is a CONTAINER_CLOSE and truncates the inferred series to one pane, so the bundle dissolves and the page is byte-identical. The round-192 changelog's 'class T' note about its Pouakai/Moon pair therefore remains open."
+			},
+			"button_tail_terminates": {
+				"enabled": true,
+				"types": [
+					"accordion",
+					"carousel",
+					"speechBubble",
+					"flipCard"
+				],
+				"env_by_type": {
+					"carousel": "CARBTNTAIL_OFF",
+					"speechBubble": "SBBTNTAIL_OFF",
+					"flipCard": "FCBTNTAIL_OFF"
+				},
+				"panel_subtags_by_type": {
+					"flipCard": [
+						"front",
+						"back",
+						"shape n"
+					]
+				},
+				"_r310_flipcard_note": "ROUND 310 (the gathering round). flipCard joins the trailing-button section break — the WHY_UNBUILT index's item D, re-measured fresh this round: gold puts a button inside a finished flip card 5 times in 3,379 faces = 0.15% (the lowest of the four types), and ZERO of the currently-building flip cards carry a [button] member (12 declined bundles / 11 modules do, 10 of the 12 with the button as the very LAST member) — additive by construction, still hash-proven. panel_subtags_by_type serves TWO fences: (1) in #panelDelimiterAhead — a flip card's panels are [front]/[back]/[Card N] SUB-tags rather than same-type tags, so without it a button BETWEEN two cards would read as a tail and truncate the deck; (2) at the release itself — a type listed here releases its tail button ONLY when the deck is EXPLICITLY face-delimited (>=1 captured face-marked member). Fence (2) was forced by the probe, not designed in advance: CEDK401-6.0's marker-less prose bundle, made reachable by an unfenced release, BUILT A GARBLE (consecutive paragraphs paired as faces, a section [H2] inside a card front, the writer's example lines lost) — the round-290 HPRE301 class. THE HONEST MEASURED EFFECT after the fence, per-toggle-decomposed: the release fires on EXACTLY ONE page (PHE1007-9.0 — the writer's 'Go to journal. Complete activity 9A.' ships as a REAL button outside the box instead of raw dump text; the face-marked deck itself still declines and keeps its honest box), ENGI405's byte changes turned out to belong to the dropbox split entirely, and every marker-less carrier is byte-identical — the index's '~23 recovered' projection did not survive measurement, and that finding is this entry's real content. The map is EMPTY for every pre-round type, so accordion/carousel/speechBubble cannot move. Env FCBTNTAIL_OFF reverts flipCard membership alone (the r295 env_by_type pattern), and with it set the subtags key is dormant.",
+				"tags": [
+					"button"
+				],
+				"lookahead": 12,
+				"delimiter_ahead_skip_types": [
+					"speechBubble"
+				],
+				"content_on_invocation_types": [
+					"speechBubble"
+				],
+				"_note_content_on_invocation_types": "ROUND 296. The break fires only once the bundle has captured CONTENT, tested as 'some member that is not just another invocation'. For an accordion that is right — its content is always separate members. A speech bubble's content very often rides ON THE INVOCATION ITSELF: TEDC401-3.0 writes '[speech bubble] Remember: Good design is responsible design.' and nothing else, so at the moment the trailing [Button] is reached the only captured member IS the invocation and the guard refused. For the types listed here an invocation carrying non-empty black text counts as captured content, which is what it plainly is.",
+				"_note_delimiter_ahead_skip_types": "ROUND 296. The lookahead fence (#panelDelimiterAhead) exists so the break can never truncate a real MULTI-PANEL widget: if another panel tag of the same type lies ahead, the walk keeps going. That is right for an accordion or a carousel, whose panels/slides are SUB-tags of one widget. It is wrong for the speech bubble, whose 'panels' are separate INVOCATIONS — a following [speech bubble] is a DIFFERENT SPEAKER, not a continuation of this one, and TEDC401 alone carries 201 bubble markers so one is almost always within the 12-item lookahead. Measured: with the fence applied the rule reached ZERO speechBubble builds; the fence is the only thing that was blocking every one of them. Skipping it is still ZERO-RISK BY CONSTRUCTION — not one of the 512 currently-building bubbles carries a [button] member, so no existing build can reach this code — and where bubbles do sit on both sides of a writer's button they simply become two widgets, which is what the writer laid out.",
+				"_note": "ROUND 278 (Chris — the interactive-coverage chain, round 3 of 8). A [button] member in an accordion's TAIL ENDS the member walk, so the button renders through the normal body path as a REAL button exactly where the writer put it. MEASURED: the accordion's biggest 'foreign tag' decline was a [button] (33 of 90), and the decline-reason recorder showed that in 74 of those 90 the unplaceable member sits AFTER the last panel — usually as the bundle's very LAST member ('[Go to journal]'). It is the writer's post-accordion button that the walk swallowed, not panel content, and swallowing it also dragged the next section in (XGF9003-1.0 pulled [Body], the journal button, '[H2] Time management', an image and an [Alert] in after eight clean panels). The GOLD agrees: a button sits inside a panel in only 52 of 3,099 panels = 1.7% (outputs/_measure_r278_accgold.py). ZERO-RISK BY CONSTRUCTION: over all 454 corpus modules NOT ONE of the 253 currently-building accordions carries a [button] member (73 declines / 50 modules do), so this cannot change an existing build. FENCED against truncating a real multi-panel accordion: it fires only once the bundle has captured content AND #panelDelimiterAhead finds no further panel tag of the same type within `lookahead` items (the scan stops at another widget's invocation or a section/page marker, so a later unrelated accordion is invisible to it). Same family as media_series_break (r247) / media_table_terminates (r266) / media_caption_table_terminates (r271). Env toggle: ACCBTNTAIL_OFF. EXCLUDES a GO-TO-JOURNAL button: the round-239 buttons.go_journal rule already owns that one at a widget's tail (#goJournalTail ships the templated <h4 class=\"goJournal\"> after the widget and round 273 fixed its double-emit), so releasing it here made the main loop render a SECOND plain div.button beside that heading — caught live on HIS1006-12.0, which is exactly the duplicate Chris reported at round 273. #isGoJournalButton reuses that rule's OWN label_match/raw_match patterns so the two can never drift apart. EXCLUDES a PHANTOM button: the writer's \"[embed audio with a link and play button]\" (HIS1006-11.0) resolves to primary tag button because of the word buried in it, and breaking there truncated the accordion's own sources — so the member must resolve with one of clean_hows (the round-174 distinction: a tag-word inside prose resolves how:\"embedded\"). ROUND 295 EXTENDS IT TO THE CAROUSEL (env CARBTNTAIL_OFF via env_by_type, so the two types decompose independently). The carousel's equivalent measurement: 16 of its 256 declines end in a run of [button] members across 13 modules (CEDR401-1.0 is six captioned videos blocked only by a trailing \"Download journal\"; MXFL102-2.0 three videos; CEDT501-3.0 a whole reporting sequence), and the GOLD puts a button inside a carousel's viewer in 13 of 1,768 body-scoped groups = 0.7% \u2014 LOWER than the accordion's 1.7%. NOT zero-risk by construction here, and that difference is recorded deliberately: unlike the accordion, 11 currently-BUILDING carousels DO carry a trailing [button] (XGF9001-4.0, XTAS101-2.0, AGH1005-3.0, AGH1006-5.0, BLL117/127/137/157, ENGC302-7.0, MXDI103-3.0, CEDK501-1.0), so the round proves the blast radius by HASHING every carousel-carrying module in both toggle states rather than by argument. ROUND 296 EXTENDS IT TO THE SPEECH BUBBLE (env SBBTNTAIL_OFF via env_by_type — the third type, and still a pure data edit). It is the round's LARGEST lever and the brief never mentions it: 15 of the 80 speechBubble declines end in a run of [button] members across 7 modules (TEDC401 four, XDLS908 four, MXFL202 two, TEDC402 two, ANZH304, XDLS901, TEFUN01), and the writer's button is almost always the bundle's very last member. The GOLD is the strongest of the three: a button appears inside a speech-bubble row in 0 of 1,216 body-scoped rows across 142 modules = 0.00% (outputs/_measure_r296_sbgold.py) — the human NEVER puts one there. And like the accordion it is ZERO-RISK BY CONSTRUCTION: over all 454 corpus modules NOT ONE of the 512 currently-building speech bubbles carries a [button] member, so it cannot change an existing build (still hash-proven over every bubble-carrying module in both states, the round-295 discipline).",
+				"exclude_go_journal": true,
+				"clean_hows": [
+					"exact",
+					"denumbered",
+					"denumbered_head",
+					"exception"
+				]
+			},
+			"dropbox_never_merges": {
+				"enabled": true,
+				"_doc": "ROUND 310 — THE DROPBOX SPLIT (the gathering round, the chain's largest coherent measured slice). The student file-upload DROPBOX is never part of another activity's basket, in EITHER direction. MEASURED FRESH against build 260618.80 (outputs/_r310_analyse.py over the 24-shard census): 86 declined bundles / 46 modules (43 reachable) carry a dropbox marker swept into a host bundle's extraTypes by same_activity_multi_widget — every builder then bails on the mixed basket (BLL156's clean three-video carousel refused because the upload button at the end of the activity was mis-filed as a second widget) AND the trapped dropbox never reaches round 308's upload-box builder, so the button the gold ships 1,156 times is lost twice over. ZERO-RISK BY CONSTRUCTION AND BY HASH: not one currently-building non-dropDown bundle carries a dropbox member (the census risk scan), re-proven by hashing every affected module in both toggle states. THE RULE IS ONE DIRECTION: a FOLLOWER resolving to the dropDown type whose text matches round 308's OWN deny predicate (opener_deny_pattern, minus upload_box.opener_exclude_pattern — an [alert dropbox] is a REVEAL box, CEDT101, byte-identical today) TERMINATES the host's walk instead of absorbing; the marker then opens its own bundle and #ddUploadBox ships the gold's button. THE REVERSE ARM WAS BUILT, CAUGHT BY THE PROBE, AND REMOVED — recorded so it is not re-attempted: releasing a dropbox-opener HOST's foreign followers ('dropDown + modal' x3, '+ clickDrop' x2, '+ dragAndDrop' x1 — 6 bundles total) freed ENGI401's [Modal] into the r73 single-URL button path, which built a button and SILENTLY DROPPED the writer's paired '[button] No' member (a 2-letter word the first word-loss check could not even see — its regex required 3+ letters), while the dropbox half still declined at #ddUploadBox for its own reasons; the arm lost writer content and recovered nothing on its entire population. If the reverse split is ever wanted, the r73/r280 modal member handling must first stop swallowing an unplaceable [button] in silence. The predicate pair is READ LIVE from interactive_builders.dropDown so the scanner and the builder can never drift (the r308 discipline). Env DBXSPLIT_OFF.",
+				"_r310_remainder": "The gathering class's decomposed remainder, recorded so it is not re-measured from scratch: MIXED-OTHER 251 bundles / 109 modules (top pairs: unclassified+dragAndDrop 17, carousel+flipCard 16 = the BLL110 written-as-one-block family whose gold built NEITHER-or-one — splitting alone recovers ~0 builds, measured DECLINE for now; dragAndDrop+typing 11, clickDrop+carousel 9, multiChoiceQuiz+modal 8) and ONE-MARKER BUNDLES 476 / 181 modules (top: CHFUN05 21 — the walk stops at the very next item; TEDC402 20 / TEDC401 17 — empty-member bundles; XDLS909 11 — short scrap runs, r307's caveat; XGF9003 10 + MXDI101 9 — the label-and-popout-in-one-sentence modal family). Each is its OWN mechanism wanting its own measured fence; none shares this rule's predicate. ROUND 311 ACTIONED the modal slice (see member_rule.modal_gathering — the heading-terminates mechanism, the closer, the trailing-media pop; modal builds 196→202, declines 184→153; XGF9003 stays the shapeHover class BY CONSTRUCTION); the chain continues with CHFUN05 (r312) and the TEDC401/402 empties (r313). ROUND 312 ACTIONED the CHFUN05 slice (see member_rule.title_panel_member \u2014 the numbered [title N]/[tilte N] panel-delimiter dialect; 19 immediate-stop accordions were the CORRECT spelling resolving to the absolute terminator `title bar`, the one survivor was the misspelling resolving to nothing; accordion builds there 0\u219220 / 48 panels, every one matching the human). CHFUN05's remaining one-markers: 1 wordDrag (the next quiz's marker \u2014 another family) + 9 empty-opener speechBubbles (the r313 empties class). CEDR401 \u2014 the accordion brief's bundled sibling \u2014 is measured a DIFFERENT mechanism entirely: its accordions stop at [Dropdown text] reveal markers (10 bundles, ghost dir, zero corpus reach; recorded, not actioned). ROUND 313 CLOSED THE CHAIN, AND ITS FIRST ACT WAS TO CORRECT THIS NOTE \u2014 TWICE OVER, so do not re-use the figures above without reading this. (1) THERE ARE NO 'EMPTY-MEMBER BUNDLES'. That description came from reading each member's `raw` field, which a TABLE member does not have (its text lives in `rows`), so every table-carrying bundle scored as empty. Counted properly the empty population is ZERO, and TEDC401/402 have none. (2) 'ONE-MARKER BUNDLES 476 / 181 modules' IS ALSO AN ARTIFACT: the test was `nMembersTotal <= 1 OR nothing collected`, and the first arm sweeps in every bundle whose SINGLE member is a whole content-bearing table. On the honest test \u2014 the walk collected NOTHING but the marker \u2014 the population is 17 bundles / 14 modules, 13 / 10 of them reachable, spread thinly over six host types with no concentration; of those, 4 were the closer class round 313 shipped and the rest are correct declines (a writer's design instruction like '[activity carousel] to be added as the final page', a bare '[Accordion]' with nothing after it, or a type with no builder at all). THE REAL REMAINDER, restated: 411 bundles / 169 modules (373 / 155 reachable) whose single member is a TABLE the builder cannot read, plus 265 mixed baskets / 117 modules (245 / 105 reachable). Those are BUILDER-coverage classes, not gathering ones \u2014 the writer's content is captured and present, and what is missing is a reading of that table's shape. TEDC401 (46 declines) and TEDC402 (58) are the largest single instance and they are the ROUND-306 LAYOUT-TABLE class: activities written inside table cells. Round 313 took the one shape of that class that needs no proxy (the single cell) and MEASURED-DECLINED the obvious generalisation \u2014 see tables.bubble_layout_dissolve.single_cell in Input_Doc_Rules for why 'activity + any interactive invocation' must not ship.",
+				"types_never_split": []
+			},
+			"closer_never_opens": {
+				"enabled": true,
+				"types": ["accordion", "carousel"],
+				"pattern": "\\[\\s*(?:close|closing|finish|finished)\\s+(?:the\\s+)?(?:accordion|carousel|slideshow)\\b",
+				"_doc": "ROUND 313 — THE CLOSER THAT OPENS ITS OWN WIDGET (the gathering-remainder chain, ticket 3). Round 311 taught the MODAL walk that a bare '[close modal]' is the writer's END DELIMITER, not a fresh invocation, and consumed it as a no-op at the OPEN site (member_rule.modal_gathering.closer_pattern, types ['modal']). The identical shape was still opening useless one-marker bundles for two other families, because the lexicon aliases 'end accordion'/'end carousel' to CONTAINER_CLOSE but not the writer's 'close'/'finish' spellings, which fall through to the plain INTERACTIVE tag. MEASURED TWO WAYS. (1) A raw-span scan of all 454 WTs (outputs/_measure_r313_closers.cjs) finds 410 closer-shaped spans, of which 381 already resolve CONTAINER_CLOSE correctly and 29 resolve INTERACTIVE — accordion 8, click drop 20, modal 1 (that last one already consumed by the r311 rule). (2) The census (ground truth for what the scanner DOES) shows the reachable damage is 4 bundles / 3 modules that are NOTHING BUT a closer: ENGJ402 p6.0 '[Finish carousel]', MXFL301 p2.0 + p3.0 and MXFU301 p8.0 '[close accordion]'. Each ships an empty hand-off box on a finished page. THE r311 REJECTION REASON DOES NOT APPLY HERE, and that is why this ships where the modal lexicon promote did not: r311 refused a directive change because EXPFUN04/05's BUILT tile modals absorb 30+ interleaved closers mid-walk and would have shattered. Measured for these two families, the bundles that carry a closer ALONGSIDE other members are 4, and ALL FOUR ARE ALREADY DECLINING (ENGI405 p1.0, ENGJ403 p1.0 + p5.0, MXFU301 p9.0) — there is no built bundle at risk anywhere in the corpus. FENCES, all inherited from r311: the rule fires ONLY at the OPEN site (a closer met mid-walk keeps today's behaviour, so nothing a working walk relies on moves); ONLY for a bundle whose type is in `types`; and ONLY when the span is BARE — a closer bracket carrying any other word keeps today's behaviour, so a writer instruction riding the bracket can never be silently dropped (measured: all 29 INTERACTIVE-resolving closers are bare, so the residue arm has population zero today and exists as a guarantee). clickDrop is DELIBERATELY NOT in `types`: its 20 spans are the BLL27x/ENGJ403 families whose clickDrop walks are the round-307/r310 gathering territory, and consuming their closers without that work would change bundle boundaries this round has not measured. Env CLOSEROPEN_OFF."
+			},
+			"modal_gathering": {
+				"enabled": true,
+				"_doc": "ROUND 311 — THE ONE-SENTENCE MODAL FAMILY (the gathering-remainder chain, ticket 1: the one-marker bundles' largest coherent slice). MEASURED FRESH against build 260618.81 (24-shard census + outputs/_measure_r311_walkstop.cjs, which instruments every break site in #swallowMembers and pins the EXACT line each walk stopped on): 52 one-marker modal bundles / 21 modules (19 reachable), and the dominant mechanism is that MODAL HAS NO BOUNDARY-BANK ENTRY, so headings TERMINATE its member walk by default — and the writers' pop-out shapes put a heading at the TOP of the pop-out's own content ('[Modal 1 Image] → [H3] Threading Beads → [Body]…' MXDI101 ×9 / MXEX201 ×4; '[modal] How do I convert? → [H5] → body → video → [close modal]' MXFL301/MXFU301/BLL243/MXDB302). Every such walk stopped dead at the heading; the bundle shipped as a one-marker hand-off box and the content rendered loose. THREE COUPLED RULES, each with its own env toggle: (1) MODHEADMEM_OFF — the pop-out's own content heading is CAPTURED (InteractiveScanner.#modalHeadingMember; fences in its doc comment — XGF9003's hover matrix and ENGS102's lone modal keep today's bytes BY CONSTRUCTION); (2) MODCLOSER_OFF — '[close modal]' (which resolves to the SAME modal tag as a real invocation, unlike '[modal ends]' which resolves CONTAINER_CLOSE and behaves) never OPENS a bundle at the scan site (it was shipping one-marker closer boxes, EXPFUN05 ×4, and bundles that swallowed the whole FOLLOWING SECTION, MXFL301/MXFU301 up to 14 members) and ENDS the member walk of an UNNUMBERED bundle (consumed in range; residue like '(stop at 4:01)' surfaces via bundle.instructions — §6); a LEXICON PROMOTE to CONTAINER_CLOSE was measured and REJECTED — the closer population is 46 spans / 8 modules and 34 of them sit INTERLEAVED inside EXPFUN04/05's BUILT numbered tile modals, whose walks absorb them mid-run by design, so the numbered-member fence is what keeps those builds byte-identical; (3) MODTRAILMEDIA_OFF — see trailing_media_keep_types. BUILD OUTCOMES are the r246 A1 class: the label+content pop-outs build the writer's TKmodal (MXFU301-9.0's own gold is the byte model) with the clickDrop-reveal/flattened-inline gold substitutions NAMED (MXFL301, BLL243, MXDB302, ENFUN09); the no-address [Modal N Image] families (MXDI101/MXEX201) gather their content into the hand-off box and still decline honestly at the label/filename test — the WHY_UNBUILT reason-1b verdict, unchanged. NOT COVERED, recorded: XGF9003's hover family (gold shapeHover — belongs to a shapeHover round), the layout-TABLE one-marker bundles (12, the brief's reason 5), the ENGR302 nested-carousel modal, HES1005's media-list items, EXPFUN05's tile dialect (r216), MXDB302's 'A Clever Tip' (unnumbered, closerless, multi-heading — no series evidence to key on).",
+				"types": [
+					"modal"
+				],
+				"closer_pattern": "\\[\\s*close\\s+(?:modal|pop\\s*[- ]?out|popout)\\b",
+				"closer_strip_pattern": "\\[\\s*close\\s+(?:modal|pop\\s*[- ]?out|popout)[^\\]]*\\]?",
+				"closer_close_pattern": "\\bmodals?\\s+ends?\\b|\\bend\\s+(?:of\\s+)?modal\\b|\\bmodals\\s+end\\s+here\\b",
+				"numbered_pattern": "\\[(?=[^\\]]*(?:modal|pop\\s*-?\\s*out|popout))(?=[^\\]]*\\d)[^\\]]*\\]",
+				"numbered_pattern_note": "The numbered-series test: a digit INSIDE THE SAME BRACKET as the modal word (a lookahead pair, so '[3 Click modal XL…]' counts with the digit before the word). A bare /\\d/ over the whole fold read the '4' in a co-tag '[Modal] [H4]' (ENGI202) and the '2' in '(same as in FUNdamental phase 2)' (ENFUN07) as series evidence — both caught live by the round-311 byte decomposition and reverted by this pattern.",
+				"lookahead": 40,
+				"one_heading_per_set": true
+			},
+			"same_block_label_absorb": {
+				"enabled": true,
+				"types": [
+					"modal"
+				],
+				"tag": "modal",
+				"max_label_words": 9,
+				"_comment": "ROUND 280 (Chris — the interactive-coverage chain, round 5 of 8). The round-246 same_block_image_absorb transposed to the modal. A writer types a modal as ONE LINE — '<the visible label> [Pop-out] <the pop-out content>' (XGF9004-9.0, XGF9002-4.0) — so the black lead is the trigger LABEL and the tag's trailing text is the pop-out. The member walk starts AT the first tag, so every LATER label is captured (it is the black item preceding the next tag) but the FIRST one is left outside the bundle. This recovers it: the SAME source BLOCK only (the r105 'continuous sentence' discriminator), a single BLACK item, label-sized (the cap is READ FROM the builder: interactive_builders.modal.modal_sets.label_max_words, so absorb and build can never drift apart — the r246 shared-predicate discipline), and only when the bundle's first member is the modal tag itself — a different block, a structural tag, an already-consumed item or a whole paragraph all decline, so it cannot swallow a real preceding element. Consumed in place and read by InteractiveBuilder.#modalSets (D2). Env MODALLEAD_OFF."
+			}
+		},
+		"per_interactive_fields": {
+			"heading_is_terminator": "false = this widget legitimately contains internal headings (accordion strips, flip-card faces, ...) — do not terminate on [H2]-[H5].",
+			"uses_data_table": "true = a TABLE block after the tag carries the widget's option data.",
+			"signature_subtags": "SUBTAG-class canonical tags characteristic of this widget (Phase-4 slotting; Phase-1 detection confidence).",
+			"nested_interactives_observed": "Other interactive types historically observed INSIDE this widget's blocks (e.g. feedback modals in quizzes). Phase-1 policy is still 'new interactive terminates' — worst case the nested widget gets its own placeholder, which is safe."
+		}
+	},
+	"interactives": {
+		"dragAndDrop": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct",
+				"data marker"
+			]
+		},
+		"carousel": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"shape n",
+				"slide n",
+				"story heading"
+			]
+		},
+		"flipCard": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"data marker",
+				"front",
+				"shape n"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"selfCheck": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"nested_interactives_observed": [
+				"drag and drop",
+				"modal"
+			]
+		},
+		"accordion": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"clickDrop": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"drop",
+				"shape n"
+			]
+		},
+		"speechBubble": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"back",
+				"data marker",
+				"front",
+				"shape n"
+			],
+			"nested_interactives_observed": [
+				"checklist",
+				"info trigger",
+				"mcq",
+				"speech bubble"
+			]
+		},
+		"dropDown": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"checklist"
+			]
+		},
+		"tabs": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"typing": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"shape n"
+			]
+		},
+		"slider": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"front"
+			],
+			"nested_interactives_observed": [
+				"dropdown",
+				"modal"
+			]
+		},
+		"dropQuiz": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer"
+			]
+		},
+		"multiChoiceQuiz": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct",
+				"data marker",
+				"question",
+				"slide n"
+			]
+		},
+		"reorder": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"data marker",
+				"option",
+				"question"
+			],
+			"nested_interactives_observed": [
+				"mcq"
+			]
+		},
+		"wordFind": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"carousel",
+				"word select"
+			]
+		},
+		"selectionBox": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"option"
+			],
+			"nested_interactives_observed": [
+				"checklist",
+				"dropdown",
+				"modal"
+			]
+		},
+		"memoryGame": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"slide n",
+				"story heading"
+			],
+			"nested_interactives_observed": [
+				"drag and drop"
+			]
+		},
+		"stopWatch": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"shape n",
+				"story heading"
+			],
+			"nested_interactives_observed": [
+				"dropdown"
+			]
+		},
+		"radioQuiz": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"mcq"
+			]
+		},
+		"rotateBanner": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"option",
+				"tab n"
+			]
+		},
+		"crossword": {
+			"heading_is_terminator": false,
+			"uses_data_table": true
+		},
+		"infoTrigger": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"nested_interactives_observed": [
+				"modal",
+				"typing quiz"
+			]
+		},
+		"hintSlider": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"front",
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"speech bubble"
+			]
+		},
+		"timeline": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct"
+			],
+			"nested_interactives_observed": [
+				"modal",
+				"word select"
+			]
+		},
+		"wordHighlighter": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct",
+				"shape n"
+			],
+			"nested_interactives_observed": [
+				"mcq",
+				"memory game",
+				"modal"
+			]
+		},
+		"shapeHover": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"front",
+				"shape n",
+				"tab n"
+			]
+		},
+		"numberLine": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"shape n",
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"typing quiz"
+			]
+		},
+		"vennDiagram": {
+			"heading_is_terminator": null,
+			"uses_data_table": true
+		},
+		"wordDrag": {
+			"heading_is_terminator": null,
+			"uses_data_table": true
+		},
+		"audioTrigger": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"front"
+			]
+		},
+		"puzzle": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back"
+			],
+			"nested_interactives_observed": [
+				"carousel"
+			]
+		},
+		"clickingOrder": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"tab n"
+			]
+		},
+		"wordSelect": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"nested_interactives_observed": [
+				"dropdown"
+			]
+		},
+		"sliderChart": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"slide n"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"hint": {
+			"heading_is_terminator": null,
+			"signature_subtags": [
+				"answer"
+			]
+		},
+		"glossary": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"_round56_note": "heading_is_terminator flipped false->true (Chris, OSAI201-01): the glossary is a flat Term–Meaning list with no internal headings, so the next [H3] section heading ('Types of AI') was being SWALLOWED into the glossary bundle. A heading now terminates the capture so it renders as its own section heading after the glossary."
+		},
+		"sketcher": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"radio quiz"
+			]
+		},
+		"bingo": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"word select"
+			]
+		},
+		"rhetoricalQuestion": {
+			"heading_is_terminator": null
+		},
+		"interactive": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [],
+			"_round217_note": "ROUND 217 — the bare generic '[Interactive]' invocation (Tag_Lexicon qualifier_alias_demote.standalone_becomes). Conservative boundaries: headings terminate; uses_data_table so a [Body] ELEMENT after a captured data table terminates the walk (the writer resuming free body — AGH1001-01's post-table [Body] was absorbed without this, tripping body_compare OVER-CAPTURE)."
+		}
+	}
+}

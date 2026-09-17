@@ -1,0 +1,37 @@
+BLL242: identical 2 / changed 1
+BLL244: identical 2 / changed 1
+BLL245: identical 2 / changed 1
+BLL252: identical 2 / changed 1
+BLL254: identical 2 / changed 1
+BLL263: identical 2 / changed 1
+BLLR201: identical 7 / changed 1
+CEDK501: identical 12 / changed 2
+CEDO102: identical 0 / changed 1
+CEDO502: identical 3 / changed 7
+CEDR204: identical 0 / changed 1
+CEDR501: identical 9 / changed 2
+CEDT101: identical 0 / changed 1
+CEDT301: identical 6 / changed 1
+ENFUN01: identical 0 / changed 1
+ENFUN02: identical 0 / changed 1
+ENFUN04: identical 0 / changed 1
+ENFUN08: identical 0 / changed 1
+ENGC201: identical 6 / changed 1
+ENGC301: identical 4 / changed 4
+ENGC302: identical 7 / changed 1
+ENGI202: identical 6 / changed 1
+ENGI302: identical 6 / changed 1
+ENGJ102: identical 4 / changed 2
+ENGR101: identical 7 / changed 1
+ENGR202: identical 7 / changed 1
+ENGS101: identical 5 / changed 1
+ENGS102: identical 4 / changed 3
+ENGS201: identical 8 / changed 1
+ENGS202: identical 6 / changed 1
+ENGS301: identical 7 / changed 1
+ENGS302: identical 6 / changed 1
+HES1003: identical 8 / changed 1
+HES1004: identical 4 / changed 1
+
+TOTAL: identical 144 / changed 48 / missing 0 over 34 modules
+CHANGED: BLL242/BLL242_1_1.html BLL244/BLL244_1_0.html BLL245/BLL245_2_0.html BLL252/BLL252_1_0.html BLL254/BLL254_2_0.html BLL263/BLL263_1_0.html BLLR201/BLLR201_6_0.html CEDK501/CEDK501_3_0.html CEDK501/CEDK501_6_1.html CEDO102/CEDO102_0_0.html CEDO502/CEDO502_1_1.html CEDO502/CEDO502_2_0.html CEDO502/CEDO502_3_0.html CEDO502/CEDO502_4_0.html CEDO502/CEDO502_5_0.html CEDO502/CEDO502_7_0.html CEDO502/CEDO502_8_0.html CEDR204/CEDR204_0_0.html CEDR501/CEDR501_4_0.html CEDR501/CEDR501_8_0.html CEDT101/CEDT101_0_0.html CEDT301/CEDT301_6_0.html ENFUN01/ENFUN01_0_0.html ENFUN02/ENFUN02_0_0.html ENFUN04/ENFUN04_0_0.html ENFUN08/ENFUN08_0_0.html ENGC201/ENGC201_5_0.html ENGC301/ENGC301_2_0.html ENGC301/ENGC301_3_0.html ENGC301/ENGC301_4_0.html ENGC301/ENGC301_6_0.html ENGC302/ENGC302_6_0.html ENGI202/ENGI202_3_0.html ENGI302/ENGI302_5_0.html ENGJ102/ENGJ102_1_0.html ENGJ102/ENGJ102_5_0.html ENGR101/ENGR101_5_0.html ENGR202/ENGR202_7_0.html ENGS101/ENGS101_5_0.html ENGS102/ENGS102_2_0.html ENGS102/ENGS102_4_0.html ENGS102/ENGS102_6_0.html ENGS201/ENGS201_5_0.html ENGS202/ENGS202_3_0.html ENGS301/ENGS301_4_0.html ENGS302/ENGS302_4_0.html HES1003/HES1003_1_0.html HES1004/HES1004_2_0.html

@@ -1,0 +1,4 @@
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 115 module(s) (must be freshly regenerated)
+  unaffected  : 298 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 115 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).

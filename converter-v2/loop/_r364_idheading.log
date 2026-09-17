@@ -1,0 +1,40 @@
+id-carrying headings: 432 / modules 33; by level [('h3', 333), ('h2', 64), ('h4', 24), ('h5', 11)]; widget ahead 340; [Activity] tag ahead 8
+GOLD: [('title-absent(h3)', 189), ('h3-title-first', 163), ('no-box', 52), ('title-inside(h3)', 28)]
+CLAUDE: [('no-box', 272), ('absent(div.cv2-interactive)', 109), ('before-box:h4(div.cv2-interactive)', 18), ('before-box:p(div.cv2-interactive)', 10), ('before-box:h3(div.cv2-interactive)', 9), ('absent(p)', 4), ('inside:div.cv2-interactive', 4), ('absent(h3)', 3), ('before-box:h1(div.cv2-interactive)', 1), ('inside:p', 1), ('inside:h3', 1)]
+
+GOLD × CLAUDE (top 20):
+   119  gold=title-absent(h3)             claude=no-box
+    82  gold=h3-title-first               claude=no-box
+    59  gold=title-absent(h3)             claude=absent(div.cv2-interactive)
+    49  gold=h3-title-first               claude=absent(div.cv2-interactive)
+    45  gold=no-box                       claude=no-box
+    26  gold=title-inside(h3)             claude=no-box
+    12  gold=h3-title-first               claude=before-box:h4(div.cv2-interactive)
+    10  gold=h3-title-first               claude=before-box:p(div.cv2-interactive)
+     6  gold=h3-title-first               claude=before-box:h3(div.cv2-interactive)
+     5  gold=title-absent(h3)             claude=before-box:h4(div.cv2-interactive)
+     3  gold=h3-title-first               claude=absent(h3)
+     3  gold=title-absent(h3)             claude=before-box:h3(div.cv2-interactive)
+     2  gold=no-box                       claude=inside:div.cv2-interactive
+     2  gold=no-box                       claude=absent(p)
+     1  gold=h3-title-first               claude=absent(p)
+     1  gold=title-inside(h3)             claude=before-box:h4(div.cv2-interactive)
+     1  gold=title-inside(h3)             claude=inside:div.cv2-interactive
+     1  gold=title-absent(h3)             claude=before-box:h1(div.cv2-interactive)
+     1  gold=no-box                       claude=absent(div.cv2-interactive)
+     1  gold=title-absent(h3)             claude=inside:div.cv2-interactive
+
+paired 153: gold h3-title-first 0.53
+by template: n / gold h3-first / claude before-box / claude h3-first-inside
+  Standard: n=153 gold=0.53 before=0.25 inside-h3=0.00
+by subject: n / gold h3-first / claude before-box / claude h3-first-inside
+  1-10 Mathematics: n=146 gold=0.54 before=0.25 inside-h3=0.00
+  1-10 Social Science: n=5 gold=0.20 before=0.40 inside-h3=0.00
+  ANZH: n=2 gold=0.50 before=0.00 inside-h3=0.00
+by level: n / gold h3-first / claude before-box / claude h3-first-inside
+  h3: n=146 gold=0.54 before=0.24 inside-h3=0.00
+  h2: n=6 gold=0.17 before=0.50 inside-h3=0.00
+  h4: n=1 gold=1.00 before=0.00 inside-h3=0.00
+
+THE CLASS (gold h3-first inside the box, Claude's heading BEFORE the box): 28 boxes / 5 modules; by module: MXDI201:8, MXDI202:2, MXFU201:11, MXFU202:6, SSFUN07:1
+examples: [('MXDI201', '1A', 'h3', 'Spot the place value', 'before-box:h4(div.cv2-interactive)'), ('MXDI201', '1B', 'h3', 'Comparing 1000s', 'before-box:h4(div.cv2-interactive)'), ('MXDI201', '1C', 'h3', 'Place value up to 1000', 'before-box:h4(div.cv2-interactive)'), ('MXDI201', '1D', 'h3', 'Checking place value knowledge', 'before-box:h4(div.cv2-interactive)'), ('MXDI201', '1F', 'h3', 'Match the numbers', 'before-box:p(div.cv2-interactive)'), ('MXDI201', '2B', 'h3', 'Expanded form', 'before-box:p(div.cv2-interactive)'), ('MXDI201', '2C', 'h3', 'Expanded form missing numbers', 'before-box:h3(div.cv2-interactive)'), ('MXDI201', '4B', 'h3', 'Compensation strategy', 'before-box:p(div.cv2-interactive)')]

@@ -1,0 +1,1566 @@
+TRR102: identical 6 / changed 0
+TRR106: identical 2 / changed 0
+TRR111: identical 6 / changed 0
+TRR115: prep refused (no-wt)
+ARFUN01: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+  ~ ENFUN08_0_0.html: -5 +9
+     - <img class="phaseImg" src="https://placehold.co/800x450?text=iStock-1255869151" alt="Phase 1" />
+     - <p><a href="https://drive.google.com/file/d/13jN_pjCSZ-bFYeXXmSSoS2uZZuYId0VT/view?usp=drive_link" target="_bl
+     - <p><a href="https://drive.google.com/file/d/1Ie6ZaP0T8D_PVxalJrVO7tQqConNjfK1/view?usp=sharing" target="_blank
+     - <p><a href="https://drive.google.com/file/d/1nahBpschwduLLu6DZal-pXMd6k0dFVEf/view?usp=drive_link" target="_bl
+     - <p><a href="https://drive.google.com/file/d/1KfwvBpW3KmUsRXx7wSbLxos0pJhE4zZq/view?usp=drive_link" target="_bl
+     + <img class="phaseImg" src="https://placehold.co/800x450?text=image" alt="Phase 1" />
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ENFUN08: identical 0 / changed 1
+  ~ HPFUN103_0_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+HPFUN103: identical 0 / changed 1
+HPFUN301: identical 1 / changed 0
+  ~ HPFUN402_0_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/free-throw-gm642464428-116679113" target="_blank">https://www.is
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-642464428" alt="Free Throw
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-642464428.jpg" alt="Free Throw" /> -->
+HPFUN402: identical 0 / changed 1
+  ~ HPFUN903_0_0.html: -98 +76
+     - <h4>3A Tramping</h4>
+     - <p>Before heading out for a tramp in the New Zealand bush, it’s important to make smart safety choices. Always
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="HPFUN903-00-07" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity (inline) — 
+     - <th> Facing: Choice of trip
+     - [image #28] <a href="https://media.istockphoto.com/id/1679462955/photo/two-woman-hiking-through-trail.jpg?s=10
+     - <th> Reverse: Learn about the route and make sure that you have the skills for it. It’s important to choose a 
+     - <td> Facing: Weather
+     - [image #29] <a href="https://media.istockphoto.com/id/2233189858/photo/scenic-view-of-mountain-and-foggy-over-
+     - <td> Reverse: It can change fast! Check the forecast and change your plans if needed. Weather can make or brea
+     - <td> Facing: Clothing and food / [image #30] <a href="https://media.istockphoto.com/id/1304815931/photo/trecki
+     - <td> Reverse: Prepare for bad weather and an unexpected night out. Any trip, even if it is short or easy, need
+     - <td> Facing: Share plans / [image #31] <a href="https://media.istockphoto.com/id/" target="_blank">https://med
+     - 2148401266/photo/mother-and-daughter-at-breakfast.jpg?s=1024x1024&amp;w=is&amp;k=20&amp;c=
+     - 1kt7RXgX9DgC3rKcQWIFxVtc4A8oeJUF64ZCIr4exss=</td>
+     - <td> Reverse: We all want our trips to go as planned. But sometimes they don’t. / Telling a trusted person abo
+     - <td> Facing: Maps, first aid kits and beacons / [image #32] <a href="https://tse4.mm.bing.net/th/id/OIP.UYpmaw
+     - K5ZMub3H4fsnsI3QHaE6?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3</td>
+     - <td> Reverse: Mobile phone coverage can be unpredictable in the bush. Always carry a first aid kit. A distress
+     - <td> Facing: Stay together / [image #33] <a href="https://media.istockphoto.com/id/" target="_blank">https://m
+     - 1492373730/photo/a-picnic-with-friends-and-the-dog.jpg?s=1024x1024&amp;w=is&amp;k=20&amp;c=r96mCyh7
+     - 7zH26T1xFrTAwTDQ6KJPHU11TnbF91zrwm8=</td>
+     - <td> Reverse: Eat, drink and rest, stick with your group and make decisions together. The best way to enjoy yo
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: DEV use each page of the book on a di
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: carousel — Activity (inline) — see 
+     - <p>Lost-in-the-bush.pdf</p>
+     - <p>Read the story ‘Lost in the bush’. You may like to ask your supervisor to help you read the text. The story
+     - <p>Once you have read the story, choose one or more of the following activities to complete.</p>
+     - <th> Phase 1 and 2 </th>
+     - <th> [h4] Word find / [body text] The following sentences all have a missing word. Work out the missing word, 
+     - <td> Phase 3 and 4 </td>
+     - <td> [h4] Cross word / [body text] Answer the following clues to complete the cross word. / [interactive activ
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: accordion — Activity (inline) — see
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity (inline) — 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 58 more removed
+     + <div class="activity" number="3A">
+     + <h3>Tramping</h3>
+     + <p>Before heading out for a tramp in the New Zealand bush, it’s important to make smart safety choices. Always
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="HPFUN903-00-07" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: DEV use each page of the book on a di
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified + carousel + accordion
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> Facing: Choice of trip
+     + [image #28] <a href="https://media.istockphoto.com/id/1679462955/photo/two-woman-hiking-through-trail.jpg?s=10
+     + <th> Reverse: Learn about the route and make sure that you have the skills for it. It’s important to choose a 
+     + </tr>
+     + <tr>
+     + … 56 more added
+HPFUN903: identical 0 / changed 1
+SCFUN01: identical 1 / changed 0
+  ~ SSFUN05_0_0.html: -3 +6
+     - <p><a href="https://images.unsplash.com/photo-1694158128399-a5ef625eb7e5?ixlib=rb-4.0.3" target="_blank">https
+     - <p><a href="https://www.123rf.com/photo_75516090_auckland-new-zealand-march-1-2017-bronze-statue-of-dancing-gi
+     - <p><a href="https://collections.tepapa.govt.nz/object/64847" target="_blank">https://collections.tepapa.govt.n
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/and.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+SSFUN05: identical 0 / changed 1
+TEFUN02: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+BLL140: identical 1 / changed 0
+  ~ BLL210_0_0.html: -0 +12
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+BLL210: identical 0 / changed 1
+CEDK101: identical 1 / changed 0
+CEDO202: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT208: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+  ~ TWHA906_0_0.html: -298 +275
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="TWHA906-00-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity (inline) — s
+     - <th>• [insert media item #5]image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://up
+     - commons/thumb/7/75/Sonny-bill.jpg/250px-Sonny-bill.jpg / [h5] Sonny Bill Williams</th>
+     - <th>Sonny Bill Williams appears to learn best through physical activity and hands-on experiences. His ability 
+     - <th> Kinaesthetic </th>
+     - <td>• [insert media item #6] image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://u
+     - commons/thumb/a/a0/RF
+     - _3006_Lorde%40Arena_Krists_Luhaers-5_%2835769377251%29_%28cropped%29.jpg/250px-RF_3006_Lorde%40Arena_Krists_Lu
+     - <td>Lorde can easily hear melody and rhythms, often composing songs by humming melodies or using her voice to 
+     - <td> Auditory </td>
+     - <td>• [insert media item #7] image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://u
+     - commons/thumb/1/19/Tania_Roxborogh
+     - _2022.jpg/250px-Tania_Roxborogh_2022.jpg / [h5] Tania Roxborogh</td>
+     - <td>Tania Roxborogh is a writer of over 30 books – including novels and plays. She loves language-rich environ
+     - <td> Read/ Write </td>
+     - <td>• [insert media item #8] image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://u
+     - commons/b/b0/Sir_Peter_Jackson.jpg / [h5] Peter Jackson</td>
+     - <td>Peter Jackson can see entire fantasy worlds and bring them alive in movies. His films are celebrated for t
+     - <td> Visual </td>
+     - <p>answers</p>
+     - <p>1.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="TWHA906-00-05" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity (inline) — s
+     - <th>Introverts will look calm, thoughtful, and often enjoy a quiet time.
+     - They might enjoy reading, drawing, writing, playing solo games, or spending time with one or two close friends
+     - <td> Ambivert </td>
+     - <td>An ambivert is a person who sometimes likes being around people and talking a lot (like an extrovert) but 
+     - <td> Extrovert </td>
+     - <td>Extroverts will appear more energetic, talkative, and often enjoy being around lots of people. They are mo
+     - <th> Introvert </th>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="TWHA906-00-07" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity (inline) — s
+     - <div class="table-responsive">
+     - … 258 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="TWHA906-00-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity 1A — see TWH
+     + <th>• [insert media item #5]image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://up
+     + commons/thumb/7/75/Sonny-bill.jpg/250px-Sonny-bill.jpg / [h5] Sonny Bill Williams</th>
+     + <th>Sonny Bill Williams appears to learn best through physical activity and hands-on experiences. His ability 
+     + <th> Kinaesthetic </th>
+     + <td>• [insert media item #6] image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://u
+     + commons/thumb/a/a0/RF
+     + _3006_Lorde%40Arena_Krists_Luhaers-5_%2835769377251%29_%28cropped%29.jpg/250px-RF_3006_Lorde%40Arena_Krists_Lu
+     + <td>Lorde can easily hear melody and rhythms, often composing songs by humming melodies or using her voice to 
+     + <td> Auditory </td>
+     + <td>• [insert media item #7] image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://u
+     + commons/thumb/1/19/Tania_Roxborogh
+     + _2022.jpg/250px-Tania_Roxborogh_2022.jpg / [h5] Tania Roxborogh</td>
+     + <td>Tania Roxborogh is a writer of over 30 books – including novels and plays. She loves language-rich environ
+     + <td> Read/ Write </td>
+     + <td>• [insert media item #8] image <a href="https://upload.wikimedia.org/wikipedia/" target="_blank">https://u
+     + commons/b/b0/Sir_Peter_Jackson.jpg / [h5] Peter Jackson</td>
+     + … 255 more added
+TWHA906: identical 0 / changed 1
+XDLS903: identical 8 / changed 0
+AGH1003: identical 9 / changed 0
+AGH1007: identical 10 / changed 0
+  ~ ANZH104_2_0.html: -2 +2
+     - <div class="activity">
+     - <h3>2A My home</h3>
+     + <div class="activity" number="2A">
+     + <h3>My home</h3>
+  ~ ANZH104_3_0.html: -21 +27
+     - <div class="activity interactive" number="3A">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity (inline) — s
+     - <p>word find</p>
+     - <h3>3A Clothing Word Find</h3>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Shirt</th>
+     - <th>Socks</th>
+     - <th>Pants</th>
+     - <th>Skirt</th>
+     - <th>Dress</th>
+     - </tr>
+     - <tr>
+     - <td>Jersey</td>
+     - <td>Shoes</td>
+     - <td>Coat</td>
+     - <td>Scarf</td>
+     - <td>Shorts</td>
+     - </tr>
+     - </table>
+     + <div class="activity">
+     + <h3>word find</h3>
+     + <div class="activity" number="3A">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Clothing Word Find</h3>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity 3A — see ANZ
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Shirt</th>
+     + <th>Socks</th>
+     + <th>Pants</th>
+     + <th>Skirt</th>
+     + <th>Dress</th>
+     + </tr>
+     + <tr>
+     + <td>Jersey</td>
+     + <td>Shoes</td>
+     + <td>Coat</td>
+     + … 7 more added
+  ~ ANZH104_4_0.html: -2 +2
+     - <div class="activity">
+     - <h3>4A Design a trap</h3>
+     + <div class="activity" number="4A">
+     + <h3>Design a trap</h3>
+  ~ ANZH104_5_0.html: -2 +2
+     - <div class="activity">
+     - <h3>5B: Measuring Ngā Manu</h3>
+     + <div class="activity" number="5B">
+     + <h3>Measuring Ngā Manu</h3>
+  ~ ANZH104_6_0.html: -2 +2
+     - <div class="activity dropbox super-content-button">
+     - <h3>6B: Explore your rohe</h3>
+     + <div class="activity dropbox super-content-button" number="6B">
+     + <h3>Explore your rohe</h3>
+ANZH104: identical 3 / changed 5
+  ~ ANZH301_1_0.html: -3 +7
+     - <p><a href="https://www.vectorstock.com/royalty-free-vector/economic-growth-black-icon-sign-vector-23017366" t
+     - <p><a href="https://www.shutterstock.com/image-photo/traiditional-maori-vegetable-garden-hamilton-new-23554947
+     - <p><a href="https://en.wikipedia.org/wiki/Urban_M%C4%81ori#/media/File:A_Maori_Electrical_Pre-apprentice_Class
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>from</p>
+  ~ ANZH301_3_0.html: -3 +3
+     - <p>Drag and drop the following bullet-points into the table as either <b>push</b> or <b>pull</b> factors repre
+     - <div class="activity interactive" number="3C">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity (inline) — s
+     + <h3>Drag and drop the following bullet-points into the table as either push or pull factors representing the ‘
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity 3A — see ANZ
+     + <div class="activity">
+ANZH301: identical 9 / changed 2
+  ~ ANZH404_3_0.html: -3 +3
+     - <p>Use the information from the sources above to check your understanding of Māori individuals and groups who 
+     - <div class="activity interactive" number="3B">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity (inline) — s
+     + <div class="activity">
+     + <h3>Use the information from the sources above to check your understanding of Māori individuals and groups who
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity 3A — see ANZ
+ANZH404: identical 6 / changed 1
+ART1005: identical 1 / changed 0
+BLL113: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+  ~ BLL124_2_0.html: -0 +1
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL124: identical 2 / changed 1
+BLL131: identical 3 / changed 0
+  ~ BLL135_1_1.html: -1 +3
+     - <p>Consonants and Vowels for Kids | Homeschool Pop (<a href="https://www.youtube.com/watch?v=XA6e82hMFCU)" tar
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/XA6e82hMFCU" loading="lazy" title="YouTube video player" f
+     + </div>
+BLL135: identical 2 / changed 1
+BLL142: identical 3 / changed 0
+  ~ BLL146_1_0.html: -0 +1
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL146: identical 2 / changed 1
+  ~ BLL153_1_0.html: -1 +3
+     - <p>Watch this video to help you understand the concept of word families <a href="https://www.youtube.com/watch
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/iKwpa8_FUy0" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ BLL153_1_1.html: -1 +5
+     - <p>Watch the video to help you understand this concept <a href="https://www.youtube.com/watch?v=BikK0zzbpIs" t
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/BikK0zzbpIs" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-some-cookies.jpg" alt="" /> -->
+BLL153: identical 1 / changed 2
+BLL157: identical 3 / changed 0
+  ~ BLL164_1_1.html: -1 +12
+     - <p><a href="https://www.istockphoto.com/vector/blast-zap-excitement-explosion-abstract-background-gm1439829723
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a-someone-popping-a-balloon.jpg" alt="" /> --
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a-door-slamming.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a-tap-dripping.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a-bumble-bee.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a-snake.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1439829723" alt="Blast Zap
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1439829723.jpg" alt="Blast Zap Excitement Explos
+BLL164: identical 2 / changed 1
+BLL171: identical 3 / changed 0
+  ~ BLL175_1_1.html: -1 +3
+     - <p><a href="https://www.youtube.com/watch?v=lu58LRo27x0" target="_blank">https://www.youtube.com/watch?v=lu58L
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/lu58LRo27x0" loading="lazy" title="YouTube video player" f
+     + </div>
+BLL175: identical 3 / changed 1
+BLL212: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+  ~ BLL241_2_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/165607905/vector/detective-boy.jpg?s=1024x1024" target="_blank">h
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL241: identical 2 / changed 1
+BLL246: identical 3 / changed 0
+  ~ BLL254_2_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/1283602523/vector/african-boy-having-many-questions-vector-cartoo
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL254: identical 2 / changed 1
+CEDO105: identical 6 / changed 0
+  ~ CEDR501_4_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/checkmark-icon-check-mark-vector-isolated-illustration-gm120514
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1205148147" alt="Checkmark
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1205148147.jpg" alt="Checkmark Icon Check Mark V
+  ~ CEDR501_8_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/soap-bubbles-wavy-watercolor-seamless-border-for-kids-design-tr
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2212241304" alt="Soap Bubb
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2212241304.jpg" alt="Soap Bubbles Wavy Watercolo
+CEDR501: identical 9 / changed 2
+ENG1005: identical 6 / changed 0
+  ~ ENGC201_5_0.html: -1 +2
+     - <p><a href="https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ENGC201: identical 6 / changed 1
+ENGC401: identical 8 / changed 0
+ENGI201: identical 5 / changed 0
+  ~ ENGI302_5_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ENGI302: identical 6 / changed 1
+ENGI405: identical 8 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ403: identical 10 / changed 0
+  ~ ENGR202_7_0.html: -1 +2
+     - <p>People abstract</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1441344039" alt="Large Gro
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1441344039.jpg" alt="Large Group of People Geome
+ENGR202: identical 7 / changed 1
+  ~ ENGS102_2_0.html: -11 +1
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity (inline) — s
+     - <div class="activity interactive" number="2B">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity 2A — see ENG
+  ~ ENGS102_4_0.html: -11 +1
+     - <div class="activity interactive" number="4C">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: unclassified — Activity 3B — see EN
+  ~ ENGS102_6_0.html: -1 +3
+     - <p><a href="https://www.youtube.com/watch?v=dOCp1OlYnGs" target="_blank">https://www.youtube.com/watch?v=dOCp1
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/dOCp1OlYnGs" loading="lazy" title="YouTube video player" f
+     + </div>
+ENGS102: identical 4 / changed 3
+  ~ ENGS302_4_0.html: -11 +1
+     - <div class="activity interactive" number="4B">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity (inline) — s
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity 4A — see ENG
+ENGS302: identical 6 / changed 1
+EXIP901: identical 6 / changed 0
+HES1005: identical 9 / changed 0
+  ~ HIS1002_3_0.html: -36 +2
+     - <div class="activity" number="2A">
+     - <div class="activity interactive" number="3B">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity (inline) — s
+     - <div class="activity interactive" number="3C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="HIS1002-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop (can you please make a s
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="activity interactive" number="2A">
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified + dragAndDrop — Activit
+  ~ HIS1002_5_0.html: -11 +11
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HIS1002-05-01" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: tabs (please have a mind map here. o
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="HIS1002-05-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dropDown (information for each) — Ac
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="HIS1002-05-03" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: wordFind (please make a with the wor
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HIS1002-05-04" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion + accordion — Activity (in
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="HIS1002-05-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: tabs (please have a mind map here. o
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HIS1002-05-02" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dropDown (information for each) — Ac
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="HIS1002-05-03" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: wordFind (please make a with the wor
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="HIS1002-05-04" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: accordion + accordion — Activity (in
+  ~ HIS1002_7_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="HIS1002-07-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: accordion + accordion (please have t
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="HIS1002-07-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion + accordion (please have t
+  ~ HIS1002_9_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="HIS1002-09-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: multiChoiceQuiz (please) — Activity
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="HIS1002-09-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: multiChoiceQuiz (please) — Activity 
+  ~ HIS1002_11_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="HIS1002-11-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: accordion (please put these sources
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="HIS1002-11-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: puzzle + puzzle (please see the of 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="HIS1002-11-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: accordion (please put these sources
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="HIS1002-11-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: puzzle + puzzle (please see the of 
+  ~ HIS1002_13_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="HIS1002-13-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: tabs + dragAndDrop (please have thr
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="HIS1002-13-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: tabs + dragAndDrop (please have thr
+  ~ HIS1002_15_0.html: -5 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HIS1002-15-01" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: modal + modal — Activity (inline) —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="HIS1002-15-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: modal + modal + modal + modal — Act
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="HIS1002-15-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: modal + modal — Activity (inline) —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HIS1002-15-02" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: modal + modal + modal + modal — Act
+  ~ HIS1002_17_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="HIS1002-17-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: dragAndDrop (please create a . i ha
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="HIS1002-17-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: dragAndDrop (please create a . i ha
+  ~ HIS1002_19_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="HIS1002-19-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: dragAndDrop + dragAndDrop + modal (
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="HIS1002-19-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: carousel (can you please make a lik
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="HIS1002-19-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: dragAndDrop + dragAndDrop + modal (
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="HIS1002-19-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: carousel (can you please make a lik
+HIS1002: identical 12 / changed 9
+HIS1006: identical 15 / changed 0
+  ~ MXDB102_1_0.html: -1 +12
+     - <div class="activity interactive" number="1C">
+     + <div class="activity" number="2D">
+     + <h3>shapes</h3>
+     + <div class="activity interactive" number="1D">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ MXDB102_8_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ MXDB102_10_0.html: -1 +3
+     - <p>COMPILATION 1 Shapes I Educational videos I Tākaro Tribe I Kids Cartoon (<a href="https://www.youtube.com/w
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/KsBD8ASMJQs" loading="lazy" title="YouTube video player" f
+     + </div>
+MXDB102: identical 9 / changed 3
+MXDB302: identical 10 / changed 0
+  ~ MXDI201_1_0.html: -72 +59
+     - <h4>1A Spot the place value</h4>
+     - <p>What is the value of the five in each number below? Choose from the words ‘ones’ ‘tens’ or ‘hundreds’. Choo
+     - <p>Watch the following video explaining the place value of hundreds, tens and ones in a song</p>
+     - <iframe src="https://www.youtube-nocookie.com/embed/a4FXl4zb3E4" loading="lazy" title="YouTube video player" f
+     - <div class="activity interactive" number="1A">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: unclassified — Activity (inline) — s
+     - <h4>1B Comparing 1000s</h4>
+     - <p>The numbers 9,347 and 7,493 have the same digits, but because their order is different the numbers are diff
+     - <p>Sort the digits from each of these numbers into their place value</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: multiChoiceQuiz — Activity (inline) 
+     - <h4>1C Place value up to 1000</h4>
+     - <p>Count the groups of blocks and select the correct digit for each place value using the drop-down arrows the
+     - <div class="activity interactive" number="1C">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity (inline) — s
+     - <h4>1D Checking place value knowledge</h4>
+     - <p>Identify the value of the four in each of the numbers below by clicking on the drop-down arrow and selectin
+     - <p>If you are unsure about what the word place value means, then watch the following video:</p>
+     - <iframe src="https://www.youtube-nocookie.com/embed/QS32l5WhSuY" loading="lazy" title="YouTube video player" f
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: use from 2.49min to end</p>
+     - <div class="activity interactive" number="1D">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: unclassified — Activity (inline) — s
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>1E Reading three and fourdigit numbers</h4>
+     - <p>Drag and drop the numbers in digits to match the number in words</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="1E">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity (inline) — s
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>1F Match the numbers</h4>
+     - <p>Flip two cards over at a time and try to match the numbers in digits to the numbers in words</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1427286707" alt="Light Bul
+     - … 32 more removed
+     + <div class="activity" number="1A">
+     + <h3>Spot the place value</h3>
+     + <p>What is the value of the five in each number below? Choose from the words ‘ones’ ‘tens’ or ‘hundreds’. Choo
+     + <p>Watch the following video explaining the place value of hundreds, tens and ones in a song</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/a4FXl4zb3E4" loading="lazy" title="YouTube video player" f
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: unclassified — Activity 1A — see MXD
+     + <h3>Comparing 1000s</h3>
+     + <p>The numbers 9,347 and 7,493 have the same digits, but because their order is different the numbers are diff
+     + <p>Sort the digits from each of these numbers into their place value</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: multiChoiceQuiz — Activity 1B — see 
+     + <div class="activity" number="1C">
+     + <h3>Place value up to 1000</h3>
+     + <p>Count the groups of blocks and select the correct digit for each place value using the drop-down arrows the
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity 1C — see MXD
+     + <div class="activity" number="1D">
+     + <h3>Checking place value knowledge</h3>
+     + <p>Identify the value of the four in each of the numbers below by clicking on the drop-down arrow and selectin
+     + <p>If you are unsure about what the word place value means, then watch the following video:</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + … 39 more added
+  ~ MXDI201_2_0.html: -104 +110
+     - <h3>2A Four digit numbers</h3>
+     - <p>In the story <i>Sir Cumference and All the King’s Tens</i> Sir Cumference struggled to count all the guests
+     - <p>Look at numbers below that are represented by place value blocks. Number that each set of blocks represents
+     - <p>For example:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>There are 2 thousand blocks, 3 hundred blocks, 1 ten block and 4 ones cubes. 2, 314</p>
+     - <div class="activity interactive" number="2A">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity (inline) — s
+     - <h3>2B Expanded form</h3>
+     - <p>To help you understand the place value of larger numbers we are going to look at them in expanded form. To 
+     - <p>9000 is 9 thousand</p>
+     - <p>600 is 6 hundreds</p>
+     - <p>30 is 3 tens</p>
+     - <p>8 is 8 ones</p>
+     - <p>In the next activity look at the expanded form and type the number it represents:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity interactive" number="2B">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity (inline) — s
+     - <h3>2C Expanded form missing numbers</h3>
+     - <p>In the next activity, carefully compare the number to its expanded form. You will notice that there is a mi
+     - <p>23,543 = 20,000 + 5,000 + ___ + 3</p>
+     - <p>The missing number is 40</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity interactive" number="2C">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1. 30, 2. 200, 3. 7,000, 4. 
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: unclassified — Activity (inline) — s
+     - <ol>
+     - <li>4932 = 4,000 + 900 + ___ + 2</li>
+     - <li>3,291 = 3,000 + ___ + 90 + 1</li>
+     - <li>7,296 = ______ + 200 + 90 + 6</li>
+     - <li>2,680 = _____ + 600 + 80</li>
+     - <li>1,501 = 1000 + ____ + 1</li>
+     - <li>9,025 = 4 _____ t 20 + 5</li>
+     - <li>6,992 = 6,000 + ____ t 90 + 2</li>
+     - </ol>
+     - <p>[button] Check your answers [button] Reset</p>
+     - <div class="row">
+     - … 64 more removed
+     + <div class="activity" number="2A">
+     + <h3>Four digit numbers</h3>
+     + <p>In the story <i>Sir Cumference and All the King’s Tens</i> Sir Cumference struggled to count all the guests
+     + <p>Look at numbers below that are represented by place value blocks. Number that each set of blocks represents
+     + <p>For example:</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>There are 2 thousand blocks, 3 hundred blocks, 1 ten block and 4 ones cubes. 2, 314</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity 2A — see MXD
+     + <div class="activity" number="2B">
+     + <h3>Expanded form</h3>
+     + <p>To help you understand the place value of larger numbers we are going to look at them in expanded form. To 
+     + <p>9000 is 9 thousand</p>
+     + <p>600 is 6 hundreds</p>
+     + <p>30 is 3 tens</p>
+     + <p>8 is 8 ones</p>
+     + <p>In the next activity look at the expanded form and type the number it represents:</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity 2B — see MXD
+     + … 90 more added
+  ~ MXDI201_3_0.html: -73 +86
+     - <p>In the story <i>Sir Cumference and the King’s Tens</i> there are many different strategies that characters 
+     - <p>Sir Cumference and All the King&#39;s Tens read-aloud – YouTube 2:31</p>
+     - <p>Sirkel suggests that the crowd forms small circles and calls out their total.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p><i>Sir Cumference and All the King&#39;s Tens</i> read-aloud – YouTube 3:27</p>
+     - <p>Sir Lionel Segment suggests that the crowd forms one line and each person is counted as they pass.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Sir Cumference and All the King&#39;s Tens read-aloud – YouTube 4:14</p>
+     - <p>Sir Tangent threw his hands up to show ten people.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Sir Cumference and All the King&#39;s Tens read-aloud – YouTube 4:53</p>
+     - <p>With your supervisor, discuss why some of these strategies are more difficult to calculate large numbers th
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Split Strategy PowerPoint – Twinkl (teacher made) – Twinkl</p>
+     - <div class="item">
+     - <h4>3B Split strategy</h4>
+     - <div class="carousel-caption">
+     - <p>Use the split strategy to solve the following questions</p>
+     - <div class="activity interactive" number="3A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="MXDI201-03-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: unclassified — Activity (inline) — 
+     - <h4>3C Split addition</h4>
+     - <p>ook at the following addition questions. Make each sum correct by selecting the correct drop-down number. M
+     - <div class="activity interactive" number="3B">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="MXDI201-03-02" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: unclassified — Activity (inline) — 
+     - <h4>3D Split addition</h4>
+     - <p>Use split addition to answer the following word problems. Show your working in your learning journal. For t
+     - <ol>
+     - … 33 more removed
+     + <div class="activity" number="3A">
+     + <h3>Strategies of counting</h3>
+     + <p>In the story <i>Sir Cumference and the King’s Tens</i> there are many different strategies that characters 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Sir Cumference and All the King&#39;s Tens read-aloud – YouTube 2:31</p>
+     + <p>Sirkel suggests that the crowd forms small circles and calls out their total.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p><i>Sir Cumference and All the King&#39;s Tens</i> read-aloud – YouTube 3:27</p>
+     + <p>Sir Lionel Segment suggests that the crowd forms one line and each person is counted as they pass.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Sir Cumference and All the King&#39;s Tens read-aloud – YouTube 4:14</p>
+     + <p>Sir Tangent threw his hands up to show ten people.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Sir Cumference and All the King&#39;s Tens read-aloud – YouTube 4:53</p>
+     + <p>With your supervisor, discuss why some of these strategies are more difficult to calculate large numbers th
+     + <a href="" target="_blank"><div class="button">Go to</div></a>
+     + … 66 more added
+  ~ MXDI201_4_0.html: -106 +142
+     - <p>When rounding numbers, the smaller the digit the closer the rounded number is to the actual number. Look at
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th><b>1000</b></th>
+     - <th><b>100</b></th>
+     - <th><b>10</b></th>
+     - </tr>
+     - <tr>
+     - <td><b>5231</b></td>
+     - <td>5000</td>
+     - <td>5200</td>
+     - <td>5230</td>
+     - </tr>
+     - <tr>
+     - <td><b>6939</b></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td><b>7167</b></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td><b>3462</b></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <h3>4B Compensation strategy</h3>
+     - <p>se the compensation strategy to solve the following questions.</p>
+     - <div class="activity interactive" number="4A">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: unclassified — Activity (inline) — 
+     - … 66 more removed
+     + <div class="activity" number="4A">
+     + <h3>rounding</h3>
+     + <p>When rounding numbers, the smaller the digit the closer the rounded number is to the actual number. Look at
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: unclassified — Activity 4A — see MX
+     + <th></th>
+     + <th><b>1000</b></th>
+     + <th><b>100</b></th>
+     + <th><b>10</b></th>
+     + <td><b>5231</b></td>
+     + <td>5000</td>
+     + <td>5200</td>
+     + <td>5230</td>
+     + <td><b>6939</b></td>
+     + <td></td>
+     + <td></td>
+     + <td></td>
+     + <td><b>7167</b></td>
+     + <td></td>
+     + <td></td>
+     + <td></td>
+     + … 122 more added
+  ~ MXDI201_5_0.html: -120 +91
+     - <h4>5A In the story ‘A place for Zero’ every number has its place. Match the numbers to the appropriate statem
+     - <div class="activity interactive" number="5A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="MXDI201-05-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity (inline) — 
+     - <h4>5B Summarising the story</h4>
+     - <p><i>A Place for Zero</i> is a story about the number zero. He feels left out because he doesn’t feel like he
+     - <a href="" target="_blank"><div class="button">learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <h4>5C</h4>
+     - <p>In the story, Zero went to visit Count Infinity who was terribly clever and made all sorts of amazing machi
+     - <p>3 + 4 = 7</p>
+     - <p>1 + 6 = 7</p>
+     - <p>2 + 5 = 7</p>
+     - <div class="activity interactive" number="5B">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="MXDI201-05-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity (inline) — 
+     - <h4>5D Looking for patterns</h4>
+     - <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Caroline Schwer: It is ok to use Numic
+     - <p>Use the Numicon shapes provided in your module, or the manipulatives online link from your module to help y
+     - <p>For example: for <b>15 and 150</b> 5 + 10 = 1550 + 100 = 150</p>
+     - <p>5 + 5 + 5 = 1550 + 50 + 50 = 150</p>
+     - <p>20 - 5 = 15200 - 50 = 150</p>
+     - <p>You may like to print the pdf pages of these Numicon shapes to help you complete this activity.</p>
+     - <p>Write your solutions in your learning journal.</p>
+     - <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Caroline Schwer: Twinkl worksheets are
+     - <p>Counting Shapes – Numicon Worksheets – ECE – Twinkl NZ</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [embed] with no URL found — add the embed
+     - <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Caroline Schwer: Designer, do you need
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [data marker] outside an i
+     - <p><a href="https://polypad.amplify.com/p#number-frames" target="_blank">Polypad – Virtual Manipulatives (ampl
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <iframe src="https://www.youtube-nocookie.com/embed/OVlXrzWvn4I" loading="lazy" title="YouTube video player" f
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: use only 4.49min to 11.20min</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="row">
+     - … 80 more removed
+     + <div class="activity" number="5A">
+     + <h3>In the story ‘A place for Zero’ every number has its place. Match the numbers to the appropriate statement
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="MXDI201-05-01" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity 5A — see MX
+     + <div class="activity" number="5B">
+     + <h3>Summarising the story</h3>
+     + <p><i>A Place for Zero</i> is a story about the number zero. He feels left out because he doesn’t feel like he
+     + <p>learning journal</p>
+     + <p>5C</p>
+     + <p>In the story, Zero went to visit Count Infinity who was terribly clever and made all sorts of amazing machi
+     + <p>3 + 4 = 7</p>
+     + <p>1 + 6 = 7</p>
+     + <p>2 + 5 = 7</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="MXDI201-05-02" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified — Activity 5B — see MX
+     + <div class="activity" number="5D">
+     + <h3>Looking for patterns</h3>
+     + <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Caroline Schwer: It is ok to use Numic
+     + <div class="col-md-8 col-12">
+     + <p>Use the Numicon shapes provided in your module, or the manipulatives online link from your module to help y
+     + … 71 more added
+  ~ MXDI201_6_0.html: -119 +124
+     - <p>When 0 is added to the end of a number, the number multiplied by 10. To understand this further, watch the 
+     - <p>For example:</p>
+     - <p>9 with a zero added becomes 90 9 x 10 = 90</p>
+     - <p>21 with a zero added becomes 210 21 x 10 = 210</p>
+     - <iframe src="https://www.youtube-nocookie.com/embed/l5RKj82EUqA" loading="lazy" title="YouTube video player" f
+     - <div class="activity interactive" number="6A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="MXDI201-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: unclassified — Activity (inline) — 
+     - <h4>6B part 1 Multiplying by 10</h4>
+     - <p>Understanding place value is important when multiplying or dividing by whole numbers. To multiply a number 
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/e4y7R7109EE" loading="lazy" title="YouTube video player" f
+     - <div class="activity">
+     - <h4>6B part 2 Multiplying by 100</h4>
+     - <p>When multiplying by a power of 10 (e.g. 10, 100, 1,000) <i>placeholders</i> are needed to make sure that th
+     - <p>Complete the following activity by multiplying numbers by 100.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity">
+     - <h4>6C Practise multiplying by 10 and 100</h4>
+     - <p>Click on the number wheel below. Each time you spin the wheel multiply the number shown by 10, 100 and 1000
+     - <p>Choose two numbers from the wheel and record your answer and reason in your learning journal.</p>
+     - <p>For example: 64 x 10 = 640, 64 x 100 = 6,400 and 64 x 1000=64,000</p>
+     - <p>When you multiply a number by 10, you add a zero to the end of it. So, 64 times 10 is 640.</p>
+     - <p>When you multiply a number by 100, you add two zeros to the end of it. So, 64 times 100 is 6400.</p>
+     - <p>When you multiply a number by 1000, you add three zeros to the end of it. So, 64 times 1000 is 64000.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive tool] spinning wheel. Cr
+     - <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Caroline Schwer: Designer, please recr
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: use this image or similar for the spi
+     - <a href="" target="_blank"><div class="button">learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <h4>6D Multiplying by 10 and 100</h4>
+     - <p>Look carefully at the following multiplication statements. Decide if the statement is true or false, discus
+     - <div class="activity">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="videoSection ratio ratio-16x9">
+     - … 79 more removed
+     + <div class="activity" number="6A">
+     + <h3>Creating new numbers</h3>
+     + <p>When 0 is added to the end of a number, the number multiplied by 10. To understand this further, watch the 
+     + <p>For example:</p>
+     + <p>9 with a zero added becomes 90 9 x 10 = 90</p>
+     + <p>21 with a zero added becomes 210 21 x 10 = 210</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/l5RKj82EUqA" loading="lazy" title="YouTube video player" f
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="MXDI201-06-01" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity 6A — see MX
+     + <div class="activity" number="6B">
+     + <h3>part 1 Multiplying by 10</h3>
+     + <p>Understanding place value is important when multiplying or dividing by whole numbers. To multiply a number 
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/e4y7R7109EE" loading="lazy" title="YouTube video player" f
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: type and check</p>
+     + <div class="activity" number="6B">
+     + <h3>part 2 Multiplying by 100</h3>
+     + <p>When multiplying by a power of 10 (e.g. 10, 100, 1,000) <i>placeholders</i> are needed to make sure that th
+     + <p>Complete the following activity by multiplying numbers by 100.</p>
+     + … 104 more added
+  ~ MXDI201_7_0.html: -128 +143
+     - <h4>7A Number arrays</h4>
+     - <p>Find 100 small objects from around your home, this might be Lego blocks, pebbles, counters etc. Try arrangi
+     - <p>If you are unsure of what an array is then watch the following video.</p>
+     - <iframe src="https://www.youtube-nocookie.com/embed/z8lcZUWbqT0" loading="lazy" title="YouTube video player" f
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <h4>7B Factors of numbers</h4>
+     - <p>T ick the numbers that are the factors for each of the following:</p>
+     - <p>e.g. for the number 1523ü65ü</p>
+     - <p>1ü15ü710</p>
+     - <div class="activity">
+     - <h4>7C Common factors</h4>
+     - <p>Use the Venn diagram below to sort the common factors. A common factor is a factor of two or more numbers. 
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/lnalI7eVQsQ" loading="lazy" title="YouTube video player" f
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1438365069" alt="Venn Diag
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1438365069.jpg" alt="Venn Diagram Merge Circles 
+     - <div class="activity interactive" number="7A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXDI201-07-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: unclassified — Activity (inline) — 
+     - <p><b>Factors of 24</b></p>
+     - <p>4,6,8,12,24</p>
+     - <p>1, 2, 3, 6, ,</p>
+     - <p><b>Factors of 30</b></p>
+     - <p>5,10,15,30</p>
+     - <p><b>Factors of 56</b></p>
+     - <p>7,8,14,28,56</p>
+     - <p><b>Factors of 60</b>3,5,6,10,12,15,20,30, 60</p>
+     - <p>1, 2, 4, ,</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <h4>7D Vocabulary</h4>
+     - <p>Click on the following words to see their definition. Give an example for each word and discuss the example
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive tool] hover on each word
+     - <p><b>Factors</b> – Factors are numbers we can multiply together to get another number, for example 2x3 = 6, 2
+     - <p><b>Multiples –</b> Multiples are what we get after multiplying by factors</p>
+     - <p><b>Common Factors are the factors shared by two or more numbers.</b> For example:</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Factors of 12 are 1, 2, 3, 4, 6 and 12</th>
+     - … 88 more removed
+     + <div class="activity" number="7A">
+     + <h3>Number arrays</h3>
+     + <p>Find 100 small objects from around your home, this might be Lego blocks, pebbles, counters etc. Try arrangi
+     + <p>If you are unsure of what an array is then watch the following video.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/z8lcZUWbqT0" loading="lazy" title="YouTube video player" f
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity" number="7B">
+     + <h3>Factors of numbers</h3>
+     + <p>T ick the numbers that are the factors for each of the following:</p>
+     + <p>e.g. for the number 1523ü65ü</p>
+     + <p>1ü15ü710</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: tick boxes</p>
+     + <div class="activity" number="7C">
+     + <h3>Common factors</h3>
+     + <p>Use the Venn diagram below to sort the common factors. A common factor is a factor of two or more numbers. 
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/lnalI7eVQsQ" loading="lazy" title="YouTube video player" f
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1438365069" alt="Venn Diag
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1438365069.jpg" alt="Venn Diagram Merge Circles 
+     + … 123 more added
+  ~ MXDI201_8_0.html: -190 +227
+     - <p>If you know your four times tables and double your answers, then you have the answers for your eighttimes t
+     - <p>If you know your three times tables and double your answers you know your six and twelve times tables!</p>
+     - <p>If you know your five times tables and double your answers you know your 10 times tables!</p>
+     - <p>Look at the following times table chart. What number patterns can you see?</p>
+     - <p>On the hundreds square in your journal choose to either skip count in your five and 10s OR three and sixes 
+     - <p>Colour each square in the same colour for one set of times tables, then use a different colour to colour th
+     - <p>Once you have completed the five times tables look at the patterns you have created.</p>
+     - <p>In your journal write a sentence explaining any patterns you notice. Click on the following link to an inte
+     - <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Caroline Schwer: Designer, do you have
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [data marker] outside an i
+     - <p><a href="https://www.topmarks.co.uk/learning-to-count/paint-the-squares" target="_blank">Paint the Squares 
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <h3>8B Three and six times tables</h3>
+     - <p>In the activity below, type the correct numbers into the spaces to make each sum correct.</p>
+     - <div class="activity interactive" number="8A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="MXDI201-08-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: unclassified — Activity (inline) — 
+     - <h3>8C Number families</h3>
+     - <p>In this activity you will look at the relationship between multiplication and division sums. Division is th
+     - <p>5 x 10 = 50 therefore 50 ÷ 10 = 5</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><b>A</b>16 8 2 / 8</th>
+     - <th>X</th>
+     - <th>2</th>
+     - <th>=</th>
+     - <th></th>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td>X</td>
+     - <td>8</td>
+     - <td>=</td>
+     - <td></td>
+     - </tr>
+     - … 150 more removed
+     + <p>There are many different patterns that can be found within the times tables. One pattern to understand is d
+     + <p>If you know your two times tables and double your answers, then you have the answers for your four times ta
+     + <p>If you know your four times tables and double your answers, then you have the answers for your eighttimes t
+     + <p>If you know your three times tables and double your answers you know your six and twelve times tables!</p>
+     + <p>If you know your five times tables and double your answers you know your 10 times tables!</p>
+     + <p>Look at the following times table chart. What number patterns can you see?</p>
+     + <div class="activity" number="8A">
+     + <h3>Hundreds square patterns</h3>
+     + <p>On the hundreds square in your journal choose to either skip count in your five and 10s OR three and sixes 
+     + <p>Colour each square in the same colour for one set of times tables, then use a different colour to colour th
+     + <p>Once you have completed the five times tables look at the patterns you have created.</p>
+     + <p>In your journal write a sentence explaining any patterns you notice. Click on the following link to an inte
+     + <p class="cv2-comment" style="color: red; font-weight: bold;">Note from Caroline Schwer: Designer, do you have
+     + <div class="col-md-8 col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [data marker] outside an i
+     + <p><a href="https://www.topmarks.co.uk/learning-to-count/paint-the-squares" target="_blank">Paint the Squares 
+     + <a href="" target="_blank"><div class="button">Go to</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h3>Three and six times tables</h3>
+     + <p>In the activity below, type the correct numbers into the spaces to make each sum correct.</p>
+     + … 207 more added
+  ~ MXDI201_9_0.html: -167 +174
+     - <h4>9A What does a million look like?</h4>
+     - <p>Did you know that one million seconds is equal to 11 ½ days! One billion seconds is equal to 31 ½ years! On
+     - <p>In the story <i>How much is a Million?</i> the author gives some examples of what a million might look like
+     - <ol>
+     - <li>How far does the author say one million children would reach if they stood on top of each other?</li>
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <ol>
+     - <li>How long does the author say it would take to count to one million?</li>
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <ol>
+     - <li>How big does the author say a fish tank would need to be to hold one million goldfish?</li>
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <h4>9B Digit to word match</h4>
+     - <p>Match the numbers in digits to the same number in words</p>
+     - <div class="activity interactive" number="9A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="MXDI201-09-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: unclassified — Activity (inline) — 
+     - <h4>9C Build a number</h4>
+     - <p>Look at the digit cards below. Write each number on a different piece of paper to create your own digit car
+     - <p>Is the number smaller or larger than your first?</p>
+     - <p>Create 10 different numbers using the same digit cards.</p>
+     - <p>Talk to your supervisor about the place value of the digits.</p>
+     - <ul>
+     - <li>What is your largest number?</li>
+     - <li>How do you know it is the largest?</li>
+     - <li>What is the second largest number?</li>
+     - <li>How do you know that it is not the largest number?</li>
+     - </ul>
+     - <p>Record your numbers in your learning journal.</p>
+     - <p><b>4</b></p>
+     - <p><b>1</b></p>
+     - … 127 more removed
+     + <div class="activity" number="9A">
+     + <h3>What does a million look like?</h3>
+     + <p>Did you know that one million seconds is equal to 11 ½ days! One billion seconds is equal to 31 ½ years! On
+     + <p>In the story <i>How much is a Million?</i> the author gives some examples of what a million might look like
+     + <ol>
+     + <li>How far does the author say one million children would reach if they stood on top of each other?</li>
+     + </ol>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <ol>
+     + <li>How long does the author say it would take to count to one million?</li>
+     + </ol>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <ol>
+     + <li>How big does the author say a fish tank would need to be to hold one million goldfish?</li>
+     + </ol>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <a href="" target="_blank"><div class="button">Go to</div></a>
+     + … 154 more added
+  ~ MXDI201_10_0.html: -67 +75
+     - <p>In lesson 1 we looked at how to write four digit numbers in expanded form. We are now going to use expanded
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity">
+     - <h3>Type and check</h3>
+     - <h3>10B place value
+     - Select the correct drop-down place value options to complete identify the place value of the five in each numb
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity">
+     - <h3>What is the value of the five in the following numbers:</h3>
+     - <h3>10C order the numbers</h3>
+     - <p>rite the numbers represented in descending order</p>
+     - <div class="activity">
+     - <h3>10D Ordering numbers in millions</h3>
+     - <p>Order the numbers from highest to lowest. To order the numbers, remember to look at the highest place value
+     - <div class="activity">
+     - <h3>1,304,503 1,403,502 2,431,032 2,431,934 4,034,951 4,203,456 5,200,532 5,210,567</h3>
+     - <h3>10E Ordering large number practice</h3>
+     - <p>if you would like more practice ordering numbers in their millions click on the following link and have a g
+     - <a href="https://firstlook.educationcity.com/content/Activity/index/22580" target="_blank"><div class="button 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>10F What would you do?</h3>
+     - <p>Hari, Kenese and Mataalii are three children, they all have different ideas about what they would do with $
+     - <p>Watch the following video to help you understand what is needed in a good paragraph.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/keBFpEdiVVU" loading="lazy" title="YouTube video player" f
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/gxMjEJ227mk" loading="lazy" title="YouTube video player" f
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Hi, my name is Hari. If I was given $1,000,000, I would give some money to my church because they help so m
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Hi, my name is Kenese, it would be amazing to be given $1,000,000. The first thing I would do is build a tr
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Kia ora, my name is Mataalii. If I was given $1,000,000 first, I would be really surprised! I would feel lu
+     - <h4 class="goJournal">Go to your journal</h4>
+     - … 27 more removed
+     + <p>Throughout this lesson you will have an opportunity to use large numbers. You will draw on skills that you 
+     + <div class="activity" number="10A">
+     + <h3>Expanded Form</h3>
+     + <p>In lesson 1 we looked at how to write four digit numbers in expanded form. We are now going to use expanded
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Type and check</p>
+     + <div class="activity" number="10B">
+     + <h3>place value Select the correct drop-down place value options to complete identify the place value of the f
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: What is the value of the five in the 
+     + <div class="activity" number="10C">
+     + <h3>order the numbers</h3>
+     + <p>rite the numbers represented in descending order</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: : drag and drop into correct order</p
+     + <div class="activity" number="10D">
+     + <h3>Ordering numbers in millions</h3>
+     + <p>Order the numbers from highest to lowest. To order the numbers, remember to look at the highest place value
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: 1,304,503 1,403,502 2,431,032 2,431,9
+     + … 55 more added
+MXDI201: identical 1 / changed 10
+MXEO201: identical 10 / changed 0
+MXEX101: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+  ~ MXFL103_1_5.html: -1 +5
+     - <p>Why Do We Have LEAP YEARS? | What Is A LEAP YEAR? | The Dr Binocs Show | Peekaboo Kidz</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/p3e7yhz-akk" loading="lazy" title="YouTube video player" f
+     + </div>
+MXFL103: identical 7 / changed 1
+  ~ MXFL203_1_0.html: -19 +5
+     - <h3>1D Timeline</h3>
+     - <p>Drag the following events to the correct date.</p>
+     - <div class="activity interactive" number="1D">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity (inline) — s
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="1G">
+     - <div class="row">
+     - <div class="col-12">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity (inline) — s
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="activity" number="1D">
+     + <h3>Timeline</h3>
+     + <p>Drag the following events to the correct date.</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity 1D — see MXF
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity 1F — see MXF
+  ~ MXFL203_2_0.html: -11 +1
+     - <div class="activity interactive" number="2D">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity (inline) — s
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity 2B — see MXF
+  ~ MXFL203_3_0.html: -34 +4
+     - <div class="activity interactive" number="3C">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity (inline) — 
+     - <div class="activity interactive" number="3F">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: unclassified — Activity (inline) — 
+     - <h5>Less than or greater than half</h5>
+     - <div class="activity interactive" number="3I">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity 3B — see MX
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: unclassified — Activity 3D — see MX
+     + <p>Less than or greater than half</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: unclassified — Activity 3F — see MX
+  ~ MXFL203_4_0.html: -22 +4
+     - <div class="activity interactive" number="4E">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="4G">
+     - <div class="row">
+     - <div class="col-12">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity (inline) — 
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: unclassified — Activity 4D — see MX
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity 4E — see MX
+  ~ MXFL203_5_0.html: -22 +2
+     - <div class="activity interactive" number="5B">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="5E">
+     - <div class="row">
+     - <div class="col-12">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity (inline) — 
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity 5A — see MX
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity 5C — see MX
+  ~ MXFL203_6_0.html: -11 +1
+     - <div class="activity interactive" number="6E">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified — Activity 6D — see MX
+  ~ MXFL203_7_0.html: -18 +5
+     - <div class="activity interactive" number="7C">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>7D Memory match</h3>
+     - <p>Match the equivalent decimal and percentage by flipping 2 tiles over at a time.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: unclassified — Activity 7B — see MX
+     + <div class="activity" number="7D">
+     + <h3>Memory match</h3>
+     + <p>Match the equivalent decimal and percentage by flipping 2 tiles over at a time.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: memory game - match the equivalent de
+  ~ MXFL203_8_0.html: -11 +1
+     - <div class="activity interactive" number="8B">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: unclassified — Activity 8A — see MX
+  ~ MXFL203_9_0.html: -41 +2
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="9B">
+     - <div class="row">
+     - <div class="col-12">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: unclassified — Activity (inline) — 
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="9C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFL203-09-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: carousel (tool) — Activity 97 — see
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - </div>
+     - … 1 more removed
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: unclassified + carousel — Activity 
+     + <p>Learning journal.</p>
+  ~ MXFL203_10_0.html: -16 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="MXFL203-10-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: multiChoiceQuiz — Activity (inline)
+     - <div class="activity interactive" number="10L">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="MXFL203-10-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFL203-10-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="MXFL203-10-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="29" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: unclassified — Activity 10J — see M
+  ~ MXFL203_11_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="MXFL203-11-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="MXFL203-11-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: multiChoiceQuiz — Activity (inline)
+MXFL203: identical 1 / changed 11
+  ~ MXFL401_5_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/residential-building-blueprint-plan-real-estate-housing-project-
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1288292255" alt="Residenti
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1288292255.jpg" alt="Residential Building Bluepr
+  ~ MXFL401_6_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXFL401: identical 6 / changed 2
+  ~ MXFU302_7_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXFU302: identical 9 / changed 1
+OSAH401: identical 5 / changed 0
+  ~ OSAI301_1_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/nature-otways-gm1496016391-518820929" target="_blank">https://ww
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1496016391" alt="Nature Ot
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1496016391.jpg" alt="Nature Otways" /> -->
+OSAI301: identical 3 / changed 1
+OSBY201: identical 4 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+  ~ PES1002_10_0.html: -1 +2
+     - <p><a href="https://commons.wikimedia.org/wiki/File:MAP_Expo_Maori_Hame%C3%A7on_13012012_2.jpg" target="_blank
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+PES1002: identical 10 / changed 1
+PES1007: identical 12 / changed 0
+PHE1003: identical 11 / changed 0
+  ~ PHE1007_4_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ PHE1007_7_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ PHE1007_9_0.html: -0 +4
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/to-the-right-of.jpg" alt="" /> -->
+PHE1007: identical 7 / changed 3
+  ~ SSCI205_6_0.html: -1 +4
+     - <p><a href="https://www.istockphoto.com/vector/compass-rose-symbol-black-and-white-vector-illustration-of-four
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1957478548" alt="Compass R
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1957478548.jpg" alt="Compass Rose Symbol Black a
+SSCI205: identical 9 / changed 1
+SSOG301: identical 8 / changed 0
+  ~ XDLS502_4_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+XDLS502: identical 4 / changed 1
+XDLS906: identical 8 / changed 0
+  ~ XGF9001_2_0.html: -1 +3
+     - <p>waka <a href="https://www.twinkl.co.nz/resource/nz-c-254261-we-are-a-team-waka-display-cut-outs" target="_b
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/are-we-allowed-to-use-the-waka-and-peopl.jpg" alt="" />
+     + <p>waka</p>
+XGF9001: identical 6 / changed 1
+XGF9006: identical 8 / changed 0
+XLP04: identical 5 / changed 0
+XMES102: identical 6 / changed 0
+  ~ XTAS101_2_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ XTAS101_3_0.html: -1 +2
+     - <p>bucket ball game</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2173090359" alt="Simple Ga
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2173090359.jpg" alt="Simple Game Using a Basket 
+XTAS101: identical 3 / changed 2
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 469 / changed 80 / missing 0 over 104 modules
+CHANGED: ENFUN08/ENFUN08_0_0.html HPFUN103/HPFUN103_0_0.html HPFUN402/HPFUN402_0_0.html HPFUN903/HPFUN903_0_0.html SSFUN05/SSFUN05_0_0.html BLL210/BLL210_0_0.html TWHA906/TWHA906_0_0.html ANZH104/ANZH104_2_0.html ANZH104/ANZH104_3_0.html ANZH104/ANZH104_4_0.html ANZH104/ANZH104_5_0.html ANZH104/ANZH104_6_0.html ANZH301/ANZH301_1_0.html ANZH301/ANZH301_3_0.html ANZH404/ANZH404_3_0.html BLL124/BLL124_2_0.html BLL135/BLL135_1_1.html BLL146/BLL146_1_0.html BLL153/BLL153_1_0.html BLL153/BLL153_1_1.html BLL164/BLL164_1_1.html BLL175/BLL175_1_1.html BLL241/BLL241_2_0.html BLL254/BLL254_2_0.html CEDR501/CEDR501_4_0.html CEDR501/CEDR501_8_0.html ENGC201/ENGC201_5_0.html ENGI302/ENGI302_5_0.html ENGR202/ENGR202_7_0.html ENGS102/ENGS102_2_0.html ENGS102/ENGS102_4_0.html ENGS102/ENGS102_6_0.html ENGS302/ENGS302_4_0.html HIS1002/HIS1002_3_0.html HIS1002/HIS1002_5_0.html HIS1002/HIS1002_7_0.html HIS1002/HIS1002_9_0.html HIS1002/HIS1002_11_0.html HIS1002/HIS1002_13_0.html HIS1002/HIS1002_15_0.html HIS1002/HIS1002_17_0.html HIS1002/HIS1002_19_0.html MXDB102/MXDB102_1_0.html MXDB102/MXDB102_8_0.html MXDB102/MXDB102_10_0.html MXDI201/MXDI201_1_0.html MXDI201/MXDI201_2_0.html MXDI201/MXDI201_3_0.html MXDI201/MXDI201_4_0.html MXDI201/MXDI201_5_0.html MXDI201/MXDI201_6_0.html MXDI201/MXDI201_7_0.html MXDI201/MXDI201_8_0.html MXDI201/MXDI201_9_0.html MXDI201/MXDI201_10_0.html MXFL103/MXFL103_1_5.html MXFL203/MXFL203_1_0.html MXFL203/MXFL203_2_0.html MXFL203/MXFL203_3_0.html MXFL203/MXFL203_4_0.html MXFL203/MXFL203_5_0.html MXFL203/MXFL203_6_0.html MXFL203/MXFL203_7_0.html MXFL203/MXFL203_8_0.html MXFL203/MXFL203_9_0.html MXFL203/MXFL203_10_0.html MXFL203/MXFL203_11_0.html MXFL401/MXFL401_5_0.html MXFL401/MXFL401_6_0.html MXFU302/MXFU302_7_0.html OSAI301/OSAI301_1_0.html PES1002/PES1002_10_0.html PHE1007/PHE1007_4_0.html PHE1007/PHE1007_7_0.html PHE1007/PHE1007_9_0.html SSCI205/SSCI205_6_0.html XDLS502/XDLS502_4_0.html XGF9001/XGF9001_2_0.html XTAS101/XTAS101_2_0.html XTAS101/XTAS101_3_0.html

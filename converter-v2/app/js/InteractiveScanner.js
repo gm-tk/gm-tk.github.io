@@ -96,6 +96,18 @@ class InteractiveScanner {
 			&& (/reoTranslate/i.test(run?.resolvedRules?.body_class || "") || (_mtkArm && !!run?.mtkFlag)
 				|| (_dlCfg.code_prefixes || []).some((p) => String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase())));
 
+		// ROUND 364 — THE ID-CARRYING HEADING IS THE ACTIVITY OPENER (the autonomous loop's
+		// session 20, Round 8). The Mathematics MXDI / MXFU family never types `[Activity 1A]
+		// Title`: it types `[H3] 1A Spot the place value` and the gold opens
+		// `<div class="activity …" number="1A"><h3>Spot the place value</h3>` right there
+		// (0.88 of 432 headings / 33 modules). Re-tag such a heading item IN PLACE as the
+		// `[Activity 1A]` opener it is (the normaliser's own parse, the id-stripped title as its
+		// tail) so every downstream rule — the owner lookback, the unclassified path, the
+		// numbering, ActivitiesBuilder's box — sees exactly a typed opener. Not on bilingual
+		// pages (their number is a table row); never beside a typed opener with the same id.
+		// Data: BoundaryBank._meta.opener_rule.id_heading_opener   Env: IDHEAD_OFF
+		this.#idHeadingOpeners(items, normaliser, run, page, reoMode);
+
 		// rolling context: the most recent heading/element text, so each
 		// bundle can say where it sits ("After heading …") for the manifest
 		let lastContext = page.isOverview ? "Top of overview page" : "Top of page";
@@ -208,11 +220,62 @@ class InteractiveScanner {
 							/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
 						}
 					} else {
+						// ROUND 364 — AN UNNUMBERED `[interactive activity] …` NESTS IN THE NUMBERED
+						// BOX BEFORE IT (the autonomous loop's session 20, Round 8). The MXDI / MXFU
+						// family opens the activity with an id heading (`[H3] 1A Spot the place
+						// value`, re-tagged as `[Activity 1A]` by #idHeadingOpeners), writes its prose
+						// and video, and then types the widget as an UNNUMBERED `[interactive
+						// activity] drop down …` span with a data table. This branch used to make
+						// that span its own bundle (canonTag activity) — and the converter's "a new
+						// activity closes the open one" rule then closed the 1A box in front of it and
+						// opened a second, sequence-numbered box for the widget: TWO boxes where the
+						// gold ships ONE (h3 + prose + video + widget, all inside number="1A"). The
+						// same lookback the normal path uses (cross black runs and ELEMENT / opener
+						// tags, stop at a consumed item or anything else) finds the numbered opener;
+						// when it does, the bundle is OWNED by it (the r362 owner form: opener →
+						// activityOwner, the items between → activityLeadItems, this span and its
+						// table → members). No numbered opener within reach → the old form, byte-
+						// identical. Data: id_heading_opener.unnumbered_nests_in_numbered  Env: IDHEAD_OFF
+						const _ihCfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener;
+						const _nestOn = !!_ihCfg && _ihCfg.enabled !== false && _ihCfg.unnumbered_nests_in_numbered !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_ihCfg.env || "IDHEAD_OFF"])
+							&& !(it.parse.numbers?.length > 0);
+						let _outer = -1;
+						if (_nestOn) {
+							let s = i - 1;
+							while (s >= 0) {
+								const prev = items[s];
+								if (prev.consumedBy !== undefined) break;
+								if (prev.type === "tag" && prev.parse.primary?.tag === "activity"
+									&& prev.parse.primary.directive === "CONTAINER_OPEN") {
+									// scoped to a box an ID HEADING opened (the family's own convention,
+									// measured at 0.88) — a typed `[Activity N]` + unnumbered `[activity]`
+									// pair keeps today's two-box form (HPFUN101 1A measured worse nested)
+									if (prev.parse.numbers?.length > 0 && prev._idHeading) _outer = s;
+									break;
+								}
+								if (prev.type === "black" || prev.type === "assettodo") { s--; continue; }
+								if (prev.type === "tag" && (!prev.parse.primary || openerTags.has(prev.parse.primary?.tag)
+									|| prev.parse.primary?.directive === "ELEMENT")) { s--; continue; }
+								break;
+							}
+						}
+						if (_outer >= 0) {
+							bundle.activityOwner = items[_outer];
+							bundle.activityLeadItems = items.slice(_outer + 1, i);
+							bundle.activityId = items[_outer].parse.numbers[0]?.toUpperCase() ?? null;
+							bundle.startIndex = _outer;
+							bundle._nestedInNumbered = true;
+							this.#collectMember(bundle, it, run);
+							bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
+								/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						} else {
 						// the activity item itself is the first member (its
 						// blackAfter carries the activity title/instructions)
 						this.#collectMember(bundle, it, run);
 						bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
 							/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						}
 					}
 					for (let k = bundle.startIndex; k < bundle.endIndex; k++) {
 						items[k].consumedBy = bundles.length;
@@ -1458,6 +1521,56 @@ class InteractiveScanner {
 	static #nextActivityId(id) {
 		const m = id.match(/^(.*?)([A-Za-z])$/);
 		return m ? m[1] + String.fromCharCode(m[2].toUpperCase().charCodeAt(0) + 1) : id + "A";
+	};
+
+	/** ROUND 364 — re-tag an id-carrying heading (`[H3] 1A Spot the place value`) as the
+	 *  `[Activity 1A]` opener it is, in place. See ScanPage's call site and the data _doc
+	 *  (opener_rule.id_heading_opener). Returns the number of items re-tagged. */
+	static #idHeadingOpeners(items, normaliser, run, page, reoMode) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener;
+		if (!cfg || cfg.enabled === false || reoMode || !normaliser) return 0;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "IDHEAD_OFF"]) return 0;
+		const tags = new Set((cfg.heading_tags ?? ["h2", "h3", "h4", "h5"]).map((t) => String(t).toLowerCase()));
+		const idRe = new RegExp(cfg.id_pattern ?? "^\\**\\s*(\\d{1,2}[A-Z])\\b[\\s.:–—-]*\\**\\s*(\\S.*)$");
+		const minTitle = cfg.min_title_chars ?? 2;
+		const win = cfg.same_id_window ?? 3;
+		const isActOpener = (x, id) => x && x.type === "tag" && x.parse?.primary?.tag === "activity"
+			&& x.parse.primary.directive === "CONTAINER_OPEN"
+			&& (!id || (x.parse.numbers ?? []).some((n) => String(n).toUpperCase() === id));
+		let n = 0;
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (it.type !== "tag" || it.consumedBy !== undefined || it._idHeading) continue;
+			const p = it.parse?.primary;
+			if (!p || p.directive !== "ELEMENT" || !tags.has(String(p.tag || "").toLowerCase())) continue;
+			const tail = String(it.blackAfter ?? "").replace(/\s+/g, " ").trim();
+			const m = tail.match(idRe);
+			if (!m) continue;
+			const id = m[1].toUpperCase();
+			const title = m[2].replace(/\*/g, "").trim();
+			if (title.length < minTitle) continue;
+			// "2D shapes" / "3D printing" are dimension words, not ids (MXDB102 lesson 1 caught
+			// live): the writer's activity title starts with a capital / digit / quote / bracket
+			if ((cfg.exclude_ids ?? []).map((x) => String(x).toUpperCase()).includes(id)) continue;
+			if (!new RegExp(cfg.title_start_pattern ?? "^[A-Z0-9\"'‘“(\[]").test(title)) continue;
+			let clash = false;
+			for (let k = Math.max(0, i - win); k <= Math.min(items.length - 1, i + win); k++) {
+				if (k !== i && isActOpener(items[k], id)) { clash = true; break; }
+			}
+			if (clash) continue;
+			const parsed = normaliser.Parse(`[Activity ${id}] `);
+			if (!parsed || parsed.primary?.tag !== "activity") continue;
+			it._idHeading = { level: String(p.tag).toLowerCase(), raw: it.text, tail };
+			it.text = `[Activity ${id}]`;
+			it.parse = parsed;
+			it.blackAfter = title;
+			n++;
+		}
+		if (n && run && typeof run.AddNote === "function") {
+			run.AddNote("info", "InteractiveScanner",
+				`Page ${page?.lessonLabel ?? "?"}: ${n} id-carrying heading(s) re-tagged as [Activity N] openers (opener_rule.id_heading_opener).`);
+		}
+		return n;
 	};
 
 	static #swallowMembers(bundle, items, startJ, headingTerminates, absolute, run, normaliser = null) {

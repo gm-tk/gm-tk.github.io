@@ -1,9 +1,9 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.34",
-    "round": 363,
-    "date": "2026-09-17",
+    "build": "260619.35",
+    "round": 364,
+    "date": "2026-09-18",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
       "claude_pages": 1358,
@@ -57,15 +57,16 @@
     "_note_r360": "Round 360: the footer link sets — skeleton +0.004pp (named dips), every other gate EXACT; FULL regeneration of all 416, 52 modules / 52 pages; ledger FULL (counter 0); plateau window 1 of 3.",
     "_note_r361": "Round 361: the EXPlore section-navigation inquiry dialect — skeleton +0.016pp (no dips), compare_structure exact +28, every other gate EXACT; FULL regeneration of all 416, 4 modules / 4 pages; ledger FULL (counter 0).",
     "_note_r362": "Round 362: the unclassified activity lead — skeleton +0.173pp (≥75 +7), compare_structure EXACT, body_compare over-capture better and its EMPTY heuristic named; FULL regeneration of all 416, 158 modules / 291 pages; ledger FULL (counter 0).",
-    "_note_r363": "Round 363: the heading-tag-led activity lead — skeleton +0.081pp (≥50 +5, ≥75 +2, ≥90 +1), compare_structure EXACT, body_compare over-capture better; FULL regeneration of all 416, 31 modules / 76 pages; ledger FULL (counter 0)."
+    "_note_r363": "Round 363: the heading-tag-led activity lead — skeleton +0.081pp (≥50 +5, ≥75 +2, ≥90 +1), compare_structure EXACT, body_compare over-capture better; FULL regeneration of all 416, 31 modules / 76 pages; ledger FULL (counter 0).",
+    "_note_r364": "Round 364: the id-carrying heading is the activity opener + the lead-media half — skeleton +0.290pp (≥50 +15, ≥75 +3, ≥90 EXACT), compare_structure exact −14 = the matched pool −14, body_compare +1 / +1 named; FULL regeneration of all 416, 115 modules / 190 pages; ledger FULL (counter 0)."
   },
   "skeleton": {
-    "mean_scaffold_pct": 52.347,
+    "mean_scaffold_pct": 52.637,
     "median_scaffold_pct": null,
-    "pages_ge_50": 1103,
-    "pages_ge_75": 170,
+    "pages_ge_50": 1118,
+    "pages_ge_75": 173,
     "pages_ge_90": 15,
-    "raw_mean_pct": 37.021,
+    "raw_mean_pct": 37.162,
     "pairs": 1956,
     "pairs_skipped": 0,
     "_note_r350": "Round 350: the dragAndDrop build kickoff shape 1 + the 03B button row — SCAFFOLD identical page-for-page to r349 (a build is inside the collapsed widget marker); RAW 35.049 → 35.115. State outputs/_r350_sk_final.json.",
@@ -79,25 +80,28 @@
     "_note_r360": "Round 360: the footer link sets (registry corrections) — SCAFFOLD 52.0723 → 52.0761 (+0.004pp; 49 movers, 40 up; dips NAMED: BLL240_0_0 the one BLL parent whose gold overview is next + home, CEDK101_0_0 no gold footer, seven order / re-alignment dips ≤ 0.33pp), ≥50 1096 / ≥75 161 / ≥90 14 EXACT, RAW 36.763 → 36.766. Hold-or-improve from here.",
     "_note_r361": "Round 361: the EXPlore section-navigation inquiry dialect (crumbs + inquiryPanel scaffold on EXPFUN02–05) — SCAFFOLD 52.0761 → 52.0925 (+0.016pp; 4 movers, all up, no dips), ≥50 1096 / ≥75 161 / ≥90 14 EXACT, RAW 36.766 → 36.780. Hold-or-improve from here.",
     "_note_r362": "Round 362: the unclassified activity keeps its title heading and lead prose free — SCAFFOLD 52.0925 → 52.2658 (+0.173pp; 287 movers, 200 up / 87 down, the dips named in the changelog), ≥50 1096 → 1098, ≥75 161 → 168, ≥90 14, RAW 36.780 → 36.944; pairs 1955 → 1956 (MXDI101 / MXFL101 page pairing shifted with their content). Hold-or-improve from here.",
-    "_note_r363": "Round 363: the heading-tag-led unclassified activity takes the owner form — SCAFFOLD 52.2658 → 52.3470 (+0.081pp; 76 movers, 59 up / 17 down, the dips named in the changelog — a single <p> → <h3> on a box's opener re-aligning the page), ≥50 1098 → 1103, ≥75 168 → 170, ≥90 14 → 15, RAW 36.944 → 37.021; pairs 1956. Hold-or-improve from here."
+    "_note_r363": "Round 363: the heading-tag-led unclassified activity takes the owner form — SCAFFOLD 52.2658 → 52.3470 (+0.081pp; 76 movers, 59 up / 17 down, the dips named in the changelog — a single <p> → <h3> on a box's opener re-aligning the page), ≥50 1098 → 1103, ≥75 168 → 170, ≥90 14 → 15, RAW 36.944 → 37.021; pairs 1956. Hold-or-improve from here.",
+    "_note_r364": "Round 364: the id-carrying heading is the activity opener (+ the lead-media half scoped to Standard / Fundamentals) — SCAFFOLD 52.3470 → 52.6374 (+0.290pp; 171 movers, 118 up / 53 down, the dips named in the changelog — a lead image the gold drops, the second-widget residue, a heading-numbered box the gold renumbered), ≥50 1103 → 1118, ≥75 170 → 173, ≥90 15 EXACT, RAW 37.021 → 37.162; FULL regeneration of all 416 (190 pages / 115 modules)."
   },
   "compare_structure": {
-    "exact_chain": 11645,
+    "exact_chain": 11631,
     "claude_extra_container": 175,
     "claude_missing_container": 617,
     "row_wrap_missing": 23,
     "_note_r352": "Round 352: exact 11464 → 11607 (+143, the restored sections); missing 607 → 617 NAMED — the 44 pages whose carousel reverts to the honest hand-off box (a trailing [video]/[image], words between slide tables, a leading heading) no longer show the gold's row.carousel container. Hold-or-improve from here.",
     "_note_r356": "Round 356: exact 11607 → 11617 (+10, the restored paragraphs the gold has); EXTRA 175 / missing 617 EXACT.",
-    "_note_r361": "Round 361: exact wrapper chain 11617 → 11645 (the EXPFUN02–05 crumbs / panel wrappers now match)."
+    "_note_r361": "Round 361: exact wrapper chain 11617 → 11645 (the EXPFUN02–05 crumbs / panel wrappers now match).",
+    "_note_r364": "Round 364: exact wrapper chain 11645 → 11631 (−14) = the text-matched pool 13709 → 13695 (−14): the id-stripped titles and the dropped link paragraphs no longer text-match (the r344 population precedent, 84.9% EXACT); EXTRA 175 / missing 617 / row-wrap 23 EXACT. Hold-or-improve from 11631."
   },
   "body_compare": {
-    "any_breakdown": 195,
-    "over_capture": 41,
+    "any_breakdown": 197,
+    "over_capture": 42,
     "runaway": 4,
-    "empty_container": 151,
+    "empty_container": 152,
     "_note_r352": "Round 352: 180 → 182 NAMED — OVER-CAPTURE 42 → 43 (ENGI301 2.0) and EMPTY container +1 (ENGJ201 5.0): two reverted carousels whose eaten content now sits in an honest box the gate reads as over-capture; the silent deletion it replaces was invisible to the gate. Hold-or-improve from here.",
     "_note_r362": "Round 362: over_capture 43 → 42 (better); EMPTY interactive container 136 → 151 and any_breakdown 182 → 196 — 16 pages (BLL114 / 120 / 121 / 125 / 131 / 132 / 156 / 157 / 160, CEDT208, MXFL101 ×5, XLP03) whose capture text fell under the 40-character EMPTY heuristic because the activity's title and instruction paragraph now render OUTSIDE the hand-off box (the class itself; the widget members — audio / image data tables — are unchanged, the box counts and lost-block counts identical). Hold-or-improve from 196 / 42 / 4 / 151.",
-    "_note_r363": "Round 363: over_capture 42 → 41 and any_breakdown 196 → 195 (better — a title + prose that used to sit inside a capture now render free); runaway 4 / EMPTY 151 EXACT. Hold-or-improve from 195 / 41 / 4 / 151."
+    "_note_r363": "Round 363: over_capture 42 → 41 and any_breakdown 196 → 195 (better — a title + prose that used to sit inside a capture now render free); runaway 4 / EMPTY 151 EXACT. Hold-or-improve from 195 / 41 / 4 / 151.",
+    "_note_r364": "Round 364: over_capture 41 → 42 (MXDI202_11_0 — its skeleton 29.7 → 51.4), EMPTY 151 → 152 (MXDI202_6_0 + _3_0 gained a flag, PHE1005 lost one), any_breakdown 195 → 197 — NAMED; runaway 4 EXACT. Hold-or-improve from 197 / 42 / 4 / 152."
   },
   "structural_defect": {
     "clean_pages": 2080,

@@ -1,0 +1,1672 @@
+[
+ {
+  "module": "ANZH301",
+  "page": "ANZH301_1_0.html",
+  "family": "Standard",
+  "box": "1A",
+  "disk": 3,
+  "on": 6,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ANZH304",
+  "page": "ANZH304_3_0.html",
+  "family": "Standard",
+  "box": "3A",
+  "disk": 2,
+  "on": 3,
+  "gold": 17,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ANZH401",
+  "page": "ANZH401_6_0.html",
+  "family": "Standard",
+  "box": "6A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ARFUN02",
+  "page": "ARFUN02_0_0.html",
+  "family": "Fundamentals",
+  "box": "3C",
+  "disk": 1,
+  "on": 2,
+  "gold": 13,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ARFUN03",
+  "page": "ARFUN03_0_0.html",
+  "family": "Fundamentals",
+  "box": "3C",
+  "disk": 8,
+  "on": 9,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ARFUN04",
+  "page": "ARFUN04_0_0.html",
+  "family": "Fundamentals",
+  "box": "5",
+  "disk": 2,
+  "on": 3,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "ARFUN04",
+  "page": "ARFUN04_0_0.html",
+  "family": "Fundamentals",
+  "box": "3",
+  "disk": 1,
+  "on": 2,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "ARFUN04",
+  "page": "ARFUN04_0_0.html",
+  "family": "Fundamentals",
+  "box": "3F",
+  "disk": 1,
+  "on": 2,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "ARFUN04",
+  "page": "ARFUN04_0_0.html",
+  "family": "Fundamentals",
+  "box": "3G",
+  "disk": 1,
+  "on": 2,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "ARFUN04",
+  "page": "ARFUN04_0_0.html",
+  "family": "Fundamentals",
+  "box": "3L",
+  "disk": 1,
+  "on": 2,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "BLL114",
+  "page": "BLL114_1_0.html",
+  "family": "Standard",
+  "box": "1B",
+  "disk": 0,
+  "on": 1,
+  "gold": 77,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "3D",
+  "disk": 0,
+  "on": 1,
+  "gold": 12,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "3F",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "4A",
+  "disk": 0,
+  "on": 7,
+  "gold": 14,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "5A",
+  "disk": 0,
+  "on": 3,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "6G",
+  "disk": 0,
+  "on": 1,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "7A",
+  "disk": 0,
+  "on": 7,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "8A",
+  "disk": 0,
+  "on": 4,
+  "gold": 3,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL120",
+  "page": "BLL120_0_0.html",
+  "family": "Inquiry",
+  "box": "8G",
+  "disk": 0,
+  "on": 1,
+  "gold": 8,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL121",
+  "page": "BLL121_2_0.html",
+  "family": "Standard",
+  "box": "2C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL122",
+  "page": "BLL122_1_0.html",
+  "family": "Standard",
+  "box": "1E",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL124",
+  "page": "BLL124_2_0.html",
+  "family": "Standard",
+  "box": "2A",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL135",
+  "page": "BLL135_1_1.html",
+  "family": "Standard",
+  "box": "2B",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL144",
+  "page": "BLL144_1_0.html",
+  "family": "Standard",
+  "box": "1D",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL146",
+  "page": "BLL146_1_0.html",
+  "family": "Standard",
+  "box": "1D",
+  "disk": 0,
+  "on": 1,
+  "gold": 3,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL147",
+  "page": "BLL147_1_1.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 0,
+  "on": 2,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "BLL151",
+  "page": "BLL151_1_0.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL153",
+  "page": "BLL153_1_0.html",
+  "family": "Standard",
+  "box": "1A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL153",
+  "page": "BLL153_1_1.html",
+  "family": "Standard",
+  "box": "2C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL153",
+  "page": "BLL153_1_1.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL154",
+  "page": "BLL154_1_1.html",
+  "family": "Standard",
+  "box": "2C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL156",
+  "page": "BLL156_1_1.html",
+  "family": "Standard",
+  "box": "2A",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL160",
+  "page": "BLL160_0_0.html",
+  "family": "Inquiry",
+  "box": "3F",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL160",
+  "page": "BLL160_0_0.html",
+  "family": "Inquiry",
+  "box": "5F",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL163",
+  "page": "BLL163_1_0.html",
+  "family": "Standard",
+  "box": "1D",
+  "disk": 2,
+  "on": 3,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL163",
+  "page": "BLL163_1_1.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL164",
+  "page": "BLL164_1_1.html",
+  "family": "Standard",
+  "box": "2C",
+  "disk": 0,
+  "on": 5,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL164",
+  "page": "BLL164_1_1.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 0,
+  "on": 1,
+  "gold": 9,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL165",
+  "page": "BLL165_1_0.html",
+  "family": "Standard",
+  "box": "1D",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL165",
+  "page": "BLL165_1_1.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL167",
+  "page": "BLL167_1_0.html",
+  "family": "Standard",
+  "box": "1E",
+  "disk": 0,
+  "on": 1,
+  "gold": 3,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL167",
+  "page": "BLL167_1_1.html",
+  "family": "Standard",
+  "box": "2D",
+  "disk": 0,
+  "on": 1,
+  "gold": 13,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL172",
+  "page": "BLL172_1_0.html",
+  "family": "Standard",
+  "box": "1B",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL173",
+  "page": "BLL173_1_1.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL175",
+  "page": "BLL175_1_1.html",
+  "family": "Standard",
+  "box": "2A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL210",
+  "page": "BLL210_0_0.html",
+  "family": "Inquiry",
+  "box": "1E",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL210",
+  "page": "BLL210_0_0.html",
+  "family": "Inquiry",
+  "box": "4D",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL210",
+  "page": "BLL210_0_0.html",
+  "family": "Inquiry",
+  "box": "5D",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL210",
+  "page": "BLL210_0_0.html",
+  "family": "Inquiry",
+  "box": "6D",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL210",
+  "page": "BLL210_0_0.html",
+  "family": "Inquiry",
+  "box": "7D",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL210",
+  "page": "BLL210_0_0.html",
+  "family": "Inquiry",
+  "box": "8D",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL215",
+  "page": "BLL215_1_0.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL215",
+  "page": "BLL215_2_0.html",
+  "family": "Standard",
+  "box": "2A",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL241",
+  "page": "BLL241_2_0.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 1,
+  "on": 2,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL242",
+  "page": "BLL242_1_1.html",
+  "family": "Standard",
+  "box": "2D",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL244",
+  "page": "BLL244_1_0.html",
+  "family": "Standard",
+  "box": "1E",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL245",
+  "page": "BLL245_2_0.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 1,
+  "on": 2,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "BLL252",
+  "page": "BLL252_1_0.html",
+  "family": "Standard",
+  "box": "1E",
+  "disk": 1,
+  "on": 2,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL254",
+  "page": "BLL254_2_0.html",
+  "family": "Standard",
+  "box": "2E",
+  "disk": 1,
+  "on": 2,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLL263",
+  "page": "BLL263_1_0.html",
+  "family": "Standard",
+  "box": "1D",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "BLLR201",
+  "page": "BLLR201_6_0.html",
+  "family": "Standard",
+  "box": "5C",
+  "disk": 1,
+  "on": 2,
+  "gold": 8,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "CEDK501",
+  "page": "CEDK501_6_1.html",
+  "family": "Inquiry",
+  "box": "6C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "CEDO102",
+  "page": "CEDO102_0_0.html",
+  "family": "Inquiry",
+  "box": "4C",
+  "disk": 5,
+  "on": 7,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "CEDR204",
+  "page": "CEDR204_0_0.html",
+  "family": "Inquiry",
+  "box": "1B",
+  "disk": 1,
+  "on": 2,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "CEDR204",
+  "page": "CEDR204_0_0.html",
+  "family": "Inquiry",
+  "box": "2A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "CEDR501",
+  "page": "CEDR501_4_0.html",
+  "family": "Standard",
+  "box": "3D",
+  "disk": 2,
+  "on": 3,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "CEDR501",
+  "page": "CEDR501_8_0.html",
+  "family": "Standard",
+  "box": "7C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENFUN01",
+  "page": "ENFUN01_0_0.html",
+  "family": "Fundamentals",
+  "box": "1C",
+  "disk": 0,
+  "on": 2,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENFUN02",
+  "page": "ENFUN02_0_0.html",
+  "family": "Fundamentals",
+  "box": "3A",
+  "disk": 2,
+  "on": 3,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENFUN02",
+  "page": "ENFUN02_0_0.html",
+  "family": "Fundamentals",
+  "box": "4B",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENFUN04",
+  "page": "ENFUN04_0_0.html",
+  "family": "Fundamentals",
+  "box": "1C",
+  "disk": 3,
+  "on": 5,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENFUN08",
+  "page": "ENFUN08_0_0.html",
+  "family": "Fundamentals",
+  "box": "1E",
+  "disk": 0,
+  "on": 1,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENFUN08",
+  "page": "ENFUN08_0_0.html",
+  "family": "Fundamentals",
+  "box": "2E",
+  "disk": 9,
+  "on": 10,
+  "gold": 7,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENFUN08",
+  "page": "ENFUN08_0_0.html",
+  "family": "Fundamentals",
+  "box": "3C",
+  "disk": 1,
+  "on": 2,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "ENFUN08",
+  "page": "ENFUN08_0_0.html",
+  "family": "Fundamentals",
+  "box": "4D",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGC201",
+  "page": "ENGC201_5_0.html",
+  "family": "Standard",
+  "box": "5A",
+  "disk": 0,
+  "on": 1,
+  "gold": 10,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGC301",
+  "page": "ENGC301_2_0.html",
+  "family": "Standard",
+  "box": "2C",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGC301",
+  "page": "ENGC301_3_0.html",
+  "family": "Standard",
+  "box": "3B",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGC301",
+  "page": "ENGC301_4_0.html",
+  "family": "Standard",
+  "box": "4B",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGC301",
+  "page": "ENGC301_6_0.html",
+  "family": "Standard",
+  "box": "6C",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "ENGC302",
+  "page": "ENGC302_6_0.html",
+  "family": "Standard",
+  "box": "6A",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGI202",
+  "page": "ENGI202_3_0.html",
+  "family": "Standard",
+  "box": "3A",
+  "disk": 0,
+  "on": 1,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGI302",
+  "page": "ENGI302_5_0.html",
+  "family": "Standard",
+  "box": "5B",
+  "disk": 0,
+  "on": 1,
+  "gold": 3,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGJ102",
+  "page": "ENGJ102_1_0.html",
+  "family": "Standard",
+  "box": "1D",
+  "disk": 0,
+  "on": 1,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGJ102",
+  "page": "ENGJ102_5_0.html",
+  "family": "Standard",
+  "box": "5A",
+  "disk": 0,
+  "on": 1,
+  "gold": 3,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGR101",
+  "page": "ENGR101_5_0.html",
+  "family": "Standard",
+  "box": "5A",
+  "disk": 0,
+  "on": 1,
+  "gold": 90,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGR202",
+  "page": "ENGR202_7_0.html",
+  "family": "Standard",
+  "box": "7A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGS101",
+  "page": "ENGS101_5_0.html",
+  "family": "Standard",
+  "box": "5C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGS102",
+  "page": "ENGS102_6_0.html",
+  "family": "Standard",
+  "box": "5A",
+  "disk": 0,
+  "on": 1,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "ENGS201",
+  "page": "ENGS201_5_0.html",
+  "family": "Standard",
+  "box": "5A",
+  "disk": 3,
+  "on": 4,
+  "gold": 8,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGS202",
+  "page": "ENGS202_3_0.html",
+  "family": "Standard",
+  "box": "3A",
+  "disk": 0,
+  "on": 1,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "ENGS301",
+  "page": "ENGS301_4_0.html",
+  "family": "Standard",
+  "box": "4B",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "HIS1003",
+  "page": "HIS1003_7_0.html",
+  "family": "Standard",
+  "box": "7B",
+  "disk": 1,
+  "on": 3,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "HPFUN103",
+  "page": "HPFUN103_0_0.html",
+  "family": "Fundamentals",
+  "box": "3B",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "HPFUN901",
+  "page": "HPFUN901_0_0.html",
+  "family": "Fundamentals",
+  "box": "1",
+  "disk": 8,
+  "on": 9,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "HPRE203",
+  "page": "HPRE203_3_0.html",
+  "family": "Standard",
+  "box": "3D",
+  "disk": 0,
+  "on": 2,
+  "gold": 3,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "HPRE203",
+  "page": "HPRE203_5_0.html",
+  "family": "Standard",
+  "box": "5D",
+  "disk": 0,
+  "on": 1,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "HPRE203",
+  "page": "HPRE203_6_0.html",
+  "family": "Standard",
+  "box": "6C",
+  "disk": 3,
+  "on": 4,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXDB102",
+  "page": "MXDB102_10_0.html",
+  "family": "Standard",
+  "box": "4C",
+  "disk": 0,
+  "on": 1,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "MXDB102",
+  "page": "MXDB102_8_0.html",
+  "family": "Standard",
+  "box": "8C",
+  "disk": 0,
+  "on": 1,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXDB202",
+  "page": "MXDB202_4_0.html",
+  "family": "Standard",
+  "box": "4B",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXDI101",
+  "page": "MXDI101_1_7.html",
+  "family": "Standard",
+  "box": "6A",
+  "disk": 0,
+  "on": 1,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXDI101",
+  "page": "MXDI101_1_7.html",
+  "family": "Standard",
+  "box": "6B",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXDI101",
+  "page": "MXDI101_1_7.html",
+  "family": "Standard",
+  "box": "6C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXDI102",
+  "page": "MXDI102_1_0.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 0,
+  "on": 1,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "MXEO301",
+  "page": "MXEO301_5_1_0.html",
+  "family": "Standard",
+  "box": "5G",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL103",
+  "page": "MXFL103_1_5.html",
+  "family": "Standard",
+  "box": "6B",
+  "disk": 0,
+  "on": 2,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "MXFL201",
+  "page": "MXFL201_1_0.html",
+  "family": "Standard",
+  "box": "1B",
+  "disk": 1,
+  "on": 2,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL202",
+  "page": "MXFL202_4_0.html",
+  "family": "Standard",
+  "box": "4C",
+  "disk": 0,
+  "on": 2,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "MXFL202",
+  "page": "MXFL202_4_0.html",
+  "family": "Standard",
+  "box": "5B",
+  "disk": 2,
+  "on": 3,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL203",
+  "page": "MXFL203_4_0.html",
+  "family": "Standard",
+  "box": "4A",
+  "disk": 0,
+  "on": 1,
+  "gold": 11,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL204",
+  "page": "MXFL204_3_0.html",
+  "family": "Standard",
+  "box": "3C",
+  "disk": 0,
+  "on": 2,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL204",
+  "page": "MXFL204_7_0.html",
+  "family": "Standard",
+  "box": "7C",
+  "disk": 0,
+  "on": 1,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL204",
+  "page": "MXFL204_7_0.html",
+  "family": "Standard",
+  "box": "7D",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL204",
+  "page": "MXFL204_8_0.html",
+  "family": "Standard",
+  "box": "8D",
+  "disk": 0,
+  "on": 1,
+  "gold": 9,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL204",
+  "page": "MXFL204_9_0.html",
+  "family": "Standard",
+  "box": "9D",
+  "disk": 0,
+  "on": 1,
+  "gold": 7,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL401",
+  "page": "MXFL401_5_0.html",
+  "family": "Standard",
+  "box": "5A",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFL401",
+  "page": "MXFL401_6_0.html",
+  "family": "Standard",
+  "box": "6C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFU301",
+  "page": "MXFU301_10_0.html",
+  "family": "Standard",
+  "box": "9B",
+  "disk": 2,
+  "on": 4,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFU302",
+  "page": "MXFU302_7_0.html",
+  "family": "Standard",
+  "box": "8A",
+  "disk": 2,
+  "on": 3,
+  "gold": 3,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFUN01",
+  "page": "MXFUN01_5_0.html",
+  "family": "Fundamentals",
+  "box": "4E",
+  "disk": 1,
+  "on": 2,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFUN01",
+  "page": "MXFUN01_6_2.html",
+  "family": "Fundamentals",
+  "box": "1B",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "MXFUN01",
+  "page": "MXFUN01_6_2.html",
+  "family": "Fundamentals",
+  "box": "1C",
+  "disk": 2,
+  "on": 3,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "MXFUN02",
+  "page": "MXFUN02_0_0.html",
+  "family": "Fundamentals",
+  "box": "4A",
+  "disk": 0,
+  "on": 1,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "MXFUN02",
+  "page": "MXFUN02_0_0.html",
+  "family": "Fundamentals",
+  "box": "4C",
+  "disk": 0,
+  "on": 1,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "OSAI101",
+  "page": "OSAI101_1_0.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "OSAI201",
+  "page": "OSAI201_1_0.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "OSAI301",
+  "page": "OSAI301_1_0.html",
+  "family": "Standard",
+  "box": "1B",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "OSAI401",
+  "page": "OSAI401_1_0.html",
+  "family": "Standard",
+  "box": "1A",
+  "disk": 5,
+  "on": 6,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "OSAI401",
+  "page": "OSAI401_1_0.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 3,
+  "on": 4,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "OSAI501",
+  "page": "OSAI501_1_0.html",
+  "family": "Standard",
+  "box": "1C",
+  "disk": 6,
+  "on": 7,
+  "gold": 7,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "OSBY101",
+  "page": "OSBY101_3_0.html",
+  "family": "Standard",
+  "box": "3B",
+  "disk": 0,
+  "on": 1,
+  "gold": 126,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "OSGM201",
+  "page": "OSGM201_3_0.html",
+  "family": "Standard",
+  "box": "3A",
+  "disk": 1,
+  "on": 2,
+  "gold": 7,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "PHE1007",
+  "page": "PHE1007_4_0.html",
+  "family": "Standard",
+  "box": "4A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "PHE1007",
+  "page": "PHE1007_7_0.html",
+  "family": "Standard",
+  "box": "7A",
+  "disk": 1,
+  "on": 2,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "PHE1007",
+  "page": "PHE1007_9_0.html",
+  "family": "Standard",
+  "box": "9A",
+  "disk": 0,
+  "on": 2,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SCCH301",
+  "page": "SCCH301_3_0.html",
+  "family": "Standard",
+  "box": "3C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SCPH301",
+  "page": "SCPH301_5_0.html",
+  "family": "Standard",
+  "box": "5B",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SCPH301",
+  "page": "SCPH301_6_0.html",
+  "family": "Standard",
+  "box": "6A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SCPH301",
+  "page": "SCPH301_7_0.html",
+  "family": "Standard",
+  "box": "7A",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SSCI205",
+  "page": "SSCI205_6_0.html",
+  "family": "Standard",
+  "box": "6C",
+  "disk": 1,
+  "on": 3,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SSFUN02",
+  "page": "SSFUN02_0_0.html",
+  "family": "Fundamentals",
+  "box": "2C",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "SSFUN05",
+  "page": "SSFUN05_0_0.html",
+  "family": "Fundamentals",
+  "box": "1B",
+  "disk": 1,
+  "on": 2,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SSFUN05",
+  "page": "SSFUN05_0_0.html",
+  "family": "Fundamentals",
+  "box": "2B",
+  "disk": 2,
+  "on": 3,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SSFUN05",
+  "page": "SSFUN05_0_0.html",
+  "family": "Fundamentals",
+  "box": "4A",
+  "disk": 0,
+  "on": 1,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "SSOG103",
+  "page": "SSOG103_2_0.html",
+  "family": "Standard",
+  "box": "2B",
+  "disk": 3,
+  "on": 6,
+  "gold": 17,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "TEFUN05",
+  "page": "TEFUN05_0_0.html",
+  "family": "Fundamentals",
+  "box": "3B",
+  "disk": 2,
+  "on": 3,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "TWHA906",
+  "page": "TWHA906_0_0.html",
+  "family": "Inquiry",
+  "box": "4C",
+  "disk": 0,
+  "on": 1,
+  "gold": 1,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XDLS502",
+  "page": "XDLS502_4_0.html",
+  "family": "Standard",
+  "box": "4B",
+  "disk": 1,
+  "on": 2,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "XDLS904",
+  "page": "XDLS904_5_0.html",
+  "family": "Standard",
+  "box": "5F",
+  "disk": 3,
+  "on": 4,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "XDLS909",
+  "page": "XDLS909_3_0.html",
+  "family": "Inquiry",
+  "box": "3C",
+  "disk": 0,
+  "on": 1,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "XDLS912",
+  "page": "XDLS912_2_0.html",
+  "family": "Standard",
+  "box": "2A",
+  "disk": 4,
+  "on": 5,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XDLS912",
+  "page": "XDLS912_4_0.html",
+  "family": "Standard",
+  "box": "4B",
+  "disk": 0,
+  "on": 2,
+  "gold": 8,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XDLS912",
+  "page": "XDLS912_4_0.html",
+  "family": "Standard",
+  "box": "4D",
+  "disk": 0,
+  "on": 1,
+  "gold": 34,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XGF9001",
+  "page": "XGF9001_2_0.html",
+  "family": "Standard",
+  "box": "3C",
+  "disk": 0,
+  "on": 1,
+  "gold": null,
+  "verdict": "gold-no-box"
+ },
+ {
+  "module": "XGF9003",
+  "page": "XGF9003_1_0.html",
+  "family": "Standard",
+  "box": "2B",
+  "disk": 1,
+  "on": 2,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XLP03",
+  "page": "XLP03_4_0.html",
+  "family": "Standard",
+  "box": "3A",
+  "disk": 5,
+  "on": 6,
+  "gold": 19,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XLP06",
+  "page": "XLP06_1_0.html",
+  "family": "Standard",
+  "box": "1A",
+  "disk": 2,
+  "on": 3,
+  "gold": 4,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XMES101",
+  "page": "XMES101_7_0.html",
+  "family": "Standard",
+  "box": "7E",
+  "disk": 0,
+  "on": 2,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XMES101",
+  "page": "XMES101_8_0.html",
+  "family": "Standard",
+  "box": "8B",
+  "disk": 2,
+  "on": 4,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XMES103",
+  "page": "XMES103_1_0.html",
+  "family": "Standard",
+  "box": "1B",
+  "disk": 2,
+  "on": 3,
+  "gold": 5,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XMES103",
+  "page": "XMES103_4_0.html",
+  "family": "Standard",
+  "box": "4A",
+  "disk": 0,
+  "on": 1,
+  "gold": 0,
+  "verdict": "gold-no-media"
+ },
+ {
+  "module": "XTAS101",
+  "page": "XTAS101_2_0.html",
+  "family": "Standard",
+  "box": "2D",
+  "disk": 0,
+  "on": 1,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XTAS101",
+  "page": "XTAS101_3_0.html",
+  "family": "Standard",
+  "box": "3B",
+  "disk": 1,
+  "on": 2,
+  "gold": 2,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XTAS102",
+  "page": "XTAS102_2_0.html",
+  "family": "Standard",
+  "box": "2G",
+  "disk": 0,
+  "on": 1,
+  "gold": 27,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XTAS102",
+  "page": "XTAS102_5_0.html",
+  "family": "Standard",
+  "box": "5A",
+  "disk": 0,
+  "on": 1,
+  "gold": 6,
+  "verdict": "gold-media"
+ },
+ {
+  "module": "XTAS103",
+  "page": "XTAS103_2_0.html",
+  "family": "Standard",
+  "box": "2C",
+  "disk": 1,
+  "on": 2,
+  "gold": 1,
+  "verdict": "gold-media"
+ }
+]

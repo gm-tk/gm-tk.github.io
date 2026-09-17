@@ -517,7 +517,8 @@ class ActivitiesBuilder {
 		// merged into box 7E and the sixth panel vanished — a merge the shipped disk
 		// also carries; the gold ships six separate panels.)
 		stack.push({ tag: "activity", close: tpl.activity_wrapper.close, mode: "activity",
-			hasContent: false, titledOpener: it._r307PanelId ? true : (it.blackAfter ?? "").trim().length > 0, id });
+			hasContent: false, titledOpener: it._r307PanelId ? true : (it.blackAfter ?? "").trim().length > 0, id,
+			idHeading: !!it._idHeading });   // ROUND 364: opened by an id-carrying heading (InteractiveScanner.#idHeadingOpeners)
 		// renderBlack=false lets the activity-OWNED path lay out the lead itself
 		// (first line → <h3> title); the standalone container path keeps true.
 		if (renderBlack && !tailIsId && it.blackAfter.trim()) {

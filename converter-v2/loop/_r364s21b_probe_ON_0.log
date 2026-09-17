@@ -1,0 +1,1561 @@
+PNR101: identical 2 / changed 0
+TRR103: identical 4 / changed 0
+TRR107: identical 3 / changed 0
+TRR112: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+  ~ ARFUN02_0_0.html: -0 +1
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+ARFUN02: identical 0 / changed 1
+CHFUN01: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+  ~ ENFUN04_0_0.html: -1 +4
+     - <p><a href="https://docs.google.com/presentation/d/1xugyw8f4mFCUZf-dV7UFe6WgOnqqo4ftqBdKxl49WR8/edit?usp=shari
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/for-only-show-as-above.jpg" alt="" /> -->
+ENFUN04: identical 0 / changed 1
+ENFUN09: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+  ~ MXFUN01_5_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ MXFUN01_6_2.html: -0 +4
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXFUN01: identical 17 / changed 2
+SSFUN01: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+BLL110: identical 1 / changed 0
+BLL150: identical 1 / changed 0
+BLL220: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDR201: identical 1 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+ENGFUN02: identical 5 / changed 0
+EXPFUN05: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+XDLS909: identical 5 / changed 0
+AGH1004: identical 7 / changed 0
+AGH1008: identical 10 / changed 0
+  ~ ANZH105_4_0.html: -2 +5
+     - <p><a href="https://www.istockphoto.com/photo/family-hiking-through-mountain-track-summer-gm1275747565-3757773
+     - <p>Polynesia Migration Aotearoa; <a href="https://www.aucklandartgallery.com/explore-art-and-ideas/artwork/758
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1275747565" alt="Family Hi
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1275747565.jpg" alt="Family Hiking Through Mount
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Polynesia Migration Aotearoa;</p>
+  ~ ANZH105_5_0.html: -1 +3
+     - <p>Metal object <a href="https://en.chnmuseum.cn/collections_577/collection_highlights_608/artifacts_handed___
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Metal object</p>
+ANZH105: identical 6 / changed 2
+ANZH303: identical 7 / changed 0
+ART1002: identical 8 / changed 0
+ART1006: identical 6 / changed 0
+  ~ BLL114_1_0.html: -0 +2
+     + <p>- Audio will need to be snipped for each instruction to allow ākonga to find the correct letter/sound</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL114: identical 2 / changed 1
+  ~ BLL121_2_0.html: -0 +1
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL121: identical 2 / changed 1
+BLL125: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL143: identical 3 / changed 0
+  ~ BLL147_1_1.html: -0 +4
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-someone-looking-angry-or-mad.jpg" alt="" /> -
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a-church-cross.jpg" alt="" /> -->
+BLL147: identical 2 / changed 1
+  ~ BLL154_1_1.html: -1 +3
+     - <p>Watch the video to help you understand this concept</p>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/mzx_lBb1F4w" loading="lazy" title="YouTube video player" f
+     + </div>
+BLL154: identical 2 / changed 1
+BLL161: identical 3 / changed 0
+  ~ BLL165_1_0.html: -1 +2
+     - <p>SPELD_SA_Set_6_The_Flash_2-DS.pdf</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/insert.jpg" alt="" /> -->
+  ~ BLL165_1_1.html: -1 +2
+     - <p>SPELD_SA_Set_6_The_Flash_2-DS.pdf</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL165: identical 1 / changed 2
+  ~ BLL172_1_0.html: -1 +3
+     - <p>Vowel Team Syllables {Syllable Types}</p>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://docs.google.com/document/d/17puVdOT1vSmjd4hm3evh9EXghYbNvYWg3F8TvbF2Utk/edit?tab=t.0" loa
+     + </div>
+BLL172: identical 2 / changed 1
+BLL176: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL231: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+  ~ BLL242_1_1.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/165607905/vector/detective-boy.jpg?s=1024x1024" target="_blank">h
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL242: identical 2 / changed 1
+BLL251: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+CEDO301: identical 6 / changed 0
+CEDT501: identical 15 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC202: identical 9 / changed 0
+ENGI101: identical 4 / changed 0
+  ~ ENGI202_3_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/please-create-a-map-containing-aotearoa.jpg" alt="" /> 
+ENGI202: identical 6 / changed 1
+ENGI303: identical 7 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ301: identical 8 / changed 0
+  ~ ENGR101_5_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/appearance-of-my-home-simple-two-color-set-gm1483035963-5097573
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1483035963" alt="Appearanc
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1483035963.jpg" alt="Appearance of My Home Simpl
+ENGR101: identical 7 / changed 1
+ENGR301: identical 9 / changed 0
+  ~ ENGS201_5_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-917675366" alt="Animals Dr
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-917675366.jpg" alt="Animals Dressed as Superhero
+ENGS201: identical 8 / changed 1
+ENGS401: identical 7 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1006: identical 8 / changed 0
+  ~ HIS1003_7_0.html: -2 +4
+     - <p><a href="https://nzhistory.govt.nz/files/styles/fullsize/public/images/sidney-holland_0.jpg?itok=bBlTnF5Q" 
+     - <p><a href="https://nzhistory.govt.nz/files/hero_fintan-walsh.jpg" target="_blank">https://nzhistory.govt.nz/f
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+HIS1003: identical 10 / changed 1
+HIS1007: identical 7 / changed 0
+MXDB201: identical 7 / changed 0
+  ~ MXDI101_1_7.html: -3 +9
+     - <p>Two Times Table Song | Numberblocks | CBeebies (<a href="https://www.youtube.com/watch?v=AUL_4lzT06I)" targ
+     - <p>Five Times Table Song | Numberblocks | CBeebies (<a href="https://www.youtube.com/watch?v=KPffpuHYIhc)" tar
+     - <p>Ten Times Table Song | Numberblocks | CBeebies (<a href="https://www.youtube.com/watch?v=zGxsCk2ppcI)" targ
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/AUL_4lzT06I" loading="lazy" title="YouTube video player" f
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/KPffpuHYIhc" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/zGxsCk2ppcI" loading="lazy" title="YouTube video player" f
+     + </div>
+     + </div>
+MXDI101: identical 10 / changed 1
+  ~ MXDI202_1_0.html: -113 +95
+     - <h4>1A: How many days, weeks, months and years?</h4>
+     - <p>There are seven days in a week, two weeks in a fortnight, 52 weeks in a year. There are 12 months in a year
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: unclassified — Activity (inline) — s
+     - <h4>1B Ordering the months</h4>
+     - <p>Order the months of the year from first to last.</p>
+     - <div class="activity">
+     - <h3>Drag and drop to order months from first to last.</h3>
+     - <h4>1C Months of the year</h4>
+     - <p>Answer the following questions about the months of the year</p>
+     - <div class="activity">
+     - <h4>1D: Ordering dates</h4>
+     - <p>Order the following dates from earliest to latest. Take note of the month and year.</p>
+     - <p>Remember the order of months is:</p>
+     - <p>January, February, March, April, May, June, July, August, September, October, November, December.</p>
+     - <p>If you find it difficult remembering the order of months, then watch this song.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/5enDRrWyXaw" loading="lazy" title="YouTube video player" f
+     - <div class="activity">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>1E: Ordering dates</h4>
+     - <p>There are several important years stated in the above information tiles. In the activity below order the ye
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/-it3LgTZNes" loading="lazy" title="YouTube video player" f
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>1F: Match the statements</h4>
+     - <p>Read the information on the tiles above and then use that information to match the statements to the correc
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="1B">
+     - … 73 more removed
+     + <h3>How many days, weeks, months and years?</h3>
+     + <p>There are seven days in a week, two weeks in a fortnight, 52 weeks in a year. There are 12 months in a year
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: unclassified — Activity 1A — see MXD
+     + <div class="activity" number="1B">
+     + <h3>Ordering the months</h3>
+     + <p>Order the months of the year from first to last.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop to order months from fi
+     + <div class="activity" number="1C">
+     + <h3>Months of the year</h3>
+     + <p>Answer the following questions about the months of the year</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop to correct answer</p>
+     + <div class="activity" number="1D">
+     + <h3>Ordering dates</h3>
+     + <p>Order the following dates from earliest to latest. Take note of the month and year.</p>
+     + <p>Remember the order of months is:</p>
+     + <p>January, February, March, April, May, June, July, August, September, October, November, December.</p>
+     + <p>If you find it difficult remembering the order of months, then watch this song.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/5enDRrWyXaw" loading="lazy" title="YouTube video player" f
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop/ order dates from earli
+     + … 75 more added
+  ~ MXDI202_2_0.html: -66 +133
+     - <h3>1. Golf courses:</h3>
+     - <p><a href="https://www.mychillybin.co.nz/viewphoto/mychillybin100398/mychillybin100398_199/t/mychillybin10039
+     - <p>Baldwin Street - Wikipedia</p>
+     - <p>Baldwin Street is the steepest residential street in the world and is found in Dunedin. It has an angle of 
+     - <p>Pitt Island - Wikipedia</p>
+     - <p>2A: Map Aotearoa Record Breaking Places</p>
+     - <p>New Zealand - Map (mapcarta.com)</p>
+     - <p>check</p>
+     - <p>reset</p>
+     - <p><a href="https://www.mychillybin.co.nz/viewphoto/mychillybin100777/mychillybin100777_1619/w/mychillybin1007
+     - <p>2B: Suburb search</p>
+     - <p><a href="https://www.mychillybin.co.nz/viewphoto/mychillybin100564/mychillybin100564_212/w/mychillybin10056
+     - <p><a href="https://www.mychillybin.co.nz/viewphoto/mychillybin106547/mychillybin106547_21/w/mychillybin106547
+     - <p><a href="https://www.mychillybin.co.nz/viewphoto/mychillybin101261/mychillybin101261_1469/w/mychillybin1012
+     - <p><a href="https://www.mychillybin.co.nz/viewphoto/mychillybin101722/mychillybin101722_216/w/mychillybin10172
+     - <p><a href="https://www.mychillybin.co.nz/viewphoto/mychillybin100177/mychillybin100177_230/w/mychillybin10017
+     - <div class="accContent"><p>Tamatea-pōkai-whenua (Tamatea the explorer of the land) was the father of Kahungunu
+     - <iframe src="https://www.youtube-nocookie.com/embed/eGWO1ldEhtQ" loading="lazy" title="YouTube video player" f
+     - </div><p>Write your summary in your journal</p></div>
+     - <h3>2D Find Locations on Google Maps</h3>
+     - <p>Use the following link to find the places where Tamatea travelled. Then place the names onto the map below 
+     - <ol>
+     - <li>Tauranga</li>
+     - <li>Tūranga-nui-a-Kiwa (Gisborne)</li>
+     - <li>Māhia</li>
+     - <li>Wairoa</li>
+     - <li>Ahuriri (Napier)</li>
+     - <li>Heretaunga</li>
+     - <li>Pōrangahau</li>
+     - <li>Taupō</li>
+     - </ol>
+     - <a href="https://www.google.com/maps/@-36.8082944,174.7058688,14z?entry=ttu" target="_blank"><div class="butto
+     - <h3>2E Place names map</h3>
+     - <p>In the activity below, drag and drop the place names that are part of Tamatea-pōkai-whenua (Tamatea the exp
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity">
+     - <h3>2F Optional research challenge</h3>
+     - <p>Research one of the places that have been included in this lesson. Or, if you know of another town that hol
+     - <ol>
+     - … 26 more removed
+     + <li><b>Golf courses:</b></li>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Baldwin Street is the steepest residential street in the world and is found in Dunedin. It has an angle of 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <div class="activity" number="2A">
+     + <h3>Map Aotearoa Record Breaking Places</h3>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [embedded webpage]</p>
+     + <p><a href="https://mapcarta.com/New_Zealand/Map" target="_blank">New Zealand - Map (mapcarta.com)</a></p>
+     + <a href="https://www.mychillybin.co.nz/viewphoto/mychillybin100777/mychillybin100777_1619/w/mychillybin100777_
+     + <div class="activity interactive" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Suburb search</h3>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + … 113 more added
+  ~ MXDI202_3_0.html: -102 +149
+     - <h4>3A Angles match</h4>
+     - <p>In the memory game below, turn over two cards at a time, match the name to the correct picture card.</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity (inline) — s
+     - <h4>3B Match the angle to the name</h4>
+     - <p>In the next activity you will need to match the angle to the correct name. Use the following pictures in th
+     - <div class="activity">
+     - <h4>3C Less than and greater than</h4>
+     - <p>Look at the angles below. Decide if the following angles are less than 90 degrees, 90 degrees (right angle)
+     - <div class="activity interactive" number="3B">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity (inline) — s
+     - <h4>3D Angle search</h4>
+     - <p>Around your home, look for two or more angles for each of the type of angle:</p>
+     - <ul>
+     - <li>Acute</li>
+     - <li>Obtuse</li>
+     - <li>Right angle.</li>
+     - </ul>
+     - <p>Take a photo or draw each picture and insert this into your journal.</p>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <h4>3E Estimate and angles</h4>
+     - <p>Look at the angles drawn below. With your supervisor, estimate the angle shown. Record your estimation in y
+     - <p><b>Remember:</b></p>
+     - <p><i>90 degrees is a right angle</i></p>
+     - <p><i>180 degrees is a straight line</i></p>
+     - <p><i>45 degrees is half of a right angle</i></p>
+     - <th></th>
+     - <th></th>
+     - <td></td>
+     - <td></td>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="MXDI202-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: carousel (embedded) — Activity (inli
+     - <p>3F Reading a protractor</p>
+     - <p>Look at the following pictures, each showing an angle being measured by a protractor. Carefully read the me
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [image] <a href="https://media.istockphoto.com/id/1417904419/vector/protractor-ruler-isolated-on-the-whit
+     - … 62 more removed
+     + <h3>Angles match</h3>
+     + <p>In the memory game below, turn over two cards at a time, match the name to the correct picture card.</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity 3A — see MXD
+     + <div class="activity" number="3B">
+     + <h3>Match the angle to the name</h3>
+     + <p>In the next activity you will need to match the angle to the correct name. Use the following pictures in th
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop - name the angle</p>
+     + <h3>Less than and greater than</h3>
+     + <p>Look at the angles below. Decide if the following angles are less than 90 degrees, 90 degrees (right angle)
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity 3C — see MXD
+     + <div class="activity" number="3D">
+     + <h3>Angle search</h3>
+     + <p>Around your home, look for two or more angles for each of the type of angle:</p>
+     + <ul>
+     + <li>Acute</li>
+     + <li>Obtuse</li>
+     + <li>Right angle.</li>
+     + </ul>
+     + <p>Take a photo or draw each picture and insert this into your journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + … 129 more added
+  ~ MXDI202_4_0.html: -251 +279
+     - <h4>4A Converting MM to CM</h4>
+     - <p>Convert the following mm measurements into centimetres by dividing the number by 10.</p>
+     - <p>For example:</p>
+     - <p>11mm =</p>
+     - <p>11mm ÷ 10 = 1.1 cm</p>
+     - <p>37mm =</p>
+     - <p>37mm ÷ 10 = 3.7 cm</p>
+     - <div class="button">check</div>
+     - <div class="button">reset</div>
+     - <div class="activity">
+     - <h4>4B Converting cm into metres</h4>
+     - <p>convert the following centimetre (cm) measurements into metres (m) by dividing the measurement by 100. For 
+     - <p>122 cm = 1.22 m (122cm ÷ 100 = 1.20 m)</p>
+     - <p>373 cm = 3.73 m (373 cm ÷ 100 = 3.73 m)</p>
+     - <div class="activity">
+     - <h4>4C Marble run questions</h4>
+     - <p>Read the information above about the record-breaking marble runs and then complete the sentences below by d
+     - <div class="activity interactive" number="4A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXDI202-04-01" style="border: 8px s
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: Sensirion AG, 2 858.9m, four
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity (inline) — 
+     - <p>_________________ broke the Guinness Book of Records for the longest marble run in September 2017. The leng
+     - <h4>4D Marble run</h4>
+     - <p>The table below shows the world’s longest marble runs. When measuring length or distance we use different u
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Date</th>
+     - <th>Metres</th>
+     - <th>Group or individual</th>
+     - <th>Country</th>
+     - </tr>
+     - <tr>
+     - <td>4 April 2009</td>
+     - <td>210.31 m</td>
+     - <td>Jelle Bakker</td>
+     - <td>Netherlands</td>
+     - </tr>
+     - <tr>
+     - … 211 more removed
+     + <div class="activity" number="4A">
+     + <h3>Converting MM to CM</h3>
+     + <p>Convert the following mm measurements into centimetres by dividing the number by 10.</p>
+     + <p>For example:</p>
+     + <p>11mm =</p>
+     + <p>11mm ÷ 10 = 1.1 cm</p>
+     + <p>37mm =</p>
+     + <p>37mm ÷ 10 = 3.7 cm</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: type and check (convert mm measuremen
+     + <div class="activity" number="4B">
+     + <h3>Converting cm into metres</h3>
+     + <p>convert the following centimetre (cm) measurements into metres (m) by dividing the measurement by 100. For 
+     + <p>122 cm = 1.22 m (122cm ÷ 100 = 1.20 m)</p>
+     + <p>373 cm = 3.73 m (373 cm ÷ 100 = 3.73 m)</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: type and check (convert cm measuremen
+     + <div class="activity" number="4C">
+     + <h3>Marble run questions</h3>
+     + <p>Read the information above about the record-breaking marble runs and then complete the sentences below by d
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop</p>
+     + <p>_________________ broke the Guinness Book of Records for the longest marble run in September 2017. The leng
+     + … 259 more added
+  ~ MXDI202_5_0.html: -26 +33
+     - <p>Using materials that you can find around your home and or garden, create your own marble or ball run. You w
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/IN0Wn0XgPXQ" loading="lazy" title="YouTube video player" f
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1481283752" alt="Marble Ru
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1481283752.jpg" alt="Marble Run" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>If you don’t have a marble then you could adjust this challenge to a ball run instead.</p>
+     - <p>Go to your journal to upload photos of your marble run and then complete the following questions.</p>
+     - <ol>
+     - <li>What materials have you used to complete your marble run?</li>
+     - <li>Time how long it takes for the marble or ball to move through the run. Remember it must keep always moving
+     - <li>How could you adjust your run so that the marble (or ball) moves more slowly?</li>
+     - <li>How could you adjust your run so that the marble (or ball) moves more quickly?</li>
+     - <li>Make changes to your run to improve your time and then record your new times here:</li>
+     - <li>What is the quickest time that the marble (or ball) completed the run?</li>
+     - <li>What is the slowest time that the marble (or ball) completed the run?</li>
+     - <li>What is the total length of your marble run?</li>
+     - </ol>
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity" number="4J">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Design and create a marble run</h3>
+     + <p>Using materials that you can find around your home and or garden, create your own marble or ball run. You w
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/IN0Wn0XgPXQ" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1481283752" alt="Marble Ru
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1481283752.jpg" alt="Marble Run" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>If you don’t have a marble then you could adjust this challenge to a ball run instead.</p>
+     + <p>Go to your journal to upload photos of your marble run and then complete the following questions.</p>
+     + … 13 more added
+  ~ MXDI202_6_0.html: -209 +276
+     - <h4>5A Name the graph</h4>
+     - <p>Look at the following graphs and charts. Label the images with the correct name,</p>
+     - <div class="activity interactive" number="6A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="MXDI202-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: unclassified — Activity (inline) — 
+     - <h4>5B When to use each Graph</h4>
+     - <p>Each type of graph has its strengths, so choosing the right one depends on the data you have and the story 
+     - <p>Here’s a quick guide on when to use each type of graph.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th>When to Use:</th>
+     - <th>Example:</th>
+     - </tr>
+     - <tr>
+     - <td>Bar chart:</td>
+     - <td>To compare different categories or groups.</td>
+     - <td>Comparing sales figures for different products in a store</td>
+     - </tr>
+     - <tr>
+     - <td>Line graph</td>
+     - <td>To show what happens over time.</td>
+     - <td>Tracking the temperature changes over a week.</td>
+     - </tr>
+     - <tr>
+     - <td>Pictogram</td>
+     - <td>To represent data with images or symbols, making it easier to understand.</td>
+     - <td>Showing the number of books read by students using book icons.</td>
+     - </tr>
+     - <tr>
+     - <td>Tally chart</td>
+     - <td>To record and count frequencies of data as it is collected</td>
+     - <td>Counting the number of times different colours of cars pass by a point.</td>
+     - </tr>
+     - <tr>
+     - <td>Pie chart</td>
+     - <td>To show proportions or percentages of a whole</td>
+     - <td>Displaying the market share of different smartphone brands</td>
+     - … 169 more removed
+     + <div class="activity interactive" number="5A">
+     + <h3>Name the graph</h3>
+     + <p>Look at the following graphs and charts. Label the images with the correct name,</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="MXDI202-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity 5A — see MX
+     + <div class="activity interactive" number="5B">
+     + <h3>When to use each Graph</h3>
+     + <p>Each type of graph has its strengths, so choosing the right one depends on the data you have and the story 
+     + <p>Here’s a quick guide on when to use each type of graph.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="MXDI202-06-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity 5B — see MX
+     + <th>When to Use:</th>
+     + <th>Example:</th>
+     + <td>Bar chart:</td>
+     + <td>To compare different categories or groups.</td>
+     + <td>Comparing sales figures for different products in a store</td>
+     + <td>Line graph</td>
+     + <td>To show what happens over time.</td>
+     + … 256 more added
+  ~ MXDI202_7_0.html: -81 +91
+     - <h4>6A Reading a bar chart</h4>
+     - <p>Look at the bar chart and then answer the questions by typing your answer.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: graph can be recreated if needed<br /
+     - <p><a href="https://mytekuraschool-my.sharepoint.com/:x:/g/personal/rachel_degarnham_tekura_school_nz/ERq1iMwk
+     - <div class="activity interactive" number="7A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="MXDI202-07-01" style="border: 8px s
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1. 12 metres, 7 metres, 7 me
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity (inline) — 
+     - <ol>
+     - <li>How many metres did the following people flip their coin?</li>
+     - </ol>
+     - <p>Alistar _________Anita _________Tane _________</p>
+     - <ol>
+     - <li>How many people flipped their coin one metre?</li>
+     - <li>Who flipped their coin the farthest?</li>
+     - </ol>
+     - <p>check</p>
+     - <p>reset</p>
+     - <h4>6B Complete a bar chart</h4>
+     - <p>Have you ever played leapfrog? The record for the world’s largest game of leapfrog involved 1,348 children.
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/uc3CiZN2DCE" loading="lazy" title="YouTube video player" f
+     - <p>The greatest number of leapfrogs jumps in one minute by a team of two is 58 and was achieved by Muhammad No
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>In the next task you will see how many leapfrog jumps you and a friend or whānau member can do in one minut
+     - <p>Click on the stop clock to start your timer. Remember to count how many leapfrog jumps you and your partner
+     - <a href="https://toytheater.com/classroom-timer/" target="_blank"><div class="button externalButton">Classroom
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Name of people/ team</th>
+     - <th>Number of leapfrog jumps in one minute</th>
+     - </tr>
+     - <tr>
+     - <td>Muhammad Abubka and Muhammad Norman</td>
+     - <td>58</td>
+     - </tr>
+     - <tr>
+     - … 41 more removed
+     + <div class="activity" number="6A">
+     + <h3>Reading a bar chart</h3>
+     + <p>Look at the bar chart and then answer the questions by typing your answer.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: graph can be recreated if needed<br /
+     + <p><a href="https://mytekuraschool-my.sharepoint.com/:x:/g/personal/rachel_degarnham_tekura_school_nz/ERq1iMwk
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: type and check</p>
+     + <li>How many metres did the following people flip their coin?</li>
+     + <p>Alistar _________Anita _________Tane _________</p>
+     + <ol>
+     + <li>How many people flipped their coin one metre?</li>
+     + <li>Who flipped their coin the farthest?</li>
+     + </ol>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1. 12 metres, 7 metres, 7 me
+     + <div class="activity interactive" number="6B">
+     + <h3>Complete a bar chart</h3>
+     + <p>Have you ever played leapfrog? The record for the world’s largest game of leapfrog involved 1,348 children.
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/uc3CiZN2DCE" loading="lazy" title="YouTube video player" f
+     + <p>The greatest number of leapfrogs jumps in one minute by a team of two is 58 and was achieved by Muhammad No
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + … 71 more added
+  ~ MXDI202_8_0.html: -160 +161
+     - <h4>7A Part 1: Convert g into kg</h4>
+     - <p>Convert the following grams into kilograms. Remember that you will need to divide the number by 1,000. This
+     - <p>For example:</p>
+     - <p>324g = 0.324kg 324g ÷ 1 000 = 0.324kg</p>
+     - <p>2 321g = 2.321kg2 321g ÷ 1 000 = 2.321kg</p>
+     - <div class="activity interactive" number="8A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="MXDI202-08-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity (inline) — 
+     - <h4>7A Part B: Converting kg into g</h4>
+     - <p>Convert the following measurements from kilograms to grams. Remember that 1 kilogram is equal to 1,000g, so
+     - <p>5 kg = 5 000 g 5 kg x 1 000 = 5 000 g</p>
+     - <p>6.3kg = 6 300g 6.3kg x 1 000 = 6 300 g</p>
+     - <p>7.24 kg = 7 240 g7.24 kg x 1 000 = 7 240 g</p>
+     - <p>Can you see the pattern of numbers when multiplying by 1 000?</p>
+     - <div class="activity interactive" number="8B">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="MXDI202-08-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity (inline) — 
+     - <h4>7B Reading scales</h4>
+     - <p>Calculate the interval for this scale then work out what the measurement is for each arrow.</p>
+     - <p>For example: On the scale below there are two intervals between 0 and 100.</p>
+     - <p>100 ÷ 2 = 50</p>
+     - <p>Each interval is worth 50 g</p>
+     - <p>The arrow is pointing to 250 g</p>
+     - <div class="activity">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: a. 20 g, b. 60 g, c. 240 g, 
+     - <div class="activity">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: a. 100 g, b. 760 g, c. 300 g
+     - <h3>Shrek the Sheep</h3>
+     - <p>Shrek the sheep was a Merino male sheep belonging to Bendigo Station. Which is a sheep station near Tarras 
+     - <p>Shrek became a national icon. Shrek died at the age of 16 years old.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [webpage]</p>
+     - <p><a href="https://www.amusingplanet.com/2014/07/shrek-sheep-who-escaped-shearing-for-6.html" target="_blank"
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: use image at 0:10sec. or any other im
+     - <h4>7C Comprehending Shrek</h4>
+     - <p>Read the story of Shrek and watch the video clip. Then match the numbers to the correct statements</p>
+     - <div class="activity interactive" number="8C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="MXDI202-08-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - … 120 more removed
+     + <div class="activity interactive" number="7A">
+     + <h3>Part 1: Convert g into kg</h3>
+     + <p>Convert the following grams into kilograms. Remember that you will need to divide the number by 1,000. This
+     + <p>For example:</p>
+     + <p>324g = 0.324kg 324g ÷ 1 000 = 0.324kg</p>
+     + <p>2 321g = 2.321kg2 321g ÷ 1 000 = 2.321kg</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="MXDI202-08-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: unclassified — Activity 7A — see MX
+     + <div class="activity interactive" number="7B">
+     + <h3>Part B: Converting kg into g</h3>
+     + <p>Convert the following measurements from kilograms to grams. Remember that 1 kilogram is equal to 1,000g, so
+     + <p>5 kg = 5 000 g 5 kg x 1 000 = 5 000 g</p>
+     + <p>6.3kg = 6 300g 6.3kg x 1 000 = 6 300 g</p>
+     + <p>7.24 kg = 7 240 g7.24 kg x 1 000 = 7 240 g</p>
+     + <p>Can you see the pattern of numbers when multiplying by 1 000?</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="MXDI202-08-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: unclassified — Activity 7B — see MX
+     + <div class="activity" number="7B">
+     + … 141 more added
+  ~ MXDI202_9_0.html: -155 +192
+     - <div class="activity interactive" number="9A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="MXDI202-09-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXDI202-09-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: unclassified — Activity (inline) — 
+     - <h4>8B What am I?</h4>
+     - <p>Click on the clues, can you guess the 3D shape using the clues?</p>
+     - <div class="activity interactive" number="9C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXDI202-09-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: unclassified — Activity (inline) — 
+     - <h4>8C Number of vertices, edges and faces</h4>
+     - <p>Discuss with your supervisor the attributes of the following 3D shapes:</p>
+     - <ol>
+     - <li>Cube</li>
+     - <li>Cone</li>
+     - <li>Triangular prism</li>
+     - <li>Square based pyramid</li>
+     - <li>Cylinder</li>
+     - </ol>
+     - <th>Number of Faces</th>
+     - <th>Number of Edges</th>
+     - <th>Number of Vertices</th>
+     - <td>• Cube</td>
+     - <td>• Cone</td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td>• Triangular prism</td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td>• Square based pyramid</td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td>• Cylinder</td>
+     - <td></td>
+     - … 115 more removed
+     + <div class="activity interactive" number="8A">
+     + <h3>Vocabulary match</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="MXDI202-09-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: unclassified — Activity 8A — see MX
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="MXDI202-09-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: unclassified — Activity (inline) — 
+     + <div class="activity interactive" number="8B">
+     + <h3>What am I?</h3>
+     + <p>Click on the clues, can you guess the 3D shape using the clues?</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="35" data-cv2-ref="MXDI202-09-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="35" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #35: unclassified — Activity 8B — see MX
+     + <div class="activity interactive" number="8C">
+     + <h3>Number of vertices, edges and faces</h3>
+     + <p>Discuss with your supervisor the attributes of the following 3D shapes:</p>
+     + <ol>
+     + <li>Cube</li>
+     + <li>Cone</li>
+     + … 172 more added
+  ~ MXDI202_10_0.html: -68 +97
+     - <h3>9A Rubik&#39;s cube results</h3>
+     - <p>The results in the table above have a variety of numbers from 15 through to almost 4,000! Any record made c
+     - <div class="activity interactive" number="10A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="MXDI202-10-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: unclassified — Activity (inline) — 
+     - <h3>9B Graph Builder</h3>
+     - <p>Using the following graph maker. Create a bar chart to display the information on the following table.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>On a unicycle.</th>
+     - <th>302</th>
+     - </tr>
+     - <tr>
+     - <td>Underwater.</td>
+     - <td>15</td>
+     - </tr>
+     - <tr>
+     - <td>On a skateboard.</td>
+     - <td>500</td>
+     - </tr>
+     - <tr>
+     - <td>Upside down.</td>
+     - <td>153</td>
+     - </tr>
+     - <tr>
+     - <td>Solved in one hour.</td>
+     - <td>636</td>
+     - </tr>
+     - <tr>
+     - <td>Blindfolded for one hour</td>
+     - <td>62</td>
+     - </tr>
+     - </table>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [embedded webpage]</p>
+     - <p><a href="https://www.mathsisfun.com/data/data-graph.php" target="_blank">Data Graphs (Bar, Line, Dot, Pie, 
+     - <p>Save an image of your graph and upload it to your journal.</p>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <h3>9C Speed challenge</h3>
+     - … 28 more removed
+     + <div class="activity interactive" number="9A">
+     + <h3>Rubik&#39;s cube results</h3>
+     + <p>The results in the table above have a variety of numbers from 15 through to almost 4,000! Any record made c
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="MXDI202-10-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: unclassified — Activity 9A — see MX
+     + <div class="activity interactive" number="9B">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Graph Builder</h3>
+     + <p>Using the following graph maker. Create a bar chart to display the information on the following table.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="41" data-cv2-ref="MXDI202-10-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [embedded webpage]</p>
+     + <div class="cv2-interactive" data-cv2-index="41" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #41: unclassified — Activity 9B — see MX
+     + <div style="font-size: 0.95em">
+     + … 77 more added
+  ~ MXDI202_11_0.html: -375 +372
+     - <h4>10A Sorting measurements</h4>
+     - <p>Sort the following foods into two groups. a. Food that will be measured in length b. Food that will be meas
+     - <div class="activity interactive" number="11A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="MXDI202-11-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="29" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: unclassified — Activity (inline) — 
+     - <h4>10B Ordering distances</h4>
+     - <p>Order the following distances from shortest to longest. Remember a kilometre is much longer than a metre. T
+     - <p>21.5km could be written as 21km and 500m.</p>
+     - <p>21.5km could also be written as metres like this 2150m</p>
+     - <div class="activity">
+     - <h4>10C Ordering distances</h4>
+     - <p>Order these measurements from shortest to longest. Pay attention to the decimal point.</p>
+     - <div class="activity">
+     - <h4>10D Changing Units</h4>
+     - <p>Change the following units to kilometres or metres</p>
+     - <div class="activity interactive" number="11B">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="MXDI202-11-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: unclassified — Activity (inline) — 
+     - <h4>10E How much more?</h4>
+     - <p>Calculate how much more the following foods weigh than the other. For example: The largest scoop of ice cre
+     - <p>5 792 kg – 1 344 kg = 4 448 kg</p>
+     - <p>The chocolate bar weighed 4 448 kg more than the ice cream scoop.</p>
+     - <p>These numbers are more complex, so if you need to – use a calculator.</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="11C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="MXDI202-11-03" style="border: 8px s
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: 1. 2 349 m2. 1 810 kg 3. 9 2
+     - <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: unclassified — Activity (inline) — 
+     - <ol>
+     - <li>The longest noodle was 3 084 m long whereas the longest sandwich was 735 m. How much longer was the noodle
+     - <li>The largest pancake weighed 3 000 kg whereas the heaviest pumpkin weighed 1 190 kg. How much heavier was t
+     - <li>The largest cupcake weighed 1 176 kg, whereas the largest fruit salad weighed 10 440 kg. How much heavier 
+     - <li>The longest pizza was 1 930 m whereas the longest sushi roll was 2 120 m. How much longer was the sushi ro
+     - </ol>
+     - </div>
+     - </div>
+     - … 335 more removed
+     + <div class="activity interactive" number="10A">
+     + <h3>Sorting measurements</h3>
+     + <p>Sort the following foods into two groups. a. Food that will be measured in length b. Food that will be meas
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="MXDI202-11-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: unclassified — Activity 10A — see M
+     + <div class="activity" number="10B">
+     + <h3>Ordering distances</h3>
+     + <p>Order the following distances from shortest to longest. Remember a kilometre is much longer than a metre. T
+     + <p>21.5km could be written as 21km and 500m.</p>
+     + <p>21.5km could also be written as metres like this 2150m</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ordering numbers from smallest to lar
+     + <div class="activity" number="10C">
+     + <h3>Ordering distances</h3>
+     + <p>Order these measurements from shortest to longest. Pay attention to the decimal point.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ordering distances from shortest to l
+     + <div class="activity interactive" number="10D">
+     + <h3>Changing Units</h3>
+     + <p>Change the following units to kilometres or metres</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="MXDI202-11-02" style="border: 8px s
+     + … 352 more added
+MXDI202: identical 1 / changed 11
+MXEO202: identical 9 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL104: identical 6 / changed 0
+  ~ MXFL204_1_0.html: -27 +25
+     - <h4>1B Statistical investigation wordsearch</h4>
+     - <p>Complete the following wordsearch by finding the following statistical investigation key words. When you ha
+     - <ol>
+     - <li>Investigation</li>
+     - <li>Plan</li>
+     - <li>Problem</li>
+     - <li>Research</li>
+     - <li>Wondering</li>
+     - <li>Identify</li>
+     - <li>Data</li>
+     - <li>Analyse</li>
+     - <li>Statistics</li>
+     - <li>Conclusion</li>
+     - <li>Survey</li>
+     - <li>Interview</li>
+     - <li>Graph</li>
+     - <li>Chart</li>
+     - <li>Questions</li>
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p><a href="https://media.istockphoto.com/id/518426229/photo/business-infographic.jpg?s=1024x1024" target="_bl
+     - </div>
+     - </div>
+     + <div class="activity" number="1B">
+     + <h3>Statistical investigation wordsearch</h3>
+     + <p>Complete the following wordsearch by finding the following statistical investigation key words. When you ha
+     + <ol>
+     + <li>Investigation</li>
+     + <li>Plan</li>
+     + <li>Problem</li>
+     + <li>Research</li>
+     + <li>Wondering</li>
+     + <li>Identify</li>
+     + <li>Data</li>
+     + <li>Analyse</li>
+     + <li>Statistics</li>
+     + <li>Conclusion</li>
+     + <li>Survey</li>
+     + <li>Interview</li>
+     + <li>Graph</li>
+     + <li>Chart</li>
+     + <li>Questions</li>
+     + </ol>
+     + … 5 more added
+  ~ MXFL204_3_0.html: -2 +4
+     - <p>Bird of the Year.mp3</p>
+     - <p>And the Winner is (1).mp3</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p><a href="https://mytekuraschool.sharepoint.com/:u:/s/TeAraWhakamua381/EY8d_KADExhDvoSUUPgIiIoBytEvJiq4xrML9
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p><a href="https://mytekuraschool.sharepoint.com/:u:/s/TeAraWhakamua381/EQAhh3Ki7O1NkmwtvW1HIHwBecRMTb_e-RQno
+  ~ MXFL204_5_1.html: -6 +3
+     - <h3>3F Which line graph is this?</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity">
+     - </div>
+     - </div>
+     + <div class="activity" number="3F">
+     + <h3>Which line graph is this?</h3>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop use current activity fr
+  ~ MXFL204_7_0.html: -2 +4
+     - <p><a href="https://www.istockphoto.com/photo/true-and-false-2-way-road-sign-gm1391263582-447941250" target="_
+     - <p><a href="https://media.istockphoto.com/id/157376125/photo/a-young-people-feeding-leaves-to-a-giraffe-in-a-z
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1391263582" alt="True and 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1391263582.jpg" alt="True and False 2 Way Road S
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ MXFL204_8_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ MXFL204_9_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/1191167065/photo/african-woman-crouching-on-the-ground-and-playin
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXFL204: identical 6 / changed 6
+  ~ MXFU201_1_0.html: -93 +94
+     - <h4>1C Half Past</h4>
+     - <p>There are 60 minutes in 1 hour, when 30 minutes have passed, we say ‘half past’ the hour. For example: When
+     - <p>On an analogue clock, when the minute hand is pointing at the 6, it means it’s “half past” the hour because
+     - <p>On a digital clock: If you see a time like 3:30, that’s half past 3. The “:30” means 30 minutes past the ho
+     - <p>Look at this slide show if you need support reading half past times.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="MXFU201-01-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: carousel — Activity (inline) — see M
+     - <div style="font-size: 0.95em">
+     - <p>Telling the Time: Half Past the Hour - PowerPoint - Twinkl</p>
+     - <div class="activity interactive" number="1F">
+     - <h4>1D Real Time</h4>
+     - <p>Look at the clock below. Move the minute hand and watch what happens to the hour hand. Talk with your super
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [embedded webpage]</p>
+     - <p>Real time analogue clock. <a href="https://www.visnos.com/demos/clock" target="_blank">Interactive clock | 
+     - <h4>1E Part 1 Quarter Past and Quarter To</h4>
+     - <p>Look at the analogue clocks showing quarter past an hour. Type the digital time for each analogue clock.</p
+     - <p>For example: The following analogue clock is showing quarter past 2.</p>
+     - <p>The digital time would be <b>2:15.</b></p>
+     - <div class="activity">
+     - <h4>1E Part 2 Quarter Past and Quarter to</h4>
+     - <p>Look at the analogue clocks showing quarter to an hour. Type the digital time for each clock.</p>
+     - <p>For example: An analogue clock showing quarter to 6 would look like this</p>
+     - <p>The digital time would be 5:45.</p>
+     - <div class="activity">
+     - <h4>1F Digital and Analogue Review</h4>
+     - <p>Look at the following digital and analogue clocks. Match the times on both clocks to the time written in wo
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - … 53 more removed
+     + <div class="activity interactive" number="1C">
+     + <h3>Half Past</h3>
+     + <p>There are 60 minutes in 1 hour, when 30 minutes have passed, we say ‘half past’ the hour. For example: When
+     + <p>On an analogue clock, when the minute hand is pointing at the 6, it means it’s “half past” the hour because
+     + <p>On a digital clock: If you see a time like 3:30, that’s half past 3. The “:30” means 30 minutes past the ho
+     + <p>Look at this slide show if you need support reading half past times.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="MXFU201-01-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: carousel — Activity 1C — see MXFU201
+     + <p>Telling the Time: Half Past the Hour - PowerPoint - Twinkl</p>
+     + <div class="activity" number="1D">
+     + <h3>Real Time</h3>
+     + <p>Look at the clock below. Move the minute hand and watch what happens to the hour hand. Talk with your super
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [embedded webpage]</p>
+     + <p>Real time analogue clock. <a href="https://www.visnos.com/demos/clock" target="_blank">Interactive clock | 
+     + <div class="activity" number="1E">
+     + <h3>Part 1 Quarter Past and Quarter To</h3>
+     + <p>Look at the analogue clocks showing quarter past an hour. Type the digital time for each analogue clock.</p
+     + <p>For example: The following analogue clock is showing quarter past 2.</p>
+     + … 74 more added
+  ~ MXFU201_2_0.html: -124 +124
+     - <h4>2A Part 1 5x Tables</h4>
+     - <p>Type the answers to the following multiples of 5.</p>
+     - <iframe src="https://www.youtube-nocookie.com/embed/KPffpuHYIhc" loading="lazy" title="YouTube video player" f
+     - <div class="activity">
+     - <h3>Type and check.</h3>
+     - <h4>2A Part 2 5x Tables</h4>
+     - <p>This time the 5x tables are in a mixed order. Solve the sums by dragging and dropping the answers.</p>
+     - <div class="activity">
+     - <h3>Drag and drop answers.</h3>
+     - <h4>2A Part 3 5x Table Practice</h4>
+     - <p>If you would like some more practice working on your 5x tables then click here to download this optional wo
+     - <iframe src="https://www.twinkl.co.nz/resource/cfe-n-145-five-times-table-activity-booklet" loading="lazy" fra
+     - <p>The following links also provide some fun times table practice opportunities.</p>
+     - <a href="https://www.timestables.com/5-times-table.html" target="_blank"><div class="button externalButton">5 
+     - <h3>5 Minute Intervals</h3>
+     - <h4>2B 5 Minute Intervals on an Analogue Clock</h4>
+     - <p>Look at the analogue clock below, on the outside of the clock, drag and drop the number of minutes that eac
+     - <div class="activity">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="ratio ratio-16x9">
+     - <h4>2C Build a Clock</h4>
+     - <p>Optional Task: Build your own clock with minutes past and to the hour. You will need to print the following
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/t-n-2932-clock-hours-and-minutes-interactive-visual-aid" loadin
+     - <h4>2D Part 1 5 Minute Intervals Past the Hour</h4>
+     - <p>Read each time on the analogue clocks and match the identical digital time. Remember to count in 5s to find
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: a. 12:05</p>
+     - <div class="button">Check answers</div>
+     - <div class="button">Reset</div>
+     - <h4>2D Part 2 5 Minute Intervals to the Hour</h4>
+     - <p>Read each time on the analogue clocks and match the identical digital time. Remember to count in 5s to find
+     - <div class="activity">
+     - <h4>2E Part 1 5 Minute Intervals to the Hour</h4>
+     - <p>Practice reading digital times that use 5-minute intervals by flipping 2 cards over at a time and matching 
+     - <div class="activity interactive" number="2A">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity (inline) — 
+     - <h4>2E Part 2 5 Minute Intervals to the Hour</h4>
+     - <div class="row">
+     - … 84 more removed
+     + <div class="activity" number="2A">
+     + <h3>Part 1 5x Tables</h3>
+     + <p>Type the answers to the following multiples of 5.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/KPffpuHYIhc" loading="lazy" title="YouTube video player" f
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Type and check.</p>
+     + <div class="activity" number="2A">
+     + <h3>Part 2 5x Tables</h3>
+     + <p>This time the 5x tables are in a mixed order. Solve the sums by dragging and dropping the answers.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop answers.</p>
+     + <div class="activity" number="2A">
+     + <h3>Part 3 5x Table Practice</h3>
+     + <p>If you would like some more practice working on your 5x tables then click here to download this optional wo
+     + <div class="ratio ratio-16x9">
+     + <iframe src="https://www.twinkl.co.nz/resource/cfe-n-145-five-times-table-activity-booklet" loading="lazy" fra
+     + <p>The following links also provide some fun times table practice opportunities.</p>
+     + <a href="https://www.timestables.com/5-times-table.html" target="_blank"><div class="button externalButton">5 
+     + <div class="activity" number="2B">
+     + <h3>5 Minute Intervals on an Analogue Clock</h3>
+     + <p>Look at the analogue clock below, on the outside of the clock, drag and drop the number of minutes that eac
+     + … 104 more added
+  ~ MXFU201_3_0.html: -54 +40
+     - <h3>3A Match 24-hour time to the equivalent 12-hour time</h3>
+     - <p>Match the 24-hour time to the time it is when written in 12-hour form.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: unclassified — Activity (inline) — 
+     - <h3>3B AM or PM</h3>
+     - <p>] When reading a 12-hour clock, time becomes PM when the clock starts its second time around the clock, so 
+     - <p>For example: 10:00 24-hour time = 10:00 AM on a 12-hour clock, whereas 22:00 24-hour time = 10:00 PM on a 1
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: unclassified — Activity (inline) — 
+     - <h3>3C Match the Times</h3>
+     - <p>Match the analogue clock pictures to the equivalent 24-hour times by flipping 2 tiles over at a time. Try t
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity (inline) — 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>3D Part 1 Interpreting 24-hour time</h3>
+     - <p>Match the following 24-hour times to their digital times. When reading 24-hour time remember that 1:00pm be
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity (inline) — 
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>3E 24-Hour Time</h3>
+     - <p>Jono gets up at 7am in the morning and gets dressed.</p>
+     - <p>He helps around the house for a while before starting his schoolwork at 9am.</p>
+     - <p>He eats lunch at 12:30pm and does some more schoolwork at 1.30pm.</p>
+     - <p>At 4pm he has rugby practice; he then eats dinner with his whānau at 6pm.</p>
+     - <p>At 8pm he brushes his teeth before going to bed at 8.30pm</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: cut image use only boy in blue pants/
+     - <p>Match the following pictures which illustrate Jono’s day to the relevant 24-hour time.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 14 more removed
+     + <h3>Match 24-hour time to the equivalent 12-hour time</h3>
+     + <p>Match the 24-hour time to the time it is when written in 12-hour form.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: unclassified — Activity 3A — see MX
+     + <h3>AM or PM</h3>
+     + <p>] When reading a 12-hour clock, time becomes PM when the clock starts its second time around the clock, so 
+     + <p>For example: 10:00 24-hour time = 10:00 AM on a 12-hour clock, whereas 22:00 24-hour time = 10:00 PM on a 1
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: unclassified — Activity 3B — see MX
+     + <h3>Match the Times</h3>
+     + <p>Match the analogue clock pictures to the equivalent 24-hour times by flipping 2 tiles over at a time. Try t
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: unclassified — Activity 3C — see MX
+     + <h3>Part 1 Interpreting 24-hour time</h3>
+     + <p>Match the following 24-hour times to their digital times. When reading 24-hour time remember that 1:00pm be
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity 3D — see MX
+     + <h3>24-Hour Time</h3>
+     + <p>Jono gets up at 7am in the morning and gets dressed.</p>
+     + <p>He helps around the house for a while before starting his schoolwork at 9am.</p>
+     + … 20 more added
+  ~ MXFU201_4_0.html: -93 +73
+     - <h3>4A Part 1 Elapsed Time – Minutes</h3>
+     - <p>Calculate the time difference between the following times using a timeline.</p>
+     - <p>e.g.</p>
+     - <ul>
+     - <li>Start Time: 14:30</li>
+     - <li>End Time: 14:45</li>
+     - </ul>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>The elapsed time is 15 minutes.</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified — Activity (inline) — 
+     - <h3>4A Part 2 Elapsed Time – Minutes and Hours</h3>
+     - <p>Calculate the difference between the following times.</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: unclassified — Activity (inline) — 
+     - <h3>4B Elapsed Time Statements</h3>
+     - <p>Read the time statements below. Match the statements to the appropriate answers.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/pwVGOX2pRig" loading="lazy" title="YouTube video player" f
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: use boy on bottom line with blue bag<
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: unclassified — Activity (inline) — 
+     - <h3>4C Part 1 Elapsed Time</h3>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: unclassified — Activity (inline) — 
+     - <h3>4C Part 2 Elapsed Time using borrowing method</h3>
+     - <p>Calculating elapsed time using the borrowing method is similar to borrowing in subtraction. If you wanted t
+     - <p><b>Subtract the Minutes</b>:</p>
+     - <p>Subtract 45 from 20, so you need to borrow 1 hour (which is 60 minutes) from the hours.</p>
+     - <p>Change 6:20 PM to 5:80 PM (because 6:20 PM is the same as 5:80 PM).</p>
+     - <p>Now subtract the minutes: 80 - 45 = 35 minutes.</p>
+     - <p>Subtract the hours: 5 - 3 = 2 hours.</p>
+     - <p><b>Combine the Hours and Minutes</b>: So, the elapsed time is 2 hours and 35 minutes.</p>
+     - <p>By borrowing an hour and converting it to minutes, you can easily calculate the elapsed time even when the 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity (inline) — 
+     - </div>
+     - </div>
+     - … 53 more removed
+     + <h3>Part 1 Elapsed Time – Minutes</h3>
+     + <p>Calculate the time difference between the following times using a timeline.</p>
+     + <p>e.g.</p>
+     + <ul>
+     + <li>Start Time: 14:30</li>
+     + <li>End Time: 14:45</li>
+     + </ul>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>The elapsed time is 15 minutes.</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified — Activity 4A — see MX
+     + <h3>Part 2 Elapsed Time – Minutes and Hours</h3>
+     + <p>Calculate the difference between the following times.</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: unclassified — Activity 4B — see MX
+     + <h3>Elapsed Time Statements</h3>
+     + <p>Read the time statements below. Match the statements to the appropriate answers.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/pwVGOX2pRig" loading="lazy" title="YouTube video player" f
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + … 53 more added
+  ~ MXFU201_5_0.html: -172 +246
+     - <h3>5A Water Clock</h3>
+     - <p>A water clock, also known as a clepsydra, is a device that measures time by the flow of water. It works by 
+     - <ul>
+     - <li>Outflow: Water flows out of a container, and the time is measured by how much water has left.</li>
+     - <li>Inflow: Water flows into a container, and the time is measured by how much water has entered.</li>
+     - </ul>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Watch Nano Girl demonstrate how to make a water clock. Then create one of your own.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/Q_P96i_bgr4" loading="lazy" title="YouTube video player" f
+     - <p>Make your water clock, take photos of you making the water clock then complete the investigation by timing 
+     - <p>You will need:</p>
+     - <ul>
+     - <li>1x 1 litre plastic bottle (bottles between 1–2 litres can be used)</li>
+     - <li>scissors</li>
+     - <li>a pin or needle</li>
+     - <li>marker</li>
+     - <li>water</li>
+     - <li>stopwatch – or phone with timer.</li>
+     - </ul>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1311455883" alt="Vector Re
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1311455883.jpg" alt="Vector Realistic Bottles of
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1284117436" alt="Digital S
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1284117436.jpg" alt="Digital Stopwatch Icon on T
+     - <p>**</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-474992967" alt="Permanent 
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-474992967.jpg" alt="Permanent Marker C" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1471731354" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1471731354.jpg" alt="" /> -->
+     - <p>gm1471731354-502274183</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1030837954" alt="Closed Sc
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1030837954.jpg" alt="Closed Scissors on White" /
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-639786028" alt="Measuring 
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-639786028.jpg" alt="Measuring Cup Full of Water 
+     - <p>Steps:</p>
+     - <ol>
+     - <li>Cut the bottle: You might need to ask an adult to help you cut the plastic bottle in half. The bottom half
+     - <li>Make a hole: Use the pin or needle to make a small hole in the cap of the bottle. This will allow the wate
+     - <li>Assemble the clock: Screw the cap back on the top half of the bottle. Turn this part upside down and place
+     - … 132 more removed
+     + <div class="activity" number="5A">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Water Clock</h3>
+     + <p>A water clock, also known as a clepsydra, is a device that measures time by the flow of water. It works by 
+     + <ul>
+     + <li>Outflow: Water flows out of a container, and the time is measured by how much water has left.</li>
+     + <li>Inflow: Water flows into a container, and the time is measured by how much water has entered.</li>
+     + </ul>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Watch Nano Girl demonstrate how to make a water clock. Then create one of your own.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/Q_P96i_bgr4" loading="lazy" title="YouTube video player" f
+     + </div>
+     + <p>Make your water clock, take photos of you making the water clock then complete the investigation by timing 
+     + <p>You will need:</p>
+     + <ul>
+     + <li>1x 1 litre plastic bottle (bottles between 1–2 litres can be used)</li>
+     + <li>scissors</li>
+     + … 226 more added
+  ~ MXFU201_6_0.html: -156 +162
+     - <h4>6A Ice Cream Sales</h4>
+     - <p>Kora set up an ice cream stand to earn money to donate to the SPCA. Kora displayed her sales on the followi
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: cut and use girl with pink jacket/ gr
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (ice cream image repeated for pictogr
+     - <p>= 2 students = 1 student</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th></th>
+     - <th></th>
+     - <th></th>
+     - <th></th>
+     - </tr>
+     - <tr>
+     - <td>1–2pm</td>
+     - <td>2–3pm</td>
+     - <td>3–4pm</td>
+     - <td>4–5pm</td>
+     - <td>5–6pm</td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="MXFU201-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: unclassified — Activity (inline) — 
+     - <h4>6B Interpreting Ice Cream Data</h4>
+     - <p>Analyse Kora’s ice cream sales data by looking at the bar chart and pictogram. Then answer the following qu
+     - <h4>6C Drawing Conclusions about Kora’s Ice Cream Sales</h4>
+     - <p>Read the following conclusions that Kora’s friends made about her sales. Decide if their conclusions are re
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="MXFU201-06-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: unclassified — Activity (inline) — 
+     - <h4>6D Ordering Percentages</h4>
+     - <p>Order the following percentages from smallest to largest.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - … 116 more removed
+     + <h3>Ice Cream Sales</h3>
+     + <p>Kora set up an ice cream stand to earn money to donate to the SPCA. Kora displayed her sales on the followi
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p><a href="https://media.istockphoto.com/id/1084208640/vector/cartoon-teenager-students-with-books-and-backpa
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>= 2 students = 1 student</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="MXFU201-06-01" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: unclassified — Activity 6A — see MX
+     + <td>1–2pm</td>
+     + <td>2–3pm</td>
+     + <td>3–4pm</td>
+     + <td>4–5pm</td>
+     + <td>5–6pm</td>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="MXFU201-06-02" style="border: 8px s
+     + <th></th>
+     + <th></th>
+     + <th></th>
+     + <th></th>
+     + … 142 more added
+  ~ MXFU201_7_0.html: -180 +238
+     - <h4>7A Find the Average</h4>
+     - <p>Each of the following children recorded how many minutes they spent on their device each day for 5 days.</p
+     - <p>Add each child’s times up, then divide by 5 (there are 5 different times).</p>
+     - <p>For example:</p>
+     - <p>Over 5 days Anna spent the following number of minutes on her device: 40, 30, 45, 50, 35.</p>
+     - <p>To find the average number of minutes, first add the number of minutes together:</p>
+     - <p>40 + 30 + 45 + 50 + 35 = 200</p>
+     - <p>Then divide the total by the number of pieces of data (numbers). For Anna it is 5.</p>
+     - <p>200÷5 = 40</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>The average number of minutes Anna spent on her device over 4 days was 40 minutes.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [embedded tool]</p>
+     - <p>calculator</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="MXFU201-07-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: unclassified — Activity (inline) — 
+     - <h4>7B Graphing Data</h4>
+     - <p>Look at the table showing the number of minutes 4 children spent on their device for 5 days. Complete the f
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>Anna</td>
+     - <td>Mason</td>
+     - <td>Marama</td>
+     - <td>Sonny</td>
+     - <td>Kora</td>
+     - </tr>
+     - <tr>
+     - <td>40 minutes</td>
+     - … 140 more removed
+     + <h3>Find the Average</h3>
+     + <p>Each of the following children recorded how many minutes they spent on their device each day for 5 days.</p
+     + <p>Add each child’s times up, then divide by 5 (there are 5 different times).</p>
+     + <p>For example:</p>
+     + <p>Over 5 days Anna spent the following number of minutes on her device: 40, 30, 45, 50, 35.</p>
+     + <p>To find the average number of minutes, first add the number of minutes together:</p>
+     + <p>40 + 30 + 45 + 50 + 35 = 200</p>
+     + <p>Then divide the total by the number of pieces of data (numbers). For Anna it is 5.</p>
+     + <p>200÷5 = 40</p>
+     + <p>The average number of minutes Anna spent on her device over 4 days was 40 minutes.</p>
+     + <p>calculator</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="MXFU201-07-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="36" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #36: unclassified — Activity 7A — see MX
+     + <h3>Graphing Data</h3>
+     + <p>Look at the table showing the number of minutes 4 children spent on their device for 5 days. Complete the f
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="MXFU201-07-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="37" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #37: unclassified — Activity 7B — see MX
+     + <th> [image] <a href="https://media.istockphoto.com/id/1084208640/vector/cartoon-teenager-students-with-books-
+     + … 218 more added
+  ~ MXFU201_8_0.html: -159 +213
+     - <h4>8A Probability Line</h4>
+     - <p>Probability is the <b>chance</b> that something will happen. It can be shown on a line:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>The probability of an event occurring is somewhere between impossible and certain.</p>
+     - <p>We can use numbers to show the probability of something happening:</p>
+     - <p>Impossible = <b>zero</b></p>
+     - <p>Certain = one</p>
+     - <p>We can also use fractions, decimals or percentages:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>On the following probability lines mark the chance of each event happening.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="MXFU201-08-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="37" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #37: unclassified — Activity (inline) — 
+     - <h4>8B Number Spinner</h4>
+     - <p>In statistics, “random” means that there is no pattern or reason. It also means that you have no control ov
+     - <p>For example, Lotto numbers are selected randomly, using a machine built for the purpose and designed so tha
+     - <p>Randomness requires a system or method that guarantees that the selection is free from bias.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive tool]</p>
+     - <p>Insert random number spinner with digits 1–9 as options. Like this: <a href="https://heyspinner.com/random-
+     - <p>Spin the number spinner 10 (or more) times.</p>
+     - <p>The number from each spin on the chart in your learning journal.</p>
+     - <p>Then answer the following questions:</p>
+     - <ol>
+     - <li>What number was generated the most?</li>
+     - <li>What number was generated the least?</li>
+     - <li>What is the chance of a 1 being spun?</li>
+     - <li>What is the chance of an even number being spun?</li>
+     - </ol>
+     - <h4>8C Traffic Survey</h4>
+     - <p>Charli, Kora and Jono were planning a holiday. They realised that it took them longer to get into the city 
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Attach speech bubbles to children with following text:</p>
+     - <div class="row speechBubble" layout="speech">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p>Kia ora, my name is Charli, I think we should leave at 9am. B
+     - <div class="row speechBubble" layout="speech">
+     - <div class="col-12">
+     - … 119 more removed
+     + <h3>Probability Line</h3>
+     + <p>Probability is the <b>chance</b> that something will happen. It can be shown on a line:</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>The probability of an event occurring is somewhere between impossible and certain.</p>
+     + <p>We can use numbers to show the probability of something happening:</p>
+     + <p>Impossible = <b>zero</b></p>
+     + <p>Certain = one</p>
+     + <p>We can also use fractions, decimals or percentages:</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>On the following probability lines mark the chance of each event happening.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="MXFU201-08-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="43" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #43: unclassified — Activity 8A — see MX
+     + <div class="activity" number="8B">
+     + <h3>Number Spinner</h3>
+     + <p>In statistics, “random” means that there is no pattern or reason. It also means that you have no control ov
+     + <p>For example, Lotto numbers are selected randomly, using a machine built for the purpose and designed so tha
+     + <p>Randomness requires a system or method that guarantees that the selection is free from bias.</p>
+     + … 193 more added
+  ~ MXFU201_9_0.html: -186 +186
+     - <h3>9A Line Graph Temperatures</h3>
+     - <p>A weather report can show you when to expect the highest and coolest temperatures of the day. The highest t
+     - <p>Watch the following video or open the attached pdf if you need help understanding line graphs.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/hcgThf5mv38" loading="lazy" title="YouTube video player" f
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: use 6:51min to end only</p>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://mytekuraschool.sharepoint.com/:b:/s/TeAraWhakamua381/EZ7E-6e25VNJvXgetTPPe2IBFPWInQr3jV73
+     - <p><a href="https://www.twinkl.co.nz/resource/graphing-scientific-data-posters-nz-sc-1642208510" target="_blan
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (line graph only)</p>
+     - <p>The following line graph shows Timaru’s temperature over a 24-hour period. Look at the graph and then compl
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [graph]</p>
+     - <p><a href="https://mytekuraschool.sharepoint.com/:i:/s/TeAraWhakamua381/Ee_DhCdmDpZEpUv3EMkwL9wBadm7Jcg0YfQ_U
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="MXFU201-09-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="43" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #43: unclassified — Activity (inline) — 
+     - <h3>9B Hourly Changes</h3>
+     - <p>Weather reports often show how the temperature and conditions change hour by hour. This helps you know if i
+     - <p>To find the difference you will need to subtract the higher temperature from the lower temperature.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2148221665" alt="Summer Su
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2148221665.jpg" alt="Summer Sun and a Thermomete
+     - <p>For example: The temperature at 1:00 am was 3 degrees. The temperature at 9:00 am was 9 degrees.</p>
+     - <p>The difference was: 9 – 3 = 6 degrees.</p>
+     - <p>If you need more help with this strategy, then this video will help:</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/U8YGMncnPnw" loading="lazy" title="YouTube video player" f
+     - <p>If you’d like to know more about how to read temperatures click on this page.</p>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/t-sc-283-temperature-display-poster" loading="lazy" frameborder
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="MXFU201-09-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="44" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #44: unclassified — Activity (inline) — 
+     - <h3>9C Chance of Rain</h3>
+     - <p>A weather report shows the chance of rain as a percentage. For example, if it says 50% chance of rain, it m
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1299358877" alt="Businessm
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1299358877.jpg" alt="Businessman Holding Umbrell
+     - <p>Look at the following chance of rain for Kerikeri.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Graph]</p>
+     - <p><a href="https://mytekuraschool.sharepoint.com/:i:/s/TeAraWhakamua381/EdJ46Vj7qOBHv3R47UFm6JABI-hZDE6Vv1uhV
+     - <p>Using the words unlikely, likely, less likely and most likely, answer the questions about the chance of rai
+     - … 146 more removed
+     + <h3>Line Graph Temperatures</h3>
+     + <p>A weather report can show you when to expect the highest and coolest temperatures of the day. The highest t
+     + <p>Watch the following video or open the attached pdf if you need help understanding line graphs.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/hcgThf5mv38" loading="lazy" title="YouTube video player" f
+     + <p><a href="https://mytekuraschool.sharepoint.com/:b:/s/TeAraWhakamua381/EZ7E-6e25VNJvXgetTPPe2IBFPWInQr3jV73c
+     + <p>Science Experiment Graph Examples Posters - Twinkl NZ</p>
+     + <p>The following line graph shows Timaru’s temperature over a 24-hour period. Look at the graph and then compl
+     + <p>Temperature in Timaru.png</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="MXFU201-09-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="50" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #50: unclassified — Activity 9A — see MX
+     + <h3>Hourly Changes</h3>
+     + <p>Weather reports often show how the temperature and conditions change hour by hour. This helps you know if i
+     + <p>To find the difference you will need to subtract the higher temperature from the lower temperature.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2148221665" alt="Summer Su
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2148221665.jpg" alt="Summer Sun and a Thermomete
+     + <p>For example: The temperature at 1:00 am was 3 degrees. The temperature at 9:00 am was 9 degrees.</p>
+     + <p>The difference was: 9 – 3 = 6 degrees.</p>
+     + <p>If you need more help with this strategy, then this video will help:</p>
+     + … 166 more added
+MXFU201: identical 1 / changed 9
+MXFU401: identical 7 / changed 0
+OSAH501: identical 6 / changed 0
+  ~ OSAI401_1_0.html: -2 +4
+     - <p><a href="https://www.istockphoto.com/photo/magnifying-glass-over-artificial-intelligence-cpu-and-circuit-di
+     - <p><a href="https://www.istockphoto.com/photo/ai-prompt-in-chat-screen-artificial-intelligence-in-generative-c
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2243942340" alt="Magnifyin
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2243942340.jpg" alt="Magnifying Glass Over Artif
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2060559146" alt="AI Prompt
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2060559146.jpg" alt="AI Prompt in Chat Screen Ar
+OSAI401: identical 4 / changed 1
+OSBY301: identical 4 / changed 0
+  ~ OSGM201_3_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/a-scale-with-a-clock-on-one-side-and-a-video-game-controller-on
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2197603382" alt="A Scale w
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2197603382.jpg" alt="A Scale with a Clock on One
+OSGM201: identical 3 / changed 1
+OSOH101: identical 4 / changed 0
+OSOH501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+PES1003: identical 11 / changed 0
+  ~ PES1008_15_0.html: -2 +6
+     - <h3>Circuit Construction Kit: DC‬ (colorado.edu)‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬</h3>
+     - <p>MEASURING POWER ACTIVITY</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/to-right-of-following-instructions.jpg" alt="" /> -->
+     + <p>Circuit Construction Kit: DC‬ (colorado.edu)‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬‬</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/from-pho-phet-has-changed-new.jpg" alt="" /> -->
+     + <h3>MEASURING POWER ACTIVITY</h3>
+PES1008: identical 18 / changed 1
+PHE1004: identical 4 / changed 0
+  ~ PHE1008_3_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+PHE1008: identical 5 / changed 1
+SSFUN07: identical 5 / changed 0
+TEDC401: identical 8 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XGF9002: identical 10 / changed 0
+XLP01: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+  ~ XMES103_1_0.html: -1 +2
+     - <p>woman sitting cross legged on the floor with ball</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2096886186" alt="Sitting W
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2096886186.jpg" alt="Sitting Woman Exercising wi
+  ~ XMES103_4_0.html: -1 +2
+     - <p>family tree</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-119420073" alt="Vector Fam
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-119420073.jpg" alt="Vector Family Tree Design wi
+XMES103: identical 4 / changed 2
+  ~ XTAS102_2_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/insert-matching-to-action-step-by-step-e.jpg" alt="" />
+  ~ XTAS102_5_0.html: -1 +2
+     - <p>park scene</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1480637988" alt="Aerial Vi
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1480637988.jpg" alt="Aerial View of Parque Dos M
+XTAS102: identical 4 / changed 2
+
+TOTAL: identical 474 / changed 53 / missing 0 over 104 modules
+CHANGED: ARFUN02/ARFUN02_0_0.html ENFUN04/ENFUN04_0_0.html MXFUN01/MXFUN01_5_0.html MXFUN01/MXFUN01_6_2.html ANZH105/ANZH105_4_0.html ANZH105/ANZH105_5_0.html BLL114/BLL114_1_0.html BLL121/BLL121_2_0.html BLL147/BLL147_1_1.html BLL154/BLL154_1_1.html BLL165/BLL165_1_0.html BLL165/BLL165_1_1.html BLL172/BLL172_1_0.html BLL242/BLL242_1_1.html ENGI202/ENGI202_3_0.html ENGR101/ENGR101_5_0.html ENGS201/ENGS201_5_0.html HIS1003/HIS1003_7_0.html MXDI101/MXDI101_1_7.html MXDI202/MXDI202_1_0.html MXDI202/MXDI202_2_0.html MXDI202/MXDI202_3_0.html MXDI202/MXDI202_4_0.html MXDI202/MXDI202_5_0.html MXDI202/MXDI202_6_0.html MXDI202/MXDI202_7_0.html MXDI202/MXDI202_8_0.html MXDI202/MXDI202_9_0.html MXDI202/MXDI202_10_0.html MXDI202/MXDI202_11_0.html MXFL204/MXFL204_1_0.html MXFL204/MXFL204_3_0.html MXFL204/MXFL204_5_1.html MXFL204/MXFL204_7_0.html MXFL204/MXFL204_8_0.html MXFL204/MXFL204_9_0.html MXFU201/MXFU201_1_0.html MXFU201/MXFU201_2_0.html MXFU201/MXFU201_3_0.html MXFU201/MXFU201_4_0.html MXFU201/MXFU201_5_0.html MXFU201/MXFU201_6_0.html MXFU201/MXFU201_7_0.html MXFU201/MXFU201_8_0.html MXFU201/MXFU201_9_0.html OSAI401/OSAI401_1_0.html OSGM201/OSGM201_3_0.html PES1008/PES1008_15_0.html PHE1008/PHE1008_3_0.html XMES103/XMES103_1_0.html XMES103/XMES103_4_0.html XTAS102/XTAS102_2_0.html XTAS102/XTAS102_5_0.html

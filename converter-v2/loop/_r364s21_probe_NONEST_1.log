@@ -1,0 +1,828 @@
+PNR102: identical 3 / changed 0
+TRR104: prep refused (no-wt)
+TRR108: identical 3 / changed 0
+TRR113: identical 5 / changed 0
+TRR301: identical 4 / changed 0
+  ~ ARFUN03_0_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ARFUN03: identical 0 / changed 1
+CHFUN04: identical 1 / changed 0
+  ~ ENFUN01_0_0.html: -1 +6
+     - <p><a href="https://www.youtube.com/watch?v=znXCvTFJWsA" target="_blank">https://www.youtube.com/watch?v=znXCv
+     + <iframe src="https://www.youtube-nocookie.com/embed/znXCvTFJWsA" loading="lazy" title="YouTube video player" f
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/znXCvTFJWsA" loading="lazy" title="YouTube video player" f
+     + <div class="videoSection icon ratio ratio-16x9">
+     + </div>
+     + </div>
+ENFUN01: identical 0 / changed 1
+ENFUN05: identical 1 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+  ~ HPFUN901_0_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/2086161977/photo/pile-of-various-capsules-pills-and-tablets-in-a-
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+HPFUN901: identical 0 / changed 1
+  ~ MXFUN02_0_0.html: -0 +4
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-155141218" alt="Pirate Map
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-155141218.jpg" alt="Pirate Map to Buried Treasur
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1165772713" alt="Grandmoth
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1165772713.jpg" alt="Grandmother and Kid Having 
+MXFUN02: identical 0 / changed 1
+  ~ SSFUN02_0_0.html: -1 +2
+     - <p><a href="https://en.wikipedia.org/wiki/Te_Ara:_The_Encyclopedia_of_New_Zealand" target="_blank">https://en.
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+SSFUN02: identical 0 / changed 1
+SSFUN08: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+  ~ BLL120_0_0.html: -6 +38
+     - <p><a href="https://www.istockphoto.com/vector/set-of-letter-ck-s-gm1633991445-532733667?searchscope=image%2Cf
+     - <p><a href="https://www.istockphoto.com/vector/letter-e-round-icon-with-long-shadow-on-red-or-blue-background-
+     - <p><a href="https://www.istockphoto.com/vector/letter-e-round-icon-with-long-shadow-on-red-or-blue-background-
+     - <p><a href="https://www.istockphoto.com/photo/child-holding-letter-h-gm1939723918-556525990?searchscope=image%
+     - <p><a href="https://www.istockphoto.com/vector/letter-r-round-icon-with-long-shadow-on-red-or-blue-background-
+     - <p><a href="https://www.istockphoto.com/vector/art-deco-party-invitation-golden-capital-letter-m-text-font-des
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1633991445" alt="Set of Le
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1633991445.jpg" alt="Set of Letter Ck S" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1783512662" alt="Letter E 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1783512662.jpg" alt="Letter E Round Icon with Lo
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/set-up-so-that-when-they-click-on-the-th.jpg" alt="" />
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1783512662" alt="Letter E 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1783512662.jpg" alt="Letter E Round Icon with Lo
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1939723918" alt="Child Hol
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1939723918.jpg" alt="Child Holding Letter H" /> 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/when-clicked-on-the.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1677685381" alt="Letter R 
+     + … 18 more added
+BLL120: identical 0 / changed 1
+  ~ BLL160_0_0.html: -0 +4
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+BLL160: identical 0 / changed 1
+BLL230: identical 1 / changed 0
+  ~ CEDK501_3_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/teenage-girl-studying-at-home-gm1270485109-373416882" target="_b
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1270485109" alt="Teenage G
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1270485109.jpg" alt="Teenage Girl Studying at Ho
+  ~ CEDK501_6_1.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/happy-group-of-students-studying-together-at-the-library-gm22263
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2226385991" alt="Happy Gro
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2226385991.jpg" alt="Happy Group of Students Stu
+CEDK501: identical 12 / changed 2
+  ~ CEDR204_0_0.html: -2 +4
+     - <p><a href="https://www.istockphoto.com/photo/thursday-8pm-appreciation-gm1251751570-365416879?searchscope=ima
+     - <p><a href="https://www.istockphoto.com/vector/weather-collection-gm2167627389-587683489" target="_blank">http
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1251751570" alt="Thursday 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1251751570.jpg" alt="Thursday 8pm Appreciation" 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2167627389" alt="Weather C
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2167627389.jpg" alt="Weather Collection" /> -->
+CEDR204: identical 0 / changed 1
+CEDT104: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT404: identical 1 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+AGH1001: identical 6 / changed 0
+AGH1005: identical 9 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH203: identical 7 / changed 0
+  ~ ANZH304_3_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/insert-this-so-that-akonga-can-copy-the.jpg" alt="" /> 
+ANZH304: identical 6 / changed 1
+ART1003: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+  ~ BLL122_1_0.html: -0 +1
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+BLL122: identical 2 / changed 1
+BLL126: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL137: identical 3 / changed 0
+  ~ BLL144_1_0.html: -1 +2
+     - <p>CS Audio - BLL144 Set 4 Mod 4.docx</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p><a href="https://mytekuraschool-my.sharepoint.com/:w:/g/personal/shelley_haua_tekura_school_nz/EbpTIWldROlP
+BLL144: identical 2 / changed 1
+  ~ BLL151_1_0.html: -1 +3
+     - <p>suffix s and ing (<a href="https://www.youtube.com/watch?v=o9T3CkSiKu4)" target="_blank">https://www.youtub
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/o9T3CkSiKu4" loading="lazy" title="YouTube video player" f
+     + </div>
+BLL151: identical 2 / changed 1
+  ~ BLL155_1_0.html: -0 +2
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+BLL155: identical 2 / changed 1
+BLL162: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+  ~ BLL173_1_1.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL173: identical 2 / changed 1
+BLL177: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL221: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+  ~ BLL244_1_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/1486055037/photo/a-supermarket-aisle-filled-with-food-items.jpg?s
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL244: identical 2 / changed 1
+  ~ BLL252_1_0.html: -1 +2
+     - <p><a href="https://www.shutterstock.com/image-vector/schoolboy-looking-words-encyclopedia-little-600w-2204827
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL252: identical 2 / changed 1
+  ~ BLL263_1_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/designer-note.jpg" alt="" /> -->
+BLL263: identical 2 / changed 1
+CEDO501: identical 16 / changed 0
+CEDW501: identical 13 / changed 0
+ENGC101: identical 6 / changed 0
+  ~ ENGC301_2_0.html: -1 +2
+     - <p><a href="https://drive.google.com/file/d/1ZY7z-RvhAV8gV2OoXEYV2P8di9B7BjrB/view?usp=drive_link" target="_bl
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ ENGC301_3_0.html: -1 +2
+     - <p><a href="https://drive.google.com/file/d/1ItK1_wQuXHJvbT7p4NadGvlB1l1A3GOs/view?usp=sharing" target="_blank
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ ENGC301_4_0.html: -1 +2
+     - <p><a href="https://drive.google.com/file/d/1E5QHx-f6tvFFijvdKUWEvLZCZenXTsDx/view?usp=drive_link" target="_bl
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+  ~ ENGC301_6_0.html: -1 +3
+     - <p><a href="https://www.youtube.com/watch?v=5fNkI5JbdKM" target="_blank">https://www.youtube.com/watch?v=5fNkI
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/5fNkI5JbdKM" loading="lazy" title="YouTube video player" f
+     + </div>
+ENGC301: identical 4 / changed 4
+ENGI102: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI400: identical 4 / changed 0
+  ~ ENGJ102_1_0.html: -1 +3
+     - <p><i>Adverbs: What is an adverb?</i> | English For Kids | Mind Blooming (<a href="https://www.youtube.com/wat
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/drbcKE1Pcsc" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ ENGJ102_5_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/outline-icon-set-of-five-human-senses-vision-eye-smell-nose-hea
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1442933535" alt="Outline I
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1442933535.jpg" alt="Outline Icon Set of Five Hu
+ENGJ102: identical 4 / changed 2
+ENGJ302: identical 10 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR302: identical 8 / changed 0
+  ~ ENGS202_3_0.html: -0 +1
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+ENGS202: identical 6 / changed 1
+ENGS405: identical 1 / changed 0
+  ~ HES1003_1_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+HES1003: identical 8 / changed 1
+HES1007: identical 10 / changed 0
+  ~ HIS1004_6_0.html: -1 +2
+     - <p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/SteveBiko_DaanWildschut.jpg/640px-SteveB
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+HIS1004: identical 10 / changed 1
+HIS1008: identical 12 / changed 0
+  ~ MXDB202_4_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/close-up-at-wood-cube-arrange-in-pyramid-shape-gm511538328-86701
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-511538328" alt="Close Up a
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-511538328.jpg" alt="Close Up at Wood Cube Arrang
+MXDB202: identical 5 / changed 1
+  ~ MXDI102_1_0.html: -1 +3
+     - <p>Finding half of an amount (<a href="https://www.youtube.com/watch?v=AeJz8QVUmDw)" target="_blank">https://w
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/AeJz8QVUmDw" loading="lazy" title="YouTube video player" f
+     + </div>
+MXDI102: identical 4 / changed 1
+MXDI301: identical 5 / changed 0
+  ~ MXEO301_5_1_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/1448634556/vector/a-black-boy-v-2-in-doubt-or-have-a-question-on-
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXEO301: identical 10 / changed 1
+MXEX202: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+  ~ MXFL201_1_0.html: -1 +2
+     - <p><a href="https://www.firstlighttravel.com/sites/default/files/brochure/2018-06/new-zealand-driving-map-firs
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXFL201: identical 9 / changed 1
+MXFL301: identical 10 / changed 0
+  ~ MXFU202_1_0.html: -96 +132
+     - <h4>1A Ancient Olympic timeline</h4>
+     - <p>The years before Year 0 are called “BC,” which stands for “Before Christ.” The numbers get bigger as you go
+     - <ul>
+     - <li>1 BC is the year just before Year 0</li>
+     - <li>2 BC is the year before 1 BC</li>
+     - <li>776 BC were the first Ancient Olympic Games.</li>
+     - </ul>
+     - <p>The years after Year 0 are called “AD,” which stands for “Anno Domini,” a Latin phrase meaning “In the Year
+     - <ul>
+     - <li>1 AD is the year right after Year 0</li>
+     - <li>393AD last Ancient Olympic Games</li>
+     - <li>2025 AD.</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [RH side note]</p>
+     - <p>Sometimes BCE and CE are used rather than BC and AD. This stands for Common Era and Before Common Era.</p>
+     - <p>Place the following years on the timeline.</p>
+     - <h4>1B Olympic years</h4>
+     - <p>Use the information about the Ancient Olympics at the beginning of this lesson and the videos to answer the
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <h4>1C Where is Greece?</h4>
+     - <p>Greece is a country in southeastern Europe. It is at the bottom of the Balkan Peninsula. Greece is close to
+     - <p>Look at the map below showing countries near Greece. Then answer the cardinal direction questions to solve 
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/mtsx8V3mE8o" loading="lazy" title="YouTube video player" f
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/hover-to-enlarge.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (edit image to add compass showing 8 
+     - <h4>1D Cardinal directions around Olympia</h4>
+     - <p>Listen to the cardinal directions about Ancient Olympia. Then look at the map below. Use this information f
+     - <p>Write your sentences in your learning journal.</p>
+     - <p>For example:</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/xnRPkpUGi84" loading="lazy" title="YouTube video player" f
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: use from beginning to 5:55min</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1428253536" alt="Ruins of 
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1428253536.jpg" alt="Ruins of Ancient Greek Pale
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - … 56 more removed
+     + <div class="activity" number="1A">
+     + <h3>Ancient Olympic timeline</h3>
+     + <p>The years before Year 0 are called “BC,” which stands for “Before Christ.” The numbers get bigger as you go
+     + <li>1 BC is the year just before Year 0</li>
+     + <li>2 BC is the year before 1 BC</li>
+     + <li>776 BC were the first Ancient Olympic Games.</li>
+     + <p>The years after Year 0 are called “AD,” which stands for “Anno Domini,” a Latin phrase meaning “In the Year
+     + <li>1 AD is the year right after Year 0</li>
+     + <li>393AD last Ancient Olympic Games</li>
+     + <li>2025 AD.</li>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [RH side note]</p>
+     + <p>Sometimes BCE and CE are used rather than BC and AD. This stands for Common Era and Before Common Era.</p>
+     + <p>Place the following years on the timeline.</p>
+     + <div class="activity" number="1B">
+     + <h3>Olympic years</h3>
+     + <p>Use the information about the Ancient Olympics at the beginning of this lesson and the videos to answer the
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <ul>
+     + </ul>
+     + … 112 more added
+  ~ MXFU202_2_0.html: -33 +63
+     - <h4>2A Greater than and less than</h4>
+     - <p>Use greater than and less than symbols to complete the following statements about how the Olympic games hav
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: crop to use just greater than and les
+     - <p>If you would like more help understanding greater than and less than signs, then click on the following lin
+     - <iframe src="https://www.youtube-nocookie.com/embed/tFNoEHnxPvM" loading="lazy" title="YouTube video player" f
+     - <div class="activity interactive" number="2A">
+     - <h4>2A Patterns of years</h4>
+     - <p>No Olympic Games were held in the years 1916, 1940 and 1944 because of WW1 and WW2. Then the 2020 games wer
+     - <p>Discuss the patterns you see with your supervisor or a member of your whānau and record your ideas in your 
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <h4>2B Olympic years</h4>
+     - <p>Did you know that Olympic games fall on a leap year? (every 4 years)</p>
+     - <p>If you would like to understand more about leap years, then click here.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/gvuz0BVy5TM" loading="lazy" title="YouTube video player" f
+     - <p>To determine if a year is going to be an Olympic year check if the year can be evenly divided by 4.</p>
+     - <p>For example, the year 2000 was an Olympic year because 2000 ÷ 4 = 500.</p>
+     - <p>2022 was not an Olympic year because 2022 ÷ 4 = 505.5 the year does not divide to an even whole number.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: What this video if you need more help
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/8KycjjT41fg" loading="lazy" title="YouTube video player" f
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity interactive" number="2C">
+     - <div class="videoSection ratio ratio-16x9">
+     - <h4>2E Host city questions</h4>
+     - <p>Use the information from the previous 2 activities to help you answer the following true or false questions
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <h4>2F City and country match</h4>
+     - <p>Locate the following host city and countries on the map.</p>
+     - <div class="activity interactive" number="2D">
+     + <div class="activity" number="2A">
+     + <h3>Greater than and less than</h3>
+     + <p>Use greater than and less than symbols to complete the following statements about how the Olympic games hav
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: crop to use just greater than and les
+     + <p>If you would like more help understanding greater than and less than signs, then click on the following lin
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/tFNoEHnxPvM" loading="lazy" title="YouTube video player" f
+     + <div class="activity" number="2A">
+     + <h3>Patterns of years</h3>
+     + <p>No Olympic Games were held in the years 1916, 1940 and 1944 because of WW1 and WW2. Then the 2020 games wer
+     + <p>Discuss the patterns you see with your supervisor or a member of your whānau and record your ideas in your 
+     + <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <div class="activity" number="2B">
+     + <h3>Olympic years</h3>
+     + <p>Did you know that Olympic games fall on a leap year? (every 4 years)</p>
+     + <p>If you would like to understand more about leap years, then click here.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + … 43 more added
+  ~ MXFU202_3_0.html: -16 +54
+     - <h4>3A Numbers Check</h4>
+     - <p>Read the information above. Notice years and other numbers used. Then complete this activity by dragging th
+     - <h4>3B Rounded Numbers</h4>
+     - <p>Rounding numbers helps us make calculations more quickly. Numbers can be rounded to any place value, depend
+     - <p>Within the text above there are some numbers that have been rounded.</p>
+     - <p>Find the following numbers in the text above and decide if the number is an actual number or a rounded numb
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <h4>3D Analysing medals won</h4>
+     - <p>Use the bar chart showing the number of medals won at each Olympics to answer the following statements. Cho
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-577312492" alt="Metal Meda
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-577312492.jpg" alt="Metal Medal on Black Backgro
+     - <h3>1. The total number of medals won at each Summer Olympic games between 1920 and 1936 was</h3>
+     - <p>Check answers</p>
+     - <p>3E Our first Olympians</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: carousel (insert as a to ready the s
+     + <div class="activity" number="3A">
+     + <h3>Numbers Check</h3>
+     + <p>Read the information above. Notice years and other numbers used. Then complete this activity by dragging th
+     + <div class="activity" number="3B">
+     + <h3>Rounded Numbers</h3>
+     + <p>Rounding numbers helps us make calculations more quickly. Numbers can be rounded to any place value, depend
+     + <p>Within the text above there are some numbers that have been rounded.</p>
+     + <p>Find the following numbers in the text above and decide if the number is an actual number or a rounded numb
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity" number="3D">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Analysing medals won</h3>
+     + <p>Use the bar chart showing the number of medals won at each Olympics to answer the following statements. Cho
+     + … 34 more added
+  ~ MXFU202_4_0.html: -36 +66
+     - <h4>4A Paris 2024 estimations</h4>
+     - <p>At the 2024 Paris Olympic games there were more than 10,000 athletes and hundreds of thousands of spectator
+     - <p>The opening ceremony took a different approach to prior games, having a parade <a href="https://www.nbcnews
+     - <p>What estimations have been made in the text above? Match the estimation to the statement.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="activity interactive" number="4A">
+     - <h4>4B Olympic stadium estimations</h4>
+     - <p>Look at the following pictures of venues for some Olympic venues. Estimate how many people the venue held.<
+     - <p>Estimating the number of people or seats can be tricky. Here are some tips to help you:</p>
+     - <ol>
+     - <li><b>Divide and Conquer</b>: Break the area into smaller, more manageable sections. Estimate the number of p
+     - <li><b>Use Reference Points</b>: Identify a reference point, like a row of seats or a group of people and coun
+     - <li><b>Grid Method</b>: Imagine a grid over the area. Count the number of people or seats in a few grid square
+     - <li><b>Compare with Known Quantities</b>: Compare the area with a known quantity, like a classroom or a bus, a
+     - </ol>
+     - <h4>4C Estimating athletics</h4>
+     - <p>Read the following statements and then select the most sensible estimation.</p>
+     - <div class="activity interactive" number="4C">
+     - <h4>4D Estimating sports</h4>
+     - <p>Watch the following video showing photos of New Zealanders who won the first 100 Olympic medals for New Zea
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/Oyu-pbyTUEs" loading="lazy" title="YouTube video player" f
+     - <p>Drag the following statements into true or false boxes.</p>
+     - <h4>4E Personal best</h4>
+     - <p>How far do you think you can run?</p>
+     - <p>How far do you think you can jump?</p>
+     - <p>How many basketball hoops do you think you could do in 10 minutes?</p>
+     - <p>What about sit ups, or step ups?</p>
+     - <p>Choose one activity that you know you can do. Discuss with your supervisor what a realistic estimation woul
+     - <p>Repeat your test 3 or more times over a week.</p>
+     - <p>Can you beat your first score?</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <div class="activity" number="4A">
+     + <h3>Paris 2024 estimations</h3>
+     + <p>At the 2024 Paris Olympic games there were more than 10,000 athletes and hundreds of thousands of spectator
+     + <p>The opening ceremony took a different approach to prior games, having a parade <a href="https://www.nbcnews
+     + <p>What estimations have been made in the text above? Match the estimation to the statement.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <div class="activity" number="4B">
+     + <h3>Olympic stadium estimations</h3>
+     + <p>Look at the following pictures of venues for some Olympic venues. Estimate how many people the venue held.<
+     + <p>Estimating the number of people or seats can be tricky. Here are some tips to help you:</p>
+     + <ol>
+     + <li><b>Divide and Conquer</b>: Break the area into smaller, more manageable sections. Estimate the number of p
+     + <li><b>Use Reference Points</b>: Identify a reference point, like a row of seats or a group of people and coun
+     + <li><b>Grid Method</b>: Imagine a grid over the area. Count the number of people or seats in a few grid square
+     + <li><b>Compare with Known Quantities</b>: Compare the area with a known quantity, like a classroom or a bus, a
+     + </ol>
+     + <div class="activity interactive" number="4D">
+     + <div class="activity" number="4C">
+     + <div class="row">
+     + … 46 more added
+  ~ MXFU202_5_0.html: -100 +153
+     - <p>New Zealand has often achieved well at Rugby 7s tournaments. When Rugby 7s was first introduced to the Olym
+     - <p>)_(cropped).jpg</p>
+     - <div class="activity interactive" number="5A">
+     - <h4>5B What is the difference in scores</h4>
+     - <p>When you are asked to find the difference between two numbers you can solve the problem in a variety of dif
+     - <h4>5C Find the difference with manipulatives</h4>
+     - <p>When you are asked to find the difference between 2 numbers, subtract the smaller number from the bigger nu
+     - <iframe src="https://www.youtube-nocookie.com/embed/ao6cCbwhWFY" loading="lazy" title="YouTube video player" f
+     - <p>Kanah Andrews-Nahu, Nigel Avery, John Bolton, David Liti and Tracey Lambrechs are some of the athletes who 
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - <p>What are kilograms and kilometres?</p>
+     - <p>&#39;Kilo&#39; comes from the Ancient Greek word for &#39;thousand&#39; (chilioi).</p>
+     - <p>So kilometre actually means &#39;thousand metres&#39; and kilograms means &#39;thousand grams&#39;.</p>
+     - <li>1 km = 1000 m</li>
+     - <li>1 kg = 1000 g</li>
+     - <p>Look at the following table and then calculate the difference between the weights lifted.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th>Weight lifted</th>
+     - </tr>
+     - <tr>
+     - <td>Kanah Andrews-Nahu</td>
+     - <td>211kg</td>
+     - </tr>
+     - <tr>
+     - <td>Nigel Avery</td>
+     - <td>390Kg</td>
+     - </tr>
+     - <tr>
+     - <td>Tracey Lambrechs</td>
+     - <td>213kg</td>
+     - </tr>
+     - <tr>
+     - <td>David Liti</td>
+     - <td>415kg</td>
+     - </tr>
+     - <tr>
+     - <td>Richie Patterson</td>
+     - … 60 more removed
+     + <div class="activity" number="5A">
+     + <h3>Records in whole numbers</h3>
+     + <p>New Zealand has often achieved well at Rugby 7s tournaments. When Rugby 7s was first introduced to the Olym
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>)_(cropped).jpg</p>
+     + <div class="activity" number="5B">
+     + <h3>What is the difference in scores</h3>
+     + <p>When you are asked to find the difference between two numbers you can solve the problem in a variety of dif
+     + <div class="activity" number="5C">
+     + <h3>Find the difference with manipulatives</h3>
+     + <p>When you are asked to find the difference between 2 numbers, subtract the smaller number from the bigger nu
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/ao6cCbwhWFY" loading="lazy" title="YouTube video player" f
+     + <p>Kanah Andrews-Nahu, Nigel Avery, John Bolton, David Liti and Tracey Lambrechs are some of the athletes who 
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [webpage]</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: unclassified — Activity 5C — see MX
+     + <p>What are kilograms and kilometres?</p>
+     + <p>&#39;Kilo&#39; comes from the Ancient Greek word for &#39;thousand&#39; (chilioi).</p>
+     + <p>So kilometre actually means &#39;thousand metres&#39; and kilograms means &#39;thousand grams&#39;.</p>
+     + <ul>
+     + … 133 more added
+  ~ MXFU202_6_0.html: -66 +108
+     - <h4>6A Olympic Equestrian</h4>
+     - <p>Read the following text and highlight all the numbers.</p>
+     - <h4>6B Doubling</h4>
+     - <p>Doubling is straightforward and easy to understand. Once you know what numbers equal when doubled you can d
+     - <p>Double the following numbers found in the text above. Select the correct multiple-choice option.</p>
+     - <p>If you need help with doubling numbers then watch this short number blocks video about doubling.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/DnmPVOsOMWg" loading="lazy" title="YouTube video player" f
+     - <div class="activity interactive" number="6A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="MXFU202-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified — Activity (inline) — 
+     - <h4>6C Part 1 Column addition</h4>
+     - <p>Using column addition, double the riders scores. When working with a decimal point it is important to keep<
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://mytekuraschool.sharepoint.com/:b:/s/TeAraWhakamua381/EV0hcYxzKitAg4aRVn7OByMBlN93hBSYWL3K
+     - <div class="activity interactive" number="6B">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="MXFU202-06-02" style="border: 8px s
+     - <h4>6C Part 2</h4>
+     - <p>Match the answer to the following column addition sums. You may like to use place value manipulatives to he
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [webpage]</p>
+     - <p><a href="https://polypad.amplify.com/p#number-tiles" target="_blank">Polypad – Virtual Manipulatives</a></p
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="MXFU202-06-03" style="border: 8px s
+     - <h4>6D Boxing</h4>
+     - <p>Read the following information about boxing at the Olympics. Look for and highlight the numbers included in
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2086975545" alt="Two Athle
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2086975545.jpg" alt="Two Athletic and Muscular B
+     - <h4>6E Boxing addition</h4>
+     - <p>When solving addition problems with a missing number it helps develop your problem-solving skills.</p>
+     - <p>To solve a question such as 145 + ____ = 232, you first need to understand the relationship between numbers
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1136626300" alt="Boxing Ri
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1136626300.jpg" alt="Boxing Ring Arena and Flood
+     - <p>To solve the questions to the following problems you may like to use manipulatives. Here is a link to Polyp
+     - <a href="https://polypad.amplify.com/p#number-tiles" target="_blank"><div class="button externalButton">Polypa
+     - <p>Complete the following boxing addition problems by selecting the relevant missing number from the dropdown 
+     - <div class="activity interactive" number="6D">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="MXFU202-06-04" style="border: 8px s
+     - <h4>6F Word problem addition</h4>
+     - <p>Read and solve the following problems using column addition in your learning journal.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - … 26 more removed
+     + <div class="activity" number="6A">
+     + <h3>Olympic Equestrian</h3>
+     + <p>Read the following text and highlight all the numbers.</p>
+     + <div class="activity" number="6B">
+     + <h3>Doubling</h3>
+     + <p>Doubling is straightforward and easy to understand. Once you know what numbers equal when doubled you can d
+     + <p>Double the following numbers found in the text above. Select the correct multiple-choice option.</p>
+     + <p>If you need help with doubling numbers then watch this short number blocks video about doubling.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/DnmPVOsOMWg" loading="lazy" title="YouTube video player" f
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="MXFU202-06-01" style="border: 8px s
+     + <div class="activity" number="6C">
+     + <h3>Part 1 Column addition</h3>
+     + <p>Using column addition, double the riders scores. When working with a decimal point it is important to keep<
+     + <div class="ratio ratio-16x9">
+     + <iframe src="https://mytekuraschool.sharepoint.com/:b:/s/TeAraWhakamua381/EV0hcYxzKitAg4aRVn7OByMBlN93hBSYWL3K
+     + <div class="activity interactive" number="6E">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="MXFU202-06-02" style="border: 8px s
+     + <div class="activity" number="6C">
+     + <h3>Part 2</h3>
+     + … 88 more added
+  ~ MXFU202_7_0.html: -129 +180
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="MXFU202-07-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity (inline) — 
+     - <h4>7C Finding multiples of 3</h4>
+     - <p>Click the first 10 multiples of 3 on the numbers square below.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-177437649" alt="Green Yell
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-177437649.jpg" alt="Green Yellow and Red Apples"
+     - <div class="activity interactive" number="7B">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXFU202-07-02" style="border: 8px s
+     - <h4>7D Find multiples of 6</h4>
+     - <p>The following table shows multiples of 3 up to 60. In your learning journal colour all the multiples of 6. 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>1</th>
+     - <th>2</th>
+     - <th>3</th>
+     - <th>4</th>
+     - <th>5</th>
+     - <th>6</th>
+     - <th>7</th>
+     - <th>8</th>
+     - <th>9</th>
+     - <th>10</th>
+     - </tr>
+     - <tr>
+     - <td>11</td>
+     - <td>12</td>
+     - <td>13</td>
+     - <td>14</td>
+     - <td>15</td>
+     - <td>16</td>
+     - <td>17</td>
+     - <td>18</td>
+     - <td>19</td>
+     - <td>20</td>
+     - </tr>
+     - <tr>
+     - <td>21</td>
+     - <td>22</td>
+     - … 89 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXFU202-07-01" style="border: 8px s
+     + <div class="activity" number="7C">
+     + <h3>Finding multiples of 3</h3>
+     + <p>Click the first 10 multiples of 3 on the numbers square below.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-177437649" alt="Green Yell
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-177437649.jpg" alt="Green Yellow and Red Apples"
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFU202-07-02" style="border: 8px s
+     + <div class="activity" number="7D">
+     + <h3>Find multiples of 6</h3>
+     + <p>The following table shows multiples of 3 up to 60. In your learning journal colour all the multiples of 6. 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="MXFU202-07-03" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: unclassified — Activity 7D — see MX
+     + <th>1</th>
+     + <th>2</th>
+     + <th>3</th>
+     + <th>4</th>
+     + <th>5</th>
+     + <th>6</th>
+     + <th>7</th>
+     + <th>8</th>
+     + … 160 more added
+  ~ MXFU202_8_0.html: -110 +141
+     - <p>After reading the text about gymnastics at the Olympics plot the following dates on the timeline.</p>
+     - <div class="activity interactive" number="8A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="MXFU202-08-01" style="border: 8px s
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: a. 1896b. 1964c. 1928d. 2000
+     - <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: unclassified — Activity (inline) — 
+     - <p>a. Gymnastics started at the Olympics.</p>
+     - <p>b. New Zealand first had a team.</p>
+     - <p>c. Women started to complete.</p>
+     - <p>d. Trampoline events were introduced.</p>
+     - <p>e. 318 athletes competed in the Olympics.</p>
+     - <p>f. New Zealand won bronze medal on trampoline.</p>
+     - <p><b><a href="https://media.istockphoto.com/id/636419800/photo/young-athlete-on-the-trampoline-in-graceful-fl
+     - <h3>8B Scoring</h3>
+     - <p>Gymnasts are awarded a D score for difficulty and an E score for execution.</p>
+     - <p><b>Read the scores that each gymnast achieved and position them correctly onto the table.</b></p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th>Bars</th>
+     - <th>Beam</th>
+     - <th>Floor</th>
+     - <th>Vault</th>
+     - </tr>
+     - <tr>
+     - <td>Susan</td>
+     - <td>13</td>
+     - <td>24</td>
+     - <td>27</td>
+     - <td>49</td>
+     - </tr>
+     - <tr>
+     - <td>Katie</td>
+     - <td>31</td>
+     - <td>45</td>
+     - <td>26</td>
+     - <td>18</td>
+     - </tr>
+     - <tr>
+     - … 70 more removed
+     + <div class="activity" number="8A">
+     + <h3>Gymnastics dates</h3>
+     + <p>After reading the text about gymnastics at the Olympics plot the following dates on the timeline.</p>
+     + <div class="activity">
+     + <p>a. Gymnastics started at the Olympics.</p>
+     + <p>b. New Zealand first had a team.</p>
+     + <p>c. Women started to complete.</p>
+     + <p>d. Trampoline events were introduced.</p>
+     + <p>e. 318 athletes competed in the Olympics.</p>
+     + <p>f. New Zealand won bronze medal on trampoline.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>**</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers: a. 1896b. 1964c. 1928d. 2000
+     + <div class="button">Check answers</div>
+     + <div class="button">Reset</div>
+     + <div class="activity" number="8B">
+     + <h3>Scoring</h3>
+     + <p>Gymnasts are awarded a D score for difficulty and an E score for execution.</p>
+     + <p><b>Read the scores that each gymnast achieved and position them correctly onto the table.</b></p>
+     + … 121 more added
+  ~ MXFU202_9_0.html: -81 +116
+     - <h4>9A Cycling successes</h4>
+     - <p>New Zealand has had notable successes at the Olympic velodrome, particularly in recent years. At the Rio de
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>In Paris, at the 2024 Olympics the New Zealand Women won several medals at the velodrome. These medals incl
+     - <p>If you would like to see New Zealand racing at the Olympic velodrome then click on this link.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/_N6N9Rxksz0" loading="lazy" title="YouTube video player" f
+     - <p>Complete the following division questions by dragging the correct number frames into the spaces to represen
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>24 ÷6 = 4</p>
+     - <p>We can check this is correct by reversing the sum:</p>
+     - <p>4 x 6 = 24</p>
+     - <div class="activity interactive" number="9A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="MXFU202-09-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: unclassified — Activity (inline) — 
+     - <h4>9B Cycling numerals</h4>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="35" data-cv2-ref="MXFU202-09-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="35" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #35: unclassified — Activity (inline) — 
+     - <div class="activity interactive" number="9C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="MXFU202-09-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="36" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #36: unclassified — Activity (inline) — 
+     - <h4>9C Diving division</h4>
+     - <p>There are many Olympic diving events. These events include 3m springboard and 10 metre platform, Individual
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1909728127" alt="A Profess
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1909728127.jpg" alt="A Professional Swimmer Girl
+     - <p>Division is the opposite of multiplication. You can check your accuracy by reversing your calculations.</p>
+     - <p>Complete the division and multiplication questions below.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="MXFU202-09-04" style="border: 8px s
+     - <h4>9D Swimming lanes</h4>
+     - <p>There are 6 lanes in the swimming pool. Calculate how many heats will have 6 swimmers in each event. For ea
+     - <p>For example: There are 25 swimmers competing in the 50m freestyle,</p>
+     - <p>25 does not divide evenly into 6.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-171577953" alt="Swimmers" 
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-171577953.jpg" alt="Swimmers" /> -->
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="38" data-cv2-ref="MXFU202-09-05" style="border: 8px s
+     - … 41 more removed
+     + <div class="activity" number="9A">
+     + <h3>Cycling successes</h3>
+     + <p>New Zealand has had notable successes at the Olympic velodrome, particularly in recent years. At the Rio de
+     + <p>In Paris, at the 2024 Olympics the New Zealand Women won several medals at the velodrome. These medals incl
+     + <p>If you would like to see New Zealand racing at the Olympic velodrome then click on this link.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/_N6N9Rxksz0" loading="lazy" title="YouTube video player" f
+     + <p>Complete the following division questions by dragging the correct number frames into the spaces to represen
+     + <p>24 ÷6 = 4</p>
+     + <p>We can check this is correct by reversing the sum:</p>
+     + <p>4 x 6 = 24</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="MXFU202-09-01" style="border: 8px s
+     + <div class="activity" number="9B">
+     + <h3>Cycling numerals</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="38" data-cv2-ref="MXFU202-09-02" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="MXFU202-09-03" style="border: 8px s
+     + <div class="activity" number="9C">
+     + <h3>Diving division</h3>
+     + <p>There are many Olympic diving events. These events include 3m springboard and 10 metre platform, Individual
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1909728127" alt="A Profess
+     + … 96 more added
+  ~ MXFU202_10_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="MXFU202-10-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: unclassified — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="MXFU202-10-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="43" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #43: unclassified — Activity (inline) — 
+MXFU202: identical 1 / changed 10
+MXFU402: identical 8 / changed 0
+  ~ OSAI101_1_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/unicorn-and-waterfall-gm1169035720-323003626" target="_blank">ht
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1169035720" alt="Unicorn a
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1169035720.jpg" alt="Unicorn and Waterfall" /> -
+OSAI101: identical 2 / changed 1
+  ~ OSAI501_1_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/ai-prompt-in-chat-screen-artificial-intelligence-in-generative-c
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2060559146" alt="AI Prompt
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2060559146.jpg" alt="AI Prompt in Chat Screen Ar
+OSAI501: identical 5 / changed 1
+OSBY401: identical 5 / changed 0
+OSGM301: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSSC301: identical 4 / changed 0
+OSSM401: identical 5 / changed 0
+PES1004: identical 11 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1005: identical 6 / changed 0
+  ~ SCCH301_3_0.html: -1 +2
+     - <p>3C Glass of water with plate on top with ice.png</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/example-created-with-copilot-designer-to.jpg" alt="" />
+SCCH301: identical 8 / changed 1
+SSOG101: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+  ~ XDLS904_5_0.html: -1 +3
+     - <p>Bar Graph: Household composition in New Zealand (download from <a href="https://figure.nz/chart/BXpJij29Vs9
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Bar Graph: Household composition in New Zealand (download from</p>
+XDLS904: identical 7 / changed 1
+XDLS911: identical 2 / changed 0
+  ~ XGF9003_1_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/redhead-teenage-boy-carrying-the-boxes-for-donation-gm1387287700
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1387287700" alt="Redhead T
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1387287700.jpg" alt="Redhead Teenage Boy Carryin
+XGF9003: identical 5 / changed 1
+XLP02: identical 7 / changed 0
+  ~ XLP06_1_0.html: -1 +3
+     - <p>Brain(<a href="https://www.istockphoto.com/vector/two-heads-with-brain-looking-opposite-side-gm1129167882-2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1129167882" alt="Two Heads
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1129167882.jpg" alt="Two Heads with Brain Lookin
+     + <p>Brain</p>
+XLP06: identical 2 / changed 1
+XMES201: identical 6 / changed 0
+  ~ XTAS103_2_0.html: -1 +2
+     - <p>Friends body shape</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-144871646" alt="Friends" /
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-144871646.jpg" alt="Friends" /> -->
+XTAS103: identical 6 / changed 1
+
+TOTAL: identical 458 / changed 49 / missing 0 over 104 modules
+CHANGED: ARFUN03/ARFUN03_0_0.html ENFUN01/ENFUN01_0_0.html HPFUN901/HPFUN901_0_0.html MXFUN02/MXFUN02_0_0.html SSFUN02/SSFUN02_0_0.html BLL120/BLL120_0_0.html BLL160/BLL160_0_0.html CEDK501/CEDK501_3_0.html CEDK501/CEDK501_6_1.html CEDR204/CEDR204_0_0.html ANZH304/ANZH304_3_0.html BLL122/BLL122_1_0.html BLL144/BLL144_1_0.html BLL151/BLL151_1_0.html BLL155/BLL155_1_0.html BLL173/BLL173_1_1.html BLL244/BLL244_1_0.html BLL252/BLL252_1_0.html BLL263/BLL263_1_0.html ENGC301/ENGC301_2_0.html ENGC301/ENGC301_3_0.html ENGC301/ENGC301_4_0.html ENGC301/ENGC301_6_0.html ENGJ102/ENGJ102_1_0.html ENGJ102/ENGJ102_5_0.html ENGS202/ENGS202_3_0.html HES1003/HES1003_1_0.html HIS1004/HIS1004_6_0.html MXDB202/MXDB202_4_0.html MXDI102/MXDI102_1_0.html MXEO301/MXEO301_5_1_0.html MXFL201/MXFL201_1_0.html MXFU202/MXFU202_1_0.html MXFU202/MXFU202_2_0.html MXFU202/MXFU202_3_0.html MXFU202/MXFU202_4_0.html MXFU202/MXFU202_5_0.html MXFU202/MXFU202_6_0.html MXFU202/MXFU202_7_0.html MXFU202/MXFU202_8_0.html MXFU202/MXFU202_9_0.html MXFU202/MXFU202_10_0.html OSAI101/OSAI101_1_0.html OSAI501/OSAI501_1_0.html SCCH301/SCCH301_3_0.html XDLS904/XDLS904_5_0.html XGF9003/XGF9003_1_0.html XLP06/XLP06_1_0.html XTAS103/XTAS103_2_0.html

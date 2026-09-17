@@ -1,0 +1,409 @@
+PNR104: identical 3 / changed 0
+TRR105: prep refused (no-wt)
+TRR109: identical 6 / changed 0
+TRR114: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+  ~ ARFUN04_0_0.html: -4 +12
+     - <p><a href="https://www.istockphoto.com/vector/set-of-100-geometric-shapes-design-retro-elements-for-web-vinta
+     - <p><a href="https://www.istockphoto.com/en/photo/green-plants-are-reflected-in-the-lake-gm1686944736-537152454
+     - <p><a href="https://www.istockphoto.com/vector/geometrical-figures-flat-and-volumetric-gm1059567112-283212342?
+     - <p><a href="https://www.istockphoto.com/vector/round-tree-trunk-cuts-in-various-colors-sawn-pine-or-oak-slices
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: : [Insert item #6: Shapes and forms i
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1197819337" alt="Set of 10
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1197819337.jpg" alt="Set of 100 Geometric Shapes
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1686944736" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1686944736.jpg" alt="" /> -->
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [mix and match] [CS to create mix and
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1059567112" alt="Geometric
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1059567112.jpg" alt="Geometrical Figures Flat an
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1411999362" alt="Round Tre
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1411999362.jpg" alt="Round Tree Trunk Cuts in Va
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ARFUN04: identical 0 / changed 1
+CHFUN05: identical 1 / changed 0
+  ~ ENFUN02_0_0.html: -2 +4
+     - <p><a href="https://drive.google.com/file/d/1RkuqGCQdlaS6cN6wkXfppd8PNp_-PGi_/view?usp=drive_link" target="_bl
+     - <p><a href="https://www.grahamesydney.co.nz/product/auripo-road" target="_blank">https://www.grahamesydney.co.
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/add-zoom-in-feature-or-any-busy-if-this.jpg" alt="" /> 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ENFUN02: identical 0 / changed 1
+ENFUN07: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+TEFUN01: identical 1 / changed 0
+  ~ TEFUN05_0_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/retro-tin-toy-robot-gm169946485-17744242?searchscope=image%2Cfil
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-169946485" alt="Retro Tin 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-169946485.jpg" alt="Retro Tin Toy Robot" /> -->
+TEFUN05: identical 0 / changed 1
+XFUN01: identical 1 / changed 0
+BLL130: identical 1 / changed 0
+BLL170: identical 1 / changed 0
+BLL240: identical 9 / changed 0
+  ~ CEDO102_0_0.html: -2 +6
+     - <p>Blobfish: The World&#39;s Ugliest Animal | Biology for Kids | SciShow Kids (<a href="https://www.youtube.co
+     - <p>What Makes SLIME? The Science of Slime (<a href="https://www.youtube.com/watch?v=T2CJxo5drqA)" target="_bla
+     + <iframe src="https://www.youtube.com/embed/A7LU5Wxc_0Y" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/T2CJxo5drqA" loading="lazy" title="YouTube video player" frameborde
+     + <div class="videoSection ratio ratio-16x9">
+     + </div>
+     + <div class="videoSection ratio ratio-16x9">
+     + </div>
+CEDO102: identical 0 / changed 1
+CEDR301: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDW101: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+XDLS901: identical 5 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1006: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH205: identical 7 / changed 0
+  ~ ANZH401_6_0.html: -1 +2
+     - <h3><a href="https://nzhistory.govt.nz/culture/home-away-from-home/who-were-the-immigrants" target="_blank">ht
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ANZH401: identical 13 / changed 1
+ART1004: identical 1 / changed 0
+BLL112: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL141: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+  ~ BLL156_1_1.html: -1 +2
+     - <p>Creative Services audio BLL156 Set 5 Mod 6.docx</p>
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p><a href="https://mytekuraschool-my.sharepoint.com/:w:/g/personal/shelley_haua_tekura_school_nz/EcZMi1Qoj_1M
+BLL156: identical 2 / changed 1
+  ~ BLL163_1_0.html: -0 +2
+     + <!-- <img class="img-fluid" loading="lazy" src="images/source-of-a.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+  ~ BLL163_1_1.html: -1 +2
+     - <p>SPELD_SA_Set_6_Sant_the_Ant_has_lunch-DS.pdf</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL163: identical 1 / changed 2
+  ~ BLL167_1_0.html: -1 +3
+     - <p>Reading Multi-Syllable Words {Open &amp; Closed Syllables}</p>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/6spkC3mj7SE" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ BLL167_1_1.html: -1 +3
+     - <p>Kia Ora Tui (NZ birds in a rhyming children&#39;s story) <a href="https://www.youtube.com/watch?v=74uXO8wGf
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/74uXO8wGfE8" loading="lazy" title="YouTube video player" f
+     + </div>
+BLL167: identical 1 / changed 2
+BLL174: identical 3 / changed 0
+BLL211: identical 3 / changed 0
+  ~ BLL215_1_0.html: -1 +3
+     - <p>Prefixes | Monsters Learn English | Scratch Garden (<a href="https://www.youtube.com/watch?v=jX5VVlU2hVQ)" 
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/jX5VVlU2hVQ" loading="lazy" title="YouTube video player" f
+     + </div>
+  ~ BLL215_2_0.html: -0 +2
+     + <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     + <p>Can we create flip cards that open for 3 seconds and then flip back again?</p>
+BLL215: identical 1 / changed 2
+BLL222: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+  ~ BLL245_2_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/607776188/vector/detective-holding-a-magnifying-glass-with-circle
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+BLL245: identical 2 / changed 1
+BLL253: identical 3 / changed 0
+  ~ BLLR201_6_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/confused-child-shrugging-shoulders-gm1713360126-539967949" targ
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1713360126" alt="Confused 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1713360126.jpg" alt="Confused Child Shrugging Sh
+BLLR201: identical 7 / changed 1
+CEDO502: identical 10 / changed 0
+ENG1004: identical 8 / changed 0
+ENGC102: identical 8 / changed 0
+  ~ ENGC302_6_0.html: -1 +2
+     - <p><a href="https://drive.google.com/file/d/1ylEMWqO0Rg09jYhAp0DrfDqJXn58VGy1/view?usp=sharing" target="_blank
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+ENGC302: identical 7 / changed 1
+ENGI103: identical 7 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI401: identical 12 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGR201: identical 7 / changed 0
+  ~ ENGS101_5_0.html: -1 +2
+     - <p>Childs painting of a space rocket</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-466577103" alt="Childs Pai
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-466577103.jpg" alt="Childs Painting of a Space R
+ENGS101: identical 5 / changed 1
+  ~ ENGS301_4_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/cropped-from-the.jpg" alt="" /> -->
+ENGS301: identical 7 / changed 1
+EXBP901: identical 6 / changed 0
+  ~ HES1004_2_0.html: -34 +51
+     - <div class="activity interactive" number="2A">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h4>2A: Decision making process</h4>
+     - <p>Choose ONE health related situation from the table below.</p>
+     - <p>Complete Task 2A in the journal using the health related situation to follow the decision making process ou
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <p>Present the table below like this please (taken from HES1001 – 7.0)</p>
+     - <p><b>Health related situations</b></p>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><b>Food and nutrition</b></th>
+     - <th><b>Mental health</b></th>
+     - <th><b>Relationships and sexuality</b></th>
+     - </tr>
+     - <tr>
+     - <td>Healthy or a hoax? / How do I know whether this marketing claim is providing the best advice for my health
+     - <td>Digital digestion. / How do I regulate my screen time and what I am seeing online? / [insert image – item 
+     - <td>Break up. / How do I leave an intimate relationship? / You and your partner aren&#39;t getting on well. Th
+     - </tr>
+     - <tr>
+     - <td>Food variety. / How do I request greater diversity of food options at home that fully supports my health a
+     - <td>Challenging a friend. / A friend constantly puts others down. This may be by commenting on body appearance
+     - <td>Sharing sexuality. / A friend of yours has been exploring their sexuality. They need some support and are 
+     - </tr>
+     - <tr>
+     - <td>Follow or fake / How do I navigate dietary advice on social media? Does it support health and wellbeing? /
+     - <td>Do I go to my friend&#39;s party? / Your friend has invited you to their party. You know that there will b
+     - <td>Uncomfortable / You have found yourself in a controlling relationship. How do I tackle this? / [insert ima
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     + <div class="activity">
+     + <div class="activity" number="2A">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Decision making process</h3>
+     + <p>Choose ONE health related situation from the table below.</p>
+     + <p>Complete Task 2A in the journal using the health related situation to follow the decision making process ou
+     + <p>Go to journal</p>
+     + <p>Present the table below like this please (taken from HES1001 – 7.0)</p>
+     + <p><b>Health related situations</b></p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="HES1004-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: unclassified — Activity 2A — see HES
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 31 more added
+HES1004: identical 4 / changed 1
+HIS1001: identical 8 / changed 0
+HIS1005: identical 15 / changed 0
+  ~ HPRE203_3_0.html: -2 +4
+     - <p><a href="https://media.istockphoto.com/id/1267591979/photo/little-kid-girl-cuddling-smaller-brother-at-home
+     - <p><a href="https://media.istockphoto.com/id/2197757483/vector/blue-figure-with-heart-hugging-another-vector.j
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+  ~ HPRE203_5_0.html: -1 +2
+     - <p>Ali&#39;s example.png</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+  ~ HPRE203_6_0.html: -1 +2
+     - <p><a href="https://media.istockphoto.com/id/1407806147/vector/foot-print-human-sign-track-walking-design-icon
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+HPRE203: identical 5 / changed 3
+MXDB301: identical 8 / changed 0
+MXDI103: identical 10 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXFL102: identical 9 / changed 0
+  ~ MXFL202_4_0.html: -3 +6
+     - <p><a href="https://media.istockphoto.com/id/1022030714/vector/statistics-report-icon.jpg?s=612x612" target="_
+     - <p><a href="https://media.istockphoto.com/id/1399245326/vector/white-cat-showing-growth-graph.jpg?s=612x612" t
+     - <p><a href="https://media.istockphoto.com/id/579257282/vector/tired-cat.jpg?s=612x612" target="_blank">https:/
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXFL202: identical 5 / changed 1
+MXFL302: identical 10 / changed 0
+  ~ MXFU301_10_0.html: -2 +4
+     - <p><a href="https://media.istockphoto.com/id/2154834616/vector/versus-frames-battle-visualization-place-for-fi
+     - <p><a href="https://www.shutterstock.com/image-vector/joker-sad-vector-graphic-illustration-individually-19819
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+MXFU301: identical 11 / changed 1
+OSAH301: identical 4 / changed 0
+  ~ OSAI201_1_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/interior-from-the-abandoned-lighthouse-in-livadas-cape-in-tinos-
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1877595285" alt="Interior 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1877595285.jpg" alt="Interior From the Abandoned
+OSAI201: identical 3 / changed 1
+  ~ OSBY101_3_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/set-of-doodle-speech-thoughts-letterings-with-text-chat-design-
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2208278587" alt="Set of Do
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2208278587.jpg" alt="Set of Doodle Speech Though
+OSBY101: identical 3 / changed 1
+OSBY501: identical 6 / changed 0
+OSGM401: identical 5 / changed 0
+OSOH301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+  ~ PES1005_10_0.html: -0 +4
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+PES1005: identical 11 / changed 1
+PHE1002: identical 4 / changed 0
+PHE1006: identical 6 / changed 0
+  ~ SCPH301_5_0.html: -1 +2
+     - <p>5B ice cube on metal, plastic and wood.png</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/ice-cube-on-metal-wood-and-plastic-desig.jpg" alt="" />
+  ~ SCPH301_6_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/homemade-toasted-baked-alaska-gm1158692688-316599786" target="_b
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1158692688" alt="Homemade 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1158692688.jpg" alt="Homemade Toasted Baked Alas
+  ~ SCPH301_7_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/photo/sports-car-with-engine-revealed-hood-up-gm172384200-4102967" tar
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-172384200" alt="Sports Car
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-172384200.jpg" alt="Sports Car with Engine Revea
+SCPH301: identical 6 / changed 3
+  ~ SSOG103_2_0.html: -1 +6
+     - <p><a href="https://www.istockphoto.com/vector/thump-up-and-thump-down-hands-vector-illustration-gm622800614-1
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-622800614" alt="Thump Up a
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-622800614.jpg" alt="Thump Up and Thump Down Hand
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+SSOG103: identical 6 / changed 1
+XDLS501: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+  ~ XDLS912_2_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/create-like-these-please-and-insert-here.jpg" alt="" />
+  ~ XDLS912_4_0.html: -3 +6
+     - <p>jigsaw puzzle pieces</p>
+     - <p>underwear cartoon</p>
+     - <p>funky hairstyle</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-471441475" alt="Four Diffe
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-471441475.jpg" alt="Four Different People Connec
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-857229228" alt="Underwear 
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-857229228.jpg" alt="Underwear Clothes Fashion Lo
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2149680097" alt="Gen Z You
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2149680097.jpg" alt="Gen Z Young Woman with Styl
+XDLS912: identical 4 / changed 2
+  ~ XGF9004_7_0.html: -0 +2
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/insert-cs-can-these-be-that-when-the-ako.jpg" alt="" />
+  ~ XGF9004_10_0.html: -1 +2
+     - <p><a href="https://www.istockphoto.com/vector/people-thinking-to-make-decision-problem-solving-and-find-creat
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1381931346" alt="People Th
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1381931346.jpg" alt="People Thinking to Make Dec
+  ~ XGF9004_14_0.html: -5 +23
+     - <h4>1A. Spark</h4>
+     - <div class="activity interactive" number="14A">
+     - <h4>1B. Stretch</h4>
+     - <div class="activity interactive" number="14D">
+     - <h4>1C. Soar</h4>
+     + <div class="activity" number="1A">
+     + <h3>Spark</h3>
+     + <div class="activity" number="1B">
+     + <h3>Stretch</h3>
+     + <div class="activity" number="1C">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Soar</h3>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="14H">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="14I">
+     + <div class="row">
+     + <div class="col-12">
+     + … 3 more added
+  ~ XGF9004_15_0.html: -4 +26
+     - <p>2A. Spark</p>
+     - <div class="activity interactive" number="15A">
+     - <h3>2B. Stretch</h3>
+     - <h3>2C. Soar</h3>
+     + <div class="activity" number="2A">
+     + <h3>Spark</h3>
+     + <div class="activity" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Stretch</h3>
+     + <div class="activity" number="2C">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Soar</h3>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="15E">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 6 more added
+XGF9004: identical 14 / changed 4
+  ~ XLP03_4_0.html: -1 +2
+     - <p>bottle caps</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-175217582" alt="Silver Met
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-175217582.jpg" alt="Silver Metal Caps" /> -->
+XLP03: identical 5 / changed 1
+  ~ XMES101_7_0.html: -2 +6
+     - <p>How are you? New Zealand Sign Language]</p>
+     - <p>Kei te pehea koe? (Kei te pehea koe?)</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/vHaRianzMQg" loading="lazy" title="YouTube video player" frameborde
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/LrWyfjfR8ms" loading="lazy" title="YouTube video player" frameborde
+     + </div>
+     + </div>
+  ~ XMES101_8_0.html: -1 +4
+     - <p>scarves in O/T ball</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1366737790" alt="Plastic R
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1366737790.jpg" alt="Plastic Round Sieve of Red 
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+XMES101: identical 7 / changed 2
+XMES203: identical 6 / changed 0
+XWHA01: identical 2 / changed 0
+
+TOTAL: identical 488 / changed 39 / missing 0 over 104 modules
+CHANGED: ARFUN04/ARFUN04_0_0.html ENFUN02/ENFUN02_0_0.html TEFUN05/TEFUN05_0_0.html CEDO102/CEDO102_0_0.html ANZH401/ANZH401_6_0.html BLL156/BLL156_1_1.html BLL163/BLL163_1_0.html BLL163/BLL163_1_1.html BLL167/BLL167_1_0.html BLL167/BLL167_1_1.html BLL215/BLL215_1_0.html BLL215/BLL215_2_0.html BLL245/BLL245_2_0.html BLLR201/BLLR201_6_0.html ENGC302/ENGC302_6_0.html ENGS101/ENGS101_5_0.html ENGS301/ENGS301_4_0.html HES1004/HES1004_2_0.html HPRE203/HPRE203_3_0.html HPRE203/HPRE203_5_0.html HPRE203/HPRE203_6_0.html MXFL202/MXFL202_4_0.html MXFU301/MXFU301_10_0.html OSAI201/OSAI201_1_0.html OSBY101/OSBY101_3_0.html PES1005/PES1005_10_0.html SCPH301/SCPH301_5_0.html SCPH301/SCPH301_6_0.html SCPH301/SCPH301_7_0.html SSOG103/SSOG103_2_0.html XDLS912/XDLS912_2_0.html XDLS912/XDLS912_4_0.html XGF9004/XGF9004_7_0.html XGF9004/XGF9004_10_0.html XGF9004/XGF9004_14_0.html XGF9004/XGF9004_15_0.html XLP03/XLP03_4_0.html XMES101/XMES101_7_0.html XMES101/XMES101_8_0.html

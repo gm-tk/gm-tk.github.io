@@ -387,8 +387,14 @@ reconcile git with the state file → honour recorded decisions → continue. Th
 kept in this file so it can never be lost:
 
 > Continue the PageForge autonomous loop in this folder. Start with a health check: `git status`
-> in pageforge-site, `bash _MIGRATION/verify_after_transfer.sh` (must PASS), and delete any stale
-> `.git/index.lock`. Then read LOOP__Autonomous_Rounds.md and LOOP_STATE.md — if LOOP_STATE.md
+> in pageforge-site, `bash _MIGRATION/verify_after_transfer.sh` (must PASS), delete every stale
+> git lock in pageforge-site (`.git/index.lock`, `.git/HEAD.lock`, `.git/next-index-*.lock`,
+> `.git/objects/maintenance.lock`, and any `.git/objects/*/tmp_obj_*` — a session that dies or a
+> shell without delete rights leaves them, and every commit fails until they are gone), and
+> `wc -c LOOP_STATE.md DIFF_QUEUE.md` — LOOP_STATE.md over 100 KB →
+> condense/archive per §5d BEFORE anything else (over 160 KB = health check FAILED until fixed);
+> never read any file over 100 KB whole (LOOP_STATE_ARCHIVE.md and outputs/_diff_queue_details.md
+> are grep-only). Then read LOOP__Autonomous_Rounds.md and LOOP_STATE.md — if LOOP_STATE.md
 > does not exist, do Round 0 and Round 0b first. Reconcile git with the state file: any
 > uncommitted engine or data files belong to the round LOOP_STATE.md names as in progress — never
 > git checkout or git restore them; check them against that round's PICK, finish or toggle OFF,
@@ -406,7 +412,8 @@ kept in this file so it can never be lost:
 > with a long timeout or poll them until done; never ask me whether to continue; a blocked item
 > ends the round, not the session — record it and move to the next class. Follow the §6
 > context-diet rules: never read CLAUDE.md or BUILD_CHANGELOG.md whole, and after every automatic
-> compaction re-read the loop file and LOOP_STATE.md before anything else. Update LOOP_STATE.md
+> compaction do ONLY the bounded §5d re-read (sections by line range, never a whole file; the
+> thrash breaker applies). Update LOOP_STATE.md
 > before and after every round and commit after every round, never push. Stop only when §4 says
 > so; then give me the §5 plain-English report with the copy-and-paste push block, and end
 > LOOP_STATE.md with a "Next session starts with:" line.

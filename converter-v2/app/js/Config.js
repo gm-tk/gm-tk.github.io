@@ -1724,7 +1724,8 @@ class Config {
 	// ROUND 361 (260619.32): the EXPlore "Navigation with N sections" inquiry dialect — the writer's one-line section list + its openers become the KB 06 §3.4 crumbs + inquiryPanel scaffold (PanelsBuilder.detectInquirySections, inquiryPanels sectionMode; data inquiry_tabs.section_nav, env SECTIONNAV_OFF); the diff miner's crumbs fact F23.
 	// ROUND 362 (260619.33): the unclassified activity keeps its title heading and lead prose free — the numbered `[Activity N] Title` opener becomes the bundle's activityOwner and the prose before the first table its lead (KB 01F activity_heading h3 + the instruction p, then the hand-off box); data BoundaryBank._meta.opener_rule.unclassified_activity_lead, env UNCLASSLEAD_OFF; the diff miner's activity classes #542 / #535 / #533.
 	// ROUND 363 (260619.34): the heading-tag-led unclassified activity takes the owner form — a bare `[Activity N]` + `[Activity Heading] Title` / `[Heading] Title` keeps the gold's <h3> title and lead prose free of the capture (the r362 guard scoped to the h2–h5 tags #swallowMembers terminates on; data unclassified_activity_lead.heading_led_owner, env UNCLASSHEAD_OFF). 76 pages / 31 modules; skeleton +0.081pp.
-	static AppVersion = "260619.34";
+	// ROUND 364 (260619.35): the id-carrying heading is the activity opener — `[H3] 1A Title` opens the gold's numbered box with the <h3> title, the family's unnumbered [interactive activity] span nests inside it (activity interactive when it owns a widget), and a media item in an activity's lead renders as media (Standard + Fundamentals; data BoundaryBank._meta.opener_rule.id_heading_opener; env IDHEAD_OFF / LEADMEDIA_OFF). The autonomous loop's session 20 Round 8, finished in session 21 Round 1.
+	static AppVersion = "260619.35";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

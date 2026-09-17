@@ -1,0 +1,216 @@
+PNR104: identical 3 / changed 0
+TRR105: prep refused (no-wt)
+TRR109: identical 6 / changed 0
+TRR114: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+ARFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+XFUN01: identical 1 / changed 0
+BLL130: identical 1 / changed 0
+BLL170: identical 1 / changed 0
+BLL240: identical 9 / changed 0
+CEDO102: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDW101: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+XDLS901: identical 5 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1006: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ART1004: identical 1 / changed 0
+BLL112: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL141: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL211: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDO502: identical 10 / changed 0
+ENG1004: identical 8 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI401: identical 12 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGR201: identical 7 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS301: identical 8 / changed 0
+EXBP901: identical 6 / changed 0
+  ~ HES1004_2_0.html: -34 +51
+     - <div class="activity interactive" number="2A">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h4>2A: Decision making process</h4>
+     - <p>Choose ONE health related situation from the table below.</p>
+     - <p>Complete Task 2A in the journal using the health related situation to follow the decision making process ou
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <p>Present the table below like this please (taken from HES1001 – 7.0)</p>
+     - <p><b>Health related situations</b></p>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><b>Food and nutrition</b></th>
+     - <th><b>Mental health</b></th>
+     - <th><b>Relationships and sexuality</b></th>
+     - </tr>
+     - <tr>
+     - <td>Healthy or a hoax? / How do I know whether this marketing claim is providing the best advice for my health
+     - <td>Digital digestion. / How do I regulate my screen time and what I am seeing online? / [insert image – item 
+     - <td>Break up. / How do I leave an intimate relationship? / You and your partner aren&#39;t getting on well. Th
+     - </tr>
+     - <tr>
+     - <td>Food variety. / How do I request greater diversity of food options at home that fully supports my health a
+     - <td>Challenging a friend. / A friend constantly puts others down. This may be by commenting on body appearance
+     - <td>Sharing sexuality. / A friend of yours has been exploring their sexuality. They need some support and are 
+     - </tr>
+     - <tr>
+     - <td>Follow or fake / How do I navigate dietary advice on social media? Does it support health and wellbeing? /
+     - <td>Do I go to my friend&#39;s party? / Your friend has invited you to their party. You know that there will b
+     - <td>Uncomfortable / You have found yourself in a controlling relationship. How do I tackle this? / [insert ima
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     + <div class="activity">
+     + <div class="activity" number="2A">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Decision making process</h3>
+     + <p>Choose ONE health related situation from the table below.</p>
+     + <p>Complete Task 2A in the journal using the health related situation to follow the decision making process ou
+     + <p>Go to journal</p>
+     + <p>Present the table below like this please (taken from HES1001 – 7.0)</p>
+     + <p><b>Health related situations</b></p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="HES1004-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: unclassified — Activity 2A — see HES
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 31 more added
+HES1004: identical 4 / changed 1
+HIS1001: identical 8 / changed 0
+HIS1005: identical 15 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB301: identical 8 / changed 0
+MXDI103: identical 10 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL302: identical 10 / changed 0
+MXFU301: identical 12 / changed 0
+OSAH301: identical 4 / changed 0
+OSAI201: identical 4 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM401: identical 5 / changed 0
+OSOH301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1005: identical 12 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1006: identical 6 / changed 0
+SCPH301: identical 9 / changed 0
+SSOG103: identical 7 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS912: identical 6 / changed 0
+  ~ XGF9004_14_0.html: -5 +23
+     - <h4>1A. Spark</h4>
+     - <div class="activity interactive" number="14A">
+     - <h4>1B. Stretch</h4>
+     - <div class="activity interactive" number="14D">
+     - <h4>1C. Soar</h4>
+     + <div class="activity" number="1A">
+     + <h3>Spark</h3>
+     + <div class="activity" number="1B">
+     + <h3>Stretch</h3>
+     + <div class="activity" number="1C">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Soar</h3>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="14H">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="14I">
+     + <div class="row">
+     + <div class="col-12">
+     + … 3 more added
+  ~ XGF9004_15_0.html: -4 +26
+     - <p>2A. Spark</p>
+     - <div class="activity interactive" number="15A">
+     - <h3>2B. Stretch</h3>
+     - <h3>2C. Soar</h3>
+     + <div class="activity" number="2A">
+     + <h3>Spark</h3>
+     + <div class="activity" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Stretch</h3>
+     + <div class="activity" number="2C">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Soar</h3>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="15E">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 6 more added
+XGF9004: identical 16 / changed 2
+XLP03: identical 6 / changed 0
+XMES101: identical 9 / changed 0
+XMES203: identical 6 / changed 0
+XWHA01: identical 2 / changed 0
+
+TOTAL: identical 524 / changed 3 / missing 0 over 104 modules
+CHANGED: HES1004/HES1004_2_0.html XGF9004/XGF9004_14_0.html XGF9004/XGF9004_15_0.html
