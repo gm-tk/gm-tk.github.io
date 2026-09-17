@@ -2742,10 +2742,26 @@
 				"HPFUN": "Health & Physical Education Fundamentals"
 			}
 		},
+		"te_reo_detect": {
+			"enabled": true,
+			"env": "REODETECT_OFF",
+			"mode": "macron+phonotactics",
+			"min_letters_single_word": 5,
+			"digraphs": ["ng", "wh"],
+			"english_stopwords": ["one", "to", "me", "more", "here", "are", "we", "time", "home", "note", "name", "tea", "tie", "toe", "hope", "hero", "pure", "mine", "nine", "none", "area", "mere", "rate", "rope", "ripe", "wire", "hire", "hate", "mate", "tame", "tape", "tone", "tune", "wine", "pine", "ware", "hone", "pea", "ore", "ape", "tome", "tote", "mute", "mote", "mare"],
+			"english_slot_by_language": true,
+			"english_slot_env": "ENGSLOT_OFF",
+			"pair_half_casing": true,
+			"_refinements_note": "ROUND 358, after the first in-memory probe over all 416 (27 changed pages): english_stopwords — short English words that pass Māori phonotactics ('One-to-one' → CEDT501 lesson 7 must not split; a hyphenated token is never Māori by the alphabet path either); a multi-sentence lesson title is never a soft pair (XMES101 lesson 2); pair_half_casing — a pair split from an ALL-CAPS title is sentence-cased per half (HES1005 'KAITIAKITANGA – BE A KAITIAKI') and a half never starts lowercase; english_slot_by_language — the <title> element and a lesson page's module-title fallback take the ENGLISH half of a Māori-first pair (CEDK501 'Kia Mahitahi – Idea to Action' → <title>CEDK501 Idea to Action</title>, lesson fallback 'Idea to Action'), the overview h1 order untouched.",
+			"_doc": "ROUND 358 (the autonomous loop's session-19 Round 2, 2026-09-17 — the diff miner's TITLE class, DIFF_QUEUE F1 / #4: the gold's second title h1 Claude glues into one). Which half of a separated title is Te Reo: a macron (āēīōū) OR — this round — the MĀORI ALPHABET + PHONOTACTICS (Utils.LooksMaori: every word's letters from a e i o u h k m n p r t w with g only inside ng, every word vowel-final, no consonant clusters except ng / wh, a lone word ≥ min_letters_single_word letters). Read by ContentConverter.#oneHalfTeReo (the guard every overview bilingual splitter shares — dash r86, slash / colon r168 / r177, punct-pair) and by SkeletonBuilder.#lessonPair's soft separators. Measured (outputs/_measure_r358_seps.py over the gate's 1955 pairs): with exactly one Māori half the gold splits a non-pipe pair 27 : 3 — the 3 glued are the alphabet test's false positives on short English words ('Time – Quarter Past', 'Our home: Planet Earth'), which the phonotactic test rejects. OFF = the macron-only guard every splitter used before this round (byte-identical output)."
+		},
 		"lesson_bilingual_pair": {
 			"enabled": true,
 			"env": "LESSONPAIR_OFF",
 			"separators": ["|"],
+			"soft_separators": [" – ", " — ", " - ", " / ", ": "],
+			"soft_guard": "one_half_te_reo",
+			"_round358_note": "ROUND 358: after the unconditional pipe, a lesson's own title splits on the FIRST soft separator that occurs exactly once and leaves exactly ONE half reading as Te Reo (header.te_reo_detect — Utils.LooksMaori); 'Ngā Whare - Housing' (ANZH104 lesson 2, gold two h1) splits, 'Time – Quarter Past' (MXFL103, gold one h1) does not. Env REODETECT_OFF disables the soft path.",
 			"strip_module_code": true,
 			"reo_first_when_body_class": "reoTranslate",
 			"reo_detect": "macron",

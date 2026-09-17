@@ -1,0 +1,47 @@
+r358 title-pair probe — 1955 paired pages / 409 modules
+gold has MORE title h1s than Claude: 206 pages / 116 modules; sources {'not-in-wt': 101, 'wt-separated': 37, 'glued-in-claude': 31, 'placeholder': 16, None: 2, 'wt-elsewhere': 16, 'empty': 3}
+  derivable (wt-separated + glued-in-claude + wt-elsewhere): 84; separators among them {None: 22, ' – ': 11, ':': 3, '|': 29, ' - ': 1, '/': 2}
+Claude has MORE than the gold: 9 pages; Claude ZERO title h1: 4 pages ['ARFUN01/ARFUN01_0_0.html', 'ART1004/ART1004_0_0.html', 'ART1005/ART1005_0_0.html', 'SSFUN02/SSFUN02_0_0.html']
+
+BY template / page type:
+  Bilingual/lesson         pages   47 gold≥2   47 (1.00) claude≥2   36 | gold>claude   11 pages /   4 mods: {'empty': 2, 'not-in-wt': 7, 'glued-in-claude': 2} derivable 2 seps {None: 2}
+  Bilingual/overview       pages   16 gold≥2   16 (1.00) claude≥2   12 | gold>claude    4 pages /   4 mods: {'empty': 1, 'not-in-wt': 2, 'placeholder': 1} derivable 0 seps {}
+  Fundamentals/lesson      pages   11 gold≥2    0 (0.00) claude≥2    0 | gold>claude    0 pages /   0 mods: {} derivable 0 seps {}
+  Fundamentals/overview    pages   53 gold≥2   37 (0.70) claude≥2   12 | gold>claude   26 pages /  26 mods: {'placeholder': 11, 'wt-separated': 1, 'not-in-wt': 13, 'glued-in-claude': 1} derivable 2 seps {'|': 1, '/': 1}
+  Inquiry/lesson           pages   49 gold≥2    6 (0.12) claude≥2    1 | gold>claude    5 pages /   2 mods: {'wt-elsewhere': 1, 'wt-separated': 4} derivable 5 seps {None: 4}
+  Inquiry/overview         pages   42 gold≥2   23 (0.55) claude≥2   17 | gold>claude    7 pages /   7 mods: {'placeholder': 1, 'glued-in-claude': 3, 'not-in-wt': 3} derivable 3 seps {' - ': 1, None: 1, ':': 1}
+  Standard/lesson          pages 1452 gold≥2  118 (0.08) claude≥2   22 | gold>claude   96 pages /  30 mods: {'not-in-wt': 40, 'wt-separated': 32, 'glued-in-claude': 11, 'wt-elsewhere': 13} derivable 56 seps {None: 7, ' – ': 8, ':': 1, '|': 27}
+  Standard/overview        pages  285 gold≥2  184 (0.65) claude≥2  136 | gold>claude   57 pages /  57 mods: {'not-in-wt': 36, None: 2, 'glued-in-claude': 14, 'placeholder': 3, 'wt-elsewhere': 2} derivable 16 seps {' – ': 3, None: 8, '/': 1, '|': 1, ':': 1}
+BY subject (gold>claude pages only where > 0):
+  ANZH                               pages   78 gold≥2 0.55 | gold>claude   33 /   5 mods: {'not-in-wt': 21, 'wt-separated': 9, 'glued-in-claude': 3} seps {None: 1, ' – ': 2, ':': 1, '|': 8}
+  Leaving to Learn                   pages  206 gold≥2 0.26 | gold>claude   29 /  20 mods: {'glued-in-claude': 9, 'wt-separated': 7, 'wt-elsewhere': 1, 'not-in-wt': 11, 'placeholder': 1} seps {' – ': 6, ':': 2, None: 8}
+  Online Safety (OS9000)             pages  130 gold≥2 0.33 | gold>claude   29 /  13 mods: {'not-in-wt': 18, 'glued-in-claude': 3, 'wt-elsewhere': 8} seps {None: 3}
+  NCEA1                              pages  333 gold≥2 0.14 | gold>claude   21 /  14 mods: {None: 2, 'not-in-wt': 10, 'glued-in-claude': 7, 'wt-separated': 2} seps {None: 4, '|': 4, ' – ': 1}
+  1-10 English                       pages  304 gold≥2 0.15 | gold>claude   19 /  19 mods: {'not-in-wt': 16, 'wt-separated': 2, 'placeholder': 1} seps {'|': 1, None: 1}
+  Te Marautanga o Aotearoa TMoA      pages   63 gold≥2 1.00 | gold>claude   15 /   4 mods: {'empty': 3, 'not-in-wt': 9, 'placeholder': 1, 'glued-in-claude': 2} seps {None: 2}
+  None                               pages   46 gold≥2 0.52 | gold>claude   14 /   2 mods: {'wt-separated': 14} seps {'|': 14}
+  1-10 Mathematics                   pages  331 gold≥2 0.14 | gold>claude   12 /  12 mods: {'glued-in-claude': 2, 'placeholder': 4, 'not-in-wt': 6} seps {'/': 1, None: 1}
+  EXPlore                            pages   15 gold≥2 0.60 | gold>claude    8 /   2 mods: {'not-in-wt': 1, 'wt-elsewhere': 6, 'glued-in-claude': 1} seps {None: 1}
+  ConnectED                          pages  107 gold≥2 0.21 | gold>claude    7 /   6 mods: {'placeholder': 1, 'glued-in-claude': 2, 'wt-elsewhere': 1, 'not-in-wt': 2, 'wt-separated': 1} seps {' - ': 1, ' – ': 2}
+  1-10 Social Science                pages   38 gold≥2 0.29 | gold>claude    6 /   6 mods: {'not-in-wt': 4, 'glued-in-claude': 1, 'wt-separated': 1} seps {'/': 1, '|': 1}
+  1-10 Arts                          pages    5 gold≥2 1.00 | gold>claude    5 /   5 mods: {'placeholder': 4, 'wt-separated': 1} seps {'|': 1}
+  1-10 Technology                    pages    8 gold≥2 1.00 | gold>claude    5 /   5 mods: {'not-in-wt': 1, 'placeholder': 4} seps {}
+  Te ara Whakapuawa -Wellbeing       pages    8 gold≥2 0.75 | gold>claude    2 /   2 mods: {'not-in-wt': 1, 'glued-in-claude': 1} seps {None: 1}
+  1-10 Science                       pages   10 gold≥2 0.20 | gold>claude    1 /   1 mods: {'not-in-wt': 1} seps {}
+
+EXAMPLES (first 3 per source):
+  [wt-separated] ANZH101 ANZH101_3_0.html (Standard/lesson, sep None): gold ['Pepeha', 'Pepeha'] | claude ['Sharing Pūrākau in Different Ways'] | WT «• Create a pepeha to show connection with people and places of the past.»
+  [wt-separated] ANZH301 ANZH301_3_0.html (Standard/lesson, sep |): gold ['Big City Lights', 'Ngā Raiti Nui o te Tāone'] | claude ['Hopes versus reality'] | WT «🔴[RED TEXT] [TITLE BAR] [/RED TEXT]🔴 **Ngā Raiti Nui o te Tāone** **| Big City Lights**»
+  [wt-separated] ANZH301 ANZH301_4_0.html (Standard/lesson, sep |): gold ['Big City Lights', 'Ngā Raiti Nui o te Tāone'] | claude ['Big City Life'] | WT «🔴[RED TEXT] [TITLE BAR] [/RED TEXT]🔴 **Ngā Raiti Nui o te Tāone** **| Big City Lights**»
+  [glued-in-claude] ANZH104 ANZH104_2_0.html (Standard/lesson, sep  – ): gold ['Ngā Whare', 'Housing'] | claude ['Ngā Whare - Housing'] | WT «🔴[RED TEXT] [H2]  [/RED TEXT]🔴Lesson 2 – Ngā Whare - Housing»
+  [glued-in-claude] ANZH104 ANZH104_3_0.html (Standard/lesson, sep  – ): gold ['Ngā Weru', 'Clothing'] | claude ['Ngā Weru - Clothing'] | WT «🔴[RED TEXT] [H2]  [/RED TEXT]🔴Lesson 3 – Ngā Weru - Clothing»
+  [glued-in-claude] ANZH104 ANZH104_4_0.html (Standard/lesson, sep :): gold ['Kaimoana', 'Hunting for Food in the Water'] | claude ['Hunting for Food in the Water'] | WT «🔴[RED TEXT] Insert: IROO292 entire section from Kaimoana and Image.  [/RED TEXT]🔴»
+  [wt-elsewhere] CEDK501 CEDK501_8_0.html (Inquiry/lesson, sep None): gold ['Idea to Action', 'Kia Mahitahi'] | claude ['Working together for the win'] | WT «│ 8 ║ Template ║ Monthly financial picture template (accordion log) ║ Te Kura ║ Kia Māia - Idea to Action - Response sheet (Lesson 4) STAYIN»
+  [wt-elsewhere] EXBP901 EXBP901_1_0.html (Standard/lesson, sep None): gold ['Explore It', 'Tūhuratia'] | claude ['Nau mai haere mai ki te Tuhara – Ngā Ngohe Aronga?'] | WT «Interest Projects at Te Kura use a four part learning cycle. These parts are: Explore It, Plan It, Do It, and Share It.»
+  [wt-elsewhere] EXBP901 EXBP901_3_0.html (Standard/lesson, sep None): gold ['Plan It', 'Mahere Whakarite'] | claude ['Learning Goals'] | WT «Interest Projects at Te Kura use a four part learning cycle. These parts are: Explore It, Plan It, Do It, and Share It.»
+  [placeholder] ARFUN01 ARFUN01_0_0.html (Fundamentals/overview, sep None): gold ['What the arts have in common', 'TE REO required'] | claude [] | WT «🔴[RED TEXT] [Insert title H1: What the arts have in common] [/RED TEXT]🔴»
+  [placeholder] ARFUN03 ARFUN03_0_0.html (Fundamentals/overview, sep None): gold ['Dance and Movement', 'TE REO required'] | claude ['Dance and Movement'] | WT «🔴[RED TEXT] [Title: Dance and Movement] [/RED TEXT]🔴»
+  [placeholder] ARFUN04 ARFUN04_0_0.html (Fundamentals/overview, sep None): gold ['Visual Arts', 'TE REO required'] | claude ['Visual Arts'] | WT «🔴[RED TEXT] [Title: Visual Arts] [/RED TEXT]🔴»
+  [not-in-wt] ANZH101 ANZH101_1_0.html (Standard/lesson, sep None): gold ['Tangata Whenua Origin Stories', 'Ko ngā Ingoa Waahi ngā Kōrero ake'] | claude ['First People of the Land'] | WT «🔴[RED TEXT] [TITLE BAR] Tangata Whenua Origin Stories [/RED TEXT]🔴 🔴[RED TEXT] | Tangata Whenua Pūrākau [/RED TEXT]🔴»
+  [not-in-wt] ANZH401 ANZH401_0_0.html (Standard/overview, sep None): gold ['Who is In and Who is Out?', 'Ko wai kei roto, ko wai kei waho?'] | claude ['Who is In and Who is Out?'] | WT «🔴[RED TEXT] [TITLE BAR] Who is In and Who is Out? [/RED TEXT]🔴 *| INSERT MODULE TITLE TE REO*»
+  [not-in-wt] ANZH401 ANZH401_1_0.html (Standard/lesson, sep None): gold ['Who is In and Who is Out?', 'Ko wai kei roto, ko wai kei waho?'] | claude ['Who Decides?'] | WT «🔴[RED TEXT] [TITLE BAR] Who is In and Who is Out? [/RED TEXT]🔴 *| INSERT MODULE TITLE TE REO*»

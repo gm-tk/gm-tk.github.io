@@ -17,6 +17,42 @@
  */
 
 class Utils {
+	/**
+	 * ROUND 358 (the autonomous loop's session-19 Round 2 — the diff miner's TITLE class). Does a title, or one half
+	 * of a title, read as te reo Māori? A macron (āēīōū) decides at once. Otherwise the MĀORI ALPHABET + PHONOTACTICS:
+	 * every word's letters come from a e i o u h k m n p r t w (g only inside the digraph ng), every word ends in a
+	 * vowel, and no two consonants stand together except the digraphs ng / wh; a LONE word needs at least
+	 * cfg.min_letters_single_word letters (5) so that "Time", "Home", "Note" stay English while "Whaikaha", "Pepeha",
+	 * "Mahi Tahi", "Te Tautoko Ako", "Taku hinga motuhake" read Māori. Digits and punctuation are skipped; an empty
+	 * text is not Māori. Pure. Data: Emit_Templates.header.te_reo_detect. The r321 SkeletonBuilder.#looksMaori
+	 * (letters-only) still decides title ORDER — this test decides whether a SEPARATOR is a bilingual boundary.
+	 * @param {string} text
+	 * @param {Object} [cfg] - header.te_reo_detect
+	 * @returns {boolean}
+	 */
+	static LooksMaori(text, cfg) {
+		const s = String(text ?? "");
+		if (/[\u0101\u0113\u012b\u014d\u016b\u0100\u0112\u012a\u014c\u016a]/.test(s)) return true;
+		const minSingle = Number(cfg?.min_letters_single_word ?? 5);
+		const stop = new Set((cfg?.english_stopwords ?? []).map((w) => String(w).toLowerCase()));
+		const tokens = s.toLowerCase().split(/\s+/).map((t) => t.replace(/^[^a-z'\u2019-]+|[^a-z'\u2019-]+$/g, "")).filter(Boolean);
+		if (!tokens.length) return false;
+		let letters = 0;
+		for (const tok of tokens) {
+			if (/['\u2019-]/.test(tok)) return false;                 // a hyphenated / apostrophe token ("One-to-one") is never Māori here
+			const w = tok.replace(/[^a-z]/g, "");
+			if (!w) continue;
+			if (tokens.length <= 3 && stop.has(w)) return false;      // a SHORT English phrase of words that pass Māori phonotactics ("No more"); a long Māori title may carry the particle "me"
+			if (!/^[aeiouhkmnprtwg]+$/.test(w)) return false;          // a letter outside the Māori alphabet
+			if (!/[aeiou]$/.test(w)) return false;                   // every Māori word ends in a vowel
+			const x = w.replace(/ng/g, "N").replace(/wh/g, "W");       // the digraphs count as one consonant
+			if (/g/.test(x)) return false;                            // g only ever inside ng
+			if (/[hkmnprtwNW]{2}/.test(x)) return false;             // no consonant clusters
+			letters += w.length;
+		}
+		if (tokens.length === 1 && letters < minSingle) return false;
+		return true;
+	}
 
 	// =======================================================================
 	// TEXT FOLDING (matching the reference normaliser's fold() exactly)

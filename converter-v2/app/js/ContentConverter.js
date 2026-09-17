@@ -3879,8 +3879,7 @@ class ContentConverter {
 		const a = m[1].trim();
 		const b = m[2].trim();
 		if (a.slice(-1) !== b.slice(-1)) return null;        // same terminal punct on BOTH halves
-		const macron = /[āēīōūĀĒĪŌŪ]/;
-		if (macron.test(a) === macron.test(b)) return null;  // exactly ONE half is Te Reo (macron)
+		if (!this.#oneHalfTeReo(a, b)) return null;  // exactly ONE half is Te Reo (r358: a macron OR the Māori alphabet)
 		return [a, b];
 	};
 
@@ -3911,8 +3910,7 @@ class ContentConverter {
 		if (!dashes || dashes.length !== 1) return null;      // exactly ONE spaced dash
 		const parts = payload.split(/\s[–—-]\s/).map((s) => s.trim());
 		if (parts.length !== 2 || !parts[0] || !parts[1]) return null;
-		const macron = /[āēīōūĀĒĪŌŪ]/;
-		if (macron.test(parts[0]) === macron.test(parts[1])) return null;   // exactly ONE half Te Reo
+		if (!this.#oneHalfTeReo(parts[0], parts[1])) return null;   // exactly ONE half Te Reo (r358: a macron OR the Māori alphabet)
 		const boiler = /(module title|insert|awaiting|translation)/i;
 		if (boiler.test(parts[0]) || boiler.test(parts[1])) return null;     // an incomplete/placeholder title
 		return parts;
@@ -3945,10 +3943,23 @@ class ContentConverter {
 	 * Data flag: header.title_split.bilingual_marker_split
 	 * Env toggle: BILINGUALMARK_OFF
 	 */
+	/** ROUND 358 (the autonomous loop's session-19 Round 2 — the diff miner's TITLE class): "exactly ONE half reads as
+	 *  Te Reo" — the guard every bilingual title splitter shares. With header.te_reo_detect on, a half reads as Te Reo by
+	 *  a macron OR by the Māori alphabet + phonotactics (Utils.LooksMaori) — "Te Tautoko Ako – Learning Partnership
+	 *  Whakatau", "Ethical Citizenship / Matatika Kirirarau", "Whaikaha: Use your strengths" now split as the gold does
+	 *  (the corpus: 27 split : 3 glued on such lines); with it OFF (env REODETECT_OFF) this is the macron-only test every
+	 *  splitter used before this round — byte-identical output. Measured: outputs/_measure_r358_seps.py. */
+	static #oneHalfTeReo(a, b) {
+		const td = DataService.Data.EmitTemplates.header?.te_reo_detect;
+		const on = td && td.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[td.env ?? "REODETECT_OFF"]);
+		if (on) return Utils.LooksMaori(a, td) !== Utils.LooksMaori(b, td);
+		const macron = /[āēīōūĀĒĪŌŪ]/;
+		return macron.test(a) !== macron.test(b);
+	};
 	static #bilingualTwoLangGuard(parts) {
 		if (!Array.isArray(parts) || parts.length !== 2 || !parts[0] || !parts[1]) return null;
-		const macron = /[āēīōūĀĒĪŌŪ]/;
-		if (macron.test(parts[0]) === macron.test(parts[1])) return null;   // exactly ONE half Te Reo
+		if (!this.#oneHalfTeReo(parts[0], parts[1])) return null;   // exactly ONE half Te Reo (r358: a macron OR the Māori alphabet)
 		const boiler = /(module title|insert|awaiting|translation)/i;
 		if (boiler.test(parts[0]) || boiler.test(parts[1])) return null;
 		return parts;

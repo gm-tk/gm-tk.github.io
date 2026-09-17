@@ -259,7 +259,7 @@ class SkeletonBuilder {
 		const code = run.moduleCode ?? "MODULE";
 		const title = pageType === "overview"
 			? Utils.FillTemplate(tpl.skeleton.title_patterns.overview, {
-				code, englishTitle: content.titleBar.english || run.englishTitle || "",
+				code, englishTitle: SkeletonBuilder.#englishOf(content.titleBar.english, content.titleBar.teReo, tpl) || run.englishTitle || "",
 			}).trim()
 			: Utils.FillTemplate(tpl.skeleton.title_patterns.lesson, {
 				code, lesson: page.lessonLabel ?? "",
@@ -415,16 +415,59 @@ class SkeletonBuilder {
 	 * Te tau 1"); everywhere else the halves keep the writer's order, the same rule
 	 * the overview [TITLE BAR] splitter follows. Pure; never touches the overview.
 	 */
+	/** ROUND 358 — is header.te_reo_detect on (the Māori-alphabet title test; env REODETECT_OFF)? */
+	static #teReoDetectOn(tpl) {
+		const td = tpl?.header?.te_reo_detect;
+		return !!td && td.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[td.env ?? "REODETECT_OFF"]);
+	}
+
+	/**
+	 * ROUND 358 — the ENGLISH one of a module's two titles, BY LANGUAGE. The title-bar slots keep the writer's order
+	 * (so the overview h1s do — 01A: 'the parts are emitted in the order the writer wrote them'; CEDW501's gold is Te Reo
+	 * first), which means the 'english' slot holds the Māori half of a Māori-first pair. The two consumers that need the
+	 * ENGLISH text — the <title> element (01A: English-only) and a lesson page's module-title FALLBACK (constraint 79 (5):
+	 * 'the module English title') — ask here: when both titles exist and exactly one reads as Te Reo (Utils.LooksMaori),
+	 * the other is returned; otherwise the first slot, exactly as before. Data header.te_reo_detect.english_slot_by_language.
+	 */
+	static #englishOf(a, b, tpl) {
+		const td = tpl?.header?.te_reo_detect;
+		if (!a || !b || !SkeletonBuilder.#teReoDetectOn(tpl) || td.english_slot_by_language === false
+			|| (typeof process !== "undefined" && process.env && process.env.ENGSLOT_OFF)) return a;
+		const ma = Utils.LooksMaori(a, td), mb = Utils.LooksMaori(b, td);
+		return (ma && !mb) ? b : a;
+	}
 	static #lessonPair(title, run, rules, cfg) {
 		if (!cfg || cfg.enabled === false || !title) return null;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "LESSONPAIR_OFF"]) return null;
 		const seps = Array.isArray(cfg.separators) && cfg.separators.length ? cfg.separators : ["|"];
-		const sep = seps.find((s) => title.includes(s));
-		if (!sep) return null;
 		let t = String(title);
 		if (cfg.strip_module_code !== false && run.moduleCode) {
 			const esc = String(run.moduleCode).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 			t = t.replace(new RegExp("^\\s*" + esc + "\\s*[\\-\u2013\u2014:]?\\s*", "i"), "");
+		}
+		let sep = seps.find((s) => t.includes(s));
+		if (!sep) {
+			// ROUND 358 (the autonomous loop's session-19 Round 2 — the diff miner's TITLE class). The SOFT separators
+			// (a spaced dash / slash / colon — the overview splitters' own, data lesson_bilingual_pair.soft_separators)
+			// split a lesson's OWN title only when exactly ONE half reads as Te Reo under Utils.LooksMaori (a macron
+			// OR the Māori alphabet + phonotactics; header.te_reo_detect): "Ngā Whare - Housing" splits (ANZH104's
+			// gold), "Time – Quarter Past" does not (MXFL103's). The pipe above stays unconditional (r316).
+			// Env toggle: REODETECT_OFF (the whole soft path off — the r357 output).
+			const td = DataService.Data.EmitTemplates.header?.te_reo_detect;
+			const tdOn = td && td.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[td.env ?? "REODETECT_OFF"]);
+			const softs = Array.isArray(cfg.soft_separators) ? cfg.soft_separators : [];
+			if (tdOn) {
+				for (const s of softs) {
+					if (t.split(s).length !== 2) continue;                       // exactly ONE occurrence
+					const p = t.slice(0, t.indexOf(s)), q = t.slice(t.indexOf(s) + s.length);
+					if (!p.trim() || !q.trim()) continue;
+					if (/[.!?]\s/.test(p.trim()) || /[.!?]\s/.test(q.trim())) continue;   // a multi-sentence title is not a pair (XMES101)
+					if (Utils.LooksMaori(p, td) !== Utils.LooksMaori(q, td)) { sep = s; break; }
+				}
+			}
+			if (!sep) return null;
 		}
 		const i = t.indexOf(sep);
 		if (i < 0) return null;
@@ -556,6 +599,7 @@ class SkeletonBuilder {
 		// ---- the title h1s (the ONLY place <span> wraps a heading) --------
 		const wanted = parseInt(rules.h1_count?.[pageType] ?? "1", 10) || 1;
 		const titles = [];
+		let pairCapsSet = null;   // ROUND 358: the halves of a lesson pair split from an ALL-CAPS title (sentence-cased per half below)
 		if (pageType === "overview") {
 			// the WT [TITLE BAR] split IS the derivable title count — emit EVERY
 			// language it produced (English + Te Reo). The registry h1_count is a
@@ -622,8 +666,16 @@ class SkeletonBuilder {
 					pairTitles = pair;
 				}
 			}
+			// ROUND 358: a pair split from an ALL-CAPS title is sentence-cased PER HALF (the r327 rule applied to each
+			// title, so a single-word Māori half — HES1005 "KAITIAKITANGA" — is not left in caps by the single-token
+			// exception), and a half never starts with a lowercase letter (a colon pair's second half). Data
+			// header.te_reo_detect.pair_half_casing; env REODETECT_OFF.
+			if (pairTitles && SkeletonBuilder.#teReoDetectOn(tpl) && tpl.header.te_reo_detect?.pair_half_casing !== false) {
+				if (SkeletonBuilder.#titleCasing(page.pageTitle || "", tpl).changed) pairCapsSet = new Set(pairTitles);   // sentence-cased per half in the emit loop below (the red flag kept)
+				else pairTitles = pairTitles.map((h) => /\s/.test(String(h).trim()) ? String(h).replace(/\p{L}/u, (ch) => ch.toUpperCase()) : String(h));   // a multi-word half never starts lowercase; a phonics team ("io") is left alone
+			}
 			if (pairTitles) titles.push(...pairTitles);
-			else titles.push(page.pageTitle || run.englishTitle || content.titleBar.english || "");
+			else titles.push(page.pageTitle || SkeletonBuilder.#englishOf(run.englishTitle, run.teReoTitle, tpl) || content.titleBar.english || "");
 			// CL-0042 (ROUND 230 — the OSSC pair, Chris). For the subject code
 			// prefixes in header.lesson_title_h1.subjects (the OSSC short-course
 			// family), a lesson page carries EXACTLY ONE title h1 — its own lesson
@@ -695,7 +747,11 @@ class SkeletonBuilder {
 			firstTitle = false;
 			// ROUND 327: a multi-word ALL-CAPS writer title renders in sentence case (the KB's
 			// title-casing rule) + one red flag quoting the original (proper-noun caution)
-			const cased = SkeletonBuilder.#titleCasing(t, tpl);
+			// ROUND 358: a half of a pair split from an ALL-CAPS title is sentence-cased as a whole title would be (the single-token
+			// exception does not apply to a half — HES1005 "KAITIAKITANGA"), and the r327 red flag still names the original.
+			const cased = (pairCapsSet && pairCapsSet.has(t))
+				? { text: String(t).toLowerCase().replace(/\p{L}/u, (ch) => ch.toUpperCase()), changed: true }
+				: SkeletonBuilder.#titleCasing(t, tpl);
 			parts.push(Utils.FillTemplate(titleTpl, { title: Utils.EscapeHtml(cased.text) }));
 			if (cased.changed && tpl.header.title_casing?.red_flag) {
 				parts.push(NotesAndComments.redFlag(

@@ -1,0 +1,202 @@
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+  ~ PNR101_0_0.html: -1 +1
+     - <title>PNR101 Ngā tau: 1</title>
+     + <title>PNR101 Numbers: 1</title>
+PNR101: identical 1 / changed 1
+  ~ PNR102_0_0.html: -1 +1
+     - <title>PNR102 Nga tau: 2</title>
+     + <title>PNR102 Numbers: 2</title>
+PNR102: identical 2 / changed 1
+  ~ PNR104_0_0.html: -1 +1
+     - <title>PNR104 Ngā tau: 4</title>
+     + <title>PNR104 Numbers: 4</title>
+PNR104: identical 2 / changed 1
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+  ~ SSCI205_0_0.html: -2 +2
+     - <title>SSCI205 Ancient greece / te reo</title>
+     - <h1><span>Ancient greece / te reo</span></h1>
+     + <title>SSCI205 Ancient greece</title>
+     + <h1><span>Ancient greece</span></h1>
+SSCI205: identical 9 / changed 1
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+  ~ SSFUN06_0_0.html: -2 +3
+     - <title>SSFUN06 Ethical Citizenship / Matatika Kirirarau</title>
+     - <h1><span>Ethical Citizenship / Matatika Kirirarau</span></h1>
+     + <title>SSFUN06 Ethical Citizenship</title>
+     + <h1><span>Ethical Citizenship</span></h1>
+     + <h1><span>Matatika Kirirarau</span></h1>
+SSFUN06: identical 0 / changed 1
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+  ~ SSOG103_0_0.html: -2 +2
+     - <title>SSOG103 Belonging and Community / TE REO</title>
+     - <h1><span>Belonging and Community / TE REO</span></h1>
+     + <title>SSOG103 Belonging and Community</title>
+     + <h1><span>Belonging and Community</span></h1>
+SSOG103: identical 6 / changed 1
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+  ~ TRR107_0_0.html: -1 +1
+     - <title>TRR107 Ngā Orokati Tuatahi</title>
+     + <title>TRR107 First Consonants</title>
+TRR107: identical 2 / changed 1
+  ~ TRR108_0_0.html: -1 +1
+     - <title>TRR108 Ngā Orokati Tuarua</title>
+     + <title>TRR108 Final Consonants</title>
+TRR108: identical 2 / changed 1
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+  ~ XDLS501_0_0.html: -1 +1
+     - <title>XDLS501 Whakawhanaungatanga</title>
+     + <title>XDLS501 Safe, secure, happy, healthy, productive relationships</title>
+XDLS501: identical 7 / changed 1
+  ~ XDLS502_0_0.html: -2 +3
+     - <title>XDLS502 Mahi Tahi – We are better together</title>
+     - <h1><span>Mahi Tahi – We are better together</span></h1>
+     + <title>XDLS502 We are better together</title>
+     + <h1><span>Mahi Tahi</span></h1>
+     + <h1><span>We are better together</span></h1>
+  ~ XDLS502_3_0.html: -1 +1
+     - <h1><span>Mahi Tahi – We are better together</span></h1>
+     + <h1><span>We are better together</span></h1>
+XDLS502: identical 3 / changed 2
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+  ~ XGF9004_1_0.html: -1 +2
+     - <h1><span>Puna Mātauranga – Spring of Knowledge</span></h1>
+     + <h1><span>Spring of Knowledge</span></h1>
+     + <h1><span>Puna Mātauranga</span></h1>
+XGF9004: identical 17 / changed 1
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+  ~ XLP06_0_0.html: -1 +1
+     - <title>XLP06 Kare-ā-roto</title>
+     + <title>XLP06 the ebb and flow within</title>
+XLP06: identical 2 / changed 1
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+  ~ XTAS101_0_0.html: -2 +3
+     - <title>XTAS101 My Special Interests – Taku hinga motuhake</title>
+     - <h1><span>My Special Interests – Taku hinga motuhake</span></h1>
+     + <title>XTAS101 My Special Interests</title>
+     + <h1><span>My Special Interests</span></h1>
+     + <h1><span>Taku hinga motuhake</span></h1>
+  ~ XTAS101_1_0.html: -1 +1
+     - <h1><span>My Special Interests – Taku hinga motuhake</span></h1>
+     + <h1><span>My Special Interests</span></h1>
+  ~ XTAS101_2_0.html: -1 +1
+     - <h1><span>My Special Interests – Taku hinga motuhake</span></h1>
+     + <h1><span>My Special Interests</span></h1>
+  ~ XTAS101_4_0.html: -1 +1
+     - <h1><span>My Special Interests – Taku hinga motuhake</span></h1>
+     + <h1><span>My Special Interests</span></h1>
+XTAS101: identical 1 / changed 4
+  ~ XTAS102_0_0.html: -2 +3
+     - <title>XTAS102 Places I go – Nga waahi ka toro atu ahau</title>
+     - <h1><span>Places I go – Nga waahi ka toro atu ahau</span></h1>
+     + <title>XTAS102 Places I go</title>
+     + <h1><span>Places I go</span></h1>
+     + <h1><span>Nga waahi ka toro atu ahau</span></h1>
+XTAS102: identical 5 / changed 1
+  ~ XTAS103_0_0.html: -2 +3
+     - <title>XTAS103 Movement – Te Nekehanga</title>
+     - <h1><span>Movement – Te Nekehanga</span></h1>
+     + <title>XTAS103 Movement</title>
+     + <h1><span>Movement</span></h1>
+     + <h1><span>Te Nekehanga</span></h1>
+  ~ XTAS103_3_1.html: -1 +1
+     - <h1><span>Movement – Te Nekehanga</span></h1>
+     + <h1><span>Movement</span></h1>
+  ~ XTAS103_4_0.html: -1 +1
+     - <h1><span>Movement – Te Nekehanga</span></h1>
+     + <h1><span>Movement</span></h1>
+XTAS103: identical 4 / changed 3
+  ~ XWHA01_0_0.html: -2 +3
+     - <title>XWHA01 Te Tautoko Ako – Learning Partnership Whakatau</title>
+     - <h1><span>Te Tautoko Ako – Learning Partnership Whakatau</span></h1>
+     + <title>XWHA01 Learning Partnership Whakatau</title>
+     + <h1><span>Te Tautoko Ako</span></h1>
+     + <h1><span>Learning Partnership Whakatau</span></h1>
+XWHA01: identical 1 / changed 1
+  ~ XWHA02_0_0.html: -2 +3
+     - <title>XWHA02 Whaikaha: Use your strengths</title>
+     - <h1><span>Whaikaha: Use your strengths</span></h1>
+     + <title>XWHA02 Use your strengths</title>
+     + <h1><span>Whaikaha</span></h1>
+     + <h1><span>Use your strengths</span></h1>
+XWHA02: identical 5 / changed 1
+
+TOTAL: identical 520 / changed 23 / missing 0 over 104 modules
+CHANGED: PNR101/PNR101_0_0.html PNR102/PNR102_0_0.html PNR104/PNR104_0_0.html SSCI205/SSCI205_0_0.html SSFUN06/SSFUN06_0_0.html SSOG103/SSOG103_0_0.html TRR107/TRR107_0_0.html TRR108/TRR108_0_0.html XDLS501/XDLS501_0_0.html XDLS502/XDLS502_0_0.html XDLS502/XDLS502_3_0.html XGF9004/XGF9004_1_0.html XLP06/XLP06_0_0.html XTAS101/XTAS101_0_0.html XTAS101/XTAS101_1_0.html XTAS101/XTAS101_2_0.html XTAS101/XTAS101_4_0.html XTAS102/XTAS102_0_0.html XTAS103/XTAS103_0_0.html XTAS103/XTAS103_3_1.html XTAS103/XTAS103_4_0.html XWHA01/XWHA01_0_0.html XWHA02/XWHA02_0_0.html

@@ -1718,7 +1718,8 @@ class Config {
 	// ROUND 355 (260619.26): a measurement-tool round — _skeleton_compare.py scores with autojunk=False (128 long pages were scored with most of their structure ignored); the skeleton baselines re-established.
 	// ROUND 356 (260619.27): no built widget discards a member it never READ — the r353 members rule made exact by read-tracking (#trackMembers / #withMembersRead; consumption "read"); 30 widgets on 26 pages had been dropping writer paragraphs; FULL regeneration, 35 pages / 32 modules.
 	// ROUND 357 (260619.28): the #module-code chip's presence follows the family's own convention on both page types — six no-evidence registry values corrected + the template_deltas cascade tier (ModuleResolver.Resolve; env TMPLDELTA_OFF); the diff miner's first chrome class.
-	static AppVersion = "260619.28";
+	// ROUND 358 (260619.29): the Te Reo half of a bilingual title is recognised by the Māori alphabet, not only by a macron (Utils.LooksMaori; the overview splitters' shared guard + the lesson pair's soft separators; the English <title> / lesson fallback by language; env REODETECT_OFF / ENGSLOT_OFF); the diff miner's TITLE class.
+	static AppVersion = "260619.29";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

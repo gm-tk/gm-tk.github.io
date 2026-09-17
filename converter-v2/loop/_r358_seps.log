@@ -1,0 +1,86 @@
+r358 separator probe — 650 candidate title lines with a non-pipe / pipe separator, over the gate's pairs
+ALL candidates (any Māori side): 650 candidate pages / 277 modules
+   sep=' - '    claude:glued=4 claude:one-other=193 claude:two-other=3 gold:glued=1 gold:one-other=187 gold:split=2 gold:two-other=10 pages=200
+   sep=' | '    claude:one-other=67 claude:split=86 claude:two-other=19 gold:one-other=16 gold:split=133 gold:two-other=23 pages=172
+   sep=' – '    claude:glued=25 claude:one-other=117 claude:split=7 claude:two-other=20 gold:glued=18 gold:one-other=109 gold:split=17 gold:two-other=25 pages=169
+   sep=': '     claude:glued=10 claude:one-other=62 claude:split=3 claude:two-other=3 gold:glued=7 gold:one-other=49 gold:split=5 gold:two-other=17 pages=78
+   sep=' / '    claude:glued=3 claude:one-other=17 claude:split=7 claude:two-other=4 gold:one-other=13 gold:split=11 gold:two-other=7 pages=31
+   maori_side='none'   claude:glued=30 claude:one-other=378 claude:split=11 claude:two-other=19 gold:glued=23 gold:one-other=343 gold:split=34 gold:two-other=38 pages=438
+   maori_side='b'      claude:glued=3 claude:one-other=52 claude:split=74 claude:two-other=12 gold:one-other=23 gold:split=97 gold:two-other=21 pages=141
+   maori_side='a'      claude:glued=8 claude:one-other=22 claude:split=15 claude:two-other=14 gold:glued=3 gold:one-other=4 gold:split=34 gold:two-other=18 pages=59
+   maori_side='both'   claude:glued=1 claude:one-other=4 claude:split=3 claude:two-other=4 gold:one-other=4 gold:split=3 gold:two-other=5 pages=12
+EXACTLY ONE Māori half (the rule's trigger): 200 candidate pages / 120 modules
+   sep=' | '    claude:one-other=37 claude:split=74 claude:two-other=15 gold:one-other=9 gold:split=100 gold:two-other=17 pages=126
+   sep=' – '    claude:glued=5 claude:one-other=16 claude:split=5 claude:two-other=8 gold:glued=2 gold:one-other=6 gold:split=15 gold:two-other=11 pages=34
+   sep=': '     claude:glued=2 claude:one-other=17 claude:split=3 gold:glued=1 gold:one-other=11 gold:split=4 gold:two-other=6 pages=22
+   sep=' / '    claude:glued=2 claude:one-other=2 claude:split=7 claude:two-other=3 gold:one-other=1 gold:split=10 gold:two-other=3 pages=14
+   sep=' - '    claude:glued=2 claude:one-other=2 gold:split=2 gold:two-other=2 pages=4
+   maori_side='b'      claude:glued=3 claude:one-other=52 claude:split=74 claude:two-other=12 gold:one-other=23 gold:split=97 gold:two-other=21 pages=141
+   maori_side='a'      claude:glued=8 claude:one-other=22 claude:split=15 claude:two-other=14 gold:glued=3 gold:one-other=4 gold:split=34 gold:two-other=18 pages=59
+
+EXACTLY-ONE-MĀORI by template / page type / separator: gold split vs glued
+   Bilingual/lesson//                 mods=  1 claude:two-other=2 gold:two-other=2 pages=2
+   Bilingual/lesson/:                 mods=  1 claude:one-other=3 gold:two-other=3 pages=3
+   Bilingual/lesson/|                 mods=  5 claude:split=2 claude:two-other=10 gold:split=3 gold:two-other=9 pages=12
+   Bilingual/overview//               mods=  1 claude:two-other=1 gold:two-other=1 pages=1
+   Bilingual/overview/:               mods=  1 claude:one-other=1 gold:two-other=1 pages=1
+   Bilingual/overview/|               mods=  5 claude:split=2 claude:two-other=3 gold:split=2 gold:two-other=3 pages=5
+   Fundamentals/overview//            mods=  3 claude:glued=1 claude:split=2 gold:split=3 pages=3
+   Fundamentals/overview/|            mods=  6 claude:one-other=3 claude:split=3 gold:split=6 pages=6
+   Inquiry/lesson/-                   mods=  1 claude:one-other=1 gold:two-other=1 pages=1
+   Inquiry/lesson/|                   mods=  1 claude:split=1 gold:split=1 pages=1
+   Inquiry/lesson/–                   mods=  2 claude:one-other=7 gold:one-other=3 gold:split=4 pages=7
+   Inquiry/overview/-                 mods=  1 claude:one-other=1 gold:two-other=1 pages=1
+   Inquiry/overview//                 mods=  2 claude:one-other=1 claude:split=1 gold:one-other=1 gold:split=1 pages=2
+   Inquiry/overview/:                 mods=  3 claude:one-other=2 claude:split=1 gold:split=1 gold:two-other=2 pages=3
+   Inquiry/overview/|                 mods=  8 claude:split=8 gold:split=8 pages=8
+   Inquiry/overview/–                 mods=  1 claude:split=1 gold:split=1 pages=1
+   Standard/lesson/-                  mods=  1 claude:glued=2 gold:split=2 pages=2
+   Standard/lesson//                  mods=  1 claude:one-other=1 gold:split=1 pages=1
+   Standard/lesson/:                  mods= 11 claude:glued=1 claude:one-other=11 gold:glued=1 gold:one-other=11 pages=12
+   Standard/lesson/|                  mods= 13 claude:one-other=32 claude:split=2 claude:two-other=2 gold:one-other=8 gold:split=27 gold:two-other=1 pages=36
+   Standard/lesson/–                  mods=  9 claude:glued=3 claude:one-other=9 claude:two-other=4 gold:glued=2 gold:one-other=3 gold:split=3 gold:two-other=8 pages=16
+   Standard/overview//                mods=  5 claude:glued=1 claude:split=4 gold:split=5 pages=5
+   Standard/overview/:                mods=  3 claude:glued=1 claude:split=2 gold:split=3 pages=3
+   Standard/overview/|                mods= 58 claude:one-other=2 claude:split=56 gold:one-other=1 gold:split=53 gold:two-other=4 pages=58
+   Standard/overview/–                mods= 10 claude:glued=2 claude:split=4 claude:two-other=4 gold:split=7 gold:two-other=3 pages=10
+
+NON-PIPE, exactly-one-Māori pages where the gold SPLIT and Claude did not (the derivable class):
+   16 pages / 10 modules: ANZH104, CEDO502, ENGS401, SSFUN06, SSOG103, XDLS502, XDLS909, XDLS911, XWHA01, XWHA02
+   ANZH104   ANZH104_2_0.html     Stan/les sep=' - ' side=a gold=['Ngā Whare', 'Housing'] claude=['Ngā Whare - Housing'] line«Ngā Whare - Housing»
+   ANZH104   ANZH104_3_0.html     Stan/les sep=' - ' side=a gold=['Ngā Weru', 'Clothing'] claude=['Ngā Weru - Clothing'] line«Ngā Weru - Clothing»
+   CEDO502   CEDO502_0_0.html     Stan/ove sep=' – ' side=a gold=['Āu Whiringa', 'Making More Decisions'] claude=['Āu Whiringa – Making More Decisions', 'Āu whiringa'] line«Course: Āu Whiringa – Making More Decisions»
+   CEDO502   CEDO502_8_0.html     Stan/les sep=' – ' side=a gold=['Āu Whiringa', 'Making More Decisions'] claude=['Showcasing your knowledge'] line«Course: Āu Whiringa – Making More Decisions»
+   ENGS401   ENGS401_6_0.html     Stan/les sep=' / ' side=b gold=['Responding to Texts', 'Te whakautu i ngā kuputuhi'] claude=['Your Response'] line«Responding to Texts / Te whakautu i ngā kuputuhi»
+   SSFUN06   SSFUN06_0_0.html     Fund/ove sep=' / ' side=b gold=['Matatika Kirirarau', 'Ethical Citizenship'] claude=['Ethical Citizenship / Matatika Kirirarau'] line«Ethical Citizenship / Matatika Kirirarau»
+   SSOG103   SSOG103_0_0.html     Stan/ove sep=' / ' side=b gold=['Belonging and Community', 'TE REO TRANSLATION'] claude=['Belonging and Community / TE REO'] line«Belonging and Community / TE REO»
+   XDLS502   XDLS502_0_0.html     Stan/ove sep=' – ' side=a gold=['We are better together', 'Mahi Tahi'] claude=['Mahi Tahi – We are better together'] line«Mahi Tahi – We are better together»
+   XDLS909   XDLS909_1_0.html     Inqu/les sep=' – ' side=b gold=['Living in Aotearoa', 'Noho ki Aotearoa'] claude=['Aotearoa New Zealand and its people – what are they like?'] line«Living In Aotearoa – Noho ki Aotearoa.»
+   XDLS909   XDLS909_2_0.html     Inqu/les sep=' – ' side=b gold=['Living in Aotearoa', 'Noho ki Aotearoa'] claude=['Remembering what has gone before and where we are from.'] line«Living In Aotearoa – Noho ki Aotearoa.»
+   XDLS909   XDLS909_3_0.html     Inqu/les sep=' – ' side=b gold=['Living in Aotearoa', 'Noho ki Aotearoa'] claude=['What is the difference between being a resident of Aotearoa '] line«Living In Aotearoa – Noho ki Aotearoa.»
+   XDLS909   XDLS909_4_0.html     Inqu/les sep=' – ' side=b gold=['Living in Aotearoa', 'Noho ki Aotearoa'] claude=['Rights and responsibilities when living in Aotearoa New Zeal'] line«Living In Aotearoa – Noho ki Aotearoa.»
+   XDLS911   XDLS911_1_0.html     Stan/les sep=' – ' side=b gold=['Living In Aotearoa', 'Noho ki Aotearoa'] claude=['Assessments for the Nourish course'] line«Module XDLS909 Living In Aotearoa – Noho ki Aotearoa.»
+   XWHA01    XWHA01_0_0.html      Stan/ove sep=' – ' side=a gold=['Learning Partnership Whakatau', 'Te Tautoko Ako'] claude=['Te Tautoko Ako – Learning Partnership Whakatau'] line«Te Tautoko Ako – Learning Partnership Whakatau»
+   XWHA01    XWHA01_1_0.html      Stan/les sep=' – ' side=a gold=['Learning Partnership Whakatau', 'Te Tautoko Ako'] claude=['Learning is a big part of life.'] line«Te Tautoko Ako – Learning Partnership Whakatau»
+   XWHA02    XWHA02_0_0.html      Stan/ove sep=': ' side=a gold=['Whaikaha', 'Use your strengths'] claude=['Whaikaha: Use your strengths'] line«Whaikaha: Use your strengths»
+
+NON-PIPE, exactly-one-Māori pages where the gold GLUED (the counter-evidence):
+   3 pages / 2 modules
+   MXFL103   MXFL103_1_2.html     Stan/les sep=' – ' gold=['Time – Quarter Past'] line«Time – Quarter Past»
+   MXFL103   MXFL103_1_3.html     Stan/les sep=' – ' gold=['Time – Quarter To'] line«Time – Quarter To»
+   PES1005   PES1005_6_0.html     Stan/les sep=': ' gold=['Our home: Planet Earth'] line«Our home: Planet Earth»
+
+BOTH-or-NONE Māori with a non-pipe separator (what a bare-separator rule would wrongly split):
+   404 pages; gold split 4 / glued 23 / other 377
+   AGH1001   AGH1001_1_0.html     sep=': ' side=none gold=one-other line«Subject: Course: Agricultural and Horticultural Science»
+   AGH1001   AGH1001_2_0.html     sep=': ' side=none gold=one-other line«Subject: Course: Agricultural and Horticultural Science»
+   AGH1001   AGH1001_4_0.html     sep=': ' side=none gold=one-other line«Subject: Course: Agricultural and Horticultural Science»
+   AGH1005   AGH1005_0_0.html     sep=': ' side=none gold=split line«Unlocking Plant Magic: Exploring plant growth and processes in Aotearoa, New Zealand.»
+   AGH1006   AGH1006_0_0.html     sep=': ' side=none gold=glued line«Green Mastery: Managing plant processes»
+   AGH1008   AGH1008_2_0.html     sep=' – ' side=none gold=one-other line«Feeding 1 – Digestability and components of feed»
+   AGH1008   AGH1008_4_0.html     sep=' – ' side=none gold=one-other line«Reproduction 1 – Genetics and Breeding»
+   AGH1008   AGH1008_5_0.html     sep=' – ' side=none gold=one-other line«Reproduction 2 – Maximising Mating»
+   ANZH104   ANZH104_4_0.html     sep=': ' side=none gold=two-other line«Insert: IROO292 entire section from Kaimoana and Image.»
+   ARFUN05   ARFUN05_0_0.html     sep=' / ' side=none gold=two-other line«│ Subject: Drama Fundamentals / Course: The Arts / Module code: ARFUN05 / Key contact: Tru»
+   ART1002   ART1002_1_0.html     sep=': ' side=none gold=one-other line«Task 1: Wrecking the White Page»
+   ART1004   ART1004_0_0.html     sep=': ' side=none gold=one-other line«TASK 4: Showcasing your work»
