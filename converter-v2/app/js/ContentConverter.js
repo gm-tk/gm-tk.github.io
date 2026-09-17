@@ -4005,6 +4005,11 @@ class ContentConverter {
 		const hasWd = /\sdata-wd="\d"/i.test(html);
 		const stripWd = (attrs) => String(attrs ?? "").replace(WD, "");
 		const wdOf = (attrs) => { const m = String(attrs ?? "").match(WD); return m ? parseInt(m[1], 10) : null; };
+		// r375: the level a pinned digit ships at — keep_writer_digit.pin_levels {"1": 2} (the gold ships a
+		// writer's [H1] as h2 in BLL / HIS / CEDR: the plain body shift, un-ranked; the body never carries an
+		// h1). A digit the map does not name pins at itself (r371 / r373 / r374 unchanged).
+		const pinLevels = (kwdOn && kwd.pin_levels && typeof kwd.pin_levels === "object") ? kwd.pin_levels : {};
+		const pinLevelOf = (wd) => { const v = parseInt(pinLevels[String(wd)], 10); return Number.isFinite(v) && v >= 1 && v <= 6 ? v : wd; };
 		// shared tag-walk that tracks div nesting + which spans are inside a widget subtree
 		// (wkind "act" = an activity-anchor subtree, "w" = any other skip subtree) + the open
 		// exclude boxes; onTag (optional) sees EVERY heading tag with its pin / inside verdicts
@@ -4067,7 +4072,7 @@ class ContentConverter {
 			const lv = parseInt(m[2].toLowerCase()[1], 10);
 			if (!isClose) {
 				const wd = wdOf(m[3]); const clean = stripWd(m[3]);
-				if (pinnable) { pinClose = wd; edits.push([m.index, m[0].length, `<h${wd}${clean}>`]); return; }
+				if (pinnable) { const pl = pinLevelOf(wd); pinClose = pl; edits.push([m.index, m[0].length, `<h${pl}${clean}>`]); return; }
 				const put = (l) => edits.push([m.index, m[0].length, `<h${l}${clean}>`]);
 				if (fixedLevelHeading(m[3])) { fixedOpen = true; if (wd !== null) put(lv); return; }
 				if (inside) { if (wd !== null) put(lv); return; }                 // inside a widget — leave it

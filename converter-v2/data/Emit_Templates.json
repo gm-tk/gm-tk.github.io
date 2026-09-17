@@ -5211,6 +5211,11 @@
 					"XGF"
 				],
 				"digits_by_prefix": {
+					"1": [
+						"BLL",
+						"HIS",
+						"CEDR"
+					],
 					"2": [
 						"HIS",
 						"CEDR",
@@ -5227,9 +5232,14 @@
 					]
 				},
 				"digits_by_prefix_env": {
+					"1": "H1KEEP_OFF",
 					"2": "H2KEEP_OFF",
 					"4": "H4KEEP_OFF"
 				},
+				"pin_levels": {
+					"1": 2
+				},
+				"_pin_levels_note": "ROUND 375 (the autonomous loop's session 23, Round 6, 2026-09-18). The level a pinned digit ships at; a digit the map does not name pins at itself. Digit 1 pins at 2: the gold ships a writer's [H1] body heading as h2 — the plain body shift with no rank — in BLL (31 / 31 sites, 9 modules), HIS (12 / 12, HIS1005 / 1006 / 1007) and CEDR (5 / 5, CEDR204) on the session-23 census re-run on the r374 corpus (48 sites / 22 pages / 13 modules); the body never carries an h1 (the page title owns it). Not listed: ENFUN (2 / 24 — follows the rank), EXPFUN (11 / 8 — a tie split by module), singletons. The pinned heading still counts in the rank pool at its intermediate level.",
 				"_digit4_note": "ROUND 374 (the autonomous loop's session 23, Round 5, 2026-09-18). Digit 4: the gold keeps a writer's [H4] at h4 in ENGJ (0.89 — 27 win / 3 loss, 3 / 3 modules), ENGR (0.86 — 17 / 3), OSSC (1.00 — 5 / 0), OSOH (0.84 — 4 / 1) — 53 win / 7 loss over 27 pages / 8 modules on the session-23 census; 0.50 overall (a tie — declined at corpus level in r371). The shift-followers stay out (XDLS 0.03, MXDB 0.31, MXFL 0.34, MXEO 0.38, ENGI 0.53, ENGS 0.60, AGH 0.62). digits_by_prefix_env is now a per-digit map (a string is still accepted for every digit; a digit missing from the map falls back to H<digit>KEEP_OFF).",
 				"_digits_by_prefix_note": "ROUND 373 (the autonomous loop's session 23, Round 4, 2026-09-18). A per-DIGIT prefix registry: the gold keeps a writer's [H2] at h2 in these prefixes and follows the shift rule everywhere else (the session-23 census, [H2] free-body, gold-h2 0.37 overall: HIS 0.87, CEDR 0.89, ENGFUN 1.00, TWHA 0.92, TEFUN 0.65; XDLS 0.02, MXFU 0.05, SSCI 0.08, ENFUN 0.09 … PES 0.23 with its own h4 dialect). An entry is a letter run (matched as the module code's whole letter run — ENG never matches ENGFUN) or a letters+digits SERIES prefix (matched as startsWith: BLL2 = the BLL2xx series — the first probe showed the BLL1xx parents' gold at h3, BLL150 −24.5pp, while BLL210 / 220 / 230 keep h2; TWHK split 1 : 1 by module and is NOT listed). Within HIS and TEFUN the gold is a keep-MAJORITY by module (HIS 1002 / 1005 / 1006 / 1007 / 1008 keep, 1001 / 1003 / 1004 follow the shift; TEFUN 03–08 keep, 01 / 02 follow the shift) with no derivable discriminator inside the series — the majority ships, the minority modules are NAMED dips. The list IS the scope — no template gate; the r371 exclude_classes boxes and widget / supervisor subtrees still apply in the releveller, and a pinned heading still counts in the rank pool at its intermediate level. Env H2KEEP_OFF = no digit-2 marker = byte-identical; the emitter owns both toggles, so H3KEEP_OFF never silences a digit-2 marker.",
 				"_exclude_prefixes_note": "The letter run of the module code (ENG1004 → ENG, ENGC102 → ENGC — distinct). Measured per prefix on the census (Standard + Fundamentals, free-body [H3]): ENG gold-h3 0.05 (1 win / 14 loss) and ARFUN 0.36 (9 / 2) follow the shift rule in their gold; CEDO 0.66 (8 / 24) and XGF 0.82 (31 / 42) are NET-NEGATIVE under the pin (their Claude pages already carry most [H3]s at h3 and the rest are the gold's own h4s). Every other prefix at n ≥ 15 is ≥ 0.74 and net-positive.",

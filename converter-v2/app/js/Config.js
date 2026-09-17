@@ -1735,7 +1735,8 @@ class Config {
 	// ROUND 372 (260619.43): the media table whose cells carry the extractor's **bold** markers is now parsed — MediaListParser.#cleanCell strips the asterisk markers (never an underscore, a URL character); data Input_Doc_Rules.media_table.strip_markers, env MLMARKERS_OFF; the four bold-header modules (BLL120–BLL123) gain their media list + acks entries, 54 modules lose a stray marker in an acks line. The autonomous loop's session 23 Round 3.
 	// ROUND 373 (260619.44): a writer's explicit [H2] keeps its digit (h2) in the prefixes / series whose gold keeps it — keep_writer_digit.digits_by_prefix {2: HIS, CEDR, ENGFUN, TWHA, BLL2, TEFUN}, env H2KEEP_OFF (the emitter owns both toggles); 102 pages / 30 modules, skeleton 52.897 → 52.938. The autonomous loop's session 23 Round 4.
 	// ROUND 374 (260619.45): a writer's explicit [H4] keeps its digit (h4) in the prefixes whose gold keeps it — keep_writer_digit.digits_by_prefix {4: ENGJ, ENGR, OSSC, OSOH}, env H4KEEP_OFF (digits_by_prefix_env is a per-digit map); 31 pages / 10 modules, skeleton 52.938 → 52.955. The autonomous loop's session 23 Round 5.
-	static AppVersion = "260619.45";
+	// ROUND 375 (260619.46): a writer's explicit [H1] ships as h2 (the plain body shift, un-ranked) in the prefixes whose gold does — keep_writer_digit.digits_by_prefix {1: BLL, HIS, CEDR} + pin_levels {1: 2}, env H1KEEP_OFF; 35 pages / 16 modules, skeleton 52.955 → 52.960. The autonomous loop's session 23 Round 6.
+	static AppVersion = "260619.46";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

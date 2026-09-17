@@ -1,5 +1,31 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 375, build 260619.46) — A WRITER'S EXPLICIT `[H1]` SHIPS AS `<h2>` (THE PLAIN BODY SHIFT, UN-RANKED) IN THE PREFIXES WHOSE GOLD DOES — the autonomous loop's session 23, Round 6
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+`keep_writer_digit` gains digit 1: `digits_by_prefix {"1": [BLL, HIS, CEDR]}`, `digits_by_prefix_env {"1": "H1KEEP_OFF"}`, and a NEW `pin_levels {"1": 2}` — the level a pinned digit ships at (a digit the map does not name pins at itself, so r371 / r373 / r374 are unchanged). In those modules a body heading the writer typed as `[H1]` ships as `<h2>` (the gold's own form: the r45 body shift with no rank) instead of the `<h3>` the rank rule gave it (Claude's intermediate h2 was the page's top free-body level, lifted to `base_level` 3). Same mechanism: the emitter's transient `data-wd="1"` marker; the releveller's pin (four lines: `pinLevels` / `pinLevelOf`) that still counts the heading in the rank pool at its intermediate level; the alert-family / widget / supervisor exclusions; the marker stripped in every branch. The body never carries an h1 (the page title owns it). OFF = disk 2109 / 2109.
+
+### 2. WHY IT WAS PICKED — the census re-run on the r374 corpus
+
+The r374 re-mine (1956 pairs / 8352 classes / 180 CANDIDATE) added and removed nothing; every row carries its disposition. The session-23 heading census RE-RUN on the r374 corpus (`_s23_headcensus.py`; the r370 run kept as `_s23_headcensus.r370.*`) reads the `[H3]` agreement at 0.90 (0.63 before r371), `[H2]` 0.55, `[H4]` 0.65 — and the one untouched digit: **`[H1]` n = 101, gold h2 63 / h3 37 / h1 1, Claude h3 101 (agree 0.37)**. Per prefix: **BLL 31 / 31 h2 (9 modules), HIS 12 / 12 (HIS1005 / 1006 / 1007), CEDR 5 / 5 (CEDR204)** — 48 sites / 22 pages / 13 modules, share 1.00 in each; ENFUN 2 / 24 follows the rank; EXPFUN 11 / 8 is a tie split by module (02 0 / 5, 03 2 / 3, 04 6 / 0, 05 3 / 0 — no derivable discriminator); CEDK102 / ART1003 and five singletons under the floor. Triangulated BLL110 (`The letter s`) / HIS1005 (`Promises made and broken`) / CEDR204 (`Exploring sounds`).
+
+### 3. PROOF
+
+- In-memory probe over all 416 (`_r375_probe.cjs`, 4 shards): **OFF (`H1KEEP_OFF=1`) = disk 2109 / 2109**; ON = **35 pages / 16 modules** (BLL110 / 120 / 124 / 130 / 140 / 150 / 160 / 170 / 210 / 220 / 230, CEDR204, HIS1005 / 1006 / 1007 / 1008 — three modules the text-matched census could not see, their gold rewording the heading), 0 added / removed; `data-wd` in the saved pages 0.
+- Scored BEFORE regenerating with the gate's own `match()` (`_r375_pagescore.py`): **34 paired changed pages — 29 up / 3 down / 2 same, pp-sum +9.6 (+0.28pp per changed page)**; per module: HIS1005 +9.4 (11 / 11 up), HIS1008 +4.7, HIS1006 +2.3, CEDR204 +1.2, BLL220 / 230 +0.8 / +0.9, the other BLL pages +0.1…+0.4. **The dips NAMED: BLL160_0_0 −8.0** (its two pinned headings `The letter y` / `The letter x` are the gold's h2s by text and level — a difflib alignment dip on a 90-heading gold page), **HIS1007_1_0 −4.1** (its one pinned heading `It's all about the money` is the gold's h2 — alignment), **BLL124_0_0 −1.5** (the writer's `[H1]` overview heading now h2 where the gold page carries one reworded h3 `Introduction`).
+- SCOPED regeneration of the 16 (`_r375_fullship_run.sh`, 2 batches, all rc 0; the probe proving the other 400 byte-identical): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **35 changed / 0 added / 0 removed**; every regenerated page **byte-identical to the probe's ON page (63 / 63)**.
+
+### 4. PROTECTED GATES (`_r375_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **52.955 → 52.960 % (+0.005pp)**, median 53.6, ≥50 **1134** / ≥75 **177** / ≥90 **15** EXACT, RAW 37.355 → 37.359 % @ 1956 pairs; **32 movers — 29 up / 3 down, pp-sum +9.6** (`_r375_movers.log`, state `_r375_sk_final.json`). A §4 PLATEAU round (< 0.02pp, no bucket move) — plateau window 1 of 3. The largest gains HIS1008_0_0 +2.3, HIS1006_0_0 +2.3, HIS1005_0_0 +2.2, CEDR204_0_0 +1.2.
+- compare_structure exact **11628** / EXTRA 175 / MISSING 617 / row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **43 / 4 / 157 / 203** EXACT; tags 9557 / 9557 REAL 0; flipCard divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz defect 0; math ✓; menu labels ✓; dragAndDrop defect 0 — all EXACT.
+
+### 5. ALSO RECORDED
+
+- Ledger: scoped ship #6 since the r366 full. AppVersion 260619.46; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r375.bak` kept).
+- Measured and NOT taken (under the 20-page floor): `[H2]` EXPFUN 17 / 1 on 3 pages, ANZH 5 / 2, SCFUN 4 / 0, CEDT 28 / 17 (mixed); `[H4]` TWHA 6 / 0, ENG 5 / 0, HIS 4 / 0, XLP 6 / 1 (21 / 1 on 12 pages together), ENGI 19 / 15 (mixed); `[H5]` MXFU 4 / 0, OSGM 4 / 0, OSOH 4 / 1, ENGJ 9 / 5.
+
 ## 2026-09-18 (round 374, build 260619.45) — A WRITER'S EXPLICIT `[H4]` KEEPS ITS DIGIT (h4) IN THE PREFIXES WHOSE GOLD KEEPS IT — the autonomous loop's session 23, Round 5
 
 ### 1. WHAT CHANGED, IN ONE LINE
