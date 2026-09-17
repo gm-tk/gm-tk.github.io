@@ -693,6 +693,179 @@ class DocxExtractor {
 	};
 
 	/**
+	 * ROUND 370 — DROPS THE MEDIA-LIST PREAMBLE OF A COMBINED DOCUMENT.
+	 *
+	 * WHY: in a combined "Writers Template + Media List" docx the media-list
+	 * section opens after the last content page with a red "MEDIA LIST"
+	 * heading, the red "Please supply details for ALL external media …"
+	 * instruction and a plain-text copyright-clearance bullet ("If a specific
+	 * third-party item/image is crucial to your writing, then please submit
+	 * this for early copyright clearance …" with its sharepoint link), and
+	 * only then the media TABLE. PrepareRun excluded the table alone, so the
+	 * preamble flowed into the last lesson page: the two red runs became
+	 * Writers Notes and the bullet rendered as learner-facing body text on
+	 * 136 pages / 134 modules. The human gold ships it on 0 pages.
+	 *
+	 * HOW: walking BACKWARDS from the media table, a paragraph block that is
+	 * blank, whose folded text (red markers stripped) equals a phrases_exact
+	 * entry, or contains a phrases_contains entry, is part of the preamble;
+	 * the walk stops at the first block matching none, and at max_blocks.
+	 * The preamble and the table are removed together; at least one phrase
+	 * hit is required (blank lines alone never trigger it). A separate Media
+	 * List docx is untouched by construction: its table is not among the
+	 * Writers Template's own blocks, so the walk never starts.
+	 *
+	 * The TAIL: the template's SUBMISSION CHECKLIST ("Have you: ☐ Completed
+	 * Section A …") follows the table on 81 of the 277 combined WTs and rendered
+	 * as learner-facing text on 22 pages (gold 0). It is dropped with the table
+	 * when the first non-blank block after the table opens with a
+	 * tail_start_phrases entry AND every block to the end of the document is a
+	 * paragraph carrying no red span that resolves to a structural tag other
+	 * than [body] — the PageSplitter AR-5 substance test — so a media table
+	 * placed MID-document (MXFUN01/02/03: Phase 2 content follows it) keeps its
+	 * tail by construction.
+	 *
+	 * Data: Input_Doc_Rules.media_list_preamble   Env toggle: MLPREAMBLE_OFF
+	 *
+	 * @param {Object[]} blocks - the WT's blocks (after TrimFrontMatter)
+	 * @param {Object|null} tableBlock - the media table block, if any
+	 * @param {ConversionRun|null} run - surfacing
+	 * @param {TagNormaliser|null} normaliser - for the tail's substance test
+	 * @param {Object|null} legacyTable - the pre-r370 exclusion (the mediaSource's
+	 *        table block, whichever document it came from); the OFF path drops
+	 *        exactly that and nothing else, so the toggle reverts byte-for-byte
+	 * @returns {Object[]} blocks minus the table, its preamble and its tail
+	 */
+	static TrimMediaListPreamble(blocks, tableBlock, run = null, normaliser = null, legacyTable = tableBlock) {
+		const cfg = DataService.Data.InputDocRules.media_list_preamble;
+		const on = cfg && cfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.MLPREAMBLE_OFF);
+		if (!on) return blocks.filter((b) => b !== legacyTable);
+		const withoutTable = blocks.filter((b) => b !== tableBlock && b !== legacyTable);
+		const idx = tableBlock ? blocks.indexOf(tableBlock) : -1;
+		const exact = (cfg.phrases_exact ?? []).map((p) => Utils.Fold(String(p)));
+		const contains = (cfg.phrases_contains ?? []).map((p) => Utils.Fold(String(p)));
+		const maxBack = cfg.max_blocks ?? 8;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const REDSPAN = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		// red markers and the extractor's **bold** / *italic* / __link__ markers are
+		// not words — "**SUBMISSION CHECKLIST**" must read as "submission checklist"
+		const folded = (b) => Utils.Fold(String(b.text ?? "").replace(RED, " ").replace(/[*_]+/g, ""));
+		const isPhrase = (b) => {
+			if (b.kind !== "para") return false;
+			const t = folded(b);
+			return !!t && (exact.includes(t) || contains.some((p) => t.includes(p)));
+		};
+		const isBlank = (b) => b.kind === "para" && !folded(b);
+		const isPreamble = (b) => isBlank(b) || isPhrase(b);
+		// A writer's OWN note to the designer inside the media-list section ("Designer
+		// and Copyright: many of the requested images are taken as a still shot …",
+		// TWHK901; "Note- I have added the twinkl resource links …", ENGI401) is a block
+		// made only of red spans that resolve to no structural tag: the walk passes
+		// OVER it (so the boilerplate before it is still found) but KEEPS it — it is
+		// the writer's instruction, which renders as the standing Writers Note.
+		const structuralAny = new Set(["ELEMENT", "INTERACTIVE", "CONTAINER_OPEN", "CONTAINER_CLOSE", "PAGE_BOUNDARY", "SECTION_MARKER"]);
+		const isRedNote = (b) => {
+			if (!normaliser || b.kind !== "para") return false;
+			const raw = String(b.text ?? "");
+			if (!raw.trim() || raw.replace(REDSPAN, "").trim()) return false;   // black words → not a pure note
+			for (const m of raw.matchAll(REDSPAN)) {
+				const p = normaliser.Parse(m[1]).primary;
+				if (p && structuralAny.has(p.directive)) return false;
+			}
+			return true;
+		};
+		// A short plain LABEL the writer puts on a media table ("Phase 1" / "Phase 2",
+		// MXFUN03) is part of the media-list section: passed over BETWEEN the table and
+		// the preamble (never above the preamble — a short line there is content).
+		const labelMax = cfg.label_max_words ?? 3;
+		const isShortLabel = (b) => {
+			if (b.kind !== "para" || isPreamble(b)) return false;
+			const n = folded(b).split(" ").filter(Boolean).length;
+			return n > 0 && n <= labelMax && !/\u{1f534}/u.test(String(b.text ?? ""));
+		};
+		// a SECOND media table (the writer split the list by phase) is recognised by
+		// the same column test the media-list parser uses
+		const isMediaTable = (b) => b.kind === "table" && typeof MediaListParser !== "undefined"
+			&& !!MediaListParser.FindMediaTable([b]);
+		const keep = new Set();   // pass-through red notes inside the walked range
+		let start, end, tailFrom, nExtra = 0, headed = false;
+		if (idx >= 0) {
+			// ---- the preamble: walk backwards from the table ----------------------
+			start = idx;
+			let seenPhrase = false;
+			while (start > 0 && idx - start < maxBack) {
+				const b = blocks[start - 1];
+				if (isPhrase(b)) { seenPhrase = true; start--; continue; }
+				if (isBlank(b)) { start--; continue; }
+				if (isRedNote(b)) { keep.add(b); start--; continue; }
+				if (!seenPhrase && isShortLabel(b)) { start--; continue; }
+				break;
+			}
+			// a run of blank lines / labels / notes alone is never a preamble — one phrase hit is required
+			if (!blocks.slice(start, idx).some(isPhrase)) { start = idx; keep.clear(); }
+			end = idx;
+			// ---- further media tables directly after the first ---------------------
+			if (cfg.tail_extra_media_tables !== false) {
+				let k = idx + 1, last = idx;
+				while (k < blocks.length && (isBlank(blocks[k]) || isShortLabel(blocks[k]) || isMediaTable(blocks[k]))) {
+					if (isMediaTable(blocks[k])) last = k;
+					k++;
+				}
+				if (last > idx) { nExtra = last - idx; end = last; }
+			}
+			tailFrom = end + 1;
+		} else {
+			// ---- no media table in this document: the heading + preamble alone -----
+			// (the table is in a separate Media List docx — the CHFUN family; the WT
+			// still carries the template's 'MEDIA LIST' heading and its instructions)
+			if (cfg.no_table_heading === false) return withoutTable;
+			const h = blocks.findIndex((b) => b.kind === "para" && exact.includes(folded(b)));
+			if (h < 0) return withoutTable;
+			let e = h;
+			while (e + 1 < blocks.length && e - h < maxBack) {
+				const b = blocks[e + 1];
+				if (isPreamble(b)) { e++; continue; }
+				if (isRedNote(b)) { keep.add(b); e++; continue; }
+				break;
+			}
+			// the heading alone is not enough — a boilerplate phrase must follow it
+			if (!blocks.slice(h + 1, e + 1).some((b) => !keep.has(b) && isPhrase(b) && contains.some((p) => folded(b).includes(p)))) return withoutTable;
+			start = h; end = e; tailFrom = e + 1; headed = true;
+		}
+		// ---- the tail: the submission checklist to the end of the document ----
+		let nTail = 0;
+		if (cfg.tail_drop !== false && normaliser) {
+			const tailStarts = (cfg.tail_start_phrases ?? []).map((p) => Utils.Fold(String(p)));
+			const structural = new Set(cfg.tail_structural_directives
+				?? ["ELEMENT", "INTERACTIVE", "CONTAINER_OPEN", "CONTAINER_CLOSE", "PAGE_BOUNDARY", "SECTION_MARKER"]);
+			const tail = blocks.slice(tailFrom);
+			const firstText = tail.map(folded).find((t) => t) ?? "";
+			const opensTail = tailStarts.some((p) => firstText.startsWith(p));
+			const hasSubstance = (b) => {
+				if (b.kind !== "para") return true;
+				for (const m of String(b.text ?? "").matchAll(REDSPAN)) {
+					const p = normaliser.Parse(m[1]).primary;
+					if (p && structural.has(p.directive) && p.tag !== "body") return true;
+				}
+				return false;
+			};
+			if (opensTail && tail.length && !tail.some(hasSubstance)) { nTail = blocks.length - tailFrom; end = blocks.length - 1; }
+		}
+		if (!headed && start >= idx && end <= idx) return withoutTable;
+		const nPre = headed ? (end - start + 1 - nTail - keep.size) : (idx - start - keep.size);
+		const plural = (n) => `${n} block${n === 1 ? "" : "s"}`;
+		run?.AddNote("info", "DocxExtractor",
+			`Media-list boilerplate dropped: ${plural(nPre)} `
+			+ (headed ? "of the media-list heading and preamble (no media table recognised in this document)" : "before the media table")
+			+ (nExtra ? ` and ${plural(nExtra)} after it (a second media table)` : "")
+			+ (nTail ? ` and ${plural(nTail)} after it (the submission checklist)` : "")
+			+ (keep.size ? `; ${keep.size} writer note${keep.size === 1 ? "" : "s"} in that section kept` : "")
+			+ ` — the template's own instructions, not content.`);
+		return blocks.filter((b, k) => b !== tableBlock && b !== legacyTable && (keep.has(b) || k < start || k > end));
+	};
+
+	/**
 	 * ROUND 306 — DISSOLVES A PAGE-LAYOUT TABLE THAT TRAPS A SPEECH BUBBLE.
 	 *
 	 * WHAT PROBLEM THIS SOLVES:

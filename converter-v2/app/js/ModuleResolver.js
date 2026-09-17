@@ -481,8 +481,21 @@ class ModuleResolver {
 			>= DataService.Data.InputDocRules.wt_page_tracking.min_pages_for_trust;
 
 		// ---- trim front-matter; exclude an embedded media table --------------
-		run.wtBlocks = DocxExtractor.TrimFrontMatter(wt.doc.blocks, normaliser, run)
-			.filter((b) => b !== mediaSource?.mediaTable.block);
+		// ROUND 370: in a COMBINED docx the media table's PREAMBLE (the red
+		// "MEDIA LIST" heading, the "Please supply details…" instruction and the
+		// copyright-clearance bullet) goes with the table — it is the template's
+		// own instructions, never content. Data media_list_preamble; env MLPREAMBLE_OFF.
+		// The table to trim around is the WT's OWN embedded media table — when a
+		// SEPARATE Media List docx is also uploaded (AGH1007: both files), the
+		// mediaSource is that other document and the combined WT's own copy of
+		// the table (with its preamble and checklist) would otherwise stay in
+		// the content stream.
+		const trimmed = DocxExtractor.TrimFrontMatter(wt.doc.blocks, normaliser, run);
+		const wtTable = (mediaSource && trimmed.includes(mediaSource.mediaTable.block))
+			? mediaSource.mediaTable.block
+			: (MediaListParser.FindMediaTable(trimmed)?.block ?? null);
+		run.wtBlocks = DocxExtractor.TrimMediaListPreamble(trimmed, wtTable, run, normaliser,
+			mediaSource?.mediaTable.block ?? null);
 
 		return { ok: true, wt, mediaSource };
 	};

@@ -1730,7 +1730,8 @@ class Config {
 	// ROUND 367 (260619.38): the r217 standalone box for a bare dropDown / typing widget — DECLINED on the probe (173 paired pages, 36 up / 135 down), shipped INERT (standalone_widget_box.types_round367 = []; env SABOX367_OFF a no-op); the corpus is byte-identical to r366. The autonomous loop's session 21 Round 4.
 	// ROUND 368 (260619.39): the r217 box for a bare dropDown / typing widget re-opened with the KB c43 upload box excluded (InteractiveBuilder.UploadBoxCandidate) and DECLINED again on the probe (19 up / 52 down) — `[drop down]` is a reveal as often as a quiz; the list stays empty, the corpus byte-identical to r366. The autonomous loop's session 21 Round 5.
 	// ROUND 369 (260619.40): the page's activity numbers made consecutive (ContentConverter.#pageNumberNormalise, data activity_wrapper.page_number_normalise, env NUMNORM_OFF) — DECLINED on the gate's own scorer (46 up / 77 down, pp-sum −106 over 266 paired pages; a duplicate id is as often Claude's own extra box as the writer's repeat) and shipped INERT (enabled: false); the corpus is byte-identical to r366. The autonomous loop's session 22 Round 1.
-	static AppVersion = "260619.40";
+	// ROUND 370 (260619.41): the combined Writers Template's media-list PREAMBLE (the red MEDIA LIST heading, the "Please supply details for ALL external media" instruction + bullet, the SUBMISSION CHECKLIST after the table) no longer leaks into the last lesson page — DocxExtractor.TrimMediaListPreamble from ModuleResolver.PrepareRun; data Input_Doc_Rules.media_list_preamble, env MLPREAMBLE_OFF; 158 pages / 152 modules, skeleton 52.698 → 52.744. The autonomous loop's session 23 Round 1.
+	static AppVersion = "260619.41";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

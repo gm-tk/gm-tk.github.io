@@ -1,5 +1,43 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 370, build 260619.41) — THE COMBINED WRITERS TEMPLATE'S MEDIA-LIST PREAMBLE NO LONGER LEAKS INTO THE LAST LESSON PAGE — the autonomous loop's session 23, Round 1
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+In a combined `Writers Template + Media List.docx` the media-list section's template boilerplate — the red `MEDIA LIST` heading, the *Please supply details for ALL external media …* instruction, its *If a specific third-party item/image is crucial …* bullet, and the `SUBMISSION CHECKLIST` that follows the table — used to ride into the last lesson page as a red Writers Note + a `<ul>` (and, on 22 pages, the checklist as learner-facing text); the gold ships none of it on any of 2,385 pages. `DocxExtractor.TrimMediaListPreamble` (called from `ModuleResolver.PrepareRun`, the one prep choke point) now drops that boilerplate around the media table: data `Input_Doc_Rules.media_list_preamble`, env `MLPREAMBLE_OFF` (the OFF path is the pre-round table-only exclusion, byte-identical — the probe 2110 / 2110).
+
+### 2. WHY IT WAS PICKED — a second lens, not the miner's queue
+
+Session 22 had declared §4 EXHAUSTION with the miner's queue quoted. This session tested that verdict with three instruments the DIFF MINER does not have — a per-page ceiling gap ranking (`_s23_gap_rank.py`), a per-page line classification (`_s23_pagediff.py`) and a TEXT-keyed cluster of the removed lines (`_s23_textcluster.py`, 97 clusters ≥ 8 modules). The text lens surfaced the class the structural keying could not rank: the same `<p class="cv2-note">` + `<ul><li>` pair on **136 pages / 134 modules** (435 WTs, 277 of them with a media table in the combined document), gold 0 / 2385. Structure-only (a drop), derivable 1.00, gold consensus 1.00 in every template group; KB level-1 form — the template's own instructions are not content (constraint 1's writer-content fidelity does not cover the template's boilerplate). Triangulated on BLL142 / BLL144 / ANZH203 (WT → gold → Claude).
+
+### 3. THE RULE
+
+`TrimMediaListPreamble(blocks, tableBlock, run, normaliser, legacyTable)` — three measured shapes, all data-listed:
+- **the table in this document** (277 WTs): walk BACKWARDS from the media table up to `max_blocks` (8) over blank lines, the listed phrases (`phrases_exact`: *media list* …; `phrases_contains`: *please supply details for all external media* / *add additional rows if necessary* / *third-party item/image is crucial* / *early copyright clearance* / *early copyright review*), a writer's OWN red note (a block of red spans resolving to no structural tag — passed over and KEPT, it renders as the standing Writers Note; TWHK901 *Designer and Copyright: …*, ENGI401, MXFUN02) and a short plain LABEL (≤ `label_max_words` 3 — MXFUN03's *Phase 1*, allowed only between the preamble and the table, never above the preamble); at least one phrase hit is required. After the table, a SECOND media table with only labels / blanks between (`tail_extra_media_tables`; the same column test `MediaListParser.FindMediaTable` uses — MXFUN03's *Phase 2* table) is dropped too; then the `SUBMISSION CHECKLIST` tail (`tail_start_phrases`) is dropped to the end of the document when no block in it carries a structural directive (`tail_structural_directives`) — CEDT404 / CEDW201 keep theirs (the writer typed a real section under it: correctly declined by substance).
+- **no table in this document** (`no_table_heading`; CHFUN01 / 04 / 05 / 06 / 07 — the Media List is a separate docx, the WT still carries the template's heading + instructions): the run is taken FORWARD from the `media list` heading and needs a contains-phrase after it.
+- **the writer's separate Media List docx AND a combined WT** (AGH1007): `PrepareRun` finds the WT's own table with `FindMediaTable` when the mediaSource's table is not in the WT's blocks, so the WT's own section is still trimmed; the OFF path keeps dropping exactly the mediaSource's table (`legacyTable`), byte-faithful.
+The run note: *Media-list boilerplate dropped: N blocks before the media table [and M after it (a second media table)] [and K after it (the submission checklist)] [; J writer note(s) in that section kept] — the template's own instructions, not content.*
+
+### 4. PROOF
+
+- In-memory probe over all 416 modules (`_r370_probe.cjs`, 4 shards): **OFF = disk 2110 / 2110**; ON = **158 pages / 152 modules** change, 1 page removed (MXEX101's phantom `_7_0` — the media section pasted mid-document had opened an 8th page; the gold has 7). Residue scan of the saved ON pages (`_r370_after_probe.sh`): exactly CEDT404_0_0 / CEDW201_0_0 (the checklist with substance, declined) and MXEX101_3_0 / _5_0 (the writer pasted the whole media section FOUR times — after each lesson's `[End page]`; the first, the one `FindMediaTable` finds, is trimmed, the later copies stay: recorded residue, one module).
+- Scored BEFORE regenerating with the gate's own `match()` (`_r370_pagescore.py`): **148 paired changed pages — 87 up / 31 down / 30 same, pp-sum +66.5**.
+- SCOPED regeneration of the 152 (`_r370_fullship_run.sh`, 11 batches, 4 workers, all rc 0 — the class's family IS the affected set, the probe proving the other 264 modules byte-identical): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **158 changed / 0 added / 1 removed** = the probe's set; every regenerated page **byte-identical to the probe's ON page (469 / 469)**.
+
+### 5. PROTECTED GATES (`_r370_gates.log`, rc 0, 210 s, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **52.698 → 52.744 % (+0.046pp)**, median 53.1, **≥50 1123 → 1125 (+2), ≥75 173 → 176 (+3)**, ≥90 15 EXACT, RAW 37.193 → 37.211 % @ 1956 pairs; **117 movers — 87 up / 30 down, pp-sum +82.3** (`_r370_movers.log`, state `_r370_sk_final.json`). The dips NAMED: MXEX101_6_0 −14.0 and _3_0 −8.7 = the module's pages re-pairing after the phantom page left (the module mean is level at 41.5 → 41.5; its _5_0 +6.6); TWHA903_0_0 −6.3, MXFL401_7_0 −2.3, BLL161_1_1 −1.7, BLL165_1_1 −1.5, BLL221_2_0 −1.1 and 20 more under −1 = the removed `cv2-note` + `ul > li` (or the `row > col` that held them) had been matching a gold element by coincidence — the r176 / r336 alignment class; the largest gains MXEX401_6_0 +16.6, AGH1007_9_0 +14.0, MXEX201_4_1 +6.2.
+- compare_structure exact **11631 → 11628 (−3) = the text-matched pool 13695 → 13692 (−3)** — three removed boilerplate lines had text-matched a gold element (the r57 / r147 relocation class); EXTRA 175 / MISSING 617 / row-wrap 23 EXACT.
+- structural defect audit: clean **2079 / 2102 = 98.9 %** (the corpus is one page shorter), leak **26 / 23 EXACT**.
+- body_compare: over-capture **42 → 43 NAMED — AGH1006_9_0** (over_capture exactly 0.40: its free blocks fell 13 → 10 when the boilerplate left, so the unchanged widget's share crossed the heuristic's threshold), runaway 4 / EMPTY 157 EXACT, any 202 → 203.
+- tags 9557 / 9557 REAL 0; flipCard 61 / divergence 0; speechBubble at its recorded baseline (4); modal 0; mtkQuiz 17 shells defect 0; math 323 / 323; menu labels 91 / 0; dragAndDrop defect 0 — all EXACT.
+
+### 6. ALSO RECORDED THIS ROUND (no code)
+
+- **BLL122 / BLL123 — the bold-header media table** (`**Item No.**` header cells): `MediaListParser.FindMediaTable` folds the header text without stripping `*`, so it never recognises the table and those modules parse NO media list at all (a pre-existing defect); this round's heading branch still drops their preamble, the unparsed table stays as a kept table — the parser fix is its own round (measure the population through the live extractor, not the parsed dumps).
+- MXEX101's repeated media sections (four copies) — the later three stay; one module.
+- Ledger: scoped ship #1 since the r366 full. AppVersion 260619.41; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r370.bak` kept).
+
 ## 2026-09-18 (round 369, build 260619.40) — THE PAGE'S ACTIVITY NUMBERS MADE CONSECUTIVE: DECLINED ON THE GATE'S OWN SCORER, SHIPPED INERT — the autonomous loop's session 22, Round 1
 
 ### 1. WHAT CHANGED, IN ONE LINE
