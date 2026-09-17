@@ -5187,6 +5187,33 @@
 			"fixed_level_classes": [
 				"goJournal"
 			],
+			"keep_writer_digit": {
+				"enabled": true,
+				"env": "H3KEEP_OFF",
+				"digits": [
+					3
+				],
+				"templates": [
+					"Standard",
+					"Fundamentals"
+				],
+				"exclude_classes": [
+					"alert",
+					"alertActivity",
+					"whakatauki",
+					"wananga",
+					"quoteText"
+				],
+				"exclude_code_prefixes": [
+					"ENG",
+					"ARFUN",
+					"CEDO",
+					"XGF"
+				],
+				"_exclude_prefixes_note": "The letter run of the module code (ENG1004 → ENG, ENGC102 → ENGC — distinct). Measured per prefix on the census (Standard + Fundamentals, free-body [H3]): ENG gold-h3 0.05 (1 win / 14 loss) and ARFUN 0.36 (9 / 2) follow the shift rule in their gold; CEDO 0.66 (8 / 24) and XGF 0.82 (31 / 42) are NET-NEGATIVE under the pin (their Claude pages already carry most [H3]s at h3 and the rest are the gold's own h4s). Every other prefix at n ≥ 15 is ≥ 0.74 and net-positive.",
+				"_pool_note": "A pinned heading still COUNTS in the rank pool at its intermediate level, so the page's other headings rank exactly as they did without the pin — the first cut dropped it from the pool and the page's [H4]s rose to h3 (OSAI401 / MXEO201), caught by the probe's scorer.",
+				"_note": "ROUND 371 (the autonomous loop's session 23, Round 2, 2026-09-18). A writer's explicit [H3] keeps its digit: the gold ships it at h3 on 0.90 of the Standard and 0.86 of the Fundamentals free-body sites (the session-23 full-population census, outputs/_s23_headcensus.py, n = 2549), while the r45 body shift + rank rule put it at h4 under a [H2] and at h5 under a [H2] + a title [H1]. The heading emitter adds a TRANSIENT data-wd=\"N\" marker when the digit is listed and the module's template (Module_Structure_Index.module_meta.template_type — a module the index does not know is not pinned) is listed; #relevelHeadings pins such a heading to <hN> — out of the rank pool, its close tag rewritten too — unless an exclude_classes box (the alert family: the KB 05B alert title is h4 — gold-h3 0.20 inside alerts) or a widget / supervisor subtree is open around it; inside an activity box the pin applies. The marker is stripped in every branch and never reaches the output. Inquiry (gold 0.62, 36 win / 31 loss) and ConnectED (55 / 54) are near-ties and not listed; Bilingual is governed by KB 07B. [H2] (gold keeps 0.37) and [H4] (0.51) do not qualify. Env H3KEEP_OFF = no marker = the standing rule, byte-identical."
+			},
 			"_fixed_level_note": "ROUND 245 (Chris — the SCCH302 developer error log). TEMPLATED CHROME headings the converter emits at a FIXED level with a fixed class must not join the re-level pool. `<h4 class=\"goJournal\">Go to your journal</h4>` (r239 B4) is the measured case: the human gold ships it at h4 568/568 = 100%, inside an activity box or standalone, but because it looked like an ordinary free-body heading it was re-ranked with the rest — Claude shipped 110 at h3 and 8 at h5 out of 835, and its presence in the pool also displaced the writer's real headings around it. A heading whose OWN class is listed here is excluded from BOTH the pool and the rewrite (the activity-anchor / supervisor-note exclusion treatment, keyed on the heading's own class rather than an ancestor div). Env FIXEDHEAD_OFF."
 		},
 		"alert_table": {

@@ -1,5 +1,37 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 371, build 260619.42) — A WRITER'S EXPLICIT `[H3]` KEEPS ITS DIGIT: h3 outside the alert family — the autonomous loop's session 23, Round 2
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+A heading the writer typed as `[H3]` now ships as `<h3>` on the Standard and Fundamentals pages (outside an alert-family box, outside a widget / supervisor subtree, and outside four measured prefixes) instead of the h4 / h5 the r45 body shift + rank rule gave it whenever the page also carries a `[H2]` (or a `[H2]` and a title `[H1]`). The heading emitter in `ContentConverter.#element` adds a transient `data-wd="3"` marker; `#relevelHeadings` pins a marked heading to `<h3>` (its close tag too) while it still COUNTS in the rank pool at its intermediate level, so no other heading on the page re-ranks; the marker is stripped in every branch and never reaches the output. Data `Emit_Templates.body_region.heading_relevel.keep_writer_digit`, env `H3KEEP_OFF` (no marker = the standing rule; the probe OFF = disk 2109 / 2109).
+
+### 2. WHY IT WAS PICKED — the census, not the miner
+
+The DIFF MINER keys a heading line by its level, so a `[H3]` the gold ships at h3 and Claude at h4 lands in the generic "heading level differs" fragments below its floor; the session-23 full-population writer-heading census (`outputs/_s23_headcensus.py` → `_s23_headcensus.{json,log}`: every explicit `[H1]`–`[H5]` in a paired module's WT matched by text on BOTH the gold page and the Claude page, n = 2549 for `[H3]`) found the class: **the gold keeps the writer's digit for `[H3]` on 0.87 overall — Standard free-body 0.90 (n = 2054), Fundamentals 0.86 (n = 314) — while Claude kept it on 0.59.** Inquiry is a near-tie (0.62; 36 win / 31 loss), ConnectED 55 / 54, the alert family 0.20 (the KB 05B alert title is h4), `[H2]` keeps 0.37, `[H4]` 0.51, `[H5]` 0.72 on a small n — only digit 3 on those two templates qualifies. Triangulated ANZH105 L7 / ANZH301 L1 / ART1004 (WT `[H3]` → gold `<h3>` → Claude `<h4>`). The KB is silent on writer digit → level (01A / 05A forbid `<span>` wrappers on body headings and fix the activity title at h3 — r334); the gold's own convention decides (LOOP §1b level 2).
+
+### 3. THE RULE, AND THE TWO THINGS THE PROBE TAUGHT IT
+
+- `keep_writer_digit` {`digits: [3]`, `templates: ["Standard", "Fundamentals"]` (matched against `Module_Structure_Index.module_meta[code].template_type` — the r364 precedent; an unknown module is not pinned), `exclude_classes: [alert, alertActivity, whakatauki, wananga, quoteText]` (a heading inside such a box keeps the rank rule), `exclude_code_prefixes: [ENG, ARFUN, CEDO, XGF]`}.
+- **The pool.** The first cut took a pinned heading OUT of the rank pool; the probe's scorer read 179 up / 105 down (+167.7) and the dips were pages that had been right — with the `[H3]` gone from the pool the page's `[H4]`s rose to h3 (OSAI401 −7.0, MXEO201 −11.5, MXEO401 −13.6). A pinned heading now still counts in the pool at its intermediate level, so every other heading ranks exactly as before and the change is the census's own per-heading effect: 148 up / 29 down (+292.5).
+- **The prefixes.** Measured per module-code letter run on the census (Standard + Fundamentals, free-body): ENG (ENG1004 / 1005) gold-h3 0.05 (1 win / 14 loss) and ARFUN 0.36 (9 / 2) follow the shift rule in their gold; CEDO 0.66 (8 / 24) and XGF 0.82 (31 / 42) are net-negative under the pin (their pages already carry most `[H3]`s at h3 and the rest are the gold's own h4s). Every other prefix at n ≥ 15 is ≥ 0.74 and net-positive (NCEA1 90 / 18, Leaving to Learn 91 / 43 with XGF out, English 77 / 4, Mathematics 58 / 4, Social Science 106 / 4, Health and PE 71 / 0, Technology 47 / 8, Online Safety 12 / 2).
+
+### 4. PROOF
+
+- In-memory probe over all 416 modules (`_r371_probe.cjs`, 4 shards): **OFF = disk 2109 / 2109**; ON = **289 pages / 131 modules** (Standard 244 pages, Fundamentals 45 — the scope holds), 0 added / removed; `data-wd` in the saved ON pages: 0.
+- Scored BEFORE regenerating with the gate's own `match()` (`_r371_pagescore.py`): **276 paired changed pages — 148 up / 29 down / 99 same, pp-sum +292.5 (+1.06pp per changed page)**.
+- SCOPED regeneration of the 131 (`_r371_fullship_run.sh`, 13 batches, 4 workers, all rc 0; the probe proving the other 285 modules byte-identical): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **289 changed / 0 added / 0 removed** = the probe's set; every regenerated page **byte-identical to the probe's ON page (777 / 777)**.
+
+### 5. PROTECTED GATES (`_r371_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **52.744 → 52.893 % (+0.150pp)**, median 53.1 → 53.5, **≥50 1125 → 1131 (+6)**, ≥75 176 / ≥90 15 EXACT, RAW 37.211 → 37.313 % @ 1956 pairs; **177 movers — 148 up / 29 down, pp-sum +292.5** (`_r371_movers.log`, state `_r371_sk_final.json`). The dips NAMED: OSSC301_3_0 −14.8 (its gold follows the shift on that page — *Protect your wellbeing* / *Who can help?* at h4; the OSSC prefix is 0.89, 6 win / 2 loss); ENFUN05_0_0 −8.4 (seven of its eight re-levelled headings now match the gold's level — the single-file page's difflib alignment against the gold's many *For example* h4s shifts: the r336 alignment class); HIS1006_10_0 −7.2 (its L9 +21.7), TEDC402_9_0 −6.3 (its L7 +8.9), XDLS501_2_0 −5.4, HES1003_8_0 −4.7, ENGJ403 −4.4 / −2.2 / −1.8, HIS1007_3_1 −3.2 and 19 more under −2; the largest gains HIS1006_9_0 +21.7, TEFUN07_0_0 +13.3, PES1007_3_0 +9.9, XFUN01_0_0 +9.5, TEDC402_7_0 +8.9, ANZH404_4_0 +8.7, PES1005_5_0 / OSGM101_1_0 +8.3.
+- compare_structure exact **11628** / EXTRA 175 / MISSING 617 / row-wrap 23 EXACT (a heading level never enters the wrapper chain); structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **43 / 4 / 157 / 203** EXACT; tags 9557 / 9557 REAL 0; flipCard 61 / divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz 17 shells defect 0; math 323 / 323; menu labels 91 / 0; dragAndDrop 21 widgets defect 0 — all EXACT.
+
+### 6. ALSO RECORDED
+
+- Ledger: scoped ship #2 since the r366 full. AppVersion 260619.42; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r371.bak` kept).
+- Not taken, measured: `[H5]` (gold keeps 0.72, +16 net — below the floor), `[H2]` (0.37, net −61), `[H4]` (0.51, net −42), Inquiry / ConnectED (near-ties), the alert family (h4 — the KB form).
+
 ## 2026-09-18 (round 370, build 260619.41) — THE COMBINED WRITERS TEMPLATE'S MEDIA-LIST PREAMBLE NO LONGER LEAKS INTO THE LAST LESSON PAGE — the autonomous loop's session 23, Round 1
 
 ### 1. WHAT CHANGED, IN ONE LINE

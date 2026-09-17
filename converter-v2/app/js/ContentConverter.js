@@ -3980,10 +3980,37 @@ class ContentConverter {
 			&& (String(attrs ?? "").match(/class="([^"]*)"/i)?.[1] ?? "")
 				.split(/\s+/).some((c) => fixedCls.has(c));
 		const tagRe = /<(\/?)(div|section|h[2-6])\b([^>]*)>/gi;
+		// KEEP THE WRITER'S DIGIT (ROUND 371 — the autonomous loop's session 23 Round 2).
+		//
+		// The heading emitter marks a heading whose writer digit is listed in
+		// heading_relevel.keep_writer_digit.digits with a TRANSIENT data-wd="N" attribute
+		// (scoped to the listed templates). Such a heading is PINNED to <hN> — excluded from the
+		// rank pool and rewritten to its own digit, its close tag too — unless an exclude_classes
+		// box (the alert family: the KB 05B alert title is h4, and the gold keeps an alert-internal
+		// [H3] at h3 on only 0.20) or a widget / supervisor subtree is open around it; it still
+		// COUNTS in the rank pool at its intermediate level, so the page's other headings rank
+		// exactly as they did without the pin (the first cut dropped it from the pool and the
+		// page's [H4]s rose to h3 — OSAI401 / MXEO201, caught by the probe's scorer). Inside an
+		// ACTIVITY box the pin still applies — the gold keeps the box-internal [H3] at h3 too. The
+		// marker never reaches the output: every branch below strips it.
+		// Data: body_region.heading_relevel.keep_writer_digit. Env: H3KEEP_OFF (set at the emitter —
+		// no marker arrives here, so the standing rule runs byte-identically).
+		const kwd = cfg.keep_writer_digit;
+		const kwdOn = !!kwd && kwd.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[kwd.env ?? "H3KEEP_OFF"]);
+		const xCls = new Set(kwdOn ? (kwd.exclude_classes ?? []) : []);
+		const actCls = new Set(cfg.activity_anchor_classes ?? []);
+		const WD = /\s+data-wd="(\d)"/i;
+		const hasWd = /\sdata-wd="\d"/i.test(html);
+		const stripWd = (attrs) => String(attrs ?? "").replace(WD, "");
+		const wdOf = (attrs) => { const m = String(attrs ?? "").match(WD); return m ? parseInt(m[1], 10) : null; };
 		// shared tag-walk that tracks div nesting + which spans are inside a widget subtree
-		const walk = (onFreeHeadingOpen) => {
+		// (wkind "act" = an activity-anchor subtree, "w" = any other skip subtree) + the open
+		// exclude boxes; onTag (optional) sees EVERY heading tag with its pin / inside verdicts
+		const walk = (onFreeHeadingOpen, onTag) => {
 			let depth = 0;
 			const wstack = [];   // div-depths at which a widget container opened
+			const wkind = [], xstack = [];
 			let m;
 			tagRe.lastIndex = 0;
 			while ((m = tagRe.exec(html))) {
@@ -3991,17 +4018,28 @@ class ContentConverter {
 				const tag = m[2].toLowerCase();
 				if (tag === "div" || tag === "section") {
 					if (isClose) {
-						if (wstack.length && wstack[wstack.length - 1] === depth) wstack.pop();
+						if (wstack.length && wstack[wstack.length - 1] === depth) { wstack.pop(); wkind.pop(); }
+						if (xstack.length && xstack[xstack.length - 1] === depth) xstack.pop();
 						depth--;
 					} else {
 						depth++;
 						const cls = (m[3].match(/class="([^"]*)"/i)?.[1] ?? "").split(/\s+/);
-						if (cls.some((c) => skip.has(c))) wstack.push(depth);
+						if (cls.some((c) => skip.has(c))) {
+							wstack.push(depth);
+							wkind.push(cls.some((c) => skip.has(c) && !actCls.has(c)) ? "w" : "act");
+						}
+						if (cls.some((c) => xCls.has(c))) xstack.push(depth);
 					}
-				} else if (!isClose && wstack.length === 0) {
-					if (fixedLevelHeading(m[3])) continue;   // a fixed-level heading never joins the pool
-					onFreeHeadingOpen(parseInt(tag[1], 10));
+					continue;
 				}
+				const inside = wstack.length > 0;
+				const pinnable = kwdOn && !isClose && wdOf(m[3]) !== null && xstack.length === 0 && wkind.every((k) => k === "act");
+				if (onTag) onTag(m, pinnable, inside);
+				if (isClose || inside) continue;
+				if (fixedLevelHeading(m[3])) continue;   // a fixed-level heading never joins the pool
+				// a PINNED heading keeps its intermediate level IN the pool: the page's other headings
+				// rank exactly as before (measured: dropping it promoted the page's [H4]s to h3)
+				onFreeHeadingOpen(parseInt(tag[1], 10));
 			}
 		};
 		// SAFETY CLAMP: the h6 emission headroom is an INTERMEDIATE artifact only the re-leveller
@@ -4013,37 +4051,41 @@ class ContentConverter {
 		// PASS 1 — collect the page's free-body heading outline
 		const levels = [];
 		walk((lv) => levels.push(lv));
-		if (!levels.length) return clamp6(html);
+		if (!levels.length && !hasWd) return clamp6(html);
 		const distinct = [...new Set(levels)].sort((a, b) => a - b);
 		const rank = new Map(distinct.map((lv, i) => [lv, Math.min(base + i, maxL)]));
-		if (distinct.every((lv) => rank.get(lv) === lv)) return clamp6(html);   // already an h3-top outline → no level change
-		// PASS 2 — rewrite free-body heading open + close tags (re-running the same walk state)
-		let depth = 0;
-		const wstack = [];
+		if (!hasWd && distinct.every((lv) => rank.get(lv) === lv)) return clamp6(html);   // already an h3-top outline → no level change
+		// PASS 2 — rewrite heading open + close tags (re-running the same walk state); a pinned
+		// heading takes its own digit, a marked heading that cannot be pinned loses the marker and
+		// takes the standing treatment (ranked when free, untouched inside a widget)
+		const edits = [];
 		let fixedOpen = false;   // latch: the OPEN fixed-level heading's close tag must be left alone too
-		return clamp6(html.replace(tagRe, (full, slash, tg, attrs) => {
-			const isClose = slash === "/";
-			const tag = tg.toLowerCase();
-			if (tag !== "div" && tag !== "section") {
-				if (!isClose && fixedLevelHeading(attrs)) { fixedOpen = true; return full; }
-				if (isClose && fixedOpen) { fixedOpen = false; return full; }
+		let pinClose = null;     // latch: the OPEN pinned heading's close tag takes the pinned digit
+		walk(() => {}, (m, pinnable, inside) => {
+			const isClose = m[1] === "/";
+			const lv = parseInt(m[2].toLowerCase()[1], 10);
+			if (!isClose) {
+				const wd = wdOf(m[3]); const clean = stripWd(m[3]);
+				if (pinnable) { pinClose = wd; edits.push([m.index, m[0].length, `<h${wd}${clean}>`]); return; }
+				const put = (l) => edits.push([m.index, m[0].length, `<h${l}${clean}>`]);
+				if (fixedLevelHeading(m[3])) { fixedOpen = true; if (wd !== null) put(lv); return; }
+				if (inside) { if (wd !== null) put(lv); return; }                 // inside a widget — leave it
+				const newLv = rank.get(lv);
+				if (!newLv || newLv === lv) { if (wd !== null) put(lv); return; }
+				put(newLv);
+			} else {
+				if (pinClose !== null) { edits.push([m.index, m[0].length, `</h${pinClose}>`]); pinClose = null; return; }
+				if (fixedOpen) { fixedOpen = false; return; }
+				if (inside) return;
+				const newLv = rank.get(lv);
+				if (!newLv || newLv === lv) return;
+				edits.push([m.index, m[0].length, `</h${newLv}>`]);
 			}
-			if (tag === "div" || tag === "section") {
-				if (isClose) {
-					if (wstack.length && wstack[wstack.length - 1] === depth) wstack.pop();
-					depth--;
-				} else {
-					depth++;
-					const cls = (attrs.match(/class="([^"]*)"/i)?.[1] ?? "").split(/\s+/);
-					if (cls.some((c) => skip.has(c))) wstack.push(depth);
-				}
-				return full;
-			}
-			if (wstack.length > 0) return full;                 // inside a widget — leave it
-			const newLv = rank.get(parseInt(tag[1], 10));
-			if (!newLv || newLv === parseInt(tag[1], 10)) return full;
-			return isClose ? `</h${newLv}>` : `<h${newLv}${attrs}>`;
-		}));
+		});
+		let res = "", last = 0;
+		for (const [idx, len, rep] of edits) { res += html.slice(last, idx) + rep; last = idx + len; }
+		res += html.slice(last);
+		return clamp6(res);
 	};
 
 	// =======================================================================
@@ -6667,7 +6709,25 @@ class ContentConverter {
 			// ships body headings as plain text 99.5% of the time), excluding the ENG-reading
 			// subject families (which keep italic for book/story titles) and bilingual/reo
 			// modules. See #stripHeadingItalic below for the full explanation.
-			out.push(this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run));
+			// ROUND 371 (the autonomous loop's session 23 Round 2): a writer's explicit [H3] keeps
+			// its digit — the gold ships it at h3 on 0.90 of the Standard / 0.86 of the Fundamentals
+			// free-body sites, while the r45 shift + rank rule below pushed it to h4 under a [H2]
+			// (h5 under a [H2] + a title [H1]). A TRANSIENT data-wd="N" marker tells
+			// #relevelHeadings to PIN the heading instead of ranking it; the releveller strips the
+			// marker in every branch, so it never reaches the output. Scoped by the module's
+			// template (module_meta.template_type — the r364 precedent) and by the listed digits.
+			// Data: body_region.heading_relevel.keep_writer_digit. Env: H3KEEP_OFF (no marker =
+			// the standing rule, byte-identical).
+			const _kwd = tpl.body_region?.heading_relevel?.keep_writer_digit;
+			const _kwdOn = reOn && !!_kwd && _kwd.enabled !== false && /^h\d$/.test(tag)
+				&& !(typeof process !== "undefined" && process.env && process.env[_kwd.env ?? "H3KEEP_OFF"])
+				&& (_kwd.digits ?? []).some((d) => Number(d) === digit)
+				&& !(_kwd.exclude_code_prefixes ?? []).some((p) => String(p) === (String(run?.moduleCode || "").match(/^[A-Z]+/) ?? [""])[0])
+				&& (!(_kwd.templates ?? []).length || (_kwd.templates ?? []).some((t) => String(t)
+					=== String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? "")));
+			let _hHtml = this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run);
+			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${digit}">`);
+			out.push(_hHtml);
 			// Part-3 "BOTH" case: an embedded heading whose span is followed
 			// by body text — the following text is the NEXT element's body
 			if (embedded && it.blackAfter.trim()) {
