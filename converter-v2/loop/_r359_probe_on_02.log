@@ -1,0 +1,166 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+  ~ EXPFUN06_0_0.html: -37 +29
+     - <div class="col-md-6 col-12">
+     - <h4><span>Learning Intentions</span></h4>
+     - <h4><span>How will I know if I’ve learned it?</span></h4>
+     - <h3>Understand:</h3>
+     - <li>Assessment helps students understand what they know, identify areas for improvement, and guide their learn
+     - <li>Assessment is a valuable tool that helps students reflect on their progress, make improvements, and take o
+     - <h3>Know:</h3>
+     - <li>How to use teacher, peer, and self-feedback constructively to improve performance and deepen understanding
+     - <li>How learners approach tasks and solve problems is as valuable as the final outcome.</li>
+     - <li>Assessment tasks connect to real-life skills like problem-solving, critical thinking, time management, and
+     - <li>Mistakes and challenges are opportunities for learning and effort and perseverance lead to progress.</li>
+     - <li>Communication is a valuable part of the assessment process.</li>
+     - <h3>Do:</h3>
+     - <li>Consider how their project aligns with broader learning goals.</li>
+     - <li>Explore motivation and drivers.</li>
+     - <li>Learn about the role that feedback plays in learning.</li>
+     - <li>Listen to examples of learning conversations.</li>
+     - <li>Draft a mock email to kaiako seeking help.</li>
+     - <li>Apply learning from this module to existing and future projects.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <ul>
+     - </ul>
+     - <ul>
+     - </ul>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="col-md-12 col-12">
+     + <h4><span>Understand</span></h4>
+     + <li>Assessment helps students understand what they know, identify areas for improvement, and guide their learn
+     + <li>Assessment is a valuable tool that helps students reflect on their progress, make improvements, and take o
+     + <div class="col-md-6 col-12 paddingR">
+     + <h4><span>Know</span></h4>
+     + <li>How to use teacher, peer, and self-feedback constructively to improve performance and deepen understanding
+     + <li>How learners approach tasks and solve problems is as valuable as the final outcome.</li>
+     + <li>Assessment tasks connect to real-life skills like problem-solving, critical thinking, time management, and
+     + <li>Mistakes and challenges are opportunities for learning and effort and perseverance lead to progress.</li>
+     + <li>Communication is a valuable part of the assessment process.</li>
+     + <h4><span>Do</span></h4>
+     + <li>Consider how their project aligns with broader learning goals.</li>
+     + <li>Explore motivation and drivers.</li>
+     + <li>Learn about the role that feedback plays in learning.</li>
+     + <li>Listen to examples of learning conversations.</li>
+     + <li>Draft a mock email to kaiako seeking help.</li>
+     + <li>Apply learning from this module to existing and future projects.</li>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Learning Intentions</h5>
+     + … 9 more added
+EXPFUN06: identical 0 / changed 1
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+
+TOTAL: identical 660 / changed 1 / missing 0 over 104 modules
+CHANGED: EXPFUN06/EXPFUN06_0_0.html

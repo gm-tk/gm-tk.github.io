@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.29",
-    "round": 358,
+    "build": "260619.30",
+    "round": 359,
     "date": "2026-09-17",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -52,15 +52,16 @@
     "_note_r354": "Round 354: the tag-line words → Writers Note — every gate IDENTICAL to r352 (a red note is chrome); FULL regeneration, 220 pages gain a note.",
     "_note_r356": "Round 356: the exact members rule — skeleton +0.003pp (named dips), cs exact +10, every other gate EXACT; FULL regeneration, 35 pages / 32 modules.",
     "_note_r357": "Round 357: the chip presence class — skeleton +0.031pp (named dips), every other gate EXACT; SCOPED regeneration of the 89-module family, 18 modules / 36 pages; scoped ship #1 since the r356 full.",
-    "_note_r358": "Round 358: the TITLE class — skeleton +0.039pp (named dips), every other gate EXACT; FULL regeneration of all 416, 37 modules / 74 pages; ledger FULL (counter 0)."
+    "_note_r358": "Round 358: the TITLE class — skeleton +0.039pp (named dips), every other gate EXACT; FULL regeneration of all 416, 37 modules / 74 pages; ledger FULL (counter 0).",
+    "_note_r359": "Round 359: the Inquiry overview menu family — skeleton +0.021pp (named dips), ≥50 +1, ≥75 +1, every other gate EXACT; FULL regeneration of all 416, 29 modules / 29 pages; ledger FULL (counter 0)."
   },
   "skeleton": {
-    "mean_scaffold_pct": 52.052,
+    "mean_scaffold_pct": 52.072,
     "median_scaffold_pct": null,
-    "pages_ge_50": 1095,
-    "pages_ge_75": 160,
+    "pages_ge_50": 1096,
+    "pages_ge_75": 161,
     "pages_ge_90": 14,
-    "raw_mean_pct": 36.748,
+    "raw_mean_pct": 36.763,
     "pairs": 1955,
     "pairs_skipped": 0,
     "_note_r350": "Round 350: the dragAndDrop build kickoff shape 1 + the 03B button row — SCAFFOLD identical page-for-page to r349 (a build is inside the collapsed widget marker); RAW 35.049 → 35.115. State outputs/_r350_sk_final.json.",
@@ -69,7 +70,8 @@
     "_note_r355": "Round 355: the scorer compares with autojunk=False (difflib's junk heuristic had ignored most of the structure on every 200+-line skeleton — 128 pages, 126 up); re-established on the r354 corpus with no page change: SCAFFOLD 51.979 (was 50.965 — an instrument correction, never a gain), >=50 1093, >=75 160, >=90 14, RAW 36.711. SKAUTOJUNK=1 reproduces the old numbers. State outputs/_r355_sk_final.json.",
     "_note_r356": "Round 356: the exact members rule (read-tracking) — SCAFFOLD 51.9788 → 51.9819 (+0.003pp; 32 movers, every dip named), ≥50 1093 → 1092 (MXEX201_4_1, the restored source line the gold drops — NAMED), ≥75 160 / ≥90 14 EXACT; RAW 36.711 → 36.705. State outputs/_r356_sk_final.json.",
     "_note_r357": "Round 357: the #module-code chip's presence (six registry corrections + the template_deltas tier) — SCAFFOLD 51.9819 → 52.0125 (+0.031pp; 37 movers, 35 up; dips NAMED: BLL170_0_0 the BLL1 family exception, CEDK501_0_0 an 18 % page re-aligned), ≥50 1092 → 1094, ≥75 160 / ≥90 14 EXACT, RAW 36.705 → 36.728. Hold-or-improve from here.",
-    "_note_r358": "Round 358: the Māori-alphabet title test — SCAFFOLD 52.0125 → 52.0516 (+0.039pp; 16 movers, 14 up; dips NAMED: XGF9004_1_0 and HIS1002_7_0 — the writer's pair split per the KB where the gold retitled the page), ≥50 1094 → 1095, ≥75 160 / ≥90 14 EXACT, RAW 36.728 → 36.748. Hold-or-improve from here."
+    "_note_r358": "Round 358: the Māori-alphabet title test — SCAFFOLD 52.0125 → 52.0516 (+0.039pp; 16 movers, 14 up; dips NAMED: XGF9004_1_0 and HIS1002_7_0 — the writer's pair split per the KB where the gold retitled the page), ≥50 1094 → 1095, ≥75 160 / ≥90 14 EXACT, RAW 36.728 → 36.748. Hold-or-improve from here.",
+    "_note_r359": "Round 359: the Inquiry overview menu family — SCAFFOLD 52.0516 → 52.0723 (+0.021pp; 22 movers, 20 up; dips NAMED: EXPFUN06_0_0 — the Understand: block moved into the Overview tab pane where the gold's is, a 27 % page re-aligned; CEDK101_0_0 — the gold's banner row above the two columns), ≥50 1095 → 1096, ≥75 160 → 161, ≥90 14 EXACT, RAW 36.748 → 36.763. Hold-or-improve from here."
   },
   "compare_structure": {
     "exact_chain": 11617,
@@ -129,8 +131,12 @@
   "menulabels": {
     "labels": 91,
     "defect": 0,
-    "per_module": {},
-    "_note": "Round 349 — _verify_menulabels.cjs over AGH1002 ENGC401 MXFL201 OSSC401 ANZH101 BLL110 XFUN02 CEDT501 CEDO502 (every authoring shape): 91 labels, defect 0. per_module is the r348 baseline table (✓ at-or-under, ✗ above); empty = every module at 0."
+    "per_module": {
+      "CEDT104": 1,
+      "TWHA904": 1
+    },
+    "_note": "Round 349 — _verify_menulabels.cjs over AGH1002 ENGC401 MXFL201 OSSC401 ANZH101 BLL110 XFUN02 CEDT501 CEDO502 (every authoring shape): 91 labels, defect 0. per_module is the r348 baseline table (✓ at-or-under, ✗ above); empty = every module at 0.",
+    "_note_r359": "Round 359: the verifier over the whole changed Inquiry family (22 modules, 33 labels) — CEDT104 and TWHA904 each carry ONE pre-existing p-between (a writer's own paragraph between a label and its list: TWHA904 byte-identical under INQFAMILY_OFF; CEDT104's `<p>Knowledge context:</p>` already sat under `<h5>Know: Ākonga will know:</h5>`, unrecognised as a label until the Know heading split off). Recorded as their per-module baseline; ✗ only above 1."
   },
   "dragdrop": {
     "widgets": 21,

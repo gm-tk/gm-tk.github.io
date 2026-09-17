@@ -4182,8 +4182,16 @@ class ContentConverter {
 		const overviewMenuIdx = new Set();
 		if (introIdx < 0 && page.isOverview && menuType !== "none") {
 			const labels = DataService.Data.EmitTemplates.menu.overview_section_labels ?? [];
+			// ROUND 359 (the Inquiry overview menu): a section label the writer typed WITH A COLON — "Understand:", "Know:",
+			// "Do:" (CEDT101 / CEDT104 / CEDT207 …) — is that label; the plain test needed a following SPACE, so the curriculum
+			// block fell to the body while the gold's menu carries it. Data menu.overview_section_labels_colon; env INQFAMILY_OFF.
+			const colonCfg = DataService.Data.EmitTemplates.menu.overview_section_labels_colon;
+			const colonOn = !!colonCfg && colonCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[colonCfg.env ?? "INQFAMILY_OFF"])
+				&& (colonCfg.inquiry_only === false || !!MenuBuilder.inquiryFamilyFor(run, page));   // scoped to the Inquiry family this round (the Standard / tabs overviews are a queued class)
 			const matchesLabel = (f) => labels.some((l) =>
-				f === l || f.startsWith(l + " ") || f.endsWith(" " + l) || f.includes(" " + l + " "));
+				f === l || f.startsWith(l + " ") || f.endsWith(" " + l) || f.includes(" " + l + " ")
+				|| (colonOn && (f === l + ":" || f.startsWith(l + ": ") || f.startsWith(l + ":"))));
 			// An inquiry-mode `[Tab N]` opener ENDS the overview menu region: the inquiry
 			// panels that follow it are body content, not menu content. Without this check,
 			// the LAST menu-section heading found would leave the inMenu flag stuck at true,

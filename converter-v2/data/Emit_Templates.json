@@ -2989,6 +2989,8 @@
 			"none": null,
 			"two_col_li": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n{banner}<div class=\"col-md-6 col-12 paddingR\">\n{leftContent}\n</div>\n<div class=\"col-md-6 col-12 paddingR\">\n{rightContent}\n</div>\n</div>\n</div>",
 			"two_col_offset": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 offset-md-0 col-12\">\n{leftContent}\n</div>\n<div class=\"col-md-6 offset-md-0 col-12\">\n{rightContent}\n</div>\n</div>\n</div>",
+			"two_col_inquiry": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 col-12 paddingR\">\n{leftContent}\n</div>\n<div class=\"col-md-6 col-12 paddingL\">\n{rightContent}\n</div>\n</div>\n</div>",
+			"_two_col_inquiry_note": "ROUND 359 — the INQUIRY two-column overview menu (KB 06 §3.4): NO banner, `col-md-6 col-12 paddingR` left + `col-md-6 col-12 paddingL` right. Selected by SkeletonBuilder when content.menu.inquiryFamily is true (menu.two_col_li.inquiry_family). The BLL `two_col_li` shell (banner + paddingR ×2) and the ENG `two_col_offset` shell are untouched.",
 			"_two_col_offset_note": "ROUND 81 — the ENG/offset two_col family (convention banner_h4_span:false): NO banner, both columns 'col-md-6 offset-md-0 col-12' (NOT paddingR). Selected by SkeletonBuilder when content.menu.engFamily is true. The BLL-family 'two_col_li' shell (banner + paddingR) is left byte-identical.",
 			"tabs_two_col": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"tabs col-12\">\n<ul class=\"nav nav-tabs\">\n<li><a>Overview</a></li>{tab2Nav}{extraNav}\n</ul>\n<div class=\"tab-content\">\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab1Cols}\n</div>\n</div>{tab2Pane}{extraPanes}\n</div>\n</div>\n</div>\n</div>",
 			"_tabs_two_col_note": "ROUND 166 — the tabs shell with pane-1 as N registry cols ({tab1Cols} = the composed col divs). Selected by SkeletonBuilder when content.menu.tab1Cols is non-null; the original 'tabs' shell + pane1_col_by_phase stay for single-col pages (lessons, guard families, declines, TABTWOCOL_OFF).",
@@ -3181,6 +3183,13 @@
 			"_longest_match_doc": "ROUND 166 — SPECIFICITY routing: the tab whose matched entry is LONGEST wins (legacy: inTab2&&!inTab1 → tab1). Fixes the bare 'do'/'know' substring pollution: 'What DO I need to get started?' contains tab1's 'do', so the r81 rule stranded the whole get-started section in tab 1 even though tab2's own 22-char entry matched exactly (human: tab 2, 60 modules). env TABROUTE_OFF reverts."
 		},
 		"overview_section_labels_note": "Folded heading texts that identify an OVERVIEW MENU section. Used by ContentConverter.#partitionItems as a CONTENT-BASED fallback when a combined-doc overview has NO boundary marker ([MODULE INTRODUCTION] / mid-doc title-bar alias / in-page [End page]) — e.g. ENGJ302. A heading-led block whose heading matches one of these is routed into #module-menu-content; everything else stays in #body. 'Folded' = diacritics stripped + lowercased, so 'Whāinga Ako' matches 'whainga ako'. Add new section-heading wordings here (data edit, no code).",
+		"overview_section_labels_colon": {
+			"enabled": true,
+			"env": "INQFAMILY_OFF",
+			"inquiry_only": true,
+			"_inquiry_only_note": "ROUND 359: true = only for a page the Inquiry family claims (menu.two_col_li.inquiry_family). The in-memory probe showed the general match would also move the curriculum block of 12 Standard overviews into the menu — right for ANZH104 / XGF9004 (their golds carry Understand / Know / Do in the menu), unmeasured for the five TABS overviews (ART1006 / HIS1007 / MXDI101 / MXEO201 / MXFL103 — 01B maps Know → Knowledge, Do → Practices tabs) and the unpaired ENGR102 / HES1006 / HIS1002 / PES1005 / XDLS501. Queued as its own class with its own measurement; set false to apply everywhere.",
+			"_doc": "ROUND 359: in the content-based overview fallback (no [MODULE INTRODUCTION], no mid-document title-bar alias) a section label the writer typed with a trailing colon ('Understand:', 'Know:', 'Do:' — CEDT101 / 104 / 207 / 208 / 301 / 404, the ConnectED Inquiry form) matches overview_section_labels; the plain test needed a following space and left the curriculum block in the body while the gold's menu carries it. Shares the round's toggle."
+		},
 		"overview_section_labels": [
 			"overview",
 			"tirohanga whanui",
@@ -3249,6 +3258,19 @@
 				"how will i know"
 			],
 			"bold_label_note": "Writers often mark the module LI/SC labels as BOLD lines (**Whāinga Ako | Learning Intentions**) rather than [H] tags — the menu builder treats a standalone bold line matching left_match/right_match as that column heading, using the ENGLISH part of a piped reo|english label (human BLL155-0.0 shows plain-English h5s).",
+			"inquiry_family": {
+				"enabled": true,
+				"env": "INQFAMILY_OFF",
+				"template_type": "Inquiry",
+				"source": "Module_Structure_Index.module_meta.<code>.template_type",
+				"exclude_subjects": ["BLL"],
+				"shell": "two_col_inquiry",
+				"left_heading": "<h4><span>{heading}</span></h4>",
+				"right_heading": "<h5>{heading}</h5>",
+				"none_becomes": "simplified",
+				"empty_left_note": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Writers Note: the curriculum Understand / Know / Do statements for this module go in this column — they are not in the Writers Template (the human developer writes them from the curriculum).</p>",
+				"_doc": "ROUND 359 (the autonomous loop's session-19 Round 3, 2026-09-17 — the diff miner's MODULE-MENU classes #36 / #46 / #28 / #54, Chris's BLL110 finding generalised). KB 06 §3.4 (level 1): an INQUIRY module's overview menu is a two-column layout — left column `<h4><span>Understand / Know / Do</span></h4>` headings, right column `<h5>Learning intentions</h5>` + `<h5>How will I know if I've learned it?</h5>`. Measured over the gate's 42 paired Inquiry overviews (outputs/_measure_r359_inqmenu.py): the NON-BLL Inquiry families ship exactly that — TWHA / TWHK 8 / 8 `col-md-6 paddingR | col-md-6 paddingL` with `h4>span` left + `h5` right, ConnectED 11 / 14 paddingR | paddingL with `h4>span` left (4 of them with a banner row above), EXPlore 4 / 5 paddingR | paddingL with `h4>span` both sides — while Claude shipped the BLL banner shell (`col-md-12 paddingR` banner + two `paddingR` columns + `h5>span`) for ConnectED 4-6 / 7-8, a single `col-md-8` column for TWHA (no overview convention in Html_Convention_Registry → 'flat') and NO menu for CEDW101 / CEDW201 / CEDR204 (a no-evidence menu value). The BLL Inquiry PARENTS are excluded (exclude_subjects): their own gold IS the banner form on 7 of 11 (BLL110 / BLL120 are the family's outliers — the r178 rule). The family: (a) an Inquiry-template overview (the module index's template_type — a module the index does not know keeps today's path) outside the excluded subjects forces the two_col_li archetype (TWHA's flat → two columns), disables the banner family and the banner, and renders through the two_col_inquiry shell with these heading templates; (b) menuTypeFor's 'none' verdict for such a page becomes none_becomes ('simplified') so the button and the menu emit. D10-9's `<h5>` labels ('We are learning:') in the right column stay (the gold's `<p>` lead-in is the recorded named override). OFF (INQFAMILY_OFF — not INQMENU_OFF, which is inquiry_tab_ends_overview_menu's own toggle) = the r358 output on every page."
+			},
 			"eng_family": {
 				"enabled": true,
 				"_note": "ROUND 81 (Chris, ENGC102-00) — the OFFSET two_col family, selected when the resolved convention banner_h4_span is FALSE (ENG*/MX*/ANZH/SSOG/CEDO/CEDT/EXPFUN/XGF). The BLL banner family (banner_h4_span true) is UNTOUCHED. Fixes the dropped Understand/Know/Do (the curriculum [H2] '**Label:** *prose*' has its prose absorbed into the heading text, so three text-only headings get nuked by dropEmptyHeadings). The menu lives in #header so it is INVISIBLE to compare_structure/body_compare; the PRIMARY skeleton sees node shape (not text). Env MENUCURRIC_OFF reverts the whole block to the BLL-shaped two_col_li output (the round-80 baseline).",

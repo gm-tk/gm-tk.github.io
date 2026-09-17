@@ -98,7 +98,39 @@ class MenuBuilder {
 	 *   resolved rules, etc.)
 	 * @returns {"tabs"|"simplified"|"none"}
 	 */
+	/**
+	 * ROUND 359 (the autonomous loop's session-19 Round 3 — the diff miner's MODULE-MENU classes; KB 06 §3.4). The INQUIRY
+	 * overview-menu family: this page is an OVERVIEW of an Inquiry-template module (the module index's template_type — a
+	 * module the index does not know keeps today's path) whose subject is not excluded (the BLL parents' own gold is the
+	 * banner form). Returns the family config or null. Data menu.two_col_li.inquiry_family; env INQFAMILY_OFF (INQMENU_OFF is the r-inquiry-tab rule's own toggle).
+	 */
+	static #inquiryFamilyFor(run, page) {
+		const cfg = DataService.Data.EmitTemplates?.menu?.two_col_li?.inquiry_family;
+		if (!cfg || cfg.enabled === false || !page?.isOverview) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "INQFAMILY_OFF"]) return null;
+		const code = String(run?.moduleCode || "");
+		const tt = DataService.Data.ModuleStructureIndex?.module_meta?.[code]?.template_type;
+		if (!tt || tt !== (cfg.template_type ?? "Inquiry")) return null;
+		const subj = code.match(/^[A-Za-z]+/)?.[0] ?? "";
+		if ((cfg.exclude_subjects ?? []).some((p) => subj.toUpperCase().startsWith(String(p).toUpperCase()))) return null;
+		return cfg;
+	}
+
+	/** ROUND 359 — the public face of #inquiryFamilyFor (ContentConverter's overview partition asks it for the colon label match). */
+	static inquiryFamilyFor(run, page) {
+		return this.#inquiryFamilyFor(run, page);
+	}
+
 	static menuTypeFor(page, run) {
+		const base = this.#menuTypeForBase(page, run);
+		// ROUND 359: an Inquiry overview always carries its menu (KB 06 §3.4) — a registry 'none' verdict (CEDW101 / CEDW201 /
+		// CEDR204's no-evidence value) becomes the family's none_becomes ('simplified'); tabs and simplified pass through.
+		const inq = this.#inquiryFamilyFor(run, page);
+		if (inq && base === "none") { if (page) page._inqMenuFromNone = true; return inq.none_becomes ?? "simplified"; }
+		return base;
+	}
+
+	static #menuTypeForBase(page, run) {
 		const scope = page.isOverview ? "overview" : "lesson";
 		// PRIMARY: menu_type measured from the human corpus per subject×phase
 		// (the Group Majority — data/Menu_Scaffold_Registry.json, keyed by
@@ -190,7 +222,10 @@ class MenuBuilder {
 	 */
 	static buildMenu(menuItems, menuType, run, page, norm) {
 		if (menuType === "none" || !menuItems.length) {
-			return { kind: menuType, tab1: "", tab2: "", content: "", left: "", right: "" };
+			// ROUND 359: an Inquiry overview with nothing to put in the menu ships NO menu (ENGFUN02) — menuTypeFor's
+			// none_becomes only serves a page that has menu content; an empty shell is never emitted.
+			const kind = (!menuItems.length && page?._inqMenuFromNone) ? "none" : menuType;   // only a none→simplified conversion reverts; a registry 'simplified' keeps its (empty) shell as before
+			return { kind, tab1: "", tab2: "", content: "", left: "", right: "" };
 		}
 		const tpl = DataService.Data.EmitTemplates.menu;
 
@@ -301,7 +336,7 @@ class MenuBuilder {
 		// particular module.
 		const pageType = page.isOverview ? "overview" : "lesson";
 		const convention = run.conventions?.menu?.[pageType] ?? null;
-		const archetype = menuType === "tabs" ? "tabs"
+		let archetype = menuType === "tabs" ? "tabs"
 			: (convention?.archetype === "two_col_li" ? "two_col_li" : "flat");
 
 		// THE "ENG FAMILY" OFFSET TWO-COLUMN LAYOUT (convention banner_h4_span:false):
@@ -331,11 +366,19 @@ class MenuBuilder {
 		// hardcoded literal banner string. Data: menu.two_col_li.banner_family.
 		// Env BANNERMENU_OFF disables this family layout.
 		const bannerCfg = tpl.two_col_li?.banner_family;
-		const bannerFamily = archetype === "two_col_li"
+		let bannerFamily = archetype === "two_col_li"
 			&& !engFamily
 			&& bannerCfg && bannerCfg.enabled !== false
 			&& convention?.banner_h4_span === true
 			&& !(typeof process !== "undefined" && process.env && process.env.BANNERMENU_OFF);
+		// THE INQUIRY FAMILY (ROUND 359 — KB 06 §3.4; menu.two_col_li.inquiry_family; env INQFAMILY_OFF): an Inquiry-template
+		// OVERVIEW outside the excluded subjects renders the two-column form — the archetype is FORCED to two_col_li (TWHA's
+		// 'flat' convention gave it one col-md-8 column), the banner family is off (ConnectED|1-3's mined banner_h4_span),
+		// the left headings are h4>span and the shell is two_col_inquiry (paddingR | paddingL, no banner). The ENG offset
+		// family and a tabs menu are untouched. See #inquiryFamilyFor.
+		const inqCfg = this.#inquiryFamilyFor(run, page);
+		const inqFamily = !!inqCfg && !engFamily && archetype !== "tabs";
+		if (inqFamily) { archetype = "two_col_li"; bannerFamily = false; }
 		// THE CURRICULUM-LINE SPLIT, GENERALISED TO EVERY OTHER two_col_li FAMILY
 		// (the banner family plus subjects like CEDO/CEDT/XGF that aren't part of
 		// the ENG family above): without this, a curriculum line written as
@@ -350,7 +393,7 @@ class MenuBuilder {
 			&& tpl.two_col_li.curriculum_split_all !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.CURRICSPLIT_OFF);
 
-		const out = { kind: menuType, archetype, engFamily, bannerFamily, bannerLabel: "", tab1: "", tab2: "", content: "", left: "", right: "", tab1Cols: null, tab2Cols: null };
+		const out = { kind: menuType, archetype, engFamily, bannerFamily, inquiryFamily: inqFamily, bannerLabel: "", tab1: "", tab2: "", content: "", left: "", right: "", tab1Cols: null, tab2Cols: null };
 
 		// OVERVIEW TABS-MENU PANE-1 TWO-COLUMN LAYOUT (e.g. module ENGJ402). The
 		// two-column transforms above are all gated to archetype === "two_col_li",
@@ -548,7 +591,7 @@ class MenuBuilder {
 								flushText();   // emit the prior bucket's buffered bullets before switching column
 								bucket = left ? "left" : "right";
 								push(Utils.FillTemplate(
-									left ? cfg.left_heading : cfg.right_heading,
+									left ? (inqFamily ? inqCfg.left_heading : cfg.left_heading) : (inqFamily ? inqCfg.right_heading : cfg.right_heading),   // r359
 									{ heading: Utils.EscapeHtml(label) }));
 								continue;
 							}
@@ -769,7 +812,7 @@ class MenuBuilder {
 									label = headingText.slice(0, ci).trim(); rest = headingText.slice(ci + 1);
 								} else { label = headingText.replace(/:\s*$/, "").trim(); }
 							}
-							push(Utils.FillTemplate(cfg.left_heading, { heading: Utils.EscapeHtml(label) }));
+							push(Utils.FillTemplate((inqFamily ? inqCfg.left_heading : cfg.left_heading), { heading: Utils.EscapeHtml(label) }));   // r359: the Inquiry family's h4>span
 							if (rest && rest.replace(/[*\s]/g, "")) {
 								for (const piece of ListsAndRuns.renderBlackText(rest.trim(), run)) push(piece);
 							}
@@ -791,7 +834,7 @@ class MenuBuilder {
 								&& bucket === "right" && headingText.includes("|"))
 								? headingText.split("|").pop().trim() : headingText;
 							push(Utils.FillTemplate(
-								bucket === "left" ? cfg.left_heading : cfg.right_heading,
+								bucket === "left" ? (inqFamily ? inqCfg.left_heading : cfg.left_heading) : (inqFamily ? inqCfg.right_heading : cfg.right_heading),   // r359
 								{ heading: Utils.EscapeHtml(htext) }));
 						}
 					}

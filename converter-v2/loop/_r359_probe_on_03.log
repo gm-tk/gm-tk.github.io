@@ -1,0 +1,198 @@
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+  ~ TWHA901_0_0.html: -1 +4
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingL">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: the curriculum Understand / Know / Do
+     + </div>
+TWHA901: identical 0 / changed 1
+  ~ TWHA902_0_0.html: -1 +4
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingL">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: the curriculum Understand / Know / Do
+     + </div>
+TWHA902: identical 0 / changed 1
+  ~ TWHA903_0_0.html: -1 +4
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingL">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: the curriculum Understand / Know / Do
+     + </div>
+TWHA903: identical 0 / changed 1
+  ~ TWHA904_0_0.html: -1 +4
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingL">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: the curriculum Understand / Know / Do
+     + </div>
+TWHA904: identical 0 / changed 1
+  ~ TWHA905_0_0.html: -1 +4
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingL">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: the curriculum Understand / Know / Do
+     + </div>
+TWHA905: identical 0 / changed 1
+  ~ TWHA906_0_0.html: -15 +5
+     - <h3>Understand:</h3>
+     - <h3>Know:</h3>
+     - <h3>Do:</h3>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="col-md-6 col-12 paddingR">
+     + <h4><span>Understand</span></h4>
+     + <h4><span>Know</span></h4>
+     + <h4><span>Do</span></h4>
+     + <div class="col-md-6 col-12 paddingL">
+TWHA906: identical 0 / changed 1
+  ~ TWHK901_0_0.html: -13 +15
+     - <div class="col-md-8 col-12">
+     - <h4>Do:</h4>
+     - <li>Explore what sustainability means from a local to a global perspective.</li>
+     - <li>Investigate the problem of rubbish and recycling, and the importance of reducing food waste, and why it is
+     - <li>Investigate how I can act responsibly to support the reduction and effective recycling of waste as a consu
+     - <li>Identify the impact of pollution in the environment for land, sea and air.</li>
+     - <li>Identify the 4 R’s of waste disposal.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <ul>
+     - </ul>
+     - </div>
+     - </div>
+     + <div class="col-md-6 col-12 paddingR">
+     + <h4><span>Understand</span></h4>
+     + <p>Understand our role in helping to sustain our local and global resources and environment for future generat
+     + <h4><span>Know</span></h4>
+     + <p>Know about sustainability as a concept, what it looks like in practical ways and the importance of recyclin
+     + <h4><span>Do</span></h4>
+     + <li>Explore what sustainability means from a local to a global perspective.</li>
+     + <li>Investigate the problem of rubbish and recycling, and the importance of reducing food waste, and why it is
+     + <li>Investigate how I can act responsibly to support the reduction and effective recycling of waste as a consu
+     + <li>Identify the impact of pollution in the environment for land, sea and air.</li>
+     + <li>Identify the 4 R’s of waste disposal.</li>
+     + <div class="col-md-6 col-12 paddingL">
+     + <ul>
+     + </ul>
+     + </div>
+TWHK901: identical 0 / changed 1
+  ~ TWHK903_0_0.html: -3 +7
+     - <h5>Know:</h5>
+     - <h5>Do:</h5>
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h4><span>Understand</span></h4>
+     + <p>We can navigate the digital world safely, responsibly, and ethically, while fostering positive and respectf
+     + <h4><span>Know</span></h4>
+     + <h4><span>Do</span></h4>
+     + <div class="col-md-6 col-12 paddingL">
+     + </div>
+TWHK903: identical 0 / changed 1
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 535 / changed 8 / missing 0 over 104 modules
+CHANGED: TWHA901/TWHA901_0_0.html TWHA902/TWHA902_0_0.html TWHA903/TWHA903_0_0.html TWHA904/TWHA904_0_0.html TWHA905/TWHA905_0_0.html TWHA906/TWHA906_0_0.html TWHK901/TWHK901_0_0.html TWHK903/TWHK903_0_0.html

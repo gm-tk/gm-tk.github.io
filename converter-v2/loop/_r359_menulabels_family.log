@@ -1,0 +1,24 @@
+CEDK101: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDK102: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDO102: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDO202: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDT101: labels 0; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDT104: labels 3; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 1; defect 1 ✗ (above the recorded baseline 0)
+CEDT207: labels 0; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDT208: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDT301: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDT404: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDW101: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDW201: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+EXPFUN06: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TWHA901: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TWHA902: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TWHA903: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TWHA904: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 1; defect 1 ✗ (above the recorded baseline 0)
+TWHA905: labels 1; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TWHA906: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TWHK901: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TWHK903: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+BLL110: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TOTAL: 33 label(s) across 22 module(s); defect 2.
+RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.menulabels.per_module).

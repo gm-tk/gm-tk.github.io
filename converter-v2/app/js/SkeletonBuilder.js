@@ -801,7 +801,7 @@ class SkeletonBuilder {
 				: (content.menu.funLiCols && content.menu.funLiCols.length)
 					? "fundamentals_li"
 					: content.menu.archetype === "two_col_li"
-						? (content.menu.engFamily ? "two_col_offset" : "two_col_li")
+						? (content.menu.engFamily ? "two_col_offset" : (content.menu.inquiryFamily ? "two_col_inquiry" : "two_col_li"))   // r359: the Inquiry two-column shell
 						: (content.menu.kind === "tabs"
 							? (content.menu.tab1Cols ? "tabs_two_col" : "tabs") : "simplified");
 			const shell = tpl.menu.shells[shellKey];
@@ -879,14 +879,16 @@ class SkeletonBuilder {
 					// The BANNER-style menu family renders its top banner text from the
 					// module's own [H1] heading (reduced to its English form,
 					// content.menu.bannerLabel), rather than a fixed hardcoded label.
-					banner: content.menu.engFamily ? ""
+					banner: (content.menu.engFamily || content.menu.inquiryFamily) ? ""
 						: (content.menu.bannerLabel
 							? Utils.FillTemplate(
 								tpl.menu.two_col_li?.banner_template
 									?? "<div class=\"col-md-12 col-12 paddingR\">\n<h4><span>{label}</span></h4>\n</div>\n",
 								{ label: Utils.EscapeHtml(content.menu.bannerLabel) })
 							: (tpl.menu.two_col_li?.banner ?? "")),
-					leftContent: content.menu.left ?? "",
+					// ROUND 359: an Inquiry family menu with NO curriculum (Understand / Know / Do) block leaves the left column
+					// to the developer with a Writers Note (TWHA's gold writes the statements from the curriculum; the WT has none).
+					leftContent: (content.menu.left || ((content.menu.inquiryFamily && tpl.menu.two_col_li?.inquiry_family?.empty_left_note) || "")),
 					rightContent: content.menu.right ?? "",
 				}));
 			}

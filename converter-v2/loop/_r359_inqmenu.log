@@ -1,0 +1,181 @@
+r359 overview-menu column-form census — 396 paired overview pages
+
+=== Inquiry: 42 overviews; Claude shape == gold on 3 ===
+  gold column classes: col-md-6.paddingR | col-md-6.paddingL ×19; col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingR ×7; col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingL ×4; tabs ×4; col-md-6.paddingR | col-md-6 ×2; col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL ×2; col-md-6.paddingR | col-md-6.paddingR ×1; col-md-12.paddingR | col-md-12.paddingR ×1
+  claude column classes: col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingR ×18; col-md-8 ×15; tabs ×5; (none) ×4
+  gold first-child per column: h4>span,h5 ×17; h4>span,h5>span,h5 ×7; h4>span,h4>span ×5; ul×3 ×3; h3>span,h4>span,h4>span ×2; h4>span,h4 ×1; h3>span,h5 ×1; h4>span,p,h5 ×1
+  claude first-child per column: h4>span,h5>span,h5 ×16; (none) ×8; p ×6; h5 ×5; ul×4 ×3; ul×3 ×2; h4>span,h5 ×1; h4>span,h5>span,p ×1
+    ConnectED                      n= 14 same=0 gold cols [('col-md-6.paddingR | col-md-6.paddingL', 7), ('col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingL', 4)] heads [('h4>span,h5', 8), ('h3>span,h4>span,h4>span', 2)]
+    1-10 Blended Literacy          n= 11 same=0 gold cols [('col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingR', 7), ('col-md-6.paddingR | col-md-6', 2)] heads [('h4>span,h5>span,h5', 7), ('h4>span,h4>span', 1)]
+    Te ara Whakapuawa -Wellbeing   n=  8 same=0 gold cols [('col-md-6.paddingR | col-md-6.paddingL', 8)] heads [('h4>span,h5', 8)]
+    EXPlore                        n=  5 same=1 gold cols [('col-md-6.paddingR | col-md-6.paddingL', 4), ('tabs', 1)] heads [('h4>span,h4>span', 4), ('ul×3', 1)]
+    Leaving to Learn               n=  3 same=1 gold cols [('tabs', 3)] heads [('ul×3', 2), ('ul×4', 1)]
+    NCEA1                          n=  1 same=1 gold cols [('', 1)] heads [('', 1)]
+
+=== Standard: 285 overviews; Claude shape == gold on 117 ===
+  gold column classes: tabs ×142; col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingR ×51; col-md-6.offset-md-0 | col-md-6.offset-md-0 ×30; col-md-6.paddingR | col-md-6.paddingR ×16; (none) ×13; col-md-8 ×6; col-md-6 | col-md-6.paddingL ×5; col-md-6.paddingR | col-md-6.paddingL ×4
+  claude column classes: tabs ×141; col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingR ×103; col-md-6.offset-md-0 | col-md-6.offset-md-0 ×27; col-md-8 ×9; (none) ×5
+  gold first-child per column: ul×2 ×71; ul×3 ×57; h4>span,h5>span,h5 ×45; h4>span,h5 ×19; h5>span,h5 ×15; (none) ×13; h3>span,h3>span ×12; ul×4 ×9
+  claude first-child per column: h4>span,h5>span,h5 ×99; ul×2 ×79; ul×3 ×50; h3>span,h5 ×14; ul×4 ×12; h4>span,h5 ×11; (none) ×6; h5 ×6
+    1-10 Blended Literacy          n= 80 same=0 gold cols [('col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingR', 51), ('col-md-6.paddingR | col-md-6.paddingR', 16)] heads [('h4>span,h5>span,h5', 45), ('h5>span,h5', 15)]
+    NCEA1                          n= 41 same=31 gold cols [('tabs', 38), ('', 2)] heads [('ul×3', 33), ('ul×4', 3)]
+    1-10 English                   n= 40 same=8 gold cols [('col-md-6.offset-md-0 | col-md-6.offset-md-0', 21), ('tabs', 11)] heads [('ul×2', 8), ('h3>span,h3>span', 7)]
+    1-10 Mathematics               n= 37 same=29 gold cols [('tabs', 30), ('col-md-6.offset-md-0 | col-md-6.offset-md-0', 4)] heads [('ul×2', 29), ('', 3)]
+    Leaving to Learn               n= 29 same=8 gold cols [('tabs', 15), ('col-md-8', 5)] heads [('ul×3', 8), ('ul×4', 5)]
+    Online Safety (OS9000)         n= 28 same=27 gold cols [('tabs', 27), ('col-md-8', 1)] heads [('ul×2', 27), ('p>b', 1)]
+    ANZH                           n= 10 same=3 gold cols [('tabs', 4), ('col-md-6.offset-md-0 | col-md-6.offset-md-0', 3)] heads [('ul×3', 4), ('h4>span,h5', 3)]
+    ConnectED                      n=  7 same=6 gold cols [('tabs', 6), ('col-md-6.paddingR | col-md-6.paddingL', 1)] heads [('ul×3', 5), ('ul×2', 1)]
+    None                           n=  5 same=2 gold cols [('tabs', 4), ('', 1)] heads [('ul×3', 2), ('ul×2', 2)]
+    1-10 Social Science            n=  5 same=1 gold cols [('tabs', 2), ('col-md-6.offset-md-0 | col-md-6.offset-md-0', 2)] heads [('h3>span,h3>span', 2), ('ul×2', 1)]
+    EXPlore                        n=  2 same=1 gold cols [('tabs', 1), ('', 1)] heads [('ul×3', 1), ('', 1)]
+    1-10 Science                   n=  1 same=1 gold cols [('tabs', 1)] heads [('ul×3', 1)]
+
+=== Fundamentals: 53 overviews; Claude shape == gold on 17 ===
+  gold column classes: col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL ×18; (none) ×18; col-md-6.paddingR | col-md-6.paddingL ×15; tabs ×2
+  claude column classes: (none) ×16; col-md-6.paddingR | col-md-6.paddingL ×15; col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL ×8; col-md-8 ×5; tabs ×4; col-md-12.paddingR | col-md-6.paddingR | col-md-6.paddingR ×3; col-md-6.offset-md-0 | col-md-6.offset-md-0 ×2
+  gold first-child per column: h5,h5 ×18; (none) ×18; h4>span,h4>span ×14; h4,h4 ×1; ul×4 ×1; ul×3 ×1
+  claude first-child per column: (none) ×20; h4>span,h4>span ×15; h5,h5 ×8; h4>span,p ×3; p ×3; ul×2 ×3; ul×3 ×1
+    1-10 Health and PE             n= 15 same=0 gold cols [('col-md-6.paddingR | col-md-6.paddingL', 15)] heads [('h4>span,h4>span', 14), ('h4,h4', 1)]
+    1-10 English                   n=  8 same=0 gold cols [('col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL', 8)] heads [('h5,h5', 8)]
+    1-10 Technology                n=  8 same=7 gold cols [('', 7), ('col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL', 1)] heads [('', 7), ('h5,h5', 1)]
+    1-10 Social Science            n=  6 same=3 gold cols [('', 5), ('tabs', 1)] heads [('', 5), ('ul×4', 1)]
+    1-10 Arts                      n=  5 same=0 gold cols [('col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL', 5)] heads [('h5,h5', 5)]
+    None                           n=  5 same=5 gold cols [('', 5)] heads [('', 5)]
+    1-10 Mathematics               n=  3 same=0 gold cols [('col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL', 3)] heads [('h5,h5', 3)]
+    Leaving to Learn               n=  2 same=1 gold cols [('col-md-6.offset-md-0.paddingR | col-md-6.offset-md-0.paddingL', 1), ('tabs', 1)] heads [('h5,h5', 1), ('ul×3', 1)]
+    1-10 Science                   n=  1 same=1 gold cols [('', 1)] heads [('', 1)]
+
+=== Bilingual: 16 overviews; Claude shape == gold on 3 ===
+  gold column classes: tabs ×13; (none) ×3
+  claude column classes: tabs ×16
+  gold first-child per column: ul×5 ×7; ul×3 ×5; (none) ×3; ul×6 ×1
+  claude first-child per column: ul×2 ×13; ul×3 ×3
+    Te Marautanga o Aotearoa TMoA  n= 16 same=3 gold cols [('tabs', 13), ('', 3)] heads [('ul×5', 7), ('ul×3', 5)]
+
+=== Inquiry overviews, page by page ===
+  BLL110    gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,ul×3] | col-md-6[h4>span,p>b,h4>span,p,ul×6]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×6]
+            gold texts: [['Understand', 'Shared codes and conventions enable us t', 'Know', 'Ākonga know and are familiar with codes,', 'Do'], ['Learning Intentions', 'Ākonga will learn the name, the sounds a', 'How will
+  BLL120    gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,ul×3] | col-md-6[h4,p,ul×1,h5,p,ul×4]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,p] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×4]
+            gold texts: [['Understand', 'Shared codes and conventions enable us t', 'Know', 'Ākonga know and are familiar with codes,', 'Do'], ['Learning Intentions', 'We are learning:', 'Paearu Angitu | How will I know 
+  BLL130    gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,p] | col-md-6.paddingR[h5,p,ul×1,h5,p,ul×6]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,p>b,p>b,p>b] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×6]
+            gold texts: [['Learning Intentions'], ['Understand:', 'Shared codes and conventions enable us t', 'Know:', 'Ākonga know and are familiar with codes,', 'Do:', ''], ['Whāinga Ako | Learning Intentions', 'We are
+  BLL140    gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,p,ul×3,h5,p,ul×7]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,p>b,p>b,p>b] | col-md-6.paddingR[h5,h5,ul×3,h5,h5,ul×7]
+            gold texts: [['Learning Intentions'], ['Understand:', 'Shared codes and conventions enable us t', 'Know:', 'Ākonga know and are familiar with codes,', 'Do:'], ['Whāinga Ako | Learning Intentions', 'We are lea
+  BLL150    gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,p,ul×1,h5,p,ul×7]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,p>b,p>b,p>b] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×7]
+            gold texts: [['Learning Intentions'], ['Understand:', 'Shared codes and conventions enable us t', 'Know:', 'Ākonga know and are familiar with codes,', 'Do:'], ['Whāinga Ako | Learning Intentions', 'We are lea
+  BLL160    gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,ul×3] | col-md-6.paddingR[h5,p,ul×1,h5,p,ul×7]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×7]
+            gold texts: [['Understand:', 'Shared codes and conventions enable us t', 'Know:', 'Ākonga know and are familiar with codes,', 'Do:'], ['Whāinga Ako | Learning Intentions', 'We are learning:', 'Paearu Angitu |
+  BLL170    gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×0] | col-md-6.paddingR[h5,p,ul×1,h5,p,ul×7]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×7]
+            gold texts: [['Learning Intentions'], ['Understand:', 'Shared codes and conventions enable us t', 'Know:', 'Ākonga know and are familiar with codes,', 'Do:'], ['Learning Intentions', 'We are learning:', 'How 
+  BLL210    gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,ul×1,h5>span,ul×1,h5>span,ul×3] | col-md-6.paddingR[h5,p,ul×1,h5,p,ul×5]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×6]
+            gold texts: [['Learning Intentions'], ['Understand:', 'Know:', 'Do:'], ['Learning Intentions', 'We are learning:', 'How will I know if I’ve learned it?', 'I can:']]
+  BLL220    gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×0] | col-md-6.paddingR[h5,p,ul×1,h5,p,ul×5]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×5]
+            gold texts: [['Learning Intentions'], ['Understand:', 'Shared codes and conventions enable us t', 'Know:', 'Ākonga know, recognise, and use the code', 'Do:'], ['Learning Intentions', 'We are learning:', 'How 
+  BLL230    gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,p,ul×1,h5,p,ul×5]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,ul×3] | col-md-6.paddingR[h5,h5,ul×1,h5,h5,ul×5]
+            gold texts: [['Learning Intentions'], ['Understand:', 'Shared codes and conventions enable us t', 'Know:', 'Ākonga know, recognise, and use the code', 'Do:'], ['Learning Intentions', 'We are learning:', 'How 
+  BLL240    gold: col-md-12.paddingR[h3>span,h5>span,ul×5,h5>span,ul×3] | col-md-12.paddingR[h5,p,ul×1,h5,p,ul×5]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,ul×5,p,p] | col-md-6.paddingR[h5,ul×3,h5,h5,ul×1,h5,h5,ul×5]
+            gold texts: [['Tirohanga Whānui | Overview', 'Knowledge:', 'Practices:'], ['Learning Intentions', 'We are learning:', 'Success Criteria', 'I can:']]
+  CEDK101   gold: col-md-12[h4>span] | col-md-6.paddingR[p,h4>span,p,h4>span,ul×5] | col-md-6.paddingL[h5,p,h5,p,ul×7]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p] | col-md-6.paddingR[h5,h5,ul×6,h5,h5,ul×7]
+            gold texts: [['Understand'], ['Making connections across related contex', 'Know', 'Humans design and develop materials to h', 'Do'], ['Learning Intentions', 'We are learning to explore the different', 'How wi
+  CEDK102   gold: col-md-12.paddingR[p>b] | col-md-6.paddingR[h4>span,p,h4>span,p,p,h4>span,p] | col-md-6.paddingL[h4>span,p,ul×3,h4>span,p,ul×4]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[] | col-md-6.paddingR[h5,h5,ul×3,h5,h5,ul×4]
+            gold texts: [['This inquiry explores Technology and Soc'], ['Understand', 'Making connections between the Arts (Vis', 'Know', 'Digital tools and photography techniques', 'Sharing the ideas, feelings and stori
+  CEDK501   gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,p,ul×4] | col-md-6.paddingL[p>b,p,ul×6,p>b,p,ul×6]
+            clau: tabs[ul×3,div]
+            gold texts: [['Understand', '', 'Know', '', 'Do', ''], ['Learning Intentions', 'We are learning:', 'Success Criteria', 'I can:']]
+  CEDO102   gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,ul×2] | col-md-6.paddingL[h5,p,ul×2,h5,p,ul×9]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,p] | col-md-6.paddingR[h5,h5,ul×2,h5,h5,ul×9]
+            gold texts: [['Understand', 'Making connections across related contex', 'Know', 'The Earth is a rich and diverse system, ', 'Do'], ['Learning Intentions', 'We are learning:', 'Success Criteria', 'I can:']]
+  CEDO202   gold: col-md-6.paddingR[h4>span,p,h4>span,ul×2,h4>span,ul×2] | col-md-6.paddingL[h5,p,ul×6,h5,p,ul×6]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,ul×1,h5>span,ul×2,h5>span,ul×2] | col-md-6.paddingR[p,h5,h5,ul×6,h5,p,ul×6,h5,p,p,h5,p]
+            gold texts: [['Understand', 'Making connections across diverse contex', 'Know', 'Do'], ['Learning Intention', 'We are learning:', 'Success Criteria', 'I can:']]
+  CEDR204   gold: col-md-6.paddingR[h4>span,p,p,h4>span,p,h4>span,ul×3] | col-md-6.paddingL[h5,p,ul×5,h5,p,ul×5]
+            clau: NO MENU
+            gold texts: [['Understand', 'Relationships exist between musical patt', 'Making connections between the arts (mus', 'Know', 'Musical ideas can be created and express', 'Do'], ['Learning Intentions', 'We are l
+  CEDT101   gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,p] | col-md-6.paddingL[h5,ul×4,h5,ul×6]
+            clau: col-md-8[h5,ul×4,h5,ul×6,h5,p,p,h5,p,p,p,p,p,p]
+            gold texts: [['Understand', 'Making connections across related contex', 'Know', 'Learning about ourselves, our culture, w', 'Do', 'Ākonga can listen to stories and retell '], ['Learning Intentions', 'Success 
+  CEDT104   gold: col-md-6.offset-md-0.paddingR[h4>span,ul×2,h4>span,ul×5,h4>span,ul×5] | col-md-6.offset-md-0.paddingL[h5,p,ul×4,h5,p,ul×7]
+            clau: col-md-8[p,h5,p,p,p,p,p,h5,p,ul×3,p,ul×3,p,ul×5,h5,p,ul×5,h5,h5,ul×4,h5,h5,ul×7,h5,ul×7,p>b,ul×2]
+            gold texts: [['Understand', 'Know', 'Do'], ['Learning Intentions', 'We are learning:', 'How will I know if I’ve learned it?', 'I can:']]
+  CEDT207   gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,p] | col-md-6.paddingL[h5,ul×3,h5,ul×6]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p] | col-md-6.paddingR[h5,ul×3,h5,ul×7,h5,p,p,h5,ul×3,h5,p,ul×5]
+            gold texts: [['Understand', 'Making connections across related contex', 'Know', 'Learning about ourselves, our culture, w', 'Do', 'Ākonga can engage in the visual arts by '], ['Learning Intentions', 'Success 
+  CEDT208   gold: col-md-6.offset-md-0.paddingR[h4>span,p,h4>span,p,h4>span,p] | col-md-6.offset-md-0.paddingL[h5,p,ul×2,h5,p,ul×7]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,p,h5>span,p,h5>span,p] | col-md-6.paddingR[h5,h5,ul×2,h5,h5,ul×7]
+            gold texts: [['Understand', 'Ākonga will make connections across rela', 'Know', 'In learning to explore the world of tran', 'Do', 'Ākonga will make connections, explore th'], ['Learning Intentions', 'We are l
+  CEDT301   gold: col-md-6.paddingR[h4>span,ul×2,h4>span,ul×2,h4>span,p,ul×2] | col-md-6.paddingL[h5,ul×1,h5,ul×6]
+            clau: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h5>span,ul×2,h5>span,ul×2,h5>span,p,ul×2] | col-md-6.paddingR[h5,ul×1,h5,h5,ul×6]
+            gold texts: [['Understand', 'Know', 'Do', 'In my te ao tangata (social sciences) le'], ['Learning Intentions', 'Success Criteria']]
+  CEDT404   gold: col-md-12.paddingR[h4>span] | col-md-6.paddingR[h4>span,p,h4>span,p,p,h4>span,ul×3] | col-md-6.paddingL[h4>span,p,ul×2,h4>span,p,ul×8]
+            clau: col-md-8[h5,p,h5,p,p,h5,ul×3,h5,ul×2,h5,h5,ul×8]
+            gold texts: [['Tirohanga Whānui | Overview'], ['Understand', 'Making connections across related contex', 'Know', 'Recognise the dynamic nature of culture ', 'Building knowledge about language and te', 'Do'], 
+  CEDW101   gold: col-md-12.paddingR[h3>span] | col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,p] | col-md-6.paddingL[h4>span,p,ul×1,h4>span,p,ul×10]
+            clau: NO MENU
+            gold texts: [['Tirohanga Whānui | Overview'], ['Understand', 'People hold different perspectives on th', 'Know', 'Relationships, language and culture shap', 'Do', 'Ākonga can explore and share their thoug'], 
+  CEDW201   gold: col-md-12.paddingR[h3>span] | col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,p] | col-md-6.paddingL[h4>span,p,ul×3,h4>span,p,ul×6]
+            clau: NO MENU
+            gold texts: [['Tirohanga Whānui | Overview'], ['Understand', 'People hold different perspectives on th', 'Know', 'Relationships, language and culture shap', 'Do', 'Ākonga will explore and share ideas on m'], 
+  ENGFUN02  gold: NO MENU
+            clau: NO MENU
+            gold texts: []
+  EXPFUN02  gold: col-md-6.paddingR[h4>span,ul×2] | col-md-6.paddingL[h4>span,ul×2]
+            clau: col-md-8[]
+            gold texts: [['Learning Intentions'], ["How will I know if I've learned it?"]]
+  EXPFUN03  gold: col-md-6.paddingR[h4>span,p,ul×2] | col-md-6.paddingL[h4>span,ul×2]
+            clau: col-md-8[]
+            gold texts: [['Learning intentions', 'In this section you will:'], ['How will I know if I’ve learned it?']]
+  EXPFUN04  gold: col-md-6.paddingR[h4>span,p,ul×2] | col-md-6.paddingL[h4>span,p,ul×2]
+            clau: col-md-8[]
+            gold texts: [['Learning intentions', 'We are learning:'], ['How will I know if I’ve learned it?', 'I can:']]
+  EXPFUN05  gold: col-md-6.paddingR[h4>span,p,ul×2] | col-md-6.paddingL[h4>span,p,ul×2]
+            clau: col-md-8[]
+            gold texts: [['Learning intentions', 'We are learning:'], ['How will I know if I’ve learned it?', 'I can:']]
+  EXPFUN06  gold: tabs[ul×3,div]
+            clau: tabs[ul×3,div]
+            gold texts: [[]]
+  TWHA901   gold: col-md-6.paddingR[h4>span,ul×3,h4>span,ul×3,h4>span,p,ul×2] | col-md-6.paddingL[h5,p,ul×5,h5,p,ul×7,h5,p,p]
+            clau: col-md-8[p,div,h5,h5,ul×8,h5,h5,ul×7,h5,p,p,h5,p,p,ul×4]
+            gold texts: [['Understand', 'Know', 'Do', 'I can:'], ['Learning intentions', 'We are learning to:', 'How will I know if I’ve learned it?', 'I can:', 'Planning your time', 'Allow eight to 10 hours for the lear
+  TWHA902   gold: col-md-6.paddingR[h4>span,ul×1,h4>span,ul×2,h4>span,ul×5] | col-md-6.paddingL[h5,p,ul×8,h5,p,ul×8]
+            clau: col-md-8[p,div,h5,p,ul×8,h5,h5,ul×8,h5,p,p,h5,p,p,ul×4]
+            gold texts: [['Understand', 'Know', 'Do'], ['Learning intentions', 'I am learning:', 'How will I know if I’ve learned it?', 'I can:']]
+  TWHA903   gold: col-md-6.paddingR[h4>span,p,h4>span,ul×5,h4>span,ul×6] | col-md-6.paddingL[h5,p,ul×4,h5,p,ul×7]
+            clau: col-md-8[p,div,h5,h5,ol×4,h5,ul×7,h5,p,p,h5,p,p,ul×1]
+            gold texts: [['Understand', 'Applying different ways of thinking can ', 'Know', 'Do'], ['Learning intentions', 'We are learning that when we think like:', "How will I know if I've learned it?", 'I can:']]
+  TWHA904   gold: col-md-6.paddingR[h4>span,ul×2,h4>span,ul×6,h4>span,ul×6] | col-md-6.paddingL[h5,p,ul×4,h5,p,ul×8]
+            clau: col-md-8[p,div,h5,h5,p>b,ol×2,p>b,ol×2,p>b,ol×2,p>b,ol×2,h5,ol×8,h5,p,p,h5,p,p,ul×4]
+            gold texts: [['Understand', 'Know', 'Do'], ['Learning intentions', 'We are learning:', "How will I know if I've learned it?", 'I can:']]
+  TWHA905   gold: col-md-6.paddingR[h4>span,ul×2,h4>span,ul×6,h4>span,ul×6] | col-md-6.paddingL[h5,p,ul×4,h5,p,ul×8]
+            clau: col-md-8[p,p>b,p>b,p>b,p>b,p>b,p>b,h5,p>b,p>b,ul×3,p>b,ul×2,p>b,ul×2,p>b,ul×2,h5,h5,ul×8,h5,p,p]
+            gold texts: [['Understand', 'Know', 'Do'], ['Learning intentions', 'We are learning:', 'How will I know if I’ve learned it?', 'I can:']]
+  TWHA906   gold: col-md-6.paddingR[h4>span,ul×2,h4>span,ul×3,h4>span,ul×6] | col-md-6.paddingL[h5,p,ul×7,h5,p,ul×7,h5,p,h5,p,ul×4,h5,p]
+            clau: col-md-8[h5,h5,ul×7,h5,h5,ul×7,h5,p,h5,p,ul×4,h5,p]
+            gold texts: [['Understand', 'Know', 'Do'], ['Learning intentions', 'We are learning:', 'How will I know if I’ve learned it?', 'I can:', 'What do I need to get started?', 'Within this module there are differen
+  TWHK901   gold: col-md-6.paddingR[h4>span,p,h4>span,p,h4>span,ul×5] | col-md-6.paddingL[h5,ol×4,h5,ol×4]
+            clau: col-md-8[h5,ol×4,h5,ol×4,h5,p,p,h5,p,p,ul×4,h5,p,p,div,p,h5,ul×1,h5,ul×1]
+            gold texts: [['Understand', 'Understand our role in helping to sustai', 'Know', 'Know about sustainability as a concept, ', 'Do'], ['Whāinga Ako | Learning Intentions', "Paearu Angitu | How will I know if I'v
+  TWHK903   gold: col-md-6.paddingR[h4>span,p,h4>span,ul×2,h4>span,ul×5] | col-md-6.paddingL[h5,p,ul×6,h5,p,ul×6]
+            clau: col-md-8[h5,ul×2,h5,ul×5,h5,h5,ul×6,h5,h5,ul×6,h5,p,p,h5,p,p,ul×4]
+            gold texts: [['Understand', 'We can navigate the digital world safely', 'Know', 'Do'], ['Learning intentions', 'We are learning:', 'Success criteria', 'I can:']]
+  XDLS901   gold: tabs[ul×3,div]
+            clau: tabs[ul×4,div]
+            gold texts: [[]]
+  XDLS903   gold: tabs[ul×4,div]
+            clau: tabs[ul×4,div]
+            gold texts: [[]]
+  XDLS909   gold: tabs[ul×3,div]
+            clau: tabs[ul×4,div]
+            gold texts: [[]]
