@@ -1,0 +1,84 @@
+modules with crumbs on either side: 42
+module      fam          goldHTML paged single dual | gold crumbs / in WT | claude | dialect
+BLL110     Inquiry        1   0  1      |   7 /    7 |   7 | tabs 12 (lab 0 empty 12) pages 6 endp 5 nav 0 sect 0
+BLL120     Inquiry        1   0  1      |   9 /    9 |   9 | tabs 16 (lab 0 empty 16) pages 8 endp 7 nav 0 sect 0
+     BLL120_0_0.html <-> BLL120.html: gold ['Introduction', 'The letter c', 'The letter k', 'The letters ck', 'The letter e', 'The letter h', 'The letter r', 'The letter m', 'The letter d'] | claude ['Introduction', 'The letter c', 'The letter k', 'The letter ck', 'The letter e', 'The letter h', 'The letter r', 'The letter m', 'The letter d']
+BLL130     Inquiry        1   0  1      |   7 /    7 |   7 | tabs 12 (lab 1 empty 11) pages 6 endp 8 nav 0 sect 0
+     BLL130_0_0.html <-> BLL130.html: gold ['Introduction', 'The letter g', 'The letter o', 'The letter u', 'The letter l', 'The letter f', 'The letter b'] | claude ['Introduction', 'The letter ‘g’', 'The letter ‘o’', 'The letter ‘u’', 'The letter ‘l’', 'The letter ‘f’', 'The letter b']
+BLL140     Inquiry        1   0  1      |   8 /    8 |   8 | tabs 8 (lab 0 empty 8) pages 7 endp 10 nav 0 sect 0
+     BLL140_0_0.html <-> BLL140.html: gold ['Introduction', 'The letter j', 'Long vowels', 'Vowel team ai', 'Vowel team oa', 'Vowel team ie', 'Vowel team ee', 'Letter team or'] | claude ['Introduction', 'The letter j', 'Long Vowels', 'Vowel team ai', 'Vowel team oa', 'Vowel team ie', 'Vowel team ee', 'Letter team or']
+BLL150     Inquiry        1   0  1      |   6 /    6 |   6 | tabs 8 (lab 0 empty 8) pages 5 endp 7 nav 0 sect 0
+BLL160     Inquiry        1   0  1      |   6 /    6 |   6 | tabs 9 (lab 0 empty 9) pages 5 endp 7 nav 0 sect 0
+     BLL160_0_0.html <-> BLL160.html: gold ['Introduction', 'The letter y', 'The letter x', 'Letter team sh', 'Letter team ch', 'Vowel team th'] | claude ['Introduction', 'The letter y', 'The letter x', 'The letter sh', 'Letter team ch', 'Vowel team th']
+BLL170     Inquiry        1   0  1      |   7 /    7 |   7 | tabs 10 (lab 0 empty 10) pages 6 endp 8 nav 0 sect 0
+     BLL170_0_0.html <-> BLL170.html: gold ['Introduction', "Letter team 'qu'", "Vowel team 'ou'", "Vowel team 'oi'", "Letter team 'ue'", "Letter team 'er'", "Letter team 'ar'"] | claude ['Introduction', 'The letter team qu', 'The vowel team ou', 'The vowel team oi', 'The letter team er', 'The letter team ar', '']
+BLL210     Inquiry        1   0  1      |   9 /    9 |   9 | tabs 14 (lab 0 empty 14) pages 8 endp 10 nav 0 sect 0
+BLL220     Inquiry        1   0  1      |   6 /    6 |   6 | tabs 6 (lab 0 empty 6) pages 5 endp 7 nav 0 sect 0
+BLL230     Inquiry        1   0  1      |   8 /    7 |   8 | tabs 13 (lab 0 empty 13) pages 7 endp 9 nav 0 sect 0
+     BLL230_0_0.html <-> BLL230.html: gold ['Introduction', 'oe', 'ow', 'ir and ur', 'ew and ui', 'aw, au, al', 'ph', 'silent k and w'] | claude ['Introduction', 'oe', 'ow', 'ir and ur', 'ew and ui', 'au, au, al', 'ph', 'silent k and w']
+BLL240     Inquiry        9   8  1 DUAL |   8 /    8 |   0 | tabs 14 (lab 0 empty 14) pages 7 endp 10 nav 0 sect 0
+     BLL240_1_0.html <-> BLL240.html: gold ['Introduction', 'wh', 'tch', 'dge', 'air', 'ear', 'ere', 'eer'] | claude None
+CEDK101    Inquiry        1   0  1      |   6 /    6 |   6 | tabs 6 (lab 0 empty 6) pages 5 endp 6 nav 0 sect 0
+     CEDK101_0_0.html <-> CEDK101_0.html: gold ['Introduction', 'Light and Heat', 'What is Light?', 'Light and Technology', 'What is Heat?', 'Heat Technology'] | claude ['Introduction', 'Light and Heat', 'What is Light?', 'Light Technology', 'What is Heat?', 'Heat Technology']
+CEDK102    Inquiry        1   0  1      |   6 /    6 |   7 | tabs 11 (lab 0 empty 11) pages 0 endp 6 nav 0 sect 0
+     CEDK102_0_0.html <-> CEDK102.html: gold ['Intro', 'Snapshots', 'Capture and edit', 'Storytelling', 'Avatars', 'Digital Kaitiaki'] | claude ['Introduction', 'Introduction', 'Snapshots', 'Capture and edit', 'Storytelling', 'Avatars', 'Digital Kaitiaki']
+CEDK501    Inquiry       12  11  1 DUAL |   8 /    8 |   0 | tabs 0 (lab 0 empty 0) pages 0 endp 12 nav 0 sect 0
+     CEDK501_0_0.html <-> CEDK501 Kia Mahitahi – Idea to Action.html: gold ['Intro', 'Dream it, plan it, do it', 'Costing it out: budgeting for success', 'Staying on track', 'Assessment', 'From personal goals to making team plans', 'Working together for the win', 'Assessment information'] | claude None
+CEDO102    Inquiry        1   1  0      |   6 /    6 |   6 | tabs 6 (lab 0 empty 6) pages 6 endp 7 nav 0 sect 0
+     CEDO102_0_0.html <-> CEDO102_0.0.html: gold ['Intro', 'Tangaroa', 'Camouflage', 'Coral reefs', 'Weird animals', 'Endangered dolphins'] | claude ['Introduction', 'Tangaroa', 'Camouflage', 'Coral reefs', 'Weird animals', 'Endangered']
+CEDO202    Inquiry        1   1  0      |  10 /   10 |   7 | tabs 0 (lab 0 empty 0) pages 0 endp 2 nav 0 sect 0
+     CEDO202_0_0.html <-> CEDO202_0.0.html: gold ['Intro', 'The seasons', 'Making observations', 'How do the seasons work?', 'Bringing the seasons to life', 'Exploring autumn', 'Exploring winter', 'Exploring spring', 'Exploring summer', 'Creating and sharing your dance'] | claude ['Introduction', 'How do the seasons work?', 'Bringing the seasons to life', 'Exploring autumn', 'Activity 6A', 'Exploring spring', 'Activity 8B']
+CEDR204    Inquiry        1   0  1      |   6 /    6 |   7 | tabs 12 (lab 0 empty 12) pages 0 endp 5 nav 0 sect 0
+     CEDR204_0_0.html <-> CEDR204 STOMP.html: gold ['Introduction', 'Exploring sounds', 'Soundscapes', 'Rhythmic patterns', 'Tune creation', 'Showcase sounds'] | claude ['Introduction', 'Introduction', 'Exploring Sounds', 'Soundscapes', 'Rhythmic patterns', 'Tune creation', 'Showcase sounds']
+CEDT101    Inquiry        1   0  1      |   5 /    5 |   5 | tabs 0 (lab 0 empty 0) pages 5 endp 5 nav 0 sect 0
+CEDT104    Inquiry        1   0  1      |   8 /    6 |   0 | tabs 0 (lab 0 empty 0) pages 0 endp 4 nav 0 sect 0
+     CEDT104_0_0.html <-> CEDT104 Waiata In Motion.html: gold ['Introduction', 'Waiata moves', 'Pepeha', 'Waiata time', 'Waiata poi', 'E Rere Taku Poi', 'Rākau', 'Learn the lyrics'] | claude None
+CEDT207    Inquiry        8   7  1 DUAL |   7 /    6 |   0 | tabs 3 (lab 0 empty 3) pages 4 endp 8 nav 0 sect 0
+     CEDT207_0_0.html <-> CEDT207 Me, my selfie and I.html: gold ['Introduction', 'About Me', 'My Whakapapa', 'Art Expression', 'Patterns in Art', 'Symbols in Art', 'Visual Pepeha'] | claude None
+CEDT208    Inquiry        1   0  1      |   4 /    4 |   0 | tabs 4 (lab 0 empty 4) pages 2 endp 4 nav 0 sect 0
+     CEDT208_0_0.html <-> CEDT208 Patterns Of The Pacific.html: gold ['Introduction', 'Ngatu tapa', 'Transformation', 'Creating'] | claude None
+CEDT301    Inquiry        9   8  1 DUAL |   7 /    7 |   0 | tabs 0 (lab 0 empty 0) pages 6 endp 7 nav 0 sect 0
+     CEDT301_6_0.html <-> CEDT301 My place and me.html: gold ['Intro', 'Mauri', 'Mana', 'Wairua', 'Hikoi', 'Investigation', 'Collage'] | claude None
+CEDT404    Inquiry        1   0  1      |   6 /    6 |   6 | tabs 6 (lab 0 empty 6) pages 5 endp 5 nav 0 sect 0
+     CEDT404_0_0.html <-> CEDT404.html: gold ['Introduction', 'Community games', 'Writing instructions', 'Minecraft', 'Celebrate diversity', 'Inclusion matters'] | claude ['Introduction', 'Community Games', 'Writing Instructions', 'Minecraft', 'Celebrate diversity', 'Inclusion matters']
+CEDW101    Inquiry        1   0  1      |   5 /    5 |   5 | tabs 5 (lab 0 empty 5) pages 5 endp 6 nav 0 sect 0
+     CEDW101_0_0.html <-> CEDW101 Manaakitanga.html: gold ['Introduction', 'Caring', 'Friendships', 'Helping', 'Environment'] | claude ['Introduction', '', '', '', '']
+CEDW201    Inquiry        1   0  1      |   5 /    5 |   0 | tabs 5 (lab 0 empty 5) pages 1 endp 4 nav 0 sect 0
+     CEDW201_0_0.html <-> CEDW201 The Language of Kindness and Caring.html: gold ['Introduction', 'Legends', 'Poetry art', 'Video fun', 'LEGO story'] | claude None
+EXBP901    Standard      12  12  0      |  17 /   17 |   8 | tabs 0 (lab 0 empty 0) pages 0 endp 1 nav 0 sect 0
+     EXBP901_1_0.html <-> EXBP901_0.1.html: gold ['Intro', 'Ideas', 'Examples', 'Brainstorming', 'Questions', 'Next steps'] | claude ['Introduction', '', '']
+     EXBP901_3_0.html <-> EXBP901_0.2.html: gold ['Intro', 'Learning Goals', 'Success Criteria', 'Agency', 'Relationships', 'Next Steps'] | claude ['Introduction', '', '']
+     EXBP901_4_0.html <-> EXBP901_0.3.html: gold ['Intro', 'Taking action', 'Keep track of progress', 'Resilience and motivation', 'Next steps'] | claude ['Introduction', '']
+EXIP901    Standard       6   6  0      |  15 /   15 |   6 | tabs 0 (lab 0 empty 0) pages 0 endp 2 nav 0 sect 0
+     EXIP901_2_0.html <-> EXIP901_0.1.html: gold ['Intro', 'Brainstorming', 'Topic', 'Questions', 'Next steps'] | claude ['Introduction', '', '']
+     EXIP901_4_0.html <-> EXIP901_0.2.html: gold ['Intro', 'Learning Goals', 'Success Criteria', 'Agency', 'Relationships', 'Next Steps'] | claude None
+     EXIP901_5_0.html <-> EXIP901_0.3.html: gold ['Intro', 'Taking action', 'Keep track of progress', 'Resilience and motivation'] | claude ['Introduction', '', '']
+EXPFUN02   Inquiry        1   1  0      |   7 /    7 |   7 | tabs 0 (lab 0 empty 0) pages 0 endp 2 nav 1 sect 2
+     EXPFUN02_0_0.html <-> EXPFUN02_0.0.html: gold ['Intro', 'Learner', 'Communicator', 'Scientist', 'Social scientist', 'Mathematician', 'Innovator'] | claude ['Intro', 'Learner', 'Communicator', 'Scientist', 'Social Scientist', 'Mathematician', 'Innovator']
+EXPFUN03   Inquiry        1   1  0      |   7 /    7 |   7 | tabs 0 (lab 0 empty 0) pages 0 endp 1 nav 1 sect 0
+EXPFUN04   Inquiry        1   1  0      |   7 /    7 |   7 | tabs 0 (lab 0 empty 0) pages 0 endp 0 nav 1 sect 0
+EXPFUN05   Inquiry        1   1  0      |   7 /    7 |   7 | tabs 0 (lab 0 empty 0) pages 0 endp 1 nav 1 sect 0
+EXPFUN06   Inquiry        1   0  1      |   4 /    4 |   4 | tabs 4 (lab 1 empty 3) pages 0 endp 1 nav 0 sect 0
+     EXPFUN06_0_0.html <-> EXPFUN06_0.html: gold ['Intro', 'Reflection', 'Learning conversations', 'Peer feedback'] | claude ['Introduction', 'Self-assessment', 'Learning conversations', 'Reflection']
+MXFUN02    Fundamentals   1   0  1      |   0 / None |  12 | tabs 0 (lab 0 empty 0) pages 14 endp 16 nav 0 sect 0
+     MXFUN02_0_0.html <-> MXFUN02.html: gold None | claude ['Introduction', '', '', '', '', '', '', '', '', '', '', '']
+MXFUN03    Fundamentals   1   0  1      |   0 / None |  12 | tabs 0 (lab 0 empty 0) pages 11 endp 12 nav 0 sect 0
+     MXFUN03_0_0.html <-> MXFUN03.html: gold None | claude ['Introduction', '', '', '', '', '', '', '', '', '', '', '']
+TWHA901    Inquiry        1   0  1      |  11 /   11 |  11 | tabs 10 (lab 0 empty 10) pages 0 endp 1 nav 0 sect 0
+     TWHA901_0_0.html <-> TWHA901 Be a Learner.html: gold ['Introduction', 'Agency', 'Resilience', 'Optimism', 'Care', 'Connection', 'Collaboration', 'Creativity', 'Contribution', 'Sense making', 'Curiosity'] | claude ['Introduction', 'Agency', 'Resilience', 'Optimism', 'Care', 'Connection', 'Collaboration', 'Creativity', 'Contribution', 'Sense-making', 'Curiosity']
+TWHA902    Inquiry        1   0  1      |   9 /    7 |   5 | tabs 8 (lab 0 empty 8) pages 0 endp 1 nav 0 sect 0
+     TWHA902_0_0.html <-> TWHA902 Be a Communicator.html: gold ['Introduction', 'Listening, speaking, reading, writing', 'Active listening', 'Body language', 'Using technology', 'Artistic expression', 'Feedback', 'The power of other languages', 'Know your audience'] | claude ['Introduction', '', '', '', '']
+TWHA903    Inquiry        1   0  1      |   5 /    5 |   5 | tabs 4 (lab 0 empty 4) pages 0 endp 1 nav 0 sect 0
+TWHA904    Inquiry        1   0  1      |   7 /    6 |   6 | tabs 0 (lab 0 empty 0) pages 0 endp 1 nav 0 sect 0
+     TWHA904_0_0.html <-> TWHA904 The Way We Move.html: gold ['Introduction', 'Scenario', 'Think like a social scientist', 'Think like a scientist', 'Think like a mathematician', 'Think like an innovator', 'Reflection'] | claude ['Introduction', 'Max’s Discovery', 'Think like a Social Scientist', 'Think like a Scientist', 'Think like a Mathematician', 'Think like an Innovator']
+TWHA905    Inquiry        1   0  1      |   7 /    6 |   0 | tabs 0 (lab 0 empty 0) pages 0 endp 1 nav 0 sect 0
+     TWHA905_0_0.html <-> TWHA905 The way we make food.html: gold ['Introduction', 'Scenario', 'Think like a social scientist', 'Think like a scientist', 'Think like a mathematician', 'Think like an innovator', 'Reflection'] | claude None
+TWHA906    Inquiry        1   0  1      |   7 /    7 |   7 | tabs 3 (lab 0 empty 3) pages 0 endp 1 nav 0 sect 0
+     TWHA906_0_0.html <-> TWHA906 Whakamana and Resilience.html: gold ['Introduction', 'Ways of learning', 'What motivates you', 'How to keep your energy up', 'Why sleep is important', 'How to stay organised', 'Being resilient'] | claude ['Introduction', 'Introduction', 'Ways of learning', 'What motivates you?', 'My energy', 'Why sleep?', 'Resilience']
+TWHK901    Inquiry        1   0  1      |   5 /    5 |   0 | tabs 0 (lab 0 empty 0) pages 0 endp 5 nav 0 sect 0
+     TWHK901_0_0.html <-> TWHK901.html: gold ['Introduction', 'What is sustainability?', 'Mātauranga Māori', 'The problem of rubbish and recycling', "My role in the 4 R's of sustainability"] | claude None
+TWHK903    Inquiry        1   0  1      |   9 /    9 |   9 | tabs 9 (lab 0 empty 9) pages 0 endp 1 nav 0 sect 0
+     TWHK903_0_0.html <-> TWHK903_Digital_Citizenship.html: gold ['Introduction', 'Balance and Hauora', 'Digital footprint', 'Gaming Toolkit', 'Cyberbullying', 'Social media', 'Harmful content', 'Online privacy', 'Artificial Intelligence'] | claude ['Introduction', 'Balance and Hauora', 'Digital footprint', 'Gaming Toolkit', 'Cyberbullying', 'Social media', 'What to do if you see harmful content', 'Your online privacy', 'Artificial Intelligence']
+
+modules where the gold has MORE crumbs than Claude: 14 ['BLL240', 'CEDK501', 'CEDO202', 'CEDT104', 'CEDT207', 'CEDT208', 'CEDT301', 'CEDW201', 'EXBP901', 'EXIP901', 'TWHA902', 'TWHA904', 'TWHA905', 'TWHK901']
+of which DUAL-BUILD gold dirs: ['BLL240', 'CEDK501', 'CEDT207', 'CEDT301']

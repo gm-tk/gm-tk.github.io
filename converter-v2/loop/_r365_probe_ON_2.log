@@ -1,0 +1,208 @@
+PNR104: identical 3 / changed 0
+TRR105: prep refused (no-wt)
+TRR109: identical 6 / changed 0
+TRR114: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+ARFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+XFUN01: identical 1 / changed 0
+BLL130: identical 1 / changed 0
+BLL170: identical 1 / changed 0
+BLL240: identical 9 / changed 0
+CEDO102: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDW101: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+XDLS901: identical 5 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1006: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ART1004: identical 1 / changed 0
+BLL112: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL141: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL211: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDO502: identical 10 / changed 0
+ENG1004: identical 8 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI401: identical 12 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGR201: identical 7 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS301: identical 8 / changed 0
+EXBP901: identical 6 / changed 0
+HES1004: identical 5 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1005: identical 15 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB301: identical 8 / changed 0
+MXDI103: identical 10 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL202: identical 6 / changed 0
+  ~ MXFL302_1_0.html: -1 +1
+     - <p>Getting to grips with GEMA</p>
+     + <h3>Getting to grips with GEMA</h3>
+  ~ MXFL302_2_0.html: -5 +5
+     - <p>Linear patterns</p>
+     - <p>Using a rule</p>
+     - <p>Finding the rule</p>
+     - <p>Matching rules to number sequences</p>
+     - <p>Using rules to predict</p>
+     + <h3>Linear patterns</h3>
+     + <h3>Using a rule</h3>
+     + <h3>Finding the rule</h3>
+     + <h3>Matching rules to number sequences</h3>
+     + <h3>Using rules to predict</h3>
+  ~ MXFL302_3_0.html: -3 +3
+     - <p>What’s the chance?</p>
+     - <p>Aria’s hāngi feast</p>
+     - <p>Aria’s traditional fare</p>
+     + <h3>What’s the chance?</h3>
+     + <h3>Aria’s hāngi feast</h3>
+     + <h3>Aria’s traditional fare</h3>
+  ~ MXFL302_4_0.html: -5 +5
+     - <p>Mystery match up</p>
+     - <p>Calculating fractions</p>
+     - <p>Creating equivalent fractions</p>
+     - <p>Simplify those fractions</p>
+     - <p>Check your understanding</p>
+     + <h3>Mystery match up</h3>
+     + <h3>Calculating fractions</h3>
+     + <h3>Creating equivalent fractions</h3>
+     + <h3>Simplify those fractions</h3>
+     + <h3>Check your understanding</h3>
+  ~ MXFL302_5_0.html: -3 +3
+     - <p>Making the right connections</p>
+     - <p>Solving equations</p>
+     - <p>Practice the butterfly method</p>
+     + <h3>Making the right connections</h3>
+     + <h3>Solving equations</h3>
+     + <h3>Practice the butterfly method</h3>
+  ~ MXFL302_5_1_0.html: -1 +2
+     - <p>Connecting improper fractions and mixed numbers</p>
+     + <h3>Connecting improper fractions and mixed numbers</h3>
+     + <h3>Find the correct answer</h3>
+  ~ MXFL302_6_0.html: -2 +2
+     - <p>Match up challenge</p>
+     - <p>Triple this recipe</p>
+     + <h3>Match up challenge</h3>
+     + <h3>Triple this recipe</h3>
+  ~ MXFL302_7_0.html: -4 +4
+     - <p>Matching descriptions and ratios</p>
+     - <p>Simplifying ratios</p>
+     - <p>Catering for 200</p>
+     - <p>Fill in the gaps</p>
+     + <h3>Matching descriptions and ratios</h3>
+     + <h3>Simplifying ratios</h3>
+     + <h3>Catering for 200</h3>
+     + <h3>Fill in the gaps</h3>
+  ~ MXFL302_8_0.html: -2 +2
+     - <p>Practicing division</p>
+     - <p>Keeping, changing and flipping</p>
+     + <h3>Practicing division</h3>
+     + <h3>Keeping, changing and flipping</h3>
+MXFL302: identical 1 / changed 9
+  ~ MXFU301_1_0.html: -2 +2
+     - <p>How likely?</p>
+     - <p>What will happen next?</p>
+     + <h3>How likely?</h3>
+     + <h3>What will happen next?</h3>
+  ~ MXFU301_2_0.html: -1 +1
+     - <p>Quantifying probabilities</p>
+     + <h3>Quantifying probabilities</h3>
+  ~ MXFU301_3_0.html: -1 +2
+     - <p>Fill in the gaps</p>
+     + <h3>Finding the probability</h3>
+     + <h3>Fill in the gaps</h3>
+  ~ MXFU301_6_0.html: -2 +2
+     - <p>The Blindfolded Bean Bag Toss</p>
+     - <p>Which number?</p>
+     + <h3>The Blindfolded Bean Bag Toss</h3>
+     + <h3>Which number?</h3>
+  ~ MXFU301_7_0.html: -3 +3
+     - <p>Match the equivalents</p>
+     - <p>Base-10 fractions</p>
+     - <p>Double dice challenge</p>
+     + <h3>Match the equivalents</h3>
+     + <h3>Base-10 fractions</h3>
+     + <h3>Double dice challenge</h3>
+  ~ MXFU301_8_0.html: -2 +2
+     - <p>What type of probability?</p>
+     - <p>What is the experimental probability?</p>
+     + <h3>What type of probability?</h3>
+     + <h3>What is the experimental probability?</h3>
+  ~ MXFU301_9_0.html: -2 +2
+     - <p>Independent or dependent events?</p>
+     - <p>Asking questions</p>
+     + <h3>Independent or dependent events?</h3>
+     + <h3>Asking questions</h3>
+  ~ MXFU301_10_0.html: -2 +2
+     - <p>True or false</p>
+     - <p>What do you think?</p>
+     + <h3>True or false</h3>
+     + <h3>What do you think?</h3>
+MXFU301: identical 4 / changed 8
+OSAH301: identical 4 / changed 0
+OSAI201: identical 4 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM401: identical 5 / changed 0
+OSOH301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1005: identical 12 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1006: identical 6 / changed 0
+SCPH301: identical 9 / changed 0
+SSOG103: identical 7 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS912: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XLP03: identical 6 / changed 0
+XMES101: identical 9 / changed 0
+XMES203: identical 6 / changed 0
+XWHA01: identical 2 / changed 0
+
+TOTAL: identical 510 / changed 17 / missing 0 over 104 modules
+CHANGED: MXFL302/MXFL302_1_0.html MXFL302/MXFL302_2_0.html MXFL302/MXFL302_3_0.html MXFL302/MXFL302_4_0.html MXFL302/MXFL302_5_0.html MXFL302/MXFL302_5_1_0.html MXFL302/MXFL302_6_0.html MXFL302/MXFL302_7_0.html MXFL302/MXFL302_8_0.html MXFU301/MXFU301_1_0.html MXFU301/MXFU301_2_0.html MXFU301/MXFU301_3_0.html MXFU301/MXFU301_6_0.html MXFU301/MXFU301_7_0.html MXFU301/MXFU301_8_0.html MXFU301/MXFU301_9_0.html MXFU301/MXFU301_10_0.html

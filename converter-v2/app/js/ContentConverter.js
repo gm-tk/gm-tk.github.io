@@ -1896,6 +1896,35 @@ class ContentConverter {
 						// content (title heading / lead body / lead table) ahead of its widget —
 						// the prose_interactive_rows split below only fires on a prose-carrying
 						// box (a widget-only box keeps the single-col form, gold's own shape).
+						// ROUND 365 — THE WIDGET-TYPED ACTIVITY TAG'S TAIL IS THE BOX TITLE (the autonomous
+						// loop's session 21, Round 2 — the r363 residue (a)). The Mathematics MXFL / MXEO / MXFU /
+						// MXDB family types `[Activity 1B – self-marking type the answer] Fill in the blanks`:
+						// the tag parses as the WIDGET (typing quiz, number 1B) and the round-92 embedded
+						// form made the tag its own box's owner with the tail riding INTO the capture (or the
+						// built widget's r354 note) as a <p>. The gold opens the box with <h3>Title</h3>
+						// (0.81 of 100 paired boxes; MXFU301 1.00, MXFL302 0.96, MXFL301 0.91). The r266
+						// level-pages box above is the precedent: emit the title heading right after
+						// activityOpen, then blank the tail so nothing downstream repeats it. A trailing
+						// bracketed writer note stays the tail; a bracket-only tail is not a title.
+						// Data: activity_wrapper.embedded_interactive_activity.typed_tag_title   Env: TYPEDTAG_OFF
+						{
+							const _ttCfg = eiaCfg?.typed_tag_title;
+							if (embeddedAct && actOwner === it && _ttCfg && _ttCfg.enabled !== false && !reoMode
+								&& !(typeof process !== "undefined" && process.env && process.env[_ttCfg.env || "TYPEDTAG_OFF"])
+								&& new RegExp(_ttCfg.tag_pattern ?? "^\\[\\s*activity\\s+[\\d.]+[a-z]?\\s*[\\u2013\\u2014-]", "i").test(String(it.text ?? "").trim())) {
+								let _tail = String(it.blackAfter ?? "").replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+								let _note = "";
+								const _mNote = _tail.match(/^(.*?)\s*(\([^()]*\))\s*$/);
+								if (_ttCfg.strip_trailing_note !== false && _mNote && _mNote[1].trim()) { _tail = _mNote[1].trim(); _note = _mNote[2]; }
+								if (_tail.length >= (_ttCfg.min_title_chars ?? 2) && !/^[\[(]/.test(_tail)) {
+									emit(Utils.FillTemplate(_ttCfg.title_heading ?? "<h3>{title}</h3>", { title: Utils.EscapeHtml(_tail) }));
+									it._typedTitle = _tail;
+									it.blackAfter = _note;
+									run.AddNote("info", "ContentConverter",
+										`Page ${page.lessonLabel}: [${it.text}] — the tag's tail "${_tail}" is the activity title (typed_tag_title).`);
+								}
+							}
+						}
 						let actProse = false;
 						// ROUND 322 (KB c65 / CL-0082): decide the shell MODE before the lead renders —
 						// the writer's quiz button never renders as lead text, and in "lead" mode the

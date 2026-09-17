@@ -1,0 +1,212 @@
+PNR102: identical 3 / changed 0
+TRR104: prep refused (no-wt)
+TRR108: identical 3 / changed 0
+TRR113: identical 5 / changed 0
+TRR301: identical 4 / changed 0
+ARFUN03: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+MXFUN02: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN08: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+BLL120: identical 1 / changed 0
+BLL160: identical 1 / changed 0
+BLL230: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDR204: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT404: identical 1 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+AGH1001: identical 6 / changed 0
+AGH1005: identical 9 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ART1003: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL137: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL151: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL221: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+CEDO501: identical 16 / changed 0
+CEDW501: identical 13 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC301: identical 8 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI400: identical 4 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1007: identical 10 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1008: identical 12 / changed 0
+MXDB202: identical 6 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI301: identical 5 / changed 0
+  ~ MXEO301_1_0.html: -2 +2
+     - <p>Fill in the blanks</p>
+     - <p>Is it divisible?</p>
+     + <h3>Fill in the blanks</h3>
+     + <h3>Is it divisible?</h3>
+  ~ MXEO301_1_1_0.html: -3 +3
+     - <p>Test your skills</p>
+     - <p>Matching formats</p>
+     - <p>Mastering the square root</p>
+     + <h3>Test your skills</h3>
+     + <h3>Matching formats</h3>
+     + <h3>Mastering the square root</h3>
+  ~ MXEO301_3_0.html: -4 +4
+     - <p>Negatives on the number line</p>
+     - <p>Which integer is smaller?</p>
+     - <p>Greater than or less than?</p>
+     - <p>Getting things in order</p>
+     + <h3>Negatives on the number line</h3>
+     + <h3>Which integer is smaller?</h3>
+     + <h3>Greater than or less than?</h3>
+     + <h3>Getting things in order</h3>
+  ~ MXEO301_4_0.html: -2 +2
+     - <p>Moving right along the number line</p>
+     - <p>Practising the rules</p>
+     + <h3>Moving right along the number line</h3>
+     + <h3>Practising the rules</h3>
+  ~ MXEO301_5_0.html: -4 +4
+     - <p>Find the unknown value</p>
+     - <p>Work out the unknown</p>
+     - <p>Find the answer</p>
+     - <p>Match up</p>
+     + <h3>Find the unknown value</h3>
+     + <h3>Work out the unknown</h3>
+     + <h3>Find the answer</h3>
+     + <h3>Match up</h3>
+  ~ MXEO301_5_1_0.html: -3 +3
+     - <p>Find the unknown value</p>
+     - <p>Solving two step equations</p>
+     - <p>Word problems</p>
+     + <h3>Find the unknown value</h3>
+     + <h3>Solving two step equations</h3>
+     + <h3>Word problems</h3>
+  ~ MXEO301_6_0.html: -3 +3
+     - <p>Test your skills</p>
+     - <p>Match up</p>
+     - <p>Write the inequality statement</p>
+     + <h3>Test your skills</h3>
+     + <h3>Match up</h3>
+     + <h3>Write the inequality statement</h3>
+  ~ MXEO301_7_0.html: -2 +2
+     - <p>Labelling the compass</p>
+     - <p>Which letter?</p>
+     + <h3>Labelling the compass</h3>
+     + <h3>Which letter?</h3>
+MXEO301: identical 3 / changed 8
+MXEX202: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL201: identical 10 / changed 0
+  ~ MXFL301_1_0.html: -3 +3
+     - <p>Identifying compass directions</p>
+     - <p>How many degrees?</p>
+     - <p>Identifying coordinate pairs</p>
+     + <h3>Identifying compass directions</h3>
+     + <h3>How many degrees?</h3>
+     + <h3>Identifying coordinate pairs</h3>
+  ~ MXFL301_2_0.html: -2 +3
+     - <p>Using a ratio scale</p>
+     - <p>What is the distance?</p>
+     + <h3>Using a ratio scale</h3>
+     + <h3>What is the distance?</h3>
+     + <h3>Calculating scales</h3>
+  ~ MXFL301_3_0.html: -3 +3
+     - <p>What is the best activity in Egypt?</p>
+     - <p>Finding a percentage of an amount</p>
+     - <p>Finding the total</p>
+     + <h3>What is the best activity in Egypt?</h3>
+     + <h3>Finding a percentage of an amount</h3>
+     + <h3>Finding the total</h3>
+  ~ MXFL301_4_0.html: -3 +3
+     - <p>Creating an estimate?</p>
+     - <p>Approximate the answer</p>
+     - <p>Calculating airfares</p>
+     + <h3>Creating an estimate?</h3>
+     + <h3>Approximate the answer</h3>
+     + <h3>Calculating airfares</h3>
+  ~ MXFL301_5_0.html: -3 +3
+     - <p>Money match-up</p>
+     - <p>Estimate the answer</p>
+     - <p>Exchanging NZD100</p>
+     + <h3>Money match-up</h3>
+     + <h3>Estimate the answer</h3>
+     + <h3>Exchanging NZD100</h3>
+  ~ MXFL301_6_0.html: -3 +3
+     - <p>What’s the cost per person?</p>
+     - <p>How much for these tours?</p>
+     - <p>Finding the important information</p>
+     + <h3>What’s the cost per person?</h3>
+     + <h3>How much for these tours?</h3>
+     + <h3>Finding the important information</h3>
+  ~ MXFL301_7_0.html: -3 +3
+     - <p>Find the match</p>
+     - <p>Finding the match</p>
+     - <p>How much time has elapsed?</p>
+     + <h3>Find the match</h3>
+     + <h3>Finding the match</h3>
+     + <h3>How much time has elapsed?</h3>
+  ~ MXFL301_8_0.html: -1 +1
+     - <p>Reading the departures board</p>
+     + <h3>Reading the departures board</h3>
+MXFL301: identical 2 / changed 8
+MXFU202: identical 11 / changed 0
+MXFU402: identical 8 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY401: identical 5 / changed 0
+OSGM301: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSSC301: identical 4 / changed 0
+OSSM401: identical 5 / changed 0
+PES1004: identical 11 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1005: identical 6 / changed 0
+SCCH301: identical 9 / changed 0
+SSOG101: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS911: identical 2 / changed 0
+XGF9003: identical 6 / changed 0
+XLP02: identical 7 / changed 0
+XLP06: identical 3 / changed 0
+XMES201: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+
+TOTAL: identical 491 / changed 16 / missing 0 over 104 modules
+CHANGED: MXEO301/MXEO301_1_0.html MXEO301/MXEO301_1_1_0.html MXEO301/MXEO301_3_0.html MXEO301/MXEO301_4_0.html MXEO301/MXEO301_5_0.html MXEO301/MXEO301_5_1_0.html MXEO301/MXEO301_6_0.html MXEO301/MXEO301_7_0.html MXFL301/MXFL301_1_0.html MXFL301/MXFL301_2_0.html MXFL301/MXFL301_3_0.html MXFL301/MXFL301_4_0.html MXFL301/MXFL301_5_0.html MXFL301/MXFL301_6_0.html MXFL301/MXFL301_7_0.html MXFL301/MXFL301_8_0.html

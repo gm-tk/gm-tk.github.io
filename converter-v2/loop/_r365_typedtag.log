@@ -1,0 +1,46 @@
+typed activity tags with a title tail: 158 / modules 10 / claude pages 43
+kinds: [('self-marking drag and drop', 24), ('self-marking type the answer', 24), ('self marking type the answer', 16), ('self-marking drop down quiz', 9), ('self-marking memory card game', 5), ('self-marking, type the answer', 5), ('drag and drop', 5), ('self-marking typing the answer', 4), ('self-marking multi-choice quiz', 4), ('self-marking drop and drag', 4), ('self-marking radio quiz', 3), ('self marking drop down quiz', 3)]
+
+GOLD state: [('h3-title-first', 121), ('title-absent(h3)', 26), ('no-box', 11)]
+CLAUDE state: [('title-inside-div.cv2-interactive', 77), ('no-box', 58), ('title-absent(div.cv2-interactive)', 9), ('h3-title-first', 5), ('title-inside-p', 3), ('title-absent(h3)', 2), ('title-absent(div.dropQuiz)', 2), ('title-absent(p)', 1), ('title-absent(div.item)', 1)]
+
+GOLD × CLAUDE:
+    68  gold=h3-title-first               claude=title-inside-div.cv2-interactive
+    40  gold=h3-title-first               claude=no-box
+    11  gold=no-box                       claude=no-box
+     9  gold=title-absent(h3)             claude=title-inside-div.cv2-interactive
+     7  gold=title-absent(h3)             claude=no-box
+     5  gold=title-absent(h3)             claude=title-absent(div.cv2-interactive)
+     4  gold=h3-title-first               claude=title-absent(div.cv2-interactive)
+     3  gold=h3-title-first               claude=h3-title-first
+     3  gold=h3-title-first               claude=title-inside-p
+     2  gold=title-absent(h3)             claude=h3-title-first
+     1  gold=title-absent(h3)             claude=title-absent(h3)
+     1  gold=title-absent(h3)             claude=title-absent(p)
+     1  gold=h3-title-first               claude=title-absent(h3)
+     1  gold=title-absent(h3)             claude=title-absent(div.dropQuiz)
+     1  gold=h3-title-first               claude=title-absent(div.dropQuiz)
+     1  gold=h3-title-first               claude=title-absent(div.item)
+
+paired boxes 100: gold h3-title-first share = 0.81
+
+by template: n / gold h3-first / claude h3-first / MISS (gold h3-first, Claude title inside the capture) boxes / pages
+  ?: n=100 gold=0.81 claude=0.05 miss=71 / 32
+
+by subject: n / gold h3-first / claude h3-first / MISS (gold h3-first, Claude title inside the capture) boxes / pages
+  ?: n=100 gold=0.81 claude=0.05 miss=71 / 32
+
+by code: n / gold h3-first / claude h3-first / MISS (gold h3-first, Claude title inside the capture) boxes / pages
+  MXFL302: n=26 gold=0.96 claude=0.04 miss=22 / 8
+  MXFL301: n=22 gold=0.91 claude=0.00 miss=18 / 8
+  MXEO301: n=19 gold=0.58 claude=0.00 miss=10 / 5
+  MXFU301: n=17 gold=1.00 claude=0.06 miss=14 / 8
+  MXDB302: n=7 gold=0.57 claude=0.00 miss=4 / 2
+  MXFU302: n=3 gold=1.00 claude=0.00 miss=3 / 1
+  ENGJ302: n=2 gold=0.00 claude=0.00 miss=0 / 0
+  MXEX301: n=2 gold=0.00 claude=0.50 miss=0 / 0
+  ENGR102: n=1 gold=1.00 claude=1.00 miss=0 / 0
+  MXEO202: n=1 gold=0.00 claude=1.00 miss=0 / 0
+
+THE CLASS: 71 boxes / 6 modules / 32 pages; by module: MXDB302:4, MXEO301:10, MXFL301:18, MXFL302:22, MXFU301:14, MXFU302:3
+examples: [('MXDB302', '2A', 'auto self-marking drag and drop', 'Which Unit?', 'title-inside-div.cv2-interactive'), ('MXDB302', '2B', 'auto self-marking typing the answer', 'Check your understanding', 'title-inside-div.cv2-interactive'), ('MXDB302', '2C', 'auto self-marking typing the answer', 'Check your understanding', 'title-inside-div.cv2-interactive'), ('MXDB302', '3A', 'auto self-marking drag and drop', 'Sort Those Shapes', 'title-inside-div.cv2-interactive'), ('MXEO301', '3A', 'self-marking drag and drop', 'Negatives on the number line', 'title-inside-div.cv2-interactive'), ('MXEO301', '3D', 'self-marking type the answer', 'Which integer is smaller?', 'title-inside-div.cv2-interactive')]

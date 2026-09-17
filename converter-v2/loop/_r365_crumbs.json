@@ -1,0 +1,1925 @@
+[
+ {
+  "module": "BLL110",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL110.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 12,
+   "tabs_labelled": 0,
+   "tabs_empty": 12,
+   "page_openers": 6,
+   "end_page": 5,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL110_0_0.html",
+    "gold": "BLL110.html",
+    "gold_crumbs": [
+     "Introduction",
+     "The letter s",
+     "The letter a",
+     "The letter t",
+     "The letter p",
+     "The letter i",
+     "The letter n"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter s",
+     "The letter a",
+     "The letter t",
+     "The letter p",
+     "The letter i",
+     "The letter n"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "BLL120",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL120.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 16,
+   "tabs_labelled": 0,
+   "tabs_empty": 16,
+   "page_openers": 8,
+   "end_page": 7,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL120_0_0.html",
+    "gold": "BLL120.html",
+    "gold_crumbs": [
+     "Introduction",
+     "The letter c",
+     "The letter k",
+     "The letters ck",
+     "The letter e",
+     "The letter h",
+     "The letter r",
+     "The letter m",
+     "The letter d"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter c",
+     "The letter k",
+     "The letter ck",
+     "The letter e",
+     "The letter h",
+     "The letter r",
+     "The letter m",
+     "The letter d"
+    ]
+   }
+  ],
+  "gold_crumb_total": 9,
+  "labels_in_wt": 9,
+  "claude_crumb_total": 9
+ },
+ {
+  "module": "BLL130",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL130.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 12,
+   "tabs_labelled": 1,
+   "tabs_empty": 11,
+   "page_openers": 6,
+   "end_page": 8,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL130_0_0.html",
+    "gold": "BLL130.html",
+    "gold_crumbs": [
+     "Introduction",
+     "The letter g",
+     "The letter o",
+     "The letter u",
+     "The letter l",
+     "The letter f",
+     "The letter b"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter ‘g’",
+     "The letter ‘o’",
+     "The letter ‘u’",
+     "The letter ‘l’",
+     "The letter ‘f’",
+     "The letter b"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "BLL140",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL140.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 8,
+   "tabs_labelled": 0,
+   "tabs_empty": 8,
+   "page_openers": 7,
+   "end_page": 10,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL140_0_0.html",
+    "gold": "BLL140.html",
+    "gold_crumbs": [
+     "Introduction",
+     "The letter j",
+     "Long vowels",
+     "Vowel team ai",
+     "Vowel team oa",
+     "Vowel team ie",
+     "Vowel team ee",
+     "Letter team or"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter j",
+     "Long Vowels",
+     "Vowel team ai",
+     "Vowel team oa",
+     "Vowel team ie",
+     "Vowel team ee",
+     "Letter team or"
+    ]
+   }
+  ],
+  "gold_crumb_total": 8,
+  "labels_in_wt": 8,
+  "claude_crumb_total": 8
+ },
+ {
+  "module": "BLL150",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL150.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 8,
+   "tabs_labelled": 0,
+   "tabs_empty": 8,
+   "page_openers": 5,
+   "end_page": 7,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL150_0_0.html",
+    "gold": "BLL150.html",
+    "gold_crumbs": [
+     "Introduction",
+     "The letter z",
+     "The letter w",
+     "The letter v",
+     "Letter team ng",
+     "Vowel team oo"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter z",
+     "The letter w",
+     "The letter v",
+     "Letter team ng",
+     "Vowel team oo"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "BLL160",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL160.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 9,
+   "tabs_labelled": 0,
+   "tabs_empty": 9,
+   "page_openers": 5,
+   "end_page": 7,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL160_0_0.html",
+    "gold": "BLL160.html",
+    "gold_crumbs": [
+     "Introduction",
+     "The letter y",
+     "The letter x",
+     "Letter team sh",
+     "Letter team ch",
+     "Vowel team th"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter y",
+     "The letter x",
+     "The letter sh",
+     "Letter team ch",
+     "Vowel team th"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "BLL170",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL170.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 10,
+   "tabs_labelled": 0,
+   "tabs_empty": 10,
+   "page_openers": 6,
+   "end_page": 8,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL170_0_0.html",
+    "gold": "BLL170.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Letter team 'qu'",
+     "Vowel team 'ou'",
+     "Vowel team 'oi'",
+     "Letter team 'ue'",
+     "Letter team 'er'",
+     "Letter team 'ar'"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter team qu",
+     "The vowel team ou",
+     "The vowel team oi",
+     "The letter team er",
+     "The letter team ar",
+     ""
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "BLL210",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL210.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 14,
+   "tabs_labelled": 0,
+   "tabs_empty": 14,
+   "page_openers": 8,
+   "end_page": 10,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL210_0_0.html",
+    "gold": "BLL210.html",
+    "gold_crumbs": [
+     "Introduction",
+     "The letter y",
+     "Long vowels",
+     "Silent e",
+     "a_e",
+     "e_e",
+     "i_e",
+     "o_e",
+     "u_e"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "The letter y",
+     "Long vowels",
+     "Silent e",
+     "a_e",
+     "e_e",
+     "i_e",
+     "o_e",
+     "u_e"
+    ]
+   }
+  ],
+  "gold_crumb_total": 9,
+  "labels_in_wt": 9,
+  "claude_crumb_total": 9
+ },
+ {
+  "module": "BLL220",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL220.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 6,
+   "tabs_labelled": 0,
+   "tabs_empty": 6,
+   "page_openers": 5,
+   "end_page": 7,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL220_0_0.html",
+    "gold": "BLL220.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Letter team oy",
+     "oy and oi",
+     "Long a",
+     "Long e",
+     "Long i"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Letter team oy",
+     "oy and oi",
+     "Long a",
+     "Long e",
+     "Long i"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "BLL230",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "BLL230.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 13,
+   "tabs_labelled": 0,
+   "tabs_empty": 13,
+   "page_openers": 7,
+   "end_page": 9,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "BLL230_0_0.html",
+    "gold": "BLL230.html",
+    "gold_crumbs": [
+     "Introduction",
+     "oe",
+     "ow",
+     "ir and ur",
+     "ew and ui",
+     "aw, au, al",
+     "ph",
+     "silent k and w"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "oe",
+     "ow",
+     "ir and ur",
+     "ew and ui",
+     "au, au, al",
+     "ph",
+     "silent k and w"
+    ]
+   }
+  ],
+  "gold_crumb_total": 8,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 8
+ },
+ {
+  "module": "BLL240",
+  "family": "Inquiry",
+  "gold_html": 9,
+  "gold_paged": 8,
+  "gold_single": [
+   "BLL240.html"
+  ],
+  "dual_build": true,
+  "dialect": {
+   "tabs": 14,
+   "tabs_labelled": 0,
+   "tabs_empty": 14,
+   "page_openers": 7,
+   "end_page": 10,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 1.0,
+    "claude": "BLL240_1_0.html",
+    "gold": "BLL240.html",
+    "gold_crumbs": [
+     "Introduction",
+     "wh",
+     "tch",
+     "dge",
+     "air",
+     "ear",
+     "ere",
+     "eer"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 8,
+  "labels_in_wt": 8,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "CEDK101",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDK101_0.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 6,
+   "tabs_labelled": 0,
+   "tabs_empty": 6,
+   "page_openers": 5,
+   "end_page": 6,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDK101_0_0.html",
+    "gold": "CEDK101_0.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Light and Heat",
+     "What is Light?",
+     "Light and Technology",
+     "What is Heat?",
+     "Heat Technology"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Light and Heat",
+     "What is Light?",
+     "Light Technology",
+     "What is Heat?",
+     "Heat Technology"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "CEDK102",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDK102.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 11,
+   "tabs_labelled": 0,
+   "tabs_empty": 11,
+   "page_openers": 0,
+   "end_page": 6,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDK102_0_0.html",
+    "gold": "CEDK102.html",
+    "gold_crumbs": [
+     "Intro",
+     "Snapshots",
+     "Capture and edit",
+     "Storytelling",
+     "Avatars",
+     "Digital Kaitiaki"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Introduction",
+     "Snapshots",
+     "Capture and edit",
+     "Storytelling",
+     "Avatars",
+     "Digital Kaitiaki"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "CEDK501",
+  "family": "Inquiry",
+  "gold_html": 12,
+  "gold_paged": 11,
+  "gold_single": [
+   "CEDK501 Kia Mahitahi – Idea to Action.html"
+  ],
+  "dual_build": true,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 12,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDK501_0_0.html",
+    "gold": "CEDK501 Kia Mahitahi – Idea to Action.html",
+    "gold_crumbs": [
+     "Intro",
+     "Dream it, plan it, do it",
+     "Costing it out: budgeting for success",
+     "Staying on track",
+     "Assessment",
+     "From personal goals to making team plans",
+     "Working together for the win",
+     "Assessment information"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 8,
+  "labels_in_wt": 8,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "CEDO102",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 1,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 6,
+   "tabs_labelled": 0,
+   "tabs_empty": 6,
+   "page_openers": 6,
+   "end_page": 7,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDO102_0_0.html",
+    "gold": "CEDO102_0.0.html",
+    "gold_crumbs": [
+     "Intro",
+     "Tangaroa",
+     "Camouflage",
+     "Coral reefs",
+     "Weird animals",
+     "Endangered dolphins"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Tangaroa",
+     "Camouflage",
+     "Coral reefs",
+     "Weird animals",
+     "Endangered"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "CEDO202",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 1,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 2,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDO202_0_0.html",
+    "gold": "CEDO202_0.0.html",
+    "gold_crumbs": [
+     "Intro",
+     "The seasons",
+     "Making observations",
+     "How do the seasons work?",
+     "Bringing the seasons to life",
+     "Exploring autumn",
+     "Exploring winter",
+     "Exploring spring",
+     "Exploring summer",
+     "Creating and sharing your dance"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "How do the seasons work?",
+     "Bringing the seasons to life",
+     "Exploring autumn",
+     "Activity 6A",
+     "Exploring spring",
+     "Activity 8B"
+    ]
+   }
+  ],
+  "gold_crumb_total": 10,
+  "labels_in_wt": 10,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "CEDR204",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDR204 STOMP.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 12,
+   "tabs_labelled": 0,
+   "tabs_empty": 12,
+   "page_openers": 0,
+   "end_page": 5,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDR204_0_0.html",
+    "gold": "CEDR204 STOMP.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Exploring sounds",
+     "Soundscapes",
+     "Rhythmic patterns",
+     "Tune creation",
+     "Showcase sounds"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Introduction",
+     "Exploring Sounds",
+     "Soundscapes",
+     "Rhythmic patterns",
+     "Tune creation",
+     "Showcase sounds"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "CEDT101",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDT101 Who’s at my table.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 5,
+   "end_page": 5,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDT101_0_0.html",
+    "gold": "CEDT101 Who’s at my table.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Maui",
+     "Moana",
+     "All about me",
+     "Who’s at my table?"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Maui",
+     "Moana",
+     "All about me",
+     "Who’s at my table?"
+    ]
+   }
+  ],
+  "gold_crumb_total": 5,
+  "labels_in_wt": 5,
+  "claude_crumb_total": 5
+ },
+ {
+  "module": "CEDT104",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDT104 Waiata In Motion.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 4,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDT104_0_0.html",
+    "gold": "CEDT104 Waiata In Motion.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Waiata moves",
+     "Pepeha",
+     "Waiata time",
+     "Waiata poi",
+     "E Rere Taku Poi",
+     "Rākau",
+     "Learn the lyrics"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 8,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "CEDT207",
+  "family": "Inquiry",
+  "gold_html": 8,
+  "gold_paged": 7,
+  "gold_single": [
+   "CEDT207 Me, my selfie and I.html"
+  ],
+  "dual_build": true,
+  "dialect": {
+   "tabs": 3,
+   "tabs_labelled": 0,
+   "tabs_empty": 3,
+   "page_openers": 4,
+   "end_page": 8,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDT207_0_0.html",
+    "gold": "CEDT207 Me, my selfie and I.html",
+    "gold_crumbs": [
+     "Introduction",
+     "About Me",
+     "My Whakapapa",
+     "Art Expression",
+     "Patterns in Art",
+     "Symbols in Art",
+     "Visual Pepeha"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "CEDT208",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDT208 Patterns Of The Pacific.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 4,
+   "tabs_labelled": 0,
+   "tabs_empty": 4,
+   "page_openers": 2,
+   "end_page": 4,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDT208_0_0.html",
+    "gold": "CEDT208 Patterns Of The Pacific.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Ngatu tapa",
+     "Transformation",
+     "Creating"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 4,
+  "labels_in_wt": 4,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "CEDT301",
+  "family": "Inquiry",
+  "gold_html": 9,
+  "gold_paged": 8,
+  "gold_single": [
+   "CEDT301 My place and me.html"
+  ],
+  "dual_build": true,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 6,
+   "end_page": 7,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 6.0,
+    "claude": "CEDT301_6_0.html",
+    "gold": "CEDT301 My place and me.html",
+    "gold_crumbs": [
+     "Intro",
+     "Mauri",
+     "Mana",
+     "Wairua",
+     "Hikoi",
+     "Investigation",
+     "Collage"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "CEDT404",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDT404.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 6,
+   "tabs_labelled": 0,
+   "tabs_empty": 6,
+   "page_openers": 5,
+   "end_page": 5,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDT404_0_0.html",
+    "gold": "CEDT404.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Community games",
+     "Writing instructions",
+     "Minecraft",
+     "Celebrate diversity",
+     "Inclusion matters"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Community Games",
+     "Writing Instructions",
+     "Minecraft",
+     "Celebrate diversity",
+     "Inclusion matters"
+    ]
+   }
+  ],
+  "gold_crumb_total": 6,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "CEDW101",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDW101 Manaakitanga.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 5,
+   "tabs_labelled": 0,
+   "tabs_empty": 5,
+   "page_openers": 5,
+   "end_page": 6,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDW101_0_0.html",
+    "gold": "CEDW101 Manaakitanga.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Caring",
+     "Friendships",
+     "Helping",
+     "Environment"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     "",
+     "",
+     ""
+    ]
+   }
+  ],
+  "gold_crumb_total": 5,
+  "labels_in_wt": 5,
+  "claude_crumb_total": 5
+ },
+ {
+  "module": "CEDW201",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "CEDW201 The Language of Kindness and Caring.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 5,
+   "tabs_labelled": 0,
+   "tabs_empty": 5,
+   "page_openers": 1,
+   "end_page": 4,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "CEDW201_0_0.html",
+    "gold": "CEDW201 The Language of Kindness and Caring.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Legends",
+     "Poetry art",
+     "Video fun",
+     "LEGO story"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 5,
+  "labels_in_wt": 5,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "EXBP901",
+  "family": "Standard",
+  "gold_html": 12,
+  "gold_paged": 12,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 1.0,
+    "claude": "EXBP901_1_0.html",
+    "gold": "EXBP901_0.1.html",
+    "gold_crumbs": [
+     "Intro",
+     "Ideas",
+     "Examples",
+     "Brainstorming",
+     "Questions",
+     "Next steps"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     ""
+    ]
+   },
+   {
+    "n": 3.0,
+    "claude": "EXBP901_3_0.html",
+    "gold": "EXBP901_0.2.html",
+    "gold_crumbs": [
+     "Intro",
+     "Learning Goals",
+     "Success Criteria",
+     "Agency",
+     "Relationships",
+     "Next Steps"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     ""
+    ]
+   },
+   {
+    "n": 4.0,
+    "claude": "EXBP901_4_0.html",
+    "gold": "EXBP901_0.3.html",
+    "gold_crumbs": [
+     "Intro",
+     "Taking action",
+     "Keep track of progress",
+     "Resilience and motivation",
+     "Next steps"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     ""
+    ]
+   }
+  ],
+  "gold_crumb_total": 17,
+  "labels_in_wt": 17,
+  "claude_crumb_total": 8
+ },
+ {
+  "module": "EXIP901",
+  "family": "Standard",
+  "gold_html": 6,
+  "gold_paged": 6,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 2,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 2.0,
+    "claude": "EXIP901_2_0.html",
+    "gold": "EXIP901_0.1.html",
+    "gold_crumbs": [
+     "Intro",
+     "Brainstorming",
+     "Topic",
+     "Questions",
+     "Next steps"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     ""
+    ]
+   },
+   {
+    "n": 4.0,
+    "claude": "EXIP901_4_0.html",
+    "gold": "EXIP901_0.2.html",
+    "gold_crumbs": [
+     "Intro",
+     "Learning Goals",
+     "Success Criteria",
+     "Agency",
+     "Relationships",
+     "Next Steps"
+    ],
+    "claude_crumbs": null
+   },
+   {
+    "n": 5.0,
+    "claude": "EXIP901_5_0.html",
+    "gold": "EXIP901_0.3.html",
+    "gold_crumbs": [
+     "Intro",
+     "Taking action",
+     "Keep track of progress",
+     "Resilience and motivation"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     ""
+    ]
+   }
+  ],
+  "gold_crumb_total": 15,
+  "labels_in_wt": 15,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "EXPFUN02",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 1,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 2,
+   "nav_instruction": 1,
+   "section_openers": 2
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "EXPFUN02_0_0.html",
+    "gold": "EXPFUN02_0.0.html",
+    "gold_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social scientist",
+     "Mathematician",
+     "Innovator"
+    ],
+    "claude_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social Scientist",
+     "Mathematician",
+     "Innovator"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "EXPFUN03",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 1,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 1,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "EXPFUN03_0_0.html",
+    "gold": "EXPFUN03_0.0.html",
+    "gold_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social Scientist",
+     "Mathematician",
+     "Innovator"
+    ],
+    "claude_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social Scientist",
+     "Mathematician",
+     "Innovator"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "EXPFUN04",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 1,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 0,
+   "nav_instruction": 1,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "EXPFUN04_0_0.html",
+    "gold": "EXPFUN04_0.0.html",
+    "gold_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social Scientist",
+     "Mathematician",
+     "Innovator"
+    ],
+    "claude_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social Scientist",
+     "Mathematician",
+     "Innovator"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "EXPFUN05",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 1,
+  "gold_single": [],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 1,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "EXPFUN05_0_0.html",
+    "gold": "EXPFUN05_0.0.html",
+    "gold_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social Scientist",
+     "Mathematician",
+     "Innovator"
+    ],
+    "claude_crumbs": [
+     "Intro",
+     "Learner",
+     "Communicator",
+     "Scientist",
+     "Social Scientist",
+     "Mathematician",
+     "Innovator"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "EXPFUN06",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "EXPFUN06_0.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 4,
+   "tabs_labelled": 1,
+   "tabs_empty": 3,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "EXPFUN06_0_0.html",
+    "gold": "EXPFUN06_0.html",
+    "gold_crumbs": [
+     "Intro",
+     "Reflection",
+     "Learning conversations",
+     "Peer feedback"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Self-assessment",
+     "Learning conversations",
+     "Reflection"
+    ]
+   }
+  ],
+  "gold_crumb_total": 4,
+  "labels_in_wt": 4,
+  "claude_crumb_total": 4
+ },
+ {
+  "module": "MXFUN02",
+  "family": "Fundamentals",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "MXFUN02.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 14,
+   "end_page": 16,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "MXFUN02_0_0.html",
+    "gold": "MXFUN02.html",
+    "gold_crumbs": null,
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   }
+  ],
+  "gold_crumb_total": 0,
+  "labels_in_wt": null,
+  "claude_crumb_total": 12
+ },
+ {
+  "module": "MXFUN03",
+  "family": "Fundamentals",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "MXFUN03.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 11,
+   "end_page": 12,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "MXFUN03_0_0.html",
+    "gold": "MXFUN03.html",
+    "gold_crumbs": null,
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   }
+  ],
+  "gold_crumb_total": 0,
+  "labels_in_wt": null,
+  "claude_crumb_total": 12
+ },
+ {
+  "module": "TWHA901",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHA901 Be a Learner.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 10,
+   "tabs_labelled": 0,
+   "tabs_empty": 10,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHA901_0_0.html",
+    "gold": "TWHA901 Be a Learner.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Agency",
+     "Resilience",
+     "Optimism",
+     "Care",
+     "Connection",
+     "Collaboration",
+     "Creativity",
+     "Contribution",
+     "Sense making",
+     "Curiosity"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Agency",
+     "Resilience",
+     "Optimism",
+     "Care",
+     "Connection",
+     "Collaboration",
+     "Creativity",
+     "Contribution",
+     "Sense-making",
+     "Curiosity"
+    ]
+   }
+  ],
+  "gold_crumb_total": 11,
+  "labels_in_wt": 11,
+  "claude_crumb_total": 11
+ },
+ {
+  "module": "TWHA902",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHA902 Be a Communicator.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 8,
+   "tabs_labelled": 0,
+   "tabs_empty": 8,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHA902_0_0.html",
+    "gold": "TWHA902 Be a Communicator.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Listening, speaking, reading, writing",
+     "Active listening",
+     "Body language",
+     "Using technology",
+     "Artistic expression",
+     "Feedback",
+     "The power of other languages",
+     "Know your audience"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "",
+     "",
+     "",
+     ""
+    ]
+   }
+  ],
+  "gold_crumb_total": 9,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 5
+ },
+ {
+  "module": "TWHA903",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHA903 The world around us.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 4,
+   "tabs_labelled": 0,
+   "tabs_empty": 4,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHA903_0_0.html",
+    "gold": "TWHA903 The world around us.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Think like a social scientist",
+     "Think like a scientist",
+     "Think like a mathematician",
+     "Think like an innovator"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Think like a social scientist",
+     "Think like a scientist",
+     "Think like a mathematician",
+     "Think like an innovator"
+    ]
+   }
+  ],
+  "gold_crumb_total": 5,
+  "labels_in_wt": 5,
+  "claude_crumb_total": 5
+ },
+ {
+  "module": "TWHA904",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHA904 The Way We Move.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHA904_0_0.html",
+    "gold": "TWHA904 The Way We Move.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Scenario",
+     "Think like a social scientist",
+     "Think like a scientist",
+     "Think like a mathematician",
+     "Think like an innovator",
+     "Reflection"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Max’s Discovery",
+     "Think like a Social Scientist",
+     "Think like a Scientist",
+     "Think like a Mathematician",
+     "Think like an Innovator"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 6
+ },
+ {
+  "module": "TWHA905",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHA905 The way we make food.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHA905_0_0.html",
+    "gold": "TWHA905 The way we make food.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Scenario",
+     "Think like a social scientist",
+     "Think like a scientist",
+     "Think like a mathematician",
+     "Think like an innovator",
+     "Reflection"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 6,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "TWHA906",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHA906 Whakamana and Resilience.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 3,
+   "tabs_labelled": 0,
+   "tabs_empty": 3,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHA906_0_0.html",
+    "gold": "TWHA906 Whakamana and Resilience.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Ways of learning",
+     "What motivates you",
+     "How to keep your energy up",
+     "Why sleep is important",
+     "How to stay organised",
+     "Being resilient"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Introduction",
+     "Ways of learning",
+     "What motivates you?",
+     "My energy",
+     "Why sleep?",
+     "Resilience"
+    ]
+   }
+  ],
+  "gold_crumb_total": 7,
+  "labels_in_wt": 7,
+  "claude_crumb_total": 7
+ },
+ {
+  "module": "TWHK901",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHK901.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 0,
+   "tabs_labelled": 0,
+   "tabs_empty": 0,
+   "page_openers": 0,
+   "end_page": 5,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHK901_0_0.html",
+    "gold": "TWHK901.html",
+    "gold_crumbs": [
+     "Introduction",
+     "What is sustainability?",
+     "Mātauranga Māori",
+     "The problem of rubbish and recycling",
+     "My role in the 4 R's of sustainability"
+    ],
+    "claude_crumbs": null
+   }
+  ],
+  "gold_crumb_total": 5,
+  "labels_in_wt": 5,
+  "claude_crumb_total": 0
+ },
+ {
+  "module": "TWHK903",
+  "family": "Inquiry",
+  "gold_html": 1,
+  "gold_paged": 0,
+  "gold_single": [
+   "TWHK903_Digital_Citizenship.html"
+  ],
+  "dual_build": false,
+  "dialect": {
+   "tabs": 9,
+   "tabs_labelled": 0,
+   "tabs_empty": 9,
+   "page_openers": 0,
+   "end_page": 1,
+   "nav_instruction": 0,
+   "section_openers": 0
+  },
+  "pages": [
+   {
+    "n": 0.0,
+    "claude": "TWHK903_0_0.html",
+    "gold": "TWHK903_Digital_Citizenship.html",
+    "gold_crumbs": [
+     "Introduction",
+     "Balance and Hauora",
+     "Digital footprint",
+     "Gaming Toolkit",
+     "Cyberbullying",
+     "Social media",
+     "Harmful content",
+     "Online privacy",
+     "Artificial Intelligence"
+    ],
+    "claude_crumbs": [
+     "Introduction",
+     "Balance and Hauora",
+     "Digital footprint",
+     "Gaming Toolkit",
+     "Cyberbullying",
+     "Social media",
+     "What to do if you see harmful content",
+     "Your online privacy",
+     "Artificial Intelligence"
+    ]
+   }
+  ],
+  "gold_crumb_total": 9,
+  "labels_in_wt": 9,
+  "claude_crumb_total": 9
+ }
+]
