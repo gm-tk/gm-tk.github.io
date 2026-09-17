@@ -1,0 +1,60 @@
+captures with a leading list: 316 on 228 pages / 154 modules
+verdicts: [('gold-in-widget', 131), ('gold-absent', 81), ('gold-free-li', 60), ('gold-free-other', 44)]
+
+BY (owner kind, base type): n / gold-free share / pages / modules
+   (('owned', 'multiChoiceQuiz'), 44, 0.09, 39, 27)
+   (('standalone', 'multiChoiceQuiz'), 38, 0.42, 28, 27)
+   (('standalone', 'accordion'), 26, 0.54, 22, 14)
+   (('owned', 'dropDown'), 20, 0.2, 20, 15)
+   (('owned', 'typing'), 19, 0.26, 18, 10)
+   (('standalone', 'interactive'), 18, 0.44, 14, 10)
+   (('owned', 'dragAndDrop'), 16, 0.38, 15, 13)
+   (('standalone', 'dropDown'), 15, 0.33, 12, 12)
+   (('standalone', 'selectionBox'), 10, 0.6, 9, 8)
+   (('owned', 'selfCheck'), 9, 0.22, 3, 3)
+   (('standalone', 'modal'), 9, 0.0, 4, 3)
+   (('standalone', 'unclassified'), 8, 0.25, 8, 8)
+   (('owned', 'interactive'), 8, 0.62, 6, 5)
+   (('standalone', 'carousel'), 8, 0.12, 6, 6)
+   (('owned', 'selectionBox'), 8, 0.5, 4, 4)
+   (('standalone', 'flipCard'), 6, 0.5, 6, 6)
+   (('standalone', 'hint'), 6, 0.0, 5, 4)
+   (('owned', 'accordion'), 5, 0.2, 5, 4)
+   (('standalone', 'radioQuiz'), 4, 0.75, 4, 3)
+   (('owned', 'radioQuiz'), 4, 0.5, 3, 3)
+   (('owned', 'clickDrop'), 3, 0.67, 3, 3)
+   (('standalone', 'dragAndDrop'), 3, 0.33, 3, 3)
+
+BY after-list element:
+   ('p', 176, 0.32, 139, 98)
+   ('end', 82, 0.41, 70, 64)
+   ('ol', 25, 0.2, 20, 20)
+   ('table', 24, 0.25, 18, 13)
+   ('ul', 9, 0.22, 9, 8)
+
+BY p-before:
+   (0, 205, 0.29, 151, 109)
+   (1, 111, 0.41, 94, 75)
+
+BY template:
+   ('Standard', 215, 0.3, 177, 106)
+   ('Fundamentals', 65, 0.34, 32, 32)
+   ('Inquiry', 36, 0.5, 19, 16)
+
+BY subject:
+   ('1-10 Mathematics', 58, 0.29, 42, 21)
+   ('Leaving to Learn', 44, 0.32, 30, 14)
+   ('1-10 English', 34, 0.26, 26, 16)
+   ('1-10 Blended Literacy', 30, 0.1, 24, 22)
+   ('NCEA1', 27, 0.37, 26, 15)
+   ('1-10 Health and PE', 19, 0.37, 14, 14)
+   ('ConnectED', 16, 0.5, 14, 12)
+   ('1-10 Arts', 13, 0.15, 3, 3)
+   (None, 13, 0.15, 12, 5)
+   ('1-10 Social Science', 12, 0.67, 5, 4)
+   ('1-10 Technology', 12, 0.42, 6, 6)
+   ('Te ara Whakapuawa -Wellbeing', 12, 0.67, 5, 5)
+
+THE CLASS (gold keeps the list FREE, Claude captures it): 104 captures / 80 pages / 63 modules
+  top modules: [('XGF9006', 8), ('MXEX302', 5), ('ENGI202', 4), ('SSFUN05', 4), ('HIS1004', 3), ('MXFL301', 3), ('TWHA905', 3), ('TWHA906', 3), ('AGH1006', 2), ('ANZH301', 2), ('ARFUN01', 2), ('BLL120', 2)]
+  examples: [('AGH1006', 'AGH1006_5_0.html', 'radioQuiz', 'standalone', 'end', 'Remove dead, damaged or diseased branche'), ('AGH1006', 'AGH1006_8_0.html', 'radioQuiz', 'standalone', 'end', 'Certain genetic traits in plants make th'), ('ANZH301', 'ANZH301_3_0.html', 'interactive', 'owned', 'p', 'What is your response to this report? (N'), ('ANZH301', 'ANZH301_10_0.html', 'interactive', 'owned', 'end', 'Task two: Resource interpretation and Pe'), ('ANZH401', 'ANZH401_7_0.html', 'interactive', 'standalone', 'p', 'What made the Chinese digger crews so su'), ('ARFUN01', 'ARFUN01_0_0.html', 'multiChoiceQuiz', 'standalone', 'end', 'How do you think art connects to history'), ('ARFUN01', 'ARFUN01_0_0.html', 'multiChoiceQuiz', 'standalone', 'ul', 'Why do you think it might be easier to e'), ('BLL120', 'BLL120_0_0.html', 'selfCheck', 'owned', 'table', 'Click on the lower case letter ‘c’.')]

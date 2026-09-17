@@ -1804,7 +1804,10 @@ class ContentConverter {
 						// their own list — the gold boxes them at 0.61 / 0.62 (outputs/_measure_r367_unboxed.py); env SABOX367_OFF
 						&& ((saCfg.types ?? []).includes(bundle.type)
 							|| (!(typeof process !== "undefined" && process.env && process.env[saCfg.types_round367_env || "SABOX367_OFF"])
-								&& (saCfg.types_round367 ?? []).includes(bundle.type)));
+								&& (saCfg.types_round367 ?? []).includes(bundle.type)
+								// ROUND 368: the KB c43 upload box is a dropDown-typed bundle (the lexicon's `dropbox` alias) and
+								// lives INSIDE the preceding activity (r314) — never its own box (r367 boxed 184 of them: −275pp)
+								&& !(bundle.type === "dropDown" && InteractiveBuilder.UploadBoxCandidate(bundle, tpl.interactive_builders?.dropDown))));
 					const saOwner = saOn
 						? { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" }
 						: null;

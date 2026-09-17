@@ -1728,7 +1728,8 @@ class Config {
 	// ROUND 365 (260619.36): the widget-typed activity tag's tail is the box title — `[Activity 1B – self-marking type the answer] Fill in the blanks` opens the gold's numbered box with <h3>Fill in the blanks</h3> and the title leaves the capture (data Emit_Templates.activity_wrapper.embedded_interactive_activity.typed_tag_title; env TYPEDTAG_OFF). The autonomous loop's session 21 Round 2.
 	// ROUND 366 (260619.37): the lead prose after the widget tag renders free inside the box — the instruction paragraph between `[Interactive]` and its table becomes the box's free <p> (the gold's h3 + p + widget) for the widget types whose gold keeps it free (data Emit_Templates.activity_wrapper.lead_free_after_tag; env LEADFREE_OFF). The autonomous loop's session 21 Round 3.
 	// ROUND 367 (260619.38): the r217 standalone box for a bare dropDown / typing widget — DECLINED on the probe (173 paired pages, 36 up / 135 down), shipped INERT (standalone_widget_box.types_round367 = []; env SABOX367_OFF a no-op); the corpus is byte-identical to r366. The autonomous loop's session 21 Round 4.
-	static AppVersion = "260619.38";
+	// ROUND 368 (260619.39): the r217 box for a bare dropDown / typing widget re-opened with the KB c43 upload box excluded (InteractiveBuilder.UploadBoxCandidate) and DECLINED again on the probe (19 up / 52 down) — `[drop down]` is a reveal as often as a quiz; the list stays empty, the corpus byte-identical to r366. The autonomous loop's session 21 Round 5.
+	static AppVersion = "260619.39";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,0 +1,992 @@
+PNR101: identical 2 / changed 0
+TRR103: identical 4 / changed 0
+TRR107: identical 3 / changed 0
+TRR112: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+ARFUN02: identical 1 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+  ~ ENFUN04_0_0.html: -23 +33
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ENFUN04-00-10" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: typing — Activity (inline) — see EN
+     - <th> Root word provided </th>
+     - <th> Answer to pop up when they click ‘check’ </th>
+     - <td>Play</td>
+     - <td>playful, player, playing, replay, unplayful, replaying</td>
+     - <td>Honest</td>
+     - <td>dishonest, honesty, dishonesty, honestness</td>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="2F">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ENFUN04-00-10" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: typing — Activity (inline) — see EN
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> Root word provided </th>
+     + <th> Answer to pop up when they click ‘check’ </th>
+     + </tr>
+     + <tr>
+     + <td>Play</td>
+     + <td>playful, player, playing, replay, unplayful, replaying</td>
+     + </tr>
+     + … 13 more added
+ENFUN04: identical 0 / changed 1
+ENFUN09: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+MXFUN01: identical 19 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+BLL110: identical 1 / changed 0
+BLL150: identical 1 / changed 0
+BLL220: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDR201: identical 1 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+ENGFUN02: identical 5 / changed 0
+EXPFUN05: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+XDLS909: identical 5 / changed 0
+AGH1004: identical 7 / changed 0
+AGH1008: identical 10 / changed 0
+ANZH105: identical 8 / changed 0
+ANZH303: identical 7 / changed 0
+ART1002: identical 8 / changed 0
+ART1006: identical 6 / changed 0
+BLL114: identical 3 / changed 0
+BLL121: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL143: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+  ~ BLL161_1_1.html: -13 +23
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL161-02-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dropDown — Activity (inline) — see B
+     - <div style="font-size: 0.95em">
+     - <p>Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page an
+     - <ul>
+     - <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     - </ul>
+     + <div class="activity interactive" number="1K">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL161-02-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dropDown — Activity (inline) — see B
+     + <div style="font-size: 0.95em">
+     + <p>Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page an
+     + <ul>
+     + <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     + </ul>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 3 more added
+BLL161: identical 2 / changed 1
+BLL165: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL176: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL231: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+  ~ BLL262_1_0.html: -51 +57
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL262-01-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [designer note] Please present this a
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: typing — Activity (inline) — see BLL
+     - <th></th>
+     - <th>Media List</th>
+     - <th>Sentence</th>
+     - <td>Question 1 <a href="https://www.istockphoto.com/photo/confident-boy-sitting-on-bicycle-in-the-forest-gm136
+     - <td>The yummy [insert drop down] make/ lake/ [correct Q1] cake sat on a shiny slate [correct Q1] plate /gate. 
+     - <td>Question 2 <a href="https://www.istockphoto.com/photo/zugspitze-ski-resort-gm537208613-57777288" target="_
+     - <td>The [insert drop down] bite / sight / [correct Q2] white snow covered the hill [insert drop down] [correct
+     - <td>Question 3 <a href="https://www.istockphoto.com/photo/3d-rendering-of-big-bonfire-with-sparks-at-forest-in
+     - <td>Grey [insert drop down] snake / [correct Q3] smoke / scope drifted up from the fire.
+     - The warm frame / blame / [correct Q3] flame lit the dark night.</td>
+     - <td>Question 4 <a href="https://www.istockphoto.com/photo/tranquil-morning-lake-wanaka-new-zealand-gm168764905
+     - <td>The [insert drop down] bone / [correct Q4] boat / bote rested on the edge of the [insert drop down] fake /
+     - A long [insert drop down] ripe / rode <b>/</b> [correct Q4] <b>rope</b> was used to tie the boat to the tree.<
+     - <td>Question 5 / <a href="https://www.istockphoto.com/photo/yellow-lemonade-in-the-glass-on-a-white-background
+     - <td>The ice [insert drop down] tube / cube / [correct Q5] cube melted fast. Cold [insert drop down] june / [co
+     - <tr>
+     - <td>Question 6 <a href="https://www.istockphoto.com/photo/chef-slicing-fresh-ripe-tomatoes-gm1478345856-506630
+     - <td>The [insert drop down] phone / chafe <b>/</b> [correct Q6] chef picked up a knife.
+     - They were ready to slide / slope <b>/</b> [correct Q6] slice the food.</td>
+     - </tr>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - … 11 more removed
+     + <div class="activity interactive" number="1B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL262-01-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [designer note] Please present this a
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: typing — Activity (inline) — see BLL
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th></th>
+     + </tr>
+     + </table>
+     + </div>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 37 more added
+BLL262: identical 2 / changed 1
+CEDO301: identical 6 / changed 0
+  ~ CEDT501_6_0.html: -14 +24
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="CEDT501-09-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: typing (separate typable boxes) — A
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>I don’t always talk the same way to everyone because … / When I talk to my whānau, I usually say things li
+     - </tr>
+     - </table>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="CEDT501-09-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: typing (separate typable boxes) — A
+     + <th>I don’t always talk the same way to everyone because … / When I talk to my whānau, I usually say things li
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="6B">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + </tr>
+     + </table>
+     + </div>
+     + … 4 more added
+  ~ CEDT501_6_1.html: -1 +1
+     - <div class="activity interactive" number="6E">
+     + <div class="activity interactive" number="6F">
+  ~ CEDT501_7_0.html: -28 +48
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="CEDT501-11-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="39" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #39: typing — Activity (inline) — see CE
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="CEDT501-11-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: typing — Activity (inline) — see CE
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>One reason I feel confident in one-to-one conversations is ... / One thing I find tricky about one-to-one 
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="7A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="CEDT501-11-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="39" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #39: typing — Activity (inline) — see CE
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + </tr>
+     + </table>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="7B">
+     + <div class="row">
+     + … 28 more added
+  ~ CEDT501_8_0.html: -28 +38
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="45" data-cv2-ref="CEDT501-12-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="45" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #45: typing + typing — Activity (inline)
+     - <th></th>
+     - <p>Consider how you felt during one of these discussions.</p>
+     - <ul>
+     - <li>Were you confident to share your thoughts?</li>
+     - <li>Was everyone able to contribute to the conversation?</li>
+     - <li>How did people show their respect, if they disagreed?</li>
+     - </ul>
+     - <p>In your opinion, what makes a group discussion go well?</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - </tr>
+     - </table>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="activity interactive" number="8A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="45" data-cv2-ref="CEDT501-12-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="45" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #45: typing + typing — Activity (inline)
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + </tr>
+     + </table>
+     + </div>
+     + <p>Consider how you felt during one of these discussions.</p>
+     + <ul>
+     + <li>Were you confident to share your thoughts?</li>
+     + <li>Was everyone able to contribute to the conversation?</li>
+     + … 18 more added
+CEDT501: identical 11 / changed 4
+ENG1007: identical 1 / changed 0
+  ~ ENGC202_1_0.html: -13 +23
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="ENGC202-01-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dropDown + dropDown (go to) — Activi
+     - <div style="font-size: 0.95em">
+     - <p>The instructions you just heard were meant to help you draw a specific picture. Now, click here to see what
+     - <p>The big reveal</p>
+     - <p><a href="https://drive.google.com/file/d/12PdSCI6dfS0Pvn8S7lyOU60ebxN9jy3R/view?usp=drive_link" target="_bl
+     - <p>Your drawing may look different from the inspiration picture. That’s okay! It shows us that the instruction
+     - <p>In this module, you will learn how to write instructions that are easy to follow. This will help you be sur
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="ENGC202-01-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dropDown + dropDown (go to) — Activi
+     + <div style="font-size: 0.95em">
+     + <p>The instructions you just heard were meant to help you draw a specific picture. Now, click here to see what
+     + <p>The big reveal</p>
+     + <p><a href="https://drive.google.com/file/d/12PdSCI6dfS0Pvn8S7lyOU60ebxN9jy3R/view?usp=drive_link" target="_bl
+     + <p>Your drawing may look different from the inspiration picture. That’s okay! It shows us that the instruction
+     + <p>In this module, you will learn how to write instructions that are easy to follow. This will help you be sur
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="1B">
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + … 3 more added
+ENGC202: identical 8 / changed 1
+ENGI101: identical 4 / changed 0
+  ~ ENGI202_2_0.html: -77 +149
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGI202-02-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dropDown + dropDown — Activity (inl
+     - <ol>
+     - <li>Choose one of the stories from this lesson and create masks of the story&#39;s characters using paper plat
+     - <li>Decorate the masks using colour and texture (you can add items from around the home).</li>
+     - <li>Take photographs of your creations to share with your kaiako.</li>
+     - <li>Label your photos with the character’s names</li>
+     - </ol>
+     - <p>Extension activity: With your whānau as the characters retell the story using the masks. If you are taitoa,
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENGI202-02-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dropDown — Activity (inline) — see 
+     - <ol>
+     - <li>Create a diorama of a scene from one of the Māori traditional stories. A diorama is a small box, like a sh
+     - <li>You can use small toys, like action figures or dolls, to represent the characters in the story, or you can
+     - <li>Add tiny things like trees, rocks, and even pieces of paper to create the setting. For example the ocean w
+     - <li>Take photographs of your creations to share with your kaiako.</li>
+     - <li>Label your photos with the character’s names</li>
+     - </ol>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ENGI202-02-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <ol>
+     - <li>Draw a picture and write a description of your favourite character in one of the Māori traditional stories
+     - <li>Your picture should have good detail and show your character doing something from the story.</li>
+     - <li>Your written description needs to be a minimum of four sentences and should include information such as ho
+     - </ol>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ENGI202-02-08" style="border: 8px s
+     - … 37 more removed
+     + <div class="activity interactive" number="2F">
+     + <div class="row">
+     + <div class="col-12">
+     + <ol>
+     + <li>Choose one of the stories from this lesson and create masks of the story&#39;s characters using paper plat
+     + </ol>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGI202-02-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dropDown + dropDown — Activity (inl
+     + <div style="font-size: 0.95em">
+     + <ol>
+     + <li>Decorate the masks using colour and texture (you can add items from around the home).</li>
+     + <li>Take photographs of your creations to share with your kaiako.</li>
+     + <li>Label your photos with the character’s names</li>
+     + </ol>
+     + <p>Extension activity: With your whānau as the characters retell the story using the masks. If you are taitoa,
+     + … 129 more added
+ENGI202: identical 6 / changed 1
+  ~ ENGI303_5_0.html: -1 +11
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [typing] marker — no content cap
+     + <div class="activity interactive" number="5B">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [typing] marker — no content cap
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+ENGI303: identical 6 / changed 1
+ENGJ101: identical 5 / changed 0
+ENGJ301: identical 8 / changed 0
+  ~ ENGR101_7_0.html: -16 +22
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="ENGR101-07-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: dropDown + dropDown (go to) — Activ
+     - <div style="font-size: 0.95em">
+     - <p><a href="https://www.istockphoto.com/vector/news-anchorman-header-tv-gm1065599838-284961526" target="_blank
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [body] You have now completed this module and earned your own reporter’s uniform. Tino pai! / Please uplo
+     - <th> [Image like] <a href="https://drive.google.com/file/d/18KKk_Jrdrrq14AAyJaOQqji-57vbqQHo/view?usp=sharing"
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="7B">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="ENGR101-07-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: dropDown + dropDown (go to) — Activ
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://www.istockphoto.com/vector/news-anchorman-header-tv-gm1065599838-284961526" target="_blank
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [body] You have now completed this module and earned your own reporter’s uniform. Tino pai! / Please uplo
+     + <th> [Image like] <a href="https://drive.google.com/file/d/18KKk_Jrdrrq14AAyJaOQqji-57vbqQHo/view?usp=sharing"
+     + </tr>
+     + </table>
+     + </div>
+     + … 2 more added
+ENGR101: identical 7 / changed 1
+  ~ ENGR301_3_0.html: -41 +51
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGR301-03-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th>Quote</th>
+     - <th>Reason</th>
+     - </tr>
+     - <tr>
+     - <td>Steve Jobs / Image of Steve Jobs </td>
+     - <td>“Technology is nothing. What&#39;s important is that you have faith in people, that they&#39;re basically 
+     - <td>Believing in magic / <b>Giving people trust</b> / Working with machines</td>
+     - </tr>
+     - <tr>
+     - <td>Mark Zuckerberg / Image of Mark Zuckerberg </td>
+     - <td>“The biggest risk is not taking any risk ... In a world that&#39;s changing really quickly, the only strat
+     - <td>Playing it safe / <b>Embracing change</b> / Avoiding mistakes</td>
+     - </tr>
+     - <tr>
+     - <td>Shawn Mendes / Image of Shawn Mendes </td>
+     - <td>“I was one of those kids who was just always on the Internet, always on YouTube, so it was easy for me to 
+     - <td>Doing homework / <b>Enjoying the internet</b> / Playing outside</td>
+     - </tr>
+     - <tr>
+     - <td>Taylor Swift / Image of Taylor Swift </td>
+     - <td>“The most beautiful things in life are not the things. They’re people and the memories we create with them
+     - <td>Collecting things / <b>Cherishing memories</b> / Buying gifts</td>
+     - </tr>
+     - <tr>
+     - <td>Albert Einstein / Image of Albert Einstein </td>
+     - <td>“It has become appallingly obvious that our technology has exceeded our humanity.”</td>
+     - <td>Building robots / <b>Humanity vs. technology</b> / Learning science</td>
+     - </tr>
+     - … 1 more removed
+     + <div class="activity interactive" number="3D">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGR301-03-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dropDown — Activity (inline) — see 
+     + <th></th>
+     + <th>Quote</th>
+     + <th>Reason</th>
+     + <td>Steve Jobs / Image of Steve Jobs </td>
+     + <td>“Technology is nothing. What&#39;s important is that you have faith in people, that they&#39;re basically 
+     + <td>Believing in magic / <b>Giving people trust</b> / Working with machines</td>
+     + <td>Mark Zuckerberg / Image of Mark Zuckerberg </td>
+     + <td>“The biggest risk is not taking any risk ... In a world that&#39;s changing really quickly, the only strat
+     + <td>Playing it safe / <b>Embracing change</b> / Avoiding mistakes</td>
+     + <td>Shawn Mendes / Image of Shawn Mendes </td>
+     + <td>“I was one of those kids who was just always on the Internet, always on YouTube, so it was easy for me to 
+     + <td>Doing homework / <b>Enjoying the internet</b> / Playing outside</td>
+     + <td>Taylor Swift / Image of Taylor Swift </td>
+     + <td>“The most beautiful things in life are not the things. They’re people and the memories we create with them
+     + <td>Collecting things / <b>Cherishing memories</b> / Buying gifts</td>
+     + … 31 more added
+  ~ ENGR301_8_0.html: -17 +27
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ENGR301-08-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: dropDown (upload to) — Activity (in
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><a href="https://www.istockphoto.com/photo/smiling-boy-teenager-with-dental-braces-holding-mobile-phone-gr
+     - <th> [Speech bubble] / You know what Harper, you made some valid points. Maybe these cell phones are pretty us
+     - <th> [Speech bubble] / I actually think you made some good points! Since reading your essay, I’ve been enjoyin
+     - <th><a href="https://www.istockphoto.com/photo/children-sits-on-couch-eating-popcorn-and-watching-interesting-
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="8B">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ENGR301-08-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: dropDown (upload to) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><a href="https://www.istockphoto.com/photo/smiling-boy-teenager-with-dental-braces-holding-mobile-phone-gr
+     + <th> [Speech bubble] / You know what Harper, you made some valid points. Maybe these cell phones are pretty us
+     + <th> [Speech bubble] / I actually think you made some good points! Since reading your essay, I’ve been enjoyin
+     + <th><a href="https://www.istockphoto.com/photo/children-sits-on-couch-eating-popcorn-and-watching-interesting-
+     + </tr>
+     + </table>
+     + … 7 more added
+ENGR301: identical 7 / changed 2
+ENGS201: identical 9 / changed 0
+ENGS401: identical 7 / changed 0
+EXPFUN07: identical 1 / changed 0
+  ~ HES1006_6_0.html: -111 +121
+     - <p>Read the strategies below and select if the strategy is personal, interpersonal or societal.</p>
+     - <div class="dropQuiz">
+     - <div class="dropQuestion">
+     - <p>Using a range of stress management techniques e.g. in context of managing a change situation.</p>
+     - <div class="dropDown" answer="1">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Personal</p>
+     - <p>Societal</p>
+     - <p>Interpersonal</p>
+     - </div>
+     - <div class="dropQuestion">
+     - <p>Writing a letter to a key stakeholder advocate for change e.g. the school Board of Trustees in context of c
+     - <div class="dropDown" answer="2">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Personal</p>
+     - <p>Societal</p>
+     - <p>Interpersonal</p>
+     - </div>
+     - </div>
+     - <div class="dropQuestion">
+     - <p>Demonstrating effective communication skills to show assertiveness in the context of resisting pressure.</p
+     - <div class="dropDown" answer="1">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Personal</p>
+     - <p>Societal</p>
+     - <p>Interpersonal</p>
+     - </div>
+     - </div>
+     - <div class="dropQuestion">
+     - <p>Using a decision-making model.</p>
+     - <div class="dropDown" answer="1">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Personal</p>
+     - <p>Societal</p>
+     - <p>Interpersonal</p>
+     - </div>
+     - … 71 more removed
+     + <div class="activity interactive" number="6A">
+     + <p>Read the strategies below and select if the strategy is personal, interpersonal or societal.</p>
+     + <div class="dropQuiz">
+     + <div class="row">
+     + <div class="dropQuestion">
+     + <p>Using a range of stress management techniques e.g. in context of managing a change situation.</p>
+     + <div class="dropDown" answer="1">
+     + <p class="placeholder">Select one</p>
+     + <div class="options">
+     + <p>Personal</p>
+     + <p>Societal</p>
+     + <p>Interpersonal</p>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="dropQuestion">
+     + <p>Writing a letter to a key stakeholder advocate for change e.g. the school Board of Trustees in context of c
+     + <div class="dropDown" answer="2">
+     + <p class="placeholder">Select one</p>
+     + <div class="options">
+     + … 101 more added
+HES1006: identical 7 / changed 1
+HIS1003: identical 11 / changed 0
+HIS1007: identical 7 / changed 0
+MXDB201: identical 7 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXEO202: identical 9 / changed 0
+MXEX201: identical 6 / changed 0
+  ~ MXEX401_5_0.html: -23 +51
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXEX401-05-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: typing + typing + typing + typing — 
+     - <p>What is the scale factor of this enlargement?</p>
+     - <p>What is the area of the small triangle in squares?</p>
+     - <p>What is the area of the large triangle in squares?</p>
+     - <p>If you divide the area of the large triangle by the area of the small triangle, do you get the scale factor
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXEX401-05-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answer: 3 across, 2 up<br />Answer: 6
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: typing + typing — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - <p>What is the distance in squares (across and up) from the centre point (-1,-1) to point B (2,1)?</p>
+     - <p>What is the distance in squares (across and up) from the centre point (-1,-1) to point B’ (5,3)?</p>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <div class="activity interactive" number="5A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXEX401-05-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: typing + typing + typing + typing — 
+     + <div style="font-size: 0.95em">
+     + <p>What is the scale factor of this enlargement?</p>
+     + <p>What is the area of the small triangle in squares?</p>
+     + <p>What is the area of the large triangle in squares?</p>
+     + <p>If you divide the area of the large triangle by the area of the small triangle, do you get the scale factor
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="5B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXEX401-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + … 31 more added
+MXEX401: identical 6 / changed 1
+MXFL104: identical 6 / changed 0
+MXFL204: identical 12 / changed 0
+MXFU201: identical 10 / changed 0
+  ~ MXFU401_3_0.html: -54 +74
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="MXFU401-03-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: typing — Activity (inline) — see MXF
+     - <div style="font-size: 0.95em">
+     - <p>How many crosses would there be in the 4th pattern?</p>
+     - <p>By using the difference, we can create an equation for this pattern. We take the 14 and multiply it by 1, 2
+     - <p>That means the equation will be <b>C = 14n</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXFU401-03-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover: constant = the same.]<br />pl
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: typing — Activity (inline) — see MXF
+     - <div style="font-size: 0.95em">
+     - <p>How many crosses would there be in the 5th pattern?</p>
+     - <p>When we try to find the difference, we realise that it is not</p>
+     - <p>If we then look at the number sequence that those differences make, we can see that the second difference i
+     - <p>The second difference is <b>+8</b></p>
+     - <p>This means that the number sequence is called a <b>quadratic.</b> (It’s a quadratic any time the second dif
+     - <p>Watch this video to learn the process for coming up with a rule/algorithm for continued quadratic number pa
+     - <p><a href="https://www.youtube.com/watch?v=7Isa4P8lISc" target="_blank">https://www.youtube.com/watch?v=7Isa4
+     - <p>Let’s look at our original quadratic pattern that we came across earlier:</p>
+     - <p>The second difference is 8. If we half that we get 4.</p>
+     - <p>We put that in front of <b>n2</b></p>
+     - <p><b>4n2</b> Luckily this seems to be our rule, and we don&#39;t need to add anything else to it.</p>
+     - <p>We can test it to be sure: <b>4(1) 2 = 4</b> <b>4(2) 2 = 16</b> <b>4(3) 2 = 36 and so on ...</b></p>
+     - <p>Let’s look at another quadratic pattern:</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>1</th>
+     - <th>2</th>
+     - <th>3</th>
+     - <th>4</th>
+     - … 14 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="MXFU401-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: typing — Activity (inline) — see MXF
+     + <p>How many crosses would there be in the 4th pattern?</p>
+     + <p>By using the difference, we can create an equation for this pattern. We take the 14 and multiply it by 1, 2
+     + <p>That means the equation will be <b>C = 14n</b></p>
+     + <div class="activity interactive" number="3B">
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="3E">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXFU401-03-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + … 54 more added
+MXFU401: identical 6 / changed 1
+OSAH501: identical 6 / changed 0
+OSAI401: identical 5 / changed 0
+OSBY301: identical 4 / changed 0
+OSGM201: identical 4 / changed 0
+  ~ OSOH101_3_0.html: -11 +25
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="OSOH101-03-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>Treat others online as you would like to be treated.</p>
+     - <p>How we act online can create a nice space and help others feel good too. Making the choice to use kind word
+     - <p>Click the cards to see how to flip unkind to kind words.</p>
+     + <div class="activity interactive" number="3B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="OSOH101-03-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>Treat others online as you would like to be treated.</p>
+     + <p>How we act online can create a nice space and help others feel good too. Making the choice to use kind word
+     + <p>Click the cards to see how to flip unkind to kind words.</p>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 5 more added
+OSOH101: identical 3 / changed 1
+OSOH501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+PES1003: identical 11 / changed 0
+  ~ PES1008_11_0.html: -17 +27
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="PES1008-11-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown + dropDown — Activity (inli
+     - <div style="font-size: 0.95em">
+     - <p>WHAT IS ONE OHM?</p>
+     - <p><a href="https://tekura.desire2learn.com/d2l/le/content/12125/viewContent/141016/View" target="_blank">http
+     - <p>One ohm is the resistance between two points on a conductor when a constant voltage of 1 volt between them 
+     - <p>For a 6.0 Ω speaker the amplifier in the CD player provides a voltage of 12 V across the speaker and a curr
+     - <p>WHAT IS A RESISTOR?</p>
+     - <p><a href="https://tekura.desire2learn.com/d2l/le/content/12125/viewContent/141016/View" target="_blank">http
+     - <p>A resistor is an electrical component that limits or regulates the flow of electrical current in an electro
+     - <p>The circuit symbol for a resistor with a fixed value resistance is</p>
+     - <p>The diagram shows a type of resistor used in electronic circuits. It controls the current in part of the ci
+     + <div class="activity interactive" number="11A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="PES1008-11-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown + dropDown — Activity (inli
+     + <div style="font-size: 0.95em">
+     + <p>WHAT IS ONE OHM?</p>
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/12125/viewContent/141016/View" target="_blank">http
+     + <p>One ohm is the resistance between two points on a conductor when a constant voltage of 1 volt between them 
+     + <p>For a 6.0 Ω speaker the amplifier in the CD player provides a voltage of 12 V across the speaker and a curr
+     + <p>WHAT IS A RESISTOR?</p>
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/12125/viewContent/141016/View" target="_blank">http
+     + <p>A resistor is an electrical component that limits or regulates the flow of electrical current in an electro
+     + <p>The circuit symbol for a resistor with a fixed value resistance is</p>
+     + <p>The diagram shows a type of resistor used in electronic circuits. It controls the current in part of the ci
+     + … 7 more added
+PES1008: identical 18 / changed 1
+PHE1004: identical 4 / changed 0
+  ~ PHE1008_3_0.html: -10 +20
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="PHE1008-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dropDown + dropDown (with) — Activit
+     - <div style="font-size: 0.95em">
+     - <p>The first New Zealand rugby team played its first match in May 1884 against a Wellington team as a warm up 
+     - <p>. Two Māori players Jack Taiaroa and Joseph Warbrick were key members of the first representative New Zeala
+     + <div class="activity interactive" number="3A">
+     + <p>The first New Zealand rugby team played its first match in May 1884 against a Wellington team as a warm up 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="PHE1008-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dropDown + dropDown (with) — Activit
+     + <p>. Two Māori players Jack Taiaroa and Joseph Warbrick were key members of the first representative New Zeala
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+PHE1008: identical 5 / changed 1
+SSFUN07: identical 5 / changed 0
+TEDC401: identical 8 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XGF9002: identical 10 / changed 0
+  ~ XLP01_3_0.html: -16 +26
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="XLP01-03-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: dropDown — Activity (inline) — see 
+     - <li><b>Encourages a love for reading</b></li>
+     - <p>When we provide books that match readers interests, they are more excited to read. This helps to develop a 
+     - <li><b>Builds confidence and independence</b></li>
+     - <p>Choosing our own books helps us to take control of the reading journey. It allows us to explore different t
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <ol>
+     - </ol>
+     - <ol>
+     - </ol>
+     + <div class="activity interactive" number="3WA">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="XLP01-03-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <ol>
+     + <li><b>Encourages a love for reading</b></li>
+     + </ol>
+     + <p>When we provide books that match readers interests, they are more excited to read. This helps to develop a 
+     + <ol>
+     + <li><b>Builds confidence and independence</b></li>
+     + </ol>
+     + <p>Choosing our own books helps us to take control of the reading journey. It allows us to explore different t
+     + </div>
+     + </div>
+     + </div>
+     + … 6 more added
+XLP01: identical 4 / changed 1
+XLP05: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+  ~ XTAS102_3_0.html: -18 +42
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="XTAS102-03-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: dropDown (insert icon for photograp
+     - <div style="font-size: 0.95em">
+     - <p>pool rules</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="XTAS102-03-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="44" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #44: dropDown (insert icon for photograp
+     - <div style="font-size: 0.95em">
+     - <p>Try this NZSL video greeting with your hoa ako.</p>
+     + <div class="activity interactive" number="3F">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="XTAS102-03-08" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: dropDown (insert icon for photograp
+     + <div style="font-size: 0.95em">
+     + <p>pool rules</p>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="3H">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="XTAS102-03-09" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="44" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + … 22 more added
+XTAS102: identical 5 / changed 1
+
+TOTAL: identical 506 / changed 21 / missing 0 over 104 modules
+CHANGED: ENFUN04/ENFUN04_0_0.html BLL161/BLL161_1_1.html BLL262/BLL262_1_0.html CEDT501/CEDT501_6_0.html CEDT501/CEDT501_6_1.html CEDT501/CEDT501_7_0.html CEDT501/CEDT501_8_0.html ENGC202/ENGC202_1_0.html ENGI202/ENGI202_2_0.html ENGI303/ENGI303_5_0.html ENGR101/ENGR101_7_0.html ENGR301/ENGR301_3_0.html ENGR301/ENGR301_8_0.html HES1006/HES1006_6_0.html MXEX401/MXEX401_5_0.html MXFU401/MXFU401_3_0.html OSOH101/OSOH101_3_0.html PES1008/PES1008_11_0.html PHE1008/PHE1008_3_0.html XLP01/XLP01_3_0.html XTAS102/XTAS102_3_0.html
