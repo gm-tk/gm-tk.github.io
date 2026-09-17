@@ -1,0 +1,48 @@
+un-boxed captures: 1079 on 515 pages / 255 modules
+verdicts: [('gold-absent', 318), ('gold-free', 301), ('gold-boxed', 245), ('no-key', 215)]
+
+BY base type: n / gold-boxed share (of keyed) / no-key / pages / modules
+   ('clickDrop', 157, 0.15, 33, 92, 72)
+   ('accordion', 151, 0.25, 20, 109, 76)
+   ('carousel', 127, 0.11, 32, 105, 82)
+   ('flipCard', 111, 0.12, 29, 90, 71)
+   ('unclassified', 82, 0.47, 12, 24, 23)
+   ('dropDown', 64, 0.61, 8, 48, 45)
+   ('modal', 54, 0.43, 7, 38, 29)
+   ('tabs', 48, 0.28, 9, 42, 31)
+   ('selectionBox', 45, 0.58, 14, 31, 21)
+   ('speechBubble', 34, 0.23, 4, 28, 24)
+   ('infoTrigger', 30, 0.19, 3, 26, 18)
+   ('multiChoiceQuiz', 29, 0.5, 15, 23, 22)
+   ('typing', 25, 0.62, 4, 20, 16)
+   ('dragAndDrop', 21, 0.31, 5, 13, 11)
+   ('shapeHover', 18, 0.07, 4, 18, 13)
+   ('slider', 16, 0.31, 3, 15, 10)
+   ('sketcher', 11, 0.29, 4, 9, 8)
+   ('hint', 11, 0.45, 0, 8, 4)
+   ('interactive', 8, 0.17, 2, 4, 4)
+   ('wordSelect', 7, 0.0, 1, 6, 5)
+
+BY template:
+   ('Standard', 713, 0.25, 134, 417, 174)
+   ('Fundamentals', 230, 0.29, 57, 47, 46)
+   ('Inquiry', 108, 0.53, 21, 39, 29)
+   ('Bilingual', 28, 0.08, 3, 12, 6)
+
+BY subject:
+   ('Leaving to Learn', 145, 0.22, 20, 80, 33)
+   ('1-10 English', 144, 0.27, 37, 90, 40)
+   ('ConnectED', 128, 0.4, 21, 51, 19)
+   ('Online Safety (OS9000)', 101, 0.15, 28, 58, 27)
+   ('NCEA1', 92, 0.22, 10, 63, 32)
+   ('1-10 Mathematics', 90, 0.31, 15, 53, 25)
+   ('1-10 Health and PE', 89, 0.43, 29, 15, 15)
+   (None, 73, 0.32, 7, 24, 9)
+   ('1-10 Arts', 42, 0.0, 14, 5, 5)
+   ('1-10 Social Science', 35, 0.4, 10, 16, 10)
+   ('Te ara Whakapuawa -Wellbeing', 34, 0.45, 5, 6, 6)
+   ('Te Marautanga o Aotearoa TMoA', 28, 0.08, 3, 12, 6)
+
+THE CLASS (gold boxes it, Claude has no box): 245 captures / 140 pages / 98 modules
+  by type: [('dropDown', 34), ('accordion', 33), ('unclassified', 33), ('modal', 20), ('clickDrop', 19), ('selectionBox', 18), ('typing', 13), ('tabs', 11), ('flipCard', 10), ('carousel', 10), ('speechBubble', 7), ('multiChoiceQuiz', 7)]
+  examples: [('AGH1006', 'AGH1006_7_0.html', 'flipCard', 'Fertilisers provide essential macronutri'), ('ANZH205', 'ANZH205_2_0.html', 'selectionBox', 'Was Te Kemara for or against signing the'), ('ANZH205', 'ANZH205_2_0.html', 'selectionBox', 'Was Rewa for or against signing the trea'), ('ANZH205', 'ANZH205_2_0.html', 'selectionBox', 'Was Tāmati Wāka Nene for or against sign'), ('ANZH205', 'ANZH205_2_0.html', 'selectionBox', 'Was Te Ruki Kawiti for or against signin'), ('ANZH205', 'ANZH205_2_0.html', 'selectionBox', 'Was Hone Heke for or against signing the'), ('ANZH205', 'ANZH205_2_0.html', 'selectionBox', 'Was Patuone for or against signing the t'), ('ANZH304', 'ANZH304_1_0.html', 'speechBubble', 'Felton Mathew')]

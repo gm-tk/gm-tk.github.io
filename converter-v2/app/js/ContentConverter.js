@@ -1800,7 +1800,11 @@ class ContentConverter {
 						// HPFUN overviews). Phase-scoped numbering = the recorded follow-up;
 						// until then the rule asserts only where the number is derivable.
 						&& this.#pageLessonNumber != null
-						&& (saCfg.types ?? []).includes(bundle.type);
+						// ROUND 367 (the autonomous loop's session 21, Round 4): dropDown + typing join the box behind
+						// their own list — the gold boxes them at 0.61 / 0.62 (outputs/_measure_r367_unboxed.py); env SABOX367_OFF
+						&& ((saCfg.types ?? []).includes(bundle.type)
+							|| (!(typeof process !== "undefined" && process.env && process.env[saCfg.types_round367_env || "SABOX367_OFF"])
+								&& (saCfg.types_round367 ?? []).includes(bundle.type)));
 					const saOwner = saOn
 						? { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" }
 						: null;

@@ -1,0 +1,1265 @@
+PNR102: identical 3 / changed 0
+TRR104: prep refused (no-wt)
+TRR108: identical 3 / changed 0
+TRR113: identical 5 / changed 0
+TRR301: identical 4 / changed 0
+ARFUN03: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+  ~ ENFUN01_0_0.html: -35 +41
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENFUN01-00-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dropDown (long) — Activity (inline)
+     - <th><b>Image and speech bubble</b></th>
+     - <th><b>Correct</b></th>
+     - <th> Incorrect </th>
+     - <th> Incorrect </th>
+     - <td> [speech bubble] / I am planning to visit Whangārei but need to know more about it first. Please help? / [
+     - <td>I will make an <b>information</b> brochure. / My <b>tone</b> will be <b>factual.</b> / My <b>word choices<
+     - <td>I will write to <b>persuade</b> them to go to Hahei instead. / My <b>tone</b> will be <b>convincing</b> an
+     - <td>I will write a silly <b>story</b> about camping mishaps. / My tone will be <b>fun</b> and <b>amusing.</b> 
+     - <td> [speech bubble] / I can’t decide whether to get a kitten or a puppy. Please help? / [Image] / <a href="ht
+     - <td>I will write about the benefits of getting a dog. / My <b>tone</b> will be <b>convincing.</b> / My <b>word
+     - <td>I will write a story about my kitten’s tricks. / My <b>tone</b> will be <b>friendly</b> and <b>clever</b>.
+     - <td>I will write a report on pests in New Zealand. / My <b>tone</b> will be <b>factual.</b> / My <b>word choic
+     - <td> [speech bubble] / I want to read a funny story while I drink my coffee. Can you help? / [Image] / <a href
+     - <td>I will write about the time my dad wore his clothes inside out all day. / My <b>tone</b> will be <b>entert
+     - <td>I will argue that coffee is bad for them. / My <b>tone</b> will be <b>convincing.</b> / My <b>word choices
+     - <td>I will write about how the muscles in the face work. / My <b>tone</b> will be <b>factual.</b> / My <b>word
+     - <tr>
+     - </tr>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENFUN01-00-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dropDown (long) — Activity (inline)
+     + <th><b>Image and speech bubble</b></th>
+     + <td> [speech bubble] / I am planning to visit Whangārei but need to know more about it first. Please help? / [
+     + <td>I will make an <b>information</b> brochure. / My <b>tone</b> will be <b>factual.</b> / My <b>word choices<
+     + <td>I will write to <b>persuade</b> them to go to Hahei instead. / My <b>tone</b> will be <b>convincing</b> an
+     + <td>I will write a silly <b>story</b> about camping mishaps. / My tone will be <b>fun</b> and <b>amusing.</b> 
+     + <td> [speech bubble] / I can’t decide whether to get a kitten or a puppy. Please help? / [Image] / <a href="ht
+     + <td>I will write about the benefits of getting a dog. / My <b>tone</b> will be <b>convincing.</b> / My <b>word
+     + <td>I will write a story about my kitten’s tricks. / My <b>tone</b> will be <b>friendly</b> and <b>clever</b>.
+     + <td>I will write a report on pests in New Zealand. / My <b>tone</b> will be <b>factual.</b> / My <b>word choic
+     + <td> [speech bubble] / I want to read a funny story while I drink my coffee. Can you help? / [Image] / <a href
+     + <td>I will write about the time my dad wore his clothes inside out all day. / My <b>tone</b> will be <b>entert
+     + <td>I will argue that coffee is bad for them. / My <b>tone</b> will be <b>convincing.</b> / My <b>word choices
+     + <td>I will write about how the muscles in the face work. / My <b>tone</b> will be <b>factual.</b> / My <b>word
+     + <div class="activity interactive" number="2C">
+     + <th><b>Correct</b></th>
+     + <th> Incorrect </th>
+     + … 21 more added
+ENFUN01: identical 0 / changed 1
+ENFUN05: identical 1 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+MXFUN02: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN08: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+  ~ TEFUN08_0_0.html: -21 +33
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="TEFUN08-00-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [https://scratch.mit.edu/]</p>
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown — Activity (inline) — see T
+     - <div style="font-size: 0.95em">
+     - <ul>
+     - <li>Two methods draw the triangle very fast. These are the code stacks that create the yellow triangle and the
+     - <li>Two methods move the pen slowly so that you can see what is happening. These are the code stacks that crea
+     - <li>Two methods use (x,y) coordinates for each corner of the triangle, then tell the pen to move to each corne
+     - <li>Two methods start at an (x,y) coordinate, then tell the pen which direction to move, and how far. These ar
+     - </ul>
+     - <p>On the</p>
+     - <p>Scratch website</p>
+     - <p>, you can view other people’s coding projects, even if you don’t have an account. Look for these buttons ab
+     - <p>The “See inside button” shows you the code that makes the project go. For some projects, the code has lots 
+     - <p>The ‘Remix” button only shows if you have an account and are logged in. It saves a copy of any project for 
+     - <p>You can also use the “File” menu to save any project to your computer, and work on it there. The file menu 
+     + <div class="activity interactive" number="3A">
+     + <li>Two methods draw the triangle very fast. These are the code stacks that create the yellow triangle and the
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="TEFUN08-00-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [https://scratch.mit.edu/]</p>
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown — Activity (inline) — see T
+     + <div style="font-size: 0.95em">
+     + <ul>
+     + <li>Two methods move the pen slowly so that you can see what is happening. These are the code stacks that crea
+     + <li>Two methods use (x,y) coordinates for each corner of the triangle, then tell the pen to move to each corne
+     + <li>Two methods start at an (x,y) coordinate, then tell the pen which direction to move, and how far. These ar
+     + </ul>
+     + <p>On the</p>
+     + <p>Scratch website</p>
+     + <p>, you can view other people’s coding projects, even if you don’t have an account. Look for these buttons ab
+     + <p>The “See inside button” shows you the code that makes the project go. For some projects, the code has lots 
+     + … 13 more added
+TEFUN08: identical 0 / changed 1
+BLL120: identical 1 / changed 0
+BLL160: identical 1 / changed 0
+BLL230: identical 1 / changed 0
+  ~ CEDK501_2_0.html: -26 +36
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="CEDK501-02-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Checkboxes]</p>
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: typing — Activity (inline) — see CED
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [Answer should show after they have completed theirs.] / Yes. This is a reasonable goal because Alex can 
+     - </tr>
+     - </table>
+     - <ol>
+     - <li>Sometimes we need to make changes in our spending to reach our goals. Select THREE changes Alex could make
+     - </ol>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [Checkbox] Sell his car. / [When selected this should drop down.] / This is NOT a good option. Alex needs
+     - <th> [Checkbox] Put all of his dog walking income ($35 a week) straight into his savings for his goals. / This
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="CEDK501-02-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Checkboxes]</p>
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: typing — Activity (inline) — see CED
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [Answer should show after they have completed theirs.] / Yes. This is a reasonable goal because Alex can 
+     + </tr>
+     + </table>
+     + … 16 more added
+  ~ CEDK501_6_0.html: -32 +46
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="CEDK501-07-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: typing (please recreate the below) 
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><b>1.1 – You have described a personal goal (using SMART) and shown you can use a budget.</b></th>
+     - </tr>
+     - <tr>
+     - <td> [Checkbox] / [Checkbox] </td>
+     - <td><b>To attain Achievement:</b> / I have included a description OR budget which outlines a personal financia
+     - </tr>
+     - <tr>
+     - <td><b>1.2 – You have identified THREE impacts of spending behaviour across the timeframe that your goal is se
+     - </tr>
+     - <tr>
+     - <td> [Checkbox] / [Checkbox] / [Checkbox] </td>
+     - <td><b>To attain Achievement:</b> / I have identified THREE impacts of the financial goal on spending behaviou
+     - </tr>
+     - <tr>
+     - <td><b>1.3 – You have shown how you will monitor and maintain progress to achieve your financial goal</b></td>
+     - </tr>
+     - <tr>
+     - <td> [Checkbox] / [Checkbox] / [Checkbox] </td>
+     - <td><b>To attain Achievement:</b> / You have described a valid plan for monitoring and maintaining progress in
+     - </tr>
+     - </table>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="6A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="CEDK501-07-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: typing (please recreate the below) 
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>1.1 – You have described a personal goal (using SMART) and shown you can use a budget.</b></th>
+     + </tr>
+     + <tr>
+     + <td> [Checkbox] / [Checkbox] </td>
+     + … 26 more added
+  ~ CEDK501_6_1.html: -1 +1
+     - <div class="activity interactive" number="6A">
+     + <div class="activity interactive" number="6C">
+CEDK501: identical 11 / changed 3
+CEDR204: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT404: identical 1 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+AGH1001: identical 6 / changed 0
+  ~ AGH1005_2_0.html: -1 +11
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dropDown] marker — no content c
+     + <div class="activity interactive" number="2A">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dropDown] marker — no content c
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+AGH1005: identical 8 / changed 1
+AGH1009: identical 10 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ART1003: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL137: identical 3 / changed 0
+  ~ BLL144_1_0.html: -3 +9
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <div class="activity interactive" number="1F">
+     + <div class="activity interactive" number="1B">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-12">
+     + <div class="activity interactive" number="1G">
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+BLL144: identical 2 / changed 1
+  ~ BLL151_2_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="2E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+BLL151: identical 2 / changed 1
+  ~ BLL155_1_0.html: -4 +24
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="1G">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + <div class="activity interactive" number="1I">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 4 more added
+  ~ BLL155_1_1.html: -1 +1
+     - <div class="activity interactive" number="1I">
+     + <div class="activity interactive" number="1K">
+BLL155: identical 1 / changed 2
+BLL162: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+  ~ BLL214_1_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="1C">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + </div>
+     + </div>
+BLL214: identical 2 / changed 1
+  ~ BLL221_2_0.html: -13 +19
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL221-02-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dropDown — Activity (inline) — see B
+     - <div style="font-size: 0.95em">
+     - <p>Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page an
+     - <ul>
+     - <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     - </ul>
+     + <div class="activity interactive" number="2F">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL221-02-04" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dropDown — Activity (inline) — see B
+     + <div style="font-size: 0.95em">
+     + <p>Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page an
+     + <ul>
+     + <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     + </ul>
+     + </div>
+     + </div>
+     + </div>
+BLL221: identical 2 / changed 1
+BLL225: identical 3 / changed 0
+  ~ BLL232_2_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="2F">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL232: identical 2 / changed 1
+BLL236: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+  ~ BLL252_1_0.html: -57 +67
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL252-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Is it possible to have an X that ākon
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: typing (+ +) — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> The starting word </th>
+     - <th> The letters the X should cover to be marked correct </th>
+     - <th> The correct words for the type the answer part </th>
+     - </tr>
+     - <tr>
+     - <td>cannot</td>
+     - <td>can no t</td>
+     - <td> [can’t] </td>
+     - </tr>
+     - <tr>
+     - <td>do not</td>
+     - <td>do n o t</td>
+     - <td> [don’t] </td>
+     - </tr>
+     - <tr>
+     - <td>I am</td>
+     - <td>I a m</td>
+     - <td> [I’m] </td>
+     - </tr>
+     - <tr>
+     - <td>it is</td>
+     - <td>it i s</td>
+     - <td> [it’s] </td>
+     - </tr>
+     - <tr>
+     - <td>we are</td>
+     - <td>we a re</td>
+     - <td> [we’re] </td>
+     - … 17 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL252-01-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Is it possible to have an X that ākon
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: typing (+ +) — Activity (inline) — s
+     + <th> The starting word </th>
+     + <th> The letters the X should cover to be marked correct </th>
+     + <th> The correct words for the type the answer part </th>
+     + <td>cannot</td>
+     + <td>can no t</td>
+     + <td> [can’t] </td>
+     + <td>do not</td>
+     + <td>do n o t</td>
+     + <td> [don’t] </td>
+     + <td>I am</td>
+     + <td>I a m</td>
+     + <td> [I’m] </td>
+     + <td>it is</td>
+     + <td>it i s</td>
+     + <td> [it’s] </td>
+     + … 47 more added
+BLL252: identical 2 / changed 1
+  ~ BLL263_3_0.html: -34 +64
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL263-02-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [designer note]<br />A copy of the PD
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: typing + typing (no / all) — Activit
+     - <p>[image] insert the front cover of the text, Helpful (without any text or title). A link to the website can 
+     - <p><b>in the folder here</b></p>
+     - <p>-</p>
+     - <th></th>
+     - <td>Who do you think might be in the story?</td>
+     - <td>Type the answer here: / [typeable box] </td>
+     - <td>Where do you think the story might take place?</td>
+     - <td>Type the answer here: / [typeable box] </td>
+     - <td>What do you think could be happening in this part of the story?</td>
+     - <td>Type the answer here: / [typeable box] </td>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <p>-</p>
+     - <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/helpful/5637163353.p" target="_blank">htt
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="3B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL263-02-01" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [designer note]<br />A copy of the PD
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: typing + typing (no / all) — Activit
+     + <div style="font-size: 0.95em">
+     + <p>[image] insert the front cover of the text, Helpful (without any text or title). A link to the website can 
+     + <p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/helpful/5637163353.p" target="_blank">htt
+     + <p><b>in the folder here</b></p>
+     + <p>-</p>
+     + <p>-</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + </tr>
+     + … 44 more added
+BLL263: identical 2 / changed 1
+CEDO501: identical 16 / changed 0
+  ~ CEDW501_6_0.html: -3 +13
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Upload to dropbox</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <div class="activity dropbox interactive" number="6A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Upload to dropbox</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+CEDW501: identical 12 / changed 1
+  ~ ENGC101_4_0.html: -63 +75
+     - <div class="dropQuiz">
+     - <div class="dropQuestion">
+     - <div class="dropDown" answer="2">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>For people with bikes</p>
+     - <p>For people with disabilities</p>
+     - <p>For people without cars</p>
+     - <div class="dropQuestion">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1162752096" alt="" loading="lazy" /><!-- 
+     - <div class="dropDown" answer="1">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Recycling</p>
+     - <p>Round-a-bout</p>
+     - <p>Walk now</p>
+     - <div class="dropQuestion">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1198617426" alt="" loading="lazy" /><!-- 
+     - <div class="dropDown" answer="3">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Cat friendly</p>
+     - <p>Beware of the dog</p>
+     - <p>Dogs not allowed</p>
+     - </div>
+     - <div class="dropQuestion">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1407160246" alt="" loading="lazy" /><!-- 
+     - <div class="dropDown" answer="3">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Shout/don’t whisper</p>
+     - <p>No parking/go away</p>
+     - <p>Danger/be careful</p>
+     - </div>
+     - </div>
+     - <div class="dropQuestion">
+     - <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1368764854" alt="" loading="lazy" /><!-- 
+     - <div class="dropDown" answer="1">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - … 23 more removed
+     + <div class="activity interactive" number="4A">
+     + <li>For people with bikes</li>
+     + <div class="dropQuiz">
+     + <div class="row">
+     + <div class="dropQuestion">
+     + <div class="dropDown" answer="1">
+     + <p class="placeholder">Select one</p>
+     + <div class="options">
+     + <p>For people with disabilities</p>
+     + <p>For people without cars</p>
+     + <div class="dropQuestion">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1162752096" alt="" loading="lazy" /><!-- 
+     + <div class="dropDown" answer="1">
+     + <p class="placeholder">Select one</p>
+     + <div class="options">
+     + <p>Recycling</p>
+     + <p>Round-a-bout</p>
+     + <p>Walk now</p>
+     + </div>
+     + </div>
+     + … 55 more added
+ENGC101: identical 5 / changed 1
+ENGC301: identical 8 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+  ~ ENGI400_3_0.html: -5 +15
+     - <p>Sending your work to your kaiako</p>
+     - <p>Upload your work using the dropbox button here.</p>
+     - <p>[</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="3C">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Upload your work using the dropbox button here.</p>
+     + <p>Sending your work to your kaiako</p>
+     + <p>[</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+ENGI400: identical 3 / changed 1
+ENGJ102: identical 6 / changed 0
+  ~ ENGJ302_9_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="9A">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+ENGJ302: identical 9 / changed 1
+ENGR102: identical 7 / changed 0
+ENGR302: identical 8 / changed 0
+  ~ ENGS202_6_0.html: -15 +21
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ENGS202-06-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: dropDown (upload to) — Activity (in
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> (same image as earlier) </th>
+     - <th> [speechbubble] / This marks the end of our road trip together and I want to thank you for being such grea
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="6D">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ENGS202-06-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: dropDown (upload to) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> (same image as earlier) </th>
+     + <th> [speechbubble] / This marks the end of our road trip together and I want to thank you for being such grea
+     + </tr>
+     + </table>
+     + </div>
+     + </div>
+     + … 1 more added
+ENGS202: identical 6 / changed 1
+ENGS405: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1007: identical 10 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1008: identical 12 / changed 0
+  ~ MXDB202_5_0.html: -14 +21
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXDB202-05-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>Ka Pai! You have completed the module Landmarks Around the World. We hope you enjoyed your learning. It is 
+     - <p>Go to journal.</p>
+     - <ul>
+     - <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     - </ul>
+     + <div class="activity interactive" number="5D">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXDB202-05-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>Ka Pai! You have completed the module Landmarks Around the World. We hope you enjoyed your learning. It is 
+     + <p>Go to journal.</p>
+     + <ul>
+     + <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     + </ul>
+     + </div>
+     + </div>
+     + </div>
+     + … 1 more added
+MXDB202: identical 5 / changed 1
+MXDI102: identical 5 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO301: identical 11 / changed 0
+  ~ MXEX202_6_0.html: -10 +20
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="MXEX202-06-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dropDown — Activity (inline) — see M
+     - <div style="font-size: 0.95em">
+     - <p>Your kaiako (teacher) would love to see the learning you have done. Upload your journal and anything else y
+     - <p>Go to Dropbox</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="6A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="MXEX202-06-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dropDown — Activity (inline) — see M
+     + <div style="font-size: 0.95em">
+     + <p>Your kaiako (teacher) would love to see the learning you have done. Upload your journal and anything else y
+     + <p>Go to Dropbox</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+MXEX202: identical 6 / changed 1
+MXFL101: identical 12 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL301: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+  ~ MXFU402_7_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="7B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+MXFU402: identical 7 / changed 1
+  ~ OSAI101_2_0.html: -17 +27
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="OSAI101-02-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: typing — Activity (inline) — see OS
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [image] <a href="https://www.istockphoto.com/photo/fun-unicorn-3d-illustration-gm1041195518-278748838" ta
+     - </tr>
+     - <tr>
+     - <td> [alert] <b>Always use AI when an adult is watching to keep an eye out for dangers.</b> / AI doesn’t “know
+     - </tr>
+     - </table>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <div class="activity interactive" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="OSAI101-02-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: typing — Activity (inline) — see OS
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [image] <a href="https://www.istockphoto.com/photo/fun-unicorn-3d-illustration-gm1041195518-278748838" ta
+     + </tr>
+     + <tr>
+     + <td> [alert] <b>Always use AI when an adult is watching to keep an eye out for dangers.</b> / AI doesn’t “know
+     + </tr>
+     + </table>
+     + … 7 more added
+OSAI101: identical 2 / changed 1
+OSAI501: identical 6 / changed 0
+OSBY401: identical 5 / changed 0
+OSGM301: identical 4 / changed 0
+  ~ OSOH201_1_0.html: -20 +40
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="OSOH201-01-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: typing — Activity (inline) — see OSO
+     - <li>Mark the <b>same kind of things</b> you might do on the picture below – like the children with the ball co
+     - <ol>
+     - </ol>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="OSOH201-01-05" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: typing — Activity (inline) — see OSO
+     - <div style="font-size: 0.95em">
+     - <p>Which number had the most marked things? Chat with your supervisor about whether you have a good on and off
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <div class="activity interactive" number="1B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="OSOH201-01-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: typing — Activity (inline) — see OSO
+     + <ol>
+     + <li>Mark the <b>same kind of things</b> you might do on the picture below – like the children with the ball co
+     + </ol>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="OSOH201-01-05" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: typing — Activity (inline) — see OSO
+     + <p>Which number had the most marked things? Chat with your supervisor about whether you have a good on and off
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="row">
+     + … 20 more added
+OSOH201: identical 3 / changed 1
+OSSC301: identical 4 / changed 0
+OSSM401: identical 5 / changed 0
+PES1004: identical 11 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1005: identical 6 / changed 0
+SCCH301: identical 9 / changed 0
+SSOG101: identical 8 / changed 0
+  ~ TEDC402_6_0.html: -11 +25
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="89" data-cv2-ref="TEDC402-06-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: standing on phone</p>
+     - <div class="cv2-interactive" data-cv2-index="89" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #89: dropDown (go to) — Activity (inline
+     - <div style="font-size: 0.95em">
+     - <p>avatar Tina</p>
+     - <p>Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adult, Adults Only, Beautiful W
+     + <div class="activity interactive" number="6F">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="89" data-cv2-ref="TEDC402-06-08" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: standing on phone</p>
+     + <div class="cv2-interactive" data-cv2-index="89" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #89: dropDown (go to) — Activity (inline
+     + <div style="font-size: 0.95em">
+     + <p>avatar Tina</p>
+     + <p>Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adult, Adults Only, Beautiful W
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + … 5 more added
+  ~ TEDC402_7_0.html: -22 +36
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="107" data-cv2-ref="TEDC402-07-04" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: there are three correct answers:<br /
+     - <div class="cv2-interactive" data-cv2-index="107" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #107: dropDown — Activity (inline) — see
+     - <p>A decision point is where your algorithm chooses between two paths. Complete the missing parts and note the
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>IF the value is <b>[blank /</b> greater than 10 <b>/ a date]</b>, / THEN set category to <b>[unknown /</b>
+     - <th>IF the value is <b>[blank / greater than 10 /</b> a date <b>]</b>, / THEN set category to <b>[unknown / hi
+     - <th>IF the value is <b>[</b> blank <b>/ greater than 10 / a date]</b>, / THEN set category to <b>[</b> unknown
+     - </tr>
+     - </table>
+     - <p>Great! Did you notice that each answer changed depending on the IF condition selected? That’s because the I
+     - <p>avatar Tina</p>
+     - <p>Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adult, Adults Only, Beautiful W
+     - <p>-</p>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <div class="activity interactive" number="7D">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="107" data-cv2-ref="TEDC402-07-04" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: there are three correct answers:<br /
+     + <div class="cv2-interactive" data-cv2-index="107" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #107: dropDown — Activity (inline) — see
+     + <p>A decision point is where your algorithm chooses between two paths. Complete the missing parts and note the
+     + <th>IF the value is <b>[blank /</b> greater than 10 <b>/ a date]</b>, / THEN set category to <b>[unknown /</b>
+     + <th>IF the value is <b>[blank / greater than 10 /</b> a date <b>]</b>, / THEN set category to <b>[unknown / hi
+     + <th>IF the value is <b>[</b> blank <b>/ greater than 10 / a date]</b>, / THEN set category to <b>[</b> unknown
+     + <p>-</p>
+     + <p>Great! Did you notice that each answer changed depending on the IF condition selected? That’s because the I
+     + <p>avatar Tina</p>
+     + <p>Young Beautiful Student Woman Set Stock Illustration - Download Image Now - Adult, Adults Only, Beautiful W
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 16 more added
+  ~ TEDC402_8_1.html: -15 +25
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="142" data-cv2-ref="TEDC402-10-01" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="142" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #142: dropDown — Activity (inline) — see
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [dropbox] / [H3] <b>Share your learning</b> / [body] You now have the skills to question data stories you
+     - <th> [RHS] / [Image] avatar Tina sitting with laptop Young Beautiful Student Woman Set Stock Illustration - Do
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="8C">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="142" data-cv2-ref="TEDC402-10-01" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="142" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #142: dropDown — Activity (inline) — see
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [dropbox] / [H3] <b>Share your learning</b> / [body] You now have the skills to question data stories you
+     + <th> [RHS] / [Image] avatar Tina sitting with laptop Young Beautiful Student Woman Set Stock Illustration - Do
+     + </tr>
+     + </table>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 5 more added
+TEDC402: identical 8 / changed 3
+XDLS904: identical 8 / changed 0
+XDLS911: identical 2 / changed 0
+  ~ XGF9003_1_3.html: -14 +28
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="XGF9003-04-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Define the decision to be made: [drop down menu] / • You want to join the football team and the drama club
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="1Q">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="XGF9003-04-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: dropDown — Activity (inline) — see 
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Define the decision to be made: [drop down menu] / • You want to join the football team and the drama club
+     + </tr>
+     + </table>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + </div>
+     + </div>
+     + … 8 more added
+XGF9003: identical 5 / changed 1
+  ~ XLP02_4_0.html: -182 +196
+     - <div class="dropQuiz">
+     - <ol start="1">
+     - <li>Name items with a labelling tool or stickers.</li>
+     - </ol>
+     - <div class="dropQuestion">
+     - <p>Yes</p>
+     - <div class="dropDown" answer="1">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Yes</p>
+     - <p>No</p>
+     - <div class="dropQuestion">
+     - <p>No</p>
+     - <div class="dropDown" answer="2">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Yes</p>
+     - <p>No</p>
+     - <ol start="2">
+     - <li>Asking a question or requesting – For my birthday I want …</li>
+     - </ol>
+     - <div class="dropQuestion">
+     - <p>Yes</p>
+     - <div class="dropDown" answer="1">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Yes</p>
+     - <p>No</p>
+     - </div>
+     - </div>
+     - <div class="dropQuestion">
+     - <p>No</p>
+     - <div class="dropDown" answer="2">
+     - <p class="placeholder">Select one</p>
+     - <div class="options">
+     - <p>Yes</p>
+     - <p>No</p>
+     - </div>
+     - </div>
+     - </div>
+     - … 142 more removed
+     + <div class="activity interactive" number="4A">
+     + <div class="dropQuiz">
+     + <div class="row">
+     + <ol start="1">
+     + <li>Name items with a labelling tool or stickers.</li>
+     + </ol>
+     + <div class="dropQuestion">
+     + <p>Yes</p>
+     + <div class="dropDown" answer="1">
+     + <p class="placeholder">Select one</p>
+     + <div class="options">
+     + <p>Yes</p>
+     + <p>No</p>
+     + </div>
+     + <div class="dropQuestion">
+     + <p>No</p>
+     + <div class="dropDown" answer="2">
+     + <p class="placeholder">Select one</p>
+     + <div class="options">
+     + <p>Yes</p>
+     + … 176 more added
+XLP02: identical 6 / changed 1
+XLP06: identical 3 / changed 0
+  ~ XMES201_1_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="1E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity dropbox interactive" number="1H">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + … 4 more added
+  ~ XMES201_2_0.html: -7 +37
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Ka pai! There was lots of thinking in that activity. Great work.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Ka pai! There was lots of thinking in that activity. Great work.</p>
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="2G">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + </div>
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+     + … 17 more added
+  ~ XMES201_5_0.html: -3 +13
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Great work! There are many words we can use to describe our pets.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <div class="activity dropbox interactive" number="5B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Great work! There are many words we can use to describe our pets.</p>
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + </div>
+     + </div>
+XMES201: identical 3 / changed 3
+  ~ XTAS103_1_0.html: -2 +12
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <div class="activity dropbox interactive" number="1C">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + </div>
+     + <div class="row">
+     + </div>
+     + </div>
+  ~ XTAS103_2_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ XTAS103_2_1.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2G">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + </div>
+     + <div class="row">
+     + </div>
+     + </div>
+  ~ XTAS103_3_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="3B">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="3E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + … 4 more added
+  ~ XTAS103_4_0.html: -7 +37
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Any of these activities are a great way to get moving and feel good. You may need some time on these activi
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="4B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="4E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Any of these activities are a great way to get moving and feel good. You may need some time on these activi
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity dropbox interactive" number="4H">
+     + … 17 more added
+XTAS103: identical 2 / changed 5
+
+TOTAL: identical 469 / changed 38 / missing 0 over 104 modules
+CHANGED: ENFUN01/ENFUN01_0_0.html TEFUN08/TEFUN08_0_0.html CEDK501/CEDK501_2_0.html CEDK501/CEDK501_6_0.html CEDK501/CEDK501_6_1.html AGH1005/AGH1005_2_0.html BLL144/BLL144_1_0.html BLL151/BLL151_2_0.html BLL155/BLL155_1_0.html BLL155/BLL155_1_1.html BLL214/BLL214_1_0.html BLL221/BLL221_2_0.html BLL232/BLL232_2_0.html BLL252/BLL252_1_0.html BLL263/BLL263_3_0.html CEDW501/CEDW501_6_0.html ENGC101/ENGC101_4_0.html ENGI400/ENGI400_3_0.html ENGJ302/ENGJ302_9_0.html ENGS202/ENGS202_6_0.html MXDB202/MXDB202_5_0.html MXEX202/MXEX202_6_0.html MXFU402/MXFU402_7_0.html OSAI101/OSAI101_2_0.html OSOH201/OSOH201_1_0.html TEDC402/TEDC402_6_0.html TEDC402/TEDC402_7_0.html TEDC402/TEDC402_8_1.html XGF9003/XGF9003_1_3.html XLP02/XLP02_4_0.html XMES201/XMES201_1_0.html XMES201/XMES201_2_0.html XMES201/XMES201_5_0.html XTAS103/XTAS103_1_0.html XTAS103/XTAS103_2_0.html XTAS103/XTAS103_2_1.html XTAS103/XTAS103_3_0.html XTAS103/XTAS103_4_0.html

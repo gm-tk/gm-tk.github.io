@@ -1,0 +1,1787 @@
+PNR104: identical 3 / changed 0
+TRR105: prep refused (no-wt)
+TRR109: identical 6 / changed 0
+TRR114: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+ARFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+XFUN01: identical 1 / changed 0
+BLL130: identical 1 / changed 0
+BLL170: identical 1 / changed 0
+BLL240: identical 9 / changed 0
+CEDO102: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDW101: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+  ~ XDLS901_1_0.html: -5 +45
+     - <div class="activity" number="1C">
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="1C">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="1E">
+     + <div class="activity dropbox interactive" number="1H">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity" number="1I">
+     + </div>
+     + </div>
+     + <div class="row">
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 25 more added
+  ~ XDLS901_2_0.html: -5 +25
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <div class="activity" number="2A">
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="2C">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + … 5 more added
+  ~ XDLS901_3_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="3E">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="3G">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + … 4 more added
+  ~ XDLS901_4_0.html: -2 +16
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="4B">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+XDLS901: identical 1 / changed 4
+AGH1002: identical 7 / changed 0
+  ~ AGH1006_2_0.html: -29 +39
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="AGH1006-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown — Activity (inline) — see A
+     - <div style="font-size: 0.95em">
+     - <p>When propagating plants from a cutting, aim for plants that are ________ free and healthy. Look for the new
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>• disease</th>
+     - <th>• soft</th>
+     - <th>• time</th>
+     - <th>• Secateurs</th>
+     - <th>• node</th>
+     - <th>• below</th>
+     - </tr>
+     - <tr>
+     - <td>• Trim</td>
+     - <td>• hormone</td>
+     - <td>• stem</td>
+     - <td>• water</td>
+     - <td>11. warm</td>
+     - <td>12. dry</td>
+     - </tr>
+     - </table>
+     - <p>[Button] Complete activity 2B in your learning journal.</p>
+     + <div class="activity interactive" number="2B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="AGH1006-02-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown — Activity (inline) — see A
+     + <div style="font-size: 0.95em">
+     + <p>When propagating plants from a cutting, aim for plants that are ________ free and healthy. Look for the new
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>• disease</th>
+     + <th>• soft</th>
+     + <th>• time</th>
+     + <th>• Secateurs</th>
+     + <th>• node</th>
+     + <th>• below</th>
+     + </tr>
+     + … 19 more added
+AGH1006: identical 9 / changed 1
+ANZH101: identical 4 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ART1004: identical 1 / changed 0
+BLL112: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+  ~ BLL123_1_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="1G">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ BLL123_2_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="2F">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+BLL123: identical 1 / changed 2
+BLL127: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+  ~ BLL141_1_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="1F">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ BLL141_2_0.html: -15 +35
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="BLL141-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page an
+     - <ul>
+     - <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     - </ul>
+     + <div class="activity interactive" number="2D">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="2G">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="BLL141-02-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dropDown — Activity (inline) — see 
+     + … 15 more added
+BLL141: identical 1 / changed 2
+  ~ BLL145_1_1.html: -3 +13
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Congratulations on completing Module 5. Tino pai, you are tracking so well! You are now ready to start Modu
+     + <div class="activity interactive" number="1M">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Congratulations on completing Module 5. Tino pai, you are tracking so well! You are now ready to start Modu
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL145: identical 2 / changed 1
+  ~ BLL152_1_1.html: -3 +13
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Congratulations! You have now completed module 2 and ready for the next lesson. Please return to the landin
+     + <div class="activity interactive" number="1L">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Congratulations! You have now completed module 2 and ready for the next lesson. Please return to the landin
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL152: identical 2 / changed 1
+  ~ BLL156_1_1.html: -3 +13
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Congratulations! You have now completed module 6 and ready for the next lesson. Please return to the landin
+     + <div class="activity interactive" number="1L">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Congratulations! You have now completed module 6 and ready for the next lesson. Please return to the landin
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL156: identical 2 / changed 1
+  ~ BLL163_1_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="1E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+  ~ BLL163_1_1.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="1J">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + </div>
+     + </div>
+BLL163: identical 1 / changed 2
+BLL167: identical 3 / changed 0
+  ~ BLL174_1_1.html: -3 +13
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Congratulations! You have now completed Module 4 and ready for the next lesson. Please return to the landin
+     + <div class="activity interactive" number="1K">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Congratulations! You have now completed Module 4 and ready for the next lesson. Please return to the landin
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL174: identical 2 / changed 1
+BLL211: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+  ~ BLL237_1_0.html: -2 +12
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="1E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+BLL237: identical 2 / changed 1
+BLL245: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+  ~ CEDO502_1_1.html: -14 +20
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="CEDO502-02-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: typing (self) — Activity (inline) — 
+     - <th> Suggested answer: / Nikau and Mana could end up in debt because they both used credit. They borrowed mone
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="1D">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="CEDO502-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: typing (self) — Activity (inline) — 
+     + <th> Suggested answer: / Nikau and Mana could end up in debt because they both used credit. They borrowed mone
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + </tr>
+     + </table>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+CEDO502: identical 9 / changed 1
+  ~ ENG1004_1_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="1A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ ENG1004_2_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+ENG1004: identical 6 / changed 2
+ENGC102: identical 8 / changed 0
+  ~ ENGC302_7_0.html: -12 +22
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGC302-07-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>Go to dropbox.</p>
+     - <p>A final sign off from Kahu</p>
+     - <p><a href="https://drive.google.com/file/d/1wZfFqkv5ZriEdTgxRjULJcqtmj-xbQ8W/view?usp=drive_link" target="_bl
+     - <p>Thank you so much for showing me around your favourite places in Aotearoa. I had a blast!</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="7A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGC302-07-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>Go to dropbox.</p>
+     + <p>A final sign off from Kahu</p>
+     + <p><a href="https://drive.google.com/file/d/1wZfFqkv5ZriEdTgxRjULJcqtmj-xbQ8W/view?usp=drive_link" target="_bl
+     + <p>Thank you so much for showing me around your favourite places in Aotearoa. I had a blast!</p>
+     + </div>
+     + </div>
+     + </div>
+     + … 2 more added
+ENGC302: identical 7 / changed 1
+  ~ ENGI103_6_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="6E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+ENGI103: identical 6 / changed 1
+  ~ ENGI301_2_0.html: -10 +20
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENGI301-02-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dropDown (assessment) — Activity (in
+     - <div style="font-size: 0.95em">
+     - <p>Choose two of the rugby greats provided to compare data on. Examine the statistics that show the players&#3
+     - <p><a href="https://docs.google.com/document/d/1x8mO53EgWWSIi5cfg-AL-Bg1siOSrB4emy5fVTn5T_E/edit" target="_bla
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="2A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ENGI301-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dropDown (assessment) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <p>Choose two of the rugby greats provided to compare data on. Examine the statistics that show the players&#3
+     + <p><a href="https://docs.google.com/document/d/1x8mO53EgWWSIi5cfg-AL-Bg1siOSrB4emy5fVTn5T_E/edit" target="_bla
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ ENGI301_5_0.html: -39 +55
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ENGI301-05-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown (assessment) — Activity (in
+     - <div style="font-size: 0.95em">
+     - <p>Use your skills of <b>skimming and scanning</b> to find information on a professional athlete from any form
+     - <p>You can use the template provided or design your own presentation.</p>
+     - <p><a href="https://docs.google.com/presentation/d/1t7euwpYLkRbFEpf-djCkO1to0pLUlgriVM6E77YFNYA/copy" target="
+     - <p>Tick off the checklist below to ensure you have included all necessary information.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGI301-05-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dropDown (upload to) — Activity (inl
+     - <div style="font-size: 0.95em">
+     - <ul>
+     - <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     - </ul>
+     - <p><b>SUBMISSION CHECKLIST</b></p>
+     - <p><b>Have you:</b></p>
+     - <p>☐Completed Section A if using content from existing My Te Kura resources?</p>
+     - <p>☐ Ensured Section A is a true reflection of old content used at the completion of this writer’s copy?</p>
+     - <p>☐ Completed Kaimahi Guide Notes for submission to Creative Services alongside this template?</p>
+     - <p>☐Completed a <b>Learning Journal</b> (if using) for submission to Creative Services alongside this template
+     - <p>☐Clearly identified any toolbox items for use in this module?</p>
+     - <p>☐ Specified a red tag for every component in this document?</p>
+     - <p>☐Checked the resource code is correct?</p>
+     - <p>☐Checked punctuation, spelling and grammar are correct?</p>
+     - <p>☐Checked activities against the answers?</p>
+     - <p>☐Checked that the hyperlinks work?</p>
+     - <p>☐ Completed the Media list?</p>
+     - <p>☐Compiled all the media files separately, with the same file names as the titles?</p>
+     - <p>☐ Included audio or video scripts, and illustration briefs (if applicable)? <i>(Please supply these separat
+     + <div class="activity interactive" number="5A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ENGI301-05-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: dropDown (assessment) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <p>Use your skills of <b>skimming and scanning</b> to find information on a professional athlete from any form
+     + <p>You can use the template provided or design your own presentation.</p>
+     + <p><a href="https://docs.google.com/presentation/d/1t7euwpYLkRbFEpf-djCkO1to0pLUlgriVM6E77YFNYA/copy" target="
+     + <p>Tick off the checklist below to ensure you have included all necessary information.</p>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 35 more added
+ENGI301: identical 4 / changed 2
+ENGI401: identical 12 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ402: identical 9 / changed 0
+  ~ ENGR201_6_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="6F">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+ENGR201: identical 6 / changed 1
+  ~ ENGS101_5_0.html: -12 +19
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ENGS101-05-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>Ka pai! You have completed Exploring Te Ika a Māui.</p>
+     - <p>Check you have completed all the activities in your journal and then submit it to the dropbox.</p>
+     - <p>Go to journal</p>
+     - <p>Go to dropbox</p>
+     + <div class="activity interactive" number="5C">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Check you have completed all the activities in your journal and then submit it to the dropbox.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ENGS101-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>Ka pai! You have completed Exploring Te Ika a Māui.</p>
+     + <p>Go to journal</p>
+     + <p>Go to dropbox</p>
+     + </div>
+     + </div>
+     + </div>
+     + <h4 class="goJournal">Go to your journal</h4>
+ENGS101: identical 5 / changed 1
+  ~ ENGS301_7_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="7B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+ENGS301: identical 7 / changed 1
+  ~ EXBP901_3_0.html: -10 +20
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="EXBP901-03-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dropDown — Activity (inline) — see E
+     - <div style="font-size: 0.95em">
+     - <p>Upload your journal.</p>
+     - <p>FUNdamentals</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="EXBP901-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dropDown — Activity (inline) — see E
+     + <div style="font-size: 0.95em">
+     + <p>Upload your journal.</p>
+     + <p>FUNdamentals</p>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity interactive" number="3B">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+EXBP901: identical 5 / changed 1
+HES1004: identical 5 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1005: identical 15 / changed 0
+  ~ HPRE203_1_0.html: -50 +60
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HPRE203-01-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: fear | panic |<br />frightened | glee
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dropDown — Activity (inline) — see H
+     - <li>The elderly lady felt frustrated</li>
+     - <p>when the cookie was stuck in the machine.</p>
+     - <ol>
+     - <li>The elderly lady was</li>
+     - </ol>
+     - <p>angry</p>
+     - <p>when she was banging and kicking the machine.</p>
+     - <ol>
+     - <li>When the cookie fell to the bottom of the machine the elderly lady showed</li>
+     - </ol>
+     - <p>happiness</p>
+     - <ol>
+     - <li>When the elderly lady sat down at the train station, she felt excited</li>
+     - <li>The boy is feeling relaxed</li>
+     - </ol>
+     - <p>and listening to music.</p>
+     - <ol>
+     - <li>The lady is</li>
+     - </ol>
+     - <p>furious</p>
+     - <p>when the boy takes a cookie.</p>
+     - <ol>
+     - <li>The boy is</li>
+     - </ol>
+     - <p>astonished [</p>
+     - <p>when the lady starts shouting at him.</p>
+     - <ol>
+     - <li>The boy showed compassion</li>
+     - </ol>
+     - <p>when he tried to share the last cookie with the lady.</p>
+     - <ol>
+     - <li>The elderly lady is appalled</li>
+     - </ol>
+     - <p>when she gets on the train.</p>
+     - <ol>
+     - … 10 more removed
+     + <div class="activity interactive" number="1C">
+     + <div class="row">
+     + <div class="col-12">
+     + <ol>
+     + <li>The elderly lady felt frustrated</li>
+     + </ol>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HPRE203-01-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: fear | panic |<br />frightened | glee
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dropDown — Activity (inline) — see H
+     + <div style="font-size: 0.95em">
+     + <p>when the cookie was stuck in the machine.</p>
+     + <ol>
+     + <li>The elderly lady was</li>
+     + </ol>
+     + <p>angry</p>
+     + … 40 more added
+  ~ HPRE203_7_0.html: -2 +12
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <div class="activity dropbox interactive" number="7F">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+HPRE203: identical 6 / changed 2
+MXDB301: identical 8 / changed 0
+  ~ MXDI103_3_0.html: -10 +16
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="MXDI103-03-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>It is now time to show your kaiako what you have been learning so far. Please upload the work you have comp
+     - <p>Go to dropbox</p>
+     + <div class="activity interactive" number="3F">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="MXDI103-03-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>It is now time to show your kaiako what you have been learning so far. Please upload the work you have comp
+     + <p>Go to dropbox</p>
+     + </div>
+     + </div>
+     + </div>
+  ~ MXDI103_6_0.html: -11 +21
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXDI103-06-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>It is now time to show your kaiako what you have been learning so far. Please upload the work you have comp
+     - <p>If you are feeling confident to continue to the next section, please do so, or else wait till you have rece
+     - <p>Go to dropbox</p>
+     + <div class="activity interactive" number="6G">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>If you are feeling confident to continue to the next section, please do so, or else wait till you have rece
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXDI103-06-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>It is now time to show your kaiako what you have been learning so far. Please upload the work you have comp
+     + <p>Go to dropbox</p>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + … 1 more added
+MXDI103: identical 8 / changed 2
+MXEO102: identical 5 / changed 0
+  ~ MXEO401_4_0.html: -1 +11
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [typing] marker — no content cap
+     + <div class="activity interactive" number="4A">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [typing] marker — no content cap
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+MXEO401: identical 6 / changed 1
+MXEX301: identical 8 / changed 0
+MXFL102: identical 9 / changed 0
+  ~ MXFL202_7_0.html: -11 +17
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="MXFL202-05-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Triggers engagement]</p>
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: dropDown — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>Kai pai! You have completed your module on pets. Your kaiako would love to see the learning you have done. 
+     - <p>Go to dropbox</p>
+     + <div class="activity interactive" number="7B">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="MXFL202-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Triggers engagement]</p>
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: dropDown — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>Kai pai! You have completed your module on pets. Your kaiako would love to see the learning you have done. 
+     + <p>Go to dropbox</p>
+     + </div>
+     + </div>
+     + </div>
+MXFL202: identical 5 / changed 1
+MXFL302: identical 10 / changed 0
+  ~ MXFU301_8_0.html: -11 +21
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFU301-08-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dropDown (clip) — Activity (inline)
+     - <p>Tally chart basics</p>
+     - <p><a href="https://media.istockphoto.com/id/1337335566/vector/tally-marks-from-one-to-ten-mathematical-table-
+     - <p>Tally charts chunk in groups of five. This makes it easier to total up at the end of your investigations.</
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <div class="activity interactive" number="8B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFU301-08-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dropDown (clip) — Activity (inline)
+     + <p>Tally chart basics</p>
+     + <p><a href="https://media.istockphoto.com/id/1337335566/vector/tally-marks-from-one-to-ten-mathematical-table-
+     + <p>Tally charts chunk in groups of five. This makes it easier to total up at the end of your investigations.</
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + … 1 more added
+MXFU301: identical 11 / changed 1
+OSAH301: identical 4 / changed 0
+OSAI201: identical 4 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM401: identical 5 / changed 0
+OSOH301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+  ~ PES1005_5_0.html: -17 +27
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="PES1005-05-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Option 1. baskets<br />Option 2. Te P
+     - <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: dropDown — Activity (inline) — see P
+     - <div style="font-size: 0.95em">
+     - <p>Tāne-mahuta placed these children of Tangotango and Wainui in</p>
+     - <p>, and took them on a canoe to place them in the heavens. This canoe was called Te Waka o Tamarereti. Tāne p
+     - <p>. The stars of the anchor are known in English as the</p>
+     - <p>. It&#39;s so important to New Zealanders that we have it on our national flag. Tāne then began to hang</p>
+     - <p>(the stars) in the sky, to adorn his father, Ranginui. When he had hung the first stars he was pleased, and
+     - <p>. Tāne placed the</p>
+     - <p>and the</p>
+     - <p>to bring light into the world.</p>
+     + <div class="activity interactive" number="5A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="PES1005-05-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Option 1. baskets<br />Option 2. Te P
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: dropDown — Activity (inline) — see P
+     + <div style="font-size: 0.95em">
+     + <p>Tāne-mahuta placed these children of Tangotango and Wainui in</p>
+     + <p>, and took them on a canoe to place them in the heavens. This canoe was called Te Waka o Tamarereti. Tāne p
+     + <p>. The stars of the anchor are known in English as the</p>
+     + <p>. It&#39;s so important to New Zealanders that we have it on our national flag. Tāne then began to hang</p>
+     + <p>(the stars) in the sky, to adorn his father, Ranginui. When he had hung the first stars he was pleased, and
+     + <p>. Tāne placed the</p>
+     + <p>and the</p>
+     + <p>to bring light into the world.</p>
+     + … 7 more added
+PES1005: identical 11 / changed 1
+  ~ PHE1002_2_0.html: -1 +7
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [typing] marker — no content cap
+     + <div class="activity interactive" number="2A">
+     + <div class="row">
+     + <div class="col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [typing] marker — no content cap
+     + </div>
+     + </div>
+     + </div>
+PHE1002: identical 3 / changed 1
+PHE1006: identical 6 / changed 0
+SCPH301: identical 9 / changed 0
+  ~ SSOG103_6_0.html: -2 +12
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <div class="activity dropbox interactive" number="6A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+SSOG103: identical 6 / changed 1
+  ~ XDLS501_2_0.html: -19 +117
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Introduction</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Introduction</p>
+     + <div class="activity dropbox interactive" number="2B">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2C">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2D">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="activity dropbox interactive" number="2E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + … 97 more added
+  ~ XDLS501_3_0.html: -4 +20
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="3A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="3B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ XDLS501_4_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="4A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="4B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + … 4 more added
+  ~ XDLS501_5_0.html: -4 +20
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="5A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="5B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ XDLS501_6_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="6A">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="6B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + … 4 more added
+  ~ XDLS501_7_0.html: -613 +619
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="XDLS501-07-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dropDown (if we could embed a capab
+     - <div style="font-size: 0.95em">
+     - <ul>
+     - <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     - </ul>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> Item No. </th>
+     - <th> Pg No. </th>
+     - <th> Item Type </th>
+     - <th> Description </th>
+     - <th> Source </th>
+     - <th> URL </th>
+     - </tr>
+     - <tr>
+     - <td>Example</td>
+     - <td>5</td>
+     - <td>Photo</td>
+     - <td>Stock photo of a cheetah.</td>
+     - <td>iStockphoto</td>
+     - <td><a href="http://www.istockphoto.com/search/text/cheetah/filetype/photos/source/basic#282a148" target="_bla
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td></td>
+     - <td>Video</td>
+     - <td>Animation on making friends with neurodiverse minds</td>
+     - <td>Youtube</td>
+     - <td><a href="https://www.youtube.com/watch?v=E5V18AabDSs" target="_blank">https://www.youtube.com/watch?v=E5V1
+     - </tr>
+     - <tr>
+     - <td></td>
+     - … 573 more removed
+     + <div class="activity interactive" number="7A">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="XDLS501-07-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please supply details for ALL externa
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dropDown (if we could embed a capab
+     + <div style="font-size: 0.95em">
+     + <ul>
+     + <li>If a specific third-party item/image is crucial to your writing, then please submit this for early copyrig
+     + </ul>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> Item No. </th>
+     + <th> Pg No. </th>
+     + … 599 more added
+XDLS501: identical 2 / changed 6
+XDLS905: identical 8 / changed 0
+  ~ XDLS912_1_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="1B">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="1E">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 4 more added
+  ~ XDLS912_2_0.html: -3 +13
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <div class="activity interactive" number="2C">
+     + <div class="activity dropbox interactive" number="2B">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity interactive" number="2D">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ XDLS912_3_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="3C">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity dropbox interactive" number="3E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + … 4 more added
+  ~ XDLS912_4_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="4E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ XDLS912_5_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="5B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity dropbox interactive" number="5E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + … 4 more added
+XDLS912: identical 1 / changed 5
+  ~ XGF9004_5_0.html: -33 +44
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="XGF9004-05-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dropDown (insert - with true/not tr
+     - <ol>
+     - <li>The sun comes up in the morning [</li>
+     - </ol>
+     - <p>| Not true]</p>
+     - <ol>
+     - <li>Cats can talk like people. [True |</li>
+     - </ol>
+     - <p>]</p>
+     - <ol>
+     - <li>Ice melts when it’s hot. [</li>
+     - </ol>
+     - <p>| Not true]</p>
+     - <ol>
+     - <li>Elephants are smaller than mice. [True |</li>
+     - </ol>
+     - <p>]</p>
+     - <ol>
+     - <li>Fish can live on land. [True |</li>
+     - </ol>
+     - <p>]</p>
+     - <ol>
+     - <li>The moon shines at night. [</li>
+     - </ol>
+     - <p>| Not true]</p>
+     - <p>It’s time to share your ideas with your kaiako. Go to your learning journal to complete the activities.</p>
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     + <div class="activity interactive" number="5D">
+     + <div class="row">
+     + <div class="col-12">
+     + <ol>
+     + <li>The sun comes up in the morning [</li>
+     + </ol>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="XGF9004-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dropDown (insert - with true/not tr
+     + <div style="font-size: 0.95em">
+     + <p>| Not true]</p>
+     + <ol>
+     + <li>Cats can talk like people. [True |</li>
+     + </ol>
+     + <p>]</p>
+     + <ol>
+     + … 24 more added
+  ~ XGF9004_8_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="8E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ XGF9004_13_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="13G">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ XGF9004_17_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="17A">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="17B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + … 4 more added
+XGF9004: identical 14 / changed 4
+XLP03: identical 6 / changed 0
+  ~ XMES101_1_0.html: -26 +42
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="XMES101-01-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive: Sliding scale self-asse
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dropDown — Activity (inline) — see X
+     - <div style="font-size: 0.95em">
+     - <p>How did you go? Was it easy or hard? Tell us about it here. Tell us how that was for you on the scale below
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th></th>
+     - <th></th>
+     - </tr>
+     - <tr>
+     - <td> Not fun. Too Hard. </td>
+     - <td> Ok. I had to work hard to do this. </td>
+     - <td> Loved it! Easy and fun. </td>
+     - </tr>
+     - </table>
+     - <p>You can upload a video or photo of yourself doing these “body moves” here. Click on the upload button.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <div class="activity dropbox interactive" number="1D">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="XMES101-01-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive: Sliding scale self-asse
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dropDown — Activity (inline) — see X
+     + <div style="font-size: 0.95em">
+     + <p>How did you go? Was it easy or hard? Tell us about it here. Tell us how that was for you on the scale below
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th></th>
+     + <th></th>
+     + </tr>
+     + … 22 more added
+  ~ XMES101_2_0.html: -3 +13
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive: Sliding scale self-asse
+     + <div class="activity dropbox interactive" number="2E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive: Sliding scale self-asse
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ XMES101_3_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="3B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+  ~ XMES101_4_0.html: -44 +60
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="XMES101-04-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive: Sliding scale self-asse
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: dropDown (camera) — Activity (inlin
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th></th>
+     - <th></th>
+     - </tr>
+     - <tr>
+     - <td> Not fun. Too Hard. </td>
+     - <td> Ok. I had to work hard to do this. </td>
+     - <td> Loved it! Easy and fun. </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="XMES101-04-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive: Sliding scale self-asse
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: dropDown (camera) — Activity (inlin
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th></th>
+     - <th></th>
+     - </tr>
+     - <tr>
+     - <td> Not fun. Too Hard. </td>
+     - … 4 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="XMES101-04-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [interactive: Sliding scale self-asse
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: dropDown (camera) — Activity (inlin
+     + <th></th>
+     + <th></th>
+     + <td> Not fun. Too Hard. </td>
+     + <td> Ok. I had to work hard to do this. </td>
+     + <td> Loved it! Easy and fun. </td>
+     + <div class="activity interactive" number="4B">
+     + <th></th>
+     + <tr>
+     + </tr>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 40 more added
+  ~ XMES101_6_0.html: -2 +22
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="6C">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="6F">
+     + <div class="row">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + … 2 more added
+  ~ XMES101_8_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="8B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity dropbox interactive" number="8D">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 4 more added
+XMES101: identical 3 / changed 6
+  ~ XMES203_1_0.html: -4 +24
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="1C">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity dropbox interactive" number="1E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + </div>
+     + … 4 more added
+  ~ XMES203_2_0.html: -7 +37
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Ka pai! Great learning!</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="2G">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Ka pai! Great learning!</p>
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="activity dropbox interactive" number="2L">
+     + … 17 more added
+  ~ XMES203_3_0.html: -16 +56
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Roleplay some of these with your hoa ako and have them try to guess which routine you are doing.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <p>Discuss these questions with your hoa ako:</p>
+     - <ul>
+     - <li>Which oils did you like the most?</li>
+     - </ul>
+     - <ul>
+     - <li>Did you measure the oil in each bottle? If so, how?</li>
+     - </ul>
+     + <div class="activity dropbox interactive" number="3B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="3E">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>Roleplay some of these with your hoa ako and have them try to guess which routine you are doing.</p>
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="3H">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + … 36 more added
+  ~ XMES203_4_0.html: -10 +60
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="4B">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="4D">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="col-md-8 col-12">
+     + <div class="activity dropbox interactive" number="4F">
+     + <div class="row">
+     + <div class="col-12">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + </div>
+     + </div>
+     + <div class="col-md-8 col-12">
+     + … 40 more added
+  ~ XMES203_5_0.html: -2 +12
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="activity dropbox interactive" number="5B">
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+XMES203: identical 1 / changed 5
+XWHA01: identical 2 / changed 0
+
+TOTAL: identical 464 / changed 63 / missing 0 over 104 modules
+CHANGED: XDLS901/XDLS901_1_0.html XDLS901/XDLS901_2_0.html XDLS901/XDLS901_3_0.html XDLS901/XDLS901_4_0.html AGH1006/AGH1006_2_0.html BLL123/BLL123_1_0.html BLL123/BLL123_2_0.html BLL141/BLL141_1_0.html BLL141/BLL141_2_0.html BLL145/BLL145_1_1.html BLL152/BLL152_1_1.html BLL156/BLL156_1_1.html BLL163/BLL163_1_0.html BLL163/BLL163_1_1.html BLL174/BLL174_1_1.html BLL237/BLL237_1_0.html CEDO502/CEDO502_1_1.html ENG1004/ENG1004_1_0.html ENG1004/ENG1004_2_0.html ENGC302/ENGC302_7_0.html ENGI103/ENGI103_6_0.html ENGI301/ENGI301_2_0.html ENGI301/ENGI301_5_0.html ENGR201/ENGR201_6_0.html ENGS101/ENGS101_5_0.html ENGS301/ENGS301_7_0.html EXBP901/EXBP901_3_0.html HPRE203/HPRE203_1_0.html HPRE203/HPRE203_7_0.html MXDI103/MXDI103_3_0.html MXDI103/MXDI103_6_0.html MXEO401/MXEO401_4_0.html MXFL202/MXFL202_7_0.html MXFU301/MXFU301_8_0.html PES1005/PES1005_5_0.html PHE1002/PHE1002_2_0.html SSOG103/SSOG103_6_0.html XDLS501/XDLS501_2_0.html XDLS501/XDLS501_3_0.html XDLS501/XDLS501_4_0.html XDLS501/XDLS501_5_0.html XDLS501/XDLS501_6_0.html XDLS501/XDLS501_7_0.html XDLS912/XDLS912_1_0.html XDLS912/XDLS912_2_0.html XDLS912/XDLS912_3_0.html XDLS912/XDLS912_4_0.html XDLS912/XDLS912_5_0.html XGF9004/XGF9004_5_0.html XGF9004/XGF9004_8_0.html XGF9004/XGF9004_13_0.html XGF9004/XGF9004_17_0.html XMES101/XMES101_1_0.html XMES101/XMES101_2_0.html XMES101/XMES101_3_0.html XMES101/XMES101_4_0.html XMES101/XMES101_6_0.html XMES101/XMES101_8_0.html XMES203/XMES203_1_0.html XMES203/XMES203_2_0.html XMES203/XMES203_3_0.html XMES203/XMES203_4_0.html XMES203/XMES203_5_0.html

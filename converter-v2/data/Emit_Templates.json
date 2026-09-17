@@ -825,6 +825,9 @@
 		},
 		"standalone_widget_box": {
 			"enabled": true,
+			"types_round367": [],
+			"types_round367_env": "SABOX367_OFF",
+			"_round367_note": "ROUND 367 (the autonomous loop's session 21, Round 4). The r217 audit's type list was measured on the 2026-07-12 corpus; re-measured on the r366 corpus (outputs/_measure_r367_unboxed.py \u2192 _r367_unboxed.{json,log}: every un-built capture in no activity box on Claude's page, 1,079 on 515 pages / 255 modules, matched on the gold page by its first paragraph / cell), the gold wraps a bare dropDown in an activity box on 0.61 (64 captures / 48 pages / 45 modules) and a bare typing widget on 0.62 (25 / 20 / 16) \u2014 selectionBox 0.58 (a tie), modal 0.43, accordion 0.25, clickDrop 0.15, carousel 0.11, flipCard 0.12, tabs 0.28 stay free. The two were put on their own list (SABOX367_OFF) and PROBED over all 416 modules: 189 pages / 116 modules changed, 173 paired pages scored 36 up / 135 down, pp-sum −275 (BLL −121, XMES −60, ENG −35) — the gold does NOT box them; the 0.61 / 0.62 consensus was a loose text match into unrelated boxes. DECLINED 2026-09-18 (session 21, Round 4): the list is left EMPTY (the hook is inert, the corpus byte-identical); re-open only with a widget-level match.",
 			"types": [
 				"dragAndDrop",
 				"unclassified",
