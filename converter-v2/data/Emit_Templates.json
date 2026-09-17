@@ -5210,6 +5210,18 @@
 					"CEDO",
 					"XGF"
 				],
+				"digits_by_prefix": {
+					"2": [
+						"HIS",
+						"CEDR",
+						"ENGFUN",
+						"TWHA",
+						"BLL2",
+						"TEFUN"
+					]
+				},
+				"digits_by_prefix_env": "H2KEEP_OFF",
+				"_digits_by_prefix_note": "ROUND 373 (the autonomous loop's session 23, Round 4, 2026-09-18). A per-DIGIT prefix registry: the gold keeps a writer's [H2] at h2 in these prefixes and follows the shift rule everywhere else (the session-23 census, [H2] free-body, gold-h2 0.37 overall: HIS 0.87, CEDR 0.89, ENGFUN 1.00, TWHA 0.92, TEFUN 0.65; XDLS 0.02, MXFU 0.05, SSCI 0.08, ENFUN 0.09 … PES 0.23 with its own h4 dialect). An entry is a letter run (matched as the module code's whole letter run — ENG never matches ENGFUN) or a letters+digits SERIES prefix (matched as startsWith: BLL2 = the BLL2xx series — the first probe showed the BLL1xx parents' gold at h3, BLL150 −24.5pp, while BLL210 / 220 / 230 keep h2; TWHK split 1 : 1 by module and is NOT listed). Within HIS and TEFUN the gold is a keep-MAJORITY by module (HIS 1002 / 1005 / 1006 / 1007 / 1008 keep, 1001 / 1003 / 1004 follow the shift; TEFUN 03–08 keep, 01 / 02 follow the shift) with no derivable discriminator inside the series — the majority ships, the minority modules are NAMED dips. The list IS the scope — no template gate; the r371 exclude_classes boxes and widget / supervisor subtrees still apply in the releveller, and a pinned heading still counts in the rank pool at its intermediate level. Env H2KEEP_OFF = no digit-2 marker = byte-identical; the emitter owns both toggles, so H3KEEP_OFF never silences a digit-2 marker.",
 				"_exclude_prefixes_note": "The letter run of the module code (ENG1004 → ENG, ENGC102 → ENGC — distinct). Measured per prefix on the census (Standard + Fundamentals, free-body [H3]): ENG gold-h3 0.05 (1 win / 14 loss) and ARFUN 0.36 (9 / 2) follow the shift rule in their gold; CEDO 0.66 (8 / 24) and XGF 0.82 (31 / 42) are NET-NEGATIVE under the pin (their Claude pages already carry most [H3]s at h3 and the rest are the gold's own h4s). Every other prefix at n ≥ 15 is ≥ 0.74 and net-positive.",
 				"_pool_note": "A pinned heading still COUNTS in the rank pool at its intermediate level, so the page's other headings rank exactly as they did without the pin — the first cut dropped it from the pool and the page's [H4]s rose to h3 (OSAI401 / MXEO201), caught by the probe's scorer.",
 				"_note": "ROUND 371 (the autonomous loop's session 23, Round 2, 2026-09-18). A writer's explicit [H3] keeps its digit: the gold ships it at h3 on 0.90 of the Standard and 0.86 of the Fundamentals free-body sites (the session-23 full-population census, outputs/_s23_headcensus.py, n = 2549), while the r45 body shift + rank rule put it at h4 under a [H2] and at h5 under a [H2] + a title [H1]. The heading emitter adds a TRANSIENT data-wd=\"N\" marker when the digit is listed and the module's template (Module_Structure_Index.module_meta.template_type — a module the index does not know is not pinned) is listed; #relevelHeadings pins such a heading to <hN> — out of the rank pool, its close tag rewritten too — unless an exclude_classes box (the alert family: the KB 05B alert title is h4 — gold-h3 0.20 inside alerts) or a widget / supervisor subtree is open around it; inside an activity box the pin applies. The marker is stripped in every branch and never reaches the output. Inquiry (gold 0.62, 36 win / 31 loss) and ConnectED (55 / 54) are near-ties and not listed; Bilingual is governed by KB 07B. [H2] (gold keeps 0.37) and [H4] (0.51) do not qualify. Env H3KEEP_OFF = no marker = the standing rule, byte-identical."

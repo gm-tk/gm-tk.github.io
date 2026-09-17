@@ -1,5 +1,35 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 373, build 260619.44) — A WRITER'S EXPLICIT `[H2]` KEEPS ITS DIGIT (h2) IN THE PREFIXES / SERIES WHOSE GOLD KEEPS IT — the autonomous loop's session 23, Round 4
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+`keep_writer_digit` (r371) gains a per-DIGIT prefix registry: `digits_by_prefix {"2": [HIS, CEDR, ENGFUN, TWHA, BLL2, TEFUN]}` + `digits_by_prefix_env: "H2KEEP_OFF"`. In those modules a heading the writer typed as `[H2]` ships as `<h2>` (the gold's own form) instead of the h3 / h4 the r45 body shift + rank rule gave it — a writer's `[H2]` could never reach h2 before (the census: Claude-keeps 0.00 of 1022). Same mechanism as r371: the emitter's transient `data-wd="2"` marker, the releveller's pin that still counts in the rank pool (nothing else re-ranks), the alert-family boxes and widget / supervisor subtrees excluded, the marker stripped in every branch. The emitter owns both env toggles (`H3KEEP_OFF` never silences a digit-2 marker); the releveller's gate is the data flag alone. OFF = disk 2109 / 2109.
+
+### 2. WHY IT WAS PICKED — the r371 corpus's new queue row, decomposed
+
+The r371 re-mine produced **#3634 `body SUBSTITUTED col-md-8 gold h2 / Claude h3`** (137 pages / 70 modules; Health and PE 14 / 14 c = 1.00, Technology 0.65). The session-23 census (`_s23_headcensus.json`, `[H2]` free-body, n = 1022) says the gold keeps the digit on **0.37 overall — not a corpus rule** (Standard 0.31 / Fundamentals 0.33 / Inquiry 0.59) — but a clean PER-PREFIX one: HIS 0.87 (46 win / 5 loss), CEDR 0.89 (24 / 2), ENGFUN 1.00 (22 / 0), TWHA 0.92 (12 / 1), BLL 0.90 (9 / 1), TWHK 0.67 (8 / 1), TEFUN 0.65 (22 / 4); every other prefix at n ≥ 10 follows the shift (XDLS 0.02, MXFU 0.05, SSCI 0.08, ENFUN 0.09, MXEX 0.12, ARFUN 0.17, MXFL 0.18, ENGI 0.19, XGF 0.20, PES 0.23 — h4 104 of 175, its own dialect —, MXFUN 0.28, EXPFUN 0.30, HPFUN 0.32, TEDC 0.35, CEDO 0.37, CEDK 0.40, MXDI 0.41, CEDT 0.56, CEDW 0.57). The r200 icon-registry pattern: a per-family house style. Triangulated HIS1005 / CEDR501 / ENGFUN02.
+
+### 3. WHAT THE PROBE TAUGHT THE REGISTRY
+
+The first cut listed seven letter-run prefixes; the scorer read 58 up / 20 down (+47.0) with the dips clustered by MODULE: **BLL150 −24.5 / BLL160 −8.0 / BLL130 −4.6 — the BLL1xx parents' gold is h3 while BLL210 / 220 / 230 keep h2** (the census's BLL 0.90 was nine text-matched headings, seven of them BLL2xx); **TWHK901 0 / 3 h2 vs TWHK903 8 / 9** (a 1 : 1 split by module). A registry entry can now be a letters+digits SERIES prefix matched as `startsWith` (`BLL2` = the BLL2xx series; a letter-run entry still matches the module code's whole letter run, so ENG never matches ENGFUN); TWHK is not listed. Within HIS and TEFUN the gold is a keep-MAJORITY by module — HIS 1002 / 1005 / 1006 / 1007 / 1008 keep, 1001 / 1003 / 1004 follow the shift (5 : 3); TEFUN 03–08 keep, 01 / 02 follow the shift (6 : 2) — with no derivable discriminator inside the series (the same writer template, the same subject): the majority ships and the minority modules are NAMED. The text-matched census cannot see a module whose gold rewords every heading (HIS1004's `Which rights were taken?` → `… in apartheid South Africa`) — the probe's scorer is the instrument that does.
+
+### 4. PROOF
+
+- In-memory probe over all 416 (`_r373_probe.cjs`, 4 shards, run twice): **OFF = disk 2109 / 2109**; ON = **102 pages / 30 modules** (BLL210 / 220 / 230, CEDR201 / 301 / 302 / 501, ENGFUN02, HIS1001–1008, TEFUN01–08, TWHA901–906), 0 added / removed; `data-wd` in the saved pages 0.
+- Scored BEFORE regenerating with the gate's own `match()` (`_r373_pagescore.py`): **93 paired changed pages — 57 up / 17 down / 19 same, pp-sum +78.5 (+0.84pp per changed page)**; per module: CEDR501 +31.1, HIS1008 +23.2, HIS1005 +17.2, HIS1007 +17.1, ENGFUN02 +9.3, HIS1006 +5.6, HIS1002 +2.3, TEFUN03–08 / TWHA904–906 / BLL210 / 220 small gains; **the named minority: HIS1004 −21.0 (8 of its 10 pages), TEFUN01 −6.9, HIS1001 −4.3, HIS1003 −1.9, TEFUN02 −1.4, TWHA902 −1.3.**
+- SCOPED regeneration of the 30 (`_r373_fullship_run.sh`, 5 batches, all rc 0; the probe proving the other 386 byte-identical): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **102 changed / 0 added / 0 removed**; every regenerated page **byte-identical to the probe's ON page (136 / 136)**.
+
+### 5. PROTECTED GATES (`_r373_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **52.897 → 52.938 % (+0.040pp)**, median 53.5, **≥50 1131 → 1132 (+1)**, ≥75 176 / ≥90 15 EXACT, RAW 37.312 → 37.346 % @ 1956 pairs; **74 movers — 57 up / 17 down, pp-sum +78.5** (`_r373_movers.log`, state `_r373_sk_final.json`). The dips NAMED: HIS1004_10_0 −7.3 / _2_0 −7.0 / _8_0 −3.7 / _1_0 −3.0 / _9_0 −2.2 and three more (the module's gold follows the shift — the HIS minority), TEFUN01_0_0 −6.9 and TEFUN02_0_0 −1.4 (the TEFUN minority), HIS1001_8_0 −3.2 / _4_0 −1.2, HIS1003_3_0 −1.1, CEDR501_2_0 −2.2 (an alignment dip on a module up +31.1), TWHA902_0_0 −1.3; the largest gains CEDR501_5_0 +19.9, HIS1007_3_1 +9.6, CEDR501_4_0 +7.6, HIS1008_6_0 +4.9 / _3_1 +4.7 / _3_0 +4.2.
+- compare_structure exact **11628** / EXTRA 175 / MISSING 617 / row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **43 / 4 / 157 / 203** EXACT; tags 9557 / 9557 REAL 0; flipCard 61 / divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz 17 shells defect 0; math 323 / 323; menu labels 91 / 0; dragAndDrop 21 widgets defect 0 — all EXACT.
+
+### 6. ALSO RECORDED
+
+- Ledger: scoped ship #4 since the r366 full. AppVersion 260619.44; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r373.bak` kept).
+- Not taken: TWHK (1 : 1 by module), the BLL1xx parents (gold h3), Health and PE's `[H2]` (the miner's 14 / 14 c = 1.00 reads the region, the census reads 0.32 by heading — HPFUN's gold is h3 for the matched `[H2]`s, the h2s it ships are not the writer's `[H2]`s), PES (h4 104 / 175 — its own dialect, recorded for a PES-scoped look).
+
 ## 2026-09-18 (round 372, build 260619.43) — THE MEDIA TABLE WHOSE CELLS CARRY THE EXTRACTOR'S BOLD MARKERS IS NOW PARSED — the autonomous loop's session 23, Round 3
 
 ### 1. WHAT CHANGED, IN ONE LINE

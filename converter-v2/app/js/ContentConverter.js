@@ -3996,8 +3996,9 @@ class ContentConverter {
 		// Data: body_region.heading_relevel.keep_writer_digit. Env: H3KEEP_OFF (set at the emitter —
 		// no marker arrives here, so the standing rule runs byte-identically).
 		const kwd = cfg.keep_writer_digit;
-		const kwdOn = !!kwd && kwd.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env[kwd.env ?? "H3KEEP_OFF"]);
+		// the EMITTER owns the env toggles (H3KEEP_OFF / H2KEEP_OFF — no marker is written when
+		// one is set), so the pin here is gated by the data flag alone (r373)
+		const kwdOn = !!kwd && kwd.enabled !== false;
 		const xCls = new Set(kwdOn ? (kwd.exclude_classes ?? []) : []);
 		const actCls = new Set(cfg.activity_anchor_classes ?? []);
 		const WD = /\s+data-wd="(\d)"/i;
@@ -6719,12 +6720,25 @@ class ContentConverter {
 			// Data: body_region.heading_relevel.keep_writer_digit. Env: H3KEEP_OFF (no marker =
 			// the standing rule, byte-identical).
 			const _kwd = tpl.body_region?.heading_relevel?.keep_writer_digit;
-			const _kwdOn = reOn && !!_kwd && _kwd.enabled !== false && /^h\d$/.test(tag)
+			const _kwdBase = reOn && !!_kwd && _kwd.enabled !== false && /^h\d$/.test(tag);
+			const _kwdPrefix = (String(run?.moduleCode || "").match(/^[A-Z]+/) ?? [""])[0];
+			// (a) the template-scoped digits (r371: [H3] on the Standard / Fundamentals pages)
+			const _kwdTpl = _kwdBase
 				&& !(typeof process !== "undefined" && process.env && process.env[_kwd.env ?? "H3KEEP_OFF"])
 				&& (_kwd.digits ?? []).some((d) => Number(d) === digit)
-				&& !(_kwd.exclude_code_prefixes ?? []).some((p) => String(p) === (String(run?.moduleCode || "").match(/^[A-Z]+/) ?? [""])[0])
+				&& !(_kwd.exclude_code_prefixes ?? []).some((p) => String(p) === _kwdPrefix)
 				&& (!(_kwd.templates ?? []).length || (_kwd.templates ?? []).some((t) => String(t)
 					=== String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? "")));
+			// (b) ROUND 373 (the autonomous loop's session 23 Round 4): a per-DIGIT prefix registry — the
+			// gold keeps a writer's [H2] at h2 in six prefixes / series (HIS 0.87 / CEDR 0.89 / ENGFUN 1.00 /
+			// TWHA 0.92 / the BLL2xx series / TEFUN 0.65) and follows the shift everywhere else
+			// (0.37 overall) — the list IS the scope, no template gate. Env digits_by_prefix_env.
+			const _kwdPfx = _kwdBase
+				&& !(typeof process !== "undefined" && process.env && process.env[_kwd.digits_by_prefix_env ?? "H2KEEP_OFF"])
+				&& ((_kwd.digits_by_prefix ?? {})[String(digit)] ?? []).some((p) => /\d/.test(String(p))
+					? String(run?.moduleCode || "").startsWith(String(p))   // a letters+digits SERIES prefix (BLL2 = the BLL2xx series)
+					: String(p) === _kwdPrefix);                             // a letter run (ENG never matches ENGFUN)
+			const _kwdOn = _kwdTpl || _kwdPfx;
 			let _hHtml = this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run);
 			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${digit}">`);
 			out.push(_hHtml);
