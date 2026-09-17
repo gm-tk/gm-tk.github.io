@@ -6,8 +6,6 @@ pick the largest measured class of mismatch, fix it, rebuild what the fix touche
 protected gate held or improved, write the changelog, commit — and only stops on the rules in §4.
 **Written:** 14 September 2026 (after round 313, build 260618.84). This is a STANDING file, not a
 kickoff: do not delete it. Update it when the loop's rules change.
-**Amended:** 16 September 2026 by the first `/loop-review` (`LOOP_REVIEW__2026-09-16.md`; Chris approved all
-twelve proposals) — §0, §2, §3 steps 3 / 5 / 6 / 7, §4, §6, §7.
 
 ---
 
@@ -34,10 +32,7 @@ twelve proposals) — §0, §2, §3 steps 3 / 5 / 6 / 7, §4, §6, §7.
 
 Then run `bash _MIGRATION/verify_after_transfer.sh` once. It must say PASS before anything else
 (it checks the five symlinks and the engine checksums). If it fails, stop and report — do not
-regenerate anything on a broken tree. Then note the KB repo's HEAD
-(`git -C 00-Other-TK-Resources/htmlconvertor-kb log -1 --oneline`) against the commit
-`KB_AMALGAMATION_STATUS.md` names as last checked: if it has moved, read the new commits' ledger
-rows before the first PICK and record the new HEAD in the status file's header.
+regenerate anything on a broken tree.
 
 ## 1. The measure of success — and the honest ceiling
 
@@ -115,6 +110,60 @@ CAPTURED row with ≥ 20 in-scope pages is a class in the queue with **priority 
 gold-matching classes in the same area** — a gold-matching round in an area the KB has since
 changed is wasted work.
 
+## 1d. Round 0c — THE DIFF MINER (Chris, 17 September 2026 — after four false "exhaustion" verdicts)
+
+**Why this exists.** Sessions 15–18 each declared "exhaustion" on the r356 corpus. Chris then
+opened ONE module (BLL110, Inquiry) and found six derivable structural differences on its
+overview page alone: a phantom `#module-code` chip, a phantom "Overview" menu heading (gold
+1/65), menu labels shipped as `<h5>` where 63/65 Inquiry golds use `<h4><span>`, lead-ins
+("Ākonga will:") shipped as headings where the gold uses `<p>`, an extra full-width menu row
+with `paddingR` on both columns, and the intro panel's `h3 Introduction` + welcome text placed
+after the supervisor note instead of before. The loop's queue had never contained any of them,
+because the queue was only ever fed by the KB audit and by classes a session thought to write a
+probe for. **Nothing systematically read the per-page structural diffs the scorecard is
+computed from.** Those verdicts are VOID. "Exhaustion" may not be declared again until the miner
+below exists and its queue is empty.
+
+**The instrument — `reference/tests/_diff_miner.py`** (build it in Round 0c; no converter
+output changes in that round; commit the tool and its first output):
+1. For every paired page (use the skeleton gate's OWN pairing — never a private one), build the
+   gold and Claude skeletons with `_structural_skeleton.py`, keeping each line's TEXT alongside
+   its `tag#id.class` signature, and diff them line by line.
+2. Tag every differing line with: template family (Standard / Bilingual / Fundamentals /
+   Inquiry; Legacy vs Refresh), subject family, series; REGION — `module-code`, `title`,
+   `module-menu`, `crumbs` (the Inquiry side-nav), `phases-nav`, `body`, `activity`, `footer`,
+   `acks`; ELEMENT ROLE — the gold signature vs the Claude signature at that position (e.g.
+   `menu-label: h5 → h4>span`); DIRECTION — MISSING (gold has, Claude lacks), EXTRA (Claude
+   has, gold lacks), SUBSTITUTED (same position, different tag/class/wrapper), MOVED (same
+   text, different region or order); and DERIVABLE-CONTENT — whether the gold line's text
+   exists in that module's Writers Template (fuzzy, the round-110 matcher). A structure-only
+   difference (tag, class, wrapper, order, attribute) needs no content and is always derivable.
+3. Aggregate into CLASSES keyed by (region, gold signature, Claude signature, direction).
+   For each class report: pages, modules, the per-template and per-subject GOLD CONSENSUS
+   (of gold pages where the region exists, the share using the gold signature), the
+   derivable-content share, the KB rule if one exists (grep the KB for the element and region),
+   the authority it would fall under (§1b), and three example modules with the WT / gold /
+   Claude lines quoted.
+4. Add the COMPLETENESS CENSUS for the repeating chrome: for the module menu, the crumbs /
+   side-nav, the phases nav and the footer, count the gold's subsections whose text is in the WT
+   against the number Claude rendered. "The WT had it, the human rendered it, Claude did not"
+   is a derivable miss and is its own class (`menu-subsections: gold 6 / Claude 2`).
+5. Write `outputs/_diff_miner.json` and **`DIFF_QUEUE.md`** at the folder root: the ranked
+   table, chrome regions FIRST (module-code → title → module-menu → crumbs/phases-nav →
+   footer → acks → activity → body), then by modules affected.
+
+**Candidate rule.** A class is a candidate when: modules ≥ 10 (chrome elements occur once per
+module, so the floor is 10 MODULES, not 20 pages — the 20-page floor still applies to body
+classes); gold consensus ≥ 0.60 in at least one template or subject group; and either the
+class is structure-only or its derivable-content share is ≥ 0.60. A class below the floor in
+every group is recorded in the queue as "below floor" with its numbers — never silently
+dropped. The BLL110 supervisor-note `div.alert` wrapper (gold 1/24) is the worked example of a
+correct decline; the menu-label `h4>span` class (63/65) is the worked example of a candidate.
+
+**Cadence.** Re-run the miner at the start of every session and after every full
+regeneration (it reads 2 × ~2,100 pages; keep it under the timeout by sharding if needed).
+`DIFF_QUEUE.md` is committed each time. The PICK step (§3) reads it FIRST.
+
 ## 2. What this loop is authorised to do (Chris, 14 September 2026)
 
 - **Regeneration.** The message that started this session carries the code `REGENERATE CORPUS`
@@ -128,17 +177,7 @@ changed is wasted work.
   says so: the measured share of the corpus that follows the candidate rule is below 0.60, or it
   is a tie, or there is no derivable discriminator. Record the measurement in the changelog
   entry and in `LOOP_STATE.md` under "Declined classes"; never re-attempt a declined class in
-  this loop unless new evidence is named. **The 0.60 floor and the tie test apply only when the
-  target comes from authority levels 3–4** (this module's gold, or template / subject consensus).
-  When a numbered `00_MASTER_INSTRUCTIONS` constraint or a front-facing CL row covers the element
-  (level 1), the gold share is NOT consulted: the KB form is the target, the gold's disagreement is
-  a NAMED override (§1b "Gates and KB overrides"), and the round ships — whether or not the
-  constraint has a CL row of its own. BLOCK for Chris only when (a) two KB documents disagree with
-  each other, (b) the KB disagrees with one of Chris's own project instructions, or (c) the KB
-  offers a component-doc example rather than a numbered rule and the gold contradicts it at
-  ≥ 0.60. The 20-page floor is a PICK floor: a class under it is recorded, not built, unless it
-  rides along with a round already in scope and is proven the same way. (Review of 16 Sept 2026:
-  c47 and c23 were declined / blocked on the gold share and Chris confirmed the KB on both.)
+  this loop unless new evidence is named.
 - **Git.** Commit `pageforge-site` at the end of every shipped round (CLAUDE.md §16). NEVER push
   and NEVER `git checkout` / `git restore` a file without proving it is committed. The final
   report gives Chris the copy-and-paste push block.
@@ -151,11 +190,12 @@ changed is wasted work.
 
 Each round is bounded so an interruption loses at most one round of work.
 
-1. **PICK.** Run the impact-ranked queue: `python3 reference/tests/_coverage_dashboard.py` (or
-   the `_measure_*` probe the top backlog item in `STOCKTAKE__Track.md` names) MERGED with the
-   NOT CAPTURED rows of `KB_AMALGAMATION_STATUS.md`. Choose the class with the largest
-   **derivable** population in pages, KB rows first within an area (§1c), skipping anything
-   listed under "Declined classes" in `LOOP_STATE.md`. **KB-FIRST CHECK before committing to a
+1. **PICK.** Read **`DIFF_QUEUE.md` first** (§1d — re-run the miner if it is older than the
+   corpus), then the NOT CAPTURED rows of `KB_AMALGAMATION_STATUS.md`, then
+   `python3 reference/tests/_coverage_dashboard.py` / the `STOCKTAKE__Track.md` backlog.
+   Choose the top candidate: chrome regions before body, KB rows first within an area (§1c),
+   then the largest derivable population, skipping anything listed under "Declined classes"
+   in `LOOP_STATE.md`. **KB-FIRST CHECK before committing to a
    gold-matching class:** search the KB for a rule covering the element; if one exists, the
    KB rule is the target, not the gold. Write the choice, its measured size per template and
    subject group, and its authority source (§1b, 1–4) to `LOOP_STATE.md` FIRST.
@@ -165,44 +205,28 @@ Each round is bounded so an interruption loses at most one round of work.
    Writers Templates — remember the §16 trap: a filter on `/media list/` hides the 286 combined
    `Writers Template + Media List.docx` files. Report the share PER template family and subject
    family, not just the total (§1b). Classify: A1 / A2 / B-i / B-ii / C. Only B and C
-   (instructions) are actionable. If the target is gold-derived and the share is < 0.60 or tied in
-   every group → DECLINE (§2), log it, go to 1. If a numbered constraint covers the element, skip
-   the share test — measure only the override list. If it holds in some groups only, scope the fix to those groups (a data
+   (instructions) are actionable. If the share is < 0.60 or tied in every group → DECLINE (§2),
+   log it, go to 1. If it holds in some groups only, scope the fix to those groups (a data
    flag keyed by template/subject — `Template_Modes.json` / `Subject_Global_Parameters.json`
    are the precedents), never a corpus-wide rule.
 4. **IMPLEMENT** behind a data flag in `data/*.json` AND an env toggle `<NAME>_OFF`. Edit data
    files with the Edit tool only (they are tab-indented; never `json.dumps` them).
 5. **REBUILD** the affected set + the tag/type family (§0a/§0b), via `_batch_plan.py` and
-   `batch_convert.cjs` run directly with a long timeout — `_regen_safe.sh` hard-codes the old
-   40-second wall, do not use it. A full regeneration uses the `_fullship_par.sh` pattern (36
-   batches, 4 workers, ≈ 17–20 min); batches that fail on the oembed-cache write race are re-run
-   singly (rc 0 every time so far — a tooling fix is queued). Keep each command under the
-   30-minute shell timeout and write progress to a file so nothing is lost.
+   `_regen_safe.sh`, one batch per command. There is no 45-second wall in Claude Code, but keep
+   each command under ~10 minutes and write progress to a file so nothing is lost.
    Prove freshness: `python3 _content_manifest.py fresh --affected <list>` → 0 truly stale.
 6. **PROVE** with `_ab.py <TOGGLE>_OFF=1 <codes>` (the toggle-OFF corpus must be byte-identical
    on every untouched module), then the gates: `bash run_all_gates.sh`, plus the verifier of any
    widget touched, over its WHOLE family. Every gate holds-or-improves, `pairs skipped (parse
    error)` is 0, all selftests green.
-   - A page dip may be attributed to the scorer's alignment or repeat-collapse artefact ONLY when a
-     companion number on that page rises — the position-free overlap or the uncollapsed
-     matched-line count — and both numbers are written beside the page name. When the same
-     artefact has been named in three shipped rounds, the next PICK is a measurement-tool round
-     (the r315 pairing-parser precedent) that makes the scorer report the companion metric itself.
-   - A verifier's RESULT line must read ✓ at its recorded baseline and ✗ only above it. A round may
-     not ship while any RESULT line is red; "red at the standing baseline" is not a state the loop
-     is allowed to learn to ignore (16 Sept 2026: speechBubble defect 4 and math defect 1 had been
-     carried past a red line for 34 and 2 rounds — the baseline argument is a queued tooling round).
    - If a gate regresses: **debug, never revert** (§0a). Up to **three** repair attempts inside
      the round. After the third failure, toggle the round OFF, prove byte-identity with the
      pre-round corpus, record the class as "BLOCKED — needs Chris" in `LOOP_STATE.md` with the
      evidence, and move to the next class. Blocked is not the same as declined.
 7. **FINALISE** (§12): prepend the `BUILD_CHANGELOG.md` entry, bump `Config.js AppVersion`,
-   update `CLAUDE.md` §14 if a baseline or toggle changed, refresh `gate_baseline.json` (every
-   field — `skeleton.pairs` included) and the feature index (`build_feature_index.cjs`) after any
-   regeneration, mirror every changed loop artefact — `gate_baseline.json`, `run_all_gates.sh`,
-   `_corpus.py`, any new verifier, `LOOP_STATE.md`, `KB_AMALGAMATION_STATUS.md`, this file — into
-   `pageforge-site/converter-v2/loop/` and prove the mirror byte-identical (`cmp`), then `git add` +
-   `git commit` in `pageforge-site`. Then append the round's one-line result to `LOOP_STATE.md`
+   update `CLAUDE.md` §14 if a baseline or toggle changed, refresh `gate_baseline.json` and the
+   feature index (`build_feature_index.cjs`) after any regeneration, `git add` + `git commit` in
+   `pageforge-site`. Then append the round's one-line result to `LOOP_STATE.md`
    ("r314 · class X · shipped/declined/blocked · scaffold 49.94→50.02 · pages moved N").
 
 Never chain a skeleton score from a state file that a scoped regeneration has left stale (§16):
@@ -210,42 +234,23 @@ refresh the state after every scoped regen, and run a fresh full score when one 
 
 ## 4. When to stop (any one of these ends the loop)
 
-- **Exhaustion.** The queue has no class left whose derivable population is ≥ 20 pages AND
-  `KB_AMALGAMATION_STATUS.md` has no NOT CAPTURED row left with ≥ 20 in-scope pages. Everything
-  remaining is class C (editorial) or is in "Declined classes". This is the GOOD ending.
-- **Waiting.** Every remaining class ≥ 20 pages is BLOCKED — needs Chris. This is NOT exhaustion:
-  report it as "the loop needs N decisions", list each with §5 item 4, and point Chris at
-  `/loop-decisions`. Resume only after `LOOP_STATE.md` carries the answers.
-- **Plateau.** Three consecutive shipped rounds **whose PICK predicted a skeleton move** each move
-  the skeleton SCAFFOLD mean by less than 0.02 percentage points AND move no other protected gate.
-  A round the PICK declares gate-neutral by design — text-only, `<head>`-only, a class or attribute
-  the skeleton ignores, a registry correction, a gate-configuration round — neither counts toward
-  the window nor resets it. The window does not fire while the §3 queue still holds a derivable
-  class ≥ 20 pages, or a NOT CAPTURED / AUTHORISED KB row, whose PICK predicts ≥ 0.02pp: a plateau
-  is a statement about the QUEUE, not about the last three picks. Stop and report — the next lever
-  needs a human decision, not another round. (16 Sept 2026 review: all three plateau stops so far
-  were followed by a score-moving round in the very next session.)
-- **Budget.** The round cap or time cap in the kickoff message is reached (`/loop-start` with no
-  argument = 12 rounds or 10 hours, the §7 default). When the time left is less than the next round
-  needs to ship AND prove (≈ 60–75 minutes for an engine round, more with a full regeneration), do
-  not start it: finish that round's PICK and measurement, record them in `LOOP_STATE.md`, and stop
-  — the sessions 11–12 pattern.
+- **Exhaustion.** ALL of: `DIFF_QUEUE.md` exists, was produced by the §1d miner on the CURRENT
+  corpus, and has no candidate row left (chrome floor 10 modules, body floor 20 pages, each
+  judged per template/subject group); `KB_AMALGAMATION_STATUS.md` has no NOT CAPTURED row
+  left with ≥ 20 in-scope pages; and the dashboard backlog has no derivable class ≥ 20 pages.
+  Everything remaining is class C (editorial) or is in "Declined classes". This is the GOOD
+  ending — but it may only be declared with the miner's output quoted in the report. The
+  session 15–18 verdicts, reached without the miner, do not count.
+- **Plateau.** Three consecutive shipped rounds each move the skeleton SCAFFOLD mean by less
+  than 0.02 percentage points AND move no other protected gate. Stop and report — the next lever
+  needs a human decision, not another round.
+- **Budget.** The round cap Chris set in the starting message (default: 10 rounds per session)
+  is reached, or the session has run for the time cap he set (default: 6 hours).
 - **Blocked.** Two classes in a row end BLOCKED (§3 step 6). Something systemic is wrong; stop.
 - **Tree health.** `verify_after_transfer.sh` fails, `_check_index_sync.cjs` fails, or a
   regeneration leaves stale modules that a second attempt cannot clear.
 
 On every stop, write the final `LOOP_STATE.md` and then give Chris the report in §5.
-
-**Amendment for widget-BUILD rounds (16 September 2026, after Chris's session-10 decision D10-3 in
-`LOOP_STATE.md` — widget-build rounds are authorised, one type per kickoff).** A build round is
-invisible to the skeleton score by design (A1: a writer-tagged widget is judged on its own verifier,
-not on the human's substitution), so for a build round: (a) the plateau rule's "moved" test is the
-type's *Still a box* count on `COVERAGE_DASHBOARD.md`, regenerated with `_coverage_dashboard.py` at
-the start of every build round and again after its regeneration (a stale dashboard cannot be the
-test) — a round that converts ≥ 20 sites from hand-off box to built widget has moved; (b) the §3 step-3 solidify test (share ≥ 0.60) does not
-apply — the writer's tag is the target — while the 20-page floor applies per authoring SHAPE
-family within the type; (c) exhaustion counts the un-built widget rows of the dashboard as queue
-classes. Everything else in §3 and §4 is unchanged. (Chris may strike this paragraph.)
 
 ## 5. The report Chris receives (plain English, every time the loop stops)
 
@@ -256,9 +261,12 @@ classes. Everything else in §3 and §4 is unchanged. (Chris may strike this par
    changed, shipped / declined / blocked.
 4. Anything BLOCKED, with the decision Chris needs to make, explained as: what the choice is,
    what happens either way, and a recommendation.
-5. The copy-and-paste git block: `cd C:\Users\Gavin\TeKura\FINAL_MODULE_DATA\pageforge-site`,
-   `git log --oneline -n <rounds>` (so he can see the commits), then `git push`. Say plainly if
-   anything could not be committed and why.
+5. The copy-and-paste git block — EXACTLY two lines, nothing else:
+   `cd C:\Users\Gavin\TeKura\FINAL_MODULE_DATA\pageforge-site` then `git push`. NEVER include a
+   `git log` line: on Chris's machine it opens the `less` viewer, which waits for a keypress,
+   blocks the push and (16 Sept 2026) left a stray file in the repo. If Chris should see the
+   commits, print them in the chat yourself with `git --no-pager log --oneline -n <N>`. Say
+   plainly if anything could not be committed and why.
 
 No jargon without a plain-English definition on first use. "Skeleton SCAFFOLD" = how closely the
 page's row/column/activity/section structure matches the human developer's, with the insides of
@@ -302,14 +310,6 @@ Chris to type "continue". That is a defect in the loop, not a feature. The rules
 - Commit after every round, so a crash loses at most one round.
 - Keep console output small: write big results to files under `CONVERTER_V2/outputs/` and print
   the summary line only.
-- **Never rewrite an engine or data file in place from a script.** Write to a temporary file,
-  check it is non-empty and parses (`node --check` for `.js`, a JSON load for `.json`), then move
-  it over the original. (r347: a writer that opened `DocxExtractor.js` before encoding its content
-  truncated the engine file to 0 bytes; it was rebuilt from the committed blob with `git show`,
-  never a checkout.)
-- **Record every automatic compaction** as one line in `LOOP_STATE.md` — "compaction at HH:MM
-  during rN, step X" — so the review can count them; and record why a session ended whenever the
-  reason is not a §4 stop (session 7 of 16 Sept left no record).
 - **Context diet (added 14 Sept 2026 after the first run filled 1M of context in an hour).**
   `CLAUDE.md` is ~970 KB and `BUILD_CHANGELOG.md` ~2 MB — never read either whole. Read
   CLAUDE.md §0–§6, §9, §10, §12, §16 by line range (grep the `## ` headings first) and only the
@@ -325,11 +325,18 @@ commands in `.claude/skills/loop-start/SKILL.md` and `.claude/skills/loop-stop/S
 In any Claude Code session started in this folder, typing **`/loop-start`** sends the start
 message (optionally `/loop-start 6 rounds or 4 hours` to set the budget) and **`/loop-stop`**
 sends the stop message. If the message text below changes, change the SKILL.md files too —
-they are the copies that actually run. Two more project commands exist for sessions that are NOT
-loop runs and carry no `REGENERATE CORPUS` code: **`/loop-decisions`** (explain every blocked item
-to Chris in plain English and record his answers — session 10) and **`/loop-review`** (the periodic
-health review of the loop itself; it writes `LOOP_REVIEW__<date>.md` and may amend this file with
-Chris's approval).
+they are the copies that actually run.
+
+Two companion commands (also in `.claude/skills/`) are NOT loop runs and carry no
+`REGENERATE CORPUS` code:
+- **`/loop-review`** — a periodic health review of the loop itself, meant to be run on Fable:
+  audits KB drift, progress, rule quality, gate health and session mechanics, writes
+  `LOOP_REVIEW__<date>.md`, proposes changes to this file (and the SKILL.md copies) and applies
+  only what Chris approves, then appends a "## Loop review <date>" entry to `LOOP_STATE.md`.
+- **`/loop-decisions`** — explains every open decision in plain English with real module
+  examples (WT → gold → Claude, quoted), writes `DECISIONS__Pending_<date>.md`, and records
+  Chris's answers under "## Decisions from Chris" in `LOOP_STATE.md` so the next `/loop-start`
+  actions them.
 
 Chris keeps one message and pastes it unchanged into every new Claude Code session on this
 folder, whether the previous session ended cleanly, ran out of context, or died in a power
