@@ -1,0 +1,21 @@
+r362 activity-lead probe — 4024 number-paired activity boxes / 409 modules
+gold-first × claude-first: [(('h3', 'h3'), 2605), (('h3', 'WIDGET'), 958), (('h3', 'p'), 153), (('WIDGET:super-content', 'WIDGET'), 115), (('WIDGET:super-content', 'h3'), 61), (('WIDGET:col-8', 'h3'), 35), (('h3', 'none'), 14), (('h3', 'ol'), 11), (('h4', 'h3'), 10), (('h2', 'h2'), 10), (('h3', 'a'), 7), (('WIDGET:col-8', 'WIDGET'), 7), (('h4', 'WIDGET'), 6), (('p', 'h3'), 4)]
+CLASS — gold box opens with h3, Claude's opens with a widget/capture: 958 boxes / 247 modules / 535 pages
+  swallowed (gold h3 text inside Claude's box): Counter({True: 527, False: 431})
+  Claude's opening widget: [('WIDGET:cv2-interactive', 908), ('WIDGET:super-content', 39), ('WIDGET:dropQuiz', 4), ('WIDGET:dragAndDrop', 3), ('WIDGET:videoSection', 1), ('WIDGET:ratio', 1), ('WIDGET:button', 1), ('WIDGET:multiChoiceQuiz', 1)]
+  by template: Counter({'Standard': 794, 'Inquiry': 85, 'Fundamentals': 79})
+  by base: [('BLL', 229), ('MXFU', 102), ('MXFL', 59), ('MXDI', 58), ('MXDB', 48), ('XMES', 40), ('AGH', 34), ('ENFUN', 31), ('ENGJ', 30), ('ENGR', 30), ('ENGS', 29), ('MXEO', 26), ('ENGC', 22), ('ENGI', 21)]
+SWALLOWED subset: 527 boxes / 180 modules — opening widget [('WIDGET:cv2-interactive', 501), ('WIDGET:super-content', 26)]
+  examples: AGH1002/AGH1002_5_0.html #5A «Nutrients
+                    » → WIDGET:cv2-interactive; AGH1003/AGH1003_2_0.html #2A «Irrigation systems and product» → WIDGET:cv2-interactive; ANZH203/ANZH203_1_0.html #1A «Comprehension activity
+       » → WIDGET:cv2-interactive; ARFUN01/ARFUN01_0_0.html #1A «Emotions
+                     » → WIDGET:cv2-interactive; ARFUN01/ARFUN01_0_0.html #2A «Culture in the arts
+          » → WIDGET:cv2-interactive; ARFUN02/ARFUN02_0_0.html #3D «What Have I Learned? He aha ak» → WIDGET:cv2-interactive; BLL110/BLL110_0_0.html #3G «Self check activity
+          » → WIDGET:cv2-interactive; BLL110/BLL110_0_0.html #4G «Self check activity
+          » → WIDGET:cv2-interactive; BLL110/BLL110_0_0.html #5G «Self check activity
+          » → WIDGET:cv2-interactive; BLL110/BLL110_0_0.html #6G «Self check activity
+          » → WIDGET:cv2-interactive; BLL111/BLL111_1_0.html #1E «Write the words
+              » → WIDGET:cv2-interactive; BLL111/BLL111_2_0.html #2A «Speed Reading
+								Read the» → WIDGET:cv2-interactive
+OTHER — gold opens with h3, Claude opens with [('p', 153), ('none', 14), ('ol', 11), ('a', 7), ('img', 2)]: 187 boxes
+AGREE — both open with h3: 2605 boxes

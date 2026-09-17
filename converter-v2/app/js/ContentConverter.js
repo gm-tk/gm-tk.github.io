@@ -1941,16 +1941,32 @@ class ContentConverter {
 							&& bundle.activityOwner.blackAfter
 							&& bundle.activityOwner.blackAfter.replace(/[*\s]+/g, "").toUpperCase() === String(bundle.activityId).toUpperCase();
 						if (bundle.activityOwner.blackAfter?.trim() && !_tailIsId) {
-							leadStream.push({ type: "black", text: bundle.activityOwner.blackAfter });
+							leadStream.push({ type: "black", text: bundle.activityOwner.blackAfter, _ownerTitle: true });
 						}
 						for (const l of (bundle.activityLeadItems ?? [])) leadStream.push(l);
+						// ROUND 362 (the unclassified-activity lead, InteractiveScanner's `_unclassLead`
+						// bundles): a MEDIA tail (`[image] url`, `[video] url`, a `[button]` label) or a
+						// URL-like run is never promoted to the box's <h3> — it is buffered as prose, and
+						// a title that arrives after buffered prose flushes that prose first so the order
+						// holds. Everything else keeps the normal path's rule (the first heading / text
+						// line is the title — MXDI101 1A's plain-text «Counting in twos»).
+						const _ulTitleOnly = !!bundle._unclassLead;
+						const _ulMediaTail = (lp) => !!lp && /^(?:image|video|audio|button|link|embed|iframe|file)$/i.test(String(lp.tag || ""));
+						const _ulUrlLike = (t) => /^\s*(?:\[?\s*link\b|https?:\/\/|www\.)/i.test(String(t || ""));
 						for (const lead of leadStream) {
 							if (lead.type === "table") { flushLead(); emit(TablesAndGrids.contentTable(lead.block, run, false, this.#norm)); titleDone = true; actProse = true; continue; }
-							if (lead.type === "black") { addLead(lead.text); continue; }
+							if (lead.type === "black") {
+								if (_ulTitleOnly && !titleDone && !lead._ownerTitle && _ulUrlLike(lead.text)) { leadBuf.push(lead.text.trim()); continue; }
+								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();
+								addLead(lead.text); continue;
+							}
 							const lp = lead.parse.primary;
 							if (lp && ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading"].includes(lp.tag)) {
+								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();
 								addLead(this.#norm.RenderText(lead.text) || lead.blackAfter || "");
 							} else if (lead.blackAfter?.trim()) {
+								if (_ulTitleOnly && !titleDone && (_ulMediaTail(lp) || _ulUrlLike(lead.blackAfter))) { leadBuf.push(lead.blackAfter.trim()); continue; }
+								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();
 								addLead(lead.blackAfter);
 							}
 						}

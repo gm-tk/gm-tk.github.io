@@ -142,11 +142,64 @@ class InteractiveScanner {
 						positionContext: lastContext,
 						startIndex: i, endIndex: i + 1,
 					};
-					// the activity item itself is the first member (its
-					// blackAfter carries the activity title/instructions)
-					this.#collectMember(bundle, it, run);
-					bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
-						/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+					// ROUND 362 — THE UNCLASSIFIED ACTIVITY KEEPS ITS TITLE AND LEAD PROSE FREE (the
+					// autonomous loop's session 19 Round 6; the DIFF MINER's activity classes #542 /
+					// #535 / #533; KB 01F activity_heading). The gold opens such a box with the
+					// <h3> title + the instruction paragraph and the widget follows; collecting the
+					// opener as the first member swallowed both into the placeholder box. This is
+					// the NORMAL path's activity-owner form applied here: the opener becomes
+					// bundle.activityOwner, the items between it and the first TABLE (black runs,
+					// ELEMENT tags — [body] / headings / media —, instruction spans) become
+					// bundle.activityLeadItems, and the members start at that table. ContentConverter
+					// already renders an owned bundle as h3 title + lead prose + the widget box.
+					// Data: BoundaryBank._meta.opener_rule.unclassified_activity_lead   Env: UNCLASSLEAD_OFF
+					// Scoped to a NUMBERED opener (`[Activity 1A] Title`): the number is what makes the
+					// span the box's own opener. An UNNUMBERED `[interactive activity] drag and drop …`
+					// span nested inside a numbered box (MXFU201's shape) keeps the member form — its
+					// tail is the widget's instruction, not a title, and the outer numbered opener
+					// already renders the box, its [h3] title and its lead prose.
+					const _ualCfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.unclassified_activity_lead;
+					const _ualOn = !!_ualCfg && _ualCfg.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_ualCfg.env || "UNCLASSLEAD_OFF"])
+						&& (it.parse.numbers?.length > 0);
+					if (_ualOn) {
+						// The lead may hold ONE heading tag and only as its FIRST item (the `[h3] Title` that
+						// follows a bare `[Activity N]`); any later heading ends the lead — the member walk
+						// then starts AT that heading and, headings being terminators, captures nothing,
+						// exactly the pre-r362 outcome for a table that belongs to a later section
+						// (ENGI303 lesson 6, MXFL203 lesson 8).
+						const _ualHeading = (x) => x.type === "tag" && /^(?:h[1-6]|heading|activity heading)$/i.test(String(x.parse?.primary?.tag || ""));
+						let j = i + 1;
+						while (j < items.length && items[j].consumedBy === undefined && items[j].type !== "table"
+							&& (items[j].type === "black" || items[j].type === "assettodo"
+								|| (items[j].type === "tag" && (!items[j].parse?.primary || items[j].parse.primary.directive === "ELEMENT")))
+							&& !(_ualHeading(items[j]) && j > i + 1)) j++;
+						// A lead that OPENS with a heading tag (`[Activity N]` + `[h4] What is the value?` +
+						// prose + a type-and-check table — MXFUN01, MXFL203, AGH1008) keeps the member form:
+						// there the heading already terminated the old walk, so the table rendered FREE
+						// and the heading + prose as ordinary content; owning it would move that table
+						// into the hand-off box, which measured WORSE on both the skeleton and the
+						// compare_structure gates. The owner form is for the tail-titled / plain-text-
+						// titled opener whose whole activity used to vanish into the capture.
+						const _ualLeadHeads = items.slice(i + 1, j).some(_ualHeading);
+						if (_ualLeadHeads) {
+							this.#collectMember(bundle, it, run);
+							bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
+								/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						} else {
+						bundle.activityOwner = it;
+						bundle.activityLeadItems = items.slice(i + 1, j);
+						bundle._unclassLead = true;   // the converter's lead rendering: only the opener's own tail or a heading tag is the title
+						bundle.endIndex = this.#swallowMembers(bundle, items, j,
+							/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						}
+					} else {
+						// the activity item itself is the first member (its
+						// blackAfter carries the activity title/instructions)
+						this.#collectMember(bundle, it, run);
+						bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
+							/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+					}
 					for (let k = bundle.startIndex; k < bundle.endIndex; k++) {
 						items[k].consumedBy = bundles.length;
 					}

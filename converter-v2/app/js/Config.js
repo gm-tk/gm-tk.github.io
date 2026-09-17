@@ -1722,7 +1722,8 @@ class Config {
 	// ROUND 359 (260619.30): the Inquiry overview menu is the KB 06 §3.4 two-column form — menu.two_col_li.inquiry_family (MenuBuilder.#inquiryFamilyFor; the two_col_inquiry shell; a colon label reaches the menu; env INQFAMILY_OFF); the diff miner's module-menu classes.
 	// ROUND 360 (260619.31): the footer link set follows the KB's sub-type forms — a Fundamentals single-page module home-nav only, an Inquiry overview prev + next + home (eleven Style_Anchor_Registry corrections, no engine change); the diff miner's footer facts.
 	// ROUND 361 (260619.32): the EXPlore "Navigation with N sections" inquiry dialect — the writer's one-line section list + its openers become the KB 06 §3.4 crumbs + inquiryPanel scaffold (PanelsBuilder.detectInquirySections, inquiryPanels sectionMode; data inquiry_tabs.section_nav, env SECTIONNAV_OFF); the diff miner's crumbs fact F23.
-	static AppVersion = "260619.32";
+	// ROUND 362 (260619.33): the unclassified activity keeps its title heading and lead prose free — the numbered `[Activity N] Title` opener becomes the bundle's activityOwner and the prose before the first table its lead (KB 01F activity_heading h3 + the instruction p, then the hand-off box); data BoundaryBank._meta.opener_rule.unclassified_activity_lead, env UNCLASSLEAD_OFF; the diff miner's activity classes #542 / #535 / #533.
+	static AppVersion = "260619.33";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -29,6 +29,11 @@
 				"story heading",
 				"list"
 			],
+			"unclassified_activity_lead": {
+				"_doc": "ROUND 362 (the autonomous loop's session 19, Round 6 — the DIFF MINER's activity classes #542 / #535 / #533; KB 01F activity_heading). THE UNCLASSIFIED ACTIVITY KEEPS ITS TITLE HEADING AND LEAD PROSE FREE. An `[Activity N] Title` whose only widget signal is a data table (the BLL phonics pattern) is captured as an UNCLASSIFIED bundle; before this round the opener item itself was the bundle's first member, so the whole activity — title and instruction paragraph included — became the placeholder box, while the gold opens the box with `<h3>Title</h3>` + the instruction `<p>` and the widget follows (measured `outputs/_measure_r362_actlead.py`: 958 boxes / 247 modules / 535 pages open with h3 in the gold and with a capture in Claude's; 2605 boxes agree). Now the unclassified path records the opener as `bundle.activityOwner` and the items between it and the first TABLE (black runs, ELEMENT tags — [body] / headings / media —, instruction spans) as `bundle.activityLeadItems`, and swallows members from that table — exactly the normal path's activity-owner form, which ContentConverter already renders as the box's h3 title + lead prose + the placeholder box. Env UNCLASSLEAD_OFF = the opener collected as a member as before (byte-identical).",
+				"enabled": true,
+				"env": "UNCLASSLEAD_OFF"
+			},
 			"_opener_tags_note": "Tags the activity-ownership LOOK-BACK (InteractiveScanner) crosses when walking from a widget back to its owning [Activity N]: the activity's own lead content (title/heading/body/button/image/list) sits between the [Activity] tag and the widget and must not stop the walk. 'list' added round 33 — OSAI501-02's Activity 2A puts an [unsorted list] (the 'Benefit/Risk/Managing the risk' instructions) before its reorder; without 'list' the look-back stopped at the list, the reorder was not owned by 2A, and the activity rendered as an EMPTY box with its title/list spilled outside. A list in an activity lead is activity content, so crossing it is correct (same basis as [body] being an opener)."
 		},
 		"member_rule": {
