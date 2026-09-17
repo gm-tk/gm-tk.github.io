@@ -1,0 +1,137 @@
+AGH1001: identical 6 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1003: identical 9 / changed 0
+AGH1004: identical 7 / changed 0
+AGH1005: identical 9 / changed 0
+AGH1006: identical 10 / changed 0
+AGH1007: identical 10 / changed 0
+AGH1008: identical 10 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH105: identical 8 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH303: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ANZH404: identical 7 / changed 0
+  ~ ARFUN01_0_0.html: -1 +0
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+ARFUN01: identical 0 / changed 1
+  ~ ARFUN02_0_0.html: -1 +0
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+ARFUN02: identical 0 / changed 1
+  ~ ARFUN03_0_0.html: -1 +0
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+ARFUN03: identical 0 / changed 1
+  ~ ARFUN04_0_0.html: -1 +0
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+ARFUN04: identical 0 / changed 1
+  ~ ARFUN05_0_0.html: -1 +0
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+ARFUN05: identical 0 / changed 1
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+  ~ BLL110_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL110: identical 0 / changed 1
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+  ~ BLL120_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL120: identical 0 / changed 1
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+  ~ BLL130_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL130: identical 0 / changed 1
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+  ~ BLL140_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL140: identical 0 / changed 1
+BLL141: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+  ~ BLL150_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL150: identical 0 / changed 1
+BLL151: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+  ~ BLL160_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL160: identical 0 / changed 1
+BLL161: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+  ~ BLL170_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL170: identical 0 / changed 1
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL176: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+  ~ BLL210_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL210: identical 0 / changed 1
+BLL211: identical 3 / changed 0
+BLL212: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+  ~ BLL220_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL220: identical 0 / changed 1
+BLL221: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+  ~ BLL230_0_0.html: -0 +1
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+BLL230: identical 0 / changed 1
+BLL231: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+
+TOTAL: identical 370 / changed 15 / missing 0 over 104 modules
+CHANGED: ARFUN01/ARFUN01_0_0.html ARFUN02/ARFUN02_0_0.html ARFUN03/ARFUN03_0_0.html ARFUN04/ARFUN04_0_0.html ARFUN05/ARFUN05_0_0.html BLL110/BLL110_0_0.html BLL120/BLL120_0_0.html BLL130/BLL130_0_0.html BLL140/BLL140_0_0.html BLL150/BLL150_0_0.html BLL160/BLL160_0_0.html BLL170/BLL170_0_0.html BLL210/BLL210_0_0.html BLL220/BLL220_0_0.html BLL230/BLL230_0_0.html

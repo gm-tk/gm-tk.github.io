@@ -138,6 +138,11 @@
 			"ARFUN": {
 				"base_code": "ARFUN",
 				"base_rules": {
+					"footer_links": {
+						"overview": "home",
+						"lesson": "prev+next+home",
+						"final": "prev+home"
+					},
 					"module_code": {
 						"overview": "absent",
 						"lesson": "absent"
@@ -309,6 +314,11 @@
 						],
 						"template_deltas": {
 							"Inquiry": {
+								"footer_links": {
+									"overview": "prev+next+home",
+									"lesson": "prev+next+home",
+									"final": "prev+home"
+								},
 								"module_code": {
 									"overview": "absent",
 									"lesson": "padded-number"
@@ -384,6 +394,15 @@
 							"BLL252",
 							"BLL254"
 						],
+						"template_deltas": {
+							"Inquiry": {
+								"footer_links": {
+									"overview": "prev+next+home",
+									"lesson": "prev+next+home",
+									"final": "prev+home"
+								}
+							}
+						},
 						"delta": {
 							"template_phase": "1-3",
 							"page_model": "multi-file",
@@ -461,6 +480,11 @@
 			"ENFUN": {
 				"base_code": "ENFUN",
 				"base_rules": {
+					"footer_links": {
+						"overview": "home",
+						"lesson": "prev+next+home",
+						"final": "prev+home"
+					},
 					"body_class": "container-fluid fundamentals",
 					"module_code": {
 						"overview": "absent",
@@ -1334,9 +1358,9 @@
 						"lesson": "—"
 					},
 					"footer_links": {
-						"overview": "prev+next+home",
-						"lesson": "—",
-						"final": "—"
+						"overview": "home",
+						"lesson": "prev+next+home",
+						"final": "prev+home"
 					}
 				},
 				"levels": {
@@ -1367,9 +1391,9 @@
 								"lesson": "yes"
 							},
 							"footer_links": {
-								"overview": "next+home",
+								"overview": "home",
 								"lesson": "prev+next+home",
-								"final": "—"
+								"final": "prev+home"
 							},
 							"page_model": "single-file",
 							"page_model_exceptions": [
@@ -1790,6 +1814,11 @@
 			"TEFUN": {
 				"base_code": "TEFUN",
 				"base_rules": {
+					"footer_links": {
+						"overview": "home",
+						"lesson": "prev+next+home",
+						"final": "prev+home"
+					},
 					"module_code": {
 						"overview": "absent",
 						"lesson": "absent"
@@ -2027,7 +2056,13 @@
 			},
 			"CEDK": {
 				"base_code": "CEDK",
-				"base_rules": {},
+				"base_rules": {
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home",
+						"final": "prev+home"
+					}
+				},
 				"levels": {
 					"CEDK1": {
 						"members": [
@@ -2055,9 +2090,9 @@
 								"lesson": "no"
 							},
 							"footer_links": {
-								"overview": "—",
+								"overview": "prev+next+home",
 								"lesson": "prev+next+home",
-								"final": "—"
+								"final": "prev+home"
 							},
 							"page_model": "single-file"
 						}
@@ -2164,6 +2199,15 @@
 				"base_code": "CEDO",
 				"base_rules": {
 					"body_class": "container-fluid"
+				},
+				"template_deltas": {
+					"Inquiry": {
+						"footer_links": {
+							"overview": "prev+next+home",
+							"lesson": "prev+next+home",
+							"final": "prev+home"
+						}
+					}
 				},
 				"levels": {
 					"CEDO1": {
@@ -2272,6 +2316,15 @@
 						"overview": "prev+next+home",
 						"lesson": "prev+next+home",
 						"final": "—"
+					}
+				},
+				"template_deltas": {
+					"Inquiry": {
+						"footer_links": {
+							"overview": "prev+next+home",
+							"lesson": "prev+next+home",
+							"final": "prev+home"
+						}
 					}
 				},
 				"levels": {
@@ -2514,6 +2567,15 @@
 			"CEDW": {
 				"base_code": "CEDW",
 				"base_rules": {},
+				"template_deltas": {
+					"Inquiry": {
+						"footer_links": {
+							"overview": "prev+next+home",
+							"lesson": "prev+next+home",
+							"final": "prev+home"
+						}
+					}
+				},
 				"levels": {
 					"CEDW1": {
 						"members": [
@@ -3371,9 +3433,9 @@
 						"lesson": "tabs"
 					},
 					"footer_links": {
-						"overview": "—",
+						"overview": "prev+next+home",
 						"lesson": "prev+next+home",
-						"final": "—"
+						"final": "prev+home"
 					}
 				},
 				"template_deltas": {
