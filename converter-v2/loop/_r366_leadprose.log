@@ -1,0 +1,70 @@
+captures with a leading black paragraph: 1525 on 769 pages / 329 modules
+verdicts: [('gold-free', 798), ('gold-absent', 498), ('gold-in-widget', 229)]
+
+BY owner kind: n / gold-free share / pages / modules
+   ('standalone', 809, 0.51, 470, 249)
+   ('owned', 716, 0.54, 428, 220)
+
+BY capture type: n / gold-free share / pages / modules
+   ('dragAndDrop', 142, 0.58, 113, 97)
+   ('unclassified', 110, 0.55, 84, 54)
+   ('carousel', 68, 0.13, 63, 50)
+   ('interactive', 50, 0.52, 36, 16)
+   ('selfCheck', 43, 0.28, 34, 25)
+   ('dropDown', 39, 0.72, 33, 29)
+   ('accordion', 37, 0.38, 30, 27)
+   ('clickDrop', 36, 0.33, 18, 14)
+   ('multiChoiceQuiz', 32, 0.41, 31, 27)
+   ('modal + modal + modal + modal + modal + modal + modal + modal + modal + modal + modal + modal', 25, 0.96, 6, 6)
+   ('flipCard', 24, 0.38, 20, 17)
+   ('accordion + accordion', 23, 0.3, 19, 13)
+   ('selfCheck + selfCheck', 22, 0.55, 9, 9)
+   ('clickDrop (create)', 20, 0.3, 1, 1)
+   ('reorder', 19, 0.84, 12, 11)
+   ('typing', 17, 0.71, 12, 12)
+
+BY template: n / gold-free share / pages / modules
+   ('Standard', 1130, 0.51, 672, 252)
+   ('Fundamentals', 212, 0.55, 46, 42)
+   ('Inquiry', 181, 0.6, 49, 33)
+   ('Bilingual', 2, 0.0, 2, 2)
+
+BY subject: n / gold-free share / pages / modules
+   ('1-10 Mathematics', 310, 0.63, 142, 39)
+   ('1-10 Blended Literacy', 248, 0.38, 119, 76)
+   ('NCEA1', 199, 0.53, 133, 41)
+   ('Leaving to Learn', 149, 0.4, 82, 29)
+   ('1-10 English', 132, 0.56, 82, 33)
+   (None, 103, 0.75, 27, 10)
+   ('ConnectED', 83, 0.64, 37, 17)
+   ('Online Safety (OS9000)', 83, 0.65, 55, 27)
+   ('1-10 Arts', 55, 0.33, 5, 5)
+   ('1-10 Social Science', 54, 0.26, 20, 9)
+   ('ANZH', 45, 0.53, 29, 10)
+   ('1-10 Technology', 18, 0.44, 7, 7)
+   ('1-10 Health and PE', 15, 0.6, 11, 11)
+   ('Te ara Whakapuawa -Wellbeing', 13, 0.62, 6, 6)
+
+BY (owner kind, type): n / gold-free share / pages / modules
+   (('owned', 'dragAndDrop'), 92, 0.52, 74, 66)
+   (('standalone', 'unclassified'), 77, 0.64, 64, 47)
+   (('standalone', 'dragAndDrop'), 50, 0.7, 43, 38)
+   (('standalone', 'interactive'), 44, 0.52, 32, 14)
+   (('owned', 'carousel'), 42, 0.07, 41, 35)
+   (('standalone', 'accordion'), 33, 0.33, 26, 23)
+   (('owned', 'unclassified'), 33, 0.33, 24, 11)
+   (('owned', 'selfCheck'), 32, 0.19, 24, 18)
+   (('standalone', 'dropDown'), 31, 0.77, 26, 25)
+   (('standalone', 'clickDrop'), 28, 0.39, 13, 11)
+   (('standalone', 'carousel'), 26, 0.23, 22, 18)
+   (('owned', 'modal + modal + modal + modal + modal + modal + modal + modal + modal + modal + modal + modal'), 24, 1.0, 5, 5)
+   (('standalone', 'flipCard'), 21, 0.33, 17, 14)
+   (('standalone', 'accordion + accordion'), 21, 0.29, 17, 12)
+   (('owned', 'selfCheck + selfCheck'), 19, 0.58, 6, 6)
+   (('owned', 'multiChoiceQuiz'), 17, 0.41, 16, 15)
+
+THE CLASS (gold keeps the lead FREE, Claude captures it): 798 captures / 450 pages / 241 modules
+  by owner kind: [('standalone', 413), ('owned', 385)]
+  top modules: [('CHFUN05', 37), ('MXFL301', 27), ('MXDB302', 26), ('MXEO301', 26), ('MXFL302', 18), ('MXFU301', 18), ('ENGR302', 13), ('XGF9006', 13), ('ARFUN04', 11), ('CEDT104', 10), ('HIS1004', 10), ('AGH1001', 8), ('ANZH205', 8), ('ENGI405', 8), ('ENGR102', 8)]
+  n_lead distribution: [(1, 330), (4, 215), (2, 189), (3, 64)]
+  examples: [('AGH1001', 'AGH1001_1_0.html', 'interactive', 'Activity (inline)', 'Select the primary products below which you t'), ('AGH1001', 'AGH1001_1_0.html', 'interactive', 'Activity (inline)', 'Drag and drop the products into the correct c'), ('AGH1001', 'AGH1001_2_0.html', 'carousel (of and text)', 'Activity (inline)', 'Below is a brief timeline of the events that '), ('AGH1001', 'AGH1001_2_0.html', 'dragAndDrop (the export revenue can be mismatched and be matched correctly by akonga)', 'Activity (inline)', 'Can you match the correct primary product to '), ('AGH1001', 'AGH1001_4_0.html', 'interactive + interactive', 'Activity (inline)', 'Maramataka Calendar:'), ('AGH1001', 'AGH1001_4_0.html', 'unclassified', 'Activity (inline)', 'Fill in the table below. You may need to do s'), ('AGH1001', 'AGH1001_4_0.html', 'interactive', 'Activity (inline)', 'Match up the arrows with the key events on a '), ('AGH1001', 'AGH1001_4_0.html', 'interactive', 'Activity (inline)', 'Match up the events on a fruit orchard with t')]

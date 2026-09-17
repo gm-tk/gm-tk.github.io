@@ -1726,7 +1726,8 @@ class Config {
 	// ROUND 363 (260619.34): the heading-tag-led unclassified activity takes the owner form — a bare `[Activity N]` + `[Activity Heading] Title` / `[Heading] Title` keeps the gold's <h3> title and lead prose free of the capture (the r362 guard scoped to the h2–h5 tags #swallowMembers terminates on; data unclassified_activity_lead.heading_led_owner, env UNCLASSHEAD_OFF). 76 pages / 31 modules; skeleton +0.081pp.
 	// ROUND 364 (260619.35): the id-carrying heading is the activity opener — `[H3] 1A Title` opens the gold's numbered box with the <h3> title, the family's unnumbered [interactive activity] span nests inside it (activity interactive when it owns a widget), and a media item in an activity's lead renders as media (Standard + Fundamentals; data BoundaryBank._meta.opener_rule.id_heading_opener; env IDHEAD_OFF / LEADMEDIA_OFF). The autonomous loop's session 20 Round 8, finished in session 21 Round 1.
 	// ROUND 365 (260619.36): the widget-typed activity tag's tail is the box title — `[Activity 1B – self-marking type the answer] Fill in the blanks` opens the gold's numbered box with <h3>Fill in the blanks</h3> and the title leaves the capture (data Emit_Templates.activity_wrapper.embedded_interactive_activity.typed_tag_title; env TYPEDTAG_OFF). The autonomous loop's session 21 Round 2.
-	static AppVersion = "260619.36";
+	// ROUND 366 (260619.37): the lead prose after the widget tag renders free inside the box — the instruction paragraph between `[Interactive]` and its table becomes the box's free <p> (the gold's h3 + p + widget) for the widget types whose gold keeps it free (data Emit_Templates.activity_wrapper.lead_free_after_tag; env LEADFREE_OFF). The autonomous loop's session 21 Round 3.
+	static AppVersion = "260619.37";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

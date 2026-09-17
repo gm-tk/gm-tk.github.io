@@ -1,0 +1,225 @@
+PNR104: identical 3 / changed 0
+TRR105: prep refused (no-wt)
+TRR109: identical 6 / changed 0
+TRR114: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+ARFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+  ~ TEFUN01_0_0.html: -1 +1
+     - <p>Can you match different favourite things with the people who love them?</p>
+     + <p>Can you match different favourite things with the people who love them?</p>
+TEFUN01: identical 0 / changed 1
+TEFUN05: identical 1 / changed 0
+XFUN01: identical 1 / changed 0
+BLL130: identical 1 / changed 0
+BLL170: identical 1 / changed 0
+BLL240: identical 9 / changed 0
+CEDO102: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+  ~ CEDT207_6_0.html: -1 +1
+     - <p>Draw three types of symbols from Native American rock art in the boxes below.</p>
+     + <p>Draw three types of symbols from Native American rock art in the boxes below.</p>
+CEDT207: identical 7 / changed 1
+CEDW101: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+XDLS901: identical 5 / changed 0
+  ~ AGH1002_5_0.html: -1 +1
+     - <p>Heading: Nutrients</p>
+     + <p>Heading: Nutrients</p>
+AGH1002: identical 6 / changed 1
+  ~ AGH1006_8_0.html: -2 +4
+     - <p>Sort the following advantages and disadvantages for the biological control of pests:</p>
+     - <li>Rotating crops helps reduce pest numbers.□</li>
+     + <p>Sort the following advantages and disadvantages for the biological control of pests:</p>
+     + <ol>
+     + <li>Rotating crops helps reduce pest numbers.□</li>
+     + </ol>
+  ~ AGH1006_9_0.html: -1 +1
+     - <p>Drag and drop the management practices below to the life process they impact.</p>
+     + <p>Drag and drop the management practices below to the life process they impact.</p>
+AGH1006: identical 8 / changed 2
+ANZH101: identical 4 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+ART1004: identical 1 / changed 0
+BLL112: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL141: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL211: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+  ~ CEDO502_4_0.html: -3 +3
+     - <ol>
+     - <li>Pick out the keywords from the purpose.</li>
+     - </ol>
+     + <ol>
+     + <li>Pick out the keywords from the purpose.</li>
+     + </ol>
+CEDO502: identical 9 / changed 1
+ENG1004: identical 8 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI401: identical 12 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGR201: identical 7 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS301: identical 8 / changed 0
+EXBP901: identical 6 / changed 0
+HES1004: identical 5 / changed 0
+HIS1001: identical 8 / changed 0
+  ~ HIS1005_9_1.html: -1 +1
+     - <p>Dred Scott.docx</p>
+     + <p>Dred Scott.docx</p>
+HIS1005: identical 14 / changed 1
+HPRE203: identical 8 / changed 0
+MXDB301: identical 8 / changed 0
+MXDI103: identical 10 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+  ~ MXFL102_7_0.html: -1 +1
+     - <p>Practise putting these days of the week in the correct order, starting from Monday.</p>
+     + <p>Practise putting these days of the week in the correct order, starting from Monday.</p>
+MXFL102: identical 8 / changed 1
+MXFL202: identical 6 / changed 0
+  ~ MXFL302_1_0.html: -1 +1
+     - <p>Choose the correct answer from the options given.</p>
+     + <p>Choose the correct answer from the options given.</p>
+  ~ MXFL302_2_0.html: -4 +4
+     - <p>Select the correct option to make each of the statements correct.</p>
+     - <p>Use the rule <b>s = 6t</b> where <i>s</i> = number of seats and <i>t</i> = number of tables to answer the f
+     - <p>Match the sequence with the correct rule.</p>
+     - <p>Use the rule to find the 20th and 75th term for each of the following sequences.</p>
+     + <p>Select the correct option to make each of the statements correct.</p>
+     + <p>Use the rule <b>s = 6t</b> where <i>s</i> = number of seats and <i>t</i> = number of tables to answer the f
+     + <p>Match the sequence with the correct rule.</p>
+     + <p>Use the rule to find the 20th and 75th term for each of the following sequences.</p>
+  ~ MXFL302_3_0.html: -3 +3
+     - <p>Look at the scale below and how the probability has been described. Read each event and drag it to where yo
+     - <p>Study Aria’s hāngi feast menu and use this information to complete the tree diagram and answer questions ab
+     - <p>Study Aria’s traditional fare menu and use this information to complete this activity.</p>
+     + <p>Look at the scale below and how the probability has been described. Read each event and drag it to where yo
+     + <p>Study Aria’s hāngi feast menu and use this information to complete the tree diagram and answer questions ab
+     + <p>Study Aria’s traditional fare menu and use this information to complete this activity.</p>
+  ~ MXFL302_4_0.html: -2 +2
+     - <p>Select the correct answer to these fraction equations.</p>
+     - <p>Reduce each fraction to its lowest equivalent.</p>
+     + <p>Select the correct answer to these fraction equations.</p>
+     + <p>Reduce each fraction to its lowest equivalent.</p>
+  ~ MXFL302_5_0.html: -3 +3
+     - <p>Match up the correct working and answer to each equation.</p>
+     - <p>Fill in the empty boxes to solve these equations.</p>
+     - <p>Match the correct answer with the equation. (Tip: practice both methods on a piece of paper to find your an
+     + <p>Match up the correct working and answer to each equation.</p>
+     + <p>Fill in the empty boxes to solve these equations.</p>
+     + <p>Match the correct answer with the equation. (Tip: practice both methods on a piece of paper to find your an
+  ~ MXFL302_5_1_0.html: -1 +2
+     - <p>Match up the improper fraction and mixed number pairs and place them in the correct place on the number lin
+     + <p>Match up the improper fraction and mixed number pairs and place them in the correct place on the number lin
+     + <p>Calculate the following equations to find the correct answer.</p>
+  ~ MXFL302_6_0.html: -2 +2
+     - <p>Match the correct answer with the equation.</p>
+     - <p>Use the multiplying strategies you have learned about in this lesson to triple the quantities of this recip
+     + <p>Match the correct answer with the equation.</p>
+     + <p>Use the multiplying strategies you have learned about in this lesson to triple the quantities of this recip
+  ~ MXFL302_7_0.html: -3 +3
+     - <p>Match the ratio with the correct description.</p>
+     - <p>Match the simplified ratio with the correct description.</p>
+     - <p>Fill in the gaps to solve the following time problems.</p>
+     + <p>Match the ratio with the correct description.</p>
+     + <p>Match the simplified ratio with the correct description.</p>
+     + <p>Fill in the gaps to solve the following time problems.</p>
+  ~ MXFL302_8_0.html: -2 +2
+     - <p>Use the division methods shown in the video clips to solve the following problems.</p>
+     - <p>Find the correct ‘converted’ fraction and answer for each of these equations.</p>
+     + <p>Use the division methods shown in the video clips to solve the following problems.</p>
+     + <p>Find the correct ‘converted’ fraction and answer for each of these equations.</p>
+MXFL302: identical 1 / changed 9
+  ~ MXFU301_2_0.html: -1 +1
+     - <p>Use the images below to help you select the correct answers for the statements below.</p>
+     + <p>Use the images below to help you select the correct answers for the statements below.</p>
+  ~ MXFU301_3_0.html: -1 +1
+     - <p>Fill in the gaps in the two-way tables and tree diagrams to find the total number of outcomes for each of t
+     + <p>Fill in the gaps in the two-way tables and tree diagrams to find the total number of outcomes for each of t
+  ~ MXFU301_6_0.html: -1 +1
+     - <p>Use the information above to match the correct theoretical probability to each scenario.</p>
+     + <p>Use the information above to match the correct theoretical probability to each scenario.</p>
+  ~ MXFU301_7_0.html: -2 +2
+     - <p>Drag and drop each fraction, decimal and percentage into its correct slot in the table below.</p>
+     - <p>Convert the following fractions into their decimal and percentage equivalents. You might need to find an eq
+     + <p>Drag and drop each fraction, decimal and percentage into its correct slot in the table below.</p>
+     + <p>Convert the following fractions into their decimal and percentage equivalents. You might need to find an eq
+  ~ MXFU301_9_0.html: -3 +3
+     - <p>Read each scenario and decide whether they indicate independent or dependent events.</p>
+     - <p>Have a try at asking some questions using the tools suggested below.</p>
+     - <p>Using the column graph below, decide whether the following statements are true or false.</p>
+     + <p>Read each scenario and decide whether they indicate independent or dependent events.</p>
+     + <p>Have a try at asking some questions using the tools suggested below.</p>
+     + <p>Using the column graph below, decide whether the following statements are true or false.</p>
+  ~ MXFU301_10_0.html: -1 +1
+     - <p>Consider each of the following statements and decide whether you think they are true or false.</p>
+     + <p>Consider each of the following statements and decide whether you think they are true or false.</p>
+MXFU301: identical 6 / changed 6
+OSAH301: identical 4 / changed 0
+OSAI201: identical 4 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM401: identical 5 / changed 0
+OSOH301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+  ~ PES1005_7_0.html: -1 +3
+     - <li>The Earth is at the centre of the solar system, the Sun and the planets orbit around the Earth.</li>
+     + <ol>
+     + <li>The Earth is at the centre of the solar system, the Sun and the planets orbit around the Earth.</li>
+     + </ol>
+PES1005: identical 11 / changed 1
+PHE1002: identical 4 / changed 0
+PHE1006: identical 6 / changed 0
+SCPH301: identical 9 / changed 0
+SSOG103: identical 7 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS912: identical 6 / changed 0
+  ~ XGF9004_10_0.html: -1 +3
+     - <li>Water boils at 100°C.</li>
+     + <ol>
+     + <li>Water boils at 100°C.</li>
+     + </ol>
+XGF9004: identical 17 / changed 1
+XLP03: identical 6 / changed 0
+XMES101: identical 9 / changed 0
+XMES203: identical 6 / changed 0
+XWHA01: identical 2 / changed 0
+
+TOTAL: identical 502 / changed 25 / missing 0 over 104 modules
+CHANGED: TEFUN01/TEFUN01_0_0.html CEDT207/CEDT207_6_0.html AGH1002/AGH1002_5_0.html AGH1006/AGH1006_8_0.html AGH1006/AGH1006_9_0.html CEDO502/CEDO502_4_0.html HIS1005/HIS1005_9_1.html MXFL102/MXFL102_7_0.html MXFL302/MXFL302_1_0.html MXFL302/MXFL302_2_0.html MXFL302/MXFL302_3_0.html MXFL302/MXFL302_4_0.html MXFL302/MXFL302_5_0.html MXFL302/MXFL302_5_1_0.html MXFL302/MXFL302_6_0.html MXFL302/MXFL302_7_0.html MXFL302/MXFL302_8_0.html MXFU301/MXFU301_2_0.html MXFU301/MXFU301_3_0.html MXFU301/MXFU301_6_0.html MXFU301/MXFU301_7_0.html MXFU301/MXFU301_9_0.html MXFU301/MXFU301_10_0.html PES1005/PES1005_7_0.html XGF9004/XGF9004_10_0.html

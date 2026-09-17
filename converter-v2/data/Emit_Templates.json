@@ -814,6 +814,15 @@
 			"writer_digit_over_dedupe": true,
 			"synthetic_unnumbered": false
 		},
+		"lead_free_after_tag": {
+			"_doc": "ROUND 366 (the autonomous loop's session 21, Round 3). THE LEAD PROSE AFTER THE WIDGET TAG RENDERS FREE INSIDE THE BOX. A writer types the widget tag, then the instruction paragraph(s), then the widget's table \u2014 `[Interactive]` / `Drag and drop the products into the correct category.` / TABLE. The scanner walks that black run into the bundle as a MEMBER, so an un-built capture shows it inside the dashed box; the gold keeps it FREE in the activity box (h3 + p + the widget). MEASURED (outputs/_measure_r366_leadprose.py \u2192 _r366_leadprose.{json,log}; every un-built capture with a leading black paragraph, 1,525 on 769 pages / 329 modules): the gold keeps the lead free on 0.52 overall \u2014 a tie \u2014 but by widget TYPE it splits: dragAndDrop 0.60 standalone / 0.63 owned, dropDown 0.75, reorder 0.93 / 0.68, typing 0.82 / 0.84, standalone unclassified 0.64, modal 0.65 / 0.85, radioQuiz 0.80 / 0.67, against carousel 0.25 / 0.08, flipCard 0.28, accordion 0.38, selfCheck 0.47 / 0.35, clickDrop 0.42, multiChoiceQuiz 0.37 / 0.58, tabs 0.38 (those fold the lead INTO the widget \u2014 r352). The scoped set (types_standalone / types_owned below): 579 captures, gold-free 0.69, 366 pages / 219 modules; Standard 0.68, Fundamentals 0.70, Inquiry 0.76; Social Science 0.08 and Arts 0.22 excluded by code prefix. With this on, ContentConverter renders the consecutive black members after the opener tag (before the first table / list / tag) as free paragraphs inside the box and removes them from bundle.memberItems before #interactivePlaceholder builds the capture; at least one non-black member must remain (require_remaining_member) or nothing moves; never on bilingual (reoMode) pages or the MTK quiz shell. OFF (env LEADFREE_OFF) = byte-identical.",
+			"enabled": true,
+			"env": "LEADFREE_OFF",
+			"types_standalone": ["dragAndDrop", "dropDown", "reorder", "typing", "unclassified", "modal", "radioQuiz"],
+			"types_owned": ["dragAndDrop", "typing", "reorder", "modal", "radioQuiz"],
+			"exclude_code_prefixes": ["SSCI", "SSFUN", "SSOG", "ARFUN"],
+			"require_remaining_member": true
+		},
 		"standalone_widget_box": {
 			"enabled": true,
 			"types": [

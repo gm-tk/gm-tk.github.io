@@ -2032,6 +2032,55 @@ class ContentConverter {
 						}
 						flushLead();
 						}
+						// ROUND 366 — THE LEAD PROSE AFTER THE WIDGET TAG RENDERS FREE INSIDE THE BOX (the
+						// autonomous loop's session 21, Round 3). A writer types the widget tag, then the
+						// instruction paragraph(s), then the widget's table — `[Interactive]` / "Drag and drop
+						// the products into the correct category." / TABLE. #swallowMembers walks that black
+						// run into the bundle as a MEMBER, so an un-built capture shows it inside the dashed
+						// box; the gold keeps it FREE in the activity box (h3 + p + the widget) on 0.69 of the
+						// 579 captures of the listed types (dragAndDrop 0.60 / 0.63, dropDown 0.75, reorder
+						// 0.93 / 0.68, typing 0.82 / 0.84, standalone unclassified 0.64, modal 0.65 / 0.85,
+						// radioQuiz 0.80 / 0.67 — a carousel 0.25 / 0.08, flipCard, accordion, selfCheck,
+						// clickDrop fold it INTO the widget and stay members). The leading black members
+						// (after the opener tag, before the first table / list / tag) render as free paragraphs
+						// here and leave the member list, so the capture (#interactivePlaceholder builds it
+						// live from bundle.memberItems), the build and the .txt hand-off never repeat them.
+						// Data: activity_wrapper.lead_free_after_tag   Env: LEADFREE_OFF
+						{
+							const _lfCfg = tpl.activity_wrapper.lead_free_after_tag;
+							const _lfList = bundle.activityOwner ? (_lfCfg?.types_owned ?? []) : (_lfCfg?.types_standalone ?? []);
+							const _lfCode = String(run?.moduleCode ?? "").toUpperCase();
+							const _lfOn = !!_lfCfg && _lfCfg.enabled !== false && !!actOwner && !reoMode && !mtkMode
+								&& !(typeof process !== "undefined" && process.env && process.env[_lfCfg.env || "LEADFREE_OFF"])
+								&& _lfList.includes(bundle.type)
+								&& !(_lfCfg.exclude_code_prefixes ?? []).some((p) => _lfCode.startsWith(String(p).toUpperCase()));
+							if (_lfOn) {
+								// the FIRST black member's FIRST paragraph only (the instruction sentence): the paragraphs
+								// after it are the widget's own content typed as prose (typing answers, reorder steps,
+								// image / drive links) and stay members — the first probe freed whole runs and lost 45 pages
+								const mi = bundle.memberItems ?? [];
+								const start = mi.length && mi[0] === it ? 1 : 0;
+								const m0 = mi[start];
+								const _lfUrl = (t) => /^\s*(?:\[?\s*link\b|https?:\/\/|www\.)/i.test(String(t || ""));
+								const rest = mi.slice(start + 1);
+								if (m0 && m0.type === "black" && String(m0.text ?? "").trim()
+									&& (_lfCfg.require_remaining_member === false || rest.some((m) => m && m.type !== "black"))) {
+									const _paras = String(m0.text).split(/\n\s*\n|\n/).map((x) => x.trim()).filter(Boolean);
+									const _first = _paras[0] ?? "";
+									const _minW = _lfCfg.min_words ?? 2;
+									if (_first && !_lfUrl(_first) && _first.split(/\s+/).length >= _minW
+										&& (_lfCfg.max_first_words == null || _first.split(/\s+/).length <= _lfCfg.max_first_words)) {
+										emit(...actDeBold(ListsAndRuns.renderBlackText(_first, run)));
+										const _remainder = _paras.slice(1).join("\n");
+										if (_remainder) { m0.text = _remainder; m0._leadFreed = _first; }
+										else { m0.consumedBy = "lead-free"; m0._leadFree = true; bundle.memberItems = mi.filter((m) => m !== m0); }
+										actProse = true;
+										run.AddNote("info", "ContentConverter",
+											`Page ${page.lessonLabel}: the lead paragraph after [${it.text}] renders free inside the box (lead_free_after_tag).`);
+									}
+								}
+							}
+						}
 						// PROSE | INTERACTIVE INNER ROWS (ROUND 229 — Change Ledger CL-0048/CL-0036,
 						// constraint 63; Chris's activity-pair kickoff). In the registry-listed
 						// families the human closes the activity's PROSE row and gives the widget

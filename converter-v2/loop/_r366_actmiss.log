@@ -1,0 +1,52 @@
+gold activity-region p/h lines with no source in Claude's skeleton: 8449 (pairs skipped 0)
+
+BY (tag, location, first-in-box): lines / pages / modules
+  ('p', 'not-in-wt', 'later')                         2246 /  690 / 288
+  ('p', 'in-capture', 'later')                        1923 /  556 / 278
+  ('h3', 'not-in-wt', 'FIRST')                        1146 /  565 / 246
+  ('li', 'in-capture', 'later')                       1013 /  156 / 108
+  ('li', 'not-in-wt', 'later')                         866 /  140 / 103
+  ('h3', 'in-capture', 'FIRST')                        254 /  147 /  79
+  ('h4', 'not-in-wt', 'later')                         218 /  139 /  71
+  ('li', 'in-widget-or-note', 'later')                 173 /   31 /  23
+  ('p', 'in-widget-or-note', 'later')                  157 /   95 /  63
+  ('h4', 'in-capture', 'later')                        149 /   54 /  42
+  ('h3', 'not-in-wt', 'later')                         143 /   67 /  34
+  ('h3', 'in-capture', 'later')                         60 /   33 /  18
+  ('h3', 'in-widget-or-note', 'FIRST')                  38 /   28 /  27
+  ('h4', 'in-widget-or-note', 'later')                  24 /   15 /  11
+  ('p', 'not-in-wt', 'FIRST')                            9 /    8 /   8
+  ('h3', 'in-widget-or-note', 'later')                   8 /    4 /   4
+  ('p', 'in-capture', 'FIRST')                           6 /    6 /   5
+  ('h4', 'not-in-wt', 'FIRST')                           5 /    3 /   2
+  ('h2', 'in-capture', 'FIRST')                          4 /    4 /   3
+  ('h2', 'in-capture', 'later')                          3 /    3 /   2
+  ('h4', 'in-capture', 'FIRST')                          2 /    2 /   2
+  ('h2', 'not-in-wt', 'FIRST')                           2 /    2 /   2
+
+BY location: lines / pages / modules
+  not-in-wt               4635 /  974 / 346
+  in-capture              3414 /  617 / 293
+  in-widget-or-note        400 /  148 / 105
+
+== in-capture: by template (lines / pages / modules)
+  Standard        2171 /  508 / 215
+  Inquiry          616 /   42 /  32
+  Bilingual        346 /   25 /  10
+  Fundamentals     281 /   42 /  36
+   by tag+first: [(('p', 'later'), 1923, 556, 278), (('li', 'later'), 1013, 156, 108), (('h3', 'FIRST'), 254, 147, 79), (('h4', 'later'), 149, 54, 42), (('h3', 'later'), 60, 33, 18), (('p', 'FIRST'), 6, 6, 5)]
+   top modules: [('TEDC402', 177, 8, 1), ('TRR102', 104, 5, 1), ('TEDC401', 92, 6, 1), ('XFUN02', 78, 5, 1), ('TRR301', 68, 2, 1), ('TWHA901', 58, 1, 1), ('TWHA902', 56, 1, 1), ('TRR111', 54, 5, 1), ('CHFUN05', 47, 1, 1), ('CEDW501', 46, 7, 1), ('MXDB202', 42, 5, 1), ('MXFL301', 40, 8, 1), ('MXEO301', 39, 7, 1), ('XMES201', 39, 3, 1), ('TWHK903', 38, 1, 1)]
+   examples: [('AGH1001', 'AGH1001_1_0.html', 'p', 'Drag and drop the products into the correct catego'), ('AGH1001', 'AGH1001_2_0.html', 'p', 'Can you match the correct primary product to the c'), ('AGH1001', 'AGH1001_4_0.html', 'p', 'Drag and drop the different events of maramataka t'), ('AGH1001', 'AGH1001_4_0.html', 'p', 'Fill in the table below. You may need to do some a'), ('AGH1001', 'AGH1001_4_0.html', 'p', 'Match up the arrows with the key events on a sprin'), ('AGH1001', 'AGH1001_4_0.html', 'p', 'Match up the events on a fruit orchard with the co')]
+
+== absent-in-wt: by template (lines / pages / modules)
+   by tag+first: []
+   top modules: []
+   examples: []
+
+== in-widget-or-note: by template (lines / pages / modules)
+  Standard         331 /  117 /  80
+  Inquiry           39 /   21 /  16
+  Fundamentals      30 /   10 /   9
+   by tag+first: [(('li', 'later'), 173, 31, 23), (('p', 'later'), 157, 95, 63), (('h3', 'FIRST'), 38, 28, 27), (('h4', 'later'), 24, 15, 11), (('h3', 'later'), 8, 4, 4)]
+   top modules: [('XLP04', 42, 1, 1), ('ENGI102', 31, 2, 1), ('XGF9006', 28, 1, 1), ('MXFUN01', 16, 2, 1), ('TEDC401', 16, 2, 1), ('XMES103', 15, 4, 1), ('MXFL204', 14, 1, 1), ('HIS1002', 13, 4, 1), ('ENG1004', 10, 3, 1), ('XDLS901', 9, 3, 1), ('AGH1008', 7, 6, 1), ('MXEO301', 7, 2, 1), ('XMES101', 7, 4, 1), ('AGH1002', 6, 4, 1), ('BLL253', 6, 1, 1)]
+   examples: [('AGH1001', 'AGH1001_2_0.html', 'h3', 'Flow diagram: From New Zealand to the World'), ('AGH1001', 'AGH1001_2_0.html', 'p', 'Complete activity 2B in your learning journal.'), ('AGH1001', 'AGH1001_2_0.html', 'p', 'Watch these videos and complete activity 2C in you'), ('AGH1001', 'AGH1001_3_0.html', 'p', 'Go to your learning journal and complete activity '), ('AGH1002', 'AGH1002_2_0.html', 'p', 'Go to your learning journal and complete activity '), ('AGH1002', 'AGH1002_2_0.html', 'p', 'Go to your learning journal and complete activity ')]

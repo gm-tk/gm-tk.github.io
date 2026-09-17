@@ -1,0 +1,256 @@
+PNR102: identical 3 / changed 0
+TRR104: prep refused (no-wt)
+TRR108: identical 3 / changed 0
+TRR113: identical 5 / changed 0
+TRR301: identical 4 / changed 0
+ARFUN03: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+  ~ ENFUN01_0_0.html: -1 +5
+     - <p>Listen to, view or read these texts then drag and drop the likely purpose beside the text that matches:</p>
+     + <p>Listen to, view or read these texts then drag and drop the likely purpose beside the text that matches:</p>
+     + <div class="col-md-12 col-12">
+     + <div class="row">
+     + </div>
+     + </div>
+ENFUN01: identical 0 / changed 1
+ENFUN05: identical 1 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+MXFUN02: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN08: identical 1 / changed 0
+  ~ TEFUN04_0_0.html: -1 +1
+     - <p>Can you organise these images in order of the Design Process?</p>
+     + <p>Can you organise these images in order of the Design Process?</p>
+TEFUN04: identical 0 / changed 1
+TEFUN08: identical 1 / changed 0
+BLL120: identical 1 / changed 0
+BLL160: identical 1 / changed 0
+BLL230: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDR204: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT404: identical 1 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+  ~ AGH1001_2_0.html: -1 +1
+     - <p>Can you match the correct primary product to the correct export revenue amount?</p>
+     + <p>Can you match the correct primary product to the correct export revenue amount?</p>
+  ~ AGH1001_5_0.html: -1 +1
+     - <p>Watch the Country Calendar episode above. Use the information in the video to identify:</p>
+     + <p>Watch the Country Calendar episode above. Use the information in the video to identify:</p>
+AGH1001: identical 4 / changed 2
+AGH1005: identical 9 / changed 0
+  ~ AGH1009_5_0.html: -1 +1
+     - <p>Match the chemical formula, with the greenhouse gas and its source.</p>
+     + <p>Match the chemical formula, with the greenhouse gas and its source.</p>
+  ~ AGH1009_7_0.html: -1 +1
+     - <p>In the chart below, identify the ways that riparian planting and fencing of waterways are similar in how th
+     + <p>In the chart below, identify the ways that riparian planting and fencing of waterways are similar in how th
+AGH1009: identical 8 / changed 2
+ANZH203: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ART1003: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL137: identical 3 / changed 0
+  ~ BLL144_1_0.html: -3 +7
+     - <p>There are appropriate times when we use the word ‘a’ and when we use the word ‘an’. Use ‘an’ when the next 
+     - <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <p>There are appropriate times when we use the word ‘a’ and when we use the word ‘an’. Use ‘an’ when the next 
+     + <a href="" target="_blank"><div class="buttonD">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+BLL144: identical 2 / changed 1
+BLL151: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL221: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+CEDO501: identical 16 / changed 0
+CEDW501: identical 13 / changed 0
+  ~ ENGC101_3_0.html: -1 +1
+     - <p>Here are some things people might say when they talk with someone else. Are these statements or questions? 
+     + <p>Here are some things people might say when they talk with someone else. Are these statements or questions? 
+ENGC101: identical 5 / changed 1
+ENGC301: identical 8 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI400: identical 4 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ302: identical 10 / changed 0
+  ~ ENGR102_4_0.html: -1 +1
+     - <p>Is the R being bossy or not? Can you sort these words below:</p>
+     + <p>Is the R being bossy or not? Can you sort these words below:</p>
+ENGR102: identical 6 / changed 1
+  ~ ENGR302_2_0.html: -1 +1
+     - <p>Study the illustration below and type in the words that fit into the passage to show the ways power has bee
+     + <p>Study the illustration below and type in the words that fit into the passage to show the ways power has bee
+  ~ ENGR302_3_0.html: -1 +1
+     - <p>A reflective paragraph has been written for this story, but the sentences are jumbled and do not make sense
+     + <p>A reflective paragraph has been written for this story, but the sentences are jumbled and do not make sense
+  ~ ENGR302_5_0.html: -2 +2
+     - <p>Use your understanding of the stories you have read so far in this module to match the character with their
+     - <p>Check your understanding of the four different characters by selecting the best options from those provided
+     + <p>Use your understanding of the stories you have read so far in this module to match the character with their
+     + <p>Check your understanding of the four different characters by selecting the best options from those provided
+  ~ ENGR302_6_0.html: -1 +1
+     - <p>Check your understanding.</p>
+     + <p>Check your understanding.</p>
+  ~ ENGR302_7_0.html: -1 +1
+     - <p>Match the happily ever after with the other stories you have studied in this module.</p>
+     + <p>Match the happily ever after with the other stories you have studied in this module.</p>
+ENGR302: identical 3 / changed 5
+ENGS202: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+  ~ HES1003_8_0.html: -1 +1
+     - <p>Go to the journal and complete task 8A</p>
+     + <p>Go to the journal and complete task 8A</p>
+HES1003: identical 8 / changed 1
+HES1007: identical 10 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1008: identical 12 / changed 0
+MXDB202: identical 6 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI301: identical 5 / changed 0
+  ~ MXEO301_1_0.html: -1 +1
+     - <p>Put a Y or N in the table to show whether each number is divisible by 2, 5, or 10</p>
+     + <p>Put a Y or N in the table to show whether each number is divisible by 2, 5, or 10</p>
+  ~ MXEO301_1_1_0.html: -2 +2
+     - <p>Match the correct equation with its corresponding exponential notation.</p>
+     - <p>Find the correct square root for the following numbers and match them up.</p>
+     + <p>Match the correct equation with its corresponding exponential notation.</p>
+     + <p>Find the correct square root for the following numbers and match them up.</p>
+  ~ MXEO301_3_0.html: -4 +4
+     - <p>Drag and drop the following numbers onto the number line.</p>
+     - <p>Identify the smaller integer from the pairs below. You can use the number line to help you if necessary.</p
+     - <p>Drag and drop the correct symbol into the boxes below to make each statement correct.</p>
+     - <p>Drag each of the integers below into their correct position so they are ordered from <b>smallest</b> to <b>
+     + <p>Drag and drop the following numbers onto the number line.</p>
+     + <p>Identify the smaller integer from the pairs below. You can use the number line to help you if necessary.</p
+     + <p>Drag and drop the correct symbol into the boxes below to make each statement correct.</p>
+     + <p>Drag each of the integers below into their correct position so they are ordered from <b>smallest</b> to <b>
+  ~ MXEO301_4_0.html: -2 +2
+     - <p>Use the number line to solve these equations.</p>
+     - <p>Match up the equation that has applied the rules with the original equation.</p>
+     + <p>Use the number line to solve these equations.</p>
+     + <p>Match up the equation that has applied the rules with the original equation.</p>
+  ~ MXEO301_5_0.html: -3 +3
+     - <p>Match the correct unknown with its corresponding question.</p>
+     - <p>Given the expression <i>y</i> + 6, calculate the answer when:</p>
+     - <p>Match the algebraic expressions that are equal.</p>
+     + <p>Match the correct unknown with its corresponding question.</p>
+     + <p>Given the expression <i>y</i> + 6, calculate the answer when:</p>
+     + <p>Match the algebraic expressions that are equal.</p>
+  ~ MXEO301_5_1_0.html: -3 +3
+     - <p>Use this balancing method to find the value of the unknown variable.</p>
+     - <p>Fill in the gaps to solve the following equations.</p>
+     - <p>Match the equation with the word problem.</p>
+     + <p>Use this balancing method to find the value of the unknown variable.</p>
+     + <p>Fill in the gaps to solve the following equations.</p>
+     + <p>Match the equation with the word problem.</p>
+  ~ MXEO301_6_0.html: -3 +3
+     - <p>Drag and drop the correct symbol to make each comparison a true statement.</p>
+     - <p>Drag the correct inequality statement to match its equivalent number line.</p>
+     - <p>Write an inequality statement that matches each description.</p>
+     + <p>Drag and drop the correct symbol to make each comparison a true statement.</p>
+     + <p>Drag the correct inequality statement to match its equivalent number line.</p>
+     + <p>Write an inequality statement that matches each description.</p>
+  ~ MXEO301_7_0.html: -2 +2
+     - <p>Drop and drag each compass direction to its correct place on the image below.</p>
+     - <p>Use the coordinate grid to complete this task.</p>
+     + <p>Drop and drag each compass direction to its correct place on the image below.</p>
+     + <p>Use the coordinate grid to complete this task.</p>
+MXEO301: identical 3 / changed 8
+MXEX202: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL201: identical 10 / changed 0
+  ~ MXFL301_1_0.html: -2 +2
+     - <p>Use the compass above to help you answer the following questions. Remember to always turn clockwise.</p>
+     - <p>Find the country that matches each of the coordinate pairs below.</p>
+     + <p>Use the compass above to help you answer the following questions. Remember to always turn clockwise.</p>
+     + <p>Find the country that matches each of the coordinate pairs below.</p>
+  ~ MXFL301_2_0.html: -2 +2
+     - <p>The map below shows a park that uses the scale 1 cm : 40 metres. Use this scale to select the correct respo
+     - <p>Move the scale around the map of Australia to work out the best estimate for these distances.</p>
+     + <p>The map below shows a park that uses the scale 1 cm : 40 metres. Use this scale to select the correct respo
+     + <p>Move the scale around the map of Australia to work out the best estimate for these distances.</p>
+  ~ MXFL301_3_0.html: -3 +3
+     - <p>Two hundred people who had just returned from Egypt were asked what their favourite activity had been. Use 
+     - <p>Match up the amount with its corresponding percentage</p>
+     - <p>Use the fraction bars to help you match the correct total with the problem.</p>
+     + <p>Two hundred people who had just returned from Egypt were asked what their favourite activity had been. Use 
+     + <p>Match up the amount with its corresponding percentage</p>
+     + <p>Use the fraction bars to help you match the correct total with the problem.</p>
+  ~ MXFL301_4_0.html: -3 +3
+     - <p>Round the following airfares to the easiest estimated amount to use for multiplication.</p>
+     - <p>Use rounding to approximate the following equations.</p>
+     - <p>Use the information in the plans to practice your multiplication. Match the correct total airfare with the 
+     + <p>Round the following airfares to the easiest estimated amount to use for multiplication.</p>
+     + <p>Use rounding to approximate the following equations.</p>
+     + <p>Use the information in the plans to practice your multiplication. Match the correct total airfare with the 
+  ~ MXFL301_5_0.html: -2 +2
+     - <p>Match up the estimate for each of these equations.</p>
+     - <p>Find the correct amount of money from the different currencies if you converted NZD100.</p>
+     + <p>Match up the estimate for each of these equations.</p>
+     + <p>Find the correct amount of money from the different currencies if you converted NZD100.</p>
+  ~ MXFL301_6_0.html: -2 +2
+     - <p>Match the approximate cost in New Zealand dollars to the activity.</p>
+     - <p>Open the link for information about a cultural experience in Hawaii. Scan the page to pull out the informat
+     + <p>Match the approximate cost in New Zealand dollars to the activity.</p>
+     + <p>Open the link for information about a cultural experience in Hawaii. Scan the page to pull out the informat
+  ~ MXFL301_7_0.html: -2 +2
+     - <p>Match up the 12-hour time with its corresponding 24-hour time.</p>
+     - <p>Use the t-chart or backwards end method to work out the elapsed time between the events below. Drag the cor
+     + <p>Match up the 12-hour time with its corresponding 24-hour time.</p>
+     + <p>Use the t-chart or backwards end method to work out the elapsed time between the events below. Drag the cor
+  ~ MXFL301_8_0.html: -1 +1
+     - <p>Use the departure board to determine whether the following statements are true or false.</p>
+     + <p>Use the departure board to determine whether the following statements are true or false.</p>
+MXFL301: identical 2 / changed 8
+MXFU202: identical 11 / changed 0
+MXFU402: identical 8 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY401: identical 5 / changed 0
+OSGM301: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSSC301: identical 4 / changed 0
+OSSM401: identical 5 / changed 0
+PES1004: identical 11 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1005: identical 6 / changed 0
+SCCH301: identical 9 / changed 0
+SSOG101: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS911: identical 2 / changed 0
+XGF9003: identical 6 / changed 0
+XLP02: identical 7 / changed 0
+XLP06: identical 3 / changed 0
+XMES201: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+
+TOTAL: identical 476 / changed 31 / missing 0 over 104 modules
+CHANGED: ENFUN01/ENFUN01_0_0.html TEFUN04/TEFUN04_0_0.html AGH1001/AGH1001_2_0.html AGH1001/AGH1001_5_0.html AGH1009/AGH1009_5_0.html AGH1009/AGH1009_7_0.html BLL144/BLL144_1_0.html ENGC101/ENGC101_3_0.html ENGR102/ENGR102_4_0.html ENGR302/ENGR302_2_0.html ENGR302/ENGR302_3_0.html ENGR302/ENGR302_5_0.html ENGR302/ENGR302_6_0.html ENGR302/ENGR302_7_0.html HES1003/HES1003_8_0.html MXEO301/MXEO301_1_0.html MXEO301/MXEO301_1_1_0.html MXEO301/MXEO301_3_0.html MXEO301/MXEO301_4_0.html MXEO301/MXEO301_5_0.html MXEO301/MXEO301_5_1_0.html MXEO301/MXEO301_6_0.html MXEO301/MXEO301_7_0.html MXFL301/MXFL301_1_0.html MXFL301/MXFL301_2_0.html MXFL301/MXFL301_3_0.html MXFL301/MXFL301_4_0.html MXFL301/MXFL301_5_0.html MXFL301/MXFL301_6_0.html MXFL301/MXFL301_7_0.html MXFL301/MXFL301_8_0.html

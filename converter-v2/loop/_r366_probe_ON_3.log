@@ -1,0 +1,219 @@
+TRR102: identical 6 / changed 0
+TRR106: identical 2 / changed 0
+TRR111: identical 6 / changed 0
+TRR115: prep refused (no-wt)
+ARFUN01: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+SCFUN01: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+BLL140: identical 1 / changed 0
+BLL210: identical 1 / changed 0
+CEDK101: identical 1 / changed 0
+CEDO202: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT208: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+XDLS903: identical 8 / changed 0
+  ~ AGH1003_2_0.html: -2 +2
+     - <p>Irrigation systems and production types.</p>
+     - <p>From the list below, select the soil properties you think may be altered through adding irrigation. We will
+     + <p>Irrigation systems and production types.</p>
+     + <p>From the list below, select the soil properties you think may be altered through adding irrigation. We will
+  ~ AGH1003_3_0.html: -1 +1
+     - <p>Match the chemical symbol to the correct nutrient.</p>
+     + <p>Match the chemical symbol to the correct nutrient.</p>
+  ~ AGH1003_4_0.html: -2 +2
+     - <p>Match the type of adding organic matter with the description and image.</p>
+     - <p>Sort the following impacts of effluent into positive and negative impacts.</p>
+     + <p>Match the type of adding organic matter with the description and image.</p>
+     + <p>Sort the following impacts of effluent into positive and negative impacts.</p>
+AGH1003: identical 6 / changed 3
+  ~ AGH1007_1_0.html: -1 +1
+     - <p>Complete the table below with the correct term for each livestock group.</p>
+     + <p>Complete the table below with the correct term for each livestock group.</p>
+  ~ AGH1007_2_0.html: -1 +1
+     - <p>“Draft” the livestock pictured below into whether they are ruminant or monogastric.</p>
+     + <p>“Draft” the livestock pictured below into whether they are ruminant or monogastric.</p>
+  ~ AGH1007_4_0.html: -1 +1
+     - <p>Use the information above to answer the following questions.</p>
+     + <p>Use the information above to answer the following questions.</p>
+  ~ AGH1007_5_0.html: -1 +1
+     - <p>On the timeline below, organise the sheep from the highest to lowest feed requirements</p>
+     + <p>On the timeline below, organise the sheep from the highest to lowest feed requirements</p>
+  ~ AGH1007_8_0.html: -2 +2
+     - <p>Match the cells and organs that are involved in the immune system with their role below.</p>
+     - <p>Put the stages of an animals innate immune response below into the correct order.</p>
+     + <p>Match the cells and organs that are involved in the immune system with their role below.</p>
+     + <p>Put the stages of an animals innate immune response below into the correct order.</p>
+  ~ AGH1007_9_0.html: -1 +1
+     - <p>Mix and match – disease, picture, what causes it</p>
+     + <p>Mix and match – disease, picture, what causes it</p>
+AGH1007: identical 4 / changed 6
+ANZH104: identical 8 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH404: identical 7 / changed 0
+ART1005: identical 1 / changed 0
+BLL113: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL131: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL171: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL212: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL241: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+CEDO105: identical 6 / changed 0
+CEDR501: identical 11 / changed 0
+ENG1005: identical 6 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC401: identical 8 / changed 0
+  ~ ENGI201_2_0.html: -1 +1
+     - <p>Drag each statement to the character you feel suits best.</p>
+     + <p>Drag each statement to the character you feel suits best.</p>
+  ~ ENGI201_3_0.html: -1 +1
+     - <p><b>Family, Inclusiveness, Support, Culture, Kindness, Embraced, Warmth, Trust.</b></p>
+     + <p><b>Family, Inclusiveness, Support, Culture, Kindness, Embraced, Warmth, Trust.</b></p>
+ENGI201: identical 3 / changed 2
+ENGI302: identical 7 / changed 0
+  ~ ENGI405_1_0.html: -1 +1
+     - <p>Match the figurative language feature with the correct example.</p>
+     + <p>Match the figurative language feature with the correct example.</p>
+  ~ ENGI405_5_0.html: -1 +1
+     - <p>Jack Lovell is feeling the heat and he’s stirred up. The Nayland College baker will be rolling out the doug
+     + <p>Jack Lovell is feeling the heat and he’s stirred up. The Nayland College baker will be rolling out the doug
+ENGI405: identical 6 / changed 2
+ENGJ202: identical 6 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR202: identical 8 / changed 0
+  ~ ENGS102_6_0.html: -3 +3
+     - <li>The girl was in the ______</li>
+     - <ol>
+     - </ol>
+     + <ol>
+     + <li>The girl was in the ______</li>
+     + </ol>
+ENGS102: identical 6 / changed 1
+ENGS302: identical 7 / changed 0
+EXIP901: identical 6 / changed 0
+HES1005: identical 9 / changed 0
+  ~ HIS1002_3_0.html: -1 +1
+     - <p>Perspectives: Te Mā’ohi Nui, Australia, Aotearoa New Zealand, France</p>
+     + <p>Perspectives: Te Mā’ohi Nui, Australia, Aotearoa New Zealand, France</p>
+HIS1002: identical 20 / changed 1
+HIS1006: identical 15 / changed 0
+MXDB102: identical 12 / changed 0
+  ~ MXDB302_1_0.html: -1 +1
+     - <p>Match the two measurements</p>
+     + <p>Match the two measurements</p>
+  ~ MXDB302_2_0.html: -4 +4
+     - <p>Find the perimeter for each of the shapes below.</p>
+     - <p>Find the lengths of all unknown sides for each of the composite shapes below then calculate the perimeter.<
+     - <p>Match the correct area with its corresponding shape.</p>
+     - <p>Find the area of these composite shapes by breaking them into simple rectangles and triangles (where necess
+     + <p>Find the perimeter for each of the shapes below.</p>
+     + <p>Find the lengths of all unknown sides for each of the composite shapes below then calculate the perimeter.<
+     + <p>Match the correct area with its corresponding shape.</p>
+     + <p>Find the area of these composite shapes by breaking them into simple rectangles and triangles (where necess
+  ~ MXDB302_3_0.html: -1 +1
+     - <p>Drag each of these images into the correct column.</p>
+     + <p>Drag each of these images into the correct column.</p>
+  ~ MXDB302_4_0.html: -1 +1
+     - <p>Use the table below to help you with this task. (You might also find a calculator useful.)</p>
+     + <p>Use the table below to help you with this task. (You might also find a calculator useful.)</p>
+  ~ MXDB302_5_0.html: -3 +3
+     - <p>Count the number of cubes that make up each shape. If you find this tricky, count one layer of the shape an
+     - <p>Use the formula to calculate the volume of these rectangular prisms.</p>
+     - <p>Use the formula to calculate the volume of these triangular prisms.</p>
+     + <p>Count the number of cubes that make up each shape. If you find this tricky, count one layer of the shape an
+     + <p>Use the formula to calculate the volume of these rectangular prisms.</p>
+     + <p>Use the formula to calculate the volume of these triangular prisms.</p>
+  ~ MXDB302_6_0.html: -2 +2
+     - <p>Match the correct name and value with the action.</p>
+     - <p>Fill in the gaps with the correct numbers.</p>
+     + <p>Match the correct name and value with the action.</p>
+     + <p>Fill in the gaps with the correct numbers.</p>
+  ~ MXDB302_7_0.html: -2 +2
+     - <p>Practice using the vertical method by solving the following questions.</p>
+     - <p>Practice using the vertical method by solving the following questions.</p>
+     + <p>Practice using the vertical method by solving the following questions.</p>
+     + <p>Practice using the vertical method by solving the following questions.</p>
+  ~ MXDB302_8_0.html: -1 +1
+     - <p>Match the correct answer with its matching equation.</p>
+     + <p>Match the correct answer with its matching equation.</p>
+  ~ MXDB302_9_0.html: -2 +2
+     - <p>Match up the percent with their fraction and decimal equivalent.</p>
+     - <p>Match up the saving with the sale item.</p>
+     + <p>Match up the percent with their fraction and decimal equivalent.</p>
+     + <p>Match up the saving with the sale item.</p>
+MXDB302: identical 1 / changed 9
+MXDI201: identical 11 / changed 0
+MXEO201: identical 10 / changed 0
+  ~ MXEX101_1_0.html: -1 +1
+     - <p>The following activity will help you understand numbers 11–20. They are first grouped into tens and then th
+     + <p>The following activity will help you understand numbers 11–20. They are first grouped into tens and then th
+  ~ MXEX101_7_0.html: -2 +2
+     - <p><b>Check out the picture graph below and answer the questions that follow with the help of your supervisor.
+     - <p><b>This time, check out the sample environmental art. Then look at the bar graph below and answer the quest
+     + <p><b>Check out the picture graph below and answer the questions that follow with the help of your supervisor.
+     + <p><b>This time, check out the sample environmental art. Then look at the bar graph below and answer the quest
+MXEX101: identical 6 / changed 2
+MXEX302: identical 8 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU302: identical 10 / changed 0
+OSAH401: identical 5 / changed 0
+OSAI301: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+PES1002: identical 11 / changed 0
+PES1007: identical 12 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1007: identical 10 / changed 0
+SSCI205: identical 10 / changed 0
+SSOG301: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS906: identical 8 / changed 0
+  ~ XGF9001_3_0.html: -1 +1
+     - <p>Use noise-cancelling headphones or soft background music without lyrics.</p>
+     + <p>Use noise-cancelling headphones or soft background music without lyrics.</p>
+XGF9001: identical 6 / changed 1
+  ~ XGF9006_6_0.html: -1 +1
+     - <p>Match the skill with the action.</p>
+     + <p>Match the skill with the action.</p>
+XGF9006: identical 7 / changed 1
+XLP04: identical 5 / changed 0
+XMES102: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 521 / changed 28 / missing 0 over 104 modules
+CHANGED: AGH1003/AGH1003_2_0.html AGH1003/AGH1003_3_0.html AGH1003/AGH1003_4_0.html AGH1007/AGH1007_1_0.html AGH1007/AGH1007_2_0.html AGH1007/AGH1007_4_0.html AGH1007/AGH1007_5_0.html AGH1007/AGH1007_8_0.html AGH1007/AGH1007_9_0.html ENGI201/ENGI201_2_0.html ENGI201/ENGI201_3_0.html ENGI405/ENGI405_1_0.html ENGI405/ENGI405_5_0.html ENGS102/ENGS102_6_0.html HIS1002/HIS1002_3_0.html MXDB302/MXDB302_1_0.html MXDB302/MXDB302_2_0.html MXDB302/MXDB302_3_0.html MXDB302/MXDB302_4_0.html MXDB302/MXDB302_5_0.html MXDB302/MXDB302_6_0.html MXDB302/MXDB302_7_0.html MXDB302/MXDB302_8_0.html MXDB302/MXDB302_9_0.html MXEX101/MXEX101_1_0.html MXEX101/MXEX101_7_0.html XGF9001/XGF9001_3_0.html XGF9006/XGF9006_6_0.html
