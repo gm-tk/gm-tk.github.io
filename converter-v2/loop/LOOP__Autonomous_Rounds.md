@@ -302,6 +302,46 @@ Chris to type "continue". That is a defect in the loop, not a feature. The rules
 - A blocked-needs-Chris item ends the ROUND, not the SESSION: keep working other classes.
   Only stop the session when §4 says so, then write the report.
 
+## 5d. STATE-FILE HYGIENE — the size caps (Chris, 17 September 2026, after session 20 died of context thrash)
+
+**What happened.** Session 20 (Opus) ended after 90 minutes with "Autocompact is thrashing". The cause
+was not the model: `LOOP_STATE.md` had grown to 636 KB (2,694 lines, 143 sections — every STOPPED entry a
+page-long paragraph, every PICK kept forever) and the miner had written a 728 KB `DIFF_QUEUE.md`. The §6
+rule "after every compaction re-read the loop file and LOOP_STATE.md" then meant: compact → read 1.4 MB →
+full again → compact → … three times, and Claude Code gave up. Session 19 (Fable) lasted 5.5 hours only
+because the files were smaller then. **The fix is in the files, not the model.**
+
+**The caps (checked with `wc -c` at every session start, after every write, and in the health check):**
+- `LOOP_STATE.md` — the HOT file: hard cap **160 KB**, target **≤ 100 KB**. Over target → condense
+  (the Position section, then the oldest Decisions blocks — summarise, never delete a decision) or
+  archive, BEFORE any other work. Over the hard cap → the health check FAILS until it is fixed.
+- `LOOP_STATE_ARCHIVE.md` — append-only; every round's PICK + what-shipped sections MOVE there at the
+  finalise step; only the one-line Round-log entry stays hot. NEVER read it whole: `grep -n '^## '`,
+  then `sed -n 'a,bp'`.
+- `DIFF_QUEUE.md` — the miner writes the summary, census, chrome facts, the ranked table (top 100 +
+  every candidate) and the top-25 candidate details here (≈120 KB); everything else goes to
+  `CONVERTER_V2/outputs/_diff_queue_details.md` (≈600 KB), which is NEVER read whole — grep a rank.
+- A STOPPED entry ≤ 1,500 characters. A Round-log line ≤ 500. A "Next session starts with" line
+  ≤ 800. A Decisions-from-Chris block records the decision, not the conversation.
+- **No file over 100 KB is ever read whole**, by anyone, for any reason: `wc -c` first; if large,
+  `grep -n` the headings and `sed -n` the range you need. `cat` of a `.json` in `outputs/` is banned
+  (the miner's JSON is 41 MB); use `python3 -c` to pull the one key you need.
+- Every tool output is capped: pipe anything that could be long through `| head -c 6000` (or
+  `| tail -n 40`). A regeneration or gate log goes to a file; print its last 3 lines.
+
+**Post-compaction re-read (replaces the §6 sentence).** After an automatic compaction the FIRST
+actions are, in order and nothing else: (1) `wc -c LOOP_STATE.md DIFF_QUEUE.md LOOP__Autonomous_Rounds.md`;
+(2) read `LOOP__Autonomous_Rounds.md` §3, §4, §5c, §5d, §6 by line range (grep the `## ` headings
+first); (3) read `LOOP_STATE.md` ONLY the Session line at the top, the "Next session starts with"
+line, the "Position" section and the current round's PICK section — by `grep -n` + `sed -n`, never
+the whole file; (4) continue. **Never read the same file twice after one compaction.**
+
+**Thrash breaker.** If a compaction happens twice within five turns: STOP reading files; append one
+line to `LOOP_STATE.md` — `COMPACTION THRASH <time>: reads suspended; working from the compaction
+summary` — then continue the current step from memory, writing results to files as you go; do the
+§5d condense at the next round boundary. If a third compaction follows within five turns, run the
+STOP procedure (§7) immediately so the session ends with the state saved rather than dying.
+
 ## 6. Anti-timeout discipline (why this runs in Claude Code, not Cowork)
 
 - Claude Code runs on Chris's computer with no 45-second command wall and no folder-mount bug.
@@ -315,8 +355,9 @@ Chris to type "continue". That is a defect in the loop, not a feature. The rules
   CLAUDE.md §0–§6, §9, §10, §12, §16 by line range (grep the `## ` headings first) and only the
   top 3–4 changelog entries. Read gold/Claude pages with `grep`/`sed -n` ranges, never whole
   files. Prefer `head`/`wc`/counts over dumping lists. **After every automatic context
-  compaction, the FIRST action is to re-read this file and `LOOP_STATE.md`** — the compaction
-  summary keeps the gist but not the rules, and the rules are what keep the loop honest.
+  compaction, follow the §5d post-compaction re-read exactly** — bounded, by section, never a whole
+  file — the compaction summary keeps the gist but not the rules, and an unbounded re-read is what
+  killed session 20.
 
 ## 7. The standard session-start message (Chris pastes this into EVERY new session)
 
@@ -352,7 +393,13 @@ kept in this file so it can never be lost:
 > uncommitted engine or data files belong to the round LOOP_STATE.md names as in progress — never
 > git checkout or git restore them; check them against that round's PICK, finish or toggle OFF,
 > and continue from the step the state file shows. Honour every entry under "Decisions from
-> Chris" and never re-ask them. This message carries the code REGENERATE CORPUS for every round
+> Chris" and never re-ask them. THE DIFF MINER (§1d) IS MANDATORY: if
+> reference/tests/_diff_miner.py or DIFF_QUEUE.md does not exist, or DIFF_QUEUE.md is older than
+> the corpus, do Round 0c FIRST — build/re-run the miner, commit DIFF_QUEUE.md — and take the PICK
+> from it (chrome regions first: module-code chip, title, module menu, crumbs/side-nav, footer).
+> The "exhaustion" verdicts of sessions 15–18 and any "do not re-measure" note in LOOP_STATE.md
+> are VOID — they predate the miner; exhaustion may only be declared with the miner's empty
+> queue quoted. This message carries the code REGENERATE CORPUS for every round
 > of the loop, scoped by the §0a/§0b family rules in CLAUDE.md. Budget for this session: 12
 > rounds or 10 hours, whichever comes first. RUN UNINTERRUPTED (§5c): never end your turn to
 > wait for gates, regenerations, verifiers or background commands — run them in the foreground
