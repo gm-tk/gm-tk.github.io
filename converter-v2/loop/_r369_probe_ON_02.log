@@ -1,0 +1,616 @@
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+  ~ HIS1002_9_0.html: -1 +1
+     - <div class="activity interactive" number="9A">
+     + <div class="activity interactive" number="5A">
+HIS1002: identical 20 / changed 1
+  ~ HIS1003_1_0.html: -1 +1
+     - <div class="activity" number="1A">
+     + <div class="activity" number="1D">
+  ~ HIS1003_2_0.html: -1 +1
+     - <div class="activity" number="2A">
+     + <div class="activity" number="2B">
+  ~ HIS1003_5_0.html: -1 +1
+     - <div class="activity" number="5B">
+     + <div class="activity" number="5C">
+  ~ HIS1003_6_0.html: -3 +3
+     - <div class="activity" number="6A">
+     - <div class="activity" number="6A">
+     - <div class="activity" number="6C">
+     + <div class="activity" number="6D">
+     + <div class="activity" number="6E">
+     + <div class="activity" number="6F">
+  ~ HIS1003_7_0.html: -1 +1
+     - <div class="activity" number="7A">
+     + <div class="activity" number="7C">
+  ~ HIS1003_8_0.html: -1 +1
+     - <div class="activity" number="8A">
+     + <div class="activity" number="8D">
+  ~ HIS1003_9_0.html: -1 +1
+     - <div class="activity dropbox" number="9A">
+     + <div class="activity dropbox" number="9B">
+  ~ HIS1003_10_0.html: -1 +1
+     - <div class="activity" number="10A">
+     + <div class="activity" number="10B">
+HIS1003: identical 3 / changed 8
+  ~ HIS1004_1_0.html: -1 +1
+     - <div class="activity" number="1A">
+     + <div class="activity" number="1B">
+  ~ HIS1004_2_0.html: -1 +1
+     - <div class="activity" number="2A">
+     + <div class="activity" number="2B">
+  ~ HIS1004_3_0.html: -2 +2
+     - <div class="activity" number="3A">
+     - <div class="activity" number="3B">
+     + <div class="activity" number="3C">
+     + <div class="activity" number="3D">
+  ~ HIS1004_4_0.html: -1 +1
+     - <div class="activity" number="4B">
+     + <div class="activity" number="4C">
+  ~ HIS1004_6_0.html: -1 +1
+     - <div class="activity" number="6A">
+     + <div class="activity" number="6D">
+  ~ HIS1004_7_0.html: -2 +2
+     - <div class="activity" number="7B">
+     - <div class="activity" number="7C">
+     + <div class="activity" number="7E">
+     + <div class="activity" number="7F">
+  ~ HIS1004_9_0.html: -2 +2
+     - <div class="activity" number="9A">
+     - <div class="activity" number="9C">
+     + <div class="activity" number="9E">
+     + <div class="activity" number="9F">
+  ~ HIS1004_10_0.html: -1 +1
+     - <div class="activity" number="10C">
+     + <div class="activity" number="10D">
+HIS1004: identical 3 / changed 8
+  ~ HIS1005_1_0.html: -1 +1
+     - <div class="activity" number="1E">
+     + <div class="activity" number="1F">
+  ~ HIS1005_2_0.html: -2 +2
+     - <div class="activity" number="2A">
+     - <div class="activity" number="2C">
+     + <div class="activity" number="2D">
+     + <div class="activity" number="2G">
+  ~ HIS1005_4_0.html: -1 +1
+     - <div class="activity" number="4D">
+     + <div class="activity" number="4E">
+  ~ HIS1005_5_1.html: -1 +1
+     - <div class="activity" number="5E">
+     + <div class="activity" number="5A">
+  ~ HIS1005_6_1.html: -1 +1
+     - <div class="activity" number="6E">
+     + <div class="activity" number="6A">
+  ~ HIS1005_9_1.html: -1 +1
+     - <div class="activity" number="9E">
+     + <div class="activity" number="9A">
+HIS1005: identical 9 / changed 6
+  ~ HIS1006_1_2.html: -1 +1
+     - <div class="activity" number="1E">
+     + <div class="activity" number="1A">
+  ~ HIS1006_6_0.html: -1 +1
+     - <div class="activity interactive" number="6D">
+     + <div class="activity interactive" number="5A">
+HIS1006: identical 13 / changed 2
+  ~ HIS1007_3_1.html: -2 +2
+     - <div class="activity interactive" number="3E">
+     - <div class="activity" number="9E">
+     + <div class="activity interactive" number="9E">
+     + <div class="activity" number="9A">
+HIS1007: identical 6 / changed 1
+  ~ HIS1008_1_2.html: -1 +1
+     - <div class="activity" number="1E">
+     + <div class="activity" number="1A">
+  ~ HIS1008_6_0.html: -1 +1
+     - <div class="activity interactive" number="6D">
+     + <div class="activity interactive" number="5A">
+HIS1008: identical 10 / changed 2
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+  ~ HPRE203_1_0.html: -1 +1
+     - <div class="activity" number="1C">
+     + <div class="activity" number="1D">
+  ~ HPRE203_2_0.html: -1 +1
+     - <div class="activity" number="2C">
+     + <div class="activity" number="2E">
+  ~ HPRE203_3_0.html: -1 +1
+     - <div class="activity" number="3B">
+     + <div class="activity" number="3E">
+  ~ HPRE203_5_0.html: -1 +1
+     - <div class="activity" number="5B">
+     + <div class="activity" number="5F">
+  ~ HPRE203_6_0.html: -2 +2
+     - <div class="activity interactive" number="6C">
+     - <div class="activity" number="6C">
+     + <div class="activity interactive" number="6B">
+     + <div class="activity" number="6D">
+HPRE203: identical 3 / changed 5
+  ~ MXDB102_2_0.html: -1 +1
+     - <div class="activity interactive" number="4B">
+     + <div class="activity interactive" number="2B">
+  ~ MXDB102_3_0.html: -1 +1
+     - <div class="activity" number="2B">
+     + <div class="activity" number="3B">
+  ~ MXDB102_9_0.html: -1 +1
+     - <div class="activity interactive" number="9B">
+     + <div class="activity interactive" number="9C">
+MXDB102: identical 9 / changed 3
+  ~ MXDB201_4_0.html: -1 +1
+     - <div class="activity" number="4A">
+     + <div class="activity" number="4D">
+MXDB201: identical 6 / changed 1
+  ~ MXDB202_1_0.html: -2 +2
+     - <div class="activity interactive" number="1C">
+     - <div class="activity" number="1D">
+     + <div class="activity interactive" number="1E">
+     + <div class="activity" number="1F">
+  ~ MXDB202_2_0.html: -1 +1
+     - <div class="activity interactive" number="2C">
+     + <div class="activity interactive" number="2D">
+  ~ MXDB202_4_0.html: -2 +2
+     - <div class="activity" number="4C">
+     - <div class="activity interactive" number="4D">
+     + <div class="activity" number="4D">
+     + <div class="activity interactive" number="4E">
+MXDB202: identical 3 / changed 3
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+  ~ MXDI102_1_0.html: -3 +3
+     - <div class="activity" number="1B">
+     - <div class="activity interactive" number="1C">
+     - <div class="activity" number="1D">
+     + <div class="activity" number="1C">
+     + <div class="activity interactive" number="1D">
+     + <div class="activity" number="1E">
+  ~ MXDI102_2_0.html: -1 +1
+     - <div class="activity" number="2D">
+     + <div class="activity" number="2F">
+  ~ MXDI102_3_0.html: -1 +1
+     - <div class="activity" number="3C">
+     + <div class="activity" number="3F">
+  ~ MXDI102_4_0.html: -2 +2
+     - <div class="activity" number="4D">
+     - <div class="activity dropbox" number="4E">
+     + <div class="activity" number="4E">
+     + <div class="activity dropbox" number="4F">
+MXDI102: identical 1 / changed 4
+  ~ MXDI103_6_0.html: -1 +1
+     - <div class="activity interactive" number="6C">
+     + <div class="activity interactive" number="6E">
+  ~ MXDI103_8_0.html: -2 +2
+     - <div class="activity" number="8C">
+     - <div class="activity interactive" number="8D">
+     + <div class="activity interactive" number="8F">
+     + <div class="activity" number="8G">
+MXDI103: identical 8 / changed 2
+  ~ MXDI201_3_0.html: -2 +2
+     - <div class="activity interactive" number="3D">
+     - <div class="activity" number="3E">
+     + <div class="activity interactive" number="3E">
+     + <div class="activity" number="3F">
+  ~ MXDI201_5_0.html: -2 +2
+     - <div class="activity interactive" number="5D">
+     - <div class="activity interactive" number="5F">
+     + <div class="activity interactive" number="5C">
+     + <div class="activity interactive" number="5E">
+  ~ MXDI201_8_0.html: -1 +1
+     - <div class="activity" number="8E">
+     + <div class="activity" number="8F">
+  ~ MXDI201_10_0.html: -1 +1
+     - <div class="activity dropbox" number="10F">
+     + <div class="activity dropbox" number="10B">
+MXDI201: identical 7 / changed 4
+  ~ MXDI202_2_0.html: -1 +1
+     - <div class="activity" number="3G">
+     + <div class="activity" number="2H">
+  ~ MXDI202_6_0.html: -1 +1
+     - <div class="activity interactive" number="6C">
+     + <div class="activity interactive" number="5H">
+  ~ MXDI202_8_0.html: -5 +5
+     - <div class="activity" number="7B">
+     - <div class="activity interactive" number="7C">
+     - <div class="activity interactive" number="8G">
+     - <div class="activity" number="7G">
+     - <div class="activity" number="7H">
+     + <div class="activity" number="7C">
+     + <div class="activity interactive" number="7G">
+     + <div class="activity interactive" number="7H">
+     + <div class="activity" number="7I">
+     + <div class="activity" number="7J">
+  ~ MXDI202_9_0.html: -1 +1
+     - <div class="activity interactive" number="9B">
+     + <div class="activity interactive" number="8H">
+MXDI202: identical 8 / changed 4
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+  ~ MXEO202_1_0.html: -2 +2
+     - <div class="activity interactive super-content-button" number="1C">
+     - <div class="activity dropbox" number="1D">
+     + <div class="activity interactive super-content-button" number="1D">
+     + <div class="activity dropbox" number="1F">
+MXEO202: identical 8 / changed 1
+  ~ MXEO301_3_0.html: -1 +1
+     - <div class="activity interactive" number="3G">
+     + <div class="activity interactive" number="3B">
+  ~ MXEO301_5_0.html: -1 +1
+     - <div class="activity interactive" number="5B">
+     + <div class="activity interactive" number="5D">
+MXEO301: identical 9 / changed 2
+MXEO401: identical 7 / changed 0
+MXEX101: identical 8 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+  ~ MXEX302_1_0.html: -1 +1
+     - <div class="activity" number="1B">
+     + <div class="activity" number="1C">
+MXEX302: identical 7 / changed 1
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+  ~ MXFL102_3_0.html: -1 +1
+     - <div class="activity interactive" number="3C">
+     + <div class="activity interactive" number="4C">
+  ~ MXFL102_7_0.html: -4 +4
+     - <div class="activity interactive" number="7B">
+     - <div class="activity interactive" number="8B">
+     - <div class="activity interactive" number="7D">
+     - <div class="activity" number="8C">
+     + <div class="activity interactive" number="8B">
+     + <div class="activity interactive" number="8C">
+     + <div class="activity interactive" number="8D">
+     + <div class="activity" number="8E">
+MXFL102: identical 7 / changed 2
+MXFL103: identical 8 / changed 0
+  ~ MXFL104_1_0.html: -1 +1
+     - <div class="activity" number="1B">
+     + <div class="activity" number="1E">
+  ~ MXFL104_4_0.html: -2 +2
+     - <div class="activity" number="4B">
+     - <div class="activity" number="4C">
+     + <div class="activity" number="4D">
+     + <div class="activity" number="4F">
+MXFL104: identical 4 / changed 2
+  ~ MXFL201_5_0.html: -1 +1
+     - <div class="activity" number="5A">
+     + <div class="activity" number="5D">
+MXFL201: identical 9 / changed 1
+  ~ MXFL202_1_0.html: -2 +2
+     - <div class="activity" number="1B">
+     - <div class="activity interactive" number="1C">
+     + <div class="activity" number="1C">
+     + <div class="activity interactive" number="1D">
+  ~ MXFL202_2_0.html: -2 +2
+     - <div class="activity" number="2E">
+     - <div class="activity interactive" number="3B">
+     + <div class="activity" number="2F">
+     + <div class="activity interactive" number="2H">
+  ~ MXFL202_4_0.html: -2 +2
+     - <div class="activity interactive" number="5C">
+     - <div class="activity" number="5D">
+     + <div class="activity interactive" number="5D">
+     + <div class="activity" number="5E">
+MXFL202: identical 3 / changed 3
+  ~ MXFL203_2_0.html: -4 +4
+     - <div class="activity interactive" number="2A">
+     - <div class="activity" number="2B">
+     - <div class="activity" number="2D">
+     - <div class="activity interactive" number="2E">
+     + <div class="activity interactive" number="2B">
+     + <div class="activity" number="2E">
+     + <div class="activity interactive" number="2G">
+     + <div class="activity" number="2H">
+  ~ MXFL203_3_0.html: -2 +2
+     - <div class="activity" number="3C">
+     - <div class="activity" number="3F">
+     + <div class="activity" number="3J">
+     + <div class="activity" number="3K">
+  ~ MXFL203_4_0.html: -1 +1
+     - <div class="activity" number="4E">
+     + <div class="activity" number="4H">
+  ~ MXFL203_5_0.html: -1 +1
+     - <div class="activity" number="5B">
+     + <div class="activity" number="5D">
+  ~ MXFL203_6_0.html: -1 +1
+     - <div class="activity" number="6E">
+     + <div class="activity" number="6H">
+  ~ MXFL203_7_0.html: -1 +1
+     - <div class="activity" number="7C">
+     + <div class="activity" number="7E">
+  ~ MXFL203_8_0.html: -3 +3
+     - <div class="activity" number="8B">
+     - <div class="activity" number="8E">
+     - <div class="activity dropbox" number="8K">
+     + <div class="activity" number="8F">
+     + <div class="activity" number="8K">
+     + <div class="activity dropbox" number="8L">
+  ~ MXFL203_10_0.html: -1 +1
+     - <div class="activity" number="10F">
+     + <div class="activity" number="10M">
+  ~ MXFL203_11_0.html: -1 +1
+     - <div class="activity" number="11D">
+     + <div class="activity" number="11F">
+MXFL203: identical 3 / changed 9
+  ~ MXFL204_2_0.html: -2 +2
+     - <div class="activity" number="2B">
+     - <div class="activity" number="2D">
+     + <div class="activity" number="2F">
+     + <div class="activity" number="2H">
+  ~ MXFL204_3_0.html: -1 +1
+     - <div class="activity" number="3B">
+     + <div class="activity" number="3F">
+  ~ MXFL204_3_1.html: -1 +1
+     - <div class="activity interactive" number="3I">
+     + <div class="activity interactive" number="4I">
+  ~ MXFL204_5_0.html: -1 +1
+     - <div class="activity" number="5D">
+     + <div class="activity" number="5F">
+  ~ MXFL204_7_0.html: -1 +1
+     - <div class="activity" number="7B">
+     + <div class="activity" number="7G">
+  ~ MXFL204_8_0.html: -1 +1
+     - <div class="activity" number="8C">
+     + <div class="activity" number="8H">
+  ~ MXFL204_9_0.html: -3 +3
+     - <div class="activity" number="9B">
+     - <div class="activity" number="9E">
+     - <div class="activity" number="9F">
+     + <div class="activity" number="9G">
+     + <div class="activity" number="9I">
+     + <div class="activity" number="9J">
+MXFL204: identical 5 / changed 7
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+  ~ MXFL401_2_0.html: -2 +2
+     - <div class="activity interactive" number="2B">
+     - <div class="activity" number="2C">
+     + <div class="activity interactive" number="2C">
+     + <div class="activity" number="2F">
+  ~ MXFL401_4_0.html: -3 +3
+     - <div class="activity" number="4A">
+     - <div class="activity interactive" number="4B">
+     - <div class="activity" number="4C">
+     + <div class="activity" number="4B">
+     + <div class="activity interactive" number="4C">
+     + <div class="activity" number="4D">
+  ~ MXFL401_6_0.html: -1 +1
+     - <div class="activity" number="6C">
+     + <div class="activity" number="6D">
+MXFL401: identical 5 / changed 3
+  ~ MXFU201_1_0.html: -10 +10
+     - <div class="activity" number="1B">
+     - <div class="activity interactive" number="1C">
+     - <div class="activity" number="1D">
+     - <div class="activity" number="1E">
+     - <div class="activity" number="1E">
+     - <div class="activity" number="1F">
+     - <div class="activity interactive" number="1G">
+     - <div class="activity interactive" number="1H">
+     - <div class="activity interactive" number="1I">
+     - <div class="activity interactive" number="1J">
+     + <div class="activity" number="1C">
+     + <div class="activity interactive" number="1F">
+     + <div class="activity" number="1H">
+     + <div class="activity" number="1I">
+     + <div class="activity" number="1K">
+     + <div class="activity interactive" number="1L">
+     + <div class="activity interactive" number="1M">
+     + <div class="activity interactive" number="1N">
+     + <div class="activity interactive" number="1O">
+     + <div class="activity" number="1P">
+  ~ MXFU201_2_0.html: -6 +6
+     - <div class="activity" number="2A">
+     - <div class="activity" number="2A">
+     - <div class="activity" number="2D">
+     - <div class="activity interactive" number="2E">
+     - <div class="activity interactive" number="2F">
+     - <div class="activity" number="2I">
+     + <div class="activity" number="2E">
+     + <div class="activity" number="2J">
+     + <div class="activity" number="2K">
+     + <div class="activity interactive" number="2L">
+     + <div class="activity interactive" number="2M">
+     + <div class="activity" number="2N">
+  ~ MXFU201_3_0.html: -1 +1
+     - <div class="activity" number="3E">
+     + <div class="activity" number="3F">
+  ~ MXFU201_6_0.html: -5 +5
+     - <div class="activity" number="6B">
+     - <div class="activity interactive" number="6C">
+     - <div class="activity" number="6D">
+     - <div class="activity interactive" number="6E">
+     - <div class="activity" number="6G">
+     + <div class="activity" number="6C">
+     + <div class="activity interactive" number="6D">
+     + <div class="activity" number="6E">
+     + <div class="activity" number="6I">
+     + <div class="activity interactive" number="6J">
+  ~ MXFU201_7_0.html: -4 +4
+     - <div class="activity interactive" number="7C">
+     - <div class="activity" number="7D">
+     - <div class="activity interactive" number="7E">
+     - <div class="activity" number="7G">
+     + <div class="activity interactive" number="7D">
+     + <div class="activity" number="7E">
+     + <div class="activity interactive" number="7G">
+     + <div class="activity" number="7I">
+  ~ MXFU201_8_0.html: -3 +3
+     - <div class="activity interactive" number="8D">
+     - <div class="activity" number="8F">
+     - <div class="activity interactive" number="8G">
+     + <div class="activity interactive" number="8E">
+     + <div class="activity interactive" number="8I">
+     + <div class="activity" number="8J">
+  ~ MXFU201_9_0.html: -2 +2
+     - <div class="activity" number="9E">
+     - <div class="activity dropbox" number="9F">
+     + <div class="activity" number="9F">
+     + <div class="activity dropbox" number="9G">
+MXFU201: identical 3 / changed 7
+  ~ MXFU202_2_0.html: -4 +4
+     - <div class="activity" number="2A">
+     - <div class="activity" number="2B">
+     - <div class="activity" number="2E">
+     - <div class="activity interactive" number="2F">
+     + <div class="activity" number="2C">
+     + <div class="activity" number="2D">
+     + <div class="activity" number="2G">
+     + <div class="activity interactive" number="2H">
+  ~ MXFU202_5_0.html: -3 +3
+     - <div class="activity interactive" number="5F">
+     - <div class="activity" number="5G">
+     - <div class="activity" number="5H">
+     + <div class="activity interactive" number="5H">
+     + <div class="activity" number="5I">
+     + <div class="activity" number="5J">
+  ~ MXFU202_6_0.html: -1 +1
+     - <div class="activity" number="6D">
+     + <div class="activity" number="6H">
+  ~ MXFU202_7_0.html: -1 +1
+     - <div class="activity interactive" number="7F">
+     + <div class="activity interactive" number="7B">
+  ~ MXFU202_8_0.html: -2 +2
+     - <div class="activity interactive" number="8D">
+     - <div class="activity" number="8E">
+     + <div class="activity interactive" number="8H">
+     + <div class="activity" number="8I">
+  ~ MXFU202_9_0.html: -3 +3
+     - <div class="activity interactive" number="9C">
+     - <div class="activity" number="9E">
+     - <div class="activity interactive" number="9F">
+     + <div class="activity interactive" number="9E">
+     + <div class="activity" number="9F">
+     + <div class="activity interactive" number="9G">
+MXFU202: identical 5 / changed 6
+MXFU301: identical 12 / changed 0
+  ~ MXFU302_2_0.html: -1 +1
+     - <div class="activity" number="2A">
+     + <div class="activity" number="2D">
+  ~ MXFU302_6_0.html: -1 +1
+     - <div class="activity" number="1B">
+     + <div class="activity" number="6C">
+  ~ MXFU302_9_0.html: -1 +1
+     - <div class="activity interactive" number="10A">
+     + <div class="activity interactive" number="9D">
+MXFU302: identical 7 / changed 3
+  ~ MXFU401_3_0.html: -2 +2
+     - <div class="activity interactive" number="3A">
+     - <div class="activity" number="3B">
+     + <div class="activity interactive" number="3B">
+     + <div class="activity" number="3D">
+MXFU401: identical 6 / changed 1
+MXFU402: identical 8 / changed 0
+  ~ MXFUN01_3_0.html: -2 +2
+     - <div class="activity interactive" number="3D">
+     - <div class="activity interactive super-content-button" number="2D">
+     + <div class="activity interactive" number="2D">
+     + <div class="activity interactive super-content-button" number="2E">
+  ~ MXFUN01_5_0.html: -2 +2
+     - <div class="activity interactive" number="5E">
+     - <div class="activity" number="4G">
+     + <div class="activity interactive" number="4G">
+     + <div class="activity" number="4H">
+  ~ MXFUN01_6_2.html: -2 +2
+     - <div class="activity interactive" number="6H">
+     - <div class="activity" number="1G">
+     + <div class="activity interactive" number="1E">
+     + <div class="activity" number="1I">
+  ~ MXFUN01_6_3.html: -3 +3
+     - <div class="activity interactive" number="6K">
+     - <div class="activity interactive" number="6M">
+     - <div class="activity interactive" number="6P">
+     + <div class="activity interactive" number="2K">
+     + <div class="activity interactive" number="2M">
+     + <div class="activity interactive" number="2P">
+  ~ MXFUN01_6_4.html: -1 +1
+     - <div class="activity interactive" number="6U">
+     + <div class="activity interactive" number="3U">
+  ~ MXFUN01_6_5.html: -1 +1
+     - <div class="activity interactive" number="6W">
+     + <div class="activity interactive" number="4W">
+MXFUN01: identical 13 / changed 6
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+  ~ OSAI301_3_0.html: -1 +1
+     - <div class="activity" number="3C">
+     + <div class="activity" number="3D">
+OSAI301: identical 3 / changed 1
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+  ~ OSBY101_1_0.html: -2 +2
+     - <div class="activity interactive" number="1B">
+     - <div class="activity" number="1C">
+     + <div class="activity interactive" number="1C">
+     + <div class="activity" number="1D">
+OSBY101: identical 3 / changed 1
+  ~ OSBY201_3_0.html: -1 +1
+     - <div class="activity interactive" number="3B">
+     + <div class="activity interactive" number="3D">
+OSBY201: identical 3 / changed 1
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+  ~ OSBY501_5_0.html: -1 +1
+     - <div class="activity" number="5B">
+     + <div class="activity" number="5C">
+OSBY501: identical 5 / changed 1
+  ~ OSGM101_2_0.html: -1 +1
+     - <div class="activity" number="3B">
+     + <div class="activity" number="2D">
+OSGM101: identical 2 / changed 1
+  ~ OSGM201_3_0.html: -1 +1
+     - <div class="activity" number="3B">
+     + <div class="activity" number="3C">
+OSGM201: identical 3 / changed 1
+OSGM301: identical 4 / changed 0
+  ~ OSGM401_4_0.html: -1 +1
+     - <div class="activity" number="4B">
+     + <div class="activity" number="4C">
+OSGM401: identical 4 / changed 1
+OSGM501: identical 6 / changed 0
+  ~ OSOH101_2_0.html: -1 +1
+     - <div class="activity super-content-button" number="2D">
+     + <div class="activity super-content-button" number="2E">
+OSOH101: identical 3 / changed 1
+OSOH201: identical 4 / changed 0
+  ~ OSOH301_2_0.html: -1 +1
+     - <div class="activity interactive" number="2A">
+     + <div class="activity interactive" number="2B">
+OSOH301: identical 3 / changed 1
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+
+TOTAL: identical 544 / changed 117 / missing 0 over 104 modules
+CHANGED: HIS1002/HIS1002_9_0.html HIS1003/HIS1003_1_0.html HIS1003/HIS1003_2_0.html HIS1003/HIS1003_5_0.html HIS1003/HIS1003_6_0.html HIS1003/HIS1003_7_0.html HIS1003/HIS1003_8_0.html HIS1003/HIS1003_9_0.html HIS1003/HIS1003_10_0.html HIS1004/HIS1004_1_0.html HIS1004/HIS1004_2_0.html HIS1004/HIS1004_3_0.html HIS1004/HIS1004_4_0.html HIS1004/HIS1004_6_0.html HIS1004/HIS1004_7_0.html HIS1004/HIS1004_9_0.html HIS1004/HIS1004_10_0.html HIS1005/HIS1005_1_0.html HIS1005/HIS1005_2_0.html HIS1005/HIS1005_4_0.html HIS1005/HIS1005_5_1.html HIS1005/HIS1005_6_1.html HIS1005/HIS1005_9_1.html HIS1006/HIS1006_1_2.html HIS1006/HIS1006_6_0.html HIS1007/HIS1007_3_1.html HIS1008/HIS1008_1_2.html HIS1008/HIS1008_6_0.html HPRE203/HPRE203_1_0.html HPRE203/HPRE203_2_0.html HPRE203/HPRE203_3_0.html HPRE203/HPRE203_5_0.html HPRE203/HPRE203_6_0.html MXDB102/MXDB102_2_0.html MXDB102/MXDB102_3_0.html MXDB102/MXDB102_9_0.html MXDB201/MXDB201_4_0.html MXDB202/MXDB202_1_0.html MXDB202/MXDB202_2_0.html MXDB202/MXDB202_4_0.html MXDI102/MXDI102_1_0.html MXDI102/MXDI102_2_0.html MXDI102/MXDI102_3_0.html MXDI102/MXDI102_4_0.html MXDI103/MXDI103_6_0.html MXDI103/MXDI103_8_0.html MXDI201/MXDI201_3_0.html MXDI201/MXDI201_5_0.html MXDI201/MXDI201_8_0.html MXDI201/MXDI201_10_0.html MXDI202/MXDI202_2_0.html MXDI202/MXDI202_6_0.html MXDI202/MXDI202_8_0.html MXDI202/MXDI202_9_0.html MXEO202/MXEO202_1_0.html MXEO301/MXEO301_3_0.html MXEO301/MXEO301_5_0.html MXEX302/MXEX302_1_0.html MXFL102/MXFL102_3_0.html MXFL102/MXFL102_7_0.html MXFL104/MXFL104_1_0.html MXFL104/MXFL104_4_0.html MXFL201/MXFL201_5_0.html MXFL202/MXFL202_1_0.html MXFL202/MXFL202_2_0.html MXFL202/MXFL202_4_0.html MXFL203/MXFL203_2_0.html MXFL203/MXFL203_3_0.html MXFL203/MXFL203_4_0.html MXFL203/MXFL203_5_0.html MXFL203/MXFL203_6_0.html MXFL203/MXFL203_7_0.html MXFL203/MXFL203_8_0.html MXFL203/MXFL203_10_0.html MXFL203/MXFL203_11_0.html MXFL204/MXFL204_2_0.html MXFL204/MXFL204_3_0.html MXFL204/MXFL204_3_1.html MXFL204/MXFL204_5_0.html MXFL204/MXFL204_7_0.html MXFL204/MXFL204_8_0.html MXFL204/MXFL204_9_0.html MXFL401/MXFL401_2_0.html MXFL401/MXFL401_4_0.html MXFL401/MXFL401_6_0.html MXFU201/MXFU201_1_0.html MXFU201/MXFU201_2_0.html MXFU201/MXFU201_3_0.html MXFU201/MXFU201_6_0.html MXFU201/MXFU201_7_0.html MXFU201/MXFU201_8_0.html MXFU201/MXFU201_9_0.html MXFU202/MXFU202_2_0.html MXFU202/MXFU202_5_0.html MXFU202/MXFU202_6_0.html MXFU202/MXFU202_7_0.html MXFU202/MXFU202_8_0.html MXFU202/MXFU202_9_0.html MXFU302/MXFU302_2_0.html MXFU302/MXFU302_6_0.html MXFU302/MXFU302_9_0.html MXFU401/MXFU401_3_0.html MXFUN01/MXFUN01_3_0.html MXFUN01/MXFUN01_5_0.html MXFUN01/MXFUN01_6_2.html MXFUN01/MXFUN01_6_3.html MXFUN01/MXFUN01_6_4.html MXFUN01/MXFUN01_6_5.html OSAI301/OSAI301_3_0.html OSBY101/OSBY101_1_0.html OSBY201/OSBY201_3_0.html OSBY501/OSBY501_5_0.html OSGM101/OSGM101_2_0.html OSGM201/OSGM201_3_0.html OSGM401/OSGM401_4_0.html OSOH101/OSOH101_2_0.html OSOH301/OSOH301_2_0.html

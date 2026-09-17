@@ -165,9 +165,16 @@ def node_text(n):
     return ""
 
 
+_NUMVAL = re.compile(r"\[number=[^\]]*\]")
+
+
 def role(n):
-    """The element's label plus a lone inline wrapper's label — `h4>span`, `p>b`."""
-    r = label(n)
+    """The element's label plus a lone inline wrapper's label — `h4>span`, `p>b`.
+    Session 22: the `number=` VALUE is folded to `[number=*]` in the class ROLE (the diff itself still
+    compares the full signature, so a differing number is still a differing line) — keyed by value, the
+    activity-number class fragmented into one row per number and never reached the floor; folded, it is
+    one row (`div.activity…[number=*]` SUBSTITUTED), measured and DECLINED in session 22 (r369)."""
+    r = _NUMVAL.sub("[number=*]", label(n))
     kids = [k for k in n.kids if not (_cls(k) & NOTE_CLS)]
     if len(kids) == 1 and kids[0].tag in INLINE:
         r += ">" + label(kids[0])
@@ -877,8 +884,8 @@ def write_md(res, path, corpus_note):
         L.append(f"| F{i} | {r['direction']} | `{r['fact']}` | {r['pages']} | {r['modules']} | {r['gold_share_all']:.2f} | {r['consensus_all']:.2f} | {bg} | {r['status']} |")
     L.append("")
     for i, r in enumerate(res.get("chrome_facts", []), 1):
-        if r["status"] != "CANDIDATE" and r["modules"] < CHROME_FLOOR_MODULES:
-            continue
+        if r["status"] != "CANDIDATE":
+            continue  # 17 Sept 2026: detail blocks for CANDIDATE facts only (size discipline); the table above lists the rest
         L.append(f"### F{i} · {r['direction']} `{r['fact']}` — {r['status']} (pages {r['pages']} / modules {r['modules']})")
         for pref in ("template+ptype=", "subject="):
             items = sorted([(k, v) for k, v in r["groups"].items() if k.startswith(pref)], key=lambda kv: -kv[1]["modules"])[:8]
@@ -890,7 +897,7 @@ def write_md(res, path, corpus_note):
     L += ["", "## The ranked queue — chrome regions first, then by modules affected", "",
           "| # | region | dir | parent | gold form | Claude form | pages | modules | consensus (all) | best group | derivable | KB | status |",
           "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    shown = [r for r in res["classes"] if r["rank"] <= 150 or r["status"] == "CANDIDATE"]
+    shown = [r for r in res["classes"] if r["rank"] <= 100 or r["status"] == "CANDIDATE"]  # 17 Sept 2026: 150 → 100 (size discipline)
     for r in shown:
         bg = f"{r['best_group']['group']} c={r['best_group']['consensus']:.2f} n={r['best_group']['size']}" if r["best_group"] else "—"
         der = "structure" if r["structure_only"] else f"{r['derivable_share']:.2f}"
@@ -898,8 +905,21 @@ def write_md(res, path, corpus_note):
         L.append(f"| {r['rank']} | {r['region']} | {r['direction']} | `{r['parent'][:40]}` | `{r['gold_form'][:50] or '—'}` | "
                  f"`{r['claude_form'][:50] or '—'}` | {r['pages']} | {r['modules']} | {r['consensus_all']:.2f} of {r['gold_region_pages_all']} | "
                  f"{bg} | {der} | {kb} | {r['status']} |")
+    # --- 17 Sept 2026 (Chris): the details + below-floor sections moved to a COMPANION file so that
+    # DIFF_QUEUE.md stays small enough to be read whole by a session (the 728 KB single file caused
+    # context-compaction thrashing). The companion is never read whole: grep a rank, sed the range.
+    MAIN = L
+    dpath = os.path.join(OUTPUTS, "_diff_queue_details.md")
+    MAIN += ["", "## Details — in the companion file `CONVERTER_V2/outputs/_diff_queue_details.md`",
+             "Every CANDIDATE and every top-40 row has three quoted examples (WT / gold / Claude) there, plus the",
+             "below-floor list. **NEVER read the companion whole** (hundreds of KB): `grep -n '^### #<rank> ' "
+             "CONVERTER_V2/outputs/_diff_queue_details.md` then `sed -n '<start>,<start+40>p'`. The top 25",
+             "candidates' detail blocks are repeated below for convenience.", ""]
+    L = ["# _diff_queue_details.md — companion of DIFF_QUEUE.md (LOOP §1d). NEVER read whole; grep a rank, sed a range.", ""]
     L += ["", "## Candidate and top-row details (three example modules each — WT / gold / Claude quoted)", ""]
     detail = [r for r in res["classes"] if r["status"] == "CANDIDATE" or r["rank"] <= 40]
+    top25 = {r["rank"] for r in [x for x in res["classes"] if x["status"] == "CANDIDATE"][:25]}
+    _detail_start = len(L)
     for r in detail:
         L.append(f"### #{r['rank']} · {r['region']} · {r['direction']} · `{r['parent']}` › gold `{r['gold_form'] or '—'}` vs Claude `{r['claude_form'] or '—'}` — {r['status']}")
         L.append(f"- pages {r['pages']} / modules {r['modules']} / lines {r['lines']}; consensus (all) {r['consensus_all']:.2f} of {r['gold_region_pages_all']} gold pages with the region; "
@@ -918,6 +938,14 @@ def write_md(res, path, corpus_note):
                 L.append(f"  - WT: `{ex['wt_line'][:200]}`")
         L.append(f"- modules: {', '.join(r['module_list'][:24])}{' …' if len(r['module_list']) > 24 else ''}")
         L.append("")
+    # copy the top-25 candidate blocks into the main file
+    cur = None
+    for ln in L[_detail_start:]:
+        if ln.startswith("### #"):
+            try: cur = int(ln[5:].split(" ")[0])
+            except ValueError: cur = None
+        if cur in top25:
+            MAIN.append(ln)
     L += ["## Below the floor (every remaining class with ≥ 2 modules — recorded, never dropped)", "",
           "| # | region | dir | parent › gold › Claude | pages | modules | consensus | derivable |", "|---|---|---|---|---|---|---|---|"]
     for r in res["classes"]:
@@ -927,7 +955,10 @@ def write_md(res, path, corpus_note):
     singles = sum(1 for r in res["classes"] if r["modules"] < 2)
     L += ["", f"({singles} single-module classes are in the JSON only.)", ""]
     with open(path, "w", encoding="utf-8") as fh:
+        fh.write("\n".join(MAIN))
+    with open(dpath, "w", encoding="utf-8") as fh:
         fh.write("\n".join(L))
+    print(f"wrote {path} ({sum(len(x)+1 for x in MAIN)//1024} KB) + {dpath} ({sum(len(x)+1 for x in L)//1024} KB)")
 
 
 # ------------------------------------------------------------------------------------------------ selftest

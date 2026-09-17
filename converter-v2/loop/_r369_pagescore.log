@@ -1,0 +1,23 @@
+changed paired pages 266: up 46 / down 77 / same 143; pp-sum -106.1; mean delta -0.40pp per changed page
+worst 12:
+  BLL126 BLL126_1_0.html 74.3 -> 59.5 (-14.9)
+  ANZH303 ANZH303_1_0.html 65.7 -> 53.3 (-12.4)
+  ENGJ102 ENGJ102_4_0.html 61.4 -> 50.4 (-11.0)
+  BLL112 BLL112_1_0.html 78.8 -> 68.2 (-10.6)
+  ENGS401 ENGS401_4_0.html 66.1 -> 56.0 (-10.1)
+  BLL114 BLL114_2_0.html 59.9 -> 50.3 (-9.6)
+  HIS1005 HIS1005_9_1.html 41.2 -> 32.1 (-9.2)
+  ENGJ202 ENGJ202_4_0.html 59.5 -> 50.6 (-8.9)
+  TEDC402 TEDC402_4_0.html 39.9 -> 32.8 (-7.2)
+  MXFL203 MXFL203_11_0.html 50.8 -> 43.7 (-7.1)
+  MXFL203 MXFL203_2_0.html 65.7 -> 58.7 (-7.0)
+  BLL231 BLL231_1_0.html 73.5 -> 66.7 (-6.8)
+best 8:
+  ENGC102 ENGC102_7_0.html 56.4 -> 60.5 (+4.1)
+  HIS1003 HIS1003_1_0.html 44.9 -> 50.4 (+5.5)
+  MXEO301 MXEO301_5_0.html 43.5 -> 49.2 (+5.6)
+  MXFU401 MXFU401_3_0.html 34.4 -> 43.5 (+9.1)
+  XMES101 XMES101_6_0.html 53.7 -> 63.4 (+9.7)
+  MXFU202 MXFU202_9_0.html 28.6 -> 40.1 (+11.5)
+  BLL145 BLL145_1_0.html 49.7 -> 68.0 (+18.3)
+  OSOH301 OSOH301_2_0.html 57.7 -> 76.9 (+19.2)

@@ -1,0 +1,311 @@
+====================================================================================================
+AGH1002  gold=AGH1002.02.html  claude=AGH1002_2_0.html  gold_lines=140 claude_lines=125
+   = body.container-fluid  <root> 
+   = ... 19 equal ...
+   = div.row  <body> 
+  -G div.col-12  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = h3  <body> Soil texture
+  -G div.col-md-8.col-12  <body> 
+   = p  <body> A key factor which determines the levels of air and water in soils is 
+   = b  <body> texture
+  -G div.alert  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.alert.solid  <body> 
+   = div.row  <body> 
+   = ... 1 equal ...
+   = p  <body> A soil's texture is caused by the size of the particles which make a s
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = p  <body> There are three soil sizes.
+   = ... 8 equal ...
+   = p  <body> When soils have an even mixture of sand, silt and clay particles it is
+  +C b  <body> loam soil.
+   = p  <body> Soil particle size is important as it impacts:
+  -G ul  <body> 
+  +C ol  <body> 
+   = li  <body> the proportion of air in a soil
+   = ... 2 equal ...
+   = li  <body> how easily a soil can be cultivated.
+  -G div.col-12  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = h3  <body> Soil texture triangles
+  -G div.col-md-8.col-12  <body> 
+   = p  <body> Soil texture triangles (pictured below) are used to figure out the soi
+   = ... 1 equal ...
+   = p  <body> The grid inside the triangle is used to determine the soil type. Once 
+  +C img.img-fluid  <body> 
+  +C p  <body> The percentage of sand is along the bottom of the triangle. The sand l
+  +C p  <body> The percentage of clay is on the left hand side of the triangle. The c
+  +C p  <body> The percentage of silt is on the right hand side of the triangle. The 
+  +C p  <body> Where the sand, silt and clay lines cross (or intersect) gives you you
+  +C div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G img.img-fluid  <body> 
+  +C div.alert.solid  <body> 
+  +C div.row  <body> 
+  +C div.col-12  <body> 
+  +C p  <body> The combined percentage of sand, silt and clay in a soil should always
+  +C div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+   = p  <body> The percentage of sand is along the bottom of the triangle. The sand l
+  -G b.red-text  <body> line in red
+   = p  <body> The percentage of clay is on the left hand side of the triangle. The c
+  -G b.green-text  <body> green line
+   = p  <body> The percentage of silt is on the right hand side of the triangle. The 
+  -G b.blue-text  <body> blue line
+   = p  <body> Where the sand, silt and clay lines cross (or intersect) gives you you
+  -G div.alert  <body> 
+  +C p  <body> Firstly – always start with the largest percentage. In this case that 
+  +C img.img-fluid  <body> 
+  +C p  <body> Then move onto the next largest percentage. In this example this is th
+  +C img.img-fluid  <body> 
+  +C p  <body> At this point you should have a fairly good idea on your soil type bas
+  +C p  <body> But … it is always good to check by adding in your third line, which w
+  +C img.img-fluid  <body> 
+  +C p  <body> You can now see the point where all three lines meet – this shows the 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.activity  <activity> 
+   = div.row  <body> 
+   = div.col-12  <body> 
+  -G p.margB0  <body> The combined percentage of sand, silt and clay in a soil should always
+   = p  <body> Let’s work through an example together based on the percentages below:
+  -G p.center-text  <body> . 50% Clay 40% Sand 10% Silt
+  -G b  <body> .
+  -G span.green-text  <body> 50% Clay
+  -G br  <body> 
+  -G span.red-text  <body> 40% Sand
+  -G br  <body> 
+  -G span.blue-text  <body> 10% Silt
+  -G WIDGET  <body> 
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=2A]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  -G h3  <activity> Calculating soil type
+  +C ol  <activity> 
+  +C li  <activity> 35% Clay 50% Silt 15%Sand
+  +C li  <activity> 50% Sand20% Clay 30% Silt
+  +C li  <activity> 50% Silt 50% Clay 0% Sand
+   = p  <activity> Use the texture triangle below to determine the textural names that so
+  -G img.img-fluid  <activity> 
+  -G WIDGET  <activity> 
+  +C ol  <activity> 
+  +C li  <activity> Silty Clay Loam
+  +C li  <activity> Loam
+  +C li  <activity> Silty Clay
+   = div.row  <body> 
+   = ... 5 equal ...
+   = p  <activity> Go to your learning journal and complete activity 2B.
+  -G a  <activity> Download journal
+  -G div.button  <activity> Download journal
+  -G div.hint  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  -G div.hintDropContent  <activity> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G h3  <body> Soil Structure
+  -G div.col-md-8.col-12  <body> 
+  -G p  <body> The proportion of sand, silt and clay describes a soil's texture. BUT 
+  -G div.row  <body> 
+  -G div.col-md-8.offset-md-2.col-12  <body> 
+   = img.img-fluid  <body> 
+   = ... 12 equal ...
+   = div.col-12  <activity> 
+  -G h3  <activity> A smashed structure experiment
+  -G p  <activity> Go to your learning journal and complete activity 2C.
+  -G a  <activity> Go to journal
+  -G div.button  <activity> Go to journal
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.alert  <body> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G h4  <body> Summary
+  -G ul  <body> 
+  -G li  <body> Soil type is determined by the size of the particles in the soil. Ther
+  -G li  <body> Sand which is the largest, silt which is in the middle and clay which 
+  -G li  <body> Soil texture triangles can be used to determine soil type based on the
+   = div#footer  <footer> 
+   = ... 6 equal ...
+   = a.home-nav  <footer> 
+====================================================================================================
+MXFU201  gold=MXFU201_4.0.html  claude=MXFU201_4_0.html  gold_lines=149 claude_lines=137
+   = body.container-fluid  <root> 
+   = ... 7 equal ...
+   = div#module-menu-content.moduleMenu  <module-menu> 
+  -G h5  <module-menu> We are learning to:
+  -G ul  <module-menu> 
+  -G li  <module-menu> calculate elapsed time.
+  -G h5  <module-menu> You will show your understanding by:
+  -G ul  <module-menu> 
+  -G li  <module-menu> using a numberline and subtraction to calculate elapsed time.
+  +C div.row  <module-menu> 
+  +C div.col-md-8.col-12  <module-menu> 
+  +C p  <module-menu> In this lesson you will learn how to calculate elapsed time. You’ll fi
+   = div#body  <body> 
+   = div.row  <body> 
+  -G div.col-md-8.col-12.paddingR  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = p  <body> Understanding elapsed time is knowing how much time has passed from on
+   = ... 2 equal ...
+   = p  <body> 18:45 is 18 hours and 45 minutes. Then subtract the minutes.
+  -G div.alert  <body> 
+  +C p  <body> Important
+  +C ul  <body> 
+  +C li  <body> Always ensure both times are in the same format (24-hour or 12-hour).
+  +C li  <body> Break down the problem into smaller parts (hours and minutes).
+  +C li  <body> Remember to borrow an hour if needed when subtracting minutes.
+  +C div.videoSection.ratio.ratio-16x9  <body> 
+  +C iframe  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.activity.interactive[number=4A]  <activity> 
+   = div.row  <body> 
+   = div.col-12  <body> 
+  -G h5  <body> Important
+  -G p  <body> Always ensure both times are in the same format (24-hour or 12-hour).
+  -G p  <body> Break down the problem into smaller parts (hours and minutes).
+  -G p  <body> Remember to borrow an hour if needed when subtracting minutes.
+  -G div.videoSection.icon.ratio.ratio-16x9  <body> 
+  -G iframe  <body> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G div.activity.interactive[number=4A]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-md-8.col-12  <activity> 
+   = h3  <activity> Part 1: elapsed time – minutes
+   = ... 6 equal ...
+   = p  <activity> The elapsed time is 15 minutes.
+  -G div.col-12  <activity> 
+  -G WIDGET  <activity> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G div.activity.interactive[number=4B]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-md-8.col-12  <activity> 
+  -G h3  <activity> Part 2: elapsed time – minutes and hours
+  -G p  <activity> Calculate the difference between the following times.
+  -G div.col-12  <activity> 
+   = WIDGET  <activity> 
+   = ... 1 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G div.activity.alertPadding.interactive[number=4C]  <activity> 
+  +C div.activity.interactive[number=4B]  <activity> 
+   = div.row  <activity> 
+   = ... 2 equal ...
+   = p  <activity> Watch the video and then read the time statements below. Match the sta
+  -G div.videoSection.icon.ratio.ratio-16x9  <activity> 
+  +C WIDGET  <activity> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.activity.interactive[number=4C]  <activity> 
+  +C div.row  <activity> 
+  +C div.col-12  <activity> 
+  +C h3  <activity> Elapsed Time Statements
+  +C p  <activity> Read the time statements below. Match the statements to the appropriat
+  +C div.videoSection.ratio.ratio-16x9  <activity> 
+   = iframe  <activity> 
+  +C img.img-fluid  <activity> 
+   = WIDGET  <activity> 
+  -G div.col-md-3.offset-md-0.col-12.paddingL  <body> 
+  -G div.alertImage  <body> 
+  -G img.img-fluid  <body> 
+   = div.row  <body> 
+   = ... 4 equal ...
+   = h3  <activity> Part 1: Elapsed time
+  -G p  <activity> Select the number of minutes that has elapsed between each set of time
+  +C img.img-fluid  <activity> 
+   = WIDGET  <activity> 
+   = div.row  <body> 
+  -G div.col-12  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = div.activity.interactive[number=4E]  <activity> 
+   = div.row  <activity> 
+  -G div.col-md-8.col-12  <activity> 
+  +C div.col-12  <activity> 
+   = h3  <activity> Part 2: Elapsed time using borrowing method
+  +C p  <activity> Calculating elapsed time using the borrowing method is similar to borr
+  +C p  <activity> :
+  +C b  <activity> Subtract the Minutes
+  +C p  <activity> Subtract 45 from 20, so you need to borrow 1 hour (which is 60 minutes
+  +C p  <activity> Change 6:20 PM to 5:80 PM (because 6:20 PM is the same as 5:80 PM).
+   = p  <activity> Calculating elapsed time using the borrowing method is similar to borr
+   = ... 3 equal ...
+   = p  <activity> Subtract 45 from 20, so you need to borrow 1 hour (which is 60 minutes
+  -G br  <activity> 
+  -G p  <activity> Now subtract the minutes: 80 - 45 = 35 minutes.
+  -G p  <activity> Subtract the hours: 5 - 3 = 2 hours.
+  -G p  <activity> So, the elapsed time is 2 hours and 35 minutes.
+  -G b  <activity> Combine the hours and minutes:
+  -G p  <activity> By borrowing an hour and converting it to minutes, you can easily calc
+  -G div.col-12  <activity> 
+   = WIDGET  <activity> 
+   = div.row  <body> 
+  -G div.col-md-8.col-12.paddingR  <body> 
+  -G div.activity.alertPadding.interactive[number=4F]  <activity> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.activity.interactive[number=4F]  <activity> 
+   = div.row  <activity> 
+   = ... 3 equal ...
+   = p  <activity> Use the following online manipulative to help you solve the following 
+  -G a  <activity> Go to website
+  -G div.externalButton  <activity> Go to website
+  +C p  <activity> Math Clock by The Math Learning Center
+  +C img.img-fluid  <activity> 
+   = WIDGET  <activity> 
+  -G div.col-md-3.offset-md-0.col-12.paddingL  <body> 
+  -G div.alertImage  <body> 
+  -G img.img-fluid  <body> 
+   = div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G div.activity.alertPadding.interactive[number=4G]  <activity> 
+  +C div.activity.interactive[number=4G]  <activity> 
+   = div.row  <activity> 
+   = ... 2 equal ...
+   = p  <activity> Practice calculating the elapsed time by solving the following questio
+  +C img.img-fluid  <activity> 
+   = WIDGET  <activity> 
+  -G div.col-md-4.offset-md-0.col-12  <body> 
+  -G div.alertImage  <body> 
+  -G img.img-fluid  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.activity.interactive[number=4H]  <activity> 
+   = div.row  <body> 
+   = div.col-12  <body> 
+  -G div.activity[number=4H]  <activity> 
+  +C h3  <activity> Interpreting Infographics
+  +C p  <activity> Charli, Sonny and Kora are waiting for their trains. Read their statem
+  +C img.img-fluid  <activity> 
+  +C p  <activity> &w=is&k=20&c=vXv-xyPlMBl_CU4ONTG__ymV7eambmO1fKXzt_eJp5g=
+  +C a  <activity> https://media.istockphoto.com/id/1084208640/vector/cartoon-teenager-st
+  +C p  <activity> Attach speech bubbles to children with following text:
+  +C WIDGET  <activity> 
+  +C WIDGET  <activity> 
+  +C WIDGET  <activity> 
+   = div.row  <activity> 
+   = div.col-md-8.col-12  <activity> 
+  -G h3  <activity> Interpreting infographics
+   = p  <activity> Charli, Sonny and Kora are waiting for their trains. Read their statem
+  -G div.col-12  <activity> 
+  -G WIDGET  <activity> 
+  -G div.row  <activity> 
+  -G img.img-fluid  <activity> 
+  -G div.col-md-8.col-12  <activity> 
+  -G h5  <activity> Questions:
+   = ol  <activity> 
+   = ... 9 equal ...
+   = li  <footer> 
+  -G a.home-nav  <footer> 
+  -G li  <footer> 
+   = a#prev-lesson  <footer> 
+   = ... 1 equal ...
+   = a#next-lesson  <footer> 
+  +C li  <footer> 
+  +C a.home-nav  <footer> 

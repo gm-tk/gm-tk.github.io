@@ -3612,9 +3612,12 @@ class ContentConverter {
 		// #cdTilePair (ROUND 307) runs AFTER activityDropboxPostpass so the panel's
 		// final class reads "clickDropContent activity dropbox" in the gold's own
 		// token order (pairing PREPENDS its token to whatever the dropbox pass left).
+		// #pageNumberNormalise (ROUND 369) runs OUTSIDE #cdTilePair and the dropbox / interactive
+		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
+		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))),
+			this.#pageNumberNormalise(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run),
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -5684,6 +5687,81 @@ class ContentConverter {
 		};
 		const tiles = names.map((n) => Utils.FillTemplate(cfg.tile, { iconType: camel(n), label: Utils.EscapeHtml(n) }));
 		return [cfg.row_open, ...tiles, cfg.row_close].join("\n");
+	}
+
+	/** ROUND 369 — THE PAGE'S ACTIVITY NUMBERS ARE CONSECUTIVE (the autonomous loop's
+	 *  session 22, Round 1). KB 00B_CONVERSION_PIPELINE + constraint 62: "the first
+	 *  interactive keeps the writer's activity number; each subsequent interactive takes
+	 *  the next letter … renumber the following activities accordingly"; constraint 65:
+	 *  the MTK quiz box "carries the next consecutive activity number even where the
+	 *  writer assigned none". The gold agrees: Standard lesson pages with lettered boxes
+	 *  follow {page number}{A, B, C …} exactly on 0.86 of 1,540 (outputs/_s22_actnum3.py).
+	 *  The round-88 rule in ActivitiesBuilder.activityOpen keeps every writer id that
+	 *  carries a letter VERBATIM (right for a writer's GAP letters — a captured 2nd and 4th
+	 *  activity keep B / D), so a page shipped `5A, 5A` (two writer boxes with the same id),
+	 *  `1A, 1A, 1B`, or `4A, 4B, 2A` (a journal-instruction box carrying the writer's stale
+	 *  digit on lesson 4) where the gold ships `5A 5B`, `1A 1B 1C`, `4A 4B 4C`.
+	 *  A PAGE-LEVEL post-pass, run OUTERMOST in the body chain (after #cdTilePair and the
+	 *  dropbox / interactive post-passes — every consumer of a box's writer id has run):
+	 *  over the page's activity boxes in document order,
+	 *   - digit (`majority_digit`): on a page with a lesson number, a box whose digit differs
+	 *     from the page's MAJORITY digit (>= 2 boxes, a strict majority) takes the majority
+	 *     digit; a page with no lesson number is left alone (the r325 phase panels own their
+	 *     digits — 1A, 2A, 3A are sections there);
+	 *   - letter (`dedupe_letters`): a (digit, letter) already used on the page, or a letter
+	 *     that is not a single A–Z, takes the next unused letter for that digit; a writer's
+	 *     gap letters (`9A, 9B, 9D`) stay.
+	 *  Never on a page carrying a decimal id (the KB 07B `1.1` family) or a bare-digit id
+	 *  (the single-page section form). Measured over the gate's pairs before coding
+	 *  (outputs/_s22_actnum5.py, variant DL): Standard pages whose whole number list
+	 *  matches the gold 510 → 556 (47 gained / 1 lost — BLL152 L2, the gold keeps a writer's
+	 *  `1E`), boxes agreeing position-wise 2851 → 3079 of 3724; Inquiry 562 → 582 boxes.
+	 *  Data activity_wrapper.page_number_normalise; env NUMNORM_OFF (byte-identical). */
+	static #pageNumberNormalise(html, page, run) {
+		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.page_number_normalise;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "NUMNORM_OFF"]) return html;
+		if (!page || page.isOverview) return html;
+		const re = /(<div class="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*? number=")([^"]*)(")/g;
+		const hits = [];
+		let m;
+		while ((m = re.exec(html)) !== null) hits.push({ start: m.index, pre: m[1], id: m[2], post: m[3], len: m[0].length });
+		if (hits.length === 0) return html;
+		const parsed = hits.map((h) => { const p = /^(\d+)([A-Za-z]?)$/.exec(h.id.trim()); return p ? { d: parseInt(p[1], 10), l: p[2].toUpperCase() } : null; });
+		// the whole page is left alone when any id is decimal / bare-digit / unparseable
+		if (parsed.some((p) => !p || !p.l) || hits.length > 26) return html;
+		let mode = null;
+		if (cfg.majority_digit !== false && page.lessonNumber != null && parsed.length >= 2) {
+			const counts = new Map();
+			for (const p of parsed) counts.set(p.d, (counts.get(p.d) ?? 0) + 1);
+			const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+			if ((sorted.length === 1 || sorted[0][1] > sorted[1][1]) && sorted[0][1] * 2 > parsed.length) mode = sorted[0][0];
+		}
+		const used = new Set();
+		const changes = [];
+		const out = [];
+		let cursor = 0;
+		hits.forEach((h, i) => {
+			let { d, l } = parsed[i];
+			if (mode !== null) d = mode;
+			if (cfg.dedupe_letters !== false && !(/^[A-Z]$/.test(l) && !used.has(d + "|" + l))) {
+				let c = 0;
+				while (c < 26 && used.has(d + "|" + String.fromCharCode(65 + c))) c++;
+				if (c < 26) l = String.fromCharCode(65 + c);
+			}
+			used.add(d + "|" + l);
+			const nid = String(d) + l;
+			out.push(html.slice(cursor, h.start));
+			if (nid !== h.id) { out.push(h.pre + nid + h.post); changes.push(h.id + " → " + nid); }
+			else out.push(html.slice(h.start, h.start + h.len));
+			cursor = h.start + h.len;
+		});
+		out.push(html.slice(cursor));
+		if (changes.length && run && typeof run.AddNote === "function") {
+			run.AddNote("info", "ContentConverter",
+				`Page ${page.lessonLabel}: activity number${changes.length > 1 ? "s" : ""} normalised (page_number_normalise): ${changes.join(", ")}.`);
+		}
+		return out.join("");
 	}
 
 	/** ROUND 307 — half two, THE PAIRING POST-PASS (the round-305 dropbox-postpass

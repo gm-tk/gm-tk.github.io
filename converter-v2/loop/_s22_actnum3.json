@@ -1,0 +1,95 @@
+{
+ "gold": {
+  "Bilingual": {
+   "skip": 27,
+   "decimal": 30,
+   "R": 25,
+   "digit-ok-letters-not": 3,
+   "digit-wrong": 1
+  },
+  "Fundamentals": {
+   "skip": 66,
+   "R": 9,
+   "digit-wrong": 37,
+   "digit-ok-letters-not": 3
+  },
+  "Inquiry": {
+   "skip": 47,
+   "R": 47,
+   "digit-ok-letters-not": 3
+  },
+  "Standard": {
+   "skip": 402,
+   "R": 1327,
+   "digit-ok-letters-not": 158,
+   "digit-wrong": 55,
+   "decimal": 7,
+   "other-form": 6
+  }
+ },
+ "claude": {
+  "Bilingual": {
+   "skip": 29,
+   "decimal": 23,
+   "R": 11
+  },
+  "Fundamentals": {
+   "skip": 64,
+   "digit-wrong": 13
+  },
+  "Inquiry": {
+   "skip": 59,
+   "digit-ok-letters-not": 6,
+   "digit-wrong": 14,
+   "R": 16
+  },
+  "Standard": {
+   "skip": 624,
+   "digit-ok-letters-not": 276,
+   "R": 743,
+   "digit-wrong": 224,
+   "other-form": 1
+  }
+ },
+ "paired": {
+  "Bilingual": {
+   "pairs": 7,
+   "match-now": 3,
+   "match-after-R": 3,
+   "boxes": 11,
+   "box-agree-now": 11,
+   "box-agree-after": 11
+  },
+  "Fundamentals": {
+   "pairs": 11,
+   "ordinal-differs": 10,
+   "match-now": 6,
+   "match-after-R": 0,
+   "LOST": 6,
+   "boxes": 45,
+   "box-agree-now": 36,
+   "box-agree-after": 0
+  },
+  "Inquiry": {
+   "pairs": 34,
+   "match-now": 10,
+   "match-after-R": 2,
+   "boxes": 154,
+   "box-agree-now": 110,
+   "box-agree-after": 81,
+   "ordinal-differs": 15,
+   "LOST": 8
+  },
+  "Standard": {
+   "pairs": 1176,
+   "match-now": 510,
+   "match-after-R": 499,
+   "GAINED": 64,
+   "boxes": 3700,
+   "box-agree-now": 2847,
+   "box-agree-after": 2910,
+   "ordinal-differs": 240,
+   "LOST": 75
+  }
+ }
+}

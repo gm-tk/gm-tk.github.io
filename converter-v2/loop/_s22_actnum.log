@@ -1,0 +1,62 @@
+classes: {'LETTERS': 577, 'SAME': 542, 'ONE-SIDE-EMPTY': 281, 'OTHER': 122, 'DIGIT-SHIFT': 86}
+   LETTERS modules 234
+   SAME modules 223
+   ONE-SIDE-EMPTY modules 120
+   OTHER modules 71
+   DIGIT-SHIFT modules 45
+   Bilingual {'LETTERS': 18, 'SAME': 4, 'ONE-SIDE-EMPTY': 17, 'OTHER': 10}
+   Fundamentals {'SAME': 14, 'LETTERS': 20, 'ONE-SIDE-EMPTY': 12, 'OTHER': 15, 'DIGIT-SHIFT': 1}
+   Inquiry {'OTHER': 8, 'LETTERS': 34, 'SAME': 13, 'ONE-SIDE-EMPTY': 24, 'DIGIT-SHIFT': 4}
+   Standard {'LETTERS': 505, 'ONE-SIDE-EMPTY': 228, 'DIGIT-SHIFT': 81, 'OTHER': 89, 'SAME': 511}
+== examples DIGIT-SHIFT
+    ('HPFUN903', 'HPFUN903.html', ['1A', '2A', '4A', '5A', '5B'], ['3A'], 'wt-digits=')
+    ('CEDT207', 'CEDT207_2.0.html', ['2A', '2B', '2C', '2D'], ['3A', '3B', '3C', '3D', '3E'], 'wt-digits=')
+    ('CEDT207', 'CEDT207_3.0.html', ['3A'], ['4A'], 'wt-digits=')
+    ('CEDT207', 'CEDT207_5.0.html', ['5A', '5B', '5C'], ['6A'], 'wt-digits=')
+    ('TWHA902', 'TWHA902 Be a Communicator.html', ['1A', '1B', '1C', '1D', '2A'], ['1920'], 'wt-digits=')
+    ('AGH1003', 'AGH1003_06.0.html', ['6A', '6B', '6C'], ['5X'], 'wt-digits=')
+    ('AGH1004', 'AGH1004.06.html', ['6A', '6B', '6C', '6D', '6D'], ['2A'], 'wt-digits=')
+    ('AGH1004', 'AGH1004.07.html', ['7A', '7B', '7C'], ['6A', '6B'], 'wt-digits=')
+    ('AGH1006', 'AGH1006.05.html', ['5A'], ['4A', '4B'], 'wt-digits=')
+    ('AGH1006', 'AGH1006.06.html', ['6A', '6B'], ['5A'], 'wt-digits=')
+    ('AGH1006', 'AGH1006.08.html', ['8A'], ['7A'], 'wt-digits=')
+    ('AGH1006', 'AGH1006.09.html', ['9A', '9B', '9C'], ['8A', '8B', '8C'], 'wt-digits=')
+    ('AGH1007', 'AGH1007.02.html', ['2A'], ['3A', '1A'], 'wt-digits=')
+    ('AGH1007', 'AGH1007.01.html', ['1A'], ['7A', '5A'], 'wt-digits=')
+    ('AGH1008', 'AGH1008.08.html', ['8A', '8B', '8C'], ['4C'], 'wt-digits=')
+    ('AGH1009', 'AGH1009.03.1.html', ['3B', '3C', '3D'], ['8A', '8A'], 'wt-digits=')
+    ('ANZH101', 'ANZH101_4.0.html', ['4A'], ['3A', '3B'], 'wt-digits=')
+    ('ANZH105', 'ANZH105_08.0.html', ['8A'], ['7A'], 'wt-digits=')
+    ('ANZH203', 'ANZH203_3.0.html', ['3A'], ['2A', '2B'], 'wt-digits=')
+    ('ANZH203', 'ANZH203_4.0.html', ['4A', '4B', '4C'], ['3A', '3B', '3C', '3D'], 'wt-digits=')
+    ('ANZH203', 'ANZH203_5.0.html', ['5A'], ['4A', '4B'], 'wt-digits=')
+    ('ANZH203', 'ANZH203_7.0.html', ['7A', '7B'], ['6A'], 'wt-digits=')
+    ('ART1005', 'ART1005_3.0.html', ['3A', '3B', '3C', '3D', '3E'], ['1', '2'], 'wt-digits=')
+    ('CEDT501', 'CEDT501_8.1.html', ['8C', '8D'], ['13A'], 'wt-digits=')
+    ('ENGI101', 'ENGI101_3.0.html', ['3A', '3B'], ['2A', '2B', '1I', '1J', '2C'], 'wt-digits=')
+== examples OTHER
+    ('TRR112', 'TRR112_1.0.html', ['1A', '1B', '1C', '1D', '1E'], ['1.2', '1.3', '1.5'], 'wt-digits=')
+    ('TRR112', 'TRR112_2.0.html', ['2A', '2B', '2C', '2D', '2E'], ['2.1', '2.2'], 'wt-digits=')
+    ('TRR112', 'TRR112_3.0.html', ['3A', '3B', '3C', '3D', '3E'], ['3.1', '3.2', '3.3', '3.4'], 'wt-digits=')
+    ('TRR112', 'TRR112_4.0.html', ['4A', '4B', '4C', '4D', '4E'], ['4.2', '4.3'], 'wt-digits=')
+    ('TRR112', 'TRR112_5.0.html', ['5A', '5B', '5C', '5D', '5F'], ['5.1', '5.2', '5.3'], 'wt-digits=')
+    ('TRR113', 'TRR113_1.0.html', ['1A', '1B', '1C', '1D', '1E'], ['1.1', '1.2', '1.4'], 'wt-digits=')
+    ('TRR113', 'TRR113_4.0.html', ['4A', '4B', '4C', '4D', '4E'], ['2.1', '2.2', '2.4'], 'wt-digits=')
+    ('TRR113', 'TRR113_3.0.html', ['3A', '3B', '3C', '3D', '3E'], ['3.2', '3.4', '3.5'], 'wt-digits=')
+    ('TRR113', 'TRR113_2.0.html', ['2A', '2B', '2C', '2D', '2E'], ['4.2', '4.3'], 'wt-digits=')
+    ('TRR113', 'TRR113_5.0.html', ['5A', '5B', '5C', '5D', '5E'], ['5.1', '5.2', '5.3', '5.4'], 'wt-digits=')
+    ('CHFUN05', 'CHFUN05_0_0.html', ['1A', '1B', '1C', '1D', '1E'], ['1A', '1B', '1C', '1D', '1E'], 'wt-digits=')
+    ('CHFUN06', 'CHFUN06_0_0.html', ['1A', '1B', '1C', '1D', '1E'], ['1A', '1B', '1C', '1D', '1E'], 'wt-digits=')
+    ('HPFUN101', 'HPFUN101.html', ['1A', '2A', '2B', '3A', '3B'], ['1A'], 'wt-digits=')
+    ('HPFUN103', 'HPFUN103.html', ['1A', '1B', '2A', '2B', '3A'], ['2A', '2B', '3A', '3B'], 'wt-digits=')
+    ('HPFUN203', 'HPFUN203.html', ['1A', '1B', '1C', '1D', '2A'], ['3A'], 'wt-digits=')
+    ('HPFUN303', 'HPFUN303.html', ['1A', '2A', '2B', '3A', '4A'], ['1A', '3A'], 'wt-digits=')
+    ('HPFUN403', 'HPFUN403_0_0.html', ['1A', '2A', '2B', '3A', '4A'], ['1A'], 'wt-digits=')
+    ('HPFUN901', 'HPFUN901_0_0.html', ['1A', '1B', '2A', '2B', '3A'], ['1'], 'wt-digits=')
+    ('MXFUN01', 'MXFUN01_2.0.html', ['2A', '2B', '2C', '2D'], ['2A', '2B', '2C', '3D', '2D'], 'wt-digits=')
+    ('MXFUN01', 'MXFUN01_4.0.html', ['4A', '4B', '4D', '4E', '4F'], ['4A', '4B', '4C', '4D', '5E'], 'wt-digits=')
+    ('MXFUN01', 'MXFUN01_6.0.html', ['1A', '1B', '1C', '1D', '1F'], ['1A', '1B', '1C', '1D', '1F'], 'wt-digits=')
+    ('MXFUN01', 'MXFUN01_7.0.html', ['3B', '3C', '3D', '3E'], ['3B', '3C', '3D', '3E', '6U'], 'wt-digits=')
+    ('SCFUN01', 'SCFUN01_0.0.html', ['1A', '2A', '2B', '2C', '3A'], ['3A', '4A'], 'wt-digits=')
+    ('TEFUN07', 'TEFUN07.html', ['1A', '2A', '2B', '3A', '4A'], ['4A'], 'wt-digits=')
+    ('TEFUN08', 'TEFUN08.html', ['1A', '1B', '2A', '3A', '4A'], ['1A', '1B'], 'wt-digits=')

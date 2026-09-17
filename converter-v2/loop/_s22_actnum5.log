@@ -1,0 +1,36 @@
+==== variant L
+   Bilingual {'pairs': 32, 'match-now': 4, 'match-after': 4, 'boxes': 78, 'box-now': 23, 'box-after': 23} | Claude pages changed: 0 modules 0
+   Fundamentals {'pairs': 50, 'match-now': 14, 'match-after': 15, 'boxes': 371, 'box-now': 211, 'box-after': 216, 'changed': 6, 'GAINED': 1} | Claude pages changed: 7 modules 7
+   Inquiry {'pairs': 59, 'match-now': 13, 'match-after': 13, 'boxes': 740, 'box-now': 562, 'box-after': 583, 'changed': 12} | Claude pages changed: 13 modules 9
+   Standard {'pairs': 1186, 'changed': 192, 'match-now': 510, 'match-after': 549, 'GAINED': 39, 'boxes': 3724, 'box-now': 2851, 'box-after': 3045} | Claude pages changed: 197 modules 105
+==== variant DL
+   Bilingual {'pairs': 32, 'match-now': 4, 'match-after': 4, 'boxes': 78, 'box-now': 23, 'box-after': 23} | Claude pages changed: 0 modules 0
+   Fundamentals {'pairs': 50, 'match-now': 14, 'match-after': 14, 'boxes': 371, 'box-now': 211, 'box-after': 200, 'changed': 13, 'LOST': 1, 'GAINED': 1} | Claude pages changed: 16 modules 11
+   Inquiry {'pairs': 59, 'match-now': 13, 'match-after': 13, 'boxes': 740, 'box-now': 562, 'box-after': 582, 'changed': 13} | Claude pages changed: 14 modules 10
+   Standard {'pairs': 1186, 'changed': 249, 'match-now': 510, 'match-after': 556, 'GAINED': 47, 'boxes': 3724, 'box-now': 2851, 'box-after': 3079, 'LOST': 1} | Claude pages changed: 262 modules 128
+== DL-gained-Fundamentals
+    ('XFUN02', 'XFUN02.03.html', ['3A', '3B', '3C', '3D'], ['3A', '3B', '3B', '3C'], ['3A', '3B', '3C', '3D'])
+== DL-gained-Standard
+    ('AGH1001', 'AGH1001.01.html', ['1A', '1B', '1C'], ['1A', '1B', '1A'], ['1A', '1B', '1C'])
+    ('AGH1001', 'AGH1001.05.html', ['5A', '5B'], ['5A', '5A'], ['5A', '5B'])
+    ('AGH1007', 'AGH1007.04.html', ['4A', '4B', '4C'], ['4A', '4B', '2A'], ['4A', '4B', '4C'])
+    ('AGH1009', 'AGH1009.05.html', ['5A', '5B'], ['5A', '5A'], ['5A', '5B'])
+    ('AGH1009', 'AGH1009.07.html', ['7A', '7B'], ['7A', '7A'], ['7A', '7B'])
+    ('ANZH101', 'ANZH101_1.0.html', ['1A', '1B', '1C', '1D'], ['1A', '1B', '1C', '1C'], ['1A', '1B', '1C', '1D'])
+    ('ANZH301', 'ANZH301_1.0.html', ['1A', '1B', '1C'], ['1A', '1A', '1B'], ['1A', '1B', '1C'])
+    ('ANZH301', 'ANZH301_4.0.html', ['4A', '4B', '4C'], ['4A', '4A', '4B'], ['4A', '4B', '4C'])
+== DL-lost-Fundamentals
+    ('CHFUN04', 'CHFUN04_0_0.html', ['1A', '1B', '1C', '1D', '2A', '2B'], ['1A', '1B', '1C', '1D', '2A', '2B'], ['1A', '1B', '1C', '1D', '1E', '1F'])
+== DL-lost-Standard
+    ('BLL152', 'BLL152-2.0.html', ['2A', '2B', '2C', '2D', '1E'], ['2A', '2B', '2C', '2D', '1E'], ['2A', '2B', '2C', '2D', '2E'])
+== L-gained-Fundamentals
+    ('XFUN02', 'XFUN02.03.html', ['3A', '3B', '3C', '3D'], ['3A', '3B', '3B', '3C'], ['3A', '3B', '3C', '3D'])
+== L-gained-Standard
+    ('AGH1001', 'AGH1001.01.html', ['1A', '1B', '1C'], ['1A', '1B', '1A'], ['1A', '1B', '1C'])
+    ('AGH1001', 'AGH1001.05.html', ['5A', '5B'], ['5A', '5A'], ['5A', '5B'])
+    ('AGH1009', 'AGH1009.05.html', ['5A', '5B'], ['5A', '5A'], ['5A', '5B'])
+    ('AGH1009', 'AGH1009.07.html', ['7A', '7B'], ['7A', '7A'], ['7A', '7B'])
+    ('ANZH101', 'ANZH101_1.0.html', ['1A', '1B', '1C', '1D'], ['1A', '1B', '1C', '1C'], ['1A', '1B', '1C', '1D'])
+    ('ANZH301', 'ANZH301_1.0.html', ['1A', '1B', '1C'], ['1A', '1A', '1B'], ['1A', '1B', '1C'])
+    ('ANZH301', 'ANZH301_4.0.html', ['4A', '4B', '4C'], ['4A', '4A', '4B'], ['4A', '4B', '4C'])
+    ('BLL135', 'BLL135-02.html', ['1A', '1B', '1C', '1D', '1E', '1F'], ['1A', '1B', '1C', '1C', '1D', '1E'], ['1A', '1B', '1C', '1D', '1E', '1F'])

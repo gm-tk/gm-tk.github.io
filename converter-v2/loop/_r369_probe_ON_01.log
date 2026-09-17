@@ -1,0 +1,330 @@
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+  ~ BLL240_1_1.html: -3 +3
+     - <div class="activity" number="1B">
+     - <div class="activity interactive" number="1C">
+     - <div class="activity" number="1D">
+     + <div class="activity" number="1C">
+     + <div class="activity interactive" number="1D">
+     + <div class="activity" number="1H">
+BLL240: identical 8 / changed 1
+BLL241: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+  ~ BLL244_1_0.html: -3 +3
+     - <div class="activity" number="1C">
+     - <div class="activity interactive" number="1D">
+     - <div class="activity" number="1E">
+     + <div class="activity" number="1D">
+     + <div class="activity interactive" number="1E">
+     + <div class="activity" number="1F">
+BLL244: identical 2 / changed 1
+  ~ BLL245_1_0.html: -1 +1
+     - <div class="activity" number="1C">
+     + <div class="activity" number="1F">
+  ~ BLL245_2_0.html: -1 +1
+     - <div class="activity" number="2D">
+     + <div class="activity" number="2F">
+BLL245: identical 1 / changed 2
+BLL246: identical 3 / changed 0
+  ~ BLL251_1_0.html: -3 +3
+     - <div class="activity" number="1B">
+     - <div class="activity interactive" number="1C">
+     - <div class="activity" number="1D">
+     + <div class="activity" number="1C">
+     + <div class="activity interactive" number="1D">
+     + <div class="activity" number="1F">
+BLL251: identical 2 / changed 1
+BLL252: identical 3 / changed 0
+  ~ BLL253_1_0.html: -4 +4
+     - <div class="activity" number="2B">
+     - <div class="activity" number="1C">
+     - <div class="activity interactive" number="1D">
+     - <div class="activity" number="1E">
+     + <div class="activity" number="1B">
+     + <div class="activity" number="1D">
+     + <div class="activity interactive" number="1E">
+     + <div class="activity" number="1G">
+BLL253: identical 2 / changed 1
+  ~ BLL254_1_0.html: -3 +3
+     - <div class="activity" number="1C">
+     - <div class="activity interactive" number="1D">
+     - <div class="activity" number="1E">
+     + <div class="activity" number="1D">
+     + <div class="activity interactive" number="1E">
+     + <div class="activity" number="1F">
+BLL254: identical 2 / changed 1
+  ~ BLL262_3_0.html: -1 +1
+     - <div class="activity" number="2F">
+     + <div class="activity" number="2G">
+BLL262: identical 2 / changed 1
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+  ~ CEDK501_3_0.html: -1 +1
+     - <div class="activity" number="2C">
+     + <div class="activity" number="2A">
+  ~ CEDK501_6_1.html: -1 +1
+     - <div class="activity" number="6C">
+     + <div class="activity" number="6D">
+CEDK501: identical 12 / changed 2
+CEDO102: identical 1 / changed 0
+  ~ CEDO105_5_0.html: -1 +1
+     - <div class="activity dropbox" number="5C">
+     + <div class="activity dropbox" number="5D">
+CEDO105: identical 5 / changed 1
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+  ~ CEDO502_4_0.html: -1 +1
+     - <div class="activity" number="4B">
+     + <div class="activity" number="4C">
+CEDO502: identical 9 / changed 1
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+  ~ CEDT207_2_0.html: -3 +3
+     - <div class="activity" number="1A">
+     - <div class="activity" number="1A">
+     - <div class="activity" number="1B">
+     + <div class="activity" number="2A">
+     + <div class="activity" number="2B">
+     + <div class="activity" number="2C">
+CEDT207: identical 7 / changed 1
+CEDT208: identical 1 / changed 0
+  ~ CEDT301_2_0.html: -2 +2
+     - <div class="activity" number="1A">
+     - <div class="activity" number="1B">
+     + <div class="activity" number="1D">
+     + <div class="activity" number="1E">
+  ~ CEDT301_3_0.html: -1 +1
+     - <div class="activity" number="2A">
+     + <div class="activity" number="2D">
+  ~ CEDT301_6_0.html: -1 +1
+     - <div class="activity" number="4A">
+     + <div class="activity" number="4E">
+CEDT301: identical 4 / changed 3
+CEDT404: identical 1 / changed 0
+  ~ CEDT501_6_1.html: -1 +1
+     - <div class="activity" number="3A">
+     + <div class="activity" number="6A">
+CEDT501: identical 14 / changed 1
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+  ~ CEDW501_3_0.html: -4 +4
+     - <div class="activity" number="3A">
+     - <div class="activity" number="101A">
+     - <div class="activity interactive" number="3D">
+     - <div class="activity interactive" number="3F">
+     + <div class="activity" number="3F">
+     + <div class="activity interactive" number="3G">
+     + <div class="activity" number="3H">
+     + <div class="activity interactive" number="3I">
+CEDW501: identical 12 / changed 1
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+  ~ ENGC101_2_0.html: -3 +3
+     - <div class="activity" number="2B">
+     - <div class="activity interactive" number="2C">
+     - <div class="activity" number="2D">
+     + <div class="activity" number="2C">
+     + <div class="activity interactive" number="2D">
+     + <div class="activity" number="2E">
+  ~ ENGC101_3_0.html: -1 +1
+     - <div class="activity" number="3C">
+     + <div class="activity" number="3D">
+ENGC101: identical 4 / changed 2
+  ~ ENGC102_4_0.html: -1 +1
+     - <div class="activity" number="4D">
+     + <div class="activity" number="4E">
+  ~ ENGC102_7_0.html: -3 +3
+     - <div class="activity interactive" number="7B">
+     - <div class="activity" number="7C">
+     - <div class="activity dropbox" number="7C">
+     + <div class="activity interactive" number="7D">
+     + <div class="activity" number="7E">
+     + <div class="activity dropbox" number="7F">
+ENGC102: identical 6 / changed 2
+  ~ ENGC201_5_0.html: -1 +1
+     - <div class="activity" number="5B">
+     + <div class="activity" number="5C">
+ENGC201: identical 6 / changed 1
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+  ~ ENGI101_1_0.html: -1 +1
+     - <div class="activity" number="1E">
+     + <div class="activity" number="1F">
+  ~ ENGI101_1_1.html: -2 +2
+     - <div class="activity interactive" number="1I">
+     - <div class="activity interactive" number="1J">
+     + <div class="activity interactive" number="2I">
+     + <div class="activity interactive" number="2J">
+ENGI101: identical 2 / changed 2
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+  ~ ENGI201_1_0.html: -2 +2
+     - <div class="activity" number="1B">
+     - <div class="activity dropbox super-content-button" number="1C">
+     + <div class="activity dropbox super-content-button" number="1D">
+     + <div class="activity" number="1E">
+  ~ ENGI201_2_0.html: -3 +3
+     - <div class="activity" number="2A">
+     - <div class="activity interactive" number="2B">
+     - <div class="activity" number="2C">
+     + <div class="activity" number="2B">
+     + <div class="activity interactive" number="2C">
+     + <div class="activity" number="2D">
+  ~ ENGI201_3_0.html: -1 +1
+     - <div class="activity dropbox super-content-button" number="3A">
+     + <div class="activity dropbox super-content-button" number="3B">
+ENGI201: identical 2 / changed 3
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+  ~ ENGI303_3_0.html: -2 +2
+     - <div class="activity" number="3C">
+     - <div class="activity dropbox" number="3D">
+     + <div class="activity" number="3D">
+     + <div class="activity dropbox" number="3E">
+ENGI303: identical 6 / changed 1
+  ~ ENGI400_2_0.html: -1 +1
+     - <div class="activity" number="3A">
+     + <div class="activity" number="2D">
+ENGI400: identical 3 / changed 1
+  ~ ENGI401_6_0.html: -2 +2
+     - <div class="activity" number="6B">
+     - <div class="activity dropbox" number="6C">
+     + <div class="activity" number="6C">
+     + <div class="activity dropbox" number="6D">
+  ~ ENGI401_7_0.html: -2 +2
+     - <div class="activity" number="7B">
+     - <div class="activity interactive" number="7C">
+     + <div class="activity" number="7C">
+     + <div class="activity interactive" number="7D">
+ENGI401: identical 10 / changed 2
+  ~ ENGI405_2_0.html: -1 +1
+     - <div class="activity" number="2B">
+     + <div class="activity" number="2C">
+  ~ ENGI405_4_1.html: -1 +1
+     - <div class="activity" number="4A">
+     + <div class="activity" number="4C">
+  ~ ENGI405_5_0.html: -3 +3
+     - <div class="activity interactive" number="5M">
+     - <div class="activity" number="5O">
+     - <div class="activity dropbox" number="5P">
+     + <div class="activity interactive" number="5O">
+     + <div class="activity" number="5P">
+     + <div class="activity dropbox" number="5Q">
+ENGI405: identical 5 / changed 3
+ENGJ101: identical 5 / changed 0
+  ~ ENGJ102_1_0.html: -2 +2
+     - <div class="activity interactive" number="1B">
+     - <div class="activity interactive" number="1C">
+     + <div class="activity interactive" number="1F">
+     + <div class="activity interactive" number="1G">
+  ~ ENGJ102_4_0.html: -1 +1
+     - <div class="activity" number="4C">
+     + <div class="activity" number="4D">
+ENGJ102: identical 4 / changed 2
+  ~ ENGJ201_4_0.html: -1 +1
+     - <div class="activity interactive" number="5B">
+     + <div class="activity interactive" number="4C">
+ENGJ201: identical 6 / changed 1
+  ~ ENGJ202_4_0.html: -1 +1
+     - <div class="activity" number="4B">
+     + <div class="activity" number="4C">
+ENGJ202: identical 5 / changed 1
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+  ~ ENGR102_6_0.html: -3 +3
+     - <div class="activity interactive" number="5C">
+     - <div class="activity" number="5D">
+     - <div class="activity interactive" number="5E">
+     + <div class="activity interactive" number="5D">
+     + <div class="activity" number="5E">
+     + <div class="activity interactive" number="5F">
+ENGR102: identical 6 / changed 1
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+  ~ ENGR301_3_0.html: -2 +2
+     - <div class="activity interactive" number="3A">
+     - <div class="activity" number="3B">
+     + <div class="activity interactive" number="3D">
+     + <div class="activity" number="3E">
+ENGR301: identical 8 / changed 1
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+  ~ ENGS102_2_0.html: -1 +1
+     - <div class="activity interactive" number="2B">
+     + <div class="activity interactive" number="2D">
+  ~ ENGS102_4_0.html: -2 +2
+     - <div class="activity interactive" number="4C">
+     - <div class="activity" number="3C">
+     + <div class="activity interactive" number="3C">
+     + <div class="activity" number="3E">
+  ~ ENGS102_6_0.html: -3 +3
+     - <div class="activity interactive" number="6D">
+     - <div class="activity" number="5D">
+     - <div class="activity dropbox" number="5E">
+     + <div class="activity interactive" number="5D">
+     + <div class="activity" number="5E">
+     + <div class="activity dropbox" number="5F">
+ENGS102: identical 4 / changed 3
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+  ~ ENGS302_4_0.html: -1 +1
+     - <div class="activity" number="4B">
+     + <div class="activity" number="4D">
+  ~ ENGS302_6_0.html: -4 +4
+     - <div class="activity interactive" number="6A">
+     - <div class="activity" number="6B">
+     - <div class="activity" number="7A">
+     - <div class="activity interactive" number="7F">
+     + <div class="activity interactive" number="7A">
+     + <div class="activity" number="7F">
+     + <div class="activity" number="7G">
+     + <div class="activity interactive" number="7H">
+ENGS302: identical 5 / changed 2
+  ~ ENGS401_4_0.html: -2 +2
+     - <div class="activity interactive" number="4A">
+     - <div class="activity" number="4C">
+     + <div class="activity interactive" number="4C">
+     + <div class="activity" number="4D">
+ENGS401: identical 6 / changed 1
+ENGS405: identical 1 / changed 0
+
+TOTAL: identical 474 / changed 47 / missing 0 over 104 modules
+CHANGED: BLL240/BLL240_1_1.html BLL244/BLL244_1_0.html BLL245/BLL245_1_0.html BLL245/BLL245_2_0.html BLL251/BLL251_1_0.html BLL253/BLL253_1_0.html BLL254/BLL254_1_0.html BLL262/BLL262_3_0.html CEDK501/CEDK501_3_0.html CEDK501/CEDK501_6_1.html CEDO105/CEDO105_5_0.html CEDO502/CEDO502_4_0.html CEDT207/CEDT207_2_0.html CEDT301/CEDT301_2_0.html CEDT301/CEDT301_3_0.html CEDT301/CEDT301_6_0.html CEDT501/CEDT501_6_1.html CEDW501/CEDW501_3_0.html ENGC101/ENGC101_2_0.html ENGC101/ENGC101_3_0.html ENGC102/ENGC102_4_0.html ENGC102/ENGC102_7_0.html ENGC201/ENGC201_5_0.html ENGI101/ENGI101_1_0.html ENGI101/ENGI101_1_1.html ENGI201/ENGI201_1_0.html ENGI201/ENGI201_2_0.html ENGI201/ENGI201_3_0.html ENGI303/ENGI303_3_0.html ENGI400/ENGI400_2_0.html ENGI401/ENGI401_6_0.html ENGI401/ENGI401_7_0.html ENGI405/ENGI405_2_0.html ENGI405/ENGI405_4_1.html ENGI405/ENGI405_5_0.html ENGJ102/ENGJ102_1_0.html ENGJ102/ENGJ102_4_0.html ENGJ201/ENGJ201_4_0.html ENGJ202/ENGJ202_4_0.html ENGR102/ENGR102_6_0.html ENGR301/ENGR301_3_0.html ENGS102/ENGS102_2_0.html ENGS102/ENGS102_4_0.html ENGS102/ENGS102_6_0.html ENGS302/ENGS302_4_0.html ENGS302/ENGS302_6_0.html ENGS401/ENGS401_4_0.html

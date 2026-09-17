@@ -1,0 +1,152 @@
+====================================================================================================
+BLL234  gold=BLL234-0.0.html  claude=BLL234_0_0.html  gold_lines=66 claude_lines=69
+   = body.container-fluid  <root> 
+   = ... 26 equal ...
+   = h5  <module-menu> Learning Intentions
+  -G p  <module-menu> We are learning:
+  +C h5  <module-menu> We are learning:
+   = ul  <module-menu> 
+   = ... 1 equal ...
+   = h5  <module-menu> Success Criteria
+  -G p  <module-menu> I can:
+  +C h5  <module-menu> I can:
+   = ul  <module-menu> 
+   = ... 8 equal ...
+   = div.row  <body> 
+  -G div.col-12  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = h3  <body> Introduction
+  -G div.row.supervisor  <body> 
+  -G div.col-md-8.col-12.super-content-button  <body> 
+  -G div.super-content.row  <body> 
+  -G div.row  <body> 
+  -G div.col-12  <body> 
+  -G h3  <body> Supervisor note
+  -G div.col-12  <body> 
+   = p  <body> The decodable book(s) in this module have been sourced from SPELD SA. 
+  +C i  <body> o
+  +C i  <body> u
+  +C i  <body> ur
+  +C i  <body> ir
+  +C i  <body> au
+  +C i  <body> aw
+  +C i  <body> al
+  +C i  <body> ph
+  +C i  <body> kn
+  +C i  <body> wr
+  +C p  <body> Animation Script
+  +C b  <body> Animation Script
+   = a  <body> https://speldsa.org.au
+  -G div.col-md-8.col-12.paddingR  <body> 
+  -G p  <body> Welcome to Module 4! In this module, we’ll continue on our literacy jo
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.videoSection.ratio.ratio-16x9  <body> 
+  -G iframe  <body> 
+   = div#footer  <footer> 
+   = ... 4 equal ...
+   = a.home-nav  <footer> 
+  +C div.row  <root> 
+  +C div.col-md-8.col-12  <root> 
+  +C div.acks.acksTemplate  <acks> 
+  +C WIDGET  <acks> 
+====================================================================================================
+XGF9002  gold=XGF9002_5_0.html  claude=XGF9002_5_0.html  gold_lines=112 claude_lines=122
+   = body.container-fluid  <root> 
+   = ... 4 equal ...
+   = span  <title> Balancing Structure and Freedom
+  -G div#module-head-buttons  <module-menu> 
+  -G div#module-menu-button.circle-button.btn1  <module-menu> 
+  -G div#module-menu-content.moduleMenu  <module-menu> 
+  +C div#body  <body> 
+   = div.row  <module-menu> 
+  -G div.col-md-12.col-12  <module-menu> 
+  -G WIDGET  <module-menu> 
+  -G div#body  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C img.img-fluid  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h3  <body> Purpose
+  +C ul  <body> 
+  +C li  <body> Explore how to balance structure and flexibility so your child has spa
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h3  <body> Key Ideas
+  +C ul  <body> 
+  +C li  <body> Gifted tamariki often need both challenge calm time.
+  +C b  <body> and
+  +C li  <body> Structure provides safety; freedom fuels creativity.
+  +C li  <body> Twice-exceptional ākonga may especially need predictable routines with
+   = div.row  <body> 
+   = ... 2 equal ...
+   = p  <body> Finding the right balance between routine and flexibility can be trick
+  -G div.col-md-4.offset-md-0.col-12.paddingL  <body> 
+  -G img.img-fluid  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C h3  <body> Introduction
+  +C p  <body> Finding the right balance between routine and flexibility can be trick
+   = div.row  <body> 
+   = ... 5 equal ...
+   = p  <activity> This activity supports you to recognise when structure or flexibility 
+  +C i  <activity> both
+   = p  <activity> Read each situation and choose the response that best supports the wel
+   = WIDGET  <activity> 
+  -G p  <activity> In this activity, you explored how to read the emotional cues of your 
+   = div.row  <body> 
+   = div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=5B]  <activity> 
+  -G div.row  <activity> 
+  -G div.col-12  <activity> 
+  -G h3  <activity> Routine builder match-up
+  -G p  <activity> This activity was all about understanding that both structure and free
+  -G p  <activity> Drag each of the routines listed below into the column where they fit 
+  -G WIDGET  <activity> 
+  -G p  <activity> This activity emphasises that both structure and freedom are essential
+  -G div.row  <body> 
+  -G div.col-md-8.col-12  <body> 
+  -G div.activity.interactive[number=5C]  <activity> 
+  +C div.activity.interactive[number=3A]  <activity> 
+   = div.row  <activity> 
+   = ... 6 equal ...
+   = div.col-md-8.col-12  <body> 
+  -G div.activity.alertPadding[number=5D]  <activity> 
+  +C p  <body> This activity emphasises that both structure and freedom are essential
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C div.activity.interactive[number=3B]  <activity> 
+   = div.row  <activity> 
+   = div.col-12  <activity> 
+  +C h3  <activity> Overload or rebalance
+  +C p  <activity> This activity is all about learning to recognise and interpret stress,
+  +C p  <activity> Read each scenario and choose the best response. Clicking on each answ
+  +C WIDGET  <activity> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+  +C img.img-fluid  <body> 
+  +C div.row  <body> 
+  +C div.col-md-8.col-12  <body> 
+   = h3  <activity> Dig deeper
+   = ... 5 equal ...
+   = p  <activity> Small experiments to try
+  -G div.row.selectionBox  <activity> 
+  -G div.col-md-12.col-12  <activity> 
+  -G ol  <activity> 
+  +C ul  <body> 
+   = li  <activity> Add transition warnings (e.g., 10-minute notice of a change).
+   = ... 6 equal ...
+   = li  <activity> Other …
+  -G h4.goJournal  <activity> Go to your journal
+   = p  <activity> If you would like to explore this topic further, there are resources a
+  +C a  <body> Go to your journal
+  +C div.button  <body> Go to your journal
+   = a  <activity> Raising Lifelong Learners
+   = ... 13 equal ...
+   = b  <activity> EXPlore
+  -G div.col-md-4.offset-md-0.col-12  <body> 
+  -G div.alertImage  <body> 
+  -G img.img-fluid  <body> 
+   = div.row  <body> 
+   = ... 19 equal ...
+   = a.home-nav  <footer> 

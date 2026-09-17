@@ -1,0 +1,50 @@
+== per side / template ==
+('claude', 'Bilingual') {'alert:solid': 28, 'colour': 0, 'paddingR': 0, 'video:plain': 34}
+('claude', 'Fundamentals') {'alert:bare': 106, 'alert:other': 14, 'alert:solid': 22, 'colour': 0, 'paddingR': 0, 'video:icon': 161, 'video:plain': 187}
+('claude', 'Inquiry') {'alert:bare': 82, 'alert:other': 7, 'alert:solid': 42, 'colour': 0, 'paddingR': 32, 'video:icon': 23, 'video:plain': 535}
+('claude', 'Standard') {'alert:bare': 713, 'alert:other': 84, 'alert:solid': 318, 'colour': 0, 'paddingR': 28, 'video:icon': 404, 'video:plain': 1841}
+('gold', 'Bilingual') {'alert:bare': 31, 'alert:other': 11, 'alert:solid': 2, 'colour': 0, 'paddingR': 0, 'video:icon': 2, 'video:plain': 37}
+('gold', 'Fundamentals') {'alert:bare': 129, 'alert:other': 72, 'alert:solid': 41, 'colour': 2, 'paddingR': 52, 'video:icon': 312, 'video:plain': 172}
+('gold', 'Inquiry') {'alert:bare': 102, 'alert:other': 20, 'alert:solid': 7, 'colour': 45, 'paddingR': 76, 'video:icon': 554, 'video:plain': 491}
+('gold', 'Standard') {'alert:bare': 983, 'alert:other': 328, 'alert:solid': 294, 'colour': 150, 'paddingR': 546, 'video:icon': 1461, 'video:plain': 1422}
+== pages with >0, by key (modules) ==
+('claude', 'alert:bare') modules 192 pages 502
+('claude', 'alert:other') modules 37 pages 90
+('claude', 'alert:solid') modules 104 pages 243
+('claude', 'paddingR') modules 38 pages 38
+('claude', 'video:icon') modules 89 pages 241
+('claude', 'video:plain') modules 276 pages 865
+('gold', 'alert:bare') modules 241 pages 714
+('gold', 'alert:other') modules 137 pages 293
+('gold', 'alert:solid') modules 103 pages 231
+('gold', 'colour') modules 16 pages 36
+('gold', 'paddingR') modules 156 pages 411
+('gold', 'video:icon') modules 242 pages 779
+('gold', 'video:plain') modules 205 pages 651
+== lesson pages whose EVERY activity number disagrees with the lesson digit ==
+gold 108 pages / 51 modules
+    ('MXFUN01', 'MXFUN01_6.0.html', ['1A', '1B', '1C', '1D'])
+    ('MXFUN01', 'MXFUN01_7.0.html', ['3B', '3C', '3D', '3E'])
+    ('CEDK501', 'CEDK501_3.1.html', ['3D', '3E'])
+    ('CEDK501', 'CEDK501_5.1.html', ['5B', '5C'])
+    ('CEDK501', 'CEDK501_6.1.html', ['6C', '6D', '6E', '6F'])
+    ('AGH1009', 'AGH1009.06.1.html', ['6C', '6D'])
+    ('AGH1009', 'AGH1009.03.1.html', ['3B', '3C', '3D'])
+    ('BLL111', 'BLL111-02.html', ['1A', '1B', '1C', '1D'])
+    ('BLL111', 'BLL111-03.html', ['2A', '2B', '2C', '2D'])
+    ('BLL112', 'BLL112-02.html', ['1A', '1B', '1C', '1D'])
+    ('BLL112', 'BLL112-03.html', ['2A', '2B', '2C', '2D'])
+    ('BLL113', 'BLL113-02.html', ['1A', '1B', '1C', '1D'])
+claude 152 pages / 62 modules
+    ('MXFUN01', 'MXFUN01_2_0.html', ['1A', '1B', '1C', '1D'])
+    ('MXFUN01', 'MXFUN01_4_0.html', ['3A', '3B', '3C', '3D'])
+    ('MXFUN01', 'MXFUN01_6_2.html', ['1A', '1B', '1C', '1D'])
+    ('MXFUN01', 'MXFUN01_6_4.html', ['3B', '3C', '3D', '3E'])
+    ('XFUN02', 'XFUN02_2_0.html', ['1A', '1B', '1C', '1D'])
+    ('XFUN02', 'XFUN02_3_0.html', ['2A', '2B'])
+    ('XFUN02', 'XFUN02_4_0.html', ['3A', '3B', '3B', '3C'])
+    ('XFUN02', 'XFUN02_5_0.html', ['4A'])
+    ('XFUN02', 'XFUN02_6_0.html', ['5A'])
+    ('CEDK501', 'CEDK501_6_1.html', ['6A', '6B', '6C', '6C'])
+    ('CEDK501', 'CEDK501_10_0.html', ['6A', '6B'])
+    ('CEDT207', 'CEDT207_5_0.html', ['4B'])

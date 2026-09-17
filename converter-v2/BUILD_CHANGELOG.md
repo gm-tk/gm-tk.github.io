@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 369, build 260619.40) — THE PAGE'S ACTIVITY NUMBERS MADE CONSECUTIVE: DECLINED ON THE GATE'S OWN SCORER, SHIPPED INERT — the autonomous loop's session 22, Round 1
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+**Nothing in the output.** A page-level post-pass (`ContentConverter.#pageNumberNormalise`, data `Emit_Templates.activity_wrapper.page_number_normalise`, env `NUMNORM_OFF`) that renumbers a page's activity boxes consecutively — a duplicate writer id (`5A, 5A`) or a foreign lesson digit (`4A, 4B, 2A`) taking the KB's next letter (00B_CONVERSION_PIPELINE + constraint 62 / 65: "each subsequent interactive takes the next letter … renumber the following activities accordingly"; the gold: Standard lesson pages follow `{page number}{A, B, C …}` on 0.86 of 1,540) — was built, probed in memory over all 416 modules and **DECLINED**: the corpus is byte-identical to r366 (`enabled: false`; the inert re-probe 2110 / 2110), every r366 baseline stands.
+
+### 2. WHY IT WAS PICKED — the miner could not see the class
+
+The session opened by testing session 21's EXHAUSTION verdict rather than accepting it: a Chris-style hand read of four mid-band pages (AGH1002 L2, MXFU201 L4, BLL234 overview, XGF9002 L5 — `outputs/_s22_spotcheck.py`) and a class-level census (`_s22_census.py`) surfaced one mechanism the DIFF MINER cannot see: it keys its classes by the full signature INCLUDING the `number=` value, so "the box's number differs" fragmented into one row per number value and never reached the floor. Measured (`_s22_actnum.py` / `_s22_actnum2.py` / `_s22_actnum3.py` / `_s22_actnum5.py`): the gold is self-consistent (digit = page number) on 0.86 of Standard lesson pages; Claude ships 224 digit-wrong + 276 letters-not-sequential Standard pages; a position-wise box-by-box pre-measure (variant DL — majority digit + smallest unused letter) read **+228 boxes agreeing / 47 pages gained / 1 lost** in Standard, Inquiry +20 boxes, no page lost.
+
+### 3. WHY IT WAS DECLINED — the pre-measure was the wrong instrument
+
+The in-memory probe (`outputs/_r369_probe.cjs`, 4 shards): OFF (`NUMNORM_OFF=1`) = disk **2110 / 2110**; ON = **279 pages / 136 modules**, every differing line a `number=` attribute (`_r369_diffcheck.py`: 650 attributes, 0 other lines). Scored with the skeleton gate's OWN `match()` (`_r369_pagescore.py` → `_r369_pagescore.log`): **266 paired pages 46 up / 77 down / 143 same, pp-sum −106**. The skeleton aligns on the box line's `number=`, and a duplicate id on Claude's page is as often Claude's OWN extra box as the writer's repeat — ENGJ102 L4: Claude `4A 4B 4C 4C` where the first `4C` is an empty synthetic box and the second the writer's poem box, the gold `4A 4B 4C`; renaming the second occurrence drags the gold's `4C` onto the wrong subtree (−11pp on that page; BLL126 L1 −14.9, ANZH303 L1 −12.4, BLL112 L1 −10.6, ENGS401 L4 −10.1). Every letter policy re-scored with the gate's scorer directly on the disk pages (`_r369_variants.py` → `_r369_variants.{log,json}`): smallest-unused-letter (this rule) −106.4 pp-sum / 48 up / 78 down; look-ahead letter (later writer letters untouched) −66.6 / 33 / 60; majority digit only −5.9 / 8 / 7 (68 pages); letters only −59.0 / 24 / 50. No policy readable from the HTML is net-positive. The only remaining discriminator is BOX PROVENANCE — a writer-tagged `[Activity 4C]` keeps its id, the r217 synthetic / journal-instruction box takes the next free letter — which needs engine-side marking: recorded as its own round, not attempted here. The round-306 rule stands (the writer's own id, never invented; the gold's renumber is a NAMED divergence).
+
+### 4. ALSO THIS ROUND
+
+- `reference/tests/_diff_miner.py` `role()` now folds the `number=` VALUE to `[number=*]` in the class role (the diff still compares the full signature), so the activity-number class is one visible row in `DIFF_QUEUE.md` instead of hundreds of sub-floor fragments; re-mined on the r366 corpus.
+- AppVersion 260619.40; CLAUDE.md §11 (the `NUMNORM_OFF` row) / §14; `gate_baseline.json` `_meta` (every r366 baseline stands); loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r369.bak` kept).
+
+### 5. PROTECTED GATES
+
+Not re-run: the corpus is byte-identical to r366 (the inert re-probe 2110 / 2110) — skeleton **52.698 % / ≥50 1123 / ≥75 173 / ≥90 15 @ 1956**, RAW 37.193 %, compare_structure 11631 / 175 / 617, body_compare 202 / 42 / 4 / 157, every verifier at its recorded baseline, all unchanged.
+
 ## 2026-09-18 (round 368, build 260619.39) — THE r217 BOX FOR A BARE dropDown / typing WIDGET, RE-OPENED WITH THE UPLOAD BOX EXCLUDED AND DECLINED AGAIN: `[drop down]` is not one widget — the corpus stays byte-identical to r366 (the autonomous loop's session 21, Round 5)
 
 ### 1. WHAT CHANGED, IN ONE LINE

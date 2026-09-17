@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.39",
-    "round": 368,
+    "build": "260619.40",
+    "round": 369,
     "date": "2026-09-18",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -62,7 +62,8 @@
     "_note_r365": "Round 365: the widget-typed activity tag's tail is the box title — skeleton +0.014pp (≥50 +3), every other gate EXACT; SCOPED regeneration (12 modules; scoped ship #1 since the r364 full).",
     "_note_r366": "Round 366: the lead prose after the widget tag renders free — skeleton +0.046pp (≥50 +2), compare_structure EXACT, body_compare EMPTY +5 named; FULL regeneration of all 416, 46 modules / 106 pages; ledger FULL (counter 0).",
     "_note_r367": "Round 367: DECLINED on the probe (the r217 box for a bare dropDown / typing widget — 36 up / 135 down), shipped inert; the corpus is byte-identical to r366 — every r366 baseline stands (skeleton 52.698 / 1123 / 173 / 15; RAW 37.193; body_compare 202 / 42 / 4 / 157).",
-    "_note_r368": "Round 368: DECLINED again on the probe (the r217 box for a bare dropDown / typing widget with the upload box excluded — 19 up / 52 down), inert; the corpus is byte-identical to r366 — every r366 baseline stands."
+    "_note_r368": "Round 368: DECLINED again on the probe (the r217 box for a bare dropDown / typing widget with the upload box excluded — 19 up / 52 down), inert; the corpus is byte-identical to r366 — every r366 baseline stands.",
+    "_note_r369": "Round 369: DECLINED on the gate's own scorer (the page's activity numbers made consecutive — 46 up / 77 down over 266 paired pages), shipped inert; the corpus is byte-identical to r366 — every r366 baseline stands."
   },
   "skeleton": {
     "mean_scaffold_pct": 52.698,
