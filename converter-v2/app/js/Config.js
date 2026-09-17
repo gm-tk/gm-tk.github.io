@@ -1734,7 +1734,8 @@ class Config {
 	// ROUND 371 (260619.42): a writer's explicit [H3] keeps its digit — h3 on the Standard / Fundamentals pages outside the alert family (the gold 0.90 / 0.86; the r45 shift + rank rule gave h4 / h5); a transient data-wd marker from the heading emitter, pinned by #relevelHeadings while it still counts in the rank pool; data heading_relevel.keep_writer_digit, env H3KEEP_OFF; 289 pages / 131 modules, skeleton 52.744 → 52.893. The autonomous loop's session 23 Round 2.
 	// ROUND 372 (260619.43): the media table whose cells carry the extractor's **bold** markers is now parsed — MediaListParser.#cleanCell strips the asterisk markers (never an underscore, a URL character); data Input_Doc_Rules.media_table.strip_markers, env MLMARKERS_OFF; the four bold-header modules (BLL120–BLL123) gain their media list + acks entries, 54 modules lose a stray marker in an acks line. The autonomous loop's session 23 Round 3.
 	// ROUND 373 (260619.44): a writer's explicit [H2] keeps its digit (h2) in the prefixes / series whose gold keeps it — keep_writer_digit.digits_by_prefix {2: HIS, CEDR, ENGFUN, TWHA, BLL2, TEFUN}, env H2KEEP_OFF (the emitter owns both toggles); 102 pages / 30 modules, skeleton 52.897 → 52.938. The autonomous loop's session 23 Round 4.
-	static AppVersion = "260619.44";
+	// ROUND 374 (260619.45): a writer's explicit [H4] keeps its digit (h4) in the prefixes whose gold keeps it — keep_writer_digit.digits_by_prefix {4: ENGJ, ENGR, OSSC, OSOH}, env H4KEEP_OFF (digits_by_prefix_env is a per-digit map); 31 pages / 10 modules, skeleton 52.938 → 52.955. The autonomous loop's session 23 Round 5.
+	static AppVersion = "260619.45";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,5 +1,31 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 374, build 260619.45) — A WRITER'S EXPLICIT `[H4]` KEEPS ITS DIGIT (h4) IN THE PREFIXES WHOSE GOLD KEEPS IT — the autonomous loop's session 23, Round 5
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+`keep_writer_digit.digits_by_prefix` (r373) gains its next digit: `"4": [ENGJ, ENGR, OSSC, OSOH]`, and `digits_by_prefix_env` becomes a per-digit map `{"2": "H2KEEP_OFF", "4": "H4KEEP_OFF"}` (a string is still accepted for every digit; a digit missing from the map falls back to `H<digit>KEEP_OFF`). In those modules a heading the writer typed as `[H4]` ships as `<h4>` (the gold's own form) instead of the h3 the rank rule lifts it to when the page's `[H4]`s are its top free-body level, or the h5 it lands on under a `[H2]` + `[H3]` outline. Same mechanism as r371 / r373 (the emitter's transient `data-wd="4"` marker, the releveller's pin that still counts in the rank pool, the alert-family / widget / supervisor exclusions, the marker stripped in every branch). OFF = disk 2109 / 2109.
+
+### 2. WHY IT WAS PICKED — the census's next per-prefix digit
+
+The r373 re-mine (1956 pairs / 8350 classes / 180 CANDIDATE) has no heading row left; the miner keys a heading by its level and cannot see a per-prefix digit rule — the session-23 census (`_s23_headcensus.json`, `[H4]` free-body, n = 609) can. The gold keeps `[H4]` on **0.50 overall — a tie, declined at corpus level in the r371 PICK** — but per prefix: **ENGJ 0.89 (27 win / 3 loss; 3 / 3 modules keep-majority), ENGR 0.86 (17 / 3), OSSC 1.00 (5 / 0), OSOH 0.84 (4 / 1)** — 53 win / 7 loss over 27 pages / 8 modules; the shift-followers stay out (XDLS 0.03 — 111 losses under a pin —, MXDB 0.31, MXFL 0.34, MXEO 0.38, MXFU 0.43, ENFUN 0.50, ENGI 0.53, ANZH 0.58, ENGS 0.60, AGH 0.62, XLP 0.64). `[H5]` re-measured per prefix: nothing qualifies (EXPFUN 0.87 but Claude is already h5; ENGJ 0.61; ENGR 0.12). Triangulated ENGJ302 / ENGR302 / OSSC401.
+
+### 3. PROOF
+
+- In-memory probe over all 416 (`_r374_probe.cjs`, 4 shards): **OFF (`H4KEEP_OFF=1`) = disk 2109 / 2109**; ON = **31 pages / 10 modules** (ENGJ301 / 302 / 402, ENGR202 / 302, OSOH401 / 501, OSSC301 / 401 / 501), 0 added / removed; `data-wd` in the saved pages 0.
+- Scored BEFORE regenerating with the gate's own `match()` (`_r374_pagescore.py`): **30 paired changed pages — 20 up / 3 down / 7 same, pp-sum +34.2 (+1.14pp per changed page)**; per module: ENGJ301 +14.8, ENGJ302 +7.7, ENGR202 +6.2, OSSC401 +2.4, OSOH401 +2.0, OSSC301 +0.9, ENGR302 +0.1 (5 up / 2 down), ENGJ402 / OSOH501 / OSSC501 0.0. **The dips NAMED: ENGR302_1_0 −9.7** (the pinned headings match the gold's h4s by text — `Power relationships in everyday life`, `Different types of power relationships` — but the gold page carries thirty-six headings to Claude's eight; an alignment dip on a mis-built pair), **ENGR202_6_0 −1.6** (the writer's `[H4]` `An informational text about lions` is the gold's h3 — a writer slip the gold corrected), **ENGR302_4_0 −1.2** (paired with the gold's page 5.0 — the ladder mis-pair; the gold's `Simplifying fractions` is h3).
+- SCOPED regeneration of the 10 (`_r374_fullship_run.sh`, 1 batch, rc 0; the probe proving the other 406 byte-identical): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **31 changed / 0 added / 0 removed**; every regenerated page **byte-identical to the probe's ON page (69 / 69)**.
+
+### 4. PROTECTED GATES (`_r374_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **52.938 → 52.955 % (+0.017pp)**, median 53.6, **≥50 1132 → 1134 (+2)**, **≥75 176 → 177 (+1)**, ≥90 15 EXACT, RAW 37.346 → 37.355 % @ 1956 pairs; **23 movers — 20 up / 3 down, pp-sum +34.2** (`_r374_movers.log`, state `_r374_sk_final.json`). The largest gains ENGJ301_3_0 +7.7, ENGR202_5_0 +7.0, ENGJ301_7_0 +3.6 / _5_0 +3.4, ENGR302_6_0 +3.0.
+- compare_structure exact **11628** / EXTRA 175 / MISSING 617 / row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **43 / 4 / 157 / 203** EXACT; tags 9557 / 9557 REAL 0; flipCard divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz defect 0; math ✓; menu labels ✓; dragAndDrop defect 0 — all EXACT.
+
+### 5. ALSO RECORDED
+
+- Ledger: scoped ship #5 since the r366 full. AppVersion 260619.45; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r374.bak` kept).
+- Not taken: `[H4]` in every other prefix (the census's shift-followers and the mixed ENGI 4 / 9 modules, ENGS 3 / 5, AGH 2 / 6, XLP 2 / 4), `[H5]` everywhere, PES's `[H2]` → h4 dialect (0.59, declined).
+
 ## 2026-09-18 (round 373, build 260619.44) — A WRITER'S EXPLICIT `[H2]` KEEPS ITS DIGIT (h2) IN THE PREFIXES / SERIES WHOSE GOLD KEEPS IT — the autonomous loop's session 23, Round 4
 
 ### 1. WHAT CHANGED, IN ONE LINE

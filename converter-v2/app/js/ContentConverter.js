@@ -6733,8 +6733,12 @@ class ContentConverter {
 			// gold keeps a writer's [H2] at h2 in six prefixes / series (HIS 0.87 / CEDR 0.89 / ENGFUN 1.00 /
 			// TWHA 0.92 / the BLL2xx series / TEFUN 0.65) and follows the shift everywhere else
 			// (0.37 overall) — the list IS the scope, no template gate. Env digits_by_prefix_env.
+			// r374: the env is per digit when digits_by_prefix_env is a map ({"2": "H2KEEP_OFF", "4": "H4KEEP_OFF"})
+			const _kwdPfxEnv = (_kwd.digits_by_prefix_env && typeof _kwd.digits_by_prefix_env === "object")
+				? (_kwd.digits_by_prefix_env[String(digit)] ?? `H${digit}KEEP_OFF`)
+				: (_kwd.digits_by_prefix_env ?? "H2KEEP_OFF");
 			const _kwdPfx = _kwdBase
-				&& !(typeof process !== "undefined" && process.env && process.env[_kwd.digits_by_prefix_env ?? "H2KEEP_OFF"])
+				&& !(typeof process !== "undefined" && process.env && process.env[_kwdPfxEnv])
 				&& ((_kwd.digits_by_prefix ?? {})[String(digit)] ?? []).some((p) => /\d/.test(String(p))
 					? String(run?.moduleCode || "").startsWith(String(p))   // a letters+digits SERIES prefix (BLL2 = the BLL2xx series)
 					: String(p) === _kwdPrefix);                             // a letter run (ENG never matches ENGFUN)
