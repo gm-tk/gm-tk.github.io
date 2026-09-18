@@ -2147,6 +2147,15 @@ class ContentConverter {
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open for its trailing upload box (round 314).`);
+						} else if (!pirKey && bundle._postTableResume) {
+							// ROUND 378 — the unclassified activity's walk ended at the writer's post-table
+							// [Body] (InteractiveScanner, opener_rule.unclassified_activity_lead.post_table_resume):
+							// the gold keeps that prose free INSIDE the box after the widget, so the frame
+							// stays open and the ordinary loop renders it here; autoClose, the next opener or
+							// the r376 upload button closes the box.
+							markContent();
+							run.AddNote("info", "ContentConverter",
+								`Page ${page.lessonLabel}: activity box kept open for the prose after its data table (round 378).`);
 						} else {
 							// close the activity at the bundle's end (the
 							// terminator that ended the widget — e.g. the [H3])

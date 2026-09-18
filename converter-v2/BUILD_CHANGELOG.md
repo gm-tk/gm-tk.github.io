@@ -1,5 +1,36 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 378, build 260619.49) — THE UNCLASSIFIED ACTIVITY RESUMES FREE BODY AT THE `[Body]` AFTER ITS TABLE: the writer's last prose and the upload button leave the hand-off dump and stay inside the box — the autonomous loop's session 24, Round 2
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+`BoundaryBank._meta.opener_rule.unclassified_activity_lead.post_table_resume {enabled, env "UNCLASSTAIL_OFF", headings_too false, widget_ahead_keeps true}`. `member_rule.body_terminates_after_table` ends a widget's member walk at the writer's `[Body]` after its captured data table — but only for a boundary-bank type with `uses_data_table`, and the UNCLASSIFIED activity (an `[Activity N]` + a table + no widget keyword — the BLL phonics form, r362's owner form) has no entry, so its walk swallowed the post-table prose and the `[Button] Upload to dropbox` after it into the dump. Now `InteractiveScanner.#swallowMembers` ends an unclassified owner-form walk at that `[Body]` when it is the writer's LAST prose — no further table and no widget invocation ahead before the walk's natural end — and flags the bundle `_postTableResume`; `ContentConverter`'s owner close site keeps the frame OPEN for a flagged bundle (the r314 hold's branch shape), the ordinary loop renders the prose free inside the box, and autoClose / the next opener / the r376 upload button closes it. OFF = the r377 output byte-for-byte (probe 2109 / 2109).
+
+### 2. WHY IT WAS PICKED — the r377 dip decomposed, measured over every activity opener
+
+The r377 dip ANZH205_1_0 (−3.1) was the new 1A box's capture swallowing the comic + prose after its table. MEASURED (`outputs/_measure_s24_posttable.py` → `_s24_posttable.{json,log}`; every activity opener with no widget keyword, a first table, then a `[Body]` / plain prose, over every parsed WT in the gate set): **187 spans / 104 modules; the gold keeps the post-table prose INSIDE the same-numbered box on 95, OUTSIDE on 28, not on the paired page 64 — 0.77 of the found** (Standard 61 / 86 = 0.71, Inquiry 33 / 34 = 0.97); Claude had it inside the dump on 134. Fix population (gold inside the box, Claude inside the dump): **81 spans / 46 modules** — BLL 65, MXD 6, CED 3. Triangulated BLL210 1E (WT `[Activity 1E] Write the words` + `[Body]` + a 3×3 word table + `[Body] When you have finished writing all of the words, read your list back to your supervisor` + `[Button] Upload to dropbox`; gold `div.activity[number=1E] > h3 + p + flipCardsContainer (9 cards) + p + a > div.button.buttonD`; Claude `h3 + p + WIDGET` with the p and the button inside the dump), CEDW501 6D, ANZH205 1A (gold outside — the 0.23 minority). The widget-typed population (330 spans) is a near tie in the gold (inside 106 / outside 86) and already carries the `uses_data_table` break — not this round. Authority: the gold's convention 0.77 (LOOP §1b level 2–3).
+
+### 3. WHAT THE PROBE TAUGHT — three cuts
+
+- Cut 1 (break at the first post-table `[Body]`): 200 pages / 115 modules, **76 up / 90 down, pp-sum −11.4** — BLL175_1_0 −16.0: a `[Body]` BETWEEN two data tables ("Now write the sentences…") is the widget's own instruction and the second table its data; freed, that table shipped as a kept `<table>`.
+- Cut 2 (a table ahead keeps the walk): 192 / 111, **73 up / 85 down, +5.2** — ENGS201_4_0 −7.3, XLP03_3_0 −5.1: a widget INVOCATION ahead (`[hint slider]`, `[flip card]`) split out of the dump as its own bundle — the gold's one widget became two, and XLP03's face table leaked.
+- Cut 3 (a table OR a widget invocation ahead keeps the walk — only the writer's last prose resumes; `widget_ahead_keeps`): **121 pages / 90 modules, 59 up / 62 down / 0 same, pp-sum +40.5 (+0.33pp per page)**; by prefix BLL (the measured family) 30 up / 18 down +34.2, every other prefix within ±5. The dips NAMED: MXEO201_6_0 −7.3 (the freed link line ships as the r338 externalButton), ENGS302_5_0 −4.8, BLL141_1_0 −3.6 (a freed `[embed story]` builds the r126 carousel scaffold), ENFUN07_0_0 −2.2, CEDW501_6_0 −1.8, BLL225_2_0 / BLL213_2_0 / BLL226_1_0 −1.6 / −1.5 / −1.5, the eight XMES pages ≤ 1.3, the rest ≤ 1.2. The gains: BLL133_1_0 +10.3, CEDW501_3_1 +4.8, MXDI101_1_4 +4.1, MXFL202_2_0 +3.3, BLL135_1_1 +2.9, BLL112_2_0 / BLL246_2_0 +2.8, MXDI201_7_0 +2.6.
+
+### 4. PROOF
+
+- In-memory probe over all 416 (`_s24_r378_probe.cjs`, 4 shards): **OFF (`UNCLASSTAIL_OFF=1`) = disk 2109 / 2109**; ON (cut 3) = **121 pages / 90 modules**, 0 added / removed — the probe over all 416 is the §0b family sweep (the other 326 modules byte-identical).
+- SCOPED regeneration of the 90 (`_s24_r378_scoped_par.sh`, 8 batches, all rc 0; scoped ship #1 since the r377 full): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **121 changed / 0 added / 0 removed = the probe's set**; every regenerated page **byte-identical to the probe's ON page (484 / 484)**.
+
+### 5. PROTECTED GATES (`_s24_r378_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **53.055 → 53.076 % (+0.021pp)**, median 53.7, **≥50 1138 → 1141 (+3)**, **≥75 180 → 182 (+2)**, ≥90 15 EXACT, RAW 37.430 → 37.472 % @ 1956 pairs; **121 movers — 59 up / 62 down, pp-sum +40.5** (state `_s24_r378_sk_final.json`). Not a plateau round.
+- compare_structure exact **11641 → 11643 (+2)**, EXTRA 172 EXACT, **MISSING 620 → 625 (+5 — the freed prose now text-matches gold paragraphs the gold wraps differently; the matched pool 13709 → 13717, the r57 / r147 pool-growth class)**, row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT (BLL136_1_0's pre-existing black-typed `✅ [audio]` marker, hidden in the dump until now, is not in the audit's vocabulary — recorded for the r300 black-marker rider); body_compare **over-capture 44 → 42 (−2, IMPROVED)**, runaway 4, **EMPTY 157 → 174 (+16 — the BLL dumps now hold only their word table, which the EMPTY heuristic reads as an empty container: the r362 / r366 named class; 28 of the 121 changed pages carry the flag)**, ANY 205 → 219; tags 9557 / 9557 REAL 0; flipCard divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz defect 0; math 323 / 323; menu labels 91 / 0; dragAndDrop defect 0 — all EXACT.
+
+### 6. ALSO RECORDED
+
+- Ledger: scoped ship #1 since the r377 full. AppVersion 260619.49; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r378.bak` kept).
+- Follow-ups: the black-typed `✅ [audio]` marker line (BLL136 — the r300 `TODOBLACK` rider's sibling); the widget-typed post-table population (330 spans, a gold tie) stays as it is; the r377 follow-ups (b) the bare `🔴END PAGE🔴` boundary and (c) the `[Activity: Embedded]` empty box are still open.
+
 ## 2026-09-18 (round 377, build 260619.48) — THE WRITER'S `[Hn] Activity <id>[: Title]` HEADING OPENS THE NUMBERED ACTIVITY BOX — the r364 id-heading opener's WORD form — the autonomous loop's session 24, Round 1
 
 ### 1. WHAT CHANGED, IN ONE LINE

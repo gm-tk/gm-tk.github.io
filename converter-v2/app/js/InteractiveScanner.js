@@ -2200,6 +2200,50 @@ class InteractiveScanner {
 				const isBreak = (_mrB.body_terminates_after_table && p?.tag === "body" && !exempt)
 					|| (_mrB.heading_terminates_after_table && headingLevels.includes(p?.tag) && !hExempt);
 				if (entry?.uses_data_table && isBreak) break;   // section break resumes after the data table
+				// ROUND 378 — THE UNCLASSIFIED ACTIVITY RESUMES FREE BODY AT THE [Body] AFTER ITS TABLE
+				// (the autonomous loop's session 24 Round 2). The unclassified activity (an `[Activity N]`
+				// with a data table and no widget keyword — the BLL phonics form) has no boundary-bank
+				// entry, so the rule above never reached it and its walk swallowed the writer's
+				// post-table `[Body]` ("When you have finished writing all of the words, read your list
+				// back to your supervisor") and the `[Button] Upload to dropbox` after it into the
+				// hand-off dump. The gold keeps that prose FREE inside the same box, after the built
+				// widget (BLL210 1E: h3 + p + flipCards + p + buttonD; measured 95 inside / 28 outside of
+				// 123 found, 0.77 — outputs/_measure_s24_posttable.py). The walk ends here and the bundle is
+				// flagged so the converter's owner close site keeps the box OPEN for the resumed prose
+				// (the r314 hold's shape); autoClose / the r376 upload button then close it.
+				// Data: opener_rule.unclassified_activity_lead.post_table_resume   Env: UNCLASSTAIL_OFF
+				if (isBreak && bundle.type === "unclassified" && bundle.activityOwner) {
+					const _ptr = DataService.Data.BoundaryBank?._meta?.opener_rule?.unclassified_activity_lead?.post_table_resume;
+					if (_ptr && _ptr.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_ptr.env || "UNCLASSTAIL_OFF"])
+						&& (p?.tag === "body" || _ptr.headings_too === true)) {
+						// only the writer's LAST prose resumes free body: a [Body] between two data
+						// tables (BLL175 1B's words table → "Now write…" → the sentences table) is the
+						// widget's own instruction and the second table its data — the first probe put
+						// that table on the page as a kept <table> (BLL175_1_0 −16.0). Look ahead to the
+						// walk's natural end; another table there keeps the walk going.
+						let _more = false;
+						for (let q = j + 1; q < items.length; q++) {
+							const nx = items[q];
+							if (nx.consumedBy !== undefined) break;
+							if (nx.type === "table") { _more = true; break; }
+							if (nx.type !== "tag") continue;
+							const np = nx.parse?.primary;
+							if (!np) continue;
+							// a widget invocation ahead (a [flip card] / [hint slider] the writer typed after
+							// the instruction) is the activity's own next widget, not resumed free body —
+							// the second cut split it out of the dump and lost (ENGS201 4C, XLP03 2A)
+							if (np.directive === "INTERACTIVE" && _ptr.widget_ahead_keeps !== false) { _more = true; break; }
+							if (np.directive === "PAGE_BOUNDARY" || np.directive === "SECTION_MARKER"
+								|| np.directive === "INTERACTIVE" || np.directive === "CONTAINER_CLOSE") break;
+							if (np.tag === "activity" || absolute.has(np.tag) || /^h[1-5]$/i.test(np.tag ?? "")) break;
+						}
+						if (!_more) {
+							bundle._postTableResume = true;
+							break;
+						}
+					}
+				}
 			}
 
 			// LONE SECTION-BREAK HEADING.
