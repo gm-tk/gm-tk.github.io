@@ -1,0 +1,84 @@
+gold img placement (gate pairs, iStock/gm-id images): own-row 4622; multi-col(2) 2328; multi-col(3) 1497; multi-col(4) 733; side-right 719; multi-col(6) 476; side-left 349; multi-col(7) 214; multi-col(8) 181; multi-col(5) 168; multi-col(9) 89; multi-col(12) 88; multi-col(10) 80; multi-col(15) 60; multi-col(20) 50; multi-col(14) 48; multi-col(24) 48; multi-col(13) 12; multi-col(11) 12; no-col 4
+side-right images: 719 on 427 pages / 180 modules; Claude places the same image: missing 478; own-row 180; multi-col(2) 54; multi-col(6) 5; multi-col(3) 1; multi-col(4) 1
+
+==== WT features (own-bracket, prev tag, next tag, free/in-table) by gold placement — top 12 per placement ====
+  -- side-right (n=719) --
+       253 (0.35)  ('not-in-WT',)
+        39 (0.05)  ('no-tag', 'blank', 'black', 'in-table')
+        33 (0.05)  ('image-tag', 'blank', 'black', 'in-table')
+        25 (0.03)  ('other-tag:speech bubble', 'blank', 'black', 'in-table')
+        22 (0.03)  ('image-tag', 'black', 'black', 'free')
+        13 (0.02)  ('image-tag', 'body', 'black', 'free')
+        13 (0.02)  ('image-tag', 'black', 'button', 'free')
+        12 (0.02)  ('image-tag', 'h3', 'body', 'free')
+        11 (0.02)  ('image-tag', 'h2', 'body', 'free')
+        10 (0.01)  ('other-tag:h3', 'blank', 'black', 'in-table')
+         9 (0.01)  ('no-tag', 'h3', 'body', 'free')
+         9 (0.01)  ('other-tag:body', 'blank', 'black', 'in-table')
+  -- inline (n=0) --
+  -- own-row (n=4622) --
+      1226 (0.27)  ('not-in-WT',)
+      1034 (0.22)  ('no-tag', 'blank', 'black', 'in-table')
+       260 (0.06)  ('image-tag', 'image', 'image', 'in-table')
+       257 (0.06)  ('image-tag', 'blank', 'black', 'in-table')
+       154 (0.03)  ('no-tag', 'black', 'black', 'free')
+       116 (0.03)  ('image-tag', 'image', 'black', 'in-table')
+       110 (0.02)  ('image-tag', 'blank', 'image', 'in-table')
+        92 (0.02)  ('image-tag', 'image', 'image', 'free')
+        73 (0.02)  ('image-tag', 'black', 'black', 'free')
+        59 (0.01)  ('image-tag', 'body', 'body', 'free')
+        53 (0.01)  ('no-tag', 'body', 'black', 'free')
+        33 (0.01)  ('image-tag', 'body', 'black', 'free')
+
+==== per group: side-right share of all gold images (n ≥ 30) ====
+   Standard/1-10 Mathematics                  n=1880  side-right 0.11  inline 0.00  own-row 0.46  other 0.43
+   Standard/Leaving to Learn                  n=1698  side-right 0.07  inline 0.00  own-row 0.50  other 0.43
+   Standard/1-10 Blended Literacy             n=1173  side-right 0.02  inline 0.00  own-row 0.28  other 0.70
+   Standard/Online Safety (OS9000)            n=1084  side-right 0.07  inline 0.00  own-row 0.40  other 0.54
+   Standard/1-10 English                      n=1044  side-right 0.05  inline 0.00  own-row 0.43  other 0.52
+   Inquiry/1-10 Blended Literacy              n= 652  side-right 0.00  inline 0.00  own-row 0.22  other 0.77
+   Standard/NCEA1                             n= 591  side-right 0.08  inline 0.00  own-row 0.47  other 0.45
+   Fundamentals/1-10 Health and PE            n= 509  side-right 0.04  inline 0.00  own-row 0.37  other 0.59
+   Inquiry/ConnectED                          n= 497  side-right 0.07  inline 0.00  own-row 0.34  other 0.59
+   Bilingual/Te Marautanga o Aotearoa TMoA    n= 424  side-right 0.01  inline 0.00  own-row 0.49  other 0.50
+   Standard/ConnectED                         n= 374  side-right 0.20  inline 0.00  own-row 0.34  other 0.46
+   Standard/None                              n= 291  side-right 0.05  inline 0.00  own-row 0.24  other 0.71
+   Fundamentals/1-10 English                  n= 260  side-right 0.02  inline 0.00  own-row 0.26  other 0.73
+   Fundamentals/1-10 Technology               n= 191  side-right 0.01  inline 0.00  own-row 0.27  other 0.72
+   Fundamentals/1-10 Arts                     n= 180  side-right 0.01  inline 0.00  own-row 0.13  other 0.87
+   Inquiry/Te ara Whakapuawa -Wellbeing       n= 177  side-right 0.03  inline 0.00  own-row 0.40  other 0.57
+   Fundamentals/None                          n=  99  side-right 0.00  inline 0.00  own-row 0.33  other 0.67
+   Standard/1-10 Social Science               n=  99  side-right 0.14  inline 0.00  own-row 0.32  other 0.54
+   Standard/EXPlore                           n=  97  side-right 0.03  inline 0.00  own-row 0.48  other 0.48
+   Inquiry/Leaving to Learn                   n=  86  side-right 0.19  inline 0.00  own-row 0.53  other 0.28
+   Fundamentals/Leaving to Learn              n=  78  side-right 0.04  inline 0.00  own-row 0.15  other 0.81
+   Fundamentals/1-10 Social Science           n=  72  side-right 0.06  inline 0.00  own-row 0.25  other 0.69
+   Standard/ANZH                              n=  57  side-right 0.04  inline 0.00  own-row 0.33  other 0.63
+   Fundamentals/1-10 Mathematics              n=  51  side-right 0.02  inline 0.00  own-row 0.51  other 0.47
+   Inquiry/EXPlore                            n=  49  side-right 0.22  inline 0.00  own-row 0.35  other 0.43
+   Standard/1-10 Science                      n=  38  side-right 0.00  inline 0.00  own-row 0.68  other 0.32
+
+==== examples (side-right) ====
+   ('no-tag', 'blank', 'black', 'in-table'): AGH1003 AGH1003_03.0.html id=1157424748 own=«» claude=missing
+   ('no-tag', 'blank', 'black', 'in-table'): AGH1009 AGH1009.04.0.html id=1358858097 own=«» claude=missing
+   ('not-in-WT',): AGH1003 AGH1003_08.0.html id=1168140810 own=«» claude=missing
+   ('not-in-WT',): AGH1003 AGH1003_08.0.html id=1128996629 own=«» claude=missing
+   ('image-tag', 'supervisor', 'button', 'free'): ANZH104 ANZH104_06.0.html id=174700477 own=«image link» claude=own-row
+   ('image-tag', 'black', 'activity:', 'free'): ARFUN01 ARFUN01.html id=1249634540 own=«insert image» claude=own-row
+   ('image-tag', 'activity', 'body', 'free'): BLL116 BLL116-03.html id=1478282630 own=«image» claude=own-row
+   ('image-tag', 'activity', 'body', 'free'): BLL120 BLL120.html id=474709449 own=«image» claude=own-row
+   ('image-tag', 'blank', 'black', 'in-table'): BLL135 BLL135-03.html id=1448731280 own=«image» claude=missing
+   ('image-tag', 'blank', 'black', 'in-table'): CEDK501 CEDK501_5.0.html id=2198999593 own=«image» claude=own-row
+   ('no-tag', 'black', 'body', 'free'): BLL142 BLL142-2.0.html id=1143549171 own=«» claude=missing
+   ('no-tag', 'black', 'body', 'free'): MXEO401 MXEO401_6.0.html id=1500219413 own=«» claude=own-row
+   ('image-tag', 'activity', 'supervisor', 'free'): BLL145 BLL145-2.0.html id=493375210 own=«image» claude=own-row
+   ('image-tag', 'body', 'body', 'free'): BLL170 BLL170.html id=171144262 own=«image 1» claude=own-row
+   ('image-tag', 'body', 'body', 'free'): CEDK501 CEDK501_6.0.html id=535844705 own=«image» claude=own-row
+   ('image-tag', 'activity', 'black', 'free'): BLL241 BLL241-2.0.html id=165607905 own=«image» claude=missing
+   ('image-tag', 'accordion', 'black', 'free'): BLL246 BLL246_2.0.html id=1177099161 own=«image» claude=missing
+   ('image-tag', 'accordion', 'black', 'free'): BLL253 BLL253_0_2.html id=1440654567 own=«image» claude=missing
+   ('no-tag', 'alert', 'body', 'free'): CEDK501 CEDK501_1.0.html id=1151822243 own=«» claude=missing
+   ('no-tag', 'activity', 'body', 'free'): CEDK501 CEDK501_1.0.html id=2192399395 own=«» claude=missing
+   ('no-tag', 'activity', 'body', 'free'): CEDW501 CEDW501_6.0.html id=1019175570 own=«» claude=missing
+   ('other-tag:h3', 'blank', 'black', 'in-table'): CEDK501 CEDK501_2.0.html id=2223756267 own=«h3» claude=own-row
+   ('other-tag:h3', 'blank', 'black', 'in-table'): CEDK501 CEDK501_2.0.html id=1486027348 own=«h3» claude=own-row

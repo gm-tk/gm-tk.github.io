@@ -1,0 +1,55 @@
+bare [alert]/[important] + heading sites: 66 / 24 modules / gold pages found 30
+==== gold (heading level in box / prose in box) → Claude ====
+      7  gold h3 in alert / prose in alert             → claude h3 in outside / prose in outside
+      7  gold h3 in alert solid                        → claude h3 in outside
+      5  gold heading not found                        → claude h3 in outside
+      5  gold h3 in alert                              → claude h3 in outside
+      4  gold heading not found                        → claude h3 in outside / prose in outside
+      4  gold h3 in outside / prose in outside         → claude h3 in outside / prose in outside
+      3  gold h4 in outside / prose in outside         → claude h3 in outside / prose in outside
+      3  gold h3 in outside / prose in outside         → claude h1 in outside / prose in outside
+      2  gold heading not found                        → claude h5 in outside
+      2  gold h4 in alert / prose in alert             → claude h4 in outside / prose in outside
+      2  gold h3 in alert top / prose in alert top     → claude h4 in outside / prose in outside
+      1  gold h4 in outside                            → claude h4 in outside
+      1  gold h4 in outside                            → claude h5 in outside
+      1  gold heading not found                        → claude h4 in alert top / prose in alert top
+      1  gold h4 in outside                            → claude h4 in outside / prose in outside
+      1  gold h4 in alert / prose in alert             → claude h3 in alert solid / prose in alert solid
+      1  gold h3 in alert top / prose in alert top     → claude h3 in alert top / prose in alert top
+      1  gold h3 in alert top                          → claude h3 in alert top
+      1  gold heading not found                        → claude h3 in alert / prose in alert
+      1  gold heading not found                        → claude h3 in alert
+      1  gold h4 in outside / prose in outside         → claude h5 in outside / prose in outside
+      1  gold h4 in alert top / prose in alert top     → claude h5 in alert / prose in alert
+      1  gold heading not found                        → claude h5 in alert / prose in alert
+      1  gold h4 in alert top                          → claude h5 in alert solid
+      1  gold h3 in alert solid / prose in alert solid → claude h3 in outside
+
+==== per group (n ≥ 6): the gold form ====
+   Standard/NCEA1                             n= 29  [heading not found] 11 (0.38)  [h3 in alert solid] 8 (0.28)  [h3 in outside / prose in outside] 3 (0.10)  [h4 in outside] 1 (0.03)
+   Standard/1-10 Mathematics                  n= 11  [h3 in outside / prose in outside] 4 (0.36)  [h4 in alert / prose in alert] 4 (0.36)  [h4 in outside / prose in outside] 1 (0.09)  [heading not found] 1 (0.09)
+   Standard/1-10 Social Science               n= 10  [h3 in alert] 5 (0.50)  [h3 in alert / prose in alert] 4 (0.40)  [h3 in alert top / prose in alert top] 1 (0.10)
+   Standard/1-10 English                      n=  7  [heading not found] 3 (0.43)  [h4 in outside] 1 (0.14)  [h4 in alert / prose in alert] 1 (0.14)  [h3 in alert top / prose in alert top] 1 (0.14)
+
+   ('h3 in alert / prose in alert', 'h3 in outside / prose in outside'): BLL252 L165 [alert box] + [H3] «two rule breakers»
+   ('h3 in alert / prose in alert', 'h3 in outside / prose in outside'): HIS1005 L1149 [Alert Box] + [H3] «chopping down the flagstaff»
+   ('h4 in outside / prose in outside', 'h3 in outside / prose in outside'): BLL254 L178 [Alert box] + [H5] «bought and brought»
+   ('h4 in outside / prose in outside', 'h3 in outside / prose in outside'): HES1006 L402 [Alert] + [H2] «a working example»
+   ('h4 in outside', 'h4 in outside'): CEDT104 L963 [Alert solid] + [H3] «fun poi tips»
+   ('heading not found', 'h5 in outside'): ENG1005 L157 [Important – can you put ] + [H3] «what you will do»
+   ('heading not found', 'h5 in outside'): ENG1005 L291 [Important – can you put ] + [H3] «what you will do»
+   ('h4 in outside', 'h5 in outside'): ENG1007 L81 [Alert – off to side of p] + [H4] «what is an aspect»
+   ('heading not found', 'h4 in alert top / prose in alert top'): ENGR302 L477 [alert top] + [H5] «optional extra about yertle th»
+   ('h4 in outside', 'h4 in outside / prose in outside'): ENGR302 L483 [alert ends here] + [H4] «spotlight on exclusion»
+   ('h4 in alert / prose in alert', 'h3 in alert solid / prose in alert solid'): ENGS101 L131 [Alert.solid] + [H4] «you re welcome»
+   ('h3 in alert top / prose in alert top', 'h3 in alert top / prose in alert top'): ENGS302 L471 [Alert box to right] + [H3] «vocab dump»
+   ('h3 in alert top', 'h3 in alert top'): ENGS302 L604 [Alert box to right] + [H3] «vocab dump»
+   ('heading not found', 'h3 in alert / prose in alert'): ENGS302 L789 [Alert box to right] + [H3] «vocab dump let s have a look a»
+   ('heading not found', 'h3 in alert'): ENGS302 L977 [Alert box to right] + [H3] «vocab dump let s have a look a»
+   ('h4 in outside / prose in outside', 'h5 in outside / prose in outside'): EXPFUN06 L576 [Alert box: Now take anot] + [H4] «success criteria»
+   ('h4 in alert top / prose in alert top', 'h5 in alert / prose in alert'): HIS1005 L331 [Alert Box: Arrange the a] + [H3] «te kara o te whakaminenga o ng»
+   ('heading not found', 'h3 in outside'): HIS1005 L1493 [Alert Box] + [H3] «summary»
+   ('heading not found', 'h3 in outside'): HIS1005 L1847 [Alert Box] + [H3] «summary»
+   ('heading not found', 'h3 in outside / prose in outside'): HIS1005 L2893 [Alert Box] + [H3] «summary»
+   ('heading not found', 'h3 in outside / prose in outside'): HIS1006 L217 [Alert Box] + [H3] «what s in a name»

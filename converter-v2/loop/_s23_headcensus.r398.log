@@ -1,0 +1,63 @@
+explicit writer headings matched on BOTH paired pages: 4670
+
+== by WT digit: n, gold keeps digit, Claude keeps digit, gold==Claude
+  H1 n= 101  gold-keeps 0.01  claude-keeps 0.00  agree 0.37  gold [('h2', 63), ('h3', 37), ('h1', 1)]  claude [('h3', 101)]
+  H2 n=1022  gold-keeps 0.37  claude-keeps 0.14  agree 0.55  gold [('h3', 511), ('h2', 375), ('h4', 135), ('h5', 1)]  claude [('h3', 730), ('h4', 145), ('h2', 143), ('h5', 4)]
+  H3 n=2549  gold-keeps 0.87  claude-keeps 0.88  agree 0.90  gold [('h3', 2210), ('h4', 289), ('h2', 38), ('h5', 12)]  claude [('h3', 2251), ('h4', 250), ('h5', 46), ('h2', 2)]
+  H4 n= 617  gold-keeps 0.51  claude-keeps 0.44  agree 0.65  gold [('h4', 314), ('h3', 292), ('h5', 8), ('h2', 3)]  claude [('h4', 274), ('h3', 227), ('h5', 116)]
+  H5 n= 381  gold-keeps 0.72  claude-keeps 0.77  agree 0.69  gold [('h5', 276), ('h4', 66), ('h3', 39)]  claude [('h5', 292), ('h4', 82), ('h3', 7)]
+
+== by WT digit × template: n, gold-keeps, claude-keeps, agree
+  H2 Standard     n= 606  gold-keeps 0.32  claude-keeps 0.13  agree 0.57
+  H2 Inquiry      n= 180  gold-keeps 0.59  claude-keeps 0.21  agree 0.37
+  H2 Fundamentals n= 236  gold-keeps 0.33  claude-keeps 0.12  agree 0.61
+  H3 Standard     n=2118  gold-keeps 0.88  claude-keeps 0.91  agree 0.92
+  H3 Inquiry      n= 117  gold-keeps 0.61  claude-keeps 0.32  agree 0.59
+  H3 Fundamentals n= 314  gold-keeps 0.86  claude-keeps 0.90  agree 0.84
+  H4 Standard     n= 562  gold-keeps 0.51  claude-keeps 0.47  agree 0.68
+  H4 Inquiry      n=  28  gold-keeps 0.36  claude-keeps 0.00  agree 0.18
+  H4 Fundamentals n=  27  gold-keeps 0.63  claude-keeps 0.37  agree 0.33
+
+== by WT digit × gold parent role (n ≥ 20): n, gold-keeps, claude-keeps, agree, gold level dist
+  H2 div.col-md-8.col-12                  n= 646  gold-keeps 0.50  claude-keeps 0.19  agree 0.52  gold [('h2', 321), ('h3', 303), ('h4', 22)]
+  H2 div.col-12                           n= 217  gold-keeps 0.08  claude-keeps 0.05  agree 0.45  gold [('h4', 108), ('h3', 91), ('h2', 18)]
+  H2 div.phaseLink                        n=  45  gold-keeps 0.00  claude-keeps 0.00  agree 1.00  gold [('h3', 45)]
+  H2 div.col-md-12.col-12                 n=  30  gold-keeps 0.60  claude-keeps 0.10  agree 0.50  gold [('h2', 18), ('h3', 12)]
+  H2 div.col-md-8.col-12.paddingR         n=  27  gold-keeps 0.48  claude-keeps 0.15  agree 0.59  gold [('h3', 14), ('h2', 13)]
+  H3 div.col-md-8.col-12                  n=1373  gold-keeps 0.88  claude-keeps 0.90  agree 0.88  gold [('h3', 1210), ('h4', 128), ('h2', 30)]
+  H3 div.col-12                           n= 912  gold-keeps 0.89  claude-keeps 0.91  agree 0.93  gold [('h3', 808), ('h4', 95), ('h2', 5)]
+  H3 div.col-md-8.col-12.paddingR         n=  53  gold-keeps 0.96  claude-keeps 0.91  agree 0.91  gold [('h3', 51), ('h2', 1), ('h4', 1)]
+  H3 div.alert                            n=  50  gold-keeps 0.04  claude-keeps 0.04  agree 1.00  gold [('h4', 48), ('h3', 2)]
+  H3 div.col-md-12.col-12                 n=  44  gold-keeps 0.95  claude-keeps 0.77  agree 0.77  gold [('h3', 42), ('h5', 1), ('h2', 1)]
+  H4 div.col-md-8.col-12                  n= 350  gold-keeps 0.69  claude-keeps 0.59  agree 0.63  gold [('h4', 243), ('h3', 100), ('h5', 6)]
+  H4 div.clickDropContent.activity.drop   n= 110  gold-keeps 0.00  claude-keeps 0.00  agree 0.86  gold [('h3', 110)]
+  H4 div.col-12                           n=  83  gold-keeps 0.34  claude-keeps 0.46  agree 0.39  gold [('h3', 52), ('h4', 28), ('h2', 2)]
+  H4 div.col-md-8.col-12.paddingR         n=  20  gold-keeps 0.75  claude-keeps 0.55  agree 0.70  gold [('h4', 15), ('h3', 5)]
+
+== by WT digit × subject (n ≥ 20, disagreeing share ≥ 0.4): n, gold-keeps, claude-keeps, agree
+  H2 NCEA1                          n= 261  gold-keeps 0.43  claude-keeps 0.28  agree 0.42
+  H2 ConnectED                      n= 151  gold-keeps 0.55  claude-keeps 0.17  agree 0.56
+  H2 1-10 Mathematics               n= 130  gold-keeps 0.22  claude-keeps 0.00  agree 0.75
+  H2 None                           n=  79  gold-keeps 0.32  claude-keeps 0.00  agree 0.62
+  H2 1-10 Health and PE             n=  76  gold-keeps 0.32  claude-keeps 0.00  agree 0.68
+  H2 EXPlore                        n=  64  gold-keeps 0.27  claude-keeps 0.00  agree 0.14
+  H2 Leaving to Learn               n=  64  gold-keeps 0.08  claude-keeps 0.00  agree 0.83
+  H2 1-10 Arts                      n=  60  gold-keeps 0.17  claude-keeps 0.00  agree 0.50
+  H2 1-10 English                   n=  36  gold-keeps 0.17  claude-keeps 0.00  agree 0.47
+  H2 1-10 Technology                n=  34  gold-keeps 0.65  claude-keeps 0.85  agree 0.79
+  H2 Te ara Whakapuawa -Wellbeing   n=  25  gold-keeps 0.80  claude-keeps 0.52  agree 0.52
+  H2 1-10 Social Science            n=  20  gold-keeps 0.25  claude-keeps 0.00  agree 0.55
+  H3 Leaving to Learn               n= 476  gold-keeps 0.77  claude-keeps 0.74  agree 0.90
+  H3 NCEA1                          n= 427  gold-keeps 0.90  claude-keeps 0.94  agree 0.93
+  H3 1-10 English                   n= 369  gold-keeps 0.89  claude-keeps 0.99  agree 0.88
+  H3 1-10 Mathematics               n= 313  gold-keeps 0.97  claude-keeps 1.00  agree 0.97
+  H3 ConnectED                      n= 191  gold-keeps 0.65  claude-keeps 0.57  agree 0.83
+  H3 None                           n= 179  gold-keeps 0.97  claude-keeps 0.96  agree 0.93
+  H3 Online Safety (OS9000)         n= 162  gold-keeps 0.91  claude-keeps 1.00  agree 0.91
+  H3 1-10 Social Science            n= 129  gold-keeps 0.97  claude-keeps 1.00  agree 0.97
+  H3 1-10 Health and PE             n=  92  gold-keeps 0.99  claude-keeps 1.00  agree 0.99
+  H3 1-10 Technology                n=  71  gold-keeps 0.85  claude-keeps 0.97  agree 0.87
+  H3 ANZH                           n=  33  gold-keeps 0.88  claude-keeps 1.00  agree 0.88
+  H3 EXPlore                        n=  29  gold-keeps 0.90  claude-keeps 0.72  agree 0.62
+  H3 1-10 Arts                      n=  28  gold-keeps 0.36  claude-keeps 0.04  agree 0.11
+  H3 Te ara Whakapuawa -Wellbeing   n=  22  gold-keeps 0.86  claude-keeps 0.23  agree 0.27

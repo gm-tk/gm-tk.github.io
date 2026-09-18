@@ -1,0 +1,71 @@
+==== paired boxes by WRITER TAG → gold class → claude class (top 40; <<< = a class swap) ====
+     180  pages  130 mods  78   [alert                           ] gold alert                  → claude alert
+      62  pages   56 mods  25   [(not in WT)                     ] gold alert                  → claude alert
+      30  pages   26 mods  14   [important                       ] gold alert                  → claude alert solid   <<<
+      29  pages   20 mods  18   [alert box                       ] gold alert                  → claude alert
+      25  pages   22 mods  22   [side alert                      ] gold alertActivity          → claude alertActivity
+      18  pages    3 mods   3   [important side note             ] gold alertActivity          → claude alert solid   <<<
+      17  pages   17 mods   6   [summary box                     ] gold alert                  → claude alert
+      15  pages    9 mods   8   [(not in WT)                     ] gold alert                  → claude alert solid   <<<
+      15  pages   14 mods  13   [alert                           ] gold alertActivity          → claude alert   <<<
+      15  pages   15 mods   8   [image                           ] gold alert                  → claude alert
+      14  pages   14 mods  11   [alert                           ] gold alert top              → claude alert   <<<
+      14  pages   13 mods   8   [alert box: [/red text           ] gold alert                  → claude alert
+      13  pages   13 mods   5   [(not in WT)                     ] gold alertActivity          → claude alert   <<<
+      12  pages   12 mods   3   [alert.top                       ] gold alert top              → claude alert top
+      10  pages    7 mods   5   [important                       ] gold alertActivity          → claude alert solid   <<<
+       8  pages    8 mods   5   [important                       ] gold alert blank            → claude alert solid   <<<
+       8  pages    8 mods   2   [body                            ] gold alert                  → claude alert
+       8  pages    8 mods   2   [summary box                     ] gold alert solid            → claude alert   <<<
+       7  pages    7 mods   4   [(not in WT)                     ] gold alert solid            → claude alert solid
+       7  pages    4 mods   4   [important side alert            ] gold alertActivity          → claude alertActivity
+       7  pages    4 mods   4   [important box                   ] gold alert                  → claude alert solid   <<<
+       7  pages    7 mods   4   [rhs alert                       ] gold alert top              → claude alert top
+       6  pages    6 mods   2   [alert solid summary             ] gold alert                  → claude alert solid   <<<
+       6  pages    6 mods   5   [important                       ] gold alert top              → claude alert solid   <<<
+       6  pages    6 mods   1   [alert box learning intention    ] gold alert                  → claude alert
+       6  pages    6 mods   5   [(not in WT)                     ] gold alert top              → claude alert   <<<
+       5  pages    5 mods   4   [alert box rhc                   ] gold alertActivity          → claude alertActivity
+       5  pages    5 mods   1   [alert box centre for lesson learning int] gold alert                  → claude alert
+       5  pages    5 mods   1   [alert box lesson summary        ] gold alert                  → claude alert
+       5  pages    5 mods   5   [important note                  ] gold alert                  → claude alert solid   <<<
+       5  pages    5 mods   1   [alert side box                  ] gold alertActivity          → claude alert   <<<
+       4  pages    4 mods   4   [side alert                      ] gold alert                  → claude alertActivity   <<<
+       4  pages    4 mods   3   [important text                  ] gold alert blank            → claude alert solid   <<<
+       4  pages    4 mods   3   [alert rhs                       ] gold alert top              → claude alert top
+       4  pages    4 mods   1   [(no tag)                        ] gold alert                  → claude alert
+       4  pages    4 mods   1   [alert box at bottom of page     ] gold alert                  → claude alert
+       3  pages    3 mods   3   [alert rhs                       ] gold alertActivity          → claude alertActivity
+       3  pages    3 mods   2   [alert box rhs                   ] gold alert                  → claude alertActivity   <<<
+       3  pages    3 mods   3   [important box                   ] gold alertActivity          → claude alert solid   <<<
+       3  pages    3 mods   3   [alert box                       ] gold alertActivity          → claude alert   <<<
+
+==== per group: for each writer tag with a SWAP, the gold's class shares among that tag's paired boxes in the group (n ≥ 10) ====
+   Standard/Leaving to Learn                  [summary box                 ] n= 25 swap 0.32  gold: alert 17 (0.68)  alert solid 8 (0.32)  | claude: alert 17
+   Standard/NCEA1                             [important                   ] n= 24 swap 1.00  gold: alertActivity 8 (0.33)  alert blank 6 (0.25)  alert 6 (0.25)  alert top 3 (0.12)  | claude: alert solid 8
+   Standard/NCEA1                             [(not in WT)                 ] n= 11 swap 0.45  gold: alert 5 (0.45)  alert solid 4 (0.36)  alert top 1 (0.09)  alertActivity 1 (0.09)  | claude: alert solid 1  alert 1
+   Standard/ConnectED                         [(not in WT)                 ] n= 12 swap 0.50  gold: alert 12 (1.00)  | claude: alert 6  alert solid 6
+   Standard/ConnectED                         [important                   ] n= 16 swap 1.00  gold: alert 13 (0.81)  alert top 2 (0.12)  important 1 (0.06)  | claude: alert solid 1
+   Standard/1-10 English                      [alert                       ] n= 26 swap 0.35  gold: alert 17 (0.65)  alert top 6 (0.23)  alertActivity 3 (0.12)  | claude: alert 17
+   Standard/ANZH                              [(not in WT)                 ] n= 20 swap 0.45  gold: alert 11 (0.55)  alertActivity 9 (0.45)  | claude: alert 9
+   Inquiry/1-10 Blended Literacy              [important side note         ] n= 18 swap 1.00  gold: alertActivity 18 (1.00)  | claude: alert solid 18
+
+==== examples of the swaps ====
+   [important] gold alert blank → claude alert solid: AGH1001 AGH1001.04.html «for māori the year was divided into diff»
+   [important] gold alert blank → claude alert solid: CEDT101 CEDT101 Who’s at my table.html «ko tōu reo ko tōku reo te tuakiri»
+   [important] gold alert → claude alert solid: AGH1002 AGH1002.02.html «a soil s texture is caused by the»
+   [important] gold alert → claude alert solid: AGH1002 AGH1002.02.html «the combined percentage of sand silt and»
+   [(not in WT)] gold alert → claude alert solid: AGH1009 AGH1009.01.html «key points māori and european settlers h»
+   [(not in WT)] gold alert → claude alert solid: AGH1009 AGH1009.02.html «key points the natural environment is ma»
+   [alert] gold alert top → claude alert: ANZH205 ANZH205_04.0.html «did you know the waikato manukau sheet w»
+   [alert] gold alert top → claude alert: CEDO502 CEDO502_3_1.html «this is why some credit providers say no»
+   [(not in WT)] gold alertActivity → claude alert: ANZH401 ANZH401_1.0.html «success criteria i can process informati»
+   [(not in WT)] gold alertActivity → claude alert: ANZH401 ANZH401_2.0.html «success criteria i can categorise some r»
+   [important side note] gold alertActivity → claude alert solid: BLL110 BLL110.html «when a letter is written as s we»
+   [important side note] gold alertActivity → claude alert solid: BLL110 BLL110.html «when a letter is written as a we»
+   [important] gold alertActivity → claude alert solid: BLL230 BLL230.html «if the sound is at the end of»
+   [important] gold alertActivity → claude alert solid: ENG1004 ENG1004_0.1.html «when your kaiako has approved checkpoint»
+   [alert] gold alertActivity → claude alert: BLL234 BLL234-2.0.html «new zealand sign language is an official»
+   [alert] gold alertActivity → claude alert: BLL234 BLL234-2.0.html «remember speech marks are only used arou»
+   [summary box] gold alert solid → claude alert: XDLS912 XDLS912_01.0.html «in this section we have learned we can»
+   [summary box] gold alert solid → claude alert: XDLS912 XDLS912_02.0.html «in this section we have learned that kee»

@@ -1,0 +1,106 @@
+==== gold h4 by (parent, Claude's element for the same text) — top 30 ====
+     641  pages  353 mods 141   parent div.col-12                           claude absent
+     415  pages  203 mods  73   parent div.col-12                           claude h4
+     407  pages  212 mods 123   parent div.col-12.col-md-8                  claude absent
+     347  pages  132 mods  76   parent div.col-12.col-md-8                  claude h4
+     189  pages   47 mods  41   parent div.clickDropContent                 claude absent
+     118  pages   53 mods  39   parent div.col-12.col-md-8                  claude h5
+     106  pages   73 mods  47   parent div.col-12.col-md-8                  claude h3
+      99  pages   63 mods  42   parent div.col-12                           claude p
+      87  pages   62 mods  35   parent div.col-12                           claude h3
+      84  pages   51 mods  40   parent div.col-12.col-md-8                  claude p
+      75  pages   17 mods  15   parent div.shape                            claude absent
+      75  pages   64 mods  54   parent div.alertActivity                    claude absent
+      68  pages   40 mods  38   parent div.col-12.col-md-6.paddingR         claude h4
+      50  pages   25 mods   9   parent div.col-12.col-md-6.offset-md-0      claude absent
+      47  pages   11 mods  10   parent div.TKmodal                          claude absent
+      39  pages   19 mods  19   parent div.col-12.col-md-6.paddingR         claude h5
+      36  pages   12 mods  11   parent div.clickDropContent                 claude p
+      32  pages   10 mods  10   parent div.col-12.col-md-8                  claude b
+      32  pages   13 mods  13   parent div.col-12.col-md-6.paddingR         claude absent
+      28  pages   28 mods  28   parent div.col-12.col-md-12.paddingR        claude h5
+      28  pages   17 mods  16   parent div.col-12.col-md-12                 claude absent
+      27  pages   13 mods  13   parent div.col-12.col-md-6                  claude h5
+      26  pages   24 mods  19   parent div.alert                            claude absent
+      25  pages   16 mods  14   parent div.col-12                           claude h5
+      25  pages    1 mods   1   parent div.col-12.col-md-8.paddingR         claude h5
+      23  pages   22 mods  11   parent div.alert                            claude h4
+      23  pages    9 mods   9   parent div.col-12.col-md-6.offset-md-0      claude h4
+      21  pages   21 mods  21   parent div.col-12.col-md-12.paddingR        claude h4
+      19  pages    3 mods   3   parent div.clickDropContent                 claude td
+      18  pages    5 mods   5   parent div.clickDropContent                 claude h4
+
+==== the writer's tag behind the mismatches (top 8 per (parent, claude) with ≥ 40) ====
+   parent div.col-12                           claude absent     n= 641  [(not in WT)] 266  [(black line)] 102  [(short)] 70  [button] 42  [hN] 27  [this checklist corresp] 20  [body] 16  [alert] 12
+   parent div.col-12.col-md-8                  claude absent     n= 407  [(not in WT)] 204  [(black line)] 88  [hN] 36  [(short)] 25  [body] 14  [clickdrop button] 7  [accordion N] 4  [image] 3
+   parent div.clickDropContent                 claude absent     n= 189  [(short)] 41  [hN] 37  [(black line)] 36  [(not in WT)] 26  [image] 12  [body] 10  [front of card] 6  [click drop body] 3
+   parent div.col-12.col-md-8                  claude h5         n= 118  [hN] 68  [(black line)] 17  [(not in WT)] 16  [(short)] 16  [hover on role or chara] 1
+   parent div.col-12.col-md-8                  claude h3         n= 106  [hN] 69  [(not in WT)] 17  [(black line)] 5  [(short)] 3  [body] 3  [alert] 2  [hover definition: lake] 1  [activity N] 1
+   parent div.col-12                           claude p          n=  99  [(black line)] 32  [(not in WT)] 14  [image] 13  [body] 6  [(short)] 6  [hN] 5  [activity] 5  [important text] 4
+   parent div.col-12                           claude h3         n=  87  [hN] 36  [(not in WT)] 19  [(short)] 7  [(black line)] 6  [key points] 6  [[/red text] 6  [alert] 3  [body] 1
+   parent div.col-12.col-md-8                  claude p          n=  84  [(black line)] 37  [(not in WT)] 18  [hN] 11  [image] 5  [body] 4  [(short)] 4  [carousel] 2  [paragraph] 1
+   parent div.shape                            claude absent     n=  75  [shape N] 29  [(black line)] 21  [(short)] 14  [(not in WT)] 5  [image] 5  [body] 1
+   parent div.alertActivity                    claude absent     n=  75  [(not in WT)] 30  [(short)] 17  [(black line)] 8  [button] 4  [alert rhs] 2  [coloured box - green] 2  [alert box rhs] 1  [body] 1
+   parent div.col-12.col-md-6.offset-md-0      claude absent     n=  50  [hN] 22  [(not in WT)] 15  [alert box] 13
+   parent div.TKmodal                          claude absent     n=  47  [(short)] 11  [(black line)] 10  [image] 7  [modal] 6  [l modal N image] 5  [(not in WT)] 4  [body] 2  [modal heading hN] 1
+
+==== per group (n ≥ 20): the top mismatches ====
+   Standard/1-10 English                      gold h4 n= 601  claude h4 0.34  [div.col-12 → absent] 84  [div.clickDropContent → absent] 38  [div.TKmodal → absent] 28  [div.col-12.col-md-8 → h3] 26
+   Standard/NCEA1                             gold h4 n= 525  claude h4 0.16  [div.col-12 → absent] 151  [div.col-12.col-md-8 → absent] 73  [div.col-12 → h3] 37  [div.clickDropContent → absent] 34
+   Standard/1-10 Mathematics                  gold h4 n= 425  claude h4 0.14  [div.col-12 → absent] 81  [div.col-12.col-md-8 → absent] 81  [div.clickDropContent → absent] 19  [div.col-12.col-md-8 → h3] 17
+   Standard/Leaving to Learn                  gold h4 n= 339  claude h4 0.33  [div.col-12.col-md-8 → absent] 55  [div.col-12 → absent] 54  [div.clickDropContent → absent] 15  [div.col-12.col-md-8 → h3] 11
+   Inquiry/ConnectED                          gold h4 n= 316  claude h4 0.37  [div.col-12 → absent] 35  [div.clickDropContent → absent] 28  [div.col-12.col-md-8 → absent] 27  [div.col-12.col-md-6.offs → absent] 15
+   Standard/Online Safety (OS9000)            gold h4 n= 228  claude h4 0.32  [div.shape → absent] 49  [div.col-12.col-md-8 → absent] 19  [div.clickDropContent → absent] 16  [div.image.shape → absent] 13
+   Bilingual/Te Marautanga o Aotearoa TMoA    gold h4 n= 184  claude h4 0.34  [div.col-12.col-md-8 → absent] 44  [div.col-12 → h3] 18  [div.col-12.col-md-8 → p] 15  [div.col-12.col-md-8 → h5] 12
+   Standard/ConnectED                         gold h4 n= 160  claude h4 0.24  [div.col-12 → p] 14  [div.col-12 → absent] 14  [div.col-12.col-md-8 → absent] 13  [div.col-12.col-md-12 → absent] 11
+   Standard/None                              gold h4 n= 151  claude h4 0.36  [div.col-12 → absent] 37  [div.col-12 → p] 9  [li → absent] 9  [div.col-12.col-md-8 → h3] 7
+   Standard/ANZH                              gold h4 n= 146  claude h4 0.29  [div.col-12.col-md-6.offs → absent] 35  [div.col-12 → absent] 30  [div.col-12.col-md-8 → absent] 6  [div.col-12.col-md-6.padd → h5] 6
+   Standard/1-10 Blended Literacy             gold h4 n= 137  claude h4 0.16  [div.col-12.col-md-12.pad → h5] 21  [div.clickDropContent → absent] 18  [div.col-12.col-md-6.padd → h5] 13  [div.col-12.col-md-6 → h5] 12
+   Inquiry/Te ara Whakapuawa -Wellbeing       gold h4 n=  90  claude h4 0.11  [div.col-12 → absent] 25  [div.col-12.col-md-6.padd → absent] 15  [div.alert → h5] 8  [div.col-12.col-md-8 → h5] 7
+   Fundamentals/1-10 Health and PE            gold h4 n=  88  claude h4 0.32  [div.col-12 → absent] 38  [div → absent] 9  [div.clickDropContent → absent] 6  [div.alertActivity → absent] 3
+   Fundamentals/1-10 Technology               gold h4 n=  77  claude h4 0.04  [div.TKtile.p-3.py-5.shad → absent] 13  [div.TKmodal → absent] 13  [div.col-12.col-md-8 → h3] 9  [div.TKtile.p-3.py-5.shad → p] 7
+   Standard/EXPlore                           gold h4 n=  75  claude h4 0.11  [div.col-12.col-md-8 → absent] 15  [div.clickDropContent → td] 12  [div.shape → absent] 8  [div.col-12 → absent] 7
+   Fundamentals/1-10 Arts                     gold h4 n=  74  claude h4 0.18  [div.col-12.col-md-8 → h5] 27  [div.col-12.col-md-8 → b] 18  [div.col-12.col-md-8 → li] 5  [div.col-12 → absent] 4
+   Fundamentals/1-10 English                  gold h4 n=  69  claude h4 0.06  [div.col-12 → h5] 13  [div.col-12.col-md-8 → absent] 11  [div.col-12 → absent] 10  [div.col-12.col-md-8 → p] 10
+   Fundamentals/None                          gold h4 n=  67  claude h4 0.88  [div.col-12.col-md-8 → absent] 3  [div.col-12.col-md-8 → p] 2  [div.col-12.col-md-8 → h3] 1  [div.alert → absent] 1
+   Inquiry/EXPlore                            gold h4 n=  48  claude h4 0.00  [div.col-12.col-md-8.padd → h5] 25  [div.col-12.col-md-8.padd → absent] 9  [div.col-12.col-md-6.padd → absent] 4  [div.col-12.col-md-6.padd → h5] 3
+   Fundamentals/1-10 Social Science           gold h4 n=  40  claude h4 0.03  [div.col-12.col-md-8 → absent] 13  [div.col-12 → absent] 6  [div.col-12 → h3] 4  [div.shape → absent] 4
+   Inquiry/1-10 Blended Literacy              gold h4 n=  39  claude h4 0.00  [div.col-12 → absent] 11  [div.col-12.col-md-6.padd → h5] 7  [div.col-12.col-md-12.pad → h5] 7  [div.alertActivity → absent] 4
+   Standard/1-10 Social Science               gold h4 n=  21  claude h4 0.05  [div.col-12 → absent] 16  [div.col-12.col-md-8 → absent] 2  [div.alertActivity → p] 1  [div.col-12 → h3] 1
+   Inquiry/Leaving to Learn                   gold h4 n=  21  claude h4 0.00  [div.activity.dropbox → absent] 4  [div.clickDropContent → absent] 4  [div.col-12.col-md-8 → absent] 3  [div.activity.alertPaddin → h3] 2
+
+   ('div.col-12', 'p', '(black line)'): AGH1001 AGH1001.01.html «dairy farming»
+   ('div.col-12', 'p', '(black line)'): AGH1003 AGH1003_05.0.html «why is it important to add lime before fertil»
+   ('div.col-12.col-md-8', 'p', '(black line)'): AGH1001 AGH1001.02.html «timeline of primary production in aotearoa»
+   ('div.col-12.col-md-8', 'p', '(black line)'): AGH1003 AGH1003_04.0.html «benefits of adding organic matter»
+   ('div.col-12', 'p', '(not in WT)'): AGH1001 AGH1001.02.html «pre european settlement»
+   ('div.col-12', 'p', '(not in WT)'): AGH1001 AGH1001.02.html «late 18th century mid 19th century»
+   ('div.col-12', 'absent', '(not in WT)'): AGH1001 AGH1001.02.html «late 20th century mid 21st century»
+   ('div.col-12', 'absent', '(not in WT)'): AGH1003 AGH1003_06.0.html «background scenario»
+   ('div.col-12', 'absent', 'alert solid: summary'): AGH1001 AGH1001.02.html «key points from today s lesson»
+   ('div.col-12', 'absent', 'alert solid: summary'): AGH1001 AGH1001.05.html «key points from today s lesson»
+   ('div.col-12', 'p', 'alert solid: summary'): AGH1001 AGH1001.03.html «key points from today s lesson»
+   ('div.col-12', 'p', 'alert solid: summary'): AGH1001 AGH1001.04.html «key points from today s lesson»
+   ('div.col-12', 'absent', '(short)'): AGH1001 AGH1001.05.html «answers»
+   ('div.col-12', 'absent', '(short)'): AGH1002 AGH1002.01.html «summary»
+   ('div.col-12.col-md-8', 'h3', 'hover definition: lake'): AGH1002 AGH1002.03.html «photosynthesis»
+   ('div.col-12.col-md-8', 'absent', '(not in WT)'): AGH1002 AGH1002.03.html «c carbon h hydrogen o oxygen»
+   ('div.col-12.col-md-8', 'absent', '(not in WT)'): AGH1003 AGH1003_05.0.html «clay soils and lime»
+   ('div.col-12.col-md-8', 'absent', '(black line)'): AGH1002 AGH1002.03.html «air level in soil»
+   ('div.col-12.col-md-8', 'absent', '(black line)'): AGH1005 AGH1005.06.html «diffusion»
+   ('div.col-12.col-md-8', 'absent', 'hover definition: the '): AGH1002 AGH1002.03.html «temperature»
+   ('div.col-12', 'absent', '(black line)'): AGH1002 AGH1002.03.html «important»
+   ('div.col-12', 'absent', '(black line)'): AGH1002 AGH1002.05.html «macronutrients»
+   ('div.shape', 'absent', '(short)'): AGH1003 AGH1003_01.0.html «2»
+   ('div.shape', 'absent', '(short)'): AGH1003 AGH1003_01.0.html «3»
+   ('div.col-12', 'absent', 'button'): AGH1003 AGH1003_01.0.html «need some extra help»
+   ('div.col-12', 'absent', 'button'): HPRE203 HPRE203_3_0.html «go to your journal»
+   ('div.alertActivity', 'absent', '(black line)'): AGH1003 AGH1003_01.0.html «remember»
+   ('div.alertActivity', 'absent', '(black line)'): MXDI202 MXDI202_10.0 proof 1.html «for example»
+   ('div.alertActivity', 'absent', 'button'): AGH1003 AGH1003_01.0.html «need some extra help»
+   ('div.alertActivity', 'absent', 'button'): AGH1003 AGH1003_06.0.html «need some extra help»
+   ('div.col-12.col-md-8', 'absent', 'button'): AGH1004 AGH1004.06.html «new zealand topographical map»
+   ('div.col-12.col-md-8', 'b', '(short)'): AGH1005 AGH1005.02.html «buds»
+   ('div.col-12.col-md-8', 'b', '(short)'): AGH1009 AGH1009.00.html «kia ora»
+   ('div.col-12.col-md-8', 'h3', '(black line)'): AGH1005 AGH1005.02.html «fruits and seeds»
+   ('div.col-12.col-md-8', 'h3', '(black line)'): CEDT501 CEDT501_5.0.html «communication styles»

@@ -1,0 +1,77 @@
+bare callout tag (no tail) → next item kind: black 202; [hN]+tail 66; table 38; [body]+tail 19; [end] 5; [please] 4; [insert] 3; [activity] 2; [insert]+tail 2; [image] 1; image-inline 1; [tab] 1
+
+==== per next-item kind (n ≥ 8): the gold's wrapper for the next item's text; Claude's ====
+   black              n= 202 pages  75 mods  81 | gold: NOT FOUND 102  alert 40  outside 24  alertActivity 17 | claude: alert solid 94  NOT FOUND 59  alert 34
+   [hN]+tail          n=  66 pages  19 mods  24 | gold: NOT FOUND 46  outside 10  alert top 6  alert 4 | claude: NOT FOUND 42  outside 19  alert top 3
+   table              n=  38 pages   1 mods  16 | gold: NOT FOUND 37  alert 1 | claude: NOT FOUND 36  alert solid 1  outside 1
+   [body]+tail        n=  19 pages   7 mods  14 | gold: NOT FOUND 9  outside 6  alert 4 | claude: outside 10  NOT FOUND 4  alert 4
+
+==== per group × kind (n ≥ 10) ====
+   Standard/NCEA1                             black          n=112  NOT FOUND 63 (0.56)  alert 20 (0.18)  outside 15 (0.13)  alert blank 6 (0.05)
+   Standard/NCEA1                             [hN]+tail      n= 29  NOT FOUND 23 (0.79)  outside 3 (0.10)  alert top 2 (0.07)  alert 1 (0.03)
+   Standard/Online Safety (OS9000)            table          n= 23  NOT FOUND 22 (0.96)  alert 1 (0.04)
+   Standard/ConnectED                         black          n= 13  NOT FOUND 10 (0.77)  outside 2 (0.15)  alert 1 (0.08)
+   Standard/None                              table          n= 13  NOT FOUND 13 (1.00)
+   Standard/1-10 Mathematics                  [hN]+tail      n= 11  NOT FOUND 6 (0.55)  outside 4 (0.36)  alert 1 (0.09)
+   Standard/1-10 Social Science               [hN]+tail      n= 10  NOT FOUND 9 (0.90)  alert top 1 (0.10)
+
+   ('black', 'alert'): AGH1001 L242 [Alert solid Summary] next «Key points from the lesson:» claude=alert solid
+   ('black', 'alert'): AGH1001 L425 [Alert solid: Summary] next «Key points from today’s lesson:» claude=outside
+   ('black', 'alert'): AGH1001 L570 [Alert solid: Summary] next «Key points from today’s lesson:» claude=outside
+   ('black', 'alert blank'): AGH1001 L465 [Important] next «For Māori, the year was divided into differen» claude=alert solid
+   ('black', 'alert blank'): ENFUN09 L515 [important text] next «I sat on my bed, mindlessly looking at my pho» claude=alert solid
+   ('black', 'alert blank'): HIS1007 L704 [Important] next «Go to the next page to learn about the Bill o» claude=alert solid
+   ('black', 'outside'): AGH1002 L168 [Important] next «Te toto o tetangatahe kai, teorangao tetangat» claude=alert solid
+   ('black', 'outside'): AGH1004 L290 [alert solid] next «• What do you notice about the terrain?» claude=alert solid
+   ('black', 'outside'): AGH1007 L1083 [Important] next «Complete the checkpoint once you have finishe» claude=alert solid
+   ('black', 'NOT FOUND'): AGH1002 L296 [Important] next «A soil’s texture is caused by the size of the» claude=alert solid
+   ('black', 'NOT FOUND'): AGH1003 L734 [Important] next «Remember: regardless of the production type, » claude=alert solid
+   ('black', 'NOT FOUND'): AGH1005 L271 [Alert solid summary] next «Key points from the lesson:» claude=alert solid
+   ('black', 'alert top'): AGH1007 L761 [Important] next «An egg that “dies” before the sperm reach it » claude=alert solid
+   ('black', 'alert top'): AGH1008 L145 [Important] next «Manaakitanga can be defined as “The process o» claude=alert solid
+   ('black', 'alert top'): ENGI302 L539 [alert] next «• A **simile** is when you directly compare t» claude=alert
+   ('black', 'alert paddingL top'): AGH1008 L730 [Important] next «A trait is a characteristic, or feature, that» claude=alert solid
+   ('black', 'alert solid'): AGH1009 L810 [Alert Solid Summary] next «• Agricultural and horticultural production r» claude=alert solid
+   ('black', 'alert solid'): ENGC101 L543 [Important] next «Do you know your parents’ and grandparents’ n» claude=alert solid
+   ('black', 'alertActivity'): BLL140 L129 [important side alert] next «When a letter is written as ‘j’ we want you t» claude=alertActivity
+   ('black', 'alertActivity'): BLL150 L121 [important side alert] next «When a letter is written as ‘z’ we want you t» claude=alertActivity
+   ('black', 'alertActivity'): BLL150 L308 [important side alert] next «When a letter is written as ‘w’ we want you t» claude=alertActivity
+   ('[body]+tail', 'NOT FOUND'): BLL240 L172 [Alert box right hand] next «Remember the ‘silent e’ that changes the soun» claude=outside
+   ('[body]+tail', 'NOT FOUND'): ENFUN05 L209 [Alert] next «Take care with these two contractions:» claude=outside
+   ('[body]+tail', 'NOT FOUND'): ENFUN08 L66 [alert] next «A proper noun is what we call nouns that are » claude=outside
+   ('[hN]+tail', 'alert'): BLL252 L165 [alert box] next «Two rule breakers» claude=outside
+   ('[hN]+tail', 'alert'): HIS1005 L1149 [Alert Box] next «Chopping down the flagstaff» claude=outside
+   ('[hN]+tail', 'alert'): MXFU302 L228 [Alert] next «The Olympic Games» claude=outside
+   ('[hN]+tail', 'outside'): BLL254 L178 [Alert box] next «Bought and brought» claude=outside
+   ('[hN]+tail', 'outside'): ENG1007 L81 [Alert – off to side ] next «What is an “aspect”?» claude=outside
+   ('[hN]+tail', 'outside'): ENGR302 L483 [alert ends here] next «Spotlight on exclusion» claude=outside
+   ('[hN]+tail', 'NOT FOUND'): CEDT104 L963 [Alert solid] next «**Fun** **p****oi** **t****ips**» claude=NOT FOUND
+   ('[hN]+tail', 'NOT FOUND'): ENG1005 L157 [Important – can you ] next «What you will do:» claude=outside
+   ('[hN]+tail', 'NOT FOUND'): ENG1005 L291 [Important – can you ] next «What you will do:» claude=outside
+   ('[body]+tail', 'alert'): ENGS101 L73 [Alert.solid] next «In this module we are exploring how to become» claude=alert solid
+   ('[body]+tail', 'alert'): ENGS301 L591 [alert/summary box] next «Ka pai, well done. You have now completed thi» claude=outside
+   ('[body]+tail', 'alert'): SSCI205 L140 [Alert] next «In this lesson, you will explore where ancien» claude=outside
+   ('[hN]+tail', 'alert top'): ENGS302 L789 [Alert box to right] next «Vocab Dump! Let’s have a look at some importa» claude=alert top
+   ('[hN]+tail', 'alert top'): ENGS302 L977 [Alert box to right] next «Vocab Dump! Let’s have a look at some importa» claude=alert top
+   ('[hN]+tail', 'alert top'): HIS1005 L331 [Alert Box: Arrange t] next «Te Kara o Te Whakaminenga o Nga Hapu o Nu Tir» claude=alert
+   ('[body]+tail', 'outside'): EXIP901 L647 [Alert] next «Sophie’s success criteria» claude=outside
+   ('[body]+tail', 'outside'): MXDB302 L443 [alert] next «If you would like more practice with this ski» claude=alert
+   ('[body]+tail', 'outside'): MXDB302 L647 [alert] next «If you would like more practice with this ski» claude=alert
+   ('[image]', 'alert'): HIS1001 L261 [Important – importan] next «In this lesson, you will learn about some of » claude=outside
+   ('[please]', 'NOT FOUND'): HIS1005 L1641 [alert box] next «» claude=NOT FOUND
+   ('[please]', 'NOT FOUND'): HIS1005 L2529 [Alert Box] next «» claude=NOT FOUND
+   ('[please]', 'NOT FOUND'): HIS1007 L734 [Alert Box] next «» claude=NOT FOUND
+   ('[insert]', 'NOT FOUND'): HIS1005 L2387 [Alert Box] next «» claude=NOT FOUND
+   ('[insert]', 'NOT FOUND'): HIS1006 L1944 [Alert Box in white s] next «» claude=NOT FOUND
+   ('[insert]', 'NOT FOUND'): HIS1007 L678 [Alert Box] next «» claude=NOT FOUND
+   ('[activity]', 'outside'): MXDB302 L661 [alert box ends here] next «Showcase your understanding of perimeter and » claude=outside
+   ('[activity]', 'outside'): MXDB302 L1281 [Alert box ends here] next «Showcase your understanding of volume by comp» claude=outside
+   ('image-inline', 'NOT FOUND'): MXDI101 L378 [Important] next «» claude=NOT FOUND
+   ('table', 'NOT FOUND'): MXFL102 L242 [Important] next «One = tahi / Two = rua / Three = toru / Four » claude=alert solid
+   ('table', 'NOT FOUND'): OSAI401 L356 [alert] next «🔴[RED TEXT] [image]  [/RED TEXT]🔴https://www.» claude=NOT FOUND
+   ('table', 'NOT FOUND'): OSAI501 L440 [alert] next «🔴[RED TEXT] [image]  [/RED TEXT]🔴https://www.» claude=NOT FOUND
+   ('table', 'alert'): OSAI201 L113 [alert] next «**AI is not safe for our environment due to:*» claude=outside
+   ('[end]', 'NOT FOUND'): TWHA903 L220 [Alert: Try gathering] next «» claude=NOT FOUND
+   ('[end]', 'NOT FOUND'): TWHA903 L301 [Alert: Try gathering] next «» claude=NOT FOUND
+   ('[end]', 'NOT FOUND'): TWHA904 L305 [Alert: Try gathering] next «» claude=NOT FOUND
+   ('[tab]', 'NOT FOUND'): TWHA905 L489 [Alert: Try gathering] next «» claude=NOT FOUND
