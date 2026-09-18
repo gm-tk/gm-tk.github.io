@@ -1,5 +1,34 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 379, build 260619.50) — THE MODE OPENER BEFORE A BUNDLE-OWNED NUMBERED ACTIVITY SHIPS NO EMPTY BOX — the autonomous loop's session 24, Round 3
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+`Emit_Templates.activity_wrapper.mode_opener_merge.owned_target {enabled, env "MODEOWNED_OFF"}`. The round-84 immediate merge and the round-202 forward merge fold a writer's un-numbered, content-less mode opener (`[Activity individual]`, bare `[Activity]`, `[Activity: Embedded]`) into the numbered `[Activity 1D]` after it — but both look only for an UNCONSUMED numbered opener, and when that activity is the r362 OWNER of a widget bundle (its `[Activity 1D]` + prose + table captured; the box opens on the bundle's own path) the opener is `consumedBy` that bundle and neither merge fires: the mode opener opened a box, nothing landed in it, the owned box followed. Now, right after the r84 merge in the activity CONTAINER_OPEN branch, an un-numbered content-less opener whose next non-blank item is an activity opener a bundle owns (`bundles[nxt.consumedBy].activityOwner === nxt`, numbered or an r377 `_idHeading`) ships no box of its own. OFF = the r378 output byte-for-byte (probe 2109 / 2109).
+
+### 2. WHY IT WAS PICKED — the r377 dip decomposed, then the whole empty-box census
+
+The r377 dip ANZH105_4_0 / _5_0 was an empty box from the bare `[Activity: Embedded]` opener before an r377 heading-opened box. Rather than the one page, the class was counted on the r378 corpus: **58 empty activity boxes (`div.activity > row > col-12` with nothing inside) on 50 pages / 21 modules** (HIS1006 9, HIS1008 9, AGH1009 7, HIS1005 6, ANZH401 4, AGH1001 3, ANZH105 3, ARFUN02 / SSFUN06 / ENGS102 2 …); **the gold ships 4 empty boxes in 2,385 pages** (BLL133 / HIS1005 / MXDI101 / MXFL101 — the human's slips), so an empty box is never the gold's form (≥ 0.99 in every family; 50 pages ≥ the 20-page floor). Triangulated HIS1006 lesson 1 (WT `[Activity individual]` on its own line, then `[Activity 1D]` + prose + table; gold one box 1D; Claude `div.activity` (empty) + `div.activity[number=1D]`), HIS1008, ANZH105 lesson 4. Also measured and recorded BELOW FLOOR: the bare `🔴END PAGE🔴` red run without brackets (r377 follow-up (b)) — 3 modules corpus-wide.
+
+### 3. WHAT THE PROBE TAUGHT
+
+- In-memory probe over all 416 (`_s24_r379_probe.cjs`, 4 shards): **OFF (`MODEOWNED_OFF=1`) = disk 2109 / 2109**; ON = **25 pages / 9 modules** (ANZH105 ANZH301 CEDT101 HES1004 HIS1005 HIS1006 HIS1007 HIS1008 SSFUN06). Scored with the gate's own `match()` (`_s24_r379_pagescore.py` → `_s24_r379_onscore.json`): **18 paired pages — 17 up / 1 down (HIS1007_1_0 −0.6), pp-sum +21.1, +1.17pp per page** (ANZH301_5_0 +2.2, HIS1008_3_1 +2.2, ANZH105_4_0 +2.1, HIS1008_1_2 +1.9 …).
+- The owned-target case is ~30 of the 58 empty boxes. The other 28 (AGH1009 7, AGH1001 3, ANZH401 4, ARFUN02 / SSFUN06 / ENGS102 2 …) are a DIFFERENT mechanism — the `[Activity: Embedded – Brainstorm]` opener whose tail names an unbuildable widget type (AGH1009 3A: the gold's `h3 Brainstorm` + `p` box; Claude an empty numbered 3A box with the prose elsewhere) — recorded for its own round.
+
+### 4. PROOF
+
+- SCOPED regeneration of the 9 (`_s24_r379_scoped_par.sh`, 1 batch, rc 0; scoped ship #2 since the r377 full): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **25 changed / 0 added / 0 removed = the probe's set**; every regenerated page **byte-identical to the probe's ON page (75 / 75)**.
+
+### 5. PROTECTED GATES (`_s24_r379_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **53.076 → 53.087 % (+0.011pp)**, median 53.7, **≥50 1141 → 1142 (+1)**, ≥75 182 EXACT, ≥90 15 EXACT, RAW 37.472 → 37.479 % @ 1956 pairs; **18 movers — 17 up / 1 down** (state `_s24_r379_sk_final.json`). Not a plateau round (≥50 moved).
+- compare_structure exact 11643 / EXTRA 172 / MISSING 625 / row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **42 / 4 / 174 / 219** EXACT; tags 9557 / 9557 REAL 0; flipCard divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz defect 0; math 323 / 323; menu labels 91 / 0; dragAndDrop defect 0 — all EXACT (an empty box never entered the wrapper chain).
+
+### 6. ALSO RECORDED
+
+- Ledger: scoped ship #2 since the r377 full. AppVersion 260619.50; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r379.bak` kept).
+- Follow-ups: the `[Activity: Embedded – <type>]` opener with an unbuildable type (28 empty boxes / ~10 modules); the bare `END PAGE` boundary (3 modules, below floor); the black-typed `✅ [audio]` marker (r378).
+
 ## 2026-09-18 (round 378, build 260619.49) — THE UNCLASSIFIED ACTIVITY RESUMES FREE BODY AT THE `[Body]` AFTER ITS TABLE: the writer's last prose and the upload button leave the hand-off dump and stay inside the box — the autonomous loop's session 24, Round 2
 
 ### 1. WHAT CHANGED, IN ONE LINE

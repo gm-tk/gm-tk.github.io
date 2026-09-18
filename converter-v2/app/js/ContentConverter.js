@@ -2643,6 +2643,29 @@ class ContentConverter {
 								`Page ${page.lessonLabel}: layout-note [activity] opener merged into the adjacent numbered activity (no empty box).`);
 							break;   // suppress this opener's box
 						}
+						// ROUND 379 (the autonomous loop's session 24 Round 3) — THE NEXT OPENER IS OWNED BY A
+						// BUNDLE. The merge above sees only an UNCONSUMED numbered opener; when the writer's
+						// `[Activity individual]` / `[Activity]` / `[Activity: Embedded]` is followed by a
+						// numbered opener that a widget bundle already OWNS (the r362 owner form — its box
+						// opens on the bundle's own path), this mode opener opened an EMPTY box that the
+						// owned box then followed (HIS1006 ×9, HIS1008 ×9, AGH1009 ×7 …; 58 empty boxes on
+						// 50 pages / 21 modules; the gold ships 4 in 2,385 pages). An un-numbered,
+						// content-less opener whose next non-blank item is an owned numbered opener
+						// ships no box of its own. Data activity_wrapper.mode_opener_merge.owned_target;
+						// env MODEOWNED_OFF.
+						const _motCfg = tpl.activity_wrapper.mode_opener_merge?.owned_target;
+						const _motOn = _motCfg && _motCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_motCfg.env || "MODEOWNED_OFF"]);
+						if (_motOn && !myId && !myContent && it.consumedBy === undefined
+							&& nxt?.type === "tag" && nxt.parse?.primary?.tag === "activity"
+							&& nxt.parse?.primary?.directive === "CONTAINER_OPEN"
+							&& nxt.consumedBy !== undefined && nxt.consumedBy !== null
+							&& bundles[nxt.consumedBy]?.activityOwner === nxt
+							&& (nxt.parse.numbers?.[0] || nxt._idHeading)) {
+							run.AddNote("info", "ContentConverter",
+								`Page ${page.lessonLabel}: mode [activity] opener suppressed — the numbered activity after it is owned by its widget bundle (round 379, no empty box).`);
+							break;   // suppress this opener's box
+						}
 						// MODE-OPENER FORWARD MERGE (module HIS1004's family): an un-numbered activity
 						// opener with no content of its own — a "[Activity individual]", "[Activity
 						// embedded]", "[Activity body]", or bare "[Activity]" tag — is really just a

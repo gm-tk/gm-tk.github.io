@@ -1739,7 +1739,8 @@ class Config {
 	// ROUND 376 (260619.47): the upload box ENDS its activity box — the "Upload to dropbox" button is the box's last content child, what the writer typed after it is free body; a widget that follows immediately keeps the box open. activity_wrapper.upload_box_ends_activity, env DBXENDS_OFF; 57 pages / 51 modules, skeleton 52.960 → 52.987. The autonomous loop's session 23 Round 7.
 	// ROUND 377 (260619.48): the writer's `[Hn] Activity <id>[: Title]` heading opens the numbered activity box — the r364 id-heading opener's WORD form (the words in the black tail or inside the red span, a lower-case letter after the word, a bare `Activity 2A` keeping its own words as the title). opener_rule.id_heading_opener.word_form, env ACTWORD_OFF; 61 pages / 27 modules, skeleton 52.987 → 53.055. The autonomous loop's session 24 Round 1.
 	// ROUND 378 (260619.49): the unclassified activity resumes free body at the [Body] after its table — the writer's last prose and the upload button leave the hand-off dump and stay inside the box (a table or a widget invocation ahead keeps the walk). opener_rule.unclassified_activity_lead.post_table_resume, env UNCLASSTAIL_OFF; 121 pages / 90 modules, skeleton 53.055 → 53.076. The autonomous loop's session 24 Round 2.
-	static AppVersion = "260619.49";
+	// ROUND 379 (260619.50): the mode opener before a bundle-OWNED numbered activity ships no empty box — the r84 / r202 merges see only an unconsumed numbered opener. activity_wrapper.mode_opener_merge.owned_target, env MODEOWNED_OFF; 25 pages / 9 modules, skeleton 53.076 → 53.087. The autonomous loop's session 24 Round 3.
+	static AppVersion = "260619.50";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
