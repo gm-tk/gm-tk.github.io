@@ -1,0 +1,126 @@
+==== accordion: gold 803 / claude 385 ====
+   gold  479 (pages 302)   claude  291 (pages 171 / mods  90)   div.row › div.col-12.col-md-8
+   gold  206 (pages 164)   claude   94 (pages  79 / mods  62)   div.row › div.col-12
+   gold   18 (pages  17)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-8.paddingR
+   gold   13 (pages   7)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-8 › div.activity
+   gold   11 (pages  11)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold    5 (pages   5)   claude    0 (pages   0 / mods   0)   div.row.supervisor › div.col-12.col-md-8.super-content-button
+==== tabs: gold 281 / claude 44 ====
+   gold  118 (pages 104)   claude   31 (pages  29 / mods  25)   div.row › div.col-12.col-md-8
+   gold   82 (pages  70)   claude   12 (pages  12 / mods  12)   div.row › div.col-12
+   gold   13 (pages  10)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold   13 (pages  13)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-8 › div.row
+   gold   12 (pages  11)   claude    0 (pages   0 / mods   0)   div › div.row
+   gold    8 (pages   4)   claude    0 (pages   0 / mods   0)   div.fundamentalsPanel › div.row
+==== carousel: gold 1366 / claude 642 ====
+   gold  457 (pages 302)   claude  403 (pages 284 / mods 172)   div.row › div.col-12.col-md-8
+   gold  423 (pages 288)   claude  239 (pages 150 / mods 115)   div.row › div.col-12
+   gold   79 (pages  67)   claude    0 (pages   0 / mods   0)   div
+   gold   55 (pages  25)   claude    0 (pages   0 / mods   0)   div.col-12 › div.clickDropContent
+   gold   47 (pages   8)   claude    0 (pages   0 / mods   0)   div.autoCheck.typing › div.margB0.typingContainer
+   gold   38 (pages  30)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+==== flipCardsContainer: gold 543 / claude 239 ====
+   gold  179 (pages 131)   claude  191 (pages 149 / mods  96)   div.row › div.col-12.col-md-8
+   gold  152 (pages  89)   claude   43 (pages  40 / mods  34)   div.row › div.col-12
+   gold   75 (pages  61)   claude    4 (pages   3 / mods   3)   div.row › div.col-12.col-md-12
+   gold   32 (pages  29)   claude    0 (pages   0 / mods   0)   div
+   gold   15 (pages   9)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-10
+   gold   13 (pages  10)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-11
+==== dragAndDrop: gold 1348 / claude 82 ====
+   gold  996 (pages 614)   claude   71 (pages  58 / mods  50)   div.row › div.col-12
+   gold  125 (pages  84)   claude   11 (pages   6 / mods   6)   div.row › div.col-12.col-md-12
+   gold   62 (pages  13)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.viewer › div.item
+   gold   24 (pages  23)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-8 › div.activity.interactive
+   gold   15 (pages  14)   claude    0 (pages   0 / mods   0)   div.col-12 › div.activity.interactive
+   gold   14 (pages  14)   claude    0 (pages   0 / mods   0)   div.activity.interactive › div.row
+==== multiChoiceQuiz: gold 710 / claude 3 ====
+   gold  406 (pages 279)   claude    2 (pages   2 / mods   2)   div.row › div.col-12
+   gold  130 (pages  20)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.viewer › div.item
+   gold   28 (pages  17)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold   15 (pages   2)   claude    0 (pages   0 / mods   0)   ol › li
+   gold   14 (pages   3)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.paddingLR.viewer › div.item
+   gold   12 (pages   2)   claude    0 (pages   0 / mods   0)   div.item
+==== dropQuiz: gold 259 / claude 21 ====
+   gold  172 (pages 138)   claude   17 (pages  17 / mods  11)   div.row › div.col-12
+   gold   26 (pages  20)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold   18 (pages   5)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.viewer › div.item
+   gold    9 (pages   6)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-8 › div.activity.interactive
+   gold    5 (pages   1)   claude    0 (pages   0 / mods   0)   div.accordion.wordHighlighter › div.accContent.wordHighlighter
+   gold    0 (pages   0)   claude    4 (pages   4 / mods   4)   div.row › div.col-12.col-md-8
+==== wordSelect: gold 101 / claude 0 ====
+   gold   68 (pages  51)   claude    0 (pages   0 / mods   0)   div.row › div.col-12
+   gold    8 (pages   5)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold    5 (pages   1)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.viewer › div.item
+   gold    5 (pages   1)   claude    0 (pages   0 / mods   0)   div.accordion › div.accContent
+   gold    4 (pages   1)   claude    0 (pages   0 / mods   0)   div.tab-content › div.tab-pane
+   gold    3 (pages   1)   claude    0 (pages   0 / mods   0)   div › div
+==== hintSlider: gold 155 / claude 32 ====
+   gold   63 (pages  34)   claude   29 (pages  25 / mods  21)   div.row › div.col-12.col-md-8
+   gold   39 (pages  16)   claude    2 (pages   2 / mods   2)   div.row › div.col-12
+   gold    9 (pages   5)   claude    1 (pages   1 / mods   1)   div.row › div.col-12.col-md-12
+   gold    8 (pages   2)   claude    0 (pages   0 / mods   0)   div.row.sassoonI-text › div.col-12.col-md-3.offset-md-0.paddingLR
+   gold    6 (pages   2)   claude    0 (pages   0 / mods   0)   div.row.sassoonI-text › div.col-12.col-md-4.offset-md-0.paddingLR
+   gold    5 (pages   1)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-8.paddingR
+==== TKmodal: gold 256 / claude 310 ====
+   gold   62 (pages  29)   claude  210 (pages  26 / mods  19)   div.row › div.col-12
+   gold   77 (pages  26)   claude   92 (pages  34 / mods  20)   div.row › div.col-12.col-md-8
+   gold   20 (pages   1)   claude    0 (pages   0 / mods   0)   div.align-items-stretch.bg-white.gx-0.gy-4.mb-5.row.row-cols-2.row-cols-lg-4.row-cols-md-3.row-cols-xl-5 › div.col.px-2
+   gold   17 (pages   2)   claude    0 (pages   0 / mods   0)   div.inquiryPanel › div.row
+   gold    9 (pages   1)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-4.col-sm-4.offset-md-0
+   gold    8 (pages   1)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-3.col-sm-6.offset-md-0
+==== speechBubble: gold 1048 / claude 764 ====
+   gold  404 (pages 220)   claude  651 (pages 220 / mods  80)   div.row › div.col-12.col-md-8
+   gold  120 (pages  60)   claude  107 (pages  40 / mods  21)   div.row › div.col-12
+   gold  138 (pages  29)   claude    0 (pages   0 / mods   0)   div
+   gold   34 (pages   6)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.viewer › div.item
+   gold   25 (pages  17)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold   18 (pages  10)   claude    0 (pages   0 / mods   0)   div.row › div.col-sm-8
+==== table-responsive: gold 1463 / claude 4349 ====
+   gold    0 (pages   0)   claude 3073 (pages 993 / mods 339)   div.cv2-interactive › div
+   gold  268 (pages 181)   claude  835 (pages 436 / mods 193)   div.row › div.col-12.col-md-8
+   gold  239 (pages 178)   claude   47 (pages  42 / mods  38)   div.row › div.col-12
+   gold  147 (pages  60)   claude   69 (pages  34 / mods  24)   div.accordion › div.accContent
+   gold    0 (pages   0)   claude  124 (pages  80 / mods  44)   div › div.bilingual-unbuilt.cv2-interactive
+   gold  108 (pages   8)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.margB0.viewer › div.item
+==== videoSection: gold 4503 / claude 3199 ====
+   gold 1509 (pages 923)   claude 1396 (pages 788 / mods 257)   div.row › div.col-12.col-md-8
+   gold  474 (pages  97)   claude  894 (pages 173 / mods 127)   div.col-12.col-md-12.viewer › div.item
+   gold  440 (pages 283)   claude  582 (pages 330 / mods 150)   div.row › div.col-12
+   gold  660 (pages 127)   claude  125 (pages  30 / mods  28)   div.col-12.col-md-12.viewer › div.item.video
+   gold  300 (pages 113)   claude  136 (pages  60 / mods  22)   div.accordion › div.accContent
+   gold  160 (pages  37)   claude    1 (pages   1 / mods   1)   div.col-12 › div.clickDropContent
+==== audioPlayer: gold 433 / claude 863 ====
+   gold   53 (pages  33)   claude  447 (pages 181 / mods  99)   div.row › div.col-12.col-md-8
+   gold   60 (pages  34)   claude  416 (pages  80 / mods  57)   div.row › div.col-12
+   gold   40 (pages   8)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.viewer › div.item
+   gold   27 (pages   3)   claude    0 (pages   0 / mods   0)   div.question › p
+   gold   19 (pages   9)   claude    0 (pages   0 / mods   0)   div.tab-content › div.tab-pane
+   gold   17 (pages   3)   claude    0 (pages   0 / mods   0)   div.row › div.col.mcqQuestion
+==== clickDropContent: gold 2682 / claude 558 ====
+   gold  866 (pages 201)   claude  418 (pages 102 / mods  56)   div.row › div.col-12.col-md-8
+   gold  891 (pages 217)   claude  123 (pages  52 / mods  34)   div.row › div.col-12
+   gold  123 (pages  51)   claude    0 (pages   0 / mods   0)   div
+   gold  114 (pages   5)   claude    0 (pages   0 / mods   0)   div.col-12 › div.col-12
+   gold   94 (pages  26)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold   57 (pages   5)   claude    0 (pages   0 / mods   0)   div › div.inquiryPanel
+==== dropbox: gold 724 / claude 205 ====
+   gold  551 (pages 404)   claude  197 (pages 148 / mods  94)   div.row › div.col-12.col-md-8
+   gold   90 (pages  42)   claude    0 (pages   0 / mods   0)   div.clickDropContent.noBorder.row › div.col-12.col-md-8
+   gold   19 (pages  18)   claude    8 (pages   8 / mods   6)   div.row.supervisor › div.col-12.col-md-8
+   gold   15 (pages  14)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold   10 (pages   9)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-10
+   gold    8 (pages   3)   claude    0 (pages   0 / mods   0)   div.row › div.col-8
+==== wordHighlighter: gold 149 / claude 0 ====
+   gold   30 (pages  19)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-8
+   gold   27 (pages  23)   claude    0 (pages   0 / mods   0)   div
+   gold   14 (pages   5)   claude    0 (pages   0 / mods   0)   div › div.fundamentalsPanel
+   gold    9 (pages   7)   claude    0 (pages   0 / mods   0)   div.accordion › div.accContent
+   gold    7 (pages   5)   claude    0 (pages   0 / mods   0)   div.row › div.col-12
+   gold    6 (pages   6)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+==== typing: gold 631 / claude 0 ====
+   gold  283 (pages 177)   claude    0 (pages   0 / mods   0)   div.row › div.col-12
+   gold  114 (pages  21)   claude    0 (pages   0 / mods   0)   div.col-12.col-md-12.viewer › div.item
+   gold   45 (pages   6)   claude    0 (pages   0 / mods   0)   tr › td
+   gold   43 (pages  24)   claude    0 (pages   0 / mods   0)   div.row › div.col-12.col-md-12
+   gold   27 (pages   4)   claude    0 (pages   0 / mods   0)   div.col-12 › div.typingSlides
+   gold   17 (pages   3)   claude    0 (pages   0 / mods   0)   div.col-12 › div.col-12.col-md-12

@@ -1,0 +1,195 @@
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+  ~ HPFUN302_0_0.html: -6 +6
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+HPFUN302: identical 0 / changed 1
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+  ~ MXEO201_3_0.html: -3 +3
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+  ~ MXEO201_7_0.html: -2 +2
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+MXEO201: identical 8 / changed 2
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+  ~ MXFL102_2_0.html: -1 +1
+     - <div class="item">
+     + <div class="item video">
+MXFL102: identical 8 / changed 1
+MXFL103: identical 8 / changed 0
+  ~ MXFL104_1_0.html: -1 +1
+     - <div class="item">
+     + <div class="item video">
+MXFL104: identical 5 / changed 1
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+  ~ MXFUN01_13_0.html: -1 +1
+     - <div class="item">
+     + <div class="item video">
+MXFUN01: identical 18 / changed 1
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+  ~ OSAH401_3_0.html: -1 +1
+     - <div class="item">
+     + <div class="item video">
+OSAH401: identical 4 / changed 1
+OSAH501: identical 6 / changed 0
+  ~ OSAI101_1_0.html: -5 +5
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+OSAI101: identical 2 / changed 1
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+  ~ OSAI401_1_0.html: -5 +5
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+OSAI401: identical 4 / changed 1
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+  ~ OSBY301_3_0.html: -5 +5
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+OSBY301: identical 3 / changed 1
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+  ~ OSOH101_2_0.html: -1 +1
+     - <div class="item">
+     + <div class="item video">
+OSOH101: identical 3 / changed 1
+  ~ OSOH201_1_0.html: -6 +6
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+     + <div class="item video">
+OSOH201: identical 3 / changed 1
+OSOH301: identical 4 / changed 0
+  ~ OSOH401_1_0.html: -2 +2
+     - <div class="item">
+     - <div class="item">
+     + <div class="item video">
+     + <div class="item video">
+  ~ OSOH401_3_0.html: -1 +1
+     - <div class="item">
+     + <div class="item video">
+OSOH401: identical 3 / changed 2
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+
+TOTAL: identical 626 / changed 14 / missing 0 over 98 modules
+CHANGED: HPFUN302/HPFUN302_0_0.html MXEO201/MXEO201_3_0.html MXEO201/MXEO201_7_0.html MXFL102/MXFL102_2_0.html MXFL104/MXFL104_1_0.html MXFUN01/MXFUN01_13_0.html OSAH401/OSAH401_3_0.html OSAI101/OSAI101_1_0.html OSAI401/OSAI401_1_0.html OSBY301/OSBY301_3_0.html OSOH101/OSOH101_2_0.html OSOH201/OSOH201_1_0.html OSOH401/OSOH401_1_0.html OSOH401/OSOH401_3_0.html

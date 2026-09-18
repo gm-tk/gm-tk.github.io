@@ -8977,7 +8977,17 @@ class InteractiveBuilder {
 				}
 			}
 			if (capOpen) chunks.push(cfg.caption_close);
-			items.push(Utils.FillTemplate(cfg.item, { parts: chunks.join("\n") }));
+			let _slide = Utils.FillTemplate(cfg.item, { parts: chunks.join("\n") });
+			// ROUND 396 — A CAROUSEL VIDEO SLIDE WITH A CAPTION IS `item video`: the gold gives a
+			// captioned video slide that class 273 / 298 = 0.92 (a video-only slide is a tie and stays
+			// `item`). Data carousel.item_video_with_caption; env ITEMVIDEO_OFF (= the r395 output).
+			const _ivc = tpl?.item_video_with_caption;
+			if (_ivc && _ivc.enabled !== false && capOpen && /\bvideoSection\b/.test(_slide)
+				&& !(typeof process !== "undefined" && process.env && process.env[_ivc.env ?? "ITEMVIDEO_OFF"])) {
+				const _from = _ivc.from ?? "<div class=\"item\">", _to = _ivc.to ?? "<div class=\"item video\">";
+				if (_slide.startsWith(_from)) _slide = _to + _slide.slice(_from.length);
+			}
+			items.push(_slide);
 		}
 		return [tpl.open, ...items, tpl.close].join("\n");
 	}

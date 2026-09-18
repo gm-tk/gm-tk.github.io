@@ -1,0 +1,25 @@
+==== gold: video-carrying items by their OTHER content → class ====
+   video-only                 gold n= 907  item video  496 (0.55)   claude n= 713 item video  103
+        Inquiry/1-10 Blended Literacy            n= 240 item video  160 (0.67)
+        Standard/1-10 Blended Literacy           n= 149 item video   47 (0.32)
+        Standard/Leaving to Learn                n= 127 item video   83 (0.65)
+        Inquiry/ConnectED                        n=  95 item video   57 (0.60)
+        Inquiry/EXPlore                          n=  59 item video    0 (0.00)
+        Standard/1-10 Mathematics                n=  56 item video   42 (0.75)
+   p+caption                  gold n= 298  item video  273 (0.92)   claude n= 193 item video   22
+        Inquiry/1-10 Blended Literacy            n=  51 item video   51 (1.00)
+        Fundamentals/None                        n=  46 item video   45 (0.98)
+        Standard/1-10 English                    n=  38 item video   38 (1.00)
+        Standard/Leaving to Learn                n=  38 item video   28 (0.74)
+        Standard/NCEA1                           n=  20 item video   20 (1.00)
+        Standard/ANZH                            n=  18 item video   18 (1.00)
+   p                          gold n=  95  item video   12 (0.13)   claude n=   0 item video    0
+        Inquiry/1-10 Blended Literacy            n=  54 item video    0 (0.00)
+   heading+p                  gold n=  67  item video   22 (0.33)   claude n=   7 item video    0
+        Standard/Leaving to Learn                n=  34 item video   14 (0.41)
+   heading                    gold n=  60  item video    7 (0.12)   claude n=   2 item video    0
+   heading+p+img              gold n=   4  item video    0 (0.00)   claude n=   0 item video    0
+   p+img                      gold n=   3  item video    2 (0.67)   claude n=   0 item video    0
+   heading+p+caption+img      gold n=   1  item video    1 (1.00)   claude n=   0 item video    0
+   img                        gold n=   1  item video    0 (0.00)   claude n=   0 item video    0
+   p+caption+img              gold n=   1  item video    1 (1.00)   claude n=   2 item video    0

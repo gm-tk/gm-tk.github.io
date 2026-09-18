@@ -1,0 +1,5 @@
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 416 module(s) (must be freshly regenerated)
+  unaffected  : 0 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  !! NOT REGENERATED — 3 affected module(s) older than the source edit (truly stale): TRR104 TRR105 TRR115
+     => regen them:  python3 _batch_plan.py --codes TRR104 TRR105 TRR115

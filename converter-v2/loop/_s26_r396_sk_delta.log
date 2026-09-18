@@ -1,0 +1,7 @@
+scaffold 53.6835 -> 53.6835 (+0.0000pp); RAW 37.784 -> 37.780; pairs 1956 -> 1956, skipped 0 -> 0
+movers 0: up 0 / down 0; pp-sum +0.0; outside affected 0
+worst: []
+best: []
+>= 50: 1163 -> 1163 up: [] down: []
+>= 75: 195 -> 195 up: [] down: []
+>= 90: 18 -> 18 up: [] down: []
