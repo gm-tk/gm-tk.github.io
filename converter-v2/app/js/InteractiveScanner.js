@@ -1534,6 +1534,20 @@ class InteractiveScanner {
 		const idRe = new RegExp(cfg.id_pattern ?? "^\\**\\s*(\\d{1,2}[A-Z])\\b[\\s.:–—-]*\\**\\s*(\\S.*)$");
 		const minTitle = cfg.min_title_chars ?? 2;
 		const win = cfg.same_id_window ?? 3;
+		// ROUND 377 — the WORD form: `[H3] Activity 1A: Title` / `[H3] Activity 2A` (the word, then the
+		// id). r364's probe counted it but the shipped id_pattern starts at the digit, so the heading
+		// shipped free and the box never opened (173 headings / 26 modules; the gold boxes 0.83). The
+		// word list and pattern are data (opener_rule.id_heading_opener.word_form); a match with no
+		// title keeps the heading's own words as the box title (the gold's h3 slot is always filled).
+		const wf = cfg.word_form;
+		const wfOn = wf && wf.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[wf.env || "ACTWORD_OFF"]);
+		let wordRe = null;
+		if (wfOn) {
+			const words = (wf.words ?? ["Activity"]).map((w) => String(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+			const alt = words.map((w) => `${w[0].toUpperCase()}${w.slice(1)}|${w[0].toLowerCase()}${w.slice(1)}|${w.toUpperCase()}`).join("|");
+			wordRe = new RegExp(String(wf.pattern ?? "^\\**\\s*(?:WORDS)\\s+(\\d{1,2}[A-Z])\\b\\s*\\**\\s*[:.–—-]?\\s*(.*)$").replace("WORDS", alt));
+		}
 		const isActOpener = (x, id) => x && x.type === "tag" && x.parse?.primary?.tag === "activity"
 			&& x.parse.primary.directive === "CONTAINER_OPEN"
 			&& (!id || (x.parse.numbers ?? []).some((n) => String(n).toUpperCase() === id));
@@ -1544,10 +1558,26 @@ class InteractiveScanner {
 			const p = it.parse?.primary;
 			if (!p || p.directive !== "ELEMENT" || !tags.has(String(p.tag || "").toLowerCase())) continue;
 			const tail = String(it.blackAfter ?? "").replace(/\s+/g, " ").trim();
-			const m = tail.match(idRe);
+			let m = tail.match(idRe);
+			let viaWord = false;
+			if (!m && wordRe) {
+				m = tail.match(wordRe);
+				if (!m && wf.embedded !== false) {
+					// the word form typed INSIDE the red span — `🔴[H2] Activity 1A🔴 Title` (EXPFUN02,
+					// MXFU302) or `🔴[H2] Activity 1A: Title🔴` (SSFUN07): the embedded text (original
+					// case) joined to the black tail is the same heading
+					const emb = String(normaliser.RenderText(it.text) ?? "").replace(/\s+/g, " ").trim();
+					if (emb) m = [emb, tail].filter(Boolean).join(" ").match(wordRe);
+				}
+				viaWord = !!m;
+			}
 			if (!m) continue;
 			const id = m[1].toUpperCase();
-			const title = m[2].replace(/\*/g, "").trim();
+			let title = m[2].replace(/\*/g, "").trim();
+			// the word form with nothing after the id (`[H3] Activity 2A`): the heading's own words
+			// are the box title (title_fallback "heading"; any other value keeps the r364 skip)
+			const wordFallback = viaWord && title.length < minTitle && (wf.title_fallback ?? "heading") === "heading";
+			if (wordFallback) title = tail.replace(/\*/g, "").trim();
 			if (title.length < minTitle) continue;
 			// "2D shapes" / "3D printing" are dimension words, not ids (MXDB102 lesson 1 caught
 			// live): the writer's activity title starts with a capital / digit / quote / bracket
@@ -1560,7 +1590,7 @@ class InteractiveScanner {
 			if (clash) continue;
 			const parsed = normaliser.Parse(`[Activity ${id}] `);
 			if (!parsed || parsed.primary?.tag !== "activity") continue;
-			it._idHeading = { level: String(p.tag).toLowerCase(), raw: it.text, tail };
+			it._idHeading = { level: String(p.tag).toLowerCase(), raw: it.text, tail, wordForm: viaWord };
 			it.text = `[Activity ${id}]`;
 			it.parse = parsed;
 			it.blackAfter = title;
