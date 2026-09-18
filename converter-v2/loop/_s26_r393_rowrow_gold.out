@@ -1,0 +1,29 @@
+==== gold row-in-row by (parent class, child class) ====
+     655  parent «row» › child «row»  claude 4  subjects [('1-10 Mathematics', 183), ('1-10 Blended Literacy', 109), ('1-10 English', 90), ('Leaving to Learn', 68)]
+           AGH1007.01.html: <div class="row"> <div class="col-md-8 col-12"> <p>The farming of sheep, cattle, and deer in Aotearoa New Zealand are all considered pastoral agricultural systems where the animals are grazed 
+     345  parent «super-content row» › child «row»  claude 352  subjects [('1-10 Blended Literacy', 247), ('Leaving to Learn', 28), ('1-10 Mathematics', 25), ('ConnectED', 16)]
+           ANZH105_03.0.html: <div class="row"> <div class="col-12"> <h3>Supervisor note</h3> </div> <div class="col-12"> 
+      89  parent «row super-content» › child «row»  claude 0  subjects [('Leaving to Learn', 35), ('1-10 Blended Literacy', 18), ('1-10 English', 16), ('1-10 Mathematics', 9)]
+           ANZH104_06.0.html: <div class="row"> <div class="col-12"> <h3>Supervisor</h3> </div> <div class="col-md-12 col-12"> <p>Although we encourage you to venture
+      54  parent «row supervisor» › child «row»  claude 0  subjects [('1-10 Blended Literacy', 40), ('Leaving to Learn', 14)]
+           BLL117-01.html: <div class="row"> <div class="col-md-8 col-12"> <div class="alert solid padding0" style="padding:0.1px"> <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="h
+      33  parent «row» › child «row carousel»  claude 0  subjects [('1-10 Blended Literacy', 20), ('1-10 English', 3), ('1-10 Health and PE', 2), ('Te Marautanga o Aotearoa TMoA', 2)]
+           ANZH101_2.0.html: <div class="row carousel"> <div class="col-12 viewer" align="center"> <div class="item"> <img style="border:0.5px solid black;" class="img-
+      23  parent «row clickDropContent noBorder» › child «row»  claude 0  subjects [('Te ara Whakapuawa -Wellbeing', 12), ('ConnectED', 6), ('Leaving to Learn', 3), ('1-10 English', 2)]
+           CEDT104 Waiata In Motion.html: <div class="row"> <div class="col-md-8 col-12"> <div class="activity" number="1B"> <div class="row"> <div class="col-12"> <h3>Dance with me</h3> <p>Follow the video to learn a
+      19  parent «row selectionBox» › child «row»  claude 0  subjects [('ConnectED', 18), ('1-10 Blended Literacy', 1)]
+           BLL130.html: <div class="row"> <div class=" activityButton reset">Reset</div> </div> </div> </div> 
+      16  parent «row» › child «row flipCardsContainer»  claude 1  subjects [('1-10 Blended Literacy', 7), ('1-10 Health and PE', 6), ('1-10 English', 2), ('NCEA1', 1)]
+           BLL114-02.html: <div class="row flipCardsContainer"> <div class="col-md-4 col-12 paddingLR"> </div> <div class="col-md-
+      14  parent «row wordHighlighter» › child «row»  claude 0  subjects [('1-10 Mathematics', 7), ('1-10 English', 5), ('1-10 Blended Literacy', 1), ('NCEA1', 1)]
+           BLL133-02.html: <div class="row"> <div class="col-md-12"> <div class="table-responsive"> <table class="table table-bordered noHo
+      13  parent «row» › child «row supervisor»  claude 0  subjects [('1-10 Blended Literacy', 9), ('Leaving to Learn', 2), ('1-10 English', 1), ('Online Safety (OS9000)', 1)]
+           BLL125-03.html: <div class="row supervisor"> <div class="col-md-8 col-12"> <div class="activity super-content-button" number="2C"> <div class="super-content row"> 
+      12  parent «row flipCardsContainer» › child «row»  claude 0  subjects [('None', 6), ('1-10 English', 2), ('Online Safety (OS9000)', 2), ('1-10 Social Science', 2)]
+           ENGR202_1.0.html: <div class="row"> <div class="col paddingLR"> </div> <div class="col paddingLR"> </div> <div class
+       9  parent «row mcqQuestion» › child «row mcqOptions syllCountTableCol»  claude 0  subjects [('1-10 Blended Literacy', 9)]
+           BLL212-2.0.html: <div class="row mcqOptions syllCountTableCol"> <p class="mcqOption">1</p> <p class="mcq
+==== Claude row-in-row by (parent, child) ====
+     352  parent «super-content row» › child «row»  gold 345
+       4  parent «row» › child «row»  gold 655
+       1  parent «row» › child «row flipCardsContainer»  gold 16

@@ -332,7 +332,24 @@ class ListsAndRuns {
 		// KEEP leading indentation — it encodes the Word list NESTING level (2 spaces per
 		// w:ilvl, added by DocxExtractor). The extractor emits one block per paragraph,
 		// joined by "\n"; bullets arrive as consecutive lines and group into nested lists.
-		const lines = text.split(/\n+/).filter((l) => l.trim());
+		let lines = text.split(/\n+/).filter((l) => l.trim());
+		// ROUND 393 — GLYPH-ONLY LINE DROP. A free-body line whose whole content is ONE punctuation
+		// glyph (a writer's stray "." / ",", a text-box bracket "[" / "]" left behind after an image,
+		// a broken equation's "+" "=" "–", PNR102's "✔" ticks) shipped as <p>.</p>: Claude 170 on 69
+		// pages / 64 modules, the gold NONE of them (dropped 170 / 170). The line — with its * emphasis
+		// markers removed — must be exactly one character that is not a letter, not a digit, not "_"
+		// and not a kept glyph ("•" stays for the bullet path's own empty-item rule). Free-body text
+		// only (stitch true): the placeholder / built-widget dumps stay a faithful hand-off.
+		// Data flag: body_region.drop_glyph_only_lines. Env toggle: GLYPHLINE_OFF.
+		const _glyphCfg = tpl.body_region?.drop_glyph_only_lines;
+		if (stitch && _glyphCfg && _glyphCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_glyphCfg.env ?? "GLYPHLINE_OFF"])) {
+			const keep = new Set((_glyphCfg.keep ?? ["•"]).map(String));
+			lines = lines.filter((l) => {
+				const g = l.trim(), t = g.replace(/\*/g, "").trim() || g;   // a lone "*" is itself the glyph
+				return !([...t].length === 1 && !/[\p{L}\p{N}_]/u.test(t) && !keep.has(t));
+			});
+		}
 		const indentPer = cfg.indent_spaces_per_level ?? 2;
 		// Sometimes a writer accidentally types a structural tag (e.g. "[body]") in ordinary
 		// BLACK text instead of colouring it red — since only RED text is scanned for [tags],

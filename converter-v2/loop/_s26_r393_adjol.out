@@ -1,0 +1,22 @@
+/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_s26_r393_adjol.py:2: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  """Session 26 Round 7 candidate — ADJACENT SIBLING <ol>s: Claude ships 202 `</ol>\s*<ol>` pairs, the gold 0. What does the gold
+==== Claude pages with an adjacent <ol> pair: 54 pages / 50 modules ====
+   gold FEWER than merged                         32  (0.59)
+   gold MORE than claude                           9  (0.17)
+   SAME count (gold keeps separate lists)          7  (0.13)
+   MERGED (gold ol = claude ol - pairs)            6  (0.11)
+   gold start= use: {'gold ol with start=': 33, 'gold ol': 162}
+   between the gold's consecutive <ol>s (first tags): [('div,div,div,div', 16), ('div,div,div', 9), ('div,div,img,div', 8), ('div,h4,div', 7), ('p', 6), ('(nothing)', 5), ('a,div,div,div', 4), ('div,textarea,div,div', 4)]
+   by template/subject (>=5 pages):
+     Standard/1-10 Mathematics                n= 11  gold 5  MERGED 3  SAME 2  gold 1
+     Standard/NCEA1                           n=  9  gold 8  MERGED 1
+     Standard/Leaving to Learn                n=  8  gold 6  MERGED 1  gold 1
+   examples:
+      AGH1002_5_0 [gold F] claude ol 5 pairs 1 li 14 | gold ol 2 li 4 start= 0 | …Retention</b>: how well the soil holds on to nutrients</li>  ⟂ > <li><b>Nutrient Status</b>: what nutrients are p
+      AGH1005_3_0 [gold F] claude ol 6 pairs 4 li 10 | gold ol 0 li 0 start= 0 | …igher crop yield within agriculture and horticulture.□</li>  ⟂ > <li>Ensuring plant species remain resilient and 
+      ANZH105_5_0 [gold F] claude ol 5 pairs 1 li 12 | gold ol 2 li 7 start= 0 | …d _____ of them are pounamu. Write this as a fraction.</li>  ⟂ > <li>There are ____ objects altogether and _____ 
+      ARFUN04_0_0 [gold F] claude ol 88 pairs 14 li 209 | gold ol 0 li 0 start= 0 | … <ol> <li>In painting and drawings, form is ____</li>  ⟂ > <li>In sculpture, form ____</li> </ol> 
+      CEDK102_0_0 [gold F] claude ol 4 pairs 1 li 7 | gold ol 2 li 17 start= 0 | …lours with filters, or try drawing right on the photo.</li>  ⟂ > <li>After you have finished editing, upload your
+      CEDO202_0_0 [gold M] claude ol 12 pairs 2 li 44 | gold ol 17 li 44 start= 3 | …pes together to create a short selection of movements.</li>  ⟂ > <li>You could try the moves you made to some dif
+      CHFUN06_0_0 [gold M] claude ol 5 pairs 2 li 9 | gold ol 10 li 27 start= 4 | …ers</p> <p>.</p> <ol> <li>Top to bottom</li>  ⟂ > <li>Left to right</li> </ol> <ol
+      ENGI102_6_0 [SAME c] claude ol 2 pairs 1 li 2 | gold ol 2 li 7 start= 0 | …oing up and down (the vertical/latitude line) labelled</li>  ⟂ > <li>If we follow the line up till it meets the l

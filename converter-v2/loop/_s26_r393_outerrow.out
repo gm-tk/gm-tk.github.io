@@ -1,0 +1,49 @@
+==== the gold's outer body form per group (pages) — Claude in brackets ====
+   group                                          WRAPPER   MIXED (f  flat (ro  flat (si  single-r  no-row
+   ALL                                             1[   0]     9[   0]  1597[1728]   239[ 157]     1[   0]   117[  79]   wrapper-ish 0.01
+   template=Standard                               1[   0]     9[   0]  1465[1581]   219[ 148]     1[   0]    44[  10]   wrapper-ish 0.01
+   template=Inquiry                                0[   0]     0[   0]    58[  67]     5[   5]     0[   0]    35[  26]   wrapper-ish 0.00
+   template=Fundamentals                           0[   0]     0[   0]    26[  26]     0[   1]     0[   0]    38[  37]   wrapper-ish 0.00
+   template=Bilingual                              0[   0]     0[   0]    48[  54]    15[   3]     0[   0]     0[   6]   wrapper-ish 0.00
+   tmpl+subj=Standard/NCEA1                        1[   0]     1[   0]   288[ 299]    38[  29]     0[   0]     0[   0]   wrapper-ish 0.01
+   tmpl+subj=Standard/1-10 Mathematics             0[   0]     1[   0]   292[ 289]    29[  33]     0[   0]     1[   1]   wrapper-ish 0.00
+   tmpl+subj=Standard/1-10 English                 0[   0]     3[   0]   254[ 262]    36[  32]     1[   0]     2[   2]   wrapper-ish 0.01
+   tmpl+subj=Standard/1-10 Blended Literacy        0[   0]     2[   0]   166[ 232]    46[   8]     0[   0]    26[   0]   wrapper-ish 0.01
+   tmpl+subj=Standard/Leaving to Learn             0[   0]     2[   0]   161[ 175]    17[   5]     0[   0]     1[   1]   wrapper-ish 0.01
+   tmpl+subj=Standard/Online Safety (OS9000)       0[   0]     0[   0]   105[ 102]    25[  28]     0[   0]     0[   0]   wrapper-ish 0.00
+   tmpl+subj=Standard/ANZH                         0[   0]     0[   0]    64[  72]    14[   6]     0[   0]     0[   0]   wrapper-ish 0.00
+   tmpl+subj=Standard/ConnectED                    0[   0]     0[   0]    63[  65]     8[   6]     0[   0]     0[   0]   wrapper-ish 0.00
+   tmpl+subj=Bilingual/Te Marautanga o Aotearoa TMoA    0[   0]     0[   0]    48[  54]    15[   3]     0[   0]     0[   6]   wrapper-ish 0.00
+   tmpl+subj=Inquiry/ConnectED                     0[   0]     0[   0]    22[  30]     4[   4]     0[   0]    17[   9]   wrapper-ish 0.00
+   tmpl+subj=Standard/None                         0[   0]     0[   0]    39[  39]     2[   1]     0[   0]     0[   1]   wrapper-ish 0.00
+   tmpl+subj=Standard/1-10 Social Science          0[   0]     0[   0]    21[  32]     3[   0]     0[   0]     8[   0]   wrapper-ish 0.00
+   series=BLL                                      0[   0]     2[   0]   174[ 240]    46[   9]     0[   0]    37[  10]   wrapper-ish 0.01
+   series=MXFL                                     0[   0]     0[   0]    86[  85]     8[   9]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=ENGI                                     0[   0]     1[   0]    70[  76]    12[   8]     1[   0]     0[   0]   wrapper-ish 0.01
+   series=ANZH                                     0[   0]     0[   0]    64[  72]    14[   6]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=HIS                                      0[   0]     1[   0]    75[  75]     1[   2]     0[   0]     0[   0]   wrapper-ish 0.01
+   series=PES                                      0[   0]     0[   0]    62[  61]    13[  14]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=XDLS                                     0[   0]     0[   0]    67[  75]     6[   0]     0[   0]     2[   0]   wrapper-ish 0.00
+   series=AGH                                      0[   0]     0[   0]    65[  70]     9[   4]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=ENGJ                                     0[   0]     0[   0]    53[  52]     7[   7]     0[   0]     0[   1]   wrapper-ish 0.00
+   series=MXFU                                     0[   0]     0[   0]    53[  49]     3[   6]     0[   0]     0[   1]   wrapper-ish 0.00
+   series=TRR                                      0[   0]     0[   0]    45[  48]    10[   1]     0[   0]     0[   6]   wrapper-ish 0.00
+   series=ENGC                                     0[   0]     0[   0]    47[  47]     5[   6]     0[   0]     2[   1]   wrapper-ish 0.00
+   series=ENGS                                     0[   0]     1[   0]    44[  46]     7[   6]     0[   0]     0[   0]   wrapper-ish 0.02
+   series=MXDI                                     0[   0]     0[   0]    48[  48]     3[   4]     0[   0]     1[   0]   wrapper-ish 0.00
+   series=PHE                                      0[   0]     0[   0]    41[  45]     8[   4]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=ENGR                                     0[   0]     1[   0]    40[  41]     5[   5]     0[   0]     0[   0]   wrapper-ish 0.02
+   series=MXDB                                     0[   0]     0[   0]    37[  36]     4[   5]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=MXEO                                     0[   0]     0[   0]    35[  36]     5[   4]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=MXEX                                     0[   0]     1[   0]    33[  35]     6[   5]     0[   0]     0[   0]   wrapper-ish 0.03
+   series=HES                                      1[   0]     0[   0]    31[  33]     6[   5]     0[   0]     0[   0]   wrapper-ish 0.03
+   series=XGF                                      0[   0]     0[   0]    36[  36]     2[   2]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=CEDO                                     0[   0]     0[   0]    33[  33]     3[   2]     0[   0]     1[   2]   wrapper-ish 0.00
+   series=CEDT                                     0[   0]     0[   0]    20[  29]     7[   4]     0[   0]     9[   3]   wrapper-ish 0.00
+   series=XMES                                     0[   0]     1[   0]    29[  31]     2[   1]     0[   0]     0[   0]   wrapper-ish 0.03
+   series=XLP                                      0[   0]     0[   0]    20[  26]     8[   1]     0[   0]     0[   1]   wrapper-ish 0.00
+   series=OSBY                                     0[   0]     0[   0]    20[  18]     3[   5]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=OSOH                                     0[   0]     0[   0]    18[  18]     5[   5]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=OSAI                                     0[   0]     0[   0]    18[  17]     4[   5]     0[   0]     0[   0]   wrapper-ish 0.00
+   series=OSGM                                     0[   0]     0[   0]    17[  17]     5[   5]     0[   0]     0[   0]   wrapper-ish 0.00
+   examples: {'flat (single row of cols)': 'AGH1001.00.html', 'flat (rows of cols)': 'AGH1001.01.html', 'no-row': 'ARFUN01.html', 'MIXED (first row holds rows, more rows follow)': 'BLL125-03.html', 'single-row other': 'ENGI405_4.0.html', 'WRAPPER (one outer row of rows)': 'HES1003_7.0.html'}

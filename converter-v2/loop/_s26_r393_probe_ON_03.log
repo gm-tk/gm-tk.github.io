@@ -1,0 +1,175 @@
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+  ~ PES1007_4_0.html: -1 +0
+     - <p>-</p>
+PES1007: identical 11 / changed 1
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+  ~ PNR102_2_0.html: -8 +0
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+PNR102: identical 2 / changed 1
+  ~ PNR104_2_0.html: -8 +0
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+     - <p reo>✔</p>
+PNR104: identical 2 / changed 1
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+  ~ SSCI205_5_0.html: -3 +1
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: thens valued ideas, discussion, and d
+     - <p>-</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: making together. Sparta valued streng
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: thens valued ideas, discussion, and d
+SSCI205: identical 9 / changed 1
+  ~ SSFUN01_0_0.html: -1 +0
+     - <p>*</p>
+SSFUN01: identical 0 / changed 1
+  ~ SSFUN02_0_0.html: -1 +0
+     - <p>-</p>
+SSFUN02: identical 0 / changed 1
+SSFUN03: identical 1 / changed 0
+  ~ SSFUN05_0_0.html: -1 +0
+     - <p>:</p>
+SSFUN05: identical 0 / changed 1
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_1_0.html: -1 +0
+     - <p>[</p>
+TEDC401: identical 7 / changed 1
+  ~ TEDC402_7_0.html: -2 +0
+     - <p>-</p>
+     - <p>-</p>
+  ~ TEDC402_8_1.html: -1 +0
+     - <h4>.</h4>
+TEDC402: identical 9 / changed 2
+TEFUN01: identical 1 / changed 0
+  ~ TEFUN02_0_0.html: -1 +0
+     - <p>.</p>
+TEFUN02: identical 0 / changed 1
+  ~ TEFUN03_0_0.html: -3 +0
+     - <p>,</p>
+     - <p>,</p>
+     - <p>!</p>
+TEFUN03: identical 0 / changed 1
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+  ~ TEFUN06_0_0.html: -2 +0
+     - <p>.</p>
+     - <p>.</p>
+TEFUN06: identical 0 / changed 1
+TEFUN07: identical 1 / changed 0
+  ~ TEFUN08_0_0.html: -2 +0
+     - <p>]</p>
+     - <p>.</p>
+TEFUN08: identical 0 / changed 1
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+  ~ XDLS502_3_0.html: -2 +0
+     - <p>)</p>
+     - <p>.</p>
+  ~ XDLS502_4_0.html: -1 +0
+     - <p>)</p>
+XDLS502: identical 3 / changed 2
+  ~ XDLS901_3_0.html: -1 +0
+     - <p>[</p>
+XDLS901: identical 4 / changed 1
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+  ~ XDLS906_2_0.html: -1 +0
+     - <p>.</p>
+XDLS906: identical 7 / changed 1
+XDLS908: identical 9 / changed 0
+  ~ XDLS909_3_0.html: -1 +0
+     - <p>[</p>
+XDLS909: identical 4 / changed 1
+XDLS911: identical 2 / changed 0
+  ~ XDLS912_5_0.html: -1 +0
+     - <p>[</p>
+XDLS912: identical 5 / changed 1
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+  ~ XMES201_1_0.html: -1 +0
+     - <p>.</p>
+XMES201: identical 5 / changed 1
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+  ~ XTAS102_1_0.html: -1 +0
+     - <p>[</p>
+XTAS102: identical 5 / changed 1
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 526 / changed 22 / missing 0 over 105 modules
+CHANGED: PES1007/PES1007_4_0.html PNR102/PNR102_2_0.html PNR104/PNR104_2_0.html SSCI205/SSCI205_5_0.html SSFUN01/SSFUN01_0_0.html SSFUN02/SSFUN02_0_0.html SSFUN05/SSFUN05_0_0.html TEDC401/TEDC401_1_0.html TEDC402/TEDC402_7_0.html TEDC402/TEDC402_8_1.html TEFUN02/TEFUN02_0_0.html TEFUN03/TEFUN03_0_0.html TEFUN06/TEFUN06_0_0.html TEFUN08/TEFUN08_0_0.html XDLS502/XDLS502_3_0.html XDLS502/XDLS502_4_0.html XDLS901/XDLS901_3_0.html XDLS906/XDLS906_2_0.html XDLS909/XDLS909_3_0.html XDLS912/XDLS912_5_0.html XMES201/XMES201_1_0.html XTAS102/XTAS102_1_0.html

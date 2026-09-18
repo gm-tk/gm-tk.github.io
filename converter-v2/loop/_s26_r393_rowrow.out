@@ -1,0 +1,50 @@
+==== (A) ROW-IN-ROW (div.row directly inside div.row) — Claude vs gold ====
+   ALL                                            claude  357 (pages 261 / mods 136)  gold 1400 (pages 527)
+   template=Standard                              claude  276 (pages   0 / mods   0)  gold 1019 (pages   0)
+   template=Inquiry                               claude   74 (pages   0 / mods   0)  gold  252 (pages   0)
+   template=Fundamentals                          claude    7 (pages   0 / mods   0)  gold  111 (pages   0)
+   template=Bilingual                             claude    0 (pages   0 / mods   0)  gold   18 (pages   0)
+   tmpl+subj=Standard/1-10 Blended Literacy       claude  179 (pages 152 / mods  81)  gold  351 (pages 174)
+   tmpl+subj=Inquiry/1-10 Blended Literacy        claude   57 (pages  12 / mods  11)  gold  143 (pages  13)
+   tmpl+subj=Standard/Leaving to Learn            claude   36 (pages  30 / mods   9)  gold  143 (pages  70)
+   tmpl+subj=Standard/1-10 English                claude   24 (pages  15 / mods   8)  gold  121 (pages  54)
+   tmpl+subj=Standard/1-10 Mathematics            claude   18 (pages  17 / mods   5)  gold  208 (pages  76)
+   tmpl+subj=Standard/Online Safety (OS9000)      claude   11 (pages  11 / mods  10)  gold   30 (pages  19)
+   tmpl+subj=Inquiry/ConnectED                    claude   10 (pages   5 / mods   4)  gold   47 (pages  12)
+   tmpl+subj=Inquiry/Leaving to Learn             claude    7 (pages   5 / mods   2)  gold   20 (pages   8)
+   tmpl+subj=Standard/ANZH                        claude    6 (pages   6 / mods   2)  gold   47 (pages  14)
+   tmpl+subj=Fundamentals/1-10 Mathematics        claude    5 (pages   4 / mods   1)  gold   35 (pages   5)
+   tmpl+subj=Fundamentals/1-10 English            claude    1 (pages   1 / mods   1)  gold   18 (pages   6)
+   tmpl+subj=Fundamentals/1-10 Technology         claude    1 (pages   1 / mods   1)  gold    8 (pages   2)
+   tmpl+subj=Standard/NCEA1                       claude    0 (pages   0 / mods   0)  gold   77 (pages  23)
+   tmpl+subj=Standard/None                        claude    0 (pages   0 / mods   0)  gold   28 (pages   8)
+   tmpl+subj=Standard/EXPlore                     claude    0 (pages   0 / mods   0)  gold    9 (pages   5)
+   tmpl+subj=Inquiry/EXPlore                      claude    0 (pages   0 / mods   0)  gold   29 (pages   3)
+   tmpl+subj=Fundamentals/1-10 Health and PE      claude    0 (pages   0 / mods   0)  gold   35 (pages  10)
+   tmpl+subj=Bilingual/Te Marautanga o Aotearoa TMoA claude    0 (pages   0 / mods   0)  gold   18 (pages   9)
+   tmpl+subj=Fundamentals/1-10 Social Science     claude    0 (pages   0 / mods   0)  gold    7 (pages   5)
+   tmpl+subj=Inquiry/Te ara Whakapuawa -Wellbeing claude    0 (pages   0 / mods   0)  gold   13 (pages   2)
+==== (B) PUNCTUATION-ONLY PARAGRAPHS — Claude vs gold ====
+   ALL                                            claude  170 (pages  69 / mods  64)  gold   64 (pages  14)
+   template=Standard                              claude  112 (pages   0 / mods   0)  gold   45 (pages   0)
+   template=Fundamentals                          claude   25 (pages   0 / mods   0)  gold    8 (pages   0)
+   template=Inquiry                               claude   17 (pages   0 / mods   0)  gold    0 (pages   0)
+   template=Bilingual                             claude   16 (pages   0 / mods   0)  gold   11 (pages   0)
+   tmpl+subj=Standard/1-10 English                claude   46 (pages   7 / mods   6)  gold    4 (pages   1)
+   tmpl+subj=Standard/1-10 Mathematics            claude   30 (pages   9 / mods   9)  gold    8 (pages   2)
+   tmpl+subj=Standard/NCEA1                       claude   18 (pages  11 / mods   9)  gold   19 (pages   2)
+   tmpl+subj=Bilingual/Te Marautanga o Aotearoa TMoA claude   16 (pages   2 / mods   2)  gold   11 (pages   3)
+   tmpl+subj=Inquiry/1-10 Blended Literacy        claude   10 (pages   2 / mods   2)  gold    0 (pages   0)
+   tmpl+subj=Fundamentals/1-10 Technology         claude    8 (pages   4 / mods   4)  gold    0 (pages   0)
+   tmpl+subj=Standard/Leaving to Learn            claude    7 (pages   6 / mods   5)  gold    0 (pages   0)
+   tmpl+subj=Fundamentals/1-10 Arts               claude    5 (pages   2 / mods   2)  gold    0 (pages   0)
+   tmpl+subj=Fundamentals/1-10 English            claude    2 (pages   1 / mods   1)  gold    6 (pages   1)
+   tmpl+subj=Standard/EXPlore                     claude    0 (pages   0 / mods   0)  gold    9 (pages   2)
+   (A) examples:
+      ANZH104_6_0: <div class="row"> <div class="col-12"> <h3>Supervisor note</h3> </div> <div class="col-12"> <p>Alt
+      ANZH105_3_0: <div class="row"> <div class="col-12"> <h3>Supervisor note</h3> </div> <div class="col-12"> </d
+      ANZH105_4_0: <div class="row"> <div class="col-12"> <h3>Supervisor note</h3> </div> <div class="col-12"> <p>Stories 
+      ANZH105_5_0: <div class="row"> <div class="col-12"> <h3>Supervisor note</h3> </div> <div class="col-12"> <p>Stories 
+      ANZH105_6_0: <div class="row"> <div class="col-12"> <h3>Supervisor note</h3> </div> <div class="col-12"> <p>Stories 
+   (B) Claude glyphs: [('.', 32), (',', 20), ('[', 19), (']', 16), ('✔', 16), ('–', 13), ('*', 8), ('+', 8), ('-', 6), (':', 6)]
+   (B) gold glyphs: [('?', 38), ('°', 6), ('✓', 5), ('✗', 5), ('+', 3), (',', 3), ('.', 3), ('❌', 1)]

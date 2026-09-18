@@ -1,0 +1,25 @@
+gold UNCLOSED-row events: 281 on 213 pages / 144 modules; CLOSED rows 29345
+by group: [('Standard/1-10 Mathematics', 62), ('Standard/1-10 Blended Literacy', 46), ('Standard/1-10 English', 32), ('Standard/Leaving to Learn', 27), ('Standard/NCEA1', 26), ('Standard/ANZH', 15), ('Inquiry/1-10 Blended Literacy', 15), ('Inquiry/EXPlore', 12), ('Fundamentals/1-10 Mathematics', 9), ('Standard/Online Safety (OS9000)', 9)]
+the column's LAST child before the un-closure (unclosed / closed → share):
+     70 /  2316 → 0.03   div.activity.interactive
+     58 /  6568 → 0.01   p
+     32 /  2077 → 0.02   div.activity
+     26 /   940 → 0.03   div.row
+     11 /  4362 → 0.00   (empty)
+      7 /   386 → 0.02   div.accordion
+      7 /   247 → 0.03   div.table-responsive
+      7 /   602 → 0.01   p.mcqQuestionText
+      5 /   390 → 0.01   div.activity.dropbox
+      4 /   409 → 0.01   div.alertActivity
+      4 /    57 → 0.07   div.col-12
+      4 /   371 → 0.01   div.row.carousel
+      3 /   100 → 0.03   div.activity.alertPadding
+      3 /   806 → 0.00   div.alert
+the column's FIRST child in unclosed rows: [('div.activity.interactive', 71), ('h3', 59), ('div.activity', 33), ('p', 30), ('h2', 15), ('(empty)', 11), ('p.mcqQuestionText', 7), ('div.row', 6)]
+examples:
+   AGH1007.01.html last «div.activity.interactive» first «div.activity.interactive» depth 2
+   ANZH101_1.0.html last «p» first «h2» depth 2
+   ANZH101_1.0.html last «p» first «h3» depth 3
+   ANZH101_1.0.html last «div.activity» first «div.activity» depth 4
+   ANZH101_1.0.html last «div.row» first «p» depth 5
+   ANZH101_1.0.html last «div.activity.alertPadding» first «div.activity.alertPadding» depth 6

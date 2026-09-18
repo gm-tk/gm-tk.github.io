@@ -1753,7 +1753,8 @@ class Config {
 	// ROUND 390 (260619.61): the supervisor note's explicit closer makes the panel a SPAN — a [Supervisor Button] … [End Supervisor button] pair holds everything between (callouts.by_tag.'supervisor note'.explicit_close_span, env SUPSPAN_OFF; #explicitCloseAhead accepts a tag_promote source's closer on the own-row call and stops at an [Activity] opener; stack mode span-own, emit() opens no content row meanwhile). Leaving to Learn paired 22 / 0; 21 pages / 3 modules (XDLS904 / 905 / 906); scoped ship #2 since the r388 full.
 	// ROUND 391 (260619.62): the own-row supervisor panel's text column is `col-12 col-md-12` in the Leaving to Learn family (callouts.by_tag.'supervisor note'.inner_row.text_col_by_subject, env PANELCOL_OFF; gold 28 / 37 = 0.76 on 35 pages / 15 modules; the activity-owned panel untouched). 28 pages / 6 modules; scoped ship #3 since the r388 full.
 	// ROUND 392 (260619.63): adjacent sibling lists are one list — a bare </ul> + whitespace + <ul> in the live body joins (body_region.merge_adjacent_lists, ListsAndRuns.MergeAdjacentLists at the TypedNumberList seam, env ULMERGE_OFF; Claude 106 pairs on 54 pages vs the gold's 3 = 0.97; ol deliberately not listed). 51 pages / 32 modules; scoped ship #4 since the r388 full.
-	static AppVersion = "260619.63";
+	// ROUND 393 (260619.64): a glyph-only line renders nothing — a free-body line whose whole content is one punctuation glyph (a stray . or , / a text-box [ ] / a broken equation's + = – / PNR102's ✔) never ships as a <p> (body_region.drop_glyph_only_lines, ListsAndRuns.renderBlackText's line filter, env GLYPHLINE_OFF; Claude 170 on 69 pages vs the gold's 0 = dropped 1.00). 68 pages / 60 modules; scoped ship #5 since the r388 full.
+	static AppVersion = "260619.64";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

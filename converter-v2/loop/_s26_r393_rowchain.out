@@ -1,0 +1,14 @@
+gold plain row>row: 815
+chains:
+     422  div#body > div.row
+      48  div.col-md-8.col-12 > div.activity > div.fundamentalsPanel > div.row
+      36  div#body > div.row > div.row
+      34  div.row > div.col-12 > div.multiChoiceQuiz > div.row
+      33  div.row > div.col-md-8.col-12 > div.activity > div.row
+      29  div#body > div.fundamentalsPanel > div.row
+      26  div#body > div.inquiryPanel > div.row
+      21  div.row
+previous sibling of the inner row: [('div.row', 483), ('div.col-md-8.col-12', 147), ('(first)', 44), ('div.col-12', 35), ('div.col-md-12.col-12', 14), ('div.row.supervisor', 11), ('div.col-md-10.col-12', 10), ('div.col.mcqQuestion', 8)]
+inner row's first child: [('div.col-md-8.col-12', 552), ('div.col-md-12.col-12', 35), ('div.col-12', 26), ('div.col.mcqQuestion', 24), ('div.col-md-8.col-12.paddingR', 21), ('div.col-8', 17), ('div.col-md-10.col-12', 15), ('div.activityButton.mcqReset', 13)]
+position: [('later', 771), ('first child', 44)]
+by group: [('Standard/1-10 Mathematics', 191), ('Fundamentals/1-10 Mathematics', 115), ('Standard/1-10 English', 89), ('Standard/1-10 Blended Literacy', 70), ('Standard/NCEA1', 69), ('Standard/Leaving to Learn', 66), ('Inquiry/1-10 Blended Literacy', 36), ('Standard/ANZH', 34), ('Standard/None', 33), ('Inquiry/EXPlore', 29)]
