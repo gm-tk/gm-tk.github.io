@@ -1740,7 +1740,8 @@ class Config {
 	// ROUND 377 (260619.48): the writer's `[Hn] Activity <id>[: Title]` heading opens the numbered activity box — the r364 id-heading opener's WORD form (the words in the black tail or inside the red span, a lower-case letter after the word, a bare `Activity 2A` keeping its own words as the title). opener_rule.id_heading_opener.word_form, env ACTWORD_OFF; 61 pages / 27 modules, skeleton 52.987 → 53.055. The autonomous loop's session 24 Round 1.
 	// ROUND 378 (260619.49): the unclassified activity resumes free body at the [Body] after its table — the writer's last prose and the upload button leave the hand-off dump and stay inside the box (a table or a widget invocation ahead keeps the walk). opener_rule.unclassified_activity_lead.post_table_resume, env UNCLASSTAIL_OFF; 121 pages / 90 modules, skeleton 53.055 → 53.076. The autonomous loop's session 24 Round 2.
 	// ROUND 379 (260619.50): the mode opener before a bundle-OWNED numbered activity ships no empty box — the r84 / r202 merges see only an unconsumed numbered opener. activity_wrapper.mode_opener_merge.owned_target, env MODEOWNED_OFF; 25 pages / 9 modules, skeleton 53.076 → 53.087. The autonomous loop's session 24 Round 3.
-	static AppVersion = "260619.50";
+	// ROUND 380 (260619.51): the mode opener's title heading goes into the OWNED box — no title-only box before a bundle-owned numbered activity (the r379 walk crosses the title heading). owned_target.past_title_headings, env MODETITLE_OFF; 22 pages / 9 modules; scoped ship #3 since the r377 full.
+	static AppVersion = "260619.51";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1667,6 +1667,8 @@ class ContentConverter {
 				// already inside. So this opener does NOT open a second box and does NOT
 				// auto-close anything — it only contributes its own lead text into the box that's
 				// already open.
+				// ROUND 380 — a title heading the mode-opener walk handed to the OWNED box renders there.
+				if (it.consumedBy === "activity-mode-merge-title") continue;
 				if (it.consumedBy === "activity-mode-merge") {
 					if (it.blackAfter && it.blackAfter.trim()) {
 						emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
@@ -1983,6 +1985,9 @@ class ContentConverter {
 						const _tailIsId = bundle._idFromTail && bundle.activityId
 							&& bundle.activityOwner.blackAfter
 							&& bundle.activityOwner.blackAfter.replace(/[*\s]+/g, "").toUpperCase() === String(bundle.activityId).toUpperCase();
+						// ROUND 380 — the title heading a mode opener's walk carried into this owned box (see the
+						// activity CONTAINER_OPEN branch): rendered FIRST, so it is the <h3> the gold opens with.
+						for (const _t of (bundle._r380Title ?? [])) leadStream.push({ type: "black", text: _t, _ownerTitle: true });
 						if (bundle.activityOwner.blackAfter?.trim() && !_tailIsId) {
 							leadStream.push({ type: "black", text: bundle.activityOwner.blackAfter, _ownerTitle: true });
 						}
@@ -2656,15 +2661,52 @@ class ContentConverter {
 						const _motCfg = tpl.activity_wrapper.mode_opener_merge?.owned_target;
 						const _motOn = _motCfg && _motCfg.enabled !== false
 							&& !(typeof process !== "undefined" && process.env && process.env[_motCfg.env || "MODEOWNED_OFF"]);
-						if (_motOn && !myId && !myContent && it.consumedBy === undefined
-							&& nxt?.type === "tag" && nxt.parse?.primary?.tag === "activity"
-							&& nxt.parse?.primary?.directive === "CONTAINER_OPEN"
-							&& nxt.consumedBy !== undefined && nxt.consumedBy !== null
-							&& bundles[nxt.consumedBy]?.activityOwner === nxt
-							&& (nxt.parse.numbers?.[0] || nxt._idHeading)) {
-							run.AddNote("info", "ContentConverter",
-								`Page ${page.lessonLabel}: mode [activity] opener suppressed — the numbered activity after it is owned by its widget bundle (round 379, no empty box).`);
-							break;   // suppress this opener's box
+						// ROUND 380 (the autonomous loop's session 24 Round 4) — THE SAME TRIO WITH THE BOX'S OWN
+						// TITLE HEADING BETWEEN THE OPENERS. `[Activity individual]` → `[H3] The laws and rules we
+						// live by` → `[Activity 2A]` (owned): the r202 merge refuses a consumed target and the r379
+						// test above looked only at the NEXT item, so a TITLE-ONLY unnumbered box (just the h3)
+						// shipped beside the owned box (SSFUN06 2A; 42 boxes / 27 pages, the gold ONE numbered box
+						// with the heading inside on 33). With owned_target.past_title_headings the walk skips up to
+						// max_intervening_headings title headings (the r202 predicates); on a hit the mode opener
+						// ships no box and the heading(s) become the OWNED box's title (bundle._r380Title, rendered
+						// first in its lead stream); the heading item is consumed ("activity-mode-merge-title").
+						if (_motOn && !myId && !myContent && it.consumedBy === undefined) {
+							const _ownedOpener = (c) => c?.type === "tag" && c.parse?.primary?.tag === "activity"
+								&& c.parse?.primary?.directive === "CONTAINER_OPEN"
+								&& c.consumedBy !== undefined && c.consumedBy !== null
+								&& bundles[c.consumedBy]?.activityOwner === c
+								&& !!(c.parse.numbers?.[0] || c._idHeading);
+							let _mt = null, _mtHeads = [];
+							if (_ownedOpener(nxt)) _mt = nxt;
+							else if (_motCfg.past_title_headings
+								&& !(typeof process !== "undefined" && process.env && process.env[_motCfg.past_title_headings_env || "MODETITLE_OFF"])) {
+								const _maxH = tpl.activity_wrapper.mode_opener_merge.max_intervening_headings ?? 1;
+								const _tTags = tpl.container_auto_close.activity_close_before.title_heading_tags ?? [];
+								let k = i + 1;
+								while (k < bodyItems.length) {
+									const c = bodyItems[k];
+									if (c.type === "black") { if (!(c.text ?? "").trim()) { k++; continue; } break; }
+									if (c.type !== "tag") break;
+									if (_ownedOpener(c)) { _mt = c; break; }
+									if (c.consumedBy !== undefined) break;
+									const cp = c.parse?.primary;
+									if (!cp) break;
+									if ((_tTags.includes(cp.tag) || renderedHeading(cp) !== null) && _mtHeads.length < _maxH) { _mtHeads.push(c); k++; continue; }
+									break;
+								}
+								if (!_mt) _mtHeads = [];
+							}
+							if (_mt) {
+								const _mtB = bundles[_mt.consumedBy];
+								for (const h of _mtHeads) {
+									const t = (h.blackAfter ?? "").trim() || String(this.#norm.RenderText(h.text) ?? "").replace(/\s+/g, " ").trim();
+									if (t) (_mtB._r380Title ??= []).push(t);
+									h.consumedBy = "activity-mode-merge-title";
+								}
+								run.AddNote("info", "ContentConverter",
+									`Page ${page.lessonLabel}: mode [activity] opener suppressed — the numbered activity after it is owned by its widget bundle (round 379, no empty box${_mtHeads.length ? `; its title heading carried into the owned box, round 380` : ""}).`);
+								break;   // suppress this opener's box
+							}
 						}
 						// MODE-OPENER FORWARD MERGE (module HIS1004's family): an un-numbered activity
 						// opener with no content of its own — a "[Activity individual]", "[Activity

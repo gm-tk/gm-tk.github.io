@@ -1,5 +1,38 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 380, build 260619.51) — THE MODE OPENER'S TITLE HEADING GOES INTO THE OWNED BOX — no title-only box before a bundle-owned numbered activity — the autonomous loop's session 24, Round 4
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+A writer's un-numbered, content-less mode opener (`[Activity individual]` / `[Activity embedded]`) followed by the box's own `[H3]` title and then a numbered `[Activity 2A]` opener that a widget bundle OWNS (the r362 owner form) no longer ships a TITLE-ONLY unnumbered box (just the `<h3>`) beside the owned box: the mode opener ships nothing and the heading becomes the owned box's `<h3>` — the gold's ONE numbered box with the heading inside (SSFUN06 2A `The laws and rules we live by`: gold `activity dropbox number=2A > h3 + p + button`; Claude shipped an `activity > h3` husk then `activity number=2A > h3 Open the table here:`). `activity_wrapper.mode_opener_merge.owned_target.past_title_headings` (+ `past_title_headings_env`), env **`MODETITLE_OFF`** (the r379 next-item-only form); `MODEOWNED_OFF` still turns the whole owned-target rule off.
+
+### 2. WHY IT WAS PICKED — the session's third instrument, then the title-only-box census
+
+- The session's position-free element census (`outputs/_s24_elemcensus.py` — every scaffold-skeleton line signature counted per page on both sides, the per-page |gold − Claude| gap summed per family) ranked the corpus's count gaps; the width / `br` / image-column rows it surfaced were MEASURED and DECLINED (see §6). The activity-box rows led to `outputs/_s24_titleonly.py`: a Claude box whose only content is one heading, directly followed by another box — unnumbered → numbered **25 boxes / 21 pages Standard** (the gold: the heading inside a numbered box WITH content 21 / 25 = 0.84), **16 / 5 pages Fundamentals** (11 / 16), 1 Inquiry. Live run notes on SSFUN06 named the mechanism: r202 merged 2B / 2C / 3B / 3C / 3D / 4B (unconsumed targets), r379 suppressed 2 openers (no heading between), and 1A / 2A / 3A / 4A / 4C / 4D — a title heading between the openers AND an owned target — fell through both: the r202 merge refuses a consumed target, the r379 test looked only at the NEXT item.
+- Authority: the gold (§1b 3); KB 01F says the box opens with its `<h3>` title, no KB rule covers the writer's mode annotation.
+
+### 3. THE FIX
+
+- `ContentConverter` activity CONTAINER_OPEN branch: the r379 test becomes a walk — from the mode opener, skip blank items and up to `mode_opener_merge.max_intervening_headings` title headings (the r202 predicates: `title_heading_tags` or a rendered `[H1]`–`[H5]`, unconsumed); a hit is a bundle-owned numbered (or r377 heading-numbered) opener → the mode opener ships no box, each skipped heading's text (`blackAfter`, else `RenderText` of the span) is pushed onto `bundle._r380Title` and the heading item is consumed as `activity-mode-merge-title` (the loop skips it). The owner lead stream (`bundle.activityOwner` render) pushes `_r380Title` FIRST as `_ownerTitle` lines, so the first becomes the box's `<h3>` and the opener's own tail / lead prose follow as before.
+- OFF = the r379 walk (next item only), byte-identical.
+
+### 4. PROOF
+
+- In-memory A/B probe over all 416 modules (`_s24_r380_probe.cjs`, 4 shards): **`MODETITLE_OFF` = disk 2109 / 2109**; ON **22 pages / 9 modules** (ANZH301 ×3, ANZH304 ×2, ANZH404, HIS1003 ×6, HIS1004 ×6, SSFUN02 / 05 / 06 / 08) — the other 407 byte-identical. Scored on the probe pages with the gate's own `match()` BEFORE regenerating: **17 up / 5 down, pp-sum +30.0**; the dips ≤ 0.9pp are difflib re-alignment on pages that lost a husk box (HIS1003_1_0 −0.9: the husk gone, `Categorising rights` now the owned box's h3 and the instruction sentence a `<p>` — the gold's shape).
+- SCOPED regeneration of the 9 (`_s24_r380_batch_1.sh`, rc 0; scoped ship #3 since the r377 full): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **22 changed / 0 added / 0 removed = the probe's set**; every regenerated page byte-identical to its probe page (51 / 51).
+
+### 5. PROTECTED GATES (`_s24_r380_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **53.087 → 53.102 % (+0.015pp)**, median 53.7, **≥50 1142 → 1143 (+1: ANZH301_3_0 48.8 → 50.0)**, ≥75 182 EXACT, ≥90 15 EXACT, RAW 37.479 → 37.487 % @ 1956 pairs; **22 movers — 17 up / 5 down** (state `_s24_r380_sk_final.json`).
+- compare_structure exact 11643 / EXTRA 172 / MISSING 625 / row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **42 / 4 / 174 / 219** EXACT; tags 9557 / 9557 REAL 0; flipCard divergence 0; every widget verifier at its recorded baseline; 16 selftests GREEN.
+
+### 6. ALSO RECORDED (measured this round, not shipped)
+
+- The `br`-joined paragraph (gold 2169 `<br>` on 693 pages, Claude 2): the soft-break census over every WT (`_s24_softbreak_all.py`, the r227 tool corpus-wide) decides 834 sites three ways — split-p 0.40 / `<br>` 0.26 / spaced 0.33 — the r227 split-p stands; only ENGJ402 / ENGJ403 / HIS1002 join with `<br>` (one developer's habit, below the floor); the other br-joined lines are separate WT paragraphs the human merged editorially (`_s24_brpairs.py`: 557 blocks the human joined / 236 pages, but no WT-shape denominator).
+- Column widths (`_s24_colwidth.py` / `_s24_actwidth.py` / `_s24_gridwidth.py`): the section row is `col-md-8 col-12` on both sides; the gold widens 18 % of activity boxes (dragAndDrop 38 %, per developer — XMES 14 / 20, OSBY 10 / 13 pass 0.60 but ≤ 20 pages); the r46 image | text grid: the gold flattens it to one column as often as it keeps two (Standard 8|4 19 / 50), Fundamentals 8|3 at 14 / 19 on 8 pages — below the floor. An image beside text (`_s24_imgside.py`): full-width ≈ 0.6 of the decided sites — C.
+- The sibling title-only shapes: a NUMBERED title-only box followed by content OUTSIDE it — the writer's `[Important]` / `[Alert]` directly after the opener closes the box where the gold folds the callout INTO the box as `activity alertPadding` (Standard 30 boxes / 27 pages, gold in-box 22 / 30 = 0.73; ANZH401 1A) — the next round's candidate; Fundamentals numbered → unnumbered (20 / 7 pages, MXFUN01) = the same class + the r217 boxes.
+- Ledger: scoped ship #3 since the r377 full. AppVersion 260619.51; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r380.bak` kept).
+
 ## 2026-09-18 (round 379, build 260619.50) — THE MODE OPENER BEFORE A BUNDLE-OWNED NUMBERED ACTIVITY SHIPS NO EMPTY BOX — the autonomous loop's session 24, Round 3
 
 ### 1. WHAT CHANGED, IN ONE LINE
