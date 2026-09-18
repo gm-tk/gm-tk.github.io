@@ -137,7 +137,15 @@ class TablesAndGrids {
 					// Returns null when the cell doesn't match this case, so the caller falls
 					// through to the plain-text rendering below.
 					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, isHdr, norm, links);
-					const content = inline !== null ? inline
+					// ROUND 384: a FREE-BODY cell renderCellInline declines whose ' / '-joined lines include a '• '
+					// bullet renders through the body's own paragraph + list machinery (a lead line → <p>, a bullet
+					// run → <ul><li>) instead of the raw joined string. Data elements.table.cell_bullets; env TBLCELLLIST_OFF.
+					const blOn = !insidePlaceholder && inline === null && !!t.cell_bullets && t.cell_bullets.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[t.cell_bullets.env ?? "TBLCELLLIST_OFF"]);
+					const blParts = blOn ? this.cellParts(c) : [];
+					const blHit = blParts.some((p) => /^•\s*\S/.test(p));
+					const content = blHit ? ListsAndRuns.renderBlackText(blParts.join("\n"), run, Array.isArray(links) ? links : [], true).join("")
+						: inline !== null ? inline
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
 						: ListsAndRuns.inlineMarkup(c.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, ""), [], !insidePlaceholder);   // only weave hover/definition markers into a FREE-BODY cell, never a placeholder dump

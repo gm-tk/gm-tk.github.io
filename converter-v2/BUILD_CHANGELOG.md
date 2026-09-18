@@ -1,5 +1,22 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 384, build 260619.55) — DECLINED ON THE GATE'S OWN SCORER, SHIPPED INERT: a kept table cell's bullet lines as a `<ul>` list — the autonomous loop's session 24, Round 8 (no regeneration; the corpus is byte-identical to r383, every r383 baseline stands)
+
+### 1. WHAT WAS BUILT
+
+`TablesAndGrids.contentTable` renders a kept table cell's raw text — the extractor joins a cell's paragraphs with the `in_cell_line_break` marker " / " and keeps the writer's "• " bullets as literal text (the r383 dip ENGJ403_4_0: `… / • Set up the everyday life of the character(s) quickly. / • Then create a problem …`). The round's rule: a FREE-BODY cell that `renderCellInline` declines and whose " / "-parts include a "• " line renders through `ListsAndRuns.renderBlackText` — the body's own paragraph + nested-list machinery (a lead line → `<p>`, a bullet run → `<ul><li>`). Data `elements.table.cell_bullets {enabled, env TBLCELLLIST_OFF}` — **shipped with `enabled: false`**; the hook is a no-op and the corpus is byte-identical to r383 (probe 2109 / 2109 in BOTH states).
+
+### 2. THE MEASUREMENT THAT PICKED IT, AND THE ONE THAT DECLINED IT
+
+- Cell census (`outputs/_s24_cellpara.py` → `_s24_cellpara.log`, every paired page, tables outside widgets): **1053 Claude cells / 229 pages / 109 modules** carry the join or a bullet, **337 bullet cells on 71 pages / 46 modules**. Paired to the gold cell by its first words, a bullet cell is a `<ul>` list in the gold **0.67** (33 of 49; plain 12, p 3, br 1); a bullets-only cell a bare `<ul>` in the td (29 / 29), a lead + bullets cell `<p>lead</p><ul>` (4 / 4) — above the floor and the consensus at CELL level.
+- The in-memory probe over all 416 (`_s24_r384_probe.cjs`): OFF = disk 2109 / 2109; ON changes **84 pages / 56 modules**. Scored BEFORE regenerating with the gate's own `match()` (`_s24_r384_pagescore.py`): **12 up / 61 down / 6 same, pp-sum −32.3**. Split by the gold page (`_s24_r384_onscore.json`): on the **35 pages whose gold has NO `<table>` at all** — the gold rebuilt the writer's table as an accordion (AGH1008 lesson 3's feed table = a 3-panel accordion), prose or a widget, the A1 substitution class — **2 up / 30 down, −43.8**; and even on the **44 pages whose gold keeps a table, 10 up / 31 down (+11.5)**: the richer cell (`p` + `ul` + `li` lines inside a `td`) adds lines that difflib cannot place against the gold's own cell where the surrounding table differs, so the cell-level 0.67 does not survive the page-level alignment. The gate is the arbiter (§4 hold-or-improve): DECLINED, the flag off, the mechanism kept for a re-open with a table-level discriminator (which tables the gold keeps as tables — the same question as r347's tableFixed and the D10-3 backlog).
+
+### 3. GATES
+
+No page changed; every r383 baseline stands (skeleton 53.250 / 1148 / 185 / 15, RAW 37.560; compare_structure 11643 / 172 / 625; body_compare 42 / 4 / 173 / 218; clean 2079 / 2102; leak 26 / 23); the 16 selftests GREEN (`_s24_r384_selftests.log`).
+
+**Ledger:** no ship (no regeneration; the ledger stays at scoped #5 since the r377 full) · data `elements.table.cell_bullets` (enabled false) · env `TBLCELLLIST_OFF` (moot) · engine `TablesAndGrids.js` (`contentTable`: the `blHit` path) · tools `outputs/_s24_cellpara.py` + `_s24_cellpara.log`, `_s24_r384_probe.cjs` + `_s24_r384_probe_run.sh` + the probe logs / `_s24_r384_codes*` / `_s24_r384_changed_modules.txt` / `_s24_r384_pagescore.py` + `_s24_r384_onscore.json` / `_s24_r384_entry.md` + `_s24_r384_finalise.py`.
+
 ## 2026-09-18 (round 383, build 260619.54) — A KEPT TABLE'S FIRST ROW WITH A LONG CELL IS A DATA ROW (`td`), NOT A HEADER (`th`) — the autonomous loop's session 24, Round 7
 
 ### 1. WHAT CHANGED, IN ONE LINE
