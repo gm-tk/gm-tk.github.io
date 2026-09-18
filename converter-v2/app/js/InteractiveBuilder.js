@@ -4732,7 +4732,38 @@ class InteractiveBuilder {
 			if (front === null || back === null) return null;   // any unclear cell → fall back
 			cards.push(Utils.FillTemplate(tpl.card, { front, back }));
 		}
-		return [tpl.container_open, ...cards, tpl.container_close].join("\n");
+		return [tpl.container_open, ...this.#flipCardsByCount(tpl, cards, run), tpl.container_close].join("\n");
+	}
+
+	/**
+	 * ROUND 395 — THE FLIP-CARD COLUMN WIDTH FOLLOWS THE CARD COUNT. Over the gold's
+	 * flipCardsContainer groups a 4-card group's cards are col-md-6 (0.76) and a 2-card
+	 * group's col-md-6 (0.86); 3 and 5+ cards keep col-md-4 (the template default). Claude
+	 * shipped every card col-md-4. Swaps the data default for the by-count class in each
+	 * finished card (the first occurrence = the wrapper column). Data
+	 * flipCard.card_col_by_count (+ exclude_subjects_by_count: English's 4-card tie, ConnectED /
+	 * NCEA1's col-md-3 lead, NCEA1 / TEDC's 2-card forms); env FLIPCOL_OFF (= the r394 output).
+	 * @param {Object} tpl - the flipCard template block
+	 * @param {string[]} cards - the finished card html strings
+	 * @param {Object} run - the conversion run (moduleCode → module_meta.subject)
+	 * @returns {string[]}
+	 */
+	static #flipCardsByCount(tpl, cards, run) {
+		const cfg = tpl?.card_col_by_count;
+		if (!cfg || cfg.enabled === false || !Array.isArray(cards)) return cards;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "FLIPCOL_OFF"]) return cards;
+		const to = (cfg.by_count ?? {})[String(cards.length)];
+		// per-subject exclusions (a tie or the other form leads there — see _exclude_doc); the
+		// subject-less modules are the empty string
+		const excl = (cfg.exclude_subjects_by_count ?? {})[String(cards.length)];
+		if (Array.isArray(excl) && excl.length) {
+			const meta = DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")];
+			const subj = String(meta?.subject ?? "");
+			if (excl.some((x) => String(x) === subj)) return cards;
+		}
+		const from = cfg.default ?? "col-md-4 col-12 paddingLR";
+		if (!to || to === from) return cards;
+		return cards.map((c) => String(c).replace(`class="${from}"`, `class="${to}"`));
 	}
 
 	/**
@@ -4895,7 +4926,7 @@ class InteractiveBuilder {
 			bundle.instructions = [...(bundle.instructions ?? [])];
 			for (const n of notes) if (n && !seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
 		}
-		return [tpl.container_open, ...built, tpl.container_close].join("\n");
+		return [tpl.container_open, ...this.#flipCardsByCount(tpl, built, run), tpl.container_close].join("\n");
 	}
 
 	/**
@@ -12671,7 +12702,7 @@ class InteractiveBuilder {
 			if (front === null || back === null) return null;        // any unclear card → whole widget falls back
 			cards.push(Utils.FillTemplate(tpl.card, { front, back }));
 		}
-		return cards.length ? [tpl.container_open, ...cards, tpl.container_close].join("\n") : null;
+		return cards.length ? [tpl.container_open, ...this.#flipCardsByCount(tpl, cards, run), tpl.container_close].join("\n") : null;
 	}
 
 	/**
@@ -12748,7 +12779,7 @@ class InteractiveBuilder {
 			if (front === null || back === null) return null;
 			cards.push(Utils.FillTemplate(tpl.card, { front, back }));
 		}
-		return cards.length ? [tpl.container_open, ...cards, tpl.container_close].join("\n") : null;
+		return cards.length ? [tpl.container_open, ...this.#flipCardsByCount(tpl, cards, run), tpl.container_close].join("\n") : null;
 	}
 
 	/**

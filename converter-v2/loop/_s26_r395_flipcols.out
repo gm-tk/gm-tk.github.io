@@ -1,0 +1,51 @@
+==== flipCardsContainer: (cards, column class) — gold vs Claude ====
+   cards  3  «col-12 col-md-4 paddingLR»   gold  100 (pages  70)   claude   64 (pages  51 / mods  44)
+   cards  6  «col-12 col-md-4 paddingLR»   gold   38 (pages  38)   claude   25 (pages  24 / mods  19)
+   cards  4  «col-12 col-md-4 paddingLR»   gold    2 (pages   2)   claude   57 (pages  49 / mods  43)
+   cards  4  «col-12 col-md-6 paddingLR»   gold   48 (pages  39)   claude    0 (pages   0 / mods   0)
+   cards  5  «col-12 col-md-4 paddingLR»   gold   19 (pages  19)   claude   22 (pages  22 / mods  20)
+   cards  2  «col-12 col-md-6 paddingLR»   gold   39 (pages  28)   claude    0 (pages   0 / mods   0)
+   cards  8  «col-12 col-md-4 paddingLR»   gold   10 (pages  10)   claude   17 (pages  15 / mods  11)
+   cards  9  «col-12 col-md-4 paddingLR»   gold   27 (pages  17)   claude    0 (pages   0 / mods   0)
+   cards  2  «col-12 col-md-4 paddingLR»   gold    8 (pages   8)   claude   19 (pages  18 / mods  14)
+   cards  1  «col-12 col-md-12 paddingLR»   gold   17 (pages  16)   claude    0 (pages   0 / mods   0)
+   cards  4  «col-12 col-md-3 paddingLR»   gold   16 (pages  13)   claude    0 (pages   0 / mods   0)
+   cards  4  «col-12 col-md-6 col-sm-6 paddingLR»   gold    9 (pages   7)   claude    5 (pages   5 / mods   4)
+   cards  1  «col-12 col-md-4 paddingLR»   gold    1 (pages   1)   claude   10 (pages   8 / mods   7)
+   cards  2  «col-6 col-md-6 paddingLR»   gold   11 (pages   4)   claude    0 (pages   0 / mods   0)
+   cards 12  «col-12 col-md-4 paddingLR»   gold   10 (pages   3)   claude    0 (pages   0 / mods   0)
+   cards  7  «col-12 col-md-4 paddingLR»   gold    4 (pages   3)   claude    5 (pages   5 / mods   5)
+container classes — gold: [('flipCardsContainer row', 514), ('flipCardsContainer row sassoon-text', 19), ('flipCardsContainer g-3 justify-content-center mb-4 row', 3), ('flipCardsContainer row sassoonI-text', 2), ('flipCardsContainer justify-content-center row', 2)]  claude: [('flipCardsContainer row', 239)]
+by subject (gold → claude), the top keys:
+   1-10 English                       gold [((3, 'col-12 col-md-4 paddingLR'), 20), ((4, 'col-12 col-md-6 paddingLR'), 9), ((4, 'col-12 col-md-3 paddingLR'), 7)]   claude [((4, 'col-12 col-md-4 paddingLR'), 21), ((3, 'col-12 col-md-4 paddingLR'), 19), ((5, 'col-12 col-md-4 paddingLR'), 8)]
+   Leaving to Learn                   gold [((2, 'col-12 col-md-6 paddingLR'), 15), ((3, 'col-12 col-md-4 paddingLR'), 11), ((4, 'col-12 col-md-6 paddingLR'), 5)]   claude [((4, 'col-12 col-md-4 paddingLR'), 9), ((6, 'col-12 col-md-4 paddingLR'), 9), ((8, 'col-12 col-md-4 paddingLR'), 7)]
+   Online Safety (OS9000)             gold [((3, 'col-12 col-md-4 paddingLR'), 8), ((4, 'col-12 col-md-6 paddingLR'), 8), ((6, 'col-12 col-md-4 paddingLR'), 7)]   claude [((3, 'col-12 col-md-4 paddingLR'), 9), ((4, 'col-12 col-md-4 paddingLR'), 9), ((6, 'col-12 col-md-6 col-sm-6 paddingLR'), 5)]
+   1-10 Blended Literacy              gold [((9, 'col-12 col-md-4 paddingLR'), 19), ((3, 'col-12 col-md-4 paddingLR'), 16), ((12, 'col-12 col-md-4 paddingLR'), 9)]   claude [((3, 'col-12 col-md-4 paddingLR'), 2), ((8, 'col-12 col-md-4 paddingLR'), 1), ((6, 'col-12 col-md-4 paddingLR'), 1)]
+   ConnectED                          gold [((3, 'col-12 col-md-4 paddingLR'), 7), ((6, 'col-12 col-md-4 paddingLR'), 6), ((4, 'col-12 col-md-3 paddingLR'), 4)]   claude [((6, 'col-12 col-md-4 paddingLR'), 8), ((3, 'col-12 col-md-4 paddingLR'), 6), ((8, 'col-12 col-md-4 paddingLR'), 5)]
+   1-10 Mathematics                   gold [((4, 'col-12 col-md-6 paddingLR'), 13), ((3, 'col-12 col-md-4 paddingLR'), 10), ((1, 'col-12 col-md-12 paddingLR'), 7)]   claude [((4, 'col-12 col-md-4 paddingLR'), 2), ((3, 'col-12 col-md-4 paddingLR'), 2), ((8, 'col-12 col-md-4 paddingLR'), 1)]
+   None                               gold [((3, 'col-12 col-md-4 paddingLR'), 12), ((2, 'col-12 col-md-6 paddingLR'), 4), ((4, 'col-12 col-md-6 paddingLR'), 3)]   claude [((3, 'col-12 col-md-4 paddingLR'), 13), ((2, 'col-12 col-md-4 paddingLR'), 5), ((4, 'col-12 col-md-4 paddingLR'), 3)]
+   1-10 Health and PE                 gold [((3, 'col-6 col-md-4 paddingR'), 8), ((2, 'col-6 col-md-4 paddingR'), 5), ((1, 'col-12 col-md-8'), 5)]   claude [((6, 'col-12 col-md-4 paddingLR'), 1), ((1, 'col-12 col-md-4 paddingLR'), 1)]
+   Te ara Whakapuawa -Wellbeing       gold [((2, 'col-6 col-md-6 paddingLR'), 11), ((1, 'col-12 col-md-8 offset-2'), 4), ((1, 'col-6 col-md-6 paddingLR'), 3)]   claude [((4, 'col-12 col-md-4 paddingLR'), 2), ((3, 'col-12 col-md-4 paddingLR'), 1), ((7, 'col-12 col-md-4 paddingLR'), 1)]
+   NCEA1                              gold [((3, 'col-12 col-md-4 paddingLR'), 3), ((9, 'col-12 col-md-4 paddingLR'), 2), ((4, 'col-12 col-md-3 paddingLR'), 2)]   claude [((3, 'col-12 col-md-4 paddingLR'), 3), ((4, 'col-12 col-md-4 paddingLR'), 2), ((6, 'col-12 col-md-4 paddingLR'), 1)]
+==== per subject, the gold's 2-card and 4-card column classes in full (Claude pages with such groups in brackets) ====
+   1-10 English                       2 cards  gold {'col-12 col-md-6 paddingLR': 6, 'row': 1, 'col-12 col-md-5 col-sm-6 paddingLR': 2}   claude {'col-12 col-md-4 paddingLR': 6}
+   1-10 English                       4 cards  gold {'col-12 col-md-3 paddingLR': 7, 'col-12 col-md-12 paddingLR': 1, 'col-12 col-md-6 paddingLR': 9, 'col-6 col-md-6 col-sm-6 paddingLR': 1, 'col-12 col-md-3 col-sm-6 paddingLR': 1, 'col-6 col-md-3 paddingLR': 1}   claude {'col-12 col-md-4 paddingLR': 21}
+   Leaving to Learn                   2 cards  gold {'col-12 col-md-6 paddingLR': 15, 'col-12 col-md-4 paddingLR': 2}   claude {'col-12 col-md-4 paddingLR': 2, 'col-12 col-md-6 col-sm-6 paddingLR': 1}
+   Leaving to Learn                   4 cards  gold {'col-12 col-md-6 paddingLR': 5, 'col-6 col-md-6 paddingLR': 3, 'col-12 col-md-6 col-sm-6 paddingLR': 2, 'col-6 col-md-3 paddingLR': 3}   claude {'col-12 col-md-4 paddingLR': 9}
+   Online Safety (OS9000)             2 cards  gold {'col-12 col-md-6 paddingLR': 2, 'col-12 col-md-6 col-sm-6 paddingLR': 6, 'row': 1}   claude {'col-12 col-md-4 paddingLR': 1, 'col-12 col-md-6 col-sm-6 paddingLR': 1}
+   Online Safety (OS9000)             4 cards  gold {'col-12 col-md-6 paddingLR': 8, 'col-12 col-md-6 col-sm-6 paddingLR': 5, 'col-12 col-md-3 paddingLR': 1, 'col-12 col-sm-6 paddingLR': 1}   claude {'col-12 col-md-6 col-sm-6 paddingLR': 5, 'col-12 col-md-4 paddingLR': 9}
+   1-10 Mathematics                   2 cards  gold {'col-12 col-md-6 paddingLR': 4}   claude {}
+   1-10 Mathematics                   4 cards  gold {'col-12 col-md-6 paddingLR': 13, 'col-12 col-md-3 paddingLR': 1, 'col-12 col-md-4 paddingLR': 1}   claude {'col-12 col-md-4 paddingLR': 2}
+   1-10 Health and PE                 2 cards  gold {'col-5 col-md-4 px-2': 1, 'col-6 col-md-3 paddingR': 1, 'col-6 paddingR': 1, 'col-6 col-md-6 paddingR': 3, 'col-6 col-md-4 paddingR': 5}   claude {}
+   1-10 Health and PE                 4 cards  gold {'col-6 col-md-3 paddingR': 4, 'col-12 col-md-6 paddingLR': 1}   claude {}
+   ConnectED                          2 cards  gold {'col-12 col-md-6 paddingLR': 2, 'col-12 col-md-4 paddingLR': 1}   claude {'col-12 col-md-4 paddingLR': 1}
+   ConnectED                          4 cards  gold {'col-6 paddingLR': 1, 'col-12 col-md-6 paddingLR': 3, 'col-12 col-md-3 paddingLR': 4}   claude {'col-12 col-md-4 paddingLR': 4}
+   Te ara Whakapuawa -Wellbeing       2 cards  gold {'col-6 col-md-6 paddingLR': 11}   claude {}
+   Te ara Whakapuawa -Wellbeing       4 cards  gold {'col-12 col-md-6 paddingLR': 2, 'col-12 col-md-6 col-sm-6 paddingLR': 2, 'col-12 col-md-4 paddingLR': 1}   claude {'col-12 col-md-4 paddingLR': 2}
+   None                               2 cards  gold {'col-12 col-md-8 offset-md-2': 1, 'col-12 col-md-4 paddingLR': 3, 'col-12 col-md-6 paddingLR': 4}   claude {'col-12 col-md-4 paddingLR': 5}
+   None                               4 cards  gold {'col-12 col-md-6 paddingLR': 3, 'col-6 paddingLR': 1}   claude {'col-12 col-md-4 paddingLR': 3}
+   NCEA1                              2 cards  gold {'col-12 col-md-4 paddingLR': 2}   claude {'col-12 col-md-4 paddingLR': 1}
+   NCEA1                              4 cards  gold {'col-12 col-md-3 paddingLR': 2, 'col-12 col-md-6 paddingLR': 1}   claude {'col-12 col-md-4 paddingLR': 2}
+   1-10 Social Science                2 cards  gold {'row': 1}   claude {'col-12 col-md-4 paddingLR': 2}
+   ANZH                               2 cards  gold {'col-12 col-md-6 paddingLR': 4}   claude {}
+   1-10 Technology                    4 cards  gold {'col-12 col-md-6 paddingLR': 1}   claude {'col-12 col-md-4 paddingLR': 2}

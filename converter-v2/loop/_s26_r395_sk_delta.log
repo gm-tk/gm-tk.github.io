@@ -1,0 +1,7 @@
+scaffold 53.6736 -> 53.6835 (+0.0099pp); RAW 37.779 -> 37.784; pairs 1956 -> 1956, skipped 0 -> 0
+movers 16: up 15 / down 1; pp-sum +19.4; outside affected 0
+worst: [(-0.2, 'TEFUN08_0_0.html'), (0.2, 'ENFUN07_0_0.html'), (0.3, 'TEFUN02_0_0.html'), (0.5, 'CHFUN04_0_0.html'), (0.6, 'MXFL301_1_0.html'), (0.7, 'XGF9006_1_0.html')]
+best: [(1.1, 'OSGM401_1_0.html'), (1.3, 'OSGM101_2_0.html'), (1.5, 'ENGC401_4_0.html'), (1.9, 'OSSC501_2_0.html'), (2.5, 'ENFUN01_0_0.html'), (5.4, 'ENGJ402_7_0.html')]
+>= 50: 1163 -> 1163 up: [] down: []
+>= 75: 194 -> 195 up: [('OSOH201', 'OSOH201_2_0.html')] down: []
+>= 90: 18 -> 18 up: [] down: []

@@ -1755,7 +1755,8 @@ class Config {
 	// ROUND 392 (260619.63): adjacent sibling lists are one list — a bare </ul> + whitespace + <ul> in the live body joins (body_region.merge_adjacent_lists, ListsAndRuns.MergeAdjacentLists at the TypedNumberList seam, env ULMERGE_OFF; Claude 106 pairs on 54 pages vs the gold's 3 = 0.97; ol deliberately not listed). 51 pages / 32 modules; scoped ship #4 since the r388 full.
 	// ROUND 393 (260619.64): a glyph-only line renders nothing — a free-body line whose whole content is one punctuation glyph (a stray . or , / a text-box [ ] / a broken equation's + = – / PNR102's ✔) never ships as a <p> (body_region.drop_glyph_only_lines, ListsAndRuns.renderBlackText's line filter, env GLYPHLINE_OFF; Claude 170 on 69 pages vs the gold's 0 = dropped 1.00). 68 pages / 60 modules; scoped ship #5 since the r388 full.
 	// ROUND 394 (260619.65): the clickDrop buttons sit directly in the column — the built widget's inner <div class="row"> is dropped (interactive.clickDrop.no_row_wrapper, InteractiveBuilder.#cdWrap, env CDROW_OFF; the gold's 385 groups: parent = a column 0.78, an inner row 0.05; Claude wrapped 127 / 128). 122 pages / 77 modules; scoped ship #6 since the r388 full.
-	static AppVersion = "260619.65";
+	// ROUND 395 (260619.66): the flip-card column width follows the card count — a 2-card or 4-card group's cards are col-md-6 col-12 paddingLR (interactive.flipCard.card_col_by_count + exclude_subjects_by_count, InteractiveBuilder.#flipCardsByCount, env FLIPCOL_OFF; the gold 0.86 / 0.76; English's 4-card tie, ConnectED / NCEA1's col-md-3 lead, NCEA1 / TEDC's 2-card forms excluded). 39 pages / 37 modules; scoped ship #7 since the r388 full — the next ship is the FULL backstop.
+	static AppVersion = "260619.66";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1927,6 +1927,28 @@
 				"meaning"
 			],
 			"container_open": "<div class=\"row flipCardsContainer\">",
+			"card_col_by_count": {
+				"_doc": "ROUND 395 (the autonomous loop's session 26 Round 9 — the census outputs/_s26_r395_flipcols.py). THE FLIP-CARD COLUMN WIDTH FOLLOWS THE CARD COUNT: over the gold's flipCardsContainer groups a 4-card group's cards are `col-md-6 col-12 paddingLR` 0.76 (48 + 9 col-sm-6 of 75; col-md-3 16, col-md-4 2) and a 2-card group's 0.86 (39 + 11 col-6 of 58; col-md-4 8); 3 cards and 5+ cards are col-md-4 (the template default). Claude shipped every card col-md-4 (4-card groups 57 on 49 pages / 43 modules, 2-card 19 on 18 pages / 14 modules). A 1-card group is col-md-12 in the gold (17 of 27 = 0.63) but on 8 Claude pages — under the floor, not listed. `#flipCardsByCount` swaps `default` for the by_count class in each finished card at the four tpl.card join sites; the image-front card_image_front family is untouched. OFF = the r394 output.",
+				"enabled": true,
+				"env": "FLIPCOL_OFF",
+				"default": "col-md-4 col-12 paddingLR",
+				"by_count": {
+					"2": "col-md-6 col-12 paddingLR",
+					"4": "col-md-6 col-12 paddingLR"
+				},
+				"_exclude_doc": "Per subject (module_meta.subject; the subject-less modules are the empty string): the gold's 4-card form is a TIE in 1-10 English (col-md-6 10 / col-md-3 9) and col-md-3-led in ConnectED (4 / 3) and NCEA1 (2 / 1); its 2-card form is col-md-4 in NCEA1 (2 / 2) and a tie in the subject-less TEDC modules (col-md-6 4 / col-md-4 3). Those keep the template default.",
+				"exclude_subjects_by_count": {
+					"2": [
+						"NCEA1",
+						""
+					],
+					"4": [
+						"1-10 English",
+						"ConnectED",
+						"NCEA1"
+					]
+				}
+			},
 			"card": "<div class=\"col-md-4 col-12 paddingLR\"><div class=\"flipCard\"><div class=\"front\">{front}</div><div class=\"back\">{back}</div></div></div>",
 			"member_image_cards": true,
 			"card_image_front": "<div class=\"col-md-6 col-sm-6 col-12 paddingLR\"><div class=\"flipCard noBG\"><div class=\"front flipImage\">{front}</div><div class=\"back\">{back}</div></div></div>",
