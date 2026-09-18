@@ -1,0 +1,31 @@
+==== adjacent sibling lists in the LIVE body (dumps / notes / verbatim widgets carved out) — Claude vs gold ====
+   ALL                                            ul: claude  106 (pages  54 / mods  34)  gold   3 (pages  3)   ol: claude 202 gold 0
+   template=Standard                              ul: claude   95 (pages   0 / mods   0)  gold   2 (pages  0)   ol: claude 137 gold 0
+   template=Fundamentals                          ul: claude   10 (pages   0 / mods   0)  gold   0 (pages  0)   ol: claude 27 gold 0
+   template=Inquiry                               ul: claude    1 (pages   0 / mods   0)  gold   1 (pages  0)   ol: claude 38 gold 0
+   tmpl+subj=Standard/Leaving to Learn            ul: claude   27 (pages  23 / mods   5)  gold   0 (pages  0)   ol: claude 31 gold 0
+   tmpl+subj=Standard/NCEA1                       ul: claude   20 (pages   7 / mods   7)  gold   0 (pages  0)   ol: claude 34 gold 0
+   tmpl+subj=Standard/1-10 English                ul: claude   18 (pages   7 / mods   6)  gold   1 (pages  1)   ol: claude 11 gold 0
+   tmpl+subj=Standard/None                        ul: claude   17 (pages   2 / mods   2)  gold   0 (pages  0)   ol: claude 9 gold 0
+   tmpl+subj=Fundamentals/Leaving to Learn        ul: claude    7 (pages   3 / mods   2)  gold   0 (pages  0)   ol: claude 0 gold 0
+   tmpl+subj=Standard/1-10 Mathematics            ul: claude    6 (pages   4 / mods   4)  gold   0 (pages  0)   ol: claude 25 gold 0
+   tmpl+subj=Standard/ConnectED                   ul: claude    5 (pages   3 / mods   3)  gold   1 (pages  1)   ol: claude 0 gold 0
+   tmpl+subj=Fundamentals/1-10 Arts               ul: claude    3 (pages   2 / mods   2)  gold   0 (pages  0)   ol: claude 14 gold 0
+   tmpl+subj=Standard/Online Safety (OS9000)      ul: claude    1 (pages   1 / mods   1)  gold   0 (pages  0)   ol: claude 4 gold 0
+   tmpl+subj=Standard/1-10 Social Science         ul: claude    1 (pages   1 / mods   1)  gold   0 (pages  0)   ol: claude 0 gold 0
+   tmpl+subj=Inquiry/Te ara Whakapuawa -Wellbeing ul: claude    1 (pages   1 / mods   1)  gold   0 (pages  0)   ol: claude 34 gold 0
+   tmpl+subj=Inquiry/ConnectED                    ul: claude    0 (pages   0 / mods   0)  gold   1 (pages  1)   ol: claude 3 gold 0
+   examples:
+      AGH1002_6_0: …				<li>Soil sterilisation is used to control many soil pests and diseases.</li> ⟂ <li>Organic matter supplies plants with nutrients,
+      AGH1006_5_0: …amework so the plant gets the maximum amount of light falling on the leaves</li> ⟂ <li>makes plants easier to manage and maintains th
+      AGH1007_3_0: …gastrics have one stomach and mainly digest food through chemical digestion</li> ⟂ <li>Each organ in the digestive system as a key ro
+      AGH1009_7_0: …ve management practices such as:</p>
+					<ul>
+						<li>grazing management</li> ⟂ <li>fencing waterways and riparian planting</li>
+      ARFUN02_0_0: …/li>
+							<li>Try creating your own repeated rhythm pattern! You can use:</li> ⟂ <li>Body percussion (claps, stamps, snaps)</li>
+      ARFUN04_0_0: …l>
+							<li>Line</li>
+							<li>Colour</li>
+							<li><b>__________</b></li> ⟂ <li><b>__________</b></li>
+						</ul>

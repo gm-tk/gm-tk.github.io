@@ -426,10 +426,11 @@ class PageAssembler {
 					(() => {
 						const tidied = NotesAndComments.TidyDeveloperNotes(
 							NotesAndComments.OmitPlaceholderResidue(html));
-						const deEmoji = (seg) => ListsAndRuns.TypedNumberList(ListsAndRuns.EmojiStrip(seg, () =>
+						// ROUND 392: adjacent sibling lists join into one (body_region.merge_adjacent_lists; env ULMERGE_OFF) — after TypedNumberList, before the link-text pass.
+						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.TypedNumberList(ListsAndRuns.EmojiStrip(seg, () =>
 							NotesAndComments.redFlag(
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
-								run, "diagnostic")));
+								run, "diagnostic"))));
 						const ai = tidied.indexOf("<div class=\"acks");
 						const passed = ai < 0
 							? ListsAndRuns.LinkTextDisplay(deEmoji(tidied))

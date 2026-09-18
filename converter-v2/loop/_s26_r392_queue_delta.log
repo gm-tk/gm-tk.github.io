@@ -1,0 +1,1 @@
+CANDIDATE rows pre 178 / post 177; new [(('activity', 'SUBSTITUTED', '`div.row`', '`div.col-12`', '`div.row`'), ('660', '20', '19'))] / gone [(('body', 'EXTRA', '`div.col-12.col-md-12`', '`—`', '`ul`'), ('4286', '21', '3')), (('body', 'SUBSTITUTED', '`div.row`', '`div.col-12.col-md-8`', '`p`'), ('3682', '20', '20'))]

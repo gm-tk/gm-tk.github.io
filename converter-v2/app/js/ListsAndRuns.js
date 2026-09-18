@@ -823,6 +823,60 @@ class ListsAndRuns {
 	 * @param {string} html - one finished page's HTML (before the acks block)
 	 * @returns {string}
 	 */
+	/**
+	 * ADJACENT SIBLING LISTS → ONE LIST (round 392). A writer's bullet run split into two
+	 * sibling <ul>s by an item that rendered nothing (a bullet's trailing inline [link to X]
+	 * marker, a consumed item, an image between bullets): Claude shipped 106 adjacent
+	 * `</ul> <ul>` pairs on 54 pages / 34 modules, the gold 3 (0.97 one list). A full-page
+	 * post-pass at the TypedNumberList seam (body only, the same verbatim zones): a bare
+	 * </ul> followed only by whitespace and a bare <ul> joins. Only the data-listed tags
+	 * (ul — an <ol> restart is a new numbered list). Data body_region.merge_adjacent_lists;
+	 * env ULMERGE_OFF.
+	 * @param {string} html - one finished page's HTML (before the acks block)
+	 * @returns {string}
+	 */
+	static MergeAdjacentLists(html) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.merge_adjacent_lists;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ULMERGE_OFF"]) return html;
+		const src = String(html);
+		const tags = (cfg.tags ?? ["ul"]).map((t) => String(t).toLowerCase()).filter((t) => /^[a-z]+$/.test(t));
+		if (!tags.length) return src;
+		const joinRe = new RegExp("</(" + tags.join("|") + ")>(\\s*)<\\1>", "g");
+		if (!joinRe.test(src)) return src;
+		joinRe.lastIndex = 0;
+		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
+		const widgets = ((cfg.verbatim_widget_classes ?? tnl?.verbatim_widget_classes) ?? []).map((c) => String(c).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+		const openRe = new RegExp("<div class=\"(?:cv2-interactive|" + widgets.join("|")
+			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
+		const pieces = [];
+		{
+			let i = 0, m;
+			while ((m = openRe.exec(src))) {
+				const j = m.index;
+				let end;
+				if (m[0].startsWith("<div")) {
+					const re = /<div\b|<\/div>/g;
+					re.lastIndex = j; let depth = 0, mm; end = src.length;
+					while ((mm = re.exec(src))) {
+						depth += mm[0] === "</div>" ? -1 : 1;
+						if (depth === 0) { end = re.lastIndex; break; }
+					}
+				} else if (m[0].startsWith("<p")) {
+					const k = src.indexOf("</p>", j); end = k < 0 ? src.length : k + 4;
+				} else {
+					const close = m[0].startsWith("<script") ? "</script>" : "</style>";
+					const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
+				}
+				if (j > i) pieces.push({ live: true, s: src.slice(i, j) });
+				pieces.push({ live: false, s: src.slice(j, end) });
+				i = end; openRe.lastIndex = end;
+			}
+			if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
+		}
+		return pieces.map((p) => (p.live ? p.s.replace(joinRe, "$2") : p.s)).join("");
+	};
+
 	static TypedNumberList(html) {
 		const cfg = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
 		if (!cfg || cfg.enabled === false) return html;
