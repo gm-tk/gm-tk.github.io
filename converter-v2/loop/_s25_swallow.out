@@ -1,0 +1,52 @@
+pages 1963; gold text (free / activity) that Claude holds inside a built widget — by Claude widget type:
+     0.11pp  pages    83   accordion
+     0.05pp  pages    66   carousel
+     0.05pp  pages    46   flipCard
+     0.02pp  pages    32   speechBubble
+     0.02pp  pages    19   tabs
+     0.01pp  pages    15   dragAndDrop
+     0.01pp  pages     7   dropQuiz
+     0.00pp  pages     8   clickDrop
+     0.00pp  pages     2   hintSlider
+
+by (Claude widget type · gold container · gold tag · position in the widget):
+     0.02pp  pages     3 / modules   3   ('accordion', 'activity', 'td', 'mid')   e.g. [('BLL235', 'BLL235_1_0.html', '-ed'), ('BLL235', 'BLL235_1_0.html', 'Shows tense')]
+     0.01pp  pages    14 / modules  10   ('accordion', 'free', 'p', 'mid')   e.g. [('BLLR201', 'BLLR201_5_0.html', "Now you've read , it's time to think about how the story end"), ('BLLR201', 'BLLR201_6_0.html', "When we infer, we don't just guess. We look for clues and th")]
+     0.01pp  pages    10 / modules   7   ('accordion', 'activity', 'li', 'mid')   e.g. [('BLL125', 'BLL125_2_0.html', 'Have you ever been mad at someone? What happened, why did yo'), ('BLL125', 'BLL125_2_0.html', 'Why was Sant mad at his dad?')]
+     0.01pp  pages     6 / modules   5   ('accordion', 'free', 'td', 'mid')   e.g. [('AGH1006', 'AGH1006_8_0.html', 'Crop Rotation:'), ('AGH1006', 'AGH1006_8_0.html', 'Companion Planting:')]
+     0.01pp  pages    14 / modules  13   ('carousel', 'free', 'p', 'mid')   e.g. [('AGH1005', 'AGH1005_6_0.html', 'For diffusion to occur, particles must pass through a semipe'), ('AGH1005', 'AGH1005_6_0.html', '“Water soluble” means the nutrient can be dissolved in water')]
+     0.01pp  pages     2 / modules   2   ('flipCard', 'panel', 'span', 'first')   e.g. [('CHFUN05', 'CHFUN05_0_0.html', '呢'), ('CHFUN05', 'CHFUN05_0_0.html', '呢')]
+     0.01pp  pages    13 / modules  11   ('accordion', 'activity', 'p', 'mid')   e.g. [('BLL262', 'BLL262_1_0.html', 'At the beginning of the story ...'), ('BLL262', 'BLL262_1_0.html', 'One important event was ...')]
+     0.01pp  pages    10 / modules  10   ('carousel', 'free', 'b', 'mid')   e.g. [('AGH1005', 'AGH1005_7_0.html', 'chewing and sucking'), ('AGH1005', 'AGH1005_7_0.html', 'Chewing pests:')]
+     0.01pp  pages    16 / modules   9   ('accordion', 'free', 'b', 'mid')   e.g. [('AGH1006', 'AGH1006_8_0.html', 'Crop Rotation:'), ('AGH1006', 'AGH1006_8_0.html', 'Companion Planting:')]
+     0.01pp  pages     8 / modules   6   ('flipCard', 'activity', 'li', 'mid')   e.g. [('ENGI102', 'ENGI102_2_0.html', 'I have included the most important characters.'), ('ENGI102', 'ENGI102_6_0.html', 'Drawings: Make three or four drawings showing the main parts')]
+     0.01pp  pages     3 / modules   3   ('carousel', 'free', 'li', 'mid')   e.g. [('ENGI102', 'ENGI102_2_0.html', 'Jack and the Beanstalk'), ('ENGI102', 'ENGI102_2_0.html', 'Hansel and Gretel')]
+     0.01pp  pages     4 / modules   4   ('accordion', 'panel', 'th', 'mid')   e.g. [('EXPFUN02', 'EXPFUN02_0_0.html', 'Foundational'), ('EXPFUN02', 'EXPFUN02_0_0.html', 'Building confidence')]
+     0.00pp  pages     4 / modules   4   ('carousel', 'free', 'td', 'mid')   e.g. [('AGH1005', 'AGH1005_4_0.html', 'Temperature'), ('AGH1005', 'AGH1005_4_0.html', 'Oxygen availability')]
+     0.00pp  pages     6 / modules   1   ('tabs', 'alert', 'li', 'mid')   e.g. [('ENGJ201', 'ENGJ201_1_0.html', 'We are learning the importance of adding details when creati'), ('ENGJ201', 'ENGJ201_2_0.html', 'identifying the key traits of a chosen character')]
+     0.00pp  pages     5 / modules   5   ('tabs', 'free', 'p', 'mid')   e.g. [('AGH1003', 'AGH1003_5_0.html', 'A truck, tractor or quad motorbike will be used to apply the'), ('ENG1007', 'ENG1007_0_0.html', 'Ko te reo me ōna tikanga te hā o te whakawhitiwhiti kōrero.')]
+     0.00pp  pages     2 / modules   2   ('accordion', 'activity', 'span', 'mid')   e.g. [('BLL235', 'BLL235_1_0.html', 'ed'), ('BLL235', 'BLL235_1_0.html', 'ed')]
+     0.00pp  pages    10 / modules   6   ('accordion', 'activity', 'h3', 'mid')   e.g. [('ENG1004', 'ENG1004_0_0.html', 'Brainstorming'), ('ENG1004', 'ENG1004_1_0.html', 'Brainstorming')]
+     0.00pp  pages    17 / modules  17   ('accordion', 'activity', 'p', 'last')   e.g. [('BLL125', 'BLL125_2_0.html', 'Go back and re-read the story. If you can, take a video of y'), ('BLL126', 'BLL126_2_0.html', 'After you have answered the questions, go back and reread th')]
+     0.00pp  pages     4 / modules   4   ('speechBubble', 'alert', 'li', 'mid')   e.g. [('ENGS401', 'ENGS401_2_0.html', 'Maria Samuela'), ('ENGS401', 'ENGS401_2_0.html', 'Battle')]
+     0.00pp  pages     2 / modules   2   ('carousel', 'free', 'h5', 'mid')   e.g. [('CEDR501', 'CEDR501_2_0.html', 'Expectations'), ('CEDR501', 'CEDR501_2_0.html', 'Expectations')]
+     0.00pp  pages     5 / modules   4   ('flipCard', 'activity', 'h5', 'mid')   e.g. [('TEFUN03', 'TEFUN03_0_0.html', 'Reverse'), ('TEFUN08', 'TEFUN08_0_0.html', 'Outputs')]
+     0.00pp  pages     4 / modules   4   ('accordion', 'free', 'li', 'mid')   e.g. [('BLLR201', 'BLLR201_6_0.html', 'The text says …'), ('BLLR201', 'BLLR201_6_0.html', 'I know …')]
+     0.00pp  pages     8 / modules   7   ('carousel', 'free', 'h4', 'mid')   e.g. [('AGH1002', 'AGH1002_3_0.html', 'Temperature'), ('AGH1005', 'AGH1005_6_0.html', 'Diffusion')]
+     0.00pp  pages     2 / modules   2   ('accordion', 'activity', 'th', 'mid')   e.g. [('BLL235', 'BLL235_1_0.html', 'Suffix'), ('BLL235', 'BLL235_1_0.html', 'Meaning')]
+     0.00pp  pages    10 / modules   4   ('accordion', 'free', 'b', 'first')   e.g. [('AGH1006', 'AGH1006_8_0.html', 'Quarantine:'), ('ENG1007', 'ENG1007_0_0.html', 'Identify:')]
+     0.00pp  pages    10 / modules  10   ('accordion', 'free', 'p', 'last')   e.g. [('BLLR201', 'BLLR201_6_0.html', 'This inference is based on information in the text, not just'), ('HES1004', 'HES1004_2_0.html', 'Let’s take a simple example and follow the steps above to co')]
+     0.00pp  pages     3 / modules   2   ('flipCard', 'free', 'p', 'first')   e.g. [('XLP01', 'XLP01_0_0.html', 'We will aim to cover each of these parts of learning to read'), ('XLP02', 'XLP02_0_0.html', 'Each part will be explained, modelled with video or pictures')]
+     0.00pp  pages     6 / modules   5   ('speechBubble', 'free', 'li', 'mid')   e.g. [('CEDR501', 'CEDR501_8_0.html', 'Is it recent and trustworthy?'), ('ENGS401', 'ENGS401_2_0.html', 'Title')]
+     0.00pp  pages     3 / modules   3   ('speechBubble', 'alert', 'b', 'mid')   e.g. [('BLLR201', 'BLLR201_2_0.html', 'would'), ('BLLR201', 'BLLR201_2_0.html', 'would')]
+     0.00pp  pages     2 / modules   2   ('carousel', 'activity', 'i', 'mid')   e.g. [('BLL262', 'BLL262_3_0.html', 'Whitebait Season'), ('BLL262', 'BLL262_3_0.html', 'Whitebait Season')]
+     0.00pp  pages     5 / modules   3   ('speechBubble', 'alert', 'p', 'mid')   e.g. [('ENGS401', 'ENGS401_2_0.html', 'I felt both disappointed and proud of Timiona. Disappointed '), ('ENGS401', 'ENGS401_2_0.html', 'I felt both disappointed and proud of Timiona. Disappointed ')]
+     0.00pp  pages     4 / modules   4   ('tabs', 'free', 'b', 'mid')   e.g. [('HIS1004', 'HIS1004_0_0.html', 'historical context of racial discrimination'), ('HIS1004', 'HIS1004_0_0.html', 'as an historian by using a range of sources and evidence')]
+     0.00pp  pages     5 / modules   1   ('tabs', 'alert', 'p', 'mid')   e.g. [('ENGJ201', 'ENGJ201_2_0.html', 'You will show your understanding by:'), ('ENGJ201', 'ENGJ201_3_0.html', 'We are learning about:')]
+     0.00pp  pages     3 / modules   3   ('flipCard', 'activity', 'li', 'last')   e.g. [('PES1007', 'PES1007_8_0.html', 'Solid'), ('XGF9006', 'XGF9006_3_0.html', 'How do animals sense natural disasters before humans do?')]
+     0.00pp  pages     2 / modules   2   ('flipCard', 'free', 'p', 'mid')   e.g. [('PES1003', 'PES1003_8_0.html', 'Clouds form when moist air rises, as it moves higher in the '), ('PES1003', 'PES1003_8_0.html', 'This cooling can cause the water vapor in the air to condens')]
+     0.00pp  pages     7 / modules   3   ('clickDrop', 'activity', 'h3', 'first')   e.g. [('XDLS903', 'XDLS903_2_0.html', 'Create'), ('XDLS903', 'XDLS903_4_0.html', 'Create')]
+     0.00pp  pages     5 / modules   3   ('accordion', 'activity', 'li', 'last')   e.g. [('ENG1004', 'ENG1004_0_0.html', 'Draw conclusions about the relationship between your example'), ('ENG1004', 'ENG1004_1_0.html', 'Draw conclusions about the relationship between your example')]
+     0.00pp  pages     4 / modules   4   ('flipCard', 'free', 'p', 'last')   e.g. [('PES1003', 'PES1003_8_0.html', 'The amount of pressure needed for clouds to form depends on '), ('PES1003', 'PES1003_8_0.html', 'Because the temperature of the gas drops significantly, mois')]
+     0.00pp  pages     2 / modules   2   ('accordion', 'free', 'th', 'mid')   e.g. [('MXFL301', 'MXFL301_3_0.html', '20%'), ('MXFL301', 'MXFL301_3_0.html', '20%')]
+     0.00pp  pages     2 / modules   2   ('flipCard', 'free', 'h4', 'last')   e.g. [('PES1003', 'PES1003_1_0.html', 'Gas'), ('PES1003', 'PES1003_1_0.html', 'Liquid')]

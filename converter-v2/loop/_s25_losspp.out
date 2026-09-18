@@ -1,0 +1,255 @@
+
+== ALL — pages 1963: total loss 47.94pp of the mean (= 100 − the sequence match)
+   by region:    body 26.13, activity 16.07, module-menu 3.62, footer 0.96, root 0.54, acks 0.46, title 0.14, crumbs 0.02, phases-nav 0.00, module-code 0.00, header 0.00
+   by container: free 28.85, activity 14.49, alert 2.83, panel 1.78
+   by direction: MISSING 27.40, EXTRA 20.54
+   top 45 (region · container · direction · element): pp, pages
+       2.12pp   1415 pp   body         free      EXTRA    p
+       1.45pp   1346 pp   activity     activity  MISSING  p
+       1.33pp   1503 pp   body         free      EXTRA    div.col-12.col-md-8
+       1.29pp   1162 pp   body         free      MISSING  p
+       1.23pp    920 pp   activity     activity  EXTRA    p
+       1.16pp   1398 pp   body         free      EXTRA    div.row
+       1.08pp   1341 pp   body         free      MISSING  div.row
+       0.89pp   1271 pp   body         free      MISSING  div.col-12.col-md-8
+       0.75pp   1287 pp   activity     free      MISSING  div.activity
+       0.73pp    461 pp   body         free      EXTRA    li
+       0.72pp    998 pp   activity     activity  MISSING  WIDGET
+       0.71pp    492 pp   activity     activity  MISSING  li
+       0.70pp   1110 pp   activity     activity  MISSING  div.row
+       0.70pp    343 pp   body         free      EXTRA    td
+       0.70pp    711 pp   body         free      EXTRA    b
+       0.68pp    520 pp   module-menu  free      MISSING  li
+       0.65pp   1135 pp   activity     free      EXTRA    div.activity
+       0.58pp    193 pp   activity     activity  MISSING  td
+       0.57pp   1076 pp   activity     activity  MISSING  h3
+       0.55pp    759 pp   body         free      MISSING  WIDGET
+       0.51pp    353 pp   activity     activity  EXTRA    li
+       0.50pp    833 pp   body         free      MISSING  img.img-fluid
+       0.48pp   1041 pp   activity     activity  MISSING  a
+       0.47pp    314 pp   body         free      MISSING  li
+       0.44pp    962 pp   activity     activity  MISSING  div.col-12
+       0.42pp    166 pp   body         free      MISSING  td
+       0.41pp    822 pp   activity     activity  EXTRA    div.col-12
+       0.40pp    335 pp   body         free      MISSING  br
+       0.39pp    928 pp   activity     activity  MISSING  div.button
+       0.38pp    626 pp   body         free      EXTRA    WIDGET
+       0.37pp    735 pp   activity     activity  EXTRA    div.row
+       0.37pp    706 pp   body         free      EXTRA    a
+       0.37pp    758 pp   body         free      MISSING  div.col-12.col-md-4
+       0.36pp    606 pp   module-menu  free      MISSING  p
+       0.36pp    785 pp   body         free      EXTRA    h3
+       0.34pp    805 pp   activity     activity  EXTRA    WIDGET
+       0.34pp    411 pp   body         free      MISSING  b
+       0.34pp    672 pp   body         free      EXTRA    img.img-fluid
+       0.33pp    369 pp   body         free      EXTRA    tr
+       0.32pp    466 pp   activity     activity  MISSING  img.img-fluid
+       0.32pp    659 pp   body         alert     MISSING  p
+       0.32pp    201 pp   module-menu  free      EXTRA    li
+       0.31pp    452 pp   module-menu  free      EXTRA    h5
+       0.28pp    368 pp   body         free      EXTRA    i
+       0.26pp    266 pp   body         alert     MISSING  li
+
+== template=Standard — pages 1738: total loss 46.33pp of the mean (= 100 − the sequence match)
+   by region:    body 25.32, activity 15.04, module-menu 3.83, footer 0.98, root 0.56, acks 0.47, title 0.13, crumbs 0.00, module-code 0.00, phases-nav 0.00, header 0.00
+   by container: free 29.87, activity 13.48, alert 2.80, panel 0.18
+   by direction: MISSING 26.44, EXTRA 19.90
+   top 45 (region · container · direction · element): pp, pages
+       2.05pp   1295 pp   body         free      EXTRA    p
+       1.37pp   1372 pp   body         free      EXTRA    div.col-12.col-md-8
+       1.31pp   1078 pp   body         free      MISSING  p
+       1.28pp   1154 pp   activity     activity  MISSING  p
+       1.18pp   1268 pp   body         free      EXTRA    div.row
+       1.12pp   1218 pp   body         free      MISSING  div.row
+       1.09pp    790 pp   activity     activity  EXTRA    p
+       0.93pp   1151 pp   body         free      MISSING  div.col-12.col-md-8
+       0.77pp   1190 pp   activity     free      MISSING  div.activity
+       0.75pp    410 pp   body         free      EXTRA    li
+       0.74pp    323 pp   body         free      EXTRA    td
+       0.72pp    466 pp   module-menu  free      MISSING  li
+       0.70pp    646 pp   body         free      EXTRA    b
+       0.68pp   1056 pp   activity     free      EXTRA    div.activity
+       0.66pp    840 pp   activity     activity  MISSING  WIDGET
+       0.64pp    936 pp   activity     activity  MISSING  div.row
+       0.63pp    386 pp   activity     activity  MISSING  li
+       0.61pp    166 pp   activity     activity  MISSING  td
+       0.59pp    713 pp   body         free      MISSING  WIDGET
+       0.54pp    791 pp   body         free      MISSING  img.img-fluid
+       0.51pp    900 pp   activity     activity  MISSING  h3
+       0.51pp    297 pp   activity     activity  EXTRA    li
+       0.49pp    297 pp   body         free      MISSING  li
+       0.49pp    898 pp   activity     activity  MISSING  a
+       0.45pp    155 pp   body         free      MISSING  td
+       0.41pp    314 pp   body         free      MISSING  br
+       0.41pp    804 pp   activity     activity  MISSING  div.col-12
+       0.40pp    704 pp   activity     activity  EXTRA    div.col-12
+       0.40pp    665 pp   body         free      EXTRA    a
+       0.40pp    571 pp   body         free      EXTRA    WIDGET
+       0.39pp    710 pp   body         free      MISSING  div.col-12.col-md-4
+       0.39pp    794 pp   activity     activity  MISSING  div.button
+       0.38pp    513 pp   module-menu  free      MISSING  p
+       0.37pp    625 pp   activity     activity  EXTRA    div.row
+       0.35pp    177 pp   module-menu  free      EXTRA    li
+       0.35pp    699 pp   body         free      EXTRA    h3
+       0.35pp    347 pp   body         free      EXTRA    tr
+       0.34pp    613 pp   body         free      EXTRA    img.img-fluid
+       0.34pp    685 pp   activity     activity  EXTRA    WIDGET
+       0.34pp    382 pp   module-menu  free      EXTRA    h5
+       0.31pp    366 pp   body         free      MISSING  b
+       0.31pp    542 pp   body         alert     MISSING  p
+       0.30pp    374 pp   activity     activity  MISSING  img.img-fluid
+       0.29pp    343 pp   body         free      EXTRA    i
+       0.28pp    459 pp   module-menu  free      MISSING  ul
+
+== template=Inquiry — pages 98: total loss 62.77pp of the mean (= 100 − the sequence match)
+   by region:    body 31.10, activity 26.10, module-menu 3.15, footer 1.18, root 0.42, crumbs 0.39, acks 0.30, title 0.13, module-code 0.00
+   by container: activity 23.91, free 22.80, panel 12.70, alert 3.37
+   by direction: MISSING 38.66, EXTRA 24.12
+   top 45 (region · container · direction · element): pp, pages
+       3.02pp     88 pp   activity     activity  MISSING  p
+       1.77pp     59 pp   body         free      EXTRA    p
+       1.63pp     64 pp   activity     activity  MISSING  WIDGET
+       1.49pp     66 pp   body         free      EXTRA    div.row
+       1.47pp     65 pp   body         free      EXTRA    div.col-12.col-md-8
+       1.46pp     57 pp   activity     activity  EXTRA    p
+       1.32pp     47 pp   activity     activity  MISSING  li
+       1.32pp     74 pp   activity     activity  MISSING  div.row
+       1.06pp     45 pp   body         panel     MISSING  div.row
+       1.02pp     43 pp   body         panel     MISSING  div.col-12.col-md-8
+       1.01pp     78 pp   activity     activity  MISSING  h3
+       0.99pp     44 pp   body         panel     MISSING  p
+       0.84pp     44 pp   module-menu  free      MISSING  li
+       0.82pp     18 pp   body         free      EXTRA    td
+       0.77pp     66 pp   activity     activity  MISSING  div.col-12
+       0.75pp     27 pp   activity     activity  MISSING  div.col-12.col-md-4
+       0.74pp     74 pp   activity     activity  MISSING  a
+       0.71pp     27 pp   body         free      EXTRA    li
+       0.70pp     27 pp   body         panel     EXTRA    p
+       0.70pp     37 pp   activity     activity  MISSING  img.img-fluid
+       0.69pp     31 pp   activity     activity  EXTRA    li
+       0.69pp     32 pp   body         free      MISSING  p
+       0.67pp     44 pp   body         free      MISSING  div.row
+       0.66pp     72 pp   activity     activity  MISSING  div.button
+       0.65pp     43 pp   activity     free      MISSING  div.activity
+       0.61pp     40 pp   activity     free      EXTRA    div.activity
+       0.58pp     54 pp   activity     activity  EXTRA    div.col-12
+       0.57pp     44 pp   body         free      MISSING  div.col-12.col-md-8
+       0.56pp     43 pp   activity     panel     MISSING  div.activity
+       0.55pp     51 pp   activity     activity  EXTRA    div.row
+       0.54pp     29 pp   body         panel     EXTRA    div.col-12.col-md-8
+       0.51pp     36 pp   activity     activity  MISSING  div.clickDropContent
+       0.50pp     29 pp   body         panel     EXTRA    div.row
+       0.48pp     18 pp   body         alert     MISSING  li
+       0.46pp     20 pp   body         free      MISSING  b
+       0.44pp     47 pp   activity     activity  EXTRA    h3
+       0.44pp     17 pp   activity     activity  MISSING  td
+       0.43pp     19 pp   body         panel     MISSING  li
+       0.42pp     50 pp   activity     activity  MISSING  div.videoSection
+       0.42pp     36 pp   body         panel     MISSING  WIDGET
+       0.42pp     20 pp   body         free      EXTRA    tr
+       0.41pp      9 pp   body         panel     MISSING  td
+       0.41pp     24 pp   body         free      EXTRA    b
+       0.40pp     14 pp   body         panel     EXTRA    li
+       0.38pp     35 pp   body         free      EXTRA    a
+
+== template=Fundamentals — pages 64: total loss 55.09pp of the mean (= 100 − the sequence match)
+   by region:    body 35.88, activity 15.65, module-menu 2.08, footer 0.64, acks 0.33, root 0.26, title 0.14, phases-nav 0.06, crumbs 0.04, module-code 0.02
+   by container: panel 30.23, activity 13.95, free 8.65, alert 2.26
+   by direction: MISSING 30.45, EXTRA 24.64
+   top 45 (region · container · direction · element): pp, pages
+       2.86pp     51 pp   body         panel     EXTRA    p
+       1.70pp     52 pp   body         panel     MISSING  div.row
+       1.68pp     51 pp   body         panel     EXTRA    div.col-12.col-md-8
+       1.64pp     51 pp   body         panel     EXTRA    div.row
+       1.49pp     52 pp   body         panel     MISSING  p
+       1.39pp     60 pp   activity     activity  MISSING  p
+       1.13pp     35 pp   body         panel     EXTRA    li
+       1.12pp     50 pp   body         panel     MISSING  div.col-12.col-md-8
+       0.98pp     32 pp   body         panel     EXTRA    b
+       0.98pp     55 pp   activity     activity  MISSING  div.row
+       0.94pp     52 pp   activity     activity  MISSING  WIDGET
+       0.93pp     27 pp   activity     activity  MISSING  li
+       0.92pp     39 pp   activity     activity  EXTRA    p
+       0.87pp     50 pp   body         panel     EXTRA    img.img-fluid
+       0.83pp     42 pp   body         panel     MISSING  WIDGET
+       0.75pp     47 pp   activity     panel     MISSING  div.activity
+       0.69pp     44 pp   body         panel     MISSING  img.img-fluid
+       0.65pp     48 pp   body         panel     EXTRA    WIDGET
+       0.65pp     21 pp   activity     activity  EXTRA    li
+       0.64pp     54 pp   activity     activity  MISSING  h3
+       0.62pp     44 pp   activity     panel     EXTRA    div.activity
+       0.59pp     34 pp   body         panel     MISSING  li
+       0.55pp     46 pp   body         panel     EXTRA    h3
+       0.54pp     28 pp   body         panel     MISSING  b
+       0.51pp     49 pp   activity     activity  MISSING  div.col-12
+       0.51pp     44 pp   activity     activity  EXTRA    div.row
+       0.50pp     20 pp   body         panel     EXTRA    td
+       0.50pp     47 pp   body         panel     MISSING  h3
+       0.50pp     45 pp   activity     activity  EXTRA    div.col-12
+       0.43pp     31 pp   body         panel     MISSING  br
+       0.38pp     47 pp   body         panel     EXTRA    a
+       0.38pp     11 pp   body         free      MISSING  p
+       0.37pp     41 pp   activity     activity  EXTRA    WIDGET
+       0.35pp     20 pp   body         panel     EXTRA    h5
+       0.35pp     26 pp   body         free      MISSING  div.row
+       0.34pp     32 pp   body         panel     EXTRA    ul
+       0.34pp     25 pp   body         free      EXTRA    div.col-12.col-md-8
+       0.33pp      5 pp   module-menu  free      EXTRA    p
+       0.33pp      8 pp   activity     activity  MISSING  td
+       0.33pp     43 pp   body         alert     MISSING  p
+       0.32pp     23 pp   body         panel     EXTRA    i
+       0.32pp     24 pp   activity     activity  MISSING  br
+       0.31pp     34 pp   body         panel     MISSING  div.col-12.col-md-3
+       0.31pp     10 pp   body         free      EXTRA    p
+       0.30pp     24 pp   body         free      EXTRA    div.row
+
+== template=Bilingual — pages 63: total loss 62.07pp of the mean (= 100 − the sequence match)
+   by region:    body 30.87, activity 29.38, acks 0.47, title 0.44, root 0.40, footer 0.29, module-menu 0.19, header 0.02
+   by container: free 30.71, activity 28.06, alert 3.31
+   by direction: MISSING 33.44, EXTRA 28.64
+   top 45 (region · container · direction · element): pp, pages
+       6.38pp     51 pp   body         free      EXTRA    p
+       5.16pp     34 pp   activity     activity  EXTRA    p
+       3.88pp     44 pp   activity     activity  MISSING  p
+       2.63pp     41 pp   body         free      MISSING  p
+       1.92pp     39 pp   body         free      EXTRA    b
+       1.86pp     32 pp   activity     activity  MISSING  li
+       1.64pp     28 pp   activity     activity  EXTRA    b
+       1.39pp     44 pp   activity     activity  MISSING  h3
+       1.26pp     45 pp   activity     activity  MISSING  div.row
+       1.18pp     22 pp   body         free      MISSING  b
+       1.17pp     53 pp   body         free      MISSING  div.row
+       1.16pp     47 pp   body         free      EXTRA    h3
+       1.14pp     31 pp   activity     activity  MISSING  b
+       1.09pp     40 pp   body         free      EXTRA    div.row
+       1.08pp     21 pp   activity     activity  EXTRA    audio
+       1.08pp     41 pp   body         free      EXTRA    div.col-12.col-md-8
+       1.08pp     27 pp   activity     activity  EXTRA    img.img-fluid
+       0.92pp     50 pp   body         free      MISSING  div.col-12.col-md-8
+       0.88pp     22 pp   body         free      EXTRA    li
+       0.84pp     45 pp   activity     free      MISSING  div.activity
+       0.82pp     42 pp   activity     activity  MISSING  WIDGET
+       0.77pp     31 pp   body         alert     MISSING  p
+       0.66pp     35 pp   body         free      EXTRA    img.img-fluid
+       0.64pp      9 pp   body         free      MISSING  li
+       0.63pp     43 pp   activity     activity  MISSING  div.col-12
+       0.54pp     21 pp   body         free      EXTRA    audio
+       0.51pp     35 pp   activity     activity  EXTRA    WIDGET
+       0.51pp     21 pp   body         free      EXTRA    h4
+       0.50pp     32 pp   activity     activity  MISSING  img.img-fluid
+       0.50pp     28 pp   activity     activity  EXTRA    h3
+       0.45pp     23 pp   body         alert     MISSING  b
+       0.40pp     19 pp   body         free      MISSING  h3
+       0.40pp     11 pp   activity     activity  MISSING  i
+       0.38pp     28 pp   activity     activity  MISSING  ul
+       0.37pp     12 pp   body         free      MISSING  i
+       0.37pp     23 pp   body         free      EXTRA    WIDGET
+       0.36pp     18 pp   body         free      MISSING  img.img-fluid
+       0.36pp     18 pp   body         free      MISSING  h2
+       0.35pp     29 pp   activity     free      EXTRA    div.activity
+       0.34pp     13 pp   activity     activity  MISSING  div.audioImage
+       0.33pp     14 pp   activity     activity  MISSING  div.audioImageOption
+       0.33pp     30 pp   body         free      MISSING  div.col-12.col-md-4
+       0.31pp     14 pp   body         free      MISSING  h4
+       0.31pp     10 pp   activity     activity  MISSING  h4
+       0.29pp     32 pp   activity     activity  MISSING  a

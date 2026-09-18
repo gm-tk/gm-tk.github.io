@@ -1,0 +1,234 @@
+
+== A) Claude's EXTRA free-body p — where the GOLD holds the text — ALL — pages 1963: 2.12pp
+     0.82pp  pages   887 / modules 284   NOWHERE in gold
+     0.39pp  pages   717 / modules 242   gold free same tag (alignment residue)
+     0.18pp  pages   233 / modules 126   gold inside WIDGET
+     0.17pp  pages   355 / modules 171   gold inside ACTIVITY
+     0.09pp  pages   199 / modules 113   gold MERGED into longer p
+     0.09pp  pages   299 / modules 147   gold SPLIT / reworded p
+     0.06pp  pages   145 / modules  79   gold inside ALERT
+     0.04pp  pages   119 / modules  80   gold SPLIT / reworded p (activity)
+     0.03pp  pages    43 / modules  32   gold MERGED into longer p (widget)
+     0.03pp  pages    59 / modules  49   gold MERGED into longer p (activity)
+     0.02pp  pages    78 / modules  29   gold header/menu/acks
+     0.02pp  pages    68 / modules  45   gold SPLIT / reworded p (widget)
+     0.02pp  pages    37 / modules  33   gold free li
+     0.02pp  pages    65 / modules  57   empty
+
+== A) Claude's EXTRA free-body p — where the GOLD holds the text — template=Standard — pages 1738: 2.06pp
+     0.78pp  pages   795 / modules 252   NOWHERE in gold
+     0.40pp  pages   663 / modules 215   gold free same tag (alignment residue)
+     0.19pp  pages   208 / modules 111   gold inside WIDGET
+     0.15pp  pages   301 / modules 152   gold inside ACTIVITY
+     0.10pp  pages   271 / modules 132   gold SPLIT / reworded p
+     0.09pp  pages   176 / modules 100   gold MERGED into longer p
+     0.06pp  pages   130 / modules  69   gold inside ALERT
+     0.03pp  pages    41 / modules  30   gold MERGED into longer p (widget)
+     0.03pp  pages    96 / modules  67   gold SPLIT / reworded p (activity)
+     0.02pp  pages    67 / modules  21   gold header/menu/acks
+     0.02pp  pages    62 / modules  40   gold SPLIT / reworded p (widget)
+     0.02pp  pages    34 / modules  31   gold free li
+     0.02pp  pages    46 / modules  39   gold MERGED into longer p (activity)
+     0.02pp  pages    58 / modules  52   empty
+
+== A) Claude's EXTRA free-body p — where the GOLD holds the text — template=Inquiry — pages 98: 1.77pp
+     0.54pp  pages    38 / modules  14   NOWHERE in gold
+     0.42pp  pages    22 / modules  10   gold free same tag (alignment residue)
+     0.26pp  pages    27 / modules   8   gold inside ACTIVITY
+     0.14pp  pages    15 / modules   7   gold inside WIDGET
+     0.09pp  pages    18 / modules   8   gold SPLIT / reworded p
+     0.08pp  pages    11 / modules   8   gold header/menu/acks
+     0.04pp  pages     9 / modules   5   gold MERGED into longer p
+     0.03pp  pages     6 / modules   6   gold SPLIT / reworded p (activity)
+     0.02pp  pages     2 / modules   1   gold MERGED into longer td
+     0.02pp  pages     4 / modules   4   gold MERGED into longer p (header)
+     0.02pp  pages     3 / modules   2   gold inside ACTIVITY (h4)
+     0.01pp  pages     3 / modules   1   gold free h3
+     0.01pp  pages     4 / modules   3   gold SPLIT / reworded p (widget)
+     0.01pp  pages     1 / modules   1   gold free th
+
+== A) Claude's EXTRA free-body p — where the GOLD holds the text — template=Fundamentals — pages 64: 0.31pp
+     0.11pp  pages     7 / modules   2   gold MERGED into longer p
+     0.08pp  pages     8 / modules   2   gold free same tag (alignment residue)
+     0.07pp  pages     6 / modules   2   NOWHERE in gold
+     0.01pp  pages     2 / modules   2   gold SPLIT / reworded p
+     0.01pp  pages     1 / modules   1   gold free td
+     0.01pp  pages     1 / modules   1   gold SPLIT / reworded p (alert)
+     0.00pp  pages     1 / modules   1   gold inside WIDGET
+     0.00pp  pages     1 / modules   1   gold SPLIT / reworded p (widget)
+     0.00pp  pages     1 / modules   1   gold MERGED into longer p (alert)
+     0.00pp  pages     1 / modules   1   gold MERGED into longer p (activity)
+
+== A) Claude's EXTRA free-body p — where the GOLD holds the text — template=Bilingual — pages 63: 6.38pp
+     3.30pp  pages    48 / modules  16   NOWHERE in gold
+     0.87pp  pages    27 / modules  11   gold inside ACTIVITY
+     0.44pp  pages    24 / modules  15   gold free same tag (alignment residue)
+     0.32pp  pages    17 / modules   7   gold SPLIT / reworded p (activity)
+     0.29pp  pages     9 / modules   7   gold inside WIDGET
+     0.23pp  pages     7 / modules   6   gold MERGED into longer p
+     0.22pp  pages     6 / modules   5   gold inside ACTIVITY (li)
+     0.20pp  pages    10 / modules   7   gold MERGED into longer p (activity)
+     0.17pp  pages    11 / modules   6   gold inside ALERT
+     0.07pp  pages     8 / modules   5   gold SPLIT / reworded p
+     0.04pp  pages     2 / modules   2   gold free h4
+     0.04pp  pages     4 / modules   2   gold inside ACTIVITY (h4)
+     0.03pp  pages     5 / modules   3   empty
+     0.03pp  pages     4 / modules   4   gold inside ACTIVITY (h3)
+
+== B) the gold's MISSING activity p — where CLAUDE holds the text — ALL — pages 1963: 1.54pp
+     0.55pp  pages   878 / modules 337   NOWHERE in Claude
+     0.27pp  pages   492 / modules 249   Claude inside ACTIVITY
+     0.21pp  pages   400 / modules 241   Claude inside WIDGET
+     0.17pp  pages   397 / modules 218   Claude free same tag (alignment residue)
+     0.06pp  pages   214 / modules 144   Claude SPLIT / reworded p (activity)
+     0.04pp  pages    58 / modules  40   Claude MERGED into longer td (widget)
+     0.04pp  pages   154 / modules 112   Claude SPLIT / reworded p
+     0.03pp  pages   111 / modules  95   Claude SPLIT / reworded p (widget)
+     0.03pp  pages    65 / modules  31   Claude MERGED into longer th (widget)
+     0.02pp  pages    83 / modules  69   Claude MERGED into longer p (activity)
+     0.02pp  pages    63 / modules  39   Claude inside ACTIVITY (h3)
+     0.01pp  pages    47 / modules  44   Claude MERGED into longer p
+     0.01pp  pages    31 / modules  16   Claude inside ALERT
+     0.01pp  pages    50 / modules  45   Claude MERGED into longer p (widget)
+
+== B) the gold's MISSING activity p — where CLAUDE holds the text — template=Standard — pages 1738: 1.36pp
+     0.49pp  pages   723 / modules 238   NOWHERE in Claude
+     0.25pp  pages   401 / modules 185   Claude inside ACTIVITY
+     0.21pp  pages   336 / modules 184   Claude inside WIDGET
+     0.14pp  pages   292 / modules 149   Claude free same tag (alignment residue)
+     0.05pp  pages   159 / modules 104   Claude SPLIT / reworded p (activity)
+     0.03pp  pages   105 / modules  74   Claude SPLIT / reworded p
+     0.03pp  pages    58 / modules  24   Claude MERGED into longer th (widget)
+     0.03pp  pages    80 / modules  65   Claude SPLIT / reworded p (widget)
+     0.02pp  pages    63 / modules  50   Claude MERGED into longer p (activity)
+     0.02pp  pages    27 / modules  20   Claude MERGED into longer td (widget)
+     0.01pp  pages    28 / modules  13   Claude inside ALERT
+     0.01pp  pages    47 / modules  26   Claude inside ACTIVITY (h3)
+     0.01pp  pages    29 / modules  26   Claude MERGED into longer p
+     0.01pp  pages    40 / modules  35   Claude MERGED into longer p (widget)
+
+== B) the gold's MISSING activity p — where CLAUDE holds the text — template=Inquiry — pages 98: 3.29pp
+     1.20pp  pages    71 / modules  44   NOWHERE in Claude
+     0.61pp  pages    52 / modules  34   Claude inside ACTIVITY
+     0.45pp  pages    33 / modules  28   Claude inside WIDGET
+     0.36pp  pages    45 / modules  25   Claude free same tag (alignment residue)
+     0.17pp  pages    34 / modules  23   Claude SPLIT / reworded p (activity)
+     0.08pp  pages     5 / modules   5   empty
+     0.07pp  pages    20 / modules  19   Claude SPLIT / reworded p (widget)
+     0.05pp  pages     3 / modules   1   Claude inside ACTIVITY (div)
+     0.05pp  pages    17 / modules  16   Claude SPLIT / reworded p
+     0.04pp  pages    16 / modules  15   Claude MERGED into longer p (activity)
+     0.04pp  pages     6 / modules   6   Claude MERGED into longer td (widget)
+     0.03pp  pages     9 / modules   9   Claude inside ACTIVITY (h3)
+     0.02pp  pages     4 / modules   4   Claude MERGED into longer td
+     0.02pp  pages     7 / modules   7   Claude MERGED into longer p
+
+== B) the gold's MISSING activity p — where CLAUDE holds the text — template=Fundamentals — pages 64: 1.54pp
+     0.62pp  pages    52 / modules  44   NOWHERE in Claude
+     0.24pp  pages    29 / modules  27   Claude inside WIDGET
+     0.18pp  pages    34 / modules  33   Claude free same tag (alignment residue)
+     0.11pp  pages    23 / modules  20   Claude inside ACTIVITY
+     0.06pp  pages     6 / modules   6   Claude MERGED into longer td (widget)
+     0.06pp  pages     7 / modules   4   Claude inside ACTIVITY (h3)
+     0.05pp  pages     9 / modules   9   Claude MERGED into longer p
+     0.04pp  pages    12 / modules  12   Claude SPLIT / reworded p
+     0.03pp  pages    11 / modules  11   Claude SPLIT / reworded p (widget)
+     0.03pp  pages    11 / modules  11   Claude SPLIT / reworded p (activity)
+     0.03pp  pages     5 / modules   5   Claude MERGED into longer th (widget)
+     0.02pp  pages     2 / modules   2   Claude inside ACTIVITY (li)
+     0.01pp  pages     1 / modules   1   Claude header/menu/acks
+     0.01pp  pages     4 / modules   4   Claude MERGED into longer p (widget)
+
+== B) the gold's MISSING activity p — where CLAUDE holds the text — template=Bilingual — pages 63: 3.98pp
+     1.37pp  pages    32 / modules  11   NOWHERE in Claude
+     0.77pp  pages    26 / modules  11   Claude free same tag (alignment residue)
+     0.75pp  pages    19 / modules   8   Claude MERGED into longer td (widget)
+     0.45pp  pages    16 / modules  10   Claude inside ACTIVITY
+     0.31pp  pages    20 / modules  10   Claude SPLIT / reworded p
+     0.19pp  pages    10 / modules   6   Claude SPLIT / reworded p (activity)
+     0.09pp  pages    10 / modules   6   Claude SPLIT / reworded td (widget)
+     0.02pp  pages     2 / modules   2   Claude inside WIDGET
+     0.01pp  pages     1 / modules   1   Claude MERGED into longer td (alert)
+     0.01pp  pages     2 / modules   2   Claude MERGED into longer th (widget)
+     0.01pp  pages     2 / modules   2   Claude MERGED into longer p
+     0.00pp  pages     1 / modules   1   Claude SPLIT / reworded th (widget)
+     0.00pp  pages     1 / modules   1   empty
+     0.00pp  pages     1 / modules   1   Claude inside ACTIVITY (b)
+
+examples (A):
+  gold free same tag (alignment residue) → [('AGH1001', 'AGH1001_1_0.html', 'For example:'), ('AGH1001', 'AGH1001_1_0.html', 'Some key New Zealand production systems are:'), ('AGH1002', 'AGH1002_1_0.html', 'Weathering is the first stage in the formation of soils. The Earth’s s'), ('AGH1002', 'AGH1002_2_0.html', 'Where the sand, silt and clay lines cross (or intersect) gives you you')]
+  NOWHERE in gold → [('AGH1001', 'AGH1001_1_0.html', 'Butter'), ('AGH1001', 'AGH1001_1_0.html', 'Cheese'), ('AGH1001', 'AGH1001_1_0.html', 'Milk Powder'), ('AGH1001', 'AGH1001_1_0.html', 'Not all production systems will produce multiple primary products. For')]
+  gold SPLIT / reworded p → [('AGH1001', 'AGH1001_1_0.html', 'This is an example of the difference between a production system and a'), ('AGH1001', 'AGH1001_3_0.html', 'Whatungarongaro te tangata, toitū te whenua “People disappear from sig'), ('AGH1001', 'AGH1001_4_0.html', 'New Zealand’s Horticulture industry is also seasonal. Many fruit trees'), ('AGH1002', 'AGH1002_1_0.html', 'When the Māori people arrived in New Zealand during the late 13th cent')]
+  gold inside WIDGET → [('AGH1001', 'AGH1001_2_0.html', 'Pre-European settlement:'), ('AGH1001', 'AGH1001_2_0.html', 'Late 18th Century - Mid 19th Century:'), ('AGH1001', 'AGH1001_2_0.html', 'Late 19th Century - Mid 20th Century:'), ('AGH1002', 'AGH1002_2_0.html', 'Firstly – always start with the largest percentage. In this case that ')]
+  gold MERGED into longer p → [('AGH1001', 'AGH1001_2_0.html', 'There are many more farming and growing careers, but this will give yo'), ('AGH1002', 'AGH1002_4_0.html', 'Air is needed in soil for two main reasons:'), ('AGH1003', 'AGH1003_5_0.html', 'Lime is finely ground limestone and is a natural product. It is made o'), ('AGH1005', 'AGH1005_2_0.html', 'Let’s take a closer look at the parts of a plant.')]
+  gold SPLIT / reworded h5 (widget) → [('AGH1001', 'AGH1001_2_0.html', 'Farm Advisor – Ash Phillips, Wairoa New ZealandMussel Farmer – Jake Ba')]
+  gold inside ALERT (li) → [('AGH1001', 'AGH1001_3_0.html', 'Ranginui = Sky father'), ('AGH1001', 'AGH1001_3_0.html', 'Te Wehenga = separation'), ('AGH1001', 'AGH1001_3_0.html', 'Te po = darkness'), ('AGH1001', 'AGH1001_3_0.html', 'Kaitiakitanga = Guardianship')]
+  gold SPLIT / reworded p (activity) → [('AGH1001', 'AGH1001_3_0.html', 'Identify whether these statements are true or false: True/False'), ('ANZH101', 'ANZH101_3_0.html', 'Click on the link to create your own pepeha. Pepeha'), ('ANZH401', 'ANZH401_1_0.html', 'As you do this, think about whether the source is people to immigrate '), ('ANZH401', 'ANZH401_1_0.html', 'Remember to look at all parts of the source, including captions. Think')]
+  gold inside ALERT → [('AGH1002', 'AGH1002_4_0.html', 'There are four physical properties of soil. Two of these relate to the'), ('AGH1003', 'AGH1003_2_0.html', 'Think about organic matter like a pinata with lollies on the inside (t'), ('AGH1009', 'AGH1009_4_0.html', 'In recent years, there have been two cases of pathogens in waterways g'), ('AGH1009', 'AGH1009_4_0.html', 'Click on the links to the articles below if you want to find out more:')]
+  gold MERGED into longer li → [('AGH1002', 'AGH1002_4_0.html', 'Main causes of a saturated soil are:'), ('CEDT501', 'CEDT501_8_0.html', 'to guests if you are hosting'), ('ENG1004', 'ENG1004_1_0.html', 'You could consider reality food shows, interview(s) with people involv'), ('ENG1004', 'ENG1004_1_0.html', 'reviewing language use in the context of the environment.')]
+  gold free li → [('AGH1002', 'AGH1002_4_0.html', 'Water holding capacity is directly related to drainage.'), ('AGH1002', 'AGH1002_4_0.html', 'A soil that has a low water holding capacity has fast drainage.'), ('AGH1002', 'AGH1002_4_0.html', 'Soil that has a high-water holding capacity has slow drainage.'), ('AGH1004', 'AGH1004_3_0.html', 'What does this mean for the industry?')]
+  empty → [('AGH1002', 'AGH1002_5_0.html', '['), ('ANZH205', 'ANZH205_4_0.html', '–'), ('ANZH303', 'ANZH303_1_0.html', '“'), ('ANZH401', 'ANZH401_11_0.html', '.')]
+  gold inside ACTIVITY → [('AGH1003', 'AGH1003_2_0.html', 'Revisit this list from earlier in the lesson. Select the soil properti'), ('AGH1003', 'AGH1003_2_0.html', 'From the list below, select the soil properties you think may be alter'), ('AGH1004', 'AGH1004_6_0.html', 'Use the graph to order the agricultural products as increased, no chan'), ('AGH1004', 'AGH1004_6_0.html', 'Here is a flow chart of the Fonterra supply process. Drag and drop the')]
+  gold free h4 → [('AGH1003', 'AGH1003_4_0.html', 'Benefits of adding organic matter'), ('AGH1005', 'AGH1005_8_0.html', 'Fruit and Seed Development'), ('AGH1006', 'AGH1006_2_0.html', 'Seed Sowing Process'), ('AGH1006', 'AGH1006_6_0.html', 'Chemical Control')]
+  gold inside ALERT (h4) → [('AGH1003', 'AGH1003_5_0.html', 'Why is it important to add lime before fertiliser if your soils are ac'), ('AGH1009', 'AGH1009_4_0.html', 'A note on sprays:'), ('CEDO501', 'CEDO501_1_0.html', 'Kōrero 1: Tiana’s Experience'), ('CEDO501', 'CEDO501_1_0.html', 'Kōrero 2: Tane’s Story')]
+  gold MERGED into longer p (activity) → [('AGH1005', 'AGH1005_8_0.html', 'Identify how this family takes care of the bee populations for future '), ('ANZH205', 'ANZH205_3_0.html', '(The voyages of Te Tiriti o Waitangi – YouTube)'), ('ANZH401', 'ANZH401_9_0.html', 'In 1961 there were 12,000.'), ('ANZH401', 'ANZH401_9_0.html', 'In 1971 there were 48,000.')]
+  gold MERGED into longer li (header) → [('AGH1006', 'AGH1006_0_0.html', 'Pests and disease'), ('AGH1006', 'AGH1006_8_0.html', 'Pest and Disease Control'), ('CEDO502', 'CEDO502_4_0.html', 'Search for information'), ('MXEX301', 'MXEX301_0_0.html', 'properties of shapes.')]
+  gold MERGED into longer li (widget) → [('AGH1006', 'AGH1006_6_0.html', 'don’t damage soil structure or spread weed seeds or weed parts around.'), ('MXEX302', 'MXEX302_2_0.html', 'students spend more time watching sports on digital devices than'), ('MXEX302', 'MXEX302_2_0.html', 'Is there a difference in the favourite sports of'), ('MXEX302', 'MXEX302_2_0.html', 'How does the amount of time spent on sports training compare between')]
+  gold free h3 → [('AGH1006', 'AGH1006_8_0.html', 'Biological Control'), ('AGH1006', 'AGH1006_8_0.html', 'Cultural Control'), ('AGH1006', 'AGH1006_8_0.html', 'Chemical Control'), ('BLL240', 'BLL240_1_5.html', 'Letter team ‘ear’')]
+  gold free h5 → [('AGH1007', 'AGH1007_5_0.html', 'LATE PREGNANCY/DRY PERIOD**'), ('AGH1007', 'AGH1007_5_0.html', 'LACTATION**'), ('AGH1007', 'AGH1007_5_0.html', 'MATING**'), ('BLLR201', 'BLLR201_3_0.html', 'Look at these words.')]
+  gold SPLIT / reworded p (widget) → [('AGH1007', 'AGH1007_9_0.html', 'The main disease caused by fungi in New Zealand is facia eczema which '), ('AGH1007', 'AGH1007_9_0.html', 'This relates to health problems which are caused by a lack of a key nu'), ('ANZH401', 'ANZH401_1_0.html', 'During the 1850s and 1860s many English migrants came to New Zealand a'), ('ANZH401', 'ANZH401_1_0.html', 'This postcard was issued by the New Zealand High Commissioner’s Office')]
+  gold free div → [('AGH1009', 'AGH1009_2_0.html', 'Photosynthesis:'), ('ENGR102', 'ENGR102_6_0.html', 'Support your child in this activity. A great way to remind students is'), ('MXDI201', 'MXDI201_4_0.html', 'Solve the new equation using a tool that works for you.')]
+  gold SPLIT / reworded p (alert) → [('AGH1009', 'AGH1009_4_0.html', 'The use of chemicals – both pesticides ['), ('ANZH205', 'ANZH205_5_0.html', 'The Chiefs of the Confederation of the United Tribes of New Zealand an'), ('ANZH205', 'ANZH205_5_0.html', 'Her Majesty the Queen of England confirms and guarantees to the Chiefs'), ('ANZH205', 'ANZH205_5_0.html', 'The Chiefs of the Confederation and all the Chiefs who have not joined')]
+  gold header/menu/acks → [('ANZH104', 'ANZH104_0_0.html', 'Māori history is the foundational and continuous history of Aotearoa N'), ('BLLR201', 'BLLR201_5_0.html', 'We are learning:'), ('CEDK501', 'CEDK501_8_0.html', 'I can:'), ('CEDR201', 'CEDR201_0_0.html', 'UNDERSTAND')]
+  gold MERGED into longer p (widget) → [('ANZH104', 'ANZH104_1_0.html', 'These are the things that we must have to live and be healthy. They ar'), ('ANZH104', 'ANZH104_1_0.html', 'Wants are the things that we would like to have, but they are not nece'), ('ANZH301', 'ANZH301_6_0.html', 'Eventually, I got tired of going home from the city (ki Pōneke), so mo'), ('BLLR201', 'BLLR201_2_0.html', 'I’d like a book = I like a book.')]
+  gold free a → [('ANZH203', 'ANZH203_4_0.html', "Marton's James Cook statue covered up by Rangitīkei District Council"), ('ANZH404', 'ANZH404_4_0.html', 'Source A:'), ('ANZH404', 'ANZH404_4_0.html', 'Source B:'), ('ANZH404', 'ANZH404_4_0.html', 'Source C')]
+  gold inside ALERT (h5) → [('ANZH205', 'ANZH205_5_0.html', 'Ko te tuatahi'), ('ANZH205', 'ANZH205_5_0.html', 'Ko te tuarua'), ('ANZH205', 'ANZH205_5_0.html', 'Ko te tuatoru'), ('ANZH205', 'ANZH205_5_0.html', 'The first')]
+  gold MERGED into longer p (header) → [('ANZH401', 'ANZH401_7_0.html', 'The Aotearoa History Show S2 | Episode 5: Gold Rush | RNZ'), ('ANZH401', 'ANZH401_13_0.html', 'Emigration poster'), ('CEDK501', 'CEDK501_8_0.html', 'We are learning:'), ('CEDT207', 'CEDT207_7_0.html', 'Ko wai tō pepeha? What is your pepeha?')]
+  gold inside ACTIVITY (h4) → [('ART1002', 'ART1002_5_0.html', 'Your visual diary should contain:'), ('CEDT104', 'CEDT104_0_0.html', "Let's Do It"), ('CEDT104', 'CEDT104_0_0.html', '️Ka Māu te wehi. Awesome.'), ('CEDT104', 'CEDT104_0_0.html', 'Tau kē. (Awesome.)')]
+  gold inside ACTIVITY (th) → [('ART1006', 'ART1006_4_0.html', '1.'), ('TEDC402', 'TEDC402_8_0.html', 'Pick one emoji for each skill:')]
+  gold inside ALERT (td) → [('BLLR201', 'BLLR201_2_0.html', 'The two word phrases ending with use .'), ('BLLR201', 'BLLR201_2_0.html', 'The two word phrases ending with use'), ('BLLR201', 'BLLR201_2_0.html', 'The two word phrases ending with use'), ('MXDB202', 'MXDB202_1_0.html', 'alue')]
+  gold MERGED into longer td → [('CEDK501', 'CEDK501_2_0.html', 'is the money you receive. It can come from different sources.'), ('CEDK501', 'CEDK501_2_0.html', 'are the money that goes out when you buy or pay for something.'), ('CEDK501', 'CEDK501_3_1.html', 'My biggest and most frequent expense is kai with friends. Small amount'), ('CEDK501', 'CEDK501_3_1.html', 'Cutting back on takeaways from three times a month to just twice will ')]
+  gold free th → [('CEDK501', 'CEDK501_3_1.html', 'Mere'), ('CEDK501', 'CEDK501_3_1.html', 'Te Mana'), ('CEDR501', 'CEDR501_2_0.html', 'The interviewer (or interviewers) leads the conversation. Their role i'), ('CEDR501', 'CEDR501_2_0.html', 'The interviewee is the person being interviewed. Their role is to')]
+  gold free b → [('CEDK501', 'CEDK501_3_1.html', 'How can I adjust my spending?'), ('CEDK501', 'CEDK501_3_1.html', 'How can I adjust my spending?'), ('ENGI301', 'ENGI301_3_0.html', 'Scanning:'), ('ENGI301', 'ENGI301_4_0.html', 'constructing paragraphs')]
+  gold SPLIT / reworded li → [('CEDO105', 'CEDO105_5_0.html', 'Take a photo of your algorithm written down, you can upload this below'), ('CEDO105', 'CEDO105_5_0.html', 'If not, change your algorithm and try again. This is called testing an'), ('MXEX202', 'MXEX202_2_0.html', '4 cups = 1 litre (1 000 mls)'), ('MXFL204', 'MXFL204_7_0.html', 'Percentages help us compare different things easily. For example, if y')]
+  gold SPLIT / reworded h4 (alert) → [('CEDO501', 'CEDO501_0_0.html', 'Not sure about a word? Visit the or .'), ('CEDO502', 'CEDO502_0_0.html', 'Not sure about a word? Visit the or .'), ('CEDT501', 'CEDT501_0_0.html', 'Not sure about a word? Visit the or .'), ('CEDW501', 'CEDW501_0_0.html', 'Not sure about a word? Visit the or .')]
+  gold MERGED into longer p (alert) → [('CEDO501', 'CEDO501_5_1.html', 'To narrow the search use AND to widen the search use OR! Remember to u'), ('ENGJ302', 'ENGJ302_6_0.html', 'Line 2: Two adjectives describing the first subject.'), ('ENGJ302', 'ENGJ302_6_0.html', 'Line 3: Three verbs linked to the first subject.'), ('ENGJ302', 'ENGJ302_6_0.html', 'Line 4: Four nouns: first two linked to first subject/second two linke')]
+  gold free td → [('CEDO502', 'CEDO502_2_0.html', '/ A business that keeps people’s money and lends money'), ('CEDO502', 'CEDO502_2_0.html', '/ A financial group that is owned by its members and lends money'), ('CEDO502', 'CEDO502_2_0.html', '/ A business that lends money to people'), ('ENGI405', 'ENGI405_4_1.html', 'From this we learn that …')]
+  gold MERGED into longer h4 → [('CEDO502', 'CEDO502_4_0.html', 'Highlight the information you need from each source'), ('ENGI405', 'ENGI405_4_1.html', '- (this is prewriting and preparation)'), ('HES1004', 'HES1004_2_0.html', 'Should I buy those trainers?')]
+  gold inside ALERT (b) → [('CEDO502', 'CEDO502_7_0.html', 'Example:'), ('CEDO502', 'CEDO502_7_0.html', 'Example:'), ('ENGS302', 'ENGS302_2_0.html', 'Character development'), ('MXDI101', 'MXDI101_1_9.html', '3 x 5 = 15')]
+  gold inside ACTIVITY (b) → [('CEDR501', 'CEDR501_8_0.html', 'Index'), ('HIS1005', 'HIS1005_6_1.html', 'Source:'), ('HIS1006', 'HIS1006_11_0.html', 'What can New Zealand tell us about reparations?'), ('OSSM301', 'OSSM301_2_0.html', 'Low to moderate use')]
+  gold SPLIT / reworded h4 → [('CEDT104', 'CEDT104_0_0.html', 'Think of it like this: Imagine if you were telling a friend about your'), ('TRR304', 'TRR304_2_0.html', "Whakakiia ngā wāhi kua mahue. Pāwhiritia 'Enter' ki te tuku:")]
+  gold inside ACTIVITY (h3) → [('CEDT104', 'CEDT104_0_0.html', 'Step 1: Echo Time'), ('CEDT104', 'CEDT104_0_0.html', "Let's check what we've learned"), ('CEDT207', 'CEDT207_7_0.html', 'Let’s prepare!'), ('ENGI400', 'ENGI400_3_0.html', 'Sending your work to your kaiako')]
+  gold MERGED into longer h4 (widget) → [('CEDT501', 'CEDT501_5_0.html', 'Kōrero 2: No Holding Back')]
+  gold inside ACTIVITY (a) → [('CEDW501', 'CEDW501_6_0.html', 'Upload to dropbox'), ('ENGC401', 'ENGC401_7_0.html', 'Upload to dropbox'), ('OSSC401', 'OSSC401_2_0.html', 'Bad News – Play the fake news game!'), ('TRR112', 'TRR112_2_0.html', 'Ngā Kiwi Pages')]
+  gold inside ALERT (a) → [('ENGI301', 'ENGI301_4_0.html', '(ENGFUN05 Sentences)'), ('OSSC401', 'OSSC401_2_0.html', 'Fact checking site')]
+  gold free h2 → [('ENGI400', 'ENGI400_0_0.html', 'Equipped to Explore'), ('SSCI205', 'SSCI205_5_0.html', 'Life in Sparta'), ('SSCI205', 'SSCI205_6_0.html', 'Conflict and Change in Ancient Greece')]
+  gold free span → [('ENGI405', 'ENGI405_0_0.html', 'Modals'), ('ENGI405', 'ENGI405_0_0.html', 'Multimodal'), ('ENGI405', 'ENGI405_0_0.html', 'Analyse'), ('ENGR202', 'ENGR202_2_0.html', 'fiction')]
+  gold inside ACTIVITY (h5) → [('ENGI405', 'ENGI405_5_0.html', 'Thinking question:'), ('MXDI201', 'MXDI201_3_0.html', 'For example:'), ('MXFU201', 'MXFU201_4_0.html', 'Questions:'), ('PES1008', 'PES1008_7_0.html', 'What you will need:')]
+  gold SPLIT / reworded li (widget) → [('ENGJ301', 'ENGJ301_6_0.html', 'For example, consider two young people on a small boat. One is nervous'), ('XLP01', 'XLP01_2_0.html', 'is a great way to model the process of reading. Let’s look at this in ')]
+  gold MERGED into longer h5 (widget) → [('ENGJ402', 'ENGJ402_3_0.html', 'Let me not to the marriage of true minds')]
+  gold SPLIT / reworded span → [('ENGR201', 'ENGR201_4_0.html', 'Insects are an excellent health food. They are full of the things we n'), ('ENGR201', 'ENGR201_4_0.html', 'It’s cheap and easy to farm insects. They take up a lot less space tha')]
+  gold SPLIT / reworded td → [('ENGR302', 'ENGR302_7_0.html', 'Though initially appalled by the three-legged puppy, the boy has been '), ('HES1007', 'HES1007_7_0.html', 'New Zealand girls and young women, as well as nonbinary persons who bl'), ('HES1007', 'HES1007_8_0.html', 'The Classification Office has released a national report on why young '), ('PHE1002', 'PHE1002_1_0.html', 'Execute movement strategies in an applied setting involves:')]
+  gold SPLIT / reworded li (header) → [('ENGS101', 'ENGS101_3_0.html', 'North, South, East and West on the points'), ('XGF9002', 'XGF9002_7_0.html', 'Perfectionism, frustration, and fear of failure are common experiences')]
+  gold inside ACTIVITY (span) → [('EXPFUN07', 'EXPFUN07_0_0.html', 'Karawhiua!')]
+  gold SPLIT / reworded span (widget) → [('HIS1001', 'HIS1001_5_0.html', 'The cartoon is useful for answering the focus question as it shows a c'), ('MXEX302', 'MXEX302_2_0.html', 'students who actively participate in sports) and'), ('MXEX302', 'MXEX302_2_0.html', 'time students spend on sports practice')]
+  gold SPLIT / reworded p (header) → [('HIS1002', 'HIS1002_1_0.html', 'In 1966, the French government began testing nuclear weapons at Moruro')]
+  gold inside ACTIVITY (li) → [('HIS1002', 'HIS1002_13_0.html', 'use the SEED structure in writing a paragraph'), ('HIS1002', 'HIS1002_13_0.html', 'explain how tuakiri (identity) is relevant to the historical context'), ('HIS1002', 'HIS1002_13_0.html', 'discuss how tuakiri (identity) helps to explain this context.'), ('MXFL203', 'MXFL203_11_0.html', 'What is the goal of your game?')]
+  gold SPLIT / reworded h2 → [('HIS1005', 'HIS1005_2_0.html', 'Te Tiriti o Waitangi (The Treaty of Waitangi), its drafting, its signi')]
+  gold SPLIT / reworded h5 (activity) → [('HIS1005', 'HIS1005_5_0.html', 'Why was the reply to Te Wherowhero’s letter was sent to the Governor a')]
+  gold SPLIT / reworded li (alert) → [('HIS1008', 'HIS1008_1_0.html', 'founded in 1957, by Martin Luther King in order to have a regional org')]
+  gold SPLIT / reworded b → [('HIS1008', 'HIS1008_3_0.html', 'Project C – Phase 2, 6 April 1963: Mass marches began to try and jam t'), ('MXFU402', 'MXFU402_4_0.html', 'P (Left hand and red) = 1/16')]
+  gold SPLIT / reworded h1 (header) → [('MXDI201', 'MXDI201_2_0.html', "Sir Cumference and All the King's Tens read-aloud (youtube.com)"), ('MXDI301', 'MXDI301_1_0.html', 'The negative powers of 10 in this lesson refers to the division by 10 ')]
+  gold MERGED into longer h3 → [('MXEO401', 'MXEO401_3_0.html', 'et’s look at an example'), ('OSAH301', 'OSAH301_3_0.html', 'Report an incident .')]
+  gold MERGED into longer li (alert) → [('MXFL401', 'MXFL401_2_0.html', 'The equation we would have used would have been:'), ('MXFL401', 'MXFL401_2_0.html', '106% as a decimal is 1.06 ('), ('MXFL401', 'MXFL401_2_0.html', 'The equation we would have used would have been:')]
+  gold MERGED into longer b (widget) → [('MXFU201', 'MXFU201_8_0.html', 'Total number of outcomes')]
+  gold SPLIT / reworded td (widget) → [('OSSC401', 'OSSC401_2_0.html', 'False or inaccurate information by mistake. Getting the facts wrong un'), ('OSSC401', 'OSSC401_2_0.html', 'False information which is to mislead. Intentionally misstating the fa')]
+  gold SPLIT / reworded li (activity) → [('OSSM301', 'OSSM301_2_0.html', 'Time to have a good discussion with a trusted adult about this. Time t'), ('PNR102', 'PNR102_2_0.html', 'Ka taea e au te tautohu i te kupu, rua.'), ('PNR102', 'PNR102_2_0.html', 'I can recognise the word rua.'), ('XDLS912', 'XDLS912_1_0.html', 'We can use Google Maps to find out the time it will take to reach your')]
+  gold MERGED into longer h4 (activity) → [('TEDC401', 'TEDC401_4_0.html', 'Pick your prototype tool'), ('TEDC402', 'TEDC402_7_0.html', 'Identify the Decision Point')]
+  gold MERGED into longer li (activity) → [('TEDC402', 'TEDC402_8_0.html', 'reate a trace table showing:')]
+  gold inside ALERT (h3) → [('XDLS912', 'XDLS912_1_0.html', 'How was this learning for you?'), ('XDLS912', 'XDLS912_4_0.html', 'How was this learning for you?')]
+  gold MERGED into longer h3 (activity) → [('XGF9003', 'XGF9003_1_1.html', 'Green Light, Yellow Light,')]
+  gold inside ACTIVITY (td) → [('XGF9003', 'XGF9003_1_1.html', '– You’ve thought it through, it’s safe, and it’s a good choice. Go for'), ('XGF9003', 'XGF9003_1_1.html', '– Pause and check. Do you need more information? Could something go wr'), ('XGF9003', 'XGF9003_1_1.html', '– Stop. This choice could be unsafe, unkind, or cause problems.')]
+  gold MERGED into longer b → [('XGF9006', 'XGF9006_1_0.html', 'Sense-making (whaiwhakaaro) and innovation (auaha).'), ('XGF9006', 'XGF9006_1_0.html', 'Curiosity (pākiki) and contribution (kōkiri)'), ('XGF9006', 'XGF9006_1_0.html', 'Curiosity (pākiki) and contribution (kōkiri)'), ('XGF9006', 'XGF9006_1_0.html', 'Sense-making (whaiwhakaaro) and innovation (auaha).')]
+  gold SPLIT / reworded b (activity) → [('XGF9006', 'XGF9006_5_0.html', 'so that you can record your ideas and planning in the Journal to share')]
+  gold SPLIT / reworded td (alert) → [('XTAS103', 'XTAS103_0_0.html', 'We might ask you to use your voice to tell us about your learning. The')]

@@ -1,0 +1,609 @@
+
+== ALL — pages 1963: total loss 47.94pp
+     7.28pp  pages  3373   wrapper-empty
+     5.74pp  pages  2787   chrome
+     5.58pp  pages  3095   alignment-residue
+     3.76pp  pages  1603   editorial-gold
+     3.51pp  pages  1612   editorial-claude
+     2.40pp  pages  1892   wrapper-of-container-shift
+     2.18pp  pages  1221   wrapper-of-editorial-gold
+     2.10pp  pages  2547   widget-line
+     2.01pp  pages  2363   merged-split
+     1.49pp  pages  1614   wrapper-of-alignment-residue
+     1.44pp  pages  1456   wrapper-of-widget-line
+     1.39pp  pages  1102   wrapper-of-editorial-claude
+     1.35pp  pages   878   container-shift:activity->widget
+     1.33pp  pages  2133   wrapper-form
+     1.21pp  pages   725   container-shift:free->widget
+     1.15pp  pages  1655   tag-swap
+     0.85pp  pages  1161   wrapper-of-merged-split
+     0.71pp  pages   810   container-shift:activity->free
+     0.69pp  pages   725   container-shift:free->activity
+     0.46pp  pages   742   wrapper-of-tag-swap
+     0.26pp  pages   391   container-shift:alert->free
+     0.24pp  pages   169   container-shift:panel->free
+     0.23pp  pages   332   container-shift:free->alert
+     0.22pp  pages   290   container-shift:free->header
+     0.09pp  pages   129   container-shift:alert->widget
+     0.07pp  pages   100   container-shift:panel->widget
+     0.05pp  pages   113   container-shift:alert->activity
+     0.04pp  pages    85   container-shift:activity->alert
+     0.03pp  pages    98   container-shift:panel->activity
+     0.02pp  pages    57   container-shift:activity->header
+     0.02pp  pages    46   container-shift:panel->header
+     0.02pp  pages    35   container-shift:alert->header
+     0.01pp  pages    33   container-shift:panel->alert
+   → residual (not chrome / widget / editorial): 32.83pp
+   top detail rows (family · direction · region · tag):
+       1.11pp  ('wrapper-empty', 'MISSING', 'body', 'div')
+       1.06pp  ('wrapper-empty', 'MISSING', 'activity', 'div')
+       1.04pp  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'div')
+       0.95pp  ('editorial-claude', 'EXTRA', 'body', 'p')
+       0.88pp  ('alignment-residue', 'MISSING', 'body', 'div')
+       0.87pp  ('alignment-residue', 'EXTRA', 'body', 'div')
+       0.84pp  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'div')
+       0.76pp  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'div')
+       0.72pp  ('widget-line', 'MISSING', 'activity', 'WIDGET')
+       0.71pp  ('editorial-gold', 'MISSING', 'body', 'p')
+       0.68pp  ('chrome', 'MISSING', 'module-menu', 'li')
+       0.64pp  ('wrapper-empty', 'MISSING', 'body', 'img')
+       0.63pp  ('wrapper-of-container-shift', 'MISSING', 'body', 'div')
+       0.62pp  ('widget-line', 'MISSING', 'body', 'WIDGET')
+       0.59pp  ('wrapper-empty', 'EXTRA', 'body', 'div')
+       0.57pp  ('editorial-gold', 'MISSING', 'activity', 'p')
+       0.53pp  ('wrapper-of-widget-line', 'MISSING', 'body', 'div')
+       0.50pp  ('editorial-claude', 'EXTRA', 'activity', 'p')
+       0.49pp  ('wrapper-empty', 'MISSING', 'body', 'br')
+       0.48pp  ('wrapper-of-container-shift', 'MISSING', 'activity', 'div')
+       0.47pp  ('wrapper-of-widget-line', 'MISSING', 'activity', 'div')
+       0.47pp  ('wrapper-form', 'EXTRA', 'body', 'div')
+       0.46pp  ('wrapper-of-container-shift', 'EXTRA', 'body', 'div')
+       0.45pp  ('alignment-residue', 'EXTRA', 'body', 'p')
+   wrapper-form detail (direction · region · container · signature):
+       0.21pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.14pp  ('EXTRA', 'body', 'free', 'div.row')
+       0.07pp  ('MISSING', 'body', 'free', 'div.row')
+       0.06pp  ('MISSING', 'body', 'free', 'div.col-12')
+       0.06pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.04pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-12')
+       0.03pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-12')
+       0.03pp  ('EXTRA', 'activity', 'activity', 'div.col-12')
+       0.03pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-8')
+       0.03pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-4.paddingLR')
+       0.02pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-8.paddingR')
+       0.02pp  ('MISSING', 'activity', 'activity', 'div.row')
+       0.02pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-6.paddingLR')
+       0.02pp  ('EXTRA', 'activity', 'free', 'div.activity')
+       0.02pp  ('EXTRA', 'body', 'free', 'div.alert.solid')
+       0.01pp  ('MISSING', 'body', 'free', 'div.alert')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.alert')
+       0.01pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-10')
+       0.01pp  ('EXTRA', 'body', 'panel', 'div.col-12.col-md-8')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'div.row')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-6.col-sm-6.paddingLR')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'ol')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=1A]')
+       0.01pp  ('EXTRA', 'body', 'free', 'ul')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=2A]')
+       0.01pp  ('EXTRA', 'body', 'panel', 'div.row')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity.interactive')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'div.col-12.col-md-4.paddingLR')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=1B]')
+       0.01pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-4.paddingLR')
+   wrapper-empty detail (direction · region · container · signature):
+       0.41pp  ('MISSING', 'body', 'free', 'img.img-fluid')
+       0.40pp  ('MISSING', 'body', 'free', 'br')
+       0.34pp  ('MISSING', 'activity', 'activity', 'div.button')
+       0.31pp  ('MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.26pp  ('EXTRA', 'body', 'free', 'img.img-fluid')
+       0.24pp  ('MISSING', 'activity', 'activity', 'br')
+       0.18pp  ('EXTRA', 'body', 'free', 'iframe')
+       0.17pp  ('EXTRA', 'activity', 'activity', 'img.img-fluid')
+       0.16pp  ('MISSING', 'body', 'free', 'iframe.embed-responsive-item')
+       0.16pp  ('MISSING', 'body', 'free', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.14pp  ('MISSING', 'body', 'alert', 'img.img-fluid')
+       0.14pp  ('EXTRA', 'body', 'free', 'td')
+       0.13pp  ('EXTRA', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.12pp  ('EXTRA', 'body', 'free', 'div.button')
+       0.09pp  ('EXTRA', 'activity', 'activity', 'iframe')
+       0.09pp  ('MISSING', 'body', 'free', 'iframe')
+       0.09pp  ('EXTRA', 'body', 'free', 'audio.audioPlayer.icon')
+       0.08pp  ('EXTRA', 'activity', 'activity', 'div.button')
+       0.08pp  ('MISSING', 'body', 'free', 'div.row')
+       0.08pp  ('MISSING', 'activity', 'activity', 'div.row')
+       0.08pp  ('MISSING', 'body', 'free', 'mn')
+       0.07pp  ('MISSING', 'activity', 'activity', 'td')
+       0.07pp  ('MISSING', 'body', 'free', 'div.alertImage')
+       0.07pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-4.offset-md-0')
+       0.07pp  ('MISSING', 'body', 'free', 'td')
+       0.07pp  ('MISSING', 'body', 'alert', 'br')
+       0.06pp  ('MISSING', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.06pp  ('EXTRA', 'activity', 'activity', 'div.ratio.ratio-16x9.videoSection')
+       0.05pp  ('MISSING', 'activity', 'activity', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.05pp  ('MISSING', 'activity', 'activity', 'iframe.embed-responsive-item')
+
+== template=Standard — pages 1738: total loss 46.33pp
+     7.12pp  pages  2963   wrapper-empty
+     5.98pp  pages  2401   chrome
+     5.43pp  pages  2705   alignment-residue
+     3.42pp  pages  1389   editorial-gold
+     3.28pp  pages  1410   editorial-claude
+     2.28pp  pages  1595   wrapper-of-container-shift
+     2.05pp  pages  1038   wrapper-of-editorial-gold
+     2.02pp  pages  2189   widget-line
+     1.90pp  pages  2027   merged-split
+     1.48pp  pages  1390   wrapper-of-alignment-residue
+     1.38pp  pages  1231   wrapper-of-widget-line
+     1.37pp  pages  1894   wrapper-form
+     1.36pp  pages   957   wrapper-of-editorial-claude
+     1.34pp  pages   729   container-shift:activity->widget
+     1.28pp  pages   672   container-shift:free->widget
+     1.11pp  pages  1467   tag-swap
+     0.83pp  pages   946   wrapper-of-merged-split
+     0.65pp  pages   651   container-shift:free->activity
+     0.63pp  pages   640   container-shift:activity->free
+     0.44pp  pages   639   wrapper-of-tag-swap
+     0.27pp  pages   331   container-shift:alert->free
+     0.24pp  pages   308   container-shift:free->alert
+     0.23pp  pages   262   container-shift:free->header
+     0.09pp  pages   109   container-shift:alert->widget
+     0.05pp  pages    90   container-shift:alert->activity
+     0.04pp  pages    68   container-shift:activity->alert
+     0.02pp  pages    12   container-shift:panel->free
+     0.02pp  pages    26   container-shift:alert->header
+     0.02pp  pages    36   container-shift:activity->header
+     0.00pp  pages     6   container-shift:panel->widget
+     0.00pp  pages     6   container-shift:panel->activity
+     0.00pp  pages     4   container-shift:panel->alert
+     0.00pp  pages     7   container-shift:panel->header
+   → residual (not chrome / widget / editorial): 31.63pp
+   top detail rows (family · direction · region · tag):
+       1.10pp  ('wrapper-empty', 'MISSING', 'body', 'div')
+       1.00pp  ('wrapper-empty', 'MISSING', 'activity', 'div')
+       0.98pp  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'div')
+       0.85pp  ('editorial-claude', 'EXTRA', 'body', 'p')
+       0.83pp  ('alignment-residue', 'MISSING', 'body', 'div')
+       0.82pp  ('alignment-residue', 'EXTRA', 'body', 'div')
+       0.79pp  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'div')
+       0.73pp  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'div')
+       0.72pp  ('chrome', 'MISSING', 'module-menu', 'li')
+       0.66pp  ('widget-line', 'MISSING', 'activity', 'WIDGET')
+       0.64pp  ('wrapper-empty', 'MISSING', 'body', 'img')
+       0.63pp  ('editorial-gold', 'MISSING', 'body', 'p')
+       0.62pp  ('widget-line', 'MISSING', 'body', 'WIDGET')
+       0.60pp  ('wrapper-of-container-shift', 'MISSING', 'body', 'div')
+       0.59pp  ('wrapper-empty', 'EXTRA', 'body', 'div')
+       0.52pp  ('wrapper-of-widget-line', 'MISSING', 'body', 'div')
+       0.49pp  ('editorial-gold', 'MISSING', 'activity', 'p')
+       0.48pp  ('wrapper-form', 'EXTRA', 'body', 'div')
+       0.48pp  ('wrapper-empty', 'MISSING', 'body', 'br')
+       0.46pp  ('alignment-residue', 'EXTRA', 'body', 'p')
+       0.43pp  ('wrapper-of-container-shift', 'EXTRA', 'body', 'div')
+       0.43pp  ('wrapper-of-container-shift', 'MISSING', 'activity', 'div')
+       0.43pp  ('editorial-claude', 'EXTRA', 'activity', 'p')
+       0.41pp  ('wrapper-of-alignment-residue', 'MISSING', 'body', 'div')
+   wrapper-form detail (direction · region · container · signature):
+       0.23pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.15pp  ('EXTRA', 'body', 'free', 'div.row')
+       0.08pp  ('MISSING', 'body', 'free', 'div.row')
+       0.07pp  ('MISSING', 'body', 'free', 'div.col-12')
+       0.06pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.04pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-12')
+       0.03pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-4.paddingLR')
+       0.03pp  ('EXTRA', 'activity', 'activity', 'div.col-12')
+       0.03pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-12')
+       0.03pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-8')
+       0.03pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-8.paddingR')
+       0.02pp  ('MISSING', 'activity', 'activity', 'div.row')
+       0.02pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-6.paddingLR')
+       0.02pp  ('EXTRA', 'activity', 'free', 'div.activity')
+       0.02pp  ('EXTRA', 'body', 'free', 'div.alert.solid')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.alert')
+       0.01pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-10')
+       0.01pp  ('MISSING', 'body', 'free', 'div.alert')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'div.row')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-6.col-sm-6.paddingLR')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=1A]')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=2A]')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'ol')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity.interactive')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=1B]')
+       0.01pp  ('EXTRA', 'body', 'free', 'ul')
+       0.01pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-4.paddingLR')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=3A]')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-6')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'div.col-12.col-md-4.paddingLR')
+   wrapper-empty detail (direction · region · container · signature):
+       0.44pp  ('MISSING', 'body', 'free', 'img.img-fluid')
+       0.41pp  ('MISSING', 'body', 'free', 'br')
+       0.34pp  ('MISSING', 'activity', 'activity', 'div.button')
+       0.29pp  ('MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.26pp  ('EXTRA', 'body', 'free', 'img.img-fluid')
+       0.24pp  ('MISSING', 'activity', 'activity', 'br')
+       0.19pp  ('EXTRA', 'body', 'free', 'iframe')
+       0.17pp  ('MISSING', 'body', 'free', 'iframe.embed-responsive-item')
+       0.17pp  ('MISSING', 'body', 'free', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.15pp  ('EXTRA', 'body', 'free', 'td')
+       0.14pp  ('MISSING', 'body', 'alert', 'img.img-fluid')
+       0.14pp  ('EXTRA', 'activity', 'activity', 'img.img-fluid')
+       0.13pp  ('EXTRA', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.13pp  ('EXTRA', 'body', 'free', 'div.button')
+       0.10pp  ('MISSING', 'body', 'free', 'iframe')
+       0.09pp  ('EXTRA', 'activity', 'activity', 'iframe')
+       0.09pp  ('MISSING', 'body', 'free', 'div.row')
+       0.09pp  ('MISSING', 'body', 'free', 'mn')
+       0.08pp  ('EXTRA', 'activity', 'activity', 'div.button')
+       0.08pp  ('MISSING', 'activity', 'activity', 'td')
+       0.08pp  ('EXTRA', 'body', 'free', 'audio.audioPlayer.icon')
+       0.07pp  ('MISSING', 'activity', 'activity', 'div.row')
+       0.07pp  ('MISSING', 'body', 'free', 'div.alertImage')
+       0.07pp  ('MISSING', 'body', 'free', 'td')
+       0.07pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-4.offset-md-0')
+       0.07pp  ('MISSING', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.06pp  ('MISSING', 'body', 'alert', 'br')
+       0.06pp  ('EXTRA', 'body', 'free', 'th')
+       0.05pp  ('EXTRA', 'activity', 'activity', 'div.ratio.ratio-16x9.videoSection')
+       0.05pp  ('MISSING', 'activity', 'activity', 'div.externalButton')
+
+== template=Inquiry — pages 98: total loss 62.77pp
+     8.33pp  pages   186   wrapper-empty
+     7.57pp  pages   175   alignment-residue
+     6.42pp  pages    93   editorial-gold
+     5.58pp  pages   193   chrome
+     4.27pp  pages    81   wrapper-of-editorial-gold
+     4.05pp  pages   133   wrapper-of-container-shift
+     3.38pp  pages    88   editorial-claude
+     3.09pp  pages   147   widget-line
+     2.45pp  pages    99   wrapper-of-widget-line
+     2.27pp  pages   142   merged-split
+     2.24pp  pages   115   wrapper-of-alignment-residue
+     2.12pp  pages    58   container-shift:panel->free
+     1.40pp  pages    71   wrapper-of-editorial-claude
+     1.37pp  pages    88   tag-swap
+     1.27pp  pages    57   container-shift:activity->widget
+     1.13pp  pages    29   container-shift:free->widget
+     0.97pp  pages    94   wrapper-of-merged-split
+     0.93pp  pages    68   container-shift:activity->free
+     0.92pp  pages    55   wrapper-of-tag-swap
+     0.91pp  pages   102   wrapper-form
+     0.62pp  pages    32   container-shift:free->activity
+     0.39pp  pages    25   container-shift:free->header
+     0.35pp  pages    32   container-shift:panel->widget
+     0.20pp  pages    37   container-shift:panel->activity
+     0.14pp  pages    14   container-shift:panel->header
+     0.13pp  pages    17   container-shift:alert->free
+     0.08pp  pages    10   container-shift:free->alert
+     0.05pp  pages    10   container-shift:alert->widget
+     0.04pp  pages    10   container-shift:alert->activity
+     0.04pp  pages    12   container-shift:activity->header
+     0.03pp  pages     2   container-shift:alert->header
+     0.02pp  pages     4   container-shift:activity->alert
+     0.00pp  pages     6   container-shift:panel->alert
+   → residual (not chrome / widget / editorial): 44.31pp
+   top detail rows (family · direction · region · tag):
+       2.11pp  ('wrapper-empty', 'MISSING', 'activity', 'div')
+       2.10pp  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'div')
+       1.63pp  ('widget-line', 'MISSING', 'activity', 'WIDGET')
+       1.62pp  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'div')
+       1.37pp  ('wrapper-of-widget-line', 'MISSING', 'activity', 'div')
+       1.26pp  ('editorial-gold', 'MISSING', 'activity', 'p')
+       1.23pp  ('alignment-residue', 'EXTRA', 'body', 'div')
+       1.21pp  ('alignment-residue', 'MISSING', 'body', 'div')
+       1.12pp  ('wrapper-of-container-shift', 'MISSING', 'activity', 'div')
+       1.03pp  ('editorial-gold', 'MISSING', 'body', 'p')
+       0.97pp  ('wrapper-of-container-shift', 'EXTRA', 'body', 'div')
+       0.96pp  ('wrapper-empty', 'MISSING', 'body', 'div')
+       0.92pp  ('editorial-claude', 'EXTRA', 'body', 'p')
+       0.84pp  ('chrome', 'MISSING', 'module-menu', 'li')
+       0.80pp  ('widget-line', 'MISSING', 'body', 'WIDGET')
+       0.73pp  ('wrapper-of-container-shift', 'MISSING', 'body', 'div')
+       0.73pp  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'div')
+       0.69pp  ('editorial-gold', 'MISSING', 'body', 'li')
+       0.68pp  ('wrapper-empty', 'EXTRA', 'body', 'div')
+       0.67pp  ('wrapper-empty', 'MISSING', 'activity', 'img')
+       0.63pp  ('wrapper-of-widget-line', 'MISSING', 'body', 'div')
+       0.63pp  ('wrapper-empty', 'EXTRA', 'activity', 'div')
+       0.63pp  ('alignment-residue', 'MISSING', 'activity', 'p')
+       0.60pp  ('wrapper-of-alignment-residue', 'EXTRA', 'activity', 'div')
+   wrapper-form detail (direction · region · container · signature):
+       0.08pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.07pp  ('EXTRA', 'body', 'free', 'div.row')
+       0.06pp  ('EXTRA', 'body', 'panel', 'div.col-12.col-md-8')
+       0.05pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.05pp  ('MISSING', 'body', 'free', 'div.row')
+       0.04pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-12')
+       0.04pp  ('EXTRA', 'body', 'panel', 'div.row')
+       0.03pp  ('MISSING', 'body', 'free', 'div.choiceHeightMatch.choicePage.col-12.col-md-8')
+       0.02pp  ('MISSING', 'activity', 'activity', 'div.col-8')
+       0.02pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-12')
+       0.02pp  ('MISSING', 'body', 'free', 'tr.rowSolid')
+       0.02pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-6.paddingLR')
+       0.02pp  ('EXTRA', 'activity', 'activity', 'div.col-12.col-md-4.paddingLR')
+       0.01pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-10')
+       0.01pp  ('EXTRA', 'body', 'free', 'table.table.table-bordered')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'ol')
+       0.01pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-8')
+       0.01pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-8')
+       0.01pp  ('MISSING', 'body', 'free', 'table.table.table-bordered.tableFixed')
+       0.01pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-12')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.col-12')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-8.paddingR')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'div.TKmodal')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity[number=4A]')
+       0.01pp  ('MISSING', 'body', 'free', 'div.alert')
+       0.01pp  ('MISSING', 'body', 'free', 'tr.primary-light.rowSolid')
+       0.01pp  ('MISSING', 'body', 'free', 'table.table')
+       0.01pp  ('MISSING', 'activity', 'activity', 'ol')
+       0.01pp  ('EXTRA', 'activity', 'activity', 'ul')
+       0.01pp  ('EXTRA', 'body', 'panel', 'div.alert.solid')
+   wrapper-empty detail (direction · region · container · signature):
+       0.63pp  ('MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.55pp  ('MISSING', 'activity', 'activity', 'div.button')
+       0.31pp  ('MISSING', 'activity', 'activity', 'iframe')
+       0.28pp  ('MISSING', 'body', 'free', 'br')
+       0.24pp  ('MISSING', 'activity', 'activity', 'br')
+       0.24pp  ('MISSING', 'activity', 'activity', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.23pp  ('EXTRA', 'activity', 'activity', 'div.button')
+       0.20pp  ('MISSING', 'body', 'panel', 'img.img-fluid')
+       0.18pp  ('EXTRA', 'activity', 'activity', 'iframe')
+       0.18pp  ('MISSING', 'body', 'panel', 'br')
+       0.17pp  ('EXTRA', 'body', 'free', 'iframe')
+       0.17pp  ('MISSING', 'body', 'alert', 'img.img-fluid')
+       0.17pp  ('MISSING', 'activity', 'activity', 'div.ratio.ratio-16x9.videoSection')
+       0.16pp  ('EXTRA', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.16pp  ('EXTRA', 'activity', 'activity', 'div.ratio.ratio-16x9.videoSection')
+       0.15pp  ('MISSING', 'activity', 'activity', 'div.col-6.col-md-3.paddingLR')
+       0.15pp  ('MISSING', 'activity', 'activity', 'div.row')
+       0.13pp  ('MISSING', 'body', 'free', 'img.img-fluid')
+       0.13pp  ('EXTRA', 'body', 'free', 'img.img-fluid')
+       0.12pp  ('MISSING', 'body', 'panel', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.11pp  ('EXTRA', 'body', 'free', 'div.button')
+       0.11pp  ('MISSING', 'body', 'free', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.10pp  ('MISSING', 'activity', 'activity', 'div.TKmodalButton.button')
+       0.10pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.10pp  ('EXTRA', 'body', 'free', 'div.row')
+       0.10pp  ('MISSING', 'body', 'panel', 'iframe')
+       0.10pp  ('MISSING', 'activity', 'activity', 'iframe.embed-responsive-item')
+       0.09pp  ('MISSING', 'body', 'free', 'iframe.embed-responsive-item')
+       0.08pp  ('EXTRA', 'activity', 'activity', 'img.img-fluid')
+       0.08pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-4.offset-md-0')
+
+== template=Fundamentals — pages 64: total loss 55.09pp
+     8.21pp  pages   121   wrapper-empty
+     6.45pp  pages   121   alignment-residue
+     4.06pp  pages    64   editorial-gold
+     3.94pp  pages    58   editorial-claude
+     3.80pp  pages    99   container-shift:panel->free
+     3.60pp  pages   107   wrapper-of-container-shift
+     3.56pp  pages   128   chrome
+     3.02pp  pages   121   widget-line
+     2.95pp  pages   114   merged-split
+     2.39pp  pages    59   wrapper-of-editorial-gold
+     1.98pp  pages    94   wrapper-of-widget-line
+     1.75pp  pages    50   wrapper-of-editorial-claude
+     1.64pp  pages    62   container-shift:panel->widget
+     1.45pp  pages   103   wrapper-form
+     1.25pp  pages    91   wrapper-of-merged-split
+     1.13pp  pages    73   wrapper-of-alignment-residue
+     1.03pp  pages    54   container-shift:activity->widget
+     0.60pp  pages    59   container-shift:activity->free
+     0.53pp  pages    55   container-shift:panel->activity
+     0.37pp  pages    25   wrapper-of-tag-swap
+     0.32pp  pages    25   container-shift:panel->header
+     0.32pp  pages    42   tag-swap
+     0.23pp  pages    26   container-shift:alert->free
+     0.20pp  pages    23   container-shift:panel->alert
+     0.14pp  pages     6   container-shift:free->widget
+     0.05pp  pages     7   container-shift:activity->header
+     0.05pp  pages     7   container-shift:alert->widget
+     0.02pp  pages     6   container-shift:alert->header
+     0.01pp  pages     4   container-shift:alert->activity
+     0.01pp  pages     4   container-shift:activity->alert
+     0.01pp  pages     1   container-shift:free->header
+     0.00pp  pages     1   container-shift:free->activity
+   → residual (not chrome / widget / editorial): 40.51pp
+   top detail rows (family · direction · region · tag):
+       1.79pp  ('alignment-residue', 'EXTRA', 'body', 'div')
+       1.78pp  ('alignment-residue', 'MISSING', 'body', 'div')
+       1.45pp  ('wrapper-empty', 'MISSING', 'body', 'div')
+       1.21pp  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'div')
+       1.20pp  ('wrapper-of-container-shift', 'MISSING', 'body', 'div')
+       1.12pp  ('editorial-claude', 'EXTRA', 'body', 'p')
+       1.02pp  ('wrapper-of-widget-line', 'MISSING', 'body', 'div')
+       1.00pp  ('widget-line', 'MISSING', 'body', 'WIDGET')
+       0.95pp  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'div')
+       0.94pp  ('widget-line', 'MISSING', 'activity', 'WIDGET')
+       0.93pp  ('wrapper-empty', 'EXTRA', 'body', 'img')
+       0.91pp  ('wrapper-empty', 'MISSING', 'body', 'img')
+       0.90pp  ('wrapper-of-container-shift', 'EXTRA', 'body', 'div')
+       0.88pp  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'div')
+       0.79pp  ('editorial-gold', 'MISSING', 'body', 'p')
+       0.76pp  ('wrapper-empty', 'MISSING', 'body', 'br')
+       0.73pp  ('container-shift:panel->free', 'EXTRA', 'body', 'p')
+       0.71pp  ('widget-line', 'EXTRA', 'body', 'WIDGET')
+       0.69pp  ('wrapper-empty', 'EXTRA', 'body', 'div')
+       0.66pp  ('wrapper-of-container-shift', 'MISSING', 'activity', 'div')
+       0.64pp  ('merged-split', 'EXTRA', 'body', 'p')
+       0.62pp  ('editorial-gold', 'MISSING', 'activity', 'p')
+       0.62pp  ('wrapper-form', 'EXTRA', 'body', 'div')
+       0.58pp  ('wrapper-empty', 'MISSING', 'activity', 'div')
+   wrapper-form detail (direction · region · container · signature):
+       0.22pp  ('EXTRA', 'body', 'panel', 'div.col-12.col-md-8')
+       0.13pp  ('EXTRA', 'body', 'panel', 'div.row')
+       0.05pp  ('EXTRA', 'activity', 'panel', 'div.activity')
+       0.05pp  ('MISSING', 'body', 'panel', 'div.row')
+       0.04pp  ('EXTRA', 'activity', 'activity', 'div.col-12')
+       0.03pp  ('EXTRA', 'body', 'panel', 'div.col-12.col-md-4.paddingLR')
+       0.03pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-8')
+       0.03pp  ('EXTRA', 'body', 'panel', 'div.phaseContainer.row')
+       0.03pp  ('MISSING', 'body', 'free', 'div.alert')
+       0.03pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-8')
+       0.03pp  ('MISSING', 'body', 'free', 'div.row')
+       0.03pp  ('EXTRA', 'body', 'free', 'div.alert.solid')
+       0.03pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.03pp  ('EXTRA', 'body', 'free', 'ul')
+       0.03pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.02pp  ('MISSING', 'body', 'panel', 'div.col-11')
+       0.02pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-12')
+       0.02pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-8.paddingR')
+       0.02pp  ('MISSING', 'body', 'panel', 'div.justify-content-center.phaseContainer.row')
+       0.02pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-12')
+       0.02pp  ('EXTRA', 'body', 'alert', 'div.col-12')
+       0.02pp  ('EXTRA', 'body', 'panel', 'div.alert')
+       0.02pp  ('EXTRA', 'body', 'alert', 'div.row')
+       0.02pp  ('EXTRA', 'body', 'panel', 'div.col-12.col-md-6')
+       0.02pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-6.paddingLR')
+       0.02pp  ('EXTRA', 'body', 'free', 'div.row')
+       0.01pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-4')
+       0.01pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-11')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity.interactive[number=3C]')
+       0.01pp  ('MISSING', 'activity', 'activity', 'div.row')
+   wrapper-empty detail (direction · region · container · signature):
+       0.73pp  ('EXTRA', 'body', 'panel', 'img.img-fluid')
+       0.43pp  ('MISSING', 'body', 'panel', 'br')
+       0.40pp  ('MISSING', 'body', 'panel', 'img.img-fluid')
+       0.32pp  ('MISSING', 'activity', 'activity', 'br')
+       0.25pp  ('EXTRA', 'body', 'panel', 'iframe')
+       0.24pp  ('MISSING', 'body', 'free', 'br')
+       0.23pp  ('MISSING', 'body', 'panel', 'span.ch-text')
+       0.23pp  ('MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.16pp  ('MISSING', 'body', 'panel', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.15pp  ('MISSING', 'body', 'free', 'img.img-fluid')
+       0.14pp  ('EXTRA', 'activity', 'activity', 'img.img-fluid')
+       0.13pp  ('MISSING', 'body', 'panel', 'iframe.embed-responsive-item')
+       0.13pp  ('EXTRA', 'body', 'panel', 'div.button')
+       0.12pp  ('EXTRA', 'body', 'panel', 'div.ratio.ratio-16x9.videoSection')
+       0.12pp  ('EXTRA', 'body', 'free', 'img.img-fluid')
+       0.12pp  ('MISSING', 'body', 'panel', 'iframe')
+       0.11pp  ('EXTRA', 'body', 'panel', 'td')
+       0.11pp  ('MISSING', 'activity', 'activity', 'div.button')
+       0.11pp  ('MISSING', 'body', 'panel', 'img.phaseImg')
+       0.10pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-3.offset-md-0')
+       0.10pp  ('MISSING', 'body', 'panel', 'div.row')
+       0.09pp  ('MISSING', 'body', 'alert', 'br')
+       0.09pp  ('MISSING', 'activity', 'activity', 'div.customText.selfReflection')
+       0.08pp  ('MISSING', 'body', 'alert', 'img.img-fluid')
+       0.08pp  ('EXTRA', 'activity', 'activity', 'div.button')
+       0.08pp  ('EXTRA', 'body', 'panel', 'img.phaseImg')
+       0.07pp  ('EXTRA', 'activity', 'activity', 'iframe')
+       0.07pp  ('EXTRA', 'body', 'panel', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.07pp  ('MISSING', 'body', 'panel', 'div.col-12.col-md-3.offset-md-0.paddingL')
+       0.07pp  ('MISSING', 'body', 'panel', 'div.alertImage')
+
+== template=Bilingual — pages 63: total loss 62.07pp
+     9.66pp  pages    56   editorial-claude
+     9.20pp  pages   103   wrapper-empty
+     8.62pp  pages    57   editorial-gold
+     5.53pp  pages    94   alignment-residue
+     3.76pp  pages    80   merged-split
+     2.68pp  pages    58   tag-swap
+     2.62pp  pages    41   container-shift:free->activity
+     2.55pp  pages    43   container-shift:activity->free
+     2.49pp  pages    43   wrapper-of-editorial-gold
+     2.10pp  pages    38   container-shift:activity->widget
+     1.85pp  pages    90   widget-line
+     1.82pp  pages    65   chrome
+     1.80pp  pages    24   wrapper-of-editorial-claude
+     1.77pp  pages    57   wrapper-of-container-shift
+     1.03pp  pages    32   wrapper-of-widget-line
+     0.88pp  pages    36   wrapper-of-alignment-residue
+     0.75pp  pages    30   wrapper-of-merged-split
+     0.70pp  pages    18   container-shift:free->widget
+     0.57pp  pages    34   wrapper-form
+     0.40pp  pages    17   container-shift:alert->free
+     0.37pp  pages    23   wrapper-of-tag-swap
+     0.32pp  pages    14   container-shift:free->alert
+     0.16pp  pages     9   container-shift:alert->activity
+     0.15pp  pages     2   container-shift:activity->header
+     0.12pp  pages     9   container-shift:activity->alert
+     0.09pp  pages     3   container-shift:alert->widget
+     0.07pp  pages     2   container-shift:free->header
+     0.01pp  pages     1   container-shift:alert->header
+   → residual (not chrome / widget / editorial): 40.13pp
+   top detail rows (family · direction · region · tag):
+       3.43pp  ('editorial-claude', 'EXTRA', 'body', 'p')
+       2.71pp  ('editorial-claude', 'EXTRA', 'activity', 'p')
+       2.17pp  ('editorial-gold', 'MISSING', 'body', 'p')
+       1.56pp  ('wrapper-empty', 'MISSING', 'activity', 'div')
+       1.41pp  ('editorial-gold', 'MISSING', 'activity', 'p')
+       1.34pp  ('merged-split', 'MISSING', 'activity', 'p')
+       1.32pp  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'div')
+       1.21pp  ('container-shift:free->activity', 'EXTRA', 'body', 'p')
+       1.16pp  ('wrapper-empty', 'MISSING', 'body', 'div')
+       1.09pp  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'div')
+       1.07pp  ('wrapper-empty', 'EXTRA', 'activity', 'audio')
+       1.03pp  ('wrapper-empty', 'EXTRA', 'activity', 'img')
+       0.98pp  ('editorial-gold', 'MISSING', 'body', 'b')
+       0.96pp  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'div')
+       0.84pp  ('merged-split', 'EXTRA', 'body', 'p')
+       0.82pp  ('widget-line', 'MISSING', 'activity', 'WIDGET')
+       0.77pp  ('container-shift:activity->widget', 'EXTRA', 'activity', 'p')
+       0.75pp  ('editorial-claude', 'EXTRA', 'body', 'b')
+       0.75pp  ('container-shift:activity->free', 'MISSING', 'activity', 'p')
+       0.74pp  ('wrapper-of-widget-line', 'MISSING', 'activity', 'div')
+       0.71pp  ('wrapper-of-container-shift', 'MISSING', 'activity', 'div')
+       0.71pp  ('editorial-gold', 'MISSING', 'activity', 'li')
+       0.69pp  ('alignment-residue', 'MISSING', 'body', 'div')
+       0.67pp  ('alignment-residue', 'EXTRA', 'body', 'div')
+   wrapper-form detail (direction · region · container · signature):
+       0.08pp  ('EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.06pp  ('EXTRA', 'body', 'free', 'div.row')
+       0.04pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-12')
+       0.04pp  ('MISSING', 'activity', 'activity', 'div.row')
+       0.03pp  ('MISSING', 'body', 'free', 'div.row')
+       0.03pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.03pp  ('MISSING', 'body', 'free', 'div.alert')
+       0.02pp  ('EXTRA', 'body', 'free', 'div.alert.solid')
+       0.02pp  ('EXTRA', 'activity', 'free', 'div.activity')
+       0.02pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-8')
+       0.01pp  ('MISSING', 'body', 'free', 'div.alertActivity')
+       0.01pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-10')
+       0.01pp  ('MISSING', 'body', 'alert', 'div.row')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity.interactive[number=5.1]')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity.interactive[number=5.3]')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity.interactive[number=5.4]')
+       0.01pp  ('MISSING', 'activity', 'activity', 'div.col-12')
+       0.01pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-4.offset-md-0')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity[number=5A]')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity[number=5C]')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity.interactive[number=5D]')
+       0.01pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-4')
+       0.01pp  ('MISSING', 'body', 'alert', 'div.col-12')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity.interactive[number=5B]')
+       0.01pp  ('EXTRA', 'activity', 'free', 'div.activity.interactive[number=5.2]')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity.interactive[number=2C]')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity.interactive[number=2D]')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity.interactive[number=5.1]')
+       0.01pp  ('MISSING', 'activity', 'free', 'div.activity[number=4C]')
+       0.00pp  ('EXTRA', 'body', 'free', 'ul')
+   wrapper-empty detail (direction · region · container · signature):
+       1.07pp  ('EXTRA', 'activity', 'activity', 'audio.audioPlayer.icon')
+       1.03pp  ('EXTRA', 'activity', 'activity', 'img.img-fluid')
+       0.65pp  ('EXTRA', 'body', 'free', 'img.img-fluid')
+       0.54pp  ('EXTRA', 'body', 'free', 'audio.audioPlayer.icon')
+       0.46pp  ('MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.35pp  ('MISSING', 'body', 'free', 'img.img-fluid')
+       0.29pp  ('MISSING', 'activity', 'activity', 'div.audioImage')
+       0.26pp  ('MISSING', 'activity', 'activity', 'div.button')
+       0.25pp  ('MISSING', 'body', 'free', 'br')
+       0.19pp  ('MISSING', 'body', 'alert', 'img.img-fluid')
+       0.18pp  ('MISSING', 'body', 'alert', 'br')
+       0.17pp  ('MISSING', 'activity', 'activity', 'br')
+       0.16pp  ('MISSING', 'activity', 'activity', 'div.row')
+       0.15pp  ('MISSING', 'body', 'free', 'iframe')
+       0.14pp  ('EXTRA', 'activity', 'activity', 'p')
+       0.14pp  ('EXTRA', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.13pp  ('MISSING', 'body', 'free', 'div.row')
+       0.12pp  ('MISSING', 'body', 'free', 'div.col-12.col-md-4.offset-md-0')
+       0.11pp  ('MISSING', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.11pp  ('MISSING', 'body', 'free', 'div.col.paddingR')
+       0.11pp  ('EXTRA', 'body', 'free', 'iframe')
+       0.10pp  ('MISSING', 'body', 'free', 'div.audioImage')
+       0.08pp  ('MISSING', 'activity', 'alert', 'br')
+       0.07pp  ('MISSING', 'activity', 'activity', 'div.col-12.col-md-6.offset-md-0')
+       0.07pp  ('MISSING', 'body', 'free', 'div.alertImage')
+       0.07pp  ('MISSING', 'body', 'free', 'td')
+       0.07pp  ('MISSING', 'activity', 'activity', 'iframe')
+       0.06pp  ('MISSING', 'body', 'free', 'span.audioTrigger')
+       0.06pp  ('MISSING', 'body', 'free', 'img.audioText.img-fluid')
+       0.06pp  ('MISSING', 'body', 'free', 'a')
