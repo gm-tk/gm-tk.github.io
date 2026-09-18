@@ -1,5 +1,35 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 376, build 260619.47) — THE UPLOAD BOX ENDS ITS ACTIVITY BOX: the "Upload to dropbox" button is the box's last content child; what the writer typed after it is free body — the autonomous loop's session 23, Round 7
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+`activity_wrapper.upload_box_ends_activity {enabled, env "DBXENDS_OFF", max_lookahead 120, button_tag true, button_label_match "drop\s?box|upload"}`. Three seams, one rule: (1) a freed upload-box BUNDLE at the inline (non-owner) widget site closes the innermost open activity frame right after itself (XTAS101 1G — the r314 held frame); (2) the upload-box BUILDER hands the text captured AFTER the dropbox marker back on the bundle (`r376AfterText`) and the owner / inline emit sites ship it AFTER the box closes — the gold's free `row > col-md-8` (BLL123 2E's module-end `Congratulations…` paragraph; the r320 split is a precondition); (3) a plain `[Button]` whose label matches `button_label_match` inside an open activity frame ends the frame (ENGR102 5B: `[Button] Upload to dropbox` then `Watch the video…`). The discriminator the probe taught (`#activityEndsAfterUpload`): the box closes only when CONTENT follows the button — prose, a table, a body / media / image tag, or the captured after-text; a widget bundle that follows IMMEDIATELY keeps the box open (XMES103 3C's "Need help?" clickDrop right after the `[Dropbox Button]`, BLL231 2D's second upload box — the gold keeps those inside); a widget after content goes out with it (XTAS101 1G's carousel). A writer's own `[End activity]` reached first is flagged `_dbxStrayCloser` (the r314 flag — the CONTAINER_CLOSE case leaves the stack alone), so an early close never pops an outer frame. OFF = the box closes at the next auto-close boundary as before = disk 2109 / 2109.
+
+### 2. WHY IT WAS PICKED — the follow-up recorded at r314, measured on the r375 corpus
+
+The r375 re-mine (1956 pairs / 8355 classes / 179 CANDIDATE) added nothing; the follow-up list carried "the dropbox bundle terminates its activity" (gold 629 / 720 non-BLL, 463 / 475 BLL; Claude's r313 corpus 18 boxes) unmeasured since r314 — its sibling ("the r308 release order") was shipped as r320 and is struck. `outputs/_measure_r376_dbxtail.py` (→ `_r376_dbxtail.{json,log}`; every paired page, every activity box holding an upload / dropbox / portfolio button, the LAST button's tail = any content element before the box closes; the cv2-note To Do is not content): the gold's own tail share 0.08; **Claude 61 tail boxes — the paired gold box (same `number`) closes right after the button on 29, keeps a tail on 5, has no box of that number on 27 — share 0.85 (29 / 34), 29 pages / 29 modules, BLL 19** (the module-end paragraph after the final dropbox), XMES 2, CEDK / CEDW / ENGC / ENGI / ENGJ / ENGR / MXFL / XTAS 1 each. Triangulated BLL123 2E / XTAS101 1G / ENGR102 5B (WT → gold → Claude). Authority: KB constraint 43 + the gold's convention — LOOP §1b level 2.
+
+### 3. WHAT THE PROBE TAUGHT (two cuts)
+
+- The first cut (seams 1 + 2, then 3) closed the box after the button whatever followed: 72 pages / 62 modules, **36 up / 34 down (+51.1)** — the losses clustered on boxes where a WIDGET follows the button immediately (XMES103 3C / 4C / 5C: the "Need help?" clickDrop pushed out of the box, −5.2 over four pages; BLL231 2D: a second upload box pushed out) — the gold keeps a following widget inside and the button is not literally last there.
+- The discriminator (content follows → close; a widget immediately → stay open): **57 pages / 51 modules, 32 up / 23 down / 2 same, pp-sum +52.9 (+0.93pp per changed page)**; XMES103 and BLL231 untouched. The remaining dips NAMED: the five both-tail boxes the census predicted — **ENGJ403_2_1 / _4_0 / _3_1 −2.6 / −1.8 / −1.7** ("Response sheet" links the gold keeps inside), **XMES201_5_0 −2.0** ("Great work!"), **ENGS201_5_0 −0.8**; **BLL177_2_0 −4.0** (its image + `Congratulations…` now outside the box exactly as the gold — a difflib alignment dip), ENGJ202_5_0 −1.9, MXFL301_9_0 −1.3, BLL152_1_1 −0.8, XMES101_7_0 −0.7, and ten dips ≤ 0.6. The largest gains ENGI401_8_0 +10.2, BLL141_2_0 +2.9, BLL165_1_1 +3.7, BLL174_1_1 +3.5, BLL153_1_1 +3.3.
+
+### 4. PROOF
+
+- In-memory probe over all 416 (`_r376_probe.cjs`, 4 shards, run twice): **OFF (`DBXENDS_OFF=1`) = disk 2109 / 2109**; ON = **57 pages / 51 modules**, 0 added / removed.
+- SCOPED regeneration of the 51 (`_r376_fullship_run.sh`, 6 batches, all rc 0; the probe proving the other 365 byte-identical): `_content_manifest.py fresh --affected` 0 truly stale; `diff` **57 changed / 0 added / 0 removed**; every regenerated page **byte-identical to the probe's ON page (246 / 246)**.
+
+### 5. PROTECTED GATES (`_r376_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **52.960 → 52.987 % (+0.027pp)**, median 53.6, **≥50 1134 → 1135 (+1)**, **≥75 177 → 180 (+3)**, ≥90 15 EXACT, RAW 37.359 → 37.380 % @ 1956 pairs; **55 movers — 32 up / 23 down, pp-sum +52.9** (`_r376_movers.log`, state `_r376_sk_final.json`). Not a plateau round (window reset to 0 of 3).
+- compare_structure exact **11628 → 11642 (+14)**, EXTRA 175 EXACT, **MISSING 617 → 620 (+3)** (the box now closes where the gold's box holds a different shape on three pages — named with the dips above), row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; body_compare **43 / 4 / 157 / 203** EXACT; tags 9557 / 9557 REAL 0; flipCard divergence 0; speechBubble at baseline (4); modal 0; mtkQuiz defect 0; math ✓; menu labels ✓; dragAndDrop defect 0 — all EXACT.
+
+### 6. ALSO RECORDED
+
+- Ledger: scoped ship #7 since the r366 full (cadence 8 — the next ship is a FULL regeneration). AppVersion 260619.47; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r376.bak` kept).
+- Not taken: the 27 Claude tail boxes whose gold has no box of that number (dual-build / renumbered pairs — unjudgeable); the gold's own 8 % tail boxes.
+
 ## 2026-09-18 (round 375, build 260619.46) — A WRITER'S EXPLICIT `[H1]` SHIPS AS `<h2>` (THE PLAIN BODY SHIFT, UN-RANKED) IN THE PREFIXES WHOSE GOLD DOES — the autonomous loop's session 23, Round 6
 
 ### 1. WHAT CHANGED, IN ONE LINE

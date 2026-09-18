@@ -2152,6 +2152,7 @@ class ContentConverter {
 							// terminator that ended the widget — e.g. the [H3])
 							emit(stack.pop().close);
 							breakRow();
+							emit(...this.#uploadBoxAfterText(bundle));   // ROUND 376 — the writer's text after the dropbox marker ships AFTER the box
 						}
 					} else {
 						// An inline widget FLOWS into the current section row, per the row-grouping
@@ -2163,6 +2164,19 @@ class ContentConverter {
 						const mtkTailI = this.#mtkQuizBundleTail(bundle, run, it);   // ROUND 232 — CL-0038 (see above)
 						emit(...mtkTailI);
 						if (mtkCfg && (mtkShellI || mtkTailI.length)) mtkSilence(it);
+						// ROUND 376 (the autonomous loop's session 23 Round 7): the upload box ENDS its activity
+						// box — the gold keeps the "Upload to dropbox" button as the box's LAST content child
+						// (629 / 720 non-BLL, 463 / 475 BLL; the paired comparable 29 / 34) and ships what the
+						// writer typed after it as free body rows. The box used to stay open to the next
+						// auto-close boundary (BLL123 2E's module-end paragraph, XTAS101 1G's carousel).
+						// Data activity_wrapper.upload_box_ends_activity; env DBXENDS_OFF. See #uploadBoxEndsActivity.
+						if (this.#uploadBoxEndsActivity(bundle, bodyItems, i, stack, tpl, renderedHeading)) {
+							emit(stack.pop().close);
+							breakRow();
+							run.AddNote("info", "ContentConverter",
+								`Page ${page.lessonLabel}: activity box closed after its upload box — the button is the box's last child (round 376).`);
+						}
+						emit(...this.#uploadBoxAfterText(bundle));   // ROUND 376 — after the box when one closed here; in place (byte-identical) for a free upload bundle
 						if (!rowCfg.flow_blocks && !stack.length && rowCfg.after.includes("interactive_placeholder")) breakRow();
 					}
 					// INQUIRY consumed-opener RECOVERY. Empty `[Tab N]` PANEL OPENERS that come
@@ -2545,6 +2559,16 @@ class ContentConverter {
 					// #element may have consumed following black items —
 					// skip them (they were marked)
 					while (bodyItems[i + 1]?._consumed) i++;
+					// ROUND 376 (the autonomous loop's session 23 Round 7): a plain [button] whose label is the
+					// dropbox upload ENDS its activity box too (ENGR102 5B: "[Button] Upload to dropbox" then
+					// "Watch the video…" — the gold closes the box and ships the rest as a free row). Same data
+					// block as the bundle seam: activity_wrapper.upload_box_ends_activity; env DBXENDS_OFF.
+					if (primary.tag === "button" && this.#uploadButtonEndsActivity(it, bodyItems, i, stack, tpl, renderedHeading)) {
+						emit(stack.pop().close);
+						breakRow();
+						run.AddNote("info", "ContentConverter",
+							`Page ${page.lessonLabel}: activity box closed after its upload button — the button is the box's last child (round 376).`);
+					}
 					break;
 				}
 
@@ -6197,6 +6221,100 @@ class ContentConverter {
 			if (hh !== null && hh <= hMax) return false;                  // a section heading closes the box
 		}
 		return false;
+	}
+
+	/**
+	 * ROUND 376 (the autonomous loop's session 23 Round 7) — the upload box ENDS its
+	 * activity box. The gold keeps the "Upload to dropbox" button as the activity box's
+	 * LAST content child (r314's measurement: 629 / 720 non-BLL, 463 / 475 BLL; the
+	 * session-23 paired comparable: 29 close / 5 keep a tail) and ships whatever the writer
+	 * typed after the dropbox marker with no [End activity] (BLL123 2E's module-end
+	 * paragraph, XTAS101 1G's [body] + carousel, ENGR102 5B's video) as FREE body rows;
+	 * Claude's box stayed open to the next auto-close boundary. True = close the innermost
+	 * activity frame right after the upload-box bundle (the r308 / r314 / r368 predicate
+	 * InteractiveBuilder.UploadBoxCandidate on a freed dropDown bundle). A writer's own
+	 * [End activity] met before the next activity opener / page boundary / section marker
+	 * is flagged _dbxStrayCloser (the r314 flag: the CONTAINER_CLOSE case then leaves the
+	 * stack alone), so an early close never pops an outer frame. Data
+	 * activity_wrapper.upload_box_ends_activity {enabled, env, max_lookahead}; env DBXENDS_OFF.
+	 */
+	/** ROUND 376 — the upload-box builder's captured text AFTER the dropbox marker (r376AfterText), drained once. */
+	static #uploadBoxAfterText(bundle) {
+		const t = bundle?.r376AfterText;
+		if (!t || !t.length) return [];
+		bundle.r376AfterText = null;
+		return t;
+	}
+
+	static #uploadBoxEndsActivity(bundle, bodyItems, i, stack, tpl, renderedHeading) {
+		const cfg = tpl.activity_wrapper?.upload_box_ends_activity;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "DBXENDS_OFF"]) return false;
+		if (!stack.length || stack[stack.length - 1].tag !== "activity") return false;
+		const ddTpl = tpl.interactive_builders?.dropDown;
+		if (!ddTpl || !bundle || bundle.type !== "dropDown" || bundle.canonTag === "activity") return false;
+		if (!InteractiveBuilder.UploadBoxCandidate(bundle, ddTpl)) return false;
+		return this.#activityEndsAfterUpload(bodyItems, i, cfg.max_lookahead ?? 120, bodyItems[i]?.consumedBy ?? null,
+			!!(bundle.r376AfterText && bundle.r376AfterText.length), renderedHeading, tpl);
+	}
+
+	/**
+	 * ROUND 376 — does the activity box END after this upload button? True only when CONTENT follows the
+	 * button before the box's own boundary: prose, a table, a body / media / image tag, or the upload-box
+	 * builder's captured after-text (hasAfterText). A widget bundle that follows IMMEDIATELY (before any
+	 * content) keeps the box open — the gold keeps XMES103 3C's "Need help?" clickDrop and BLL231 2D's
+	 * second upload box inside; a widget after content goes out with the content (XTAS101 1G's carousel).
+	 * The writer's own [End activity] reached first is flagged _dbxStrayCloser (the r314 flag: the
+	 * CONTAINER_CLOSE case leaves the stack alone) so an early close never pops an outer frame; a boundary
+	 * met with no content (the closer, an activity opener, a page boundary, a section marker, a section
+	 * heading, an activity_close_before tag) = the box closes there anyway → false (today's path).
+	 */
+	static #activityEndsAfterUpload(bodyItems, i, max, ownerIdx, hasAfterText, renderedHeading, tpl) {
+		const ccfg = tpl.container_auto_close?.activity_close_before ?? {};
+		const hMax = (typeof process !== "undefined" && process.env && process.env.ACTHEAD_OFF)
+			? (ccfg.rendered_heading_max_legacy ?? 3) : (ccfg.rendered_heading_max ?? 4);
+		let sawContent = !!hasAfterText;
+		for (let j = i + 1; j < bodyItems.length && j <= i + max; j++) {
+			const c = bodyItems[j];
+			if (!c || c._consumed) continue;
+			if (c.consumedBy !== undefined && c.consumedBy !== null) {
+				if (ownerIdx !== null && ownerIdx !== undefined && c.consumedBy === ownerIdx) continue;   // this bundle's own members
+				return sawContent;                                        // a widget: immediately = stays in; after content = goes out
+			}
+			if (c.type !== "tag") {
+				if (c.type === "black" && !String(c.text ?? "").trim()) continue;   // a blank line
+				sawContent = true; continue;                              // prose / a table = content
+			}
+			const p = c.parse?.primary;
+			if (!p) continue;                                             // an instruction / noise span
+			if (p.directive === "CONTAINER_CLOSE" && (p.tag === "end activity" || /\bactivity\b/i.test(p.tag ?? ""))) {
+				if (!sawContent) return false;
+				c._dbxStrayCloser = true;                                  // the writer's closer for the frame closed here
+				return true;
+			}
+			if (p.directive === "CONTAINER_CLOSE") continue;             // a widget's own stray end tag
+			if (p.directive === "PAGE_BOUNDARY" || p.directive === "SECTION_MARKER") return sawContent;
+			if (p.tag === "activity" && p.directive === "CONTAINER_OPEN") return sawContent;
+			if ((ccfg.directives ?? []).includes(p.directive) || (ccfg.tags ?? []).includes(p.tag)) return sawContent;
+			const isTitle = (ccfg.title_heading_tags ?? []).includes(p.tag);
+			const hh = isTitle ? null : (renderedHeading ? renderedHeading(p) : null);
+			if (hh !== null && hh <= hMax) return sawContent;             // a section heading closes the box anyway
+			sawContent = true;                                            // a body / media / image / heading-in-box tag
+		}
+		return sawContent;
+	}
+
+	/** ROUND 376 — the plain [button] seam: a button element whose label is the dropbox upload (data button_label_match)
+	 * inside an open activity frame ends that frame (button_tag false turns this seam off on its own). */
+	static #uploadButtonEndsActivity(it, bodyItems, i, stack, tpl, renderedHeading) {
+		const cfg = tpl.activity_wrapper?.upload_box_ends_activity;
+		if (!cfg || cfg.enabled === false || cfg.button_tag === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "DBXENDS_OFF"]) return false;
+		if (!stack.length || stack[stack.length - 1].tag !== "activity") return false;
+		const label = ((this.#norm.RenderText(it.text) || "").replace(/\*/g, "").trim()
+			|| (it.blackAfter || "").replace(/\*/g, "").replace(/https?:\/\/[^\s\]]+/, "").trim());
+		if (!label || !new RegExp(cfg.button_label_match ?? "drop\\s?box|upload", "i").test(label)) return false;
+		return this.#activityEndsAfterUpload(bodyItems, i, cfg.max_lookahead ?? 120, null, false, renderedHeading, tpl);
 	}
 
 	/**

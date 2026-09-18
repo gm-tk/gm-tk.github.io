@@ -11445,6 +11445,18 @@ class InteractiveBuilder {
 		const rs = cfg.release_split;
 		const rsOn = !!rs && rs.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[rs.env ?? "DBXORDER_OFF"]);
+		// ROUND 376 (the autonomous loop's session 23 Round 7): the upload box ENDS its activity box —
+		// the text captured AFTER the marker is handed back on the bundle (r376AfterText) for the emit
+		// site to ship AFTER the box closes (the gold's free body row: 29 / 34 paired boxes close right
+		// after the button). Needs the r320 split. Data activity_wrapper.upload_box_ends_activity; env DBXENDS_OFF.
+		const ends = DataService.Data.EmitTemplates.activity_wrapper?.upload_box_ends_activity;
+		const endsOn = rsOn && !!ends && ends.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ends.env ?? "DBXENDS_OFF"]);
+		if (endsOn) {
+			const nb = scan.nBefore > 0 ? scan.nBefore : 0;
+			bundle.r376AfterText = content.slice(nb);
+			return [...content.slice(0, nb), btn, note].join("\n");
+		}
 		if (rsOn && scan.nBefore > 0) return [...content.slice(0, scan.nBefore), btn, note, ...content.slice(scan.nBefore)].join("\n");
 		return [btn, note, ...content].join("\n");
 	}
