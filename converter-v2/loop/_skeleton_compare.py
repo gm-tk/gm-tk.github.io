@@ -81,6 +81,8 @@ def selftest():
         assert r == 1.0, f"bare attr must contribute no token (ratio {r})"
         assert label(Node("div", {"layout": None})) == "div"
         assert label(Node("div", {"layout": "speech"})) == "div[layout=speech]"
+        # ROUND 386: the class tokens are order-blind (HTML class order carries no structure).
+        assert label(Node("div", {"class": "col-12 col-md-8"})) == label(Node("div", {"class": "col-md-8 col-12"})) == "div.col-12.col-md-8"
         print("LIVENESS ok — bare KEEP_ATTR attribute scores; valued attr still renders")
         rows, skipped = _score_pairs([("ZZ", os.path.join(td, "missing.html"), b)])
         assert rows == [] and len(skipped) == 1, "a raising pair must land in the skipped count"

@@ -75,7 +75,11 @@ def label(node):
     s = node.tag
     a = node.attrs
     if a.get("id"): s += "#" + a["id"]
-    cls = (a.get("class") or "").split()
+    # ROUND 386 (the autonomous loop's session 24 Round 10 — a measurement-tool round): the class tokens render
+    # SORTED. HTML class order carries no structure, but 97 gold pages write `class="col-12 col-md-8"` (366 lines)
+    # where Claude writes `col-md-8 col-12`, and the source-order label could never match them — 77 pages moved,
+    # 76 up (XDLS906_4_0 +15.1), +0.087pp corpus mean: an instrument correction, never a gain.
+    cls = sorted((a.get("class") or "").split())
     if cls: s += "." + ".".join(cls)
     for k in KEEP_ATTR:
         # ROUND 190: `if a[k]` (was `a[k] != ""`) — a VALUELESS/bare attribute (html.parser
