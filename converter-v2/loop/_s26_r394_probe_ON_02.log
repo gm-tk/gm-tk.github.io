@@ -1,0 +1,1561 @@
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+  ~ HES1004_2_0.html: -20 +18
+     - <div class="row">
+     - <div class="button clickDrop">Decision to be made</div>
+     - <div class="clickDropContent"><p>Should I buy those trainers?</p><h3>Step 1</h3><h3>Define the problem/situati
+     - <li>your own feelings about the problem</li>
+     - <li>your personal values</li>
+     - <li>other people’s feelings and values, and how they are likely to affect the problem.</li>
+     - </ul><p>I know I can not realistically afford them and it will mean that it will take longer for me to save fo
+     - <li>buy the trainers new for $250</li>
+     - <li>look for them online secondhand and wait until the right ones come up</li>
+     - <li>be happy with my other trainers that are perfectly fine but not the latest and reach my savings goal for m
+     - </ol><h3>Step 4</h3><h3>List the consequences of taking each of the alternatives identified.</h3><ol>
+     - <li>I would have to save another $250 to replenish my savings and goals</li>
+     - <li>I do not know how long I would have to wait to get the right size and style secondhand online</li>
+     - <li>By having just one pair of trainers, they will wear out faster and will eventually have to spend money</li
+     - </ol><h3>Step 5</h3><h3>Identify your own feelings about each of the alternatives</h3><ol>
+     - <li>It takes me approximately five weeks to save this amount of money and that is a long time when I am gettin
+     - <li>Because I do not know how long a pair would come up second-hand online, I do not think I can wait that lon
+     - <li>My other trainers are still quite new and if I look after them, then they should still have a lot of life 
+     - </ol><h3>Step 6</h3><h3>Make a decision</h3><p>I have decided to wait and get some second-hand ones.</p><h3>St
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Insert media item 7]</p>
+     + <div class="button clickDrop">Decision to be made</div>
+     + <div class="clickDropContent"><p>Should I buy those trainers?</p><h3>Step 1</h3><h3>Define the problem/situati
+     + <li>your own feelings about the problem</li>
+     + <li>your personal values</li>
+     + <li>other people’s feelings and values, and how they are likely to affect the problem.</li>
+     + </ul><p>I know I can not realistically afford them and it will mean that it will take longer for me to save fo
+     + <li>buy the trainers new for $250</li>
+     + <li>look for them online secondhand and wait until the right ones come up</li>
+     + <li>be happy with my other trainers that are perfectly fine but not the latest and reach my savings goal for m
+     + </ol><h3>Step 4</h3><h3>List the consequences of taking each of the alternatives identified.</h3><ol>
+     + <li>I would have to save another $250 to replenish my savings and goals</li>
+     + <li>I do not know how long I would have to wait to get the right size and style secondhand online</li>
+     + <li>By having just one pair of trainers, they will wear out faster and will eventually have to spend money</li
+     + </ol><h3>Step 5</h3><h3>Identify your own feelings about each of the alternatives</h3><ol>
+     + <li>It takes me approximately five weeks to save this amount of money and that is a long time when I am gettin
+     + <li>Because I do not know how long a pair would come up second-hand online, I do not think I can wait that lon
+     + <li>My other trainers are still quite new and if I look after them, then they should still have a lot of life 
+     + </ol><h3>Step 6</h3><h3>Make a decision</h3><p>I have decided to wait and get some second-hand ones.</p><h3>St
+HES1004: identical 4 / changed 1
+  ~ HES1005_2_0.html: -18 +16
+     - <div class="row">
+     - <div class="button clickDrop">Cook a meal.</div>
+     - <div class="button clickDrop">Rescue some kai</div>
+     - <div class="button clickDrop">Share a meal.</div>
+     - <div class="button clickDrop">Hikitia Te Hā yoga</div>
+     - <div class="button clickDrop">Gratitude Journal</div>
+     - <div class="button clickDrop">Organise Your Workspace</div>
+     - <div class="button clickDrop">Get in touch</div>
+     - <div class="button clickDrop">Compliment Chart</div>
+     - <div class="clickDropContent"><p>Cook for your whānau, neighbour or someone in need. Try this recipe as a star
+     - <div class="clickDropContent"><p>Volunteer with a local Kai Rescue programme or food bank.</p></div>
+     - <div class="clickDropContent"><p>Sit down together with whānau, friends and/or manuhiri and share a meal toget
+     - <div class="clickDropContent"><p>Complete the Hikitia te hā yoga session of your choice.</p></div>
+     - <div class="clickDropContent"><p>A gratitude journal is a type of journal where you write down things that you
+     - <div class="clickDropContent"><p>Decluttering and having minimal mess allows you to feel more organised and in
+     - <div class="clickDropContent"><p>Try to reach out to a friend or family member. Call this person, or spend tim
+     - <div class="clickDropContent"><p>Create your own compliment tabs that are designed to make the recipient feel 
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Insert media item 10]</p>
+     + <div class="button clickDrop">Cook a meal.</div>
+     + <div class="button clickDrop">Rescue some kai</div>
+     + <div class="button clickDrop">Share a meal.</div>
+     + <div class="button clickDrop">Hikitia Te Hā yoga</div>
+     + <div class="button clickDrop">Gratitude Journal</div>
+     + <div class="button clickDrop">Organise Your Workspace</div>
+     + <div class="button clickDrop">Get in touch</div>
+     + <div class="button clickDrop">Compliment Chart</div>
+     + <div class="clickDropContent"><p>Cook for your whānau, neighbour or someone in need. Try this recipe as a star
+     + <div class="clickDropContent"><p>Volunteer with a local Kai Rescue programme or food bank.</p></div>
+     + <div class="clickDropContent"><p>Sit down together with whānau, friends and/or manuhiri and share a meal toget
+     + <div class="clickDropContent"><p>Complete the Hikitia te hā yoga session of your choice.</p></div>
+     + <div class="clickDropContent"><p>A gratitude journal is a type of journal where you write down things that you
+     + <div class="clickDropContent"><p>Decluttering and having minimal mess allows you to feel more organised and in
+     + <div class="clickDropContent"><p>Try to reach out to a friend or family member. Call this person, or spend tim
+     + <div class="clickDropContent"><p>Create your own compliment tabs that are designed to make the recipient feel 
+  ~ HES1005_3_0.html: -7 +5
+     - <div class="row">
+     - <div class="button clickDrop">Have a pikiniki with friends and/or family.</div>
+     - <div class="button clickDrop">Pātaka Kai – Set up a Community Pantry</div>
+     - <div class="clickDropContent"><p>Pikiniki (Picnic)</p>
+     - <p>Pack up some kai and go to a local park, the beach or place outdoors with your friends and family and eat t
+     - <div class="clickDropContent"><p>Set up a community pantry outside your house where people can put their surpl
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Hover]</p>
+     + <div class="button clickDrop">Have a pikiniki with friends and/or family.</div>
+     + <div class="button clickDrop">Pātaka Kai – Set up a Community Pantry</div>
+     + <div class="clickDropContent"><p>Pikiniki (Picnic)</p>
+     + <p>Pack up some kai and go to a local park, the beach or place outdoors with your friends and family and eat t
+     + <div class="clickDropContent"><p>Set up a community pantry outside your house where people can put their surpl
+  ~ HES1005_8_0.html: -25 +23
+     - <div class="row">
+     - <div class="button clickDrop">Key Facts</div>
+     - <div class="button clickDrop">What are the common causes of stress?</div>
+     - <div class="button clickDrop">How can I manage stress?</div>
+     - <div class="clickDropContent"><ul>
+     - <li>Stress is a common and normal physical response to challenging or new situations.</li>
+     - <li>Everyone experiences stress differently.</li>
+     - <li>Stress can be a positive reaction when it helps to overcome challenges and motivate you.</li>
+     - <li>Stress becomes problematic when it makes you feel overwhelmed or continues for a long time.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><ul>
+     - <li>Major life events such as a death in the family or divorce.</li>
+     - <li>Financial issues.</li>
+     - <li>Problems at school or work.</li>
+     - <li>Family illness or health problems.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><ul>
+     - <li>Be active every day. Try walking, dancing, biking or play a team sport.</li>
+     - <li>Press delete on highly processed foods and try to eat as per the NZ Eating Guidelines.</li>
+     - <li>Do activities that are calming such as knitting, carving, gardening, sewing.</li>
+     - <li>Listen to calming music.</li>
+     - <li>Take a break.</li>
+     - <li>Get organised.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Key Facts</div>
+     + <div class="button clickDrop">What are the common causes of stress?</div>
+     + <div class="button clickDrop">How can I manage stress?</div>
+     + <div class="clickDropContent"><ul>
+     + <li>Stress is a common and normal physical response to challenging or new situations.</li>
+     + <li>Everyone experiences stress differently.</li>
+     + <li>Stress can be a positive reaction when it helps to overcome challenges and motivate you.</li>
+     + <li>Stress becomes problematic when it makes you feel overwhelmed or continues for a long time.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><ul>
+     + <li>Major life events such as a death in the family or divorce.</li>
+     + <li>Financial issues.</li>
+     + <li>Problems at school or work.</li>
+     + <li>Family illness or health problems.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><ul>
+     + <li>Be active every day. Try walking, dancing, biking or play a team sport.</li>
+     + <li>Press delete on highly processed foods and try to eat as per the NZ Eating Guidelines.</li>
+     + <li>Do activities that are calming such as knitting, carving, gardening, sewing.</li>
+     + <li>Listen to calming music.</li>
+     + … 3 more added
+HES1005: identical 6 / changed 3
+HES1006: identical 8 / changed 0
+  ~ HES1007_3_0.html: -31 +27
+     - <div class="row">
+     - <div class="button clickDrop">How to summarise</div>
+     - <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     - <p>To summarise effectively, follow these steps:</p>
+     - <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     - <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     - <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     - <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     - <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">How to skim</div>
+     - <div class="button clickDrop">How to scan</div>
+     - <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     - <p>To skim effectively:</p>
+     - <ul>
+     - <li>Note any headings, bold print and pictures.</li>
+     - <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     - <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     - </ul></div>
+     - <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     - <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     - <p>To scan effectively:</p>
+     - <ul>
+     - <li>Know what information you are looking for before you start.</li>
+     - <li>Scan swiftly over a page until your eye catches the important word, heading or phrase.</li>
+     - <li>Slow down and ‘zoom in’ to the relevant section to read thoroughly.</li>
+     - <li>Note or record the information found before scanning again.</li>
+     - <li>Effective scanning requires alertness, and engagement.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">How to summarise</div>
+     + <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     + <p>To summarise effectively, follow these steps:</p>
+     + <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     + <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     + <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     + <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     + <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     + <div class="button clickDrop">How to skim</div>
+     + <div class="button clickDrop">How to scan</div>
+     + <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     + <p>To skim effectively:</p>
+     + <ul>
+     + <li>Note any headings, bold print and pictures.</li>
+     + <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     + <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     + </ul></div>
+     + <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     + <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     + <p>To scan effectively:</p>
+     + … 7 more added
+  ~ HES1007_4_0.html: -31 +27
+     - <div class="row">
+     - <div class="button clickDrop">How to summarise</div>
+     - <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     - <p>To summarise effectively, follow these steps:</p>
+     - <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     - <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     - <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     - <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     - <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">How to skim</div>
+     - <div class="button clickDrop">How to scan</div>
+     - <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     - <p>To skim effectively:</p>
+     - <ul>
+     - <li>Note any headings, bold print and pictures.</li>
+     - <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     - <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     - </ul></div>
+     - <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     - <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     - <p>To scan effectively:</p>
+     - <ul>
+     - <li>Know what information you are looking for before you start.</li>
+     - <li>Scan swiftly over a page until your eye catches the important word, heading or phrase.</li>
+     - <li>Slow down and ‘zoom in’ to the relevant section to read thoroughly.</li>
+     - <li>Note or record the information found before scanning again.</li>
+     - <li>Effective scanning requires alertness, and engagement.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">How to summarise</div>
+     + <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     + <p>To summarise effectively, follow these steps:</p>
+     + <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     + <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     + <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     + <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     + <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     + <div class="button clickDrop">How to skim</div>
+     + <div class="button clickDrop">How to scan</div>
+     + <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     + <p>To skim effectively:</p>
+     + <ul>
+     + <li>Note any headings, bold print and pictures.</li>
+     + <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     + <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     + </ul></div>
+     + <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     + <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     + <p>To scan effectively:</p>
+     + … 7 more added
+  ~ HES1007_5_0.html: -31 +27
+     - <div class="row">
+     - <div class="button clickDrop">How to summarise</div>
+     - <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     - <p>To summarise effectively, follow these steps:</p>
+     - <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     - <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     - <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     - <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     - <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">How to skim</div>
+     - <div class="button clickDrop">How to scan</div>
+     - <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     - <p>To skim effectively:</p>
+     - <ul>
+     - <li>Note any headings, bold print and pictures.</li>
+     - <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     - <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     - </ul></div>
+     - <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     - <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     - <p>To scan effectively:</p>
+     - <ul>
+     - <li>Know what information you are looking for before you start.</li>
+     - <li>Scan swiftly over a page until your eye catches the important word, heading or phrase.</li>
+     - <li>Slow down and ‘zoom in’ to the relevant section to read thoroughly.</li>
+     - <li>Note or record the information found before scanning again.</li>
+     - <li>Effective scanning requires alertness, and engagement.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">How to summarise</div>
+     + <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     + <p>To summarise effectively, follow these steps:</p>
+     + <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     + <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     + <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     + <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     + <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     + <div class="button clickDrop">How to skim</div>
+     + <div class="button clickDrop">How to scan</div>
+     + <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     + <p>To skim effectively:</p>
+     + <ul>
+     + <li>Note any headings, bold print and pictures.</li>
+     + <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     + <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     + </ul></div>
+     + <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     + <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     + <p>To scan effectively:</p>
+     + … 7 more added
+  ~ HES1007_6_0.html: -31 +27
+     - <div class="row">
+     - <div class="button clickDrop">How to summarise</div>
+     - <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     - <p>To summarise effectively, follow these steps:</p>
+     - <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     - <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     - <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     - <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     - <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">How to skim</div>
+     - <div class="button clickDrop">How to scan</div>
+     - <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     - <p>To skim effectively:</p>
+     - <ul>
+     - <li>Note any headings, bold print and pictures.</li>
+     - <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     - <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     - </ul></div>
+     - <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     - <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     - <p>To scan effectively:</p>
+     - <ul>
+     - <li>Know what information you are looking for before you start.</li>
+     - <li>Scan swiftly over a page until your eye catches the important word, heading or phrase.</li>
+     - <li>Slow down and ‘zoom in’ to the relevant section to read thoroughly.</li>
+     - <li>Note or record the information found before scanning again.</li>
+     - <li>Effective scanning requires alertness, and engagement.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">How to summarise</div>
+     + <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     + <p>To summarise effectively, follow these steps:</p>
+     + <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     + <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     + <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     + <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     + <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     + <div class="button clickDrop">How to skim</div>
+     + <div class="button clickDrop">How to scan</div>
+     + <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     + <p>To skim effectively:</p>
+     + <ul>
+     + <li>Note any headings, bold print and pictures.</li>
+     + <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     + <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     + </ul></div>
+     + <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     + <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     + <p>To scan effectively:</p>
+     + … 7 more added
+  ~ HES1007_7_0.html: -31 +27
+     - <div class="row">
+     - <div class="button clickDrop">How to summarise</div>
+     - <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     - <p>To summarise effectively, follow these steps:</p>
+     - <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     - <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     - <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     - <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     - <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">How to skim</div>
+     - <div class="button clickDrop">How to scan</div>
+     - <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     - <p>To skim effectively:</p>
+     - <ul>
+     - <li>Note any headings, bold print and pictures.</li>
+     - <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     - <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     - </ul></div>
+     - <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     - <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     - <p>To scan effectively:</p>
+     - <ul>
+     - <li>Know what information you are looking for before you start.</li>
+     - <li>Scan swiftly over a page until your eye catches the important word, heading or phrase.</li>
+     - <li>Slow down and ‘zoom in’ to the relevant section to read thoroughly.</li>
+     - <li>Note or record the information found before scanning again.</li>
+     - <li>Effective scanning requires alertness, and engagement.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">How to summarise</div>
+     + <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     + <p>To summarise effectively, follow these steps:</p>
+     + <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     + <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     + <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     + <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     + <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     + <div class="button clickDrop">How to skim</div>
+     + <div class="button clickDrop">How to scan</div>
+     + <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     + <p>To skim effectively:</p>
+     + <ul>
+     + <li>Note any headings, bold print and pictures.</li>
+     + <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     + <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     + </ul></div>
+     + <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     + <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     + <p>To scan effectively:</p>
+     + … 7 more added
+  ~ HES1007_8_0.html: -31 +27
+     - <div class="row">
+     - <div class="button clickDrop">How to summarise</div>
+     - <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     - <p>To summarise effectively, follow these steps:</p>
+     - <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     - <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     - <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     - <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     - <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">How to skim</div>
+     - <div class="button clickDrop">How to scan</div>
+     - <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     - <p>To skim effectively:</p>
+     - <ul>
+     - <li>Note any headings, bold print and pictures.</li>
+     - <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     - <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     - </ul></div>
+     - <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     - <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     - <p>To scan effectively:</p>
+     - <ul>
+     - <li>Know what information you are looking for before you start.</li>
+     - <li>Scan swiftly over a page until your eye catches the important word, heading or phrase.</li>
+     - <li>Slow down and ‘zoom in’ to the relevant section to read thoroughly.</li>
+     - <li>Note or record the information found before scanning again.</li>
+     - <li>Effective scanning requires alertness, and engagement.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">How to summarise</div>
+     + <div class="clickDropContent"><p>To summarise means to ‘sum up’ a larger text by extracting key information an
+     + <p>To summarise effectively, follow these steps:</p>
+     + <p><b>Step 1: Identify main ideas:</b> distinguish main ideas from supporting details. Use underlining or high
+     + <p><b>Step 2: Paraphrasing:</b> rephrase main ideas using your own words.</p>
+     + <p><b>Step 3: Omitting non-essentials:</b> don’t include information that is non-vital to the summary.</p>
+     + <p><b>Step 4: Organising:</b> structure your summaries logically, start with the most important points.</p>
+     + <p><b>Step 5: Checking for clarity:</b> re-read to make sure your summary is clear and coherent.</p></div>
+     + <div class="button clickDrop">How to skim</div>
+     + <div class="button clickDrop">How to scan</div>
+     + <div class="clickDropContent"><p>Skimming involves running your eye very quickly over large chunks of text. It
+     + <p>To skim effectively:</p>
+     + <ul>
+     + <li>Note any headings, bold print and pictures.</li>
+     + <li>Start at the beginning of the reading and glide your eyes over the text quickly.</li>
+     + <li>Do not read all of the text. Read a few words in every paragraph, such as the first and last sentences.</l
+     + </ul></div>
+     + <div class="clickDropContent"><p>Scanning involves searching for facts as needed from a piece of text instead 
+     + <p>When you scan, you are looking for specific information, such as factors or impacts on hauora, and ignoring
+     + <p>To scan effectively:</p>
+     + … 7 more added
+  ~ HES1007_9_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Scenario: Riley and Jordan</div>
+     - <div class="clickDropContent"><p>Riley and Jordan are both 16 and in a romantic relationship and have known ea
+     - <p>intermediate school. They are both currently experiencing different pressures.</p>
+     - <p>Riley lives with his mum and four younger sisters. As the eldest, Riley takes on a lot of responsibility – 
+     - <p>His mum relies on him to contribute financially, and he gives her the money he earns to help cover househol
+     - <p>With all of Riley’s responsibilities, he’s constantly tired and the expectations on him are growing. Recent
+     - </div>
+     + <div class="button clickDrop">Scenario: Riley and Jordan</div>
+     + <div class="clickDropContent"><p>Riley and Jordan are both 16 and in a romantic relationship and have known ea
+     + <p>intermediate school. They are both currently experiencing different pressures.</p>
+     + <p>Riley lives with his mum and four younger sisters. As the eldest, Riley takes on a lot of responsibility – 
+     + <p>His mum relies on him to contribute financially, and he gives her the money he earns to help cover househol
+     + <p>With all of Riley’s responsibilities, he’s constantly tired and the expectations on him are growing. Recent
+HES1007: identical 3 / changed 7
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+  ~ HPFUN901_0_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Where do I keep my medication?</div>
+     - <div class="button clickDrop">Which medication can I use?</div>
+     - <div class="button clickDrop">How much medication should I take?</div>
+     - <div class="clickDropContent"><p>Medication should be kept in a safe place away from children and pets. A good
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=various-cosmetics-
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=father-and-son-buy
+     - </div>
+     + <div class="button clickDrop">Where do I keep my medication?</div>
+     + <div class="button clickDrop">Which medication can I use?</div>
+     + <div class="button clickDrop">How much medication should I take?</div>
+     + <div class="clickDropContent"><p>Medication should be kept in a safe place away from children and pets. A good
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=various-cosmetics-
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=father-and-son-buy
+HPFUN901: identical 0 / changed 1
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+  ~ MXDB302_1_0.html: -29 +27
+     - <div class="row">
+     - <div class="button clickDrop">Converting cm to m</div>
+     - <div class="button clickDrop">Converting m to km</div>
+     - <div class="button clickDrop">Converting mm</div>
+     - <div class="clickDropContent"><p>Example 1:</p>
+     - <p>634cm = ____ m</p>
+     - <p>To convert cm into m we ÷ 100 → the decimal point moves <b>2 places to the left</b></p>
+     - <p>634.0 ÷ 100 = 6.34</p>
+     - <p>634cm = 6.34m</p>
+     - <p>Example 2:</p>
+     - <p>206cm = ____ m</p>
+     - <p>To convert cm into m we ÷ 100 → the decimal point moves <b>2 places to the left</b></p>
+     - <p>206.0 ÷ 100 = 2.06</p>
+     - <p>206cm = 2.06m</p></div>
+     - <div class="clickDropContent"><p>4.8m = ____ km</p>
+     - <p>To convert m into km we ÷ 1000 → the decimal point moves <b>3 places to the left</b></p>
+     - <p>4.8 ÷ 1000 = 0.0048</p>
+     - <p>4.8m = 0.0048km</p></div>
+     - <div class="clickDropContent"><p>Example 1: Converting millimetres to centimetres</p>
+     - <p>47mm = ____ cm</p>
+     - <p>To convert mm into cm we ÷ 10 → the decimal point moves <b>1 place to the left</b></p>
+     - <p>47 ÷ 10 = 4.7</p>
+     - <p>47mm = 4.7cm</p>
+     - <p>Example 2: Converting millimetres to metres</p>
+     - <p>8600mm = _____ m</p>
+     - <p>To convert mm into metres we ÷ 1000 → the decimal point moves <b>3 places to the left</b></p>
+     - <p>8600 ÷ 1000 = 8.600</p>
+     - <p>8600mm = 8.6m</p></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (Note to designers: If possible
+     + <div class="button clickDrop">Converting cm to m</div>
+     + <div class="button clickDrop">Converting m to km</div>
+     + <div class="button clickDrop">Converting mm</div>
+     + <div class="clickDropContent"><p>Example 1:</p>
+     + <p>634cm = ____ m</p>
+     + <p>To convert cm into m we ÷ 100 → the decimal point moves <b>2 places to the left</b></p>
+     + <p>634.0 ÷ 100 = 6.34</p>
+     + <p>634cm = 6.34m</p>
+     + <p>Example 2:</p>
+     + <p>206cm = ____ m</p>
+     + <p>To convert cm into m we ÷ 100 → the decimal point moves <b>2 places to the left</b></p>
+     + <p>206.0 ÷ 100 = 2.06</p>
+     + <p>206cm = 2.06m</p></div>
+     + <div class="clickDropContent"><p>4.8m = ____ km</p>
+     + <p>To convert m into km we ÷ 1000 → the decimal point moves <b>3 places to the left</b></p>
+     + <p>4.8 ÷ 1000 = 0.0048</p>
+     + <p>4.8m = 0.0048km</p></div>
+     + <div class="clickDropContent"><p>Example 1: Converting millimetres to centimetres</p>
+     + <p>47mm = ____ cm</p>
+     + <p>To convert mm into cm we ÷ 10 → the decimal point moves <b>1 place to the left</b></p>
+     + … 7 more added
+  ~ MXDB302_4_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">I don’t understand</div>
+     - <div class="clickDropContent"><h3>Families of Facts</h3><p>A family of facts is a group of related Maths equat
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: please position on the right si
+     + <div class="button clickDrop">I don’t understand</div>
+     + <div class="clickDropContent"><h3>Families of Facts</h3><p>A family of facts is a group of related Maths equat
+MXDB302: identical 8 / changed 2
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+  ~ MXEO301_1_1_0.html: -35 +33
+     - <div class="row">
+     - <div class="button clickDrop">Square numbers to 100</div>
+     - <div class="button clickDrop">Cubed numbers to 125</div>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>2² = 2 × 2 = 4</th>
+     - <th>4² = 4 × 4 = 16</th>
+     - <th>6² = 6 × 6 = 36</th>
+     - <th>8² = 8 × 8 = 64</th>
+     - <th>10² = 10 × 10 = 100</th>
+     - </tr>
+     - <tr>
+     - <td>3² = 3 × 3 = 9</td>
+     - <td>5² = 5 × 5 = 25</td>
+     - <td>7² = 7 × 7 = 49</td>
+     - <td>9² = 9 × 9 = 81</td>
+     - <td></td>
+     - </tr>
+     - </table>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>2³ = 2 × 2 × 2 = 8</td>
+     - <td>4³ = 4 × 4 × 4 = 64</td>
+     - </tr>
+     - <tr>
+     - <td>3³ = 3 × 3 × 3 = 27</td>
+     - <td>5³ = 5 × 5 × 5 = 125</td>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     + <div class="button clickDrop">Square numbers to 100</div>
+     + <div class="button clickDrop">Cubed numbers to 125</div>
+     + <div class="clickDropContent">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>2² = 2 × 2 = 4</th>
+     + <th>4² = 4 × 4 = 16</th>
+     + <th>6² = 6 × 6 = 36</th>
+     + <th>8² = 8 × 8 = 64</th>
+     + <th>10² = 10 × 10 = 100</th>
+     + </tr>
+     + <tr>
+     + <td>3² = 3 × 3 = 9</td>
+     + <td>5² = 5 × 5 = 25</td>
+     + <td>7² = 7 × 7 = 49</td>
+     + <td>9² = 9 × 9 = 81</td>
+     + <td></td>
+     + </tr>
+     + </table>
+     + … 13 more added
+  ~ MXEO301_5_1_0.html: -14 +12
+     - <div class="row">
+     - <div class="button clickDrop">40 + <i>y</i> = 82</div>
+     - <div class="button clickDrop">g + 4 = 10</div>
+     - <div class="button clickDrop"><i>p</i> – 14 = 20</div>
+     - <div class="button clickDrop">30 – <i>k</i> = 11</div>
+     - <div class="button clickDrop">6<i>m</i> = 30</div>
+     - <div class="button clickDrop"><i>x</i>/5 = 7</div>
+     - <div class="clickDropContent"><p>Moana has 40 stickers in her sticker collection. For her birthday, she was gi
+     - <div class="clickDropContent"><p>Liam had some marbles. After he got 4 more marbles, he had 10 marbles in tota
+     - <div class="clickDropContent"><p>Ariki had some money. After spending $14, he had $20 left. How much money did
+     - <div class="clickDropContent"><p>Olivia had 30 stamps in her collection. She gave some to her friend, and now 
+     - <div class="clickDropContent"><p>Each packet of pencils has the same number of pencils. If 6 packets contain 3
+     - <div class="clickDropContent"><p>A father divided his comic book collection equally among his five children. E
+     - </div>
+     + <div class="button clickDrop">40 + <i>y</i> = 82</div>
+     + <div class="button clickDrop">g + 4 = 10</div>
+     + <div class="button clickDrop"><i>p</i> – 14 = 20</div>
+     + <div class="button clickDrop">30 – <i>k</i> = 11</div>
+     + <div class="button clickDrop">6<i>m</i> = 30</div>
+     + <div class="button clickDrop"><i>x</i>/5 = 7</div>
+     + <div class="clickDropContent"><p>Moana has 40 stickers in her sticker collection. For her birthday, she was gi
+     + <div class="clickDropContent"><p>Liam had some marbles. After he got 4 more marbles, he had 10 marbles in tota
+     + <div class="clickDropContent"><p>Ariki had some money. After spending $14, he had $20 left. How much money did
+     + <div class="clickDropContent"><p>Olivia had 30 stamps in her collection. She gave some to her friend, and now 
+     + <div class="clickDropContent"><p>Each packet of pencils has the same number of pencils. If 6 packets contain 3
+     + <div class="clickDropContent"><p>A father divided his comic book collection equally among his five children. E
+  ~ MXEO301_6_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Audience</div>
+     - <div class="button clickDrop">Purpose</div>
+     - <div class="button clickDrop">Format</div>
+     - <div class="button clickDrop">Tone</div>
+     - <div class="clickDropContent"><p>Every text has readers. This is your audience. Thinking about who will read y
+     - <div class="clickDropContent"><p>Every piece of writing has a purpose, or your &quot;why.&quot; This guides yo
+     - <div class="clickDropContent"><p>Different types of writing use specific formats. Choosing the right format he
+     - <div class="clickDropContent"><p>Tone is the attitude or feeling behind your words. The way you write gives re
+     - </div>
+     + <div class="button clickDrop">Audience</div>
+     + <div class="button clickDrop">Purpose</div>
+     + <div class="button clickDrop">Format</div>
+     + <div class="button clickDrop">Tone</div>
+     + <div class="clickDropContent"><p>Every text has readers. This is your audience. Thinking about who will read y
+     + <div class="clickDropContent"><p>Every piece of writing has a purpose, or your &quot;why.&quot; This guides yo
+     + <div class="clickDropContent"><p>Different types of writing use specific formats. Choosing the right format he
+     + <div class="clickDropContent"><p>Tone is the attitude or feeling behind your words. The way you write gives re
+MXEO301: identical 8 / changed 3
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+  ~ MXEX302_2_0.html: -6 +4
+     - <div class="row">
+     - <div class="button clickDrop">Favourite Kiwi sports</div>
+     - <div class="button clickDrop">Physical activity and academics</div>
+     - <div class="clickDropContent"><p>A local sports festival is keen to know which traditional Kiwi sports are the
+     - <div class="clickDropContent"><p>A sports research group is interested in understanding the relationship betwe
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Button] Go to journal</p>
+     + <div class="button clickDrop">Favourite Kiwi sports</div>
+     + <div class="button clickDrop">Physical activity and academics</div>
+     + <div class="clickDropContent"><p>A local sports festival is keen to know which traditional Kiwi sports are the
+     + <div class="clickDropContent"><p>A sports research group is interested in understanding the relationship betwe
+MXEX302: identical 7 / changed 1
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+  ~ MXFL302_6_0.html: -20 +16
+     - <div class="row">
+     - <div class="button clickDrop">Pesto</div>
+     - <div class="button clickDrop">Eggs</div>
+     - <div class="button clickDrop">Salt</div>
+     - <div class="button clickDrop">Pepper</div>
+     - <div class="clickDropContent"><p>Aria knows that 2/6 is the same as 1/3 and she does have a measuring cup this
+     - <div class="clickDropContent"><p>Aria knows she cannot have ½ egg. She will use three whole eggs and whisk the
+     - <div class="clickDropContent"><p>Aria knows 5/8 is just over 4/8, which is the same as ½. Salt is used for fla
+     - <div class="clickDropContent"><p>Aria knows 7/8 is close to 8/8, which is a whole teaspoon, so she will add ju
+     - <div class="row">
+     - <div class="button clickDrop">Grams (g)</div>
+     - <div class="button clickDrop">Milligrams (mg)</div>
+     - <div class="button clickDrop">Kilograms (kg)</div>
+     - <div class="button clickDrop">Tonnes (t)</div>
+     - <div class="clickDropContent"><p>The gram is the base unit of measurement used to measure mass. You will use i
+     - <div class="clickDropContent"><p>Milligrams (mg) are tiny amounts – in fact, 1/1000 of a gram. One milligram (
+     - <div class="clickDropContent"><p>The kilogram is a unit you will probably be very familiar with already. It is
+     - <div class="clickDropContent"><p>There is one more unit of mass you have probably heard about. It is one thous
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [definition: where drugs and me
+     - </div>
+     + <div class="button clickDrop">Pesto</div>
+     + <div class="button clickDrop">Eggs</div>
+     + <div class="button clickDrop">Salt</div>
+     + <div class="button clickDrop">Pepper</div>
+     + <div class="clickDropContent"><p>Aria knows that 2/6 is the same as 1/3 and she does have a measuring cup this
+     + <div class="clickDropContent"><p>Aria knows she cannot have ½ egg. She will use three whole eggs and whisk the
+     + <div class="clickDropContent"><p>Aria knows 5/8 is just over 4/8, which is the same as ½. Salt is used for fla
+     + <div class="clickDropContent"><p>Aria knows 7/8 is close to 8/8, which is a whole teaspoon, so she will add ju
+     + <div class="button clickDrop">Grams (g)</div>
+     + <div class="button clickDrop">Milligrams (mg)</div>
+     + <div class="button clickDrop">Kilograms (kg)</div>
+     + <div class="button clickDrop">Tonnes (t)</div>
+     + <div class="clickDropContent"><p>The gram is the base unit of measurement used to measure mass. You will use i
+     + <div class="clickDropContent"><p>Milligrams (mg) are tiny amounts – in fact, 1/1000 of a gram. One milligram (
+     + <div class="clickDropContent"><p>The kilogram is a unit you will probably be very familiar with already. It is
+     + <div class="clickDropContent"><p>There is one more unit of mass you have probably heard about. It is one thous
+  ~ MXFL302_8_0.html: -6 +4
+     - <div class="row">
+     - <div class="button clickDrop">Option 1</div>
+     - <div class="button clickDrop">Option 2</div>
+     - <div class="clickDropContent"><p>Hui &amp; Kai have been hired to organise a 13-year-old’s birthday party, but
+     - <div class="clickDropContent"><p>This option gives you complete freedom to coordinate an event for Hui &amp; K
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [button] Download project.<br /
+     + <div class="button clickDrop">Option 1</div>
+     + <div class="button clickDrop">Option 2</div>
+     + <div class="clickDropContent"><p>Hui &amp; Kai have been hired to organise a 13-year-old’s birthday party, but
+     + <div class="clickDropContent"><p>This option gives you complete freedom to coordinate an event for Hui &amp; K
+MXFL302: identical 8 / changed 2
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+  ~ MXFU301_7_0.html: -70 +68
+     - <div class="row">
+     - <div class="button clickDrop">Two dice throw</div>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     - </tr>
+     - <tr>
+     - <td><b>1</b></td>
+     - <td>1,1</td>
+     - <td>1,2</td>
+     - <td>1,3</td>
+     - <td>1,4</td>
+     - <td>1,5</td>
+     - <td>1,6</td>
+     - </tr>
+     - <tr>
+     - <td><b>2</b></td>
+     - <td>2,1</td>
+     - <td>2,2</td>
+     - <td>2,3</td>
+     - <td>2,4</td>
+     - <td>2,5</td>
+     - <td>2,6</td>
+     - </tr>
+     - <tr>
+     - <td><b>3</b></td>
+     - <td>3,1</td>
+     - <td>3,2</td>
+     - <td>3,3</td>
+     - <td>3,4</td>
+     - <td>3,5</td>
+     - <td>3,6</td>
+     - … 30 more removed
+     + <div class="button clickDrop">Two dice throw</div>
+     + <div class="clickDropContent">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th><b>1</b></th>
+     + <th><b>2</b></th>
+     + <th><b>3</b></th>
+     + <th><b>4</b></th>
+     + <th><b>5</b></th>
+     + <th><b>6</b></th>
+     + </tr>
+     + <tr>
+     + <td><b>1</b></td>
+     + <td>1,1</td>
+     + <td>1,2</td>
+     + <td>1,3</td>
+     + <td>1,4</td>
+     + <td>1,5</td>
+     + … 48 more added
+MXFU301: identical 11 / changed 1
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+  ~ MXFUN01_7_0.html: -12 +10
+     - <div class="row">
+     - <div class="button clickDrop">Place value and rounding</div>
+     - <div class="button clickDrop">Order of operations and exponents</div>
+     - <div class="button clickDrop">Integers</div>
+     - <div class="button clickDrop">Decimals</div>
+     - <div class="button clickDrop">Fractions and Percentages</div>
+     - <div class="clickDropContent"><p>Source image</p></div>
+     - <div class="clickDropContent"><p>Source image</p></div>
+     - <div class="clickDropContent"><p>Source image</p></div>
+     - <div class="clickDropContent"><p>Source image</p></div>
+     - <div class="clickDropContent"><p>Source image</p></div>
+     - </div>
+     + <div class="button clickDrop">Place value and rounding</div>
+     + <div class="button clickDrop">Order of operations and exponents</div>
+     + <div class="button clickDrop">Integers</div>
+     + <div class="button clickDrop">Decimals</div>
+     + <div class="button clickDrop">Fractions and Percentages</div>
+     + <div class="clickDropContent"><p>Source image</p></div>
+     + <div class="clickDropContent"><p>Source image</p></div>
+     + <div class="clickDropContent"><p>Source image</p></div>
+     + <div class="clickDropContent"><p>Source image</p></div>
+     + <div class="clickDropContent"><p>Source image</p></div>
+  ~ MXFUN01_12_0.html: -12 +10
+     - <div class="row">
+     - <div class="button clickDrop">Ordering numbers</div>
+     - <div class="button clickDrop">Order of operations</div>
+     - <div class="button clickDrop">Integers</div>
+     - <div class="button clickDrop">Working with Fractions</div>
+     - <div class="button clickDrop">Working with Percentages</div>
+     - <div class="clickDropContent"><p>Learn to use place value to order decimal numbers</p></div>
+     - <div class="clickDropContent"><p>Learn to calculate using order of operation to find the correct answer.</p></
+     - <div class="clickDropContent"><p>Working with positive and negative numbers</p></div>
+     - <div class="clickDropContent"><p>3 Out Of 4 Three Quarters Icon With Long Shadow On Textured Yellow Background
+     - <div class="clickDropContent"><p>Hand Of Woman Holding Balloons With Percent On Yellow Background Minimal Sale
+     - </div>
+     + <div class="button clickDrop">Ordering numbers</div>
+     + <div class="button clickDrop">Order of operations</div>
+     + <div class="button clickDrop">Integers</div>
+     + <div class="button clickDrop">Working with Fractions</div>
+     + <div class="button clickDrop">Working with Percentages</div>
+     + <div class="clickDropContent"><p>Learn to use place value to order decimal numbers</p></div>
+     + <div class="clickDropContent"><p>Learn to calculate using order of operation to find the correct answer.</p></
+     + <div class="clickDropContent"><p>Working with positive and negative numbers</p></div>
+     + <div class="clickDropContent"><p>3 Out Of 4 Three Quarters Icon With Long Shadow On Textured Yellow Background
+     + <div class="clickDropContent"><p>Hand Of Woman Holding Balloons With Percent On Yellow Background Minimal Sale
+MXFUN01: identical 17 / changed 2
+  ~ MXFUN02_0_0.html: -28 +24
+     - <div class="row">
+     - <div class="button clickDrop">Number relationships</div>
+     - <div class="button clickDrop">Patterns and rules</div>
+     - <div class="button clickDrop">Algorithms</div>
+     - <div class="clickDropContent"><p>Can I please get one of the crocodile mouths here that are asked to be create
+     - <div class="clickDropContent"><p>Can you please create something like this? thank you</p></div>
+     - <div class="clickDropContent"><p>Could i please ger arrows with left and right in them here please.</p></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can I please get one of the cro
+     - <div class="row">
+     - <div class="button clickDrop"><b>Mistakes</b></div>
+     - <div class="button clickDrop"><b>Corrected Algorithm: Baking a Cake</b></div>
+     - <div class="clickDropContent"><p>The algorithm does not mention turning the oven on or adding baking powder, w
+     - <p>It also missed some important other instructions like mixing all the ingredients together.</p>
+     - <p>Algorithms need to be exact.</p></div>
+     - <div class="clickDropContent"><ol>
+     - <li>Preheat the oven to 180°C.</li>
+     - <li>Grease a cake pan.</li>
+     - <li>Mix flour, sugar, and baking powder in a bowl.</li>
+     - <li>Add eggs and milk to the mixture.</li>
+     - <li>Stir the mixture until smooth.</li>
+     - <li>Pour the batter into the cake pan.</li>
+     - <li>Bake for 25 minutes.</li>
+     - <li>Let the cake cool for 10 minutes.</li>
+     - <li>Ice the cake.</li>
+     - </ol>
+     - <p>To understand the importance of giving good instructions, you are going to check these algorithms below.</p
+     - <p>Try following these instructions yourself to check if there are any mistakes.</p></div>
+     - </div>
+     + <div class="button clickDrop">Number relationships</div>
+     + <div class="button clickDrop">Patterns and rules</div>
+     + <div class="button clickDrop">Algorithms</div>
+     + <div class="clickDropContent"><p>Can I please get one of the crocodile mouths here that are asked to be create
+     + <div class="clickDropContent"><p>Can you please create something like this? thank you</p></div>
+     + <div class="clickDropContent"><p>Could i please ger arrows with left and right in them here please.</p></div><
+     + <div class="button clickDrop"><b>Mistakes</b></div>
+     + <div class="button clickDrop"><b>Corrected Algorithm: Baking a Cake</b></div>
+     + <div class="clickDropContent"><p>The algorithm does not mention turning the oven on or adding baking powder, w
+     + <p>It also missed some important other instructions like mixing all the ingredients together.</p>
+     + <p>Algorithms need to be exact.</p></div>
+     + <div class="clickDropContent"><ol>
+     + <li>Preheat the oven to 180°C.</li>
+     + <li>Grease a cake pan.</li>
+     + <li>Mix flour, sugar, and baking powder in a bowl.</li>
+     + <li>Add eggs and milk to the mixture.</li>
+     + <li>Stir the mixture until smooth.</li>
+     + <li>Pour the batter into the cake pan.</li>
+     + <li>Bake for 25 minutes.</li>
+     + <li>Let the cake cool for 10 minutes.</li>
+     + … 4 more added
+MXFUN02: identical 0 / changed 1
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+  ~ OSAH501_1_0.html: -11 +9
+     - <div class="row">
+     - <div class="button clickDrop">HARM</div>
+     - <div class="button clickDrop">HARRASMENT</div>
+     - <div class="button clickDrop">ABUSE</div>
+     - <div class="button clickDrop">VICTIM</div>
+     - <div class="clickDropContent"><p>Serious emotional distress.</p></div>
+     - <div class="clickDropContent"><p>Repeated harmful behaviour or exerting power over someone.</p></div>
+     - <div class="clickDropContent"><p>Unwanted, offensive or intimidating behaviour.</p></div>
+     - <div class="clickDropContent"><p>A person who is the target of harmful behaviour.</p>
+     - <p>Online abuse and harassment can be <b>ANY</b> harmful calls, messages or images that are unwanted and poste
+     - </div>
+     + <div class="button clickDrop">HARM</div>
+     + <div class="button clickDrop">HARRASMENT</div>
+     + <div class="button clickDrop">ABUSE</div>
+     + <div class="button clickDrop">VICTIM</div>
+     + <div class="clickDropContent"><p>Serious emotional distress.</p></div>
+     + <div class="clickDropContent"><p>Repeated harmful behaviour or exerting power over someone.</p></div>
+     + <div class="clickDropContent"><p>Unwanted, offensive or intimidating behaviour.</p></div>
+     + <div class="clickDropContent"><p>A person who is the target of harmful behaviour.</p>
+     + <p>Online abuse and harassment can be <b>ANY</b> harmful calls, messages or images that are unwanted and poste
+  ~ OSAH501_5_0.html: -20 +16
+     - <div class="row">
+     - <div class="button clickDrop">Taha wairua</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha hinengaro</div>
+     - <div class="button clickDrop">Taha whānau</div>
+     - <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>A person may be challenged if the person’s
+     - <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>A person may suffer due to disrupted sleep 
+     - <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>A person may be impacted negati
+     - <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>A person’s relationships can be strained if t
+     - <div class="row">
+     - <div class="button clickDrop">Taha Wairua</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha hinengaro</div>
+     - <div class="button clickDrop">Taha whānau</div>
+     - <div class="clickDropContent"><p>–<b>spiritual wellbeing</b></p><p>The person may have to deal with conflictin
+     - <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>A person may be affected through disrupted 
+     - <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>A person may be impacted by fee
+     - <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>Can be strained if trust is lost among peers,
+     - </div>
+     - </div>
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>A person may be challenged if the person’s
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>A person may suffer due to disrupted sleep 
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>A person may be impacted negati
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>A person’s relationships can be strained if t
+     + <div class="button clickDrop">Taha Wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>–<b>spiritual wellbeing</b></p><p>The person may have to deal with conflictin
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>A person may be affected through disrupted 
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>A person may be impacted by fee
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>Can be strained if trust is lost among peers,
+OSAH501: identical 4 / changed 2
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+  ~ OSBY101_2_0.html: -29 +25
+     - <div class="row">
+     - <div class="button clickDrop">Lesson 1 video</div>
+     - <div class="clickDropContent">
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/6ctd75a7_Yw" loading="lazy" title="YouTube video player" f
+     - </div><p>In the video, it listed <b>three things</b> you could do if you saw or felt bullied online or ‘cyberb
+     - <div class="col-md-6 col-12">
+     - <img class="img-fluid" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" src="images/screenshot-of-video-only-do-not-insert-v.jpg" alt="" /> -->
+     - <div class="col-md-6 col-12">
+     - <p>Drop</p>
+     - <p>If you see someone bullied, you can:</p>
+     - <ul>
+     - <li><b>give support –</b> check if they are okay. Be a good friend. You could offer to go with them to tell a 
+     - <li><b>be an upstander –</b> means standing up for others. You could say something to the bully or help then t
+     - <li><b>report what you see</b> – Tell a <b>trusted adult</b> what you saw. The adult can report to Netsafe <b>
+     - </ul>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">How to take a screenshot</div>
+     - <div class="clickDropContent"><p><b>Computer or laptop:</b></p><img class="img-fluid" src="https://placehold.c
+     - <li><b>Windows</b>: Press Windows + Print Screen</li>
+     - <li><b>Mac</b>: Press Command + Shift + 4</li>
+     - </ul>
+     - <p>Your screen will flash, and the picture will be saved!</p><p><b>iPad or Tablet:</b></p><img class="img-flui
+     - <li><b>Press the Home button</b> and the <b>Top button</b> together (If there’s no Home button, press <b>Volum
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Lesson 1 video</div>
+     + <div class="clickDropContent">
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/6ctd75a7_Yw" loading="lazy" title="YouTube video player" f
+     + </div><p>In the video, it listed <b>three things</b> you could do if you saw or felt bullied online or ‘cyberb
+     + <div class="col-md-6 col-12">
+     + <img class="img-fluid" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" src="images/screenshot-of-video-only-do-not-insert-v.jpg" alt="" /> -->
+     + <div class="col-md-6 col-12">
+     + <p>Drop</p>
+     + <p>If you see someone bullied, you can:</p>
+     + <ul>
+     + <li><b>give support –</b> check if they are okay. Be a good friend. You could offer to go with them to tell a 
+     + <li><b>be an upstander –</b> means standing up for others. You could say something to the bully or help then t
+     + <li><b>report what you see</b> – Tell a <b>trusted adult</b> what you saw. The adult can report to Netsafe <b>
+     + </ul>
+     + <div class="button clickDrop">How to take a screenshot</div>
+     + <div class="clickDropContent"><p><b>Computer or laptop:</b></p><img class="img-fluid" src="https://placehold.c
+     + <li><b>Windows</b>: Press Windows + Print Screen</li>
+     + <li><b>Mac</b>: Press Command + Shift + 4</li>
+     + … 5 more added
+OSBY101: identical 3 / changed 1
+  ~ OSBY201_1_0.html: -19 +17
+     - <div class="row">
+     - <div class="button clickDrop">space out evenly below image</div>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> front </th>
+     - <th>Emotional impact</th>
+     - <th>Social impact</th>
+     - <th>Behavioural impact</th>
+     - </tr>
+     - <tr>
+     - <td> drop </td>
+     - <td><b>Feeling sad or upset</b> after reading mean messages / <b>Result:</b> / <i>I don’t want to play anymore
+     - <td>Not wanting to talk to friends / <b>Result:</b> / <i>I stopped messaging my friends because I was worried 
+     - <td>Not wanting to go to social events/school / <b>Result:</b> / <i>I told Mum I felt sick, but I just didn’t 
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="button clickDrop">space out evenly below image</div>
+     + <div class="clickDropContent">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> front </th>
+     + <th>Emotional impact</th>
+     + <th>Social impact</th>
+     + <th>Behavioural impact</th>
+     + </tr>
+     + <tr>
+     + <td> drop </td>
+     + <td><b>Feeling sad or upset</b> after reading mean messages / <b>Result:</b> / <i>I don’t want to play anymore
+     + <td>Not wanting to talk to friends / <b>Result:</b> / <i>I stopped messaging my friends because I was worried 
+     + <td>Not wanting to go to social events/school / <b>Result:</b> / <i>I told Mum I felt sick, but I just didn’t 
+     + </tr>
+     + </table>
+OSBY201: identical 3 / changed 1
+OSBY301: identical 4 / changed 0
+  ~ OSBY401_4_0.html: -31 +29
+     - <div class="row">
+     - <div class="button clickDrop">Taha wairua</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha hinengaro</div>
+     - <div class="button clickDrop">Taha whānau</div>
+     - <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><ul>
+     - <li>&gt;oss of sense of self-worth or purpose.</li>
+     - <li>Feeling judged or misunderstood.</li>
+     - <li>Disconnection from values or inner peace.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><ul>
+     - <li>Physical symptoms linked to stress and anxiety.</li>
+     - <li>Frequent headaches.</li>
+     - <li>Nausea.</li>
+     - <li>Stomach aches.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><ul>
+     - <li>Feeling ashamed, nervous, anxious, insecure.</li>
+     - <li>Negative thoughts and self-talk.</li>
+     - <li>Feeling guilty or judged.</li>
+     - <li>Feeling lonely or overwhelmed.</li>
+     - <li>Loss of motivation and enjoyment.</li>
+     - <li>Isolation from loved ones.</li>
+     - <li>Psychological pain.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p>– <b>social wellbeing</b></p><ul>
+     - <li>Withdrawing from friends and family.</li>
+     - <li>Feeling isolated from people you love and trust.</li>
+     - <li>Skipping school, sports games, interest groups or social events.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><ul>
+     + <li>&gt;oss of sense of self-worth or purpose.</li>
+     + <li>Feeling judged or misunderstood.</li>
+     + <li>Disconnection from values or inner peace.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><ul>
+     + <li>Physical symptoms linked to stress and anxiety.</li>
+     + <li>Frequent headaches.</li>
+     + <li>Nausea.</li>
+     + <li>Stomach aches.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><ul>
+     + <li>Feeling ashamed, nervous, anxious, insecure.</li>
+     + <li>Negative thoughts and self-talk.</li>
+     + <li>Feeling guilty or judged.</li>
+     + <li>Feeling lonely or overwhelmed.</li>
+     + … 9 more added
+OSBY401: identical 4 / changed 1
+  ~ OSBY501_4_0.html: -32 +30
+     - <div class="row">
+     - <div class="button clickDrop">Taha wairua</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha Hinengaro</div>
+     - <div class="button clickDrop">Taha Whānau</div>
+     - <div class="clickDropContent"><p>– <b>Spiritual wellbeing</b></p><ul>
+     - <li>Loss of sense of self-worth or purpose.</li>
+     - <li>Feeling judged or misunderstood.</li>
+     - <li>Disconnection from values or inner peace.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p>– <b>Physical wellbeing</b></p><ul>
+     - <li>Physical symptoms linked to stress and anxiety</li>
+     - <li>frequent headaches</li>
+     - <li>nausea</li>
+     - <li>stomach-aches.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p>– <b>Mental and emotional wellbeing</b></p><ul>
+     - <li>Feeling ashamed, nervous, anxious, insecure.</li>
+     - <li>Negative thoughts and self-talk.</li>
+     - <li>Feeling guilty or judged.</li>
+     - <li>Feeling lonely or overwhelmed.</li>
+     - <li>Loss of motivation and enjoyment.</li>
+     - <li>Isolation from loved ones.</li>
+     - <li>Psychological pain.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p>– <b>Social wellbeing</b></p><ul>
+     - <li>Withdrawing from friends and family.</li>
+     - <li>Feeling isolated from people you love and trust.</li>
+     - <li>Skipping school, sports games, interest groups or social events.</li>
+     - <li>Can emotionally impact whanau and friends who are witness to online bullying and the impact of a loved one
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha Hinengaro</div>
+     + <div class="button clickDrop">Taha Whānau</div>
+     + <div class="clickDropContent"><p>– <b>Spiritual wellbeing</b></p><ul>
+     + <li>Loss of sense of self-worth or purpose.</li>
+     + <li>Feeling judged or misunderstood.</li>
+     + <li>Disconnection from values or inner peace.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><p>– <b>Physical wellbeing</b></p><ul>
+     + <li>Physical symptoms linked to stress and anxiety</li>
+     + <li>frequent headaches</li>
+     + <li>nausea</li>
+     + <li>stomach-aches.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><p>– <b>Mental and emotional wellbeing</b></p><ul>
+     + <li>Feeling ashamed, nervous, anxious, insecure.</li>
+     + <li>Negative thoughts and self-talk.</li>
+     + <li>Feeling guilty or judged.</li>
+     + <li>Feeling lonely or overwhelmed.</li>
+     + … 10 more added
+OSBY501: identical 5 / changed 1
+OSGM101: identical 3 / changed 0
+  ~ OSGM201_1_0.html: -23 +21
+     - <div class="row">
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-496608648" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-519553510" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2202299358"
+     - <div class="clickDropContent"><ul>
+     - <li><b>Problem-solving</b>: many games make you think, plan, and solve puzzles.</li>
+     - <li><b>Memory boost</b>: you often need to remember patterns, rules, or strategies.</li>
+     - <li><b>Quick thinking</b>: fast-paced games train your brain to make decisions quickly.</li>
+     - <li><b>Learning new things</b>: some games teach history, science, or even coding.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><ul>
+     - <li><b>Better hand-eye coordination</b>: you learn to move your hands quickly based on what you see.</li>
+     - <li><b>Vision:</b> some studies show gamers can spot small details faster.</li>
+     - <li><b>Faster reflexes</b>: action games help you react quickly, which can help in sports and everyday life.</
+     - <li><b>Active games</b>: dance and sports games get you moving and grooving.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><ul>
+     - <li><b>Feel connected</b>: multiplayer games help you stay in touch with friends and whānau, even if you&#39;r
+     - <li><b>Feel proud</b>: winning levels or solving challenges can boost your confidence.</li>
+     - <li><b>Feel calm</b>: some games help you relax and feel less stressed, especially after a busy day.</li>
+     - <li><b>Feel included</b>: online communities can help kids feel like they belong—just make sure they’re safe a
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-496608648" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-519553510" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2202299358"
+     + <div class="clickDropContent"><ul>
+     + <li><b>Problem-solving</b>: many games make you think, plan, and solve puzzles.</li>
+     + <li><b>Memory boost</b>: you often need to remember patterns, rules, or strategies.</li>
+     + <li><b>Quick thinking</b>: fast-paced games train your brain to make decisions quickly.</li>
+     + <li><b>Learning new things</b>: some games teach history, science, or even coding.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><ul>
+     + <li><b>Better hand-eye coordination</b>: you learn to move your hands quickly based on what you see.</li>
+     + <li><b>Vision:</b> some studies show gamers can spot small details faster.</li>
+     + <li><b>Faster reflexes</b>: action games help you react quickly, which can help in sports and everyday life.</
+     + <li><b>Active games</b>: dance and sports games get you moving and grooving.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><ul>
+     + <li><b>Feel connected</b>: multiplayer games help you stay in touch with friends and whānau, even if you&#39;r
+     + <li><b>Feel proud</b>: winning levels or solving challenges can boost your confidence.</li>
+     + <li><b>Feel calm</b>: some games help you relax and feel less stressed, especially after a busy day.</li>
+     + <li><b>Feel included</b>: online communities can help kids feel like they belong—just make sure they’re safe a
+     + … 1 more added
+OSGM201: identical 3 / changed 1
+  ~ OSGM301_2_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Taha wairua</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha hinengaro</div>
+     - <div class="button clickDrop">Taha whānau</div>
+     - <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>This is about your beliefs, values, and se
+     - <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>This is about looking after your body. It i
+     - <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>This is about your thoughts and
+     - <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>This is about your relationships with others 
+     - </div>
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>This is about your beliefs, values, and se
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>This is about looking after your body. It i
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>This is about your thoughts and
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>This is about your relationships with others 
+OSGM301: identical 3 / changed 1
+  ~ OSGM401_1_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Taha wairua – spiritual wellbeing</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha hinengaro</div>
+     - <div class="button clickDrop">Taha whānau</div>
+     - <div class="clickDropContent"><p>/ Games can support your spiritual wellbeing by helping you explore your iden
+     - <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>Some games can help your physical wellbeing
+     - <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>Gaming can be good for your men
+     - <div class="clickDropContent"><p><b>– social wellbeing</b></p><p>Gaming is a fun way to connect with others, b
+     - </div>
+     + <div class="button clickDrop">Taha wairua – spiritual wellbeing</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>/ Games can support your spiritual wellbeing by helping you explore your iden
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>Some games can help your physical wellbeing
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>Gaming can be good for your men
+     + <div class="clickDropContent"><p><b>– social wellbeing</b></p><p>Gaming is a fun way to connect with others, b
+OSGM401: identical 4 / changed 1
+  ~ OSGM501_3_0.html: -14 +12
+     - <div class="row">
+     - <div class="button clickDrop">Support other players</div>
+     - <div class="button clickDrop">Report harmful behaviour</div>
+     - <div class="button clickDrop">Fair play and teamwork</div>
+     - <div class="button clickDrop">Respect others</div>
+     - <div class="button clickDrop">Manage yourself</div>
+     - <div class="button clickDrop">Protect privacy</div>
+     - <div class="clickDropContent"><p>If someone on your team is clearly new and making mistakes, offer tips or enc
+     - <div class="clickDropContent"><p>If another player is being racist, sexist, or bullying someone in chat, speak
+     - <div class="clickDropContent"><p>If someone is cheating or refusing to work with the team, remind them that th
+     - <div class="clickDropContent"><p>Don’t rage-quit or go AFK (away from keyboard) during a match. If you need to
+     - <div class="clickDropContent"><p>If you’re feeling frustrated or angry, take a break instead of lashing out. S
+     - <div class="clickDropContent"><p>Never share personal information like your own or someone else’s full name, s
+     - </div>
+     + <div class="button clickDrop">Support other players</div>
+     + <div class="button clickDrop">Report harmful behaviour</div>
+     + <div class="button clickDrop">Fair play and teamwork</div>
+     + <div class="button clickDrop">Respect others</div>
+     + <div class="button clickDrop">Manage yourself</div>
+     + <div class="button clickDrop">Protect privacy</div>
+     + <div class="clickDropContent"><p>If someone on your team is clearly new and making mistakes, offer tips or enc
+     + <div class="clickDropContent"><p>If another player is being racist, sexist, or bullying someone in chat, speak
+     + <div class="clickDropContent"><p>If someone is cheating or refusing to work with the team, remind them that th
+     + <div class="clickDropContent"><p>Don’t rage-quit or go AFK (away from keyboard) during a match. If you need to
+     + <div class="clickDropContent"><p>If you’re feeling frustrated or angry, take a break instead of lashing out. S
+     + <div class="clickDropContent"><p>Never share personal information like your own or someone else’s full name, s
+  ~ OSGM501_5_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Taha wairua</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha hinengaro</div>
+     - <div class="button clickDrop">Taha whānau</div>
+     - <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>Gaming can support spiritual wellbeing by 
+     - <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>Gaming can be beneficial for physical wellb
+     - <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>Gaming can support mental wellb
+     - <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>Gaming often involves social interaction, bot
+     - </div>
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>Gaming can support spiritual wellbeing by 
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>Gaming can be beneficial for physical wellb
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>Gaming can support mental wellb
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>Gaming often involves social interaction, bot
+OSGM501: identical 4 / changed 2
+OSOH101: identical 4 / changed 0
+  ~ OSOH201_1_0.html: -20 +18
+     - <div class="row">
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-496993747" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-470556989" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1443741138"
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2049799763"
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1079621056"
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-930777122" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-494026242" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-946476018" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2103439020"
+     - <div class="clickDropContent"><p>Ready!</p><p>Make sure you have everything you need.</p><p>Be signed in to yo
+     - <div class="clickDropContent"><p>Eyes and ears!</p><p>Listen carefully and use headphones.</p></div>
+     - <div class="clickDropContent"><p>Ask for help!</p><p>If you don&#39;t understand something, put your ‘hand-up&
+     - <div class="clickDropContent"><p>Don’t share personal information!</p><p>Keep personal information private. Th
+     - <div class="clickDropContent"><p>Your turn</p><p>Raise your hand and wait for your turn. Do not interrupt the 
+     - <div class="clickDropContent"><p>Safe space</p><p>Sit in a quiet, safe area.</p><p>This helps to avoid distrac
+     - <div class="clickDropContent"><p>Attention</p><p>Pay attention to your kaiako and classmates to ensure you lea
+     - <div class="clickDropContent"><p>Fun</p><p>Enjoy learning and participating in activities.</p></div>
+     - <div class="clickDropContent"><p>Empathy</p><p>Always use kind words and be respectful.</p></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can the letters be arranged in 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-496993747" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-470556989" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1443741138"
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2049799763"
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1079621056"
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-930777122" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-494026242" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-946476018" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2103439020"
+     + <div class="clickDropContent"><p>Ready!</p><p>Make sure you have everything you need.</p><p>Be signed in to yo
+     + <div class="clickDropContent"><p>Eyes and ears!</p><p>Listen carefully and use headphones.</p></div>
+     + <div class="clickDropContent"><p>Ask for help!</p><p>If you don&#39;t understand something, put your ‘hand-up&
+     + <div class="clickDropContent"><p>Don’t share personal information!</p><p>Keep personal information private. Th
+     + <div class="clickDropContent"><p>Your turn</p><p>Raise your hand and wait for your turn. Do not interrupt the 
+     + <div class="clickDropContent"><p>Safe space</p><p>Sit in a quiet, safe area.</p><p>This helps to avoid distrac
+     + <div class="clickDropContent"><p>Attention</p><p>Pay attention to your kaiako and classmates to ensure you lea
+     + <div class="clickDropContent"><p>Fun</p><p>Enjoy learning and participating in activities.</p></div>
+     + <div class="clickDropContent"><p>Empathy</p><p>Always use kind words and be respectful.</p></div><p class="cv2
+OSOH201: identical 3 / changed 1
+  ~ OSOH301_1_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Taha wairua</div>
+     - <div class="button clickDrop">Taha tinana</div>
+     - <div class="button clickDrop">Taha hinengaro</div>
+     - <div class="button clickDrop">Taha whānau</div>
+     - <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>This is about your beliefs, values, and se
+     - <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>This is about looking after your body. With
+     - <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>This is about your thoughts and
+     - <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>This is about your relationships with others 
+     - </div>
+     + <div class="button clickDrop">Taha wairua</div>
+     + <div class="button clickDrop">Taha tinana</div>
+     + <div class="button clickDrop">Taha hinengaro</div>
+     + <div class="button clickDrop">Taha whānau</div>
+     + <div class="clickDropContent"><p>– <b>spiritual wellbeing</b></p><p>This is about your beliefs, values, and se
+     + <div class="clickDropContent"><p>– <b>physical wellbeing</b></p><p>This is about looking after your body. With
+     + <div class="clickDropContent"><p>– <b>mental and emotional wellbeing</b></p><p>This is about your thoughts and
+     + <div class="clickDropContent"><p>– <b>social wellbeing</b></p><p>This is about your relationships with others 
+OSOH301: identical 3 / changed 1
+  ~ OSOH401_1_0.html: -38 +32
+     - <div class="row">
+     - <div class="button clickDrop">Taha Wairua</div>
+     - <div class="button clickDrop">Taha Tinana – Physical wellbeing</div>
+     - <div class="button clickDrop">Taha Hinengaro – Mental and emotional wellbeing</div>
+     - <div class="button clickDrop">Taha Whānau – Social wellbeing</div>
+     - <div class="clickDropContent"><p>– <b>Spiritual wellbeing</b></p><p>When learning online this can relate to un
+     - <div class="clickDropContent"><p>With online learning this can include making sure your physical learning spac
+     - <div class="clickDropContent"><p>It includes how you handle stress and good online learning habits. It is also
+     - <div class="clickDropContent"><p>This can include how you connect with your learning community. This could be 
+     - <div class="row">
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-496993747" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-470556989" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1443741138"
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2049799763"
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1079621056"
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-930777122" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-494026242" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-946476018" 
+     - <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2103439020"
+     - <div class="clickDropContent"><p>READY</p><p>Be ready and have everything you need. This includes any required
+     - <div class="clickDropContent"><p>EYES AND EARS</p><p>Listen and watch the lesson carefully. Use headphones. Tr
+     - <div class="clickDropContent"><p>ASK FOR HELP</p><p>If you don&#39;t understand something, put your hand up or
+     - <div class="clickDropContent"><p>DON’T SHARE PERSONAL INFORMATION</p><p>Keep personal information private. Thi
+     - <div class="clickDropContent"><p>YOUR TURN</p><p>Raise your hand and wait for your turn. Do not interrupt the 
+     - <div class="clickDropContent"><p>SAFE SPACE</p><p>Sit in a quiet, safe area. This helps to avoid distractions 
+     - <div class="clickDropContent"><p>ATTENTION</p><p>Pay attention to your kaiako and classmates to ensure you lea
+     - <div class="clickDropContent"><p>FUN</p><p>Enjoy learning and participating in all activities. Remember to do 
+     - <div class="clickDropContent"><p>EMPATHY</p><p>Use kind words and be respectful. If someone upsets you, tell y
+     - <div class="row">
+     - <div class="button clickDrop">Manaaki</div>
+     - <div class="button clickDrop">Whanaungatanga</div>
+     - <div class="button clickDrop">Tika</div>
+     - <div class="clickDropContent"><p>Use kind and respectful language in messages, comments, and posts.</p><p>Be p
+     - <div class="clickDropContent"><p>Greet the kaiako and others in online sessions (e.g.“Kia ora everyone!”).</p>
+     - <div class="clickDropContent"><p>Join online classes on time and follow online rules.</p><p>Complete tasks hon
+     - </div>
+     - </div>
+     - </div>
+     + <div class="button clickDrop">Taha Wairua</div>
+     + <div class="button clickDrop">Taha Tinana – Physical wellbeing</div>
+     + <div class="button clickDrop">Taha Hinengaro – Mental and emotional wellbeing</div>
+     + <div class="button clickDrop">Taha Whānau – Social wellbeing</div>
+     + <div class="clickDropContent"><p>– <b>Spiritual wellbeing</b></p><p>When learning online this can relate to un
+     + <div class="clickDropContent"><p>With online learning this can include making sure your physical learning spac
+     + <div class="clickDropContent"><p>It includes how you handle stress and good online learning habits. It is also
+     + <div class="clickDropContent"><p>This can include how you connect with your learning community. This could be 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-496993747" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-470556989" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1443741138"
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2049799763"
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1079621056"
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-930777122" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-494026242" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-946476018" 
+     + <div class="button clickDrop"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2103439020"
+     + <div class="clickDropContent"><p>READY</p><p>Be ready and have everything you need. This includes any required
+     + <div class="clickDropContent"><p>EYES AND EARS</p><p>Listen and watch the lesson carefully. Use headphones. Tr
+     + <div class="clickDropContent"><p>ASK FOR HELP</p><p>If you don&#39;t understand something, put your hand up or
+     + … 12 more added
+  ~ OSOH401_2_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Memorable</div>
+     - <div class="button clickDrop">Hard to guess</div>
+     - <div class="button clickDrop">Consistent</div>
+     - <div class="button clickDrop">Unique to you</div>
+     - <div class="clickDropContent"><p>What was the name of your secret childhood imaginary friend/toy?</p></div>
+     - <div class="clickDropContent"><p>What’s a made-up word or song you used when you were little?</p></div>
+     - <div class="clickDropContent"><p>What’s the name of your favourite beach/place in Aotearoa/NZ?</p></div>
+     - <div class="clickDropContent"><p>What’s the first concert/game/movie you ever went to?</p></div>
+     - </div>
+     + <div class="button clickDrop">Memorable</div>
+     + <div class="button clickDrop">Hard to guess</div>
+     + <div class="button clickDrop">Consistent</div>
+     + <div class="button clickDrop">Unique to you</div>
+     + <div class="clickDropContent"><p>What was the name of your secret childhood imaginary friend/toy?</p></div>
+     + <div class="clickDropContent"><p>What’s a made-up word or song you used when you were little?</p></div>
+     + <div class="clickDropContent"><p>What’s the name of your favourite beach/place in Aotearoa/NZ?</p></div>
+     + <div class="clickDropContent"><p>What’s the first concert/game/movie you ever went to?</p></div>
+OSOH401: identical 3 / changed 2
+  ~ OSOH501_1_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Manaaki</div>
+     - <div class="button clickDrop">Whanaungatanga</div>
+     - <div class="button clickDrop">Tika</div>
+     - <div class="clickDropContent"><p>Show respect and kindness in all your online interactions.</p><p>Use positive
+     - <div class="clickDropContent"><p>Start online sessions by greeting your kaiako and classmates (e.g., “Kia ora 
+     - <div class="clickDropContent"><p>Join online classes on time and follow the agreed rules.</p><p>Complete tasks
+     - </div>
+     + <div class="button clickDrop">Manaaki</div>
+     + <div class="button clickDrop">Whanaungatanga</div>
+     + <div class="button clickDrop">Tika</div>
+     + <div class="clickDropContent"><p>Show respect and kindness in all your online interactions.</p><p>Use positive
+     + <div class="clickDropContent"><p>Start online sessions by greeting your kaiako and classmates (e.g., “Kia ora 
+     + <div class="clickDropContent"><p>Join online classes on time and follow the agreed rules.</p><p>Complete tasks
+  ~ OSOH501_2_0.html: -14 +12
+     - <div class="row">
+     - <div class="button clickDrop">Don’t share your device without permission</div>
+     - <div class="button clickDrop">Avoid clicking on unknown links</div>
+     - <div class="button clickDrop">Keep software up to date</div>
+     - <div class="button clickDrop">Lock your screen when you’re away</div>
+     - <div class="button clickDrop">Use antivirus software</div>
+     - <div class="button clickDrop">Back up your work</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2169994331"
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1754750078"
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2203508486"
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-873805574" 
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1345839069"
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1972492673"
+     - </div>
+     + <div class="button clickDrop">Don’t share your device without permission</div>
+     + <div class="button clickDrop">Avoid clicking on unknown links</div>
+     + <div class="button clickDrop">Keep software up to date</div>
+     + <div class="button clickDrop">Lock your screen when you’re away</div>
+     + <div class="button clickDrop">Use antivirus software</div>
+     + <div class="button clickDrop">Back up your work</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2169994331"
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1754750078"
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2203508486"
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-873805574" 
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1345839069"
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1972492673"
+  ~ OSOH501_4_0.html: -14 +12
+     - <div class="row">
+     - <div class="button clickDrop">Household interruptions</div>
+     - <div class="button clickDrop">Chores and responsibilities</div>
+     - <div class="button clickDrop">Lack of structure</div>
+     - <div class="button clickDrop">Multitasking</div>
+     - <div class="button clickDrop">Physical comfort</div>
+     - <div class="clickDropContent"><p>Sharing space with family can make it hard to concentrate. Background noise, 
+     - <div class="clickDropContent"><p>Learning from home can blur the line between schoolwork and household tasks. 
+     - <div class="clickDropContent"><p>Without a school timetable or bell, it’s easy to drift into unrelated activit
+     - <div class="clickDropContent"><p>Trying to combine study with other activities like eating, watching TV, or ch
+     - <div class="clickDropContent"><p>Uncomfortable seating, poor lighting, or distractions from pets can make it h
+     - <iframe src="https://www.youtube-nocookie.com/embed/KZGVgz9b2fw" loading="lazy" title="YouTube video player" f
+     - </div><h3>Managing distractions for online learning</h3><p>Learning from home gives flexibility, but it also m
+     - </div>
+     + <div class="button clickDrop">Household interruptions</div>
+     + <div class="button clickDrop">Chores and responsibilities</div>
+     + <div class="button clickDrop">Lack of structure</div>
+     + <div class="button clickDrop">Multitasking</div>
+     + <div class="button clickDrop">Physical comfort</div>
+     + <div class="clickDropContent"><p>Sharing space with family can make it hard to concentrate. Background noise, 
+     + <div class="clickDropContent"><p>Learning from home can blur the line between schoolwork and household tasks. 
+     + <div class="clickDropContent"><p>Without a school timetable or bell, it’s easy to drift into unrelated activit
+     + <div class="clickDropContent"><p>Trying to combine study with other activities like eating, watching TV, or ch
+     + <div class="clickDropContent"><p>Uncomfortable seating, poor lighting, or distractions from pets can make it h
+     + <iframe src="https://www.youtube-nocookie.com/embed/KZGVgz9b2fw" loading="lazy" title="YouTube video player" f
+     + </div><h3>Managing distractions for online learning</h3><p>Learning from home gives flexibility, but it also m
+OSOH501: identical 3 / changed 3
+  ~ OSSC301_1_0.html: -6 +4
+     - <div class="row">
+     - <div class="button clickDrop">misinformation</div>
+     - <div class="button clickDrop">disinformation</div>
+     - <div class="clickDropContent"><p>False or inaccurate information by mistake. Getting the facts wrong unintenti
+     - <div class="clickDropContent"><p>False information which is intended to mislead. Intentionally misstating the 
+     - </div>
+     + <div class="button clickDrop">misinformation</div>
+     + <div class="button clickDrop">disinformation</div>
+     + <div class="clickDropContent"><p>False or inaccurate information by mistake. Getting the facts wrong unintenti
+     + <div class="clickDropContent"><p>False information which is intended to mislead. Intentionally misstating the 
+OSSC301: identical 3 / changed 1
+
+TOTAL: identical 597 / changed 43 / missing 0 over 98 modules
+CHANGED: HES1004/HES1004_2_0.html HES1005/HES1005_2_0.html HES1005/HES1005_3_0.html HES1005/HES1005_8_0.html HES1007/HES1007_3_0.html HES1007/HES1007_4_0.html HES1007/HES1007_5_0.html HES1007/HES1007_6_0.html HES1007/HES1007_7_0.html HES1007/HES1007_8_0.html HES1007/HES1007_9_0.html HPFUN901/HPFUN901_0_0.html MXDB302/MXDB302_1_0.html MXDB302/MXDB302_4_0.html MXEO301/MXEO301_1_1_0.html MXEO301/MXEO301_5_1_0.html MXEO301/MXEO301_6_0.html MXEX302/MXEX302_2_0.html MXFL302/MXFL302_6_0.html MXFL302/MXFL302_8_0.html MXFU301/MXFU301_7_0.html MXFUN01/MXFUN01_7_0.html MXFUN01/MXFUN01_12_0.html MXFUN02/MXFUN02_0_0.html OSAH501/OSAH501_1_0.html OSAH501/OSAH501_5_0.html OSBY101/OSBY101_2_0.html OSBY201/OSBY201_1_0.html OSBY401/OSBY401_4_0.html OSBY501/OSBY501_4_0.html OSGM201/OSGM201_1_0.html OSGM301/OSGM301_2_0.html OSGM401/OSGM401_1_0.html OSGM501/OSGM501_3_0.html OSGM501/OSGM501_5_0.html OSOH201/OSOH201_1_0.html OSOH301/OSOH301_1_0.html OSOH401/OSOH401_1_0.html OSOH401/OSOH401_2_0.html OSOH501/OSOH501_1_0.html OSOH501/OSOH501_2_0.html OSOH501/OSOH501_4_0.html OSSC301/OSSC301_1_0.html

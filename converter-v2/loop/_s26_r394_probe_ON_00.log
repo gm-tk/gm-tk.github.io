@@ -1,0 +1,348 @@
+AGH1001: identical 6 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1003: identical 9 / changed 0
+AGH1004: identical 7 / changed 0
+AGH1005: identical 9 / changed 0
+AGH1006: identical 10 / changed 0
+AGH1007: identical 10 / changed 0
+AGH1008: identical 10 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH105: identical 8 / changed 0
+ANZH203: identical 7 / changed 0
+ANZH205: identical 7 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH303: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+ANZH401: identical 14 / changed 0
+  ~ ANZH404_3_0.html: -12 +10
+     - <div class="row">
+     - <div class="button clickDrop"><a href="https://teara.govt.nz/en/document/33584/the-maori-messenger-te-karere-m
+     - <div class="button clickDrop"><a href="https://nzhistory.govt.nz/sites/default/files/documents/The_Story_Part_
+     - <div class="button clickDrop">&quot;The political aspirations of our tūpuna 100 years ago and the model they u
+     - <div class="clickDropContent"><p>Check out this secondary source article from <i>The Story of the Treaty: Part
+     - <div class="clickDropContent"><p>Te Kauhanganui (Te Kauwhanganui) is the Māori Parliament for many of the trib
+     - <p>In 1884, Tāwhiao went to England to ask Queen Victoria for a Māori parliament and to investigate land confi
+     - <p>From 1886, &#39;King committees&#39; in different areas acted as local governments in Kīngitanga land. They
+     - <p>A petition for a Māori council was met with an offer for Tāwhiao to join the colonial council. Instead, the
+     - <div class="clickDropContent"><p>The Kauhanganui, which was modelled from the House of Commons, was set up in 
+     - <p>It was a time when more than two million acres of prime agricultural land was confiscated by the government
+     - </div>
+     + <div class="button clickDrop"><a href="https://teara.govt.nz/en/document/33584/the-maori-messenger-te-karere-m
+     + <div class="button clickDrop"><a href="https://nzhistory.govt.nz/sites/default/files/documents/The_Story_Part_
+     + <div class="button clickDrop">&quot;The political aspirations of our tūpuna 100 years ago and the model they u
+     + <div class="clickDropContent"><p>Check out this secondary source article from <i>The Story of the Treaty: Part
+     + <div class="clickDropContent"><p>Te Kauhanganui (Te Kauwhanganui) is the Māori Parliament for many of the trib
+     + <p>In 1884, Tāwhiao went to England to ask Queen Victoria for a Māori parliament and to investigate land confi
+     + <p>From 1886, &#39;King committees&#39; in different areas acted as local governments in Kīngitanga land. They
+     + <p>A petition for a Māori council was met with an offer for Tāwhiao to join the colonial council. Instead, the
+     + <div class="clickDropContent"><p>The Kauhanganui, which was modelled from the House of Commons, was set up in 
+     + <p>It was a time when more than two million acres of prime agricultural land was confiscated by the government
+ANZH404: identical 6 / changed 1
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+ARFUN03: identical 1 / changed 0
+  ~ ARFUN04_0_0.html: -115 +99
+     - <div class="row">
+     - <div class="button clickDrop">Watch</div>
+     - <div class="clickDropContent"><p>Watch this video about balance.</p></div>
+     - <div class="row">
+     - <div class="button clickDrop">Watch</div>
+     - <div class="clickDropContent"><p>Watch this video about contrast and emphasis.</p><p>Contrast is when two thin
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert item #48: video] 1 minu
+     - <div class="row">
+     - <div class="button clickDrop">Match the Technique</div>
+     - <div class="clickDropContent"><p><b>Instructions:</b> Match the technique to its correct description by draggi
+     - <li><b>Contour drawing</b></li>
+     - <li><b>Wet-on-wet</b></li>
+     - <li><b>Stamping</b></li>
+     - <li><b>Layering</b></li>
+     - <li><b>Digital drawing</b></li>
+     - </ol><p><b>Descriptions:</b></p><p>a. Create outlines of objects.</p><p>b. Apply wet paint on wet paint for bl
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [CS to create mix and match sec
+     - <div class="row">
+     - <div class="button clickDrop">Watch</div>
+     - <div class="button clickDrop">What is colour?</div>
+     - <div class="button clickDrop">Colour Schemes:</div>
+     - <div class="clickDropContent"><p>Watch this video to explore how colour influences art and design.</p></div>
+     - <div class="clickDropContent"><p>Colour affects how we create, view, and feel about artwork. The study of how 
+     - <li>Red + Yellow = Orange</li>
+     - <li>Yellow + Blue = Green</li>
+     - <li>Blue + Red = Purple</li>
+     - </ul></div>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Colour Type</th>
+     - <th>Definition</th>
+     - <th>Example in art</th>
+     - </tr>
+     - <tr>
+     - <td>Colour schemes</td>
+     - <td>Groups of harmonious colours, often created using the colour wheel.</td>
+     - <td>Artists combine colours that complement each other for visually powerful and pleasing artworks.</td>
+     - </tr>
+     - … 75 more removed
+     + <div class="button clickDrop">Watch</div>
+     + <div class="clickDropContent"><p>Watch this video about balance.</p></div>
+     + <div class="button clickDrop">Watch</div>
+     + <div class="clickDropContent"><p>Watch this video about contrast and emphasis.</p><p>Contrast is when two thin
+     + <div class="button clickDrop">Match the Technique</div>
+     + <div class="clickDropContent"><p><b>Instructions:</b> Match the technique to its correct description by draggi
+     + <li><b>Contour drawing</b></li>
+     + <li><b>Wet-on-wet</b></li>
+     + <li><b>Stamping</b></li>
+     + <li><b>Layering</b></li>
+     + <li><b>Digital drawing</b></li>
+     + </ol><p><b>Descriptions:</b></p><p>a. Create outlines of objects.</p><p>b. Apply wet paint on wet paint for bl
+     + <div class="button clickDrop">Watch</div>
+     + <div class="button clickDrop">What is colour?</div>
+     + <div class="button clickDrop">Colour Schemes:</div>
+     + <div class="clickDropContent"><p>Watch this video to explore how colour influences art and design.</p></div>
+     + <div class="clickDropContent"><p>Colour affects how we create, view, and feel about artwork. The study of how 
+     + <li>Red + Yellow = Orange</li>
+     + <li>Yellow + Blue = Green</li>
+     + <li>Blue + Red = Purple</li>
+     + … 79 more added
+ARFUN04: identical 0 / changed 1
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+BLL140: identical 1 / changed 0
+BLL141: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+BLL150: identical 1 / changed 0
+BLL151: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL160: identical 1 / changed 0
+BLL161: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL170: identical 1 / changed 0
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL176: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL210: identical 1 / changed 0
+BLL211: identical 3 / changed 0
+BLL212: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+  ~ BLL217_2_0.html: -17 +15
+     - <div class="row">
+     - <div class="button clickDrop">Aussie Rules</div>
+     - <div class="button clickDrop">Umpire</div>
+     - <div class="button clickDrop">Good sportsmanship</div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/afl-ball-and-trophy-held-aloft-gm1
+     - <li>What are some sports that are played in New Zealand?</li>
+     - <li>Do you know any of the rules of these games? If so, explain how they are played.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/afl-ball-and-trophy-held-aloft-gm1
+     - <li>Have you played a game or a sport before that has needed a referee or umpire? What game was it?</li>
+     - <li>What do you think if games or sports were played with no umpires or referees?</li>
+     - </ul></div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/man-sports-and-handshake-for-team-
+     - <li>If you played a game or a sport do you think you would be a good sport? Why/why not?</li>
+     - <li>What sorts of things do you need to do to be a good sport?</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Aussie Rules</div>
+     + <div class="button clickDrop">Umpire</div>
+     + <div class="button clickDrop">Good sportsmanship</div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/afl-ball-and-trophy-held-aloft-gm1
+     + <li>What are some sports that are played in New Zealand?</li>
+     + <li>Do you know any of the rules of these games? If so, explain how they are played.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/afl-ball-and-trophy-held-aloft-gm1
+     + <li>Have you played a game or a sport before that has needed a referee or umpire? What game was it?</li>
+     + <li>What do you think if games or sports were played with no umpires or referees?</li>
+     + </ul></div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/man-sports-and-handshake-for-team-
+     + <li>If you played a game or a sport do you think you would be a good sport? Why/why not?</li>
+     + <li>What sorts of things do you need to do to be a good sport?</li>
+     + </ul></div>
+BLL217: identical 2 / changed 1
+BLL220: identical 1 / changed 0
+  ~ BLL221_2_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Beam</div>
+     - <div class="button clickDrop">Glide</div>
+     - <div class="button clickDrop">Froglet</div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/mesmerizing-full-moon-over-sea-3d-
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/a-single-australian-seagull-flies-
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/four-small-frogs-in-the-hands-of-a
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we have these images all si
+     + <div class="button clickDrop">Beam</div>
+     + <div class="button clickDrop">Glide</div>
+     + <div class="button clickDrop">Froglet</div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/mesmerizing-full-moon-over-sea-3d-
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/a-single-australian-seagull-flies-
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/four-small-frogs-in-the-hands-of-a
+BLL221: identical 2 / changed 1
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL230: identical 1 / changed 0
+  ~ BLL231_2_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Escape</div>
+     - <div class="button clickDrop">Launch</div>
+     - <div class="button clickDrop">Screw</div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/dog-running-free-in-park-with-leas
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/mature-man-jumping-from-of-the-spe
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/closeup-of-steel-screws-many-screw
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we have these images all si
+     + <div class="button clickDrop">Escape</div>
+     + <div class="button clickDrop">Launch</div>
+     + <div class="button clickDrop">Screw</div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/dog-running-free-in-park-with-leas
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/mature-man-jumping-from-of-the-spe
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/closeup-of-steel-screws-many-screw
+BLL231: identical 2 / changed 1
+BLL232: identical 3 / changed 0
+  ~ BLL233_2_0.html: -7 +5
+     - <div class="row">
+     - <div class="button clickDrop">Lāvalava</div>
+     - <div class="button clickDrop">Sapasui</div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/hula-dancers-gm186821638-17027031"
+     - <iframe src="https://www.youtube-nocookie.com/embed/B7JMIn1nq8M" loading="lazy" title="YouTube video player" f
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/soy-sauce-paste-noodle-gm133017841
+     - </div>
+     + <div class="button clickDrop">Lāvalava</div>
+     + <div class="button clickDrop">Sapasui</div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/hula-dancers-gm186821638-17027031"
+     + <iframe src="https://www.youtube-nocookie.com/embed/B7JMIn1nq8M" loading="lazy" title="YouTube video player" f
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/soy-sauce-paste-noodle-gm133017841
+BLL233: identical 2 / changed 1
+BLL234: identical 3 / changed 0
+  ~ BLL235_2_0.html: -11 +9
+     - <div class="row">
+     - <div class="button clickDrop">Applaud</div>
+     - <div class="button clickDrop">Versus</div>
+     - <div class="button clickDrop">Other vocabulary</div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/group-of-friends-watching-a-movie-
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/rugby-teams-performing-scrum-gm145
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/looking-up-a-dictionary-gm18287358
+     - <li><b>buzzed</b> - <i>“The town buzzed.”</i> - In this sentence the word buzzed means that the people in the 
+     - <li><b>showdown</b> - <i>“It was Showdown time again - Crows versus Power.”</i> A showdown is a contest, gener
+     - </ul></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we have these images all si
+     + <div class="button clickDrop">Applaud</div>
+     + <div class="button clickDrop">Versus</div>
+     + <div class="button clickDrop">Other vocabulary</div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/group-of-friends-watching-a-movie-
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/rugby-teams-performing-scrum-gm145
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/looking-up-a-dictionary-gm18287358
+     + <li><b>buzzed</b> - <i>“The town buzzed.”</i> - In this sentence the word buzzed means that the people in the 
+     + <li><b>showdown</b> - <i>“It was Showdown time again - Crows versus Power.”</i> A showdown is a contest, gener
+     + </ul></div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we have these images a
+BLL235: identical 2 / changed 1
+BLL236: identical 3 / changed 0
+  ~ BLL237_1_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">The Kite Flying Contest.</div>
+     - <div class="button clickDrop">Neat and Messy.</div>
+     - <div class="button clickDrop">Walk and Talk.</div>
+     - <div class="clickDropContent"><p><a href="https://speldsa.org.au/pages/speld-sa-phonic-books-jp" target="_blan
+     - <div class="clickDropContent"><p><a href="https://speldsa.org.au/pages/speld-sa-phonic-books-jp" target="_blan
+     - <div class="clickDropContent"><p><a href="https://speldsa.org.au/pages/speld-sa-phonic-books-jp" target="_blan
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we have a snip of the front
+     + <div class="button clickDrop">The Kite Flying Contest.</div>
+     + <div class="button clickDrop">Neat and Messy.</div>
+     + <div class="button clickDrop">Walk and Talk.</div>
+     + <div class="clickDropContent"><p><a href="https://speldsa.org.au/pages/speld-sa-phonic-books-jp" target="_blan
+     + <div class="clickDropContent"><p><a href="https://speldsa.org.au/pages/speld-sa-phonic-books-jp" target="_blan
+     + <div class="clickDropContent"><p><a href="https://speldsa.org.au/pages/speld-sa-phonic-books-jp" target="_blan
+  ~ BLL237_2_0.html: -11 +9
+     - <div class="row">
+     - <div class="button clickDrop">Trowel</div>
+     - <div class="button clickDrop">Sturdy</div>
+     - <div class="button clickDrop">Other vocabulary</div>
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/garden-shovel-on-white-background-
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/sturdy-potted-tomato-plant-seedlin
+     - <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/looking-up-a-dictionary-gm18287358
+     - <li><b>fertilise</b> - <i>“Water and fertilise the plant often.”</i> - To fertilise something means to spread 
+     - <li><b>pollinated</b> - <i>“The yellow flowers turn into tomatoes when pollinated by bees.”</i> <b>Pollinate</
+     - </ul></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we have these images all si
+     + <div class="button clickDrop">Trowel</div>
+     + <div class="button clickDrop">Sturdy</div>
+     + <div class="button clickDrop">Other vocabulary</div>
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/garden-shovel-on-white-background-
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/sturdy-potted-tomato-plant-seedlin
+     + <div class="clickDropContent"><p><a href="https://www.istockphoto.com/photo/looking-up-a-dictionary-gm18287358
+     + <li><b>fertilise</b> - <i>“Water and fertilise the plant often.”</i> - To fertilise something means to spread 
+     + <li><b>pollinated</b> - <i>“The yellow flowers turn into tomatoes when pollinated by bees.”</i> <b>Pollinate</
+     + </ul></div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we have these images a
+BLL237: identical 1 / changed 2
+BLL240: identical 9 / changed 0
+  ~ BLL241_2_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Fog</div>
+     - <div class="button clickDrop">Loops</div>
+     - <div class="button clickDrop">Glide</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=tall-trees-and-tre
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=twisted-cotton-rop
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=flying-fox" alt=""
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can you put these images side b
+     + <div class="button clickDrop">Fog</div>
+     + <div class="button clickDrop">Loops</div>
+     + <div class="button clickDrop">Glide</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=tall-trees-and-tre
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=twisted-cotton-rop
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=flying-fox" alt=""
+BLL241: identical 2 / changed 1
+
+TOTAL: identical 402 / changed 10 / missing 0 over 111 modules
+CHANGED: ANZH404/ANZH404_3_0.html ARFUN04/ARFUN04_0_0.html BLL217/BLL217_2_0.html BLL221/BLL221_2_0.html BLL231/BLL231_2_0.html BLL233/BLL233_2_0.html BLL235/BLL235_2_0.html BLL237/BLL237_1_0.html BLL237/BLL237_2_0.html BLL241/BLL241_2_0.html

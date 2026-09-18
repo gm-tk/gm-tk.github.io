@@ -2450,6 +2450,11 @@
 				"one-<p>-per-paragraph legacy form).",
 				"Human reference: 01-Finalized_Modules_/OSGM501/OSGM501-03.html."
 			],
+			"no_row_wrapper": {
+				"_doc": "ROUND 394 (the autonomous loop's session 26 Round 8 — the r393 miner row #3699 decomposed; the census outputs/_s26_r394_clickdrop.py). THE CLICKDROP BUTTONS SIT DIRECTLY IN THE COLUMN: over the gold's 385 clickDrop button groups the buttons' parent is a column (the page's col-md-8 or the activity box's col-12) 302 = 0.78, an inner div.row 19 = 0.05 — every subject at the floor >= 0.73 (Mathematics 71 / 0, Online Safety 47 / 2, NCEA1 41 / 3, English 35 / 6, BLL 26 / 0). Claude wrapped 127 of its 128 groups in the `open` row below. When enabled, both clickDrop emit sites drop `open` / `close` (the r307 tile grid and the conversation reveal bubble keep their own wrappers). OFF = the r393 output.",
+				"enabled": true,
+				"env": "CDROW_OFF"
+			},
 			"enabled": true,
 			"list_content": true,
 			"open": "<div class=\"row\">",

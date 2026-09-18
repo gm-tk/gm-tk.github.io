@@ -1,0 +1,1016 @@
+BLL242: identical 3 / changed 0
+  ~ BLL244_2_0.html: -23 +21
+     - <div class="row">
+     - <div class="button clickDrop">Basketball vocabulary</div>
+     - <div class="button clickDrop">Music vocabulary</div>
+     - <div class="button clickDrop">Other vocabulary</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=friends-playing-ba
+     - <li><b>Hoops</b> – to ‘shoot some hoops’ means to play a fun game of basketball with friends.</li>
+     - <li><b>Dribble</b> – to ‘dribble’ means to bounce the ball on the ground while moving.</li>
+     - <li><b>Shoot</b> – to ‘shoot’ means to throw the ball towards the hoop.</li>
+     - <li><b>Goal circle</b> – this is the space near the basket where players can score.</li>
+     - <li><b>Ring</b> – the ‘ring’ is another name for the metal hoop the ball goes through to score.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=trendy-boombox" al
+     - <li><b>Melody</b> – The word melody means the tune you can hear in the music.</li>
+     - <li><b>Beat</b> – The word beat means the steady sound you tap along to in music.</li>
+     - <li><b>Blare</b> – The word blare means a very loud sound.</li>
+     - <li><b>Speakers</b> – The word speakers means the machines that play music or sounds.</li>
+     - <li><b>Raps</b> – When ‘Dan raps’ is talking in time with music.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=looking-up-a-dicti
+     - <li><b>Flair</b> – The word flair means something you are very good at.</li>
+     - <li><b>Glares</b> – When Zac ‘glares at Kev’ he is looking at him in an angry way.</li>
+     - </ul></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: https://media.istockphoto.com/i
+     + <div class="button clickDrop">Basketball vocabulary</div>
+     + <div class="button clickDrop">Music vocabulary</div>
+     + <div class="button clickDrop">Other vocabulary</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=friends-playing-ba
+     + <li><b>Hoops</b> – to ‘shoot some hoops’ means to play a fun game of basketball with friends.</li>
+     + <li><b>Dribble</b> – to ‘dribble’ means to bounce the ball on the ground while moving.</li>
+     + <li><b>Shoot</b> – to ‘shoot’ means to throw the ball towards the hoop.</li>
+     + <li><b>Goal circle</b> – this is the space near the basket where players can score.</li>
+     + <li><b>Ring</b> – the ‘ring’ is another name for the metal hoop the ball goes through to score.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=trendy-boombox" al
+     + <li><b>Melody</b> – The word melody means the tune you can hear in the music.</li>
+     + <li><b>Beat</b> – The word beat means the steady sound you tap along to in music.</li>
+     + <li><b>Blare</b> – The word blare means a very loud sound.</li>
+     + <li><b>Speakers</b> – The word speakers means the machines that play music or sounds.</li>
+     + <li><b>Raps</b> – When ‘Dan raps’ is talking in time with music.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=looking-up-a-dicti
+     + <li><b>Flair</b> – The word flair means something you are very good at.</li>
+     + <li><b>Glares</b> – When Zac ‘glares at Kev’ he is looking at him in an angry way.</li>
+     + … 1 more added
+BLL244: identical 2 / changed 1
+  ~ BLL245_2_0.html: -35 +31
+     - <div class="row">
+     - <div class="button clickDrop">Breakdown</div>
+     - <div class="clickDropContent"><p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/junior-jour
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: This story can be downloaded fr
+     - <div class="row">
+     - <div class="button clickDrop">Missing biscuits</div>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• The beginning.</td>
+     - <td>Jim comes home from school and goes to the kitchen for a biscuit.</td>
+     - </tr>
+     - <tr>
+     - <td>• The problem appears.</td>
+     - <td>The biscuit jar is empty. Mum says it is a mystery.</td>
+     - </tr>
+     - <tr>
+     - <td>• Becoming a detective.</td>
+     - <td>Jim decides to solve the mystery. He goes looking for clues.</td>
+     - </tr>
+     - <tr>
+     - <td>• Finding clues.</td>
+     - <td>Jim finds biscuit crumbs leading to the back door and into the yard.</td>
+     - </tr>
+     - <tr>
+     - <td>• The big discovery.</td>
+     - <td>At the play gym, Jim sees his friends and lots of food set out.</td>
+     - </tr>
+     - <tr>
+     - <td>• The mystery is solved.</td>
+     - <td>The friends explain they made the picnic as a surprise. Everyone is happy and eats together.</td>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="button clickDrop">Breakdown</div>
+     + <div class="clickDropContent"><p><a href="https://newzealandcurriculum.tahurangi.education.govt.nz/junior-jour
+     + <div class="button clickDrop">Missing biscuits</div>
+     + <div class="clickDropContent">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <td>• The beginning.</td>
+     + <td>Jim comes home from school and goes to the kitchen for a biscuit.</td>
+     + </tr>
+     + <tr>
+     + <td>• The problem appears.</td>
+     + <td>The biscuit jar is empty. Mum says it is a mystery.</td>
+     + </tr>
+     + <tr>
+     + <td>• Becoming a detective.</td>
+     + <td>Jim decides to solve the mystery. He goes looking for clues.</td>
+     + </tr>
+     + <tr>
+     + <td>• Finding clues.</td>
+     + … 11 more added
+BLL245: identical 2 / changed 1
+  ~ BLL246_2_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Parade elements</div>
+     - <div class="button clickDrop">Exclaim</div>
+     - <div class="button clickDrop">Gown</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=float-water-music-
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=emotional-handsome
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=fashion-woman-blac
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can you please put these images
+     + <div class="button clickDrop">Parade elements</div>
+     + <div class="button clickDrop">Exclaim</div>
+     + <div class="button clickDrop">Gown</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=float-water-music-
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=emotional-handsome
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=fashion-woman-blac
+BLL246: identical 2 / changed 1
+  ~ BLL251_1_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">A little help</div>
+     - <div class="clickDropContent"><p>You may have noticed an unusual word in the title of this story. The word gno
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Text 4 – The text ‘Guide Dogs’ 
+     + <div class="button clickDrop">A little help</div>
+     + <div class="clickDropContent"><p>You may have noticed an unusual word in the title of this story. The word gno
+BLL251: identical 2 / changed 1
+  ~ BLL252_2_0.html: -15 +13
+     - <div class="row">
+     - <div class="button clickDrop">Rhyme</div>
+     - <div class="button clickDrop">Line breaks</div>
+     - <div class="button clickDrop">Stanzas</div>
+     - <div class="button clickDrop">Imagery</div>
+     - <div class="button clickDrop">Onomatopoeia</div>
+     - <div class="button clickDrop">Descriptive language</div>
+     - <div class="clickDropContent"><p>Not all poems include rhyme but it does help create a rhythm when read out lo
+     - <div class="clickDropContent"><p>The poem is written in lines, not full sentences that run across the whole pa
+     - <div class="clickDropContent"><p>The poem is grouped into three small sections called stanzas.</p></div>
+     - <div class="clickDropContent"><p>The poem creates a picture in the reader’s mind.</p></div>
+     - <div class="clickDropContent"><p>The poem uses words that <b>sound like</b> the noises they describe.</p></div
+     - <div class="clickDropContent"><p>The poet uses strong describing words to make the poem more interesting.</p>
+     - <p>Use this information to help you identify the ways the two texts in the accordion are the same and the ways
+     - </div>
+     + <div class="button clickDrop">Rhyme</div>
+     + <div class="button clickDrop">Line breaks</div>
+     + <div class="button clickDrop">Stanzas</div>
+     + <div class="button clickDrop">Imagery</div>
+     + <div class="button clickDrop">Onomatopoeia</div>
+     + <div class="button clickDrop">Descriptive language</div>
+     + <div class="clickDropContent"><p>Not all poems include rhyme but it does help create a rhythm when read out lo
+     + <div class="clickDropContent"><p>The poem is written in lines, not full sentences that run across the whole pa
+     + <div class="clickDropContent"><p>The poem is grouped into three small sections called stanzas.</p></div>
+     + <div class="clickDropContent"><p>The poem creates a picture in the reader’s mind.</p></div>
+     + <div class="clickDropContent"><p>The poem uses words that <b>sound like</b> the noises they describe.</p></div
+     + <div class="clickDropContent"><p>The poet uses strong describing words to make the poem more interesting.</p>
+     + <p>Use this information to help you identify the ways the two texts in the accordion are the same and the ways
+BLL252: identical 2 / changed 1
+  ~ BLL253_1_0.html: -51 +49
+     - <div class="row">
+     - <div class="button clickDrop">Suffixes help sheet</div>
+     - <div class="clickDropContent"><h3>Suffixes help sheet</h3><div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><b>Suffix</b></th>
+     - <th><b>Meaning</b></th>
+     - <th><b>Examples</b></th>
+     - </tr>
+     - <tr>
+     - <td>-ed</td>
+     - <td>Shows the past tense</td>
+     - <td>• laugh ed / • plough ed / • climb ed </td>
+     - </tr>
+     - <tr>
+     - <td>-ing</td>
+     - <td>Shows the present tense</td>
+     - <td>• comb ing / • descend ing / • weigh ing </td>
+     - </tr>
+     - <tr>
+     - <td>-er</td>
+     - <td>A person who does</td>
+     - <td>• danc er / • sing er / • plumb er </td>
+     - </tr>
+     - <tr>
+     - <td>-er</td>
+     - <td>Used to compare / more</td>
+     - <td>• thick er / • fast er / • loud er </td>
+     - </tr>
+     - <tr>
+     - <td>-est</td>
+     - <td>Used to compare / most</td>
+     - <td>• quiet est / • smart est / • old est </td>
+     - </tr>
+     - <tr>
+     - <td>-less</td>
+     - <td>Without</td>
+     - <td>• tooth less / • harm less / • power less </td>
+     - </tr>
+     - <tr>
+     - … 11 more removed
+     + <div class="button clickDrop">Suffixes help sheet</div>
+     + <div class="clickDropContent"><h3>Suffixes help sheet</h3><div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Suffix</b></th>
+     + <th><b>Meaning</b></th>
+     + <th><b>Examples</b></th>
+     + </tr>
+     + <tr>
+     + <td>-ed</td>
+     + <td>Shows the past tense</td>
+     + <td>• laugh ed / • plough ed / • climb ed </td>
+     + </tr>
+     + <tr>
+     + <td>-ing</td>
+     + <td>Shows the present tense</td>
+     + <td>• comb ing / • descend ing / • weigh ing </td>
+     + </tr>
+     + <tr>
+     + <td>-er</td>
+     + … 29 more added
+  ~ BLL253_2_0.html: -42 +34
+     - <div class="row">
+     - <div class="button clickDrop">Introduction</div>
+     - <div class="button clickDrop">Headings and sub headings</div>
+     - <div class="button clickDrop">Bold print</div>
+     - <div class="button clickDrop">Diagram</div>
+     - <div class="button clickDrop">Labels</div>
+     - <div class="button clickDrop">Facts</div>
+     - <div class="clickDropContent"><p>An introduction gives us background information and helps us understand the t
+     - <div class="clickDropContent"><p>Headings and sub headings organise the text and tell us what each section wil
+     - <div class="clickDropContent"><p>Bold print or italics are used to emphasise key words or ideas.</p></div>
+     - <div class="clickDropContent"><p>Diagrams help explain processes that cannot be seen easily.</p></div>
+     - <div class="clickDropContent"><p>Labels name parts of a diagram to help explain information.</p></div>
+     - <div class="clickDropContent"><p>Non-fiction texts give true information about the real world.</p></div>
+     - <div class="row">
+     - <div class="button clickDrop">Photographs</div>
+     - <div class="button clickDrop">Caption</div>
+     - <div class="button clickDrop">Technical words</div>
+     - <div class="button clickDrop">Map</div>
+     - <div class="button clickDrop">Paragraphs</div>
+     - <div class="clickDropContent"><p>Photographs show real life examples and help us understand what things look l
+     - <div class="clickDropContent"><p>Captions explain what is shown in photographs or pictures.</p></div>
+     - <div class="clickDropContent"><p>Technical or topic words help give us precise information about the topic.</p
+     - <div class="clickDropContent"><p>Maps help us understand where places are located.</p></div>
+     - <div class="clickDropContent"><p>Non-fiction texts group sentences about the same idea or topic into paragraph
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">Glossary</div>
+     - <div class="clickDropContent"><p>A glossary helps us learn the meaning of new or tricky words.</p></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">Art and structures</div>
+     - <div class="button clickDrop">People and places</div>
+     - <div class="button clickDrop">Money and jobs</div>
+     - <div class="button clickDrop">Farming and food</div>
+     - <div class="button clickDrop">Nature and environment</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=porta-2007-is-a-pu
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=cheerful-young-cou
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=new-zealand-curren
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=male-farmer-carefu
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=kea-spotted-on-fio
+     - … 2 more removed
+     + <div class="button clickDrop">Introduction</div>
+     + <div class="button clickDrop">Headings and sub headings</div>
+     + <div class="button clickDrop">Bold print</div>
+     + <div class="button clickDrop">Diagram</div>
+     + <div class="button clickDrop">Labels</div>
+     + <div class="button clickDrop">Facts</div>
+     + <div class="clickDropContent"><p>An introduction gives us background information and helps us understand the t
+     + <div class="clickDropContent"><p>Headings and sub headings organise the text and tell us what each section wil
+     + <div class="clickDropContent"><p>Bold print or italics are used to emphasise key words or ideas.</p></div>
+     + <div class="clickDropContent"><p>Diagrams help explain processes that cannot be seen easily.</p></div>
+     + <div class="clickDropContent"><p>Labels name parts of a diagram to help explain information.</p></div>
+     + <div class="clickDropContent"><p>Non-fiction texts give true information about the real world.</p></div>
+     + <div class="button clickDrop">Photographs</div>
+     + <div class="button clickDrop">Caption</div>
+     + <div class="button clickDrop">Technical words</div>
+     + <div class="button clickDrop">Map</div>
+     + <div class="button clickDrop">Paragraphs</div>
+     + <div class="clickDropContent"><p>Photographs show real life examples and help us understand what things look l
+     + <div class="clickDropContent"><p>Captions explain what is shown in photographs or pictures.</p></div>
+     + <div class="clickDropContent"><p>Technical or topic words help give us precise information about the topic.</p
+     + … 14 more added
+BLL253: identical 1 / changed 2
+  ~ BLL254_1_0.html: -38 +36
+     - <div class="row">
+     - <div class="button clickDrop">Help sheet</div>
+     - <div class="clickDropContent"><h5>Past tense verbs using -augh or -ough</h5><div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><b>Present tense</b></th>
+     - <th><b>Past tense</b></th>
+     - </tr>
+     - <tr>
+     - <td>bring</td>
+     - <td>brought</td>
+     - </tr>
+     - <tr>
+     - <td>buy</td>
+     - <td>bought</td>
+     - </tr>
+     - <tr>
+     - <td>catch</td>
+     - <td>caught</td>
+     - </tr>
+     - <tr>
+     - <td>fight</td>
+     - <td>fought</td>
+     - </tr>
+     - <tr>
+     - <td>seek</td>
+     - <td>sought</td>
+     - </tr>
+     - <tr>
+     - <td>teach</td>
+     - <td>taught</td>
+     - </tr>
+     - <tr>
+     - <td>think</td>
+     - <td>thought</td>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="button clickDrop">Help sheet</div>
+     + <div class="clickDropContent"><h5>Past tense verbs using -augh or -ough</h5><div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Present tense</b></th>
+     + <th><b>Past tense</b></th>
+     + </tr>
+     + <tr>
+     + <td>bring</td>
+     + <td>brought</td>
+     + </tr>
+     + <tr>
+     + <td>buy</td>
+     + <td>bought</td>
+     + </tr>
+     + <tr>
+     + <td>catch</td>
+     + <td>caught</td>
+     + </tr>
+     + <tr>
+     + … 16 more added
+  ~ BLL254_2_0.html: -11 +9
+     - <div class="row">
+     - <div class="button clickDrop">Help</div>
+     - <div class="clickDropContent"><h5>Recap of Chapter 1</h5><ul>
+     - <li>Ana and Tai build a robot for a school project.</li>
+     - <li>The robot doesn’t work and is left on the porch.</li>
+     - <li>Lightning strikes the robot during a storm.</li>
+     - <li>The robot comes to life and tries to help with breakfast.</li>
+     - <li>Things go wrong and the robot has to be hidden in the laundry.</li>
+     - <li>When Ana and Tai go back to the laundry, they find Tidy-Bot has escaped.</li>
+     - </ul><p>These events give us clues about what <i>might</i> happen next. We can explain our thinking by using w
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [button] Upload to dropbox<br /
+     + <div class="button clickDrop">Help</div>
+     + <div class="clickDropContent"><h5>Recap of Chapter 1</h5><ul>
+     + <li>Ana and Tai build a robot for a school project.</li>
+     + <li>The robot doesn’t work and is left on the porch.</li>
+     + <li>Lightning strikes the robot during a storm.</li>
+     + <li>The robot comes to life and tries to help with breakfast.</li>
+     + <li>Things go wrong and the robot has to be hidden in the laundry.</li>
+     + <li>When Ana and Tai go back to the laundry, they find Tidy-Bot has escaped.</li>
+     + </ul><p>These events give us clues about what <i>might</i> happen next. We can explain our thinking by using w
+BLL254: identical 1 / changed 2
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+  ~ BLLR201_2_0.html: -17 +15
+     - <div class="row">
+     - <div class="button clickDrop">Contractions list</div>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><b>Ending with</b> <b>have</b></th>
+     - <th><b>Ending with</b> <b>would</b></th>
+     - <th><b>Ending with</b> <b>will</b></th>
+     - </tr>
+     - <tr>
+     - <td>I have → <b>I&#39;ve</b> / you have → <b>you&#39;ve</b> / we have → <b>we&#39;ve</b> / they have → <b>they
+     - <td>I would → <b>I&#39;d</b> / you would → <b>you&#39;d</b> / he would → <b>he&#39;d</b> / she would → <b>she&
+     - <td>I will → <b>I&#39;ll</b> / you will → <b>you&#39;ll</b> / he will → <b>he&#39;ll</b> / she will → <b>she&#
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="button clickDrop">Contractions list</div>
+     + <div class="clickDropContent">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Ending with</b> <b>have</b></th>
+     + <th><b>Ending with</b> <b>would</b></th>
+     + <th><b>Ending with</b> <b>will</b></th>
+     + </tr>
+     + <tr>
+     + <td>I have → <b>I&#39;ve</b> / you have → <b>you&#39;ve</b> / we have → <b>we&#39;ve</b> / they have → <b>they
+     + <td>I would → <b>I&#39;d</b> / you would → <b>you&#39;d</b> / he would → <b>he&#39;d</b> / she would → <b>she&
+     + <td>I will → <b>I&#39;ll</b> / you will → <b>you&#39;ll</b> / he will → <b>he&#39;ll</b> / she will → <b>she&#
+     + </tr>
+     + </table>
+BLLR201: identical 7 / changed 1
+CEDK101: identical 1 / changed 0
+  ~ CEDK102_0_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Story ideas</div>
+     - <div class="clickDropContent"><ul>
+     - <li><b>A Day at the Park:</b> Take photos of going to the park, playing on the swings, having a picnic, feedin
+     - <li><b>Planting a Seed:</b> Take pictures of planting a seed, watering it, watching it grow, and seeing the li
+     - <li><b>Baking Cookies:</b> Capture mixing the dough, putting cookies in the oven, and eating the yummy cookies
+     - <li><b>A Visit to the Zoo:</b> Take photos of arriving at the zoo, seeing animals, having lunch, and leaving t
+     - <li><b>Making a Sandwich:</b> Show getting the ingredients, spreading butter or mayo, adding cheese and ham, c
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Story ideas</div>
+     + <div class="clickDropContent"><ul>
+     + <li><b>A Day at the Park:</b> Take photos of going to the park, playing on the swings, having a picnic, feedin
+     + <li><b>Planting a Seed:</b> Take pictures of planting a seed, watering it, watching it grow, and seeing the li
+     + <li><b>Baking Cookies:</b> Capture mixing the dough, putting cookies in the oven, and eating the yummy cookies
+     + <li><b>A Visit to the Zoo:</b> Take photos of arriving at the zoo, seeing animals, having lunch, and leaving t
+     + <li><b>Making a Sandwich:</b> Show getting the ingredients, spreading butter or mayo, adding cheese and ham, c
+     + </ul></div>
+CEDK102: identical 0 / changed 1
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+  ~ CEDO502_2_0.html: -24 +18
+     - <div class="row">
+     - <div class="button clickDrop">Bank</div>
+     - <div class="button clickDrop">Credit Union</div>
+     - <div class="button clickDrop">Finance company</div>
+     - <div class="clickDropContent"><p>/ A business that keeps people’s money and lends money</p></div>
+     - <div class="clickDropContent"><p>/ A financial group that is owned by its members and lends money</p></div>
+     - <div class="clickDropContent"><p>/ A business that lends money to people</p></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: iStock. Business loan or bank o
+     - <div class="row">
+     - <div class="button clickDrop">Credit Card</div>
+     - <div class="clickDropContent"><p>A credit card lets you buy things now and pay for them later. Each month, you
+     - <li>You can choose to pay the full amount (no interest) or pay part of it (and get charged interest).</li>
+     - <li>Credit cards often have high interest rates and yearly fees.</li>
+     - <li>If you miss payments, it quickly becomes expensive.</li>
+     - </ul></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: iStock. 3D Vector Illustration 
+     - <div class="row">
+     - <div class="button clickDrop">Hire Purchase</div>
+     - <div class="clickDropContent"><p>Hire purchase lets you take home an item straight away and pay for it over ti
+     - <li>Often used for clothes, shoes, or electronics.</li>
+     - <li>Usually interest-free if you pay on time, but you’ll be charged fees if you miss a payment.</li>
+     - <li>Can make it easy to buy things you don’t really need.</li>
+     - </ul></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: iStock. Buy Now Pay Later. http
+     + <div class="button clickDrop">Bank</div>
+     + <div class="button clickDrop">Credit Union</div>
+     + <div class="button clickDrop">Finance company</div>
+     + <div class="clickDropContent"><p>/ A business that keeps people’s money and lends money</p></div>
+     + <div class="clickDropContent"><p>/ A financial group that is owned by its members and lends money</p></div>
+     + <div class="clickDropContent"><p>/ A business that lends money to people</p></div><p class="cv2-note" style="c
+     + <div class="button clickDrop">Credit Card</div>
+     + <div class="clickDropContent"><p>A credit card lets you buy things now and pay for them later. Each month, you
+     + <li>You can choose to pay the full amount (no interest) or pay part of it (and get charged interest).</li>
+     + <li>Credit cards often have high interest rates and yearly fees.</li>
+     + <li>If you miss payments, it quickly becomes expensive.</li>
+     + </ul></div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: iStock. 3D Vector Illustra
+     + <div class="button clickDrop">Hire Purchase</div>
+     + <div class="clickDropContent"><p>Hire purchase lets you take home an item straight away and pay for it over ti
+     + <li>Often used for clothes, shoes, or electronics.</li>
+     + <li>Usually interest-free if you pay on time, but you’ll be charged fees if you miss a payment.</li>
+     + <li>Can make it easy to buy things you don’t really need.</li>
+     + </ul></div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: iStock. Buy Now Pay Later.
+CEDO502: identical 9 / changed 1
+CEDR201: identical 1 / changed 0
+  ~ CEDR204_0_0.html: -14 +10
+     - <div class="row">
+     - <div class="button clickDrop">Scavenger hunt list</div>
+     - <div class="clickDropContent"><p><b>Plastic container</b> – Tap on it and listen to the sound it makes.</p><p>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Button] Go to journal</p>
+     - <div class="row">
+     - <div class="button clickDrop">Make a rainstorm</div>
+     - <div class="clickDropContent"><p><b>Gentle rain:</b> Begin by rubbing your hands together softly. The first fe
+     - <p><b>Building storm:</b> More rain is falling, lightly tap your fingers on your lap.</p>
+     - <p>Oh no, a storm is coming, clap your hands softly to start, and then get louder as the storm builds!</p>
+     - <p><b>Thunderous storm:</b> Stomp your feet and clap your hands loudly, it’s the peak of the storm!</p>
+     - <p>Add in snaps or chest taps for thunder and lightning effects.</p>
+     - <p><b>Calming storm:</b> Phew! The storm is shifting away. Return to softer claps and finger taps.</p>
+     - <p>And finally, return to rubbing your hands together quietly as the storm passes.</p></div>
+     - </div>
+     + <div class="button clickDrop">Scavenger hunt list</div>
+     + <div class="clickDropContent"><p><b>Plastic container</b> – Tap on it and listen to the sound it makes.</p><p>
+     + <div class="button clickDrop">Make a rainstorm</div>
+     + <div class="clickDropContent"><p><b>Gentle rain:</b> Begin by rubbing your hands together softly. The first fe
+     + <p><b>Building storm:</b> More rain is falling, lightly tap your fingers on your lap.</p>
+     + <p>Oh no, a storm is coming, clap your hands softly to start, and then get louder as the storm builds!</p>
+     + <p><b>Thunderous storm:</b> Stomp your feet and clap your hands loudly, it’s the peak of the storm!</p>
+     + <p>Add in snaps or chest taps for thunder and lightning effects.</p>
+     + <p><b>Calming storm:</b> Phew! The storm is shifting away. Return to softer claps and finger taps.</p>
+     + <p>And finally, return to rubbing your hands together quietly as the storm passes.</p></div>
+CEDR204: identical 0 / changed 1
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+  ~ CHFUN05_0_0.html: -21 +19
+     - <div class="row">
+     - <div class="button clickDrop"><b>要 (yào)</b> means a <b>strong want.</b></div>
+     - <div class="button clickDrop"><b>想 (xiǎng)</b> means a <b>polite want</b> or <b>would like to</b> — but only w
+     - <div class="button clickDrop"><b>想 (xiǎng)</b> before <b>Verbs only</b> to mean <b>“want/would like”</b></div>
+     - <div class="clickDropContent"><p>要 goes before a <b>noun</b> or a <b>verb</b>.</p>
+     - <ul>
+     - <li>我要水。 <b>wǒ yào shuǐ</b><i>.</i></li>
+     - </ul>
+     - <p><i>I want water.</i></p>
+     - <ul>
+     - <li>我要吃饭<b>。 wǒ yào chīfàn.</b></li>
+     - </ul>
+     - <p><i>I want to eat.</i></p>
+     - <p>Watch the video for more examples.</p></div>
+     - <div class="clickDropContent"><p>If <b>想</b> is NOT followed by a verb, it means “<b>to miss someone.</b>”</p>
+     - <div class="clickDropContent"><ul>
+     - <li>我想吃饭。</li>
+     - </ul>
+     - <p><b>wǒ xiǎng chīfàn.</b></p>
+     - <p><i>I would like to eat.</i></p></div>
+     - </div>
+     + <div class="button clickDrop"><b>要 (yào)</b> means a <b>strong want.</b></div>
+     + <div class="button clickDrop"><b>想 (xiǎng)</b> means a <b>polite want</b> or <b>would like to</b> — but only w
+     + <div class="button clickDrop"><b>想 (xiǎng)</b> before <b>Verbs only</b> to mean <b>“want/would like”</b></div>
+     + <div class="clickDropContent"><p>要 goes before a <b>noun</b> or a <b>verb</b>.</p>
+     + <ul>
+     + <li>我要水。 <b>wǒ yào shuǐ</b><i>.</i></li>
+     + </ul>
+     + <p><i>I want water.</i></p>
+     + <ul>
+     + <li>我要吃饭<b>。 wǒ yào chīfàn.</b></li>
+     + </ul>
+     + <p><i>I want to eat.</i></p>
+     + <p>Watch the video for more examples.</p></div>
+     + <div class="clickDropContent"><p>If <b>想</b> is NOT followed by a verb, it means “<b>to miss someone.</b>”</p>
+     + <div class="clickDropContent"><ul>
+     + <li>我想吃饭。</li>
+     + </ul>
+     + <p><b>wǒ xiǎng chīfàn.</b></p>
+     + <p><i>I would like to eat.</i></p></div>
+CHFUN05: identical 0 / changed 1
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+  ~ ENGI401_4_0.html: -12 +10
+     - <div class="row">
+     - <div class="button clickDrop">Springbok Tour</div>
+     - <div class="button clickDrop">NZ goes into Lockdown</div>
+     - <div class="button clickDrop">Y2K scare</div>
+     - <div class="button clickDrop">Saving the Kaimanawa horses</div>
+     - <div class="button clickDrop">Cyclone Gabrielle</div>
+     - <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=wyktXQpnn2o" target="_blank">https:/
+     - <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=2x6ASkp18XY" target="_blank">https:/
+     - <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=3dHwmR5VAa4" target="_blank">https:/
+     - <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=musnNR0DrMs" target="_blank">https:/
+     - <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=2tbSmty2nAs" target="_blank">https:/
+     - </div>
+     + <div class="button clickDrop">Springbok Tour</div>
+     + <div class="button clickDrop">NZ goes into Lockdown</div>
+     + <div class="button clickDrop">Y2K scare</div>
+     + <div class="button clickDrop">Saving the Kaimanawa horses</div>
+     + <div class="button clickDrop">Cyclone Gabrielle</div>
+     + <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=wyktXQpnn2o" target="_blank">https:/
+     + <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=2x6ASkp18XY" target="_blank">https:/
+     + <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=3dHwmR5VAa4" target="_blank">https:/
+     + <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=musnNR0DrMs" target="_blank">https:/
+     + <div class="clickDropContent"><p><a href="https://www.youtube.com/watch?v=2tbSmty2nAs" target="_blank">https:/
+ENGI401: identical 11 / changed 1
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+  ~ ENGJ302_3_0.html: -22 +20
+     - <div class="row">
+     - <div class="button clickDrop">Option 1</div>
+     - <div class="button clickDrop">Option 2</div>
+     - <div class="button clickDrop">Option 3</div>
+     - <div class="button clickDrop">Option 4</div>
+     - <div class="clickDropContent"><p>Take one of the facts from the animal fact files above OR select a favourite 
+     - <div class="clickDropContent"><p>Take one of the animals above OR select a favourite animal of your own and cr
+     - <p>For example,</p>
+     - <p>Laughing in the night,</p>
+     - <p>Shadows roam, fierce and cunning</p>
+     - <p>Hyenas’ dark dance.</p>
+     - <p>Link for photo</p></div>
+     - <div class="clickDropContent"><p>Take one of the facts from the animal fact files above OR select a favourite 
+     - <div class="clickDropContent"><p>Take one of the animals above OR select a favourite animal of your own and cr
+     - <p>For example,</p>
+     - <p>French bulldog in flight,</p>
+     - <p>Chasing the ball with pure joy,</p>
+     - <p>Ears perked; eyes alight.</p>
+     - <p>In the sun’s warm golden glow,</p>
+     - <p>Boundless play, a heart’s delight.</p>
+     - <p>Link for photo</p></div>
+     - </div>
+     + <div class="button clickDrop">Option 1</div>
+     + <div class="button clickDrop">Option 2</div>
+     + <div class="button clickDrop">Option 3</div>
+     + <div class="button clickDrop">Option 4</div>
+     + <div class="clickDropContent"><p>Take one of the facts from the animal fact files above OR select a favourite 
+     + <div class="clickDropContent"><p>Take one of the animals above OR select a favourite animal of your own and cr
+     + <p>For example,</p>
+     + <p>Laughing in the night,</p>
+     + <p>Shadows roam, fierce and cunning</p>
+     + <p>Hyenas’ dark dance.</p>
+     + <p>Link for photo</p></div>
+     + <div class="clickDropContent"><p>Take one of the facts from the animal fact files above OR select a favourite 
+     + <div class="clickDropContent"><p>Take one of the animals above OR select a favourite animal of your own and cr
+     + <p>For example,</p>
+     + <p>French bulldog in flight,</p>
+     + <p>Chasing the ball with pure joy,</p>
+     + <p>Ears perked; eyes alight.</p>
+     + <p>In the sun’s warm golden glow,</p>
+     + <p>Boundless play, a heart’s delight.</p>
+     + <p>Link for photo</p></div>
+  ~ ENGJ302_8_0.html: -38 +36
+     - <div class="row">
+     - <div class="button clickDrop">AABB</div>
+     - <div class="button clickDrop">ABAB</div>
+     - <div class="button clickDrop">ABCB</div>
+     - <div class="button clickDrop">Limericks</div>
+     - <div class="clickDropContent"><p>In this rhyme scheme, consecutive lines rhyme with each other. They are often
+     - <p>For example,</p>
+     - <p>The elephant walks with steady pace, (A)</p>
+     - <p>In lands afar, in wide open space. (A)</p>
+     - <p>OR</p>
+     - <p>The horse runs free across the plain, (A)</p>
+     - <p>Its mane flows wild, unbound by rein. (A)</p>
+     - <p>With strength and grace, it gallops fast, (B)</p>
+     - <p>Through open fields, its freedom vast. (B)</p>
+     - <p>Link for photo</p></div>
+     - <div class="clickDropContent"><p>In this rhyme scheme, alternate lines rhyme. This means the first and third l
+     - <p>For example,</p>
+     - <p>High above, the eagle soars (A)</p>
+     - <p>With piercing eyes, it scans the land. (B)</p>
+     - <p>Through mountain peaks and ocean shores (A)</p>
+     - <p>Its flight is strong, its wingspan grand. (B)</p>
+     - <p>Link for photo</p></div>
+     - <div class="clickDropContent"><p>In this rhyme scheme, the second and fourth lines rhyme.</p>
+     - <p>For example,</p>
+     - <p>The swan glides on a tranquil lake (A)</p>
+     - <p>Its feathers white, a pure delight (B)</p>
+     - <p>In graceful arcs, it leaves a wake (C)</p>
+     - <p>And drifts away into the night (B)</p>
+     - <p>Link for photo</p></div>
+     - <div class="clickDropContent"><p>Originating in Ireland, limericks are a popular five line poem with an AABBA 
+     - <p>For example,</p>
+     - <p>There once was a bear named Fred, (A)</p>
+     - <p>Who was known for his lumbering tread. (A)</p>
+     - <p>With a growl and a snore, (B)</p>
+     - <p>He’d search for berries galore, (B)</p>
+     - <p>Then nap in a cozy leaf bed. (A)</p>
+     - <p>Link for photo</p></div>
+     - </div>
+     + <div class="button clickDrop">AABB</div>
+     + <div class="button clickDrop">ABAB</div>
+     + <div class="button clickDrop">ABCB</div>
+     + <div class="button clickDrop">Limericks</div>
+     + <div class="clickDropContent"><p>In this rhyme scheme, consecutive lines rhyme with each other. They are often
+     + <p>For example,</p>
+     + <p>The elephant walks with steady pace, (A)</p>
+     + <p>In lands afar, in wide open space. (A)</p>
+     + <p>OR</p>
+     + <p>The horse runs free across the plain, (A)</p>
+     + <p>Its mane flows wild, unbound by rein. (A)</p>
+     + <p>With strength and grace, it gallops fast, (B)</p>
+     + <p>Through open fields, its freedom vast. (B)</p>
+     + <p>Link for photo</p></div>
+     + <div class="clickDropContent"><p>In this rhyme scheme, alternate lines rhyme. This means the first and third l
+     + <p>For example,</p>
+     + <p>High above, the eagle soars (A)</p>
+     + <p>With piercing eyes, it scans the land. (B)</p>
+     + <p>Through mountain peaks and ocean shores (A)</p>
+     + <p>Its flight is strong, its wingspan grand. (B)</p>
+     + … 16 more added
+ENGJ302: identical 8 / changed 2
+ENGJ402: identical 9 / changed 0
+  ~ ENGJ403_5_0.html: -48 +46
+     - <div class="row">
+     - <div class="button clickDrop">Dialogue</div>
+     - <div class="button clickDrop">Stage directions</div>
+     - <div class="button clickDrop">Subtext</div>
+     - <div class="button clickDrop">Pacing and pauses</div>
+     - <div class="button clickDrop">Visual cues</div>
+     - <div class="button clickDrop">Audio cues</div>
+     - <div class="clickDropContent"><p><b>Dialogue</b></p><ul>
+     - <li>These are the <b>spoken words</b> of the characters.</li>
+     - <li>They show <b>character, relationships, conflict, and tone</b>.</li>
+     - <li>They can include layers of meaning.</li>
+     - </ul><p><i>Example:</i></p><p>JANE: You said you’d be here at six.</p><p>TOM: I was… delayed.</p></div>
+     - <div class="clickDropContent"><p><b>Stage directions</b></p><ul>
+     - <li>These are instructions for <b>actions, movement, setting, tone, or delivery</b>.</li>
+     - <li>They are usually written in brackets or italics.</li>
+     - <li>They show us what the characters are doing, this helps us to understand the scene.</li>
+     - </ul><p><i>Example:</i></p><p><i>(Tom avoids her gaze, pacing the room.)</i></p></div>
+     - <div class="clickDropContent"><p><b>Subtext</b></p><ul>
+     - <li>Subtext is the hidden meaning beneath the dialogue usually shown through actions.</li>
+     - <li>Characters may say one thing but <b>mean another</b>.</li>
+     - </ul><p><i>Example:</i></p><p>JANE: Nice of you to finally show up.</p><p>(<i>Expresses anger and hurt</i>)</p
+     - <div class="clickDropContent"><p>Pacing and pauses</p><ul>
+     - <li>Timing affects meaning.</li>
+     - <li>We use ellipsis … and stage directions <i>(pauses)</i> to show pauses.</li>
+     - <li>We use a dash – to show when a character has been interrupted.</li>
+     - <li>Pauses, interruptions, and short lines create tension or realism.</li>
+     - </ul><p><i>Example:</i></p><p>JANE: I just thought…</p><p><i>(pause)</i></p><p>Never mind.</p><p>TOM: I’m here
+     - <div class="clickDropContent"><p><b>Visual cues</b></p><ul>
+     - <li>Visual cues include anything we see:
+     - <ul>
+     - <li>actions and movement</li>
+     - <li>facial expressions</li>
+     - <li>setting and props</li>
+     - <li>lighting.</li>
+     - </ul></li>
+     - <li>They are written as part of the stage directions.</li>
+     - </ul><p><i>Examples:</i></p><p><i>(She slams the door.)</i></p><p><i>(The classroom is empty, chairs stacked o
+     - <div class="clickDropContent"><p><b>Audio cues</b></p><ul>
+     - <li>Audio cues include anything we hear:
+     - <ul>
+     - … 8 more removed
+     + <div class="button clickDrop">Dialogue</div>
+     + <div class="button clickDrop">Stage directions</div>
+     + <div class="button clickDrop">Subtext</div>
+     + <div class="button clickDrop">Pacing and pauses</div>
+     + <div class="button clickDrop">Visual cues</div>
+     + <div class="button clickDrop">Audio cues</div>
+     + <div class="clickDropContent"><p><b>Dialogue</b></p><ul>
+     + <li>These are the <b>spoken words</b> of the characters.</li>
+     + <li>They show <b>character, relationships, conflict, and tone</b>.</li>
+     + <li>They can include layers of meaning.</li>
+     + </ul><p><i>Example:</i></p><p>JANE: You said you’d be here at six.</p><p>TOM: I was… delayed.</p></div>
+     + <div class="clickDropContent"><p><b>Stage directions</b></p><ul>
+     + <li>These are instructions for <b>actions, movement, setting, tone, or delivery</b>.</li>
+     + <li>They are usually written in brackets or italics.</li>
+     + <li>They show us what the characters are doing, this helps us to understand the scene.</li>
+     + </ul><p><i>Example:</i></p><p><i>(Tom avoids her gaze, pacing the room.)</i></p></div>
+     + <div class="clickDropContent"><p><b>Subtext</b></p><ul>
+     + <li>Subtext is the hidden meaning beneath the dialogue usually shown through actions.</li>
+     + <li>Characters may say one thing but <b>mean another</b>.</li>
+     + </ul><p><i>Example:</i></p><p>JANE: Nice of you to finally show up.</p><p>(<i>Expresses anger and hurt</i>)</p
+     + … 26 more added
+ENGJ403: identical 9 / changed 1
+ENGR101: identical 8 / changed 0
+  ~ ENGR102_5_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Extra for experts</div>
+     - <div class="clickDropContent"><h3><i>Froggy’s Day with Dad</i></h3><p>We are going to read the story <i>Froggy
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image RHS last block of text]<
+     + <div class="button clickDrop">Extra for experts</div>
+     + <div class="clickDropContent"><h3><i>Froggy’s Day with Dad</i></h3><p>We are going to read the story <i>Froggy
+ENGR102: identical 6 / changed 1
+ENGR201: identical 7 / changed 0
+  ~ ENGR202_1_0.html: -13 +7
+     - <div class="row">
+     - <div class="button clickDrop">Size</div>
+     - <div class="clickDropContent"><p>Size refers to how big or small something is.</p></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Have the image and the title (b
+     - <div class="row">
+     - <div class="button clickDrop">Colour</div>
+     - <div class="clickDropContent"><p>Colours can create mood and highlight important information.</p><p>Watch the 
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Video] Colour meanings</p>
+     - <div class="row">
+     - <div class="button clickDrop">Space</div>
+     - <div class="clickDropContent"><p>Space is the area around and between objects. How things are arranged can hel
+     - <p>There are two types of space; negative space and positive space.</p></div>
+     - </div>
+     + <div class="button clickDrop">Size</div>
+     + <div class="clickDropContent"><p>Size refers to how big or small something is.</p></div><p class="cv2-note" st
+     + <div class="button clickDrop">Colour</div>
+     + <div class="clickDropContent"><p>Colours can create mood and highlight important information.</p><p>Watch the 
+     + <div class="button clickDrop">Space</div>
+     + <div class="clickDropContent"><p>Space is the area around and between objects. How things are arranged can hel
+     + <p>There are two types of space; negative space and positive space.</p></div>
+  ~ ENGR202_3_0.html: -14 +12
+     - <div class="row">
+     - <div class="button clickDrop">Advertising ideas</div>
+     - <div class="clickDropContent"><p>Check out these ideas</p>
+     - <ul>
+     - <li>new toy</li>
+     - <li>favourite book</li>
+     - <li>cool clothing item</li>
+     - <li>art supplies</li>
+     - <li>sports equipment</li>
+     - <li>healthy snack</li>
+     - <li>gadget or tech toy</li>
+     - <li>new ice cream flavour.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Advertising ideas</div>
+     + <div class="clickDropContent"><p>Check out these ideas</p>
+     + <ul>
+     + <li>new toy</li>
+     + <li>favourite book</li>
+     + <li>cool clothing item</li>
+     + <li>art supplies</li>
+     + <li>sports equipment</li>
+     + <li>healthy snack</li>
+     + <li>gadget or tech toy</li>
+     + <li>new ice cream flavour.</li>
+     + </ul></div>
+  ~ ENGR202_7_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Size</div>
+     - <div class="button clickDrop">Shape</div>
+     - <div class="button clickDrop">Space</div>
+     - <div class="button clickDrop">Colour</div>
+     - <div class="clickDropContent"><p><b>Big and Small</b>: In an infographic, things that are bigger catch your ey
+     - <div class="clickDropContent"><p><b>Different Shapes:</b> Infographics use different shapes to help organize i
+     - <div class="clickDropContent"><p><b>Room to Breathe</b>: Just like you need space to move around, infographics
+     - <div class="clickDropContent"><p><b>Bright and Fun:</b> Colours make infographics exciting! Bright colours can
+     - </div>
+     + <div class="button clickDrop">Size</div>
+     + <div class="button clickDrop">Shape</div>
+     + <div class="button clickDrop">Space</div>
+     + <div class="button clickDrop">Colour</div>
+     + <div class="clickDropContent"><p><b>Big and Small</b>: In an infographic, things that are bigger catch your ey
+     + <div class="clickDropContent"><p><b>Different Shapes:</b> Infographics use different shapes to help organize i
+     + <div class="clickDropContent"><p><b>Room to Breathe</b>: Just like you need space to move around, infographics
+     + <div class="clickDropContent"><p><b>Bright and Fun:</b> Colours make infographics exciting! Bright colours can
+ENGR202: identical 5 / changed 3
+ENGR301: identical 9 / changed 0
+  ~ ENGR302_2_0.html: -14 +12
+     - <div class="row">
+     - <div class="button clickDrop">Size and position</div>
+     - <div class="button clickDrop">Body language</div>
+     - <div class="button clickDrop">Facial expressions</div>
+     - <div class="button clickDrop">Lighting and colour</div>
+     - <div class="button clickDrop">Clothing and accessories</div>
+     - <div class="button clickDrop">Proximity and space</div>
+     - <div class="clickDropContent"><p>Characters who are more powerful are often drawn larger and placed higher up 
+     - <div class="clickDropContent"><p>Powerful characters often stand tall, with their shoulders back and heads hel
+     - <div class="clickDropContent"><p>A powerful character&#39;s face might show confidence or sternness, with dire
+     - <div class="clickDropContent"><p>Bright and bold colors, as well as strong lighting, can make powerful charact
+     - <div class="clickDropContent"><p>Powerful characters might wear more elaborate, clean, and well-kept clothing,
+     - <div class="clickDropContent"><p>Powerful characters might be given more space around them, indicating their i
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Title for button<br />Text for 
+     + <div class="button clickDrop">Size and position</div>
+     + <div class="button clickDrop">Body language</div>
+     + <div class="button clickDrop">Facial expressions</div>
+     + <div class="button clickDrop">Lighting and colour</div>
+     + <div class="button clickDrop">Clothing and accessories</div>
+     + <div class="button clickDrop">Proximity and space</div>
+     + <div class="clickDropContent"><p>Characters who are more powerful are often drawn larger and placed higher up 
+     + <div class="clickDropContent"><p>Powerful characters often stand tall, with their shoulders back and heads hel
+     + <div class="clickDropContent"><p>A powerful character&#39;s face might show confidence or sternness, with dire
+     + <div class="clickDropContent"><p>Bright and bold colors, as well as strong lighting, can make powerful charact
+     + <div class="clickDropContent"><p>Powerful characters might wear more elaborate, clean, and well-kept clothing,
+     + <div class="clickDropContent"><p>Powerful characters might be given more space around them, indicating their i
+ENGR302: identical 7 / changed 1
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+  ~ EXBP901_5_0.html: -20 +16
+     - <div class="row">
+     - <div class="button clickDrop">Tips for oral presentations</div>
+     - <div class="clickDropContent"><ol>
+     - <li>Have key points written on cue cards or on a PowerPoint slide. Instead of reading them out, use them as pr
+     - <li>Practice varying your voice and using expression. Think about where you could stress words, change your vo
+     - <li>Stand up straight, and try gestures, facial expressions or eye contact with your audience. You could even 
+     - <li>Conclude your presentation clearly, so that your audience knows when it is over.</li>
+     - <li>If you make some slides as part of your presentation, stick to a few slides. Each slide should have a litt
+     - </ol></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">Calming your nerves</div>
+     - <div class="clickDropContent"><ol>
+     - <li>Take some deep breaths to help you relax.</li>
+     - <li>Roll your neck and shoulders to help relieve muscle tension and stress in your upper body.</li>
+     - <li>Stretch your arms to reduce stiffness and make you feel more at ease.</li>
+     - <li>Place your hands on your hips and gently rotate, first to one side then the other.</li>
+     - <li>Bend from the waist and reach down towards your toes, keeping your legs straight, to get your blood flowin
+     - </ol></div>
+     - </div>
+     + <div class="button clickDrop">Tips for oral presentations</div>
+     + <div class="clickDropContent"><ol>
+     + <li>Have key points written on cue cards or on a PowerPoint slide. Instead of reading them out, use them as pr
+     + <li>Practice varying your voice and using expression. Think about where you could stress words, change your vo
+     + <li>Stand up straight, and try gestures, facial expressions or eye contact with your audience. You could even 
+     + <li>Conclude your presentation clearly, so that your audience knows when it is over.</li>
+     + <li>If you make some slides as part of your presentation, stick to a few slides. Each slide should have a litt
+     + </ol></div>
+     + <div class="button clickDrop">Calming your nerves</div>
+     + <div class="clickDropContent"><ol>
+     + <li>Take some deep breaths to help you relax.</li>
+     + <li>Roll your neck and shoulders to help relieve muscle tension and stress in your upper body.</li>
+     + <li>Stretch your arms to reduce stiffness and make you feel more at ease.</li>
+     + <li>Place your hands on your hips and gently rotate, first to one side then the other.</li>
+     + <li>Bend from the waist and reach down towards your toes, keeping your legs straight, to get your blood flowin
+     + </ol></div>
+EXBP901: identical 5 / changed 1
+  ~ EXIP901_5_0.html: -117 +111
+     - <div class="row">
+     - <div class="button clickDrop">Showcase methods</div>
+     - <div class="clickDropContent">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Showcase using an exhibition</th>
+     - <th>Make a shoebox diorama</th>
+     - <th>Powerpoint presentation</th>
+     - <th>Showcase using a poster</th>
+     - </tr>
+     - <tr>
+     - <td>Make a timeline</td>
+     - <td>Make a flower with a different fact on each petal</td>
+     - <td>Create a brochure or e-brochure</td>
+     - <td>Create a roving mic session</td>
+     - </tr>
+     - <tr>
+     - <td>Create a board game incorporating key elements</td>
+     - <td>Create an art piece about your topic</td>
+     - <td>Write a handbook of instructions</td>
+     - <td>Create a video game</td>
+     - </tr>
+     - <tr>
+     - <td>Write a poem</td>
+     - <td>Made an internet ad</td>
+     - <td>Make a chain link with a different idea on each link</td>
+     - <td>Create a museum exhibit</td>
+     - </tr>
+     - <tr>
+     - <td>Write and perform a skit</td>
+     - <td>Create an internet scavenger hunt</td>
+     - <td>Create flash cards or trivia cards</td>
+     - <td>Make a short documentary film</td>
+     - </tr>
+     - <tr>
+     - <td>Create a video presentation</td>
+     - <td>Assemble a time capsule</td>
+     - <td>Do a newscast</td>
+     - <td>Write an advice column</td>
+     - … 77 more removed
+     + <div class="button clickDrop">Showcase methods</div>
+     + <div class="clickDropContent">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Showcase using an exhibition</th>
+     + <th>Make a shoebox diorama</th>
+     + <th>Powerpoint presentation</th>
+     + <th>Showcase using a poster</th>
+     + </tr>
+     + <tr>
+     + <td>Make a timeline</td>
+     + <td>Make a flower with a different fact on each petal</td>
+     + <td>Create a brochure or e-brochure</td>
+     + <td>Create a roving mic session</td>
+     + </tr>
+     + <tr>
+     + <td>Create a board game incorporating key elements</td>
+     + <td>Create an art piece about your topic</td>
+     + <td>Write a handbook of instructions</td>
+     + … 91 more added
+EXIP901: identical 5 / changed 1
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+
+TOTAL: identical 484 / changed 25 / missing 0 over 102 modules
+CHANGED: BLL244/BLL244_2_0.html BLL245/BLL245_2_0.html BLL246/BLL246_2_0.html BLL251/BLL251_1_0.html BLL252/BLL252_2_0.html BLL253/BLL253_1_0.html BLL253/BLL253_2_0.html BLL254/BLL254_1_0.html BLL254/BLL254_2_0.html BLLR201/BLLR201_2_0.html CEDK102/CEDK102_0_0.html CEDO502/CEDO502_2_0.html CEDR204/CEDR204_0_0.html CHFUN05/CHFUN05_0_0.html ENGI401/ENGI401_4_0.html ENGJ302/ENGJ302_3_0.html ENGJ302/ENGJ302_8_0.html ENGJ403/ENGJ403_5_0.html ENGR102/ENGR102_5_0.html ENGR202/ENGR202_1_0.html ENGR202/ENGR202_3_0.html ENGR202/ENGR202_7_0.html ENGR302/ENGR302_2_0.html EXBP901/EXBP901_5_0.html EXIP901/EXIP901_5_0.html

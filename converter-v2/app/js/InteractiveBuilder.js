@@ -10121,7 +10121,25 @@ class InteractiveBuilder {
 				? this.#assetImage(p.img, tpl, run)
 				: renderBody(p.body))).join(""),
 		}));
-		return [tpl.open, ...buttons, ...contents, tpl.close].join("\n");
+		const _cdw = this.#cdWrap(tpl);
+		return [_cdw.open, ...buttons, ...contents, _cdw.close].filter((x) => x !== "").join("\n");
+	}
+
+	/**
+	 * ROUND 394 — THE CLICKDROP BUTTONS SIT DIRECTLY IN THE COLUMN. Over the gold's 385
+	 * clickDrop button groups the buttons' parent is a column (the page's col-md-8 or the
+	 * activity box's col-12) 302 = 0.78; an inner div.row 19 = 0.05 — every subject >= 0.73.
+	 * Claude wrapped 127 of its 128 groups in the template's `open` row. With
+	 * clickDrop.no_row_wrapper enabled both emit sites take an EMPTY wrapper from here
+	 * (empties are filtered from the join). Env toggle: CDROW_OFF (= the r393 output).
+	 * @param {Object} tpl - the clickDrop template block
+	 * @returns {{open: string, close: string}}
+	 */
+	static #cdWrap(tpl) {
+		const cfg = tpl?.no_row_wrapper;
+		const off = typeof process !== "undefined" && process.env && process.env[cfg?.env ?? "CDROW_OFF"];
+		if (cfg && cfg.enabled !== false && !off) return { open: "", close: "" };
+		return { open: tpl.open, close: tpl.close };
 	}
 
 	// =======================================================================
@@ -10242,7 +10260,8 @@ class InteractiveBuilder {
 		//     the narrow walk uses, so a build from either path is indistinguishable.
 		const built = this.#cdRenderItems(items.list, { tpl, cfg, inline, run, renderBlock, renderNested, lead: items.lead });
 		if (!built) return null;
-		const html = [tpl.open, ...built.buttons, ...built.contents, tpl.close].join("\n");
+		const _cdw = this.#cdWrap(tpl);   // ROUND 394: no inner row around the buttons (clickDrop.no_row_wrapper)
+		const html = [_cdw.open, ...built.buttons, ...built.contents, _cdw.close].filter((x) => x !== "").join("\n");
 		if (this.#accLeakGuard(html, cfg)) return null;            // a build must never ADD a leak
 		// LEAD PROSE — anything the writer put before the first button renders in its
 		// own place ABOVE the widget (the round-196 trailing_body rule, inverted), so

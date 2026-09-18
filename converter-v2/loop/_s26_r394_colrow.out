@@ -1,0 +1,26 @@
+==== a div.row DIRECTLY inside the col-md-8 text column: (inner row's class, its first child) ====
+Claude:
+    403 (pages 284 / mods 172)  div.carousel.row  ›  div.col-12.col-md-12.viewer
+    176 (pages 135 / mods  89)  div.flipCardsContainer.row  ›  div.col-12.col-md-4.paddingLR
+     93 (pages  72 / mods  51)  div.row  ›  div.button.clickDrop
+     15 (pages  14 / mods  10)  div.flipCardsContainer.row  ›  div.col-12.col-md-6.col-sm-6.paddingLR
+      8 (pages   7 / mods   3)  div.row  ›  div.col-12.col-md-4.offset-md-0
+      6 (pages   1 / mods   1)  div.row  ›  div.col-12.col-md-4.paddingLR
+      5 (pages   5 / mods   5)  div.margB2.noPhase.phaseContainer.row  ›  div.col-6
+      3 (pages   3 / mods   2)  div.row  ›  div.col
+      1 (pages   1 / mods   1)  div.row  ›  div.col-12.col-md-4
+gold:
+    306 (pages 213)  div.carousel.row  ›  div.col-12.col-md-12.viewer
+     95 (pages  71)  div.carousel.carouselBorder.row  ›  div.col-12.col-md-12.viewer
+     89 (pages  42)  div.row  ›  div.col-12.col-md-8
+     74 (pages  63)  div.row  ›  div.col-12
+     72 (pages  59)  div.flipCardsContainer.row  ›  div.col-12.col-md-6.paddingLR
+     69 (pages  38)  div.row  ›  div.col-12.col-md-8.offset-md-2
+     45 (pages  35)  div.flipCardsContainer.row  ›  div.col-12.col-md-4.paddingLR
+     42 (pages   4)  div.margB2.row  ›  div.col-5
+     41 (pages  25)  div.row  ›  div.col-12.col-md-12
+     40 (pages  26)  div.row  ›  div.col
+     37 (pages  29)  div.row  ›  div.col-12.col-md-6.offset-md-0
+     31 (pages  16)  div.carousel.row  ›  div.col-12.viewer
+     29 (pages  23)  div.row  ›  div.col-12.col-md-6.offset-md-3
+     28 (pages  19)  div.row  ›  div.col.paddingLR

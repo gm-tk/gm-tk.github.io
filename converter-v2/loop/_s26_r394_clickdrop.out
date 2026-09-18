@@ -1,0 +1,35 @@
+==== clickDrop button groups: the three enclosing wrappers (…grandparent › parent) ====
+Claude:
+     73 (pages  72 / mods  51)  div.row › div.col-12.col-md-8 › div.row
+     52 (pages  52 / mods  34)  div.row › div.col-12 › div.row
+      2 (pages   2 / mods   2)  div.accContent › div.row › div.row
+      1 (pages   1 / mods   1)  div.row.speechBubble › div.col-12.col-md-12 › div.bubble-left.no-hover.secondary
+gold:
+     61 (pages  59)  div › div.row › div.col-12.col-md-8   [('1-10 Mathematics', 20), ('Online Safety (OS9000)', 15), ('1-10 English', 12)]
+     55 (pages  52)  div.activity › div.row › div.col-12   [('NCEA1', 18), ('1-10 Mathematics', 16), ('1-10 English', 8)]
+     35 (pages  35)  div.activity.interactive › div.row › div.col-12   [('Online Safety (OS9000)', 9), ('NCEA1', 5), ('1-10 Mathematics', 5)]
+     19 (pages  19)  div.activity.alertPadding › div.row › div.col-12   [('NCEA1', 9), ('ConnectED', 3), ('1-10 English', 3)]
+     12 (pages  10)  div.col-12.col-md-8 › div.row › div.col-12.col-md-4.offset-md-0   [('Online Safety (OS9000)', 7), ('1-10 Social Science', 3), ('1-10 Science', 1)]
+     11 (pages  10)  div.row › div.col-12.col-md-8 › div.row   [('None', 6), ('Online Safety (OS9000)', 2), ('1-10 Arts', 1)]
+      9 (pages   9)  div.col-12 › div.row › div.col-12.col-md-4.offset-md-0   [('1-10 Blended Literacy', 7), ('None', 2)]
+      8 (pages   8)  div.activity.alertPadding.interactive › div.row › div.col-12   [('1-10 Mathematics', 3), ('1-10 English', 2), ('1-10 Blended Literacy', 1)]
+      7 (pages   7)  div.activity.dropbox › div.row › div.col-12   [('Leaving to Learn', 2), ('ANZH', 1), ('1-10 Blended Literacy', 1)]
+      7 (pages   7)  div.col-12.col-md-8 › div.accordion › div.accContent   [('1-10 Mathematics', 5), ('ConnectED', 1), ('Leaving to Learn', 1)]
+      6 (pages   4)  div.row › div.row › div.col-12.col-md-8   [('1-10 Mathematics', 4), ('1-10 English', 1), ('NCEA1', 1)]
+      5 (pages   5)  div › div.row › div.col-12.col-md-8.paddingR   [('1-10 Mathematics', 3), ('Online Safety (OS9000)', 1), ('Leaving to Learn', 1)]
+gold groups total 385 claude 128
+gold parent kinds: [('col', 302), ('div.row', 19), ('div.accContent', 9), ('div.alert.solid', 7), ('a', 4), ('div.clickDropContent.noBorder', 4), ('div.dragAndDrop', 4), ('div.align-items-center.col-12.col-md-4.d-flex.offset-md-0.paddingL', 3)]
+claude parent kinds: [('div.row', 127), ('div.bubble-left.no-hover.secondary', 1)]
+gold by subject (parent kind):
+    1-10 Mathematics {'col': 71, 'div.accContent': 7, 'div.item': 2, 'div.dragAndDrop': 4, 'div.drop': 1, 'div.activity.interactive': 1, 'p': 1, 'div.typing': 1, 'div.sketcher': 1, 'div.alertActivity': 2, 'div.alert.solid': 1, 'div.autoCheck.multiChoiceQuiz': 1}
+    Online Safety (OS9000) {'col': 47, 'div.row': 2, 'div.align-self-center.col-12.col-md-2.paddingR': 1, 'div.align-self-center.col-12.col-md-4.paddingLR': 1, 'div.align-items-center.col-12.col-md-4.d-flex.offset-md-0': 2, 'div.align-items-center.col-12.col-md-4.d-flex.offset-md-0.paddingL': 3, 'div.center-text.col-12.col-md-4.offset-md-0': 2, 'div.align-items-center.col-12.col-md-4.d-flex.justify-content-end.offset-md-0': 1, 'td': 2, 'div.tab-pane': 1}
+    1-10 English {'col': 35, 'div.row': 6, 'div.activity': 1, 'div.clickDropContainer': 1, 'div.perspective-radial': 1, 'div.activity.alertPadding': 2, 'colgroup': 1, 'div': 1}
+    NCEA1 {'col': 41, 'div.row': 3, 'div.tabs': 1, 'div': 1, 'ol': 1}
+    None {'col': 19, 'div.row': 7, 'div.alert.solid': 1, 'div.tab-pane': 1}
+    1-10 Blended Literacy {'col': 26, '': 1}
+    ConnectED {'col': 22, 'div.accContent': 1}
+    Leaving to Learn {'col': 13, 'div.accContent': 1, 'div.alert.solid': 5}
+    1-10 Arts {'a': 4, 'div.clickDropContent.noBorder': 4, 'col': 2, 'div.row': 1}
+    1-10 Social Science {'col': 10}
+    1-10 Science {'col': 7, 'div.activity': 1}
+    ANZH {'col': 4}

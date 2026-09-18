@@ -1,0 +1,999 @@
+  ~ OSSC401_1_0.html: -16 +14
+     - <div class="row">
+     - <div class="button clickDrop">Deep fake videos</div>
+     - <div class="button clickDrop">Fake competition/ scholarships</div>
+     - <div class="button clickDrop">Gaming freebie trap</div>
+     - <div class="button clickDrop">Fake phishing emails</div>
+     - <div class="button clickDrop">Chatbot impersonation.</div>
+     - <div class="button clickDrop">Fake influencer endorsement.</div>
+     - <div class="button clickDrop">Sextortion.</div>
+     - <div class="clickDropContent"><p>AI creates fake compromising videos or photos of teens.</p><p>Used for <b>bla
+     - <div class="clickDropContent"><p>AI-generated emails or websites promise scholarships, prizes, or internships.
+     - <div class="clickDropContent"><p>AI-generated fake accounts promise free skins, in-game currency, or hacks.</p
+     - <div class="clickDropContent"><p>Perfect grammar, realistic branding, and urgent tone make these hard to spot.
+     - <div class="clickDropContent"><p>Bots mimic friends or teachers in messaging apps or gaming chats.</p><p><b>Go
+     - <div class="clickDropContent"><p>Deepfake influencers or celebrities promote products or crypto schemes.</p><p
+     - <div class="clickDropContent"><p>Predators use AI to create fake explicit images of teens from innocent photos
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: https://www.istockphoto.com/vec
+     + <div class="button clickDrop">Deep fake videos</div>
+     + <div class="button clickDrop">Fake competition/ scholarships</div>
+     + <div class="button clickDrop">Gaming freebie trap</div>
+     + <div class="button clickDrop">Fake phishing emails</div>
+     + <div class="button clickDrop">Chatbot impersonation.</div>
+     + <div class="button clickDrop">Fake influencer endorsement.</div>
+     + <div class="button clickDrop">Sextortion.</div>
+     + <div class="clickDropContent"><p>AI creates fake compromising videos or photos of teens.</p><p>Used for <b>bla
+     + <div class="clickDropContent"><p>AI-generated emails or websites promise scholarships, prizes, or internships.
+     + <div class="clickDropContent"><p>AI-generated fake accounts promise free skins, in-game currency, or hacks.</p
+     + <div class="clickDropContent"><p>Perfect grammar, realistic branding, and urgent tone make these hard to spot.
+     + <div class="clickDropContent"><p>Bots mimic friends or teachers in messaging apps or gaming chats.</p><p><b>Go
+     + <div class="clickDropContent"><p>Deepfake influencers or celebrities promote products or crypto schemes.</p><p
+     + <div class="clickDropContent"><p>Predators use AI to create fake explicit images of teens from innocent photos
+  ~ OSSC401_2_0.html: -28 +24
+     - <div class="row">
+     - <div class="button clickDrop">misinformation</div>
+     - <div class="button clickDrop">disinformation</div>
+     - <div class="button clickDrop">malinformation</div>
+     - <div class="clickDropContent"><p>False or inaccurate information by mistake. Getting the facts wrong unintenti
+     - <div class="clickDropContent"><p>False information which is <b>intended</b> to mislead. Intentionally misstati
+     - <div class="clickDropContent"><p>True information used maliciously</p></div>
+     - <div class="row">
+     - <div class="button clickDrop">Social media algorithms</div>
+     - <div class="button clickDrop">Echo chambers</div>
+     - <div class="button clickDrop">Virality</div>
+     - <div class="clickDropContent"><ul>
+     - <li>Platforms like Instagram, TikTok, and Facebook use algorithms to show you content you’re most likely to en
+     - <li>If you like or share sensational posts, the algorithm shows you more of the same, even if it’s false.</li>
+     - <li>This creates a <b>feedback loop</b>: the more people interact with fake news, the more it appears in every
+     - </ul></div>
+     - <div class="clickDropContent"><ul>
+     - <li>An echo chamber is when you mostly see opinions that match your own.</li>
+     - <li>Social media often connects you with people who think like you, so you rarely see opposing views.</li>
+     - <li>Fake news thrives here because it’s <b>not challenged,</b> everyone agrees and shares it.</li>
+     - </ul></div>
+     - <div class="clickDropContent"><ul>
+     - <li>Fake news often uses <b>emotional hooks</b>: fear, anger, excitement.</li>
+     - <li>Headlines like “You won’t believe this!” or shocking images make people click and share quickly.</li>
+     - <li>The faster it spreads, the harder it is to correct.</li>
+     - </ul></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: can click drop tiles look like 
+     - </div>
+     + <div class="button clickDrop">misinformation</div>
+     + <div class="button clickDrop">disinformation</div>
+     + <div class="button clickDrop">malinformation</div>
+     + <div class="clickDropContent"><p>False or inaccurate information by mistake. Getting the facts wrong unintenti
+     + <div class="clickDropContent"><p>False information which is <b>intended</b> to mislead. Intentionally misstati
+     + <div class="clickDropContent"><p>True information used maliciously</p></div>
+     + <div class="button clickDrop">Social media algorithms</div>
+     + <div class="button clickDrop">Echo chambers</div>
+     + <div class="button clickDrop">Virality</div>
+     + <div class="clickDropContent"><ul>
+     + <li>Platforms like Instagram, TikTok, and Facebook use algorithms to show you content you’re most likely to en
+     + <li>If you like or share sensational posts, the algorithm shows you more of the same, even if it’s false.</li>
+     + <li>This creates a <b>feedback loop</b>: the more people interact with fake news, the more it appears in every
+     + </ul></div>
+     + <div class="clickDropContent"><ul>
+     + <li>An echo chamber is when you mostly see opinions that match your own.</li>
+     + <li>Social media often connects you with people who think like you, so you rarely see opposing views.</li>
+     + <li>Fake news thrives here because it’s <b>not challenged,</b> everyone agrees and shares it.</li>
+     + </ul></div>
+     + <div class="clickDropContent"><ul>
+     + … 4 more added
+OSSC401: identical 3 / changed 2
+  ~ OSSC501_1_0.html: -18 +16
+     - <div class="row">
+     - <div class="button clickDrop">Online shopping scams</div>
+     - <div class="button clickDrop">Courier delivery scams</div>
+     - <div class="button clickDrop">Tech-support scams</div>
+     - <div class="button clickDrop">Investment and crypto scams</div>
+     - <div class="button clickDrop">Subscription and streaming scams</div>
+     - <div class="button clickDrop">Ransomware</div>
+     - <div class="clickDropContent"><p>Fake websites or ads offer cheap products that never arrive. They often look 
+     - <p><i>For example: You buy sneakers from a social media advert that look legitimate, pay $80, and get nothing.
+     - <div class="clickDropContent"><p>Fake texts or emails claim you need to pay a small fee for a parcel delivery.
+     - <p><i>For example: “Your package is waiting. Pay $3.50 to release it.” The link steals the credit card details
+     - <div class="clickDropContent"><p>Pop-ups or calls claim your device has a virus and ask for remote access or p
+     - <p><i>For example: A pop-up says, “Your computer is infected! Call Microsoft now.”</i></p></div>
+     - <div class="clickDropContent"><p>Promises of quick money through fake investments or crypto trading platforms.
+     - <p><i>For example: An ad says, “Turn $100 into $1,000 in a week!” You send money and never hear back.</i></p><
+     - <div class="clickDropContent"><p>Fake Netflix or Spotify renewal emails ask for card details. They often use u
+     - <div class="clickDropContent"><p>Malware locks your files and demands payment to unlock them. It often comes f
+     - </div>
+     + <div class="button clickDrop">Online shopping scams</div>
+     + <div class="button clickDrop">Courier delivery scams</div>
+     + <div class="button clickDrop">Tech-support scams</div>
+     + <div class="button clickDrop">Investment and crypto scams</div>
+     + <div class="button clickDrop">Subscription and streaming scams</div>
+     + <div class="button clickDrop">Ransomware</div>
+     + <div class="clickDropContent"><p>Fake websites or ads offer cheap products that never arrive. They often look 
+     + <p><i>For example: You buy sneakers from a social media advert that look legitimate, pay $80, and get nothing.
+     + <div class="clickDropContent"><p>Fake texts or emails claim you need to pay a small fee for a parcel delivery.
+     + <p><i>For example: “Your package is waiting. Pay $3.50 to release it.” The link steals the credit card details
+     + <div class="clickDropContent"><p>Pop-ups or calls claim your device has a virus and ask for remote access or p
+     + <p><i>For example: A pop-up says, “Your computer is infected! Call Microsoft now.”</i></p></div>
+     + <div class="clickDropContent"><p>Promises of quick money through fake investments or crypto trading platforms.
+     + <p><i>For example: An ad says, “Turn $100 into $1,000 in a week!” You send money and never hear back.</i></p><
+     + <div class="clickDropContent"><p>Fake Netflix or Spotify renewal emails ask for card details. They often use u
+     + <div class="clickDropContent"><p>Malware locks your files and demands payment to unlock them. It often comes f
+  ~ OSSC501_5_0.html: -18 +16
+     - <div class="row">
+     - <div class="button clickDrop">Cognitive bias – mental shortcuts</div>
+     - <div class="button clickDrop">Emotional triggers</div>
+     - <div class="button clickDrop">Repetition = believability</div>
+     - <div class="button clickDrop">Anxiety and stress</div>
+     - <div class="button clickDrop">Lack of digital literacy</div>
+     - <div class="clickDropContent"><p>Our brains are wired to save energy by making quick decisions. Instead of ana
+     - <li>Confirmation bias: we believe info that supports what we already think.</li>
+     - </ul><p><i>Example:</i> If you think a brand is bad, you’ll believe negative posts about it.</p><ul>
+     - <li>Bandwagon effect: if lots of people share it, we assume it’s true.</li>
+     - </ul><p><i>Example:</i> Viral video post trends often feel “true” because everyone’s doing them.</p><ul>
+     - <li>Authority bias: if it comes from someone we trust (friend, influencer), we believe it.</li>
+     - </ul><p><i>Example:</i> A famous influencer recommends a product, it must be good, right?</p></div>
+     - <div class="clickDropContent"><p>Fake info often uses fear, outrage, or excitement to grab attention because e
+     - <div class="clickDropContent"><p>The more we see something, the more we believe it, even if it’s false. This i
+     - <div class="clickDropContent"><p>When we’re stressed or anxious, we want quick answers and reassurance. Fake i
+     - <div class="clickDropContent"><p>Not knowing how to check sources or spot fake accounts makes us easy targets.
+     - </div>
+     + <div class="button clickDrop">Cognitive bias – mental shortcuts</div>
+     + <div class="button clickDrop">Emotional triggers</div>
+     + <div class="button clickDrop">Repetition = believability</div>
+     + <div class="button clickDrop">Anxiety and stress</div>
+     + <div class="button clickDrop">Lack of digital literacy</div>
+     + <div class="clickDropContent"><p>Our brains are wired to save energy by making quick decisions. Instead of ana
+     + <li>Confirmation bias: we believe info that supports what we already think.</li>
+     + </ul><p><i>Example:</i> If you think a brand is bad, you’ll believe negative posts about it.</p><ul>
+     + <li>Bandwagon effect: if lots of people share it, we assume it’s true.</li>
+     + </ul><p><i>Example:</i> Viral video post trends often feel “true” because everyone’s doing them.</p><ul>
+     + <li>Authority bias: if it comes from someone we trust (friend, influencer), we believe it.</li>
+     + </ul><p><i>Example:</i> A famous influencer recommends a product, it must be good, right?</p></div>
+     + <div class="clickDropContent"><p>Fake info often uses fear, outrage, or excitement to grab attention because e
+     + <div class="clickDropContent"><p>The more we see something, the more we believe it, even if it’s false. This i
+     + <div class="clickDropContent"><p>When we’re stressed or anxious, we want quick answers and reassurance. Fake i
+     + <div class="clickDropContent"><p>Not knowing how to check sources or spot fake accounts makes us easy targets.
+OSSC501: identical 4 / changed 2
+  ~ OSSM301_3_0.html: -12 +10
+     - <div class="row">
+     - <div class="button clickDrop">1. Keep it locked</div>
+     - <div class="button clickDrop">2. Keep it private</div>
+     - <div class="button clickDrop">3. Keep it to yourself</div>
+     - <div class="button clickDrop">4. Keep it real</div>
+     - <div class="button clickDrop">5. Keep it friendly</div>
+     - <div class="clickDropContent"><p>Ask someone to help you set up a PIN or password to protect your phone, lapto
+     - <div class="clickDropContent"><p>Don’t share personal information like your address and phone number. Find out
+     - <div class="clickDropContent"><p>Everything you do online leaves what’s known as a digital footprint – a recor
+     - <div class="clickDropContent"><p>Sometimes, people pretend to be someone else online. Check anyone who makes f
+     - <div class="clickDropContent"><p>The internet is just like real life. Be careful who you are talking to, or sh
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: 5 click drops next to each othe
+     + <div class="button clickDrop">1. Keep it locked</div>
+     + <div class="button clickDrop">2. Keep it private</div>
+     + <div class="button clickDrop">3. Keep it to yourself</div>
+     + <div class="button clickDrop">4. Keep it real</div>
+     + <div class="button clickDrop">5. Keep it friendly</div>
+     + <div class="clickDropContent"><p>Ask someone to help you set up a PIN or password to protect your phone, lapto
+     + <div class="clickDropContent"><p>Don’t share personal information like your address and phone number. Find out
+     + <div class="clickDropContent"><p>Everything you do online leaves what’s known as a digital footprint – a recor
+     + <div class="clickDropContent"><p>Sometimes, people pretend to be someone else online. Check anyone who makes f
+     + <div class="clickDropContent"><p>The internet is just like real life. Be careful who you are talking to, or sh
+OSSM301: identical 4 / changed 1
+  ~ OSSM401_1_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Mostly 0–3</div>
+     - <div class="button clickDrop">Mostly 2–3</div>
+     - <div class="button clickDrop">Mostly 4–5</div>
+     - <div class="clickDropContent"><p>You are a balanced social media user. You rarely use social media or use it m
+     - <div class="clickDropContent"><p>Time to think about your habits. You’re online quite a bit so check if it is 
+     - <div class="clickDropContent"><p>It’s time for a reset. Social media might be taking over other important thin
+     - </div>
+     + <div class="button clickDrop">Mostly 0–3</div>
+     + <div class="button clickDrop">Mostly 2–3</div>
+     + <div class="button clickDrop">Mostly 4–5</div>
+     + <div class="clickDropContent"><p>You are a balanced social media user. You rarely use social media or use it m
+     + <div class="clickDropContent"><p>Time to think about your habits. You’re online quite a bit so check if it is 
+     + <div class="clickDropContent"><p>It’s time for a reset. Social media might be taking over other important thin
+OSSM401: identical 4 / changed 1
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+  ~ PHE1005_4_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Time to reflect</div>
+     - <div class="clickDropContent"><p>Pick one of the activities below to complete. Then go to your journal and ref
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert item 17] Activity 1: Go
+     + <div class="button clickDrop">Time to reflect</div>
+     + <div class="clickDropContent"><p>Pick one of the activities below to complete. Then go to your journal and ref
+PHE1005: identical 5 / changed 1
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+  ~ SCCH301_0_0.html: -23 +21
+     - <div class="row">
+     - <div class="button clickDrop">Equipment</div>
+     - <div class="clickDropContent"><p><b>Full-time ākonga and fee-paying students</b>: You will need some equipment
+     - <p><b>Dual ākonga</b>: If you are attending a face-to-face school as well, ask your school for the equipment t
+     - <p><b>Overseas ākonga:</b> Ask your supervisor to help you find this equipment.</p>
+     - <p><b>From your science box:</b></p>
+     - <ul>
+     - <li>100 ml measuring cylinder.</li>
+     - <li>A balloon.</li>
+     - <li>Three ziplock bags.</li>
+     - <li>A plastic syringe (no needle).</li>
+     - </ul>
+     - <p><b>From around your home:</b></p>
+     - <ul>
+     - <li>A clear glass, cup, jar or bowl.</li>
+     - <li>A small plate.</li>
+     - <li>Ice cubes.</li>
+     - <li>Kitchen scales.</li>
+     - <li>An empty plastic bottle.</li>
+     - <li>Two large containers (e.g., large bowls, buckets or sinks).</li>
+     - <li>A freezer.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Equipment</div>
+     + <div class="clickDropContent"><p><b>Full-time ākonga and fee-paying students</b>: You will need some equipment
+     + <p><b>Dual ākonga</b>: If you are attending a face-to-face school as well, ask your school for the equipment t
+     + <p><b>Overseas ākonga:</b> Ask your supervisor to help you find this equipment.</p>
+     + <p><b>From your science box:</b></p>
+     + <ul>
+     + <li>100 ml measuring cylinder.</li>
+     + <li>A balloon.</li>
+     + <li>Three ziplock bags.</li>
+     + <li>A plastic syringe (no needle).</li>
+     + </ul>
+     + <p><b>From around your home:</b></p>
+     + <ul>
+     + <li>A clear glass, cup, jar or bowl.</li>
+     + <li>A small plate.</li>
+     + <li>Ice cubes.</li>
+     + <li>Kitchen scales.</li>
+     + <li>An empty plastic bottle.</li>
+     + <li>Two large containers (e.g., large bowls, buckets or sinks).</li>
+     + <li>A freezer.</li>
+     + … 1 more added
+  ~ SCCH301_2_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Solids</div>
+     - <div class="button clickDrop">Liquids</div>
+     - <div class="button clickDrop">Gases</div>
+     - <div class="clickDropContent"><p>In <b>solids</b>, particles are packed tightly together in an orderly pattern
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=spectators-clappin
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=busy-pedestrian-wa
+     - </div>
+     + <div class="button clickDrop">Solids</div>
+     + <div class="button clickDrop">Liquids</div>
+     + <div class="button clickDrop">Gases</div>
+     + <div class="clickDropContent"><p>In <b>solids</b>, particles are packed tightly together in an orderly pattern
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=spectators-clappin
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=busy-pedestrian-wa
+  ~ SCCH301_3_0.html: -5 +3
+     - <div class="row">
+     - <div class="button clickDrop">Adjectives</div>
+     - <div class="clickDropContent"><p>Adjectives are describing words. They are used to give more detail about noun
+     - <p>In a science experiment, adjectives help describe observations clearly and accurately. They tell what somet
+     - </div>
+     + <div class="button clickDrop">Adjectives</div>
+     + <div class="clickDropContent"><p>Adjectives are describing words. They are used to give more detail about noun
+     + <p>In a science experiment, adjectives help describe observations clearly and accurately. They tell what somet
+  ~ SCCH301_4_0.html: -7 +5
+     - <div class="row">
+     - <div class="button clickDrop">Why does chocolate melt in your hand but a fork doesn’t?</div>
+     - <div class="clickDropContent"><p>Water becomes a solid when the temperature is below 0 °c. This is called its 
+     - <p>Chocolate usually melts at around 35–40 °C, which is why it will often melt in the sun, or soften when it s
+     - <p>We need to know about boiling points when making things. For example, when making parts for cars or airplan
+     - <p>This video shows a spoon made of an unusual metal called gallium. Watch what happens when it is put in hot 
+     - </div>
+     + <div class="button clickDrop">Why does chocolate melt in your hand but a fork doesn’t?</div>
+     + <div class="clickDropContent"><p>Water becomes a solid when the temperature is below 0 °c. This is called its 
+     + <p>Chocolate usually melts at around 35–40 °C, which is why it will often melt in the sun, or soften when it s
+     + <p>We need to know about boiling points when making things. For example, when making parts for cars or airplan
+     + <p>This video shows a spoon made of an unusual metal called gallium. Watch what happens when it is put in hot 
+  ~ SCCH301_5_0.html: -71 +67
+     - <div class="row">
+     - <div class="button clickDrop">Kitchen scales</div>
+     - <div class="clickDropContent"><p><b>Materials:</b></p>
+     - <p>From your science box:</p>
+     - <ul>
+     - <li>Three ziplock bags.</li>
+     - <li>Aa 100ml measuring cylinder.</li>
+     - </ul>
+     - <p>.</p>
+     - <p>From around your home:</p>
+     - <ul>
+     - <li>Water.</li>
+     - <li>Kitchen scales.</li>
+     - <li>A pen or marker.</li>
+     - <li>A freezer.</li>
+     - <li>A warm place (such as a sunny windowsill).</li>
+     - <li>A cool place (such as a shaded bench).</li>
+     - </ul>
+     - <p><b>Method:</b></p>
+     - <ol>
+     - <li>Use your marker to label one ziplock bag ‘warm’, one ‘freezer’ and one ‘cool’.</li>
+     - <li>Use your measuring cylinder to measure 100ml of water.</li>
+     - <li>Carefully pour 100 ml of water into each bag.</li>
+     - <li>Seal the bags. Press out as much air as possible and make sure each bag is sealed tightly.</li>
+     - <li>Measure the starting mass of each bag by placing it on the kitchen scales. Record the mass in your journal
+     - <li>Put the bags in different places.</li>
+     - <li>Place the <i>warm</i> bag on a sunny windowsill (or somewhere warm)</li>
+     - <li>Place the <i>freezer</i> bag in the freezer</li>
+     - <li>Place the <i>cool</i> bag in a cool place out of the sun</li>
+     - <li>Leave the bags overnight.</li>
+     - <li>Observe whether any changes in state have happened.</li>
+     - <li>If there is any water on the outside of the bags, wipe it off with a paper towel.</li>
+     - <li>Measure the final mass of each bag again using the kitchen scales. Record the results in your journal, and
+     - </ol></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">No scales</div>
+     - <div class="clickDropContent"><p><b>Materials:</b></p><p><b>From your science box:</b></p><ul>
+     - <li>Three ziplock sandwich bags.</li>
+     - <li>S measuring cylinder.</li>
+     - … 31 more removed
+     + <div class="button clickDrop">Kitchen scales</div>
+     + <div class="clickDropContent"><p><b>Materials:</b></p>
+     + <p>From your science box:</p>
+     + <ul>
+     + <li>Three ziplock bags.</li>
+     + <li>Aa 100ml measuring cylinder.</li>
+     + </ul>
+     + <p>.</p>
+     + <p>From around your home:</p>
+     + <ul>
+     + <li>Water.</li>
+     + <li>Kitchen scales.</li>
+     + <li>A pen or marker.</li>
+     + <li>A freezer.</li>
+     + <li>A warm place (such as a sunny windowsill).</li>
+     + <li>A cool place (such as a shaded bench).</li>
+     + </ul>
+     + <p><b>Method:</b></p>
+     + <li>Use your marker to label one ziplock bag ‘warm’, one ‘freezer’ and one ‘cool’.</li>
+     + <li>Use your measuring cylinder to measure 100ml of water.</li>
+     + … 47 more added
+  ~ SCCH301_7_0.html: -53 +49
+     - <div class="row">
+     - <div class="button clickDrop">With scales</div>
+     - <div class="clickDropContent"><p><b>Materials:</b></p>
+     - <p>From your science box:</p>
+     - <ul>
+     - <li>Measuring cylinder.</li>
+     - </ul>
+     - <p>From around your home:</p>
+     - <ul>
+     - <li>Kitchen scales.</li>
+     - <li>Water.</li>
+     - <li>Ice cubes.</li>
+     - <li>Paper towel.</li>
+     - <li>Calculator.</li>
+     - </ul>
+     - <p><b>Method</b></p>
+     - <p><b>Part A: Density of water</b></p>
+     - <ol>
+     - <li>Place an empty measuring cylinder on the scales and press the ‘zero’ or ‘tare’ button so that the scales r
+     - <li>Pour 50 ml of water into the measuring cylinder.</li>
+     - <li>Read the mass of the water using the scales.</li>
+     - <li>Record these measurements in your journal and use them to calculate the density of the water.</li>
+     - </ol>
+     - <p><b>Part B: Density of ice</b></p>
+     - <ol>
+     - <li>Remove two or three ice cubes from the freezer.</li>
+     - <li>Place the ice on the kitchen scales and record the mass in your journal.</li>
+     - <li>Pour 50 ml of water into your measuring cylinder.</li>
+     - <li>Carefully place the ice into the water in the measuring cylinder, making sure they are covered by the wate
+     - <li>Record the new water level.</li>
+     - <li>Subtract 50 ml from the new water level, to find the volume of the ice.</li>
+     - <li>Record the volume of the ice in your journal.</li>
+     - <li>Calculate the density of ice in your journal.</li>
+     - </ol></div>
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">No scales</div>
+     - <div class="clickDropContent"><p>Use the photos below to answer the questions in the journal.</p><p><b>Part A:
+     - <li>An empty measuring cylinder was placed on the scales and the scales were zeroed.</li>
+     - <li>50 ml of water was poured into the measuring cylinder.</li>
+     - … 13 more removed
+     + <div class="button clickDrop">With scales</div>
+     + <div class="clickDropContent"><p><b>Materials:</b></p>
+     + <p>From your science box:</p>
+     + <ul>
+     + <li>Measuring cylinder.</li>
+     + </ul>
+     + <p>From around your home:</p>
+     + <ul>
+     + <li>Kitchen scales.</li>
+     + <li>Water.</li>
+     + <li>Ice cubes.</li>
+     + <li>Paper towel.</li>
+     + <li>Calculator.</li>
+     + </ul>
+     + <p><b>Method</b></p>
+     + <p><b>Part A: Density of water</b></p>
+     + <ol>
+     + <li>Place an empty measuring cylinder on the scales and press the ‘zero’ or ‘tare’ button so that the scales r
+     + <li>Pour 50 ml of water into the measuring cylinder.</li>
+     + <li>Read the mass of the water using the scales.</li>
+     + … 29 more added
+  ~ SCCH301_8_0.html: -18 +14
+     - <div class="row">
+     - <div class="button clickDrop">Example 2</div>
+     - <div class="clickDropContent"><p>When melted chocolate is put into the fridge, it changes from a liquid to a s
+     - <p>Thermal energy has been removed, which changes the movement and arrangement of particles. As thermal energy
+     - <p>As thermal energy is removed, attractive forces between particles pull them closer together. This causes th
+     - </div>
+     - <div class="row">
+     - <div class="button clickDrop">Example 3</div>
+     - <div class="clickDropContent"><p>When melted chocolate is put in the fridge:</p>
+     - <ul>
+     - <li>it changes from a liquid to a solid</li>
+     - <li>this is melting</li>
+     - <li>thermal energy is removed</li>
+     - <li>the particles move less and are arranged in a more ordered pattern</li>
+     - <li>solids have a fixed shape and can’t be compressed</li>
+     - <li>the mass stays the same but the volume decreases. The density increases.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Example 2</div>
+     + <div class="clickDropContent"><p>When melted chocolate is put into the fridge, it changes from a liquid to a s
+     + <p>Thermal energy has been removed, which changes the movement and arrangement of particles. As thermal energy
+     + <p>As thermal energy is removed, attractive forces between particles pull them closer together. This causes th
+     + <div class="button clickDrop">Example 3</div>
+     + <div class="clickDropContent"><p>When melted chocolate is put in the fridge:</p>
+     + <ul>
+     + <li>it changes from a liquid to a solid</li>
+     + <li>this is melting</li>
+     + <li>thermal energy is removed</li>
+     + <li>the particles move less and are arranged in a more ordered pattern</li>
+     + <li>solids have a fixed shape and can’t be compressed</li>
+     + <li>the mass stays the same but the volume decreases. The density increases.</li>
+     + </ul></div>
+SCCH301: identical 2 / changed 7
+SCFUN01: identical 1 / changed 0
+  ~ SCPH301_0_0.html: -31 +29
+     - <div class="row">
+     - <div class="button clickDrop">Equipment</div>
+     - <div class="clickDropContent"><p><b>Full-time ākonga and fee-paying students</b>: You will need some equipment
+     - <p><b>Dual ākonga</b>: If you are attending a face-to-face school as well, ask your school for the equipment t
+     - <p><b>Overseas ākonga:</b> Ask your supervisor to help you find this equipment.</p>
+     - <p><b>From your science box:</b></p>
+     - <ul>
+     - <li>A thermometer.</li>
+     - <li>A large test tube.</li>
+     - <li>100ml measuring cylinder.</li>
+     - <li>Rubber band.</li>
+     - <li>Aluminium foil.</li>
+     - </ul>
+     - <p><b>From around your home:</b></p>
+     - <ul>
+     - <li>Ice cubes.</li>
+     - <li>Paper.</li>
+     - <li>Thread or string.</li>
+     - </ul>
+     - <p><b>For optional activities:</b></p>
+     - <ul>
+     - <li>Red and blue food colouring.</li>
+     - <li>Newspaper.</li>
+     - <li>Black paper or non-toxic black paint.</li>
+     - <li>Gladwrap or clear plastic.</li>
+     - <li>Newspaper.</li>
+     - <li>Glue stick.</li>
+     - <li>Tape.</li>
+     - <li>A wooden skewer or stick.</li>
+     - </ul></div>
+     - </div>
+     + <div class="button clickDrop">Equipment</div>
+     + <div class="clickDropContent"><p><b>Full-time ākonga and fee-paying students</b>: You will need some equipment
+     + <p><b>Dual ākonga</b>: If you are attending a face-to-face school as well, ask your school for the equipment t
+     + <p><b>Overseas ākonga:</b> Ask your supervisor to help you find this equipment.</p>
+     + <p><b>From your science box:</b></p>
+     + <ul>
+     + <li>A thermometer.</li>
+     + <li>A large test tube.</li>
+     + <li>100ml measuring cylinder.</li>
+     + <li>Rubber band.</li>
+     + <li>Aluminium foil.</li>
+     + </ul>
+     + <p><b>From around your home:</b></p>
+     + <ul>
+     + <li>Ice cubes.</li>
+     + <li>Paper.</li>
+     + <li>Thread or string.</li>
+     + </ul>
+     + <p><b>For optional activities:</b></p>
+     + <ul>
+     + … 9 more added
+  ~ SCPH301_1_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">How to measure temperature</div>
+     - <div class="clickDropContent"><p>Temperature is usually measured in degrees Celsius (°C). Some countries measu
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image 1] Digital Medical Therm
+     + <div class="button clickDrop">How to measure temperature</div>
+     + <div class="clickDropContent"><p>Temperature is usually measured in degrees Celsius (°C). Some countries measu
+  ~ SCPH301_3_0.html: -63 +57
+     - <div class="row">
+     - <div class="button clickDrop">Paper spiral</div>
+     - <div class="clickDropContent"><p>This experiment shows that hot air rises.</p><p><b>Materials:</b></p><ul>
+     - <li>Paper.</li>
+     - <li>Thread or string.</li>
+     - <li>A heat source:
+     - <ul>
+     - <li>e.g., a heater, lamp, or toaster</li>
+     - <li>if you use a lamp, make sure it has an incandescent bulb not a LED bulb - incandescent bulbs get warm, but
+     - </ul></li>
+     - </ul><p>Safety: Do not touch your heat source. Make sure to hold your paper spiral at least 10 cm above your h
+     - <li>Cut a spiral out of paper.
+     - <ol>
+     - <li>You can click on the button below to download a picture of a spiral that you can print and cut out. Or, yo
+     - </ol></li>
+     - <li>Attach a piece of thread about 30 cm long to the middle of your paper spiral.</li>
+     - <li>Holding the top of the thread, hold your spiral above your heat source, so that the bottom of the spiral i
+     - <li>Observe how the spiral moves.</li>
+     - <li>Move your spiral away from the heat source and observe how the movement changes.</li>
+     - </ol></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image 3B paper spiral over lam
+     - <div class="row">
+     - <div class="button clickDrop">Upside down bottles</div>
+     - <div class="clickDropContent"><p>This experiment shows how warmer liquids rise and cooler liquids sink.</p>
+     - <p>Do this activity outside or over a sink. Ask an adult to help.</p>
+     - <p><b>Materials:</b></p>
+     - <ul>
+     - <li>Four bottles (or jars) that are the same size.</li>
+     - <li>Blue and red food colouring.</li>
+     - <li>A piece of card (big enough to fit over the lid of the bottles).</li>
+     - <li>Hot water from the tap.</li>
+     - <li>Cold water from the tap.</li>
+     - </ul>
+     - <p><b>Method:</b></p>
+     - <ol>
+     - <li>Add one drop of blue food colouring to two of the bottles. Fill these two bottles to the very top with col
+     - <li>Add one drop of red food colouring to the other two bottles. Fill these two bottles to the very top with h
+     - <li>Place the piece of card over the top of one of the red bottles. Holding the card in place, turn the red bo
+     - <li>Now, place the piece of card over the top of your other blue bottle. Holding the card in place, turn the b
+     - </ol>
+     - … 23 more removed
+     + <div class="button clickDrop">Paper spiral</div>
+     + <div class="clickDropContent"><p>This experiment shows that hot air rises.</p><p><b>Materials:</b></p><ul>
+     + <li>Paper.</li>
+     + <li>Thread or string.</li>
+     + <li>A heat source:
+     + <ul>
+     + <li>e.g., a heater, lamp, or toaster</li>
+     + <li>if you use a lamp, make sure it has an incandescent bulb not a LED bulb - incandescent bulbs get warm, but
+     + </ul></li>
+     + </ul><p>Safety: Do not touch your heat source. Make sure to hold your paper spiral at least 10 cm above your h
+     + <li>Cut a spiral out of paper.
+     + <ol>
+     + <li>You can click on the button below to download a picture of a spiral that you can print and cut out. Or, yo
+     + </ol></li>
+     + <li>Attach a piece of thread about 30 cm long to the middle of your paper spiral.</li>
+     + <li>Holding the top of the thread, hold your spiral above your heat source, so that the bottom of the spiral i
+     + <li>Observe how the spiral moves.</li>
+     + <li>Move your spiral away from the heat source and observe how the movement changes.</li>
+     + </ol></div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image 3B paper spiral ove
+     + <div class="button clickDrop">Upside down bottles</div>
+     + … 37 more added
+  ~ SCPH301_8_0.html: -56 +52
+     - <div class="row">
+     - <div class="button clickDrop">Build a solar oven</div>
+     - <div class="clickDropContent"><p>Check with an adult before you start.</p><p><b>Materials:</b></p><p>From your
+     - <li>A thermometer.</li>
+     - <li>Aluminium foil.</li>
+     - </ul><p><b>From around your home:</b></p><ul>
+     - <li>Two cardboard boxes that fit inside each other with a small gap in between.
+     - <ul>
+     - <li>(If you only have one cardboard box, just skip steps 1 and 2 in the method below.)</li>
+     - </ul></li>
+     - <li>Newspaper.</li>
+     - <li>Black paper or non-toxic black paint.</li>
+     - <li>Gladwrap or clear plastic.</li>
+     - <li>Newspaper.</li>
+     - <li>Glue stick.</li>
+     - <li>Tape.</li>
+     - <li>A wooden skewer or stick.</li>
+     - <li>Food to cook:
+     - <ul>
+     - <li>Try putting a marshmallow and a square of chocolate on a biscuit to make a s’more.</li>
+     - <li>It will not get as hot as a real oven so it wouldn’t be safe to cook things like meat.</li>
+     - </ul></li>
+     - </ul><p><b>Method:</b></p><ol>
+     - <li>Cut the lid flaps off your boxes (keep the cardboard for step 5)</li>
+     - <li>Put the smaller cardboard box inside the larger box</li>
+     - <li>Fill the gap with scrunched up or shredded newspaper</li>
+     - <li>Cover the inside of your smaller box with black paper or non-toxic black paint</li>
+     - <li>Cut a large square of cardboard. You can use cardboard from the lids of your boxes. The side of the square
+     - <li>Cover the cardboard square with aluminium foil, using your glue stick to stick it down. Make sure the shin
+     - <li>Use tape to attach the square to the top side of the larger box.</li>
+     - <li>Use the wooden skewer to prop open the lid.</li>
+     - <li>Place your food on a dish inside your box. A dark coloured metal dish is best.</li>
+     - <li>Cover the top of the smaller box with gladwrap or clear plastic.</li>
+     - <li>Place your solar oven in the sun.</li>
+     - <li>The aluminium foil should face the sun and reflect light into the box.</li>
+     - <li>You can slide your thermometer into your oven to measure the temperature and see how hot it gets.</li>
+     - </ol><p>Safety: Open your solar oven carefully, as it can get very hot and steam may come out.</p><p>Take a ph
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image of how to make a solar o
+     - <div class="row">
+     - <div class="button clickDrop">Design a hut for Antarctic researchers</div>
+     - … 16 more removed
+     + <div class="button clickDrop">Build a solar oven</div>
+     + <div class="clickDropContent"><p>Check with an adult before you start.</p><p><b>Materials:</b></p><p>From your
+     + <li>A thermometer.</li>
+     + <li>Aluminium foil.</li>
+     + </ul><p><b>From around your home:</b></p><ul>
+     + <li>Two cardboard boxes that fit inside each other with a small gap in between.
+     + <ul>
+     + <li>(If you only have one cardboard box, just skip steps 1 and 2 in the method below.)</li>
+     + </ul></li>
+     + <li>Newspaper.</li>
+     + <li>Black paper or non-toxic black paint.</li>
+     + <li>Gladwrap or clear plastic.</li>
+     + <li>Newspaper.</li>
+     + <li>Glue stick.</li>
+     + <li>Tape.</li>
+     + <li>A wooden skewer or stick.</li>
+     + <li>Food to cook:
+     + <ul>
+     + <li>Try putting a marshmallow and a square of chocolate on a biscuit to make a s’more.</li>
+     + <li>It will not get as hot as a real oven so it wouldn’t be safe to cook things like meat.</li>
+     + … 32 more added
+SCPH301: identical 5 / changed 4
+  ~ SSCI205_3_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Agora</div>
+     - <div class="button clickDrop">Assembly</div>
+     - <div class="button clickDrop">Theatre</div>
+     - <div class="clickDropContent"><p>The Agora was the centre of daily life in Athens. People came here to buy and
+     - <div class="clickDropContent"><p>The Assembly was where citizen men met to vote and help make choices for the 
+     - <div class="clickDropContent"><p>Large outdoor theatres were places where Athenians watched plays and shared i
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Clickdrop Image]</p>
+     + <div class="button clickDrop">Agora</div>
+     + <div class="button clickDrop">Assembly</div>
+     + <div class="button clickDrop">Theatre</div>
+     + <div class="clickDropContent"><p>The Agora was the centre of daily life in Athens. People came here to buy and
+     + <div class="clickDropContent"><p>The Assembly was where citizen men met to vote and help make choices for the 
+     + <div class="clickDropContent"><p>Large outdoor theatres were places where Athenians watched plays and shared i
+  ~ SSCI205_6_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop">Marathon</div>
+     - <div class="button clickDrop">Thermopylae</div>
+     - <div class="button clickDrop">Salamis</div>
+     - <div class="clickDropContent"><p>What happened?</p><p>Greek city-states worked together to protect their land.
+     - <div class="clickDropContent"><p>What happened?</p><p>A small group of soldiers stood together in a narrow mou
+     - <div class="clickDropContent"><p>What happened?</p><p>Greek leaders faced a larger navy.</p><p>Instead of usin
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can the headings please be unde
+     + <div class="button clickDrop">Marathon</div>
+     + <div class="button clickDrop">Thermopylae</div>
+     + <div class="button clickDrop">Salamis</div>
+     + <div class="clickDropContent"><p>What happened?</p><p>Greek city-states worked together to protect their land.
+     + <div class="clickDropContent"><p>What happened?</p><p>A small group of soldiers stood together in a narrow mou
+     + <div class="clickDropContent"><p>What happened?</p><p>Greek leaders faced a larger navy.</p><p>Instead of usin
+  ~ SSCI205_8_0.html: -10 +8
+     - <div class="row">
+     - <div class="button clickDrop">Government</div>
+     - <div class="button clickDrop">Sport</div>
+     - <div class="button clickDrop">Thinking and learning</div>
+     - <div class="button clickDrop">Stories and culture</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1265053620"
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-171265348" 
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1284133754"
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-980680826" 
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: https://www.istockphoto.com/pho
+     + <div class="button clickDrop">Government</div>
+     + <div class="button clickDrop">Sport</div>
+     + <div class="button clickDrop">Thinking and learning</div>
+     + <div class="button clickDrop">Stories and culture</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1265053620"
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-171265348" 
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1284133754"
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-980680826" 
+SSCI205: identical 7 / changed 3
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_2_0.html: -8 +6
+     - <div class="row">
+     - <div class="button clickDrop"><a href="https://www.shutterstock.com/shutterstock/photos/2673749981/display_150
+     - <div class="button clickDrop"><a href="https://www.shutterstock.com/shutterstock/photos/2746914215/display_150
+     - <div class="button clickDrop"><a href="https://www.shutterstock.com/shutterstock/photos/2747418409/display_150
+     - <div class="clickDropContent"><p>Which interface was easiest to use? Why?</p></div>
+     - <div class="clickDropContent"><p>Which one shows the most care for the user (manaakitanga)?</p></div>
+     - <div class="clickDropContent"><p>Which one might exclude some users?</p></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: click on each of the 3 images t
+     + <div class="button clickDrop"><a href="https://www.shutterstock.com/shutterstock/photos/2673749981/display_150
+     + <div class="button clickDrop"><a href="https://www.shutterstock.com/shutterstock/photos/2746914215/display_150
+     + <div class="button clickDrop"><a href="https://www.shutterstock.com/shutterstock/photos/2747418409/display_150
+     + <div class="clickDropContent"><p>Which interface was easiest to use? Why?</p></div>
+     + <div class="clickDropContent"><p>Which one shows the most care for the user (manaakitanga)?</p></div>
+     + <div class="clickDropContent"><p>Which one might exclude some users?</p></div><p class="cv2-note" style="color
+TEDC401: identical 7 / changed 1
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+  ~ TEFUN03_0_0.html: -8 +4
+     - <div class="row">
+     - <div class="button clickDrop">The internet</div>
+     - <div class="clickDropContent"><p>The internet is a treasure trove of information. From your home, you have acc
+     - <div class="row">
+     - <div class="button clickDrop">AI</div>
+     - <div class="clickDropContent"><p>AI, or artificial intelligence, works by collecting and analysing information
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image] AI</p>
+     - </div>
+     + <div class="button clickDrop">The internet</div>
+     + <div class="clickDropContent"><p>The internet is a treasure trove of information. From your home, you have acc
+     + <div class="button clickDrop">AI</div>
+     + <div class="clickDropContent"><p>AI, or artificial intelligence, works by collecting and analysing information
+TEFUN03: identical 0 / changed 1
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+  ~ XDLS901_3_0.html: -12 +10
+     - <div class="row">
+     - <div class="button clickDrop">Commit to Yourself</div>
+     - <div class="button clickDrop">Commit to a friend</div>
+     - <div class="button clickDrop">Commit to a teacher or a coach</div>
+     - <div class="button clickDrop">Your family</div>
+     - <div class="button clickDrop">A Cause or community</div>
+     - <div class="clickDropContent"><p>This is the most important one! You commit to your own goals, values, and gro
+     - <div class="clickDropContent"><p>You might commit to helping a friend, supporting them, or working together on
+     - <div class="clickDropContent"><p>You can commit to doing your best in class, on a team, or in a club.</p><p>Ex
+     - <div class="clickDropContent"><p>You might commit to responsibilities at home or to being there for your famil
+     - <div class="clickDropContent"><p>You can commit to something bigger than yourself, like volunteering or suppor
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [image] Two people jumping thro
+     + <div class="button clickDrop">Commit to Yourself</div>
+     + <div class="button clickDrop">Commit to a friend</div>
+     + <div class="button clickDrop">Commit to a teacher or a coach</div>
+     + <div class="button clickDrop">Your family</div>
+     + <div class="button clickDrop">A Cause or community</div>
+     + <div class="clickDropContent"><p>This is the most important one! You commit to your own goals, values, and gro
+     + <div class="clickDropContent"><p>You might commit to helping a friend, supporting them, or working together on
+     + <div class="clickDropContent"><p>You can commit to doing your best in class, on a team, or in a club.</p><p>Ex
+     + <div class="clickDropContent"><p>You might commit to responsibilities at home or to being there for your famil
+     + <div class="clickDropContent"><p>You can commit to something bigger than yourself, like volunteering or suppor
+XDLS901: identical 4 / changed 1
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+  ~ XDLS908_3_0.html: -8 +4
+     - <div class="row">
+     - <div class="button clickDrop">3E, 3F, 3G</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-480686857" 
+     - <div class="row">
+     - <div class="button clickDrop">3H, 3I</div>
+     - <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2117919908"
+     - </div>
+     - </div>
+     + <div class="button clickDrop">3E, 3F, 3G</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-480686857" 
+     + <div class="button clickDrop">3H, 3I</div>
+     + <div class="clickDropContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-2117919908"
+XDLS908: identical 8 / changed 1
+XDLS909: identical 5 / changed 0
+  ~ XDLS911_1_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">XDLS908 Get the message; give the message</div>
+     - <div class="clickDropContent"><p>XDLS908 Get the message; give the Message prepares you for <b>two</b> Unit st
+     - </div>
+     + <div class="button clickDrop">XDLS908 Get the message; give the message</div>
+     + <div class="clickDropContent"><p>XDLS908 Get the message; give the Message prepares you for <b>two</b> Unit st
+XDLS911: identical 1 / changed 1
+  ~ XDLS912_1_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+XDLS912: identical 5 / changed 1
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+  ~ XGF9001_2_0.html: -12 +10
+     - <div class="row">
+     - <div class="button clickDrop">What is a ‘big question’?</div>
+     - <div class="clickDropContent"><p>A <b>big question</b> is one that doesn’t have a simple answer – it makes you
+     - <p>For gifted learners, big questions often come naturally. You might wonder about <b>life, the universe, fair
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Emoji have been removed from this content
+     - <ul>
+     - <li><i>Why do I think and feel differently from others?</i></li>
+     - <li><i>How can I turn my struggles into strengths?</i></li>
+     - <li><i>What can I do to make life better for myself and others like me?</i></li>
+     - </ul>
+     - <p>Big questions help you <b>understand yourself, your world, and your potential</b> – and that’s a pretty pow
+     - </div>
+     + <div class="button clickDrop">What is a ‘big question’?</div>
+     + <div class="clickDropContent"><p>A <b>big question</b> is one that doesn’t have a simple answer – it makes you
+     + <p>For gifted learners, big questions often come naturally. You might wonder about <b>life, the universe, fair
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Emoji have been removed from this content
+     + <ul>
+     + <li><i>Why do I think and feel differently from others?</i></li>
+     + <li><i>How can I turn my struggles into strengths?</i></li>
+     + <li><i>What can I do to make life better for myself and others like me?</i></li>
+     + </ul>
+     + <p>Big questions help you <b>understand yourself, your world, and your potential</b> – and that’s a pretty pow
+XGF9001: identical 6 / changed 1
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+  ~ XLP01_0_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone the kaiako. You can ring 0800 65 99 88 and ask for them or ema
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone the kaiako. You can ring 0800 65 99 88 and ask for them or ema
+XLP01: identical 4 / changed 1
+  ~ XLP02_0_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+  ~ XLP02_1_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+  ~ XLP02_2_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+  ~ XLP02_4_0.html: -8 +4
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+     - </div>
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+XLP02: identical 3 / changed 4
+  ~ XLP03_1_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+  ~ XLP03_5_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your ākonga’s kaiako. You can ring 0800 65 99 88 and ask for t
+XLP03: identical 4 / changed 2
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+  ~ XMES101_2_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (This is the need help button t
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+  ~ XMES101_6_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+XMES101: identical 7 / changed 2
+XMES102: identical 6 / changed 0
+  ~ XMES103_2_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (This is the need help button t
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+  ~ XMES103_3_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (This is the need help button t
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+  ~ XMES103_4_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (This is the need help button t
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+  ~ XMES103_5_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (This is the need help button t
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+XMES103: identical 2 / changed 4
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+  ~ XTAS101_0_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+XTAS101: identical 4 / changed 1
+  ~ XTAS102_0_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+XTAS102: identical 5 / changed 1
+  ~ XTAS103_0_0.html: -4 +2
+     - <div class="row">
+     - <div class="button clickDrop">Need help?</div>
+     - <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+     - </div>
+     + <div class="button clickDrop">Need help?</div>
+     + <div class="clickDropContent"><p>Email or phone your kaiako. You can ring 0800 65 99 88 and ask for them or em
+XTAS103: identical 6 / changed 1
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 504 / changed 44 / missing 0 over 105 modules
+CHANGED: OSSC401/OSSC401_1_0.html OSSC401/OSSC401_2_0.html OSSC501/OSSC501_1_0.html OSSC501/OSSC501_5_0.html OSSM301/OSSM301_3_0.html OSSM401/OSSM401_1_0.html PHE1005/PHE1005_4_0.html SCCH301/SCCH301_0_0.html SCCH301/SCCH301_2_0.html SCCH301/SCCH301_3_0.html SCCH301/SCCH301_4_0.html SCCH301/SCCH301_5_0.html SCCH301/SCCH301_7_0.html SCCH301/SCCH301_8_0.html SCPH301/SCPH301_0_0.html SCPH301/SCPH301_1_0.html SCPH301/SCPH301_3_0.html SCPH301/SCPH301_8_0.html SSCI205/SSCI205_3_0.html SSCI205/SSCI205_6_0.html SSCI205/SSCI205_8_0.html TEDC401/TEDC401_2_0.html TEFUN03/TEFUN03_0_0.html XDLS901/XDLS901_3_0.html XDLS908/XDLS908_3_0.html XDLS911/XDLS911_1_0.html XDLS912/XDLS912_1_0.html XGF9001/XGF9001_2_0.html XLP01/XLP01_0_0.html XLP02/XLP02_0_0.html XLP02/XLP02_1_0.html XLP02/XLP02_2_0.html XLP02/XLP02_4_0.html XLP03/XLP03_1_0.html XLP03/XLP03_5_0.html XMES101/XMES101_2_0.html XMES101/XMES101_6_0.html XMES103/XMES103_2_0.html XMES103/XMES103_3_0.html XMES103/XMES103_4_0.html XMES103/XMES103_5_0.html XTAS101/XTAS101_0_0.html XTAS102/XTAS102_0_0.html XTAS103/XTAS103_0_0.html

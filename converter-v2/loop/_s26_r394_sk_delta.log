@@ -1,0 +1,7 @@
+scaffold 53.5602 -> 53.6736 (+0.1135pp); RAW 37.787 -> 37.779; pairs 1956 -> 1956, skipped 0 -> 0
+movers 117: up 84 / down 29; pp-sum +221.9; outside affected 0
+worst: [(-6.2, 'OSBY201_1_0.html'), (-6.1, 'MXFU301_7_0.html'), (-5.1, 'BLL217_2_0.html'), (-4.1, 'SCCH301_2_0.html'), (-3.7, 'BLLR201_2_0.html'), (-2.8, 'HES1005_3_0.html')]
+best: [(11.0, 'BLL245_2_0.html'), (12.2, 'SCCH301_7_0.html'), (12.4, 'SCCH301_5_0.html'), (14.8, 'ENGR302_2_0.html'), (25.8, 'SCCH301_0_0.html'), (32.3, 'SCPH301_0_0.html')]
+>= 50: 1159 -> 1163 up: [('OSOH401', 'OSOH401_1_0.html'), ('HES1007', 'HES1007_4_0.html'), ('BLL235', 'BLL235_2_0.html'), ('BLL246', 'BLL246_2_0.html'), ('SCCH301', 'SCCH301_5_0.html'), ('XLP02', 'XLP02_1_0.html'), ('ENGR302', 'ENGR302_2_0.html')] down: [('MXFU301', 'MXFU301_7_0.html'), ('XLP02', 'XLP02_0_0.html'), ('BLLR201', 'BLLR201_2_0.html')]
+>= 75: 191 -> 194 up: [('OSGM501', 'OSGM501_5_0.html'), ('SCPH301', 'SCPH301_0_0.html'), ('SCCH301', 'SCCH301_0_0.html')] down: []
+>= 90: 15 -> 18 up: [('OSSM301', 'OSSM301_3_0.html'), ('SCPH301', 'SCPH301_0_0.html'), ('SCCH301', 'SCCH301_0_0.html')] down: []

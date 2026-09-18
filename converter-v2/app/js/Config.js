@@ -1754,7 +1754,8 @@ class Config {
 	// ROUND 391 (260619.62): the own-row supervisor panel's text column is `col-12 col-md-12` in the Leaving to Learn family (callouts.by_tag.'supervisor note'.inner_row.text_col_by_subject, env PANELCOL_OFF; gold 28 / 37 = 0.76 on 35 pages / 15 modules; the activity-owned panel untouched). 28 pages / 6 modules; scoped ship #3 since the r388 full.
 	// ROUND 392 (260619.63): adjacent sibling lists are one list — a bare </ul> + whitespace + <ul> in the live body joins (body_region.merge_adjacent_lists, ListsAndRuns.MergeAdjacentLists at the TypedNumberList seam, env ULMERGE_OFF; Claude 106 pairs on 54 pages vs the gold's 3 = 0.97; ol deliberately not listed). 51 pages / 32 modules; scoped ship #4 since the r388 full.
 	// ROUND 393 (260619.64): a glyph-only line renders nothing — a free-body line whose whole content is one punctuation glyph (a stray . or , / a text-box [ ] / a broken equation's + = – / PNR102's ✔) never ships as a <p> (body_region.drop_glyph_only_lines, ListsAndRuns.renderBlackText's line filter, env GLYPHLINE_OFF; Claude 170 on 69 pages vs the gold's 0 = dropped 1.00). 68 pages / 60 modules; scoped ship #5 since the r388 full.
-	static AppVersion = "260619.64";
+	// ROUND 394 (260619.65): the clickDrop buttons sit directly in the column — the built widget's inner <div class="row"> is dropped (interactive.clickDrop.no_row_wrapper, InteractiveBuilder.#cdWrap, env CDROW_OFF; the gold's 385 groups: parent = a column 0.78, an inner row 0.05; Claude wrapped 127 / 128). 122 pages / 77 modules; scoped ship #6 since the r388 full.
+	static AppVersion = "260619.65";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
